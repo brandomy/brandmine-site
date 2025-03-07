@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang }}">
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}en{% endif %}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.translations[page.lang].site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.translations[page.lang].site.description }}{% endif %}">
   <link rel="stylesheet" href="{{ "/assets/css/basic-colors.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ '/assets/css/typography.css' | relative_url }}">
   {% include google-analytics.html %}
 </head>
 <body>
