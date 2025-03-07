@@ -1,18 +1,22 @@
----
-layout: null
-permalink: /
----
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Redirecting...</title>
+  <title>Brandmine Redirect</title>
   <script>
-    window.location.href = "/en/";
+    // Add console logging to debug
+    console.log("Redirect script running...");
+    window.location.replace("/en/");
   </script>
-  <meta http-equiv="refresh" content="0; url=/en/">
 </head>
 <body>
-  <p>Redirecting to <a href="/en/">English version</a>...</p>
+  <p>If you are not redirected automatically, click <a href="/en/">here</a>.</p>
+  <script>
+    // Second attempt at redirection
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log("DOM loaded, attempting redirect again...");
+      window.location.replace("/en/");
+    });
+  </script>
 </body>
 </html>
