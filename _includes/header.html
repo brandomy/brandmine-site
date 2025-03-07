@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].site.title }}</a>
+    <nav class="site-nav">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].nav.home }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/">{{ site.data.translations[page.lang].nav.brands }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/sectors/">{{ site.data.translations[page.lang].nav.sectors }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/markets/">{{ site.data.translations[page.lang].nav.markets }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/">{{ site.data.translations[page.lang].nav.about }}</a>
+    </nav>
+    {% include language-selector.html %}
+  </div>
+</header>
