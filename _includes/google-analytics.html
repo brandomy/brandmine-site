@@ -1,0 +1,14 @@
+<!-- Google Analytics -->
+{% if jekyll.environment == 'production' %}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V3T1T5DWJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V3T1T5DWJG', {
+    'page_path': location.pathname,
+    'language': '{{ page.lang }}'
+  });
+</script>
+{% endif %}
