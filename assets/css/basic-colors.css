@@ -106,27 +106,80 @@
     padding: 1rem 0;
   }
   
-  .site-title {
+  .site-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
     margin-right: 1.25rem;
-  }
-  
-  .site-nav {
-    display: inline-block;
-  }
-  
-  .site-nav a {
+    flex: 0 0 auto; /* Don't grow, don't shrink, auto basis */
+}
+
+.site-nav {
+    display: flex;
+    flex: 1 0 auto; /* Grow, don't shrink, auto basis */
+}
+
+.site-nav a {
     color: white;
     margin-right: 1rem;
     text-decoration: none;
-  }
-  
-  .site-nav a:hover {
+}
+
+.site-nav a:hover {
     text-decoration: underline;
-  }
+}
+
+/* Style the language selector */
+.language-selector {
+    display: flex;
+    margin-left: auto; /* This pushes it to the right */
+    gap: 0.75rem;
+}
+
+.language-selector a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.language-selector a:hover {
+    opacity: 1;
+}
+
+.language-selector a.active {
+    opacity: 1;
+    font-weight: bold;
+}
+
+/* Add responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .site-header .wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .site-title {
+        margin-bottom: 0.75rem;
+        margin-right: 0;
+    }
+    
+    .site-nav {
+        margin: 0.5rem 0;
+        justify-content: center;
+    }
+    
+    .language-selector {
+        margin: 0.75rem 0 0 0;
+    }
+}
   
   /* Footer */
   .site-footer {
