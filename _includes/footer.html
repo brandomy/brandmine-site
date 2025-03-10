@@ -61,7 +61,13 @@
       <div class="footer-section footer-section-right">
         <!-- MailerLite Embed Container -->
         <div class="newsletter-container">
-          <div class="ml-embedded" data-form="480swE"></div>
+          {% if page.lang == 'ru' %}
+            <div class="ml-embedded" data-form="WVRNPI"></div>
+          {% elsif page.lang == 'zh' %}
+            <div class="ml-embedded" data-form="WRga0a"></div>
+          {% else %}
+            <div class="ml-embedded" data-form="480swE"></div>
+          {% endif %}
         </div>
       </div>
     </div>
