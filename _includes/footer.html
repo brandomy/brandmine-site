@@ -57,19 +57,18 @@
         </div>
       </div>
       
-      <!-- Right section: Contact -->
+      <!-- Right section: Newsletter Signup -->
       <div class="footer-section footer-section-right">
-        <p class="footer-text">
-          <a href="mailto:{{ site.data.translations[page.lang].footer.email }}">
-            {{ site.data.translations[page.lang].footer.email }}
-          </a>
-        </p>
+        <!-- MailerLite Embed Container -->
+        <div class="newsletter-container">
+          <div class="ml-embedded" data-form="480swE"></div>
+        </div>
       </div>
     </div>
     
     <!-- Copyright notice -->
     <div class="footer-copyright">
-      <p class="footer-text">&copy; {{ site.time | date: '%Y' }} {{ site.data.translations[page.lang].footer.company_name }}. {{ site.data.translations[page.lang].footer.copyright }}</p>
+      <p class="footer-text">© {{ site.time | date: '%Y' }} {{ site.data.translations[page.lang].footer.company_name }}. {{ site.data.translations[page.lang].footer.copyright }}</p>
     </div>
   </div>
 </footer>
