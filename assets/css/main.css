@@ -372,3 +372,49 @@
 .newsletter-container {
   margin: 0.5rem 0;
 }
+
+/* Sector columns layout */
+.sector-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.sector-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.sector-column h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.sector-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sector-column li {
+  margin-bottom: 0.75rem;
+}
+
+.sector-column a {
+  color: var(--primary-600);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sector-column a:hover {
+  color: var(--primary-400);
+  text-decoration: underline;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .sector-columns {
+    grid-template-columns: 1fr;
+  }
+}
