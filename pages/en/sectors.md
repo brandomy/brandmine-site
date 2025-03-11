@@ -24,7 +24,7 @@ Drawing on Siberia's vast botanical resources, Russian beauty brands are carving
 Russia's emerging artisanal cheese scene represents a fascinating story of innovation under challenging conditions. Small-batch producers are creating unique flavor profiles that appeal to the growing global interest in craft foods.
 
 <div class="cta-container">
-  <a href="{{ site.baseurl }}/en/russian-sectors/" class="btn-primary">Explore All 15 Russian Sectors</a>
+  <a href="{{ site.baseurl }}/ru/russian-sectors/" class="btn-primary">Исследовать все 15 Российских секторов</a>
 </div>
 
 ### Sector Distribution by Country

@@ -23,7 +23,9 @@ Brandmine专注于展示具有卓越跨境增长潜力的消费品牌行业。�
 #### 特色奶酪
 俄罗斯新兴的手工奶酪场景代表了在充满挑战的条件下创新的引人入胜的故事。小批量生产商正在创造独特的风味特征，迎合全球对手工食品日益增长的兴趣。
 
-[查看所有15个俄罗斯行业 →]
+<div class="cta-container">
+  <a href="{{ site.baseurl }}/zh/russian-sectors/" class="btn-primary">探索全部15个俄罗斯行业</a>
+</div>
 
 ### 各国行业分布
 
