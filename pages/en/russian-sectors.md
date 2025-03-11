@@ -40,7 +40,6 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
     </ul>
   </div>
 </div>
-
 <hr>
 
 <h2>Lifestyle Sectors</h2>
