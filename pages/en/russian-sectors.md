@@ -199,5 +199,5 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
 
 <div class="sector-footer">
   <p>Discover how Brandmine can connect you with leading brands across these exciting sectors.</p>
-  <a href="/en/sectors/" class="back-button">Return to Sectors Overview</a>
+  <a href="/en/sectors/" class="btn btn-primary">Return to Sectors Overview</a>
 </div>
