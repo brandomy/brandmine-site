@@ -985,3 +985,64 @@
     text-align: left;
   }
 }
+/* More aggressive fix for Tally form on mobile */
+@media (max-width: 767px) {
+  /* Fix the container positioning */
+  .contact-form-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 0 !important;
+  }
+  
+  /* Fix the iframe itself */
+  .contact-form-container iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+    left: 0 !important;
+  }
+  
+  /* Adjust the cta-panel to eliminate bottom spacing */
+  .cta-panel {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Remove extra margin from the panel content */
+  .cta-panel .panel-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Ensure footer connects directly */
+  .site-footer {
+    margin-top: 0 !important;
+  }
+}
+
+/* Fix white space between form and footer on all screen sizes */
+.full-width-panel.cta-panel {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.site-footer {
+  margin-top: 0 !important; /* Override the 3rem margin regardless of screen size */
+}
+
+/* Fix for the white horizontal bar on large screens */
+main.page-content {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Target that specific white space between sections */
+.page-content > .wrapper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
