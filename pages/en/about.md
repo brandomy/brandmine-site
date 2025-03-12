@@ -248,9 +248,75 @@ ref: about
       </div>
     </div>
     
-    <div class="contact-form">
-      <!-- Contact form placeholder -->
-      <a href="#" class="cta-button">Get in Touch</a>
+
+    <div class="contact-form-container">
+      <!-- Custom styling for Tally form -->
+      <style>
+        /* Hide the "Get in Touch" button at the top */
+        .contact-form-container iframe {
+          border-radius: 8px;
+        }
+        
+        /* Hide the default form title */
+        iframe[data-tally-src] + div {
+          opacity: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+        }
+        
+        /* Style for Tally elements - these will override Tally's default styles */
+        /* These styles will be injected into the iframe */
+        .tally-form-container {
+          background-color: transparent !important;
+        }
+        
+        /* Form title */
+        [data-tally-element="form-header"] {
+          display: none !important;
+        }
+        
+        /* Form inputs */
+        [data-tally-element="inputs"] input,
+        [data-tally-element="inputs"] textarea {
+          background-color: rgba(255, 255, 255, 0.25) !important;
+          border: 1px solid rgba(255, 255, 255, 0.4) !important;
+          color: white !important;
+        }
+        
+        /* Placeholder text */
+        [data-tally-element="inputs"] ::placeholder {
+          color: rgba(255, 255, 255, 0.7) !important;
+        }
+        
+        /* Submit button */
+        [data-tally-element="button"] {
+          background-color: rgba(255, 255, 255, 0.9) !important;
+          color: #2C7A7B !important; /* Using your primary-600 color */
+          font-weight: bold !important;
+        }
+        
+        /* Form labels */
+        [data-tally-element="inputs"] label {
+          color: white !important;
+        }
+        
+        /* Thank you message */
+        [data-tally-element="thankyou-page"] * {
+          color: white !important;
+        }
+        
+        /* "Made with Tally" badge - make it less prominent */
+        [data-tally-element="powered-by"] {
+          opacity: 0.7 !important;
+        }
+      </style>
+      
+      <!-- Tally form with proper parameters -->
+      <iframe data-tally-src="https://tally.so/embed/3qvVaY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
+      
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </div>
+
+
   </div>
 </div>
