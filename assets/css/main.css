@@ -894,8 +894,9 @@
     grid-template-columns: 1fr;
   }
 }
-
+/* ------------------- */
 /* Mobile layout fixes */
+/* ------------------- */
 @media (max-width: 767px) {
   /* Fix team profile cards */
   .team-member {
@@ -946,5 +947,41 @@
   /* Fix content spacing */
   .lead-text {
     max-width: 100%;
+  }
+}
+/* Fix for description alignment while keeping current layout */
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
+
+.feature-icon {
+  margin: 0 auto 1rem;
+}
+
+/* Make all descriptions the same width */
+.feature-item p {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* On mobile, preserve the horizontal layout */
+@media (max-width: 768px) {
+  .feature-item {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+  
+  .feature-icon {
+    margin: 0 1rem 0 0;
+  }
+  
+  .feature-item p {
+    text-align: left;
   }
 }
