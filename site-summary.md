@@ -1,9 +1,9 @@
 # Brandmine Site Summary
-Generated on Tue 11 Mar 2025 12:28:12 +08
+Generated on Thu 13 Mar 2025 13:30:23 +08
 
 ## Repository Status
 Current branch: main
-Last commit: add russian sectors page
+Last commit: fixed the white space between footer and tally form
 Modified files:        1
 
 ## Site Structure
@@ -16,14 +16,14 @@ Modified files:        1
   - google-analytics.html
   - header.html
   - language-selector.html
-- _data/ (       5 files)
-  - _data/.DS_Store
+- _data/ (       4 files)
   - _data/sectors.yml
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/css/ (       2 files)
+- assets/css/ (       3 files)
   - main.css
+  - tally-styles.css
   - typography.css
 - assets/fonts/ (      22 files)
   - NotoSansSC-Bold.woff2
@@ -79,13 +79,13 @@ defaults:
 
 ## Content Summary
 - Languages:        3 (en ru zh )
-- Brand profiles:        1
 - Blog posts:        1
 - Translation files:        3
 
 ## CSS Files
 ```
 - main.css
+- tally-styles.css
 - typography.css
 ```
 

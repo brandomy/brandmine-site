@@ -14,9 +14,12 @@
   <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
 
 
-  <!-- Load Main Style Sheets -->  
+  <!-- Load Style Sheets -->  
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | prepend: site.baseurl }}">
   <link rel="stylesheet" href="{{ '/assets/css/typography.css' | relative_url }}">
+  {% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  {% endif %}
  
   <!-- Font preloading for performance -->
   <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
@@ -38,11 +41,14 @@
   </script>
   <!-- End MailerLite Universal -->
 
+  <!-- Tally popup script -->
+<script async src="https://tally.so/widgets/embed.js"></script>
+
+  <!-- Google Analytics -->
   {% include google-analytics.html %}
 </head>
-<body>
+<body class="{% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}home-page{% endif %}">
   {% include header.html %}
-  
   <main class="page-content">
     <div class="wrapper">
       {{ content }}
