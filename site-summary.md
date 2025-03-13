@@ -1,10 +1,10 @@
 # Brandmine Site Summary
-Generated on Thu 13 Mar 2025 13:30:23 +08
+Generated on Fri 14 Mar 2025 05:26:50 +08
 
 ## Repository Status
 Current branch: main
-Last commit: fixed the white space between footer and tally form
-Modified files:        1
+Last commit: delete test page
+Modified files:        2
 
 ## Site Structure
 ### Directories
@@ -21,8 +21,10 @@ Modified files:        1
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/css/ (       3 files)
+- assets/css/ (       5 files)
+  - home.css
   - main.css
+  - site-summary.md
   - tally-styles.css
   - typography.css
 - assets/fonts/ (      22 files)
@@ -84,7 +86,9 @@ defaults:
 
 ## CSS Files
 ```
+- home.css
 - main.css
+- site-summary.md
 - tally-styles.css
 - typography.css
 ```
