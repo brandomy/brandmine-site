@@ -110,7 +110,8 @@ body, html {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Header */
+/* Header and Navigation styles moved to components/navigation.css */
+/*
 .site-header {
   background-color: var(--primary-400);
   color: white;
@@ -191,9 +192,10 @@ body, html {
       margin: 0.75rem 0 0 0;
   }
 }
+*/
 
-/* Footer */
-/* Footer Styles */
+/* Footer styles moved to components/navigation.css */
+/*
 .site-footer {
 background-color: var(--primary-700);
 color: var(--neutral-200);
@@ -383,8 +385,10 @@ margin: 0;
 .newsletter-container {
 margin: 0.5rem 0;
 }
+*/
 
-/* Sector columns layout */
+/* Sector-related styles moved to components/sectors.css */
+/*
 .sector-columns {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -443,20 +447,6 @@ margin-bottom: 1.5rem;
 font-size: 1.125rem;
 }
 
-/* Generic button class to extend your existing buttons */
-/*
-.btn {
-display: inline-block;
-padding: 0.75rem 1.5rem;
-font-weight: 600;
-text-align: center;
-text-decoration: none;
-border-radius: 0.25rem;
-cursor: pointer;
-transition: all 0.3s ease;
-}
-*/
-
 /* Sector section styling */
 .sector-section {
 margin-bottom: 2.5rem;
@@ -467,7 +457,10 @@ border-bottom: 1px solid var(--neutral-200);
 .sector-section:last-of-type {
 border-bottom: none;
 }
-/* Team Section Styling */
+*/
+
+/* Team section styles moved to components/team.css */
+/*
 .team-section {
 display: flex;
 flex-wrap: wrap;
@@ -543,9 +536,10 @@ margin-bottom: 0.5rem;
   padding: 1.5rem;
 }
 }
+*/
 
-/* ===== Full-width Panel System ===== */
-/* Fix for the panel system core */
+/* Panel system styles moved to layout/panels.css */
+/*
 .full-width-panel {
 width: 100vw;          /* Use viewport width to ensure true full width */
 padding: 4rem 0;       /* Vertical padding only */
@@ -571,8 +565,10 @@ box-sizing: border-box;
 .centered {
 text-align: center;
 }
+*/
 
-/* ===== Panel Types ===== */
+/* Panel variant styles moved to layout/panels.css */
+/* 
 .hero-panel {
 background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
 color: white;
@@ -634,60 +630,62 @@ color: var(--accent-800);
 background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%);
 color: white;
 padding: 5rem 2rem;
-}
+} 
+*/
 
-/* ===== Content Cards ===== */
+/* Content card styles */
 .content-card {
-background-color: transparent;
-box-shadow: none;
-padding: 0;
-border-radius: 0;
-width: 100%;
-box-sizing: border-box;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* ===== Typography ===== */
+/* Typography within panels moved to layout/panels.css */
 .full-width-panel h1 {
-font-size: 3rem;
-margin-bottom: 1rem;
-line-height: 1.2;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .full-width-panel h2 {
-font-size: 2.25rem;
-margin-bottom: 1.5rem;
-text-align: center;
-color: inherit;
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: inherit;
 }
 
 .hero-subtitle {
-font-size: 1.5rem;
-max-width: 800px;
-margin: 0 auto;
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .lead-text {
-font-size: 1.125rem;
-line-height: 1.6;
-margin-bottom: 2rem;
-max-width: 800px;
-margin-left: auto;
-margin-right: auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .panel-content .lead-text {
-font-size: 1.2rem;
-margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .conclusion-text {
-font-size: 1.125rem;
-border-top: 1px solid rgba(0, 0, 0, 0.1);
-margin-top: 2rem;
-padding-top: 1.5rem;
+  font-size: 1.125rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
 }
 
-/* ===== Problem Section ===== */
+/* Feature grid styles moved to components/features.css */
+/*
 .feature-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -739,8 +737,10 @@ text-align: center;
 margin-left: auto;
 margin-right: auto;
 }
+*/
 
-/* ===== Solution Section ===== */
+/* Solution list styles moved to components/solutions.css */
+/*
 .solutions-list {
 margin: 2rem 0;
 }
@@ -780,8 +780,10 @@ color: var(--primary-800);
 margin: 0;
 color: var(--primary-700);
 }
+*/
 
-/* ===== Perspective Section ===== */
+/* Perspective section styles moved to components/perspective.css */
+/*
 .perspective-list {
 margin: 2rem 0;
 padding-left: 1.5rem;
@@ -799,8 +801,10 @@ border-radius: 0.25rem;
 .perspective-list li strong {
 color: var(--accent-900);
 }
+*/
 
-/* ===== Services Section ===== */
+/* Services section styles moved to components/services.css */
+/*
 .services-container {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -836,8 +840,10 @@ background-color: var(--primary-400);
 left: 0;
 top: 0.5rem;
 }
+*/
 
-/* ===== Contact Section ===== */
+/* Contact section styles moved to components/contact.css */
+/*
 .contact-info {
 display: flex;
 justify-content: center;
@@ -884,193 +890,160 @@ background-color: var(--primary-100);
 transform: translateY(-2px);
 box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
+*/
 
-/* ===== Responsive Adjustments for Panels ===== */
+/* Responsive adjustments moved to respective component files */
 @media (max-width: 768px) {
-.full-width-panel {
-  padding: 3rem 1.5rem;
+  .full-width-panel h1 {
+    font-size: 2.5rem;
+  }
+
+  .full-width-panel h2 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .content-card {
+    padding: 0;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .feature-icon {
+    margin: 0 1rem 0 0;
+  }
+
+  .feature-item p {
+    text-align: left;
+  }
 }
 
-.hero-panel {
-  padding: 4rem 1.5rem;
-}
-
-.full-width-panel h1 {
-  font-size: 2.5rem;
-}
-
-.full-width-panel h2 {
-  font-size: 2rem;
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-}
-
-.content-card {
-  padding: 0;
-}
-
-.feature-grid {
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-.feature-item {
-  display: flex;
-  flex-direction: row;
-  text-align: left;
-  align-items: flex-start;
-}
-
-.feature-icon {
-  margin: 0 1rem 0 0;
-}
-
-.feature-item p {
-  text-align: left;
-}
-}
-
-/* ===== Image Integration Support ===== */
-.panel-with-image {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 3rem;
-align-items: center;
-}
-
-.panel-image {
-max-width: 100%;
-height: auto;
-border-radius: 0.5rem;
-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 992px) {
-.panel-with-image {
-  grid-template-columns: 1fr;
-}
-}
-/* ------------------- */
-/* Mobile layout fixes */
-/* ------------------- */
+/* Mobile layout fixes - temporarily left until all components are extracted */
 @media (max-width: 767px) {
-/* Fix team profile cards */
-.team-member {
-  min-width: unset;
-  width: 100%;
-  padding: 1.5rem;
-  margin: 0;
-  box-sizing: border-box;
+  /* Fix team profile cards */
+  .team-member {
+    min-width: unset;
+    width: 100%;
+    padding: 1.5rem;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  /* Fix content cards to be wider */
+  .content-card {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Fix solution items */
+  .solution-item {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
+  /* Form container fix */
+  .contact-form-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Full width iframe */
+  iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Fix feature items */
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Fix content spacing */
+  .lead-text {
+    max-width: 100%;
+  }
 }
 
-/* Fix panel content on mobile */
-.panel-content {
-  padding: 0 1rem;
-}
-
-/* Fix content cards to be wider */
-.content-card {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-/* Fix solution items */
-.solution-item {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  box-sizing: border-box;
-}
-
-/* Form container fix */
-.contact-form-container {
-width: 100%;
-padding: 0;
-}
-
-/* Full width iframe */
-iframe {
-width: 100% !important;
-max-width: 100% !important;
-}
-
-/* Fix feature items */
-.feature-grid {
-grid-template-columns: 1fr;
-}
-
-/* Fix content spacing */
-.lead-text {
-max-width: 100%;
-}
-}
-
-/* More aggressive fix for Tally form on mobile */
+/* Tally form fixes temporarily kept */
 @media (max-width: 767px) {
-/* Fix the container positioning */
-.contact-form-container {
-width: 100% !important;
-max-width: 100% !important;
-margin: 0 !important;
-padding: 0 !important;
-position: relative;
-left: 0 !important;
+  /* Fix the container positioning */
+  .contact-form-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 0 !important;
+  }
+
+  /* Fix the iframe itself */
+  .contact-form-container iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+    left: 0 !important;
+  }
+
+  /* Adjust the cta-panel to eliminate bottom spacing */
+  .cta-panel {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Remove extra margin from the panel content */
+  .cta-panel .panel-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Ensure footer connects directly */
+  .site-footer {
+    margin-top: 0 !important;
+  }
 }
 
-/* Fix the iframe itself */
-.contact-form-container iframe {
-width: 100% !important;
-max-width: 100% !important;
-margin: 0 auto !important;
-display: block !important;
-left: 0 !important;
-}
-
-/* Adjust the cta-panel to eliminate bottom spacing */
-.cta-panel {
-padding-bottom: 0 !important;
-margin-bottom: 0 !important;
-}
-
-/* Remove extra margin from the panel content */
-.cta-panel .panel-content {
-padding-left: 0 !important;
-padding-right: 0 !important;
-margin-bottom: 0 !important;
-}
-
-/* Ensure footer connects directly */
-.site-footer {
-margin-top: 0 !important;
-}
-}
-
-/* Fix white space between form and footer on all screen sizes */
+/* Footer spacing fixes temporarily kept */
 .full-width-panel.cta-panel {
-margin-bottom: 0 !important;
-padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .site-footer {
-margin-top: 0 !important; /* Override the 3rem margin regardless of screen size */
+  margin-top: 0 !important; /* Override the 3rem margin regardless of screen size */
 }
 
 /* Fix for the white horizontal bar on large screens */
 main.page-content {
-margin-bottom: 0 !important;
-padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* Target that specific white space between sections */
 .page-content > .wrapper {
-margin-bottom: 0 !important;
-padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
-/* ===== Hero Image Panel (Homepage) ===== */
+/* Homepage-specific styles moved to pages/home.css */
+/*
 .hero-image-panel {
 position: relative;
 min-height: 80vh;
@@ -1090,7 +1063,7 @@ top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background-image: url('../images/hero/home-cover.jpg');
+background-image: url('/assets/images/hero/home-cover.jpg');
 background-size: cover;
 background-position: center;
 filter: brightness(0.7);
@@ -1099,46 +1072,47 @@ z-index: 0;
 
 /* Add a teal color overlay using your brand color */
 .hero-background::after {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(56, 178, 172, 0.3); /* Teal overlay with 30% opacity */
-z-index: 1;
-}
-
-/* Scroll indicator for homepage */
-.scroll-indicator {
-position: absolute;
-bottom: 40px;
-left: 50%;
-transform: translateX(-50%);
-display: flex;
-flex-direction: column;
-align-items: center;
-color: white;
-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-opacity: 0.9;
-transition: opacity 0.3s ease;
-cursor: default;
-z-index: 5;
-}
-
-.scroll-arrow {
-font-size: 1.5rem;
-animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-0%, 20%, 50%, 80%, 100% {
-transform: translateY(0);
-}
-40% {
-transform: translateY(-10px);
-}
-60% {
-transform: translateY(-5px);
-}
-}
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(56, 178, 172, 0.3); /* Teal overlay with 30% opacity */
+  z-index: 1;
+  }
+  
+  /* Scroll indicator for homepage */
+  .scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  cursor: default;
+  z-index: 5;
+  }
+  
+  .scroll-arrow {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+  transform: translateY(0);
+  }
+  40% {
+  transform: translateY(-10px);
+  }
+  60% {
+  transform: translateY(-5px);
+  }
+  }
+  */

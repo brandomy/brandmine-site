@@ -184,13 +184,13 @@ ref: about
         凭借在亚洲——特别是在中国和俄罗斯——超过25年的生活和工作经验，我们的创始人为Brandmine带来了语言能力、文化洞察力和商业敏锐度的罕见组合：
       </p>
       
-      <ul class="perspective-list">
-        <li><strong>亲身经历</strong>在亚洲市场建立和扩展品牌</li>
-        <li><strong>深刻的文化理解</strong>，超越语言翻译</li>
-        <li><strong>广泛的网络</strong>，横跨金砖国家+和国际市场</li>
-        <li><strong>实用知识</strong>，在复杂监管环境中导航</li>
-        <li><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</li>
-      </ul>
+    <ul class="perspective-list">
+      <li><span><strong>亲身经历</strong>在亚洲市场建立和扩展品牌</span></li>
+      <li><span><strong>深刻的文化理解</strong>，超越语言翻译</span></li>
+      <li><span><strong>广泛的网络</strong>，横跨金砖国家+和国际市场</span></li>
+      <li><span><strong>实用知识</strong>，在复杂监管环境中导航</span></li>
+      <li><span><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</span></li>
+    </ul>
       
       <p class="conclusion-text">
         这种独特的背景使我们能够在别人只看到障碍的地方看到宝贵的机会。
@@ -204,7 +204,7 @@ ref: about
   <div class="panel-content">
     <h2>我们的服务</h2>
     
-    <div class="services-container">
+    <div class="services-split">
       <div class="service-column">
         <h3>为国际合作伙伴提供</h3>
         <ul class="service-list">

@@ -186,13 +186,12 @@ ref: about
       </p>
       
       <ul class="perspective-list">
-        <li><strong>Firsthand experience</strong> building and scaling brands across Asian markets</li>
-        <li><strong>Deep cultural understanding</strong> that goes beyond language translation</li>
-        <li><strong>Extensive networks</strong> across both BRICS+ countries and international markets</li>
-        <li><strong>Practical knowledge</strong> of navigating complex regulatory environments</li>
-        <li><strong>Proven track record</strong> of connecting brands with the partners they need to grow</li>
-      </ul>
-      
+        <li><span><strong>Firsthand experience</strong> building and scaling brands across Asian markets</span></li>
+        <li><span><strong>Deep cultural understanding</strong> that goes beyond language translation</span></li>
+        <li><span><strong>Extensive networks</strong> across both BRICS+ countries and international markets</span></li>
+        <li><span><strong>Practical knowledge</strong> of navigating complex regulatory environments</span></li>
+        <li><span><strong>Proven track record</strong> of connecting brands with the partners they need to grow</span></li>
+      </ul>      
       <p class="conclusion-text">
         This distinctive background enables us to see valuable opportunities where others see only barriers.
       </p>
@@ -201,31 +200,25 @@ ref: about
 </div>
 
 <!-- Services Section -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Our Services</h2>
-    
-    <div class="services-container">
-      <div class="service-column">
-        <h3>For International Partners</h3>
-        <ul class="service-list">
-          <li><strong>Brand Discovery Database</strong>: Searchable collection of curated brand profiles</li>
-          <li><strong>Custom Research</strong>: Tailored investigations into specific sectors or regions</li>
-          <li><strong>Market Entry Guidance</strong>: Strategic support for navigating BRICS+ markets</li>
-          <li><strong>Connection Facilitation</strong>: Introductions to vetted brand partners</li>
-        </ul>
-      </div>
-      
-      <div class="service-column">
-        <h3>For BRICS+ Brands</h3>
-        <ul class="service-list">
-          <li><strong>International Visibility</strong>: Exposure to qualified global partners</li>
-          <li><strong>Narrative Development</strong>: Refining brand stories for cross-border impact</li>
-          <li><strong>Readiness Assessment</strong>: Evaluation of export and partnership preparedness</li>
-          <li><strong>Connection Opportunities</strong>: Access to interested international partners</li>
-        </ul>
-      </div>
-    </div>
+<div class="services-split">
+  <div class="services-column">
+    <h3>For International Partners</h3>
+    <ul class="service-list">
+      <li><strong>Brand Discovery Database</strong>: Searchable collection of curated brand profiles</li>
+      <li><strong>Custom Research</strong>: Tailored investigations into specific sectors or regions</li>
+      <li><strong>Market Entry Guidance</strong>: Strategic support for navigating BRICS+ markets</li>
+      <li><strong>Connection Facilitation</strong>: Introductions to vetted brand partners</li>
+    </ul>
+  </div>
+  
+  <div class="services-column">
+    <h3>For BRICS+ Brands</h3>
+    <ul class="service-list">
+      <li><strong>International Visibility</strong>: Exposure to qualified global partners</li>
+      <li><strong>Narrative Development</strong>: Refining brand stories for cross-border impact</li>
+      <li><strong>Readiness Assessment</strong>: Evaluation of export and partnership preparedness</li>
+      <li><strong>Connection Opportunities</strong>: Access to interested international partners</li>
+    </ul>
   </div>
 </div>
 

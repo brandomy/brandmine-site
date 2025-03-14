@@ -1,0 +1,483 @@
+/* ==========================================================================
+   Full-Width Panel System
+   ==========================================================================
+   Creates edge-to-edge content sections with consistent internal spacing.
+   Used throughout the site for flexible, responsive layouts.
+*/
+
+/* --------------------------------------------------------------------------
+   1. BASE PANEL STRUCTURE
+   -------------------------------------------------------------------------- */
+
+/* Base panel container - creates the full-width effect */
+.full-width-panel {
+  width: 100vw;          /* Use viewport width to ensure true full width */
+  padding: 4rem 0;       /* Vertical padding only */
+  margin: 0;
+  position: relative;
+  left: 50%;             /* Center with a left offset */
+  right: 50%;            /* Center with a right offset */
+  margin-left: -50vw;    /* Negative margin to extend fully */
+  margin-right: -50vw;   /* Negative margin to extend fully */
+  overflow: hidden;      /* Prevent horizontal scroll */
+  box-sizing: border-box;
+}
+
+/* Content container inside panels - controls width and centering */
+.panel-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;        /* Center the content */
+  padding: 0 2rem;       /* Consistent horizontal padding */
+  box-sizing: border-box;
+}
+
+/* Centered content alignment */
+.centered {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   2. PANEL VARIANTS
+   -------------------------------------------------------------------------- */
+
+/* Hero panel with gradient background */
+.hero-panel {
+  background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
+  color: white;
+  padding: 6rem 2rem;
+}
+
+/* Light panel with white background */
+.light-panel {
+  background-color: white;
+  color: var(--neutral-700);
+}
+
+/* Pattern panel for the "Problem" sections */
+.problem-panel {
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Pattern panel for the "Solution" sections */
+.solution-panel {
+  background-color: var(--primary-50);
+  color: var(--neutral-700);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338b2ac' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Pattern panel for the "Perspective" sections */
+.perspective-panel {
+  background-color: var(--accent-50);
+  color: var(--neutral-700);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Call-to-action panel with gradient background */
+.cta-panel {
+  background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%);
+  color: white;
+  padding: 5rem 2rem;
+}
+
+/* Special panel for sections with a lot of text */
+.text-panel .panel-content {
+  max-width: 800px;      /* Narrower content area for text-focused sections */
+}
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY WITHIN PANELS
+   -------------------------------------------------------------------------- */
+
+/* Panel headings spacing and styles */
+.full-width-panel h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.full-width-panel h2 {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;          /* Remove top margin for panel headings */
+  text-align: center;
+  color: inherit;
+}
+
+/* Ensure content inside panels has proper spacing */
+.panel-content > h2:first-child,
+.panel-content > div > h2:first-child {
+  margin-top: 0;         /* Remove top margin for first heading in panel content */
+}
+
+/* Ensure that text headings don't have excessive space */
+.full-width-panel .lead-text + h2 {
+  margin-top: 1.5rem;    /* Reduce space when heading follows lead text */
+}
+
+/* Hero subtitle styles */
+.hero-subtitle {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Lead text styles */
+.lead-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel-content .lead-text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Conclusion text styles */
+.conclusion-text {
+  font-size: 1.125rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+
+/* Ensure proper spacing between text elements */
+.panel-content p {
+  margin-bottom: 1.5rem;  /* Consistent paragraph spacing */
+}
+
+.panel-content p:last-child {
+  margin-bottom: 0;       /* Remove bottom margin from last paragraph */
+}
+
+/* Ensure proper content centering on all panels */
+.full-width-panel .panel-content > p,
+.full-width-panel .content-card > p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Text headings in text-focused panels */
+.text-panel h1, 
+.text-panel h2, 
+.text-panel h3 {
+  text-align: center;
+  max-width: none;       /* Allow headings to span the full width */
+}
+
+/* --------------------------------------------------------------------------
+   4. COMPONENT STYLES
+   -------------------------------------------------------------------------- */
+
+/* === Feature Grid System === */
+/* 
+ * The feature grid creates a 3-column layout on desktop with vertically arranged
+ * feature items (icon on top, text below). On mobile screens (<990px), it switches
+ * to a single column with horizontally arranged items (icon on left, text on right).
+ */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  gap: 2rem;
+  margin: 2rem 0;
+  margin-top: 2.5rem;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column; /* Vertical arrangement on desktop */
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;     /* Prevent excessive stretching */
+}
+
+.feature-icon {
+  background-color: white;
+  color: var(--secondary-700);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+.feature-icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.feature-item h3 {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-800);
+}
+
+.feature-item p {
+  color: var(--secondary-700);
+  font-size: 0.95rem;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Problem panel specific styling for feature items */
+.problem-panel .feature-icon {
+  background-color: white;
+  color: var(--secondary-700);
+}
+
+.problem-panel h2 {
+  color: var(--secondary-800);
+}
+
+/* === Solution List System === */
+.solutions-list {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solution-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  background-color: var(--primary-50);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--primary-400);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;     /* Prevent excessive stretching */
+}
+
+.solution-number {
+  background-color: var(--primary-400);
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.solution-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--primary-800);
+}
+
+.solution-content p {
+  margin: 0;
+  color: var(--primary-700);
+}
+
+.solution-panel h2 {
+  color: var(--primary-800);
+}
+
+/* === Content Cards === */
+.content-card {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* === Panel with Image Layout === */
+.panel-with-image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.panel-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* === CTA Buttons === */
+/* Restore button spacing */
+.cta-panel .btn-primary,
+.cta-panel .cta-button {
+  margin-bottom: 2rem;    /* Add spacing below the button */
+}
+
+/* Make sure there's proper spacing in the CTA section */
+.cta-panel .panel-content {
+  padding-bottom: 2rem;   /* Add padding to the bottom of the content */
+}
+
+/* --------------------------------------------------------------------------
+   5. PAGE-SPECIFIC STYLES
+   -------------------------------------------------------------------------- */
+
+/* === About Page Specific Styles === */
+/* 
+ * These styles apply specifically to pages with the "about-page" class,
+ * which is automatically added to the body via conditional in default.html
+ * when the URL contains "/about/".
+ */
+.about-page .panel-content p,
+.about-page .content-card p {
+  max-width: 42em;       /* Control line length for readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Target specific sections on the About page */
+.about-page .problem-panel .feature-item,
+.about-page .solution-panel .solution-item {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* === Large Desktop to Tablet (992px - 1200px) === */
+/* 
+ * These styles target mid-sized screens like smaller desktop displays and larger tablets.
+ * At this breakpoint, we start to condense layouts slightly while maintaining the desktop experience.
+ */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .panel-content {
+    max-width: 90%;       /* Use percentage width for mid-sized screens */
+    padding: 0 3rem;      /* Increased horizontal padding */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Ensure text content doesn't stretch too wide */
+  .panel-content p {
+    max-width: 42em;     /* Control line length for readability */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .feature-grid {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* === Medium Devices (768px - 992px) === */
+/* 
+ * At this breakpoint, we begin more significant layout adjustments.
+ * Two-column layouts convert to a single column and font sizes are reduced.
+ */
+@media (max-width: 992px) {
+  .panel-with-image {
+    grid-template-columns: 1fr;  /* Stack image and content vertically */
+  }
+  
+  .full-width-panel h1 {
+    font-size: 2.5rem;           /* Reduce heading size */
+  }
+  
+  .full-width-panel h2 {
+    font-size: 2rem;             /* Reduce subheading size */
+  }
+}
+
+/* === Small Devices (up to 768px) === */
+/* 
+ * These styles create our mobile experience.
+ * Padding is reduced, layouts are simplified, and text is optimized for smaller screens.
+ */
+@media (max-width: 768px) {
+  .full-width-panel {
+    padding: 3rem 1.5rem;        /* Reduce vertical padding */
+  }
+
+  .hero-panel {
+    padding: 4rem 1.5rem;        /* Adjust hero section padding */
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;          /* Smaller subtitle text */
+  }
+  
+  .full-width-panel h2 {
+    font-size: 1.75rem;          /* Further reduce heading size */
+  }
+}
+
+/* === Mobile Feature Grid Layout (up to 990px) === */
+/* 
+ * These styles handle the transition from the 3-column desktop layout
+ * to the single-column mobile layout for the feature grid.
+ */
+@media (max-width: 990px) {
+  .feature-grid {
+    grid-template-columns: 1fr;  /* Single column on mobile */
+  }
+  
+  .feature-item {
+    flex-direction: row;         /* Horizontal on mobile */
+    text-align: left;
+    align-items: flex-start;
+  }
+  
+  .feature-icon {
+    margin: 0 1rem 0 0;          /* Move icon to the left side */
+  }
+  
+  .feature-item h3,
+  .feature-item p {
+    text-align: left;            /* Left-align text on mobile */
+  }
+}
+
+/* === Extra Small Devices (up to 480px) === */
+/* 
+ * Final adjustments for very small mobile screens.
+ * Further reduce sizes and padding to maximize content space.
+ */
+@media (max-width: 480px) {
+  .panel-content {
+    padding: 0 1rem;             /* Minimal horizontal padding */
+  }
+  
+  .full-width-panel h1 {
+    font-size: 2rem;             /* Smallest heading size */
+  }
+  
+  .full-width-panel h2 {
+    font-size: 1.5rem;           /* Smallest subheading size */
+  }
+  
+  .lead-text {
+    font-size: 1rem;             /* Reduce lead text size */
+  }
+}

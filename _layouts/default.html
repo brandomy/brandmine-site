@@ -14,15 +14,33 @@
   <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
 
 
-  <!-- Load Style Sheets -->  
-<!-- In the head section, after main.css and typography.css -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/typography.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
-<!-- Other CSS files -->
+  <!-- Style Sheets -->  
+  <!-- Core styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/typography.css' | relative_url }}">
+
+  <!-- Component styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/navigation.css' | relative_url }}">
+  <!-- Other component styles -->
+
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}">
+  <!-- Other layout styles -->
+
+  <!-- Conditionally load Page-specific styles -->
   {% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}
-  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/pages/home.css' | relative_url }}">
   {% endif %}
+
+  {% if page.permalink contains '/about/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/about.css' | relative_url }}">
+  {% endif %}
+  {% if page.permalink contains '/brands/' %}
+  <link rel="stylesheet" href="{{ '/assets/css/pages/brands.css' | relative_url }}">
+{% endif %}
+
+ <!-- end of Style Sheets -->  
  
   <!-- Font preloading for performance -->
   <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
@@ -50,7 +68,7 @@
   <!-- Google Analytics -->
   {% include google-analytics.html %}
 </head>
-<body class="{% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}home-page{% endif %}">
+<body class="{% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}home-page{% elsif page.permalink contains '/about/' %}about-page{% endif %}">
   {% include header.html %}
   <main class="page-content">
     <div class="wrapper">

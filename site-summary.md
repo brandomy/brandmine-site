@@ -1,10 +1,10 @@
 # Brandmine Site Summary
-Generated on Fri 14 Mar 2025 05:26:50 +08
+Generated on Fri 14 Mar 2025 07:58:50 +08
 
 ## Repository Status
-Current branch: main
-Last commit: delete test page
-Modified files:        2
+Current branch: css-reorganization
+Last commit: Extract button styles to components/buttons.css
+Modified files:        9
 
 ## Site Structure
 ### Directories
@@ -21,10 +21,11 @@ Modified files:        2
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/css/ (       5 files)
-  - home.css
+- assets/css/ (       6 files)
+  - components
+  - layout
   - main.css
-  - site-summary.md
+  - pages
   - tally-styles.css
   - typography.css
 - assets/fonts/ (      22 files)
@@ -86,9 +87,10 @@ defaults:
 
 ## CSS Files
 ```
-- home.css
+- components
+- layout
 - main.css
-- site-summary.md
+- pages
 - tally-styles.css
 - typography.css
 ```
