@@ -327,3 +327,28 @@
       padding-left: 1.5rem;
     }
   }
+
+
+  /* Fix for service list bullets in About page */
+.about-page .service-list {
+  list-style: none;       /* Remove default bullets */
+  padding-left: 0;        /* Remove default padding */
+  margin: 1.5rem 0;
+}
+
+.about-page .service-list li {
+  position: relative;
+  padding-left: 1.5rem;   /* Add space for custom bullet */
+  margin-bottom: 1rem;
+  list-style-type: none;  /* Explicitly remove bullets again for higher specificity */
+}
+
+.about-page .service-list li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0.25em;           /* Adjust vertical position to align with text */
+  color: var(--primary-400);
+  font-size: 1.5rem;
+  line-height: 1;
+}
