@@ -156,6 +156,12 @@ ref: about
           <li>Direct experience connecting brands with international partners and capital across cultural and linguistic divides</li>
         </ul>
         <p>This blend of operational leadership, brand-building expertise, and cross-cultural fluency gives Randal an exceptional ability to identify promising brands and understand their international potential.</p>
+        <!-- New LinkedIn Button -->
+        <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/randaleastman/" target="_blank" aria-label="Randal Eastman on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
       
       <div class="team-member">
@@ -171,6 +177,11 @@ ref: about
           <li>Deep understanding of the people and relationships that drive successful brand growth</li>
         </ul>
         <p>Olya's unique ability to identify key talent and forge strategic partnerships is instrumental in connecting BRICS+ brands with the right international partners.</p>
+        <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/olya-eastman/" target="_blank" aria-label="Olya Eastman on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -241,15 +252,13 @@ ref: about
       </div>
     </div>
     
-    <!-- Contact Form Container -->
-    <div class="contact-form-container">
-      <!-- Link to external Tally styles -->
-      <link rel="stylesheet" href="{{ '/assets/css/tally-styles.css' | relative_url }}">
-      
-      <!-- Tally form with proper parameters -->
-      <iframe data-tally-src="https://tally.so/embed/3qvVaY?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
-
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+   <!-- Contact Form Container with additional wrapper -->
+    <div class="mobile-form-wrapper">
+      <div class="contact-form-container">
+        <iframe data-tally-src="https://tally.so/embed/3qvVaY?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
+        
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+      </div>
     </div>
   </div>
 </div>

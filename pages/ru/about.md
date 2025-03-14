@@ -155,6 +155,12 @@ ref: about
           <li>Прямой опыт соединения брендов с международными партнерами и капиталом через культурные и языковые барьеры</li>
         </ul>
         <p>Это сочетание операционного лидерства, опыта создания брендов и межкультурной компетенции дает Рэндалу исключительную способность идентифицировать перспективные бренды и понимать их международный потенциал.</p>
+        <!-- New LinkedIn Button -->
+        <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/randaleastman/" target="_blank" aria-label="Рэндал Истман в LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
       
       <div class="team-member">
@@ -170,6 +176,11 @@ ref: about
           <li>Глубокое понимание людей и отношений, которые способствуют успешному росту брендов</li>
         </ul>
         <p>Уникальная способность Ольги выявлять ключевые таланты и формировать стратегические партнерства играет важную роль в соединении брендов БРИКС+ с правильными международными партнерами.</p>
+         <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/olya-eastman/" target="_blank" aria-label="Оля Истман в LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>  
       </div>
     </div>
   </div>
@@ -249,9 +260,6 @@ ref: about
     
     <!-- Contact Form Container -->
     <div class="contact-form-container">
-
-      <!-- Link to external Tally styles -->
-      <link rel="stylesheet" href="{{ '/assets/css/tally-styles.css' | relative_url }}">
       
       <!-- Tally form with proper parameters - RUSSIAN VERSION -->
       <iframe data-tally-src="https://tally.so/embed/wov08x?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Контактная форма"></iframe>

@@ -156,9 +156,8 @@
   margin-bottom: 0;       /* Remove bottom margin from last paragraph */
 }
 
-/* Ensure proper content centering on all panels */
-.full-width-panel .panel-content > p,
-.full-width-panel .content-card > p {
+/* Ensure proper content centering in panels */
+.full-width-panel .panel-content > p {
   margin-left: auto;
   margin-right: auto;
 }
@@ -172,171 +171,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. COMPONENT STYLES
-   -------------------------------------------------------------------------- */
-
-/* === Feature Grid System === */
-/* 
- * The feature grid creates a 3-column layout on desktop with vertically arranged
- * feature items (icon on top, text below). On mobile screens (<990px), it switches
- * to a single column with horizontally arranged items (icon on left, text on right).
- */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
-  gap: 2rem;
-  margin: 2rem 0;
-  margin-top: 2.5rem;
-}
-
-.feature-item {
-  display: flex;
-  flex-direction: column; /* Vertical arrangement on desktop */
-  text-align: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 800px;     /* Prevent excessive stretching */
-}
-
-.feature-icon {
-  background-color: white;
-  color: var(--secondary-700);
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  transition: transform 0.3s ease;
-}
-
-.feature-item:hover .feature-icon {
-  transform: scale(1.1);
-}
-
-.feature-icon svg {
-  width: 2rem;
-  height: 2rem;
-}
-
-.feature-item h3 {
-  margin-top: 0.5rem;
-  text-align: center;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: var(--secondary-800);
-}
-
-.feature-item p {
-  color: var(--secondary-700);
-  font-size: 0.95rem;
-  width: 100%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Problem panel specific styling for feature items */
-.problem-panel .feature-icon {
-  background-color: white;
-  color: var(--secondary-700);
-}
-
-.problem-panel h2 {
-  color: var(--secondary-800);
-}
-
-/* === Solution List System === */
-.solutions-list {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.solution-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  background-color: var(--primary-50);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border-left: 4px solid var(--primary-400);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 800px;     /* Prevent excessive stretching */
-}
-
-.solution-number {
-  background-color: var(--primary-400);
-  color: white;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.25rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
-}
-
-.solution-content h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-  color: var(--primary-800);
-}
-
-.solution-content p {
-  margin: 0;
-  color: var(--primary-700);
-}
-
-.solution-panel h2 {
-  color: var(--primary-800);
-}
-
-/* === Content Cards === */
-.content-card {
-  background-color: transparent;
-  box-shadow: none;
-  padding: 0;
-  border-radius: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* === Panel with Image Layout === */
-.panel-with-image {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.panel-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-/* === CTA Buttons === */
-/* Restore button spacing */
-.cta-panel .btn-primary,
-.cta-panel .cta-button {
-  margin-bottom: 2rem;    /* Add spacing below the button */
-}
-
-/* Make sure there's proper spacing in the CTA section */
-.cta-panel .panel-content {
-  padding-bottom: 2rem;   /* Add padding to the bottom of the content */
-}
-
-/* --------------------------------------------------------------------------
-   5. PAGE-SPECIFIC STYLES
+   4. PAGE-SPECIFIC STYLES
    -------------------------------------------------------------------------- */
 
 /* === About Page Specific Styles === */
@@ -361,14 +196,10 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. RESPONSIVE ADJUSTMENTS
+   5. RESPONSIVE ADJUSTMENTS
    -------------------------------------------------------------------------- */
 
 /* === Large Desktop to Tablet (992px - 1200px) === */
-/* 
- * These styles target mid-sized screens like smaller desktop displays and larger tablets.
- * At this breakpoint, we start to condense layouts slightly while maintaining the desktop experience.
- */
 @media (min-width: 768px) and (max-width: 1200px) {
   .panel-content {
     max-width: 90%;       /* Use percentage width for mid-sized screens */
@@ -392,15 +223,8 @@
 }
 
 /* === Medium Devices (768px - 992px) === */
-/* 
- * At this breakpoint, we begin more significant layout adjustments.
- * Two-column layouts convert to a single column and font sizes are reduced.
- */
 @media (max-width: 992px) {
-  .panel-with-image {
-    grid-template-columns: 1fr;  /* Stack image and content vertically */
-  }
-  
+
   .full-width-panel h1 {
     font-size: 2.5rem;           /* Reduce heading size */
   }
@@ -411,15 +235,15 @@
 }
 
 /* === Small Devices (up to 768px) === */
-/* 
- * These styles create our mobile experience.
- * Padding is reduced, layouts are simplified, and text is optimized for smaller screens.
- */
 @media (max-width: 768px) {
   .full-width-panel {
     padding: 3rem 1.5rem;        /* Reduce vertical padding */
   }
 
+  .full-width-panel h1 {
+    font-size: 2.5rem;
+  }
+  
   .hero-panel {
     padding: 4rem 1.5rem;        /* Adjust hero section padding */
   }
@@ -433,37 +257,7 @@
   }
 }
 
-/* === Mobile Feature Grid Layout (up to 990px) === */
-/* 
- * These styles handle the transition from the 3-column desktop layout
- * to the single-column mobile layout for the feature grid.
- */
-@media (max-width: 990px) {
-  .feature-grid {
-    grid-template-columns: 1fr;  /* Single column on mobile */
-  }
-  
-  .feature-item {
-    flex-direction: row;         /* Horizontal on mobile */
-    text-align: left;
-    align-items: flex-start;
-  }
-  
-  .feature-icon {
-    margin: 0 1rem 0 0;          /* Move icon to the left side */
-  }
-  
-  .feature-item h3,
-  .feature-item p {
-    text-align: left;            /* Left-align text on mobile */
-  }
-}
-
 /* === Extra Small Devices (up to 480px) === */
-/* 
- * Final adjustments for very small mobile screens.
- * Further reduce sizes and padding to maximize content space.
- */
 @media (max-width: 480px) {
   .panel-content {
     padding: 0 1rem;             /* Minimal horizontal padding */

@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Feature Components
+   ==========================================================================
+   Styles for feature grids, feature items, and icons used to display 
+   feature lists throughout the site.
+*/
+
+/* === Feature Grid System === */
+/* 
+ * The feature grid creates a 3-column layout on desktop with vertically arranged
+ * feature items (icon on top, text below). On mobile screens (<990px), it switches
+ * to a single column with horizontally arranged items (icon on left, text on right).
+ */
+ .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+    gap: 2rem;
+    margin: 2rem 0;
+    margin-top: 2.5rem;
+  }
+  
+  .feature-item {
+    display: flex;
+    flex-direction: column; /* Vertical arrangement on desktop */
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;     /* Prevent excessive stretching */
+  }
+  
+  .feature-icon {
+    background-color: white;
+    color: var(--secondary-700);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-item:hover .feature-icon {
+    transform: scale(1.1);
+  }
+  
+  .feature-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .feature-item h3 {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-800);
+  }
+  
+  .feature-item p {
+    color: var(--secondary-700);
+    font-size: 0.95rem;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Problem panel specific styling for feature items */
+  .problem-panel .feature-icon {
+    background-color: white;
+    color: var(--secondary-700);
+  }
+  
+  .problem-panel h2 {
+    color: var(--secondary-800);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 990px) {
+    .feature-grid {
+      grid-template-columns: 1fr;  /* Single column on mobile */
+    }
+    
+    /* inserted from panels.css */
+    .feature-grid {
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature-item {
+      flex-direction: row;         /* Horizontal on mobile */
+      text-align: left;
+      align-items: flex-start;
+    }
+    
+    .feature-icon {
+      margin: 0 1rem 0 0;          /* Move icon to the left side */
+    }
+    
+    .feature-item h3,
+    .feature-item p {
+      text-align: left;            /* Left-align text on mobile */
+    }
+  }

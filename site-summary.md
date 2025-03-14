@@ -1,10 +1,10 @@
 # Brandmine Site Summary
-Generated on Fri 14 Mar 2025 07:58:50 +08
+Generated on Fri 14 Mar 2025 13:24:16 +08
 
 ## Repository Status
 Current branch: css-reorganization
-Last commit: Extract button styles to components/buttons.css
-Modified files:        9
+Last commit: Implement CSS reorganization and fix About page styling issues.
+Modified files:       18
 
 ## Site Structure
 ### Directories
@@ -21,13 +21,14 @@ Modified files:        9
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/css/ (       6 files)
+- assets/css/ (       7 files)
   - components
   - layout
   - main.css
+  - main.css.old
   - pages
   - tally-styles.css
-  - typography.css
+  - tokens
 - assets/fonts/ (      22 files)
   - NotoSansSC-Bold.woff2
   - NotoSansSC-Medium.woff2
@@ -90,9 +91,10 @@ defaults:
 - components
 - layout
 - main.css
+- main.css.old
 - pages
 - tally-styles.css
-- typography.css
+- tokens
 ```
 
 ## Font Files

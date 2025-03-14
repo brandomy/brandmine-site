@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Layout Components
+   ==========================================================================
+   Reusable layout components and grid structures used across the site.
+*/
+
+/* --------------------------------------------------------------------------
+   1. PANEL WITH IMAGE LAYOUT
+   -------------------------------------------------------------------------- */
+
+/* Two-column grid for panels with images */
+.panel-with-image {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .panel-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .panel-with-image {
+      grid-template-columns: 1fr;  /* Stack image and content vertically */
+    }
+  }

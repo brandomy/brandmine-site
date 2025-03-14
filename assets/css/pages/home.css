@@ -39,7 +39,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(56, 178, 172, 0.3); /* Teal overlay with 30% opacity */
+    background: rgba(var(--secondary-400-rgb), 0.3); /* Teal overlay with 30% opacity */
     z-index: 1;
   }
   
@@ -140,24 +140,29 @@
     }
   }
   
+  /* Add these adjustments to your home.css file */
   @media (max-width: 480px) {
     .hero-image-panel {
       min-height: 50vh;
+      /* Add padding-top to push content lower */
+      padding-top: 3rem;
+      /* Adjust centering - use flex-start to move content down from center */
+      align-items: flex-start;
     }
     
-    .hero-image-panel h1 {
-      font-size: 1.75rem;
+    .hero-image-panel .panel-content {
+      /* Add top margin to push content down more */
+      margin-top: 15vh;
     }
     
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-    
-    .lead-text {
-      font-size: 1.1rem;
+    /* Adjust scroll indicator position on mobile */
+    .scroll-indicator {
+      bottom: 20px;
     }
   }
-  
+
+
+
 /* Restore button spacing */
 .cta-panel .btn-primary,
 .cta-panel .cta-button {

@@ -4,6 +4,17 @@
    Page-specific styles for the About page layout and components.
 */
 
+  /* Hero Panel Heading Style */
+  .hero-panel h1 {
+    color: var(--secondary-300);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    letter-spacing: -0.02em; /* Slightly tighter letter spacing for headings */
+    margin-bottom: 0.5rem; /* Adjust spacing if needed */
+  }
+
+
+
 /* --------------------------------------------------------------------------
    1. TEAM SECTION
    -------------------------------------------------------------------------- */
@@ -192,7 +203,8 @@
     margin: 2rem auto;
     width: 90%;
     height: 1px;
-    background-color: rgba(99, 102, 241, 0.2);
+    background-color: rgba(var(--accent-500-rgb), 0.2);
+    }
   }
   
   /* Ensure proper alignment on all screen sizes */
@@ -214,6 +226,13 @@
     .about-page .perspective-list li::before {
       left: 0.4rem;
     }
+  }
+
+  /* Add this to your about.css file */
+    .cta-panel .lead-text {
+    color: var(--secondary-300); /* Very light gray, almost white */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    font-weight: 500; /* Slightly bolder than normal */
   }
 
  /* --------------------------------------------------------------------------
