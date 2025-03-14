@@ -155,6 +155,12 @@ ref: about
           <li>Прямой опыт соединения брендов с международными партнерами и капиталом через культурные и языковые барьеры</li>
         </ul>
         <p>Это сочетание операционного лидерства, опыта создания брендов и межкультурной компетенции дает Рэндалу исключительную способность идентифицировать перспективные бренды и понимать их международный потенциал.</p>
+        <!-- New LinkedIn Button -->
+        <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/randaleastman/" target="_blank" aria-label="Рэндал Истман в LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
       
       <div class="team-member">
@@ -170,6 +176,11 @@ ref: about
           <li>Глубокое понимание людей и отношений, которые способствуют успешному росту брендов</li>
         </ul>
         <p>Уникальная способность Ольги выявлять ключевые таланты и формировать стратегические партнерства играет важную роль в соединении брендов БРИКС+ с правильными международными партнерами.</p>
+         <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/olya-eastman/" target="_blank" aria-label="Оля Истман в LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>  
       </div>
     </div>
   </div>
@@ -184,13 +195,13 @@ ref: about
         Имея более 25 лет жизни и работы в Азии, особенно в Китае и России, наши основатели привносят в Brandmine редкое сочетание языковых способностей, культурного понимания и бизнес-интуиции:
       </p>
       
-      <ul class="perspective-list">
-        <li><strong>Непосредственный опыт</strong> создания и масштабирования брендов на азиатских рынках</li>
-        <li><strong>Глубокое культурное понимание</strong>, выходящее за рамки языкового перевода</li>
-        <li><strong>Обширные сети</strong> как в странах БРИКС+, так и на международных рынках</li>
-        <li><strong>Практические знания</strong> в области навигации по сложным регуляторным средам</li>
-        <li><strong>Проверенный опыт</strong> соединения брендов с партнерами, необходимыми для роста</li>
-      </ul>
+    <ul class="perspective-list">
+      <li><span><strong>Непосредственный опыт</strong> создания и масштабирования брендов на азиатских рынках</span></li>
+      <li><span><strong>Глубокое культурное понимание</strong>, выходящее за рамки языкового перевода</span></li>
+      <li><span><strong>Обширные сети</strong> как в странах БРИКС+, так и на международных рынках</span></li>
+      <li><span><strong>Практические знания</strong> в области навигации по сложным регуляторным средам</span></li>
+      <li><span><strong>Проверенный опыт</strong> соединения брендов с партнерами, необходимыми для роста</span></li>
+    </ul>
       
       <p class="conclusion-text">
         Этот отличительный опыт позволяет нам видеть ценные возможности там, где другие видят только барьеры.
@@ -204,7 +215,7 @@ ref: about
   <div class="panel-content">
     <h2>Наши услуги</h2>
     
-    <div class="services-container">
+    <div class="services-split">
       <div class="service-column">
         <h3>Для международных партнеров</h3>
         <ul class="service-list">
@@ -249,9 +260,6 @@ ref: about
     
     <!-- Contact Form Container -->
     <div class="contact-form-container">
-
-      <!-- Link to external Tally styles -->
-      <link rel="stylesheet" href="{{ '/assets/css/tally-styles.css' | relative_url }}">
       
       <!-- Tally form with proper parameters - RUSSIAN VERSION -->
       <iframe data-tally-src="https://tally.so/embed/wov08x?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Контактная форма"></iframe>

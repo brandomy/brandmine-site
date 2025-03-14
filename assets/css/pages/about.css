@@ -1,0 +1,329 @@
+/* ==========================================================================
+   About Page Styles
+   ==========================================================================
+   Page-specific styles for the About page layout and components.
+*/
+
+  /* Hero Panel Heading Style */
+  .hero-panel h1 {
+    color: var(--secondary-300);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    letter-spacing: -0.02em; /* Slightly tighter letter spacing for headings */
+    margin-bottom: 0.5rem; /* Adjust spacing if needed */
+  }
+
+
+
+/* --------------------------------------------------------------------------
+   1. TEAM SECTION
+   -------------------------------------------------------------------------- */
+
+/* Team layout grid */
+.team-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  /* Individual team member cards */
+  .team-member {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  /* Team member photo */
+  .team-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 3px solid var(--primary-400);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Team member name and title */
+  .team-member h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--neutral-800);
+    text-align: center;
+  }
+  
+  .team-title {
+    color: var(--primary-600);
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Team member list items */
+  .team-member ul {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .team-member li {
+    margin-bottom: 0.5rem;
+  }
+  
+/* --------------------------------------------------------------------------
+   2. SERVICES SECTION
+   -------------------------------------------------------------------------- */
+
+  /* Two-column services layout */
+  .about-page .services-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem; /* Increased gap for better separation */
+    margin: 2.5rem 0;
+  }
+  
+  /* Service section styling */
+  .about-page .services-column {
+    padding-top: 1rem;
+    border-top: 3px solid var(--primary-400); /* Add border at top */
+  }
+  
+  .about-page .services-column h3 {
+    color: var(--primary-600);
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    font-size: 1.35rem;
+  }
+  
+  /* Service list styling */
+  .about-page .service-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+  }
+  
+  .about-page .service-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-page .service-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-400);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  
+  /* For International Partners/BRICS+ Brands headings */
+  .about-page h3.service-category {
+    color: var(--neutral-700);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--neutral-200);
+    padding-bottom: 0.5rem;
+  }
+  
+/* --------------------------------------------------------------------------
+   PERSPECTIVE SECTION - CORRECTED STYLING
+   -------------------------------------------------------------------------- */
+
+/* Perspective section styling */
+.about-page .perspective-panel {
+    background-color: var(--accent-50);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    padding: 3rem 0;
+  }
+  
+  /* Ensure the panel content has the same max-width and centering as other content */
+  .about-page .perspective-panel .panel-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Remove default margin/padding from list */
+  .about-page .perspective-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+  
+  /* Style each list item */
+  .about-page .perspective-list li {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 2rem; /* Space for the bullet */
+    margin-left: 0; /* Ensure alignment with text above */
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the bullet */
+  .about-page .perspective-list li::before {
+    content: "•";
+    color: var(--accent-900);
+    font-size: 1.5rem;
+    line-height: 1;
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Create background for the text */
+  .about-page .perspective-list li {
+    background-color: white;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem 0.75rem 2rem; /* Increase left padding for bullet */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Style emphasized text */
+  .about-page .perspective-list li strong {
+    color: var(--accent-900);
+    font-weight: 600;
+    margin-right: 0.25rem;
+  }
+  
+  /* Add a subtle divider */
+  .about-page .perspective-panel::after {
+    content: "";
+    display: block;
+    margin: 2rem auto;
+    width: 90%;
+    height: 1px;
+    background-color: rgba(var(--accent-500-rgb), 0.2);
+    }
+  }
+  
+  /* Ensure proper alignment on all screen sizes */
+  @media (min-width: 1200px) {
+    .about-page .perspective-list {
+      width: 100%;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* Maintain padding on smaller screens */
+  @media (max-width: 768px) {
+    .about-page .perspective-list li {
+      padding: 0.75rem 0.75rem 0.75rem 2rem;
+    }
+    
+    .about-page .perspective-list li::before {
+      left: 0.4rem;
+    }
+  }
+
+  /* Add this to your about.css file */
+    .cta-panel .lead-text {
+    color: var(--secondary-300); /* Very light gray, almost white */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    font-weight: 500; /* Slightly bolder than normal */
+  }
+
+ /* --------------------------------------------------------------------------
+     3.1. CONTACT SECTION STYLING
+     -------------------------------------------------------------------------- */
+  
+  /* Contact section styling */
+.cta-panel .contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .cta-panel .contact-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cta-panel .contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
+    color: white;
+  }
+  
+  /* Style the contact links */
+  .cta-panel a,
+  .cta-panel a:visited {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+  
+  .cta-panel a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+  
+  /* For smaller screens, stack the contact items */
+  @media (max-width: 768px) {
+    .cta-panel .contact-info {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  
+  /* --------------------------------------------------------------------------
+     4. GENERAL ABOUT PAGE STYLING
+     -------------------------------------------------------------------------- */
+  
+  /* Ensure proper panel backgrounds */
+  .about-page .services-panel {
+    background-color: white;
+  }
+  
+  /* Maximum width for content readability */
+  .about-page .panel-content p {
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* --------------------------------------------------------------------------
+     5. RESPONSIVE ADJUSTMENTS
+     -------------------------------------------------------------------------- */
+  
+  /* Tablet and smaller */
+  @media (max-width: 992px) {
+    /* Change to single column for services */
+    .about-page .services-split {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  
+  /* Mobile phones */
+  @media (max-width: 768px) {
+    /* Further spacing adjustments */
+    .about-page .services-column {
+      padding-top: 0.75rem;
+    }
+    
+    .about-page .service-list li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .about-page .perspective-list li {
+      padding-left: 1.5rem;
+    }
+  }

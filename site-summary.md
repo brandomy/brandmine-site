@@ -1,10 +1,10 @@
 # Brandmine Site Summary
-Generated on Fri 14 Mar 2025 05:26:50 +08
+Generated on Fri 14 Mar 2025 13:24:16 +08
 
 ## Repository Status
-Current branch: main
-Last commit: delete test page
-Modified files:        2
+Current branch: css-reorganization
+Last commit: Implement CSS reorganization and fix About page styling issues.
+Modified files:       18
 
 ## Site Structure
 ### Directories
@@ -21,12 +21,14 @@ Modified files:        2
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/css/ (       5 files)
-  - home.css
+- assets/css/ (       7 files)
+  - components
+  - layout
   - main.css
-  - site-summary.md
+  - main.css.old
+  - pages
   - tally-styles.css
-  - typography.css
+  - tokens
 - assets/fonts/ (      22 files)
   - NotoSansSC-Bold.woff2
   - NotoSansSC-Medium.woff2
@@ -86,11 +88,13 @@ defaults:
 
 ## CSS Files
 ```
-- home.css
+- components
+- layout
 - main.css
-- site-summary.md
+- main.css.old
+- pages
 - tally-styles.css
-- typography.css
+- tokens
 ```
 
 ## Font Files

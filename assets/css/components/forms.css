@@ -1,0 +1,341 @@
+/* ==========================================================================
+   Form Components
+   ==========================================================================
+   Styles for form elements, inputs, containers, and embedded forms.
+   This file handles styling for forms including:
+   1. Native form elements
+   2. Tally form embeds
+   3. MailerLite newsletter forms
+*/
+
+/* --------------------------------------------------------------------------
+   1. NATIVE FORM ELEMENTS
+   -------------------------------------------------------------------------- */
+
+/* Basic form inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--neutral-300);
+  border-radius: 0.25rem;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--neutral-700);
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-400);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--primary-400-rgb), 0.2);
+}
+
+/* Form labels */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--neutral-700);
+}
+
+/* Standard form container */
+.form-container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   TALLY FORM MOBILE FIX - AGGRESSIVE SOLUTION (REFINED)
+   -------------------------------------------------------------------------- */
+
+/* Base styling for the contact form container */
+.contact-form-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto !important;
+  background-color: var(--neutral-50);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Ensure the wrapper also has proper sizing */
+.mobile-form-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+/* Ensure the panel content respects our centering */
+.cta-panel .panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Style the iframe itself */
+.contact-form-container iframe {
+  border: none;
+  background-color: white;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* Force parent element to have full width */
+.cta-panel {
+  overflow: visible !important;
+}
+
+/* Fix for desktop screens - must appear BEFORE the media queries */
+@media (min-width: 768px) {
+  .contact-form-container {
+    width: 100% !important; /* Override the 92% for desktop */
+    max-width: 800px !important;
+  }
+}
+
+
+/* Override all Tally-generated specificity issues */
+@media (max-width: 767px) {
+  /* Force the contact form container to be narrower than its parent */
+  .contact-form-container {
+    width: 92% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    left: 0 !important;
+    position: relative !important;
+    transform: none !important;
+  }
+  
+  /* Ensure panel padding doesn't interfere */
+  .cta-panel .panel-content {
+    padding: 2rem 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Target the iframe directly with a fixed width and forced margins */
+  .contact-form-container iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+  }
+}
+
+/* Even more specific tweaks for very small screens */
+@media (max-width: 480px) {
+  .contact-form-container {
+    width: 85% !important; /* Even narrower on smallest screens */
+    padding: 1rem !important;
+  }
+
+  /* Double-force all parent elements to center */
+  body .cta-panel .panel-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
+
+/* For extremely small screens */
+@media (max-width: 360px) {
+  .contact-form-container {
+    width: 82% !important;
+    padding: 0.75rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. MAILERLITE NEWSLETTER FORMS
+   -------------------------------------------------------------------------- */
+
+.newsletter-container {
+  margin: 0.5rem 0;
+}
+
+.ml-embedded {
+  width: 100%;
+}
+
+.ml-embedded .ml-form-embedWrapper {
+  background-color: var(--primary-600);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.ml-embedded .ml-form-embedBody {
+  padding: 0;
+}
+
+.ml-embedded .ml-form-fieldRow input {
+  background-color: white;
+  border: 1px solid var(--primary-400);
+  border-radius: 0.25rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  padding: 0.5rem;
+  color: var(--neutral-700);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ml-embedded .ml-form-fieldRow input:focus {
+  border-color: var(--primary-300);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--primary-400-rgb), 0.2);
+}
+
+.ml-embedded .ml-form-horizontalRow button {
+  background-color: var(--primary-400);
+  border: 1px solid var(--primary-400);
+  border-radius: 0.25rem;
+  color: white;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.ml-embedded .ml-form-horizontalRow button:hover {
+  background-color: var(--primary-300);
+  border-color: var(--primary-300);
+}
+
+.ml-embedded .ml-form-successBody {
+  background-color: var(--primary-600);
+  color: var(--neutral-100);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.ml-embedded .ml-form-successBody p {
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* Tablet devices */
+@media (max-width: 992px) {
+  /* Adjust padding for tablets */
+  .tally-form-container {
+    padding: 20px;
+  }
+}
+
+/* Small devices (phones) */
+@media (max-width: 767px) {
+  /* Tally form container fixes */
+  .contact-form-container,
+  .tally-form-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 15px !important;
+    position: relative;
+    left: 0 !important;
+    border-radius: 0; /* Remove border radius on mobile */
+  }
+  
+  /* Fix embeds on small screens */
+  .contact-form-container iframe,
+  .tally-form-container iframe,
+  iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+    left: 0 !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 640px) {
+  /* MailerLite form adjustments */
+  .ml-embedded .ml-form-embedWrapper {
+    padding: 0.5rem;
+  }
+  
+  .ml-embedded .ml-form-horizontalRow button {
+    margin-top: 0.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. PANEL & FOOTER CONNECTION FIXES
+   -------------------------------------------------------------------------- */
+
+/* Fix form spacing in CTA panels */
+.cta-panel .btn-primary,
+.cta-panel .cta-button {
+  margin-bottom: 2rem;    /* Add spacing below the button */
+}
+
+/* Make sure there's proper spacing in the CTA section */
+.cta-panel .panel-content {
+  padding-bottom: 2rem;   /* Add padding to the bottom of the content */
+}
+
+/* CTA Panel mobile adjustments */
+@media (max-width: 768px) {
+  .cta-panel {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Remove extra margin from the panel content */
+  .cta-panel .panel-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Footer spacing fixes to connect forms to footer */
+.full-width-panel.cta-panel {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Fix for the white horizontal bar on large screens */
+main.page-content {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Target that specific white space between sections */
+.page-content > .wrapper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}

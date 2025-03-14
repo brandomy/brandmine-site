@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Navigation Components
+   ==========================================================================
+   Contains styles for the site header, main navigation menu, language
+   selector, and footer. These elements appear on every page of the site.
+*/
+
+/* --------------------------------------------------------------------------
+   1. SITE HEADER
+   -------------------------------------------------------------------------- */
+
+   .site-header {
+    background-color: var(--primary-400);
+    color: white;
+    padding: 1rem 0;
+  }
+  
+  .site-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-right: 1.25rem;
+    flex: 0 0 auto; /* Don't grow, don't shrink, auto basis */
+  }
+  
+  /* --------------------------------------------------------------------------
+     2. MAIN NAVIGATION
+     -------------------------------------------------------------------------- */
+  
+  .site-nav {
+    display: flex;
+    flex: 1 0 auto; /* Grow, don't shrink, auto basis */
+  }
+  
+  .site-nav a {
+    color: white;
+    margin-right: 1rem;
+    text-decoration: none;
+  }
+  
+  .site-nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* --------------------------------------------------------------------------
+     3. LANGUAGE SELECTOR
+     -------------------------------------------------------------------------- */
+  
+  .language-selector {
+    display: flex;
+    margin-left: auto; /* This pushes it to the right */
+    gap: 0.75rem;
+  }
+  
+  .language-selector a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+  
+  .language-selector a:hover {
+    opacity: 1;
+  }
+  
+  .language-selector a.active {
+    opacity: 1;
+    font-weight: bold;
+  }
+  
+  /* --------------------------------------------------------------------------
+     4. SITE FOOTER
+     -------------------------------------------------------------------------- */
+  
+  .site-footer {
+    background-color: var(--primary-700);
+    color: var(--neutral-200);
+    padding: 2rem 0 1rem;
+    margin-top: 3rem;
+  }
+  
+  .site-footer a {
+    color: var(--neutral-100);
+    text-decoration: none;
+  }
+  
+  .site-footer a:hover {
+    text-decoration: underline;
+    color: white;
+  }
+  
+  /* Footer Grid Layout */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Footer Sections */
+  .footer-section {
+    padding: 0 0.5rem;
+  }
+  
+  .footer-section-center {
+    text-align: center;
+  }
+  
+  .footer-section-right {
+    text-align: right;
+  }
+  
+  /* Footer Text Styles */
+  .footer-text {
+    font-size: 0.875rem; /* Smaller text as requested */
+    margin: 0.25rem 0;
+    line-height: 1.4;
+  }
+  
+  .footer-tagline {
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+    color: var(--neutral-100);
+  }
+  
+  /* Footer Copyright */
+  .footer-copyright {
+    text-align: center;
+    border-top: 1px solid var(--primary-600);
+    padding-top: 1rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--neutral-300);
+  }
+  
+  /* Social Media Icons */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary-600);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .social-icon:hover {
+    background-color: var(--primary-500);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .social-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Newsletter Form Customization */
+  .newsletter-container {
+    margin: 0.5rem 0;
+  }
+  
+  /* --------------------------------------------------------------------------
+     5. RESPONSIVE ADJUSTMENTS
+     -------------------------------------------------------------------------- */
+  
+  /* Tablet and smaller desktops */
+  @media (max-width: 992px) {
+    .footer-grid {
+      gap: 1.5rem;
+    }
+  }
+  
+  /* Mobile devices */
+  @media (max-width: 768px) {
+    .site-header .wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .site-title {
+      margin-bottom: 0.75rem;
+      margin-right: 0;
+    }
+    
+    .site-nav {
+      margin: 0.5rem 0;
+      justify-content: center;
+    }
+    
+    .language-selector {
+      margin: 0.75rem 0 0 0;
+    }
+    
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-section,
+    .footer-section-center,
+    .footer-section-right {
+      text-align: center;
+    }
+  }
+  
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    .site-nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .site-nav a {
+      margin: 0.25rem 0.5rem;
+    }
+  }
+
+  /* Ensure footer connects directly */
+@media (max-width: 767px) {
+  .site-footer {
+    margin-top: 0 !important;
+  }
+}
+
+.site-footer {
+  margin-top: 0 !important; /* Override the 3rem margin regardless of screen size */
+}

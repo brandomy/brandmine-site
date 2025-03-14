@@ -37,5 +37,23 @@ Brandmine предоставляет беспрецедентный доступ
 - Позиции на рынке
 
 <div class="cta-container">
-  <a href="https://yourbubbleapp.bubbleapps.io" class="btn-primary">Запустить интерактивную базу данных</a>
+  <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">Запустить интерактивную базу данных</button>
+  <div id="button-feedback" class="feedback-message" style="display: none; margin-top: 0.5rem; color: var(--primary-600);">
+    Скоро будет доступно! Мы работаем над этой функцией.
+  </div>
 </div>
+
+<script>
+  function trackButtonClick(button) {
+    console.log('Database button clicked - Russian version');
+    
+    // Show feedback message
+    const feedback = document.getElementById('button-feedback');
+    feedback.style.display = 'block';
+    
+    // Hide the message after a few seconds
+    setTimeout(() => {
+      feedback.style.display = 'none';
+    }, 10000);
+  }
+</script>

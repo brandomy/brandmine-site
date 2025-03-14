@@ -37,5 +37,23 @@ Use our advanced search and filtering tools to discover brands by:
 - Market position
 
 <div class="cta-container">
-  <a href="https://yourbubbleapp.bubbleapps.io" class="btn-primary">Launch Interactive Database</a>
+  <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">Launch Interactive Database</button>
+  <div id="button-feedback" class="feedback-message" style="display: none; margin-top: 0.5rem; color: var(--primary-600);">
+    Coming soon! We're working on this feature.
+  </div>
 </div>
+
+<script>
+  function trackButtonClick(button) {
+    console.log('Database button clicked');
+    
+    // Show feedback message
+    const feedback = document.getElementById('button-feedback');
+    feedback.style.display = 'block';
+    
+    // Optional: Hide the message after a few seconds
+    setTimeout(() => {
+      feedback.style.display = 'none';
+    }, 10000);
+  }
+</script>

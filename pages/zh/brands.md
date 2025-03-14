@@ -37,5 +37,23 @@ Brandmine为您提供前所未有的机会，接触那些在金砖国家+市场�
 - 市场定位
 
 <div class="cta-container">
-  <a href="https://yourbubbleapp.bubbleapps.io" class="btn-primary">启动交互式数据库</a>
+  <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">启动交互式数据库</button>
+  <div id="button-feedback" class="feedback-message" style="display: none; margin-top: 0.5rem; color: var(--primary-600);">
+    即将推出！我们正在开发此功能。
+  </div>
 </div>
+
+<script>
+  function trackButtonClick(button) {
+    console.log('Database button clicked - Chinese version');
+    
+    // Show feedback message
+    const feedback = document.getElementById('button-feedback');
+    feedback.style.display = 'block';
+    
+    // Hide the message after a few seconds
+    setTimeout(() => {
+      feedback.style.display = 'none';
+    }, 10000);
+  }
+</script>

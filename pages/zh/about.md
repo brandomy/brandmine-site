@@ -143,8 +143,8 @@ ref: about
     
     <div class="team-section">
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/randal-eastman.png" alt="兰道尔·伊斯特曼" class="team-photo">
-        <h3>兰道尔·伊斯特曼</h3>
+        <img src="{{ site.baseurl }}/assets/images/team/randal-eastman.png" alt="伊仁德" class="team-photo">
+        <h3>伊仁德</h3>
         <p class="team-title">创始人兼首席执行官</p>
         <p>兰道尔拥有超过25年的亚洲和欧洲国际商业经验，并在品牌开发和市场进入战略方面拥有深厚专业知识。他的独特背景包括：</p>
         <ul>
@@ -155,11 +155,17 @@ ref: about
           <li>通过文化和语言障碍将品牌与国际合作伙伴和资本直接联系的经验</li>
         </ul>
         <p>这种运营领导力、品牌建设专业知识和跨文化流利能力的结合，使兰道尔具有识别有前途品牌并了解其国际潜力的非凡能力。</p>
+        <!-- New LinkedIn Button -->
+        <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/randaleastman/" target="_blank" aria-label="领英上的伊仁德">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
       
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/olya-eastman.png" alt="奥利亚·伊斯特曼" class="team-photo">
-        <h3>奥利亚·伊斯特曼</h3>
+        <img src="{{ site.baseurl }}/assets/images/team/olya-eastman.png" alt="欧丽雅" class="team-photo">
+        <h3>欧丽雅</h3>
         <p class="team-title">联合创始人兼人员和合作伙伴关系总监</p>
         <p>奥利亚拥有超过25年的高管搜索经验，专门擅长跨境人才和机会连接：</p>
         <ul>
@@ -170,6 +176,11 @@ ref: about
           <li>深入了解推动品牌成功增长的人员和关系</li>
         </ul>
         <p>奥利亚识别关键人才和建立战略合作伙伴关系的独特能力，对于将金砖国家+品牌与合适的国际合作伙伴联系起来至关重要。</p>
+         <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/olya-eastman/" target="_blank" aria-label="领英上的欧丽雅">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div> 
       </div>
     </div>
   </div>
@@ -184,13 +195,13 @@ ref: about
         凭借在亚洲——特别是在中国和俄罗斯——超过25年的生活和工作经验，我们的创始人为Brandmine带来了语言能力、文化洞察力和商业敏锐度的罕见组合：
       </p>
       
-      <ul class="perspective-list">
-        <li><strong>亲身经历</strong>在亚洲市场建立和扩展品牌</li>
-        <li><strong>深刻的文化理解</strong>，超越语言翻译</li>
-        <li><strong>广泛的网络</strong>，横跨金砖国家+和国际市场</li>
-        <li><strong>实用知识</strong>，在复杂监管环境中导航</li>
-        <li><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</li>
-      </ul>
+    <ul class="perspective-list">
+      <li><span><strong>亲身经历</strong>在亚洲市场建立和扩展品牌</span></li>
+      <li><span><strong>深刻的文化理解</strong>，超越语言翻译</span></li>
+      <li><span><strong>广泛的网络</strong>，横跨金砖国家+和国际市场</span></li>
+      <li><span><strong>实用知识</strong>，在复杂监管环境中导航</span></li>
+      <li><span><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</span></li>
+    </ul>
       
       <p class="conclusion-text">
         这种独特的背景使我们能够在别人只看到障碍的地方看到宝贵的机会。
@@ -204,7 +215,7 @@ ref: about
   <div class="panel-content">
     <h2>我们的服务</h2>
     
-    <div class="services-container">
+    <div class="services-split">
       <div class="service-column">
         <h3>为国际合作伙伴提供</h3>
         <ul class="service-list">
@@ -250,8 +261,6 @@ ref: about
     <!-- Contact Form Container -->
 
     <div class="contact-form-container">
-      <!-- Link to external Tally styles -->
-      <link rel="stylesheet" href="{{ '/assets/css/tally-styles.css' | relative_url }}">
       
       <!-- Tally form with proper parameters - CHINESE VERSION -->
       <iframe data-tally-src="https://tally.so/embed/nG5oOk?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="联系表单"></iframe>
