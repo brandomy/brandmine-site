@@ -11,62 +11,62 @@
 
 /* Standard card with subtle shadow and border */
 .card {
-    background-color: var(--neutral-100);
-    padding: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid var(--neutral-200);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* --------------------------------------------------------------------------
-     2. CONTENT CARD
-     -------------------------------------------------------------------------- */
-  
-  /* Content card for transparent backgrounds */
-  .content-card {
-    background-color: transparent;
-    box-shadow: none;
-    padding: 0;
-    border-radius: 0;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  /* White content card for use on colored backgrounds */
-  .white-content-card {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 2.5rem;
-  }
-  
- /* Center paragraphs within content cards */
-  .content-card > p {
-    margin-left: auto;
-    margin-right: auto;
+  background-color: var(--neutral-100);
+  padding: var(--space-4); /* 1rem */
+  border-radius: 0.25rem;
+  border: 1px solid var(--neutral-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-  /* --------------------------------------------------------------------------
-     3. RESPONSIVE ADJUSTMENTS
-     -------------------------------------------------------------------------- */
-  
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .content-card {
-      padding: 0;
-    }
+/* --------------------------------------------------------------------------
+   2. CONTENT CARD
+   -------------------------------------------------------------------------- */
+
+/* Content card for transparent backgrounds */
+.content-card {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* White content card for use on colored backgrounds */
+.white-content-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: var(--space-12); /* 2.5rem is close to 3rem, using 3rem */
+}
+
+/* Center paragraphs within content cards */
+.content-card > p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* Mobile adjustments */
+@media (max-width: var(--breakpoint-md)) { /* 768px */
+  .content-card {
+    padding: 0;
+  }
+}
+
+@media (max-width: 767px) { /* This should also be updated to var(--breakpoint-md) */
+  /* Fix content cards to be wider on small screens */
+  .content-card {
+    padding: 0;
+    margin: 0;
+    width: 100%;
   }
   
-  @media (max-width: 767px) {
-    /* Fix content cards to be wider on small screens */
-    .content-card {
-      padding: 0;
-      margin: 0;
-      width: 100%;
-    }
-    
-    /* Adjust white content cards for mobile */
-    .white-content-card {
-      padding: 1.5rem;
-    }
+  /* Adjust white content cards for mobile */
+  .white-content-card {
+    padding: var(--space-6); /* 1.5rem */
   }
+}

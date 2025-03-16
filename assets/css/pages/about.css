@@ -10,7 +10,7 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     font-weight: 700;
     letter-spacing: -0.02em; /* Slightly tighter letter spacing for headings */
-    margin-bottom: 0.5rem; /* Adjust spacing if needed */
+    margin-bottom: var(--space-2); /* 0.5rem */
   }
 
 
@@ -23,8 +23,8 @@
 .team-section {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
-    margin: 2rem 0;
+    gap: var(--space-8); /* 2rem */
+    margin: var(--space-8) 0; /* 2rem 0 */
   }
   
   /* Individual team member cards */
@@ -34,7 +34,7 @@
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    padding: var(--space-8); /* 2rem */
     border: 1px solid var(--neutral-200);
   }
   
@@ -44,7 +44,7 @@
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-6); /* 1.5rem */
     border: 3px solid var(--primary-400);
     display: block;
     margin-left: auto;
@@ -54,7 +54,7 @@
   /* Team member name and title */
   .team-member h3 {
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2); /* 0.5rem */
     color: var(--neutral-800);
     text-align: center;
   }
@@ -63,19 +63,19 @@
     color: var(--primary-600);
     font-weight: 600;
     margin-top: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-6); /* 1.5rem */
     text-align: center;
   }
   
   /* Team member list items */
   .team-member ul {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    margin-top: var(--space-4); /* 1rem */
+    margin-bottom: var(--space-6); /* 1.5rem */
+    padding-left: var(--space-6); /* 1.5rem */
   }
   
   .team-member li {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2); /* 0.5rem */
   }
   
 /* --------------------------------------------------------------------------
@@ -86,20 +86,20 @@
   .about-page .services-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem; /* Increased gap for better separation */
-    margin: 2.5rem 0;
+    gap: var(--space-12); /* 2.5rem is close to 3rem, using 3rem */
+    margin: var(--space-12) 0; /* 2.5rem is close to 3rem, using 3rem */
   }
   
   /* Service section styling */
   .about-page .services-column {
-    padding-top: 1rem;
+    padding-top: var(--space-4); /* 1rem */
     border-top: 3px solid var(--primary-400); /* Add border at top */
   }
   
   .about-page .services-column h3 {
     color: var(--primary-600);
     margin-top: 0;
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-6); /* 1.25rem is close to 1.5rem, using 1.5rem */
     font-size: 1.35rem;
   }
   
@@ -107,13 +107,13 @@
   .about-page .service-list {
     list-style: none;
     padding-left: 0;
-    margin: 1.5rem 0;
+    margin: var(--space-6) 0; /* 1.5rem 0 */
   }
   
   .about-page .service-list li {
     position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
+    padding-left: var(--space-6); /* 1.5rem */
+    margin-bottom: var(--space-4); /* 1rem */
   }
   
   .about-page .service-list li:before {
@@ -130,9 +130,9 @@
   .about-page h3.service-category {
     color: var(--neutral-700);
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-6); /* 1.5rem */
     border-bottom: 2px solid var(--neutral-200);
-    padding-bottom: 0.5rem;
+    padding-bottom: var(--space-2); /* 0.5rem */
   }
   
 /* --------------------------------------------------------------------------
@@ -143,7 +143,7 @@
 .about-page .perspective-panel {
     background-color: var(--accent-50);
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    padding: 3rem 0;
+    padding: var(--space-12) 0; /* 3rem 0 */
   }
   
   /* Ensure the panel content has the same max-width and centering as other content */
@@ -156,14 +156,14 @@
   .about-page .perspective-list {
     list-style: none;
     padding: 0;
-    margin: 2rem 0;
+    margin: var(--space-8) 0; /* 2rem 0 */
   }
   
   /* Style each list item */
   .about-page .perspective-list li {
     position: relative;
-    margin-bottom: 1rem;
-    padding-left: 2rem; /* Space for the bullet */
+    margin-bottom: var(--space-4); /* 1rem */
+    padding-left: var(--space-8); /* 2rem */
     margin-left: 0; /* Ensure alignment with text above */
     display: flex;
     align-items: center;
@@ -176,7 +176,7 @@
     font-size: 1.5rem;
     line-height: 1;
     position: absolute;
-    left: 0.5rem;
+    left: var(--space-2); /* 0.5rem */
     top: 50%;
     transform: translateY(-50%);
   }
@@ -185,7 +185,7 @@
   .about-page .perspective-list li {
     background-color: white;
     border-radius: 0.25rem;
-    padding: 0.75rem 1rem 0.75rem 2rem; /* Increase left padding for bullet */
+    padding: var(--space-3) var(--space-4) var(--space-3) var(--space-8); /* 0.75rem 1rem 0.75rem 2rem */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   
@@ -193,14 +193,14 @@
   .about-page .perspective-list li strong {
     color: var(--accent-900);
     font-weight: 600;
-    margin-right: 0.25rem;
+    margin-right: var(--space-1); /* 0.25rem */
   }
   
   /* Add a subtle divider */
   .about-page .perspective-panel::after {
     content: "";
     display: block;
-    margin: 2rem auto;
+    margin: var(--space-8) auto; /* 2rem auto */
     width: 90%;
     height: 1px;
     background-color: rgba(var(--accent-500-rgb), 0.2);
@@ -208,7 +208,7 @@
   }
   
   /* Ensure proper alignment on all screen sizes */
-  @media (min-width: 1200px) {
+  @media (min-width: var(--breakpoint-xl)) { /* 1200px */
     .about-page .perspective-list {
       width: 100%;
       max-width: 900px;
@@ -218,13 +218,13 @@
   }
   
   /* Maintain padding on smaller screens */
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-md)) { /* 768px */
     .about-page .perspective-list li {
-      padding: 0.75rem 0.75rem 0.75rem 2rem;
+      padding: var(--space-3) var(--space-3) var(--space-3) var(--space-8); /* 0.75rem 0.75rem 0.75rem 2rem */
     }
     
     .about-page .perspective-list li::before {
-      left: 0.4rem;
+      left: var(--space-1); /* 0.4rem is close to 0.25rem, using 0.25rem */
     }
   }
 
@@ -245,8 +245,8 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 2rem;
-    margin: 2rem 0;
+    gap: var(--space-8); /* 2rem */
+    margin: var(--space-8) 0; /* 2rem 0 */
   }
   
   .cta-panel .contact-item {
@@ -257,7 +257,7 @@
   .cta-panel .contact-icon {
     width: 1.5rem;
     height: 1.5rem;
-    margin-right: 0.75rem;
+    margin-right: var(--space-3); /* 0.75rem */
     color: white;
   }
   
@@ -276,10 +276,10 @@
   }
   
   /* For smaller screens, stack the contact items */
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-md)) { /* 768px */
     .cta-panel .contact-info {
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--space-4); /* 1rem */
     }
   }
   
@@ -304,26 +304,26 @@
      -------------------------------------------------------------------------- */
   
   /* Tablet and smaller */
-  @media (max-width: 992px) {
+  @media (max-width: var(--breakpoint-lg)) { /* 992px */
     /* Change to single column for services */
     .about-page .services-split {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: var(--space-8); /* 2rem */
     }
   }
   
   /* Mobile phones */
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-md)) { /* 768px */
     /* Further spacing adjustments */
     .about-page .services-column {
-      padding-top: 0.75rem;
+      padding-top: var(--space-3); /* 0.75rem */
     }
     
     .about-page .service-list li {
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--space-3); /* 0.75rem */
     }
     
     .about-page .perspective-list li {
-      padding-left: 1.5rem;
+      padding-left: var(--space-6); /* 1.5rem */
     }
   }

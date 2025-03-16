@@ -21,14 +21,14 @@ input[type="tel"],
 textarea,
 select {
   width: 100%;
-  padding: 0.5rem;
+  padding: var(--space-2); /* 0.5rem */
   border: 1px solid var(--neutral-300);
   border-radius: 0.25rem;
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--neutral-700);
   box-sizing: border-box;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4); /* 1rem */
 }
 
 input:focus,
@@ -42,7 +42,7 @@ select:focus {
 /* Form labels */
 label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2); /* 0.5rem */
   font-weight: 500;
   color: var(--neutral-700);
 }
@@ -50,7 +50,7 @@ label {
 /* Standard form container */
 .form-container {
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8); /* 2rem */
 }
 
 /* --------------------------------------------------------------------------
@@ -64,7 +64,7 @@ label {
   margin: 0 auto !important;
   background-color: var(--neutral-50);
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: var(--space-6); /* 1.5rem */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   position: relative;
   left: 0 !important;
@@ -105,7 +105,7 @@ label {
 }
 
 /* Fix for desktop screens - must appear BEFORE the media queries */
-@media (min-width: 768px) {
+@media (min-width: var(--breakpoint-md)) { /* 768px */
   .contact-form-container {
     width: 100% !important; /* Override the 92% for desktop */
     max-width: 800px !important;
@@ -114,7 +114,7 @@ label {
 
 
 /* Override all Tally-generated specificity issues */
-@media (max-width: 767px) {
+@media (max-width: var(--breakpoint-md)) { /* 767px is very close to 768px, using breakpoint-md */
   /* Force the contact form container to be narrower than its parent */
   .contact-form-container {
     width: 92% !important;
@@ -127,7 +127,7 @@ label {
   
   /* Ensure panel padding doesn't interfere */
   .cta-panel .panel-content {
-    padding: 2rem 0 !important;
+    padding: var(--space-8) 0 !important; /* 2rem 0 */
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -144,10 +144,10 @@ label {
 }
 
 /* Even more specific tweaks for very small screens */
-@media (max-width: 480px) {
+@media (max-width: var(--breakpoint-xs)) { /* 480px */
   .contact-form-container {
     width: 85% !important; /* Even narrower on smallest screens */
-    padding: 1rem !important;
+    padding: var(--space-4) !important; /* 1rem */
   }
 
   /* Double-force all parent elements to center */
@@ -161,10 +161,10 @@ label {
 }
 
 /* For extremely small screens */
-@media (max-width: 360px) {
+@media (max-width: 360px) { /* This hard-coded value should be updated if you add a --breakpoint-xxs */
   .contact-form-container {
     width: 82% !important;
-    padding: 0.75rem !important;
+    padding: var(--space-3) !important; /* 0.75rem */
   }
 }
 
@@ -173,7 +173,7 @@ label {
    -------------------------------------------------------------------------- */
 
 .newsletter-container {
-  margin: 0.5rem 0;
+  margin: var(--space-2) 0; /* 0.5rem 0 */
 }
 
 .ml-embedded {
@@ -183,7 +183,7 @@ label {
 .ml-embedded .ml-form-embedWrapper {
   background-color: var(--primary-600);
   border-radius: 0.25rem;
-  padding: 1rem;
+  padding: var(--space-4); /* 1rem */
   max-width: 100%;
   width: 100%;
 }
@@ -198,7 +198,7 @@ label {
   border-radius: 0.25rem;
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  padding: 0.5rem;
+  padding: var(--space-2); /* 0.5rem */
   color: var(--neutral-700);
   width: 100%;
   box-sizing: border-box;
@@ -218,10 +218,10 @@ label {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--font-semibold);
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4); /* 0.5rem 1rem */
   cursor: pointer;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: var(--space-2); /* 0.5rem */
 }
 
 .ml-embedded .ml-form-horizontalRow button:hover {
@@ -232,7 +232,7 @@ label {
 .ml-embedded .ml-form-successBody {
   background-color: var(--primary-600);
   color: var(--neutral-100);
-  padding: 1rem;
+  padding: var(--space-4); /* 1rem */
   border-radius: 0.25rem;
   text-align: center;
 }
@@ -247,22 +247,22 @@ label {
    -------------------------------------------------------------------------- */
 
 /* Tablet devices */
-@media (max-width: 992px) {
+@media (max-width: var(--breakpoint-lg)) { /* 992px */
   /* Adjust padding for tablets */
   .tally-form-container {
-    padding: 20px;
+    padding: 20px; /* This should be updated to var(--space-4) or var(--space-5) if available */
   }
 }
 
 /* Small devices (phones) */
-@media (max-width: 767px) {
+@media (max-width: var(--breakpoint-md)) { /* 767px is very close to 768px, using breakpoint-md */
   /* Tally form container fixes */
   .contact-form-container,
   .tally-form-container {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 15px !important;
+    padding: 15px !important; /* This should be updated to a spacing variable */
     position: relative;
     left: 0 !important;
     border-radius: 0; /* Remove border radius on mobile */
@@ -281,14 +281,14 @@ label {
 }
 
 /* Extra small devices */
-@media (max-width: 640px) {
+@media (max-width: 640px) { /* This should be updated to a breakpoint variable */
   /* MailerLite form adjustments */
   .ml-embedded .ml-form-embedWrapper {
-    padding: 0.5rem;
+    padding: var(--space-2); /* 0.5rem */
   }
   
   .ml-embedded .ml-form-horizontalRow button {
-    margin-top: 0.25rem;
+    margin-top: var(--space-1); /* 0.25rem */
   }
 }
 
@@ -299,16 +299,16 @@ label {
 /* Fix form spacing in CTA panels */
 .cta-panel .btn-primary,
 .cta-panel .cta-button {
-  margin-bottom: 2rem;    /* Add spacing below the button */
+  margin-bottom: var(--space-8);    /* 2rem - Add spacing below the button */
 }
 
 /* Make sure there's proper spacing in the CTA section */
 .cta-panel .panel-content {
-  padding-bottom: 2rem;   /* Add padding to the bottom of the content */
+  padding-bottom: var(--space-8);   /* 2rem - Add padding to the bottom of the content */
 }
 
 /* CTA Panel mobile adjustments */
-@media (max-width: 768px) {
+@media (max-width: var(--breakpoint-md)) { /* 768px */
   .cta-panel {
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;

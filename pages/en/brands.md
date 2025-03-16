@@ -38,7 +38,7 @@ Use our advanced search and filtering tools to discover brands by:
 
 <div class="cta-container">
   <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">Launch Interactive Database</button>
-  <div id="button-feedback" class="feedback-message" style="display: none; margin-top: 0.5rem; color: var(--primary-600);">
+  <div id="button-feedback" class="feedback-message" style="display: none; margin-top: var(--space-2); color: var(--primary-600);">
     Coming soon! We're working on this feature.
   </div>
 </div>

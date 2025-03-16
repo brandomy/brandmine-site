@@ -12,7 +12,7 @@
 /* Base panel container - creates the full-width effect */
 .full-width-panel {
   width: 100vw;          /* Use viewport width to ensure true full width */
-  padding: 4rem 0;       /* Vertical padding only */
+  padding: var(--space-16) 0;       /* 4rem 0 - Vertical padding only */
   margin: 0;
   position: relative;
   left: 50%;             /* Center with a left offset */
@@ -28,7 +28,7 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;        /* Center the content */
-  padding: 0 2rem;       /* Consistent horizontal padding */
+  padding: 0 var(--space-8);       /* 0 2rem - Consistent horizontal padding */
   box-sizing: border-box;
 }
 
@@ -45,7 +45,7 @@
 .hero-panel {
   background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
   color: white;
-  padding: 6rem 2rem;
+  padding: var(--space-20) var(--space-8);  /* 6rem 2rem */
 }
 
 /* Light panel with white background */
@@ -79,7 +79,7 @@
 .cta-panel {
   background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%);
   color: white;
-  padding: 5rem 2rem;
+  padding: var(--space-20) var(--space-8);  /* 5rem 2rem */
 }
 
 /* Special panel for sections with a lot of text */
@@ -94,13 +94,13 @@
 /* Panel headings spacing and styles */
 .full-width-panel h1 {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);  /* 1rem */
   line-height: 1.2;
 }
 
 .full-width-panel h2 {
   font-size: 2.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);  /* 1.5rem */
   margin-top: 0;          /* Remove top margin for panel headings */
   text-align: center;
   color: inherit;
@@ -114,7 +114,7 @@
 
 /* Ensure that text headings don't have excessive space */
 .full-width-panel .lead-text + h2 {
-  margin-top: 1.5rem;    /* Reduce space when heading follows lead text */
+  margin-top: var(--space-6);    /* 1.5rem - Reduce space when heading follows lead text */
 }
 
 /* Hero subtitle styles */
@@ -128,7 +128,7 @@
 .lead-text {
   font-size: 1.125rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);  /* 2rem */
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -136,20 +136,20 @@
 
 .panel-content .lead-text {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);  /* 2rem */
 }
 
 /* Conclusion text styles */
 .conclusion-text {
   font-size: 1.125rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  margin-top: var(--space-8);  /* 2rem */
+  padding-top: var(--space-6);  /* 1.5rem */
 }
 
 /* Ensure proper spacing between text elements */
 .panel-content p {
-  margin-bottom: 1.5rem;  /* Consistent paragraph spacing */
+  margin-bottom: var(--space-6);  /* 1.5rem - Consistent paragraph spacing */
 }
 
 .panel-content p:last-child {
@@ -200,10 +200,10 @@
    -------------------------------------------------------------------------- */
 
 /* === Large Desktop to Tablet (992px - 1200px) === */
-@media (min-width: 768px) and (max-width: 1200px) {
+@media (min-width: var(--breakpoint-md)) and (max-width: var(--breakpoint-xl)) {  /* 768px to 1200px */
   .panel-content {
     max-width: 90%;       /* Use percentage width for mid-sized screens */
-    padding: 0 3rem;      /* Increased horizontal padding */
+    padding: 0 var(--space-12);      /* 0 3rem - Increased horizontal padding */
     margin-left: auto;
     margin-right: auto;
   }
@@ -223,7 +223,7 @@
 }
 
 /* === Medium Devices (768px - 992px) === */
-@media (max-width: 992px) {
+@media (max-width: var(--breakpoint-lg)) {  /* 992px */
 
   .full-width-panel h1 {
     font-size: 2.5rem;           /* Reduce heading size */
@@ -235,9 +235,9 @@
 }
 
 /* === Small Devices (up to 768px) === */
-@media (max-width: 768px) {
+@media (max-width: var(--breakpoint-md)) {  /* 768px */
   .full-width-panel {
-    padding: 3rem 1.5rem;        /* Reduce vertical padding */
+    padding: var(--space-12) var(--space-6);        /* 3rem 1.5rem - Reduce vertical padding */
   }
 
   .full-width-panel h1 {
@@ -245,7 +245,7 @@
   }
   
   .hero-panel {
-    padding: 4rem 1.5rem;        /* Adjust hero section padding */
+    padding: var(--space-16) var(--space-6);        /* 4rem 1.5rem - Adjust hero section padding */
   }
 
   .hero-subtitle {
@@ -258,9 +258,9 @@
 }
 
 /* === Extra Small Devices (up to 480px) === */
-@media (max-width: 480px) {
+@media (max-width: var(--breakpoint-xs)) {  /* 480px */
   .panel-content {
-    padding: 0 1rem;             /* Minimal horizontal padding */
+    padding: 0 var(--space-4);             /* 0 1rem - Minimal horizontal padding */
   }
   
   .full-width-panel h1 {

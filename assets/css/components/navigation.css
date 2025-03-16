@@ -12,7 +12,7 @@
    .site-header {
     background-color: var(--primary-400);
     color: white;
-    padding: 1rem 0;
+    padding: var(--space-4) 0; /* 1rem 0 */
   }
   
   .site-header .wrapper {
@@ -26,7 +26,7 @@
     font-weight: bold;
     color: white;
     text-decoration: none;
-    margin-right: 1.25rem;
+    margin-right: var(--space-6); /* 1.25rem is close to 1.5rem */
     flex: 0 0 auto; /* Don't grow, don't shrink, auto basis */
   }
   
@@ -41,7 +41,7 @@
   
   .site-nav a {
     color: white;
-    margin-right: 1rem;
+    margin-right: var(--space-4); /* 1rem */
     text-decoration: none;
   }
   
@@ -56,7 +56,7 @@
   .language-selector {
     display: flex;
     margin-left: auto; /* This pushes it to the right */
-    gap: 0.75rem;
+    gap: var(--space-3); /* 0.75rem */
   }
   
   .language-selector a {
@@ -82,8 +82,8 @@
   .site-footer {
     background-color: var(--primary-700);
     color: var(--neutral-200);
-    padding: 2rem 0 1rem;
-    margin-top: 3rem;
+    padding: var(--space-8) 0 var(--space-4); /* 2rem 0 1rem */
+    margin-top: var(--space-12); /* 3rem */
   }
   
   .site-footer a {
@@ -100,13 +100,13 @@
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: var(--space-4); /* 1rem */
+    margin-bottom: var(--space-6); /* 1.5rem */
   }
   
   /* Footer Sections */
   .footer-section {
-    padding: 0 0.5rem;
+    padding: 0 var(--space-2); /* 0 0.5rem */
   }
   
   .footer-section-center {
@@ -120,13 +120,13 @@
   /* Footer Text Styles */
   .footer-text {
     font-size: 0.875rem; /* Smaller text as requested */
-    margin: 0.25rem 0;
+    margin: var(--space-1) 0; /* 0.25rem 0 */
     line-height: 1.4;
   }
   
   .footer-tagline {
     font-size: 0.95rem;
-    margin: 0.5rem 0;
+    margin: var(--space-2) 0; /* 0.5rem 0 */
     color: var(--neutral-100);
   }
   
@@ -134,8 +134,8 @@
   .footer-copyright {
     text-align: center;
     border-top: 1px solid var(--primary-600);
-    padding-top: 1rem;
-    margin-top: 1rem;
+    padding-top: var(--space-4); /* 1rem */
+    margin-top: var(--space-4); /* 1rem */
     font-size: 0.75rem;
     color: var(--neutral-300);
   }
@@ -144,8 +144,8 @@
   .social-icons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 0.75rem;
+    gap: var(--space-4); /* 1rem */
+    margin-top: var(--space-3); /* 0.75rem */
   }
   
   .social-icon {
@@ -175,7 +175,7 @@
   
   /* Newsletter Form Customization */
   .newsletter-container {
-    margin: 0.5rem 0;
+    margin: var(--space-2) 0; /* 0.5rem 0 */
   }
   
   /* --------------------------------------------------------------------------
@@ -183,31 +183,31 @@
      -------------------------------------------------------------------------- */
   
   /* Tablet and smaller desktops */
-  @media (max-width: 992px) {
+  @media (max-width: var(--breakpoint-lg)) { /* 992px */
     .footer-grid {
-      gap: 1.5rem;
+      gap: var(--space-6); /* 1.5rem */
     }
   }
   
   /* Mobile devices */
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-md)) { /* 768px */
     .site-header .wrapper {
       flex-direction: column;
       align-items: center;
     }
     
     .site-title {
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--space-3); /* 0.75rem */
       margin-right: 0;
     }
     
     .site-nav {
-      margin: 0.5rem 0;
+      margin: var(--space-2) 0; /* 0.5rem 0 */
       justify-content: center;
     }
     
     .language-selector {
-      margin: 0.75rem 0 0 0;
+      margin: var(--space-3) 0 0 0; /* 0.75rem 0 0 0 */
     }
     
     .footer-grid {
@@ -222,19 +222,19 @@
   }
   
   /* Extra small devices */
-  @media (max-width: 480px) {
+  @media (max-width: var(--breakpoint-xs)) { /* 480px */
     .site-nav {
       flex-wrap: wrap;
       justify-content: center;
     }
     
     .site-nav a {
-      margin: 0.25rem 0.5rem;
+      margin: var(--space-1) var(--space-2); /* 0.25rem 0.5rem */
     }
   }
 
   /* Ensure footer connects directly */
-@media (max-width: 767px) {
+@media (max-width: 767px) { /* This should be updated to var(--breakpoint-md) */
   .site-footer {
     margin-top: 0 !important;
   }
