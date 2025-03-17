@@ -39,14 +39,9 @@
 
 /* --------------------------------------------------------------------------
    2. PANEL VARIANTS
-   -------------------------------------------------------------------------- */
+   -------------------------------------------------------------------------- 
+*/
 
-/* Hero panel with gradient background */
-.hero-panel {
-  background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
-  color: white;
-  padding: var(--space-20) var(--space-8);  /* 6rem 2rem */
-}
 
 /* Light panel with white background */
 .light-panel {
@@ -85,6 +80,112 @@
 /* Special panel for sections with a lot of text */
 .text-panel .panel-content {
   max-width: 800px;      /* Narrower content area for text-focused sections */
+}
+
+
+/* --------------------------------------------------------------------------
+   HERO PANEL VERTICAL CENTERING
+   -------------------------------------------------------------------------- */
+
+/* Complete hero panel centering solution */
+.hero-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh; /* Set minimum height for visual impact */
+  padding: 0; /* Remove default padding since we're using flexbox */
+}
+
+/* Ensure the panel content is properly positioned */
+.hero-panel .panel-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  width: 100%;
+}
+
+/* Keep the heading and subtitle properly spaced */
+.hero-panel h1 {
+  margin-bottom: var(--space-4);
+}
+
+.hero-panel .hero-subtitle {
+  margin-top: var(--space-4);
+}
+
+/* Override any padding that might interfere with centering */
+.full-width-panel.hero-panel {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Maintain the radial gradient background */
+.hero-panel {
+  background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
+}
+
+/* Ensure text in hero panel is white */
+.hero-panel .hero-subtitle,
+.hero-panel p,
+.hero-panel .panel-content p {
+  color: white;
+}
+
+/* This ensures all text in the hero image panel is also white */
+.hero-image-panel .hero-subtitle,
+.hero-image-panel p,
+.hero-image-panel .panel-content p {
+  color: white;
+}
+
+/* Handle smaller screens */
+@media (max-width: var(--breakpoint-md)) {
+  .hero-panel {
+    min-height: 35vh; /* Slightly shorter on mobile */
+  }
+}
+
+/* Hero Image Panel (used on homepage) */
+.hero-image-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  padding: 0;
+  position: relative;
+}
+
+.hero-image-panel .panel-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  width: 100%;
+  position: relative;
+  z-index: 2; /* Ensure content appears above the background */
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Handle smaller screens for hero image panel */
+@media (max-width: var(--breakpoint-md)) {
+  .hero-image-panel {
+    min-height: 35vh;
+  }
 }
 
 /* --------------------------------------------------------------------------

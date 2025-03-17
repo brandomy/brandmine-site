@@ -494,3 +494,85 @@
     padding: var(--space-3) !important;
   }
 }
+
+
+/* ==========================================================================
+   8. OTHER ADJUSTMENTS
+   ==========================================================================
+*/
+
+
+/* Team profile card mobile alignment fix */
+@media (max-width: 480px) {
+  /* Ensure team member cards are properly centered */
+  .team-member {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    padding: var(--space-4) !important;
+  }
+  
+  /* Adjust the team section to ensure proper centering */
+  .team-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 var(--space-2);
+  }
+  
+  /* Ensure the content inside card is centered */
+  .team-member h3,
+  .team-member p,
+  .team-member ul {
+    text-align: center;
+    width: 100%;
+    padding-left: 0;
+    list-style-position: inside;
+  }
+}
+
+
+/* Footer mobile alignment fix */
+@media (max-width: 480px) {
+  /* Ensure footer content is properly centered and contained */
+  .site-footer .wrapper {
+    width: 100% !important;
+    padding: 0 var(--space-4) !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Adjust the company info in footer */
+  .site-footer .footer-text {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  /* Make newsletter form container full width */
+  .newsletter-container {
+    width: 100% !important;
+    padding: 0 var(--space-2) !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Ensure social icons are centered */
+  .social-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  /* Ensure copyright notice is contained */
+  .footer-copyright {
+    width: 100%;
+    text-align: center;
+    padding: 0 var(--space-2);
+    box-sizing: border-box;
+  }
+}
