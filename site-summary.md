@@ -1,11 +1,9 @@
 # Brandmine Site Summary
-Generated on Sun 16 Mar 2025 07:50:26 +08
+Generated on Mon 17 Mar 2025 05:27:49 +08
 
 ## Repository Status
 Current branch: main
-Last commit: Merge pull request #8 from brandomy/css-reorganization
-
-Css reorganization
+Last commit: Made use of new variables for spacing and breakpoints.
 Modified files:        1
 
 ## Site Structure
@@ -23,13 +21,11 @@ Modified files:        1
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/css/ (       7 files)
+- assets/css/ (       5 files)
   - components
   - layout
   - main.css
-  - main.css.old
   - pages
-  - tally-styles.css
   - tokens
 - assets/fonts/ (      22 files)
   - NotoSansSC-Bold.woff2
@@ -93,9 +89,7 @@ defaults:
 - components
 - layout
 - main.css
-- main.css.old
 - pages
-- tally-styles.css
 - tokens
 ```
 

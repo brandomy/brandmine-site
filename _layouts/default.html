@@ -16,16 +16,16 @@
 
   <!-- Style Sheets --> 
    
-  <!-- Color tokens -->
+  <!-- 1. Design Tokens -->
   <link rel="stylesheet" href="{{ '/assets/css/tokens/colors.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/tokens/breakpoints.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/tokens/spacing.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/breakpoints.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/spacing.css' | relative_url }}">
 
-  <!-- Core styles -->
+  <!-- 2. Base Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
  
-  <!-- Component styles -->
+  <!-- 3. Component Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/cards.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/features.css' | relative_url }}">
@@ -35,13 +35,11 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/solutions.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/team.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/text.css' | relative_url }}">
-
-
-  <!-- Layout styles -->
+ 
+  <!-- 4. Layout Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}">
-  <!-- Other layout styles -->
 
-  <!-- Conditionally load Page-specific styles -->
+  <!-- 5. Page-Specific Styles (conditionally loaded) -->
   {% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/home.css' | relative_url }}">
   {% endif %}
@@ -57,6 +55,9 @@
   {% if page.permalink contains '/russian-sectors/' %}
   <link rel="stylesheet" href="{{ '/assets/css/pages/russian-sectors.css' | relative_url }}">
   {% endif %}
+
+  <!-- 6. Mobile/Responsive Overrides (always last) -->
+  <link rel="stylesheet" href="{{ '/assets/css/components/mobile-fixes.css' | relative_url }}">
 
  <!-- end of Style Sheets -->  
  

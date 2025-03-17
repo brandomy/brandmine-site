@@ -31,7 +31,14 @@
   z-index: 0;
 }
 
-/* Add a teal color overlay using your brand color */
+.home-page .hero-image-panel h1,
+.home-page .hero-carousel-panel h1 {
+  color: var(--secondary-300) !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Add a color overlay using your secondary brand color */
 .hero-background::after {
   content: '';
   position: absolute;
@@ -39,7 +46,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(var(--secondary-400-rgb), 0.3); /* Teal overlay with 30% opacity */
+  background: rgba(var(--secondary-400-rgb), 0.3); /* Orange overlay with 30% opacity */
   z-index: 1;
 }
 

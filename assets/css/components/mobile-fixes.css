@@ -1,0 +1,377 @@
+/* ==========================================================================
+   BRANDMINE MOBILE RESPONSIVE FIXES
+   ==========================================================================
+   This file contains responsive design fixes for the Brandmine website,
+   addressing specific issues on mobile and small screens.
+   
+   Contents:
+   1. Header Navigation
+   2. Services Section (Partners/Brands)
+   3. MailerLite Newsletter Form
+   4. "Problems We Solve" Section
+   5. General Mobile Optimizations
+   6. Tally Form Mobile Adjustments
+   7. Footer Mobile Adjustments
+*/
+
+
+/* ==========================================================================
+   1. HEADER NAVIGATION
+   ==========================================================================
+   Fixes for the main site navigation on small screens to ensure
+   all menu items are visible and accessible.
+*/
+
+@media (max-width: 767px) {
+    /* Make the header stack vertically on very small screens */
+    .site-header .wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* Make the navigation take full width */
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      margin-top: var(--space-2);
+    }
+    
+    /* Adjust navigation links to fit better */
+    .site-nav a {
+      padding: var(--space-2);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    /* Allow site title to be prominent */
+    .site-title {
+      margin-right: 0;
+      margin-bottom: var(--space-2);
+    }
+    
+    /* Ensure language selector doesn't break layout */
+    .language-selector {
+      margin-top: var(--space-2);
+      float: none;
+      text-align: center;
+    }
+  }
+  
+  /* For extremely small screens, add horizontal scrolling to navigation */
+  @media (max-width: 480px) {
+    .site-nav {
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: var(--space-2);
+      justify-content: flex-start; /* Start alignment helps with scrolling */
+    }
+    
+    /* Hide scrollbar for cleaner appearance but maintain functionality */
+    .site-nav::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .site-nav {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  }
+  
+  
+  /* ==========================================================================
+     2. SERVICES SECTION (PARTNERS/BRANDS)
+     ==========================================================================
+     Converts the two-column services section into a stacked
+     single-column layout on smaller screens.
+  */
+  
+  @media (max-width: 767px) {
+    /* Change to single column for services on small screens */
+    .services-split {
+      display: grid;
+      grid-template-columns: 1fr !important; /* Force single column */
+      gap: var(--space-8) !important; /* Reduce gap between sections */
+    }
+    
+    /* Make each column take full width */
+    .services-column {
+      width: 100%;
+    }
+    
+    /* Add some visual separation between stacked sections */
+    .services-column + .services-column {
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--neutral-200);
+    }
+    
+    /* Ensure consistent styling for headings */
+    .services-column h3 {
+      text-align: center;
+    }
+    
+    /* Improve list item spacing */
+    .service-list li {
+      margin-bottom: var(--space-3);
+    }
+  }
+  
+  
+  /* ==========================================================================
+     3. MAILERLITE NEWSLETTER FORM
+     ==========================================================================
+     Improves the newsletter form layout on smaller screens
+     by stacking elements vertically for better usability.
+  */
+  
+  @media (max-width: 767px) {
+    /* Make the form elements stack vertically */
+    .ml-embedded .ml-form-embedBody .ml-form-embedContent {
+      margin-bottom: var(--space-4);
+    }
+    
+    /* Ensure the input field and button stack properly */
+    .ml-embedded .ml-form-embedBody .ml-form-horizontalRow {
+      flex-direction: column;
+    }
+    
+    /* Give full width to input field */
+    .ml-embedded .ml-form-embedBody .ml-form-horizontalRow .ml-input-horizontal {
+      width: 100%;
+      padding-right: 0;
+    }
+    
+    /* Style the submit button for mobile */
+    .ml-embedded .ml-form-embedBody .ml-form-horizontalRow .ml-button-horizontal {
+      width: 100%;
+      margin-top: var(--space-2);
+    }
+    
+    /* Ensure form container has proper padding */
+    .ml-embedded .ml-form-embedWrapper {
+      padding: var(--space-4) var(--space-2);
+    }
+    
+    /* Ensure the input field has adequate height for touch */
+    .ml-embedded .ml-form-fieldRow input {
+      min-height: 44px;
+    }
+  }
+  
+  
+  /* ==========================================================================
+     4. "PROBLEMS WE SOLVE" SECTION
+     ==========================================================================
+     Improves the layout of feature items in the "Problems We Solve"
+     section by stacking elements vertically on smaller screens.
+  */
+  
+  @media (max-width: 767px) {
+    /* Style each feature item as a vertical stack */
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+    
+    /* Make the icon more prominent */
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Ensure proper text alignment */
+    .feature-item h3 {
+      margin-bottom: var(--space-2);
+      text-align: center;
+    }
+    
+    /* Add more space between items */
+    .feature-grid {
+      grid-template-columns: 1fr !important;
+      gap: var(--space-6);
+    }
+    
+    /* Reduce paragraph spacing but keep readability */
+    .feature-item p {
+      line-height: 1.4;
+      margin-top: var(--space-1);
+      max-width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Ensure proper card styling */
+    .content-card {
+      padding: var(--space-4);
+    }
+    
+    /* Ensure conclusion text is properly styled */
+    .conclusion-text {
+      text-align: center;
+      margin-top: var(--space-6);
+    }
+  }
+  
+  
+  /* ==========================================================================
+     5. GENERAL MOBILE OPTIMIZATIONS
+     ==========================================================================
+     General improvements for mobile devices, including typography,
+     spacing, and touch target sizes.
+  */
+  
+  @media (max-width: 767px) {
+    /* Ensure proper padding on all content sections */
+    .full-width-panel {
+      padding: var(--space-8) var(--space-4);
+    }
+    
+    /* Adjust font sizes for better readability */
+    h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    /* Ensure buttons are easy to tap */
+    .btn, 
+    button,
+    .language-selector a,
+    .site-nav a {
+      min-height: 44px; /* Recommended minimum touch target size */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Prevent horizontal scrolling issues */
+    body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    
+    /* Make content more readable on small screens */
+    .panel-content {
+      padding: 0 var(--space-2);
+    }
+    
+    /* Improve hero section responsiveness */
+    .hero-panel,
+    .hero-image-panel {
+      padding: var(--space-8) var(--space-4) !important;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem !important;
+      line-height: 1.5;
+    }
+    
+    /* Ensure proper centering of centered content */
+    .centered {
+      text-align: center;
+    }
+    
+    /* Improve lead text readability */
+    .lead-text {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+  }
+  
+  
+  /* ==========================================================================
+     6. TALLY FORM MOBILE ADJUSTMENTS
+     ==========================================================================
+     Additional responsive fixes for the Tally contact form
+     to ensure it displays correctly on mobile devices.
+  */
+  
+  @media (max-width: 767px) {
+    /* Override and simplify the mobile form container */
+    .mobile-form-wrapper,
+    .contact-form-container {
+      width: 92% !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+    
+    /* Ensure the form has adequate padding */
+    .contact-form-container {
+      padding: var(--space-4) !important;
+      border-radius: 0.5rem !important;
+    }
+    
+    /* Ensure form elements are properly sized */
+    .contact-form-container iframe {
+      min-height: 450px; /* Ensure adequate height for all form elements */
+    }
+  
+    /* Very small screens need more compact layout */
+    @media (max-width: 480px) {
+      .mobile-form-wrapper,
+      .contact-form-container {
+        width: 95% !important;
+      }
+      
+      .contact-form-container {
+        padding: var(--space-3) !important;
+      }
+    }
+  }
+  
+  
+  /* ==========================================================================
+     7. FOOTER MOBILE ADJUSTMENTS
+     ==========================================================================
+     Responsive improvements for the site footer.
+  */
+  
+  @media (max-width: 767px) {
+    /* Style the site footer for mobile */
+    .site-footer {
+      text-align: center;
+      padding: var(--space-6) var(--space-4);
+    }
+    
+    /* Stack footer columns vertically */
+    .footer-columns {
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    
+    /* Center align footer content */
+    .footer-column {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+    
+    /* Ensure footer navigation is mobile-friendly */
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+    
+    /* Ensure social links are properly spaced */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+  }

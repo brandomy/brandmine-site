@@ -275,13 +275,6 @@
     text-decoration: underline;
   }
   
-  /* For smaller screens, stack the contact items */
-  @media (max-width: var(--breakpoint-md)) { /* 768px */
-    .cta-panel .contact-info {
-      flex-direction: column;
-      gap: var(--space-4); /* 1rem */
-    }
-  }
   
   /* --------------------------------------------------------------------------
      4. GENERAL ABOUT PAGE STYLING
@@ -299,31 +292,3 @@
     margin-right: auto;
   }
   
-  /* --------------------------------------------------------------------------
-     5. RESPONSIVE ADJUSTMENTS
-     -------------------------------------------------------------------------- */
-  
-  /* Tablet and smaller */
-  @media (max-width: var(--breakpoint-lg)) { /* 992px */
-    /* Change to single column for services */
-    .about-page .services-split {
-      grid-template-columns: 1fr;
-      gap: var(--space-8); /* 2rem */
-    }
-  }
-  
-  /* Mobile phones */
-  @media (max-width: var(--breakpoint-md)) { /* 768px */
-    /* Further spacing adjustments */
-    .about-page .services-column {
-      padding-top: var(--space-3); /* 0.75rem */
-    }
-    
-    .about-page .service-list li {
-      margin-bottom: var(--space-3); /* 0.75rem */
-    }
-    
-    .about-page .perspective-list li {
-      padding-left: var(--space-6); /* 1.5rem */
-    }
-  }
