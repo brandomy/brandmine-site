@@ -2,186 +2,242 @@
    Homepage Styles
    ==========================================================================
    Styles specific to the homepage layout and components.
+   
+   Table of Contents:
+   1. Hero Image Panel
+   2. Background and Overlay
+   3. Text Styling
+   4. Scroll Indicator
+   5. Content Sections
+   6. Responsive Adjustments
 */
 
-/* Hero Image Panel Styles */
-.hero-image-panel {
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  padding: var(--space-8) 0 var(--space-16) 0; /* 2rem 0 4rem 0 */
-  overflow: hidden;
-  text-align: center;
-  margin-bottom: var(--space-8); /* 2rem */
-}
-
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/assets/images/hero/home-cover.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.7); /* Darkens the image slightly for better text visibility */
-  z-index: 0;
-}
-
-.home-page .hero-image-panel h1,
-.home-page .hero-carousel-panel h1 {
-  color: var(--secondary-300) !important;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-
-/* Add a color overlay using your secondary brand color */
-.hero-background::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(var(--secondary-400-rgb), 0.3); /* Orange overlay with 30% opacity */
-  z-index: 1;
-}
-
-.hero-image-panel .panel-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-}
-
-.hero-image-panel h1 {
-  font-size: 3rem;
-  margin-bottom: var(--space-6); /* 1.5rem */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  font-weight: 300;
-  max-width: 700px;
-  margin: 0 auto var(--space-8); /* 0 auto 2rem */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: var(--space-12); /* 3rem - approximating 40px */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Strong text shadow for contrast */
-  opacity: 0.9;
-  transition: opacity 0.3s ease;
-  cursor: default; /* Override the pointer cursor */
-  z-index: 5;
-}
-
-.scroll-indicator:hover {
-  opacity: 1;
-}
-
-.scroll-arrow {
-  font-size: 1.5rem;
-  animation: bounce 2s infinite;
-}
-
-.scroll-text {
-  font-size: 0.85rem;
-  margin-top: var(--space-1); /* 0.25rem */
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
+/* --------------------------------------------------------------------------
+   1. HERO IMAGE PANEL
+   -------------------------------------------------------------------------- */
+   .hero-image-panel {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: var(--space-8) 0 var(--space-16) 0; /* 2rem 0 4rem 0 */
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: var(--space-8); /* 2rem */
   }
-  40% {
-    transform: translateY(-10px);
+  
+  /* --------------------------------------------------------------------------
+     2. BACKGROUND AND OVERLAY
+     -------------------------------------------------------------------------- */
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/images/hero/home-cover.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7); /* Darkens the image slightly for better text visibility */
+    z-index: 0;
   }
-  60% {
-    transform: translateY(-5px);
+  
+  /* Add a color overlay using your secondary brand color */
+  .hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(var(--secondary-400-rgb), 0.3); /* Orange overlay with 30% opacity */
+    z-index: 1;
   }
-}
-
-/* Enhanced Lead Text */
-.lead-text {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-  color: var(--neutral-700);
-}
-
-/* Homepage-specific panel styles */
-.home-page .cta-panel {
-  padding-bottom: var(--space-20); /* 5rem */
-}
-
-/* Increase top padding on first panel after hero */
-.hero-image-panel + .light-panel {
-  padding-top: var(--space-20); /* 5rem */
-}
-
-/* Responsive Adjustments */
-@media (max-width: var(--breakpoint-md)) { /* 768px */
-  .hero-image-panel {
-    min-height: 60vh;
+  
+  /* --------------------------------------------------------------------------
+     3. TEXT STYLING
+     -------------------------------------------------------------------------- */
+  .hero-image-panel .panel-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+  
+  /* Special orange coloring for hero headline */
+  .home-page .hero-image-panel h1,
+  .home-page .hero-carousel-panel h1 {
+    color: var(--secondary-300) !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   }
   
   .hero-image-panel h1 {
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-bottom: var(--space-6); /* 1.5rem */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
   
   .hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto var(--space-8); /* 0 auto 2rem */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Enhanced lead text for descriptive paragraphs */
+  .lead-text {
     font-size: 1.25rem;
-  }
-}
-
-/* Add these adjustments to your home.css file */
-@media (max-width: var(--breakpoint-xs)) { /* 480px */
-  .hero-image-panel {
-    min-height: 50vh;
-    /* Add padding-top to push content lower */
-    padding-top: var(--space-12); /* 3rem */
-    /* Adjust centering - use flex-start to move content down from center */
-    align-items: flex-start;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--neutral-700);
   }
   
-  .hero-image-panel .panel-content {
-    /* Add top margin to push content down more */
-    margin-top: 15vh;
-  }
-  
-  /* Adjust scroll indicator position on mobile */
+  /* --------------------------------------------------------------------------
+     4. SCROLL INDICATOR
+     -------------------------------------------------------------------------- */
   .scroll-indicator {
-    bottom: var(--space-4); /* 1rem - approximating 20px */
+    position: absolute;
+    bottom: var(--space-12); /* 3rem - works for desktop */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Strong text shadow for contrast */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    cursor: default; /* Override the pointer cursor */
+    z-index: 5;
   }
-}
-
-/* Restore button spacing */
-.cta-panel .btn-primary,
-.cta-panel .cta-button {
-margin-bottom: var(--space-8); /* 2rem */
-}
-
-/* Make sure there's proper spacing in the CTA section */
-.cta-panel .panel-content {
-padding-bottom: var(--space-8); /* 2rem */
-}
-
-/* Style the lead text in the CTA panel on the home page */
-.home-page .cta-panel .lead-text {
-color: var(--secondary-300);
-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-font-weight: 500;
-}
+  
+  .scroll-indicator:hover {
+    opacity: 1;
+  }
+  
+  .scroll-arrow {
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+  }
+  
+  .scroll-text {
+    font-size: 0.85rem;
+    margin-top: var(--space-1); /* 0.25rem */
+  }
+  
+  /* Bounce animation for scroll indicator arrow */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* --------------------------------------------------------------------------
+     5. CONTENT SECTIONS
+     -------------------------------------------------------------------------- */
+  /* Homepage-specific panel styles */
+  .home-page .cta-panel {
+    padding-bottom: var(--space-20); /* 5rem */
+  }
+  
+  /* Increase top padding on first panel after hero */
+  .hero-image-panel + .light-panel {
+    padding-top: var(--space-20); /* 5rem */
+  }
+  
+  /* Restore button spacing */
+  .cta-panel .btn-primary,
+  .cta-panel .cta-button {
+    margin-bottom: var(--space-8); /* 2rem */
+  }
+  
+  /* Make sure there's proper spacing in the CTA section */
+  .cta-panel .panel-content {
+    padding-bottom: var(--space-8); /* 2rem */
+  }
+  
+  /* Style the lead text in the CTA panel on the home page */
+  .home-page .cta-panel .lead-text {
+    color: var(--secondary-300);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+  }
+  
+  /* --------------------------------------------------------------------------
+     6. RESPONSIVE ADJUSTMENTS
+     -------------------------------------------------------------------------- */
+  /* Medium screens (tablets) */
+  @media (max-width: var(--breakpoint-md)) { /* 768px */
+    .hero-image-panel {
+      min-height: 60vh;
+    }
+    
+    .hero-image-panel h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+    
+    /* Move the indicator further down for tablets */
+    .scroll-indicator {
+      bottom: var(--space-6); /* 1.5rem */
+    }
+  }
+  
+  /* Extra small screens (mobile phones) */
+  @media (max-width: var(--breakpoint-xs)) { /* 480px */
+    .hero-image-panel {
+      min-height: 50vh;
+      /* Add padding-top to push content lower */
+      padding-top: var(--space-12); /* 3rem */
+      /* Adjust centering - use flex-start to move content down from center */
+      align-items: flex-start;
+      /* Add relative positioning to ensure scroll indicator positioning works */
+      position: relative;
+    }
+    
+    .hero-image-panel .panel-content {
+      /* Add top margin to push content down more */
+      margin-top: 15vh;
+    }
+    
+    /* Position scroll indicator at the very bottom of the hero panel */
+    .scroll-indicator {
+      position: absolute;
+      bottom: var(--space-2); /* Just a small gap from bottom */
+      left: 50%;
+      transform: translateX(-50%);
+      /* Increase visibility */
+      opacity: 0.95;
+    }
+  }
+  
+  /* Landscape mode specific styling */
+  @media (max-width: var(--breakpoint-md)) and (orientation: landscape) {
+    .hero-image-panel {
+      /* Adjust minimum height for landscape */
+      min-height: 100vh;
+    }
+    
+    /* Push scroll indicator to the bottom with minimal space */
+    .scroll-indicator {
+      bottom: var(--space-1);
+    }
+    
+    /* Adjust content position in landscape */
+    .hero-image-panel .panel-content {
+      margin-top: 0;
+      padding-top: var(--space-8);
+    }
+  }
