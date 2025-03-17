@@ -222,6 +222,93 @@
     }
   }
   
+
+
+  /* ==========================================================================
+   PROBLEMS SECTION MOBILE FIXES
+   ==========================================================================
+   Additional fixes specifically for the Problems We Solve section
+   to ensure consistent text alignment on mobile.
+*/
+
+@media (max-width: 767px) {
+  /* Ensure all feature item paragraph text is properly centered */
+  .feature-item p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+  
+  /* Special fix for the Cultural Context Gaps item */
+  .feature-item:nth-child(3) p {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ensure all headings are centered */
+  .feature-item h3 {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* Improve overall spacing in feature items */
+  .feature-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 0 var(--space-2) !important;
+  }
+  
+  /* More space between feature items */
+  .feature-grid {
+    gap: var(--space-8) !important;
+  }
+}
+
+/* ==========================================================================
+   PROBLEMS SECTION MOBILE FIXES
+   ==========================================================================
+   Additional fixes specifically for the Problems We Solve section
+   to ensure consistent text alignment on mobile.
+*/
+
+@media (max-width: 767px) {
+  /* Ensure all feature item paragraph text is properly centered */
+  .feature-item p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+  
+  /* Special fix for the Cultural Context Gaps item */
+  .feature-item:nth-child(3) p {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ensure all headings are centered */
+  .feature-item h3 {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* Improve overall spacing in feature items */
+  .feature-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 0 var(--space-2) !important;
+  }
+  
+  /* More space between feature items */
+  .feature-grid {
+    gap: var(--space-8) !important;
+  }
+}
   
   /* ==========================================================================
      5. GENERAL MOBILE OPTIMIZATIONS
@@ -335,43 +422,75 @@
   
   
   /* ==========================================================================
-     7. FOOTER MOBILE ADJUSTMENTS
-     ==========================================================================
-     Responsive improvements for the site footer.
+   7. FOOTER MOBILE ADJUSTMENTS
+   ==========================================================================
+   Responsive improvements for the site footer.
   */
-  
-  @media (max-width: 767px) {
-    /* Style the site footer for mobile */
-    .site-footer {
-      text-align: center;
-      padding: var(--space-6) var(--space-4);
-    }
-    
-    /* Stack footer columns vertically */
-    .footer-columns {
-      flex-direction: column;
-      gap: var(--space-6);
-    }
-    
-    /* Center align footer content */
-    .footer-column {
-      text-align: center;
-      margin-bottom: var(--space-4);
-    }
-    
-    /* Ensure footer navigation is mobile-friendly */
-    .footer-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--space-3);
-    }
-    
-    /* Ensure social links are properly spaced */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-4);
-      margin-top: var(--space-4);
-    }
+
+@media (max-width: 767px) {
+  /* Footer grid layout - convert to stacked columns */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-8) !important; /* Increase spacing between stacked sections */
   }
+  
+  /* Center align all footer sections */
+  .footer-section,
+  .footer-section-center,
+  .footer-section-right {
+    text-align: center !important;
+    padding: 0 var(--space-4);
+    width: 100%;
+  }
+  
+  /* Ensure the newsletter container is properly sized */
+  .newsletter-container {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Footer tagline styling */
+  .footer-tagline {
+    font-size: 1rem;
+    margin: var(--space-4) 0;
+    padding: 0 var(--space-4);
+  }
+  
+  /* Social icons spacing */
+  .social-icons {
+    margin-top: var(--space-6);
+    gap: var(--space-6);
+  }
+  
+  /* Slightly larger social icons for better touch targets */
+  .social-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  /* Copyright text */
+  .footer-copyright {
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+}
+
+/* Extra small screens adjustments */
+@media (max-width: 480px) {
+  .site-footer {
+    padding: var(--space-6) var(--space-2) var(--space-4);
+  }
+  
+  /* Further reduce spacing on tiny screens */
+  .footer-grid {
+    gap: var(--space-6) !important;
+  }
+  
+  /* Ensure newsletter form is properly contained */
+  .newsletter-container .ml-form-embedWrapper {
+    padding: var(--space-3) !important;
+  }
+}
