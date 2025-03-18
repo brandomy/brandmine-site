@@ -1,5 +1,17 @@
 ## 2025-03-11: Implemented Multilingual Newsletter Forms
 
+## 2025-03-18: Enhance mobile footer layout and hide scroll indicator on small phones [Layout]
+
+### Changes Made
+- removed the scroll indicator for small phone screen
+- centered the footer content on small phone screens
+
+### Technical Decisions
+- used flexbox
+
+### Next Steps
+- test the mobile version again
+
 ### Changes Made
 - Created separate Mailerlite forms for each language (EN, RU, ZH)
 - Updated `_includes/footer.html` to display language-specific forms based on page.lang

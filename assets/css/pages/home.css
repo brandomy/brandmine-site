@@ -195,39 +195,45 @@
     }
   }
   
-  /* Extra small screens (mobile phones) */
-  @media (max-width: var(--breakpoint-xs)) { /* 480px */
-    .hero-image-panel {
-      min-height: 50vh;
-      /* Add padding-top to push content lower */
-      padding-top: var(--space-12); /* 3rem */
-      /* Adjust centering - use flex-start to move content down from center */
-      align-items: flex-start;
-      /* Add relative positioning to ensure scroll indicator positioning works */
-      position: relative;
-    }
-    
-    .hero-image-panel .panel-content {
-      /* Add top margin to push content down more */
-      margin-top: 15vh;
-    }
-    
-    /* Position scroll indicator at the very bottom of the hero panel */
-    .scroll-indicator {
-      position: absolute;
-      bottom: var(--space-2); /* Just a small gap from bottom */
-      left: 50%;
-      transform: translateX(-50%);
-      /* Increase visibility */
-      opacity: 0.95;
-    }
-
-    /* Hide scroll indicator completely on small phones */
-    .scroll-indicator {
-      display: none !important;
-    }
-
+/* Extra small screens (mobile phones) */
+@media (max-width: 480px) {
+  .hero-image-panel {
+    min-height: 50vh;
+    /* Add padding-top to push content lower */
+    padding-top: var(--space-12); /* 3rem */
+    /* Adjust centering - use flex-start to move content down from center */
+    align-items: flex-start;
+    /* Add relative positioning to ensure scroll indicator positioning works */
+    position: relative;
   }
+  
+  .hero-image-panel .panel-content {
+    /* Add top margin to push content down more */
+    margin-top: 15vh;
+  }
+  
+  /* Completely hide all scroll indicator elements */
+  .scroll-indicator,
+  .hero-image-panel .scroll-indicator,
+  .home-page .scroll-indicator,
+  body .scroll-indicator,
+  .scroll-arrow,
+  .scroll-text {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Guarantee scroll indicator is hidden on small screens */
+@media screen and (max-width: 480px) {
+  .scroll-indicator {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
   
   /* Landscape mode specific styling */
   @media (max-width: var(--breakpoint-md)) and (orientation: landscape) {
