@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Markets Page Styles
+   ==========================================================================
+   Styles specific to the Markets page layout and components.
+*/
+
+/* Market spotlight styling */
+.market-spotlight {
+    margin: var(--space-6) 0;
+  }
+  
+  .market-spotlight-item {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .market-spotlight-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .market-spotlight-item h3 {
+    color: var(--primary-600);
+    margin-top: 0;
+    margin-bottom: var(--space-2);
+  }
+  
+  /* Region list styling */
+  .region-list {
+    margin-top: var(--space-4);
+    padding-left: var(--space-6);
+  }
+  
+  .region-list li {
+    margin-bottom: var(--space-2);
+  }
+  
+  .region-list strong {
+    color: var(--primary-700);
+  }
+  
+  /* Map placeholder styling */
+  .map-container {
+    width: 100%;
+    height: 400px;
+    background-color: var(--neutral-100);
+    border-radius: 0.5rem;
+    margin: var(--space-6) 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .map-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-6);
+  }
+  
+  .map-placeholder p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--neutral-600);
+    margin-bottom: var(--space-2);
+  }
+  
+  .map-subtitle {
+    font-size: 1rem !important;
+    font-weight: normal !important;
+    max-width: 30rem;
+    color: var(--neutral-500) !important;
+  }
+  
+  /* BRICS+ countries styling */
+  .brics-countries {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: var(--space-8) 0;
+  }
+  
+  .primary-countries,
+  .plus-countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: center;
+  }
+  
+  .plus-indicator {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: var(--space-4) 0;
+    color: var(--primary-600);
+  }
+  
+  .country-badge {
+    background-color: white;
+    border: 1px solid var(--primary-400);
+    color: var(--primary-600);
+    padding: var(--space-2) var(--space-4);
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  
+  .opportunity-text {
+    text-align: center;
+    margin-top: var(--space-6);
+    font-style: italic;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: var(--breakpoint-md)) {
+    .map-container {
+      height: 300px;
+    }
+    
+    .primary-countries,
+    .plus-countries {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+  }

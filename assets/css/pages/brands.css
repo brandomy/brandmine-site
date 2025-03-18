@@ -1,18 +1,148 @@
 /* ==========================================================================
    Brands Page Styles
    ==========================================================================
-   Page-specific styles for the Brands page layout and components.
+   Styles specific to the Brands page layout and components.
 */
 
-/* Add margin beneath the CTA button container */
+/* Features list styling */
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: var(--space-4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--neutral-200);
+}
+
+.feature-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--primary-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-4);
+  flex-shrink: 0;
+}
+
+.feature-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--primary-600);
+}
+
+.feature-content h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--primary-700);
+  font-size: 1.1rem;
+}
+
+.feature-content p {
+  margin: 0;
+  color: var(--neutral-600);
+}
+
+/* Brand grid styling */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.brand-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: var(--space-6);
+  border: 1px solid var(--neutral-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.brand-logo-placeholder {
+  width: 120px;
+  height: 80px;
+  background-color: var(--neutral-200);
+  border-radius: 4px;
+  margin-bottom: var(--space-4);
+}
+
+.brand-card h3 {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+  color: var(--primary-700);
+}
+
+.brand-meta {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+}
+
+.brand-country, .brand-sector {
+  background-color: var(--neutral-100);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 4px;
+  color: var(--neutral-700);
+}
+
+/* Filter categories */
+.filter-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-6) 0;
+  justify-content: center;
+}
+
+.filter-category {
+  background-color: white;
+  border: 1px solid var(--accent-300);
+  color: var(--accent-700);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* CTA Container */
 .cta-container {
-    margin-bottom: 4rem; /* Adds significant space below the button */
-    margin-top: 2rem;    /* Also add some space above for balance */
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.feedback-message {
+  font-size: 0.9rem;
+}
+
+/* Utility classes */
+.centered {
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-md)) {
+  .features-list {
+    grid-template-columns: 1fr;
   }
   
-  /* Ensure the button is properly displayed without a link */
-  .cta-container .btn-primary {
-    display: inline-block;
-    cursor: pointer;
-    /* This ensures the button is still clickable even without a href */
+  .brand-grid {
+    grid-template-columns: 1fr;
   }
+}

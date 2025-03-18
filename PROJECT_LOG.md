@@ -1,5 +1,18 @@
 ## 2025-03-11: Implemented Multilingual Newsletter Forms
 
+## 2025-03-18: Implement mobile hamburger menu functionality and styles [Layout]
+
+### Changes Made
+- implemented hamburger menu for small screen sizes
+
+### Technical Decisions
+- had to troubleshoot this
+- kept the hamburger function simple
+- added a couple of styling touches
+
+### Next Steps
+- test the hamburger menu on different screen sizes
+
 ## 2025-03-18: Enhance mobile footer layout and hide scroll indicator on small phones [Layout]
 
 ### Changes Made
