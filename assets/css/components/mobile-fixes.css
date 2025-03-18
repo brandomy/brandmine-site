@@ -535,44 +535,105 @@
 }
 
 
-/* Footer mobile alignment fix */
+/* Enhanced Footer mobile alignment fix */
 @media (max-width: 480px) {
-  /* Ensure footer content is properly centered and contained */
+  /* Create a completely centered footer layout */
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-6) 0 var(--space-4);
+    text-align: center;
+    width: 100% !important;
+  }
+  
+  /* Center the wrapper and remove horizontal padding */
   .site-footer .wrapper {
     width: 100% !important;
-    padding: 0 var(--space-4) !important;
+    max-width: 100% !important;
+    padding: 0 !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
-    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   
-  /* Adjust the company info in footer */
-  .site-footer .footer-text {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+  /* All direct children of the footer should be centered */
+  .site-footer > * {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   
-  /* Make newsletter form container full width */
-  .newsletter-container {
+  /* Container for company info and main footer content */
+  .footer-grid {
     width: 100% !important;
-    padding: 0 var(--space-2) !important;
-    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: var(--space-6) !important;
+    padding: 0 !important;
   }
   
-  /* Ensure social icons are centered */
+  /* All sections in the footer grid */
+  .footer-section,
+  .footer-section-center,
+  .footer-section-right {
+    width: 100% !important;
+    max-width: 90% !important;
+    text-align: center !important;
+    padding: 0 !important;
+    margin: 0 auto var(--space-4) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Text elements in the footer */
+  .footer-text,
+  .footer-tagline {
+    width: 100% !important;
+    text-align: center !important;
+    margin: var(--space-2) auto !important;
+  }
+  
+  /* Center the social media icons */
   .social-icons {
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: var(--space-4) auto !important;
+    padding: 0 !important;
+    gap: var(--space-4) !important;
   }
   
-  /* Ensure copyright notice is contained */
+  /* Newsletter container */
+  .newsletter-container {
+    width: 90% !important;
+    max-width: 90% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* MailerLite form wrapper */
+  .ml-form-embedWrapper {
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Copyright section */
   .footer-copyright {
-    width: 100%;
-    text-align: center;
-    padding: 0 var(--space-2);
-    box-sizing: border-box;
+    width: 90% !important;
+    text-align: center !important;
+    margin: var(--space-4) auto 0 !important;
+    padding: var(--space-4) 0 0 !important;
+    border-top: 1px solid var(--primary-600);
   }
 }
