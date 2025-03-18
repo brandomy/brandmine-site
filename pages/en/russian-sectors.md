@@ -8,18 +8,19 @@ ref: russian-sectors
 
 # Russian Consumer Brand Sectors
 
-## Exploring 15 High-Potential Consumer Categories
+## Exploring 16 High-Potential Consumer Categories
 
-Russia's consumer brand landscape offers exceptional diversity and untapped international potential. These 15 carefully selected sectors represent the most promising opportunities for cross-border partnerships and investments.
+Russia's consumer brand landscape offers exceptional diversity and untapped international potential. These 16 carefully selected sectors represent the most promising opportunities for cross-border partnerships and investments.
 
 <div class="sector-columns">
   <div class="sector-column">
     <h3>Lifestyle Sectors</h3>
     <ul>
       <li><a href="#beauty">Natural Beauty Products</a></li>
-      <li><a href="#porcelain">Artisan Porcelain & Ceramics</a></li>
+      <li><a href="#hotels">Hotels & Resorts</a></li>
       <li><a href="#jewelry">Jewelry & Watches</a></li>
-      <li><a href="#fashion">Fashion Accessories</a></li>
+      <li><a href="#fashion">Fashion & Accessories</a></li>
+      <li><a href="#porcelain">Artisan Porcelain & Ceramics</a></li>
       <li><a href="#supplements">Natural Food Supplements</a></li>
     </ul>
   </div>
@@ -32,7 +33,7 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
       <li><a href="#mineral-waters">Mineral Waters</a></li>
       <li><a href="#cheese">Specialty Cheeses</a></li>
       <li><a href="#honey">Honey & Bee Products</a></li>
-      <li><a href="#seafood">Gourmet Fish & Seafood</a></li>
+      <li><a href="#gourmet">Gourmet Foods</a></li>
       <li><a href="#dairy">Fermented Dairy (Kefir)</a></li>
       <li><a href="#halal">Halal Food Products</a></li>
       <li><a href="#meats">Salami & Cured Meats</a></li>
@@ -54,18 +55,18 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
   <p><strong>Key Market Insight:</strong> Export value of Russian natural cosmetics has grown by 215% since 2019, with particularly strong performance in East Asian markets where Russian botanical ingredients are increasingly recognized for their efficacy.</p>
 </section>
 
-<section id="porcelain" class="sector-section">
-  <h3>Artisan Porcelain and Ceramics</h3>
+<section id="hotels" class="sector-section">
+  <h3>Hotels & Resorts</h3>
   
-  <p>Russian porcelain traditions blend European techniques with distinctively Russian artistic sensibilities. Historic manufacturers like Imperial Porcelain Factory (founded 1744) and Gzhel continue to produce collectible pieces, while a new generation of ceramic artists and small studios is reimagining the tradition with contemporary designs.</p>
+  <p>From historic city properties to remote wilderness retreats, Russian boutique hotels and resorts offer unique cultural experiences that showcase the country's remarkable diversity. The hospitality sector presents compelling investment opportunities, with many independent gems ripe for consolidation, brand development, and international market positioning.</p>
   
-  <p>The sector encompasses everything from fine dining tableware and decorative objects to art pieces and custom architectural elements. The distinctive cobalt blue of Gzhel, the luxurious gilded designs of Imperial porcelain, and the narrative-rich imagery of modern artists offer unique aesthetic traditions that stand apart from other global ceramic traditions.</p>
+  <p>Properties across Russia feature distinctive architectural styles, design aesthetics, and hospitality traditions that reflect regional cultural heritage. Many integrate local culinary offerings, wellness traditions, and experiential activities that provide immersive engagement with Russian landscapes and culture.</p>
   
-  <p><strong>Key Market Insight:</strong> Russian premium porcelain and ceramics exports have grown to approximately $175 million annually, with collector pieces achieving average price increases of 14% year-over-year at international auctions.</p>
+  <p><strong>Key Market Insight:</strong> Investment in Russian boutique hospitality has grown by 43% since 2019, with particular interest in properties that offer authentic cultural experiences combined with international service standards.</p>
 </section>
 
 <section id="jewelry" class="sector-section">
-  <h3>Jewelry (including Watches)</h3>
+  <h3>Jewelry & Watches</h3>
   
   <p>Russia's jewelry sector combines exceptional access to precious materials—the country produces 30% of the world's diamonds and is a major source of gold, platinum, and amber—with distinctive design traditions. The luxury segment of this market exceeds $4.5 billion in annual production value.</p>
   
@@ -75,13 +76,23 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
 </section>
 
 <section id="fashion" class="sector-section">
-  <h3>Fashion Accessories</h3>
+  <h3>Fashion & Accessories</h3>
   
-  <p>Russia's fashion accessories sector encompasses everything from luxury leather goods and handcrafted footwear to statement jewelry and contemporary adaptations of traditional textiles. This diverse sector, valued at approximately $3.1 billion in premium segments, showcases exceptional craftsmanship and distinctive design sensibilities.</p>
+  <p>Russia's fashion and accessories sector encompasses everything from luxury leather goods and handcrafted footwear to statement jewelry and contemporary adaptations of traditional textiles. This diverse sector, valued at approximately $3.1 billion in premium segments, showcases exceptional craftsmanship and distinctive design sensibilities.</p>
   
   <p>Many designers draw inspiration from Russia's rich cultural heritage while incorporating contemporary aesthetics. The sector benefits from strong domestic traditions in leatherworking, textile arts, and jewelry making, with production clusters in Moscow, St. Petersburg, and several regional centers with specialized craft traditions.</p>
   
   <p><strong>Key Market Insight:</strong> Russian premium accessory exports have increased by 62% in the past four years, with particularly strong performance in leather goods and statement jewelry categories at international fashion showcases.</p>
+</section>
+
+<section id="porcelain" class="sector-section">
+  <h3>Artisan Porcelain and Ceramics</h3>
+  
+  <p>Russian porcelain traditions blend European techniques with distinctively Russian artistic sensibilities. Historic manufacturers like Imperial Porcelain Factory (founded 1744) and Gzhel continue to produce collectible pieces, while a new generation of ceramic artists and small studios is reimagining the tradition with contemporary designs.</p>
+  
+  <p>The sector encompasses everything from fine dining tableware and decorative objects to art pieces and custom architectural elements. The distinctive cobalt blue of Gzhel, the luxurious gilded designs of Imperial porcelain, and the narrative-rich imagery of modern artists offer unique aesthetic traditions that stand apart from other global ceramic traditions.</p>
+  
+  <p><strong>Key Market Insight:</strong> Russian premium porcelain and ceramics exports have grown to approximately $175 million annually, with collector pieces achieving average price increases of 14% year-over-year at international auctions.</p>
 </section>
 
 <section id="supplements" class="sector-section">
@@ -146,14 +157,14 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
   <p><strong>Key Market Insight:</strong> Premium and certified organic honey varieties from Russia command up to 5x the price of conventional honey in international markets, with Altai and Far Eastern varieties particularly prized in Asian markets.</p>
 </section>
 
-<section id="seafood" class="sector-section">
-  <h3>Gourmet Fish and Seafood</h3>
+<section id="gourmet" class="sector-section">
+  <h3>Gourmet Foods</h3>
   
-  <p>With the world's fourth-longest coastline and access to both cold and warm waters, Russia's seafood resources are exceptional in their diversity. The premium seafood sector, valued at $3.7 billion, encompasses everything from Kamchatka crab and Far Eastern scallops to Black Sea oysters and Arctic char.</p>
+  <p>Russia's diverse culinary heritage has given rise to specialty food brands that showcase unique ingredients, traditional recipes, and innovative approaches to food production. This sector encompasses a wide range of specialty products including wild-harvested forest foods, premium seafood, game meats, artisanal preserves, and contemporary interpretations of traditional delicacies.</p>
   
-  <p>Russian producers have elevated traditional preservation techniques like cold-smoking and light salting to an art form, creating delicacies that are increasingly appearing on gourmet plates worldwide. Caviar remains a flagship product, with sustainable aquaculture operations now complementing traditional sources.</p>
+  <p>Many producers emphasize Russia's pristine natural environments as the source of exceptional raw ingredients, from Kamchatka crab and Far Eastern scallops to wild berries, mushrooms, and herbs from boreal forests. The sector includes both traditional products with centuries of history and innovative offerings that blend Russian ingredients with global culinary techniques.</p>
   
-  <p><strong>Key Market Insight:</strong> Russia's premium fish exports have increased by 67% in value over the past five years, with processed and ready-to-eat products growing at more than double the rate of raw commodity exports.</p>
+  <p><strong>Key Market Insight:</strong> Russian premium food exports have grown by 67% in value over the past five years, with processed and ready-to-eat products growing at more than double the rate of raw commodity exports.</p>
 </section>
 
 <section id="dairy" class="sector-section">

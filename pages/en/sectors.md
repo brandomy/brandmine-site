@@ -17,7 +17,7 @@ ref: sectors
 <!-- Introduction Panel -->
 <div class="full-width-panel light-panel">
   <div class="panel-content">
-    <p class="lead-text">Brandmine focuses on consumer brand sectors that demonstrate exceptional potential for cross-border growth. Our expertise begins with 15 key Russian sectors and will expand to additional BRICS+ countries.</p>
+    <p class="lead-text">Brandmine focuses on consumer brand sectors that demonstrate exceptional potential for cross-border growth. Our expertise begins with 16 key Russian sectors and will expand to additional BRICS+ countries.</p>
   </div>
 </div>
 
@@ -29,23 +29,23 @@ ref: sectors
       
       <div class="sector-spotlight">
         <div class="sector-spotlight-item">
+          <h3>Hotels & Resorts</h3>
+          <p>From historic city properties to remote wilderness retreats, Russian boutique hotels offer unique cultural experiences. These properties showcase rich storytelling opportunities and present both experiential offerings and compelling investment potential.</p>
+        </div>
+        
+        <div class="sector-spotlight-item">
           <h3>Artisanal Spirits & Vodka</h3>
-          <p>Russia's renowned heritage in spirits extends far beyond the familiar. Today's craft distillery movement combines centuries of tradition with innovative approaches, creating products with powerful storytelling potential and established global appeal.</p>
+          <p>Russia's craft distillery movement combines centuries of tradition with innovative approaches, creating distinctive products with powerful storytelling potential. Small-batch producers are reviving traditional methods and emphasizing regional identity.</p>
         </div>
         
         <div class="sector-spotlight-item">
-          <h3>Natural Beauty Products</h3>
-          <p>Drawing on Siberia's vast botanical resources, Russian beauty brands are carving a unique position in the global clean beauty movement. These products combine traditional herbal knowledge with modern formulation techniques.</p>
-        </div>
-        
-        <div class="sector-spotlight-item">
-          <h3>Specialty Cheeses</h3>
-          <p>Russia's emerging artisanal cheese scene represents a fascinating story of innovation under challenging conditions. Small-batch producers are creating unique flavor profiles that appeal to the growing global interest in craft foods.</p>
+          <h3>Gourmet Foods</h3>
+          <p>Russia's diverse culinary heritage has given rise to specialty food brands that showcase unique ingredients and traditional recipes. These products appeal to global consumers seeking authentic flavor experiences and distinctive culinary stories.</p>
         </div>
       </div>
       
       <div class="cta-container centered">
-        <a href="{{ site.baseurl }}/en/russian-sectors/" class="btn-primary">Explore 15 Leading Russian Sectors</a>
+        <a href="{{ site.baseurl }}/en/russian-sectors/" class="btn-primary">Explore 16 Leading Russian Sectors</a>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@ ref: sectors
       <div class="country-sectors-card">
         <div class="country-flag ru-flag"></div>
         <h3>Russia</h3>
-        <p>15 key sectors including artisanal spirits, natural beauty products, and specialty foods</p>
+        <p>16 key sectors including hotels & resorts, artisanal spirits, and gourmet foods</p>
       </div>
       
       <div class="country-sectors-card">
