@@ -49,6 +49,12 @@
     text-decoration: underline;
   }
   
+  /* Active state styling for navigation links */
+  .site-nav a.active {
+    background-color: var(--primary-700);
+    font-weight: bold;
+  }
+  
   /* --------------------------------------------------------------------------
      3. LANGUAGE SELECTOR
      -------------------------------------------------------------------------- */
@@ -242,4 +248,142 @@
 
 .site-footer {
   margin-top: 0 !important; /* Override the 3rem margin regardless of screen size */
+}
+
+
+/* ==========================================================================
+   Hamburger Menu
+   ========================================================================== */
+
+/* Default state - hide toggle on desktop */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* Hamburger icon styling */
+.menu-icon {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 18px;
+}
+
+/* Hamburger bars (middle, before/after for top and bottom) */
+.menu-icon, 
+.menu-icon::before, 
+.menu-icon::after {
+  background-color: white;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-icon::before, 
+.menu-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.menu-icon::before {
+  top: -8px;
+}
+
+.menu-icon::after {
+  bottom: -8px;
+}
+
+/* Active hamburger icon (X shape) */
+.menu-open .menu-icon {
+  background-color: transparent; /* Hide middle line */
+}
+
+.menu-open .menu-icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-open .menu-icon::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+/* Mobile navigation styles */
+@media (max-width: 767px) {
+  /* Show hamburger toggle on mobile */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 22px;
+    right: 20px;
+  }
+  
+  /* Header layout adjustments */
+  .site-header .wrapper {
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  /* IMPORTANT: Default state - hide nav when menu closed */
+  .site-nav {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-600);
+    flex-direction: column;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 900;
+    transition: display 0.3s ease, opacity 0.3s ease; /* Added transition effect */
+  }
+  
+  /* Show nav when menu open */
+  body.menu-open .site-nav {
+    display: flex !important;
+  }
+  
+  /* Style nav links for mobile */
+  .site-nav a {
+    display: block;
+    padding: 0.75rem 2rem;
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* Hover state for mobile nav links */
+  .site-nav a:hover {
+    background-color: var(--primary-700);
+  }
+  
+  /* Language selector positioning */
+  .language-selector {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+  }
+}
+
+/* Handle very small screens (under 480px) */
+@media (max-width: 480px) {
+  /* Further adjustments for small screens */
+  .site-title {
+    font-size: 1.2rem;
+  }
+  
+  .menu-toggle {
+    right: 15px;
+  }
+  
+  .language-selector {
+    right: 60px;
+  }
 }

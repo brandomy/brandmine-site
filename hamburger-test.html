@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hamburger Menu Test</title>
+  <style>
+    /* Only essential styling */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .header {
+      background-color: #38B2AC;
+      padding: 1rem;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .site-title {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .site-nav {
+      display: flex;
+    }
+    .site-nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Media query for the hamburger menu */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: #38B2AC;
+        padding: 1rem 0;
+      }
+      .site-nav.active {
+        display: flex;
+      }
+      .site-nav a {
+        padding: 0.5rem 1rem;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a class="site-title" href="#">Brandmine Test</a>
+      
+      <button class="menu-toggle">☰</button>
+      
+      <nav class="site-nav">
+        <a href="#">Home</a>
+        <a href="#">Brands</a>
+        <a href="#">Sectors</a>
+        <a href="#">Markets</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+      <h1>Hamburger Menu Test</h1>
+      <p>This is a minimal test page to isolate hamburger menu functionality.</p>
+    </div>
+  </main>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const siteNav = document.querySelector('.site-nav');
+      
+      menuToggle.addEventListener('click', function() {
+        siteNav.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
