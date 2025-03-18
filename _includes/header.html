@@ -1,6 +1,14 @@
 <header class="site-header">
   <div class="wrapper">
+    <!-- Site title/logo -->
     <a class="site-title" href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].site.title }}</a>
+    
+    <!-- Hamburger menu toggle button -->
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="menu-icon">☰</span>
+    </button>
+    
+    <!-- Main navigation - will be hidden on mobile by default -->
     <nav class="site-nav">
       <a href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].nav.home }}</a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/brands/">{{ site.data.translations[page.lang].nav.brands }}</a>
@@ -8,6 +16,8 @@
       <a href="{{ site.baseurl }}/{{ page.lang }}/markets/">{{ site.data.translations[page.lang].nav.markets }}</a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/about/">{{ site.data.translations[page.lang].nav.about }}</a>
     </nav>
+    
+    <!-- Keep the language selector here -->
     {% include language-selector.html %}
   </div>
 </header>
