@@ -16,8 +16,8 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
   <div class="sector-column">
     <h3>Lifestyle Sectors</h3>
     <ul>
-      <li><a href="#beauty">Natural Beauty Products</a></li>
       <li><a href="#hotels">Hotels & Resorts</a></li>
+      <li><a href="#beauty">Natural Beauty Products</a></li>
       <li><a href="#jewelry">Jewelry & Watches</a></li>
       <li><a href="#fashion">Fashion & Accessories</a></li>
       <li><a href="#porcelain">Artisan Porcelain & Ceramics</a></li>
@@ -29,11 +29,11 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
     <h3>Food & Beverage Sectors</h3>
     <ul>
       <li><a href="#spirits">Artisanal Spirits & Vodka</a></li>
+      <li><a href="#gourmet">Gourmet Foods</a></li>
       <li><a href="#wine">Wine</a></li>
+      <li><a href="#honey">Honey & Bee Products</a></li>
       <li><a href="#mineral-waters">Mineral Waters</a></li>
       <li><a href="#cheese">Specialty Cheeses</a></li>
-      <li><a href="#honey">Honey & Bee Products</a></li>
-      <li><a href="#gourmet">Gourmet Foods</a></li>
       <li><a href="#dairy">Fermented Dairy (Kefir)</a></li>
       <li><a href="#halal">Halal Food Products</a></li>
       <li><a href="#meats">Salami & Cured Meats</a></li>
@@ -45,16 +45,6 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
 
 <h2>Lifestyle Sectors</h2>
 
-<section id="beauty" class="sector-section">
-  <h3>Natural Beauty Products</h3>
-  
-  <p>Russia's natural beauty sector leverages the country's vast botanical resources, particularly from Siberia and the Far East, where plants have evolved potent bioactive compounds to survive extreme conditions. This rapidly growing sector is currently valued at $2.9 billion and expanding at 18% annually.</p>
-  
-  <p>Brands emphasize ingredients like sea buckthorn, pine nut oil, altai herbs, and arctic berries that are rich in antioxidants and essential nutrients. The clean beauty movement has accelerated growth, with Russian manufacturers developing products that combine natural ingredients with sophisticated formulations that meet international certification standards.</p>
-  
-  <p><strong>Key Market Insight:</strong> Export value of Russian natural cosmetics has grown by 215% since 2019, with particularly strong performance in East Asian markets where Russian botanical ingredients are increasingly recognized for their efficacy.</p>
-</section>
-
 <section id="hotels" class="sector-section">
   <h3>Hotels & Resorts</h3>
   
@@ -63,6 +53,16 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
   <p>Properties across Russia feature distinctive architectural styles, design aesthetics, and hospitality traditions that reflect regional cultural heritage. Many integrate local culinary offerings, wellness traditions, and experiential activities that provide immersive engagement with Russian landscapes and culture.</p>
   
   <p><strong>Key Market Insight:</strong> Investment in Russian boutique hospitality has grown by 43% since 2019, with particular interest in properties that offer authentic cultural experiences combined with international service standards.</p>
+</section>
+
+<section id="beauty" class="sector-section">
+  <h3>Natural Beauty Products</h3>
+  
+  <p>Russia's natural beauty sector leverages the country's vast botanical resources, particularly from Siberia and the Far East, where plants have evolved potent bioactive compounds to survive extreme conditions. This rapidly growing sector is currently valued at $2.9 billion and expanding at 18% annually.</p>
+  
+  <p>Brands emphasize ingredients like sea buckthorn, pine nut oil, altai herbs, and arctic berries that are rich in antioxidants and essential nutrients. The clean beauty movement has accelerated growth, with Russian manufacturers developing products that combine natural ingredients with sophisticated formulations that meet international certification standards.</p>
+  
+  <p><strong>Key Market Insight:</strong> Export value of Russian natural cosmetics has grown by 215% since 2019, with particularly strong performance in East Asian markets where Russian botanical ingredients are increasingly recognized for their efficacy.</p>
 </section>
 
 <section id="jewelry" class="sector-section">
@@ -117,6 +117,16 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
   <p><strong>Key Market Insight:</strong> The premium segment of Russian spirits has grown at 14% annually since 2020, significantly outpacing the overall spirits market growth of 3.2%.</p>
 </section>
 
+<section id="gourmet" class="sector-section">
+  <h3>Gourmet Foods</h3>
+  
+  <p>Russia's diverse culinary heritage has given rise to specialty food brands that showcase unique ingredients, traditional recipes, and innovative approaches to food production. This sector encompasses a wide range of specialty products including wild-harvested forest foods, premium seafood, game meats, artisanal preserves, and contemporary interpretations of traditional delicacies.</p>
+  
+  <p>Many producers emphasize Russia's pristine natural environments as the source of exceptional raw ingredients, from Kamchatka crab and Far Eastern scallops to wild berries, mushrooms, and herbs from boreal forests. The sector includes both traditional products with centuries of history and innovative offerings that blend Russian ingredients with global culinary techniques.</p>
+  
+  <p><strong>Key Market Insight:</strong> Russian premium food exports have grown by 67% in value over the past five years, with processed and ready-to-eat products growing at more than double the rate of raw commodity exports.</p>
+</section>
+
 <section id="wine" class="sector-section">
   <h3>Wine</h3>
   
@@ -125,6 +135,16 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
   <p>Climate challenges have inspired innovative viticulture techniques, while investments in modern production facilities have dramatically improved quality. Russian wineries are gaining recognition at international competitions, with 47 medals awarded to Russian producers at the 2024 Decanter World Wine Awards.</p>
   
   <p><strong>Key Market Insight:</strong> Russia's annual wine production reached 47 million decaliters in 2024, with premium local wines now commanding 23% of domestic market share—double what they held just seven years ago.</p>
+</section>
+
+<section id="honey" class="sector-section">
+  <h3>Honey and Bee Products</h3>
+  
+  <p>Russia produces approximately 65,000 tons of honey annually, making it the world's 9th largest producer. The country's diverse ecosystems—from the taiga forests of Siberia to the flower-rich meadows of the Altai Mountains—create distinctive honey varieties with unique flavor profiles, appearance, and therapeutic properties.</p>
+  
+  <p>Beyond conventional honey, Russian producers have developed sophisticated product lines including monofloral varieties, honeycomb, royal jelly, propolis extracts, and medicinal formulations based on traditional wellness practices. Many apiaries maintain organic certification and emphasize traditional beekeeping methods passed down through generations.</p>
+  
+  <p><strong>Key Market Insight:</strong> Premium and certified organic honey varieties from Russia command up to 5x the price of conventional honey in international markets, with Altai and Far Eastern varieties particularly prized in Asian markets.</p>
 </section>
 
 <section id="mineral-waters" class="sector-section">
@@ -145,26 +165,6 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
   <p>Many producers bring fascinating stories of career changes and passion projects—former bankers, IT specialists, and academics who reinvented themselves as cheese artisans. This sector exemplifies Russian entrepreneurial adaptability, with producers developing distinctive approaches that reflect both European traditions and Russian cultural heritage.</p>
   
   <p><strong>Key Market Insight:</strong> The Russian specialty cheese market has grown by 375% since 2015, with premium varieties now representing a $1.2 billion segment that continues to expand at 17% annually.</p>
-</section>
-
-<section id="honey" class="sector-section">
-  <h3>Honey and Bee Products</h3>
-  
-  <p>Russia produces approximately 65,000 tons of honey annually, making it the world's 9th largest producer. The country's diverse ecosystems—from the taiga forests of Siberia to the flower-rich meadows of the Altai Mountains—create distinctive honey varieties with unique flavor profiles, appearance, and therapeutic properties.</p>
-  
-  <p>Beyond conventional honey, Russian producers have developed sophisticated product lines including monofloral varieties, honeycomb, royal jelly, propolis extracts, and medicinal formulations based on traditional wellness practices. Many apiaries maintain organic certification and emphasize traditional beekeeping methods passed down through generations.</p>
-  
-  <p><strong>Key Market Insight:</strong> Premium and certified organic honey varieties from Russia command up to 5x the price of conventional honey in international markets, with Altai and Far Eastern varieties particularly prized in Asian markets.</p>
-</section>
-
-<section id="gourmet" class="sector-section">
-  <h3>Gourmet Foods</h3>
-  
-  <p>Russia's diverse culinary heritage has given rise to specialty food brands that showcase unique ingredients, traditional recipes, and innovative approaches to food production. This sector encompasses a wide range of specialty products including wild-harvested forest foods, premium seafood, game meats, artisanal preserves, and contemporary interpretations of traditional delicacies.</p>
-  
-  <p>Many producers emphasize Russia's pristine natural environments as the source of exceptional raw ingredients, from Kamchatka crab and Far Eastern scallops to wild berries, mushrooms, and herbs from boreal forests. The sector includes both traditional products with centuries of history and innovative offerings that blend Russian ingredients with global culinary techniques.</p>
-  
-  <p><strong>Key Market Insight:</strong> Russian premium food exports have grown by 67% in value over the past five years, with processed and ready-to-eat products growing at more than double the rate of raw commodity exports.</p>
 </section>
 
 <section id="dairy" class="sector-section">
