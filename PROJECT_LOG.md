@@ -1,5 +1,17 @@
 ## 2025-03-11: Implemented Multilingual Newsletter Forms
 
+## 2025-03-19: Reorder all russian-sectors [Content]
+
+### Changes Made
+- within russian-sectors reordered the Lifstyle & F&B sectors
+- repeated for EN/RU/ZH sites
+
+### Technical Decisions
+- no change
+
+### Next Steps
+- style this page with panels and colour
+
 ## 2025-03-19: Update Russian and English sectors pages to reflect the addition of new sectors and enhance content for improved clarity and engagement [Content]
 
 ### Changes Made
