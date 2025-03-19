@@ -1,5 +1,18 @@
 ## 2025-03-11: Implemented Multilingual Newsletter Forms
 
+## 2025-03-19: Update Russian and English sectors pages to reflect the addition of new sectors and enhance content for improved clarity and engagement [Content]
+
+### Changes Made
+- added Hotels and Resorts as a category
+- modified to Fashion & Accessories, Gourmet Foods
+- reprioritized initial 3 sectors
+
+### Technical Decisions
+- targeting most potential for sales
+
+### Next Steps
+- review the brands page before merging into main
+
 ## 2025-03-18: Implement mobile hamburger menu functionality and styles [Layout]
 
 ### Changes Made
