@@ -1,23 +1,25 @@
 <div class="tag-cloud">
-  <h3>{{ site.data.translations[page.lang].blog.sectors }}</h3>
-    <div class="sector-cloud">
-      {% for tag_page in site.tags %}
-        {% if tag_page.tag_type == "sector" %}
-          <a href="{{ tag_page.url | relative_url }}" class="tag sector-tag">
-            {{ tag_page.title }}
-          </a>
-        {% endif %}
-      {% endfor %}
-    </div>
-    
-    <h3>{{ site.data.translations[page.lang].blog.business_attributes }}</h3>
-    <div class="attribute-cloud">
-      {% for tag_page in site.tags %}
-        {% if tag_page.tag_type == "attribute" %}
-          <a href="{{ tag_page.url | relative_url }}" class="tag attribute-tag">
-            {{ tag_page.title }}
-          </a>
-        {% endif %}
-      {% endfor %}
-    </div>
+  <h3>{{ site.data.translations[page.lang].tags.sectors }}</h3>
+  <div class="sector-cloud">
+    {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang %}
+    {% for tag in sector_tags %}
+      <a href="{{ tag.url | relative_url }}" class="tag sector-tag">{{ tag.title }}</a>
+    {% endfor %}
   </div>
+  
+  <h3>{{ site.data.translations[page.lang].tags.attributes }}</h3>
+  <div class="attribute-cloud">
+    {% assign attribute_tags = site.tags | where: "tag_type", "attribute" | where: "lang", page.lang %}
+    {% for tag in attribute_tags %}
+      <a href="{{ tag.url | relative_url }}" class="tag attribute-tag">{{ tag.title }}</a>
+    {% endfor %}
+  </div>
+  
+  <h3>{{ site.data.translations[page.lang].tags.growth }}</h3>
+  <div class="growth-cloud">
+    {% assign growth_tags = site.tags | where: "tag_type", "growth" | where: "lang", page.lang %}
+    {% for tag in growth_tags %}
+      <a href="{{ tag.url | relative_url }}" class="tag growth-tag">{{ tag.title }}</a>
+    {% endfor %}
+  </div>
+</div>

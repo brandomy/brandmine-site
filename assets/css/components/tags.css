@@ -4,93 +4,124 @@
 
 /* Tag list styling */
 .tag-list {
-    margin: var(--space-4) 0;
-  }
-  
-  .sector-tags,
-  .attribute-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-bottom: var(--space-2);
-  }
-  
-  /* Individual tag styling */
-  .tag {
-    display: inline-block;
-    padding: var(--space-1) var(--space-2);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    line-height: 1.4;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  
-  .sector-tag {
-    background-color: var(--primary-100);
-    color: var(--primary-700);
-    border: 1px solid var(--primary-200);
-  }
-  
-  .sector-tag:hover {
-    background-color: var(--primary-200);
-    color: var(--primary-800);
-  }
-  
-  .attribute-tag {
-    background-color: var(--secondary-100);
-    color: var(--secondary-700);
-    border: 1px solid var(--secondary-200);
-  }
-  
-  .attribute-tag:hover {
-    background-color: var(--secondary-200);
-    color: var(--secondary-800);
-  }
-  
-  /* Tag cloud styling */
-  .tag-cloud {
-    margin: var(--space-6) 0;
-  }
-  
-  .tag-cloud h3 {
-    margin-bottom: var(--space-2);
-    font-size: 1.25rem;
-  }
-  
-  .sector-cloud,
-  .attribute-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-bottom: var(--space-6);
-  }
-  
-  /* Tag page styling */
-  .tag-header {
-    margin-bottom: var(--space-8);
-  }
-  
-  .tag-type {
-    display: inline-block;
-    padding: var(--space-1) var(--space-2);
-    background-color: var(--neutral-200);
-    color: var(--neutral-700);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-2);
-  }
-  
-  .tag-description {
-    font-size: 1.125rem;
-    color: var(--neutral-600);
-    margin-bottom: var(--space-4);
-    max-width: 40em;
-  }
-  
-  .tag-posts h2 {
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-4);
-  }
+  margin: var(--space-4) 0;
+}
+
+.sector-tags,
+.attribute-tags,
+.growth-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+/* Individual tag styling */
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sector-tag {
+  background-color: var(--primary-100);
+  color: var(--primary-700);
+  border: 1px solid var(--primary-200);
+}
+
+.sector-tag:hover {
+  background-color: var(--primary-200);
+  color: var(--primary-800);
+}
+
+.attribute-tag {
+  background-color: var(--secondary-100);
+  color: var(--secondary-700);
+  border: 1px solid var(--secondary-200);
+}
+
+.attribute-tag:hover {
+  background-color: var(--secondary-200);
+  color: var(--secondary-800);
+}
+
+.growth-tag {
+  background-color: var(--accent-100);
+  color: var(--accent-700);
+  border: 1px solid var(--accent-200);
+}
+
+.growth-tag:hover {
+  background-color: var(--accent-200);
+  color: var(--accent-800);
+}
+
+/* Tag cloud styling */
+.tag-cloud {
+  margin: var(--space-6) 0;
+}
+
+.tag-cloud h3 {
+  margin-bottom: var(--space-2);
+  font-size: 1.25rem;
+}
+
+.sector-cloud,
+.attribute-cloud,
+.growth-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+/* Tag page styling */
+.tag-header {
+  margin-bottom: var(--space-8);
+}
+
+.tag-type {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--neutral-200);
+  color: var(--neutral-700);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.tag-description {
+  font-size: 1.125rem;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-4);
+  max-width: 40em;
+}
+
+.tag-posts h2 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+/* Badge integration preparation */
+.tag.with-badge {
+  padding-left: var(--space-6);
+  position: relative;
+}
+
+.badge-icon {
+  position: absolute;
+  left: var(--space-1);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

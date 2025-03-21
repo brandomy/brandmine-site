@@ -1,17 +1,17 @@
 # Brandmine Site Summary
-Generated on Fri 21 Mar 2025 15:44:09 +08
+Generated on Fri 21 Mar 2025 18:35:01 +08
 
 ## Repository Status
 Current branch: feature/blog-setup
-Last commit: Add new insights category and related content, including brand discoveries and hotels & resorts tags
-Last commit date: 2025-03-21 13:15
-Modified files:       13
+Last commit: Add new category pages for brand discoveries, success stories, cultural context, and export opportunities in multiple languages
+Last commit date: 2025-03-21 16:05
+Modified files:       14
 Recent activity:
+- 2025-03-21: Add new category pages for brand discoveries, success stories, cultural context, and export opportunities in multiple languages
 - 2025-03-21: Add new insights category and related content, including brand discoveries and hotels & resorts tags
 - 2025-03-20: Add favicon support with dedicated directory
 - 2025-03-20: Add favicon support with dedicated directory
 - 2025-03-19: Style the Russian-Sectors page with panels
-- 2025-03-19: Reorder all russian-sectors
 
 ## Site Structure
 ### Directories
@@ -114,7 +114,7 @@ collections:
 collections:
   tags:
     output: true
-    permalink: /tags/:path/
+    permalink: /:collection/:path/
 ...
 defaults:
   - scope:
@@ -141,9 +141,9 @@ defaults:
   - Date range: 2025/03/21 to 2025/03/21
 - Translation files:        3
   - Translation coverage:
-    - en (primary):       46 keys
-    - ru:       46 keys (100% coverage)
-    - zh:       46 keys (100% coverage)
+    - en (primary):       53 keys
+    - ru:       53 keys (100% coverage)
+    - zh:       53 keys (100% coverage)
 
 ## Key File Contents
 ### _layouts/default.html (Structure)
@@ -228,8 +228,8 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 0.996 seconds.
-- Generated HTML pages:       42
+- Build time (clean): 1.234 seconds.
+- Generated HTML pages:       51
 - Total site size:  32M
 
 ## Environment & Dependencies
@@ -248,6 +248,7 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-21**: Add new category pages for brand discoveries, success stories, cultural context, and export opportunities in multiple languages (Randal Eastman)
 - **2025-03-21**: Add new insights category and related content, including brand discoveries and hotels & resorts tags (Randal Eastman)
 - **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
 - **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
@@ -257,7 +258,6 @@ body, html {
 - **2025-03-19**: Update Russian and English sectors pages to reflect the addition of new sectors and enhance content for improved clarity and engagement (Randal Eastman)
 - **2025-03-18**: Enhance ZH brands, sectors and markets pages with new layout and content panels for improved user experience (Randal Eastman)
 - **2025-03-18**: Add sectors, markets, brands panel style page layouts for EN and RU pages. (Randal Eastman)
-- **2025-03-18**: Implement mobile hamburger menu functionality and styles (Randal Eastman)
 
 ### Recently Modified Files
 - PROJECT_LOG.md
@@ -272,9 +272,9 @@ body, html {
 - _layouts/default.html
 - _layouts/post.html
 - _layouts/tag.html
+- _posts/2025-03-06-welcome-to-jekyll.markdown
 - _posts/en/2025-03-21-russian-boutique-hotels.md
 - _tags/sectors/hotels-resorts.md
-- assets/css/components/tags.css
 
 
 ### Project Log Entries (Last 2)

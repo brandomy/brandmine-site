@@ -51,7 +51,7 @@ defaults:
 collections:
   tags:
     output: true
-    permalink: /tags/:path/
+    permalink: /:collection/:path/
 
 defaults:
   # Add defaults for posts
@@ -73,9 +73,23 @@ defaults:
     values:
       layout: "post"
       lang: "zh"
-  # Add defaults for tags
+
+# Tag defaults for each language
   - scope:
-      path: "_tags"
+      path: "_tags/en"
       type: "tags"
     values:
       layout: "tag"
+      lang: "en"
+  - scope:
+      path: "_tags/ru"
+      type: "tags"
+    values:
+      layout: "tag"
+      lang: "ru"
+  - scope:
+      path: "_tags/zh"
+      type: "tags"
+    values:
+      layout: "tag"
+      lang: "zh"

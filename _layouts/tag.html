@@ -4,12 +4,14 @@ layout: default
 <div class="full-width-panel light-panel">
   <div class="panel-content">
     <div class="tag-header">
-      <span class="tag-type">{{ page.tag_type | capitalize }}</span>
+      <span class="tag-type">{{ site.data.translations[page.lang].tags[page.tag_type] }}</span>
       <h1>{{ page.title }}</h1>
       <p class="tag-description">{{ page.description }}</p>
     </div>
     
-    {{ content }}
+    <div class="tag-content">
+      {{ content }}
+    </div>
     
     <div class="tag-posts">
       <h2>{{ site.data.translations[page.lang].blog.related_content }}</h2>
@@ -20,9 +22,9 @@ layout: default
             <div class="post-card">
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
               <p class="post-meta">
-                {% if post.lang == 'ru' %}
+                {% if page.lang == 'ru' %}
                   {{ post.date | date: "%-d %B %Y г. в %H:%M (+0800)" }}
-                {% elsif post.lang == 'zh' %}
+                {% elsif page.lang == 'zh' %}
                   {{ post.date | date: "%Y年%-m月%-d日 %H:%M (+0800)" }}
                 {% else %}
                   {{ post.date | date: "%B %-d, %Y at %H:%M (+0800)" }}

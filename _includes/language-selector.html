@@ -1,3 +1,21 @@
+<!-- _includes/language-selector.html - Suggested fix -->
+<div class="language-selector">
+  <!-- Get unique language options by filtering site pages -->
+  {% assign langs = "en,ru,zh" | split: "," %}
+  
+  {% for lang in langs %}
+    <a href="{{ site.baseurl }}/{{ lang }}/" class="{% if page.lang == lang %}active{% endif %}">
+      {{ lang | upcase }}
+    </a>
+  {% endfor %}
+</div>
+
+
+
+
+
+<!-- OLD CODE
+
 <div class="language-selector">
   {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
   {% for p in pages %}
@@ -5,4 +23,4 @@
       {{ p.lang | upcase }}
     </a>
   {% endfor %}
-</div>
+</div> -->

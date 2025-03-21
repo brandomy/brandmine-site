@@ -1,31 +1,50 @@
 <div class="tag-list">
-    {% if include.tags %}
-      {% assign sector_tags = "" | split: "" %}
-      {% assign attribute_tags = "" | split: "" %}
+  {% if include.tags %}
+    {% assign sector_tags = "" | split: "" %}
+    {% assign attribute_tags = "" | split: "" %}
+    {% assign growth_tags = "" | split: "" %}
+    
+    {% for tag in include.tags %}
+      {% assign tag_path = tag | slugify %}
       
-      {% for tag in include.tags %}
-        {% assign tag_path = tag | slugify %}
-        {% if site.tags.sectors[tag_path] %}
-          {% assign sector_tags = sector_tags | push: tag %}
-        {% else %}
-          {% assign attribute_tags = attribute_tags | push: tag %}
+      {% for site_tag in site.tags %}
+        {% if site_tag.tag == tag %}
+          {% if site_tag.tag_type == "sector" %}
+            {% assign sector_tags = sector_tags | push: site_tag %}
+            {% break %}
+          {% elsif site_tag.tag_type == "attribute" %}
+            {% assign attribute_tags = attribute_tags | push: site_tag %}
+            {% break %}
+          {% elsif site_tag.tag_type == "growth" %}
+            {% assign growth_tags = growth_tags | push: site_tag %}
+            {% break %}
+          {% endif %}
         {% endif %}
       {% endfor %}
-      
-      {% if sector_tags.size > 0 %}
-        <div class="sector-tags">
-          {% for tag in sector_tags %}
-            <a href="{{ site.baseurl }}/tags/sectors/{{ tag | slugify }}/" class="tag sector-tag">{{ tag | replace: '-', ' ' | capitalize }}</a>
-          {% endfor %}
-        </div>
-      {% endif %}
-      
-      {% if attribute_tags.size > 0 %}
-        <div class="attribute-tags">
-          {% for tag in attribute_tags %}
-            <a href="{{ site.baseurl }}/tags/attributes/{{ tag | slugify }}/" class="tag attribute-tag">{{ tag | replace: '-', ' ' | capitalize }}</a>
-          {% endfor %}
-        </div>
-      {% endif %}
+    {% endfor %}
+    
+    {% if sector_tags.size > 0 %}
+      <div class="sector-tags">
+        {% for tag in sector_tags %}
+          <a href="{{ tag.url | relative_url }}" class="tag sector-tag">{{ tag.title }}</a>
+        {% endfor %}
+      </div>
     {% endif %}
-  </div>
+    
+    {% if attribute_tags.size > 0 %}
+      <div class="attribute-tags">
+        {% for tag in attribute_tags %}
+          <a href="{{ tag.url | relative_url }}" class="tag attribute-tag">{{ tag.title }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    {% if growth_tags.size > 0 %}
+      <div class="growth-tags">
+        {% for tag in growth_tags %}
+          <a href="{{ tag.url | relative_url }}" class="tag growth-tag">{{ tag.title }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
