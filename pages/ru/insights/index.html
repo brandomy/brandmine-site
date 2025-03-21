@@ -13,7 +13,8 @@ lang: ru
     <div class="blog-layout">
       <div class="main-content">
         <div class="category-list">
-          <h2>{{ site.data.translations[page.lang].blog.categories }}</h2>          <div class="category-grid">
+          <h2>{{ site.data.translations[page.lang].blog.categories }}</h2>
+          <div class="category-grid">
             <div class="category-card">
               <h3><a href="{{ '/ru/insights/categories/brand-discoveries/' | relative_url }}">Открытие брендов</a></h3>
               <p>Знакомство с примечательными брендами стран БРИКС+ и их уникальными историями.</p>
@@ -36,14 +37,16 @@ lang: ru
           </div>
         </div>
         
-        <h2>{{ site.data.translations[page.lang].blog.recent_posts }}</h2>        <div class="post-grid">
+        <h2>{{ site.data.translations[page.lang].blog.recent_posts }}</h2>
+        <div class="post-grid">
           {% assign posts = site.posts | where:"lang", page.lang %}
           {% for post in posts limit:6 %}
             <div class="post-card">
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <p class="post-meta">{{ post.date | date: "%-d %B %Y г." }}</p>
+              <p class="post-meta">{{ post.date | date: "%-d %B %Y г. в %H:%M (+0800)" }}</p>
               <p>{{ post.excerpt }}</p>
-              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>            </div>
+              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>
+            </div>
           {% endfor %}
         </div>
       </div>

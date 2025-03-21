@@ -19,9 +19,18 @@ layout: default
           {% if post.tags contains page.tag %}
             <div class="post-card">
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+              <p class="post-meta">
+                {% if post.lang == 'ru' %}
+                  {{ post.date | date: "%-d %B %Y г. в %H:%M (+0800)" }}
+                {% elsif post.lang == 'zh' %}
+                  {{ post.date | date: "%Y年%-m月%-d日 %H:%M (+0800)" }}
+                {% else %}
+                  {{ post.date | date: "%B %-d, %Y at %H:%M (+0800)" }}
+                {% endif %}
+              </p>
               <p>{{ post.excerpt }}</p>
-              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>           </div>
+              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>
+            </div>
           {% endif %}
         {% endfor %}
       </div>

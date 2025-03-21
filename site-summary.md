@@ -1,35 +1,39 @@
 # Brandmine Site Summary
-Generated on Fri 21 Mar 2025 11:32:54 +08
+Generated on Fri 21 Mar 2025 15:44:09 +08
 
 ## Repository Status
-Current branch: main
-Last commit: Style the Russian-Sectors page with panels
-Last commit date: 2025-03-19 15:20
-Modified files:        1
+Current branch: feature/blog-setup
+Last commit: Add new insights category and related content, including brand discoveries and hotels & resorts tags
+Last commit date: 2025-03-21 13:15
+Modified files:       13
 Recent activity:
+- 2025-03-21: Add new insights category and related content, including brand discoveries and hotels & resorts tags
+- 2025-03-20: Add favicon support with dedicated directory
+- 2025-03-20: Add favicon support with dedicated directory
 - 2025-03-19: Style the Russian-Sectors page with panels
 - 2025-03-19: Reorder all russian-sectors
-- 2025-03-19: Update Russian and English sectors pages to include new categories and enhance content clarity
-- 2025-03-19: Update Russian and English sectors pages to reflect the addition of new sectors and enhance content for improved clarity and engagement
-- 2025-03-18: Enhance ZH brands, sectors and markets pages with new layout and content panels for improved user experience
 
 ## Site Structure
 ### Directories
 ```
-- _layouts/ (       1 files)
+- _layouts/ (       4 files)
+  - category.html
   - default.html
-- _includes/ (       4 files)
+  - post.html
+  - tag.html
+- _includes/ (       5 files)
   - footer.html
   - google-analytics.html
   - header.html
   - language-selector.html
+  - tags
 - _data/ (       4 files)
   - _data/sectors.yml
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (      61 files total)
-  - assets/css/ (      22 CSS files)
+- assets/ (      64 files total)
+  - assets/css/ (      24 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
     - assets/css/components/team.css
@@ -41,6 +45,7 @@ Recent activity:
     - assets/css/components/mobile-fixes.css
     - assets/css/components/buttons.css
     - assets/css/components/cards.css
+    - assets/css/components/tags.css
     - assets/css/components/layouts.css
     - assets/css/pages/home.css
     - assets/css/pages/markets.css
@@ -48,6 +53,7 @@ Recent activity:
     - assets/css/pages/brands.css
     - assets/css/pages/about.css
     - assets/css/pages/russian-sectors.css
+    - assets/css/pages/insights.css
     - assets/css/tokens/typography.css
     - assets/css/tokens/spacing.css
     - assets/css/tokens/breakpoints.css
@@ -66,23 +72,23 @@ Recent activity:
     - assets/fonts/pt-sans_caption-regular.woff2
     - assets/fonts/pt-sans_bold.woff2
     - ... and 12 more font files
-  - assets/images/ (       9 image files)
+  - assets/images/ (      10 image files)
 - pages/ structure
-  - pages/en/ (       6 pages)
+  - pages/en/ (       7 pages)
     - pages/en/brands.md
     - pages/en/markets.md
     - pages/en/index.html
     - pages/en/sectors.md
     - pages/en/russian-sectors.md
     - pages/en/about.md
-  - pages/ru/ (       6 pages)
+  - pages/ru/ (       7 pages)
     - pages/ru/brands.md
     - pages/ru/markets.md
     - pages/ru/index.html
     - pages/ru/sectors.md
     - pages/ru/russian-sectors.md
     - pages/ru/about.md
-  - pages/zh/ (       6 pages)
+  - pages/zh/ (       7 pages)
     - pages/zh/brands.md
     - pages/zh/markets.md
     - pages/zh/index.html
@@ -104,6 +110,11 @@ collections:
   brands:
     output: true
     permalink: /:collection/:path/
+--
+collections:
+  tags:
+    output: true
+    permalink: /tags/:path/
 ...
 defaults:
   - scope:
@@ -111,21 +122,28 @@ defaults:
     values:
       layout: default
   - scope:
+--
+defaults:
+  # Add defaults for posts
+  - scope:
+      path: "_posts/en"
+      type: "posts"
+    values:
 ...
 ```
 
 ## Content Summary
 - Languages:        3 (en ru zh )
-  - en:        6 pages
-  - ru:        6 pages
-  - zh:        6 pages
+  - en:        7 pages
+  - ru:        7 pages
+  - zh:        7 pages
 - Blog posts:        1
-  - Date range:  to 
+  - Date range: 2025/03/21 to 2025/03/21
 - Translation files:        3
   - Translation coverage:
-    - en (primary):       30 keys
-    - ru:       30 keys (100% coverage)
-    - zh:       30 keys (100% coverage)
+    - en (primary):       46 keys
+    - ru:       46 keys (100% coverage)
+    - zh:       46 keys (100% coverage)
 
 ## Key File Contents
 ### _layouts/default.html (Structure)
@@ -139,17 +157,17 @@ defaults:
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.translations[page.lang].site.description }}{% endif %}">
 
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
-  <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
-  <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
-
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/favicons/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicons/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicons/favicon-16x16.png' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/assets/images/favicons/favicon.ico' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/images/favicons/site.webmanifest' | relative_url }}">
 
   <!-- Style Sheets --> 
    
   <!-- 1. Design Tokens -->
   <link rel="stylesheet" href="{{ '/assets/css/tokens/colors.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
 ... (truncated for brevity) ...
 ```
 
@@ -210,9 +228,9 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 1.182 seconds.
-- Generated HTML pages:       26
-- Total site size:  31M
+- Build time (clean): 0.996 seconds.
+- Generated HTML pages:       42
+- Total site size:  32M
 
 ## Environment & Dependencies
 - Jekyll version: 3.10.0
@@ -230,6 +248,9 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-21**: Add new insights category and related content, including brand discoveries and hotels & resorts tags (Randal Eastman)
+- **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
+- **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
 - **2025-03-19**: Style the Russian-Sectors page with panels (Randal Eastman)
 - **2025-03-19**: Reorder all russian-sectors (Randal Eastman)
 - **2025-03-19**: Update Russian and English sectors pages to include new categories and enhance content clarity (Randal Eastman)
@@ -237,24 +258,23 @@ body, html {
 - **2025-03-18**: Enhance ZH brands, sectors and markets pages with new layout and content panels for improved user experience (Randal Eastman)
 - **2025-03-18**: Add sectors, markets, brands panel style page layouts for EN and RU pages. (Randal Eastman)
 - **2025-03-18**: Implement mobile hamburger menu functionality and styles (Randal Eastman)
-- **2025-03-18**: Remove hamburger menu implementation and related styles (Randal Eastman)
-- **2025-03-18**: Add mobile hamburger menu functionality and styling (Randal Eastman)
-- **2025-03-18**: Update home footer (Randal Eastman)
 
 ### Recently Modified Files
 - PROJECT_LOG.md
-- assets/css/pages/russian-sectors.css
-- assets/css/pages/russian-sectors.css.backup
-- claude-context.md
-- pages/en/russian-sectors.md
-- pages/en/sectors.md
-- pages/ru/russian-sectors.md
-- pages/ru/sectors.md
-- pages/zh/brands.md
-- pages/zh/markets.md
-- pages/zh/russian-sectors.md
-- pages/zh/sectors.md
-- site-summary.md
+- _config.yml
+- _data/translations/en.yml
+- _data/translations/ru.yml
+- _data/translations/zh.yml
+- _includes/header.html
+- _includes/tags/tag-cloud.html
+- _includes/tags/tag-list.html
+- _layouts/category.html
+- _layouts/default.html
+- _layouts/post.html
+- _layouts/tag.html
+- _posts/en/2025-03-21-russian-boutique-hotels.md
+- _tags/sectors/hotels-resorts.md
+- assets/css/components/tags.css
 
 
 ### Project Log Entries (Last 2)

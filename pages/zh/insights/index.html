@@ -13,7 +13,8 @@ lang: zh
     <div class="blog-layout">
       <div class="main-content">
         <div class="category-list">
-          <h2>{{ site.data.translations[page.lang].blog.categories }}</h2>          <div class="category-grid">
+          <h2>{{ site.data.translations[page.lang].blog.categories }}</h2>
+          <div class="category-grid">
             <div class="category-card">
               <h3><a href="{{ '/zh/insights/categories/brand-discoveries/' | relative_url }}">品牌发现</a></h3>
               <p>介绍具有独特故事的金砖国家+值得关注的品牌。</p>
@@ -36,14 +37,16 @@ lang: zh
           </div>
         </div>
         
-        <h2>{{ site.data.translations[page.lang].blog.recent_posts }}</h2>        <div class="post-grid">
+        <h2>{{ site.data.translations[page.lang].blog.recent_posts }}</h2>
+        <div class="post-grid">
           {% assign posts = site.posts | where:"lang", page.lang %}
           {% for post in posts limit:6 %}
             <div class="post-card">
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <p class="post-meta">{{ post.date | date: "%Y年%-m月%-d日" }}</p>
+              <p class="post-meta">{{ post.date | date: "%Y年%-m月%-d日 %H:%M (+0800)" }}</p>
               <p>{{ post.excerpt }}</p>
-              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>            </div>
+              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>
+            </div>
           {% endfor %}
         </div>
       </div>
