@@ -1,13 +1,13 @@
 ---
-title: "Wine"
+title: "葡萄酒"
 tag: wine
 tag_type: sector
-description: "Emerging Russian wine production from regions like Krasnodar, showcasing unique terroir and innovative winemaking techniques."
-permalink: /en/tags/sectors/wine/
+description: "来自克拉斯诺达尔等地区的新兴俄罗斯葡萄酒生产，展示独特风土和创新酿酒技术。"
+permalink: /zh/tags/sectors/wine/
 ---
 
-Russia's wine industry has undergone a remarkable transformation, particularly in regions like Krasnodar and Crimea where a 52% growth over the past five years signals a vibrant emerging wine culture. These regions are challenging conventional viticulture perspectives by producing distinctive vintages that express unique terroir characteristics through both traditional European varieties and rediscovered indigenous grapes.
+俄罗斯葡萄酒行业经历了显著转型，特别是在克拉斯诺达尔和克里米亚等地区，过去五年52%的增长表明了一个充满活力的新兴葡萄酒文化。这些地区正在挑战传统葡萄栽培观念，通过传统欧洲品种和重新发现的本土葡萄，生产出表达独特风土特性的独特年份。
 
-What distinguishes Russian wineries is their pioneering approach to extreme climate viticulture. Unlike established wine-producing countries, Russian vintners have developed innovative cultivation methods specifically for challenging growing conditions, including specialized winter protection systems, unique pruning techniques, and advanced vineyard management practices. This has created wines with distinctive character—typically featuring bright acidity, pronounced minerality, and remarkable aromatic complexity that stand apart from wines produced in more temperate regions.
+俄罗斯葡萄酒厂的与众不同之处在于其开拓性的极端气候葡萄栽培方法。与已建立的葡萄酒生产国不同，俄罗斯酿酒师专门为具挑战性的生长条件开发了创新的种植方法，包括专业的冬季保护系统、独特的修剪技术和先进的葡萄园管理实践。这创造了具有独特特性的葡萄酒——通常具有明亮的酸度、明显的矿物质感和非凡的芳香复杂性，与温和地区生产的葡萄酒有所不同。
 
-For international wine importers and hospitality partners, Russian wines offer a compelling addition to premium portfolios seeking discovery-driven consumer experiences. These wines satisfy the growing demand (up 37% since 2020) for "new latitude" wines from unexpected regions, appealing particularly to millennial and Gen Z consumers who prioritize exploration over traditional wine prestige markers. With international wine competition medals increasing 83% in the past three years, Russian wines provide sommeliers and retailers with genuine conversation pieces that facilitate premium pricing and enhanced customer engagement through their unique production stories and distinctive flavor profiles.
+对于国际葡萄酒进口商和酒店合作伙伴，俄罗斯葡萄酒为寻求以发现为驱动的消费者体验的高端产品组合提供了引人注目的补充。这些葡萄酒满足了对"新纬度"葡萄酒（来自意想不到地区的葡萄酒）不断增长的需求（自2020年以来增长37%），特别吸引优先考虑探索而非传统葡萄酒声望标志的千禧一代和Z世代消费者。随着过去三年国际葡萄酒比赛奖牌增加83%，俄罗斯葡萄酒为侍酒师和零售商提供了真正的话题，通过其独特的生产故事和独特的风味特性，促进了高端定价和增强客户参与度。
