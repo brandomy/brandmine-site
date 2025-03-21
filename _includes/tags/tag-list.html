@@ -1,0 +1,31 @@
+<div class="tag-list">
+    {% if include.tags %}
+      {% assign sector_tags = "" | split: "" %}
+      {% assign attribute_tags = "" | split: "" %}
+      
+      {% for tag in include.tags %}
+        {% assign tag_path = tag | slugify %}
+        {% if site.tags.sectors[tag_path] %}
+          {% assign sector_tags = sector_tags | push: tag %}
+        {% else %}
+          {% assign attribute_tags = attribute_tags | push: tag %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if sector_tags.size > 0 %}
+        <div class="sector-tags">
+          {% for tag in sector_tags %}
+            <a href="{{ site.baseurl }}/tags/sectors/{{ tag | slugify }}/" class="tag sector-tag">{{ tag | replace: '-', ' ' | capitalize }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      {% if attribute_tags.size > 0 %}
+        <div class="attribute-tags">
+          {% for tag in attribute_tags %}
+            <a href="{{ site.baseurl }}/tags/attributes/{{ tag | slugify }}/" class="tag attribute-tag">{{ tag | replace: '-', ' ' | capitalize }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>

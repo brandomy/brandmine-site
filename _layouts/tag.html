@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <div class="tag-header">
+      <span class="tag-type">{{ page.tag_type | capitalize }}</span>
+      <h1>{{ page.title }}</h1>
+      <p class="tag-description">{{ page.description }}</p>
+    </div>
+    
+    {{ content }}
+    
+    <div class="tag-posts">
+      <h2>{{ site.data.translations[page.lang].blog.related_content }}</h2>
+      <div class="post-grid">
+        {% assign posts = site.posts | where: "lang", page.lang %}
+        {% for post in posts %}
+          {% if post.tags contains page.tag %}
+            <div class="post-card">
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+              <p>{{ post.excerpt }}</p>
+              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>           </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

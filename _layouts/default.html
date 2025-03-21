@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/solutions.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/team.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/text.css' | relative_url }}">
- 
+  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
+
   <!-- 4. Layout Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}">
 
@@ -49,6 +51,11 @@
 
   {% if page.permalink contains '/brands/' %}
   <link rel="stylesheet" href="{{ '/assets/css/pages/brands.css' | relative_url }}">
+  {% endif %}
+
+  {% if page.permalink contains '/insights/' or page.layout == 'post' or page.layout == 'category' or page.layout == 'tag' %}
+  <link rel="stylesheet" href="{{ '/assets/css/pages/insights.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
   {% endif %}
 
   {% if page.permalink contains '/russian-sectors/' %}

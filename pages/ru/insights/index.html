@@ -1,0 +1,56 @@
+---
+layout: default
+title: Аналитика Brandmine
+permalink: /ru/insights/
+lang: ru
+---
+
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <h1>Аналитика Brandmine</h1>
+    <p class="lead-text">Анализ, истории и маркетинговая аналитика о потребительских брендах стран БРИКС+ с глобальным потенциалом.</p>
+    
+    <div class="blog-layout">
+      <div class="main-content">
+        <div class="category-list">
+          <h2>{{ site.data.translations[page.lang].blog.categories }}</h2>          <div class="category-grid">
+            <div class="category-card">
+              <h3><a href="{{ '/ru/insights/categories/brand-discoveries/' | relative_url }}">Открытие брендов</a></h3>
+              <p>Знакомство с примечательными брендами стран БРИКС+ и их уникальными историями.</p>
+            </div>
+            
+            <div class="category-card">
+              <h3><a href="{{ '/ru/insights/categories/export-opportunities/' | relative_url }}">Экспортные возможности</a></h3>
+              <p>Практические знания о брендах, готовых к международной экспансии.</p>
+            </div>
+            
+            <div class="category-card">
+              <h3><a href="{{ '/ru/insights/categories/cultural-context/' | relative_url }}">Культурный контекст</a></h3>
+              <p>Понимание культурных факторов, формирующих потребительские бренды стран БРИКС+.</p>
+            </div>
+            
+            <div class="category-card">
+              <h3><a href="{{ '/ru/insights/categories/success-stories/' | relative_url }}">Истории успеха</a></h3>
+              <p>Примеры брендов из стран БРИКС+, успешно вышедших на мировой рынок.</p>
+            </div>
+          </div>
+        </div>
+        
+        <h2>{{ site.data.translations[page.lang].blog.recent_posts }}</h2>        <div class="post-grid">
+          {% assign posts = site.posts | where:"lang", page.lang %}
+          {% for post in posts limit:6 %}
+            <div class="post-card">
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p class="post-meta">{{ post.date | date: "%-d %B %Y г." }}</p>
+              <p>{{ post.excerpt }}</p>
+              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>            </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="sidebar">
+        {% include tags/tag-cloud.html %}
+      </div>
+    </div>
+  </div>
+</div>

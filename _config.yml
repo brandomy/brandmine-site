@@ -46,3 +46,36 @@ defaults:
       path: "pages/zh"
     values:
       lang: zh
+
+# Blog settings
+collections:
+  tags:
+    output: true
+    permalink: /tags/:path/
+
+defaults:
+  # Add defaults for posts
+  - scope:
+      path: "_posts/en"
+      type: "posts"
+    values:
+      layout: "post"
+      lang: "en"
+  - scope:
+      path: "_posts/ru"
+      type: "posts"
+    values:
+      layout: "post"
+      lang: "ru"
+  - scope:
+      path: "_posts/zh"
+      type: "posts"
+    values:
+      layout: "post"
+      lang: "zh"
+  # Add defaults for tags
+  - scope:
+      path: "_tags"
+      type: "tags"
+    values:
+      layout: "tag"

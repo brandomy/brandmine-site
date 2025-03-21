@@ -1,0 +1,23 @@
+<div class="tag-cloud">
+  <h3>{{ site.data.translations[page.lang].blog.sectors }}</h3>
+    <div class="sector-cloud">
+      {% for tag_page in site.tags %}
+        {% if tag_page.tag_type == "sector" %}
+          <a href="{{ tag_page.url | relative_url }}" class="tag sector-tag">
+            {{ tag_page.title }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    <h3>{{ site.data.translations[page.lang].blog.business_attributes }}</h3>
+    <div class="attribute-cloud">
+      {% for tag_page in site.tags %}
+        {% if tag_page.tag_type == "attribute" %}
+          <a href="{{ tag_page.url | relative_url }}" class="tag attribute-tag">
+            {{ tag_page.title }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>

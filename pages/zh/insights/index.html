@@ -1,0 +1,56 @@
+---
+layout: default
+title: Brandmine 见解
+permalink: /zh/insights/
+lang: zh
+---
+
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <h1>Brandmine 见解</h1>
+    <p class="lead-text">关于具有全球潜力的金砖国家+消费品牌的分析、故事和市场情报。</p>
+    
+    <div class="blog-layout">
+      <div class="main-content">
+        <div class="category-list">
+          <h2>{{ site.data.translations[page.lang].blog.categories }}</h2>          <div class="category-grid">
+            <div class="category-card">
+              <h3><a href="{{ '/zh/insights/categories/brand-discoveries/' | relative_url }}">品牌发现</a></h3>
+              <p>介绍具有独特故事的金砖国家+值得关注的品牌。</p>
+            </div>
+            
+            <div class="category-card">
+              <h3><a href="{{ '/zh/insights/categories/export-opportunities/' | relative_url }}">出口机会</a></h3>
+              <p>关于准备国际扩张的品牌的实用见解。</p>
+            </div>
+            
+            <div class="category-card">
+              <h3><a href="{{ '/zh/insights/categories/cultural-context/' | relative_url }}">文化背景</a></h3>
+              <p>了解塑造金砖国家+消费品牌的文化因素。</p>
+            </div>
+            
+            <div class="category-card">
+              <h3><a href="{{ '/zh/insights/categories/success-stories/' | relative_url }}">成功案例</a></h3>
+              <p>已成功拓展全球市场的金砖国家+品牌案例研究。</p>
+            </div>
+          </div>
+        </div>
+        
+        <h2>{{ site.data.translations[page.lang].blog.recent_posts }}</h2>        <div class="post-grid">
+          {% assign posts = site.posts | where:"lang", page.lang %}
+          {% for post in posts limit:6 %}
+            <div class="post-card">
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p class="post-meta">{{ post.date | date: "%Y年%-m月%-d日" }}</p>
+              <p>{{ post.excerpt }}</p>
+              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>            </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="sidebar">
+        {% include tags/tag-cloud.html %}
+      </div>
+    </div>
+  </div>
+</div>

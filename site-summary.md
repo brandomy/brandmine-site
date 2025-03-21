@@ -1,17 +1,17 @@
 # Brandmine Site Summary
-Generated on Wed 19 Mar 2025 15:06:35 +08
+Generated on Fri 21 Mar 2025 11:32:54 +08
 
 ## Repository Status
 Current branch: main
-Last commit: Reorder all russian-sectors
-Last commit date: 2025-03-19 12:53
-Modified files:        2
+Last commit: Style the Russian-Sectors page with panels
+Last commit date: 2025-03-19 15:20
+Modified files:        1
 Recent activity:
+- 2025-03-19: Style the Russian-Sectors page with panels
 - 2025-03-19: Reorder all russian-sectors
 - 2025-03-19: Update Russian and English sectors pages to include new categories and enhance content clarity
 - 2025-03-19: Update Russian and English sectors pages to reflect the addition of new sectors and enhance content for improved clarity and engagement
 - 2025-03-18: Enhance ZH brands, sectors and markets pages with new layout and content panels for improved user experience
-- 2025-03-18: Add sectors, markets, brands panel style page layouts for EN and RU pages.
 
 ## Site Structure
 ### Directories
@@ -28,7 +28,7 @@ Recent activity:
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (      60 files total)
+- assets/ (      61 files total)
   - assets/css/ (      22 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
@@ -210,7 +210,7 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 1.107 seconds.
+- Build time (clean): 1.182 seconds.
 - Generated HTML pages:       26
 - Total site size:  31M
 
@@ -230,6 +230,7 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-19**: Style the Russian-Sectors page with panels (Randal Eastman)
 - **2025-03-19**: Reorder all russian-sectors (Randal Eastman)
 - **2025-03-19**: Update Russian and English sectors pages to include new categories and enhance content clarity (Randal Eastman)
 - **2025-03-19**: Update Russian and English sectors pages to reflect the addition of new sectors and enhance content for improved clarity and engagement (Randal Eastman)
@@ -239,24 +240,21 @@ body, html {
 - **2025-03-18**: Remove hamburger menu implementation and related styles (Randal Eastman)
 - **2025-03-18**: Add mobile hamburger menu functionality and styling (Randal Eastman)
 - **2025-03-18**: Update home footer (Randal Eastman)
-- **2025-03-18**: Enhance mobile footer layout and hide scroll indicator on small phones (Randal Eastman)
 
 ### Recently Modified Files
 - PROJECT_LOG.md
-- assets/css/pages/brands.css
-- assets/css/pages/markets.css
-- assets/css/pages/sectors.css
+- assets/css/pages/russian-sectors.css
+- assets/css/pages/russian-sectors.css.backup
 - claude-context.md
-- pages/en/brands.md
-- pages/en/markets.md
 - pages/en/russian-sectors.md
 - pages/en/sectors.md
-- pages/ru/brands.md
-- pages/ru/markets.md
 - pages/ru/russian-sectors.md
 - pages/ru/sectors.md
 - pages/zh/brands.md
 - pages/zh/markets.md
+- pages/zh/russian-sectors.md
+- pages/zh/sectors.md
+- site-summary.md
 
 
 ### Project Log Entries (Last 2)

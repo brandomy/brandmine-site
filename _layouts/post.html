@@ -1,0 +1,76 @@
+---
+layout: default
+---
+<div class="full-width-panel light-panel">
+  <div class="panel-content blog-post">
+    <h1>{{ page.title }}</h1>
+    <p class="post-meta">
+      {% if page.author %}{{ page.author }} • {% endif %}
+      {% if page.lang == 'ru' %}
+        {{ post.date | date: "%-d %B %Y г." }}
+      {% elsif page.lang == 'zh' %}
+        {{ post.date | date: "%Y年%-m月%-d日" }}
+      {% else %}
+        {{ post.date | date: "%B %-d, %Y" }}
+      {% endif %}
+      {% if page.categories.size > 0 %} • 
+        <span class="post-category">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ page.categories[0] | slugify }}/">
+            {{ page.categories[0] | capitalize | replace: '-', ' ' }}
+          </a>
+        </span>
+      {% endif %}
+    </p>
+    
+    <!-- Add tag list -->
+    {% if page.tags %}
+      {% include tags/tag-list.html tags=page.tags %}
+    {% endif %}
+    
+    <div class="post-content">
+      {{ content }}
+    </div>
+    
+    <!-- Add related content by tag -->
+    {% if page.tags %}
+      <div class="related-posts">
+        <h3>{{ site.data.translations[page.lang].blog.related_content }}</h3>
+        <div class="post-grid">
+          {% assign posts = site.posts | where: "lang", page.lang %}
+          {% assign count = 0 %}
+          {% for post in posts %}
+            {% if post.url != page.url %}
+              {% assign has_common_tag = false %}
+              {% for tag in page.tags %}
+                {% if post.tags contains tag %}
+                  {% assign has_common_tag = true %}
+                {% endif %}
+              {% endfor %}
+              
+              {% if has_common_tag and count < 3 %}
+                <div class="post-card">
+                  <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+                  <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+                  <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>
+                </div>
+                {% assign count = count | plus: 1 %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    
+    <div class="post-navigation">
+      <div class="post-nav-links">
+        {% if page.previous.url and page.previous.lang == page.lang %}
+        <a class="prev" href="{{ page.previous.url | relative_url }}">&laquo; {{ page.previous.title }}</a>
+        {% endif %}
+        
+        {% if page.next.url and page.next.lang == page.lang %}
+        <a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} &raquo;</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
