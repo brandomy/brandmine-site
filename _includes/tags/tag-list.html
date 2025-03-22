@@ -5,22 +5,20 @@
     {% assign growth_tags = "" | split: "" %}
     {% assign country_tags = "" | split: "" %}
     
-    {% for tag in include.tags %}
-      {% assign tag_path = tag | slugify %}
-      
-      {% for site_tag in site.tags %}
-        {% if site_tag.tag == tag %}
-          {% if site_tag.tag_type == "sector" %}
-            {% assign sector_tags = sector_tags | push: site_tag %}
+    {% for tag_id in include.tags %}
+      {% for tag_type in site.data.tag_translations %}
+        {% if site.data.tag_translations[tag_type.first][tag_id] %}
+          {% if tag_type.first == "sectors" %}
+            {% assign sector_tags = sector_tags | push: tag_id %}
             {% break %}
-          {% elsif site_tag.tag_type == "attribute" %}
-            {% assign attribute_tags = attribute_tags | push: site_tag %}
+          {% elsif tag_type.first == "attributes" %}
+            {% assign attribute_tags = attribute_tags | push: tag_id %}
             {% break %}
-          {% elsif site_tag.tag_type == "growth" %}
-            {% assign growth_tags = growth_tags | push: site_tag %}
+          {% elsif tag_type.first == "growth" %}
+            {% assign growth_tags = growth_tags | push: tag_id %}
             {% break %}
-          {% elsif site_tag.tag_type == "country" %}
-            {% assign country_tags = country_tags | push: site_tag %}
+          {% elsif tag_type.first == "countries" %}
+            {% assign country_tags = country_tags | push: tag_id %}
             {% break %}
           {% endif %}
         {% endif %}
@@ -29,32 +27,40 @@
     
     {% if sector_tags.size > 0 %}
       <div class="sector-tags">
-        {% for tag in sector_tags %}
-          <a href="{{ tag.url | relative_url }}" class="tag sector-tag">{{ tag.title }}</a>
+        {% for tag_id in sector_tags %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ tag_id }}/" class="tag sector-tag">
+            {{ site.data.tag_translations.sectors[tag_id][page.lang] }}
+          </a>
         {% endfor %}
       </div>
     {% endif %}
     
     {% if attribute_tags.size > 0 %}
       <div class="attribute-tags">
-        {% for tag in attribute_tags %}
-          <a href="{{ tag.url | relative_url }}" class="tag attribute-tag">{{ tag.title }}</a>
+        {% for tag_id in attribute_tags %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/attributes/{{ tag_id }}/" class="tag attribute-tag">
+            {{ site.data.tag_translations.attributes[tag_id][page.lang] }}
+          </a>
         {% endfor %}
       </div>
     {% endif %}
     
     {% if growth_tags.size > 0 %}
       <div class="growth-tags">
-        {% for tag in growth_tags %}
-          <a href="{{ tag.url | relative_url }}" class="tag growth-tag">{{ tag.title }}</a>
+        {% for tag_id in growth_tags %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/growth/{{ tag_id }}/" class="tag growth-tag">
+            {{ site.data.tag_translations.growth[tag_id][page.lang] }}
+          </a>
         {% endfor %}
       </div>
     {% endif %}
     
     {% if country_tags.size > 0 %}
       <div class="country-tags">
-        {% for tag in country_tags %}
-          <a href="{{ tag.url | relative_url }}" class="tag country-tag">{{ tag.title }}</a>
+        {% for tag_id in country_tags %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/countries/{{ tag_id }}/" class="tag country-tag">
+            {{ site.data.tag_translations.countries[tag_id][page.lang] }}
+          </a>
         {% endfor %}
       </div>
     {% endif %}

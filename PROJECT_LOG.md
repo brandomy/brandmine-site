@@ -1,5 +1,16 @@
 ## 2025-03-11: Implemented Multilingual Newsletter Forms
 
+## 2025-03-22: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English [Layout]
+
+### Changes Made
+- added country tag pages for each country in 3 languages
+
+### Technical Decisions
+- getting ready to separate multilingual tags
+
+### Next Steps
+- establish multilingual tag translations system
+
 ## 2025-03-19: Reorder all russian-sectors [Content]
 
 ### Changes Made

@@ -1,33 +1,37 @@
 <div class="tag-cloud">
   <h3>{{ site.data.translations[page.lang].tags.sectors }}</h3>
   <div class="sector-cloud">
-    {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang %}
-    {% for tag in sector_tags %}
-      <a href="{{ tag.url | relative_url }}" class="tag sector-tag">{{ tag.title }}</a>
+    {% for tag in site.data.tag_translations.sectors %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ tag[0] }}/" class="tag sector-tag">
+        {{ tag[1][page.lang] }}
+      </a>
     {% endfor %}
   </div>
   
   <h3>{{ site.data.translations[page.lang].tags.attributes }}</h3>
   <div class="attribute-cloud">
-    {% assign attribute_tags = site.tags | where: "tag_type", "attribute" | where: "lang", page.lang %}
-    {% for tag in attribute_tags %}
-      <a href="{{ tag.url | relative_url }}" class="tag attribute-tag">{{ tag.title }}</a>
+    {% for tag in site.data.tag_translations.attributes %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/tags/attributes/{{ tag[0] }}/" class="tag attribute-tag">
+        {{ tag[1][page.lang] }}
+      </a>
     {% endfor %}
   </div>
   
   <h3>{{ site.data.translations[page.lang].tags.growth }}</h3>
   <div class="growth-cloud">
-    {% assign growth_tags = site.tags | where: "tag_type", "growth" | where: "lang", page.lang %}
-    {% for tag in growth_tags %}
-      <a href="{{ tag.url | relative_url }}" class="tag growth-tag">{{ tag.title }}</a>
+    {% for tag in site.data.tag_translations.growth %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/tags/growth/{{ tag[0] }}/" class="tag growth-tag">
+        {{ tag[1][page.lang] }}
+      </a>
     {% endfor %}
   </div>
   
   <h3>{{ site.data.translations[page.lang].tags.countries }}</h3>
   <div class="country-cloud">
-    {% assign country_tags = site.tags | where: "tag_type", "country" | where: "lang", page.lang %}
-    {% for tag in country_tags %}
-      <a href="{{ tag.url | relative_url }}" class="tag country-tag">{{ tag.title }}</a>
+    {% for tag in site.data.tag_translations.countries %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/tags/countries/{{ tag[0] }}/" class="tag country-tag">
+        {{ tag[1][page.lang] }}
+      </a>
     {% endfor %}
   </div>
 </div>

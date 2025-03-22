@@ -1,16 +1,16 @@
 # Brandmine Jekyll Website Context
-Generated: 2025-03-19 15:06
+Generated: 2025-03-22 13:32
 
-## Focus Area: Styling
+## Focus Area: Layout
 
-This context is focused on the styling aspects of the website.
+This context is focused on the layout aspects of the website.
 
 ## Site Configuration
 ## Configuration Details
 ```yaml
 title: Brandmine
 email: randal@brandmine.io
-description: Amplifying consumer brands of the BRICS+
+description: Amplifying leading consumer brands of the BRICS+
 # Change this line
 baseurl: "" # Empty for local development
 
@@ -21,11 +21,11 @@ collections:
     permalink: /:collection/:path/
 ...
 defaults:
+  # Global defaults
   - scope:
       path: ""
     values:
       layout: default
-  - scope:
 ...
 ```
 
@@ -33,20 +33,26 @@ defaults:
 ## Site Structure
 ### Directories
 ```
-- _layouts/ (       1 files)
+- _layouts/ (       4 files)
+  - category.html
   - default.html
-- _includes/ (       4 files)
+  - post.html
+  - tag.html
+- _includes/ (       5 files)
   - footer.html
   - google-analytics.html
   - header.html
   - language-selector.html
-- _data/ (       4 files)
+  - tags
+- _data/ (       6 files)
+  - _data/.DS_Store
   - _data/sectors.yml
+  - _data/tag_translations.yml
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (      60 files total)
-  - assets/css/ (      22 CSS files)
+- assets/ (      82 files total)
+  - assets/css/ (      26 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
     - assets/css/components/team.css
@@ -58,202 +64,102 @@ defaults:
     - assets/css/components/mobile-fixes.css
     - assets/css/components/buttons.css
     - assets/css/components/cards.css
+    - assets/css/components/tags.css
     - assets/css/components/layouts.css
+    - assets/css/pages/growth-signals.css
     - assets/css/pages/home.css
     - assets/css/pages/markets.css
     - assets/css/pages/sectors.css
     - assets/css/pages/brands.css
     - assets/css/pages/about.css
+    - assets/css/pages/countries.css
     - assets/css/pages/russian-sectors.css
+    - assets/css/pages/insights.css
     - assets/css/tokens/typography.css
     - assets/css/tokens/spacing.css
     - assets/css/tokens/breakpoints.css
     - assets/css/tokens/colors.css
-  - assets/js/ (       1 JS files)
-    - assets/js/menu.js
-  - assets/fonts/ (      22 font files)
-    - assets/fonts/pt-serif_caption-regular.woff2
-    - assets/fonts/pt-sans_regular.woff2
-    - assets/fonts/NotoSerifSC-Regular.woff2
-    - assets/fonts/pt-mono_bold.wo
+  - assets/j
 ...(truncated)...
 
-## Key Styling Files
+## Key Layout Files
 
-### ./_site/assets/css/main.css
+### ./_layouts/default.html
 ```
-/* Basic styles */
-body {
-  line-height: 1.6;
-  color: var(--neutral-600);
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}en{% endif %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.translations[page.lang].site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.translations[page.lang].site.description }}{% endif %}">
 
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* Prevents horizontal scrolling */
-}
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/favicons/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicons/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicons/favicon-16x16.png' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/assets/images/favicons/favicon.ico' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/images/favicons/site.webmanifest' | relative_url }}">
 
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-4); /* 1rem = 16px, closest to 20px */
-}```
+  <!-- Style Sheets --> 
+   
+  <!-- 1. Design Tokens -->
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/colors.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/breakpoints.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/spacing.css' | relative_url }}">
 
-### ./assets/css/main.css
-```
-/* Basic styles */
-body {
-  line-height: 1.6;
-  color: var(--neutral-600);
-  margin: 0;
-  padding: 0;
-}
+  <!-- 2. Base Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+ 
+  <!-- 3. Component Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/cards.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/features.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/forms.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/layouts.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/navigation.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/solutions.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/team.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/text.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
 
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* Prevents horizontal scrolling */
-}
+  <!-- 4. Layout Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}">
 
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-4); /* 1rem = 16px, closest to 20px */
-}```
+  <!-- 5. Page-Specific Styles (conditionally loaded) -->
+  {% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/home.css' | relative_url }}">
+  {% endif %}
 
-### ./_site/assets/css/components/team.css
-```
-/* ==========================================================================
-   Team Components
-   ==========================================================================
-   Styles for team member profiles, sections, and related elements.
-*/
-
-/* Team section layout */
-.team-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-8); /* 2rem */
-  margin: var(--space-8) 0; /* 2rem 0 */
-}
-
-/* Individual team member cards */
-.team-member {
-  flex: 1;
-  min-width: 300px;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: var(--space-8); /* 2rem */
-  border: 1px solid var(--neutral-200);
-}
-
-/* Team member photo */
-.team-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: var(--space-6); /* 1.5rem */
-  border: 3px solid var(--primary-400);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Team member details */
-.team-member h3 {
-  margin-top: 0;
-  margin-bottom: var(--space-2); /* 0.5rem */
-  color: var(--neutral-800);
-  text-align: center;
-}
-
-.team-title {
-  color: var(--primary-600);
-  font-weight: 600;
-  margin-top: 0;
+  {% if page.permalink contains '/about/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/about.css' | relative_url }}">
+  {% endif %}
 
 ...(truncated)...
 ```
 
-### ./_site/assets/css/components/features.css
-```
-/* ==========================================================================
-   Feature Components
-   ==========================================================================
-   Styles for feature grids, feature items, and icons used to display 
-   feature lists throughout the site.
-*/
+## Recent Layout Development
 
-/* === Feature Grid System === */
-/* 
- * The feature grid creates a 3-column layout on desktop with vertically arranged
- * feature items (icon on top, text below). On mobile screens (<990px), it switches
- * to a single column with horizontally arranged items (icon on left, text on right).
- */
- .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
-  gap: var(--space-8); /* 2rem */
-  margin: var(--space-8) 0; /* 2rem 0 */
-  margin-top: var(--space-12); /* 2.5rem is closest to var(--space-12) */
-}
-
-.feature-item {
-  display: flex;
-  flex-direction: column; /* Vertical arrangement on desktop */
-  text-align: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 800px;     /* Prevent excessive stretching */
-}
-
-.feature-icon {
-  background-color: white;
-  color: var(--secondary-700);
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto var(--space-4); /* 0 auto 1rem */
-  transition: transform 0.3s ease;
-}
-
-.feature-item:hover .feature-icon {
-  transform: scale(1.1);
-}
-
-.feature-icon svg {
-  width: 2rem;
-
-...(truncated)...
-```
-
-## Recent Styling Development
+## 2025-03-22: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English [Layout]
 
 ## 2025-03-18: Implement mobile hamburger menu functionality and styles [Layout]
 
+## 2025-03-18: Enhance mobile footer layout and hide scroll indicator on small phones [Layout]
+
 ## Content Summary
 - Languages:        3 (en ru zh )
-  - en:        6 pages
-  - ru:        6 pages
-  - zh:        6 pages
-- Blog posts:        1
-  - Date range:  to 
+  - en:        9 pages
+  - ru:        8 pages
+  - zh:        8 pages
+- Blog posts:        4
+  - Date range: 2025/03/21 to 2025/03/21
 - Translation files:        3
   - Translation coverage:
-    - en (primary):       30 keys
-    - ru:       30 keys (100% coverage)
-    - zh:       30 keys (100% coverage)
+    - en (primary):       67 keys
+    - ru:       67 keys (100% coverage)
+    - zh:       67 keys (100% coverage)
 
 
 ## Environment & Dependencies

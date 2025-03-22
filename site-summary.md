@@ -1,17 +1,17 @@
 # Brandmine Site Summary
-Generated on Sat 22 Mar 2025 07:11:07 +08
+Generated on Sat 22 Mar 2025 13:30:32 +08
 
 ## Repository Status
 Current branch: feature/blog-setup
-Last commit: Add growth signals documentation in English and Chinese to enhance brand partnership insights
-Last commit date: 2025-03-22 07:10
-Modified files:        1
+Last commit: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English
+Last commit date: 2025-03-22 13:27
+Modified files:        2
 Recent activity:
+- 2025-03-22: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English
+- 2025-03-22: add images for carousel test
+- 2025-03-22: Add images and enhance Russian tag content; update translations and author details
+- 2025-03-22: Add country tags and translations for Brazil, Russia, India, China, and South Africa; implement country-specific styling and layout
 - 2025-03-22: Add growth signals documentation in English and Chinese to enhance brand partnership insights
-- 2025-03-22: Remove 'Growth Ready' tag files in English, Russian, and Chinese to streamline content management
-- 2025-03-22: Add language consistency report and new translations for rapid growth tags
-- 2025-03-22: Refactor language selector to improve URL handling and remove deprecated code
-- 2025-03-22: Add Chinese translations for fashion, artisanal excellence, artisan porcelain & ceramics, and innovation leader tags; include new confectionery image
 
 ## Site Structure
 ### Directories
@@ -27,14 +27,15 @@ Recent activity:
   - header.html
   - language-selector.html
   - tags
-- _data/ (       5 files)
+- _data/ (       6 files)
   - _data/.DS_Store
   - _data/sectors.yml
+  - _data/tag_translations.yml
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (      65 files total)
-  - assets/css/ (      24 CSS files)
+- assets/ (      82 files total)
+  - assets/css/ (      26 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
     - assets/css/components/team.css
@@ -48,11 +49,13 @@ Recent activity:
     - assets/css/components/cards.css
     - assets/css/components/tags.css
     - assets/css/components/layouts.css
+    - assets/css/pages/growth-signals.css
     - assets/css/pages/home.css
     - assets/css/pages/markets.css
     - assets/css/pages/sectors.css
     - assets/css/pages/brands.css
     - assets/css/pages/about.css
+    - assets/css/pages/countries.css
     - assets/css/pages/russian-sectors.css
     - assets/css/pages/insights.css
     - assets/css/tokens/typography.css
@@ -73,14 +76,15 @@ Recent activity:
     - assets/fonts/pt-sans_caption-regular.woff2
     - assets/fonts/pt-sans_bold.woff2
     - ... and 12 more font files
-  - assets/images/ (      11 image files)
+  - assets/images/ (      26 image files)
 - pages/ structure
-  - pages/en/ (       8 pages)
+  - pages/en/ (       9 pages)
     - pages/en/brands.md
     - pages/en/markets.md
     - pages/en/index.html
     - pages/en/sectors.md
     - pages/en/russian-sectors.md
+    - pages/en/countries.md
     - pages/en/about.md
     - pages/en/growth-signals.md
   - pages/ru/ (       8 pages)
@@ -105,7 +109,7 @@ Recent activity:
 ```yaml
 title: Brandmine
 email: randal@brandmine.io
-description: Amplifying consumer brands of the BRICS+
+description: Amplifying leading consumer brands of the BRICS+
 # Change this line
 baseurl: "" # Empty for local development
 
@@ -114,40 +118,28 @@ collections:
   brands:
     output: true
     permalink: /:collection/:path/
---
-collections:
-  tags:
-    output: true
-    permalink: /:collection/:path/
 ...
 defaults:
+  # Global defaults
   - scope:
       path: ""
     values:
       layout: default
-  - scope:
---
-defaults:
-  # Add defaults for posts
-  - scope:
-      path: "_posts/en"
-      type: "posts"
-    values:
 ...
 ```
 
 ## Content Summary
 - Languages:        3 (en ru zh )
-  - en:        8 pages
+  - en:        9 pages
   - ru:        8 pages
   - zh:        8 pages
-- Blog posts:        1
+- Blog posts:        4
   - Date range: 2025/03/21 to 2025/03/21
 - Translation files:        3
   - Translation coverage:
-    - en (primary):       57 keys
-    - ru:       57 keys (100% coverage)
-    - zh:       57 keys (100% coverage)
+    - en (primary):       67 keys
+    - ru:       67 keys (100% coverage)
+    - zh:       67 keys (100% coverage)
 
 ## Key File Contents
 ### _layouts/default.html (Structure)
@@ -232,9 +224,9 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 1.803 seconds.
-- Generated HTML pages:      128
-- Total site size:  34M
+- Build time (clean): 1.4 seconds.
+- Generated HTML pages:      145
+- Total site size:  38M
 
 ## Environment & Dependencies
 - Jekyll version: 3.10.0
@@ -252,38 +244,49 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-22**: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English (Randal Eastman)
+- **2025-03-22**: add images for carousel test (Randal Eastman)
+- **2025-03-22**: Add images and enhance Russian tag content; update translations and author details (Randal Eastman)
+- **2025-03-22**: Add country tags and translations for Brazil, Russia, India, China, and South Africa; implement country-specific styling and layout (Randal Eastman)
 - **2025-03-22**: Add growth signals documentation in English and Chinese to enhance brand partnership insights (Randal Eastman)
 - **2025-03-22**: Remove 'Growth Ready' tag files in English, Russian, and Chinese to streamline content management (Randal Eastman)
 - **2025-03-22**: Add language consistency report and new translations for rapid growth tags (Randal Eastman)
 - **2025-03-22**: Refactor language selector to improve URL handling and remove deprecated code (Randal Eastman)
 - **2025-03-22**: Add Chinese translations for fashion, artisanal excellence, artisan porcelain & ceramics, and innovation leader tags; include new confectionery image (Randal Eastman)
 - **2025-03-21**: Add multilingual support for growth tags and update configuration for tag layouts (Randal Eastman)
-- **2025-03-21**: Add new category pages for brand discoveries, success stories, cultural context, and export opportunities in multiple languages (Randal Eastman)
-- **2025-03-21**: Add new insights category and related content, including brand discoveries and hotels & resorts tags (Randal Eastman)
-- **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
-- **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
 
 ### Recently Modified Files
+- _config.yml
+- _data/tag_translations.yml
 - _data/translations/en.yml
 - _data/translations/ru.yml
 - _data/translations/zh.yml
-- _includes/language-selector.html
-- _tags/en/growth/growth-ready.md
-- _tags/en/growth/rapid-growth.md
-- _tags/ru/growth/growth-ready.md
-- _tags/ru/growth/rapid-growth.md
-- _tags/zh/attributes/artisanal-excellence.md
-- _tags/zh/attributes/cultural-ambassador.md
-- _tags/zh/attributes/founder-led.md
-- _tags/zh/attributes/heritage-brand.md
-- _tags/zh/attributes/innovation-leader.md
-- _tags/zh/attributes/premium-positioning.md
-- _tags/zh/attributes/regional-icon.md
+- _docs/templates/country-tag-template.md
+- _includes/tags/tag-cloud.html
+- _includes/tags/tag-list.html
+- _layouts/default.html
+- _layouts/post.html
+- _posts/en/2025-03-21-russian-boutique-hotels.md
+- _posts/ru/2025-03-21-russian-boutique-hotels.md
+- _posts/zh/2025-03-21-russian-boutique-hotels.md
+- _tags/en/countries/brazil.md
+- _tags/en/countries/china.md
 
 
 ### Project Log Entries (Last 2)
 
 ## 2025-03-11: Implemented Multilingual Newsletter Forms
+
+## 2025-03-22: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English [Layout]
+
+### Changes Made
+- added country tag pages for each country in 3 languages
+
+### Technical Decisions
+- getting ready to separate multilingual tags
+
+### Next Steps
+- establish multilingual tag translations system
 
 ## 2025-03-19: Reorder all russian-sectors [Content]
 
@@ -302,17 +305,6 @@ body, html {
 ### Changes Made
 - added Hotels and Resorts as a category
 - modified to Fashion & Accessories, Gourmet Foods
-- reprioritized initial 3 sectors
-
-### Technical Decisions
-- targeting most potential for sales
-
-### Next Steps
-- review the brands page before merging into main
-
-## 2025-03-18: Implement mobile hamburger menu functionality and styles [Layout]
-
-### Changes Made
 
 ... (see full PROJECT_LOG.md for complete history) ...
 
