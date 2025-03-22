@@ -76,6 +76,12 @@ FOCUS_AREAS = {
         "files": ["_includes/footer.html"],
         "log_terms": ["newsletter", "mailerlite", "subscription", "form"],
         "example_files": ["_includes/footer.html"]
+    },
+    # New focus area for tag system
+    "tags": {
+        "files": ["_data/tag_translations.yml", "_tags/", "_includes/tags/"],
+        "log_terms": ["tag", "taxonomy", "category", "badge"],
+        "example_files": ["_data/tag_translations.yml", "_includes/tags/tag-list.html"]
     }
 }
 
@@ -206,6 +212,105 @@ def get_jekyll_config_summary():
     except Exception as e:
         return f"Error parsing Jekyll configuration: {str(e)}"
 
+# New function for tag system analysis
+def get_tag_system_summary():
+    """Extract tag system information from tag_translations.yml."""
+    if not os.path.exists("_data/tag_translations.yml"):
+        return "Tag translation file not found."
+    
+    if not YAML_AVAILABLE:
+        return "YAML module not available, can't analyze tag system."
+    
+    try:
+        with open("_data/tag_translations.yml", "r", encoding="utf-8", errors="replace") as f:
+            tag_data = yaml.safe_load(f)
+        
+        if not tag_data:
+            return "Tag translation file is empty or invalid."
+        
+        # Create a summary of the tag structure
+        summary = "### Tag System Overview\n\n"
+        for category, tags in tag_data.items():
+            summary += f"**{category}:** {len(tags)} tags\n"
+            # List a sample of tags (first 3)
+            sample_tags = list(tags.keys())[:3]
+            summary += f"Sample tags: {', '.join(sample_tags)}\n\n"
+        
+        # Try to get a sample tag translation to show the structure
+        if tag_data and list(tag_data.keys()) and list(tag_data[list(tag_data.keys())[0]].keys()):
+            first_category = list(tag_data.keys())[0]
+            first_tag = list(tag_data[first_category].keys())[0]
+            sample = tag_data[first_category][first_tag]
+            
+            summary += "#### Sample Tag Translation\n\n"
+            summary += f"Tag: `{first_tag}` (Category: {first_category})\n\n"
+            summary += "```yaml\n"
+            for lang, trans in sample.items():
+                summary += f"{lang}: \"{trans}\"\n"
+            summary += "```\n"
+        
+        return summary
+    except Exception as e:
+        return f"Error analyzing tag system: {str(e)}"
+
+# New function for color palette analysis
+def get_color_palette_context():
+    """Extract color palette information from CSS variables."""
+    css_files = ["assets/css/tokens/colors.css", "assets/css/basic-colors.css"]
+    
+    for file_path in css_files:
+        if os.path.exists(file_path):
+            try:
+                with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+                    content = f.read()
+                    # Extract CSS variables for colors
+                    color_vars = re.findall(r'--([a-zA-Z0-9-]+):\s*(#[a-fA-F0-9]{6}|#[a-fA-F0-9]{3})', content)
+                    
+                    if color_vars:
+                        result = "## Color Palette\n\n"
+                        result += "The Brandmine site uses a color system with the following key colors:\n\n"
+                        for var_name, hex_code in color_vars[:15]:  # Limit to first 15 colors
+                            result += f"- `--{var_name}`: `{hex_code}`\n"
+                        
+                        # Add a note about the color system
+                        if "primary" in [v[0] for v in color_vars]:
+                            result += "\nThe site uses a primary (teal), secondary (orange), accent (indigo), and neutral (gray) color system with varying shades.\n"
+                        
+                        return result + "\n"
+            except Exception as e:
+                pass
+    
+    return ""
+
+# New function for font strategy analysis
+def get_font_strategy_context():
+    """Extract font strategy information from typography CSS."""
+    typography_files = ["assets/css/tokens/typography.css", "assets/css/typography.css"]
+    
+    for file_path in typography_files:
+        if os.path.exists(file_path):
+            try:
+                with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+                    content = f.read()
+                    # Extract font family variables
+                    font_vars = re.findall(r'--font-([a-zA-Z0-9-]+):\s*([^;]+);', content)
+                    
+                    if font_vars:
+                        result = "## Typography System\n\n"
+                        result += "The Brandmine site uses a multilingual typography system with these font families:\n\n"
+                        for var_name, font_stack in font_vars:  # Include all font variables
+                            result += f"- `--font-{var_name}`: {font_stack.strip()}\n"
+                        
+                        # Add note about multilingual support
+                        if any(["zh" in v[0] or "ru" in v[0] for v in font_vars]):
+                            result += "\nThe typography system includes specific font configurations for English, Russian, and Chinese content.\n"
+                        
+                        return result + "\n"
+            except Exception as e:
+                pass
+    
+    return ""
+
 def generate_context_document(focus=None, full_details=False):
     """Generate the comprehensive context document."""
     # Check if site summary exists
@@ -240,6 +345,22 @@ def generate_context_document(focus=None, full_details=False):
     if structure_info:
         context += structure_info + "\n"
     
+    # Add tag system information (new)
+    if focus == "tags" or full_details:
+        context += "## Tag System\n\n" + get_tag_system_summary() + "\n"
+    
+    # Add color palette information (new)
+    if focus == "styling" or full_details:
+        color_palette = get_color_palette_context()
+        if color_palette:
+            context += color_palette
+    
+    # Add typography system information (new)
+    if focus == "styling" or full_details:
+        font_strategy = get_font_strategy_context()
+        if font_strategy:
+            context += font_strategy
+    
     # Add focus-specific information if applicable
     if focus and focus in FOCUS_AREAS:
         # Add relevant file content
@@ -267,6 +388,12 @@ def generate_context_document(focus=None, full_details=False):
     content_info = extract_section(summary_content, "Content Summary", 1000)
     if content_info:
         context += content_info + "\n"
+    
+    # Add tag analysis from site summary if available and relevant
+    if focus == "tags" or full_details:
+        tag_analysis = extract_section(summary_content, "Tag System Analysis", 2000)
+        if tag_analysis:
+            context += tag_analysis + "\n"
     
     # Add multilingual information if that's the focus or if doing full details
     if focus == "multilingual" or full_details:
@@ -307,6 +434,8 @@ When helping with this Jekyll website, please:
 3. Maintain the existing file structure and naming conventions
 4. Explain the reasoning behind technical decisions
 5. Consider mobile responsiveness in layout changes
+6. Respect the established color palette and typography system
+7. Consider the tag system architecture when discussing content organization
 
 When writing code, use:
 - Liquid templating for Jekyll
@@ -319,7 +448,7 @@ When writing code, use:
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Generate context for Claude sessions")
-    parser.add_argument("--focus", help="Focus area (layout, content, multilingual, styling, functionality, newsletter)")
+    parser.add_argument("--focus", help="Focus area (layout, content, multilingual, styling, functionality, newsletter, tags)")
     parser.add_argument("--copy", action="store_true", help="Copy to clipboard")
     parser.add_argument("--full", action="store_true", help="Include full site details")
     
