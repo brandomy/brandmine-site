@@ -1,41 +1,41 @@
 # Brandmine Site Summary
-Generated on Sat 22 Mar 2025 13:30:32 +08
+Generated on Sat 22 Mar 2025 16:32:56 +08
 
 ## Repository Status
 Current branch: feature/blog-setup
-Last commit: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English
-Last commit date: 2025-03-22 13:27
-Modified files:        2
+Last commit: Add 'Countries' tag translation in English, Russian, and Chinese
+Last commit date: 2025-03-22 14:43
+Modified files: 15
 Recent activity:
+- 2025-03-22: Add 'Countries' tag translation in English, Russian, and Chinese
+- 2025-03-22: Refactor country tags and translations for Brazil, India, China, and South Africa; enhance layout and styling for multilingual support
 - 2025-03-22: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English
 - 2025-03-22: add images for carousel test
 - 2025-03-22: Add images and enhance Russian tag content; update translations and author details
-- 2025-03-22: Add country tags and translations for Brazil, Russia, India, China, and South Africa; implement country-specific styling and layout
-- 2025-03-22: Add growth signals documentation in English and Chinese to enhance brand partnership insights
 
 ## Site Structure
 ### Directories
 ```
-- _layouts/ (       4 files)
+- _layouts/ (4 files)
   - category.html
   - default.html
   - post.html
   - tag.html
-- _includes/ (       5 files)
+- _includes/ (5 files)
   - footer.html
   - google-analytics.html
   - header.html
   - language-selector.html
   - tags
-- _data/ (       6 files)
+- _data/ (6 files)
   - _data/.DS_Store
   - _data/sectors.yml
   - _data/tag_translations.yml
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (      82 files total)
-  - assets/css/ (      26 CSS files)
+- assets/ (82 files total)
+  - assets/css/ (26 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
     - assets/css/components/team.css
@@ -62,9 +62,9 @@ Recent activity:
     - assets/css/tokens/spacing.css
     - assets/css/tokens/breakpoints.css
     - assets/css/tokens/colors.css
-  - assets/js/ (       1 JS files)
+  - assets/js/ (1 JS files)
     - assets/js/menu.js
-  - assets/fonts/ (      22 font files)
+  - assets/fonts/ (22 font files)
     - assets/fonts/pt-serif_caption-regular.woff2
     - assets/fonts/pt-sans_regular.woff2
     - assets/fonts/NotoSerifSC-Regular.woff2
@@ -76,9 +76,9 @@ Recent activity:
     - assets/fonts/pt-sans_caption-regular.woff2
     - assets/fonts/pt-sans_bold.woff2
     - ... and 12 more font files
-  - assets/images/ (      26 image files)
+  - assets/images/ (26 image files)
 - pages/ structure
-  - pages/en/ (       9 pages)
+  - pages/en/ (9 pages)
     - pages/en/brands.md
     - pages/en/markets.md
     - pages/en/index.html
@@ -87,7 +87,7 @@ Recent activity:
     - pages/en/countries.md
     - pages/en/about.md
     - pages/en/growth-signals.md
-  - pages/ru/ (       8 pages)
+  - pages/ru/ (8 pages)
     - pages/ru/brands.md
     - pages/ru/markets.md
     - pages/ru/index.html
@@ -95,7 +95,7 @@ Recent activity:
     - pages/ru/russian-sectors.md
     - pages/ru/about.md
     - pages/ru/growth-signals.md
-  - pages/zh/ (       8 pages)
+  - pages/zh/ (8 pages)
     - pages/zh/brands.md
     - pages/zh/markets.md
     - pages/zh/index.html
@@ -126,20 +126,98 @@ defaults:
     values:
       layout: default
 ...
+# No plugins defined
 ```
 
 ## Content Summary
-- Languages:        3 (en ru zh )
-  - en:        9 pages
-  - ru:        8 pages
-  - zh:        8 pages
-- Blog posts:        4
+- Languages: 3 (en ru zh )
+  - en: 9 pages
+  - ru: 8 pages
+  - zh: 8 pages
+- Blog posts: 4
   - Date range: 2025/03/21 to 2025/03/21
-- Translation files:        3
+- Translation files: 3
   - Translation coverage:
-    - en (primary):       67 keys
-    - ru:       67 keys (100% coverage)
-    - zh:       67 keys (100% coverage)
+    - en (primary): 57 keys
+    - ru: 57 keys (100% coverage)
+    - zh: 57 keys (100% coverage)
+
+## Tag System Analysis
+### Tag Translation Coverage
+- Total tag categories: 4
+- Sectors: 1
+- Attributes: 1
+- Growth signals: 1
+- Countries: 1
+### Language Coverage in Tags
+- English tags: 33
+- Russian tags: 33
+- Chinese tags: 33
+### Tag Usage Analysis
+#### Tag usage in en content:
+- 
+#### Tag usage in ru content:
+- 
+#### Tag usage in zh content:
+- 
+### Tag Usage Trends
+No previous data available for comparison. Usage trends will be available after multiple runs.
+### Most Used Tags in Content
+#### Most popular tags in en content:
+-    1 tags: [hotels-resorts
+-    1  russia
+-    1  regional-heritage
+-    1  premium-positioning
+-    1  investment-ready]
+#### Most popular tags in ru content:
+-    1 tags: [hotels-resorts
+-    1  russia
+-    1  regional-heritage
+-    1  premium-positioning
+-    1  investment-ready]
+#### Most popular tags in zh content:
+-    1 tags: [hotels-resorts
+-    1  russia
+-    1  regional-heritage
+-    1  premium-positioning
+-    1  investment-ready]
+
+## Translation Consistency
+### Tag Translation Consistency Check
+#### Checking for incomplete tag translations:
+
+### Post Tag Consistency Across Languages
+
+### Undefined Tags Check
+#### Tags used in posts but not defined in tag_translations.yml:
+- "tags:" in 2025-03-21-russian-boutique-hotels.md
+- "[hotels-resorts" in 2025-03-21-russian-boutique-hotels.md
+- "regional-heritage" in 2025-03-21-russian-boutique-hotels.md
+- "investment-ready]" in 2025-03-21-russian-boutique-hotels.md
+- "tags:" in 2025-03-21-russian-boutique-hotels.md
+- "[hotels-resorts" in 2025-03-21-russian-boutique-hotels.md
+- "regional-heritage" in 2025-03-21-russian-boutique-hotels.md
+- "investment-ready]" in 2025-03-21-russian-boutique-hotels.md
+- "tags:" in 2025-03-21-russian-boutique-hotels.md
+- "[hotels-resorts" in 2025-03-21-russian-boutique-hotels.md
+- "regional-heritage" in 2025-03-21-russian-boutique-hotels.md
+- "investment-ready]" in 2025-03-21-russian-boutique-hotels.md
+
+## Untranslated Content Report
+### Content Missing Translations
+#### Content in en missing translations:
+0 out of 1 posts (0%) need translation
+
+#### Content in ru missing translations:
+0 out of 1 posts (0%) need translation
+
+#### Content in zh missing translations:
+0 out of 1 posts (0%) need translation
+
+### Translation Status Summary
+- en: 100% of content available (6 translated, 0 missing)
+- ru: 100% of content available (6 translated, 0 missing)
+- zh: 100% of content available (6 translated, 0 missing)
 
 ## Key File Contents
 ### _layouts/default.html (Structure)
@@ -224,8 +302,8 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 1.4 seconds.
-- Generated HTML pages:      145
+- Build time (clean): 2.074 seconds.
+- Generated HTML pages: 143
 - Total site size:  38M
 
 ## Environment & Dependencies
@@ -244,6 +322,8 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-22**: Add 'Countries' tag translation in English, Russian, and Chinese (Randal Eastman)
+- **2025-03-22**: Refactor country tags and translations for Brazil, India, China, and South Africa; enhance layout and styling for multilingual support (Randal Eastman)
 - **2025-03-22**: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English (Randal Eastman)
 - **2025-03-22**: add images for carousel test (Randal Eastman)
 - **2025-03-22**: Add images and enhance Russian tag content; update translations and author details (Randal Eastman)
@@ -252,20 +332,18 @@ body, html {
 - **2025-03-22**: Remove 'Growth Ready' tag files in English, Russian, and Chinese to streamline content management (Randal Eastman)
 - **2025-03-22**: Add language consistency report and new translations for rapid growth tags (Randal Eastman)
 - **2025-03-22**: Refactor language selector to improve URL handling and remove deprecated code (Randal Eastman)
-- **2025-03-22**: Add Chinese translations for fashion, artisanal excellence, artisan porcelain & ceramics, and innovation leader tags; include new confectionery image (Randal Eastman)
-- **2025-03-21**: Add multilingual support for growth tags and update configuration for tag layouts (Randal Eastman)
 
 ### Recently Modified Files
+- PROJECT_LOG.md
 - _config.yml
 - _data/tag_translations.yml
 - _data/translations/en.yml
 - _data/translations/ru.yml
 - _data/translations/zh.yml
-- _docs/templates/country-tag-template.md
 - _includes/tags/tag-cloud.html
 - _includes/tags/tag-list.html
-- _layouts/default.html
 - _layouts/post.html
+- _layouts/tag.html
 - _posts/en/2025-03-21-russian-boutique-hotels.md
 - _posts/ru/2025-03-21-russian-boutique-hotels.md
 - _posts/zh/2025-03-21-russian-boutique-hotels.md
