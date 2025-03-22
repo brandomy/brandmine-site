@@ -5,15 +5,52 @@ layout: default
   <div class="panel-content blog-post">
     <h1>{{ page.title }}</h1>
     <p class="post-meta">
-      {% if page.author %}{{ page.author }} • {% endif %}
-      {% if page.lang == 'ru' %}
-        {{ page.date | date: "%-d %B %Y г. в %H:%M (+0800)" }}
-      {% elsif page.lang == 'zh' %}
-        {{ page.date | date: "%Y年%-m月%-d日 %H:%M (+0800)" }}
-      {% else %}
-        {{ page.date | date: "%B %-d, %Y at %H:%M (+0800)" }}
+      {% if page.show_author != false %}
+        {% if page.author_id %}
+          {% if site.data.translations[page.lang].authors[page.author_id] %}
+            {{ site.data.translations[page.lang].authors[page.author_id] }}
+          {% else %}
+            {{ page.author_id }}
+          {% endif %}
+        {% elsif page.author %}
+          {{ page.author }}
+        {% endif %}
+        {% if page.show_date != false or page.show_time != false %} • {% endif %}
       {% endif %}
-      {% if page.categories.size > 0 %} • 
+      
+      {% if page.show_date != false or page.show_time != false %}
+        {% if page.lang == 'ru' %}
+          {% if page.show_date != false %}
+            {{ page.date | date: "%-d %B %Y г." }}
+          {% endif %}
+          {% if page.show_date != false and page.show_time != false %}
+            в
+          {% endif %}
+          {% if page.show_time != false %}
+            {{ page.date | date: "%H:%M (+0800)" }}
+          {% endif %}
+        {% elsif page.lang == 'zh' %}
+          {% if page.show_date != false %}
+            {{ page.date | date: "%Y年%-m月%-d日" }}
+          {% endif %}
+          {% if page.show_time != false %}
+            {{ page.date | date: "%H:%M (+0800)" }}
+          {% endif %}
+        {% else %}
+          {% if page.show_date != false %}
+            {{ page.date | date: "%B %-d, %Y" }}
+          {% endif %}
+          {% if page.show_date != false and page.show_time != false %}
+            at
+          {% endif %}
+          {% if page.show_time != false %}
+            {{ page.date | date: "%H:%M (+0800)" }}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      
+      {% if page.categories.size > 0 %}
+        {% if page.show_author != false or page.show_date != false or page.show_time != false %} • {% endif %}
         <span class="post-category">
           <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ page.categories[0] | slugify }}/">
             {{ page.categories[0] | capitalize | replace: '-', ' ' }}
@@ -51,15 +88,51 @@ layout: default
                 <div class="post-card">
                   <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
                   <p class="post-meta">
-                    {% if post.lang == 'ru' %}
-                      {{ post.date | date: "%-d %B %Y г. в %H:%M (+0800)" }}
-                    {% elsif post.lang == 'zh' %}
-                      {{ post.date | date: "%Y年%-m月%-d日 %H:%M (+0800)" }}
-                    {% else %}
-                      {{ post.date | date: "%B %-d, %Y at %H:%M (+0800)" }}
+                    {% if post.show_author != false %}
+                      {% if post.author_id %}
+                        {% if site.data.translations[post.lang].authors[post.author_id] %}
+                          {{ site.data.translations[post.lang].authors[post.author_id] }}
+                        {% else %}
+                          {{ post.author_id }}
+                        {% endif %}
+                      {% elsif post.author %}
+                        {{ post.author }}
+                      {% endif %}
+                      {% if post.show_date != false or post.show_time != false %} • {% endif %}
+                    {% endif %}
+                    
+                    {% if post.show_date != false or post.show_time != false %}
+                      {% if post.lang == 'ru' %}
+                        {% if post.show_date != false %}
+                          {{ post.date | date: "%-d %B %Y г." }}
+                        {% endif %}
+                        {% if post.show_date != false and post.show_time != false %}
+                          в
+                        {% endif %}
+                        {% if post.show_time != false %}
+                          {{ post.date | date: "%H:%M (+0800)" }}
+                        {% endif %}
+                      {% elsif post.lang == 'zh' %}
+                        {% if post.show_date != false %}
+                          {{ post.date | date: "%Y年%-m月%-d日" }}
+                        {% endif %}
+                        {% if post.show_time != false %}
+                          {{ post.date | date: "%H:%M (+0800)" }}
+                        {% endif %}
+                      {% else %}
+                        {% if post.show_date != false %}
+                          {{ post.date | date: "%B %-d, %Y" }}
+                        {% endif %}
+                        {% if post.show_date != false and post.show_time != false %}
+                          at
+                        {% endif %}
+                        {% if post.show_time != false %}
+                          {{ post.date | date: "%H:%M (+0800)" }}
+                        {% endif %}
+                      {% endif %}
                     {% endif %}
                   </p>
-                  <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>
+                  <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[post.lang].blog.read_more }}</a>
                 </div>
                 {% assign count = count | plus: 1 %}
               {% endif %}

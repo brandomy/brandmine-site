@@ -1,11 +1,15 @@
 ---
 layout: post
 title: "Boutique Hospitality: 5 Russian Properties Reimagining Cultural Tourism"
-author: Randal Eastman
+author_id: randal_eastman
 date: 2025-03-21 14:00:00 +0800
 categories: [brand-discoveries]
-tags: [hotels-resorts, premium-positioning, regional-heritage]
+tags: [hotels-resorts, premium-positioning, regional-heritage, russia, export-ready, investment-ready]
 lang: en
+# Display options
+show_author: true      # Set to false to hide author
+show_date: true        # Set to false to hide date
+show_time: false        # Set to false to hide time
 excerpt: "Discover distinctive Russian boutique properties that blend authentic cultural heritage with world-class hospitality standards. These hidden gems showcase the country's diversity through unique architectural approaches and immersive guest experiences."
 ---
 

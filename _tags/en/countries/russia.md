@@ -10,6 +10,8 @@ permalink: /en/tags/countries/russia/
 lang: en
 ---
 
+![Life in Russia](/assets/images/russia/andrew-konstantinov-y2kSjuA4Y4E-unsplash-1200.jpg)
+
 Content tagged with "Russia" explores the dynamic landscape of Russian consumer brands, market dynamics, cultural context, and export opportunities. This tag highlights stories, analysis, and brand profiles specifically related to the Russian market and Russian brands with international potential.
 
 ## Key Market Characteristics

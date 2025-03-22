@@ -1,7 +1,7 @@
 # Site settings
 title: Brandmine
 email: randal@brandmine.io
-description: Amplifying consumer brands of the BRICS+
+description: Amplifying leading consumer brands of the BRICS+
 # Change this line
 baseurl: "" # Empty for local development
 
@@ -27,13 +27,19 @@ collections:
   brands:
     output: true
     permalink: /:collection/:path/
+  tags:
+    output: true
+    permalink: /:collection/:path/
     
 # Default front matter
 defaults:
+  # Global defaults
   - scope:
       path: ""
     values:
       layout: default
+  
+  # Language defaults for pages
   - scope:
       path: "pages/en"
     values:
@@ -47,34 +53,39 @@ defaults:
     values:
       lang: zh
 
-# Blog settings
-collections:
-  tags:
-    output: true
-    permalink: /:collection/:path/
-
-defaults:
-  # Add defaults for posts
+  # Post language defaults
   - scope:
       path: "_posts/en"
       type: "posts"
     values:
       layout: "post"
       lang: "en"
+      show_author: true
+      show_date: true
+      show_time: false
+      permalink: /en/:categories/:year/:month/:day/:title/
   - scope:
       path: "_posts/ru"
       type: "posts"
     values:
       layout: "post"
       lang: "ru"
+      show_author: true
+      show_date: true
+      show_time: false
+      permalink: /ru/:categories/:year/:month/:day/:title/
   - scope:
       path: "_posts/zh"
       type: "posts"
     values:
       layout: "post"
       lang: "zh"
+      show_author: true
+      show_date: true
+      show_time: false
+      permalink: /zh/:categories/:year/:month/:day/:title/
 
-# Tag defaults for each language
+  # Tag language defaults
   - scope:
       path: "_tags/en"
       type: "tags"
