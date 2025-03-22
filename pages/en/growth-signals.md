@@ -6,6 +6,9 @@ lang: en
 description: "Understanding Brandmine's Growth Signal tags that identify brands with specific business partnership potential."
 ---
 
+<div class="growth-signals-container">
+
+<div class="growth-signals-intro">
 # Growth Signals: Understanding Business Partnership Opportunities
 
 ## What Are Growth Signals?
@@ -13,8 +16,111 @@ description: "Understanding Brandmine's Growth Signal tags that identify brands 
 Growth signals are specific indicators that identify brands with particular types of business partnership potential. Unlike our sector tags (which categorize product types) or attribute tags (which describe brand characteristics), growth signals specifically highlight commercial opportunities for different types of partners.
 
 At Brandmine, we've developed four distinct growth signals that quickly identify brands ready for specific growth paths:
+</div>
 
 ## Our Growth Signal Framework
+
+<div class="signal-cards">
+  <div class="signal-card export-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/export-ready.svg" alt="Export Ready" class="tag-icon">
+      <h4 class="signal-card-title">Export Ready</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Brands showing clear signals of readiness for international markets.</p>
+      <ul class="feature-list">
+        <li>Multilingual websites or marketing materials</li>
+        <li>International shipping options</li>
+        <li>Products already available outside their home country</li>
+        <li>Packaging and labeling designed for international markets</li>
+        <li>Participation in international trade shows</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/en/tags/growth/export-ready/" class="signal-card-link">
+        View Export Ready Brands 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card franchise-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/franchise-ready.svg" alt="Franchise Ready" class="tag-icon">
+      <h4 class="signal-card-title">Franchise Ready</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Brands that have developed systems for franchise expansion.</p>
+      <ul class="feature-list">
+        <li>Published franchise information</li>
+        <li>Multiple standardized locations</li>
+        <li>Well-documented operational procedures</li>
+        <li>Explicitly stated franchise intentions</li>
+        <li>Demonstrated success across locations</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/en/tags/growth/franchise-ready/" class="signal-card-link">
+        View Franchise Ready Brands 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card investment-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/investment-ready.svg" alt="Investment Ready" class="tag-icon">
+      <h4 class="signal-card-title">Investment Ready</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Brands structured to accept and effectively utilize external investment.</p>
+      <ul class="feature-list">
+        <li>Clear governance and ownership structures</li>
+        <li>Stated interest in accepting investment</li>
+        <li>Growth plans that benefit from capital</li>
+        <li>Previous funding rounds (in some cases)</li>
+        <li>Professional management team in place</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/en/tags/growth/investment-ready/" class="signal-card-link">
+        View Investment Ready Brands 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card rapid-growth-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/rapid-growth.svg" alt="Rapid Growth" class="tag-icon">
+      <h4 class="signal-card-title">Rapid Growth</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Brands showing clear evidence of accelerated business expansion.</p>
+      <ul class="feature-list">
+        <li>Expanding product lines or service offerings</li>
+        <li>Increasing number of locations</li>
+        <li>Growing team size and structure</li>
+        <li>Rising market share in core sectors</li>
+        <li>Observable production expansion</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/en/tags/growth/rapid-growth/" class="signal-card-link">
+        View Rapid Growth Brands 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
 
 ### Export Ready
 
@@ -145,4 +251,12 @@ As Brandmine evolves, we plan to enhance our growth signal system with:
 3. Quantitative metrics to support signal application
 4. Case studies highlighting successful partnerships formed through growth signals
 
+<div class="cta-section">
+  <h2>Discover Partnership Opportunities</h2>
+  <p>Explore our database of BRICS+ brands filtered by growth signals to find your next business opportunity.</p>
+  <a href="/en/brands/" class="cta-button">Browse Brands</a>
+</div>
+
 We welcome your feedback on how our growth signal framework can better serve your needs. Please contact us at feedback@brandmine.io with your suggestions.
+
+</div>

@@ -22,4 +22,12 @@
       <a href="{{ tag.url | relative_url }}" class="tag growth-tag">{{ tag.title }}</a>
     {% endfor %}
   </div>
+  
+  <h3>{{ site.data.translations[page.lang].tags.countries }}</h3>
+  <div class="country-cloud">
+    {% assign country_tags = site.tags | where: "tag_type", "country" | where: "lang", page.lang %}
+    {% for tag in country_tags %}
+      <a href="{{ tag.url | relative_url }}" class="tag country-tag">{{ tag.title }}</a>
+    {% endfor %}
+  </div>
 </div>

@@ -1,0 +1,265 @@
+/* ==========================================================================
+   Growth Signals Page Styling
+   ========================================================================== */
+
+/* Main container styling */
+.growth-signals-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Page intro section */
+.growth-signals-intro {
+  margin-bottom: var(--space-8);
+  max-width: 800px;
+}
+
+.growth-signals-intro h1 {
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+  position: relative;
+}
+
+.growth-signals-intro h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-400);
+  margin-top: var(--space-2);
+}
+
+.growth-signals-intro p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-4);
+}
+
+/* Section headers */
+.growth-signals-container h2 {
+  font-family: var(--font-heading);
+  font-size: 1.875rem;
+  color: var(--neutral-800);
+  margin: var(--space-8) 0 var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.growth-signals-container h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--neutral-700);
+  margin: var(--space-6) 0 var(--space-3);
+  display: flex;
+  align-items: center;
+}
+
+.growth-signals-container h3 .tag-icon {
+  margin-right: var(--space-2);
+  width: 32px;
+  height: 32px;
+}
+
+/* Signal cards grid layout */
+.signal-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
+}
+
+/* Individual signal card styling */
+.signal-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.signal-card-header {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--neutral-100);
+  display: flex;
+  align-items: center;
+}
+
+.signal-card-header .tag-icon {
+  width: 36px;
+  height: 36px;
+  margin-right: var(--space-3);
+}
+
+.signal-card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.signal-card-body {
+  padding: var(--space-4);
+}
+
+.signal-card-body p {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  color: var(--neutral-600);
+}
+
+.signal-card-body strong {
+  color: var(--neutral-700);
+}
+
+.signal-card-footer {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--neutral-50);
+  border-top: 1px solid var(--neutral-100);
+}
+
+.signal-card-link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.signal-card-link:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+}
+
+.signal-card-link svg {
+  width: 18px;
+  height: 18px;
+  margin-left: var(--space-1);
+}
+
+/* Signal specific styling */
+.export-ready-card .signal-card-header {
+  background-color: var(--accent-50);
+}
+
+.franchise-ready-card .signal-card-header {
+  background-color: var(--secondary-50);
+}
+
+.investment-ready-card .signal-card-header {
+  background-color: var(--primary-50);
+}
+
+.rapid-growth-card .signal-card-header {
+  background-color: #FFF1F2; /* Light pink */
+}
+
+/* Feature list styling */
+.feature-list {
+  margin: var(--space-4) 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-2);
+  line-height: 1.5;
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 20px;
+  height: 20px;
+  background-image: url('/assets/images/icons/check-circle.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Call to action section */
+.cta-section {
+  margin: var(--space-8) 0;
+  padding: var(--space-6);
+  background-color: var(--primary-50);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  margin-top: 0;
+  border-bottom: none;
+  color: var(--primary-700);
+}
+
+.cta-section p {
+  max-width: 600px;
+  margin: 0 auto var(--space-4);
+  color: var(--primary-600);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--primary-500);
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--primary-600);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .signal-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .growth-signals-intro h1 {
+    font-size: 2rem;
+  }
+  
+  .growth-signals-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .growth-signals-container h3 {
+    font-size: 1.25rem;
+  }
+  
+  .cta-section {
+    padding: var(--space-4);
+  }
+}
+
+/* Print styles */
+@media print {
+  .growth-signals-container {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  .signal-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  .cta-section {
+    display: none;
+  }
+}

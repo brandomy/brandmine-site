@@ -6,6 +6,9 @@ lang: zh
 description: "了解Brandmine的增长信号标签，这些标签用于识别具有特定商业合作潜力的品牌。"
 ---
 
+<div class="growth-signals-container">
+
+<div class="growth-signals-intro">
 # 增长信号：了解商业合作机会
 
 ## 什么是增长信号？
@@ -13,8 +16,111 @@ description: "了解Brandmine的增长信号标签，这些标签用于识别具
 增长信号是识别具有特定类型商业合作潜力品牌的具体指标。与我们的行业标签（用于分类产品类型）或属性标签（描述品牌特征）不同，增长信号专门突出显示适合不同类型合作伙伴的商业机会。
 
 在Brandmine，我们开发了四种不同的增长信号，可以快速识别准备好特定增长路径的品牌：
+</div>
 
 ## 我们的增长信号框架
+
+<div class="signal-cards">
+  <div class="signal-card export-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/export-ready.svg" alt="出口就绪" class="tag-icon">
+      <h4 class="signal-card-title">出口就绪</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>展示国际市场准备就绪明确信号的品牌。</p>
+      <ul class="feature-list">
+        <li>多语言网站或营销材料</li>
+        <li>国际运输选项</li>
+        <li>产品已在本国以外销售</li>
+        <li>为国际市场设计的包装</li>
+        <li>参与国际贸易展览</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/zh/tags/growth/export-ready/" class="signal-card-link">
+        查看出口就绪品牌
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card franchise-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/franchise-ready.svg" alt="特许经营就绪" class="tag-icon">
+      <h4 class="signal-card-title">特许经营就绪</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>已开发特许经营扩张系统的品牌。</p>
+      <ul class="feature-list">
+        <li>已发布的特许经营信息</li>
+        <li>多个标准化地点</li>
+        <li>完善的操作程序文档</li>
+        <li>明确表示的特许经营意向</li>
+        <li>现有地点的成功示范</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/zh/tags/growth/franchise-ready/" class="signal-card-link">
+        查看特许经营就绪品牌
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card investment-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/investment-ready.svg" alt="投资就绪" class="tag-icon">
+      <h4 class="signal-card-title">投资就绪</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>结构化地接受并有效利用外部投资的品牌。</p>
+      <ul class="feature-list">
+        <li>清晰的治理和所有权结构</li>
+        <li>表示有兴趣接受投资</li>
+        <li>将从资本注入中受益的增长计划</li>
+        <li>先前的融资轮次</li>
+        <li>专业管理团队到位</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/zh/tags/growth/investment-ready/" class="signal-card-link">
+        查看投资就绪品牌
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card rapid-growth-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/rapid-growth.svg" alt="快速增长" class="tag-icon">
+      <h4 class="signal-card-title">快速增长</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>显示明显业务加速扩张证据的品牌。</p>
+      <ul class="feature-list">
+        <li>扩展产品线或服务</li>
+        <li>增加地点数量</li>
+        <li>团队规模和组织结构增长</li>
+        <li>核心行业市场份额上升</li>
+        <li>可观察到的生产扩张</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/zh/tags/growth/rapid-growth/" class="signal-card-link">
+        查看快速增长品牌
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
 
 ### 出口就绪
 
@@ -145,4 +251,12 @@ description: "了解Brandmine的增长信号标签，这些标签用于识别具
 3. 支持信号应用的量化指标
 4. 通过增长信号形成的成功合作伙伴关系案例研究
 
+<div class="cta-section">
+  <h2>发现合作机会</h2>
+  <p>探索我们的金砖国家+品牌数据库，通过增长信号筛选，找到您的下一个商业机会。</p>
+  <a href="/zh/brands/" class="cta-button">浏览品牌</a>
+</div>
+
 我们欢迎您对我们的增长信号框架如何更好地满足您的需求提供反馈。请通过feedback@brandmine.io与我们联系，提供您的建议。
+
+</div>

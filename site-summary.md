@@ -1,17 +1,17 @@
 # Brandmine Site Summary
-Generated on Fri 21 Mar 2025 18:35:01 +08
+Generated on Sat 22 Mar 2025 07:11:07 +08
 
 ## Repository Status
 Current branch: feature/blog-setup
-Last commit: Add new category pages for brand discoveries, success stories, cultural context, and export opportunities in multiple languages
-Last commit date: 2025-03-21 16:05
-Modified files:       14
+Last commit: Add growth signals documentation in English and Chinese to enhance brand partnership insights
+Last commit date: 2025-03-22 07:10
+Modified files:        1
 Recent activity:
-- 2025-03-21: Add new category pages for brand discoveries, success stories, cultural context, and export opportunities in multiple languages
-- 2025-03-21: Add new insights category and related content, including brand discoveries and hotels & resorts tags
-- 2025-03-20: Add favicon support with dedicated directory
-- 2025-03-20: Add favicon support with dedicated directory
-- 2025-03-19: Style the Russian-Sectors page with panels
+- 2025-03-22: Add growth signals documentation in English and Chinese to enhance brand partnership insights
+- 2025-03-22: Remove 'Growth Ready' tag files in English, Russian, and Chinese to streamline content management
+- 2025-03-22: Add language consistency report and new translations for rapid growth tags
+- 2025-03-22: Refactor language selector to improve URL handling and remove deprecated code
+- 2025-03-22: Add Chinese translations for fashion, artisanal excellence, artisan porcelain & ceramics, and innovation leader tags; include new confectionery image
 
 ## Site Structure
 ### Directories
@@ -27,12 +27,13 @@ Recent activity:
   - header.html
   - language-selector.html
   - tags
-- _data/ (       4 files)
+- _data/ (       5 files)
+  - _data/.DS_Store
   - _data/sectors.yml
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (      64 files total)
+- assets/ (      65 files total)
   - assets/css/ (      24 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
@@ -72,29 +73,32 @@ Recent activity:
     - assets/fonts/pt-sans_caption-regular.woff2
     - assets/fonts/pt-sans_bold.woff2
     - ... and 12 more font files
-  - assets/images/ (      10 image files)
+  - assets/images/ (      11 image files)
 - pages/ structure
-  - pages/en/ (       7 pages)
+  - pages/en/ (       8 pages)
     - pages/en/brands.md
     - pages/en/markets.md
     - pages/en/index.html
     - pages/en/sectors.md
     - pages/en/russian-sectors.md
     - pages/en/about.md
-  - pages/ru/ (       7 pages)
+    - pages/en/growth-signals.md
+  - pages/ru/ (       8 pages)
     - pages/ru/brands.md
     - pages/ru/markets.md
     - pages/ru/index.html
     - pages/ru/sectors.md
     - pages/ru/russian-sectors.md
     - pages/ru/about.md
-  - pages/zh/ (       7 pages)
+    - pages/ru/growth-signals.md
+  - pages/zh/ (       8 pages)
     - pages/zh/brands.md
     - pages/zh/markets.md
     - pages/zh/index.html
     - pages/zh/sectors.md
     - pages/zh/russian-sectors.md
     - pages/zh/about.md
+    - pages/zh/growth-signals.md
 ```
 
 ## Configuration Details
@@ -134,16 +138,16 @@ defaults:
 
 ## Content Summary
 - Languages:        3 (en ru zh )
-  - en:        7 pages
-  - ru:        7 pages
-  - zh:        7 pages
+  - en:        8 pages
+  - ru:        8 pages
+  - zh:        8 pages
 - Blog posts:        1
   - Date range: 2025/03/21 to 2025/03/21
 - Translation files:        3
   - Translation coverage:
-    - en (primary):       53 keys
-    - ru:       53 keys (100% coverage)
-    - zh:       53 keys (100% coverage)
+    - en (primary):       57 keys
+    - ru:       57 keys (100% coverage)
+    - zh:       57 keys (100% coverage)
 
 ## Key File Contents
 ### _layouts/default.html (Structure)
@@ -228,9 +232,9 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 1.234 seconds.
-- Generated HTML pages:       51
-- Total site size:  32M
+- Build time (clean): 1.803 seconds.
+- Generated HTML pages:      128
+- Total site size:  34M
 
 ## Environment & Dependencies
 - Jekyll version: 3.10.0
@@ -248,33 +252,33 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-22**: Add growth signals documentation in English and Chinese to enhance brand partnership insights (Randal Eastman)
+- **2025-03-22**: Remove 'Growth Ready' tag files in English, Russian, and Chinese to streamline content management (Randal Eastman)
+- **2025-03-22**: Add language consistency report and new translations for rapid growth tags (Randal Eastman)
+- **2025-03-22**: Refactor language selector to improve URL handling and remove deprecated code (Randal Eastman)
+- **2025-03-22**: Add Chinese translations for fashion, artisanal excellence, artisan porcelain & ceramics, and innovation leader tags; include new confectionery image (Randal Eastman)
+- **2025-03-21**: Add multilingual support for growth tags and update configuration for tag layouts (Randal Eastman)
 - **2025-03-21**: Add new category pages for brand discoveries, success stories, cultural context, and export opportunities in multiple languages (Randal Eastman)
 - **2025-03-21**: Add new insights category and related content, including brand discoveries and hotels & resorts tags (Randal Eastman)
 - **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
 - **2025-03-20**: Add favicon support with dedicated directory (Randal Eastman)
-- **2025-03-19**: Style the Russian-Sectors page with panels (Randal Eastman)
-- **2025-03-19**: Reorder all russian-sectors (Randal Eastman)
-- **2025-03-19**: Update Russian and English sectors pages to include new categories and enhance content clarity (Randal Eastman)
-- **2025-03-19**: Update Russian and English sectors pages to reflect the addition of new sectors and enhance content for improved clarity and engagement (Randal Eastman)
-- **2025-03-18**: Enhance ZH brands, sectors and markets pages with new layout and content panels for improved user experience (Randal Eastman)
-- **2025-03-18**: Add sectors, markets, brands panel style page layouts for EN and RU pages. (Randal Eastman)
 
 ### Recently Modified Files
-- PROJECT_LOG.md
-- _config.yml
 - _data/translations/en.yml
 - _data/translations/ru.yml
 - _data/translations/zh.yml
-- _includes/header.html
-- _includes/tags/tag-cloud.html
-- _includes/tags/tag-list.html
-- _layouts/category.html
-- _layouts/default.html
-- _layouts/post.html
-- _layouts/tag.html
-- _posts/2025-03-06-welcome-to-jekyll.markdown
-- _posts/en/2025-03-21-russian-boutique-hotels.md
-- _tags/sectors/hotels-resorts.md
+- _includes/language-selector.html
+- _tags/en/growth/growth-ready.md
+- _tags/en/growth/rapid-growth.md
+- _tags/ru/growth/growth-ready.md
+- _tags/ru/growth/rapid-growth.md
+- _tags/zh/attributes/artisanal-excellence.md
+- _tags/zh/attributes/cultural-ambassador.md
+- _tags/zh/attributes/founder-led.md
+- _tags/zh/attributes/heritage-brand.md
+- _tags/zh/attributes/innovation-leader.md
+- _tags/zh/attributes/premium-positioning.md
+- _tags/zh/attributes/regional-icon.md
 
 
 ### Project Log Entries (Last 2)

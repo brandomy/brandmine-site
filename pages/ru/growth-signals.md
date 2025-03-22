@@ -6,6 +6,9 @@ lang: ru
 description: "Понимание тегов Сигналов роста Brandmine, которые определяют бренды с потенциалом для конкретных бизнес-партнерств."
 ---
 
+<div class="growth-signals-container">
+
+<div class="growth-signals-intro">
 # Сигналы роста: понимание возможностей бизнес-партнерства
 
 ## Что такое Сигналы роста?
@@ -13,8 +16,111 @@ description: "Понимание тегов Сигналов роста Brandmin
 Сигналы роста — это конкретные индикаторы, определяющие бренды с особым потенциалом для бизнес-партнерства. В отличие от наших тегов сектора (которые классифицируют типы продуктов) или тегов атрибутов (которые описывают характеристики бренда), сигналы роста конкретно выделяют коммерческие возможности для различных типов партнеров.
 
 В Brandmine мы разработали четыре отдельных сигнала роста, которые быстро идентифицируют бренды, готовые к конкретным путям роста:
+</div>
 
 ## Наша система Сигналов роста
+
+<div class="signal-cards">
+  <div class="signal-card export-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/export-ready.svg" alt="Готов к экспорту" class="tag-icon">
+      <h4 class="signal-card-title">Готов к экспорту</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Бренды, демонстрирующие готовность к международным рынкам.</p>
+      <ul class="feature-list">
+        <li>Многоязычные веб-сайты или маркетинговые материалы</li>
+        <li>Возможности международной доставки</li>
+        <li>Продукты, доступные за пределами страны</li>
+        <li>Упаковка для международных рынков</li>
+        <li>Участие в международных выставках</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/ru/tags/growth/export-ready/" class="signal-card-link">
+        Смотреть бренды готовые к экспорту
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card franchise-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/franchise-ready.svg" alt="Готов к франчайзингу" class="tag-icon">
+      <h4 class="signal-card-title">Готов к франчайзингу</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Бренды, разработавшие системы для франчайзинговой экспансии.</p>
+      <ul class="feature-list">
+        <li>Опубликованная информация о франшизе</li>
+        <li>Несколько стандартизированных локаций</li>
+        <li>Документированные операционные процедуры</li>
+        <li>Заявленные намерения по франчайзингу</li>
+        <li>Доказанный успех существующих локаций</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/ru/tags/growth/franchise-ready/" class="signal-card-link">
+        Смотреть бренды готовые к франчайзингу
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card investment-ready-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/investment-ready.svg" alt="Готов к инвестициям" class="tag-icon">
+      <h4 class="signal-card-title">Готов к инвестициям</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Бренды, структурированные для принятия и эффективного использования внешних инвестиций.</p>
+      <ul class="feature-list">
+        <li>Четкие структуры управления и собственности</li>
+        <li>Заявленный интерес к инвестициям</li>
+        <li>Планы роста для вливания капитала</li>
+        <li>Предыдущие раунды финансирования</li>
+        <li>Профессиональная управленческая команда</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/ru/tags/growth/investment-ready/" class="signal-card-link">
+        Смотреть бренды готовые к инвестициям
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  <div class="signal-card rapid-growth-card">
+    <div class="signal-card-header">
+      <img src="/assets/images/icons/rapid-growth.svg" alt="Быстрый рост" class="tag-icon">
+      <h4 class="signal-card-title">Быстрый рост</h4>
+    </div>
+    <div class="signal-card-body">
+      <p>Бренды, демонстрирующие явные признаки ускоренного расширения бизнеса.</p>
+      <ul class="feature-list">
+        <li>Расширение ассортимента продукции или услуг</li>
+        <li>Увеличение количества локаций</li>
+        <li>Рост размера команды и структуры</li>
+        <li>Увеличение доли рынка в основных секторах</li>
+        <li>Наблюдаемое расширение производства</li>
+      </ul>
+    </div>
+    <div class="signal-card-footer">
+      <a href="/ru/tags/growth/rapid-growth/" class="signal-card-link">
+        Смотреть бренды быстрого роста
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
 
 ### Готов к экспорту
 
@@ -145,4 +251,12 @@ description: "Понимание тегов Сигналов роста Brandmin
 3. Количественных показателей для поддержки применения сигналов
 4. Примеров успешных партнерств, сформированных через сигналы роста
 
+<div class="cta-section">
+  <h2>Откройте для себя возможности партнерства</h2>
+  <p>Исследуйте нашу базу данных брендов БРИКС+, отфильтрованных по сигналам роста, чтобы найти свою следующую бизнес-возможность.</p>
+  <a href="/ru/brands/" class="cta-button">Просмотреть бренды</a>
+</div>
+
 Мы приветствуем ваши отзывы о том, как наша система сигналов роста может лучше соответствовать вашим потребностям. Пожалуйста, свяжитесь с нами по адресу feedback@brandmine.io с вашими предложениями.
+
+</div>
