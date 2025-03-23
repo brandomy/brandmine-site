@@ -1,0 +1,27 @@
+{% comment %}
+  Usage: {% include responsive-image.html path="path/to/image.jpg" alt="Alt text" %}
+  Optional parameters:
+  - path: path to the image (required)
+  - alt: alt text for the image (required)
+  - class: additional CSS classes
+  - base_width: width of the smallest image (default: 400)
+  - mid_width: width of the medium image (default: 800)
+  - large_width: width of the largest image (default: 1200)
+{% endcomment %}
+
+{% assign base_path = include.path | split: "." %}
+{% assign base_name = base_path[0] %}
+{% assign extension = base_path[1] %}
+{% assign base_width = include.base_width | default: '400' %}
+{% assign mid_width = include.mid_width | default: '800' %}
+{% assign large_width = include.large_width | default: '1200' %}
+
+<img src="{{ base_name }}-{{ base_width }}.{{ extension | relative_url }}"
+     srcset="{{ base_name }}-{{ base_width }}.{{ extension | relative_url }} {{ base_width }}w,
+             {{ base_name }}-{{ mid_width }}.{{ extension | relative_url }} {{ mid_width }}w,
+             {{ base_name }}-{{ large_width }}.{{ extension | relative_url }} {{ large_width }}w"
+     sizes="(max-width: 600px) {{ base_width }}px,
+            (max-width: 1200px) {{ mid_width }}px,
+            {{ large_width }}px"
+     alt="{{ include.alt }}"
+     {% if include.class %}class="{{ include.class }}"{% endif %}>
