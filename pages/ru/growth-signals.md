@@ -3,6 +3,7 @@ layout: page
 title: Сигналы роста
 permalink: /ru/growth-signals/
 lang: ru
+ref: growth-signals
 description: "Понимание тегов Сигналов роста Brandmine, которые определяют бренды с потенциалом для конкретных бизнес-партнерств."
 ---
 

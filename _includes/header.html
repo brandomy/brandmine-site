@@ -1,24 +1,37 @@
+<!-- _includes/header.html - Expected Structure -->
 <header class="site-header">
   <div class="wrapper">
     <!-- Site title/logo -->
     <a class="site-title" href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].site.title }}</a>
     
-    <!-- Add hamburger menu button -->
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span class="menu-icon"></span>
-    </button>
         
     <!-- Main navigation -->
     <nav class="site-nav">
       <a href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].nav.home }}</a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/brands/">{{ site.data.translations[page.lang].nav.brands }}</a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/sectors/">{{ site.data.translations[page.lang].nav.sectors }}</a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/markets/">{{ site.data.translations[page.lang].nav.markets }}</a>
+      
+      <div class="dropdown">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="dropbtn">{{ site.data.translations[page.lang].nav.discover }}</a>
+        <div class="dropdown-content">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/">{{ site.data.translations[page.lang].nav.sectors }}</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/">{{ site.data.translations[page.lang].nav.markets }}</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/">{{ site.data.translations[page.lang].nav.attributes }}</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/">{{ site.data.translations[page.lang].nav.signals }}</a>
+        </div>
+      </div>
+      
       <a href="{{ site.baseurl }}/{{ page.lang }}/insights/">{{ site.data.translations[page.lang].nav.insights }}</a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/about/">{{ site.data.translations[page.lang].nav.about }}</a>
     </nav>
-    
-    <!-- Language selector -->
+
+    <!-- Language selector - Must be outside the site-nav -->
     {% include language-selector.html %}
+
+    <!-- Add hamburger menu button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span class="menu-icon"></span>
+    </button>
+
+    
   </div>
 </header>

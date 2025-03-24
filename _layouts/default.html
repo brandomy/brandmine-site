@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/text.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/hero-panels.css' | relative_url }}">
 
   <!-- 4. Layout Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}">
@@ -68,6 +69,11 @@
 
   {% if page.permalink contains 'countries' %}
   <link rel="stylesheet" href="{{ '/assets/css/pages/countries.css' | relative_url }}">
+  {% endif %}
+
+  {% if page.layout == 'styleguide' or page.url contains '/styleguide/' %}
+  <link rel="stylesheet" href="{{ '/assets/css/styleguide.css' | relative_url }}">
+  <script src="{{ '/assets/js/styleguide.js' | relative_url }}" defer></script>
   {% endif %}
 
   <!-- 6. Mobile/Responsive Overrides (always last) -->

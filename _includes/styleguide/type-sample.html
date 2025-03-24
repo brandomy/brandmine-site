@@ -1,0 +1,37 @@
+<!-- _includes/styleguide/type-sample.html -->
+{% comment %}
+  Typography sample include for typography documentation
+  
+  Usage:
+  {% include styleguide/type-sample.html 
+     element="h1" 
+     name="Heading 1" 
+     variable="--text-4xl" 
+     family="--font-heading"
+     size="2.25rem (36px)"
+     weight="700"
+     code="<h1>Heading Example</h1>"
+  %}
+{% endcomment %}
+
+<div class="styleguide-type-sample">
+  <div class="styleguide-type-info">
+    <h4>{{ include.name }}</h4>
+    <dl>
+      <dt>Variable:</dt>
+      <dd>{{ include.variable }}</dd>
+      <dt>Font Family:</dt>
+      <dd>{{ include.family }}</dd>
+      <dt>Font Size:</dt>
+      <dd>{{ include.size }}</dd>
+      <dt>Font Weight:</dt>
+      <dd>{{ include.weight }}</dd>
+    </dl>
+  </div>
+  <div class="styleguide-type-preview">
+    {{ include.code }}
+  </div>
+  <div class="styleguide-type-code">
+    <pre><code class="language-html">{{ include.code | escape }}</code></pre>
+  </div>
+</div>

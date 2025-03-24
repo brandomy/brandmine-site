@@ -452,6 +452,13 @@ def main():
     parser.add_argument("--copy", action="store_true", help="Copy to clipboard")
     parser.add_argument("--full", action="store_true", help="Include full site details")
     
+# Add these parameters to your ArgumentParser
+    parser.add_argument("--task", help="Specific task context (new-page, new-component, debug, translation)")
+    parser.add_argument("--since", help="Focus on changes since this date (YYYY-MM-DD)")
+    parser.add_argument("--minimal", action="store_true", help="Generate minimal context (site structure and recent changes only)")
+
+
+    
     args = parser.parse_args()
     
     # Validate focus area if provided

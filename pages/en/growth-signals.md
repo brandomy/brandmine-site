@@ -3,6 +3,7 @@ layout: page
 title: Growth Signals
 permalink: /en/growth-signals/
 lang: en
+ref: growth-signals
 description: "Understanding Brandmine's Growth Signal tags that identify brands with specific business partnership potential."
 ---
 

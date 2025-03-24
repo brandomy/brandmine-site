@@ -1,31 +1,37 @@
 # Brandmine Site Summary
-Generated on Sat 22 Mar 2025 16:32:56 +08
+Generated on Mon 24 Mar 2025 14:43:44 +08
 
 ## Repository Status
-Current branch: feature/blog-setup
-Last commit: Add 'Countries' tag translation in English, Russian, and Chinese
-Last commit date: 2025-03-22 14:43
-Modified files: 15
+Current branch: improve-navigation
+Last commit: changed about page hero text colour to beige
+Last commit date: 2025-03-23 11:52
+Modified files: 41
 Recent activity:
+- 2025-03-23: changed about page hero text colour to beige
+- 2025-03-23: Add responsive image includes and script for processing all image categories
+- 2025-03-23: Add new brand images and remove outdated Russian images; create responsive brand image include
+- 2025-03-22: Remove inconsistencies tracking and add language consistency check script; create new post templates for English, Chinese, and Russian
 - 2025-03-22: Add 'Countries' tag translation in English, Russian, and Chinese
-- 2025-03-22: Refactor country tags and translations for Brazil, India, China, and South Africa; enhance layout and styling for multilingual support
-- 2025-03-22: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English
-- 2025-03-22: add images for carousel test
-- 2025-03-22: Add images and enhance Russian tag content; update translations and author details
 
 ## Site Structure
 ### Directories
 ```
-- _layouts/ (4 files)
+- _layouts/ (6 files)
   - category.html
   - default.html
   - post.html
+  - styleguide-standalone.html
+  - styleguide.html
   - tag.html
-- _includes/ (5 files)
+- _includes/ (9 files)
+  - brand-image.html
   - footer.html
   - google-analytics.html
   - header.html
   - language-selector.html
+  - responsive-image.html
+  - site-image.html
+  - styleguide
   - tags
 - _data/ (6 files)
   - _data/.DS_Store
@@ -34,8 +40,8 @@ Recent activity:
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (82 files total)
-  - assets/css/ (26 CSS files)
+- assets/ (96 files total)
+  - assets/css/ (29 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
     - assets/css/components/team.css
@@ -48,12 +54,15 @@ Recent activity:
     - assets/css/components/buttons.css
     - assets/css/components/cards.css
     - assets/css/components/tags.css
+    - assets/css/components/hero-panels.css
     - assets/css/components/layouts.css
+    - assets/css/styleguide.css
     - assets/css/pages/growth-signals.css
     - assets/css/pages/home.css
     - assets/css/pages/markets.css
     - assets/css/pages/sectors.css
     - assets/css/pages/brands.css
+    - assets/css/pages/discover.css
     - assets/css/pages/about.css
     - assets/css/pages/countries.css
     - assets/css/pages/russian-sectors.css
@@ -62,7 +71,8 @@ Recent activity:
     - assets/css/tokens/spacing.css
     - assets/css/tokens/breakpoints.css
     - assets/css/tokens/colors.css
-  - assets/js/ (1 JS files)
+  - assets/js/ (2 JS files)
+    - assets/js/styleguide.js
     - assets/js/menu.js
   - assets/fonts/ (22 font files)
     - assets/fonts/pt-serif_caption-regular.woff2
@@ -76,9 +86,9 @@ Recent activity:
     - assets/fonts/pt-sans_caption-regular.woff2
     - assets/fonts/pt-sans_bold.woff2
     - ... and 12 more font files
-  - assets/images/ (26 image files)
+  - assets/images/ (23 image files)
 - pages/ structure
-  - pages/en/ (9 pages)
+  - pages/en/ (16 pages)
     - pages/en/brands.md
     - pages/en/markets.md
     - pages/en/index.html
@@ -87,7 +97,8 @@ Recent activity:
     - pages/en/countries.md
     - pages/en/about.md
     - pages/en/growth-signals.md
-  - pages/ru/ (8 pages)
+    - pages/en/discover.md
+  - pages/ru/ (9 pages)
     - pages/ru/brands.md
     - pages/ru/markets.md
     - pages/ru/index.html
@@ -95,7 +106,8 @@ Recent activity:
     - pages/ru/russian-sectors.md
     - pages/ru/about.md
     - pages/ru/growth-signals.md
-  - pages/zh/ (8 pages)
+    - pages/ru/discover.md
+  - pages/zh/ (9 pages)
     - pages/zh/brands.md
     - pages/zh/markets.md
     - pages/zh/index.html
@@ -103,6 +115,7 @@ Recent activity:
     - pages/zh/russian-sectors.md
     - pages/zh/about.md
     - pages/zh/growth-signals.md
+    - pages/zh/discover.md
 ```
 
 ## Configuration Details
@@ -131,16 +144,16 @@ defaults:
 
 ## Content Summary
 - Languages: 3 (en ru zh )
-  - en: 9 pages
-  - ru: 8 pages
-  - zh: 8 pages
+  - en: 16 pages
+  - ru: 9 pages
+  - zh: 9 pages
 - Blog posts: 4
   - Date range: 2025/03/21 to 2025/03/21
 - Translation files: 3
   - Translation coverage:
-    - en (primary): 57 keys
-    - ru: 57 keys (100% coverage)
-    - zh: 57 keys (100% coverage)
+    - en (primary): 70 keys
+    - ru: 70 keys (100% coverage)
+    - zh: 70 keys (100% coverage)
 
 ## Tag System Analysis
 ### Tag Translation Coverage
@@ -161,7 +174,7 @@ defaults:
 #### Tag usage in zh content:
 - 
 ### Tag Usage Trends
-No previous data available for comparison. Usage trends will be available after multiple runs.
+Comparing to previous data points:
 ### Most Used Tags in Content
 #### Most popular tags in en content:
 -    1 tags: [hotels-resorts
@@ -247,21 +260,21 @@ No previous data available for comparison. Usage trends will be available after 
 
 ### _includes/header.html (Navigation)
 ```html
+<!-- _includes/header.html - Expected Structure -->
 <header class="site-header">
   <div class="wrapper">
     <!-- Site title/logo -->
     <a class="site-title" href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].site.title }}</a>
     
-    <!-- Add hamburger menu button -->
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span class="menu-icon"></span>
-    </button>
         
     <!-- Main navigation -->
     <nav class="site-nav">
       <a href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations[page.lang].nav.home }}</a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/brands/">{{ site.data.translations[page.lang].nav.brands }}</a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/sectors/">{{ site.data.translations[page.lang].nav.sectors }}</a>
+      
+      <div class="dropdown">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="dropbtn">{{ site.data.translations[page.lang].nav.discover }}</a>
+        <div class="dropdown-content">
 ... (truncated for brevity) ...
 ```
 
@@ -302,9 +315,9 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 2.074 seconds.
-- Generated HTML pages: 143
-- Total site size:  38M
+- Build time (clean): 5.836 seconds.
+- Generated HTML pages: 153
+- Total site size:  40M
 
 ## Environment & Dependencies
 - Jekyll version: 3.10.0
@@ -322,33 +335,33 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-23**: changed about page hero text colour to beige (Randal Eastman)
+- **2025-03-23**: Add responsive image includes and script for processing all image categories (Randal Eastman)
+- **2025-03-23**: Add new brand images and remove outdated Russian images; create responsive brand image include (Randal Eastman)
+- **2025-03-22**: Remove inconsistencies tracking and add language consistency check script; create new post templates for English, Chinese, and Russian (Randal Eastman)
 - **2025-03-22**: Add 'Countries' tag translation in English, Russian, and Chinese (Randal Eastman)
 - **2025-03-22**: Refactor country tags and translations for Brazil, India, China, and South Africa; enhance layout and styling for multilingual support (Randal Eastman)
 - **2025-03-22**: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English (Randal Eastman)
 - **2025-03-22**: add images for carousel test (Randal Eastman)
 - **2025-03-22**: Add images and enhance Russian tag content; update translations and author details (Randal Eastman)
 - **2025-03-22**: Add country tags and translations for Brazil, Russia, India, China, and South Africa; implement country-specific styling and layout (Randal Eastman)
-- **2025-03-22**: Add growth signals documentation in English and Chinese to enhance brand partnership insights (Randal Eastman)
-- **2025-03-22**: Remove 'Growth Ready' tag files in English, Russian, and Chinese to streamline content management (Randal Eastman)
-- **2025-03-22**: Add language consistency report and new translations for rapid growth tags (Randal Eastman)
-- **2025-03-22**: Refactor language selector to improve URL handling and remove deprecated code (Randal Eastman)
 
 ### Recently Modified Files
-- PROJECT_LOG.md
-- _config.yml
-- _data/tag_translations.yml
 - _data/translations/en.yml
 - _data/translations/ru.yml
 - _data/translations/zh.yml
-- _includes/tags/tag-cloud.html
-- _includes/tags/tag-list.html
-- _layouts/post.html
-- _layouts/tag.html
-- _posts/en/2025-03-21-russian-boutique-hotels.md
-- _posts/ru/2025-03-21-russian-boutique-hotels.md
-- _posts/zh/2025-03-21-russian-boutique-hotels.md
-- _tags/en/countries/brazil.md
-- _tags/en/countries/china.md
+- _docs/templates/post-en.md
+- _docs/templates/post-ru.md
+- _docs/templates/post-zh.md
+- _includes/brand-image.html
+- _includes/responsive-image.html
+- _includes/site-image.html
+- _scripts/_history/tag-stats-2025-03-22.json
+- _scripts/check_language_consistency.sh
+- _scripts/claude-session-init.py
+- _scripts/enhanced-site-summary-advanced.sh
+- _scripts/language_consistency_checker.py
+- _scripts/process_all_images.sh
 
 
 ### Project Log Entries (Last 2)

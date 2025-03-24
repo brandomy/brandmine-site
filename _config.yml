@@ -30,6 +30,9 @@ collections:
   tags:
     output: true
     permalink: /:collection/:path/
+  styleguide:
+    output: true
+    permalink: /styleguide/:path/
     
 # Default front matter
 defaults:
@@ -104,3 +107,37 @@ defaults:
     values:
       layout: "tag"
       lang: "zh"
+
+
+# Style Guide Configuration
+styleguide:
+  enabled: true
+  sections:
+    - name: Foundations
+      items:
+        - name: Colors
+          path: /en/styleguide/foundations/colors/
+        - name: Typography
+          path: /en/styleguide/foundations/typography/
+        - name: Spacing
+          path: /en/styleguide/foundations/spacing/
+        - name: Layouts
+          path: /en/styleguide/foundations/layouts/
+    - name: Components
+      items:
+        - name: Hero Panels
+          path: /en/styleguide/components/hero-panels/
+        - name: Buttons
+          path: /en/styleguide/components/buttons/
+        - name: Cards
+          path: /en/styleguide/components/cards/
+        - name: Forms
+          path: /en/styleguide/components/forms/
+    - name: Patterns
+      items:
+        - name: Navigation
+          path: /en/styleguide/patterns/navigation/
+        - name: Multilingual
+          path: /en/styleguide/patterns/multilingual/
+        - name: Content Display
+          path: /en/styleguide/patterns/content-display/

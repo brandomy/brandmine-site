@@ -7,9 +7,9 @@ ref: brands
 ---
 
 <!-- Hero Panel -->
-<div class="full-width-panel hero-panel">
+ <div class="full-width-panel hero-panel"> 
   <div class="panel-content centered">
-    <h1>Discover Leading BRICS+ Consumer Brands</h1>
+    <h1 class="brands-title">Discover Leading BRICS+ Consumer Brands</h1>
     <p class="hero-subtitle">Breaking Through Barriers to Find Your Next Opportunity</p>
   </div>
 </div>

@@ -1,5 +1,5 @@
 # Brandmine Jekyll Website Context
-Generated: 2025-03-22 17:21
+Generated: 2025-03-23 19:10
 
 ## Focus Area: Layout
 
@@ -39,11 +39,14 @@ defaults:
   - default.html
   - post.html
   - tag.html
-- _includes/ (5 files)
+- _includes/ (8 files)
+  - brand-image.html
   - footer.html
   - google-analytics.html
   - header.html
   - language-selector.html
+  - responsive-image.html
+  - site-image.html
   - tags
 - _data/ (6 files)
   - _data/.DS_Store
@@ -52,7 +55,7 @@ defaults:
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (82 files total)
+- assets/ (89 files total)
   - assets/css/ (26 CSS files)
     - assets/css/layout/panels.css
     - assets/css/main.css
@@ -79,9 +82,7 @@ defaults:
     - assets/css/tokens/typography.css
     - assets/css/tokens/spacing.css
     - assets/css/tokens/breakpoints.css
-    - assets/css/tokens/colors.css
-  - assets/js/ (1 JS files)
-    - assets/js/m
+    - assets/
 ...(truncated)...
 
 ## Key Layout Files

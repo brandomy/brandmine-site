@@ -3,6 +3,7 @@ layout: default
 title: Country Focus
 permalink: /en/countries/
 lang: en
+ref: countries
 ---
 
 <div class="full-width-panel light-panel">

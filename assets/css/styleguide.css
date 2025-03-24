@@ -1,0 +1,672 @@
+/* assets/css/styleguide.css */
+
+/* Style Guide Layout */
+
+/* Reset the container and layout approach */
+  .styleguide-container {
+    position: relative;
+    padding-top: 60px;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+/* Make the sidebar absolutely positioned */
+  .styleguide-nav {
+    width: 200px;
+    background-color: var(--neutral-800);
+    color: white;
+    padding: var(--space-6);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+  }
+  
+/* Set content to start after sidebar width */
+  .styleguide-content {
+    position: relative;
+    padding: var(--space-8);
+    margin-left: 200px; /* Start after sidebar */
+    width: auto; /* Let it fill the available space */
+    box-sizing: border-box;
+    z-index: 10;
+    background-color: white;
+  }
+  
+  /* Navigation Styling */
+  .styleguide-nav h3 {
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--neutral-400);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+  
+  .styleguide-nav ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .styleguide-nav li {
+    margin-bottom: var(--space-1);
+  }
+  
+  .styleguide-nav a {
+    color: var(--neutral-300);
+    text-decoration: none;
+    display: block;
+    padding: var(--space-1) 0;
+    transition: color 0.2s ease;
+  }
+  
+  .styleguide-nav a:hover {
+    color: white;
+  }
+  
+  .styleguide-nav a.active {
+    color: var(--primary-300);
+    font-weight: var(--font-medium);
+  }
+  
+  .styleguide-logo {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--neutral-700);
+  }
+  
+  .styleguide-logo-text {
+    font-weight: var(--font-bold);
+    color: white;
+    font-size: var(--text-lg);
+  }
+  
+  /* Page Header */
+  .styleguide-page-header {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .styleguide-description {
+    font-size: var(--text-lg);
+    color: var(--neutral-600);
+    max-width: 800px;
+  }
+  
+  /* Example Components */
+  .styleguide-example {
+    margin: var(--space-8) 0;
+    border: 1px solid var(--neutral-200);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .styleguide-example-title {
+    margin-top: 0;
+    margin-bottom: var(--space-2);
+  }
+  
+  .styleguide-example-description {
+    margin-bottom: var(--space-4);
+    color: var(--neutral-600);
+  }
+  
+  .styleguide-example-preview {
+    padding: var(--space-8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .styleguide-example-code {
+    background-color: var(--neutral-100);
+  }
+  
+  .styleguide-code-header {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--neutral-200);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--neutral-700);
+  }
+  
+  .styleguide-copy-button {
+    background: none;
+    border: none;
+    color: var(--primary-600);
+    cursor: pointer;
+    font-size: var(--text-sm);
+  }
+  
+  .styleguide-copy-button:hover {
+    color: var(--primary-800);
+    text-decoration: underline;
+  }
+  
+  .styleguide-example-code pre {
+    margin: 0;
+    padding: var(--space-4);
+    overflow-x: auto;
+  }
+  
+  .styleguide-example-code code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--neutral-800);
+  }
+  
+  /* Color Swatches */
+  .styleguide-color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+  }
+  
+  .styleguide-color-swatch {
+    border: 1px solid var(--neutral-200);
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .styleguide-color-preview {
+    height: 100px;
+  }
+  
+  .styleguide-color-details {
+    padding: var(--space-3);
+    background-color: white;
+  }
+  
+  .styleguide-color-name {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--text-base);
+  }
+  
+  .styleguide-color-values {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--neutral-700);
+    margin-bottom: var(--space-2);
+  }
+  
+  .styleguide-color-values span {
+    margin-bottom: var(--space-1);
+  }
+  
+  .styleguide-color-usage {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    margin: var(--space-2) 0 0 0;
+  }
+  
+  /* Typography Samples */
+  .styleguide-type-sample {
+    margin: var(--space-6) 0;
+    border: 1px solid var(--neutral-200);
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .styleguide-type-info {
+    padding: var(--space-4);
+    background-color: var(--neutral-100);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .styleguide-type-info h4 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+  
+  .styleguide-type-info dl {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-2);
+    margin: 0;
+  }
+  
+  .styleguide-type-info dt {
+    font-weight: var(--font-bold);
+    color: var(--neutral-600);
+  }
+  
+  .styleguide-type-info dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+  
+  .styleguide-type-preview {
+    padding: var(--space-8);
+    background-color: white;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .styleguide-type-code {
+    background-color: var(--neutral-100);
+    padding: var(--space-4);
+  }
+  
+  .styleguide-type-code pre {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--neutral-800);
+  }
+  
+/* Mobile nav toggle */
+.styleguide-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+  /* Responsive Adjustments */
+  @media (max-width: var(--breakpoint-lg)) {
+    .styleguide-nav-toggle {
+      display: block;
+    }
+
+    .styleguide-container {
+      flex-direction: column;
+      padding-top: 120px; /* Allow more space for mobile nav */
+    }
+    
+    .styleguide-nav {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: auto;
+      position: absolute; /* Change from fixed for mobile */
+      top: 60px;
+      max-height: 50vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .styleguide-nav.is-open {
+      transform: translateY(0);
+    }
+
+    .styleguide-content {
+      margin-left: 0;
+      margin-top: 0; /* Reset margin-top when nav is hidden */
+  /*     margin-top: 50vh; /* Push content below the nav */ */
+      width: 100%;
+      padding: var(--space-4);
+      max-width: 100%;
+    }
+    
+    .styleguide-nav h3 {
+      margin-top: var(--space-4);
+    }
+    
+    .styleguide-color-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
+  
+  @media (max-width: var(--breakpoint-md)) {
+    .styleguide-nav {
+      padding: var(--space-3);
+    }
+    
+    .styleguide-content {
+      padding: var(--space-3);
+    }
+    
+    .styleguide-example-preview {
+      padding: var(--space-4);
+    }
+    
+    .styleguide-type-info dl {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Welcome Page Styles */
+.styleguide-welcome {
+    margin-bottom: var(--space-12);
+  }
+  
+  .styleguide-logo-large {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-6);
+  }
+  
+  .styleguide-logo-large img {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  .styleguide-welcome-text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--neutral-700);
+    max-width: 700px;
+    margin: var(--space-6) auto;
+    text-align: center;
+  }
+  
+  .styleguide-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+    margin: var(--space-8) 0;
+  }
+  
+  .styleguide-card {
+    background-color: white;
+    border: 1px solid var(--neutral-200);
+    border-radius: 0.5rem;
+    padding: var(--space-6);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .styleguide-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .styleguide-card h3 {
+    font-size: var(--text-xl);
+    color: var(--primary-700);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+  }
+  
+  .styleguide-card p {
+    color: var(--neutral-600);
+    margin-bottom: var(--space-4);
+  }
+  
+  .styleguide-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  
+  .styleguide-card li {
+    margin-bottom: var(--space-2);
+  }
+  
+  .styleguide-card a {
+    color: var(--primary-600);
+    text-decoration: none;
+    display: block;
+    padding: var(--space-1) 0;
+    transition: color 0.2s ease;
+  }
+  
+  .styleguide-card a:hover {
+    color: var(--primary-800);
+    text-decoration: underline;
+  }
+  
+  /* Content Sections */
+  .styleguide-section {
+    margin-bottom: var(--space-12);
+  }
+  
+  .styleguide-section h2 {
+    font-size: var(--text-2xl);
+    color: var(--neutral-800);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .styleguide-section h3 {
+    font-size: var(--text-xl);
+    color: var(--neutral-700);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+  
+  .styleguide-section p {
+    max-width: 700px;
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+  
+  .styleguide-section ol, 
+  .styleguide-section ul {
+    margin-bottom: var(--space-6);
+    padding-left: var(--space-6);
+  }
+  
+  .styleguide-section li {
+    margin-bottom: var(--space-2);
+  }
+  
+  .styleguide-updated {
+    font-style: italic;
+    color: var(--neutral-600);
+    margin-top: var(--space-6);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--neutral-200);
+    display: inline-block;
+  }
+
+  /* Override default layout constraints */
+body.styleguide-page {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  max-width: none !important;
+}
+
+/* Fix container positioning relative to sidebar */
+body.styleguide-page {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body.styleguide-page .page-content {
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Add specific fix to prevent header overlapping content */
+.styleguide-container {
+  display: flex;
+  padding-top: 60px;
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  position: relative;
+}
+
+/* Fix for the wrapper constraints */
+.styleguide-page .wrapper {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+/* Add to your existing styleguide.css */
+.styleguide-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--neutral-900);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  z-index: 1000;
+  height: 60px; /* Set explicit height */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.styleguide-home-link {
+  color: white;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+}
+
+.styleguide-home-link:hover {
+  text-decoration: underline;
+}
+
+/* Fixes for the logo overlay issue */
+.styleguide-logo-large {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.styleguide-logo-large img {
+  max-width: 120px;
+  height: auto;
+}
+
+
+/* Component Example Styles */
+.example-wrapper {
+  margin: var(--space-6) 0;
+  border: 1px solid var(--neutral-200);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.example-panel {
+  /* Remove full-width-panel behavior for examples */
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  
+  /* Constrain height for consistent examples */
+  min-height: 20vh !important;
+}
+
+.example-code {
+  padding: var(--space-4);
+  background-color: var(--neutral-100);
+  border-top: 1px solid var(--neutral-200);
+  overflow-x: auto;
+}
+
+.example-code pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.example-code code {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--neutral-800);
+}
+
+.example-stacked .example-panel {
+  margin-bottom: 0 !important;
+}
+
+/* Fix for component display in examples */
+.example-wrapper .hero-panel,
+.example-wrapper .full-width-panel {
+  position: relative !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  left: auto !important;
+  right: auto !important;
+}
+
+.example-wrapper .panel-content {
+  max-width: 100%;
+  padding: var(--space-4);
+}
+
+/* Table of contents styling for component pages */
+.styleguide-toc {
+  background-color: var(--neutral-100);
+  padding: var(--space-4);
+  border-radius: 0.5rem;
+  margin: var(--space-8) 0;
+}
+
+.styleguide-toc ul {
+  columns: 2;
+  column-gap: var(--space-8);
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.styleguide-toc li {
+  margin-bottom: var(--space-2);
+}
+
+.styleguide-toc a {
+  text-decoration: none;
+  color: var(--primary-600);
+}
+
+.styleguide-toc a:hover {
+  text-decoration: underline;
+}
+
+/* Welcome status section */
+.styleguide-welcome-status {
+  padding: var(--space-4);
+  background-color: var(--primary-50);
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--primary-500);
+  margin: var(--space-8) 0;
+}
+
+.styleguide-status-note {
+  font-weight: bold;
+  margin-bottom: var(--space-2);
+  color: var(--primary-700);
+}
+
+.styleguide-status-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.styleguide-status-list li {
+  margin-bottom: var(--space-2);
+}
+
+.styleguide-status-list a {
+  color: var(--primary-600);
+  text-decoration: none;
+}
+
+.styleguide-status-list a:hover {
+  text-decoration: underline;
+}

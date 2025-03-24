@@ -3,6 +3,7 @@ layout: page
 title: 增长信号
 permalink: /zh/growth-signals/
 lang: zh
+ref: growth-signals
 description: "了解Brandmine的增长信号标签，这些标签用于识别具有特定商业合作潜力的品牌。"
 ---
 

@@ -1,10 +1,31 @@
+<!-- _includes/language-selector.html -->
 <div class="language-selector">
-  {% assign langs = "en,ru,zh" | split: "," %}
-  
-  {% for lang in langs %}
-    {% assign language_url = page.url | replace_first: page.lang, lang %}
-    <a href="{{ language_url }}" class="{% if page.lang == lang %}active{% endif %}">
-      {{ lang | upcase }}
-    </a>
-  {% endfor %}
+  {% assign pages = site.pages | where:"ref", page.ref | sort: 'lang' %}
+  {% if pages.size == 0 %}
+    {% if page.layout %}
+      {% assign pages = site.pages | where:"layout", page.layout | where:"ref", page.ref | sort: 'lang' %}
+    {% endif %}
+    
+    {% if pages.size == 0 %}
+      <!-- Fallback to current page language and manually construct other language URLs -->
+      {% assign current_path_parts = page.url | split: '/' %}
+      {% assign language_independent_path = '' %}
+      
+      {% for part in current_path_parts offset:2 %}
+        {% assign language_independent_path = language_independent_path | append: '/' | append: part %}
+      {% endfor %}
+      
+      <a href="{{ site.baseurl }}/en{{ language_independent_path }}" {% if page.lang == 'en' %}class="active"{% endif %}>EN</a>
+      <a href="{{ site.baseurl }}/ru{{ language_independent_path }}" {% if page.lang == 'ru' %}class="active"{% endif %}>RU</a>
+      <a href="{{ site.baseurl }}/zh{{ language_independent_path }}" {% if page.lang == 'zh' %}class="active"{% endif %}>ZH</a>
+    {% else %}
+      {% for pg in pages %}
+        <a href="{{ pg.url | relative_url }}" {% if pg.lang == page.lang %}class="active"{% endif %}>{{ pg.lang | upcase }}</a>
+      {% endfor %}
+    {% endif %}
+  {% else %}
+    {% for pg in pages %}
+      <a href="{{ pg.url | relative_url }}" {% if pg.lang == page.lang %}class="active"{% endif %}>{{ pg.lang | upcase }}</a>
+    {% endfor %}
+  {% endif %}
 </div>

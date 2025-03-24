@@ -1,0 +1,71 @@
+<!-- _layouts/styleguide.html -->
+---
+layout: default
+---
+
+<!-- This script prevents the default wrapper from constraining the styleguide layout -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Find the wrapper div and remove it
+    const wrapper = document.querySelector('.page-content .wrapper');
+    if (wrapper && wrapper.parentNode) {
+      // Move all content out of the wrapper
+      while (wrapper.firstChild) {
+        wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
+      }
+      // Remove the empty wrapper
+      wrapper.parentNode.removeChild(wrapper);
+    }
+
+    // Add styleguide class to body
+    document.body.classList.add('styleguide-page');
+  });
+</script>
+
+<div class="styleguide-container">
+  <!-- Style Guide Navigation Sidebar -->
+  <aside class="styleguide-nav">
+    <div class="styleguide-logo">
+      <a href="{{ site.baseurl }}/en/styleguide/">
+        <span class="styleguide-logo-text">Brandmine Design System</span>
+      </a>
+    </div>
+    
+    <nav>
+      <h3>Foundations</h3>
+      <ul>
+        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/colors/" {% if page.url contains '/foundations/colors/' %}class="active"{% endif %}>Colors</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/typography/" {% if page.url contains '/foundations/typography/' %}class="active"{% endif %}>Typography</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/spacing/" {% if page.url contains '/foundations/spacing/' %}class="active"{% endif %}>Spacing</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/layouts/" {% if page.url contains '/foundations/layouts/' %}class="active"{% endif %}>Layouts</a></li>
+      </ul>
+      
+      <h3>Components</h3>
+      <ul>
+        <li><a href="{{ site.baseurl }}/en/styleguide/components/hero-panels/" {% if page.url contains '/components/hero-panels/' %}class="active"{% endif %}>Hero Panels</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/components/buttons/" {% if page.url contains '/components/buttons/' %}class="active"{% endif %}>Buttons</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/components/cards/" {% if page.url contains '/components/cards/' %}class="active"{% endif %}>Cards</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/components/forms/" {% if page.url contains '/components/forms/' %}class="active"{% endif %}>Forms</a></li>
+      </ul>
+      
+      <h3>Patterns</h3>
+      <ul>
+        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/navigation/" {% if page.url contains '/patterns/navigation/' %}class="active"{% endif %}>Navigation</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/multilingual/" {% if page.url contains '/patterns/multilingual/' %}class="active"{% endif %}>Multilingual</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/content-display/" {% if page.url contains '/patterns/content-display/' %}class="active"{% endif %}>Content Display</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Style Guide Content Area -->
+  <main class="styleguide-content">
+    <div class="styleguide-page-header">
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="styleguide-description">{{ page.description }}</p>
+      {% endif %}
+    </div>
+    
+    {{ content }}
+  </main>
+</div>
