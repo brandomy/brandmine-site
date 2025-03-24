@@ -379,7 +379,7 @@ Common tag display patterns:
   <div class="tag-cloud">
     <h4>Sectors</h4>
     <div class="sector-cloud">
-      {% for tag in site.tags.sectors | limit: 8 %}
+      {% for tag in site.tags.sectors limit: 8 %}
         <a href="{{ tag.url }}" class="tag sector-tag">{{ tag.title }}</a>
       {% endfor %}
     </div>
