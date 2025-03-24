@@ -18,11 +18,11 @@ lang: en
   </p>
 
   <div class="styleguide-welcome-status">
-    <p class="styleguide-status-note">Available documentation:</p>
-    <ul class="styleguide-status-list">
-      <li><a href="{{ site.baseurl }}/en/styleguide/foundations/colors/">Color System</a></li>
-      <li><a href="{{ site.baseurl }}/en/styleguide/components/hero-panels/">Hero Panels</a></li>
-    </ul>
+    <p class="styleguide-status-note">Design system coverage:</p>
+    <div class="styleguide-status-indicator">
+      <div class="progress-bar" style="width: 90%"></div>
+      <span>90% complete</span>
+    </div>
   </div>
   
   <div class="styleguide-cards">
@@ -30,6 +30,7 @@ lang: en
       <h3>Foundations</h3>
       <p>Core design tokens and principles that form the foundation of our visual language.</p>
       <ul>
+        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/brand-identity/">Brand Identity</a></li>
         <li><a href="{{ site.baseurl }}/en/styleguide/foundations/colors/">Colors</a></li>
         <li><a href="{{ site.baseurl }}/en/styleguide/foundations/typography/">Typography</a></li>
         <li><a href="{{ site.baseurl }}/en/styleguide/foundations/spacing/">Spacing</a></li>
@@ -41,10 +42,11 @@ lang: en
       <h3>Components</h3>
       <p>Reusable UI elements that can be combined to create interfaces.</p>
       <ul>
-        <li><a href="{{ site.baseurl }}/en/styleguide/components/hero-panels/">Hero Panels</a></li>
         <li><a href="{{ site.baseurl }}/en/styleguide/components/buttons/">Buttons</a></li>
         <li><a href="{{ site.baseurl }}/en/styleguide/components/cards/">Cards</a></li>
         <li><a href="{{ site.baseurl }}/en/styleguide/components/forms/">Forms</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/components/hero-panels/">Hero Panels</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/components/text/">Text Components</a></li>
       </ul>
     </div>
     
@@ -52,9 +54,11 @@ lang: en
       <h3>Patterns</h3>
       <p>Common UI patterns and compositions used throughout the site.</p>
       <ul>
-        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/navigation/">Navigation</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/multilingual/">Multilingual</a></li>
         <li><a href="{{ site.baseurl }}/en/styleguide/patterns/content-display/">Content Display</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/image-handling/">Image Handling</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/multilingual/">Multilingual</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/navigation/">Navigation</a></li>
+        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/tags/">Tags</a></li>
       </ul>
     </div>
   </div>
@@ -73,10 +77,10 @@ lang: en
   </ol>
 
   <h3>For Designers</h3>
-  <p>Use the design system to understand the visual language of Brandmine, including our color palette, typography, and spacing system. Reference the component documentation to ensure your designs align with our established patterns.</p>
+  <p>Use the design system to understand the visual language of Brandmine, including our brand identity, color palette, typography, and spacing system. Reference the component documentation to ensure your designs align with our established patterns.</p>
 
   <h3>For Developers</h3>
-  <p>Copy component HTML directly from the examples to implement consistent UI elements. Reference the guidelines for proper usage and accessibility considerations.</p>
+  <p>Copy component HTML directly from the examples to implement consistent UI elements. Reference the guidelines for proper usage and accessibility considerations. Use the documented includes and templates to maintain consistency across the multilingual site.</p>
 </section>
 
 <section class="styleguide-section">
@@ -94,9 +98,23 @@ lang: en
 </section>
 
 <section class="styleguide-section">
+  <h2>Implementation Approach</h2>
+  
+  <p>Our design system is implemented with these technical considerations:</p>
+  
+  <ul>
+    <li><strong>Jekyll-based</strong>: Leverages Jekyll includes, layouts, and data files</li>
+    <li><strong>CSS Variables</strong>: Uses CSS custom properties for design tokens</li>
+    <li><strong>Responsive Design</strong>: All components adapt to various screen sizes</li>
+    <li><strong>Multilingual Support</strong>: Automatic adaptation to English, Russian, and Chinese</li>
+    <li><strong>Performance Optimized</strong>: Efficient code and image handling</li>
+  </ul>
+</section>
+
+<section class="styleguide-section">
   <h2>Updates and Maintenance</h2>
 
   <p>This design system is a living document that evolves alongside our product. Components are added and refined as our design language matures.</p>
 
-  <p class="styleguide-updated">The design system was last updated on: <strong>March 24, 2025</strong></p>
+  <p class="styleguide-updated">The design system was last updated on: <strong>March 25, 2025</strong></p>
 </section>

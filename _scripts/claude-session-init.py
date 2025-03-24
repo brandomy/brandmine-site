@@ -7,14 +7,21 @@ combining information from site-summary.md and PROJECT_LOG.md.
 
 Usage:
     ./claude-session-init.py [--focus AREA] [--copy] [--full]
+    ./claude-session-init.py [--progressive] [--copy]
+    ./claude-session-init.py [--task TASK] [--since DATE] [--copy]
 
 Arguments:
     --focus AREA    Focus the context on a specific area (layout, content, multilingual, etc.)
     --copy          Automatically copy the output to clipboard (requires pyperclip)
     --full          Include full site details (larger context)
+    --progressive   Generate minimal context with a menu of additional context Claude can request
+    --task TASK     Specific task context (new-page, new-component, debug, translation)
+    --since DATE    Focus on changes since this date (YYYY-MM-DD)
+    --minimal       Generate minimal context (site structure and recent changes only)
 
 Example:
     ./claude-session-init.py --focus multilingual --copy
+    ./claude-session-init.py --progressive --copy
 """
 
 import os
@@ -44,6 +51,15 @@ SITE_SUMMARY_FILE = "site-summary.md"
 PROJECT_LOG_FILE = "PROJECT_LOG.md"
 OUTPUT_FILE = "claude-context.md"
 MAX_CONTENT_LENGTH = 12000  # Limit context size to avoid exceeding Claude's limits
+CONTEXT_SNIPPETS_DIR = "_context_snippets"  # Directory for context snippets
+
+# Task-specific focus areas
+TASK_FOCUS = {
+    "new-page": ["layout", "content"],
+    "new-component": ["styling", "layout"],
+    "debug": ["functionality"],
+    "translation": ["multilingual"],
+}
 
 # Focus areas and related files/patterns
 FOCUS_AREAS = {
@@ -141,7 +157,7 @@ def find_matching_files(pattern, max_count=5):
     
     return matches
 
-def get_relevant_log_entries(focus=None, max_entries=5):
+def get_relevant_log_entries(focus=None, max_entries=5, since_date=None):
     """Get relevant log entries for a specific focus area."""
     if not os.path.exists(PROJECT_LOG_FILE):
         return "No project log found."
@@ -151,6 +167,16 @@ def get_relevant_log_entries(focus=None, max_entries=5):
     
     # Extract log entries using regex
     entries = re.findall(r"##\s+(\d{4}-\d{2}-\d{2}):\s+(.*?)(?=##|\Z)", content, re.DOTALL)
+    
+    # Filter by date if provided
+    if since_date:
+        try:
+            since_date_obj = datetime.datetime.strptime(since_date, "%Y-%m-%d").date()
+            entries = [(date, entry) for date, entry in entries 
+                      if datetime.datetime.strptime(date, "%Y-%m-%d").date() >= since_date_obj]
+        except ValueError:
+            # If date parsing fails, ignore the filter
+            pass
     
     # If no focus, return recent entries
     if not focus or focus not in FOCUS_AREAS:
@@ -311,7 +337,116 @@ def get_font_strategy_context():
     
     return ""
 
-def generate_context_document(focus=None, full_details=False):
+def get_latest_commit_info():
+    """Get the latest commit info from git."""
+    try:
+        result = subprocess.run(["git", "log", "-1", "--pretty=format:%s (%an, %ad)"], 
+                              capture_output=True, text=True, check=False)
+        return result.stdout if result.returncode == 0 else "No commit info available"
+    except:
+        return "Unable to retrieve commit info"
+        
+def get_current_focus_area():
+    """Try to determine current focus area from PROJECT_LOG.md."""
+    if not os.path.exists(PROJECT_LOG_FILE):
+        return "Unknown"
+    
+    with open(PROJECT_LOG_FILE, "r", encoding="utf-8", errors="replace") as f:
+        content = f.read()
+    
+    # Extract the most recent log entry
+    match = re.search(r"##\s+\d{4}-\d{2}-\d{2}:\s+(.*?)(?=\n)", content)
+    if match:
+        return match.group(1)
+    return "General site development"
+
+def generate_minimal_context():
+    """Generate just the essential context to start a session."""
+    
+    # Current date for reference
+    today = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    
+    minimal_context = f"""# Brandmine Jekyll Website - Quick Reference
+Generated: {today}
+
+## Project Overview
+- Jekyll-based multilingual website (EN, RU, ZH)
+- Focus on showcasing BRICS+ consumer brands
+- Current navigation structure: Home, Brands, Discover (Sectors, Markets, Attributes, Signals), Insights, About
+
+## Latest Development
+- Most recent commit: {get_latest_commit_info()}
+- Current focus: {get_current_focus_area()}
+
+## Working with Claude
+When I need more context about specific areas, please ask me and I can provide:
+1. File contents (specific layouts, includes, CSS files)
+2. Directory structures
+3. Configuration details
+4. Recent changes in specific areas
+5. Tag system details
+6. Translation system information
+
+I'm new to programming and building this site myself with your guidance.
+"""
+    return minimal_context
+
+def generate_context_menu():
+    """Create a menu of available context information Claude can request."""
+    
+    # Check if context snippets directory exists
+    context_files = []
+    if os.path.exists(CONTEXT_SNIPPETS_DIR):
+        context_files = [f for f in os.listdir(CONTEXT_SNIPPETS_DIR) if f.endswith('.md')]
+    
+    menu = """
+## Available Context Information
+
+If needed, you can ask me for any of these context packages:
+
+### Site Structure
+- Full directory structure
+- Jekyll configuration
+- Collection setup
+
+### Design System
+- Color palette details
+- Typography system
+- Component library status
+
+### Multilingual System
+- Translation file structure
+- Language implementation details
+- Content translation status
+
+### Development History
+- Recent commits and changes
+- Project log entries
+- Current development focus
+
+### Content Organization
+- Tag system details 
+- Content statistics
+- Navigation structure
+
+### Specific File Contents
+- You can ask for any specific file content like:
+  "Can you share your header.html include?"
+  "What's in your main.css file?"
+  "How is your default layout structured?"
+"""
+
+    # Add available context snippets if they exist
+    if context_files:
+        menu += "\n### Available Context Snippets\n"
+        menu += "I have these prepared context files ready to share when needed:\n\n"
+        for file in context_files:
+            name = file.replace('.md', '').replace('_', ' ').title()
+            menu += f"- {name}\n"
+    
+    return menu
+
+def generate_context_document(focus=None, full_details=False, since_date=None):
     """Generate the comprehensive context document."""
     # Check if site summary exists
     if not os.path.exists(SITE_SUMMARY_FILE):
@@ -332,6 +467,11 @@ def generate_context_document(focus=None, full_details=False):
     if focus and focus in FOCUS_AREAS:
         context += f"## Focus Area: {focus.capitalize()}\n\n"
         context += "This context is focused on the " + focus + " aspects of the website.\n\n"
+    
+    # Add date filter info if applicable
+    if since_date:
+        context += f"## Changes Since: {since_date}\n\n"
+        context += f"This context focuses on changes made since {since_date}.\n\n"
     
     # Basic site information
     site_info = extract_section(summary_content, "Configuration Details", 1000)
@@ -375,14 +515,14 @@ def generate_context_document(focus=None, full_details=False):
     # Add recent development activity
     if focus and focus in FOCUS_AREAS:
         context += f"## Recent {focus.capitalize()} Development\n\n"
-        context += get_relevant_log_entries(focus, 3)
+        context += get_relevant_log_entries(focus, 3, since_date)
     else:
         activity_info = extract_section(summary_content, "Recent Development Activity", 2000)
         if activity_info:
             context += activity_info + "\n"
         else:
             context += "## Recent Development Activity\n\n"
-            context += get_relevant_log_entries(None, 2)
+            context += get_relevant_log_entries(None, 2, since_date)
     
     # Add content summary
     content_info = extract_section(summary_content, "Content Summary", 1000)
@@ -445,33 +585,140 @@ When writing code, use:
     
     return context
 
+def generate_task_context(task, since_date=None):
+    """Generate context tailored for a specific task."""
+    if task not in TASK_FOCUS:
+        print(f"Unknown task: {task}")
+        print(f"Valid tasks: {', '.join(TASK_FOCUS.keys())}")
+        return None
+    
+    # Get the focus areas for this task
+    focus_areas = TASK_FOCUS[task]
+    
+    # Start building the context document
+    today = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    
+    context = f"# Brandmine Jekyll Website: {task.replace('-', ' ').title()} Task\n"
+    context += f"Generated: {today}\n\n"
+    
+    context += f"## Task Context: {task.replace('-', ' ').title()}\n\n"
+    context += "This context is tailored to help with the specific task.\n\n"
+    
+    # Add minimal site info
+    context += "## Project Overview\n"
+    context += "- Jekyll-based multilingual website (EN, RU, ZH)\n"
+    context += "- Focus on showcasing BRICS+ consumer brands\n"
+    context += "- Current navigation structure: Home, Brands, Discover (Sectors, Markets, Attributes, Signals), Insights, About\n\n"
+    
+    # Add relevant information for each focus area
+    for focus in focus_areas:
+        if focus == "layout":
+            context += "## Layout System\n\n"
+            layout_file = "_layouts/default.html"
+            if os.path.exists(layout_file):
+                content = find_file_content(layout_file, 30)
+                if content:
+                    context += f"### Default Layout Structure\n```html\n{content}```\n\n"
+        
+        elif focus == "content":
+            context += "## Content Structure\n\n"
+            context += "Content is organized by language in `/pages/en/`, `/pages/ru/`, and `/pages/zh/` directories.\n"
+            context += "Each page has front matter with `layout`, `title`, and `lang` parameters.\n\n"
+        
+        elif focus == "multilingual":
+            context += "## Multilingual System\n\n"
+            context += "- Language-first URLs (`/en/`, `/ru/`, `/zh/`)\n"
+            context += "- Translation files in `_data/translations/`\n"
+            context += "- Every page has a `lang` parameter in front matter\n\n"
+            
+            # Add sample translation
+            if os.path.exists("_data/translations/en.yml"):
+                content = find_file_content("_data/translations/en.yml", 15)
+                if content:
+                    context += "### Sample Translation\n"
+                    context += f"```yaml\n{content}```\n\n"
+        
+        elif focus == "styling":
+            context += "## Styling System\n\n"
+            context += "- CSS organized in tokens, components, and page-specific files\n"
+            context += "- Design tokens: colors, typography, spacing, breakpoints\n"
+            context += "- Component styles: buttons, cards, forms, navigation, etc.\n\n"
+            
+            # Add color palette
+            color_palette = get_color_palette_context()
+            if color_palette:
+                context += color_palette
+    
+    # Add relevant recent development
+    context += "## Recent Development\n\n"
+    for focus in focus_areas:
+        context += get_relevant_log_entries(focus, 1, since_date)
+    
+    # Add instructions for Claude
+    context += """
+## Working with Claude
+
+When helping with this Jekyll website, please:
+
+1. Consider the multilingual structure (EN, RU, ZH) in all solutions
+2. Provide complete code when suggesting changes
+3. Maintain the existing file structure and naming conventions
+4. Explain the reasoning behind technical decisions
+5. Consider mobile responsiveness in layout changes
+6. Respect the established color palette and typography system
+7. Consider the tag system architecture when discussing content organization
+
+When writing code, use:
+- Liquid templating for Jekyll
+- Modern CSS practices
+- Vanilla JavaScript where possible
+"""
+    
+    return context
+
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Generate context for Claude sessions")
     parser.add_argument("--focus", help="Focus area (layout, content, multilingual, styling, functionality, newsletter, tags)")
     parser.add_argument("--copy", action="store_true", help="Copy to clipboard")
-    parser.add_argument("--full", action="store_true", help="Include full site details")
-    
-# Add these parameters to your ArgumentParser
+    parser.add_argument("--full", action="store_true", help="Include full site details (larger context)")
+    parser.add_argument("--progressive", action="store_true", help="Generate minimal context with a menu of additional context Claude can request")
     parser.add_argument("--task", help="Specific task context (new-page, new-component, debug, translation)")
     parser.add_argument("--since", help="Focus on changes since this date (YYYY-MM-DD)")
     parser.add_argument("--minimal", action="store_true", help="Generate minimal context (site structure and recent changes only)")
-
-
     
     args = parser.parse_args()
     
-    # Validate focus area if provided
-    if args.focus and args.focus.lower() not in FOCUS_AREAS:
-        print(f"Invalid focus area: {args.focus}")
-        print(f"Valid areas: {', '.join(FOCUS_AREAS.keys())}")
-        return
+    # Check context snippets directory
+    if not os.path.exists(CONTEXT_SNIPPETS_DIR):
+        print(f"Warning: Context snippets directory '{CONTEXT_SNIPPETS_DIR}' not found.")
+        print("You may want to create this directory and add context snippet files.")
     
-    # Generate context document
-    context = generate_context_document(
-        focus=args.focus.lower() if args.focus else None,
-        full_details=args.full
-    )
+    # Generate context based on provided arguments
+    context = None
+    
+    if args.progressive:
+        # Generate minimal context with menu
+        context = generate_minimal_context() + "\n\n" + generate_context_menu()
+    elif args.task:
+        # Generate task-specific context
+        context = generate_task_context(args.task, args.since)
+    elif args.minimal:
+        # Generate minimal context only
+        context = generate_minimal_context()
+    else:
+        # Validate focus area if provided
+        if args.focus and args.focus.lower() not in FOCUS_AREAS:
+            print(f"Invalid focus area: {args.focus}")
+            print(f"Valid areas: {', '.join(FOCUS_AREAS.keys())}")
+            return
+        
+        # Generate comprehensive context
+        context = generate_context_document(
+            focus=args.focus.lower() if args.focus else None,
+            full_details=args.full,
+            since_date=args.since
+        )
     
     if not context:
         return
@@ -495,7 +742,11 @@ def main():
     print("\nNext Steps:")
     print("1. Start a new conversation with Claude")
     print(f"2. Paste the content of {OUTPUT_FILE} at the beginning")
-    print("3. Ask your specific questions about the website")
+    
+    if args.progressive:
+        print("3. Ask your question, and Claude will request specific context when needed")
+    else:
+        print("3. Ask your specific questions about the website")
 
 if __name__ == "__main__":
     main()

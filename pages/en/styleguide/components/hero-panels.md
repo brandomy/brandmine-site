@@ -571,11 +571,14 @@ lang: en
     
     /* Constrain height for consistent examples */
     min-height: 20vh !important;
+    
+    /* Ensure variant styles are visible */
+    background-color: inherit !important; /* Let variant styles control background */
   }
   
   .example-code {
     padding: var(--space-4);
-    background-color: var(--neutral-100);
+    background-color: var(--neutral-900, #111827); /* Change to dark background */
     border-top: 1px solid var(--neutral-200);
     overflow-x: auto;
   }
@@ -588,7 +591,7 @@ lang: en
   .example-code code {
     font-family: var(--font-mono);
     font-size: 0.9rem;
-    color: var(--neutral-800);
+    color: white; /* Change to white text for visibility on dark background */
   }
   
   .example-stacked .example-panel {

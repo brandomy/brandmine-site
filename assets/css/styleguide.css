@@ -480,3 +480,36 @@
 .accent-700 { background-color: var(--accent-700, #4338CA); color: white; }
 .accent-800 { background-color: var(--accent-800, #3730A3); color: white; }
 .accent-900 { background-color: var(--accent-900, #312E81); color: white; }
+
+
+/* Code block styling fixes */
+.example-code {
+  padding: var(--space-4);
+  background-color: var(--neutral-900, #111827);
+  border-top: 1px solid var(--neutral-200, #E5E7EB);
+  overflow-x: auto;
+}
+
+.example-code pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.example-code code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9rem;
+  color: white; /* Set code text to white for visibility */
+}
+
+/* Syntax highlighting for code examples */
+.example-code .tag {
+  color: var(--primary-300, #4FD1C5);
+}
+
+.example-code .attr {
+  color: var(--secondary-300, #FDBA74);
+}
+
+.example-code .string {
+  color: var(--accent-300, #A5B4FC);
+}
