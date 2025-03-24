@@ -1,6 +1,8 @@
 ---
 layout: null
-permalink: /grid-test/
+title: Grid Test
+permalink: /en/grid-test/
+lang: en
 ---
 <!DOCTYPE html>
 <html lang="en">
