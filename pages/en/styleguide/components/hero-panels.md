@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Hero Panel Style Guide
 description: A comprehensive guide to Brandmine's hero panel system including variants, combinations, and usage guidelines.
 permalink: /en/styleguide/components/hero-panels/

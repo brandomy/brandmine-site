@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Cards
 description: Brandmine's cards.
 permalink: /en/styleguide/components/cards/

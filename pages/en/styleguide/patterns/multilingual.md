@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Multilingual Approach
 description: Brandmine's multilingual...
 permalink: /en/styleguide/patterns/multilingual/

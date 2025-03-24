@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Buttons
 description: TBD
 permalink: /en/styleguide/components/buttons/

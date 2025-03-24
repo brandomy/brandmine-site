@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Layout System
 description: Brandmine's layout system provides flexible, responsive structures for organizing content.
 permalink: /en/styleguide/foundations/layouts/

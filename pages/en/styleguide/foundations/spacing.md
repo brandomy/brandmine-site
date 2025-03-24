@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Spacing System
 description: Brandmine's spacing system ensures consistent rhythm and proportion throughout the interface.
 permalink: /en/styleguide/foundations/spacing/

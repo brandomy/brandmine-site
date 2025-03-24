@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Content Display
 description: Brandmine's content display...
 permalink: /en/styleguide/patterns/content-display/

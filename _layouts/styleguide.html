@@ -1,71 +1,159 @@
-<!-- _layouts/styleguide.html -->
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}en{% endif %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | Brandmine Design System</title>
+  
+  <!-- Design Tokens and Base Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/colors.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/spacing.css' | relative_url }}">
+  
+  <!-- Fixed Grid-Based Layout -->
+  <link rel="stylesheet" href="{{ '/assets/css/styleguide.css' | relative_url }}">
+  
+  <!-- Component Styles for Examples -->
+  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/cards.css' | relative_url }}">
 
-<!-- This script prevents the default wrapper from constraining the styleguide layout -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Find the wrapper div and remove it
-    const wrapper = document.querySelector('.page-content .wrapper');
-    if (wrapper && wrapper.parentNode) {
-      // Move all content out of the wrapper
-      while (wrapper.firstChild) {
-        wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
+  <!-- Font Preloading for Performance -->
+  <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+
+  <!-- Fixed JavaScript -->
+  <script src="{{ '/assets/js/styleguide.js' | relative_url }}" defer></script>
+</head>
+<body>
+  <!-- Mobile Navigation Toggle Button -->
+  <button class="styleguide-nav-toggle" aria-label="Toggle navigation menu">
+    <span>Menu</span>
+  </button>
+  
+  <!-- Overlay for Mobile Navigation Background -->
+  <div class="styleguide-overlay"></div>
+  
+  <!-- Main Grid Container -->
+  <div class="styleguide-container">
+    <!-- Navigation Sidebar -->
+    <aside class="styleguide-nav">
+      <div class="styleguide-logo">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/">
+          <span class="styleguide-logo-text">Brandmine Design System</span>
+        </a>
+      </div>
+      
+      <nav>
+        <!-- Foundations Section -->
+        <h3>Foundations</h3>
+        <ul>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/colors/" 
+              {% if page.url contains '/foundations/colors/' %}class="active"{% endif %}>
+              Colors
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/typography/" 
+              {% if page.url contains '/foundations/typography/' %}class="active"{% endif %}>
+              Typography
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/spacing/" 
+              {% if page.url contains '/foundations/spacing/' %}class="active"{% endif %}>
+              Spacing
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/layouts/" 
+              {% if page.url contains '/foundations/layouts/' %}class="active"{% endif %}>
+              Layouts
+            </a>
+          </li>
+        </ul>
+        
+        <!-- Components Section -->
+        <h3>Components</h3>
+        <ul>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/hero-panels/" 
+              {% if page.url contains '/components/hero-panels/' %}class="active"{% endif %}>
+              Hero Panels
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/buttons/" 
+              {% if page.url contains '/components/buttons/' %}class="active"{% endif %}>
+              Buttons
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/cards/" 
+              {% if page.url contains '/components/cards/' %}class="active"{% endif %}>
+              Cards
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/forms/" 
+              {% if page.url contains '/components/forms/' %}class="active"{% endif %}>
+              Forms
+            </a>
+          </li>
+        </ul>
+        
+        <!-- Patterns Section -->
+        <h3>Patterns</h3>
+        <ul>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/navigation/" 
+              {% if page.url contains '/patterns/navigation/' %}class="active"{% endif %}>
+              Navigation
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/multilingual/" 
+              {% if page.url contains '/patterns/multilingual/' %}class="active"{% endif %}>
+              Multilingual
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/content-display/" 
+              {% if page.url contains '/patterns/content-display/' %}class="active"{% endif %}>
+              Content Display
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="styleguide-content">
+      <div class="styleguide-page-header">
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}
+          <p class="styleguide-description">{{ page.description }}</p>
+        {% endif %}
+      </div>
+      
+      {{ content }}
+    </main>
+  </div>
+
+  <!-- Debug panel for development -->
+  {% if jekyll.environment != "production" %}
+  <div style="position: fixed; bottom: 0; right: 0; background: rgba(0,0,0,0.8); color: white; padding: 10px; font-size: 12px; max-width: 300px; z-index: 9999;">
+    <h4 style="margin: 0 0 5px 0;">Debug Info</h4>
+    <div id="screen-width">Width: --</div>
+    <div id="nav-state">Nav: --</div>
+    <div id="page-info">Page: {{ page.title }}</div>
+    <div id="url-info">URL: {{ page.url }}</div>
+    <script>
+      function updateDebugInfo() {
+        document.getElementById('screen-width').textContent = 'Width: ' + window.innerWidth + 'px';
+        
+        const nav = document.querySelector('.styleguide-nav');
+        document.getElementById('nav-state').textContent = 'Nav: ' + 
+          (nav.classList.contains('is-open') ? 'open' : 'closed');
       }
-      // Remove the empty wrapper
-      wrapper.parentNode.removeChild(wrapper);
-    }
-
-    // Add styleguide class to body
-    document.body.classList.add('styleguide-page');
-  });
-</script>
-
-<div class="styleguide-container">
-  <!-- Style Guide Navigation Sidebar -->
-  <aside class="styleguide-nav">
-    <div class="styleguide-logo">
-      <a href="{{ site.baseurl }}/en/styleguide/">
-        <span class="styleguide-logo-text">Brandmine Design System</span>
-      </a>
-    </div>
-    
-    <nav>
-      <h3>Foundations</h3>
-      <ul>
-        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/colors/" {% if page.url contains '/foundations/colors/' %}class="active"{% endif %}>Colors</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/typography/" {% if page.url contains '/foundations/typography/' %}class="active"{% endif %}>Typography</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/spacing/" {% if page.url contains '/foundations/spacing/' %}class="active"{% endif %}>Spacing</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/foundations/layouts/" {% if page.url contains '/foundations/layouts/' %}class="active"{% endif %}>Layouts</a></li>
-      </ul>
       
-      <h3>Components</h3>
-      <ul>
-        <li><a href="{{ site.baseurl }}/en/styleguide/components/hero-panels/" {% if page.url contains '/components/hero-panels/' %}class="active"{% endif %}>Hero Panels</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/components/buttons/" {% if page.url contains '/components/buttons/' %}class="active"{% endif %}>Buttons</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/components/cards/" {% if page.url contains '/components/cards/' %}class="active"{% endif %}>Cards</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/components/forms/" {% if page.url contains '/components/forms/' %}class="active"{% endif %}>Forms</a></li>
-      </ul>
+      // Update debug info regularly
+      setInterval(updateDebugInfo, 500);
+      window.addEventListener('resize', updateDebugInfo);
       
-      <h3>Patterns</h3>
-      <ul>
-        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/navigation/" {% if page.url contains '/patterns/navigation/' %}class="active"{% endif %}>Navigation</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/multilingual/" {% if page.url contains '/patterns/multilingual/' %}class="active"{% endif %}>Multilingual</a></li>
-        <li><a href="{{ site.baseurl }}/en/styleguide/patterns/content-display/" {% if page.url contains '/patterns/content-display/' %}class="active"{% endif %}>Content Display</a></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- Style Guide Content Area -->
-  <main class="styleguide-content">
-    <div class="styleguide-page-header">
-      <h1>{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="styleguide-description">{{ page.description }}</p>
-      {% endif %}
-    </div>
-    
-    {{ content }}
-  </main>
-</div>
+      // Initial update
+      document.addEventListener('DOMContentLoaded', updateDebugInfo);
+    </script>
+  </div>
+  {% endif %}
+</body>
+</html>

@@ -1,667 +1,482 @@
-/* assets/css/styleguide.css */
+/* Brandmine Styleguide - Fixed CSS Grid Implementation
+   A comprehensive grid-based layout system for the Brandmine design system
+   with responsive navigation and consistent styling.
+*/
 
-/* Style Guide Layout */
-
-.styleguide-container {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-areas: "sidebar content";
-  padding-top: 60px;
-  min-height: calc(100vh - 60px);
-  width: 100%;
-}
+:root {
+    /* Core layout variables */
+    --sidebar-width: 250px;
+    --content-max-width: 1200px;
+    --header-height: 60px;
+    --grid-gap: 1rem;
+    
+    /* Breakpoints for responsive design */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    
+    /* Spacing variables */
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    
+    /* Color fallbacks if tokens aren't loaded */
+    --neutral-100: #F3F4F6;
+    --neutral-200: #E5E7EB;
+    --neutral-300: #D1D5DB;
+    --neutral-700: #374151;
+    --neutral-800: #1F2937;
+    --neutral-900: #111827;
+    
+    --primary-100: #B2F5EA;
+    --primary-400: #38B2AC;
+    --primary-500: #319795;
+    --primary-700: #285E61;
+  }
   
-.styleguide-nav {
-  grid-area: sidebar;
-  background-color: var(--neutral-800);
-  color: white;
-  padding: var(--space-6);
-  position: fixed;
-  width: 200px;
-  top: 60px;
-  bottom: 0;
-  overflow-y: auto;
-  z-index: 100;
-}
+  /* ============================
+     Base Container Structure
+     ============================ */
   
-.styleguide-content {
-  grid-area: content;
-  padding: var(--space-8);
-  background-color: white;
-  min-width: 0; /* Prevents overflow */
-}
+  .styleguide-container {
+    display: grid;
+    min-height: 100vh;
+    
+    /* Mobile-first: single column layout */
+    grid-template-areas: 
+      "content";
+    grid-template-columns: 1fr;
+    font-size: 0.9rem;
+  }
   
-  /* Navigation Styling */
+  /* ============================
+     Navigation Component
+     ============================ */
+  
+  .styleguide-nav {
+    grid-area: navigation;
+    background-color: var(--neutral-800, #1F2937);
+    color: white;
+    
+    /* Core navigation styling */
+    display: flex;
+    flex-direction: column;
+    
+    /* Mobile: Fixed positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width, 250px);
+    height: 100vh;
+    padding: var(--space-4, 1rem);
+    z-index: 1000;
+    
+    /* Transform for off-canvas */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    
+    /* Ensure smooth transition performance */
+    will-change: transform;
+    
+    /* Handle overflow content */
+    overflow-y: auto;
+  }
+  
+  /* Navigation logo/header */
+  .styleguide-logo {
+    margin-bottom: var(--space-6, 1.5rem);
+  }
+  
+  .styleguide-logo a {
+    text-decoration: none;
+  }
+  
+  .styleguide-logo-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Navigation sections */
   .styleguide-nav h3 {
-    font-size: var(--text-sm);
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    color: var(--neutral-400);
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-2);
+    letter-spacing: 0.05em;
+    color: var(--neutral-300, #D1D5DB);
+    margin: var(--space-6, 1.5rem) 0 var(--space-2, 0.5rem);
   }
   
   .styleguide-nav ul {
     list-style: none;
-    padding-left: 0;
-    margin-bottom: var(--space-4);
+    padding: 0;
+    margin: 0 0 var(--space-4, 1rem);
   }
   
   .styleguide-nav li {
-    margin-bottom: var(--space-1);
+    margin-bottom: var(--space-2, 0.5rem);
   }
   
   .styleguide-nav a {
-    color: var(--neutral-300);
+    color: white;
     text-decoration: none;
     display: block;
-    padding: var(--space-1) 0;
+    padding: var(--space-2, 0.5rem) 0;
     transition: color 0.2s ease;
   }
   
   .styleguide-nav a:hover {
-    color: white;
+    color: var(--primary-400, #38B2AC);
   }
   
   .styleguide-nav a.active {
-    color: var(--primary-300);
-    font-weight: var(--font-medium);
+    color: var(--primary-400, #38B2AC);
+    font-weight: 600;
   }
   
-  .styleguide-logo {
-    margin-bottom: var(--space-8);
-    padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--neutral-700);
+  /* Navigation open state */
+  .styleguide-nav.is-open {
+    transform: translateX(0);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   }
   
-  .styleguide-logo-text {
-    font-weight: var(--font-bold);
-    color: white;
-    font-size: var(--text-lg);
+  /* ============================
+     Content Area
+     ============================ */
+  
+  .styleguide-content {
+    grid-area: content;
+    background-color: white;
+    padding: var(--space-8, 2rem) var(--space-4, 1rem);
+    
+    /* Fill vertical space */
+    min-height: 100vh;
+    
+    /* Content structure */
+    display: flex;
+    flex-direction: column;
   }
   
-  /* Page Header */
   .styleguide-page-header {
-    margin-bottom: var(--space-8);
-    padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--neutral-200);
+    margin-bottom: var(--space-8, 2rem);
+    border-bottom: 1px solid var(--neutral-200, #E5E7EB);
+    padding-bottom: var(--space-4, 1rem);
+  }
+  
+  .styleguide-page-header h1 {
+    font-size: 2rem;
+    margin: 0 0 var(--space-2, 0.5rem);
+    color: var(--neutral-900, #111827);
   }
   
   .styleguide-description {
-    font-size: var(--text-lg);
-    color: var(--neutral-600);
-    max-width: 800px;
+    font-size: 1.1rem;
+    color: var(--neutral-700, #374151);
+    max-width: 40em;
+    line-height: 1.5;
   }
   
-  /* Example Components */
-  .styleguide-example {
-    margin: var(--space-8) 0;
-    border: 1px solid var(--neutral-200);
+  /* ============================
+     Navigation Toggle Button
+     ============================ */
+  
+  .styleguide-nav-toggle {
+    display: block;
+    position: fixed;
+    top: var(--space-4, 1rem);
+    right: var(--space-4, 1rem);
+    z-index: 1100;
+    
+    /* Button styling */
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    background-color: var(--primary-500, #319795);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    
+    /* Interactive effects */
+    transition: background-color 0.2s ease;
+  }
+  
+  .styleguide-nav-toggle:hover {
+    background-color: var(--primary-700, #285E61);
+  }
+  
+  .styleguide-nav-toggle:focus {
+    outline: 2px solid var(--primary-400, #38B2AC);
+    outline-offset: 2px;
+  }
+  
+  /* ============================
+     Overlay for Mobile Navigation
+     ============================ */
+  
+  .styleguide-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    
+    /* Transition for smooth appearance */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .styleguide-overlay.is-active {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* ============================
+     Common Component Styles
+     ============================ */
+  
+  .example-wrapper {
+    border: 1px solid var(--neutral-200, #E5E7EB);
     border-radius: 0.5rem;
+    margin-bottom: var(--space-8, 2rem);
     overflow: hidden;
   }
   
-  .styleguide-example-title {
-    margin-top: 0;
-    margin-bottom: var(--space-2);
+  .example-panel {
+    padding: var(--space-6, 1.5rem);
+    background-color: var(--neutral-100, #F3F4F6);
+    border-bottom: 1px solid var(--neutral-200, #E5E7EB);
   }
   
-  .styleguide-example-description {
-    margin-bottom: var(--space-4);
-    color: var(--neutral-600);
+  .example-code {
+    padding: var(--space-4, 1rem);
+    background-color: var(--neutral-900, #111827);
+    color: white;
+    position: relative;
   }
   
-  .styleguide-example-preview {
-    padding: var(--space-8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-bottom: 1px solid var(--neutral-200);
-  }
-  
-  .styleguide-example-code {
-    background-color: var(--neutral-100);
-  }
-  
-  .styleguide-code-header {
-    display: flex;
-    justify-content: space-between;
-    padding: var(--space-2) var(--space-4);
-    background-color: var(--neutral-200);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    color: var(--neutral-700);
-  }
-  
-  .styleguide-copy-button {
-    background: none;
+  .copy-button {
+    position: absolute;
+    top: var(--space-2, 0.5rem);
+    right: var(--space-2, 0.5rem);
+    background-color: var(--neutral-700, #374151);
+    color: white;
     border: none;
-    color: var(--primary-600);
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
     cursor: pointer;
-    font-size: var(--text-sm);
   }
   
-  .styleguide-copy-button:hover {
-    color: var(--primary-800);
-    text-decoration: underline;
+  /* ============================
+     Responsive Layout Adjustments
+     ============================ */
+  
+  /* Small devices (576px and up) */
+  @media (min-width: 576px) {
+    .styleguide-container {
+      font-size: 1rem;
+    }
+    
+    .styleguide-content {
+      padding: var(--space-8, 2rem);
+    }
   }
   
-  .styleguide-example-code pre {
-    margin: 0;
-    padding: var(--space-4);
+  /* Medium devices (768px and up) */
+  @media (min-width: 768px) {
+    .styleguide-content {
+      padding: var(--space-8, 2rem) var(--space-8, 2rem);
+    }
+  }
+  
+  /* Large devices (992px and up) - Desktop layout */
+  @media (min-width: 992px) {
+    /* Switch to two-column grid layout */
+    .styleguide-container {
+      grid-template-areas: 
+        "navigation content";
+      grid-template-columns: var(--sidebar-width, 250px) 1fr;
+      max-width: var(--content-max-width, 1200px);
+      margin: 0 auto;
+    }
+    
+    /* Reset navigation for desktop display */
+    .styleguide-nav {
+      position: relative;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Hide mobile-only elements */
+    .styleguide-nav-toggle {
+      display: none;
+    }
+    
+    .styleguide-overlay {
+      display: none !important;
+    }
+    
+    /* Adjust content for desktop */
+    .styleguide-content {
+      max-width: 100%;
+      padding: var(--space-8, 2rem) var(--space-8, 2rem);
+    }
+  }
+  
+  /* Extra Large devices (1200px and up) */
+  @media (min-width: 1200px) {
+    .styleguide-container {
+      max-width: var(--content-max-width, 1200px);
+    }
+    
+    .styleguide-content {
+      padding: var(--space-8, 2rem) var(--space-8, 2rem);
+    }
+  }
+  
+  /* ============================
+     Utility Styles 
+     ============================ */
+  
+  .styleguide-container * {
+    box-sizing: border-box;
+  }
+  
+  /* Ensure all content has proper spacing */
+  .styleguide-content > * + * {
+    margin-top: var(--space-6, 1.5rem);
+  }
+  
+  .styleguide-content h2 {
+    margin-top: var(--space-8, 2rem);
+    margin-bottom: var(--space-4, 1rem);
+    padding-bottom: var(--space-2, 0.5rem);
+    border-bottom: 1px solid var(--neutral-200, #E5E7EB);
+  }
+  
+  /* Target all code blocks for consistent styling */
+  .styleguide-content pre {
+    background-color: var(--neutral-900, #111827);
+    color: white;
+    padding: var(--space-4, 1rem);
+    border-radius: 0.25rem;
     overflow-x: auto;
   }
   
-  .styleguide-example-code code {
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    line-height: 1.5;
-    color: var(--neutral-800);
+  /* Ensure proper spacing for lists */
+  .styleguide-content ul,
+  .styleguide-content ol {
+    padding-left: var(--space-6, 1.5rem);
   }
   
-  /* Color Swatches */
-  .styleguide-color-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--space-4);
-    margin: var(--space-6) 0;
+  .styleguide-content li + li {
+    margin-top: var(--space-2, 0.5rem);
   }
-  
-  .styleguide-color-swatch {
-    border: 1px solid var(--neutral-200);
-    border-radius: 0.25rem;
-    overflow: hidden;
-  }
-  
-  .styleguide-color-preview {
-    height: 100px;
-  }
-  
-  .styleguide-color-details {
-    padding: var(--space-3);
-    background-color: white;
-  }
-  
-  .styleguide-color-name {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--text-base);
-  }
-  
-  .styleguide-color-values {
-    display: flex;
-    flex-direction: column;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--neutral-700);
-    margin-bottom: var(--space-2);
-  }
-  
-  .styleguide-color-values span {
-    margin-bottom: var(--space-1);
-  }
-  
-  .styleguide-color-usage {
-    font-size: var(--text-sm);
-    color: var(--neutral-600);
-    margin: var(--space-2) 0 0 0;
-  }
-  
-  /* Typography Samples */
-  .styleguide-type-sample {
-    margin: var(--space-6) 0;
-    border: 1px solid var(--neutral-200);
-    border-radius: 0.25rem;
-    overflow: hidden;
-  }
-  
-  .styleguide-type-info {
-    padding: var(--space-4);
-    background-color: var(--neutral-100);
-    border-bottom: 1px solid var(--neutral-200);
-  }
-  
-  .styleguide-type-info h4 {
-    margin-top: 0;
-    margin-bottom: var(--space-4);
-  }
-  
-  .styleguide-type-info dl {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: var(--space-2);
-    margin: 0;
-  }
-  
-  .styleguide-type-info dt {
-    font-weight: var(--font-bold);
-    color: var(--neutral-600);
-  }
-  
-  .styleguide-type-info dd {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-  }
-  
-  .styleguide-type-preview {
-    padding: var(--space-8);
-    background-color: white;
-    border-bottom: 1px solid var(--neutral-200);
-  }
-  
-  .styleguide-type-code {
-    background-color: var(--neutral-100);
-    padding: var(--space-4);
-  }
-  
-  .styleguide-type-code pre {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    color: var(--neutral-800);
-  }
-  
-/* Mobile nav toggle */
-.styleguide-nav-toggle {
-  display: none;
-  position: fixed;
-  top: 10px;
-  right: 20px;
-  background: var(--primary-500);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 12px;
-  cursor: pointer;
-  z-index: 1010;
+
+
+
+  /* ============================
+     Color Swatches
+     ============================ */
+
+.styleguide-color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-4, 1rem);
+  margin: var(--space-6, 1.5rem) 0;
 }
 
-  /* Responsive Adjustments */
-  @media (max-width: var(--breakpoint-lg)) {
-    .styleguide-nav-toggle {
-      display: block;
-    }
-
-    @media (max-width: var(--breakpoint-lg)) {
-      .styleguide-container {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-          "sidebar"
-          "content";
-      }
-      
-      .styleguide-nav {
-        position: static;
-        width: 100%;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-      }
-      
-      .styleguide-nav.is-open {
-        transform: translateY(0);
-      }
-    }
-
-    .styleguide-content {
-      margin-left: 0;
-      margin-top: 0; /* Reset margin-top when nav is hidden */
-  /*     margin-top: 50vh; /* Push content below the nav */ */
-      width: 100%;
-      padding: var(--space-4);
-      max-width: 100%;
-    }
-    
-    .styleguide-nav h3 {
-      margin-top: var(--space-4);
-    }
-    
-    .styleguide-color-grid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-  }
-  
-  @media (max-width: var(--breakpoint-md)) {
-    .styleguide-nav {
-      padding: var(--space-3);
-    }
-    
-    .styleguide-content {
-      padding: var(--space-3);
-    }
-    
-    .styleguide-example-preview {
-      padding: var(--space-4);
-    }
-    
-    .styleguide-type-info dl {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Welcome Page Styles */
-.styleguide-welcome {
-    margin-bottom: var(--space-12);
-  }
-  
-  .styleguide-logo-large {
-    display: flex;
-    justify-content: center;
-    margin-bottom: var(--space-6);
-  }
-  
-  .styleguide-logo-large img {
-    max-width: 200px;
-    height: auto;
-  }
-  
-  .styleguide-welcome-text {
-    font-size: var(--text-lg);
-    line-height: var(--leading-relaxed);
-    color: var(--neutral-700);
-    max-width: 700px;
-    margin: var(--space-6) auto;
-    text-align: center;
-  }
-  
-  .styleguide-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-6);
-    margin: var(--space-8) 0;
-  }
-  
-  .styleguide-card {
-    background-color: white;
-    border: 1px solid var(--neutral-200);
-    border-radius: 0.5rem;
-    padding: var(--space-6);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .styleguide-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-  }
-  
-  .styleguide-card h3 {
-    font-size: var(--text-xl);
-    color: var(--primary-700);
-    margin-top: 0;
-    margin-bottom: var(--space-3);
-  }
-  
-  .styleguide-card p {
-    color: var(--neutral-600);
-    margin-bottom: var(--space-4);
-  }
-  
-  .styleguide-card ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-  }
-  
-  .styleguide-card li {
-    margin-bottom: var(--space-2);
-  }
-  
-  .styleguide-card a {
-    color: var(--primary-600);
-    text-decoration: none;
-    display: block;
-    padding: var(--space-1) 0;
-    transition: color 0.2s ease;
-  }
-  
-  .styleguide-card a:hover {
-    color: var(--primary-800);
-    text-decoration: underline;
-  }
-  
-  /* Content Sections */
-  .styleguide-section {
-    margin-bottom: var(--space-12);
-  }
-  
-  .styleguide-section h2 {
-    font-size: var(--text-2xl);
-    color: var(--neutral-800);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-4);
-    padding-bottom: var(--space-2);
-    border-bottom: 1px solid var(--neutral-200);
-  }
-  
-  .styleguide-section h3 {
-    font-size: var(--text-xl);
-    color: var(--neutral-700);
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-3);
-  }
-  
-  .styleguide-section p {
-    max-width: 700px;
-    line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-4);
-  }
-  
-  .styleguide-section ol, 
-  .styleguide-section ul {
-    margin-bottom: var(--space-6);
-    padding-left: var(--space-6);
-  }
-  
-  .styleguide-section li {
-    margin-bottom: var(--space-2);
-  }
-  
-  .styleguide-updated {
-    font-style: italic;
-    color: var(--neutral-600);
-    margin-top: var(--space-6);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--neutral-200);
-    display: inline-block;
-  }
-
-  /* Override default layout constraints */
-body.styleguide-page {
-  background-color: white;
-  margin: 0;
-  padding: 0;
-  max-width: none !important;
-}
-
-/* Fix container positioning relative to sidebar */
-body.styleguide-page {
+.color-swatch {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-body.styleguide-page .page-content {
-  max-width: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  width: 100% !important;
-}
-
-/* Add specific fix to prevent header overlapping content */
-.styleguide-container {
-  display: flex;
-  padding-top: 60px;
-  min-height: calc(100vh - 60px);
-  width: 100%;
-  position: relative;
-}
-
-/* Fix for the wrapper constraints */
-.styleguide-page .wrapper {
-  max-width: none !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-
-/* Add to your existing styleguide.css */
-.styleguide-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--neutral-900);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  z-index: 1000;
-  height: 60px; /* Set explicit height */
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-
-.styleguide-home-link {
-  color: white;
-  text-decoration: none;
-  font-size: var(--text-sm);
-  display: flex;
-  align-items: center;
-}
-
-.styleguide-home-link:hover {
-  text-decoration: underline;
-}
-
-/* Fixes for the logo overlay issue */
-.styleguide-logo-large {
-  text-align: center;
-  margin-bottom: var(--space-6);
-}
-
-.styleguide-logo-large img {
-  max-width: 120px;
-  height: auto;
-}
-
-
-/* Component Example Styles */
-.example-wrapper {
-  margin: var(--space-6) 0;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--neutral-200, #E5E7EB);
   border-radius: 0.5rem;
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.example-panel {
-  /* Remove full-width-panel behavior for examples */
-  width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  
-  /* Constrain height for consistent examples */
-  min-height: 20vh !important;
+.color-swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.example-code {
-  padding: var(--space-4);
-  background-color: var(--neutral-100);
-  border-top: 1px solid var(--neutral-200);
-  overflow-x: auto;
+.color-sample {
+  height: 100px;
+  width: 100%;
 }
 
-.example-code pre {
-  margin: 0;
-  white-space: pre-wrap;
+.color-details {
+  padding: var(--space-4, 1rem);
+  background: white;
 }
 
-.example-code code {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--neutral-800);
-}
-
-.example-stacked .example-panel {
-  margin-bottom: 0 !important;
-}
-
-/* Fix for component display in examples */
-.example-wrapper .hero-panel,
-.example-wrapper .full-width-panel {
-  position: relative !important;
-  width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  left: auto !important;
-  right: auto !important;
-}
-
-.example-wrapper .panel-content {
-  max-width: 100%;
-  padding: var(--space-4);
-}
-
-/* Table of contents styling for component pages */
-.styleguide-toc {
-  background-color: var(--neutral-100);
-  padding: var(--space-4);
-  border-radius: 0.5rem;
-  margin: var(--space-8) 0;
-}
-
-.styleguide-toc ul {
-  columns: 2;
-  column-gap: var(--space-8);
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.styleguide-toc li {
-  margin-bottom: var(--space-2);
-}
-
-.styleguide-toc a {
-  text-decoration: none;
-  color: var(--primary-600);
-}
-
-.styleguide-toc a:hover {
-  text-decoration: underline;
-}
-
-/* Welcome status section */
-.styleguide-welcome-status {
-  padding: var(--space-4);
-  background-color: var(--primary-50);
-  border-radius: 0.5rem;
-  border-left: 4px solid var(--primary-500);
-  margin: var(--space-8) 0;
-}
-
-.styleguide-status-note {
+.color-name {
   font-weight: bold;
-  margin-bottom: var(--space-2);
-  color: var(--primary-700);
+  margin-bottom: 0.25rem;
 }
 
-.styleguide-status-list {
-  list-style-type: none;
-  padding-left: 0;
-  margin-bottom: 0;
+.color-values {
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
-.styleguide-status-list li {
-  margin-bottom: var(--space-2);
+.color-usage {
+  font-size: 0.9rem;
+  color: var(--neutral-700, #374151);
 }
 
-.styleguide-status-list a {
-  color: var(--primary-600);
-  text-decoration: none;
-}
+/* Individual color backgrounds using CSS variables */
+.primary-50 { background-color: var(--primary-50, #E6FFFA); color: var(--neutral-900); }
+.primary-100 { background-color: var(--primary-100, #B2F5EA); color: var(--neutral-900); }
+.primary-200 { background-color: var(--primary-200, #81E6D9); color: var(--neutral-900); }
+.primary-300 { background-color: var(--primary-300, #4FD1C5); color: var(--neutral-900); }
+.primary-400 { background-color: var(--primary-400, #38B2AC); color: white; }
+.primary-500 { background-color: var(--primary-500, #319795); color: white; }
+.primary-600 { background-color: var(--primary-600, #2C7A7B); color: white; }
+.primary-700 { background-color: var(--primary-700, #285E61); color: white; }
+.primary-800 { background-color: var(--primary-800, #234E52); color: white; }
+.primary-900 { background-color: var(--primary-900, #1D4044); color: white; }
 
-.styleguide-status-list a:hover {
-  text-decoration: underline;
-}
+/* Secondary Colors (Orange) */
+.secondary-50 { background-color: var(--secondary-50, #FFF7ED); color: var(--neutral-900); }
+.secondary-100 { background-color: var(--secondary-100, #FFEDD5); color: var(--neutral-900); }
+.secondary-200 { background-color: var(--secondary-200, #FED7AA); color: var(--neutral-900); }
+.secondary-300 { background-color: var(--secondary-300, #FDBA74); color: var(--neutral-900); }
+.secondary-400 { background-color: var(--secondary-400, #FB923C); color: var(--neutral-900); }
+.secondary-500 { background-color: var(--secondary-500, #F97316); color: white; }
+.secondary-600 { background-color: var(--secondary-600, #EA580C); color: white; }
+.secondary-700 { background-color: var(--secondary-700, #C2410C); color: white; }
+.secondary-800 { background-color: var(--secondary-800, #9A3412); color: white; }
+.secondary-900 { background-color: var(--secondary-900, #7C2D12); color: white; }
+
+/* Neutral Colors (Gray) */
+.neutral-50 { background-color: var(--neutral-50, #F9FAFB); color: var(--neutral-900); }
+.neutral-100 { background-color: var(--neutral-100, #F3F4F6); color: var(--neutral-900); }
+.neutral-200 { background-color: var(--neutral-200, #E5E7EB); color: var(--neutral-900); }
+.neutral-300 { background-color: var(--neutral-300, #D1D5DB); color: var(--neutral-900); }
+.neutral-400 { background-color: var(--neutral-400, #9CA3AF); color: var(--neutral-900); }
+.neutral-500 { background-color: var(--neutral-500, #6B7280); color: white; }
+.neutral-600 { background-color: var(--neutral-600, #4B5563); color: white; }
+.neutral-700 { background-color: var(--neutral-700, #374151); color: white; }
+.neutral-800 { background-color: var(--neutral-800, #1F2937); color: white; }
+.neutral-900 { background-color: var(--neutral-900, #111827); color: white; }
+
+/* Accent Colors (Indigo) */
+.accent-50 { background-color: var(--accent-50, #EEF2FF); color: var(--neutral-900); }
+.accent-100 { background-color: var(--accent-100, #E0E7FF); color: var(--neutral-900); }
+.accent-200 { background-color: var(--accent-200, #C7D2FE); color: var(--neutral-900); }
+.accent-300 { background-color: var(--accent-300, #A5B4FC); color: var(--neutral-900); }
+.accent-400 { background-color: var(--accent-400, #818CF8); color: var(--neutral-900); }
+.accent-500 { background-color: var(--accent-500, #6366F1); color: white; }
+.accent-600 { background-color: var(--accent-600, #4F46E5); color: white; }
+.accent-700 { background-color: var(--accent-700, #4338CA); color: white; }
+.accent-800 { background-color: var(--accent-800, #3730A3); color: white; }
+.accent-900 { background-color: var(--accent-900, #312E81); color: white; }

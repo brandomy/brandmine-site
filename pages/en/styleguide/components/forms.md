@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Forms
 description: Brandmine's forms...
 permalink: /en/styleguide/components/forms/

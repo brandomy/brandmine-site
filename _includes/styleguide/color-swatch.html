@@ -1,28 +1,11 @@
-<!-- _includes/styleguide/color-swatch.html -->
-{% comment %}
-  Color swatch include for color system documentation
-  
-  Usage:
-  {% include styleguide/color-swatch.html 
-     color="primary-500" 
-     name="Primary 500" 
-     hex="#319795" 
-     rgb="49, 151, 149"
-     usage="Primary brand color for buttons and links"
-  %}
-{% endcomment %}
-
-<div class="styleguide-color-swatch">
-  <div class="styleguide-color-preview" style="background-color: var(--{{ include.color }})"></div>
-  <div class="styleguide-color-details">
-    <h4 class="styleguide-color-name">{{ include.name }}</h4>
-    <div class="styleguide-color-values">
-      <span class="styleguide-color-token">var(--{{ include.color }})</span>
-      <span class="styleguide-color-hex">{{ include.hex }}</span>
-      <span class="styleguide-color-rgb">rgb({{ include.rgb }})</span>
+<div class="color-swatch">
+  <div class="color-sample {{ include.color }}" style="background-color: {{ include.hex }};"></div>
+  <div class="color-details">
+    <div class="color-name">{{ include.name }}</div>
+    <div class="color-values">
+      <span class="color-hex">{{ include.hex }}</span>
+      <span class="color-rgb">RGB: {{ include.rgb }}</span>
     </div>
-    {% if include.usage %}
-    <p class="styleguide-color-usage">{{ include.usage }}</p>
-    {% endif %}
+    <div class="color-usage">{{ include.usage }}</div>
   </div>
 </div>

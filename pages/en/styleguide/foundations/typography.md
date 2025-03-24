@@ -1,5 +1,5 @@
 ---
-layout: styleguide-standalone
+layout: styleguide
 title: Typography System
 description: Brandmine's typography system creates a consistent typographic hierarchy across our multilingual platform.
 permalink: /en/styleguide/foundations/typography/
