@@ -2,38 +2,34 @@
 
 /* Style Guide Layout */
 
-/* Reset the container and layout approach */
-  .styleguide-container {
-    position: relative;
-    padding-top: 60px;
-    min-height: 100vh;
-    width: 100%;
-  }
+.styleguide-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: "sidebar content";
+  padding-top: 60px;
+  min-height: calc(100vh - 60px);
+  width: 100%;
+}
   
-/* Make the sidebar absolutely positioned */
-  .styleguide-nav {
-    width: 200px;
-    background-color: var(--neutral-800);
-    color: white;
-    padding: var(--space-6);
-    position: fixed;
-    top: 60px;
-    left: 0;
-    bottom: 0;
-    overflow-y: auto;
-    z-index: 100;
-  }
+.styleguide-nav {
+  grid-area: sidebar;
+  background-color: var(--neutral-800);
+  color: white;
+  padding: var(--space-6);
+  position: fixed;
+  width: 200px;
+  top: 60px;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+}
   
-/* Set content to start after sidebar width */
-  .styleguide-content {
-    position: relative;
-    padding: var(--space-8);
-    margin-left: 200px; /* Start after sidebar */
-    width: auto; /* Let it fill the available space */
-    box-sizing: border-box;
-    z-index: 10;
-    background-color: white;
-  }
+.styleguide-content {
+  grid-area: content;
+  padding: var(--space-8);
+  background-color: white;
+  min-width: 0; /* Prevents overflow */
+}
   
   /* Navigation Styling */
   .styleguide-nav h3 {
@@ -287,25 +283,24 @@
       display: block;
     }
 
-    .styleguide-container {
-      flex-direction: column;
-      padding-top: 120px; /* Allow more space for mobile nav */
-    }
-    
-    .styleguide-nav {
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-      width: 100%;
-      height: auto;
-      position: absolute; /* Change from fixed for mobile */
-      top: 60px;
-      max-height: 50vh;
-      overflow-y: auto;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .styleguide-nav.is-open {
-      transform: translateY(0);
+    @media (max-width: var(--breakpoint-lg)) {
+      .styleguide-container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+          "sidebar"
+          "content";
+      }
+      
+      .styleguide-nav {
+        position: static;
+        width: 100%;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+      }
+      
+      .styleguide-nav.is-open {
+        transform: translateY(0);
+      }
     }
 
     .styleguide-content {
