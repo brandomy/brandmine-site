@@ -321,6 +321,7 @@ Jekyll includes make it easy to use responsive images throughout the site:
   </div>
   
   <div class="example-code">
+{% raw %}
 ```liquid
 <!-- For brand images -->
 {% include brand-image.html 
@@ -338,6 +339,7 @@ Jekyll includes make it easy to use responsive images throughout the site:
    alt="Brandmine connecting BRICS consumers" 
    class="full-width" %}
 ```
+{% endraw %}
   </div>
 </div>
 
@@ -347,6 +349,7 @@ The brand image include automatically generates all the necessary HTML for respo
 
 <div class="example">
   <div class="example-code">
+{% raw %}
 ```html
 {% comment %}
   Responsive Brand Image Include
@@ -377,6 +380,7 @@ The brand image include automatically generates all the necessary HTML for respo
      {% if class %}class="{{ class }}"{% endif %}
      loading="lazy">
 ```
+{% endraw %}
   </div>
 </div>
 
@@ -388,35 +392,41 @@ The brand image include automatically generates all the necessary HTML for respo
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">Basic Usage:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-          {% include brand-image.html <br>
-             brand="teatime" <br>
-             image="storefront" <br>
-             purpose="hero"<br>
-             alt="TeaTime storefront in Moscow" %}
+{% raw %}
+{% include brand-image.html 
+   brand="teatime" 
+   image="storefront" 
+   purpose="hero"
+   alt="TeaTime storefront in Moscow" %}
+{% endraw %}
         </div>
       </div>
       
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">With Custom Classes:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-          {% include brand-image.html <br>
-             brand="teatime" <br>
-             image="teapot" <br>
-             purpose="gallery"<br>
-             alt="Signature teapot collection" <br>
-             class="rounded shadow-sm" %}
+{% raw %}
+{% include brand-image.html 
+   brand="teatime" 
+   image="teapot" 
+   purpose="gallery"
+   alt="Signature teapot collection" 
+   class="rounded shadow-sm" %}
+{% endraw %}
         </div>
       </div>
       
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">With Custom Sizes:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-          {% include brand-image.html <br>
-             brand="teatime" <br>
-             image="founder" <br>
-             purpose="profile"<br>
-             alt="Alexei Sokolov, TeaTime founder" <br>
-             sizes="(max-width: 768px) 100vw, 50vw" %}
+{% raw %}
+{% include brand-image.html 
+   brand="teatime" 
+   image="founder" 
+   purpose="profile"
+   alt="Alexei Sokolov, TeaTime founder" 
+   sizes="(max-width: 768px) 100vw, 50vw" %}
+{% endraw %}
         </div>
       </div>
     </div>
@@ -509,6 +519,7 @@ For optimal SEO with images:
   </div>
   
   <div class="example-code">
+{% raw %}
 ```html
 <!-- Example of SEO-optimized image -->
 <img src="/assets/images/brands/teatime/teatime-product-premium-darjeeling-800w.jpg"
@@ -517,6 +528,7 @@ For optimal SEO with images:
      height="600"
      loading="lazy">
 ```
+{% endraw %}
   </div>
 </div>
 
@@ -595,3 +607,4 @@ For optimal SEO with images:
    - Use the provided scripts for image processing
    - Maintain the directory structure
    - Follow the workflow for adding new images
+
