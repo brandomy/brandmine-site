@@ -5,6 +5,7 @@ layout: default
 <div class="full-width-panel hero-panel">
   <div class="panel-content centered">
     <h1>{{ page.title }}</h1>
+    <p class="hero-subtitle">{{ page.subtitle }}</p>
   </div>
 </div>
 
@@ -12,13 +13,10 @@ layout: default
   <div class="panel-content">
     <div class="insights-container">
       <div class="insights-main">
-        <div class="insights-grid">
-          
-          {% assign insights = site.insights | where: "lang", page.lang | where: "categories", page.category %}
-          {% if insights.size > 0 %}
-            {% assign insights = insights | sort: "date" | reverse %}
-          {% endif %}
+        <h2>{{ site.data.translations[page.lang].insights.latest }}</h2>
         
+        <div class="insights-grid">
+          {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse %}
           {% for insight in insights %}
           <div class="insight-card {% if insight.featured %}featured-insight{% endif %}">
             {% if insight.image %}
@@ -52,22 +50,15 @@ layout: default
           </div>
           {% endfor %}
         </div>
-        
-        <div class="back-link-container">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn-secondary">{{ site.data.translations[page.lang].insights.back_to_insights }}</a>
-        </div>
       </div>
       
       <div class="insights-sidebar">
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].insights.categories }}</h3>
           <ul class="category-list">
-            {% assign all_insights = site.insights | where: "lang", page.lang %}
-            {% assign categories = all_insights | map: "categories" | flatten | uniq %}
+            {% assign categories = insights | map: "categories" | flatten | uniq %}
             {% for category in categories %}
-            <li class="{% if category == page.category %}active{% endif %}">
-              <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category | slugify }}/">{{ category }}</a>
-            </li>
+            <li><a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category | slugify }}/">{{ category }}</a></li>
             {% endfor %}
           </ul>
         </div>

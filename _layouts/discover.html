@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="full-width-panel hero-panel">
+  <div class="panel-content centered">
+    <h1>{{ page.title }}</h1>
+    <p class="hero-subtitle">{{ page.subtitle }}</p>
+  </div>
+</div>
+
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <div class="discover-tabs">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discover-tab {% if page.discovery_path == 'sectors' %}active{% endif %}">
+        {{ site.data.translations[page.lang].nav.sectors }}
+      </a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discover-tab {% if page.discovery_path == 'markets' %}active{% endif %}">
+        {{ site.data.translations[page.lang].nav.markets }}
+      </a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discover-tab {% if page.discovery_path == 'attributes' %}active{% endif %}">
+        {{ site.data.translations[page.lang].nav.attributes }}
+      </a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discover-tab {% if page.discovery_path == 'signals' %}active{% endif %}">
+        {{ site.data.translations[page.lang].nav.signals }}
+      </a>
+    </div>
+    
+    <div class="discover-content">
+      {{ content }}
+    </div>
+  </div>
+</div>

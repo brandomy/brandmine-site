@@ -1,199 +1,75 @@
-# Brandmine Jekyll Website Context
-Generated: 2025-03-23 19:10
+# Brandmine Jekyll Website - Quick Reference
+Generated: 2025-03-25 10:31
 
-## Focus Area: Layout
+## Project Overview
+- Jekyll-based multilingual website (EN, RU, ZH)
+- Focus on showcasing BRICS+ consumer brands
+- Current navigation structure: Home, Brands, Discover (Sectors, Markets, Attributes, Signals), Insights, About
 
-This context is focused on the layout aspects of the website.
-
-## Site Configuration
-## Configuration Details
-```yaml
-title: Brandmine
-email: randal@brandmine.io
-description: Amplifying leading consumer brands of the BRICS+
-# Change this line
-baseurl: "" # Empty for local development
-
-...
-collections:
-  brands:
-    output: true
-    permalink: /:collection/:path/
-...
-defaults:
-  # Global defaults
-  - scope:
-      path: ""
-    values:
-      layout: default
-...
-# No plugins defined
-```
-
-
-## Site Structure
-### Directories
-```
-- _layouts/ (4 files)
-  - category.html
-  - default.html
-  - post.html
-  - tag.html
-- _includes/ (8 files)
-  - brand-image.html
-  - footer.html
-  - google-analytics.html
-  - header.html
-  - language-selector.html
-  - responsive-image.html
-  - site-image.html
-  - tags
-- _data/ (6 files)
-  - _data/.DS_Store
-  - _data/sectors.yml
-  - _data/tag_translations.yml
-  - _data/translations/en.yml
-  - _data/translations/ru.yml
-  - _data/translations/zh.yml
-- assets/ (89 files total)
-  - assets/css/ (26 CSS files)
-    - assets/css/layout/panels.css
-    - assets/css/main.css
-    - assets/css/components/team.css
-    - assets/css/components/features.css
-    - assets/css/components/solutions.css
-    - assets/css/components/text.css
-    - assets/css/components/forms.css
-    - assets/css/components/navigation.css
-    - assets/css/components/mobile-fixes.css
-    - assets/css/components/buttons.css
-    - assets/css/components/cards.css
-    - assets/css/components/tags.css
-    - assets/css/components/layouts.css
-    - assets/css/pages/growth-signals.css
-    - assets/css/pages/home.css
-    - assets/css/pages/markets.css
-    - assets/css/pages/sectors.css
-    - assets/css/pages/brands.css
-    - assets/css/pages/about.css
-    - assets/css/pages/countries.css
-    - assets/css/pages/russian-sectors.css
-    - assets/css/pages/insights.css
-    - assets/css/tokens/typography.css
-    - assets/css/tokens/spacing.css
-    - assets/css/tokens/breakpoints.css
-    - assets/
-...(truncated)...
-
-## Key Layout Files
-
-### ./_layouts/default.html
-```
-<!DOCTYPE html>
-<html lang="{% if page.lang %}{{ page.lang }}{% else %}en{% endif %}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.translations[page.lang].site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.translations[page.lang].site.description }}{% endif %}">
-
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/favicons/apple-touch-icon.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicons/favicon-32x32.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicons/favicon-16x16.png' | relative_url }}">
-  <link rel="shortcut icon" href="{{ '/assets/images/favicons/favicon.ico' | relative_url }}">
-  <link rel="manifest" href="{{ '/assets/images/favicons/site.webmanifest' | relative_url }}">
-
-  <!-- Style Sheets --> 
-   
-  <!-- 1. Design Tokens -->
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/colors.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/breakpoints.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/spacing.css' | relative_url }}">
-
-  <!-- 2. Base Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
- 
-  <!-- 3. Component Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/cards.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/features.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/forms.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/layouts.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/navigation.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/solutions.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/team.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/text.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
-
-  <!-- 4. Layout Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}">
-
-  <!-- 5. Page-Specific Styles (conditionally loaded) -->
-  {% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/home.css' | relative_url }}">
-  {% endif %}
-
-  {% if page.permalink contains '/about/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/about.css' | relative_url }}">
-  {% endif %}
-
-...(truncated)...
-```
-
-## Recent Layout Development
-
-## 2025-03-22: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English [Layout]
-
-## 2025-03-18: Implement mobile hamburger menu functionality and styles [Layout]
-
-## 2025-03-18: Enhance mobile footer layout and hide scroll indicator on small phones [Layout]
-
-## Content Summary
-- Languages: 3 (en ru zh )
-  - en: 9 pages
-  - ru: 8 pages
-  - zh: 8 pages
-- Blog posts: 4
-  - Date range: 2025/03/21 to 2025/03/21
-- Translation files: 3
-  - Translation coverage:
-    - en (primary): 57 keys
-    - ru: 57 keys (100% coverage)
-    - zh: 57 keys (100% coverage)
-
-
-## Environment & Dependencies
-- Jekyll version: 3.10.0
-- Ruby version: 3.4.2
-- Key dependencies:
-  -   github-pages
-  -   http_parser.rb (~> 0.6.0)
-  -   jekyll-feed (~> 0.12)
-  -   minima (~> 2.5)
-  -   tzinfo (>= 1, < 3)
-  -   tzinfo-data
-  -   wdm (~> 0.1)
-  - BUNDLED WITH
-  -    2.6.5
-
-
+## Latest Development
+- Most recent commit: remove example.html from styleguide (Randal Eastman, Tue Mar 25 08:05:19 2025 +0800)
+- Current focus: Implemented Multilingual Newsletter Forms
 
 ## Working with Claude
+When I need more context about specific areas, please ask me and I can provide:
+1. File contents (specific layouts, includes, CSS files)
+2. Directory structures
+3. Configuration details
+4. Recent changes in specific areas
+5. Tag system details
+6. Translation system information
 
-When helping with this Jekyll website, please:
+I'm new to programming and building this site myself with your guidance.
 
-1. Consider the multilingual structure (EN, RU, ZH) in all solutions
-2. Provide complete code when suggesting changes
-3. Maintain the existing file structure and naming conventions
-4. Explain the reasoning behind technical decisions
-5. Consider mobile responsiveness in layout changes
-6. Respect the established color palette and typography system
-7. Consider the tag system architecture when discussing content organization
 
-When writing code, use:
-- Liquid templating for Jekyll
-- Modern CSS practices
-- Vanilla JavaScript where possible
+
+## Available Context Information
+
+If needed, you can ask me for any of these context packages:
+
+### Site Structure
+- Full directory structure
+- Jekyll configuration
+- Collection setup
+
+### Design System
+- Color palette details
+- Typography system
+- Component library status
+
+### Multilingual System
+- Translation file structure
+- Language implementation details
+- Content translation status
+
+### Development History
+- Recent commits and changes
+- Project log entries
+- Current development focus
+
+### Content Organization
+- Tag system details 
+- Content statistics
+- Navigation structure
+
+### Specific File Contents
+- You can ask for any specific file content like:
+  "Can you share your header.html include?"
+  "What's in your main.css file?"
+  "How is your default layout structured?"
+
+### Available Context Snippets
+I have these prepared context files ready to share when needed:
+
+- Translation Workflow
+- Css Architecture
+- Progressive Context
+- Development Workflow
+- Site Structure
+- Component Examples
+- Navigation Structure
+- Layout System
+- Multilingual System
+- Jekyll Config
+- Tag System
+- Design Tokens

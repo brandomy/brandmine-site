@@ -1,0 +1,159 @@
+/* Discovery Tabs */
+.discovery-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--neutral-300);
+    margin-bottom: var(--space-4);
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+  
+  .discovery-tab {
+    padding: var(--space-2) var(--space-4);
+    border: none;
+    background: transparent;
+    color: var(--neutral-600);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  .discovery-tab:hover {
+    color: var(--primary-600);
+  }
+  
+  .discovery-tab.active {
+    color: var(--primary-600);
+    font-weight: 600;
+  }
+  
+  .discovery-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-500);
+    border-radius: 3px 3px 0 0;
+  }
+  
+  .discovery-pane {
+    display: none;
+  }
+  
+  .discovery-pane.active {
+    display: block;
+  }
+  
+  .discovery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  
+  .discovery-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: var(--space-4);
+    border: 1px solid var(--neutral-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .discovery-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .discovery-card h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-2);
+    color: var(--neutral-800);
+  }
+  
+  .discovery-card p {
+    color: var(--neutral-600);
+    margin-bottom: var(--space-4);
+  }
+  
+  .discovery-more {
+    text-align: center;
+    margin-top: var(--space-4);
+  }
+  
+  .sectors-grid,
+  .markets-grid,
+  .attributes-grid,
+  .signals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+  
+  .sector-card,
+  .market-card,
+  .attribute-card,
+  .signal-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: var(--space-4);
+    border: 1px solid var(--neutral-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sector-card:hover,
+  .market-card:hover,
+  .attribute-card:hover,
+  .signal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sector-icon,
+  .market-icon,
+  .attribute-icon,
+  .signal-icon {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-3);
+  }
+  
+  .sector-icon img,
+  .market-icon img,
+  .attribute-icon img,
+  .signal-icon img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+  .placeholder-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--neutral-200);
+    border-radius: 0.25rem;
+  }
+  
+  @media (max-width: 768px) {
+    .discovery-grid,
+    .sectors-grid,
+    .markets-grid,
+    .attributes-grid,
+    .signals-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .discovery-tab {
+      padding: var(--space-2);
+    }
+  }
+  

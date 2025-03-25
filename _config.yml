@@ -30,9 +30,13 @@ collections:
   tags:
     output: true
     permalink: /:collection/:path/
+  insights:
+    output: true
+    permalink: /:collection/:path/
   styleguide:
     output: true
     permalink: /styleguide/:path/
+    
     
 # Default front matter
 defaults:
@@ -88,6 +92,26 @@ defaults:
       show_time: false
       permalink: /zh/:categories/:year/:month/:day/:title/
 
+  # Brand defaults by language
+  - scope:
+      path: "_brands/en"
+      type: "brands"
+    values:
+      layout: "brand"
+      lang: "en"
+  - scope:
+      path: "_brands/ru"
+      type: "brands"
+    values:
+      layout: "brand"
+      lang: "ru"
+  - scope:
+      path: "_brands/zh"
+      type: "brands"
+    values:
+      layout: "brand"
+      lang: "zh"
+
   # Tag language defaults
   - scope:
       path: "_tags/en"
@@ -108,6 +132,25 @@ defaults:
       layout: "tag"
       lang: "zh"
 
+# Insights
+  - scope:
+      path: "_insights/en"
+      type: "insights"
+    values:
+      layout: "insight"
+      lang: "en"
+  - scope:
+      path: "_insights/ru"
+      type: "insights"
+    values:
+      layout: "insight"
+      lang: "ru"
+  - scope:
+      path: "_insights/zh"
+      type: "insights"
+    values:
+      layout: "insight"
+      lang: "zh"
 
 # Style Guide Configuration
 styleguide:

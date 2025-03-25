@@ -1,0 +1,24 @@
+---
+layout: discover
+---
+<div class="attributes-grid">
+  {% assign attribute_tags = site.tags | where: "tag_type", "attribute" | where: "lang", page.lang %}
+  
+  {% for attribute in attribute_tags %}
+  <div class="attribute-card">
+    <div class="attribute-icon">
+      {% if attribute.icon %}
+      <img src="{{ attribute.icon | relative_url }}" alt="{{ attribute.title }} icon">
+      {% else %}
+      <div class="placeholder-icon"></div>
+      {% endif %}
+    </div>
+    
+    <h3>{{ attribute.title }}</h3>
+    
+    <p>{{ attribute.description }}</p>
+    
+    <a href="{{ attribute.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore_attribute }}</a>
+  </div>
+  {% endfor %}
+</div>

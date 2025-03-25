@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <div class="insight-detail-container">
+      <div class="insight-detail-main {% if page.premium %}premium-content{% endif %}">
+        <div class="insight-header">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="back-link">
+            ← {{ site.data.translations[page.lang].insights.back_to_insights }}
+          </a>
+          
+          <h1>{{ page.title }}</h1>
+          
+          <div class="insight-meta">
+            <span class="insight-date">{{ site.data.translations[page.lang].insights.published_on }} {{ page.date | date: "%B %-d, %Y" }}</span>
+            {% if page.author %}
+            <span class="insight-author">{{ site.data.translations[page.lang].insights.author }}: {{ page.author }}</span>
+            {% endif %}
+            
+            {% if page.premium %}
+            <span class="premium-badge">{{ site.data.translations[page.lang].insights.premium_content }}</span>
+            {% endif %}
+          </div>
+          
+          {% if page.image %}
+          <div class="insight-feature-image">
+            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+          </div>
+          {% endif %}
+        </div>
+        
+        <div class="insight-content">
+          {{ content }}
+        </div>
+        
+        {% if page.categories %}
+        <div class="insight-categories">
+          {% for category in page.categories %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category | slugify }}/" class="category-tag">{{ category }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      
+      <div class="insight-detail-sidebar">
+        <div class="sidebar-section">
+          <h3>{{ site.data.translations[page.lang].insights.related }}</h3>
+          <div class="related-insights">
+            {% assign related_insights = site.insights | where: "lang", page.lang | where_exp: "item", "item.url != page.url" | sample: 3 %}
+            {% for related in related_insights %}
+            <div class="related-insight">
+              <h4><a href="{{ related.url | relative_url }}">{{ related.title }}</a></h4>
+              <span class="insight-date">{{ related.date | date: "%B %-d, %Y" }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
