@@ -1,0 +1,52 @@
+{% comment %}
+  Brand Card Component
+  
+  Usage:
+  {% include brand-card.html brand=brand %}
+{% endcomment %}
+
+<div class="brand-card {% if include.brand.premium %}premium-brand{% endif %} {% if include.brand.featured %}featured-brand{% endif %}">
+  <div class="brand-header">
+    {% if include.brand.logo %}
+    <div class="brand-logo">
+      <img src="{{ include.brand.logo | relative_url }}" alt="{{ include.brand.title }} logo">
+    </div>
+    {% endif %}
+    
+    <h3 class="brand-title">
+      <a href="{{ include.brand.url | relative_url }}">{{ include.brand.title }}</a>
+    </h3>
+  </div>
+  
+  <div class="brand-content">
+    <p class="brand-description">{{ include.brand.description }}</p>
+    
+    <div class="brand-metadata">
+      {% if include.brand.founding_year %}
+      <span class="brand-year">Est. {{ include.brand.founding_year }}</span>
+      {% endif %}
+      
+      {% if include.brand.markets.size > 0 %}
+      <span class="brand-market">{{ include.brand.markets | first }}</span>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="brand-footer">
+    <div class="brand-tags">
+      {% if include.brand.sectors.size > 0 %}
+        <span class="tag sector-tag">{{ include.brand.sectors | first }}</span>
+      {% endif %}
+      
+      {% for attribute in include.brand.attributes limit:2 %}
+        <span class="tag attribute-tag">{{ attribute }}</span>
+      {% endfor %}
+      
+      {% for signal in include.brand.signals limit:1 %}
+        <span class="tag signal-tag {% if include.brand.premium %}premium-tag{% endif %}">{{ signal }}</span>
+      {% endfor %}
+    </div>
+    
+    <a href="{{ include.brand.url | relative_url }}" class="btn-secondary">{{ site.data.translations[include.brand.lang].buttons.view_profile }}</a>
+  </div>
+</div>

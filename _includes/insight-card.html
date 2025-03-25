@@ -1,0 +1,50 @@
+{% comment %}
+  Insight Card Component
+  
+  Usage:
+  {% include insight-card.html insight=insight %}
+{% endcomment %}
+
+<div class="insight-card {% if include.insight.featured %}featured-insight{% endif %}">
+  {% if include.insight.image %}
+  <div class="insight-image">
+    <img src="{{ include.insight.image | relative_url }}" alt="{{ include.insight.title }}">
+  </div>
+  {% endif %}
+  
+  <div class="insight-content">
+    {% if include.insight.featured %}
+    <span class="featured-badge">{{ site.data.translations[include.insight.lang].insights.featured }}</span>
+    {% endif %}
+    
+    {% if include.insight.premium %}
+    <span class="premium-badge">{{ site.data.translations[include.insight.lang].insights.premium_content }}</span>
+    {% endif %}
+    
+    <div class="insight-meta">
+      <span class="insight-type">{{ include.insight.content_type }}</span>
+      <span class="insight-date">{{ include.insight.date | date: "%B %-d, %Y" }}</span>
+      {% if include.insight.author %}
+      <span class="insight-author">{{ include.insight.author }}</span>
+      {% endif %}
+    </div>
+    
+    <h3><a href="{{ include.insight.url | relative_url }}">{{ include.insight.title }}</a></h3>
+    
+    <p>{{ include.insight.excerpt | strip_html | truncate: 120 }}</p>
+    
+    <div class="insight-footer">
+      <div class="insight-tags">
+        {% if include.insight.sectors.size > 0 %}
+          <span class="tag sector-tag">{{ include.insight.sectors | first }}</span>
+        {% endif %}
+        
+        {% if include.insight.markets.size > 0 %}
+          <span class="tag market-tag">{{ include.insight.markets | first }}</span>
+        {% endif %}
+      </div>
+      
+      <a href="{{ include.insight.url | relative_url }}" class="read-more">{{ site.data.translations[include.insight.lang].insights.read_more }}</a>
+    </div>
+  </div>
+</div>
