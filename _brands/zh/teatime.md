@@ -7,14 +7,15 @@ markets: [俄罗斯]
 attributes: [传统品牌, 创始人领导]
 signals: [出口就绪, 投资就绪]
 description: "俄罗斯高端茶品牌，将传统工艺与现代口味相结合。"
+slogan: "传承茶艺，酿造未来"
 founding_year: 2010
 founder: "阿列克谢·索科洛夫"
-logo: "/assets/images/brands/teatime/logo.png"
-hero_image: "/assets/images/brands/teatime/hero.jpg"
+logo: "/assets/images/brands/teatime/originals/logo-color.png"
+hero_image: "/assets/images/brands/teatime/originals/hero-storefront.jpg"
 gallery:
-  - "/assets/images/brands/teatime/gallery-1.jpg"
-  - "/assets/images/brands/teatime/gallery-2.jpg"
-  - "/assets/images/brands/teatime/gallery-3.jpg"
+  - "/assets/images/brands/teatime/originals/gallery-teapot.jpg"
+  - "/assets/images/brands/teatime/originals/gallery-storefront.jpg"
+  - "/assets/images/brands/teatime/originals/gallery-founder.jpg"
 website: "https://teatime.ru"
 contact_email: "info@teatime.ru"
 related_brands: [russian-brew, moskva-chai]

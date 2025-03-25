@@ -1,0 +1,145 @@
+---
+layout: default
+---
+<div class="brand-profile container">
+  <div class="brand-header row">
+    <div class="col-md-4">
+      {% if page.logo %}
+      <img src="{{ page.logo }}" alt="{{ page.title }} logo" class="brand-logo img-fluid">
+      {% endif %}
+    </div>
+    <div class="col-md-8">
+      <h1>{{ page.title }}</h1>
+      {% if page.slogan %}
+      <div class="brand-slogan">
+        "{{ page.slogan }}"
+      </div>
+      {% endif %}
+      <div class="brand-meta">
+        {% if page.sectors %}
+        <span class="sector">{{ page.sectors | join: ", " }}</span>
+        {% endif %}
+        {% if page.markets %}
+        <span class="market">{{ page.markets | join: ", " }}</span>
+        {% endif %}
+        {% if page.founding_year %}
+        <span class="established">{{ site.data.translations[page.lang].brand.established }}: {{ page.founding_year }}</span>
+        {% endif %}
+      </div>
+      {% if page.founder %}
+      <div class="brand-founder">
+        <strong>{{ site.data.translations[page.lang].brand.founder }}:</strong> {{ page.founder }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="brand-details row mt-4">
+    <div class="col-md-8">
+      <h2>{{ site.data.translations[page.lang].brand.about }}</h2>
+      <div class="brand-description">
+        {{ content }}
+      </div>
+
+      {% if page.products %}
+      <h2 class="mt-4">{{ site.data.translations[page.lang].brand.products }}</h2>
+      <div class="brand-products">
+        {% for product in page.products %}
+        <div class="product-card">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="col-md-4 brand-sidebar">
+      <div class="brand-attributes">
+        <h3>{{ site.data.translations[page.lang].brand.attributes }}</h3>
+        {% for attribute in page.attributes %}
+        <span class="badge attribute-badge">{{ attribute }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="brand-signals mt-3">
+        <h3>{{ site.data.translations[page.lang].brand.signals }}</h3>
+        {% for signal in page.signals %}
+        <span class="badge signal-badge">{{ signal }}</span>
+        {% endfor %}
+      </div>
+
+      {% if page.contact_email or page.website %}
+      <div class="brand-contact mt-3">
+        <h3>{{ site.data.translations[page.lang].brand.contact }}</h3>
+        {% if page.contact_email %}
+        <p>{{ site.data.translations[page.lang].brand.email }}: {{ page.contact_email }}</p>
+        {% endif %}
+        {% if page.website %}
+        <p>{{ site.data.translations[page.lang].brand.website }}: <a href="{{ page.website }}" target="_blank">{{ page.website }}</a></p>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if page.gallery %}
+  <div class="brand-gallery row mt-4">
+    <div class="col-12">
+      <h2>{{ site.data.translations[page.lang].brand.gallery }}</h2>
+      <div class="gallery-images">
+        {% for image in page.gallery %}
+        <img src="{{ image }}" alt="{{ page.title }} gallery image" class="gallery-image img-fluid">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if page.related_brands %}
+  <div class="related-brands row mt-4">
+    <div class="col-12">
+      <h2>{{ site.data.translations[page.lang].brand.related_brands }}</h2>
+      {% for related_brand_slug in page.related_brands %}
+        {% assign related_brand = site.brands | where: "slug", related_brand_slug | where: "lang", page.lang | first %}
+        {% if related_brand %}
+        <div class="related-brand-card">
+          <h3><a href="{{ related_brand.url }}">{{ related_brand.title }}</a></h3>
+          <p>{{ related_brand.description }}</p>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<style>
+/* Previous CSS remains the same */
+.brand-founder {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--neutral-700);
+}
+
+.brand-slogan {
+  font-style: italic;
+  color: var(--primary-600);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.brand-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.brand-meta span {
+  background-color: var(--neutral-100);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+</style>

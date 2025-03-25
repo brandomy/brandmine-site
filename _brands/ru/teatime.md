@@ -7,14 +7,15 @@ markets: [Россия]
 attributes: [Исторический бренд, Управляемый основателем]
 signals: [Готов к экспорту, Готов к инвестициям]
 description: "Премиальный российский чайный бренд, сочетающий традиционные техники с современными вкусами."
+slogan: "Заваривая традиции, создавая будущее"
 founding_year: 2010
 founder: "Алексей Соколов"
-logo: "/assets/images/brands/teatime/logo.png"
-hero_image: "/assets/images/brands/teatime/hero.jpg"
+logo: "/assets/images/brands/teatime/originals/logo-color.png"
+hero_image: "/assets/images/brands/teatime/originals/hero-storefront.jpg"
 gallery:
-  - "/assets/images/brands/teatime/gallery-1.jpg"
-  - "/assets/images/brands/teatime/gallery-2.jpg"
-  - "/assets/images/brands/teatime/gallery-3.jpg"
+  - "/assets/images/brands/teatime/originals/gallery-teapot.jpg"
+  - "/assets/images/brands/teatime/originals/gallery-storefront.jpg"
+  - "/assets/images/brands/teatime/originals/gallery-founder.jpg"
 website: "https://teatime.ru"
 contact_email: "info@teatime.ru"
 related_brands: [russian-brew, moskva-chai]
