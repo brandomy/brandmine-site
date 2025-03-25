@@ -48,6 +48,11 @@
         <!-- Foundations Section -->
         <h3>Foundations</h3>
         <ul>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/brand-identity/" 
+            {% if page.url contains '/foundations/brand-identity/' %}class="active"{% endif %}>
+            Brand Identity
+            </a>
+          </li>
           <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/colors/" 
               {% if page.url contains '/foundations/colors/' %}class="active"{% endif %}>
               Colors
@@ -93,6 +98,11 @@
               Forms
             </a>
           </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/text-components/" 
+            {% if page.url contains '/components/text-components/' %}class="active"{% endif %}>
+            Text Components
+            </a>
+          </li>
         </ul>
         
         <!-- Patterns Section -->
@@ -112,6 +122,16 @@
               {% if page.url contains '/patterns/content-display/' %}class="active"{% endif %}>
               Content Display
             </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/image-handling/" 
+            {% if page.url contains '/patterns/image-handling/' %}class="active"{% endif %}>
+            Image Handling
+            </a>
+          </li>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/tags/" 
+              {% if page.url contains '/patterns/tags/' %}class="active"{% endif %}>
+              Tags
+              </a>
           </li>
         </ul>
       </nav>
