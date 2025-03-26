@@ -14,8 +14,10 @@ Our image handling system ensures consistent, high-quality visuals across the pl
 
 Images are organized by purpose and content type in a structured directory system:
 
-{% include styleguide/code-example.html language="text" preview=true
-code='assets/
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="font-family: monospace; font-size: 0.875rem; background-color: var(--neutral-100); padding: var(--space-4); border-radius: 4px; line-height: 1.5; white-space: pre; overflow-x: auto;">
+assets/
 └── images/
     ├── brands/             # Brand-specific images
     │   └── [brand-name]/   # Each brand gets its own folder
@@ -43,7 +45,42 @@ code='assets/
     └── sectors/            # Sector/industry imagery
         ├── hotels/         # Hotel sector images
         ├── spirits/        # Spirits sector images
-        └── [other sectors]/' %}
+        └── [other sectors]/
+    </div>
+  </div>
+  <div class="example-code">
+    <span class="code-language">text</span>
+    <pre><code class="language-text">assets/
+└── images/
+    ├── brands/             # Brand-specific images
+    │   └── [brand-name]/   # Each brand gets its own folder
+    │       ├── originals/  # Original high-res images
+    │       └── [generated responsive images]
+    │
+    ├── site/               # Site-wide design elements
+    │   ├── layout/         # Layout elements (headers, backgrounds)
+    │   ├── icons/          # UI icons and small graphics
+    │   ├── logos/          # Site logos and logomarks
+    │   └── ui/             # UI elements (buttons, decorations)
+    │
+    ├── pages/              # Page-specific images
+    │   ├── home/           # Homepage images
+    │   ├── about/          # About page images
+    │   └── [other pages]/  # Other main sections
+    │
+    ├── posts/              # Blog post images
+    │   └── YYYY-MM-DD-post-slug/  # Folder per post
+    │
+    ├── people/             # Team/people images
+    │   ├── headshots/      # Professional portraits
+    │   └── team/           # Group photos
+    │
+    └── sectors/            # Sector/industry imagery
+        ├── hotels/         # Hotel sector images
+        ├── spirits/        # Spirits sector images
+        └── [other sectors]/</code></pre>
+  </div>
+</div>
 
 ### Brand Image Organization
 
@@ -286,29 +323,41 @@ Jekyll includes make it easy to use responsive images throughout the site:
   </div>
 </div>
 
-{% include styleguide/code-example.html language="liquid" preview=false
-code='<!-- For brand images -->
+{% capture example_code %}
+<!-- For brand images -->
+{% raw %}
 {% include brand-image.html 
    brand="teatime" 
    image="storefront" 
    purpose="hero"
    alt="TeaTime storefront in Moscow" 
    class="featured-image" %}
+{% endraw %}
 
 <!-- For non-brand images -->
+{% raw %}
 {% include site-image.html 
    category="home"
    image="banner" 
    purpose="hero"
    alt="Brandmine connecting BRICS consumers" 
-   class="full-width" %}' %}
+   class="full-width" %}
+{% endraw %}
+{% endcapture %}
+
+{% include styleguide/code-example.html 
+   language="liquid" 
+   preview=false
+   code=example_code %}
 
 ### Brand Image Include Implementation
 
 The brand image include automatically generates all the necessary HTML for responsive images:
 
-{% include styleguide/code-example.html language="html" preview=false
-code='{% comment %}
+<div class="example-wrapper">
+  <div class="example-code">
+    <span class="code-language">html</span>
+    <pre><code class="language-html">{% comment %}
   Responsive Brand Image Include
   
   Usage:
@@ -330,13 +379,14 @@ code='{% comment %}
 {% assign widths_array = widths | split: "," %}
 {% assign base_path = "/assets/images/brands/" | append: brand | append: "/" %}
 
-<img src="{{ base_path | append: brand | append: "-" | append: purpose | append: "-" | append: image | append: "-" | append: widths_array[0] | append: "w.jpg" | relative_url }}"
+&lt;img src="{{ base_path | append: brand | append: "-" | append: purpose | append: "-" | append: image | append: "-" | append: widths_array[0] | append: "w.jpg" | relative_url }}"
      srcset="{% for width in widths_array %}{{ base_path | append: brand | append: "-" | append: purpose | append: "-" | append: image | append: "-" | append: width | append: "w.jpg" | relative_url }} {{ width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}"
      sizes="{{ sizes }}"
      alt="{{ alt }}"
      {% if class %}class="{{ class }}"{% endif %}
-     loading="lazy">
-' %}
+     loading="lazy"&gt;</code></pre>
+  </div>
+</div>
 
 ### Usage Examples
 
@@ -346,41 +396,35 @@ code='{% comment %}
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">Basic Usage:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-{% raw %}
-{% include brand-image.html 
+          {% raw %}{% include brand-image.html 
    brand="teatime" 
    image="storefront" 
    purpose="hero"
-   alt="TeaTime storefront in Moscow" %}
-{% endraw %}
+   alt="TeaTime storefront in Moscow" %}{% endraw %}
         </div>
       </div>
       
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">With Custom Classes:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-{% raw %}
-{% include brand-image.html 
+          {% raw %}{% include brand-image.html 
    brand="teatime" 
    image="teapot" 
    purpose="gallery"
    alt="Signature teapot collection" 
-   class="rounded shadow-sm" %}
-{% endraw %}
+   class="rounded shadow-sm" %}{% endraw %}
         </div>
       </div>
       
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">With Custom Sizes:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-{% raw %}
-{% include brand-image.html 
+          {% raw %}{% include brand-image.html 
    brand="teatime" 
    image="founder" 
    purpose="profile"
    alt="Alexei Sokolov, TeaTime founder" 
-   sizes="(max-width: 768px) 100vw, 50vw" %}
-{% endraw %}
+   sizes="(max-width: 768px) 100vw, 50vw" %}{% endraw %}
         </div>
       </div>
     </div>
@@ -473,13 +517,17 @@ For optimal SEO with images:
   </div>
 </div>
 
-{% include styleguide/code-example.html language="html" preview=false
-code='<!-- Example of SEO-optimized image -->
-<img src="/assets/images/brands/teatime/teatime-product-premium-darjeeling-800w.jpg"
+<div class="example-wrapper">
+  <div class="example-code">
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;!-- Example of SEO-optimized image --&gt;
+&lt;img src="/assets/images/brands/teatime/teatime-product-premium-darjeeling-800w.jpg"
      alt="TeaTime Premium Darjeeling Tea - Organic loose leaf black tea from Darjeeling, India"
      width="800"
      height="600"
-     loading="lazy">' %}
+     loading="lazy"&gt;</code></pre>
+  </div>
+</div>
 
 ## Troubleshooting Common Issues
 

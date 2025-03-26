@@ -89,34 +89,36 @@ Chinese pages use Noto Serif SC for headings and Noto Sans SC for body text:
 
 Our typography system uses a modular scale based on rems, maintaining proper hierarchical relationships between different text elements.
 
-<div class="example-preview">
-  <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
-    <div><span style="font-size: var(--text-xs);">Text XS (0.75rem)</span></div>
-    <div><code>var(--text-xs)</code></div>
-    
-    <div><span style="font-size: var(--text-sm);">Text SM (0.875rem)</span></div>
-    <div><code>var(--text-sm)</code></div>
-    
-    <div><span style="font-size: var(--text-base);">Text Base (1rem)</span></div>
-    <div><code>var(--text-base)</code></div>
-    
-    <div><span style="font-size: var(--text-lg);">Text LG (1.125rem)</span></div>
-    <div><code>var(--text-lg)</code></div>
-    
-    <div><span style="font-size: var(--text-xl);">Text XL (1.25rem)</span></div>
-    <div><code>var(--text-xl)</code></div>
-    
-    <div><span style="font-size: var(--text-2xl);">Text 2XL (1.5rem)</span></div>
-    <div><code>var(--text-2xl)</code></div>
-    
-    <div><span style="font-size: var(--text-3xl);">Text 3XL (1.875rem)</span></div>
-    <div><code>var(--text-3xl)</code></div>
-    
-    <div><span style="font-size: var(--text-4xl);">Text 4XL (2.25rem)</span></div>
-    <div><code>var(--text-4xl)</code></div>
-    
-    <div><span style="font-size: var(--text-5xl);">Text 5XL (3rem)</span></div>
-    <div><code>var(--text-5xl)</code></div>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
+      <div><span style="font-size: var(--text-xs);">Text XS (0.75rem)</span></div>
+      <div><code>var(--text-xs)</code></div>
+      
+      <div><span style="font-size: var(--text-sm);">Text SM (0.875rem)</span></div>
+      <div><code>var(--text-sm)</code></div>
+      
+      <div><span style="font-size: var(--text-base);">Text Base (1rem)</span></div>
+      <div><code>var(--text-base)</code></div>
+      
+      <div><span style="font-size: var(--text-lg);">Text LG (1.125rem)</span></div>
+      <div><code>var(--text-lg)</code></div>
+      
+      <div><span style="font-size: var(--text-xl);">Text XL (1.25rem)</span></div>
+      <div><code>var(--text-xl)</code></div>
+      
+      <div><span style="font-size: var(--text-2xl);">Text 2XL (1.5rem)</span></div>
+      <div><code>var(--text-2xl)</code></div>
+      
+      <div><span style="font-size: var(--text-3xl);">Text 3XL (1.875rem)</span></div>
+      <div><code>var(--text-3xl)</code></div>
+      
+      <div><span style="font-size: var(--text-4xl);">Text 4XL (2.25rem)</span></div>
+      <div><code>var(--text-4xl)</code></div>
+      
+      <div><span style="font-size: var(--text-5xl);">Text 5XL (3rem)</span></div>
+      <div><code>var(--text-5xl)</code></div>
+    </div>
   </div>
 </div>
 
@@ -124,19 +126,21 @@ Our typography system uses a modular scale based on rems, maintaining proper hie
 
 Available font weights for creating visual hierarchy:
 
-<div class="example-preview">
-  <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
-    <div style="font-weight: var(--font-normal);">Font Normal (400)</div>
-    <div><code>var(--font-normal)</code></div>
-    
-    <div style="font-weight: var(--font-medium);">Font Medium (500)</div>
-    <div><code>var(--font-medium)</code></div>
-    
-    <div style="font-weight: var(--font-semibold);">Font Semibold (600)</div>
-    <div><code>var(--font-semibold)</code></div>
-    
-    <div style="font-weight: var(--font-bold);">Font Bold (700)</div>
-    <div><code>var(--font-bold)</code></div>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
+      <div style="font-weight: var(--font-normal);">Font Normal (400)</div>
+      <div><code>var(--font-normal)</code></div>
+      
+      <div style="font-weight: var(--font-medium);">Font Medium (500)</div>
+      <div><code>var(--font-medium)</code></div>
+      
+      <div style="font-weight: var(--font-semibold);">Font Semibold (600)</div>
+      <div><code>var(--font-semibold)</code></div>
+      
+      <div style="font-weight: var(--font-bold);">Font Bold (700)</div>
+      <div><code>var(--font-bold)</code></div>
+    </div>
   </div>
 </div>
 

@@ -36,7 +36,7 @@ The Brandmine logo system consists of several variations to accommodate differen
 <!-- Using the logo in the header -->
 <header class="site-header">
   <div class="wrapper">
-    <a class="site-title" href="/{{ page.lang }}/">
+    <a class="site-title" href="/en/">
       <img src="/assets/images/site/logos/brandmine-logo-reversed.svg" alt="Brandmine" class="site-logo">
     </a>
     <!-- Navigation elements -->
@@ -195,8 +195,14 @@ Each color family has specific applications across the platform:
 
 Our typography system follows the "Evernote approach" with serif fonts for headings and sans-serif for body text:
 
-{% include styleguide/code-example.html language="css" preview=true
-code=':root {
+<div class="example-wrapper">
+  <div class="example-preview">
+    <h3 style="font-family: var(--font-heading);">This is a heading in serif font</h3>
+    <p style="font-family: var(--font-body);">This is body text in sans-serif font. Our typography system uses PT Serif for headings and PT Sans for body text in English and Russian, with Noto Serif SC and Noto Sans SC for Chinese content.</p>
+  </div>
+  <div class="example-code">
+    <span class="code-language">css</span>
+    <pre><code class="language-css">:root {
   /* Language-specific font definitions */
   --font-heading-en: "PT Serif", Georgia, serif;
   --font-body-en: "PT Sans", Arial, sans-serif;
@@ -221,7 +227,9 @@ html[lang="ru"] {
 html[lang="zh"] {
   --font-heading: var(--font-heading-zh);
   --font-body: var(--font-body-zh);
-}' %}
+}</code></pre>
+  </div>
+</div>
 
 ## Iconography
 

@@ -15,8 +15,10 @@ Our multilingual approach enables Brandmine to serve content in English, Russian
 
 The site uses a language-first URL structure that organizes content by language before content type:
 
-{% include styleguide/code-example.html language="text" preview=true
-code='# Jekyll directory structure
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="font-family: monospace; background-color: var(--neutral-50); padding: 1rem; border-radius: 0.25rem; white-space: pre; overflow-x: auto; line-height: 1.5;">
+# Jekyll directory structure
 pages/
 ├── en/
 │   ├── index.html
@@ -32,14 +34,55 @@ pages/
     ├── index.html
     ├── brands.md
     ├── sectors.md
-    └── about.md' %}
+    └── about.md
+    </div>
+  </div>
+  <div class="example-code">
+    <span class="code-language">text</span>
+    <pre><code class="language-text"># Jekyll directory structure
+pages/
+├── en/
+│   ├── index.html
+│   ├── brands.md
+│   ├── sectors.md
+│   └── about.md
+├── ru/
+│   ├── index.html
+│   ├── brands.md
+│   ├── sectors.md
+│   └── about.md
+└── zh/
+    ├── index.html
+    ├── brands.md
+    ├── sectors.md
+    └── about.md</code></pre>
+  </div>
+</div>
 
 ## Typography System
 
 Our typography system automatically adapts to the page language using language-specific font stacks:
 
-{% include styleguide/code-example.html language="css" preview=true
-code=':root {
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: flex; flex-direction: column; gap: 1rem; padding: 1rem; background-color: var(--neutral-50); border-radius: 0.25rem;">
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-family: 'PT Serif', Georgia, serif;">English Heading (PT Serif)</h4>
+        <p style="margin: 0; font-family: 'PT Sans', Arial, sans-serif;">English body text (PT Sans)</p>
+      </div>
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-family: 'PT Serif', Georgia, serif;">Русский заголовок (PT Serif)</h4>
+        <p style="margin: 0; font-family: 'PT Sans', Arial, sans-serif;">Русский текст (PT Sans)</p>
+      </div>
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-family: 'Noto Serif SC', 'Songti SC', serif;">中文标题 (Noto Serif SC)</h4>
+        <p style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;">中文正文 (Noto Sans SC)</p>
+      </div>
+    </div>
+  </div>
+  <div class="example-code">
+    <span class="code-language">css</span>
+    <pre><code class="language-css">:root {
   /* Language-specific font definitions */
   --font-heading-en: "PT Serif", Georgia, serif;
   --font-body-en: "PT Sans", Arial, sans-serif;
@@ -65,25 +108,40 @@ html[lang="ru"] {
 html[lang="zh"] {
   --font-heading: var(--font-heading-zh);
   --font-body: var(--font-body-zh);
-}' %}
+}</code></pre>
+  </div>
+</div>
 
 ## Language Selector
 
 The language selector appears in the site header and footer, allowing users to switch between languages:
 
-{% include styleguide/code-example.html language="html" preview=true
-code='<div class="language-selector">
-  <a href="/en/" class="active">EN</a>
-  <a href="/ru/">RU</a>
-  <a href="/zh/">中文</a>
-</div>' %}
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: flex; gap: 0.75rem; padding: 1rem; background-color: var(--neutral-50); border-radius: 0.25rem;">
+      <a href="#" style="font-weight: 500; color: var(--primary-600); text-decoration: none; border-bottom: 2px solid var(--primary-600); padding-bottom: 0.125rem;">EN</a>
+      <a href="#" style="color: var(--neutral-600); text-decoration: none;">RU</a>
+      <a href="#" style="color: var(--neutral-600); text-decoration: none;">中文</a>
+    </div>
+  </div>
+  <div class="example-code">
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="language-selector"&gt;
+  &lt;a href="/en/" class="active"&gt;EN&lt;/a&gt;
+  &lt;a href="/ru/"&gt;RU&lt;/a&gt;
+  &lt;a href="/zh/"&gt;中文&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</div>
 
 ## Translations System
 
 Content strings are managed through translation files in the Jekyll `_data` directory:
 
-{% include styleguide/code-example.html language="yaml" preview=false
-code='# _data/translations/en.yml
+<div class="example-wrapper">
+  <div class="example-code">
+    <span class="code-language">yaml</span>
+    <pre><code class="language-yaml"># _data/translations/en.yml
 site:
   title: "Brandmine"
   description: "Amplifying leading consumer brands of the BRICS+"
@@ -117,14 +175,56 @@ nav:
   brands: "品牌"
   sectors: "行业"
   about: "关于我们"
-  contact: "联系我们"' %}
+  contact: "联系我们"</code></pre>
+  </div>
+</div>
 
 ## Language-Specific Adjustments
 
 Some elements require language-specific adjustments to accommodate different text lengths or writing systems:
 
-{% include styleguide/code-example.html language="css" preview=true
-code='/* Chinese typography adjustments */
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 1rem; background-color: var(--neutral-50); border-radius: 0.25rem;">
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Chinese Typography Line Height</h4>
+        <div style="border: 1px dashed var(--neutral-300); padding: 0.5rem; border-radius: 0.25rem; display: flex; gap: 1rem;">
+          <div>
+            <div style="font-size: 0.875rem; color: var(--neutral-500); margin-bottom: 0.25rem;">Normal line height</div>
+            <div style="line-height: 1.5; font-family: 'Noto Serif SC', 'Songti SC', serif;">
+              这是带有标准行高的中文文本。<br>在某些情况下，这种行高对于中文排版来说太宽了。
+            </div>
+          </div>
+          <div>
+            <div style="font-size: 0.875rem; color: var(--neutral-500); margin-bottom: 0.25rem;">Adjusted line height</div>
+            <div style="line-height: 1.375; font-family: 'Noto Serif SC', 'Songti SC', serif;">
+              这是带有调整行高的中文文本。<br>对于中文排版，较窄的行高通常更适合。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Text Length Adjustments</h4>
+        <div style="border: 1px dashed var(--neutral-300); padding: 0.5rem; border-radius: 0.25rem; display: flex; gap: 1rem;">
+          <div style="flex: 1;">
+            <div style="font-size: 0.875rem; color: var(--neutral-500); margin-bottom: 0.25rem;">English</div>
+            <button style="font-size: 1rem; padding: 0.5rem 1rem; background-color: var(--primary-600); color: white; border: none; border-radius: 0.25rem;">Subscribe</button>
+          </div>
+          <div style="flex: 1;">
+            <div style="font-size: 0.875rem; color: var(--neutral-500); margin-bottom: 0.25rem;">Russian</div>
+            <button style="font-size: 0.95rem; padding: 0.5rem 1rem; background-color: var(--primary-600); color: white; border: none; border-radius: 0.25rem;">Подписаться</button>
+          </div>
+          <div style="flex: 1;">
+            <div style="font-size: 0.875rem; color: var(--neutral-500); margin-bottom: 0.25rem;">Chinese</div>
+            <button style="font-size: 0.95rem; padding: 0.5rem 1rem; background-color: var(--primary-600); color: white; border: none; border-radius: 0.25rem;">订阅</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="example-code">
+    <span class="code-language">css</span>
+    <pre><code class="language-css">/* Chinese typography adjustments */
 html[lang="zh"] h1, 
 html[lang="zh"] h2, 
 html[lang="zh"] h3, 
@@ -139,44 +239,64 @@ html[lang="zh"] h6 {
 .grid-container[lang="zh"] {
   /* Accommodate longer text in some languages */
   font-size: 0.95rem;
-}' %}
+}</code></pre>
+  </div>
+</div>
 
 ## URL Structure and Templates
 
 Each page includes language-specific front matter to control permalinks and language settings:
 
-{% include styleguide/code-example.html language="yaml" preview=false
-code='---
+<div class="example-wrapper">
+  <div class="example-code">
+    <span class="code-language">yaml</span>
+    <pre><code class="language-yaml">---
 layout: default
 title: About Us
 description: About the Brandmine platform and team
 permalink: /en/about/
 lang: en
----' %}
+---</code></pre>
+  </div>
+</div>
 
 ## Helper Classes
 
 For mixing languages within a page, specific helper classes are available:
 
-{% include styleguide/code-example.html language="html" preview=true
-code='<!-- Chinese serif font regardless of page language -->
-<span class="zh">中文文本</span>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="padding: 1rem; background-color: var(--neutral-50); border-radius: 0.25rem; line-height: 2;">
+      <p>Standard text with <span style="font-family: 'Noto Serif SC', 'Songti SC', serif;">中文文本</span> Chinese serif text.</p>
+      <p>Standard text with <span style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;">中文文本</span> Chinese sans-serif text.</p>
+      <p>Standard text with <span style="font-family: 'PT Serif', Georgia, serif;">Русский текст</span> Russian serif text.</p>
+      <p>Standard text with <span style="font-family: 'PT Sans', Arial, sans-serif;">Русский текст</span> Russian sans-serif text.</p>
+    </div>
+  </div>
+  <div class="example-code">
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;!-- Chinese serif font regardless of page language --&gt;
+&lt;span class="zh"&gt;中文文本&lt;/span&gt;
 
-<!-- Chinese sans-serif font -->
-<span class="zh-sans">中文文本</span>
+&lt;!-- Chinese sans-serif font --&gt;
+&lt;span class="zh-sans"&gt;中文文本&lt;/span&gt;
 
-<!-- Russian serif font regardless of page language -->
-<span class="ru">Русский текст</span>
+&lt;!-- Russian serif font regardless of page language --&gt;
+&lt;span class="ru"&gt;Русский текст&lt;/span&gt;
 
-<!-- Russian sans-serif font -->
-<span class="ru-sans">Русский текст</span>' %}
+&lt;!-- Russian sans-serif font --&gt;
+&lt;span class="ru-sans"&gt;Русский текст&lt;/span&gt;</code></pre>
+  </div>
+</div>
 
 ## Content Tagging
 
 Content tags are consistently structured across languages:
 
-{% include styleguide/code-example.html language="yaml" preview=false
-code='# _data/tag_translations.yml
+<div class="example-wrapper">
+  <div class="example-code">
+    <span class="code-language">yaml</span>
+    <pre><code class="language-yaml"># _data/tag_translations.yml
 
 # English
 hotels-resorts:
@@ -187,22 +307,62 @@ hotels-resorts:
 artisanal-excellence:
   en: "Artisanal Excellence"
   ru: "Мастерство Ремесленников"
-  zh: "工艺精湛"' %}
+  zh: "工艺精湛"</code></pre>
+  </div>
+</div>
 
 ## Multilingual Forms
 
 Forms are adapted for each language, using language-specific configurations:
 
-{% include styleguide/code-example.html language="html" preview=true
-code='<div class="newsletter-container">
-  {% if page.lang == "ru" %}
-    <div class="ml-embedded" data-form="WVRNPI"></div>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 1rem; background-color: var(--neutral-50); border-radius: 0.25rem;">
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">English Newsletter Form</h4>
+        <div style="border: 1px solid var(--neutral-200); padding: 1rem; border-radius: 0.25rem; background-color: white;">
+          <div style="margin-bottom: 0.75rem; font-weight: 500;">Subscribe to our newsletter</div>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="email" placeholder="Your email address" style="flex: 1; padding: 0.5rem; border: 1px solid var(--neutral-300); border-radius: 0.25rem;">
+            <button style="padding: 0.5rem 1rem; background-color: var(--primary-600); color: white; border: none; border-radius: 0.25rem;">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Russian Newsletter Form</h4>
+        <div style="border: 1px solid var(--neutral-200); padding: 1rem; border-radius: 0.25rem; background-color: white;">
+          <div style="margin-bottom: 0.75rem; font-weight: 500;">Подпишитесь на нашу рассылку</div>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="email" placeholder="Ваш адрес электронной почты" style="flex: 1; padding: 0.5rem; border: 1px solid var(--neutral-300); border-radius: 0.25rem;">
+            <button style="padding: 0.5rem 1rem; background-color: var(--primary-600); color: white; border: none; border-radius: 0.25rem;">Подписаться</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Chinese Newsletter Form</h4>
+        <div style="border: 1px solid var(--neutral-200); padding: 1rem; border-radius: 0.25rem; background-color: white;">
+          <div style="margin-bottom: 0.75rem; font-weight: 500;">订阅我们的通讯</div>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="email" placeholder="您的电子邮件地址" style="flex: 1; padding: 0.5rem; border: 1px solid var(--neutral-300); border-radius: 0.25rem;">
+            <button style="padding: 0.5rem 1rem; background-color: var(--primary-600); color: white; border: none; border-radius: 0.25rem;">订阅</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="example-code">
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="newsletter-container"&gt;
+  {% raw %}{% if page.lang == "ru" %}
+    &lt;div class="ml-embedded" data-form="WVRNPI"&gt;&lt;/div&gt;
   {% elsif page.lang == "zh" %}
-    <div class="ml-embedded" data-form="WRga0a"></div>
+    &lt;div class="ml-embedded" data-form="WRga0a"&gt;&lt;/div&gt;
   {% else %}
-    <div class="ml-embedded" data-form="480swE"></div>
-  {% endif %}
-</div>' %}
+    &lt;div class="ml-embedded" data-form="480swE"&gt;&lt;/div&gt;
+  {% endif %}{% endraw %}
+&lt;/div&gt;</code></pre>
+  </div>
+</div>
 
 ## Implementation Guidelines
 
@@ -220,32 +380,40 @@ code='<div class="newsletter-container">
 
 The basic template structure for multilingual pages:
 
-{% include styleguide/code-example.html language="html" preview=false
-code='---
+<div class="example-wrapper">
+  <div class="example-code">
+    <span class="code-language">liquid</span>
+    <pre><code class="language-liquid">---
 layout: default
-title: {{ site.data.translations[page.lang].pages.brands.title }}
-description: {{ site.data.translations[page.lang].pages.brands.description }}
-permalink: /{{ page.lang }}/brands/
-lang: {{ page.lang }}
+title: {% raw %}{{ site.data.translations[page.lang].pages.brands.title }}{% endraw %}
+description: {% raw %}{{ site.data.translations[page.lang].pages.brands.description }}{% endraw %}
+permalink: {% raw %}/{{ page.lang }}/brands/{% endraw %}
+lang: {% raw %}{{ page.lang }}{% endraw %}
 ---
 
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h1>{{ site.data.translations[page.lang].pages.brands.heading }}</h1>
-    <p class="lead-text">{{ site.data.translations[page.lang].pages.brands.lead_text }}</p>
+&lt;div class="full-width-panel light-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h1&gt;{% raw %}{{ site.data.translations[page.lang].pages.brands.heading }}{% endraw %}&lt;/h1&gt;
+    &lt;p class="lead-text"&gt;{% raw %}{{ site.data.translations[page.lang].pages.brands.lead_text }}{% endraw %}&lt;/p&gt;
     
-    <!-- Page content -->
+    &lt;!-- Page content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
-</div>' %}
+</div>
 
 ### Language Switching
 
 When creating links to other pages, maintain the user's language:
 
-{% include styleguide/code-example.html language="html" preview=false
-code='<a href="{{ site.baseurl }}/{{ page.lang }}/brands/">
-  {{ site.data.translations[page.lang].nav.brands }}
-</a>' %}
+<div class="example-wrapper">
+  <div class="example-code">
+    <span class="code-language">liquid</span>
+    <pre><code class="language-liquid">&lt;a href="{% raw %}{{ site.baseurl }}/{{ page.lang }}/brands/{% endraw %}"&gt;
+  {% raw %}{{ site.data.translations[page.lang].nav.brands }}{% endraw %}
+&lt;/a&gt;</code></pre>
+  </div>
+</div>
 
 ### Responsive Considerations
 

@@ -1,5 +1,5 @@
 # Brandmine Jekyll Website - Quick Reference
-Generated: 2025-03-27 03:16
+Generated: 2025-03-27 05:29
 
 ## Project Overview
 - Jekyll-based multilingual website (EN, RU, ZH)
@@ -7,7 +7,7 @@ Generated: 2025-03-27 03:16
 - Current navigation structure: Home, Brands, Discover (Sectors, Markets, Attributes, Signals), Insights, About
 
 ## Latest Development
-- Most recent commit: convert styleguide pages to new format. (Randal Eastman, Wed Mar 26 20:51:05 2025 +0800)
+- Most recent commit: Refactor image handling documentation for improved clarity and consistency (Randal Eastman, Thu Mar 27 03:52:39 2025 +0800)
 - Current focus: Implemented Multilingual Newsletter Forms
 
 ## Working with Claude

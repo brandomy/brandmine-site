@@ -354,7 +354,7 @@ Accent colors add visual interest and are used for special UI elements, links, a
 
 ### Primary Color Usage
 
-The primary teal color (`#38B2AC`, primary-400) should be used for:
+The primary teal color (`primary-400`) should be used for:
 
 * Main action buttons
 * Navigation elements
@@ -366,7 +366,7 @@ For buttons and interactive elements, use `primary-600` for hover states and `pr
 
 ### Secondary Color Usage
 
-The secondary orange color (`#F97316`, secondary-500) should be used for:
+The secondary orange color (`secondary-500`) should be used for:
 
 * Secondary buttons and actions
 * Highlights and callouts
