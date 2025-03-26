@@ -1,0 +1,318 @@
+{% comment %}
+  Search and Filter Include
+  
+  Usage:
+  {% include search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
+  
+  Parameters:
+  - content_type: Type of content to filter ("brands" or "insights")
+  - taxonomy: Taxonomy data object (containing sectors, markets, attributes, signals)
+{% endcomment %}
+
+<div class="search-filter-container" data-content-type="{{ include.content_type }}">
+  <!-- Search box -->
+  <div class="search-box">
+    <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/{{ include.content_type }}/" method="get">
+      <div class="input-group">
+        <input type="text" id="search-input" name="q" class="form-control" 
+               placeholder="{{ site.data.translations[page.lang].search.placeholder }}"
+               value="{{ page.url | split: '?' | last | split: 'q=' | last | replace: '+', ' ' | url_decode }}">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">
+            <span class="search-icon"></span>
+            <span class="sr-only">{{ site.data.translations[page.lang].search.button }}</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Filter controls -->
+  <div class="filter-controls">
+    <h3 class="filter-heading">{{ site.data.translations[page.lang].filter.heading }}</h3>
+    
+    <!-- Active filters display -->
+    <div class="active-filters" id="active-filters">
+      <!-- Active filters will be inserted here by JavaScript -->
+      <div class="clear-all" id="clear-all" style="display: none;">
+        <button class="btn btn-sm btn-outline-secondary">
+          {{ site.data.translations[page.lang].filter.clear_all }}
+        </button>
+      </div>
+    </div>
+    
+    <!-- Filter accordions -->
+    <div class="filter-accordions" id="filter-accordions">
+      <!-- Sectors -->
+      <div class="filter-section">
+        <button class="accordion-button" type="button" data-toggle="collapse" data-target="#sectors-collapse">
+          {{ site.data.translations[page.lang].tags.sectors }}
+          <span class="accordion-icon"></span>
+        </button>
+        <div id="sectors-collapse" class="collapse show">
+          <div class="filter-options">
+            {% for sector in include.taxonomy.sectors %}
+            <div class="filter-option">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="sector" value="{{ sector.tag }}" 
+                       data-display="{{ sector.title[page.lang] | default: sector.title['en'] }}">
+                <span class="checkmark"></span>
+                <span class="option-label">{{ sector.title[page.lang] | default: sector.title['en'] }}</span>
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Markets -->
+      <div class="filter-section">
+        <button class="accordion-button" type="button" data-toggle="collapse" data-target="#markets-collapse">
+          {{ site.data.translations[page.lang].tags.markets }}
+          <span class="accordion-icon"></span>
+        </button>
+        <div id="markets-collapse" class="collapse">
+          <div class="filter-options">
+            {% for market in include.taxonomy.markets %}
+            <div class="filter-option">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="market" value="{{ market.tag }}" 
+                       data-display="{{ market.title[page.lang] | default: market.title['en'] }}">
+                <span class="checkmark"></span>
+                <span class="option-label">{{ market.title[page.lang] | default: market.title['en'] }}</span>
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Attributes -->
+      <div class="filter-section">
+        <button class="accordion-button" type="button" data-toggle="collapse" data-target="#attributes-collapse">
+          {{ site.data.translations[page.lang].tags.attributes }}
+          <span class="accordion-icon"></span>
+        </button>
+        <div id="attributes-collapse" class="collapse">
+          <div class="filter-options">
+            {% for attribute in include.taxonomy.attributes %}
+            <div class="filter-option">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="attribute" value="{{ attribute.tag }}" 
+                       data-display="{{ attribute.title[page.lang] | default: attribute.title['en'] }}">
+                <span class="checkmark"></span>
+                <span class="option-label">{{ attribute.title[page.lang] | default: attribute.title['en'] }}</span>
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Signals -->
+      <div class="filter-section">
+        <button class="accordion-button" type="button" data-toggle="collapse" data-target="#signals-collapse">
+          {{ site.data.translations[page.lang].tags.signals }}
+          <span class="accordion-icon"></span>
+        </button>
+        <div id="signals-collapse" class="collapse">
+          <div class="filter-options">
+            {% for signal in include.taxonomy.signals %}
+            <div class="filter-option">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="signal" value="{{ signal.tag }}" 
+                       data-display="{{ signal.title[page.lang] | default: signal.title['en'] }}">
+                <span class="checkmark"></span>
+                <span class="option-label">{{ signal.title[page.lang] | default: signal.title['en'] }}</span>
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      {% if include.content_type == "insights" %}
+      <!-- Content Types (for insights only) -->
+      <div class="filter-section">
+        <button class="accordion-button" type="button" data-toggle="collapse" data-target="#content-types-collapse">
+          {{ site.data.translations[page.lang].insights.content_types }}
+          <span class="accordion-icon"></span>
+        </button>
+        <div id="content-types-collapse" class="collapse">
+          <div class="filter-options">
+            {% for type in site.data.insight_types %}
+            <div class="filter-option">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="content_type" value="{{ type.slug }}" 
+                       data-display="{{ type.title[page.lang] | default: type.title['en'] }}">
+                <span class="checkmark"></span>
+                <span class="option-label">{{ type.title[page.lang] | default: type.title['en'] }}</span>
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize filter from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    let activeFilters = false;
+    
+    // Check for and set any URL parameters as active filters
+    function initializeFilters() {
+      for (const [key, value] of urlParams.entries()) {
+        if (key === 'q') continue; // Skip search query
+        
+        const values = value.split(',');
+        values.forEach(val => {
+          const checkbox = document.querySelector(`input[name="${key}"][value="${val}"]`);
+          if (checkbox) {
+            checkbox.checked = true;
+            addActiveFilter(key, val, checkbox.dataset.display);
+            activeFilters = true;
+          }
+        });
+      }
+      
+      // Show clear all button if there are active filters
+      if (activeFilters) {
+        document.getElementById('clear-all').style.display = 'block';
+      }
+    }
+    
+    // Add active filter pill
+    function addActiveFilter(type, value, display) {
+      const activeFiltersContainer = document.getElementById('active-filters');
+      
+      const pill = document.createElement('div');
+      pill.className = 'filter-pill';
+      pill.dataset.type = type;
+      pill.dataset.value = value;
+      
+      pill.innerHTML = `
+        <span class="pill-text">${display}</span>
+        <button class="pill-remove" aria-label="Remove filter">×</button>
+      `;
+      
+      // Add remove handler
+      pill.querySelector('.pill-remove').addEventListener('click', function() {
+        // Uncheck the corresponding checkbox
+        const checkbox = document.querySelector(`input[name="${type}"][value="${value}"]`);
+        if (checkbox) checkbox.checked = false;
+        
+        // Remove the pill
+        pill.remove();
+        
+        // Update URL and results
+        updateUrlAndResults();
+        
+        // Hide clear all if no more filters
+        if (document.querySelectorAll('.filter-pill').length === 0) {
+          document.getElementById('clear-all').style.display = 'none';
+        }
+      });
+      
+      activeFiltersContainer.insertBefore(pill, document.getElementById('clear-all'));
+    }
+    
+    // Update URL parameters and trigger results refresh
+    function updateUrlAndResults() {
+      const newUrl = new URL(window.location.href);
+      const params = new URLSearchParams();
+      
+      // Preserve search query if exists
+      const searchQuery = document.getElementById('search-input').value;
+      if (searchQuery) params.set('q', searchQuery);
+      
+      // Add all checked filters to params
+      const checkboxes = document.querySelectorAll('.filter-option input[type="checkbox"]:checked');
+      const filterGroups = {};
+      
+      checkboxes.forEach(checkbox => {
+        const name = checkbox.getAttribute('name');
+        const value = checkbox.value;
+        
+        if (!filterGroups[name]) filterGroups[name] = [];
+        filterGroups[name].push(value);
+      });
+      
+      // Add each filter group to URL
+      Object.entries(filterGroups).forEach(([name, values]) => {
+        params.set(name, values.join(','));
+      });
+      
+      // Update URL without reloading
+      newUrl.search = params.toString();
+      window.history.pushState({}, '', newUrl);
+      
+      // Trigger filter event for JavaScript-based filtering
+      const event = new CustomEvent('filterUpdate', { detail: { params: params } });
+      document.dispatchEvent(event);
+    }
+    
+    // Set up event handlers for checkboxes
+    document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const type = this.getAttribute('name');
+        const value = this.value;
+        const display = this.dataset.display;
+        
+        // Add or remove active filter
+        if (this.checked) {
+          addActiveFilter(type, value, display);
+          document.getElementById('clear-all').style.display = 'block';
+        } else {
+          const pill = document.querySelector(`.filter-pill[data-type="${type}"][data-value="${value}"]`);
+          if (pill) pill.remove();
+          
+          // Hide clear all if no more filters
+          if (document.querySelectorAll('.filter-pill').length === 0) {
+            document.getElementById('clear-all').style.display = 'none';
+          }
+        }
+        
+        // Update URL and refresh results
+        updateUrlAndResults();
+      });
+    });
+    
+    // Clear all filters
+    document.getElementById('clear-all').querySelector('button').addEventListener('click', function() {
+      // Uncheck all checkboxes
+      document.querySelectorAll('.filter-option input[type="checkbox"]:checked').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      
+      // Remove all filter pills
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.remove();
+      });
+      
+      // Hide clear all button
+      document.getElementById('clear-all').style.display = 'none';
+      
+      // Update URL and refresh results
+      updateUrlAndResults();
+    });
+    
+    // Initialize accordion behaviors
+    document.querySelectorAll('.accordion-button').forEach(button => {
+      button.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const target = document.querySelector(this.getAttribute('data-target'));
+        if (target) {
+          target.classList.toggle('show');
+        }
+      });
+    });
+    
+    // Initialize from URL
+    initializeFilters();
+  });
+</script>

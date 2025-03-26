@@ -95,7 +95,7 @@ ref: brands
         <h3>Brand Name</h3>
         <p>Short description of the brand goes here, highlighting its unique selling points and origin.</p>
         <div class="brand-meta">
-          <span class="brand-country">Russia</span>
+          <span class="brand-market">Russia</span>
           <span class="brand-sector">Artisanal Food</span>
         </div>
       </div>
@@ -106,7 +106,7 @@ ref: brands
         <h3>Brand Name</h3>
         <p>Short description of the brand goes here, highlighting its unique selling points and origin.</p>
         <div class="brand-meta">
-          <span class="brand-country">Brazil</span>
+          <span class="brand-market">Brazil</span>
           <span class="brand-sector">Natural Beauty</span>
         </div>
       </div>
@@ -116,7 +116,7 @@ ref: brands
         <h3>Brand Name</h3>
         <p>Short description of the brand goes here, highlighting its unique selling points and origin.</p>
         <div class="brand-meta">
-          <span class="brand-country">India</span>
+          <span class="brand-market">India</span>
           <span class="brand-sector">Fashion</span>
         </div>
       </div>
@@ -132,11 +132,11 @@ ref: brands
       <p>Use our advanced search and filtering tools to discover brands by:</p>
       
       <div class="filter-categories">
-        <div class="filter-category">Country of origin</div>
-        <div class="filter-category">Product category</div>
+        <div class="filter-category">Market of origin</div>
+        <div class="filter-category">Sector</div>
         <div class="filter-category">Company size</div>
-        <div class="filter-category">Export readiness</div>
-        <div class="filter-category">Market position</div>
+        <div class="filter-category">Signals</div>
+        <div class="filter-category">Attributes</div>
       </div>
       
       <div class="cta-container">

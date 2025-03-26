@@ -11,104 +11,8 @@ layout: default
     </div>
     
     <div class="brands-interface">
-      <div class="filter-sidebar">
-        <h2>{{ site.data.translations[page.lang].filter.title }}</h2>
-        
-        <!-- Sector Filter -->
-        <div class="filter-group">
-          <h3>{{ site.data.translations[page.lang].filter.sectors }}</h3>
-          <div class="filter-options" id="sector-filters">
-            <!-- Will be populated by JavaScript -->
-          </div>
-        </div>
-        
-        <!-- Market Filter -->
-        <div class="filter-group">
-          <h3>{{ site.data.translations[page.lang].filter.markets }}</h3>
-          <div class="filter-options" id="market-filters">
-            <!-- Will be populated by JavaScript -->
-          </div>
-        </div>
-        
-        <!-- Attributes Filter -->
-        <div class="filter-group">
-          <h3>{{ site.data.translations[page.lang].filter.attributes }}</h3>
-          <div class="filter-options" id="attribute-filters">
-            <!-- Will be populated by JavaScript -->
-          </div>
-        </div>
-        
-        <!-- Signals Filter -->
-        <div class="filter-group premium-filter">
-          <h3>{{ site.data.translations[page.lang].filter.signals }}</h3>
-          <div class="filter-options" id="signal-filters">
-            <!-- Will be populated by JavaScript -->
-          </div>
-          <div class="premium-notice">
-            <p>{{ brand.excerpt | strip_html | truncate: 120 }}</p>
-            
-            <div class="brand-meta">
-              <span class="brand-sector">{{ brand.sector }}</span>
-              <span class="brand-country">{{ brand.country }}</span>
-            </div>
-            
-            <a href="{{ brand.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].brands.view_profile }}</a>
-          </div>
-        {% endfor %}
-      </div>
-      
-      {% if filtered_brands.size == 0 %}
-      <p class="no-results">{{ site.data.translations[page.lang].brands.no_related_brands }}</p>
-      {% endif %}
-    </div>
-    
-    {% if page.tag_type == 'sector' or page.tag_type == 'country' %}
-    <div class="tag-insights">
-      <h2>{{ site.data.translations[page.lang].insights.related }}</h2>
-      <div class="insights-grid small-grid">
-        {% assign insights = site.insights | where: "lang", page.lang %}
-        {% assign related_insights = '' | split: '' %}
-        
-        {% for insight in insights %}
-          {% if page.tag_type == 'sector' and insight.categories contains page.title %}
-            {% assign related_insights = related_insights | push: insight %}
-          {% elsif page.tag_type == 'country' and insight.markets contains page.tag %}
-            {% assign related_insights = related_insights | push: insight %}
-          {% endif %}
-        {% endfor %}
-        
-        {% for insight in related_insights limit:3 %}
-          <div class="insight-card">
-            {% if insight.image %}
-            <div class="insight-image">
-              <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}">
-            </div>
-            {% endif %}
-            
-            <div class="insight-content">
-              <h3><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h3>
-              <p>{{ insight.excerpt | strip_html | truncate: 100 }}</p>
-              <a href="{{ insight.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].insights.read_more }}</a>
-            </div>
-          </div>
-        {% endfor %}
-        
-        {% if related_insights.size == 0 %}
-        <p class="no-results">{{ site.data.translations[page.lang].insights.no_related_insights }}</p>
-        {% endif %}
-      </div>
-    </div>
-    {% endif %}
-  </div>
-</div>{{ site.data.translations[page.lang].premium.signals_notice }}</p>
-          </div>
-        </div>
-        
-        <div class="filter-actions">
-          <button id="apply-filters" class="btn-primary">{{ site.data.translations[page.lang].filter.apply }}</button>
-          <button id="clear-filters" class="btn-secondary">{{ site.data.translations[page.lang].filter.clear }}</button>
-        </div>
-      </div>
+      <!-- Use our new search filter include -->
+      {% include search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
       
       <div class="brands-results">
         <div class="results-header">
@@ -118,13 +22,17 @@ layout: default
             <select id="sort-select">
               <option value="name">{{ site.data.translations[page.lang].sort.name }}</option>
               <option value="sector">{{ site.data.translations[page.lang].sort.sector }}</option>
-              <option value="country">{{ site.data.translations[page.lang].sort.country }}</option>
+              <option value="market">{{ site.data.translations[page.lang].sort.market }}</option>
             </select>
           </div>
         </div>
         
         <div id="brands-container" class="brands-grid">
-          <!-- Will be populated by JavaScript -->
+          <!-- Populated by JavaScript -->
+          {% assign brands = site.brands | where: "lang", page.lang %}
+          {% for brand in brands %}
+            {% include brand-card.html brand=brand %}
+          {% endfor %}
         </div>
         
         <div class="load-more-container">

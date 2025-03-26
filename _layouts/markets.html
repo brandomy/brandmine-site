@@ -2,13 +2,13 @@
 layout: discover
 ---
 <div class="markets-grid">
-  {% assign market_tags = site.tags | where: "tag_type", "country" | where: "lang", page.lang %}
+  {% assign market_tags = site.tags | where: "tag_type", "market" | where: "lang", page.lang %}
   
   {% for market in market_tags %}
   <div class="market-card">
     <div class="market-icon">
-      {% if market.icon %}
-      <img src="{{ market.icon | relative_url }}" alt="{{ market.title }} icon">
+      {% if market.badge_icon %}
+      <img src="{{ '/assets/images/badges/' | append: market.badge_icon | relative_url }}" alt="{{ market.title }} icon">
       {% else %}
       <div class="placeholder-icon"></div>
       {% endif %}

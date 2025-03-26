@@ -17,22 +17,50 @@ layout: default
       {% endif %}
       <div class="brand-meta">
         {% if page.sectors %}
-        <span class="sector">{{ page.sectors | join: ", " }}</span>
+        <div class="meta-item">
+          <span class="meta-label">{{ site.data.translations[page.lang].tags.sectors }}:</span>
+          {% for sector in page.sectors %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="meta-tag sector-tag">{{ sector }}</a>
+          {% endfor %}
+        </div>
         {% endif %}
+        
         {% if page.markets %}
-        <span class="market">{{ page.markets | join: ", " }}</span>
+        <div class="meta-item">
+          <span class="meta-label">{{ site.data.translations[page.lang].tags.markets }}:</span>
+          {% for market in page.markets %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="meta-tag market-tag">{{ market }}</a>
+          {% endfor %}
+        </div>
         {% endif %}
+        
         {% if page.founding_year %}
-        <span class="established">{{ site.data.translations[page.lang].brand.established }}: {{ page.founding_year }}</span>
+        <div class="meta-item">
+          <span class="meta-label">{{ site.data.translations[page.lang].brand.established }}:</span>
+          <span class="meta-value">{{ page.founding_year }}</span>
+        </div>
         {% endif %}
       </div>
+      
       {% if page.founder %}
       <div class="brand-founder">
         <strong>{{ site.data.translations[page.lang].brand.founder }}:</strong> {{ page.founder }}
       </div>
       {% endif %}
+      
+      {% if page.premium %}
+      <div class="premium-badge">{{ site.data.translations[page.lang].brand.premium }}</div>
+      {% endif %}
     </div>
   </div>
+
+  {% if page.hero_image %}
+  <div class="brand-hero-image row mt-4">
+    <div class="col-12">
+      <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="img-fluid">
+    </div>
+  </div>
+  {% endif %}
 
   <div class="brand-details row mt-4">
     <div class="col-md-8">
@@ -56,16 +84,16 @@ layout: default
 
     <div class="col-md-4 brand-sidebar">
       <div class="brand-attributes">
-        <h3>{{ site.data.translations[page.lang].brand.attributes }}</h3>
+        <h3>{{ site.data.translations[page.lang].tags.attributes }}</h3>
         {% for attribute in page.attributes %}
-        <span class="badge attribute-badge">{{ attribute }}</span>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/attributes/{{ attribute | slugify }}/" class="badge attribute-badge">{{ attribute }}</a>
         {% endfor %}
       </div>
 
       <div class="brand-signals mt-3">
-        <h3>{{ site.data.translations[page.lang].brand.signals }}</h3>
+        <h3>{{ site.data.translations[page.lang].tags.signals }}</h3>
         {% for signal in page.signals %}
-        <span class="badge signal-badge">{{ signal }}</span>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/signals/{{ signal | slugify }}/" class="badge signal-badge">{{ signal }}</a>
         {% endfor %}
       </div>
 
@@ -73,11 +101,25 @@ layout: default
       <div class="brand-contact mt-3">
         <h3>{{ site.data.translations[page.lang].brand.contact }}</h3>
         {% if page.contact_email %}
-        <p>{{ site.data.translations[page.lang].brand.email }}: {{ page.contact_email }}</p>
+        <p>{{ site.data.translations[page.lang].brand.email }}: <a href="mailto:{{ page.contact_email }}">{{ page.contact_email }}</a></p>
         {% endif %}
         {% if page.website %}
-        <p>{{ site.data.translations[page.lang].brand.website }}: <a href="{{ page.website }}" target="_blank">{{ page.website }}</a></p>
+        <p>{{ site.data.translations[page.lang].brand.website }}: <a href="{{ page.website }}" target="_blank" rel="noopener">{{ page.website }}</a></p>
         {% endif %}
+      </div>
+      {% endif %}
+      
+      <!-- Related insights section -->
+      {% assign related_insights = site.insights | where: "lang", page.lang | where_exp: "item", "item.related_brands contains page.slug" | limit: 3 %}
+      {% if related_insights.size > 0 %}
+      <div class="related-insights mt-3">
+        <h3>{{ site.data.translations[page.lang].brand.related_insights }}</h3>
+        {% for insight in related_insights %}
+        <div class="sidebar-insight">
+          <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
+          <span class="insight-type">{{ insight.content_type }}</span>
+        </div>
+        {% endfor %}
       </div>
       {% endif %}
     </div>
@@ -100,46 +142,26 @@ layout: default
   <div class="related-brands row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.related_brands }}</h2>
-      {% for related_brand_slug in page.related_brands %}
-        {% assign related_brand = site.brands | where: "slug", related_brand_slug | where: "lang", page.lang | first %}
-        {% if related_brand %}
-        <div class="related-brand-card">
-          <h3><a href="{{ related_brand.url }}">{{ related_brand.title }}</a></h3>
-          <p>{{ related_brand.description }}</p>
-        </div>
-        {% endif %}
-      {% endfor %}
+      <div class="related-brands-grid">
+        {% for related_brand_slug in page.related_brands %}
+          {% assign related_brand = site.brands | where: "slug", related_brand_slug | where: "lang", page.lang | first %}
+          {% if related_brand %}
+          <div class="related-brand-card">
+            {% if related_brand.logo %}
+            <img src="{{ related_brand.logo }}" alt="{{ related_brand.title }} logo" class="related-brand-logo">
+            {% endif %}
+            <h3><a href="{{ related_brand.url }}">{{ related_brand.title }}</a></h3>
+            <p>{{ related_brand.description | truncate: 100 }}</p>
+            {% if related_brand.sectors %}
+            <div class="related-brand-sector">
+              <span class="sector-label">{{ related_brand.sectors[0] }}</span>
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
   {% endif %}
 </div>
-
-<style>
-/* Previous CSS remains the same */
-.brand-founder {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--neutral-700);
-}
-
-.brand-slogan {
-  font-style: italic;
-  color: var(--primary-600);
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-}
-
-.brand-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.brand-meta span {
-  background-color: var(--neutral-100);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-}
-</style>

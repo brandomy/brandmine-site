@@ -5,7 +5,6 @@ layout: default
 <div class="full-width-panel hero-panel">
   <div class="panel-content centered">
     <h1>{{ page.title }}</h1>
-    <p class="hero-subtitle">{{ page.subtitle }}</p>
   </div>
 </div>
 
@@ -13,13 +12,20 @@ layout: default
   <div class="panel-content">
     <div class="insights-container">
       <div class="insights-main">
-        <h2>{{ site.data.translations[page.lang].insights.latest }}</h2>
-        
         <div class="insights-grid">
-          {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse %}
+          
+          {% assign insights = site.insights | where: "lang", page.lang | where: "content_type", page.content_type %}
+          {% if insights.size > 0 %}
+            {% assign insights = insights | sort: "date" | reverse %}
+          {% endif %}
+        
           {% for insight in insights %}
             {% include insight-card.html insight=insight %}
           {% endfor %}
+        </div>
+        
+        <div class="back-link-container">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn-secondary">{{ site.data.translations[page.lang].insights.back_to_insights }}</a>
         </div>
       </div>
       
@@ -27,32 +33,37 @@ layout: default
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].insights.content_types }}</h3>
           <ul class="content-type-list">
-            {% assign content_types = insights | map: "content_type" | uniq %}
+            {% assign all_insights = site.insights | where: "lang", page.lang %}
+            {% assign content_types = all_insights | map: "content_type" | uniq %}
             {% for type in content_types %}
-            <li><a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type | slugify }}/">{{ type }}</a></li>
+            <li class="{% if type == page.content_type %}active{% endif %}">
+              <a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type | slugify }}/">{{ type }}</a>
+            </li>
             {% endfor %}
           </ul>
         </div>
         
-        <!-- Tag taxonomy sections -->
+        <!-- Related tags section -->
         <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].tags.sectors }}</h3>
+          <h3>{{ site.data.translations[page.lang].tags.related_tags }}</h3>
+          
+          {% assign sectors = insights | map: "sectors" | flatten | uniq %}
+          {% if sectors.size > 0 %}
           <div class="tag-list sidebar-tags">
-            {% assign sectors = insights | map: "sectors" | flatten | uniq %}
             {% for sector in sectors %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="tag sector-tag">{{ sector }}</a>
             {% endfor %}
           </div>
-        </div>
-        
-        <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].tags.markets }}</h3>
+          {% endif %}
+          
+          {% assign markets = insights | map: "markets" | flatten | uniq %}
+          {% if markets.size > 0 %}
           <div class="tag-list sidebar-tags">
-            {% assign markets = insights | map: "markets" | flatten | uniq %}
             {% for market in markets %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="tag market-tag">{{ market }}</a>
             {% endfor %}
           </div>
+          {% endif %}
         </div>
       </div>
     </div>

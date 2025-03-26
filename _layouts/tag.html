@@ -16,6 +16,17 @@ layout: default
           {{ page.title }}
         {% endif %}
       </h1>
+      
+      {% if page.verification_required %}
+      <span class="verification-badge">{{ site.data.translations[page.lang].tags.verified }}</span>
+      {% endif %}
+      
+      {% if page.badge_icon %}
+      <div class="badge-icon">
+        <img src="{{ site.baseurl }}/assets/images/badges/{{ page.badge_icon }}" alt="{{ page.title }} badge">
+      </div>
+      {% endif %}
+      
       <p class="tag-description">{{ page.description }}</p>
     </div>
     
@@ -23,28 +34,99 @@ layout: default
       {{ content }}
     </div>
     
-    <div class="tag-posts">
-      <h2>{{ site.data.translations[page.lang].blog.related_content }}</h2>
-      <div class="post-grid">
-        {% assign posts = site.posts | where: "lang", page.lang %}
-        {% for post in posts %}
-          {% if post.tags contains page.tag %}
-            <div class="post-card">
-              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <p class="post-meta">
-                {% if page.lang == 'ru' %}
-                  {{ post.date | date: "%-d %B %Y г. в %H:%M (+0800)" }}
-                {% elsif page.lang == 'zh' %}
-                  {{ post.date | date: "%Y年%-m月%-d日 %H:%M (+0800)" }}
-                {% else %}
-                  {{ post.date | date: "%B %-d, %Y at %H:%M (+0800)" }}
-                {% endif %}
-              </p>
-              <p>{{ post.excerpt }}</p>
-              <a href="{{ post.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].blog.read_more }}</a>
-            </div>
+    <!-- Related brands section -->
+    <div class="related-brands">
+      <h2>{{ site.data.translations[page.lang].tags.related_brands }}</h2>
+      <div class="brand-grid">
+        {% assign related_brands = site.brands | where: "lang", page.lang %}
+        {% assign filtered_brands = "" | split: "" %}
+        
+        {% for brand in related_brands %}
+          {% if page.tag_type == "sector" and brand.sectors contains page.title %}
+            {% assign filtered_brands = filtered_brands | push: brand %}
+          {% elsif page.tag_type == "market" and brand.markets contains page.title %}
+            {% assign filtered_brands = filtered_brands | push: brand %}
+          {% elsif page.tag_type == "attribute" and brand.attributes contains page.title %}
+            {% assign filtered_brands = filtered_brands | push: brand %}
+          {% elsif page.tag_type == "signal" and brand.signals contains page.title %}
+            {% assign filtered_brands = filtered_brands | push: brand %}
           {% endif %}
         {% endfor %}
+        
+        {% if filtered_brands.size > 0 %}
+          {% for brand in filtered_brands limit:6 %}
+          <div class="brand-card">
+            {% if brand.logo %}
+            <img src="{{ brand.logo }}" alt="{{ brand.title }} logo" class="brand-logo">
+            {% endif %}
+            <h3><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h3>
+            <p>{{ brand.description | truncate: 100 }}</p>
+            {% if brand.sectors %}
+            <div class="brand-sector">
+              <span class="sector-label">{{ brand.sectors[0] }}</span>
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          
+          {% if filtered_brands.size > 6 %}
+          <div class="view-all-brands">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/brands/?{{ page.tag_type }}={{ page.tag }}" class="btn btn-primary">
+              {{ site.data.translations[page.lang].tags.view_all_brands }}
+            </a>
+          </div>
+          {% endif %}
+        {% else %}
+          <p class="no-brands-message">{{ site.data.translations[page.lang].tags.no_brands }}</p>
+        {% endif %}
+      </div>
+    </div>
+    
+    <!-- Related insights section -->
+    <div class="tag-insights">
+      <h2>{{ site.data.translations[page.lang].tags.related_insights }}</h2>
+      <div class="insights-grid">
+        {% assign related_insights = site.insights | where: "lang", page.lang %}
+        {% assign filtered_insights = "" | split: "" %}
+        
+        {% for insight in related_insights %}
+          {% if page.tag_type == "sector" and insight.sectors contains page.title %}
+            {% assign filtered_insights = filtered_insights | push: insight %}
+          {% elsif page.tag_type == "market" and insight.markets contains page.title %}
+            {% assign filtered_insights = filtered_insights | push: insight %}
+          {% elsif page.tag_type == "attribute" and insight.attributes contains page.title %}
+            {% assign filtered_insights = filtered_insights | push: insight %}
+          {% elsif page.tag_type == "signal" and insight.signals contains page.title %}
+            {% assign filtered_insights = filtered_insights | push: insight %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if filtered_insights.size > 0 %}
+          {% for insight in filtered_insights limit:3 %}
+          <div class="insight-card">
+            {% if insight.image %}
+            <div class="insight-image">
+              <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}">
+            </div>
+            {% endif %}
+            <div class="insight-type">{{ insight.content_type }}</div>
+            <h3><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h3>
+            <div class="insight-meta">
+              <span class="insight-date">{{ insight.date | date: "%B %-d, %Y" }}</span>
+            </div>
+          </div>
+          {% endfor %}
+          
+          {% if filtered_insights.size > 3 %}
+          <div class="view-all-insights">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?{{ page.tag_type }}={{ page.tag }}" class="btn btn-secondary">
+              {{ site.data.translations[page.lang].tags.view_all_insights }}
+            </a>
+          </div>
+          {% endif %}
+        {% else %}
+          <p class="no-insights-message">{{ site.data.translations[page.lang].tags.no_insights }}</p>
+        {% endif %}
       </div>
     </div>
   </div>

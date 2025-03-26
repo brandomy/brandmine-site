@@ -1,3 +1,4 @@
+```markdown
 ---
 layout: default
 title: Рынки

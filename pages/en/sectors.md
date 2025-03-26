@@ -54,7 +54,7 @@ ref: sectors
 <!-- Country Distribution Panel -->
 <div class="full-width-panel light-panel">
   <div class="panel-content">
-    <h2>Sector Distribution by Country</h2>
+    <h2>Sector Distribution by Market</h2>
     
     <div class="country-sectors-grid">
       <div class="country-sectors-card">

@@ -1,3 +1,6 @@
+## brands.md (Russian)
+
+```markdown
 ---
 layout: default
 title: Бренды
@@ -95,7 +98,7 @@ ref: brands
         <h3>Название бренда</h3>
         <p>Краткое описание бренда, выделяющее его уникальные преимущества и происхождение.</p>
         <div class="brand-meta">
-          <span class="brand-country">Россия</span>
+          <span class="brand-market">Россия</span>
           <span class="brand-sector">Артизанальная еда</span>
         </div>
       </div>
@@ -106,7 +109,7 @@ ref: brands
         <h3>Название бренда</h3>
         <p>Краткое описание бренда, выделяющее его уникальные преимущества и происхождение.</p>
         <div class="brand-meta">
-          <span class="brand-country">Бразилия</span>
+          <span class="brand-market">Бразилия</span>
           <span class="brand-sector">Натуральная косметика</span>
         </div>
       </div>
@@ -116,7 +119,7 @@ ref: brands
         <h3>Название бренда</h3>
         <p>Краткое описание бренда, выделяющее его уникальные преимущества и происхождение.</p>
         <div class="brand-meta">
-          <span class="brand-country">Индия</span>
+          <span class="brand-market">Индия</span>
           <span class="brand-sector">Мода</span>
         </div>
       </div>
@@ -132,11 +135,11 @@ ref: brands
       <p>Используйте наши передовые инструменты поиска и фильтрации для обнаружения брендов по:</p>
       
       <div class="filter-categories">
-        <div class="filter-category">Стране происхождения</div>
-        <div class="filter-category">Категории продукции</div>
+        <div class="filter-category">Рынку происхождения</div>
+        <div class="filter-category">Сектору</div>
         <div class="filter-category">Размеру компании</div>
-        <div class="filter-category">Готовности к экспорту</div>
-        <div class="filter-category">Позиции на рынке</div>
+        <div class="filter-category">Сигналам</div>
+        <div class="filter-category">Атрибутам</div>
       </div>
       
       <div class="cta-container">
@@ -172,3 +175,225 @@ ref: brands
     }, 10000);
   }
 </script>
+```
+
+## markets.md (Russian)
+
+```markdown
+---
+layout: default
+title: Рынки
+permalink: /ru/markets/
+lang: ru
+ref: markets
+---
+
+<!-- Hero Panel -->
+<div class="full-width-panel hero-panel">
+  <div class="panel-content centered">
+    <h1>Рынки БРИКС+</h1>
+    <p class="hero-subtitle">Открытие самых динамичных потребительских экономик мира</p>
+  </div>
+</div>
+
+<!-- Introduction Panel -->
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <p class="lead-text">Страны БРИКС+ представляют собой наиболее значимую неиспользованную возможность на глобальных потребительских рынках - 40% населения мира и 25% мирового ВВП с быстрорастущим средним классом и уникальными экосистемами потребительских брендов.</p>
+  </div>
+</div>
+
+<!-- Featured Markets Panel -->
+<div class="full-width-panel perspective-panel">
+  <div class="panel-content">
+    <div class="content-card">
+      <h2>Ключевые рынки</h2>
+      
+      <div class="market-spotlight">
+        <div class="market-spotlight-item">
+          <h3>Россия</h3>
+          <p>За пределами знакомых глобальных брендов скрываются сотни инновационных российских потребительских компаний с продуктами от крафтовых напитков до натуральной косметики. Каждый регион предлагает свои особенности:</p>
+          
+          <ul class="region-list">
+            <li><strong>Московский регион</strong>: Инновационный центр для бьюти-технологий и премиальных продуктов питания</li>
+            <li><strong>Санкт-Петербург</strong>: Центр крафтовых напитков и брендов с богатым наследием</li>
+            <li><strong>Сибирь и Дальний Восток</strong>: Источник уникальных натуральных ингредиентов и велнес-продуктов</li>
+            <li><strong>Южная Россия</strong>: Сельскохозяйственное богатство, стимулирующее производство специализированных продуктов питания и напитков</li>
+          </ul>
+        </div>
+        
+        <div class="market-spotlight-item">
+          <h3>Бразилия</h3>
+          <p>Яркая потребительская культура Бразилии породила отличительные бренды в моде, натуральных продуктах питания и товарах для дома, отражающие разнообразные культурные влияния страны:</p>
+          
+          <ul class="region-list">
+            <li><strong>Сан-Паулу</strong>: Столица моды и дизайна Латинской Америки</li>
+            <li><strong>Рио-де-Жанейро</strong>: Инновации в брендах красоты и образа жизни</li>
+            <li><strong>Северо-восточный регион</strong>: Традиционные ремесла с современным применением</li>
+            <li><strong>Амазонский регион</strong>: Устойчивые продукты и натуральные ингредиенты</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Map Section Placeholder -->
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <h2>Географическое распределение</h2>
+    <div class="map-container">
+      <div class="map-placeholder">
+        <p>Интерактивная карта скоро будет доступна</p>
+        <p class="map-subtitle">Наша визуализация на базе MapLibre позволит вам исследовать бренды по региону, сектору и другим критериям.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRICS+ Opportunity Panel -->
+<div class="full-width-panel solution-panel">
+  <div class="panel-content">
+    <h2>Возможности БРИКС+</h2>
+    <p>Вместе эти десять стран образуют мощный экономический блок с растущей внутренней торговлей между странами БРИКС:</p>
+    
+    <div class="brics-countries">
+      <div class="primary-countries">
+        <div class="country-badge">Бразилия</div>
+        <div class="country-badge">Россия</div>
+        <div class="country-badge">Индия</div>
+        <div class="country-badge">Китай</div>
+        <div class="country-badge">Южная Африка</div>
+      </div>
+      
+      <div class="plus-indicator">+</div>
+      
+      <div class="plus-countries">
+        <div class="country-badge">Египет</div>
+        <div class="country-badge">Эфиопия</div>
+        <div class="country-badge">Индонезия</div>
+        <div class="country-badge">Иран</div>
+        <div class="country-badge">ОАЭ</div>
+      </div>
+    </div>
+    
+    <p class="opportunity-text">Этот расширенный альянс создает беспрецедентные возможности для брендов по доступу к новым рынкам с дипломатической и торговой поддержкой.</p>
+  </div>
+</div>
+
+<!-- Contact CTA Panel -->
+<div class="full-width-panel cta-panel">
+  <div class="panel-content centered">
+    <h2>Откройте для себя рыночные возможности</h2>
+    <p>Свяжитесь с нами, чтобы узнать больше о рынках БРИКС+ или обсудить конкретные стратегии выхода на рынок.</p>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Связаться с нами</a>
+  </div>
+</div>
+```
+
+## sectors.md (Russian)
+
+```markdown
+---
+layout: default
+title: Секторы
+permalink: /ru/sectors/
+lang: ru
+ref: sectors
+---
+
+<!-- Hero Panel -->
+<div class="full-width-panel hero-panel">
+  <div class="panel-content centered">
+    <h1>Секторы потребительских брендов</h1>
+    <p class="hero-subtitle">Стратегические секторы с глобальным потенциалом роста</p>
+  </div>
+</div>
+
+<!-- Introduction Panel -->
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <p class="lead-text">Brandmine фокусируется на секторах потребительских брендов, демонстрирующих исключительный потенциал для трансграничного роста. Наш опыт начинается с 16 ключевых российских секторов и будет расширяться на другие страны БРИКС+.</p>
+  </div>
+</div>
+
+<!-- Featured Sectors Panel -->
+<div class="full-width-panel solution-panel">
+  <div class="panel-content">
+    <div class="content-card">
+      <h2>Ключевые секторы - Россия</h2>
+      
+      <div class="sector-spotlight">
+        <div class="sector-spotlight-item">
+          <h3>Отели и курорты</h3>
+          <p>От исторических городских отелей до удаленных природных курортов, российские бутик-отели предлагают уникальный культурный опыт. Эти объекты представляют богатые возможности для сторителлинга и являются как привлекательными потребительскими предложениями, так и перспективными инвестиционными возможностями.</p>
+        </div>
+        
+        <div class="sector-spotlight-item">
+          <h3>Артизанальные спиртные напитки и водка</h3>
+          <p>Российское движение крафтовых дистиллерий сочетает многовековые традиции с инновационными подходами, создавая уникальные продукты с мощным потенциалом для повествования. Мелкосерийные производители возрождают традиционные методы и подчеркивают региональную идентичность.</p>
+        </div>
+        
+        <div class="sector-spotlight-item">
+          <h3>Гурманские продукты питания</h3>
+          <p>Разнообразное кулинарное наследие России породило специализированные продовольственные бренды, демонстрирующие уникальные ингредиенты и традиционные рецепты. Эти продукты привлекают глобальных потребителей, ищущих аутентичный вкусовой опыт и отличительные кулинарные истории.</p>
+        </div>
+      </div>
+      
+      <div class="cta-container centered">
+        <a href="{{ site.baseurl }}/ru/russian-sectors/" class="btn-primary">Исследовать все 16 российских секторов</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Country Distribution Panel -->
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <h2>Распределение секторов по рынкам</h2>
+    
+    <div class="country-sectors-grid">
+      <div class="country-sectors-card">
+        <div class="country-flag ru-flag"></div>
+        <h3>Россия</h3>
+        <p>16 ключевых секторов, включая отели и курорты, артизанальные спиртные напитки и гурманские продукты питания</p>
+      </div>
+      
+      <div class="country-sectors-card">
+        <div class="country-flag br-flag"></div>
+        <h3>Бразилия</h3>
+        <p>12 ключевых секторов с сильными позициями в моде, натуральных напитках и органических продуктах</p>
+      </div>
+      
+      <div class="country-sectors-card">
+        <div class="country-flag in-flag"></div>
+        <h3>Индия</h3>
+        <p>14 ключевых секторов, представляющих текстиль, аюрведические товары для здоровья и гурманскую пищу</p>
+      </div>
+      
+      <div class="country-sectors-card">
+        <div class="country-flag cn-flag"></div>
+        <h3>Китай</h3>
+        <p>16 ключевых секторов, включая традиционные лекарства, керамику и специализированные чаи</p>
+      </div>
+      
+      <div class="country-sectors-card">
+        <div class="country-flag za-flag"></div>
+        <h3>Южная Африка</h3>
+        <p>10 ключевых секторов с сильными позициями в винах, ботанических продуктах и ювелирных изделиях</p>
+      </div>
+    </div>
+    
+    <p class="future-expansion centered">В будущем будут охвачены Египет, Эфиопия, Индонезия, Иран и ОАЭ</p>
+  </div>
+</div>
+
+<!-- Contact CTA Panel -->
+<div class="full-width-panel cta-panel">
+  <div class="panel-content centered">
+    <h2>Интересует конкретный сектор?</h2>
+    <p>Свяжитесь с нами, чтобы узнать больше о нашем исследовании секторов или обсудить возможности в определенной категории продуктов.</p>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Связаться с нами</a>
+  </div>
+</div>
+```

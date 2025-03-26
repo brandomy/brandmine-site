@@ -7,8 +7,8 @@ layout: discover
   {% for sector in sector_tags %}
   <div class="sector-card">
     <div class="sector-icon">
-      {% if sector.icon %}
-      <img src="{{ sector.icon | relative_url }}" alt="{{ sector.title }} icon">
+      {% if sector.badge_icon %}
+      <img src="{{ '/assets/images/badges/' | append: sector.badge_icon | relative_url }}" alt="{{ sector.title }} icon">
       {% else %}
       <div class="placeholder-icon"></div>
       {% endif %}

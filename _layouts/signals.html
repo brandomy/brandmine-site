@@ -2,13 +2,13 @@
 layout: discover
 ---
 <div class="signals-grid">
-  {% assign signal_tags = site.tags | where: "tag_type", "growth" | where: "lang", page.lang %}
+  {% assign signal_tags = site.tags | where: "tag_type", "signal" | where: "lang", page.lang %}
   
   {% for signal in signal_tags %}
   <div class="signal-card">
     <div class="signal-icon">
-      {% if signal.icon %}
-      <img src="{{ signal.icon | relative_url }}" alt="{{ signal.title }} icon">
+      {% if signal.badge_icon %}
+      <img src="{{ '/assets/images/badges/' | append: signal.badge_icon | relative_url }}" alt="{{ signal.title }} icon">
       {% else %}
       <div class="placeholder-icon"></div>
       {% endif %}
