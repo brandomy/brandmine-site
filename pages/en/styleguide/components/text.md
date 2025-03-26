@@ -14,7 +14,7 @@ Our text components provide specialized typography treatments beyond basic HTML 
 
 The hero subtitle provides secondary messaging within hero sections, with lighter weight and generous spacing:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--primary-50); padding: var(--space-6); text-align: center;">
       <h1 style="margin-top: 0; margin-bottom: var(--space-4); font-size: 3rem;">Main Hero Heading</h1>
@@ -22,17 +22,15 @@ The hero subtitle provides secondary messaging within hero sections, with lighte
       <a href="#" class="btn-primary">Call to Action</a>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="hero-panel">
-  <div class="panel-content">
-    <h1>Main Hero Heading</h1>
-    <p class="hero-subtitle">The hero subtitle expands on the main heading with additional context, creating a clear hierarchy while maintaining visual connection.</p>
-    <a href="#" class="btn-primary">Call to Action</a>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="hero-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h1&gt;Main Hero Heading&lt;/h1&gt;
+    &lt;p class="hero-subtitle"&gt;The hero subtitle expands on the main heading with additional context, creating a clear hierarchy while maintaining visual connection.&lt;/p&gt;
+    &lt;a href="#" class="btn-primary"&gt;Call to Action&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -40,25 +38,24 @@ The hero subtitle provides secondary messaging within hero sections, with lighte
 
 Lead text provides an introduction or summary at the beginning of a section, using larger font size and improved spacing:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="padding: var(--space-4);">
       <h2 style="margin-top: 0; margin-bottom: var(--space-4);">Section Title</h2>
+      <p class="lead-text" style="font-size: 1.125rem; line-height: 1.6; margin-bottom: var(--space-8); max-width: 800px; margin-left: auto; margin-right: auto; color: var(--neutral-700);">Lead text introduces
       <p class="lead-text" style="font-size: 1.125rem; line-height: 1.6; margin-bottom: var(--space-8); max-width: 800px; margin-left: auto; margin-right: auto; color: var(--neutral-700);">Lead text introduces a section with slightly larger font size and more generous line height, creating visual emphasis while maintaining readability. It's perfect for summarizing content that follows.</p>
       <p>Regular paragraph text follows the lead text, creating a clear hierarchy between the introductory content and the detailed information that follows.</p>
       <p>Additional paragraphs continue the content with standard typography.</p>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="panel-content">
-  <h2>Section Title</h2>
-  <p class="lead-text">Lead text introduces a section with slightly larger font size and more generous line height, creating visual emphasis while maintaining readability. It's perfect for summarizing content that follows.</p>
-  <p>Regular paragraph text follows the lead text, creating a clear hierarchy between the introductory content and the detailed information that follows.</p>
-  <p>Additional paragraphs continue the content with standard typography.</p>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="panel-content"&gt;
+  &lt;h2&gt;Section Title&lt;/h2&gt;
+  &lt;p class="lead-text"&gt;Lead text introduces a section with slightly larger font size and more generous line height, creating visual emphasis while maintaining readability. It's perfect for summarizing content that follows.&lt;/p&gt;
+  &lt;p&gt;Regular paragraph text follows the lead text, creating a clear hierarchy between the introductory content and the detailed information that follows.&lt;/p&gt;
+  &lt;p&gt;Additional paragraphs continue the content with standard typography.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -66,7 +63,7 @@ Lead text provides an introduction or summary at the beginning of a section, usi
 
 Within panels, lead text receives special treatment with a slightly larger size:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--neutral-100); padding: var(--space-6); border-radius: 0.5rem;">
       <h2 style="margin-top: 0; text-align: center; margin-bottom: var(--space-4);">Panel Section Title</h2>
@@ -74,17 +71,15 @@ Within panels, lead text receives special treatment with a slightly larger size:
       <p>Regular paragraph text follows with standard sizing and spacing.</p>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Panel Section Title</h2>
-    <p class="lead-text">Panel lead text uses slightly larger sizing than standard lead text, creating greater emphasis within panel contexts. It helps establish the panel's focus and guides users through complex content sections.</p>
-    <p>Regular paragraph text follows with standard sizing and spacing.</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel light-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h2&gt;Panel Section Title&lt;/h2&gt;
+    &lt;p class="lead-text"&gt;Panel lead text uses slightly larger sizing than standard lead text, creating greater emphasis within panel contexts. It helps establish the panel's focus and guides users through complex content sections.&lt;/p&gt;
+    &lt;p&gt;Regular paragraph text follows with standard sizing and spacing.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -92,7 +87,7 @@ Within panels, lead text receives special treatment with a slightly larger size:
 
 Conclusion text provides visual separation for summary content with a subtle top border:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="padding: var(--space-4);">
       <p>Regular paragraph content precedes the conclusion text.</p>
@@ -100,15 +95,13 @@ Conclusion text provides visual separation for summary content with a subtle top
       <p class="conclusion-text" style="font-size: 1.125rem; border-top: 1px solid rgba(0, 0, 0, 0.1); margin-top: var(--space-8); padding-top: var(--space-6);">Conclusion text summarizes key points or provides a final thought, separated from the main content with a subtle divider. This visual distinction helps readers identify summary information and next steps.</p>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="panel-content">
-  <p>Regular paragraph content precedes the conclusion text.</p>
-  <p>Several paragraphs may provide detailed information.</p>
-  <p class="conclusion-text">Conclusion text summarizes key points or provides a final thought, separated from the main content with a subtle divider. This visual distinction helps readers identify summary information and next steps.</p>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="panel-content"&gt;
+  &lt;p&gt;Regular paragraph content precedes the conclusion text.&lt;/p&gt;
+  &lt;p&gt;Several paragraphs may provide detailed information.&lt;/p&gt;
+  &lt;p class="conclusion-text"&gt;Conclusion text summarizes key points or provides a final thought, separated from the main content with a subtle divider. This visual distinction helps readers identify summary information and next steps.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -163,4 +156,3 @@ All text components are responsive, adapting to different screen sizes:
     <p class="conclusion-text">Conclusion text summarizing key points...</p>
   </div>
 </div>
-```

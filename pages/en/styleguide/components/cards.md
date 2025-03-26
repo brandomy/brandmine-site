@@ -14,7 +14,7 @@ Our cards system provides flexible containers for content with consistent stylin
 
 The standard card provides a subtle container with a light background, border, and shadow:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="card" style="background-color: var(--neutral-100); padding: var(--space-4); border-radius: 0.25rem; border: 1px solid var(--neutral-200); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); max-width: 400px;">
       <h3 style="margin-top: 0;">Card Title</h3>
@@ -22,15 +22,13 @@ The standard card provides a subtle container with a light background, border, a
       <a href="#" class="btn-primary">Action</a>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="card">
-  <h3>Card Title</h3>
-  <p>This is a basic card component with subtle styling. It works well for containing related content and creating visual separation from surrounding elements.</p>
-  <a href="#" class="btn-primary">Action</a>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="card"&gt;
+  &lt;h3&gt;Card Title&lt;/h3&gt;
+  &lt;p&gt;This is a basic card component with subtle styling. It works well for containing related content and creating visual separation from surrounding elements.&lt;/p&gt;
+  &lt;a href="#" class="btn-primary"&gt;Action&lt;/a&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -38,7 +36,7 @@ The standard card provides a subtle container with a light background, border, a
 
 Content cards have minimal styling with transparent backgrounds, making them flexible for various contexts:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="content-card" style="max-width: 500px;">
       <h3 style="margin-top: 0;">Content Card</h3>
@@ -46,15 +44,13 @@ Content cards have minimal styling with transparent backgrounds, making them fle
       <p>They're often used for text-heavy sections where visual separation is less important than readability.</p>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="content-card">
-  <h3>Content Card</h3>
-  <p>Content cards use a transparent background with no shadow, making them perfect for content that should blend with the surrounding area while maintaining consistent spacing.</p>
-  <p>They're often used for text-heavy sections where visual separation is less important than readability.</p>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="content-card"&gt;
+  &lt;h3&gt;Content Card&lt;/h3&gt;
+  &lt;p&gt;Content cards use a transparent background with no shadow, making them perfect for content that should blend with the surrounding area while maintaining consistent spacing.&lt;/p&gt;
+  &lt;p&gt;They're often used for text-heavy sections where visual separation is less important than readability.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -62,7 +58,7 @@ Content cards have minimal styling with transparent backgrounds, making them fle
 
 White content cards provide higher contrast and more emphasis, especially on colored backgrounds:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--primary-100); padding: var(--space-6); border-radius: 0.5rem;">
       <div class="white-content-card" style="background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); padding: var(--space-6);">
@@ -72,19 +68,17 @@ White content cards provide higher contrast and more emphasis, especially on col
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="full-width-panel solution-panel">
-  <div class="panel-content">
-    <div class="white-content-card">
-      <h3>White Content Card</h3>
-      <p>White content cards provide stronger visual contrast against colored backgrounds. They use deeper shadows and more padding to create a sense of elevation.</p>
-      <p>These cards are perfect for featuring important content on colored panel backgrounds.</p>
-    </div>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel solution-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;div class="white-content-card"&gt;
+      &lt;h3&gt;White Content Card&lt;/h3&gt;
+      &lt;p&gt;White content cards provide stronger visual contrast against colored backgrounds. They use deeper shadows and more padding to create a sense of elevation.&lt;/p&gt;
+      &lt;p&gt;These cards are perfect for featuring important content on colored panel backgrounds.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -92,7 +86,7 @@ White content cards provide higher contrast and more emphasis, especially on col
 
 A specialized card variant for displaying team member profiles:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="team-member" style="flex: 1; min-width: 300px; background-color: white; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); padding: var(--space-8); border: 1px solid var(--neutral-200); max-width: 300px;">
       <img src="/api/placeholder/180/180" alt="Team member" class="team-photo" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-6); border: 3px solid var(--primary-400); display: block; margin-left: auto; margin-right: auto;">
@@ -108,25 +102,23 @@ A specialized card variant for displaying team member profiles:
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="team-member">
-  <img src="/path/to/photo.jpg" alt="Jane Smith" class="team-photo">
-  <h3>Jane Smith</h3>
-  <p class="team-title">Chief Marketing Officer</p>
-  <ul>
-    <li>Marketing strategy development</li>
-    <li>Brand positioning</li>
-    <li>International market expansion</li>
-  </ul>
-  <div class="team-member-linkedin">
-    <a href="https://linkedin.com/in/janesmith">
-      <i class="fab fa-linkedin"></i>
-    </a>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="team-member"&gt;
+  &lt;img src="/path/to/photo.jpg" alt="Jane Smith" class="team-photo"&gt;
+  &lt;h3&gt;Jane Smith&lt;/h3&gt;
+  &lt;p class="team-title"&gt;Chief Marketing Officer&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Marketing strategy development&lt;/li&gt;
+    &lt;li&gt;Brand positioning&lt;/li&gt;
+    &lt;li&gt;International market expansion&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="team-member-linkedin"&gt;
+    &lt;a href="https://linkedin.com/in/janesmith"&gt;
+      &lt;i class="fab fa-linkedin"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -134,7 +126,7 @@ A specialized card variant for displaying team member profiles:
 
 Cards specifically designed for displaying features or benefits:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="feature-item" style="display: flex; flex-direction: column; text-align: center; align-items: center; max-width: 300px; margin: 0 auto;">
       <div class="feature-icon" style="background-color: white; color: var(--secondary-700); width: 4rem; height: 4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4);">
@@ -144,17 +136,15 @@ Cards specifically designed for displaying features or benefits:
       <p style="color: var(--secondary-700); font-size: 0.95rem; width: 100%; text-align: center; margin-left: auto; margin-right: auto;">This feature card highlights a key benefit or feature with an icon, title, and descriptive text.</p>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="feature-item">
-  <div class="feature-icon">
-    <svg><!-- Icon SVG --></svg>
-  </div>
-  <h3>Feature Title</h3>
-  <p>This feature card highlights a key benefit or feature with an icon, title, and descriptive text.</p>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="feature-item"&gt;
+  &lt;div class="feature-icon"&gt;
+    &lt;svg&gt;&lt;!-- Icon SVG --&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;h3&gt;Feature Title&lt;/h3&gt;
+  &lt;p&gt;This feature card highlights a key benefit or feature with an icon, title, and descriptive text.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -162,7 +152,7 @@ Cards specifically designed for displaying features or benefits:
 
 Cards for presenting solutions or steps in a process:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="solution-item" style="display: flex; align-items: flex-start; margin-bottom: var(--space-6); background-color: var(--primary-50); padding: var(--space-4); border-radius: 0.5rem; border-left: 4px solid var(--primary-400); max-width: 500px;">
       <div class="solution-number" style="background-color: var(--primary-400); color: white; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; margin-right: var(--space-4); flex-shrink: 0;">1</div>
@@ -172,17 +162,15 @@ Cards for presenting solutions or steps in a process:
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="solution-item">
-  <div class="solution-number">1</div>
-  <div class="solution-content">
-    <h3>Solution Title</h3>
-    <p>This solution card presents a numbered step or solution with a title and description, creating a clear visual hierarchy for processes.</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="solution-item"&gt;
+  &lt;div class="solution-number"&gt;1&lt;/div&gt;
+  &lt;div class="solution-content"&gt;
+    &lt;h3&gt;Solution Title&lt;/h3&gt;
+    &lt;p&gt;This solution card presents a numbered step or solution with a title and description, creating a clear visual hierarchy for processes.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 

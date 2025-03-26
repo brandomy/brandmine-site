@@ -1,0 +1,215 @@
+# Development Journal: Hero Panel System & Multilingual Fixes
+**Date**: March 24, 2025
+
+## 1. Problem Statement
+
+We needed to address several related design and functionality issues in the Brandmine Jekyll site:
+
+1. Create a consistent yet flexible hero panel system across the site
+2. Eliminate spacing issues between consecutive hero panels
+3. Add support for impact statements with large display text
+4. Fix mobile display issues with large text
+5. Resolve language selector duplication issues
+
+## 2. Approach
+
+We developed a comprehensive solution with these key elements:
+
+1. **Modular Hero Panel System**: Created a component-based approach with interchangeable variants
+2. **CSS Organization**: Separated hero panel styles from base panel styles to maintain modularity
+3. **CSS Optimization**: Used CSS variables for spacing and typography to ensure consistency
+4. **Language Selector Fix**: Implemented proper `ref:` attributes across multilingual pages
+
+## 3. Implementation Details
+
+### Hero Panel System
+Created a new `hero-panels.css` file with a modular structure:
+
+```css
+/* Base hero panel */
+.hero-panel {
+  position: relative;
+  padding: var(--space-12) 0;
+  background-color: var(--primary-700);
+  color: white;
+  margin-bottom: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}
+
+/* Color variants */
+.hero-panel--primary {...}
+.hero-panel--secondary {...}
+.hero-panel--accent {...}
+.hero-panel--light {...}
+
+/* Layout variants */
+.hero-panel--centered {...}
+.hero-panel--left {...}
+.hero-panel--right {...}
+
+/* Size variants */
+.hero-panel--large {...}
+.hero-panel--small {...}
+
+/* Special effect variants */
+.hero-panel--pattern {...}
+.hero-panel--gradient {...}
+
+/* Impact statement styling */
+.hero-panel--display .display-text {...}
+```
+
+### Fix for Panel Spacing
+
+Added CSS to eliminate the white space between consecutive panels:
+
+```css
+/* Remove margin between consecutive hero panels */
+.hero-image-panel + .hero-panel,
+.hero-panel + .hero-panel {
+  margin-top: 0 !important;
+}
+
+/* Alternative solution */
+.hero-panel--no-top-margin {
+  margin-top: 0 !important;
+}
+```
+
+### Mobile Responsiveness for Impact Statements
+
+Added responsive typography rules for handling large display text on small screens:
+
+```css
+/* Ensure display text never overflows */
+.hero-panel--display .display-text {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Progressive downsizing */
+@media (max-width: 767px) {
+  .hero-panel--display .display-text {
+    font-size: var(--text-5xl);
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-panel--display .display-text {
+    font-size: var(--text-4xl);
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-panel--display .display-text {
+    font-size: var(--text-3xl);
+  }
+}
+```
+
+### Multilingual Language Selector Fix
+
+Fixed the language selector duplication issue by adding the `ref:` attribute to multilingual pages:
+
+```yaml
+---
+layout: default
+title: Brandmine Insights
+permalink: /en/insights/
+lang: en
+ref: insights
+---
+```
+
+## 4. Decisions Made
+
+1. **Component-Based Architecture**: We chose a modular approach with mix-and-match CSS classes rather than creating many specific components. This maximizes flexibility while maintaining design consistency.
+
+2. **CSS Variable Integration**: Leveraged the existing CSS variables for spacing (`--space-X`) and typography (`--text-X`) to ensure the hero panel system integrated seamlessly with the site's design tokens.
+
+3. **Responsible Hero Panel Classification**: Decided that using hero panel components for impact statements was appropriate, as it reuses existing patterns rather than creating new components.
+
+4. **Mobile-First Responsive Design**: Prioritized responsive behavior with progressive enhancement for different screen sizes.
+
+5. **Consistent Language Selector Approach**: Standardized the multilingual linking approach using the `ref:` system throughout the site.
+
+## 5. Resources
+
+### Multilingual Example Templates
+```yaml
+# English
+---
+layout: default
+title: Discover Brands
+permalink: /en/discover/
+lang: en
+ref: discover
+---
+
+# Russian
+---
+layout: default
+title: Откройте для себя бренды
+permalink: /ru/discover/
+lang: ru
+ref: discover
+---
+
+# Chinese
+---
+layout: default
+title: 发现品牌
+permalink: /zh/discover/
+lang: zh
+ref: discover
+---
+```
+
+### Hero Panel Examples
+```html
+<!-- Standard Hero Panel -->
+<div class="full-width-panel hero-panel">
+  <div class="panel-content centered">
+    <h1>Page Title</h1>
+    <p class="hero-subtitle">Supporting subtitle text</p>
+  </div>
+</div>
+
+<!-- Impact Statement Panel -->
+<div class="full-width-panel hero-panel hero-panel--secondary hero-panel--display hero-panel--pattern">
+  <div class="panel-content centered">
+    <p class="display-text">BUILD CONNECTIONS</p>
+    <p class="hero-subtitle">Brandmine connects you with innovative brands...</p>
+  </div>
+</div>
+```
+
+## 6. Insights & Learning
+
+1. **CSS Organization**: Separating concerns in CSS (base panels vs. hero panels) improved maintainability while reducing duplication.
+
+2. **Multilingual Architecture**: The `ref:` attribute is the cornerstone of Jekyll's multilingual implementation - it connects pages across languages.
+
+3. **Responsive Typography**: Using responsive typography creates a better user experience across devices, particularly for large display text.
+
+4. **Component Reusability**: A well-designed component system can be extended and repurposed (like using hero panels for impact statements) rather than creating specialized one-off components.
+
+5. **Browser Behavior**: White space, comments, and even empty lines between HTML elements can sometimes affect rendering, particularly with adjacent elements.
+
+## 7. Next Actions
+
+1. Apply the `ref:` attribute to all remaining multilingual pages to ensure consistent language selector behavior.
+
+2. Consider creating standard pattern variants (like diagonal stripes, dot patterns) for use with the hero panel system.
+
+3. Review mobile behavior of all hero panels across the site to ensure consistent display across devices.
+
+4. Document the hero panel system for future maintainers, including examples of all variants.
+
+5. Implement tracking to gather data on which hero panel styles drive the most engagement.

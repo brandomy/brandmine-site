@@ -1,0 +1,178 @@
+# 2025-03-26 Development Journal: Styleguide Code Example Standardization
+
+## 1. Problem Statement
+
+The Brandmine styleguide had inconsistent code example formatting across multiple pages, resulting in:
+- Raw code blocks displayed instead of properly formatted and syntax-highlighted code
+- Inconsistent visual presentation of examples
+- Missing language indicators for code blocks
+- Improperly escaped HTML in code examples
+- Mixed use of div structures and liquid includes for similar functionality
+
+## 2. Approach
+
+We implemented a comprehensive solution with two compatible approaches:
+
+1. **Include-Based Approach**: Using the styleguide/code-example.html include for straightforward examples
+2. **Direct HTML Approach**: Using the example-wrapper/example-preview/example-code structure for complex examples with custom styling
+
+Both approaches ensure consistent code display with language indicators, proper escaping, and syntax highlighting, while maintaining the visual hierarchy of the styleguide.
+
+## 3. Implementation Details
+
+### Code Example Include
+
+The primary method uses a Jekyll include to generate consistent code examples:
+
+```html
+{% include styleguide/code-example.html 
+   language="html" 
+   preview=true
+   code='<div class="example">Your HTML here</div>' 
+%}
+```
+
+This include generates:
+- A preview section that renders the actual HTML/CSS
+- A code section that displays the syntax-highlighted, escaped code
+- A language indicator showing what language the code is in
+
+### CSS Structure Updates
+
+We ensured consistent styling by standardizing CSS for code examples:
+
+```css
+.example-wrapper {
+  margin: var(--space-6) 0;
+  border: 1px solid var(--neutral-200);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.example-preview {
+  padding: var(--space-4);
+  background-color: var(--neutral-50);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.example-code {
+  position: relative;
+  background-color: var(--neutral-800);
+  overflow: hidden;
+}
+
+.code-language {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--neutral-400);
+  z-index: 1;
+}
+```
+
+### File Updates
+
+We systematically reviewed and updated all styleguide pages:
+
+1. **Foundation pages**:
+   - typography.md
+   - colors.md
+   - spacing.md
+   - layouts.md
+   - brand-identity.md
+
+2. **Component pages**:
+   - buttons.md
+   - cards.md
+   - forms.md
+   - text.md
+
+3. **Pattern pages**:
+   - tags.md
+   - navigation.md
+   - multilingual.md
+
+4. **Homepage**:
+   - index.html
+
+## 4. Decisions Made
+
+1. **Dual Implementation Approach**: We maintained two compatible approaches (includes and direct HTML) to handle both simple and complex examples while ensuring consistent styling.
+
+2. **String Escaping Logic**: For includes we used unescaped HTML with single quotes around the code parameter, while for direct HTML we properly escaped all HTML entities.
+
+3. **Language Support**: Added explicit language indicators for all code blocks including HTML, CSS, JavaScript, YAML, and plain text.
+
+4. **Preview Toggle**: Implemented a `preview` parameter allowing control over whether code examples should show a visual preview or just the code.
+
+5. **Backward Compatibility**: Updated existing CSS to ensure old examples would still display correctly during the transition.
+
+## 5. Resources
+
+### Updated Files
+
+- **Example Include**: `_includes/styleguide/code-example.html`
+- **CSS Updates**: Added to `styleguide.css` 
+- **Styleguide Pages**: 10+ markdown files updated with consistent code example formatting
+
+### Documentation Created
+
+```markdown
+# Instructions for Updating Styleguide Pages
+
+When reviewing and updating styleguide pages, follow these steps:
+
+1. **Identify code example formats**: Look for examples using outdated `<div class="example">` structure with triple backticks.
+
+2. **Replace with proper format**: Use one of these patterns:
+
+   **For standard code examples**:
+   ```markdown
+   {% include styleguide/code-example.html language="html" preview=true
+   code='<div class="example">Your HTML here</div>' %}
+   ```
+
+   **For complex examples with custom styling**:
+   ```markdown
+   <div class="example-wrapper">
+     <div class="example-preview">
+       <!-- Visual example content -->
+     </div>
+     <div class="example-code">
+       <span class="code-language">html</span>
+       <pre><code class="language-html">&lt;div&gt;Your escaped HTML here&lt;/div&gt;</code></pre>
+     </div>
+   </div>
+   ```
+```
+
+## 6. Insights & Learning
+
+1. **Consistent Patterns Matter**: Standardizing how code examples are displayed significantly improves the user experience of a design system.
+
+2. **Escaping Challenges**: String escaping in Jekyll templates requires careful handling, especially when dealing with HTML in different contexts (includes vs. direct HTML).
+
+3. **Dual Systems Trade-off**: Maintaining two compatible approaches (includes and direct HTML) increases flexibility but requires additional documentation and care to ensure consistency.
+
+4. **Syntax Highlighting Importance**: Proper language indicators and syntax highlighting dramatically improve code readability and user comprehension.
+
+5. **Incremental Updates**: The systematic approach of updating one file at a time allowed for careful testing and validation at each step.
+
+## 7. Next Actions
+
+1. **Update Remaining Pages**: Review any other pages not covered in this session and update them to the new format.
+
+2. **Create Component Documentation**: Document the code example components in the styleguide itself.
+
+3. **Implement Copy Button**: Add functionality to copy code examples to clipboard.
+
+4. **Add Automated Testing**: Create tests to verify code examples are properly formatted.
+
+5. **Create Contribution Guidelines**: Document the proper way to add new code examples to the styleguide.
+
+6. **Consider Syntax Highlighting Enhancements**: Evaluate additional syntax highlighting options for better code visualization.

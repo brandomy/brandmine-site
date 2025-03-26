@@ -14,23 +14,8 @@ Our multilingual approach enables Brandmine to serve content in English, Russian
 
 The site uses a language-first URL structure that organizes content by language before content type:
 
-<div class="example">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
-      <code>example.com/en/brands/</code>
-      <div>English brands page</div>
-      
-      <code>example.com/ru/brands/</code>
-      <div>Russian brands page</div>
-      
-      <code>example.com/zh/brands/</code>
-      <div>Chinese brands page</div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-```
-# Jekyll directory structure
+{% include styleguide/code-example.html language="text" preview=true
+code='# Jekyll directory structure
 pages/
 ├── en/
 │   ├── index.html
@@ -46,38 +31,23 @@ pages/
     ├── index.html
     ├── brands.md
     ├── sectors.md
-    └── about.md
-```
-  </div>
-</div>
+    └── about.md' %}
 
 ## Typography System
 
 Our typography system automatically adapts to the page language using language-specific font stacks:
 
-<div class="example">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
-      <strong>English/Russian:</strong>
-      <div>PT Serif (headings), PT Sans (body text)</div>
-      
-      <strong>Chinese:</strong>
-      <div>Noto Serif SC (headings), Noto Sans SC (body text)</div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-```css
-:root {
+{% include styleguide/code-example.html language="css" preview=true
+code=':root {
   /* Language-specific font definitions */
-  --font-heading-en: 'PT Serif', Georgia, serif;
-  --font-body-en: 'PT Sans', Arial, sans-serif;
+  --font-heading-en: "PT Serif", Georgia, serif;
+  --font-body-en: "PT Sans", Arial, sans-serif;
   
-  --font-heading-ru: 'PT Serif', Georgia, serif;
-  --font-body-ru: 'PT Sans', Arial, sans-serif;
+  --font-heading-ru: "PT Serif", Georgia, serif;
+  --font-body-ru: "PT Sans", Arial, sans-serif;
   
-  --font-heading-zh: 'Noto Serif SC', 'Songti SC', 'FangSong', 'STSong', serif;
-  --font-body-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-heading-zh: "Noto Serif SC", "Songti SC", "FangSong", "STSong", serif;
+  --font-body-zh: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   
   /* Default to English fonts */
   --font-heading: var(--font-heading-en);
@@ -94,45 +64,25 @@ html[lang="ru"] {
 html[lang="zh"] {
   --font-heading: var(--font-heading-zh);
   --font-body: var(--font-body-zh);
-}
-```
-  </div>
-</div>
+}' %}
 
 ## Language Selector
 
 The language selector appears in the site header and footer, allowing users to switch between languages:
 
-<div class="example">
-  <div class="example-preview">
-    <div style="background-color: var(--primary-400); padding: var(--space-4); display: flex; justify-content: center;">
-      <div style="display: flex; gap: var(--space-1);">
-        <a href="#" style="color: white; text-decoration: none; opacity: 1; font-weight: bold;">EN</a>
-        <a href="#" style="color: white; text-decoration: none; opacity: 0.75;">RU</a>
-        <a href="#" style="color: white; text-decoration: none; opacity: 0.75;">中文</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-```html
-<div class="language-selector">
+{% include styleguide/code-example.html language="html" preview=true
+code='<div class="language-selector">
   <a href="/en/" class="active">EN</a>
   <a href="/ru/">RU</a>
   <a href="/zh/">中文</a>
-</div>
-```
-  </div>
-</div>
+</div>' %}
 
 ## Translations System
 
 Content strings are managed through translation files in the Jekyll `_data` directory:
 
-<div class="example">
-  <div class="example-code">
-```yaml
-# _data/translations/en.yml
+{% include styleguide/code-example.html language="yaml" preview=false
+code='# _data/translations/en.yml
 site:
   title: "Brandmine"
   description: "Amplifying leading consumer brands of the BRICS+"
@@ -166,32 +116,14 @@ nav:
   brands: "品牌"
   sectors: "行业"
   about: "关于我们"
-  contact: "联系我们"
-```
-  </div>
-</div>
+  contact: "联系我们"' %}
 
 ## Language-Specific Adjustments
 
 Some elements require language-specific adjustments to accommodate different text lengths or writing systems:
 
-<div class="example">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
-      <strong>Chinese typography:</strong>
-      <div>Increased line height for better readability</div>
-      
-      <strong>Russian text:</strong>
-      <div>Accommodations for longer words and phrases</div>
-      
-      <strong>Grid adjustments:</strong>
-      <div>Font size adjustments for different writing systems</div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-```css
-/* Chinese typography adjustments */
+{% include styleguide/code-example.html language="css" preview=true
+code='/* Chinese typography adjustments */
 html[lang="zh"] h1, 
 html[lang="zh"] h2, 
 html[lang="zh"] h3, 
@@ -206,42 +138,27 @@ html[lang="zh"] h6 {
 .grid-container[lang="zh"] {
   /* Accommodate longer text in some languages */
   font-size: 0.95rem;
-}
-```
-  </div>
-</div>
+}' %}
 
 ## URL Structure and Templates
 
 Each page includes language-specific front matter to control permalinks and language settings:
 
-<div class="example">
-  <div class="example-code">
-```yaml
----
+{% include styleguide/code-example.html language="yaml" preview=false
+code='---
 layout: default
 title: About Us
 description: About the Brandmine platform and team
 permalink: /en/about/
 lang: en
----
-```
-  </div>
-</div>
+---' %}
 
 ## Helper Classes
 
 For mixing languages within a page, specific helper classes are available:
 
-<div class="example">
-  <div class="example-preview">
-    <p><span class="zh" style="font-family: 'Noto Serif SC', serif;">中文文本</span> mixed with English text.</p>
-    <p><span class="ru" style="font-family: 'PT Serif', serif;">Русский текст</span> mixed with English text.</p>
-  </div>
-  
-  <div class="example-code">
-```html
-<!-- Chinese serif font regardless of page language -->
+{% include styleguide/code-example.html language="html" preview=true
+code='<!-- Chinese serif font regardless of page language -->
 <span class="zh">中文文本</span>
 
 <!-- Chinese sans-serif font -->
@@ -251,19 +168,14 @@ For mixing languages within a page, specific helper classes are available:
 <span class="ru">Русский текст</span>
 
 <!-- Russian sans-serif font -->
-<span class="ru-sans">Русский текст</span>
-```
-  </div>
-</div>
+<span class="ru-sans">Русский текст</span>' %}
 
 ## Content Tagging
 
 Content tags are consistently structured across languages:
 
-<div class="example">
-  <div class="example-code">
-```yaml
-# _data/tag_translations.yml
+{% include styleguide/code-example.html language="yaml" preview=false
+code='# _data/tag_translations.yml
 
 # English
 hotels-resorts:
@@ -274,30 +186,22 @@ hotels-resorts:
 artisanal-excellence:
   en: "Artisanal Excellence"
   ru: "Мастерство Ремесленников"
-  zh: "工艺精湛"
-```
-  </div>
-</div>
+  zh: "工艺精湛"' %}
 
 ## Multilingual Forms
 
 Forms are adapted for each language, using language-specific configurations:
 
-<div class="example">
-  <div class="example-code">
-```html
-<div class="newsletter-container">
-  {% if page.lang == 'ru' %}
+{% include styleguide/code-example.html language="html" preview=true
+code='<div class="newsletter-container">
+  {% if page.lang == "ru" %}
     <div class="ml-embedded" data-form="WVRNPI"></div>
-  {% elsif page.lang == 'zh' %}
+  {% elsif page.lang == "zh" %}
     <div class="ml-embedded" data-form="WRga0a"></div>
   {% else %}
     <div class="ml-embedded" data-form="480swE"></div>
   {% endif %}
-</div>
-```
-  </div>
-</div>
+</div>' %}
 
 ## Implementation Guidelines
 

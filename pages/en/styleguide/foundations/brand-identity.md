@@ -14,63 +14,31 @@ Our brand identity creates a professional, cohesive visual system that reinforce
 
 The Brandmine logo system consists of several variations to accommodate different contexts and applications:
 
-<div class="example-wrapper">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
-      <div style="border: 1px solid var(--neutral-200); padding: var(--space-4); display: flex; align-items: center; justify-content: center; background-color: white;">
-        <div style="background-color: var(--primary-400); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; padding: var(--space-2) var(--space-4); border-radius: 4px;">Brandmine</div>
-      </div>
-      <div style="border: 1px solid var(--neutral-200); padding: var(--space-4); display: flex; align-items: center; justify-content: center; background-color: var(--primary-700);">
-        <div style="color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; padding: var(--space-2) var(--space-4); border-radius: 4px;">Brandmine</div>
-      </div>
-    </div>
-    <div style="font-size: 0.875rem; color: var(--neutral-500); margin-bottom: var(--space-4);">
-      Left: Primary logo on white background | Right: Reversed logo on dark background
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-4);">
-      <div style="border: 1px solid var(--neutral-200); padding: var(--space-2); display: flex; align-items: center; justify-content: center; background-color: white;">
-        <div style="background-color: var(--primary-400); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1rem; padding: var(--space-1) var(--space-2); border-radius: 4px;">B</div>
-      </div>
-      <div style="border: 1px solid var(--neutral-200); padding: var(--space-2); display: flex; align-items: center; justify-content: center; background-color: var(--primary-700);">
-        <div style="color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1rem; padding: var(--space-1) var(--space-2); border-radius: 4px;">B</div>
-      </div>
-      <div style="border: 1px solid var(--neutral-200); padding: var(--space-2); display: flex; align-items: center; justify-content: center; background-color: white;">
-        <div style="background-color: var(--primary-400); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">B</div>
-      </div>
-    </div>
-    <div style="font-size: 0.875rem; color: var(--neutral-500);">
-      Small format and icon variations
-    </div>
-  </div>
-  
-  <div class="example-code">
-    <span class="code-language">html</span>
-    <pre><code class="language-html">&lt;!-- Primary Logo --&gt;
-&lt;div class="logo"&gt;
-  &lt;img src="/assets/images/site/logos/brandmine-logo-primary.svg" alt="Brandmine"&gt;
-&lt;/div&gt;
-
-&lt;!-- Reversed Logo --&gt;
-&lt;div class="logo logo-reversed"&gt;
-  &lt;img src="/assets/images/site/logos/brandmine-logo-reversed.svg" alt="Brandmine"&gt;
-&lt;/div&gt;
-
-&lt;!-- Icon Logo --&gt;
-&lt;div class="logo-icon"&gt;
-  &lt;img src="/assets/images/site/logos/brandmine-icon.svg" alt="Brandmine"&gt;
-&lt;/div&gt;
-
-&lt;!-- Using the logo in the header --&gt;
-&lt;header class="site-header"&gt;
-  &lt;div class="wrapper"&gt;
-    &lt;a class="site-title" href="/{{ page.lang }}/"&gt;
-      &lt;img src="/assets/images/site/logos/brandmine-logo-reversed.svg" alt="Brandmine" class="site-logo"&gt;
-    &lt;/a&gt;
-    &lt;!-- Navigation elements --&gt;
-  &lt;/div&gt;
-&lt;/header&gt;</code></pre>
-  </div>
+{% include styleguide/code-example.html language="html" preview=true
+code='<!-- Primary Logo -->
+<div class="logo">
+  <img src="/assets/images/site/logos/brandmine-logo-primary.svg" alt="Brandmine">
 </div>
+
+<!-- Reversed Logo -->
+<div class="logo logo-reversed">
+  <img src="/assets/images/site/logos/brandmine-logo-reversed.svg" alt="Brandmine">
+</div>
+
+<!-- Icon Logo -->
+<div class="logo-icon">
+  <img src="/assets/images/site/logos/brandmine-icon.svg" alt="Brandmine">
+</div>
+
+<!-- Using the logo in the header -->
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/{{ page.lang }}/">
+      <img src="/assets/images/site/logos/brandmine-logo-reversed.svg" alt="Brandmine" class="site-logo">
+    </a>
+    <!-- Navigation elements -->
+  </div>
+</header>' %}
 
 ### Logo Usage Guidelines
 
@@ -143,9 +111,8 @@ Our color system consists of four color families that work together to create a 
   </div>
 </div>
 
-<div class="example-code">
-  <span class="code-language">css</span>
-  <pre><code class="language-css">:root {
+{% include styleguide/code-example.html language="css" preview=false
+code=':root {
   /* Primary Colors (Teal) */
   --primary-50: #E6FFFA;
   --primary-100: #B2F5EA;
@@ -193,8 +160,7 @@ Our color system consists of four color families that work together to create a 
   --neutral-700: #374151;
   --neutral-800: #1F2937;
   --neutral-900: #111827;
-}</code></pre>
-</div>
+}' %}
 
 ### Color Usage Guidelines
 
@@ -220,33 +186,17 @@ Each color family has specific applications across the platform:
 
 Our typography system follows the "Evernote approach" with serif fonts for headings and sans-serif for body text:
 
-<div class="example-wrapper">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-4);">
-      <div>
-        <h3 style="font-family: var(--font-heading); margin-top: 0; margin-bottom: var(--space-2);">PT Serif Heading</h3>
-        <p style="font-family: var(--font-body); margin: 0;">PT Sans body text for English and Russian content. Our typography system automatically adapts to the language of the page.</p>
-      </div>
-      
-      <div>
-        <h3 style="font-family: var(--font-heading-zh); margin-top: 0; margin-bottom: var(--space-2);">思源宋体标题 (Noto Serif SC)</h3>
-        <p style="font-family: var(--font-body-zh); margin: 0;">思源黑体正文 (Noto Sans SC) 用于中文内容。我们的排版系统会根据页面语言自动调整。</p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-    <span class="code-language">css</span>
-    <pre><code class="language-css">:root {
+{% include styleguide/code-example.html language="css" preview=true
+code=':root {
   /* Language-specific font definitions */
-  --font-heading-en: 'PT Serif', Georgia, serif;
-  --font-body-en: 'PT Sans', Arial, sans-serif;
+  --font-heading-en: "PT Serif", Georgia, serif;
+  --font-body-en: "PT Sans", Arial, sans-serif;
   
-  --font-heading-ru: 'PT Serif', Georgia, serif;
-  --font-body-ru: 'PT Sans', Arial, sans-serif;
+  --font-heading-ru: "PT Serif", Georgia, serif;
+  --font-body-ru: "PT Sans", Arial, sans-serif;
   
-  --font-heading-zh: 'Noto Serif SC', 'Songti SC', 'FangSong', 'STSong', serif;
-  --font-body-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-heading-zh: "Noto Serif SC", "Songti SC", "FangSong", "STSong", serif;
+  --font-body-zh: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   
   /* Default to English fonts */
   --font-heading: var(--font-heading-en);
@@ -262,9 +212,7 @@ html[lang="ru"] {
 html[lang="zh"] {
   --font-heading: var(--font-heading-zh);
   --font-body: var(--font-body-zh);
-}</code></pre>
-  </div>
-</div>
+}' %}
 
 ## Iconography
 

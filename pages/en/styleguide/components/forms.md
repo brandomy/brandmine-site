@@ -16,7 +16,7 @@ Our forms system provides consistent styling for input elements, form layouts, a
 
 Standard text input fields for collecting various types of data:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <form style="max-width: 400px;">
       <div style="margin-bottom: var(--space-4);">
@@ -25,20 +25,18 @@ Standard text input fields for collecting various types of data:
       </div>
     </form>
   </div>
-  
   <div class="example-code">
-```html
-<div class="form-container">
-  <form>
-    <div>
-      <label for="email">Email Address</label>
-      <input type="email" id="email" placeholder="example@email.com">
-    </div>
-    <!-- Additional form fields -->
-    <button type="submit" class="btn-primary">Submit</button>
-  </form>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="form-container"&gt;
+  &lt;form&gt;
+    &lt;div&gt;
+      &lt;label for="email"&gt;Email Address&lt;/label&gt;
+      &lt;input type="email" id="email" placeholder="example@email.com"&gt;
+    &lt;/div&gt;
+    &lt;!-- Additional form fields --&gt;
+    &lt;button type="submit" class="btn-primary"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -46,7 +44,7 @@ Standard text input fields for collecting various types of data:
 
 Standard form layout with multiple input types:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <form style="max-width: 400px;">
       <div style="margin-bottom: var(--space-4);">
@@ -77,40 +75,38 @@ Standard form layout with multiple input types:
       <button class="btn-primary" style="background-color: var(--primary-400); color: white; padding: var(--space-2) var(--space-4); border-radius: 0.25rem; text-decoration: none; border: none; cursor: pointer; font-weight: 600;">Submit</button>
     </form>
   </div>
-  
   <div class="example-code">
-```html
-<div class="form-container">
-  <form>
-    <div>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" placeholder="Your name">
-    </div>
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="form-container"&gt;
+  &lt;form&gt;
+    &lt;div&gt;
+      &lt;label for="name"&gt;Full Name&lt;/label&gt;
+      &lt;input type="text" id="name" placeholder="Your name"&gt;
+    &lt;/div&gt;
     
-    <div>
-      <label for="email">Email Address</label>
-      <input type="email" id="email" placeholder="example@email.com">
-    </div>
+    &lt;div&gt;
+      &lt;label for="email"&gt;Email Address&lt;/label&gt;
+      &lt;input type="email" id="email" placeholder="example@email.com"&gt;
+    &lt;/div&gt;
     
-    <div>
-      <label for="subject">Subject</label>
-      <select id="subject">
-        <option value="" disabled selected>Select a subject</option>
-        <option value="general">General Inquiry</option>
-        <option value="support">Support Request</option>
-        <option value="partnership">Partnership Opportunity</option>
-      </select>
-    </div>
+    &lt;div&gt;
+      &lt;label for="subject"&gt;Subject&lt;/label&gt;
+      &lt;select id="subject"&gt;
+        &lt;option value="" disabled selected&gt;Select a subject&lt;/option&gt;
+        &lt;option value="general"&gt;General Inquiry&lt;/option&gt;
+        &lt;option value="support"&gt;Support Request&lt;/option&gt;
+        &lt;option value="partnership"&gt;Partnership Opportunity&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
     
-    <div>
-      <label for="message">Message</label>
-      <textarea id="message" placeholder="Your message"></textarea>
-    </div>
+    &lt;div&gt;
+      &lt;label for="message"&gt;Message&lt;/label&gt;
+      &lt;textarea id="message" placeholder="Your message"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
     
-    <button type="submit" class="btn-primary">Submit</button>
-  </form>
-</div>
-```
+    &lt;button type="submit" class="btn-primary"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -118,22 +114,20 @@ Standard form layout with multiple input types:
 
 Form inputs include focus states for improved accessibility:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <input type="text" style="width: 100%; padding: var(--space-2); border: 1px solid var(--primary-400); border-radius: 0.25rem; font-family: var(--font-body); font-size: var(--text-base); color: var(--neutral-700); box-sizing: border-box; box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2); outline: none;" placeholder="Input with focus state">
     <div style="margin-top: var(--space-2); font-size: 0.875rem; color: var(--neutral-500);">Example of input with focus state</div>
   </div>
-  
   <div class="example-code">
-```css
-input:focus,
+    <span class="code-language">css</span>
+    <pre><code class="language-css">input:focus,
 textarea:focus,
 select:focus {
   border-color: var(--primary-400);
   outline: none;
   box-shadow: 0 0 0 2px rgba(var(--primary-400-rgb), 0.2);
-}
-```
+}</code></pre>
   </div>
 </div>
 
@@ -141,7 +135,7 @@ select:focus {
 
 Specialized styling for our newsletter signup forms, implemented with MailerLite:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--primary-600); border-radius: 0.25rem; padding: var(--space-4); max-width: 400px;">
       <div style="display: flex; flex-direction: column; gap: var(--space-2);">
@@ -150,26 +144,24 @@ Specialized styling for our newsletter signup forms, implemented with MailerLite
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="newsletter-container">
-  <div class="ml-embedded">
-    <div class="ml-form-embedWrapper">
-      <!-- MailerLite form embed code would go here -->
-      <!-- This is a simplified representation -->
-      <div class="ml-form-embedBody">
-        <div class="ml-form-fieldRow">
-          <input type="email" placeholder="Your email address">
-        </div>
-        <div class="ml-form-horizontalRow">
-          <button>Subscribe</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="newsletter-container"&gt;
+  &lt;div class="ml-embedded"&gt;
+    &lt;div class="ml-form-embedWrapper"&gt;
+      &lt;!-- MailerLite form embed code would go here --&gt;
+      &lt;!-- This is a simplified representation --&gt;
+      &lt;div class="ml-form-embedBody"&gt;
+        &lt;div class="ml-form-fieldRow"&gt;
+          &lt;input type="email" placeholder="Your email address"&gt;
+        &lt;/div&gt;
+        &lt;div class="ml-form-horizontalRow"&gt;
+          &lt;button&gt;Subscribe&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -177,7 +169,7 @@ Specialized styling for our newsletter signup forms, implemented with MailerLite
 
 The container for our Tally contact form embeds:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="max-width: 600px; margin: 0 auto;">
       <div style="width: 100%; background-color: var(--neutral-50); border-radius: 1rem; padding: var(--space-6); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); box-sizing: border-box;">
@@ -187,21 +179,19 @@ The container for our Tally contact form embeds:
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="mobile-form-wrapper">
-  <div class="contact-form-container">
-    <iframe
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="mobile-form-wrapper"&gt;
+  &lt;div class="contact-form-container"&gt;
+    &lt;iframe
       src="https://tally.so/embed/[YOUR-FORM-ID]"
       width="100%"
       height="500"
       frameborder="0"
       title="Contact Form"
-    ></iframe>
-  </div>
-</div>
-```
+    &gt;&lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 

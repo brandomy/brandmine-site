@@ -16,47 +16,25 @@ Our button system provides consistent, accessible interaction elements across th
 
 Primary buttons are used for the main action in a section or form. They use our primary teal color to draw attention and establish visual hierarchy.
 
-<div class="example">
-  <div class="example-preview">
-    <a href="#" class="btn-primary">Primary Button</a>
-  </div>
-  
-  <div class="example-code">
-```html
-<a href="#" class="btn-primary">Primary Button</a>
-```
-  </div>
-</div>
+{% include styleguide/code-example.html language="html" preview=true code='<a href="#" class="btn-primary">Primary Button</a>' %}
 
 ### Secondary Button
 
 Secondary buttons are used for alternative actions that are important but not the primary focus. They use our secondary orange color.
 
-<div class="example">
-  <div class="example-preview">
-    <a href="#" class="btn-secondary">Secondary Button</a>
-  </div>
-  
-  <div class="example-code">
-```html
-<a href="#" class="btn-secondary">Secondary Button</a>
-```
-  </div>
-</div>
+{% include styleguide/code-example.html language="html" preview=true code='<a href="#" class="btn-secondary">Secondary Button</a>' %}
 
 ### CTA Button
 
 Call-to-action buttons are used for high-emphasis actions, typically in hero sections or promotional areas. They use a white background with our primary color for text.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview" style="background: linear-gradient(to right, var(--primary-500), var(--primary-700)); padding: 2rem;">
     <a href="#" class="cta-button">Call to Action</a>
   </div>
-  
   <div class="example-code">
-```html
-<a href="#" class="cta-button">Call to Action</a>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;a href="#" class="cta-button"&gt;Call to Action&lt;/a&gt;</code></pre>
   </div>
 </div>
 
@@ -66,7 +44,7 @@ Call-to-action buttons are used for high-emphasis actions, typically in hero sec
 
 All buttons include hover effects to provide visual feedback to users.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <p><strong>Hover over the buttons to see their hover states:</strong></p>
     <a href="#" class="btn-primary" style="margin-right: 1rem;">Primary Button</a>
@@ -81,7 +59,7 @@ All buttons include hover effects to provide visual feedback to users.
 
 Our buttons maintain a consistent size for most use cases, with slight adjustments for mobile devices.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <p><strong>Desktop sizing:</strong></p>
     <a href="#" class="btn-primary">Primary Button</a>
@@ -111,21 +89,17 @@ Button styles are defined in `assets/css/components/buttons.css` and use CSS var
 
 #### HTML Structure
 
-```html
-<!-- Primary button -->
+{% include styleguide/code-example.html language="html" preview=false code='<!-- Primary button -->
 <a href="#" class="btn-primary">Button Text</a>
 
 <!-- Secondary button -->
 <a href="#" class="btn-secondary">Button Text</a>
 
 <!-- CTA button -->
-<a href="#" class="cta-button">Button Text</a>
-```
+<a href="#" class="cta-button">Button Text</a>' %}
 
 #### Using Buttons in Forms
 
 For form submission or JavaScript-triggered actions, use the `<button>` element:
 
-```html
-<button type="submit" class="btn-primary">Submit</button>
-```
+{% include styleguide/code-example.html language="html" preview=false code='<button type="submit" class="btn-primary">Submit</button>' %}

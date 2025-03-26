@@ -1,5 +1,5 @@
 # Brandmine Jekyll Website - Quick Reference
-Generated: 2025-03-26 13:43
+Generated: 2025-03-26 19:08
 
 ## Project Overview
 - Jekyll-based multilingual website (EN, RU, ZH)
@@ -7,7 +7,7 @@ Generated: 2025-03-26 13:43
 - Current navigation structure: Home, Brands, Discover (Sectors, Markets, Attributes, Signals), Insights, About
 
 ## Latest Development
-- Most recent commit: Remove deprecated blog categories and update sector titles for consistency across languages, Make templates, includesm, sample pages, review all Pages (Randal Eastman, Wed Mar 26 13:42:19 2025 +0800)
+- Most recent commit: Update sector links and improve footer content for multilingual pages (Randal Eastman, Wed Mar 26 15:08:51 2025 +0800)
 - Current focus: Implemented Multilingual Newsletter Forms
 
 ## Working with Claude
@@ -20,56 +20,3 @@ When I need more context about specific areas, please ask me and I can provide:
 6. Translation system information
 
 I'm new to programming and building this site myself with your guidance.
-
-
-
-## Available Context Information
-
-If needed, you can ask me for any of these context packages:
-
-### Site Structure
-- Full directory structure
-- Jekyll configuration
-- Collection setup
-
-### Design System
-- Color palette details
-- Typography system
-- Component library status
-
-### Multilingual System
-- Translation file structure
-- Language implementation details
-- Content translation status
-
-### Development History
-- Recent commits and changes
-- Project log entries
-- Current development focus
-
-### Content Organization
-- Tag system details 
-- Content statistics
-- Navigation structure
-
-### Specific File Contents
-- You can ask for any specific file content like:
-  "Can you share your header.html include?"
-  "What's in your main.css file?"
-  "How is your default layout structured?"
-
-### Available Context Snippets
-I have these prepared context files ready to share when needed:
-
-- Translation Workflow
-- Css Architecture
-- Progressive Context
-- Development Workflow
-- Site Structure
-- Component Examples
-- Navigation Structure
-- Layout System
-- Multilingual System
-- Jekyll Config
-- Tag System
-- Design Tokens

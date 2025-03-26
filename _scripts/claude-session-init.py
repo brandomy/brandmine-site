@@ -30,6 +30,7 @@ import re
 import subprocess
 import argparse
 import datetime
+import glob
 from collections import defaultdict
 
 # Try importing yaml for parsing config files
@@ -46,12 +47,16 @@ try:
 except ImportError:
     CLIPBOARD_AVAILABLE = False
 
+# Get the script's directory
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Configuration
 SITE_SUMMARY_FILE = "site-summary.md"
 PROJECT_LOG_FILE = "PROJECT_LOG.md"
 OUTPUT_FILE = "claude-context.md"
 MAX_CONTENT_LENGTH = 12000  # Limit context size to avoid exceeding Claude's limits
-CONTEXT_SNIPPETS_DIR = "_context_snippets"  # Directory for context snippets
+CONTEXT_SNIPPETS_DIR = os.path.join(SCRIPT_DIR, "_context_snippets")  # Directory for context snippets
+DEV_JOURNALS_DIR = "_dev_journals"  # Directory for dev journals
 
 # Task-specific focus areas
 TASK_FOCUS = {
@@ -360,6 +365,36 @@ def get_current_focus_area():
         return match.group(1)
     return "General site development"
 
+def get_latest_journal():
+    """Find and return the most recent dev journal entry."""
+    # First check in _dev_journals directory relative to the script
+    script_journals_dir = os.path.join(SCRIPT_DIR, "_dev_journals")
+    if os.path.exists(script_journals_dir):
+        journal_files = [os.path.join(script_journals_dir, f) for f in os.listdir(script_journals_dir) 
+                       if f.endswith('.md')]
+        if journal_files:
+            latest_file = max(journal_files, key=os.path.getmtime)
+            with open(latest_file, "r", encoding="utf-8") as f:
+                return f"## Latest Development Journal\n\n{f.read()}"
+    
+    # Then check in project root _dev_journals
+    if os.path.exists(DEV_JOURNALS_DIR):
+        journal_files = [os.path.join(DEV_JOURNALS_DIR, f) for f in os.listdir(DEV_JOURNALS_DIR) 
+                       if f.endswith('.md')]
+        if journal_files:
+            latest_file = max(journal_files, key=os.path.getmtime)
+            with open(latest_file, "r", encoding="utf-8") as f:
+                return f"## Latest Development Journal\n\n{f.read()}"
+    
+    # Try to find any dev journals using glob
+    journal_files = glob.glob("**/*DevJournal*.md", recursive=True)
+    if journal_files:
+        latest_file = max(journal_files, key=os.path.getmtime)
+        with open(latest_file, "r", encoding="utf-8") as f:
+            return f"## Latest Development Journal\n\n{f.read()}"
+            
+    return "No recent development journal found."
+
 def generate_minimal_context():
     """Generate just the essential context to start a session."""
     
@@ -524,6 +559,11 @@ def generate_context_document(focus=None, full_details=False, since_date=None):
             context += "## Recent Development Activity\n\n"
             context += get_relevant_log_entries(None, 2, since_date)
     
+    # Add latest development journal
+    latest_journal = get_latest_journal()
+    if latest_journal != "No recent development journal found.":
+        context += latest_journal + "\n\n"
+    
     # Add content summary
     content_info = extract_section(summary_content, "Content Summary", 1000)
     if content_info:
@@ -648,6 +688,11 @@ def generate_task_context(task, since_date=None):
             color_palette = get_color_palette_context()
             if color_palette:
                 context += color_palette
+    
+    # Add latest development journal
+    latest_journal = get_latest_journal()
+    if latest_journal != "No recent development journal found.":
+        context += latest_journal + "\n\n"
     
     # Add relevant recent development
     context += "## Recent Development\n\n"

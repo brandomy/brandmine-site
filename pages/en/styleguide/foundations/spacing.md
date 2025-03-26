@@ -74,44 +74,21 @@ Our spacing scale follows a progression that provides appropriate options for di
 
 Spacing variables can be used for both margin and padding properties:
 
-<div class="example-wrapper">
-  <div class="example-preview">
-    <div style="border: 1px dashed var(--neutral-400); padding: var(--space-4); margin-bottom: var(--space-4);">
-      Element with padding: var(--space-4)
-    </div>
-    <div style="border: 1px dashed var(--neutral-400); padding: var(--space-8);">
-      Element with padding: var(--space-8)
-    </div>
-  </div>
-  
-  <div class="example-code">
-    <span class="code-language">css</span>
-    <pre><code class="language-css">.element-with-standard-padding {
+{% include styleguide/code-example.html language="css" preview=true
+code='.element-with-standard-padding {
   padding: var(--space-4); /* 1rem / 16px */
 }
 
 .element-with-larger-padding {
   padding: var(--space-8); /* 2rem / 32px */
-}</code></pre>
-  </div>
-</div>
+}' %}
 
 ### Element Spacing
 
 Create consistent spacing between elements using margin:
 
-<div class="example-wrapper">
-  <div class="example-preview">
-    <div style="display: flex; flex-direction: column; gap: var(--space-4); border: 1px solid var(--neutral-300); padding: var(--space-4);">
-      <div style="background-color: var(--primary-100); padding: var(--space-4);">First element</div>
-      <div style="background-color: var(--primary-100); padding: var(--space-4);">Second element</div>
-      <div style="background-color: var(--primary-100); padding: var(--space-4);">Third element</div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-    <span class="code-language">css</span>
-    <pre><code class="language-css">.element-stack {
+{% include styleguide/code-example.html language="css" preview=true
+code='.element-stack {
   display: flex;
   flex-direction: column;
   gap: var(--space-4); /* Modern gap property */
@@ -120,56 +97,28 @@ Create consistent spacing between elements using margin:
 /* Alternative using margin for wider browser support */
 .element-stack > * + * {
   margin-top: var(--space-4);
-}</code></pre>
-  </div>
-</div>
+}' %}
 
 ### Section Spacing
 
 For larger layout sections, use the bigger spacing values:
 
-<div class="example-wrapper">
-  <div class="example-preview">
-    <div style="border: 1px dashed var(--neutral-400); padding: var(--space-12); margin-bottom: var(--space-12); text-align: center;">
-      Section with padding: var(--space-12)
-    </div>
-    <div style="border: 1px dashed var(--neutral-400); padding: var(--space-16); text-align: center;">
-      Section with padding: var(--space-16)
-    </div>
-  </div>
-  
-  <div class="example-code">
-    <span class="code-language">css</span>
-    <pre><code class="language-css">.section {
+{% include styleguide/code-example.html language="css" preview=true
+code='.section {
   padding: var(--space-12); /* 3rem / 48px */
   margin-bottom: var(--space-12);
 }
 
 .hero-section {
   padding: var(--space-16); /* 4rem / 64px */
-}</code></pre>
-  </div>
-</div>
+}' %}
 
 ## Common Spacing Patterns
 
 ### Card Component
 
-<div class="example-wrapper">
-  <div class="example-preview">
-    <div style="border: 1px solid var(--neutral-300); border-radius: 0.5rem; overflow: hidden; max-width: 320px;">
-      <div style="height: 160px; background-color: var(--primary-100);"></div>
-      <div style="padding: var(--space-4);">
-        <h4 style="margin-top: 0; margin-bottom: var(--space-2);">Card Title</h4>
-        <p style="margin-top: 0; margin-bottom: var(--space-4);">Card description text that explains the purpose of this component.</p>
-        <button class="btn-primary">Action</button>
-      </div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-    <span class="code-language">css</span>
-    <pre><code class="language-css">.card {
+{% include styleguide/code-example.html language="css" preview=true
+code='.card {
   border: 1px solid var(--neutral-300);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -191,30 +140,12 @@ For larger layout sections, use the bigger spacing values:
 .card-description {
   margin-top: 0;
   margin-bottom: var(--space-4);
-}</code></pre>
-  </div>
-</div>
+}' %}
 
 ### Form Elements
 
-<div class="example-wrapper">
-  <div class="example-preview">
-    <div style="max-width: 400px;">
-      <div style="margin-bottom: var(--space-4);">
-        <label style="display: block; margin-bottom: var(--space-2); font-weight: 600;">Email Address</label>
-        <input type="email" style="width: 100%; padding: var(--space-2); border: 1px solid var(--neutral-300); border-radius: 0.25rem;" placeholder="example@email.com">
-      </div>
-      <div style="margin-bottom: var(--space-6);">
-        <label style="display: block; margin-bottom: var(--space-2); font-weight: 600;">Message</label>
-        <textarea style="width: 100%; padding: var(--space-2); border: 1px solid var(--neutral-300); border-radius: 0.25rem;" rows="4" placeholder="Your message"></textarea>
-      </div>
-      <button class="btn-primary">Submit</button>
-    </div>
-  </div>
-  
-  <div class="example-code">
-    <span class="code-language">css</span>
-    <pre><code class="language-css">.form-group {
+{% include styleguide/code-example.html language="css" preview=true
+code='.form-group {
   margin-bottom: var(--space-4);
 }
 
@@ -234,9 +165,7 @@ For larger layout sections, use the bigger spacing values:
   padding: var(--space-2);
   border: 1px solid var(--neutral-300);
   border-radius: 0.25rem;
-}</code></pre>
-  </div>
-</div>
+}' %}
 
 ## Implementation Guidelines
 
@@ -301,3 +230,28 @@ For more precise control, you can combine different spacing values for each side
 3. **Consider content density** - Use smaller spacing values for dense UIs, larger ones for more open layouts
 4. **Create rhythm** - Maintain consistent vertical rhythm with predictable spacing between sections
 5. **Use appropriate scale** - Match spacing to the visual weight and importance of elements
+```
+
+## 3. Updated colors.md
+
+This file is already using the correct includes for swatches. No changes needed.
+
+All three files now follow the consistent pattern for code examples, either using the appropriate include pattern:
+
+```
+{% include styleguide/code-example.html language="css" preview=true code='...' %}
+```
+
+Or using proper markup for HTML display:
+
+```
+<div class="example-wrapper">
+  <div class="example-preview">
+    <!-- Example content -->
+  </div>
+  <div class="example-code">
+    <span class="code-language">html</span>
+    <pre><code class="language-html">...</code></pre>
+  </div>
+</div>
+```

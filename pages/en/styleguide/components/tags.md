@@ -14,7 +14,7 @@ Our tag system provides a multi-dimensional categorization framework that helps 
 
 Our tagging system includes four distinct categories, each with visual differentiation:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
       <div>
@@ -50,33 +50,31 @@ Our tagging system includes four distinct categories, each with visual different
       <div><strong>Country Tags</strong> - Geographic indicators with light indigo styling</div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<!-- Sector Tags -->
-<div class="sector-tags">
-  <a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag">Hotels & Resorts</a>
-  <a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag">Artisanal Spirits</a>
-</div>
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;!-- Sector Tags --&gt;
+&lt;div class="sector-tags"&gt;
+  &lt;a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
+  &lt;a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
+&lt;/div&gt;
 
-<!-- Attribute Tags -->
-<div class="attribute-tags">
-  <a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag">Artisanal Excellence</a>
-  <a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag">Premium Positioning</a>
-</div>
+&lt;!-- Attribute Tags --&gt;
+&lt;div class="attribute-tags"&gt;
+  &lt;a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
+  &lt;a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
+&lt;/div&gt;
 
-<!-- Growth Tags -->
-<div class="growth-tags">
-  <a href="/en/tags/growth/export-ready/" class="tag growth-tag">Export Ready</a>
-  <a href="/en/tags/growth/investment-ready/" class="tag growth-tag">Investment Ready</a>
-</div>
+&lt;!-- Growth Tags --&gt;
+&lt;div class="growth-tags"&gt;
+  &lt;a href="/en/tags/growth/export-ready/" class="tag growth-tag"&gt;Export Ready&lt;/a&gt;
+  &lt;a href="/en/tags/growth/investment-ready/" class="tag growth-tag"&gt;Investment Ready&lt;/a&gt;
+&lt;/div&gt;
 
-<!-- Country Tags -->
-<div class="country-tags">
-  <a href="/en/tags/countries/russia/" class="tag country-tag">Russia</a>
-  <a href="/en/tags/countries/china/" class="tag country-tag">China</a>
-</div>
-```
+&lt;!-- Country Tags --&gt;
+&lt;div class="country-tags"&gt;
+  &lt;a href="/en/tags/countries/russia/" class="tag country-tag"&gt;Russia&lt;/a&gt;
+  &lt;a href="/en/tags/countries/china/" class="tag country-tag"&gt;China&lt;/a&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -84,7 +82,7 @@ Our tagging system includes four distinct categories, each with visual different
 
 Tags include hover states for improved interaction feedback:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
       <span class="tag sector-tag" style="background-color: var(--primary-100); color: var(--primary-700); border: 1px solid var(--primary-200); display: inline-block; padding: var(--space-1) var(--space-2); border-radius: 4px; font-size: 0.875rem; line-height: 1.4; text-decoration: none;">Normal State</span>
@@ -100,10 +98,9 @@ Tags include hover states for improved interaction feedback:
       <div>When user hovers over an attribute tag</div>
     </div>
   </div>
-  
   <div class="example-code">
-```css
-.sector-tag {
+    <span class="code-language">css</span>
+    <pre><code class="language-css">.sector-tag {
   background-color: var(--primary-100);
   color: var(--primary-700);
   border: 1px solid var(--primary-200);
@@ -123,8 +120,7 @@ Tags include hover states for improved interaction feedback:
 .attribute-tag:hover {
   background-color: var(--secondary-200);
   color: var(--secondary-800);
-}
-```
+}</code></pre>
   </div>
 </div>
 
@@ -132,7 +128,7 @@ Tags include hover states for improved interaction feedback:
 
 Tags are typically grouped by category in list format:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="tag-list" style="margin: var(--space-4) 0;">
       <div class="sector-tags" style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-2);">
@@ -148,23 +144,21 @@ Tags are typically grouped by category in list format:
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="tag-list">
-  <div class="sector-tags">
-    <a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag">Hotels & Resorts</a>
-    <a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag">Artisanal Spirits</a>
-  </div>
-  <div class="attribute-tags">
-    <a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag">Artisanal Excellence</a>
-    <a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag">Premium Positioning</a>
-  </div>
-  <div class="growth-tags">
-    <a href="/en/tags/growth/export-ready/" class="tag growth-tag">Export Ready</a>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="tag-list"&gt;
+  &lt;div class="sector-tags"&gt;
+    &lt;a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
+    &lt;a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="attribute-tags"&gt;
+    &lt;a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
+    &lt;a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="growth-tags"&gt;
+    &lt;a href="/en/tags/growth/export-ready/" class="tag growth-tag"&gt;Export Ready&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -172,7 +166,7 @@ Tags are typically grouped by category in list format:
 
 Tag clouds display all tags in a category for browsing and discovery:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="tag-cloud" style="margin: var(--space-6) 0;">
       <h3 style="margin-bottom: var(--space-2); font-size: 1.25rem;">Sectors</h3>
@@ -192,27 +186,25 @@ Tag clouds display all tags in a category for browsing and discovery:
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="tag-cloud">
-  <h3>Sectors</h3>
-  <div class="sector-cloud">
-    <a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag">Hotels & Resorts</a>
-    <a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag">Artisanal Spirits</a>
-    <a href="/en/tags/sectors/gourmet-foods/" class="tag sector-tag">Gourmet Foods</a>
-    <a href="/en/tags/sectors/natural-beauty/" class="tag sector-tag">Natural Beauty</a>
-  </div>
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="tag-cloud"&gt;
+  &lt;h3&gt;Sectors&lt;/h3&gt;
+  &lt;div class="sector-cloud"&gt;
+    &lt;a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
+    &lt;a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
+    &lt;a href="/en/tags/sectors/gourmet-foods/" class="tag sector-tag"&gt;Gourmet Foods&lt;/a&gt;
+    &lt;a href="/en/tags/sectors/natural-beauty/" class="tag sector-tag"&gt;Natural Beauty&lt;/a&gt;
+  &lt;/div&gt;
   
-  <h3>Attributes</h3>
-  <div class="attribute-cloud">
-    <a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag">Artisanal Excellence</a>
-    <a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag">Premium Positioning</a>
-    <a href="/en/tags/attributes/founder-led/" class="tag attribute-tag">Founder-Led</a>
-    <a href="/en/tags/attributes/heritage-brand/" class="tag attribute-tag">Heritage Brand</a>
-  </div>
-</div>
-```
+  &lt;h3&gt;Attributes&lt;/h3&gt;
+  &lt;div class="attribute-cloud"&gt;
+    &lt;a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
+    &lt;a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
+    &lt;a href="/en/tags/attributes/founder-led/" class="tag attribute-tag"&gt;Founder-Led&lt;/a&gt;
+    &lt;a href="/en/tags/attributes/heritage-brand/" class="tag attribute-tag"&gt;Heritage Brand&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -220,7 +212,7 @@ Tag clouds display all tags in a category for browsing and discovery:
 
 Tag pages display content related to a specific tag with header information:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="tag-header" style="margin-bottom: var(--space-8);">
       <span class="tag-type" style="display: inline-block; padding: var(--space-1) var(--space-2); background-color: var(--neutral-200); color: var(--neutral-700); border-radius: 4px; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2);">SECTOR</span>
@@ -244,28 +236,26 @@ Tag pages display content related to a specific tag with header information:
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```html
-<div class="tag-header">
-  <span class="tag-type">SECTOR</span>
-  <h1>Hotels & Resorts</h1>
-  <p class="tag-description">Luxury and boutique accommodation providers across the BRICS+ region offering distinctive hospitality experiences.</p>
-</div>
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="tag-header"&gt;
+  &lt;span class="tag-type"&gt;SECTOR&lt;/span&gt;
+  &lt;h1&gt;Hotels &amp; Resorts&lt;/h1&gt;
+  &lt;p class="tag-description"&gt;Luxury and boutique accommodation providers across the BRICS+ region offering distinctive hospitality experiences.&lt;/p&gt;
+&lt;/div&gt;
 
-<div class="tag-posts">
-  <h2>Related Content</h2>
-  <div class="post-grid">
+&lt;div class="tag-posts"&gt;
+  &lt;h2&gt;Related Content&lt;/h2&gt;
+  &lt;div class="post-grid"&gt;
     {% for post in posts %}
-      <div class="post-card">
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt }}</p>
-        <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
-      </div>
+      &lt;div class="post-card"&gt;
+        &lt;h3&gt;&lt;a href="{{ post.url | relative_url }}"&gt;{{ post.title }}&lt;/a&gt;&lt;/h3&gt;
+        &lt;p&gt;{{ post.excerpt }}&lt;/p&gt;
+        &lt;a href="{{ post.url | relative_url }}" class="read-more"&gt;Read More&lt;/a&gt;
+      &lt;/div&gt;
     {% endfor %}
-  </div>
-</div>
-```
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -273,7 +263,7 @@ Tag pages display content related to a specific tag with header information:
 
 For future implementation, tags can include badge icons:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <span class="tag growth-tag with-badge" style="background-color: var(--accent-100); color: var(--accent-700); border: 1px solid var(--accent-200); display: inline-block; padding-left: var(--space-6); padding-right: var(--space-2); padding-top: var(--space-1); padding-bottom: var(--space-1); border-radius: 4px; font-size: 0.875rem; line-height: 1.4; text-decoration: none; position: relative;">
       <span class="badge-icon" style="position: absolute; left: var(--space-1); top: 50%; transform: translateY(-50%); width: 16px; height: 16px); background-color: var(--accent-700); border-radius: 50%; display: inline-block;"></span>
@@ -281,14 +271,12 @@ For future implementation, tags can include badge icons:
     </span>
     <span style="margin-left: var(--space-4); font-size: 0.875rem; color: var(--neutral-500);">Future badge implementation</span>
   </div>
-  
   <div class="example-code">
-```html
-<a href="/en/tags/growth/export-ready/" class="tag growth-tag with-badge">
-  <span class="badge-icon" style="background-image: url('/assets/images/badges/export-ready.svg')"></span>
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;a href="/en/tags/growth/export-ready/" class="tag growth-tag with-badge"&gt;
+  &lt;span class="badge-icon" style="background-image: url('/assets/images/badges/export-ready.svg')"&gt;&lt;/span&gt;
   Export Ready
-</a>
-```
+&lt;/a&gt;</code></pre>
   </div>
 </div>
 
@@ -296,7 +284,7 @@ For future implementation, tags can include badge icons:
 
 All tags are implemented consistently across languages:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4);">
       <div>
@@ -313,10 +301,9 @@ All tags are implemented consistently across languages:
       </div>
     </div>
   </div>
-  
   <div class="example-code">
-```yaml
-# _data/tag_translations.yml
+    <span class="code-language">yaml</span>
+    <pre><code class="language-yaml"># _data/tag_translations.yml
 
 hotels-resorts:
   en: "Hotels & Resorts"
@@ -326,8 +313,7 @@ hotels-resorts:
 artisanal-excellence:
   en: "Artisanal Excellence"
   ru: "Мастерство Ремесленников"
-  zh: "工艺精湛"
-```
+  zh: "工艺精湛"</code></pre>
   </div>
 </div>
 
