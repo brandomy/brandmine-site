@@ -18,7 +18,7 @@ Our grid system provides a foundation for creating consistent, responsive layout
 
 The grid uses a 12-column system that adapts to different screen sizes, with a standard gap between columns.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div class="grid-container grid-container--12" style="border: 1px dashed var(--neutral-300); padding: var(--space-4);">
       <div style="grid-column: span 12; background-color: var(--primary-100); padding: var(--space-2); text-align: center;">span 12</div>
@@ -35,20 +35,19 @@ The grid uses a 12-column system that adapts to different screen sizes, with a s
   </div>
   
   <div class="example-code">
-```html
-<div class="grid-container grid-container--12">
-  <div class="col-span-12">Full width</div>
-  <div class="col-span-6">Half width</div>
-  <div class="col-span-6">Half width</div>
-  <div class="col-span-4">One third</div>
-  <div class="col-span-4">One third</div>
-  <div class="col-span-4">One third</div>
-  <div class="col-span-3">One quarter</div>
-  <div class="col-span-3">One quarter</div>
-  <div class="col-span-3">One quarter</div>
-  <div class="col-span-3">One quarter</div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="grid-container grid-container--12"&gt;
+  &lt;div class="col-span-12"&gt;Full width&lt;/div&gt;
+  &lt;div class="col-span-6"&gt;Half width&lt;/div&gt;
+  &lt;div class="col-span-6"&gt;Half width&lt;/div&gt;
+  &lt;div class="col-span-4"&gt;One third&lt;/div&gt;
+  &lt;div class="col-span-4"&gt;One third&lt;/div&gt;
+  &lt;div class="col-span-4"&gt;One third&lt;/div&gt;
+  &lt;div class="col-span-3"&gt;One quarter&lt;/div&gt;
+  &lt;div class="col-span-3"&gt;One quarter&lt;/div&gt;
+  &lt;div class="col-span-3"&gt;One quarter&lt;/div&gt;
+  &lt;div class="col-span-3"&gt;One quarter&lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -56,27 +55,25 @@ The grid uses a 12-column system that adapts to different screen sizes, with a s
 
 Use these classes to control how many columns an element spans:
 
-<div class="example">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
-      <code>.col-span-1</code>
-      <div>Element spans 1 column (1/12 width)</div>
-      
-      <code>.col-span-2</code>
-      <div>Element spans 2 columns (1/6 width)</div>
-      
-      <code>.col-span-3</code>
-      <div>Element spans 3 columns (1/4 width)</div>
-      
-      <code>.col-span-4</code>
-      <div>Element spans 4 columns (1/3 width)</div>
-      
-      <code>.col-span-6</code>
-      <div>Element spans 6 columns (1/2 width)</div>
-      
-      <code>.col-span-12</code>
-      <div>Element spans 12 columns (full width)</div>
-    </div>
+<div class="example-preview">
+  <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
+    <code>.col-span-1</code>
+    <div>Element spans 1 column (1/12 width)</div>
+    
+    <code>.col-span-2</code>
+    <div>Element spans 2 columns (1/6 width)</div>
+    
+    <code>.col-span-3</code>
+    <div>Element spans 3 columns (1/4 width)</div>
+    
+    <code>.col-span-4</code>
+    <div>Element spans 4 columns (1/3 width)</div>
+    
+    <code>.col-span-6</code>
+    <div>Element spans 6 columns (1/2 width)</div>
+    
+    <code>.col-span-12</code>
+    <div>Element spans 12 columns (full width)</div>
   </div>
 </div>
 
@@ -84,7 +81,7 @@ Use these classes to control how many columns an element spans:
 
 The grid automatically adjusts to a single column layout on smaller screens (below 768px), ensuring content remains readable on mobile devices.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: flex; justify-content: space-between; gap: var(--space-4); text-align: center; font-size: 0.875rem;">
       <div>
@@ -106,8 +103,8 @@ The grid automatically adjusts to a single column layout on smaller screens (bel
   </div>
   
   <div class="example-code">
-```css
-/* Responsive breakpoints */
+    <span class="code-language">css</span>
+    <pre><code class="language-css">/* Responsive breakpoints */
 @media screen and (max-width: 768px) {
     .grid-container--12 {
         grid-template-columns: 1fr;
@@ -120,8 +117,7 @@ The grid automatically adjusts to a single column layout on smaller screens (bel
     .col-span-6 {
         grid-column: span 12; /* Full width on mobile */
     }
-}
-```
+}</code></pre>
   </div>
 </div>
 
@@ -133,7 +129,7 @@ Panels are our primary layout components, providing consistent full-width sectio
 
 The full-width panel extends edge-to-edge across the viewport, with content constrained to a maximum width and centered within the panel.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--neutral-100); padding: var(--space-8); text-align: center; border-radius: 0.25rem;">
       Full-width panel (viewport edge to edge)
@@ -144,15 +140,14 @@ The full-width panel extends edge-to-edge across the viewport, with content cons
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <!-- Your content here -->
-    <h2>Section Heading</h2>
-    <p>Section content goes here...</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel light-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;!-- Your content here --&gt;
+    &lt;h2&gt;Section Heading&lt;/h2&gt;
+    &lt;p&gt;Section content goes here...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -160,7 +155,7 @@ The full-width panel extends edge-to-edge across the viewport, with content cons
 
 The panel with image layout creates a two-column grid that places content alongside an image, adjusting to a single column on smaller screens.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center; margin-bottom: var(--space-4);">
       <div style="padding: var(--space-4); background-color: var(--neutral-100); border-radius: 0.25rem;">
@@ -177,22 +172,21 @@ The panel with image layout creates a two-column grid that places content alongs
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <div class="panel-with-image">
-      <div class="content-area">
-        <h2>Section Heading</h2>
-        <p>Content description goes here...</p>
-        <a href="#" class="btn-primary">Call to Action</a>
-      </div>
-      <div class="image-area">
-        <img src="/path/to/image.jpg" alt="Description" class="panel-image">
-      </div>
-    </div>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel light-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;div class="panel-with-image"&gt;
+      &lt;div class="content-area"&gt;
+        &lt;h2&gt;Section Heading&lt;/h2&gt;
+        &lt;p&gt;Content description goes here...&lt;/p&gt;
+        &lt;a href="#" class="btn-primary"&gt;Call to Action&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class="image-area"&gt;
+        &lt;img src="/path/to/image.jpg" alt="Description" class="panel-image"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -204,7 +198,7 @@ Our panel system includes several variants for different content purposes and vi
 
 The default panel style with a white background, suitable for most content sections.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: white; padding: var(--space-6); border-radius: 0.25rem; border: 1px solid var(--neutral-200);">
       <h3 style="margin-top: 0;">Light Panel</h3>
@@ -213,14 +207,13 @@ The default panel style with a white background, suitable for most content secti
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Section Title</h2>
-    <p>Panel content goes here...</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel light-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h2&gt;Section Title&lt;/h2&gt;
+    &lt;p&gt;Panel content goes here...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -228,7 +221,7 @@ The default panel style with a white background, suitable for most content secti
 
 Used for sections that identify challenges or pain points, with a subtle orange pattern background.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--secondary-50); padding: var(--space-6); border-radius: 0.25rem; border: 1px solid var(--secondary-100);">
       <h3 style="margin-top: 0;">Problem Panel</h3>
@@ -237,14 +230,13 @@ Used for sections that identify challenges or pain points, with a subtle orange 
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel problem-panel">
-  <div class="panel-content">
-    <h2>The Challenge</h2>
-    <p>Description of the problems being addressed...</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel problem-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h2&gt;The Challenge&lt;/h2&gt;
+    &lt;p&gt;Description of the problems being addressed...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -252,7 +244,7 @@ Used for sections that identify challenges or pain points, with a subtle orange 
 
 Highlights solutions or benefits with a subtle teal pattern background.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--primary-50); padding: var(--space-6); border-radius: 0.25rem; border: 1px solid var(--primary-100);">
       <h3 style="margin-top: 0;">Solution Panel</h3>
@@ -261,14 +253,13 @@ Highlights solutions or benefits with a subtle teal pattern background.
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel solution-panel">
-  <div class="panel-content">
-    <h2>Our Solution</h2>
-    <p>Description of the solutions provided...</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel solution-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h2&gt;Our Solution&lt;/h2&gt;
+    &lt;p&gt;Description of the solutions provided...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -276,7 +267,7 @@ Highlights solutions or benefits with a subtle teal pattern background.
 
 Used for insights or analysis sections with a subtle indigo pattern background.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--accent-50); padding: var(--space-6); border-radius: 0.25rem; border: 1px solid var(--accent-100);">
       <h3 style="margin-top: 0;">Perspective Panel</h3>
@@ -285,14 +276,13 @@ Used for insights or analysis sections with a subtle indigo pattern background.
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel perspective-panel">
-  <div class="panel-content">
-    <h2>Our Perspective</h2>
-    <p>Analysis and insights go here...</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel perspective-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h2&gt;Our Perspective&lt;/h2&gt;
+    &lt;p&gt;Analysis and insights go here...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -300,7 +290,7 @@ Used for insights or analysis sections with a subtle indigo pattern background.
 
 High-emphasis section with a gradient background for prompting user action.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%); color: white; padding: var(--space-6); border-radius: 0.25rem; text-align: center;">
       <h3 style="margin-top: 0; color: white;">Call-to-Action Panel</h3>
@@ -310,15 +300,14 @@ High-emphasis section with a gradient background for prompting user action.
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel cta-panel">
-  <div class="panel-content centered">
-    <h2>Ready to Get Started?</h2>
-    <p class="lead-text">Join thousands of brands discovering new opportunities.</p>
-    <a href="/signup/" class="cta-button">Start Now</a>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel cta-panel"&gt;
+  &lt;div class="panel-content centered"&gt;
+    &lt;h2&gt;Ready to Get Started?&lt;/h2&gt;
+    &lt;p class="lead-text"&gt;Join thousands of brands discovering new opportunities.&lt;/p&gt;
+    &lt;a href="/signup/" class="cta-button"&gt;Start Now&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -326,7 +315,7 @@ High-emphasis section with a gradient background for prompting user action.
 
 Optimized for content-heavy sections with a narrower content area for improved readability.
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: white; padding: var(--space-6); border-radius: 0.25rem; border: 1px solid var(--neutral-200); max-width: 800px; margin: 0 auto;">
       <h3 style="margin-top: 0; text-align: center;">Text Panel</h3>
@@ -336,15 +325,14 @@ Optimized for content-heavy sections with a narrower content area for improved r
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel light-panel text-panel">
-  <div class="panel-content">
-    <h2>Article Title</h2>
-    <p>Long-form content optimized for reading...</p>
-    <p>Additional paragraphs with improved readability...</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel light-panel text-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h2&gt;Article Title&lt;/h2&gt;
+    &lt;p&gt;Long-form content optimized for reading...&lt;/p&gt;
+    &lt;p&gt;Additional paragraphs with improved readability...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -356,7 +344,7 @@ Panel layouts include specific typography styles to maintain consistency across 
 
 Panel headings are centered by default with appropriate spacing:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--neutral-100); padding: var(--space-6); border-radius: 0.25rem;">
       <h2 style="margin-top: 0; text-align: center; font-size: 2.25rem; margin-bottom: var(--space-6);">Panel Heading</h2>
@@ -365,15 +353,14 @@ Panel headings are centered by default with appropriate spacing:
   </div>
   
   <div class="example-code">
-```css
-.full-width-panel h2 {
+    <span class="code-language">css</span>
+    <pre><code class="language-css">.full-width-panel h2 {
   font-size: 2.25rem;
   margin-bottom: var(--space-6);  /* 1.5rem */
   margin-top: 0;
   text-align: center;
   color: inherit;
-}
-```
+}</code></pre>
   </div>
 </div>
 
@@ -381,7 +368,7 @@ Panel headings are centered by default with appropriate spacing:
 
 Emphasized introductory text with larger font size:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="background-color: var(--neutral-100); padding: var(--space-6); border-radius: 0.25rem;">
       <h2 style="margin-top: 0; text-align: center;">Panel Heading</h2>
@@ -391,15 +378,14 @@ Emphasized introductory text with larger font size:
   </div>
   
   <div class="example-code">
-```html
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Section Title</h2>
-    <p class="lead-text">Introductory text that highlights key points...</p>
-    <p>Regular content follows...</p>
-  </div>
-</div>
-```
+    <span class="code-language">html</span>
+    <pre><code class="language-html">&lt;div class="full-width-panel light-panel"&gt;
+  &lt;div class="panel-content"&gt;
+    &lt;h2&gt;Section Title&lt;/h2&gt;
+    &lt;p class="lead-text"&gt;Introductory text that highlights key points...&lt;/p&gt;
+    &lt;p&gt;Regular content follows...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
@@ -423,30 +409,28 @@ All layout components are fully responsive, adapting to different screen sizes:
 - Minimal horizontal padding
 - Optimized vertical spacing
 
-<div class="example">
-  <div class="example-preview">
-    <div style="display: flex; justify-content: space-between; gap: var(--space-4); text-align: center; font-size: 0.875rem;">
-      <div>
-        <div style="border: 1px solid var(--neutral-300); border-radius: 0.25rem; padding: var(--space-2); height: 200px; width: 300px; margin-bottom: var(--space-2); display: flex; flex-direction: column;">
-          <div style="background-color: var(--neutral-200); padding: var(--space-2); margin-bottom: var(--space-2);">Header</div>
-          <div style="display: flex; flex-grow: 1; gap: var(--space-2);">
-            <div style="background-color: var(--primary-100); width: 50%; padding: var(--space-2);">Content</div>
-            <div style="background-color: var(--secondary-100); width: 50%; padding: var(--space-2);">Image</div>
-          </div>
+<div class="example-preview">
+  <div style="display: flex; justify-content: space-between; gap: var(--space-4); text-align: center; font-size: 0.875rem;">
+    <div>
+      <div style="border: 1px solid var(--neutral-300); border-radius: 0.25rem; padding: var(--space-2); height: 200px; width: 300px; margin-bottom: var(--space-2); display: flex; flex-direction: column;">
+        <div style="background-color: var(--neutral-200); padding: var(--space-2); margin-bottom: var(--space-2);">Header</div>
+        <div style="display: flex; flex-grow: 1; gap: var(--space-2);">
+          <div style="background-color: var(--primary-100); width: 50%; padding: var(--space-2);">Content</div>
+          <div style="background-color: var(--secondary-100); width: 50%; padding: var(--space-2);">Image</div>
         </div>
-        <div>Desktop Layout</div>
       </div>
-      
-      <div>
-        <div style="border: 1px solid var(--neutral-300); border-radius: 0.25rem; padding: var(--space-2); height: 200px; width: 150px; margin-bottom: var(--space-2); display: flex; flex-direction: column;">
-          <div style="background-color: var(--neutral-200); padding: var(--space-2); margin-bottom: var(--space-2);">Header</div>
-          <div style="display: flex; flex-direction: column; flex-grow: 1; gap: var(--space-2);">
-            <div style="background-color: var(--primary-100); height: 50%; padding: var(--space-2);">Content</div>
-            <div style="background-color: var(--secondary-100); height: 50%; padding: var(--space-2);">Image</div>
-          </div>
+      <div>Desktop Layout</div>
+    </div>
+    
+    <div>
+      <div style="border: 1px solid var(--neutral-300); border-radius: 0.25rem; padding: var(--space-2); height: 200px; width: 150px; margin-bottom: var(--space-2); display: flex; flex-direction: column;">
+        <div style="background-color: var(--neutral-200); padding: var(--space-2); margin-bottom: var(--space-2);">Header</div>
+        <div style="display: flex; flex-direction: column; flex-grow: 1; gap: var(--space-2);">
+          <div style="background-color: var(--primary-100); height: 50%; padding: var(--space-2);">Content</div>
+          <div style="background-color: var(--secondary-100); height: 50%; padding: var(--space-2);">Image</div>
         </div>
-        <div>Mobile Layout</div>
       </div>
+      <div>Mobile Layout</div>
     </div>
   </div>
 </div>

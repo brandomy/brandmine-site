@@ -14,59 +14,57 @@ Our spacing system uses a consistent scale based on 4px increments, providing ha
 
 Our spacing scale follows a progression that provides appropriate options for different contexts, from tight component spacing to generous page sections.
 
-<div class="example">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-1); width: var(--space-1);"></div>
-      </div>
-      <div><code>--space-1</code> (0.25rem / 4px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-2); width: var(--space-2);"></div>
-      </div>
-      <div><code>--space-2</code> (0.5rem / 8px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-3); width: var(--space-3);"></div>
-      </div>
-      <div><code>--space-3</code> (0.75rem / 12px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-4); width: var(--space-4);"></div>
-      </div>
-      <div><code>--space-4</code> (1rem / 16px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-6); width: var(--space-6);"></div>
-      </div>
-      <div><code>--space-6</code> (1.5rem / 24px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-8); width: var(--space-8);"></div>
-      </div>
-      <div><code>--space-8</code> (2rem / 32px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-10); width: var(--space-10);"></div>
-      </div>
-      <div><code>--space-10</code> (2.5rem / 40px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-12); width: var(--space-12);"></div>
-      </div>
-      <div><code>--space-12</code> (3rem / 48px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-16); width: var(--space-16);"></div>
-      </div>
-      <div><code>--space-16</code> (4rem / 64px)</div>
-      
-      <div>
-        <div style="background-color: var(--primary-200); height: var(--space-20); width: var(--space-20);"></div>
-      </div>
-      <div><code>--space-20</code> (5rem / 80px)</div>
+<div class="example-preview">
+  <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center;">
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-1); width: var(--space-1);"></div>
     </div>
+    <div><code>--space-1</code> (0.25rem / 4px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-2); width: var(--space-2);"></div>
+    </div>
+    <div><code>--space-2</code> (0.5rem / 8px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-3); width: var(--space-3);"></div>
+    </div>
+    <div><code>--space-3</code> (0.75rem / 12px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-4); width: var(--space-4);"></div>
+    </div>
+    <div><code>--space-4</code> (1rem / 16px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-6); width: var(--space-6);"></div>
+    </div>
+    <div><code>--space-6</code> (1.5rem / 24px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-8); width: var(--space-8);"></div>
+    </div>
+    <div><code>--space-8</code> (2rem / 32px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-10); width: var(--space-10);"></div>
+    </div>
+    <div><code>--space-10</code> (2.5rem / 40px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-12); width: var(--space-12);"></div>
+    </div>
+    <div><code>--space-12</code> (3rem / 48px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-16); width: var(--space-16);"></div>
+    </div>
+    <div><code>--space-16</code> (4rem / 64px)</div>
+    
+    <div>
+      <div style="background-color: var(--primary-200); height: var(--space-20); width: var(--space-20);"></div>
+    </div>
+    <div><code>--space-20</code> (5rem / 80px)</div>
   </div>
 </div>
 
@@ -76,7 +74,7 @@ Our spacing scale follows a progression that provides appropriate options for di
 
 Spacing variables can be used for both margin and padding properties:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="border: 1px dashed var(--neutral-400); padding: var(--space-4); margin-bottom: var(--space-4);">
       Element with padding: var(--space-4)
@@ -87,15 +85,14 @@ Spacing variables can be used for both margin and padding properties:
   </div>
   
   <div class="example-code">
-```css
-.element-with-standard-padding {
+    <span class="code-language">css</span>
+    <pre><code class="language-css">.element-with-standard-padding {
   padding: var(--space-4); /* 1rem / 16px */
 }
 
 .element-with-larger-padding {
   padding: var(--space-8); /* 2rem / 32px */
-}
-```
+}</code></pre>
   </div>
 </div>
 
@@ -103,7 +100,7 @@ Spacing variables can be used for both margin and padding properties:
 
 Create consistent spacing between elements using margin:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: flex; flex-direction: column; gap: var(--space-4); border: 1px solid var(--neutral-300); padding: var(--space-4);">
       <div style="background-color: var(--primary-100); padding: var(--space-4);">First element</div>
@@ -113,8 +110,8 @@ Create consistent spacing between elements using margin:
   </div>
   
   <div class="example-code">
-```css
-.element-stack {
+    <span class="code-language">css</span>
+    <pre><code class="language-css">.element-stack {
   display: flex;
   flex-direction: column;
   gap: var(--space-4); /* Modern gap property */
@@ -123,8 +120,7 @@ Create consistent spacing between elements using margin:
 /* Alternative using margin for wider browser support */
 .element-stack > * + * {
   margin-top: var(--space-4);
-}
-```
+}</code></pre>
   </div>
 </div>
 
@@ -132,7 +128,7 @@ Create consistent spacing between elements using margin:
 
 For larger layout sections, use the bigger spacing values:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="border: 1px dashed var(--neutral-400); padding: var(--space-12); margin-bottom: var(--space-12); text-align: center;">
       Section with padding: var(--space-12)
@@ -143,16 +139,15 @@ For larger layout sections, use the bigger spacing values:
   </div>
   
   <div class="example-code">
-```css
-.section {
+    <span class="code-language">css</span>
+    <pre><code class="language-css">.section {
   padding: var(--space-12); /* 3rem / 48px */
   margin-bottom: var(--space-12);
 }
 
 .hero-section {
   padding: var(--space-16); /* 4rem / 64px */
-}
-```
+}</code></pre>
   </div>
 </div>
 
@@ -160,7 +155,7 @@ For larger layout sections, use the bigger spacing values:
 
 ### Card Component
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="border: 1px solid var(--neutral-300); border-radius: 0.5rem; overflow: hidden; max-width: 320px;">
       <div style="height: 160px; background-color: var(--primary-100);"></div>
@@ -173,8 +168,8 @@ For larger layout sections, use the bigger spacing values:
   </div>
   
   <div class="example-code">
-```css
-.card {
+    <span class="code-language">css</span>
+    <pre><code class="language-css">.card {
   border: 1px solid var(--neutral-300);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -196,14 +191,13 @@ For larger layout sections, use the bigger spacing values:
 .card-description {
   margin-top: 0;
   margin-bottom: var(--space-4);
-}
-```
+}</code></pre>
   </div>
 </div>
 
 ### Form Elements
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="max-width: 400px;">
       <div style="margin-bottom: var(--space-4);">
@@ -219,8 +213,8 @@ For larger layout sections, use the bigger spacing values:
   </div>
   
   <div class="example-code">
-```css
-.form-group {
+    <span class="code-language">css</span>
+    <pre><code class="language-css">.form-group {
   margin-bottom: var(--space-4);
 }
 
@@ -240,8 +234,7 @@ For larger layout sections, use the bigger spacing values:
   padding: var(--space-2);
   border: 1px solid var(--neutral-300);
   border-radius: 0.25rem;
-}
-```
+}</code></pre>
   </div>
 </div>
 

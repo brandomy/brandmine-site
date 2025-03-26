@@ -1,0 +1,34 @@
+<!-- _includes/styleguide/code-example.html -->
+{% comment %}
+  Code example include for styleguide documentation
+  
+  Usage:
+  {% include styleguide/code-example.html 
+     language="html" 
+     code="<div>Example code</div>"
+  %}
+  
+  Or with preview:
+  {% include styleguide/code-example.html 
+     language="html" 
+     code="<div>Example code</div>"
+     preview=true
+  %}
+{% endcomment %}
+
+{% if include.preview %}
+<div class="example-wrapper">
+  <div class="example-preview">
+    {{ include.code }}
+  </div>
+  <div class="example-code">
+    <span class="code-language">{{ include.language }}</span>
+    <pre><code class="language-{{ include.language }}">{{ include.code | escape }}</code></pre>
+  </div>
+</div>
+{% else %}
+<div class="example-code">
+  <span class="code-language">{{ include.language }}</span>
+  <pre><code class="language-{{ include.language }}">{{ include.code | escape }}</code></pre>
+</div>
+{% endif %}
