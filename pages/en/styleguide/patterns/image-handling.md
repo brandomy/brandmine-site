@@ -14,32 +14,8 @@ Our image handling system ensures consistent, high-quality visuals across the pl
 
 Images are organized by purpose and content type in a structured directory system:
 
-<div class="example">
-  <div class="example-preview">
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
-      <strong>brands/</strong>
-      <div>Brand-specific images organized by brand name</div>
-      
-      <strong>site/</strong>
-      <div>Site-wide design elements (layout, icons, logos, UI)</div>
-      
-      <strong>pages/</strong>
-      <div>Page-specific images (home, about, etc.)</div>
-      
-      <strong>posts/</strong>
-      <div>Blog post images organized by post date and slug</div>
-      
-      <strong>people/</strong>
-      <div>Team/people images (headshots, team photos)</div>
-      
-      <strong>sectors/</strong>
-      <div>Sector/industry imagery organized by sector</div>
-    </div>
-  </div>
-  
-  <div class="example-code">
-```
-assets/
+{% include styleguide/code-example.html language="text" preview=true
+code='assets/
 └── images/
     ├── brands/             # Brand-specific images
     │   └── [brand-name]/   # Each brand gets its own folder
@@ -67,16 +43,13 @@ assets/
     └── sectors/            # Sector/industry imagery
         ├── hotels/         # Hotel sector images
         ├── spirits/        # Spirits sector images
-        └── [other sectors]/
-```
-  </div>
-</div>
+        └── [other sectors]/' %}
 
 ### Brand Image Organization
 
 Brand images are organized by brand name, with each brand having its own directory:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="font-family: monospace; font-size: 0.875rem; background-color: var(--neutral-100); padding: var(--space-4); border-radius: 4px; line-height: 1.4;">
       assets/images/brands/teatime/<br>
@@ -99,7 +72,7 @@ Brand images are organized by brand name, with each brand having its own directo
 
 Brand images follow this standardized naming pattern:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <code>purpose-imagename.jpg</code>
@@ -124,7 +97,7 @@ Brand images follow this standardized naming pattern:
 
 Common purpose identifiers for image naming:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <code>hero</code>
@@ -161,7 +134,7 @@ Common purpose identifiers for image naming:
 
 Non-brand images follow a similar pattern but may omit the brand component:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <code>category-purpose-name-widthw.jpg</code>
@@ -186,7 +159,7 @@ Non-brand images follow a similar pattern but may omit the brand component:
 
 All responsive images are generated in these standard widths:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>400w</strong>
@@ -208,7 +181,7 @@ All responsive images are generated in these standard widths:
 
 To maintain visual consistency across the platform, use these standard aspect ratios:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>16:9</strong>
@@ -242,7 +215,7 @@ Logo images should be:
 
 The image processing workflow uses a custom script to generate responsive versions automatically:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <ol style="font-size: 0.875rem; line-height: 1.4; margin-top: 0;">
       <li>Place original high-resolution images in appropriate <code>originals/</code> folder</li>
@@ -262,26 +235,21 @@ The script, located at `scripts/resize_images.sh`, automatically:
 - Places files in the correct directory
 - Maintains consistent naming patterns
 
-<div class="example">
-  <div class="example-code">
-```bash
-# Process images for a specific brand
+{% include styleguide/code-example.html language="bash" preview=false
+code='# Process images for a specific brand
 ./scripts/resize_images.sh teatime
 
 # Process all brand images
 ./scripts/resize_images.sh
 
 # Process all image categories
-./scripts/process_all_images.sh
-```
-  </div>
-</div>
+./scripts/process_all_images.sh' %}
 
 ### Quality Settings
 
 Standard quality settings for optimal balance between file size and appearance:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>JPEG quality</strong>
@@ -294,14 +262,11 @@ Standard quality settings for optimal balance between file size and appearance:
       <div>Minified when used for UI elements</div>
     </div>
   </div>
-  
-  <div class="example-code">
-```bash
-# From resize_images.sh script
-convert "$IMG" -resize "${SIZE}x" -quality 85 "$BRAND_DIR/$OUTPUT_FILENAME"
-```
-  </div>
 </div>
+
+{% include styleguide/code-example.html language="bash" preview=false
+code='# From resize_images.sh script
+convert "$IMG" -resize "${SIZE}x" -quality 85 "$BRAND_DIR/$OUTPUT_FILENAME"' %}
 
 ## Implementation in Jekyll
 
@@ -309,7 +274,7 @@ convert "$IMG" -resize "${SIZE}x" -quality 85 "$BRAND_DIR/$OUTPUT_FILENAME"
 
 Jekyll includes make it easy to use responsive images throughout the site:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <code>brand-image.html</code>
@@ -319,11 +284,10 @@ Jekyll includes make it easy to use responsive images throughout the site:
       <div>For site-wide design elements and other images</div>
     </div>
   </div>
-  
-  <div class="example-code">
-{% raw %}
-```liquid
-<!-- For brand images -->
+</div>
+
+{% include styleguide/code-example.html language="liquid" preview=false
+code='<!-- For brand images -->
 {% include brand-image.html 
    brand="teatime" 
    image="storefront" 
@@ -337,21 +301,14 @@ Jekyll includes make it easy to use responsive images throughout the site:
    image="banner" 
    purpose="hero"
    alt="Brandmine connecting BRICS consumers" 
-   class="full-width" %}
-```
-{% endraw %}
-  </div>
-</div>
+   class="full-width" %}' %}
 
 ### Brand Image Include Implementation
 
 The brand image include automatically generates all the necessary HTML for responsive images:
 
-<div class="example">
-  <div class="example-code">
-{% raw %}
-```html
-{% comment %}
+{% include styleguide/code-example.html language="html" preview=false
+code='{% comment %}
   Responsive Brand Image Include
   
   Usage:
@@ -379,14 +336,11 @@ The brand image include automatically generates all the necessary HTML for respo
      alt="{{ alt }}"
      {% if class %}class="{{ class }}"{% endif %}
      loading="lazy">
-```
-{% endraw %}
-  </div>
-</div>
+' %}
 
 ### Usage Examples
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-4);">
       <div>
@@ -437,7 +391,7 @@ The brand image include automatically generates all the necessary HTML for respo
 
 Several tools are available for image processing and optimization:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>ImageMagick</strong>
@@ -467,7 +421,7 @@ Several tools are available for image processing and optimization:
 
 Different contexts require specific image characteristics:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>Hero images</strong>
@@ -495,7 +449,7 @@ Different contexts require specific image characteristics:
 
 For optimal SEO with images:
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>Descriptive filenames</strong>
@@ -517,26 +471,21 @@ For optimal SEO with images:
       <div>Include schema markup for product images when appropriate</div>
     </div>
   </div>
-  
-  <div class="example-code">
-{% raw %}
-```html
-<!-- Example of SEO-optimized image -->
+</div>
+
+{% include styleguide/code-example.html language="html" preview=false
+code='<!-- Example of SEO-optimized image -->
 <img src="/assets/images/brands/teatime/teatime-product-premium-darjeeling-800w.jpg"
      alt="TeaTime Premium Darjeeling Tea - Organic loose leaf black tea from Darjeeling, India"
      width="800"
      height="600"
-     loading="lazy">
-```
-{% endraw %}
-  </div>
-</div>
+     loading="lazy">' %}
 
 ## Troubleshooting Common Issues
 
 ### Image Processing Script Issues
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>"Command not found" error</strong>
@@ -556,7 +505,7 @@ For optimal SEO with images:
 
 ### Jekyll Include Issues
 
-<div class="example">
+<div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
       <strong>Images not displaying</strong>
@@ -607,4 +556,3 @@ For optimal SEO with images:
    - Use the provided scripts for image processing
    - Maintain the directory structure
    - Follow the workflow for adding new images
-
