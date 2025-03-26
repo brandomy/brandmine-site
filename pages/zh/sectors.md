@@ -51,10 +51,10 @@ ref: sectors
   </div>
 </div>
 
-<!-- Country Distribution Panel -->
+<!-- Market Distribution Panel -->
 <div class="full-width-panel light-panel">
   <div class="panel-content">
-    <h2>各国行业分布</h2>
+    <h2>各市场行业分布</h2>
     
     <div class="country-sectors-grid">
       <div class="country-sectors-card">
@@ -96,7 +96,7 @@ ref: sectors
 <div class="full-width-panel cta-panel">
   <div class="panel-content centered">
     <h2>对特定行业感兴趣？</h2>
-    <p>联系我们，了解更多关于我们的行业研究或讨论特定产品类别的机会。</p>
+    <p>联系我们，了解更多关于我们的行业研究或讨论特定产品类别的机遇。</p>
     <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">联系我们</a>
   </div>
 </div>

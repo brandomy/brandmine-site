@@ -95,7 +95,7 @@ ref: brands
         <h3>品牌名称</h3>
         <p>品牌简介，突出其独特卖点和来源。</p>
         <div class="brand-meta">
-          <span class="brand-country">俄罗斯</span>
+          <span class="brand-market">俄罗斯</span>
           <span class="brand-sector">手工食品</span>
         </div>
       </div>
@@ -106,7 +106,7 @@ ref: brands
         <h3>品牌名称</h3>
         <p>品牌简介，突出其独特卖点和来源。</p>
         <div class="brand-meta">
-          <span class="brand-country">巴西</span>
+          <span class="brand-market">巴西</span>
           <span class="brand-sector">天然美容</span>
         </div>
       </div>
@@ -116,7 +116,7 @@ ref: brands
         <h3>品牌名称</h3>
         <p>品牌简介，突出其独特卖点和来源。</p>
         <div class="brand-meta">
-          <span class="brand-country">印度</span>
+          <span class="brand-market">印度</span>
           <span class="brand-sector">时尚</span>
         </div>
       </div>
@@ -132,11 +132,11 @@ ref: brands
       <p>使用我们的高级搜索和筛选工具，按以下条件发现品牌：</p>
       
       <div class="filter-categories">
-        <div class="filter-category">原产国</div>
-        <div class="filter-category">产品类别</div>
+        <div class="filter-category">市场来源</div>
+        <div class="filter-category">行业</div>
         <div class="filter-category">公司规模</div>
-        <div class="filter-category">出口就绪度</div>
-        <div class="filter-category">市场定位</div>
+        <div class="filter-category">信号</div>
+        <div class="filter-category">特性</div>
       </div>
       
       <div class="cta-container">

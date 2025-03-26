@@ -210,5 +210,5 @@ ref: russian-sectors
 
 <div class="sector-footer">
   <p>Узнайте, как Brandmine может связать вас с ведущими брендами во всех этих захватывающих секторах.</p>
-  <a href="/ru/sectors/" class="btn btn-primary">Вернуться к обзору секторов</a>
+   <a href="{{ site.baseurl }}/{{ page.lang }}/sectors/" class="btn btn-primary">Вернуться к обзору секторов</a>
 </div>
