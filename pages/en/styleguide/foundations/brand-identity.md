@@ -4,6 +4,7 @@ title: Brand Identity
 description: Brandmine's visual identity guidelines for consistent branding across all platforms.
 permalink: /en/styleguide/foundations/brand-identity/
 lang: en
+published: true
 ---
 
 ## Brand Identity Overview
@@ -14,8 +15,10 @@ Our brand identity creates a professional, cohesive visual system that reinforce
 
 The Brandmine logo system consists of several variations to accommodate different contexts and applications:
 
-{% include styleguide/code-example.html language="html" preview=true
-code='<!-- Primary Logo -->
+{% include styleguide/code-example.html 
+  language="html" 
+  preview=true
+  code='<!-- Primary Logo -->
 <div class="logo">
   <img src="/assets/images/site/logos/brandmine-logo-primary.svg" alt="Brandmine">
 </div>
@@ -42,24 +45,26 @@ code='<!-- Primary Logo -->
 
 ### Logo Usage Guidelines
 
-<div class="example-preview">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
-    <div style="border: 1px solid var(--neutral-200); padding: var(--space-4); text-align: center;">
-      <div style="background-color: var(--primary-400); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; padding: var(--space-2) var(--space-4); border-radius: 4px; display: inline-block; margin-bottom: var(--space-4);">Brandmine</div>
-      <div style="font-size: 0.875rem; color: var(--neutral-600);">✓ Correct spacing and proportions</div>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
+      <div style="border: 1px solid var(--neutral-200); padding: var(--space-4); text-align: center;">
+        <div style="background-color: var(--primary-400); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; padding: var(--space-2) var(--space-4); border-radius: 4px; display: inline-block; margin-bottom: var(--space-4);">Brandmine</div>
+        <div style="font-size: 0.875rem; color: var(--neutral-600);">✓ Correct spacing and proportions</div>
+      </div>
+      <div style="border: 1px solid var(--neutral-200); padding: var(--space-4); text-align: center;">
+        <div style="background-color: var(--primary-300); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; padding: var(--space-2) var(--space-4); border-radius: 4px; display: inline-block; margin-bottom: var(--space-4);">Brandmine</div>
+        <div style="font-size: 0.875rem; color: var(--neutral-600);">✗ Incorrect color</div>
+      </div>
     </div>
-    <div style="border: 1px solid var(--neutral-200); padding: var(--space-4); text-align: center;">
-      <div style="background-color: var(--primary-300); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; padding: var(--space-2) var(--space-4); border-radius: 4px; display: inline-block; margin-bottom: var(--space-4);">Brandmine</div>
-      <div style="font-size: 0.875rem; color: var(--neutral-600);">✗ Incorrect color</div>
+    <div style="margin-top: var(--space-4); font-size: 0.875rem; color: var(--neutral-700);">
+      <ul style="padding-left: var(--space-4);">
+        <li style="margin-bottom: var(--space-2);">Always maintain clear space around the logo equal to the height of the "B"</li>
+        <li style="margin-bottom: var(--space-2);">Never alter the logo proportions or colors</li>
+        <li style="margin-bottom: var(--space-2);">Use the reversed version on dark backgrounds</li>
+        <li style="margin-bottom: var(--space-2);">Minimum size: 120px wide for the full logo, 32px for the icon</li>
+      </ul>
     </div>
-  </div>
-  <div style="margin-top: var(--space-4); font-size: 0.875rem; color: var(--neutral-700);">
-    <ul style="padding-left: var(--space-4);">
-      <li style="margin-bottom: var(--space-2);">Always maintain clear space around the logo equal to the height of the "B"</li>
-      <li style="margin-bottom: var(--space-2);">Never alter the logo proportions or colors</li>
-      <li style="margin-bottom: var(--space-2);">Use the reversed version on dark backgrounds</li>
-      <li style="margin-bottom: var(--space-2);">Minimum size: 120px wide for the full logo, 32px for the icon</li>
-    </ul>
   </div>
 </div>
 
@@ -67,45 +72,47 @@ code='<!-- Primary Logo -->
 
 Our color system consists of four color families that work together to create a cohesive and professional visual identity:
 
-<div class="example-preview">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: var(--space-4);">
-    <!-- Primary Color (Teal) -->
-    <div>
-      <div style="height: 80px; background-color: var(--primary-400); border-radius: 4px 4px 0 0;"></div>
-      <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
-        <strong>Primary</strong><br>
-        var(--primary-400)<br>
-        #38B2AC
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: var(--space-4);">
+      <!-- Primary Color (Teal) -->
+      <div>
+        <div style="height: 80px; background-color: var(--primary-400); border-radius: 4px 4px 0 0;"></div>
+        <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
+          <strong>Primary</strong><br>
+          var(--primary-400)<br>
+          #38B2AC
+        </div>
       </div>
-    </div>
-    
-    <!-- Secondary Color (Orange) -->
-    <div>
-      <div style="height: 80px; background-color: var(--secondary-500); border-radius: 4px 4px 0 0;"></div>
-      <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
-        <strong>Secondary</strong><br>
-        var(--secondary-500)<br>
-        #F97316
+      
+      <!-- Secondary Color (Orange) -->
+      <div>
+        <div style="height: 80px; background-color: var(--secondary-500); border-radius: 4px 4px 0 0;"></div>
+        <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
+          <strong>Secondary</strong><br>
+          var(--secondary-500)<br>
+          #F97316
+        </div>
       </div>
-    </div>
-    
-    <!-- Accent Color (Indigo) -->
-    <div>
-      <div style="height: 80px; background-color: var(--accent-500); border-radius: 4px 4px 0 0;"></div>
-      <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
-        <strong>Accent</strong><br>
-        var(--accent-500)<br>
-        #6366F1
+      
+      <!-- Accent Color (Indigo) -->
+      <div>
+        <div style="height: 80px; background-color: var(--accent-500); border-radius: 4px 4px 0 0;"></div>
+        <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
+          <strong>Accent</strong><br>
+          var(--accent-500)<br>
+          #6366F1
+        </div>
       </div>
-    </div>
-    
-    <!-- Neutral Color -->
-    <div>
-      <div style="height: 80px; background-color: var(--neutral-600); border-radius: 4px 4px 0 0;"></div>
-      <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
-        <strong>Neutral</strong><br>
-        var(--neutral-600)<br>
-        #4B5563
+      
+      <!-- Neutral Color -->
+      <div>
+        <div style="height: 80px; background-color: var(--neutral-600); border-radius: 4px 4px 0 0;"></div>
+        <div style="padding: var(--space-2); background-color: var(--neutral-100); border-radius: 0 0 4px 4px; font-size: 0.875rem;">
+          <strong>Neutral</strong><br>
+          var(--neutral-600)<br>
+          #4B5563
+        </div>
       </div>
     </div>
   </div>
@@ -166,19 +173,21 @@ code=':root {
 
 Each color family has specific applications across the platform:
 
-<div class="example-preview">
-  <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
-    <strong>Primary (Teal)</strong>
-    <div>Main brand identity, CTAs, navigation, primary UI elements</div>
-    
-    <strong>Secondary (Orange)</strong>
-    <div>Supporting elements, highlights, secondary actions, problem panels</div>
-    
-    <strong>Accent (Indigo)</strong>
-    <div>Special UI elements, tags, tertiary actions, links, perspective panels</div>
-    
-    <strong>Neutral (Gray)</strong>
-    <div>Text, backgrounds, borders, subtle UI elements</div>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
+      <strong>Primary (Teal)</strong>
+      <div>Main brand identity, CTAs, navigation, primary UI elements</div>
+      
+      <strong>Secondary (Orange)</strong>
+      <div>Supporting elements, highlights, secondary actions, problem panels</div>
+      
+      <strong>Accent (Indigo)</strong>
+      <div>Special UI elements, tags, tertiary actions, links, perspective panels</div>
+      
+      <strong>Neutral (Gray)</strong>
+      <div>Text, backgrounds, borders, subtle UI elements</div>
+    </div>
   </div>
 </div>
 
@@ -218,24 +227,26 @@ html[lang="zh"] {
 
 A consistent icon system supports the brand identity:
 
-<div class="example-preview">
-  <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center;">
-    <!-- Placeholder icons - replace with actual brand icons -->
-    <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-      <span style="font-size: 24px;">✉</span>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center;">
+      <!-- Placeholder icons - replace with actual brand icons -->
+      <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+        <span style="font-size: 24px;">✉</span>
+      </div>
+      <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+        <span style="font-size: 24px;">✓</span>
+      </div>
+      <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+        <span style="font-size: 24px;">★</span>
+      </div>
+      <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+        <span style="font-size: 24px;">↗</span>
+      </div>
     </div>
-    <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-      <span style="font-size: 24px;">✓</span>
+    <div style="margin-top: var(--space-4); font-size: 0.875rem; color: var(--neutral-500); text-align: center;">
+      UI icons follow a consistent style and are available in both light and dark versions
     </div>
-    <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-      <span style="font-size: 24px;">★</span>
-    </div>
-    <div style="width: 48px; height: 48px; background-color: var(--primary-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-      <span style="font-size: 24px;">↗</span>
-    </div>
-  </div>
-  <div style="margin-top: var(--space-4); font-size: 0.875rem; color: var(--neutral-500); text-align: center;">
-    UI icons follow a consistent style and are available in both light and dark versions
   </div>
 </div>
 
@@ -243,19 +254,21 @@ A consistent icon system supports the brand identity:
 
 Standard assets for consistent brand implementation:
 
-<div class="example-preview">
-  <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
-    <strong>Logo Package</strong>
-    <div>Primary, reversed, and icon variations in SVG and PNG formats</div>
-    
-    <strong>Color Palette</strong>
-    <div>Digital color values in various formats (HEX, RGB, HSL)</div>
-    
-    <strong>Typography</strong>
-    <div>Self-hosted font files for all supported languages</div>
-    
-    <strong>Icon Library</strong>
-    <div>Standardized UI icons and social media icons</div>
+<div class="example-wrapper">
+  <div class="example-preview">
+    <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
+      <strong>Logo Package</strong>
+      <div>Primary, reversed, and icon variations in SVG and PNG formats</div>
+      
+      <strong>Color Palette</strong>
+      <div>Digital color values in various formats (HEX, RGB, HSL)</div>
+      
+      <strong>Typography</strong>
+      <div>Self-hosted font files for all supported languages</div>
+      
+      <strong>Icon Library</strong>
+      <div>Standardized UI icons and social media icons</div>
+    </div>
   </div>
 </div>
 

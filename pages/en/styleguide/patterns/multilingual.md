@@ -4,6 +4,7 @@ title: Multilingual Approach
 description: Brandmine's multilingual implementation supports English, Russian, and Chinese content with consistent design and user experience.
 permalink: /en/styleguide/patterns/multilingual/
 lang: en
+published: true
 ---
 
 ## Multilingual Approach
@@ -219,8 +220,8 @@ code='<div class="newsletter-container">
 
 The basic template structure for multilingual pages:
 
-```html
----
+{% include styleguide/code-example.html language="html" preview=false
+code='---
 layout: default
 title: {{ site.data.translations[page.lang].pages.brands.title }}
 description: {{ site.data.translations[page.lang].pages.brands.description }}
@@ -235,18 +236,16 @@ lang: {{ page.lang }}
     
     <!-- Page content -->
   </div>
-</div>
-```
+</div>' %}
 
 ### Language Switching
 
 When creating links to other pages, maintain the user's language:
 
-```html
-<a href="{{ site.baseurl }}/{{ page.lang }}/brands/">
+{% include styleguide/code-example.html language="html" preview=false
+code='<a href="{{ site.baseurl }}/{{ page.lang }}/brands/">
   {{ site.data.translations[page.lang].nav.brands }}
-</a>
-```
+</a>' %}
 
 ### Responsive Considerations
 
