@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div class="full-width-panel hero-panel">
+  <div class="panel-content centered">
+    <h1>{{ page.title }}</h1>
+  </div>
+</div>
+
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <div class="insights-container">
+      <div class="insights-main">
+        <div class="insights-grid">
+          {% assign insights = site.insights | where: "lang", page.lang | where: "categories", page.category | sort: "date" | reverse %}
+          {% for insight in insights %}
+          <div class="insight-card {% if insight.featured %}featured-insight{% endif %}">
+            {% if insight.image %}
+            <div class="insight-image">
+              <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}">
+            </div>
+            {% endif %}
+            
+            <div class="insight-content">
+              {% if insight.featured %}
+              <span class="featured-badge">{{ site.data.translations[page.lang].insights.featured }}</span>
+              {% endif %}
+              
+              {% if insight.premium %}
+              <span class="premium-badge">{{ site.data.translations[page.lang].insights.premium_content }}</span>
+              {% endif %}
+              
+              <div class="insight-meta">
+                <span class="insight-date">{{ insight.date | date: "%B %-d, %Y" }}</span>
+                {% if insight.author %}
+                <span class="insight-author">{{ insight.author }}</span>
+                {% endif %}
+              </div>
+              
+              <h3><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h3>
+              
+              <p>{{ insight.excerpt | strip_html | truncate: 120 }}</p>
+              
+              <a href="{{ insight.url | relative_url }}" class="read-more">{{ site.data.translations[page.lang].insights.read_more }}</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+        <div class="back-link-container">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn-secondary">{{ site.data.translations[page.lang].insights.back_to_insights }}</a>
+        </div>
+      </div>
+      
+      <div class="insights-sidebar">
+        <div class="sidebar-section">
+          <h3>{{ site.data.translations[page.lang].insights.categories }}</h3>
+          <ul class="category-list">
+            {% assign all_insights = site.insights | where: "lang", page.lang %}
+            {% assign categories = all_insights | map: "categories" | flatten | uniq %}
+            {% for category in categories %}
+            <li class="{% if category == page.category %}active{% endif %}">
+              <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category | slugify }}/">{{ category }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

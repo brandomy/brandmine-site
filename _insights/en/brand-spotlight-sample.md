@@ -4,6 +4,7 @@ title: "The Artisanal Revolution: How 7 Spices is Redefining Russian Condiments"
 content_type: "Brand Spotlight"
 date: 2025-03-18
 author: "Mikhail Orlov"
+excerpt: "A concise description of the article that will appear in cards on the homepage and in search results. It should capture attention and accurately convey the content (2-3 sentences)."
 sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Artisanal Excellence, Cultural Ambassador]

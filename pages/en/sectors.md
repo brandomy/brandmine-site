@@ -51,38 +51,38 @@ ref: sectors
   </div>
 </div>
 
-<!-- Country Distribution Panel -->
+<!-- Market Distribution Panel -->
 <div class="full-width-panel light-panel">
   <div class="panel-content">
     <h2>Sector Distribution by Market</h2>
     
-    <div class="country-sectors-grid">
-      <div class="country-sectors-card">
-        <div class="country-flag ru-flag"></div>
+    <div class="market-sectors-grid">
+      <div class="market-sectors-card">
+        <div class="market-flag ru-flag"></div>
         <h3>Russia</h3>
         <p>16 key sectors including hotels & resorts, artisanal spirits, and gourmet foods</p>
       </div>
       
-      <div class="country-sectors-card">
-        <div class="country-flag br-flag"></div>
+      <div class="market-sectors-card">
+        <div class="market-flag br-flag"></div>
         <h3>Brazil</h3>
         <p>12 key sectors with strengths in fashion, natural beverages, and organic foods</p>
       </div>
       
-      <div class="country-sectors-card">
-        <div class="country-flag in-flag"></div>
+      <div class="market-sectors-card">
+        <div class="market-flag in-flag"></div>
         <h3>India</h3>
         <p>14 key sectors featuring textiles, ayurvedic wellness, and gourmet foods</p>
       </div>
       
-      <div class="country-sectors-card">
-        <div class="country-flag cn-flag"></div>
+      <div class="market-sectors-card">
+        <div class="market-flag cn-flag"></div>
         <h3>China</h3>
         <p>16 key sectors including traditional medicines, ceramics, and specialty teas</p>
       </div>
       
-      <div class="country-sectors-card">
-        <div class="country-flag za-flag"></div>
+      <div class="market-sectors-card">
+        <div class="market-flag za-flag"></div>
         <h3>South Africa</h3>
         <p>10 key sectors with strengths in wines, botanical products, and jewelry</p>
       </div>

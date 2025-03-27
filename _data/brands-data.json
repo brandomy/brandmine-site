@@ -9,7 +9,7 @@ permalink: /assets/data/brands-data.json
       "name": "{{ brand.title | escape }}",
       "url": "{{ brand.url | relative_url }}",
       "sector": "{{ brand.sector | escape }}",
-      "country": "{{ brand.country | escape }}",
+      "market": "{{ brand.market | escape }}",
       "premium": {% if brand.premium %}true{% else %}false{% endif %}
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}

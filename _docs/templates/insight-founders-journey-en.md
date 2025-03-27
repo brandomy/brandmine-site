@@ -4,6 +4,7 @@ title: "Title: Subtitle with Brand Name"
 content_type: "Founder's Journey"
 date: YYYY-MM-DD
 author: "Author Name"
+excerpt: "A concise description of the article that will appear in cards on the homepage and in search results. It should capture attention and accurately convey the content (2-3 sentences)."
 sectors: []
 markets: []
 attributes: []

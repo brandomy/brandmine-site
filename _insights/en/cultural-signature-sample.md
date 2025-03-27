@@ -4,6 +4,7 @@ title: "The Ritual of Sweetness: How Bushe Bakeries Blend Soviet Nostalgia with 
 content_type: "Cultural Signature"
 date: 2025-03-22
 author: "Elena Volkova"
+excerpt: "A concise description of the article that will appear in cards on the homepage and in search results. It should capture attention and accurately convey the content (2-3 sentences)."
 sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Heritage Brand, Cultural Ambassador]

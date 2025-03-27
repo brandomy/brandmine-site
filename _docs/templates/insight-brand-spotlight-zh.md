@@ -4,6 +4,7 @@ title: "标题：聚焦品牌名称"
 content_type: "品牌聚焦"
 date: YYYY-MM-DD
 author: "作者姓名"
+excerpt: "简洁描述文章内容，将显示在首页卡片和搜索结果中。应吸引读者注意力并准确传达文章内容（2-3个句子）。"
 sectors: []
 markets: []
 attributes: []

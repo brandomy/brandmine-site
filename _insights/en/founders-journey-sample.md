@@ -4,6 +4,7 @@ title: "From University Project to Global Brand: The TeaTime Story"
 content_type: "Founder's Journey"
 date: 2025-03-15
 author: "Anna Petrova"
+excerpt: "A concise description of the article that will appear in cards on the homepage and in search results. It should capture attention and accurately convey the content (2-3 sentences)."
 sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Heritage Brand, Founder-Led]

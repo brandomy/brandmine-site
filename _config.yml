@@ -60,37 +60,6 @@ defaults:
     values:
       lang: zh
 
-  # Post language defaults
-  - scope:
-      path: "_posts/en"
-      type: "posts"
-    values:
-      layout: "post"
-      lang: "en"
-      show_author: true
-      show_date: true
-      show_time: false
-      permalink: /en/:categories/:year/:month/:day/:title/
-  - scope:
-      path: "_posts/ru"
-      type: "posts"
-    values:
-      layout: "post"
-      lang: "ru"
-      show_author: true
-      show_date: true
-      show_time: false
-      permalink: /ru/:categories/:year/:month/:day/:title/
-  - scope:
-      path: "_posts/zh"
-      type: "posts"
-    values:
-      layout: "post"
-      lang: "zh"
-      show_author: true
-      show_date: true
-      show_time: false
-      permalink: /zh/:categories/:year/:month/:day/:title/
 
   # Brand defaults by language
   - scope:
@@ -139,18 +108,33 @@ defaults:
     values:
       layout: "insight"
       lang: "en"
+      show_author: true
+      show_date: true
+      show_time: false
+      featured: false
+      premium: false
   - scope:
       path: "_insights/ru"
       type: "insights"
     values:
       layout: "insight"
       lang: "ru"
+      show_author: true
+      show_date: true
+      show_time: false
+      featured: false
+      premium: false
   - scope:
       path: "_insights/zh"
       type: "insights"
     values:
       layout: "insight"
       lang: "zh"
+      show_author: true
+      show_date: true
+      show_time: false
+      featured: false
+      premium: false
 
 # Style Guide Configuration
 styleguide:

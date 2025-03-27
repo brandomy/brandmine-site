@@ -4,6 +4,7 @@ title: "Luxury Beyond the City: How Ginza Project's Rural Expansion Is Redefinin
 content_type: "Market Milestone"
 date: 2025-03-20
 author: "Ivan Petrov"
+excerpt: "A concise description of the article that will appear in cards on the homepage and in search results. It should capture attention and accurately convey the content (2-3 sentences)."
 sectors: [Hotels & Resorts]
 markets: [Russia]
 attributes: [Innovation Leader, Premium Positioning]
