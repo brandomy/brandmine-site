@@ -18,7 +18,7 @@ gallery:
   - "/assets/images/brands/brand-slug/originals/gallery-image3.jpg"
 website: "https://brand-url.com"
 contact_email: "contact@brand-url.com"
-related_brands: []
+brands: []
 premium: false
 featured: false
 permalink: /zh/brands/brand-slug/

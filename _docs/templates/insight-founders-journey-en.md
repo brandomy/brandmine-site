@@ -1,5 +1,3 @@
-# Founder's Journey Template
-```markdown
 ---
 layout: insight
 title: "Title: Subtitle with Brand Name"
@@ -9,8 +7,7 @@ author: "Author Name"
 sectors: []
 markets: []
 attributes: []
-signals: []
-related_brands: [brand-slug]
+brands: [brand-slug]
 image: /assets/images/insights/brand-slug-founder.jpg
 featured: false
 premium: false

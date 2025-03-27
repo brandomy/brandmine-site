@@ -18,7 +18,7 @@ gallery:
   - "/assets/images/brands/teatime/originals/gallery-founder.jpg"
 website: "https://teatime.ru"
 contact_email: "info@teatime.ru"
-related_brands: [russian-brew, moskva-chai]
+brands: [russian-brew, moskva-chai]
 premium: false
 featured: true
 permalink: /en/brands/teatime/

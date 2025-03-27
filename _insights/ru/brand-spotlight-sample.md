@@ -8,7 +8,7 @@ sectors: [Гурманская еда]
 markets: [Россия]
 attributes: [Ремесленное мастерство, Культурный посол]
 signals: [Готов к экспорту]
-related_brands: [7_spices]
+brands: [7_spices]
 image: /assets/images/insights/7-spices-spotlight.jpg
 featured: false
 premium: false

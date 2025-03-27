@@ -8,7 +8,7 @@ sectors: [酒店与度假村]
 markets: [俄罗斯]
 attributes: [创新领导者, 高端定位]
 signals: [投资就绪]
-related_brands: [ginza_project]
+brands: [ginza_project]
 image: /assets/images/insights/ginza-project-milestone.jpg
 featured: true
 premium: false

@@ -8,7 +8,7 @@ sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Heritage Brand, Founder-Led]
 signals: [Export Ready, Investment Ready]
-related_brands: [teatime]
+brands: [teatime]
 image: /assets/images/insights/teatime-founder.jpg
 featured: true
 premium: false

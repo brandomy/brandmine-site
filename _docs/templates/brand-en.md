@@ -18,7 +18,7 @@ gallery:
   - "/assets/images/brands/brand-slug/originals/gallery-image3.jpg"
 website: "https://example.com"
 contact_email: "contact@example.com"
-related_brands: [related-brand1, related-brand2]
+brands: []
 premium: false
 featured: false
 permalink: /en/brands/brand-slug/

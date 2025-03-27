@@ -8,7 +8,7 @@ sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Heritage Brand, Cultural Ambassador]
 signals: [Export Ready]
-related_brands: [bushe]
+brands: [bushe]
 image: /assets/images/insights/bushe-cultural-signature.jpg
 featured: false
 premium: false

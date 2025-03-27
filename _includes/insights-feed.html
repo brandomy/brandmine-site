@@ -1,0 +1,60 @@
+{% comment %}
+  insights-feed.html - Displays a grid of insight posts with card styling
+  
+  Usage:
+  {% include insights-feed.html limit=6 category=nil %}
+  
+  Parameters:
+  - limit: Maximum number of posts to display (default: 6)
+  - category: Optional filter for specific insight category
+{% endcomment %}
+
+{% assign posts = site.insights | where: "lang", page.lang %}
+{% if include.category %}
+  {% assign posts = posts | where: "category", include.category %}
+{% endif %}
+{% assign posts = posts | sort: "date" | reverse %}
+
+<div class="insights-feed">
+  {% for post in posts limit: include.limit | default: 6 %}
+    <div class="insight-card">
+      <a href="{{ post.url | relative_url }}" class="card-link">
+        <div class="card-image">
+          {% if post.image %}
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          {% else %}
+            <img src="/assets/images/insights/default-insight.jpg" alt="{{ post.title }}">
+          {% endif %}
+          
+          {% if post.category %}
+            <span class="category-badge">
+              {% case post.category %}
+                {% when "founders-journey" %}
+                  <i class="icon-person"></i> Founder's Journey
+                {% when "brand-spotlight" %}
+                  <i class="icon-spotlight"></i> Brand Spotlight
+                {% when "market-milestone" %}
+                  <i class="icon-milestone"></i> Market Milestone
+                {% when "cultural-signature" %}
+                  <i class="icon-culture"></i> Cultural Signature
+              {% endcase %}
+            </span>
+          {% endif %}
+        </div>
+        
+        <div class="card-content">
+          <h3 class="card-title">{{ post.title }}</h3>
+          <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+          
+          {% if post.brands %}
+            <div class="featured-brands">
+              {% for brand in post.brands %}
+                <span class="brand-tag">{{ brand }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>

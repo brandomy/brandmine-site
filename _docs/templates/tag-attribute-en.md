@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: "Attribute Name"
 tag: attribute-slug

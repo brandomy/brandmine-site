@@ -8,7 +8,7 @@ sectors: []
 markets: []
 attributes: []
 signals: []
-related_brands: [brand-slug]
+brands: [brand-slug]
 image: /assets/images/insights/brand-slug-spotlight.jpg
 featured: false
 premium: false

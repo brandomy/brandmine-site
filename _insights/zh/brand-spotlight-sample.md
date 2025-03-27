@@ -8,7 +8,7 @@ sectors: [美食]
 markets: [俄罗斯]
 attributes: [工艺卓越, 文化大使]
 signals: [出口就绪]
-related_brands: [7_spices]
+brands: [7_spices]
 image: /assets/images/insights/7-spices-spotlight.jpg
 featured: false
 premium: false
