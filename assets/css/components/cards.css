@@ -1,7 +1,7 @@
 /* ==========================================================================
    Card Components
    ==========================================================================
-   Card-based UI components for Brandmine
+   Card-based UI components for Brandmine.
    These styles define various card layouts and variations used throughout the site.
 */
 
@@ -13,9 +13,9 @@
 .card {
   background-color: var(--neutral-100);
   padding: var(--space-4); /* 1rem */
-  border-radius: 0.25rem;
-  border: 1px solid var(--neutral-200);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-sm); /* Updated to token */
+  border: var(--border-width-thin) solid var(--neutral-200);
+  box-shadow: var(--shadow-sm); /* Updated to token */
 }
 
 /* --------------------------------------------------------------------------
@@ -35,9 +35,9 @@
 /* White content card for use on colored backgrounds */
 .white-content-card {
   background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  padding: var(--space-12); /* 2.5rem is close to 3rem, using 3rem */
+  border-radius: var(--radius-md); /* Updated to token (was 0.5rem) */
+  box-shadow: var(--shadow-lg); /* Updated to token */
+  padding: var(--space-12); /* 3rem */
 }
 
 /* Center paragraphs within content cards */
@@ -57,8 +57,8 @@
   }
 }
 
-@media (max-width: 767px) { /* This should also be updated to var(--breakpoint-md) */
-  /* Fix content cards to be wider on small screens */
+/* For smaller screens, ensure content cards take full width */
+@media (max-width: var(--breakpoint-md)) {
   .content-card {
     padding: 0;
     margin: 0;

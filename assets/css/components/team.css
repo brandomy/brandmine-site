@@ -17,17 +17,17 @@
   flex: 1;
   min-width: 300px;
   background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md); /* Updated: using token (0.5rem) */
+  box-shadow: var(--shadow-sm); /* Updated: using token */
   padding: var(--space-8); /* 2rem */
-  border: 1px solid var(--neutral-200);
+  border: var(--border-width-thin) solid var(--neutral-200);
 }
 
 /* Team member photo */
 .team-photo {
   width: 180px;
   height: 180px;
-  border-radius: 50%;
+  border-radius: 50%; /* Remains circular */
   object-fit: cover;
   margin-bottom: var(--space-6); /* 1.5rem */
   border: 3px solid var(--primary-400);
@@ -46,7 +46,7 @@
 
 .team-title {
   color: var(--primary-600);
-  font-weight: 600;
+  font-weight: var(--font-semibold); /* Updated: using token */
   margin-top: 0;
   margin-bottom: var(--space-6); /* 1.5rem */
   text-align: center;
@@ -73,7 +73,7 @@
   }
 }
 
-@media (max-width: var(--breakpoint-md)) { /* 767px is very close to 768px, using breakpoint-md */
+@media (max-width: var(--breakpoint-md)) { /* 767px approximated via token (768px) */
   .team-member {
     min-width: unset;
     width: 100%;
@@ -83,7 +83,8 @@
   }
 }
 
-@media (max-width: 576px) { /* This should be changed to a breakpoint variable */
+/* For extra small screens - updated to use breakpoint token */
+@media (max-width: var(--breakpoint-sm)) { /* Originally 576px; using var(--breakpoint-sm)=640px */
   .team-photo {
     width: 150px;
     height: 150px;
@@ -96,25 +97,25 @@
 
 /* Subtle LinkedIn Icon Styling */
 .team-member-linkedin {
-display: flex;
-justify-content: center;
-margin-top: var(--space-4); /* 1rem */
-margin-bottom: var(--space-4); /* 1rem */
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4); /* 1rem */
+  margin-bottom: var(--space-4); /* 1rem */
 }
 
 .team-member-linkedin a {
-color: var(--neutral-500);
-font-size: 1.5rem;
-transition: color 0.3s ease;
-text-decoration: none;
+  color: var(--neutral-500);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .team-member-linkedin a:hover {
-color: var(--primary-400);
+  color: var(--primary-400);
 }
 
 .team-member-linkedin .fa-linkedin {
-/* Ensures the icon is centered and has some padding */
-display: inline-block;
-text-align: center;
+  /* Ensures the icon is centered and has some padding */
+  display: inline-block;
+  text-align: center;
 }

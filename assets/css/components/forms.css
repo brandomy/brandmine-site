@@ -23,7 +23,7 @@ select {
   width: 100%;
   padding: var(--space-2); /* 0.5rem */
   border: 1px solid var(--neutral-300);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm); /* Using new token */
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--neutral-700);
@@ -36,7 +36,7 @@ textarea:focus,
 select:focus {
   border-color: var(--primary-400);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(var(--primary-400-rgb), 0.2);
+  box-shadow: var(--focus-shadow); /* Using new token for focus */
 }
 
 /* Form labels */
@@ -51,6 +51,7 @@ label {
 .form-container {
   width: 100%;
   margin-bottom: var(--space-8); /* 2rem */
+  max-width: var(--form-max-width); /* Using new token */
 }
 
 /* --------------------------------------------------------------------------
@@ -68,7 +69,7 @@ label {
 .contact-form-container {
   width: 100%;
   background-color: var(--neutral-50);
-  border-radius: 1rem;
+  border-radius: var(--radius-sm); /* Using token for consistency */
   padding: var(--space-6);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
@@ -101,7 +102,6 @@ label {
   }
 }
 
-
 /* --------------------------------------------------------------------------
    3. MAILERLITE NEWSLETTER FORMS
    -------------------------------------------------------------------------- */
@@ -116,7 +116,7 @@ label {
 
 .ml-embedded .ml-form-embedWrapper {
   background-color: var(--primary-600);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm); /* Using token */
   padding: var(--space-4); /* 1rem */
   max-width: 100%;
   width: 100%;
@@ -129,7 +129,7 @@ label {
 .ml-embedded .ml-form-fieldRow input {
   background-color: white;
   border: 1px solid var(--primary-400);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm); /* Using token */
   font-family: var(--font-body);
   font-size: var(--text-sm);
   padding: var(--space-2); /* 0.5rem */
@@ -141,13 +141,13 @@ label {
 .ml-embedded .ml-form-fieldRow input:focus {
   border-color: var(--primary-300);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(var(--primary-400-rgb), 0.2);
+  box-shadow: var(--focus-shadow); /* Using token */
 }
 
 .ml-embedded .ml-form-horizontalRow button {
   background-color: var(--primary-400);
   border: 1px solid var(--primary-400);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm); /* Using token */
   color: white;
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -167,7 +167,7 @@ label {
   background-color: var(--primary-600);
   color: var(--neutral-100);
   padding: var(--space-4); /* 1rem */
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm); /* Using token */
   text-align: center;
 }
 
@@ -181,7 +181,7 @@ label {
    -------------------------------------------------------------------------- */
 
 /* Small devices (phones) */
-@media (max-width: var(--breakpoint-md)) { /* 767px is very close to 768px, using breakpoint-md */
+@media (max-width: var(--breakpoint-md)) {
   /* Fix general embeds on small screens (excluding Tally forms that we handle separately) */
   iframe:not(.contact-form-container iframe) {
     width: 100% !important;
@@ -192,7 +192,7 @@ label {
 }
 
 /* Extra small devices */
-@media (max-width: 640px) { /* This should be updated to a breakpoint variable */
+@media (max-width: var(--breakpoint-sm)) {
   /* MailerLite form adjustments */
   .ml-embedded .ml-form-embedWrapper {
     padding: var(--space-2); /* 0.5rem */
@@ -210,12 +210,12 @@ label {
 /* Fix form spacing in CTA panels */
 .cta-panel .btn-primary,
 .cta-panel .cta-button {
-  margin-bottom: var(--space-8);    /* 2rem - Add spacing below the button */
+  margin-bottom: var(--space-8);    /* 2rem */
 }
 
 /* Make sure there's proper spacing in the CTA section */
 .cta-panel .panel-content {
-  padding-bottom: var(--space-8);   /* 2rem - Add padding to the bottom of the content */
+  padding-bottom: var(--space-8);   /* 2rem */
 }
 
 /* Footer spacing fixes to connect forms to footer */

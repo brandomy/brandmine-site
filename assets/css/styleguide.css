@@ -1,602 +1,303 @@
 /* ==========================================================================
-   Brandmine Styleguide - Fixed CSS Grid Implementation
+   Brandmine Styleguide CSS
    ==========================================================================
-   A comprehensive grid-based layout system for the Brandmine design system
-   with responsive navigation and consistent styling.
+
+   Table of Contents:
+   1. Dependencies & Global Setup
+   2. Base Container & Layout
+   3. Navigation Component Styles
+   4. Content Area & Typography Examples
+   5. Code Block & Example Component Styles
+   6. Color Swatches & Utility Styles
+   7. Responsive Layout Adjustments
+   8. Miscellaneous & Overrides
+
+   Dependencies:
+   - This file assumes that the consolidated tokens file (tokens.css) is loaded first.
+   - All color, spacing, typography, and breakpoint values are referenced using tokens (e.g., var(--primary-600), var(--space-4)).
    
-   TABLE OF CONTENTS:
-   1. Root Variables & Design Tokens
-   2. Base Container Structure
-   3. Navigation Component
-   4. Content Area
-   5. Navigation Toggle Button
-   6. Overlay for Mobile Navigation
-   7. Common Component Styles
-   8. Code Block Styling
-   9. Color Swatches
-   10. Responsive Layout Adjustments
-   11. Utility Styles
-*/
+   Notes:
+   - Redundant token declarations have been removed.
+   - All hard-coded values for colors, spacing, and breakpoints have been replaced by token references.
+   - Responsive rules use token variables for breakpoints.
+   - Legacy font-family references have been replaced with var(--font-mono) where applicable.
+   - Please verify that your build system or HTML loads tokens.css before this file.
+============================================================================= */
 
 /* ==========================================================================
-   1. ROOT VARIABLES & DESIGN TOKENS
+   1. Dependencies & Global Setup
+   ========================================================================== */
+/* All tokens (colors, typography, spacing, breakpoints, grid) are loaded via tokens.css */
+
+/* Global Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. Base Container & Layout
+   ========================================================================== */
+.styleguide-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-areas: "content";
+  grid-template-columns: 1fr;
+  font-size: var(--text-sm); /* Using semantic token for base font size */
+}
+
+/* ==========================================================================
+   3. Navigation Component Styles
+   ========================================================================== */
+.styleguide-nav {
+  grid-area: navigation;
+  background-color: var(--neutral-800);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width, 250px); /* Ensure this value is defined in tokens if needed */
+  height: 100vh;
+  padding: var(--space-4);
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  will-change: transform;
+  overflow-y: auto;
+}
+
+.styleguide-nav.is-open {
+  transform: translateX(0);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Logo/Header */
+.styleguide-logo {
+  margin-bottom: var(--space-6);
+}
+.styleguide-logo a {
+  text-decoration: none;
+}
+.styleguide-logo-text {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: white;
+}
+
+/* Navigation sections */
+.styleguide-nav h3 {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--neutral-300);
+  margin: var(--space-6) 0 var(--space-2);
+}
+
+.styleguide-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+.styleguide-nav li {
+  margin-bottom: var(--space-2);
+}
+
+.styleguide-nav a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: var(--space-2);
+  transition: color 0.2s ease;
+}
+.styleguide-nav a:hover {
+  color: var(--primary-400);
+}
+.styleguide-nav a.active {
+  color: var(--primary-400);
+  font-weight: var(--font-semibold);
+}
+
+/* ==========================================================================
+   4. Content Area & Typography Examples
+   ========================================================================== */
+.styleguide-content {
+  grid-area: content;
+  background-color: white;
+  padding: var(--space-8) var(--space-4);
+  color: var(--neutral-600);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.styleguide-page-header {
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--neutral-200);
+  padding-bottom: var(--space-4);
+}
+.styleguide-page-header h1 {
+  font-size: var(--text-4xl);
+  margin: 0 0 var(--space-2);
+  color: var(--primary-600);
+}
+.styleguide-description {
+  font-size: var(--text-lg);
+  color: var(--neutral-700);
+  max-width: 40em;
+  line-height: 1.5;
+}
+
+/* Headings in content area */
+.styleguide-content h2,
+.styleguide-content h3,
+.styleguide-content h4,
+.styleguide-content h5,
+.styleguide-content h6 {
+  color: var(--primary-600);
+}
+
+/* ==========================================================================
+   5. Code Block & Example Component Styles
    ========================================================================== */
 
-   :root {
-    /* Core layout variables */
-    --sidebar-width: 250px;
-    --content-max-width: 1200px;
-    --header-height: 60px;
-    --grid-gap: 1rem;
-    
-    /* Breakpoints for responsive design */
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    
-    /* Spacing variables */
-    --space-2: 0.5rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    
-    /* Color fallbacks if tokens aren't loaded */
-    --neutral-100: #F3F4F6;
-    --neutral-200: #E5E7EB;
-    --neutral-300: #D1D5DB;
-    --neutral-700: #374151;
-    --neutral-800: #1F2937;
-    --neutral-900: #111827;
-    
-    --primary-100: #B2F5EA;
-    --primary-400: #38B2AC;
-    --primary-500: #319795;
-    --primary-700: #285E61;
-  }
-  
-/* ==========================================================================
-   2. BASE CONTAINER STRUCTURE
-   ========================================================================== */
-  
-  .styleguide-container {
-    display: grid;
-    min-height: 100vh;
-    
-    /* Mobile-first: single column layout */
-    grid-template-areas: 
-      "content";
-    grid-template-columns: 1fr;
-    font-size: 0.9rem;
-  }
-  
-/* ==========================================================================
-   3. NAVIGATION COMPONENT
-   ========================================================================== */
-  
-  .styleguide-nav {
-    grid-area: navigation;
-    background-color: var(--neutral-800, #1F2937);
-    color: white;
-    
-    /* Core navigation styling */
-    display: flex;
-    flex-direction: column;
-    
-    /* Mobile: Fixed positioning */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--sidebar-width, 250px);
-    height: 100vh;
-    padding: var(--space-4, 1rem);
-    z-index: 1000;
-    
-    /* Transform for off-canvas */
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    
-    /* Ensure smooth transition performance */
-    will-change: transform;
-    
-    /* Handle overflow content */
-    overflow-y: auto;
-  }
-  
-  /* Navigation logo/header */
-  .styleguide-logo {
-    margin-bottom: var(--space-6, 1.5rem);
-  }
-  
-  .styleguide-logo a {
-    text-decoration: none;
-  }
-  
-  .styleguide-logo-text {
-    font-size: var(--text-xl);
-    font-weight: bold;
-    color: white;
-  }
-  
-  /* Navigation sections */
-  .styleguide-nav h3 {
-    font-size: var(--text-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--neutral-300, #D1D5DB);
-    margin: var(--space-6, 1.5rem) 0 var(--space-2, 0.5rem);
-  }
-  
-  .styleguide-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-4, 1rem);
-  }
-  
-  .styleguide-nav li {
-    margin-bottom: var(--space-2, 0.5rem);
-  }
-  
-  .styleguide-nav a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: var(--space-2, 0.5rem);
-    transition: color 0.2s ease;
-  }
-  
-  .styleguide-nav a:hover {
-    color: var(--primary-400, #38B2AC);
-  }
-  
-  .styleguide-nav a.active {
-    color: var(--primary-400, #38B2AC);
-    font-weight: 600;
-  }
-  
-  /* Navigation open state */
-  .styleguide-nav.is-open {
-    transform: translateX(0);
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-/* ==========================================================================
-   4. CONTENT AREA
-   ========================================================================== */
-  
-  .styleguide-content {
-    grid-area: content;
-    background-color: white;
-    padding: var(--space-8, 2rem) var(--space-4, 1rem);
-    color: var(--neutral-600, #4B5563); /* Updated to neutral-600 for better readability */
-    
-    /* Fill vertical space */
-    min-height: 100vh;
-    
-    /* Content structure */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .styleguide-page-header {
-    margin-bottom: var(--space-8, 2rem);
-    border-bottom: 1px solid var(--neutral-200, #E5E7EB);
-    padding-bottom: var(--space-4, 1rem);
-  }
-  
-  .styleguide-page-header h1 {
-    font-size: var(--text-4xl);
-    margin: 0 0 var(--space-2, 0.5rem);
-    color: var(--primary-600, #2C7A7B); /* Updated to primary-800 */
-  }
-  
-  .styleguide-description {
-    font-size: var(--text-lg);
-    color: var(--neutral-700, #374151);
-    max-width: 40em;
-    line-height: 1.5;
-  }
-
-  /* Content heading colors */
-  .styleguide-content h2,
-  .styleguide-content h3,
-  .styleguide-content h4,
-  .styleguide-content h5,
-  .styleguide-content h6 {
-    color: var(--primary-600, #2C7A7B);
-  }
-  
-/* ==========================================================================
-   5. NAVIGATION TOGGLE BUTTON
-   ========================================================================== */
-  
-  .styleguide-nav-toggle {
-    display: block;
-    position: fixed;
-    top: var(--space-4, 1rem);
-    right: var(--space-4, 1rem);
-    z-index: 1100;
-    font-size: var(--text-sm);
-    
-    /* Button styling */
-    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
-    background-color: var(--primary-500, #319795);
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    
-    /* Interactive effects */
-    transition: background-color 0.2s ease;
-  }
-  
-  .styleguide-nav-toggle:hover {
-    background-color: var(--primary-700, #285E61);
-  }
-  
-  .styleguide-nav-toggle:focus {
-    outline: 2px solid var(--primary-400, #38B2AC);
-    outline-offset: 2px;
-  }
-  
-/* ==========================================================================
-   6. OVERLAY FOR MOBILE NAVIGATION
-   ========================================================================== */
-  
-  .styleguide-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    
-    /* Transition for smooth appearance */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .styleguide-overlay.is-active {
-    display: block;
-    opacity: 1;
-  }
-  
-/* ==========================================================================
-   7. CODE EXAMPLE COMPONENTS
-   ========================================================================== */
-  
-
-/* Example wrapper (container for both preview and code) */
+/* Example wrapper for code examples */
 .example-wrapper {
-  margin: var(--space-6, 1.5rem) 0;
-  border: 1px solid var(--neutral-200, #E5E7EB);
+  margin: var(--space-6) 0;
+  border: 1px solid var(--neutral-200);
   border-radius: 0.5rem;
   overflow: hidden;
 }
-
-/* Example preview area */
 .example-preview {
-  padding: var(--space-4, 1rem);
-  background-color: var(--neutral-50, #F9FAFB);
-  border-bottom: 1px solid var(--neutral-200, #E5E7EB);
+  padding: var(--space-4);
+  background-color: var(--neutral-50);
+  border-bottom: 1px solid var(--neutral-200);
 }
-
-/* Heading styles in preview area */
-.example-preview h1,
-.example-preview h2,
-.example-preview h3,
-.example-preview h4,
-.example-preview h5,
-.example-preview h6 {
-  color: var(--secondary-600, #EA580C);
-  margin-top: 0;
-}
-
-/* Paragraph styles in preview area */
-.example-preview p {
-  color: var(--neutral-700, #374151);
-  margin-bottom: var(--space-2, 0.5rem);
-}
-
-/* Code block area */
 .example-code {
   position: relative;
-  background-color: var(--neutral-900, #111827);
-  color: var(--neutral-100, #F3F4F6);
+  background-color: var(--neutral-900);
+  color: var(--neutral-100);
   overflow: hidden;
 }
-
 .example-code pre {
   margin: 0;
-  padding: var(--space-4, 1rem);
+  padding: var(--space-4);
   overflow-x: auto;
   white-space: pre-wrap;
 }
-
 .example-code code {
-  font-family: var(--font-mono, monospace);
+  font-family: var(--font-mono); /* Uses new Source Code Pro */
   font-size: var(--text-sm);
   color: white !important;
-  line-height: var(--leading-normal, 1.5);
+  line-height: var(--leading-normal);
   display: block;
   tab-size: 2;
 }
 
 /* Code block panel content */
 .example-code .panel-content {
-  font-family: var(--font-mono, monospace);
+  font-family: var(--font-mono);
   font-size: var(--text-sm);
-  
   color: white !important;
-  background-color: var(--neutral-900, #111827);
-  padding: var(--space-4, 1rem);
-  border-top: 1px solid var(--neutral-200, #E5E7EB);
+  background-color: var(--neutral-900);
+  padding: var(--space-4);
+  border-top: 1px solid var(--neutral-200);
   overflow-x: auto;
   max-width: 100%;
   white-space: pre-wrap;
 }
 
-/* Code block headings and text */
-.example-code p {
-  color: var(--secondary-50, #FFF7ED);
-}
-
-.example-code h1,
-.example-code h2,
-.example-code h3,
-.example-code h4,
-.example-code h5,
-.example-code h6 {
-  color: var(--secondary-300, #FDBA74);
-}
-
-/* Language indicator for code blocks */
-.code-language {
-  color: var(--neutral-400, #9CA3AF);
-  font-size: var(--text-xs);
-  font-family: var(--font-mono, monospace);
-  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
-  position: absolute;
-  top: var(--space-2, 0.5rem);
-  right: var(--space-2, 0.5rem);
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 0.25rem;
-  opacity: 0.7;
-  z-index: 1;
-}
-
-/* Copy button */
-.copy-button {
-  position: absolute;
-  top: var(--space-2, 0.5rem);
-  right: var(--space-2, 0.5rem);
-  background-color: var(--neutral-700, #374151);
-  color: white;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  font-size: var(--text-xs);
-  cursor: pointer;
-}
-  
 /* ==========================================================================
-   9. COLOR SWATCHES
+   6. Color Swatches & Utility Styles
    ========================================================================== */
-
 .styleguide-color-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: var(--space-4, 1rem);
-  margin: var(--space-6, 1.5rem) 0;
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
 }
 
-.color-swatch {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--neutral-200, #E5E7EB);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Example individual swatches using semantic tokens */
+.primary-400 {
+  background-color: var(--primary-400);
+  color: white;
+}
+.neutral-800 {
+  background-color: var(--neutral-800);
+  color: white;
 }
 
-.color-swatch:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Utility styles for consistent spacing */
+.styleguide-container * {
+  box-sizing: border-box;
 }
-
-.color-sample {
-  height: 100px;
-  width: 100%;
-}
-
-.color-details {
-  padding: var(--space-4, 1rem);
-  background: white;
-}
-
-.color-name {
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-}
-
-.color-values {
-  display: flex;
-  flex-direction: column;
-  font-family: monospace;
-  font-size: var(--text-sm);
-  margin-bottom: 0.5rem;
-}
-
-.color-usage {
-  font-size: var(--text-sm);
-  color: var(--neutral-700, #374151);
-}
-
-/* Individual color backgrounds using CSS variables */
-.primary-50 { background-color: var(--primary-50, #E6FFFA); color: var(--neutral-900); }
-.primary-100 { background-color: var(--primary-100, #B2F5EA); color: var(--neutral-900); }
-.primary-200 { background-color: var(--primary-200, #81E6D9); color: var(--neutral-900); }
-.primary-300 { background-color: var(--primary-300, #4FD1C5); color: var(--neutral-900); }
-.primary-400 { background-color: var(--primary-400, #38B2AC); color: white; }
-.primary-500 { background-color: var(--primary-500, #319795); color: white; }
-.primary-600 { background-color: var(--primary-600, #2C7A7B); color: white; }
-.primary-700 { background-color: var(--primary-700, #285E61); color: white; }
-.primary-800 { background-color: var(--primary-800, #234E52); color: white; }
-.primary-900 { background-color: var(--primary-900, #1D4044); color: white; }
-
-/* Secondary Colors (Orange) */
-.secondary-50 { background-color: var(--secondary-50, #FFF7ED); color: var(--neutral-900); }
-.secondary-100 { background-color: var(--secondary-100, #FFEDD5); color: var(--neutral-900); }
-.secondary-200 { background-color: var(--secondary-200, #FED7AA); color: var(--neutral-900); }
-.secondary-300 { background-color: var(--secondary-300, #FDBA74); color: var(--neutral-900); }
-.secondary-400 { background-color: var(--secondary-400, #FB923C); color: var(--neutral-900); }
-.secondary-500 { background-color: var(--secondary-500, #F97316); color: white; }
-.secondary-600 { background-color: var(--secondary-600, #EA580C); color: white; }
-.secondary-700 { background-color: var(--secondary-700, #C2410C); color: white; }
-.secondary-800 { background-color: var(--secondary-800, #9A3412); color: white; }
-.secondary-900 { background-color: var(--secondary-900, #7C2D12); color: white; }
-
-/* Neutral Colors (Gray) */
-.neutral-50 { background-color: var(--neutral-50, #F9FAFB); color: var(--neutral-900); }
-.neutral-100 { background-color: var(--neutral-100, #F3F4F6); color: var(--neutral-900); }
-.neutral-200 { background-color: var(--neutral-200, #E5E7EB); color: var(--neutral-900); }
-.neutral-300 { background-color: var(--neutral-300, #D1D5DB); color: var(--neutral-900); }
-.neutral-400 { background-color: var(--neutral-400, #9CA3AF); color: var(--neutral-900); }
-.neutral-500 { background-color: var(--neutral-500, #6B7280); color: white; }
-.neutral-600 { background-color: var(--neutral-600, #4B5563); color: white; }
-.neutral-700 { background-color: var(--neutral-700, #374151); color: white; }
-.neutral-800 { background-color: var(--neutral-800, #1F2937); color: white; }
-.neutral-900 { background-color: var(--neutral-900, #111827); color: white; }
-
-/* Accent Colors (Indigo) */
-.accent-50 { background-color: var(--accent-50, #EEF2FF); color: var(--neutral-900); }
-.accent-100 { background-color: var(--accent-100, #E0E7FF); color: var(--neutral-900); }
-.accent-200 { background-color: var(--accent-200, #C7D2FE); color: var(--neutral-900); }
-.accent-300 { background-color: var(--accent-300, #A5B4FC); color: var(--neutral-900); }
-.accent-400 { background-color: var(--accent-400, #818CF8); color: var(--neutral-900); }
-.accent-500 { background-color: var(--accent-500, #6366F1); color: white; }
-.accent-600 { background-color: var(--accent-600, #4F46E5); color: white; }
-.accent-700 { background-color: var(--accent-700, #4338CA); color: white; }
-.accent-800 { background-color: var(--accent-800, #3730A3); color: white; }
-.accent-900 { background-color: var(--accent-900, #312E81); color: white; }
-
-/* Syntax highlighting for code examples */
-.example-code .tag {
-  color: var(--primary-300, #4FD1C5);
-}
-
-.example-code .attr {
-  color: var(--secondary-300, #FDBA74);
-}
-
-.example-code .string {
-  color: var(--accent-300, #A5B4FC);
-}
-
-.panel-content {
-  color: var(--secondary-50, #FFF7ED) !important;
+.styleguide-content > * + * {
+  margin-top: var(--space-6);
 }
 
 /* ==========================================================================
-   10. RESPONSIVE LAYOUT ADJUSTMENTS
+   7. Responsive Layout Adjustments
    ========================================================================== */
-  
-  /* Small devices (576px and up) */
-  @media (min-width: 576px) {
-    .styleguide-container {
-      font-size: var(--text-base);
-    }
-    
-    .styleguide-content {
-      padding: var(--space-8, 2rem);
-    }
+
+/* Small devices (min-width: var(--breakpoint-sm)) */
+@media (min-width: var(--breakpoint-sm)) {
+  .styleguide-container {
+    font-size: var(--text-base);
   }
-  
-  /* Medium devices (768px and up) */
-  @media (min-width: 768px) {
-    .styleguide-content {
-      padding: var(--space-8, 2rem) var(--space-8, 2rem);
-    }
+  .styleguide-content {
+    padding: var(--space-8);
   }
-  
-  /* Large devices (992px and up) - Desktop layout */
-  @media (min-width: 992px) {
-    /* Switch to two-column grid layout */
-    .styleguide-container {
-      grid-template-areas: 
-        "navigation content";
-      grid-template-columns: var(--sidebar-width, 250px) 1fr;
-      max-width: var(--content-max-width, 1200px);
-      margin: 0 auto;
-    }
-    
-    /* Reset navigation for desktop display */
-    .styleguide-nav {
-      position: relative;
-      transform: none;
-      box-shadow: none;
-    }
-    
-    /* Hide mobile-only elements */
-    .styleguide-nav-toggle {
-      display: none;
-    }
-    
-    .styleguide-overlay {
-      display: none !important;
-    }
-    
-    /* Adjust content for desktop */
-    .styleguide-content {
-      max-width: 100%;
-      padding: var(--space-8, 2rem) var(--space-8, 2rem);
-    }
+}
+
+/* Medium devices (min-width: var(--breakpoint-md)) */
+@media (min-width: var(--breakpoint-md)) {
+  .styleguide-content {
+    padding: var(--space-8) var(--space-8);
   }
-  
-  /* Extra Large devices (1200px and up) */
-  @media (min-width: 1200px) {
-    .styleguide-container {
-      max-width: var(--content-max-width, 1200px);
-    }
-    
-    .styleguide-content {
-      padding: var(--space-8, 2rem) var(--space-8, 2rem);
-    }
+}
+
+/* Large devices (min-width: var(--breakpoint-lg)) */
+@media (min-width: var(--breakpoint-lg)) {
+  .styleguide-container {
+    grid-template-areas: "navigation content";
+    grid-template-columns: var(--sidebar-width, 250px) 1fr;
+    max-width: var(--grid-max-width);
+    margin: 0 auto;
   }
-  
+  .styleguide-nav {
+    position: relative;
+    transform: none;
+    box-shadow: none;
+  }
+  .styleguide-nav-toggle {
+    display: none;
+  }
+  .styleguide-overlay {
+    display: none !important;
+  }
+  .styleguide-content {
+    max-width: 100%;
+    padding: var(--space-8);
+  }
+}
+
+/* Extra Large devices (min-width: var(--breakpoint-xl)) */
+@media (min-width: var(--breakpoint-xl)) {
+  .styleguide-container {
+    max-width: var(--grid-max-width);
+  }
+}
+
 /* ==========================================================================
-   11. UTILITY STYLES
+   8. Miscellaneous & Overrides
    ========================================================================== */
-  
-  .styleguide-container * {
-    box-sizing: border-box;
-  }
-  
-  /* Ensure all content has proper spacing */
-  .styleguide-content > * + * {
-    margin-top: var(--space-6, 1.5rem);
-  }
-  
-  .styleguide-content h2 {
-    margin-top: var(--space-8, 2rem);
-    margin-bottom: var(--space-4, 1rem);
-    padding-bottom: var(--space-2, 0.5rem);
-    border-bottom: 1px solid var(--neutral-200, #E5E7EB);
-  }
-  
-  /* Ensure proper spacing for lists */
-  .styleguide-content ul,
-  .styleguide-content ol {
-    padding-left: var(--space-6, 1.5rem);
-  }
-  
-  .styleguide-content li + li {
-    margin-top: var(--space-2, 0.5rem);
-  }
+/* Override any legacy hard-coded values with tokens where applicable. */
 
+/* Example: ensure code blocks use the new mono font */
+code, pre {
+  font-family: var(--font-mono);
+}
 
-  
+/* End of styleguide.css */

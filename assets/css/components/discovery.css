@@ -1,159 +1,173 @@
+/* ==========================================================================
+   Discovery Tabs and Cards
+   ==========================================================================
+   Styles for discovery tabs, grids, and cards.
+*/
+
 /* Discovery Tabs */
 .discovery-tabs {
-    display: flex;
-    border-bottom: 1px solid var(--neutral-300);
-    margin-bottom: var(--space-4);
-    overflow-x: auto;
-    padding-bottom: 2px;
-  }
-  
-  .discovery-tab {
-    padding: var(--space-2) var(--space-4);
-    border: none;
-    background: transparent;
-    color: var(--neutral-600);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    cursor: pointer;
-    position: relative;
-    white-space: nowrap;
-  }
-  
-  .discovery-tab:hover {
-    color: var(--primary-600);
-  }
-  
-  .discovery-tab.active {
-    color: var(--primary-600);
-    font-weight: 600;
-  }
-  
-  .discovery-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--primary-500);
-    border-radius: 3px 3px 0 0;
-  }
-  
-  .discovery-pane {
-    display: none;
-  }
-  
-  .discovery-pane.active {
-    display: block;
-  }
-  
-  .discovery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-4);
-    margin-bottom: var(--space-6);
-  }
-  
-  .discovery-card {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding: var(--space-4);
-    border: 1px solid var(--neutral-200);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .discovery-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .discovery-card h3 {
-    margin-top: 0;
-    margin-bottom: var(--space-2);
-    color: var(--neutral-800);
-  }
-  
-  .discovery-card p {
-    color: var(--neutral-600);
-    margin-bottom: var(--space-4);
-  }
-  
-  .discovery-more {
-    text-align: center;
-    margin-top: var(--space-4);
-  }
-  
+  display: flex;
+  border-bottom: 1px solid var(--neutral-300);
+  margin-bottom: var(--space-4);
+  overflow-x: auto;
+  /* Using a converted value for consistency (2px ≈ 0.125rem) */
+  padding-bottom: 0.125rem;
+}
+
+.discovery-tab {
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  background: transparent;
+  color: var(--neutral-600);
+  font-family: var(--font-body);
+  font-size: var(--text-base); /* Replaced 1rem with token */
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.discovery-tab:hover {
+  color: var(--primary-600);
+}
+
+.discovery-tab.active {
+  color: var(--primary-600);
+  font-weight: 600;
+}
+
+.discovery-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.125rem; /* 2px ≈ 0.125rem */
+  left: 0;
+  width: 100%;
+  height: 0.1875rem; /* 3px ≈ 0.1875rem */
+  background-color: var(--primary-500);
+  border-radius: 0.1875rem 0.1875rem 0 0; /* Keeping as-is, adjust if token available */
+}
+
+/* Discovery Panes */
+.discovery-pane {
+  display: none;
+}
+
+.discovery-pane.active {
+  display: block;
+}
+
+/* Discovery Grid */
+.discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+/* Discovery Card */
+.discovery-card {
+  background-color: white;
+  border-radius: var(--radius-md); /* Replaced 0.5rem with token */
+  box-shadow: var(--shadow-sm); /* Using token for default shadow */
+  padding: var(--space-4);
+  border: var(--border-width-thin) solid var(--neutral-200); /* Using token for border width if defined */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.discovery-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md); /* Using token for hover shadow */
+}
+
+.discovery-card h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--neutral-800);
+}
+
+.discovery-card p {
+  color: var(--neutral-600);
+  margin-bottom: var(--space-4);
+}
+
+.discovery-more {
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+/* Grids for other discovery sections */
+.sectors-grid,
+.markets-grid,
+.attributes-grid,
+.signals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+/* Cards for sectors, markets, attributes, and signals */
+.sector-card,
+.market-card,
+.attribute-card,
+.signal-card {
+  background-color: white;
+  border-radius: var(--radius-md); /* Replacing 0.5rem with token */
+  box-shadow: var(--shadow-sm); /* Using token for default shadow */
+  padding: var(--space-4);
+  border: var(--border-width-thin) solid var(--neutral-200);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.sector-card:hover,
+.market-card:hover,
+.attribute-card:hover,
+.signal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md); /* Using token for hover shadow */
+}
+
+/* Icons for sectors, markets, attributes, and signals */
+.sector-icon,
+.market-icon,
+.attribute-icon,
+.signal-icon {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+}
+
+.sector-icon img,
+.market-icon img,
+.attribute-icon img,
+.signal-icon img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Placeholder Icon */
+.placeholder-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--neutral-200);
+  border-radius: var(--radius-sm); /* Replacing 0.25rem with token */
+}
+
+/* Responsive Adjustments */
+@media (max-width: var(--breakpoint-md)) {
+  .discovery-grid,
   .sectors-grid,
   .markets-grid,
   .attributes-grid,
   .signals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-4);
-    margin-top: var(--space-4);
+    grid-template-columns: 1fr;
   }
   
-  .sector-card,
-  .market-card,
-  .attribute-card,
-  .signal-card {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding: var(--space-4);
-    border: 1px solid var(--neutral-200);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
+  .discovery-tab {
+    padding: var(--space-2);
   }
-  
-  .sector-card:hover,
-  .market-card:hover,
-  .attribute-card:hover,
-  .signal-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sector-icon,
-  .market-icon,
-  .attribute-icon,
-  .signal-icon {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--space-3);
-  }
-  
-  .sector-icon img,
-  .market-icon img,
-  .attribute-icon img,
-  .signal-icon img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-  }
-  
-  .placeholder-icon {
-    width: 60px;
-    height: 60px;
-    background-color: var(--neutral-200);
-    border-radius: 0.25rem;
-  }
-  
-  @media (max-width: 768px) {
-    .discovery-grid,
-    .sectors-grid,
-    .markets-grid,
-    .attributes-grid,
-    .signals-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .discovery-tab {
-      padding: var(--space-2);
-    }
-  }
-  
+}

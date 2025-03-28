@@ -8,7 +8,7 @@
 /* === Feature Grid System === */
 /* 
  * The feature grid creates a 3-column layout on desktop with vertically arranged
- * feature items (icon on top, text below). On mobile screens (<990px), it switches
+ * feature items (icon on top, text below). On mobile screens, it switches
  * to a single column with horizontally arranged items (icon on left, text on right).
  */
  .feature-grid {
@@ -16,7 +16,7 @@
   grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
   gap: var(--space-8); /* 2rem */
   margin: var(--space-8) 0; /* 2rem 0 */
-  margin-top: var(--space-12); /* 2.5rem is closest to var(--space-12) */
+  margin-top: var(--space-12); /* Uses semantic spacing */
 }
 
 .feature-item {
@@ -54,14 +54,15 @@
 .feature-item h3 {
   margin-top: var(--space-2); /* 0.5rem */
   text-align: center;
-  font-size: 1.25rem;
+  font-size: var(--text-xl);  /* Using token */
   margin-bottom: var(--space-2); /* 0.5rem */
   color: var(--secondary-800);
 }
 
+/* Updated paragraph font size using the new token --text-custom */
 .feature-item p {
   color: var(--secondary-700);
-  font-size: 0.95rem;
+  font-size: var(--text-custom);
   width: 100%;
   text-align: center;
   margin-left: auto;
@@ -79,13 +80,9 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 990px) { /* This should be updated to a breakpoint variable, closest is var(--breakpoint-lg) */
+@media (max-width: var(--breakpoint-lg)) {  /* Uses token for breakpoint (approx. 992px) */
   .feature-grid {
     grid-template-columns: 1fr;  /* Single column on mobile */
-  }
-  
-  /* inserted from panels.css */
-  .feature-grid {
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -98,7 +95,7 @@
   }
   
   .feature-icon {
-    margin: 0 var(--space-4) 0 0;          /* 0 1rem 0 0 - Move icon to the left side */
+    margin: 0 var(--space-4) 0 0;  /* Move icon to the left side */
   }
   
   .feature-item h3,

@@ -1,24 +1,17 @@
 /* ==========================================================================
    Typography System
    ==========================================================================
-   This file defines the complete typography system for Brandmine, including:
-   
-   1. Font face declarations for all typefaces (PT Serif, PT Sans, Noto fonts)
-   2. Typography design tokens (variables for font families, sizes, weights)
-   3. Base typography styles for HTML elements
-   4. Multilingual typography support (English, Russian, Chinese)
-   
-   The typography system follows the "Evernote approach" with:
-   - Serif fonts (PT Serif/Noto Serif SC) for headlines and titles
-   - Sans-serif fonts (PT Sans/Noto Sans SC) for body text and UI elements
-   
-   Each language has its own specific font declarations:
-   - English: PT Serif (headings), PT Sans (body)
-   - Russian: PT Serif (headings), PT Sans (body) - both have excellent Cyrillic support
-   - Chinese: Noto Serif SC (headings), Noto Sans SC (body)
-   
-   All fonts are self-hosted to ensure accessibility for users in all regions,
-   particularly important for Chinese users who may have issues with Google Fonts.
+
+   This file defines the typography system for Brandmine.
+   It includes:
+   1. Font face declarations for all typefaces.
+   2. Base typography styles for HTML elements.
+   3. Language-specific helpers.
+
+   Note:
+   All typography token variables (such as font families, sizes, line-heights,
+   font weights, and letter spacings) have been consolidated into tokens.css.
+   This file should be loaded after tokens.css so that the tokens are available.
 */
 
 /* --------------------------------------------------------------------------
@@ -175,94 +168,54 @@
   font-display: swap;
 }
 
-/* --------------------------------------------------------------------------
- 2. TYPOGRAPHY VARIABLES
- -------------------------------------------------------------------------- */
-
-:root {
-  /* Language-specific font definitions */
-  /* English fonts */
-  --font-heading-en: 'PT Serif', Georgia, serif;
-  --font-body-en: 'PT Sans', Arial, sans-serif;
-  
-  /* Russian fonts - PT Serif/Sans have excellent Cyrillic support */
-  --font-heading-ru: 'PT Serif', Georgia, serif;
-  --font-body-ru: 'PT Sans', Arial, sans-serif;
-  
-  /* Chinese fonts */
-  --font-heading-zh: 'Noto Serif SC', 'Songti SC', 'FangSong', 'STSong', serif;
-  --font-body-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  
-  /* Default to English fonts */
-  --font-heading: var(--font-heading-en);
-  --font-body: var(--font-body-en);
-  
-  /* UI and monospace fonts */
-  --font-ui: var(--font-body);
-  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  
-  /* Font sizes */
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
-  --text-2xl: 1.5rem;      /* 24px */
-  --text-3xl: 1.875rem;    /* 30px */
-  --text-4xl: 2.25rem;     /* 36px */
-  --text-5xl: 3rem;        /* 48px */
-
-/* Display text sizes for impact statements, statistics, etc. */
-  --text-6xl: 3.75rem;    /* 60px */
-  --text-7xl: 4.5rem;     /* 72px */
-  --text-8xl: 6rem;       /* 96px */
-  --text-9xl: 8rem;       /* 128px */  
-  
-  /* Line heights */
-  --leading-none: 1;
-  --leading-tight: 1.25;
-  --leading-snug: 1.375;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
-  --leading-loose: 2;
-  
-  /* Font weights */
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-  
-  /* Letter spacing */
-  --tracking-tighter: -0.05em;
-  --tracking-tight: -0.025em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.025em;
-  --tracking-wider: 0.05em;
-  --tracking-widest: 0.1em;
+/* ========== Source Code Pro (Mono) ========== */
+/* Regular */
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/assets/css/fonts/SourceCodePro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Apply Russian fonts when Russian language is specified */
-html[lang="ru"] {
-  --font-heading: var(--font-heading-ru);
-  --font-body: var(--font-body-ru);
-  --font-ui: var(--font-body-ru);
+/* Italic */
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/assets/css/fonts/SourceCodePro-It.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
 
-/* Apply Chinese fonts when Chinese language is specified */
-html[lang="zh"] {
-  --font-heading: var(--font-heading-zh);
-  --font-body: var(--font-body-zh);
-  --font-ui: var(--font-body-zh);
+/* Bold */
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/assets/css/fonts/SourceCodePro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
+
+/* Bold Italic */
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/assets/css/fonts/SourceCodePro-BoldIt.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 
 /* --------------------------------------------------------------------------
- 3. BASE TYPOGRAPHY STYLES
- -------------------------------------------------------------------------- */
+   3. BASE TYPOGRAPHY STYLES
+   -------------------------------------------------------------------------- */
 
+/* Set the base font size for the document */
 html {
   font-size: 16px;
 }
 
+/* Apply base typography to the body element */
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -273,7 +226,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings */
+/* Heading Styles */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: var(--font-bold);
@@ -283,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5em;
 }
 
-/* Slightly larger line height for Chinese headings for better readability */
+/* Adjust line heights for Chinese headings for enhanced readability */
 html[lang="zh"] h1, 
 html[lang="zh"] h2, 
 html[lang="zh"] h3, 
@@ -293,6 +246,7 @@ html[lang="zh"] h6 {
   line-height: var(--leading-snug);
 }
 
+/* Specific Heading Sizes & Styles */
 h1 {
   font-size: var(--text-4xl);
   letter-spacing: var(--tracking-tight);
@@ -323,10 +277,10 @@ h6 {
 }
 
 /* --------------------------------------------------------------------------
- 4. ADDITIONAL LANGUAGE-SPECIFIC HELPERS
- -------------------------------------------------------------------------- */
+   4. ADDITIONAL LANGUAGE-SPECIFIC HELPERS
+   -------------------------------------------------------------------------- */
 
-/* These classes can be used to explicitly force Chinese typography regardless of page language */
+/* Classes to explicitly force typography for specific languages */
 .zh, .chinese {
   font-family: var(--font-heading-zh);
 }
@@ -335,7 +289,6 @@ h6 {
   font-family: var(--font-body-zh);
 }
 
-/* Similar classes for explicitly forcing English or Russian typography */
 .en {
   font-family: var(--font-heading-en);
 }

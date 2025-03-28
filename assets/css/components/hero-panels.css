@@ -42,8 +42,8 @@
   .hero-panel h1 {
     color: var(--secondary-100); /* Default orange-tinted white color */
     margin-bottom: var(--space-4);
-    font-weight: 700;
-    letter-spacing: -0.02em; /* Slightly tighter letter spacing for headings */
+    font-weight: var(--font-bold);
+    letter-spacing: -0.02em; /* Consider tokenizing if reused elsewhere */
   }
   
   /* Standard hero subtitle */
@@ -242,9 +242,9 @@
   /* Hero panel with large display text */
   .hero-panel--display .display-text {
     font-size: var(--text-7xl);
-    font-weight: 800;  /* Extra bold */
-    line-height: 1;    /* Tighter line height for display text */
-    letter-spacing: -0.025em; /* Slightly tighter tracking for large text */
+    font-weight: var(--font-ultrabold);  /* Updated to use token (800) */
+    line-height: 1;
+    letter-spacing: -0.025em;
     color: var(--primary-900);
     margin-bottom: var(--space-4);
   }
@@ -264,54 +264,54 @@
   
   /* High contrast display variants */
   .hero-panel--display-contrast .display-text {
-    font-weight: 900;
+    font-weight: var(--font-heavy); /* Updated to use token (900) */
     text-transform: uppercase;
     letter-spacing: -0.05em;
   }
-
+  
   /* Ensure display text never overflows its container */
-.hero-panel--display .display-text {
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-/* Add more aggressive downsizing for display text on small screens */
-@media (max-width: 767px) { /* --breakpoint-md */
   .hero-panel--display .display-text {
-    font-size: var(--text-5xl); /* Smaller font size on tablets */
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
   }
-}
-
-@media (max-width: 576px) { /* --breakpoint-sm */
-  .hero-panel--display .display-text {
-    font-size: var(--text-4xl); /* Even smaller on phones */
-    line-height: 1.1; /* Slightly increased line height for readability */
+  
+  /* Responsive downsizing for display text */
+  @media (max-width: var(--breakpoint-md)) {  /* Updated to use token for breakpoint */
+    .hero-panel--display .display-text {
+      font-size: var(--text-5xl); /* Smaller font size on tablets */
+    }
   }
-}
-
-@media (max-width: 375px) { /* Very small phones */
-  .hero-panel--display .display-text {
-    font-size: var(--text-3xl); /* Much smaller on very small screens */
+  
+  @media (max-width: var(--breakpoint-sm)) {  /* 576px */
+    .hero-panel--display .display-text {
+      font-size: var(--text-4xl);
+      line-height: 1.1;
+    }
   }
-}
+  
+  @media (max-width: 375px) { /* Very small phones - consider creating a token for this if needed */
+    .hero-panel--display .display-text {
+      font-size: var(--text-3xl);
+    }
+  }
   
   /* --------------------------------------------------------------------------
      8. RESPONSIVE ADJUSTMENTS
      -------------------------------------------------------------------------- */
-  @media (max-width: var(--breakpoint-md)) { /* 768px */
+  @media (max-width: var(--breakpoint-md)) {
     .hero-panel {
       padding: var(--space-8) 0; /* 2rem 0 */
       min-height: 35vh; /* Slightly shorter on mobile */
     }
     
     .hero-panel h1 {
-      font-size: var(--text-3xl); /* Using your typography system */
+      font-size: var(--text-3xl);
     }
     
     .hero-subtitle {
-      font-size: var(--text-lg); /* Using your typography system */
+      font-size: var(--text-lg);
     }
     
     .hero-panel--large {
@@ -320,7 +320,7 @@
     }
     
     .hero-panel--large h1 {
-      font-size: var(--text-4xl); /* Using your typography system */
+      font-size: var(--text-4xl);
     }
     
     .hero-image-panel {
@@ -332,19 +332,19 @@
     }
   }
   
-  @media (max-width: var(--breakpoint-sm)) { /* 576px */
+  @media (max-width: var(--breakpoint-sm)) {
     .hero-panel {
       padding: var(--space-6) var(--space-4); /* 1.5rem 1rem */
       min-height: 30vh;
     }
     
     .hero-panel h1 {
-      font-size: var(--text-2xl); /* Using your typography system */
+      font-size: var(--text-2xl);
       margin-bottom: var(--space-2);
     }
     
     .hero-subtitle {
-      font-size: var(--text-base); /* Using your typography system */
+      font-size: var(--text-base);
       margin-bottom: var(--space-2);
     }
     
@@ -356,23 +356,23 @@
       min-height: 25vh;
     }
   }
-
-
-/* More aggressive solution to remove gaps between panels */
-.hero-image-panel,
-.hero-panel {
-  margin-bottom: 0 !important; /* Remove bottom margin entirely */
-}
-
-.hero-image-panel + .hero-panel,
-.hero-panel + .hero-panel,
-.hero-image-panel + .full-width-panel,
-.hero-panel + .full-width-panel {
-  margin-top: 0 !important; /* Remove top margin entirely */
-}
-
-/* Make sure there's no padding causing the gap */
-.full-width-panel.hero-panel,
-.full-width-panel.hero-image-panel {
-  padding-bottom: 0;
-}
+  
+  /* More aggressive solution to remove gaps between panels */
+  .hero-image-panel,
+  .hero-panel {
+    margin-bottom: 0 !important; /* Remove bottom margin entirely */
+  }
+  
+  .hero-image-panel + .hero-panel,
+  .hero-panel + .hero-panel,
+  .hero-image-panel + .full-width-panel,
+  .hero-panel + .full-width-panel {
+    margin-top: 0 !important; /* Remove top margin entirely */
+  }
+  
+  /* Make sure there's no padding causing the gap */
+  .full-width-panel.hero-panel,
+  .full-width-panel.hero-image-panel {
+    padding-bottom: 0;
+  }
+  

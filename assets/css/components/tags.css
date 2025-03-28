@@ -1,6 +1,7 @@
 /* ==========================================================================
    Tag Styling
-   ========================================================================== */
+   ==========================================================================
+*/
 
 /* Tag list styling */
 .tag-list {
@@ -20,8 +21,8 @@
 .tag {
   display: inline-block;
   padding: var(--space-1) var(--space-2);
-  border-radius: 4px;
-  font-size: 0.875rem;
+  border-radius: var(--radius-sm); /* Replaced 4px with token */
+  font-size: var(--text-sm); /* Replaced 0.875rem with token */
   line-height: 1.4;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -67,7 +68,7 @@
 
 .tag-cloud h3 {
   margin-bottom: var(--space-2);
-  font-size: 1.25rem;
+  font-size: var(--text-xl); /* Replaced 1.25rem with token */
 }
 
 .sector-cloud,
@@ -89,15 +90,15 @@
   padding: var(--space-1) var(--space-2);
   background-color: var(--neutral-200);
   color: var(--neutral-700);
-  border-radius: 4px;
-  font-size: 0.875rem;
+  border-radius: var(--radius-sm); /* Replaced fixed 4px with token */
+  font-size: var(--text-sm); /* Replaced 0.875rem with token */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--space-2);
 }
 
 .tag-description {
-  font-size: 1.125rem;
+  font-size: var(--text-lg); /* Replaced 1.125rem with token */
   color: var(--neutral-600);
   margin-bottom: var(--space-4);
   max-width: 40em;
@@ -125,7 +126,6 @@
   background-position: center;
   background-size: contain;
 }
-
 
 /* Country tag styling */
 .country-tag {

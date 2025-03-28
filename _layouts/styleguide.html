@@ -6,9 +6,11 @@
   <title>{{ page.title }} | Brandmine Design System</title>
   
   <!-- Design Tokens and Base Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/colors.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/spacing.css' | relative_url }}">
+  <!-- Consolidated tokens file loaded first to provide global CSS variables -->
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/tokens.css' | relative_url }}">
+
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   
   <!-- Fixed Grid-Based Layout -->
   <link rel="stylesheet" href="{{ '/assets/css/styleguide.css' | relative_url }}">
@@ -48,28 +50,33 @@
         <!-- Foundations Section -->
         <h3>Foundations</h3>
         <ul>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/brand-identity/" 
-            {% if page.url contains '/foundations/brand-identity/' %}class="active"{% endif %}>
-            Brand Identity
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/brand-identity/" 
+               {% if page.url contains '/foundations/brand-identity/' %}class="active"{% endif %}>
+              Brand Identity
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/colors/" 
-              {% if page.url contains '/foundations/colors/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/colors/" 
+               {% if page.url contains '/foundations/colors/' %}class="active"{% endif %}>
               Colors
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/typography/" 
-              {% if page.url contains '/foundations/typography/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/typography/" 
+               {% if page.url contains '/foundations/typography/' %}class="active"{% endif %}>
               Typography
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/spacing/" 
-              {% if page.url contains '/foundations/spacing/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/spacing/" 
+               {% if page.url contains '/foundations/spacing/' %}class="active"{% endif %}>
               Spacing
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/layouts/" 
-              {% if page.url contains '/foundations/layouts/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/foundations/layouts/" 
+               {% if page.url contains '/foundations/layouts/' %}class="active"{% endif %}>
               Layouts
             </a>
           </li>
@@ -78,29 +85,34 @@
         <!-- Components Section -->
         <h3>Components</h3>
         <ul>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/hero-panels/" 
-              {% if page.url contains '/components/hero-panels/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/hero-panels/" 
+               {% if page.url contains '/components/hero-panels/' %}class="active"{% endif %}>
               Hero Panels
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/buttons/" 
-              {% if page.url contains '/components/buttons/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/buttons/" 
+               {% if page.url contains '/components/buttons/' %}class="active"{% endif %}>
               Buttons
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/cards/" 
-              {% if page.url contains '/components/cards/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/cards/" 
+               {% if page.url contains '/components/cards/' %}class="active"{% endif %}>
               Cards
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/forms/" 
-              {% if page.url contains '/components/forms/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/forms/" 
+               {% if page.url contains '/components/forms/' %}class="active"{% endif %}>
               Forms
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/text/" 
-            {% if page.url contains '/components/text/' %}class="active"{% endif %}>
-            Text Components
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/text/" 
+               {% if page.url contains '/components/text/' %}class="active"{% endif %}>
+              Text Components
             </a>
           </li>
         </ul>
@@ -108,30 +120,35 @@
         <!-- Patterns Section -->
         <h3>Patterns</h3>
         <ul>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/navigation/" 
-              {% if page.url contains '/patterns/navigation/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/navigation/" 
+               {% if page.url contains '/patterns/navigation/' %}class="active"{% endif %}>
               Navigation
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/multilingual/" 
-              {% if page.url contains '/patterns/multilingual/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/multilingual/" 
+               {% if page.url contains '/patterns/multilingual/' %}class="active"{% endif %}>
               Multilingual
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/content-display/" 
-              {% if page.url contains '/patterns/content-display/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/content-display/" 
+               {% if page.url contains '/patterns/content-display/' %}class="active"{% endif %}>
               Content Display
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/image-handling/" 
-            {% if page.url contains '/patterns/image-handling/' %}class="active"{% endif %}>
-            Image Handling
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/image-handling/" 
+               {% if page.url contains '/patterns/image-handling/' %}class="active"{% endif %}>
+              Image Handling
             </a>
           </li>
-          <li><a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/tags/" 
-              {% if page.url contains '/patterns/tags/' %}class="active"{% endif %}>
+          <li>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/tags/" 
+               {% if page.url contains '/patterns/tags/' %}class="active"{% endif %}>
               Tags
-              </a>
+            </a>
           </li>
         </ul>
       </nav>
@@ -167,11 +184,8 @@
           (nav.classList.contains('is-open') ? 'open' : 'closed');
       }
       
-      // Update debug info regularly
       setInterval(updateDebugInfo, 500);
       window.addEventListener('resize', updateDebugInfo);
-      
-      // Initial update
       document.addEventListener('DOMContentLoaded', updateDebugInfo);
     </script>
   </div>

@@ -8,7 +8,6 @@
 /* --------------------------------------------------------------------------
    1. SITE HEADER
    -------------------------------------------------------------------------- */
-
    .site-header {
     background-color: var(--primary-400);
     color: white;
@@ -22,19 +21,17 @@
   }
   
   .site-title {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: var(--text-2xl); /* Replaced fixed 1.5rem with token (1.5rem if --text-2xl=1.5rem) */
+    font-weight: var(--font-bold);
     color: white;
     text-decoration: none;
-    margin-right: var(--space-6); /* 1.25rem is close to 1.5rem */
+    margin-right: var(--space-6);
     flex: 0 0 auto; /* Don't grow, don't shrink, auto basis */
   }
-  
   
   /* --------------------------------------------------------------------------
      2. MAIN NAVIGATION
      -------------------------------------------------------------------------- */
-  
   .site-nav {
     display: flex;
     flex: 1 0 auto; /* Grow, don't shrink, auto basis */
@@ -42,7 +39,7 @@
   
   .site-nav a {
     color: white;
-    margin-right: var(--space-4); /* 1rem */
+    margin-right: var(--space-4);
     text-decoration: none;
   }
   
@@ -53,24 +50,23 @@
   /* Active state styling for navigation links */
   .site-nav a.active {
     background-color: var(--primary-700);
-    font-weight: bold;
+    font-weight: var(--font-bold);
   }
   
   /* --------------------------------------------------------------------------
      3. LANGUAGE SELECTOR
      -------------------------------------------------------------------------- */
-  
   .language-selector {
     display: flex;
     margin-left: auto; /* This pushes it to the right */
     gap: var(--space-1); /* 0.25rem */
   }
-
+  
   .language-selector a {
     color: white;
     text-decoration: none;
     opacity: 0.75;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--transition-fast) ease; /* Using token for transition */
   }
   
   .language-selector a:hover {
@@ -80,15 +76,13 @@
   
   .language-selector a.active {
     opacity: 1;
-    font-weight: bold;
-    /* Remove any background coloring to match original */
+    font-weight: var(--font-bold);
     background-color: transparent;
   }
   
   /* --------------------------------------------------------------------------
      4. SITE FOOTER
      -------------------------------------------------------------------------- */
-  
   .site-footer {
     background-color: var(--primary-700);
     color: var(--neutral-200);
@@ -129,14 +123,14 @@
   
   /* Footer Text Styles */
   .footer-text {
-    font-size: 0.875rem; /* Smaller text as requested */
-    margin: var(--space-1) 0; /* 0.25rem 0 */
+    font-size: var(--text-sm); /* Replaced fixed 0.875rem with token */
+    margin: var(--space-1) 0;
     line-height: 1.4;
   }
   
   .footer-tagline {
-    font-size: 0.95rem;
-    margin: var(--space-2) 0; /* 0.5rem 0 */
+    font-size: var(--text-custom); /* Replaced fixed 0.95rem with token */
+    margin: var(--space-2) 0;
     color: var(--neutral-100);
   }
   
@@ -144,9 +138,9 @@
   .footer-copyright {
     text-align: center;
     border-top: 1px solid var(--primary-600);
-    padding-top: var(--space-4); /* 1rem */
-    margin-top: var(--space-4); /* 1rem */
-    font-size: 0.75rem;
+    padding-top: var(--space-4);
+    margin-top: var(--space-4);
+    font-size: var(--text-xs); /* Replaced fixed 0.75rem with token */
     color: var(--neutral-300);
   }
   
@@ -168,7 +162,7 @@
     color: white;
     border-radius: 50%;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast) ease;
   }
   
   .social-icon:hover {
@@ -191,16 +185,17 @@
   /* --------------------------------------------------------------------------
      5. RESPONSIVE ADJUSTMENTS
      -------------------------------------------------------------------------- */
-  
   /* Tablet and smaller desktops */
-  @media (max-width: var(--breakpoint-lg)) { /* 992px */
+  /* max-width: 992px (var(--breakpoint-lg)=992px) */
+  @media (max-width: var(--breakpoint-lg)) {
     .footer-grid {
       gap: var(--space-6); /* 1.5rem */
     }
   }
   
   /* Mobile devices */
-  @media (max-width: var(--breakpoint-md)) { /* 768px */
+  /* max-width: calc(var(--breakpoint-md) - 1px) => approx 767px when --breakpoint-md=768px */
+  @media (max-width: calc(var(--breakpoint-md) - 1px)) {
     .site-header .wrapper {
       flex-direction: column;
       align-items: center;
@@ -232,7 +227,8 @@
   }
   
   /* Extra small devices */
-  @media (max-width: var(--breakpoint-xs)) { /* 480px */
+  /* max-width: var(--breakpoint-xs)=480px */
+  @media (max-width: var(--breakpoint-xs)) {
     .site-nav {
       flex-wrap: wrap;
       justify-content: center;
@@ -242,318 +238,49 @@
       margin: var(--space-1) var(--space-2); /* 0.25rem 0.5rem */
     }
   }
-
-  /* Ensure footer connects directly */
-@media (max-width: 767px) { /* This should be updated to var(--breakpoint-md) */
-  .site-footer {
-    margin-top: 0 !important;
-  }
-}
-
-.site-footer {
-  margin-top: 0 !important; /* Override the 3rem margin regardless of screen size */
-}
-
-
-/* ==========================================================================
-   Hamburger Menu
-   ========================================================================== */
-
-/* Default state - hide toggle on desktop */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 1000;
-}
-
-/* Hamburger icon styling */
-.menu-icon {
-  display: block;
-  position: relative;
-  width: 24px;
-  height: 18px;
-}
-
-/* Hamburger bars (middle, before/after for top and bottom) */
-.menu-icon, 
-.menu-icon::before, 
-.menu-icon::after {
-  background-color: white;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.menu-icon::before, 
-.menu-icon::after {
-  content: '';
-  position: absolute;
-  left: 0;
-}
-
-.menu-icon::before {
-  top: -8px;
-}
-
-.menu-icon::after {
-  bottom: -8px;
-}
-
-/* Active hamburger icon (X shape) */
-.menu-open .menu-icon {
-  background-color: transparent; /* Hide middle line */
-}
-
-.menu-open .menu-icon::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-
-.menu-open .menu-icon::after {
-  bottom: 0;
-  transform: rotate(-45deg);
-}
-
-
-/* ==========================================================================
-   Critical Mobile Navigation Fixes
-   
-   This section contains specific fixes for the mobile navigation issues:
-   1. Language selector not visible with hamburger closed
-   2. Language selector falling below header when menu is open
-   3. Discover dropdown shifted and only showing one entry
-   ========================================================================== */
-
-/* Reset problematic mobile styles first */
-@media (max-width: 767px) {
-  /* Override the column direction that's causing problems */
-  .site-header .wrapper {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    position: relative;
-    padding-top: 15px;
-    padding-bottom: 15px;
+  
+  /* Mobile Dropdown Styles */
+  /* These styles should use media queries based on tokens, similar to the above */
+  @media (max-width: calc(var(--breakpoint-md) - 1px)) {
+    .dropdown-content {
+      position: static;
+      display: none;
+      box-shadow: none;
+      width: 100%;
+      background-color: var(--primary-700);
+    }
+    
+    .dropdown .dropbtn {
+      display: block;
+      padding: 0.75rem 2rem;
+      width: 100%;
+      text-align: left;
+      margin-right: 0;
+    }
+    
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown {
+      display: block;
+      width: 100%;
+    }
+    
+    .dropdown.open .dropbtn {
+      background-color: var(--primary-700);
+    }
+    
+    .dropdown-content a {
+      padding: 0.75rem 3rem !important;
+      color: white !important;
+      width: 100% !important;
+      display: block !important;
+      background-color: var(--primary-700) !important;
+    }
+    
+    .dropdown.open .dropdown-content {
+      display: block !important;
+    }
   }
   
-  /* Reset site title margins causing alignment issues */
-  .site-title {
-    margin: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    text-align: left;
-  }
-  
-  /* Fix hamburger menu positioning */
-  .menu-toggle {
-    display: block;
-    position: absolute;
-    top: 22px;
-    right: 20px;
-    z-index: 1000;
-  }
-  
-  /* CRITICAL: Fix language selector always visible and properly positioned */
-  .language-selector {
-    display: flex !important;
-    position: absolute !important;
-    top: 22px !important;
-    right: 70px !important;
-    margin: 0 !important;
-    z-index: 1001 !important;
-    gap: var(--space-1);
-    background-color: transparent !important;
-  }
-  
-  /* Ensure site navigation is properly placed below header */
-  .site-nav {
-    position: absolute;
-    top: 100% !important; /* Ensure it's below the header */
-    left: 0;
-    right: 0;
-    margin: 0 !important;
-    display: none !important;
-    flex-direction: column;
-    background-color: var(--primary-600);
-    padding: 1rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 900;
-  }
-  
-  /* Show menu when open */
-  body.menu-open .site-nav {
-    display: flex !important;
-  }
-  
-  /* Fix dropdown to show all items */
-  .dropdown {
-    width: 100%;
-    display: block;
-  }
-  
-  .dropdown .dropbtn {
-    text-align: left;
-    width: 100%;
-    display: block;
-    padding: 0.75rem 2rem;
-    margin: 0;
-    color: white;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: static;
-    width: 100%;
-    background-color: var(--primary-700);
-    box-shadow: none;
-    padding: 0;
-  }
-  
-  .dropdown-content a {
-    padding-left: 3rem;
-    width: 100%;
-    display: block;
-  }
-  
-  .dropdown.open .dropdown-content {
-    display: block;
-  }
-}
-
-/* Fix for very small screens */
-@media (max-width: 480px) {
-  .menu-toggle {
-    right: 15px;
-  }
-  
-  .language-selector {
-    right: 60px !important;
-  }
-}
-
-/* ==========================================================================
-   Dropdown Styles - New Section
-   ========================================================================== */
-
-/* Dropdown Styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Make dropdown button match other navigation links */
-.dropdown .dropbtn {
-  background-color: transparent;
-  color: white;
-  padding: 0;
-  margin-right: var(--space-4); /* Same as other nav links */
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  text-decoration: none;
-}
-
-/* Match hover state to other nav links */
-.dropdown:hover .dropbtn,
-.dropdown .dropbtn:hover {
-  text-decoration: underline;
-}
-
-/* Dropdown content styling */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--primary-600);
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  border-radius: 4px;
-  margin-top: 4px;
-  overflow: hidden;
-}
-
-/* Style dropdown links */
-.dropdown-content a {
-  color: white;
-  padding: var(--space-2) var(--space-3);
-  text-decoration: none;
-  display: block;
-  font-size: 0.9375rem;
-  margin-right: 0; /* Override the margin from site-nav a */
-}
-
-/* Hover state for dropdown items */
-.dropdown-content a:hover {
-  background-color: var(--primary-700);
-  text-decoration: none;
-}
-
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* ===== REPLACE THIS SECTION IN navigation.css (find the Mobile Dropdown Styles section) ===== */
-/* Mobile Dropdown Styles */
-@media (max-width: 767px) {
-  /* Adjust dropdown for mobile */
-  .dropdown-content {
-    position: static;
-    display: none;
-    box-shadow: none;
-    width: 100%;
-    background-color: var(--primary-700);
-  }
-  
-  /* Ensure .dropbtn looks like other mobile nav links */
-  .dropdown .dropbtn {
-    display: block;
-    padding: 0.75rem 2rem;
-    width: 100%;
-    text-align: left;
-    margin-right: 0;
-  }
-  
-  /* Style for opened dropdown on mobile */
-  .dropdown.open .dropdown-content {
-    display: block;
-  }
-  
-  /* Full-width dropdown on mobile */
-  .dropdown {
-    display: block;
-    width: 100%;
-  }
-  
-  /* Active dropdown styling on mobile */
-  .dropdown.open .dropbtn {
-    background-color: var(--primary-700);
-  }
-  
-  /* Ensure dropdown items are properly styled and visible */
-  .dropdown-content a {
-    padding: 0.75rem 3rem !important;
-    color: white !important;
-    width: 100% !important;
-    display: block !important;
-    background-color: var(--primary-700) !important;
-  }
-  
-  /* Ensure dropdown content is visible when open */
-  .dropdown.open .dropdown-content {
-    display: block !important;
-  }
-}
-
-/* Remove or comment out the problematic fixed indentation at the end of the file */
-/* Remove these lines if they exist at the end of your navigation.css file:
-.dropdown-content a {
-  padding-left: 3rem !important;
-}
-*/
-/* ===== END REPLACE ===== */

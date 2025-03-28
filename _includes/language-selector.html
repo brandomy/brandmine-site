@@ -1,4 +1,5 @@
 <!-- _includes/language-selector.html -->
+{% unless layout.skip_language_selector %}
 <div class="language-selector">
   {% assign pages = site.pages | where:"ref", page.ref | sort: 'lang' %}
   {% if pages.size == 0 %}
@@ -29,3 +30,4 @@
     {% endfor %}
   {% endif %}
 </div>
+{% endunless %}

@@ -7,7 +7,7 @@
 
 /* === Solution List System === */
 .solutions-list {
-  max-width: 800px;
+  max-width: 800px; /* Consider defining a token if this value is reused elsewhere */
   margin-left: auto;
   margin-right: auto;
 }
@@ -18,8 +18,8 @@
   margin-bottom: var(--space-6); /* 1.5rem */
   background-color: var(--primary-50);
   padding: var(--space-4); /* 1rem */
-  border-radius: 0.5rem;
-  border-left: 4px solid var(--primary-400);
+  border-radius: var(--radius-md); /* Replaced fixed 0.5rem with token */
+  border-left: var(--border-width-thick) solid var(--primary-400); /* Replaced 4px with token */
   margin-left: auto;
   margin-right: auto;
   max-width: 800px;     /* Prevent excessive stretching */
@@ -34,15 +34,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-size: 1.25rem;
+  font-weight: var(--font-bold);
+  font-size: var(--text-xl); /* Using token for 1.25rem */
   margin-right: var(--space-4); /* 1rem */
   flex-shrink: 0;
 }
 
 .solution-content h3 {
   margin: 0 0 var(--space-2) 0; /* 0 0 0.5rem 0 */
-  font-size: 1.25rem;
+  font-size: var(--text-xl);  /* Using token for 1.25rem */
   color: var(--primary-800);
 }
 
