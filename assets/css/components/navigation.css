@@ -21,12 +21,12 @@
   }
   
   .site-title {
-    font-size: var(--text-2xl); /* Replaced fixed 1.5rem with token (1.5rem if --text-2xl=1.5rem) */
+    font-size: var(--text-2xl);
     font-weight: var(--font-bold);
     color: white;
     text-decoration: none;
     margin-right: var(--space-6);
-    flex: 0 0 auto; /* Don't grow, don't shrink, auto basis */
+    flex: 0 0 auto;
   }
   
   /* --------------------------------------------------------------------------
@@ -34,7 +34,7 @@
      -------------------------------------------------------------------------- */
   .site-nav {
     display: flex;
-    flex: 1 0 auto; /* Grow, don't shrink, auto basis */
+    flex: 1 0 auto;
   }
   
   .site-nav a {
@@ -54,24 +54,76 @@
   }
   
   /* --------------------------------------------------------------------------
-     3. LANGUAGE SELECTOR
+     3. DROPDOWN NAVIGATION
+     -------------------------------------------------------------------------- */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown .dropbtn {
+    color: white;
+    text-decoration: none;
+    margin-right: var(--space-4);
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-500);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: var(--z-index-dropdown, 1000);
+  }
+  
+  /* Show dropdown on hover for desktop */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    padding: var(--space-2) var(--space-4);
+    display: block;
+    color: white;
+    margin: 0;
+    border-bottom: 1px solid var(--primary-600);
+  }
+  
+  .dropdown-content a:hover {
+    background-color: var(--primary-600);
+  }
+  
+  /* Add a caret indicator to dropdown button */
+  .dropbtn::after {
+    content: "▼";
+    font-size: 0.7em;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* --------------------------------------------------------------------------
+     4. LANGUAGE SELECTOR
      -------------------------------------------------------------------------- */
   .language-selector {
     display: flex;
-    margin-left: auto; /* This pushes it to the right */
-    gap: var(--space-1); /* 0.25rem */
+    margin-left: auto;
+    gap: var(--space-1);
   }
   
   .language-selector a {
     color: white;
     text-decoration: none;
     opacity: 0.75;
-    transition: opacity var(--transition-fast) ease; /* Using token for transition */
+    transition: opacity var(--transition-fast, 0.2s) ease;
   }
   
   .language-selector a:hover {
     opacity: 1 !important;
-    text-decoration: none; /* Explicitly prevent underline on hover */
+    text-decoration: none;
   }
   
   .language-selector a.active {
@@ -81,13 +133,51 @@
   }
   
   /* --------------------------------------------------------------------------
-     4. SITE FOOTER
+     5. MENU TOGGLE BUTTON (Only used on mobile)
+     -------------------------------------------------------------------------- */
+  .menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+  }
+  
+  .menu-icon {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    position: relative;
+  }
+  
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+  }
+  
+  .menu-icon::before {
+    top: -8px;
+  }
+  
+  .menu-icon::after {
+    bottom: -8px;
+  }
+  
+  /* --------------------------------------------------------------------------
+     6. SITE FOOTER
      -------------------------------------------------------------------------- */
   .site-footer {
     background-color: var(--primary-700);
     color: var(--neutral-200);
-    padding: var(--space-8) 0 var(--space-4); /* 2rem 0 1rem */
-    margin-top: var(--space-12); /* 3rem */
+    padding: var(--space-8) 0 var(--space-4);
+    margin-top: var(--space-12);
   }
   
   .site-footer a {
@@ -104,13 +194,13 @@
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-4); /* 1rem */
-    margin-bottom: var(--space-6); /* 1.5rem */
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
   }
   
   /* Footer Sections */
   .footer-section {
-    padding: 0 var(--space-2); /* 0 0.5rem */
+    padding: 0 var(--space-2);
   }
   
   .footer-section-center {
@@ -123,13 +213,13 @@
   
   /* Footer Text Styles */
   .footer-text {
-    font-size: var(--text-sm); /* Replaced fixed 0.875rem with token */
+    font-size: var(--text-sm);
     margin: var(--space-1) 0;
     line-height: 1.4;
   }
   
   .footer-tagline {
-    font-size: var(--text-custom); /* Replaced fixed 0.95rem with token */
+    font-size: var(--text-custom);
     margin: var(--space-2) 0;
     color: var(--neutral-100);
   }
@@ -140,7 +230,7 @@
     border-top: 1px solid var(--primary-600);
     padding-top: var(--space-4);
     margin-top: var(--space-4);
-    font-size: var(--text-xs); /* Replaced fixed 0.75rem with token */
+    font-size: var(--text-xs);
     color: var(--neutral-300);
   }
   
@@ -148,8 +238,8 @@
   .social-icons {
     display: flex;
     justify-content: center;
-    gap: var(--space-4); /* 1rem */
-    margin-top: var(--space-3); /* 0.75rem */
+    gap: var(--space-4);
+    margin-top: var(--space-3);
   }
   
   .social-icon {
@@ -162,7 +252,7 @@
     color: white;
     border-radius: 50%;
     text-decoration: none;
-    transition: all var(--transition-fast) ease;
+    transition: all var(--transition-fast, 0.2s) ease;
   }
   
   .social-icon:hover {
@@ -179,108 +269,5 @@
   
   /* Newsletter Form Customization */
   .newsletter-container {
-    margin: var(--space-2) 0; /* 0.5rem 0 */
+    margin: var(--space-2) 0;
   }
-  
-  /* --------------------------------------------------------------------------
-     5. RESPONSIVE ADJUSTMENTS
-     -------------------------------------------------------------------------- */
-  /* Tablet and smaller desktops */
-  /* max-width: 992px (var(--breakpoint-lg)=992px) */
-  @media (max-width: var(--breakpoint-lg)) {
-    .footer-grid {
-      gap: var(--space-6); /* 1.5rem */
-    }
-  }
-  
-  /* Mobile devices */
-  /* max-width: calc(var(--breakpoint-md) - 1px) => approx 767px when --breakpoint-md=768px */
-  @media (max-width: calc(var(--breakpoint-md) - 1px)) {
-    .site-header .wrapper {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .site-title {
-      margin-bottom: var(--space-3); /* 0.75rem */
-      margin-right: 0;
-    }
-    
-    .site-nav {
-      margin: var(--space-2) 0; /* 0.5rem 0 */
-      justify-content: center;
-    }
-    
-    .language-selector {
-      margin: var(--space-3) 0 0 0; /* 0.75rem 0 0 0 */
-    }
-    
-    .footer-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .footer-section,
-    .footer-section-center,
-    .footer-section-right {
-      text-align: center;
-    }
-  }
-  
-  /* Extra small devices */
-  /* max-width: var(--breakpoint-xs)=480px */
-  @media (max-width: var(--breakpoint-xs)) {
-    .site-nav {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .site-nav a {
-      margin: var(--space-1) var(--space-2); /* 0.25rem 0.5rem */
-    }
-  }
-  
-  /* Mobile Dropdown Styles */
-  /* These styles should use media queries based on tokens, similar to the above */
-  @media (max-width: calc(var(--breakpoint-md) - 1px)) {
-    .dropdown-content {
-      position: static;
-      display: none;
-      box-shadow: none;
-      width: 100%;
-      background-color: var(--primary-700);
-    }
-    
-    .dropdown .dropbtn {
-      display: block;
-      padding: 0.75rem 2rem;
-      width: 100%;
-      text-align: left;
-      margin-right: 0;
-    }
-    
-    .dropdown.open .dropdown-content {
-      display: block;
-    }
-    
-    .dropdown {
-      display: block;
-      width: 100%;
-    }
-    
-    .dropdown.open .dropbtn {
-      background-color: var(--primary-700);
-    }
-    
-    .dropdown-content a {
-      padding: 0.75rem 3rem !important;
-      color: white !important;
-      width: 100% !important;
-      display: block !important;
-      background-color: var(--primary-700) !important;
-    }
-    
-    .dropdown.open .dropdown-content {
-      display: block !important;
-    }
-  }
-  
