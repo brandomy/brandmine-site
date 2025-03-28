@@ -22,13 +22,31 @@ lang: en
       <h2>Find Brands</h2>
       
       <div class="search-box">
-        <input type="text" id="brand-search" placeholder="Search brands, sectors, or attributes...">
+        <input type="text" id="brand-search" placeholder="Search brands, markets, sectors, or attributes...">
         <button type="button" class="search-button">Search</button>
       </div>
       
       <div class="filter-controls">
         <p class="filter-heading">Filter by:</p>
         
+
+        <!-- Markets dropdown -->
+        <div class="filter-group">
+        <label for="market-filter">Markets</label>
+        <select id="market-filter" class="filter-select">
+            <option value="">All Markets</option>
+            <option value="russia">Russia</option>
+            <option value="brazil">Brazil</option>
+            <option value="china">China</option>
+            <option value="egypt">Egypt</option>
+            <option value="ethiopia">Ethiopia</option>
+            <option value="india">India</option>
+            <option value="indonesia">Indonesia</option>
+            <option value="iran">Iran</option>
+            <option value="south-africa">South Africa</option>
+            <option value="uae">UAE</option>
+        </select>
+    </div>
 
         <!-- Business Sectors dropdown -->
         <div class="filter-group">
@@ -53,7 +71,7 @@ lang: en
               <option value="wine">Wine</option>
           </select>
       </div>
-
+    
         <!-- Brand Attributes dropdown -->
         <div class="filter-group">
           <label for="attribute-filter">Brand Attributes</label>
@@ -69,18 +87,6 @@ lang: en
               <option value="sustainability-pioneer">Sustainability Pioneer</option>
           </select>
       </div>
-
-      <div class="filter-group">
-        <label for="market-filter">Markets</label>
-        <select id="market-filter" class="filter-select">
-            <option value="">All Markets</option>
-            <option value="brazil">Brazil</option>
-            <option value="china">China</option>
-            <option value="india">India</option>
-            <option value="russia">Russia</option>
-            <option value="south-africa">South Africa</option>
-        </select>
-    </div>
 
         <!-- Growth Signals dropdown -->
         <div class="filter-group">
@@ -98,8 +104,8 @@ lang: en
       </div>
     </div>
     
-    <!-- Right side: Featured brand with orange textured background -->
-    <div class="featured-brand-panel problem-panel">
+    <!-- Right side: Featured brand with olive textured background -->
+    <div class="featured-brand-panel olive-panel-pattern">
       <h2>Featured Brand</h2>
       
       <div class="brand-card">
@@ -131,17 +137,36 @@ lang: en
     
     <div class="discovery-tabs">
       <div class="tab-nav">
+        <button class="tab-button" data-tab="markets">Markets</button>
         <button class="tab-button active" data-tab="sectors">Business Sectors</button>
         <button class="tab-button" data-tab="attributes">Brand Attributes</button>
-        <button class="tab-button" data-tab="markets">Markets</button>
         <button class="tab-button" data-tab="signals">Growth Signals</button>
       </div>
       
       <!-- Tab content -->
       <div class="tab-content">
+
+        <!-- Markets tab -->
+        <div class="tab-pane" id="markets-tab">
+          <p class="tab-intro">Explore brands by their country of origin within the BRICS+ markets.</p>
+          
+          <div class="tag-cloud market-cloud">
+            <a href="{{ site.baseurl }}/markets/russia/" class="market-tag">Russia</a>
+            <a href="{{ site.baseurl }}/markets/brazil/" class="market-tag">Brazil</a>
+            <a href="{{ site.baseurl }}/markets/china/" class="market-tag">China</a>
+            <a href="{{ site.baseurl }}/markets/china/" class="market-tag">Egypt</a>
+            <a href="{{ site.baseurl }}/markets/india/" class="market-tag">Ethiopia</a>
+            <a href="{{ site.baseurl }}/markets/india/" class="market-tag">India</a>
+            <a href="{{ site.baseurl }}/markets/russia/" class="market-tag">Indonesia</a>
+            <a href="{{ site.baseurl }}/markets/brazil/" class="market-tag">Iran</a>
+            <a href="{{ site.baseurl }}/markets/south-africa/" class="market-tag">South Africa</a>
+            <a href="{{ site.baseurl }}/markets/south-africa/" class="market-tag">UAE</a>         </div>
+        </div>
+
+
         <!-- Sectors tab -->
         <div class="tab-pane active" id="sectors-tab">
-          <p class="tab-intro">Explore brands by industry sectors, from artisanal food products to luxury hospitality experiences.</p>
+          <p class="tab-intro">Explore brands by business sectors, from artisanal food products to luxury hospitality experiences.</p>
           
           <div class="tag-cloud sector-cloud">
             <a href="{{ site.baseurl }}/sectors/hotels-resorts/" class="sector-tag">Hotels & Resorts</a>
@@ -176,19 +201,6 @@ lang: en
             <a href="{{ site.baseurl }}/attributes/premium-positioning/" class="attribute-tag">Premium Positioning</a>
             <a href="{{ site.baseurl }}/attributes/cultural-ambassador/" class="attribute-tag">Cultural Ambassador</a>
             <a href="{{ site.baseurl }}/attributes/sustainability-pioneer/" class="attribute-tag">Sustainability Pioneer</a>
-          </div>
-        </div>
-        
-        <!-- Markets tab -->
-        <div class="tab-pane" id="markets-tab">
-          <p class="tab-intro">Explore brands by their country of origin within the BRICS+ markets.</p>
-          
-          <div class="tag-cloud market-cloud">
-            <a href="{{ site.baseurl }}/markets/russia/" class="market-tag">Russia</a>
-            <a href="{{ site.baseurl }}/markets/brazil/" class="market-tag">Brazil</a>
-            <a href="{{ site.baseurl }}/markets/india/" class="market-tag">India</a>
-            <a href="{{ site.baseurl }}/markets/china/" class="market-tag">China</a>
-            <a href="{{ site.baseurl }}/markets/south-africa/" class="market-tag">South Africa</a>
           </div>
         </div>
         

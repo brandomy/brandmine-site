@@ -22,7 +22,7 @@ ref: brands
 </div>
 
 <!-- Brand Profiles Panel -->
-<div class="full-width-panel solution-panel">
+<div class="full-width-panel green-panel">
   <div class="panel-content">
     <div class="content-card">
       <h2>Rich Brand Profiles</h2>
@@ -125,7 +125,7 @@ ref: brands
 </div>
 
 <!-- Find Your Partner Panel -->
-<div class="full-width-panel perspective-panel">
+<div class="full-width-panel indigo-panel">
   <div class="panel-content">
     <div class="content-card">
       <h2>Find Your Next Partner</h2>

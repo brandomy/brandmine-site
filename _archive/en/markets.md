@@ -22,7 +22,7 @@ ref: markets
 </div>
 
 <!-- Featured Markets Panel -->
-<div class="full-width-panel perspective-panel">
+<div class="full-width-panel indigo-panel">
   <div class="panel-content">
     <div class="content-card">
       <h2>Featured Markets</h2>
@@ -70,7 +70,7 @@ ref: markets
 </div>
 
 <!-- BRICS+ Opportunity Panel -->
-<div class="full-width-panel solution-panel">
+<div class="full-width-panel green-panel">
   <div class="panel-content">
     <h2>The BRICS+ Opportunity</h2>
     <p>Together, these ten countries form a powerful economic bloc with increasing intra-BRICS trade:</p>

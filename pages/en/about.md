@@ -26,7 +26,7 @@ ref: about
 </div>
 
 <!-- Problem Section -->
-<div class="full-width-panel problem-panel">
+<div class="full-width-panel orange-panel">
   <div class="panel-content">
     <div class="content-card">
       <h2>The Problem We Solve</h2>
@@ -84,7 +84,7 @@ ref: about
 </div>
 
 <!-- Solution Section -->
-<div class="full-width-panel solution-panel">
+<div class="full-width-panel green-panel">
   <div class="panel-content">
     <div class="content-card">
       <h2>Our Solution</h2>
@@ -188,7 +188,7 @@ ref: about
 </div>
 
 <!-- Unique Perspective Section -->
-<div class="full-width-panel perspective-panel">
+<div class="full-width-panel indigo-panel">
   <div class="panel-content">
     <div class="content-card">
       <h2>Our Unique Perspective</h2>
