@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Insights Grid Component
+   ==========================================================================
+   Displays the four main insight categories in a 2×2 grid.
+   Used on the homepage to showcase different content types.
+*/
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: var(--space-6);
+}
+
+.insight-category-panel {
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-category-panel h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  font-size: var(--text-xl);
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+}
+
+.insight-category-panel p {
+  color: var(--neutral-700);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-body);
+}
+
+.featured-insight {
+  margin-bottom: var(--space-4);
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.insight-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.insight-content {
+  padding: var(--space-4);
+}
+
+.insight-category-label {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--primary-100);
+  color: var(--primary-700);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-body);
+}
+
+.insight-content h4 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-base);
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+}
+
+.insight-content p {
+  color: var(--neutral-700);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+}
+
+.read-more {
+  display: inline-block;
+  color: var(--accent-600);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  font-family: var(--font-body);
+}
+
+.view-all {
+  display: inline-block;
+  color: var(--accent-600);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: var(--font-body);
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-lg)) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}

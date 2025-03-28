@@ -1,0 +1,200 @@
+---
+layout: default
+title: Home
+ref: home
+permalink: /en/
+lang: en
+---
+
+<!-- Hero Panel -->
+<div class="full-width-panel hero-panel">
+  <div class="panel-content centered">
+    <h1>{{ site.data.translations[page.lang].home.hero_title }}</h1>
+    <p class="hero-subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
+  </div>
+</div>
+
+<!-- Search Panel -->
+<div class="full-width-panel search-panel">
+  <div class="panel-content">
+    <h2>{{ site.data.translations[page.lang].home.search_title }}</h2>
+    
+    <div class="search-container">
+      <input type="text" id="home-search" placeholder="{{ site.data.translations[page.lang].search.placeholder }}" class="search-input">
+      <button id="home-search-button" class="search-button">{{ site.data.translations[page.lang].search.button }}</button>
+    </div>
+    
+    <div class="quick-filters">
+      <div class="filter-row">
+        <div class="filter-dropdown">
+          <label for="sector-filter">{{ site.data.translations[page.lang].filter.sectors }}</label>
+          <select id="sector-filter">
+            <option value="">{{ site.data.translations[page.lang].filter.all_sectors }}</option>
+            {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang %}
+            {% for sector in sector_tags %}
+            <option value="{{ sector.tag }}">{{ sector.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div class="filter-dropdown">
+          <label for="market-filter">{{ site.data.translations[page.lang].filter.markets }}</label>
+          <select id="market-filter">
+            <option value="">{{ site.data.translations[page.lang].filter.all_markets }}</option>
+            {% assign market_tags = site.tags | where: "tag_type", "country" | where: "lang", page.lang %}
+            {% for market in market_tags %}
+            <option value="{{ market.tag }}">{{ market.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div class="filter-dropdown">
+          <label for="signal-filter">{{ site.data.translations[page.lang].filter.signals }}</label>
+          <select id="signal-filter">
+            <option value="">{{ site.data.translations[page.lang].filter.all_signals }}</option>
+            {% assign signal_tags = site.tags | where: "tag_type", "growth" | where: "lang", page.lang %}
+            {% for signal in signal_tags %}
+            <option value="{{ signal.tag }}">{{ signal.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      
+      <button id="quick-filter-button" class="btn-primary">{{ site.data.translations[page.lang].home.find_brands }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Brands Panel -->
+<div class="full-width-panel light-panel">
+  <div class="panel-content">
+    <h2>{{ site.data.translations[page.lang].home.featured_brands }}</h2>
+    
+    <div class="featured-brands">
+      {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
+      
+      {% if featured_brands.size > 0 %}
+        {% for brand in featured_brands %}
+        <div class="brand-card">
+          <div class="brand-logo">
+            {% if brand.logo %}
+            <img src="{{ brand.logo | relative_url }}" alt="{{ brand.title }} logo">
+            {% else %}
+            <div class="logo-placeholder"></div>
+            {% endif %}
+          </div>
+          
+          <h3><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h3>
+          
+          <p>{{ brand.excerpt | strip_html | truncate: 120 }}</p>
+          
+          <div class="brand-meta">
+            <span class="brand-sector">{{ brand.sector }}</span>
+            <span class="brand-country">{{ brand.country }}</span>
+          </div>
+          
+          <a href="{{ brand.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].home.view_profile }}</a>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p>{{ site.data.translations[page.lang].home.no_featured_brands }}</p>
+      {% endif %}
+    </div>
+    
+    <div class="centered">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn-primary">{{ site.data.translations[page.lang].home.view_all_brands }}</a>
+    </div>
+  </div>
+</div>
+
+<!-- Discovery Paths Panel -->
+<div class="full-width-panel dark-panel">
+  <div class="panel-content">
+    <h2>{{ site.data.translations[page.lang].home.discover_title }}</h2>
+    
+    <div class="discovery-tabs">
+      <button class="discovery-tab active" data-path="sectors">{{ site.data.translations[page.lang].nav.sectors }}</button>
+      <button class="discovery-tab" data-path="markets">{{ site.data.translations[page.lang].nav.markets }}</button>
+      <button class="discovery-tab" data-path="attributes">{{ site.data.translations[page.lang].nav.attributes }}</button>
+      <button class="discovery-tab" data-path="signals">{{ site.data.translations[page.lang].nav.signals }}</button>
+    </div>
+    
+    <div class="discovery-content">
+      
+      <!-- Sectors Tab Content -->
+      <div class="discovery-pane active" id="sectors-pane">
+        <div class="discovery-grid">
+          {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang | limit: 4 %}
+          {% for sector in sector_tags %}
+          <div class="discovery-card">
+            <h3>{{ sector.title }}</h3>
+            <p>{{ sector.description | truncate: 100 }}</p>
+            <a href="{{ sector.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
+          </div>
+          {% endfor %}
+        </div>
+        
+        <div class="discovery-more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_sectors }}</a>
+        </div>
+      </div>
+      
+      <!-- Markets Tab Content -->
+      <div class="discovery-pane" id="markets-pane">
+        <div class="discovery-grid">
+          {% assign market_tags = site.tags | where: "tag_type", "country" | where: "lang", page.lang | limit: 4 %}
+          {% for market in market_tags %}
+          <div class="discovery-card">
+            <h3>{{ market.title }}</h3>
+            <p>{{ market.description | truncate: 100 }}</p>
+            <a href="{{ market.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
+          </div>
+          {% endfor %}
+        </div>
+        
+        <div class="discovery-more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_markets }}</a>
+        </div>
+      </div>
+
+        <!-- Attributes Tab Content -->
+  <div class="discovery-pane" id="attributes-pane">
+    <div class="discovery-grid">
+      {% assign attribute_tags = site.tags | where: "tag_type", "attribute" | where: "lang", page.lang | limit: 4 %}
+      {% for attribute in attribute_tags %}
+      <div class="discovery-card">
+        <h3>{{ attribute.title }}</h3>
+        <p>{{ attribute.description | truncate: 100 }}</p>
+        <a href="{{ attribute.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="discovery-more">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_attributes }}</a>
+    </div>
+  </div>
+  
+  <!-- Signals Tab Content -->
+  <div class="discovery-pane" id="signals-pane">
+    <div class="discovery-grid">
+      {% assign signal_tags = site.tags | where: "tag_type", "growth" | where: "lang", page.lang | limit: 4 %}
+      {% for signal in signal_tags %}
+      <div class="discovery-card">
+        <h3>{{ signal.title }}</h3>
+        <p>{{ signal.description | truncate: 100 }}</p>
+        <a href="{{ signal.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="discovery-more">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_signals }}</a>
+    </div>
+  </div>
+</div>
+
+{{ site.data.translations[page.lang].home.cta_title }}
+{{ site.data.translations[page.lang].home.cta_text }}
+{{ site.data.translations[page.lang].home.cta_button }}
+

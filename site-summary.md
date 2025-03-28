@@ -1,49 +1,71 @@
 # Brandmine Site Summary
-Generated on Mon 24 Mar 2025 14:43:44 +08
+Generated on Fri 28 Mar 2025 16:59:24 +08
 
 ## Repository Status
 Current branch: improve-navigation
-Last commit: changed about page hero text colour to beige
-Last commit date: 2025-03-23 11:52
-Modified files: 41
+Last commit: Fix CSS navigation issues and improve footer spacing
+Last commit date: 2025-03-28 12:33
+Modified files: 21
 Recent activity:
-- 2025-03-23: changed about page hero text colour to beige
-- 2025-03-23: Add responsive image includes and script for processing all image categories
-- 2025-03-23: Add new brand images and remove outdated Russian images; create responsive brand image include
-- 2025-03-22: Remove inconsistencies tracking and add language consistency check script; create new post templates for English, Chinese, and Russian
-- 2025-03-22: Add 'Countries' tag translation in English, Russian, and Chinese
+- 2025-03-28: Fix CSS navigation issues and improve footer spacing
+- 2025-03-28: Add debug CSS for responsive breakpoint indicators and layout outlines
+- 2025-03-28: revised all css after review by chatgpt for logic and use of semantic variables.
+- 2025-03-27: Add excerpt field to various templates and samples for improved content visibility
+- 2025-03-27: Refactor related brands references to unify terminology across templates and samples
 
 ## Site Structure
 ### Directories
 ```
-- _layouts/ (6 files)
+- _layouts/ (14 files)
+  - attributes.html
+  - brand.html
+  - brands.html
   - category.html
+  - content-type.html
   - default.html
-  - post.html
-  - styleguide-standalone.html
+  - discover.html
+  - insight.html
+  - insights.html
+  - markets.html
+  - sectors.html
+  - signals.html
   - styleguide.html
   - tag.html
-- _includes/ (9 files)
+- _includes/ (19 files)
+  - brand-card.html
   - brand-image.html
+  - content-type-indicator.html
+  - featured-content.html
   - footer.html
   - google-analytics.html
   - header.html
+  - insight-card.html
+  - insights-feed.html
   - language-selector.html
+  - pagination.html
+  - related-brands-list.html
   - responsive-image.html
+  - search-filter.html
   - site-image.html
   - styleguide
+  - tag-cloud.html
+  - tag-list.html
   - tags
-- _data/ (6 files)
+- _data/ (7 files)
   - _data/.DS_Store
   - _data/sectors.yml
   - _data/tag_translations.yml
   - _data/translations/en.yml
   - _data/translations/ru.yml
   - _data/translations/zh.yml
-- assets/ (96 files total)
-  - assets/css/ (29 CSS files)
+  - _data/brands-data.json
+- assets/ (108 files total)
+  - assets/css/ (33 CSS files)
+    - assets/css/debug.css
     - assets/css/layout/panels.css
     - assets/css/main.css
+    - assets/css/components/insights-feed.css
+    - assets/css/components/search.css
     - assets/css/components/team.css
     - assets/css/components/features.css
     - assets/css/components/solutions.css
@@ -51,7 +73,9 @@ Recent activity:
     - assets/css/components/forms.css
     - assets/css/components/navigation.css
     - assets/css/components/mobile-fixes.css
+    - assets/css/components/insights.css
     - assets/css/components/buttons.css
+    - assets/css/components/discovery.css
     - assets/css/components/cards.css
     - assets/css/components/tags.css
     - assets/css/components/hero-panels.css
@@ -68,53 +92,49 @@ Recent activity:
     - assets/css/pages/russian-sectors.css
     - assets/css/pages/insights.css
     - assets/css/tokens/typography.css
-    - assets/css/tokens/spacing.css
-    - assets/css/tokens/breakpoints.css
-    - assets/css/tokens/colors.css
-  - assets/js/ (2 JS files)
+    - assets/css/tokens/grid.css
+    - assets/css/tokens/tokens.css
+  - assets/js/ (6 JS files)
     - assets/js/styleguide.js
+    - assets/js/brand-filtering.js
+    - assets/js/brand-filtering-new.js
+    - assets/js/premium-content.js
     - assets/js/menu.js
-  - assets/fonts/ (22 font files)
+    - assets/js/search.js
+  - assets/fonts/ (26 font files)
     - assets/fonts/pt-serif_caption-regular.woff2
     - assets/fonts/pt-sans_regular.woff2
     - assets/fonts/NotoSerifSC-Regular.woff2
     - assets/fonts/pt-mono_bold.woff2
+    - assets/fonts/SourceCodePro-Regular.woff2
     - assets/fonts/pt-serif_italic.woff2
+    - assets/fonts/SourceCodePro-Bold.woff2
     - assets/fonts/NotoSansSC-Bold.woff2
     - assets/fonts/pt-serif_bold.woff2
     - assets/fonts/NotoSerifSC-Bold.woff2
-    - assets/fonts/pt-sans_caption-regular.woff2
-    - assets/fonts/pt-sans_bold.woff2
-    - ... and 12 more font files
+    - ... and 16 more font files
   - assets/images/ (23 image files)
 - pages/ structure
-  - pages/en/ (16 pages)
+  - pages/en/ (26 pages)
     - pages/en/brands.md
-    - pages/en/markets.md
     - pages/en/index.html
-    - pages/en/sectors.md
+    - pages/en/insights.md
     - pages/en/russian-sectors.md
-    - pages/en/countries.md
     - pages/en/about.md
-    - pages/en/growth-signals.md
     - pages/en/discover.md
-  - pages/ru/ (9 pages)
+  - pages/ru/ (10 pages)
     - pages/ru/brands.md
-    - pages/ru/markets.md
     - pages/ru/index.html
-    - pages/ru/sectors.md
+    - pages/ru/insights.md
     - pages/ru/russian-sectors.md
     - pages/ru/about.md
-    - pages/ru/growth-signals.md
     - pages/ru/discover.md
-  - pages/zh/ (9 pages)
+  - pages/zh/ (10 pages)
     - pages/zh/brands.md
-    - pages/zh/markets.md
     - pages/zh/index.html
-    - pages/zh/sectors.md
+    - pages/zh/insights.md
     - pages/zh/russian-sectors.md
     - pages/zh/about.md
-    - pages/zh/growth-signals.md
     - pages/zh/discover.md
 ```
 
@@ -144,16 +164,15 @@ defaults:
 
 ## Content Summary
 - Languages: 3 (en ru zh )
-  - en: 16 pages
-  - ru: 9 pages
-  - zh: 9 pages
-- Blog posts: 4
-  - Date range: 2025/03/21 to 2025/03/21
+  - en: 26 pages
+  - ru: 10 pages
+  - zh: 10 pages
+- Brand profiles: 4
 - Translation files: 3
   - Translation coverage:
-    - en (primary): 70 keys
-    - ru: 70 keys (100% coverage)
-    - zh: 70 keys (100% coverage)
+    - en (primary): 141 keys
+    - ru: 141 keys (100% coverage)
+    - zh: 141 keys (100% coverage)
 
 ## Tag System Analysis
 ### Tag Translation Coverage
@@ -167,33 +186,9 @@ defaults:
 - Russian tags: 33
 - Chinese tags: 33
 ### Tag Usage Analysis
-#### Tag usage in en content:
-- 
-#### Tag usage in ru content:
-- 
-#### Tag usage in zh content:
-- 
 ### Tag Usage Trends
 Comparing to previous data points:
 ### Most Used Tags in Content
-#### Most popular tags in en content:
--    1 tags: [hotels-resorts
--    1  russia
--    1  regional-heritage
--    1  premium-positioning
--    1  investment-ready]
-#### Most popular tags in ru content:
--    1 tags: [hotels-resorts
--    1  russia
--    1  regional-heritage
--    1  premium-positioning
--    1  investment-ready]
-#### Most popular tags in zh content:
--    1 tags: [hotels-resorts
--    1  russia
--    1  regional-heritage
--    1  premium-positioning
--    1  investment-ready]
 
 ## Translation Consistency
 ### Tag Translation Consistency Check
@@ -203,35 +198,9 @@ Comparing to previous data points:
 
 ### Undefined Tags Check
 #### Tags used in posts but not defined in tag_translations.yml:
-- "tags:" in 2025-03-21-russian-boutique-hotels.md
-- "[hotels-resorts" in 2025-03-21-russian-boutique-hotels.md
-- "regional-heritage" in 2025-03-21-russian-boutique-hotels.md
-- "investment-ready]" in 2025-03-21-russian-boutique-hotels.md
-- "tags:" in 2025-03-21-russian-boutique-hotels.md
-- "[hotels-resorts" in 2025-03-21-russian-boutique-hotels.md
-- "regional-heritage" in 2025-03-21-russian-boutique-hotels.md
-- "investment-ready]" in 2025-03-21-russian-boutique-hotels.md
-- "tags:" in 2025-03-21-russian-boutique-hotels.md
-- "[hotels-resorts" in 2025-03-21-russian-boutique-hotels.md
-- "regional-heritage" in 2025-03-21-russian-boutique-hotels.md
-- "investment-ready]" in 2025-03-21-russian-boutique-hotels.md
 
 ## Untranslated Content Report
 ### Content Missing Translations
-#### Content in en missing translations:
-0 out of 1 posts (0%) need translation
-
-#### Content in ru missing translations:
-0 out of 1 posts (0%) need translation
-
-#### Content in zh missing translations:
-0 out of 1 posts (0%) need translation
-
-### Translation Status Summary
-- en: 100% of content available (6 translated, 0 missing)
-- ru: 100% of content available (6 translated, 0 missing)
-- zh: 100% of content available (6 translated, 0 missing)
-
 ## Key File Contents
 ### _layouts/default.html (Structure)
 ```html
@@ -252,9 +221,9 @@ Comparing to previous data points:
 
   <!-- Style Sheets --> 
    
-  <!-- 1. Design Tokens -->
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/colors.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
+  <!-- 1. Design Tokens (Consolidated tokens file) -->
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/tokens.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tokens/grid.css' | relative_url }}">
 ... (truncated for brevity) ...
 ```
 
@@ -315,14 +284,15 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 5.836 seconds.
-- Generated HTML pages: 153
+- Build time (clean): 5.154 seconds.
+- Generated HTML pages: 165
 - Total site size:  40M
 
 ## Environment & Dependencies
 - Jekyll version: 3.10.0
 - Ruby version: 3.4.2
 - Key dependencies:
+  -   faraday-retry (~> 2.2)
   -   github-pages
   -   http_parser.rb (~> 0.6.0)
   -   jekyll-feed (~> 0.12)
@@ -331,37 +301,37 @@ body, html {
   -   tzinfo-data
   -   wdm (~> 0.1)
   - BUNDLED WITH
-  -    2.6.5
+  -    2.6.6
 
 ## Recent Development Activity
 ### Recent Commits
-- **2025-03-23**: changed about page hero text colour to beige (Randal Eastman)
-- **2025-03-23**: Add responsive image includes and script for processing all image categories (Randal Eastman)
-- **2025-03-23**: Add new brand images and remove outdated Russian images; create responsive brand image include (Randal Eastman)
-- **2025-03-22**: Remove inconsistencies tracking and add language consistency check script; create new post templates for English, Chinese, and Russian (Randal Eastman)
-- **2025-03-22**: Add 'Countries' tag translation in English, Russian, and Chinese (Randal Eastman)
-- **2025-03-22**: Refactor country tags and translations for Brazil, India, China, and South Africa; enhance layout and styling for multilingual support (Randal Eastman)
-- **2025-03-22**: Add country tags and content for Brazil, India, China, and South Africa in Chinese and English (Randal Eastman)
-- **2025-03-22**: add images for carousel test (Randal Eastman)
-- **2025-03-22**: Add images and enhance Russian tag content; update translations and author details (Randal Eastman)
-- **2025-03-22**: Add country tags and translations for Brazil, Russia, India, China, and South Africa; implement country-specific styling and layout (Randal Eastman)
+- **2025-03-28**: Fix CSS navigation issues and improve footer spacing (Randal Eastman)
+- **2025-03-28**: Add debug CSS for responsive breakpoint indicators and layout outlines (Randal Eastman)
+- **2025-03-28**: revised all css after review by chatgpt for logic and use of semantic variables. (Randal Eastman)
+- **2025-03-27**: Add excerpt field to various templates and samples for improved content visibility (Randal Eastman)
+- **2025-03-27**: Refactor related brands references to unify terminology across templates and samples (Randal Eastman)
+- **2025-03-27**: Update styleguide pages so all previews display correctly. (Randal Eastman)
+- **2025-03-27**: Refactor image handling documentation for improved clarity and consistency (Randal Eastman)
+- **2025-03-27**: Update context file generation date and adjust multilingual styleguide examples for consistency (Randal Eastman)
+- **2025-03-26**: convert styleguide pages to new format. (Randal Eastman)
+- **2025-03-26**: Add development journal updated styleguide elements. (Randal Eastman)
 
 ### Recently Modified Files
-- _data/translations/en.yml
-- _data/translations/ru.yml
-- _data/translations/zh.yml
-- _docs/templates/post-en.md
-- _docs/templates/post-ru.md
-- _docs/templates/post-zh.md
-- _includes/brand-image.html
-- _includes/responsive-image.html
-- _includes/site-image.html
-- _scripts/_history/tag-stats-2025-03-22.json
-- _scripts/check_language_consistency.sh
-- _scripts/claude-session-init.py
-- _scripts/enhanced-site-summary-advanced.sh
-- _scripts/language_consistency_checker.py
-- _scripts/process_all_images.sh
+- _archive/breakpoints.css
+- _archive/colors.css
+- _archive/en/categories/brand-spotlight.md
+- _archive/en/categories/cultural-signature.md
+- _archive/en/categories/founders-journey.md
+- _archive/en/categories/market-milestone.md
+- _archive/en/index.html
+- _archive/en/insights.md
+- _archive/en/markets.md
+- _archive/en/sectors.md
+- _archive/en/signals.md
+- _archive/ru/insights/categories/brand-spotlight.md
+- _archive/ru/insights/categories/cultural-signature.md
+- _archive/ru/insights/categories/founders-journey.md
+- _archive/ru/insights/categories/market-milestone.md
 
 
 ### Project Log Entries (Last 2)

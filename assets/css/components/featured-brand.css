@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Featured Brand Component
+   ==========================================================================
+*/
+
+.featured-brand-panel {
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-card {
+  display: flex;
+  gap: var(--space-6);
+  position: relative;
+  z-index: 1;
+}
+
+.brand-logo {
+  flex: 0 0 120px;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+.brand-info {
+  flex: 1;
+}
+
+.brand-info h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-xl);
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+}
+
+.brand-description {
+  margin-bottom: var(--space-4);
+  color: var(--neutral-700);
+  font-family: var(--font-body);
+}
+
+.brand-meta {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.brand-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.view-profile {
+  display: inline-block;
+  padding: var(--space-2) var(--space-6);
+  background-color: var(--secondary-500);
+  color: white;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  font-family: var(--font-body);
+  transition: var(--transition-fast);
+}
+
+.view-profile:hover {
+  background-color: var(--secondary-600);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: var(--breakpoint-md)) {
+  .brand-card {
+    flex-direction: column;
+  }
+  
+  .brand-logo {
+    flex: 0 0 auto;
+    margin-bottom: var(--space-4);
+  }
+}

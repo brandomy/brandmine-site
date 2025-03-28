@@ -6,195 +6,344 @@ permalink: /en/
 lang: en
 ---
 
-<!-- Hero Panel -->
+<!-- Hero Panel (full width like About page) -->
 <div class="full-width-panel hero-panel">
   <div class="panel-content centered">
-    <h1>{{ site.data.translations[page.lang].home.hero_title }}</h1>
-    <p class="hero-subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
+    <h1>Discover BRICS+ Consumer Brands</h1>
+    <p class="hero-subtitle">The business intelligence hub breaking through language, political, and cultural barriers</p>
   </div>
 </div>
 
-<!-- Search Panel -->
-<div class="full-width-panel search-panel">
-  <div class="panel-content">
-    <h2>{{ site.data.translations[page.lang].home.search_title }}</h2>
-    
-    <div class="search-container">
-      <input type="text" id="home-search" placeholder="{{ site.data.translations[page.lang].search.placeholder }}" class="search-input">
-      <button id="home-search-button" class="search-button">{{ site.data.translations[page.lang].search.button }}</button>
-    </div>
-    
-    <div class="quick-filters">
-      <div class="filter-row">
-        <div class="filter-dropdown">
-          <label for="sector-filter">{{ site.data.translations[page.lang].filter.sectors }}</label>
-          <select id="sector-filter">
-            <option value="">{{ site.data.translations[page.lang].filter.all_sectors }}</option>
-            {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang %}
-            {% for sector in sector_tags %}
-            <option value="{{ sector.tag }}">{{ sector.title }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        
-        <div class="filter-dropdown">
-          <label for="market-filter">{{ site.data.translations[page.lang].filter.markets }}</label>
-          <select id="market-filter">
-            <option value="">{{ site.data.translations[page.lang].filter.all_markets }}</option>
-            {% assign market_tags = site.tags | where: "tag_type", "country" | where: "lang", page.lang %}
-            {% for market in market_tags %}
-            <option value="{{ market.tag }}">{{ market.title }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        
-        <div class="filter-dropdown">
-          <label for="signal-filter">{{ site.data.translations[page.lang].filter.signals }}</label>
-          <select id="signal-filter">
-            <option value="">{{ site.data.translations[page.lang].filter.all_signals }}</option>
-            {% assign signal_tags = site.tags | where: "tag_type", "growth" | where: "lang", page.lang %}
-            {% for signal in signal_tags %}
-            <option value="{{ signal.tag }}">{{ signal.title }}</option>
-            {% endfor %}
-          </select>
-        </div>
+<div class="container">
+  <!-- Top split section -->
+  <div class="top-section">
+    <!-- Left side: Search tools -->
+    <div class="search-panel">
+      <h2>Find Brands</h2>
+      
+      <div class="search-box">
+        <input type="text" id="brand-search" placeholder="Search brands, sectors, or attributes...">
+        <button type="button" class="search-button">Search</button>
       </div>
       
-      <button id="quick-filter-button" class="btn-primary">{{ site.data.translations[page.lang].home.find_brands }}</button>
-    </div>
-  </div>
-</div>
+      <div class="filter-controls">
+        <p class="filter-heading">Filter by:</p>
+        
 
-<!-- Featured Brands Panel -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>{{ site.data.translations[page.lang].home.featured_brands }}</h2>
-    
-    <div class="featured-brands">
-      {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
-      
-      {% if featured_brands.size > 0 %}
-        {% for brand in featured_brands %}
-        <div class="brand-card">
-          <div class="brand-logo">
-            {% if brand.logo %}
-            <img src="{{ brand.logo | relative_url }}" alt="{{ brand.title }} logo">
-            {% else %}
-            <div class="logo-placeholder"></div>
-            {% endif %}
-          </div>
-          
-          <h3><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h3>
-          
-          <p>{{ brand.excerpt | strip_html | truncate: 120 }}</p>
-          
-          <div class="brand-meta">
-            <span class="brand-sector">{{ brand.sector }}</span>
-            <span class="brand-country">{{ brand.country }}</span>
-          </div>
-          
-          <a href="{{ brand.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].home.view_profile }}</a>
+        <!-- Business Sectors dropdown -->
+        <div class="filter-group">
+          <label for="sector-filter">Business Sectors</label>
+          <select id="sector-filter" class="filter-select">
+              <option value="">All Sectors</option>
+              <option value="artisanal-spirits">Artisanal Spirits & Vodka</option>
+              <option value="confectionery">Artisan Confectionery</option>
+              <option value="porcelain-ceramics">Artisan Porcelain and Ceramics</option>
+              <option value="cured-meats">Salami and Cured Meats</option>
+              <option value="fashion-accessories">Fashion & Accessories</option>
+              <option value="fermented-dairy">Fermented Dairy (Kefir)</option>
+              <option value="gourmet-foods">Gourmet Foods</option>
+              <option value="halal-food">Halal Food Products</option>
+              <option value="honey-bee">Honey and Bee Products</option>
+              <option value="hotels-resorts">Hotels & Resorts</option>
+              <option value="jewelry-watches">Jewelry & Watches</option>
+              <option value="mineral-waters">Mineral Waters</option>
+              <option value="natural-beauty">Natural Beauty Products</option>
+              <option value="natural-food-supplements">Natural Food Supplements</option>
+              <option value="specialty-cheese">Specialty Cheeses</option>
+              <option value="wine">Wine</option>
+          </select>
+      </div>
+
+        <!-- Brand Attributes dropdown -->
+        <div class="filter-group">
+          <label for="attribute-filter">Brand Attributes</label>
+          <select id="attribute-filter" class="filter-select">
+              <option value="">All Attributes</option>
+              <option value="artisanal-excellence">Artisanal Excellence</option>
+              <option value="cultural-ambassador">Cultural Ambassador</option>
+              <option value="founder-led">Founder-Led</option>
+              <option value="heritage-brand">Heritage Brand</option>
+              <option value="innovation-leader">Innovation Leader</option>
+              <option value="premium-positioning">Premium Positioning</option>
+              <option value="regional-icon">Regional Icon</option>
+              <option value="sustainability-pioneer">Sustainability Pioneer</option>
+          </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="market-filter">Markets</label>
+        <select id="market-filter" class="filter-select">
+            <option value="">All Markets</option>
+            <option value="brazil">Brazil</option>
+            <option value="china">China</option>
+            <option value="india">India</option>
+            <option value="russia">Russia</option>
+            <option value="south-africa">South Africa</option>
+        </select>
+    </div>
+
+        <!-- Growth Signals dropdown -->
+        <div class="filter-group">
+            <label for="signal-filter">Growth Signals</label>
+            <select id="signal-filter" class="filter-select">
+            <option value="">All Signals</option>
+            <option value="export-ready">Export Ready</option>
+            <option value="franchise-ready">Franchise Ready</option>
+            <option value="investment-ready">Investment Ready</option>
+            <option value="rapid-growth">Rapid Growth</option>
+            </select>
         </div>
-        {% endfor %}
-      {% else %}
-        <p>{{ site.data.translations[page.lang].home.no_featured_brands }}</p>
-      {% endif %}
+        
+        <button type="button" class="find-button">Find Brands</button>
+      </div>
     </div>
     
-    <div class="centered">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn-primary">{{ site.data.translations[page.lang].home.view_all_brands }}</a>
+    <!-- Right side: Featured brand with orange textured background -->
+    <div class="featured-brand-panel problem-panel">
+      <h2>Featured Brand</h2>
+      
+      <div class="brand-card">
+        <div class="brand-logo">
+          <img src="{{ site.baseurl }}/assets/images/brands/teatime/teatime-logo-400w.jpg" alt="TeaTime Logo">
+        </div>
+        <div class="brand-info">
+          <h3>TeaTime</h3>
+          <p class="brand-description">Premium tea blending house with authentic Russian samovar traditions and innovative flavors.</p>
+          <div class="brand-meta">
+            <span class="sector-tag">Gourmet Foods</span>
+            <span class="market-tag">Russia</span>
+          </div>
+          <div class="brand-tags">
+            <span class="attribute-tag">Heritage Brand</span>
+            <span class="signal-tag">Export Ready</span>
+          </div>
+          <a href="{{ site.baseurl }}/brands/teatime/" class="view-profile">View Profile</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Discovery Paths Panel -->
-<div class="full-width-panel dark-panel">
+<!-- Full-width Discovery Path Section with Green Background -->
+<div class="full-width-panel discovery-panel">
   <div class="panel-content">
-    <h2>{{ site.data.translations[page.lang].home.discover_title }}</h2>
+    <h2>Explore by Discovery Path</h2>
     
     <div class="discovery-tabs">
-      <button class="discovery-tab active" data-path="sectors">{{ site.data.translations[page.lang].nav.sectors }}</button>
-      <button class="discovery-tab" data-path="markets">{{ site.data.translations[page.lang].nav.markets }}</button>
-      <button class="discovery-tab" data-path="attributes">{{ site.data.translations[page.lang].nav.attributes }}</button>
-      <button class="discovery-tab" data-path="signals">{{ site.data.translations[page.lang].nav.signals }}</button>
-    </div>
-    
-    <div class="discovery-content">
-      
-      <!-- Sectors Tab Content -->
-      <div class="discovery-pane active" id="sectors-pane">
-        <div class="discovery-grid">
-          {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang | limit: 4 %}
-          {% for sector in sector_tags %}
-          <div class="discovery-card">
-            <h3>{{ sector.title }}</h3>
-            <p>{{ sector.description | truncate: 100 }}</p>
-            <a href="{{ sector.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
-          </div>
-          {% endfor %}
-        </div>
-        
-        <div class="discovery-more">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_sectors }}</a>
-        </div>
+      <div class="tab-nav">
+        <button class="tab-button active" data-tab="sectors">Business Sectors</button>
+        <button class="tab-button" data-tab="attributes">Brand Attributes</button>
+        <button class="tab-button" data-tab="markets">Markets</button>
+        <button class="tab-button" data-tab="signals">Growth Signals</button>
       </div>
       
-      <!-- Markets Tab Content -->
-      <div class="discovery-pane" id="markets-pane">
-        <div class="discovery-grid">
-          {% assign market_tags = site.tags | where: "tag_type", "country" | where: "lang", page.lang | limit: 4 %}
-          {% for market in market_tags %}
-          <div class="discovery-card">
-            <h3>{{ market.title }}</h3>
-            <p>{{ market.description | truncate: 100 }}</p>
-            <a href="{{ market.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
+      <!-- Tab content -->
+      <div class="tab-content">
+        <!-- Sectors tab -->
+        <div class="tab-pane active" id="sectors-tab">
+          <p class="tab-intro">Explore brands by industry sectors, from artisanal food products to luxury hospitality experiences.</p>
+          
+          <div class="tag-cloud sector-cloud">
+            <a href="{{ site.baseurl }}/sectors/hotels-resorts/" class="sector-tag">Hotels & Resorts</a>
+            <a href="{{ site.baseurl }}/sectors/artisanal-spirits/" class="sector-tag">Artisanal Spirits & Vodka</a>
+            <a href="{{ site.baseurl }}/sectors/gourmet-foods/" class="sector-tag">Gourmet Foods</a>
+            <a href="{{ site.baseurl }}/sectors/natural-beauty/" class="sector-tag">Natural Beauty Products</a>
+            <a href="{{ site.baseurl }}/sectors/wine/" class="sector-tag">Wine</a>
+            <a href="{{ site.baseurl }}/sectors/specialty-cheeses/" class="sector-tag">Specialty Cheeses</a>
+            <a href="{{ site.baseurl }}/sectors/jewelry-watches/" class="sector-tag">Jewelry & Watches</a>
+            <a href="{{ site.baseurl }}/sectors/honey-bee-products/" class="sector-tag">Honey and Bee Products</a>
+            <a href="{{ site.baseurl }}/sectors/fashion-accessories/" class="sector-tag">Fashion & Accessories</a>
+            <a href="{{ site.baseurl }}/sectors/mineral-waters/" class="sector-tag">Mineral Waters</a>
+            <a href="{{ site.baseurl }}/sectors/natural-food-supplements/" class="sector-tag">Natural Food Supplements</a>
+            <a href="{{ site.baseurl }}/sectors/fermented-dairy/" class="sector-tag">Fermented Dairy (Kefir)</a>
+            <a href="{{ site.baseurl }}/sectors/porcelain-ceramics/" class="sector-tag">Artisan Porcelain and Ceramics</a>
+            <a href="{{ site.baseurl }}/sectors/halal-food/" class="sector-tag">Halal Food Products</a>
+            <a href="{{ site.baseurl }}/sectors/cured-meats/" class="sector-tag">Salami and Cured Meats</a>
+            <a href="{{ site.baseurl }}/sectors/confectionery/" class="sector-tag">Artisan Confectionery</a>
           </div>
-          {% endfor %}
         </div>
         
-        <div class="discovery-more">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_markets }}</a>
+        <!-- Attributes tab -->
+        <div class="tab-pane" id="attributes-tab">
+          <p class="tab-intro">Discover brands based on their distinctive qualities and characteristics that shape their market position.</p>
+          
+          <div class="tag-cloud attribute-cloud">
+            <a href="{{ site.baseurl }}/attributes/founder-led/" class="attribute-tag">Founder-Led</a>
+            <a href="{{ site.baseurl }}/attributes/heritage-brand/" class="attribute-tag">Heritage Brand</a>
+            <a href="{{ site.baseurl }}/attributes/artisanal-excellence/" class="attribute-tag">Artisanal Excellence</a>
+            <a href="{{ site.baseurl }}/attributes/regional-icon/" class="attribute-tag">Regional Icon</a>
+            <a href="{{ site.baseurl }}/attributes/innovation-leader/" class="attribute-tag">Innovation Leader</a>
+            <a href="{{ site.baseurl }}/attributes/premium-positioning/" class="attribute-tag">Premium Positioning</a>
+            <a href="{{ site.baseurl }}/attributes/cultural-ambassador/" class="attribute-tag">Cultural Ambassador</a>
+            <a href="{{ site.baseurl }}/attributes/sustainability-pioneer/" class="attribute-tag">Sustainability Pioneer</a>
+          </div>
+        </div>
+        
+        <!-- Markets tab -->
+        <div class="tab-pane" id="markets-tab">
+          <p class="tab-intro">Explore brands by their country of origin within the BRICS+ markets.</p>
+          
+          <div class="tag-cloud market-cloud">
+            <a href="{{ site.baseurl }}/markets/russia/" class="market-tag">Russia</a>
+            <a href="{{ site.baseurl }}/markets/brazil/" class="market-tag">Brazil</a>
+            <a href="{{ site.baseurl }}/markets/india/" class="market-tag">India</a>
+            <a href="{{ site.baseurl }}/markets/china/" class="market-tag">China</a>
+            <a href="{{ site.baseurl }}/markets/south-africa/" class="market-tag">South Africa</a>
+          </div>
+        </div>
+        
+        <!-- Signals tab -->
+        <div class="tab-pane" id="signals-tab">
+          <p class="tab-intro">Find brands with specific business readiness indicators for different partnership opportunities.</p>
+          
+          <div class="tag-cloud signal-cloud">
+            <a href="{{ site.baseurl }}/signals/export-ready/" class="signal-tag">Export Ready</a>
+            <a href="{{ site.baseurl }}/signals/franchise-ready/" class="signal-tag">Franchise Ready</a>
+            <a href="{{ site.baseurl }}/signals/investment-ready/" class="signal-tag">Investment Ready</a>
+            <a href="{{ site.baseurl }}/signals/rapid-growth/" class="signal-tag">Rapid Growth</a>
+          </div>
         </div>
       </div>
-
-        <!-- Attributes Tab Content -->
-  <div class="discovery-pane" id="attributes-pane">
-    <div class="discovery-grid">
-      {% assign attribute_tags = site.tags | where: "tag_type", "attribute" | where: "lang", page.lang | limit: 4 %}
-      {% for attribute in attribute_tags %}
-      <div class="discovery-card">
-        <h3>{{ attribute.title }}</h3>
-        <p>{{ attribute.description | truncate: 100 }}</p>
-        <a href="{{ attribute.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
-      </div>
-      {% endfor %}
-    </div>
-    
-    <div class="discovery-more">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_attributes }}</a>
-    </div>
-  </div>
-  
-  <!-- Signals Tab Content -->
-  <div class="discovery-pane" id="signals-pane">
-    <div class="discovery-grid">
-      {% assign signal_tags = site.tags | where: "tag_type", "growth" | where: "lang", page.lang | limit: 4 %}
-      {% for signal in signal_tags %}
-      <div class="discovery-card">
-        <h3>{{ signal.title }}</h3>
-        <p>{{ signal.description | truncate: 100 }}</p>
-        <a href="{{ signal.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>
-      </div>
-      {% endfor %}
-    </div>
-    
-    <div class="discovery-more">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="btn-primary">{{ site.data.translations[page.lang].discover.view_all_signals }}</a>
     </div>
   </div>
 </div>
 
-{{ site.data.translations[page.lang].home.cta_title }}
-{{ site.data.translations[page.lang].home.cta_text }}
-{{ site.data.translations[page.lang].home.cta_button }}
+<!-- Full-width Insights Section with Indigo Background -->
+<div class="full-width-panel insights-panel">
+  <div class="panel-content">
+    <h2>Insights</h2>
+    
+    <div class="insights-grid">
+      <!-- Founder's Journeys -->
+      <div class="insight-category-panel">
+        <h3>Founder's Journeys</h3>
+        <p>The stories behind the brands and the people who created them.</p>
+        
+        <div class="featured-insight">
+          <div class="insight-image">
+            <img src="{{ site.baseurl }}/assets/images/insights/teatime-founder-journey-400w.jpg" alt="TeaTime Founder's Journey">
+          </div>
+          <div class="insight-content">
+            <span class="insight-category-label">Featured</span>
+            <h4>From University Project to Market Leader: TeaTime's Story</h4>
+            <p>How a passion for tea traditions evolved into Russia's most innovative tea brand.</p>
+            <a href="{{ site.baseurl }}/insights/founders-journeys/teatime-story/" class="read-more">Read more</a>
+          </div>
+        </div>
+        
+        <a href="{{ site.baseurl }}/insights/founders-journeys/" class="view-all">View all</a>
+      </div>
+      
+      <!-- Brand Spotlights -->
+      <div class="insight-category-panel">
+        <h3>Brand Spotlights</h3>
+        <p>Introducing noteworthy BRICS+ brands gaining momentum.</p>
+        
+        <div class="featured-insight">
+          <div class="insight-image">
+            <img src="{{ site.baseurl }}/assets/images/insights/russian-hotel-luxury-400w.jpg" alt="Russian Hotel Luxury">
+          </div>
+          <div class="insight-content">
+            <span class="insight-category-label">Featured</span>
+            <h4>Rising Star: How This Boutique Moscow Hotel Is Redefining Luxury</h4>
+            <p>A look at the fusion of traditional Russian hospitality with modern luxury concepts.</p>
+            <a href="{{ site.baseurl }}/insights/brand-spotlights/moscow-hotel-luxury/" class="read-more">Read more</a>
+          </div>
+        </div>
+        
+        <a href="{{ site.baseurl }}/insights/brand-spotlights/" class="view-all">View all</a>
+      </div>
+      
+      <!-- Market Milestones -->
+      <div class="insight-category-panel">
+        <h3>Market Milestones</h3>
+        <p>Notable achievements and expansion moments for BRICS+ brands.</p>
+        
+        <div class="featured-insight">
+          <div class="insight-image">
+            <img src="{{ site.baseurl }}/assets/images/insights/spirits-distribution-400w.jpg" alt="Spirits Distribution Deal">
+          </div>
+          <div class="insight-content">
+            <span class="insight-category-label">Featured</span>
+            <h4>Russian Spirits Brand Secures Major European Distribution Deal</h4>
+            <p>How persistence and quality craftsmanship opened doors to international markets.</p>
+            <a href="{{ site.baseurl }}/insights/market-milestones/spirits-distribution-deal/" class="read-more">Read more</a>
+          </div>
+        </div>
+        
+        <a href="{{ site.baseurl }}/insights/market-milestones/" class="view-all">View all</a>
+      </div>
+      
+      <!-- Cultural Signatures -->
+      <div class="insight-category-panel">
+        <h3>Cultural Signatures</h3>
+        <p>Distinctive features that give BRICS+ brands their unique identity.</p>
+        
+        <div class="featured-insight">
+          <div class="insight-image">
+            <img src="{{ site.baseurl }}/assets/images/insights/samovar-tradition-400w.jpg" alt="Samovar Tradition">
+          </div>
+          <div class="insight-content">
+            <span class="insight-category-label">Featured</span>
+            <h4>The Art of the Samovar: How Russian Tea Brands Maintain Traditions</h4>
+            <p>Exploring the cultural significance behind Russia's iconic tea brewing vessel.</p>
+            <a href="{{ site.baseurl }}/insights/cultural-signatures/samovar-tradition/" class="read-more">Read more</a>
+          </div>
+        </div>
+        
+        <a href="{{ site.baseurl }}/insights/cultural-signatures/" class="view-all">View all</a>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script>
+  // Simple tab functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons and panes
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Show corresponding tab pane
+        const tabId = this.getAttribute('data-tab') + '-tab';
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+  });
+
+
+    // Add this to your JavaScript file or in a script tag at the bottom of your page
+    function showComingSoonMessage(feature) {
+    alert(`The ${feature} feature is coming soon in our next update!\n\nWe're currently working on implementing advanced search and filtering capabilities to help you discover the perfect BRICS+ brands for your needs.`);
+    return false; // Prevents form submission
+    }
+
+    // Then attach these to your buttons in the HTML:
+    // Search button (direct text search)
+    document.querySelector('.search-button').addEventListener('click', function() {
+    showComingSoonMessage('direct brand search');
+    });
+
+    // Find Brands button (filtered search)
+    document.querySelector('.find-button').addEventListener('click', function() {
+    showComingSoonMessage('filtered brand discovery');
+    });
+
+    // Add this to your JavaScript file or inline script
+    document.querySelectorAll('.view-profile').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert("Brand profiles are being finalized and will be available soon!\n\nOur team is curating detailed information on each featured brand to provide you with comprehensive insights.");
+    });
+    });
+
+
+</script>

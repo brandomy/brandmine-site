@@ -10,7 +10,8 @@
 
 .sector-tags,
 .attribute-tags,
-.growth-tags {
+.signal-tags,
+.market-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -20,14 +21,15 @@
 /* Individual tag styling */
 .tag {
   display: inline-block;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm); /* Replaced 4px with token */
-  font-size: var(--text-sm); /* Replaced 0.875rem with token */
+  padding: var(--space-2) var(--space-4); /* Increased padding */
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
   line-height: 1.4;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
+/* Primary color for Sector tags */
 .sector-tag {
   background-color: var(--primary-100);
   color: var(--primary-700);
@@ -39,6 +41,7 @@
   color: var(--primary-800);
 }
 
+/* Secondary color for Attribute tags */
 .attribute-tag {
   background-color: var(--secondary-100);
   color: var(--secondary-700);
@@ -50,30 +53,51 @@
   color: var(--secondary-800);
 }
 
-.growth-tag {
+/* Accent color for Signal tags */
+.signal-tag {
   background-color: var(--accent-100);
   color: var(--accent-700);
   border: 1px solid var(--accent-200);
 }
 
-.growth-tag:hover {
+.signal-tag:hover {
   background-color: var(--accent-200);
   color: var(--accent-800);
+}
+
+/* Quaternary color for Market tags */
+.market-tag {
+  background-color: var(--quaternary-100);
+  color: var(--quaternary-700);
+  border: 1px solid var(--quaternary-200);
+}
+
+.market-tag:hover {
+  background-color: var(--quaternary-200);
+  color: var(--quaternary-800);
 }
 
 /* Tag cloud styling */
 .tag-cloud {
   margin: var(--space-6) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  justify-content: center;
 }
 
 .tag-cloud h3 {
   margin-bottom: var(--space-2);
-  font-size: var(--text-xl); /* Replaced 1.25rem with token */
+  font-size: var(--text-xl);
 }
 
 .sector-cloud,
 .attribute-cloud,
-.growth-cloud {
+.signal-cloud,
+.market-cloud {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -90,15 +114,15 @@
   padding: var(--space-1) var(--space-2);
   background-color: var(--neutral-200);
   color: var(--neutral-700);
-  border-radius: var(--radius-sm); /* Replaced fixed 4px with token */
-  font-size: var(--text-sm); /* Replaced 0.875rem with token */
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--space-2);
 }
 
 .tag-description {
-  font-size: var(--text-lg); /* Replaced 1.125rem with token */
+  font-size: var(--text-lg);
   color: var(--neutral-600);
   margin-bottom: var(--space-4);
   max-width: 40em;
@@ -125,30 +149,4 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-}
-
-/* Country tag styling */
-.country-tag {
-  background-color: var(--accent-50);
-  color: var(--accent-800);
-  border: 1px solid var(--accent-100);
-}
-
-.country-tag:hover {
-  background-color: var(--accent-100);
-  color: var(--accent-900);
-}
-
-.country-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
-}
-
-.country-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-2);
 }
