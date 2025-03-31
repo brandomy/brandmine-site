@@ -205,15 +205,9 @@
 
 /* Discovery Panel on Homepage */
 
-
-.discovery-panel h2 {
-  color: var(--primary-800); /* Restore heading color */
-}
-
-/* In panels.css - ensure these panel styles are explicitly declared */
 .discovery-panel {
-  background-color: var(--primary-50); 
-  color: var(--neutral-700);
+  background-color: var(--primary-700); 
+  color: white;
   position: relative;
   width: 100vw;
   padding: var(--space-16) 0;
@@ -224,6 +218,10 @@
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
+}
+
+.discovery-panel h2 {
+  color: var(--primary-50); /* Restore heading color */
 }
 
 .discovery-panel::before {
@@ -240,13 +238,9 @@
 
 /* Insights Panel on Homepage */
 
-.insights-panel h2 {
-  color: var(--accent-800); /* Restore heading color */
-}
-
 .insights-panel {
-  background-color: var(--accent-50);
-  color: var(--neutral-700);
+  background-color: var(--accent-800);
+  color: white;
   position: relative;
   width: 100vw;
   padding: var(--space-16) 0;
@@ -257,6 +251,11 @@
   margin-right: -50vw;
   overflow: hidden;
 }
+
+.insights-panel h2 {
+  color: var(--accent-50); /* Restore heading color */
+}
+
 
 .insights-panel::before {
   content: '';

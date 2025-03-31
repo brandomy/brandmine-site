@@ -1,17 +1,17 @@
 # Brandmine Site Summary
-Generated on Fri 28 Mar 2025 16:59:24 +08
+Generated on Mon 31 Mar 2025 21:26:35 +08
 
 ## Repository Status
 Current branch: improve-navigation
-Last commit: Fix CSS navigation issues and improve footer spacing
-Last commit date: 2025-03-28 12:33
-Modified files: 21
+Last commit: Refactor panel classes for improved styling and update search placeholder for clarity
+Last commit date: 2025-03-28 20:14
+Modified files: 3
 Recent activity:
+- 2025-03-28: Refactor panel classes for improved styling and update search placeholder for clarity
+- 2025-03-28: Add new JSON history file and update references in discover pages for multilingual support
 - 2025-03-28: Fix CSS navigation issues and improve footer spacing
 - 2025-03-28: Add debug CSS for responsive breakpoint indicators and layout outlines
 - 2025-03-28: revised all css after review by chatgpt for logic and use of semantic variables.
-- 2025-03-27: Add excerpt field to various templates and samples for improved content visibility
-- 2025-03-27: Refactor related brands references to unify terminology across templates and samples
 
 ## Site Structure
 ### Directories
@@ -59,8 +59,8 @@ Recent activity:
   - _data/translations/ru.yml
   - _data/translations/zh.yml
   - _data/brands-data.json
-- assets/ (108 files total)
-  - assets/css/ (33 CSS files)
+- assets/ (110 files total)
+  - assets/css/ (35 CSS files)
     - assets/css/debug.css
     - assets/css/layout/panels.css
     - assets/css/main.css
@@ -68,6 +68,8 @@ Recent activity:
     - assets/css/components/search.css
     - assets/css/components/team.css
     - assets/css/components/features.css
+    - assets/css/components/insights-grid.css
+    - assets/css/components/featured-brand.css
     - assets/css/components/solutions.css
     - assets/css/components/text.css
     - assets/css/components/forms.css
@@ -284,7 +286,7 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 5.154 seconds.
+- Build time (clean): 8.717 seconds.
 - Generated HTML pages: 165
 - Total site size:  40M
 
@@ -305,6 +307,8 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-03-28**: Refactor panel classes for improved styling and update search placeholder for clarity (Randal Eastman)
+- **2025-03-28**: Add new JSON history file and update references in discover pages for multilingual support (Randal Eastman)
 - **2025-03-28**: Fix CSS navigation issues and improve footer spacing (Randal Eastman)
 - **2025-03-28**: Add debug CSS for responsive breakpoint indicators and layout outlines (Randal Eastman)
 - **2025-03-28**: revised all css after review by chatgpt for logic and use of semantic variables. (Randal Eastman)
@@ -313,8 +317,6 @@ body, html {
 - **2025-03-27**: Update styleguide pages so all previews display correctly. (Randal Eastman)
 - **2025-03-27**: Refactor image handling documentation for improved clarity and consistency (Randal Eastman)
 - **2025-03-27**: Update context file generation date and adjust multilingual styleguide examples for consistency (Randal Eastman)
-- **2025-03-26**: convert styleguide pages to new format. (Randal Eastman)
-- **2025-03-26**: Add development journal updated styleguide elements. (Randal Eastman)
 
 ### Recently Modified Files
 - _archive/breakpoints.css
@@ -324,6 +326,7 @@ body, html {
 - _archive/en/categories/founders-journey.md
 - _archive/en/categories/market-milestone.md
 - _archive/en/index.html
+- _archive/en/index.html.backup
 - _archive/en/insights.md
 - _archive/en/markets.md
 - _archive/en/sectors.md
@@ -331,7 +334,6 @@ body, html {
 - _archive/ru/insights/categories/brand-spotlight.md
 - _archive/ru/insights/categories/cultural-signature.md
 - _archive/ru/insights/categories/founders-journey.md
-- _archive/ru/insights/categories/market-milestone.md
 
 
 ### Project Log Entries (Last 2)
