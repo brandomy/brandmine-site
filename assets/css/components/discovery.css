@@ -1,173 +1,137 @@
 /* ==========================================================================
-   Discovery Tabs and Cards
+   Discovery2 Panel Styles - Clean Implementation
    ==========================================================================
-   Styles for discovery tabs, grids, and cards.
 */
 
-/* Discovery Tabs */
-.discovery-tabs {
+/* Panel styling */
+.panel--discovery2 {
+  background-color: var(--secondary-50);
+  border-top: 4px solid var(--primary-400);
+  border-bottom: 4px solid var(--primary-400);
+  padding: var(--space-8) 0;
+}
+
+/* Tab container */
+.discovery2-tabs {
+  max-width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--secondary-200);
+}
+
+/* Tab navigation */
+.discovery2-nav {
   display: flex;
-  border-bottom: 1px solid var(--neutral-300);
-  margin-bottom: var(--space-4);
-  overflow-x: auto;
-  /* Using a converted value for consistency (2px ≈ 0.125rem) */
-  padding-bottom: 0.125rem;
+  width: 100%;
+  border-bottom: 2px solid var(--primary-200);
 }
 
-.discovery-tab {
-  padding: var(--space-2) var(--space-4);
+/* Tab buttons */
+.discovery2-tab {
+  flex: 1;
+  padding: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  background-color: transparent;
   border: none;
-  background: transparent;
-  color: var(--neutral-600);
-  font-family: var(--font-body);
-  font-size: var(--text-base); /* Replaced 1rem with token */
+  color: var(--primary-600);
   cursor: pointer;
+  transition: all 0.2s ease;
   position: relative;
-  white-space: nowrap;
+  text-align: center;
 }
 
-.discovery-tab:hover {
-  color: var(--primary-600);
+.discovery2-tab:hover {
+  background-color: var(--secondary-100);
 }
 
-.discovery-tab.active {
-  color: var(--primary-600);
-  font-weight: 600;
+.discovery2-tab.active {
+  color: var(--accent-600);
+  font-weight: var(--font-bold);
+  background-color: var(--secondary-100);
 }
 
-.discovery-tab.active::after {
+/* Indicator for active tab */
+.discovery2-tab.active::after {
   content: '';
   position: absolute;
-  bottom: -0.125rem; /* 2px ≈ 0.125rem */
+  bottom: -2px;
   left: 0;
   width: 100%;
-  height: 0.1875rem; /* 3px ≈ 0.1875rem */
-  background-color: var(--primary-500);
-  border-radius: 0.1875rem 0.1875rem 0 0; /* Keeping as-is, adjust if token available */
+  height: 3px;
+  background-color: var(--accent-600);
 }
 
-/* Discovery Panes */
-.discovery-pane {
+/* Tab content container */
+.discovery2-content {
+  padding: var(--space-6);
+  background-color: white;
+}
+
+/* Individual tab panes */
+.discovery2-pane {
   display: none;
 }
 
-.discovery-pane.active {
+.discovery2-pane.active {
   display: block;
+  animation: fadeIn 0.3s ease;
 }
 
-/* Discovery Grid */
-.discovery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Discovery Card */
-.discovery-card {
-  background-color: white;
-  border-radius: var(--radius-md); /* Replaced 0.5rem with token */
-  box-shadow: var(--shadow-sm); /* Using token for default shadow */
-  padding: var(--space-4);
-  border: var(--border-width-thin) solid var(--neutral-200); /* Using token for border width if defined */
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.discovery-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md); /* Using token for hover shadow */
-}
-
-.discovery-card h3 {
-  margin-top: 0;
-  margin-bottom: var(--space-2);
-  color: var(--neutral-800);
-}
-
-.discovery-card p {
-  color: var(--neutral-600);
-  margin-bottom: var(--space-4);
-}
-
-.discovery-more {
+/* Tab content intro text */
+.discovery2-intro {
   text-align: center;
-  margin-top: var(--space-4);
+  color: var(--primary-700);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-relaxed);
 }
 
-/* Grids for other discovery sections */
-.sectors-grid,
-.markets-grid,
-.attributes-grid,
-.signals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-4);
-}
-
-/* Cards for sectors, markets, attributes, and signals */
-.sector-card,
-.market-card,
-.attribute-card,
-.signal-card {
-  background-color: white;
-  border-radius: var(--radius-md); /* Replacing 0.5rem with token */
-  box-shadow: var(--shadow-sm); /* Using token for default shadow */
-  padding: var(--space-4);
-  border: var(--border-width-thin) solid var(--neutral-200);
-  transition: transform 0.2s, box-shadow 0.2s;
+/* Tag cloud */
+.discovery2-tags {
   display: flex;
-  flex-direction: column;
-}
-
-.sector-card:hover,
-.market-card:hover,
-.attribute-card:hover,
-.signal-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md); /* Using token for hover shadow */
-}
-
-/* Icons for sectors, markets, attributes, and signals */
-.sector-icon,
-.market-icon,
-.attribute-icon,
-.signal-icon {
-  height: 60px;
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
   justify-content: center;
-  margin-bottom: var(--space-3);
 }
 
-.sector-icon img,
-.market-icon img,
-.attribute-icon img,
-.signal-icon img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-/* Placeholder Icon */
-.placeholder-icon {
-  width: 60px;
-  height: 60px;
-  background-color: var(--neutral-200);
-  border-radius: var(--radius-sm); /* Replacing 0.25rem with token */
-}
-
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media (max-width: var(--breakpoint-md)) {
-  .discovery-grid,
-  .sectors-grid,
-  .markets-grid,
-  .attributes-grid,
-  .signals-grid {
-    grid-template-columns: 1fr;
+  .discovery2-tabs {
+    max-width: 95%;
   }
   
-  .discovery-tab {
+  .discovery2-nav {
+    flex-wrap: wrap;
+  }
+  
+  .discovery2-tab {
+    padding: var(--space-3);
+    font-size: var(--text-base);
+  }
+  
+  .discovery2-content {
+    padding: var(--space-4);
+  }
+  
+  .discovery2-intro {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .discovery2-tab {
+    flex: 1 0 50%;
+    font-size: var(--text-sm);
     padding: var(--space-2);
   }
 }

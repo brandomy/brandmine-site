@@ -16,18 +16,15 @@
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-bottom: var(--space-2);
-  /* padding: 1px 4px;
-  text-decoration: none;
+  font-size: var(--text-sm);
+  padding: var(--space-1) var(--space-2); 
   border-radius: var(--radius-sm);
-  font-size: var(--text-sm); */
+  text-decoration: none;
 }
 
 /* Individual tag styling */
 .tag {
   display: inline-block;
-  padding: var(--space-2) var(--space-4); /* Increased padding */
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
   line-height: 1.4;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -38,10 +35,6 @@
   background-color: var(--primary-100);
   color: var(--primary-700);
   border: 1px solid var(--primary-200);
-  padding: 1px 4px;
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
 }
 
 .sector-tag:hover {
@@ -54,10 +47,6 @@
   background-color: var(--secondary-100);
   color: var(--secondary-700);
   border: 1px solid var(--secondary-200);
-  padding: 1px 4px;
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
 }
 
 .attribute-tag:hover {
@@ -70,10 +59,6 @@
   background-color: var(--accent-100);
   color: var(--accent-700);
   border: 1px solid var(--accent-200);
-  padding: 1px 4px;
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
 }
 
 .signal-tag:hover {
@@ -86,10 +71,6 @@
   background-color: var(--quaternary-100);
   color: var(--quaternary-700);
   border: 1px solid var(--quaternary-200);
-  padding: 1px 4px;
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
 }
 
 .market-tag:hover {
@@ -104,10 +85,10 @@
   flex-wrap: wrap;
   gap: var(--space-4);
   padding: var(--space-6);
-  background-color: white;
+  background-color: var(--neutral-100);
   border-radius: var(--radius-lg);
   justify-content: center;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--neutral-200);
   position: relative;
   max-width: 90%;
@@ -122,7 +103,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background-image: linear-gradient(to right, var(--primary-400), var(--accent-400));
+  /* background-image: linear-gradient(to right, var(--primary-400), var(--accent-400)); */
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
@@ -148,10 +129,7 @@
 .signal-cloud .signal-tag,
 .market-cloud .market-tag {
   display: inline-block;
-  padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-md);
-  font-size: var(--text-base);
-  font-weight: var(--font-medium);
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);

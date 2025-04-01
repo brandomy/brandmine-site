@@ -56,12 +56,12 @@
   position: relative;
   border-top: 4px solid var(--primary-400);
   border-bottom: 4px solid var(--primary-400);
-  background-image: linear-gradient(to bottom, var(--primary-700), var(--primary-800));
+  background-color: var(--secondary-100);
   overflow: hidden;
 }
 
 .panel--discovery .panel__heading-secondary {
-  color: white;
+  color: var(--secondary-700);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   font-size: var(--text-3xl);
@@ -69,7 +69,7 @@
   margin-bottom: var(--space-8);
   position: relative;
   z-index: 1;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
 }
 
 .panel--discovery .panel__content {
@@ -104,13 +104,13 @@
 
 /* Discovery tabs custom styling for homepage */
 .discovery-tabs {
-  background-color: var(--primary-50);
+  background-color: var(--secondary-200);
   border-radius: var(--radius-lg);
   padding: var(--space-8);
   box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--primary-200);
+  border: 1px solid var(--secondary-400);
 }
 
 /* Add subtle pattern overlay */
@@ -181,20 +181,21 @@
   to { opacity: 1; transform: scaleX(1); }
 }
 
-/* Style for tab panes */
+
+/* Ensure tab panes have the right styles for transitions */
 .tab-pane {
   display: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  position: relative;
-  z-index: 1;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .tab-pane.active {
   display: block;
   opacity: 1;
-  animation: fadeIn 0.5s ease forwards;
+  transform: translateY(0);
 }
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -212,6 +213,8 @@
   line-height: var(--leading-relaxed);
 }
 
+
+
 /* --------------------------------------------------------------------------
   4. Insights Panel
   -------------------------------------------------------------------------- */
@@ -219,10 +222,22 @@
 /* BEM version - still keeping insights-panel for now as a specific implementation */
 .panel--insights {
   position: relative;
+  background-color: var(--accent-100);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--accent-200);
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .panel--insights .panel__heading-secondary {
-  color: var(--accent-50);
+  color: var(--accent-700);
 }
 
 .panel--insights::before {
