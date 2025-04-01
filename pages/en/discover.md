@@ -7,9 +7,10 @@ ref: discover
 ---
 
 <!-- Hero Panel -->
- <div class="full-width-panel hero-panel"> 
-  <div class="panel-content centered">
-    <h1 class="brands-title">Discover Brands</h1>
-    <p class="hero-subtitle">Explore brands by their Sectors, Markets, Attributes or Signals</p>
+
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">Discover Brands</h1>
+    <p class="panel__subtitle">Explore brands by their Sectors, Markets, Attributes or Signals</p>
   </div>
 </div>

@@ -7,26 +7,26 @@ ref: brands
 ---
 
 <!-- Hero Panel -->
-<div class="full-width-panel hero-panel">
-  <div class="panel-content centered">
-    <h1>发现金砖国家+领先消费品牌</h1>
-    <p class="hero-subtitle">突破障碍，寻找新机遇</p>
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">发现金砖国家+领先消费品牌</h1>
+    <p class="panel__subtitle">突破障碍，寻找新机遇</p>
   </div>
 </div>
 
 <!-- Introduction Panel -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <p class="lead-text">Brandmine为您提供前所未有的渠道，接触那些在金砖国家+市场已经证明成功但因语言、政治和文化障碍而尚未被国际市场发现的消费品牌。</p>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <p class="panel__lead-text">Brandmine为您提供前所未有的渠道，接触那些在金砖国家+市场已经证明成功但因语言、政治和文化障碍而尚未被国际市场发现的消费品牌。</p>
   </div>
 </div>
 
 <!-- Brand Profiles Panel -->
-<div class="full-width-panel solution-panel">
-  <div class="panel-content">
+<div class="panel panel--primary">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>丰富的品牌档案</h2>
-      <p>我们精心策划的品牌档案不仅仅包含基本公司信息，还揭示了：</p>
+      <h2 class="panel__heading-secondary">丰富的品牌档案</h2>
+      <p class="panel__lead-text">我们精心策划的品牌档案不仅仅包含基本公司信息，还揭示了：</p>
       
       <div class="features-list">
         <div class="feature-item">
@@ -84,9 +84,9 @@ ref: brands
 </div>
 
 <!-- Featured Brands Panel -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>特色品牌</h2>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">特色品牌</h2>
     
     <div class="brand-grid">
       <!-- 未来将动态填充内容 -->
@@ -125,11 +125,11 @@ ref: brands
 </div>
 
 <!-- Find Your Partner Panel -->
-<div class="full-width-panel perspective-panel">
-  <div class="panel-content">
+<div class="panel panel--accent">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>寻找您的下一个合作伙伴</h2>
-      <p>使用我们的高级搜索和筛选工具，按以下条件发现品牌：</p>
+      <h2 class="panel__heading-secondary">寻找您的下一个合作伙伴</h2>
+      <p class="panel__lead-text">使用我们的高级搜索和筛选工具，按以下条件发现品牌：</p>
       
       <div class="filter-categories">
         <div class="filter-category">市场来源</div>
@@ -150,10 +150,10 @@ ref: brands
 </div>
 
 <!-- Contact CTA Panel -->
-<div class="full-width-panel cta-panel">
-  <div class="panel-content centered">
-    <h2>准备发现金砖国家+品牌？</h2>
-    <p>联系我们，了解更多关于我们特色品牌的信息，或讨论您的具体需求。</p>
+<div class="panel panel--cta">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">准备发现金砖国家+品牌？</h2>
+    <p class="panel__lead-text">联系我们，了解更多关于我们特色品牌的信息，或讨论您的具体需求。</p>
     <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">联系我们</a>
   </div>
 </div>

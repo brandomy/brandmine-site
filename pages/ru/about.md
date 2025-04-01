@@ -7,29 +7,29 @@ ref: about
 ---
 
 <!-- Hero Section with Gradient Background -->
-<div class="full-width-panel hero-panel">
-  <div class="panel-content centered">
-    <h1>О Brandmine</h1>
-    <p class="hero-subtitle">Раскрытие глобального потенциала ведущих потребительских брендов из стран БРИКС+</p>
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">О Brandmine</h1>
+    <p class="panel__subtitle">Раскрытие глобального потенциала ведущих потребительских брендов из стран БРИКС+</p>
   </div>
 </div>
 
 <!-- Mission Section -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Наша миссия</h2>
-    <p class="lead-text">
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Наша миссия</h2>
+    <p class="panel__lead-text">
       Brandmine существует для того, чтобы раскрыть глобальный потенциал ведущих потребительских брендов из стран БРИКС+, преодолевая языковые, политические и культурные барьеры, которые скрывают эти бренды от международных партнеров.
     </p>
   </div>
 </div>
 
 <!-- Problem Section -->
-<div class="full-width-panel problem-panel">
-  <div class="panel-content">
+<div class="panel panel--secondary">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>Проблемы, которые мы решаем</h2>
-      <p class="lead-text">
+      <h2 class="panel__heading-secondary">Проблемы, которые мы решаем</h2>
+      <p class="panel__lead-text">
         Международные ритейлеры, дистрибьюторы, инвесторы и инкубаторы брендов сталкиваются со значительными трудностями при поиске возможностей на потребительских рынках БРИКС+:
       </p>
       
@@ -75,7 +75,7 @@ ref: about
         </div>
       </div>
       
-      <p class="conclusion-text">
+      <p class="panel__conclusion-text">
         Эти барьеры создают рыночную неэффективность, которая наносит ущерб обеим сторонам - международные партнеры упускают ценные возможности, а достойные бренды остаются ограниченными своими локальными рынками.
       </p>
     </div>
@@ -83,11 +83,11 @@ ref: about
 </div>
 
 <!-- Solution Section -->
-<div class="full-width-panel solution-panel">
-  <div class="panel-content">
+<div class="panel panel--primary">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>Наше решение</h2>
-      <p class="lead-text">
+      <h2 class="panel__heading-secondary">Наше решение</h2>
+      <p class="panel__lead-text">
         Платформа бизнес-аналитики Brandmine привносит ясность в этот фрагментированный ландшафт путем:
       </p>
       
@@ -137,9 +137,9 @@ ref: about
 </div>
 
 <!-- Team Section using existing styling -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Наша команда</h2>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Наша команда</h2>
     
     <div class="team-section">
       <div class="team-member">
@@ -187,11 +187,11 @@ ref: about
 </div>
 
 <!-- Unique Perspective Section -->
-<div class="full-width-panel perspective-panel">
-  <div class="panel-content">
+<div class="panel panel--accent">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>Наша уникальная перспектива</h2>
-      <p class="lead-text">
+      <h2 class="panel__heading-secondary">Наша уникальная перспектива</h2>
+      <p class="panel__lead-text">
         Имея более 25 лет жизни и работы в Азии, особенно в Китае и России, наши основатели привносят в Brandmine редкое сочетание языковых способностей, культурного понимания и бизнес-интуиции:
       </p>
       
@@ -203,7 +203,7 @@ ref: about
       <li><span><strong>Проверенный опыт</strong> соединения брендов с партнерами, необходимыми для роста</span></li>
     </ul>
       
-      <p class="conclusion-text">
+      <p class="panel__conclusion-text">
         Этот отличительный опыт позволяет нам видеть ценные возможности там, где другие видят только барьеры.
       </p>
     </div>
@@ -211,12 +211,15 @@ ref: about
 </div>
 
 <!-- Services Section -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Наши услуги</h2>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Наши услуги</h2>
+    <p class="panel__lead-text">
+      Мы предлагаем услуги как для брендов БРИКС+, так и для инвесторов и бизнес-партнеров, стремящихся работать с ними.
+    </p>
     
     <div class="services-split">
-      <div class="service-column">
+      <div class="services-column">
         <h3>Для международных партнеров</h3>
         <ul class="service-list">
           <li><strong>База данных для поиска брендов</strong>: Поисковая коллекция куратированных профилей брендов</li>
@@ -226,7 +229,7 @@ ref: about
         </ul>
       </div>
       
-      <div class="service-column">
+      <div class="services-column">
         <h3>Для брендов БРИКС+</h3>
         <ul class="service-list">
           <li><strong>Международная видимость</strong>: Контакт с квалифицированными глобальными партнерами</li>
@@ -240,10 +243,10 @@ ref: about
 </div>
 
 <!-- Contact Section -->
-<div class="full-width-panel cta-panel">
-  <div class="panel-content centered">
-    <h2>Связаться с нами</h2>
-    <p class="lead-text">
+<div class="panel panel--cta">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">Связаться с нами</h2>
+    <p class="panel__lead-text">
       Если вы ищете новые возможности для брендов или хотите получить международную видимость для вашего бренда из стран БРИКС+, мы будем рады услышать от вас.
     </p>
     
@@ -258,13 +261,14 @@ ref: about
       </div>
     </div>
     
-    <!-- Contact Form Container -->
-    <div class="contact-form-container">
-      
-      <!-- Tally form with proper parameters - RUSSIAN VERSION -->
-      <iframe data-tally-src="https://tally.so/embed/wov08x?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Контактная форма"></iframe>
-      
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    <!-- Contact Form Container with additional wrapper -->
+    <div class="mobile-form-wrapper">
+      <div class="contact-form-container">
+        <!-- Tally form with proper parameters - RUSSIAN VERSION -->
+        <iframe data-tally-src="https://tally.so/embed/wov08x?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Контактная форма"></iframe>
+        
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+      </div>
     </div>
   </div>
 </div>

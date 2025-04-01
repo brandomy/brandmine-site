@@ -7,26 +7,26 @@ ref: brands
 ---
 
 <!-- Hero Panel -->
-<div class="full-width-panel hero-panel">
-  <div class="panel-content centered">
-    <h1>Откройте для себя ведущие потребительские бренды стран БРИКС+</h1>
-    <p class="hero-subtitle">Преодоление барьеров для поиска новых возможностей</p>
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">Откройте для себя ведущие потребительские бренды стран БРИКС+</h1>
+    <p class="panel__subtitle">Преодоление барьеров для поиска новых возможностей</p>
   </div>
 </div>
 
 <!-- Introduction Panel -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <p class="lead-text">Brandmine предоставляет беспрецедентный доступ к потребительским брендам, доказавшим свой успех на рынках БРИКС+, но остающимся неизвестными на международном уровне из-за языковых, политических и культурных барьеров.</p>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <p class="panel__lead-text">Brandmine предоставляет беспрецедентный доступ к потребительским брендам, доказавшим свой успех на рынках БРИКС+, но остающимся неизвестными на международном уровне из-за языковых, политических и культурных барьеров.</p>
   </div>
 </div>
 
 <!-- Brand Profiles Panel -->
-<div class="full-width-panel solution-panel">
-  <div class="panel-content">
+<div class="panel panel--primary">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>Богатые профили брендов</h2>
-      <p>Наши тщательно подобранные профили брендов выходят за рамки базовой информации о компании и раскрывают:</p>
+      <h2 class="panel__heading-secondary">Богатые профили брендов</h2>
+      <p class="panel__lead-text">Наши тщательно подобранные профили брендов выходят за рамки базовой информации о компании и раскрывают:</p>
       
       <div class="features-list">
         <div class="feature-item">
@@ -84,9 +84,9 @@ ref: brands
 </div>
 
 <!-- Featured Brands Panel -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>Избранные бренды</h2>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Избранные бренды</h2>
     
     <div class="brand-grid">
       <!-- Это будет заполнено динамически в будущем -->
@@ -125,11 +125,11 @@ ref: brands
 </div>
 
 <!-- Find Your Partner Panel -->
-<div class="full-width-panel perspective-panel">
-  <div class="panel-content">
+<div class="panel panel--accent">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>Найдите своего следующего партнера</h2>
-      <p>Используйте наши передовые инструменты поиска и фильтрации для обнаружения брендов по:</p>
+      <h2 class="panel__heading-secondary">Найдите своего следующего партнера</h2>
+      <p class="panel__lead-text">Используйте наши передовые инструменты поиска и фильтрации для обнаружения брендов по:</p>
       
       <div class="filter-categories">
         <div class="filter-category">Рынку происхождения</div>
@@ -150,10 +150,10 @@ ref: brands
 </div>
 
 <!-- Contact CTA Panel -->
-<div class="full-width-panel cta-panel">
-  <div class="panel-content centered">
-    <h2>Готовы открыть для себя бренды БРИКС+?</h2>
-    <p>Свяжитесь с нами, чтобы узнать больше о наших избранных брендах или обсудить ваши конкретные потребности.</p>
+<div class="panel panel--cta">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">Готовы открыть для себя бренды БРИКС+?</h2>
+    <p class="panel__lead-text">Свяжитесь с нами, чтобы узнать больше о наших избранных брендах или обсудить ваши конкретные потребности.</p>
     <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Связаться с нами</a>
   </div>
 </div>

@@ -6,3 +6,10 @@ ref: insights
 permalink: /en/insights/
 lang: en
 ---
+
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">BRICS+ Market Insights</h1>
+    <p class="panel__subtitle">Get the latest brand perspectives across the BRICS+ countries</p>
+  </div>
+</div>

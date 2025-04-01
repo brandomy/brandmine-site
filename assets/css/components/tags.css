@@ -102,15 +102,32 @@
   margin: var(--space-6) 0;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  background-color: var(--neutral-50);
-  border-radius: var(--radius-md);
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: white;
+  border-radius: var(--radius-lg);
   justify-content: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+  position: relative;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tag-cloud::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-image: linear-gradient(to right, var(--primary-400), var(--accent-400));
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
 .tag-cloud h3 {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
   font-size: var(--text-xl);
 }
 
@@ -120,8 +137,57 @@
 .market-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
   margin-bottom: var(--space-6);
+  justify-content: center;
+}
+
+/* Enhanced tag styling for clouds */
+.sector-cloud .sector-tag,
+.attribute-cloud .attribute-tag,
+.signal-cloud .signal-tag,
+.market-cloud .market-tag {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  margin: var(--space-1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enhance hover effects for each tag type */
+.sector-cloud .sector-tag:hover {
+  background-color: var(--primary-200);
+  color: var(--primary-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.attribute-cloud .attribute-tag:hover {
+  background-color: var(--secondary-200);
+  color: var(--secondary-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.signal-cloud .signal-tag:hover {
+  background-color: var(--accent-200);
+  color: var(--accent-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.market-cloud .market-tag:hover {
+  background-color: var(--quaternary-200);
+  color: var(--quaternary-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Tag page styling */

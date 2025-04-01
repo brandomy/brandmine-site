@@ -7,29 +7,29 @@ ref: about
 ---
 
 <!-- Hero Section with Gradient Background -->
-<div class="full-width-panel hero-panel">
-  <div class="panel-content centered">
-    <h1>关于 Brandmine</h1>
-    <p class="hero-subtitle">增强金砖国家+领先消费品牌的全球潜力</p>
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">关于 Brandmine</h1>
+    <p class="panel__subtitle">增强金砖国家+领先消费品牌的全球潜力</p>
   </div>
 </div>
 
 <!-- Mission Section -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>我们的使命</h2>
-    <p class="lead-text">
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">我们的使命</h2>
+    <p class="panel__lead-text">
       Brandmine 旨在通过突破语言、政治和文化障碍，增强金砖国家+领先消费品牌的全球潜力，这些障碍使这些品牌对国际合作伙伴隐而不见。
     </p>
   </div>
 </div>
 
 <!-- Problem Section -->
-<div class="full-width-panel problem-panel">
-  <div class="panel-content">
+<div class="panel panel--secondary">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>我们解决的问题</h2>
-      <p class="lead-text">
+      <h2 class="panel__heading-secondary">我们解决的问题</h2>
+      <p class="panel__lead-text">
         国际零售商、分销商、投资者和品牌孵化器在寻求金砖国家+消费市场机会时面临重大挑战：
       </p>
       
@@ -75,7 +75,7 @@ ref: about
         </div>
       </div>
       
-      <p class="conclusion-text">
+      <p class="panel__conclusion-text">
         这些障碍造成了市场效率低下，双方都受到损害——国际合作伙伴错失宝贵机会，而有价值的品牌仍局限于本地市场。
       </p>
     </div>
@@ -83,11 +83,11 @@ ref: about
 </div>
 
 <!-- Solution Section -->
-<div class="full-width-panel solution-panel">
-  <div class="panel-content">
+<div class="panel panel--primary">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>我们的解决方案</h2>
-      <p class="lead-text">
+      <h2 class="panel__heading-secondary">我们的解决方案</h2>
+      <p class="panel__lead-text">
         Brandmine的商业智能平台通过以下方式为这个碎片化的市场带来清晰度：
       </p>
       
@@ -137,9 +137,9 @@ ref: about
 </div>
 
 <!-- Team Section using existing styling -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>我们的团队</h2>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">我们的团队</h2>
     
     <div class="team-section">
       <div class="team-member">
@@ -187,11 +187,11 @@ ref: about
 </div>
 
 <!-- Unique Perspective Section -->
-<div class="full-width-panel perspective-panel">
-  <div class="panel-content">
+<div class="panel panel--accent">
+  <div class="panel__content">
     <div class="content-card">
-      <h2>我们的独特视角</h2>
-      <p class="lead-text">
+      <h2 class="panel__heading-secondary">我们的独特视角</h2>
+      <p class="panel__lead-text">
         凭借在亚洲——特别是在中国和俄罗斯——超过25年的生活和工作经验，我们的创始人为Brandmine带来了语言能力、文化洞察力和商业敏锐度的罕见组合：
       </p>
       
@@ -203,7 +203,7 @@ ref: about
       <li><span><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</span></li>
     </ul>
       
-      <p class="conclusion-text">
+      <p class="panel__conclusion-text">
         这种独特的背景使我们能够在别人只看到障碍的地方看到宝贵的机会。
       </p>
     </div>
@@ -211,12 +211,15 @@ ref: about
 </div>
 
 <!-- Services Section -->
-<div class="full-width-panel light-panel">
-  <div class="panel-content">
-    <h2>我们的服务</h2>
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">我们的服务</h2>
+    <p class="panel__lead-text">
+      我们为金砖国家+品牌以及希望与他们开展业务的投资者和商业伙伴提供服务。
+    </p>
     
     <div class="services-split">
-      <div class="service-column">
+      <div class="services-column">
         <h3>为国际合作伙伴提供</h3>
         <ul class="service-list">
           <li><strong>品牌发现数据库</strong>：精选品牌资料的可搜索集合</li>
@@ -226,7 +229,7 @@ ref: about
         </ul>
       </div>
       
-      <div class="service-column">
+      <div class="services-column">
         <h3>为金砖国家+品牌提供</h3>
         <ul class="service-list">
           <li><strong>国际可见性</strong>：向合格的全球合作伙伴展示</li>
@@ -240,10 +243,10 @@ ref: about
 </div>
 
 <!-- Contact Section -->
-<div class="full-width-panel cta-panel">
-  <div class="panel-content centered">
-    <h2>联系我们</h2>
-    <p class="lead-text">
+<div class="panel panel--cta">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">联系我们</h2>
+    <p class="panel__lead-text">
       无论您是寻求新的品牌机会，还是希望为您的金砖国家+品牌获得国际曝光，我们都很乐意听取您的意见。
     </p>
     
@@ -258,14 +261,14 @@ ref: about
       </div>
     </div>
     
-    <!-- Contact Form Container -->
-
-    <div class="contact-form-container">
-      
-      <!-- Tally form with proper parameters - CHINESE VERSION -->
-      <iframe data-tally-src="https://tally.so/embed/nG5oOk?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="联系表单"></iframe>
-      
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    <!-- Contact Form Container with additional wrapper -->
+    <div class="mobile-form-wrapper">
+      <div class="contact-form-container">
+        <!-- Tally form with proper parameters - CHINESE VERSION -->
+        <iframe data-tally-src="https://tally.so/embed/nG5oOk?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="联系表单"></iframe>
+        
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+      </div>
     </div>
   </div>
 </div>

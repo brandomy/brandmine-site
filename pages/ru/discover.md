@@ -8,9 +8,9 @@ ref: discover
 
 
 <!-- Hero Panel -->
- <div class="full-width-panel hero-panel"> 
-  <div class="panel-content centered">
-    <h1 class="brands-title">Откройте бренды</h1>
-    <p class="hero-subtitle">Исследуйте бренды по их секторам, рынкам, атрибутам или сигналам</p>
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">Откройте бренды</h1>
+    <p class="panel__subtitle">Исследуйте бренды по их секторам, рынкам, атрибутам или сигналам</p>
   </div>
 </div>

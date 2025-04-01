@@ -1,0 +1,356 @@
+/* ==========================================================================
+   Panel Component (BEM Implementation)
+   ==========================================================================
+   Creates edge-to-edge content sections with consistent internal spacing.
+   Used throughout the site for flexible, responsive layouts.
+   
+   Following BEM (Block Element Modifier) methodology:
+   - .panel = Block (the main component)
+   - .panel__element = Elements (parts of the panel)
+   - .panel--modifier = Modifiers (variations of the panel)
+   
+   Mobile-first approach:
+   - Base styles are for smallest screens
+   - Media queries use min-width to enhance for larger screens
+*/
+
+/* --------------------------------------------------------------------------
+   1. PANEL BLOCK (Base Component)
+   -------------------------------------------------------------------------- */
+
+/* Base panel block - creates the full-width effect */
+.panel {
+    width: 100vw;
+    padding: var(--space-8) 0;       /* Mobile-first smaller padding */
+    margin: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  /* --------------------------------------------------------------------------
+     2. PANEL ELEMENTS (Component Parts)
+     -------------------------------------------------------------------------- */
+  
+  /* Panel content container - controls width and centering */
+  .panel__content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--space-4);       /* Mobile-first smaller padding */
+    box-sizing: border-box;
+  }
+  
+  /* Panel typography elements */
+  .panel__heading-primary {
+    font-size: var(--text-3xl);      /* Mobile-first smaller size */
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-tight);
+    text-align: center;
+    margin-top: 0;
+    color: inherit;
+    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+  }
+  
+  .panel__heading-secondary {
+    font-size: var(--text-3xl);      /* Mobile-first smaller size */
+    margin-bottom: var(--space-6);
+    margin-top: 0;
+    text-align: center;
+    color: inherit;
+    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+  }
+  
+  .panel__heading-secondary--after-lead {
+    margin-top: var(--space-6);
+  }
+  
+  .panel__lead-text {
+    font-size: var(--text-base);     /* Mobile-first smaller size */
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-8);
+    font-family: var(--font-body);
+  }
+  
+  .panel__conclusion-text {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    font-family: var(--font-body);
+  }
+  
+  .panel__paragraph {
+    margin-bottom: var(--space-6);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+  }
+  
+  .panel__paragraph:last-child {
+    margin-bottom: 0;
+  }
+  
+  .panel__subtitle {
+    font-size: var(--text-xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: inherit;
+  }
+  
+  /* --------------------------------------------------------------------------
+     3. PANEL MODIFIERS (Variations)
+     -------------------------------------------------------------------------- */
+  
+  /* Hero Panel */
+  .panel--hero {
+    background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
+    color: white;
+    text-align: center;
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+  }
+  
+  .panel--hero .panel__heading-primary {
+    color: var(--secondary-200);
+    font-weight: var(--font-bold);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-5xl);
+  }
+  
+  .panel--hero .panel__subtitle {
+    font-size: var(--text-xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+  }
+  
+  /* Color variations */
+  .panel--light {
+    background-color: white;
+    color: var(--neutral-700);
+  }
+
+  .panel--light .panel__content {
+    max-width: 900px;     /* More contained width */
+    text-align: center;   /* Center all content */
+  }
+  
+  .panel--light .panel__lead-text {
+    font-size: var(--text-lg);     /* Increased size */
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-8);
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .panel--primary {
+    background-color: var(--primary-50);
+    color: var(--neutral-700);
+  }
+  
+  .panel--primary-dark {
+    background-color: var(--primary-700);
+    color: white;
+  }
+  
+  .panel--secondary {
+    background-color: var(--secondary-50);
+    color: var(--neutral-700);
+  }
+  
+  .panel--accent {
+    background-color: var(--accent-50);
+    color: var(--neutral-700);
+  }
+  
+  .panel--accent-dark {
+    background-color: var(--accent-800);
+    color: white;
+  }
+  
+  .panel--quaternary {
+    background-color: var(--quaternary-50);
+    color: var(--neutral-700);
+  }
+  
+  /* Patterned variations */
+  .panel--primary-pattern {
+    background-color: var(--primary-50);
+    color: var(--neutral-700);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338b2ac' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .panel--primary-dark-pattern {
+    background-color: var(--primary-700);
+    color: white;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2381E6D9' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .panel--secondary-pattern {
+    background-color: var(--secondary-50);
+    color: var(--neutral-700);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .panel--accent-pattern {
+    background-color: var(--accent-50);
+    color: var(--neutral-700);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .panel--accent-dark-pattern {
+    background-color: var(--accent-800);
+    color: white;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A5B4FC' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .panel--quaternary-pattern {
+    background-color: var(--quaternary-50);
+    color: var(--neutral-700);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A3B763' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  /* Special purpose modifiers */
+  .panel--cta {
+    background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%);
+    color: white;
+    padding: var(--space-12) var(--space-4);  /* Mobile-first smaller padding */
+  }
+  
+  .panel--text .panel__content {
+    max-width: 800px;
+  }
+  
+  /* Utility modifiers */
+  .panel--centered {
+    text-align: center;
+  }
+  
+  /* --------------------------------------------------------------------------
+     4. SPECIFIC PANEL IMPLEMENTATIONS
+     -------------------------------------------------------------------------- */
+  
+  
+
+  /* About page */
+
+
+/* Perspective list styling */
+
+.perspective-list {
+    max-width: 80%;       /* Container to center content */
+    margin: 0 auto;
+    padding-left: var(--space-10);
+  }
+  
+  .perspective-list li {
+    margin-bottom: var(--space-4);
+  }
+
+  
+  /* --------------------------------------------------------------------------
+     5. RESPONSIVE ADJUSTMENTS (Mobile-first approach)
+     -------------------------------------------------------------------------- */
+  
+  /* Small devices (480px and up) */
+  @media (min-width: var(--breakpoint-xs)) {
+    .panel__content {
+      padding: 0 var(--space-6);
+    }
+    
+    .panel__heading-primary {
+      font-size: var(--text-4xl);
+    }
+    
+    .panel__heading-secondary {
+      font-size: var(--text-3xl);
+    }
+    
+    .panel--cta {
+      padding: var(--space-16) var(--space-6);
+    }
+  }
+  
+  /* Medium devices (768px and up) */
+  @media (min-width: var(--breakpoint-md)) {
+    .panel {
+      padding: var(--space-12) 0;
+    }
+    
+    .panel__content {
+      max-width: 90%;
+      padding: 0 var(--space-8);
+    }
+  
+    .panel__lead-text {
+      font-size: var(--text-lg);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .panel__paragraph {
+      max-width: 42em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .panel--cta {
+      padding: var(--space-16) var(--space-8);
+    }
+    
+    .panel--hero {
+      padding-top: var(--space-20);
+      padding-bottom: var(--space-20);
+    }
+    .panel__heading-secondary {
+        font-size: var(--text-4xl);  /* Even larger on bigger screens */
+      }
+      
+      .panel--light .panel__lead-text {
+        font-size: var(--text-xl);   /* Larger on bigger screens */
+      }
+      
+      .perspective-list {
+        max-width: 70%;     /* More contained on larger screens */
+        margin: 0 auto;
+      }
+  }
+  
+  /* Large devices (992px and up) */
+  @media (min-width: var(--breakpoint-lg)) {
+    .panel__heading-primary {
+      font-size: var(--text-5xl);
+    }
+    
+    .panel__heading-secondary {
+      font-size: var(--text-4xl);
+    }
+  }
+  
+  /* Extra large devices (1200px and up) */
+  @media (min-width: var(--breakpoint-xl)) {
+    .panel {
+      padding: var(--space-16) 0;
+    }
+    
+    .panel__content {
+      max-width: var(--grid-max-width);
+    }
+    
+    .panel--cta {
+      padding: var(--space-20) var(--space-8);
+    }
+  }
