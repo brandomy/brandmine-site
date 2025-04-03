@@ -1,17 +1,17 @@
 # Brandmine Site Summary
-Generated on Mon 31 Mar 2025 21:26:35 +08
+Generated on Wed  2 Apr 2025 09:42:44 +08
 
 ## Repository Status
 Current branch: improve-navigation
-Last commit: Refactor panel classes for improved styling and update search placeholder for clarity
-Last commit date: 2025-03-28 20:14
-Modified files: 3
+Last commit: Add new images for insights and brands, and update context file
+Last commit date: 2025-04-01 19:52
+Modified files: 10
 Recent activity:
+- 2025-04-01: Add new images for insights and brands, and update context file
+- 2025-04-01: Refactor panel structure to BEM conventions and enhance multilingual insights pages
+- 2025-03-31: Add new JSON history file and update panel styles for improved clarity and consistency
 - 2025-03-28: Refactor panel classes for improved styling and update search placeholder for clarity
 - 2025-03-28: Add new JSON history file and update references in discover pages for multilingual support
-- 2025-03-28: Fix CSS navigation issues and improve footer spacing
-- 2025-03-28: Add debug CSS for responsive breakpoint indicators and layout outlines
-- 2025-03-28: revised all css after review by chatgpt for logic and use of semantic variables.
 
 ## Site Structure
 ### Directories
@@ -59,10 +59,11 @@ Recent activity:
   - _data/translations/ru.yml
   - _data/translations/zh.yml
   - _data/brands-data.json
-- assets/ (110 files total)
-  - assets/css/ (35 CSS files)
+- assets/ (121 files total)
+  - assets/css/ (36 CSS files)
     - assets/css/debug.css
     - assets/css/layout/panels.css
+    - assets/css/layout/panels-bem.css
     - assets/css/main.css
     - assets/css/components/insights-feed.css
     - assets/css/components/search.css
@@ -115,13 +116,14 @@ Recent activity:
     - assets/fonts/pt-serif_bold.woff2
     - assets/fonts/NotoSerifSC-Bold.woff2
     - ... and 16 more font files
-  - assets/images/ (23 image files)
+  - assets/images/ (33 image files)
 - pages/ structure
-  - pages/en/ (26 pages)
+  - pages/en/ (27 pages)
     - pages/en/brands.md
     - pages/en/index.html
     - pages/en/insights.md
     - pages/en/russian-sectors.md
+    - pages/en/test.md
     - pages/en/about.md
     - pages/en/discover.md
   - pages/ru/ (10 pages)
@@ -166,7 +168,7 @@ defaults:
 
 ## Content Summary
 - Languages: 3 (en ru zh )
-  - en: 26 pages
+  - en: 27 pages
   - ru: 10 pages
   - zh: 10 pages
 - Brand profiles: 4
@@ -286,9 +288,9 @@ body, html {
 ```
 
 ## Build Performance
-- Build time (clean): 8.717 seconds.
-- Generated HTML pages: 165
-- Total site size:  40M
+- Build time (clean): 5.343 seconds.
+- Generated HTML pages: 167
+- Total site size:  41M
 
 ## Environment & Dependencies
 - Jekyll version: 3.10.0
@@ -307,6 +309,9 @@ body, html {
 
 ## Recent Development Activity
 ### Recent Commits
+- **2025-04-01**: Add new images for insights and brands, and update context file (Randal Eastman)
+- **2025-04-01**: Refactor panel structure to BEM conventions and enhance multilingual insights pages (Randal Eastman)
+- **2025-03-31**: Add new JSON history file and update panel styles for improved clarity and consistency (Randal Eastman)
 - **2025-03-28**: Refactor panel classes for improved styling and update search placeholder for clarity (Randal Eastman)
 - **2025-03-28**: Add new JSON history file and update references in discover pages for multilingual support (Randal Eastman)
 - **2025-03-28**: Fix CSS navigation issues and improve footer spacing (Randal Eastman)
@@ -314,26 +319,23 @@ body, html {
 - **2025-03-28**: revised all css after review by chatgpt for logic and use of semantic variables. (Randal Eastman)
 - **2025-03-27**: Add excerpt field to various templates and samples for improved content visibility (Randal Eastman)
 - **2025-03-27**: Refactor related brands references to unify terminology across templates and samples (Randal Eastman)
-- **2025-03-27**: Update styleguide pages so all previews display correctly. (Randal Eastman)
-- **2025-03-27**: Refactor image handling documentation for improved clarity and consistency (Randal Eastman)
-- **2025-03-27**: Update context file generation date and adjust multilingual styleguide examples for consistency (Randal Eastman)
 
 ### Recently Modified Files
-- _archive/breakpoints.css
-- _archive/colors.css
-- _archive/en/categories/brand-spotlight.md
-- _archive/en/categories/cultural-signature.md
-- _archive/en/categories/founders-journey.md
-- _archive/en/categories/market-milestone.md
-- _archive/en/index.html
+- CLAUDE.md
+- _archive/about.md.backup
 - _archive/en/index.html.backup
-- _archive/en/insights.md
 - _archive/en/markets.md
-- _archive/en/sectors.md
-- _archive/en/signals.md
-- _archive/ru/insights/categories/brand-spotlight.md
-- _archive/ru/insights/categories/cultural-signature.md
-- _archive/ru/insights/categories/founders-journey.md
+- _archive/index.backup
+- _layouts/brands.html
+- _layouts/category.html
+- _layouts/content-type.html
+- _layouts/default.html
+- _layouts/discover.html
+- _layouts/insight.html
+- _layouts/insights.html
+- _layouts/tag.html
+- _scripts/_dev_journals/2025-03-28_DevJournal_HomePageRedesign.md
+- _scripts/_history/tag-stats-2025-03-28.json
 
 
 ### Project Log Entries (Last 2)

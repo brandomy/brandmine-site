@@ -3,6 +3,7 @@
    ==========================================================================
 */
 
+
 .featured-brand-panel {
   padding: var(--space-6);
   border-radius: var(--radius-md);
@@ -83,5 +84,63 @@
   .brand-logo {
     flex: 0 0 auto;
     margin-bottom: var(--space-4);
+  }
+}
+
+/* Add these styles to featured-brand.css */
+
+/* Fix panel sizing and spacing */
+.panel.featured-brand-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  box-sizing: border-box;
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Add proper spacing for heading */
+.panel.featured-brand-panel h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-2);
+}
+
+/* Add proper spacing for brand logo */
+.panel.featured-brand-panel .brand-logo {
+  flex: 0 0 120px;
+  padding: var(--space-2);
+  box-sizing: border-box;
+}
+
+/* Ensure brand card fills available space */
+.panel.featured-brand-panel .brand-card {
+  flex: 1;
+  padding: var(--space-2);
+}
+
+/* Make tag links maintain tag styling */
+.brand-meta a.sector-tag,
+.brand-meta a.market-tag,
+.brand-tags a.attribute-tag,
+.brand-tags a.signal-tag {
+  text-decoration: none;
+  color: inherit; /* Maintain original text color */
+  display: inline-block;
+}
+
+/* Fix responsive issues */
+@media (max-width: var(--breakpoint-md)) {
+  .brand-card {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .brand-logo {
+    flex: 0 0 auto;
+    max-width: 180px;
+    margin: 0 auto var(--space-4) auto;
   }
 }

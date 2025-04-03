@@ -15,71 +15,7 @@
    8. Other Adjustments (Team Cards, etc.)
 */
 
-/* ==========================================================================
-   1. HEADER NAVIGATION
-   ==========================================================================
-   Fixes for the main site navigation on small screens to ensure
-   all menu items are visible and accessible.
-*/
-/* max-width: 767px (var(--breakpoint-md)=768px) */
-@media (max-width: calc(var(--breakpoint-md) - 1px)) {
-  /* Make the header stack vertically on very small screens */
-  .site-header .wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Make the navigation take full width */
-  .site-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-top: var(--space-2);
-  }
-  
-  /* Adjust navigation links to fit better */
-  .site-nav a {
-    padding: var(--space-2);
-    font-size: 0.9rem;
-    text-align: center;
-  }
-  
-  /* Allow site title to be prominent */
-  .site-title {
-    margin-right: 0;
-    margin-bottom: var(--space-2);
-  }
-  
-  /* Ensure language selector doesn't break layout */
-  .language-selector {
-    margin-top: var(--space-2);
-    float: none;
-    text-align: center;
-  }
-}
-
-/* For extremely small screens */
-/* max-width: 480px (var(--breakpoint-xs)=480px) */
-@media (max-width: var(--breakpoint-xs)) {
-  .site-nav {
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: var(--space-2);
-    justify-content: flex-start; /* Start alignment helps with scrolling */
-  }
-  
-  /* Hide scrollbar for cleaner appearance but maintain functionality */
-  .site-nav::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .site-nav {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-  }
-}
+/* deleted header navigation section - moved to header.css */
 
 /* ==========================================================================
    2. SERVICES SECTION (PARTNERS/BRANDS)

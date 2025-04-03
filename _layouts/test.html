@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/nav.css' | relative_url }}">
+</head>
+<body>
+
+
+  <!-- TEMP test nav code here -->
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="#">Brandmine</a>
+
+      <button class="menu-toggle" onclick="toggleMenu()">
+        <span class="menu-icon"></span>
+      </button>
+
+      <nav class="site-nav">
+        <a href="#">Home</a>
+        <a href="#">Brands</a>
+        <a href="#">Discover</a>
+        <a href="#">Insights</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu-toggle').classList.toggle('active');
+      document.querySelector('.site-nav').classList.toggle('active');
+    }
+  </script>
+
+  {{ content }}
+  
+</body>
+</html>

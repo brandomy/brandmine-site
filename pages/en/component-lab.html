@@ -1,0 +1,140 @@
+---
+layout: default
+title: Component Test Lab
+lang: en  # Explicitly set the language
+permalink: /en/component-lab/
+ref: component-lab
+published: false  # Hide from production
+---
+
+
+<div class="viewport-info" style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: var(--space-2) var(--space-3); z-index: 9999; font-family: var(--font-mono);">
+  Width: <span id="viewport-width"></span>px
+</div>
+
+<style>
+  /* Component Lab styles using your design tokens */
+  .test-container {
+    margin: var(--space-6) 0;
+    border: 1px solid var(--neutral-200);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .test-info {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--neutral-100);
+  }
+  
+  .test-container h3 {
+    margin-top: 0;
+    font-family: var(--font-heading);
+    color: var(--primary-700);
+    font-size: var(--text-xl);
+  }
+  
+  .test-info p {
+    font-family: var(--font-body);
+    color: var(--neutral-700);
+    font-size: var(--text-base);
+  }
+  
+  .breakpoint-indicator {
+    display: none;
+    padding: var(--space-1) var(--space-2);
+    margin: var(--space-1) 0;
+    font-size: var(--text-xs);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    color: white;
+  }
+  
+  /* Using your color tokens for breakpoint indicators */
+  .bp-xs { background-color: var(--accent-700); }
+  .bp-sm { background-color: var(--primary-600); }
+  .bp-md { background-color: var(--secondary-500); }
+  .bp-lg { background-color: var(--quaternary-500); }
+  .bp-xl { background-color: var(--accent-500); }
+  
+  /* Show only the relevant breakpoint indicator using your breakpoint variables */
+  @media (max-width: var(--breakpoint-xs)) {
+    .bp-xs { display: inline-block; }
+  }
+  @media (min-width: var(--breakpoint-xs)) and (max-width: var(--breakpoint-sm)) {
+    .bp-sm { display: inline-block; }
+  }
+  @media (min-width: var(--breakpoint-sm)) and (max-width: var(--breakpoint-md)) {
+    .bp-md { display: inline-block; }
+  }
+  @media (min-width: var(--breakpoint-md)) and (max-width: var(--breakpoint-lg)) {
+    .bp-lg { display: inline-block; }
+  }
+  @media (min-width: var(--breakpoint-lg)) {
+    .bp-xl { display: inline-block; }
+  }
+</style>
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">Component Test Lab</h1>
+    <p class="panel__lead-text">Test components in isolation to verify responsive behavior</p>
+
+    <div class="breakpoint-indicators">
+      <span class="breakpoint-indicator bp-xs">Extra Small (< var(--breakpoint-xs))</span>
+      <span class="breakpoint-indicator bp-sm">Small (var(--breakpoint-xs) - var(--breakpoint-sm))</span>
+      <span class="breakpoint-indicator bp-md">Medium (var(--breakpoint-sm) - var(--breakpoint-md))</span>
+      <span class="breakpoint-indicator bp-lg">Large (var(--breakpoint-md) - var(--breakpoint-lg))</span>
+      <span class="breakpoint-indicator bp-xl">Extra Large (> var(--breakpoint-lg))</span>
+    </div>
+  </div>
+</div>
+
+<!-- Basic Structure Tests -->
+<div class="panel">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Basic Structure</h2>
+
+    <!-- Test 1: Header -->
+    <div class="test-container">
+      <div class="test-info">
+        <h3>Header</h3>
+        <p>Should collapse to mobile menu at smaller screen sizes.</p>
+      </div>
+      {% include header.html %}
+    </div>
+
+    <!-- Test 2: Hero Panel -->
+    <div class="test-container">
+      <div class="test-info">
+        <h3>Hero Panel</h3>
+        <p>Text should remain readable, padding should adjust for mobile.</p>
+      </div>
+      <div class="panel panel--hero">
+        <div class="panel__content">
+          <h1 class="panel__heading-primary">Discover BRICS+ Consumer Brands</h1>
+          <p class="panel__subtitle">Breaking through language, political, and cultural barriers</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Test 3: Footer -->
+    <div class="test-container">
+      <div class="test-info">
+        <h3>Footer</h3>
+        <p>Links should stack on mobile, remain horizontal on larger screens.</p>
+      </div>
+      {% include footer.html %}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Update viewport width display
+  function updateViewportInfo() {
+    document.getElementById('viewport-width').textContent = window.innerWidth;
+  }
+  window.addEventListener('resize', updateViewportInfo);
+  updateViewportInfo();
+</script>

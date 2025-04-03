@@ -1,0 +1,273 @@
+/* ==========================================================================
+   Navigation Components
+   ==========================================================================
+   Contains styles for the site header, main navigation menu, language
+   selector, and footer. These elements appear on every page of the site.
+*/
+
+/* --------------------------------------------------------------------------
+   1. SITE HEADER
+   -------------------------------------------------------------------------- */
+   .site-header {
+    background-color: var(--primary-400);
+    color: white;
+    padding: var(--space-4) 0; /* 1rem 0 */
+  }
+  
+  .site-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .site-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: white;
+    text-decoration: none;
+    margin-right: var(--space-6);
+    flex: 0 0 auto;
+  }
+  
+  /* --------------------------------------------------------------------------
+     2. MAIN NAVIGATION
+     -------------------------------------------------------------------------- */
+  .site-nav {
+    display: flex;
+    flex: 1 0 auto;
+  }
+  
+  .site-nav a {
+    color: white;
+    margin-right: var(--space-4);
+    text-decoration: none;
+  }
+  
+  .site-nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Active state styling for navigation links */
+  .site-nav a.active {
+    background-color: var(--primary-700);
+    font-weight: var(--font-bold);
+  }
+  
+  /* --------------------------------------------------------------------------
+     3. DROPDOWN NAVIGATION
+     -------------------------------------------------------------------------- */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown .dropbtn {
+    color: white;
+    text-decoration: none;
+    margin-right: var(--space-4);
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-500);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: var(--z-index-dropdown, 1000);
+  }
+  
+  /* Show dropdown on hover for desktop */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    padding: var(--space-2) var(--space-4);
+    display: block;
+    color: white;
+    margin: 0;
+    border-bottom: 1px solid var(--primary-600);
+  }
+  
+  .dropdown-content a:hover {
+    background-color: var(--primary-600);
+  }
+  
+  /* Add a caret indicator to dropdown button */
+  .dropbtn::after {
+    content: "▼";
+    font-size: 0.7em;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* --------------------------------------------------------------------------
+     4. LANGUAGE SELECTOR
+     -------------------------------------------------------------------------- */
+  .language-selector {
+    display: flex;
+    margin-left: auto;
+    gap: var(--space-1);
+  }
+  
+  .language-selector a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity var(--transition-fast, 0.2s) ease;
+  }
+  
+  .language-selector a:hover {
+    opacity: 1 !important;
+    text-decoration: none;
+  }
+  
+  .language-selector a.active {
+    opacity: 1;
+    font-weight: var(--font-bold);
+    background-color: transparent;
+  }
+  
+  /* --------------------------------------------------------------------------
+     5. MENU TOGGLE BUTTON (Only used on mobile)
+     -------------------------------------------------------------------------- */
+  .menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+  }
+  
+  .menu-icon {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    position: relative;
+  }
+  
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+  }
+  
+  .menu-icon::before {
+    top: -8px;
+  }
+  
+  .menu-icon::after {
+    bottom: -8px;
+  }
+  
+  /* --------------------------------------------------------------------------
+     6. SITE FOOTER
+     -------------------------------------------------------------------------- */
+  .site-footer {
+    background-color: var(--primary-700);
+    color: var(--neutral-200);
+    padding: var(--space-8) 0 var(--space-4);
+    /* margin-top: var(--space-12); */
+  }
+  
+  .site-footer a {
+    color: var(--neutral-100);
+    text-decoration: none;
+  }
+  
+  .site-footer a:hover {
+    text-decoration: underline;
+    color: white;
+  }
+  
+  /* Footer Grid Layout */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  
+  /* Footer Sections */
+  .footer-section {
+    padding: 0 var(--space-2);
+  }
+  
+  .footer-section-center {
+    text-align: center;
+  }
+  
+  .footer-section-right {
+    text-align: right;
+  }
+  
+  /* Footer Text Styles */
+  .footer-text {
+    font-size: var(--text-sm);
+    margin: var(--space-1) 0;
+    line-height: 1.4;
+  }
+  
+  .footer-tagline {
+    font-size: var(--text-custom);
+    margin: var(--space-2) 0;
+    color: var(--neutral-100);
+  }
+  
+  /* Footer Copyright */
+  .footer-copyright {
+    text-align: center;
+    border-top: 1px solid var(--primary-600);
+    padding-top: var(--space-4);
+    margin-top: var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--neutral-300);
+  }
+  
+  /* Social Media Icons */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary-600);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all var(--transition-fast, 0.2s) ease;
+  }
+  
+  .social-icon:hover {
+    background-color: var(--primary-500);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .social-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Newsletter Form Customization */
+  .newsletter-container {
+    margin: var(--space-2) 0;
+  }

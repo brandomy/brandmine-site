@@ -321,3 +321,33 @@
     margin-right: auto;
   }
 }
+
+
+
+/* --------------------------------------------------------------------------
+  6. Miscellaneous
+  -------------------------------------------------------------------------- */
+
+  /* Update the top-section grid in home.css */
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Change from 40% 60% to 1fr 1fr for better balance */
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+  margin-top: var(--space-8);
+  align-items: start; /* Ensure top alignment */
+}
+
+/* Add a max-width to the container to prevent overflow */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  box-sizing: border-box;
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .top-section {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+}

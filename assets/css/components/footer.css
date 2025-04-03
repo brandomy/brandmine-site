@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Footer Component Styles
+   ========================================================================== */
+
+   .site-footer {
+    background-color: var(--primary-700);
+    color: var(--neutral-200);
+    padding: var(--space-8) 0 var(--space-4);
+}
+
+.site-footer a {
+    color: var(--neutral-100);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+/* Footer Grid Layout */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+/* Footer Sections */
+.footer-section {
+    padding: 0 var(--space-2);
+}
+
+.footer-section-center {
+    text-align: center;
+}
+
+.footer-section-right {
+    text-align: right;
+}
+
+/* Footer Text Styles */
+.footer-text {
+    font-size: var(--text-sm);
+    margin: var(--space-1) 0;
+    line-height: 1.4;
+}
+
+.footer-tagline {
+    font-size: var(--text-custom);
+    margin: var(--space-2) 0;
+    color: var(--neutral-100);
+}
+
+/* Footer Copyright */
+.footer-copyright {
+    text-align: center;
+    border-top: 1px solid var(--primary-600);
+    padding-top: var(--space-4);
+    margin-top: var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--neutral-300);
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary-600);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all var(--transition-fast, 0.2s) ease;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-500);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+.social-icon svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Newsletter Form Container */
+.newsletter-container {
+    margin: var(--space-2) 0;
+}
