@@ -50,7 +50,7 @@
 
   <!-- 5. Page-Specific Styles (conditionally loaded) -->
   {% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/home.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/pages/marketing-home.css' | relative_url }}">
   {% endif %}
   {% if page.permalink contains '/about/' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/about.css' | relative_url }}">
@@ -80,7 +80,7 @@
   {% endif %}
 
   <!-- 6. Mobile/Responsive Overrides (always last) -->
-  <link rel="stylesheet" href="{{ '/assets/css/components/mobile-fixes.css' | relative_url }}">
+  <!-- <link rel="stylesheet" href="{{ '/assets/css/components/mobile-fixes.css' | relative_url }}"> -->
 
 <!-- Debug tools (comment out in production) -->
 <!-- <link rel="stylesheet" href="{{ '/assets/css/debug.css' | relative_url }}"> -->
@@ -90,12 +90,16 @@
   <!-- Font preloading for performance -->
   <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/SourceCodePro-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/SourceCodePro-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+
   
   <!-- Conditional preloading for Chinese fonts -->
   {% if page.lang == 'zh' %}
     <link rel="preload" href="{{ '/assets/fonts/NotoSerifSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/NotoSansSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {% endif %}  
+
 
   <!-- Font Awesome icons -->
   <script src="https://kit.fontawesome.com/6c425ae2ba.js" crossorigin="anonymous"></script>

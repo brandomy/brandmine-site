@@ -1,12 +1,17 @@
 <footer class="site-footer">
-  <div class="container">
     <div class="footer-grid">
       <!-- Left section: Company info -->
-      <div class="footer-section">
+      <div class="footer-section footer-section-left">
         <p class="footer-text">{{ site.data.translations[page.lang].footer.company_name }}</p>
         <p class="footer-text">{{ site.data.translations[page.lang].footer.company_number }}</p>
+
+        <!-- Language selector in Footer -->
+        <div class="language-selector footer-lang">
+          {% include language-selector.html %}
+        </div>
       </div>
       
+
       <!-- Middle section: Tagline -->
       <div class="footer-section footer-section-center">
         <p class="footer-tagline"><em>{{ site.data.translations[page.lang].footer.tagline }}</em></p>
@@ -61,20 +66,27 @@
       <div class="footer-section footer-section-right">
         <!-- MailerLite Embed Container -->
         <div class="newsletter-container">
-          {% if page.lang == 'ru' %}
-            <div class="ml-embedded" data-form="WVRNPI"></div>
-          {% elsif page.lang == 'zh' %}
-            <div class="ml-embedded" data-form="WRga0a"></div>
-          {% else %}
-            <div class="ml-embedded" data-form="480swE"></div>
-          {% endif %}
+          <div class="newsletter-wrapper">   
+            {% if page.lang == 'ru' %}
+              <div class="ml-embedded" data-form="WVRNPI"></div>
+            {% elsif page.lang == 'zh' %}
+              <div class="ml-embedded" data-form="WRga0a"></div>
+            {% else %}
+              <div class="ml-embedded" data-form="480swE"></div>
+            {% endif %}
+          </div>
         </div>
-      </div>
+      </div>      
     </div>
     
     <!-- Copyright notice -->
     <div class="footer-copyright">
-      <p class="footer-text">© {{ site.time | date: '%Y' }} {{ site.data.translations[page.lang].footer.company_name }}. {{ site.data.translations[page.lang].footer.copyright }}</p>
+      <p class="footer-text">
+        © {{ site.time | date: '%Y' }} {{ site.data.translations[page.lang].footer.company_name }}. {{ site.data.translations[page.lang].footer.copyright }}
+        | 
+        <a href="{{ site.baseurl }}/{{ page.lang }}/privacy/">
+          {{ site.data.translations[page.lang].footer.privacy }}
+        </a>
+      </p>
     </div>
-  </div>
 </footer>

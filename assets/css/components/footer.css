@@ -1,76 +1,109 @@
 /* ==========================================================================
-   Footer Component Styles
+   FOOTER – GLOBAL STYLES
    ========================================================================== */
-
    .site-footer {
     background-color: var(--primary-700);
     color: var(--neutral-200);
     padding: var(--space-8) 0 var(--space-4);
-}
-
-.site-footer a {
+  }
+  
+  .site-footer a {
     color: var(--neutral-100);
     text-decoration: none;
-}
-
-.site-footer a:hover {
-    text-decoration: underline;
-    color: white;
-}
-
-/* Footer Grid Layout */
-.footer-grid {
+  }
+  
+  .site-footer a:hover {
+    text-decoration: none;
+    color: var(--secondary-300);
+  }
+  
+  
+  /* ==========================================================================
+     FOOTER LAYOUT – GRID STRUCTURE
+     ========================================================================== */
+  .footer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-4);
     margin-bottom: var(--space-6);
-}
-
-/* Footer Sections */
-.footer-section {
-    padding: 0 var(--space-2);
-}
-
-.footer-section-center {
+  }
+  
+  
+  /* ==========================================================================
+     FOOTER COLUMN SECTIONS
+     ========================================================================== */
+  .footer-section {
+    padding: 0 var(--space-4);
+  }
+  
+  .footer-section-left {
+    text-align: left;
+  }
+  
+  .footer-section-center {
     text-align: center;
-}
-
-.footer-section-right {
+  }
+  
+  .footer-section-right {
     text-align: right;
-}
+  }
+  
+  .footer-section-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
-/* Footer Text Styles */
-.footer-text {
+  /* ==========================================================================
+     DEBUGGING TOOLS
+     ========================================================================== */
+    /* .footer-section-left,
+    .footer-section-center,
+    .footer-section-right {
+    outline: 1px dashed red;
+    } */
+
+  /* ==========================================================================
+     FOOTER TEXT ELEMENTS
+     ========================================================================== */
+  .footer-text {
     font-size: var(--text-sm);
     margin: var(--space-1) 0;
     line-height: 1.4;
-}
-
-.footer-tagline {
+  }
+  
+  .footer-tagline {
     font-size: var(--text-custom);
     margin: var(--space-2) 0;
     color: var(--neutral-100);
-}
-
-/* Footer Copyright */
-.footer-copyright {
+  }
+  
+  
+  /* ==========================================================================
+     COPYRIGHT BLOCK
+     ========================================================================== */
+  .footer-copyright {
     text-align: center;
     border-top: 1px solid var(--primary-600);
     padding-top: var(--space-4);
     margin-top: var(--space-4);
     font-size: var(--text-xs);
     color: var(--neutral-300);
-}
-
-/* Social Media Icons */
-.social-icons {
+  }
+  
+  
+  /* ==========================================================================
+     SOCIAL MEDIA ICONS
+     ========================================================================== */
+  .social-icons {
     display: flex;
     justify-content: center;
     gap: var(--space-4);
     margin-top: var(--space-3);
-}
-
-.social-icon {
+  }
+  
+  .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,21 +114,108 @@
     border-radius: 50%;
     text-decoration: none;
     transition: all var(--transition-fast, 0.2s) ease;
-}
-
-.social-icon:hover {
+  }
+  
+  .social-icon:hover {
     background-color: var(--primary-500);
     transform: translateY(-2px);
     color: white;
     text-decoration: none;
-}
-
-.social-icon svg {
+  }
+  
+  .social-icon svg {
     width: 1rem;
     height: 1rem;
-}
-
-/* Newsletter Form Container */
-.newsletter-container {
+  }
+  
+  
+  /* ==========================================================================
+     NEWSLETTER CONTAINER
+     ========================================================================== */
+  .newsletter-container {
     margin: var(--space-2) 0;
-}
+  }
+  
+  
+  /* ==========================================================================
+     LANGUAGE SELECTOR – FOOTER ONLY
+     ========================================================================== */
+  .footer-lang {
+    margin: 0 auto;
+    display: flex;
+    justify-content: left;
+    gap: var(--space-2);
+    text-decoration: none;
+  }
+  
+  
+  /* ==========================================================================
+     RESPONSIVE – MOBILE FIRST (max-width: 767px)
+     ========================================================================== */
+  @media (max-width: 767px) {
+    .site-footer .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .footer-section,
+    .footer-section-left,
+    .footer-section-center,
+    .footer-section-right {
+      width: 100%;
+      padding: 0 var(--space-4);
+      text-align: center;
+      box-sizing: border-box;  /* ✅ prevents padding from pushing past 100% */
+      }
+  
+    .footer-section-center, 
+    .footer-section-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      }
+  
+    .newsletter-container {
+      display: block;
+      width: 100%;
+      padding: 0 var(--space-4);
+    }
+  
+    .newsletter-wrapper {
+      max-width: 100%;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  
+    .newsletter-wrapper > * {
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .ml-embedded {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .social-icons {
+      justify-content: center;
+      gap: var(--space-4);
+    }
+  
+    .footer-tagline {
+      font-size: 1rem;
+    }
+  
+    .footer-lang {
+      justify-content: center;
+      gap: var(--space-2);
+    }
+  }
