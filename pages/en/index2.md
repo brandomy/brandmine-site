@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Home
-ref: home
-permalink: /en/
-lang: en
+ref:
+permalink: 
+lang: 
 ---
 
 <!-- Hero Panel with BEM classes -->

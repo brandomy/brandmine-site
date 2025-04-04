@@ -1,353 +1,435 @@
+
 /* ==========================================================================
-   Homepage Specific Styles
+   Marketing Homepage Supplementary Styles (Cleaned)
    ==========================================================================
-   Contains only layout and coordination styles specific to the home page.
-   Component styles are imported from their respective CSS files.
+   These styles supplement the existing CSS architecture for the marketing-
+   focused homepage. They integrate with your BEM methodology and design tokens.
 */
 
 /* --------------------------------------------------------------------------
-  1. General Styles
-  -------------------------------------------------------------------------- */
+   PANEL HERO SECTION
+   -------------------------------------------------------------------------- */
 
-/* Top section grid layout */
-.top-section {
-  display: grid;
-  grid-template-columns: 40% 60%;
-  gap: var(--space-8);
-  margin-bottom: var(--space-12);
-  margin-top: var(--space-8);
-  align-items: start; /* Ensure top alignment */
-}
+   .panel--hero .btn--primary,
+   .panel--hero .btn--secondary {
+     margin-top: 0; /* Reset any top margin */
+     border: none;
+   }
+   
+   .panel--hero .btn--primary {
+     background-color: white;
+     color: var(--primary-600);
+   }
+   
+   .panel--hero .btn--secondary {
+     background-color: var(--secondary-500);
+     color: white;
+   }
+   
+   /* Unified .cta-buttons styles */
+   .cta-buttons {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: var(--space-4);
+     margin-top: var(--space-6);
+     flex-wrap: wrap;
+   }
+   
+   .btn {
+     display: inline-flex;
+     align-items: center;     /* vertical centering */
+     justify-content: center; /* horizontal centering */
+     height: 44px;
+     padding: 0 var(--space-6);
+     box-sizing: border-box;
+     line-height: 1;           /* Add this */
+   }
+   
+   /* Hero image panel styles */
+    .panel--hero-image {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      color: white;
+      text-align: center;
+      padding-top: var(--space-20);
+      padding-bottom: var(--space-20);
+    }
 
-/* --------------------------------------------------------------------------
-  2. Search Panel & Featured Brand Panel
-  -------------------------------------------------------------------------- */
+ 
+    
+    /* Add overlay for better text readability */
+    .panel--hero-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+      z-index: 1;
+    }
 
-.search-panel h2 {
-  margin-top: 0;
-  margin-bottom: var(--space-6);
-  height: var(--space-10); /* Give consistent height to headings */
-  display: flex;
-  align-items: center;
-  font-size: var(--text-2xl);
-  color: var(--neutral-800);
-  font-family: var(--font-heading);
-  font-weight: var(--font-bold);
-}
+    /* Ensure content is above the overlay */
+    .panel--hero-image .panel__content {
+      position: relative;
+      z-index: 2;
+    }
 
-.featured-brand-panel h2 {
-  margin-top: 0;
-  margin-bottom: var(--space-6);
-  height: var(--space-10);
-  display: flex;
-  align-items: center;
-  font-size: var(--text-2xl);
-  color: var(--neutral-800);
-  font-family: var(--font-heading);
-  font-weight: var(--font-bold);
-}
+    /* Typography adjustments for hero image section */
+    .panel--hero-image .panel__heading-primary {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      color: white;
+    }
 
-/* --------------------------------------------------------------------------
-  3. Discovery Panel
-  -------------------------------------------------------------------------- */
+    .panel--hero-image .panel__subtitle {
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      color: white;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-/* BEM version - enhanced discovery panel with gradient and pattern */
-.panel--discovery {
-  position: relative;
-  border-top: 4px solid var(--primary-400);
-  border-bottom: 4px solid var(--primary-400);
-  background-color: var(--secondary-100);
-  overflow: hidden;
-}
+    /* Button styling for hero image panel */
+    .panel--hero-image .btn--primary {
+      background-color: white;
+      color: var(--primary-600);
+      border: none;
+    }
 
-.panel--discovery .panel__heading-secondary {
-  color: var(--secondary-700);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  font-size: var(--text-3xl);
-  text-align: center;
-  margin-bottom: var(--space-8);
-  position: relative;
-  z-index: 1;
-  /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
-}
+    .panel--hero-image .btn--secondary {
+      background-color: var(--secondary-500);
+      color: white;
+      border: none;
+    }
 
-.panel--discovery .panel__content {
-  position: relative;
-  z-index: 1;
-}
+   /* --------------------------------------------------------------------------
+      IMPACT STATS SECTION
+      -------------------------------------------------------------------------- */
+   
+   .panel--impact {
+     background-color: var(--secondary-50);
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .panel--impact::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+     opacity: 0.1;
+     z-index: 0;
+   }
+   
+   .impact-stats {
+     display: flex;
+     justify-content: space-around;
+     flex-wrap: wrap;
+     gap: var(--space-6);
+     margin: var(--space-10) 0;
+     text-align: center;
+     position: relative;
+     z-index: 1;
+   }
+   
+   .stat-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   .stat-number {
+     font-size: var(--text-5xl);
+     font-weight: var(--font-bold);
+     color: var(--primary-600);
+     line-height: var(--leading-none);
+   }
+   
+   .stat-label {
+     font-size: var(--text-base);
+     max-width: 200px;
+     margin-top: var(--space-2);
+     color: var(--neutral-700);
+   }
+   
 
-/* Create decorative pattern background */
-.panel--discovery::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2381E6D9' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.1;
-  z-index: 0;
-}
+   /* --------------------------------------------------------------------------
+      FOR BRANDS SECTION
+      -------------------------------------------------------------------------- */
 
-/* Add subtle top light effect */
-.panel--discovery::after {
-  content: '';
-  position: absolute;
-  top: -150px;
-  left: -150px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-  z-index: 0;
-}
-
-/* Discovery tabs custom styling for homepage */
-.discovery-tabs {
-  background-color: var(--secondary-200);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--secondary-400);
-}
-
-/* Add subtle pattern overlay */
-.discovery-tabs::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2381E6D9' fill-opacity='0.1'%3E%3Cpath d='M0 0h20L0 20z'/%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.5;
-  z-index: 0;
-}
-
-.tab-nav {
-  display: flex;
-  border-bottom: 2px solid var(--primary-200);
-  margin-bottom: var(--space-8);
-  position: relative;
-  z-index: 1;
-  justify-content: center;
-  padding-bottom: var(--space-1);
-}
-
-.tab-button {
-  padding: var(--space-3) var(--space-6);
-  background-color: transparent;
-  border: none;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  font-size: var(--text-lg);
-  font-weight: var(--font-medium);
-  color: var(--primary-600);
-  font-family: var(--font-heading);
-  transition: var(--transition-medium);
-  position: relative;
-  margin: 0 var(--space-2);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
-
-.tab-button:hover {
-  color: var(--accent-600);
-}
-
-.tab-button.active {
-  border-bottom-color: var(--accent-600);
-  color: var(--accent-600);
-  font-weight: var(--font-bold);
-}
-
-/* Add animated indicator for active tab */
-.tab-button.active::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--accent-600);
-  border-radius: 3px 3px 0 0;
-  animation: tabIndicatorFadeIn 0.3s ease forwards;
-}
-
-@keyframes tabIndicatorFadeIn {
-  from { opacity: 0; transform: scaleX(0.7); }
-  to { opacity: 1; transform: scaleX(1); }
-}
+    /* Center the View More button in the Brand Owners section */
+    .panel--primary .panel-with-image > div:first-child .btn--primary {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: fit-content;
+    }
 
 
-/* Ensure tab panes have the right styles for transitions */
-.tab-pane {
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
+  /* --------------------------------------------------------------------------
+      FOR INTERNATIONAL PARTNERS SECTION
+      -------------------------------------------------------------------------- */
 
-.tab-pane.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.tab-intro {
-  text-align: center;
-  color: var(--primary-700);
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-6);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: var(--leading-relaxed);
-}
+    /* Center the Explore button in the International Partners section */
+    .panel--secondary .panel-with-image > div:last-child .btn--primary {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: fit-content;
+    }
 
 
 
-/* --------------------------------------------------------------------------
-  4. Insights Panel
-  -------------------------------------------------------------------------- */
 
-/* BEM version - still keeping insights-panel for now as a specific implementation */
-.panel--insights {
-  position: relative;
-  background-color: var(--accent-100);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  border: 1px solid var(--accent-200);
-  margin-top: 0;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
 
-.panel--insights .panel__heading-secondary {
-  color: var(--accent-700);
-}
 
-.panel--insights::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A5B4FC' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.15;
-  z-index: 0;
-}
+   /* --------------------------------------------------------------------------
+      PROCESS STEPS SECTION
+      -------------------------------------------------------------------------- */
+   
+   .process-steps {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+     gap: var(--space-8);
+     margin: var(--space-10) 0 var(--space-6);
+   }
+   
+   .process-step {
+     display: flex;
+     align-items: flex-start;
+     gap: var(--space-4);
+     max-width: 300px;
+   }
+   
+   .step-number {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 40px;
+     height: 40px;
+     background-color: var(--primary-500);
+     color: white;
+     border-radius: 50%;
+     font-weight: var(--font-bold);
+     font-size: var(--text-xl);
+     flex-shrink: 0;
+   }
+   
+   .step-content {
+     flex: 1;
+   }
+   
+   .step-content h3 {
+     margin-top: 0;
+     margin-bottom: var(--space-2);
+     color: var(--primary-700);
+     font-size: var(--text-xl);
+     font-family: var(--font-heading);
+     font-weight: var(--font-semibold);
+   }
+   
+   .step-content p {
+     margin-top: 0;
+     color: var(--neutral-700);
+     font-size: var(--text-base);
+   }
+   
+   .text-link {
+     color: var(--primary-500);
+     text-decoration: none;
+     font-weight: var(--font-semibold);
+     display: inline-block;
+     margin-top: var(--space-2);
+     transition: color 0.3s ease;
+   }
+   
+   .text-link:hover {
+     color: var(--primary-600);
+     text-decoration: underline;
+   }
+   
+   /* --------------------------------------------------------------------------
+      FEATURED BRANDS CAROUSEL
+      -------------------------------------------------------------------------- */
+   
+   .featured-brands-carousel {
+     display: flex;
+     gap: var(--space-6);
+     overflow-x: auto;
+     padding: var(--space-4) 0;
+     margin: var(--space-6) 0;
+     scrollbar-width: thin;
+     scrollbar-color: var(--primary-300) var(--primary-800);
+   }
+   
+   .featured-brands-carousel::-webkit-scrollbar {
+     height: 8px;
+   }
+   
+   .featured-brands-carousel::-webkit-scrollbar-track {
+     background: var(--primary-800);
+     border-radius: var(--radius-sm);
+   }
+   
+   .featured-brands-carousel::-webkit-scrollbar-thumb {
+     background-color: var(--primary-300);
+     border-radius: var(--radius-sm);
+   }
+   
+   .more-brands {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     min-width: 200px;
+     padding: var(--space-4);
+   }
+   
+   /* --------------------------------------------------------------------------
+      INSIGHTS PREVIEW SECTION
+      -------------------------------------------------------------------------- */
+   
+   .insights-preview {
+     display: flex;
+     flex-wrap: wrap;
+     gap: var(--space-6);
+     margin: var(--space-6) 0;
+   }
+   
+   .insight-card {
+     flex: 1;
+     min-width: 300px;
+     max-width: 500px;
+     background-color: white;
+     border-radius: var(--radius-md);
+     overflow: hidden;
+     box-shadow: var(--shadow-md);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+   
+   .insight-card:hover {
+     transform: translateY(-5px);
+     box-shadow: var(--shadow-lg);
+   }
+   
+   .insight-image {
+     height: 200px;
+     overflow: hidden;
+   }
+   
+   .insight-image img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     transition: transform 0.3s ease;
+   }
+   
+   .insight-card:hover .insight-image img {
+     transform: scale(1.05);
+   }
+   
+   .insight-content {
+     padding: var(--space-6);
+   }
+   
+   .insight-category {
+     display: inline-block;
+     font-size: var(--text-sm);
+     font-weight: var(--font-semibold);
+     color: var(--primary-500);
+     margin-bottom: var(--space-2);
+   }
+   
+   .insight-content h3 {
+     margin-top: var(--space-2);
+     margin-bottom: var(--space-4);
+     font-size: var(--text-xl);
+     color: var(--neutral-800);
+     font-family: var(--font-heading);
+   }
+   
+   .read-more {
+     display: inline-block;
+     margin-top: var(--space-4);
+     color: var(--primary-500);
+     font-weight: var(--font-semibold);
+     text-decoration: none;
+     transition: color 0.3s ease;
+   }
+   
+   .read-more:hover {
+     color: var(--primary-600);
+     text-decoration: underline;
+   }
+   
+   .view-all-insights {
+     display: flex;
+     justify-content: center;
+     width: 100%;
+     margin-top: var(--space-8);
+   }
 
-/* --------------------------------------------------------------------------
-  5. Responsive Adjustments
-  -------------------------------------------------------------------------- */
+   /* --------------------------------------------------------------------------
+   CTA PANEL SECTION
+   -------------------------------------------------------------------------- */
 
-/* Mobile-first approach */
-@media (min-width: var(--breakpoint-sm)) {
-  .tab-button {
-    flex: 1 0 auto; /* Reset from 100% to auto above smallest size */
-  }
-}
-
-/* Medium screens and below */
-@media (max-width: var(--breakpoint-md)) {
-  .top-section {
-    grid-template-columns: 1fr; /* Stack columns on smaller screens */
-    gap: var(--space-6);
-  }
-  
-  /* Adjust discovery tabs for mobile */
-  .tab-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .tab-button {
-    padding: var(--space-2) var(--space-4);
-    margin-bottom: var(--space-2);
-    font-size: var(--text-sm);
-  }
-  
-  .discovery-tabs {
-    padding: var(--space-4);
-  }
-  
-  .tag-cloud {
-    padding: var(--space-4);
-    max-width: 100%;
-  }
-  
-  .panel--discovery .panel__heading-secondary {
-    font-size: var(--text-2xl);
-  }
-}
-
-@media (max-width: var(--breakpoint-sm)) {
-  /* Even smaller screens */
-  .tab-button {
-    flex: 1 0 100%;
-    margin-bottom: var(--space-2);
+  .panel--cta .panel__content {
     text-align: center;
   }
-  
-  .tab-intro {
-    font-size: var(--text-base);
+
+  .panel--cta .cta-buttons {
+    justify-content: center;
   }
-}
-
-@media (min-width: var(--breakpoint-lg)) {
-  .top-section {
-    grid-template-columns: 40% 60%; /* Set columns for larger screens */
-  }
-  
-  /* Enhance discovery panel for large screens */
-  .discovery-tabs {
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-
-
-/* --------------------------------------------------------------------------
-  6. Miscellaneous
-  -------------------------------------------------------------------------- */
-
-  /* Update the top-section grid in home.css */
-.top-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Change from 40% 60% to 1fr 1fr for better balance */
-  gap: var(--space-8);
-  margin-bottom: var(--space-12);
-  margin-top: var(--space-8);
-  align-items: start; /* Ensure top alignment */
-}
-
-/* Add a max-width to the container to prevent overflow */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-  box-sizing: border-box;
-}
-
-@media (max-width: var(--breakpoint-md)) {
-  .top-section {
-    grid-template-columns: 1fr; /* Stack columns on smaller screens */
-  }
-}
+   
+   /* --------------------------------------------------------------------------
+      RESPONSIVE ADJUSTMENTS
+      -------------------------------------------------------------------------- */
+   
+   @media (max-width: var(--breakpoint-xs)) {
+     .impact-stats {
+       flex-direction: column;
+     }
+   
+     .stat-number {
+       font-size: var(--text-4xl);
+     }
+   
+     .process-steps {
+       flex-direction: column;
+       align-items: center;
+     }
+   
+     .cta-buttons {
+       flex-direction: column;
+       align-items: center;
+       gap: var(--space-4);
+     }
+   
+     .cta-button,
+     .btn-primary,
+     .btn-secondary {
+       width: 100%;
+     }
+   }
+   
+   @media (max-width: var(--breakpoint-md)) {
+     .panel-with-image {
+       grid-template-columns: 1fr;
+     }
+   
+     .signup-form {
+       flex-direction: column;
+     }
+   
+     .signup-form input[type="email"],
+     .signup-form button {
+       width: 100%;
+     }
+   }
+   

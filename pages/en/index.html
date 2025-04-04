@@ -6,20 +6,31 @@ permalink: /en/
 lang: en
 ---
 
-<!-- Hero Section with Wine Bottle Image (Kept from original) -->
+<!-- Hero Panel NO Image -->
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary">Elevating Founder-led Brands from the BRICS+</h1>
-    <p class="panel__subtitle">Connecting exceptional brands with global partners through authentic storytelling</p>
-    <div class="hero-cta">
-      <a href="{{ site.baseurl }}/en/brands/" class="btn btn--primary">Explore Brands</a>
-      <a href="#how-it-works" class="btn btn--secondary">Learn How</a>
+    <h1 class="panel__heading-primary">{{ site.data.translations[page.lang].home.hero_title }}</h1>
+    <p class="panel__subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="#how-it-works" class="btn btn--secondary">{{ site.data.translations[page.lang].discover.explore }}</a>    </div>
+  </div>
+</div>
+
+<!-- Hero Panel with Image -->
+<div class="panel panel--hero-image" style="background-image: url('{{ site.baseurl }}/assets/images/hero/home-cover-1.jpg');">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">{{ site.data.translations[page.lang].home.hero_title }}</h1>
+    <p class="panel__subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="#how-it-works" class="btn btn--secondary">{{ site.data.translations[page.lang].discover.explore }}</a>    
     </div>
   </div>
 </div>
 
 <!-- Impact Statement Panel -->
-<div class="panel panel--impact">
+<div class="panel panel--accent-pattern">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Breaking Down Barriers, Building Global Brands</h2>
     <p class="panel__lead-text">
@@ -45,38 +56,42 @@ lang: en
 
 <!-- For Brands Panel -->
 <div class="panel panel--primary">
-  <div class="panel__content panel--split">
-    <div class="panel__text">
-      <h2 class="panel__heading-secondary">For BRICS+ Brand Owners</h2>
-      <p>Your brand deserves global recognition. We help you break through linguistic, cultural, and political barriers to connect with international partners.</p>
-      <ul class="feature-list">
-        <li><span>Showcase your authentic story to qualified global audiences</span></li>
-        <li><span>Connect with the right international partners and investors</span></li>
-        <li><span>Get strategic guidance on readiness for cross-border expansion</span></li>
-      </ul>
-      <a href="{{ site.baseurl }}/en/brands/" class="btn btn--white">View Brand Profiles</a>
-    </div>
-    <div class="panel__image">
-      <img src="{{ site.baseurl }}/assets/images/home/for-brands-image.jpg" alt="Brand owner with product" class="feature-image">
+  <div class="panel__content">
+    <div class="panel-with-image">
+      <div>
+        <h2 class="panel__heading-secondary">For BRICS+ Brand Owners</h2>
+        <p class="panel__paragraph">Your brand deserves global recognition. We help you break through linguistic, cultural, and political barriers to connect with international partners.</p>
+        <ul class="feature-list">
+          <li><span>Showcase your authentic story to qualified global audiences</span></li>
+          <li><span>Connect with the right international partners and investors</span></li>
+          <li><span>Get strategic guidance on readiness for cross-border expansion</span></li>
+        </ul>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.view_more }}</a>
+      </div>
+      <div>
+        <img src="{{ site.baseurl }}/assets/images/home/for-brands-image.jpg" alt="Brand owner with product" class="panel-image">
+      </div>
     </div>
   </div>
 </div>
 
 <!-- For Partners Panel -->
 <div class="panel panel--secondary">
-  <div class="panel__content panel--split panel--reverse">
-    <div class="panel__text">
-      <h2 class="panel__heading-secondary">For International Partners</h2>
-      <p>Discover tomorrow's global brands today. We provide curated access to promising founder-led brands from emerging markets, with the context you need to make informed decisions.</p>
-      <ul class="feature-list">
-        <li><span>Find vetted brands with cross-border potential</span></li>
-        <li><span>Understand the cultural context behind their success</span></li>
-        <li><span>Connect directly with decision-makers</span></li>
-      </ul>
-      <a href="{{ site.baseurl }}/en/discover/" class="btn btn--white">Start Discovering</a>
-    </div>
-    <div class="panel__image">
-      <img src="{{ site.baseurl }}/assets/images/home/for-partners-image.jpg" alt="International business meeting" class="feature-image">
+  <div class="panel__content">
+    <div class="panel-with-image">
+      <div>
+        <img src="{{ site.baseurl }}/assets/images/home/for-partners-image.jpg" alt="International business meeting" class="panel-image">
+      </div>
+      <div>
+        <h2 class="panel__heading-secondary">For International Partners</h2>
+        <p class="panel__paragraph">Discover tomorrow's global brands today. We provide curated access to promising founder-led brands from emerging markets, with the context you need to make informed decisions.</p>
+        <ul class="feature-list">
+          <li><span>Find vetted brands with cross-border potential</span></li>
+          <li><span>Understand the cultural context behind their success</span></li>
+          <li><span>Connect directly with decision-makers</span></li>
+        </ul>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--primary">{{ site.data.translations[page.lang].discover.explore }}</a>
+      </div>
     </div>
   </div>
 </div>
@@ -84,8 +99,8 @@ lang: en
 <!-- How It Works Section -->
 <div id="how-it-works" class="panel panel--light">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary text-center">How Brandmine Works</h2>
-    <p class="panel__lead-text text-center">Our platform bridges the gap between exceptional BRICS+ brands and international opportunities</p>
+    <h2 class="panel__heading-secondary">How Brandmine Works</h2>
+    <p class="panel__lead-text">Our platform bridges the gap between exceptional BRICS+ brands and international opportunities</p>
     
     <div class="process-steps">
       <div class="process-step">
@@ -93,7 +108,7 @@ lang: en
         <div class="step-content">
           <h3>Discover</h3>
           <p>Explore curated brand profiles across diverse sectors and markets within the BRICS+ countries</p>
-          <a href="{{ site.baseurl }}/en/discover/" class="text-link">Browse discovery paths</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="text-link">{{ site.data.translations[page.lang].discover.explore }}</a>
         </div>
       </div>
       
@@ -102,7 +117,7 @@ lang: en
         <div class="step-content">
           <h3>Understand</h3>
           <p>Gain deep context through our narrative-rich insights and cultural interpretation</p>
-          <a href="{{ site.baseurl }}/en/insights/" class="text-link">Read our insights</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="text-link">{{ site.data.translations[page.lang].insights.all_insights }}</a>
         </div>
       </div>
       
@@ -111,113 +126,107 @@ lang: en
         <div class="step-content">
           <h3>Connect</h3>
           <p>Initiate meaningful relationships with promising brands or interested partners</p>
-          <a href="{{ site.baseurl }}/en/about/#contact-us" class="text-link">Contact our team</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="text-link">{{ site.data.translations[page.lang].buttons.get_in_touch }}</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Featured Brands Carousel -->
-<div class="panel panel--dark">
+<!-- Featured Brands Section -->
+<div class="panel panel--primary-dark">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary text-center">Featured BRICS+ Brands</h2>
-    <p class="panel__lead-text text-center">Discover hand-selected brands with compelling narratives and global potential</p>
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
+    <p class="panel__lead-text">Discover hand-selected brands with compelling narratives and global potential</p>
     
     <div class="featured-brands-carousel">
-      <!-- TeaTime Brand Card -->
-      <div class="brand-card">
-        <div class="brand-logo">
-          <img src="{{ site.baseurl }}/assets/images/brands/teatime/teatime-logo-400w.jpg" alt="TeaTime Logo">
-        </div>
-        <div class="brand-info">
-          <h3>TeaTime</h3>
-          <p class="brand-description">Premium tea blending house with authentic Russian samovar traditions and innovative flavors.</p>
-          <div class="brand-meta">
-            <span class="sector-tag">Gourmet Foods</span>
-            <span class="market-tag">Russia</span>
+      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
+      {% if brands.size > 0 %}
+        {% for brand in brands %}
+          {% include brand-card.html brand=brand %}
+        {% endfor %}
+      {% else %}
+        <!-- Fallback to hardcoded example if no featured brands are available -->
+        <div class="brand-card">
+          <div class="brand-card-header">
+            <div class="brand-logo">
+              <img src="{{ site.baseurl }}/assets/images/brands/teatime/teatime-logo-400w.jpg" alt="TeaTime logo" class="img-fluid">
+            </div>
+            <h3 class="brand-title">
+              <a href="{{ site.baseurl }}/{{ page.lang }}/brands/teatime/">TeaTime</a>
+            </h3>
           </div>
-          <div class="brand-tags">
-            <span class="attribute-tag">Heritage Brand</span>
-            <span class="signal-tag">Export Ready</span>
+          <div class="brand-card-body">
+            <p class="brand-description">
+              Premium tea blending house with authentic Russian samovar traditions and innovative flavors.
+            </p>
+            <div class="brand-taxonomy">
+              <div class="brand-sectors">
+                <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/gourmet-foods/" class="sector-tag">{{ site.data.tag_translations.sectors["gourmet-foods"][page.lang] }}</a>
+              </div>
+              <div class="brand-markets">
+                <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/russia/" class="market-tag">{{ site.data.tag_translations.countries.russia[page.lang] }}</a>
+              </div>
+            </div>
           </div>
-          <a href="{{ site.baseurl }}/brands/teatime/" class="view-profile">View Profile</a>
+          <div class="brand-card-footer">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/brands/teatime/" class="brand-link">
+              {{ site.data.translations[page.lang].buttons.view_profile }}
+            </a>
+          </div>
         </div>
-      </div>
+      {% endif %}
       
-      <!-- Add placeholder for other featured brands that will be dynamically populated -->
       <div class="more-brands">
-        <a href="{{ site.baseurl }}/en/brands/" class="btn btn--outline">Explore All Brands</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Latest Insights Preview -->
-<div class="panel panel--insights">
+<!-- Latest Insights Section -->
+<div class="panel panel--accent-dark">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary text-center">Latest Insights</h2>
-    <p class="panel__lead-text text-center">Expert analysis and storytelling that reveals the potential of BRICS+ brands</p>
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].insights.latest }}</h2>
+    <p class="panel__lead-text">Expert analysis and storytelling that reveals the potential of BRICS+ brands</p>
     
-    <div class="insights-preview">
-      <div class="insight-card">
-        <div class="insight-image">
-          <img src="{{ site.baseurl }}/assets/images/insights/teatime-founder-journey-400w.jpg" alt="TeaTime Founder's Journey">
-        </div>
-        <div class="insight-content">
-          <span class="insight-category">Founder's Journeys</span>
-          <h3>From University Project to Market Leader: TeaTime's Story</h3>
-          <p>How a passion for tea traditions evolved into Russia's most innovative tea brand.</p>
-          <a href="{{ site.baseurl }}/insights/founders-journeys/teatime-story/" class="read-more">Read more</a>
-        </div>
-      </div>
-      
-      <div class="insight-card">
-        <div class="insight-image">
-          <img src="{{ site.baseurl }}/assets/images/insights/spirits-distribution-400w.jpg" alt="Spirits Distribution Deal">
-        </div>
-        <div class="insight-content">
-          <span class="insight-category">Market Milestones</span>
-          <h3>Russian Spirits Brand Secures Major European Distribution Deal</h3>
-          <p>How persistence and quality craftsmanship opened doors to international markets.</p>
-          <a href="{{ site.baseurl }}/insights/market-milestones/spirits-distribution-deal/" class="read-more">Read more</a>
-        </div>
-      </div>
-      
-      <div class="view-all-insights">
-        <a href="{{ site.baseurl }}/en/insights/" class="btn btn--secondary">View All Insights</a>
-      </div>
+    {% include insights-feed.html limit=2 featured=true %}
+    
+    <div class="view-all-insights">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--secondary">{{ site.data.translations[page.lang].insights.view_all }}</a>
     </div>
   </div>
 </div>
 
 <!-- CTA Panel -->
 <div class="panel panel--cta">
-  <div class="panel__content text-center">
-    <h2 class="panel__heading-secondary">Ready to Discover the Next Global Brands?</h2>
-    <p class="panel__lead-text">Join us in connecting exceptional BRICS+ brands with international partners</p>
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.cta_title }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.cta_text }}</p>
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/en/about/#contact-us" class="btn btn--primary">Contact Us</a>
-      <a href="{{ site.baseurl }}/en/brands/" class="btn btn--secondary">Explore Brands</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--cta">{{ site.data.translations[page.lang].home.cta_button }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--secondary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
     </div>
   </div>
 </div>
 
-<!-- Newsletter Signup -->
-<div class="panel panel--light">
-  <div class="panel__content text-center">
+<!-- Newsletter Section - Probably don't need this -->
+<!-- <div class="panel panel--light">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary">Stay Connected</h2>
-    <p class="panel__lead-text">Get updates on emerging brands and market opportunities</p>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].footer.newsletter_description }}</p>
     
-    <div class="newsletter-form">
-      <form action="#" method="post" class="signup-form">
-        <input type="email" name="email" placeholder="Your email address" required>
-        <button type="submit" class="btn btn--primary">Subscribe</button>
-      </form>
-      <p class="form-note">We respect your privacy and will never share your information.</p>
+    <div class="newsletter-container">
+      {% if page.lang == 'ru' %}
+        <div class="ml-embedded" data-form="WVRNPI"></div>
+      {% elsif page.lang == 'zh' %}
+        <div class="ml-embedded" data-form="WRga0a"></div>
+      {% else %}
+        <div class="ml-embedded" data-form="480swE"></div>
+      {% endif %}
     </div>
   </div>
-</div>
+</div> -->
 
 <script>
   // Simple scroll functionality for "Learn How" button

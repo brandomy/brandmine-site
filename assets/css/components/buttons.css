@@ -1,89 +1,53 @@
-/* ==========================================================================
-   Button Components
-   ==========================================================================
-   Standardized button styles for Brandmine using the site's design tokens.
-*/
-
 /* Base button */
 .btn {
-  display: inline-block;
-  padding: var(--space-3) var(--space-6); /* 0.75rem 1.5rem */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  height: 44px;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
-  border-radius: var(--radius-sm); /* Updated to use token */
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all var(--transition-medium); /* Using token for transition */
+  transition: all var(--transition-medium);
+  box-sizing: border-box;
 }
 
-/* Primary button (teal)
-   Consolidated from two original definitions.
-   If a separate "lead" variant is needed, consider creating a modifier class. */
-.btn-primary {
-  display: inline-block;
+/* Primary button (teal) */
+.btn--primary {
   background-color: var(--primary-400);
   color: white;
-  /* Using the enhanced padding scheme */
-  padding: var(--space-3) var(--space-6); /* 0.75rem 1.5rem */
-  border-radius: var(--radius-sm); /* Using token for consistency */
-  font-weight: 600;
-  text-decoration: none;
-  transition: all var(--transition-medium);
-  margin-top: var(--space-6); /* 1.5rem */
   border: 2px solid var(--primary-400);
 }
 
-.btn-primary:hover {
+.btn--primary:hover {
   background-color: var(--primary-300);
   border-color: var(--primary-300);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md); /* Using token for box-shadow */
+  box-shadow: var(--shadow-md);
 }
 
 /* Secondary button (orange) */
-.btn-secondary {
+.btn--secondary {
   background-color: var(--secondary-500);
   color: white;
-  padding: var(--space-2) var(--space-4); /* 0.5rem 1rem */
-  border-radius: var(--radius-sm);
-  text-decoration: none;
   border: none;
-  cursor: pointer;
-  transition: all var(--transition-medium);
 }
 
-.btn-secondary:hover {
+.btn--secondary:hover {
   background-color: var(--secondary-400);
 }
 
 /* CTA button (white on gradient background) */
-.cta-button {
-  display: inline-block;
+.btn--cta {
   background-color: white;
   color: var(--primary-700);
   font-weight: bold;
-  padding: var(--space-4) var(--space-8); /* 1rem 2rem */
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  transition: all var(--transition-fast);
-  margin-top: var(--space-6); /* 1.5rem */
 }
 
-.cta-button:hover {
+.btn--cta:hover {
   background-color: var(--primary-100);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg); /* Using token for larger shadow */
-}
-
-/* Responsive adjustments */
-@media (max-width: var(--breakpoint-md)) { /* 768px */
-  .btn-primary,
-  .btn-secondary {
-    padding: var(--space-2) var(--space-4); /* 0.5rem 1rem */
-    font-size: 0.9rem;
-  }
-  
-  .cta-button {
-    padding: var(--space-3) var(--space-6); /* 0.75rem 1.5rem */
-  }
+  box-shadow: var(--shadow-lg);
 }

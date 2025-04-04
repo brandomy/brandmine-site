@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Homepage Specific Styles
+   ==========================================================================
+   Contains only layout and coordination styles specific to the home page.
+   Component styles are imported from their respective CSS files.
+*/
+
+/* --------------------------------------------------------------------------
+  1. General Styles
+  -------------------------------------------------------------------------- */
+
+/* Top section grid layout */
+.top-section {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+  margin-top: var(--space-8);
+  align-items: start; /* Ensure top alignment */
+}
+
+/* --------------------------------------------------------------------------
+  2. Search Panel & Featured Brand Panel
+  -------------------------------------------------------------------------- */
+
+.search-panel h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-6);
+  height: var(--space-10); /* Give consistent height to headings */
+  display: flex;
+  align-items: center;
+  font-size: var(--text-2xl);
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+}
+
+.featured-brand-panel h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-6);
+  height: var(--space-10);
+  display: flex;
+  align-items: center;
+  font-size: var(--text-2xl);
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+}
+
+/* --------------------------------------------------------------------------
+  3. Discovery Panel
+  -------------------------------------------------------------------------- */
+
+/* BEM version - enhanced discovery panel with gradient and pattern */
+.panel--discovery {
+  position: relative;
+  border-top: 4px solid var(--primary-400);
+  border-bottom: 4px solid var(--primary-400);
+  background-color: var(--secondary-100);
+  overflow: hidden;
+}
+
+.panel--discovery .panel__heading-secondary {
+  color: var(--secondary-700);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-size: var(--text-3xl);
+  text-align: center;
+  margin-bottom: var(--space-8);
+  position: relative;
+  z-index: 1;
+  /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+}
+
+.panel--discovery .panel__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Create decorative pattern background */
+.panel--discovery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2381E6D9' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Add subtle top light effect */
+.panel--discovery::after {
+  content: '';
+  position: absolute;
+  top: -150px;
+  left: -150px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  z-index: 0;
+}
+
+/* Discovery tabs custom styling for homepage */
+.discovery-tabs {
+  background-color: var(--secondary-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--secondary-400);
+}
+
+/* Add subtle pattern overlay */
+.discovery-tabs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2381E6D9' fill-opacity='0.1'%3E%3Cpath d='M0 0h20L0 20z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.tab-nav {
+  display: flex;
+  border-bottom: 2px solid var(--primary-200);
+  margin-bottom: var(--space-8);
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  padding-bottom: var(--space-1);
+}
+
+.tab-button {
+  padding: var(--space-3) var(--space-6);
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  color: var(--primary-600);
+  font-family: var(--font-heading);
+  transition: var(--transition-medium);
+  position: relative;
+  margin: 0 var(--space-2);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.tab-button:hover {
+  color: var(--accent-600);
+}
+
+.tab-button.active {
+  border-bottom-color: var(--accent-600);
+  color: var(--accent-600);
+  font-weight: var(--font-bold);
+}
+
+/* Add animated indicator for active tab */
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--accent-600);
+  border-radius: 3px 3px 0 0;
+  animation: tabIndicatorFadeIn 0.3s ease forwards;
+}
+
+@keyframes tabIndicatorFadeIn {
+  from { opacity: 0; transform: scaleX(0.7); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+
+/* Ensure tab panes have the right styles for transitions */
+.tab-pane {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-pane.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-intro {
+  text-align: center;
+  color: var(--primary-700);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-6);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--leading-relaxed);
+}
+
+
+
+/* --------------------------------------------------------------------------
+  4. Insights Panel
+  -------------------------------------------------------------------------- */
+
+/* BEM version - still keeping insights-panel for now as a specific implementation */
+.panel--insights {
+  position: relative;
+  background-color: var(--accent-100);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--accent-200);
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.panel--insights .panel__heading-secondary {
+  color: var(--accent-700);
+}
+
+.panel--insights::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A5B4FC' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+  5. Responsive Adjustments
+  -------------------------------------------------------------------------- */
+
+/* Mobile-first approach */
+@media (min-width: var(--breakpoint-sm)) {
+  .tab-button {
+    flex: 1 0 auto; /* Reset from 100% to auto above smallest size */
+  }
+}
+
+/* Medium screens and below */
+@media (max-width: var(--breakpoint-md)) {
+  .top-section {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    gap: var(--space-6);
+  }
+  
+  /* Adjust discovery tabs for mobile */
+  .tab-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .tab-button {
+    padding: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+  }
+  
+  .discovery-tabs {
+    padding: var(--space-4);
+  }
+  
+  .tag-cloud {
+    padding: var(--space-4);
+    max-width: 100%;
+  }
+  
+  .panel--discovery .panel__heading-secondary {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  /* Even smaller screens */
+  .tab-button {
+    flex: 1 0 100%;
+    margin-bottom: var(--space-2);
+    text-align: center;
+  }
+  
+  .tab-intro {
+    font-size: var(--text-base);
+  }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .top-section {
+    grid-template-columns: 40% 60%; /* Set columns for larger screens */
+  }
+  
+  /* Enhance discovery panel for large screens */
+  .discovery-tabs {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+
+/* --------------------------------------------------------------------------
+  6. Miscellaneous
+  -------------------------------------------------------------------------- */
+
+  /* Update the top-section grid in home.css */
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Change from 40% 60% to 1fr 1fr for better balance */
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+  margin-top: var(--space-8);
+  align-items: start; /* Ensure top alignment */
+}
+
+/* Add a max-width to the container to prevent overflow */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  box-sizing: border-box;
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .top-section {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+}

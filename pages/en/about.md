@@ -243,7 +243,8 @@ ref: about
 </div>
 
 <!-- Contact Section -->
-<div class="panel panel--cta">
+
+<div id="contact-us" class="panel panel--cta">
 <div class="panel__content panel--centered">
   <h2 class="panel__heading-secondary">Contact Us</h2>
   <p class="panel__lead-text">
@@ -260,7 +261,7 @@ ref: about
       <a href="tel:+60163199439">+60 16 3199439</a>
     </div>
   </div>
-  
+
  <!-- Contact Form Container with additional wrapper -->
   <div class="mobile-form-wrapper">
     <div class="contact-form-container">

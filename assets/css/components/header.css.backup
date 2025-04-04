@@ -1,0 +1,267 @@
+/* ==========================================================================
+   HEADER WRAPPER STYLING
+   ========================================================================== */
+   .site-header {
+    background-color: var(--primary-400);
+    padding: var(--space-3) 0;
+    position: relative;
+    z-index: var(--z-index-dropdown);
+  }
+
+  .site-header .wrapper {
+    display: flex;
+    flex-wrap: nowrap; /* prevents breakage unless you want mobile stacking */
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4); /* optional: adds breathing room between items */
+    padding: 0 var(--space-4);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .site-header .dropdown-content {
+    background-color: var(--primary-500);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  /* ==========================================================================
+     SITE TITLE (LOGO)
+     ========================================================================== */
+  .site-title {
+    color: white;
+    font-family: var(--font-body-en);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    text-decoration: none;
+    margin-right: auto;
+  }
+  
+  
+  /* ==========================================================================
+     MAIN NAVIGATION (Desktop)
+     ========================================================================== */
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .site-nav a {
+    color: white;
+    text-decoration: none;
+    padding: var(--space-2) var(--space-1);
+    font-size: var(--text-base);
+    transition: color var(--transition-fast);
+  }
+  
+  .site-nav a:hover,
+  .site-nav a.active {
+    color: var(--secondary-200);
+  }
+  
+  
+  /* ==========================================================================
+     DROPDOWN MENU (Desktop Hover)
+     ========================================================================== */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown .dropbtn {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* ▼ icon on dropdown toggle */
+  .dropbtn::after {
+    content: "▼";
+    font-size: 0.7em;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: var(--primary-500);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    z-index: var(--z-index-dropdown);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    white-space: nowrap;
+    color: white;
+    margin: 0;
+    border-bottom: 1px solid var(--primary-600);
+  }
+  
+  .dropdown-content a:hover {
+    background-color: var(--primary-600);
+  }
+  
+  
+  /* ==========================================================================
+     HAMBURGER MENU ICON (Mobile Only)
+     ========================================================================== */
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    margin-left: var(--space-2);
+    z-index: 200;
+  }
+  
+  .menu-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+    transition: background-color var(--transition-fast);
+  }
+  
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    transition: all var(--transition-medium);
+  }
+  
+  .menu-icon::before {
+    top: -8px;
+  }
+  
+  .menu-icon::after {
+    bottom: -8px;
+  }
+  
+  /* Active state transforms hamburger into X */
+  .menu-toggle.active .menu-icon {
+    background-color: transparent;
+  }
+  
+  .menu-toggle.active .menu-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  
+  .menu-toggle.active .menu-icon::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+  
+  
+  /* ==========================================================================
+     HEADER LANGUAGE SELECTOR (Scoped Layout Only)
+     ==========================================================================
+     NOTE: Shared link styling for .language-selector a is in navigation.css
+     ========================================================================== */
+  .header-lang {
+    margin-left: var(--space-4);
+    display: flex;
+    gap: var(--space-1);
+  }
+  
+  
+  /* ==========================================================================
+       Responsive Styles - Mobile First (≤768px)
+     ========================================================================== */
+  @media (max-width: 767px) {
+    .site-header .wrapper {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  
+    /* Hamburger visible on mobile */
+    .menu-toggle {
+      display: block !important;
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      order: 3;
+      position: relative;
+      z-index: 200;
+    }
+  
+    .site-title {
+      flex: 1;
+    }
+  
+    /* Mobile nav hidden by default */
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      background-color: var(--primary-500);
+      padding: var(--space-4);
+      z-index: 1000;
+    }
+  
+    .site-nav.active {
+      display: flex;
+    }
+  
+    .site-nav a {
+      width: 100%;
+      padding: var(--space-2) 0;
+      text-align: left;
+      border-bottom: 1px solid var(--primary-600);
+    }
+  
+    .dropdown {
+      width: 100%;
+    }
+  
+    .dropdown-content {
+      display: flex;
+      flex-direction: column;
+      position: static;
+      display: none;
+      background: transparent;
+      box-shadow: none;
+      padding-left: var(--space-4);
+    }
+  
+    /* .dropdown-content {
+      display: flex;
+      flex-direction: column;
+    } */
+
+
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
+  
+    /* Header language selector adjustments on mobile */
+    .header-lang {
+      margin-top: 0;
+      align-items: center;
+      gap: var(--space-1);
+    }
+  }
