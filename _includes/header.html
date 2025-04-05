@@ -3,14 +3,26 @@
     <!-- Logo and Toggle -->
     <div class="header__branding">
       <a class="header__title" href="/{{ page.lang }}/">Brandmine</a>
-      <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="header__toggle-icon"></span>
+       <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="header__toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </button>
     </div>
 
 
+
+      <!-- Language Switcher -->
+      <div class="header__lang">
+        {% include language-selector.html %}
+      </div>
+
+  </div>
+
     <!-- Navigation -->
-    <nav class="header__nav">
+    <nav class="header__nav" id="main-nav">
       <ul class="header__nav-list">
         <li class="header__nav-item"><a href="/{{ page.lang }}/">Home</a></li>
         <li class="header__nav-item"><a href="/{{ page.lang }}/brands/">Brands</a></li>
@@ -33,32 +45,5 @@
       </ul>
     </nav>
 
-      <!-- Language Switcher -->
-      <div class="header__lang">
-        {% include language-selector.html %}
-      </div>
 
-  </div>
 </header>
-
-<script>
-  // Mobile menu toggle logic
-  document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('.header__toggle');
-  const nav = document.querySelector('.header__nav');
-
-  toggle.addEventListener('click', function () {
-    nav.classList.toggle('is-open');
-  });
-
-  // Enable Discover submenu toggle on mobile
-  document.querySelectorAll('.header__dropdown > a').forEach(link => {
-    link.addEventListener('click', function (e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        this.parentElement.classList.toggle('open');
-      }
-    });
-  });
-});
-</script>

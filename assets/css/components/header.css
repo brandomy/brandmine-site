@@ -30,16 +30,20 @@
   text-decoration: none;
 }
 
-.header__toggle {
-  display: none;
+.header__toggle-icon {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1010;
-  align-self: center;
 }
+
+.header__toggle-icon span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+}
+
 
 .header__nav {
   display: flex;
@@ -66,26 +70,6 @@
   justify-content: center;
 }
 
-.header__nav-link--active {
-  font-weight: 700;
-}
-
-.header__nav-link,
-.header__dropbtn {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.header__dropbtn svg {
-  fill: var(--neutral-100);
-  width: 0.75rem;
-  height: 0.75rem;
-  transition: transform 0.2s ease;
-}
 
 .header__dropdown {
   position: relative;
@@ -107,12 +91,12 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .header__dropdown:hover .header__dropdown-content {
   display: block;
 }
-
 
 .header__dropdown-content a {
   display: block;
@@ -128,7 +112,6 @@
   color: white;
 }
 
-
 .header__lang {
   display: flex;
   align-items: center;
@@ -136,10 +119,6 @@
   margin-left: auto;
 }
 
-/* Applies in all viewports — ensures nav opens on desktop (if ever toggled) and mobile */
-.header__nav.is-open {
-  display: flex;
-}
 
 
 /* Mobile responsiveness */
@@ -172,6 +151,17 @@
 
   .header__dropdown.open .header__dropdown-content {
     display: block;
+  }
+
+  .header__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+    align-self: center;
   }
 }
 
