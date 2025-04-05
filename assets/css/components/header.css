@@ -1,267 +1,198 @@
 /* ==========================================================================
-   HEADER WRAPPER STYLING
-   ========================================================================== */
-   .site-header {
-    background-color: var(--primary-400);
-    padding: var(--space-3) 0;
-    position: relative;
-    z-index: var(--z-index-dropdown);
-  }
+   Header - BEM Refactor
+   ==========================================================================
+*/
 
-  .site-header .wrapper {
-    display: flex;
-    flex-wrap: nowrap; /* prevents breakage unless you want mobile stacking */
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4); /* optional: adds breathing room between items */
-    padding: 0 var(--space-4);
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    position: relative;
-  }
+.header {
+  background-color: var(--primary-400);
+  color: white;
+  padding: var(--space-3) var(--space-4);
+  position: relative;
+  z-index: 10;
+}
 
-  .site-header .dropdown-content {
-    background-color: var(--primary-500);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  
-  /* ==========================================================================
-     SITE TITLE (LOGO)
-     ========================================================================== */
-  .site-title {
-    color: white;
-    font-family: var(--font-body-en);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    text-decoration: none;
-    margin-right: auto;
-  }
-  
-  
-  /* ==========================================================================
-     MAIN NAVIGATION (Desktop)
-     ========================================================================== */
-  .site-nav {
-    display: flex;
-    align-items: center;
+.header a:hover {
+  color: var(--secondary-300);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.header__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.header__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1010;
+  align-self: center;
+}
+
+.header__icon {
+  width: 24px;
+  height: 2px;
+  background-color: white;
+}
+
+.header__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: var(--space-4);
+}
+
+.header__nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header__nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.header__nav-link--active {
+  font-weight: 700;
+}
+
+.header__nav-link,
+.header__dropbtn {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.header__dropbtn svg {
+  fill: var(--neutral-100);
+  width: 0.75rem;
+  height: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.header__dropdown {
+  position: relative;
+}
+
+.header__dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--primary-500);
+  color: var(--neutral-100);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-sm);
+  min-width: 200px;
+  z-index: 1000;
+  overflow: hidden;
+  border: 1px solid var(--primary-400);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header__dropdown:hover .header__dropdown-content {
+  display: block;
+}
+
+
+.header__dropdown-content a {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.header__dropdown-content a:hover {
+  background-color: var(--secondary-300);
+  color: white;
+}
+
+.header__dropdown:hover .header__dropdown-content {
+  display: block;
+}
+
+.header__lang {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+/* Applies in all viewports — ensures nav opens on desktop (if ever toggled) and mobile */
+.header__nav.is-open {
+  display: flex;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header__nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: var(--space-2);
     gap: var(--space-2);
   }
-  
-  .site-nav a {
-    color: white;
-    text-decoration: none;
-    padding: var(--space-2) var(--space-1);
-    font-size: var(--text-base);
-    transition: color var(--transition-fast);
-  }
-  
-  .site-nav a:hover,
-  .site-nav a.active {
-    color: var(--secondary-200);
-  }
-  
-  
-  /* ==========================================================================
-     DROPDOWN MENU (Desktop Hover)
-     ========================================================================== */
-  .dropdown {
-    position: relative;
-  }
-  
-  .dropdown .dropbtn {
+
+  .header__nav.is-open {
     display: flex;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
   }
-  
-  /* ▼ icon on dropdown toggle */
-  .dropbtn::after {
-    content: "▼";
-    font-size: 0.7em;
-    margin-left: 5px;
-    display: inline-block;
-    vertical-align: middle;
+
+  .header__nav-list {
+    flex-direction: column;
+    width: 100%;
+    padding-left: var(--space-4);
   }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 200px;
+
+  .header__dropdown-content {
     background-color: var(--primary-500);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    z-index: var(--z-index-dropdown);
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown-content a {
-    display: block;
-    padding: var(--space-2) var(--space-3);
-    white-space: nowrap;
-    color: white;
-    margin: 0;
-    border-bottom: 1px solid var(--primary-600);
-  }
-  
-  .dropdown-content a:hover {
-    background-color: var(--primary-600);
-  }
-  
-  
-  /* ==========================================================================
-     HAMBURGER MENU ICON (Mobile Only)
-     ========================================================================== */
-  .menu-toggle {
+    position: static;
     display: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: var(--space-2);
-    margin-left: var(--space-2);
-    z-index: 200;
+    padding-left: var(--space-4);
   }
-  
-  .menu-icon {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: white;
-    position: relative;
-    transition: background-color var(--transition-fast);
-  }
-  
-  .menu-icon::before,
-  .menu-icon::after {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: white;
-    position: absolute;
-    transition: all var(--transition-medium);
-  }
-  
-  .menu-icon::before {
-    top: -8px;
-  }
-  
-  .menu-icon::after {
-    bottom: -8px;
-  }
-  
-  /* Active state transforms hamburger into X */
-  .menu-toggle.active .menu-icon {
-    background-color: transparent;
-  }
-  
-  .menu-toggle.active .menu-icon::before {
-    transform: rotate(45deg);
-    top: 0;
-  }
-  
-  .menu-toggle.active .menu-icon::after {
-    transform: rotate(-45deg);
-    bottom: 0;
-  }
-  
-  
-  /* ==========================================================================
-     HEADER LANGUAGE SELECTOR (Scoped Layout Only)
-     ==========================================================================
-     NOTE: Shared link styling for .language-selector a is in navigation.css
-     ========================================================================== */
-  .header-lang {
-    margin-left: var(--space-4);
-    display: flex;
-    gap: var(--space-1);
-  }
-  
-  
-  /* ==========================================================================
-       Responsive Styles - Mobile First (≤768px)
-     ========================================================================== */
-  @media (max-width: 767px) {
-    .site-header .wrapper {
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-  
-    /* Hamburger visible on mobile */
-    .menu-toggle {
-      display: block !important;
-      width: 40px;
-      height: 40px;
-      margin: 0;
-      order: 3;
-      position: relative;
-      z-index: 200;
-    }
-  
-    .site-title {
-      flex: 1;
-    }
-  
-    /* Mobile nav hidden by default */
-    .site-nav {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      flex-direction: column;
-      background-color: var(--primary-500);
-      padding: var(--space-4);
-      z-index: 1000;
-    }
-  
-    .site-nav.active {
-      display: flex;
-    }
-  
-    .site-nav a {
-      width: 100%;
-      padding: var(--space-2) 0;
-      text-align: left;
-      border-bottom: 1px solid var(--primary-600);
-    }
-  
-    .dropdown {
-      width: 100%;
-    }
-  
-    .dropdown-content {
-      display: flex;
-      flex-direction: column;
-      position: static;
-      display: none;
-      background: transparent;
-      box-shadow: none;
-      padding-left: var(--space-4);
-    }
-  
-    /* .dropdown-content {
-      display: flex;
-      flex-direction: column;
-    } */
 
-
-    .dropdown.open .dropdown-content {
-      display: block;
-    }
-  
-    /* Header language selector adjustments on mobile */
-    .header-lang {
-      margin-top: 0;
-      align-items: center;
-      gap: var(--space-1);
-    }
+  .header__dropdown.open .header__dropdown-content {
+    display: block;
   }
+}
+
+@media (min-width: 769px) {
+  .header__nav {
+    justify-content: center;
+  }
+
+  .header__container {
+    justify-content: space-between;
+  }
+
+  .header__toggle {
+    display: none;
+  }
+}

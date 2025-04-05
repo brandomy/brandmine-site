@@ -1,0 +1,33 @@
+<header class="header">
+  <div class="header__container">
+    <a class="header__title" href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.title }}</a>
+
+    <button class="header__toggle" aria-label="Toggle navigation">
+      <span class="header__icon"></span>
+      <span class="header__icon"></span>
+      <span class="header__icon"></span>
+    </button>
+
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="{{ site.baseurl }}/{{ page.lang }}/about/" class="header__nav-link">{{ site.data.translations[page.lang].nav.about }}</a></li>
+
+        <li class="header__nav-item header__dropdown">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="header__dropbtn">{{ site.data.translations[page.lang].nav.discover }}</a>
+          <div class="header__dropdown-content">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/">{{ site.data.translations[page.lang].nav.sectors }}</a>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/">{{ site.data.translations[page.lang].nav.markets }}</a>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/">{{ site.data.translations[page.lang].nav.attributes }}</a>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/">{{ site.data.translations[page.lang].nav.signals }}</a>
+          </div>
+        </li>
+
+        <li class="header__nav-item"><a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="header__nav-link">{{ site.data.translations[page.lang].nav.brands }}</a></li>
+        <li class="header__nav-item"><a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="header__nav-link">{{ site.data.translations[page.lang].nav.insights }}</a></li>
+        <li class="header__nav-item"><a href="{{ site.baseurl }}/{{ page.lang }}/solutions/" class="header__nav-link">{{ site.data.translations[page.lang].nav.solutions }}</a></li>
+      </ul>
+
+      {% include language-selector.html %}
+    </nav>
+  </div>
+</header>
