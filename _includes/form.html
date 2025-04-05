@@ -1,0 +1,19 @@
+<!-- _includes/form.html -->
+<form class="form" action="{{ include.action | default: '#' }}" method="post">
+  <div class="form__group">
+    <label for="name" class="form__label">{{ include.name_label | default: 'Name' }}</label>
+    <input type="text" id="name" name="name" class="form__input" required>
+  </div>
+
+  <div class="form__group">
+    <label for="email" class="form__label">{{ include.email_label | default: 'Email' }}</label>
+    <input type="email" id="email" name="email" class="form__input" required>
+  </div>
+
+  <div class="form__group">
+    <label for="message" class="form__label">{{ include.message_label | default: 'Message' }}</label>
+    <textarea id="message" name="message" class="form__textarea" required></textarea>
+  </div>
+
+  <button type="submit" class="form__submit">{{ include.submit_label | default: 'Send Message' }}</button>
+</form>

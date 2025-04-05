@@ -1,4 +1,8 @@
-/* Base button */
+/* ========================================================================== 
+   Buttons - BEM Refactor
+   ========================================================================== */
+
+/* Base button block */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -14,7 +18,7 @@
   box-sizing: border-box;
 }
 
-/* Primary button (teal) */
+/* Modifier: Primary button (teal) */
 .btn--primary {
   background-color: var(--primary-400);
   color: white;
@@ -28,7 +32,7 @@
   box-shadow: var(--shadow-md);
 }
 
-/* Secondary button (orange) */
+/* Modifier: Secondary button (orange) */
 .btn--secondary {
   background-color: var(--secondary-500);
   color: white;
@@ -39,15 +43,33 @@
   background-color: var(--secondary-400);
 }
 
-/* CTA button (white on gradient background) */
-.btn--cta {
-  background-color: white;
-  color: var(--primary-700);
-  font-weight: bold;
+/* Modifier: Outline button */
+.btn--outline {
+  background-color: transparent;
+  color: var(--neutral-800);
+  border: 2px solid var(--neutral-400);
 }
 
-.btn--cta:hover {
-  background-color: var(--primary-100);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+.btn--outline:hover {
+  background-color: var(--neutral-100);
+}
+
+/* Modifier: Full-width button */
+.btn--block {
+  display: flex;
+  width: 100%;
+}
+
+/* Modifier: Small size button */
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  height: 36px;
+  font-size: var(--text-sm);
+}
+
+/* Modifier: Large size button */
+.btn--lg {
+  padding: var(--space-4) var(--space-6);
+  height: 52px;
+  font-size: var(--text-lg);
 }

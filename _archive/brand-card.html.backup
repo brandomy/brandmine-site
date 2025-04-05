@@ -1,0 +1,79 @@
+{% comment %}
+  Brand Card Include
+  
+  Usage:
+  {% include brand-card.html brand=brand %}
+  
+  Parameters:
+  - brand: Brand object
+  - featured: Boolean (optional) - Adds featured styling
+{% endcomment %}
+
+<div class="brand-card {% if include.featured %}featured-brand{% endif %} {% if include.brand.premium %}premium-brand{% endif %}">
+  <div class="brand-card-header">
+    {% if include.brand.logo %}
+    <div class="brand-logo">
+      <img src="{{ include.brand.logo | relative_url }}" alt="{{ include.brand.title }} logo" class="img-fluid">
+    </div>
+    {% endif %}
+    
+    <h3 class="brand-title">
+      <a href="{{ include.brand.url | relative_url }}">{{ include.brand.title }}</a>
+    </h3>
+    
+    {% if include.brand.founding_year %}
+    <div class="founding-year">{{ site.data.translations[include.brand.lang].brand.est }} {{ include.brand.founding_year }}</div>
+    {% endif %}
+  </div>
+  
+  <div class="brand-card-body">
+    <p class="brand-description">
+      {{ include.brand.description | truncate: 120 }}
+    </p>
+    
+    <div class="brand-taxonomy">
+      {% if include.brand.sectors and include.brand.sectors.size > 0 %}
+      <div class="brand-sectors">
+        {% for sector in include.brand.sectors limit:1 %}
+        <a href="{{ site.baseurl }}/{{ include.brand.lang }}/tags/sectors/{{ sector | slugify }}/" 
+           class="sector-tag">{{ sector }}</a>
+        {% endfor %}
+        {% if include.brand.sectors.size > 1 %}
+        <span class="more-tag">+{{ include.brand.sectors.size | minus: 1 }}</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      
+      {% if include.brand.markets and include.brand.markets.size > 0 %}
+      <div class="brand-markets">
+        {% for market in include.brand.markets limit:1 %}
+        <a href="{{ site.baseurl }}/{{ include.brand.lang }}/tags/markets/{{ market | slugify }}/" 
+           class="market-tag">{{ market }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="brand-card-footer">
+    {% if include.brand.signals and include.brand.signals.size > 0 %}
+    <div class="brand-signals">
+      {% for signal in include.brand.signals %}
+      <span class="signal-indicator" title="{{ signal }}">
+        <i class="signal-icon {{ signal | slugify }}-icon"></i>
+      </span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    <a href="{{ include.brand.url | relative_url }}" class="brand-link">
+      {{ site.data.translations[include.brand.lang].brand.view_profile }}
+    </a>
+    
+    {% if include.brand.premium %}
+    <span class="premium-indicator" title="{{ site.data.translations[include.brand.lang].brand.premium_content }}">
+      <i class="premium-icon"></i>
+    </span>
+    {% endif %}
+  </div>
+</div>

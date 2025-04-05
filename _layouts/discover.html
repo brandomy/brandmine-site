@@ -10,22 +10,22 @@ layout: default
 
 <div class="panel panel--light">
   <div class="panel__content">
-    <div class="discover-tabs">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discover-tab {% if page.discovery_path == 'sectors' %}active{% endif %}">
+    <div class="discovery__tabs">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery__tab {% if page.discovery_path == 'sectors' %}active{% endif %}">
         {{ site.data.translations[page.lang].nav.sectors }}
       </a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discover-tab {% if page.discovery_path == 'markets' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery__tab {% if page.discovery_path == 'markets' %}active{% endif %}">
         {{ site.data.translations[page.lang].nav.markets }}
       </a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discover-tab {% if page.discovery_path == 'attributes' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery__tab {% if page.discovery_path == 'attributes' %}active{% endif %}">
         {{ site.data.translations[page.lang].nav.attributes }}
       </a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discover-tab {% if page.discovery_path == 'signals' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery__tab {% if page.discovery_path == 'signals' %}active{% endif %}">
         {{ site.data.translations[page.lang].nav.signals }}
       </a>
     </div>
     
-    <div class="discover-content">
+    <div class="discovery__content">
       {{ content }}
     </div>
   </div>

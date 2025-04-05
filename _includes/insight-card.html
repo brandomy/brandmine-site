@@ -1,78 +1,42 @@
-{% comment %}
-  Insight Card Include
-  
-  Usage:
-  {% include insight-card.html insight=insight %}
-  
-  Parameters:
-  - insight: Insight object
-  - featured: Boolean (optional) - Adds featured styling
-{% endcomment %}
-
-<div class="insight-card {% if include.featured %}featured-insight{% endif %} {% if include.insight.premium %}premium-insight{% endif %}">
-  {% if include.insight.image %}
-  <div class="insight-image">
-    <a href="{{ include.insight.url | relative_url }}">
-      <img src="{{ include.insight.image | relative_url }}" alt="{{ include.insight.title }}" class="img-fluid">
-    </a>
-    
-    {% if include.insight.premium %}
-    <span class="premium-badge" title="{{ site.data.translations[include.insight.lang].insights.premium_content }}">
-      <i class="premium-icon"></i>
-    </span>
+<!-- INSIGHT CARD (BEM) -->
+<article class="insight-card">
+  <div class="insight-card__image">
+    <img src="{{ insight.image }}" alt="{{ insight.title }} thumbnail">
+    {% if insight.premium %}
+      <div class="insight-card__premium-badge">
+        <span class="insight-card__premium-icon">★</span>
+      </div>
     {% endif %}
   </div>
-  {% endif %}
-  
-  <div class="insight-card-content">
-    {% include content-type-indicator.html type=include.insight.content_type %}
-    
-    <h3 class="insight-title">
-      <a href="{{ include.insight.url | relative_url }}">{{ include.insight.title }}</a>
-    </h3>
-    
-    <div class="insight-meta">
-      <span class="insight-date">{{ include.insight.date | date: "%B %-d, %Y" }}</span>
-      {% if include.insight.author %}
-      <span class="insight-author">{{ include.insight.author }}</span>
-      {% endif %}
+
+  <div class="insight-card__content">
+    <h3 class="insight-card__title">{{ insight.title }}</h3>
+
+    <div class="insight-card__meta">
+      <span class="insight-card__date">{{ insight.date }}</span>
+      <span class="insight-card__author">{{ insight.author }}</span>
     </div>
-    
-    <div class="insight-excerpt">
-      <p>
-        {% if include.insight.description %}
-          {{ include.insight.description | truncate: 120 }}
-        {% else %}
-          {{ include.insight.content | strip_html | truncate: 120 }}
-        {% endif %}
-      </p>
-    </div>
-    
-    <div class="insight-taxonomy">
-      {% if include.insight.sectors and include.insight.sectors.size > 0 %}
-      <div class="insight-sectors">
-        {% for sector in include.insight.sectors limit:1 %}
-        <a href="{{ site.baseurl }}/{{ include.insight.lang }}/tags/sectors/{{ sector | slugify }}/" 
-           class="sector-tag">{{ sector }}</a>
+
+    <p class="insight-card__excerpt">{{ insight.excerpt }}</p>
+
+    <div class="insight-card__taxonomy">
+      <div class="insight-card__sectors">
+        {% for sector in insight.sectors %}
+          <span class="insight-card__sector-tag">{{ sector }}</span>
         {% endfor %}
-        {% if include.insight.sectors.size > 1 %}
-        <span class="more-tag">+{{ include.insight.sectors.size | minus: 1 }}</span>
+        {% if insight.sectors.size > 3 %}
+          <span class="insight-card__more-tag">+{{ insight.sectors.size | minus:3 }}</span>
         {% endif %}
       </div>
-      {% endif %}
-      
-      {% if include.insight.markets and include.insight.markets.size > 0 %}
-      <div class="insight-markets">
-        {% for market in include.insight.markets limit:1 %}
-        <a href="{{ site.baseurl }}/{{ include.insight.lang }}/tags/markets/{{ market | slugify }}/" 
-           class="market-tag">{{ market }}</a>
+      <div class="insight-card__markets">
+        {% for market in insight.markets %}
+          <span class="insight-card__market-tag">{{ market }}</span>
         {% endfor %}
       </div>
-      {% endif %}
     </div>
-    
-    <a href="{{ include.insight.url | relative_url }}" class="read-more-link">
-      {{ site.data.translations[include.insight.lang].insights.read_more }}
+
+    <a href="{{ insight.url }}" class="insight-card__read-more">
+      {{ insight.cta | default: "Read More" }}
     </a>
   </div>
-</div>
+</article>

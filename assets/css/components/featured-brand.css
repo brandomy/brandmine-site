@@ -1,146 +1,86 @@
 /* ==========================================================================
-   Featured Brand Component
-   ==========================================================================
-*/
+   Featured Brand Card (BEM)
+   ========================================================================== */
 
-
-.featured-brand-panel {
-  padding: var(--space-6);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.brand-card {
-  display: flex;
-  gap: var(--space-6);
-  position: relative;
-  z-index: 1;
-}
-
-.brand-logo {
-  flex: 0 0 120px;
-}
-
-.brand-logo img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-sm);
-}
-
-.brand-info {
-  flex: 1;
-}
-
-.brand-info h3 {
-  margin-top: 0;
-  margin-bottom: var(--space-2);
-  font-size: var(--text-xl);
-  color: var(--neutral-800);
-  font-family: var(--font-heading);
-  font-weight: var(--font-bold);
-}
-
-.brand-description {
-  margin-bottom: var(--space-4);
-  color: var(--neutral-700);
-  font-family: var(--font-body);
-}
-
-.brand-meta {
-  display: flex;
-  gap: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-
-.brand-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
-}
-
-.view-profile {
-  display: inline-block;
-  padding: var(--space-2) var(--space-6);
-  background-color: var(--secondary-500);
-  color: white;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  font-weight: var(--font-medium);
-  font-family: var(--font-body);
-  transition: var(--transition-fast);
-}
-
-.view-profile:hover {
-  background-color: var(--secondary-600);
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: var(--breakpoint-md)) {
-  .brand-card {
+   .featured-brand {
+    display: flex;
     flex-direction: column;
+    background-color: var(--neutral-100);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast);
   }
   
-  .brand-logo {
-    flex: 0 0 auto;
+  .featured-brand:hover {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .featured-brand__image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    background-color: var(--neutral-200);
+    overflow: hidden;
+  }
+  
+  .featured-brand__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .featured-brand__badge {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    background-color: var(--secondary-600);
+    color: var(--neutral-100);
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+  }
+  
+  .featured-brand__body {
+    padding: var(--space-4);
+  }
+  
+  .featured-brand__title {
+    font-size: var(--text-custom);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-2);
+    color: var(--neutral-900);
+  }
+  
+  .featured-brand__meta {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+  
+  .featured-brand__description {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--neutral-700);
     margin-bottom: var(--space-4);
   }
-}
-
-/* Add these styles to featured-brand.css */
-
-/* Fix panel sizing and spacing */
-.panel.featured-brand-panel {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-6);
-  box-sizing: border-box;
-  margin: 0;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-/* Add proper spacing for heading */
-.panel.featured-brand-panel h2 {
-  margin-top: 0;
-  margin-bottom: var(--space-6);
-  padding-left: var(--space-2);
-}
-
-/* Add proper spacing for brand logo */
-.panel.featured-brand-panel .brand-logo {
-  flex: 0 0 120px;
-  padding: var(--space-2);
-  box-sizing: border-box;
-}
-
-/* Ensure brand card fills available space */
-.panel.featured-brand-panel .brand-card {
-  flex: 1;
-  padding: var(--space-2);
-}
-
-/* Make tag links maintain tag styling */
-.brand-meta a.sector-tag,
-.brand-meta a.market-tag,
-.brand-tags a.attribute-tag,
-.brand-tags a.signal-tag {
-  text-decoration: none;
-  color: inherit; /* Maintain original text color */
-  display: inline-block;
-}
-
-/* Fix responsive issues */
-@media (max-width: var(--breakpoint-md)) {
-  .brand-card {
-    flex-direction: column;
-    gap: var(--space-4);
+  
+  .featured-brand__tags {
+    margin-bottom: var(--space-4);
   }
   
-  .brand-logo {
-    flex: 0 0 auto;
-    max-width: 180px;
-    margin: 0 auto var(--space-4) auto;
+  .featured-brand__link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--primary-600);
+    text-decoration: none;
   }
-}
+  
+  .featured-brand__link:hover {
+    text-decoration: underline;
+  }
+  

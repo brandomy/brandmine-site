@@ -147,34 +147,9 @@ lang: en
         {% endfor %}
       {% else %}
         <!-- Fallback to hardcoded example if no featured brands are available -->
-        <div class="brand-card">
-          <div class="brand-card-header">
-            <div class="brand-logo">
-              <img src="{{ site.baseurl }}/assets/images/brands/teatime/teatime-logo-400w.jpg" alt="TeaTime logo" class="img-fluid">
-            </div>
-            <h3 class="brand-title">
-              <a href="{{ site.baseurl }}/{{ page.lang }}/brands/teatime/">TeaTime</a>
-            </h3>
-          </div>
-          <div class="brand-card-body">
-            <p class="brand-description">
-              Premium tea blending house with authentic Russian samovar traditions and innovative flavors.
-            </p>
-            <div class="brand-taxonomy">
-              <div class="brand-sectors">
-                <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/gourmet-foods/" class="sector-tag">{{ site.data.tag_translations.sectors["gourmet-foods"][page.lang] }}</a>
-              </div>
-              <div class="brand-markets">
-                <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/russia/" class="market-tag">{{ site.data.tag_translations.countries.russia[page.lang] }}</a>
-              </div>
-            </div>
-          </div>
-          <div class="brand-card-footer">
-            <a href="{{ site.baseurl }}/{{ page.lang }}/brands/teatime/" class="brand-link">
-              {{ site.data.translations[page.lang].buttons.view_profile }}
-            </a>
-          </div>
-        </div>
+        {# Replaced hardcoded fallback brand card with BEM include #}
+        {% assign fallback_brand = site.data.fallback.teatime %}
+        {% include brand-card.html brand=fallback_brand %}
       {% endif %}
       
       <div class="more-brands">
@@ -209,24 +184,6 @@ lang: en
     </div>
   </div>
 </div>
-
-<!-- Newsletter Section - Probably don't need this -->
-<!-- <div class="panel panel--light">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">Stay Connected</h2>
-    <p class="panel__lead-text">{{ site.data.translations[page.lang].footer.newsletter_description }}</p>
-    
-    <div class="newsletter-container">
-      {% if page.lang == 'ru' %}
-        <div class="ml-embedded" data-form="WVRNPI"></div>
-      {% elsif page.lang == 'zh' %}
-        <div class="ml-embedded" data-form="WRga0a"></div>
-      {% else %}
-        <div class="ml-embedded" data-form="480swE"></div>
-      {% endif %}
-    </div>
-  </div>
-</div> -->
 
 <script>
   // Simple scroll functionality for "Learn How" button

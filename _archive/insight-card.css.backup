@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Insight Card (BEM)
+   ========================================================================== */
+
+.insight-card {
+  background-color: var(--neutral-100);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: var(--border-width-thin) solid var(--neutral-200);
+}
+
+.insight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Image area */
+.insight-card__image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.insight-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium) ease;
+}
+
+.insight-card:hover .insight-card__image img {
+  transform: scale(1.05);
+}
+
+/* Premium badge */
+.insight-card__premium-badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  background-color: var(--secondary-600);
+  color: var(--neutral-100);
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* Content area */
+.insight-card__content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.insight-card__title {
+  font-size: var(--text-custom);
+  font-weight: var(--font-semibold);
+  margin: 0 0 var(--space-2) 0;
+  color: var(--neutral-900);
+  line-height: 1.4;
+}
+
+.insight-card__meta {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--neutral-500);
+}
+
+.insight-card__excerpt {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-4);
+}
+
+/* Read more link */
+.insight-card__read-more {
+  color: var(--primary-600);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.insight-card__read-more:hover {
+  text-decoration: underline;
+}
+
+/* Taxonomy tags */
+.insight-card__sectors,
+.insight-card__markets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.insight-card__sector-tag,
+.insight-card__market-tag,
+.insight-card__more-tag {
+  background-color: var(--neutral-200);
+  color: var(--neutral-600);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: var(--breakpoint-md)) {
+  .insight-card__image {
+    height: 150px;
+  }
+}

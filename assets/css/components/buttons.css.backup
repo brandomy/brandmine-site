@@ -1,0 +1,53 @@
+/* Base button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  height: 44px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  box-sizing: border-box;
+}
+
+/* Primary button (teal) */
+.btn--primary {
+  background-color: var(--primary-400);
+  color: white;
+  border: 2px solid var(--primary-400);
+}
+
+.btn--primary:hover {
+  background-color: var(--primary-300);
+  border-color: var(--primary-300);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Secondary button (orange) */
+.btn--secondary {
+  background-color: var(--secondary-500);
+  color: white;
+  border: none;
+}
+
+.btn--secondary:hover {
+  background-color: var(--secondary-400);
+}
+
+/* CTA button (white on gradient background) */
+.btn--cta {
+  background-color: white;
+  color: var(--primary-700);
+  font-weight: bold;
+}
+
+.btn--cta:hover {
+  background-color: var(--primary-100);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}

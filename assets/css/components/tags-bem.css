@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Tag System (BEM Refactor)
+   ========================================================================== */
+
+/* Base tag style */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+/* Tag modifiers by type */
+.tag--sector {
+  background-color: var(--brand-sector-bg, #E5F3FF);
+  color: var(--brand-sector-text, #0077CC);
+}
+
+.tag--market {
+  background-color: var(--brand-market-bg, #FFF3E0);
+  color: var(--brand-market-text, #E65100);
+}
+
+.tag--attribute {
+  background-color: var(--brand-attribute-bg, #F3E5F5);
+  color: var(--brand-attribute-text, #6A1B9A);
+}
+
+.tag--signal {
+  background-color: var(--brand-signal-bg, #E8F5E9);
+  color: var(--brand-signal-text, #2E7D32);
+}
+
+.tag--more {
+  background-color: var(--neutral-200);
+  color: var(--neutral-600);
+}
+
+/* Tag List Container */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag-list__item {
+  margin-bottom: var(--space-1);
+}
+
+/* Tag Cloud Structure */
+.tag-cloud {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.tag-cloud__group {
+  margin-bottom: var(--space-2);
+}
+
+.tag-cloud__label {
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.tag-cloud__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag-cloud__tag {
+  /* Inherits .tag style */
+}

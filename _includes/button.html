@@ -1,0 +1,36 @@
+<!-- _includes/button.html -->
+<a href="{{ include.href | default: '#' }}"
+   class="btn{% if include.variant %} btn--{{ include.variant }}{% endif %}{% if include.size %} btn--{{ include.size }}{% endif %}{% if include.block %} btn--block{% endif %}">
+  {{ include.label | default: site.data.translations[page.lang].buttons[include.key] | default: 'Click Me' }}
+</a>
+
+<!-- Usage Examples -->
+<!-- {% include button.html
+  href="/en/brands/"
+  label="Explore Brands"
+  variant="primary"     # optional: primary, secondary, outline
+  size="sm"             # optional: sm, lg
+  block=true            # optional: full width
+%} -->
+
+<!-- 
+{% include button.html 
+  href="/en/brands/"
+  label="Explore Brands"
+  variant="primary" %} -->
+
+
+  <!-- {% include button.html 
+    href="/signup/"
+    label="Join Now"
+    variant="primary"
+    size="lg"
+    block=true %} -->
+
+    <!-- multilingual
+      {% include button.html
+        href="/{{ page.lang }}/brands/"
+        key="explore_brands"
+        variant="primary" %}
+
+        

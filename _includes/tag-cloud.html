@@ -1,37 +1,21 @@
+{% assign sections = site.data.translations[page.lang].tags %}
+
 <div class="tag-cloud">
-    <h3>{{ site.data.translations[page.lang].tags.sectors }}</h3>
-    <div class="sector-cloud">
-      {% for tag in site.data.tag_translations.sectors %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ tag[0] }}/" class="tag sector-tag">
-          {{ tag[1][page.lang] }}
-        </a>
-      {% endfor %}
-    </div>
-    
-    <h3>{{ site.data.translations[page.lang].tags.markets }}</h3>
-    <div class="market-cloud">
-      {% for tag in site.data.tag_translations.markets %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ tag[0] }}/" class="tag market-tag">
-          {{ tag[1][page.lang] }}
-        </a>
-      {% endfor %}
-    </div>
-    
-    <h3>{{ site.data.translations[page.lang].tags.attributes }}</h3>
-    <div class="attribute-cloud">
-      {% for tag in site.data.tag_translations.attributes %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/attributes/{{ tag[0] }}/" class="tag attribute-tag">
-          {{ tag[1][page.lang] }}
-        </a>
-      {% endfor %}
-    </div>
-    
-    <h3>{{ site.data.translations[page.lang].tags.signals }}</h3>
-    <div class="signal-cloud">
-      {% for tag in site.data.tag_translations.signals %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/signals/{{ tag[0] }}/" class="tag signal-tag">
-          {{ tag[1][page.lang] }}
-        </a>
-      {% endfor %}
-    </div>
-  </div>
+  {% for section in sections %}
+    {% assign tag_type = section[0] %}
+    {% assign tags = section[1] %}
+    {% if tags.size > 0 %}
+      <div class="tag-cloud__group">
+        <h3 class="tag-cloud__label">{{ site.data.translations[page.lang].tag_groups[tag_type] }}</h3>
+        <div class="tag-cloud__tags">
+          {% for tag in tags %}
+            {% assign slug = tag[0] %}
+            <a href="{{ site.baseurl }}/{{ page.lang }}/tags/{{ tag_type }}/{{ slug }}/" class="tag tag--{{ tag_type }} tag-cloud__tag">
+              {{ tag[1] | default: tag[0] }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

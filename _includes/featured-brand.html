@@ -1,0 +1,44 @@
+<!-- BEM Refactor: Featured Brand Card -->
+<article class="featured-brand">
+  <div class="featured-brand__image">
+    {% if include.content_type == "brand" and include.content.hero_image %}
+      <img src="{{ include.content.hero_image | relative_url }}" alt="{{ include.content.title }} logo" class="featured-brand__img">
+    {% endif %}
+    <div class="featured-brand__badge">
+      {{ site.data.translations[include.content.lang].general.featured }}
+    </div>
+  </div>
+
+  <div class="featured-brand__body">
+    <h2 class="featured-brand__title">
+      <a href="{{ include.content.url | relative_url }}">{{ include.content.title }}</a>
+    </h2>
+
+    <div class="featured-brand__meta">
+      {% if include.content.founding_year %}
+        <span class="featured-brand__year">{{ site.data.translations[include.content.lang].brand.est }} {{ include.content.founding_year }}</span>
+      {% endif %}
+      {% if include.content.sectors and include.content.sectors.size > 0 %}
+        <span class="featured-brand__sector">{{ include.content.sectors[0] }}</span>
+      {% endif %}
+    </div>
+
+    <p class="featured-brand__description">
+      {% if include.content.description %}
+        {{ include.content.description | truncate: 180 }}
+      {% else %}
+        {{ include.content.content | strip_html | truncate: 180 }}
+      {% endif %}
+    </p>
+
+    {% if include.content.attributes and include.content.attributes.size > 0 %}
+      <div class="featured-brand__tags">
+        {% include tag-list.html tags=include.content.attributes type="attribute" %}
+      </div>
+    {% endif %}
+
+    <a href="{{ include.content.url | relative_url }}" class="featured-brand__link">
+      {{ site.data.translations[include.content.lang].general.read_more }}
+    </a>
+  </div>
+</article>
