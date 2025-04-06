@@ -7,30 +7,30 @@ lang: en
 ---
 
 <!-- Hero Panel NO Image -->
-<div class="panel panel--hero">
+<div class="panel home-hero--no-image">
   <div class="panel__content">
-    <h1 class="panel__heading-primary">{{ site.data.translations[page.lang].home.hero_title }}</h1>
-    <p class="panel__subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
+    <h1 class="home-hero--no-image__heading-primary">{{ site.data.translations[page.lang].home.hero_title }}</h1>
+    <p class="home-hero--no-image__subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
-      <a href="#how-it-works" class="btn btn--secondary">{{ site.data.translations[page.lang].discover.explore }}</a>    </div>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn home-hero--no-image__btn-primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="#how-it-works" class="btn home-hero--no-image__btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>    </div>
   </div>
 </div>
 
 <!-- Hero Panel with Image -->
-<div class="panel panel--hero-image" style="background-image: url('{{ site.baseurl }}/assets/images/hero/home-cover-1.jpg');">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">{{ site.data.translations[page.lang].home.hero_title }}</h1>
-    <p class="panel__subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
+<div class="panel home-hero--with-image" style="background-image: url('{{ site.baseurl }}/assets/images/hero/home-cover-1.jpg');">
+  <div class="home-hero--with-image__content">
+    <h1 class="home-hero--with-image__heading">{{ site.data.translations[page.lang].home.hero_title }}</h1>
+    <p class="home-hero--with-image__subtitle">{{ site.data.translations[page.lang].home.hero_subtitle }}</p>
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
-      <a href="#how-it-works" class="btn btn--secondary">{{ site.data.translations[page.lang].discover.explore }}</a>    
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn home-hero--with-image__btn-primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="#how-it-works" class="btn home-hero--with-image__btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>    
     </div>
   </div>
 </div>
 
 <!-- Impact Statement Panel -->
-<div class="panel panel--accent-pattern">
+<div class="panel home-impact">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Breaking Down Barriers, Building Global Brands</h2>
     <p class="panel__lead-text">
@@ -66,7 +66,7 @@ lang: en
           <li><span>Connect with the right international partners and investors</span></li>
           <li><span>Get strategic guidance on readiness for cross-border expansion</span></li>
         </ul>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.view_more }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn home-brands__btn">{{ site.data.translations[page.lang].buttons.view_more }}</a>
       </div>
       <div>
         <img src="{{ site.baseurl }}/assets/images/home/for-brands-image.jpg" alt="Brand owner with product" class="panel-image">
@@ -90,7 +90,7 @@ lang: en
           <li><span>Understand the cultural context behind their success</span></li>
           <li><span>Connect directly with decision-makers</span></li>
         </ul>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--primary">{{ site.data.translations[page.lang].discover.explore }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn home-partners__btn">{{ site.data.translations[page.lang].discover.explore }}</a>
       </div>
     </div>
   </div>
@@ -174,12 +174,12 @@ lang: en
 </div>
 
 <!-- CTA Panel -->
-<div class="panel panel--cta">
-  <div class="panel__content">
+<div class="panel home-cta">
+  <div class="home-cta__content">
     <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.cta_title }}</h2>
     <p class="panel__lead-text">{{ site.data.translations[page.lang].home.cta_text }}</p>
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--cta">{{ site.data.translations[page.lang].home.cta_button }}</a>
+    <div class="home-cta__buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--primary">{{ site.data.translations[page.lang].home.cta_button }}</a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--secondary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
     </div>
   </div>

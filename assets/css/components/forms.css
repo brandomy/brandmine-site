@@ -21,20 +21,20 @@ input[type="tel"],
 textarea,
 select {
   width: 100%;
-  padding: var(--space-2); /* 0.5rem */
-  border: 1px solid var(--neutral-300);
+  padding: var(--form-input-padding); /* Updated */
+  border: 1px solid var(--form-border-color); /* Updated */
   border-radius: var(--radius-sm); /* Using new token */
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--neutral-700);
   box-sizing: border-box;
-  margin-bottom: var(--space-4); /* 1rem */
+  margin-bottom: var(--form-element-spacing); /* Updated */
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: var(--primary-400);
+  border-color: var(--form-focus-border-color); /* Updated */
   outline: none;
   box-shadow: var(--focus-shadow); /* Using new token for focus */
 }
@@ -61,7 +61,7 @@ label {
 /* Base container styling */
 .mobile-form-wrapper {
   width: 100%;
-  max-width: 800px;
+  max-width: var(--form-max-width);
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -70,8 +70,8 @@ label {
   width: 100%;
   background-color: var(--neutral-50);
   border-radius: var(--radius-sm); /* Using token for consistency */
-  padding: var(--space-6);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: var(--form-wrapper-padding); /* Updated */
+  box-shadow: var(--form-card-shadow); /* Updated */
   box-sizing: border-box;
 }
 
@@ -98,7 +98,7 @@ label {
   }
   
   .contact-form-container {
-    padding: var(--space-8);
+    padding: var(--form-wrapper-padding-mobile); /* Updated */
   }
 }
 
@@ -128,25 +128,25 @@ label {
 
 .ml-embedded .ml-form-fieldRow input {
   background-color: white;
-  border: 1px solid var(--primary-400);
+  border: 1px solid var(--form-button-bg); /* Updated */
   border-radius: var(--radius-sm); /* Using token */
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  padding: var(--space-2); /* 0.5rem */
+  padding: var(--form-input-padding); /* Updated */
   color: var(--neutral-700);
   width: 100%;
   box-sizing: border-box;
 }
 
 .ml-embedded .ml-form-fieldRow input:focus {
-  border-color: var(--primary-300);
+  border-color: var(--form-button-hover-bg); /* Updated */
   outline: none;
   box-shadow: var(--focus-shadow); /* Using token */
 }
 
 .ml-embedded .ml-form-horizontalRow button {
-  background-color: var(--primary-400);
-  border: 1px solid var(--primary-400);
+  background-color: var(--form-button-bg); /* Updated */
+  border: 1px solid var(--form-button-bg); /* Updated */
   border-radius: var(--radius-sm); /* Using token */
   color: white;
   font-family: var(--font-body);
@@ -159,8 +159,8 @@ label {
 }
 
 .ml-embedded .ml-form-horizontalRow button:hover {
-  background-color: var(--primary-300);
-  border-color: var(--primary-300);
+  background-color: var(--form-button-hover-bg); /* Updated */
+  border-color: var(--form-button-hover-bg); /* Updated */
 }
 
 .ml-embedded .ml-form-successBody {

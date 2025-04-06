@@ -12,10 +12,10 @@
 /* Standard card with subtle shadow and border */
 .card {
   background-color: var(--neutral-100);
-  padding: var(--space-4); /* 1rem */
-  border-radius: var(--radius-sm); /* Updated to token */
-  border: var(--border-width-thin) solid var(--neutral-200);
-  box-shadow: var(--shadow-sm); /* Updated to token */
+  padding: var(--card-padding-default);
+  border-radius: var(--card-border-radius);
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 
 /* --------------------------------------------------------------------------
@@ -35,9 +35,9 @@
 /* White content card for use on colored backgrounds */
 .card--white {
   background-color: white;
-  border-radius: var(--radius-md); /* Updated to token (was 0.5rem) */
-  box-shadow: var(--shadow-lg); /* Updated to token */
-  padding: var(--space-12); /* 3rem */
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding-large);
 }
 
 /* Center paragraphs within content cards */
@@ -60,6 +60,6 @@
 
   /* Adjust white content cards for mobile */
   .card--white {
-    padding: var(--space-6); /* 1.5rem */
+    padding: var(--card-padding-default);
   }
 }

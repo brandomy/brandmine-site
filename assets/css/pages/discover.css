@@ -1,6 +1,4 @@
-/* Add to assets/css/pages/discover.css */
-
- .discover__grid {
+.discover__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--space-6);
@@ -11,14 +9,14 @@
     background-color: white;
     border-radius: 0.5rem;
     padding: var(--space-6);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
   }
   
   .discover__card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow-hover);
   }
   
   .discover__card-title {

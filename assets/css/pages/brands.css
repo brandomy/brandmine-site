@@ -70,7 +70,7 @@
 .brands__card {
   background-color: white;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   padding: var(--space-6);
   border: 1px solid var(--neutral-200);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -78,7 +78,7 @@
 
 .brands__card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .brands__logo-placeholder {
@@ -102,7 +102,7 @@
   font-size: 0.9rem;
 }
 
-.brands__tag.brands__tag--country, .brands__tag.brands__tag--sector {
+.brands__tag--country, .brands__tag--sector {
   background-color: var(--neutral-100);
   padding: var(--space-1) var(--space-2);
   border-radius: 4px;

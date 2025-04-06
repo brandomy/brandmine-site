@@ -1,21 +1,21 @@
 /* ==========================================================================
-   Growth Signals Page Styling
+   Signals Page Styling
    ========================================================================== */
 
 /* Main container styling */
-.growth-signals-container {
+.signals-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-4);
 }
 
 /* Page intro section */
-.growth-signals-intro {
+.signals-intro {
   margin-bottom: var(--space-8);
   max-width: 800px;
 }
 
-.growth-signals-intro h1 {
+.signals-intro h1 {
   color: var(--neutral-800);
   font-family: var(--font-heading);
   font-size: 2.5rem;
@@ -23,7 +23,7 @@
   position: relative;
 }
 
-.growth-signals-intro h1::after {
+.signals-intro h1::after {
   content: "";
   display: block;
   width: 80px;
@@ -32,7 +32,7 @@
   margin-top: var(--space-2);
 }
 
-.growth-signals-intro p {
+.signals-intro p {
   font-size: 1.125rem;
   line-height: 1.6;
   color: var(--neutral-600);
@@ -40,7 +40,7 @@
 }
 
 /* Section headers */
-.growth-signals-container h2 {
+.signals-container h2 {
   font-family: var(--font-heading);
   font-size: 1.875rem;
   color: var(--neutral-800);
@@ -49,7 +49,7 @@
   border-bottom: 1px solid var(--neutral-200);
 }
 
-.growth-signals-container h3 {
+.signals-container h3 {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   color: var(--neutral-700);
@@ -58,14 +58,14 @@
   align-items: center;
 }
 
-.growth-signals-container h3 .tag-icon {
+.signals-container h3 .tag-icon {
   margin-right: var(--space-2);
   width: 32px;
   height: 32px;
 }
 
 /* Signal cards grid layout */
-.signal-cards {
+.signals-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-6);
@@ -73,7 +73,7 @@
 }
 
 /* Individual signal card styling */
-.signal-card {
+.signals-card {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -81,51 +81,51 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.signal-card:hover {
+.signals-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.signal-card__header {
+.signals-card__header {
   padding: var(--space-4);
   border-bottom: 1px solid var(--neutral-100);
   display: flex;
   align-items: center;
 }
 
-.signal-card__header .tag-icon {
+.signals-card__header .tag-icon {
   width: 36px;
   height: 36px;
   margin-right: var(--space-3);
 }
 
-.signal-card__title {
+.signals-card__title {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
 }
 
-.signal-card__body {
+.signals-card__body {
   padding: var(--space-4);
 }
 
-.signal-card__body p {
+.signals-card__body p {
   margin-top: 0;
   margin-bottom: var(--space-3);
   color: var(--neutral-600);
 }
 
-.signal-card__body strong {
+.signals-card__body strong {
   color: var(--neutral-700);
 }
 
-.signal-card__footer {
+.signals-card__footer {
   padding: var(--space-3) var(--space-4);
   background-color: var(--neutral-50);
   border-top: 1px solid var(--neutral-100);
 }
 
-.signal-card__link {
+.signals-card__link {
   color: var(--primary-600);
   text-decoration: none;
   font-weight: 500;
@@ -133,54 +133,54 @@
   align-items: center;
 }
 
-.signal-card__link:hover {
+.signals-card__link:hover {
   color: var(--primary-700);
   text-decoration: underline;
 }
 
-.signal-card__link:focus-visible {
+.signals-card__link:focus-visible {
   outline: 2px solid var(--primary-300);
   outline-offset: 2px;
 }
 
-.signal-card__link svg {
+.signals-card__link svg {
   width: 18px;
   height: 18px;
   margin-left: var(--space-1);
 }
 
 /* Signal specific styling */
-.signal-card--export-ready .signal-card__header {
+.signals-card--export-ready .signals-card__header {
   background-color: var(--accent-50);
 }
 
-.signal-card--franchise-ready .signal-card__header {
+.signals-card--franchise-ready .signals-card__header {
   background-color: var(--secondary-50);
 }
 
-.signal-card--investment-ready .signal-card__header {
+.signals-card--investment-ready .signals-card__header {
   background-color: var(--primary-50);
 }
 
-.signal-card--rapid-growth .signal-card__header {
+.signals-card--rapid-growth .signals-card__header {
   background-color: #FFF1F2; /* Light pink */
 }
 
 /* Feature list styling */
-.signal-card__features {
+.signals-card__features {
   margin: var(--space-4) 0;
   padding-left: 0;
   list-style: none;
 }
 
-.signal-card__feature {
+.signals-card__feature {
   position: relative;
   padding-left: var(--space-6);
   margin-bottom: var(--space-2);
   line-height: 1.5;
 }
 
-.signal-card__feature::before {
+.signals-card__feature::before {
   content: "";
   position: absolute;
   left: 0;
@@ -193,7 +193,7 @@
 }
 
 /* Call to action section */
-.cta-section {
+.signals-cta-section {
   margin: var(--space-8) 0;
   padding: var(--space-6);
   background-color: var(--primary-50);
@@ -201,19 +201,19 @@
   text-align: center;
 }
 
-.cta-section h2 {
+.signals-cta-section h2 {
   margin-top: 0;
   border-bottom: none;
   color: var(--primary-700);
 }
 
-.cta-section p {
+.signals-cta-section p {
   max-width: 600px;
   margin: 0 auto var(--space-4);
   color: var(--primary-600);
 }
 
-.cta-button {
+.signals-cta-button {
   display: inline-block;
   padding: var(--space-3) var(--space-5);
   background-color: var(--primary-500);
@@ -224,47 +224,47 @@
   transition: background-color 0.2s ease;
 }
 
-.cta-button:hover {
+.signals-cta-button:hover {
   background-color: var(--primary-600);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .signal-cards {
+  .signals-cards {
     grid-template-columns: 1fr;
   }
   
-  .growth-signals-intro h1 {
+  .signals-intro h1 {
     font-size: 2rem;
   }
   
-  .growth-signals-container h2 {
+  .signals-container h2 {
     font-size: 1.5rem;
   }
   
-  .growth-signals-container h3 {
+  .signals-container h3 {
     font-size: 1.25rem;
   }
   
-  .cta-section {
+  .signals-cta-section {
     padding: var(--space-4);
   }
 }
 
 /* Print styles */
 @media print {
-  .growth-signals-container {
+  .signals-container {
     max-width: 100%;
     padding: 0;
   }
   
-  .signal-card {
+  .signals-card {
     break-inside: avoid;
     box-shadow: none;
     border: 1px solid var(--neutral-200);
   }
   
-  .cta-section {
+  .signals-cta-section {
     display: none;
   }
 }

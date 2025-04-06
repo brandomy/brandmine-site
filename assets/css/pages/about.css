@@ -13,18 +13,18 @@
  * which is automatically added to the body via conditional in default.html
  * when the URL contains "/about/".
  */
- .about-page .panel__content p,
- .about-page .content-card p {
-   max-width: 42em;       /* Control line length for readability */
+ .about-light-panel__content p,
+ .about-problem__card p {
+   max-width: var(--content-narrow-max-width);       /* Control line length for readability */
    margin-left: auto;
    margin-right: auto;
    text-align: center;    /* Center text in paragraphs */
  }
  
  /* Target specific sections on the About page */
- .about-page .panel--secondary .feature-item,
- .about-page .panel--primary .solutions__item {
-   max-width: 800px;
+ .about-problem__feature,
+ .about-solution__item {
+   max-width: var(--content-narrow-max-width);
    margin-left: auto;
    margin-right: auto;
  }
@@ -34,27 +34,27 @@
    -------------------------------------------------------------------------- */
 
 /* Ensure proper text centering in light panels */
-.about-page .panel--light .panel__content {
-  max-width: 900px;
+.about-light-panel__content {
+  max-width: var(--content-medium-max-width);
   text-align: center;
 }
 
-.about-page .panel--light .panel__heading-secondary {
+.about-team__heading-secondary {
   font-size: var(--text-4xl);
   margin-bottom: var(--space-8);
   color: var(--neutral-800);
 }
 
-.about-page .panel--light .panel__lead-text {
+.about-light-panel__lead-text {
   font-size: var(--text-xl);
-  max-width: 800px;
+  max-width: var(--content-narrow-max-width);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
 /* --------------------------------------------------------------------------
-   3. HERO PANEL
+   3. HERO PANEL — no custom styles yet
    -------------------------------------------------------------------------- */
 
 
@@ -152,7 +152,7 @@
   border-top: 3px solid var(--primary-400); /* Add border at top */
 }
   
-.services-column h3 {
+.services-column__heading {
   color: var(--primary-600);
   margin-top: 0;
   margin-bottom: var(--space-6); /* 1.25rem is close to 1.5rem, using 1.5rem */
@@ -174,7 +174,7 @@
   text-align: left; /* Explicitly set list items to left-aligned */
 }
   
-.service-list li:before {
+.service-list__bullet {
   content: "•";
   position: absolute;
   left: 0;
@@ -198,13 +198,13 @@ h3.service-category {
    -------------------------------------------------------------------------- */
 
 /* Perspective section styling */
-.panel--accent .content-card {
-  max-width: 900px;
+.about-perspective__card {
+  max-width: var(--content-medium-max-width);
   margin: 0 auto;
 }
   
 /* Remove default margin/padding from list */
-.perspective-list {
+.about-perspective__list {
   list-style: none;
   padding: 0;
   margin: var(--space-8) auto; /* 2rem 0 */
@@ -212,7 +212,7 @@ h3.service-category {
 }
   
 /* Style each list item */
-.perspective-list li {
+.about-perspective__item {
   position: relative;
   margin-bottom: var(--space-4); /* 1rem */
   padding-left: var(--space-8); /* 2rem */
@@ -227,7 +227,7 @@ h3.service-category {
 }
   
 /* Style the bullet */
-.perspective-list li::before {
+.about-perspective__item::before {
   content: "•";
   color: var(--accent-900);
   font-size: 1.5rem;
@@ -239,14 +239,14 @@ h3.service-category {
 }
 
 /* Style for the span wrapper in list items */
-.perspective-list li span {
+.about-perspective__item .about-perspective__label {
   display: inline-block;
   padding-left: var(--space-4);
   text-indent: 0;
 }
   
 /* Style emphasized text */
-.perspective-list li strong {
+.about-perspective__item .about-perspective__highlight {
   color: var(--accent-900);
   font-weight: 600;
   margin-right: var(--space-1); /* 0.25rem */
@@ -254,7 +254,7 @@ h3.service-category {
   
 /* Ensure proper alignment on all screen sizes */
 @media (min-width: var(--breakpoint-xl)) { /* 1200px */
-  .perspective-list {
+  .about-perspective__list {
     width: 100%;
     max-width: 80%;
     margin-left: auto;
@@ -264,24 +264,24 @@ h3.service-category {
   
 /* Maintain padding on smaller screens */
 @media (max-width: var(--breakpoint-md)) { /* 768px */
-  .perspective-list li {
+  .about-perspective__item {
     padding: var(--space-3) var(--space-3) var(--space-3) var(--space-8); /* 0.75rem 0.75rem 0.75rem 2rem */
   }
     
-  .perspective-list li::before {
+  .about-perspective__item::before {
     left: var(--space-1); /* 0.4rem is close to 0.25rem, using 0.25rem */
   }
 }
 
 /* Adjust heading in accent panel */
-.panel--accent .panel__heading-secondary {
+.about-perspective__heading {
   font-size: var(--text-4xl);
   margin-bottom: var(--space-6);
 }
 
-.panel--accent .panel__lead-text {
+.about-perspective__lead-text {
   font-size: var(--text-lg);
-  max-width: 800px;
+  max-width: var(--content-narrow-max-width);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -292,7 +292,7 @@ h3.service-category {
    -------------------------------------------------------------------------- */
   
 /* Contact section styling */
-.panel--cta .contact-info {
+.about-cta__contact-info {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -301,12 +301,12 @@ h3.service-category {
   margin: var(--space-8) 0; /* 2rem 0 */
 }
   
-.panel--cta .contact-item {
+.about-cta__contact-item {
   display: flex;
   align-items: center;
 }
   
-.panel--cta .contact-icon {
+.about-cta__contact-icon {
   width: 1.5rem;
   height: 1.5rem;
   margin-right: var(--space-3); /* 0.75rem */
@@ -314,20 +314,20 @@ h3.service-category {
 }
   
 /* Style the contact links */
-.panel--cta a,
-.panel--cta a:visited {
+.about-cta__link,
+.about-cta__link:visited {
   color: white;
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.2s ease;
 }
   
-.panel--cta a:hover {
+.about-cta__link:hover {
   opacity: 0.8;
   text-decoration: underline;
 }
 
-.panel--cta .panel__lead-text {
+.about-cta__lead-text {
   color: var(--secondary-50); /* Very light orange color */
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
   font-weight: 500; /* Slightly bolder than normal */
@@ -336,7 +336,7 @@ h3.service-category {
 
 /* Contact form container */
 .mobile-form-wrapper {
-  max-width: 800px;
+  max-width: var(--content-narrow-max-width);
   margin: var(--space-8) auto;
 }
 
@@ -345,17 +345,17 @@ h3.service-category {
    -------------------------------------------------------------------------- */
    
 @media (min-width: var(--breakpoint-md)) {
-  .panel--light .panel__heading-secondary,
-  .panel--accent .panel__heading-secondary {
+  .about-light-panel__heading-secondary,
+  .about-perspective__heading {
     font-size: var(--text-4xl);
   }
   
-  .panel--light .panel__lead-text,
-  .panel--accent .panel__lead-text {
+  .about-light-panel__lead-text,
+  .about-perspective__lead-text {
     font-size: var(--text-xl);
   }
   
-  .perspective-list {
+  .about-perspective__list {
     max-width: 75%;
   }
 }

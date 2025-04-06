@@ -7,8 +7,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-3) var(--space-6);
-  height: 44px;
+  padding: var(--btn-padding-default); /* Updated to preferred padding */
+  height: var(--btn-height-default); /* Updated to preferred height */
   font-weight: 600;
   text-align: center;
   text-decoration: none;
@@ -20,9 +20,9 @@
 
 /* Modifier: Primary button (teal) */
 .btn--primary {
-  background-color: var(--primary-400);
+  background-color: var(--primary-600); /* Updated to preferred color */
   color: white;
-  border: 2px solid var(--primary-400);
+  border: 2px solid var(--primary-600); /* Updated to match background color */
 }
 
 .btn--primary:hover {
@@ -62,20 +62,20 @@
 
 /* Modifier: Small size button */
 .btn--sm {
-  padding: var(--space-2) var(--space-4);
-  height: 36px;
+  padding: var(--btn-padding-sm); /* Updated to preferred padding */
+  height: var(--btn-height-sm); /* Updated to preferred height */
   font-size: var(--text-sm);
 }
 
 /* Modifier: Large size button */
 .btn--lg {
-  padding: var(--space-4) var(--space-6);
-  height: 52px;
+  padding: var(--btn-padding-lg); /* Updated to preferred padding */
+  height: var(--btn-height-lg); /* Updated to preferred height */
   font-size: var(--text-lg);
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--primary-400);
+  outline: 2px solid var(--primary-600); /* Updated to match primary color */
   outline-offset: 2px;
 }
 

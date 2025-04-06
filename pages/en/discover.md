@@ -8,9 +8,9 @@ ref: discover
 
 <!-- Hero Panel -->
 
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">Discover Brands</h1>
-    <p class="panel__subtitle">Explore brands by their Sectors, Markets, Attributes or Signals</p>
+<div class="discover-hero">
+  <div class="discover-hero__content">
+    <h1 class="discover-hero__heading">Discover Brands</h1>
+    <p class="discover-hero__subtitle">Explore brands by their Sectors, Markets, Attributes or Signals</p>
   </div>
 </div>

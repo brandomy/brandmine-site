@@ -1,46 +1,41 @@
 /* ==========================================================================
-   Brandmine Design Tokens
+   TOKENS TABLE OF CONTENTS
    ==========================================================================
-
-   Table of Contents:
-   1. Colors
-      1.1 Primary Colors
-      1.2 Secondary Colors
-      1.3 Neutral Colors
-      1.4 Accent Colors
-      1.5 Quaternary Colors (formerly "country")
-   2. Typography
-      2.1 Font Families
-      2.2 Font Sizes
-      2.3 Line Heights
-      2.4 Font Weights
-      2.5 Letter Spacing
-      2.6 Additional Text Tokens
-         - Text Caption
-         - Text Overline
+   1. Color Tokens
+     1.1 Primary Colors
+     1.2 Secondary Colors
+     1.3 Neutral Colors
+     1.4 Accent Colors
+     1.5 Quaternary Colors
+ 
+   2. Typography Tokens
+     2.1 Font Families
+     2.2 Font Sizes
+     2.3 Line Heights
+     2.4 Font Weights
+     2.5 Letter Spacing
+     2.6 Additional Text Tokens
+ 
    3. Breakpoints
    4. Spacing
    5. Grid Settings
    6. Additional Tokens
-      6.1 Radius Tokens
-         - A modular scale for all border radii
-         - Specific token for cards if desired
-      6.2 Layout Tokens
-      6.3 Shadow Tokens
-      6.4 Transition & Animation Tokens
-      6.5 Z-Index Tokens
-      6.6 Focus Shadow
+     6.1 Border & Radius Tokens
+     6.2 Layout Tokens
+     6.3 Button Tokens
+     6.4 Shadow Tokens
+     6.5 Card Tokens
+       - Padding
+       - Border
+       - Default Shadow
+       - Hover Shadow
+     6.6 Form Tokens
+     6.7 Transition & Animation Tokens
+     6.8 Z-Index Tokens
+     6.9 Focus Shadow
+========================================================================== */
 
-   Notes:
-   - This file is the single source of truth for all foundational design values.
-   - We use “radius” tokens (e.g., --radius-sm) for all border radii. There is no separate “border‑radius” scale.
-   - The text size scale is already defined from --text-xs to --text-9xl, with a custom size (--text-custom). We now add tokens for text captions and overlines for specialized use.
-*/
-
-/* ==========================================================================
-   1. COLORS
-   ========================================================================== */
-   :root {
+:root {
     /* 1.1 Primary Colors (Teal) */
     --primary-50:  #E6FFFA;
     --primary-100: #B2F5EA;
@@ -100,11 +95,11 @@
     --quaternary-700: #728445;
     --quaternary-800: #566336;
     --quaternary-900: #3A4228;
-  }
+}
   
-  /* ==========================================================================
-     2. TYPOGRAPHY
-     ========================================================================== */
+/* ==========================================================================
+   2. TYPOGRAPHY
+   ========================================================================== */
   /* 2.1 Font Families */
   :root {
     --font-heading-en: 'PT Serif', Georgia, serif;
@@ -245,32 +240,72 @@
     --form-max-width: 700px;
     --container-max-width: 1200px; /* General container maximum width */
   }
+
+  /* --------------------------------------------------------------------------
+     6.5 Card Tokens
+     -------------------------------------------------------------------------- */
+  :root {
+    --card-padding-default: var(--space-4);
+    --card-padding-large: var(--space-6);
+    --card-border-radius: var(--radius-md);
+    --card-shadow: var(--shadow-lg);
+    --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+    --card-border: var(--border-width-thin) solid var(--neutral-200);
+  }
   
-  /* 6.3 Shadow Tokens */
+  /* --------------------------------------------------------------------------
+     6.6 Form Tokens
+     -------------------------------------------------------------------------- */
+  :root {
+    --form-input-padding: var(--space-2);
+    --form-element-spacing: var(--space-4);
+    --form-border-color: var(--neutral-300);
+    --form-focus-border-color: var(--primary-400);
+    --form-wrapper-padding: var(--space-4);
+    --form-wrapper-padding-mobile: var(--space-2);
+    --form-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --form-button-bg: var(--primary-400);
+    --form-button-hover-bg: var(--primary-300);
+  }
+  
+  /* --------------------------------------------------------------------------
+     6.3 Button Tokens
+     -------------------------------------------------------------------------- */
+  :root {
+    --btn-padding-default: 1rem;
+    --btn-padding-sm: var(--space-2) var(--space-4);
+    --btn-padding-lg: var(--space-4) var(--space-6);
+
+    --btn-height-default: 44px;
+    --btn-height-sm: 36px;
+    --btn-height-lg: 52px;
+  }
+  
+  /* 6.4 Shadow Tokens */
   :root {
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
     --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+    --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
   }
   
-  /* 6.4 Transition & Animation Tokens */
+  /* 6.5 Transition & Animation Tokens */
   :root {
     --transition-fast: 0.2s ease-in;
     --transition-medium: 0.3s ease;
     --transition-slow: 0.5s ease-out;
   }
   
-  /* 6.5 Z-Index Tokens */
+  /* 6.6 Z-Index Tokens */
   :root {
     --z-index-dropdown: 1000;
     --z-index-overlay: 900;
     --z-index-modal: 1100;
   }
   
-  /* 6.6 Focus Shadow (for interactive elements) */
+  /* 6.7 Focus Shadow (for interactive elements) */
   :root {
     --focus-shadow: 0 0 0 3px rgba(var(--primary-400-rgb), 0.2);
   }
   
   /* End of Design Tokens */
-  

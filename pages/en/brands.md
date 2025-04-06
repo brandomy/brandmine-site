@@ -7,26 +7,26 @@ ref: brands
 ---
 
 <!-- Hero Panel -->
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">Discover Leading BRICS+ Consumer Brands</h1>
-    <p class="panel__subtitle">Breaking Through Barriers to Find Your Next Opportunity</p>
+<div class="brands-hero">
+  <div class="brands-hero__content">
+    <h1 class="brands-hero__heading">Discover Leading BRICS+ Consumer Brands</h1>
+    <p class="brands-hero__subtitle">Breaking Through Barriers to Find Your Next Opportunity</p>
   </div>
 </div>
 
 <!-- Introduction Panel -->
-<div class="panel panel--light">
-  <div class="panel__content">
-    <p class="panel__lead-text">Brandmine offers unprecedented access to consumer brands that have proven their success in BRICS+ markets but remain undiscovered internationally due to language, political, and cultural barriers.</p>
+<div class="brands-introduction-panel">
+  <div class="brands-introduction-panel__content">
+    <p class="brands-introduction-panel__lead-text">Brandmine offers unprecedented access to consumer brands that have proven their success in BRICS+ markets but remain undiscovered internationally due to language, political, and cultural barriers.</p>
   </div>
 </div>
 
 <!-- Brand Profiles Panel -->
-<div class="panel panel--primary">
-  <div class="panel__content">
+<div class="brands-profiles-panel">
+  <div class="brands-profiles-panel__content">
     <div class="content-card">
-      <h2 class="panel__heading-secondary">Rich Brand Profiles</h2>
-      <p class="panel__paragraph">Our curated brand profiles go beyond basic company information to reveal:</p>
+      <h2 class="brands-profiles-panel__heading">Rich Brand Profiles</h2>
+      <p class="brands-profiles-panel__paragraph">Our curated brand profiles go beyond basic company information to reveal:</p>
       
       <div class="features-list">
         <div class="feature-item">
@@ -84,9 +84,9 @@ ref: brands
 </div>
 
 <!-- Featured Brands Panel -->
-<div class="panel panel--light">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">Featured Brands</h2>
+<div class="brands-featured-panel">
+  <div class="brands-featured-panel__content">
+    <h2 class="brands-featured-panel__heading">Featured Brands</h2>
     
     <div class="brand-grid">
       <!-- This will be populated dynamically in the future -->
@@ -125,11 +125,11 @@ ref: brands
 </div>
 
 <!-- Find Your Partner Panel -->
-<div class="panel panel--accent">
-  <div class="panel__content">
+<div class="brands-find-partner-panel">
+  <div class="brands-find-partner-panel__content">
     <div class="content-card">
-      <h2 class="panel__heading-secondary">Find Your Next Partner</h2>
-      <p class="panel__paragraph">Use our advanced search and filtering tools to discover brands by:</p>
+      <h2 class="brands-find-partner-panel__heading">Find Your Next Partner</h2>
+      <p class="brands-find-partner-panel__paragraph">Use our advanced search and filtering tools to discover brands by:</p>
       
       <div class="filter-categories">
         <div class="filter-category">Market of origin</div>
@@ -150,10 +150,10 @@ ref: brands
 </div>
 
 <!-- Contact CTA Panel -->
-<div class="panel panel--cta">
-  <div class="panel__content panel--centered">
-    <h2 class="panel__heading-secondary">Ready to Discover BRICS+ Brands?</h2>
-    <p class="panel__paragraph">Contact us to learn more about our featured brands or to discuss your specific needs.</p>
+<div class="brands-cta-panel">
+  <div class="brands-cta-panel__content brands-cta-panel--centered">
+    <h2 class="brands-cta-panel__heading">Ready to Discover BRICS+ Brands?</h2>
+    <p class="brands-cta-panel__paragraph">Contact us to learn more about our featured brands or to discuss your specific needs.</p>
     <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Get in Touch</a>
   </div>
 </div>
