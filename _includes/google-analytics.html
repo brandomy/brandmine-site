@@ -1,14 +1,15 @@
 <!-- Google Analytics -->
 {% if jekyll.environment == 'production' %}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V3T1T5DWJG"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-V3T1T5DWJG', {
-    'page_path': location.pathname,
-    'language': '{{ page.lang }}'
+  gtag('config', '{{ site.google_analytics_id }}', {
+    'page_path': '{{ page.url }}',
+    'language': '{{ page.lang }}',
+    'anonymize_ip': true
   });
 </script>
 {% endif %}

@@ -1,24 +1,24 @@
 ---
 layout: discover
 ---
-<div class="signals-grid">
+<div class="signal-cards">
   {% assign signal_tags = site.tags | where: "tag_type", "signal" | where: "lang", page.lang %}
   
   {% for signal in signal_tags %}
   <div class="signal-card">
-    <div class="signal-icon">
+    <div class="signal-card__icon">
       {% if signal.badge_icon %}
       <img src="{{ '/assets/images/badges/' | append: signal.badge_icon | relative_url }}" alt="{{ signal.title }} icon">
       {% else %}
-      <div class="placeholder-icon"></div>
+      <div class="signal-card__placeholder-icon"></div>
       {% endif %}
     </div>
     
-    <h3>{{ signal.title }}</h3>
+    <h3 class="signal-card__title">{{ signal.title }}</h3>
     
-    <p>{{ signal.description }}</p>
+    <p class="signal-card__description">{{ signal.description }}</p>
     
-    <a href="{{ signal.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore_signal }}</a>
+    <a href="{{ signal.url | relative_url }}" class="signal-card__link btn-secondary">{{ site.data.translations[page.lang].discover.explore_signal }}</a>
   </div>
   {% endfor %}
 </div>

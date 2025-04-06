@@ -10,27 +10,27 @@
 {% endcomment %}
 
 {% if include.brands and include.brands.size > 0 %}
-<div class="related-brands-list">
+<div class="related-brands">
   {% for brand_slug in include.brands %}
     {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
     {% if brand %}
-    <div class="related-brand-item">
+    <div class="related-brands__item">
       {% if brand.logo %}
-      <div class="brand-logo">
+      <div class="related-brands__logo">
         <img src="{{ brand.logo | relative_url }}" alt="{{ brand.title }} logo" class="img-fluid">
       </div>
       {% endif %}
-      <div class="brand-info">
+      <div class="related-brands__info">
         <h4><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h4>
         {% if brand.sectors and brand.sectors.size > 0 %}
-        <span class="brand-sector">{{ brand.sectors[0] }}</span>
+        <span class="related-brands__sector">{{ brand.sectors[0] }}</span>
         {% endif %}
-        <p class="brand-description">{{ brand.description | truncate: 80 }}</p>
+        <p class="related-brands__description">{{ brand.description | truncate: 80 }}</p>
       </div>
     </div>
     {% endif %}
   {% endfor %}
 </div>
 {% else %}
-<p class="no-related-brands">{{ site.data.translations[page.lang].brand.no_related_brands }}</p>
+<p class="related-brands__none">{{ site.data.translations[page.lang].brand.no_related_brands }}</p>
 {% endif %}

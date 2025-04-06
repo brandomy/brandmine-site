@@ -6,19 +6,19 @@ layout: discover
   
   {% for attribute in attribute_tags %}
   <div class="attribute-card">
-    <div class="attribute-icon">
+    <div class="attribute-card__icon">
       {% if attribute.badge_icon %}
       <img src="{{ '/assets/images/badges/' | append: attribute.badge_icon | relative_url }}" alt="{{ attribute.title }} icon">
       {% else %}
-      <div class="placeholder-icon"></div>
+      <div class="attribute-card__placeholder-icon"></div>
       {% endif %}
     </div>
     
-    <h3>{{ attribute.title }}</h3>
+    <h3 class="attribute-card__title">{{ attribute.title }}</h3>
     
-    <p>{{ attribute.description }}</p>
+    <p class="attribute-card__description">{{ attribute.description }}</p>
     
-    <a href="{{ attribute.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore_attribute }}</a>
+    <a href="{{ attribute.url | relative_url }}" class="attribute-card__link btn-secondary">{{ site.data.translations[page.lang].discover.explore_attribute }}</a>
   </div>
   {% endfor %}
 </div>

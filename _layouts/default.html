@@ -28,9 +28,8 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/header.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/footer.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/discovery.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/discovery-bem.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/featured-brand.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/features.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/forms.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/insights.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/insights-grid.css' | relative_url }}">
@@ -40,7 +39,6 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/solutions.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/team.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/text.css' | relative_url }}">
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}"> -->
   <link rel="stylesheet" href="{{ '/assets/css/components/tags-bem.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/brand-card.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/insight-card.css' | relative_url }}">
@@ -124,7 +122,9 @@
   {% include header.html %}
   <main class="layout">
     <div class="layout__wrapper">
-      {{ content }}
+      <div class="layout__content">
+        {{ content }}
+      </div>
     </div>
   </main>
   

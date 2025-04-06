@@ -1,24 +1,24 @@
 ---
 layout: discover
 ---
-<div class="markets-grid">
+<div class="market-cards">
   {% assign market_tags = site.tags | where: "tag_type", "market" | where: "lang", page.lang %}
   
   {% for market in market_tags %}
   <div class="market-card">
-    <div class="market-icon">
+    <div class="market-card__icon">
       {% if market.badge_icon %}
       <img src="{{ '/assets/images/badges/' | append: market.badge_icon | relative_url }}" alt="{{ market.title }} icon">
       {% else %}
-      <div class="placeholder-icon"></div>
+      <div class="market-card__placeholder-icon"></div>
       {% endif %}
     </div>
     
-    <h3>{{ market.title }}</h3>
+    <h3 class="market-card__title">{{ market.title }}</h3>
     
-    <p>{{ market.description }}</p>
+    <p class="market-card__description">{{ market.description }}</p>
     
-    <a href="{{ market.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore_market }}</a>
+    <a href="{{ market.url | relative_url }}" class="market-card__link btn-secondary">{{ site.data.translations[page.lang].discover.explore_market }}</a>
   </div>
   {% endfor %}
 </div>

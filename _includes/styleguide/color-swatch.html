@@ -1,12 +1,11 @@
-<!-- _includes/styleguide/color-swatch.html -->
 <div class="color-swatch">
-  <div class="color-sample {{ include.color }}" style="background-color: {{ include.hex }};"></div>
-  <div class="color-details">
-    <div class="color-name">{{ include.name }}</div>
-    <div class="color-values">
-      <span class="color-hex">{{ include.hex }}</span>
-      <span class="color-rgb">RGB: {{ include.rgb }}</span>
+  <div class="color-swatch__sample{% if include.color %} {{ include.color }}{% endif %}" style="background-color: {{ include.hex | default: '#ffffff' }}"></div>
+  <div class="color-swatch__details">
+    <div class="color-swatch__name">{{ include.name }}</div>
+    <div class="color-swatch__values">
+      <span class="color-swatch__hex">{{ include.hex }}</span>
+      <span class="color-swatch__rgb">RGB: {{ include.rgb }}</span>
     </div>
-    <div class="color-usage">{{ include.usage }}</div>
+    <div class="color-swatch__usage">{{ include.usage }}</div>
   </div>
 </div>

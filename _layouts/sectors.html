@@ -1,24 +1,24 @@
 ---
 layout: discover
 ---
-<div class="sectors-grid">
+<div class="sector-cards">
   {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang %}
   
   {% for sector in sector_tags %}
   <div class="sector-card">
-    <div class="sector-icon">
+    <div class="sector-card__icon">
       {% if sector.badge_icon %}
       <img src="{{ '/assets/images/badges/' | append: sector.badge_icon | relative_url }}" alt="{{ sector.title }} icon">
       {% else %}
-      <div class="placeholder-icon"></div>
+      <div class="sector-card__placeholder-icon"></div>
       {% endif %}
     </div>
     
-    <h3>{{ sector.title }}</h3>
+    <h3 class="sector-card__title">{{ sector.title }}</h3>
     
-    <p>{{ sector.description }}</p>
+    <p class="sector-card__description">{{ sector.description }}</p>
     
-    <a href="{{ sector.url | relative_url }}" class="btn-secondary">{{ site.data.translations[page.lang].discover.explore_sector }}</a>
+    <a href="{{ sector.url | relative_url }}" class="sector-card__link btn-secondary">{{ site.data.translations[page.lang].discover.explore_sector }}</a>
   </div>
   {% endfor %}
 </div>

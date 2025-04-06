@@ -28,6 +28,11 @@
   height: 100%;
 }
 
+.insight-card__link:hover,
+.insight-card__link:focus-visible {
+  box-shadow: var(--shadow-md);
+}
+
 .insight-card__image-wrapper {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -77,8 +82,17 @@
 
 .insight-card__tag {
   font-size: var(--text-xs);
+  background-color: var(--neutral-200);
+  color: var(--neutral-700);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
 }
 
 .insight-card__date {
   white-space: nowrap;
+}
+
+.insight-card--highlighted {
+  border-color: var(--primary-400);
+  background-color: var(--primary-50);
 }

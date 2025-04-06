@@ -14,7 +14,7 @@
     <div class="brand-card__taxonomy">
       <div class="brand-card__sectors">
         {% for sector in brand.sectors %}
-          <span class="brand-card__sector-tag">{{ sector }}</span>
+          <span class="brand-card__tag brand-card__tag--sector">{{ sector }}</span>
         {% endfor %}
         {% if brand.sectors.size > 3 %}
           <span class="brand-card__more-tag">+{{ brand.sectors.size | minus:3 }}</span>
@@ -22,7 +22,7 @@
       </div>
       <div class="brand-card__markets">
         {% for market in brand.markets %}
-          <span class="brand-card__market-tag">{{ market }}</span>
+          <span class="brand-card__tag brand-card__tag--market">{{ market }}</span>
         {% endfor %}
       </div>
     </div>
@@ -32,7 +32,7 @@
     <div class="brand-card__signals">
       {% for signal in brand.signals %}
         <div class="brand-card__signal-indicator">
-          <span class="brand-card__signal-icon">{{ signal.icon }}</span>
+          <span class="brand-card__icon brand-card__icon--signal">{{ signal.icon }}</span>
         </div>
       {% endfor %}
     </div>

@@ -2,9 +2,9 @@
 layout: default
 ---
 <div class="panel panel--light">
-  <div class="panel__content">
-    <div class="tag-header">
-      <span class="tag-type">
+  <div class="panel__content tag-page">
+    <div class="tag-page__header">
+      <span class="tag-page__type">
         {{ site.data.translations[page.lang].tags[page.tag_type] }}
       </span>
       <h1>
@@ -18,26 +18,26 @@ layout: default
       </h1>
       
       {% if page.verification_required %}
-      <span class="verification-badge">{{ site.data.translations[page.lang].tags.verified }}</span>
+      <span class="tag-page__verification">{{ site.data.translations[page.lang].tags.verified }}</span>
       {% endif %}
       
       {% if page.badge_icon %}
-      <div class="badge-icon">
+      <div class="tag-page__icon">
         <img src="{{ site.baseurl }}/assets/images/badges/{{ page.badge_icon }}" alt="{{ page.title }} badge">
       </div>
       {% endif %}
       
-      <p class="tag-description">{{ page.description }}</p>
+      <p class="tag-page__description">{{ page.description }}</p>
     </div>
     
-    <div class="tag-content">
+    <div class="tag-page__content">
       {{ content }}
     </div>
     
     <!-- Related brands section -->
-    <div class="related-brands">
+    <div class="tag-page__related-brands">
       <h2>{{ site.data.translations[page.lang].tags.related_brands }}</h2>
-      <div class="brand-grid">
+      <div class="tag-page__brand-grid">
         {% assign related_brands = site.brands | where: "lang", page.lang %}
         {% assign filtered_brands = "" | split: "" %}
         
@@ -55,37 +55,37 @@ layout: default
         
         {% if filtered_brands.size > 0 %}
           {% for brand in filtered_brands limit:6 %}
-          <div class="brand-card">
+          <div class="tag-page__brand-card">
             {% if brand.logo %}
-            <img src="{{ brand.logo }}" alt="{{ brand.title }} logo" class="brand-logo">
+            <img src="{{ brand.logo }}" alt="{{ brand.title }} logo" class="tag-page__brand-logo">
             {% endif %}
             <h3><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h3>
             <p>{{ brand.description | truncate: 100 }}</p>
             {% if brand.sectors %}
-            <div class="brand-sector">
-              <span class="sector-label">{{ brand.sectors[0] }}</span>
+            <div class="tag-page__brand-sector">
+              <span class="tag-page__sector-label">{{ brand.sectors[0] }}</span>
             </div>
             {% endif %}
           </div>
           {% endfor %}
           
           {% if filtered_brands.size > 6 %}
-          <div class="view-all-brands">
+          <div class="tag-page__view-all-brands">
             <a href="{{ site.baseurl }}/{{ page.lang }}/brands/?{{ page.tag_type }}={{ page.tag }}" class="btn btn-primary">
               {{ site.data.translations[page.lang].tags.view_all_brands }}
             </a>
           </div>
           {% endif %}
         {% else %}
-          <p class="no-brands-message">{{ site.data.translations[page.lang].tags.no_brands }}</p>
+          <p class="tag-page__no-brands-message">{{ site.data.translations[page.lang].tags.no_brands }}</p>
         {% endif %}
       </div>
     </div>
     
     <!-- Related insights section -->
-    <div class="tag-insights">
+    <div class="tag-page__insights">
       <h2>{{ site.data.translations[page.lang].tags.related_insights }}</h2>
-      <div class="insights-grid">
+      <div class="tag-page__insights-grid">
         {% assign related_insights = site.insights | where: "lang", page.lang %}
         {% assign filtered_insights = "" | split: "" %}
         
@@ -103,29 +103,29 @@ layout: default
         
         {% if filtered_insights.size > 0 %}
           {% for insight in filtered_insights limit:3 %}
-          <div class="insight-card">
+          <div class="tag-page__insight-card">
             {% if insight.image %}
-            <div class="insight-image">
+            <div class="tag-page__insight-image">
               <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}">
             </div>
             {% endif %}
-            <div class="insight-type">{{ insight.content_type }}</div>
+            <div class="tag-page__insight-type">{{ insight.content_type }}</div>
             <h3><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h3>
-            <div class="insight-meta">
-              <span class="insight-date">{{ insight.date | date: "%B %-d, %Y" }}</span>
+            <div class="tag-page__insight-meta">
+              <span class="tag-page__insight-date">{{ insight.date | date: "%B %-d, %Y" }}</span>
             </div>
           </div>
           {% endfor %}
           
           {% if filtered_insights.size > 3 %}
-          <div class="view-all-insights">
+          <div class="tag-page__view-all-insights">
             <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?{{ page.tag_type }}={{ page.tag }}" class="btn btn-secondary">
               {{ site.data.translations[page.lang].tags.view_all_insights }}
             </a>
           </div>
           {% endif %}
         {% else %}
-          <p class="no-insights-message">{{ site.data.translations[page.lang].tags.no_insights }}</p>
+          <p class="tag-page__no-insights-message">{{ site.data.translations[page.lang].tags.no_insights }}</p>
         {% endif %}
       </div>
     </div>

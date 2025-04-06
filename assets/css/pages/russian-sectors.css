@@ -9,7 +9,7 @@
    ========================================================================== */
 
 /* Sector columns navigation at the top of the page */
-.sector-columns {
+.russian-sectors__columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
@@ -20,12 +20,12 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.sector-column {
+.russian-sectors__column {
   padding: var(--space-4);
 }
 
 /* Lifestyle sector heading (teal) */
-.sector-column:first-child h3 {
+.russian-sectors__column:first-child .russian-sectors__heading {
   color: var(--primary-600);
   margin-top: 0;
   padding-bottom: var(--space-2);
@@ -33,24 +33,24 @@
 }
 
 /* Food & Beverage sector heading (orange) */
-.sector-column:last-child h3 {
+.russian-sectors__column:last-child .russian-sectors__heading {
   color: var(--secondary-600);
   margin-top: 0;
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--secondary-200);
 }
 
-.sector-column ul {
+.russian-sectors__column ul {
   list-style: none;
   padding: 0;
   margin: var(--space-4) 0 0;
 }
 
-.sector-column li {
+.russian-sectors__column li {
   margin-bottom: var(--space-2);
 }
 
-.sector-column a {
+.russian-sectors__column a {
   color: var(--primary-600);
   text-decoration: none;
   transition: color 0.2s ease;
@@ -58,7 +58,7 @@
   padding: var(--space-1) 0;
 }
 
-.sector-column a:hover {
+.russian-sectors__column a:hover {
   color: var(--primary-400);
   text-decoration: underline;
 }
@@ -79,7 +79,7 @@ body h2 {
    ========================================================================== */
 
 /* Base sector section styling */
-.sector-section {
+.russian-sectors__section {
   margin-bottom: var(--space-8);
   padding: var(--space-8);
   border-radius: 0.5rem;
@@ -88,7 +88,7 @@ body h2 {
 }
 
 /* Sector section headings */
-.sector-section h3 {
+.russian-sectors__section-title {
   margin-top: 0;
   margin-bottom: var(--space-4);
   color: var(--neutral-800);
@@ -96,7 +96,7 @@ body h2 {
 }
 
 /* Market insight styling */
-.sector-section p strong {
+.russian-sectors__section p strong {
   font-weight: 600;
 }
 
@@ -183,7 +183,7 @@ body h2 {
 }
 
 /* Hover effect for sector panels */
-.sector-section:hover {
+.russian-sectors__section:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
@@ -214,7 +214,7 @@ hr {
 }
 
 /* Sector footer with CTA */
-.sector-footer {
+.russian-sectors__footer {
   margin-top: var(--space-12);
   padding: var(--space-8);
   background-color: var(--primary-600);
@@ -223,18 +223,18 @@ hr {
   text-align: center;
 }
 
-.sector-footer p {
+.russian-sectors__footer-text {
   font-size: 1.25rem;
   margin-bottom: var(--space-4);
 }
 
-.sector-footer .btn-primary {
+.russian-sectors__cta-btn {
   background-color: white;
   color: var(--primary-600);
   border: none;
 }
 
-.sector-footer .btn-primary:hover {
+.russian-sectors__cta-btn:hover {
   background-color: var(--primary-50);
 }
 
@@ -243,7 +243,7 @@ hr {
 
 /* Tablet and smaller */
 @media (max-width: var(--breakpoint-lg)) {
-  .sector-section {
+  .russian-sectors__section {
     padding: var(--space-6);
   }
   
@@ -251,23 +251,23 @@ hr {
     font-size: 2rem;
   }
   
-  .sector-section h3 {
+  .russian-sectors__section-title {
     font-size: 1.3rem;
   }
 }
 
 /* Mobile */
 @media (max-width: var(--breakpoint-md)) {
-  .sector-columns {
+  .russian-sectors__columns {
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
   
-  .sector-column:last-child {
+  .russian-sectors__column:last-child {
     margin-top: var(--space-4);
   }
   
-  .sector-section {
+  .russian-sectors__section {
     padding: var(--space-4);
     margin-bottom: var(--space-6);
   }
@@ -280,22 +280,22 @@ hr {
     font-size: 1.1rem;
   }
   
-  .sector-footer {
+  .russian-sectors__footer {
     padding: var(--space-6);
   }
 }
 
 /* Small mobile */
 @media (max-width: var(--breakpoint-sm)) {
-  .sector-section {
+  .russian-sectors__section {
     padding: var(--space-4);
   }
   
-  .sector-section h3 {
+  .russian-sectors__section-title {
     font-size: 1.2rem;
   }
   
-  .sector-footer p {
+  .russian-sectors__footer-text {
     font-size: 1.1rem;
   }
 }
@@ -309,6 +309,6 @@ html {
 }
 
 /* Add padding to scroll targets to account for fixed header */
-.sector-section {
+.russian-sectors__section {
   scroll-margin-top: 80px;
 }

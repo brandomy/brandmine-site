@@ -6,7 +6,7 @@
 */
 
 /* Hero Subtitle */
-.hero-subtitle {
+.hero__subtitle {
   font-size: var(--text-2xl); /* Using token for 1.5rem */
   font-weight: var(--font-light); /* Updated to use token (300) */
   max-width: 700px;
@@ -14,7 +14,7 @@
 }
 
 /* Lead Text */
-.lead-text {
+.text-block__lead {
   font-size: var(--text-lg); /* Using token for 1.125rem */
   line-height: 1.6;
   margin-bottom: var(--space-8); /* 2rem */
@@ -24,15 +24,21 @@
   color: var(--neutral-700);
 }
 
+/* Emphasis Modifier for Lead Text */
+.text-block__lead--highlight {
+  color: var(--primary-600);
+  font-weight: var(--font-bold);
+}
+
 /* Panel Lead Text - larger variant */
-.panel-content .lead-text {
+.panel__lead-text {
   /* Retaining a slightly larger size for emphasis */
   font-size: 1.2rem; /* Consider defining a new token if needed */
   margin-bottom: var(--space-8); /* 2rem */
 }
 
 /* Conclusion Text - with divider */
-.conclusion-text {
+.text-block__conclusion {
   font-size: var(--text-lg); /* Using token for 1.125rem */
   border-top: 1px solid var(--neutral-200); /* Updated to use token */
   margin-top: var(--space-8); /* 2rem */
@@ -41,15 +47,15 @@
 
 /* Responsive Adjustments */
 @media (max-width: var(--breakpoint-md)) { /* 768px */
-  .hero-subtitle {
+  .hero__subtitle {
     font-size: 1.25rem; /* Adjusted for smaller screens */
   }
   
-  .lead-text {
+  .text-block__lead {
     font-size: var(--text-base); /* Reduced size on smaller screens */
   }
   
-  .panel-content .lead-text {
+  .panel__lead-text {
     font-size: 1.1rem; /* Slightly reduced for mobile */
   }
 }

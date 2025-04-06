@@ -9,19 +9,19 @@
 {% endcomment %}
 
 {% if include.paginator.total_pages > 1 %}
-<div class="pagination-container">
-  <ul class="pagination">
+<div class="pagination">
+  <ul class="pagination__list">
     <!-- Previous page link -->
     {% if include.paginator.previous_page %}
-    <li class="page-item">
-      <a href="{{ include.paginator.previous_page_path | relative_url }}" class="page-link" aria-label="Previous">
+    <li class="pagination__item">
+      <a href="{{ include.paginator.previous_page_path | relative_url }}" class="pagination__link" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">{{ site.data.translations[page.lang].pagination.previous }}</span>
       </a>
     </li>
     {% else %}
-    <li class="page-item disabled">
-      <span class="page-link" aria-label="Previous">
+    <li class="pagination__item pagination__item--disabled">
+      <span class="pagination__link" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">{{ site.data.translations[page.lang].pagination.previous }}</span>
       </span>
@@ -31,34 +31,34 @@
     <!-- Page number links -->
     {% for page in (1..include.paginator.total_pages) %}
       {% if page == include.paginator.page %}
-      <li class="page-item active">
-        <span class="page-link">
+      <li class="pagination__item pagination__item--active">
+        <span class="pagination__link">
           {{ page }}
           <span class="sr-only">{{ site.data.translations[page.lang].pagination.current }}</span>
         </span>
       </li>
       {% elsif page == 1 %}
-      <li class="page-item">
-        <a href="{{ site.baseurl }}/" class="page-link">{{ page }}</a>
+      <li class="pagination__item">
+        <a href="{{ site.baseurl }}/" class="pagination__link">{{ page }}</a>
       </li>
       {% else %}
-      <li class="page-item">
-        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="page-link">{{ page }}</a>
+      <li class="pagination__item">
+        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination__link">{{ page }}</a>
       </li>
       {% endif %}
     {% endfor %}
 
     <!-- Next page link -->
     {% if include.paginator.next_page %}
-    <li class="page-item">
-      <a href="{{ include.paginator.next_page_path | relative_url }}" class="page-link" aria-label="Next">
+    <li class="pagination__item">
+      <a href="{{ include.paginator.next_page_path | relative_url }}" class="pagination__link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">{{ site.data.translations[page.lang].pagination.next }}</span>
       </a>
     </li>
     {% else %}
-    <li class="page-item disabled">
-      <span class="page-link" aria-label="Next">
+    <li class="pagination__item pagination__item--disabled">
+      <span class="pagination__link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">{{ site.data.translations[page.lang].pagination.next }}</span>
       </span>

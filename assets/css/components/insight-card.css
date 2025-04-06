@@ -93,23 +93,24 @@
   text-decoration: underline;
 }
 
-/* Taxonomy tags */
-.insight-card__sectors,
-.insight-card__markets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-2);
+.insight-card__read-more:focus-visible {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
 }
 
-.insight-card__sector-tag,
-.insight-card__market-tag,
-.insight-card__more-tag {
+/* Taxonomy tags */
+.insight-card__tag {
   background-color: var(--neutral-200);
   color: var(--neutral-600);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
+}
+
+/* Optional modifier support */
+.insight-card--highlighted {
+  border-color: var(--primary-300);
+  background-color: var(--primary-50);
 }
 
 /* ==========================================================================

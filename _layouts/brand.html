@@ -20,7 +20,7 @@ layout: default
         <div class="meta-item">
           <span class="meta-label">{{ site.data.translations[page.lang].tags.sectors }}:</span>
           {% for sector in page.sectors %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="meta-tag sector-tag">{{ sector }}</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="brand-meta__tag brand-meta__tag--sector">{{ sector }}</a>
           {% endfor %}
         </div>
         {% endif %}
@@ -29,7 +29,7 @@ layout: default
         <div class="meta-item">
           <span class="meta-label">{{ site.data.translations[page.lang].tags.markets }}:</span>
           {% for market in page.markets %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="meta-tag market-tag">{{ market }}</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="brand-meta__tag brand-meta__tag--market">{{ market }}</a>
           {% endfor %}
         </div>
         {% endif %}
@@ -86,14 +86,14 @@ layout: default
       <div class="brand-attributes">
         <h3>{{ site.data.translations[page.lang].tags.attributes }}</h3>
         {% for attribute in page.attributes %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/attributes/{{ attribute | slugify }}/" class="badge attribute-badge">{{ attribute }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/attributes/{{ attribute | slugify }}/" class="brand-attribute__tag brand-attribute__tag--attribute">{{ attribute }}</a>
         {% endfor %}
       </div>
 
       <div class="brand-signals mt-3">
         <h3>{{ site.data.translations[page.lang].tags.signals }}</h3>
         {% for signal in page.signals %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/signals/{{ signal | slugify }}/" class="badge signal-badge">{{ signal }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/tags/signals/{{ signal | slugify }}/" class="brand-attribute__tag brand-attribute__tag--signal">{{ signal }}</a>
         {% endfor %}
       </div>
 

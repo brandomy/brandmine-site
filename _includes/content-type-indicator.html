@@ -12,17 +12,17 @@
 {% assign size_class = include.size | default: "medium" %}
 {% assign type_slug = include.type | slugify %}
 
-<div class="content-type-indicator {{ size_class }} {{ type_slug }}">
+<div class="content-type-indicator content-type-indicator--{{ size_class }} content-type-indicator--{{ type_slug }}">
   {% case include.type %}
     {% when "Founder's Journey" or "Путь основателя" or "创始人之旅" %}
-      <span class="indicator-icon founder-icon"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--founder"></span>
     {% when "Brand Spotlight" or "Особенности бренда" or "品牌聚焦" %}
-      <span class="indicator-icon spotlight-icon"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--spotlight"></span>
     {% when "Market Milestone" or "Рыночная веха" or "市场里程碑" %}
-      <span class="indicator-icon milestone-icon"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--milestone"></span>
     {% when "Cultural Signature" or "Культурная особенность" or "文化印记" %}
-      <span class="indicator-icon cultural-icon"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--cultural"></span>
   {% endcase %}
   
-  <span class="indicator-text">{{ include.type }}</span>
+  <span class="content-type-indicator__text">{{ include.type }}</span>
 </div>

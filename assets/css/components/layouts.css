@@ -5,18 +5,18 @@
 */
 
 /* --------------------------------------------------------------------------
-   1. PANEL WITH IMAGE LAYOUT
+   1. LAYOUT WITH IMAGE
    -------------------------------------------------------------------------- */
 
-/* Two-column grid for panels with images */
-.panel-with-image {
+/* Two-column grid for layouts with images */
+.layout-with-image {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-12); /* 3rem */
   align-items: center;
 }
 
-.panel-image {
+.layout-with-image__image {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-md); /* Updated to use token */
@@ -25,7 +25,7 @@
 
 /* Responsive adjustments */
 @media (max-width: var(--breakpoint-lg)) { /* 992px */
-  .panel-with-image {
+  .layout-with-image {
     grid-template-columns: 1fr;  /* Stack image and content vertically */
   }
 }

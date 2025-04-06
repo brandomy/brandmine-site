@@ -6,13 +6,13 @@
 */
 
 /* === Solution List System === */
-.solutions-list {
+.solutions {
   max-width: 800px; /* Consider defining a token if this value is reused elsewhere */
   margin-left: auto;
   margin-right: auto;
 }
 
-.solution-item {
+.solutions__item {
   display: flex;
   align-items: flex-start;
   margin-bottom: var(--space-6); /* 1.5rem */
@@ -25,7 +25,7 @@
   max-width: 800px;     /* Prevent excessive stretching */
 }
 
-.solution-number {
+.solutions__number {
   background-color: var(--primary-400);
   color: white;
   width: 2.5rem;
@@ -40,24 +40,24 @@
   flex-shrink: 0;
 }
 
-.solution-content h3 {
+.solutions__content h3 {
   margin: 0 0 var(--space-2) 0; /* 0 0 0.5rem 0 */
   font-size: var(--text-xl);  /* Using token for 1.25rem */
   color: var(--primary-800);
 }
 
-.solution-content p {
+.solutions__content p {
   margin: 0;
   color: var(--primary-700);
 }
 
-.solution-panel h2 {
+.solutions__heading {
   color: var(--primary-800);
 }
 
 /* Responsive adjustments */
 @media (max-width: var(--breakpoint-md)) { /* 767px is very close to 768px, using breakpoint-md */
-  .solution-item {
+  .solutions__item {
     width: 100%;
     margin-left: 0;
     margin-right: 0;

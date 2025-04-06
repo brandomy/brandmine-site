@@ -86,46 +86,46 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.signal-card-header {
+.signal-card__header {
   padding: var(--space-4);
   border-bottom: 1px solid var(--neutral-100);
   display: flex;
   align-items: center;
 }
 
-.signal-card-header .tag-icon {
+.signal-card__header .tag-icon {
   width: 36px;
   height: 36px;
   margin-right: var(--space-3);
 }
 
-.signal-card-title {
+.signal-card__title {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
 }
 
-.signal-card-body {
+.signal-card__body {
   padding: var(--space-4);
 }
 
-.signal-card-body p {
+.signal-card__body p {
   margin-top: 0;
   margin-bottom: var(--space-3);
   color: var(--neutral-600);
 }
 
-.signal-card-body strong {
+.signal-card__body strong {
   color: var(--neutral-700);
 }
 
-.signal-card-footer {
+.signal-card__footer {
   padding: var(--space-3) var(--space-4);
   background-color: var(--neutral-50);
   border-top: 1px solid var(--neutral-100);
 }
 
-.signal-card-link {
+.signal-card__link {
   color: var(--primary-600);
   text-decoration: none;
   font-weight: 500;
@@ -133,49 +133,54 @@
   align-items: center;
 }
 
-.signal-card-link:hover {
+.signal-card__link:hover {
   color: var(--primary-700);
   text-decoration: underline;
 }
 
-.signal-card-link svg {
+.signal-card__link:focus-visible {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
+}
+
+.signal-card__link svg {
   width: 18px;
   height: 18px;
   margin-left: var(--space-1);
 }
 
 /* Signal specific styling */
-.export-ready-card .signal-card-header {
+.signal-card--export-ready .signal-card__header {
   background-color: var(--accent-50);
 }
 
-.franchise-ready-card .signal-card-header {
+.signal-card--franchise-ready .signal-card__header {
   background-color: var(--secondary-50);
 }
 
-.investment-ready-card .signal-card-header {
+.signal-card--investment-ready .signal-card__header {
   background-color: var(--primary-50);
 }
 
-.rapid-growth-card .signal-card-header {
+.signal-card--rapid-growth .signal-card__header {
   background-color: #FFF1F2; /* Light pink */
 }
 
 /* Feature list styling */
-.feature-list {
+.signal-card__features {
   margin: var(--space-4) 0;
   padding-left: 0;
   list-style: none;
 }
 
-.feature-list li {
+.signal-card__feature {
   position: relative;
   padding-left: var(--space-6);
   margin-bottom: var(--space-2);
   line-height: 1.5;
 }
 
-.feature-list li::before {
+.signal-card__feature::before {
   content: "";
   position: absolute;
   left: 0;

@@ -1,76 +1,63 @@
-{% comment %}
-  Featured Content Include
+<div class="featured-content featured-content--{{ include.content_type }}">
+  <div class="featured-content__image">
+    {% if include.content_type == "insight" and include.content.image %}
+      <img src="{{ include.content.image | relative_url }}" alt="{{ include.content.title }}" class="img-fluid">
+    {% elsif include.content_type == "brand" and include.content.hero_image %}
+      <img src="{{ include.content.hero_image | relative_url }}" alt="{{ include.content.title }}" class="img-fluid">
+    {% endif %}
+    
+    <div class="featured-content__badge">
+      {{ site.data.translations[include.content.lang].general.featured }}
+    </div>
+  </div>
   
-  Usage:
-  {% include featured-content.html content=featured_item content_type="insight" %}
-  
-  Parameters:
-  - content: Content object (insight or brand)
-  - content_type: Type of content ("insight" or "brand")
-{% endcomment %}
-
-<div class="featured-content-container {{ include.content_type }}-feature">
-  <div class="featured-content">
-    <div class="featured-image">
-      {% if include.content_type == "insight" and include.content.image %}
-        <img src="{{ include.content.image | relative_url }}" alt="{{ include.content.title }}" class="img-fluid">
-      {% elsif include.content_type == "brand" and include.content.hero_image %}
-        <img src="{{ include.content.hero_image | relative_url }}" alt="{{ include.content.title }}" class="img-fluid">
+  <div class="featured-content__body">
+    {% if include.content_type == "insight" %}
+      {% include content-type-indicator.html type=include.content.content_type size="large" %}
+    {% endif %}
+    
+    <h2 class="featured-content__title">
+      <a href="{{ include.content.url | relative_url }}">{{ include.content.title }}</a>
+    </h2>
+    
+    <div class="featured-content__meta">
+      {% if include.content_type == "insight" %}
+        <span class="featured-content__date">{{ include.content.date | date: "%B %-d, %Y" }}</span>
+        {% if include.content.author %}
+          <span class="featured-content__author">{{ include.content.author }}</span>
+        {% endif %}
+      {% elsif include.content_type == "brand" %}
+        {% if include.content.founding_year %}
+          <span class="featured-content__year">{{ site.data.translations[include.content.lang].brand.est }} {{ include.content.founding_year }}</span>
+        {% endif %}
+        {% if include.content.sectors and include.content.sectors.size > 0 %}
+          <span class="featured-content__sector">{{ include.content.sectors[0] }}</span>
+        {% endif %}
       {% endif %}
-      
-      <div class="featured-badge">
-        {{ site.data.translations[include.content.lang].general.featured }}
-      </div>
     </div>
     
-    <div class="featured-content-body">
-      {% if include.content_type == "insight" %}
-        {% include content-type-indicator.html type=include.content.content_type size="large" %}
+    <p class="featured-content__description">
+      {% if include.content.description %}
+        {{ include.content.description | truncate: 180 }}
+      {% else %}
+        {{ include.content.content | strip_html | truncate: 180 }}
       {% endif %}
-      
-      <h2 class="featured-title">
-        <a href="{{ include.content.url | relative_url }}">{{ include.content.title }}</a>
-      </h2>
-      
-      <div class="featured-meta">
-        {% if include.content_type == "insight" %}
-          <span class="meta-date">{{ include.content.date | date: "%B %-d, %Y" }}</span>
-          {% if include.content.author %}
-            <span class="meta-author">{{ include.content.author }}</span>
-          {% endif %}
-        {% elsif include.content_type == "brand" %}
-          {% if include.content.founding_year %}
-            <span class="meta-year">{{ site.data.translations[include.content.lang].brand.est }} {{ include.content.founding_year }}</span>
-          {% endif %}
-          {% if include.content.sectors and include.content.sectors.size > 0 %}
-            <span class="meta-sector">{{ include.content.sectors[0] }}</span>
-          {% endif %}
+    </p>
+    
+    <div class="featured-content__taxonomy">
+      {% if include.content_type == "insight" %}
+        {% if include.content.sectors and include.content.sectors.size > 0 %}
+          {% include tag-list.html tags=include.content.sectors type="sector" %}
         {% endif %}
-      </div>
-      
-      <p class="featured-description">
-        {% if include.content.description %}
-          {{ include.content.description | truncate: 180 }}
-        {% else %}
-          {{ include.content.content | strip_html | truncate: 180 }}
+      {% elsif include.content_type == "brand" %}
+        {% if include.content.attributes and include.content.attributes.size > 0 %}
+          {% include tag-list.html tags=include.content.attributes type="attribute" %}
         {% endif %}
-      </p>
-      
-      <div class="featured-taxonomy">
-        {% if include.content_type == "insight" %}
-          {% if include.content.sectors and include.content.sectors.size > 0 %}
-            {% include tag-list.html tags=include.content.sectors type="sector" %}
-          {% endif %}
-        {% elsif include.content_type == "brand" %}
-          {% if include.content.attributes and include.content.attributes.size > 0 %}
-            {% include tag-list.html tags=include.content.attributes type="attribute" %}
-          {% endif %}
-        {% endif %}
-      </div>
-      
-      <a href="{{ include.content.url | relative_url }}" class="featured-link">
-        {{ site.data.translations[include.content.lang].general.read_more }}
-      </a>
+      {% endif %}
     </div>
+    
+    <a href="{{ include.content.url | relative_url }}" class="featured-content__link">
+      {{ site.data.translations[include.content.lang].general.read_more }}
+    </a>
   </div>
 </div>

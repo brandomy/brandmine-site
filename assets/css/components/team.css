@@ -5,7 +5,7 @@
 */
 
 /* Team section layout */
-.team-section {
+.team {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8); /* 2rem */
@@ -13,7 +13,7 @@
 }
 
 /* Individual team member cards */
-.team-member {
+.team__member {
   flex: 1;
   min-width: 300px;
   background-color: white;
@@ -24,7 +24,7 @@
 }
 
 /* Team member photo */
-.team-photo {
+.team__photo {
   width: 180px;
   height: 180px;
   border-radius: 50%; /* Remains circular */
@@ -37,14 +37,14 @@
 }
 
 /* Team member details */
-.team-member h3 {
+.team__member h3 {
   margin-top: 0;
   margin-bottom: var(--space-2); /* 0.5rem */
   color: var(--neutral-800);
   text-align: center;
 }
 
-.team-title {
+.team__title {
   color: var(--primary-600);
   font-weight: var(--font-semibold); /* Updated: using token */
   margin-top: 0;
@@ -52,29 +52,29 @@
   text-align: center;
 }
 
-.team-member ul {
+.team__member ul {
   margin-top: var(--space-4); /* 1rem */
   margin-bottom: var(--space-6); /* 1.5rem */
   padding-left: var(--space-6); /* 1.5rem */
 }
 
-.team-member li {
+.team__member li {
   margin-bottom: var(--space-2); /* 0.5rem */
 }
 
 /* Responsive adjustments */
 @media (max-width: var(--breakpoint-lg)) { /* 992px */
-  .team-section {
+  .team {
     flex-direction: column;
   }
 
-  .team-member {
+  .team__member {
     max-width: 100%;
   }
 }
 
 @media (max-width: var(--breakpoint-md)) { /* 767px approximated via token (768px) */
-  .team-member {
+  .team__member {
     min-width: unset;
     width: 100%;
     padding: var(--space-6); /* 1.5rem */
@@ -85,36 +85,36 @@
 
 /* For extra small screens - updated to use breakpoint token */
 @media (max-width: var(--breakpoint-sm)) { /* Originally 576px; using var(--breakpoint-sm)=640px */
-  .team-photo {
+  .team__photo {
     width: 150px;
     height: 150px;
   }
 
-  .team-member {
+  .team__member {
     padding: var(--space-6); /* 1.5rem */
   }
 }
 
 /* Subtle LinkedIn Icon Styling */
-.team-member-linkedin {
+.team__linkedin {
   display: flex;
   justify-content: center;
   margin-top: var(--space-4); /* 1rem */
   margin-bottom: var(--space-4); /* 1rem */
 }
 
-.team-member-linkedin a {
+.team__linkedin a {
   color: var(--neutral-500);
   font-size: 1.5rem;
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
-.team-member-linkedin a:hover {
+.team__linkedin a:hover {
   color: var(--primary-400);
 }
 
-.team-member-linkedin .fa-linkedin {
+.team__linkedin .fa-linkedin {
   /* Ensures the icon is centered and has some padding */
   display: inline-block;
   text-align: center;

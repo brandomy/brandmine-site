@@ -6,18 +6,18 @@
 {% endcomment %}
 
 {% if include.preview %}
-<div class="example-wrapper">
-  <div class="example-preview">
+<div class="code-example">
+  <div class="code-example__preview">
     {{ include.code }}
   </div>
-  <div class="example-code">
-    <span class="code-language">{{ include.language }}</span>
+  <div class="code-example__code">
+    <span class="code-example__language">{{ include.language }}</span>
     <pre><code class="language-{{ include.language }}">{{ include.code | escape }}</code></pre>
   </div>
 </div>
 {% else %}
-<div class="example-code">
-  <span class="code-language">{{ include.language }}</span>
+<div class="code-example">
+  <span class="code-example__language">{{ include.language }}</span>
   <pre><code class="language-{{ include.language }}">{{ include.code | escape }}</code></pre>
 </div>
 {% endif %}

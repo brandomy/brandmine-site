@@ -10,9 +10,9 @@ layout: default
 
 <div class="panel panel--light">
   <div class="panel__content">
-    <div class="insights-container">
-      <div class="insights-main">
-        <div class="insights-grid">
+    <div class="content-type">
+      <div class="content-type__main">
+        <div class="content-type__grid">
           
           {% assign insights = site.insights | where: "lang", page.lang | where: "content_type", page.content_type %}
           {% if insights.size > 0 %}
@@ -24,19 +24,19 @@ layout: default
           {% endfor %}
         </div>
         
-        <div class="back-link-container">
+        <div class="content-type__back-link">
           <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn-secondary">{{ site.data.translations[page.lang].insights.back_to_insights }}</a>
         </div>
       </div>
       
-      <div class="insights-sidebar">
-        <div class="sidebar-section">
+      <div class="content-type__sidebar">
+        <div class="content-type__sidebar-section">
           <h3>{{ site.data.translations[page.lang].insights.content_types }}</h3>
-          <ul class="content-type-list">
+          <ul class="content-type__list">
             {% assign all_insights = site.insights | where: "lang", page.lang %}
             {% assign content_types = all_insights | map: "content_type" | uniq %}
             {% for type in content_types %}
-            <li class="{% if type == page.content_type %}active{% endif %}">
+            <li class="content-type__list-item{% if type == page.content_type %} content-type__list-item--active{% endif %}">
               <a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type | slugify }}/">{{ type }}</a>
             </li>
             {% endfor %}
@@ -44,23 +44,23 @@ layout: default
         </div>
         
         <!-- Related tags section -->
-        <div class="sidebar-section">
+        <div class="content-type__sidebar-section">
           <h3>{{ site.data.translations[page.lang].tags.related_tags }}</h3>
           
           {% assign sectors = insights | map: "sectors" | flatten | uniq %}
           {% if sectors.size > 0 %}
-          <div class="tag-list sidebar-tags">
+          <div class="content-type__tags">
             {% for sector in sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="tag sector-tag">{{ sector }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="content-type__tag content-type__tag--sector">{{ sector }}</a>
             {% endfor %}
           </div>
           {% endif %}
           
           {% assign markets = insights | map: "markets" | flatten | uniq %}
           {% if markets.size > 0 %}
-          <div class="tag-list sidebar-tags">
+          <div class="content-type__tags">
             {% for market in markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="tag market-tag">{{ market }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="content-type__tag content-type__tag--market">{{ market }}</a>
             {% endfor %}
           </div>
           {% endif %}

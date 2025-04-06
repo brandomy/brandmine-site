@@ -23,7 +23,7 @@
    -------------------------------------------------------------------------- */
 
 /* Content card for transparent backgrounds */
-.content-card {
+.card--content {
   background-color: transparent;
   box-shadow: none;
   padding: 0;
@@ -33,7 +33,7 @@
 }
 
 /* White content card for use on colored backgrounds */
-.white-content-card {
+.card--white {
   background-color: white;
   border-radius: var(--radius-md); /* Updated to token (was 0.5rem) */
   box-shadow: var(--shadow-lg); /* Updated to token */
@@ -41,7 +41,7 @@
 }
 
 /* Center paragraphs within content cards */
-.content-card > p {
+.card--content > p {
   margin-left: auto;
   margin-right: auto;
 }
@@ -51,22 +51,15 @@
    -------------------------------------------------------------------------- */
 
 /* Mobile adjustments */
-@media (max-width: var(--breakpoint-md)) { /* 768px */
-  .content-card {
-    padding: 0;
-  }
-}
-
-/* For smaller screens, ensure content cards take full width */
 @media (max-width: var(--breakpoint-md)) {
-  .content-card {
+  .card--content {
     padding: 0;
     margin: 0;
     width: 100%;
   }
-  
+
   /* Adjust white content cards for mobile */
-  .white-content-card {
+  .card--white {
     padding: var(--space-6); /* 1.5rem */
   }
 }

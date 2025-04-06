@@ -23,7 +23,7 @@
  
  /* Target specific sections on the About page */
  .about-page .panel--secondary .feature-item,
- .about-page .panel--primary .solution-item {
+ .about-page .panel--primary .solutions__item {
    max-width: 800px;
    margin-left: auto;
    margin-right: auto;
@@ -71,7 +71,7 @@
    -------------------------------------------------------------------------- */
 
 /* Team layout grid */
-.team-section {
+.team {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8); /* 2rem */
@@ -79,7 +79,7 @@
 }
   
 /* Individual team member cards */
-.team-member {
+.team__member {
   flex: 1;
   min-width: 300px;
   background-color: white;
@@ -90,7 +90,7 @@
 }
   
 /* Team member photo */
-.team-photo {
+.team__photo {
   width: 180px;
   height: 180px;
   border-radius: 50%;
@@ -103,14 +103,14 @@
 }
   
 /* Team member name and title */
-.team-member h3 {
+.team__member h3 {
   margin-top: 0;
   margin-bottom: var(--space-2); /* 0.5rem */
   color: var(--neutral-800);
   text-align: center;
 }
   
-.team-title {
+.team__title {
   color: var(--primary-600);
   font-weight: 600;
   margin-top: 0;
@@ -119,14 +119,14 @@
 }
   
 /* Team member list items */
-.team-member ul {
+.team__member ul {
   margin-top: var(--space-4); /* 1rem */
   margin-bottom: var(--space-6); /* 1.5rem */
   padding-left: var(--space-6); /* 1.5rem */
   text-align: left; /* Explicitly set lists to left-aligned */
 }
   
-.team-member li {
+.team__member li {
   margin-bottom: var(--space-2); /* 0.5rem */
   text-align: left; /* Ensure list items are left-aligned */
 }

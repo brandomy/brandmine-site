@@ -10,14 +10,14 @@ layout: default
       <button id="search-button" class="search-button">{{ site.data.translations[page.lang].search.button }}</button>
     </div>
     
-    <div class="brands-interface">
+    <div class="brands__interface">
       <!-- Use our new search filter include -->
       {% include search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
       
-      <div class="brands-results">
-        <div class="results-header">
+      <div class="brands__results">
+        <div class="brands__results-header">
           <h2 id="results-count">{{ site.data.translations[page.lang].search.all_brands }}</h2>
-          <div class="results-sort">
+          <div class="brands__sort">
             <label for="sort-select">{{ site.data.translations[page.lang].sort.label }}:</label>
             <select id="sort-select">
               <option value="name">{{ site.data.translations[page.lang].sort.name }}</option>
@@ -27,7 +27,7 @@ layout: default
           </div>
         </div>
         
-        <div id="brands-container" class="brands-grid">
+        <div id="brands-container" class="brands__grid">
           <!-- Populated by JavaScript -->
           {% assign brands = site.brands | where: "lang", page.lang %}
           {% for brand in brands %}
@@ -35,7 +35,7 @@ layout: default
           {% endfor %}
         </div>
         
-        <div class="load-more-container">
+        <div class="brands__load-more-container">
           <button id="load-more" class="btn-secondary">{{ site.data.translations[page.lang].pagination.load_more }}</button>
         </div>
       </div>
