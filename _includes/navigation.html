@@ -1,20 +1,27 @@
 <nav class="header__nav" id="main-nav">
   <ul class="header__nav-list">
-    <li class="header__nav-item"><a href="/{{ page.lang }}/">Home</a></li>
-    <li class="header__nav-item"><a href="/{{ page.lang }}/brands/">Brands</a></li>
-    <!-- Dropdown -->
-    <li class="header__nav-item header__dropdown">
-      <a href="/{{ page.lang }}/discover/" role="button" aria-haspopup="true" aria-expanded="false">
-        <span>Discover</span> <span class="header__dropdown-icon" aria-hidden="true">&#x25BE;</span>
-      </a>
-      <ul class="header__dropdown-content" role="menu">
-        <li><a href="/{{ page.lang }}/discover/sectors/">Sectors</a></li>
-        <li><a href="/{{ page.lang }}/discover/markets/">Markets</a></li>
-        <li><a href="/{{ page.lang }}/discover/attributes/">Attributes</a></li>
-        <li><a href="/{{ page.lang }}/discover/signals/">Signals</a></li>
-      </ul>
-    </li>
-    <li class="header__nav-item"><a href="/{{ page.lang }}/insights/">Insights</a></li>
-    <li class="header__nav-item"><a href="/{{ page.lang }}/about/">About</a></li>
+    {% assign nav_items = site.data.navigation[page.lang].main %}
+    {% for item in nav_items %}
+      <li class="header__nav-item {% if item.children %}header__dropdown{% endif %}">
+        <a href="{{ item.url }}" 
+           {% if item.children %}role="button" aria-haspopup="true" aria-expanded="false"{% endif %}
+           {% if page.url == item.url %}class="active"{% endif %}>
+          <span>{{ item.title }}</span>
+          {% if item.children %}<span class="header__dropdown-icon" aria-hidden="true">&#x25BE;</span>{% endif %}
+        </a>
+        
+        {% if item.children %}
+          <ul class="header__dropdown-content" role="menu">
+            {% for child in item.children %}
+              <li>
+                <a href="{{ child.url }}" {% if page.url == child.url %}class="active"{% endif %}>
+                  {{ child.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
   </ul>
 </nav>
