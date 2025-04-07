@@ -4,7 +4,7 @@
   color: white;
   padding: var(--space-3) var(--space-4);
   position: relative;
-  z-index: 10;
+  z-index: var(--z-header);
 }
 .header a:hover {
   color: var(--secondary-300);
@@ -55,7 +55,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   border-radius: var(--radius-sm);
   min-width: 200px;
-  z-index: 1000;
+  z-index: var(--z-dropdown); /* 200 */
   overflow: visible;
   border: 1px solid var(--primary-400);
   list-style: none;
@@ -95,7 +95,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1010;
+  z-index: var(--z-toggle);
   align-self: center;
 }
 .header__toggle-icon {
@@ -193,7 +193,7 @@
     overflow: visible;
     display: none; /* Hide by default on mobile */
     position: static;
-    z-index: 1000;
+    z-index: var(--z-dropdown);
     padding: 0;
     margin: 0;
     padding-left: var(--space-4);
