@@ -15,7 +15,7 @@ ref: about
 </div>
 
 <!-- Mission Section -->
-<div class="panel panel--light">
+<div class="panel panel--mission">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的使命</h2>
     <p class="panel__lead-text">
@@ -25,67 +25,57 @@ ref: about
 </div>
 
 <!-- Problem Section -->
-<div class="panel panel--secondary">
+<div class="panel panel--problem">
   <div class="panel__content">
-    <div class="content-card">
-      <h2 class="panel__heading-secondary">我们解决的问题</h2>
-      <p class="panel__lead-text">
-        国际零售商、分销商、投资者和品牌孵化器在寻求金砖国家+消费市场机会时面临重大挑战：
-      </p>
-      
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
-          </div>
-          <h3>信息碎片化</h3>
-          <p>关键品牌数据分散在多个来源</p>
+    <h2 class="panel__heading-secondary">我们解决的问题</h2>
+    <p class="panel__lead-text">
+      国际零售商、分销商、投资者和品牌孵化器在寻求金砖国家+消费市场机会时面临重大挑战：
+    </p>
+    
+    <!-- Problem cards in 2x2 grid -->
+    <div class="problem-grid">
+      <div class="problem-card problem-card--1">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
         </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-          </div>
-          <h3>语言障碍</h3>
-          <p>重要信息被困在本地语言中</p>
-        </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-          </div>
-          <h3>文化背景差距</h3>
-          <p>缺乏对品牌与消费者关系"为什么"的理解</p>
-        </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10H3M21 6H3M21 14H3M21 18H3"></path></svg>
-          </div>
-          <h3>政治复杂性</h3>
-          <p>不确定的监管和外交环境</p>
-        </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
-          </div>
-          <h3>发现挑战</h3>
-          <p>没有有效方法识别有前途的品牌</p>
-        </div>
+        <h3>信息碎片化</h3>
+        <p>关键品牌数据分散在多个来源</p>
       </div>
       
-      <p class="panel__conclusion-text">
-        这些障碍造成了市场效率低下，双方都受到损害——国际合作伙伴错失宝贵机会，而有价值的品牌仍局限于本地市场。
-      </p>
+      <div class="problem-card problem-card--2">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+        </div>
+        <h3>语言障碍</h3>
+        <p>重要信息被困在本地语言中</p>
+      </div>
+      
+      <div class="problem-card problem-card--3">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        </div>
+        <h3>文化背景差距</h3>
+        <p>缺乏对品牌与消费者关系"为什么"的理解</p>
+      </div>
+      
+      <div class="problem-card problem-card--4">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
+        </div>
+        <h3>发现挑战</h3>
+        <p>没有有效方法识别有前途的品牌</p>
+      </div>
     </div>
+    
+    <p class="panel__conclusion-text">
+      这些障碍造成了市场效率低下，双方都受到损害——国际合作伙伴错失宝贵机会，而有价值的品牌仍局限于本地市场。
+    </p>
   </div>
 </div>
 
 <!-- Solution Section -->
-<div class="panel panel--primary">
+<div class="panel panel--solution">
   <div class="panel__content">
-    <div class="content-card">
       <h2 class="panel__heading-secondary">我们的解决方案</h2>
       <p class="panel__lead-text">
         Brandmine的商业智能平台通过以下方式为这个碎片化的市场带来清晰度：
@@ -132,12 +122,11 @@ ref: about
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 
 <!-- Team Section using existing styling -->
-<div class="panel panel--light">
+<div class="panel panel--team">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的团队</h2>
     
@@ -186,64 +175,120 @@ ref: about
   </div>
 </div>
 
-<!-- Unique Perspective Section -->
-<div class="panel panel--accent">
+<!-- Perspective Section -->
+<div class="panel panel--perspective">
   <div class="panel__content">
-    <div class="content-card">
       <h2 class="panel__heading-secondary">我们的独特视角</h2>
       <p class="panel__lead-text">
         凭借在亚洲——特别是在中国和俄罗斯——超过25年的生活和工作经验，我们的创始人为Brandmine带来了语言能力、文化洞察力和商业敏锐度的罕见组合：
       </p>
       
-    <ul class="perspective-list">
-      <li><span><strong>亲身经历</strong>在亚洲市场建立和扩展品牌</span></li>
-      <li><span><strong>深刻的文化理解</strong>，超越语言翻译</span></li>
-      <li><span><strong>广泛的网络</strong>，横跨金砖国家+和国际市场</span></li>
-      <li><span><strong>实用知识</strong>，在复杂监管环境中导航</span></li>
-      <li><span><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</span></li>
-    </ul>
+      <ul class="perspective-list">
+        <li><span><strong>亲身经历</strong>在亚洲市场建立和扩展品牌</span></li>
+        <li><span><strong>深刻的文化理解</strong>，超越语言翻译</span></li>
+        <li><span><strong>广泛的网络</strong>，横跨金砖国家+和国际市场</span></li>
+        <li><span><strong>实用知识</strong>，在复杂监管环境中导航</span></li>
+        <li><span><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</span></li>
+      </ul>
       
       <p class="panel__conclusion-text">
         这种独特的背景使我们能够在别人只看到障碍的地方看到宝贵的机会。
       </p>
-    </div>
   </div>
 </div>
 
 <!-- Services Section -->
-<div class="panel panel--light">
+<div class="panel panel--services">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的服务</h2>
     <p class="panel__lead-text">
       我们为金砖国家+品牌以及希望与他们开展业务的投资者和商业伙伴提供服务。
     </p>
     
-    <div class="services-split">
-      <div class="services-column">
-        <h3>为国际合作伙伴提供</h3>
-        <ul class="service-list">
-          <li><strong>品牌发现数据库</strong>：精选品牌资料的可搜索集合</li>
-          <li><strong>定制研究</strong>：针对特定行业或地区的量身定制调查</li>
-          <li><strong>市场进入指导</strong>：为导航金砖国家+市场提供战略支持</li>
-          <li><strong>关系促进</strong>：介绍经过审核的品牌合作伙伴</li>
-        </ul>
+    <div class="services-container">
+      <!-- Left Column: For International Partners -->
+      <div class="service-panel service-panel--international">
+        <div class="service-panel__header">
+          <h3 class="service-panel__title">为国际合作伙伴提供</h3>
+        </div>
+        <div class="service-panel__content">
+          <ul class="service-list">
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">品牌发现数据库：</strong>
+                <p>精选品牌资料的可搜索集合</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">定制研究：</strong>
+                <p>针对特定行业或地区的量身定制调查</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">市场进入指导：</strong>
+                <p>为导航金砖国家+市场提供战略支持</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">关系促进：</strong>
+                <p>介绍经过审核的品牌合作伙伴</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
       
-      <div class="services-column">
-        <h3>为金砖国家+品牌提供</h3>
-        <ul class="service-list">
-          <li><strong>国际可见性</strong>：向合格的全球合作伙伴展示</li>
-          <li><strong>叙事发展</strong>：完善品牌故事，实现跨境影响</li>
-          <li><strong>准备度评估</strong>：评估出口和合作伙伴关系准备情况</li>
-          <li><strong>连接机会</strong>：获取有兴趣的国际合作伙伴</li>
-        </ul>
+      <!-- Right Column: For BRICS+ Brands -->
+      <div class="service-panel service-panel--brands">
+        <div class="service-panel__header">
+          <h3 class="service-panel__title">为金砖国家+品牌提供</h3>
+        </div>
+        <div class="service-panel__content">
+          <ul class="service-list">
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">国际可见性：</strong>
+                <p>向合格的全球合作伙伴展示</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">叙事发展：</strong>
+                <p>完善品牌故事，实现跨境影响</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">准备度评估：</strong>
+                <p>评估出口和合作伙伴关系准备情况</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <span class="service-item__bullet">•</span>
+              <div class="service-item__content">
+                <strong class="service-item__title">连接机会：</strong>
+                <p>获取有兴趣的国际合作伙伴</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Contact Section -->
-<div class="panel panel--cta">
+<div class="panel panel--contact">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">联系我们</h2>
     <p class="panel__lead-text">

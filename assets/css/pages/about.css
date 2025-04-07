@@ -1,83 +1,8 @@
 /* ==========================================================================
-   About Page Styles
-   ==========================================================================
-   Page-specific styles for the About page layout and components.
-*/
-
-
-/* --------------------------------------------------------------------------
-   1. GENERAL STYLES
-   -------------------------------------------------------------------------- */
-/* 
- * These styles apply specifically to pages with the "about-page" class,
- * which is automatically added to the body via conditional in default.html
- * when the URL contains "/about/".
- */
- .about-light-panel__content p,
- .about-problem__card p {
-   max-width: var(--content-narrow-max-width);       /* Control line length for readability */
-   margin-left: auto;
-   margin-right: auto;
-   text-align: center;    /* Center text in paragraphs */
- }
- 
- /* Target specific sections on the About page */
- .about-problem__feature,
- .about-solution__item {
-   max-width: var(--content-narrow-max-width);
-   margin-left: auto;
-   margin-right: auto;
- }
-
-/* --------------------------------------------------------------------------
-   2. PANEL STYLING OVERRIDES
-   -------------------------------------------------------------------------- */
-
-/* Ensure proper text centering in light panels */
-.about-light-panel__content {
-  max-width: var(--content-medium-max-width);
-  text-align: center;
-}
-
-.about-team__heading-secondary {
-  font-size: var(--text-4xl);
-  margin-bottom: var(--space-8);
-  color: var(--neutral-800);
-}
-
-.about-light-panel__lead-text {
-  font-size: var(--text-xl);
-  max-width: var(--content-narrow-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-/* --------------------------------------------------------------------------
-   3. HERO PANEL — no custom styles yet
-   -------------------------------------------------------------------------- */
-
-
-
-
-
-
-
-
-
-
-/* --------------------------------------------------------------------------
-   4. TEAM SECTION
-   -------------------------------------------------------------------------- */
-
-/* Team layout grid */
-.team {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-8); /* 2rem */
-  margin: var(--space-8) 0; /* 2rem 0 */
-}
+    About Page Styles
+    ========================================================================== */
   
+
 /* Individual team member cards */
 .team__member {
   flex: 1;
@@ -131,20 +56,6 @@
   text-align: left; /* Ensure list items are left-aligned */
 }
   
-/* --------------------------------------------------------------------------
-   5. SERVICES SECTION
-   -------------------------------------------------------------------------- */
-
-/* Two-column services layout */
-.services-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-12); /* 2.5rem is close to 3rem, using 3rem */
-  margin: var(--space-12) 0; /* 2.5rem is close to 3rem, using 3rem */
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
   
 /* Service section styling */
 .services-column {
@@ -193,15 +104,6 @@ h3.service-category {
   padding-bottom: var(--space-2); /* 0.5rem */
 }
   
-/* --------------------------------------------------------------------------
-   6. PERSPECTIVE SECTION
-   -------------------------------------------------------------------------- */
-
-/* Perspective section styling */
-.about-perspective__card {
-  max-width: var(--content-medium-max-width);
-  margin: 0 auto;
-}
   
 /* Remove default margin/padding from list */
 .about-perspective__list {
@@ -287,19 +189,6 @@ h3.service-category {
   text-align: center;
 }
 
-/* --------------------------------------------------------------------------
-   7. CONTACT SECTION STYLING
-   -------------------------------------------------------------------------- */
-  
-/* Contact section styling */
-.about-cta__contact-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-8); /* 2rem */
-  margin: var(--space-8) 0; /* 2rem 0 */
-}
   
 .about-cta__contact-item {
   display: flex;
@@ -314,18 +203,7 @@ h3.service-category {
 }
   
 /* Style the contact links */
-.about-cta__link,
-.about-cta__link:visited {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
-}
   
-.about-cta__link:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
 
 .about-cta__lead-text {
   color: var(--secondary-50); /* Very light orange color */
@@ -340,17 +218,7 @@ h3.service-category {
   margin: var(--space-8) auto;
 }
 
-/* --------------------------------------------------------------------------
-   8. RESPONSIVE ADJUSTMENTS
-   -------------------------------------------------------------------------- */
-   
-@media (min-width: var(--breakpoint-md)) {
-  .about-light-panel__heading-secondary,
-  .about-perspective__heading {
-    font-size: var(--text-4xl);
-  }
   
-  .about-light-panel__lead-text,
   .about-perspective__lead-text {
     font-size: var(--text-xl);
   }
@@ -358,11 +226,20 @@ h3.service-category {
   .about-perspective__list {
     max-width: 75%;
   }
-}
 
 @media (max-width: var(--breakpoint-md)) {
   .services-split {
     grid-template-columns: 1fr;
     gap: var(--space-8);
   }
+}
+
+.about-light-panel__content {
+   margin-left: auto;
+   margin-right: auto;
+   max-width: var(--content-narrow-max-width);
+   max-width: var(--content-narrow-max-width);       /* Control line length for readability */
+   text-align: center;    /* Center text in paragraphs */
+  max-width: var(--content-medium-max-width);
+  text-align: center;
 }

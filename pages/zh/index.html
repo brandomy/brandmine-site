@@ -6,59 +6,94 @@ permalink: /zh/
 lang: zh
 ---
 
-<!-- Hero Image Panel -->
-<div class="panel panel--hero">
-  <div class="hero-background"></div>
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">放大金砖国家+的领先品牌影响力</h1>
-    <p class="panel__subtitle">探索来自巴西、俄罗斯、印度、中国、南非及其他新兴市场国家的消费品牌的巨大潜力。</p>
+<!-- Hero Panel with Image -->
+<div class="panel home-hero--with-image" style="background-image: url('{{ site.baseurl }}/assets/images/hero/home-cover-1.jpg');">
+  <div class="home-hero--with-image__content">
+    <h1 class="home-hero--with-image__heading">放大金砖国家+的领先品牌影响力</h1>
+    <p class="home-hero--with-image__subtitle">探索来自巴西、俄罗斯、印度、中国、南非及其他新兴市场国家的消费品牌的巨大潜力。</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn home-hero--with-image__btn-primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="#how-it-works" class="btn home-hero--with-image__btn-secondary">{{ site.data.translations[page.lang].discover.explore }}</a>    
+    </div>
   </div>
 </div>
 
-<!-- Impact Statement - Chinese -->
-<div class="panel panel--hero panel--secondary panel--display panel--pattern panel--no-top-margin">
-  <div class="panel__content panel--centered">
-    <p class="display-text">构建联系</p>
-    <p class="panel__subtitle">Brandmine 将您与创新、注重质量的品牌连接起来，这些品牌已准备好拓展新市场并建立国际合作伙伴关系。</p>
+<!-- Impact Statement Panel -->
+<div class="panel home-impact">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">构建联系</h2>
+    <p class="panel__lead-text">Brandmine 将您与创新、注重质量的品牌连接起来，这些品牌已准备好拓展新市场并建立国际合作伙伴关系。</p>
   </div>
 </div>
 
 <!-- Mission Panel -->
-<div class="panel panel--primary">
+<div class="panel panel--mission">
   <div class="panel__content">   
     <h2 class="panel__heading-secondary">我们的使命</h2>
     <p class="panel__lead-text">
       我们的使命是帮助金砖国家+的领先品牌获取他们跨越国界发展所需的资源。我们相信，卓越的产品无论源自何处，都值得获得全球认可。
     </p>
-    <p>
+    <p class="panel__paragraph">
       通过跨越地理和文化的鸿沟，我们为有抱负的品牌创造在国际舞台上蓬勃发展的途径。
     </p>
   </div>
 </div>
 
-<!-- Market Potential Panel with Accent Color -->
-<div class="panel panel--accent">
+<!-- Market Potential Panel -->
+<div class="panel panel--perspective">
   <div class="panel__content">
-    <div class="content-card">
-      <h2 class="panel__heading-secondary">市场潜力</h2>
-      <p class="panel__lead-text">
-        金砖国家+经济体代表了全球超过<strong>40%的人口</strong>，贡献了全球<strong>25%以上的GDP</strong>，然而他们的消费品牌在国际市场上的代表性仍然严重不足。
-      </p>
-      <p>
-        这种脱节为寻求在明日知名品牌领域获得先行者优势的投资者、分销商和零售商创造了非凡的机遇。今天，通过促进这些联系，我们正在帮助塑造一个更加多元化和充满活力的全球市场，让创新在所有方向上流动。
-      </p>
+    <h2 class="panel__heading-secondary">市场潜力</h2>
+    <p class="panel__lead-text">
+      金砖国家+经济体代表了全球超过<strong>40%的人口</strong>，贡献了全球<strong>25%以上的GDP</strong>，然而他们的消费品牌在国际市场上的代表性仍然严重不足。
+    </p>
+    <p class="panel__paragraph">
+      这种脱节为寻求在明日知名品牌领域获得先行者优势的投资者、分销商和零售商创造了非凡的机遇。今天，通过促进这些联系，我们正在帮助塑造一个更加多元化和充满活力的全球市场，让创新在所有方向上流动。
+    </p>
+    
+    <div class="impact-stats">
+      <div class="stat-item">
+        <span class="stat-number">40%+</span>
+        <span class="stat-label">全球人口在金砖国家+经济体中</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">25%+</span>
+        <span class="stat-label">全球GDP</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">1000+</span>
+        <span class="stat-label">未开发的品牌机会</span>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- CTA Panel with proper spacing -->
-<div class="panel panel--cta">
+<!-- CTA Panel -->
+<div class="panel panel--contact">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">联系我们</h2>
     <p class="panel__lead-text">
       准备好在新兴市场的冠军品牌成为全球知名品牌之前发现它们吗？
     </p>
-    <p><strong>立即与我们联系。</strong></p>
-    <a href="#" class="btn btn-secondary" data-tally-open="nG5oOk" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">把握先机</a>
+    <p class="panel__conclusion-text"><strong>立即与我们联系。</strong></p>
+    <div class="home-cta__buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--primary">{{ site.data.translations[page.lang].home.cta_button }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--secondary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+    </div>
   </div>
 </div>
+
+<script>
+  // Simple scroll functionality for "Learn How" button
+  document.addEventListener('DOMContentLoaded', function() {
+    const learnHowBtn = document.querySelector('a[href="#how-it-works"]');
+    if (learnHowBtn) {
+      learnHowBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const howItWorksSection = document.getElementById('how-it-works');
+        if (howItWorksSection) {
+          howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  });
+</script>

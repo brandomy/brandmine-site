@@ -1,29 +1,220 @@
-.card {
-  background-color: var(--neutral-100);
-  padding: var(--space-4); /* 1rem */
-  border-radius: var(--radius-sm); /* Updated to token */
-  border: var(--border-width-thin) solid var(--neutral-200);
-  box-shadow: var(--shadow-sm); /* Updated to token */
-}
+/* ==========================================================================
+   Brand Card Component (BEM)
+   ========================================================================== 
+   Consistent styling for brand cards throughout the site.
+   Following BEM naming convention and using design tokens.
+*/
 
-.content-card {
-  background-color: transparent;
-  box-shadow: none;
-  padding: 0;
-  border-radius: 0;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-}
+/* --------------------------------------------------------------------------
+   1. Base Brand Card
+   -------------------------------------------------------------------------- */
 
-.white-content-card {
-  background-color: white;
-  border-radius: var(--radius-md); /* Updated to token (was 0.5rem) */
-  box-shadow: var(--shadow-lg); /* Updated to token */
-  padding: var(--space-6); /* 1.5rem */
-}
-
-.content-card > p {
-  margin-left: auto;
-  margin-right: auto;
-}
+   .brand-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--neutral-100);
+    border: var(--border-width-thin) solid var(--neutral-200);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast);
+    height: 100%;
+  }
+  
+  .brand-card:hover {
+    box-shadow: var(--card-shadow-hover);
+  }
+  
+  /* --------------------------------------------------------------------------
+     2. Brand Card Elements
+     -------------------------------------------------------------------------- */
+  
+  .brand-card__image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    background-color: var(--neutral-200);
+    overflow: hidden;
+  }
+  
+  .brand-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .brand-card__logo {
+    position: absolute;
+    bottom: var(--space-2);
+    right: var(--space-2);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background-color: white;
+    padding: var(--space-1);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .brand-card__logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .brand-card__sector {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    background-color: var(--secondary-600);
+    color: var(--neutral-100);
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-medium);
+  }
+  
+  .brand-card__body {
+    padding: var(--card-padding-default);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .brand-card__header {
+    margin-bottom: var(--space-2);
+  }
+  
+  .brand-card__title {
+    font-size: var(--text-custom);
+    font-weight: var(--font-semibold);
+    margin: 0 0 var(--space-1) 0;
+    color: var(--neutral-900);
+  }
+  
+  .brand-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    margin-bottom: var(--space-2);
+  }
+  
+  .brand-card__location {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+  
+  .brand-card__location-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .brand-card__description {
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--neutral-700);
+    margin-bottom: var(--space-4);
+    flex: 1;
+  }
+  
+  .brand-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin-bottom: var(--space-4);
+  }
+  
+  .brand-card__tag {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    background-color: var(--neutral-100);
+    border: var(--border-width-thin) solid var(--neutral-200);
+    color: var(--neutral-700);
+  }
+  
+  .brand-card__footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .brand-card__link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--primary-600);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .brand-card__link:hover {
+    color: var(--primary-500);
+    text-decoration: underline;
+  }
+  
+  .brand-card__link:focus {
+    outline: 2px solid var(--primary-300);
+    outline-offset: 2px;
+  }
+  
+  /* --------------------------------------------------------------------------
+     3. Brand Card Modifiers
+     -------------------------------------------------------------------------- */
+  
+  .brand-card--featured {
+    border-left: var(--border-width-medium) solid var(--primary-400);
+  }
+  
+  .brand-card--new {
+    border-left: var(--border-width-medium) solid var(--secondary-500);
+  }
+  
+  .brand-card--founder-led .brand-card__sector {
+    background-color: var(--quaternary-500);
+  }
+  
+  .brand-card--compact {
+    max-width: 320px;
+  }
+  
+  .brand-card--compact .brand-card__image {
+    aspect-ratio: 4/3;
+  }
+  
+  .brand-card--compact .brand-card__body {
+    padding: var(--space-3);
+  }
+  
+  /* --------------------------------------------------------------------------
+     4. Brand Card Responsive Adjustments
+     -------------------------------------------------------------------------- */
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .brand-card__body {
+      padding: var(--space-3);
+    }
+    
+    .brand-card__title {
+      font-size: var(--text-base);
+    }
+    
+    .brand-card__description {
+      margin-bottom: var(--space-3);
+    }
+    
+    .brand-card__tags {
+      margin-bottom: var(--space-3);
+    }
+    
+    .brand-card--compact {
+      max-width: 100%;
+    }
+  }

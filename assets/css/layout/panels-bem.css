@@ -180,10 +180,74 @@
     color: white;
   }
   
-  .panel--quaternary {
-    background-color: var(--quaternary-50);
+  .panel--olive {
+    background-color: var(--olive-50);
     color: var(--neutral-700);
   }
+
+  /* ADD these new solid color panel styles */
+
+ /* Solid primary (teal) for Team section */
+ .panel--primary-solid {
+  background-color: var(--primary-100);
+  color: var(--neutral-700);
+  border-bottom: 3px solid rgba(56, 178, 172, 0.2); /* Primary color with opacity */
+}
+ 
+
+   /* Soft accent (indigo) for Mission panel */
+   .panel--accent-soft {
+    background-color: var(--accent-50);
+    color: var(--neutral-700);
+  }
+
+  /* Make sure headings stay dark for readability */
+  .panel--accent-soft .panel__heading-secondary {
+    color: var(--neutral-800); /* Keep headers dark */
+  }
+
+  /* Remove any border bottom rules */
+  .panel--accent-soft,
+  .panel--primary-solid {
+    border-bottom: none;
+  }
+
+   /* Soft olive (olive green) background for Mission panel */
+   .panel--olive-soft {
+    background-color: var(--olive-50);
+    color: var(--neutral-700);
+    border-bottom: 3px solid rgba(163, 183, 99, 0.2); /* Quaternary color with opacity */
+  }
+
+ /* Special treatment for olive panel */
+  .panel--olive-soft .panel__heading-secondary {
+    color: var(--olive-700);
+  }
+
+
+ /* ADD this new style for the Services section */
+.panel--secondary-soft {
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
+}
+
+/* Ensure services columns stand out on secondary background */
+.panel--secondary-soft .services-column {
+  background-color: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-top: 3px solid var(--secondary-500);
+}
+
+.panel--secondary-soft .services-column h3 {
+  color: var(--secondary-600);
+}
+
+.panel--secondary-soft .service-list li:before {
+  color: var(--secondary-500);
+}
+
   
   /* Patterned variations */
   .panel--primary-pattern {
@@ -205,19 +269,19 @@
   }
   
   .panel--accent-pattern {
-    background-color: var(--accent-50);
+    background-color: var(--accent-100);
     color: var(--neutral-700);
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
-  
+
   .panel--accent-dark-pattern {
     background-color: var(--accent-800);
     color: white;
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A5B4FC' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
   
-  .panel--quaternary-pattern {
-    background-color: var(--quaternary-50);
+  .panel--olive-pattern {
+    background-color: var(--olive-50);
     color: var(--neutral-700);
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A3B763' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
@@ -259,6 +323,40 @@
     margin-bottom: var(--space-4);
   }
 
+
+  /* Enhancement for team cards on colored background */
+  .panel--primary-solid .team-member {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .panel--primary-solid .team-member:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Enhancement for services columns on colored background */
+  .panel--accent-soft .services-split {
+    margin-top: var(--space-8);
+  }
+
+  .panel--accent-soft .services-column {
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-top: 3px solid var(--accent-400); /* Change from primary to accent */
+  }
+
+  .panel--accent-soft .services-column h3 {
+    color: var(--accent-600); /* Change from primary to accent */
+  }
+
+  .panel--accent-soft .service-list li:before {
+    color: var(--accent-400); /* Change from primary to accent */
+  }
   
   /* --------------------------------------------------------------------------
      5. RESPONSIVE ADJUSTMENTS (Mobile-first approach)

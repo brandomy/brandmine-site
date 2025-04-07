@@ -11,39 +11,13 @@
         </span>
       </button>
     </div>
-
-
-
-      <!-- Language Switcher -->
-      <div class="header__lang">
-        {% include language-selector.html %}
-      </div>
-
+    <!-- Language Switcher -->
+    <div class="header__lang">
+      {% include language-selector.html %}
+    </div>
   </div>
 
     <!-- Navigation -->
-    <nav class="header__nav" id="main-nav">
-      <ul class="header__nav-list">
-        <li class="header__nav-item"><a href="/{{ page.lang }}/">Home</a></li>
-        <li class="header__nav-item"><a href="/{{ page.lang }}/brands/">Brands</a></li>
-
-        <!-- Dropdown -->
-        <li class="header__nav-item header__dropdown">
-          <a href="/{{ page.lang }}/discover/">
-            Discover <span class="header__dropdown-icon">&#x25BE;</span>
-          </a>
-          <ul class="header__dropdown-content">
-            <li><a href="/{{ page.lang }}/discover/sectors/">Sectors</a></li>
-            <li><a href="/{{ page.lang }}/discover/markets/">Markets</a></li>
-            <li><a href="/{{ page.lang }}/discover/attributes/">Attributes</a></li>
-            <li><a href="/{{ page.lang }}/discover/signals/">Signals</a></li>
-          </ul>
-        </li>
-
-        <li class="header__nav-item"><a href="/{{ page.lang }}/insights/">Insights</a></li>
-        <li class="header__nav-item"><a href="/{{ page.lang }}/about/">About</a></li>
-      </ul>
-    </nav>
-
+    {% include navigation.html %}
 
 </header>
