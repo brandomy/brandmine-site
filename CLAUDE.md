@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # BRANDMINE DEVELOPMENT GUIDELINES
 
 ## Build Commands
@@ -26,6 +30,7 @@
 - Use layouts and includes properly for consistency
 - Organize content in appropriate collections
 - Ensure all URLs maintain language prefix structure
+- Navigation structure in `_data/navigation/{lang}.yml` files
 
 ### HTML
 - Semantic HTML5 elements (section, article, nav, etc.)
@@ -33,12 +38,21 @@
 - Consistent class names following BEM pattern
 - Include appropriate ARIA attributes for accessibility
 
+### JavaScript
+- Use vanilla JS with no framework dependencies
+- Prefer ES6 syntax but maintain backward compatibility
+- Avoid manipulating DOM directly when possible
+- Use event delegation for dynamically added elements
+- Keep JS files small and focused on specific functionality
+
 ### File Organization
 - Pages in `/pages/{lang}/`
 - Brands in `/_brands/{lang}/`
 - Insights in `/_insights/{lang}/`
 - CSS organized in tokens, layout, components, pages
 - Templates in `/_docs/templates/`
+- Translations in `/_data/translations/{lang}.yml`
+- Navigation configuration in `/_data/navigation/{lang}.yml`
 
 ### Development Workflow
 - Follow styleguide for new components

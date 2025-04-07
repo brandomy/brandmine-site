@@ -1,21 +1,34 @@
+<!-- Navigation with Fixed Translation Access -->
 <nav class="header__nav" id="main-nav">
   <ul class="header__nav-list">
-    {% assign nav_items = site.data.navigation[page.lang].main %}
-    {% for item in nav_items %}
-      <li class="header__nav-item {% if item.children %}header__dropdown{% endif %}">
-        <a href="{{ item.url }}" 
+    {% for item in site.data.navigation[page.lang] %}
+      {% assign key = item.name | remove: 'nav.' %}
+      {% assign item_active = false %}
+      {% if page.url contains item.link %}
+        {% assign item_active = true %}
+      {% endif %}
+      
+      <li class="header__nav-item {% if item.children %}header__dropdown{% endif %} {% if item_active %}header__nav-item--active{% endif %}">
+        <a href="{{ item.link | relative_url }}" 
            {% if item.children %}role="button" aria-haspopup="true" aria-expanded="false"{% endif %}
-           {% if page.url == item.url %}class="active"{% endif %}>
-          <span>{{ item.title }}</span>
+           {% if item_active %}class="active"{% endif %}>
+          {{ site.data.translations[page.lang].nav[key] }}
           {% if item.children %}<span class="header__dropdown-icon" aria-hidden="true">&#x25BE;</span>{% endif %}
         </a>
         
         {% if item.children %}
           <ul class="header__dropdown-content" role="menu">
             {% for child in item.children %}
-              <li>
-                <a href="{{ child.url }}" {% if page.url == child.url %}class="active"{% endif %}>
-                  {{ child.title }}
+              {% assign child_key = child.name | remove: 'nav.' %}
+              {% assign child_active = false %}
+              {% if page.url contains child.link %}
+                {% assign child_active = true %}
+              {% endif %}
+              
+              <li class="header__dropdown-item {% if child_active %}header__dropdown-item--active{% endif %}">
+                <a href="{{ child.link | relative_url }}" 
+                   {% if child_active %}class="active"{% endif %}>
+                  {{ site.data.translations[page.lang].nav[child_key] }}
                 </a>
               </li>
             {% endfor %}

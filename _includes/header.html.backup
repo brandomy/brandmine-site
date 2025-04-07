@@ -2,10 +2,8 @@
   <div class="header__container">
     <!-- Logo and Toggle -->
     <div class="header__branding">
-      <a class="header__title" href="/{{ page.lang }}/">
-        {{ site.data.translations[page.lang].site.title }}
-      </a>
-      <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <a class="header__title" href="/{{ page.lang }}/">Brandmine</a>
+       <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
         <span class="header__toggle-icon">
           <span></span>
           <span></span>
@@ -13,13 +11,13 @@
         </span>
       </button>
     </div>
-    
     <!-- Language Switcher -->
     <div class="header__lang">
       {% include language-selector.html %}
     </div>
   </div>
 
-  <!-- Navigation -->
-  {% include navigation.html %}
+    <!-- Navigation -->
+    {% include navigation.html %}
+
 </header>

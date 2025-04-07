@@ -1,0 +1,27 @@
+<nav class="header__nav" id="main-nav">
+  <ul class="header__nav-list">
+    {% assign nav_items = site.data.navigation[page.lang].main %}
+    {% for item in nav_items %}
+      <li class="header__nav-item {% if item.children %}header__dropdown{% endif %}">
+        <a href="{{ item.url }}" 
+           {% if item.children %}role="button" aria-haspopup="true" aria-expanded="false"{% endif %}
+           {% if page.url == item.url %}class="active"{% endif %}>
+          <span>{{ item.title }}</span>
+          {% if item.children %}<span class="header__dropdown-icon" aria-hidden="true">&#x25BE;</span>{% endif %}
+        </a>
+        
+        {% if item.children %}
+          <ul class="header__dropdown-content" role="menu">
+            {% for child in item.children %}
+              <li>
+                <a href="{{ child.url }}" {% if page.url == child.url %}class="active"{% endif %}>
+                  {{ child.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
