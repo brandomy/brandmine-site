@@ -10,7 +10,7 @@ ref: about
 <div class="panel panel--hero">
   <div class="panel__content">
     <h1 class="panel__heading-primary">About Brandmine</h1>
-    <p class="panel__subtitle">Amplifying the global potential of leading consumer brands from BRICS+ countries</p>
+    <p class="panel__subtitle">Elevating Founder-led Brands from the BRICS+</p>
   </div>
 </div>
 
@@ -19,9 +19,9 @@ ref: about
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Our Mission</h2>
     <p class="panel__lead-text">
-      Brandmine exists to amplify the global potential of leading consumer brands from BRICS+ 
-      countries by breaking through language, political, and cultural barriers that keep these brands hidden from international partners.
+      Brandmine exists to elevate the global potential of founder-led brands from BRICS+ countries by illuminating their authentic stories and creating meaningful connections that transcend language, cultural, and political barriers. We bridge the gap between visionary founders and the international partners ready to help them scale beyond their borders.
     </p>
+
   </div>
 </div>
 
@@ -30,7 +30,7 @@ ref: about
   <div class="panel__content">
     <h2 class="panel__heading-secondary">The Problem We Solve</h2>
     <p class="panel__lead-text">
-      International retailers, distributors, investors, and brand incubators face significant challenges when seeking opportunities in BRICS+ consumer markets:
+      Brand investors, distributors, importers, franchisors, and international partners face significant challenges when seeking opportunities in BRICS+ markets:
     </p>
     
     <!-- Problem cards in 2x2 grid -->
@@ -68,9 +68,9 @@ ref: about
   </div>
 </div>
     
-    <p class="panel__conclusion-text">
-      These barriers create market inefficiency that hurts both sides - international partners miss valuable opportunities, while deserving brands remain confined to their local markets.
-    </p>
+  <p class="panel__conclusion-text">
+    This fractured landscape creates a lose-lose scenario — international partners waste resources searching for hidden gems, while innovative founders with proven models struggle to access the partners and capital needed for global growth.
+  </p>
   </div>
 </div>
 
@@ -79,50 +79,53 @@ ref: about
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Our Solution</h2>
       <p class="panel__lead-text">
-        Brandmine's business intelligence platform brings clarity to this fragmented landscape by:
+        Brandmine's business intelligence hub brings clarity to this fragmented landscape by:
       </p>
       
-      <div class="solutions-list">
-        <div class="solution-item">
-          <div class="solution-number">1</div>
-          <div class="solution-content">
-            <h3>Aggregating dispersed information</h3>
-            <p>Into unified, comprehensive brand profiles</p>
-          </div>
-        </div>
-        
-        <div class="solution-item">
-          <div class="solution-number">2</div>
-          <div class="solution-content">
-            <h3>Translating not just language</h3>
-            <p>But cultural and political context</p>
-          </div>
-        </div>
-        
-        <div class="solution-item">
-          <div class="solution-number">3</div>
-          <div class="solution-content">
-            <h3>Standardizing data points</h3>
-            <p>For meaningful comparison</p>
-          </div>
-        </div>
-        
-        <div class="solution-item">
-          <div class="solution-number">4</div>
-          <div class="solution-content">
-            <h3>Revealing brand narratives</h3>
-            <p>That transcend markets</p>
-          </div>
-        </div>
-        
-        <div class="solution-item">
-          <div class="solution-number">5</div>
-          <div class="solution-content">
-            <h3>Pre-vetting opportunities</h3>
-            <p>To reduce risk and research burden</p>
-          </div>
+    <div class="solutions-list">
+      <div class="solution-item">
+        <div class="solution-number">1</div>
+        <div class="solution-content">
+          <h3>Illuminating hidden brand ecosystems</h3>
+          <p>Through comprehensive, multilingual profiles</p>
         </div>
       </div>
+      
+      <div class="solution-item">
+        <div class="solution-number">2</div>
+        <div class="solution-content">
+          <h3>Decoding cultural significance</h3>
+          <p>Beyond simple language translation</p>
+        </div>
+      </div>
+      
+      <div class="solution-item">
+        <div class="solution-number">3</div>
+        <div class="solution-content">
+          <h3>Creating structured comparisons</h3>
+          <p>With standardized metrics across regions</p>
+        </div>
+      </div>
+      
+      <div class="solution-item">
+        <div class="solution-number">4</div>
+        <div class="solution-content">
+          <h3>Showcasing founder journeys</h3>
+          <p>That resonate globally despite local origins</p>
+        </div>
+      </div>
+      
+      <div class="solution-item">
+        <div class="solution-number">5</div>
+        <div class="solution-content">
+          <h3>Curating qualified opportunities</h3>
+          <p>To streamline partnership pathways</p>
+        </div>
+      </div>
+    </div>
+  <p class="panel__conclusion-text">
+    Through this comprehensive approach, we create a clear, accessible path to opportunity that benefits both visionary founders and the partners who can help them grow.
+  </p>
   </div>
 </div>
 
@@ -173,6 +176,9 @@ ref: about
         </div>
       </div>
     </div>
+    <p class="panel__conclusion-text">
+      With our combined expertise in brand development, market entry, and cross-cultural business, we're uniquely positioned to bridge the gap between visionary founders and the international partners they need to succeed.
+    </p>
   </div>
 </div>
 
@@ -184,12 +190,12 @@ ref: about
         With over 25 years living and working across Asia—particularly in China and Russia—our founders bring a rare combination of linguistic capability, cultural insight, and business acumen to Brandmine:
       </p>
       
-      <ul class="perspective-list">
-        <li><span><strong>Firsthand experience</strong> building and scaling brands across Asian markets</span></li>
-        <li><span><strong>Deep cultural understanding</strong> that goes beyond language translation</span></li>
+    <ul class="perspective-list">
+        <li><span><strong>Firsthand founder experience</strong> building and scaling an iconic brand across Asian markets</span></li>
+        <li><span><strong>Entrepreneur's perspective</strong> on the challenges of securing international investment and partnerships</span></li>
+        <li><span><strong>Cultural bridging expertise</strong> that goes beyond language translation</span></li>
         <li><span><strong>Extensive networks</strong> across both BRICS+ countries and international markets</span></li>
-        <li><span><strong>Practical knowledge</strong> of navigating complex regulatory environments</span></li>
-        <li><span><strong>Proven track record</strong> of connecting brands with the partners they need to grow</span></li>
+        <li><span><strong>Focus on overlooked regions</strong> where extraordinary brands thrive without global recognition</span></li>
       </ul>
       
       <p class="panel__conclusion-text">
@@ -224,7 +230,7 @@ ref: about
             <li class="service-item">
               <span class="service-item__bullet">•</span>
               <div class="service-item__content">
-                <strong class="service-item__title">Custom Research:</strong>
+                <strong class="service-item__title">Bespoke Research:</strong>
                 <p>Tailored investigations into specific sectors or regions</p>
               </div>
             </li>
@@ -263,28 +269,31 @@ ref: about
             <li class="service-item">
               <span class="service-item__bullet">•</span>
               <div class="service-item__content">
-                <strong class="service-item__title">Narrative Development:</strong>
-                <p>Refining brand stories for cross-border impact</p>
+                <strong class="service-item__title">Founder Story Profiles:</strong>
+                <p>Compelling narratives that showcase your journey</p>
               </div>
             </li>
             <li class="service-item">
               <span class="service-item__bullet">•</span>
               <div class="service-item__content">
-                <strong class="service-item__title">Readiness Assessment:</strong>
-                <p>Evaluation of export and partnership preparedness</p>
+                <strong class="service-item__title">Funding Round Visibility:</strong>
+                <p>Showcase investment opportunities to targeted partners</p>
               </div>
             </li>
             <li class="service-item">
               <span class="service-item__bullet">•</span>
               <div class="service-item__content">
-                <strong class="service-item__title">Connection Opportunities:</strong>
-                <p>Access to interested international partners</p>
+                <strong class="service-item__title">Founder Community:</strong>
+                <p>Connect with peers across BRICS+ regions</p>
               </div>
             </li>
           </ul>
         </div>
       </div>
     </div>
+    <p class="panel__conclusion-text">
+      Our customized approach ensures both brands and partners find the right connections, with the right context, at the right time—creating value across borders through meaningful relationships.
+    </p>
   </div>
 </div>
 

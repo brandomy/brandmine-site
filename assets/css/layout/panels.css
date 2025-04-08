@@ -39,8 +39,9 @@
   /* Panel content container - controls width and centering */
   .panel__content {
     width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 var(--space-4);       /* Mobile-first smaller padding */
+    padding: 0 var(--space-6);
     box-sizing: border-box;
   }
   
@@ -57,7 +58,7 @@
   }
   
   .panel__heading-secondary {
-    font-size: var(--text-3xl);      /* Mobile-first smaller size */
+    font-size: var(--text-4xl);
     margin-bottom: var(--space-6);
     margin-top: 0;
     text-align: center;
@@ -71,20 +72,28 @@
   }
   
   .panel__lead-text {
-    font-size: var(--text-base);     /* Mobile-first smaller size */
+    font-size: var(--text-lg);
     line-height: var(--leading-relaxed);
     margin-bottom: var(--space-8);
     font-family: var(--font-body);
-  }
+    font-weight: var(--font-medium);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
   
-  .panel__conclusion-text {
-    font-size: var(--text-base);
-    line-height: var(--leading-relaxed);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-    font-family: var(--font-body);
-  }
+.panel__conclusion-text {
+  font-size: var(--text-lg); /* Changed from text-base */
+  line-height: var(--leading-relaxed);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: var(--space-10); /* Changed from space-8 */
+  padding-top: var(--space-6);
+  font-family: var(--font-body);
+  font-weight: var(--font-medium); /* Add this line */
+  padding: var(--space-6);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-md);
+}
   
   .panel__paragraph {
     margin-bottom: var(--space-6);
@@ -114,24 +123,26 @@
     background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
     color: white;
     text-align: center;
-    padding-top: var(--space-20);
-    padding-bottom: var(--space-20);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
   }
   
   .panel--hero .panel__heading-primary {
-    color: var(--secondary-200);
+    font-size: var(--text-6xl);
     font-weight: var(--font-bold);
-    letter-spacing: var(--tracking-tight);
-    margin-bottom: var(--space-2);
-    font-size: var(--text-5xl);
+    color: var(--secondary-200); /* Changed from white to secondary-200 */
+    margin-bottom: var(--space-4);
+    text-align: center;
   }
   
   .panel--hero .panel__subtitle {
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-light);
+    color: white;
+    margin-top: 0;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    color: white;
   }
   
   /* Color variations */
@@ -314,15 +325,15 @@
 /* Perspective list styling */
 
 .perspective-list {
-    max-width: 80%;       /* Container to center content */
-    margin: 0 auto;
-    padding-left: var(--space-10);
-  }
-  
-  .perspective-list li {
-    margin-bottom: var(--space-4);
-  }
+  max-width: 80%;
+  margin: 0 auto;
+  padding-left: var(--space-12); /* Increased from space-10 */
+}
 
+.perspective-list li {
+  margin-bottom: var(--space-4);
+  margin-left: var(--space-4); /* Add this line */
+}
 
   /* Enhancement for team cards on colored background */
   .panel--primary-solid .team-member {
@@ -388,7 +399,6 @@
     }
     
     .panel__content {
-      max-width: 90%;
       padding: 0 var(--space-8);
     }
   
@@ -410,21 +420,34 @@
     }
     
     .panel--hero {
+      padding-top: var(--space-16);
+      padding-bottom: var(--space-16);
+    }
+
+    /* For future use - hero variants */
+    .panel--hero-tall {
       padding-top: var(--space-20);
       padding-bottom: var(--space-20);
     }
+
+    .panel--hero-short {
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-8);
+    }
+
     .panel__heading-secondary {
         font-size: var(--text-4xl);  /* Even larger on bigger screens */
-      }
-      
-      .panel--light .panel__lead-text {
-        font-size: var(--text-xl);   /* Larger on bigger screens */
-      }
-      
-      .perspective-list {
-        max-width: 70%;     /* More contained on larger screens */
-        margin: 0 auto;
-      }
+    }
+    
+    .panel--light .panel__lead-text {
+      font-size: var(--text-xl);   /* Larger on bigger screens */
+    }
+    
+    .perspective-list {
+      max-width: 70%;     /* More contained on larger screens */
+      margin: 0 auto;
+      padding-left: var(--space-12);    /* Increased padding on larger screens */      
+    }
   }
   
   /* Large devices (992px and up) */

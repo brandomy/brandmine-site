@@ -473,6 +473,7 @@
     align-items: flex-start;
     margin-bottom: var(--space-8);
     border-left: 3px solid var(--primary-400);
+    margin-left: var(--space-4);
   }
   
   
@@ -709,15 +710,6 @@
     }
   }
 
-  /* Adjust panel content padding - easy to modify */
-  .panel__content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 5%;
-    padding-right: 5%;
-    box-sizing: border-box;
-  }
   
   /* Larger screens get more padding */
 @media (min-width: calc(var(--breakpoint-md) + 1px)) {
@@ -756,74 +748,6 @@
     }
   }
 
-  /* Hero panel needs specific styling for text */
-.panel--hero .panel__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 300px;
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
-}
-
-/* Hero heading responsive size adjustments */
-.panel--hero .panel__heading-primary {
-  font-size: var(--text-4xl);
-  color: var(--secondary-100);
-  margin-bottom: var(--space-4);
-}
-
-@media (min-width: calc(var(--breakpoint-md) + 1px)) {
-  .panel--hero .panel__heading-primary {
-    font-size: var(--text-5xl);
-  }
-}
-
-@media (max-width: var(--breakpoint-xs)) {
-  .panel--hero .panel__heading-primary {
-    font-size: var(--text-3xl);
-  }
-  
-  .panel--hero .panel__subtitle {
-    font-size: var(--text-lg);
-  }
-}
-
-/* ADD this to make the subtitle responsive */
-.panel--hero .panel__subtitle {
-  max-width: 800px;
-  font-size: var(--text-xl);
-  line-height: var(--leading-relaxed);
-}
-
-@media (max-width: var(--breakpoint-md)) {
-  .panel--hero .panel__subtitle {
-    font-size: var(--text-lg);
-    max-width: 100%;
-  }
-}
-
-/* ADD this to create consistent spacing between panels */
-.panel {
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
-}
-
-@media (max-width: var(--breakpoint-md)) {
-  .panel {
-    padding-top: var(--space-12);
-    padding-bottom: var(--space-12);
-  }
-}
-
-@media (max-width: var(--breakpoint-xs)) {
-  .panel {
-    padding-top: var(--space-8);
-    padding-bottom: var(--space-8);
-  }
-}
 
 /* Services container responsiveness fixes */
 .services-container {
@@ -854,5 +778,31 @@
   
   .service-panel__content {
     padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Additional Enhancements for About Page
+   -------------------------------------------------------------------------- */
+
+/* Make mission text stand out more */
+.panel--mission .panel__lead-text {
+  font-size: var(--text-xl);
+  font-weight: var(--font-normal); /* Change from semibold to normal */
+  line-height: var(--leading-relaxed);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-6);
+  background-color: rgba(255, 255, 255, 0.4); /* Make background more subtle */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Make text even larger on bigger screens */
+@media (min-width: var(--breakpoint-md)) {
+  .panel--mission .panel__lead-text {
+    font-size: var(--text-xl); /* Slightly reduce from 2xl */
+    font-weight: var(--font-normal);
   }
 }
