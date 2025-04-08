@@ -1,245 +1,808 @@
 /* ==========================================================================
-    About Page Styles
-    ========================================================================== */
-  
+   Additional BEM Styles for About Page Components
+   ==========================================================================
+   These styles complete the BEM transition by adding missing component styles
+   and ensuring proper mapping between old classes and new BEM structure.
+*/
 
-/* Individual team member cards */
-.team__member {
-  flex: 1;
-  min-width: 300px;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: var(--space-8); /* 2rem */
-  border: 1px solid var(--neutral-200);
-}
-  
-/* Team member photo */
-.team__photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: var(--space-6); /* 1.5rem */
-  border: 3px solid var(--primary-400);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-  
-/* Team member name and title */
-.team__member h3 {
-  margin-top: 0;
-  margin-bottom: var(--space-2); /* 0.5rem */
-  color: var(--neutral-800);
-  text-align: center;
-}
-  
-.team__title {
-  color: var(--primary-600);
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: var(--space-6); /* 1.5rem */
-  text-align: center;
-}
-  
-/* Team member list items */
-.team__member ul {
-  margin-top: var(--space-4); /* 1rem */
-  margin-bottom: var(--space-6); /* 1.5rem */
-  padding-left: var(--space-6); /* 1.5rem */
-  text-align: left; /* Explicitly set lists to left-aligned */
-}
-  
-.team__member li {
-  margin-bottom: var(--space-2); /* 0.5rem */
-  text-align: left; /* Ensure list items are left-aligned */
-}
-  
-  
-/* Service section styling */
-.services-column {
-  padding-top: var(--space-4); /* 1rem */
-  border-top: 3px solid var(--primary-400); /* Add border at top */
-}
-  
-.services-column__heading {
-  color: var(--primary-600);
-  margin-top: 0;
-  margin-bottom: var(--space-6); /* 1.25rem is close to 1.5rem, using 1.5rem */
-  font-size: 1.35rem;
-}
-  
-/* Service list styling */
-.service-list {
-  list-style: none;
-  padding-left: 0;
-  margin: var(--space-6) 0; /* 1.5rem 0 */
-  text-align: left; /* Ensure list is left-aligned */
-}
-  
-.service-list li {
-  position: relative;
-  padding-left: var(--space-6); /* 1.5rem */
-  margin-bottom: var(--space-4); /* 1rem */
-  text-align: left; /* Explicitly set list items to left-aligned */
-}
-  
-.service-list__bullet {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--primary-400);
-  font-size: 1.5rem;
-  line-height: 1;
-}
-  
-/* For International Partners/BRICS+ Brands headings */
-h3.service-category {
-  color: var(--neutral-700);
-  font-size: 1.5rem;
-  margin-bottom: var(--space-6); /* 1.5rem */
-  border-bottom: 2px solid var(--neutral-200);
-  padding-bottom: var(--space-2); /* 0.5rem */
-}
-  
-  
-/* Remove default margin/padding from list */
-.about-perspective__list {
-  list-style: none;
-  padding: 0;
-  margin: var(--space-8) auto; /* 2rem 0 */
-  max-width: 80%;  /* Constrain width for better centering */
-}
-  
-/* Style each list item */
-.about-perspective__item {
-  position: relative;
-  margin-bottom: var(--space-4); /* 1rem */
-  padding-left: var(--space-8); /* 2rem */
-  margin-left: 0; /* Ensure alignment with text above */
-  display: flex;
-  align-items: center;
-  text-indent: -var(--space-8);
-  background-color: white;
-  border-radius: 0.25rem;
-  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-8); /* 0.75rem 1rem 0.75rem 2rem */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-  
-/* Style the bullet */
-.about-perspective__item::before {
-  content: "•";
-  color: var(--accent-900);
-  font-size: 1.5rem;
-  line-height: 1;
-  position: absolute;
-  left: var(--space-2); /* 0.5rem */
-  top: 50%;
-  transform: translateY(-50%);
-}
+/* --------------------------------------------------------------------------
+   Team Section Styling
+   -------------------------------------------------------------------------- */
 
-/* Style for the span wrapper in list items */
-.about-perspective__item .about-perspective__label {
-  display: inline-block;
-  padding-left: var(--space-4);
-  text-indent: 0;
-}
+   .team-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8); /* 2rem */
+    margin: var(--space-8) 0; /* 2rem 0 */
+  }
   
-/* Style emphasized text */
-.about-perspective__item .about-perspective__highlight {
-  color: var(--accent-900);
-  font-weight: 600;
-  margin-right: var(--space-1); /* 0.25rem */
-}
+  .team-member {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--space-8); /* 2rem */
+    border: 1px solid var(--neutral-200);
+  }
   
-/* Ensure proper alignment on all screen sizes */
-@media (min-width: var(--breakpoint-xl)) { /* 1200px */
-  .about-perspective__list {
-    width: 100%;
-    max-width: 80%;
+  .team-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--space-6); /* 1.5rem */
+    border: 3px solid var(--primary-400);
+    display: block;
     margin-left: auto;
     margin-right: auto;
   }
-}
   
-/* Maintain padding on smaller screens */
-@media (max-width: var(--breakpoint-md)) { /* 768px */
-  .about-perspective__item {
-    padding: var(--space-3) var(--space-3) var(--space-3) var(--space-8); /* 0.75rem 0.75rem 0.75rem 2rem */
+  .team-member h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-2); /* 0.5rem */
+    color: var(--neutral-800);
+    text-align: center;
+  }
+  
+  .team-title {
+    color: var(--primary-600);
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: var(--space-6); /* 1.5rem */
+    text-align: center;
+  }
+  
+  .team-member ul {
+    margin-top: var(--space-4); /* 1rem */
+    margin-bottom: var(--space-6); /* 1.5rem */
+    padding-left: var(--space-6); /* 1.5rem */
+    text-align: left;
+  }
+  
+  .team-member li {
+    margin-bottom: var(--space-2); /* 0.5rem */
+    text-align: left;
+  }
+  
+  .team-member-linkedin {
+    text-align: center;
+    margin-top: var(--space-4);
+  }
+  
+  .team-member-linkedin a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-400);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .team-member-linkedin a:hover {
+    background-color: var(--primary-500);
+  }
+  
+  /* --------------------------------------------------------------------------
+     Services Section Styling
+     -------------------------------------------------------------------------- */
+  
+  /* Services Panel Styling */
+
+  /* Container for the two service panels */
+  .services-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns by default */
+    gap: var(--space-8);
+    margin-top: var(--space-10);
+  }
+
+  /* Individual service panel styling */
+  .service-panel {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  /* Panel headers with colored top borders */
+  .service-panel__header {
+    padding: var(--space-4) var(--space-6);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+
+  /* Different color styling for each panel */
+  .service-panel--international .service-panel__header {
+    border-top: 4px solid var(--primary-400);
+  }
+
+  .service-panel--brands .service-panel__header {
+    border-top: 4px solid var(--secondary-400);
+  }
+
+  /* Panel titles */
+  .service-panel__title {
+    margin: 0;
+    color: var(--neutral-800);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-semibold);
+  }
+
+  /* Different colors for each panel title */
+  .service-panel--international .service-panel__title {
+    color: var(--primary-600);
+  }
+
+  .service-panel--brands .service-panel__title {
+    color: var(--secondary-600);
+  }
+
+  /* Panel content area */
+  .service-panel__content {
+    padding: var(--space-6);
+  }
+
+  /* Service list styling */
+  .service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+  }
+
+  .service-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Bullet point styling */
+  .service-item__bullet {
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-right: var(--space-3);
+  }
+
+  /* Different colors for bullets in each panel */
+  .service-panel--international .service-item__bullet {
+    color: var(--primary-400);
+  }
+
+  .service-panel--brands .service-item__bullet {
+    color: var(--secondary-400);
+  }
+
+  /* Service item content */
+  .service-item__content {
+    flex: 1;
+  }
+
+  .service-item__title {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+  }
+
+  /* Different colors for titles in each panel */
+  .service-panel--international .service-item__title {
+    color: var(--primary-600);
+  }
+
+  .service-panel--brands .service-item__title {
+    color: var(--secondary-600);
+  }
+
+  .service-item__content p {
+    margin: 0;
+    color: var(--neutral-700);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: var(--breakpoint-md)) {
+    .services-container {
+      grid-template-columns: 1fr; /* Stack panels on smaller screens */
+      gap: var(--space-6);
+    }
+    
+    .service-panel__header {
+      padding: var(--space-4);
+    }
+    
+    .service-panel__content {
+      padding: var(--space-4);
+    }
+    
+    .service-item {
+      margin-bottom: var(--space-4);
+    }
+  }
+  
+  /* --------------------------------------------------------------------------
+     Perspective List Styling
+     -------------------------------------------------------------------------- */
+  
+  .perspective-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-8) auto; /* 2rem auto */
+    max-width: 80%;
+  }
+  
+  .perspective-list li {
+    position: relative;
+    margin-bottom: var(--space-4); /* 1rem */
+    padding-left: var(--space-8); /* 2rem */
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 0.25rem;
+    padding: var(--space-3) var(--space-4) var(--space-3) var(--space-8); /* 0.75rem 1rem 0.75rem 2rem */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .perspective-list li:before {
+    content: "•";
+    color: var(--accent-900);
+    font-size: 1.5rem;
+    line-height: 1;
+    position: absolute;
+    left: var(--space-2); /* 0.5rem */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .perspective-list li strong {
+    color: var(--accent-900);
+    font-weight: 600;
+    margin-right: var(--space-1); /* 0.25rem */
+  }
+  
+  /* --------------------------------------------------------------------------
+     Contact Section Styling
+     -------------------------------------------------------------------------- */
+  
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-8); /* 2rem */
+    margin: var(--space-8) 0; /* 2rem 0 */
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: var(--space-3); /* 0.75rem */
+    color: white;
+  }
+  
+  .panel--contact a,
+  .panel--contact a:visited {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+  
+  .panel--contact a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+  
+  .mobile-form-wrapper {
+    max-width: 800px;
+    margin: var(--space-8) auto;
+  }
+
+  /* Contact panel - warm gradient (orange to dark orange) */
+  .panel--contact {
+    background: radial-gradient(circle at center, var(--secondary-500) 0%, var(--secondary-700) 100%);
+    color: white;
+  }
+
+  /* Contact panel specific text styling */
+  .panel--contact .panel__heading-secondary {
+    color: white;
+  }
+
+  .panel--contact .panel__lead-text {
+    color: var(--secondary-100);
+  }
+
+
+  /* Contact icon styling */
+  .panel--contact .contact-icon {
+    color: white;
+  }
+  
+  /* --------------------------------------------------------------------------
+     Problem/Solution Feature Grids
+     -------------------------------------------------------------------------- */
+  
+ /* Problem cards 2x2 grid - with overlap fix */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Always force 2 columns */
+    grid-template-rows: auto auto; /* Explicitly define rows */
+    gap: var(--space-8); /* Increase gap between rows */
+    margin: var(--space-8) 0;
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+/* Base card styling with fixed height to prevent overlap */
+  .problem-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    background-color: white;
+    min-height: 240px; /* Fixed minimum height to prevent overlap */
+    box-sizing: border-box; /* Include padding in height calculation */
+  }
+
+  /* Problem icon container - make sure it's positioned correctly */
+  .problem-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: var(--space-4);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    position: relative; /* Ensure proper stacking context */
+    z-index: 2; /* Place above other content */
+  }
+
+  /* Make sure each card has its own stacking context */
+  .problem-card--1, .problem-card--2, .problem-card--3, .problem-card--4 {
+    position: relative;
+    z-index: 1;
+  }
+
+
+  /* Distinct background colors for each card */
+  .problem-card--1 {
+    background-color: var(--primary-50); /* Light teal */
+  }
+
+  .problem-card--2 {
+    background-color: var(--accent-50); /* Light indigo */
+  }
+
+  .problem-card--3 {
+    background-color: var(--amber-50); /* Light amber/gold */
+  }
+
+  .problem-card--4 {
+    background-color: var(--secondary-50); /* Light orange */
+  }
+
+  /* Problem icon styling */
+  .problem-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: var(--space-4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Icon colors coordinated with card backgrounds */
+  .problem-card--1 .problem-icon {
+    color: var(--primary-500);
+  }
+
+  .problem-card--2 .problem-icon {
+    color: var(--accent-500);
+  }
+
+  .problem-card--3 .problem-icon {
+    color: var(--amber-500);
+  }
+
+  .problem-card--4 .problem-icon {
+    color: var(--secondary-500);
+  }
+
+  /* Card headings */
+  .problem-card h3 {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+  }
+
+  /* Card text */
+  .problem-card p {
+    margin: 0;
+    color: var(--neutral-700);
+  }
+
+  /* Progressive enhancement for larger screens */
+  @media (min-width: calc(var(--breakpoint-md) + 1px)) {
+    .problem-grid {
+      grid-template-columns: repeat(2, 1fr); /* Force 2x2 on larger screens */
+    }
+  }
+
+  /* Small screen adjustments */
+  @media (max-width: 600px) {
+    .problem-grid {
+      grid-template-columns: 1fr; /* Stack cards on very small screens */
+      grid-template-rows: auto auto auto auto; /* Four explicit rows on mobile */
+    }
+    
+    .problem-card {
+      min-height: 180px; /* Smaller minimum height on mobile */
+    }
+  }
+
+  /* Solutions list styling */
+  .solutions-list {
+    margin: var(--space-8) 0;
+  }
+  
+  .solution-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--space-8);
+    border-left: 3px solid var(--primary-400);
+    margin-left: var(--space-4);
+  }
+  
+  
+  .solution-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-400);
+    color: white;
+    font-weight: var(--font-bold);
+    border-radius: 50%;
+    margin-right: var(--space-4);
+    flex-shrink: 0;
+  }
+  
+  .solution-content {
+    padding-top: var(--space-1);
+  }
+  
+  .solution-content h3 {
+    color: var(--primary-600);
+    margin-top: 0;
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-semibold);
+  }
+  
+  .solution-content p {
+    color: var(--neutral-700);
+    margin: 0;
+  }
+
+  /* Feature items in the Problem section */
+  .feature-item {
+    padding: var(--space-6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    margin-bottom: var(--space-8);
+    position: relative;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: var(--space-4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    color: var(--secondary-500);
+  }
+
+  .feature-item h3 {
+    color: var(--secondary-700);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-semibold);
+  }
+
+  .feature-item p {
+    color: var(--neutral-700);
+  }
+
+
+
+/* Perspective list in the Unique Perspective section */
+
+/* Perspective list with white backgrounds */
+  .perspective-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-8) 0;
+  }
+
+  .perspective-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    border-left: 3px solid var(--accent-400);
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-6);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .perspective-list li::before {
+    content: "•";
+    color: var(--accent-600);
+    font-size: 1.5rem;
+    margin-right: var(--space-4);
+  }
+
+  .perspective-list li strong {
+    color: var(--accent-700);
+    font-weight: var(--font-semibold);
+    margin-right: var(--space-1);
+  }
+
+  /* Team section enhancement */
+  .team-member {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--neutral-200);
+  }
+
+  .team-member:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Add a subtle divider in the team section */
+  .team-section {
+    position: relative;
+  }
+
+  .team-section::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--primary-400), transparent);
+  }
+  
+/* --------------------------------------------------------------------------
+    Panel Background Colors
+    -------------------------------------------------------------------------- */
+  
+ /* Panel Background Colors - Functionally Named */
+
+  /* Mission panel - amber gold light */
+  .panel--mission {
+    background-color: var(--accent-50); /* Light indigo instead of yellow/amber */
+    color: var(--neutral-700);
+  }
+
+  /* Problem panel - secondary/orange pattern */
+  .panel--problem {
+    background-color: var(--secondary-50);
+    color: var(--neutral-700);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Solution panel - primary teal light pattern */
+  .panel--solution {
+    background-color: var(--primary-50);
+    color: var(--neutral-700);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338b2ac' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Team panel - primary/teal */
+  .panel--team {
+    background-color: var(--primary-100);
+    color: var(--neutral-700);
+  }
+
+  /* Perspective panel - accent indigo light pattern */
+  .panel--perspective {
+    background-color: var(--accent-100);
+    color: var(--neutral-700);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Services panel - amber gold solid (different from Mission) */
+  .panel--services {
+    background-color: var(--amber-50);
+    color: var(--neutral-700);
   }
     
-  .about-perspective__item::before {
-    left: var(--space-1); /* 0.4rem is close to 0.25rem, using 0.25rem */
+  /* Solution panel specific styling */
+  .panel--solution .solution-number {
+    background-color: var(--primary-500);
+    color: white;
+  }
+
+  .panel--solution .solution-content h3 {
+    color: var(--primary-700);
+  }
+
+  /* Add some subtle enhancements to solution items */
+  .panel--solution .solution-item {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-6);
+  }
+
+  /* ADD this to improve mission panel styling */
+  .panel--mission .panel__heading-secondary {
+    color: var(--accent-800); /* Darker indigo for heading */
+  }
+
+
+
+  /* --------------------------------------------------------------------------
+     Responsive Adjustments
+     -------------------------------------------------------------------------- */
+  
+  @media (max-width: var(--breakpoint-md)) {
+    .services-split {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .perspective-list {
+      max-width: 100%;
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
+    }
+  
+    .perspective-list li {
+      padding: var(--space-3) var(--space-3) var(--space-3) var(--space-8);
+    }
+  
+    .perspective-list li:before {
+      left: var(--space-1);
+    }
+  }
+
+  
+  /* Larger screens get more padding */
+@media (min-width: calc(var(--breakpoint-md) + 1px)) {
+  .panel__content {
+    padding-left: 10%;
+    padding-right: 10%;
   }
 }
 
-/* Adjust heading in accent panel */
-.about-perspective__heading {
-  font-size: var(--text-4xl);
-  margin-bottom: var(--space-6);
+  /* Extra large screens cap the width */
+  @media (min-width: var(--breakpoint-xl)) {
+    .panel__content {
+      max-width: 1400px;
+    }
+  }
+
+  /* Keep the contact panel with its original padding */
+  .panel--contact .panel__content {
+    padding-left: var(--space-8); /* Original padding */
+    padding-right: var(--space-8); /* Original padding */
+  }
+
+  /* For smaller screens, reduce padding proportionally */
+  @media (max-width: var(--breakpoint-md)) {
+    .panel__content {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  }
+
+    /* Very small screens get minimal padding */
+  @media (max-width: var(--breakpoint-xs)) {
+    .panel__content {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+
+/* Services container responsiveness fixes */
+.services-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns by default */
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+  width: 100%; /* Ensure full width */
 }
 
-.about-perspective__lead-text {
-  font-size: var(--text-lg);
-  max-width: var(--content-narrow-max-width);
+/* Force single column layout on smaller screens */
+@media (max-width: var(--breakpoint-md)) {
+  .services-container {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: var(--space-6); /* Slightly reduced gap on mobile */
+  }
+}
+
+/* Extra small screens */
+@media (max-width: var(--breakpoint-xs)) {
+  .services-container {
+    gap: var(--space-4); /* Even smaller gap on very small screens */
+  }
+  
+  .service-panel__header {
+    padding: var(--space-3) var(--space-4);
+  }
+  
+  .service-panel__content {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Additional Enhancements for About Page
+   -------------------------------------------------------------------------- */
+
+/* Make mission text stand out more */
+.panel--mission .panel__lead-text {
+  font-size: var(--text-xl);
+  font-weight: var(--font-normal); /* Change from semibold to normal */
+  line-height: var(--leading-relaxed);
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  padding: var(--space-6);
+  background-color: rgba(255, 255, 255, 0.4); /* Make background more subtle */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
-  
-.about-cta__contact-item {
-  display: flex;
-  align-items: center;
-}
-  
-.about-cta__contact-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: var(--space-3); /* 0.75rem */
-  color: white;
-}
-  
-/* Style the contact links */
-  
-
-.about-cta__lead-text {
-  color: var(--secondary-50); /* Very light orange color */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
-  font-weight: 500; /* Slightly bolder than normal */
-  font-size: var(--text-xl);
-}
-
-/* Contact form container */
-.mobile-form-wrapper {
-  max-width: var(--content-narrow-max-width);
-  margin: var(--space-8) auto;
-}
-
-  
-  .about-perspective__lead-text {
-    font-size: var(--text-xl);
+/* Make text even larger on bigger screens */
+@media (min-width: var(--breakpoint-md)) {
+  .panel--mission .panel__lead-text {
+    font-size: var(--text-xl); /* Slightly reduce from 2xl */
+    font-weight: var(--font-normal);
   }
-  
-  .about-perspective__list {
-    max-width: 75%;
-  }
-
-@media (max-width: var(--breakpoint-md)) {
-  .services-split {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-}
-
-.about-light-panel__content {
-   margin-left: auto;
-   margin-right: auto;
-   max-width: var(--content-narrow-max-width);
-   max-width: var(--content-narrow-max-width);       /* Control line length for readability */
-   text-align: center;    /* Center text in paragraphs */
-  max-width: var(--content-medium-max-width);
-  text-align: center;
 }
