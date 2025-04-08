@@ -10,7 +10,7 @@ ref: about
 <div class="panel panel--hero">
   <div class="panel__content">
     <h1 class="panel__heading-primary">关于 Brandmine</h1>
-    <p class="panel__subtitle">增强金砖国家+领先消费品牌的全球潜力</p>
+    <p class="panel__subtitle">提升金砖国家+创始人主导品牌的全球潜力</p>
   </div>
 </div>
 
@@ -19,7 +19,7 @@ ref: about
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的使命</h2>
     <p class="panel__lead-text">
-      Brandmine 旨在通过突破语言、政治和文化障碍，增强金砖国家+领先消费品牌的全球潜力，这些障碍使这些品牌对国际合作伙伴隐而不见。
+      Brandmine 的存在是为了通过呈现其真实故事并创造超越语言、文化和政治障碍的有意义联系，提升金砖国家+创始人主导品牌的全球潜力。我们在有远见的创始人与准备帮助他们超越边界的国际合作伙伴之间架起桥梁。
     </p>
   </div>
 </div>
@@ -29,7 +29,7 @@ ref: about
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们解决的问题</h2>
     <p class="panel__lead-text">
-      国际零售商、分销商、投资者和品牌孵化器在寻求金砖国家+消费市场机会时面临重大挑战：
+      品牌投资者、分销商、进口商、特许经营商和国际合作伙伴在寻求金砖国家+市场机会时面临重大挑战：
     </p>
     
     <!-- Problem cards in 2x2 grid -->
@@ -68,7 +68,7 @@ ref: about
     </div>
     
     <p class="panel__conclusion-text">
-      这些障碍造成了市场效率低下，双方都受到损害——国际合作伙伴错失宝贵机会，而有价值的品牌仍局限于本地市场。
+      这种分散的环境造成了双输局面——国际合作伙伴浪费资源寻找隐藏的瑰宝，而拥有成熟模式的创新创始人则难以获得全球增长所需的合作伙伴和资本。
     </p>
   </div>
 </div>
@@ -78,50 +78,53 @@ ref: about
   <div class="panel__content">
       <h2 class="panel__heading-secondary">我们的解决方案</h2>
       <p class="panel__lead-text">
-        Brandmine的商业智能平台通过以下方式为这个碎片化的市场带来清晰度：
+        Brandmine的商业智能中心通过以下方式为这个碎片化的环境带来清晰度：
       </p>
       
       <div class="solutions-list">
         <div class="solution-item">
           <div class="solution-number">1</div>
           <div class="solution-content">
-            <h3>汇聚分散信息</h3>
-            <p>形成统一、全面的品牌资料</p>
+            <h3>展现隐藏的品牌生态系统</h3>
+            <p>通过全面的多语言品牌档案</p>
           </div>
         </div>
         
         <div class="solution-item">
           <div class="solution-number">2</div>
           <div class="solution-content">
-            <h3>不仅翻译语言</h3>
-            <p>还翻译文化和政治背景</p>
+            <h3>解读文化意义</h3>
+            <p>超越简单的语言翻译</p>
           </div>
         </div>
         
         <div class="solution-item">
           <div class="solution-number">3</div>
           <div class="solution-content">
-            <h3>标准化数据点</h3>
-            <p>以便进行有意义的比较</p>
+            <h3>创建结构化比较</h3>
+            <p>使用跨区域标准化指标</p>
           </div>
         </div>
         
         <div class="solution-item">
           <div class="solution-number">4</div>
           <div class="solution-content">
-            <h3>揭示跨越市场的品牌叙事</h3>
-            <p>让品牌故事超越地域限制</p>
+            <h3>展示创始人旅程</h3>
+            <p>在全球范围内引起共鸣，尽管起源于本地</p>
           </div>
         </div>
         
         <div class="solution-item">
           <div class="solution-number">5</div>
           <div class="solution-content">
-            <h3>预先审核机会</h3>
-            <p>减少风险和研究负担</p>
+            <h3>精选合格的机会</h3>
+            <p>简化合作路径</p>
           </div>
         </div>
       </div>
+      <p class="panel__conclusion-text">
+        通过这种全面的方法，我们创造了一条清晰、易于获取的机会路径，使有远见的创始人和能够帮助他们成长的合作伙伴都能受益。
+      </p>
   </div>
 </div>
 
@@ -172,6 +175,9 @@ ref: about
         </div> 
       </div>
     </div>
+    <p class="panel__conclusion-text">
+      凭借我们在品牌开发、市场进入和跨文化商业方面的综合专业知识，我们具有独特优势，能够架起有远见创始人与他们成功所需的国际合作伙伴之间的桥梁。
+    </p>
   </div>
 </div>
 
@@ -184,11 +190,11 @@ ref: about
       </p>
       
       <ul class="perspective-list">
-        <li><span><strong>亲身经历</strong>在亚洲市场建立和扩展品牌</span></li>
-        <li><span><strong>深刻的文化理解</strong>，超越语言翻译</span></li>
+        <li><span><strong>创始人亲身经历</strong>在亚洲市场建立和扩展标志性品牌</span></li>
+        <li><span><strong>创业者视角</strong>了解获取国际投资和合作伙伴关系的挑战</span></li>
+        <li><span><strong>文化桥接专长</strong>，超越语言翻译</span></li>
         <li><span><strong>广泛的网络</strong>，横跨金砖国家+和国际市场</span></li>
-        <li><span><strong>实用知识</strong>，在复杂监管环境中导航</span></li>
-        <li><span><strong>成功记录</strong>，将品牌与其成长所需的合作伙伴联系起来</span></li>
+        <li><span><strong>关注被忽视的地区</strong>，那里有杰出的品牌在没有全球认可的情况下蓬勃发展</span></li>
       </ul>
       
       <p class="panel__conclusion-text">
@@ -262,28 +268,31 @@ ref: about
             <li class="service-item">
               <span class="service-item__bullet">•</span>
               <div class="service-item__content">
-                <strong class="service-item__title">叙事发展：</strong>
-                <p>完善品牌故事，实现跨境影响</p>
+                <strong class="service-item__title">创始人故事档案：</strong>
+                <p>展示您旅程的引人入胜叙述</p>
               </div>
             </li>
             <li class="service-item">
               <span class="service-item__bullet">•</span>
               <div class="service-item__content">
-                <strong class="service-item__title">准备度评估：</strong>
-                <p>评估出口和合作伙伴关系准备情况</p>
+                <strong class="service-item__title">融资轮展示：</strong>
+                <p>向目标合作伙伴展示投资机会</p>
               </div>
             </li>
             <li class="service-item">
               <span class="service-item__bullet">•</span>
               <div class="service-item__content">
-                <strong class="service-item__title">连接机会：</strong>
-                <p>获取有兴趣的国际合作伙伴</p>
+                <strong class="service-item__title">创始人社区：</strong>
+                <p>与金砖国家+地区的同行联系</p>
               </div>
             </li>
           </ul>
         </div>
       </div>
     </div>
+    <p class="panel__conclusion-text">
+      我们的定制方法确保品牌和合作伙伴都能在适当的时机找到合适的联系，建立有意义的关系，跨境创造价值。
+    </p>
   </div>
 </div>
 
@@ -302,7 +311,7 @@ ref: about
       </div>
       <div class="contact-item">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg>
-        <a href="tel:+60143099438">+60 14 3099 438</a>
+        <a href="tel:+60163199439">+60 16 3199439</a>
       </div>
     </div>
     
