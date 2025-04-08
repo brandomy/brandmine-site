@@ -16,17 +16,17 @@
         {% assign language_independent_path = language_independent_path | append: '/' | append: part %}
       {% endfor %}
       
-      <a href="{{ site.baseurl }}/en{{ language_independent_path }}" {% if page.lang == 'en' %}class="active"{% endif %}>EN</a>
-      <a href="{{ site.baseurl }}/ru{{ language_independent_path }}" {% if page.lang == 'ru' %}class="active"{% endif %}>RU</a>
-      <a href="{{ site.baseurl }}/zh{{ language_independent_path }}" {% if page.lang == 'zh' %}class="active"{% endif %}>ZH</a>
+      <a href="{{ site.baseurl }}/en{{ language_independent_path }}" onclick="localStorage.setItem('preferredLanguage', 'en');" {% if page.lang == 'en' %}class="active"{% endif %}>EN</a>
+      <a href="{{ site.baseurl }}/ru{{ language_independent_path }}" onclick="localStorage.setItem('preferredLanguage', 'ru');" {% if page.lang == 'ru' %}class="active"{% endif %}>RU</a>
+      <a href="{{ site.baseurl }}/zh{{ language_independent_path }}" onclick="localStorage.setItem('preferredLanguage', 'zh');" {% if page.lang == 'zh' %}class="active"{% endif %}>ZH</a>
     {% else %}
       {% for pg in pages %}
-        <a href="{{ pg.url | relative_url }}" {% if pg.lang == page.lang %}class="active"{% endif %}>{{ pg.lang | upcase }}</a>
+        <a href="{{ pg.url | relative_url }}" onclick="localStorage.setItem('preferredLanguage', '{{ pg.lang }}');" {% if pg.lang == page.lang %}class="active"{% endif %}>{{ pg.lang | upcase }}</a>
       {% endfor %}
     {% endif %}
   {% else %}
     {% for pg in pages %}
-      <a href="{{ pg.url | relative_url }}" {% if pg.lang == page.lang %}class="active"{% endif %}>{{ pg.lang | upcase }}</a>
+      <a href="{{ pg.url | relative_url }}" onclick="localStorage.setItem('preferredLanguage', '{{ pg.lang }}');" {% if pg.lang == page.lang %}class="active"{% endif %}>{{ pg.lang | upcase }}</a>
     {% endfor %}
   {% endif %}
 </div>

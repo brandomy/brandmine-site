@@ -4,7 +4,7 @@
       {% assign tag_slug = tag | slugify %}
       {% assign tag_type = include.type | default: 'sector' %}
       <a href="{{ site.baseurl }}/{{ page.lang }}/tags/{{ tag_type }}/{{ tag_slug }}/" class="tag-list__item tag tag--{{ tag_type }}">
-        {{ site.data.tag_translations[tag_type][tag_slug][page.lang] | default: tag }}
+        {{ site.data.tags[page.lang][tag_type][tag_slug] | default: tag }}
       </a>
     {% endfor %}
   </div>

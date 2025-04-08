@@ -61,11 +61,16 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(data => {
         // Filter data by current language
-        allBrands = data.brands.filter(brand => brand.language === currentLanguage);
+        allBrands = data.brands.filter(brand => brand.lang === currentLanguage);
         sectors = data.sectors.filter(sector => sector.language === currentLanguage);
-        markets = data.markets.filter(market => market.language === currentLanguage);
-        attributes = data.attributes.filter(attribute => attribute.language === currentLanguage);
-        signals = data.signals.filter(signal => signal.language === currentLanguage);
+        
+        // Handle tags from our new structure
+        if (data.tags) {
+          const languageTags = data.tags.filter(tag => tag.language === currentLanguage);
+          markets = languageTags.filter(tag => tag.type === 'markets');
+          attributes = languageTags.filter(tag => tag.type === 'attributes');
+          signals = languageTags.filter(tag => tag.type === 'signals');
+        }
         
         // Get URL params for initial filtering
         getURLParams();

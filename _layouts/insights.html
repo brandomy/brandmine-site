@@ -12,9 +12,15 @@ layout: default
         
         <div class="insights-grid">
           {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse %}
-          {% for insight in insights %}
-            {% include insight-card.html insight=insight %}
-          {% endfor %}
+          {% if insights.size > 0 %}
+            {% for insight in insights %}
+              {% include insight-card.html insight=insight %}
+            {% endfor %}
+          {% else %}
+            <!-- Fallback to language-specific example if no insights are available -->
+            {% assign fallback_insight = site.data.fallback[page.lang].featured_insight %}
+            {% include insight-card.html insight=fallback_insight %}
+          {% endif %}
         </div>
       </div>
       

@@ -146,9 +146,8 @@ lang: en
           {% include brand-card.html brand=brand %}
         {% endfor %}
       {% else %}
-        <!-- Fallback to hardcoded example if no featured brands are available -->
-        {# Replaced hardcoded fallback brand card with BEM include #}
-        {% assign fallback_brand = site.data.fallback.teatime %}
+        <!-- Fallback to language-specific example if no featured brands are available -->
+        {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
         {% include brand-card.html brand=fallback_brand %}
       {% endif %}
       

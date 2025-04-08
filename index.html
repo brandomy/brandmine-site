@@ -3,11 +3,24 @@
 <head>
   <meta charset="utf-8">
   <title>Brandmine</title>
-  <script>window.location.href = "/en/";</script>
+  <script>
+    // Get saved preference or detect from browser
+    function getPreferredLanguage() {
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang) return savedLang;
+      
+      const browserLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
+      const supportedLangs = ['en', 'ru', 'zh'];
+      return supportedLangs.includes(browserLang) ? browserLang : 'en';
+    }
+    
+    // Redirect to appropriate language version
+    window.location.href = '/' + getPreferredLanguage() + '/';
+  </script>
   <!-- Fallback meta redirect if JavaScript is disabled -->
   <meta http-equiv="refresh" content="0; url=/en/">
 </head>
 <body>
-  <p>Redirecting to <a href="/en/">English version</a>...</p>
+  <p>Redirecting to <a href="/en/">preferred language version</a>...</p>
 </body>
 </html>

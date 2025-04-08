@@ -9,9 +9,9 @@ layout: default
       </span>
       <h1>
         {% assign type_plural = page.tag_type | append: "s" %}
-        {% if type_plural == "growths" %}{% assign type_plural = "growth" %}{% endif %}
-        {% if site.data.tag_translations[type_plural][page.tag] %}
-          {{ site.data.tag_translations[type_plural][page.tag][page.lang] }}
+        {% if type_plural == "growths" %}{% assign type_plural = "signals" %}{% endif %}
+        {% if site.data.tags[page.lang][type_plural][page.tag] %}
+          {{ site.data.tags[page.lang][type_plural][page.tag] }}
         {% else %}
           {{ page.title }}
         {% endif %}

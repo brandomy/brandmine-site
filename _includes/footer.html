@@ -12,7 +12,7 @@
     <div class="footer__section footer__section--center">
       <p class="footer__tagline"><em>{{ site.data.translations[page.lang].footer.tagline }}</em></p>
       <div class="footer__social">
-        {% for item in site.data.navigation[page.lang].social %}
+        {% for item in site.data.social[page.lang] %}
           {% assign key = item.name | remove: 'social.' %}
           <a href="{{ item.link }}" target="_blank" class="footer__social-icon" title="{{ site.data.translations[page.lang].social[key] }}">
             {% case key %}
@@ -71,7 +71,7 @@
       © {{ site.time | date: '%Y' }} {{ site.data.translations[page.lang].footer.company_name }}.
       {{ site.data.translations[page.lang].footer.copyright }}
       |
-      {% for item in site.data.navigation[page.lang].footer %}
+      {% for item in site.data.footer[page.lang] %}
         {% assign key = item.name | remove: 'footer.' %}
         <a href="{{ item.link | relative_url }}">
           {{ site.data.translations[page.lang].footer[key] }}

@@ -67,6 +67,31 @@ lang: ru
   </div>
 </div>
 
+<!-- Featured Brands Section -->
+<div class="panel panel--primary-dark">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
+    <p class="panel__lead-text">Откройте для себя тщательно отобранные бренды с убедительными историями и глобальным потенциалом</p>
+    
+    <div class="featured-brands-carousel">
+      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
+      {% if brands.size > 0 %}
+        {% for brand in brands %}
+          {% include brand-card.html brand=brand %}
+        {% endfor %}
+      {% else %}
+        <!-- Fallback to language-specific example if no featured brands are available -->
+        {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
+        {% include brand-card.html brand=fallback_brand %}
+      {% endif %}
+      
+      <div class="more-brands">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CTA Panel -->
 <div class="panel panel--contact">
   <div class="panel__content panel--centered">
