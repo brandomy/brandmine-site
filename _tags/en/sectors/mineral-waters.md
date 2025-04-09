@@ -3,7 +3,7 @@ title: "Mineral Waters"
 tag: mineral-waters
 tag_type: sector
 description: "Natural mineral waters from pristine Russian springs, offering unique geological compositions and health-focused beverage options."
-permalink: /en/tags/sectors/mineral-waters/
+permalink: /en/discover/sectors/mineral-waters/
 ---
 
 Russia's vast territory encompasses numerous pristine springs with extraordinary mineral compositions—each with documented therapeutic properties that elevate them beyond simple hydration products. From the historic spa regions of the Caucasus to remote Siberian sources, these waters represent liquid geology—natural products shaped by their passage through ancient rock formations over centuries.

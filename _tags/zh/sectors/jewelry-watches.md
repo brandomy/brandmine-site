@@ -3,7 +3,7 @@ title: "珠宝与手表"
 tag: jewelry-watches
 tag_type: sector
 description: "展示独特设计、宝石专业知识和精密工艺的俄罗斯珠宝和手表品牌。"
-permalink: /zh/tags/sectors/jewelry-watches/
+permalink: /zh/discover/sectors/jewelry-watches/
 ---
 
 俄罗斯珠宝和制表业代表了历史工艺和当代设计感的独特融合。这一领域结合了对钻石和宝石加工的深厚专业知识、丰富的制表传统，以及反映俄罗斯复杂文化遗产的独特美学方法。

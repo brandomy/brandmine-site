@@ -3,7 +3,7 @@ title: "手工糖果"
 tag: artisan-confectionery
 tag_type: sector
 description: "俄罗斯糖果融合历史配方与当代创新，创造具有文化意义的独特甜点。"
-permalink: /zh/tags/sectors/artisan-confectionery/
+permalink: /zh/discover/sectors/artisan-confectionery/
 ---
 
 俄罗斯糖果代表了历史传统与当代烹饪创新的愉悦交汇。这些不仅仅是甜点，而是捕捉俄罗斯烹饪艺术丰富文化遗产的可食用叙事，将苏联时代的配方与现代技术和全球风味影响融合在一起。

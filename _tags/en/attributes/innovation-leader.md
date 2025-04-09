@@ -6,7 +6,7 @@ description: "Brands blending traditional foundations with forward-thinking appr
 badge_type: tier1
 badge_icon: innovation-leader.svg
 verification_required: true
-permalink: /en/tags/attributes/innovation-leader/
+permalink: /en/discover/attributes/innovation-leader/
 ---
 
 Innovation Leaders represent a unique breed of brands that masterfully balance respect for traditional foundations with a bold, forward-thinking approach. These brands don't view innovation as a departure from their roots, but as a natural evolution that builds upon their core expertise and cultural heritage.

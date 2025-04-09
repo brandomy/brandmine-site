@@ -6,7 +6,7 @@ description: "Brands where founders remain active leaders with significant influ
 badge_type: tier1
 badge_icon: founder-led.svg
 verification_required: true
-permalink: /en/tags/attributes/founder-led/
+permalink: /en/discover/attributes/founder-led/
 ---
 
 Founder-led brands benefit from the continued direction, vision, and passion of their original creators. These entrepreneurs remain deeply involved in day-to-day operations, product development, and strategic decision-making, ensuring their original vision and standards continue to guide the business while adapting to evolving market conditions.

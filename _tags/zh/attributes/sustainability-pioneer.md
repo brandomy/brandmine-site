@@ -6,7 +6,7 @@ description: "具有卓越环境和社会实践的品牌，展示道德和可持
 badge_type: tier1
 badge_icon: sustainability-pioneer.svg
 verification_required: true
-permalink: /zh/tags/attributes/sustainability-pioneer/
+permalink: /zh/discover/attributes/sustainability-pioneer/
 ---
 
 可持续先锋品牌代表了一种新的商业领导范式，在这种范式中，环境管理和社会责任不是外围关注点，而是基本商业战略。这些品牌已将可持续发展从一个流行语转变为一种全面的方法，触及其运营的各个方面。

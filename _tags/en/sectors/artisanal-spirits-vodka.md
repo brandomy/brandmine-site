@@ -3,7 +3,7 @@ title: "Artisanal Spirits & Vodka"
 tag: artisanal-spirits-vodka
 tag_type: sector
 description: "Craft distilleries producing premium vodka and other spirits with distinctive character and authentic production methods."
-permalink: /en/tags/sectors/artisanal-spirits-vodka/
+permalink: /en/discover/sectors/artisanal-spirits-vodka/
 ---
 
 While vodka remains Russia's signature spirit export, today's craft distillery landscape reveals a far more sophisticated narrative. Small-batch producers across the country are redefining Russian spirits through heritage grain varieties, traditional filtration methods, regionally-specific water sources, and innovative botanical infusions that challenge conventional international perceptions.

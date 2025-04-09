@@ -6,7 +6,7 @@ description: "通过原料、方法、传统或文化意义真实代表特定本
 badge_type: tier1
 badge_icon: regional-icon.svg
 verification_required: true
-permalink: /zh/tags/attributes/regional-icon/
+permalink: /zh/discover/attributes/regional-icon/
 ---
 
 区域标志是与特定地理区域有着深厚、真实联系的品牌。这些品牌不仅仅提及它们的起源——它们通过产品、生产方法和文化意义体现了家乡地区的独特特性、传统和自然资源。

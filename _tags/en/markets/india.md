@@ -6,7 +6,7 @@ tag_type: market
 description: "Content focusing on Indian brands, markets, and consumer trends in the world's most populous nation with ancient cultural traditions and rapidly modernizing consumer economy."
 badge_type: market  
 badge_icon: india-flag.svg
-permalink: /en/tags/markets/india/
+permalink: /en/discover/markets/india/
 lang: en
 ---
 

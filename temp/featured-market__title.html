@@ -1,0 +1,51 @@
+.featured-market__title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--neutral-800);
+    margin-bottom: var(--space-2);
+  }
+  
+  .featured-market__description {
+    color: var(--neutral-600);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-base);
+  }
+  
+  .featured-market__meta {
+    margin-bottom: var(--space-4);
+    display: flex;
+    gap: var(--space-4);
+    color: var(--neutral-500);
+    font-size: var(--text-sm);
+  }
+  
+  .featured-market__link {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .markets-map__container {
+      height: 300px;
+    }
+    
+    .featured-market {
+      grid-template-columns: 1fr;
+    }
+    
+    .featured-market__image {
+      height: 200px;
+    }
+  }
+</style>
+
+<!-- Optional: Add MapLibre scripts at the bottom of the page -->
+<script>
+  // This is a placeholder for the MapLibre integration
+  // You'll need to implement this when you're ready for the map feature
+  document.addEventListener('DOMContentLoaded', function() {
+    // We'll integrate with MapLibre here in the future
+    console.log('Map integration will be added here');
+  });
+</script>

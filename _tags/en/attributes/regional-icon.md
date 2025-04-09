@@ -6,7 +6,7 @@ description: "Brands that authentically represent specific local regions through
 badge_type: tier1
 badge_icon: regional-icon.svg
 verification_required: true
-permalink: /en/tags/attributes/regional-icon/
+permalink: /en/discover/attributes/regional-icon/
 ---
 
 Regional icons are brands with deep, authentic connections to specific geographical areas. These brands don't merely reference their origins—they embody the distinctive character, traditions, and natural resources of their home regions through their products, production methods, and cultural significance.

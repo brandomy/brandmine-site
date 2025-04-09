@@ -6,7 +6,7 @@ tag_type: market
 description: "Контент, посвященный южноафриканским брендам, рынкам и потребительским тенденциям в самой индустриализированной экономике Африки с характерным культурным разнообразием и творческими инновациями."
 badge_type: market
 badge_icon: south-africa-flag.svg
-permalink: /ru/tags/markets/south-africa/
+permalink: /ru/discover/markets/south-africa/
 lang: ru
 ---
 

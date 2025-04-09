@@ -6,7 +6,7 @@ description: "已准备好接受国际投资，具有明确的商业模式、管
 badge_type: tier2
 badge_icon: investment-ready.svg
 verification_required: true
-permalink: /zh/tags/signals/investment-ready/
+permalink: /zh/discover/signals/investment-ready/
 ---
 
 投资就绪的品牌已经发展到一个关键阶段，它们展示了可靠的业务基础、成熟的管理结构以及清晰的增长轨迹，使其特别适合外部投资。这些品牌已经建立了稳固的市场地位，拥有可验证的收入记录，并发展了能够支持扩张的核心业务系统。

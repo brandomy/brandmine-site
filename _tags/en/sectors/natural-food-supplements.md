@@ -3,7 +3,7 @@ title: "Natural Food Supplements"
 tag: natural-food-supplements
 tag_type: sector
 description: "Innovative nutritional supplements leveraging unique Siberian botanical ingredients and traditional herbal wellness knowledge."
-permalink: /en/tags/sectors/natural-food-supplements/
+permalink: /en/discover/sectors/natural-food-supplements/
 ---
 
 Russian natural food supplements represent a sophisticated approach to wellness that draws directly from the vast botanical resources of Siberia and other pristine Russian wilderness areas. These are not simply nutritional products, but carefully crafted wellness solutions that combine ancient herbal knowledge with modern scientific research, creating a unique category of adaptogenic and functional supplements.

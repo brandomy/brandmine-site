@@ -3,7 +3,7 @@ title: "手工瓷器与陶瓷"
 tag: artisan-porcelain-ceramics
 tag_type: sector
 description: "展示独特工艺、历史技术和独特装饰传统的俄罗斯瓷器和陶瓷品牌。"
-permalink: /zh/tags/sectors/artisan-porcelain-ceramics/
+permalink: /zh/discover/sectors/artisan-porcelain-ceramics/
 ---
 
 俄罗斯瓷器和陶瓷代表了一种将数百年工艺与独特装饰风格相结合的精致艺术传统。这些不仅仅是功能性物品，而是俄罗斯文化遗产的表达，体现了帝国奢华传统和民间艺术影响，创造出既精致又深具表现力的作品。

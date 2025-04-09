@@ -6,7 +6,7 @@ description: "Brands with 50+ years of history and documented cultural impact, r
 badge_type: tier1
 badge_icon: heritage-brand.svg
 verification_required: true
-permalink: /en/tags/attributes/heritage-brand/
+permalink: /en/discover/attributes/heritage-brand/
 ---
 
 Heritage Brands are distinguished by their remarkable longevity, deep-rooted cultural significance, and ability to maintain relevance across generations. These brands have not just survived for 50 or more years—they have become integral parts of cultural narratives, embodying traditions, craftsmanship, and values that transcend mere commercial success.

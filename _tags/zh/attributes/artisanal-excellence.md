@@ -6,7 +6,7 @@ description: "致力于卓越手工艺和传统生产方法的品牌，标志着
 badge_type: tier1
 badge_icon: artisanal-excellence.svg
 verification_required: true
-permalink: /zh/tags/attributes/artisanal-excellence/
+permalink: /zh/discover/attributes/artisanal-excellence/
 ---
 
 匠心卓越代表着对工艺的深刻承诺，远远超越大规模生产。这些品牌优先考虑精细的手工、传统技术和对质量的不妥协态度，将生产从简单的制造提升到艺术形式。

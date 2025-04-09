@@ -51,7 +51,7 @@ layout: default
           {% if sectors.size > 0 %}
           <div class="content-type__tags">
             {% for sector in sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="content-type__tag content-type__tag--sector">{{ sector }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="content-type__tag content-type__tag--sector">{{ sector }}</a>
             {% endfor %}
           </div>
           {% endif %}
@@ -60,7 +60,7 @@ layout: default
           {% if markets.size > 0 %}
           <div class="content-type__tags">
             {% for market in markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="content-type__tag content-type__tag--market">{{ market }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="content-type__tag content-type__tag--market">{{ market }}</a>
             {% endfor %}
           </div>
           {% endif %}

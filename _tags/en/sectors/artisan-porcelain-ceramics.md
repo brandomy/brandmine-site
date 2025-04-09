@@ -3,7 +3,7 @@ title: "Artisan Porcelain & Ceramics"
 tag: artisan-porcelain-ceramics
 tag_type: sector
 description: "Russian porcelain and ceramic brands showcasing distinctive craftsmanship, historic techniques, and unique decorative traditions."
-permalink: /en/tags/sectors/artisan-porcelain-ceramics/
+permalink: /en/discover/sectors/artisan-porcelain-ceramics/
 ---
 
 Russian porcelain and ceramics represent a sophisticated artistic tradition that combines centuries of craftsmanship with distinctive decorative styles. These are not merely functional objects, but expressions of Russian cultural heritage that embody both imperial luxury traditions and folk art influences, creating pieces that are simultaneously refined and deeply expressive.

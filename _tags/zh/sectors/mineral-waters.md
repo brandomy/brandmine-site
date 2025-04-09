@@ -3,7 +3,7 @@ title: "矿泉水"
 tag: mineral-waters
 tag_type: sector
 description: "来自原始俄罗斯泉水的天然矿泉水，提供独特的地质组成和以健康为中心的饮料选择。"
-permalink: /zh/tags/sectors/mineral-waters/
+permalink: /zh/discover/sectors/mineral-waters/
 ---
 
 俄罗斯广阔的领土包含了许多具有非凡矿物组成的原始泉水——每一种都有已记录的治疗特性，使它们超越简单的水合产品。从高加索地区的历史温泉到偏远的西伯利亚水源，这些水代表了液态地质学——经过数百年通过古老岩层形成的天然产品。

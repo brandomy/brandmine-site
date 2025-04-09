@@ -3,7 +3,7 @@ title: "特色奶酪"
 tag: specialty-cheeses
 tag_type: sector
 description: "俄罗斯手工奶酪制造商创造具有独特地区特色和传统生产方法的独特奶酪品种。"
-permalink: /zh/tags/sectors/specialty-cheeses/
+permalink: /zh/discover/sectors/specialty-cheeses/
 ---
 
 俄罗斯的手工奶酪领域经历了显著的复兴，自2015年以来增长了375%，发展成为一个复杂的手工食品类别，既有正宗的俄罗斯品种，也有欧洲经典奶酪的创新诠释。这些生产商将地区乳制品传统转化为世界级奶酪，展示了当地牛奶、本土细菌培养物和精细生产方法的独特特性。

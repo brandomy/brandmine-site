@@ -3,7 +3,7 @@ title: "Wine"
 tag: wine
 tag_type: sector
 description: "Emerging Russian wine production from regions like Krasnodar, showcasing unique terroir and innovative winemaking techniques."
-permalink: /en/tags/sectors/wine/
+permalink: /en/discover/sectors/wine/
 ---
 
 Russia's wine industry has undergone a remarkable transformation, particularly in regions like Krasnodar and Crimea where a 52% growth over the past five years signals a vibrant emerging wine culture. These regions are challenging conventional viticulture perspectives by producing distinctive vintages that express unique terroir characteristics through both traditional European varieties and rediscovered indigenous grapes.

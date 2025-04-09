@@ -6,7 +6,7 @@ tag_type: market
 description: "Content focusing on Brazilian brands, markets, and consumer trends in Latin America's largest economy with vibrant cultural influences and diverse consumer opportunities."
 badge_type: market
 badge_icon: brazil-flag.svg
-permalink: /en/tags/markets/brazil/
+permalink: /en/discover/markets/brazil/
 lang: en
 ---
 

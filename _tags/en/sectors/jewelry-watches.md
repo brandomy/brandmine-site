@@ -3,7 +3,7 @@ title: "Jewelry & Watches"
 tag: jewelry-watches
 tag_type: sector
 description: "Russian jewelry and watch brands showcasing distinctive design, gemstone expertise, and precision craftsmanship."
-permalink: /en/tags/sectors/jewelry-watches/
+permalink: /en/discover/sectors/jewelry-watches/
 ---
 
 Russian jewelry and watchmaking represents a unique fusion of historical craftsmanship and contemporary design sensibilities. This sector blends deep expertise in diamond and gemstone processing, rich watchmaking traditions, and a distinctive aesthetic approach that reflects Russia's complex cultural heritage.

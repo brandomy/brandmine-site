@@ -6,7 +6,7 @@ description: "展示显著业务扩张、增加市场存在感和加速收入增
 badge_type: tier2
 badge_icon: rapid-growth.svg
 verification_required: true
-permalink: /zh/tags/signals/rapid-growth/
+permalink: /zh/discover/signals/rapid-growth/
 ---
 
 快速增长品牌在收入、市场存在感、产品线或实体位置等关键指标上显示出明确的业务加速扩张证据。这些充满活力的企业在其发展轨迹中展现出持续的势头，通常在持续时间内实现高于行业平均水平的增长率。

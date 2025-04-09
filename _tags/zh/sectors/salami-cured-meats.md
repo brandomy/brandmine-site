@@ -3,7 +3,7 @@ title: "萨拉米香肠和腌制肉品"
 tag: salami-cured-meats
 tag_type: sector
 description: "展示独特地区风味特性和传统保存技术的俄罗斯手工腌制肉品。"
-permalink: /zh/tags/sectors/salami-cured-meats/
+permalink: /zh/discover/sectors/salami-cured-meats/
 ---
 
 俄罗斯腌制肉品传统反映了受多样文化影响和地区变化塑造的复杂烹饪景观。这些不仅仅是加工肉类，而是捕捉不同俄罗斯地区细腻风味的复杂烹饪表达，将历史保存技术与当代美食专业知识相结合。

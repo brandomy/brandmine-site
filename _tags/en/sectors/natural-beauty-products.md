@@ -3,7 +3,7 @@ title: "Natural Beauty Products"
 tag: natural-beauty-products
 tag_type: sector
 description: "Skincare and beauty brands leveraging unique Siberian and Far Eastern botanical ingredients with innovative formulations."
-permalink: /en/tags/sectors/natural-beauty-products/
+permalink: /en/discover/sectors/natural-beauty-products/
 ---
 
 Russian natural beauty products represent a sophisticated approach to skincare that draws directly from the vast, pristine botanical resources of Siberia and the Far East. These are not just cosmetic products, but sophisticated formulations that combine traditional herbal knowledge with cutting-edge scientific research, creating a unique category of beauty products with genuine efficacy and compelling origin stories.

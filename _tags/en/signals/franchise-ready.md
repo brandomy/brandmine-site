@@ -6,7 +6,7 @@ description: "Service-based brands with systematized operations and support infr
 badge_type: tier2
 badge_icon: franchise-ready.svg
 verification_required: true
-permalink: /en/tags/signals/franchise-ready/
+permalink: /en/discover/signals/franchise-ready/
 ---
 
 Franchise Ready brands represent service-based businesses that have developed comprehensive systems and support infrastructure necessary for successful franchising. These brands have transformed their operational excellence into a replicable model that can be effectively scaled across different locations and markets.

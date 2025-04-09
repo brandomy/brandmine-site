@@ -6,7 +6,7 @@ description: "定位于高端市场细分、具有卓越品质、独特属性和
 badge_type: tier1
 badge_icon: premium-positioning.svg
 verification_required: true
-permalink: /zh/tags/attributes/premium-positioning/
+permalink: /zh/discover/attributes/premium-positioning/
 ---
 
 高端定位品牌战略性地调整了其业务的所有方面——产品开发、质量标准、包装、分销和营销——以瞄准高端市场细分。这些品牌基于有形的质量差异、卓越工艺、优质原料或材料以及独特的品牌叙事，获得了价格溢价（通常比类别平均水平高30-60%）。

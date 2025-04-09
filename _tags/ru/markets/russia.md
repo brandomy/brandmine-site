@@ -6,7 +6,7 @@ tag_type: market
 description: "Контент, посвященный российским брендам, рынкам и потребительским тенденциям в одной из стран-основательниц БРИКС с богатым культурным наследием и разнообразной потребительской экономикой."
 badge_type: market
 badge_icon: russia-flag.svg
-permalink: /ru/tags/markets/russia/
+permalink: /ru/discover/markets/russia/
 lang: ru
 ---
 

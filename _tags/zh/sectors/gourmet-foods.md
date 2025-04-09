@@ -3,7 +3,7 @@ title: "美食佳肴"
 tag: gourmet-foods
 tag_type: sector
 description: "来自俄罗斯各地区的高品质特色食品，呈现独特原料、传统配方和创新烹饪手法。"
-permalink: /zh/tags/sectors/gourmet-foods/
+permalink: /zh/discover/sectors/gourmet-foods/
 ---
 
 俄罗斯多元的烹饪传统孕育了展示独特原料、传统配方和创新生产方法的特色食品品牌。这些高端产品——从野生采集的森林食材到传统美食的现代诠释——代表了俄罗斯地方美食传统的精致演变，发展成为具有全球吸引力的商业可行产品。

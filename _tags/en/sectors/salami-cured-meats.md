@@ -3,7 +3,7 @@ title: "Salami and Cured Meats"
 tag: salami-cured-meats
 tag_type: sector
 description: "Artisanal Russian cured meat products showcasing unique regional flavor profiles and traditional preservation techniques."
-permalink: /en/tags/sectors/salami-cured-meats/
+permalink: /en/discover/sectors/salami-cured-meats/
 ---
 
 Russian cured meat traditions reflect a complex culinary landscape shaped by diverse cultural influences and regional variations. These are not simply processed meats, but sophisticated culinary expressions that capture the nuanced flavors of different Russian regions, combining historical preservation techniques with contemporary gastronomic expertise.

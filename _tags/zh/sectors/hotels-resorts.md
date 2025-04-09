@@ -3,7 +3,7 @@ title: "酒店与度假村"
 tag: hotels-resorts
 tag_type: sector
 description: "提供独特文化体验和特色款待传统的俄罗斯精品酒店和度假村。"
-permalink: /zh/tags/sectors/hotels-resorts/
+permalink: /zh/discover/sectors/hotels-resorts/
 ---
 
 从帝国时代的城市宅邸到偏远的荒野小屋，俄罗斯的精品酒店和度假村展示了该国非凡的地理和文化多样性。这些物业既代表着引人入胜的消费者体验，也代表着战略性B2B投资机会，许多独立物业已准备好进行品牌开发、运营提升和国际市场定位。

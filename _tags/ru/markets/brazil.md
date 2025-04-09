@@ -6,7 +6,7 @@ tag_type: market
 description: "Контент, посвященный бразильским брендам, рынкам и потребительским тенденциям в крупнейшей экономике Латинской Америки с яркими культурными влияниями и разнообразными потребительскими возможностями."
 badge_type: market
 badge_icon: brazil-flag.svg
-permalink: /ru/tags/markets/brazil/
+permalink: /ru/discover/markets/brazil/
 lang: ru
 ---
 

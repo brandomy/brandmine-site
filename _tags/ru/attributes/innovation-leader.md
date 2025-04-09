@@ -6,7 +6,7 @@ description: "Бренды, сочетающие традиционные осн
 badge_type: tier1
 badge_icon: innovation-leader.svg
 verification_required: true
-permalink: /ru/tags/attributes/innovation-leader/
+permalink: /ru/discover/attributes/innovation-leader/
 ---
 
 Лидеры инноваций представляют собой уникальную породу брендов, которые мастерски балансируют уважение к традиционным основам с смелым, прогрессивным подходом. Эти бренды не рассматривают инновации как отход от своих корней, а как естественную эволюцию, которая строится на их основном опыте и культурном наследии.

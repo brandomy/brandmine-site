@@ -6,7 +6,7 @@ tag_type: market
 description: "Content focusing on Chinese brands, markets, and consumer trends in the world's second-largest economy with distinctive cultural traditions and rapidly evolving consumer preferences."
 badge_type: market
 badge_icon: china-flag.svg
-permalink: /en/tags/markets/china/
+permalink: /en/discover/markets/china/
 lang: en
 ---
 

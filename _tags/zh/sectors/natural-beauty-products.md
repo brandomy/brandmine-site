@@ -3,7 +3,7 @@ title: "天然美容产品"
 tag: natural-beauty-products
 tag_type: sector
 description: "利用独特西伯利亚和远东植物成分的创新配方的护肤和美容品牌。"
-permalink: /zh/tags/sectors/natural-beauty-products/
+permalink: /zh/discover/sectors/natural-beauty-products/
 ---
 
 俄罗斯天然美容产品代表了一种精致的护肤方法，直接源自西伯利亚和远东广阔、原始的植物资源。这些不仅仅是化妆品，而是将传统草药知识与前沿科学研究相结合的复杂配方，创造了一类具有真正功效和引人入胜产地故事的独特美容产品。

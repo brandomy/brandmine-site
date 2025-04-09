@@ -6,7 +6,7 @@ tag_type: market
 description: "专注于俄罗斯品牌、市场和消费趋势的内容，俄罗斯作为金砖国家创始成员之一，拥有丰富的文化遗产和多元化的消费经济。"
 badge_type: market
 badge_icon: russia-flag.svg
-permalink: /zh/tags/markets/russia/
+permalink: /zh/discover/markets/russia/
 lang: zh
 ---
 

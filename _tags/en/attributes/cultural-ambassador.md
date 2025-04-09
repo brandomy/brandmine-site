@@ -6,7 +6,7 @@ description: "Brands actively showcasing distinctive cultural elements through t
 badge_type: tier1
 badge_icon: cultural-ambassador.svg
 verification_required: true
-permalink: /en/tags/attributes/cultural-ambassador/
+permalink: /en/discover/attributes/cultural-ambassador/
 ---
 
 Cultural Ambassador brands go beyond merely originating from a specific place—they actively and intentionally communicate the depth, richness, and nuance of their cultural heritage through every aspect of their business. These brands serve as storytellers, translating complex cultural narratives into products, experiences, and interactions that resonate globally.

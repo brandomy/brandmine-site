@@ -6,7 +6,7 @@ description: "Бренды, которые аутентично представ
 badge_type: tier1
 badge_icon: regional-icon.svg
 verification_required: true
-permalink: /ru/tags/attributes/regional-icon/
+permalink: /ru/discover/attributes/regional-icon/
 ---
 
 Региональные иконы — это бренды с глубокими, аутентичными связями с конкретными географическими районами. Эти бренды не просто ссылаются на свое происхождение — они воплощают отличительный характер, традиции и природные ресурсы своих родных регионов через свою продукцию, методы производства и культурное значение.

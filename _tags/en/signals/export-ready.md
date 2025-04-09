@@ -6,7 +6,7 @@ description: "Brands with products, packaging, and certifications prepared for i
 badge_type: tier2
 badge_icon: export-ready.svg
 verification_required: true
-permalink: /en/tags/signals/export-ready/
+permalink: /en/discover/signals/export-ready/
 ---
 
 Export-ready brands have addressed the fundamental requirements for international market entry, positioning themselves for immediate expansion beyond their domestic markets. These brands have developed their products, packaging, documentation, and operational processes specifically with international trade in mind.

@@ -6,7 +6,7 @@ description: "Brands committed to exceptional handcraft and traditional producti
 badge_type: tier1
 badge_icon: artisanal-excellence.svg
 verification_required: true
-permalink: /en/tags/attributes/artisanal-excellence/
+permalink: /en/discover/attributes/artisanal-excellence/
 ---
 
 Artisanal Excellence represents a profound commitment to craftsmanship that goes far beyond mass production. These brands prioritize meticulous handwork, traditional techniques, and an uncompromising approach to quality that elevates production from mere manufacturing to an art form.

@@ -3,7 +3,7 @@ title: "天然食品补充剂"
 tag: natural-food-supplements
 tag_type: sector
 description: "利用独特西伯利亚植物成分和传统草药健康知识的创新营养补充剂。"
-permalink: /zh/tags/sectors/natural-food-supplements/
+permalink: /zh/discover/sectors/natural-food-supplements/
 ---
 
 俄罗斯天然食品补充剂代表了一种复杂的健康方法，直接源自西伯利亚和其他原始俄罗斯荒野地区的广阔植物资源。这些不仅仅是营养产品，而是结合古老草药知识与现代科学研究的精心制作的健康解决方案，创造出一类独特的适应原和功能性补充剂。

@@ -6,7 +6,7 @@ description: "通过产品、故事讲述和市场存在积极展示独特文化
 badge_type: tier1
 badge_icon: cultural-ambassador.svg
 verification_required: true
-permalink: /zh/tags/attributes/cultural-ambassador/
+permalink: /zh/discover/attributes/cultural-ambassador/
 ---
 
 文化大使品牌不仅仅是源自特定地方——它们通过业务的各个方面主动且有意地传达其文化遗产的深度、丰富性和细微差别。这些品牌充当故事讲述者，将复杂的文化叙事转化为在全球范围内引起共鸣的产品、体验和互动。

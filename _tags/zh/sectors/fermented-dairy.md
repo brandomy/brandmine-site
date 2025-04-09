@@ -3,7 +3,7 @@ title: "发酵乳制品（开菲尔）"
 tag: fermented-dairy
 tag_type: sector
 description: "传统俄罗斯发酵乳制品，拥有独特益生菌培养物和独特生产方法，全球健康市场吸引力不断增长。"
-permalink: /zh/tags/sectors/fermented-dairy/
+permalink: /zh/discover/sectors/fermented-dairy/
 ---
 
 俄罗斯的发酵乳制品传统代表了世界上最复杂的培养食品传统之一，以开菲尔等产品为中心，这些产品因其独特的风味特性和健康益处而获得国际认可。该领域涵盖了远远超越酸奶的多种产品——包括开菲尔、烤牛奶（ryazhenka）、牛奶发酵产品（varenets）和其他传统发酵乳制品，展示了俄罗斯在有益细菌培养方面数百年的专业知识。

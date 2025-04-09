@@ -3,7 +3,7 @@ title: "Honey and Bee Products"
 tag: honey-bee-products
 tag_type: sector
 description: "Unique honey varieties and bee-related products from Russia's diverse and pristine landscapes, showcasing natural purity and regional diversity."
-permalink: /en/tags/sectors/honey-bee-products/
+permalink: /en/discover/sectors/honey-bee-products/
 ---
 
 Russia's position as the world's 9th largest honey producer (generating approximately 65,000 tons annually) stems from its vast ecological diversity—from the flower-rich Altai mountains to the linden forests of Bashkortostan. Russian beekeepers maintain traditional practices while implementing modern quality standards, creating monofloral and wildflower varieties with distinctive characteristics impossible to replicate elsewhere.

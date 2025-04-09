@@ -6,7 +6,7 @@ description: "Brands with exceptional environmental and social practices that de
 badge_type: tier1
 badge_icon: sustainability-pioneer.svg
 verification_required: true
-permalink: /en/tags/attributes/sustainability-pioneer/
+permalink: /en/discover/attributes/sustainability-pioneer/
 ---
 
 Sustainability Pioneer brands represent a new paradigm of business leadership, where environmental stewardship and social responsibility are not peripheral concerns but fundamental business strategies. These brands have transformed sustainability from a buzzword into a comprehensive approach that touches every aspect of their operations.

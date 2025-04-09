@@ -1,9 +1,10 @@
 ---
-layout: default
+layout: discover
 title: 发现品牌
 permalink: /zh/discover/
 lang: zh
 ref: discover
+discovery_path: discover
 ---
 
 <!-- Hero Panel -->
@@ -30,10 +31,15 @@ ref: discover
         <div class="tag-cloud__tags">
           {% for sector in site.data.translations[page.lang].sectors limit:8 %}
             {% assign slug = sector[0] %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sector/{{ slug }}/" class="tag tag--sector tag-cloud__tag">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ slug }}/" class="tag tag--sector tag-cloud__tag">
               {{ sector[1] }}
             </a>
           {% endfor %}
+          
+          <!-- Special Russian Sectors tag -->
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="tag tag--russian-sector tag-cloud__tag">
+            俄罗斯行业
+          </a>
           
           {% if site.data.translations[page.lang].sectors.size > 8 %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="tag tag--more">
@@ -57,7 +63,7 @@ ref: discover
         <div class="tag-cloud__tags">
           {% for market in site.data.translations[page.lang].markets %}
             {% assign slug = market[0] %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/tags/market/{{ slug }}/" class="tag tag--market tag-cloud__tag">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ slug }}/" class="tag tag--market tag-cloud__tag">
               {{ market[1] }}
             </a>
           {% endfor %}
@@ -90,7 +96,7 @@ ref: discover
         <div class="tag-cloud__tags">
           {% for attribute in site.data.translations[page.lang].attributes %}
             {% assign slug = attribute[0] %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/tags/attribute/{{ slug }}/" class="tag tag--attribute tag-cloud__tag">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ slug }}/" class="tag tag--attribute tag-cloud__tag">
               {{ attribute[1] }}
             </a>
           {% endfor %}
@@ -111,7 +117,7 @@ ref: discover
         <div class="tag-cloud__tags">
           {% for signal in site.data.translations[page.lang].signals %}
             {% assign slug = signal[0] %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/tags/signal/{{ slug }}/" class="tag tag--signal tag-cloud__tag">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ slug }}/" class="tag tag--signal tag-cloud__tag">
               {{ signal[1] }}
             </a>
           {% endfor %}

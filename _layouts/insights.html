@@ -41,7 +41,7 @@ layout: default
           <div class="tag-list sidebar-tags">
             {% assign sectors = insights | map: "sectors" | flatten | uniq %}
             {% for sector in sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/sectors/{{ sector | slugify }}/" class="tag sector-tag">{{ sector }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="tag sector-tag">{{ sector }}</a>
             {% endfor %}
           </div>
         </div>
@@ -51,7 +51,7 @@ layout: default
           <div class="tag-list sidebar-tags">
             {% assign markets = insights | map: "markets" | flatten | uniq %}
             {% for market in markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/tags/markets/{{ market | slugify }}/" class="tag market-tag">{{ market }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="tag market-tag">{{ market }}</a>
             {% endfor %}
           </div>
         </div>

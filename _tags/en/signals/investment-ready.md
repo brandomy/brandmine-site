@@ -6,7 +6,7 @@ description: "Brands that have been vetted and are actively seeking capital part
 badge_type: tier2
 badge_icon: investment-ready.svg
 verification_required: true
-permalink: /en/tags/signals/investment-ready/
+permalink: /en/discover/signals/investment-ready/
 ---
 
 Investment Ready brands have been vetted and structured to accommodate capital partnerships for specific growth initiatives, acquisitions, or development projects. These companies have progressed beyond general business planning to create defined investment opportunities with clear parameters, governance structures, and potential returns.

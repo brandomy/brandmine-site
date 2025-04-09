@@ -6,7 +6,7 @@ description: "Brands demonstrating significant business expansion, increasing ma
 badge_type: tier2
 badge_icon: rapid-growth.svg
 verification_required: true
-permalink: /en/tags/signals/rapid-growth/
+permalink: /en/discover/signals/rapid-growth/
 ---
 
 Rapid Growth brands show clear evidence of accelerated business expansion across key metrics such as revenue, market presence, product lines, or physical locations. These dynamic businesses have demonstrated consistent momentum in their development trajectory, typically achieving above-industry-average growth rates over sustained periods.

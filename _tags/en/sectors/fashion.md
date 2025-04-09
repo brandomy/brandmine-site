@@ -3,7 +3,7 @@ title: "Fashion and Accessories"
 tag: fashion
 tag_type: sector
 description: "Russian fashion and accessories showcasing design creativity, cultural influences, and practical international appeal."
-permalink: /en/tags/sectors/fashion/
+permalink: /en/discover/sectors/fashion/
 ---
 
 Fashion and accessories from Russia represent a unique intersection of design creativity, cultural heritage, and practical international marketability. This sector transcends traditional clothing lines, offering distinctive pieces that express Russian cultural innovation and artistic expression through versatile designs that transition easily across global markets.

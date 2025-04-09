@@ -3,7 +3,7 @@ title: "Artisan Confectionery"
 tag: artisan-confectionery
 tag_type: sector
 description: "Russian confectionery blending historical recipes with contemporary innovation, creating distinctive sweets with cultural significance."
-permalink: /en/tags/sectors/artisan-confectionery/
+permalink: /en/discover/sectors/artisan-confectionery/
 ---
 
 Russian confectionery represents a delightful intersection of historical tradition and contemporary culinary innovation. These are not merely sweets, but edible narratives that capture the rich cultural heritage of Russian culinary arts, blending Soviet-era recipes with modern techniques and global flavor influences.

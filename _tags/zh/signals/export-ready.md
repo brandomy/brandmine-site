@@ -6,7 +6,7 @@ description: "已为国际市场准备好产品、包装和认证的品牌。"
 badge_type: tier2
 badge_icon: export-ready.svg
 verification_required: true
-permalink: /zh/tags/signals/export-ready/
+permalink: /zh/discover/signals/export-ready/
 ---
 
 出口就绪的品牌已经解决了进入国际市场的基本要求，为超越国内市场的即时扩张做好准备。这些品牌已经专门针对国际贸易开发了产品、包装、文件和运营流程。

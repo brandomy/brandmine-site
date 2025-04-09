@@ -3,7 +3,7 @@ title: "手工烈酒与伏特加"
 tag: artisanal-spirits-vodka
 tag_type: sector
 description: "以独特特性和真实生产方法生产优质伏特加和其他烈酒的手工酿酒厂。"
-permalink: /zh/tags/sectors/artisanal-spirits-vodka/
+permalink: /zh/discover/sectors/artisanal-spirits-vodka/
 ---
 
 虽然伏特加仍然是俄罗斯的标志性烈酒出口产品，但如今的手工酿酒厂格局呈现出更加精致的叙事。全国各地的小批量生产商通过传统谷物品种、传统过滤方法、特定地区的水源和创新植物浸泡技术，重新定义了俄罗斯烈酒，挑战了传统的国际认知。

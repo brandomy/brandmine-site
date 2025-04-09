@@ -3,7 +3,7 @@ title: "Fermented Dairy (Kefir)"
 tag: fermented-dairy
 tag_type: sector
 description: "Traditional Russian fermented dairy products featuring distinctive probiotic cultures and unique production methods with growing global wellness appeal."
-permalink: /en/tags/sectors/fermented-dairy/
+permalink: /en/discover/sectors/fermented-dairy/
 ---
 
 Russia's fermented dairy tradition represents one of the world's most sophisticated cultured food heritages, centered around products like kefir that have now gained international recognition for their distinctive flavor profiles and health benefits. The sector encompasses a diverse range of products that go far beyond yogurt—including kefir, ryazhenka, varenets, and other traditional fermented dairy items that showcase Russia's centuries-old expertise in beneficial bacterial cultivation.

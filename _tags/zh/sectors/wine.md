@@ -3,7 +3,7 @@ title: "葡萄酒"
 tag: wine
 tag_type: sector
 description: "来自克拉斯诺达尔等地区的新兴俄罗斯葡萄酒生产，展示独特风土和创新酿酒技术。"
-permalink: /zh/tags/sectors/wine/
+permalink: /zh/discover/sectors/wine/
 ---
 
 俄罗斯葡萄酒行业经历了显著转型，特别是在克拉斯诺达尔和克里米亚等地区，过去五年52%的增长表明了一个充满活力的新兴葡萄酒文化。这些地区正在挑战传统葡萄栽培观念，通过传统欧洲品种和重新发现的本土葡萄，生产出表达独特风土特性的独特年份。

@@ -6,7 +6,7 @@ description: "Brands positioned in upper market segments with superior quality, 
 badge_type: tier1
 badge_icon: premium-positioning.svg
 verification_required: true
-permalink: /en/tags/attributes/premium-positioning/
+permalink: /en/discover/attributes/premium-positioning/
 ---
 
 Premium-positioned brands have strategically aligned all aspects of their business—product development, quality standards, packaging, distribution, and marketing—to target upper-tier market segments. These brands command price premiums (typically 30-60% above category averages) based on tangible quality differences, exceptional craftsmanship, superior ingredients or materials, and distinctive brand narratives.

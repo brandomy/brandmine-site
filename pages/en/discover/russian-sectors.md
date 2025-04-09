@@ -1,14 +1,26 @@
 ---
-layout: default
+layout: discover
 title: Russian Consumer Sectors
-permalink: /en/russian-sectors/
+subtitle: Exploring 16 High-Potential Consumer Categories
+permalink: /en/discover/russian-sectors/
 lang: en
 ref: russian-sectors
+discovery_path: russian-sectors
 ---
 
-# Russian Consumer Brand Sectors
+<!-- Hero Panel -->
+<div class="panel panel--hero panel--russian-sectors">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">{{ page.title }}</h1>
+    <p class="panel__subtitle">{{ page.subtitle }}</p>
+  </div>
+</div>
 
-## Exploring 16 High-Potential Consumer Categories
+<!-- Main Content -->
+<div class="panel panel--light">
+  <div class="panel__content">
+
+<!-- Russian Sectors Introduction -->
 
 Russia's consumer brand landscape offers exceptional diversity and untapped international potential. These 16 carefully selected sectors represent the most promising opportunities for cross-border partnerships and investments.
 
@@ -212,6 +224,48 @@ Russia's consumer brand landscape offers exceptional diversity and untapped inte
     <p>Discover how Brandmine can connect you with leading brands across these exciting sectors.</p>
   </div>
   <div class="sector-summary__cta">
-    <a href="{{ site.baseurl }}/{{ page.lang }}/sectors/" class="btn btn-primary">Return to Sectors Overview</a>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="btn btn-primary">Return to Sectors Overview</a>
+  </div>
+</div>
+
+<!-- All Categories Link -->
+<div class="dimensions-navigation">
+  <h3 class="dimensions-navigation__title">Explore Other Discovery Dimensions</h3>
+  <div class="dimensions-navigation__links">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="dimensions-navigation__link dimensions-navigation__link--sector">
+      <span class="dimensions-navigation__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
+        </svg>
+      </span>
+      Sectors
+    </a>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="dimensions-navigation__link dimensions-navigation__link--market">
+      <span class="dimensions-navigation__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      </span>
+      Markets
+    </a>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="dimensions-navigation__link dimensions-navigation__link--attribute">
+      <span class="dimensions-navigation__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 7h16M4 12h16M4 17h10"></path>
+        </svg>
+      </span>
+      Attributes
+    </a>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="dimensions-navigation__link dimensions-navigation__link--signal">
+      <span class="dimensions-navigation__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </span>
+      Growth Signals
+    </a>
+  </div>
+</div>
   </div>
 </div>

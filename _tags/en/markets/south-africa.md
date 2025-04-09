@@ -6,7 +6,7 @@ tag_type: market
 description: "Content focusing on South African brands, markets, and consumer trends in Africa's most industrialized economy with distinctive cultural diversity and creative innovation."
 badge_type: market
 badge_icon: south-africa-flag.svg
-permalink: /en/tags/markets/south-africa/
+permalink: /en/discover/markets/south-africa/
 lang: en
 ---
 

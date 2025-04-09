@@ -6,7 +6,7 @@ description: "创始人仍然作为活跃领导者，对产品开发、质量标
 badge_type: tier1
 badge_icon: founder-led.svg
 verification_required: true
-permalink: /zh/tags/attributes/founder-led/
+permalink: /zh/discover/attributes/founder-led/
 ---
 
 创始人领导的品牌得益于其原创者持续的指导、愿景和热情。这些企业家仍然深入参与日常运营、产品开发和战略决策，确保他们的原始愿景和标准继续指导业务，同时适应不断变化的市场条件。

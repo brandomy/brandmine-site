@@ -54,26 +54,26 @@ Our tagging system includes four distinct categories, each with visual different
     <span class="code-language">html</span>
     <pre><code class="language-html">&lt;!-- Sector Tags --&gt;
 &lt;div class="sector-tags"&gt;
-  &lt;a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
-  &lt;a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
+  &lt;a href="/en/discover/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
+  &lt;a href="/en/discover/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;!-- Attribute Tags --&gt;
 &lt;div class="attribute-tags"&gt;
-  &lt;a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
-  &lt;a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
+  &lt;a href="/en/discover/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
+  &lt;a href="/en/discover/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;!-- Growth Tags --&gt;
-&lt;div class="growth-tags"&gt;
-  &lt;a href="/en/tags/growth/export-ready/" class="tag growth-tag"&gt;Export Ready&lt;/a&gt;
-  &lt;a href="/en/tags/growth/investment-ready/" class="tag growth-tag"&gt;Investment Ready&lt;/a&gt;
+&lt;!-- Signal Tags --&gt;
+&lt;div class="signal-tags"&gt;
+  &lt;a href="/en/discover/signals/export-ready/" class="tag signal-tag"&gt;Export Ready&lt;/a&gt;
+  &lt;a href="/en/discover/signals/investment-ready/" class="tag signal-tag"&gt;Investment Ready&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;!-- Country Tags --&gt;
-&lt;div class="country-tags"&gt;
-  &lt;a href="/en/tags/countries/russia/" class="tag country-tag"&gt;Russia&lt;/a&gt;
-  &lt;a href="/en/tags/countries/china/" class="tag country-tag"&gt;China&lt;/a&gt;
+&lt;!-- Market Tags --&gt;
+&lt;div class="market-tags"&gt;
+  &lt;a href="/en/discover/markets/russia/" class="tag market-tag"&gt;Russia&lt;/a&gt;
+  &lt;a href="/en/discover/markets/china/" class="tag market-tag"&gt;China&lt;/a&gt;
 &lt;/div&gt;</code></pre>
   </div>
 </div>
@@ -148,15 +148,15 @@ Tags are typically grouped by category in list format:
     <span class="code-language">html</span>
     <pre><code class="language-html">&lt;div class="tag-list"&gt;
   &lt;div class="sector-tags"&gt;
-    &lt;a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
-    &lt;a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
+    &lt;a href="/en/discover/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
+    &lt;a href="/en/discover/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
   &lt;/div&gt;
   &lt;div class="attribute-tags"&gt;
-    &lt;a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
-    &lt;a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
+    &lt;a href="/en/discover/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
+    &lt;a href="/en/discover/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
   &lt;/div&gt;
-  &lt;div class="growth-tags"&gt;
-    &lt;a href="/en/tags/growth/export-ready/" class="tag growth-tag"&gt;Export Ready&lt;/a&gt;
+  &lt;div class="signal-tags"&gt;
+    &lt;a href="/en/discover/signals/export-ready/" class="tag signal-tag"&gt;Export Ready&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
   </div>
@@ -191,18 +191,18 @@ Tag clouds display all tags in a category for browsing and discovery:
     <pre><code class="language-html">&lt;div class="tag-cloud"&gt;
   &lt;h3&gt;Sectors&lt;/h3&gt;
   &lt;div class="sector-cloud"&gt;
-    &lt;a href="/en/tags/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
-    &lt;a href="/en/tags/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
-    &lt;a href="/en/tags/sectors/gourmet-foods/" class="tag sector-tag"&gt;Gourmet Foods&lt;/a&gt;
-    &lt;a href="/en/tags/sectors/natural-beauty/" class="tag sector-tag"&gt;Natural Beauty&lt;/a&gt;
+    &lt;a href="/en/discover/sectors/hotels-resorts/" class="tag sector-tag"&gt;Hotels &amp; Resorts&lt;/a&gt;
+    &lt;a href="/en/discover/sectors/artisanal-spirits/" class="tag sector-tag"&gt;Artisanal Spirits&lt;/a&gt;
+    &lt;a href="/en/discover/sectors/gourmet-foods/" class="tag sector-tag"&gt;Gourmet Foods&lt;/a&gt;
+    &lt;a href="/en/discover/sectors/natural-beauty/" class="tag sector-tag"&gt;Natural Beauty&lt;/a&gt;
   &lt;/div&gt;
   
   &lt;h3&gt;Attributes&lt;/h3&gt;
   &lt;div class="attribute-cloud"&gt;
-    &lt;a href="/en/tags/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
-    &lt;a href="/en/tags/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
-    &lt;a href="/en/tags/attributes/founder-led/" class="tag attribute-tag"&gt;Founder-Led&lt;/a&gt;
-    &lt;a href="/en/tags/attributes/heritage-brand/" class="tag attribute-tag"&gt;Heritage Brand&lt;/a&gt;
+    &lt;a href="/en/discover/attributes/artisanal-excellence/" class="tag attribute-tag"&gt;Artisanal Excellence&lt;/a&gt;
+    &lt;a href="/en/discover/attributes/premium-positioning/" class="tag attribute-tag"&gt;Premium Positioning&lt;/a&gt;
+    &lt;a href="/en/discover/attributes/founder-led/" class="tag attribute-tag"&gt;Founder-Led&lt;/a&gt;
+    &lt;a href="/en/discover/attributes/heritage-brand/" class="tag attribute-tag"&gt;Heritage Brand&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
   </div>
@@ -339,7 +339,7 @@ artisanal-excellence:
 
 3. **Multilingual implementation** - Use proper tag translation data:
    ```html
-   <a href="/{{ page.lang }}/tags/sectors/hotels-resorts/" class="tag sector-tag">
+   <a href="/{{ page.lang }}/discover/sectors/hotels-resorts/" class="tag sector-tag">
      {{ site.data.tag_translations['hotels-resorts'][page.lang] }}
    </a>
    ```

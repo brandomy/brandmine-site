@@ -6,7 +6,7 @@ description: "将传统基础与前瞻性方法相结合的品牌，展现活力
 badge_type: tier1
 badge_icon: innovation-leader.svg
 verification_required: true
-permalink: /zh/tags/attributes/innovation-leader/
+permalink: /zh/discover/attributes/innovation-leader/
 ---
 
 创新领袖代表着一种独特的品牌类型，他们巧妙地平衡了对传统基础的尊重与大胆的前瞻性方法。这些品牌不将创新视为与根源的背离，而是将其视为建立在核心专业知识和文化遗产基础上的自然演变。
