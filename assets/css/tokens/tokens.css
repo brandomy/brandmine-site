@@ -212,14 +212,20 @@
   
   /* ==========================================================================
      3. BREAKPOINTS
-     ========================================================================== */
-  :root {
-    --breakpoint-xs: 480px;
-    --breakpoint-sm: 640px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-  }
+     ========================================================================== 
+     
+     IMPORTANT: Breakpoints should NOT be used as CSS variables in media queries.
+     Instead, use these hard-coded values directly in your media queries.
+     
+     xs: 480px
+     sm: 640px
+     md: 768px 
+     lg: 992px
+     xl: 1200px
+     
+     Example usage:
+     @media (min-width: 768px) { ... }
+     */
   
   /* ==========================================================================
      4. SPACING

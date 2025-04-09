@@ -10,7 +10,7 @@ ref: discover
 <div class="panel panel--hero">
   <div class="panel__content">
     <h1 class="panel__heading-primary">Discover Brands</h1>
-    <p class="panel__subtitle">Explore brands through multiple dimensions: Sectors, Markets, Attributes, and Growth Pathways</p>
+    <p class="panel__subtitle">Explore brands through multiple dimensions: <br>Sectors, Markets, Attributes, and Growth Pathways</p>
   </div>
 </div>
 

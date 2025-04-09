@@ -43,6 +43,31 @@ lang: en
   </div>
 </div>
 
+<!-- Featured Brands Section -->
+<div class="panel panel--featured-brands">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
+    <p class="panel__lead-text">Discover hand-selected brands with compelling narratives and global potential</p>
+    
+    <div class="featured-brands-carousel">
+      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
+      {% if brands.size > 0 %}
+        {% for brand in brands %}
+          {% include brand-card.html brand=brand %}
+        {% endfor %}
+      {% else %}
+        <!-- Fallback to language-specific example if no featured brands are available -->
+        {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
+        {% include brand-card.html brand=fallback_brand %}
+      {% endif %}
+    </div>
+    
+    <div class="more-brands">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+    </div>
+  </div>
+</div>
+
 <!-- Location Intelligence Panel -->
 <div class="panel panel--location">
   <div class="panel__content">
@@ -122,31 +147,6 @@ lang: en
   </div>
 </div>
 
-<!-- Featured Brands Section -->
-<div class="panel panel--featured-brands">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
-    <p class="panel__lead-text">Discover hand-selected brands with compelling narratives and global potential</p>
-    
-    <div class="featured-brands-carousel">
-      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
-      {% if brands.size > 0 %}
-        {% for brand in brands %}
-          {% include brand-card.html brand=brand %}
-        {% endfor %}
-      {% else %}
-        <!-- Fallback to language-specific example if no featured brands are available -->
-        {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
-        {% include brand-card.html brand=fallback_brand %}
-      {% endif %}
-    </div>
-    
-    <div class="more-brands">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
-    </div>
-  </div>
-</div>
-
 <!-- Latest Insights Section -->
 <div class="panel panel--insights">
   <div class="panel__content">
@@ -156,7 +156,7 @@ lang: en
     {% include insights-feed.html limit=2 featured=true %}
     
     <div class="view-all-insights">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--secondary">{{ site.data.translations[page.lang].insights.view_all }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--outline-light">{{ site.data.translations[page.lang].insights.view_all }}</a>
     </div>
   </div>
 </div>
@@ -167,8 +167,8 @@ lang: en
     <h2 class="panel__heading-secondary">Start Exploring What Others Can't See</h2>
     <p class="panel__lead-text">Gain exclusive access to founder-led BRICS+ brands ready to grow</p>
     <div class="home-cta__buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--primary">{{ site.data.translations[page.lang].home.cta_button }}</a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--secondary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn home-cta__btn-primary">{{ site.data.translations[page.lang].home.cta_button }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--outline-light">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
     </div>
   </div>
 </div>

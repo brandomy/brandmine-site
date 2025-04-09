@@ -92,7 +92,7 @@ label {
 }
 
 /* Desktop adjustments */
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 768px) { /* md breakpoint */
   .mobile-form-wrapper {
     width: 92%;
   }
@@ -181,7 +181,7 @@ label {
    -------------------------------------------------------------------------- */
 
 /* Small devices (phones) */
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 768px) { /* md breakpoint */
   /* Fix general embeds on small screens (excluding Tally forms that we handle separately) */
   iframe:not(.contact-form-container iframe) {
     width: 100% !important;
@@ -192,7 +192,7 @@ label {
 }
 
 /* Extra small devices */
-@media (max-width: var(--breakpoint-sm)) {
+@media (max-width: 640px) { /* sm breakpoint */
   /* MailerLite form adjustments */
   .ml-embedded .ml-form-embedWrapper {
     padding: var(--space-2); /* 0.5rem */
