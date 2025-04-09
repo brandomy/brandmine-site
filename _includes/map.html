@@ -1,0 +1,183 @@
+<!-- ======================
+ GENERATE A MAPLIBRE MAP
+ ==========================  -->
+ 
+ <!-- _includes/map.html -->
+<div id="map" class="map-container" style="height: 500px; width: 100%;"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the map
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key={{ site.stadia_maps_api_key }}',
+      center: [37.6173, 55.7558], // Default center (Moscow)
+      zoom: 4 // Default zoom level
+    });
+    
+    // Add navigation controls
+    map.addControl(new maplibregl.NavigationControl());
+    
+    // Get the GeoJSON URL from the include parameters
+    const geojsonUrl = "{{ include.geojson_url }}";
+    
+    // Wait for map to load before adding data
+    map.on('load', function() {
+      // Add a GeoJSON source
+      fetch(geojsonUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Add data source
+          map.addSource('brands', {
+            type: 'geojson',
+            data: data,
+            cluster: true,
+            clusterMaxZoom: 14,
+            clusterRadius: 50
+          });
+          
+          // Add a layer for the clusters
+          map.addLayer({
+            id: 'clusters',
+            type: 'circle',
+            source: 'brands',
+            filter: ['has', 'point_count'],
+            paint: {
+              'circle-color': [
+                'step',
+                ['get', 'point_count'],
+                '#7EB0D5', // Color for clusters with < 10 points
+                10,
+                '#BFD3E6', // Color for clusters with < 30 points
+                30,
+                '#FDAE61'  // Color for clusters with >= 30 points
+              ],
+              'circle-radius': [
+                'step',
+                ['get', 'point_count'],
+                15,  // Size for clusters with < 10 points
+                10,
+                20,  // Size for clusters with < 30 points
+                30,
+                25   // Size for clusters with >= 30 points
+              ]
+            }
+          });
+          
+          // Add a layer for the cluster counts
+          map.addLayer({
+            id: 'cluster-count',
+            type: 'symbol',
+            source: 'brands',
+            filter: ['has', 'point_count'],
+            layout: {
+              'text-field': '{point_count_abbreviated}',
+              'text-font': ['Open Sans Bold'],
+              'text-size': 12
+            },
+            paint: {
+              'text-color': '#ffffff'
+            }
+          });
+          
+          // Add a layer for individual points
+          map.addLayer({
+            id: 'unclustered-point',
+            type: 'circle',
+            source: 'brands',
+            filter: ['!', ['has', 'point_count']],
+            paint: {
+              'circle-color': [
+                'case',
+                ['==', ['get', 'featured'], true], 
+                '#F8766D',  // Featured brands in highlight color
+                '#7CAE00'   // Standard brands in regular color
+              ],
+              'circle-radius': [
+                'case',
+                ['==', ['get', 'featured'], true], 
+                8,  // Featured brands larger
+                6   // Standard brands standard size
+              ],
+              'circle-stroke-width': 1,
+              'circle-stroke-color': '#fff'
+            }
+          });
+          
+          // Add popups for individual points
+          map.on('click', 'unclustered-point', function(e) {
+            const props = e.features[0].properties;
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            
+            // Format popup content
+            let popupContent = `<strong>${props.name}</strong>`;
+            if (props.description) {
+              popupContent += `<p>${props.description}</p>`;
+            }
+            
+            // Add link to profile if featured, or website if available
+            const language = "{{ page.language }}";
+            if (props.featured) {
+              popupContent += `<a href="/${language}/brands/${props.slug}/" class="map-popup__link">View Profile</a>`;
+            } else if (props.website) {
+              popupContent += `<a href="${props.website}" target="_blank" class="map-popup__link">Visit Website</a>`;
+            }
+            
+            // Adjust position for popup
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+            
+            // Create and add popup
+            new maplibregl.Popup()
+              .setLngLat(coordinates)
+              .setHTML(popupContent)
+              .addTo(map);
+          });
+          
+          // Change cursor when hovering over points
+          map.on('mouseenter', 'unclustered-point', function() {
+            map.getCanvas().style.cursor = 'pointer';
+          });
+          map.on('mouseleave', 'unclustered-point', function() {
+            map.getCanvas().style.cursor = '';
+          });
+          
+          // Handle clicks on clusters
+          map.on('click', 'clusters', function(e) {
+            const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+            const clusterId = features[0].properties.cluster_id;
+            
+            map.getSource('brands').getClusterExpansionZoom(clusterId, function(err, zoom) {
+              if (err) return;
+              
+              map.easeTo({
+                center: features[0].geometry.coordinates,
+                zoom: zoom
+              });
+            });
+          });
+          
+          // Change cursor when hovering over clusters
+          map.on('mouseenter', 'clusters', function() {
+            map.getCanvas().style.cursor = 'pointer';
+          });
+          map.on('mouseleave', 'clusters', function() {
+            map.getCanvas().style.cursor = '';
+          });
+          
+          // Fit map to data bounds if specified
+          if ({{ include.fit_bounds | default: true }}) {
+            // Calculate bounds from all points
+            const bounds = new maplibregl.LngLatBounds();
+            data.features.forEach(feature => {
+              bounds.extend(feature.geometry.coordinates);
+            });
+            
+            // Fit map to bounds with padding
+            map.fitBounds(bounds, { padding: 50 });
+          }
+        });
+    });
+  });
+</script>

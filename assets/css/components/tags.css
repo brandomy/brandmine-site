@@ -1,70 +1,80 @@
-/* ==========================================================================
-   Tag System (BEM Refactor)
-   ========================================================================== */
+/* Enhanced Tag Styling - Aligned with Design Tokens */
 
-/* Base tag style */
+/* Base tag styles - builds on existing tag structure */
 .tag {
   display: inline-block;
-  padding: 0.25rem 0.5rem;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-xl);
+  margin: var(--space-1);
   text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  font-family: var(--font-ui);
+  transition: all var(--transition-medium);
   white-space: nowrap;
-  transition: background-color 0.2s ease;
 }
 
-/* Tag modifiers by type */
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Tag type specific colors - dimension-based color coding */
 .tag--sector {
-  background-color: var(--brand-sector-bg, #E5F3FF);
-  color: var(--brand-sector-text, #0077CC);
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border: var(--border-width-thin) solid var(--olive-300);
+}
+
+.tag--sector:hover {
+  background-color: var(--olive-200);
 }
 
 .tag--market {
-  background-color: var(--brand-market-bg, #FFF3E0);
-  color: var(--brand-market-text, #E65100);
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: var(--border-width-thin) solid var(--sky-300);
+}
+
+.tag--market:hover {
+  background-color: var(--sky-200);
 }
 
 .tag--attribute {
-  background-color: var(--brand-attribute-bg, #F3E5F5);
-  color: var(--brand-attribute-text, #6A1B9A);
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border: var(--border-width-thin) solid var(--secondary-300);
+}
+
+.tag--attribute:hover {
+  background-color: var(--secondary-200);
 }
 
 .tag--signal {
-  background-color: var(--brand-signal-bg, #E8F5E9);
-  color: var(--brand-signal-text, #2E7D32);
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: var(--border-width-thin) solid var(--accent-300);
 }
 
-.tag--more {
-  background-color: var(--neutral-200);
-  color: var(--neutral-600);
+.tag--signal:hover {
+  background-color: var(--accent-200);
 }
 
-/* Tag List Container */
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.tag-list__item {
-  margin-bottom: var(--space-1);
-}
-
-/* Tag Cloud Structure */
+/* Tag cloud enhancements - works with existing tag-cloud include */
 .tag-cloud {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  margin: var(--space-8) 0;
 }
 
 .tag-cloud__group {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-6);
 }
 
 .tag-cloud__label {
-  font-weight: 600;
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
 }
 
 .tag-cloud__tags {
@@ -74,5 +84,182 @@
 }
 
 .tag-cloud__tag {
-  /* Inherits .tag style */
+  display: inline-block;
+}
+
+/* Tag list enhancements - for when tags are shown with brands/insights */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: var(--space-2) 0;
+}
+
+.tag-list__item {
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-2);
+}
+
+/* Premium content indicator for tags */
+.tag--premium {
+  position: relative;
+}
+
+.tag--premium::after {
+  content: "★";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--amber-400);
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+}
+
+/* Discovery page tab navigation */
+.discovery-tabs {
+  display: flex;
+  border-bottom: var(--border-width-thin) solid var(--neutral-200);
+  margin-bottom: var(--space-6);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.discovery-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.discovery-tab {
+  padding: var(--space-3) var(--space-4);
+  color: var(--neutral-600);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: all var(--transition-medium);
+  font-family: var(--font-ui);
+  font-weight: var(--font-normal);
+}
+
+.discovery-tab.active {
+  color: var(--primary-600);
+  border-bottom-color: var(--primary-500);
+  font-weight: var(--font-semibold);
+}
+
+.discovery-tab:hover {
+  color: var(--primary-500);
+  background-color: var(--primary-50);
+}
+
+/* Section styles for discovery hub */
+.discovery-section {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: var(--border-width-thin) solid var(--neutral-200);
+}
+
+.discovery-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.discovery-section__header {
+  margin-bottom: var(--space-4);
+}
+
+.discovery-section__title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+  color: var(--neutral-900);
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+}
+
+.discovery-section__description {
+  color: var(--neutral-600);
+  max-width: 800px;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+}
+
+.discovery-section__link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  transition: color var(--transition-fast);
+}
+
+.discovery-section__link:hover {
+  text-decoration: underline;
+  color: var(--primary-500);
+}
+
+.discovery-section__action {
+  margin-top: var(--space-4);
+  text-align: center;
+}
+
+/* Visual weight classes for tag clouds - for potential future implementation */
+.tag--xs { 
+  font-size: var(--text-xs); 
+  padding: var(--space-1) var(--space-2); 
+}
+
+.tag--sm { 
+  font-size: var(--text-xs); 
+  padding: var(--space-1) var(--space-3); 
+}
+
+.tag--md { 
+  font-size: var(--text-sm); 
+  padding: var(--space-1) var(--space-3); 
+} /* Default */
+
+.tag--lg { 
+  font-size: var(--text-sm); 
+  padding: var(--space-2) var(--space-4); 
+}
+
+.tag--xl { 
+  font-size: var(--text-base); 
+  padding: var(--space-2) var(--space-4); 
+}
+
+/* Media queries for responsiveness */
+@media (max-width: var(--breakpoint-md)) {
+  .tag {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+  }
+  
+  .discovery-tab {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+  }
+  
+  .discovery-section__title {
+    font-size: var(--text-xl);
+  }
+  
+  .tag-cloud__label {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .tag-cloud__tags {
+    gap: var(--space-1);
+  }
+  
+  .discovery-tab {
+    padding: var(--space-2);
+    font-size: var(--text-xs);
+  }
 }

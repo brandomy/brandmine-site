@@ -10,15 +10,13 @@
    -------------------------------------------------------------------------- */
 
    .team-section {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns by default */
     gap: var(--space-8); /* 2rem */
     margin: var(--space-8) 0; /* 2rem 0 */
   }
   
   .team-member {
-    flex: 1;
-    min-width: 300px;
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -207,9 +205,9 @@
   }
 
   /* Responsive adjustments */
-  @media (max-width: var(--breakpoint-md)) {
+  @media (max-width: 768px) {
     .services-container {
-      grid-template-columns: 1fr; /* Stack panels on smaller screens */
+      grid-template-columns: 1fr !important; /* Stack panels on smaller screens with !important */
       gap: var(--space-6);
     }
     
@@ -445,7 +443,7 @@
   }
 
   /* Progressive enhancement for larger screens */
-  @media (min-width: calc(var(--breakpoint-md) + 1px)) {
+  @media (min-width: 769px) {
     .problem-grid {
       grid-template-columns: repeat(2, 1fr); /* Force 2x2 on larger screens */
     }
@@ -610,6 +608,14 @@
     background: linear-gradient(to right, transparent, var(--primary-400), transparent);
   }
   
+  /* Force single column layout on smaller screens for team section */
+  @media (max-width: 768px) {
+    .team-section {
+      grid-template-columns: 1fr !important; /* Single column on mobile with higher specificity */
+      gap: var(--space-6); /* Slightly reduced gap on mobile */
+    }
+  }
+  
 /* --------------------------------------------------------------------------
     Panel Background Colors
     -------------------------------------------------------------------------- */
@@ -685,7 +691,7 @@
      Responsive Adjustments
      -------------------------------------------------------------------------- */
   
-  @media (max-width: var(--breakpoint-md)) {
+  @media (max-width: 768px) {
     .services-split {
       grid-template-columns: 1fr;
       gap: var(--space-8);
@@ -712,7 +718,7 @@
 
   
   /* Larger screens get more padding */
-@media (min-width: calc(var(--breakpoint-md) + 1px)) {
+@media (min-width: 769px) {
   .panel__content {
     padding-left: 10%;
     padding-right: 10%;
@@ -720,7 +726,7 @@
 }
 
   /* Extra large screens cap the width */
-  @media (min-width: var(--breakpoint-xl)) {
+  @media (min-width: 1200px) {
     .panel__content {
       max-width: 1400px;
     }
@@ -733,7 +739,7 @@
   }
 
   /* For smaller screens, reduce padding proportionally */
-  @media (max-width: var(--breakpoint-md)) {
+  @media (max-width: 768px) {
     .panel__content {
       padding-left: 5%;
       padding-right: 5%;
@@ -741,7 +747,7 @@
   }
 
     /* Very small screens get minimal padding */
-  @media (max-width: var(--breakpoint-xs)) {
+  @media (max-width: 480px) {
     .panel__content {
       padding-left: 16px;
       padding-right: 16px;
@@ -759,15 +765,15 @@
 }
 
 /* Force single column layout on smaller screens */
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 768px) {
   .services-container {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr !important; /* Single column on mobile with higher specificity */
     gap: var(--space-6); /* Slightly reduced gap on mobile */
   }
 }
 
 /* Extra small screens */
-@media (max-width: var(--breakpoint-xs)) {
+@media (max-width: 480px) {
   .services-container {
     gap: var(--space-4); /* Even smaller gap on very small screens */
   }
