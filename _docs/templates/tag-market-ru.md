@@ -6,7 +6,7 @@ description: "Краткое описание этого географичес�
 badge_type: tier1
 badge_icon: market-slug.svg
 verification_required: false
-permalink: /ru/tags/markets/market-slug/
+permalink: /ru/discover/markets/market-slug/
 lang: ru
 ---
 

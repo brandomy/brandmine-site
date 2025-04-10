@@ -1,0 +1,74 @@
+#!/usr/bin/env ruby
+require 'yaml'
+require 'fileutils'
+
+puts "Enter brand name:"
+brand_name = gets.chomp
+
+puts "Enter brand description:"
+description = gets.chomp
+
+puts "Enter sector (Hotels & Resorts, Artisanal Spirits & Vodka, Gourmet Foods):"
+sector = gets.chomp
+
+puts "Enter country:"
+country = gets.chomp
+
+puts "Enter city:"
+city = gets.chomp
+
+puts "Enter founder name:"
+founder_name = gets.chomp
+
+puts "Enter brief founder story:"
+founder_story = gets.chomp
+
+# Generate slug
+slug = brand_name.downcase.gsub(/[^a-z0-9]+/, '-')
+
+# Create front matter
+front_matter = {
+  'layout' => 'brand',
+  'title' => brand_name,
+  'description' => description,
+  'permalink' => "/en/brands/#{slug}/",
+  'language' => 'en',
+  'sector' => sector,
+  'location' => {
+    'country' => country,
+    'city' => city
+  },
+  'founder' => {
+    'name' => founder_name,
+    'image' => "/assets/images/brands/#{slug}/founder.jpg",
+    'story' => founder_story
+  },
+  'attributes' => [],
+  'featured_image' => "/assets/images/brands/#{slug}/featured.jpg",
+  'logo' => "/assets/images/brands/#{slug}/logo.png",
+  'translation_id' => slug,
+  'gallery' => [
+    {'src' => "/assets/images/brands/#{slug}/gallery-1.jpg", 'alt' => "#{brand_name} image 1"}
+  ]
+}
+
+# Create directories
+FileUtils.mkdir_p("_brands/en")
+FileUtils.mkdir_p("assets/images/brands/#{slug}")
+
+# Create English file
+File.open("_brands/en/#{slug}.md", "w") do |f|
+  f.puts front_matter.to_yaml
+  f.puts "---"
+  f.puts ""
+  f.puts "## Brand Story"
+  f.puts ""
+  f.puts "Write your brand story here."
+  f.puts ""
+  f.puts "## Products & Services"
+  f.puts ""
+  f.puts "Describe the brand's offerings here."
+end
+
+puts "Basic brand file created successfully!"
+puts "Don't forget to add images to assets/images/brands/#{slug}/"

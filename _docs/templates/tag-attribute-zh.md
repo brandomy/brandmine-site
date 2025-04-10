@@ -6,7 +6,7 @@ description: "关于这个品牌属性及其在国际环境中重要性的简要
 badge_type: tier1
 badge_icon: attribute-slug.svg
 verification_required: true
-permalink: /zh/tags/attributes/attribute-slug/
+permalink: /zh/discover/attributes/attribute-slug/
 lang: zh
 ---
 

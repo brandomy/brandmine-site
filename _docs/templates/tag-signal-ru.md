@@ -6,7 +6,7 @@ description: "Краткое описание этого индикатора г
 badge_type: tier2
 badge_icon: signal-slug.svg
 verification_required: true
-permalink: /ru/tags/signals/signal-slug/
+permalink: /ru/discover/signals/signal-slug/
 lang: ru
 ---
 

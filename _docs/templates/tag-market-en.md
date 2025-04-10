@@ -6,7 +6,7 @@ description: "Brief description of this geographic market and its business lands
 badge_type: tier1
 badge_icon: market-slug.svg
 verification_required: false
-permalink: /en/tags/markets/market-slug/
+permalink: /en/discover/markets/market-slug/
 lang: en
 ---
 

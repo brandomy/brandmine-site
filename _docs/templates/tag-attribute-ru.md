@@ -6,7 +6,7 @@ description: "Краткое описание этого атрибута бре
 badge_type: tier1
 badge_icon: attribute-slug.svg
 verification_required: true
-permalink: /ru/tags/attributes/attribute-slug/
+permalink: /ru/discover/attributes/attribute-slug/
 lang: ru
 ---
 

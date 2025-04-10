@@ -6,7 +6,7 @@ description: "关于这个业务准备度指标及其向潜在合作伙伴传达
 badge_type: tier2
 badge_icon: signal-slug.svg
 verification_required: true
-permalink: /zh/tags/signals/signal-slug/
+permalink: /zh/discover/signals/signal-slug/
 lang: zh
 ---
 

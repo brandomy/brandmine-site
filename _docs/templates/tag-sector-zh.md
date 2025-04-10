@@ -6,7 +6,7 @@ description: "关于这个行业部门及其在金砖国家市场中重要性的
 badge_type: tier1
 badge_icon: sector-slug.svg
 verification_required: false
-permalink: /zh/tags/sectors/sector-slug/
+permalink: /zh/discover/sectors/sector-slug/
 lang: zh
 ---
 

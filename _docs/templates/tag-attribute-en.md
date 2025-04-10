@@ -6,7 +6,7 @@ description: "Brief description of this brand attribute and why it matters in in
 badge_type: tier1
 badge_icon: attribute-slug.svg
 verification_required: true
-permalink: /en/tags/attributes/attribute-slug/
+permalink: /en/discover/attributes/attribute-slug/
 lang: en
 ---
 

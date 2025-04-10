@@ -6,7 +6,7 @@ description: "Краткое описание этого сектора пром
 badge_type: tier1
 badge_icon: sector-slug.svg
 verification_required: false
-permalink: /ru/tags/sectors/sector-slug/
+permalink: /ru/discover/sectors/sector-slug/
 lang: ru
 ---
 

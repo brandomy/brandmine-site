@@ -6,7 +6,7 @@ description: "Brief description of this business readiness indicator and what it
 badge_type: tier2
 badge_icon: signal-slug.svg
 verification_required: true
-permalink: /en/tags/signals/signal-slug/
+permalink: /en/discover/signals/signal-slug/
 lang: en
 ---
 

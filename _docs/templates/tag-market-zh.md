@@ -6,7 +6,7 @@ description: "关于这个地理市场及其商业环境的简要描述。"
 badge_type: tier1
 badge_icon: market-slug.svg
 verification_required: false
-permalink: /zh/tags/markets/market-slug/
+permalink: /zh/discover/markets/market-slug/
 lang: zh
 ---
 

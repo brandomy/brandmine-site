@@ -6,7 +6,7 @@ description: "Brief description of this industry sector and its significance in 
 badge_type: tier1
 badge_icon: sector-slug.svg
 verification_required: false
-permalink: /en/tags/sectors/sector-slug/
+permalink: /en/discover/sectors/sector-slug/
 lang: en
 ---
 
