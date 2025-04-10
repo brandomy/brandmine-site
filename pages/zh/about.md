@@ -14,8 +14,8 @@ ref: about
   </div>
 </div>
 
-<!-- Mission Section -->
-<div class="panel panel--mission">
+<!-- Mission Section - Changed to primary-soft -->
+<div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的使命</h2>
     <p class="panel__lead-text">
@@ -24,8 +24,8 @@ ref: about
   </div>
 </div>
 
-<!-- Problem Section -->
-<div class="panel panel--problem">
+<!-- Problem Section - Changed to light -->
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们解决的问题</h2>
     <p class="panel__lead-text">
@@ -73,8 +73,8 @@ ref: about
   </div>
 </div>
 
-<!-- Solution Section -->
-<div class="panel panel--solution">
+<!-- Solution Section - Changed to primary-soft -->
+<div class="panel panel--primary-soft">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">我们的解决方案</h2>
       <p class="panel__lead-text">
@@ -128,8 +128,8 @@ ref: about
   </div>
 </div>
 
-<!-- Team Section using existing styling -->
-<div class="panel panel--team">
+<!-- Team Section - Changed to light -->
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的团队</h2>
     
@@ -181,8 +181,8 @@ ref: about
   </div>
 </div>
 
-<!-- Perspective Section -->
-<div class="panel panel--perspective">
+<!-- Perspective Section - Changed to primary-soft -->
+<div class="panel panel--primary-soft">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">我们的独特视角</h2>
       <p class="panel__lead-text">
@@ -203,8 +203,8 @@ ref: about
   </div>
 </div>
 
-<!-- Services Section -->
-<div class="panel panel--services">
+<!-- Services Section - Changed to light -->
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的服务</h2>
     <p class="panel__lead-text">
@@ -296,8 +296,8 @@ ref: about
   </div>
 </div>
 
-<!-- Contact Section -->
-<div class="panel panel--contact">
+<!-- Contact Section - Keep as cta -->
+<div class="panel panel--cta">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">联系我们</h2>
     <p class="panel__lead-text">

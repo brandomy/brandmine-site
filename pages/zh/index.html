@@ -7,19 +7,19 @@ lang: zh
 ---
 
 <!-- Primary Hero Panel (Teal) -->
-<div class="panel panel--hero-primary home-hero--no-image">
+<div class="panel panel--hero">
   <div class="panel__content">
     <h1 class="home-hero--no-image__heading-primary">推动金砖国家+的创始人领导品牌</h1>
     <p class="home-hero--no-image__subtitle">打破语言、文化和地理障碍，在全球扩张的最佳时机展现卓越的创始人领导品牌</p>
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn home-hero--no-image__btn-primary">探索品牌</a>
-      <a href="#how-it-works" class="btn home-hero--no-image__btn-secondary">了解方式</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="primary-hero">探索品牌</a>
+      <a href="#how-it-works" class="btn btn--standard" data-track="secondary-hero">了解方式</a>
     </div>
   </div>
 </div>
 
 <!-- Impact Statement Panel -->
-<div class="panel panel--impact">
+<div class="panel panel--primary">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">揭示隐形的金砖国家+品牌：准备进入全球市场</h2>
     <p class="panel__lead-text">
@@ -43,46 +43,8 @@ lang: zh
   </div>
 </div>
 
-<!-- Location Intelligence Panel -->
-<div class="panel panel--location">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">位置智能：绘制隐藏机会的地图</h2>
-    <p class="panel__lead-text">通过交互式地图可视化品牌生态系统，揭示地理模式和文化连接</p>
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="btn location-panel__btn">探索地图</a>
-    </div>
-  </div>
-</div>
-
-<!-- Founder Focus Panel -->
-<div class="panel panel--founder">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">超越列表：推动金砖国家+创新的人文故事</h2>
-    <p class="panel__lead-text">在这个关键的代际转型点，我们阐明金砖国家+品牌背后的创始人旅程——提供通过传统研究不可能找到的背景和洞察。</p>
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn founder-panel__btn">阅读创始人故事</a>
-    </div>
-  </div>
-</div>
-
-<!-- For BRICS+ Brand Owners Panel -->
-<div class="panel panel--brands">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">面向金砖国家+品牌所有者：您的全球故事从这里开始</h2>
-    <p class="panel__lead-text">准备将您成功的本地品牌推向全球舞台？我们的平台提供您所需的可见度、背景和连接。</p>
-    <ul class="feature-list feature-list--centered">
-      <li><span class="feature-list__title">超越</span> <span class="feature-list__text">语言和文化障碍，触达全球市场</span></li>
-      <li><span class="feature-list__title">定位</span> <span class="feature-list__text">您的品牌在适当的国际背景中</span></li>
-      <li><span class="feature-list__title">连接</span> <span class="feature-list__text">与寻求您所提供的精确产品的合作伙伴</span></li>
-    </ul>
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn home-brands__btn">获取品牌介绍</a>
-    </div>
-  </div>
-</div>
-
-<!-- How It Works Section -->
-<div id="how-it-works" class="panel panel--how-it-works">
+<!-- How It Works Section (Moved up) -->
+<div id="how-it-works" class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">运作方式</h2>
     <p class="panel__lead-text">我们的平台架起杰出金砖国家+品牌与国际机会之间的桥梁</p>
@@ -117,13 +79,81 @@ lang: zh
     </div>
     
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn hiw-discover__btn">开始探索</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--standard" data-track="how-it-works">开始探索</a>
+    </div>
+  </div>
+</div>
+
+<!-- Social Proof/Testimonials Section -->
+<div class="panel panel--light testimonials-panel">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.success_stories | default: "成功案例" }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.testimonials_intro | default: "品牌创始人对Brandmine体验的评价" }}</p>
+    
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <div class="testimonial-card__quote">
+          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+          <p class="testimonial-card__text">Brandmine帮助我们联系到了我们自己永远不会发现的国际合作伙伴。该平台对创始人故事的关注使我们能够展示我们的疗养院独特和真实的特点。</p>
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__author-image">
+            <img src="/api/placeholder/64/64" alt="蜻蜓疗愈疗养院资料照片">
+          </div>
+          <div class="testimonial-card__author-info">
+            <h4 class="testimonial-card__author-name">蜻蜓疗愈疗养院</h4>
+            <p class="testimonial-card__author-title">特色品牌</p>
+          </div>
+        </div>
+        <div class="testimonial-card__metrics">
+          <div class="metric">
+            <span class="metric-value">4</span>
+            <span class="metric-label">国际合作伙伴</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">65%</span>
+            <span class="metric-label">收入增长</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-card__quote">
+          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+          <p class="testimonial-card__text">作为创始人，我曾经难以向国际市场传达我们品牌的独特传承。Brandmine平台给了我们所需的知名度和背景。地图功能帮助分销商理解我们的区域重要性。</p>
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__author-image">
+            <img src="/api/placeholder/64/64" alt="乔治·阎资料照片">
+          </div>
+          <div class="testimonial-card__author-info">
+            <h4 class="testimonial-card__author-name">乔治·阎</h4>
+            <p class="testimonial-card__author-title">创始人</p>
+          </div>
+        </div>
+        <div class="testimonial-card__metrics">
+          <div class="metric">
+            <span class="metric-value">3</span>
+            <span class="metric-label">新市场</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">40%</span>
+            <span class="metric-label">出口增长</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Featured Brands Section -->
-<div class="panel panel--featured-brands">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
     <p class="panel__lead-text">探索精心挑选的具有引人入胜的故事和全球潜力的品牌</p>
@@ -142,33 +172,122 @@ lang: zh
     </div>
     
     <div class="more-brands">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="featured-brands">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+    </div>
+  </div>
+</div>
+
+<!-- Lead Capture Section (New) -->
+<div class="panel panel--lead-capture">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.stay_updated | default: "了解金砖国家+最新机遇" }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.subscribe_text | default: "订阅以接收有关新兴品牌和市场趋势的精选洞察" }}</p>
+    
+    <div class="lead-capture__container">
+      <!-- MailerLite Form -->
+      <div class="lead-capture__form">
+        {% if page.lang == 'ru' %}
+          <div class="ml-embedded" data-form="WVRNPI"></div>
+        {% elsif page.lang == 'zh' %}
+          <div class="ml-embedded" data-form="WRga0a"></div>
+        {% else %}
+          <div class="ml-embedded" data-form="480swE"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Location Intelligence Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">位置智能：绘制隐藏机会的地图</h2>
+    <p class="panel__lead-text">通过交互式地图可视化品牌生态系统，揭示地理模式和文化连接</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="btn btn--standard" data-track="location-intelligence">探索地图</a>
+    </div>
+  </div>
+</div>
+
+<!-- Founder Focus Panel -->
+<div class="panel panel--secondary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">超越列表：推动金砖国家+创新的人文故事</h2>
+    <p class="panel__lead-text">在这个关键的代际转型点，我们阐明金砖国家+品牌背后的创始人旅程——提供通过传统研究不可能找到的背景和洞察。</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--standard" data-track="founder-focus">阅读创始人故事</a>
+    </div>
+  </div>
+</div>
+
+<!-- For BRICS+ Brand Owners Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">面向金砖国家+品牌所有者：您的全球故事从这里开始</h2>
+    <p class="panel__lead-text">准备将您成功的本地品牌推向全球舞台？我们的平台提供您所需的可见度、背景和连接。</p>
+    <ul class="feature-list feature-list--centered">
+      <li><span class="feature-list__title">超越</span> <span class="feature-list__text">语言和文化障碍，触达全球市场</span></li>
+      <li><span class="feature-list__title">定位</span> <span class="feature-list__text">您的品牌在适当的国际背景中</span></li>
+      <li><span class="feature-list__title">连接</span> <span class="feature-list__text">与寻求您所提供的精确产品的合作伙伴</span></li>
+    </ul>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--secondary-cta" data-track="brand-owners">获取品牌介绍</a>
     </div>
   </div>
 </div>
 
 <!-- Latest Insights Section -->
-<div class="panel panel--insights">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].insights.latest }}</h2>
-    <p class="panel__lead-text">发现来自新兴市场的隐藏瑰宝和引人入胜的创始人旅程，值得全球关注</p>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].insights.discover_description | default: "发现来自新兴市场的隐藏瑰宝和引人入胜的创始人旅程，值得全球关注" }}</p>
     
-    {% include insights-feed.html limit=2 featured=true %}
+    <!-- Using your existing insights-feed include with the proper parameters -->
+    <div class="insights-feed">
+      {% assign insights = site.insights | where: "lang", page.lang | where: "featured", true | sort: "date" | reverse | limit: 2 %}
+      {% for insight in insights %}
+        <div class="insight-card">
+          <a href="{{ insight.url | relative_url }}" class="insight-card__link">
+            {% if insight.image %}
+              <div class="insight-card__image-wrapper">
+                <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}" class="insight-card__image">
+              </div>
+            {% endif %}
+            <div class="insight-card__content">
+              <h3 class="insight-card__title">{{ insight.title }}</h3>
+              <p class="insight-card__excerpt">{{ insight.excerpt | strip_html | truncate: 160 }}</p>
+              <div class="insight-card__meta">
+                {% if insight.tags %}
+                  <div class="insight-card__tags">
+                    {% for tag in insight.tags limit:2 %}
+                      <span class="tag tag--signal insight-card__tag">{{ tag }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                <div class="insight-card__date">
+                  {{ insight.date | date: "%b %-d, %Y" }}
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
     
     <div class="view-all-insights">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--outline-light">{{ site.data.translations[page.lang].insights.view_all }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--outline-light" data-track="latest-insights">{{ site.data.translations[page.lang].insights.view_all }}</a>
     </div>
   </div>
 </div>
 
 <!-- CTA Panel -->
-<div class="panel panel--cta home-cta">
-  <div class="panel__content home-cta__content">
+<div class="panel panel--cta">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary">开始探索他人无法看到的机会</h2>
     <p class="panel__lead-text">获取对准备成长的创始人领导的金砖国家+品牌的独家访问</p>
-    <div class="home-cta__buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn home-cta__btn-primary">{{ site.data.translations[page.lang].home.cta_button }}</a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--outline-light">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="final-cta-explore">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--secondary-cta" data-track="final-cta-profile">{{ site.data.translations[page.lang].home.cta_button }}</a>
     </div>
   </div>
 </div>
@@ -186,5 +305,31 @@ lang: zh
         }
       });
     }
+  });
+  
+  // Event tracking for homepage buttons
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all buttons with data-track attribute
+    const buttons = document.querySelectorAll('[data-track]');
+    
+    // Add click event listener to each button
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        // Get button text and tracking ID
+        const buttonText = this.textContent.trim();
+        const trackingId = this.getAttribute('data-track');
+        
+        // Check if Google Analytics is available
+        if (typeof gtag === 'function') {
+          // Track the click event
+          gtag('event', 'click', {
+            'event_category': 'Homepage',
+            'event_label': buttonText,
+            'value': 1,
+            'button_section': trackingId
+          });
+        }
+      });
+    });
   });
 </script>

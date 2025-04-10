@@ -13,7 +13,7 @@ The site supports:
 - A **tag-based discovery model** (sector, attribute, signal, market)
 - Custom includes for maps, tag clouds, related brand logic, and language switching
 - Integration with MapLibre for interactive maps
-- Planned future integration with Airtable
+- Planned integration with Airtable (flat table structure)
 
 ---
 
@@ -42,7 +42,7 @@ Tags are stored as Markdown files in `_tags/{lang}/{type}/`. Each file contains:
 - Content describing the tag in more detail
 
 **Valid tag types** include:
-- `sectors` — e.g. natural-beauty, halal-foods, specialty-cheeses
+- `sectors` — e.g. natural-beauty, halal-foods, specialty-cheeses, wine
 - `attributes` — e.g. founder-led, heritage-brand, sustainability-pioneer
 - `signals` — e.g. export-ready, franchise-ready, rapid-growth
 - `markets` — e.g. russia, brazil, india, china
@@ -70,6 +70,50 @@ Rendering includes:
 - `_data/navigation/{lang}.yml` configures nav structure per language
 - Layouts and includes dynamically pull from `_data/` based on `page.lang`
 - Language switcher and all permalinks respect language prefixing
+
+---
+
+# 🗺️ Map Integration
+
+- Using **MapLibre** with **Stadia Maps** for geographic visualization
+- Clustering for efficient display of large numbers of brands
+- Brand points link to their respective profile pages
+- Filtering capabilities aligned with taxonomy system
+- Responsive design for mobile and desktop use
+
+---
+
+# 🎨 Brand Display Components
+
+Key components for brand display include:
+- `brand-card.html` - Card display for brand listings
+- `brand-list-item.html` - List view display for brand listings
+- `search-filter.html` - Filter interface for multi-dimensional discovery
+- `brand-image.html` - Responsive image handling for brand imagery
+- `map-component.html` - Geographic visualization of brands
+
+These components implement a visual taxonomy system using consistent color-coding:
+- Sectors -> mint green/olive
+- Markets -> light blue
+- Attributes -> light orange
+- Signals -> light purple/accent
+
+---
+
+# 📊 Two-Tier Content Approach
+
+Brandmine uses a two-tier approach for brand content:
+- **Tier 1: Basic Listings** (100+ per sector)
+  - Name, location, sector
+  - Brief description
+  - Basic taxonomy
+  - Geographic coordinates
+
+- **Tier 2: Feature Profiles** (2-3 per sector)
+  - Rich founder narratives
+  - High-quality imagery
+  - Complete taxonomy
+  - Timeline and milestones
 
 ---
 
@@ -122,13 +166,43 @@ htmlproofer _site   # Validate HTML output (requires html-proofer gem)
 
 ---
 
-# ✅ Best Practices
+# 🖼️ Image Strategy
 
-- Follow BEM and layout structure when adding components
-- Test all changes in **all three languages**
-- Validate responsive design using browser tools and real mobile devices
-- Keep includes modular and reusable
-- Maintain consistency between `_data/`, `_tags/`, and `_brands/` front matter
+- Standardized naming conventions (`purpose-imagename.jpg`)
+- Responsive image sizes (400w, 800w, 1200w, 1600w)
+- Consistent aspect ratios (16:9, 4:3, 1:1, etc.)
+- Organization by brand in the assets directory
+- Processing with ImageMagick for optimization
+
+---
+
+# 📱 Mobile Optimization Focus
+
+- Mobile-first approach for all components
+- Critical for Russian and Chinese markets where mobile usage dominates
+- Card layouts designed for touch interfaces
+- Map controls optimized for smaller screens
+- Progressive loading to optimize performance
+
+---
+
+# 💾 Data Management
+
+- Initially using Jekyll collections and front matter
+- Future integration with Airtable using a flat table structure
+- JSON for complex data (timelines, products, secondary locations)
+- CSV import/export for efficient data management
+- Sector-specific fields for specialized information
+
+---
+
+# ✅ Implementation Priorities
+
+1. Enhanced search and filter interface
+2. Visual taxonomy representation in brand cards
+3. MapLibre integration for geographic discovery
+4. Two-tier content approach (100+ listings, 2-3 profiles per sector)
+5. Multilingual support from day one
 
 ---
 
@@ -136,48 +210,89 @@ htmlproofer _site   # Validate HTML output (requires html-proofer gem)
 
 Paste this in Claude or ChatGPT when starting a session:
 
-> This is a Jekyll-based multilingual site (Brandmine) that uses `/en`, `/ru`, and `/zh` subfolders. Brands and tags are stored as Markdown files; tag types include `sectors`, `attributes`, `signals`, and `markets`. UI text is stored in `_data/translations`, and navigation is defined in `_data/navigation`. Layouts and includes handle rendering logic for brand cards, tag clouds, and multilingual navigation. Refer to CLAUDE.md if you need the complete structure.
+> This is a Jekyll-based multilingual site (Brandmine) that showcases brands from BRICS+ countries using a four-dimension taxonomy system (sectors, markets, attributes, signals). It features a two-tier content approach with basic listings (100+ per sector) and feature profiles (2-3 per sector). The site uses MapLibre for geographic visualization and has a mobile-first design philosophy. All content exists in three languages (EN/RU/ZH) with consistent URL structures. The design uses BEM naming conventions and CSS custom properties for styling.
 
 ---
 
 # 🧩 Sample File Structures and Styling Philosophy
 
 ## Brand Markdown Example
-Each brand is represented by a detailed Markdown file in `_brands/{lang}/`.  
-Files include structured front matter (title, sector, attributes, markets, signals, etc.) and narrative content about the founder, products, export strategy, and awards【51†source】.
+```yaml
+---
+layout: brand
+title: "TeaTime"
+slug: teatime
+country_code: "ru"
+lang: en
+permalink: /en/brands/ru/teatime/
 
-## Attribute Tag Example
-Tags are defined as individual Markdown files with structured front matter (`tag`, `tag_type`, `description`, `badge_type`, `verification_required`) and a detailed narrative of what the tag means. These reside in `_tags/{lang}/{type}/`【52†source】.
+# Taxonomy
+sectors: ["Artisanal Tea", "Gourmet Foods"]
+markets: ["Russia", "China"]
+attributes: ["Founder-Led", "Heritage Brand", "Artisanal Excellence"]
+signals: ["Export Ready", "Rapid Growth"]
 
-## Layout Template (`default.html`)
-- The `default` layout sets up the page’s structure and loads:
-  - Language-aware HTML elements
-  - SEO tags from `page.excerpt` and `_data/translations`
-  - Extensive CSS: design tokens, base styles, components, and page-specific overrides
-  - Font preloads and conditional Chinese font loads
-  - Google Analytics, MailerLite, and Tally embeds
-- Layout wraps the content using shared includes: `header.html`, `footer.html`, and responsive layout blocks【53†source】.
+# Location
+location:
+  country: "Russia"
+  country_code: "ru"
+  region: "Moscow Oblast"
+  city: "Moscow"
+  coordinates: [37.6173, 55.7558]
 
-## Design Tokens (`tokens.css`)
-- Centralized in `assets/css/tokens/tokens.css`
-- Defines color palettes (primary, secondary, neutral, accent, olive, sky, amber)
-- Language-specific font variables and breakpoints
-- Typography scale, spacing units, layout widths, z-index levels, shadow, border, and card system tokens
-- Used across all components and layout styles for design consistency【54†source】.
+# Founder Information
+founder:
+  name: "Alexei Sokolov"
+  position: "CEO & Tea Master"
+  story: "Alexei discovered his passion for tea while traveling across Asia..."
+  generation: "1st Generation"
+  founder_led: true
 
-## Page Example (`about.md`)
-- Located in `/pages/{lang}/`, uses `default` layout
-- Combines panels for structured storytelling (mission, problem, solution, team, etc.)
-- Styled with modular BEM components like `panel--hero`, `panel--mission`, and `team-member` cards
-- Content is localized using `page.lang` and matched to appropriate CSS files (e.g., `/pages/about.css`) via layout logic【55†source】.
+# Basic Information
+founding_year: 1998
+website: "https://teatime.ru"
+---
 
+# TeaTime: Moscow's Premium Tea Artisans
 
-## Your Responses
-1.  Provide one file at a time, starting with the most foundational or requested item.
-2.  Wait for my approval or “next” command before continuing with the next file or section.
-3.  If writing markdown, wrap the file name and content in fenced code blocks (e.g. ```md or ```yaml) and avoid commentary between them.
-4.  For multi-step tasks, give a preview plan before beginning (e.g., “I’ll generate 3 files: X, Y, Z — shall I start with X?”)
-⚠️ Do not attempt to return more than one document or major block of code in a single response unless I’ve asked for it explicitly. Wait for confirmation before proceeding.
+TeaTime has established itself as Russia's premier artisanal tea brand, combining traditional Chinese and Indian tea cultivation knowledge with distinctly Russian flavors and blending techniques.
+
+## Founder's Journey
+
+Alexei Sokolov discovered his passion for tea while traveling through China...
+```
+
+## Visual Taxonomy CSS Example
+```css
+/* Tag styling with color coding */
+.tag {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+}
+
+.tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-900);
+}
+
+.tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-900);
+}
+
+.tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-900);
+}
+
+.tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-900);
+}
+```
 
 ---
 
@@ -185,10 +300,10 @@ Tags are defined as individual Markdown files with structured front matter (`tag
 
 This site relies on a **structured tag system** across four distinct types:
 
-- `sectors` — Industry categories (e.g., natural-beauty, halal-foods)
-- `attributes` — Brand qualities (e.g., founder-led, premium, sustainable)
-- `signals` — Growth potential indicators (e.g., export-ready, rapid-growth)
-- `markets` — Regional focus (e.g., brazil, india, china)
+- `sectors` — Industry categories (e.g., natural-beauty, wine, hotels-resorts)
+- `attributes` — Brand qualities (e.g., founder-led, heritage-brand, artisanal-excellence)
+- `signals` — Growth potential indicators (e.g., export-ready, franchise-ready, rapid-growth)
+- `markets` — Regional focus (e.g., russia, brazil, india, china)
 
 Tags are defined as individual Markdown files in `_tags/{lang}/{type}/`, and referenced in brand front matter using the correct slug.
 
@@ -206,80 +321,8 @@ Claude must align any navigation, filtering, or tag-related output with this tag
 # 🤖 Your Responses (Reminder)
 
 1. Provide one file at a time, starting with the most foundational or requested item.
-2. Wait for my approval or “next” command before continuing with the next file or section.
+2. Wait for my approval or "next" command before continuing with the next file or section.
 3. If writing markdown, wrap the file name and content in fenced code blocks (e.g. ```md or ```yaml) and avoid commentary between them.
-4. For multi-step tasks, give a preview plan before beginning (e.g., “I’ll generate 3 files: X, Y, Z — shall I start with X?”)
+4. For multi-step tasks, give a preview plan before beginning (e.g., "I'll generate 3 files: X, Y, Z — shall I start with X?")
 
-⚠️ Do not attempt to return more than one document or major block of code in a single response unless I’ve asked for it explicitly. Wait for confirmation before proceeding.
-
-
----
-
-# 🏷️ Tag System Architecture (Expanded for Claude)
-
-## Valid Tag Types (DO NOT invent others)
-- `sectors`: Industry/category (e.g., natural-beauty)
-- `attributes`: Brand traits (e.g., founder-led, artisanal-excellence)
-- `signals`: Growth indicators (e.g., export-ready, rapid-growth)
-- `markets`: Country/regional relevance (e.g., brazil, russia)
-
-## Storage & Routing
-- Each tag is stored as a markdown file in `_tags/{lang}/{type}/`
-- Tags use a consistent **slug across all languages**
-- Permalinks follow this pattern: `/en/discover/sectors/halal-foods/`
-
-## Tag Front Matter (required fields)
-```yaml
----
-tag: artisanal-excellence
-tag_type: attributes
-description: Brands known for high craftsmanship and authenticity
-badge_icon: /assets/img/badges/artisan.svg
-badge_type: tier2
-verification_required: true
----
-```
-
-## Tag Usage
-- Brands use tags in front matter: `tags: [founder-led, china, premium]`
-- Tags are referenced with their **slug only** (not full path or label)
-- All tag references must correspond to actual files in `_tags/{lang}/{type}/`
-
-## Badge Preparation Logic
-- Tags can evolve into badges if they include:
-  - `badge_icon`: Path to SVG or PNG
-  - `badge_type`: tier1, tier2 (for visual hierarchy)
-  - `verification_required`: `true`/`false` (trust signal)
-
----
-
-# 📁 Tag-Based Templates and Rendering Includes
-
-## Templates
-- `tag.html`: Displays tag description + filtered brand list
-- `tag-list.html`: Renders tag list (flat or nested)
-- `tag-cloud.html`: Renders weighted cloud or color-coded grid
-- `related-brands-list.html`: Reuses tag logic for "See Also" panels
-
-## CSS Tag Classes (example)
-```css
-.tag {
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-  font-size: 0.85em;
-}
-
-.tag--sector { background: var(--color-sky); }
-.tag--attribute { background: var(--color-olive); }
-.tag--signal { background: var(--color-amber); }
-.tag--market { background: var(--color-neutral); }
-```
-
----
-
-# 🌐 Tag Internationalization
-
-- All tags use the **same slug across all languages**
-- The `tag` file is translated per language (`_tags/ru/signals/export-ready.md`)
-- Claude must **not generate duplicate tag slugs** with different labels
-
+⚠️ Do not attempt to return more than one document or major block of code in a single response unless I've asked for it explicitly. Wait for confirmation before proceeding.

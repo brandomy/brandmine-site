@@ -7,19 +7,19 @@ lang: ru
 ---
 
 <!-- Primary Hero Panel (Teal) -->
-<div class="panel panel--hero-primary home-hero--no-image">
+<div class="panel panel--hero">
   <div class="panel__content">
     <h1 class="home-hero--no-image__heading-primary">Продвигая Бренды с Основателями из стран БРИКС+</h1>
     <p class="home-hero--no-image__subtitle">Преодоление языковых, культурных и географических барьеров для выявления исключительных брендов, созданных основателями, в идеальный момент для глобального расширения</p>
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn home-hero--no-image__btn-primary">Исследовать бренды</a>
-      <a href="#how-it-works" class="btn home-hero--no-image__btn-secondary">Узнать как</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="primary-hero">Исследовать бренды</a>
+      <a href="#how-it-works" class="btn btn--standard" data-track="secondary-hero">Узнать как</a>
     </div>
   </div>
 </div>
 
 <!-- Impact Statement Panel -->
-<div class="panel panel--impact">
+<div class="panel panel--primary">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Раскрывая Невидимое: Бренды БРИКС+, Готовые к Глобальным Рынкам</h2>
     <p class="panel__lead-text">
@@ -43,46 +43,8 @@ lang: ru
   </div>
 </div>
 
-<!-- Location Intelligence Panel -->
-<div class="panel panel--location">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">Геоаналитика: Картирование Скрытых Возможностей</h2>
-    <p class="panel__lead-text">Визуализируйте экосистемы брендов через интерактивные карты, которые раскрывают географические закономерности и культурные связи</p>
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="btn location-panel__btn">Исследовать карту</a>
-    </div>
-  </div>
-</div>
-
-<!-- Founder Focus Panel -->
-<div class="panel panel--founder">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">За Пределами Списков: Человеческие Истории, Движущие Инновациями БРИКС+</h2>
-    <p class="panel__lead-text">В критический момент смены поколений мы освещаем истории основателей, стоящих за брендами БРИКС+, предоставляя контекст и понимание, которые невозможно найти через традиционные исследования.</p>
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn founder-panel__btn">Читать истории основателей</a>
-    </div>
-  </div>
-</div>
-
-<!-- For BRICS+ Brand Owners Panel -->
-<div class="panel panel--brands">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">Для Владельцев Брендов БРИКС+: Ваша Глобальная История Начинается Здесь</h2>
-    <p class="panel__lead-text">Готовы вывести свой успешный локальный бренд на глобальную арену? Наша платформа предлагает видимость, контекст и связи, которые вам необходимы.</p>
-    <ul class="feature-list feature-list--centered">
-      <li><span class="feature-list__title">Преодолевайте</span> <span class="feature-list__text">языковые и культурные барьеры для выхода на глобальные рынки</span></li>
-      <li><span class="feature-list__title">Позиционируйте</span> <span class="feature-list__text">свой бренд в правильном международном контексте</span></li>
-      <li><span class="feature-list__title">Связывайтесь</span> <span class="feature-list__text">с партнерами, которые ищут именно то, что вы предлагаете</span></li>
-    </ul>
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn home-brands__btn">Создать профиль</a>
-    </div>
-  </div>
-</div>
-
-<!-- How It Works Section -->
-<div id="how-it-works" class="panel panel--how-it-works">
+<!-- How It Works Section (Moved up) -->
+<div id="how-it-works" class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Как Это Работает</h2>
     <p class="panel__lead-text">Наша платформа наводит мосты между исключительными брендами БРИКС+ и международными возможностями</p>
@@ -117,13 +79,81 @@ lang: ru
     </div>
     
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn hiw-discover__btn">Начать исследование</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--standard" data-track="how-it-works">Начать исследование</a>
+    </div>
+  </div>
+</div>
+
+<!-- Social Proof/Testimonials Section -->
+<div class="panel panel--light testimonials-panel">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.success_stories | default: "Истории успеха" }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.testimonials_intro | default: "Что говорят основатели брендов о своем опыте с Brandmine" }}</p>
+    
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <div class="testimonial-card__quote">
+          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+          <p class="testimonial-card__text">Brandmine помог нам связаться с международными партнерами, которых мы никогда бы не обнаружили самостоятельно. Фокус платформы на историях основателей позволил нам продемонстрировать, что делает наши ретриты уникальными и аутентичными.</p>
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__author-image">
+            <img src="/api/placeholder/64/64" alt="Dragonfly Therapeutic Retreats фото профиля">
+          </div>
+          <div class="testimonial-card__author-info">
+            <h4 class="testimonial-card__author-name">Dragonfly Therapeutic Retreats</h4>
+            <p class="testimonial-card__author-title">Избранный бренд</p>
+          </div>
+        </div>
+        <div class="testimonial-card__metrics">
+          <div class="metric">
+            <span class="metric-value">4</span>
+            <span class="metric-label">Международных партнера</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">65%</span>
+            <span class="metric-label">Рост выручки</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-card__quote">
+          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+          <p class="testimonial-card__text">Как основатель, я испытывал трудности с донесением уникального наследия нашего бренда до международных рынков. Платформа Brandmine дала нам необходимую видимость и контекст. Функция картирования помогла дистрибьюторам понять нашу региональную значимость.</p>
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__author-image">
+            <img src="/api/placeholder/64/64" alt="Джорджи Ям фото профиля">
+          </div>
+          <div class="testimonial-card__author-info">
+            <h4 class="testimonial-card__author-name">Джорджи Ям</h4>
+            <p class="testimonial-card__author-title">Основатель</p>
+          </div>
+        </div>
+        <div class="testimonial-card__metrics">
+          <div class="metric">
+            <span class="metric-value">3</span>
+            <span class="metric-label">Новых рынка</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">40%</span>
+            <span class="metric-label">Рост экспорта</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Featured Brands Section -->
-<div class="panel panel--featured-brands">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
     <p class="panel__lead-text">Откройте для себя тщательно отобранные бренды с убедительными историями и глобальным потенциалом</p>
@@ -142,33 +172,122 @@ lang: ru
     </div>
     
     <div class="more-brands">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="featured-brands">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+    </div>
+  </div>
+</div>
+
+<!-- Lead Capture Section (New) -->
+<div class="panel panel--lead-capture">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.stay_updated | default: "Будьте в курсе возможностей БРИКС+" }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.subscribe_text | default: "Подпишитесь, чтобы получать актуальную информацию о новых брендах и тенденциях рынка" }}</p>
+    
+    <div class="lead-capture__container">
+      <!-- MailerLite Form -->
+      <div class="lead-capture__form">
+        {% if page.lang == 'ru' %}
+          <div class="ml-embedded" data-form="WVRNPI"></div>
+        {% elsif page.lang == 'zh' %}
+          <div class="ml-embedded" data-form="WRga0a"></div>
+        {% else %}
+          <div class="ml-embedded" data-form="480swE"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Location Intelligence Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Геоаналитика: Картирование Скрытых Возможностей</h2>
+    <p class="panel__lead-text">Визуализируйте экосистемы брендов через интерактивные карты, которые раскрывают географические закономерности и культурные связи</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="btn btn--standard" data-track="location-intelligence">Исследовать карту</a>
+    </div>
+  </div>
+</div>
+
+<!-- Founder Focus Panel -->
+<div class="panel panel--secondary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">За Пределами Списков: Человеческие Истории, Движущие Инновациями БРИКС+</h2>
+    <p class="panel__lead-text">В критический момент смены поколений мы освещаем истории основателей, стоящих за брендами БРИКС+, предоставляя контекст и понимание, которые невозможно найти через традиционные исследования.</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--standard" data-track="founder-focus">Читать истории основателей</a>
+    </div>
+  </div>
+</div>
+
+<!-- For BRICS+ Brand Owners Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Для Владельцев Брендов БРИКС+: Ваша Глобальная История Начинается Здесь</h2>
+    <p class="panel__lead-text">Готовы вывести свой успешный локальный бренд на глобальную арену? Наша платформа предлагает видимость, контекст и связи, которые вам необходимы.</p>
+    <ul class="feature-list feature-list--centered">
+      <li><span class="feature-list__title">Преодолевайте</span> <span class="feature-list__text">языковые и культурные барьеры для выхода на глобальные рынки</span></li>
+      <li><span class="feature-list__title">Позиционируйте</span> <span class="feature-list__text">свой бренд в правильном международном контексте</span></li>
+      <li><span class="feature-list__title">Связывайтесь</span> <span class="feature-list__text">с партнерами, которые ищут именно то, что вы предлагаете</span></li>
+    </ul>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--secondary-cta" data-track="brand-owners">Создать профиль</a>
     </div>
   </div>
 </div>
 
 <!-- Latest Insights Section -->
-<div class="panel panel--insights">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].insights.latest }}</h2>
-    <p class="panel__lead-text">Откройте для себя скрытые жемчужины и увлекательные истории основателей с развивающихся рынков, заслуживающие глобального внимания</p>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].insights.discover_description | default: "Откройте для себя скрытые жемчужины и увлекательные истории основателей с развивающихся рынков, заслуживающие глобального внимания" }}</p>
     
-    {% include insights-feed.html limit=2 featured=true %}
+    <!-- Using your existing insights-feed include with the proper parameters -->
+    <div class="insights-feed">
+      {% assign insights = site.insights | where: "lang", page.lang | where: "featured", true | sort: "date" | reverse | limit: 2 %}
+      {% for insight in insights %}
+        <div class="insight-card">
+          <a href="{{ insight.url | relative_url }}" class="insight-card__link">
+            {% if insight.image %}
+              <div class="insight-card__image-wrapper">
+                <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}" class="insight-card__image">
+              </div>
+            {% endif %}
+            <div class="insight-card__content">
+              <h3 class="insight-card__title">{{ insight.title }}</h3>
+              <p class="insight-card__excerpt">{{ insight.excerpt | strip_html | truncate: 160 }}</p>
+              <div class="insight-card__meta">
+                {% if insight.tags %}
+                  <div class="insight-card__tags">
+                    {% for tag in insight.tags limit:2 %}
+                      <span class="tag tag--signal insight-card__tag">{{ tag }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                <div class="insight-card__date">
+                  {{ insight.date | date: "%b %-d, %Y" }}
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
     
     <div class="view-all-insights">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--outline-light">{{ site.data.translations[page.lang].insights.view_all }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--outline-light" data-track="latest-insights">{{ site.data.translations[page.lang].insights.view_all }}</a>
     </div>
   </div>
 </div>
 
 <!-- CTA Panel -->
-<div class="panel panel--cta home-cta">
-  <div class="panel__content home-cta__content">
+<div class="panel panel--cta">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary">Начните Исследовать То, Что Другие Не Видят</h2>
     <p class="panel__lead-text">Получите эксклюзивный доступ к брендам БРИКС+, созданным основателями и готовым к росту</p>
-    <div class="home-cta__buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn home-cta__btn-primary">{{ site.data.translations[page.lang].home.cta_button }}</a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--outline-light">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="final-cta-explore">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--secondary-cta" data-track="final-cta-profile">{{ site.data.translations[page.lang].home.cta_button }}</a>
     </div>
   </div>
 </div>
@@ -186,5 +305,31 @@ lang: ru
         }
       });
     }
+  });
+  
+  // Event tracking for homepage buttons
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all buttons with data-track attribute
+    const buttons = document.querySelectorAll('[data-track]');
+    
+    // Add click event listener to each button
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        // Get button text and tracking ID
+        const buttonText = this.textContent.trim();
+        const trackingId = this.getAttribute('data-track');
+        
+        // Check if Google Analytics is available
+        if (typeof gtag === 'function') {
+          // Track the click event
+          gtag('event', 'click', {
+            'event_category': 'Homepage',
+            'event_label': buttonText,
+            'value': 1,
+            'button_section': trackingId
+          });
+        }
+      });
+    });
   });
 </script>

@@ -15,18 +15,17 @@ ref: about
 </div>
 
 <!-- Mission Section -->
-<div class="panel panel--mission">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Our Mission</h2>
     <p class="panel__lead-text">
       Brandmine exists to elevate the global potential of founder-led brands from BRICS+ countries by illuminating their authentic stories and creating meaningful connections that transcend language, cultural, and political barriers. We bridge the gap between visionary founders and the international partners ready to help them scale beyond their borders.
     </p>
-
   </div>
 </div>
 
 <!-- Problem Section -->
-<div class="panel panel--problem">
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">The Problem We Solve</h2>
     <p class="panel__lead-text">
@@ -75,7 +74,7 @@ ref: about
 </div>
 
 <!-- Solution Section -->
-<div class="panel panel--solution">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Our Solution</h2>
       <p class="panel__lead-text">
@@ -130,7 +129,7 @@ ref: about
 </div>
 
 <!-- Team Section using existing styling -->
-<div class="panel panel--team">
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Our Team</h2>
     
@@ -183,7 +182,7 @@ ref: about
 </div>
 
 <!-- Perspective Section -->
-<div class="panel panel--perspective">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Our Unique Perspective</h2>
       <p class="panel__lead-text">
@@ -205,7 +204,7 @@ ref: about
 </div>
 
 <!-- Services Section -->
-<div class="panel panel--services">
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Our Services</h2>
     <p class="panel__lead-text">
@@ -298,7 +297,7 @@ ref: about
 </div>
 
 <!-- Contact Section -->
-<div class="panel panel--contact">
+<div class="panel panel--cta">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Contact Us</h2>
     <p class="panel__lead-text">
