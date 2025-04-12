@@ -15,7 +15,7 @@ ref: about
 </div>
 
 <!-- Mission Section -->
-<div class="panel panel--mission">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Наша миссия</h2>
     <p class="panel__lead-text">
@@ -25,7 +25,7 @@ ref: about
 </div>
 
 <!-- Problem Section -->
-<div class="panel panel--problem">
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Проблемы, которые мы решаем</h2>
     <p class="panel__lead-text">
@@ -74,7 +74,7 @@ ref: about
 </div>
 
 <!-- Solution Section -->
-<div class="panel panel--solution">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Наше решение</h2>
       <p class="panel__lead-text">
@@ -129,7 +129,7 @@ ref: about
 </div>
 
 <!-- Team Section using existing styling -->
-<div class="panel panel--team">
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Наша команда</h2>
     
@@ -168,11 +168,11 @@ ref: about
           <li>Глубокое понимание людей и отношений, которые способствуют успешному росту брендов</li>
         </ul>
         <p>Уникальная способность Ольги выявлять ключевые таланты и формировать стратегические партнерства играет важную роль в соединении брендов БРИКС+ с правильными международными партнерами.</p>
-         <div class="team-member-linkedin">
-          <a href="https://www.linkedin.com/in/olya-eastman/" target="_blank" aria-label="Оля Истман в LinkedIn">
+        <div class="team-member-linkedin">
+          <a href="https://www.linkedin.com/in/olya-eastman/" target="_blank" aria-label="Ольга Истман в LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-        </div>  
+        </div>
       </div>
     </div>
     <p class="panel__conclusion-text">
@@ -182,7 +182,7 @@ ref: about
 </div>
 
 <!-- Perspective Section -->
-<div class="panel panel--perspective">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Наша уникальная перспектива</h2>
       <p class="panel__lead-text">
@@ -204,7 +204,7 @@ ref: about
 </div>
 
 <!-- Services Section -->
-<div class="panel panel--services">
+<div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Наши услуги</h2>
     <p class="panel__lead-text">
@@ -297,7 +297,7 @@ ref: about
 </div>
 
 <!-- Contact Section -->
-<div class="panel panel--contact">
+<div class="panel panel--cta">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Связаться с нами</h2>
     <p class="panel__lead-text">
