@@ -9,7 +9,7 @@ ref: brands
 <!-- Hero Panel -->
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary">Откройте для себя ведущие потребительские бренды стран БРИКС+</h1>
+    <h1 class="panel__heading-primary brands__title">Откройте для себя ведущие потребительские бренды стран БРИКС+</h1>
     <p class="panel__subtitle">Преодоление барьеров для поиска новых возможностей</p>
   </div>
 </div>
@@ -22,61 +22,59 @@ ref: brands
 </div>
 
 <!-- Brand Profiles Panel -->
-<div class="panel panel--primary">
+<div class="panel panel--primary-soft">
   <div class="panel__content">
-    <div class="content-card">
-      <h2 class="panel__heading-secondary">Богатые профили брендов</h2>
-      <p class="panel__lead-text">Наши тщательно подобранные профили брендов выходят за рамки базовой информации о компании и раскрывают:</p>
+    <h2 class="panel__heading-secondary">Богатые профили брендов</h2>
+    <p class="panel__lead-text">Наши тщательно подобранные профили брендов выходят за рамки базовой информации о компании и раскрывают:</p>
+    
+    <div class="brands__features-list">
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">История создания</h3>
+          <p class="brands__feature-text">Видение и путь развития каждого бренда</p>
+        </div>
+      </div>
       
-      <div class="features-list">
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
-          </div>
-          <div class="feature-content">
-            <h3>История создания</h3>
-            <p>Видение и путь развития каждого бренда</p>
-          </div>
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path></svg>
         </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path></svg>
-          </div>
-          <div class="feature-content">
-            <h3>Визуальная идентичность</h3>
-            <p>Активы бренда, упаковка и изображения продукции</p>
-          </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">Визуальная идентичность</h3>
+          <p class="brands__feature-text">Активы бренда, упаковка и изображения продукции</p>
         </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4 4-4-4M12 8v7"></path></svg>
-          </div>
-          <div class="feature-content">
-            <h3>Позиция на рынке</h3>
-            <p>Конкурентный ландшафт и отношения с потребителями</p>
-          </div>
+      </div>
+      
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4 4-4-4M12 8v7"></path></svg>
         </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          </div>
-          <div class="feature-content">
-            <h3>Ключевые люди</h3>
-            <p>Руководство и лица, принимающие решения</p>
-          </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">Позиция на рынке</h3>
+          <p class="brands__feature-text">Конкурентный ландшафт и отношения с потребителями</p>
         </div>
-        
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-          </div>
-          <div class="feature-content">
-            <h3>Траектория роста</h3>
-            <p>Исторические вехи и направление развития</p>
-          </div>
+      </div>
+      
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">Ключевые люди</h3>
+          <p class="brands__feature-text">Руководство и лица, принимающие решения</p>
+        </div>
+      </div>
+      
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">Траектория роста</h3>
+          <p class="brands__feature-text">Исторические вехи и направление развития</p>
         </div>
       </div>
     </div>
@@ -88,36 +86,36 @@ ref: brands
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Избранные бренды</h2>
     
-    <div class="brand-grid">
+    <div class="brands__grid">
       <!-- Это будет заполнено динамически в будущем -->
-      <div class="brand-card">
-        <div class="brand-logo-placeholder"></div>
-        <h3>Название бренда</h3>
+      <div class="brands__card">
+        <div class="brands__logo-placeholder"></div>
+        <h3 class="brands__card-title">Название бренда</h3>
         <p>Краткое описание бренда, выделяющее его уникальные преимущества и происхождение.</p>
-        <div class="brand-meta">
-          <span class="brand-market">Россия</span>
-          <span class="brand-sector">Артизанальная еда</span>
+        <div class="brands__meta">
+          <span class="brands__tag--country">Россия</span>
+          <span class="brands__tag--sector">Артизанальная еда</span>
         </div>
       </div>
       
       <!-- Добавляем еще 2 карточки-заполнителя -->
-      <div class="brand-card">
-        <div class="brand-logo-placeholder"></div>
-        <h3>Название бренда</h3>
+      <div class="brands__card">
+        <div class="brands__logo-placeholder"></div>
+        <h3 class="brands__card-title">Название бренда</h3>
         <p>Краткое описание бренда, выделяющее его уникальные преимущества и происхождение.</p>
-        <div class="brand-meta">
-          <span class="brand-market">Бразилия</span>
-          <span class="brand-sector">Натуральная косметика</span>
+        <div class="brands__meta">
+          <span class="brands__tag--country">Бразилия</span>
+          <span class="brands__tag--sector">Натуральная косметика</span>
         </div>
       </div>
       
-      <div class="brand-card">
-        <div class="brand-logo-placeholder"></div>
-        <h3>Название бренда</h3>
+      <div class="brands__card">
+        <div class="brands__logo-placeholder"></div>
+        <h3 class="brands__card-title">Название бренда</h3>
         <p>Краткое описание бренда, выделяющее его уникальные преимущества и происхождение.</p>
-        <div class="brand-meta">
-          <span class="brand-market">Индия</span>
-          <span class="brand-sector">Мода</span>
+        <div class="brands__meta">
+          <span class="brands__tag--country">Индия</span>
+          <span class="brands__tag--sector">Мода</span>
         </div>
       </div>
     </div>
@@ -125,25 +123,23 @@ ref: brands
 </div>
 
 <!-- Find Your Partner Panel -->
-<div class="panel panel--accent">
+<div class="panel panel--accent-soft">
   <div class="panel__content">
-    <div class="content-card">
-      <h2 class="panel__heading-secondary">Найдите своего следующего партнера</h2>
-      <p class="panel__lead-text">Используйте наши передовые инструменты поиска и фильтрации для обнаружения брендов по:</p>
-      
-      <div class="filter-categories">
-        <div class="filter-category">Рынку происхождения</div>
-        <div class="filter-category">Сектору</div>
-        <div class="filter-category">Размеру компании</div>
-        <div class="filter-category">Сигналам</div>
-        <div class="filter-category">Атрибутам</div>
-      </div>
-      
-      <div class="cta-container">
-        <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">Запустить интерактивную базу данных</button>
-        <div id="button-feedback" class="feedback-message" style="display: none; margin-top: var(--space-2); color: var(--primary-600);">
-          Скоро будет доступно! Мы работаем над этой функцией.
-        </div>
+    <h2 class="panel__heading-secondary">Найдите своего следующего партнера</h2>
+    <p class="panel__lead-text">Используйте наши передовые инструменты поиска и фильтрации для обнаружения брендов по:</p>
+    
+    <div class="brands__filters">
+      <div class="brands__filter">Рынку происхождения</div>
+      <div class="brands__filter">Сектору</div>
+      <div class="brands__filter">Размеру компании</div>
+      <div class="brands__filter">Сигналам</div>
+      <div class="brands__filter">Атрибутам</div>
+    </div>
+    
+    <div class="brands__cta">
+      <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">Запустить интерактивную базу данных</button>
+      <div id="button-feedback" class="brands__feedback" style="display: none; margin-top: var(--space-2); color: var(--primary-600);">
+        Скоро будет доступно! Мы работаем над этой функцией.
       </div>
     </div>
   </div>
