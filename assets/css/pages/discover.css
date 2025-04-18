@@ -1,46 +1,425 @@
+/* ==========================================================================
+   Discover Page Styles
+   ==========================================================================
+   Styles specific to the Discover page layout and components using BEM methodology
+   and consistent with the site-wide design system.
+*/
+
+/* Hero panel enhancement */
+.discover__title {
+  color: var(--secondary-200);
+}
+
+/* --------------------------------------------------------------------------
+   Discovery Sections
+   -------------------------------------------------------------------------- */
+.discover__section {
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+
+.discover__section-header {
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.discover__section-title {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-2);
+}
+
+.discover__section-description {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-2);
+}
+
+.discover__section-link {
+  font-size: var(--text-sm);
+  color: var(--primary-600);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.discover__section-link:hover {
+  text-decoration: underline;
+}
+
+.discover__section-action {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Discovery Icons
+   -------------------------------------------------------------------------- */
+.discover__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-right: var(--space-2);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-100);
+  color: var(--neutral-600);
+}
+
+.discover__icon--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-700);
+}
+
+.discover__icon--market {
+  background-color: var(--sky-100);
+  color: var(--sky-700);
+}
+
+.discover__icon--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-700);
+}
+
+.discover__icon--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-700);
+}
+
+/* --------------------------------------------------------------------------
+   Tag Cloud
+   -------------------------------------------------------------------------- */
+.discover__tag-cloud {
+  margin-bottom: var(--space-6);
+}
+
+.discover__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.discover__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.discover__tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.discover__tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border: 1px solid var(--olive-200);
+}
+
+.discover__tag--sector:hover {
+  background-color: var(--olive-200);
+}
+
+.discover__tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
+}
+
+.discover__tag--market:hover {
+  background-color: var(--sky-200);
+}
+
+.discover__tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border: 1px solid var(--secondary-200);
+}
+
+.discover__tag--attribute:hover {
+  background-color: var(--secondary-200);
+}
+
+.discover__tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
+}
+
+.discover__tag--signal:hover {
+  background-color: var(--accent-200);
+}
+
+.discover__tag--more {
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  border: 1px solid var(--neutral-200);
+}
+
+.discover__tag--more:hover {
+  background-color: var(--neutral-200);
+}
+
+.discover__tag--russian-sector {
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  border: 1px solid var(--neutral-200);
+}
+
+.discover__tag--russian-sector:hover {
+  background-color: var(--neutral-200);
+}
+
+/* --------------------------------------------------------------------------
+   Map Preview
+   -------------------------------------------------------------------------- */
+.discover__map-preview {
+  margin: var(--space-4) 0 var(--space-6);
+  text-align: center;
+}
+
+.discover__map-container {
+  height: 220px;
+  max-width: 100%;
+  margin: 0 auto var(--space-3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--sky-50);
+  border: var(--border-width-thin) solid var(--sky-200);
+}
+
+.discover__map-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discover__map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--sky-700);
+  font-style: italic;
+}
+
+.discover__map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--sky-700);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+}
+
+.discover__map-link:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Featured Content
+   -------------------------------------------------------------------------- */
+.discover__featured {
+  margin: var(--space-4) 0;
+}
+
+.discover__featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.discover__featured-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.discover__featured-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.discover__featured-item--sector {
+  border-top: 4px solid var(--olive-500);
+}
+
+.discover__featured-image {
+  height: 160px;
+  overflow: hidden;
+}
+
+.discover__featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.discover__featured-item:hover .discover__featured-img {
+  transform: scale(1.05);
+}
+
+.discover__featured-content {
+  padding: var(--space-4);
+}
+
+.discover__featured-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-2);
+  color: var(--neutral-800);
+}
+
+.discover__featured-description {
+  color: var(--neutral-600);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-base);
+}
+
+.discover__featured-link {
+  display: inline-block;
+  color: var(--olive-600);
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.discover__featured-link:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Brand and Insight Grids
+   -------------------------------------------------------------------------- */
+.discover__brands-grid,
+.discover__insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   Empty State
+   -------------------------------------------------------------------------- */
+.discover__empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-8);
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  color: var(--neutral-500);
+  border: 1px dashed var(--neutral-300);
+}
+
+/* --------------------------------------------------------------------------
+   Card Grid (from original discover.css)
+   -------------------------------------------------------------------------- */
 .discover__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-6);
-    margin-top: var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.discover__card {
+  background-color: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.discover__card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.discover__card-title {
+  margin-bottom: var(--space-3);
+  color: var(--primary-600);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+}
+
+.discover__card-text {
+  margin-bottom: var(--space-4);
+  color: var(--neutral-600);
+}
+
+.discover__card-button {
+  margin-top: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .discover__featured-grid,
+  .discover__brands-grid,
+  .discover__insights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .discover__map-container {
+    height: 180px;
+  }
+  
+  .discover__section {
+    margin-bottom: var(--space-8);
+  }
+  
+  .discover__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
   
   .discover__card {
-    background-color: white;
-    border-radius: 0.5rem;
-    padding: var(--space-6);
-    box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .discover__section-title {
+    font-size: var(--text-xl);
   }
   
-  .discover__card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-shadow-hover);
+  .discover__section-description {
+    font-size: var(--text-base);
   }
   
-  .discover__card-title {
-    margin-bottom: var(--space-3);
-    color: var(--primary-600);
+  .discover__featured-image {
+    height: 120px;
   }
   
-  .discover__card-text {
-    margin-bottom: var(--space-4);
-    color: var(--neutral-600);
+  .discover__tags {
+    gap: var(--space-1);
   }
   
-  .discover__card-button {
-    margin-top: var(--space-2);
+  .discover__tag {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 767px) {
-    .discover__grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-    
-    .discover__card {
-      padding: var(--space-4);
-    }
-  }
+}

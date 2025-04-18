@@ -60,19 +60,28 @@
   {% endif %}
   {% if page.permalink contains '/discover/' %}
   <link rel="stylesheet" href="{{ '/assets/css/pages/discover.css' | relative_url }}">
-{% endif %}
-  {% if page.permalink contains '/insights/' or page.layout == 'post' or page.layout == 'category' or page.layout == 'tag' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/insights.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
   {% endif %}
+  {% if page.permalink contains '/discover/markets/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-markets.css' | relative_url }}">
+  {% endif %}
+  {% if page.permalink contains '/discover/sectors/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-sectors.css' | relative_url }}">
+  {% endif %}
+  {% if page.permalink contains '/discover/signals/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-signals.css' | relative_url }}">
+  {% endif %}
+  <!-- {% if page.permalink contains '/discover/attributes/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-attributes.css' | relative_url }}">
+  {% endif %} -->
   {% if page.permalink contains '/russian-sectors/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/russian-sectors.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/pages/russian-sectors.css' | relative_url }}">
   {% endif %}
-  {% if page.permalink contains 'signals' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/signals.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains 'markets' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/markets.css' | relative_url }}">
+  <!-- {% if page.permalink contains '/solutions/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/solutions.css' | relative_url }}">
+  {% endif %} -->
+  {% if page.permalink contains '/insights/' or page.layout == 'post' or page.layout == 'category' or page.layout == 'tag' %}
+  <link rel="stylesheet" href="{{ '/assets/css/pages/insights.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
   {% endif %}
   {% if page.layout == 'styleguide' or page.url contains '/styleguide/' %}
     <link rel="stylesheet" href="{{ '/assets/css/styleguide.css' | relative_url }}">

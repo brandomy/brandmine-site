@@ -1,107 +1,105 @@
 ---
 # 核心标识
 layout: brand
-title: "茶时间"
-slug: teatime
-country_code: "ru"  # 用于永久链接的ISO国家代码
+title: "品牌名称"
+slug: brand-slug
+country_code: "xx"  # 用于永久链接的ISO国家代码
 lang: zh
 permalink: /zh/brands/{{ page.country_code }}/{{ page.slug }}/
 
 # 核心分类
-sectors: [美食]
-subsectors: [手工茶, 精品茶饮]
-markets: [俄罗斯]
-attributes: [传统品牌, 创始人领导]
-signals: [出口就绪, 投资就绪]
+markets: [country] # brazil, china, india, russia, south-africa
+sectors: [sector] # artisan-confectionery, artisanal-spirits, fashion-accessories, fermented-dairy, gourmet-foods, halal-foods, honey-bee-products, hotels-resorts, jewelry-watches, mineral-waters, natural-beauty, natural-supplements, porcelain-ceramics, salami-cured-meats, specialty-cheeses, wine
+subsectors: [Specific Niche] # freeform text
+attributes: [attribute] # artisanal-excellence, cultural-ambassador, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer
+signals: [signal] # export-ready, franchise-ready, investment-ready, rapid-growth
+
 
 # 品牌基础
-description: "俄罗斯高端茶品牌，将传统工艺与现代口味相结合。"
-slogan: "传承茶艺，酿造未来"
-founding_year: 2010
-website: "https://teatime.ru"
-contact_email: "info@teatime.ru"
+description: "品牌的简短有说服力的描述（1-2句话）。"
+slogan: "品牌口号或标语"
+founding_year: YYYY
+website: "https://example.com"
+contact_email: "contact@example.com"
 
 # 创始人信息
 founder:
-  name: "阿列克谢·索科洛夫"
-  story: "前金融专业人士，在中国和印度研究传统茶叶调配技术后，离开银行业追求对茶叶的热情。"
-  generation: "first"
-  transition_status: "active"
-  founder_led: true
-  deceased: false
+  name: "创始人姓名"
+  story: "创始人两句话简介"
+  generation: "first"  # 保留英文：first, second, or transition
+  transition_status: "active"  # 保留英文：succession, seeking-partners, expansion
+  founder_led: true  # 创始人是否仍在积极领导公司？
+  deceased: false  # 创始人是否已故？
 
 # 位置详情
 location:
-  country: "俄罗斯"
-  region: "莫斯科州"
-  city: "莫斯科"
-  coordinates: [37.6173, 55.7558]
+  country: [country]
+  region: "地区/省/州"
+  city: "城市"
+  coordinates: [longitude, latitude]
 
 # 时间线里程碑
 timeline:
-  - year: 2010
-    event: "阿列克谢·索科洛夫在莫斯科创立茶时间"
-  - year: 2015
-    event: "在莫斯科市中心开设旗舰店"
-  - year: 2018
-    event: "获得金叶奖最佳俄罗斯茶品牌"
-  - year: 2020
-    event: "推出国际配送计划"
-  - year: 2022
-    event: "入选《世界顶级茶叶》指南"
+  - year: YYYY
+    event: "公司成立"
+  - year: YYYY
+    event: "关键里程碑1"
+  - year: YYYY
+    event: "关键里程碑2"
 
 # 社交媒体存在
 social_media:
-  instagram: "https://instagram.com/teatime_ru"
-  facebook: "https://facebook.com/teatimeru"
-  telegram: "https://t.me/teatime_official"
-  vk: "https://vk.com/teatime_ru"
-  youtube: "https://youtube.com/c/teatimeru"
+  instagram: ""
+  facebook: ""
+  linkedin: ""
+  youtube: ""
+  telegram: ""
+  vk: ""
   weibo: ""
   wechat: ""
 
 # 认证和奖项
 certifications:
-  - name: "有机茶认证"
-    year: 2016
-  - name: "ISO 22000食品安全"
-    year: 2019
+  - name: "认证名称"
+    year: YYYY
+  - name: "认证名称"
+    year: YYYY
 awards:
-  - name: "金叶奖 - 最佳俄罗斯茶品牌"
-    year: 2018
-  - name: "莫斯科食品展 - 创新奖"
-    year: 2020
+  - name: "奖项名称"
+    year: YYYY
+  - name: "认可"
+    year: YYYY
 
 # 国际业务
 international:
-  markets: [波兰, 捷克共和国, 德国, 法国, 阿联酋]
+  export_markets: [country1, country2]  # 使用英文国家名
   export_ready: true
-  distribution_models: [direct-export, e-commerce]
+  distribution_models: [direct-export, distributors]  # 保留英文：direct-export, distributors, e-commerce, franchise, joint-venture
 
 # 合作机会（高级功能）
 partnerships:
-  seeking: [distributor, retailer]
-  requirements: "寻找具有高端茶产品营销经验的知名特色食品零售商"
+  seeking: [distributor, investor, technology]  # 保留英文
+  requirements: "合作伙伴要求简述"
 
 # 图像资源
-logo: "/assets/images/brands/teatime/originals/logo-color.png"
-hero_image: "/assets/images/brands/teatime/originals/hero-storefront.jpg"
+logo: "/assets/images/brands/brand-slug/originals/logo-color.png"
+hero_image: "/assets/images/brands/brand-slug/originals/hero-main.jpg"
 gallery:
-  - image: "/assets/images/brands/teatime/originals/gallery-teapot.jpg"
-    caption: "茶时间标志性手工陶瓷茶壶"
-  - image: "/assets/images/brands/teatime/originals/gallery-storefront.jpg"
-    caption: "茶时间莫斯科市中心旗舰店"
-  - image: "/assets/images/brands/teatime/originals/gallery-founder.jpg"
-    caption: "创始人阿列克谢·索科洛夫挑选茶叶"
+  - image: "/assets/images/brands/brand-slug/originals/gallery-image1.jpg"
+    caption: "第一张画廊图片的说明"
+  - image: "/assets/images/brands/brand-slug/originals/gallery-image2.jpg"
+    caption: "第二张画廊图片的说明"
+  - image: "/assets/images/brands/brand-slug/originals/gallery-image3.jpg"
+    caption: "第三张画廊图片的说明"
 
 # 相关内容
-related_brands: [russian-brew, moskva-chai]
+related_brands: [related-brand-1, related-brand-2]  # 保留英文品牌代码
 
 # 内容状态/显示
 languages: [en, ru, zh]
 premium: false
-featured: true
-featured_level: 2  # 完整档案
+featured: false
+featured_level: 0  # 0=基础, 1=地图上突出显示, 2=完整资料
 ---
 
 ## 关于品牌名称

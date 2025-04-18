@@ -9,36 +9,43 @@ discovery_path: sectors
 ---
 
 <!-- Hero Panel -->
-<div class="panel panel--hero panel--sectors">
+<div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary">{{ page.title }}</h1>
+    <h1 class="panel__heading-primary sectors__title">{{ page.title }}</h1>
     <p class="panel__subtitle">{{ page.subtitle }}</p>
   </div>
 </div>
 
-<!-- Main Content -->
+<!-- All Sectors Grid Panel -->
 <div class="panel panel--light">
   <div class="panel__content">
     <!-- All Sectors Grid -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">All Sectors</h2>
-        <p class="dimension-section__description">Explore all available business sectors in our database</p>
+    <section class="sectors__section">
+      <div class="sectors__section-header">
+        <h2 class="sectors__section-title">
+          <span class="sectors__icon sectors__icon--all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
+            </svg>
+          </span>
+          All Sectors
+        </h2>
+        <p class="sectors__section-description">Explore all available business sectors in our database</p>
       </div>
       
-      <div class="dimension-grid">
+      <div class="sectors__grid">
         {% for sector in site.data.translations[page.lang].sectors %}
           {% assign slug = sector[0] %}
           {% assign name = sector[1] %}
           {% assign brand_count = site.brands | where: "lang", page.lang | where: "sector", name | size %}
           
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ slug }}/" class="dimension-item dimension-item--sector">
-            <div class="dimension-item__content">
-              <h3 class="dimension-item__title">{{ name }}</h3>
-              <div class="dimension-item__meta">
-                <span class="dimension-item__count">{{ brand_count }} brands</span>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ slug }}/" class="sectors__item sectors__item--sector">
+            <div class="sectors__item-content">
+              <h3 class="sectors__item-title">{{ name }}</h3>
+              <div class="sectors__item-meta">
+                <span class="sectors__item-count">{{ brand_count }} brands</span>
               </div>
-              <div class="dimension-item__icon">
+              <div class="sectors__item-icon">
                 {% if slug == "hotels-resorts" %}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 14h18M3 14v7h18v-7M3 21V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v9m0-9h10a2 2 0 0 1 2 2v9"></path>
@@ -66,105 +73,140 @@ discovery_path: sectors
         {% endfor %}
       </div>
     </section>
-    
-    <!-- Russian Sectors Special Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Russian Sectors Special Focus</h2>
-        <p class="dimension-section__description">Explore our in-depth analysis of 16 high-potential Russian consumer sectors</p>
+  </div>
+</div>
+
+<!-- Russian Sectors Special Focus Panel -->
+<div class="panel panel--primary-soft">
+  <div class="panel__content">
+    <section class="sectors__section">
+      <div class="sectors__section-header">
+        <h2 class="sectors__section-title">
+          <span class="sectors__icon sectors__icon--russian">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 3h18v18H3V3zm4 4h4v4H7V7zm0 6h4v4H7v-4zm6-6h4v4h-4V7zm6 0h2v2h-2V7zm-6 6h4v4h-4v-4z"></path>
+            </svg>
+          </span>
+          Russian Sectors Special Focus
+        </h2>
+        <p class="sectors__section-description">Explore our in-depth analysis of 16 high-potential Russian consumer sectors</p>
       </div>
       
-      <div class="featured-sectors">
-        <div class="featured-sector" style="grid-column: 1 / -1;">
-          <div class="featured-sector__image" style="flex: 0 0 25%;">
-            <img src="{{ site.baseurl }}/assets/images/sectors/russian-overview.jpg" alt="Russian Sectors Overview" class="featured-sector__img" onerror="this.src='{{ site.baseurl }}/assets/images/sectors/confectionery.jpg'">
+      <div class="sectors__featured">
+        <div class="sectors__featured-item sectors__featured-item--special">
+          <div class="sectors__featured-image">
+            <img src="{{ site.baseurl }}/assets/images/sectors/russian-overview.jpg" alt="Russian Sectors Overview" class="sectors__featured-img" onerror="this.src='{{ site.baseurl }}/assets/images/sectors/confectionery.jpg'">
           </div>
-          <div class="featured-sector__content">
-            <h3 class="featured-sector__title">Russian Consumer Brand Sectors</h3>
-            <p class="featured-sector__description">Discover our curated selection of 16 high-potential Russian consumer sectors, from artisanal spirits and natural beauty products to specialty foods and hospitality. Each sector offers unique investment and partnership opportunities with compelling narratives.</p>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="featured-sector__link btn btn-outline">Explore Russian Sectors</a>
+          <div class="sectors__featured-content">
+            <h3 class="sectors__featured-title">Russian Consumer Brand Sectors</h3>
+            <p class="sectors__featured-description">Discover our curated selection of 16 high-potential Russian consumer sectors, from artisanal spirits and natural beauty products to specialty foods and hospitality. Each sector offers unique investment and partnership opportunities with compelling narratives.</p>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="sectors__featured-link btn btn-outline">Explore Russian Sectors</a>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- Featured Sectors Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Featured Sectors</h2>
-        <p class="dimension-section__description">Explore our highlighted business sectors with the most promising brands</p>
+  </div>
+</div>
+
+<!-- Featured Sectors Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <section class="sectors__section">
+      <div class="sectors__section-header">
+        <h2 class="sectors__section-title">
+          <span class="sectors__icon sectors__icon--featured">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"></path>
+            </svg>
+          </span>
+          Featured Sectors
+        </h2>
+        <p class="sectors__section-description">Explore our highlighted business sectors with the most promising brands</p>
       </div>
       
-      <div class="featured-sectors">
-        <div class="featured-sectors__grid">
+      <div class="sectors__featured">
+        <div class="sectors__featured-grid">
           <!-- Featured Sector 1: Hotels & Resorts -->
-          <div class="featured-sector">
-            <div class="featured-sector__image">
-              <img src="{{ site.baseurl }}/assets/images/sectors/hotels-resorts.jpg" alt="Hotels & Resorts" class="featured-sector__img">
+          <div class="sectors__featured-item">
+            <div class="sectors__featured-image">
+              <img src="{{ site.baseurl }}/assets/images/sectors/hotels-resorts.jpg" alt="Hotels & Resorts" class="sectors__featured-img">
             </div>
-            <div class="featured-sector__content">
-              <h3 class="featured-sector__title">Hotels & Resorts</h3>
-              <p class="featured-sector__description">From historic city properties to remote wilderness retreats, Russian boutique hotels and resorts offer unique cultural experiences that showcase the country's remarkable diversity.</p>
-              <div class="featured-sector__meta">
+            <div class="sectors__featured-content">
+              <h3 class="sectors__featured-title">Hotels & Resorts</h3>
+              <p class="sectors__featured-description">From historic city properties to remote wilderness retreats, Russian boutique hotels and resorts offer unique cultural experiences that showcase the country's remarkable diversity.</p>
+              <div class="sectors__featured-meta">
                 {% assign hotel_count = site.brands | where: "lang", page.lang | where: "sector", "Hotels & Resorts" | size %}
-                <span class="featured-sector__count">{{ hotel_count }} brands</span>
+                <span class="sectors__featured-count">{{ hotel_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/hotels-resorts/" class="featured-sector__link btn btn-outline">Explore Hotels & Resorts</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/hotels-resorts/" class="sectors__featured-link btn btn-outline">Explore Hotels & Resorts</a>
             </div>
           </div>
           
           <!-- Featured Sector 2: Artisanal Spirits & Vodka -->
-          <div class="featured-sector">
-            <div class="featured-sector__image">
-              <img src="{{ site.baseurl }}/assets/images/sectors/artisanal-spirits.jpg" alt="Artisanal Spirits & Vodka" class="featured-sector__img">
+          <div class="sectors__featured-item">
+            <div class="sectors__featured-image">
+              <img src="{{ site.baseurl }}/assets/images/sectors/artisanal-spirits.jpg" alt="Artisanal Spirits & Vodka" class="sectors__featured-img">
             </div>
-            <div class="featured-sector__content">
-              <h3 class="featured-sector__title">Artisanal Spirits & Vodka</h3>
-              <p class="featured-sector__description">Russia's craft spirits scene has experienced a renaissance, with over 80 new premium distilleries emerging in the past decade creating distinctive products with compelling stories.</p>
-              <div class="featured-sector__meta">
+            <div class="sectors__featured-content">
+              <h3 class="sectors__featured-title">Artisanal Spirits & Vodka</h3>
+              <p class="sectors__featured-description">Russia's craft spirits scene has experienced a renaissance, with over 80 new premium distilleries emerging in the past decade creating distinctive products with compelling stories.</p>
+              <div class="sectors__featured-meta">
                 {% assign spirits_count = site.brands | where: "lang", page.lang | where: "sector", "Artisanal Spirits & Vodka" | size %}
-                <span class="featured-sector__count">{{ spirits_count }} brands</span>
+                <span class="sectors__featured-count">{{ spirits_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/artisanal-spirits/" class="featured-sector__link btn btn-outline">Explore Artisanal Spirits</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/artisanal-spirits/" class="sectors__featured-link btn btn-outline">Explore Artisanal Spirits</a>
             </div>
           </div>
           
           <!-- Featured Sector 3: Natural Beauty Products -->
-          <div class="featured-sector">
-            <div class="featured-sector__image">
-              <img src="{{ site.baseurl }}/assets/images/sectors/natural-beauty.jpg" alt="Natural Beauty Products" class="featured-sector__img">
+          <div class="sectors__featured-item">
+            <div class="sectors__featured-image">
+              <img src="{{ site.baseurl }}/assets/images/sectors/natural-beauty.jpg" alt="Natural Beauty Products" class="sectors__featured-img">
             </div>
-            <div class="featured-sector__content">
-              <h3 class="featured-sector__title">Natural Beauty Products</h3>
-              <p class="featured-sector__description">Russia's natural beauty sector leverages the country's vast botanical resources, particularly from Siberia and the Far East, where plants have evolved potent bioactive compounds.</p>
-              <div class="featured-sector__meta">
+            <div class="sectors__featured-content">
+              <h3 class="sectors__featured-title">Natural Beauty Products</h3>
+              <p class="sectors__featured-description">Russia's natural beauty sector leverages the country's vast botanical resources, particularly from Siberia and the Far East, where plants have evolved potent bioactive compounds.</p>
+              <div class="sectors__featured-meta">
                 {% assign beauty_count = site.brands | where: "lang", page.lang | where: "sector", "Natural Beauty Products" | size %}
-                <span class="featured-sector__count">{{ beauty_count }} brands</span>
+                <span class="sectors__featured-count">{{ beauty_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/natural-beauty/" class="featured-sector__link btn btn-outline">Explore Natural Beauty</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/natural-beauty/" class="sectors__featured-link btn btn-outline">Explore Natural Beauty</a>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- Related Insights Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Sector Insights</h2>
-        <p class="dimension-section__description">Read our latest analyses and stories about BRICS+ business sectors</p>
+  </div>
+</div>
+
+<!-- Related Insights Panel -->
+<div class="panel panel--accent-soft">
+  <div class="panel__content">
+    <section class="sectors__section">
+      <div class="sectors__section-header">
+        <h2 class="sectors__section-title">
+          <span class="sectors__icon sectors__icon--insights">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6z"></path>
+              <path d="M19 9H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2z"></path>
+              <path d="M12 18v3M8 18v3M16 18v3"></path>
+            </svg>
+          </span>
+          Sector Insights
+        </h2>
+        <p class="sectors__section-description">Read our latest analyses and stories about BRICS+ business sectors</p>
       </div>
       
-      <div class="related-insights">
+      <div class="sectors__insights">
         {% assign sector_insights = site.insights | where: "lang", page.lang | where: "category", "sector" | sort: "date" | reverse | limit: 2 %}
         {% if sector_insights.size > 0 %}
-          <div class="related-insights__grid">
+          <div class="sectors__insights-grid">
             {% for insight in sector_insights %}
               {% include insight-card.html insight=insight %}
             {% endfor %}
           </div>
         {% else %}
-          <div class="related-insights__empty">
+          <div class="sectors__empty-state">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
               <path d="M8 10h8M8 14h8"></path>
@@ -173,26 +215,30 @@ discovery_path: sectors
           </div>
         {% endif %}
         
-        <div class="related-insights__action">
+        <div class="sectors__section-action">
           <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=sector" class="btn btn-secondary">View All Sector Insights</a>
         </div>
       </div>
     </section>
-    
-    <!-- All Categories Link -->
-    <div class="dimensions-navigation">
-      <h3 class="dimensions-navigation__title">Explore Other Discovery Dimensions</h3>
-      <div class="dimensions-navigation__links">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="dimensions-navigation__link dimensions-navigation__link--russian-sectors">
-          <span class="dimensions-navigation__icon">
+  </div>
+</div>
+
+<!-- All Categories Link Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <div class="sectors__navigation">
+      <h3 class="sectors__navigation-title">Explore Other Discovery Dimensions</h3>
+      <div class="sectors__navigation-links">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="sectors__navigation-link sectors__navigation-link--russian-sectors">
+          <span class="sectors__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M3 3h18v18H3V3zm4 4h4v4H7V7zm0 6h4v4H7v-4zm6-6h4v4h-4V7zm6 0h2v2h-2V7zm-6 6h4v4h-4v-4z"></path>
             </svg>
           </span>
           Russian Sectors
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="dimensions-navigation__link dimensions-navigation__link--market">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="sectors__navigation-link sectors__navigation-link--market">
+          <span class="sectors__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -200,16 +246,16 @@ discovery_path: sectors
           </span>
           Markets
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="dimensions-navigation__link dimensions-navigation__link--attribute">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="sectors__navigation-link sectors__navigation-link--attribute">
+          <span class="sectors__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 7h16M4 12h16M4 17h10"></path>
             </svg>
           </span>
           Attributes
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="dimensions-navigation__link dimensions-navigation__link--signal">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="sectors__navigation-link sectors__navigation-link--signal">
+          <span class="sectors__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
             </svg>

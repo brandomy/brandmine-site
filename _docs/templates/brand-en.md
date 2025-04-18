@@ -7,12 +7,12 @@ country_code: "xx"  # ISO country code for permalink
 lang: en
 permalink: /en/brands/{{ page.country_code }}/{{ page.slug }}/
 
-# Core categorization
-sectors: [Primary Sector]
-subsectors: [Specific Niche]
-markets: [Primary Country, Secondary Country]
-attributes: [Key Attribute1, Key Attribute2]
-signals: [Business Signal1, Business Signal2]
+# Core categorization and tags
+markets: [country] # brazil, china, india, russia, south-africa
+sectors: [sector] # artisan-confectionery, artisanal-spirits, fashion-accessories, fermented-dairy, gourmet-foods, halal-foods, honey-bee-products, hotels-resorts, jewelry-watches, mineral-waters, natural-beauty, natural-supplements, porcelain-ceramics, salami-cured-meats, specialty-cheeses, wine
+subsectors: [Specific Niche] # freeform text
+attributes: [attribute] # artisanal-excellence, cultural-ambassador, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer
+signals: [signal] # export-ready, franchise-ready, investment-ready, rapid-growth
 
 # Brand basics
 description: "Short compelling description of the brand (1-2 sentences)."
@@ -32,7 +32,7 @@ founder:
 
 # Location details
 location:
-  country: "Country"
+  country: [country]
   region: "Region/Province/State"
   city: "City"
   coordinates: [longitude, latitude]
@@ -71,7 +71,7 @@ awards:
 
 # International presence
 international:
-  markets: [Export Market1, Export Market2]
+  export_markets: [country1, country2]
   export_ready: true
   distribution_models: [direct-export, distributors] # options: direct-export, distributors, e-commerce, franchise, joint-venture
 

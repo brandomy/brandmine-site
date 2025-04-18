@@ -8,16 +8,18 @@ lang: ru
 permalink: /ru/brands/{{ page.country_code }}/{{ page.slug }}/
 
 # Основная категоризация
-sectors: [Основной сектор]
-subsectors: [Конкретная ниша]
-markets: [Основная страна, Вторичная страна]
-attributes: [Ключевой атрибут1, Ключевой атрибут2]
-signals: [Бизнес-сигнал1, Бизнес-сигнал2]
+markets: [country] # brazil, china, india, russia, south-africa
+sectors: [sector] # artisan-confectionery, artisanal-spirits, fashion-accessories, fermented-dairy, gourmet-foods, halal-foods, honey-bee-products, hotels-resorts, jewelry-watches, mineral-waters, natural-beauty, natural-supplements, porcelain-ceramics, salami-cured-meats, specialty-cheeses, wine
+subsectors: [Конкретная ниша] # freeform text
+attributes: [attribute] # artisanal-excellence, cultural-ambassador, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer
+signals: [signal] # export-ready, franchise-ready, investment-ready, rapid-growth
+
+Конкретная ниша
 
 # Основы бренда
 description: "Краткое убедительное описание бренда (1-2 предложения)."
 slogan: "Слоган или девиз бренда"
-founding_year: ГГГГ
+founding_year: YYYY
 website: "https://example.com"
 contact_email: "contact@example.com"
 
@@ -32,18 +34,18 @@ founder:
 
 # Данные о местоположении
 location:
-  country: "Страна"
+  country: [country]
   region: "Регион/Область/Штат"
   city: "Город"
-  coordinates: [долгота, широта]
+  coordinates: [longitude, latitude]
 
 # Ключевые вехи
 timeline:
-  - year: ГГГГ
+  - year: YYYY
     event: "Основание компании"
-  - year: ГГГГ
+  - year: YYYY
     event: "Ключевая веха 1"
-  - year: ГГГГ
+  - year: YYYY
     event: "Ключевая веха 2"
 
 # Присутствие в социальных сетях
@@ -60,18 +62,18 @@ social_media:
 # Сертификаты и награды
 certifications:
   - name: "Название сертификата"
-    year: ГГГГ
+    year: YYYY
   - name: "Название сертификата"
-    year: ГГГГ
+    year: YYYY
 awards:
   - name: "Название награды"
-    year: ГГГГ
+    year: YYYY
   - name: "Признание"
-    year: ГГГГ
+    year: YYYY
 
 # Международное присутствие
 international:
-  markets: [Экспортный рынок1, Экспортный рынок2]
+  export_markets: [country1, country2]
   export_ready: true
   distribution_models: [direct-export, distributors] # варианты: direct-export, distributors, e-commerce, franchise, joint-venture
 
