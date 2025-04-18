@@ -119,6 +119,124 @@
 }
 
 /* --------------------------------------------------------------------------
+   1a. DISCOVERY TABS
+   -------------------------------------------------------------------------- */
+
+.discovery__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--neutral-200);
+  padding-bottom: var(--space-2);
+  justify-content: center;
+}
+
+.discovery__tab {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-600);
+  text-decoration: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: all 0.2s ease;
+  position: relative;
+  margin: 0 var(--space-1);
+}
+
+.discovery__tab:hover {
+  color: var(--primary-600);
+  background-color: var(--neutral-100);
+}
+
+.discovery__tab.active {
+  color: var(--primary-600);
+  font-weight: var(--font-semibold);
+}
+
+.discovery__tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary-500);
+  border-radius: var(--radius-full);
+}
+
+/* Colored tabs by category */
+.discovery__tab--sector {
+  border-top: 3px solid var(--olive-200);
+}
+
+.discovery__tab--sector:hover,
+.discovery__tab--sector.active {
+  background-color: var(--olive-50);
+  color: var(--olive-800);
+}
+
+.discovery__tab--sector.active::after {
+  background-color: var(--olive-500);
+}
+
+.discovery__tab--russian-sector {
+  border-top: 3px solid var(--primary-200);
+}
+
+.discovery__tab--russian-sector:hover,
+.discovery__tab--russian-sector.active {
+  background-color: var(--primary-50);
+  color: var(--primary-800);
+}
+
+.discovery__tab--russian-sector.active::after {
+  background-color: var(--primary-500);
+}
+
+.discovery__tab--market {
+  border-top: 3px solid var(--sky-200);
+}
+
+.discovery__tab--market:hover,
+.discovery__tab--market.active {
+  background-color: var(--sky-50);
+  color: var(--sky-800);
+}
+
+.discovery__tab--market.active::after {
+  background-color: var(--sky-500);
+}
+
+.discovery__tab--attribute {
+  border-top: 3px solid var(--secondary-200);
+}
+
+.discovery__tab--attribute:hover,
+.discovery__tab--attribute.active {
+  background-color: var(--secondary-50);
+  color: var(--secondary-800);
+}
+
+.discovery__tab--attribute.active::after {
+  background-color: var(--secondary-500);
+}
+
+.discovery__tab--signal {
+  border-top: 3px solid var(--accent-200);
+}
+
+.discovery__tab--signal:hover,
+.discovery__tab--signal.active {
+  background-color: var(--accent-50);
+  color: var(--accent-800);
+}
+
+.discovery__tab--signal.active::after {
+  background-color: var(--accent-500);
+}
+
+/* --------------------------------------------------------------------------
    2. TAG CLOUD STYLING
    -------------------------------------------------------------------------- */
 
