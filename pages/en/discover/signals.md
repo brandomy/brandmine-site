@@ -9,21 +9,28 @@ discovery_path: signals
 ---
 
 <!-- Hero Panel -->
-<div class="panel panel--hero panel--signals">
+<div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary">{{ page.title }}</h1>
+    <h1 class="panel__heading-primary signals__title">{{ page.title }}</h1>
     <p class="panel__subtitle">{{ page.subtitle }}</p>
   </div>
 </div>
 
-<!-- Main Content -->
+<!-- All Signals Grid Panel -->
 <div class="panel panel--light">
   <div class="panel__content">
     <!-- About Growth Signals Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Understanding Growth Signals</h2>
-        <p class="dimension-section__description">Indicators that brands are poised for international expansion and investment</p>
+    <section class="signals__section">
+      <div class="signals__section-header">
+        <h2 class="signals__section-title">
+          <span class="signals__icon signals__icon--all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </span>
+          Understanding Growth Signals
+        </h2>
+        <p class="signals__section-description">Indicators that brands are poised for international expansion and investment</p>
       </div>
       
       <div class="signals-about">
@@ -47,25 +54,32 @@ discovery_path: signals
     </section>
     
     <!-- All Signals Grid -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">All Growth Signals</h2>
-        <p class="dimension-section__description">Explore brands by their growth indicators</p>
+    <section class="signals__section">
+      <div class="signals__section-header">
+        <h2 class="signals__section-title">
+          <span class="signals__icon signals__icon--all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </span>
+          All Growth Signals
+        </h2>
+        <p class="signals__section-description">Explore brands by their growth indicators</p>
       </div>
       
-      <div class="dimension-grid">
+      <div class="signals__grid">
         {% for signal in site.data.translations[page.lang].signals %}
           {% assign slug = signal[0] %}
           {% assign name = signal[1] %}
           {% assign brand_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.signals contains name" | size %}
           
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ slug }}/" class="dimension-item dimension-item--signal">
-            <div class="dimension-item__content">
-              <h3 class="dimension-item__title">{{ name }}</h3>
-              <div class="dimension-item__meta">
-                <span class="dimension-item__count">{{ brand_count }} brands</span>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ slug }}/" class="signals__item signals__item--signal">
+            <div class="signals__item-content">
+              <h3 class="signals__item-title">{{ name }}</h3>
+              <div class="signals__item-meta">
+                <span class="signals__item-count">{{ brand_count }} brands</span>
               </div>
-              <div class="dimension-item__icon">
+              <div class="signals__item-icon">
                 {% if slug == "international-ready" %}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -93,10 +107,17 @@ discovery_path: signals
     </section>
     
     <!-- Signal Categories Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Signal Categories</h2>
-        <p class="dimension-section__description">Explore growth signals grouped by categories</p>
+    <section class="signals__section">
+      <div class="signals__section-header">
+        <h2 class="signals__section-title">
+          <span class="signals__icon signals__icon--all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </span>
+          Signal Categories
+        </h2>
+        <p class="signals__section-description">Explore growth signals grouped by categories</p>
       </div>
       
       <!-- International Readiness -->
@@ -149,22 +170,31 @@ discovery_path: signals
     </section>
     
     <!-- Related Insights Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Growth Insights</h2>
-        <p class="dimension-section__description">Read our latest analyses about brand growth and expansion</p>
+    <section class="signals__section">
+      <div class="signals__section-header">
+        <h2 class="signals__section-title">
+          <span class="signals__icon signals__icon--insights">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6z"></path>
+              <path d="M19 9H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2z"></path>
+              <path d="M12 18v3M8 18v3M16 18v3"></path>
+            </svg>
+          </span>
+          Growth Insights
+        </h2>
+        <p class="signals__section-description">Read our latest analyses about brand growth and expansion</p>
       </div>
       
-      <div class="related-insights">
+      <div class="signals__insights">
         {% assign signal_insights = site.insights | where: "lang", page.lang | where: "category", "signal" | sort: "date" | reverse | limit: 2 %}
         {% if signal_insights.size > 0 %}
-          <div class="related-insights__grid">
+          <div class="signals__insights-grid">
             {% for insight in signal_insights %}
               {% include insight-card.html insight=insight %}
             {% endfor %}
           </div>
         {% else %}
-          <div class="related-insights__empty">
+          <div class="signals__empty-state">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
               <path d="M8 10h8M8 14h8"></path>
@@ -173,43 +203,43 @@ discovery_path: signals
           </div>
         {% endif %}
         
-        <div class="related-insights__action">
+        <div class="signals__section-action">
           <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=signal" class="btn btn-secondary">View All Growth Insights</a>
         </div>
       </div>
     </section>
     
-    <!-- All Categories Link -->
-    <div class="dimensions-navigation">
-      <h3 class="dimensions-navigation__title">Explore Other Discovery Dimensions</h3>
-      <div class="dimensions-navigation__links">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="dimensions-navigation__link dimensions-navigation__link--sector">
-          <span class="dimensions-navigation__icon">
+    <!-- All Categories Link Panel -->
+    <div class="signals__navigation">
+      <h3 class="signals__navigation-title">Explore Other Dimensions</h3>
+      <div class="signals__navigation-links">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="signals__navigation-link signals__navigation-link--sector">
+          <span class="signals__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
             </svg>
           </span>
           Sectors
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="dimensions-navigation__link dimensions-navigation__link--russian-sectors">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="signals__navigation-link signals__navigation-link--sector">
+          <span class="signals__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M3 3h18v18H3V3zm4 4h4v4H7V7zm0 6h4v4H7v-4zm6-6h4v4h-4V7zm6 0h2v2h-2V7zm-6 6h4v4h-4v-4z"></path>
             </svg>
           </span>
           Russian Sectors
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="dimensions-navigation__link dimensions-navigation__link--market">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="signals__navigation-link signals__navigation-link--market">
+          <span class="signals__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
-              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10a15.3 15.3 0 0 1 4-10z"></path>
             </svg>
           </span>
           Markets
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="dimensions-navigation__link dimensions-navigation__link--attribute">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="signals__navigation-link signals__navigation-link--attribute">
+          <span class="signals__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 7h16M4 12h16M4 17h10"></path>
             </svg>

@@ -9,21 +9,27 @@ discovery_path: markets
 ---
 
 <!-- Hero Panel -->
-<div class="panel panel--hero panel--markets">
+<div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary">{{ page.title }}</h1>
+    <h1 class="panel__heading-primary markets__title">{{ page.title }}</h1>
     <p class="panel__subtitle">{{ page.subtitle }}</p>
   </div>
 </div>
 
-<!-- Main Content -->
+<!-- Map Section Panel -->
 <div class="panel panel--light">
   <div class="panel__content">
-    <!-- Map Section -->
-    <section class="dimension-section" id="map">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Brand Location Map</h2>
-        <p class="dimension-section__description">Explore the geographic distribution of brands across BRICS+ regions</p>
+    <section class="markets__section" id="map">
+      <div class="markets__section-header">
+        <h2 class="markets__section-title">
+          <span class="markets__icon markets__icon--map">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19l-4 1.5v-15l4-1.5 6 1.5 4-1.5v15l-4 1.5-6-1.5zm6-1.5v-15m-6 0v15"></path>
+            </svg>
+          </span>
+          Brand Location Map
+        </h2>
+        <p class="markets__section-description">Explore the geographic distribution of brands across BRICS+ regions</p>
       </div>
       
       <div class="markets-map">
@@ -60,30 +66,42 @@ discovery_path: markets
         </div>
       </div>
     </section>
-    
-    <!-- All Markets Grid -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">All Markets</h2>
-        <p class="dimension-section__description">Explore brands by geographic market</p>
+  </div>
+</div>
+
+<!-- All Markets Grid Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <section class="markets__section">
+      <div class="markets__section-header">
+        <h2 class="markets__section-title">
+          <span class="markets__icon markets__icon--all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10a15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </span>
+          All Markets
+        </h2>
+        <p class="markets__section-description">Explore brands by geographic market</p>
       </div>
       
-      <div class="dimension-grid">
+      <div class="markets__grid">
         {% for market in site.data.translations[page.lang].markets %}
           {% assign slug = market[0] %}
           {% assign name = market[1] %}
           {% assign brand_count = site.brands | where: "lang", page.lang | where: "market", name | size %}
           
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ slug }}/" class="dimension-item dimension-item--market">
-            <div class="dimension-item__content">
-              <h3 class="dimension-item__title">{{ name }}</h3>
-              <div class="dimension-item__meta">
-                <span class="dimension-item__count">{{ brand_count }} brands</span>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ slug }}/" class="markets__item markets__item--market">
+            <div class="markets__item-content">
+              <h3 class="markets__item-title">{{ name }}</h3>
+              <div class="markets__item-meta">
+                <span class="markets__item-count">{{ brand_count }} brands</span>
               </div>
-              <div class="dimension-item__icon">
+              <div class="markets__item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10a15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
               </div>
             </div>
@@ -91,68 +109,92 @@ discovery_path: markets
         {% endfor %}
       </div>
     </section>
-    
-    <!-- Featured Markets Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Featured Markets</h2>
-        <p class="dimension-section__description">Explore our highlighted geographic markets with the most promising brands</p>
+  </div>
+</div>
+
+<!-- Featured Markets Panel -->
+<div class="panel panel--sky-soft">
+  <div class="panel__content">
+    <section class="markets__section">
+      <div class="markets__section-header">
+        <h2 class="markets__section-title">
+          <span class="markets__icon markets__icon--featured">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"></path>
+            </svg>
+          </span>
+          Featured Markets
+        </h2>
+        <p class="markets__section-description">Explore our highlighted geographic markets with the most promising brands</p>
       </div>
       
-      <div class="featured-markets">
-        <div class="featured-markets__grid">
+      <div class="markets__featured">
+        <div class="markets__featured-grid">
           <!-- Featured Market 1: Russia -->
-          <div class="featured-market">
-            <div class="featured-market__image">
-              <img src="{{ site.baseurl }}/assets/images/markets/russia.jpg" alt="Russia" class="featured-market__img">
+          <div class="markets__featured-item">
+            <div class="markets__featured-image">
+              <img src="{{ site.baseurl }}/assets/images/markets/russia.jpg" alt="Russia" class="markets__featured-img">
             </div>
-            <div class="featured-market__content">
-              <h3 class="featured-market__title">Russia</h3>
-              <p class="featured-market__description">Russia's vast territory encompasses everything from historic city centers to pristine wilderness, creating a diverse marketplace for distinctive consumer brands across multiple sectors.</p>
-              <div class="featured-market__meta">
+            <div class="markets__featured-content">
+              <h3 class="markets__featured-title">Russia</h3>
+              <p class="markets__featured-description">Russia's vast territory encompasses everything from historic city centers to pristine wilderness, creating a diverse marketplace for distinctive consumer brands across multiple sectors.</p>
+              <div class="markets__featured-meta">
                 {% assign russia_count = site.brands | where: "lang", page.lang | where: "market", "Russia" | size %}
-                <span class="featured-market__count">{{ russia_count }} brands</span>
+                <span class="markets__featured-count">{{ russia_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/russia/" class="featured-market__link btn btn-outline">Explore Russian Brands</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/russia/" class="markets__featured-link btn btn-outline">Explore Russian Brands</a>
             </div>
           </div>
           
           <!-- Featured Market 2: China -->
-          <div class="featured-market">
-            <div class="featured-market__image">
-              <img src="{{ site.baseurl }}/assets/images/markets/china.jpg" alt="China" class="featured-market__img">
+          <div class="markets__featured-item">
+            <div class="markets__featured-image">
+              <img src="{{ site.baseurl }}/assets/images/markets/china.jpg" alt="China" class="markets__featured-img">
             </div>
-            <div class="featured-market__content">
-              <h3 class="featured-market__title">China</h3>
-              <p class="featured-market__description">China's rapidly evolving consumer landscape has created opportunities for innovative brands that combine traditional heritage with contemporary design and global appeal.</p>
-              <div class="featured-market__meta">
+            <div class="markets__featured-content">
+              <h3 class="markets__featured-title">China</h3>
+              <p class="markets__featured-description">China's rapidly evolving consumer landscape has created opportunities for innovative brands that combine traditional heritage with contemporary design and global appeal.</p>
+              <div class="markets__featured-meta">
                 {% assign china_count = site.brands | where: "lang", page.lang | where: "market", "China" | size %}
-                <span class="featured-market__count">{{ china_count }} brands</span>
+                <span class="markets__featured-count">{{ china_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/china/" class="featured-market__link btn btn-outline">Explore Chinese Brands</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/china/" class="markets__featured-link btn btn-outline">Explore Chinese Brands</a>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- Related Insights Section -->
-    <section class="dimension-section">
-      <div class="dimension-section__header">
-        <h2 class="dimension-section__title">Market Insights</h2>
-        <p class="dimension-section__description">Read our latest analyses and stories about BRICS+ markets</p>
+  </div>
+</div>
+
+<!-- Related Insights Panel -->
+<div class="panel panel--accent-soft">
+  <div class="panel__content">
+    <section class="markets__section">
+      <div class="markets__section-header">
+        <h2 class="markets__section-title">
+          <span class="markets__icon markets__icon--insights">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6z"></path>
+              <path d="M19 9H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2z"></path>
+              <path d="M12 18v3M8 18v3M16 18v3"></path>
+            </svg>
+          </span>
+          Market Insights
+        </h2>
+        <p class="markets__section-description">Read our latest analyses and stories about BRICS+ markets</p>
       </div>
       
-      <div class="related-insights">
+      <div class="markets__insights">
         {% assign market_insights = site.insights | where: "lang", page.lang | where: "category", "market" | sort: "date" | reverse | limit: 2 %}
         {% if market_insights.size > 0 %}
-          <div class="related-insights__grid">
+          <div class="markets__insights-grid">
             {% for insight in market_insights %}
               {% include insight-card.html insight=insight %}
             {% endfor %}
           </div>
         {% else %}
-          <div class="related-insights__empty">
+          <div class="markets__empty-state">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
               <path d="M8 10h8M8 14h8"></path>
@@ -161,42 +203,46 @@ discovery_path: markets
           </div>
         {% endif %}
         
-        <div class="related-insights__action">
+        <div class="markets__section-action">
           <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=market" class="btn btn-secondary">View All Market Insights</a>
         </div>
       </div>
     </section>
-    
-    <!-- All Categories Link -->
-    <div class="dimensions-navigation">
-      <h3 class="dimensions-navigation__title">Explore Other Discovery Dimensions</h3>
-      <div class="dimensions-navigation__links">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="dimensions-navigation__link dimensions-navigation__link--sector">
-          <span class="dimensions-navigation__icon">
+  </div>
+</div>
+
+<!-- All Categories Link Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <div class="markets__navigation">
+      <h3 class="markets__navigation-title">Explore Other Dimensions</h3>
+      <div class="markets__navigation-links">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="markets__navigation-link markets__navigation-link--sector">
+          <span class="markets__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
             </svg>
           </span>
           Sectors
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="dimensions-navigation__link dimensions-navigation__link--russian-sectors">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="markets__navigation-link markets__navigation-link--sector">
+          <span class="markets__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M3 3h18v18H3V3zm4 4h4v4H7V7zm0 6h4v4H7v-4zm6-6h4v4h-4V7zm6 0h2v2h-2V7zm-6 6h4v4h-4v-4z"></path>
             </svg>
           </span>
           Russian Sectors
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="dimensions-navigation__link dimensions-navigation__link--attribute">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="markets__navigation-link markets__navigation-link--attribute">
+          <span class="markets__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 7h16M4 12h16M4 17h10"></path>
             </svg>
           </span>
           Attributes
         </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="dimensions-navigation__link dimensions-navigation__link--signal">
-          <span class="dimensions-navigation__icon">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="markets__navigation-link markets__navigation-link--signal">
+          <span class="markets__navigation-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
             </svg>
