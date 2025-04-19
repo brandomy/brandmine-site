@@ -102,11 +102,12 @@ lang: en
         <div class="testimonial-card__author">
           <div class="testimonial-card__author-image">
             {% include brand-image.html 
-               brand="dragonfly" 
-               image="color" 
-               purpose="logo"
-               alt="Dragonfly Therapeutic Retreats logo" 
-               class="testimonial-card__author-img" %}
+              brand="dragonfly" 
+              image="color" 
+              purpose="logo" 
+              ext="png"
+              alt="{{ site.data.translations[page.lang].testimonials.dragonfly_retreats }} logo" 
+              class="testimonial-card__author-img" %}
           </div>
           <div class="testimonial-card__author-info">
             <h4 class="testimonial-card__author-name">{{ site.data.translations[page.lang].testimonials.dragonfly_retreats }}</h4>
@@ -137,10 +138,9 @@ lang: en
           <div class="testimonial-card__author-image">
             {% include site-image.html 
                category="people"
-               subcategory="headshots"
                image="georgie-yam" 
                purpose="profile"
-               alt="Georgie Yam founder photo" 
+               alt="{{ site.data.translations[page.lang].testimonials.georgie_yam }} founder photo" 
                class="testimonial-card__author-img" %}
           </div>
           <div class="testimonial-card__author-info">

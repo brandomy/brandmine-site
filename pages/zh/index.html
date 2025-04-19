@@ -101,7 +101,13 @@ lang: zh
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__author-image">
-            <img src="/api/placeholder/64/64" alt="蜻蜓疗愈疗养院资料照片">
+            {% include brand-image.html 
+               brand="dragonfly" 
+               image="color" 
+               purpose="logo" 
+               ext="png"
+               alt="{{ site.data.translations[page.lang].testimonials.dragonfly_retreats }} 标志" 
+               class="testimonial-card__author-img" %}
           </div>
           <div class="testimonial-card__author-info">
             <h4 class="testimonial-card__author-name">蜻蜓疗愈疗养院</h4>
@@ -130,7 +136,12 @@ lang: zh
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__author-image">
-            <img src="/api/placeholder/64/64" alt="乔治·阎资料照片">
+            {% include site-image.html 
+               category="people"
+               image="georgie-yam" 
+               purpose="profile"
+               alt="{{ site.data.translations[page.lang].testimonials.georgie_yam }} 肖像" 
+               class="testimonial-card__author-img" %}
           </div>
           <div class="testimonial-card__author-info">
             <h4 class="testimonial-card__author-name">乔治·阎</h4>
