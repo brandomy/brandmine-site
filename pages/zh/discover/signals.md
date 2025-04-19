@@ -48,7 +48,7 @@ lang: zh
               <p class="signals-about__premium-text">详细的增长信号数据和高级筛选功能需要高级访问权限。</p>
             </div>
           </div>
-          <a href="{{ site.baseurl }}/{{ page.lang }}/premium/" class="btn btn-primary btn-sm">升级至高级版</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/premium/" class="btn btn--primary btn--sm">升级至高级版</a>
         </div>
       </div>
     </section>
@@ -204,7 +204,7 @@ lang: zh
         {% endif %}
         
         <div class="signals__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=signal" class="btn btn-secondary">查看所有增长洞察</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=signal" class="btn btn--secondary-cta">查看所有增长洞察</a>
         </div>
       </div>
     </section>

@@ -48,7 +48,7 @@ lang: ru
               <p class="signals-about__premium-text">Детальные данные о сигналах роста и расширенная фильтрация доступны с премиум-доступом.</p>
             </div>
           </div>
-          <a href="{{ site.baseurl }}/{{ page.lang }}/premium/" class="btn btn-primary btn-sm">Перейти на премиум</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/premium/" class="btn btn--primary btn--sm">Перейти на премиум</a>
         </div>
       </div>
     </section>
@@ -204,7 +204,7 @@ lang: ru
         {% endif %}
         
         <div class="signals__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=signal" class="btn btn-secondary">Просмотреть все аналитические материалы</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=signal" class="btn btn--secondary-cta">Просмотреть все аналитические материалы</a>
         </div>
       </div>
     </section>

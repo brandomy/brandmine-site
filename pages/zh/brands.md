@@ -137,7 +137,7 @@ ref: brands
     </div>
     
     <div class="brands__cta">
-      <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">启动互动数据库</button>
+      <button id="database-button" class="btn btn--primary-cta" onclick="trackButtonClick(this)">启动互动数据库</button>
       <div id="button-feedback" class="brands__feedback" style="display: none; margin-top: var(--space-2); color: var(--primary-600);">
         即将推出！我们正在开发此功能。
       </div>
@@ -150,7 +150,9 @@ ref: brands
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">准备发现金砖国家+品牌？</h2>
     <p class="panel__lead-text">联系我们，了解更多关于我们特色品牌的信息，或讨论您的具体需求。</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">联系我们</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">联系我们</a>
+    </div>
   </div>
 </div>
 

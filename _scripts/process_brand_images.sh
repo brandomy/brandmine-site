@@ -64,7 +64,7 @@ for BRAND in "${BRANDS[@]}"; do
             # Updated output filename format to keep purpose-image order consistent
             OUTPUT_FILENAME="${BRAND}-${PURPOSE}-${IMAGE}-${SIZE}w.${EXT}"
             echo "    Creating $OUTPUT_FILENAME..."
-            convert "$IMG" -resize "${SIZE}x" -quality 85 "$BRAND_DIR/$OUTPUT_FILENAME"
+            magick "$IMG" -resize "${SIZE}x" -quality 85 "$BRAND_DIR/$OUTPUT_FILENAME"
         done
     done
 done

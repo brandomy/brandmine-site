@@ -235,7 +235,7 @@ discovery_path: discover
       </div>
       
       <div class="discover__section-action">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn-primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
       </div>
     </section>
   </div>
@@ -278,7 +278,7 @@ discovery_path: discover
       </div>
       
       <div class="discover__section-action">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn-secondary">{{ site.data.translations[page.lang].insights.view_all }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--secondary-cta">{{ site.data.translations[page.lang].insights.view_all }}</a>
       </div>
     </section>
   </div>
@@ -289,6 +289,9 @@ discovery_path: discover
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Ready to Explore BRICS+ Brands?</h2>
     <p class="panel__lead-text">Contact us to learn more about our discovery platform or to discuss your specific needs.</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Get in Touch</a>
+    <!-- <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Get in Touch</a> -->
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">Get in Touch</a>
+    </div>
   </div>
 </div>

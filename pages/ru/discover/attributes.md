@@ -174,7 +174,7 @@ lang: ru
                 {% assign founder_led_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains 'Управляемые основателями'" | size %}
                 <span class="attributes__featured-count">{{ founder_led_count }} брендов</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/" class="attributes__featured-link btn btn-outline">Исследовать бренды под управлением основателей</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/" class="attributes__featured-link btn btn--outline-light">Исследовать бренды под управлением основателей</a>
             </div>
           </div>
           
@@ -190,7 +190,7 @@ lang: ru
                 {% assign heritage_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains 'Исторический бренд'" | size %}
                 <span class="attributes__featured-count">{{ heritage_count }} брендов</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/heritage-brand/" class="attributes__featured-link btn btn-outline">Исследовать исторические бренды</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/heritage-brand/" class="attributes__featured-link btn btn--outline-light">Исследовать исторические бренды</a>
             </div>
           </div>
           
@@ -206,7 +206,7 @@ lang: ru
                 {% assign artisanal_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains 'Ремесленное мастерство'" | size %}
                 <span class="attributes__featured-count">{{ artisanal_count }} брендов</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/artisanal-excellence/" class="attributes__featured-link btn btn-outline">Исследовать бренды с ремесленным мастерством</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/artisanal-excellence/" class="attributes__featured-link btn btn--outline-light">Исследовать бренды с ремесленным мастерством</a>
             </div>
           </div>
         </div>
@@ -252,7 +252,7 @@ lang: ru
         {% endif %}
         
         <div class="attributes__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=attribute" class="btn btn-secondary">Просмотреть все аналитические материалы по атрибутам</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=attribute" class="btn btn--secondary-cta">Просмотреть все аналитические материалы по атрибутам</a>
         </div>
       </div>
     </section>

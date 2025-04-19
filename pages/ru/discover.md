@@ -215,7 +215,7 @@ discovery_path: discover
       </div>
       
       <div class="discover__section-action">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn-primary">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
       </div>
     </section>
   </div>
@@ -258,7 +258,7 @@ discovery_path: discover
       </div>
       
       <div class="discover__section-action">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn-secondary">{{ site.data.translations[page.lang].insights.view_all }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--secondary-cta">{{ site.data.translations[page.lang].insights.view_all }}</a>
       </div>
     </section>
   </div>
@@ -269,6 +269,8 @@ discovery_path: discover
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Готовы исследовать бренды БРИКС+?</h2>
     <p class="panel__lead-text">Свяжитесь с нами, чтобы узнать больше о нашей платформе или обсудить ваши конкретные потребности.</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Связаться с нами</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">Связаться с нами</a>
+    </div>
   </div>
 </div>

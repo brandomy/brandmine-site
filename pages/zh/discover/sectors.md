@@ -216,7 +216,7 @@ lang: zh
         {% endif %}
         
         <div class="sectors__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=sector" class="btn btn-secondary">查看所有行业洞察</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=sector" class="btn btn--secondary-cta">查看所有行业洞察</a>
         </div>
       </div>
     </section>

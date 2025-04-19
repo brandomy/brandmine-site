@@ -174,7 +174,7 @@ discovery_path: attributes
                 {% assign founder_led_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains 'Founder-Led'" | size %}
                 <span class="attributes__featured-count">{{ founder_led_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/" class="attributes__featured-link btn btn-outline">Explore Founder-Led Brands</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/" class="attributes__featured-link btn btn--outline-light">Explore Founder-Led Brands</a>
             </div>
           </div>
           
@@ -190,7 +190,7 @@ discovery_path: attributes
                 {% assign heritage_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains 'Heritage Brand'" | size %}
                 <span class="attributes__featured-count">{{ heritage_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/heritage-brand/" class="attributes__featured-link btn btn-outline">Explore Heritage Brands</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/heritage-brand/" class="attributes__featured-link btn btn--outline-light">Explore Heritage Brands</a>
             </div>
           </div>
           
@@ -206,7 +206,7 @@ discovery_path: attributes
                 {% assign artisanal_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains 'Artisanal Excellence'" | size %}
                 <span class="attributes__featured-count">{{ artisanal_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/artisanal-excellence/" class="attributes__featured-link btn btn-outline">Explore Artisanal Excellence</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/artisanal-excellence/" class="attributes__featured-link btn btn--outline-light">Explore Artisanal Excellence</a>
             </div>
           </div>
         </div>
@@ -252,7 +252,7 @@ discovery_path: attributes
         {% endif %}
         
         <div class="attributes__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=attribute" class="btn btn-secondary">View All Attribute Insights</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=attribute" class="btn btn--secondary-cta">View All Attribute Insights</a>
         </div>
       </div>
     </section>

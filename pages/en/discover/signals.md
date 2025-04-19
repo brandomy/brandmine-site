@@ -48,7 +48,7 @@ discovery_path: signals
               <p class="signals-about__premium-text">Detailed growth signal data and advanced filtering is available with premium access.</p>
             </div>
           </div>
-          <a href="{{ site.baseurl }}/{{ page.lang }}/premium/" class="btn btn-primary btn-sm">Upgrade to Premium</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/premium/" class="btn btn--primary btn--sm">Upgrade to Premium</a>
         </div>
       </div>
     </section>
@@ -204,7 +204,7 @@ discovery_path: signals
         {% endif %}
         
         <div class="signals__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=signal" class="btn btn-secondary">View All Growth Insights</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=signal" class="btn btn--secondary-cta">View All Growth Insights</a>
         </div>
       </div>
     </section>

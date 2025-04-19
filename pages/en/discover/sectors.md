@@ -216,7 +216,7 @@ discovery_path: sectors
         {% endif %}
         
         <div class="sectors__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=sector" class="btn btn-secondary">View All Sector Insights</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=sector" class="btn btn--secondary-cta">View All Sector Insights</a>
         </div>
       </div>
     </section>

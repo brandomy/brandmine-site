@@ -77,7 +77,7 @@ lang: ru
     <div class="insights__subscribe">
       <form class="insights__subscribe-form">
         <input type="email" placeholder="Ваш email адрес" class="insights__subscribe-input">
-        <button type="submit" class="btn-primary">Подписаться</button>
+        <button type="submit" class="btn btn--primary">Подписаться</button>
       </form>
       <p class="insights__subscribe-note">Мы уважаем вашу конфиденциальность и никогда не будем передавать вашу информацию третьим лицам.</p>
     </div>
@@ -89,6 +89,8 @@ lang: ru
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Нужно индивидуальное исследование?</h2>
     <p class="panel__lead-text">Свяжитесь с нами, чтобы обсудить ваши конкретные информационные потребности о потребительских брендах стран БРИКС+.</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Связаться с нами</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">Связаться с нами</a>
+    </div>  
   </div>
 </div>

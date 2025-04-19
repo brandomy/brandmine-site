@@ -137,7 +137,7 @@ ref: brands
     </div>
     
     <div class="brands__cta">
-      <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">Запустить интерактивную базу данных</button>
+      <button id="database-button" class="btn btn--primary-cta" onclick="trackButtonClick(this)">Запустить интерактивную базу данных</button>
       <div id="button-feedback" class="brands__feedback" style="display: none; margin-top: var(--space-2); color: var(--primary-600);">
         Скоро будет доступно! Мы работаем над этой функцией.
       </div>
@@ -150,7 +150,9 @@ ref: brands
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Готовы открыть для себя бренды БРИКС+?</h2>
     <p class="panel__lead-text">Свяжитесь с нами, чтобы узнать больше о наших избранных брендах или обсудить ваши конкретные потребности.</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Связаться с нами</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">Связаться с нами</a>
+    </div>
   </div>
 </div>
 

@@ -77,7 +77,7 @@ lang: zh
     <div class="insights__subscribe">
       <form class="insights__subscribe-form">
         <input type="email" placeholder="您的电子邮箱地址" class="insights__subscribe-input">
-        <button type="submit" class="btn-primary">订阅</button>
+        <button type="submit" class="btn btn--primary">订阅</button>
       </form>
       <p class="insights__subscribe-note">我们尊重您的隐私，绝不会分享您的信息。</p>
     </div>
@@ -89,6 +89,8 @@ lang: zh
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">需要定制研究？</h2>
     <p class="panel__lead-text">联系我们，讨论您对金砖国家+消费品牌的特定信息需求。</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">联系我们</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">联系我们<</a>
+    </div>
   </div>
 </div>

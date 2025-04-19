@@ -77,7 +77,7 @@ lang: en
     <div class="insights__subscribe">
       <form class="insights__subscribe-form">
         <input type="email" placeholder="Your email address" class="insights__subscribe-input">
-        <button type="submit" class="btn-primary">Subscribe</button>
+        <button type="submit" class="btn btn--primary">Subscribe</button>
       </form>
       <p class="insights__subscribe-note">We respect your privacy and will never share your information.</p>
     </div>
@@ -89,6 +89,8 @@ lang: en
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Need Custom Research?</h2>
     <p class="panel__lead-text">Contact us to discuss your specific information needs about BRICS+ consumer brands.</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Get in Touch</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">Get in Touch</a>
+    </div>
   </div>
 </div>

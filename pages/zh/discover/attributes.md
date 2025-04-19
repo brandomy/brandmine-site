@@ -175,7 +175,7 @@ lang: zh
                 {% assign founder_led_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains '创始人领导'" | size %}
                 <span class="attributes__featured-count">{{ founder_led_count }} 个品牌</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/" class="attributes__featured-link btn btn-outline">探索创始人领导的品牌</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/" class="attributes__featured-link btn btn--outline-light">探索创始人领导的品牌</a>
             </div>
           </div>
           
@@ -191,7 +191,7 @@ lang: zh
                 {% assign heritage_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains '传统品牌'" | size %}
                 <span class="attributes__featured-count">{{ heritage_count }} 个品牌</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/heritage-brand/" class="attributes__featured-link btn btn-outline">探索传统品牌</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/heritage-brand/" class="attributes__featured-link btn btn--outline-light">探索传统品牌</a>
             </div>
           </div>
           
@@ -207,7 +207,7 @@ lang: zh
                 {% assign artisanal_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains '工艺卓越'" | size %}
                 <span class="attributes__featured-count">{{ artisanal_count }} 个品牌</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/artisanal-excellence/" class="attributes__featured-link btn btn-outline">探索工艺卓越的品牌</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/artisanal-excellence/" class="attributes__featured-link btn btn--outline-light">探索工艺卓越的品牌</a>
             </div>
           </div>
         </div>
@@ -253,7 +253,7 @@ lang: zh
         {% endif %}
         
         <div class="attributes__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=attribute" class="btn btn-secondary">查看所有特性洞察</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=attribute" class="btn btn--secondary-cta">查看所有特性洞察</a>
         </div>
       </div>
     </section>

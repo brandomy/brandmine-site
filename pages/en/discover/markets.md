@@ -142,7 +142,7 @@ discovery_path: markets
                 {% assign russia_count = site.brands | where: "lang", page.lang | where: "market", "Russia" | size %}
                 <span class="markets__featured-count">{{ russia_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/russia/" class="markets__featured-link btn btn-outline">Explore Russian Brands</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/russia/" class="markets__featured-link btn btn--outline-light">Explore Russian Brands</a>
             </div>
           </div>
           
@@ -158,7 +158,7 @@ discovery_path: markets
                 {% assign china_count = site.brands | where: "lang", page.lang | where: "market", "China" | size %}
                 <span class="markets__featured-count">{{ china_count }} brands</span>
               </div>
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/china/" class="markets__featured-link btn btn-outline">Explore Chinese Brands</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/china/" class="markets__featured-link btn btn--outline-light">Explore Chinese Brands</a>
             </div>
           </div>
         </div>
@@ -204,7 +204,7 @@ discovery_path: markets
         {% endif %}
         
         <div class="markets__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=market" class="btn btn-secondary">View All Market Insights</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=market" class="btn btn--secondary-cta">View All Market Insights</a>
         </div>
       </div>
     </section>

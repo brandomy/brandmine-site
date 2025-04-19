@@ -240,7 +240,7 @@ discovery_path: russian-sectors
         <p>了解Brandmine如何帮您连接这些激动人心行业的领先品牌。</p>
       </div>
       <div class="russian-sectors__summary-cta">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="btn btn-primary">返回行业概览</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="btn btn--primary-cta">返回行业概览</a>
       </div>
     </div>
   </div>

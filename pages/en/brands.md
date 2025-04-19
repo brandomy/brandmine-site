@@ -137,7 +137,7 @@ ref: brands
     </div>
     
     <div class="brands__cta">
-      <button id="database-button" class="btn-primary" onclick="trackButtonClick(this)">Launch Interactive Database</button>
+      <button id="database-button" class="btn btn--primary-cta" onclick="trackButtonClick(this)">Launch Interactive Database</button>
       <div id="button-feedback" class="brands__feedback" style="display: none; margin-top: var(--space-2); color: var(--primary-600);">
         Coming soon! We're working on this feature.
       </div>
@@ -150,7 +150,9 @@ ref: brands
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Ready to Discover BRICS+ Brands?</h2>
     <p class="panel__lead-text">Contact us to learn more about our featured brands or to discuss your specific needs.</p>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn-secondary">Get in Touch</a>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">Get in Touch</a>
+    </div>
   </div>
 </div>
 

@@ -216,7 +216,7 @@ lang: ru
         {% endif %}
         
         <div class="sectors__section-action">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=sector" class="btn btn-secondary">Просмотреть всю аналитику секторов</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?category=sector" class="btn btn--secondary-cta">Просмотреть всю аналитику секторов</a>
         </div>
       </div>
     </section>
