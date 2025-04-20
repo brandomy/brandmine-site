@@ -135,7 +135,12 @@ ref: about
     
     <div class="team-section">
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/randal-eastman.png" alt="Randal Eastman" class="team-photo">
+        {% include site-image.html 
+          category="people"
+          image="randal-eastman" 
+          purpose="profile"
+          alt="Randal Eastman"
+          class="team-photo" %}
         <h3>Randal Eastman</h3>
         <p class="team-title">Founder & CEO</p>
         <p>Randal combines over 25 years of international business experience across Asia and Europe with deep expertise in brand development and market entry strategy. His unique background includes:</p>
@@ -156,7 +161,12 @@ ref: about
       </div>
       
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/olya-eastman.png" alt="Olya Eastman" class="team-photo">
+        {% include site-image.html 
+          category="people"
+          image="olya-eastman" 
+          purpose="profile"
+          alt="Olya Eastman"
+          class="team-photo" %}
         <h3>Olya Eastman</h3>
         <p class="team-title">Co-Founder & Director of People and Partnerships</p>
         <p>Olya brings over 25 years of executive search experience with specialized expertise in connecting talent and opportunities across borders:</p>

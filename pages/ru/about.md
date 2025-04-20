@@ -135,7 +135,12 @@ ref: about
     
     <div class="team-section">
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/randal-eastman.png" alt="Рэндал Истман" class="team-photo">
+        {% include site-image.html 
+          category="people"
+          image="randal-eastman" 
+          purpose="profile"
+          alt="Рэндал Истман"
+          class="team-photo" %}
         <h3>Рэндал Истман</h3>
         <p class="team-title">Основатель и генеральный директор</p>
         <p>Рэндал сочетает более чем 25-летний опыт международного бизнеса в Азии и Европе с глубокими знаниями в области развития брендов и стратегии выхода на рынок. Его уникальный опыт включает:</p>
@@ -156,7 +161,12 @@ ref: about
       </div>
       
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/olya-eastman.png" alt="Ольга Истман" class="team-photo">
+        {% include site-image.html 
+          category="people"
+          image="olya-eastman" 
+          purpose="profile"
+          alt="Ольга Истман"
+          class="team-photo" %}
         <h3>Ольга Истман</h3>
         <p class="team-title">Сооснователь и директор по персоналу и партнерствам</p>
         <p>Ольга обладает более чем 25-летним опытом в сфере executive search со специализацией на соединении талантов и возможностей через границы:</p>

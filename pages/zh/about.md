@@ -135,7 +135,12 @@ ref: about
     
     <div class="team-section">
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/randal-eastman.png" alt="伊仁德" class="team-photo">
+        {% include site-image.html 
+          category="people"
+          image="randal-eastman" 
+          purpose="profile"
+          alt="伊仁德"
+          class="team-photo" %}
         <h3>伊仁德</h3>
         <p class="team-title">创始人兼首席执行官</p>
         <p>兰道尔拥有超过25年的亚洲和欧洲国际商业经验，并在品牌开发和市场进入战略方面拥有深厚专业知识。他的独特背景包括：</p>
@@ -156,7 +161,12 @@ ref: about
       </div>
       
       <div class="team-member">
-        <img src="{{ site.baseurl }}/assets/images/team/olya-eastman.png" alt="欧丽雅" class="team-photo">
+        {% include site-image.html 
+          category="people"
+          image="olya-eastman" 
+          purpose="profile"
+          alt="欧丽雅"
+          class="team-photo" %}
         <h3>欧丽雅</h3>
         <p class="team-title">联合创始人兼人员和合作伙伴关系总监</p>
         <p>奥利亚拥有超过25年的高管搜索经验，专门擅长跨境人才和机会连接：</p>

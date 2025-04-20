@@ -1,0 +1,18 @@
+{% comment %}
+  Displays attribution for an image based on its filename.
+  
+  Usage:
+  {% include image-attribution.html filename="moscow-gum.jpg" %}
+{% endcomment %}
+
+{% assign filename = include.filename %}
+{% assign attribution = site.data.image_attributions.images | where: "filename", filename | first %}
+
+{% if attribution %}
+<div class="image-attribution">
+  <small>
+    Photo by <a href="{{ attribution.url }}" target="_blank" rel="noopener">{{ attribution.creator }}</a> 
+    on <a href="https://unsplash.com/" target="_blank" rel="noopener">{{ attribution.source }}</a>
+  </small>
+</div>
+{% endif %}

@@ -4,7 +4,7 @@
 # Creating responsive versions at multiple resolutions for optimal web performance
 
 # Define image categories to process
-CATEGORIES=("people" "site" "pages" "posts" "sectors")
+CATEGORIES=("site" "pages" "insights" "tags" "sectors" "signals" "markets" "attributes")
 
 # Process each category
 for CATEGORY in "${CATEGORIES[@]}"; do
