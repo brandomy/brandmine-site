@@ -1,0 +1,32 @@
+name: Process Images
+
+on:
+  push:
+    paths:
+      - 'assets/images/brands/*/originals/**'
+      - 'assets/images/*/originals/**'
+
+jobs:
+  resize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+        
+      - name: Process images
+        run: |
+          chmod +x _scripts/process_brand_images.sh
+          chmod +x _scripts/process_people_images.sh
+          chmod +x _scripts/process_site_images.sh
+          ./_scripts/process_brand_images.sh
+          ./_scripts/process_people_images.sh
+          ./_scripts/process_site_images.sh
+          
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Automatically process and optimize images"
+          file_pattern: "assets/images/**/*.jpg assets/images/**/*.png"
