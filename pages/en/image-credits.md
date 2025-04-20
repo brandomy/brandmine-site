@@ -3,6 +3,7 @@ layout: default
 title: Image Credits
 permalink: /en/image-credits/
 language: en
+ref: image-credits
 ---
 
 # Image Credits

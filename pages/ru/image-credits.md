@@ -3,6 +3,7 @@ layout: default
 title: Источники изображений
 permalink: /ru/image-credits/
 language: ru
+ref: image-credits
 ---
 
 # Источники изображений

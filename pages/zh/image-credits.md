@@ -3,6 +3,7 @@ layout: default
 title: 图片来源
 permalink: /zh/image-credits/
 language: zh
+ref: image-credits
 ---
 
 # 图片来源
