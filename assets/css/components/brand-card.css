@@ -18,7 +18,8 @@
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: box-shadow var(--transition-fast);
-    height: 100%;
+    height: 340px; /* Reduced height for better aesthetics */
+    position: relative; /* Needed for absolute positioning of children */
   }
   
   .brand-card:hover {
@@ -46,10 +47,10 @@
   
   .brand-card__logo {
     position: absolute;
-    bottom: var(--space-2);
-    right: var(--space-2);
-    width: 48px;
-    height: 48px;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 60px;
+    height: 60px;
     border-radius: var(--radius-sm);
     background-color: white;
     padding: var(--space-1);
@@ -57,12 +58,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* Ensure contents don't overflow */
   }
   
-  .brand-card__logo-img {
-    max-width: 100%;
-    max-height: 100%;
+  .brand-card__logo img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
+    max-width: 50px;
+    max-height: 50px;
   }
   
   .brand-card__sector {
@@ -78,14 +82,17 @@
   }
   
   .brand-card__body {
-    padding: var(--card-padding-default);
+    padding: var(--space-4);
     display: flex;
     flex-direction: column;
     flex: 1;
+    overflow: hidden; /* Prevent content from overflowing */
   }
   
   .brand-card__header {
     margin-bottom: var(--space-2);
+    padding: var(--space-4);
+    position: relative;
   }
   
   .brand-card__title {
@@ -93,6 +100,15 @@
     font-weight: var(--font-semibold);
     margin: 0 0 var(--space-1) 0;
     color: var(--neutral-900);
+    padding: var(--space-2) 0;
+  }
+  
+  /* Added style for founding year */
+  .brand-card__founding-year {
+    font-size: var(--text-xs);
+    color: var(--neutral-600);
+    margin: 0 0 var(--space-2) 0;
+    padding: 0 var(--space-2);
   }
   
   .brand-card__meta {
@@ -121,12 +137,32 @@
     color: var(--neutral-700);
     margin-bottom: var(--space-4);
     flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .brand-card__taxonomy {
+    display: flex;
+    flex-direction: row; /* Make them side by side */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    gap: var(--space-3); /* Space between sectors and markets */
+    margin-bottom: var(--space-3);
+  }
+  
+  .brand-card__sectors,
+  .brand-card__markets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2); /* Space between individual tags */
   }
   
   .brand-card__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1);
+    gap: var(--space-2);
     margin-bottom: var(--space-4);
   }
   
@@ -137,6 +173,40 @@
     background-color: var(--neutral-100);
     border: var(--border-width-thin) solid var(--neutral-200);
     color: var(--neutral-700);
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-right: var(--space-1);
+    margin-bottom: var(--space-1);
+  }
+  
+  .brand-card__tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .brand-card__tag--sector {
+    background-color: var(--olive-100);
+    color: var(--olive-800);
+    border-color: var(--olive-200);
+  }
+  
+  .brand-card__tag--market {
+    background-color: var(--sky-100);
+    color: var(--sky-800);
+    border-color: var(--sky-200);
+  }
+  
+  .brand-card__tag--attribute {
+    background-color: var(--secondary-100);
+    color: var(--secondary-800);
+    border-color: var(--secondary-200);
+  }
+  
+  .brand-card__tag--signal {
+    background-color: var(--accent-100);
+    color: var(--accent-800);
+    border-color: var(--accent-200);
   }
   
   .brand-card__footer {
@@ -144,6 +214,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: var(--space-2); /* Added padding */
   }
   
   .brand-card__link {
@@ -152,6 +223,7 @@
     color: var(--primary-600);
     text-decoration: none;
     transition: color var(--transition-fast);
+    padding: var(--space-2); /* Added padding */
   }
   
   .brand-card__link:hover {

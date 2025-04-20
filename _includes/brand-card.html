@@ -2,10 +2,12 @@
 <article class="brand-card">
   <header class="brand-card__header">
     <div class="brand-card__logo">
-      <img src="{{ brand.logo }}" alt="{{ brand.name }} logo">
+      <img src="{{ brand.logo }}" alt="{{ brand.title | default: brand.name }} logo">
     </div>
-    <h2 class="brand-card__title">{{ brand.name }}</h2>
+    <h2 class="brand-card__title">{{ brand.title | default: brand.name }}</h2>
+    {% if brand.founded %}
     <p class="brand-card__founding-year">Founded {{ brand.founded }}</p>
+    {% endif %}
   </header>
 
   <div class="brand-card__body">
@@ -14,7 +16,7 @@
     <div class="brand-card__taxonomy">
       <div class="brand-card__sectors">
         {% for sector in brand.sectors %}
-          <span class="brand-card__tag brand-card__tag--sector">{{ sector }}</span>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="brand-card__tag brand-card__tag--sector">{{ sector }}</a>
         {% endfor %}
         {% if brand.sectors.size > 3 %}
           <span class="brand-card__more-tag">+{{ brand.sectors.size | minus:3 }}</span>
@@ -22,7 +24,7 @@
       </div>
       <div class="brand-card__markets">
         {% for market in brand.markets %}
-          <span class="brand-card__tag brand-card__tag--market">{{ market }}</span>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="brand-card__tag brand-card__tag--market">{{ market }}</a>
         {% endfor %}
       </div>
     </div>

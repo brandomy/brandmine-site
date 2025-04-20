@@ -144,12 +144,54 @@
 
 .featured-brands-carousel {
   display: flex;
+  flex-wrap: nowrap; /* No wrapping for horizontal scroll */
   gap: var(--space-6);
   overflow-x: auto;
   padding: var(--space-4) 0;
   margin: var(--space-6) 0;
+  width: 100%;
   scrollbar-width: thin;
   scrollbar-color: var(--primary-300) var(--primary-50);
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  position: relative; /* Added for scroll indicator positioning */
+}
+
+/* Visual indicator that the carousel is scrollable */
+.featured-brands-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.featured-brands-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--neutral-300);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin: 0 var(--space-1);
+}
+
+.featured-brands-nav-dot:hover {
+  transform: scale(1.2);
+  background-color: var(--primary-300);
+}
+
+.featured-brands-nav-dot.active {
+  background-color: var(--primary-500);
+  transform: scale(1.2);
+}
+
+/* Brand card styles specific to the featured brands carousel */
+.featured-brands-carousel .brand-card {
+  flex: 0 0 auto; /* Don't grow or shrink, maintain auto width */
+  width: 300px; /* Fixed width for large screens */
+  max-width: 80vw; /* On small screens, cap at 80% of viewport width */
+  height: 340px; /* Reduced height for better aesthetics */
+  margin-bottom: var(--space-2); /* Add space between cards and bottom of container */
 }
 
 .featured-brands-carousel::-webkit-scrollbar {
@@ -254,14 +296,22 @@
 
 .testimonials-container {
   display: flex;
+  flex-direction: row; /* Explicit row direction */
   flex-wrap: wrap;
+  justify-content: center; /* Center cards horizontally */
   gap: var(--space-6);
   margin-top: var(--space-8);
+  padding-left: var(--space-2); /* Reduced padding */
+  padding-right: var(--space-2); /* Reduced padding */
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .testimonial-card {
   flex: 1 1 calc(50% - var(--space-6));
   min-width: 280px;
+  max-width: 100%; /* Allow the card to fill the container width */
   background-color: white;
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -270,6 +320,9 @@
   flex-direction: column;
   position: relative;
   border-top: 3px solid var(--primary-300);
+  box-sizing: border-box; /* Ensure padding is included in width/height */
+  margin: 0; /* Reset margins for better flexbox control */
+  align-self: center; /* Ensure the card aligns to center in a flex context */
 }
 
 .testimonial-card__quote {
@@ -421,6 +474,15 @@
 
 /* Small devices (480px and below) */
 @media (max-width: 480px) {
+  /* Adjust brand card size and container padding for small screens */
+  .featured-brands-carousel {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+  
+  .featured-brands-carousel .brand-card {
+    width: 250px; /* Slightly smaller on small screens */
+  }
   .home-hero--no-image__heading-primary {
     font-size: var(--text-3xl);
   }
@@ -458,10 +520,12 @@
   
   .testimonials-container {
     flex-direction: column;
+    align-items: center; /* Ensure vertical alignment is centered */
   }
   
   .testimonial-card {
     width: 100%;
+    max-width: calc(100% - 2 * var(--space-2)); /* Equal but smaller margin on both sides */
   }
   
   .lead-capture__container {
@@ -473,20 +537,25 @@
 
 /* Medium devices (768px and below) */
 @media (max-width: 768px) {
+  /* Adjust carousel padding on medium screens */
+  .featured-brands-carousel {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    padding-bottom: var(--space-6);
+  }
+  
   .process-steps {
     gap: var(--space-6);
   }
   
-  .featured-brands-carousel {
-    padding-bottom: var(--space-6);
-  }
-  
   .testimonials-container {
     flex-direction: column;
+    align-items: center; /* Ensure vertical alignment is centered */
   }
   
   .testimonial-card {
     width: 100%;
+    max-width: calc(100% - 2 * var(--space-2)); /* Equal but smaller margin on both sides */
   }
   
   .panel--primary-soft .insights-feed {
@@ -500,6 +569,10 @@
 
 /* Large devices (992px and above) */
 @media (min-width: 992px) {
+  /* Adjust brand card size for large screens */
+  .featured-brands-carousel .brand-card {
+    width: 320px; /* Slightly larger on big screens */
+  }
   .home-hero--no-image__heading-primary {
     font-size: var(--text-6xl);
   }

@@ -170,7 +170,7 @@ lang: zh
     <p class="panel__lead-text">探索精心挑选的具有引人入胜的故事和全球潜力的品牌</p>
     
     <div class="featured-brands-carousel">
-      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
+      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true %}
       {% if brands.size > 0 %}
         {% for brand in brands %}
           {% include brand-card.html brand=brand %}
@@ -180,6 +180,13 @@ lang: zh
         {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
         {% include brand-card.html brand=fallback_brand %}
       {% endif %}
+    </div>
+    
+    <!-- Scroll indicator dots -->
+    <div class="featured-brands-nav">
+      <span class="featured-brands-nav-dot active"></span>
+      <span class="featured-brands-nav-dot"></span>
+      <span class="featured-brands-nav-dot"></span>
     </div>
     
     <div class="more-brands">
@@ -314,6 +321,43 @@ lang: zh
         if (howItWorksSection) {
           howItWorksSection.scrollIntoView({ behavior: 'smooth' });
         }
+      });
+    }
+    
+    // Carousel navigation dots functionality
+    const carousel = document.querySelector('.featured-brands-carousel');
+    const dots = document.querySelectorAll('.featured-brands-nav-dot');
+    
+    if (carousel && dots.length > 0) {
+      // Update active dot based on scroll position
+      carousel.addEventListener('scroll', function() {
+        const scrollPosition = carousel.scrollLeft;
+        const cardWidth = 300; // Width of a card
+        const activeIndex = Math.round(scrollPosition / cardWidth);
+        
+        // Don't exceed the number of dots we have
+        const dotIndex = Math.min(activeIndex, dots.length - 1);
+        
+        // Update active dot
+        dots.forEach((dot, index) => {
+          if (index === dotIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      });
+      
+      // Make dots clickable to scroll to position
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+          const cardWidth = 300; // Width of a card
+          const scrollTo = index * cardWidth;
+          carousel.scrollTo({
+            left: scrollTo,
+            behavior: 'smooth'
+          });
+        });
       });
     }
   });

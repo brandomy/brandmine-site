@@ -1,0 +1,15 @@
+---
+layout: null
+---
+[
+  {% for brand in site.brands %}
+    {% if brand.title and brand.lang %}
+    {
+      "title": {{ brand.title | jsonify }},
+      "url": {{ brand.url | relative_url | jsonify }},
+      "lang": {{ brand.lang | jsonify }},
+      "type": "brand"
+    }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

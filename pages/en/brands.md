@@ -21,6 +21,36 @@ ref: brands
   </div>
 </div>
 
+
+<!-- Search Panel - NEW -->
+<div class="panel panel--primary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Search Our Brand Database</h2>
+    <p class="panel__lead-text">Looking for specific brands? Use our search to find exactly what you need.</p>
+    
+    <div class="brands__search-container">
+      <form action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get" class="brands__search-form">
+        <input type="text" name="q" class="brands__search-input" placeholder="{{ site.data.translations[page.lang].search.placeholder }}" aria-label="Search brands">
+        <button type="submit" class="btn btn--primary brands__search-button">
+          <i class="fas fa-search"></i>
+          {{ site.data.translations[page.lang].search.button }}
+        </button>
+      </form>
+    </div>
+    
+    <div class="brands__search-suggestions">
+      <p class="brands__search-suggestions-title">{{ site.data.translations[page.lang].search.popular_searches }}</p>
+      <div class="brands__search-tags">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=wine" class="brands__search-tag">Wine</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=beauty" class="brands__search-tag">Beauty</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=founder" class="brands__search-tag">Founder-led</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=moscow" class="brands__search-tag">Moscow</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Brand Profiles Panel -->
 <div class="panel panel--primary-soft">
   <div class="panel__content">
@@ -80,6 +110,7 @@ ref: brands
     </div>
   </div>
 </div>
+
 
 <!-- Featured Brands Panel -->
 <div class="panel panel--light">

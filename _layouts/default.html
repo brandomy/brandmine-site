@@ -55,6 +55,9 @@
   {% if page.permalink contains '/404.html' %}
   <link rel="stylesheet" href="{{ '/assets/css/components/error-page.css' | relative_url }}">
   {% endif %}
+  {% if page.permalink contains '/search/' %}
+  <link rel="stylesheet" href="{{ '/assets/css/components/search-results.css' | relative_url }}">
+  {% endif %}
   {% if page.permalink contains '/about/' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/about.css' | relative_url }}">
   {% endif %}

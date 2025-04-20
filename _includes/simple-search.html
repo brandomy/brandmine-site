@@ -1,0 +1,17 @@
+<!-- _includes/simple-search.html -->
+{% comment %}
+  Simple Search Box Include (for 404 pages)
+  
+  Usage:
+  {% include simple-search.html %}
+{% endcomment %}
+
+<div class="search-box">
+  <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get">
+    <input type="text" id="search-input" name="q" class="search-box__input" 
+           placeholder="{{ site.data.translations[page.lang].search.placeholder }}">
+    <button type="submit" class="btn btn--primary search-box__button">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>
