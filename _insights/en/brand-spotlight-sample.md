@@ -9,6 +9,7 @@ sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Artisanal Excellence, Cultural Ambassador]
 signals: [Export Ready]
+primary_dimension: signals
 brands: [7_spices]
 image: /assets/images/insights/7-spices-spotlight.jpg
 featured: false

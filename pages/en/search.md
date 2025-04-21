@@ -6,11 +6,30 @@ lang: en
 ref: search
 ---
 
-<div class="panel panel--light">
+<div class="panel panel--light search-results-page">
   <div class="panel__content">
     <h1 class="panel__heading-primary">Search Results</h1>
     
-    {% include simple-search.html %}
+    <div class="search-box">
+      <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get">
+        <input type="text" id="search-input" name="q" class="search-box__input" 
+               placeholder="{{ site.data.translations[page.lang].search.placeholder }}" aria-label="Search brands">
+        <button type="submit" class="search-box__button">
+          <i class="fas fa-search"></i>
+          {{ site.data.translations[page.lang].search.button }}
+        </button>
+      </form>
+    </div>
+    
+    <div class="search-popular">
+      <p class="search-popular__title">{{ site.data.translations[page.lang].search.popular_searches }}</p>
+      <div class="search-popular__tags">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=wine" class="search-popular__tag">Wine</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=beauty" class="search-popular__tag">Beauty</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=founder" class="search-popular__tag">Founder-led</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=moscow" class="search-popular__tag">Moscow</a>
+      </div>
+    </div>
     
     <div id="search-results" class="search-results">
       <p class="search-results__loading">Loading search results...</p>

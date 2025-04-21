@@ -254,42 +254,233 @@ lang: zh
   </div>
 </div>
 
-<!-- Latest Insights Section -->
+<!-- Latest Insights Section (2x2 Grid by Category) -->
 <div class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].insights.latest }}</h2>
     <p class="panel__lead-text">{{ site.data.translations[page.lang].insights.discover_description | default: "发现来自新兴市场的隐藏瑰宝和引人入胜的创始人旅程，值得全球关注" }}</p>
     
-    <!-- Using your existing insights-feed include with the proper parameters -->
-    <div class="insights-feed">
-      {% assign insights = site.insights | where: "lang", page.lang | where: "featured", true | sort: "date" | reverse | limit: 2 %}
-      {% for insight in insights %}
-        <div class="insight-card">
-          <a href="{{ insight.url | relative_url }}" class="insight-card__link">
-            {% if insight.image %}
-              <div class="insight-card__image-wrapper">
-                <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}" class="insight-card__image">
+    <!-- 2x2 Insights Grid by Category -->
+    <div class="insights-category-grid">
+      <!-- Markets Category -->
+      <div class="insights-category insights-category--markets">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--markets">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3 class="insights-category__title">市场</h3>
+        </div>
+        
+        {% assign market_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "markets" | sort: "date" | reverse | first %}
+        {% if market_insight %}
+          <div class="insights-category__card">
+            <a href="{{ market_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ market_insight.image | relative_url }}" alt="{{ market_insight.title }}" class="insights-category__image">
               </div>
-            {% endif %}
-            <div class="insight-card__content">
-              <h3 class="insight-card__title">{{ insight.title }}</h3>
-              <p class="insight-card__excerpt">{{ insight.excerpt | strip_html | truncate: 160 }}</p>
-              <div class="insight-card__meta">
-                {% if insight.tags %}
-                  <div class="insight-card__tags">
-                    {% for tag in insight.tags limit:2 %}
-                      <span class="tag tag--signal insight-card__tag">{{ tag }}</span>
-                    {% endfor %}
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ market_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ market_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ market_insight.content_type }}</span>
+                    
+                    {% if market_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_insight.markets[0] | slugify }}/" class="tag tag--market">{{ market_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if market_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ market_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ market_insight.sectors[0] }}</a>
+                    {% endif %}
+                    {% if market_insight.attributes.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ market_insight.attributes[0] | slugify }}/" class="tag tag--attribute">{{ market_insight.attributes[0] }}</a>
+                    {% endif %}
                   </div>
-                {% endif %}
-                <div class="insight-card__date">
-                  {{ insight.date | date: "%b %-d, %Y" }}
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ market_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ market_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>阅读更多</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
                 </div>
               </div>
-            </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="insights-category__more-link">
+            探索市场洞察
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
           </a>
         </div>
-      {% endfor %}
+      </div>
+      
+      <!-- Sectors Category -->
+      <div class="insights-category insights-category--sectors">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--sectors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path></svg>
+          </div>
+          <h3 class="insights-category__title">行业</h3>
+        </div>
+        
+        {% assign sector_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "sectors" | sort: "date" | reverse | first %}
+        {% if sector_insight %}
+          <div class="insights-category__card">
+            <a href="{{ sector_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ sector_insight.image | relative_url }}" alt="{{ sector_insight.title }}" class="insights-category__image">
+              </div>
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ sector_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ sector_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ sector_insight.content_type }}</span>
+                    
+                    {% if sector_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ sector_insight.sectors[0] }}</a>
+                    {% endif %}
+                    {% if sector_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ sector_insight.markets[0] | slugify }}/" class="tag tag--market">{{ sector_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if sector_insight.attributes.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ sector_insight.attributes[0] | slugify }}/" class="tag tag--attribute">{{ sector_insight.attributes[0] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ sector_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ sector_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>阅读更多</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="insights-category__more-link">
+            探索行业洞察
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Attributes Category -->
+      <div class="insights-category insights-category--attributes">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--attributes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+          </div>
+          <h3 class="insights-category__title">特质</h3>
+        </div>
+        
+        {% assign attribute_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "attributes" | sort: "date" | reverse | first %}
+        {% if attribute_insight %}
+          <div class="insights-category__card">
+            <a href="{{ attribute_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ attribute_insight.image | relative_url }}" alt="{{ attribute_insight.title }}" class="insights-category__image">
+              </div>
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ attribute_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ attribute_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ attribute_insight.content_type }}</span>
+                    
+                    {% if attribute_insight.attributes.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute_insight.attributes[0] | slugify }}/" class="tag tag--attribute">{{ attribute_insight.attributes[0] }}</a>
+                    {% endif %}
+                    {% if attribute_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ attribute_insight.markets[0] | slugify }}/" class="tag tag--market">{{ attribute_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if attribute_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ attribute_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ attribute_insight.sectors[0] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ attribute_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ attribute_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>阅读更多</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="insights-category__more-link">
+            探索品牌特质洞察
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Signals Category (Premium) -->
+      <div class="insights-category insights-category--signals">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--signals">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <h3 class="insights-category__title">信号</h3>
+        </div>
+        
+        {% assign signal_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "signals" | sort: "date" | reverse | first %}
+        {% if signal_insight %}
+          <div class="insights-category__card">
+            <a href="{{ signal_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ signal_insight.image | relative_url }}" alt="{{ signal_insight.title }}" class="insights-category__image">
+              </div>
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ signal_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ signal_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ signal_insight.content_type }}</span>
+                    
+                    {% if signal_insight.signals.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal_insight.signals[0] | slugify }}/" class="tag tag--signal">{{ signal_insight.signals[0] }}</a>
+                    {% endif %}
+                    {% if signal_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ signal_insight.markets[0] | slugify }}/" class="tag tag--market">{{ signal_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if signal_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ signal_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ signal_insight.sectors[0] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ signal_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ signal_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>阅读更多</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="insights-category__more-link">
+            探索增长信号洞察
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
     </div>
     
     <div class="view-all-insights">
@@ -324,42 +515,48 @@ lang: zh
       });
     }
     
-    // Carousel navigation dots functionality
-    const carousel = document.querySelector('.featured-brands-carousel');
-    const dots = document.querySelectorAll('.featured-brands-nav-dot');
-    
-    if (carousel && dots.length > 0) {
-      // Update active dot based on scroll position
-      carousel.addEventListener('scroll', function() {
-        const scrollPosition = carousel.scrollLeft;
-        const cardWidth = 300; // Width of a card
-        const activeIndex = Math.round(scrollPosition / cardWidth);
-        
-        // Don't exceed the number of dots we have
-        const dotIndex = Math.min(activeIndex, dots.length - 1);
-        
-        // Update active dot
-        dots.forEach((dot, index) => {
-          if (index === dotIndex) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-      });
+    // Carousel navigation dots functionality for featured brands
+    function setupCarousel(carouselSelector, dotsSelector) {
+      const carousel = document.querySelector(carouselSelector);
+      const dots = document.querySelectorAll(dotsSelector);
       
-      // Make dots clickable to scroll to position
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
+      if (carousel && dots.length > 0) {
+        // Update active dot based on scroll position
+        carousel.addEventListener('scroll', function() {
+          const scrollPosition = carousel.scrollLeft;
           const cardWidth = 300; // Width of a card
-          const scrollTo = index * cardWidth;
-          carousel.scrollTo({
-            left: scrollTo,
-            behavior: 'smooth'
+          const activeIndex = Math.round(scrollPosition / cardWidth);
+          
+          // Don't exceed the number of dots we have
+          const dotIndex = Math.min(activeIndex, dots.length - 1);
+          
+          // Update active dot
+          dots.forEach((dot, index) => {
+            if (index === dotIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
           });
         });
-      });
+        
+        // Make dots clickable to scroll to position
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', function() {
+            const cardWidth = 300; // Width of a card
+            const scrollTo = index * cardWidth;
+            carousel.scrollTo({
+              left: scrollTo,
+              behavior: 'smooth'
+            });
+          });
+        });
+      }
     }
+    
+    // Initialize both carousels
+    setupCarousel('.featured-brands-carousel', '.featured-brands-nav-dot');
+    setupCarousel('.insights-carousel', '.insights-carousel-nav-dot');
   });
   
   // Event tracking for homepage buttons

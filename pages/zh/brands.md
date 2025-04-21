@@ -30,7 +30,7 @@ ref: brands
     <div class="brands__search-container">
       <form action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get" class="brands__search-form">
         <input type="text" name="q" class="brands__search-input" placeholder="{{ site.data.translations[page.lang].search.placeholder }}" aria-label="搜索品牌">
-        <button type="submit" class="btn btn--primary brands__search-button">
+        <button type="submit" class="brands__search-button">
           <i class="fas fa-search"></i>
           {{ site.data.translations[page.lang].search.button }}
         </button>
@@ -160,7 +160,6 @@ ref: brands
     <div class="brands__filters">
       <div class="brands__filter">原产地市场</div>
       <div class="brands__filter">行业领域</div>
-      <div class="brands__filter">公司规模</div>
       <div class="brands__filter">信号指标</div>
       <div class="brands__filter">品牌属性</div>
     </div>

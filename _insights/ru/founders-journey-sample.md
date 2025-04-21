@@ -9,6 +9,7 @@ sectors: [Гурманская еда]
 markets: [Россия]
 attributes: [Исторический бренд, Управляемый основателем]
 signals: [Готов к экспорту, Готов к инвестициям]
+primary_dimension: attributes
 brands: [teatime]
 image: /assets/images/insights/teatime-founder.jpg
 featured: true

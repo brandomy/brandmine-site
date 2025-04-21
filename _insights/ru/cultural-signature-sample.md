@@ -9,6 +9,7 @@ sectors: [Гурманская еда]
 markets: [Россия]
 attributes: [Исторический бренд, Культурный посол]
 signals: [Готов к экспорту]
+primary_dimension: sectors
 brands: [bushe]
 image: /assets/images/insights/bushe-cultural-signature.jpg
 featured: false

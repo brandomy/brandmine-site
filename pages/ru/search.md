@@ -6,11 +6,30 @@ lang: ru
 ref: search
 ---
 
-<div class="panel panel--light">
+<div class="panel panel--light search-results-page">
   <div class="panel__content">
     <h1 class="panel__heading-primary">Результаты поиска</h1>
     
-    {% include simple-search.html %}
+    <div class="search-box">
+      <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get">
+        <input type="text" id="search-input" name="q" class="search-box__input" 
+               placeholder="{{ site.data.translations[page.lang].search.placeholder }}" aria-label="Поиск брендов">
+        <button type="submit" class="search-box__button">
+          <i class="fas fa-search"></i>
+          {{ site.data.translations[page.lang].search.button }}
+        </button>
+      </form>
+    </div>
+    
+    <div class="search-popular">
+      <p class="search-popular__title">{{ site.data.translations[page.lang].search.popular_searches }}</p>
+      <div class="search-popular__tags">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=вино" class="search-popular__tag">Вино</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=красота" class="search-popular__tag">Красота</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=основатель" class="search-popular__tag">Управляемые основателями</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=москва" class="search-popular__tag">Москва</a>
+      </div>
+    </div>
     
     <div id="search-results" class="search-results">
       <p class="search-results__loading">Загрузка результатов поиска...</p>

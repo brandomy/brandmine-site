@@ -9,6 +9,7 @@ sectors: [美食]
 markets: [俄罗斯]
 attributes: [传统品牌, 创始人领导]
 signals: [出口就绪, 投资就绪]
+primary_dimension: attributes
 brands: [teatime]
 image: /assets/images/insights/teatime-founder.jpg
 featured: true

@@ -28,11 +28,11 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/header.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/footer.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/search-box.css' | relative_url }}"> 
   <link rel="stylesheet" href="{{ '/assets/css/components/discovery.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/featured-brand.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/forms.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/insights.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/insights-grid.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/layout.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/layouts.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/search-filter.css' | relative_url }}">
@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/brand-card.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/insight-card.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/insights-grid-categories.css' | relative_url }}">
 
   <!-- 4. Layout Styles -->
   <!-- <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}"> -->
@@ -53,10 +54,10 @@
     <link rel="stylesheet" href="{{ '/assets/css/pages/home.css' | relative_url }}">
   {% endif %}
   {% if page.permalink contains '/404.html' %}
-  <link rel="stylesheet" href="{{ '/assets/css/components/error-page.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/pages/404.css' | relative_url }}">
   {% endif %}
   {% if page.permalink contains '/search/' %}
-  <link rel="stylesheet" href="{{ '/assets/css/components/search-results.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/pages/search.css' | relative_url }}">
   {% endif %}
   {% if page.permalink contains '/about/' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/about.css' | relative_url }}">
@@ -82,10 +83,7 @@
   {% if page.permalink contains '/russian-sectors/' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/russian-sectors.css' | relative_url }}">
   {% endif %}
-  <!-- {% if page.permalink contains '/solutions/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/solutions.css' | relative_url }}">
-  {% endif %} -->
-  {% if page.permalink contains '/insights/' or page.layout == 'post' or page.layout == 'category' or page.layout == 'tag' %}
+  {% if page.permalink contains '/insights/' or page.layout == 'category' or page.layout == 'tag' %}
   <link rel="stylesheet" href="{{ '/assets/css/pages/insights.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
   {% endif %}

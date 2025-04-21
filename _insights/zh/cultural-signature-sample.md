@@ -9,6 +9,7 @@ sectors: [美食]
 markets: [俄罗斯]
 attributes: [传统品牌, 文化大使]
 signals: [出口就绪]
+primary_dimension: sectors
 brands: [bushe]
 image: /assets/images/insights/bushe-cultural-signature.jpg
 featured: false

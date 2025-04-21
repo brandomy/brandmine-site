@@ -6,11 +6,30 @@ lang: zh
 ref: search
 ---
 
-<div class="panel panel--light">
+<div class="panel panel--light search-results-page">
   <div class="panel__content">
     <h1 class="panel__heading-primary">搜索结果</h1>
     
-    {% include simple-search.html %}
+    <div class="search-box">
+      <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get">
+        <input type="text" id="search-input" name="q" class="search-box__input" 
+               placeholder="{{ site.data.translations[page.lang].search.placeholder }}" aria-label="搜索品牌">
+        <button type="submit" class="search-box__button">
+          <i class="fas fa-search"></i>
+          {{ site.data.translations[page.lang].search.button }}
+        </button>
+      </form>
+    </div>
+    
+    <div class="search-popular">
+      <p class="search-popular__title">{{ site.data.translations[page.lang].search.popular_searches }}</p>
+      <div class="search-popular__tags">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=葡萄酒" class="search-popular__tag">葡萄酒</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=美容" class="search-popular__tag">美容</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=创始人" class="search-popular__tag">创始人领导</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=莫斯科" class="search-popular__tag">莫斯科</a>
+      </div>
+    </div>
     
     <div id="search-results" class="search-results">
       <p class="search-results__loading">正在加载搜索结果...</p>

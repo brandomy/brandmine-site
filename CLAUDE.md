@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 This file provides Claude Code and other AI tools with the architectural context and development practices used in the Brandmine website project.
 
 ---
@@ -134,12 +136,29 @@ npm run build                            # Alias for jekyll build
 ```bash
 ./_scripts/check_language_consistency.sh        # Validate i18n coverage
 ./_scripts/enhanced-site-summary-advanced.sh    # Generate structural summary
+./_scripts/process_brand_images.sh [brand_name] # Process brand images (optional brand parameter)
+./_scripts/process_site_images.sh               # Process site images
+./_scripts/process_people_images.sh             # Process people/team images
+./_scripts/add_image_attribution.py             # Add image attribution to _data/image_attributions.yml
 ```
 
 ## Validation
 ```bash
 jekyll doctor       # Check config  
 htmlproofer _site   # Validate HTML output (requires html-proofer gem)
+```
+
+## Testing & Checking Content
+```bash
+# Test changes locally before deploying
+bundle exec jekyll serve               # Start local server
+open http://localhost:4000             # View in browser
+
+# Test multilingual functionality
+./_scripts/check_language_consistency.sh # Check if pages exist in all languages
+
+# Check image processing & optimization
+identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 ```
 
 ---
@@ -151,18 +170,40 @@ htmlproofer _site   # Validate HTML output (requires html-proofer gem)
 - Mobile-first with defined breakpoints
 - Organized by purpose: tokens, layout, components, pages
 - Uses CSS custom properties for design tokens
+- File organization:
+  - `/assets/css/tokens/` - Design variables, typography, grid definitions
+  - `/assets/css/layout/` - Page structure, panels, grid implementations
+  - `/assets/css/components/` - UI elements (buttons, cards, forms, etc.)
+  - `/assets/css/pages/` - Page-specific styling
 
 ## HTML
 - Semantic HTML5
 - BEM class structure
 - `id`s used for JS targeting
 - ARIA attributes for accessibility
+- Use includes for reusable components
+- Respect content hierarchy with proper heading levels
+- Keep language-specific content in the appropriate language subfolder
 
 ## JavaScript
 - Vanilla JS only (no frameworks)
 - ES6 preferred, backwards-compatible
 - Avoid direct DOM manipulation
 - Use event delegation for dynamic elements
+- Keep scripts modular, limited to specific functionality
+- Ensure all scripts are compatible with multilingual content
+
+## Markdown/Front Matter
+- Use consistent indentation (2 spaces)
+- Include language code in all content files
+- Ensure all tags are properly referenced and exist as tag files
+- For brand files, include all required frontmatter (title, slug, country, etc.)
+- For translated content, keep the same structure across languages
+
+## Error Handling
+- Use Jekyll's multilingual fallback system for missing translations
+- Validate language consistency with checking script before commits
+- Handle missing images gracefully with responsive image component
 
 ---
 
@@ -326,3 +367,38 @@ Claude must align any navigation, filtering, or tag-related output with this tag
 4. For multi-step tasks, give a preview plan before beginning (e.g., "I'll generate 3 files: X, Y, Z — shall I start with X?")
 
 ⚠️ Do not attempt to return more than one document or major block of code in a single response unless I've asked for it explicitly. Wait for confirmation before proceeding.
+
+---
+
+# 📋 Coding Tasks & Workflow
+
+## Recommended Steps When Adding New Content or Features
+
+1. **Check Existing Structure**: Look at similar files or components before creating new ones.
+2. **Follow Naming Conventions**: 
+   - Files: `kebab-case.html`, `kebab-case.css`, etc.
+   - Variables: camelCase for JavaScript, kebab-case for CSS
+   - Classes: BEM format `.block__element--modifier`
+   
+3. **Test in All Languages**: Any new feature should be compatible with all three languages (EN, RU, ZH).
+4. **Mobile-First**: Design for mobile view first, then enhance for larger screens.
+5. **Component Reuse**: Look for opportunities to reuse existing components.
+
+## Common Tasks
+
+### Adding a New Brand
+1. Create brand markdown file in each language folder (`_brands/en/`, `_brands/ru/`, `_brands/zh/`)
+2. Ensure the brand references existing tags
+3. Process brand images with `./_scripts/process_brand_images.sh brandname`
+4. Add attributions for images in `_data/image_attributions.yml`
+
+### Adding a New Tag
+1. Create tag files in appropriate category subfolder for all languages
+2. Update any relevant translation files in `_data/`
+3. Ensure the tag matches the established taxonomy
+
+### Updating Styles
+1. Identify the appropriate CSS file by component or page
+2. Follow BEM naming conventions
+3. Use CSS custom properties from tokens
+4. Test responsive behavior on multiple screen sizes

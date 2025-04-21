@@ -9,6 +9,7 @@ sectors: [Hotels & Resorts]
 markets: [Russia]
 attributes: [Innovation Leader, Premium Positioning]
 signals: [Investment Ready]
+primary_dimension: markets
 brands: [ginza_project]
 image: /assets/images/insights/ginza-project-milestone.jpg
 featured: true
