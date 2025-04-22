@@ -11,18 +11,24 @@
 
    .team-section {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns by default */
-    gap: var(--space-8); /* 2rem */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns with min width of 0 */
+    gap: var(--space-8); /* 2rem - ensures space between columns */
     margin: var(--space-8) 0; /* 2rem 0 */
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .team-member {
     background-color: white;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
-    padding: var(--space-8); /* 2rem */
+    padding: var(--space-6); /* 1.5rem - reduced for better text fit */
     border: 1px solid var(--neutral-200);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   
   .team-member:hover {
@@ -67,11 +73,19 @@
   .team-member li {
     margin-bottom: var(--space-2); /* 0.5rem */
     text-align: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  .team-member p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   
   .team-member-linkedin {
     text-align: center;
     margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
   }
   
   .team-member-linkedin a {
@@ -89,6 +103,12 @@
   
   .team-member-linkedin a:hover {
     background-color: var(--primary-500);
+  }
+  
+  @media (max-width: 480px) {
+    .team-member-linkedin {
+      margin-top: var(--space-2);
+    }
   }
   
   /* --------------------------------------------------------------------------
@@ -461,11 +481,36 @@
       Responsive Adjustments
       -------------------------------------------------------------------------- */
   
+  /* Proper team panel container sizing */
+  .team-panel .panel__content {
+    max-width: 1200px;
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+    box-sizing: border-box;
+  }
+  
+  /* Ensure proper padding on larger screens */
+  @media (min-width: 992px) {
+    .team-panel .panel__content {
+      padding-left: var(--space-8);
+      padding-right: var(--space-8);
+    }
+  }
+
   /* Force single column layout on smaller screens for team section */
   @media (max-width: 768px) {
     .team-section {
       grid-template-columns: 1fr !important; /* Single column on mobile with higher specificity */
       gap: var(--space-6); /* Slightly reduced gap on mobile */
+    }
+    
+    .team-member {
+      padding: var(--space-4); /* Reduced padding on mobile */
+    }
+    
+    .team-panel .panel__content {
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
     }
     
     .services-container {

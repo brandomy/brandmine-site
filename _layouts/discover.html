@@ -2,22 +2,37 @@
 layout: default
 ---
 <div class="panel panel--light">
-  <div class="panel__content">
-    <div class="discovery__tabs" style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+  <div class="panel__content panel__content--full-width">
+    <div class="discovery__tabs">
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery__tab discovery__tab--sector {% if page.discovery_path == 'sectors' %}active{% endif %}">
+        <span class="discovery__tab-icon">
+          {% include icon.html type="sector" name="sector-default" size="sm" %}
+        </span>
         {{ site.data.translations[page.lang].nav.sectors }}
       </a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery__tab discovery__tab--market {% if page.discovery_path == 'markets' %}active{% endif %}">
+        <span class="discovery__tab-icon">
+          {% include icon.html type="market" name="market-default" size="sm" %}
+        </span>
         {{ site.data.translations[page.lang].nav.markets }}
       </a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery__tab discovery__tab--attribute {% if page.discovery_path == 'attributes' %}active{% endif %}">
+        <span class="discovery__tab-icon">
+          {% include icon.html type="attribute" name="attribute-default" size="sm" %}
+        </span>
         {{ site.data.translations[page.lang].nav.attributes }}
       </a>
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery__tab discovery__tab--signal {% if page.discovery_path == 'signals' %}active{% endif %}">
+        <span class="discovery__tab-icon">
+          {% include icon.html type="signal" name="signal-default" size="sm" %}
+        </span>
         {{ site.data.translations[page.lang].nav.signals }}
       </a>
       {% if page.discovery_path == 'russian-sectors' %}
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="discovery__tab discovery__tab--russian-sector active">
+        <span class="discovery__tab-icon">
+          {% include icon.html type="sector" name="russian-sector-default" size="sm" %}
+        </span>
         {{ site.data.translations[page.lang].nav.russian_sectors }}
       </a>
       {% endif %}

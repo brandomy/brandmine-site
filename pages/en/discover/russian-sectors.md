@@ -255,34 +255,25 @@ discovery_path: russian-sectors
       <div class="russian-sectors__navigation-links">
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="russian-sectors__navigation-link russian-sectors__navigation-link--sector">
           <span class="russian-sectors__navigation-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
-            </svg>
+            {% include icon.html type="sector" name="sector-default" size="sm" %}
           </span>
           Sectors
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="russian-sectors__navigation-link russian-sectors__navigation-link--market">
           <span class="russian-sectors__navigation-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
+            {% include icon.html type="market" name="market-default" size="sm" %}
           </span>
           Markets
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="russian-sectors__navigation-link russian-sectors__navigation-link--attribute">
           <span class="russian-sectors__navigation-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 7h16M4 12h16M4 17h10"></path>
-            </svg>
+            {% include icon.html type="attribute" name="attribute-default" size="sm" %}
           </span>
           Attributes
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="russian-sectors__navigation-link russian-sectors__navigation-link--signal">
           <span class="russian-sectors__navigation-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-            </svg>
+            {% include icon.html type="signal" name="signal-default" size="sm" %}
           </span>
           Growth Signals
         </a>

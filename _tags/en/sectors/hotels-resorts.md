@@ -1,10 +1,15 @@
 ---
+layout: tag
 title: "Hotels & Resorts"
 tag: hotels-resorts
 tag_type: sector
 description: "Russian boutique hotels and resorts offering unique cultural experiences and distinctive hospitality traditions."
 permalink: /en/discover/sectors/hotels-resorts/
+lang: en
+ref: sector-hotels-resorts
+badge_icon: "sector-hotels.svg"
 ---
+
 
 From imperial-era urban mansions to remote wilderness lodges, Russian boutique hotels and resorts showcase the country's remarkable geographical and cultural diversity. These properties represent both compelling consumer experiences and strategic B2B investment opportunities, with many independent properties primed for brand development, operational enhancement, and international market positioning.
 

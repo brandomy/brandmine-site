@@ -129,7 +129,7 @@ ref: about
 </div>
 
 <!-- Team Section - Changed to light -->
-<div class="panel panel--light">
+<div class="panel panel--light team-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的团队</h2>
     

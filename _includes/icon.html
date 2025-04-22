@@ -1,0 +1,58 @@
+{% comment %}
+  Reusable icon include that handles different icon types and names
+  
+  Parameters:
+  - type: The icon type (sector, market, attribute, signal)
+  - name: The icon name/id (e.g., hotels-resorts, founder-led)
+  - size: (optional) Size class modifier (default, sm, lg, xl)
+  
+  Usage:
+  {% include icon.html type="sector" name="hotels-resorts" %}
+  {% include icon.html type="attribute" name="founder-led" size="lg" %}
+{% endcomment %}
+
+{% assign icon_path = 'icons/' %}
+
+{% if include.name contains '-default' %}
+  {% assign icon_path = icon_path | append: include.name | append: '.svg' %}
+{% else %}
+  {% if include.type %}
+    {% if include.type == 'sector' %}
+      {% assign icon_path = icon_path | append: 'sectors/' %}
+    {% elsif include.type == 'market' %}
+      {% assign icon_path = icon_path | append: 'markets/' %}
+    {% elsif include.type == 'attribute' %}
+      {% assign icon_path = icon_path | append: 'attributes/' %}
+    {% elsif include.type == 'signal' %}
+      {% assign icon_path = icon_path | append: 'signals/' %}
+    {% elsif include.type == 'insight' %}
+      {% assign icon_path = icon_path | append: include.name | append: '.svg' %}
+      {% assign icon_path_set = true %}
+    {% endif %}
+  {% endif %}
+  
+  {% if icon_path_set != true %}
+    {% assign icon_path = icon_path | append: include.name | append: '.svg' %}
+  {% endif %}
+{% endif %}
+
+{% assign icon_class = 'icon' %}
+{% if include.type %}
+  {% assign icon_class = icon_class | append: ' icon--' | append: include.type %}
+{% endif %}
+{% if include.size %}
+  {% assign icon_class = icon_class | append: ' icon--' | append: include.size %}
+{% endif %}
+
+<div class="{{ icon_class }}">
+  {% if include.name and include.type %}
+    {% include {{ icon_path }} %}
+  {% else %}
+    <!-- Fallback icon if specific one is not found -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="16"></line>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+    </svg>
+  {% endif %}
+</div>
