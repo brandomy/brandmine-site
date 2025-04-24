@@ -7,9 +7,6 @@ discovery: franchise-ready
 dimension: franchise-ready
 discovery_type: signal
 dimension_type: signal
-description: "Сервисные бренды с систематизированными операциями и поддерживающей инфраструктурой, подготовленные для расширения через франчайзинг."
-badge_type: tier2
-badge_icon: franchise-ready.svg
 verification_required: true
 permalink: /ru/discover/signals/franchise-ready/
 ---

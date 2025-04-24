@@ -7,12 +7,7 @@ discovery: india
 dimension: india
 discovery_type: market
 dimension_type: market
-description: "Content focusing on Indian brands, markets, and consumer trends in the world's most populous nation with ancient cultural traditions and rapidly modernizing consumer economy."
-badge_type: market  
-badge_icon: india-flag.svg
 permalink: /en/discover/markets/india/
-lang: en
-ref: market-india
 ---
 
 Content tagged with "India" explores the dynamic landscape of Indian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Indian market and Indian brands with international potential.

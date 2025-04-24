@@ -7,9 +7,6 @@ discovery: rapid-growth
 dimension: rapid-growth
 discovery_type: signal
 dimension_type: signal
-description: "Brands demonstrating significant business expansion, increasing market presence, and accelerated revenue growth."
-badge_type: tier2
-badge_icon: rapid-growth.svg
 verification_required: true
 permalink: /en/discover/signals/rapid-growth/
 ---

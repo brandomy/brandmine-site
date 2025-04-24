@@ -7,9 +7,6 @@ discovery: brazil
 dimension: brazil
 discovery_type: market
 dimension_type: market
-description: "专注于巴西品牌、市场和消费趋势的内容，巴西作为拉丁美洲最大经济体，拥有充满活力的文化影响和多样化的消费机会。"
-badge_type: market
-badge_icon: brazil-flag.svg
 permalink: /zh/discover/markets/brazil/
 lang: zh
 ref: market-brazil

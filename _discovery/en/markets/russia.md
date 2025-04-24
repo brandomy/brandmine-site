@@ -7,12 +7,7 @@ discovery: russia
 dimension: russia
 discovery_type: market
 dimension_type: market
-description: "Content focusing on Russian brands, markets, and consumer trends in one of the founding BRICS nations with a rich cultural heritage and diverse consumer economy."
-badge_type: market
-badge_icon: russia-flag.svg
 permalink: /en/discover/markets/russia/
-lang: en
-ref: market-russia
 ---
 
 ![Life in Russia](/assets/images/russia/andrew-konstantinov-y2kSjuA4Y4E-unsplash-1200.jpg)

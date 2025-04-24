@@ -7,7 +7,6 @@ discovery: halal-food-products
 dimension: halal-food-products
 discovery_type: sector
 dimension_type: sector
-description: "High-quality food products compliant with Islamic dietary laws, produced in regions with significant Muslim populations like Tatarstan and Bashkortostan."
 permalink: /en/discover/sectors/halal-food-products/
 ---
 

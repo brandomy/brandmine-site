@@ -7,9 +7,6 @@ discovery: founder-led
 dimension: founder-led
 discovery_type: attribute
 dimension_type: attribute
-description: "Brands where founders remain active leaders with significant influence on product development, quality standards, and company direction."
-badge_type: tier1
-badge_icon: founder-led.svg
 verification_required: true
 permalink: /en/discover/attributes/founder-led/
 ---

@@ -7,9 +7,6 @@ discovery: rapid-growth
 dimension: rapid-growth
 discovery_type: signal
 dimension_type: signal
-description: "展示显著业务扩张、增加市场存在感和加速收入增长的品牌。"
-badge_type: tier2
-badge_icon: rapid-growth.svg
 verification_required: true
 permalink: /zh/discover/signals/rapid-growth/
 ---

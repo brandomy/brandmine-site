@@ -7,9 +7,6 @@ discovery: regional-icon
 dimension: regional-icon
 discovery_type: attribute
 dimension_type: attribute
-description: "通过原料、方法、传统或文化意义真实代表特定本地区域的品牌。"
-badge_type: tier1
-badge_icon: regional-icon.svg
 verification_required: true
 permalink: /zh/discover/attributes/regional-icon/
 ---

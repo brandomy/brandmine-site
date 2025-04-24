@@ -7,7 +7,6 @@ discovery: honey-bee-products
 dimension: honey-bee-products
 discovery_type: sector
 dimension_type: sector
-description: "Уникальные сорта мёда и продукты пчеловодства из разнообразных и нетронутых ландшафтов России, демонстрирующие природную чистоту и региональное разнообразие."
 permalink: /ru/discover/sectors/honey-bee-products/
 ---
 

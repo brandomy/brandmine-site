@@ -7,9 +7,6 @@ discovery: investment-ready
 dimension: investment-ready
 discovery_type: signal
 dimension_type: signal
-description: "Бренды, которые прошли проверку и активно ищут капитальных партнеров для конкретных инициатив роста, приобретений или развития."
-badge_type: tier2
-badge_icon: investment-ready.svg
 verification_required: true
 permalink: /ru/discover/signals/investment-ready/
 ---

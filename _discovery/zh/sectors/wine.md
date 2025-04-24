@@ -7,7 +7,6 @@ discovery: wine
 dimension: wine
 discovery_type: sector
 dimension_type: sector
-description: "来自克拉斯诺达尔等地区的新兴俄罗斯葡萄酒生产，展示独特风土和创新酿酒技术。"
 permalink: /zh/discover/sectors/wine/
 ---
 

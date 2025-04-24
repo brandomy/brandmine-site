@@ -7,9 +7,6 @@ discovery: innovation-leader
 dimension: innovation-leader
 discovery_type: attribute
 dimension_type: attribute
-description: "Brands blending traditional foundations with forward-thinking approaches, signaling dynamism, adaptability, and future-oriented thinking."
-badge_type: tier1
-badge_icon: innovation-leader.svg
 verification_required: true
 permalink: /en/discover/attributes/innovation-leader/
 ---

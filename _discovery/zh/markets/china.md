@@ -7,9 +7,6 @@ discovery: china
 dimension: china
 discovery_type: market
 dimension_type: market
-description: "专注于中国品牌、市场和消费趋势的内容，中国作为全球第二大经济体，拥有独特的文化传统和快速演变的消费者偏好。"
-badge_type: market
-badge_icon: china-flag.svg
 permalink: /zh/discover/markets/china/
 lang: zh
 ref: market-china

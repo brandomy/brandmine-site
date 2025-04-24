@@ -7,9 +7,6 @@ discovery: investment-ready
 dimension: investment-ready
 discovery_type: signal
 dimension_type: signal
-description: "Brands that have been vetted and are actively seeking capital partners for specific growth initiatives, acquisitions, or developments."
-badge_type: tier2
-badge_icon: investment-ready.svg
 verification_required: true
 permalink: /en/discover/signals/investment-ready/
 ---

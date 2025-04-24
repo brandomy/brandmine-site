@@ -7,9 +7,6 @@ discovery: export-ready
 dimension: export-ready
 discovery_type: signal
 dimension_type: signal
-description: "已为国际市场准备好产品、包装和认证的品牌。"
-badge_type: tier2
-badge_icon: export-ready.svg
 verification_required: true
 permalink: /zh/discover/signals/export-ready/
 ---

@@ -7,7 +7,6 @@ discovery: gourmet-foods
 dimension: gourmet-foods
 discovery_type: sector
 dimension_type: sector
-description: "Высококачественные специализированные продукты питания из различных регионов России, отличающиеся уникальными ингредиентами, традиционными рецептами и инновационными кулинарными подходами."
 permalink: /ru/discover/sectors/gourmet-foods/
 ---
 

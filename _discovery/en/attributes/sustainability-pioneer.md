@@ -7,9 +7,6 @@ discovery: sustainability-pioneer
 dimension: sustainability-pioneer
 discovery_type: attribute
 dimension_type: attribute
-description: "Brands with exceptional environmental and social practices that demonstrate leadership in ethical and sustainable business approaches."
-badge_type: tier1
-badge_icon: sustainability-pioneer.svg
 verification_required: true
 permalink: /en/discover/attributes/sustainability-pioneer/
 ---

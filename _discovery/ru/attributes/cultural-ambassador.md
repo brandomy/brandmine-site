@@ -7,9 +7,6 @@ discovery: cultural-ambassador
 dimension: cultural-ambassador
 discovery_type: attribute
 dimension_type: attribute
-description: "Бренды, активно демонстрирующие отличительные культурные элементы через свои продукты, сторителлинг и присутствие на рынке."
-badge_type: tier1
-badge_icon: cultural-ambassador.svg
 verification_required: true
 permalink: /ru/discover/attributes/cultural-ambassador/
 ---

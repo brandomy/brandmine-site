@@ -7,9 +7,6 @@ discovery: franchise-ready
 dimension: franchise-ready
 discovery_type: signal
 dimension_type: signal
-description: "Service-based brands with systematized operations and support infrastructure prepared for franchising expansion."
-badge_type: tier2
-badge_icon: franchise-ready.svg
 verification_required: true
 permalink: /en/discover/signals/franchise-ready/
 ---

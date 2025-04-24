@@ -7,7 +7,6 @@ discovery: artisan-confectionery
 dimension: artisan-confectionery
 discovery_type: sector
 dimension_type: sector
-description: "Russian confectionery blending historical recipes with contemporary innovation, creating distinctive sweets with cultural significance."
 permalink: /en/discover/sectors/artisan-confectionery/
 ---
 

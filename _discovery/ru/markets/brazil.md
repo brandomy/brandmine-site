@@ -7,9 +7,6 @@ discovery: brazil
 dimension: brazil
 discovery_type: market
 dimension_type: market
-description: "Контент, посвященный бразильским брендам, рынкам и потребительским тенденциям в крупнейшей экономике Латинской Америки с яркими культурными влияниями и разнообразными потребительскими возможностями."
-badge_type: market
-badge_icon: brazil-flag.svg
 permalink: /ru/discover/markets/brazil/
 lang: ru
 ref: market-brazil

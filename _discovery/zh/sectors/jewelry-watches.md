@@ -7,7 +7,6 @@ discovery: jewelry-watches
 dimension: jewelry-watches
 discovery_type: sector
 dimension_type: sector
-description: "展示独特设计、宝石专业知识和精密工艺的俄罗斯珠宝和手表品牌。"
 permalink: /zh/discover/sectors/jewelry-watches/
 ---
 

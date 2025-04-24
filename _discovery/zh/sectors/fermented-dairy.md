@@ -7,7 +7,6 @@ discovery: fermented-dairy
 dimension: fermented-dairy
 discovery_type: sector
 dimension_type: sector
-description: "传统俄罗斯发酵乳制品，拥有独特益生菌培养物和独特生产方法，全球健康市场吸引力不断增长。"
 permalink: /zh/discover/sectors/fermented-dairy/
 ---
 

@@ -7,9 +7,6 @@ discovery: china
 dimension: china
 discovery_type: market
 dimension_type: market
-description: "Контент, посвященный китайским брендам, рынкам и потребительским тенденциям во второй по величине экономике мира с характерными культурными традициями и быстро развивающимися потребительскими предпочтениями."
-badge_type: market
-badge_icon: china-flag.svg
 permalink: /ru/discover/markets/china/
 lang: ru
 ref: market-china

@@ -7,9 +7,6 @@ discovery: artisanal-excellence
 dimension: artisanal-excellence
 discovery_type: attribute
 dimension_type: attribute
-description: "致力于卓越手工艺和传统生产方法的品牌，标志着不妥协的质量和真实的生产方式。"
-badge_type: tier1
-badge_icon: artisanal-excellence.svg
 verification_required: true
 permalink: /zh/discover/attributes/artisanal-excellence/
 ---

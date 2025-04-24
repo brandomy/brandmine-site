@@ -7,7 +7,6 @@ discovery: specialty-cheeses
 dimension: specialty-cheeses
 discovery_type: sector
 dimension_type: sector
-description: "Artisanal Russian cheesemakers creating distinctive varieties with unique regional characteristics and traditional production methods."
 permalink: /en/discover/sectors/specialty-cheeses/
 ---
 

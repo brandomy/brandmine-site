@@ -7,7 +7,6 @@ discovery: fermented-dairy
 dimension: fermented-dairy
 discovery_type: sector
 dimension_type: sector
-description: "Traditional Russian fermented dairy products featuring distinctive probiotic cultures and unique production methods with growing global wellness appeal."
 permalink: /en/discover/sectors/fermented-dairy/
 ---
 

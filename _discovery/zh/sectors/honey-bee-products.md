@@ -2,13 +2,12 @@
 lang: zh
 ref: sector-honey-bee-products
 layout: dimension
-title: "清真食品"
-discovery: halal-food-products
-dimension: halal-food-products
+title: ""
+discovery: honey-bee-products
+dimension: honey-bee-products
 discovery_type: sector
 dimension_type: sector
-description: "符合伊斯兰饮食法的高品质食品，产自鞑靼斯坦和巴什科尔托斯坦等穆斯林人口众多的地区。"
-permalink: /zh/discover/sectors/halal-food-products/
+permalink: /zh/discover/sectors/honey-bee-products/
 ---
 
 俄罗斯的清真食品领域代表了宗教合规性、烹饪传统和生产卓越性的复杂交汇，特别是在鞑靼斯坦和巴什科尔托斯坦等穆斯林人口众多的地区。自2019年以来，该领域以每年28%的速度增长，超越了基本的饮食合规性，展示了俄罗斯食品格局的丰富文化多样性，同时满足了最高的国际清真认证标准。

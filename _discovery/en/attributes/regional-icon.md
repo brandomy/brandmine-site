@@ -7,9 +7,6 @@ discovery: regional-icon
 dimension: regional-icon
 discovery_type: attribute
 dimension_type: attribute
-description: "Brands that authentically represent specific local regions through ingredients, methods, tradition, or cultural significance."
-badge_type: tier1
-badge_icon: regional-icon.svg
 verification_required: true
 permalink: /en/discover/attributes/regional-icon/
 ---

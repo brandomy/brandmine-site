@@ -7,9 +7,6 @@ discovery: premium-positioning
 dimension: premium-positioning
 discovery_type: attribute
 dimension_type: attribute
-description: "Бренды, позиционируемые в верхних сегментах рынка с превосходным качеством, отличительными атрибутами и ценами выше средних по категории."
-badge_type: tier1
-badge_icon: premium-positioning.svg
 verification_required: true
 permalink: /ru/discover/attributes/premium-positioning/
 ---

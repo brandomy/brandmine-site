@@ -7,9 +7,6 @@ discovery: rapid-growth
 dimension: rapid-growth
 discovery_type: signal
 dimension_type: signal
-description: "Бренды, демонстрирующие значительное расширение бизнеса, увеличение присутствия на рынке и ускоренный рост доходов."
-badge_type: tier2
-badge_icon: rapid-growth.svg
 verification_required: true
 permalink: /ru/discover/signals/rapid-growth/
 ---

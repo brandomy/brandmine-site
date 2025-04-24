@@ -7,9 +7,6 @@ discovery: innovation-leader
 dimension: innovation-leader
 discovery_type: attribute
 dimension_type: attribute
-description: "Бренды, сочетающие традиционные основы с прогрессивными подходами, демонстрирующие динамизм, адаптивность и ориентированное на будущее мышление."
-badge_type: tier1
-badge_icon: innovation-leader.svg
 verification_required: true
 permalink: /ru/discover/attributes/innovation-leader/
 ---

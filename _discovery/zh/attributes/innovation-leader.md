@@ -7,9 +7,6 @@ discovery: innovation-leader
 dimension: innovation-leader
 discovery_type: attribute
 dimension_type: attribute
-description: "将传统基础与前瞻性方法相结合的品牌，展现活力、适应性和面向未来的思维。"
-badge_type: tier1
-badge_icon: innovation-leader.svg
 verification_required: true
 permalink: /zh/discover/attributes/innovation-leader/
 ---

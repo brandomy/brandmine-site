@@ -7,7 +7,6 @@ discovery: mineral-waters
 dimension: mineral-waters
 discovery_type: sector
 dimension_type: sector
-description: "Natural mineral waters from pristine Russian springs, offering unique geological compositions and health-focused beverage options."
 permalink: /en/discover/sectors/mineral-waters/
 ---
 

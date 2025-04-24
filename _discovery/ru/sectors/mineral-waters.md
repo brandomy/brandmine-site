@@ -7,7 +7,6 @@ discovery: mineral-waters
 dimension: mineral-waters
 discovery_type: sector
 dimension_type: sector
-description: "Натуральные минеральные воды из чистейших российских источников, предлагающие уникальные геологические составы и оздоровительные напитки."
 permalink: /ru/discover/sectors/mineral-waters/
 ---
 

@@ -7,7 +7,6 @@ discovery: artisan-confectionery
 dimension: artisan-confectionery
 discovery_type: sector
 dimension_type: sector
-description: "Российские кондитерские изделия, сочетающие исторические рецепты с современными инновациями, создают характерные сладости с культурным значением."
 permalink: /ru/discover/sectors/artisan-confectionery/
 ---
 

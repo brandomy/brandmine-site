@@ -7,12 +7,7 @@ discovery: south-africa
 dimension: south-africa
 discovery_type: market
 dimension_type: market
-description: "Content focusing on South African brands, markets, and consumer trends in Africa's most industrialized economy with distinctive cultural diversity and creative innovation."
-badge_type: market
-badge_icon: south-africa-flag.svg
 permalink: /en/discover/markets/south-africa/
-lang: en
-ref: market-south-africa
 ---
 
 Content tagged with "South Africa" explores the dynamic landscape of South African consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the South African market and South African brands with international potential.

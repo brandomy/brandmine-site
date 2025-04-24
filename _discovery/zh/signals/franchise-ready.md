@@ -7,9 +7,6 @@ discovery: franchise-ready
 dimension: franchise-ready
 discovery_type: signal
 dimension_type: signal
-description: "已开发出可复制的业务系统，具备详细操作手册和特许经营支持结构的品牌。"
-badge_type: tier2
-badge_icon: franchise-ready.svg
 verification_required: true
 permalink: /zh/discover/signals/franchise-ready/
 ---

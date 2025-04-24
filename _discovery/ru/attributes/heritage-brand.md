@@ -7,9 +7,6 @@ discovery: heritage-brand
 dimension: heritage-brand
 discovery_type: attribute
 dimension_type: attribute
-description: "Бренды с более чем 50-летней историей и документированным культурным влиянием, демонстрирующие проверенную устойчивость и традиционный опыт."
-badge_type: tier1
-badge_icon: heritage-brand.svg
 verification_required: true
 permalink: /ru/discover/attributes/heritage-brand/
 ---

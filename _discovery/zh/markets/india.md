@@ -7,9 +7,6 @@ discovery: india
 dimension: india
 discovery_type: market
 dimension_type: market
-description: "专注于印度品牌、市场和消费趋势的内容，印度作为世界人口最多的国家，拥有古老的文化传统和快速现代化的消费经济。"
-badge_type: market
-badge_icon: india-flag.svg
 permalink: /zh/discover/markets/india/
 lang: zh
 ref: market-india

@@ -7,7 +7,6 @@ discovery: wine
 dimension: wine
 discovery_type: sector
 dimension_type: sector
-description: "Развивающееся российское винное производство из регионов, таких как Краснодар, демонстрирующее уникальный терруар и инновационные техники виноделия."
 permalink: /ru/discover/sectors/wine/
 ---
 

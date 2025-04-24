@@ -7,7 +7,6 @@ discovery: wine
 dimension: wine
 discovery_type: sector
 dimension_type: sector
-description: "Emerging Russian wine production from regions like Krasnodar, showcasing unique terroir and innovative winemaking techniques."
 permalink: /en/discover/sectors/wine/
 ---
 

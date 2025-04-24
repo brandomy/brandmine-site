@@ -7,7 +7,6 @@ discovery: mineral-waters
 dimension: mineral-waters
 discovery_type: sector
 dimension_type: sector
-description: "来自原始俄罗斯泉水的天然矿泉水，提供独特的地质组成和以健康为中心的饮料选择。"
 permalink: /zh/discover/sectors/mineral-waters/
 ---
 

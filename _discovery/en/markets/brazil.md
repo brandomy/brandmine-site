@@ -7,12 +7,7 @@ discovery: brazil
 dimension: brazil
 discovery_type: market
 dimension_type: market
-description: "Content focusing on Brazilian brands, markets, and consumer trends in Latin America's largest economy with vibrant cultural influences and diverse consumer opportunities."
-badge_type: market
-badge_icon: brazil-flag.svg
 permalink: /en/discover/markets/brazil/
-lang: en
-ref: market-brazil
 ---
 
 Content tagged with "Brazil" explores the dynamic landscape of Brazilian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Brazilian market and Brazilian brands with international potential.

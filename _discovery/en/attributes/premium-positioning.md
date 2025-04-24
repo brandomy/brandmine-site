@@ -7,9 +7,6 @@ discovery: premium-positioning
 dimension: premium-positioning
 discovery_type: attribute
 dimension_type: attribute
-description: "Brands positioned in upper market segments with superior quality, distinctive attributes, and prices above category averages."
-badge_type: tier1
-badge_icon: premium-positioning.svg
 verification_required: true
 permalink: /en/discover/attributes/premium-positioning/
 ---

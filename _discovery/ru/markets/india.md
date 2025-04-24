@@ -7,9 +7,6 @@ discovery: india
 dimension: india
 discovery_type: market
 dimension_type: market
-description: "Контент, посвященный индийским брендам, рынкам и потребительским тенденциям в самой населенной стране мира с древними культурными традициями и быстро модернизирующейся потребительской экономикой."
-badge_type: market
-badge_icon: india-flag.svg
 permalink: /ru/discover/markets/india/
 lang: ru
 ref: market-india

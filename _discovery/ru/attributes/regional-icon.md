@@ -7,9 +7,6 @@ discovery: regional-icon
 dimension: regional-icon
 discovery_type: attribute
 dimension_type: attribute
-description: "Бренды, которые аутентично представляют определенные местные регионы через ингредиенты, методы, традиции или культурное значение."
-badge_type: tier1
-badge_icon: regional-icon.svg
 verification_required: true
 permalink: /ru/discover/attributes/regional-icon/
 ---

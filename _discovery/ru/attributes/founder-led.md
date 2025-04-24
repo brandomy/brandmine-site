@@ -7,9 +7,6 @@ discovery: founder-led
 dimension: founder-led
 discovery_type: attribute
 dimension_type: attribute
-description: "Бренды, где основатели остаются активными лидерами с существенным влиянием на разработку продукции, стандарты качества и направление развития компании."
-badge_type: tier1
-badge_icon: founder-led.svg
 verification_required: true
 permalink: /ru/discover/attributes/founder-led/
 ---

@@ -7,9 +7,6 @@ discovery: south-africa
 dimension: south-africa
 discovery_type: market
 dimension_type: market
-description: "专注于南非品牌、市场和消费趋势的内容，南非作为非洲最工业化的经济体，拥有独特的文化多样性和创意创新。"
-badge_type: market
-badge_icon: south-africa-flag.svg
 permalink: /zh/discover/markets/south-africa/
 lang: zh
 ref: market-south-africa

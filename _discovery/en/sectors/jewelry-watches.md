@@ -7,7 +7,6 @@ discovery: jewelry-watches
 dimension: jewelry-watches
 discovery_type: sector
 dimension_type: sector
-description: "Russian jewelry and watch brands showcasing distinctive design, gemstone expertise, and precision craftsmanship."
 permalink: /en/discover/sectors/jewelry-watches/
 ---
 

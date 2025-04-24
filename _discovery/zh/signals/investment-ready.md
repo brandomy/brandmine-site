@@ -7,9 +7,6 @@ discovery: investment-ready
 dimension: investment-ready
 discovery_type: signal
 dimension_type: signal
-description: "已准备好接受国际投资，具有明确的商业模式、管理架构和增长计划的品牌。"
-badge_type: tier2
-badge_icon: investment-ready.svg
 verification_required: true
 permalink: /zh/discover/signals/investment-ready/
 ---

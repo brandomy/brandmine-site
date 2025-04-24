@@ -7,7 +7,6 @@ discovery: gourmet-foods
 dimension: gourmet-foods
 discovery_type: sector
 dimension_type: sector
-description: "来自俄罗斯各地区的高品质特色食品，呈现独特原料、传统配方和创新烹饪手法。"
 permalink: /zh/discover/sectors/gourmet-foods/
 ---
 

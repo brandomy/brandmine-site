@@ -7,9 +7,6 @@ discovery: cultural-ambassador
 dimension: cultural-ambassador
 discovery_type: attribute
 dimension_type: attribute
-description: "通过产品、故事讲述和市场存在积极展示独特文化元素的品牌。"
-badge_type: tier1
-badge_icon: cultural-ambassador.svg
 verification_required: true
 permalink: /zh/discover/attributes/cultural-ambassador/
 ---

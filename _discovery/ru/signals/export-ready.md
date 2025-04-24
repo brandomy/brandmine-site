@@ -7,9 +7,6 @@ discovery: export-ready
 dimension: export-ready
 discovery_type: signal
 dimension_type: signal
-description: "Бренды с продукцией, упаковкой и сертификатами, подготовленными для международных рынков."
-badge_type: tier2
-badge_icon: export-ready.svg
 verification_required: true
 permalink: /ru/discover/signals/export-ready/
 ---

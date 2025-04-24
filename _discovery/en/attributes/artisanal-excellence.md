@@ -7,9 +7,6 @@ discovery: artisanal-excellence
 dimension: artisanal-excellence
 discovery_type: attribute
 dimension_type: attribute
-description: "Brands committed to exceptional handcraft and traditional production methods, signaling uncompromising quality and authentic production approaches."
-badge_type: tier1
-badge_icon: artisanal-excellence.svg
 verification_required: true
 permalink: /en/discover/attributes/artisanal-excellence/
 ---

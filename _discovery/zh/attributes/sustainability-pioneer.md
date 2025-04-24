@@ -7,9 +7,6 @@ discovery: sustainability-pioneer
 dimension: sustainability-pioneer
 discovery_type: attribute
 dimension_type: attribute
-description: "具有卓越环境和社会实践的品牌，展示道德和可持续商业方法的领导地位。"
-badge_type: tier1
-badge_icon: sustainability-pioneer.svg
 verification_required: true
 permalink: /zh/discover/attributes/sustainability-pioneer/
 ---

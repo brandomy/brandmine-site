@@ -7,9 +7,6 @@ discovery: heritage-brand
 dimension: heritage-brand
 discovery_type: attribute
 dimension_type: attribute
-description: "拥有50多年历史和有据可查的文化影响力，代表着经过验证的持久力和传统专业知识的品牌。"
-badge_type: tier1
-badge_icon: heritage-brand.svg
 verification_required: true
 permalink: /zh/discover/attributes/heritage-brand/
 ---

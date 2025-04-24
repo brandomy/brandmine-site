@@ -7,7 +7,6 @@ discovery: fermented-dairy
 dimension: fermented-dairy
 discovery_type: sector
 dimension_type: sector
-description: "Традиционные российские ферментированные молочные продукты с характерными пробиотическими культурами и уникальными методами производства, вызывающие растущий глобальный интерес к оздоровлению."
 permalink: /ru/discover/sectors/fermented-dairy/
 ---
 

@@ -7,7 +7,6 @@ discovery: specialty-cheeses
 dimension: specialty-cheeses
 discovery_type: sector
 dimension_type: sector
-description: "俄罗斯手工奶酪制造商创造具有独特地区特色和传统生产方法的独特奶酪品种。"
 permalink: /zh/discover/sectors/specialty-cheeses/
 ---
 

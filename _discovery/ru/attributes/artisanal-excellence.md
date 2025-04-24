@@ -7,9 +7,6 @@ discovery: artisanal-excellence
 dimension: artisanal-excellence
 discovery_type: attribute
 dimension_type: attribute
-description: "Бренды, приверженные исключительному ручному мастерству и традиционным методам производства, демонстрирующие бескомпромиссное качество и аутентичные производственные подходы."
-badge_type: tier1
-badge_icon: artisanal-excellence.svg
 verification_required: true
 permalink: /ru/discover/attributes/artisanal-excellence/
 ---

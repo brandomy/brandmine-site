@@ -2,12 +2,11 @@
 lang: en
 ref: sector-honey-bee-products
 layout: dimension
-title: "Honey and Bee Products"
+title: "Honey & Bee Products"
 discovery: honey-bee-products
 dimension: honey-bee-products
 discovery_type: sector
 dimension_type: sector
-description: "Unique honey varieties and bee-related products from Russia's diverse and pristine landscapes, showcasing natural purity and regional diversity."
 permalink: /en/discover/sectors/honey-bee-products/
 ---
 

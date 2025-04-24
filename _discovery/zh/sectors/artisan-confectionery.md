@@ -7,7 +7,6 @@ discovery: artisan-confectionery
 dimension: artisan-confectionery
 discovery_type: sector
 dimension_type: sector
-description: "俄罗斯糖果融合历史配方与当代创新，创造具有文化意义的独特甜点。"
 permalink: /zh/discover/sectors/artisan-confectionery/
 ---
 

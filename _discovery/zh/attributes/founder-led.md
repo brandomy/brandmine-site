@@ -7,9 +7,6 @@ discovery: founder-led
 dimension: founder-led
 discovery_type: attribute
 dimension_type: attribute
-description: "创始人仍然作为活跃领导者，对产品开发、质量标准和公司方向有重大影响的品牌。"
-badge_type: tier1
-badge_icon: founder-led.svg
 verification_required: true
 permalink: /zh/discover/attributes/founder-led/
 ---

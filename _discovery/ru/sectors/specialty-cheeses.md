@@ -7,7 +7,6 @@ discovery: specialty-cheeses
 dimension: specialty-cheeses
 discovery_type: sector
 dimension_type: sector
-description: "Ремесленные российские сыроделы, создающие отличительные сорта с уникальными региональными характеристиками и традиционными методами производства."
 permalink: /ru/discover/sectors/specialty-cheeses/
 ---
 

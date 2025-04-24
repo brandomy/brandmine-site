@@ -7,12 +7,7 @@ discovery: hotels-resorts
 dimension: hotels-resorts
 discovery_type: sector
 dimension_type: sector
-description: "Russian boutique hotels and resorts offering unique cultural experiences and distinctive hospitality traditions."
 permalink: /en/discover/sectors/hotels-resorts/
-lang: en
-ref: sector-hotels-resorts
-ref: sector-hotels-resorts
-badge_icon: "sector-hotels.svg"
 ---
 
 

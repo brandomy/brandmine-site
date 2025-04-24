@@ -7,9 +7,6 @@ discovery: premium-positioning
 dimension: premium-positioning
 discovery_type: attribute
 dimension_type: attribute
-description: "定位于高端市场细分、具有卓越品质、独特属性和高于类别平均价格的品牌。"
-badge_type: tier1
-badge_icon: premium-positioning.svg
 verification_required: true
 permalink: /zh/discover/attributes/premium-positioning/
 ---
