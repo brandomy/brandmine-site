@@ -165,6 +165,17 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 
 # 🎨 Code Style Guidelines
 
+## Layout Width Strategy
+- **Home page**: Full-width layout for maximum visual impact
+- **Interior pages**: Max-width of 1200px for content areas
+- **Panel content**: Standard 1200px max-width for consistency across pages
+- **Responsive behavior**: Widths automatically adjust on smaller screens
+- This strategy balances:
+  - Using screen real estate effectively on modern large displays
+  - Maintaining readability for text-heavy content
+  - Creating visual hierarchy between landing pages and interior content
+  - Providing consistent user experience across different sections
+
 ## CSS
 - Follows **BEM naming**: `Block__Element--Modifier`
 - Mobile-first with defined breakpoints

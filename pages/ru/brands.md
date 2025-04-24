@@ -15,14 +15,14 @@ ref: brands
 </div>
 
 <!-- Introduction Panel -->
-<div class="panel panel--light">
+<div class="panel panel--light brands-panel">
   <div class="panel__content">
     <p class="panel__lead-text">Brandmine предлагает беспрецедентный доступ к потребительским брендам, которые доказали свой успех на рынках БРИКС+, но остаются неоткрытыми на международном уровне из-за языковых, политических и культурных барьеров.</p>
   </div>
 </div>
 
 <!-- Search Panel - NEW -->
-<div class="panel panel--primary-soft">
+<div class="panel panel--primary-soft brands-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Поиск в нашей базе брендов</h2>
     <p class="panel__lead-text">Ищете конкретные бренды? Используйте наш поиск, чтобы найти именно то, что вам нужно.</p>

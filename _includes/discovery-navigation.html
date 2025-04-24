@@ -1,0 +1,46 @@
+<!-- _includes/discovery-navigation.html -->
+<div class="discovery-tabs-container {{ include.container_class }}">
+  <div class="discovery-tabs">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-tab {% if page.discovery_path == 'sectors' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="sector" name="sector-default" size="sm" %}
+      </span>
+      {{ site.data.translations[page.lang].nav.sectors }}
+      <span class="discovery-tab-tooltip">{{ site.data.translations[page.lang].tooltips.sectors | default: "Browse by business category" }}</span>
+    </a>
+    
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-tab {% if page.discovery_path == 'markets' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="market" name="market-default" size="sm" %}
+      </span>
+      {{ site.data.translations[page.lang].nav.markets }}
+      <span class="discovery-tab-tooltip">{{ site.data.translations[page.lang].tooltips.markets | default: "Explore by country or region" }}</span>
+    </a>
+    
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-tab {% if page.discovery_path == 'attributes' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="attribute" name="attribute-default" size="sm" %}
+      </span>
+      {{ site.data.translations[page.lang].nav.attributes }}
+      <span class="discovery-tab-tooltip">{{ site.data.translations[page.lang].tooltips.attributes | default: "Discover by brand characteristics" }}</span>
+    </a>
+    
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-tab {% if page.discovery_path == 'signals' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="signal" name="signal-default" size="sm" %}
+      </span>
+      {{ site.data.translations[page.lang].nav.signals }}
+      <span class="discovery-tab-tooltip">{{ site.data.translations[page.lang].tooltips.signals | default: "Filter by growth indicators" }}</span>
+    </a>
+    
+    {% if site.data.translations[page.lang].nav.russian_sectors %}
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="discovery-tab {% if page.discovery_path == 'russian-sectors' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="sector" name="sector-default" size="sm" %}
+      </span>
+      {{ site.data.translations[page.lang].nav.russian_sectors }}
+      <span class="discovery-tab-tooltip">{{ site.data.translations[page.lang].tooltips.russian_sectors | default: "Explore Russian sectors" }}</span>
+    </a>
+    {% endif %}
+  </div>
+</div>

@@ -10,22 +10,20 @@ ref: about
 <div class="panel panel--hero">
   <div class="panel__content">
     <h1 class="panel__heading-primary">About Brandmine</h1>
-    <p class="panel__subtitle">Elevating Founder-led Brands from the BRICS+</p>
+    <p class="panel__subtitle">Illuminating and Elevating Founder-led Brands from the BRICS+</p>
   </div>
 </div>
 
-<!-- Mission Section -->
+<!-- Mission Section - Keep as primary-soft -->
 <div class="panel panel--primary-soft">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">Our Mission</h2>
-    <p class="panel__lead-text">
-      Brandmine exists to elevate the global potential of founder-led brands from BRICS+ countries by illuminating their authentic stories and creating meaningful connections that transcend language, cultural, and political barriers. We bridge the gap between visionary founders and the international partners ready to help them scale beyond their borders.
-    </p>
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].about.mission }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].about.lead_text }}</p>
   </div>
 </div>
 
-<!-- Problem Section -->
-<div class="panel panel--light">
+<!-- Problem Section - Keep as light -->
+<div class="panel panel--light problems-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">The Problem We Solve</h2>
     <p class="panel__lead-text">
@@ -73,8 +71,8 @@ ref: about
   </div>
 </div>
 
-<!-- Solution Section -->
-<div class="panel panel--primary-soft">
+<!-- Solution Section - Changed to olive-soft to match sectors focus -->
+<div class="panel panel--olive-soft solutions-panel">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Our Solution</h2>
       <p class="panel__lead-text">
@@ -128,7 +126,7 @@ ref: about
   </div>
 </div>
 
-<!-- Team Section using existing styling -->
+<!-- Team Section - Keep as light -->
 <div class="panel panel--light team-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Our Team</h2>
@@ -191,8 +189,8 @@ ref: about
   </div>
 </div>
 
-<!-- Perspective Section -->
-<div class="panel panel--primary-soft">
+<!-- Perspective Section - Changed to secondary-soft to highlight attributes/qualities -->
+<div class="panel panel--secondary-soft">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Our Unique Perspective</h2>
       <p class="panel__lead-text">
@@ -213,8 +211,8 @@ ref: about
   </div>
 </div>
 
-<!-- Services Section -->
-<div class="panel panel--light">
+<!-- Services Section - Keep as light -->
+<div class="panel panel--light services-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Our Services</h2>
     <p class="panel__lead-text">
@@ -306,7 +304,7 @@ ref: about
   </div>
 </div>
 
-<!-- Contact Section -->
+<!-- Contact Section - Keep as cta -->
 <div class="panel panel--cta">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Contact Us</h2>

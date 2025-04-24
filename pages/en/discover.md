@@ -15,8 +15,8 @@ discovery_path: discover
   </div>
 </div>
 
-<!-- Main Discovery Hub -->
-<div class="panel panel--light">
+<!-- Main Discovery Hub - Changed to olive-soft to match sectors dimension -->
+<div class="panel panel--olive-soft discover-panel">
   <div class="panel__content">
     <!-- Sector Discovery Section -->
     <section class="discover__section">
@@ -79,8 +79,8 @@ discovery_path: discover
   </div>
 </div>
 
-<!-- Market Discovery Panel -->
-<div class="panel panel--primary-soft">
+<!-- Market Discovery Panel - Changed to sky-soft to match markets dimension -->
+<div class="panel panel--sky-soft">
   <div class="panel__content">
     <!-- Market Discovery Section -->
     <section class="discover__section">
@@ -134,8 +134,8 @@ discovery_path: discover
   </div>
 </div>
 
-<!-- Attributes Discovery Panel -->
-<div class="panel panel--light">
+<!-- Attributes Discovery Panel - Changed to secondary-soft to match attributes dimension -->
+<div class="panel panel--secondary-soft">
   <div class="panel__content">
     <!-- Attributes Discovery Section -->
     <section class="discover__section">
@@ -167,7 +167,7 @@ discovery_path: discover
   </div>
 </div>
 
-<!-- Growth Signals Discovery Panel -->
+<!-- Growth Signals Discovery Panel - Keep as accent-soft to match signals dimension -->
 <div class="panel panel--accent-soft">
   <div class="panel__content">
     <!-- Growth Signals Discovery Section -->
@@ -200,7 +200,7 @@ discovery_path: discover
   </div>
 </div>
 
-<!-- Featured Brands Panel -->
+<!-- Featured Brands Panel - Keep as light -->
 <div class="panel panel--light">
   <div class="panel__content">
     <!-- Featured Brands Section -->
@@ -241,7 +241,7 @@ discovery_path: discover
   </div>
 </div>
 
-<!-- Latest Insights Panel -->
+<!-- Latest Insights Panel - Keep as primary-soft -->
 <div class="panel panel--primary-soft">
   <div class="panel__content">
     <!-- Latest Insights Section -->
@@ -284,7 +284,7 @@ discovery_path: discover
   </div>
 </div>
 
-<!-- Contact CTA Panel -->
+<!-- Contact CTA Panel - Keep as cta -->
 <div class="panel panel--cta">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Ready to Explore BRICS+ Brands?</h2>

@@ -25,7 +25,7 @@ ref: about
 </div>
 
 <!-- Problem Section - Changed to light -->
-<div class="panel panel--light">
+<div class="panel panel--light problems-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们解决的问题</h2>
     <p class="panel__lead-text">
@@ -74,7 +74,7 @@ ref: about
 </div>
 
 <!-- Solution Section - Changed to primary-soft -->
-<div class="panel panel--primary-soft">
+<div class="panel panel--primary-soft solutions-panel">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">我们的解决方案</h2>
       <p class="panel__lead-text">
@@ -214,7 +214,7 @@ ref: about
 </div>
 
 <!-- Services Section - Changed to light -->
-<div class="panel panel--light">
+<div class="panel panel--light services-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">我们的服务</h2>
     <p class="panel__lead-text">

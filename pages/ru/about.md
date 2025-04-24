@@ -25,7 +25,7 @@ ref: about
 </div>
 
 <!-- Problem Section -->
-<div class="panel panel--light">
+<div class="panel panel--light problems-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Проблемы, которые мы решаем</h2>
     <p class="panel__lead-text">
@@ -74,7 +74,7 @@ ref: about
 </div>
 
 <!-- Solution Section -->
-<div class="panel panel--primary-soft">
+<div class="panel panel--primary-soft solutions-panel">
   <div class="panel__content">
       <h2 class="panel__heading-secondary">Наше решение</h2>
       <p class="panel__lead-text">
@@ -214,7 +214,7 @@ ref: about
 </div>
 
 <!-- Services Section -->
-<div class="panel panel--light">
+<div class="panel panel--light services-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Наши услуги</h2>
     <p class="panel__lead-text">

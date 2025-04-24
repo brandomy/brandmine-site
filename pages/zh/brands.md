@@ -15,14 +15,14 @@ ref: brands
 </div>
 
 <!-- Introduction Panel -->
-<div class="panel panel--light">
+<div class="panel panel--light brands-panel">
   <div class="panel__content">
     <p class="panel__lead-text">Brandmine提供前所未有的访问渠道，让您了解那些在金砖国家+市场已证明成功但因语言、政治和文化障碍而在国际上尚未被发现的消费品牌。</p>
   </div>
 </div>
 
 <!-- Search Panel - NEW -->
-<div class="panel panel--primary-soft">
+<div class="panel panel--primary-soft brands-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">搜索我们的品牌数据库</h2>
     <p class="panel__lead-text">正在寻找特定品牌？使用我们的搜索功能找到您需要的内容。</p>

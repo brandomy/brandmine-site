@@ -1,7 +1,7 @@
 # Site settings
 title: Brandmine
 email: randal@brandmine.io
-description: Amplifying leading consumer brands of the BRICS+
+description: Elevating leading consumer brands of the BRICS+
 google_analytics_id: G-V3T1T5DWJG
 # Change this line
 baseurl: "" # Empty for local development
@@ -32,7 +32,7 @@ collections:
     output: true
     # Note: Individual brand files now define their permalink pattern that includes country code
     permalink: /:collection/:path/
-  tags:
+  discovery:
     output: true
     permalink: /:collection/:path/
   insights:
@@ -86,22 +86,22 @@ defaults:
       layout: "brand"
       lang: "zh"
 
-  # Tag language defaults
+  # Discovery language defaults
   - scope:
-      path: "_tags/en"
-      type: "tags"
+      path: "_discovery/en"
+      type: "discovery"
     values:
-      layout: "tag"
+      layout: "discovery"
       lang: "en"
   - scope:
-      path: "_tags/ru"
-      type: "tags"
+      path: "_discovery/ru"
+      type: "discovery"
     values:
-      layout: "tag"
+      layout: "discovery"
       lang: "ru"
   - scope:
-      path: "_tags/zh"
-      type: "tags"
+      path: "_discovery/zh"
+      type: "discovery"
     values:
       layout: "tag"
       lang: "zh"
@@ -179,5 +179,5 @@ styleguide:
           path: /en/styleguide/patterns/content-display/
         - name: Image Handling
           path: /en/styleguide/patterns/image-handling/
-        - name: Tags
-          path: /en/styleguide/patterns/tags/
+        - name: Discovery
+          path: /en/styleguide/patterns/disovery/

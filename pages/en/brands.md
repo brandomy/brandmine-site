@@ -9,21 +9,21 @@ ref: brands
 <!-- Hero Panel -->
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary brands__title">Discover Leading BRICS+ Consumer Brands</h1>
+    <h1 class="panel__heading-primary brands__title">Explore Founder-Led BRICS+ Consumer Brands</h1>
     <p class="panel__subtitle">Breaking Through Barriers to Find Your Next Opportunity</p>
   </div>
 </div>
 
-<!-- Introduction Panel -->
-<div class="panel panel--light">
+<!-- Introduction Panel - Keep as light -->
+<div class="panel panel--light brands-panel">
   <div class="panel__content">
     <p class="panel__lead-text">Brandmine offers unprecedented access to consumer brands that have proven their success in BRICS+ markets but remain undiscovered internationally due to language, political, and cultural barriers.</p>
   </div>
 </div>
 
 
-<!-- Search Panel - NEW -->
-<div class="panel panel--primary-soft">
+<!-- Search Panel - Changed to sky-soft to match markets dimension (geographic focus) -->
+<div class="panel panel--sky-soft brands-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Search Our Brand Database</h2>
     <p class="panel__lead-text">Looking for specific brands? Use our search to find exactly what you need.</p>
@@ -51,8 +51,8 @@ ref: brands
 </div>
 
 
-<!-- Brand Profiles Panel -->
-<div class="panel panel--primary-soft">
+<!-- Brand Profiles Panel - Changed to olive-soft to match sectors dimension -->
+<div class="panel panel--olive-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Rich Brand Profiles</h2>
     <p class="panel__lead-text">Our curated brand profiles go beyond basic company information to reveal:</p>
@@ -122,7 +122,7 @@ ref: brands
 </div>
 
 
-<!-- Featured Brands Panel -->
+<!-- Featured Brands Panel - Keep as light -->
 <div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Featured Brands</h2>
@@ -163,7 +163,7 @@ ref: brands
   </div>
 </div>
 
-<!-- Find Your Partner Panel -->
+<!-- Find Your Partner Panel - Keep as accent-soft for signals dimension -->
 <div class="panel panel--accent-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Find Your Next Partner</h2>
@@ -185,7 +185,7 @@ ref: brands
   </div>
 </div>
 
-<!-- Contact CTA Panel -->
+<!-- Contact CTA Panel - Keep as cta -->
 <div class="panel panel--cta">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">Ready to Discover BRICS+ Brands?</h2>

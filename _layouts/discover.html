@@ -1,43 +1,54 @@
 ---
 layout: default
 ---
-<div class="panel panel--light">
+{% assign container_class = '' %}
+{% if page.discovery_path == 'sectors' %}
+  {% assign container_class = 'discovery-tabs-container--sectors' %}
+{% elsif page.discovery_path == 'markets' %}
+  {% assign container_class = 'discovery-tabs-container--markets' %}
+{% elsif page.discovery_path == 'attributes' %}
+  {% assign container_class = 'discovery-tabs-container--attributes' %}
+{% elsif page.discovery_path == 'signals' %}
+  {% assign container_class = 'discovery-tabs-container--signals' %}
+{% endif %}
+
+<!-- Discover Tabs Container with context-aware background -->
+
+
+<!-- Discover Tabs Container with context-aware background -->
+<div class="discovery-tabs-container {{ discovery_class }}">
+  <div class="discovery-tabs">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-tab {% if page.discovery_path == 'sectors' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="sector" name="sector-default" size="sm" %}
+      </span>
+      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.sectors | default: "Browse by business category" }}</span>
+    </a>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-tab {% if page.discovery_path == 'markets' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="market" name="market-default" size="sm" %}
+      </span>
+      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.markets | default: "Explore by country or region" }}</span>
+    </a>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-tab {% if page.discovery_path == 'attributes' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="attribute" name="attribute-default" size="sm" %}
+      </span>
+      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.attributes | default: "Discover by brand characteristics" }}</span>
+    </a>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-tab {% if page.discovery_path == 'signals' %}active{% endif %}">
+      <span class="discovery-tab-icon">
+        {% include icon.html type="signal" name="signal-default" size="sm" %}
+      </span>
+      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.signals | default: "Filter by growth indicators" }}</span>
+    </a>
+  </div>
+</div>
+
+
+<!-- Main Content Panel - with discovery-content modifier to remove top padding -->
+<div class="panel panel--light panel--discovery-content">
   <div class="panel__content panel__content--full-width">
-    <div class="discovery__tabs">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery__tab discovery__tab--sector {% if page.discovery_path == 'sectors' %}active{% endif %}">
-        <span class="discovery__tab-icon">
-          {% include icon.html type="sector" name="sector-default" size="sm" %}
-        </span>
-        {{ site.data.translations[page.lang].nav.sectors }}
-      </a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery__tab discovery__tab--market {% if page.discovery_path == 'markets' %}active{% endif %}">
-        <span class="discovery__tab-icon">
-          {% include icon.html type="market" name="market-default" size="sm" %}
-        </span>
-        {{ site.data.translations[page.lang].nav.markets }}
-      </a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery__tab discovery__tab--attribute {% if page.discovery_path == 'attributes' %}active{% endif %}">
-        <span class="discovery__tab-icon">
-          {% include icon.html type="attribute" name="attribute-default" size="sm" %}
-        </span>
-        {{ site.data.translations[page.lang].nav.attributes }}
-      </a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery__tab discovery__tab--signal {% if page.discovery_path == 'signals' %}active{% endif %}">
-        <span class="discovery__tab-icon">
-          {% include icon.html type="signal" name="signal-default" size="sm" %}
-        </span>
-        {{ site.data.translations[page.lang].nav.signals }}
-      </a>
-      {% if page.discovery_path == 'russian-sectors' %}
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="discovery__tab discovery__tab--russian-sector active">
-        <span class="discovery__tab-icon">
-          {% include icon.html type="sector" name="russian-sector-default" size="sm" %}
-        </span>
-        {{ site.data.translations[page.lang].nav.russian_sectors }}
-      </a>
-      {% endif %}
-    </div>
-    
     <div class="discovery__content">
       {{ content }}
     </div>

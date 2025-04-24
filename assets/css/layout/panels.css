@@ -39,7 +39,7 @@
   /* Panel content container - controls width and centering */
   .panel__content {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;  /* Updated to follow the new width strategy */
     margin: 0 auto;
     padding: 0 var(--space-6);
     box-sizing: border-box;
@@ -156,9 +156,14 @@
     background-color: white;
     color: var(--neutral-700);
   }
+  
+  /* Special panel for discovery content that removes top spacing */
+  .panel--discovery-content {
+    padding-top: 0; /* Remove top padding to connect with tabs */
+  }
 
   .panel--light .panel__content {
-    max-width: 900px;     /* More contained width */
+    max-width: 1200px;    /* Updated to follow the new width strategy */
     text-align: center;   /* Center all content */
   }
   
@@ -374,6 +379,76 @@
   .panel--accent-soft .service-list li:before {
     color: var(--accent-400); /* Change from primary to accent */
   }
+
+  /* Sky Soft Panel (for Markets dimension) */
+.panel--sky-soft {
+  background-color: var(--sky-50);
+  color: var(--neutral-700);
+  border-bottom: 3px solid rgba(14, 165, 233, 0.2); /* Sky color with opacity */
+}
+
+.panel--sky-soft .panel__heading-secondary {
+  color: var(--sky-800);
+}
+
+/* Make sure headings stay dark for readability */
+.panel--sky-soft h3 {
+  color: var(--sky-800);
+}
+
+/* Enhance buttons on sky backgrounds */
+.panel--sky-soft .btn--standard {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border-color: var(--sky-300);
+}
+
+.panel--sky-soft .btn--standard:hover {
+  background-color: var(--sky-200);
+  border-color: var(--sky-400);
+}
+
+/* Category card styling for Insights page */
+.insights__category-card {
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insights__category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dimension-specific category cards */
+.insights__category-card--sector {
+  border-top: 3px solid var(--olive-500);
+}
+
+.insights__category-icon--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-700);
+  padding: var(--space-2);
+  border-radius: 50%;
+  display: inline-flex;
+  margin-bottom: var(--space-2);
+}
+
+.insights__category-card--sector h3 {
+  color: var(--olive-700);
+}
+
+.insights__category-card--market {
+  border-top: 3px solid var(--sky-500);
+}
+
+.insights__category-icon--market {
+  background-color: var(--sky-100);
+  color: var(--sky-700);
+  padding: var(--space-2);
+  
   
   /* --------------------------------------------------------------------------
      5. RESPONSIVE ADJUSTMENTS (Mobile-first approach)

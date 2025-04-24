@@ -16,7 +16,7 @@ lang: ru
 </div>
 
 <!-- Featured Insights - To be added in future updates -->
-<div class="panel panel--light">
+<div class="panel panel--light insights-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Избранная аналитика</h2>
     <p class="panel__lead-text">Изучите наш новейший анализ и экспертные мнения о потребительских брендах на рынках БРИКС+.</p>

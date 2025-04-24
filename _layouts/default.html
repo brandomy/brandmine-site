@@ -14,7 +14,7 @@
   <link rel="manifest" href="{{ '/assets/images/site/favicons/site.webmanifest' | relative_url }}">
 
   <!-- Style Sheets --> 
-   
+  
   <!-- 1. Design Tokens (Consolidated tokens file) -->
   <link rel="stylesheet" href="{{ '/assets/css/tokens/tokens.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/tokens/grid.css' | relative_url }}">
@@ -30,6 +30,8 @@
   <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/search-box.css' | relative_url }}"> 
   <link rel="stylesheet" href="{{ '/assets/css/components/discovery.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/discovery-navigation.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components/discovery-tooltips.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/featured-brand.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/forms.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/components/insights.css' | relative_url }}">
@@ -65,8 +67,8 @@
   {% if page.permalink contains '/brands/' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/brands.css' | relative_url }}">
   {% endif %}
-  {% if page.permalink contains '/discover/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/discover.css' | relative_url }}">
+  {% if page.permalink contains '/discovery/' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/panel--discovery-hub.css' | relative_url }}">
   {% endif %}
   {% if page.permalink contains '/discover/markets/' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/discover-markets.css' | relative_url }}">
@@ -85,7 +87,6 @@
   {% endif %}
   {% if page.permalink contains '/insights/' or page.layout == 'category' or page.layout == 'tag' %}
   <link rel="stylesheet" href="{{ '/assets/css/pages/insights.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
   {% endif %}
   {% if page.layout == 'styleguide' or page.url contains '/styleguide/' %}
     <link rel="stylesheet" href="{{ '/assets/css/styleguide.css' | relative_url }}">

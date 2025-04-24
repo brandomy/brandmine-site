@@ -16,7 +16,7 @@ lang: zh
 </div>
 
 <!-- Featured Insights - To be added in future updates -->
-<div class="panel panel--light">
+<div class="panel panel--light insights-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">精选洞察</h2>
     <p class="panel__lead-text">探索我们对金砖国家+市场消费品牌的最新分析和思想领导力。</p>

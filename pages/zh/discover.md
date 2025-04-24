@@ -16,7 +16,7 @@ discovery_path: discover
 </div>
 
 <!-- Main Discovery Hub -->
-<div class="panel panel--light">
+<div class="panel panel--light discover-panel">
   <div class="panel__content">
     <!-- Sector Discovery Section -->
     <section class="discover__section">
