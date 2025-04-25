@@ -1,9 +1,29 @@
-<!-- _includes/simple-search.html -->
 {% comment %}
-  Simple Search Box Include (for 404 pages)
+  Include Name: simple-search.html
   
-  Usage:
+  Purpose: Renders a basic search form for use on error pages (404) and other simple contexts.
+  Provides a streamlined search experience without advanced filtering options.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.lang: Current page language
+    - site.data.translations[lang].search.placeholder: Localized placeholder text
+  
+  Dependencies:
+  - CSS: search-box.css
+  - Data: site.data.translations[lang].search.placeholder
+  - Font Awesome for the search icon
+  
+  Example Usage:
   {% include simple-search.html %}
+  
+  Notes:
+  - Submits to the language-specific search page
+  - Uses placeholder text from translations
+  - Includes a search button with Font Awesome icon
+  - Uses a simpler design than the full search-filter component
+  - Form uses GET method to allow bookmarking of search results
+  - Does not include category/dimension filtering options
 {% endcomment %}
 
 <div class="search-box">

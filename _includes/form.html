@@ -1,4 +1,41 @@
-<!-- _includes/form.html -->
+{% comment %}
+  Include Name: form.html
+  
+  Purpose: Renders a standard contact form with name, email, and message fields.
+  Used on contact pages and other areas requiring user input.
+  
+  Parameters:
+  - action: Form submission URL (optional, default: '#')
+  - name_label: Custom label for name field (optional, default: 'Name')
+  - email_label: Custom label for email field (optional, default: 'Email')
+  - message_label: Custom label for message field (optional, default: 'Message')
+  - submit_label: Custom label for submit button (optional, default: 'Send Message')
+  
+  Dependencies:
+  - CSS: forms.css for styling
+  
+  Example Usage:
+  Basic form with defaults:
+  {% include form.html %}
+  
+  Customized form with translations:
+  {% include form.html 
+     action="/submit-contact"
+     name_label=site.data.translations[page.lang].forms.name
+     email_label=site.data.translations[page.lang].forms.email
+     message_label=site.data.translations[page.lang].forms.message
+     submit_label=site.data.translations[page.lang].forms.submit %}
+  
+  Notes:
+  - Uses semantic HTML5 form elements
+  - All fields are marked as required
+  - Uses BEM naming conventions for styling
+  - Supports custom labels for internationalization
+  - Default form action is '#' (submit to current page)
+  - Uses POST method by default
+  - Simple structure with name, email, message fields
+{% endcomment %}
+
 <form class="form" action="{{ include.action | default: '#' }}" method="post">
   <div class="form__group">
     <label for="name" class="form__label">{{ include.name_label | default: 'Name' }}</label>

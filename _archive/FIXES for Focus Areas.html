@@ -1,0 +1,88 @@
+FIXES for Focus Areas
+
+translations .yml
+
+2. Template Files
+Insights Layout (_layouts/insight.html)
+Update any references to "categories" to "focus areas" or "areas":
+html<!-- Before -->
+<div class="insight-meta__category">
+  <span>{{ site.data.translations[page.lang].insights.categories }}</span>
+  
+<!-- After -->
+<div class="insight-meta__category">
+  <span>{{ site.data.translations[page.lang].insights.focus_areas }}</span>
+Insights Index Page (/pages/en/insights.md and similar)
+Update any category filtering UI to use "Focus Areas" terminology:
+html<!-- Before -->
+<div class="insights-filter">
+  <h3>{{ site.data.translations[page.lang].insights.categories }}</h3>
+  
+<!-- After -->
+<div class="insights-filter">
+  <h3>{{ site.data.translations[page.lang].insights.focus_areas }}</h3>
+
+  3. Component Includes
+Latest Insights Grid Include (_includes/latest-insights-grid.html)
+Update the comments and any visible UI elements:
+html{% comment %}
+  Include Name: latest-insights-grid.html
+  
+  Parameters:
+  - filter_focus_area: Filter by focus area (optional)
+    Values: brand_spotlight, founders_journey, location_intelligence, market_momentum
+  
+  Notes:
+  - Displays content type badges color-coded by focus area
+    (brand_spotlight: secondary, founders_journey: olive,
+     location_intelligence: sky, market_momentum: accent)
+{% endcomment %}
+Also update any UI elements that display the category/area name:
+html{% if include.filter_focus_area %}
+  <h3 class="insights-filter-title">{{ site.data.translations[page.lang].insights.focus_areas }}: 
+    {% case include.filter_focus_area %}
+      <!-- cases for each focus area -->
+    {% endcase %}
+  </h3>
+{% endif %}
+4. CSS Files
+Update any class names or comments that reference categories to focus areas:
+css/* Before */
+.insight-category-badge { ... }
+.insight-category-filter { ... }
+
+/* After */
+.insight-focus-area-badge { ... }
+.insight-focus-area-filter { ... }
+5. JavaScript Files
+Update any JavaScript that references categories (like filters or analytics tracking):
+javascript// Before
+const selectedCategory = document.querySelector('.category-filter.active').dataset.category;
+
+// After
+const selectedFocusArea = document.querySelector('.focus-area-filter.active').dataset.focusArea;
+6. Navigation Files
+If your navigation references these specifically:
+yaml# _data/navigation/en.yml
+insights:
+  - name: "All Insights"
+    link: "/en/insights/"
+  - name: "Focus Areas"  # Updated from Categories
+    link: "#"
+    children:
+      - name: "Brand Spotlights"
+        link: "/en/insights/brand-spotlights/"
+7. URLs and Permalinks
+If you have category-specific URL patterns, consider if these need to change:
+yaml# In _config.yml or front matter
+permalink: /en/insights/focus-areas/:focus_area/  # Updated from /categories/
+8. Documentation Updates
+Update any internal documentation, style guides, or content creation guidelines to use the new terminology consistently.
+Implementation Strategy
+I recommend making these changes in the following order:
+
+Start with the translation files to establish the new terminology base
+Update templates and layouts next
+Update includes and components
+Update CSS and JavaScript
+Check for any hard-coded references in content files

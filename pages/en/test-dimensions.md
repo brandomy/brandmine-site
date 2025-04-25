@@ -1,0 +1,35 @@
+---
+layout: default
+title: Test Dimensions
+permalink: /en/test-dimensions/
+lang: en
+ref: test-dimensions
+---
+
+# Attributes
+
+{% assign related_dimensions = site.dimensions | where: "dimension_type", "attribute" | where: "lang", "en" %}
+{% include dimension-list.html dimensions=related_dimensions %}
+
+# Markets
+
+{% assign related_dimensions = site.dimensions | where: "dimension_type", "market" | where: "lang", "en" %}
+{% include dimension-list.html dimensions=related_dimensions %}
+
+# All Together
+
+{% assign related_dimensions = site.dimensions | where: "dimension_type", "market" | where: "lang", "en" %}
+{% include dimension-list.html dimensions=related_dimensions %}
+
+{% assign related_dimensions = site.dimensions | where: "dimension_type", "sector" | where: "lang", "en" %}
+{% include dimension-list.html dimensions=related_dimensions %}
+
+{% assign related_dimensions = site.dimensions | where: "dimension_type", "attribute" | where: "lang", "en" %}
+{% include dimension-list.html dimensions=related_dimensions %}
+
+{% assign related_dimensions = site.dimensions | where: "dimension_type", "signal" | where: "lang", "en" %}
+{% include dimension-list.html dimensions=related_dimensions %}
+
+## Dimension Cloud!
+
+  {% include dimension-cloud.html %}

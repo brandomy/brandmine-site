@@ -1,4 +1,35 @@
-<!-- _includes/language-selector.html -->
+{% comment %}
+  Include Name: language-selector.html
+  
+  Purpose: Renders a language selector component that allows users to switch between available 
+  languages (EN, RU, ZH). Maintains the current page's path across language changes.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.ref: Reference identifier to find equivalent pages in other languages
+    - page.lang: Current page language code
+    - page.layout: Current page layout
+    - page.url: Current page URL
+  - Can be disabled by setting layout.skip_language_selector to true
+  
+  Dependencies:
+  - Requires site.pages collection to find alternate language versions
+  - Saves user preference to localStorage for persistence
+  - CSS: Styles for language-selector class and active state
+  
+  Example Usage:
+  {% include language-selector.html %}
+  
+  Notes:
+  - Uses multiple strategies to find equivalent pages in other languages:
+    1. First tries to find pages with matching 'ref' attribute
+    2. Then tries to find pages with matching 'layout' and 'ref'
+    3. Falls back to constructing URLs by replacing the language code in the path
+  - Marks the current language with an 'active' class
+  - Can be disabled entirely by setting layout.skip_language_selector to true
+  - Stores user's language preference in localStorage
+{% endcomment %}
+
 {% unless layout.skip_language_selector %}
 <div class="language-selector">
   {% assign pages = site.pages | where:"ref", page.ref | sort: 'lang' %}

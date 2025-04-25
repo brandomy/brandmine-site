@@ -1,23 +1,45 @@
-{% if include.tags.size > 0 %}
-  <div class="tag-list">
-    {% for tag in include.tags %}
-      {% assign tag_slug = tag | slugify %}
-      {% assign tag_type = include.type | default: 'sector' %}
-      
-      {% comment %}Use pluralized tag type in URL for consistency{% endcomment %}
-      {% assign url_type = tag_type | append: 's' %} 
-      {% if tag_type == 'attribute' %}
-        {% assign url_type = 'attributes' %}
-      {% elsif tag_type == 'market' %}
-        {% assign url_type = 'markets' %}
-      {% elsif tag_type == 'signal' %}
-        {% assign url_type = 'signals' %}
-      {% elsif tag_type == 'sector' %}
-        {% assign url_type = 'sectors' %}
-      {% endif %}
-      
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ url_type }}/{{ tag_slug }}/" class="tag-list__item tag tag--{{ tag_type }}">
-        {{ site.data.tags[page.lang][tag_type][tag_slug] | default: tag }}
+{% comment %}
+  Include Name: dimension-list.html
+
+  Purpose: Renders a list of dimensions (sectors, markets, attributes, signals) with 
+  proper styling and links. Used for displaying brand dimensions and filtering options.
+
+  Parameters:
+  - dimensions: Array of dimension objects (required)
+    Each dimension object should have:
+    - dimension: The dimension identifier
+    - dimension_type: The type of dimension (sector, market, attribute, signal)
+    - lang: The language code
+    - title: A fallback title if dimension data is not found
+
+  Dependencies:
+  - CSS: dimension-list.css
+  - Data: site.data[dimension_type][lang] structure for dimension details
+
+  Example Usage:
+  {% include dimension-list.html dimensions=page.dimensions %}
+  {% include dimension-list.html dimensions=brand.dimensions %}
+
+  Notes:
+  - Retrieves dimension details from the appropriate data file based on type and language
+  - Links each dimension item to its corresponding discovery page
+  - Uses the dimension's short_description from data files when available, falls back to title
+  - Applies type-specific styling via CSS classes
+  - Skips rendering if dimensions array is empty
+  - Supports all dimension types (sectors, markets, attributes, signals)
+{% endcomment %}
+
+{% if include.dimensions.size > 0 %}
+  <div class="dimension-list">
+    {% for dimension in include.dimensions %}
+      {% assign dimension_id = dimension.dimension %}
+      {% assign dimension_type = dimension.dimension_type %}
+      {% assign lang = dimension.lang %}
+      {% assign data_items = site.data[dimension_type | append: 's'][lang] %}
+      {% assign dimension_data = data_items | where: "id", dimension_id | first %}
+
+      <a href="{{ site.baseurl }}/{{ lang }}/discover/{{ dimension_type | append: 's' }}/{{ dimension_id }}/" class="dimension-list__item dimension dimension--{{ dimension_type }}">
+        {{ dimension_data.short_description | default: dimension.title }}
       </a>
     {% endfor %}
   </div>

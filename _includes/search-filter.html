@@ -1,12 +1,40 @@
 {% comment %}
-  Search and Filter Include
+  Include Name: search-filter.html
   
-  Usage:
-  {% include search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
+  Purpose: Renders an advanced search and filtering interface with accordion sections
+  for all taxonomy dimensions. Provides real-time filtering with active filter pills
+  and URL parameter synchronization.
   
   Parameters:
-  - content_type: Type of content to filter ("brands" or "insights")
-  - taxonomy: Taxonomy data object (containing sectors, markets, attributes, signals)
+  - content_type: Type of content to filter ("brands" or "insights") (required)
+  - taxonomy: Taxonomy data object containing all available options (required)
+    Should include nested objects for sectors, markets, attributes, signals
+  
+  Dependencies:
+  - CSS: search-filter.css, buttons.css
+  - JavaScript: Included inline script for filter functionality
+  - Data:
+    - site.data.translations[lang].search.placeholder
+    - site.data.translations[lang].search.button
+    - site.data.translations[lang].filter.heading
+    - site.data.translations[lang].filter.clear_all
+    - site.data.translations[lang].tags
+    - site.data.insight_types (only if content_type is "insights")
+  
+  Example Usage:
+  {% include search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
+  {% include search-filter.html content_type="insights" taxonomy=site.data.taxonomy %}
+  
+  Notes:
+  - Handles both text search and multi-select filtering via checkboxes
+  - Dynamically builds filter UI based on provided taxonomy data
+  - Shows active filters as removable "pills"
+  - Updates URL parameters for bookmarking and sharing filtered views
+  - Maintains state via URL parameters
+  - Includes accordion sections for each taxonomy dimension 
+  - For insights, adds a content type filter section
+  - Dispatches custom events for JavaScript-based filtering integration
+  - Preserves search query when applying filters
 {% endcomment %}
 
 <div class="search-filter" data-content-type="{{ include.content_type }}">

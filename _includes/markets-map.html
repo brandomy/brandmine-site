@@ -1,7 +1,33 @@
-<!-- 
-Add this map section to your markets.html file or create a _includes/markets-map.html
-that you can include within your markets page
--->
+{% comment %}
+  Include Name: markets-map.html
+  
+  Purpose: Renders an interactive map showing brand locations across different markets,
+  with color-coding by country. Provides clustering for dense areas and detailed popups
+  for individual brands.
+  
+  Parameters:
+  - None directly passed to the include, but it requires:
+    - MapLibre GL JS to be available (will attempt to load if missing)
+    - Stadia Maps API key to be set in YOUR_STADIA_MAPS_API_KEY placeholder
+  
+  Dependencies:
+  - External: MapLibre GL JS library (loaded dynamically if not present)
+  - External: Stadia Maps account and API key
+  - CSS: Styles included inline (should be moved to a dedicated stylesheet)
+  
+  Example Usage:
+  {% include markets-map.html %}
+  
+  Notes:
+  - Includes sample data for demonstration (needs to be replaced with real data)
+  - Color-codes points by country (Russia, Brazil, India, China, South Africa)
+  - Includes clustering for dense areas with appropriate styling
+  - Shows detailed popups with brand name, country, sector, and link
+  - Includes placeholder for future filter implementation
+  - Contains responsive design adjustments for different screen sizes
+  - Handles MapLibre loading with a fallback placeholder
+  - Includes comprehensive styling for the map container and popups
+{% endcomment %}
 
 <div id="map-section" class="markets-map">
   <h2 class="markets-map__title">Brand Locations</h2>

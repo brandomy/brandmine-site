@@ -1,6 +1,40 @@
 ---
 layout: default
 ---
+<!-- ----------------------------------------------------------------------------
+  DISCOVER DIMENSION WRAPPER LAYOUT
+  ------------------------------------------------------------------------------
+  This layout is used for all individual dimension-specific pages in the 
+  /discover/ section (e.g., Sectors, Markets, Attributes, Signals).
+
+  It plays a key bridging role between:
+    - `discovery.html` → the high-level Discovery landing hub
+    - `dimension.html` → the detailed view for each individual tag within a dimension
+
+  Purpose:
+  - Wraps each of the 4 dimension overviews in a consistent format
+  - Injects the multilingual discovery navigation tabs via `discovery-navigation.html`
+  - Applies a context-aware background style via `container_class` 
+    (e.g., sectors, markets) depending on the `page.discovery_path`
+
+  Typical usage:
+  - Assigned in front matter of:
+    /en/discover/sectors.md
+    /en/discover/markets.md
+    /en/discover/attributes.md
+    /en/discover/signals.md
+
+  Related layouts:
+  - `discovery.html`: used by /{lang}/discovery.md for hub-level introduction
+  - `dimension.html`: used for individual tag landing pages like 
+    /en/discover/sectors/wine or /zh/discover/markets/china
+
+  Dependencies:
+  - _includes/discovery-navigation.html
+  - _layouts/default.html (as base wrapper)
+  - Uses `page.discovery_path` and `site.data.translations[lang]` 
+    for styling and multilingual support
+---------------------------------------------------------------------------- -->
 {% assign container_class = '' %}
 {% if page.discovery_path == 'sectors' %}
   {% assign container_class = 'discovery-tabs-container--sectors' %}
@@ -12,38 +46,8 @@ layout: default
   {% assign container_class = 'discovery-tabs-container--signals' %}
 {% endif %}
 
-<!-- Discover Tabs Container with context-aware background -->
-
-
-<!-- Discover Tabs Container with context-aware background -->
-<div class="discovery-tabs-container {{ discovery_class }}">
-  <div class="discovery-tabs">
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-tab {% if page.discovery_path == 'sectors' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="sector" name="sector-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.sectors | default: "Browse by business category" }}</span>
-    </a>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-tab {% if page.discovery_path == 'markets' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="market" name="market-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.markets | default: "Explore by country or region" }}</span>
-    </a>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-tab {% if page.discovery_path == 'attributes' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="attribute" name="attribute-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.attributes | default: "Discover by brand characteristics" }}</span>
-    </a>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-tab {% if page.discovery_path == 'signals' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="signal" name="signal-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.signals | default: "Filter by growth indicators" }}</span>
-    </a>
-  </div>
-</div>
+<!-- Dimension Types under Discover Section-->
+{% include discovery-navigation.html style_option='b' active_type=page.discovery_path %}
 
 
 <!-- Main Content Panel - with discovery-content modifier to remove top padding -->

@@ -1,6 +1,28 @@
 ---
 layout: discover
 ---
+<!-- ----------------------------------------------------------------------------
+  MARKET DIMENSION LAYOUT
+  ------------------------------------------------------------------------------
+  This layout renders the discovery index page for all Markets.
+
+  Purpose:
+  - Lists all markets using multilingual data stored in `site.tags`
+  - Filters by:
+      - tag_type: "market"
+      - lang: page.lang
+  - Displays each market as a card with icon, description, and link
+  - Used to help users explore brands by country or regional focus
+
+  Used by:
+  - /en/discover/markets/
+  - /ru/discover/markets/
+  - /zh/discover/markets/
+
+  Dependencies:
+  - _data/translations for interface labels
+  - /assets/images/badges/ for optional icons
+---------------------------------------------------------------------------- -->
 <div class="market-cards">
   {% assign market_tags = site.tags | where: "tag_type", "market" | where: "lang", page.lang %}
   

@@ -1,6 +1,28 @@
 ---
 layout: discover
 ---
+<!-- ----------------------------------------------------------------------------
+  ATTRIBUTE DIMENSION LAYOUT
+  ------------------------------------------------------------------------------
+  This layout renders the discovery index page for all Brand Attributes.
+
+  Purpose:
+  - Lists all brand attributes with title, description, and icon
+  - Uses data from the `discovery` collection filtered by:
+      - discovery_type: "attribute"
+      - lang: page.lang
+  - Displays each attribute in a card grid format
+  - Provides a link to each attribute’s detail page using attribute.url
+
+  Used by:
+  - /en/discover/attributes/
+  - /ru/discover/attributes/
+  - /zh/discover/attributes/
+
+  Dependencies:
+  - _data/translations for label text
+  - /assets/images/badges/ for attribute icons
+---------------------------------------------------------------------------- -->
 <div class="attributes-grid">
   {% assign attribute_discovery = site.discovery | where: "discovery_type", "attribute" | where: "lang", page.lang %}
   

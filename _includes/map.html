@@ -1,8 +1,35 @@
-<!-- ======================
- GENERATE A MAPLIBRE MAP
- ==========================  -->
- 
- <!-- _includes/map.html -->
+{% comment %}
+  Include Name: map.html
+  
+  Purpose: Renders an interactive map displaying brand locations with clustering,
+  popups, and filtering capabilities using MapLibre GL JS and Stadia Maps.
+  
+  Parameters:
+  - geojson_url: URL to the GeoJSON data source containing brand locations (required)
+  - fit_bounds: Boolean to automatically fit map to data bounds (optional, default: true)
+  
+  Dependencies:
+  - External: MapLibre GL JS library must be loaded in the page head
+  - External: Stadia Maps account and API key configured in _config.yml
+  - CSS: map.css for styling
+  - JavaScript: Included inline for map functionality
+  
+  Example Usage:
+  {% include map.html geojson_url="/api/brands-geojson.json" %}
+  {% include map.html geojson_url="/api/brands-geojson.json" fit_bounds=false %}
+  
+  Notes:
+  - Automatically clusters brands when zoomed out
+  - Displays featured brands with different styling (larger, different color)
+  - Shows popups with brand information on click
+  - For featured brands, links to brand detail page
+  - For other brands, links to external website if available
+  - Automatically fits the map view to include all points (if fit_bounds=true)
+  - Uses Stadia Maps for base map tiles (alidade_smooth style)
+  - Includes navigation controls for zoom and rotation
+  - Default center is Moscow, Russia when no geojson is loaded
+{% endcomment %}
+
 <div id="map" class="map-container" style="height: 500px; width: 100%;"></div>
 
 <script>

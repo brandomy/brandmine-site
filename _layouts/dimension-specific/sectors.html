@@ -1,6 +1,28 @@
 ---
 layout: discover
 ---
+<!-- ----------------------------------------------------------------------------
+  SECTOR DIMENSION LAYOUT
+  ------------------------------------------------------------------------------
+  This layout renders the discovery index page for all Business Sectors.
+
+  Purpose:
+  - Lists all sectors using multilingual tag data from `site.tags`
+  - Filters by:
+      - tag_type: "sector"
+      - lang: page.lang
+  - Displays each sector in a card format with icon, description, and CTA
+  - Helps users browse brands by category of business activity
+
+  Used by:
+  - /en/discover/sectors/
+  - /ru/discover/sectors/
+  - /zh/discover/sectors/
+
+  Dependencies:
+  - _data/translations for UI labels
+  - /assets/images/badges/ for sector icons
+---------------------------------------------------------------------------- -->
 <div class="sector-cards">
   {% assign sector_tags = site.tags | where: "tag_type", "sector" | where: "lang", page.lang %}
   

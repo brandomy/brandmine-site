@@ -6,13 +6,14 @@ nav:
   home: "Главная"
   brands: "Бренды"
   discovery: "Исследование"
-  # sectors: "Секторы"
-  # markets: "Рынки"
-  # attributes: "Атрибуты"
-  # signals: "Сигналы"
   insights: "Аналитика"
   about: "О нас"
   browse_brands: "Просмотр брендов"
+  sectors: "Просмотр по бизнес-категории"
+  markets: "Изучение по стране или региону"
+  attributes: "Поиск по атрибуту бренда"
+  signals: "Фильтрация по сигналу роста"
+  russian_sectors: "Изучение российских секторов"
 
 search:
   placeholder: "Поиск по Brandmine..."
@@ -72,24 +73,23 @@ insights:
   all_insights: "Все аналитические материалы"
   view_all: "Смотреть все аналитические материалы"
   back_to_insights: "Назад к аналитическим материалам"
+
+  # Focus Areas (renamed from Categories)
+  focus_areas: "Области фокуса"  # New key
+  areas: "Области"  # New key for short form
+  brand_spotlight: "Бренд в фокусе"
+  brand_spotlights: "Бренды в фокусе"
+  founders_journey: "Путь основателя"
+  founders_journeys: "Пути основателей"
+  location_intelligence: "Географический анализ"
+  market_momentum: "Рыночная динамика"
   
-  # Categories (both section titles and badge labels)
-  categories: "Категории"
-  founders_journey: "История основателя"
-  founders_journeys: "Истории основателей"
-  brand_spotlight: "Фокус на бренд"
-  brand_spotlights: "Фокус на бренды"
-  market_milestone: "Рыночное достижение"
-  market_milestones: "Рыночные достижения"
-  cultural_signature: "Культурная особенность"
-  cultural_signatures: "Культурные особенности"
-  
-  # Category descriptions
-  founders_journeys_description: "Истории о создателях брендов и людях, стоящих за ними."
-  brand_spotlights_description: "Знакомство с примечательными брендами стран БРИКС+, набирающими популярность."
-  market_milestones_description: "Значимые успехи и моменты расширения брендов стран БРИКС+."
-  cultural_signatures_description: "Отличительные черты, придающие брендам стран БРИКС+ их уникальную идентичность."
-  
+  # Focus Area descriptions
+  brand_spotlights_description: "Представление примечательных брендов BRICS+, набирающих популярность."
+  founders_journeys_description: "Истории, стоящие за брендами, и люди, создавшие их."
+  location_intelligence_description: "Географические и пространственные данные о экосистемах брендов BRICS+."
+  market_momentum_description: "Тенденции, события и показатели роста на рынках BRICS+."
+
   # Card and content elements
   read_more: "Читать далее"
   published_on: "Опубликовано"
@@ -109,6 +109,9 @@ insights:
   no_results: "Нет материалов, соответствующих критериям поиска."
 
 discover:
+  # Hero panel
+  discover_title: "Открывайте бренды по измерениям"
+  discover_subtitle: "Исследуйте бренды стран БРИКС+ через несколько измерений: \nБизнес-секторы, Рынки и регионы, Атрибуты брендов и Сигналы роста"
   # Section descriptions
   sectors_description: "Изучите ведущие бренды из ключевых секторов стран БРИКС+"
   markets_description: "Изучите бренды из развивающихся регионов БРИКС+"
@@ -185,7 +188,39 @@ social:
   youtube: "YouTube"
   email: "Почта"
 
-tags:
+dimensions: # NEW
+  # dimension types
+  sector: "Сектор"
+  sectors: "Секторы"
+  attribute: "Атрибут бренда"
+  attributes: "Атрибуты бренда"
+  signal: "Сигнал роста"
+  signals: "Сигналы роста"
+  market: "Рынок"
+  markets: "Рынки"
+  
+  # Group labels (for dimension clouds)
+  group_sectors: "Бизнес-секторы"
+  group_markets: "Рынки"
+  group_attributes: "Атрибуты бренда"
+  group_signals: "Пути роста"
+  
+  # Section headers on dimensions pages
+  related_brands: "Связанные бренды"
+  related_insights: "Связанные аналитические материалы"
+  
+  # Empty states
+  no_brands: "Не найдено брендов с этим тегом"
+  no_insights: "Нет доступных аналитических материалов для этого тега"
+  
+  # Action buttons
+  view_all_brands: "Просмотреть все бренды"
+  view_all_insights: "Просмотреть все аналитические материалы"
+  
+  # Premium indicator
+  premium: "Премиум"
+
+tags: # to delete after migrating to dimensions
   # Tag types
   sector: "Сектор"
   sectors: "Секторы"

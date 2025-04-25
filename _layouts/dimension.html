@@ -2,6 +2,34 @@
 layout: default
 ---
 
+<!-- ----------------------------------------------------------------------------
+  DIMENSION LAYOUT
+  ------------------------------------------------------------------------------
+  This layout is used for all individual tag pages under the /discover/ section,
+  such as a specific Sector (e.g., Wine), Market (e.g., Brazil), Attribute 
+  (e.g., Founder-Led), or Signal (e.g., High Growth).
+
+  Purpose:
+  - Displays a filtered brand listing tied to a single tag and dimension type.
+  - Shows Featured Brands, Additional Brands, and Related Insights.
+  - Supports tag-type-specific filters (e.g., market dropdowns on sector pages).
+  - Handles multilingual rendering via page.lang and translation data files.
+
+  Navigation:
+  - Uses discovery-navigation.html include to render consistent navigation tabs.
+  - Applies a dynamic class to style the tab background based on tag type.
+
+  Typically used in:
+  - /en/discover/sectors/wine.md
+  - /zh/discover/markets/china.md
+  - /ru/discover/attributes/founder-led.md
+
+  Dependencies:
+  - _includes/discovery-navigation.html
+  - Uses `page.tag_type` and `page.discovery_path` in front matter
+----------------------------------------------------------------------------- -->
+
+
 {% assign discovery_class = '' %}
 {% if page.discovery_path == 'sectors' %}
   {% assign discovery_class = 'discovery-tabs-container--sectors' %}
@@ -13,38 +41,10 @@ layout: default
   {% assign discovery_class = 'discovery-tabs-container--signals' %}
 {% endif %}
 
-<!-- Discover Tabs Container with context-aware background -->
-<div class="discovery-tabs-container {{ discovery_class }}">
-  <div class="discovery-tabs">
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-tab {% if page.discovery_path == 'sectors' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="sector" name="sector-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.sectors | default: "Browse by business category" }}</span>
-    </a>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-tab {% if page.discovery_path == 'markets' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="market" name="market-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.markets | default: "Explore by country or region" }}</span>
-    </a>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-tab {% if page.discovery_path == 'attributes' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="attribute" name="attribute-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.attributes | default: "Discover by brand characteristics" }}</span>
-    </a>
-    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-tab {% if page.discovery_path == 'signals' %}active{% endif %}">
-      <span class="discovery-tab-icon">
-        {% include icon.html type="signal" name="signal-default" size="sm" %}
-      </span>
-      <span class="discovery-tab-label">{{ site.data.translations[page.lang].tooltips.signals | default: "Filter by growth indicators" }}</span>
-    </a>
-  </div>
-</div>
+{% include discovery-navigation.html container_class=discovery_class %}
 
 
-<!-- formerly "tag.html" for use with individual discovery dimension-->
+
 
 <div class="panel panel--{{ page.tag_type }}-soft">
   <div class="panel__content tag-page">

@@ -1,3 +1,32 @@
+{% comment %}
+  Include Name: tag-cloud.html
+  
+  Purpose: Renders a comprehensive cloud of all available tags grouped by type.
+  Used on taxonomy pages and search interfaces to provide navigation across the tag system.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.lang: Current page language
+    - site.data.translations[lang].tags: All available tags organized by type
+    - site.data.translations[lang].tag_groups: Localized names for tag type groups
+  
+  Dependencies:
+  - CSS: tags.css
+  - Data: site.data.translations structure with tags and tag_groups
+  
+  Example Usage:
+  {% include tag-cloud.html %}
+  
+  Notes:
+  - Automatically groups tags by their type (sector, market, attribute, signal)
+  - Provides localized group headings from translations
+  - Links each tag to its corresponding discovery page
+  - Applies type-specific styling for visual differentiation
+  - Handles URL path construction with proper pluralization of tag types
+  - Skips rendering empty tag groups
+  - Similar to dimension-cloud.html but with different styling and structure
+{% endcomment %}
+
 {% assign sections = site.data.translations[page.lang].tags %}
 
 <div class="tag-cloud">

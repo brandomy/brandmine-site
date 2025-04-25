@@ -1,11 +1,35 @@
 {% comment %}
-  Pagination Include
+  Include Name: pagination.html
   
-  Usage:
-  {% include pagination.html paginator=paginator %}
+  Purpose: Renders a pagination control for navigating through multi-page content.
+  Used on listing pages like brands, insights, and search results.
   
   Parameters:
-  - paginator: Jekyll paginator object
+  - paginator: Jekyll paginator object (required)
+    Expected properties:
+    - total_pages: Total number of pages
+    - page: Current page number
+    - previous_page: Boolean indicating if there's a previous page
+    - previous_page_path: Path to previous page
+    - next_page: Boolean indicating if there's a next page
+    - next_page_path: Path to next page
+  
+  Dependencies:
+  - CSS: pagination.css for styling
+  - Data: site.data.translations[lang].pagination for localized labels
+  - Jekyll paginator configuration in _config.yml
+  
+  Example Usage:
+  {% include pagination.html paginator=paginator %}
+  
+  Notes:
+  - Only displays when there is more than one page of content
+  - Shows previous/next navigation arrows with proper localization
+  - Highlights the current page with active styling
+  - Uses special case for first page link (typically the root path)
+  - Includes accessibility support with ARIA labels and screen reader text
+  - BEM class naming for styling consistency
+  - Supports language-specific navigation text through translations
 {% endcomment %}
 
 {% if include.paginator.total_pages > 1 %}

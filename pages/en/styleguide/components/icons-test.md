@@ -79,18 +79,18 @@ This page displays all icons in the system at various sizes to test their render
         <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisan-confectionery" %}</div></td>
       </tr>
       <tr>
-        <td>artisan-porcelain-ceramics</td>
+        <td>artisan-ceramics</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="artisan-porcelain-ceramics" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="artisan-porcelain-ceramics" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisan-porcelain-ceramics" %}</div></td>
+        <td><div class="icon-test-xl">{% include icon.html type="sector" name="artisan-ceramics" %}</div></td>
+        <td><div class="icon-test-lg">{% include icon.html type="sector" name="artisan-ceramics" %}</div></td>
+        <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisan-ceramics" %}</div></td>
       </tr>
       <tr>
-        <td>artisanal-spirits-vodka</td>
+        <td>artisanal-spirits</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="artisanal-spirits-vodka" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="artisanal-spirits-vodka" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisanal-spirits-vodka" %}</div></td>
+        <td><div class="icon-test-xl">{% include icon.html type="sector" name="artisanal-spirits" %}</div></td>
+        <td><div class="icon-test-lg">{% include icon.html type="sector" name="artisanal-spirits" %}</div></td>
+        <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisanal-spirits" %}</div></td>
       </tr>
       <tr>
         <td>fashion-accessories</td>
@@ -114,11 +114,11 @@ This page displays all icons in the system at various sizes to test their render
         <td><div class="icon-test-sm">{% include icon.html type="sector" name="gourmet-foods" %}</div></td>
       </tr>
       <tr>
-        <td>halal-food-products</td>
+        <td>halal-foods</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="halal-food-products" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="halal-food-products" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="halal-food-products" %}</div></td>
+        <td><div class="icon-test-xl">{% include icon.html type="sector" name="halal-foods" %}</div></td>
+        <td><div class="icon-test-lg">{% include icon.html type="sector" name="halal-foods" %}</div></td>
+        <td><div class="icon-test-sm">{% include icon.html type="sector" name="halal-foods" %}</div></td>
       </tr>
       <tr>
         <td>honey-bee-products</td>
@@ -149,25 +149,25 @@ This page displays all icons in the system at various sizes to test their render
         <td><div class="icon-test-sm">{% include icon.html type="sector" name="mineral-waters" %}</div></td>
       </tr>
       <tr>
-        <td>natural-beauty-products</td>
+        <td>natural-beauty</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="natural-beauty-products" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="natural-beauty-products" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="natural-beauty-products" %}</div></td>
+        <td><div class="icon-test-xl">{% include icon.html type="sector" name="natural-beauty" %}</div></td>
+        <td><div class="icon-test-lg">{% include icon.html type="sector" name="natural-beauty" %}</div></td>
+        <td><div class="icon-test-sm">{% include icon.html type="sector" name="natural-beauty" %}</div></td>
       </tr>
       <tr>
-        <td>natural-food-supplements</td>
+        <td>natural-supplements</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="natural-food-supplements" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="natural-food-supplements" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="natural-food-supplements" %}</div></td>
+        <td><div class="icon-test-xl">{% include icon.html type="sector" name="natural-supplements" %}</div></td>
+        <td><div class="icon-test-lg">{% include icon.html type="sector" name="natural-supplements" %}</div></td>
+        <td><div class="icon-test-sm">{% include icon.html type="sector" name="natural-supplements" %}</div></td>
       </tr>
       <tr>
-        <td>salami-cured-meats</td>
+        <td>cured-meats</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="salami-cured-meats" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="salami-cured-meats" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="salami-cured-meats" %}</div></td>
+        <td><div class="icon-test-xl">{% include icon.html type="sector" name="cured-meats" %}</div></td>
+        <td><div class="icon-test-lg">{% include icon.html type="sector" name="cured-meats" %}</div></td>
+        <td><div class="icon-test-sm">{% include icon.html type="sector" name="cured-meats" %}</div></td>
       </tr>
       <tr>
         <td>specialty-cheeses</td>

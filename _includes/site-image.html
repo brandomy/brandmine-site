@@ -1,13 +1,45 @@
 {% comment %}
-  Responsive Non-Brand Image Include
+  Include Name: site-image.html
   
-  Usage:
+  Purpose: Generates responsive image HTML for general site images (non-brand specific)
+  with proper srcset and sizes attributes for optimal loading performance.
+  
+  Parameters:
+  - category: Image category (required, e.g., "home", "markets", "sectors", "site")
+  - image: Image identifier (required, e.g., "banner", "hero")
+  - purpose: Image purpose identifier (required, e.g., "hero", "feature", "background")
+  - alt: Alt text for the image (required for accessibility)
+  - class: Additional CSS classes for the img tag (optional)
+  - sizes: Custom sizes attribute for responsive loading (optional, default provided)
+  - widths: Comma-separated list of image widths to use (optional, default: "400,800,1200")
+  
+  Dependencies:
+  - Site images must be pre-processed with _scripts/process_site_images.sh
+  - Proper directory structure in /assets/images/{category}/
+  - File naming convention: {category}-{purpose}-{image}-{width}w.jpg
+  
+  Example Usage:
+  Homepage hero image:
   {% include site-image.html 
      category="home"
      image="banner" 
      purpose="hero"
      alt="Brandmine connecting BRICS consumers" 
      class="full-width" %}
+     
+  Market feature image:
+  {% include site-image.html 
+     category="markets"
+     image="moscow-kremlin" 
+     purpose="feature"
+     alt="Moscow Kremlin" %}
+  
+  Notes:
+  - Automatically constructs proper image paths based on category, purpose, and image info
+  - Includes srcset for responsive image loading (400w, 800w, 1200w variants)
+  - Uses lazy loading for better performance
+  - Follows Brandmine's image processing and naming conventions
+  - Always uses JPG format (extend if needed for other formats)
 {% endcomment %}
 
 {% assign category = include.category %}

@@ -1,4 +1,38 @@
-<!-- BRAND CARD (BEM) -->
+{% comment %}
+  Include Name: brand-card.html
+  
+  Purpose: Displays a brand card component that shows essential brand information in a
+  structured format. Used on brand listing pages, search results, and related brands sections.
+  
+  Parameters:
+  - brand: Brand object with complete details (required)
+    Expected properties:
+    - title/name: Brand name
+    - logo: Path to brand logo image
+    - founded: Founding year (optional)
+    - description: Short brand description
+    - sectors: Array of sector names
+    - markets: Array of market names
+    - signals: Array of signal objects with icon property
+    - url: URL to brand detail page
+    - cta: Custom call-to-action text (optional, default: "View Brand")
+    - premium: Boolean flag for premium brands (optional)
+  
+  Dependencies:
+  - Requires page.lang to be set for proper URL construction
+  - CSS: brand-card.css for styling
+  
+  Example Usage:
+  {% for brand in site.brands %}
+    {% include brand-card.html brand=brand %}
+  {% endfor %}
+  
+  Notes:
+  - Only displays first 3 sectors, with a +X indicator for additional sectors
+  - Uses BEM naming conventions for all CSS classes
+  - Automatically links sectors and markets to their respective discovery pages
+{% endcomment %}
+
 <article class="brand-card">
   <header class="brand-card__header">
     <div class="brand-card__logo">

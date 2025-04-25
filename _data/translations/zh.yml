@@ -6,13 +6,14 @@ nav:
   home: "首页"
   brands: "品牌"
   discovery: "探索"
-  # sectors: "行业"
-  # markets: "市场"
-  # attributes: "特性"
-  # signals: "信号"
   insights: "洞察"
   about: "关于我们"
   browse_brands: "浏览品牌"
+  sectors: "按业务类别浏览"
+  markets: "按国家或地区探索"
+  attributes: "按品牌属性发现"
+  signals: "按增长信号筛选"
+  russian_sectors: "探索俄罗斯行业"
 
 search:
   placeholder: "搜索Brandmine..."
@@ -73,22 +74,21 @@ insights:
   view_all: "查看全部洞察"
   back_to_insights: "返回洞察"
   
-  # Categories (both section titles and badge labels)
-  categories: "分类"
-  founders_journey: "创始人旅程"
-  founders_journeys: "创始人旅程"
+  # Focus Areas (renamed from Categories)
+  focus_areas: "关注领域"  # New key
+  areas: "领域"  # New key for short form
   brand_spotlight: "品牌聚焦"
   brand_spotlights: "品牌聚焦"
-  market_milestone: "市场里程碑"
-  market_milestones: "市场里程碑"
-  cultural_signature: "文化特色"
-  cultural_signatures: "文化特色"
+  founders_journey: "创始人历程"
+  founders_journeys: "创始人历程"
+  location_intelligence: "地理智能"
+  market_momentum: "市场动态"
   
-  # Category descriptions
-  founders_journeys_description: "品牌背后的故事和创造它们的人。"
+  # Focus Area descriptions
   brand_spotlights_description: "介绍值得关注的金砖国家+新兴品牌。"
-  market_milestones_description: "金砖国家+品牌的显著成就和扩展时刻。"
-  cultural_signatures_description: "赋予金砖国家+品牌独特身份的显著特征。"
+  founders_journeys_description: "品牌背后的故事和创造它们的人。"
+  location_intelligence_description: "关于金砖国家+品牌生态系统的地理和空间洞察。"
+  market_momentum_description: "金砖国家+市场的趋势、发展和增长指标。"
   
   # Card and content elements
   read_more: "阅读更多"
@@ -109,6 +109,9 @@ insights:
   no_results: "没有符合搜索条件的洞察。"
 
 discover:
+  # Hero panel
+  discover_title: "多维度发现品牌"
+  discover_subtitle: "通过多个维度探索金砖国家+品牌：\n商业领域、市场与地区、品牌属性和增长信号"
   # Section descriptions
   sectors_description: "探索金砖国家+地区领先行业中的品牌"
   markets_description: "探索来自金砖国家+成长地区的品牌"
@@ -185,7 +188,39 @@ social:
   youtube: "YouTube"
   email: "电子邮件"
 
-tags:
+dimensions: # NEW
+  # dimension types
+  sector: "行业"
+  sectors: "行业"
+  attribute: "品牌特性"
+  attributes: "品牌特性"
+  signal: "增长信号"
+  signals: "增长信号"
+  market: "市场"
+  markets: "市场"
+  
+  # Group labels (for dimension clouds)
+  group_sectors: "商业行业"
+  group_markets: "市场"
+  group_attributes: "品牌属性"
+  group_signals: "增长路径"
+  
+  # Section headers on dimension pages
+  related_brands: "相关品牌"
+  related_insights: "相关见解"
+  
+  # Empty states
+  no_brands: "未找到带有此标签的品牌"
+  no_insights: "此标签没有可用的见解"
+  
+  # Action buttons
+  view_all_brands: "查看所有品牌"
+  view_all_insights: "查看所有见解"
+  
+  # Premium indicator
+  premium: "高级"
+
+tags: # to delete after migrating to dimensions
   # Tag types
   sector: "行业"
   sectors: "行业"

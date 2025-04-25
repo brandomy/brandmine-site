@@ -1,3 +1,36 @@
+{% comment %}
+  Include Name: styleguide/color-swatch.html
+  
+  Purpose: Renders a color swatch with associated information for use in the styleguide.
+  Used to document the site's color palette, tokens, and usage guidelines.
+  
+  Parameters:
+  - name: Display name of the color (required, e.g., "Primary 500")
+  - hex: Hexadecimal color value (required, e.g., "#4A6FEB")
+  - rgb: RGB color value (optional, e.g., "74, 111, 235")
+  - color: CSS class name for the color (optional)
+  - usage: Description of where/how to use this color (optional)
+  
+  Dependencies:
+  - CSS: styleguide.css (color-swatch classes)
+  
+  Example Usage:
+  {% include styleguide/color-swatch.html 
+     name="Primary 500" 
+     hex="#4A6FEB" 
+     rgb="74, 111, 235"
+     color="bg-primary-500"
+     usage="Primary buttons, active states, and key interactive elements" %}
+  
+  Notes:
+  - Renders a visual sample of the color with details alongside
+  - Displays both hex and RGB values for reference
+  - Can use either direct hex color or CSS class for the sample
+  - Includes optional usage guidelines for context
+  - Used primarily in the styleguide colors documentation page
+  - Default background color is white if hex is not provided
+{% endcomment %}
+
 <div class="color-swatch">
   <div class="color-swatch__sample{% if include.color %} {{ include.color }}{% endif %}" style="background-color: {{ include.hex | default: '#ffffff' }}"></div>
   <div class="color-swatch__details">

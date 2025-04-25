@@ -1,6 +1,6 @@
 ---
 layout: discover
-title: Discover by Brand Attributes
+title: Discover by Brand Attribute
 subtitle: Explore brands with different features from the BRICS+
 permalink: /en/discover/attributes/
 lang: en

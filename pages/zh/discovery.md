@@ -3,15 +3,15 @@ layout: discovery
 title: 探索
 permalink: /zh/discovery/
 lang: zh
-ref: discovery
+ref: discovery-hub
 discovery_path: discovery
 ---
 
 <!-- Hero Panel -->
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary discover__title">发现品牌</h1>
-    <p class="panel__subtitle">通过多个维度探索品牌：<br>行业、市场、属性和发展路径</p>
+    <h1 class="panel__heading-primary discover__title">{{ site.data.translations[page.lang].discover.discover_title }}</h1>
+    <p class="panel__subtitle">{{ site.data.translations[page.lang].discover.discover_subtitle | newline_to_br }}</p>
   </div>
 </div>
 

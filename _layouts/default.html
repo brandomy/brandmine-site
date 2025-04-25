@@ -15,89 +15,10 @@
 
   <!-- Style Sheets --> 
   
-  <!-- 1. Design Tokens (Consolidated tokens file) -->
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/tokens.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/grid.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/typography.css' | relative_url }}">
-
-  <!-- 2. Base Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-  <!-- 3. Component Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/components/navigation.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/header.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/footer.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/search-box.css' | relative_url }}"> 
-  <link rel="stylesheet" href="{{ '/assets/css/components/discovery.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/discovery-navigation.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/discovery-tooltips.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/featured-brand.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/forms.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/insights.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/layout.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/layouts.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/search-filter.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/solutions.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/team.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/text.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/tags.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/brand-card.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/insight-card.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/insights-grid-categories.css' | relative_url }}">
-
-  <!-- 4. Layout Styles -->
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}"> -->
-  <link rel="stylesheet" href="{{ '/assets/css/layout/panels.css' | relative_url }}">
-
-
-  <!-- 5. Page-Specific Styles (conditionally loaded) -->
-  {% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/home.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/404.html' %}
-  <link rel="stylesheet" href="{{ '/assets/css/pages/404.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/search/' %}
-  <link rel="stylesheet" href="{{ '/assets/css/pages/search.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/about/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/about.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/brands/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/brands.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/discovery/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/panel--discovery-hub.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/discover/markets/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-markets.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/discover/sectors/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-sectors.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/discover/signals/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-signals.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/discover/attributes/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/discover-attributes.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/russian-sectors/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/pages/russian-sectors.css' | relative_url }}">
-  {% endif %}
-  {% if page.permalink contains '/insights/' or page.layout == 'category' or page.layout == 'tag' %}
-  <link rel="stylesheet" href="{{ '/assets/css/pages/insights.css' | relative_url }}">
-  {% endif %}
-  {% if page.layout == 'styleguide' or page.url contains '/styleguide/' %}
-    <link rel="stylesheet" href="{{ '/assets/css/styleguide.css' | relative_url }}">
-    <script src="{{ '/assets/js/styleguide.js' | relative_url }}" defer></script>
-  {% endif %}
-
-  <!-- 6. Mobile/Responsive Overrides (always last) -->
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/components/mobile-fixes.css' | relative_url }}"> -->
-
-<!-- Debug tools (comment out in production) -->
-<!-- <link rel="stylesheet" href="{{ '/assets/css/debug.css' | relative_url }}"> -->
+  <!-- 8. Debug tools (comment out in production) -->
+  <!-- <link rel="stylesheet" href="{{ '/assets/css/debug.css' | relative_url }}"> -->
 
   <!-- end of Style Sheets -->  
  

@@ -1,24 +1,47 @@
 {% comment %}
-  Responsive Brand Image Include
+  Include Name: brand-image.html
   
-  This include generates responsive image HTML with appropriate srcset and sizes attributes
-  for optimal performance across devices.
+  Purpose: Generates responsive brand image HTML with appropriate srcset and sizes attributes
+  for optimal loading performance across different devices. Follows Brandmine's image naming
+  and sizing conventions specifically for brand-related images.
   
   Parameters:
-  - brand: Brand name (required, e.g., "teatime")
-  - image: Image identifier (required, e.g., "storefront-hero")
-  - alt: Alt text for the image (required)
-  - class: Optional CSS classes
-  - sizes: Optional sizes attribute override (default provided)
-  - widths: Optional comma-separated list of widths to use (default: "400,800,1200")
+  - brand: Brand slug/identifier (required, e.g., "teatime")
+  - image: Image identifier (required, e.g., "storefront" or "logo")
+  - purpose: Image purpose identifier (optional, e.g., "hero", "detail", "logo")
+  - alt: Alt text for the image (required for accessibility)
+  - class: Additional CSS classes for the img tag (optional)
+  - ext: File extension (optional, default: "jpg")
+  - sizes: Custom sizes attribute for responsive loading (optional, default provided)
+  - widths: Comma-separated list of image widths to use (optional, default: "400,800,1200")
   
-  Usage:
+  Dependencies:
+  - Brand images must be pre-processed with _scripts/process_brand_images.sh
+  - Proper directory structure in /assets/images/brands/{brand_name}/
+  - File naming convention: {brand}-{purpose}-{image}-{width}w.{ext}
+  
+  Example Usage:
+  Standard brand image:
+  {% include brand-image.html 
+     brand="teatime" 
+     image="storefront" 
+     purpose="hero"
+     alt="TeaTime storefront in Moscow" %}
+     
+  Brand logo with PNG format:
   {% include brand-image.html 
      brand="dragonfly" 
      image="color" 
      purpose="logo" 
      ext="png"
      alt="Dragonfly Therapeutic Retreats logo" %}
+  
+  Notes:
+  - Automatically constructs proper image paths based on brand and image info
+  - Includes srcset for responsive image loading (400w, 800w, 1200w variants)
+  - Uses lazy loading for better performance
+  - Follows Brandmine's image processing and naming conventions
+  - Defaults to JPG format unless specified otherwise
 {% endcomment %}
 
 {% assign brand = include.brand %}

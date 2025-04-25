@@ -1,3 +1,41 @@
+{% comment %}
+  Include Name: featured-content.html
+  
+  Purpose: Renders a featured content block that can display either brand or insight content
+  with enhanced styling and a featured badge. Used on home page and section landing pages.
+  
+  Parameters:
+  - content: Content object (brand or insight) with complete details (required)
+  - content_type: Type of content being featured - "brand" or "insight" (required)
+  
+  Dependencies:
+  - Includes: 
+    - content-type-indicator.html (for insights)
+    - tag-list.html (for taxonomy display)
+  - CSS: featured-content.css
+  - Data: site.data.translations[lang].general.featured, site.data.translations[lang].general.read_more,
+          site.data.translations[lang].brand.est
+  
+  Example Usage:
+  For a featured brand:
+  {% assign featured_brand = site.brands | where: "featured", true | first %}
+  {% include featured-content.html content=featured_brand content_type="brand" %}
+  
+  For a featured insight:
+  {% assign featured_insight = site.insights | where: "featured", true | first %}
+  {% include featured-content.html content=featured_insight content_type="insight" %}
+  
+  Notes:
+  - Adapts its display based on content_type (brand or insight)
+  - For insights: shows content type indicator, date, author, sectors
+  - For brands: shows founding year, primary sector, attributes
+  - Displays featured badge on the image
+  - Truncates descriptions to 180 characters
+  - Links to the full content page
+  - Uses BEM naming conventions with modifiers based on content type
+  - Falls back to truncated content if description is not available
+{% endcomment %}
+
 <div class="featured-content featured-content--{{ include.content_type }}">
   <div class="featured-content__image">
     {% if include.content_type == "insight" and include.content.image %}

@@ -1,14 +1,29 @@
 {% comment %}
-  Reusable icon include that handles different icon types and names
+  Include Name: icon.html
+  
+  Purpose: A flexible component for displaying icons from the site's icon system.
+  Supports different icon types (sector, market, attribute, signal) and sizes.
   
   Parameters:
-  - type: The icon type (sector, market, attribute, signal)
-  - name: The icon name/id (e.g., hotels-resorts, founder-led)
-  - size: (optional) Size class modifier (default, sm, lg, xl)
+  - type: The icon type - one of 'sector', 'market', 'attribute', 'signal', or 'insight' (required)
+  - name: The specific icon identifier (e.g., 'hotels-resorts', 'founder-led') (required)
+  - size: Size variant - one of 'sm', 'lg', 'xl' (optional, default: normal size)
   
-  Usage:
+  Dependencies:
+  - SVG icon files in _includes/icons/ directory, organized in subdirectories by type
+  - CSS: Styles for .icon class and its modifiers
+  
+  Example Usage:
   {% include icon.html type="sector" name="hotels-resorts" %}
   {% include icon.html type="attribute" name="founder-led" size="lg" %}
+  {% include icon.html type="market" name="russia" %}
+  
+  Notes:
+  - Icons are organized in subdirectories by type (sectors/, markets/, attributes/, signals/)
+  - Default icons are available for each type (sector-default.svg, etc.)
+  - Fallback icon is displayed if a specific icon is not found
+  - Size variants allow for responsive icon sizing
+  - Icons inherit color from their parent element by using currentColor
 {% endcomment %}
 
 {% assign icon_path = 'icons/' %}

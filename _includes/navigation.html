@@ -1,4 +1,35 @@
-<!-- Navigation with Fixed Translation Access -->
+{% comment %}
+  Include Name: navigation.html
+  
+  Purpose: Renders the main site navigation with multi-level dropdown support.
+  Automatically highlights the active navigation item based on the current URL.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.lang: Current page language
+    - page.url: Current page URL
+    - site.data.navigation[lang]: Navigation structure definition
+    - site.data.translations[lang].nav: Navigation item translations
+  
+  Dependencies:
+  - CSS: header.css (navigation styles)
+  - JavaScript: header.js (for dropdown functionality)
+  - Data:
+    - site.data.navigation[lang]: Array of navigation items with name, link, and optional children
+    - site.data.translations[lang].nav: Translation strings for navigation items
+  
+  Example Usage:
+  {% include navigation.html %}
+  
+  Notes:
+  - Automatically marks the current page's navigation item as active
+  - Supports multi-level dropdown menus
+  - All navigation text is loaded from translations
+  - Navigation structure is defined in _data/navigation/[lang].yml
+  - Uses appropriate ARIA attributes for accessibility
+  - Child items inherit the parent's active state
+{% endcomment %}
+
 <nav class="header__nav" id="main-nav">
   <ul class="header__nav-list">
     {% for item in site.data.navigation[page.lang] %}

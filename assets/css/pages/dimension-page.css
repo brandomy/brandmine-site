@@ -1,78 +1,24 @@
-/* ==========================================================================
-   Discovery Page (formerly Tag Page) Styles
-   ==========================================================================
-   Styles for individual tag pages that display category, related brands,
-   and insights. Uses BEM methodology and coordinates with the dimension-specific
-   color scheme (olive/green for sectors, blue for markets, etc.).
-*/
+/* -----------------------------------------------------------------------------
+   DIMENSION PAGE STYLES
+   ------------------------------------------------------------------------------
+   Styles for individual dimension detail pages, including layout of headers,
+   brand sections, and related content. Shared `.dimension` styles for buttons
+   and pills are located in `dimension.css`.
 
-/* Base tag styles - builds on existing tag structure */
-.tag {
-  display: inline-block;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-xl);
-  margin: var(--space-1);
-  text-decoration: none;
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  font-family: var(--font-ui);
-  transition: all var(--transition-medium);
-  white-space: nowrap;
-}
+   This file focuses only on layout, section headers, content modules, and responsive
+   behavior specific to dimension pages such as:
+   - /discover/sectors/hotels-resorts/
+   - /discover/attributes/founder-led/
+   ----------------------------------------------------------------------------- */
 
-.tag:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Tag type specific colors - dimension-based color coding */
-.tag--sector {
-  background-color: var(--olive-100);
-  color: var(--olive-800);
-  border: var(--border-width-thin) solid var(--olive-300);
-}
-
-.tag--sector:hover {
-  background-color: var(--olive-200);
-}
-
-.tag--market {
-  background-color: var(--sky-100);
-  color: var(--sky-800);
-  border: var(--border-width-thin) solid var(--sky-300);
-}
-
-.tag--market:hover {
-  background-color: var(--sky-200);
-}
-
-.tag--attribute {
-  background-color: var(--secondary-100);
-  color: var(--secondary-800);
-  border: var(--border-width-thin) solid var(--secondary-300);
-}
-
-.tag--attribute:hover {
-  background-color: var(--secondary-200);
-}
-
-.tag--signal {
-  background-color: var(--accent-100);
-  color: var(--accent-800);
-  border: var(--border-width-thin) solid var(--accent-300);
-}
-
-.tag--signal:hover {
-  background-color: var(--accent-200);
-}
 
 /* Tag Page Styles */
-.tag-page {
+.dimension-page {
   margin-bottom: var(--space-8);
 }
 
 /* Header Styles */
-.tag-page__header {
+.dimension-page__header {
   display: flex;
   align-items: flex-start;
   gap: var(--space-6);
@@ -84,27 +30,27 @@
   position: relative;
 }
 
-.tag-page__header--sector {
+.dimension-page__header--sector {
   border-left: 6px solid var(--olive-500);
   background-color: var(--olive-50);
 }
 
-.tag-page__header--market {
+.dimension-page__header--market {
   border-left: 6px solid var(--sky-500);
   background-color: var(--sky-50);
 }
 
-.tag-page__header--attribute {
+.dimension-page__header--attribute {
   border-left: 6px solid var(--secondary-500);
   background-color: var(--secondary-50);
 }
 
-.tag-page__header--signal {
+.dimension-page__header--signal {
   border-left: 6px solid var(--accent-500);
   background-color: var(--accent-50);
 }
 
-.tag-page__badge-icon {
+.dimension-page__badge-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -112,19 +58,19 @@
   color: inherit;
 }
 
-.tag-page__header-content {
+.dimension-page__header-content {
   flex: 1;
 }
 
 /* Tag Page Styles (continued) */
 
-.tag-page__type-badge {
+.dimension-page__type-badge {
   display: inline-block;
   margin-bottom: var(--space-2);
   font-weight: var(--font-semibold);
 }
 
-.tag-page__title {
+.dimension-page__title {
   font-size: var(--text-4xl);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-3);
@@ -132,14 +78,14 @@
   color: var(--neutral-900);
 }
 
-.tag-page__description {
+.dimension-page__description {
   font-size: var(--text-lg);
   color: var(--neutral-700);
   max-width: 800px;
   margin-bottom: var(--space-3);
 }
 
-.tag-page__verification {
+.dimension-page__verification {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -151,11 +97,11 @@
   margin-bottom: var(--space-3);
 }
 
-.tag-page__icon-wrapper {
+.dimension-page__icon-wrapper {
   flex-shrink: 0;
 }
 
-.tag-page__icon {
+.dimension-page__icon {
   width: 100px;
   height: 100px;
   display: flex;
@@ -167,38 +113,38 @@
   overflow: hidden;
 }
 
-.tag-page__icon--sector {
+.dimension-page__icon--sector {
   border: 2px solid var(--olive-300);
   color: var(--olive-700);
 }
 
-.tag-page__icon--market {
+.dimension-page__icon--market {
   border: 2px solid var(--sky-300);
   color: var(--sky-700);
 }
 
-.tag-page__icon--attribute {
+.dimension-page__icon--attribute {
   border: 2px solid var(--secondary-300);
   color: var(--secondary-700);
 }
 
-.tag-page__icon--signal {
+.dimension-page__icon--signal {
   border: 2px solid var(--accent-300);
   color: var(--accent-700);
 }
 
-.tag-page__icon img {
+.dimension-page__icon img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.tag-page__icon-svg {
+.dimension-page__icon-svg {
   width: 64px;
   height: 64px;
 }
 
 /* Content area */
-.tag-page__content {
+.dimension-page__content {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   color: var(--neutral-800);
@@ -206,12 +152,24 @@
   max-width: 900px;
 }
 
-.tag-page__content p {
+.dimension-page__content p {
   margin-bottom: var(--space-4);
 }
 
+/* --------------------------------------------------------------------------
+   2. DIMENSIONS CLOUD STYLING
+   -------------------------------------------------------------------------- */
+
+  /* add as required to customize */
+
+
+/* --------------------------------------------------------------------------
+   3. SECTION STYLING
+   -------------------------------------------------------------------------- */
+
+
 /* Section styles */
-.tag-page__section-title {
+.dimension-page__section-title {
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
   margin-bottom: var(--space-6);
@@ -221,18 +179,18 @@
 }
 
 /* 1. Featured brands section */
-.tag-page__featured-brands {
+.dimension-page__featured-brands {
   margin-bottom: var(--space-12);
 }
 
-.tag-page__featured-grid {
+.dimension-page__featured-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
   margin-bottom: var(--space-6);
 }
 
-.tag-page__brand-feature-card {
+.dimension-page__brand-feature-card {
   background-color: white;
   border-radius: var(--radius-lg);
   padding: var(--space-6);
@@ -242,19 +200,19 @@
   flex-direction: column;
 }
 
-.tag-page__brand-feature-card:hover {
+.dimension-page__brand-feature-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
 }
 
-.tag-page__brand-logo {
+.dimension-page__brand-logo {
   width: 160px;
   height: 80px;
   object-fit: contain;
   margin-bottom: var(--space-4);
 }
 
-.tag-page__brand-logo-placeholder {
+.dimension-page__brand-logo-placeholder {
   width: 160px;
   height: 80px;
   background-color: var(--neutral-100);
@@ -262,47 +220,47 @@
   margin-bottom: var(--space-4);
 }
 
-.tag-page__brand-title {
+.dimension-page__brand-title {
   font-size: var(--text-2xl);
   font-weight: var(--font-semibold);
   margin-bottom: var(--space-2);
   color: var(--neutral-800);
 }
 
-.tag-page__brand-title a {
+.dimension-page__brand-title a {
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.tag-page__brand-title a:hover {
+.dimension-page__brand-title a:hover {
   color: var(--primary-600);
 }
 
-.tag-page__brand-description {
+.dimension-page__brand-description {
   font-size: var(--text-base);
   color: var(--neutral-600);
   margin-bottom: var(--space-4);
   flex-grow: 1;
 }
 
-.tag-page__brand-meta {
+.dimension-page__brand-meta {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-bottom: var(--space-4);
 }
 
-.tag-page__brand-action {
+.dimension-page__brand-action {
   margin-top: auto;
 }
 
 /* 2. Related brands carousel section */
-.tag-page__related-brands {
+.dimension-page__related-brands {
   margin-bottom: var(--space-12);
 }
 
-.tag-page__brands-carousel {
+.dimension-page__brands-carousel {
   display: flex;
   gap: var(--space-4);
   overflow-x: auto;
@@ -313,21 +271,21 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.tag-page__brands-carousel::-webkit-scrollbar {
+.dimension-page__brands-carousel::-webkit-scrollbar {
   height: 6px;
 }
 
-.tag-page__brands-carousel::-webkit-scrollbar-track {
+.dimension-page__brands-carousel::-webkit-scrollbar-track {
   background: var(--neutral-100);
   border-radius: var(--radius-sm);
 }
 
-.tag-page__brands-carousel::-webkit-scrollbar-thumb {
+.dimension-page__brands-carousel::-webkit-scrollbar-thumb {
   background-color: var(--primary-300);
   border-radius: var(--radius-sm);
 }
 
-.tag-page__brand-card {
+.dimension-page__brand-card {
   flex: 0 0 auto;
   width: 280px;
   background-color: white;
@@ -337,19 +295,19 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.tag-page__brand-card:hover {
+.dimension-page__brand-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
-.tag-page__carousel-nav {
+.dimension-page__carousel-nav {
   display: flex;
   justify-content: center;
   gap: var(--space-2);
   margin-top: var(--space-4);
 }
 
-.tag-page__carousel-dot {
+.dimension-page__carousel-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -358,22 +316,22 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.tag-page__carousel-dot:hover {
+.dimension-page__carousel-dot:hover {
   transform: scale(1.2);
   background-color: var(--primary-300);
 }
 
-.tag-page__carousel-dot.active {
+.dimension-page__carousel-dot.active {
   background-color: var(--primary-500);
   transform: scale(1.2);
 }
 
 /* 3. All brands list section */
-.tag-page__all-brands {
+.dimension-page__all-brands {
   margin-bottom: var(--space-12);
 }
 
-.tag-page__filter-controls {
+.dimension-page__filter-controls {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
@@ -382,14 +340,14 @@
   justify-content: space-between;
 }
 
-.tag-page__filter-search {
+.dimension-page__filter-search {
   display: flex;
   flex: 1;
   max-width: 400px;
   position: relative;
 }
 
-.tag-page__filter-input {
+.dimension-page__filter-input {
   width: 100%;
   padding: var(--space-2) var(--space-4);
   border: 1px solid var(--neutral-300);
@@ -399,11 +357,11 @@
   transition: border-color 0.2s ease;
 }
 
-.tag-page__filter-input:focus {
+.dimension-page__filter-input:focus {
   border-color: var(--primary-400);
 }
 
-.tag-page__filter-button {
+.dimension-page__filter-button {
   position: absolute;
   right: var(--space-2);
   top: 50%;
@@ -414,12 +372,12 @@
   color: var(--neutral-500);
 }
 
-.tag-page__filter-options {
+.dimension-page__filter-options {
   display: flex;
   gap: var(--space-3);
 }
 
-.tag-page__filter-select {
+.dimension-page__filter-select {
   padding: var(--space-2) var(--space-4);
   border: 1px solid var(--neutral-300);
   border-radius: var(--radius-md);
@@ -429,18 +387,18 @@
   background-color: white;
 }
 
-.tag-page__filter-select:focus {
+.dimension-page__filter-select:focus {
   border-color: var(--primary-400);
 }
 
-.tag-page__brands-list {
+.dimension-page__brands-list {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
   margin-bottom: var(--space-6);
 }
 
-.tag-page__list-item {
+.dimension-page__list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -451,37 +409,37 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.tag-page__list-item:hover {
+.dimension-page__list-item:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
-.tag-page__list-item-content {
+.dimension-page__list-item-content {
   flex: 1;
 }
 
-.tag-page__list-item-title {
+.dimension-page__list-item-title {
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
   margin-bottom: var(--space-1);
 }
 
-.tag-page__list-item-title a {
+.dimension-page__list-item-title a {
   color: var(--neutral-800);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.tag-page__list-item-title a:hover {
+.dimension-page__list-item-title a:hover {
   color: var(--primary-600);
 }
 
-.tag-page__list-item-meta {
+.dimension-page__list-item-meta {
   display: flex;
   gap: var(--space-2);
 }
 
-.tag-page__list-item-link {
+.dimension-page__list-item-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -492,29 +450,29 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.tag-page__list-item-link:hover {
+.dimension-page__list-item-link:hover {
   background-color: var(--primary-50);
   color: var(--primary-600);
 }
 
-.tag-page__load-more {
+.dimension-page__load-more {
   text-align: center;
   margin-top: var(--space-6);
 }
 
 /* 4. Related insights section */
-.tag-page__related-insights {
+.dimension-page__related-insights {
   margin-bottom: var(--space-8);
 }
 
-.tag-page__insights-grid {
+.dimension-page__insights-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
   margin-bottom: var(--space-6);
 }
 
-.tag-page__insight-card {
+.dimension-page__insight-card {
   background-color: white;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -524,35 +482,35 @@
   flex-direction: column;
 }
 
-.tag-page__insight-card:hover {
+.dimension-page__insight-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
-.tag-page__insight-image {
+.dimension-page__insight-image {
   height: 180px;
   overflow: hidden;
 }
 
-.tag-page__insight-image img {
+.dimension-page__insight-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.tag-page__insight-card:hover .tag-page__insight-image img {
+.dimension-page__insight-card:hover .dimension-page__insight-image img {
   transform: scale(1.05);
 }
 
-.tag-page__insight-content {
+.dimension-page__insight-content {
   padding: var(--space-4);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.tag-page__insight-type {
+.dimension-page__insight-type {
   display: inline-block;
   font-size: var(--text-xs);
   padding: var(--space-1) var(--space-2);
@@ -562,31 +520,31 @@
   margin-bottom: var(--space-2);
 }
 
-.tag-page__insight-title {
+.dimension-page__insight-title {
   font-size: var(--text-xl);
   font-weight: var(--font-semibold);
   margin-bottom: var(--space-2);
   line-height: var(--leading-tight);
 }
 
-.tag-page__insight-title a {
+.dimension-page__insight-title a {
   color: var(--neutral-800);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.tag-page__insight-title a:hover {
+.dimension-page__insight-title a:hover {
   color: var(--primary-600);
 }
 
-.tag-page__insight-excerpt {
+.dimension-page__insight-excerpt {
   color: var(--neutral-600);
   margin-bottom: var(--space-3);
   font-size: var(--text-sm);
   flex-grow: 1;
 }
 
-.tag-page__insight-meta {
+.dimension-page__insight-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -594,28 +552,28 @@
   font-size: var(--text-xs);
 }
 
-.tag-page__insight-date {
+.dimension-page__insight-date {
   color: var(--neutral-500);
 }
 
-.tag-page__insight-link {
+.dimension-page__insight-link {
   color: var(--primary-600);
   font-weight: var(--font-medium);
   text-decoration: none;
 }
 
-.tag-page__insight-link:hover {
+.dimension-page__insight-link:hover {
   text-decoration: underline;
 }
 
 /* View all button */
-.tag-page__view-all {
+.dimension-page__view-all {
   text-align: center;
   margin-top: var(--space-6);
 }
 
 /* Empty state */
-.tag-page__empty-state {
+.dimension-page__empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -628,124 +586,62 @@
   margin-bottom: var(--space-6);
 }
 
-.tag-page__empty-state svg {
+.dimension-page__empty-state svg {
   margin-bottom: var(--space-4);
   color: var(--neutral-400);
 }
 
-/* Tag styling in tag pages */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  transition: all 0.2s ease;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.tag:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-}
-
-.tag--sector {
-  background-color: var(--olive-100);
-  color: var(--olive-800);
-  border: 1px solid var(--olive-200);
-}
-
-.tag--sector:hover {
-  background-color: var(--olive-200);
-}
-
-.tag--market {
-  background-color: var(--sky-100);
-  color: var(--sky-800);
-  border: 1px solid var(--sky-200);
-}
-
-.tag--market:hover {
-  background-color: var(--sky-200);
-}
-
-.tag--attribute {
-  background-color: var(--secondary-100);
-  color: var(--secondary-800);
-  border: 1px solid var(--secondary-200);
-}
-
-.tag--attribute:hover {
-  background-color: var(--secondary-200);
-}
-
-.tag--signal {
-  background-color: var(--accent-100);
-  color: var(--accent-800);
-  border: 1px solid var(--accent-200);
-}
-
-.tag--signal:hover {
-  background-color: var(--accent-200);
-}
-
-.tag--sm {
-  font-size: var(--text-xs);
-  padding: var(--space-1) var(--space-2);
-}
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
-  .tag-page__featured-grid {
+  .dimension-page__featured-grid {
     grid-template-columns: 1fr;
   }
   
-  .tag-page__insights-grid {
+  .dimension-page__insights-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .tag-page__header {
+  .dimension-page__header {
     flex-direction: column;
     gap: var(--space-4);
   }
   
-  .tag-page__icon-wrapper {
+  .dimension-page__icon-wrapper {
     align-self: center;
   }
   
-  .tag-page__title {
+  .dimension-page__title {
     font-size: var(--text-3xl);
   }
   
-  .tag-page__filter-controls {
+  .dimension-page__filter-controls {
     flex-direction: column;
     align-items: stretch;
   }
   
-  .tag-page__filter-search {
+  .dimension-page__filter-search {
     max-width: none;
   }
   
-  .tag-page__filter-options {
+  .dimension-page__filter-options {
     flex-direction: column;
   }
 }
 
 @media (max-width: 480px) {
-  .tag-page__icon {
+  .dimension-page__icon {
     width: 80px;
     height: 80px;
   }
   
-  .tag-page__section-title {
+  .dimension-page__section-title {
     font-size: var(--text-xl);
   }
   
-  .tag-page__brand-meta {
+  .dimension-page__brand-meta {
     flex-direction: column;
   }
 }

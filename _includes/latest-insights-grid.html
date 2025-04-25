@@ -1,0 +1,159 @@
+{% comment %}
+  Include Name: latest-insights-grid.html
+  
+  Purpose: Displays a responsive grid of insight articles with consistent styling,
+  filtering options, and content type badges. Facilitates discovery of Brandmine insights.
+  
+  Parameters:
+  - title: Optional title override (default: comes from translations)
+  - description: Optional description override (default: comes from translations)
+  - insights: Specific insights to display (optional, overrides filtering)
+  - filter_by: Filter insights by dimension type (sectors, markets, attributes, signals) (optional)
+  - filter_value: Value to filter by (optional, required if filter_by is provided)
+  - filter_content_type: Filter by content type (optional)
+    Values: brand_spotlight, founders_journey, location_intelligence, market_momentum
+  - limit: Maximum number of insights to display (optional, default: 4)
+  - columns: Number of columns to display (optional, default: responsive based on screen size)
+    Values: 1, 2, 3, 4
+  - show_cta: Whether to show CTA button (optional, default: true)
+  - cta_text: Text for CTA button (optional, default: comes from translations)
+  - cta_url: URL for CTA button (optional, default: insights page in current language)
+  
+  Dependencies:
+  - site.insights collection with appropriate front matter
+  - Translation keys in site.data.translations[page.lang]
+  - CSS: assets/css/components/latest-insights-grid.css
+  - Page language must be set (page.lang)
+  - Content type badges rely on specific content_type values
+  
+  Example Usage:
+  Basic usage (latest 4 insights):
+  {% include latest-insights-grid.html %}
+  
+  Filtered by sector with custom title:
+  {% include latest-insights-grid.html 
+     title="Wine Industry Insights" 
+     filter_by="sectors" 
+     filter_value="wine" %}
+  
+  Filtered by content type with custom layout:
+  {% include latest-insights-grid.html 
+     title="Founder Stories" 
+     filter_content_type="founders_journey" 
+     columns=3
+     limit=6 %}
+  
+  Customized CTA:
+  {% include latest-insights-grid.html 
+     cta_text="Read All Founder Stories" 
+     cta_url="/en/insights/founders/" %}
+  
+  Specific insights with no CTA:
+  {% include latest-insights-grid.html 
+     insights=featured_insights 
+     show_cta=false %}
+  
+  Notes:
+  - Automatically sorts insights by date (newest first)
+  - Handles responsive layout across device sizes
+  - Displays content type badges color-coded by type
+    (brand_spotlight: secondary, founders_journey: olive,
+     location_intelligence: sky, market_momentum: accent)
+  - Shows featured image with smooth hover zoom effect
+  - Truncates excerpts to maintain consistent card heights
+  - Gracefully handles missing images with placeholders
+  - Displays up to 3 tags per insight
+  - Shows publish date and "Read more" link
+  - Provides empty state message when no insights match criteria
+{% endcomment %}
+
+<div class="latest-insights-grid {% if include.columns %}latest-insights-grid--columns-{{ include.columns }}{% endif %}">
+  {% if include.insights %}
+    {% assign all_insights = include.insights %}
+  {% elsif include.filter_by and include.filter_value %}
+    {% assign all_insights = site.insights | where: "lang", page.lang | where: include.filter_by, include.filter_value %}
+  {% elsif include.filter_content_type %}
+    {% assign all_insights = site.insights | where: "lang", page.lang | where: "content_type", include.filter_content_type %}
+  {% else %}
+    {% assign all_insights = site.insights | where: "lang", page.lang %}
+  {% endif %}
+  
+  {% assign sorted_insights = all_insights | sort: "date" | reverse %}
+  
+  {% assign limit = include.limit | default: 4 %}
+  {% assign insights_to_show = sorted_insights | limit: limit %}
+  
+  {% if insights_to_show.size > 0 %}
+    {% for insight in insights_to_show %}
+      <div class="insight-item {% if insight.content_type %}insight-item--{{ insight.content_type }}{% endif %}">
+        <a href="{{ insight.url | relative_url }}" class="insight-item__link">
+          <div class="insight-item__image-wrapper">
+            {% if insight.image %}
+              <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}" class="insight-item__image">
+            {% else %}
+              <div class="insight-item__image-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <line x1="21.2" y1="8" x2="12" y2="8"></line>
+                  <line x1="3.5" y1="12" x2="8" y2="12"></line>
+                  <line x1="21.2" y1="16" x2="12" y2="16"></line>
+                  <line x1="3.5" y1="16" x2="8" y2="16"></line>
+                </svg>
+              </div>
+            {% endif %}
+            
+            {% if insight.content_type %}
+            <div class="insight-item__type-badge insight-item__type-badge--{{ insight.content_type }}">
+              {% case insight.content_type %}
+                {% when "brand_spotlight" %}
+                  {{ site.data.translations[page.lang].insights.brand_spotlight }}
+                {% when "founders_journey" %}
+                  {{ site.data.translations[page.lang].insights.founders_journey }}
+                {% when "location_intelligence" %}
+                  Location Intelligence
+                {% when "market_momentum" %}
+                  Market Momentum
+                {% else %}
+                  {{ insight.content_type | replace: "_", " " | capitalize }}
+              {% endcase %}
+            </div>
+          {% endif %}
+          </div>
+          
+          <div class="insight-item__content">
+            <h3 class="insight-item__title">{{ insight.title }}</h3>
+            <p class="insight-item__excerpt">{{ insight.excerpt | strip_html | truncate: 120 }}</p>
+            
+            <div class="insight-item__meta">
+              <span class="insight-item__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
+              <span class="insight-item__read-more">{{ site.data.translations[page.lang].insights.read_more }} →</span>
+            </div>
+          </div>
+        </a>
+        
+        {% if insight.tags.size > 0 %}
+          <div class="insight-item__tags">
+            {% for tag in insight.tags limit:3 %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="latest-insights-grid__empty">
+      <p>{{ site.data.translations[page.lang].insights.no_insights }}</p>
+    </div>
+  {% endif %}
+</div>
+
+{% if include.show_cta != false %}
+  <div class="latest-insights-grid__cta">
+    <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/insights/' }}" 
+       class="btn btn--outline-light" 
+       data-track="latest-insights">
+       {{ include.cta_text | default: site.data.translations[page.lang].insights.view_all }}
+    </a>
+  </div>
+{% endif %}

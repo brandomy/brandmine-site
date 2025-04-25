@@ -2,6 +2,30 @@
 layout: default
 ---
 
+<!-- ----------------------------------------------------------------------------
+  INSIGHT DETAIL LAYOUT
+  ------------------------------------------------------------------------------
+  Used for individual insight pages such as:
+
+    - /en/insights/teatime-brand-story/
+    - /ru/insights/why-russia-markets-matter/
+
+  Purpose:
+  - Renders the full content of a single insight
+  - Displays metadata (type, author, publish date)
+  - Includes a back-link to the insights index
+  - Shows feature image (if provided)
+  - Outputs linked tags (sectors, markets, attributes, signals)
+  - Displays related brands and related insights in sidebar
+
+  Used by:
+  - Files in _insights/ directory
+
+  Dependencies:
+  - _includes/insight-card.html
+  - site.data.translations for multilingual labels
+---------------------------------------------------------------------------- -->
+
 <div class="panel panel--light">
   <div class="panel__content">
     <div class="insight-detail-container">

@@ -1,4 +1,41 @@
-<!-- INSIGHT CARD (BEM) -->
+{% comment %}
+  Include Name: insight-card.html
+  
+  Purpose: Displays an insight article in a card format with thumbnail image, metadata,
+  and taxonomy information. Used in insight listings, feeds, and related content sections.
+  
+  Parameters:
+  - insight: Insight object with complete details (required)
+    Expected properties:
+    - title: Insight title
+    - image: Path to thumbnail image
+    - premium: Boolean flag for premium insights (optional)
+    - date: Publication date
+    - author: Author name
+    - excerpt: Short excerpt or description
+    - sectors: Array of sector names
+    - markets: Array of market names
+    - url: URL to insight detail page
+    - cta: Custom call-to-action text (optional, default: "Read More")
+  
+  Dependencies:
+  - CSS: insight-card.css for styling
+  
+  Example Usage:
+  {% for insight in site.insights %}
+    {% include insight-card.html insight=insight %}
+  {% endfor %}
+  
+  Notes:
+  - Displays a premium badge for premium content
+  - Shows publication date and author information
+  - Only displays first 3 sectors, with a +X indicator for additional sectors
+  - Shows all markets without truncation
+  - Uses BEM naming conventions for all CSS classes
+  - Automatically links to the insight detail page
+  - Supports custom call-to-action text
+{% endcomment %}
+
 <article class="insight-card">
   <div class="insight-card__image">
     <img src="{{ insight.image }}" alt="{{ insight.title }} thumbnail">

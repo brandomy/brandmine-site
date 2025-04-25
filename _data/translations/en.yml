@@ -6,13 +6,14 @@ nav:
   home: "Home"
   brands: "Brands"
   discovery: "Discovery"
-  # sectors: "Sectors"
-  # markets: "Markets"
-  # attributes: "Attributes"
-  # signals: "Signals"
   insights: "Insights"
   about: "About"
   browse_brands: "Browse Brands"
+  sectors: "Browse by business category"
+  markets: "Explore by country or region"
+  attributes: "Discover by brand attribute"
+  signals: "Filter by growth signal"
+  russian_sectors: "Russian sectors"
 
 search:
   placeholder: "Search Brandmine..."
@@ -82,23 +83,22 @@ insights:
   view_all: "View All Insights"
   back_to_insights: "Back to Insights"
   
-  # Categories (both section titles and badge labels)
-  categories: "Categories"
-  founders_journey: "Founder's Journey"
-  founders_journeys: "Founder's Journeys"
+  # Focus Areas (renamed from Categories)
+  focus_areas: "Focus Areas"  # New key
+  areas: "Areas"  # New key for short form
   brand_spotlight: "Brand Spotlight"
   brand_spotlights: "Brand Spotlights"
-  market_milestone: "Market Milestone"
-  market_milestones: "Market Milestones"
-  cultural_signature: "Cultural Signature"
-  cultural_signatures: "Cultural Signatures"
+  founders_journey: "Founder's Journey"
+  founders_journeys: "Founder's Journeys"
+  location_intelligence: "Location Intelligence"
+  market_momentum: "Market Momentum"
   
-  # Category descriptions
-  founders_journeys_description: "The stories behind the brands and the people who created them."
+  # Focus Area descriptions
   brand_spotlights_description: "Introducing noteworthy BRICS+ brands gaining momentum."
-  market_milestones_description: "Notable achievements and expansion moments for BRICS+ brands."
-  cultural_signatures_description: "Distinctive features that give BRICS+ brands their unique identity."
-  
+  founders_journeys_description: "The stories behind the brands and the people who created them."
+  location_intelligence_description: "Geographic and spatial insights about BRICS+ brand ecosystems."
+  market_momentum_description: "Trends, developments, and growth indicators in BRICS+ markets."
+
   # Card and content elements
   read_more: "Read More"
   published_on: "Published on"
@@ -108,7 +108,8 @@ insights:
   featured_brands: "Featured Brands"
   
   # Filters and search
-  filter_by_category: "Filter by Category"
+  filter_by_category: "Filter by Category" # Phase out
+  filter_by_area: "Filter by Area" # New key
   search_insights: "Search Insights"
   sort_by_date: "Sort by Date"
   sort_by_relevance: "Sort by Relevance"
@@ -118,6 +119,9 @@ insights:
   no_results: "No insights match your search criteria."
 
 discover:
+  # Hero panel
+  discover_title: "Discover Brands by Dimensions"
+  discover_subtitle: "Explore BRICS+ brands through multiple dimensions: \nBusiness Sectors, Markets & Regions, Brand Attributes & Growth Signals"
   # Section descriptions
   sectors_description: "Explore leading brands from top sectors in the BRICS+"
   markets_description: "Explore brands from growing BRICS+ regions"
@@ -129,7 +133,7 @@ discover:
   view_all_sectors: "View All Sectors"
   view_all_markets: "View All Markets"
   view_all_attributes: "View All Attributes"
-  view_all_signals: "View All Growth Signals"
+  view_all_signals: "View All Signals"
   explore_sector: "Explore Sector"
   explore_market: "Explore Market"
   explore_attribute: "View Brands"
@@ -194,7 +198,39 @@ social:
   youtube: "YouTube"
   email: "Email"
 
-tags:
+dimensions: # NEW
+  # Dimension types
+  sector: "Sector"
+  sectors: "Sectors"
+  attribute: "Brand Attribute"
+  attributes: "Brand Attributes"
+  signal: "Growth Signal" 
+  signals: "Growth Signals"
+  market: "Market"
+  markets: "Markets"
+
+  # Group labels (for dimension clouds)
+  group_sectors: "Business Sectors"
+  group_markets: "Markets & Regions"
+  group_attributes: "Brand Attributes"
+  group_signals: "Growth Signals"
+  
+  # Section headers on dimension pages
+  related_brands: "Related Brands"
+  related_insights: "Related Insights"
+  
+  # Empty states
+  no_brands: "No brands found with this tag"
+  no_insights: "No insights available for this tag"
+  
+  # Action buttons
+  view_all_brands: "View All Brands"
+  view_all_insights: "View All Insights"
+  
+  # Premium indicator
+  premium: "Premium"
+
+tags: # to be deleted after migrating to dimensions
   # Tag types
   sector: "Sector"
   sectors: "Sectors"
@@ -316,7 +352,7 @@ search:
   popular_searches: "Popular searches"
 
 tooltips:
-  sectors: "Browse by business category"
+  sectors: "Browse by business sector"
   markets: "Explore by country or region"
   attributes: "Discover by brand attribute"
   signals: "Filter by growth signal"

@@ -1,3 +1,39 @@
+{% comment %}
+  Include Name: styleguide/type-sample.html
+  
+  Purpose: Renders a typography sample with information about the font, size, weight,
+  and usage in the styleguide. Shows both live preview and code example.
+  
+  Parameters:
+  - name: Display name of the typography style (required, e.g., "Heading 1")
+  - variable: CSS variable name (required, e.g., "--font-heading-1")
+  - family: Font family name (required, e.g., "PT Serif")
+  - size: Font size value (required, e.g., "2.5rem")
+  - weight: Font weight value (required, e.g., "700")
+  - code: HTML code sample showing the typography (required)
+  
+  Dependencies:
+  - CSS: styleguide.css (type-sample classes)
+  - External: Syntax highlighting library for code display
+  
+  Example Usage:
+  {% include styleguide/type-sample.html 
+     name="Heading 1" 
+     variable="--font-heading-1"
+     family="PT Serif" 
+     size="2.5rem"
+     weight="700"
+     code='<h1>This is a heading 1 example</h1>' %}
+  
+  Notes:
+  - Displays typography information in a definition list format
+  - Shows a live preview of the typography style
+  - Includes the HTML code needed to implement the style
+  - Uses escape filter to properly display HTML in code block
+  - Used primarily in the styleguide typography documentation page
+  - Supports all types of typography elements: headings, body text, etc.
+{% endcomment %}
+
 <div class="type-sample">
   <div class="type-sample__info">
     <h4>{{ include.name }}</h4>

@@ -3,15 +3,15 @@ layout: discovery
 title: Исследование
 permalink: /ru/discovery/
 lang: ru
-ref: discovery
+ref: discovery-hub
 discovery_path: discovery
 ---
 
 <!-- Hero Panel -->
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary discover__title">Откройте бренды</h1>
-    <p class="panel__subtitle">Исследуйте бренды по нескольким измерениям: <br>Секторам, Рынкам, Атрибутам и Путям Роста</p>
+    <h1 class="panel__heading-primary discover__title">{{ site.data.translations[page.lang].discover.discover_title }}</h1>
+    <p class="panel__subtitle">{{ site.data.translations[page.lang].discover.discover_subtitle | newline_to_br }}</p>
   </div>
 </div>
 

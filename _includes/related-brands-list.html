@@ -1,12 +1,28 @@
 {% comment %}
-  Related Brands List Include
+  Include Name: related-brands-list.html
   
-  Usage:
-  {% include related-brands-list.html brands=page.brands %}
-
+  Purpose: Displays a list of related brands with logo, title, sector, and description.
+  Used on brand detail pages, tag pages, and other contexts to show related brands.
   
   Parameters:
-  - brands: Array of brand slugs
+  - brands: Array of brand slugs to display (required)
+  
+  Dependencies:
+  - site.brands collection with valid brand objects
+  - CSS: related-brands-list.css
+  - Data: site.data.translations[lang].brand.no_related_brands for empty state
+  
+  Example Usage:
+  {% include related-brands-list.html brands=page.related_brands %}
+  {% include related-brands-list.html brands=tag.brands %}
+  
+  Notes:
+  - Automatically filters brands to match the current page language
+  - Displays brand logo, title, primary sector, and truncated description
+  - Includes fallback message when no related brands are available
+  - Links to each brand's detail page
+  - Truncates descriptions to 80 characters
+  - Uses BEM naming conventions for styling
 {% endcomment %}
 
 {% if include.brands and include.brands.size > 0 %}

@@ -43,6 +43,19 @@ lang: en
   </div>
 </div>
 
+
+<!-- Discovery Dimensions Grid Section (for testing) -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Explore By Dimension (New Component)</h2>
+    <p class="panel__lead-text">Discover brands through different perspectives from business sectors to growth signals</p>
+    
+    {% include discovery-dimensions-grid.html columns=4 limit=3 %}
+  </div>
+</div>
+
+
+
 <!-- How It Works Section -->
 <div id="how-it-works" class="panel panel--light">
   <div class="panel__content">
@@ -164,6 +177,18 @@ lang: en
   </div>
 </div>
 
+<!-- New Featured Brands Carousel (for testing) -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Featured Brands (New Component)</h2>
+    <p class="panel__lead-text">Testing our new reusable featured brands carousel component</p>
+    
+    {% include featured-brands-carousel.html 
+       limit=6
+       cta_text="Explore All New Brands" %}
+  </div>
+</div>
+
 <!-- Featured Brands Section -->
 <div class="panel panel--primary-soft">
   <div class="panel__content">
@@ -252,6 +277,19 @@ lang: en
     <div class="cta-buttons">
       <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--secondary-cta" data-track="brand-owners">Get Profiled</a>
     </div>
+  </div>
+</div>
+
+<!-- New Latest Insights Grid Section (for testing) -->
+<div class="panel panel--accent-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Latest Insights (New Component)</h2>
+    <p class="panel__lead-text">Testing our new reusable insights grid component</p>
+    
+    {% include latest-insights-grid.html 
+       columns=2 
+       limit=4 
+       cta_text="View All New Insights" %}
   </div>
 </div>
 

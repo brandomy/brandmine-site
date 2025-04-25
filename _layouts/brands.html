@@ -1,6 +1,30 @@
 ---
 layout: default
 ---
+<!-- ----------------------------------------------------------------------------
+  BRANDS INDEX LAYOUT
+  ------------------------------------------------------------------------------
+  This layout powers the main directory page for viewing all brand profiles.
+  It is assigned to the `/brands/` page in each supported language.
+
+  Purpose:
+  - Renders a search-and-filter interface for browsing brands
+  - Displays brand cards in a responsive grid layout
+  - Supports dynamic search, sorting, and filtering (via JavaScript)
+  - Multilingual content and labels are driven by `page.lang`
+
+  Used by:
+  - pages/en/brands.md
+  - pages/ru/brands.md
+  - pages/zh/brands.md
+
+  Dependencies:
+  - _includes/brand-card.html (displays each brand summary)
+  - _includes/search-filter.html (filter UI)
+  - /assets/js/brand-filtering.js (dynamic filtering behavior)
+  - site.data.translations for UI labels
+---------------------------------------------------------------------------- -->
+---
 <div class="panel panel--light">
   <div class="panel__content">
     <h1>{{ page.title }}</h1>

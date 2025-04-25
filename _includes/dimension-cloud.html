@@ -1,0 +1,50 @@
+{% comment %}
+  Include Name: dimension-cloud.html
+  
+  Purpose: Renders a comprehensive cloud of all available dimensions (tags) grouped by type.
+  Used on discovery pages and search interfaces to provide a complete view of the taxonomy.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.lang: Current page language
+    - site.data.translations[lang].dimensions: All available dimensions organized by type
+    - site.data.translations[lang].dimensions: Localized names for dimension type groups
+  
+  Dependencies:
+  - CSS: dimensions.css
+  - Data: site.data.translations structure with dimensions and their groups
+  
+  Example Usage:
+  {% include dimension-cloud.html %}
+  
+  Notes:
+  - Automatically groups dimensions by their type (sector, market, attribute, signal)
+  - Provides localized group headings from translations
+  - Links each dimension to its corresponding discovery page
+  - Applies type-specific styling for visual differentiation
+  - Handles URL path construction with proper pluralization of dimension types
+  - Skips rendering empty dimension groups
+{% endcomment %}
+
+{% assign sections = site.data.translations[page.lang].dimensions %}
+
+{% assign types = "sectors,markets,attributes,signals" | split: "," %}
+
+<div class="dimension-cloud">
+  {% for type in types %}
+    {% assign dimensions = site.data[type][page.lang] %}
+    {% if dimensions.size > 0 %}
+      <div class="dimension-cloud__group">
+        <h3 class="dimension-cloud__label">{{ site.data.translations[page.lang].dimensions["group_" | append: type] }}</h3>
+        <div class="dimension-cloud__dimensions">
+          {% for item in dimensions %}
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ type }}/{{ item.id }}/"
+               class="dimension dimension--{{ type | replace: 's', '' }}">
+              {{ item.short_description | default: item.id }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

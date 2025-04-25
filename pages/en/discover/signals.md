@@ -1,6 +1,6 @@
 ---
 layout: discover
-title: Discover by Growth Signals
+title: Discover by Growth Signal
 subtitle: Explore brands poised to grow
 permalink: /en/discover/signals/
 lang: en

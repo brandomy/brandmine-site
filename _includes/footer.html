@@ -1,4 +1,39 @@
-<!-- Footer: BEM-Compliant Structure with Data-Driven Social Icons -->
+{% comment %}
+  Include Name: footer.html
+  
+  Purpose: Renders the site footer with company information, language selector, social links, 
+  newsletter signup form, and copyright information. Used on all pages of the site.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.lang: Current page language
+    - site.data.translations[lang].footer: Footer text translations
+    - site.data.social[lang]: Social media links configuration
+    - site.data.footer[lang]: Footer links configuration
+    - site.time: Current time (for copyright year)
+  
+  Dependencies:
+  - Includes: language-selector.html
+  - CSS: footer.css
+  - External: MailerLite newsletter signup forms (language-specific)
+  - Data:
+    - site.data.translations[lang].footer: Text strings
+    - site.data.social[lang]: Social media links
+    - site.data.footer[lang]: Footer navigation links
+  
+  Example Usage:
+  {% include footer.html %}
+  
+  Notes:
+  - Includes social media links with SVG icons
+  - Includes language-specific newsletter signup forms
+  - Shows language selector in the footer for easy language switching
+  - Automatically updates copyright year
+  - Footer links (privacy, terms, etc.) are loaded from data files
+  - Uses BEM naming conventions for styling
+  - Three-column grid layout on desktop, stacks on mobile
+{% endcomment %}
+
 <footer class="footer">
   <div class="footer__grid">
     <div class="footer__section footer__section--left">

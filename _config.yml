@@ -32,7 +32,7 @@ collections:
     output: true
     # Note: Individual brand files now define their permalink pattern that includes country code
     permalink: /:collection/:path/
-  discovery:
+  dimensions:
     output: true
     permalink: /:collection/:path/
   insights:
@@ -88,22 +88,22 @@ defaults:
 
   # Discovery language defaults
   - scope:
-      path: "_discovery/en"
-      type: "discovery"
+      path: "_dimensions/en"
+      type: "dimensions"
     values:
-      layout: "discovery"
+      layout: "dimension"
       lang: "en"
   - scope:
-      path: "_discovery/ru"
-      type: "discovery"
+      path: "_dimensions/ru"
+      type: "dimensions"
     values:
-      layout: "discovery"
+      layout: "dimension"
       lang: "ru"
   - scope:
-      path: "_discovery/zh"
-      type: "discovery"
+      path: "_dimensions/zh"
+      type: "dimension"
     values:
-      layout: "tag"
+      layout: "dimension"
       lang: "zh"
 
 # Insights
