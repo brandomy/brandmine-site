@@ -1,0 +1,87 @@
+/* assets/css/debug.css */
+
+/* Breakpoint indicator */
+body::after {
+    content: "DESKTOP";
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: green;
+    color: white;
+    padding: 5px;
+    z-index: 9999;
+    font-family: monospace;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    pointer-events: none; /* This makes it not interfere with clicking */
+  }
+  
+  @media (max-width: 1200px) {
+    body::after {
+      content: "LARGE (< 1200px)";
+      background: #0066ff;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    body::after {
+      content: "MEDIUM (< 992px)";
+      background: #9900cc;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    body::after {
+      content: "SMALL (< 768px)";
+      background: #ff9900;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    body::after {
+      content: "X-SMALL (< 480px)";
+      background: #ff3300;
+    }
+  }
+  
+  /* Grid layout debug - uncomment to see grid outlines */
+  /*
+  .grid-container, [class*="grid-"] {
+    border: 1px solid rgba(255,0,0,0.2);
+  }
+  
+  .grid-container > *, [class*="grid-"] > * {
+    border: 1px dashed rgba(0,0,255,0.2);
+    position: relative;
+  }
+  */
+  
+  /* Element outline debug - uncomment to see box model of all elements */
+  /*
+  * {
+    outline: 1px solid rgba(255,0,0,0.1);
+  }
+  */
+  
+  /* Heading level indicator - shows which heading level is used */
+  /*
+  h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    display: inline-block;
+    background: #444;
+    color: white;
+    padding: 2px 4px;
+    font-size: 10px;
+    font-weight: normal;
+    margin-right: 5px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  
+  h1::before { content: "H1"; background: #aa0000; }
+  h2::before { content: "H2"; background: #bb3300; }
+  h3::before { content: "H3"; background: #cc6600; }
+  h4::before { content: "H4"; background: #dd9900; }
+  h5::before { content: "H5"; background: #aaaa00; }
+  h6::before { content: "H6"; background: #88aa00; }
+  */

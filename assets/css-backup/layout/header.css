@@ -1,0 +1,257 @@
+/* === Base Header === */
+.header {
+  background-color: var(--primary-400);
+  color: white;
+  padding: var(--space-3) var(--space-4);
+  position: relative;
+  z-index: var(--z-header);
+}
+.header a:hover {
+  color: var(--secondary-300);
+  font-weight: bold;
+}
+
+/* === Header Container === */
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* === Branding === */
+.header__title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+/* === Dropdown Menu === */
+.header__dropdown {
+  position: relative;
+}
+
+/* Dropdown icon styling */
+.header__dropdown-icon {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* Rotate dropdown icon when open */
+.header__dropdown--open .header__dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.header__dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--primary-500);
+  color: var(--neutral-100);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-sm);
+  min-width: 200px;
+  z-index: var(--z-dropdown); /* 200 */
+  overflow: visible;
+  border: 1px solid var(--primary-400);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.header__dropdown:hover .header__dropdown-content,
+.header__dropdown:focus-within .header__dropdown-content {
+  display: block;
+}
+.header__dropdown-content a {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease;
+}
+.header__dropdown-content a:hover {
+  background-color: var(--secondary-300);
+  color: white;
+}
+
+/* Ensure consistent states between JS and CSS */
+.header__dropdown.is-active .header__dropdown-content {
+  display: block;
+}
+
+/* === Language Switcher === */
+.header__lang {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+/* === Toggle Button (Hamburger) === */
+.header__toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: var(--z-toggle);
+  align-self: center;
+}
+.header__toggle-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.header__toggle-icon span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+} 
+
+/* === Navigation (Mobile First) === */
+
+.header__nav {
+  display: none; /* default hidden */
+}
+
+.header__nav.is-open {
+  display: flex; /* visible when toggle is active */
+  flex-direction: column; /* safe default; overridden by desktop */
+}
+
+.header__nav-list {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0;
+  margin: 0;
+}
+
+.header__nav a {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+/* Add focus styles for improved accessibility */
+.header__nav a:focus {
+  outline: 2px solid var(--secondary-300);
+  outline-offset: 2px;
+}
+
+/* === Dropdown Open State === */
+.header__dropdown.header__dropdown--open .header__dropdown-content {
+  display: block;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES
+   ==========================================================================
+*/
+
+/* === MOBILE Overrides === */
+@media (max-width: 768px) { /* md breakpoint */
+  /* Ensure dropdown link is easy to click */
+  .header__dropdown > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Make the dropdown icon more tappable on mobile */
+  .header__dropdown-icon {
+    padding: 10px; /* Larger tap target */
+    margin: -10px; /* Offset the padding to maintain visual spacing */
+    color: var(--secondary-400); /* Orange color to indicate it's interactive */
+  }
+  .header__nav {
+    display: none;
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: var(--space-2);
+    gap: var(--space-2);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  .header__nav.is-open {
+    display: flex;
+    max-height: 100vh;
+    overflow-y: auto; /* added as temporary measure */
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .header__dropdown-content {
+    max-height: none;
+    overflow: visible;
+    display: none; /* Hide by default on mobile */
+    position: static;
+    z-index: var(--z-dropdown);
+    padding: 0;
+    margin: 0;
+    padding-left: var(--space-4);
+    margin-left: var(--space-4);
+    border-left: 2px solid var(--neutral-200); /* optional visual cue */
+    border-radius: var(--radius-sm);
+    background-color: var(--primary-500); /* ensure bg matches */
+  }
+  
+  /* Only show dropdown content when.header__dropdown--open class is applied */
+  .header__dropdown--open .header__dropdown-content {
+    display: block;
+  }
+  .header__dropdown-content a {
+    padding-left: var(--space-2);
+  }
+}
+
+
+/* === Desktop Overrides === */
+@media (min-width: 769px) { /* md breakpoint + 1px */
+  .header__nav {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    opacity: 1;
+    max-height: none;
+  }
+
+  .header__toggle {
+    display: none;
+  }
+
+  .header__nav.is-open {
+    all: unset; /* Optional: to reset mobile animation overrides */
+  }
+
+  .header__nav-list {
+    flex-direction: row;
+    width: 100%;
+    padding-left: var(--space-4);
+    gap: var(--space-2);
+  }
+}

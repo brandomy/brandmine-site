@@ -18,7 +18,7 @@
 }
 
 .russian-sectors__intro-text {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   color: var(--neutral-700);
   margin-bottom: var(--space-6);
@@ -26,23 +26,23 @@
 
 .russian-sectors__columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
   margin: var(--space-6) 0;
   background-color: white;
-  padding: var(--space-6);
+  padding: var(--space-3);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
 }
 
 .russian-sectors__column {
-  padding: var(--space-4);
+  padding: var(--space-2);
 }
 
 .russian-sectors__heading {
   margin-top: 0;
   margin-bottom: var(--space-4);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: var(--font-semibold);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--neutral-200);
@@ -97,7 +97,7 @@
 }
 
 .russian-sectors__category-title {
-  font-size: var(--text-3xl);
+  font-size: var(--text-base);
   font-weight: var(--font-bold);
   color: var(--neutral-800);
   margin-top: var(--space-6);
@@ -110,8 +110,8 @@
    Sector Sections
    -------------------------------------------------------------------------- */
 .russian-sectors__section {
-  margin-bottom: var(--space-8);
-  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  padding: var(--space-3);
   border-radius: var(--radius-md);
   transition: all 0.3s ease;
   position: relative;
@@ -164,7 +164,7 @@
 }
 
 .russian-sectors__section-title {
-  font-size: var(--text-xl);
+  font-size: var(--text-base);
   font-weight: var(--font-semibold);
   color: var(--neutral-800);
   margin-top: 0;
@@ -200,7 +200,7 @@
 }
 
 .russian-sectors__summary-content p {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   color: var(--neutral-800);
   margin-bottom: var(--space-6);
 }
@@ -227,9 +227,9 @@
 
 .russian-sectors__navigation-links {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-4);
-  flex-wrap: wrap;
 }
 
 .russian-sectors__navigation-link {
@@ -241,6 +241,8 @@
   text-decoration: none;
   font-weight: var(--font-medium);
   transition: all 0.2s ease;
+  width: 100%;
+  justify-content: center;
 }
 
 .russian-sectors__navigation-link--sector {
@@ -289,73 +291,59 @@ html {
 }
 
 /* --------------------------------------------------------------------------
-   Responsive Adjustments
+   Responsive Adjustments (Mobile-First with min-width breakpoints)
    -------------------------------------------------------------------------- */
-@media (max-width: 992px) {
+@media (min-width: 480px) {
+  .russian-sectors__intro-text {
+    font-size: var(--text-lg);
+  }
+
+  .russian-sectors__summary-content p {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (min-width: 768px) {
+  .russian-sectors__columns {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    padding: var(--space-6);
+  }
+
   .russian-sectors__section {
     padding: var(--space-4);
+    margin-bottom: var(--space-8);
   }
-  
+
   .russian-sectors__section-title {
     font-size: var(--text-lg);
   }
-  
+
   .russian-sectors__category-title {
     font-size: var(--text-2xl);
   }
-}
 
-@media (max-width: 768px) {
-  .russian-sectors__columns {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-  
-  .russian-sectors__column:last-child {
-    margin-top: var(--space-4);
-  }
-  
-  .russian-sectors__section {
-    margin-bottom: var(--space-6);
-  }
-  
   .russian-sectors__navigation-links {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .russian-sectors__navigation-link {
-    width: 100%;
+    flex-direction: row;
     justify-content: center;
   }
-  
-  .russian-sectors__intro-text {
-    font-size: var(--text-base);
-  }
-  
-  .russian-sectors__summary-content p {
-    font-size: var(--text-lg);
+
+  .russian-sectors__navigation-link {
+    width: auto;
+    justify-content: flex-start;
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 992px) {
   .russian-sectors__section {
-    padding: var(--space-3);
+    padding: var(--space-6);
   }
-  
+
   .russian-sectors__section-title {
-    font-size: var(--text-base);
+    font-size: var(--text-xl);
   }
-  
-  .russian-sectors__columns {
-    padding: var(--space-3);
-  }
-  
-  .russian-sectors__column {
-    padding: var(--space-2);
-  }
-  
-  .russian-sectors__heading {
-    font-size: var(--text-lg);
+
+  .russian-sectors__category-title {
+    font-size: var(--text-3xl);
   }
 }

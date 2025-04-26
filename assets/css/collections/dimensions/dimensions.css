@@ -1030,8 +1030,54 @@
   border-bottom: 3px solid var(--primary-500);
 }
 
+.dimension-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.featured-sector,
+.featured-market {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.featured-sector__image,
+.featured-market__image {
+  height: 200px;
+}
+
+.markets-map__container {
+  height: 300px;
+}
+
+.signals-about__premium {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.signals-about__premium .btn {
+  align-self: stretch;
+  text-align: center;
+}
+
+.dimensions-navigation__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.discovery-section {
+  margin-bottom: var(--space-8);
+}
+
+
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .discovery-tabs {
     flex-wrap: wrap;
     gap: var(--space-2);
@@ -1044,7 +1090,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
   .discovery-tabs-container {
     padding: var(--space-2) 0;
   }
@@ -1091,45 +1137,43 @@
   }
 }
 
-/* Large devices (992px and up) */
-@media (max-width: 992px) {
-  .dimension-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+@media (min-width: 768px) {
+  .featured-sector,
+  .featured-market {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .featured-sector__image,
+  .featured-market__image {
+    height: 100%;
+  }
+
+  .markets-map__container {
+    height: 500px;
+  }
+
+  .signals-about__premium {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .signals-about__premium .btn {
+    align-self: auto;
+    text-align: left;
+  }
+
+  .dimensions-navigation__links {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .discovery-section {
+    margin-bottom: var(--space-12);
   }
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .featured-sector,
-  .featured-market {
-    grid-template-columns: 1fr;
-  }
-  
-  .featured-sector__image,
-  .featured-market__image {
-    height: 200px;
-  }
-  
-  .markets-map__container {
-    height: 300px;
-  }
-  
-  .signals-about__premium {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .signals-about__premium .btn {
-    align-self: stretch;
-    text-align: center;
-  }
-  
-  .dimensions-navigation__links {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .discovery-section {
-    margin-bottom: var(--space-8);
+@media (min-width: 992px) {
+  .dimension-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }

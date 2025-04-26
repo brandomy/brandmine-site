@@ -1,0 +1,948 @@
+/* ==========================================================================
+   Discovery Section Styles
+   ==========================================================================
+   Styles for the Discovery hub and dimension pages, including dimension clouds,
+   dimension cards, map views, and relationship visualization.
+*/
+
+/* --------------------------------------------------------------------------
+   1. DISCOVERY HUB STYLING
+   -------------------------------------------------------------------------- */
+
+/* Panel backgrounds for each dimension */
+.panel--discovery {
+  background: linear-gradient(135deg, var(--primary-500), var(--sky-600));
+  color: white;
+}
+
+.panel--sectors {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  color: white;
+}
+
+.panel--markets {
+  background: linear-gradient(135deg, var(--sky-500), var(--sky-700));
+  color: white;
+}
+
+.panel--attributes {
+  background: linear-gradient(135deg, var(--amber-500), var(--amber-700));
+  color: white;
+}
+
+.panel--signals {
+  background: linear-gradient(135deg, var(--accent-500), var(--accent-700));
+  color: white;
+}
+
+/* Russian sectors panel */
+.panel--russian-sectors {
+  background: linear-gradient(135deg, var(--primary-700), var(--primary-800));
+  color: white;
+}
+
+/* Discovery sections */
+.discovery-section {
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+
+.discovery-section__header {
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.discovery-section__title {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-heading);
+}
+
+.discovery-section__description {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-2);
+}
+
+.discovery-section__link {
+  font-size: var(--text-sm);
+  color: var(--primary-600);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.discovery-section__link:hover {
+  text-decoration: underline;
+}
+
+/* Discovery section icons */
+.discovery-section__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-right: var(--space-2);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-100);
+  color: var(--neutral-600);
+}
+
+.discovery-section__icon--sector {
+  background-color: var(--primary-100);
+  color: var(--primary-700);
+}
+
+.discovery-section__icon--market {
+  background-color: var(--sky-100);
+  color: var(--sky-700);
+}
+
+.discovery-section__icon--attribute {
+  background-color: var(--amber-100);
+  color: var(--amber-700);
+}
+
+.discovery-section__icon--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-700);
+}
+
+.discovery-section__icon--russian-sectors {
+  background-color: var(--primary-100);
+  color: var(--primary-700);
+}
+
+/* --------------------------------------------------------------------------
+   1a. DISCOVERY TABS
+   -------------------------------------------------------------------------- */
+
+.discovery__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--neutral-200);
+  padding-bottom: var(--space-2);
+  justify-content: center;
+  width: 100%;
+}
+
+.discovery__tab {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-600);
+  text-decoration: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: all 0.2s ease;
+  position: relative;
+  margin: 0 var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.discovery__tab-icon {
+  display: flex;
+  align-items: center;
+}
+
+.discovery__tab:hover {
+  color: var(--primary-600);
+  background-color: var(--neutral-100);
+}
+
+.discovery__tab.active {
+  color: var(--primary-600);
+  font-weight: var(--font-semibold);
+}
+
+.discovery__tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary-500);
+  border-radius: var(--radius-full);
+}
+
+/* Colored tabs by category */
+.discovery__tab--sector {
+  border-top: 3px solid var(--olive-200);
+}
+
+.discovery__tab--sector:hover,
+.discovery__tab--sector.active {
+  background-color: var(--olive-50);
+  color: var(--olive-800);
+}
+
+.discovery__tab--sector.active::after {
+  background-color: var(--olive-500);
+}
+
+.discovery__tab--russian-sector {
+  border-top: 3px solid var(--primary-200);
+}
+
+.discovery__tab--russian-sector:hover,
+.discovery__tab--russian-sector.active {
+  background-color: var(--primary-50);
+  color: var(--primary-800);
+}
+
+.discovery__tab--russian-sector.active::after {
+  background-color: var(--primary-500);
+}
+
+.discovery__tab--market {
+  border-top: 3px solid var(--sky-200);
+}
+
+.discovery__tab--market:hover,
+.discovery__tab--market.active {
+  background-color: var(--sky-50);
+  color: var(--sky-800);
+}
+
+.discovery__tab--market.active::after {
+  background-color: var(--sky-500);
+}
+
+.discovery__tab--attribute {
+  border-top: 3px solid var(--secondary-200);
+}
+
+.discovery__tab--attribute:hover,
+.discovery__tab--attribute.active {
+  background-color: var(--secondary-50);
+  color: var(--secondary-800);
+}
+
+.discovery__tab--attribute.active::after {
+  background-color: var(--secondary-500);
+}
+
+.discovery__tab--signal {
+  border-top: 3px solid var(--accent-200);
+}
+
+.discovery__tab--signal:hover,
+.discovery__tab--signal.active {
+  background-color: var(--accent-50);
+  color: var(--accent-800);
+}
+
+.discovery__tab--signal.active::after {
+  background-color: var(--accent-500);
+}
+
+/* --------------------------------------------------------------------------
+   2. TAG CLOUD STYLING
+   -------------------------------------------------------------------------- */
+
+.tag-cloud {
+  margin-bottom: var(--space-6);
+}
+
+.tag-cloud__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.tag--sector {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+  border: 1px solid var(--primary-200);
+}
+
+.tag--sector:hover {
+  background-color: var(--primary-200);
+}
+
+.tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
+}
+
+.tag--market:hover {
+  background-color: var(--sky-200);
+}
+
+.tag--attribute {
+  background-color: var(--amber-100);
+  color: var(--amber-800);
+  border: 1px solid var(--amber-200);
+}
+
+.tag--attribute:hover {
+  background-color: var(--amber-200);
+}
+
+.tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
+}
+
+.tag--signal:hover {
+  background-color: var(--accent-200);
+}
+
+.tag--russian-sector {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+  border: 1px solid var(--primary-200);
+}
+
+.tag--russian-sector:hover {
+  background-color: var(--primary-200);
+}
+
+.tag--more {
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  border: 1px solid var(--neutral-200);
+}
+
+.tag--more:hover {
+  background-color: var(--neutral-200);
+}
+
+/* --------------------------------------------------------------------------
+   3. MAP PREVIEW STYLING
+   -------------------------------------------------------------------------- */
+
+.map-preview {
+  margin: var(--space-4) 0 var(--space-6);
+  text-align: center;
+}
+
+.map-preview__container,
+.markets-map__container {
+  height: 220px;
+  max-width: 100%;
+  margin: 0 auto var(--space-3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--sky-50);
+  border: var(--border-width-thin) solid var(--sky-200);
+}
+
+.markets-map__container {
+  height: 500px;
+}
+
+.map-preview__content,
+.map-preview__placeholder,
+.markets-map__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--sky-700);
+  font-style: italic;
+}
+
+.map-preview__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--sky-700);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+}
+
+.map-preview__link:hover {
+  text-decoration: underline;
+}
+
+/* Map legend styling */
+.markets-map__legend {
+  background-color: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+}
+
+.markets-map__legend-title {
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--neutral-700);
+}
+
+.markets-map__legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.markets-map__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.markets-map__legend-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.markets-map__legend-marker--hotel {
+  background-color: var(--primary-500);
+}
+
+.markets-map__legend-marker--spirits {
+  background-color: var(--amber-500);
+}
+
+.markets-map__legend-marker--beauty {
+  background-color: var(--secondary-500);
+}
+
+.markets-map__legend-marker--other {
+  background-color: var(--sky-500);
+}
+
+.markets-map__legend-label {
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+}
+
+/* --------------------------------------------------------------------------
+   4. DIMENSION GRID STYLING
+   -------------------------------------------------------------------------- */
+
+.dimension-section {
+  margin-bottom: var(--space-12);
+}
+
+.dimension-section__header {
+  margin-bottom: var(--space-6);
+}
+
+.dimension-section__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-heading);
+}
+
+.dimension-section__description {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+}
+
+.dimension-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.dimension-item {
+  display: block;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+}
+
+.dimension-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dimension-item--sector {
+  border-left: 4px solid var(--primary-500);
+}
+
+.dimension-item--market {
+  border-left: 4px solid var(--sky-500);
+}
+
+.dimension-item--attribute {
+  border-left: 4px solid var(--amber-500);
+}
+
+.dimension-item--signal {
+  border-left: 4px solid var(--accent-500);
+}
+
+.dimension-item--russian-sector {
+  border-left: 4px solid var(--primary-600);
+}
+
+.dimension-item__content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dimension-item__title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-heading);
+}
+
+.dimension-item__meta {
+  margin-top: auto;
+  color: var(--neutral-500);
+  font-size: var(--text-sm);
+}
+
+.dimension-item__count {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dimension-item__icon {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  color: var(--neutral-200);
+}
+
+/* --------------------------------------------------------------------------
+   5. FEATURED CONTENT STYLING
+   -------------------------------------------------------------------------- */
+
+/* Featured sectors & markets styling */
+.featured-sectors__grid,
+.featured-markets__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.featured-sector,
+.featured-market {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-4);
+  background-color: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.featured-sector {
+  border-left: 4px solid var(--primary-500);
+}
+
+.featured-market {
+  border-left: 4px solid var(--sky-500);
+}
+
+.featured-sector__image,
+.featured-market__image {
+  height: 100%;
+  overflow: hidden;
+}
+
+.featured-sector__img,
+.featured-market__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-sector__content,
+.featured-market__content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-sector__title,
+.featured-market__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-heading);
+}
+
+.featured-sector__description,
+.featured-market__description {
+  color: var(--neutral-600);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-base);
+}
+
+.featured-sector__meta,
+.featured-market__meta {
+  margin-bottom: var(--space-4);
+  display: flex;
+  gap: var(--space-4);
+  color: var(--neutral-500);
+  font-size: var(--text-sm);
+}
+
+.featured-sector__link,
+.featured-market__link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Attribute categories styling */
+.attribute-category,
+.signal-category {
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.attribute-category {
+  border-left: 4px solid var(--amber-500);
+}
+
+.signal-category {
+  border-left: 4px solid var(--accent-500);
+}
+
+.attribute-category__title,
+.signal-category__title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-3);
+  font-family: var(--font-heading);
+}
+
+.attribute-category__tags,
+.signal-category__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Featured brands and insights styling */
+.featured-brands,
+.featured-insights,
+.attribute-featured__brands {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.featured-brands__empty,
+.featured-insights__empty,
+.attribute-featured__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-8);
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  color: var(--neutral-500);
+  border: 1px dashed var(--neutral-300);
+}
+
+.discovery-section__action {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+/* Signals about section */
+.signals-about {
+  background-color: white;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.signals-about__text {
+  margin-bottom: var(--space-6);
+  color: var(--neutral-700);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+.signals-about__premium {
+  background-color: var(--accent-50);
+  border: 1px solid var(--accent-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.signals-about__premium-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--accent-700);
+}
+
+.signals-about__premium-title {
+  font-weight: var(--font-semibold);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-1);
+}
+
+.signals-about__premium-text {
+  font-size: var(--text-sm);
+  color: var(--accent-600);
+}
+
+/* Attribute featured section */
+.attribute-featured__group {
+  margin-bottom: var(--space-8);
+}
+
+.attribute-featured__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.attribute-featured__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-800);
+  font-family: var(--font-heading);
+}
+
+.attribute-featured__link {
+  color: var(--amber-600);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.attribute-featured__link:hover {
+  text-decoration: underline;
+}
+
+/* Related insights styling */
+.related-insights__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.related-insights__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-8);
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  color: var(--neutral-500);
+  border: 1px dashed var(--neutral-300);
+  margin-bottom: var(--space-6);
+}
+
+.related-insights__action {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   6. DIMENSIONS NAVIGATION
+   -------------------------------------------------------------------------- */
+
+.dimensions-navigation {
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--neutral-200);
+}
+
+.dimensions-navigation__title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-4);
+  text-align: center;
+  font-family: var(--font-heading);
+}
+
+.dimensions-navigation__links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.dimensions-navigation__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease;
+}
+
+.dimensions-navigation__link--sector {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+}
+
+.dimensions-navigation__link--sector:hover {
+  background-color: var(--primary-200);
+}
+
+.dimensions-navigation__link--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+}
+
+.dimensions-navigation__link--market:hover {
+  background-color: var(--sky-200);
+}
+
+.dimensions-navigation__link--attribute {
+  background-color: var(--amber-100);
+  color: var(--amber-800);
+}
+
+.dimensions-navigation__link--attribute:hover {
+  background-color: var(--amber-200);
+}
+
+.dimensions-navigation__link--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+}
+
+.dimensions-navigation__link--signal:hover {
+  background-color: var(--accent-200);
+}
+
+.dimensions-navigation__link--russian-sectors {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+}
+
+.dimensions-navigation__link--russian-sectors:hover {
+  background-color: var(--primary-200);
+}
+
+
+
+
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* Small devices (480px and up) */
+@media (min-width: 480px) {
+  .discovery-section__title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Medium devices (768px and up) */
+@media (min-width: 768px) {
+  .featured-sector,
+  .featured-market {
+    grid-template-columns: 1fr 2fr;
+  }
+  
+  .map-preview__container {
+    height: 250px;
+  }
+  
+  .markets-map__container {
+    height: 500px;
+  }
+}
+
+/* Large devices (992px and up) */
+@media (max-width: 992px) {
+  .dimension-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .featured-sector,
+  .featured-market {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-sector__image,
+  .featured-market__image {
+    height: 200px;
+  }
+  
+  .markets-map__container {
+    height: 300px;
+  }
+  
+  .signals-about__premium {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .signals-about__premium .btn {
+    align-self: stretch;
+    text-align: center;
+  }
+  
+  .dimensions-navigation__links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .discovery-section {
+    margin-bottom: var(--space-8);
+  }
+}
