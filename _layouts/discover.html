@@ -13,7 +13,7 @@ layout: default
 
   Purpose:
   - Wraps each of the 4 dimension overviews in a consistent format
-  - Injects the multilingual discovery navigation tabs via `discovery-navigation.html`
+  - Injects the multilingual discovery navigation tabs via `collections/dimensions/discovery-navigation.html`
   - Applies a context-aware background style via `container_class` 
     (e.g., sectors, markets) depending on the `page.discovery_path`
 
@@ -30,7 +30,7 @@ layout: default
     /en/discover/sectors/wine or /zh/discover/markets/china
 
   Dependencies:
-  - _includes/discovery-navigation.html
+  - _includes/collections/dimensions/discovery-navigation.html
   - _layouts/default.html (as base wrapper)
   - Uses `page.discovery_path` and `site.data.translations[lang]` 
     for styling and multilingual support
@@ -47,7 +47,7 @@ layout: default
 {% endif %}
 
 <!-- Dimension Types under Discover Section-->
-{% include discovery-navigation.html style_option='b' active_type=page.discovery_path %}
+{% include collections/dimensions/discovery-navigation.html style_option='b' active_type=page.discovery_path %}
 
 
 <!-- Main Content Panel - with discovery-content modifier to remove top padding -->

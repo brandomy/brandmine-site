@@ -19,8 +19,8 @@ layout: default
   - pages/zh/brands.md
 
   Dependencies:
-  - _includes/brand-card.html (displays each brand summary)
-  - _includes/search-filter.html (filter UI)
+  - _includes/components/cards/brand-card.html (displays each brand summary)
+  - _includes/components/search/search-filter.html (filter UI)
   - /assets/js/brand-filtering.js (dynamic filtering behavior)
   - site.data.translations for UI labels
 ---------------------------------------------------------------------------- -->
@@ -36,7 +36,7 @@ layout: default
     
     <div class="brands__interface">
       <!-- Use our new search filter include -->
-      {% include search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
+      {% include components/search/search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
       
       <div class="brands__results">
         <div class="brands__results-header">

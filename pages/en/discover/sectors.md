@@ -48,7 +48,7 @@ discovery_path: sectors
                 <span class="sectors__item-count">{{ brand_count | default: 0 }} brands</span>
               </div>
               <div class="sectors__item-icon">
-                {% include icon.html type="sector" name=icon_id %}
+                {% include components/icons/icon.html type="sector" name=icon_id %}
               </div>
             </div>
           </a>

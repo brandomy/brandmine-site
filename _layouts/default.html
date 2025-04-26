@@ -51,10 +51,10 @@
   <script async src="https://tally.so/widgets/embed.js"></script>
 
   <!-- Google Analytics -->
-  {% include google-analytics.html %}
+  {% include utilities/google-analytics.html %}
 </head>
 <body class="{% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}home-page{% elsif page.permalink contains '/about/' %}about-page{% endif %}">
-  {% include header.html %}
+  {% include layout/header.html %}
   <main class="layout">
     <div class="layout__wrapper">
       <div class="layout__content">
@@ -63,7 +63,7 @@
     </div>
   </main>
   
-  {% include footer.html %}
+  {% include layout/footer.html %}
   <script src="{{ '/assets/js/header.js' | relative_url }}"></script>
   <!-- <script src="{{ site.baseurl }}/assets/js/header.js"></script> -->
 

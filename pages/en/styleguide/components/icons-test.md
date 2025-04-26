@@ -27,44 +27,44 @@ This page displays all icons in the system at various sizes to test their render
       <tr>
         <td>sector-default</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="sector-default" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="sector-default" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="sector-default" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="sector-default" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="sector-default" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="sector-default" %}</div></td>
       </tr>
       <tr>
         <td>market-default</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="market-default" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="market-default" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="market-default" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="market-default" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="market-default" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="market-default" %}</div></td>
       </tr>
       <tr>
         <td>attribute-default</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="attribute-default" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="attribute-default" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="attribute-default" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="attribute-default" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="attribute-default" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="attribute-default" %}</div></td>
       </tr>
       <tr>
         <td>signal-default</td>
         <td>Signal</td>
-        <td><div class="icon-test-xl">{% include icon.html type="signal" name="signal-default" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="signal" name="signal-default" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="signal" name="signal-default" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="signal" name="signal-default" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="signal" name="signal-default" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="signal" name="signal-default" %}</div></td>
       </tr>
       <tr>
         <td>russian-sector-default</td>
         <td>Russian Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="russian-sector-default" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="russian-sector-default" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="russian-sector-default" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="russian-sector-default" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="russian-sector-default" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="russian-sector-default" %}</div></td>
       </tr>
       <tr>
         <td>insights-default</td>
         <td>Insights</td>
-        <td><div class="icon-test-xl">{% include icon.html type="insight" name="insights-default" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="insight" name="insights-default" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="insight" name="insights-default" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="insight" name="insights-default" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="insight" name="insights-default" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="insight" name="insights-default" %}</div></td>
       </tr>
 
       <!-- Sectors -->
@@ -74,114 +74,114 @@ This page displays all icons in the system at various sizes to test their render
       <tr>
         <td>artisan-confectionery</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="artisan-confectionery" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="artisan-confectionery" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisan-confectionery" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="artisan-confectionery" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="artisan-confectionery" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="artisan-confectionery" %}</div></td>
       </tr>
       <tr>
         <td>artisan-ceramics</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="artisan-ceramics" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="artisan-ceramics" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisan-ceramics" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="artisan-ceramics" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="artisan-ceramics" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="artisan-ceramics" %}</div></td>
       </tr>
       <tr>
         <td>artisanal-spirits</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="artisanal-spirits" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="artisanal-spirits" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="artisanal-spirits" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="artisanal-spirits" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="artisanal-spirits" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="artisanal-spirits" %}</div></td>
       </tr>
       <tr>
         <td>fashion-accessories</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="fashion-accessories" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="fashion-accessories" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="fashion-accessories" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="fashion-accessories" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="fashion-accessories" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="fashion-accessories" %}</div></td>
       </tr>
       <tr>
         <td>fermented-dairy</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="fermented-dairy" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="fermented-dairy" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="fermented-dairy" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="fermented-dairy" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="fermented-dairy" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="fermented-dairy" %}</div></td>
       </tr>
       <tr>
         <td>gourmet-foods</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="gourmet-foods" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="gourmet-foods" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="gourmet-foods" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="gourmet-foods" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="gourmet-foods" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="gourmet-foods" %}</div></td>
       </tr>
       <tr>
         <td>halal-foods</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="halal-foods" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="halal-foods" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="halal-foods" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="halal-foods" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="halal-foods" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="halal-foods" %}</div></td>
       </tr>
       <tr>
         <td>honey-bee-products</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="honey-bee-products" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="honey-bee-products" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="honey-bee-products" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="honey-bee-products" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="honey-bee-products" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="honey-bee-products" %}</div></td>
       </tr>
       <tr>
         <td>hotels-resorts</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="hotels-resorts" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="hotels-resorts" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="hotels-resorts" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="hotels-resorts" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="hotels-resorts" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="hotels-resorts" %}</div></td>
       </tr>
       <tr>
         <td>jewelry-watches</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="jewelry-watches" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="jewelry-watches" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="jewelry-watches" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="jewelry-watches" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="jewelry-watches" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="jewelry-watches" %}</div></td>
       </tr>
       <tr>
         <td>mineral-waters</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="mineral-waters" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="mineral-waters" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="mineral-waters" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="mineral-waters" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="mineral-waters" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="mineral-waters" %}</div></td>
       </tr>
       <tr>
         <td>natural-beauty</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="natural-beauty" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="natural-beauty" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="natural-beauty" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="natural-beauty" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="natural-beauty" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="natural-beauty" %}</div></td>
       </tr>
       <tr>
         <td>natural-supplements</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="natural-supplements" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="natural-supplements" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="natural-supplements" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="natural-supplements" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="natural-supplements" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="natural-supplements" %}</div></td>
       </tr>
       <tr>
         <td>cured-meats</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="cured-meats" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="cured-meats" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="cured-meats" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="cured-meats" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="cured-meats" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="cured-meats" %}</div></td>
       </tr>
       <tr>
         <td>specialty-cheeses</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="specialty-cheeses" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="specialty-cheeses" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="specialty-cheeses" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="specialty-cheeses" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="specialty-cheeses" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="specialty-cheeses" %}</div></td>
       </tr>
       <tr>
         <td>wine</td>
         <td>Sector</td>
-        <td><div class="icon-test-xl">{% include icon.html type="sector" name="wine" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="sector" name="wine" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="sector" name="wine" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="sector" name="wine" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="sector" name="wine" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="sector" name="wine" %}</div></td>
       </tr>
 
       <!-- Attributes -->
@@ -191,58 +191,58 @@ This page displays all icons in the system at various sizes to test their render
       <tr>
         <td>artisanal-excellence</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="artisanal-excellence" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="artisanal-excellence" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="artisanal-excellence" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="artisanal-excellence" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="artisanal-excellence" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="artisanal-excellence" %}</div></td>
       </tr>
       <tr>
         <td>cultural-ambassador</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="cultural-ambassador" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="cultural-ambassador" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="cultural-ambassador" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="cultural-ambassador" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="cultural-ambassador" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="cultural-ambassador" %}</div></td>
       </tr>
       <tr>
         <td>founder-led</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="founder-led" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="founder-led" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="founder-led" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="founder-led" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="founder-led" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="founder-led" %}</div></td>
       </tr>
       <tr>
         <td>heritage-brand</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="heritage-brand" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="heritage-brand" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="heritage-brand" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="heritage-brand" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="heritage-brand" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="heritage-brand" %}</div></td>
       </tr>
       <tr>
         <td>innovation-leader</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="innovation-leader" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="innovation-leader" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="innovation-leader" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="innovation-leader" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="innovation-leader" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="innovation-leader" %}</div></td>
       </tr>
       <tr>
         <td>premium-positioning</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="premium-positioning" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="premium-positioning" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="premium-positioning" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="premium-positioning" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="premium-positioning" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="premium-positioning" %}</div></td>
       </tr>
       <tr>
         <td>regional-icon</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="regional-icon" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="regional-icon" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="regional-icon" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="regional-icon" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="regional-icon" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="regional-icon" %}</div></td>
       </tr>
       <tr>
         <td>sustainability-pioneer</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include icon.html type="attribute" name="sustainability-pioneer" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="attribute" name="sustainability-pioneer" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="attribute" name="sustainability-pioneer" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="sustainability-pioneer" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="sustainability-pioneer" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="sustainability-pioneer" %}</div></td>
       </tr>
 
       <!-- Markets -->
@@ -252,58 +252,58 @@ This page displays all icons in the system at various sizes to test their render
       <tr>
         <td>brazil</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="brazil" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="brazil" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="brazil" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="brazil" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="brazil" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="brazil" %}</div></td>
       </tr>
       <tr>
         <td>china</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="china" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="china" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="china" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="china" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="china" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="china" %}</div></td>
       </tr>
       <tr>
         <td>egypt</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="egypt" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="egypt" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="egypt" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="egypt" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="egypt" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="egypt" %}</div></td>
       </tr>
       <tr>
         <td>ethiopia</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="ethiopia" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="ethiopia" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="ethiopia" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="ethiopia" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="ethiopia" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="ethiopia" %}</div></td>
       </tr>
       <tr>
         <td>india</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="india" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="india" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="india" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="india" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="india" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="india" %}</div></td>
       </tr>
       <tr>
         <td>indonesia</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="indonesia" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="indonesia" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="indonesia" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="indonesia" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="indonesia" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="indonesia" %}</div></td>
       </tr>
       <tr>
         <td>iran</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="iran" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="iran" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="iran" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="iran" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="iran" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="iran" %}</div></td>
       </tr>
       <tr>
         <td>russia</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="russia" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="russia" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="russia" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="russia" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="russia" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="russia" %}</div></td>
       </tr>
       <tr>
         <td>south africa</td>
@@ -339,9 +339,9 @@ This page displays all icons in the system at various sizes to test their render
       <tr>
         <td>uae</td>
         <td>Market</td>
-        <td><div class="icon-test-xl">{% include icon.html type="market" name="uae" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="market" name="uae" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="market" name="uae" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="market" name="uae" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="market" name="uae" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="market" name="uae" %}</div></td>
       </tr>
 
       <!-- Signals -->
@@ -351,30 +351,30 @@ This page displays all icons in the system at various sizes to test their render
       <tr>
         <td>export-ready</td>
         <td>Signal</td>
-        <td><div class="icon-test-xl">{% include icon.html type="signal" name="export-ready" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="signal" name="export-ready" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="signal" name="export-ready" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="signal" name="export-ready" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="signal" name="export-ready" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="signal" name="export-ready" %}</div></td>
       </tr>
       <tr>
         <td>franchise-ready</td>
         <td>Signal</td>
-        <td><div class="icon-test-xl">{% include icon.html type="signal" name="franchise-ready" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="signal" name="franchise-ready" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="signal" name="franchise-ready" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="signal" name="franchise-ready" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="signal" name="franchise-ready" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="signal" name="franchise-ready" %}</div></td>
       </tr>
       <tr>
         <td>investment-ready</td>
         <td>Signal</td>
-        <td><div class="icon-test-xl">{% include icon.html type="signal" name="investment-ready" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="signal" name="investment-ready" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="signal" name="investment-ready" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="signal" name="investment-ready" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="signal" name="investment-ready" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="signal" name="investment-ready" %}</div></td>
       </tr>
       <tr>
         <td>rapid-growth</td>
         <td>Signal</td>
-        <td><div class="icon-test-xl">{% include icon.html type="signal" name="rapid-growth" %}</div></td>
-        <td><div class="icon-test-lg">{% include icon.html type="signal" name="rapid-growth" %}</div></td>
-        <td><div class="icon-test-sm">{% include icon.html type="signal" name="rapid-growth" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="signal" name="rapid-growth" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="signal" name="rapid-growth" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="signal" name="rapid-growth" %}</div></td>
       </tr>
     </tbody>
   </table>

@@ -1,0 +1,56 @@
+{% comment %} REDIRECTOR: This include forwards to the new location. Please update your references to use: 
+{% include components/buttons/button.html %} 
+{% endcomment %}
+
+{% include components/buttons/button.html 
+  text=include.text 
+  url=include.url 
+  type=include.type 
+  size=include.size 
+  class=include.class 
+  icon=include.icon %}
+
+
+<!-- {% comment %}
+  Include Name: button.html
+  
+  Purpose: Renders a consistently styled button element (actually an anchor tag) with
+  various style options. Used throughout the site for CTAs and navigation actions.
+  
+  Parameters:
+  - href: The URL the button links to (required, defaults to '#' if not provided)
+  - label: Direct button text (optional, overrides key)
+  - key: Translation key for button text (optional, used to localize button text)
+  - variant: Style variant - one of 'primary', 'secondary', or 'outline' (optional, default: normal)
+  - size: Size variant - one of 'sm' or 'lg' (optional, default: normal size)
+  - block: Boolean to make the button full-width (optional, default: false)
+  
+  Dependencies:
+  - CSS: buttons.css for styling
+  - For localized buttons: site.data.translations[lang].buttons
+  
+  Example Usage:
+  Standard button:
+  {% include button.html href="/en/brands/" label="Explore Brands" variant="primary" %}
+  
+  Small secondary button:
+  {% include button.html href="/contact/" label="Contact Us" variant="secondary" size="sm" %}
+  
+  Full-width outline button:
+  {% include button.html href="/signup/" label="Join Now" variant="outline" block=true %}
+  
+  Localized button using translation key:
+  {% include button.html href="/{{ page.lang }}/brands/" key="explore_brands" variant="primary" %}
+  
+  Notes:
+  - Always renders as an <a> element with appropriate styling
+  - Supports localization through translation keys in data files
+  - Size variants allow for responsive button sizing
+  - Block option makes buttons expand to fill their container width
+  - Includes fallback text "Click Me" if no label or key is provided
+{% endcomment %}
+
+<a href="{{ include.href | default: '#' }}"
+   class="btn{% if include.variant %} btn--{{ include.variant }}{% endif %}{% if include.size %} btn--{{ include.size }}{% endif %}{% if include.block %} btn--block{% endif %}">
+  {{ include.label | default: site.data.translations[page.lang].buttons[include.key] | default: 'Click Me' }}
+</a> -->

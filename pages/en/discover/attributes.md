@@ -238,7 +238,7 @@ discovery_path: attributes
         {% if attribute_insights.size > 0 %}
           <div class="attributes__insights-grid">
             {% for insight in attribute_insights %}
-              {% include insight-card.html insight=insight %}
+              {% include components/cards/insight-card.html insight=insight %}
             {% endfor %}
           </div>
         {% else %}

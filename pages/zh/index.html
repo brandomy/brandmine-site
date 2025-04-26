@@ -101,7 +101,7 @@ lang: zh
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__author-image">
-            {% include brand-image.html 
+            {% include components/images/brand-image.html 
                brand="dragonfly" 
                image="color" 
                purpose="logo" 
@@ -136,7 +136,7 @@ lang: zh
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__author-image">
-            {% include site-image.html 
+            {% include components/images/site-image.html 
                category="people"
                image="georgie-yam" 
                purpose="profile"
@@ -173,12 +173,12 @@ lang: zh
       {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true %}
       {% if brands.size > 0 %}
         {% for brand in brands %}
-          {% include brand-card.html brand=brand %}
+          {% include components/cards/brand-card.html brand=brand %}
         {% endfor %}
       {% else %}
         <!-- Fallback to language-specific example if no featured brands are available -->
         {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
-        {% include brand-card.html brand=fallback_brand %}
+        {% include components/cards/brand-card.html brand=fallback_brand %}
       {% endif %}
     </div>
     

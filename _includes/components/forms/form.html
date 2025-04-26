@@ -1,0 +1,56 @@
+{% comment %}
+  Include Name: components/forms/form.html
+  
+  Purpose: Renders a standard contact form with name, email, and message fields.
+  Used on contact pages and other areas requiring user input.
+  
+  Parameters:
+  - action: Form submission URL (optional, default: '#')
+  - name_label: Custom label for name field (optional, default: 'Name')
+  - email_label: Custom label for email field (optional, default: 'Email')
+  - message_label: Custom label for message field (optional, default: 'Message')
+  - submit_label: Custom label for submit button (optional, default: 'Send Message')
+  
+  Dependencies:
+  - CSS: forms.css for styling
+  
+  Example Usage:
+  Basic form with defaults:
+  {% include components/forms/form.html %}
+  
+  Customized form with translations:
+  {% include components/forms/form.html 
+     action="/submit-contact"
+     name_label=site.data.translations[page.lang].forms.name
+     email_label=site.data.translations[page.lang].forms.email
+     message_label=site.data.translations[page.lang].forms.message
+     submit_label=site.data.translations[page.lang].forms.submit %}
+  
+  Notes:
+  - Uses semantic HTML5 form elements
+  - All fields are marked as required
+  - Uses BEM naming conventions for styling
+  - Supports custom labels for internationalization
+  - Default form action is '#' (submit to current page)
+  - Uses POST method by default
+  - Simple structure with name, email, message fields
+{% endcomment %}
+
+<form class="form" action="{{ include.action | default: '#' }}" method="post">
+  <div class="form__group">
+    <label for="name" class="form__label">{{ include.name_label | default: 'Name' }}</label>
+    <input type="text" id="name" name="name" class="form__input" required>
+  </div>
+
+  <div class="form__group">
+    <label for="email" class="form__label">{{ include.email_label | default: 'Email' }}</label>
+    <input type="email" id="email" name="email" class="form__input" required>
+  </div>
+
+  <div class="form__group">
+    <label for="message" class="form__label">{{ include.message_label | default: 'Message' }}</label>
+    <textarea id="message" name="message" class="form__textarea" required></textarea>
+  </div>
+
+  <button type="submit" class="form__submit">{{ include.submit_label | default: 'Send Message' }}</button>
+</form>

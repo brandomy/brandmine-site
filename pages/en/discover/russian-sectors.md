@@ -255,25 +255,25 @@ discovery_path: russian-sectors
       <div class="russian-sectors__navigation-links">
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="russian-sectors__navigation-link russian-sectors__navigation-link--sector">
           <span class="russian-sectors__navigation-icon">
-            {% include icon.html type="sector" name="sector-default" size="sm" %}
+            {% include components/icons/icon.html type="sector" name="sector-default" size="sm" %}
           </span>
           Sectors
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="russian-sectors__navigation-link russian-sectors__navigation-link--market">
           <span class="russian-sectors__navigation-icon">
-            {% include icon.html type="market" name="market-default" size="sm" %}
+            {% include components/icons/icon.html type="market" name="market-default" size="sm" %}
           </span>
           Markets
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="russian-sectors__navigation-link russian-sectors__navigation-link--attribute">
           <span class="russian-sectors__navigation-icon">
-            {% include icon.html type="attribute" name="attribute-default" size="sm" %}
+            {% include components/icons/icon.html type="attribute" name="attribute-default" size="sm" %}
           </span>
           Attributes
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="russian-sectors__navigation-link russian-sectors__navigation-link--signal">
           <span class="russian-sectors__navigation-icon">
-            {% include icon.html type="signal" name="signal-default" size="sm" %}
+            {% include components/icons/icon.html type="signal" name="signal-default" size="sm" %}
           </span>
           Growth Signals
         </a>

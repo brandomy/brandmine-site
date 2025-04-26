@@ -1,0 +1,90 @@
+{% comment %} REDIRECTOR: This include forwards to the new location. 
+Please update your references to use: 
+{% include components/cards/insight-card.html %} 
+{% endcomment %}
+
+{% include components/cards/insight-card.html 
+  insight=include.insight 
+  featured=include.featured %}
+
+  
+
+<!-- {% comment %}
+  Include Name: insight-card.html
+  
+  Purpose: Displays an insight article in a card format with thumbnail image, metadata,
+  and taxonomy information. Used in insight listings, feeds, and related content sections.
+  
+  Parameters:
+  - insight: Insight object with complete details (required)
+    Expected properties:
+    - title: Insight title
+    - image: Path to thumbnail image
+    - premium: Boolean flag for premium insights (optional)
+    - date: Publication date
+    - author: Author name
+    - excerpt: Short excerpt or description
+    - sectors: Array of sector names
+    - markets: Array of market names
+    - url: URL to insight detail page
+    - cta: Custom call-to-action text (optional, default: "Read More")
+  
+  Dependencies:
+  - CSS: insight-card.css for styling
+  
+  Example Usage:
+  {% for insight in site.insights %}
+    {% include insight-card.html insight=insight %}
+  {% endfor %}
+  
+  Notes:
+  - Displays a premium badge for premium content
+  - Shows publication date and author information
+  - Only displays first 3 sectors, with a +X indicator for additional sectors
+  - Shows all markets without truncation
+  - Uses BEM naming conventions for all CSS classes
+  - Automatically links to the insight detail page
+  - Supports custom call-to-action text
+{% endcomment %}
+
+<article class="insight-card">
+  <div class="insight-card__image">
+    <img src="{{ insight.image }}" alt="{{ insight.title }} thumbnail">
+    {% if insight.premium %}
+      <div class="insight-card__premium-badge">
+        <span class="insight-card__premium-icon">★</span>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="insight-card__content">
+    <h3 class="insight-card__title">{{ insight.title }}</h3>
+
+    <div class="insight-card__meta">
+      <span class="insight-card__date">{{ insight.date }}</span>
+      <span class="insight-card__author">{{ insight.author }}</span>
+    </div>
+
+    <p class="insight-card__excerpt">{{ insight.excerpt }}</p>
+
+    <div class="insight-card__taxonomy">
+      <div class="insight-card__sectors">
+        {% for sector in insight.sectors %}
+          <span class="insight-card__sector-tag">{{ sector }}</span>
+        {% endfor %}
+        {% if insight.sectors.size > 3 %}
+          <span class="insight-card__more-tag">+{{ insight.sectors.size | minus:3 }}</span>
+        {% endif %}
+      </div>
+      <div class="insight-card__markets">
+        {% for market in insight.markets %}
+          <span class="insight-card__market-tag">{{ market }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <a href="{{ insight.url }}" class="insight-card__read-more">
+      {{ insight.cta | default: "Read More" }}
+    </a>
+  </div>
+</article> -->

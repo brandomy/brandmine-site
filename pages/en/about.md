@@ -133,7 +133,7 @@ ref: about
     
     <div class="team-section">
       <div class="team-member">
-        {% include site-image.html 
+        {% include components/images/site-image.html 
           category="people"
           image="randal-eastman" 
           purpose="profile"
@@ -159,7 +159,7 @@ ref: about
       </div>
       
       <div class="team-member">
-        {% include site-image.html 
+        {% include components/images/site-image.html 
           category="people"
           image="olya-eastman" 
           purpose="profile"

@@ -16,7 +16,7 @@ layout: default
   - Handles multilingual rendering via page.lang and translation data files.
 
   Navigation:
-  - Uses discovery-navigation.html include to render consistent navigation tabs.
+  - Uses collections/dimensions/discovery-navigation.html include to render consistent navigation tabs.
   - Applies a dynamic class to style the tab background based on tag type.
 
   Typically used in:
@@ -25,7 +25,7 @@ layout: default
   - /ru/discover/attributes/founder-led.md
 
   Dependencies:
-  - _includes/discovery-navigation.html
+  - _includes/collections/dimensions/discovery-navigation.html
   - Uses `page.tag_type` and `page.discovery_path` in front matter
 ----------------------------------------------------------------------------- -->
 
@@ -41,7 +41,7 @@ layout: default
   {% assign discovery_class = 'discovery-tabs-container--signals' %}
 {% endif %}
 
-{% include discovery-navigation.html container_class=discovery_class %}
+{% include collections/dimensions/discovery-navigation.html container_class=discovery_class %}
 
 
 

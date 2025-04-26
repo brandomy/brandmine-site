@@ -1,0 +1,86 @@
+
+{% comment %} REDIRECTOR: This include forwards to the new location. 
+Please update your references to use: 
+{% include components/cards/featured-brand.html %} 
+{% endcomment %}
+   
+   
+ 	
+{% comment %} REDIRECTOR: This include forwards to the new location. Please update your references to use: {% include components/cards/featured-brand.html %} {% endcomment %}
+Turn on screen reader support
+To enable screen reader support, press ⌘+Option+Z To learn about keyboard shortcuts, press ⌘slash
+{% include components/cards/featured-brand.html brand=include.brand %}
+
+<!-- {% comment %}
+  Include Name: featured-brand.html
+  
+  Purpose: Renders a featured brand card with enhanced styling and additional details
+  compared to the standard brand card. Used on homepage and key landing pages.
+  
+  Parameters:
+  - content: Brand object with complete details (required)
+  - content_type: Type of content being featured (required, usually "brand")
+  
+  Dependencies:
+  - Includes: tag-list.html
+  - CSS: featured-brand.css
+  - Data: site.data.translations[lang].general.featured, site.data.translations[lang].general.read_more,
+          site.data.translations[lang].brand.est
+  
+  Example Usage:
+  {% assign featured_brand = site.brands | where: "featured", true | first %}
+  {% include featured-brand.html content=featured_brand content_type="brand" %}
+  
+  Notes:
+  - Displays a prominent image with a "Featured" badge
+  - Shows founding year and primary sector if available
+  - Truncates description to 180 characters
+  - Shows brand attributes as tags using tag-list.html
+  - Links to the brand detail page with a "Read more" button
+  - Uses BEM naming conventions for styling
+  - Falls back to truncated content if description is not available
+{% endcomment %}
+
+<article class="featured-brand">
+  <div class="featured-brand__image">
+    {% if include.content_type == "brand" and include.content.hero_image %}
+      <img src="{{ include.content.hero_image | relative_url }}" alt="{{ include.content.title }} logo" class="featured-brand__img">
+    {% endif %}
+    <div class="featured-brand__badge">
+      {{ site.data.translations[include.content.lang].general.featured }}
+    </div>
+  </div>
+
+  <div class="featured-brand__body">
+    <h2 class="featured-brand__title">
+      <a href="{{ include.content.url | relative_url }}">{{ include.content.title }}</a>
+    </h2>
+
+    <div class="featured-brand__meta">
+      {% if include.content.founding_year %}
+        <span class="featured-brand__year">{{ site.data.translations[include.content.lang].brand.est }} {{ include.content.founding_year }}</span>
+      {% endif %}
+      {% if include.content.sectors and include.content.sectors.size > 0 %}
+        <span class="featured-brand__sector">{{ include.content.sectors[0] }}</span>
+      {% endif %}
+    </div>
+
+    <p class="featured-brand__description">
+      {% if include.content.description %}
+        {{ include.content.description | truncate: 180 }}
+      {% else %}
+        {{ include.content.content | strip_html | truncate: 180 }}
+      {% endif %}
+    </p>
+
+    {% if include.content.attributes and include.content.attributes.size > 0 %}
+      <div class="featured-brand__tags">
+        {% include tag-list.html tags=include.content.attributes type="attribute" %}
+      </div>
+    {% endif %}
+
+    <a href="{{ include.content.url | relative_url }}" class="featured-brand__link">
+      {{ site.data.translations[include.content.lang].general.read_more }}
+    </a>
+  </div>
+</article> -->

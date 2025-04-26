@@ -1,0 +1,54 @@
+{% comment %} REDIRECTOR: This include forwards to the new location. Please update your references to use: {% include components/indicators/content-type-indicator.html %} {% endcomment %}
+
+{% include components/indicators/content-type-indicator.html 
+  type=include.type %}
+
+
+<!-- {% comment %}
+  Include Name: content-type-indicator.html
+  
+  Purpose: Displays a visual indicator for Insights content types with appropriate icon and text.
+  Used to visually distinguish between different types of insight content.
+  
+  Parameters:
+  - type: Content type string (required, e.g., "Founder's Journey", "Brand Spotlight")
+  - size: Size variant (optional, one of "small", "medium", "large", default: "medium")
+  
+  Dependencies:
+  - CSS: content-type-indicator.css
+  
+  Example Usage:
+  {% include content-type-indicator.html type=insight.content_type size="small" %}
+  {% include content-type-indicator.html type="Founder's Journey" %}
+  {% include content-type-indicator.html type="Brand Spotlight" size="large" %}
+  
+  Notes:
+  - Automatically selects the appropriate icon based on content type
+  - Supports multilingual content types in English, Russian, and Chinese
+  - Applies size-specific styling based on the size parameter
+  - Adds a slug-based class for custom styling per content type
+  - Types currently supported with icons:
+    - Founder's Journey / Путь основателя / 创始人之旅
+    - Brand Spotlight / Особенности бренда / 品牌聚焦
+    - Market Momentum / Рыночный импульс / 市场动力
+    - Location Intelligence / Территориальная аналитика / 区域情报
+  - Used on insight cards, detail pages, and listings
+{% endcomment %}
+
+{% assign size_class = include.size | default: "medium" %}
+{% assign type_slug = include.type | slugify %}
+
+<div class="content-type-indicator content-type-indicator--{{ size_class }} content-type-indicator--{{ type_slug }}">
+  {% case include.type %}
+    {% when "Founder's Journey" or "Путь основателя" or "创始人之旅" %}
+      <span class="content-type-indicator__icon content-type-indicator__icon--founder"></span>
+    {% when "Brand Spotlight" or "Особенности бренда" or "品牌聚焦" %}
+      <span class="content-type-indicator__icon content-type-indicator__icon--spotlight"></span>
+    {% when "Market Momentum" or "Рыночный импульс" or "市场动力" %}
+      <span class="content-type-indicator__icon content-type-indicator__icon--momentum"></span>
+    {% when "Location Intelligence" or "Территориальная аналитика" or "区域情报" %}
+      <span class="content-type-indicator__icon content-type-indicator__icon--location"></span>
+  {% endcase %}
+  
+  <span class="content-type-indicator__text">{{ include.type }}</span>
+</div> -->

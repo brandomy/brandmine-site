@@ -314,10 +314,10 @@ Jekyll includes make it easy to use responsive images throughout the site:
 <div class="example-wrapper">
   <div class="example-preview">
     <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); font-size: 0.875rem; line-height: 1.4;">
-      <code>brand-image.html</code>
+      <code>components/images/brand-image.html </code>
       <div>For brand-specific imagery</div>
       
-      <code>site-image.html</code>
+      <code>components/images/brand-image.html </code>
       <div>For site-wide design elements and other images</div>
     </div>
   </div>
@@ -326,7 +326,7 @@ Jekyll includes make it easy to use responsive images throughout the site:
 {% capture example_code %}
 <!-- For brand images -->
 {% raw %}
-{% include brand-image.html 
+{% include components/images/brand-image.html  
    brand="teatime" 
    image="storefront" 
    purpose="hero"
@@ -336,7 +336,7 @@ Jekyll includes make it easy to use responsive images throughout the site:
 
 <!-- For non-brand images -->
 {% raw %}
-{% include site-image.html 
+{% include components/images/site-image.html 
    category="home"
    image="banner" 
    purpose="hero"
@@ -361,7 +361,7 @@ The brand image include automatically generates all the necessary HTML for respo
   Responsive Brand Image Include
   
   Usage:
-  {% include brand-image.html 
+  {% include components/images/brand-image.html 
      brand="teatime" 
      image="storefront" 
      purpose="hero"
@@ -396,7 +396,7 @@ The brand image include automatically generates all the necessary HTML for respo
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">Basic Usage:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-          {% raw %}{% include brand-image.html 
+          {% raw %}{% include components/images/brand-image.html 
    brand="teatime" 
    image="storefront" 
    purpose="hero"
@@ -407,7 +407,7 @@ The brand image include automatically generates all the necessary HTML for respo
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">With Custom Classes:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-          {% raw %}{% include brand-image.html 
+          {% raw %}{% include components/images/brand-image.html 
    brand="teatime" 
    image="teapot" 
    purpose="gallery"
@@ -419,7 +419,7 @@ The brand image include automatically generates all the necessary HTML for respo
       <div>
         <div style="font-weight: 600; margin-bottom: var(--space-2);">With Custom Sizes:</div>
         <div style="font-size: 0.875rem; font-family: monospace; background-color: var(--neutral-100); padding: var(--space-2); border-radius: 4px; line-height: 1.4;">
-          {% raw %}{% include brand-image.html 
+          {% raw %}{% include components/images/brand-image.html  
    brand="teatime" 
    image="founder" 
    purpose="profile"

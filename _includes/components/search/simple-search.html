@@ -1,0 +1,37 @@
+{% comment %}
+  Include Name: components/search/simple-search.html
+  
+  Purpose: Renders a basic search form for use on error pages (404) and other simple contexts.
+  Provides a streamlined search experience without advanced filtering options.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.lang: Current page language
+    - site.data.translations[lang].search.placeholder: Localized placeholder text
+  
+  Dependencies:
+  - CSS: search-box.css
+  - Data: site.data.translations[lang].search.placeholder
+  - Font Awesome for the search icon
+  
+  Example Usage:
+  {% include components/search/simple-search.html %}
+  
+  Notes:
+  - Submits to the language-specific search page
+  - Uses placeholder text from translations
+  - Includes a search button with Font Awesome icon
+  - Uses a simpler design than the full search-filter component
+  - Form uses GET method to allow bookmarking of search results
+  - Does not include category/dimension filtering options
+{% endcomment %}
+
+<div class="search-box">
+  <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get">
+    <input type="text" id="search-input" name="q" class="search-box__input" 
+           placeholder="{{ site.data.translations[page.lang].search.placeholder }}">
+    <button type="submit" class="btn btn--primary search-box__button">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>

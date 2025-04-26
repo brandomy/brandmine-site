@@ -201,7 +201,7 @@ discovery_path: discovery
         {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
         {% if featured_brands.size > 0 %}
           {% for brand in featured_brands %}
-            {% include brand-card.html brand=brand %}
+            {% include components/cards/brand-card.html brand=brand %}
           {% endfor %}
         {% else %}
           <div class="discover__empty-state">
@@ -244,7 +244,7 @@ discovery_path: discovery
         {% assign recent_insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: 2 %}
         {% if recent_insights.size > 0 %}
           {% for insight in recent_insights %}
-            {% include insight-card.html insight=insight %}
+            {% include components/cards/insight-card.html insight=insight %}
           {% endfor %}
         {% else %}
           <div class="discover__empty-state">

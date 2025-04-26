@@ -1,0 +1,71 @@
+{% comment %}
+  Include Name: components/navigation/navigation.html
+  
+  Purpose: Renders the main site navigation with multi-level dropdown support.
+  Automatically highlights the active navigation item based on the current URL.
+  
+  Parameters:
+  - None directly passed to the include, but it uses:
+    - page.lang: Current page language
+    - page.url: Current page URL
+    - site.data.navigation[lang]: Navigation structure definition
+    - site.data.translations[lang].nav: Navigation item translations
+  
+  Dependencies:
+  - CSS: header.css (navigation styles)
+  - JavaScript: header.js (for dropdown functionality)
+  - Data:
+    - site.data.navigation[lang]: Array of navigation items with name, link, and optional children
+    - site.data.translations[lang].nav: Translation strings for navigation items
+  
+  Example Usage:
+  {% include components/navigation/navigation.html %}
+  
+  Notes:
+  - Automatically marks the current page's navigation item as active
+  - Supports multi-level dropdown menus
+  - All navigation text is loaded from translations
+  - Navigation structure is defined in _data/navigation/[lang].yml
+  - Uses appropriate ARIA attributes for accessibility
+  - Child items inherit the parent's active state
+{% endcomment %}
+
+<nav class="header__nav" id="main-nav">
+  <ul class="header__nav-list">
+    {% for item in site.data.navigation[page.lang] %}
+      {% assign key = item.name | remove: 'nav.' %}
+      {% assign item_active = false %}
+      {% if page.url contains item.link %}
+        {% assign item_active = true %}
+      {% endif %}
+      
+      <li class="header__nav-item {% if item.children %}header__dropdown{% endif %} {% if item_active %}header__nav-item--active{% endif %}">
+        <a href="{{ item.link | relative_url }}" 
+           {% if item.children %}role="button" aria-haspopup="true" aria-expanded="false"{% endif %}
+           {% if item_active %}class="active"{% endif %}>
+          {{ site.data.translations[page.lang].nav[key] }}
+          {% if item.children %}<span class="header__dropdown-icon" aria-hidden="true">&#x25BE;</span>{% endif %}
+        </a>
+        
+        {% if item.children %}
+          <ul class="header__dropdown-content" role="menu">
+            {% for child in item.children %}
+              {% assign child_key = child.name | remove: 'nav.' %}
+              {% assign child_active = false %}
+              {% if page.url contains child.link %}
+                {% assign child_active = true %}
+              {% endif %}
+              
+              <li class="header__dropdown-item {% if child_active %}header__dropdown-item--active{% endif %}">
+                <a href="{{ child.link | relative_url }}" 
+                   {% if child_active %}class="active"{% endif %}>
+                  {{ site.data.translations[page.lang].nav[child_key] }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

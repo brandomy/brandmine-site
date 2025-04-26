@@ -50,7 +50,7 @@ lang: en
     <h2 class="panel__heading-secondary">Explore By Dimension (New Component)</h2>
     <p class="panel__lead-text">Discover brands through different perspectives from business sectors to growth signals</p>
     
-    {% include discovery-dimensions-grid.html columns=4 limit=3 %}
+    {% include collections/dimensions/discovery-dimensions-grid.html columns=4 limit=3 %}
   </div>
 </div>
 
@@ -115,7 +115,7 @@ lang: en
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__author-image">
-            {% include brand-image.html 
+            {% include components/images/brand-image.html
               brand="dragonfly" 
               image="color" 
               purpose="logo" 
@@ -150,7 +150,7 @@ lang: en
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__author-image">
-            {% include site-image.html 
+            {% include components/images/site-image.html 
                category="people"
                image="georgie-yam" 
                purpose="profile"
@@ -183,7 +183,7 @@ lang: en
     <h2 class="panel__heading-secondary">Featured Brands (New Component)</h2>
     <p class="panel__lead-text">Testing our new reusable featured brands carousel component</p>
     
-    {% include featured-brands-carousel.html 
+    {% include components/carousels/featured-brands-carousel.html 
        limit=6
        cta_text="Explore All New Brands" %}
   </div>
@@ -199,12 +199,12 @@ lang: en
       {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true %}
       {% if brands.size > 0 %}
         {% for brand in brands %}
-          {% include brand-card.html brand=brand %}
+          {% include components/cards/brand-card.html brand=brand %}
         {% endfor %}
       {% else %}
         <!-- Fallback to language-specific example if no featured brands are available -->
         {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
-        {% include brand-card.html brand=fallback_brand %}
+        {% include components/cards/brand-card.html brand=fallback_brand %}
       {% endif %}
     </div>
     
@@ -286,7 +286,7 @@ lang: en
     <h2 class="panel__heading-secondary">Latest Insights (New Component)</h2>
     <p class="panel__lead-text">Testing our new reusable insights grid component</p>
     
-    {% include latest-insights-grid.html 
+    {% include collections/insights/latest-insights-grid.html 
        columns=2 
        limit=4 
        cta_text="View All New Insights" %}
@@ -305,7 +305,7 @@ lang: en
       <div class="insights-category insights-category--markets">
         <div class="insights-category__header">
           <div class="insights-category__icon insights-category__icon--markets">
-            {% include icon.html type="market" name="market-default" size="sm" %}
+            {% include components/icons/icon.html type="market" name="market-default" size="sm" %}
           </div>
           <h3 class="insights-category__title">Markets</h3>
         </div>
@@ -360,7 +360,7 @@ lang: en
       <div class="insights-category insights-category--sectors">
         <div class="insights-category__header">
           <div class="insights-category__icon insights-category__icon--sectors">
-            {% include icon.html type="sector" name="sector-default" size="sm" %}
+            {% include components/icons/icon.html type="sector" name="sector-default" size="sm" %}
           </div>
           <h3 class="insights-category__title">Sectors</h3>
         </div>
@@ -415,7 +415,7 @@ lang: en
       <div class="insights-category insights-category--attributes">
         <div class="insights-category__header">
           <div class="insights-category__icon insights-category__icon--attributes">
-            {% include icon.html type="attribute" name="attribute-default" size="sm" %}
+            {% include components/icons/icon.html type="attribute" name="attribute-default" size="sm" %}
           </div>
           <h3 class="insights-category__title">Attributes</h3>
         </div>
@@ -470,7 +470,7 @@ lang: en
       <div class="insights-category insights-category--signals">
         <div class="insights-category__header">
           <div class="insights-category__icon insights-category__icon--signals">
-            {% include icon.html type="signal" name="signal-default" size="sm" %}
+            {% include components/icons/icon.html type="signal" name="signal-default" size="sm" %}
           </div>
           <h3 class="insights-category__title">Signals</h3>
         </div>

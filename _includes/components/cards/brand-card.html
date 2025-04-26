@@ -1,0 +1,88 @@
+{% comment %}
+  Include Name: components/cards/brand-card.html
+  
+  Purpose: Displays a brand card component that shows essential brand information in a
+  structured format. Used on brand listing pages, search results, and related brands sections.
+  
+  Parameters:
+  - brand: Brand object with complete details (required)
+    Expected properties:
+    - title/name: Brand name
+    - logo: Path to brand logo image
+    - founded: Founding year (optional)
+    - description: Short brand description
+    - sectors: Array of sector names
+    - markets: Array of market names
+    - signals: Array of signal objects with icon property
+    - url: URL to brand detail page
+    - cta: Custom call-to-action text (optional, default: "View Brand")
+    - premium: Boolean flag for premium brands (optional)
+  
+  Dependencies:
+  - Requires page.lang to be set for proper URL construction
+  - CSS: components/cards/brand-card.css for styling
+  
+  Example Usage:
+  {% for brand in site.brands %}
+    {% include components/cards/brand-card.html brand=brand %}
+  {% endfor %}
+  
+
+  
+  Notes:
+  - Only displays first 3 sectors, with a +X indicator for additional sectors
+  - Uses BEM naming conventions for all CSS classes
+  - Automatically links sectors and markets to their respective discovery pages
+{% endcomment %}
+
+<article class="brand-card">
+  <header class="brand-card__header">
+    <div class="brand-card__logo">
+      <img src="{{ brand.logo }}" alt="{{ brand.title | default: brand.name }} logo">
+    </div>
+    <h2 class="brand-card__title">{{ brand.title | default: brand.name }}</h2>
+    {% if brand.founded %}
+    <p class="brand-card__founding-year">Founded {{ brand.founded }}</p>
+    {% endif %}
+  </header>
+
+  <div class="brand-card__body">
+    <p class="brand-card__description">{{ brand.description }}</p>
+
+    <div class="brand-card__taxonomy">
+      <div class="brand-card__sectors">
+        {% for sector in brand.sectors %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="brand-card__tag brand-card__tag--sector">{{ sector }}</a>
+        {% endfor %}
+        {% if brand.sectors.size > 3 %}
+          <span class="brand-card__more-tag">+{{ brand.sectors.size | minus:3 }}</span>
+        {% endif %}
+      </div>
+      <div class="brand-card__markets">
+        {% for market in brand.markets %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="brand-card__tag brand-card__tag--market">{{ market }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <footer class="brand-card__footer">
+    <div class="brand-card__signals">
+      {% for signal in brand.signals %}
+        <div class="brand-card__signal-indicator">
+          <span class="brand-card__icon brand-card__icon--signal">{{ signal.icon }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a href="{{ brand.url }}" class="brand-card__link">
+      {{ brand.cta | default: "View Brand" }}
+    </a>
+
+    {% if brand.premium %}
+      <div class="brand-card__premium-indicator">
+        <span class="brand-card__premium-icon">★</span>
+      </div>
+    {% endif %}
+  </footer>
+</article>

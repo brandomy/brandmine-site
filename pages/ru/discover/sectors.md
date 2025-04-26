@@ -202,7 +202,7 @@ lang: ru
         {% if sector_insights.size > 0 %}
           <div class="sectors__insights-grid">
             {% for insight in sector_insights %}
-              {% include insight-card.html insight=insight %}
+              {% include components/cards/insight-card.html insight=insight %}
             {% endfor %}
           </div>
         {% else %}
