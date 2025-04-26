@@ -5,7 +5,6 @@ import os
 import re
 import csv
 from pathlib import Path
-import yaml
 
 def scan_files_for_tags(base_dir='.'):
     """
@@ -130,11 +129,11 @@ def generate_css_update_commands(base_dir='.'):
                 file_path = os.path.join(root, file)
                 css_files.append(file_path)
     
-    # CSS class replacements
+    # CSS class replacements - fixed escape sequences
     replacements = [
-        ('\.tag([^a-zA-Z0-9_-])', '.dimension\\1'),  # .tag to .dimension
-        ('\.tag_', '.dimension_'),                     # .tag_ to .dimension_
-        ('\.tag-', '.dimension-'),                     # .tag- to .dimension-
+        (r'\.tag([^a-zA-Z0-9_-])', r'.dimension\1'),  # .tag to .dimension
+        (r'\.tag_', r'.dimension_'),                  # .tag_ to .dimension_
+        (r'\.tag-', r'.dimension-'),                  # .tag- to .dimension-
         ('tag--', 'dimension--'),                      # tag-- to dimension--
         ('__tag', '__dimension'),                      # __tag to __dimension
         ('-tag', '-dimension'),                        # -tag to -dimension
@@ -143,7 +142,7 @@ def generate_css_update_commands(base_dir='.'):
     
     for file_path in css_files:
         for pattern, replacement in replacements:
-            commands.append(f"sed -i 's/{pattern}/{replacement}/g' {file_path}")
+            commands.append(f"sed -i '' 's/{pattern}/{replacement}/g' {file_path}")
     
     return commands
 
@@ -181,12 +180,97 @@ def generate_html_update_commands(base_dir='.'):
     
     for file_path in html_files:
         for pattern, replacement in replacements:
-            commands.append(f"sed -i 's/{pattern}/{replacement}/g' {file_path}")
+            commands.append(f"sed -i '' 's/{pattern}/{replacement}/g' {file_path}")
         
         for pattern, replacement in liquid_replacements:
-            commands.append(f"sed -i 's/{pattern}/{replacement}/g' {file_path}")
+            commands.append(f"sed -i '' 's/{pattern}/{replacement}/g' {file_path}")
     
     return commands
+
+def generate_merge_script():
+    """
+    Generate a script to merge _tags and _discovery content into _dimensions
+    """
+    script_content = """#!/bin/bash
+
+# Script to merge content from _tags and _discovery to _dimensions
+
+# First, ensure _dimensions directory exists
+mkdir -p _dimensions
+
+# Function to copy and update front matter
+copy_and_update() {
+    local src="$1"
+    local dest="$2"
+    local src_type="$3"
+    local dest_type="dimensions"
+    
+    # Create destination directory if it doesn't exist
+    mkdir -p "$(dirname "$dest")"
+    
+    # Copy the file
+    cp "$src" "$dest"
+    
+    # Update front matter
+    if [ "$src_type" = "tags" ]; then
+        sed -i '' 's/tag_type:/dimension_type:/g' "$dest"
+        sed -i '' 's/^tag:/dimension:/g' "$dest"
+    elif [ "$src_type" = "discovery" ]; then
+        sed -i '' 's/discovery_type:/dimension_type:/g' "$dest"
+        sed -i '' 's/^discovery:/dimension:/g' "$dest"
+    fi
+    
+    echo "Processed: $src → $dest"
+}
+
+# Process each language
+for lang in en ru zh; do
+    echo "Processing language: $lang"
+    
+    # Process each dimension type
+    for dim_type in sectors markets attributes signals; do
+        echo "  Processing dimension type: $dim_type"
+        
+        # Create destination directory
+        mkdir -p "_dimensions/$lang/$dim_type"
+        
+        # Process files from _tags
+        if [ -d "_tags/$lang/$dim_type" ]; then
+            for src in _tags/$lang/$dim_type/*.md; do
+                if [ -f "$src" ]; then
+                    # Determine destination path
+                    dest="${src/_tags/_dimensions}"
+                    copy_and_update "$src" "$dest" "tags"
+                fi
+            done
+        fi
+        
+        # Process files from _discovery
+        if [ -d "_discovery/$lang/$dim_type" ]; then
+            for src in _discovery/$lang/$dim_type/*.md; do
+                if [ -f "$src" ]; then
+                    # Determine destination path
+                    dest="${src/_discovery/_dimensions}"
+                    
+                    # Only copy if not already processed from _tags
+                    if [ ! -f "$dest" ]; then
+                        copy_and_update "$src" "$dest" "discovery"
+                    else
+                        echo "Skipping (already exists): $src"
+                    fi
+                fi
+            done
+        fi
+    done
+done
+
+echo "Content merge complete!"
+echo "NOTE: After verifying everything works, you can remove the _tags and _discovery directories"
+echo "rm -rf _tags _discovery"
+"""
+    
+    with open('merge_dimensions.sh', 'w') as f:
+        f.write(script_content)
 
 def generate_reports(base_dir='.'):
     """
@@ -241,52 +325,8 @@ def generate_reports(base_dir='.'):
         for cmd in html_commands:
             f.write(f"{cmd}\n")
     
-    # Generate merge script for _tags -> _dimensions
-    with open('merge_dimensions.sh', 'w') as f:
-        f.write("#!/bin/bash\n\n")
-        f.write("# Script to merge content from _tags to _dimensions\n\n")
-        f.write("# First, ensure _dimensions directory exists\n")
-        f.write("mkdir -p _dimensions\n\n")
-        
-        # Handle each language
-        for lang in ['en', 'ru', 'zh']:
-            f.write(f"# Process language: {lang}\n")
-            for dim_type in ['sectors', 'markets', 'attributes', 'signals']:
-                f.write(f"mkdir -p _dimensions/{lang}/{dim_type}\n")
-                f.write(f"# Copy files from _tags to _dimensions\n")
-                f.write(f"if [ -d \"_tags/{lang}/{dim_type}\" ]; then\n")
-                f.write(f"  for file in _tags/{lang}/{dim_type}/*.md; do\n")
-                f.write(f"    if [ -f \"$file\" ]; then\n")
-                f.write(f"      # Update front matter\n")
-                f.write(f"      sed -i 's/tag_type:/dimension_type:/g' \"$file\"\n")
-                f.write(f"      sed -i 's/tag:/dimension:/g' \"$file\"\n")
-                f.write(f"      # Copy to _dimensions directory\n")
-                f.write(f"      cp \"$file\" \"${file/_tags/_dimensions}\"\n")
-                f.write(f"    fi\n")
-                f.write(f"  done\n")
-                f.write(f"fi\n\n")
-                
-                # Check for content in _discovery to merge
-                f.write(f"# Merge any content from _discovery\n")
-                f.write(f"if [ -d \"_discovery/{lang}/{dim_type}\" ]; then\n")
-                f.write(f"  for file in _discovery/{lang}/{dim_type}/*.md; do\n")
-                f.write(f"    if [ -f \"$file\" ]; then\n")
-                f.write(f"      # Update front matter\n")
-                f.write(f"      sed -i 's/discovery_type:/dimension_type:/g' \"$file\"\n")
-                f.write(f"      sed -i 's/discovery:/dimension:/g' \"$file\"\n")
-                f.write(f"      # Copy to _dimensions directory\n")
-                f.write(f"      dest=\"${file/_discovery/_dimensions}\"\n")
-                f.write(f"      # Only copy if not already present\n")
-                f.write(f"      if [ ! -f \"$dest\" ]; then\n")
-                f.write(f"        cp \"$file\" \"$dest\"\n")
-                f.write(f"      fi\n")
-                f.write(f"    fi\n")
-                f.write(f"  done\n")
-                f.write(f"fi\n\n")
-        
-        # Add cleanup comment
-        f.write("# NOTE: After verifying everything works, you can remove the _tags and _discovery directories\n")
-        f.write("# rm -rf _tags _discovery\n")
+    # Generate merge script
+    generate_merge_script()
     
     return {
         'tag_references': len(tag_references),
@@ -307,5 +347,5 @@ if __name__ == "__main__":
     print("- duplicate_content.csv - List of duplicate content across directories")
     print("- update_css.sh - Script to update CSS class names")
     print("- update_html.sh - Script to update HTML and Liquid references")
-    print("- merge_dimensions.sh - Script to merge content from _tags to _dimensions")
+    print("- merge_dimensions.sh - Script to merge content from _tags and _discovery to _dimensions")
     print("\nPlease review these files before running the scripts!")
