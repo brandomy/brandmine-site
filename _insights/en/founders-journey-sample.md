@@ -1,21 +1,22 @@
 ---
 layout: insight
 title: "From University Project to Global Brand: The TeaTime Story"
-content_type: "Founder's Journey"
+category: "Founder's Journey"
+secondary_categories: []
 date: 2025-03-15
 author: "Anna Petrova"
-excerpt: "A concise description of the article that will appear in cards on the homepage and in search results. It should capture attention and accurately convey the content (2-3 sentences)."
+excerpt: "What began as casual tea ceremonies in a Moscow dormitory blossomed into TeaTime, one of Russia’s most celebrated beverage exports. Founder Alexei Sokolov turned tradition into innovation, scaling with integrity while captivating global markets. His story proves that cultural authenticity can steep into international success."
 sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Heritage Brand, Founder-Led]
 signals: [Export Ready, Investment Ready]
-primary_dimension: attributes
 brands: [teatime]
 image: /assets/images/insights/teatime-founder.jpg
 featured: true
 premium: false
 permalink: /en/insights/teatime-founders-journey/
 lang: en
+reading_time: 7
 ---
 
 ## From Dormitory to Global Markets

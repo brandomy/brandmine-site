@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 """
-Project Log Maintainer for Brandmine Jekyll Site
+project-log-maintainer.py
 
-This script helps maintain a consistent project log by:
-1. Prompting for log entries when running directly
-2. Setting up Git hooks for automated logging during commits
-3. Providing search and analysis of the project history
+This script helps maintain a structured and consistent project log for the Brandmine Jekyll site.
+It supports manual and automated logging workflows to ensure all significant development
+activities are documented clearly and systematically.
+
+Key Features:
+- Add structured development log entries through a guided CLI.
+- Set up Git hooks to prompt logging during commits.
+- Search project logs for keywords, showing matching entries and summaries.
+- Analyze project log statistics by month, category, and file changes.
 
 Usage:
     ./project-log-maintainer.py add         # Add a new log entry
     ./project-log-maintainer.py setup       # Set up Git hooks
     ./project-log-maintainer.py search TERM # Search log entries
     ./project-log-maintainer.py stats       # Show log statistics
+
+Author: Randal Eastman
 """
 
 import os

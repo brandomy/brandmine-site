@@ -1,9 +1,24 @@
 #!/bin/bash
+#
+# enhanced-site-summary-advanced.sh
+#
+# This script generates a detailed site summary report for the Brandmine Jekyll project,
+# combining advanced features such as tag usage trend analysis, translation consistency checks,
+# and automatic content fixes to maintain high-quality multilingual content.
+#
+# Key Features:
+# - Creates a structured Markdown report of site structure, content, and configuration.
+# - Tracks tag usage trends over time with historical data storage.
+# - Checks for untranslated content and missing language versions.
+# - Aligns tags across multilingual posts and fixes undefined tags.
+# - Supports automatic generation of translation templates for missing content.
+#
+# Usage:
+#     bash enhanced-site-summary-advanced.sh --display
+#     bash enhanced-site-summary-advanced.sh --fix --align-tags --fix-undefined --generate-translations
+#
+# Author: Randal Eastman
 
-# Enhanced Site Summary Generator with Advanced Features
-# - Tag usage trend tracking
-# - Extended automatic fixes
-# - Untranslated content reporting
 
 # Determine script location and project root
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

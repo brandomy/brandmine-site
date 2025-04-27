@@ -1,5 +1,22 @@
 #!/bin/bash
+#
 # check_language_consistency.sh
+#
+# This script checks for language consistency across the Brandmine Jekyll site.
+# It verifies that each content page has corresponding versions in English, Russian, and Chinese,
+# helping maintain a fully localized and professional site structure.
+#
+# Key Features:
+# - Scans all Markdown and HTML files in the 'pages' directory.
+# - Detects missing language versions based on folder structure.
+# - Generates a CSV report highlighting inconsistencies.
+# - Provides a quick console summary for immediate feedback.
+#
+# Usage:
+#     bash check_language_consistency.sh
+#
+# Author: Randal Eastman
+
 
 echo "Checking language consistency across your site..."
 

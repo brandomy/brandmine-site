@@ -1,5 +1,22 @@
 #!/bin/bash
-# Simple image processing script for non-brand images
+#
+# process_people_images.sh
+#
+# This script resizes and processes profile images for the Brandmine Jekyll site.
+# It focuses on non-brand image categories, such as people, and generates optimized
+# assets for responsive breakpoints.
+#
+# Key Features:
+# - Processes "people" category images stored in structured folders.
+# - Automatically resizes originals into 400w, 800w, and 1200w versions.
+# - Maintains a consistent naming convention for easy asset management.
+# - Skips missing folders gracefully without interrupting the script.
+#
+# Usage:
+#     bash process_people_images.sh
+#
+# Author: Randal Eastman
+
 
 # Define image categories
 CATEGORIES=("people")

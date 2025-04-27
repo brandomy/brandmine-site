@@ -1,4 +1,22 @@
+
 #!/bin/bash
+#
+# directory_structure.sh
+#
+# This script generates a comprehensive directory and file listing for the Brandmine Jekyll project.
+# It outputs a clear directory tree, counts key file types, and provides structured breakdowns
+# for assets such as CSS components, layouts, pages, and tokens.
+#
+# Key Features:
+# - Excludes build artifacts and temporary files from the listing.
+# - Provides total counts for directories and important file categories.
+# - Organizes CSS files by type for easier maintenance and auditing.
+# - Outputs everything neatly into a single directory_structure.txt file.
+#
+# Usage:
+#     bash directory_structure.sh
+#
+# Author: Randal Eastman
 
 # Directory listing script for Jekyll projects
 OUTPUT_FILE="directory_structure.txt"

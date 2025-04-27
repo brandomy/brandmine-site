@@ -1,3 +1,21 @@
+"""
+add_image_attribution.py
+
+This script assists with managing image attributions for the Brandmine Jekyll site.
+It simplifies the process of recording attribution details for original and third-party images
+(e.g., Unsplash) into a centralized YAML file for transparent content usage tracking.
+
+Key Features:
+- Extracts attribution details automatically from Unsplash filenames if available.
+- Guides users interactively to enter or confirm attribution data.
+- Appends new image entries to `_data/image_attributions.yml`.
+- Supports adding multiple images in a single session.
+
+Usage:
+    python add_image_attribution.py
+
+Author: Randal Eastman
+"""
 #!/usr/bin/env python3
 import os
 import yaml

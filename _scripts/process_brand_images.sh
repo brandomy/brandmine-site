@@ -1,6 +1,22 @@
 #!/bin/bash
-# Project-wide resize_images.sh
-# Place this script in your project root
+#
+# process_brand_images.sh
+#
+# This script resizes and processes brand images for the Brandmine Jekyll site.
+# It organizes output images by brand, purpose, and size, ensuring optimized
+# assets are generated for different responsive breakpoints.
+#
+# Key Features:
+# - Supports selective processing of a single brand or all brands.
+# - Automatically detects original images and organizes resized outputs.
+# - Generates multiple sizes (400w, 800w, 1200w) for responsive usage.
+# - Maintains a consistent filename structure for easy asset management.
+#
+# Usage:
+#     bash process_brand_images.sh [optional_brand_name]
+#
+# Author: Randal Eastman
+
 
 # Base directory for all brand images
 BASE_DIR="assets/images/brands"

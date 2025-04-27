@@ -1,7 +1,22 @@
 #!/bin/bash
-# process_site_images.sh - Process all non-brand images for the Brandmine site
-# This script processes images in categories like people, site, pages, posts, and sectors
-# Creating responsive versions at multiple resolutions for optimal web performance
+#
+# process_site_images.sh
+#
+# This script processes all non-brand images for the Brandmine Jekyll site.
+# It covers categories like people, site assets, pages, posts, and tags,
+# creating responsive versions at multiple resolutions to optimize web performance.
+#
+# Key Features:
+# - Processes multiple non-brand image categories systematically.
+# - Detects missing category folders and skips gracefully.
+# - Resizes images into 400w, 800w, and 1200w versions.
+# - Standardizes naming conventions for easy asset management.
+#
+# Usage:
+#     bash process_site_images.sh
+#
+# Author: Randal Eastman
+
 
 # Define image categories to process
 CATEGORIES=("site" "pages" "insights" "tags" "sectors" "signals" "markets" "attributes")

@@ -1,3 +1,21 @@
+"""
+language_consistency_checker.py
+
+This script checks for language consistency across the Brandmine Jekyll site.
+It analyzes the content files in the 'pages' directory and verifies that all
+expected language versions (English, Russian, Chinese) exist for each page.
+
+Key Features:
+- Detects missing language versions for each logical page group.
+- Extracts useful metadata (title, permalink) from front matter.
+- Generates a clear, styled HTML report summarizing inconsistencies.
+- Helps maintain a professional, fully localized site structure.
+
+Usage:
+    python language_consistency_checker.py --site-dir . --output report.html
+
+Author: [Your Name]
+"""
 #!/usr/bin/env python3
 # language_consistency_checker.py
 

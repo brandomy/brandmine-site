@@ -1,21 +1,22 @@
 ---
 layout: insight
 title: "The Artisanal Revolution: How 7 Spices is Redefining Russian Condiments"
-content_type: "Brand Spotlight"
+category: "Brand Spotlight"
+secondary_categories: []
 date: 2025-03-18
 author: "Mikhail Orlov"
-excerpt: "A concise description of the article that will appear in cards on the homepage and in search results. It should capture attention and accurately convey the content (2-3 sentences)."
+excerpt: "7 Spices is transforming Russia’s culinary traditions by reviving artisanal condiment techniques with a modern twist. From pine-infused honey to fermented black garlic, their products blend centuries-old flavors with innovative sustainability practices, earning acclaim across Europe and North America. Discover how storytelling, foraging, and cultural pride power this brand’s global rise."
 sectors: [Gourmet Foods]
 markets: [Russia]
 attributes: [Artisanal Excellence, Cultural Ambassador]
 signals: [Export Ready]
-primary_dimension: signals
 brands: [7_spices]
 image: /assets/images/insights/7-spices-spotlight.jpg
 featured: false
 premium: false
 permalink: /en/insights/7-spices-brand-spotlight/
 lang: en
+reading_time: 7
 ---
 
 ## Reimagining Russia's Flavor Palette
