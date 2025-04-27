@@ -4,7 +4,7 @@ ref: sector-natural-supplements
 layout: dimension
 title: "天然食品补充剂"
 dimension: natural-supplements
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/natural-supplements/
 ---
 

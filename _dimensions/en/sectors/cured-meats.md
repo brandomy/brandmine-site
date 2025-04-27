@@ -4,7 +4,7 @@ ref: sector-cured-meats
 layout: dimension
 title: "Salami & Cured Meats"
 dimension: cured-meats
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/cured-meats/
 ---
 

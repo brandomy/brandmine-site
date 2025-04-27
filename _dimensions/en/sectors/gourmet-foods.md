@@ -4,7 +4,7 @@ ref: sector-gourmet-foods
 layout: dimension
 title: "Gourmet Foods"
 dimension: gourmet-foods
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/gourmet-foods/
 ---
 

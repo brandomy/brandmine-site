@@ -4,7 +4,7 @@ ref: attribute-premium-positioning
 layout: dimension
 title: "高端定位"
 dimension: premium-positioning
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/premium-positioning/
 ---

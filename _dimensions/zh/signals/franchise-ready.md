@@ -4,7 +4,7 @@ ref: signal-franchise-ready
 layout: dimension
 title: "特许经营就绪"
 dimension: franchise-ready
-dimension_type: signal
+category: signal
 verification_required: true
 permalink: /zh/discover/signals/franchise-ready/
 ---

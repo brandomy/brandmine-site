@@ -4,7 +4,7 @@ ref: attribute-sustainability-pioneer
 layout: dimension
 title: "Пионер устойчивого развития"
 dimension: sustainability-pioneer
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/sustainability-pioneer/
 ---

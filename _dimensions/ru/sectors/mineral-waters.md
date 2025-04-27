@@ -4,7 +4,7 @@ ref: sector-mineral-waters
 layout: dimension
 title: "Минеральные воды"
 dimension: mineral-waters
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/mineral-waters/
 ---
 

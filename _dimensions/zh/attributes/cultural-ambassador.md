@@ -4,7 +4,7 @@ ref: attribute-cultural-ambassador
 layout: dimension
 title: "文化大使"
 dimension: cultural-ambassador
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/cultural-ambassador/
 ---

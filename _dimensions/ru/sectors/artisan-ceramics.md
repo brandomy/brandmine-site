@@ -4,7 +4,7 @@ ref: sector-artisan-ceramics
 layout: dimension
 title: "Фарфор и керамика"
 dimension: artisan-ceramics
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/artisan-ceramics/
 ---
 

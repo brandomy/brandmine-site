@@ -4,7 +4,7 @@ ref: sector-artisan-confectionery
 layout: dimension
 title: "手工糖果"
 dimension: artisan-confectionery
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/artisan-confectionery/
 ---
 

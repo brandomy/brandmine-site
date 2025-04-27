@@ -4,7 +4,7 @@ ref: signal-export-ready
 layout: dimension
 title: "出口就绪"
 dimension: export-ready
-dimension_type: signal
+category: signal
 verification_required: true
 permalink: /zh/discover/signals/export-ready/
 ---

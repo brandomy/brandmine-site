@@ -4,7 +4,7 @@ ref: sector-natural-beauty
 layout: dimension
 title: "Натуральные косметические продукты"
 dimension: natural-beauty
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/natural-beauty/
 ---
 

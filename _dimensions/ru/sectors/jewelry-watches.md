@@ -4,7 +4,7 @@ ref: sector-jewelry-watches
 layout: dimension
 title: "Ювелирные изделия и часы"
 dimension: jewelry-watches
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/jewelry-watches/
 ---
 

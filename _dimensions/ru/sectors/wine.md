@@ -4,7 +4,7 @@ ref: sector-wine
 layout: dimension
 title: "Вино"
 dimension: wine
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/wine/
 ---
 

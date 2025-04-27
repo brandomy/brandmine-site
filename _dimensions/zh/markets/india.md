@@ -4,7 +4,7 @@ ref: market-india
 layout: dimension
 title: "印度"
 dimension: india
-dimension_type: market
+category: market
 permalink: /zh/discover/markets/india/
 lang: zh
 ref: market-india

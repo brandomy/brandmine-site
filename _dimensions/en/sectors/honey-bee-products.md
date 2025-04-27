@@ -4,7 +4,7 @@ ref: sector-honey-bee-products
 layout: dimension
 title: "Honey & Bee Products"
 dimension: honey-bee-products
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/honey-bee-products/
 ---
 

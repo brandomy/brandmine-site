@@ -4,7 +4,7 @@ ref: attribute-artisanal-excellence
 layout: dimension
 title: "匠心卓越"
 dimension: artisanal-excellence
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/artisanal-excellence/
 ---

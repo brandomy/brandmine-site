@@ -4,7 +4,7 @@ ref: signal-investment-ready
 layout: dimension
 title: "Готовность к инвестициям"
 dimension: investment-ready
-dimension_type: signal
+category: signal
 verification_required: true
 permalink: /ru/discover/signals/investment-ready/
 ---

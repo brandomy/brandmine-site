@@ -4,7 +4,7 @@ ref: attribute-regional-icon
 layout: dimension
 title: "区域标志"
 dimension: regional-icon
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/regional-icon/
 ---

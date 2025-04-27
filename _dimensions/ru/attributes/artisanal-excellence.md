@@ -4,7 +4,7 @@ ref: attribute-artisanal-excellence
 layout: dimension
 title: "Ремесленное совершенство"
 dimension: artisanal-excellence
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/artisanal-excellence/
 ---

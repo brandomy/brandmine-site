@@ -4,7 +4,7 @@ ref: sector-fashion-accessories
 layout: dimension
 title: "时尚与配饰"
 dimension: fashion-accessories
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/fashion-accessories/
 ---
 

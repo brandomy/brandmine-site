@@ -4,7 +4,7 @@ ref: attribute-founder-led
 layout: dimension
 title: "Founder-Led"
 dimension: founder-led
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /en/discover/attributes/founder-led/
 ---

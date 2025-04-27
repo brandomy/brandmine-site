@@ -4,7 +4,7 @@ ref: sector-artisan-ceramics
 layout: dimension
 title: "手工瓷器与陶瓷"
 dimension: artisan-ceramics
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/artisan-ceramics/
 ---
 

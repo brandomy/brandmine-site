@@ -4,7 +4,7 @@ ref: sector-fermented-dairy
 layout: dimension
 title: "发酵乳制品（开菲尔）"
 dimension: fermented-dairy
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/fermented-dairy/
 ---
 

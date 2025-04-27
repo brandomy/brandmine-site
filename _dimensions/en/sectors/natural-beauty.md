@@ -4,7 +4,7 @@ ref: sector-natural-beauty
 layout: dimension
 title: "Natural Beauty Products"
 dimension: natural-beauty
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/natural-beauty/
 ---
 

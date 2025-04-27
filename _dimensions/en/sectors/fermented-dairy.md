@@ -4,7 +4,7 @@ ref: sector-fermented-dairy
 layout: dimension
 title: "Fermented Dairy (Kefir)"
 dimension: fermented-dairy
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/fermented-dairy/
 ---
 

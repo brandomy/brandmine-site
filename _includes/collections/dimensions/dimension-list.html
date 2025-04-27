@@ -8,13 +8,13 @@
   - dimensions: Array of dimension objects (required)
     Each dimension object should have:
     - dimension: The dimension identifier
-    - dimension_type: The type of dimension (sector, market, attribute, signal)
+    - category: The type of dimension (sector, market, attribute, signal)
     - lang: The language code
     - title: A fallback title if dimension data is not found
 
   Dependencies:
   - CSS: dimension-list.css
-  - Data: site.data[dimension_type][lang] structure for dimension details
+  - Data: site.data[category][lang] structure for dimension details
 
   Example Usage:
   {% include collections/dimensions/dimension-list.html dimensions=page.dimensions %}
@@ -33,12 +33,12 @@
   <div class="dimension-list">
     {% for dimension in include.dimensions %}
       {% assign dimension_id = dimension.dimension %}
-      {% assign dimension_type = dimension.dimension_type %}
+      {% assign category = dimension.category %}
       {% assign lang = dimension.lang %}
-      {% assign data_items = site.data[dimension_type | append: 's'][lang] %}
+      {% assign data_items = site.data[category | append: 's'][lang] %}
       {% assign dimension_data = data_items | where: "id", dimension_id | first %}
 
-      <a href="{{ site.baseurl }}/{{ lang }}/discover/{{ dimension_type | append: 's' }}/{{ dimension_id }}/" class="dimension-list__item dimension dimension--{{ dimension_type }}">
+      <a href="{{ site.baseurl }}/{{ lang }}/discover/{{ category | append: 's' }}/{{ dimension_id }}/" class="dimension-list__item dimension dimension--{{ category }}">
         {{ dimension_data.short_description | default: dimension.title }}
       </a>
     {% endfor %}

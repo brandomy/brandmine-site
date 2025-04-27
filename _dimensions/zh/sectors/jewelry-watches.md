@@ -4,7 +4,7 @@ ref: sector-jewelry-watches
 layout: dimension
 title: "珠宝与手表"
 dimension: jewelry-watches
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/jewelry-watches/
 ---
 

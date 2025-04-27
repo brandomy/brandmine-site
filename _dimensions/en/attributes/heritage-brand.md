@@ -4,7 +4,7 @@ ref: attribute-heritage-brand
 layout: dimension
 title: "Heritage Brand"
 dimension: heritage-brand
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /en/discover/attributes/heritage-brand/
 ---

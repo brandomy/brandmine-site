@@ -4,7 +4,7 @@ ref: attribute-cultural-ambassador
 layout: dimension
 title: "Культурный посол"
 dimension: cultural-ambassador
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/cultural-ambassador/
 ---

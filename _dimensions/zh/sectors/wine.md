@@ -4,7 +4,7 @@ ref: sector-wine
 layout: dimension
 title: "葡萄酒"
 dimension: wine
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/wine/
 ---
 

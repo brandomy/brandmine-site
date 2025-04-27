@@ -4,7 +4,7 @@ ref: signal-franchise-ready
 layout: dimension
 title: "Готовность к франчайзингу"
 dimension: franchise-ready
-dimension_type: signal
+category: signal
 verification_required: true
 permalink: /ru/discover/signals/franchise-ready/
 ---

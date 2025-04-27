@@ -4,7 +4,7 @@ ref: sector-gourmet-foods
 layout: dimension
 title: "Изысканные продукты питания"
 dimension: gourmet-foods
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/gourmet-foods/
 ---
 

@@ -4,7 +4,7 @@ ref: sector-cured-meats
 layout: dimension
 title: "萨拉米香肠和腌制肉品"
 dimension: cured-meats
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/cured-meats/
 ---
 

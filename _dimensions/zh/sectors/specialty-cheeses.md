@@ -4,7 +4,7 @@ ref: sector-specialty-cheeses
 layout: dimension
 title: "特色奶酪"
 dimension: specialty-cheeses
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/specialty-cheeses/
 ---
 

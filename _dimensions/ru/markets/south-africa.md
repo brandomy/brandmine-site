@@ -4,7 +4,7 @@ ref: market-south-africa
 layout: dimension
 title: "Южная Африка"
 dimension: south-africa
-dimension_type: market
+category: market
 permalink: /ru/discover/markets/south-africa/
 lang: ru
 ref: market-south-africa

@@ -4,7 +4,7 @@ ref: market-china
 layout: dimension
 title: "Китай"
 dimension: china
-dimension_type: market
+category: market
 permalink: /ru/discover/markets/china/
 lang: ru
 ref: market-china

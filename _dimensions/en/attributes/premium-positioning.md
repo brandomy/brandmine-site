@@ -4,7 +4,7 @@ ref: attribute-premium-positioning
 layout: dimension
 title: "Premium Positioning"
 dimension: premium-positioning
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /en/discover/attributes/premium-positioning/
 ---

@@ -4,7 +4,7 @@ ref: market-india
 layout: dimension
 title: "Индия"
 dimension: india
-dimension_type: market
+category: market
 permalink: /ru/discover/markets/india/
 lang: ru
 ref: market-india

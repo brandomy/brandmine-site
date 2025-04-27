@@ -5,7 +5,7 @@ layout: dimension
 layout: dimension
 title: "酒店与度假村"
 dimension: hotels-resorts
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/hotels-resorts/
 ---
 

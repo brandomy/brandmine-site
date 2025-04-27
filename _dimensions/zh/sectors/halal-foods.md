@@ -4,7 +4,7 @@ ref: sector-halal-foods
 layout: dimension
 title: "清真食品"
 dimension: halal-foods
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/halal-foods/
 ---
 

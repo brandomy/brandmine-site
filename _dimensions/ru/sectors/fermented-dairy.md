@@ -4,7 +4,7 @@ ref: sector-fermented-dairy
 layout: dimension
 title: "Ферментированные молочные продукты (Кефир)"
 dimension: fermented-dairy
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/fermented-dairy/
 ---
 

@@ -4,7 +4,7 @@ ref: sector-fashion-accessories
 layout: dimension
 title: "Fashion & Accessories"
 dimension: fashion-accessories
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/fashion-accessories/
 ---
 

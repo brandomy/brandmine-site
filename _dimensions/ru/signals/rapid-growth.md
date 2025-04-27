@@ -4,7 +4,7 @@ ref: signal-rapid-growth
 layout: dimension
 title: "Быстрый рост"
 dimension: rapid-growth
-dimension_type: signal
+category: signal
 verification_required: true
 permalink: /ru/discover/signals/rapid-growth/
 ---

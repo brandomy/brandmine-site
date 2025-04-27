@@ -4,7 +4,7 @@ ref: attribute-cultural-ambassador
 layout: dimension
 title: "Cultural Ambassador"
 dimension: cultural-ambassador
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /en/discover/attributes/cultural-ambassador/
 ---

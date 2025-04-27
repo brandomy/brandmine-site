@@ -4,7 +4,7 @@ ref: market-brazil
 layout: dimension
 title: "巴西"
 dimension: brazil
-dimension_type: market
+category: market
 permalink: /zh/discover/markets/brazil/
 lang: zh
 ref: market-brazil

@@ -4,7 +4,7 @@ ref: sector-artisanal-spirits
 layout: dimension
 title: "Ремесленные спиртные напитки и водка"
 dimension: artisanal-spirits
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/artisanal-spirits/
 ---
 

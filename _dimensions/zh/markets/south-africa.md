@@ -4,7 +4,7 @@ ref: market-south-africa
 layout: dimension
 title: "南非"
 dimension: south-africa
-dimension_type: market
+category: market
 permalink: /zh/discover/markets/south-africa/
 lang: zh
 ref: market-south-africa

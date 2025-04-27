@@ -4,7 +4,7 @@ ref: sector-honey-bee-products
 layout: dimension
 title: "Мёд и продукты пчеловодства"
 dimension: honey-bee-products
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/honey-bee-products/
 ---
 

@@ -4,7 +4,7 @@ ref: signal-export-ready
 layout: dimension
 title: "Export-Ready"
 dimension: export-ready
-dimension_type: signal
+category: signal
 verification_required: true
 permalink: /en/discover/signals/export-ready/
 ---

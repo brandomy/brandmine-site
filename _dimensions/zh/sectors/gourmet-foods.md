@@ -4,7 +4,7 @@ ref: sector-gourmet-foods
 layout: dimension
 title: "美食佳肴"
 dimension: gourmet-foods
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/gourmet-foods/
 ---
 

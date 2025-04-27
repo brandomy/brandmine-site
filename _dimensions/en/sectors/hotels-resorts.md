@@ -4,7 +4,7 @@ ref: sector-hotels-resorts
 layout: dimension
 title: "Hotels & Resorts"
 dimension: hotels-resorts
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/hotels-resorts/
 ---
 

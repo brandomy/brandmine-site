@@ -4,7 +4,7 @@ ref: sector-hotels-resorts
 layout: dimension
 title: "Отели и курорты"
 dimension: hotels-resorts
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/hotels-resorts/
 ---
 

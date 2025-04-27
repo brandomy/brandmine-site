@@ -4,7 +4,7 @@ ref: sector-natural-supplements
 layout: dimension
 title: "Natural Supplements"
 dimension: natural-supplements
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/natural-supplements/
 ---
 

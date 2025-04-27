@@ -4,7 +4,7 @@ ref: signal-franchise-ready
 layout: dimension
 title: "Franchise Ready"
 dimension: franchise-ready
-dimension_type: signal
+category: signal
 verification_required: true
 permalink: /en/discover/signals/franchise-ready/
 ---

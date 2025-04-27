@@ -4,7 +4,7 @@ ref: attribute-sustainability-pioneer
 layout: dimension
 title: "可持续先锋"
 dimension: sustainability-pioneer
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/sustainability-pioneer/
 ---

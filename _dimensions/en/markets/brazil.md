@@ -4,7 +4,7 @@ ref: market-brazil
 layout: dimension
 title: "Brazil"
 dimension: brazil
-dimension_type: market
+category: market
 permalink: /en/discover/markets/brazil/
 ---
 

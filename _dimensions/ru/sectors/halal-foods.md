@@ -4,7 +4,7 @@ ref: sector-halal-foods
 layout: dimension
 title: "Халяльные продукты питания"
 dimension: halal-foods
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/halal-foods/
 ---
 

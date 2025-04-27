@@ -4,7 +4,7 @@ ref: sector-specialty-cheeses
 layout: dimension
 title: "Специальные сыры"
 dimension: specialty-cheeses
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/specialty-cheeses/
 ---
 

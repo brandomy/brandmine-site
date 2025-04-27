@@ -4,7 +4,7 @@ ref: sector-specialty-cheeses
 layout: dimension
 title: "Specialty Cheeses"
 dimension: specialty-cheeses
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/specialty-cheeses/
 ---
 

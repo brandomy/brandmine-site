@@ -4,7 +4,7 @@ ref: sector-natural-supplements
 layout: dimension
 title: "Натуральные пищевые добавки"
 dimension: natural-supplements
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/natural-supplements/
 ---
 

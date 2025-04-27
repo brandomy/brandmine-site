@@ -4,7 +4,7 @@ ref: sector-halal-food-products
 layout: dimension
 title: "Halal Food Products"
 dimension: halal-food-products
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/halal-food-products/
 ---
 

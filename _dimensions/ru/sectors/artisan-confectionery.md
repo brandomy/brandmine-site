@@ -4,7 +4,7 @@ ref: sector-artisan-confectionery
 layout: dimension
 title: "Ремесленные кондитерские изделия"
 dimension: artisan-confectionery
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/artisan-confectionery/
 ---
 

@@ -4,7 +4,7 @@ ref: sector-artisan-confectionery
 layout: dimension
 title: "Artisan Confectionery"
 dimension: artisan-confectionery
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/artisan-confectionery/
 ---
 

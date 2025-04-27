@@ -4,7 +4,7 @@ ref: sector-artisan-ceramics
 layout: dimension
 title: "Artisan Porcelain & Ceramics"
 dimension: artisan-ceramics
-dimension_type: sector
+category: sector
 permalink: /en/discover/sectors/artisan-ceramics/
 ---
 

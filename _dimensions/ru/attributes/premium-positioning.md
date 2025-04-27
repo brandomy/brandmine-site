@@ -4,7 +4,7 @@ ref: attribute-premium-positioning
 layout: dimension
 title: "Премиальное позиционирование"
 dimension: premium-positioning
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/premium-positioning/
 ---

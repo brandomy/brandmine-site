@@ -4,7 +4,7 @@ ref: market-russia
 layout: dimension
 title: "俄罗斯"
 dimension: russia
-dimension_type: market
+category: market
 permalink: /zh/discover/markets/russia/
 lang: zh
 ref: market-russia

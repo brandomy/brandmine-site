@@ -4,7 +4,7 @@ ref: attribute-regional-icon
 layout: dimension
 title: "Региональная икона"
 dimension: regional-icon
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/regional-icon/
 ---

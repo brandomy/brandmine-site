@@ -4,7 +4,7 @@ ref: sector-cured-meats
 layout: dimension
 title: "Салями и вяленые мясопродукты"
 dimension: cured-meats
-dimension_type: sector
+category: sector
 permalink: /ru/discover/sectors/cured-meats/
 ---
 

@@ -4,7 +4,7 @@ ref: sector-honey-bee-products
 layout: dimension
 title: "蜂蜜与蜂产品"
 dimension: honey-bee-products
-dimension_type: sector
+category: sector
 permalink: /zh/discover/sectors/honey-bee-products/
 ---
 

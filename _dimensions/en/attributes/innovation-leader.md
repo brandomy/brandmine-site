@@ -4,7 +4,7 @@ ref: attribute-innovation-leader
 layout: dimension
 title: "Innovation Leader"
 dimension: innovation-leader
-dimension_type: attribute
+category: attribute
 verification_required: true
 permalink: /en/discover/attributes/innovation-leader/
 ---

@@ -4,7 +4,7 @@ ref: market-south-africa
 layout: dimension
 title: "South Africa"
 dimension: south-africa
-dimension_type: market
+category: market
 permalink: /en/discover/markets/south-africa/
 ---
 
