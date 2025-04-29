@@ -274,6 +274,32 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
   - `process_site_images.sh` for site assets
   - `process_people_images.sh` for people/team images
 
+## Visual Style Strategy
+
+Brandmine applies a structured visual language for all imagery based on content type:
+
+- **Textured Minimalism (TM):**  
+  Used for brand profile hero images, insights article hero images, and country-specific dimension pages (e.g., Russian sectors, Brazilian markets).  
+  Characteristics: simplified forms, subtle textures, gentle shadows, rich muted colors, no embedded text.
+
+- **Muted Pastel Textured Minimalism (MPTM):**  
+  Used for inline illustrations within insights articles and brand profiles to create emotional breathing spaces.  
+  Characteristics: pastel-based color palette, soft textures, lighter emotional tone, clean simplified forms.
+
+- **Flat Colour Minimalism:**  
+  Used for generic dimension pages (e.g., global sector overviews, signals, attributes, markets).  
+  Characteristics: bold flat colors, geometric abstraction, no textures, clean edges, strong contrast for quick discovery.
+
+- **Photographic Portrait Stylization (MPTM Adaptation):**  
+  Founder portraits and selected artisan process shots are stylized into MPTM to maintain a cohesive aesthetic while preserving human authenticity.
+
+General Rule:  
+- Use TM for primary storytelling heroes.  
+- Use MPTM for secondary storytelling illustrations.  
+- Use Flat Colour Minimalism for taxonomy navigation and abstract dimension discovery.
+
+⚠️ Avoid mixing raw unprocessed photographs with stylized or illustrated content directly side-by-side. All imagery must maintain consistent visual processing to preserve Brandmine's premium, editorial aesthetic.
+
 ---
 
 # 📱 Mobile Optimization & Responsive Design

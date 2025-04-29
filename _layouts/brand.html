@@ -6,13 +6,13 @@ layout: default
   ------------------------------------------------------------------------------
   Used for displaying the full profile of an individual brand:
 
-    - /en/brands/teatime/
-    - /zh/brands/himalaya-herbs/
-    - /ru/brands/sibirskoe-zoloto/
+    - /en/brands/ru/teatime/
+    - /zh/brands/in/himalaya-herbs/
+    - /ru/brands/br/serra-verde/
 
   Purpose:
   - Renders brand metadata (logo, sector, market, founding year, etc.)
-  - Displays founder, product list, and visual gallery (if available)
+  - Displays founder, product range, and visual gallery (if available)
   - Links to related discovery tags and related insights
   - Shows related brands from the same dataset
   - Fully supports multilingual content using page.lang
@@ -21,126 +21,222 @@ layout: default
   - Files in _brands/
 
   Dependencies:
-  - _includes/brand-card.html
+  - _includes/components/images/brand-image.html
   - site.data.translations
 ---------------------------------------------------------------------------- -->
 <div class="brand-profile container">
+  <!-- Header with logo and basic metadata -->
   <div class="brand-header row">
     <div class="col-md-4">
       {% if page.logo %}
-      <img src="{{ page.logo }}" alt="{{ page.title }} logo" class="brand-logo img-fluid">
+      {% include components/images/brand-image.html 
+         brand=page.slug
+         image="color"
+         purpose="logo"
+         ext="png"
+         alt=page.title %}
       {% endif %}
     </div>
     <div class="col-md-8">
-      <h1>{{ page.title }}</h1>
+      <h1 class="brand-profile__title">{{ page.title }}</h1>
+      
       {% if page.slogan %}
-      <div class="brand-slogan">
+      <div class="brand-profile__slogan">
         "{{ page.slogan }}"
       </div>
       {% endif %}
-      <div class="brand-meta">
+      
+      <div class="brand-profile__meta">
+        <!-- Sectors -->
         {% if page.sectors %}
-        <div class="meta-item">
-          <span class="meta-label">{{ site.data.translations[page.lang].discovery.sectors }}:</span>
+        <div class="brand-profile__meta-item">
+          <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].tags.sectors }}:</span>
           {% for sector in page.sectors %}
           <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="brand-meta__tag brand-meta__tag--sector">{{ sector }}</a>
           {% endfor %}
         </div>
         {% endif %}
         
+        <!-- Subsectors (new) -->
+        {% if page.subsectors %}
+        <div class="brand-profile__meta-item">
+          <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].brand.subsectors }}:</span>
+          {% for subsector in page.subsectors %}
+          <span class="brand-meta__tag brand-meta__tag--subsector">{{ subsector }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Markets -->
         {% if page.markets %}
-        <div class="meta-item">
-          <span class="meta-label">{{ site.data.translations[page.lang].discovery.markets }}:</span>
+        <div class="brand-profile__meta-item">
+          <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].tags.markets }}:</span>
           {% for market in page.markets %}
           <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="brand-meta__tag brand-meta__tag--market">{{ market }}</a>
           {% endfor %}
         </div>
         {% endif %}
         
+        <!-- Founding Year -->
         {% if page.founding_year %}
-        <div class="meta-item">
-          <span class="meta-label">{{ site.data.translations[page.lang].brand.established }}:</span>
-          <span class="meta-value">{{ page.founding_year }}</span>
+        <div class="brand-profile__meta-item">
+          <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].brand.founding_year }}:</span>
+          <span class="brand-profile__meta-value">{{ page.founding_year }}</span>
         </div>
         {% endif %}
       </div>
       
-      {% if page.founder %}
-      <div class="brand-founder">
-        <strong>{{ site.data.translations[page.lang].brand.founder }}:</strong> {{ page.founder }}
+      <!-- Founder (simplified) -->
+      {% if page.founder.name %}
+      <div class="brand-profile__founder-brief">
+        <strong>{{ site.data.translations[page.lang].brand.founder }}:</strong> {{ page.founder.name }}
+        
+        {% if page.founder.generation %}
+        <span class="brand-profile__founder-generation">
+          ({{ site.data.translations[page.lang].brand.generation_first }})
+        </span>
+        {% endif %}
       </div>
       {% endif %}
       
+      <!-- Premium Badge -->
       {% if page.premium %}
-      <div class="premium-badge">{{ site.data.translations[page.lang].brand.premium }}</div>
+      <div class="brand-profile__premium-badge">{{ site.data.translations[page.lang].tags.premium }}</div>
       {% endif %}
     </div>
   </div>
 
+  <!-- Hero Image -->
   {% if page.hero_image %}
-  <div class="brand-hero-image row mt-4">
+  <div class="brand-profile__hero-image row mt-4">
     <div class="col-12">
-      <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="img-fluid">
+      {% include components/images/brand-image.html 
+         brand=page.slug 
+         image="storefront"
+         purpose="hero"
+         alt=page.title %}
     </div>
   </div>
   {% endif %}
 
-  <div class="brand-details row mt-4">
+  <!-- Main Content -->
+  <div class="brand-profile__details row mt-4">
+    <!-- Main Content Column -->
     <div class="col-md-8">
-      <h2>{{ site.data.translations[page.lang].brand.about }}</h2>
-      <div class="brand-description">
+      <!-- Brand Description from Markdown Content -->
+      <div class="brand-profile__description">
         {{ content }}
       </div>
-
-      {% if page.products %}
-      <h2 class="mt-4">{{ site.data.translations[page.lang].brand.products }}</h2>
-      <div class="brand-products">
-        {% for product in page.products %}
-        <div class="product-card">
-          <h3>{{ product.name }}</h3>
-          <p>{{ product.description }}</p>
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
     </div>
 
-    <div class="col-md-4 brand-sidebar">
-      <div class="brand-attributes">
-        <h3>{{ site.data.translations[page.lang].discovery.attributes }}</h3>
+    <!-- Sidebar Column -->
+    <div class="col-md-4 brand-profile__sidebar">
+      <!-- Brand Attributes -->
+      <div class="brand-profile__attributes">
+        <h3>{{ site.data.translations[page.lang].tags.attributes }}</h3>
         {% for attribute in page.attributes %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/" class="brand-attribute__tag brand-attribute__tag--attribute">{{ attribute }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/" class="brand-profile__tag brand-profile__tag--attribute">{{ attribute }}</a>
         {% endfor %}
       </div>
 
-      <div class="brand-signals mt-3">
-        <h3>{{ site.data.translations[page.lang].discovery.signals }}</h3>
+      <!-- Brand Signals -->
+      <div class="brand-profile__signals mt-3">
+        <h3>{{ site.data.translations[page.lang].tags.signals }}</h3>
         {% for signal in page.signals %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/" class="brand-attribute__tag brand-attribute__tag--signal">{{ signal }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/" class="brand-profile__tag brand-profile__tag--signal">{{ signal }}</a>
         {% endfor %}
       </div>
 
-      {% if page.contact_email or page.website %}
-      <div class="brand-contact mt-3">
+      <!-- Contact Information -->
+      <div class="brand-profile__contact mt-3">
         <h3>{{ site.data.translations[page.lang].brand.contact }}</h3>
+        
         {% if page.contact_email %}
-        <p>{{ site.data.translations[page.lang].brand.email }}: <a href="mailto:{{ page.contact_email }}">{{ page.contact_email }}</a></p>
+        <p>{{ site.data.translations[page.lang].brand.email }}: 
+          <a href="mailto:{{ page.contact_email }}">{{ page.contact_email }}</a>
+        </p>
         {% endif %}
+        
         {% if page.website %}
-        <p>{{ site.data.translations[page.lang].brand.website }}: <a href="{{ page.website }}" target="_blank" rel="noopener">{{ page.website }}</a></p>
+        <p>{{ site.data.translations[page.lang].brand.website }}: 
+          <a href="{{ page.website }}" target="_blank" rel="noopener">{{ page.website }}</a>
+        </p>
         {% endif %}
+      </div>
+      
+      <!-- Social Media Links (new) -->
+      {% if page.social_media %}
+      <div class="brand-profile__social-media mt-3">
+        <h3>{{ site.data.translations[page.lang].brand.social_media }}</h3>
+        <div class="brand-profile__social-icons">
+          {% if page.social_media.instagram %}
+          <a href="{{ page.social_media.instagram }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <span class="sr-only">Instagram</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.facebook %}
+          <a href="{{ page.social_media.facebook }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-facebook" aria-hidden="true"></i>
+            <span class="sr-only">Facebook</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.linkedin %}
+          <a href="{{ page.social_media.linkedin }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.youtube %}
+          <a href="{{ page.social_media.youtube }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.telegram %}
+          <a href="{{ page.social_media.telegram }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-telegram" aria-hidden="true"></i>
+            <span class="sr-only">Telegram</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.vk %}
+          <a href="{{ page.social_media.vk }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-vk" aria-hidden="true"></i>
+            <span class="sr-only">VK</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.weibo %}
+          <a href="{{ page.social_media.weibo }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-weibo" aria-hidden="true"></i>
+            <span class="sr-only">Weibo</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.wechat %}
+          <a href="{{ page.social_media.wechat }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+            <i class="fab fa-weixin" aria-hidden="true"></i>
+            <span class="sr-only">WeChat</span>
+          </a>
+          {% endif %}
+        </div>
       </div>
       {% endif %}
       
-      <!-- Related insights section -->
-      {% assign related_insights = site.insights | where: "lang", page.lang | where_exp: "item", "item.related_brands contains page.slug" | limit: 3 %}
+      <!-- Related Insights Section -->
+      {% assign related_insights = site.insights | where: "lang", page.lang | where_exp: "item", "item.brands contains page.slug" | limit: 3 %}
       {% if related_insights.size > 0 %}
-      <div class="related-insights mt-3">
+      <div class="brand-profile__related-insights mt-3">
         <h3>{{ site.data.translations[page.lang].brand.related_insights }}</h3>
         {% for insight in related_insights %}
-        <div class="sidebar-insight">
+        <div class="brand-profile__sidebar-insight">
           <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
-          <span class="insight-type">{{ insight.content_type }}</span>
+          <span class="brand-profile__insight-type">{{ insight.category }}</span>
         </div>
         {% endfor %}
       </div>
@@ -148,21 +244,141 @@ layout: default
     </div>
   </div>
 
+  <!-- Timeline Section (new) -->
+  {% if page.timeline %}
+  <div class="brand-profile__timeline row mt-4">
+    <div class="col-12">
+      <h2>{{ site.data.translations[page.lang].brand.timeline }}</h2>
+      <div class="timeline">
+        {% for milestone in page.timeline %}
+        <div class="timeline-item">
+          <div class="timeline-year">{{ milestone.year }}</div>
+          <div class="timeline-event">{{ milestone.event }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Certifications & Awards (new enhanced section) -->
+  {% if page.certifications or page.awards %}
+  <div class="brand-profile__certifications row mt-4">
+    <div class="col-12">
+      <h2>{{ site.data.translations[page.lang].brand.certifications }}</h2>
+      
+      {% if page.certifications %}
+      <div class="certifications-list">
+        <h3>{{ site.data.translations[page.lang].brand.certifications }}</h3>
+        <ul>
+          {% for certification in page.certifications %}
+          <li>
+            <span class="certification-name">{{ certification.name }}</span>
+            <span class="certification-year">({{ certification.year }})</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      
+      {% if page.awards %}
+      <div class="awards-list">
+        <h3>{{ site.data.translations[page.lang].general.awards }}</h3>
+        <ul>
+          {% for award in page.awards %}
+          <li>
+            <span class="award-name">{{ award.name }}</span>
+            <span class="award-year">({{ award.year }})</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- International Presence (new) -->
+  {% if page.international.markets %}
+  <div class="brand-profile__international row mt-4">
+    <div class="col-12">
+      <h2>{{ site.data.translations[page.lang].brand.international }}</h2>
+      
+      <div class="international-markets">
+        <h3>{{ site.data.translations[page.lang].brand.export_markets }}</h3>
+        <div class="market-tags">
+          {% for market in page.international.markets %}
+          <span class="market-tag">{{ market }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      
+      {% if page.international.distribution_models %}
+      <div class="distribution-models mt-3">
+        <h3>{{ site.data.translations[page.lang].brand.distribution_models }}</h3>
+        <div class="distribution-tags">
+          {% for model in page.international.distribution_models %}
+          <span class="distribution-tag">{{ site.data.translations[page.lang].distribution_models[model] }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Gallery with Captions (updated) -->
   {% if page.gallery %}
-  <div class="brand-gallery row mt-4">
+  <div class="brand-profile__gallery row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.gallery }}</h2>
       <div class="gallery-images">
-        {% for image in page.gallery %}
-        <img src="{{ image }}" alt="{{ page.title }} gallery image" class="gallery-image img-fluid">
+        {% for item in page.gallery %}
+        <figure class="gallery-figure">
+          {% include components/images/brand-image.html 
+             brand=page.slug 
+             image=item.image
+             purpose="gallery" 
+             alt=item.caption %}
+          <figcaption class="gallery-caption">{{ item.caption }}</figcaption>
+        </figure>
         {% endfor %}
       </div>
     </div>
   </div>
   {% endif %}
 
+  <!-- Location Intelligence with Map Placeholder -->
+  {% if page.location.coordinates %}
+  <div class="brand-profile__location row mt-4">
+    <div class="col-12">
+      <h2>{{ site.data.translations[page.lang].brand.location_intelligence }}</h2>
+      
+      <div class="location-map">
+        <!-- MapLibre map will be inserted here via JavaScript -->
+        <div id="brandLocationMap" class="brand-map" data-lat="{{ page.location.coordinates[1] }}" data-lng="{{ page.location.coordinates[0] }}" data-name="{{ page.title }}"></div>
+      </div>
+      
+      <div class="location-details mt-3">
+        <p>
+          <strong>{{ site.data.translations[page.lang].brand.location }}:</strong>
+          {{ page.location.city }}, {{ page.location.region }}, {{ page.location.country }}
+        </p>
+        
+        <!-- Regional Context from markdown -->
+        {% if page.content contains "Regional Context" %}
+        <div class="regional-context">
+          <!-- This section rendered from markdown content -->
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Related Brands -->
   {% if page.related_brands %}
-  <div class="related-brands row mt-4">
+  <div class="brand-profile__related-brands row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.related_brands }}</h2>
       <div class="related-brands-grid">
@@ -171,7 +387,12 @@ layout: default
           {% if related_brand %}
           <div class="related-brand-card">
             {% if related_brand.logo %}
-            <img src="{{ related_brand.logo }}" alt="{{ related_brand.title }} logo" class="related-brand-logo">
+            {% include components/images/brand-image.html 
+               brand=related_brand.slug 
+               image="color"
+               purpose="logo"
+               ext="png"
+               alt=related_brand.title %}
             {% endif %}
             <h3><a href="{{ related_brand.url }}">{{ related_brand.title }}</a></h3>
             <p>{{ related_brand.description | truncate: 100 }}</p>
@@ -188,3 +409,43 @@ layout: default
   </div>
   {% endif %}
 </div>
+
+<!-- Initialize map for location intelligence section -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if map element and coordinates exist
+    const mapElement = document.getElementById('brandLocationMap');
+    if (mapElement && mapElement.dataset.lat && mapElement.dataset.lng) {
+      const lat = parseFloat(mapElement.dataset.lat);
+      const lng = parseFloat(mapElement.dataset.lng);
+      const brandName = mapElement.dataset.name;
+      
+      // Initialize map if MapLibre is available 
+      if (typeof maplibregl !== 'undefined') {
+        const map = new maplibregl.Map({
+          container: 'brandLocationMap',
+          style: 'https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key={{ site.stadia_maps_api_key }}',
+          center: [lng, lat],
+          zoom: 7
+        });
+        
+        // Add navigation controls
+        map.addControl(new maplibregl.NavigationControl());
+        
+        // Add marker for brand location
+        new maplibregl.Marker()
+          .setLngLat([lng, lat])
+          .setPopup(new maplibregl.Popup().setHTML(`<h3>${brandName}</h3>`))
+          .addTo(map);
+          
+        // Additional map setup would go here
+      } else {
+        // Fallback if MapLibre is not available
+        mapElement.innerHTML = `<div class="map-placeholder">
+          <p>Map showing ${brandName} at coordinates ${lat}, ${lng}</p>
+          <p>Interactive map loading...</p>
+        </div>`;
+      }
+    }
+  });
+</script>

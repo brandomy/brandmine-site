@@ -210,22 +210,45 @@
     --font-body:    var(--font-body-zh);
   }
   
-  /* ==========================================================================
-     3. BREAKPOINTS
-     ========================================================================== 
-     
-     IMPORTANT: Breakpoints should NOT be used as CSS variables in media queries.
-     Instead, use these hard-coded values directly in your media queries.
-     
-     xs: 480px
-     sm: 640px
-     md: 768px 
-     lg: 992px
-     xl: 1200px
-     
-     Example usage:
-     @media (min-width: 768px) { ... }
-     */
+/* ==========================================================================
+   3. BREAKPOINTS
+   ========================================================================== 
+
+   MOBILE-FIRST APPROACH: All base styles should be for mobile devices.
+   Media queries are then used to progressively enhance for larger screens.
+   
+   IMPORTANT: Breakpoints should NOT be used as CSS variables in media queries.
+   Instead, use these standard breakpoint values directly in your media queries:
+   
+   - xs: 480px  (Small devices)
+   - md: 768px  (Medium devices/tablets)
+   - lg: 992px  (Large devices/desktops)
+   
+   AVOID max-width media queries whenever possible. If you must use max-width,
+   subtract 1px from the min-width breakpoints to avoid overlap:
+   - max-width: 479px  (instead of 480px)
+   - max-width: 767px  (instead of 768px)
+   - max-width: 991px  (instead of 992px)
+   
+   Example usage:
+   /* Mobile first - base styles outside of any media query */
+   .element {
+    font-size: var(--text-sm);
+  }
+  
+  /* Then enhance for larger screens */
+  @media (min-width: 480px) {
+    .element {
+      font-size: var(--text-base);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .element {
+      font-size: var(--text-lg);
+    }
+  }
+  */
   
   /* ==========================================================================
      4. SPACING
