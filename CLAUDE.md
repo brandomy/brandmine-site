@@ -499,6 +499,32 @@ Claude must align any navigation, filtering, or dimension-related output with th
 3. Process brand images with `./_scripts/process_brand_images.sh brandname`
 4. Add attributions for images in `_data/image_attributions.yml`
 
+### Brand Templates
+
+Three template options are available for creating brand profiles:
+
+1. **Core Template** (`_templates/brands/brand-core.md`): 
+   - Absolute minimum required fields
+   - Use for rapid initial data entry
+   - Contains only essential identification and basic categorization
+   - Typically completed in under 5 minutes
+
+2. **Lite Template** (`_templates/brands/brand-lite.md`): 
+   - Basic profile with essential sections
+   - Use when moderate information is available
+   - Contains founder details, basic timeline, and key attributes
+   - Good for non-featured brands that need more than basic listing
+
+3. **Full Template** (`_templates/brands/brand-full.md`): 
+   - Comprehensive profile with all possible fields
+   - Use for featured brands or when extensive information is available
+   - Includes complete taxonomy, social media, certifications, timeline, etc.
+   - Supports rich storytelling and detailed brand information
+
+Always process brand images after creation using:
+```bash
+./_scripts/process_brand_images.sh brand-slug
+
 ### Adding a New Dimension
 1. Create dimension files in appropriate category subfolder for all languages
 2. Update any relevant translation files in `_data/`
@@ -509,3 +535,23 @@ Claude must align any navigation, filtering, or dimension-related output with th
 2. Follow BEM naming conventions
 3. Use CSS custom properties from tokens
 4. Test responsive behavior on multiple screen sizes
+
+
+## Brand Templates
+
+Two template options are available for creating brand profiles:
+
+1. **Full Template** (`_brands/brand-en.md`): 
+   - Complete template with all possible fields and sections
+   - Use when comprehensive brand information is available
+   - Includes all taxonomy connections, social media, timeline, certifications, etc.
+
+2. **Lite Template** (`_brands/brand-lite.md`):
+   - Simplified template with only essential fields
+   - Use for quick brand creation with minimal information
+   - Contains only core identification, basic categorization, and minimal content
+   - Can be progressively enhanced later
+
+Always process brand images after creation using:
+```bash
+./_scripts/process_brand_images.sh brand-slug

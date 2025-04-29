@@ -3,6 +3,7 @@
 layout: brand
 title: "Sojourn Boutique Hotels"
 slug: sojourn-hotels
+ref: sojourn-hotels
 country_code: "br"  # ISO country code for permalink
 lang: en
 permalink: /en/brands/br/sojourn-hotels/
@@ -24,7 +25,6 @@ contact_email: "partners@sojournhotels.com.br"
 # Founder information
 founder:
   name: "Isabela Mendez"
-  founder_portrait: null
   story: "Former corporate hospitality executive who left a major international chain to create locally-rooted boutique properties showcasing Brazil's natural beauty and cultural heritage."
   generation: "first"
   transition_status: "seeking-partners" # active, expansion, seeking_partners, succession
@@ -89,6 +89,7 @@ partnerships:
 # Image assets
 logo: "/assets/images/brands/sojourn-hotels/originals/logo-color.png"
 hero_image: "/assets/images/brands/sojourn-hotels/originals/hero-paraty-view.jpg"
+founder_portrait: "/assets/images/brands/sojourn-hotels/originals/founder-portrait.jpg"
 gallery:
   - image: "/assets/images/brands/sojourn-hotels/originals/gallery-lobby.jpg"
     caption: "The open-air lobby of Sojourn Paraty featuring local materials and artisanal furnishings"
@@ -149,6 +150,12 @@ Sojourn has established a strategic presence across Brazil's most distinctive re
 
 - **Flagship Location**: The original Paraty property remains the brand's flagship, embodying its commitment to historic preservation and serving as a training center for new property staff.
 
+- **Regional Context**: Sojourn's strategy targets regions that combine natural beauty, cultural heritage, and growing tourism infrastructure. The brand specifically seeks locations that offer a distinctive sense of place while remaining accessible to international and domestic travelers.
+
+- **Nearby Brands**: The Paraty and Trancoso properties operate in close proximity to Terra Brasil Tours, which often incorporates Sojourn properties into its luxury itineraries. The Alto Paraíso property neighbors several wellness retreats and natural food producers, including Amazonia Organics.
+
+- **Strategic Position**: The current portfolio creates a distinctive circuit of properties allowing travelers to experience Brazil's remarkable diversity – from coastal colonial towns to mountain ranges, tropical beaches, and savanna landscapes – while maintaining a consistent standard of service and sustainability.
+
 ## Certifications & Recognition
 
 - Rainforest Alliance Sustainable Tourism Certification (2017): Awarded for the brand's comprehensive sustainability management system, including water conservation, waste reduction, and community engagement practices.
@@ -160,15 +167,3 @@ Sojourn has established a strategic presence across Brazil's most distinctive re
 - Condé Nast Traveler Readers' Choice Awards (2020): Three properties named among the Top 25 Hotels in South America, with Sojourn Trancoso ranking in the top 5.
 
 - World Travel Awards (2022): Named "Brazil's Leading Boutique Hotel Brand" for excellence in hospitality and commitment to showcasing Brazilian culture.
-
-## Location Intelligence
-
-Explore Sojourn's geographic context and discover related brands in proximity:
-
-[Interactive map visualization would be embedded here, showing Sojourn's locations and nearby related brands]
-
-- **Regional Context**: Sojourn's strategy targets regions that combine natural beauty, cultural heritage, and growing tourism infrastructure. The brand specifically seeks locations that offer a distinctive sense of place while remaining accessible to international and domestic travelers.
-
-- **Nearby Brands**: The Paraty and Trancoso properties operate in close proximity to Terra Brasil Tours, which often incorporates Sojourn properties into its luxury itineraries. The Alto Paraíso property neighbors several wellness retreats and natural food producers, including Amazonia Organics.
-
-- **Strategic Position**: The current portfolio creates a distinctive circuit of properties allowing travelers to experience Brazil's remarkable diversity – from coastal colonial towns to mountain ranges, tropical beaches, and savanna landscapes – while maintaining a consistent standard of service and sustainability.

@@ -3,6 +3,7 @@
 layout: brand
 title: "Taiga Spirits"
 slug: taiga-spirits
+ref: taiga-spirits
 country_code: "ru"  # ISO country code for permalink
 lang: en
 permalink: /en/brands/ru/taiga-spirits/
@@ -24,7 +25,6 @@ contact_email: "export@taigaspirits.ru"
 # Founder information
 founder:
   name: "Nikolai Volkov"
-  founder_portrait: null
   story: "Former biologist and wilderness guide who rediscovered historical Siberian distillation methods and founded a distillery to preserve traditional recipes using endangered wild botanicals."
   generation: "first"
   transition_status: "active" # active, expansion, seeking_partners, succession
@@ -89,6 +89,7 @@ partnerships:
 # Image assets
 logo: "/assets/images/brands/taiga-spirits/originals/logo-color.png"
 hero_image: "/assets/images/brands/taiga-spirits/originals/hero-distillery.jpg"
+founder_portrait: "/assets/images/brands/taiga-spirits/originals/founder-portrait.jpg"
 gallery:
   - image: "/assets/images/brands/taiga-spirits/originals/gallery-bottles.jpg"
     caption: "Taiga Spirits' signature collection featuring hand-illustrated botanical labels"
@@ -147,6 +148,12 @@ Taiga Spirits has established a distinctive position in Russia's growing craft s
 
 - **Flagship Locations**: Besides the original distillery and tasting room in Listvyanka, the company operates a brand store in Irkutsk's historic district and a recently opened concept shop in Moscow featuring an educational "Taiga Botanical Bar" where customers can learn about the ingredients and production methods.
 
+- **Regional Context**: The Lake Baikal region is known for its exceptional biodiversity, hosting over 2,500 plant species, with many endemic to the area. This unique ecosystem creates distinctive flavors that cannot be replicated elsewhere, giving Taiga Spirits a natural competitive advantage through terroir.
+
+- **Nearby Brands**: The area has developed into a hub for artisanal food and beverage production, with Baikal Brewing Company operating 15km away in Irkutsk and Siberian Harvest (organic honey producer) located within 30km. These businesses often collaborate on ingredient sourcing and tourism initiatives.
+
+- **Strategic Position**: The distillery's location offers both production advantages and tourism potential. Situated in Russia's most popular natural tourist destination, Taiga Spirits benefits from approximately 30,000 visitors annually who tour the facility. The surrounding taiga forest provides direct access to many of the botanicals used in production, allowing for freshness and quality control not possible for more urban distilleries.
+
 ## Certifications & Recognition
 
 - Russian Federation Organic Certification (2017): Certifies that all agricultural ingredients meet Russian organic standards and botanical ingredients are collected using sustainable practices.
@@ -160,15 +167,3 @@ Taiga Spirits has established a distinctive position in Russia's growing craft s
 - International Wine & Spirit Competition Gold Outstanding (2021): Cedar & Honeysuckle Vodka received 98 points, making it one of the highest-rated vodkas in the competition's history.
 
 - Berlin International Spirits Competition Distillery of the Year (2022): Named "Russia Distillery of the Year" for consistent excellence across multiple products.
-
-## Location Intelligence
-
-Explore Taiga Spirits' geographic context and discover related brands in proximity:
-
-[Interactive map visualization would be embedded here, showing Taiga Spirits' location and nearby related brands]
-
-- **Regional Context**: The Lake Baikal region is known for its exceptional biodiversity, hosting over 2,500 plant species, with many endemic to the area. This unique ecosystem creates distinctive flavors that cannot be replicated elsewhere, giving Taiga Spirits a natural competitive advantage through terroir.
-
-- **Nearby Brands**: The area has developed into a hub for artisanal food and beverage production, with Baikal Brewing Company operating 15km away in Irkutsk and Siberian Harvest (organic honey producer) located within 30km. These businesses often collaborate on ingredient sourcing and tourism initiatives.
-
-- **Strategic Position**: The distillery's location offers both production advantages and tourism potential. Situated in Russia's most popular natural tourist destination, Taiga Spirits benefits from approximately 30,000 visitors annually who tour the facility. The surrounding taiga forest provides direct access to many of the botanicals used in production, allowing for freshness and quality control not possible for more urban distilleries.
