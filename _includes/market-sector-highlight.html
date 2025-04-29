@@ -1,0 +1,49 @@
+{% comment %}
+  Displays market-specific information for a sector when available.
+  
+  Parameters:
+  - market: Market slug (e.g., "russia")
+  - sector: Sector slug (e.g., "wine")
+{% endcomment %}
+
+{% assign market_data = site.data.market_sectors[page.lang][include.market] %}
+{% assign sector_data = market_data[include.sector] %}
+
+{% if sector_data %}
+<div class="market-sector-highlight">
+  <div class="market-sector-highlight__header">
+    <h3 class="market-sector-highlight__title">
+      {{ sector_data.title }}
+    </h3>
+    {% if sector_data.image %}
+      <img src="{{ sector_data.image | relative_url }}" alt="{{ sector_data.title }}" class="market-sector-highlight__image">
+    {% endif %}
+  </div>
+  
+  <div class="market-sector-highlight__description">
+    {{ sector_data.description }}
+  </div>
+  
+  {% if sector_data.key_stats %}
+  <div class="market-sector-highlight__stats">
+    {% for stat in sector_data.key_stats %}
+      <div class="market-sector-highlight__stat">
+        <div class="market-sector-highlight__stat-icon">
+          {% include components/icons/icon.html name=stat.icon size="sm" %}
+        </div>
+        <div class="market-sector-highlight__stat-content">
+          <span class="market-sector-highlight__stat-label">{{ stat.label }}</span>
+          <span class="market-sector-highlight__stat-value">{{ stat.value }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <div class="market-sector-highlight__footer">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ include.market }}/sectors/{{ include.sector }}/" class="btn btn--outline">
+      {{ site.data.translations[page.lang].sectors.learn_more_market | default: "Learn More" }}
+    </a>
+  </div>
+</div>
+{% endif %}

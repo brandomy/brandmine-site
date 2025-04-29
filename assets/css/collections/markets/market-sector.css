@@ -1,0 +1,277 @@
+/* assets/css/components/market-sector.css */
+
+/* Market Sector Highlight Component */
+.market-sector-highlight {
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary-500);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.market-sector-highlight__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.market-sector-highlight__title {
+  font-size: var(--text-xl);
+  margin: 0;
+  color: var(--primary-700);
+}
+
+.market-sector-highlight__image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.market-sector-highlight__description {
+  margin-bottom: var(--space-4);
+}
+
+.market-sector-highlight__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.market-sector-highlight__stat {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-50);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+}
+
+.market-sector-highlight__stat-icon {
+  margin-right: var(--space-2);
+  color: var(--primary-500);
+}
+
+.market-sector-highlight__stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.market-sector-highlight__stat-label {
+  font-size: var(--text-xs);
+  color: var(--neutral-600);
+}
+
+.market-sector-highlight__stat-value {
+  font-weight: var(--font-bold);
+}
+
+.market-sector-highlight__footer {
+  margin-top: var(--space-4);
+}
+
+/* Market Sectors Grid */
+.market-sectors__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.market-sectors__item {
+  background-color: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neutral-200);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.market-sectors__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.market-sectors__item-content {
+  padding: var(--space-6);
+}
+
+.market-sectors__item-title {
+  font-size: var(--text-xl);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--primary-700);
+}
+
+.market-sectors__item-description {
+  margin-bottom: var(--space-4);
+}
+
+.market-sectors__item-stats {
+  margin-bottom: var(--space-4);
+}
+
+.market-sectors__item-stat {
+  font-size: var(--text-sm);
+}
+
+.market-sectors__item-stat-label {
+  font-weight: var(--font-bold);
+}
+
+.market-sectors__item-link {
+  display: inline-block;
+  color: var(--primary-600);
+  font-weight: var(--font-bold);
+  text-decoration: none;
+}
+
+/* Market Sectors Preview */
+.market-sectors-preview {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.market-sectors-preview__item {
+  background-color: white;
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.market-sectors-preview__title {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--primary-700);
+}
+
+.market-sectors-preview__description {
+  margin-bottom: var(--space-4);
+}
+
+.market-sectors-preview__link {
+  color: var(--primary-600);
+  font-weight: var(--font-bold);
+  text-decoration: none;
+}
+
+.market-sectors-preview__view-all {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+/* Market Sector Details */
+.market-sector__image {
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.market-sector__image-content {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Optional hover effect */
+.market-sector__image:hover .market-sector__image-content {
+  transform: scale(1.02);
+
+
+.market-sector__content {
+  margin-bottom: var(--space-8);
+}
+
+.market-sector__section-title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--primary-100);
+  color: var(--primary-700);
+}
+
+.market-sector__highlights-list,
+.market-sector__opportunities-list {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.market-sector__highlight-item,
+.market-sector__opportunity-item {
+  margin-bottom: var(--space-2);
+}
+
+.market-sector__regions-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.market-sector__region {
+  background-color: var(--primary-50);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.market-sector__region-title {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--primary-700);
+}
+
+.market-sector__region-description {
+  margin-bottom: 0;
+}
+
+.market-sector__navigation {
+  margin-top: var(--space-6);
+}
+
+.market-sector__navigation-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.market-sector__navigation-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-700);
+  font-weight: var(--font-bold);
+}
+
+.market-sector__navigation-icon {
+  margin-right: var(--space-2);
+  color: var(--primary-500);
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .market-sectors__grid,
+  .market-sectors-preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .market-sector__regions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .market-sectors__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .market-sector__regions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

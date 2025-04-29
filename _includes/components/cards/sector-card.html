@@ -1,0 +1,41 @@
+{% comment %}
+  Include Name: components/cards/sector-card.html
+  
+  Purpose: Displays a generic sector card that shows essential sector information in a
+  structured format. Used on sector listing pages, discovery pages, and related sectors sections.
+  
+  Parameters:
+  - sector_slug: Slugified sector name for URL construction (required)
+  - sector_name: Display name of the sector (required)
+  - description: Short sector description (required)
+  - count: Number of brands in this sector (optional)
+  - image: Path to sector image (optional, defaults to /assets/images/sectors/{sector_slug}.jpg)
+  - lang: Language code for URL construction (required, usually page.lang)
+  
+  Dependencies:
+  - CSS: components/cards/sector-card.css for styling
+  - Uses flat color minimalism style for sector imagery
+  
+  Example Usage:
+  {% include components/cards/sector-card.html 
+     sector_slug="wine"
+     sector_name="Wine Industry"
+     description="Global wine production and distribution from vineyard to glass."
+     count=124
+     lang=page.lang %}
+  
+  Notes:
+  - Uses BEM naming conventions for all CSS classes
+  - Automatically constructs URLs for sector discovery pages
+  - Displays brand count if provided
+  - Works within grid layouts for responsive display
+{% endcomment %}
+
+
+<!-- For generic sector card -->
+{% include components/cards/sector-card.html 
+  sector_slug="wine"
+  sector_name="Wine Industry"
+  description="Global wine production and distribution from vineyard to glass."
+  count=124
+  lang=page.lang %}

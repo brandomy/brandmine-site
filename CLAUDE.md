@@ -12,8 +12,8 @@ This file provides Claude Code and other AI tools with the architectural context
 
 The site supports:
 - **Three languages**: English (`en`), Russian (`ru`), Chinese (`zh`)
-- A **tag-based discovery model** (sector, attribute, signal, market)
-- Custom includes for maps, tag clouds, related brand logic, and language switching
+- A **dimension-based discovery model** (sector, attribute, signal, market)
+- Custom includes for maps, dimension clouds, related brand logic, and language switching
 - Integration with MapLibre for interactive maps
 - Planned integration with Airtable (flat table structure)
 
@@ -23,45 +23,76 @@ The site supports:
 
 ```
 /_brands/{lang}/       — One Markdown file per brand
-/_tags/{lang}/{type}/  — Tag files per type (sector, signal, etc.)
-/_data/                — YAML files for translations, sectors, navigation, social links
-/_includes/            — HTML partials (headers, footers, language switcher, tag lists)
-/_layouts/             — Jekyll templates (default, brand, sector, tag, etc.)
+/_dimensions/{lang}/{type}/  — Dimension files per type (sector, signal, etc.)
+/_data/                — YAML files for translations, sectors, navigation, social links, market-sectors
+/_includes/            — HTML partials (headers, footers, language switcher, dimension lists)
+/_layouts/             — Jekyll templates (default, brand, sector, dimension, etc.)
 /_insights/{lang}/     — Insight content (curated stories, future blog)
 /pages/{lang}/         — Main content pages like brands.md
 /assets/               — CSS (BEM), JS, fonts, images
 /_docs/templates/      — Styleguide components
-_config.yml            — Site config, collections, language routing
-index.html             — Redirects to /en/index.html
+_config.yml           — Site config, collections, language routing
+index.html            — Redirects to /en/index.html
 ```
 
 ---
 
-# 🏷️ Tagging System
+# 🏷️ Dimensions System
 
-Tags are stored as Markdown files in `_tags/{lang}/{type}/`. Each file contains:
+Dimensions are stored as Markdown files in `_dimensions/{lang}/{type}/`. Each file contains:
 - A front matter section with name, slug, type, and optionally description
-- Content describing the tag in more detail
+- Content describing the dimension in more detail
 
-**Valid tag types** include:
+**Valid dimension types** include:
 - `sectors` — e.g. natural-beauty, halal-foods, specialty-cheeses, wine
 - `attributes` — e.g. founder-led, heritage-brand, sustainability-pioneer
 - `signals` — e.g. export-ready, franchise-ready, rapid-growth
 - `markets` — e.g. russia, brazil, india, china
 
-Brands reference tags in front matter like this:
+Brands reference dimensions in front matter like this:
 
 ```yaml
 ---
 title: BioGlow
 lang: en
 sector: natural-beauty
-tags: [organic, india, founder-led]
+dimensions: [organic, india, founder-led]
 ---
 ```
 
 Rendering includes:
-- `tag-cloud.html`, `tag-list.html`, `related-brands-list.html`
+- `dimension-cloud.html`, `dimension-list.html`, `related-brands-list.html`
+
+---
+
+# 📁 Includes Organization
+
+Includes are organized into a structured hierarchy:
+
+```
+/_includes/
+  collections/          — Collection-specific includes
+    brands/             — Brand-related includes
+    dimensions/         — Dimension-related includes
+    insights/           — Insight-related includes
+  components/           — Reusable UI components
+    buttons/            — Button components
+    cards/              — Card components
+    carousels/          — Carousel components
+    content/            — Content display components
+    forms/              — Form components
+    icons/              — Icon components
+    images/             — Image handling components
+    indicators/         — UI indicators
+    maps/               — Map components
+    navigation/         — Navigation components
+    search/             — Search components
+  layout/               — Layout components (header, footer)
+  styleguide/           — Styleguide components
+  utilities/            — Utility includes
+```
+
+This organization mirrors the CSS structure for consistency and maintainability.
 
 ---
 
@@ -179,13 +210,27 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 ## CSS
 - Follows **BEM naming**: `Block__Element--Modifier`
 - Mobile-first with defined breakpoints
-- Organized by purpose: tokens, layout, components, pages
+- Organized with a manifest system for better modularity
 - Uses CSS custom properties for design tokens
 - File organization:
   - `/assets/css/tokens/` - Design variables, typography, grid definitions
-  - `/assets/css/layout/` - Page structure, panels, grid implementations
-  - `/assets/css/components/` - UI elements (buttons, cards, forms, etc.)
+  - `/assets/css/base/` - Core styling elements (layout, typography)
+  - `/assets/css/layout/` - Layout components (header, footer, panels)
+  - `/assets/css/components/` - UI elements (buttons, cards, etc.) with subdirectories:
+    - `/cards/` - Various card components
+    - `/carousels/` - Carousel components
+    - `/navigation/` - Navigation elements
+    - `/search/` - Search interfaces
+    - `/dimension/` - Dimension-related components
+  - `/assets/css/collections/` - Collection-specific styles:
+    - `/brands/` - Brand collection styling
+    - `/dimensions/` - Dimension collection styling
+    - `/insights/` - Insight collection styling
+    - `/markets/` - Market collection styling
   - `/assets/css/pages/` - Page-specific styling
+    - `/dimension-specific/` - Styles for specific dimension pages
+  - `/assets/css/manifest/` - CSS import manifests that group related styles
+  - `/assets/css/utils/` - Utility styles
 
 ## HTML
 - Semantic HTML5
@@ -207,7 +252,7 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 ## Markdown/Front Matter
 - Use consistent indentation (2 spaces)
 - Include language code in all content files
-- Ensure all tags are properly referenced and exist as tag files
+- Ensure all dimensions are properly referenced and exist as dimension files
 - For brand files, include all required frontmatter (title, slug, country, etc.)
 - For translated content, keep the same structure across languages
 
@@ -221,16 +266,24 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 # 🖼️ Image Strategy
 
 - Standardized naming conventions (`purpose-imagename.jpg`)
+- **Standard 3:2 aspect ratio** for most content images (1200×800px)
 - Responsive image sizes (400w, 800w, 1200w, 1600w)
-- Consistent aspect ratios (16:9, 4:3, 1:1, etc.)
 - Organization by brand in the assets directory
-- Processing with ImageMagick for optimization
+- Processing with ImageMagick for optimization via dedicated scripts:
+  - `process_brand_images.sh` for brand assets
+  - `process_site_images.sh` for site assets
+  - `process_people_images.sh` for people/team images
 
 ---
 
-# 📱 Mobile Optimization Focus
+# 📱 Mobile Optimization & Responsive Design
 
 - Mobile-first approach for all components
+- Standardized breakpoints used consistently across all CSS:
+  - `min-width: 480px` - Small devices
+  - `min-width: 768px` - Medium devices (tablets)
+  - `min-width: 992px` - Large devices (desktops)
+- Write mobile styles first, then enhance for larger screens within media queries
 - Critical for Russian and Chinese markets where mobile usage dominates
 - Card layouts designed for touch interfaces
 - Map controls optimized for smaller screens
@@ -241,6 +294,12 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 # 💾 Data Management
 
 - Initially using Jekyll collections and front matter
+- **Insights Content Categories** - Four standardized article types:
+  1. **Brand Spotlight** - In-depth profiles of noteworthy brands
+  2. **Founder's Journey** - Personal stories behind the brands
+  3. **Market Momentum** - Achievements, milestones, and expansion moments
+  4. **Location Intelligence** - Geographical insights and regional context
+- Market-sector structured data in `_data/market_sectors/{lang}/{market}.yml`
 - Future integration with Airtable using a flat table structure
 - JSON for complex data (timelines, products, secondary locations)
 - CSV import/export for efficient data management
@@ -316,8 +375,8 @@ Alexei Sokolov discovered his passion for tea while traveling through China...
 
 ## Visual Taxonomy CSS Example
 ```css
-/* Tag styling with color coding */
-.tag {
+/* Dimension styling with color coding */
+.dimension {
   display: inline-flex;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
@@ -325,22 +384,22 @@ Alexei Sokolov discovered his passion for tea while traveling through China...
   font-weight: var(--font-medium);
 }
 
-.tag--sector {
+.dimension--sector {
   background-color: var(--olive-100);
   color: var(--olive-900);
 }
 
-.tag--market {
+.dimension--market {
   background-color: var(--sky-100);
   color: var(--sky-900);
 }
 
-.tag--attribute {
+.dimension--attribute {
   background-color: var(--secondary-100);
   color: var(--secondary-900);
 }
 
-.tag--signal {
+.dimension--signal {
   background-color: var(--accent-100);
   color: var(--accent-900);
 }
@@ -348,25 +407,36 @@ Alexei Sokolov discovered his passion for tea while traveling through China...
 
 ---
 
-# 🧠 Claude Tag Awareness and Discovery Instruction
+# 🧠 Claude Dimension Awareness and Discovery Instruction
 
-This site relies on a **structured tag system** across four distinct types:
+This site relies on a **structured dimension system** across four distinct types:
 
 - `sectors` — Industry categories (e.g., natural-beauty, wine, hotels-resorts)
 - `attributes` — Brand qualities (e.g., founder-led, heritage-brand, artisanal-excellence)
 - `signals` — Growth potential indicators (e.g., export-ready, franchise-ready, rapid-growth)
 - `markets` — Regional focus (e.g., russia, brazil, india, china)
 
-Tags are defined as individual Markdown files in `_tags/{lang}/{type}/`, and referenced in brand front matter using the correct slug.
+Dimensions are defined as individual Markdown files in `_dimensions/{lang}/{type}/`, and referenced in brand front matter using the correct slug.
 
 ## Discovery Logic
 
-- The **Discovery section** is driven by these tag types.
-- Do **not create new tag types**. Always use the four approved ones.
-- Tag filtering occurs on `/brands`, and tag exploration happens via `/discover`.
-- Tag clouds, related brand logic, and tag-specific pages all derive from this model.
+- The **Discovery section** is driven by these dimension types.
+- Do **not create new dimension types**. Always use the four approved ones.
+- Dimension filtering occurs on `/brands`, and dimension exploration happens via `/discover`.
+- Dimension clouds, related brand logic, and dimension-specific pages all derive from this model.
 
-Claude must align any navigation, filtering, or tag-related output with this tag architecture.
+## Insights Categories
+
+Insights articles must use one of the standardized content categories:
+
+1. **Brand Spotlight**: In-depth profiles of noteworthy BRICS+ brands gaining international momentum.
+2. **Founder's Journey**: Personal stories behind the brands and the visionaries who created them.
+3. **Market Momentum**: Notable achievements, milestones, and expansion moments for emerging BRICS+ brands.
+4. **Location Intelligence**: Geographical insights and regional context that shape brand development and opportunities.
+
+Each category has defined metadata including recommended length, reading time, and content guidelines (stored in `_data/insights/{lang}.yml`).
+
+Claude must align any navigation, filtering, or dimension-related output with this architecture.
 
 ---
 
@@ -399,14 +469,14 @@ Claude must align any navigation, filtering, or tag-related output with this tag
 
 ### Adding a New Brand
 1. Create brand markdown file in each language folder (`_brands/en/`, `_brands/ru/`, `_brands/zh/`)
-2. Ensure the brand references existing tags
+2. Ensure the brand references existing dimensions
 3. Process brand images with `./_scripts/process_brand_images.sh brandname`
 4. Add attributions for images in `_data/image_attributions.yml`
 
-### Adding a New Tag
-1. Create tag files in appropriate category subfolder for all languages
+### Adding a New Dimension
+1. Create dimension files in appropriate category subfolder for all languages
 2. Update any relevant translation files in `_data/`
-3. Ensure the tag matches the established taxonomy
+3. Ensure the dimension matches the established taxonomy
 
 ### Updating Styles
 1. Identify the appropriate CSS file by component or page

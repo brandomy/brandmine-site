@@ -1,0 +1,122 @@
+---
+layout: default
+---
+
+{% assign market_slug = page.market %}
+{% assign sector_slug = page.sector %}
+
+{% assign market_data = site.data.market_sectors[page.lang][market_slug] %}
+{% assign sector_data = market_data[sector_slug] %}
+
+{% assign market_name = site.data.translations[page.lang].markets[market_slug] %}
+{% assign sector_name = site.data.translations[page.lang].sectors[sector_slug] %}
+
+<!-- Hero Panel -->
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">{{ sector_data.title }}</h1>
+    <p class="panel__subtitle">{{ site.data.translations[page.lang].market_sectors.market_sector_subtitle | replace: '%market%', market_name | replace: '%sector%', sector_name }}</p>
+  </div>
+</div>
+
+<!-- Content Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    {% if sector_data.image %}
+      <div class="market-sector__image">
+        <img src="{{ sector_data.image | relative_url }}" alt="{{ sector_data.title }}" class="market-sector__image-content">
+      </div>
+    {% endif %}
+    
+    <div class="market-sector__content">
+      {{ sector_data.full_content | markdownify }}
+    </div>
+    
+    {% if sector_data.highlights %}
+    <div class="market-sector__highlights">
+      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.highlights | default: "Key Highlights" }}</h2>
+      <ul class="market-sector__highlights-list">
+        {% for highlight in sector_data.highlights %}
+          <li class="market-sector__highlight-item">{{ highlight }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    {% if sector_data.regions %}
+    <div class="market-sector__regions">
+      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.regions | default: "Key Regions" }}</h2>
+      <div class="market-sector__regions-grid">
+        {% for region in sector_data.regions %}
+          <div class="market-sector__region">
+            <h3 class="market-sector__region-title">{{ region.name }}</h3>
+            <p class="market-sector__region-description">{{ region.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    
+    {% if sector_data.opportunities %}
+    <div class="market-sector__opportunities">
+      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.opportunities | default: "Market Opportunities" }}</h2>
+      <ul class="market-sector__opportunities-list">
+        {% for opportunity in sector_data.opportunities %}
+          <li class="market-sector__opportunity-item">{{ opportunity }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Related Brands Panel -->
+<div class="panel panel--olive-soft">
+  <div class="panel__content">
+    <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.related_brands | default: "Related Brands" }}</h2>
+    
+    {% assign related_brands = site.brands | where: "lang", page.lang | where: "sector", sector_name | where: "country", market_name %}
+    
+    {% if related_brands.size > 0 %}
+      <div class="brand-card-grid brand-card-grid--3col">
+        {% for brand in related_brands limit:3 %}
+          {% include components/cards/brand-card.html brand=brand %}
+        {% endfor %}
+      </div>
+      
+      {% if related_brands.size > 3 %}
+        <div class="market-sector__view-all">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/brands/?sector={{ sector_slug }}&market={{ market_slug }}" class="btn btn--outline">
+            {{ site.data.translations[page.lang].brands.view_all | default: "View All" }}
+          </a>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="market-sector__empty-state">
+        <p>{{ site.data.translations[page.lang].market_sectors.no_brands | default: "No brands available yet for this sector and market combination." }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Navigation Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <div class="market-sector__navigation">
+      <div class="market-sector__navigation-links">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_slug }}/" class="market-sector__navigation-link">
+          <span class="market-sector__navigation-icon">
+            {% include components/icons/icon.html type="sector" name="sector-default" size="sm" %}
+          </span>
+          {{ site.data.translations[page.lang].market_sectors.back_to_sector | replace: '%sector%', sector_name }}
+        </a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_slug }}/" class="market-sector__navigation-link">
+          <span class="market-sector__navigation-icon">
+            {% include components/icons/icon.html type="market" name="market-default" size="sm" %}
+          </span>
+          {{ site.data.translations[page.lang].market_sectors.back_to_market | replace: '%market%', market_name }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,37 @@
 /* ==========================================================================
-   Insight Card (BEM)
+   Insight Card Component Styles
+   ==========================================================================
+   
+   This file contains styles for the insight card component, used to display
+   insight articles throughout the Brandmine platform. Insight cards showcase
+   articles, research, and thought leadership content in a consistent format.
+   
+   The card implements a structured layout with:
+   - Image container with optional premium badge overlay
+   - Title area with consistent typography
+   - Metadata display (date, author, etc.)
+   - Excerpt text with controlled line height and truncation
+   - Category tags with appropriate color coding
+   - "Read more" link with hover and focus states
+   
+   Visual characteristics include:
+   - Subtle elevation with shadow and hover animation
+   - Clear visual hierarchy for content elements
+   - Responsive image handling with zoom effect on hover
+   - Accessible focus states for interactive elements
+   
+   Dependencies:
+   - Requires design tokens from tokens.css (colors, spacing, typography)
+   - Works within card grid layouts for responsive arrangement
+   - Supports the premium content badge system
+   
+   Usage:
+   This CSS supports the components/cards/insight-card.html include and
+   is used on insight listing pages, featured content sections, and
+   related content blocks.
+   
    ========================================================================== */
+   
 
 .insight-card {
   background-color: var(--neutral-100);

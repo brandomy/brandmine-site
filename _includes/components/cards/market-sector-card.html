@@ -1,0 +1,51 @@
+{% comment %}
+  Include Name: components/cards/market-sector-card.html
+  
+  Purpose: Displays a market-specific sector card that shows information about a sector
+  within a specific market context. Used on market pages, sector-in-market discovery pages,
+  and comparison views.
+  
+  Parameters:
+  - market_slug: Slugified market name for URL construction (required)
+  - sector_slug: Slugified sector name for URL construction (required)
+  - market_name: Display name of the market (required)
+  - sector_name: Display name of the sector in this market (required)
+  - description: Short description of the sector in this market (required)
+  - stats: Array of statistics objects with label and value properties (optional)
+  - count: Number of brands in this sector/market combination (optional)
+  - image: Path to market-specific sector image (optional, defaults to /assets/images/markets/{market_slug}/sectors/{sector_slug}.jpg)
+  - lang: Language code for URL construction (required, usually page.lang)
+  
+  Dependencies:
+  - CSS: components/cards/market-sector-card.css for styling
+  - Uses textured minimalism style for market-specific sector imagery
+  
+  Example Usage:
+  {% include components/cards/market-sector-card.html 
+     market_slug="russia"
+     sector_slug="wine"
+     market_name="Russia" 
+     sector_name="Russian Wine Industry" 
+     description="Black Sea region vineyards producing emerging world-class wines."
+     stats=sector_data.key_stats
+     count=28 
+     lang=page.lang %}
+  
+  Notes:
+  - Uses BEM naming conventions for all CSS classes
+  - Automatically constructs URLs for market-sector discovery pages
+  - Displays one or more key statistics from the stats array if provided
+  - Shows a market badge in the top right of the image
+  - Works within grid layouts for responsive display
+{% endcomment %}
+
+<!-- For market-specific sector card -->
+{% include components/cards/market-sector-card.html 
+  market_slug="russia"
+  sector_slug="wine"
+  market_name="Russia" 
+  sector_name="Russian Wine Industry" 
+  description="Black Sea region vineyards producing emerging world-class wines."
+  stats=sector_data.key_stats
+  count=28 
+  lang=page.lang %}

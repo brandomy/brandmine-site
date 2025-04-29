@@ -1,9 +1,36 @@
 /* ==========================================================================
-   Card Components
+   Base Card Component Styles
    ==========================================================================
-   Card-based UI components for Brandmine.
-   These styles define various card layouts and variations used throughout the site.
-*/
+   
+   This file contains foundational card styling that establishes consistent
+   structural patterns for all card-based UI elements in the Brandmine platform.
+   These base styles are extended by specific card component stylesheets.
+   
+   The system provides three primary card variants:
+   1. Basic Card (.card) - Standard card with consistent elevation and borders
+   2. Content Card (.card--content) - For text-focused content without backgrounds
+   3. White Card (.card--white) - High-contrast card for use on colored backgrounds
+   
+   Each variant maintains consistent:
+   - Spacing through standardized padding variables
+   - Border radius for visual continuity
+   - Shadow treatment for appropriate elevation
+   - Background colors for proper contrast
+   
+   These base styles establish the foundation upon which specific card components
+   are built (brand cards, insight cards, sector cards, etc.) and ensure visual
+   consistency across all card-based UI elements.
+   
+   Dependencies:
+   - Requires design tokens from tokens.css (card-specific variables)
+   - Provides the foundation for all component-specific card styles
+   - Implements responsive adjustments for mobile devices
+   
+   Usage:
+   These classes can be used directly for simple card layouts or extended
+   by component-specific CSS for more specialized card components.
+   
+   ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. BASIC CARD

@@ -51,6 +51,53 @@ layout: default
       <div class="tag-page__content">
       {{ content }}
     </div>
+
+    <!-- Market-Specific Information (if available) -->
+    <div class="panel panel--accent-soft">
+      <div class="panel__content">
+        <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].sectors.market_highlights | default: "Market Highlights" }}</h2>
+        
+        <div class="market-highlights">
+          {% for market_entry in site.data.markets[page.lang] %}
+            {% assign market_slug = market_entry.id %}
+            {% if site.data.market_sectors[page.lang][market_slug] and site.data.market_sectors[page.lang][market_slug][page.dimension] %}
+              {% include market-sector-highlight.html market=market_slug sector=page.dimension %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Market-Specific Sectors -->
+    <div class="panel panel--olive-soft">
+      <div class="panel__content">
+        <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].markets.key_sectors | default: "Key Sectors" }}</h2>
+        
+        <div class="market-sectors-preview">
+          {% assign market_sectors = site.data.market_sectors[page.lang][page.dimension] %}
+          {% for sector_entry in market_sectors limit:3 %}
+            {% assign sector_slug = sector_entry[0] %}
+            {% assign sector_data = sector_entry[1] %}
+            
+            <div class="market-sectors-preview__item">
+              <h3 class="market-sectors-preview__title">{{ sector_data.title }}</h3>
+              <p class="market-sectors-preview__description">{{ sector_data.description }}</p>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ page.dimension }}/sectors/{{ sector_slug }}/" class="market-sectors-preview__link">
+                Learn More
+              </a>
+            </div>
+          {% endfor %}
+          
+          {% if market_sectors.size > 3 %}
+            <div class="market-sectors-preview__view-all">
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ page.dimension }}/sectors/" class="btn btn--secondary">
+                {{ site.data.translations[page.lang].markets.view_all_sectors | default: "View All Sectors" }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
     
     <!-- 1. FEATURED BRANDS SECTION -->
     <div class="tag-page__featured-brands">
