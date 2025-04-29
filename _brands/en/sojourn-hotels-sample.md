@@ -5,7 +5,7 @@ title: "Sojourn Boutique Hotels"
 slug: sojourn-hotels
 country_code: "br"  # ISO country code for permalink
 lang: en
-permalink: /en/brands/{{ page.country_code }}/{{ page.slug }}/
+permalink: /en/brands/br/sojourn-hotels/
 
 # Core categorization
 sectors: [Hotels & Resorts]
@@ -24,9 +24,10 @@ contact_email: "partners@sojournhotels.com.br"
 # Founder information
 founder:
   name: "Isabela Mendez"
+  founder_portrait: null
   story: "Former corporate hospitality executive who left a major international chain to create locally-rooted boutique properties showcasing Brazil's natural beauty and cultural heritage."
   generation: "first"
-  transition_status: "seeking-partners"
+  transition_status: "seeking-partners" # active, expansion, seeking_partners, succession
   founder_led: true
   deceased: false
 
@@ -78,7 +79,7 @@ awards:
 international:
   markets: []
   export_ready: false
-  distribution_models: [franchise]
+  distribution_models: [franchise] # direct_export, distributors, e_commerce, franchise, joint_venture
 
 # Partnership opportunities (premium feature)
 partnerships:

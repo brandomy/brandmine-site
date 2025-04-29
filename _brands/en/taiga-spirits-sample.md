@@ -5,7 +5,7 @@ title: "Taiga Spirits"
 slug: taiga-spirits
 country_code: "ru"  # ISO country code for permalink
 lang: en
-permalink: /en/brands/{{ page.country_code }}/{{ page.slug }}/
+permalink: /en/brands/ru/taiga-spirits/
 
 # Core categorization
 sectors: [Artisanal Spirits & Vodka]
@@ -24,9 +24,10 @@ contact_email: "export@taigaspirits.ru"
 # Founder information
 founder:
   name: "Nikolai Volkov"
+  founder_portrait: null
   story: "Former biologist and wilderness guide who rediscovered historical Siberian distillation methods and founded a distillery to preserve traditional recipes using endangered wild botanicals."
   generation: "first"
-  transition_status: "active"
+  transition_status: "active" # active, expansion, seeking_partners, succession
   founder_led: true
   deceased: false
 
@@ -78,11 +79,11 @@ awards:
 international:
   markets: [China, Mongolia, Kazakhstan, Germany]
   export_ready: true
-  distribution_models: [direct-export, distributors]
+  distribution_models: [direct-export, distributors] # direct_export, distributors, e_commerce, franchise, joint_venture
 
 # Partnership opportunities (premium feature)
 partnerships:
-  seeking: [distributor, investor]
+  seeking: [distributor, investor] 
   requirements: "Seeking specialized spirits distributors with experience in premium craft products. Investment partners for European market expansion with minimum commitment of €500,000."
 
 # Image assets

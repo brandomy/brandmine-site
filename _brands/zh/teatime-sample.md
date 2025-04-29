@@ -1,7 +1,12 @@
 ---
+# Core identification
 layout: brand
 title: "茶时间"
 slug: teatime
+country_code: "ru"  # ISO country code for permalink
+lang: zh
+permalink: /zh/brands/ru/teatime/
+
 # Core categorization
 sectors: [美食]
 subsectors: [手工茶, 精品茶饮]
@@ -19,9 +24,10 @@ contact_email: "info@teatime.ru"
 # Founder information
 founder:
   name: "阿列克谢·索科洛夫"
+  founder_portrait: null
   story: "前金融专业人士，在中国和印度研究传统茶叶调配技术后，离开银行业追求对茶叶的热情。"
   generation: "first"
-  transition_status: "active"
+  transition_status: "active" # active, expansion, seeking_partners, succession
   founder_led: true
   deceased: false
 
@@ -71,7 +77,7 @@ awards:
 international:
   markets: [波兰, 捷克共和国, 德国, 法国, 阿联酋]
   export_ready: true
-  distribution_models: [direct-export, e-commerce]
+  distribution_models: [direct-export, e-commerce] # direct_export, distributors, e_commerce, franchise, joint_venture
 
 # Partnership opportunities (premium feature)
 partnerships:
@@ -97,8 +103,6 @@ languages: [en, ru, zh]
 premium: false
 featured: true
 featured_level: 2  # Full profile
-permalink: /zh/brands/ru/teatime/
-lang: zh
 ---
 
 ## 关于茶时间

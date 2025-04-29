@@ -5,7 +5,7 @@ title: "ТиТайм"
 slug: teatime
 country_code: "ru"  # ISO код страны для постоянной ссылки
 lang: ru
-permalink: /ru/brands/{{ page.country_code }}/{{ page.slug }}/
+permalink: /ru/brands/ru/teatime/
 
 # Основная категоризация
 sectors: [Гурманская еда]
@@ -24,9 +24,10 @@ contact_email: "info@teatime.ru"
 # Информация об основателе
 founder:
   name: "Алексей Соколов"
+  founder_portrait: null
   story: "Бывший финансист, оставивший банковское дело, чтобы следовать своей страсти к чаю после изучения традиционных техник в Китае и Индии."
   generation: "first"
-  transition_status: "active"
+  transition_status: "active" # active, expansion, seeking_partners, succession
   founder_led: true
   deceased: false
 
@@ -74,7 +75,7 @@ awards:
 international:
   markets: [Польша, Чехия, Германия, Франция, ОАЭ]
   export_ready: true
-  distribution_models: [direct-export, e-commerce]
+  distribution_models: [direct-export, e-commerce] # direct_export, distributors, e_commerce, franchise, joint_venture
 
 # Возможности партнерства (премиум-функция)
 partnerships:

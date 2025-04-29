@@ -64,7 +64,7 @@ layout: default
         
         <!-- Tag taxonomy sections -->
         <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].tags.sectors }}</h3>
+          <h3>{{ site.data.translations[page.lang].dimensions.sectors }}</h3>
           <div class="tag-list sidebar-tags">
             {% assign sectors = insights | map: "sectors" | flatten | uniq %}
             {% for sector in sectors %}
@@ -74,7 +74,7 @@ layout: default
         </div>
         
         <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].tags.markets }}</h3>
+          <h3>{{ site.data.translations[page.lang].dimensions.markets }}</h3>
           <div class="tag-list sidebar-tags">
             {% assign markets = insights | map: "markets" | flatten | uniq %}
             {% for market in markets %}

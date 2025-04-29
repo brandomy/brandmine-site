@@ -5,7 +5,7 @@ title: "Serra Verde Organics"
 slug: serra-verde
 country_code: "br"  # ISO country code for permalink
 lang: en
-permalink: /en/brands/{{ page.country_code }}/{{ page.slug }}/
+permalink: /en/brands/br/serra-verde/
 
 # Core categorization
 sectors: [Gourmet Foods]
@@ -24,9 +24,11 @@ contact_email: "export@serraverde.com.br"
 # Founder information
 founder:
   name: "Eduardo Santos"
+  founder_portrait: null
   story: "Third-generation farmer who transformed his family's conventional farm into a pioneering organic operation focused on sustainable agroforestry and biodiversity preservation."
   generation: "third"
-  transition_status: "succession"
+  transition_status: "succession" # active, expansion, seeking_partners, succession
+  transition_status_active: "Active Leadership"
   founder_led: true
   deceased: false
 
@@ -81,7 +83,11 @@ awards:
 international:
   markets: [Argentina, Chile, Portugal, Spain, United States]
   export_ready: true
-  distribution_models: [direct-export, distributors]
+  distribution_models: [direct-export, distributors] # direct_export, distributors, e_commerce, franchise, joint_venture
+  distributors: "Distributors"
+  e_commerce: "E-commerce"
+  franchise: "Franchise"
+  joint_venture: "Joint Venture")
 
 # Partnership opportunities (premium feature)
 partnerships:

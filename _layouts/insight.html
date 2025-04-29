@@ -64,7 +64,7 @@ layout: default
         <div class="insight-taxonomy">
           {% if page.sectors %}
           <div class="taxonomy-section">
-            <h4>{{ site.data.translations[page.lang].tags.sectors }}</h4>
+            <h4>{{ site.data.translations[page.lang].dimensions.sectors }}</h4>
             <div class="sector-tags">
               {% for sector in page.sectors %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="tag sector-tag">{{ sector }}</a>
@@ -75,7 +75,7 @@ layout: default
           
           {% if page.markets %}
           <div class="taxonomy-section">
-            <h4>{{ site.data.translations[page.lang].tags.markets }}</h4>
+            <h4>{{ site.data.translations[page.lang].dimensions.markets }}</h4>
             <div class="market-tags">
               {% for market in page.markets %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="tag market-tag">{{ market }}</a>
@@ -86,7 +86,7 @@ layout: default
           
           {% if page.attributes %}
           <div class="taxonomy-section">
-            <h4>{{ site.data.translations[page.lang].tags.attributes }}</h4>
+            <h4>{{ site.data.translations[page.lang].dimensions.attributes }}</h4>
             <div class="attribute-tags">
               {% for attribute in page.attributes %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/" class="tag attribute-tag">{{ attribute }}</a>
@@ -97,7 +97,7 @@ layout: default
           
           {% if page.signals %}
           <div class="taxonomy-section">
-            <h4>{{ site.data.translations[page.lang].tags.signals }}</h4>
+            <h4>{{ site.data.translations[page.lang].dimensions.signals }}</h4>
             <div class="signal-tags">
               {% for signal in page.signals %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/" class="tag signal-tag">{{ signal }}</a>

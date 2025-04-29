@@ -5,7 +5,7 @@ title: "TeaTime"
 slug: teatime
 country_code: "ru"  # ISO country code for permalink
 lang: en
-permalink: /en/brands/{{ page.country_code }}/{{ page.slug }}/
+permalink: /en/brands/ru/teatime/
 
 # Core categorization
 sectors: [Gourmet Foods]
@@ -24,9 +24,10 @@ contact_email: "info@teatime.ru"
 # Founder information
 founder:
   name: "Alexei Sokolov"
+  founder_portrait: null
   story: "Former finance professional who left banking to pursue his passion for tea after studying traditional blending techniques in China and India."
   generation: "first"
-  transition_status: "active"
+  transition_status: "active" # active, expansion, seeking_partners, succession
   founder_led: true
   deceased: false
 
@@ -74,7 +75,7 @@ awards:
 international:
   markets: [Poland, Czech Republic, Germany, France, UAE]
   export_ready: true
-  distribution_models: [direct-export, e-commerce]
+  distribution_models: [direct-export, e-commerce] # direct_export, distributors, e_commerce, franchise, joint_venture
 
 # Partnership opportunities (premium feature)
 partnerships:
