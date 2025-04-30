@@ -1,0 +1,626 @@
+---
+layout: default
+title: Home
+ref: home
+permalink: /en/
+lang: en
+---
+
+<!-- Primary Hero Panel (Teal) -->
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="home-hero--no-image__heading-primary">Illuminating and Elevating <br>Founder-led Brands from the BRICS+</h1>
+    <p class="home-hero--no-image__subtitle">Breaking through language, cultural, and geographic barriers to reveal exceptional founder-led brands at the perfect moment for global expansion</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="primary-hero">Explore Brands</a>
+      <a href="#how-it-works" class="btn btn--standard" data-track="secondary-hero">Learn How</a>
+    </div>
+  </div>
+</div>
+
+<!-- Impact Statement Panel -->
+<div class="panel panel--primary">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Revealing the Invisible: BRICS+ Brands Ready for Global Markets</h2>
+    <p class="panel__lead-text">
+      Exceptional founder-led brands across BRICS+ markets remain invisible to global partners due to language barriers, cultural context gaps, and fragmented information.
+    </p>
+    
+    <div class="impact-stats">
+      <div class="stat-item">
+        <span class="stat-number">40%+</span>
+        <span class="stat-label">of global population in BRICS+ economies</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">25%+</span>
+        <span class="stat-label">of worldwide GDP</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">1000s</span>
+        <span class="stat-label">of untapped brand opportunities</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Discovery Dimensions Grid Section (for testing) -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Explore By Dimension (New Component)</h2>
+    <p class="panel__lead-text">Discover brands through different perspectives from business sectors to growth signals</p>
+    
+    {% include collections/dimensions/discovery-dimensions-grid.html columns=4 limit=3 %}
+  </div>
+</div>
+
+
+
+<!-- How It Works Section -->
+<div id="how-it-works" class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">How It Works</h2>
+    <p class="panel__lead-text">Our platform bridges the gap between exceptional BRICS+ brands and international opportunities</p>
+    
+    <div class="process-steps">
+
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Illuminate</h3>
+          <p>Explore previously invisible brand ecosystems across BRICS+ countries through our comprehensive mapping</p>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="text-link">{{ site.data.translations[page.lang].discover.explore }}</a>
+        </div>
+      </div>
+      
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Contextualize</h3>
+          <p>Gain critical insights through founder stories and regional intelligence unavailable anywhere else</p>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="text-link">{{ site.data.translations[page.lang].insights.all_insights }}</a>
+        </div>
+      </div>
+      
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Connect</h3>
+          <p>Identify promising partnerships based on authentic understanding and context</p>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="text-link">{{ site.data.translations[page.lang].buttons.get_in_touch }}</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--standard" data-track="how-it-works">Start Discovering</a>
+    </div>
+  </div>
+</div>
+
+<!-- Social Proof/Testimonials Section -->
+<div class="panel panel--light testimonials-panel">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.success_stories | default: "Success Stories" }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.testimonials_intro | default: "What brand founders are saying about their Brandmine experience" }}</p>
+    
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <div class="testimonial-card__quote">
+          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+          <p class="testimonial-card__text">Brandmine helped us connect with international partners we never would have discovered on our own. The platform's focus on founder stories allowed us to showcase what makes our retreats unique and authentic.</p>
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__author-image">
+            {% include components/images/brand-image.html
+              brand="dragonfly" 
+              image="color" 
+              purpose="logo" 
+              ext="png"
+              alt="{{ site.data.translations[page.lang].testimonials.dragonfly_retreats }} logo" 
+              class="testimonial-card__author-img" %}
+          </div>
+          <div class="testimonial-card__author-info">
+            <h4 class="testimonial-card__author-name">{{ site.data.translations[page.lang].testimonials.dragonfly_retreats }}</h4>
+            <p class="testimonial-card__author-title">Featured Brand</p>
+          </div>
+        </div>
+        <div class="testimonial-card__metrics">
+          <div class="metric">
+            <span class="metric-value">4</span>
+            <span class="metric-label">International Partners</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">65%</span>
+            <span class="metric-label">Revenue Growth</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-card__quote">
+          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+          <p class="testimonial-card__text">As a founder, I struggled to communicate our brand's unique heritage to international markets. Brandmine's platform gave us the visibility and context we needed. The mapping feature helped distributors understand our regional significance.</p>
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__author-image">
+            {% include components/images/site-image.html 
+               category="people"
+               image="georgie-yam" 
+               purpose="profile"
+               alt="{{ site.data.translations[page.lang].testimonials.georgie_yam }} founder photo" 
+               class="testimonial-card__author-img" %}
+          </div>
+          <div class="testimonial-card__author-info">
+            <h4 class="testimonial-card__author-name">{{ site.data.translations[page.lang].testimonials.georgie_yam }}</h4>
+            <p class="testimonial-card__author-title">Founder</p>
+          </div>
+        </div>
+        <div class="testimonial-card__metrics">
+          <div class="metric">
+            <span class="metric-value">3</span>
+            <span class="metric-label">New Markets</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">40%</span>
+            <span class="metric-label">Export Growth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Featured Brands Carousel (for testing) -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Featured Brands (New Component)</h2>
+    <p class="panel__lead-text">Testing our new reusable featured brands carousel component</p>
+    
+    {% include components/carousels/featured-brands-carousel.html 
+       limit=6
+       cta_text="Explore All New Brands" %}
+  </div>
+</div>
+
+<!-- Featured Brands Section -->
+<div class="panel panel--primary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
+    <p class="panel__lead-text">Discover hand-selected brands with compelling narratives and global potential</p>
+    
+    <div class="featured-brands-carousel">
+      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true %}
+      {% if brands.size > 0 %}
+        {% for brand in brands %}
+          {% include components/cards/brand-card.html brand=brand %}
+        {% endfor %}
+      {% else %}
+        <!-- Fallback to language-specific example if no featured brands are available -->
+        {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
+        {% include components/cards/brand-card.html brand=fallback_brand %}
+      {% endif %}
+    </div>
+    
+    <!-- Scroll indicator dots -->
+    <div class="featured-brands-nav">
+      <span class="featured-brands-nav-dot active"></span>
+      <span class="featured-brands-nav-dot"></span>
+      <span class="featured-brands-nav-dot"></span>
+    </div>
+    
+    <div class="more-brands">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="featured-brands">Explore All Brands</a>
+    </div>
+  </div>
+</div>
+
+<!-- Lead Capture Section (New) -->
+<div class="panel panel--lead-capture">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.stay_updated | default: "Stay Updated on BRICS+ Opportunities" }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.subscribe_text | default: "Subscribe to receive curated insights about emerging brands and market trends" }}</p>
+    
+    <div class="lead-capture__container">
+      <!-- MailerLite Form -->
+      <div class="lead-capture__form">
+        {% if page.lang == 'ru' %}
+          <div class="ml-embedded" data-form="WVRNPI"></div>
+        {% elsif page.lang == 'zh' %}
+          <div class="ml-embedded" data-form="WRga0a"></div>
+        {% else %}
+          <div class="ml-embedded" data-form="480swE"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Location Intelligence Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Location Intelligence: Mapping Hidden Opportunities</h2>
+    <p class="panel__lead-text">Visualize brand ecosystems through interactive maps that reveal geographic patterns and cultural connections</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="btn btn--standard" data-track="location-intelligence">Explore Map</a>
+    </div>
+  </div>
+</div>
+
+<!-- Founder Focus Panel -->
+<div class="panel panel--secondary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Beyond Listings: The Human Stories Driving BRICS+ Innovation</h2>
+    <p class="panel__lead-text">At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research.</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--standard" data-track="founder-focus">Read Founder Stories</a>
+    </div>
+  </div>
+</div>
+
+<!-- For BRICS+ Brand Owners Panel -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">For BRICS+ Brand Owners: Your Global Story Starts Here</h2>
+    <p class="panel__lead-text">Ready to elevate your successful local brand to the global stage? Our platform offers the visibility, context, and connections you need.</p>
+    <ul class="feature-list feature-list--centered">
+      <li><span class="feature-list__title">Transcend</span> <span class="feature-list__text">language and cultural barriers to reach global markets</span></li>
+      <li><span class="feature-list__title">Position</span> <span class="feature-list__text">your brand within its proper international context</span></li>
+      <li><span class="feature-list__title">Connect</span> <span class="feature-list__text">with partners seeking precisely what you offer</span></li>
+    </ul>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--secondary-cta" data-track="brand-owners">Get Profiled</a>
+    </div>
+  </div>
+</div>
+
+<!-- New Latest Insights Grid Section (for testing) -->
+<div class="panel panel--accent-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Latest Insights (New Component)</h2>
+    <p class="panel__lead-text">Testing our new reusable insights grid component</p>
+    
+    {% include collections/insights/latest-insights-grid.html 
+       columns=2 
+       limit=4 
+       cta_text="View All New Insights" %}
+  </div>
+</div>
+
+<!-- Latest Insights Section (2x2 Grid by Category) -->
+<div class="panel panel--primary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].insights.latest }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].insights.discover_description | default: "Uncover hidden gems and compelling founder journeys from emerging markets that deserve global attention" }}</p>
+    
+    <!-- 2x2 Insights Grid by Category -->
+    <div class="insights-category-grid">
+      <!-- Markets Category -->
+      <div class="insights-category insights-category--markets">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--markets">
+            {% include components/icons/icon.html type="market" name="market-default" size="sm" %}
+          </div>
+          <h3 class="insights-category__title">Markets</h3>
+        </div>
+        
+        {% assign market_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "markets" | sort: "date" | reverse | first %}
+        {% if market_insight %}
+          <div class="insights-category__card">
+            <a href="{{ market_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ market_insight.image | relative_url }}" alt="{{ market_insight.title }}" class="insights-category__image">
+              </div>
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ market_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ market_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ market_insight.content_type }}</span>
+                    
+                    {% if market_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_insight.markets[0] | slugify }}/" class="tag tag--market">{{ market_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if market_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ market_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ market_insight.sectors[0] }}</a>
+                    {% endif %}
+                    {% if market_insight.attributes.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ market_insight.attributes[0] | slugify }}/" class="tag tag--attribute">{{ market_insight.attributes[0] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ market_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ market_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>Read more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="insights-category__more-link">
+            Explore Market Insights
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Sectors Category -->
+      <div class="insights-category insights-category--sectors">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--sectors">
+            {% include components/icons/icon.html type="sector" name="sector-default" size="sm" %}
+          </div>
+          <h3 class="insights-category__title">Sectors</h3>
+        </div>
+        
+        {% assign sector_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "sectors" | sort: "date" | reverse | first %}
+        {% if sector_insight %}
+          <div class="insights-category__card">
+            <a href="{{ sector_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ sector_insight.image | relative_url }}" alt="{{ sector_insight.title }}" class="insights-category__image">
+              </div>
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ sector_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ sector_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ sector_insight.content_type }}</span>
+                    
+                    {% if sector_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ sector_insight.sectors[0] }}</a>
+                    {% endif %}
+                    {% if sector_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ sector_insight.markets[0] | slugify }}/" class="tag tag--market">{{ sector_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if sector_insight.attributes.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ sector_insight.attributes[0] | slugify }}/" class="tag tag--attribute">{{ sector_insight.attributes[0] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ sector_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ sector_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>Read more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="insights-category__more-link">
+            Explore Sector Insights
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Attributes Category -->
+      <div class="insights-category insights-category--attributes">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--attributes">
+            {% include components/icons/icon.html type="attribute" name="attribute-default" size="sm" %}
+          </div>
+          <h3 class="insights-category__title">Attributes</h3>
+        </div>
+        
+        {% assign attribute_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "attributes" | sort: "date" | reverse | first %}
+        {% if attribute_insight %}
+          <div class="insights-category__card">
+            <a href="{{ attribute_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ attribute_insight.image | relative_url }}" alt="{{ attribute_insight.title }}" class="insights-category__image">
+              </div>
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ attribute_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ attribute_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ attribute_insight.content_type }}</span>
+                    
+                    {% if attribute_insight.attributes.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute_insight.attributes[0] | slugify }}/" class="tag tag--attribute">{{ attribute_insight.attributes[0] }}</a>
+                    {% endif %}
+                    {% if attribute_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ attribute_insight.markets[0] | slugify }}/" class="tag tag--market">{{ attribute_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if attribute_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ attribute_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ attribute_insight.sectors[0] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ attribute_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ attribute_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>Read more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="insights-category__more-link">
+            Explore Attribute Insights
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Signals Category (Premium) -->
+      <div class="insights-category insights-category--signals">
+        <div class="insights-category__header">
+          <div class="insights-category__icon insights-category__icon--signals">
+            {% include components/icons/icon.html type="signal" name="signal-default" size="sm" %}
+          </div>
+          <h3 class="insights-category__title">Signals</h3>
+        </div>
+        
+        {% assign signal_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", "signals" | sort: "date" | reverse | first %}
+        {% if signal_insight %}
+          <div class="insights-category__card">
+            <a href="{{ signal_insight.url | relative_url }}">
+              <div class="insights-category__image-wrapper">
+                <img src="{{ signal_insight.image | relative_url }}" alt="{{ signal_insight.title }}" class="insights-category__image">
+              </div>
+              <div class="insights-category__content">
+                <h4 class="insights-category__card-title">{{ signal_insight.title }}</h4>
+                <p class="insights-category__excerpt">{{ signal_insight.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="insights-category__meta">
+                  <div class="insights-category__tags">
+                    <!-- Content Type Tag -->
+                    <span class="tag">{{ signal_insight.content_type }}</span>
+                    
+                    {% if signal_insight.signals.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal_insight.signals[0] | slugify }}/" class="tag tag--signal">{{ signal_insight.signals[0] }}</a>
+                    {% endif %}
+                    {% if signal_insight.markets.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ signal_insight.markets[0] | slugify }}/" class="tag tag--market">{{ signal_insight.markets[0] }}</a>
+                    {% endif %}
+                    {% if signal_insight.sectors.size > 0 %}
+                      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ signal_insight.sectors[0] | slugify }}/" class="tag tag--sector">{{ signal_insight.sectors[0] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="insights-category__footer">
+                  <span class="insights-category__date">{{ signal_insight.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ signal_insight.url | relative_url }}" class="insights-category__read-more">
+                    <span>Read more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="insights-category__more">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="insights-category__more-link">
+            Explore Signal Insights
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="view-all-insights">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--outline-light" data-track="latest-insights">{{ site.data.translations[page.lang].insights.view_all }}</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Panel -->
+<div class="panel panel--cta">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Start Exploring What Others Can't See</h2>
+    <p class="panel__lead-text">Gain exclusive access to founder-led BRICS+ brands ready to grow</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="final-cta-explore">Explore Brands</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="btn btn--secondary-cta" data-track="final-cta-profile">Get Profiled</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Simple scroll functionality for "Learn How" button
+  document.addEventListener('DOMContentLoaded', function() {
+    const learnHowBtn = document.querySelector('a[href="#how-it-works"]');
+    if (learnHowBtn) {
+      learnHowBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const howItWorksSection = document.getElementById('how-it-works');
+        if (howItWorksSection) {
+          howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+    
+    // Carousel navigation dots functionality for featured brands
+    function setupCarousel(carouselSelector, dotsSelector) {
+      const carousel = document.querySelector(carouselSelector);
+      const dots = document.querySelectorAll(dotsSelector);
+      
+      if (carousel && dots.length > 0) {
+        // Update active dot based on scroll position
+        carousel.addEventListener('scroll', function() {
+          const scrollPosition = carousel.scrollLeft;
+          const cardWidth = 300; // Width of a card
+          const activeIndex = Math.round(scrollPosition / cardWidth);
+          
+          // Don't exceed the number of dots we have
+          const dotIndex = Math.min(activeIndex, dots.length - 1);
+          
+          // Update active dot
+          dots.forEach((dot, index) => {
+            if (index === dotIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        });
+        
+        // Make dots clickable to scroll to position
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', function() {
+            const cardWidth = 300; // Width of a card
+            const scrollTo = index * cardWidth;
+            carousel.scrollTo({
+              left: scrollTo,
+              behavior: 'smooth'
+            });
+          });
+        });
+      }
+    }
+    
+    // Initialize both carousels
+    setupCarousel('.featured-brands-carousel', '.featured-brands-nav-dot');
+    setupCarousel('.insights-carousel', '.insights-carousel-nav-dot');
+  });
+  
+  // Event tracking for homepage buttons
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all buttons with data-track attribute
+    const buttons = document.querySelectorAll('[data-track]');
+    
+    // Add click event listener to each button
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        // Get button text and tracking ID
+        const buttonText = this.textContent.trim();
+        const trackingId = this.getAttribute('data-track');
+        
+        // Check if Google Analytics is available
+        if (typeof gtag === 'function') {
+          // Track the click event
+            gtag('event', 'click', {
+            'event_category': 'Homepage',
+            'event_label': buttonText,
+            'value': 1,
+            'button_section': trackingId
+          });
+        }
+      });
+    });
+  });
+</script>
