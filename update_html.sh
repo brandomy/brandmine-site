@@ -2191,17 +2191,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/ru/attribut
 sed -i '' 's/site.tags/site.dimensions/g' ./_tags/ru/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_tags/ru/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/ru/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_tags/ru/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/ru/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_tags/ru/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/ru/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/ru/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/ru/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/ru/attributes/artisanal-excellence.md
@@ -2554,17 +2554,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/zh/attribut
 sed -i '' 's/site.tags/site.dimensions/g' ./_tags/zh/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_tags/zh/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/zh/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_tags/zh/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/zh/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_tags/zh/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/zh/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/zh/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/zh/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/zh/attributes/artisanal-excellence.md
@@ -2917,17 +2917,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/en/attribut
 sed -i '' 's/site.tags/site.dimensions/g' ./_tags/en/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_tags/en/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/en/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_tags/en/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/en/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_tags/en/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_tags/en/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_tags/en/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_tags/en/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_tags/en/attributes/artisanal-excellence.md
@@ -3423,17 +3423,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/ru/discover
 sed -i '' 's/site.tags/site.dimensions/g' ./_site/ru/discover/attributes/index.html
 sed -i '' 's/page.tags/page.dimensions/g' ./_site/ru/discover/attributes/index.html
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/ru/discover/attributes/index.html
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/site.tags/site.dimensions/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/page.tags/page.dimensions/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/ru/discover/attributes/cultural-ambassador/index.html
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/site.tags/site.dimensions/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/page.tags/page.dimensions/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/ru/discover/attributes/cultural-bridge/index.html
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/ru/discover/attributes/premium-positioning/index.html
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/ru/discover/attributes/premium-positioning/index.html
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/ru/discover/attributes/premium-positioning/index.html
@@ -3995,17 +3995,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/zh/discover
 sed -i '' 's/site.tags/site.dimensions/g' ./_site/zh/discover/attributes/index.html
 sed -i '' 's/page.tags/page.dimensions/g' ./_site/zh/discover/attributes/index.html
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/zh/discover/attributes/index.html
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/site.tags/site.dimensions/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/page.tags/page.dimensions/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/zh/discover/attributes/cultural-ambassador/index.html
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/site.tags/site.dimensions/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/page.tags/page.dimensions/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/zh/discover/attributes/cultural-bridge/index.html
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/zh/discover/attributes/premium-positioning/index.html
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/zh/discover/attributes/premium-positioning/index.html
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/zh/discover/attributes/premium-positioning/index.html
@@ -4567,17 +4567,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/en/discover
 sed -i '' 's/site.tags/site.dimensions/g' ./_site/en/discover/attributes/index.html
 sed -i '' 's/page.tags/page.dimensions/g' ./_site/en/discover/attributes/index.html
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/en/discover/attributes/index.html
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/site.tags/site.dimensions/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/page.tags/page.dimensions/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/en/discover/attributes/cultural-ambassador/index.html
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/site.tags/site.dimensions/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/page.tags/page.dimensions/g' ./_site/en/discover/attributes/cultural-bridge/index.html
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_site/en/discover/attributes/cultural-bridge/index.html
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_site/en/discover/attributes/premium-positioning/index.html
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_site/en/discover/attributes/premium-positioning/index.html
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_site/en/discover/attributes/premium-positioning/index.html
@@ -5238,17 +5238,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/ru/att
 sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/ru/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/ru/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/ru/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/ru/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/ru/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/ru/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/ru/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/ru/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/ru/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/ru/attributes/artisanal-excellence.md
@@ -5601,17 +5601,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/zh/att
 sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/zh/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/zh/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/zh/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/zh/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/zh/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/zh/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/zh/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/zh/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/zh/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/zh/attributes/artisanal-excellence.md
@@ -5964,17 +5964,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/en/att
 sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/en/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/en/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/en/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/en/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/en/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_discovery/en/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_discovery/en/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_discovery/en/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_discovery/en/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_discovery/en/attributes/artisanal-excellence.md
@@ -6327,17 +6327,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/ru/at
 sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/ru/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/ru/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/ru/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/ru/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/ru/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/ru/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/ru/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/ru/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/ru/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/ru/attributes/artisanal-excellence.md
@@ -6690,17 +6690,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/zh/at
 sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/zh/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/zh/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/zh/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/zh/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/zh/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/zh/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/zh/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/zh/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/zh/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/zh/attributes/artisanal-excellence.md
@@ -7053,17 +7053,17 @@ sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/en/at
 sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/en/attributes/innovation-leader.md
 sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/en/attributes/innovation-leader.md
 sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/en/attributes/innovation-leader.md
-sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/en/attributes/cultural-ambassador.md
-sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/en/attributes/cultural-ambassador.md
+sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)-tag([^"]*)"/class="\1-dimension\2"/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/class="([^"]*)tag-([^"]*)"/class="\1dimension-\2"/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*for\s+tag\s+in/{% for dimension in/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/{%\s*assign\s+tags/{% assign dimensions/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag-([^}]*)/include dimension-\1/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/site.tags/site.dimensions/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/page.tags/page.dimensions/g' ./_dimensions/en/attributes/cultural-bridge.md
+sed -i '' 's/include[^}]*tag_([^}]*)/include dimension_\1/g' ./_dimensions/en/attributes/cultural-bridge.md
 sed -i '' 's/class="([^"]*)tag([^"]*)"/class="\1dimension\2"/g' ./_dimensions/en/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag--([^"]*)"/class="\1dimension--\2"/g' ./_dimensions/en/attributes/artisanal-excellence.md
 sed -i '' 's/class="([^"]*)tag__([^"]*)"/class="\1dimension__\2"/g' ./_dimensions/en/attributes/artisanal-excellence.md

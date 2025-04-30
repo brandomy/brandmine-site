@@ -34,9 +34,9 @@ hero_image: "/assets/images/brands/serra-verde/originals/hero-farm-view.jpg"
 founder_portrait: "/assets/images/brands/serra-verde/originals/founder-portrait.jpg"
 
 # Content status
-languages: [en, zh]
 featured: false
 featured_level: 0  # Basic listing
+location_intelligence: false
 ---
 
 ## 关于塞拉维德有机农场
@@ -46,3 +46,7 @@ featured_level: 0  # Basic listing
 ## 创始人的旅程
 
 爱德华多·桑托斯代表了他家族在南米纳斯吉拉斯山区从事农业的第三代。在圣保罗学习农学后，他带着关于可持续农业的新理念回到家乡，这些理念挑战了传统做法。他将贫瘠的农田转变为繁荣的有机经营，使塞拉维德成为巴西可持续食品运动的领导者。
+
+## 市场覆盖
+
+该品牌在其本地市场通过独立零售商运营。

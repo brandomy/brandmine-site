@@ -79,10 +79,9 @@ founder_portrait: "/assets/images/brands/teatime/originals/founder-portrait.jpg"
 related_brands: [russian-brew, moskva-chai]
 
 # Content status/display
-languages: [en, ru]
-premium: false
 featured: true
 featured_level: 1  # 0=basic, 1=map marker, 2=full profile
+location_intelligence: false
 ---
 
 ## О компании ТиТайм

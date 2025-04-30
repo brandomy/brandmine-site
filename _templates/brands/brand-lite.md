@@ -85,10 +85,9 @@ founder_portrait: "/assets/images/brands/brand-slug/originals/founder-portrait.j
 related_brands: [related-brand-1, related-brand-2]
 
 # Content status/display
-languages: [en]  # Just start with English
-premium: false
 featured: false
 featured_level: 1  # 0=basic, 1=map marker, 2=full profile
+location_intelligence: false
 ---
 <!--
 BRAND LITE TEMPLATE
@@ -130,11 +129,3 @@ Information about regional distribution, brand footprint, and location strategy:
 - **Home Market**: Description of domestic presence and distribution
 - **Key Regions**: Notable areas of strength or expansion
 - **Flagship Locations**: Mention of flagship stores or important facilities
-
-## About BRAND NAME
-
-Brief history and description of the brand. Aim for 2-3 paragraphs explaining what the company does, its value proposition, and what makes it distinctive.
-
-## Founder's Journey
-
-Brief description of the founder, their background, and why they started the company. This section is important for the "founder-led" focus of Brandmine.

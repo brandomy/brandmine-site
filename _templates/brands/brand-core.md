@@ -38,9 +38,9 @@ hero_image: "/assets/images/brands/brand-slug/originals/hero-main.jpg"
 founder_portrait: "/assets/images/brands/brand-slug/originals/founder-portrait.jpg"
 
 # Content status (required)
-languages: [en]  # Just start with English
 featured: false
 featured_level: 0  # 0=basic, 1=map marker, 2=full profile
+location_intelligence: false
 ---
 <!--
 BRAND CORE TEMPLATE
@@ -66,3 +66,7 @@ Brief description of the brand, its history and core offerings. 2-3 sentences is
 ## Founder's Journey
 
 Brief founder information here. 2-3 sentences about the founder's background and why they started the company.
+
+## Market Presence
+
+The brand operates locally in its home region through independent retailers.

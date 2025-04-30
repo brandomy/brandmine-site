@@ -98,6 +98,17 @@ layout: default
         {% endif %}
       </div>
       {% endif %}
+
+      <!-- Founder Portrait (if available) -->
+      {% if page.founder_portrait %}
+      <div class="brand-profile__founder-portrait mt-3">
+        {% include components/images/brand-image.html 
+           brand=page.slug 
+           image="portrait"
+           purpose="founder"
+           alt=page.founder.name %}
+      </div>
+      {% endif %}
       
       <!-- Premium Badge -->
       {% if page.premium %}
@@ -129,6 +140,7 @@ layout: default
       </div>
     </div>
 
+
     <!-- Sidebar Column -->
     <div class="col-md-4 brand-profile__sidebar">
       <!-- Brand Attributes -->
@@ -140,14 +152,17 @@ layout: default
       </div>
 
       <!-- Brand Signals -->
+      {% if page.premium %}
       <div class="brand-profile__signals mt-3">
         <h3>{{ site.data.translations[page.lang].dimensions.signals }}</h3>
         {% for signal in page.signals %}
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/" class="brand-profile__tag brand-profile__tag--signal">{{ signal }}</a>
         {% endfor %}
       </div>
+      {% endif %}
 
       <!-- Contact Information -->
+      {% if page.premium %}
       <div class="brand-profile__contact mt-3">
         <h3>{{ site.data.translations[page.lang].brand.contact }}</h3>
         
@@ -163,9 +178,10 @@ layout: default
         </p>
         {% endif %}
       </div>
+      {% endif %}
       
       <!-- Social Media Links (new) -->
-      {% if page.social_media %}
+      {% if page.premium and page.social_media %}
       <div class="brand-profile__social-media mt-3">
         <h3>{{ site.data.translations[page.lang].brand.social_media }}</h3>
         <div class="brand-profile__social-icons">
@@ -299,7 +315,7 @@ layout: default
   {% endif %}
 
   <!-- International Presence (new) -->
-  {% if page.international.markets %}
+  {% if page.premium and page.international.markets %}
   <div class="brand-profile__international row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.international }}</h2>
@@ -349,7 +365,7 @@ layout: default
   {% endif %}
 
   <!-- Location Intelligence with Map Placeholder -->
-  {% if page.location.coordinates %}
+  {% if page.premium and page.location.coordinates and page.location_intelligence != false %}
   <div class="brand-profile__location row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.location_intelligence }}</h2>

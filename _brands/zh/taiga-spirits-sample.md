@@ -12,7 +12,7 @@ permalink: /zh/brands/ru/taiga-spirits/
 sectors: [手工烈酒和伏特加]
 subsectors: [精酿伏特加, 植物烈酒, 草药利口酒]
 markets: [俄罗斯]
-attributes: [创始人领导, 工艺卓越, 真实性倡导者]
+attributes: [创始人领导, 工艺卓越]
 signals: [出口准备就绪, 增长准备就绪]
 
 # Brand basics
@@ -104,10 +104,9 @@ gallery:
 related_brands: [baikal-brewing, siberian-harvest, altai-botanicals]
 
 # Content status/display
-languages: [en, ru, zh]
-premium: false
 featured: true
 featured_level: 2  # Full profile
+location_intelligence: false
 ---
 
 ## 关于泰加烈酒

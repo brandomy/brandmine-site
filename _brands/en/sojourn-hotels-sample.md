@@ -104,10 +104,9 @@ gallery:
 related_brands: [terra-brasil-tours, amazonia-organics, casa-do-sol]
 
 # Content status/display
-languages: [en, pt]
-premium: false
 featured: true
 featured_level: 2  # Full profile
+location_intelligence: false
 ---
 
 ## About Sojourn Boutique Hotels

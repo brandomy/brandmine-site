@@ -34,9 +34,9 @@ hero_image: "/assets/images/brands/serra-verde/originals/hero-farm-view.jpg"
 founder_portrait: "/assets/images/brands/serra-verde/originals/founder-portrait.jpg"
 
 # Content status
-languages: [en]
 featured: false
 featured_level: 0  # Basic listing
+location_intelligence: false
 ---
 
 ## About Serra Verde Organics
@@ -46,3 +46,7 @@ Serra Verde Organics is a family-owned producer specializing in organic preserve
 ## Founder's Journey
 
 Eduardo Santos represents the third generation of his family to farm the mountainous terrain of southern Minas Gerais. After studying agronomy in São Paulo, he returned home with new ideas about sustainable agriculture that challenged conventional practices. His transformation of depleted farmland into a thriving organic operation has made Serra Verde a leader in Brazil's sustainable food movement.
+
+## Market Presence
+
+The brand operates locally in its home region through independent retailers.

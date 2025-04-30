@@ -1,3 +1,3 @@
 # Dev_Journals
 
-This directory is not currently up to date but includes some historical dev-journals. I need to review my approach with generating these journals.
+This directory is updated periodically by copying in dev-journal reports from my personal dev-notes folder.

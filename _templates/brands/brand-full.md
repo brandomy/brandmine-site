@@ -105,10 +105,9 @@ gallery:
 related_brands: [related-brand-1, related-brand-2]
 
 # Content status/display
-languages: [en, ru, zh]
-premium: false
 featured: false
 featured_level: 2  # 0=basic, 1=featured on map, 2=full profile
+location_intelligence: true
 ---
 <!--
 BRAND FULL TEMPLATE

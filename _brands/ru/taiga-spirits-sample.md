@@ -12,7 +12,7 @@ permalink: /ru/brands/ru/taiga-spirits/
 sectors: [Ремесленные Спиртные Напитки и Водка]
 subsectors: [Крафтовая Водка, Ботанические Спиртные Напитки, Травяные Ликеры]
 markets: [Россия]
-attributes: [Основатель-Руководитель, Ремесленное Мастерство, Поборник Аутентичности]
+attributes: [Основатель-Руководитель, Ремесленное Мастерство]
 signals: [Готовность к Экспорту, Готовность к Росту]
 
 # Brand basics
@@ -104,10 +104,9 @@ gallery:
 related_brands: [baikal-brewing, siberian-harvest, altai-botanicals]
 
 # Content status/display
-languages: [en, ru, zh]
-premium: false
 featured: true
 featured_level: 2  # Full profile
+location_intelligence: false
 ---
 
 ## О компании Тайга Спиритс

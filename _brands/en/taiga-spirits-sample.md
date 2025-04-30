@@ -12,7 +12,7 @@ permalink: /en/brands/ru/taiga-spirits/
 sectors: [Artisanal Spirits & Vodka]
 subsectors: [Craft Vodka, Botanical Spirits, Herbal Liqueurs]
 markets: [Russia]
-attributes: [Founder-Led, Artisanal Excellence, Authenticity Champion]
+attributes: [Founder-Led, Artisanal Excellence]
 signals: [Export Ready, Growth Ready]
 
 # Brand basics
@@ -104,10 +104,9 @@ gallery:
 related_brands: [baikal-brewing, siberian-harvest, altai-botanicals]
 
 # Content status/display
-languages: [en, ru, zh]
-premium: false
 featured: true
 featured_level: 2  # Full profile
+location_intelligence: false
 ---
 
 ## About Taiga Spirits
