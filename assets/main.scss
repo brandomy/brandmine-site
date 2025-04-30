@@ -1,0 +1,54 @@
+---
+---
+
+/* Then your imports below... */
+
+/* assets/css/main.scss */
+
+/* Import order matters - more general styles first, specific styles later */
+
+/* Design tokens (variables and foundations) */
+@import 'tokens/tokens';
+@import 'tokens/grid';
+@import 'tokens/icons';
+
+/* Base styles */
+@import 'base/typography';
+@import 'base/layout';
+
+/* Layout components */
+@import 'manifest/layout';
+
+/* UI Components */
+@import 'manifest/components';
+
+/* Collection-specific styles */
+@import 'manifest/collections';
+
+/* Page-specific styles */
+@import 'manifest/pages';
+
+/* Utilities and overrides (should come last to ensure they take precedence) */
+@import 'components/mobile-fixes';
+
+
+/* Basic styles */
+body {
+  line-height: 1.6;
+  color: var(--neutral-600);
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4); /* 1rem = 16px, closest to 20px */
+}

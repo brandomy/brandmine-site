@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Base Card Component Styles
+   ==========================================================================
+   
+   This file contains foundational card styling that establishes consistent
+   structural patterns for all card-based UI elements in the Brandmine platform.
+   These base styles are extended by specific card component stylesheets.
+   
+   The system provides three primary card variants:
+   1. Basic Card (.card) - Standard card with consistent elevation and borders
+   2. Content Card (.card--content) - For text-focused content without backgrounds
+   3. White Card (.card--white) - High-contrast card for use on colored backgrounds
+   
+   Each variant maintains consistent:
+   - Spacing through standardized padding variables
+   - Border radius for visual continuity
+   - Shadow treatment for appropriate elevation
+   - Background colors for proper contrast
+   
+   These base styles establish the foundation upon which specific card components
+   are built (brand cards, insight cards, sector cards, etc.) and ensure visual
+   consistency across all card-based UI elements.
+   
+   Dependencies:
+   - Requires design tokens from tokens.css (card-specific variables)
+   - Provides the foundation for all component-specific card styles
+   - Implements responsive adjustments for mobile devices
+   
+   Usage:
+   These classes can be used directly for simple card layouts or extended
+   by component-specific CSS for more specialized card components.
+   
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BASIC CARD
+   -------------------------------------------------------------------------- */
+
+/* Standard card with subtle shadow and border */
+.card {
+  background-color: var(--neutral-100);
+  padding: var(--card-padding-default);
+  border-radius: var(--card-border-radius);
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+/* --------------------------------------------------------------------------
+   2. CONTENT CARD
+   -------------------------------------------------------------------------- */
+
+/* Content card for transparent backgrounds */
+.card--content {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* White content card for use on colored backgrounds */
+.card--white {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding-large);
+}
+
+/* Center paragraphs within content cards */
+.card--content > p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* Mobile adjustments */
+@media (max-width: 767px) { /* md breakpoint */
+  .card--content {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Adjust white content cards for mobile */
+  .card--white {
+    padding: var(--card-padding-default);
+  }
+}

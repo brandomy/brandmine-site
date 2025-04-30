@@ -196,11 +196,11 @@ This page displays all icons in the system at various sizes to test their render
         <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="artisanal-excellence" %}</div></td>
       </tr>
       <tr>
-        <td>cultural-ambassador</td>
+        <td>cultural-bridge</td>
         <td>Attribute</td>
-        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="cultural-ambassador" %}</div></td>
-        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="cultural-ambassador" %}</div></td>
-        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="cultural-ambassador" %}</div></td>
+        <td><div class="icon-test-xl">{% include components/icons/icon.html type="attribute" name="cultural-bridge" %}</div></td>
+        <td><div class="icon-test-lg">{% include components/icons/icon.html type="attribute" name="cultural-bridge" %}</div></td>
+        <td><div class="icon-test-sm">{% include components/icons/icon.html type="attribute" name="cultural-bridge" %}</div></td>
       </tr>
       <tr>
         <td>founder-led</td>

@@ -1,0 +1,121 @@
+/* ==========================================================================
+   Team Components
+   ==========================================================================
+   Styles for team member profiles, sections, and related elements.
+*/
+
+/* Team section layout */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8); /* 2rem */
+  margin: var(--space-8) 0; /* 2rem 0 */
+}
+
+/* Individual team member cards */
+.team__member {
+  flex: 1;
+  min-width: 300px;
+  background-color: white;
+  border-radius: var(--radius-md); /* Updated: using token (0.5rem) */
+  box-shadow: var(--shadow-sm); /* Updated: using token */
+  padding: var(--space-8); /* 2rem */
+  border: var(--border-width-thin) solid var(--neutral-200);
+}
+
+/* Team member photo */
+.team__photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%; /* Remains circular */
+  object-fit: cover;
+  margin-bottom: var(--space-6); /* 1.5rem */
+  border: 3px solid var(--primary-400);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Team member details */
+.team__member h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-2); /* 0.5rem */
+  color: var(--neutral-800);
+  text-align: center;
+}
+
+.team__title {
+  color: var(--primary-600);
+  font-weight: var(--font-semibold); /* Updated: using token */
+  margin-top: 0;
+  margin-bottom: var(--space-6); /* 1.5rem */
+  text-align: center;
+}
+
+.team__member ul {
+  margin-top: var(--space-4); /* 1rem */
+  margin-bottom: var(--space-6); /* 1.5rem */
+  padding-left: var(--space-6); /* 1.5rem */
+}
+
+.team__member li {
+  margin-bottom: var(--space-2); /* 0.5rem */
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) { /* lg breakpoint */ /* 992px */
+  .team {
+    flex-direction: column;
+  }
+
+  .team__member {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) { /* md breakpoint */ /* 767px approximated via token (768px) */
+  .team__member {
+    min-width: unset;
+    width: 100%;
+    padding: var(--space-6); /* 1.5rem */
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* For extra small screens - updated to use breakpoint token */
+@media (max-width: 639px) { /* sm breakpoint */ /* Originally 576px; using var(--breakpoint-sm)=640px */
+  .team__photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .team__member {
+    padding: var(--space-6); /* 1.5rem */
+  }
+}
+
+/* Subtle LinkedIn Icon Styling */
+.team__linkedin {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4); /* 1rem */
+  margin-bottom: var(--space-4); /* 1rem */
+}
+
+.team__linkedin a {
+  color: var(--neutral-500);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.team__linkedin a:hover {
+  color: var(--primary-400);
+}
+
+.team__linkedin .fa-linkedin {
+  /* Ensures the icon is centered and has some padding */
+  display: inline-block;
+  text-align: center;
+}
