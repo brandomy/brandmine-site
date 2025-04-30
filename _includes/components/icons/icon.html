@@ -10,7 +10,7 @@
   - size: Size variant - one of 'sm', 'lg', 'xl' (optional, default: normal size)
   
   Dependencies:
-  - SVG icon files in _includes/icons/ directory, organized in subdirectories by type
+  - SVG icon files in _includes/components/icons/ directory, organized in subdirectories by type
   - CSS: Styles for .icon class and its modifiers
   
   Example Usage:
@@ -26,7 +26,7 @@
   - Icons inherit color from their parent element by using currentColor
 {% endcomment %}
 
-{% assign icon_path = 'icons/' %}
+{% assign icon_path = 'components/icons/' %}
 
 {% if include.name contains '-default' %}
   {% assign icon_path = icon_path | append: include.name | append: '.svg' %}
