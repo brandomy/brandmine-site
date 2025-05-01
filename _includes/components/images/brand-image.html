@@ -6,9 +6,10 @@
   and sizing conventions specifically for brand-related images.
   
   Parameters:
+  - country: Country code (required, e.g., "ru", "br", "cn")
   - brand: Brand slug/identifier (required, e.g., "teatime")
   - image: Image identifier (required, e.g., "storefront" or "logo")
-  - purpose: Image purpose identifier (optional, e.g., "hero", "detail", "logo")
+  - purpose: Image purpose identifier (optional, e.g., "hero", "portrait", "logo")
   - alt: Alt text for the image (required for accessibility)
   - class: Additional CSS classes for the img tag (optional)
   - ext: File extension (optional, default: "jpg")
@@ -17,12 +18,13 @@
   
   Dependencies:
   - Brand images must be pre-processed with _scripts/process_brand_images.sh
-  - Proper directory structure in /assets/images/brands/{brand_name}/
+  - Proper directory structure in /assets/images/brands/{country_code}/{brand_name}/
   - File naming convention: {brand}-{purpose}-{image}-{width}w.{ext}
   
   Example Usage:
   Standard brand image:
   {% include components/images/brand-image.html 
+     country="ru"
      brand="teatime" 
      image="storefront" 
      purpose="hero"
@@ -30,6 +32,7 @@
      
   Brand logo with PNG format:
   {% include components/images/brand-image.html 
+     country="in"
      brand="dragonfly" 
      image="color" 
      purpose="logo" 
@@ -37,13 +40,14 @@
      alt="Dragonfly Therapeutic Retreats logo" %}
   
   Notes:
-  - Automatically constructs proper image paths based on brand and image info
+  - Automatically constructs proper image paths based on country, brand and image info
   - Includes srcset for responsive image loading (400w, 800w, 1200w variants)
   - Uses lazy loading for better performance
   - Follows Brandmine's image processing and naming conventions
   - Defaults to JPG format unless specified otherwise
 {% endcomment %}
 
+{% assign country = include.country %}
 {% assign brand = include.brand %}
 {% assign image = include.image %}
 {% assign purpose = include.purpose | default: "" %}
@@ -53,7 +57,7 @@
 {% assign sizes = include.sizes | default: "(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" %}
 {% assign widths = include.widths | default: "400,800,1200" %}
 {% assign widths_array = widths | split: "," %}
-{% assign base_path = "/assets/images/brands/" | append: brand | append: "/" %}
+{% assign base_path = "/assets/images/brands/" | append: country | append: "/" | append: brand | append: "/" %}
 
 {% if purpose != "" %}
   {% assign image_path = brand | append: "-" | append: purpose | append: "-" | append: image %}

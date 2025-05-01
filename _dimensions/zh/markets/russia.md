@@ -5,9 +5,8 @@ layout: dimension
 title: "俄罗斯"
 dimension: russia
 category: market
+country_code: ru  # Add this line
 permalink: /zh/discover/markets/russia/
-lang: zh
-ref: market-russia
 ---
 
 标记为"俄罗斯"的内容探索俄罗斯消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与俄罗斯市场和具有国际潜力的俄罗斯品牌相关的故事、分析和品牌简介。

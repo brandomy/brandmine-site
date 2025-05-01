@@ -33,9 +33,9 @@ location:
   coordinates: [longitude, latitude]  # For map display
 
 # Basic image assets (required)
-logo: "/assets/images/brands/brand-slug/originals/logo-color.png"
-hero_image: "/assets/images/brands/brand-slug/originals/hero-main.jpg"
-founder_portrait: "/assets/images/brands/brand-slug/originals/founder-portrait.jpg"
+logo: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/logo-color.png"
+hero_image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/hero-main.jpg"
+founder_portrait: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/portrait-founder.jpg"
 
 # Content status (required)
 featured: false
@@ -56,7 +56,7 @@ For more comprehensive templates, see:
 - _templates/brands/brand-full.md (Complete profile with all possible fields)
 
 Note: Even with this minimal template, remember to process images with:
-./_scripts/process_brand_images.sh brand-slug
+./_scripts/process_brand_images.sh {{ page.country_code }} {{ page.slug }}
 -->
 
 ## About BRAND NAME

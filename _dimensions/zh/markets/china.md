@@ -5,9 +5,8 @@ layout: dimension
 title: "中国"
 dimension: china
 category: market
+country_code: cn  # Add this line
 permalink: /zh/discover/markets/china/
-lang: zh
-ref: market-china
 ---
 
 标记为"中国"的内容探索中国消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与中国市场和具有国际潜力的中国品牌相关的故事、分析和品牌简介。

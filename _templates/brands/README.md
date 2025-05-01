@@ -12,7 +12,7 @@ This directory contains templates for creating brand profiles at different level
 
 1. Copy the appropriate template to `_brands/en/your-brand-name.md`
 2. Fill in the required information
-3. Process images with `./_scripts/process_brand_images.sh your-brand-name`
+3. Process images with `./_scripts/process_brand_images.sh country_code your-brand-name`
 4. Test the brand page
 5. Optionally create translations in `_brands/ru/` and `_brands/zh/`
 
@@ -23,3 +23,11 @@ This directory contains templates for creating brand profiles at different level
 - Use **Full** for featured brands or when extensive information is available
 
 Brands can be progressively enhanced by starting with the Core template and later upgrading to Lite or Full as more information becomes available.
+
+## Image Storage Structure
+
+Brand images are stored in the following structure:
+
+assets/images/brands/[country_code]/[brand-slug]/originals/
+
+This organization prevents naming conflicts between brands in different countries.

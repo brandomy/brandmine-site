@@ -3,8 +3,9 @@ lang: en
 ref: market-brazil
 layout: dimension
 title: "Brazil"
-dimension: brazil
+dimension: "brazil"
 category: market
+country_code: br  # Add this line
 permalink: /en/discover/markets/brazil/
 ---
 

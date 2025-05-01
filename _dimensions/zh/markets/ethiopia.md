@@ -5,6 +5,7 @@ layout: dimension
 title: "埃塞俄比亚"
 dimension: ethiopia
 category: market
+country_code: et  # Add this line
 permalink: /zh/discover/markets/ethiopia/
 ---
 

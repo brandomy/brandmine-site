@@ -5,6 +5,7 @@ layout: dimension
 title: "Iran"
 dimension: iran
 category: market
+country_code: ir  # Add this line
 permalink: /en/discover/markets/iran/
 ---
 

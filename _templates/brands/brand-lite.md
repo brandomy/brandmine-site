@@ -77,9 +77,9 @@ international:
   distribution_models: [direct-export, distributors]  # options: direct-export, distributors, e-commerce, franchise, joint-venture
 
 # Image assets
-logo: "/assets/images/brands/brand-slug/originals/logo-color.png"
-hero_image: "/assets/images/brands/brand-slug/originals/hero-main.jpg"
-founder_portrait: "/assets/images/brands/brand-slug/originals/founder-portrait.jpg"
+logo: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/logo-color.png"
+hero_image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/hero-main.jpg"
+founder_portrait: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/portrait-founder.jpg"
 
 # Related content
 related_brands: [related-brand-1, related-brand-2]
@@ -103,7 +103,7 @@ Related templates:
 - _templates/brands/brand-full.md (Complete profile with all possible fields)
 
 Remember to process images after creation with:
-./_scripts/process_brand_images.sh brand-slug
+./_scripts/process_brand_images.sh {{ page.country_code }} {{ page.slug }}
 -->
 
 ## About BRAND NAME

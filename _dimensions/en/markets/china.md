@@ -5,6 +5,7 @@ layout: dimension
 title: "China"
 dimension: china
 category: market
+country_code: cn  # Add this line
 permalink: /en/discover/markets/china/
 ---
 

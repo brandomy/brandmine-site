@@ -90,15 +90,15 @@ partnerships:
   requirements: "Brief description of partner requirements"
 
 # Image assets
-logo: "/assets/images/brands/brand-slug/originals/logo-color.png"
-hero_image: "/assets/images/brands/brand-slug/originals/hero-main.jpg"
-founder_portrait: "/assets/images/brands/brand-slug/originals/founder-portrait.jpg"
+logo: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/logo-color.png"
+hero_image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/hero-main.jpg"
+founder_portrait: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/portrait-founder.jpg"
 gallery:
-  - image: "/assets/images/brands/brand-slug/originals/gallery-image1.jpg"
+  - image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/gallery-image1.jpg"
     caption: "Caption for first gallery image"
-  - image: "/assets/images/brands/brand-slug/originals/gallery-image2.jpg"
+  - image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/gallery-image2.jpg"
     caption: "Caption for second gallery image"
-  - image: "/assets/images/brands/brand-slug/originals/gallery-image3.jpg"
+  - image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/gallery-image3.jpg"
     caption: "Caption for third gallery image"
 
 # Related content
@@ -123,7 +123,7 @@ Related templates:
 - _templates/brands/brand-lite.md (Basic profile with essential sections)
 
 Remember to process images after creation with:
-./_scripts/process_brand_images.sh brand-slug
+./_scripts/process_brand_images.sh {{ page.country_code }} {{ page.slug }}
 -->
 
 ## About BRAND NAME

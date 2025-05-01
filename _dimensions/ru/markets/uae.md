@@ -5,6 +5,7 @@ layout: dimension
 title: "ОАЭ"
 dimension: uae
 category: market
+country_code: ae  # Add this line
 permalink: /ru/discover/markets/uae/
 ---
 

@@ -5,9 +5,8 @@ layout: dimension
 title: "印度"
 dimension: india
 category: market
+country_code: in  # Add this line
 permalink: /zh/discover/markets/india/
-lang: zh
-ref: market-india
 ---
 
 标记为"印度"的内容探索印度消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与印度市场和具有国际潜力的印度品牌相关的故事、分析和品牌简介。

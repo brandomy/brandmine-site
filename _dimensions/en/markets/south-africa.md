@@ -5,6 +5,7 @@ layout: dimension
 title: "South Africa"
 dimension: south-africa
 category: market
+country_code: za  # Add this line
 permalink: /en/discover/markets/south-africa/
 ---
 

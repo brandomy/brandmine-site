@@ -5,6 +5,7 @@ layout: dimension
 title: "Египет"
 dimension: egypt
 category: market
+country_code: eg  # Add this line
 permalink: /ru/discover/markets/egypt/
 ---
 

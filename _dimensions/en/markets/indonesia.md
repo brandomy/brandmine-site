@@ -5,6 +5,7 @@ layout: dimension
 title: "Indonesia"
 dimension: indonesia
 category: market
+country_code: id  # Add this line
 permalink: /en/discover/markets/indonesia/
 ---
 

@@ -5,6 +5,7 @@ layout: dimension
 title: "India"
 dimension: india
 category: market
+country_code: in  # Add this line
 permalink: /en/discover/markets/india/
 ---
 

@@ -5,6 +5,7 @@ layout: dimension
 title: "埃及"
 dimension: egypt
 category: market
+country_code: eg  # Add this line
 permalink: /zh/discover/markets/egypt/
 ---
 

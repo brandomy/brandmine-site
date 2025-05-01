@@ -5,6 +5,7 @@ layout: dimension
 title: "印度尼西亚"
 dimension: indonesia
 category: market
+country_code: id  # Add this line
 permalink: /zh/discover/markets/indonesia/
 ---
 

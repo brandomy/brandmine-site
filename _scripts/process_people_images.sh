@@ -8,15 +8,14 @@
 #
 # Key Features:
 # - Processes "people" category images stored in structured folders.
-# - Automatically resizes originals into 400w, 800w, and 1200w versions.
+# - Preserves transparency for PNG files.
+# - Handles portrait images appropriately for 2:3 aspect ratio.
 # - Maintains a consistent naming convention for easy asset management.
-# - Skips missing folders gracefully without interrupting the script.
 #
 # Usage:
 #     bash process_people_images.sh
 #
 # Author: Randal Eastman
-
 
 # Define image categories
 CATEGORIES=("people")
@@ -51,8 +50,8 @@ for CATEGORY in "${CATEGORIES[@]}"; do
         NAME="${FILENAME%.*}"
         EXT="${FILENAME##*.}"
         
-        # For people images, use "profile" as the purpose
-        PURPOSE="profile"
+        # For people images, use "portrait" as the purpose
+        PURPOSE="portrait"
         IMAGE="$NAME"
         
         echo "  Processing: $FILENAME (Purpose: $PURPOSE, Image: $IMAGE)"
@@ -61,7 +60,16 @@ for CATEGORY in "${CATEGORIES[@]}"; do
         for SIZE in 400 800 1200; do
             OUTPUT_FILENAME="${CATEGORY}-${PURPOSE}-${IMAGE}-${SIZE}w.${EXT}"
             echo "    Creating $OUTPUT_FILENAME..."
-            magick "$IMG" -resize "${SIZE}x" -quality 85 "$CATEGORY_DIR/$OUTPUT_FILENAME"
+            
+            if [[ "$EXT" == "png" ]]; then
+                # For PNG, preserve transparency
+                # Resize by height for portraits
+                magick "$IMG" -resize "x${SIZE}" "$CATEGORY_DIR/$OUTPUT_FILENAME"
+            else
+                # For JPG and other formats, optimize with quality setting
+                # Resize by height for portraits
+                magick "$IMG" -resize "x${SIZE}" -quality 85 "$CATEGORY_DIR/$OUTPUT_FILENAME"
+            fi
         done
     done
 done
