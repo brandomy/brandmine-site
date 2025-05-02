@@ -167,9 +167,11 @@ npm run build                            # Alias for jekyll build
 ```bash
 ./_scripts/check_language_consistency.sh        # Validate i18n coverage
 ./_scripts/enhanced-site-summary-advanced.sh    # Generate structural summary
-./_scripts/process_brand_images.sh [brand_name] # Process brand images (optional brand parameter)
+./_scripts/process_brand_images.sh [country_code] [brand_name] # Process brand images
 ./_scripts/process_site_images.sh               # Process site images
 ./_scripts/process_people_images.sh             # Process people/team images
+./_scripts/process_icons.sh                     # Process dimension/insights icons
+./_scripts/apply_teal_filter.sh                 # Apply brand filter to team photos
 ./_scripts/add_image_attribution.py             # Add image attribution to _data/image_attributions.yml
 ```
 
@@ -274,6 +276,41 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
   - `process_site_images.sh` for site assets
   - `process_people_images.sh` for people/team images
 
+## Image Organization and Processing
+
+- **Directory Structure**: Organized by content type:
+  - `assets/images/brands/[country-code]/[brand-name]/` for brand assets
+  - `assets/images/people/` for team members and testimonials
+  - `assets/images/icons/dimensions/` for dimension taxonomy icons
+  - `assets/images/icons/insights/` for insights category icons
+  - `assets/images/[category]/` for site-wide assets (sectors, markets, etc.)
+
+- **Naming Convention**: Purpose-first naming pattern:
+  - Original files: `purpose-descriptivename.extension`
+  - Processed files: `[brand-name]-purpose-descriptivename-[width]w.extension`
+
+- **Aspect Ratios**: 
+  - Standard content: 3:2 horizontal (1200×800px)
+  - Portraits: 2:3 vertical (800×1200px)
+  - Icons: 1:1 square (512×512px source)
+
+- **Processing Scripts**:
+  - `process_brand_images.sh [country-code] [brand-name]` for brand assets
+  - `process_site_images.sh [category]` for site-wide assets
+  - `process_people_images.sh` for team/testimonial portraits
+  - `process_icons.sh [system]` for dimension/insights icons
+  - `apply_teal_filter.sh` for team photos branding
+
+- **Implementation Includes**:
+  - `brand-image.html` for brand-specific imagery
+  - `site-image.html` for site-wide imagery
+  - `taxonomy-icon.html` for dimension taxonomy icons
+
+- **Documentation**:
+  - Comprehensive image guide at `docs/design/image-guide.md`
+  - Style specifications at `docs/design/image-style-guide.md`
+  - Taxonomy icon implementation guide at `docs/design/taxonomy-icon-implementation.md`
+
 ## Visual Style Strategy
 
 Brandmine applies a structured visual language for all imagery based on content type:
@@ -290,13 +327,15 @@ Brandmine applies a structured visual language for all imagery based on content 
   Used for generic dimension pages (e.g., global sector overviews, signals, attributes, markets).  
   Characteristics: bold flat colors, geometric abstraction, no textures, clean edges, strong contrast for quick discovery.
 
-- **Photographic Portrait Stylization (MPTM Adaptation):**  
-  Founder portraits and selected artisan process shots are stylized into MPTM to maintain a cohesive aesthetic while preserving human authenticity.
+- **Natural Photography:**
+  Used for team members and testimonial providers.
+  Characteristics: professional, natural photography with clean backgrounds and subtle brand filter (12% teal).
 
 General Rule:  
 - Use TM for primary storytelling heroes.  
 - Use MPTM for secondary storytelling illustrations.  
 - Use Flat Colour Minimalism for taxonomy navigation and abstract dimension discovery.
+- Use Natural Photography (with brand filter) for team/testimonial portraits.
 
 ⚠️ Avoid mixing raw unprocessed photographs with stylized or illustrated content directly side-by-side. All imagery must maintain consistent visual processing to preserve Brandmine's premium, editorial aesthetic.
 
@@ -496,10 +535,21 @@ Claude must align any navigation, filtering, or dimension-related output with th
 ### Adding a New Brand
 1. Create brand markdown file in each language folder (`_brands/en/`, `_brands/ru/`, `_brands/zh/`)
 2. Ensure the brand references existing dimensions
-3. Process brand images with `./_scripts/process_brand_images.sh brandname`
+3. Process brand images with `./_scripts/process_brand_images.sh [country_code] [brand_name]`
 4. Add attributions for images in `_data/image_attributions.yml`
 
-### Brand Templates
+### Adding a New Dimension
+1. Create dimension files in appropriate category subfolder for all languages
+2. Update any relevant translation files in `_data/`
+3. Ensure the dimension matches the established taxonomy
+
+### Updating Styles
+1. Identify the appropriate CSS file by component or page
+2. Follow BEM naming conventions
+3. Use CSS custom properties from tokens
+4. Test responsive behavior on multiple screen sizes
+
+## Brand Templates
 
 Three template options are available for creating brand profiles:
 
@@ -523,35 +573,5 @@ Three template options are available for creating brand profiles:
 
 Always process brand images after creation using:
 ```bash
-./_scripts/process_brand_images.sh brand-slug
-
-### Adding a New Dimension
-1. Create dimension files in appropriate category subfolder for all languages
-2. Update any relevant translation files in `_data/`
-3. Ensure the dimension matches the established taxonomy
-
-### Updating Styles
-1. Identify the appropriate CSS file by component or page
-2. Follow BEM naming conventions
-3. Use CSS custom properties from tokens
-4. Test responsive behavior on multiple screen sizes
-
-
-## Brand Templates
-
-Two template options are available for creating brand profiles:
-
-1. **Full Template** (`_brands/brand-en.md`): 
-   - Complete template with all possible fields and sections
-   - Use when comprehensive brand information is available
-   - Includes all taxonomy connections, social media, timeline, certifications, etc.
-
-2. **Lite Template** (`_brands/brand-lite.md`):
-   - Simplified template with only essential fields
-   - Use for quick brand creation with minimal information
-   - Contains only core identification, basic categorization, and minimal content
-   - Can be progressively enhanced later
-
-Always process brand images after creation using:
-```bash
-./_scripts/process_brand_images.sh brand-slug
+./_scripts/process_brand_images.sh [country_code] [brand_name]
+```

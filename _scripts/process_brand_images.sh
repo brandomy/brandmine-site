@@ -9,7 +9,7 @@
 # Key Features:
 # - Supports selective processing of a single brand or all brands.
 # - Preserves transparency for PNG files.
-# - Handles portrait and landscape images appropriately.
+# - Special handling for portrait and founder images.
 # - Generates multiple sizes (400w, 800w, 1200w) for responsive usage.
 #
 # Usage:
@@ -111,11 +111,41 @@ for COUNTRY in "${COUNTRIES[@]}"; do
             
             echo "  Processing: $FILENAME (Purpose: $PURPOSE, Image: $IMAGE)"
             
-            # Check if it's a portrait image
-            if [[ "$PURPOSE" == "portrait" ]]; then
-                RESIZE_OPT="-resize x${SIZE}"  # Resize by height for portraits
+            # Get image dimensions and check proportions
+            DIMENSIONS=$(identify -format "%w %h" "$IMG")
+            WIDTH=$(echo $DIMENSIONS | cut -d' ' -f1)
+            HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
+            RATIO=$(bc -l <<< "$WIDTH/$HEIGHT")
+            
+            # Check if it's a portrait/founder image
+            if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" ]]; then
+                # For portraits and founder images, resize by height and optimize for faces
+                RESIZE_OPT="-resize x"  # Resize by height
+                QUALITY_OPT="-quality 90"      # Higher quality to preserve details
+                
+                # Check aspect ratio for portrait/founder images (should be 2:3)
+                EXPECTED_RATIO=0.67  # 2:3 ratio
+                TOLERANCE=0.1
+                DIFF=$(bc -l <<< "($RATIO - $EXPECTED_RATIO)^2 < $TOLERANCE^2")
+                
+                if [[ "$DIFF" != "1" ]]; then
+                    echo "    WARNING: $FILENAME has unusual proportions for a portrait/founder image."
+                    echo "    Expected aspect ratio around 2:3 (0.67), actual: $RATIO"
+                fi
             else
-                RESIZE_OPT="-resize ${SIZE}x"  # Resize by width for landscapes
+                # Resize by width for landscapes
+                RESIZE_OPT="-resize "  # Resize by width
+                QUALITY_OPT="-quality 85"      # Standard quality
+                
+                # Check aspect ratio for standard images (should be 3:2)
+                EXPECTED_RATIO=1.5  # 3:2 ratio
+                TOLERANCE=0.2
+                DIFF=$(bc -l <<< "($RATIO - $EXPECTED_RATIO)^2 < $TOLERANCE^2")
+                
+                if [[ "$DIFF" != "1" ]]; then
+                    echo "    WARNING: $FILENAME has unusual proportions for a standard image."
+                    echo "    Expected aspect ratio around 3:2 (1.5), actual: $RATIO"
+                fi
             fi
             
             # Create each size
@@ -125,10 +155,18 @@ for COUNTRY in "${COUNTRIES[@]}"; do
                 
                 if [[ "$EXT" == "png" ]]; then
                     # For PNG, preserve transparency
-                    magick "$IMG" $RESIZE_OPT "$BRAND_DIR/$OUTPUT_FILENAME"
+                    if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" ]]; then
+                        magick "$IMG" ${RESIZE_OPT}${SIZE} "$BRAND_DIR/$OUTPUT_FILENAME"
+                    else
+                        magick "$IMG" ${RESIZE_OPT}${SIZE} "$BRAND_DIR/$OUTPUT_FILENAME"
+                    fi
                 else
                     # For JPG and other formats, optimize with quality setting
-                    magick "$IMG" $RESIZE_OPT -quality 85 "$BRAND_DIR/$OUTPUT_FILENAME"
+                    if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" ]]; then
+                        magick "$IMG" ${RESIZE_OPT}${SIZE} ${QUALITY_OPT} "$BRAND_DIR/$OUTPUT_FILENAME" 
+                    else
+                        magick "$IMG" ${RESIZE_OPT}${SIZE} ${QUALITY_OPT} "$BRAND_DIR/$OUTPUT_FILENAME"
+                    fi
                 fi
             done
         done

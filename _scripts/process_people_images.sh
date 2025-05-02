@@ -2,76 +2,89 @@
 #
 # process_people_images.sh
 #
-# This script resizes and processes profile images for the Brandmine Jekyll site.
-# It focuses on non-brand image categories, such as people, and generates optimized
-# assets for responsive breakpoints.
+# This script processes people/team member images for the Brandmine Jekyll site.
+# It generates responsive versions of all people images with appropriate
+# sizing for portraits and team photos.
 #
 # Key Features:
-# - Processes "people" category images stored in structured folders.
-# - Preserves transparency for PNG files.
-# - Handles portrait images appropriately for 2:3 aspect ratio.
-# - Maintains a consistent naming convention for easy asset management.
+# - Optimized for portrait-orientation photos
+# - Higher quality preservation for faces
+# - Generates multiple sizes (400w, 800w, 1200w) for responsive usage
+# - Validates aspect ratios for consistency
 #
 # Usage:
 #     bash process_people_images.sh
 #
 # Author: Randal Eastman
 
-# Define image categories
-CATEGORIES=("people")
+# Base directory for people images
+BASE_DIR="assets/images/people"
+ORIGINALS_DIR="$BASE_DIR/originals"
 
-# Process each category
-for CATEGORY in "${CATEGORIES[@]}"; do
-    CATEGORY_DIR="assets/images/$CATEGORY"
+# Check if ImageMagick is installed
+if ! command -v magick &> /dev/null; then
+    echo "ImageMagick not found. Please install it first."
+    exit 1
+fi
+
+# Skip if originals directory doesn't exist
+if [ ! -d "$ORIGINALS_DIR" ]; then
+    echo "  No originals directory found for people images, skipping."
+    exit 1
+fi
+
+echo "Processing people images..."
+
+# Process each original image
+for IMG in "$ORIGINALS_DIR"/*.{jpg,jpeg,png}; do
+    # Skip if no files match the pattern
+    [ -e "$IMG" ] || continue
     
-    # Skip if category doesn't exist
-    if [ ! -d "$CATEGORY_DIR" ]; then
-        echo "Category directory $CATEGORY_DIR not found, skipping."
-        continue
-    fi
+    # Extract the filename without extension
+    FILENAME=$(basename "$IMG")
+    NAME="${FILENAME%.*}"
+    EXT="${FILENAME##*.}"
     
-    echo "Processing category: $CATEGORY"
-    
-    ORIGINALS_DIR="$CATEGORY_DIR/originals"
-    
-    # Skip if originals directory doesn't exist
-    if [ ! -d "$ORIGINALS_DIR" ]; then
-        echo "  No originals directory found, skipping."
-        continue
-    fi
-    
-    # Process each original image
-    for IMG in "$ORIGINALS_DIR"/*.{jpg,jpeg,png}; do
-        # Skip if no files match the pattern
-        [ -e "$IMG" ] || continue
-        
-        # Extract the filename without extension
-        FILENAME=$(basename "$IMG")
-        NAME="${FILENAME%.*}"
-        EXT="${FILENAME##*.}"
-        
-        # For people images, use "portrait" as the purpose
-        PURPOSE="portrait"
+    # Extract purpose if present in filename (format: purpose-name.jpg)
+    if [[ "$NAME" == *-* ]]; then
+        PURPOSE=$(echo "$NAME" | cut -d- -f1)
+        IMAGE=$(echo "$NAME" | cut -d- -f2-)
+    else
+        PURPOSE="general"
         IMAGE="$NAME"
+    fi
+    
+    echo "  Processing: $FILENAME (Purpose: $PURPOSE, Image: $IMAGE)"
+    
+    # Get image dimensions and check proportions
+    DIMENSIONS=$(identify -format "%w %h" "$IMG")
+    WIDTH=$(echo $DIMENSIONS | cut -d' ' -f1)
+    HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
+    RATIO=$(bc -l <<< "$WIDTH/$HEIGHT")
+    
+    # Check if it's a portrait orientation (expect 2:3 ratio for people)
+    EXPECTED_RATIO=0.67  # 2:3 ratio
+    TOLERANCE=0.1
+    DIFF=$(bc -l <<< "($RATIO - $EXPECTED_RATIO)^2 < $TOLERANCE^2")
+    
+    if [[ "$DIFF" != "1" ]]; then
+        echo "    WARNING: $FILENAME has unusual proportions for a portrait image."
+        echo "    Expected aspect ratio around 2:3 (0.67), actual: $RATIO"
+    fi
+    
+    # Create each size - resize by height for portraits
+    for SIZE in 400 800 1200; do
+        OUTPUT_FILENAME="people-${PURPOSE}-${IMAGE}-${SIZE}w.${EXT}"
+        echo "    Creating $OUTPUT_FILENAME..."
         
-        echo "  Processing: $FILENAME (Purpose: $PURPOSE, Image: $IMAGE)"
-        
-        # Create each size
-        for SIZE in 400 800 1200; do
-            OUTPUT_FILENAME="${CATEGORY}-${PURPOSE}-${IMAGE}-${SIZE}w.${EXT}"
-            echo "    Creating $OUTPUT_FILENAME..."
-            
-            if [[ "$EXT" == "png" ]]; then
-                # For PNG, preserve transparency
-                # Resize by height for portraits
-                magick "$IMG" -resize "x${SIZE}" "$CATEGORY_DIR/$OUTPUT_FILENAME"
-            else
-                # For JPG and other formats, optimize with quality setting
-                # Resize by height for portraits
-                magick "$IMG" -resize "x${SIZE}" -quality 85 "$CATEGORY_DIR/$OUTPUT_FILENAME"
-            fi
-        done
+        if [[ "$EXT" == "png" ]]; then
+            # For PNG, preserve transparency
+            magick "$IMG" -resize "x$SIZE" "$BASE_DIR/$OUTPUT_FILENAME"
+        else
+            # For JPG and other formats, optimize with higher quality for faces
+            magick "$IMG" -resize "x$SIZE" -quality 90 "$BASE_DIR/$OUTPUT_FILENAME"
+        fi
     done
 done
 
-echo "All image categories have been processed!"
+echo "All people images have been processed!"
