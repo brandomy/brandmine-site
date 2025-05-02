@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Taxonomy Icon Component
+   ==========================================================================
+   Used for both dimension taxonomy icons and insights category icons
+*/
+
+.taxonomy-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------------------------------
+   Size Variants
+   -------------------------------------------------------------------------- */
+
+.taxonomy-icon--small {
+  width: 32px;
+  height: 32px;
+}
+
+.taxonomy-icon--medium {
+  width: 48px;
+  height: 48px;
+}
+
+.taxonomy-icon--large {
+  width: 96px;
+  height: 96px;
+}
+
+/* --------------------------------------------------------------------------
+   Dimension-specific Styling
+   -------------------------------------------------------------------------- */
+
+.taxonomy-icon--sectors {
+  border-radius: 25%;
+  background-color: var(--olive-50);
+  padding: 4px;
+}
+
+.taxonomy-icon--attributes {
+  border-radius: 25%;
+  background-color: var(--secondary-50);
+  padding: 4px;
+}
+
+.taxonomy-icon--signals {
+  border-radius: 25%;
+  background-color: var(--accent-50);
+  padding: 4px;
+}
+
+.taxonomy-icon--markets {
+  border-radius: 25%;
+  background-color: var(--sky-50);
+  padding: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Insights Category Styling
+   -------------------------------------------------------------------------- */
+
+.taxonomy-icon--insights {
+  border-radius: 25%;
+  background-color: var(--primary-50);
+  padding: 4px;
+}
+
+/* Insights category-specific colors (optional refinement) */
+.taxonomy-icon--insights[src*="founders-journey"] {
+  background-color: var(--primary-100);  /* Teal - slightly darker for distinction */
+}
+
+.taxonomy-icon--insights[src*="brand-spotlight"] {
+  background-color: var(--secondary-50);  /* Orange shade */
+}
+
+.taxonomy-icon--insights[src*="market-milestone"] {
+  background-color: var(--accent-50);  /* Purple shade */
+}
+
+.taxonomy-icon--insights[src*="cultural-signature"] {
+  background-color: var(--olive-50);  /* Olive shade */
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adjustments
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .taxonomy-icon--large {
+    width: 64px;
+    height: 64px;
+  }
+}

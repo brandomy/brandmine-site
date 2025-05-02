@@ -1,0 +1,36 @@
+{% comment %}
+  Component: taxonomy-icon.html
+  
+  Purpose: Renders icons for both dimensions and insights categories
+  
+  Parameters:
+  - system: Icon system type (dimensions or insights) (required)
+  - type: For dimensions: sectors, attributes, signals, markets
+          For insights: (leave empty, just use system="insights")
+  - name: Icon name matching the file name without extension (required)
+  - size: Size variant (small, medium, large) (default: medium)
+  - class: Additional CSS classes (optional)
+  
+  Dependencies:
+  - SCSS: /assets/css/components/taxonomy-icon.scss (compiled via manifest)
+  
+  Example Usage:
+  {% include components/icons/taxonomy-icon.html system="dimensions" type="sectors" name="wine" %}
+  {% include components/icons/taxonomy-icon.html system="insights" name="founders-journey" %}
+{% endcomment %}
+
+{% if include.system == "dimensions" %}
+  {% assign icon_path = "/assets/images/icons/dimensions/" | append: include.type | append: "/" | append: include.name | append: ".png" %}
+  {% assign icon_type = include.type %}
+{% else %}
+  {% assign icon_path = "/assets/images/icons/insights/" | append: include.name | append: ".png" %}
+  {% assign icon_type = "insights" %}
+{% endif %}
+
+{% assign size_class = include.size | default: "medium" %}
+
+<img 
+  src="{{ icon_path | relative_url }}" 
+  alt="{{ include.name | replace: '-', ' ' | capitalize }}" 
+  class="taxonomy-icon taxonomy-icon--{{ size_class }} taxonomy-icon--{{ icon_type }} {{ include.class }}"
+>
