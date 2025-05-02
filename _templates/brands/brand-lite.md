@@ -6,18 +6,17 @@
 # Core identification (all required)
 layout: brand
 title: "BRAND NAME"
-slug: brand-slug
-ref: brand-slug  # Same as slug - for language switcher
+ref: brand-slug  # Used for language switcher and as the slug
 country_code: "xx"  # ISO country code (ru, br, cn, in, za)
 lang: en
-permalink: /en/brands/{{ page.country_code }}/{{ page.slug }}/
+permalink: /en/brands/xx/brand-slug/
 
 # Core categorization
-sectors: [Primary Sector]  # Must be from existing taxonomy
-subsectors: [Specific Niche]  # Optional subcategories
-markets: [Primary Market]  # Must be from existing taxonomy
-attributes: [Attribute1, Attribute2]  # From existing attributes taxonomy
-signals: [Signal1, Signal2]  # From existing signals taxonomy
+sectors: [primary-sector]  # Must be from existing taxonomy - use kebab-case
+subsectors: [specific-niche]  # Optional subcategories - use kebab-case
+markets: [market-code]  # Must be from existing taxonomy - use kebab-case
+attributes: [attribute1, attribute2]  # From existing attributes taxonomy - use kebab-case
+signals: [signal1, signal2]  # From existing signals taxonomy - use kebab-case
 
 # Brand basics
 description: "Brief compelling description of the brand (1-2 sentences)."
@@ -37,7 +36,7 @@ founder:
 
 # Location details
 location:
-  country: "Country Name"
+  country_code: "xx"  # Two-letter country code
   region: "Region/Province/State"
   city: "City Name"
   coordinates: [longitude, latitude]  # For map display
@@ -72,14 +71,14 @@ awards:
 
 # International presence
 international:
-  markets: [Country1, Country2]
+  markets: [country1, country2]
   export_ready: true
   distribution_models: [direct-export, distributors]  # options: direct-export, distributors, e-commerce, franchise, joint-venture
 
 # Image assets
-logo: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/logo-color.png"
-hero_image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/hero-main.jpg"
-founder_portrait: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/portrait-founder.jpg"
+logo: "/assets/images/brands/xx/brand-slug/originals/logo-color.png"
+hero_image: "/assets/images/brands/xx/brand-slug/originals/hero-main.jpg"
+founder_portrait: "/assets/images/brands/xx/brand-slug/originals/founder-portrait.jpg"
 
 # Related content
 related_brands: [related-brand-1, related-brand-2]
@@ -103,7 +102,7 @@ Related templates:
 - _templates/brands/brand-full.md (Complete profile with all possible fields)
 
 Remember to process images after creation with:
-./_scripts/process_brand_images.sh {{ page.country_code }} {{ page.slug }}
+./_scripts/process_brand_images.sh xx brand-slug
 -->
 
 ## About BRAND NAME

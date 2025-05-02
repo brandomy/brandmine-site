@@ -3,24 +3,20 @@
 # Complete profile with all possible fields and sections
 # See _templates/brands/ for core and lite versions
 
-# Core identification
+# Core identification (all required)
 layout: brand
 title: "BRAND NAME"
-slug: brand-slug
-ref: brand-slug  # Same as slug - for language switcher
-country_code: "xx"  # ISO country code for permalink
+ref: brand-slug  # Used for language switcher and as the slug
+country_code: "xx"  # ISO country code (ru, br, cn, in, za)
 lang: en
-permalink: /en/brands/{{ page.country_code }}/{{ page.slug }}/
+permalink: /en/brands/xx/brand-slug/
 
-# Core categorization and tags
-markets: [Country] # brazil, china, india, russia, south-africa
-sectors: [Sector] # artisan-confectionery, artisanal-spirits, fashion-accessories, fermented-dairy, gourmet-foods, halal-foods, honey-bee-products, hotels-resorts, jewelry-watches, mineral-waters, natural-beauty, natural-supplements, porcelain-ceramics, salami-cured-meats, specialty-cheeses, wine
-subsectors: [Specific Niche] # freeform text
-attributes: [Attribute] # artisanal-excellence, cultural-ambassador, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer
-signals: [Signal] # export-ready, franchise-ready, investment-ready, rapid-growth
+# Core categorization (all required)
+sectors: [primary-sector]  # Must be from existing taxonomy - use kebab-case
+markets: [market-code]  # Must be from existing taxonomy - use kebab-case
+description: "Brief compelling description of the brand (1-2 sentences)."
 
 # Brand basics
-description: "Short compelling description of the brand (1-2 sentences)."
 slogan: "Brand slogan or tagline"
 founding_year: YYYY
 website: "https://example.com"
@@ -30,17 +26,17 @@ contact_email: "contact@example.com"
 founder:
   name: "Founder Name"
   story: "Two-sentence founder summary"
-  generation: "first" # first, second, or transition
-  transition_status: "active" # succession, seeking-partners, expansion
-  founder_led: true # Is the founder still actively leading the company?
-  deceased: false # Is the founder deceased?
+  generation: "first"  # first, second, or transition
+  transition_status: "active"  # active, succession, seeking-partners, expansion
+  founder_led: true  # Is the founder still actively leading?
+  deceased: false  # Is the founder deceased?
 
 # Location details
 location:
-  country: [country]
+  country_code: "xx"  # Two-letter country code
   region: "Region/Province/State"
-  city: "City"
-  coordinates: [longitude, latitude]
+  city: "City Name"
+  coordinates: [longitude, latitude]  # For map display
 
 # Timeline milestones
 timeline:
@@ -82,23 +78,28 @@ awards:
 international:
   markets: [country1, country2]
   export_ready: true
-  distribution_models: [direct-export, distributors] # options: direct-export, distributors, e-commerce, franchise, joint-venture
+  distribution_models: [direct-export, distributors]  # options: direct-export, distributors, e-commerce, franchise, joint-venture
 
 # Partnership opportunities (premium feature)
 partnerships:
   seeking: [distributor, investor, technology]
   requirements: "Brief description of partner requirements"
 
-# Image assets
-logo: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/logo-color.png"
-hero_image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/hero-main.jpg"
-founder_portrait: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/portrait-founder.jpg"
+# Extended taxonomy
+subsectors: [specific-niche]  # Optional subcategories - use kebab-case
+attributes: [attribute1, attribute2]  # From existing attributes taxonomy - use kebab-case
+signals: [signal1, signal2]  # From existing signals taxonomy - use kebab-case
+
+# Image assets (hardcoded paths)
+logo: "/assets/images/brands/xx/brand-slug/originals/logo-color.png"
+hero_image: "/assets/images/brands/xx/brand-slug/originals/hero-main.jpg"
+founder_portrait: "/assets/images/brands/xx/brand-slug/originals/founder-portrait.jpg"
 gallery:
-  - image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/gallery-image1.jpg"
+  - image: "/assets/images/brands/xx/brand-slug/originals/gallery-image1.jpg"
     caption: "Caption for first gallery image"
-  - image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/gallery-image2.jpg"
+  - image: "/assets/images/brands/xx/brand-slug/originals/gallery-image2.jpg"
     caption: "Caption for second gallery image"
-  - image: "/assets/images/brands/{{ page.country_code }}/{{ page.slug }}/originals/gallery-image3.jpg"
+  - image: "/assets/images/brands/xx/brand-slug/originals/gallery-image3.jpg"
     caption: "Caption for third gallery image"
 
 # Related content
@@ -106,7 +107,7 @@ related_brands: [related-brand-1, related-brand-2]
 
 # Content status/display
 featured: false
-featured_level: 2  # 0=basic, 1=featured on map, 2=full profile
+featured_level: 2  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: true
 ---
 <!--
@@ -123,7 +124,7 @@ Related templates:
 - _templates/brands/brand-lite.md (Basic profile with essential sections)
 
 Remember to process images after creation with:
-./_scripts/process_brand_images.sh {{ page.country_code }} {{ page.slug }}
+./_scripts/process_brand_images.sh xx brand-slug
 -->
 
 ## About BRAND NAME
@@ -190,6 +191,18 @@ Information about global distribution and international strategy:
 - Export readiness assessment and future market expansion plans
 - International partnerships or collaborations
 - Performance in global markets compared to domestic market
+
+## Location Intelligence
+
+Geographic context and spatial analysis information:
+
+- Detailed geographic context of the brand's location and significance
+- Regional brand clusters and proximity relationships
+- Market saturation analysis for the brand's category within the region
+- Travel and tourism patterns relevant to brand discovery
+- Transportation infrastructure supporting brand accessibility
+- Geographic expansion patterns and opportunities
+- Cultural and economic characteristics of the location that impact brand positioning
 
 ## Gallery
 

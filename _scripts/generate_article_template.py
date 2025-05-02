@@ -11,18 +11,19 @@ Usage:
     
     The script will guide you through selecting:
     - Content category
+    - Market code (e.g., ru, cn, ae)
     - Article slug for URLs
     - Article titles in all three languages
     
-    Then it generates the template files in the appropriate language directories.
+    Then it generates the template files in the appropriate language/market directories.
 
 Requirements:
     - PyYAML library: pip install pyyaml
     - Proper directory structure with _data/insights/{lang}.yml files
-    - _insights/{lang}/ directories for output
+    - _insights/{lang}/{market}/ directories for output
 
 Author: Randal Eastman
-Created: April 27, 2025
+Updated: May 2, 2025
 """
 
 import os
@@ -70,7 +71,7 @@ def load_categories():
             
         return []
 
-def generate_article_template(category=None, slug=None, title_en=None):
+def generate_article_template(category=None, market=None, slug=None, title_en=None):
     """
     Generates article templates in all three languages
     """
@@ -97,6 +98,13 @@ def generate_article_template(category=None, slug=None, title_en=None):
                     print(f"Please enter a number between 1 and {len(categories_list)}")
             except ValueError:
                 print("Please enter a valid number")
+    
+    # Prompt for market code if not provided
+    if not market:
+        market = input("\nEnter market code (e.g., ru, cn, ae): ").lower()
+        if not market:
+            print("Market code is required.")
+            sys.exit(1)
     
     # Load category data for all languages
     categories = {}
@@ -160,18 +168,29 @@ category: "{category_map[lang]}"
 secondary_categories: []
 date: {today}
 author: ""
+show_author: false
+show_date: true
 excerpt: ""
+ref: {slug}
+lang: {lang}
+permalink: /{lang}/insights/{market}/{slug}/
+reading_time: 0
+
+images:
+  hero: "/assets/images/insights/{market}/{slug}/hero-{slug}.jpg"
+  logo: "/assets/images/insights/{market}/{slug}/logo-brand.png"
+  founder: "/assets/images/insights/{market}/{slug}/founder-portrait.jpg"
+
 sectors: []
 markets: []
 attributes: []
 signals: []
-brands: []
-image: /assets/images/insights/{slug}.jpg
+brands: 
+  - market: {market}
+    brand: ""
+
 featured: false
 premium: false
-permalink: /{lang}/insights/{slug}/
-lang: {lang}
-reading_time: 0
 ---
 
 ## First Section Heading
@@ -184,8 +203,13 @@ Write your second section content here.
 """
         
         # Ensure directory exists
-        insights_dir = os.path.join(PROJECT_ROOT, '_insights', lang)
+        insights_dir = os.path.join(PROJECT_ROOT, '_insights', lang, market)
         os.makedirs(insights_dir, exist_ok=True)
+        
+        # Ensure image directory exists
+        image_dir = os.path.join(PROJECT_ROOT, 'assets', 'images', 'insights', market, slug, 'originals')
+        os.makedirs(image_dir, exist_ok=True)
+        print(f"Created image directory: {image_dir}")
         
         # Write template file
         filepath = os.path.join(insights_dir, f"{slug}.md")
@@ -193,12 +217,18 @@ Write your second section content here.
             f.write(template)
             
         print(f"Created {filepath}")
+    
+    print("\nDon't forget to:")
+    print(f"1. Add images to: assets/images/insights/{market}/{slug}/originals/")
+    print(f"2. Process images with: ./_scripts/process_site_images.sh insights")
+    print(f"3. Complete the content in all three language files")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate multilingual article templates")
     parser.add_argument('--category', help="Category ID (e.g. brand_spotlight)")
+    parser.add_argument('--market', help="Market code (e.g. ru, cn, ae)")
     parser.add_argument('--slug', help="Article slug for URL")
     parser.add_argument('--title', help="Article title in English")
     
     args = parser.parse_args()
-    generate_article_template(args.category, args.slug, args.title)
+    generate_article_template(args.category, args.market, args.slug, args.title)
