@@ -8,18 +8,19 @@
   - insight: Insight object with complete details (required)
     Expected properties:
     - title: Insight title
-    - image: Path to thumbnail image
+    - images.hero: Path to thumbnail image (updated structure)
     - premium: Boolean flag for premium insights (optional)
     - date: Publication date
-    - author: Author name
+    - author_en, author_ru, author_zh: Author names by language
     - excerpt: Short excerpt or description
-    - sectors: Array of sector names
-    - markets: Array of market names
+    - sectors: Array of sector slugs (not names)
+    - markets: Array of market slugs (not names)
     - url: URL to insight detail page
     - cta: Custom call-to-action text (optional, default: "Read More")
   
   Dependencies:
   - CSS: insight-card.css for styling
+  - site.data.translations for dimension names
   
   Example Usage:
   {% for insight in site.insights %}
@@ -27,18 +28,18 @@
   {% endfor %}
   
   Notes:
-  - Displays a premium badge for premium content
-  - Shows publication date and author information
-  - Only displays first 3 sectors, with a +X indicator for additional sectors
-  - Shows all markets without truncation
+  - Now uses images.hero instead of single image field
+  - Displays author based on current language
+  - Converts sector and market slugs to display names using translations
+  - Truncates to first 3 sectors with +X indicator
   - Uses BEM naming conventions for all CSS classes
-  - Automatically links to the insight detail page
-  - Supports custom call-to-action text
 {% endcomment %}
 
 <article class="insight-card">
   <div class="insight-card__image">
-    <img src="{{ insight.image }}" alt="{{ insight.title }} thumbnail">
+    {% if insight.images.hero %}
+      <img src="{{ insight.images.hero }}" alt="{{ insight.title }} thumbnail">
+    {% endif %}
     {% if insight.premium %}
       <div class="insight-card__premium-badge">
         <span class="insight-card__premium-icon">★</span>
@@ -50,30 +51,39 @@
     <h3 class="insight-card__title">{{ insight.title }}</h3>
 
     <div class="insight-card__meta">
-      <span class="insight-card__date">{{ insight.date }}</span>
-      <span class="insight-card__author">{{ insight.author }}</span>
+      <span class="insight-card__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
+      <span class="insight-card__author">
+        {% if page.lang == 'en' %}{{ insight.author_en }}{% endif %}
+        {% if page.lang == 'ru' %}{{ insight.author_ru }}{% endif %}
+        {% if page.lang == 'zh' %}{{ insight.author_zh }}{% endif %}
+      </span>
     </div>
 
     <p class="insight-card__excerpt">{{ insight.excerpt }}</p>
 
     <div class="insight-card__taxonomy">
+      {% if insight.sectors %}
       <div class="insight-card__sectors">
-        {% for sector in insight.sectors %}
-          <span class="insight-card__sector-tag">{{ sector }}</span>
+        {% for sector in insight.sectors limit:3 %}
+          <span class="insight-card__sector-tag">{{ site.data.dimensions[page.lang].sectors[sector] }}</span>
         {% endfor %}
         {% if insight.sectors.size > 3 %}
           <span class="insight-card__more-tag">+{{ insight.sectors.size | minus:3 }}</span>
         {% endif %}
       </div>
+      {% endif %}
+      
+      {% if insight.markets %}
       <div class="insight-card__markets">
         {% for market in insight.markets %}
-          <span class="insight-card__market-tag">{{ market }}</span>
+          <span class="insight-card__market-tag">{{ site.data.dimensions[page.lang].markets[market] }}</span>
         {% endfor %}
       </div>
+      {% endif %}
     </div>
 
     <a href="{{ insight.url }}" class="insight-card__read-more">
-      {{ insight.cta | default: "Read More" }}
+      {{ insight.cta | default: site.data.translations[page.lang].insights.read_more }}
     </a>
   </div>
 </article>

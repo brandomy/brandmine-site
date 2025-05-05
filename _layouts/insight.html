@@ -35,14 +35,18 @@ layout: default
             ← {{ site.data.translations[page.lang].insights.back_to_insights }}
           </a>
           
-          <div class="insight-type-badge">{{ page.content_type }}</div>
+          <div class="insight-type-badge">{{ page.category }}</div>
           
           <h1>{{ page.title }}</h1>
           
           <div class="insight-meta">
             <span class="insight-date">{{ site.data.translations[page.lang].insights.published_on }} {{ page.date | date: "%B %-d, %Y" }}</span>
-            {% if page.author %}
-            <span class="insight-author">{{ site.data.translations[page.lang].insights.author }}: {{ page.author }}</span>
+            {% if page.author_en and page.author_ru and page.author_zh %}
+            <span class="insight-author">{{ site.data.translations[page.lang].insights.author }}: 
+              {% if page.lang == 'en' %}{{ page.author_en }}{% endif %}
+              {% if page.lang == 'ru' %}{{ page.author_ru }}{% endif %}
+              {% if page.lang == 'zh' %}{{ page.author_zh }}{% endif %}
+            </span>
             {% endif %}
             
             {% if page.premium %}
@@ -50,9 +54,9 @@ layout: default
             {% endif %}
           </div>
           
-          {% if page.image %}
+          {% if page.images.hero %}
           <div class="insight-feature-image">
-            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+            <img src="{{ page.images.hero | relative_url }}" alt="{{ page.title }}">
           </div>
           {% endif %}
         </div>
@@ -67,7 +71,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.sectors }}</h4>
             <div class="sector-tags">
               {% for sector in page.sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="tag sector-tag">{{ sector }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag sector-tag">{{ sector }}</a>
               {% endfor %}
             </div>
           </div>
@@ -78,7 +82,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.markets }}</h4>
             <div class="market-tags">
               {% for market in page.markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="tag market-tag">{{ market }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag market-tag">{{ market }}</a>
               {% endfor %}
             </div>
           </div>
@@ -89,7 +93,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.attributes }}</h4>
             <div class="attribute-tags">
               {% for attribute in page.attributes %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/" class="tag attribute-tag">{{ attribute }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="tag attribute-tag">{{ attribute }}</a>
               {% endfor %}
             </div>
           </div>
@@ -100,7 +104,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.signals }}</h4>
             <div class="signal-tags">
               {% for signal in page.signals %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/" class="tag signal-tag">{{ signal }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="tag signal-tag">{{ signal }}</a>
               {% endfor %}
             </div>
           </div>
@@ -109,20 +113,20 @@ layout: default
       </div>
       
       <div class="insight-detail-sidebar">
-        {% if page.related_brands %}
+        {% if page.brands %}
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].insights.related_brands }}</h3>
           <div class="related-brands">
-            {% for related_brand_slug in page.related_brands %}
-              {% assign related_brand = site.brands | where: "slug", related_brand_slug | where: "lang", page.lang | first %}
-              {% if related_brand %}
+            {% for brand_slug in page.brands %}
+              {% assign brand = site.brands | where: "ref", brand_slug | where: "lang", page.lang | first %}
+              {% if brand %}
               <div class="sidebar-brand-card">
-                <h4><a href="{{ related_brand.url | relative_url }}">{{ related_brand.title }}</a></h4>
+                <h4><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h4>
                 <div class="brand-brief">
-                  {% if related_brand.sectors %}
-                  <span class="sector-label">{{ related_brand.sectors[0] }}</span>
+                  {% if brand.sectors %}
+                  <span class="sector-label">{{ brand.sectors[0] }}</span>
                   {% endif %}
-                  <p>{{ related_brand.description | truncate: 80 }}</p>
+                  <p>{{ brand.description | truncate: 80 }}</p>
                 </div>
               </div>
               {% endif %}
@@ -134,8 +138,7 @@ layout: default
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].insights.related }}</h3>
           <div class="related-insights">
-            {% assign content_type = page.content_type %}
-            {% assign related_insights = site.insights | where: "lang", page.lang | where: "content_type", content_type | where_exp: "item", "item.url != page.url" | sample: 3 %}
+            {% assign related_insights = site.insights | where: "lang", page.lang | where: "category", page.category | where_exp: "item", "item.url != page.url" | sample: 3 %}
             {% for related in related_insights %}
             <div class="related-insight">
               <h4><a href="{{ related.url | relative_url }}">{{ related.title }}</a></h4>

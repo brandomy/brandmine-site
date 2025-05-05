@@ -14,7 +14,7 @@ layout: default
   Purpose:
   - Displays a grid of all insights (most recent first)
   - Includes sidebar filters for:
-    - Content types (e.g. Spotlight, Interview)
+    - Types (e.g. Brand Spotlight, Founders Journey)
     - Associated Sectors
     - Associated Markets
   - Uses insight-card include to render each item in the grid
@@ -53,22 +53,22 @@ layout: default
       
       <div class="insights-sidebar">
         <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].insights.content_types }}</h3>
+          <h3>{{ site.data.translations[page.lang].insights.types }}</h3>
           <ul class="content-type-list">
-            {% assign content_types = insights | map: "content_type" | uniq %}
-            {% for type in content_types %}
-            <li><a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type | slugify }}/">{{ type }}</a></li>
+            {% assign categories = insights | map: "category" | uniq %}
+            {% for type in categories %}
+            <li><a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type }}/">{{ type }}</a></li>
             {% endfor %}
           </ul>
         </div>
         
-        <!-- Tag taxonomy sections -->
+        <!-- Dimension taxonomy sections -->
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].dimensions.sectors }}</h3>
           <div class="tag-list sidebar-tags">
             {% assign sectors = insights | map: "sectors" | flatten | uniq %}
             {% for sector in sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="tag sector-tag">{{ sector }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag tag--sector">{{ site.data.dimensions[page.lang].sectors[sector] }}</a>
             {% endfor %}
           </div>
         </div>
@@ -78,7 +78,7 @@ layout: default
           <div class="tag-list sidebar-tags">
             {% assign markets = insights | map: "markets" | flatten | uniq %}
             {% for market in markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="tag market-tag">{{ market }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag tag--market">{{ site.data.dimensions[page.lang].markets[market] }}</a>
             {% endfor %}
           </div>
         </div>

@@ -13,83 +13,93 @@
    Size Variants
    -------------------------------------------------------------------------- */
 
-.taxonomy-icon--small {
-  width: 32px;
-  height: 32px;
-}
+.taxonomy-icon {
+  &--small {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+  }
 
-.taxonomy-icon--medium {
-  width: 48px;
-  height: 48px;
-}
+  &--medium {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+  }
 
-.taxonomy-icon--large {
-  width: 96px;
-  height: 96px;
+  &--large {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+  }
 }
 
 /* --------------------------------------------------------------------------
    Dimension-specific Styling
    -------------------------------------------------------------------------- */
 
-.taxonomy-icon--sectors {
-  border-radius: 25%;
-  background-color: var(--olive-50);
-  padding: 4px;
-}
+.taxonomy-icon {
+  &--sectors {
+    border-radius: var(--icon-radius-default);
+    background-color: var(--olive-50);
+    padding: var(--icon-padding-default);
+  }
 
-.taxonomy-icon--attributes {
-  border-radius: 25%;
-  background-color: var(--secondary-50);
-  padding: 4px;
-}
+  &--attributes {
+    border-radius: var(--icon-radius-default);
+    background-color: var(--secondary-50);
+    padding: var(--icon-padding-default);
+  }
 
-.taxonomy-icon--signals {
-  border-radius: 25%;
-  background-color: var(--accent-50);
-  padding: 4px;
-}
+  &--signals {
+    border-radius: var(--icon-radius-default);
+    background-color: var(--accent-50);
+    padding: var(--icon-padding-default);
+  }
 
-.taxonomy-icon--markets {
-  border-radius: 25%;
-  background-color: var(--sky-50);
-  padding: 4px;
+  &--markets {
+    border-radius: var(--icon-radius-default);
+    background-color: var(--sky-50);
+    padding: var(--icon-padding-default);
+  }
 }
 
 /* --------------------------------------------------------------------------
    Insights Category Styling
    -------------------------------------------------------------------------- */
 
-.taxonomy-icon--insights {
-  border-radius: 25%;
-  background-color: var(--primary-50);
-  padding: 4px;
+.taxonomy-icon {
+  &--insights {
+    border-radius: var(--icon-radius-default);
+    background-color: var(--primary-50);
+    padding: var(--icon-padding-default);
+  }
 }
 
 /* Insights category-specific colors (optional refinement) */
-.taxonomy-icon--insights[src*="founders-journey"] {
-  background-color: var(--primary-100);  /* Teal - slightly darker for distinction */
-}
+.taxonomy-icon--insights {
+  &[src*="founders-journey"] {
+    background-color: var(--primary-100);  /* Teal - slightly darker for distinction */
+  }
 
-.taxonomy-icon--insights[src*="brand-spotlight"] {
-  background-color: var(--secondary-50);  /* Orange shade */
-}
+  &[src*="brand-spotlight"] {
+    background-color: var(--secondary-50);  /* Orange shade */
+  }
 
-.taxonomy-icon--insights[src*="market-milestone"] {
-  background-color: var(--accent-50);  /* Purple shade */
-}
+  &[src*="market-milestone"] {
+    background-color: var(--accent-50);  /* Purple shade */
+  }
 
-.taxonomy-icon--insights[src*="cultural-signature"] {
-  background-color: var(--olive-50);  /* Olive shade */
+  &[src*="cultural-signature"] {
+    background-color: var(--olive-50);  /* Olive shade */
+  }
 }
 
 /* --------------------------------------------------------------------------
-   Responsive Adjustments
+   Mobile-First Responsive Adjustments (if needed)
    -------------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
-  .taxonomy-icon--large {
-    width: 64px;
-    height: 64px;
-  }
-}
+/* Base styles are mobile-first. Add enhancements for larger screens if needed. */
+/* Example: If you need different sizing on larger screens */
+/* @media (min-width: 480px) {
+    .taxonomy-icon--large {
+      width: var(--icon-size-lg);
+      height: var(--icon-size-lg);
+    }
+} */
