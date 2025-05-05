@@ -36,8 +36,8 @@ brands: [brand-slug]  # Featured brand(s)
 # Images - Same for all language versions (DO NOT TRANSLATE)
 images:
   hero: "/assets/images/insights/ru/brand-slug-spotlight/originals/hero-[description].jpg"
-  founder_portrait: "/assets/images/insights/ru/brand-slug-spotlight/originals/founder-portrait-[name].jpg"
-  logo: "/assets/images/insights/ru/brand-slug-spotlight/originals/logo-[description].jpg"
+  founder_portrait: "/assets/images/insights/ru/brand-slug-spotlight/originals/founder-portrait-[name].jpg"  # Optional
+  logo: "/assets/images/insights/ru/brand-slug-spotlight/originals/logo-[description].png"  # Optional
 
 # ============================================================================
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE

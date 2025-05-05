@@ -37,7 +37,7 @@ brands: [brand-slug1, brand-slug2]  # Exact slugs only
 images:
   hero: "/assets/images/insights/ru/location-analysis/originals/hero-[region-landmark].jpg"
   founder_portrait: "/assets/images/insights/ru/location-analysis/originals/founder-portrait-[name].jpg"  # Optional
-  logo: "/assets/images/insights/ru/location-analysis/originals/logo-[regional-brand].jpg"  # Optional
+  logo: "/assets/images/insights/ru/location-analysis/originals/logo-[regional-brand].png"  # Optional
 
 # ============================================================================
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE

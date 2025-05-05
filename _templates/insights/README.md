@@ -232,8 +232,8 @@ Use these exact category values (kebab-case):
 ## File Naming
 
 Article files should use descriptive slugs that indicate content:
-- `7-spices-spotlight.md` (not `article1.md`)
-- `teatime-founders-journey.md` (not `founder-story.md`)
+- `seven-spices-spotlight.md` (not `article1.md`)
+- `teatime-founder-journey.md` (not `founder-story.md`)
 - `siberian-honey-corridor.md` (not `location-analysis.md`)
 
 ## Support

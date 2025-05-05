@@ -37,7 +37,7 @@ brands: [brand-slug1, brand-slug2]  # Exact slugs only
 images:
   hero: "/assets/images/insights/ru/market-momentum/originals/hero-[market-scene].jpg"
   founder_portrait: "/assets/images/insights/ru/market-momentum/originals/founder-portrait-[name].jpg"  # Optional
-  logo: "/assets/images/insights/ru/market-momentum/originals/logo-[brand-name].jpg"  # Optional
+  logo: "/assets/images/insights/ru/market-momentum/originals/logo-[brand-name].png"  # Optional
 
 # ============================================================================
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE

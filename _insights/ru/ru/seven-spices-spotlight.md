@@ -1,4 +1,8 @@
 ---
+# INSIGHT TEMPLATE - BRAND SPOTLIGHT
+# Location: _templates/insights/insight-brand-spotlight.md
+# Use this template for brand spotlight articles
+
 # ============================================================================
 # METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
 # Keep these fields exactly as shown, in English, for all language versions
@@ -23,17 +27,25 @@ featured: false
 premium: false
 
 # Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [gourmet-foods]  # Exact slugs only
-markets: [russia]  # Exact slugs only
-attributes: [heritage-brand, artisanal-excellence]  # Exact slugs only
-signals: [export-ready, investment-ready]  # Exact slugs only
-brands: [seven-spices]  # Exact slugs only
+sectors: [gourmet-foods]  # Use exact slugs from dimensions file
+markets: [russia]  # Use exact slugs from dimensions file
+attributes: [heritage-brand, artisanal-excellence]  # Use exact slugs from dimensions file
+signals: [export-ready, investment-ready]  # Use exact slugs from dimensions file
+brands: [seven-spices]  # Featured brand(s)
 
 # Images - Same for all language versions (DO NOT TRANSLATE)
 images:
   hero: "/assets/images/insights/ru/seven-spices-spotlight/originals/hero-moscow-spice-market.jpg"
-  founder_portrait: "/assets/images/insights/ru/seven-spices-spotlight/originals/founder-portrait-marina-petrova.jpg"
-  logo: "/assets/images/insights/ru/seven-spices-spotlight/originals/logo-seven-spices.jpg"
+  founder_portrait: "/assets/images/insights/ru/seven-spices-spotlight/originals/founder-portrait-marina-petrova.jpg"  # Optional
+  logo: "/assets/images/insights/ru/seven-spices-spotlight/originals/logo-seven-spices.png"  # Optional
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+title: "Brand Spotlight: Seven Spices - Reviving Russian Spice Traditions"
+author: "randal_eastman"  # Use underscore_slug as key (e.g., "randal_eastman")
+excerpt: "Seven Spices is reintroducing traditional Russian spice blends to modern cuisine, combining heritage recipes with modern production for export to global markets."
 ---
 
 ## Reimagining Russia's Flavor Palette
