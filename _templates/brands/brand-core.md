@@ -3,35 +3,38 @@
 # Absolute minimum fields required for a valid brand page
 # See _templates/brands/ for lite and full versions
 
-# Core identification (all required)
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "BRAND NAME"
 ref: brand-slug  # Used for language switcher and as the slug
 country_code: "xx"  # ISO country code (ru, br, cn, in, za)
+
+# Language and routing
 lang: en
 permalink: /en/brands/xx/brand-slug/
 
 # Core categorization (all required)
 sectors: [primary-sector]  # Must be from existing taxonomy - use kebab-case
 markets: [market-code]  # Must be from existing taxonomy - use kebab-case
-description: "Brief description (1-2 sentences)."
 
 # Basic essentials (all required)
 founding_year: YYYY
 website: "https://example.com"
 
-# Founder information (required)
+# Founder technical information
 founder:
-  name: "Founder Name"
   founder_led: true  # Is the founder still actively leading?
 
 # Location (required for map)
 location:
   country_code: "xx"  # Two-letter country code
-  city: "City Name"
   coordinates: [longitude, latitude]  # For map display
 
-# Basic image assets (required)
+# Image assets (required)
 logo: "/assets/images/brands/xx/brand-slug/originals/logo-color.png"
 hero_image: "/assets/images/brands/xx/brand-slug/originals/hero-main.jpg"
 founder_portrait: "/assets/images/brands/xx/brand-slug/originals/founder-portrait.jpg"
@@ -40,7 +43,23 @@ founder_portrait: "/assets/images/brands/xx/brand-slug/originals/founder-portrai
 featured: false
 featured_level: 0  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "BRAND NAME"
+description: "Brief description (1-2 sentences)."
+
+# Founder information
+founder:
+  name: "Founder Name"  # Translate to appropriate format for target language
+
+# Location details (translatable parts)
+location:
+  city: "City Name"  # Translate city name
 ---
+
 <!--
 BRAND CORE TEMPLATE
 Absolute minimum required fields for a valid brand page.

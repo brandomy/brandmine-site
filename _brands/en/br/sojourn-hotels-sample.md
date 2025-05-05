@@ -1,43 +1,92 @@
 ---
-# Core identification
+# BRAND FULL TEMPLATE
+# Complete profile with all possible fields and sections
+# See _templates/brands/ for core and lite versions
+
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "Sojourn Boutique Hotels"
 ref: sojourn-hotels  # Used for language switcher and as the slug
-country_code: "br"  # ISO country code for permalink
+country_code: "br"  # ISO country code
+
+# Language and routing
 lang: en
 permalink: /en/brands/br/sojourn-hotels/
 
-# Core categorization
+# Core taxonomy
 sectors: [hotels-resorts]
 subsectors: [Boutique Hotels, Eco-Retreats]
 markets: [brazil]
 attributes: [founder-led, sustainability-pioneer]
 signals: [franchise-ready, growth-ready]
 
-# Brand basics
-description: "A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences."
-slogan: "Experience Brazil, Intimately"
+# Brand basics (non-translatable)
 founding_year: 2012
 website: "https://sojournhotels.com.br"
 contact_email: "partners@sojournhotels.com.br"
 
-# Founder information
+# Founder technical information
 founder:
-  name: "Isabela Mendez"
-  story: "Former corporate hospitality executive who left a major international chain to create locally-rooted boutique properties showcasing Brazil's natural beauty and cultural heritage."
   generation: "first"
-  transition_status: "seeking-partners" # active, expansion, seeking_partners, succession
+  transition_status: "seeking-partners"
   founder_led: true
   deceased: false
 
-# Location details
+# Location (non-translatable parts)
 location:
-  country: "Brazil"
-  region: "Multiple regions"
-  city: "Rio de Janeiro (Headquarters)"
+  country_code: "br"
   coordinates: [-43.1729, -22.9068]
 
-# Timeline milestones
+# Social media presence (do not translate URLs)
+social_media:
+  instagram: "https://instagram.com/sojournhotels"
+  facebook: "https://facebook.com/sojournhotelsbr"
+  linkedin: "https://linkedin.com/company/sojourn-hotels"
+  youtube: "https://youtube.com/c/sojournhotels"
+  twitter: "https://twitter.com/sojournhotels"
+
+# International presence
+international:
+  markets: []
+  export_ready: false
+  distribution_models: [franchise]
+
+# Image assets
+logo: "/assets/images/brands/sojourn-hotels/originals/logo-color.png"
+hero_image: "/assets/images/brands/sojourn-hotels/originals/hero-paraty-view.jpg"
+founder_portrait: "/assets/images/brands/sojourn-hotels/originals/founder-portrait.jpg"
+
+# Related content
+related_brands: [terra-brasil-tours, amazonia-organics, casa-do-sol]
+
+# Content status/display
+featured: true
+featured_level: 2  # Full profile
+location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "Sojourn Boutique Hotels"
+slogan: "Experience Brazil, Intimately"
+description: "A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences."
+
+# Founder narrative information
+founder:
+  name: "Isabela Mendez"
+  story: "Former corporate hospitality executive who left a major international chain to create locally-rooted boutique properties showcasing Brazil's natural beauty and cultural heritage."
+
+# Location details (translatable parts)
+location:
+  region: "Multiple regions"
+  city: "Rio de Janeiro (Headquarters)"
+
+# Timeline milestone events (translate event descriptions only)
 timeline:
   - year: 2012
     event: "First property opened in Paraty, coastal Rio state"
@@ -50,15 +99,7 @@ timeline:
   - year: 2023
     event: "Opened fifth location in Alto Paraíso, Goiás"
 
-# Social media presence
-social_media:
-  instagram: "https://instagram.com/sojournhotels"
-  facebook: "https://facebook.com/sojournhotelsbr"
-  linkedin: "https://linkedin.com/company/sojourn-hotels"
-  youtube: "https://youtube.com/c/sojournhotels"
-  twitter: "https://twitter.com/sojournhotels"
-
-# Certifications and awards
+# Certifications and awards (translate names only)
 certifications:
   - name: "Rainforest Alliance Sustainable Tourism Certification"
     year: 2017
@@ -74,21 +115,12 @@ awards:
   - name: "Sustainable Business Awards Brazil - Hospitality Category"
     year: 2023
 
-# International presence
-international:
-  markets: []
-  export_ready: false
-  distribution_models: [franchise] # direct_export, distributors, e_commerce, franchise, joint_venture
-
-# Partnership opportunities (premium feature)
+# Partnership information (translatable parts)
 partnerships:
   seeking: [investor, franchise-partner]
   requirements: "Looking for partners with hospitality experience and strong commitment to sustainability and local community engagement. Minimum investment of $2M USD for new property development."
 
-# Image assets
-logo: "/assets/images/brands/sojourn-hotels/originals/logo-color.png"
-hero_image: "/assets/images/brands/sojourn-hotels/originals/hero-paraty-view.jpg"
-founder_portrait: "/assets/images/brands/sojourn-hotels/originals/founder-portrait.jpg"
+# Gallery captions (translate captions only)
 gallery:
   - image: "/assets/images/brands/sojourn-hotels/originals/gallery-lobby.jpg"
     caption: "The open-air lobby of Sojourn Paraty featuring local materials and artisanal furnishings"
@@ -98,14 +130,6 @@ gallery:
     caption: "Farm-to-table dining experience at Sojourn Alto Paraíso featuring regional cuisine"
   - image: "/assets/images/brands/sojourn-hotels/originals/gallery-founder.jpg"
     caption: "Founder Isabela Mendez at the opening of the fifth Sojourn property in 2023"
-
-# Related content
-related_brands: [terra-brasil-tours, amazonia-organics, casa-do-sol]
-
-# Content status/display
-featured: true
-featured_level: 2  # Full profile
-location_intelligence: false
 ---
 
 ## About Sojourn Boutique Hotels

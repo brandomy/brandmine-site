@@ -1,43 +1,92 @@
 ---
-# Core identification
+# BRAND FULL TEMPLATE
+# Complete profile with all possible fields and sections
+# See _templates/brands/ for core and lite versions
+
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "Тайга Спиритс"
-ref: taiga-spirits   # Used for language switcher and as the slug
-country_code: "ru"  # ISO country code for permalink
+ref: taiga-spirits  # Used for language switcher and as the slug
+country_code: "ru"  # ISO country code
+
+# Language and routing
 lang: ru
 permalink: /ru/brands/ru/taiga-spirits/
 
-# Core categorization
-sectors: [Ремесленные Спиртные Напитки и Водка]
-subsectors: [Крафтовая Водка, Ботанические Спиртные Напитки, Травяные Ликеры]
-markets: [Россия]
-attributes: [Основатель-Руководитель, Ремесленное Мастерство]
-signals: [Готовность к Экспорту, Готовность к Росту]
+# Core taxonomy
+sectors: [artisanal-spirits]
+subsectors: [Craft Vodka, Botanical Spirits, Herbal Liqueurs]
+markets: [russia]
+attributes: [founder-led, artisanal-excellence]
+signals: [export-ready, growth-ready]
 
-# Brand basics
-description: "Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов."
-slogan: "Дух Дикой Природы"
+# Brand basics (non-translatable)
 founding_year: 2014
 website: "https://taigaspirits.ru"
 contact_email: "export@taigaspirits.ru"
 
-# Founder information
+# Founder technical information
 founder:
-  name: "Николай Волков"
-  story: "Бывший биолог и проводник по дикой природе, который заново открыл исторические сибирские методы дистилляции и основал дистиллерию для сохранения традиционных рецептов с использованием исчезающих дикорастущих растений."
   generation: "first"
-  transition_status: "active" # active, expansion, seeking_partners, succession
+  transition_status: "active"
   founder_led: true
   deceased: false
 
-# Location details
+# Location (non-translatable parts)
 location:
-  country: "Россия"
-  region: "Иркутская область"
-  city: "Листвянка"
+  country_code: "ru"
   coordinates: [104.8625, 51.8561]
 
-# Timeline milestones
+# Social media presence (do not translate URLs)
+social_media:
+  instagram: "https://instagram.com/taiga_spirits"
+  facebook: "https://facebook.com/taigaspirits"
+  vk: "https://vk.com/taigaspirits"
+  telegram: "https://t.me/taigaspirits_official"
+  youtube: "https://youtube.com/c/taigaspirits"
+
+# International presence
+international:
+  markets: [China, Mongolia, Kazakhstan, Germany]
+  export_ready: true
+  distribution_models: [direct-export, distributors]
+
+# Image assets
+logo: "/assets/images/brands/taiga-spirits/originals/logo-color.png"
+hero_image: "/assets/images/brands/taiga-spirits/originals/hero-distillery.jpg"
+founder_portrait: "/assets/images/brands/taiga-spirits/originals/founder-portrait.jpg"
+
+# Related content
+related_brands: [baikal-brewing, siberian-harvest, altai-botanicals]
+
+# Content status/display
+featured: true
+featured_level: 2  # Full profile
+location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "Тайга Спиритс"
+slogan: "Дух Дикой Природы"
+description: "Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов."
+
+# Founder narrative information
+founder:
+  name: "Николай Волков"
+  story: "Бывший биолог и проводник по дикой природе, который заново открыл исторические сибирские методы дистилляции и основал дистиллерию для сохранения традиционных рецептов с использованием исчезающих дикорастущих растений."
+
+# Location details (translatable parts)
+location:
+  region: "Иркутская область"
+  city: "Листвянка"
+
+# Timeline milestone events (translate event descriptions only)
 timeline:
   - year: 2014
     event: "Основание Тайга Спиритс в переоборудованной столярной мастерской у озера Байкал"
@@ -50,15 +99,7 @@ timeline:
   - year: 2022
     event: "Представление лимитированной коллекции 'Байкальские Глубины' с редкими эндемичными травами"
 
-# Social media presence
-social_media:
-  instagram: "https://instagram.com/taiga_spirits"
-  facebook: "https://facebook.com/taigaspirits"
-  vk: "https://vk.com/taigaspirits"
-  telegram: "https://t.me/taigaspirits_official"
-  youtube: "https://youtube.com/c/taigaspirits"
-
-# Certifications and awards
+# Certifications and awards (translate names only)
 certifications:
   - name: "Органический сертификат Российской Федерации"
     year: 2017
@@ -74,21 +115,12 @@ awards:
   - name: "Берлинский международный конкурс спиртных напитков - Дистиллерия года в России"
     year: 2022
 
-# International presence
-international:
-  markets: [Китай, Монголия, Казахстан, Германия]
-  export_ready: true
-  distribution_models: [direct-export, distributors] # direct_export, distributors, e_commerce, franchise, joint_venture
-
-# Partnership opportunities (premium feature)
+# Partnership information (translatable parts)
 partnerships:
-  seeking: [distributor, investor] 
+  seeking: [distributor, investor]
   requirements: "Ищем специализированных дистрибьюторов спиртных напитков с опытом работы с премиальными крафтовыми продуктами. Инвестиционных партнеров для расширения на европейский рынок с минимальным обязательством €500,000."
 
-# Image assets
-logo: "/assets/images/brands/taiga-spirits/originals/logo-color.png"
-hero_image: "/assets/images/brands/taiga-spirits/originals/hero-distillery.jpg"
-founder_portrait: "/assets/images/brands/taiga-spirits/originals/founder-portrait.jpg"
+# Gallery captions (translate captions only)
 gallery:
   - image: "/assets/images/brands/taiga-spirits/originals/gallery-bottles.jpg"
     caption: "Фирменная коллекция Тайга Спиритс с этикетками с ручной иллюстрацией ботанических ингредиентов"
@@ -98,14 +130,6 @@ gallery:
     caption: "Основатель Николай Волков собирает дикорастущие растения в тайге"
   - image: "/assets/images/brands/taiga-spirits/originals/gallery-laboratory.jpg"
     caption: "Ботаническая лаборатория, где тестируются ингредиенты и разрабатываются рецепты"
-
-# Related content
-related_brands: [baikal-brewing, siberian-harvest, altai-botanicals]
-
-# Content status/display
-featured: true
-featured_level: 2  # Full profile
-location_intelligence: false
 ---
 
 ## О компании Тайга Спиритс

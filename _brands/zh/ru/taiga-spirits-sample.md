@@ -1,43 +1,92 @@
 ---
-# Core identification
+# BRAND FULL TEMPLATE
+# Complete profile with all possible fields and sections
+# See _templates/brands/ for core and lite versions
+
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "泰加烈酒"
-ref: taiga-spirits   # Used for language switcher and as the slug
-country_code: "ru"  # ISO country code for permalink
+ref: taiga-spirits  # Used for language switcher and as the slug
+country_code: "ru"  # ISO country code
+
+# Language and routing
 lang: zh
 permalink: /zh/brands/ru/taiga-spirits/
 
-# Core categorization
-sectors: [手工烈酒和伏特加]
-subsectors: [精酿伏特加, 植物烈酒, 草药利口酒]
-markets: [俄罗斯]
-attributes: [创始人领导, 工艺卓越]
-signals: [出口准备就绪, 增长准备就绪]
+# Core taxonomy
+sectors: [artisanal-spirits]
+subsectors: [Craft Vodka, Botanical Spirits, Herbal Liqueurs]
+markets: [russia]
+attributes: [founder-led, artisanal-excellence]
+signals: [export-ready, growth-ready]
 
-# Brand basics
-description: "一家工艺酒厂，使用古老的西伯利亚配方和野生采集的原料制作特色小批量伏特加和植物烈酒。"
-slogan: "荒野之魂"
+# Brand basics (non-translatable)
 founding_year: 2014
 website: "https://taigaspirits.ru"
 contact_email: "export@taigaspirits.ru"
 
-# Founder information
+# Founder technical information
 founder:
-  name: "尼古拉·沃尔科夫"
-  story: "前生物学家和荒野向导，他重新发现了历史悠久的西伯利亚蒸馏方法，并创办了一家酒厂来保存使用濒危野生植物的传统配方。"
   generation: "first"
-  transition_status: "active" # active, expansion, seeking_partners, succession
+  transition_status: "active"
   founder_led: true
   deceased: false
 
-# Location details
+# Location (non-translatable parts)
 location:
-  country: "俄罗斯"
-  region: "伊尔库茨克州"
-  city: "利斯特维扬卡"
+  country_code: "ru"
   coordinates: [104.8625, 51.8561]
 
-# Timeline milestones
+# Social media presence (do not translate URLs)
+social_media:
+  instagram: "https://instagram.com/taiga_spirits"
+  facebook: "https://facebook.com/taigaspirits"
+  vk: "https://vk.com/taigaspirits"
+  telegram: "https://t.me/taigaspirits_official"
+  youtube: "https://youtube.com/c/taigaspirits"
+
+# International presence
+international:
+  markets: [China, Mongolia, Kazakhstan, Germany]
+  export_ready: true
+  distribution_models: [direct-export, distributors]
+
+# Image assets
+logo: "/assets/images/brands/taiga-spirits/originals/logo-color.png"
+hero_image: "/assets/images/brands/taiga-spirits/originals/hero-distillery.jpg"
+founder_portrait: "/assets/images/brands/taiga-spirits/originals/founder-portrait.jpg"
+
+# Related content
+related_brands: [baikal-brewing, siberian-harvest, altai-botanicals]
+
+# Content status/display
+featured: true
+featured_level: 2  # Full profile
+location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "泰加烈酒"
+slogan: "荒野之魂"
+description: "一家工艺酒厂，使用古老的西伯利亚配方和野生采集的原料制作特色小批量伏特加和植物烈酒。"
+
+# Founder narrative information
+founder:
+  name: "尼古拉·沃尔科夫"
+  story: "前生物学家和荒野向导，他重新发现了历史悠久的西伯利亚蒸馏方法，并创办了一家酒厂来保存使用濒危野生植物的传统配方。"
+
+# Location details (translatable parts)
+location:
+  region: "伊尔库茨克州"
+  city: "利斯特维扬卡"
+
+# Timeline milestone events (translate event descriptions only)
 timeline:
   - year: 2014
     event: "泰加烈酒在贝加尔湖附近的一个改建木工车间成立"
@@ -50,15 +99,7 @@ timeline:
   - year: 2022
     event: "推出限量版'贝加尔深度'系列，特色是稀有特有植物"
 
-# Social media presence
-social_media:
-  instagram: "https://instagram.com/taiga_spirits"
-  facebook: "https://facebook.com/taigaspirits"
-  vk: "https://vk.com/taigaspirits"
-  telegram: "https://t.me/taigaspirits_official"
-  youtube: "https://youtube.com/c/taigaspirits"
-
-# Certifications and awards
+# Certifications and awards (translate names only)
 certifications:
   - name: "俄罗斯联邦有机认证"
     year: 2017
@@ -74,21 +115,12 @@ awards:
   - name: "柏林国际烈酒大赛 - 俄罗斯年度酒厂"
     year: 2022
 
-# International presence
-international:
-  markets: [中国, 蒙古, 哈萨克斯坦, 德国]
-  export_ready: true
-  distribution_models: [direct-export, distributors] # direct_export, distributors, e_commerce, franchise, joint_venture
-
-# Partnership opportunities (premium feature)
+# Partnership information (translatable parts)
 partnerships:
-  seeking: [distributor, investor] 
+  seeking: [distributor, investor]
   requirements: "寻找有经验处理高端手工产品的专业烈酒经销商。欧洲市场扩张的投资合作伙伴，最低承诺50万欧元。"
 
-# Image assets
-logo: "/assets/images/brands/taiga-spirits/originals/logo-color.png"
-hero_image: "/assets/images/brands/taiga-spirits/originals/hero-distillery.jpg"
-founder_portrait: "/assets/images/brands/taiga-spirits/originals/founder-portrait.jpg"
+# Gallery captions (translate captions only)
 gallery:
   - image: "/assets/images/brands/taiga-spirits/originals/gallery-bottles.jpg"
     caption: "泰加烈酒标志性系列产品，配有手绘植物标签"
@@ -98,14 +130,6 @@ gallery:
     caption: "创始人尼古拉·沃尔科夫在泰加森林采集野生植物"
   - image: "/assets/images/brands/taiga-spirits/originals/gallery-laboratory.jpg"
     caption: "植物实验室，用于测试成分和开发配方"
-
-# Related content
-related_brands: [baikal-brewing, siberian-harvest, altai-botanicals]
-
-# Content status/display
-featured: true
-featured_level: 2  # Full profile
-location_intelligence: false
 ---
 
 ## 关于泰加烈酒

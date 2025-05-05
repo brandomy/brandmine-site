@@ -1,41 +1,63 @@
 ---
-# Core identification
+# BRAND CORE TEMPLATE
+# Absolute minimum fields required for a valid brand page
+# See _templates/brands/ for lite and full versions
+
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "Serra Verde Organics"
 ref: serra-verde  # Used for language switcher and as the slug
-country_code: "br"  # ISO country code for permalink
+country_code: "br"  # ISO country code
+
+# Language and routing
 lang: en
 permalink: /en/brands/br/serra-verde/
 
-# Core categorization
+# Core categorization (all required)
 sectors: [gourmet-foods]
 markets: [brazil]
-description: "Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region."
 
-# Basic essentials
+# Basic essentials (all required)
 founding_year: 1986
 website: "https://serraverde.com.br"
 
-# Founder information
+# Founder technical information
 founder:
-  name: "Eduardo Santos"
   founder_led: true
 
-# Location
+# Location (required for map)
 location:
-  country: "Brazil"
-  city: "Gonçalves" 
-  coordinates: [-45.8558, -22.6569]
+  country_code: "br"  # Two-letter country code
+  coordinates: [-45.8558, -22.6569]  # For map display
 
-# Basic image assets
+# Image assets (required)
 logo: "/assets/images/brands/serra-verde/originals/logo-color.png"
 hero_image: "/assets/images/brands/serra-verde/originals/hero-farm-view.jpg"
 founder_portrait: "/assets/images/brands/serra-verde/originals/founder-portrait.jpg"
 
-# Content status
+# Content status (required)
 featured: false
-featured_level: 0  # Basic listing
+featured_level: 0  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "Serra Verde Organics"
+description: "Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region."
+
+# Founder information
+founder:
+  name: "Eduardo Santos"
+
+# Location details (translatable parts)
+location:
+  city: "Gonçalves"
 ---
 
 ## About Serra Verde Organics

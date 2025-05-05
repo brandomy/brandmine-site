@@ -1,73 +1,58 @@
 ---
-# Core identification
+# BRAND LITE TEMPLATE
+# Basic profile with essential fields and sections
+# See _templates/brands/ for core and full versions
+
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "ТиТайм"
-ref: teatime   # Used for language switcher and as the slug
-country_code: "ru"  # ISO country code for permalink
+ref: teatime  # Used for language switcher and as the slug
+country_code: "ru"  # ISO country code
+
+# Language and routing
 lang: ru
 permalink: /ru/brands/ru/teatime/
 
-# Core categorization
-sectors: [Изысканные Продукты]
-subsectors: [Ремесленный Чай, Премиальные Смеси]
-markets: [Россия]
-attributes: [Историческая Марка, Управляемая Основателем]
-signals: [Готовность к Экспорту, Готовность к Инвестициям]
+# Core taxonomy
+sectors: [gourmet-foods]
+subsectors: [Artisanal Tea, Premium Blends]
+markets: [russia]
+attributes: [heritage-brand, founder-led]
+signals: [export-ready, investment-ready]
 
-# Brand basics
-description: "Премиальный российский чайный бренд, сочетающий традиционные техники с современными вкусами."
-slogan: "Заваривая Традиции, Создавая Будущее"
+# Brand basics (non-translatable)
 founding_year: 2010
 website: "https://teatime.ru"
 contact_email: "info@teatime.ru"
 
-# Founder information
+# Founder technical information
 founder:
-  name: "Алексей Соколов"
-  story: "Бывший финансист, который оставил банковское дело, чтобы следовать своей страсти к чаю после изучения традиционных техник смешивания в Китае и Индии."
   generation: "first"
-  transition_status: "active" # active, expansion, seeking_partners, succession
+  transition_status: "active"
   founder_led: true
   deceased: false
 
-# Location details
+# Location (non-translatable parts)
 location:
-  country: "Россия"
-  region: "Московская область"
-  city: "Москва"
+  country_code: "ru"
   coordinates: [37.6173, 55.7558]
 
-# Timeline milestones
-timeline:
-  - year: 2010
-    event: "ТиТайм основан в Москве Алексеем Соколовым"
-  - year: 2015
-    event: "Открыт флагманский магазин в центре Москвы"
-  - year: 2018
-    event: "Получена награда Золотой Лист за Лучший Российский Чайный Бренд"
-  - year: 2020
-    event: "Запущена программа международной доставки"
-
-# Social media presence
+# Social media presence (do not translate URLs)
 social_media:
   instagram: "https://instagram.com/teatime_ru"
   facebook: "https://facebook.com/teatimeru"
   telegram: "https://t.me/teatime_official"
   vk: "https://vk.com/teatime_ru"
 
-# Certifications and awards
-certifications:
-  - name: "Сертификат Органического Чая"
-    year: 2016
-awards:
-  - name: "Золотой Лист - Лучший Российский Чайный Бренд"
-    year: 2018
-
 # International presence
 international:
-  markets: [Польша, Чехия, Германия]
+  markets: [Poland, Czech Republic, Germany]
   export_ready: true
-  distribution_models: [direct-export, e-commerce] # direct_export, distributors, e_commerce, franchise, joint_venture
+  distribution_models: [direct-export, e-commerce]
 
 # Image assets
 logo: "/assets/images/brands/teatime/originals/logo-color.png"
@@ -81,6 +66,43 @@ related_brands: [russian-brew, moskva-chai]
 featured: true
 featured_level: 1  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "ТиТайм"
+slogan: "Заваривая Традиции, Создавая Будущее"
+description: "Премиальный российский чайный бренд, сочетающий традиционные техники с современными вкусами."
+
+# Founder narrative information
+founder:
+  name: "Алексей Соколов"
+  story: "Бывший финансист, который оставил банковское дело, чтобы следовать своей страсти к чаю после изучения традиционных техник смешивания в Китае и Индии."
+
+# Location details (translatable parts)
+location:
+  region: "Московская область"
+  city: "Москва"
+
+# Timeline milestone events (translate event descriptions only)
+timeline:
+  - year: 2010
+    event: "ТиТайм основан в Москве Алексеем Соколовым"
+  - year: 2015
+    event: "Открыт флагманский магазин в центре Москвы"
+  - year: 2018
+    event: "Получена награда Золотой Лист за Лучший Российский Чайный Бренд"
+  - year: 2020
+    event: "Запущена программа международной доставки"
+
+# Certifications and awards (translate names only)
+certifications:
+  - name: "Сертификат Органического Чая"
+    year: 2016
+awards:
+  - name: "Золотой Лист - Лучший Российский Чайный Бренд"
+    year: 2018
 ---
 
 ## О компании ТиТайм

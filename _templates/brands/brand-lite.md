@@ -3,54 +3,45 @@
 # Basic profile with essential fields and sections
 # See _templates/brands/ for core and full versions
 
-# Core identification (all required)
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "BRAND NAME"
 ref: brand-slug  # Used for language switcher and as the slug
 country_code: "xx"  # ISO country code (ru, br, cn, in, za)
+
+# Language and routing
 lang: en
 permalink: /en/brands/xx/brand-slug/
 
-# Core categorization
+# Core taxonomy
 sectors: [primary-sector]  # Must be from existing taxonomy - use kebab-case
 subsectors: [specific-niche]  # Optional subcategories - use kebab-case
 markets: [market-code]  # Must be from existing taxonomy - use kebab-case
 attributes: [attribute1, attribute2]  # From existing attributes taxonomy - use kebab-case
 signals: [signal1, signal2]  # From existing signals taxonomy - use kebab-case
 
-# Brand basics
-description: "Brief compelling description of the brand (1-2 sentences)."
-slogan: "Brand slogan or tagline"
+# Brand basics (non-translatable)
 founding_year: YYYY
 website: "https://example.com"
 contact_email: "contact@example.com"
 
-# Founder information
+# Founder technical information
 founder:
-  name: "Founder Name"
-  story: "Two-sentence founder summary"
   generation: "first"  # first, second, or transition
   transition_status: "active"  # active, succession, seeking-partners, expansion
   founder_led: true  # Is the founder still actively leading?
   deceased: false  # Is the founder deceased?
 
-# Location details
+# Location (non-translatable parts)
 location:
   country_code: "xx"  # Two-letter country code
-  region: "Region/Province/State"
-  city: "City Name"
   coordinates: [longitude, latitude]  # For map display
 
-# Timeline milestones
-timeline:
-  - year: YYYY
-    event: "Company founded"
-  - year: YYYY
-    event: "Key milestone 1"
-  - year: YYYY
-    event: "Key milestone 2"
-
-# Social media presence
+# Social media presence (do not translate URLs)
 social_media:
   instagram: ""
   facebook: ""
@@ -61,19 +52,11 @@ social_media:
   weibo: ""
   wechat: ""
 
-# Certifications and awards
-certifications:
-  - name: "Certification Name"
-    year: YYYY
-awards:
-  - name: "Award Name"
-    year: YYYY
-
 # International presence
 international:
-  markets: [country1, country2]
+  markets: [country1, country2]  # Country codes, do not translate
   export_ready: true
-  distribution_models: [direct-export, distributors]  # options: direct-export, distributors, e-commerce, franchise, joint-venture
+  distribution_models: [direct-export, distributors]  # Do not translate codes
 
 # Image assets
 logo: "/assets/images/brands/xx/brand-slug/originals/logo-color.png"
@@ -81,13 +64,49 @@ hero_image: "/assets/images/brands/xx/brand-slug/originals/hero-main.jpg"
 founder_portrait: "/assets/images/brands/xx/brand-slug/originals/founder-portrait.jpg"
 
 # Related content
-related_brands: [related-brand-1, related-brand-2]
+related_brands: [related-brand-1, related-brand-2]  # Brand slugs, do not translate
 
 # Content status/display
 featured: false
 featured_level: 1  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "BRAND NAME"
+slogan: "Brand slogan or tagline"
+description: "Brief compelling description of the brand (1-2 sentences)."
+
+# Founder narrative information
+founder:
+  name: "Founder Name"  # Translate to appropriate format for target language
+  story: "Two-sentence founder summary"  # Translate content
+
+# Location details (translatable parts)
+location:
+  region: "Region/Province/State"  # Translate region name
+  city: "City Name"  # Translate city name
+
+# Timeline milestones (translate event descriptions only)
+timeline:
+  - year: YYYY  # Do not translate year
+    event: "Company founded"  # Translate event description
+  - year: YYYY  # Do not translate year
+    event: "Key milestone 1"  # Translate event description
+  - year: YYYY  # Do not translate year
+    event: "Key milestone 2"  # Translate event description
+
+# Certifications and awards (translate names only)
+certifications:
+  - name: "Certification Name"  # Translate name
+    year: YYYY  # Do not translate year
+awards:
+  - name: "Award Name"  # Translate name
+    year: YYYY  # Do not translate year
 ---
+
 <!--
 BRAND LITE TEMPLATE
 Basic profile with essential fields and content sections.

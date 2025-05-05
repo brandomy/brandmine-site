@@ -1,41 +1,63 @@
 ---
-# Core identification
+# BRAND CORE TEMPLATE
+# Absolute minimum fields required for a valid brand page
+# See _templates/brands/ for lite and full versions
+
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "塞拉维德有机农场"
-ref: serra-verde   # Used for language switcher and as the slug
-country_code: "br"  # ISO country code for permalink
+ref: serra-verde  # Used for language switcher and as the slug
+country_code: "br"  # ISO country code
+
+# Language and routing
 lang: zh
 permalink: /zh/brands/br/serra-verde/
 
-# Core categorization
-sectors: [美食佳肴]
-markets: [巴西]
-description: "家族经营的有机保鲜品、蜂蜜和特色咖啡生产商，原料来自巴西大西洋森林地区。"
+# Core categorization (all required)
+sectors: [gourmet-foods]
+markets: [brazil]
 
-# Basic essentials
+# Basic essentials (all required)
 founding_year: 1986
 website: "https://serraverde.com.br"
 
-# Founder information
+# Founder technical information
 founder:
-  name: "爱德华多·桑托斯"
   founder_led: true
 
-# Location
+# Location (required for map)
 location:
-  country: "巴西"
-  city: "贡萨尔维斯" 
-  coordinates: [-45.8558, -22.6569]
+  country_code: "br"  # Two-letter country code
+  coordinates: [-45.8558, -22.6569]  # For map display
 
-# Basic image assets
+# Image assets (required)
 logo: "/assets/images/brands/serra-verde/originals/logo-color.png"
 hero_image: "/assets/images/brands/serra-verde/originals/hero-farm-view.jpg"
 founder_portrait: "/assets/images/brands/serra-verde/originals/founder-portrait.jpg"
 
-# Content status
+# Content status (required)
 featured: false
-featured_level: 0  # Basic listing
+featured_level: 0  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "塞拉维德有机农场"
+description: "家族经营的有机保鲜品、蜂蜜和特色咖啡生产商，原料来自巴西大西洋森林地区。"
+
+# Founder information
+founder:
+  name: "爱德华多·桑托斯"
+
+# Location details (translatable parts)
+location:
+  city: "贡萨尔维斯"
 ---
 
 ## 关于塞拉维德有机农场

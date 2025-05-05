@@ -1,113 +1,191 @@
 ---
-# Core identification
+# BRAND FULL TEMPLATE
+# Complete profile with all possible fields and sections
+# See _templates/brands/ for core and lite versions
+
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and identification
 layout: brand
-title: "TeaTime"
-ref: teatime  # Used for language switcher and as the slug
-country_code: "ru"  # ISO country code for permalink
-lang: en
-permalink: /en/brands/ru/teatime/
+ref: sojourn-hotels  # Used for language switcher and as the slug
+country_code: "br"  # ISO country code
 
-# Core categorization
-sectors: [gourmet-foods]
-subsectors: [Artisanal Tea, Premium Blends]
-markets: [russia]
-attributes: [heritage-brand, founder-led]
-signals: [export-ready, investment-ready]
+# Language and routing
+lang: ru
+permalink: /ru/brands/br/sojourn-hotels/
 
-# Brand basics
-description: "Premium Russian tea brand blending traditional techniques with modern flavors."
-slogan: "Brewing Traditions, Crafting Tomorrow"
-founding_year: 2010
-website: "https://teatime.ru"
-contact_email: "info@teatime.ru"
+# Core taxonomy
+sectors: [hotels-resorts]
+subsectors: [Boutique Hotels, Eco-Retreats]
+markets: [brazil]
+attributes: [founder-led, sustainability-pioneer]
+signals: [franchise-ready, growth-ready]
 
-# Founder information
+# Brand basics (non-translatable)
+founding_year: 2012
+website: "https://sojournhotels.com.br"
+contact_email: "partners@sojournhotels.com.br"
+
+# Founder technical information
 founder:
-  name: "Alexei Sokolov"
-  story: "Former finance professional who left banking to pursue his passion for tea after studying traditional blending techniques in China and India."
   generation: "first"
-  transition_status: "active" # active, expansion, seeking_partners, succession
+  transition_status: "seeking-partners"
   founder_led: true
   deceased: false
 
-# Location details
+# Location (non-translatable parts)
 location:
-  country: "Russia"
-  region: "Moscow Oblast"
-  city: "Moscow"
-  coordinates: [37.6173, 55.7558]
+  country_code: "br"
+  coordinates: [-43.1729, -22.9068]
 
-# Timeline milestones
-timeline:
-  - year: 2010
-    event: "TeaTime founded in Moscow by Alexei Sokolov"
-  - year: 2015
-    event: "Opened flagship store in central Moscow"
-  - year: 2018
-    event: "Won Golden Leaf Award for Best Russian Tea Brand"
-  - year: 2020
-    event: "Launched international shipping program"
-
-# Social media presence
+# Social media presence (do not translate URLs)
 social_media:
-  instagram: "https://instagram.com/teatime_ru"
-  facebook: "https://facebook.com/teatimeru"
-  telegram: "https://t.me/teatime_official"
-  vk: "https://vk.com/teatime_ru"
-
-# Certifications and awards
-certifications:
-  - name: "Organic Tea Certification"
-    year: 2016
-awards:
-  - name: "Golden Leaf Award - Best Russian Tea Brand"
-    year: 2018
+  instagram: "https://instagram.com/sojournhotels"
+  facebook: "https://facebook.com/sojournhotelsbr"
+  linkedin: "https://linkedin.com/company/sojourn-hotels"
+  youtube: "https://youtube.com/c/sojournhotels"
+  twitter: "https://twitter.com/sojournhotels"
 
 # International presence
 international:
-  markets: [Poland, Czech Republic, Germany]
-  export_ready: true
-  distribution_models: [direct-export, e-commerce] # direct_export, distributors, e_commerce, franchise, joint_venture
+  markets: []
+  export_ready: false
+  distribution_models: [franchise]
 
 # Image assets
-logo: "/assets/images/brands/teatime/originals/logo-color.png"
-hero_image: "/assets/images/brands/teatime/originals/hero-storefront.jpg"
-founder_portrait: "/assets/images/brands/teatime/originals/founder-portrait.jpg"
+logo: "/assets/images/brands/sojourn-hotels/originals/logo-color.png"
+hero_image: "/assets/images/brands/sojourn-hotels/originals/hero-paraty-view.jpg"
+founder_portrait: "/assets/images/brands/sojourn-hotels/originals/founder-portrait.jpg"
 
 # Related content
-related_brands: [russian-brew, moskva-chai]
+related_brands: [terra-brasil-tours, amazonia-organics, casa-do-sol]
 
 # Content status/display
 featured: true
-featured_level: 1  # 0=basic, 1=map marker, 2=full profile
+featured_level: 2  # Full profile
 location_intelligence: false
+
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+brand_name: "Сожурн Бутик-Отели"
+slogan: "Откройте Бразилию изнутри"
+description: "Коллекция уютных бутик-отелей, которые демонстрируют разнообразные ландшафты Бразилии через устойчивую роскошь и аутентичные местные впечатления."
+
+# Founder narrative information
+founder:
+  name: "Изабела Мендес"
+  story: "Бывший руководитель корпоративной сети гостиниц, которая ушла из крупной международной сети, чтобы создать локальные бутик-отели, демонстрирующие природную красоту и культурное наследие Бразилии."
+
+# Location details (translatable parts)
+location:
+  region: "Несколько регионов"
+  city: "Рио-де-Жанейро (Штаб-квартира)"
+
+# Timeline milestone events (translate event descriptions only)
+timeline:
+  - year: 2012
+    event: "Открытие первого отеля в Парати, прибрежный штат Рио"
+  - year: 2015
+    event: "Запуск второго отеля в Шапада-Диамантина, Баия"
+  - year: 2018
+    event: "Получение сертификата углеродной нейтральности для всех объектов"
+  - year: 2020
+    event: "Запуск франчайзинговой модели для расширения"
+  - year: 2023
+    event: "Открытие пятого отеля в Альто-Параисо, Гояс"
+
+# Certifications and awards (translate names only)
+certifications:
+  - name: "Сертификация устойчивого туризма Rainforest Alliance"
+    year: 2017
+  - name: "Сертификация углеродной нейтральности"
+    year: 2018
+  - name: "Сертификация B Corporation"
+    year: 2019
+awards:
+  - name: "Награда читателей Condé Nast Traveler - Лучшие отели Южной Америки"
+    year: 2020
+  - name: "World Travel Awards - Ведущий бутик-отельный бренд Бразилии"
+    year: 2022
+  - name: "Награды устойчивого бизнеса Бразилии - категория Гостеприимство"
+    year: 2023
+
+# Partnership information (translatable parts)
+partnerships:
+  seeking: [investor, franchise-partner]
+  requirements: "Ищем партнеров с опытом в гостиничном бизнесе и твердой приверженностью устойчивому развитию и взаимодействию с местными сообществами. Минимальные инвестиции в размере 2 млн долларов США для развития новых объектов."
+
+# Gallery captions (translate captions only)
+gallery:
+  - image: "/assets/images/brands/sojourn-hotels/originals/gallery-lobby.jpg"
+    caption: "Открытое лобби Сожурн Парати с использованием местных материалов и ремесленной мебели"
+  - image: "/assets/images/brands/sojourn-hotels/originals/gallery-suite.jpg"
+    caption: "Номер с видом на тропический лес в Сожурн Шапада-Диамантина с частным бассейном"
+  - image: "/assets/images/brands/sojourn-hotels/originals/gallery-dining.jpg"
+    caption: "Ресторан фермерской кухни в Сожурн Альто-Параисо, предлагающий региональную кухню"
+  - image: "/assets/images/brands/sojourn-hotels/originals/gallery-founder.jpg"
+    caption: "Основательница Изабела Мендес на открытии пятого отеля Сожурн в 2023 году"
 ---
 
-## About TeaTime
+## О компании Сожурн Бутик-Отели
 
-Founded in 2010 by tea enthusiast Alexei Sokolov, TeaTime has become one of Russia's premier artisanal tea brands. The company combines traditional Russian tea culture with innovative blending techniques to create distinctive flavor profiles.
+Основанная в 2012 году, сеть Сожурн Бутик-Отели представляет новое видение бразильского гостеприимства – то, которое прославляет невероятное разнообразие страны через камерные, экологически устойчивые роскошные впечатления. То, что начиналось как единственный бутик-отель с 16 номерами в историческом Парати, превратилось в коллекцию из пяти уникальных отелей, каждый из которых призван погрузить гостей в неповторимый характер своего места, сохраняя при этом общую приверженность аутентичным местным впечатлениям и заботе об окружающей среде.
 
-After spending a decade in finance, Sokolov decided to pursue his passion for tea following several trips to major tea-producing regions in China and India. TeaTime began as a small specialty store in Moscow and has since grown to become Russia's most recognized premium tea brand, with products now available in select European markets.
+Каждый объект Сожурн создается путем бережной реставрации исторических зданий или малоинвазивного нового строительства с использованием местных материалов и традиционных строительных технологий. Философия бренда основана на концепции "чувства места" – убеждении, что отель должен служить воротами к познанию культуры, кухни и природной среды региона таким образом, чтобы это приносило пользу местным сообществам.
 
-## Founder's Journey
+Со стратегически расположенными объектами вдоль побережья Бразилии и в ее впечатляющих внутренних регионах, Сожурн утвердился как ведущий бутик-отельный бренд страны для сознательных путешественников, ищущих значимые связи с разнообразными ландшафтами и культурами Бразилии.
 
-Alexei Sokolov's path to becoming a tea entrepreneur began with a transformative trip to China's Yunnan province in 2008. Disillusioned with his banking career during the financial crisis, he spent three months studying under tea masters in both China and India, learning the delicate art of tea blending and appreciation.
+## Путь основателя
 
-"I realized that Russia had a rich tea culture dating back centuries, but little innovation in recent decades," explains Sokolov. "I saw an opportunity to honor our traditions while introducing contemporary techniques and flavors that would appeal to modern consumers." Starting with personal savings and a small family loan, Sokolov opened the first TeaTime location in 2010, focusing on education and customer experience alongside product excellence.
+Путь Изабелы Мендес к основанию Сожурн начался во время ее пятнадцатилетней карьеры в крупной международной гостиничной сети, где она поднялась до должности регионального директора, отвечающего за операции по всей Южной Америке. Несмотря на успех в корпоративном гостеприимстве, Мендес все больше разочаровывалась стандартизированными подходами, которые не отражали богатое разнообразие Бразилии.
 
-## Product Range
+"Я постоянно видела иностранных туристов, останавливающихся в отелях, которые могли бы быть где угодно в мире," объясняет Мендес. "Они посещали одну из самых культурно и экологически богатых стран на планете, но не испытывали ничего из этого в своем размещении." После преобразующего отпуска, проведенного в путешествиях по малоизвестным регионам Бразилии, Мендес разработала концепцию Сожурн – коллекции объектов, которые служили бы воротами к аутентичному бразильскому опыту.
 
-TeaTime offers a diverse collection of tea blends featuring locally sourced herbs and berries:
+Начав с личных сбережений и инвестиций от членов семьи, Мендес приобрела и отреставрировала историческое здание в прибрежном колониальном городе Парати. "Я хотела создать пространства, где границы между отелем и его окружением были бы проницаемыми – где гости могли бы по-настоящему чувствовать связь с местом," говорит она. Этот основополагающий принцип продолжает направлять подход бренда к развитию объектов и впечатлений гостей.
 
-- **Siberian Frost**: Signature black tea with pine and juniper notes, designed to evoke the crisp air of Russian winters. Each batch is aged for 60 days in pine barrels.
-- **Moscow Sunrise**: Energizing breakfast blend with citrus undertones, combining robust Assam leaves with subtle bergamot and orange peel.
-- **Taiga Nights**: Calming herbal infusion with honey and wild berries, hand-harvested from Russia's northern forests. Contains no caffeine and is popular as an evening relaxation tea.
+## Портфолио объектов
 
-## Market Presence
+Коллекция Сожурн в настоящее время включает пять уникальных объектов, каждый из которых отражает свое местное окружение:
 
-TeaTime has established a strong domestic presence across Russia's major urban centers:
+- **Сожурн Парати**: Восстановленный городской дом 19-го века в историческом центре прибрежного Парати с 16 номерами с колониальной архитектурой и современным бразильским дизайном. Фирменные впечатления включают парусные экскурсии к уединенным пляжам и кулинарные мастер-классы, посвященные традиционной кайсарской кухне.
 
-- **Home Market**: Seven company-owned stores across Moscow and St. Petersburg, with products available in over 200 high-end grocery and specialty food shops throughout Russia.
-- **Key Regions**: Particularly strong presence in Moscow, St. Petersburg, and Yekaterinburg, with growing distribution in Siberian cities.
-- **Flagship Locations**: The brand's Moscow flagship store on Tverskaya Street has become a destination for tea enthusiasts, featuring tasting rooms and educational workshops.
-- **Strategic Position**: The central Moscow location provides access to major transportation networks for distribution throughout Russia and Eastern Europe, while proximity to Domodedovo International Airport facilitates direct export activities.
+- **Сожурн Шапада-Диамантина**: Расположенный на краю Национального парка Шапада-Диамантина в Баии, этот горный лодж с 22 номерами предлагает доступ к некоторым из самых впечатляющих пешеходных маршрутов и водопадов Бразилии. Объект включает частные бунгало, построенные из экологически устойчивых материалов, и известный ресторан растительной кухни.
+
+- **Сожурн Транкозу**: Расположенный в богемном пляжном городке Транкозу, Баия, этот объект с 18 номерами сочетает деревенское очарование с изысканным прибрежным стилем. Отель расположен вокруг восстановленного дома на квадрадо (городской площади) с дополнительными садовыми касситами.
+
+- **Сожурн Ибитипока**: Преобразованная фазенда (ферма) недалеко от Государственного парка Ибитипока в Минас-Жерайс, с 14 номерами в исторических сельскохозяйственных постройках. Объект включает действующую органическую ферму, которая снабжает свой отмеченный наградами ресторан.
+
+- **Сожурн Альто-Параисо**: Новейшее дополнение к коллекции, открытое в 2023 году в Альто-Параисо-де-Гояс недалеко от Национального парка Шапада-дус-Веадейрус. Этот объект с 20 номерами демонстрирует современную архитектуру серрадо (саванны) и фокусируется на оздоровительных программах.
+
+## Присутствие на рынке
+
+Сожурн установил стратегическое присутствие в самых отличительных регионах Бразилии:
+
+- **Домашний рынок**: Пять объектов, управляемых собственниками, в четырех штатах (Рио-де-Жанейро, Баия, Минас-Жерайс и Гояс), со штаб-квартирой в Рио-де-Жанейро, управляющей централизованным маркетингом, бронированием и развитием.
+
+- **Ключевые регионы**: Сконцентрированы в районах, сочетающих природную красоту, культурное значение и растущий туристический спрос, с особым вниманием к объектам Всемирного наследия ЮНЕСКО и регионам рядом с национальными парками.
+
+- **Флагманское расположение**: Оригинальный объект в Парати остается флагманом бренда, воплощая его приверженность историческому сохранению и служа учебным центром для нового персонала.
+
+- **Региональный контекст**: Стратегия Сожурн нацелена на регионы, сочетающие природную красоту, культурное наследие и растущую туристическую инфраструктуру. Бренд специально ищет места, которые предлагают отличительное чувство места, оставаясь при этом доступными для международных и внутренних путешественников.
+
+- **Соседние бренды**: Объекты в Парати и Транкозу работают в непосредственной близости от Terra Brasil Tours, который часто включает объекты Сожурн в свои роскошные маршруты. Объект в Альто-Параисо соседствует с несколькими оздоровительными ретритами и производителями натуральных продуктов, включая Amazonia Organics.
+
+- **Стратегическая позиция**: Текущее портфолио создает отличительный круг объектов, позволяющий путешественникам испытать замечательное разнообразие Бразилии – от прибрежных колониальных городов до горных хребтов, тропических пляжей и саванных ландшафтов – сохраняя при этом постоянный стандарт обслуживания и устойчивости.
+
+## Сертификаты и признание
+
+- Сертификация устойчивого туризма Rainforest Alliance (2017): Присуждена за комплексную систему управления устойчивостью бренда, включая водосбережение, сокращение отходов и практики взаимодействия с сообществами.
+
+- Сертификация углеродной нейтральности (2018): Достигнута благодаря сочетанию операционной эффективности, установке возобновляемых источников энергии и инвестициям в проверенные проекты по компенсации выбросов углерода в бразильской Амазонии.
+
+- Сертификация B Corporation (2019): Признана за соответствие строгим стандартам социальной и экологической эффективности, подотчетности и прозрачности.
+
+- Награда читателей Condé Nast Traveler (2020): Три объекта названы среди 25 лучших отелей Южной Америки, причем Сожурн Транкозу занял место в первой пятерке.
+
+- World Travel Awards (2022): Назван "Ведущим бутик-отельным брендом Бразилии" за превосходство в гостеприимстве и приверженность демонстрации бразильской культуры.
