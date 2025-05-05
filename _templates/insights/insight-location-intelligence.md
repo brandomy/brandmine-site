@@ -3,36 +3,49 @@
 # Location: _templates/insights/insight-location-intelligence.md
 # Use this template for location intelligence articles
 
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and category
 layout: insight
-title: "[City/Region] Emerging as [Sector] Hub: [Market Code] Regional Analysis"
-category: "location-intelligence"  # Must match insights/en.yml id
-country_code: "ru"  # Country this insight focuses on
-date: YYYY-MM-DD
-author_en: "Author Name"
-author_ru: "Автор"
-author_zh: "作者"
-excerpt: "Brief excerpt highlighting key geographic insights and regional trends (1-2 sentences)"
+category: "location-intelligence"  # Must match insights/en.yml
 
-# Taxonomy (exact slugs from dimensions/en.yml)
-sectors: [hotels-resorts]  # Use exact slugs from dimensions file
-markets: [russia]  # Use exact slugs from dimensions file
-attributes: [regional-icon, cultural-bridge]  # Use exact slugs from dimensions file
-signals: [export-ready, rapid-growth]  # Use exact slugs from dimensions file
-brands: [brand-slug1, brand-slug2]  # Featured brands from this location
+# Language and routing
+lang: en
+permalink: /en/insights/ru/location-analysis/
+ref: location-analysis  # For language switcher
 
-# Images (with descriptive names)
+# Content metadata
+country_code: "ru"  # Market focus code
+date: YYYY-MM-DD  # Publication date
+reading_time: 6
+
+# Display flags
+featured: false
+premium: false
+
+# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
+sectors: [hotels-resorts]  # Exact slugs only
+markets: [russia]  # Exact slugs only
+attributes: [regional-icon, cultural-bridge]  # Exact slugs only
+signals: [export-ready, rapid-growth]  # Exact slugs only
+brands: [brand-slug1, brand-slug2]  # Exact slugs only
+
+# Images - Same for all language versions (DO NOT TRANSLATE)
 images:
   hero: "/assets/images/insights/ru/location-analysis/originals/hero-[region-landmark].jpg"
   founder_portrait: "/assets/images/insights/ru/location-analysis/originals/founder-portrait-[name].jpg"  # Optional
   logo: "/assets/images/insights/ru/location-analysis/originals/logo-[regional-brand].jpg"  # Optional
 
-# Metadata
-featured: false
-premium: false
-permalink: /en/insights/ru/location-analysis/
-lang: en
-reading_time: 6
-ref: location-analysis  # For language switcher
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+title: "[City/Region] Emerging as [Sector] Hub: [Market Code] Regional Analysis"
+author: "author_name"  # Key for translation lookup
+excerpt: "Brief excerpt highlighting key geographic insights and regional trends (1-2 sentences)"
 ---
 
 ## Geographic Context Heading

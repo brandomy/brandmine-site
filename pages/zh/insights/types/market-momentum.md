@@ -1,15 +1,15 @@
 ---
 layout: insights-type
-title: "Market Momentum"
-permalink: /en/insights/types/market-momentum/
-lang: en
+title: "市场动向"
+permalink: /zh/insights/types/market-momentum/
+lang: zh
 insight_type: "market-momentum"
-description: "Notable achievements, milestones, and expansion moments for emerging BRICS+ brands."
+description: "金砖+新兴品牌的重要成就、里程碑和扩张时机。"
 ---
 
-## Market Momentum Insights
+## 市场动向
 
-Track the market evolution and growth trajectories of BRICS+ brands. These insights highlight sector trends, expansion strategies, and market transformation.
+追踪金砖+品牌的市场演变和增长轨迹。这些洞察突出行业趋势、扩张策略和市场转型。
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Track the market evolution and growth trajectories of BRICS+ brands. These insig
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Market Momentum insights available yet. Check back soon!</p>
+  <p class="no-insights">市场动向洞察暂时无法提供。请稍后查看！</p>
 {% endif %}

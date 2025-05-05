@@ -3,36 +3,49 @@
 # Location: _templates/insights/insight-brand-spotlight.md
 # Use this template for brand spotlight articles
 
-layout: insight
-title: "[Market Code] Spotlight: [Brand Name] - [Main Focus]"
-category: "brand-spotlight"  # Must match insights/en.yml id
-country_code: "ru"  # Country this insight focuses on
-date: YYYY-MM-DD
-author_en: "Author Name"
-author_ru: "Автор"
-author_zh: "作者"
-excerpt: "Brief excerpt highlighting the brand's unique positioning and key achievements (1-2 sentences)"
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
 
-# Taxonomy (exact slugs from dimensions/en.yml)
+# Core layout and category
+layout: insight
+category: "brand-spotlight"  # Must match insights/en.yml
+
+# Language and routing
+lang: en
+permalink: /en/insights/ru/brand-slug-spotlight/
+ref: brand-slug-spotlight  # For language switcher
+
+# Content metadata
+country_code: "ru"  # Market focus code
+date: YYYY-MM-DD  # Publication date
+reading_time: 7
+
+# Display flags
+featured: false
+premium: false
+
+# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
 sectors: [natural-beauty]  # Use exact slugs from dimensions file
 markets: [russia]  # Use exact slugs from dimensions file
 attributes: [founder-led, artisanal-excellence]  # Use exact slugs from dimensions file
 signals: [export-ready, investment-ready]  # Use exact slugs from dimensions file
 brands: [brand-slug]  # Featured brand(s)
 
-# Images (with descriptive names)
+# Images - Same for all language versions (DO NOT TRANSLATE)
 images:
   hero: "/assets/images/insights/ru/brand-slug-spotlight/originals/hero-[description].jpg"
   founder_portrait: "/assets/images/insights/ru/brand-slug-spotlight/originals/founder-portrait-[name].jpg"
   logo: "/assets/images/insights/ru/brand-slug-spotlight/originals/logo-[description].jpg"
 
-# Metadata
-featured: false
-premium: false
-permalink: /en/insights/ru/brand-slug-spotlight/
-lang: en
-reading_time: 7
-ref: brand-slug-spotlight  # For language switcher
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+title: "[Market Code] Spotlight: [Brand Name] - [Main Focus]"
+author: "Author Name"  # Use underscore_slug as key (e.g., "randal_eastman")
+excerpt: "Brief excerpt highlighting the brand's unique positioning and key achievements (1-2 sentences)"
 ---
 
 ## Brand Introduction Heading

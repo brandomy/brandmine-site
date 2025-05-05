@@ -1,15 +1,15 @@
 ---
 layout: insights-type
-title: "Location Intelligence"
-permalink: /en/insights/types/location-intelligence/
-lang: en
-insight_type: "location-intelligence"
-description: "Geographical insights and regional context that shape brand development and opportunities."
+title: "Географическая аналитика"
+permalink: /ru/insights/types/location-intelligence/
+lang: ru
+insight_type: "location-intelligence"  
+description: "Географические данные и региональный контекст, влияющие на развитие брендов и возможности."
 ---
 
-## Location Intelligence Insights
+## Географическая аналитика
 
-Uncover how geography, regional trends, and spatial factors influence brand development and market opportunities across the BRICS+ region.
+Узнайте, как география, региональные тенденции и пространственные факторы влияют на развитие брендов и рыночные возможности в регионе БРИКС+.
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Uncover how geography, regional trends, and spatial factors influence brand deve
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Location Intelligence insights available yet. Check back soon!</p>
+  <p class="no-insights">Материалы по географической аналитике пока недоступны. Проверьте позже!</p>
 {% endif %}

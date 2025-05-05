@@ -2,8 +2,7 @@
 # Core identification
 layout: brand
 title: "塞拉维德有机农场"
-slug: serra-verde
-ref: serra-verde
+ref: serra-verde   # Used for language switcher and as the slug
 country_code: "br"  # ISO country code for permalink
 lang: zh
 permalink: /zh/brands/br/serra-verde/

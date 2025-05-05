@@ -1,15 +1,15 @@
 ---
-layout: insights-type
-title: "Brand Spotlight"
-permalink: /en/insights/types/brand-spotlight/
-lang: en
-insight_type: "brand-spotlight"
-description: "In-depth profiles of noteworthy BRICS+ brands gaining international momentum."
+layout: insights-type  
+title: "Путь основателей"
+permalink: /ru/insights/types/founders-journey/
+lang: ru
+insight_type: "founders-journey"
+description: "Истории стоящих за брендами людей и созданных ими компаний."
 ---
 
-## Brand Spotlight Insights
+## Путь основателей
 
-Discover comprehensive profiles of emerging brands from the BRICS+ region. These insights explore brand stories, market positioning, and international growth strategies.
+Истории стоящих за брендами людей и созданных ими компаний.
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Discover comprehensive profiles of emerging brands from the BRICS+ region. These
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Brand Spotlight insights available yet. Check back soon!</p>
+  <p class="no-insights">Истории основателей пока недоступны. Проверьте позже!</p>
 {% endif %}

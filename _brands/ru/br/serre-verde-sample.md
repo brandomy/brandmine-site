@@ -2,8 +2,7 @@
 # Core identification
 layout: brand
 title: "Серра Верде Органикс"
-slug: serra-verde
-ref: serra-verde
+ref: serra-verde  # Used for language switcher and as the slug
 country_code: "br"  # ISO country code for permalink
 lang: ru
 permalink: /ru/brands/br/serra-verde/

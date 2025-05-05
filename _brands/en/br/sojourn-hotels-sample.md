@@ -2,18 +2,17 @@
 # Core identification
 layout: brand
 title: "Sojourn Boutique Hotels"
-slug: sojourn-hotels
-ref: sojourn-hotels
+ref: sojourn-hotels  # Used for language switcher and as the slug
 country_code: "br"  # ISO country code for permalink
 lang: en
 permalink: /en/brands/br/sojourn-hotels/
 
 # Core categorization
-sectors: [Hotels & Resorts]
+sectors: [hotels-resorts]
 subsectors: [Boutique Hotels, Eco-Retreats]
-markets: [Brazil]
-attributes: [Founder-Led, Sustainability Pioneer]
-signals: [Franchise Ready, Growth Ready]
+markets: [brazil]
+attributes: [founder-led, sustainability-pioneer]
+signals: [franchise-ready, growth-ready]
 
 # Brand basics
 description: "A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences."

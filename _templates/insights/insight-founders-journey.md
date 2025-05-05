@@ -3,36 +3,49 @@
 # Location: _templates/insights/insight-founders-journey.md
 # Use this template for founders journey articles
 
-layout: insight
-title: "[Founder Name]: [Brand Name]'s Journey from [Origin] to [Destination]"
-category: "founders-journey"  # Must match insights/en.yml id
-country_code: "ru"  # Country this insight focuses on
-date: YYYY-MM-DD
-author_en: "Author Name"
-author_ru: "Автор"
-author_zh: "作者"
-excerpt: "Brief excerpt highlighting the founder's unique background and journey (1-2 sentences)"
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
 
-# Taxonomy (exact slugs from dimensions/en.yml)
+# Core layout and category
+layout: insight
+category: "founders-journey"  # Must match insights/en.yml
+
+# Language and routing
+lang: en
+permalink: /en/insights/ru/brand-slug-founder/
+ref: brand-slug-founder  # For language switcher
+
+# Content metadata
+country_code: "ru"  # Market focus code
+date: YYYY-MM-DD  # Publication date
+reading_time: 8
+
+# Display flags
+featured: false
+premium: false
+
+# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
 sectors: [wine]  # Use exact slugs from dimensions file
 markets: [russia]  # Use exact slugs from dimensions file
 attributes: [founder-led, heritage-brand]  # Use exact slugs from dimensions file
 signals: [export-ready, rapid-growth]  # Use exact slugs from dimensions file
 brands: [brand-slug]  # Featured brand(s)
 
-# Images (with descriptive names)
+# Images - Same for all language versions (DO NOT TRANSLATE)
 images:
   hero: "/assets/images/insights/ru/brand-slug-founder/originals/hero-[description].jpg"
   founder_portrait: "/assets/images/insights/ru/brand-slug-founder/originals/founder-portrait-[name].jpg"
   logo: "/assets/images/insights/ru/brand-slug-founder/originals/logo-[description].jpg"
 
-# Metadata
-featured: false
-premium: false
-permalink: /en/insights/ru/brand-slug-founder/
-lang: en
-reading_time: 8
-ref: brand-slug-founder  # For language switcher
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+title: "[Founder Name]: [Brand Name]'s Journey from [Origin] to [Destination]"
+author: "Author Name"  # Use underscore_slug as key (e.g., "randal_eastman")
+excerpt: "Brief excerpt highlighting the founder's unique background and journey (1-2 sentences)"
 ---
 
 ## Origin Story Heading

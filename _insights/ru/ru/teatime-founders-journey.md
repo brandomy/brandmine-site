@@ -1,47 +1,34 @@
 ---
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
 layout: insight
-category: "founders-journey"  # Must match insights/en.yml
+title: "From University Project to Global Brand: The TeaTime Story"
+category: "founders-journey"
+country_code: "ru"
+date: 2025-03-15
+author_en: "Anna Petrova"
+author_ru: "Анна Петрова"
+author_zh: "安娜·彼得罗娃"
+excerpt: "What began as casual tea ceremonies in a Moscow dormitory blossomed into TeaTime, one of Russia's most celebrated beverage exports. Founder Alexei Sokolov turned tradition into innovation, scaling with integrity while captivating global markets."
 
-# Language and routing
-lang: en
-permalink: /en/insights/ru/teatime-founder-journey/
-ref: teatime-founder-journey  # For language switcher
+# Taxonomy (exact slugs)
+sectors: [gourmet-foods]
+markets: [russia]
+attributes: [heritage-brand, founder-led]
+signals: [export-ready, investment-ready]
+brands: [teatime]
 
-# Content metadata
-country_code: "ru"  # Market focus code
-date: 2025-02-05  # Publication date
-reading_time: 8
-
-# Display flags
-featured: false
-premium: false
-
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [gourmet-foods]  # Exact slugs only
-markets: [russia]  # Exact slugs only
-attributes: [founder-led, artisanal-excellence]  # Exact slugs only
-signals: [rapid-growth, export-ready]  # Exact slugs only
-brands: [teatime]  # Exact slugs only
-
-# Images - Same for all language versions (DO NOT TRANSLATE)
+# Images (with descriptive names)
 images:
-  hero: "/assets/images/insights/ru/teatime-founder-journey/originals/hero-teatime-production.jpg"
-  founder_portrait: "/assets/images/insights/ru/teatime-founder-journey/originals/founder-portrait-alexei-sokolov.jpg"
-  logo: "/assets/images/insights/ru/teatime-founder-journey/originals/logo-teatime.jpg"
+  hero: "/assets/images/insights/ru/teatime-founders-journey/originals/hero-teatime-moscow-headquarters.jpg"
+  founder_portrait: "/assets/images/insights/ru/teatime-founders-journey/originals/founder-portrait-alexei-sokolov.jpg"
+  logo: "/assets/images/insights/ru/teatime-founders-journey/originals/logo-teatime-samovar.jpg"
 
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Alexei Sokolov: TeaTime's Journey from Moscow Mountains to Global Markets"
-author: "randal_eastman"  # Key for translation lookup
-excerpt: "The remarkable story of how a software engineer's passion for tea transformed into Russia's leading artisanal tea brand."
+# Metadata
+featured: true
+premium: false
+permalink: /en/insights/ru/teatime-founders-journey/
+lang: en
+reading_time: 7
+ref: teatime-founders-journey
 ---
 
 ## From Dormitory to Global Markets

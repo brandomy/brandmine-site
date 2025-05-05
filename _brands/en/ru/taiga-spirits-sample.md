@@ -2,18 +2,17 @@
 # Core identification
 layout: brand
 title: "Taiga Spirits"
-slug: taiga-spirits
-ref: taiga-spirits
+ref: taiga-spirits  # Used for language switcher and as the slug
 country_code: "ru"  # ISO country code for permalink
 lang: en
 permalink: /en/brands/ru/taiga-spirits/
 
 # Core categorization
-sectors: [Artisanal Spirits & Vodka]
+sectors: [artisanal-spirits]
 subsectors: [Craft Vodka, Botanical Spirits, Herbal Liqueurs]
-markets: [Russia]
-attributes: [Founder-Led, Artisanal Excellence]
-signals: [Export Ready, Growth Ready]
+markets: [russia]
+attributes: [founder-led, artisanal-excellence]
+signals: [export-ready, growth-ready]
 
 # Brand basics
 description: "Craft distillery creating exceptional small-batch vodkas and botanical spirits using ancient Siberian recipes and wild-harvested ingredients."

@@ -1,47 +1,34 @@
 ---
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
 layout: insight
-category: "location-intelligence"  # Must match insights/en.yml
+title: "Siberia's Hidden Belt: The Emerging Organic Honey Corridor"
+category: "location-intelligence"
+country_code: "ru"
+date: 2025-04-15
+author_en: "Elena Volkova"
+author_ru: "Елена Волкова"
+author_zh: "叶莲娜·沃尔科娃"
+excerpt: "A remarkable geographic phenomenon is taking shape across southern Siberia as traditional beekeeping villages transform into a cohesive production region for premium organic honey. This emerging 'honey corridor' represents both economic revival for remote communities and strategic opportunity for international buyers."
 
-# Language and routing
-lang: en
-permalink: /en/insights/ru/siberian-honey-corridor/
-ref: siberian-honey-corridor  # For language switcher
+# Taxonomy (exact slugs)
+sectors: [honey-bee-products]
+markets: [russia]
+attributes: [regional-icon, sustainability-pioneer]
+signals: [export-ready]
+brands: [taiga-gold, altai-harvest, beekeeper-collective]
 
-# Content metadata
-country_code: "ru"  # Market focus code
-date: 2025-03-10  # Publication date
-reading_time: 6
-
-# Display flags
-featured: false
-premium: false
-
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [honey-bee-products]  # Exact slugs only
-markets: [russia]  # Exact slugs only
-attributes: [regional-icon, artisanal-excellence]  # Exact slugs only
-signals: [export-ready, rapid-growth]  # Exact slugs only
-brands: [siberian-gold, altai-honey]  # Exact slugs only
-
-# Images - Same for all language versions (DO NOT TRANSLATE)
+# Images (with descriptive names)
 images:
-  hero: "/assets/images/insights/ru/siberian-honey-corridor/originals/hero-altai-forest.jpg"
-  founder_portrait: "/assets/images/insights/ru/siberian-honey-corridor/originals/founder-portrait-ivan-petrov.jpg"
-  logo: "/assets/images/insights/ru/siberian-honey-corridor/originals/logo-siberian-honey.jpg"
+  hero: "/assets/images/insights/ru/siberian-honey-corridor/originals/hero-taiga-forest-beehives.jpg"
+  founder_portrait: "/assets/images/insights/ru/siberian-honey-corridor/originals/founder-portrait-beekeepers-collective.jpg"
+  logo: "/assets/images/insights/ru/siberian-honey-corridor/originals/logo-siberian-corridor-certification.jpg"
 
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Siberian Honey Corridor: Russia's Emerging Apiary Ecosystem"
-author: "olya_eastman"  # Key for translation lookup
-excerpt: "How the pristine forests of Southern Siberia are becoming the epicenter of Russia's premium honey industry, attracting international attention."
+# Metadata
+featured: false
+premium: true
+permalink: /en/insights/ru/siberian-honey-corridor/
+lang: en
+reading_time: 8
+ref: siberian-honey-corridor
 ---
 
 ## The Geographic Advantage: A Natural Organic Zone

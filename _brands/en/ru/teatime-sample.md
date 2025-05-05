@@ -2,18 +2,17 @@
 # Core identification
 layout: brand
 title: "TeaTime"
-slug: teatime
-ref: teatime
+ref: teatime  # Used for language switcher and as the slug
 country_code: "ru"  # ISO country code for permalink
 lang: en
 permalink: /en/brands/ru/teatime/
 
 # Core categorization
-sectors: [Gourmet Foods]
+sectors: [gourmet-foods]
 subsectors: [Artisanal Tea, Premium Blends]
-markets: [Russia]
-attributes: [Heritage Brand, Founder-Led]
-signals: [Export Ready, Investment Ready]
+markets: [russia]
+attributes: [heritage-brand, founder-led]
+signals: [export-ready, investment-ready]
 
 # Brand basics
 description: "Premium Russian tea brand blending traditional techniques with modern flavors."

@@ -22,7 +22,8 @@ layout: default
   - Files in _insights/ directory
 
   Dependencies:
-  - _includes/insight-card.html
+  - _includes/components/cards/insight-card.html
+  - _includes/components/translate-name.html
   - site.data.translations for multilingual labels
 ---------------------------------------------------------------------------- -->
 
@@ -41,13 +42,9 @@ layout: default
           
           <div class="insight-meta">
             <span class="insight-date">{{ site.data.translations[page.lang].insights.published_on }} {{ page.date | date: "%B %-d, %Y" }}</span>
-            {% if page.author_en and page.author_ru and page.author_zh %}
             <span class="insight-author">{{ site.data.translations[page.lang].insights.author }}: 
-              {% if page.lang == 'en' %}{{ page.author_en }}{% endif %}
-              {% if page.lang == 'ru' %}{{ page.author_ru }}{% endif %}
-              {% if page.lang == 'zh' %}{{ page.author_zh }}{% endif %}
+              {% include components/translate-name.html type="authors" key=page.author %}
             </span>
-            {% endif %}
             
             {% if page.premium %}
             <span class="premium-badge">{{ site.data.translations[page.lang].insights.premium_content }}</span>
@@ -71,7 +68,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.sectors }}</h4>
             <div class="sector-tags">
               {% for sector in page.sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag sector-tag">{{ sector }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag tag--sector">{{ site.data.dimensions[page.lang].sectors[sector] }}</a>
               {% endfor %}
             </div>
           </div>
@@ -82,7 +79,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.markets }}</h4>
             <div class="market-tags">
               {% for market in page.markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag market-tag">{{ market }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag tag--market">{{ site.data.dimensions[page.lang].markets[market] }}</a>
               {% endfor %}
             </div>
           </div>
@@ -93,7 +90,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.attributes }}</h4>
             <div class="attribute-tags">
               {% for attribute in page.attributes %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="tag attribute-tag">{{ attribute }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="tag tag--attribute">{{ site.data.dimensions[page.lang].attributes[attribute] }}</a>
               {% endfor %}
             </div>
           </div>
@@ -104,7 +101,7 @@ layout: default
             <h4>{{ site.data.translations[page.lang].dimensions.signals }}</h4>
             <div class="signal-tags">
               {% for signal in page.signals %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="tag signal-tag">{{ signal }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="tag tag--signal">{{ site.data.dimensions[page.lang].signals[signal] }}</a>
               {% endfor %}
             </div>
           </div>
@@ -115,7 +112,7 @@ layout: default
       <div class="insight-detail-sidebar">
         {% if page.brands %}
         <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].insights.related_brands }}</h3>
+          <h3>{{ site.data.translations[page.lang].insights.featured_brands }}</h3>
           <div class="related-brands">
             {% for brand_slug in page.brands %}
               {% assign brand = site.brands | where: "ref", brand_slug | where: "lang", page.lang | first %}

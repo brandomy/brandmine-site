@@ -1,15 +1,15 @@
 ---
 layout: insights-type
-title: "Brand Spotlight"
-permalink: /en/insights/types/brand-spotlight/
-lang: en
+title: "品牌聚焦"
+permalink: /zh/insights/types/brand-spotlight/
+lang: zh
 insight_type: "brand-spotlight"
-description: "In-depth profiles of noteworthy BRICS+ brands gaining international momentum."
+description: "深入介绍具有国际影响力的金砖+国家值得关注的品牌。"
 ---
 
-## Brand Spotlight Insights
+## 品牌聚焦
 
-Discover comprehensive profiles of emerging brands from the BRICS+ region. These insights explore brand stories, market positioning, and international growth strategies.
+探索金砖+地区正在崛起的品牌。这些分析深入剖析品牌故事、市场定位和国际增长战略。
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Discover comprehensive profiles of emerging brands from the BRICS+ region. These
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Brand Spotlight insights available yet. Check back soon!</p>
+  <p class="no-insights">品牌聚焦洞察暂时无法提供。请稍后查看！</p>
 {% endif %}

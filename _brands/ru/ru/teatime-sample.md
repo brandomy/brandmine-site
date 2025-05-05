@@ -2,8 +2,7 @@
 # Core identification
 layout: brand
 title: "ТиТайм"
-slug: teatime
-ref: teatime
+ref: teatime   # Used for language switcher and as the slug
 country_code: "ru"  # ISO country code for permalink
 lang: ru
 permalink: /ru/brands/ru/teatime/

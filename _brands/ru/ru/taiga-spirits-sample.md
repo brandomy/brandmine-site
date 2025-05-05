@@ -2,8 +2,7 @@
 # Core identification
 layout: brand
 title: "Тайга Спиритс"
-slug: taiga-spirits
-ref: taiga-spirits
+ref: taiga-spirits   # Used for language switcher and as the slug
 country_code: "ru"  # ISO country code for permalink
 lang: ru
 permalink: /ru/brands/ru/taiga-spirits/

@@ -3,36 +3,49 @@
 # Location: _templates/insights/insight-market-momentum.md
 # Use this template for market momentum articles
 
+# ============================================================================
+# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
+# Keep these fields exactly as shown, in English, for all language versions
+# ============================================================================
+
+# Core layout and category
 layout: insight
-title: "[Market Code] Market Momentum: [Sector] Sector Shows [X]% Growth"
-category: "market-momentum"  # Must match insights/en.yml id
-country_code: "ru"  # Country this insight focuses on
-date: YYYY-MM-DD
-author_en: "Author Name"
-author_ru: "Автор"
-author_zh: "作者"
-excerpt: "Brief excerpt highlighting key market trends and growth drivers (1-2 sentences)"
+category: "market-momentum"  # Must match insights/en.yml
 
-# Taxonomy (exact slugs from dimensions/en.yml)
-sectors: [gourmet-foods]  # Use exact slugs from dimensions file
-markets: [russia]  # Use exact slugs from dimensions file
-attributes: [innovation-leader, premium-positioning]  # Use exact slugs from dimensions file
-signals: [rapid-growth, export-ready]  # Use exact slugs from dimensions file
-brands: [brand-slug1, brand-slug2]  # Representative brands
+# Language and routing
+lang: en
+permalink: /en/insights/ru/market-momentum/
+ref: market-momentum  # For language switcher
 
-# Images (with descriptive names)
+# Content metadata
+country_code: "ru"  # Market focus code
+date: YYYY-MM-DD  # Publication date
+reading_time: 7
+
+# Display flags
+featured: false
+premium: false
+
+# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
+sectors: [gourmet-foods]  # Exact slugs only
+markets: [russia]  # Exact slugs only
+attributes: [innovation-leader, premium-positioning]  # Exact slugs only
+signals: [rapid-growth, export-ready]  # Exact slugs only
+brands: [brand-slug1, brand-slug2]  # Exact slugs only
+
+# Images - Same for all language versions (DO NOT TRANSLATE)
 images:
   hero: "/assets/images/insights/ru/market-momentum/originals/hero-[market-scene].jpg"
   founder_portrait: "/assets/images/insights/ru/market-momentum/originals/founder-portrait-[name].jpg"  # Optional
   logo: "/assets/images/insights/ru/market-momentum/originals/logo-[brand-name].jpg"  # Optional
 
-# Metadata
-featured: false
-premium: false
-permalink: /en/insights/ru/market-momentum/
-lang: en
-reading_time: 7
-ref: market-momentum  # For language switcher
+# ============================================================================
+# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
+# Only these fields should be translated when creating RU/ZH versions
+# ============================================================================
+title: "[Market Code] Market Momentum: [Sector] Sector Shows [X]% Growth"
+author: "author_name"  # Key for translation lookup
+excerpt: "Brief excerpt highlighting key market trends and growth drivers (1-2 sentences)"
 ---
 
 ## Market Overview Heading

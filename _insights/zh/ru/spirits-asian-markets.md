@@ -1,47 +1,34 @@
 ---
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
 layout: insight
-category: "market-momentum"  # Must match insights/en.yml
+title: "Eastern Expansion: How Russian Artisanal Spirits are Capturing Asian Premium Markets"
+category: "market-momentum"
+country_code: "ru"
+date: 2025-04-10
+author_en: "Sergei Mikhailov"
+author_ru: "Сергей Михайлов"
+author_zh: "谢尔盖·米哈伊洛夫"
+excerpt: "Russian craft distilleries are finding unexpected success in East Asian luxury markets, where discerning consumers are embracing unique flavor profiles and authentic production methods. This emerging trade corridor represents a significant shift in export patterns."
 
-# Language and routing
-lang: en
-permalink: /en/insights/ru/russian-wine-renaissance/
-ref: russian-wine-renaissance  # For language switcher
+# Taxonomy (exact slugs)
+sectors: [artisanal-spirits]
+markets: [russia, china, india]
+attributes: [artisanal-excellence, cultural-bridge]
+signals: [export-ready, rapid-growth]
+brands: [sibirskaya, russky-standard, baikal-spirit]
 
-# Content metadata
-country_code: "ru"  # Market focus code
-date: 2025-04-01  # Publication date
-reading_time: 7
-
-# Display flags
-featured: false
-premium: false
-
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [wine]  # Exact slugs only
-markets: [russia]  # Exact slugs only
-attributes: [innovation-leader, sustainability-pioneer]  # Exact slugs only
-signals: [rapid-growth, export-ready]  # Exact slugs only
-brands: [krasnodar-wines, crimean-legacy]  # Exact slugs only
-
-# Images - Same for all language versions (DO NOT TRANSLATE)
+# Images (with descriptive names)
 images:
-  hero: "/assets/images/insights/ru/russian-wine-renaissance/originals/hero-krasnodar-vineyard.jpg"
-  founder_portrait: "/assets/images/insights/ru/russian-wine-renaissance/originals/founder-portrait-anna-kuznetsova.jpg"
-  logo: "/assets/images/insights/ru/russian-wine-renaissance/originals/logo-russian-wine.jpg"
+  hero: "/assets/images/insights/ru/spirits-asian-markets/originals/hero-shanghai-luxury-store.jpg"
+  founder_portrait: "/assets/images/insights/ru/spirits-asian-markets/originals/founder-portrait-dmitri-voronin.jpg"
+  logo: "/assets/images/insights/ru/spirits-asian-markets/originals/logo-sibirskaya-premium-edition.jpg"
 
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Russian Wine Renaissance: A 52% Market Surge in Five Years"
-author: "randal_eastman"  # Key for translation lookup
-excerpt: "Russia's wine industry is experiencing unprecedented growth, with domestic production doubling and international recognition soaring."
+# Metadata
+featured: true
+premium: false
+permalink: /en/insights/ru/spirits-asian-markets/
+lang: en
+reading_time: 7
+ref: spirits-asian-markets
 ---
 
 ## A New Direction for Russian Spirits

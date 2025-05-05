@@ -1,15 +1,15 @@
 ---
 layout: insights-type
-title: "Brand Spotlight"
-permalink: /en/insights/types/brand-spotlight/
-lang: en
+title: "В центре внимания: бренды"
+permalink: /ru/insights/types/brand-spotlight/
+lang: ru
 insight_type: "brand-spotlight"
-description: "In-depth profiles of noteworthy BRICS+ brands gaining international momentum."
+description: "Подробные профили заметных брендов БРИКС+, набирающих международную популярность."
 ---
 
-## Brand Spotlight Insights
+## В центре внимания: бренды
 
-Discover comprehensive profiles of emerging brands from the BRICS+ region. These insights explore brand stories, market positioning, and international growth strategies.
+Узнайте о развивающихся брендах региона БРИКС+. Эти аналитические материалы исследуют истории брендов, рыночное позиционирование и стратегии международного роста.
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Discover comprehensive profiles of emerging brands from the BRICS+ region. These
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Brand Spotlight insights available yet. Check back soon!</p>
+  <p class="no-insights">Аналитические материалы о брендах пока недоступны. Проверьте позже!</p>
 {% endif %}

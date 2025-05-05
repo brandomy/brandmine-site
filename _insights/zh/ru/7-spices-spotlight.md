@@ -1,39 +1,34 @@
 ---
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
 layout: insight
-category: "brand-spotlight"  # Must match insights/en.yml
+title: "The Artisanal Revolution: How 7 Spices is Redefining Russian Condiments"
+category: "brand-spotlight"
+country_code: "ru"
+date: 2025-03-18
+author_en: "Mikhail Orlov"
+author_ru: "Михаил Орлов"
+author_zh: "米哈伊尔·奥尔洛夫"
+excerpt: "7 Spices is transforming Russia's culinary traditions by reviving artisanal condiment techniques with a modern twist. From pine-infused honey to fermented black garlic, their products blend centuries-old flavors with innovative sustainability practices, earning acclaim across Europe and North America."
 
-# Language and routing
-lang: en
-permalink: /en/insights/ru/seven-spices-spotlight/
-ref: seven-spices-spotlight  # For language switcher
+# Taxonomy (exact slugs)
+sectors: [gourmet-foods]
+markets: [russia]
+attributes: [artisanal-excellence, cultural-bridge]
+signals: [export-ready]
+brands: [7-spices]
 
-# Content metadata
-country_code: "ru"  # Market focus code
-date: 2025-01-15  # Publication date
-reading_time: 7
+# Images (with descriptive names)
+images:
+  hero: "/assets/images/insights/ru/7-spices-spotlight/originals/hero-7spices-production-kazan.jpg"
+  founder_portrait: "/assets/images/insights/ru/7-spices-spotlight/originals/founder-portrait-maria-kuznetsova.jpg"
+  logo: "/assets/images/insights/ru/7-spices-spotlight/originals/logo-7spices-organic.jpg"
 
-# Display flags
+# Metadata
 featured: false
 premium: false
-
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [gourmet-foods]  # Exact slugs only
-markets: [russia]  # Exact slugs only
-attributes: [heritage-brand, artisanal-excellence]  # Exact slugs only
-signals: [export-ready, investment-ready]  # Exact slugs only
-brands: [seven-spices]  # Exact slugs only
-
-# Images - Same for all language versions (DO NOT TRANSLATE)
-images:
-  hero: "/assets/images/insights/ru/seven-spices-spotlight/originals/hero-moscow-spice-market.jpg"
-  founder_portrait: "/assets/images/insights/ru/seven-spices-spotlight/originals/founder-portrait-marina-petrova.jpg"
-  logo: "/assets/images/insights/ru/seven-spices-spotlight/originals/logo-seven-spices.jpg"
+permalink: /en/insights/ru/7-spices-spotlight/
+lang: en
+reading_time: 7
+ref: 7-spices-spotlight
 ---
 
 ## Reimagining Russia's Flavor Palette

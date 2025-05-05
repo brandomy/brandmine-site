@@ -1,15 +1,15 @@
 ---
-layout: insights-type
-title: "Brand Spotlight"
-permalink: /en/insights/types/brand-spotlight/
-lang: en
-insight_type: "brand-spotlight"
-description: "In-depth profiles of noteworthy BRICS+ brands gaining international momentum."
+layout: insights-type  
+title: "创始人之路"
+permalink: /zh/insights/types/founders-journey/
+lang: zh
+insight_type: "founders-journey"
+description: "品牌背后人物及其创业历程的故事。"
 ---
 
-## Brand Spotlight Insights
+## 创始人之路
 
-Discover comprehensive profiles of emerging brands from the BRICS+ region. These insights explore brand stories, market positioning, and international growth strategies.
+品牌背后人物及其创业历程的故事。
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Discover comprehensive profiles of emerging brands from the BRICS+ region. These
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Brand Spotlight insights available yet. Check back soon!</p>
+  <p class="no-insights">创始人故事暂时无法提供。请稍后查看！</p>
 {% endif %}

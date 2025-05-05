@@ -1,15 +1,15 @@
 ---
 layout: insights-type
-title: "Location Intelligence"
-permalink: /en/insights/types/location-intelligence/
-lang: en
-insight_type: "location-intelligence"
-description: "Geographical insights and regional context that shape brand development and opportunities."
+title: "地理洞察"
+permalink: /zh/insights/types/location-intelligence/
+lang: zh
+insight_type: "location-intelligence"  
+description: "对塑造品牌发展和商机的地理洞察和区域背景的分析。"
 ---
 
-## Location Intelligence Insights
+## 地理洞察
 
-Uncover how geography, regional trends, and spatial factors influence brand development and market opportunities across the BRICS+ region.
+发现地理、区域趋势和空间因素如何影响金砖+地区的品牌发展和市场机遇。
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Uncover how geography, regional trends, and spatial factors influence brand deve
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Location Intelligence insights available yet. Check back soon!</p>
+  <p class="no-insights">地理洞察暂时无法提供。请稍后查看！</p>
 {% endif %}

@@ -8,10 +8,10 @@
   - insight: Insight object with complete details (required)
     Expected properties:
     - title: Insight title
-    - images.hero: Path to thumbnail image (updated structure)
+    - images.hero: Path to thumbnail image
     - premium: Boolean flag for premium insights (optional)
     - date: Publication date
-    - author_en, author_ru, author_zh: Author names by language
+    - author: Author key for translation lookup
     - excerpt: Short excerpt or description
     - sectors: Array of sector slugs (not names)
     - markets: Array of market slugs (not names)
@@ -20,7 +20,8 @@
   
   Dependencies:
   - CSS: insight-card.css for styling
-  - site.data.translations for dimension names
+  - site.data.translations for dimension names and author translations
+  - components/translate-name.html for author name translation
   
   Example Usage:
   {% for insight in site.insights %}
@@ -28,8 +29,8 @@
   {% endfor %}
   
   Notes:
-  - Now uses images.hero instead of single image field
-  - Displays author based on current language
+  - Uses images.hero for thumbnail images
+  - Displays author using translation lookup via translate-name include
   - Converts sector and market slugs to display names using translations
   - Truncates to first 3 sectors with +X indicator
   - Uses BEM naming conventions for all CSS classes
@@ -53,9 +54,7 @@
     <div class="insight-card__meta">
       <span class="insight-card__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
       <span class="insight-card__author">
-        {% if page.lang == 'en' %}{{ insight.author_en }}{% endif %}
-        {% if page.lang == 'ru' %}{{ insight.author_ru }}{% endif %}
-        {% if page.lang == 'zh' %}{{ insight.author_zh }}{% endif %}
+        {% include components/translate-name.html type="authors" key=insight.author %}
       </span>
     </div>
 

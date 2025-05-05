@@ -1,15 +1,15 @@
 ---
 layout: insights-type
-title: "Market Momentum"
-permalink: /en/insights/types/market-momentum/
-lang: en
+title: "Движение рынка"
+permalink: /ru/insights/types/market-momentum/
+lang: ru
 insight_type: "market-momentum"
-description: "Notable achievements, milestones, and expansion moments for emerging BRICS+ brands."
+description: "Заметные достижения, вехи и моменты расширения появляющихся брендов БРИКС+."
 ---
 
-## Market Momentum Insights
+## Движение рынка
 
-Track the market evolution and growth trajectories of BRICS+ brands. These insights highlight sector trends, expansion strategies, and market transformation.
+Отслеживайте эволюцию рынка и траектории роста брендов БРИКС+. Эти аналитические материалы освещают тенденции в секторах, стратегии расширения и трансформацию рынка.
 
 {% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
@@ -20,5 +20,5 @@ Track the market evolution and growth trajectories of BRICS+ brands. These insig
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">No Market Momentum insights available yet. Check back soon!</p>
+  <p class="no-insights">Аналитические материалы о движении рынка пока недоступны. Проверьте позже!</p>
 {% endif %}

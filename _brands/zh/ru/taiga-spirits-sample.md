@@ -2,8 +2,7 @@
 # Core identification
 layout: brand
 title: "泰加烈酒"
-slug: taiga-spirits
-ref: taiga-spirits
+ref: taiga-spirits   # Used for language switcher and as the slug
 country_code: "ru"  # ISO country code for permalink
 lang: zh
 permalink: /zh/brands/ru/taiga-spirits/

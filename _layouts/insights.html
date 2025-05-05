@@ -57,7 +57,7 @@ layout: default
           <ul class="content-type-list">
             {% assign categories = insights | map: "category" | uniq %}
             {% for type in categories %}
-            <li><a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type }}/">{{ type }}</a></li>
+            <li><a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type }}/">{{ site.data.translations[page.lang].insights[type | replace: "-", "_"] }}</a></li>
             {% endfor %}
           </ul>
         </div>

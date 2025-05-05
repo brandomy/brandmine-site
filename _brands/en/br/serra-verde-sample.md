@@ -2,15 +2,14 @@
 # Core identification
 layout: brand
 title: "Serra Verde Organics"
-slug: serra-verde
-ref: serra-verde
+ref: serra-verde  # Used for language switcher and as the slug
 country_code: "br"  # ISO country code for permalink
 lang: en
 permalink: /en/brands/br/serra-verde/
 
 # Core categorization
-sectors: [Gourmet Foods]
-markets: [Brazil]
+sectors: [gourmet-foods]
+markets: [brazil]
 description: "Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region."
 
 # Basic essentials
