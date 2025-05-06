@@ -14,10 +14,11 @@ layout: default
   Purpose:
   - Displays a grid of all insights (most recent first)
   - Includes sidebar filters for:
-    - Types (e.g. Brand Spotlight, Founders Journey)
+    - Categories (e.g. Brand Spotlight, Founders Journey)
     - Associated Sectors
     - Associated Markets
   - Uses insight-card include to render each item in the grid
+  - Supports the new insight template structure
 
   Used by:
   - pages/en/insights.md
@@ -27,6 +28,7 @@ layout: default
   Dependencies:
   - _includes/components/cards/insight-card.html
   - site.data.translations for multilingual labels
+  - site.data.dimensions for taxonomy translations
 ---------------------------------------------------------------------------- -->
 
 {{ content }}
@@ -44,42 +46,135 @@ layout: default
               {% include components/cards/insight-card.html insight=insight %}
             {% endfor %}
           {% else %}
-            <!-- Fallback to language-specific example if no insights are available -->
-            {% assign fallback_insight = site.data.fallback[page.lang].featured_insight %}
-            {% include components/cards/insight-card.html insight=fallback_insight %}
+            <div class="insights-empty-state">
+              <p>{{ site.data.translations[page.lang].insights.no_insights }}</p>
+            </div>
           {% endif %}
         </div>
       </div>
       
       <div class="insights-sidebar">
+        <!-- Categories Filter -->
         <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].insights.types }}</h3>
+          <h3>{{ site.data.translations[page.lang].insights.categories }}</h3>
           <ul class="content-type-list">
             {% assign categories = insights | map: "category" | uniq %}
-            {% for type in categories %}
-            <li><a href="{{ site.baseurl }}/{{ page.lang }}/insights/types/{{ type }}/">{{ site.data.translations[page.lang].insights[type | replace: "-", "_"] }}</a></li>
+            {% for category in categories %}
+            <li>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category }}/">
+                {{ site.data.translations[page.lang].insights[category | replace: "-", "_"] | default: category }}
+              </a>
+              <span class="category-count">
+                ({{ insights | where: "category", category | size }})
+              </span>
+            </li>
             {% endfor %}
           </ul>
         </div>
         
-        <!-- Dimension taxonomy sections -->
+        <!-- Sectors Filter -->
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].dimensions.sectors }}</h3>
           <div class="tag-list sidebar-tags">
-            {% assign sectors = insights | map: "sectors" | flatten | uniq %}
-            {% for sector in sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag tag--sector">{{ site.data.dimensions[page.lang].sectors[sector] }}</a>
+            {% assign all_sectors = insights | map: "sectors" | flatten | uniq %}
+            {% for sector in all_sectors %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag tag--sector">
+                {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+              </a>
             {% endfor %}
           </div>
         </div>
         
+        <!-- Markets Filter -->
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].dimensions.markets }}</h3>
           <div class="tag-list sidebar-tags">
-            {% assign markets = insights | map: "markets" | flatten | uniq %}
-            {% for market in markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag tag--market">{{ site.data.dimensions[page.lang].markets[market] }}</a>
+            {% assign all_markets = insights | map: "markets" | flatten | uniq %}
+            {% for market in all_markets %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag tag--market">
+                {{ site.data.dimensions[page.lang].markets[market] | default: market }}
+              </a>
             {% endfor %}
+          </div>
+        </div>
+        
+        <!-- Reading Time Filter -->
+        <div class="sidebar-section">
+          <h3>{{ site.data.translations[page.lang].insights.reading_time_filter }}</h3>
+          <div class="reading-time-filter">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/quick/" class="reading-time-option">
+              <span class="reading-time-icon">⚡</span>
+              {{ site.data.translations[page.lang].insights.reading_time_quick }}
+              <span class="reading-time-count">
+                ({{ insights | where_exp: "item", "item.reading_time <= 5" | size }})
+              </span>
+            </a>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/medium/" class="reading-time-option">
+              <span class="reading-time-icon">⏱️</span>
+              {{ site.data.translations[page.lang].insights.reading_time_medium }}
+              <span class="reading-time-count">
+                ({{ insights | where_exp: "item", "item.reading_time > 5 and item.reading_time <= 10" | size }})
+              </span>
+            </a>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/in-depth/" class="reading-time-option">
+              <span class="reading-time-icon">📚</span>
+              {{ site.data.translations[page.lang].insights.reading_time_in_depth }}
+              <span class="reading-time-count">
+                ({{ insights | where_exp: "item", "item.reading_time > 10" | size }})
+              </span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Country Focus Filter (based on country_code) -->
+        <div class="sidebar-section">
+          <h3>{{ site.data.translations[page.lang].insights.country_focus }}</h3>
+          <div class="country-filter">
+            {% assign countries = insights | map: "country_code" | compact | uniq %}
+            {% for country in countries %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/insights/countries/{{ country }}/" 
+                 class="country-filter-option country-filter-option--{{ country }}">
+                <span class="country-flag country-flag--{{ country }}"></span>
+                <span class="country-name">
+                  {{ site.data.dimensions[page.lang].markets[country] | default: country }}
+                </span>
+                <span class="country-count">
+                  ({{ insights | where: "country_code", country | size }})
+                </span>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        
+        <!-- Featured Brands Filter -->
+        <div class="sidebar-section">
+          <h3>{{ site.data.translations[page.lang].insights.featured_brands }}</h3>
+          <div class="featured-brands-filter">
+            {% assign featured_brands = insights | map: "brands" | flatten | compact | uniq %}
+            {% if featured_brands.size > 0 %}
+              {% for brand_slug in featured_brands limit:5 %}
+                {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
+                {% if brand %}
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/insights/brands/{{ brand_slug }}/" 
+                     class="featured-brand-filter-option">
+                    {{ brand.brand_name }}
+                    <span class="brand-count">
+                      ({{ insights | where_exp: "item", "item.brands contains brand_slug" | size }})
+                    </span>
+                  </a>
+                {% endif %}
+              {% endfor %}
+              {% if featured_brands.size > 5 %}
+                <a href="{{ site.baseurl }}/{{ page.lang }}/insights/brands/" class="view-all-brands-link">
+                  {{ site.data.translations[page.lang].insights.view_all_featured_brands }}
+                  ({{ featured_brands.size }})
+                </a>
+              {% endif %}
+            {% else %}
+              <p class="no-brands-message">
+                {{ site.data.translations[page.lang].insights.no_featured_brands }}
+              </p>
+            {% endif %}
           </div>
         </div>
       </div>

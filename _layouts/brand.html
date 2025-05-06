@@ -23,6 +23,7 @@ layout: default
   Dependencies:
   - _includes/components/images/brand-image.html
   - site.data.translations
+  - site.data.dimensions
 ---------------------------------------------------------------------------- -->
 <div class="brand-profile container">
   <!-- Header with logo and basic metadata -->
@@ -30,15 +31,16 @@ layout: default
     <div class="col-md-4">
       {% if page.logo %}
       {% include components/images/brand-image.html 
+         country=page.country_code
          brand=page.slug
          image="color"
          purpose="logo"
          ext="png"
-         alt=page.title %}
+         alt=page.brand_name %}
       {% endif %}
     </div>
     <div class="col-md-8">
-      <h1 class="brand-profile__title">{{ page.title }}</h1>
+      <h1 class="brand-profile__title">{{ page.brand_name }}</h1>
       
       {% if page.slogan %}
       <div class="brand-profile__slogan">
@@ -52,12 +54,14 @@ layout: default
         <div class="brand-profile__meta-item">
           <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].dimensions.sectors }}:</span>
           {% for sector in page.sectors %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="brand-meta__tag brand-meta__tag--sector">{{ sector }}</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" class="brand-meta__tag brand-meta__tag--sector">
+            {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+          </a>
           {% endfor %}
         </div>
         {% endif %}
         
-        <!-- Subsectors (new) -->
+        <!-- Subsectors -->
         {% if page.subsectors %}
         <div class="brand-profile__meta-item">
           <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].brand.subsectors }}:</span>
@@ -72,7 +76,9 @@ layout: default
         <div class="brand-profile__meta-item">
           <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].dimensions.markets }}:</span>
           {% for market in page.markets %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="brand-meta__tag brand-meta__tag--market">{{ market }}</a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" class="brand-meta__tag brand-meta__tag--market">
+            {{ site.data.dimensions[page.lang].markets[market] | default: market }}
+          </a>
           {% endfor %}
         </div>
         {% endif %}
@@ -93,7 +99,14 @@ layout: default
         
         {% if page.founder.generation %}
         <span class="brand-profile__founder-generation">
-          ({{ site.data.translations[page.lang].brand.generation_first }})
+          {% case page.founder.generation %}
+            {% when "first" %}
+              ({{ site.data.translations[page.lang].brand.generation_first }})
+            {% when "second" %}
+              ({{ site.data.translations[page.lang].brand.generation_second }})
+            {% when "transition" %}
+              ({{ site.data.translations[page.lang].brand.generation_transition }})
+          {% endcase %}
         </span>
         {% endif %}
       </div>
@@ -103,16 +116,17 @@ layout: default
       {% if page.founder_portrait %}
       <div class="brand-profile__founder-portrait mt-3">
         {% include components/images/brand-image.html 
-           brand=page.slug 
+           country=page.country_code
+           brand=page.slug
            image="portrait"
            purpose="founder"
            alt=page.founder.name %}
       </div>
       {% endif %}
       
-      <!-- Premium Badge -->
-      {% if page.premium %}
-      <div class="brand-profile__premium-badge">{{ site.data.translations[page.lang].dimensions.premium }}</div>
+      <!-- Featured Level Indicator -->
+      {% if page.featured_level > 1 %}
+      <div class="brand-profile__featured-badge">{{ site.data.translations[page.lang].general.featured }}</div>
       {% endif %}
     </div>
   </div>
@@ -122,10 +136,11 @@ layout: default
   <div class="brand-profile__hero-image row mt-4">
     <div class="col-12">
       {% include components/images/brand-image.html 
-         brand=page.slug 
-         image="storefront"
+         country=page.country_code
+         brand=page.slug
+         image="main"
          purpose="hero"
-         alt=page.title %}
+         alt=page.brand_name %}
     </div>
   </div>
   {% endif %}
@@ -140,29 +155,34 @@ layout: default
       </div>
     </div>
 
-
     <!-- Sidebar Column -->
     <div class="col-md-4 brand-profile__sidebar">
       <!-- Brand Attributes -->
+      {% if page.attributes %}
       <div class="brand-profile__attributes">
         <h3>{{ site.data.translations[page.lang].dimensions.attributes }}</h3>
         {% for attribute in page.attributes %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/" class="brand-profile__tag brand-profile__tag--attribute">{{ attribute }}</a>
-        {% endfor %}
-      </div>
-
-      <!-- Brand Signals -->
-      {% if page.premium %}
-      <div class="brand-profile__signals mt-3">
-        <h3>{{ site.data.translations[page.lang].dimensions.signals }}</h3>
-        {% for signal in page.signals %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/" class="brand-profile__tag brand-profile__tag--signal">{{ signal }}</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/" class="brand-profile__tag brand-profile__tag--attribute">
+          {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
+        </a>
         {% endfor %}
       </div>
       {% endif %}
 
-      <!-- Contact Information -->
-      {% if page.premium %}
+      <!-- Brand Signals (only shown for featured_level > 0) -->
+      {% if page.signals and page.featured_level > 0 %}
+      <div class="brand-profile__signals mt-3">
+        <h3>{{ site.data.translations[page.lang].dimensions.signals }}</h3>
+        {% for signal in page.signals %}
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/" class="brand-profile__tag brand-profile__tag--signal">
+          {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Contact Information (only for featured_level > 0) -->
+      {% if page.featured_level > 0 %}
       <div class="brand-profile__contact mt-3">
         <h3>{{ site.data.translations[page.lang].brand.contact }}</h3>
         
@@ -180,8 +200,8 @@ layout: default
       </div>
       {% endif %}
       
-      <!-- Social Media Links (new) -->
-      {% if page.premium and page.social_media %}
+      <!-- Social Media Links (for featured_level > 0) -->
+      {% if page.featured_level > 0 and page.social_media %}
       <div class="brand-profile__social-media mt-3">
         <h3>{{ site.data.translations[page.lang].brand.social_media }}</h3>
         <div class="brand-profile__social-icons">
@@ -252,7 +272,9 @@ layout: default
         {% for insight in related_insights %}
         <div class="brand-profile__sidebar-insight">
           <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
-          <span class="brand-profile__insight-type">{{ insight.category }}</span>
+          <span class="brand-profile__insight-type">
+            {{ site.data.translations[page.lang].insights[insight.category | replace: "-", "_"] | default: insight.category }}
+          </span>
         </div>
         {% endfor %}
       </div>
@@ -260,8 +282,8 @@ layout: default
     </div>
   </div>
 
-  <!-- Timeline Section (new) -->
-  {% if page.timeline %}
+  <!-- Timeline Section (for featured_level > 0) -->
+  {% if page.timeline and page.featured_level > 0 %}
   <div class="brand-profile__timeline row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.timeline }}</h2>
@@ -277,8 +299,8 @@ layout: default
   </div>
   {% endif %}
 
-  <!-- Certifications & Awards (new enhanced section) -->
-  {% if page.certifications or page.awards %}
+  <!-- Certifications & Awards (for featured_level > 0) -->
+  {% if page.featured_level > 0 and page.certifications %}
   <div class="brand-profile__certifications row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.certifications }}</h2>
@@ -291,6 +313,9 @@ layout: default
           <li>
             <span class="certification-name">{{ certification.name }}</span>
             <span class="certification-year">({{ certification.year }})</span>
+            {% if certification.description %}
+            <p class="certification-description">{{ certification.description }}</p>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
@@ -305,6 +330,9 @@ layout: default
           <li>
             <span class="award-name">{{ award.name }}</span>
             <span class="award-year">({{ award.year }})</span>
+            {% if award.description %}
+            <p class="award-description">{{ award.description }}</p>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
@@ -314,8 +342,8 @@ layout: default
   </div>
   {% endif %}
 
-  <!-- International Presence (new) -->
-  {% if page.premium and page.international.markets %}
+  <!-- International Presence (for featured_level > 1) -->
+  {% if page.featured_level > 1 and page.international.markets %}
   <div class="brand-profile__international row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.international }}</h2>
@@ -343,8 +371,8 @@ layout: default
   </div>
   {% endif %}
 
-  <!-- Gallery with Captions (updated) -->
-  {% if page.gallery %}
+  <!-- Gallery with Captions (for featured_level > 1) -->
+  {% if page.featured_level > 1 and page.gallery %}
   <div class="brand-profile__gallery row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.gallery }}</h2>
@@ -352,9 +380,10 @@ layout: default
         {% for item in page.gallery %}
         <figure class="gallery-figure">
           {% include components/images/brand-image.html 
-             brand=page.slug 
+             country=page.country_code
+             brand=page.slug
              image=item.image
-             purpose="gallery" 
+             purpose="gallery"
              alt=item.caption %}
           <figcaption class="gallery-caption">{{ item.caption }}</figcaption>
         </figure>
@@ -364,29 +393,25 @@ layout: default
   </div>
   {% endif %}
 
-  <!-- Location Intelligence with Map Placeholder -->
-  {% if page.premium and page.location.coordinates and page.location_intelligence != false %}
+  <!-- Location Intelligence with Map (respects location_intelligence flag) -->
+  {% if page.featured_level > 0 and page.location.coordinates and page.location_intelligence != false %}
   <div class="brand-profile__location row mt-4">
     <div class="col-12">
       <h2>{{ site.data.translations[page.lang].brand.location_intelligence }}</h2>
       
       <div class="location-map">
         <!-- MapLibre map will be inserted here via JavaScript -->
-        <div id="brandLocationMap" class="brand-map" data-lat="{{ page.location.coordinates[1] }}" data-lng="{{ page.location.coordinates[0] }}" data-name="{{ page.title }}"></div>
+        <div id="brandLocationMap" class="brand-map" 
+             data-lat="{{ page.location.coordinates[1] }}" 
+             data-lng="{{ page.location.coordinates[0] }}" 
+             data-name="{{ page.brand_name }}"></div>
       </div>
       
       <div class="location-details mt-3">
         <p>
           <strong>{{ site.data.translations[page.lang].brand.location }}:</strong>
-          {{ page.location.city }}, {{ page.location.region }}, {{ page.location.country }}
+          {{ page.location.city }}{% if page.location.region %}, {{ page.location.region }}{% endif %}{% if page.location.country %}, {{ page.location.country }}{% endif %}
         </p>
-        
-        <!-- Regional Context from markdown -->
-        {% if page.content contains "Regional Context" %}
-        <div class="regional-context">
-          <!-- This section rendered from markdown content -->
-        </div>
-        {% endif %}
       </div>
     </div>
   </div>
@@ -404,17 +429,20 @@ layout: default
           <div class="related-brand-card">
             {% if related_brand.logo %}
             {% include components/images/brand-image.html 
-               brand=related_brand.slug 
+               country=related_brand.country_code
+               brand=related_brand.slug
                image="color"
                purpose="logo"
                ext="png"
-               alt=related_brand.title %}
+               alt=related_brand.brand_name %}
             {% endif %}
-            <h3><a href="{{ related_brand.url }}">{{ related_brand.title }}</a></h3>
+            <h3><a href="{{ related_brand.url }}">{{ related_brand.brand_name }}</a></h3>
             <p>{{ related_brand.description | truncate: 100 }}</p>
-            {% if related_brand.sectors %}
+            {% if related_brand.sectors and related_brand.sectors.size > 0 %}
             <div class="related-brand-sector">
-              <span class="sector-label">{{ related_brand.sectors[0] }}</span>
+              <span class="sector-label">
+                {{ site.data.dimensions[page.lang].sectors[related_brand.sectors[0]] | default: related_brand.sectors[0] }}
+              </span>
             </div>
             {% endif %}
           </div>
@@ -453,8 +481,6 @@ layout: default
           .setLngLat([lng, lat])
           .setPopup(new maplibregl.Popup().setHTML(`<h3>${brandName}</h3>`))
           .addTo(map);
-          
-        // Additional map setup would go here
       } else {
         // Fallback if MapLibre is not available
         mapElement.innerHTML = `<div class="map-placeholder">

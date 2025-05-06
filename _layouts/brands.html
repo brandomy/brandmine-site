@@ -12,6 +12,7 @@ layout: default
   - Displays brand cards in a responsive grid layout
   - Supports dynamic search, sorting, and filtering (via JavaScript)
   - Multilingual content and labels are driven by `page.lang`
+  - Supports the new brand template structure
 
   Used by:
   - pages/en/brands.md
@@ -23,8 +24,9 @@ layout: default
   - _includes/components/search/search-filter.html (filter UI)
   - /assets/js/brand-filtering.js (dynamic filtering behavior)
   - site.data.translations for UI labels
+  - site.data.dimensions for taxonomy translations
 ---------------------------------------------------------------------------- -->
----
+
 <div class="panel panel--light">
   <div class="panel__content">
     <h1>{{ page.title }}</h1>
@@ -35,30 +37,52 @@ layout: default
     </div>
     
     <div class="brands__interface">
-      <!-- Use our new search filter include -->
+      <!-- Search filter include -->
       {% include components/search/search-filter.html content_type="brands" taxonomy=site.data.taxonomy %}
       
       <div class="brands__results">
         <div class="brands__results-header">
           <h2 id="results-count">{{ site.data.translations[page.lang].search.all_brands }}</h2>
-          <div class="brands__sort">
-            <label for="sort-select">{{ site.data.translations[page.lang].sort.label }}:</label>
-            <select id="sort-select">
-              <option value="name">{{ site.data.translations[page.lang].sort.name }}</option>
-              <option value="sector">{{ site.data.translations[page.lang].sort.sector }}</option>
-              <option value="market">{{ site.data.translations[page.lang].sort.market }}</option>
-            </select>
+          
+          <!-- Sort and Filter Options -->
+          <div class="brands__controls">
+            <!-- Featured Level Filter -->
+            <div class="brands__featured-filter">
+              <label for="featured-select">{{ site.data.translations[page.lang].filter.featured_level }}:</label>
+              <select id="featured-select">
+                <option value="all">{{ site.data.translations[page.lang].filter.all_brands }}</option>
+                <option value="featured">{{ site.data.translations[page.lang].general.featured }}</option>
+                <option value="standard">{{ site.data.translations[page.lang].general.standard }}</option>
+              </select>
+            </div>
+            
+            <!-- Sort Options -->
+            <div class="brands__sort">
+              <label for="sort-select">{{ site.data.translations[page.lang].sort.label }}:</label>
+              <select id="sort-select">
+                <option value="name">{{ site.data.translations[page.lang].sort.name }}</option>
+                <option value="sector">{{ site.data.translations[page.lang].sort.sector }}</option>
+                <option value="market">{{ site.data.translations[page.lang].sort.market }}</option>
+                <option value="founded">{{ site.data.translations[page.lang].sort.founded }}</option>
+              </select>
+            </div>
           </div>
         </div>
         
+        <!-- Brand Grid -->
         <div id="brands-container" class="brands__grid">
-          <!-- Populated by JavaScript -->
           {% assign brands = site.brands | where: "lang", page.lang %}
           {% for brand in brands %}
-            {% include brand-card.html brand=brand %}
+            {% include components/cards/brand-card.html brand=brand %}
           {% endfor %}
         </div>
         
+        <!-- Empty State Message (shown when no results match) -->
+        <div id="empty-results" class="brands__empty-results" style="display: none;">
+          <p>{{ site.data.translations[page.lang].filter.no_results }}</p>
+        </div>
+        
+        <!-- Load More Button -->
         <div class="brands__load-more-container">
           <button id="load-more" class="btn-secondary">{{ site.data.translations[page.lang].pagination.load_more }}</button>
         </div>
@@ -67,5 +91,63 @@ layout: default
   </div>
 </div>
 
+<!-- Featured Brands Section -->
+<div class="panel panel--olive-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].brands.featured_brands }}</h2>
+    <p class="panel__lead-text">{{ site.data.translations[page.lang].brands.featured_description }}</p>
+    
+    <div class="featured-brands__grid">
+      {% assign featured_brands = site.brands | where: "lang", page.lang | where_exp: "b", "b.featured_level > 1" | limit: 3 %}
+      {% for brand in featured_brands %}
+        {% include components/cards/featured-brand.html content=brand content_type="brand" %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Recently Added Brands -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].brands.recently_added }}</h2>
+    
+    <div class="recent-brands__grid">
+      {% assign recent_brands = site.brands | where: "lang", page.lang | sort: "date" | reverse | limit: 4 %}
+      {% for brand in recent_brands %}
+        {% include components/cards/brand-card.html brand=brand %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
 <!-- JavaScript for brand filtering and display -->
 <script src="{{ '/assets/js/brand-filtering.js' | relative_url }}"></script>
+
+<!-- Add data attributes for JavaScript to read -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add data attributes for new field names
+    const brandCards = document.querySelectorAll('.brand-card');
+    brandCards.forEach(card => {
+      // Store any necessary data attributes for filtering
+      if (card.dataset.name) {
+        card.dataset.brandName = card.dataset.name; // Backward compatibility
+      }
+      if (card.dataset.featuredLevel) {
+        card.dataset.featured = card.dataset.featuredLevel > 0 ? 'true' : 'false';
+      }
+    });
+    
+    // Initialize featured filter
+    const featuredSelect = document.getElementById('featured-select');
+    if (featuredSelect) {
+      featuredSelect.addEventListener('change', function() {
+        // Trigger filtering (to be handled by brand-filtering.js)
+        const event = new CustomEvent('filter-update', {
+          detail: { type: 'featured', value: this.value }
+        });
+        document.dispatchEvent(event);
+      });
+    }
+  });
+</script>

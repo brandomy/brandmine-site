@@ -12,7 +12,7 @@ layout: default
 
   Purpose:
   - Renders the full content of a single insight
-  - Displays metadata (type, author, publish date)
+  - Displays metadata (category, author, publish date, reading time)
   - Includes a back-link to the insights index
   - Shows feature image (if provided)
   - Outputs linked tags (sectors, markets, attributes, signals)
@@ -23,8 +23,8 @@ layout: default
 
   Dependencies:
   - _includes/components/cards/insight-card.html
-  - _includes/components/translate-name.html
   - site.data.translations for multilingual labels
+  - site.data.dimensions for taxonomy translations
 ---------------------------------------------------------------------------- -->
 
 <div class="panel panel--light">
@@ -36,21 +36,42 @@ layout: default
             ← {{ site.data.translations[page.lang].insights.back_to_insights }}
           </a>
           
-          <div class="insight-type-badge">{{ page.category }}</div>
+          <!-- Category Badge -->
+          <div class="insight-type-badge">
+            {{ site.data.translations[page.lang].insights[page.category | replace: "-", "_"] | default: page.category }}
+          </div>
           
           <h1>{{ page.title }}</h1>
           
           <div class="insight-meta">
-            <span class="insight-date">{{ site.data.translations[page.lang].insights.published_on }} {{ page.date | date: "%B %-d, %Y" }}</span>
-            <span class="insight-author">{{ site.data.translations[page.lang].insights.author }}: 
-              {% include components/translate-name.html type="authors" key=page.author %}
+            <!-- Publication Date -->
+            <span class="insight-date">
+              {{ site.data.translations[page.lang].insights.published_on }} 
+              {{ page.date | date: "%B %-d, %Y" }}
             </span>
             
+            <!-- Author - using translation lookup -->
+            <span class="insight-author">
+              {{ site.data.translations[page.lang].insights.author }}: 
+              {{ site.data.translations[page.lang].authors[page.author] }}
+            </span>
+            
+            <!-- Reading Time -->
+            {% if page.reading_time %}
+            <span class="insight-reading-time">
+              {{ page.reading_time }} {{ site.data.translations[page.lang].insights.reading_time }}
+            </span>
+            {% endif %}
+            
+            <!-- Premium Badge -->
             {% if page.premium %}
-            <span class="premium-badge">{{ site.data.translations[page.lang].insights.premium_content }}</span>
+            <span class="premium-badge">
+              {{ site.data.translations[page.lang].insights.premium_content }}
+            </span>
             {% endif %}
           </div>
           
+          <!-- Hero Image -->
           {% if page.images.hero %}
           <div class="insight-feature-image">
             <img src="{{ page.images.hero | relative_url }}" alt="{{ page.title }}">
@@ -58,50 +79,64 @@ layout: default
           {% endif %}
         </div>
         
+        <!-- Main Content -->
         <div class="insight-content">
           {{ content }}
         </div>
         
+        <!-- Taxonomy Section -->
         <div class="insight-taxonomy">
+          <!-- Sectors -->
           {% if page.sectors %}
           <div class="taxonomy-section">
             <h4>{{ site.data.translations[page.lang].dimensions.sectors }}</h4>
             <div class="sector-tags">
               {% for sector in page.sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag tag--sector">{{ site.data.dimensions[page.lang].sectors[sector] }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag tag--sector">
+                {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+              </a>
               {% endfor %}
             </div>
           </div>
           {% endif %}
           
+          <!-- Markets -->
           {% if page.markets %}
           <div class="taxonomy-section">
             <h4>{{ site.data.translations[page.lang].dimensions.markets }}</h4>
             <div class="market-tags">
               {% for market in page.markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag tag--market">{{ site.data.dimensions[page.lang].markets[market] }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag tag--market">
+                {{ site.data.dimensions[page.lang].markets[market] | default: market }}
+              </a>
               {% endfor %}
             </div>
           </div>
           {% endif %}
           
+          <!-- Attributes -->
           {% if page.attributes %}
           <div class="taxonomy-section">
             <h4>{{ site.data.translations[page.lang].dimensions.attributes }}</h4>
             <div class="attribute-tags">
               {% for attribute in page.attributes %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="tag tag--attribute">{{ site.data.dimensions[page.lang].attributes[attribute] }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="tag tag--attribute">
+                {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
+              </a>
               {% endfor %}
             </div>
           </div>
           {% endif %}
           
+          <!-- Signals -->
           {% if page.signals %}
           <div class="taxonomy-section">
             <h4>{{ site.data.translations[page.lang].dimensions.signals }}</h4>
             <div class="signal-tags">
               {% for signal in page.signals %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="tag tag--signal">{{ site.data.dimensions[page.lang].signals[signal] }}</a>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="tag tag--signal">
+                {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
+              </a>
               {% endfor %}
             </div>
           </div>
@@ -110,18 +145,21 @@ layout: default
       </div>
       
       <div class="insight-detail-sidebar">
+        <!-- Featured Brands Section -->
         {% if page.brands %}
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].insights.featured_brands }}</h3>
           <div class="related-brands">
             {% for brand_slug in page.brands %}
-              {% assign brand = site.brands | where: "ref", brand_slug | where: "lang", page.lang | first %}
+              {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
               {% if brand %}
               <div class="sidebar-brand-card">
-                <h4><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h4>
+                <h4><a href="{{ brand.url | relative_url }}">{{ brand.brand_name }}</a></h4>
                 <div class="brand-brief">
-                  {% if brand.sectors %}
-                  <span class="sector-label">{{ brand.sectors[0] }}</span>
+                  {% if brand.sectors and brand.sectors.size > 0 %}
+                  <span class="sector-label">
+                    {{ site.data.dimensions[page.lang].sectors[brand.sectors[0]] | default: brand.sectors[0] }}
+                  </span>
                   {% endif %}
                   <p>{{ brand.description | truncate: 80 }}</p>
                 </div>
@@ -132,6 +170,7 @@ layout: default
         </div>
         {% endif %}
         
+        <!-- Related Insights Section -->
         <div class="sidebar-section">
           <h3>{{ site.data.translations[page.lang].insights.related }}</h3>
           <div class="related-insights">
@@ -139,11 +178,46 @@ layout: default
             {% for related in related_insights %}
             <div class="related-insight">
               <h4><a href="{{ related.url | relative_url }}">{{ related.title }}</a></h4>
-              <span class="insight-date">{{ related.date | date: "%B %-d, %Y" }}</span>
+              <div class="related-insight-meta">
+                <span class="insight-date">{{ related.date | date: "%B %-d, %Y" }}</span>
+                {% if related.reading_time %}
+                <span class="insight-reading-time">{{ related.reading_time }} {{ site.data.translations[page.lang].insights.reading_time }}</span>
+                {% endif %}
+              </div>
             </div>
             {% endfor %}
           </div>
         </div>
+
+        <!-- Secondary Categories (if present) -->
+        {% if page.secondary_categories and page.secondary_categories.size > 0 %}
+        <div class="sidebar-section">
+          <h3>{{ site.data.translations[page.lang].insights.secondary_categories }}</h3>
+          <div class="secondary-categories">
+            {% for category in page.secondary_categories %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category | slugify }}/" 
+                 class="category-tag category-tag--{{ category | slugify }}">
+                {{ site.data.translations[page.lang].insights[category | replace: "-", "_"] | default: category }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+        <!-- Country Information (if present) -->
+        {% if page.country_code %}
+        <div class="sidebar-section">
+          <h3>{{ site.data.translations[page.lang].insights.country_focus }}</h3>
+          <div class="country-focus">
+            {% assign country_market = site.data.dimensions[page.lang].markets[page.country_code] | default: page.country_code %}
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ page.country_code }}/" 
+               class="country-focus-link">
+              <span class="country-flag country-flag--{{ page.country_code }}"></span>
+              <span class="country-name">{{ country_market }}</span>
+            </a>
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>

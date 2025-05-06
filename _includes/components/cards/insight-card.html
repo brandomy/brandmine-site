@@ -2,26 +2,26 @@
   Include Name: components/cards/insight-card.html
   
   Purpose: Displays an insight article in a card format with thumbnail image, metadata,
-  and taxonomy information. Used in insight listings, feeds, and related content sections.
+  and taxonomy information. Updated to match the new standardized insight template structure.
   
   Parameters:
   - insight: Insight object with complete details (required)
-    Expected properties:
-    - title: Insight title
-    - images.hero: Path to thumbnail image
-    - premium: Boolean flag for premium insights (optional)
-    - date: Publication date
+    Expected properties from new template structure:
+    - title: Insight title (translatable)
+    - images.hero: Path to hero image 
+    - premium: Boolean flag for premium insights
+    - date: Publication date (YYYY-MM-DD)
     - author: Author key for translation lookup
-    - excerpt: Short excerpt or description
-    - sectors: Array of sector slugs (not names)
-    - markets: Array of market slugs (not names)
+    - excerpt: Short excerpt or description (translatable)
+    - sectors: Array of sector slugs
+    - markets: Array of market slugs
     - url: URL to insight detail page
-    - cta: Custom call-to-action text (optional, default: "Read More")
-  
+    - reading_time: Estimated reading time in minutes
+    
   Dependencies:
   - CSS: insight-card.css for styling
   - site.data.translations for dimension names and author translations
-  - components/translate-name.html for author name translation
+  - site.data.dimensions for taxonomy translations
   
   Example Usage:
   {% for insight in site.insights %}
@@ -29,11 +29,9 @@
   {% endfor %}
   
   Notes:
-  - Uses images.hero for thumbnail images
-  - Displays author using translation lookup via translate-name include
-  - Converts sector and market slugs to display names using translations
-  - Truncates to first 3 sectors with +X indicator
-  - Uses BEM naming conventions for all CSS classes
+  - Uses standardized image paths
+  - Displays author using translation lookup
+  - Converts taxonomy slugs to display names using translations
 {% endcomment %}
 
 <article class="insight-card">
@@ -44,6 +42,7 @@
     {% if insight.premium %}
       <div class="insight-card__premium-badge">
         <span class="insight-card__premium-icon">★</span>
+        <span class="insight-card__premium-text">{{ site.data.translations[page.lang].premium.content }}</span>
       </div>
     {% endif %}
   </div>
@@ -54,8 +53,11 @@
     <div class="insight-card__meta">
       <span class="insight-card__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
       <span class="insight-card__author">
-        {% include components/translate-name.html type="authors" key=insight.author %}
+        {{ site.data.translations[page.lang].authors[insight.author] }}
       </span>
+      {% if insight.reading_time %}
+        <span class="insight-card__reading-time">{{ insight.reading_time }} {{ site.data.translations[page.lang].insights.reading_time }}</span>
+      {% endif %}
     </div>
 
     <p class="insight-card__excerpt">{{ insight.excerpt }}</p>
@@ -64,7 +66,9 @@
       {% if insight.sectors %}
       <div class="insight-card__sectors">
         {% for sector in insight.sectors limit:3 %}
-          <span class="insight-card__sector-tag">{{ site.data.dimensions[page.lang].sectors[sector] }}</span>
+          <span class="insight-card__sector-tag">
+            {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+          </span>
         {% endfor %}
         {% if insight.sectors.size > 3 %}
           <span class="insight-card__more-tag">+{{ insight.sectors.size | minus:3 }}</span>
@@ -75,14 +79,24 @@
       {% if insight.markets %}
       <div class="insight-card__markets">
         {% for market in insight.markets %}
-          <span class="insight-card__market-tag">{{ site.data.dimensions[page.lang].markets[market] }}</span>
+          <span class="insight-card__market-tag">
+            {{ site.data.dimensions[page.lang].markets[market] | default: market }}
+          </span>
         {% endfor %}
       </div>
       {% endif %}
     </div>
 
     <a href="{{ insight.url }}" class="insight-card__read-more">
-      {{ insight.cta | default: site.data.translations[page.lang].insights.read_more }}
+      {{ site.data.translations[page.lang].insights.read_more }}
     </a>
+    
+    {% if insight.category %}
+    <div class="insight-card__category">
+      <span class="insight-card__category-badge">
+        {{ site.data.translations[page.lang].insights[insight.category | replace: "-", "_"] | default: insight.category }}
+      </span>
+    </div>
+    {% endif %}
   </div>
 </article>
