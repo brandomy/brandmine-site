@@ -55,7 +55,7 @@ This clear separation reduces translation errors by explicitly identifying which
 ### Core Template Required Fields
 - `layout`, `ref`, `country_code`, `lang`, `permalink`
 - `sectors`, `markets`
-- `brand_name`, `description`
+- `title`, `description`
 - `founding_year`, `website`
 - `founder.name`, `founder.founder_led`
 - `location.country_code`, `location.city`, `location.coordinates`
@@ -108,7 +108,7 @@ _brands/
 
 ## Key Changes to Note
 
-1. **brand_name** is now used instead of title
+1. **title** is now used instead of "brand_name" which I mistakenly changed
 2. **Founder name** is now a translatable field
 3. **Location city and region** are translatable while coordinates remain in metadata
 4. **Timeline events, certification names, and gallery captions** are all translatable
@@ -130,7 +130,7 @@ sectors: [hotels-resorts]
 # ...
 
 # TRANSLATABLE SECTION
-brand_name: "Mountain Retreat"
+title: "Mountain Retreat"
 description: "Luxury mountain resort with traditional architecture and modern amenities."
 founder:
   name: "John Smith"
@@ -146,7 +146,7 @@ sectors: [hotels-resorts]  # Keep unchanged
 # ...
 
 # TRANSLATABLE SECTION
-brand_name: "Горный Приют"
+title: "Горный Приют"
 description: "Роскошный горный курорт с традиционной архитектурой и современными удобствами."
 founder:
   name: "Джон Смит"

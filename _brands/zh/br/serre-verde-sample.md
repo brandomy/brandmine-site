@@ -48,7 +48,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "塞拉维德有机农场"
+title: "塞拉维德有机农场"
 description: "家族经营的有机保鲜品、蜂蜜和特色咖啡生产商，原料来自巴西大西洋森林地区。"
 
 # Founder information

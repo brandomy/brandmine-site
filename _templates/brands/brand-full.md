@@ -79,7 +79,7 @@ location_intelligence: true
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "BRAND NAME"
+title: "BRAND NAME"
 slogan: "Brand slogan or tagline"
 description: "Brief compelling description of the brand (1-2 sentences)."
 

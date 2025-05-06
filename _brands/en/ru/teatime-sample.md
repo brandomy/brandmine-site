@@ -72,7 +72,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "Сожурн Бутик-Отели"
+title: "Сожурн Бутик-Отели"
 slogan: "Откройте Бразилию изнутри"
 description: "Коллекция уютных бутик-отелей, которые демонстрируют разнообразные ландшафты Бразилии через устойчивую роскошь и аутентичные местные впечатления."
 

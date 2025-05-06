@@ -48,7 +48,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "Серра Верде Органикс"
+title: "Серра Верде Органикс"
 description: "Семейное предприятие по производству органических консервов, меда и элитного кофе из региона Атлантического леса Бразилии."
 
 # Founder information

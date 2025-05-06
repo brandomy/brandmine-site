@@ -72,7 +72,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "Тайга Спиритс"
+title: "Тайга Спиритс"
 slogan: "Дух Дикой Природы"
 description: "Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов."
 

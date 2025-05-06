@@ -72,7 +72,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "Sojourn Boutique Hotels"
+title: "Sojourn Boutique Hotels"
 slogan: "Experience Brazil, Intimately"
 description: "A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences."
 

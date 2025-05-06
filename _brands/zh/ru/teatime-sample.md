@@ -71,7 +71,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "茶时光"
+title: "茶时光"
 slogan: "酿造传统，创造未来"
 description: "俄罗斯高级茶品牌，将传统技艺与现代风味相结合。"
 

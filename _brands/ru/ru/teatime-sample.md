@@ -71,7 +71,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "ТиТайм"
+title: "ТиТайм"
 slogan: "Заваривая Традиции, Создавая Будущее"
 description: "Премиальный российский чайный бренд, сочетающий традиционные техники с современными вкусами."
 

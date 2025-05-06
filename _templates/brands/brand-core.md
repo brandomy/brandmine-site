@@ -48,7 +48,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "BRAND NAME"
+title: "BRAND NAME"
 description: "Brief description (1-2 sentences)."
 
 # Founder information

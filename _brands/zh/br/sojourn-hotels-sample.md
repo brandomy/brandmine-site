@@ -72,7 +72,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "寓居精品酒店"
+title: "寓居精品酒店"
 slogan: "亲密体验巴西"
 description: "一系列精致的精品酒店，通过可持续奢华和真实的当地体验，展示巴西多样化的自然景观。"
 

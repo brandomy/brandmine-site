@@ -72,7 +72,7 @@ location_intelligence: false
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-brand_name: "泰加烈酒"
+title: "泰加烈酒"
 slogan: "荒野之魂"
 description: "一家工艺酒厂，使用古老的西伯利亚配方和野生采集的原料制作特色小批量伏特加和植物烈酒。"
 

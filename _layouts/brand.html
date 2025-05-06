@@ -36,11 +36,11 @@ layout: default
          image="color"
          purpose="logo"
          ext="png"
-         alt=page.brand_name %}
+         alt=page.title %}
       {% endif %}
     </div>
     <div class="col-md-8">
-      <h1 class="brand-profile__title">{{ page.brand_name }}</h1>
+      <h1 class="brand-profile__title">{{ page.title }}</h1>
       
       {% if page.slogan %}
       <div class="brand-profile__slogan">
@@ -140,7 +140,7 @@ layout: default
          brand=page.slug
          image="main"
          purpose="hero"
-         alt=page.brand_name %}
+         alt=page.title %}
     </div>
   </div>
   {% endif %}
@@ -456,7 +456,7 @@ layout: default
         <div id="brandLocationMap" class="brand-map" 
              data-lat="{{ page.location.coordinates[1] }}" 
              data-lng="{{ page.location.coordinates[0] }}" 
-             data-name="{{ page.brand_name }}"></div>
+             data-name="{{ page.title }}"></div>
       </div>
       
       <div class="location-details mt-3">
@@ -486,9 +486,9 @@ layout: default
                image="color"
                purpose="logo"
                ext="png"
-               alt=related_brand.brand_name %}
+               alt=related_brand.title %}
             {% endif %}
-            <h3><a href="{{ related_brand.url }}">{{ related_brand.brand_name }}</a></h3>
+            <h3><a href="{{ related_brand.url }}">{{ related_brand.title }}</a></h3>
             <p>{{ related_brand.description | truncate: 100 }}</p>
             {% if related_brand.sectors and related_brand.sectors.size > 0 %}
             <div class="related-brand-sector">
