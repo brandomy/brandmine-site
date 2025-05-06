@@ -43,14 +43,18 @@ location:
 
 # Social media presence (do not translate URLs)
 social_media:
-  instagram: ""
   facebook: ""
+  instagram: ""
   linkedin: ""
-  youtube: ""
+  pinterest: ""
+  redbook: ""
   telegram: ""
+  tiktok: ""
+  twitter: ""
   vk: ""
   weibo: ""
   wechat: ""
+  youtube: ""
 
 # International presence
 international:

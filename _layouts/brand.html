@@ -205,59 +205,111 @@ layout: default
       <div class="brand-profile__social-media mt-3">
         <h3>{{ site.data.translations[page.lang].brand.social_media }}</h3>
         <div class="brand-profile__social-icons">
-          {% if page.social_media.instagram %}
-          <a href="{{ page.social_media.instagram }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
-            <i class="fab fa-instagram" aria-hidden="true"></i>
-            <span class="sr-only">Instagram</span>
+          {% if page.social_media.facebook %}
+          <a href="{{ page.social_media.facebook }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.facebook }}">
+            <i class="fab fa-facebook" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.facebook }}</span>
           </a>
           {% endif %}
           
-          {% if page.social_media.facebook %}
-          <a href="{{ page.social_media.facebook }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
-            <i class="fab fa-facebook" aria-hidden="true"></i>
-            <span class="sr-only">Facebook</span>
+          {% if page.social_media.instagram %}
+          <a href="{{ page.social_media.instagram }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.instagram }}">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.instagram }}</span>
           </a>
           {% endif %}
           
           {% if page.social_media.linkedin %}
-          <a href="{{ page.social_media.linkedin }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+          <a href="{{ page.social_media.linkedin }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.linkedin }}">
             <i class="fab fa-linkedin" aria-hidden="true"></i>
-            <span class="sr-only">LinkedIn</span>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.linkedin }}</span>
           </a>
           {% endif %}
           
-          {% if page.social_media.youtube %}
-          <a href="{{ page.social_media.youtube }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
-            <i class="fab fa-youtube" aria-hidden="true"></i>
-            <span class="sr-only">YouTube</span>
+          {% if page.social_media.pinterest %}
+          <a href="{{ page.social_media.pinterest }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.pinterest }}">
+            <i class="fab fa-pinterest" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.pinterest }}</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.redbook %}
+          <a href="{{ page.social_media.redbook }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.redbook }}">
+            <i class="fab fa-book" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.redbook }}</span>
           </a>
           {% endif %}
           
           {% if page.social_media.telegram %}
-          <a href="{{ page.social_media.telegram }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+          <a href="{{ page.social_media.telegram }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.telegram }}">
             <i class="fab fa-telegram" aria-hidden="true"></i>
-            <span class="sr-only">Telegram</span>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.telegram }}</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.tiktok %}
+          <a href="{{ page.social_media.tiktok }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.tiktok }}">
+            <i class="fab fa-tiktok" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.tiktok }}</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.twitter %}
+          <a href="{{ page.social_media.twitter }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.twitter }}">
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.twitter }}</span>
           </a>
           {% endif %}
           
           {% if page.social_media.vk %}
-          <a href="{{ page.social_media.vk }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+          <a href="{{ page.social_media.vk }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.vk }}">
             <i class="fab fa-vk" aria-hidden="true"></i>
-            <span class="sr-only">VK</span>
-          </a>
-          {% endif %}
-          
-          {% if page.social_media.weibo %}
-          <a href="{{ page.social_media.weibo }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
-            <i class="fab fa-weibo" aria-hidden="true"></i>
-            <span class="sr-only">Weibo</span>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.vk }}</span>
           </a>
           {% endif %}
           
           {% if page.social_media.wechat %}
-          <a href="{{ page.social_media.wechat }}" target="_blank" rel="noopener" class="brand-profile__social-icon">
+          <a href="{{ page.social_media.wechat }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.wechat }}">
             <i class="fab fa-weixin" aria-hidden="true"></i>
-            <span class="sr-only">WeChat</span>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.wechat }}</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.weibo %}
+          <a href="{{ page.social_media.weibo }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.weibo }}">
+            <i class="fab fa-weibo" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.weibo }}</span>
+          </a>
+          {% endif %}
+          
+          {% if page.social_media.youtube %}
+          <a href="{{ page.social_media.youtube }}" target="_blank" rel="noopener" 
+             class="brand-profile__social-icon"
+             title="{{ site.data.translations[page.lang].social.youtube }}">
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+            <span class="sr-only">{{ site.data.translations[page.lang].social.youtube }}</span>
           </a>
           {% endif %}
         </div>
