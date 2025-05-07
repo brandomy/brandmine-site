@@ -101,11 +101,11 @@ layout: default
         <span class="brand-profile__founder-generation">
           {% case page.founder.generation %}
             {% when "first" %}
-              ({{ site.data.translations[page.lang].brand.generation_first }})
+              ({{ site.data.translations[page.lang].generation.first }})
             {% when "second" %}
-              ({{ site.data.translations[page.lang].brand.generation_second }})
+              ({{ site.data.translations[page.lang].generation.second }})
             {% when "transition" %}
-              ({{ site.data.translations[page.lang].brand.generation_transition }})
+              ({{ site.data.translations[page.lang].generation.transition }})
           {% endcase %}
         </span>
         {% endif %}
