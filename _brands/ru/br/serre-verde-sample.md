@@ -1,13 +1,4 @@
 ---
-# BRAND CORE TEMPLATE
-# Absolute minimum fields required for a valid brand page
-# See _templates/brands/ for lite and full versions
-
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
 # Core layout and identification
 layout: brand
 ref: serra-verde  # Used for language switcher and as the slug
@@ -27,11 +18,13 @@ website: "https://serraverde.com.br"
 
 # Founder technical information
 founder:
+  name: "Эдуардо Сантос"
   founder_led: true
 
 # Location (required for map)
 location:
   country_code: "br"  # Two-letter country code
+  city: "Гонсалвес"
   coordinates: [-45.8558, -22.6569]  # For map display
 
 # Image assets (required)
@@ -44,20 +37,9 @@ featured: false
 featured_level: 0  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: false
 
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
+# Translatable content
 title: "Серра Верде Органикс"
 description: "Семейное предприятие по производству органических консервов, меда и элитного кофе из региона Атлантического леса Бразилии."
-
-# Founder information
-founder:
-  name: "Эдуардо Сантос"
-
-# Location details (translatable parts)
-location:
-  city: "Гонсалвес"
 ---
 
 ## О компании Serra Verde Organics

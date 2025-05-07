@@ -20,62 +20,39 @@
   - Brand images must be pre-processed with _scripts/process_brand_images.sh
   - Proper directory structure in /assets/images/brands/{country_code}/{brand_name}/
   - File naming convention: {brand}-{purpose}-{image}-{width}w.{ext}
-  
-  Example Usage:
-  Standard brand image:
-  {% include components/images/brand-image.html 
-     country="ru"
-     brand="teatime" 
-     purpose="hero"
-     image="storefront" 
-     alt="TeaTime storefront in Moscow" %}
-     
-  Brand logo with PNG format:
-  {% include components/images/brand-image.html 
-     country="in"
-     brand="dragonfly" 
-     purpose="logo"
-     image="color" 
-     ext="png"
-     alt="Dragonfly Therapeutic Retreats logo" %}
-  
-  Founder portrait:
-  {% include components/images/brand-image.html 
-     country="ru"
-     brand="teatime" 
-     purpose="founder"
-     image="portrait" 
-     alt="Alexei Sokolov, TeaTime founder" %}
-  
-  Notes:
-  - Automatically constructs proper image paths based on country, brand and image info
-  - Includes srcset for responsive image loading (400w, 800w, 1200w variants)
-  - Uses lazy loading for better performance
-  - Follows Brandmine's image processing and naming conventions
-  - Defaults to JPG format unless specified otherwise
 {% endcomment %}
 
-{% assign country = include.country %}
-{% assign brand = include.brand %}
-{% assign purpose = include.purpose | default: "" %}
-{% assign image = include.image %}
-{% assign alt = include.alt %}
+{% assign country = include.country | strip %}
+{% assign brand = include.brand | strip %}
+{% assign purpose = include.purpose | default: "" | strip %}
+{% assign image = include.image | strip %}
+{% assign alt = include.alt | default: "Brand image" %}
 {% assign class = include.class %}
 {% assign ext = include.ext | default: "jpg" %}
 {% assign sizes = include.sizes | default: "(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" %}
 {% assign widths = include.widths | default: "400,800,1200" %}
 {% assign widths_array = widths | split: "," %}
-{% assign base_path = "/assets/images/brands/" | append: country | append: "/" | append: brand | append: "/" %}
 
-{% if purpose != "" %}
-  {% assign image_path = brand | append: "-" | append: purpose | append: "-" | append: image %}
+{% comment %}
+  Ensure we have valid values for country and brand before constructing paths
+  to avoid runtime errors if bad data is provided
+{% endcomment %}
+{% if country and brand and image %}
+  {% assign base_path = "/assets/images/brands/" | append: country | append: "/" | append: brand | append: "/" %}
+
+  {% if purpose != "" %}
+    {% assign image_path = brand | append: "-" | append: purpose | append: "-" | append: image %}
+  {% else %}
+    {% assign image_path = brand | append: "-" | append: image %}
+  {% endif %}
+
+  <img src="{{ base_path | append: image_path | append: "-" | append: widths_array[0] | append: "w." | append: ext | relative_url }}"
+       srcset="{% for width in widths_array %}{{ base_path | append: image_path | append: "-" | append: width | append: "w." | append: ext | relative_url }} {{ width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}"
+       sizes="{{ sizes }}"
+       alt="{{ alt }}"
+       {% if class %}class="{{ class }}"{% endif %}
+       loading="lazy">
 {% else %}
-  {% assign image_path = brand | append: "-" | append: image %}
+  <!-- Image include missing required parameters (country: {{ country }}, brand: {{ brand }}, image: {{ image }}) -->
+  <div class="image-placeholder">Image not available</div>
 {% endif %}
-
-<img src="{{ base_path | append: image_path | append: "-" | append: widths_array[0] | append: "w." | append: ext | relative_url }}"
-     srcset="{% for width in widths_array %}{{ base_path | append: image_path | append: "-" | append: width | append: "w." | append: ext | relative_url }} {{ width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}"
-     sizes="{{ sizes }}"
-     alt="{{ alt | default: 'Brand image' }}"
-     {% if class %}class="{{ class }}"{% endif %}
-     loading="lazy">

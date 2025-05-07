@@ -1,13 +1,4 @@
 ---
-# BRAND CORE TEMPLATE
-# Absolute minimum fields required for a valid brand page
-# See _templates/brands/ for lite and full versions
-
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
 # Core layout and identification
 layout: brand
 ref: serra-verde  # Used for language switcher and as the slug
@@ -27,11 +18,13 @@ website: "https://serraverde.com.br"
 
 # Founder technical information
 founder:
+  name: "爱德华多·桑托斯"
   founder_led: true
 
 # Location (required for map)
 location:
   country_code: "br"  # Two-letter country code
+  city: "贡萨尔维斯"
   coordinates: [-45.8558, -22.6569]  # For map display
 
 # Image assets (required)
@@ -44,20 +37,9 @@ featured: false
 featured_level: 0  # 0=basic, 1=map marker, 2=full profile
 location_intelligence: false
 
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
+# Translatable content
 title: "塞拉维德有机农场"
 description: "家族经营的有机保鲜品、蜂蜜和特色咖啡生产商，原料来自巴西大西洋森林地区。"
-
-# Founder information
-founder:
-  name: "爱德华多·桑托斯"
-
-# Location details (translatable parts)
-location:
-  city: "贡萨尔维斯"
 ---
 
 ## 关于塞拉维德有机农场

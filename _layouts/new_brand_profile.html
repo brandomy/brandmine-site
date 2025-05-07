@@ -1,0 +1,131 @@
+---
+layout: default
+---
+{% comment %}
+  NEW BRAND PROFILE TEMPLATE
+  Uses JSON data files for multilingual brand and founder names
+{% endcomment %}
+
+{% comment %}Get translated brand name from JSON or fallback to title{% endcomment %}
+{% assign brand_name = site.data.brand_names[page.ref][page.lang] | default: page.title %}
+
+<div class="brand-profile container">
+  <!-- Header with logo and basic metadata -->
+  <div class="brand-header row">
+    <div class="col-md-4">
+      {% if page.logo %}
+      <img src="{{ page.logo | relative_url }}" alt="{{ brand_name }}" class="brand-logo">
+      {% endif %}
+    </div>
+    <div class="col-md-8">
+      <h1 class="brand-profile__title">{{ brand_name }}</h1>
+      
+      {% if page.slogan %}
+      <div class="brand-profile__slogan">
+        "{{ page.slogan }}"
+      </div>
+      {% endif %}
+      
+      <div class="brand-profile__meta">
+        <!-- Sectors -->
+        {% if page.sectors %}
+        <div class="brand-profile__meta-item">
+          <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].dimensions.sectors }}:</span>
+          {% for sector in page.sectors %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="brand-meta__tag brand-meta__tag--sector">
+            {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Markets -->
+        {% if page.markets %}
+        <div class="brand-profile__meta-item">
+          <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].dimensions.markets }}:</span>
+          {% for market in page.markets %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="brand-meta__tag brand-meta__tag--market">
+            {{ site.data.dimensions[page.lang].markets[market] | default: market }}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Founding Year -->
+        {% if page.founding_year %}
+        <div class="brand-profile__meta-item">
+          <span class="brand-profile__meta-label">{{ site.data.translations[page.lang].brand.founding_year }}:</span>
+          <span class="brand-profile__meta-value">{{ page.founding_year }}</span>
+        </div>
+        {% endif %}
+      </div>
+      
+      <!-- Founder information with JSON lookup -->
+      {% if page.founders and page.founders.size > 0 %}
+      <div class="brand-profile__founder-brief">
+        <strong>{{ site.data.translations[page.lang].brand.founder }}:</strong>
+        {% for founder_key in page.founders %}
+          {% assign founder_name = site.data.founder_names[founder_key][page.lang] | default: founder_key %}
+          {{ founder_name }}{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+        
+        {% if page.founder_led %}
+        <span class="brand-profile__founder-badge">
+          {{ site.data.translations[page.lang].brand.founder_led }}
+        </span>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  {% if page.hero_image %}
+  <div class="brand-profile__hero-image row mt-4">
+    <div class="col-12">
+      <img src="{{ page.hero_image | relative_url }}" alt="{{ brand_name }}" class="img-fluid">
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Main Content -->
+  <div class="brand-profile__details row mt-4">
+    <div class="col-md-8">
+      <!-- Brand Description from Markdown Content -->
+      <div class="brand-profile__description">
+        {{ content }}
+      </div>
+    </div>
+
+    <!-- Sidebar with location and other details -->
+    <div class="col-md-4">
+      <!-- Location -->
+      {% if page.location_lat and page.location_lng %}
+      <div class="brand-profile__location">
+        <h3>{{ site.data.translations[page.lang].brand.location }}</h3>
+        <p>
+          {% if page.location_city %}{{ page.location_city }}{% endif %}
+          {% if page.location_region %}, {{ page.location_region }}{% endif %}
+          {% if page.country_code %}, {{ site.data.countries[page.lang][page.country_code].name }}{% endif %}
+        </p>
+        
+        <!-- Map would go here using location_lat and location_lng -->
+        <div class="brand-map" 
+             data-lat="{{ page.location_lat }}" 
+             data-lng="{{ page.location_lng }}" 
+             data-name="{{ brand_name }}"></div>
+      </div>
+      {% endif %}
+      
+      <!-- Contact Information -->
+      {% if page.website %}
+      <div class="brand-profile__contact mt-3">
+        <h3>{{ site.data.translations[page.lang].brand.contact }}</h3>
+        <p>{{ site.data.translations[page.lang].brand.website }}: 
+          <a href="{{ page.website }}" target="_blank" rel="noopener">{{ page.website }}</a>
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@
   Parameters:
   - brand: Brand object with complete details (required)
     Expected properties from new template structure:
-    - brand_name: Brand name (translatable)
+    - title: Brand name (translatable)
     - logo: Path to brand logo image
     - founding_year: Founding year
     - description: Short brand description (translatable)
@@ -25,33 +25,22 @@
   - CSS: components/cards/brand-card.css for styling
   - site.data.translations for UI labels
   - site.data.dimensions for taxonomy translations
-  
-  Example Usage:
-  {% for brand in site.brands %}
-    {% include components/cards/brand-card.html brand=brand %}
-  {% endfor %}
-  
-  Notes:
-  - Only displays first 3 sectors, with a +X indicator for additional sectors
-  - Uses BEM naming conventions for all CSS classes
-  - Automatically links sectors and markets to their respective discovery pages
-  - Supports featured_level for display priority
 {% endcomment %}
 
 <article class="brand-card {% if brand.featured_level > 1 %}brand-card--featured{% endif %}">
   <header class="brand-card__header">
     <div class="brand-card__logo">
-      {% if brand.logo %}
+      {% if brand.logo and brand.country_code %}
         {% include components/images/brand-image.html 
            country=brand.country_code
            brand=brand.slug 
            image="color"
            purpose="logo"
            ext="png"
-           alt=brand.brand_name %}
+           alt=brand.title %}
       {% endif %}
     </div>
-    <h2 class="brand-card__title">{{ brand.brand_name }}</h2>
+    <h2 class="brand-card__title">{{ brand.title }}</h2>
     {% if brand.founding_year %}
     <p class="brand-card__founding-year">{{ site.data.translations[page.lang].brand.founding_year }} {{ brand.founding_year }}</p>
     {% endif %}

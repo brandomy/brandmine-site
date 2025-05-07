@@ -23,14 +23,10 @@ layout: default
 <div class="panel panel--light">
   <div class="panel__content">
     {% if sector_data and sector_data.image and sector_data.image != "" %}
-      {% assign image_is_valid = false %}
-      {% if sector_data.image contains '.jpg' or sector_data.image contains '.png' %}
-        {% assign image_is_valid = true %}
-      {% endif %}
-      
-      {% if image_is_valid %}
+      {% assign image_path = sector_data.image | strip %}
+      {% if image_path contains '.jpg' or image_path contains '.png' or image_path contains '.jpeg' or image_path contains '.gif' %}
         <div class="market-sector__image">
-          <img src="{{ sector_data.image | relative_url }}" alt="{{ sector_data.title }}" class="market-sector__image-content">
+          <img src="{{ image_path | relative_url }}" alt="{{ sector_data.title }}" class="market-sector__image-content">
         </div>
       {% endif %}
     {% endif %}
@@ -82,12 +78,14 @@ layout: default
   <div class="panel__content">
     <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.related_brands | default: "Related Brands" }}</h2>
     
-    {% assign related_brands = site.brands | where: "lang", page.lang | where: "sector", sector_name | where: "country", market_name %}
+    {% assign related_brands = site.brands | where: "lang", page.lang | where: "sectors", sector_slug | where: "markets", market_slug %}
     
     {% if related_brands.size > 0 %}
       <div class="brand-card-grid brand-card-grid--3col">
         {% for brand in related_brands limit:3 %}
-          {% include components/cards/brand-card.html brand=brand %}
+          {% if brand.country_code %}
+            {% include components/cards/brand-card.html brand=brand %}
+          {% endif %}
         {% endfor %}
       </div>
       
