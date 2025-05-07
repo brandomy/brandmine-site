@@ -325,8 +325,8 @@ layout: default
         <div class="brand-profile__sidebar-insight">
           <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
           <span class="brand-profile__insight-type">
-            {% assign normalized_category = insight.category | replace: "-", "_" %}
-            {{ site.data.translations[page.lang].insights[normalized_category] | default: insight.category }}
+            {% capture category_key %}{{ category | replace: "-", "_" }}{% endcapture %}
+            {{ site.data.translations[page.lang].insights[category_key] | default: category }}
           </span>
         </div>
         {% endfor %}
