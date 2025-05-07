@@ -22,7 +22,7 @@ layout: default
 <!-- Content Panel -->
 <div class="panel panel--light">
   <div class="panel__content">
-    {% if sector_data.image and sector_data.image contains '.jpg' or sector_data.image contains '.png' %}
+    {% if sector_data.image %}
       <div class="market-sector__image">
         <img src="{{ sector_data.image | relative_url }}" alt="{{ sector_data.title }}" class="market-sector__image-content">
       </div>

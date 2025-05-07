@@ -9,8 +9,8 @@ layout: insight
 category: "market-momentum"  # Must match insights/en.yml
 
 # Language and routing
-lang: ru
-permalink: /ru/insights/ru/russian-wine-renaissance/
+lang: en
+permalink: /en/insights/ru/russian-wine-renaissance/
 ref: russian-wine-renaissance  # For language switcher
 
 # Content metadata
@@ -39,15 +39,15 @@ images:
 # TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
 # Only these fields should be translated when creating RU/ZH versions
 # ============================================================================
-title: "Российский винный ренессанс: Рост рынка на 52% за пять лет"
+title: "Russian Wine Renaissance: 52% Market Growth Over Five Years"
 author: "randal_eastman"  # Key for translation lookup
-excerpt: "Винная индустрия России переживает беспрецедентный рост, с удвоением отечественного производства и растущим международным признанием."
+excerpt: "Russia's wine industry is experiencing unprecedented growth, with domestic production doubling and increasing international recognition."
 ---
 
-## Новое направление для российских спиртных напитков
+## A New Direction for Russian Spirits
 
-В то время как европейские рынки традиционно были основным направлением для российских экспортеров спиртных напитков, за последние 18 месяцев произошел замечательный сдвиг. Премиальные ремесленные дистиллерии со всей России обнаруживают беспрецедентный успех на восточноазиатских рынках роскоши, особенно в Китае, Японии и Южной Корее.
+While European markets have traditionally been the primary destination for Russian spirit exporters, the past 18 months have seen a remarkable shift. Premium craft distilleries across Russia are finding unprecedented success in East Asian luxury markets, particularly in China, Japan, and South Korea.
 
-Отраслевые данные показывают, что экспорт российских крафтовых спиртных напитков в Восточную Азию вырос на 78% в 2024 году, с особенно сильным ростом в ультра-премиальном сегменте стоимостью выше 100 долларов за бутылку. Этот рост происходит в критический момент, когда традиционные экспортные маршруты столкнулись с логистическими и нормативными проблемами.
+Industry data shows that exports of Russian craft spirits to East Asia increased by 78% in 2024, with especially strong growth in the ultra-premium segment priced above $100 per bottle. This growth comes at a critical time when traditional export routes have faced logistical and regulatory challenges.
 
-"Изначально мы рассматривали азиатские рынки как второстепенную возможность", — объясняет Дмитрий Воронин, генеральный директор "Сибирской дистиллерии". "Теперь они представляют более 40% нашей экспортной выручки и растут быстрее, чем любой другой регион".
+"Initially, we viewed Asian markets as a secondary opportunity," explains Dmitry Voronin, CEO of Siberian Distillery. "Now they represent more than 40% of our export revenue and are growing faster than any other region."

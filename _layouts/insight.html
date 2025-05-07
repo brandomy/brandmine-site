@@ -38,7 +38,8 @@ layout: default
           
           <!-- Category Badge -->
           <div class="insight-type-badge">
-            {{ site.data.translations[page.lang].insights[page.category | replace: "-", "_"] | default: page.category }}
+            {% assign normalized_category = page.category | replace: "-", "_" %}
+            {{ site.data.translations[page.lang].insights[normalized_category] | default: page.category }}
           </div>
           
           <h1>{{ page.title }}</h1>

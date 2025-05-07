@@ -56,7 +56,7 @@ international:
 
 # Image assets
 logo: "/assets/images/brands/teatime/originals/logo-color.png"
-hero_image: "/assets/images/brands/teatime/originals/hero-storefront.jpg"
+hero_image: "/assets/images/brands/teatime/originals/hero-store-interior.jpg"
 founder_portrait: "/assets/images/brands/teatime/originals/founder-portrait.jpg"
 
 # Related content

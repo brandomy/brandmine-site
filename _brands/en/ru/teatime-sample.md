@@ -56,9 +56,9 @@ international:
   distribution_models: [franchise]
 
 # Image assets
-logo: "/assets/images/brands/sojourn-hotels/originals/logo-color.png"
-hero_image: "/assets/images/brands/sojourn-hotels/originals/hero-paraty-view.jpg"
-founder_portrait: "/assets/images/brands/sojourn-hotels/originals/founder-portrait.jpg"
+logo: "/assets/images/brands/teatime/originals/logo-color.png"
+hero_image: "/assets/images/brands/teatime/originals/hero-store-interior.jpg"
+founder_portrait: "/assets/images/brands/teatime/originals/founder-portrait.jpg"
 
 # Related content
 related_brands: [terra-brasil-tours, amazonia-organics, casa-do-sol]
