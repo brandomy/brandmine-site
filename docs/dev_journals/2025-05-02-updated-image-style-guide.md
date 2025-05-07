@@ -1,8 +1,45 @@
-# Brandmine Image Style Guide
+## 4. Natural Photography
 
-*Last updated: May 7, 2025*
+Used exclusively for team members and testimonial providers, creating a professional and authentic impression.
 
-This document defines the visual language for imagery across the Brandmine platform. It establishes clear visual differentiation between content types while maintaining overall brand consistency.
+### Characteristics
+
+- Professional, high-quality photography
+- Clean, neutral backgrounds with consistent lighting
+- Natural color grading with minimal editing
+- Consistent framing and composition
+- Professional but approachable aesthetic
+
+### Applications
+
+| Content Type | Primary Colors | Example Locations |
+|--------------|----------------|-------------------|
+| Brandmine Team | Neutral backgrounds | About page, team section |
+| Testimonial Providers | Neutral backgrounds | Testimonials, customer stories |
+
+### Examples
+
+#### Team Member Portrait
+![Team Portrait Example](placeholder-team-portrait.jpg)
+*Professional portrait of team member with neutral background*
+
+#### Testimonial Provider
+![Testimonial Example](placeholder-testimonial.jpg)
+*Testimonial provider with clean, professional framing*
+
+### Creation Guidelines
+
+When creating/selecting natural photographs:
+
+1. **Background**: Use clean, neutral backgrounds (light gray, off-white, or subtle gradient)
+2. **Lighting**: Implement soft, even lighting that flatters the subject
+3. **Framing**: Frame from shoulders up, with face as the clear focal point
+4. **Editing**: Apply minimal editing - only basic color correction and subtle retouching
+5. **Consistency**: Maintain visual consistency across all team/testimonial images# Brandmine Image Style Guide
+
+*Last updated: May 2, 2025*
+
+This document defines the visual language for imagery across the Brandmine platform. It establishes clear visual differentiation between content types while maintaining overall brand consistency. This guide should be stored at `docs/design/image-style-guide.md`.
 
 ## Core Principles
 
@@ -14,7 +51,7 @@ This document defines the visual language for imagery across the Brandmine platf
 
 ## Visual Style Framework
 
-We employ four distinct visual styles across the platform, each serving a specific purpose:
+We employ three distinct visual styles across the platform, each serving a specific purpose:
 
 ## 1. Textured Minimalism
 
@@ -50,14 +87,6 @@ Our primary visual style for narrative-rich content, creating a sophisticated, e
 | Insight Article Headers | Varies by insight category | Insight detail pages |
 | Market-Specific Sectors | Market-specific palette | Market sector pages |
 
-**Input vs Output Example:**
-
-*Input:* `assets/images/brands/ru/teatime/originals/hero-storefront.jpg`  
-*Outputs:*
-- `assets/images/brands/ru/teatime/teatime-hero-storefront-400w.jpg`
-- `assets/images/brands/ru/teatime/teatime-hero-storefront-800w.jpg`
-- `assets/images/brands/ru/teatime/teatime-hero-storefront-1200w.jpg`
-
 ## 2. Flat Color Minimalism
 
 Used for dimension visualization and UI elements, creating a clean, modern system for navigation and categorization.
@@ -80,14 +109,6 @@ Used for dimension visualization and UI elements, creating a clean, modern syste
 | Signals | Indigo (#6366F1) | Signal listings, filters |
 | UI Elements | Various color schemes | Navigation, interactive elements |
 
-**Input vs Output Example:**
-
-*Input:* `assets/images/sectors/originals/hero-wine.jpg`  
-*Outputs:*
-- `assets/images/sectors/sectors-hero-wine-400w.jpg`
-- `assets/images/sectors/sectors-hero-wine-800w.jpg`
-- `assets/images/sectors/sectors-hero-wine-1200w.jpg`
-
 ## 3. Geometric Minimalism
 
 Reserved for data visualization, mapping, and relationship diagrams, creating clear information structures.
@@ -106,47 +127,19 @@ Reserved for data visualization, mapping, and relationship diagrams, creating cl
 |--------------|----------------|-------------------|
 | Maps | Blues with green/orange accents | Location intelligence sections |
 | Data Visualizations | Gradient palette (burgundy to teal) | Market data sections |
-| Relationship Diagrams | Blues/grays with categorical colors | Dimension relationship pages |
+| Relationship Diagrams | Blues/grays with categorical colors | Taxonomy relationship pages |
 | Structural Elements | Neutral palette with accent colors | Navigation, organization |
-
-## 4. Natural Photography
-
-Used exclusively for team members and testimonial providers, creating a professional and authentic impression.
-
-### Characteristics
-
-- Professional, high-quality photography
-- Clean, neutral backgrounds with consistent lighting
-- Natural color grading with minimal editing
-- Consistent framing and composition
-- Professional but approachable aesthetic
-- Subtle brand filter (12% teal overlay)
-
-### Applications
-
-| Content Type | Primary Colors | Example Locations |
-|--------------|----------------|-------------------|
-| Brandmine Team | Natural with teal filter | About page, team section |
-| Testimonial Providers | Natural with teal filter | Testimonials, customer stories |
-
-**Input vs Output Example:**
-
-*Input:* `assets/images/people/originals/team-georgie.jpg`  
-*Outputs:*
-- `assets/images/people/people-team-georgie-400w.jpg` (with teal filter applied)
-- `assets/images/people/people-team-georgie-800w.jpg` (with teal filter applied)
-- `assets/images/people/people-team-georgie-1200w.jpg` (with teal filter applied)
 
 ## Insight Article Categories
 
-Each insight article category has its own distinctive color palette while following the textured minimalism style:
+Each insight article category has its own distinctive color palette while following the textured minimalism style. These are based directly on the example images:
 
 | Insight Category | Primary Colors | Style Notes |
 |-----------------|----------------|-------------|
-| Brand Spotlights | Deep blue with amber/gold accents | Rich textures with product/brand elements |
-| Founder's Journeys | Terracotta/orange with cream and olive green | Journey pathway elements with human silhouette |
-| Location Intelligence | Deep blue with light gray and green accents | Map elements, location markers, and subtle topographic lines |
-| Market Milestone | Cream/beige with gradient bars from burgundy to teal | Growth chart elements showing upward progression |
+| Brand Spotlights | Deep blue with amber/gold accents | Rich textures with product/brand elements (as seen in Image 1) |
+| Founder's Journeys | Terracotta/orange with cream and olive green | Journey pathway elements with human silhouette (as seen in Image 2) |
+| Location Intelligence | Deep blue with light gray and green accents | Map elements, location markers, and subtle topographic lines (as seen in Image 3) |
+| Market Momentum | Cream/beige with gradient bars from burgundy to teal | Growth chart elements showing upward progression (as seen in Image 4) |
 
 ## Directory Structure & File Organization
 
@@ -156,19 +149,20 @@ assets/images/
 │   └── [country-code]/         # Organized by country code (e.g., ru, in, cn)
 │       └── [brand-name]/       # Each brand has its own directory
 │           ├── originals/      # Original high-resolution files 
-│           └── [responsive images]  # Generated responsive images
+│           │   ├── hero-storefront.jpg       # Hero image
+│           │   ├── founder-portrait.jpg      # Founder image
+│           │   ├── gallery-product-1.jpg     # Gallery images
+│           │   └── logo-color.png            # Logo
+│           └── [responsive images]           # Generated versions (400w, 800w, 1200w)
 ├── sectors/                    # Sector dimension images
 ├── markets/                    # Market dimension images
 ├── attributes/                 # Attribute dimension images
 ├── signals/                    # Signal dimension images
-├── icons/                      # Dimension taxonomy icons
-│   ├── dimensions/             # Organized by dimension type
-│   │   ├── sectors/            # Sector-specific icons
-│   │   ├── attributes/         # Attribute-specific icons
-│   │   ├── signals/            # Signal-specific icons
-│   │   └── markets/            # Market-specific icons
-│   └── insights/               # Insights category icons
 ├── insights/                   # Insight article images
+│   ├── brand-spotlights/       # By insight category
+│   ├── founders-journeys/
+│   ├── market-milestones/
+│   └── cultural-signatures/
 └── site/                       # Site-wide UI elements
 ```
 
@@ -177,7 +171,7 @@ assets/images/
 All original images follow the purpose-first naming pattern:
 
 ```
-purpose-descriptivename.extension
+purpose-descriptive-name.extension
 ```
 
 ### Standard Purpose Identifiers
@@ -192,35 +186,18 @@ purpose-descriptivename.extension
 | `product` | Product imagery | `product-teapot.jpg`, `product-lineup.jpg` |
 | `location` | Place imagery | `location-vineyard.jpg`, `location-factory.jpg` |
 | `certificate` | Certifications | `certificate-organic.jpg` |
-| `testimonial` | Customer testimonials | `testimonial-customer.jpg` |
-| `icon` | UI and taxonomy icons | `icon-export-ready.png`, `icon-wine.svg` |
 
 ### Processed Images
 
 Processed images are automatically generated with this naming pattern:
 
 ```
-[brand-name]-[purpose]-[descriptivename]-[width]w.extension
+[country-code]-[brand-name]-[purpose]-[descriptive-name]-[width]w.extension
 ```
 
-or
-
+Example:
 ```
-[category]-[purpose]-[descriptivename]-[width]w.extension
-```
-
-**Examples:**
-
-For brands:
-```
-teatime-hero-storefront-800w.jpg
-teatime-founder-portrait-800w.jpg
-```
-
-For dimensions:
-```
-sectors-hero-wine-800w.jpg
-markets-hero-russia-800w.jpg
+ru-teatime-hero-storefront-800w.jpg
 ```
 
 ## Creation Guidelines
@@ -260,17 +237,6 @@ When creating geometric minimalist illustrations:
 3. **Colors**: Use functional color coding that enhances information clarity
 4. **Lines**: Implement clean connection lines for showing relationships
 5. **Precision**: Maintain mathematical precision in all forms and alignments
-
-### Natural Photography
-
-When creating team and testimonial portrait photography:
-
-1. **Background**: Use clean, neutral backgrounds (light gray, off-white, or subtle gradient)
-2. **Lighting**: Implement soft, even lighting that flatters the subject
-3. **Framing**: Frame from shoulders up, with face as the clear focal point
-4. **Editing**: Apply minimal editing - only basic color correction and subtle retouching
-5. **Consistency**: Maintain visual consistency across all team/testimonial images
-6. **Brand Filter**: Apply the teal (#38B2AC) filter at 12% opacity using `apply_teal_filter.sh`
 
 ## Example Prompts by Style
 
@@ -319,7 +285,6 @@ Create a geometric minimalist illustration of a location intelligence map. 3:2 a
 | Geometric Minimalism | JPG (85% quality) | 200KB | Limited use of PNG only when transparency is required |
 | Icons (Simple) | SVG | 20KB | 24×24px, stored in includes/components/icons/ |
 | Icons (Complex) | PNG | 100KB | 512×512px source size, stored in assets/images/icons/ |
-| Team Portraits | JPG (90% quality) | 300KB | 2:3 aspect ratio with teal filter applied |
 
 ## Implementation Process
 
@@ -335,71 +300,35 @@ Create a geometric minimalist illustration of a location intelligence map. 3:2 a
 
 3. **File Organization**:
    - Place in correct country/brand directory structure for brand images
-   - Follow naming conventions (`purpose-descriptivename.ext`)
+   - Follow naming conventions (`purpose-descriptive-name.ext`)
    - Place in appropriate `originals/` folder
 
 4. **Processing**:
    - Process with appropriate script:
      - `./_scripts/process_brand_images.sh [country-code] [brand-name]`
      - `./_scripts/process_site_images.sh`
-     - `./_scripts/process_icons.sh` (for dimension icons)
-     - `./_scripts/apply_teal_filter.sh` (for team portraits)
+     - `./_scripts/convert-to-jpg.sh` (if needed)
 
 5. **Implementation**:
-   - Use the appropriate include based on image type:
-
-```liquid
-{% include components/images/brand-image.html 
-   country="ru"
-   brand="teatime" 
-   purpose="hero"
-   image="storefront" 
-   alt="TeaTime storefront in Moscow" %}
-```
-
-```liquid
-{% include components/images/site-image.html 
-   category="sectors"
-   purpose="hero"
-   image="wine" 
-   alt="Wine sector overview" %}
-```
-
-## SVG Best Practices
-
-When using SVG icons:
-
-1. **Proper viewBox**: Always include a proper viewBox attribute:
-   ```xml
-   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-   ```
-
-2. **Clean Markup**: Remove unnecessary attributes and metadata
-   - Consider using SVGO for optimization (not currently implemented)
-
-3. **Current Color**: Use `fill="currentColor"` or `stroke="currentColor"` to inherit color from text
-
-4. **Accessibility**: Include appropriate ARIA attributes for interactive SVGs
-
-5. **Implementation**: Place SVGs directly in `_includes/components/icons/` for direct inclusion
-
+   - Use the appropriate include:
+     ```liquid
+     {% include components/images/brand-image.html 
+        country="in"
+        brand="brand-name" 
+        image="descriptive-name" 
+        purpose="purpose" 
+        alt="Descriptive alt text" %}
+     ```
 
 ## Quality Control Checklist
 
 Before finalizing any image:
 
 - [ ] Follows the correct visual style for its content type
-- [ ] Uses the appropriate color palette
+- [ ] Uses the appropriate color palette for its context
 - [ ] Maintains 3:2 (or 2:3 for portraits) aspect ratio
 - [ ] Contains no text elements
 - [ ] File size optimized (<300KB)
 - [ ] Named according to purpose-first convention
 - [ ] Includes descriptive alt text
 - [ ] Placed in correct directory structure
-- [ ] Processed with appropriate script
-- [ ] Displays correctly at all responsive sizes
-- [ ] Has appropriate contrast for accessibility
-- [ ] Consistent with other images of the same type
-- [ ] Properly styled before being placed in originals folder
-- [ ] Follows dimension-specific color guidelines for taxonomy images
-- [ ] Meets quality standards for the image's purpose (higher resolution for hero images)

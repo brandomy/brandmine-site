@@ -117,11 +117,11 @@ for COUNTRY in "${COUNTRIES[@]}"; do
             HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
             RATIO=$(bc -l <<< "$WIDTH/$HEIGHT")
             
-            # Check if it's a portrait/founder image
-            if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" ]]; then
+            # Check if it's a portrait/founder image - improved detection to capture all portrait cases
+            if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" || "$IMAGE" == "portrait" ]]; then
                 # For portraits and founder images, resize by height and optimize for faces
                 RESIZE_OPT="-resize x"  # Resize by height
-                QUALITY_OPT="-quality 90"      # Higher quality to preserve details
+                QUALITY_OPT="-quality 90"  # Higher quality to preserve details
                 
                 # Check aspect ratio for portrait/founder images (should be 2:3)
                 EXPECTED_RATIO=0.67  # 2:3 ratio
@@ -131,11 +131,12 @@ for COUNTRY in "${COUNTRIES[@]}"; do
                 if [[ "$DIFF" != "1" ]]; then
                     echo "    WARNING: $FILENAME has unusual proportions for a portrait/founder image."
                     echo "    Expected aspect ratio around 2:3 (0.67), actual: $RATIO"
+                    echo "    For best results, portraits should be 800×1200px."
                 fi
             else
                 # Resize by width for landscapes
                 RESIZE_OPT="-resize "  # Resize by width
-                QUALITY_OPT="-quality 85"      # Standard quality
+                QUALITY_OPT="-quality 85"  # Standard quality
                 
                 # Check aspect ratio for standard images (should be 3:2)
                 EXPECTED_RATIO=1.5  # 3:2 ratio
@@ -145,6 +146,7 @@ for COUNTRY in "${COUNTRIES[@]}"; do
                 if [[ "$DIFF" != "1" ]]; then
                     echo "    WARNING: $FILENAME has unusual proportions for a standard image."
                     echo "    Expected aspect ratio around 3:2 (1.5), actual: $RATIO"
+                    echo "    For best results, regular images should be 1200×800px."
                 fi
             fi
             
@@ -155,14 +157,14 @@ for COUNTRY in "${COUNTRIES[@]}"; do
                 
                 if [[ "$EXT" == "png" ]]; then
                     # For PNG, preserve transparency
-                    if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" ]]; then
+                    if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" || "$IMAGE" == "portrait" ]]; then
                         magick "$IMG" ${RESIZE_OPT}${SIZE} "$BRAND_DIR/$OUTPUT_FILENAME"
                     else
                         magick "$IMG" ${RESIZE_OPT}${SIZE} "$BRAND_DIR/$OUTPUT_FILENAME"
                     fi
                 else
                     # For JPG and other formats, optimize with quality setting
-                    if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" ]]; then
+                    if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "founder" || "$IMAGE" == "portrait" ]]; then
                         magick "$IMG" ${RESIZE_OPT}${SIZE} ${QUALITY_OPT} "$BRAND_DIR/$OUTPUT_FILENAME" 
                     else
                         magick "$IMG" ${RESIZE_OPT}${SIZE} ${QUALITY_OPT} "$BRAND_DIR/$OUTPUT_FILENAME"

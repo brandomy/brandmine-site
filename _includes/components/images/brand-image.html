@@ -8,8 +8,8 @@
   Parameters:
   - country: Country code (required, e.g., "ru", "br", "cn")
   - brand: Brand slug/identifier (required, e.g., "teatime")
-  - image: Image identifier (required, e.g., "storefront" or "logo")
-  - purpose: Image purpose identifier (optional, e.g., "hero", "portrait", "logo")
+  - purpose: Image purpose identifier (required, e.g., "hero", "founder", "logo")
+  - image: Image identifier (required, e.g., "storefront", "portrait", "color")
   - alt: Alt text for the image (required for accessibility)
   - class: Additional CSS classes for the img tag (optional)
   - ext: File extension (optional, default: "jpg")
@@ -26,18 +26,26 @@
   {% include components/images/brand-image.html 
      country="ru"
      brand="teatime" 
-     image="storefront" 
      purpose="hero"
+     image="storefront" 
      alt="TeaTime storefront in Moscow" %}
      
   Brand logo with PNG format:
   {% include components/images/brand-image.html 
      country="in"
      brand="dragonfly" 
+     purpose="logo"
      image="color" 
-     purpose="logo" 
      ext="png"
      alt="Dragonfly Therapeutic Retreats logo" %}
+  
+  Founder portrait:
+  {% include components/images/brand-image.html 
+     country="ru"
+     brand="teatime" 
+     purpose="founder"
+     image="portrait" 
+     alt="Alexei Sokolov, TeaTime founder" %}
   
   Notes:
   - Automatically constructs proper image paths based on country, brand and image info
@@ -49,8 +57,8 @@
 
 {% assign country = include.country %}
 {% assign brand = include.brand %}
-{% assign image = include.image %}
 {% assign purpose = include.purpose | default: "" %}
+{% assign image = include.image %}
 {% assign alt = include.alt %}
 {% assign class = include.class %}
 {% assign ext = include.ext | default: "jpg" %}

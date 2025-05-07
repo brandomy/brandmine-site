@@ -6,8 +6,8 @@
   
   Parameters:
   - category: Image category (required, e.g., "home", "markets", "sectors", "site")
-  - image: Image identifier (required, e.g., "banner", "hero")
   - purpose: Image purpose identifier (required, e.g., "hero", "feature", "background")
+  - image: Image identifier (required, e.g., "banner", "hero")
   - alt: Alt text for the image (required for accessibility)
   - class: Additional CSS classes for the img tag (optional)
   - sizes: Custom sizes attribute for responsive loading (optional, default provided)
@@ -22,16 +22,16 @@
   Homepage hero image:
   {% include components/images/site-image.html 
      category="home"
-     image="banner" 
      purpose="hero"
+     image="banner" 
      alt="Brandmine connecting BRICS consumers" 
      class="full-width" %}
      
   Market feature image:
   {% include components/images/site-image.html 
      category="markets"
-     image="moscow-kremlin" 
      purpose="feature"
+     image="moscow-kremlin" 
      alt="Moscow Kremlin" %}
   
   Notes:
@@ -43,8 +43,8 @@
 {% endcomment %}
 
 {% assign category = include.category %}
-{% assign image = include.image %}
 {% assign purpose = include.purpose %}
+{% assign image = include.image %}
 {% assign alt = include.alt %}
 {% assign class = include.class %}
 {% assign sizes = include.sizes | default: "(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" %}

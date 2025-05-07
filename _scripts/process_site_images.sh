@@ -99,7 +99,8 @@ for CATEGORY in "${CATEGORIES[@]}"; do
                 echo "    WARNING: $FILENAME has unusual proportions for an icon."
                 echo "    Expected aspect ratio 1:1 (1.0), actual: $RATIO"
             fi
-        elif [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "profile" ]]; then
+        # Updated portrait detection to check both purpose and image name
+        elif [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "profile" || "$IMAGE" == "portrait" ]]; then
             # For portraits, resize by height
             RESIZE_OPT="-resize x"
             QUALITY_OPT="-quality 90"
@@ -139,7 +140,8 @@ for CATEGORY in "${CATEGORIES[@]}"; do
                 if [[ "$CATEGORY" == "icons" || "$PURPOSE" == "icon" ]]; then
                     # For icons, resize to exact size
                     magick "$IMG" ${RESIZE_OPT}${SIZE} "$CATEGORY_DIR/$OUTPUT_FILENAME"
-                elif [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "profile" ]]; then
+                # Updated to match portrait detection above
+                elif [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "profile" || "$IMAGE" == "portrait" ]]; then
                     # For portraits, resize by height
                     magick "$IMG" ${RESIZE_OPT}${SIZE} "$CATEGORY_DIR/$OUTPUT_FILENAME"
                 else
@@ -151,7 +153,8 @@ for CATEGORY in "${CATEGORIES[@]}"; do
                 if [[ "$CATEGORY" == "icons" || "$PURPOSE" == "icon" ]]; then
                     # For icons, resize to exact size with high quality
                     magick "$IMG" ${RESIZE_OPT}${SIZE} ${QUALITY_OPT} "$CATEGORY_DIR/$OUTPUT_FILENAME"
-                elif [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "profile" ]]; then
+                # Updated to match portrait detection above
+                elif [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "profile" || "$IMAGE" == "portrait" ]]; then
                     # For portraits, resize by height with higher quality
                     magick "$IMG" ${RESIZE_OPT}${SIZE} ${QUALITY_OPT} "$CATEGORY_DIR/$OUTPUT_FILENAME"
                 else

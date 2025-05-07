@@ -62,17 +62,28 @@ for IMG in "$ORIGINALS_DIR"/*.{jpg,jpeg,png}; do
     HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
     RATIO=$(bc -l <<< "$WIDTH/$HEIGHT")
     
-    # Check if it's a portrait orientation (expect 2:3 ratio for people)
-    EXPECTED_RATIO=0.67  # 2:3 ratio
-    TOLERANCE=0.1
-    DIFF=$(bc -l <<< "($RATIO - $EXPECTED_RATIO)^2 < $TOLERANCE^2")
-    
-    if [[ "$DIFF" != "1" ]]; then
-        echo "    WARNING: $FILENAME has unusual proportions for a portrait image."
-        echo "    Expected aspect ratio around 2:3 (0.67), actual: $RATIO"
+    # Improved portrait detection to match brand images script
+    # Check if it's a portrait orientation (through purpose, image name, or both)
+    if [[ "$PURPOSE" == "portrait" || "$PURPOSE" == "team" || "$IMAGE" == "portrait" ]]; then
+        # Check aspect ratio for portrait images (should be 2:3)
+        EXPECTED_RATIO=0.67  # 2:3 ratio
+        TOLERANCE=0.1
+        DIFF=$(bc -l <<< "($RATIO - $EXPECTED_RATIO)^2 < $TOLERANCE^2")
+        
+        if [[ "$DIFF" != "1" ]]; then
+            echo "    WARNING: $FILENAME has unusual proportions for a portrait image."
+            echo "    Expected aspect ratio around 2:3 (0.67), actual: $RATIO"
+            echo "    For best results, portraits should be 800×1200px."
+        fi
+    else
+        # For non-portrait images, check if they're using the expected ratio anyway
+        if [[ $(bc -l <<< "$RATIO < 1") == "1" ]]; then
+            echo "    WARNING: $FILENAME appears to be portrait-oriented but doesn't use portrait naming."
+            echo "    Consider renaming with 'portrait-' or 'team-' prefix for better handling."
+        fi
     fi
     
-    # Create each size - resize by height for portraits
+    # Create each size - resize by height for portraits (which should be all people images)
     for SIZE in 400 800 1200; do
         OUTPUT_FILENAME="people-${PURPOSE}-${IMAGE}-${SIZE}w.${EXT}"
         echo "    Creating $OUTPUT_FILENAME..."

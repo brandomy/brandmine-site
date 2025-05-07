@@ -1,6 +1,6 @@
 # Brandmine Image Guide: Working with Images
 
-*Last updated: May 2, 2025*
+*Last updated: May 7, 2025*
 
 This guide documents the workflow for adding, processing, and implementing images across the Brandmine platform.
 
@@ -220,16 +220,16 @@ For third-party images:
 {% include components/images/brand-image.html 
    country="ru"
    brand="teatime" 
-   image="storefront" 
    purpose="hero"
+   image="storefront" 
    alt="TeaTime storefront in Moscow" %}
 ```
 
 Parameters:
 - `country`: Country code (required, e.g., "ru", "br", "cn")
 - `brand`: Brand slug (required)
-- `image`: Image name without purpose prefix (required)
 - `purpose`: Purpose identifier (required, e.g., "hero", "founder")
+- `image`: Image name without purpose prefix (required)
 - `alt`: Alt text (required)
 - `class`: Additional CSS classes (optional)
 - `ext`: File extension (optional, default: "jpg")
@@ -239,15 +239,15 @@ Parameters:
 ```liquid
 {% include components/images/site-image.html 
    category="sectors"
-   image="wine" 
    purpose="hero"
+   image="wine" 
    alt="Wine sector overview" %}
 ```
 
 Parameters:
 - `category`: Image category (required, e.g., "sectors", "markets")
-- `image`: Image name without purpose prefix (required)
 - `purpose`: Purpose identifier (required, e.g., "hero", "feature")
+- `image`: Image name without purpose prefix (required)
 - `alt`: Alt text (required)
 - `class`: Additional CSS classes (optional)
 
@@ -256,8 +256,8 @@ Parameters:
 ```liquid
 {% include components/images/site-image.html 
    category="people"
-   image="georgie" 
    purpose="team"
+   image="georgie" 
    alt="Georgie Yam, Founder" %}
 ```
 
@@ -272,8 +272,8 @@ Parameters:
 ```liquid
 {% include components/images/site-image.html 
    category="icons"
-   image="export-ready" 
    purpose="icon"
+   image="export-ready" 
    alt="Export Ready Icon" %}
 ```
 
@@ -284,8 +284,8 @@ Parameters:
 {% include components/images/brand-image.html 
    country="ru"
    brand="teatime" 
-   image="storefront" 
    purpose="hero"
+   image="storefront" 
    alt="TeaTime storefront in Moscow" %}
 ```
 
@@ -294,8 +294,8 @@ Parameters:
 {% include components/images/brand-image.html 
    country="ru"
    brand="teatime" 
-   image="portrait" 
    purpose="founder"
+   image="portrait" 
    alt="Alexei Sokolov, TeaTime founder" %}
 ```
 
@@ -303,8 +303,8 @@ Parameters:
 ```liquid
 {% include components/images/site-image.html 
    category="sectors"
-   image="overview" 
    purpose="hero"
+   image="overview" 
    alt="Wine sector overview" 
    class="full-width" %}
 ```
@@ -314,8 +314,8 @@ Parameters:
 {% include components/images/brand-image.html 
    country="ru"
    brand="teatime" 
-   image="teapots" 
    purpose="gallery"
+   image="teapots" 
    alt="Handcrafted ceramic teapots" %}
 ```
 
@@ -323,8 +323,8 @@ Parameters:
 ```liquid
 {% include components/images/site-image.html 
    category="people"
-   image="georgie" 
    purpose="team"
+   image="georgie" 
    alt="Georgie Yam, Founder" %}
 ```
 
