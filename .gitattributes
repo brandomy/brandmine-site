@@ -1,0 +1,24 @@
+# Enforce Unix-style line endings
+* text=auto eol=lf
+
+# Ensure critical file types are treated as text
+*.html text
+*.css  text
+*.js   text
+*.md   text
+*.yml  text
+*.yaml text
+*.json text
+*.xml  text
+*.svg  text
+
+# Treat binary assets properly
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+
+# Optional: Handle shell scripts
+*.sh text eol=lf
