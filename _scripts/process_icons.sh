@@ -13,7 +13,7 @@
 # - Optimizes icons with high quality preservation
 #
 # Usage:
-#     bash process_icons.sh [optional_system]
+#     ./_scripts/process_icons.sh [optional_system]
 #     Examples:
 #     - For all icons: bash process_icons.sh
 #     - For dimension icons only: bash process_icons.sh dimensions
