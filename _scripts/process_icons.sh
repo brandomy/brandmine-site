@@ -30,137 +30,46 @@ if ! command -v magick &> /dev/null; then
     exit 1
 fi
 
-# Determine which icon systems to process
-if [ -n "$1" ]; then
-    # Process specific system
-    SYSTEMS=("$1")
-    echo "Processing icon system: $1"
-else
-    # Process all systems
-    SYSTEMS=("dimensions" "insights")
-    echo "Processing all icon systems"
-fi
+echo "Scanning for all 'originals' icon folders under $BASE_DIR..."
 
-# Process each icon system
-for SYSTEM in "${SYSTEMS[@]}"; do
-    echo "Processing $SYSTEM icons..."
-    
-    if [ "$SYSTEM" == "dimensions" ]; then
-        # Process dimension icons
-        DIMENSION_TYPES=("sectors" "attributes" "signals" "markets")
-        
-        for TYPE in "${DIMENSION_TYPES[@]}"; do
-            # Set source directory
-            SOURCE_DIR="$BASE_DIR/$SYSTEM/$TYPE"
-            
-            # Skip if source directory doesn't exist
-            if [ ! -d "$SOURCE_DIR" ]; then
-                echo "  Directory $SOURCE_DIR not found, skipping."
-                continue
-            fi
-            
-            echo "  Processing $TYPE dimension icons..."
-            
-            # Create output size directories if they don't exist
-            mkdir -p "$SOURCE_DIR/24"
-            mkdir -p "$SOURCE_DIR/48"
-            mkdir -p "$SOURCE_DIR/128"
-            
-            # Process each icon in this dimension type
-            for ICON in "$SOURCE_DIR"/*.png; do
-                # Skip if no files match the pattern
-                [ -e "$ICON" ] || continue
-                
-                # Extract the filename without extension
-                FILENAME=$(basename "$ICON")
-                NAME="${FILENAME%.*}"
-                
-                echo "    Processing icon: $FILENAME"
-                
-                # Get image dimensions and check proportions
-                DIMENSIONS=$(identify -format "%w %h" "$ICON")
-                WIDTH=$(echo $DIMENSIONS | cut -d' ' -f1)
-                HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
-                RATIO=$(bc -l <<< "$WIDTH/$HEIGHT")
-                
-                # Check if it's a square image (expect 1:1 ratio for icons)
-                EXPECTED_RATIO=1.0  # 1:1 ratio
-                TOLERANCE=0.05
-                DIFF=$(bc -l <<< "($RATIO - $EXPECTED_RATIO)^2 < $TOLERANCE^2")
-                
-                if [[ "$DIFF" != "1" ]]; then
-                    echo "      WARNING: $FILENAME has unusual proportions for an icon."
-                    echo "      Expected aspect ratio 1:1 (1.0), actual: $RATIO"
-                    echo "      Icons should be square for best results."
-                fi
-                
-                # Create each standard icon size
-                for SIZE in 24 48 128; do
-                    # Output with size-specific directory
-                    OUTPUT_FILENAME="$SOURCE_DIR/$SIZE/$NAME.png"
-                    echo "      Creating $SIZE×$SIZE icon: $NAME.png"
-                    
-                    # Use high quality resizing to maintain sharpness
-                    magick "$ICON" -resize ${SIZE}x${SIZE} -quality 100 "$OUTPUT_FILENAME"
-                done
-            done
+# Find all `originals` directories and process PNG icons within them
+find "$BASE_DIR" -type d -name originals | while read -r SOURCE_DIR; do
+    echo "Processing folder: $SOURCE_DIR"
+
+    # Determine output base path (parent of 'originals')
+    OUTPUT_BASE="$(dirname "$SOURCE_DIR")"
+
+    # Create size output folders
+    for SIZE in 24 48 128; do
+        mkdir -p "$OUTPUT_BASE/$SIZE"
+    done
+
+    # Process each PNG in the originals folder
+    for ICON in "$SOURCE_DIR"/*.png; do
+        [ -e "$ICON" ] || continue
+
+        FILENAME=$(basename "$ICON")
+        NAME="${FILENAME%.*}"
+
+        echo "  Processing $FILENAME"
+
+        # Check dimensions for warnings
+        DIMENSIONS=$(identify -format "%w %h" "$ICON")
+        WIDTH=$(echo $DIMENSIONS | cut -d' ' -f1)
+        HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
+        RATIO=$(bc -l <<< "$WIDTH/$HEIGHT")
+        DIFF=$(bc -l <<< "($RATIO - 1.0)^2 < 0.05^2")
+        if [[ "$DIFF" != "1" ]]; then
+            echo "    WARNING: $FILENAME has non-square dimensions: ${WIDTH}x${HEIGHT}"
+        fi
+
+        # Resize for each target size
+        for SIZE in 24 48 128; do
+            OUTPUT_FILE="$OUTPUT_BASE/$SIZE/$NAME.png"
+            echo "    Creating ${SIZE}×${SIZE}: $OUTPUT_FILE"
+            magick "$ICON" -resize ${SIZE}x${SIZE} -quality 100 "$OUTPUT_FILE"
         done
-    elif [ "$SYSTEM" == "insights" ]; then
-        # Process insights category icons
-        SOURCE_DIR="$BASE_DIR/$SYSTEM"
-        
-        # Skip if source directory doesn't exist
-        if [ ! -d "$SOURCE_DIR" ]; then
-            echo "  Directory $SOURCE_DIR not found, skipping."
-            continue
-        }
-        
-        echo "  Processing insights category icons..."
-        
-        # Create output size directories if they don't exist
-        mkdir -p "$SOURCE_DIR/24"
-        mkdir -p "$SOURCE_DIR/48"
-        mkdir -p "$SOURCE_DIR/128"
-        
-        # Process each insights category icon
-        for ICON in "$SOURCE_DIR"/*.png; do
-            # Skip if no files match the pattern
-            [ -e "$ICON" ] || continue
-            
-            # Extract the filename without extension
-            FILENAME=$(basename "$ICON")
-            NAME="${FILENAME%.*}"
-            
-            echo "    Processing icon: $FILENAME"
-            
-            # Get image dimensions and check proportions
-            DIMENSIONS=$(identify -format "%w %h" "$ICON")
-            WIDTH=$(echo $DIMENSIONS | cut -d' ' -f1)
-            HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
-            RATIO=$(bc -l <<< "$WIDTH/$HEIGHT")
-            
-            # Check if it's a square image (expect 1:1 ratio for icons)
-            EXPECTED_RATIO=1.0  # 1:1 ratio
-            TOLERANCE=0.05
-            DIFF=$(bc -l <<< "($RATIO - $EXPECTED_RATIO)^2 < $TOLERANCE^2")
-            
-            if [[ "$DIFF" != "1" ]]; then
-                echo "      WARNING: $FILENAME has unusual proportions for an icon."
-                echo "      Expected aspect ratio 1:1 (1.0), actual: $RATIO"
-                echo "      Icons should be square for best results."
-            fi
-            
-            # Create each standard icon size
-            for SIZE in 24 48 128; do
-                # Output with size-specific directory
-                OUTPUT_FILENAME="$SOURCE_DIR/$SIZE/$NAME.png"
-                echo "      Creating $SIZE×$SIZE icon: $NAME.png"
-                
-                # Use high quality resizing to maintain sharpness
-                magick "$ICON" -resize ${SIZE}x${SIZE} -quality 100 "$OUTPUT_FILENAME"
-            done
-        done
-    fi
+    done
 done
 
-echo "All icon processing complete!"
+echo "All PNG icon processing complete!"
