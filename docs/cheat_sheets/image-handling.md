@@ -69,17 +69,13 @@ assets/images/sectors/originals/hero-wine.jpg
 
 ## 4. Process Images (Run Script)
 
-### For Brand Images:
-```bash
-./_scripts/process_brand_images.sh ru teatime
-```
 
 ### For People Images:
 ```bash
 ./_scripts/process_people_images.sh
 ```
 
-### For Other Images:
+### For Site Images:
 ```bash
 ./_scripts/process_site_images.sh sectors
 ```
@@ -133,13 +129,6 @@ assets/images/sectors/originals/hero-wine.jpg
    alt="Wine sector overview" %}
 ```
 
-### Taxonomy Icons:
-```liquid
-{% include components/taxonomy-icon.html 
-   system="dimensions"
-   type="sectors" 
-   name="wine" %}
-```
 
 ## 6. Parameter Reference
 

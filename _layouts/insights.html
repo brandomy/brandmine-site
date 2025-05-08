@@ -62,7 +62,7 @@ layout: default
             {% for category in categories %}
             <li>
               <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category }}/">
-                {{ site.data.translations[page.lang].insights[category | replace: "-", "_"] | default: category }}
+                {{ site.data.translations[page.lang].insights[category] | default: category }}
               </a>
               <span class="category-count">
                 ({{ insights | where: "category", category | size }})
@@ -99,32 +99,31 @@ layout: default
         </div>
         
         <!-- Reading Time Filter -->
-        <div class="sidebar-section">
-          <h3>{{ site.data.translations[page.lang].insights.reading_time_filter }}</h3>
-          <div class="reading-time-filter">
-            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/quick/" class="reading-time-option">
-              <span class="reading-time-icon">⚡</span>
-              {{ site.data.translations[page.lang].insights.reading_time_quick }}
-              <span class="reading-time-count">
-                ({{ insights | where_exp: "item", "item.reading_time <= 5" | size }})
-              </span>
-            </a>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/medium/" class="reading-time-option">
-              <span class="reading-time-icon">⏱️</span>
-              {{ site.data.translations[page.lang].insights.reading_time_medium }}
-              <span class="reading-time-count">
-                ({{ insights | where_exp: "item", "item.reading_time > 5 and item.reading_time <= 10" | size }})
-              </span>
-            </a>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/in-depth/" class="reading-time-option">
-              <span class="reading-time-icon">📚</span>
-              {{ site.data.translations[page.lang].insights.reading_time_in_depth }}
-              <span class="reading-time-count">
-                ({{ insights | where_exp: "item", "item.reading_time > 10" | size }})
-              </span>
-            </a>
-          </div>
-        </div>
+        <!-- <div class="reading-time-filter">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/quick/" class="reading-time-option">
+            <span class="reading-time-icon">⚡</span>
+            {{ site.data.translations[page.lang].insights.reading_time_quick }}
+            <span class="reading-time-count">
+              ({{ insights | where_exp: "item", "item.reading_time <= 5" | size }})
+            </span>
+          </a>
+          {% assign mid_range = insights 
+              | where_exp: "item", "item.reading_time > 5" 
+              | where_exp: "item", "item.reading_time <= 10" 
+          %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/medium/" class="reading-time-option">
+            <span class="reading-time-icon">⏱️</span>
+            {{ site.data.translations[page.lang].insights.reading_time_medium }}
+            <span class="reading-time-count">({{ mid_range | size }})</span>
+          </a>
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/reading-time/in-depth/" class="reading-time-option">
+            <span class="reading-time-icon">📚</span>
+            {{ site.data.translations[page.lang].insights.reading_time_in_depth }}
+            <span class="reading-time-count">
+              ({{ insights | where_exp: "item", "item.reading_time > 10" | size }})
+            </span>
+          </a>
+        </div> -->
         
         <!-- Country Focus Filter (based on country_code) -->
         <div class="sidebar-section">

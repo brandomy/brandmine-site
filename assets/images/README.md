@@ -150,14 +150,6 @@ See `docs/design/image-style-guide.md` for detailed style specifications and exa
         purpose="hero"
         alt="Wine sector overview" %}
      ```
-     
-   - For taxonomy icons:
-     ```liquid
-     {% include components/taxonomy-icon.html 
-        system="dimensions" 
-        type="sectors" 
-        name="wine" %}
-     ```
 
 ## File Format Guidelines
 
