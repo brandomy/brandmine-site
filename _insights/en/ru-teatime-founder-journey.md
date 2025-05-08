@@ -1,47 +1,46 @@
 ---
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
+# NEW INSIGHT TEMPLATE - FOUNDERS JOURNEY
 layout: insight
-category: "founders-journey"  # Must match insights/en.yml
-
-# Language and routing
+ref: ru-teatime-founder-journey  # Global ID (market-slug format) For language switcher
+title: "Alexei Sokolov: TeaTime's Journey from Moscow Mountains to Global Markets"
 lang: en
-permalink: /en/insights/ru/teatime-founder-journey/
-ref: teatime-founder-journey  # For language switcher
+permalink: /en/insights/ru-teatime-founder-journey/
 
-# Content metadata
-country_code: "ru"  # Market focus code
+# Basic Information
 date: 2025-02-05  # Publication date
+author: "randal_eastman"  # Key for translation lookup
+excerpt: "The remarkable story of how a software engineer's passion for tea transformed into Russia's leading artisanal tea brand."
+category: "founders-journey"  # Must match insights/en.yml
 reading_time: 8
 
-# Display flags
+# Brand Information
+brands: [ru-teatime]  # Featured brand(s) with market prefix
+founding_year: 2010
+website: "https://teatime.ru"
+founders: ["ru-alexei-sokolov"]  # Array of founder keys that match founder_names.json entries
+founder_led: true  # Boolean: Is the founder still actively leading?
+
+# Taxonomy - All exact slugs from dimensions.json (DO NOT TRANSLATE)
+sectors: [gourmet-foods]  # Required: Use exact slugs from dimensions file
+markets: [russia]  # Required: Use exact slugs from dimensions file
+attributes: [founder-led, artisanal-excellence]  # Optional: Use exact slugs from dimensions file
+signals: [rapid-growth, export-ready]  # Optional: Use exact slugs from dimensions file
+
+# Display Settings
 featured: false
 premium: false
 
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [gourmet-foods]  # Exact slugs only
-markets: [russia]  # Exact slugs only
-attributes: [founder-led, artisanal-excellence]  # Exact slugs only
-signals: [rapid-growth, export-ready]  # Exact slugs only
-brands: [teatime]  # Exact slugs only
+# Location (flat structure for easier data handling)
+location_lng: 37.6173  # Longitude coordinate (Moscow)
+location_lat: 55.7558  # Latitude coordinate (Moscow)
+location_city: "Moscow"  # City name (translatable)
+location_region: "Moscow"  # Region/state/province (translatable, optional)
+location_country: "ru"  # ISO country code 
 
-# Images - Same for all language versions (DO NOT TRANSLATE)
-images:
-  hero: "/assets/images/insights/ru/teatime-founder-journey/originals/hero-teatime-production.jpg"
-  founder_portrait: "/assets/images/insights/ru/teatime-founder-journey/originals/founder-portrait-alexei-sokolov.jpg"
-  logo: "/assets/images/insights/ru/teatime-founder-journey/originals/logo-teatime.jpg"
-
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Alexei Sokolov: TeaTime's Journey from Moscow Mountains to Global Markets"
-author: "randal_eastman"  # Key for translation lookup
-excerpt: "The remarkable story of how a software engineer's passion for tea transformed into Russia's leading artisanal tea brand."
+# Image Paths (follow the global ID pattern)
+hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime-production.jpg"
+founder_portrait: "/assets/images/insights/ru-teatime-founder-journey/founder-portrait-alexei-sokolov.jpg"  # Optional
+logo: "/assets/images/insights/ru-teatime-founder-journey/logo-teatime.jpg"  # Optional
 ---
 
 ## From Dormitory to Global Markets

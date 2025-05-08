@@ -1,51 +1,46 @@
 ---
-# INSIGHT TEMPLATE - BRAND SPOTLIGHT
-# Location: _templates/insights/insight-brand-spotlight.md
-# Use this template for brand spotlight articles
-
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
+# NEW INSIGHT TEMPLATE - BRAND SPOTLIGHT
 layout: insight
-category: "brand-spotlight"  # Must match insights/en.yml
-
-# Language and routing
+ref: ru-seven-spices-spotlight  # Global ID (market-slug format) For language switcher
+title: "Brand Spotlight: Seven Spices - Reviving Russian Spice Traditions"
 lang: en
-permalink: /en/insights/ru/seven-spices-spotlight/
-ref: seven-spices-spotlight  # For language switcher
+permalink: /en/insights/ru-seven-spices-spotlight/
 
-# Content metadata
-country_code: "ru"  # Market focus code
+# Basic Information
 date: 2025-01-15  # Publication date
+author: "randal_eastman"  # Key for translation lookup
+excerpt: "Seven Spices is reintroducing traditional Russian spice blends to modern cuisine, combining heritage recipes with modern production for export to global markets."
+category: "brand-spotlight"  # Must match insights/en.yml
 reading_time: 7
 
-# Display flags
+# Brand Information
+brands: [ru-seven-spices]  # Featured brand(s) with market prefix
+founding_year: 2016
+website: "https://sevenspices.ru"
+founders: ["ru-maria-kuznetsova"]  # Array of founder keys that match founder_names.json entries
+founder_led: true  # Boolean: Is the founder still actively leading?
+
+# Taxonomy - All exact slugs from dimensions.json (DO NOT TRANSLATE)
+sectors: [gourmet-foods]  # Required: Use exact slugs from dimensions file
+markets: [russia]  # Required: Use exact slugs from dimensions file
+attributes: [heritage-brand, artisanal-excellence]  # Optional: Use exact slugs from dimensions file
+signals: [export-ready, investment-ready]  # Optional: Use exact slugs from dimensions file
+
+# Display Settings
 featured: false
 premium: false
 
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [gourmet-foods]  # Use exact slugs from dimensions file
-markets: [russia]  # Use exact slugs from dimensions file
-attributes: [heritage-brand, artisanal-excellence]  # Use exact slugs from dimensions file
-signals: [export-ready, investment-ready]  # Use exact slugs from dimensions file
-brands: [seven-spices]  # Featured brand(s)
+# Location (flat structure for easier data handling)
+location_lng: 49.1221  # Longitude coordinate (Kazan)
+location_lat: 55.7887  # Latitude coordinate (Kazan)
+location_city: "Kazan"  # City name (translatable)
+location_region: "Tatarstan"  # Region/state/province (translatable, optional)
+location_country: "ru"  # ISO country code 
 
-# Images - Same for all language versions (DO NOT TRANSLATE)
-images:
-  hero: "/assets/images/insights/ru/seven-spices-spotlight/originals/hero-moscow-spice-market.jpg"
-  founder_portrait: "/assets/images/insights/ru/seven-spices-spotlight/originals/founder-portrait-marina-petrova.jpg"  # Optional
-  logo: "/assets/images/insights/ru/seven-spices-spotlight/originals/logo-seven-spices.png"  # Optional
-
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Brand Spotlight: Seven Spices - Reviving Russian Spice Traditions"
-author: "randal_eastman"  # Use underscore_slug as key (e.g., "randal_eastman")
-excerpt: "Seven Spices is reintroducing traditional Russian spice blends to modern cuisine, combining heritage recipes with modern production for export to global markets."
+# Image Paths (follow the global ID pattern)
+hero_image: "/assets/images/insights/ru-seven-spices-spotlight/hero-moscow-spice-market.jpg"
+founder_portrait: "/assets/images/insights/ru-seven-spices-spotlight/founder-portrait-marina-petrova.jpg"  # Optional
+logo: "/assets/images/insights/ru-seven-spices-spotlight/logo-seven-spices.png"  # Optional
 ---
 
 ## Reimagining Russia's Flavor Palette

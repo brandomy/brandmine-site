@@ -1,51 +1,46 @@
 ---
-# INSIGHT TEMPLATE - BRAND SPOTLIGHT
-# Location: _templates/insights/insight-brand-spotlight.md
-# Use this template for brand spotlight articles
-
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
+# NEW INSIGHT TEMPLATE - BRAND SPOTLIGHT
 layout: insight
-category: "brand-spotlight"  # Must match insights/en.yml
-
-# Language and routing
+ref: xx-insight-slug  # Global ID (market-slug format) For language switcher
+title: "[Market Code] Spotlight: [Brand Name] - [Main Focus]"
 lang: en
-permalink: /en/insights/ru/brand-slug-spotlight/
-ref: brand-slug-spotlight  # For language switcher
+permalink: /en/insights/xx-insight-slug/
 
-# Content metadata
-country_code: "ru"  # Market focus code
+# Basic Information
 date: YYYY-MM-DD  # Publication date
+author: "author_slug"  # Key for translation lookup
+excerpt: "Brief excerpt highlighting the brand's unique positioning and key achievements (1-2 sentences)"
+category: "brand-spotlight"  # Must match insights/en.yml
 reading_time: 7
 
-# Display flags
+# Brand Information
+brands: [xx-brand-slug]  # Featured brand(s) with market prefix
+founding_year: YYYY
+website: "https://example.com"
+founders: []  # Array of founder keys that match founder_names.json entries
+founder_led: true  # Boolean: Is the founder still actively leading?
+
+# Taxonomy - All exact slugs from dimensions.json (DO NOT TRANSLATE)
+sectors: [sector-slug]  # Required: Use exact slugs from dimensions file
+markets: [market-slug]  # Required: Use exact slugs from dimensions file
+attributes: [attribute-slug]  # Optional: Use exact slugs from dimensions file
+signals: [signal-slug]  # Optional: Use exact slugs from dimensions file
+
+# Display Settings
 featured: false
 premium: false
 
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [natural-beauty]  # Use exact slugs from dimensions file
-markets: [russia]  # Use exact slugs from dimensions file
-attributes: [founder-led, artisanal-excellence]  # Use exact slugs from dimensions file
-signals: [export-ready, investment-ready]  # Use exact slugs from dimensions file
-brands: [brand-slug]  # Featured brand(s)
+# Location (flat structure for easier data handling)
+location_lng: 0.0  # Longitude coordinate
+location_lat: 0.0  # Latitude coordinate  
+location_city: ""  # City name (translatable)
+location_region: ""  # Region/state/province (translatable, optional)
+location_country: "xx"  # ISO country code 
 
-# Images - Same for all language versions (DO NOT TRANSLATE)
-images:
-  hero: "/assets/images/insights/ru/brand-slug-spotlight/originals/hero-[description].jpg"
-  founder_portrait: "/assets/images/insights/ru/brand-slug-spotlight/originals/founder-portrait-[name].jpg"  # Optional
-  logo: "/assets/images/insights/ru/brand-slug-spotlight/originals/logo-[description].png"  # Optional
-
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "[Market Code] Spotlight: [Brand Name] - [Main Focus]"
-author: "Author Name"  # Use underscore_slug as key (e.g., "randal_eastman")
-excerpt: "Brief excerpt highlighting the brand's unique positioning and key achievements (1-2 sentences)"
+# Image Paths (follow the global ID pattern)
+hero_image: "/assets/images/insights/xx-insight-slug/hero-description.jpg"
+founder_portrait: "/assets/images/insights/xx-insight-slug/founder-portrait.jpg"  # Optional
+logo: "/assets/images/insights/xx-insight-slug/logo-description.png"  # Optional
 ---
 
 ## Brand Introduction Heading

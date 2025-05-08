@@ -10,7 +10,7 @@ permalink: /ru/brands/ru-teatime/
 # Basic Information
 founding_year: 1998
 website: "https://teatime.ru"
-founders: ["alexei-sokolov"]  # Array of founder keys for JSON lookup
+founders: ["ru-alexei-sokolov"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy

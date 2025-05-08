@@ -1,47 +1,46 @@
 ---
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
+# NEW INSIGHT TEMPLATE - LOCATION INTELLIGENCE
 layout: insight
-category: "location-intelligence"  # Must match insights/en.yml
-
-# Language and routing
+ref: ru-siberian-honey-corridor  # Global ID (market-slug format) For language switcher
+title: "Siberian Honey Corridor: Russia's Emerging Apiary Ecosystem"
 lang: en
-permalink: /en/insights/ru/siberian-honey-corridor/
-ref: siberian-honey-corridor  # For language switcher
+permalink: /en/insights/ru-siberian-honey-corridor/
 
-# Content metadata
-country_code: "ru"  # Market focus code
+# Basic Information
 date: 2025-03-10  # Publication date
+author: "olya_eastman"  # Key for translation lookup
+excerpt: "How the pristine forests of Southern Siberia are becoming the epicenter of Russia's premium honey industry, attracting international attention."
+category: "location-intelligence"  # Must match insights/en.yml
 reading_time: 6
 
-# Display flags
+# Brand Information
+brands: [ru-siberian-gold, ru-altai-honey]  # Featured brand(s) with market prefix
+founding_year: 2018
+website: "https://siberian-honey-association.ru"
+founders: ["ru-ivan-petrov"]  # Array of founder keys that match founder_names.json entries
+founder_led: true  # Boolean: Is the founder still actively leading?
+
+# Taxonomy - All exact slugs from dimensions.json (DO NOT TRANSLATE)
+sectors: [honey-bee-products]  # Required: Use exact slugs from dimensions file
+markets: [russia]  # Required: Use exact slugs from dimensions file
+attributes: [regional-icon, artisanal-excellence]  # Optional: Use exact slugs from dimensions file
+signals: [export-ready, rapid-growth]  # Optional: Use exact slugs from dimensions file
+
+# Display Settings
 featured: false
 premium: false
 
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [honey-bee-products]  # Exact slugs only
-markets: [russia]  # Exact slugs only
-attributes: [regional-icon, artisanal-excellence]  # Exact slugs only
-signals: [export-ready, rapid-growth]  # Exact slugs only
-brands: [siberian-gold, altai-honey]  # Exact slugs only
+# Location (flat structure for easier data handling)
+location_lng: 85.6000  # Longitude coordinate (Altai region)
+location_lat: 50.7500  # Latitude coordinate (Altai region)
+location_city: "Belokurikha"  # City name (translatable)
+location_region: "Altai Krai"  # Region/state/province (translatable, optional)
+location_country: "ru"  # ISO country code 
 
-# Images - Same for all language versions (DO NOT TRANSLATE)
-images:
-  hero: "/assets/images/insights/ru/siberian-honey-corridor/originals/hero-altai-forest.jpg"
-  founder_portrait: "/assets/images/insights/ru/siberian-honey-corridor/originals/founder-portrait-ivan-petrov.jpg"
-  logo: "/assets/images/insights/ru/siberian-honey-corridor/originals/logo-siberian-honey.jpg"
-
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Siberian Honey Corridor: Russia's Emerging Apiary Ecosystem"
-author: "olya_eastman"  # Key for translation lookup
-excerpt: "How the pristine forests of Southern Siberia are becoming the epicenter of Russia's premium honey industry, attracting international attention."
+# Image Paths (follow the global ID pattern)
+hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-altai-forest.jpg"
+founder_portrait: "/assets/images/insights/ru-siberian-honey-corridor/founder-portrait-ivan-petrov.jpg"  # Optional
+logo: "/assets/images/insights/ru-siberian-honey-corridor/logo-siberian-honey.jpg"  # Optional
 ---
 
 ## The Geographic Advantage: A Natural Organic Zone
