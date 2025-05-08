@@ -1,53 +1,52 @@
 ---
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
+# INSIGHT: MARKET MOMENTUM TEMPLATE
 layout: insight
-category: "market-momentum"  # Must match insights/en.yml
-
-# Language and routing
+ref: ru-russian-wine-renaissance  # insight slug For language switcher
+title: "Ренессанс российского виноделия: рост рынка на 52% за пять лет"
 lang: ru
 permalink: /ru/insights/ru/russian-wine-renaissance/
-ref: russian-wine-renaissance  # For language switcher
 
-# Content metadata
-country_code: "ru"  # Market focus code
+# Basic Information
 date: 2025-04-01  # Publication date
+author: "randal_eastman"  # Key for translation lookup
+excerpt: "Российская винодельческая отрасль переживает беспрецедентный рост: увеличение отечественного производства вдвое и растущее международное признание."
+category: "market-momentum"  # Must match insights/en.yml
 reading_time: 7
 
-# Display flags
-featured: false
-premium: false
+# Brand Information
+brands: [ru-krasnodar-wines]  # Exact slugs only
+founding_year: 1998
+website: "https://krasnodar-wines.ru"
+founders: ["ru-anna-kuznetsova"]  # Array of founder keys for JSON lookup
+founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
 sectors: [wine]  # Exact slugs only
 markets: [russia]  # Exact slugs only
 attributes: [innovation-leader, sustainability-pioneer]  # Exact slugs only
 signals: [rapid-growth, export-ready]  # Exact slugs only
-brands: [krasnodar-wines, crimean-legacy]  # Exact slugs only
 
-# Images - Same for all language versions (DO NOT TRANSLATE)
-images:
-  hero: "/assets/images/insights/ru/russian-wine-renaissance/originals/hero-krasnodar-vineyard.jpg"
-  founder_portrait: "/assets/images/insights/ru/russian-wine-renaissance/originals/founder-portrait-anna-kuznetsova.jpg"
-  logo: "/assets/images/insights/ru/russian-wine-renaissance/originals/logo-russian-wine.jpg"
+# Display Settings
+featured: false
+premium: false
 
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Российский винный ренессанс: Рост рынка на 52% за пять лет"
-author: "randal_eastman"  # Key for translation lookup
-excerpt: "Винная индустрия России переживает беспрецедентный рост, с удвоением отечественного производства и растущим международным признанием."
+# Location (flat structure for easier data handling)
+location_lng: 37.2986  # Longitude coordinate (Krasnodar region)
+location_lat: 45.0448  # Latitude coordinate (Krasnodar region)
+location_city: "Краснодар"  # City name (translatable)
+location_region: "Краснодарский край"  # Region/state/province (translatable, optional)
+location_country: "ru"  # ISO country code
+
+# Image Paths (follow the global ID pattern)
+logo: "/assets/images/insights/ru-russian-wine-renaissance/logo-russian-wine.jpg"
+hero_image: "/assets/images/insights/ru-russian-wine-renaissance/hero-krasnodar-vineyard.jpg"
+founder_portrait: "/assets/images/insights/ru-russian-wine-renaissance/founder-portrait-anna-kuznetsova.jpg"
 ---
 
 ## Новое направление для российских спиртных напитков
 
-В то время как европейские рынки традиционно были основным направлением для российских экспортеров спиртных напитков, за последние 18 месяцев произошел замечательный сдвиг. Премиальные ремесленные дистиллерии со всей России обнаруживают беспрецедентный успех на восточноазиатских рынках роскоши, особенно в Китае, Японии и Южной Корее.
+В то время как европейские рынки традиционно были основным направлением для российских экспортеров спиртных напитков, последние 18 месяцев наблюдается заметный сдвиг. Премиальные крафтовые дистиллерии по всей России находят беспрецедентный успех на роскошных рынках Восточной Азии, особенно в Китае, Японии и Южной Корее.
 
-Отраслевые данные показывают, что экспорт российских крафтовых спиртных напитков в Восточную Азию вырос на 78% в 2024 году, с особенно сильным ростом в ультра-премиальном сегменте стоимостью выше 100 долларов за бутылку. Этот рост происходит в критический момент, когда традиционные экспортные маршруты столкнулись с логистическими и нормативными проблемами.
+Отраслевые данные показывают, что экспорт российских крафтовых спиртных напитков в Восточную Азию увеличился на 78% в 2024 году, с особенно сильным ростом в ультра-премиальном сегменте стоимостью выше 100 долларов за бутылку. Этот рост происходит в критический момент, когда традиционные экспортные маршруты столкнулись с логистическими и нормативными проблемами.
 
-"Изначально мы рассматривали азиатские рынки как второстепенную возможность", — объясняет Дмитрий Воронин, генеральный директор "Сибирской дистиллерии". "Теперь они представляют более 40% нашей экспортной выручки и растут быстрее, чем любой другой регион".
+"Изначально мы рассматривали азиатские рынки как второстепенную возможность", — объясняет Дмитрий Воронин, генеральный директор Сибирской Дистиллерии. "Теперь они представляют более 40% нашей экспортной выручки и растут быстрее, чем любой другой регион".
