@@ -1,0 +1,37 @@
+{% comment %}
+  NEW code-sample
+
+  Include Name: components/styleguide/code-sample.html
+
+  Purpose: Outputs a syntax-highlighted, Liquid-safe code block using {% raw %} to prevent rendering.
+
+  Parameters:
+  - code: The code block you want to display (required, multiline string)
+  - language: Optional language label for syntax highlighting (e.g., "liquid", "html")
+
+  Usage:
+  {% include components/styleguide/code-sample.html
+    language="liquid"
+    code=sample_code %}
+
+  Note:
+  This must be used inside a `{% capture %}` block to store the snippet.
+
+  eg:
+
+  {% capture dot_code %}
+    <h2>Dot Separator</h2>
+    Founder-led
+    {% include components/icons/dot-separator.html %}
+    Women-owned
+  {% endcapture %}
+
+  {% include components/styleguide/code-sample.html
+    language="liquid"
+    code=dot_code %}
+
+{% endcomment %}
+
+<pre><code class="language-{{ include.language | default: 'liquid' }}">
+{% raw %}{{ include.code | escape }}{% endraw %}
+</code></pre>
