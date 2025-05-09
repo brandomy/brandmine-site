@@ -13,32 +13,27 @@
   <link rel="shortcut icon" href="{{ '/assets/images/site/favicons/favicon.ico' | relative_url }}">
   <link rel="manifest" href="{{ '/assets/images/site/favicons/site.webmanifest' | relative_url }}">
 
-  <!-- Style Sheets --> 
-  
+  <!-- Style Sheets -->
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <!-- end of Style Sheets -->
 
-  <!-- 8. Debug tools (comment out in production) -->
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/debug.css' | relative_url }}"> -->
-
-  <!-- end of Style Sheets -->  
- 
   <!-- Font preloading for performance -->
   <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
-  
+
   <!-- Conditional preloading for Chinese fonts -->
   {% if page.lang == 'zh' %}
     <link rel="preload" href="{{ '/assets/fonts/NotoSerifSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/NotoSansSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  {% endif %}  
+  {% endif %}
 
 
   <!-- Font Awesome icons -->
   <script src="https://kit.fontawesome.com/6c425ae2ba.js" crossorigin="anonymous"></script>
 
-  <!-- Premium Content -->  
-  <script src="{{ '/assets/js/premium-content.js' | relative_url }}"></script>  
+  <!-- Premium Content -->
+  <script src="{{ '/assets/js/premium-content.js' | relative_url }}"></script>
 
   <!-- MailerLite Universal -->
   <script>
@@ -62,7 +57,7 @@
       </div>
     </div>
   </main>
-  
+
   {% include layout/footer.html %}
   <script src="{{ '/assets/js/header.js' | relative_url }}"></script>
   <!-- <script src="{{ site.baseurl }}/assets/js/header.js"></script> -->
