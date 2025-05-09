@@ -1,0 +1,33 @@
+
+
+{% comment %}
+  Include Name: components/separators/bullet-separator.html
+
+  Purpose: Renders a stylized bullet separator (e.g. • or ✦) for grouping key values
+  such as product attributes, summary highlights, or brand descriptors. This is a more
+  expressive alternative to the dot separator when you want to visually emphasize
+  each item in a set.
+
+  Parameters:
+  - symbol (optional): Unicode symbol or character to use instead of default. Defaults to "✦"
+
+  Dependencies:
+  - CSS: bullet-separator.css (in assets/css/components/separators/)
+
+  Example Usage:
+  Used to separate attribute highlights:
+  Artisanal {% include components/separators/bullet-separator.html %} Organic {% include components/separators/bullet-separator.html %} Export-ready
+
+  With a custom symbol:
+  Artisanal {% include components/separators/bullet-separator.html symbol="◆" %} Organic
+
+  Notes:
+  - Output is a <span> element with class 'separator--bullet'
+  - aria-hidden="true" ensures it is skipped by screen readers
+  - Custom symbols can include Unicode or emojis, styled via CSS
+  - The default symbol ✦ is especially well-suited for Brandmine as a visually distinctive, theme-consistent bullet.
+{% endcomment %}
+
+<span class="separator separator--bullet" aria-hidden="true">
+  {{ include.symbol | default: "✦" }}
+</span>

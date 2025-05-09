@@ -1,0 +1,27 @@
+{% comment %}
+  Include Name: components/separators/en-dash-separator.html
+
+  Purpose: Renders an en dash (–) for use in date ranges, geographic pairings,
+  or progression labels. Preferred over hyphens to enhance clarity and typographic
+  correctness in editorial and structured data formats.
+
+  Parameters:
+  - None
+
+  Dependencies:
+  - CSS: en-dash-separator.css (in assets/css/components/separators/)
+
+  Example Usage:
+  Date range:
+  2017 {% include components/separators/en-dash-separator.html %} 2023
+
+  Country pair:
+  Russia {% include components/separators/en-dash-separator.html %} Brazil
+
+  Notes:
+  - Output is a <span> element with class 'separator--en-dash'
+  - Uses Unicode U+2013 character
+  - aria-hidden="true" ensures the symbol is not read aloud by screen readers
+{% endcomment %}
+
+<span class="separator separator--en-dash" aria-hidden="true">–</span>
