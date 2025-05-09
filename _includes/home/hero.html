@@ -1,0 +1,24 @@
+<!-- hero.html component placeholder -->
+{% comment %}
+  Include: home/hero.html
+  Purpose: Renders the primary hero section for the home page with heading, subtitle, and CTA buttons
+
+  Parameters:
+    - None (accesses page language from page.lang)
+
+  Dependencies:
+    - CSS: assets/css/pages/home.scss
+    - Translations: site.data.translations[page.lang]
+{% endcomment %}
+
+<!-- Primary Hero Panel (Teal) -->
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="home-hero--no-image__heading-primary">Illuminating and Elevating <br>Founder-led Brands from the BRICS+</h1>
+    <p class="home-hero--no-image__subtitle">Breaking through language, cultural, and geographic barriers to reveal exceptional founder-led brands at the perfect moment for global expansion</p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="primary-hero">Explore Brands</a>
+      <a href="#how-it-works" class="btn btn--standard" data-track="secondary-hero">Learn How</a>
+    </div>
+  </div>
+</div>

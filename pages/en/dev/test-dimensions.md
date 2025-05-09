@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Test Dimensions
-permalink: /en/test-dimensions/
+permalink: /en/dev/test-dimensions/
 lang: en
 ref: test-dimensions
 ---

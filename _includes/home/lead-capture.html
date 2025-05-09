@@ -1,0 +1,43 @@
+{% comment %}
+  Component: home/lead-capture.html
+
+  Purpose: Displays a newsletter subscription section using MailerLite integration
+
+  Parameters:
+    title (optional): Custom section title, defaults to translation
+    lead_text (optional): Custom lead text, defaults to translation
+    panel_type (optional): Panel style/color, defaults to "lead-capture"
+
+  Dependencies:
+    - CSS: components/lead-capture.css
+    - External: MailerLite embed script (loaded in default layout)
+
+  Usage:
+  {% include home/lead-capture.html %}
+  {% include home/lead-capture.html panel_type="primary-dark" %}
+  {% include home/lead-capture.html title="Custom Title" lead_text="Custom description" %}
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "lead-capture" %}
+{% assign title = include.title | default: site.data.translations[page.lang].home.stay_updated | default: "Stay Updated on BRICS+ Opportunities" %}
+{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.subscribe_text | default: "Subscribe to receive curated insights about emerging brands and market trends" %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ title }}</h2>
+    <p class="panel__lead-text">{{ lead_text }}</p>
+
+    <div class="lead-capture__container">
+      <!-- MailerLite Form -->
+      <div class="lead-capture__form">
+        {% if page.lang == 'ru' %}
+          <div class="ml-embedded" data-form="WVRNPI"></div>
+        {% elsif page.lang == 'zh' %}
+          <div class="ml-embedded" data-form="WRga0a"></div>
+        {% else %}
+          <div class="ml-embedded" data-form="480swE"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

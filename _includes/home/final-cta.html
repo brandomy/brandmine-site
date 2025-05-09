@@ -1,0 +1,43 @@
+<!-- final-cta.html component placeholder -->
+{% comment %}
+  Component: home/final-cta.html
+
+  Purpose: Displays the final call-to-action section at the bottom of the homepage
+
+  Parameters:
+    title (optional): Custom section title, defaults to "Start Exploring What Others Can't See"
+    lead_text (optional): Custom lead text
+    primary_cta_text (optional): Text for primary CTA button, defaults to "Explore Brands"
+    primary_cta_url (optional): URL for primary CTA button, defaults to brands page
+    secondary_cta_text (optional): Text for secondary CTA button, defaults to "Get Profiled"
+    secondary_cta_url (optional): URL for secondary CTA button, defaults to contact section
+
+  Dependencies:
+    - CSS: components/panels.css
+
+  Usage:
+  {% include home/final-cta.html %}
+  {% include home/final-cta.html
+     title="Custom Title"
+     lead_text="Custom description"
+     primary_cta_text="Browse Brands"
+     secondary_cta_text="Contact Us" %}
+{% endcomment %}
+
+{% assign title = include.title | default: "Start Exploring What Others Can't See" %}
+{% assign lead_text = include.lead_text | default: "Gain exclusive access to founder-led BRICS+ brands ready to grow" %}
+{% assign primary_cta_text = include.primary_cta_text | default: "Explore Brands" %}
+{% assign primary_cta_url = include.primary_cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/brands/" %}
+{% assign secondary_cta_text = include.secondary_cta_text | default: "Get Profiled" %}
+{% assign secondary_cta_url = include.secondary_cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/about/#contact-us" %}
+
+<div class="panel panel--cta">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ title }}</h2>
+    <p class="panel__lead-text">{{ lead_text }}</p>
+    <div class="cta-buttons">
+      <a href="{{ primary_cta_url }}" class="btn btn--primary-cta" data-track="final-cta-explore">{{ primary_cta_text }}</a>
+      <a href="{{ secondary_cta_url }}" class="btn btn--secondary-cta" data-track="final-cta-profile">{{ secondary_cta_text }}</a>
+    </div>
+  </div>
+</div>

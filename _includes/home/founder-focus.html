@@ -1,0 +1,40 @@
+<!-- founder-focus.html component placeholder -->
+{% comment %}
+  Component: home/founder-focus.html
+
+  Purpose: Displays the founder focus section highlighting founder stories
+
+  Parameters:
+    title (optional): Custom section title, defaults to "Beyond Listings: The Human Stories Driving BRICS+ Innovation"
+    lead_text (optional): Custom lead text
+    panel_type (optional): Panel style/color, defaults to "secondary-soft"
+    cta_text (optional): Custom CTA button text, defaults to "Read Founder Stories"
+    cta_url (optional): Custom CTA button URL, defaults to the insights page
+
+  Dependencies:
+    - CSS: components/panels.css
+
+  Usage:
+  {% include home/founder-focus.html %}
+  {% include home/founder-focus.html panel_type="accent-soft" %}
+  {% include home/founder-focus.html
+     title="Custom Title"
+     lead_text="Custom description"
+     cta_text="Read Stories" %}
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "secondary-soft" %}
+{% assign title = include.title | default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}
+{% assign lead_text = include.lead_text | default: "At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}
+{% assign cta_text = include.cta_text | default: "Read Founder Stories" %}
+{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/insights/" %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ title }}</h2>
+    <p class="panel__lead-text">{{ lead_text }}</p>
+    <div class="cta-buttons">
+      <a href="{{ cta_url }}" class="btn btn--standard" data-track="founder-focus">{{ cta_text }}</a>
+    </div>
+  </div>
+</div>

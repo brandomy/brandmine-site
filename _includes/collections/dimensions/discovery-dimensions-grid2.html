@@ -1,0 +1,64 @@
+{% comment %}
+  Component: collections/dimensions/discovery-dimensions-grid.html
+
+  Purpose: Displays a grid of discovery dimensions (sectors, markets, attributes, signals)
+
+  Parameters:
+    columns (required): Number of columns in the grid (1-4)
+    limit (optional): Maximum number of items per dimension to display, defaults to all
+    dimensions (optional): Array of dimensions to display, defaults to all
+    show_counts (optional): Whether to show item counts, defaults to true
+
+  Dependencies:
+    - CSS: components/discovery.css, components/dimensions.css
+
+  Usage:
+  {% include collections/dimensions/discovery-dimensions-grid.html columns=4 %}
+  {% include collections/dimensions/discovery-dimensions-grid.html
+     columns=2
+     dimensions="sectors,markets"
+     limit=3 %}
+{% endcomment %}
+
+{% assign columns = include.columns | default: 4 %}
+{% assign limit = include.limit | default: 100 %}
+{% assign dimensions = include.dimensions | default: "sectors,markets,attributes,signals" | split: "," %}
+{% assign show_counts = include.show_counts | default: true %}
+
+<div class="discovery-dimensions-grid">
+  {% for dimension in dimensions %}
+    {% assign dimension_name = dimension | strip %}
+
+    <div class="dimension-card dimension-card--{{ dimension_name }}">
+      <div class="dimension-card__header">
+        <div class="dimension-card__icon">
+          {% include components/icons/icon.html type=dimension_name name=dimension_name | append: "-default" size="md" %}
+        </div>
+        <h3 class="dimension-card__title">{{ site.data.translations[page.lang].tags.group_tags | default: dimension_name | capitalize }}</h3>
+      </div>
+
+      <div class="dimension-card__content">
+        <ul class="dimension-card__list">
+          {% assign items = site.tags | where: "tag_type", dimension_name | where: "lang", page.lang | sort: "title" | limit: limit %}
+          {% for item in items %}
+            <li class="dimension-card__item">
+              <a href="{{ item.url | relative_url }}" class="dimension-card__link">
+                {{ item.title }}
+                {% if show_counts %}
+                  <span class="dimension-card__count">{{ item.count | default: 0 }}</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="dimension-card__footer">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ dimension_name }}/" class="dimension-card__view-all">
+          {{ site.data.translations[page.lang].discover.view_all_prefix | default: "View All" }} {{ dimension_name | capitalize }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  {% endfor %}
+</div>

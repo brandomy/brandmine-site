@@ -1,0 +1,55 @@
+<!-- featured-brands.html component placeholder -->
+{% comment %}
+  Component: home/featured-brands.html
+
+  Purpose: Displays a carousel of featured brands on the homepage
+
+  Parameters:
+    limit (optional): Number of brands to display, defaults to all featured brands
+    carousel_class (optional): Additional CSS class for the carousel container
+
+  Dependencies:
+    - CSS: components/brand-card.css, components/featured-brand.css
+    - JS: home/carousels.js (to be extracted)
+
+  Usage:
+  {% include home/featured-brands.html %}
+  {% include home/featured-brands.html limit=4 %}
+  {% include home/featured-brands.html limit=6 carousel_class="large-carousel" %}
+{% endcomment %}
+
+{% assign limit = include.limit | default: 10 %}
+{% assign carousel_class = include.carousel_class | default: "" %}
+
+<div class="panel panel--primary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
+    <p class="panel__lead-text">{{ include.lead_text | default: "Discover hand-selected brands with compelling narratives and global potential" }}</p>
+
+    <div class="featured-brands-carousel {{ carousel_class }}">
+      {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: limit %}
+      {% if brands.size > 0 %}
+        {% for brand in brands %}
+          {% include components/cards/brand-card.html brand=brand %}
+        {% endfor %}
+      {% else %}
+        <!-- Fallback to language-specific example if no featured brands are available -->
+        {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
+        {% include components/cards/brand-card.html brand=fallback_brand %}
+      {% endif %}
+    </div>
+
+    <!-- Scroll indicator dots -->
+    <div class="featured-brands-nav">
+      <span class="featured-brands-nav-dot active"></span>
+      <span class="featured-brands-nav-dot"></span>
+      <span class="featured-brands-nav-dot"></span>
+    </div>
+
+    <div class="more-brands">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="featured-brands">
+        {{ include.cta_text | default: site.data.translations[page.lang].buttons.all_brands | default: "Explore All Brands" }}
+      </a>
+    </div>
+  </div>
+</div>

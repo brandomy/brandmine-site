@@ -1,0 +1,40 @@
+<!-- location-intelligence.html component placeholder -->
+{% comment %}
+  Component: home/location-intelligence.html
+
+  Purpose: Displays the location intelligence section highlighting the map feature
+
+  Parameters:
+    title (optional): Custom section title, defaults to "Location Intelligence: Mapping Hidden Opportunities"
+    lead_text (optional): Custom lead text
+    panel_type (optional): Panel style/color, defaults to "light"
+    cta_text (optional): Custom CTA button text, defaults to "Explore Map"
+    cta_url (optional): Custom CTA button URL, defaults to the markets discovery page
+
+  Dependencies:
+    - CSS: components/panels.css
+
+  Usage:
+  {% include home/location-intelligence.html %}
+  {% include home/location-intelligence.html panel_type="primary" %}
+  {% include home/location-intelligence.html
+     title="Custom Title"
+     lead_text="Custom description"
+     cta_text="View Maps" %}
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "light" %}
+{% assign title = include.title | default: "Location Intelligence: Mapping Hidden Opportunities" %}
+{% assign lead_text = include.lead_text | default: "Visualize brand ecosystems through interactive maps that reveal geographic patterns and cultural connections" %}
+{% assign cta_text = include.cta_text | default: "Explore Map" %}
+{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/discover/markets/" %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ title }}</h2>
+    <p class="panel__lead-text">{{ lead_text }}</p>
+    <div class="cta-buttons">
+      <a href="{{ cta_url }}" class="btn btn--standard" data-track="location-intelligence">{{ cta_text }}</a>
+    </div>
+  </div>
+</div>

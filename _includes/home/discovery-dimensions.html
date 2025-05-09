@@ -1,0 +1,25 @@
+<!-- discovery-dimensions.html component placeholder -->
+{% comment %}
+  Include: home/discovery-dimensions.html
+  Purpose: Displays the discovery dimensions grid section showcasing different ways to explore brands
+
+  Parameters:
+    - columns (optional): Number of columns to display in the grid (default: 4)
+    - limit (optional): Maximum number of items to show per dimension (default: 3)
+
+  Dependencies:
+    - CSS: assets/css/pages/home.scss
+    - Include: collections/dimensions/discovery-dimensions-grid.html
+{% endcomment %}
+
+<!-- Discovery Dimensions Grid Section -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Explore By Dimension{% if include.new_component %} (New Component){% endif %}</h2>
+    <p class="panel__lead-text">Discover brands through different perspectives from business sectors to growth signals</p>
+
+    {% assign default_columns = include.columns | default: 4 %}
+    {% assign default_limit = include.limit | default: 3 %}
+    {% include collections/dimensions/discovery-dimensions-grid.html columns=default_columns limit=default_limit %}
+  </div>
+</div>
