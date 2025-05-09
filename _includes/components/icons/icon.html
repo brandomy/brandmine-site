@@ -1,73 +1,37 @@
 {% comment %}
   Include Name: components/icons/icon.html
-  
-  Purpose: A flexible component for displaying icons from the site's icon system.
-  Supports different icon types (sector, market, attribute, signal) and sizes.
-  
+
+  Purpose: A flexible component for displaying PNG icons from the Brandmine asset library.
+  Icons are loaded based on type (sector, market, attribute, signal, insight), name, and size.
+
   Parameters:
   - type: The icon type - one of 'sector', 'market', 'attribute', 'signal', or 'insight' (required)
   - name: The specific icon identifier (e.g., 'hotels-resorts', 'founder-led') (required)
-  - size: Size variant - one of 'sm', 'lg', 'xl' (optional, default: normal size)
-  
+  - size: Pixel size - one of '24', '48' (optional, default: '24')
+
   Dependencies:
-  - SVG icon files in _includes/components/icons/ directory, organized in subdirectories by type
-  - CSS: Styles for .icon class and its modifiers
-  
+  - PNG icon files in assets/images/icons/dimensions/{type}/{size}/{name}.png
+  - CSS: Styles for .icon and icon modifiers (e.g., .icon--sector, .icon--24)
+
   Example Usage:
   {% include components/icons/icon.html type="sector" name="hotels-resorts" %}
-  {% include components/icons/icon.html type="attribute" name="founder-led" size="lg" %}
-  {% include components/icons/icon.html type="market" name="russia" %}
-  
+  {% include components/icons/icon.html type="attribute" name="founder-led" size="48" %}
+  {% include components/icons/icon.html type="market" name="russia" size="24" %}
+
   Notes:
-  - Icons are organized in subdirectories by type (sectors/, markets/, attributes/, signals/)
-  - Default icons are available for each type (sector-default.svg, etc.)
-  - Fallback icon is displayed if a specific icon is not found
-  - Size variants allow for responsive icon sizing
-  - Icons inherit color from their parent element by using currentColor
+  - Icons fallback to default image if the combination of name/type is invalid
+  - Asset structure must match the path: assets/images/icons/dimensions/{type}/{size}/{name}.png
 {% endcomment %}
 
-{% assign icon_path = 'components/icons/' %}
+{% assign icon_type = include.type | default: 'sector' %}
+{% assign icon_name = include.name | default: 'sector-default' %}
+{% assign icon_size = include.size | default: '24' %}
 
-{% if include.name contains '-default' %}
-  {% assign icon_path = icon_path | append: include.name | append: '.svg' %}
-{% else %}
-  {% if include.type %}
-    {% if include.type == 'sector' %}
-      {% assign icon_path = icon_path | append: 'sectors/' %}
-    {% elsif include.type == 'market' %}
-      {% assign icon_path = icon_path | append: 'markets/' %}
-    {% elsif include.type == 'attribute' %}
-      {% assign icon_path = icon_path | append: 'attributes/' %}
-    {% elsif include.type == 'signal' %}
-      {% assign icon_path = icon_path | append: 'signals/' %}
-    {% elsif include.type == 'insight' %}
-      {% assign icon_path = icon_path | append: include.name | append: '.svg' %}
-      {% assign icon_path_set = true %}
-    {% endif %}
-  {% endif %}
-  
-  {% if icon_path_set != true %}
-    {% assign icon_path = icon_path | append: include.name | append: '.svg' %}
-  {% endif %}
-{% endif %}
+{% assign icon_class = 'icon icon--' | append: icon_type | append: ' icon--' | append: icon_size %}
+{% assign icon_src = '/assets/images/icons/dimensions/' | append: icon_type | append: '/' | append: icon_size | append: '/' | append: icon_name | append: '.png' %}
 
-{% assign icon_class = 'icon' %}
-{% if include.type %}
-  {% assign icon_class = icon_class | append: ' icon--' | append: include.type %}
-{% endif %}
-{% if include.size %}
-  {% assign icon_class = icon_class | append: ' icon--' | append: include.size %}
-{% endif %}
-
-<div class="{{ icon_class }}">
-  {% if include.name and include.type %}
-    {% include {{ icon_path }} %}
-  {% else %}
-    <!-- Fallback icon if specific one is not found -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"></circle>
-      <line x1="12" y1="8" x2="12" y2="16"></line>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-    </svg>
-  {% endif %}
-</div>
+<img
+  src="{{ icon_src | relative_url }}"
+  alt="{{ icon_name | replace: '-', ' ' | capitalize }}"
+  class="{{ icon_class }}"
+  loading="lazy" />
