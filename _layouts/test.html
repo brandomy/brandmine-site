@@ -12,6 +12,25 @@
 </head>
 
 <body class="test-layout">
+  
+  <!-- Grid Toggle Button -->
+  <button onclick="document.body.classList.toggle('grid-debug')" style="
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10000;
+    background: teal;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 0.85em;
+    border-radius: 4px;
+    cursor: pointer;
+  ">
+    Toggle Grid
+  </button>
+
+  <!-- Main content area -->
   <main style="max-width: 800px; margin: 4rem auto; padding: 2rem;">
     <h1>{{ page.title }}</h1>
     {{ content }}
