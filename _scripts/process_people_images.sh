@@ -14,6 +14,9 @@
 #
 # Usage:
 #     ./_scripts/process_people_images.sh
+#     ./_scripts/process_people_images.sh team
+#
+#     # The second form restricts processing to only the 'team' subfolder inside assets/images/people
 #
 # Author: Randal Eastman
 
@@ -39,6 +42,7 @@ fi
 for SUB in "${TARGET_SUBFOLDERS[@]}"; do
   find "$BASE_DIR/$SUB" -type d -name originals | while read -r ORIGINALS_DIR; do
       OUTPUT_DIR="$(dirname "$ORIGINALS_DIR")"
+      mkdir -p "$OUTPUT_DIR"
       echo "Processing people images in: $ORIGINALS_DIR → $OUTPUT_DIR"
 
       for IMG in "$ORIGINALS_DIR"/*.{jpg,jpeg,png}; do
@@ -103,5 +107,3 @@ for SUB in "${TARGET_SUBFOLDERS[@]}"; do
 done
 
 echo "All people images have been processed!"
-    done
-done

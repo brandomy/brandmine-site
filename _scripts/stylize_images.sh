@@ -38,6 +38,7 @@ fi
 INPUT_FILE="$1"
 OUTPUT_FILE="$2"
 STYLE="${3:-standard}"  # Default to standard if not specified
+LOG_FILE="_scripts/stylize_images.log"
 
 # Check if ImageMagick is installed
 if ! command -v magick &> /dev/null; then
@@ -77,6 +78,7 @@ WIDTH=$(echo $DIMENSIONS | cut -d' ' -f1)
 HEIGHT=$(echo $DIMENSIONS | cut -d' ' -f2)
 
 echo "Processing image: $INPUT_FILE"
+echo "$(date '+%Y-%m-%d %H:%M:%S') 🟡 Start: $INPUT_FILE (style: $STYLE)" >> "$LOG_FILE"
 echo "Output will be saved as: $OUTPUT_FILE"
 echo "Applying '$STYLE' style..."
 
@@ -87,9 +89,9 @@ if [ "$STYLE" = "standard" ]; then
     # 2. Apply paper texture overlay at low opacity
     # 3. Add subtle shadow overlay
     # 4. Enhance edges for clean lines
-    
+
     magick "$INPUT_FILE" \
-        -modulate 100,115,100 \  # Increase saturation by 15%
+        -modulate 100,115,100 \
         -contrast \
         \( "$PAPER_TEXTURE" -resize ${WIDTH}x${HEIGHT}! \) \
         -compose overlay -define compose:args=20 -composite \
@@ -97,28 +99,42 @@ if [ "$STYLE" = "standard" ]; then
         -compose multiply -define compose:args=30 -composite \
         -unsharp 0x0.5+0.5+0.008 \
         "$OUTPUT_FILE"
-        
+
+    if [ $? -ne 0 ]; then
+        echo "❌ ImageMagick processing failed for $INPUT_FILE"
+        echo "$(date '+%Y-%m-%d %H:%M:%S') ❌ Failed: $INPUT_FILE -> $OUTPUT_FILE (style: $STYLE)" >> "$LOG_FILE"
+        exit 1
+    fi
+
     echo "Applied standard Textured Minimalism style"
-    
+    echo "$(date '+%Y-%m-%d %H:%M:%S') ✅ Success: $INPUT_FILE -> $OUTPUT_FILE (style: $STYLE)" >> "$LOG_FILE"
+
 elif [ "$STYLE" = "muted" ]; then
     # Muted Pastel Textured Minimalism (for founder/interior content)
     # 1. Reduce saturation and lighten the image
     # 2. Apply paper texture at higher opacity for more texture
     # 3. Add very subtle shadow
     # 4. Apply subtle pastel toning
-    
+
     magick "$INPUT_FILE" \
-        -modulate 105,85,100 \  # Lighten by 5%, reduce saturation by 15%
+        -modulate 105,85,100 \
         \( "$PAPER_TEXTURE" -resize ${WIDTH}x${HEIGHT}! \) \
         -compose overlay -define compose:args=35 -composite \
         \( "$SHADOW_OVERLAY" -resize ${WIDTH}x${HEIGHT}! \) \
         -compose multiply -define compose:args=15 -composite \
         -unsharp 0x0.3+0.3+0.005 \
-        -fill "#f7efe3" -colorize 10 \  # Add subtle warm pastel toning
+        -fill "#f7efe3" -colorize 10 \
         "$OUTPUT_FILE"
-        
+
+    if [ $? -ne 0 ]; then
+        echo "❌ ImageMagick processing failed for $INPUT_FILE"
+        echo "$(date '+%Y-%m-%d %H:%M:%S') ❌ Failed: $INPUT_FILE -> $OUTPUT_FILE (style: $STYLE)" >> "$LOG_FILE"
+        exit 1
+    fi
+
     echo "Applied muted Pastel Textured Minimalism style"
-    
+    echo "$(date '+%Y-%m-%d %H:%M:%S') ✅ Success: $INPUT_FILE -> $OUTPUT_FILE (style: $STYLE)" >> "$LOG_FILE"
+
 else
     echo "Unknown style: $STYLE"
     echo "Available styles: standard, muted"

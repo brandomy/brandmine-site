@@ -1,6 +1,7 @@
 #!/bin/bash
 # apply_teal_filter.sh - Recursively apply a subtle Brandmine teal filter to people portraits
 # Usage: ./apply_teal_filter.sh [base_dir]
+# Example: ./apply_teal_filter.sh ./assets/images/people/team
 # Default base_dir is ./assets/images/people
 
 BASE_DIR="${1:-./assets/images/people}"

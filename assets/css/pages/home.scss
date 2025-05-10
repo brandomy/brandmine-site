@@ -1,34 +1,37 @@
 /* ==========================================================================
-   Marketing Homepage Styles (BEM Implementation)
+   Homepage Styles
    ==========================================================================
-   Creates a cohesive, visually appealing homepage that coordinates
-   with the site's overall design language.
+   Imports all home page component styles through the index
 */
+
+@import 'home/index';
+
+/* Any page-level styles that don't belong to specific components can go here */
 
 /* --------------------------------------------------------------------------
    1. HERO PANEL
    -------------------------------------------------------------------------- */
 
 /* Primary Hero Panel (No Image) - builds on panel--hero from panels.css */
-.home-hero--no-image__heading-primary {
-  font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
-  color: var(--secondary-200);
-  margin-bottom: var(--space-4);
-  text-align: center;
-  line-height: var(--leading-tight);
-}
+// .home-hero--no-image__heading-primary {
+//   font-size: var(--text-4xl);
+//   font-weight: var(--font-bold);
+//   color: var(--secondary-200);
+//   margin-bottom: var(--space-4);
+//   text-align: center;
+//   line-height: var(--leading-tight);
+// }
 
-.home-hero--no-image__subtitle {
-  font-size: var(--text-xl);
-  font-weight: var(--font-light);
-  color: white;
-  margin-top: 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: var(--leading-relaxed);
-}
+// .home-hero--no-image__subtitle {
+//   font-size: var(--text-xl);
+//   font-weight: var(--font-light);
+//   color: white;
+//   margin-top: 0;
+//   max-width: 800px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   line-height: var(--leading-relaxed);
+// }
 
 /* --------------------------------------------------------------------------
    2. UNIFIED BUTTON AND CTA STYLES
@@ -305,152 +308,152 @@
    -------------------------------------------------------------------------- */
 
 /* Testimonials Section Styles */
-.testimonials-panel {
-  position: relative;
-  background-color: var(--neutral-50);
-}
+// .testimonials-panel {
+//   position: relative;
+//   background-color: var(--neutral-50);
+// }
 
-.testimonials-container {
-  display: flex;
-  flex-direction: row; /* Explicit row direction */
-  flex-wrap: wrap;
-  justify-content: center; /* Center cards horizontally */
-  gap: var(--space-6);
-  margin-top: var(--space-8);
-  padding-left: var(--space-2); /* Reduced padding */
-  padding-right: var(--space-2); /* Reduced padding */
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 100%;
-}
+// .testimonials-container {
+//   display: flex;
+//   flex-direction: row; /* Explicit row direction */
+//   flex-wrap: wrap;
+//   justify-content: center; /* Center cards horizontally */
+//   gap: var(--space-6);
+//   margin-top: var(--space-8);
+//   padding-left: var(--space-2); /* Reduced padding */
+//   padding-right: var(--space-2); /* Reduced padding */
+//   width: 100%;
+//   box-sizing: border-box;
+//   max-width: 100%;
+// }
 
-.testimonial-card {
-  flex: 1 1 calc(50% - var(--space-6));
-  min-width: 280px;
-  max-width: 100%; /* Allow the card to fill the container width */
-  background-color: white;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: var(--space-6);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  border-top: 3px solid var(--primary-300);
-  box-sizing: border-box; /* Ensure padding is included in width/height */
-  margin: 0; /* Reset margins for better flexbox control */
-  align-self: center; /* Ensure the card aligns to center in a flex context */
-}
+// .testimonial-card {
+//   flex: 1 1 calc(50% - var(--space-6));
+//   min-width: 280px;
+//   max-width: 100%; /* Allow the card to fill the container width */
+//   background-color: white;
+//   border-radius: var(--radius-lg);
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+//   padding: var(--space-6);
+//   display: flex;
+//   flex-direction: column;
+//   position: relative;
+//   border-top: 3px solid var(--primary-300);
+//   box-sizing: border-box; /* Ensure padding is included in width/height */
+//   margin: 0; /* Reset margins for better flexbox control */
+//   align-self: center; /* Ensure the card aligns to center in a flex context */
+// }
 
-.testimonial-card__quote {
-  position: relative;
-  padding-bottom: var(--space-4);
-}
+// .testimonial-card__quote {
+//   position: relative;
+//   padding-bottom: var(--space-4);
+// }
 
-.testimonial-card__quote-icon {
-  color: var(--primary-400);
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  width: 32px;
-  height: 32px;
-}
+// .testimonial-card__quote-icon {
+//   color: var(--primary-400);
+//   position: absolute;
+//   top: -8px;
+//   left: -8px;
+//   width: 32px;
+//   height: 32px;
+// }
 
-.testimonial-card__text {
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  color: var(--neutral-700);
-  margin-bottom: var(--space-4);
-  padding-left: var(--space-6);
-  font-style: italic;
-}
+// .testimonial-card__text {
+//   font-size: var(--text-base);
+//   line-height: var(--leading-relaxed);
+//   color: var(--neutral-700);
+//   margin-bottom: var(--space-4);
+//   padding-left: var(--space-6);
+//   font-style: italic;
+// }
 
-.testimonial-card__author {
-  display: flex;
-  align-items: center;
-  margin-top: auto;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--neutral-200);
-}
+// .testimonial-card__author {
+//   display: flex;
+//   align-items: center;
+//   margin-top: auto;
+//   padding-top: var(--space-4);
+//   border-top: 1px solid var(--neutral-200);
+// }
 
-.testimonial-card__author-image {
-  width: 80px;  /* Increased from 48px */
-  height: 80px; /* Increased from 48px */
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: var(--space-3);
-  border: 2px solid var(--primary-100);
-}
+// .testimonial-card__author-image {
+//   width: 80px;  /* Increased from 48px */
+//   height: 80px; /* Increased from 48px */
+//   border-radius: 50%;
+//   overflow: hidden;
+//   margin-right: var(--space-3);
+//   border: 2px solid var(--primary-100);
+// }
 
-.testimonial-card__author-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+// .testimonial-card__author-image img {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// }
 
-.testimonial-card__author-info {
-  display: flex;
-  flex-direction: column;
-}
+// .testimonial-card__author-info {
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.testimonial-card__author-name {
-  font-size: var(--text-base);
-  font-weight: var(--font-semibold);
-  color: var(--neutral-800);
-  margin: 0;
-}
+// .testimonial-card__author-name {
+//   font-size: var(--text-base);
+//   font-weight: var(--font-semibold);
+//   color: var(--neutral-800);
+//   margin: 0;
+// }
 
-.testimonial-card__author-title {
-  font-size: var(--text-sm);
-  color: var(--neutral-500);
-  margin: 0;
-}
+// .testimonial-card__author-title {
+//   font-size: var(--text-sm);
+//   color: var(--neutral-500);
+//   margin: 0;
+// }
 
-.testimonial-card__metrics {
-  display: flex;
-  margin-top: var(--space-4);
-  gap: var(--space-4);
-  padding-top: var(--space-3);
-}
+// .testimonial-card__metrics {
+//   display: flex;
+//   margin-top: var(--space-4);
+//   gap: var(--space-4);
+//   padding-top: var(--space-3);
+// }
 
-.metric {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--primary-50);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-md);
-  flex: 1;
-}
+// .metric {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: var(--primary-50);
+//   padding: var(--space-2) var(--space-4);
+//   border-radius: var(--radius-md);
+//   flex: 1;
+// }
 
-.metric-value {
-  font-size: var(--text-xl);
-  font-weight: var(--font-bold);
-  color: var(--primary-700);
-}
+// .metric-value {
+//   font-size: var(--text-xl);
+//   font-weight: var(--font-bold);
+//   color: var(--primary-700);
+// }
 
-.metric-label {
-  font-size: var(--text-xs);
-  color: var(--neutral-600);
-  text-align: center;
-}
+// .metric-label {
+//   font-size: var(--text-xs);
+//   color: var(--neutral-600);
+//   text-align: center;
+// }
 
-/* Add a subtle pattern to the background */
-.testimonials-panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2338b2ac' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.5;
-  z-index: 0;
-}
+// /* Add a subtle pattern to the background */
+// .testimonials-panel::before {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2338b2ac' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+//   opacity: 0.5;
+//   z-index: 0;
+// }
 
-.testimonials-panel .panel__content {
-  position: relative;
-  z-index: 1;
-}
+// .testimonials-panel .panel__content {
+//   position: relative;
+//   z-index: 1;
+// }
 
 /* --------------------------------------------------------------------------
    9. INSIGHTS SECTION
@@ -578,37 +581,37 @@
     padding-left: var(--space-4);
     padding-right: var(--space-4);
   }
-  
+
   .featured-brands-carousel .brand-card {
     width: 250px; /* Slightly smaller on small screens */
   }
   .home-hero--no-image__heading-primary {
     font-size: var(--text-3xl);
   }
-  
+
   .home-hero--no-image__subtitle {
     font-size: var(--text-lg);
   }
-  
+
   .impact-stats {
     flex-direction: column;
   }
-  
+
   .stat-number {
     font-size: var(--text-4xl);
   }
-  
+
   .process-steps {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     align-items: center;
     gap: var(--space-4);
   }
-  
+
   .btn {
     width: 100%;
   }
@@ -616,17 +619,17 @@
   .feature-list--centered li {
     padding: var(--space-3) var(--space-4);
   }
-  
+
   .testimonials-container {
     flex-direction: column;
     align-items: center; /* Ensure vertical alignment is centered */
   }
-  
+
   .testimonial-card {
     width: 100%;
     max-width: calc(100% - 2 * var(--space-2)); /* Equal but smaller margin on both sides */
   }
-  
+
   .lead-capture__container {
     padding: var(--space-4);
     margin-left: var(--space-4);
@@ -642,25 +645,25 @@
     padding-right: var(--space-4);
     padding-bottom: var(--space-6);
   }
-  
+
   .process-steps {
     gap: var(--space-6);
   }
-  
+
   .testimonials-container {
     flex-direction: column;
     align-items: center; /* Ensure vertical alignment is centered */
   }
-  
+
   .testimonial-card {
     width: 100%;
     max-width: calc(100% - 2 * var(--space-2)); /* Equal but smaller margin on both sides */
   }
-  
+
   .panel--primary-soft .insights-feed {
     grid-template-columns: 1fr;
   }
-  
+
   .panel--primary-soft .insight-card__title {
     min-height: auto;
   }
@@ -675,7 +678,7 @@
   .home-hero--no-image__heading-primary {
     font-size: var(--text-6xl);
   }
-  
+
   .process-step {
     max-width: 350px;
   }

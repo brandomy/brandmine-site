@@ -1,13 +1,12 @@
 {% comment %}
   Include Name: components/images/brand-image.html
-  
+
   Purpose: Generates responsive brand image HTML with appropriate srcset and sizes attributes
   for optimal loading performance across different devices. Follows Brandmine's image naming
   and sizing conventions specifically for brand-related images.
-  
+
   Parameters:
-  - country: Country code (required, e.g., "ru", "br", "cn")
-  - brand: Brand slug/identifier (required, e.g., "teatime")
+  - brand: Full brand slug including country code (required, e.g., "ru-teatime", "cn-dragonfly-retreats")
   - purpose: Image purpose identifier (required, e.g., "hero", "founder", "logo")
   - image: Image identifier (required, e.g., "storefront", "portrait", "color")
   - alt: Alt text for the image (required for accessibility)
@@ -15,15 +14,14 @@
   - ext: File extension (optional, default: "jpg")
   - sizes: Custom sizes attribute for responsive loading (optional, default provided)
   - widths: Comma-separated list of image widths to use (optional, default: "400,800,1200")
-  
+
   Dependencies:
   - Brand images must be pre-processed with _scripts/process_brand_images.sh
-  - Proper directory structure in /assets/images/brands/{country_code}/{brand_name}/
-  - File naming convention: {brand}-{purpose}-{image}-{width}w.{ext}
+  - Proper directory structure in /assets/images/brands/{brand_slug}/
+  - File naming convention: {brand_name}-{purpose}-{image}-{width}w.{ext}
 {% endcomment %}
 
-{% assign country = include.country | strip %}
-{% assign brand = include.brand | strip %}
+{% assign brand_slug = include.brand | strip %}
 {% assign purpose = include.purpose | default: "" | strip %}
 {% assign image = include.image | strip %}
 {% assign alt = include.alt | default: "Brand image" %}
@@ -34,16 +32,24 @@
 {% assign widths_array = widths | split: "," %}
 
 {% comment %}
-  Ensure we have valid values for country and brand before constructing paths
-  to avoid runtime errors if bad data is provided
+  Extract the brand name from the brand slug for image filename construction
+  For example: "cn-dragonfly-retreats" -> "dragonfly-retreats" for filenames
 {% endcomment %}
-{% if country and brand and image %}
-  {% assign base_path = "/assets/images/brands/" | append: country | append: "/" | append: brand | append: "/" %}
+{% assign brand_parts = brand_slug | split: "-" %}
+{% assign brand_name = brand_slug %}
+{% if brand_parts.size > 1 %}
+  {% assign country_code = brand_parts | first %}
+  {% assign brand_name_parts = brand_parts | slice: 1, brand_parts.size %}
+  {% assign brand_name = brand_name_parts | join: "-" %}
+{% endif %}
+
+{% if brand_slug and image %}
+  {% assign base_path = "/assets/images/brands/" | append: brand_slug | append: "/" %}
 
   {% if purpose != "" %}
-    {% assign image_path = brand | append: "-" | append: purpose | append: "-" | append: image %}
+    {% assign image_path = brand_name | append: "-" | append: purpose | append: "-" | append: image %}
   {% else %}
-    {% assign image_path = brand | append: "-" | append: image %}
+    {% assign image_path = brand_name | append: "-" | append: image %}
   {% endif %}
 
   <img src="{{ base_path | append: image_path | append: "-" | append: widths_array[0] | append: "w." | append: ext | relative_url }}"
@@ -53,6 +59,6 @@
        {% if class %}class="{{ class }}"{% endif %}
        loading="lazy">
 {% else %}
-  <!-- Image include missing required parameters (country: {{ country }}, brand: {{ brand }}, image: {{ image }}) -->
+  <!-- Image include missing required parameters (brand: {{ brand_slug }}, image: {{ image }}) -->
   <div class="image-placeholder">Image not available</div>
 {% endif %}
