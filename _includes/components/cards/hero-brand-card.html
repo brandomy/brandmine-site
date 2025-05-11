@@ -2,23 +2,21 @@
   Include Name: components/cards/hero-brand-card.html
 
   Purpose: Displays a large hero-style brand card with full-width hero image
-  at the top and more detailed information. Used for featured brands display.
+  at the top and more detailed information. Used for premium featured brands.
 
   Parameters:
   - brand: Brand object with complete details (required)
-    Expected properties from new standardized brand template structure:
+    Expected properties:
     - title: Brand name (translatable)
-    - logo: Path to brand logo image
-    - hero_image: Path to hero image
-    - founding_year: Founding year
+    - ref: Global ID (country-brandslug format)
     - description: Short brand description (translatable)
+    - founding_year: Founding year
+    - location_city: City name
+    - location_region: Region/province (optional)
     - sectors: Array of sector slugs
     - markets: Array of market slugs
     - attributes: Array of attribute slugs
-    - signals: Array of signal slugs
-    - featured: Boolean flag for featured status
-    - featured_level: Numeric level of feature status (0=basic, 1=list, 2=featured)
-    - ref: Global ID (country-brandslug format)
+    - signals: Array of signal slugs (optional)
 
   Dependencies:
   - Requires page.lang to be set for proper URL construction
@@ -27,33 +25,23 @@
   - site.data.dimensions for taxonomy translations
 {% endcomment %}
 
-<article class="hero-brand-card {% if brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
+<article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">
     {% if brand.hero_image %}
-      {% include components/images/brand-image.html
-         brand=brand.ref
-         purpose="hero"
-         image="main"
-         ext="jpg"
-         sizes="(max-width: 600px) 100vw, 800px"
-         alt=brand.title
-         class="hero-brand-card__img" %}
+      <img src="{{ brand.hero_image }}"
+           alt="{{ brand.title }} hero image"
+           class="hero-brand-card__img">
     {% else %}
       <div class="hero-brand-card__placeholder">
-        <!-- Placeholder for when no hero image is available -->
-        <div class="hero-brand-card__placeholder-icon">🏢</div>
+        <div class="hero-brand-card__placeholder-icon">🏙️</div>
       </div>
     {% endif %}
 
     <div class="hero-brand-card__logo">
       {% if brand.logo %}
-        {% include components/images/brand-image.html
-           brand=brand.ref
-           purpose="logo"
-           image="color"
-           ext="png"
-           alt=brand.title
-           class="hero-brand-card__logo-img" %}
+        <img src="{{ brand.logo }}"
+             alt="{{ brand.title }} logo"
+             class="hero-brand-card__logo-img">
       {% else %}
         <div class="hero-brand-card__logo-placeholder">
           {{ brand.title | slice: 0, 1 | upcase }}
@@ -68,7 +56,7 @@
     <div class="hero-brand-card__meta">
       {% if brand.founding_year %}
       <div class="hero-brand-card__founding-year">
-        {{ site.data.translations[page.lang].brand.founding_year }} {{ brand.founding_year }}
+        {{ site.data.translations[page.lang].brand.founding_year | default: "Founded" }} {{ brand.founding_year }}
       </div>
       {% endif %}
 
@@ -85,7 +73,7 @@
     <div class="hero-brand-card__taxonomy">
       {% if brand.sectors %}
       <div class="hero-brand-card__taxonomy-section">
-        <h3 class="hero-brand-card__taxonomy-title">{{ site.data.translations[page.lang].tags.sectors }}</h3>
+        <h3 class="hero-brand-card__taxonomy-title">{{ site.data.translations[page.lang].tags.sectors | default: "Sectors" }}</h3>
         <div class="hero-brand-card__sectors">
           {% for sector in brand.sectors %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
@@ -99,7 +87,7 @@
 
       {% if brand.attributes %}
       <div class="hero-brand-card__taxonomy-section">
-        <h3 class="hero-brand-card__taxonomy-title">{{ site.data.translations[page.lang].tags.attributes }}</h3>
+        <h3 class="hero-brand-card__taxonomy-title">{{ site.data.translations[page.lang].tags.attributes | default: "Attributes" }}</h3>
         <div class="hero-brand-card__attributes">
           {% for attribute in brand.attributes %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
@@ -114,6 +102,7 @@
   </div>
 
   <div class="hero-brand-card__footer">
+    {% if brand.signals and brand.signals.size > 0 %}
     <div class="hero-brand-card__signals">
       {% for signal in brand.signals %}
         <div class="hero-brand-card__signal">
@@ -123,9 +112,13 @@
         </div>
       {% endfor %}
     </div>
+    {% endif %}
 
-    <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand.ref | split: '-' | last }}/" class="hero-brand-card__link btn btn--primary">
-      {{ site.data.translations[page.lang].buttons.view_profile }}
-    </a>
+    {% if brand.ref %}
+      {% assign brand_slug = brand.ref | split: "-" | last %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="hero-brand-card__link btn btn--primary">
+        {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
+      </a>
+    {% endif %}
   </div>
 </article>

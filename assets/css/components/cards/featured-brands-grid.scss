@@ -1,0 +1,25 @@
+/* Grid layout for featured brands */
+.featured-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
+  width: 100%;
+}
+
+/* Make hero cards span 2 columns on larger screens */
+@media (min-width: 992px) {
+  .featured-brands-grid .hero-brand-card {
+    grid-column: span 2;
+  }
+}
+
+/* Add special styling for mixed mode */
+.featured-brands-section .hero-brand-card {
+  margin-bottom: var(--space-8);
+}
+
+/* Ensure consistent height for cards in grid view */
+.featured-brands-grid .brand-card {
+  height: 340px;
+}
