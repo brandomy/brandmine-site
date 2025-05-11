@@ -3,7 +3,7 @@
 layout: brand
 ref: xx-brandslug  # Global ID (country-brandslug format)
 title: "Brand Name"  # Display name, fallback if JSON lookup fails
-description: "Brief brand description (1-2 sentences)." 
+description: "Brief brand description (1-2 sentences)."
 slogan: "Brand slogan or tagline"
 lang: en
 permalink: /en/brands/xx-brandslug/  # Simplified permalink without country code
@@ -22,14 +22,14 @@ signals: []  # Optional: Business signals from taxonomy
 
 # Display Settings
 featured: false
-featured_level: 0  # 0=basic listing, 1=map marker, 2=full profile
+featured_level: 0  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lat: 0.0  # Latitude coordinate
-location_lng: 0.0  # Longitude coordinate  
+location_lng: 0.0  # Longitude coordinate
 location_city: ""  # City name (translatable)
 location_region: ""  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/xx-brandslug/logo-color.png"

@@ -3,7 +3,7 @@
 layout: brand
 ref: ru-taiga-spirits  # Global ID (country-brandslug format)
 title: "Тайга Спиритс"  # Display name, fallback if JSON lookup fails
-description: "Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов." 
+description: "Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов."
 slogan: "Дух Дикой Природы"
 lang: ru
 permalink: /ru/brands/ru-taiga-spirits/  # Simplified permalink without country code
@@ -22,14 +22,14 @@ signals: ["export-ready"]  # Optional: Business signals from taxonomy
 
 # Display Settings
 featured: true
-featured_level: 2  # 0=basic listing, 1=map marker, 2=full profile
+featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lat: 51.8561  # Latitude coordinate
-location_lng: 104.8625  # Longitude coordinate  
+location_lng: 104.8625  # Longitude coordinate
 location_city: "Листвянка"  # City name (translatable)
 location_region: "Иркутская область"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/ru-taiga-spirits/logo-color.png"

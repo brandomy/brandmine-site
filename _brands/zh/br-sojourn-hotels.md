@@ -3,7 +3,7 @@
 layout: brand
 ref: br-sojourn-hotels  # Global ID (country-brandslug format)
 title: "索茹精品酒店"  # Display name, fallback if JSON lookup fails
-description: "一系列精致的精品酒店，通过可持续奢华和真实的当地体验，展示巴西多样化的景观。" 
+description: "一系列精致的精品酒店，通过可持续奢华和真实的当地体验，展示巴西多样化的景观。"
 slogan: "亲密体验巴西"
 lang: zh
 permalink: /zh/brands/br-sojourn-hotels/  # Simplified permalink without country code
@@ -22,14 +22,14 @@ signals: ["franchise-ready"]  # Optional: Business signals from taxonomy
 
 # Display Settings
 featured: true
-featured_level: 2  # 0=basic listing, 1=map marker, 2=full profile
+featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lat: -22.9068  # Latitude coordinate
-location_lng: -43.1729  # Longitude coordinate  
+location_lng: -43.1729  # Longitude coordinate
 location_city: "里约热内卢"  # City name (translatable)
 location_region: "多个地区"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code 
+location_country: "br"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/br-sojourn-hotels/logo-color.png"

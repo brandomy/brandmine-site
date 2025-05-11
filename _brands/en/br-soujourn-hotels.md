@@ -3,7 +3,7 @@
 layout: brand
 ref: br-sojourn-hotels  # Global ID (country-brandslug format)
 title: "Sojourn Boutique Hotels"  # Display name, fallback if JSON lookup fails
-description: "A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences." 
+description: "A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences."
 slogan: "Experience Brazil, Intimately"
 lang: en
 permalink: /en/brands/br-sojourn-hotels/  # Simplified permalink without country code
@@ -22,14 +22,14 @@ signals: ["franchise-ready"]  # Optional: Business signals from taxonomy
 
 # Display Settings
 featured: true
-featured_level: 2  # 0=basic listing, 1=map marker, 2=full profile
+featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lat: -22.9068  # Latitude coordinate
-location_lng: -43.1729  # Longitude coordinate  
+location_lng: -43.1729  # Longitude coordinate
 location_city: "Rio de Janeiro"  # City name (translatable)
 location_region: "Multiple regions"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code 
+location_country: "br"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/br-sojourn-hotels/logo-color.png"

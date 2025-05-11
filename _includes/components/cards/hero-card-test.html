@@ -1,0 +1,51 @@
+<div class="panel panel--white">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Hero Brand Card Test</h2>
+    <p class="panel__lead-text">Testing the hero brand card component with a single brand</p>
+
+    <div class="hero-card-test-container" style="max-width: 800px; margin: 0 auto;">
+      {% assign test_brand = site.brands | where: "lang", page.lang | where: "ref", "ru-taiga-spirits" | first %}
+      {% if test_brand %}
+        <h3>Using a real brand:</h3>
+        {% include components/cards/hero-brand-card.html brand=test_brand %}
+      {% else %}
+        <h3>Using a mock brand:</h3>
+        {% assign mock_brand = site.data.fallback[page.lang].teatime %}
+        {% if mock_brand %}
+          {% include components/cards/hero-brand-card.html brand=mock_brand %}
+        {% else %}
+          <div class="mock-brand-data">
+            <p>No test brand found. Creating a mock brand object:</p>
+            {% capture mock_json %}
+            {
+              "title": "Test Brand",
+              "ref": "ru-test-brand",
+              "description": "This is a test brand description to verify that the hero card component works correctly.",
+              "founding_year": "2020",
+              "location_city": "Test City",
+              "sectors": ["artisanal-spirits"],
+              "markets": ["russia"],
+              "attributes": ["founder-led"],
+              "signals": ["export-ready"],
+              "featured": true,
+              "featured_level": 2
+            }
+            {% endcapture %}
+            {% assign mock_brand = mock_json | jsonify | json_parse %}
+            {% include components/cards/hero-brand-card.html brand=mock_brand %}
+          </div>
+        {% endif %}
+      {% endif %}
+
+      <div style="margin-top: 3rem;">
+        <h3>Component details:</h3>
+        <ul style="text-align: left;">
+          <li>Design: The hero card should display a full-width image at the top</li>
+          <li>Logo: The brand logo should appear overlapping the image and content area</li>
+          <li>Content: Description should appear in the body with tags below</li>
+          <li>Dimensions: The card should have appropriate responsive sizing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

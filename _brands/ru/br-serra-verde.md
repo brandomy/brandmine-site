@@ -3,7 +3,7 @@
 layout: brand
 ref: br-serra-verde  # Global ID (country-brandslug format)
 title: "Серра Верде Органикс"  # Display name, fallback if JSON lookup fails
-description: "Семейный производитель органических консервов, меда и элитного кофе из региона Атлантического леса Бразилии." 
+description: "Семейный производитель органических консервов, меда и элитного кофе из региона Атлантического леса Бразилии."
 lang: ru
 permalink: /ru/brands/br-serra-verde/  # Simplified permalink without country code
 
@@ -21,14 +21,14 @@ signals: []  # Optional signals
 
 # Display Settings
 featured: false
-featured_level: 0  # 0=basic listing, 1=map marker, 2=full profile
+featured_level: 0  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lng: -45.8558  # Longitude coordinate
-location_lat: -22.6569  # Latitude coordinate  
+location_lat: -22.6569  # Latitude coordinate
 location_city: "Гонсалвес"  # City name (translatable)
 location_region: "Минас-Жерайс"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code 
+location_country: "br"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/br-serra-verde/logo-color.png"

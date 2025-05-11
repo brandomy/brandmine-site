@@ -21,14 +21,14 @@ signals: ["export-ready"]  # Optional signals
 
 # Display Options
 featured: true
-featured_level: 2  # 0=basic, 1=map marker, 2=full profile
+featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location - Flat structure for Airtable integration
 location_lng: 37.6173  # Longitude coordinate
 location_lat: 55.7558  # Latitude coordinate
 location_city: "Москва"  # trx
 location_region: "Московская область"  # trx (optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Images (paths follow the global ID pattern)
 logo: "/assets/images/brands/ru-teatime/logo-color.png"

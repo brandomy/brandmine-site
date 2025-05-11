@@ -3,7 +3,7 @@
 layout: brand
 ref: br-serra-verde  # Global ID (country-brandslug format)
 title: "塞拉维德有机"  # Display name, fallback if JSON lookup fails
-description: "家族经营的有机食品生产商，专注于巴西大西洋森林地区的果酱、蜂蜜和特色咖啡。" 
+description: "家族经营的有机食品生产商，专注于巴西大西洋森林地区的果酱、蜂蜜和特色咖啡。"
 lang: zh
 permalink: /zh/brands/br-serra-verde/  # Simplified permalink without country code
 
@@ -21,14 +21,14 @@ signals: []  # Optional signals
 
 # Display Settings
 featured: false
-featured_level: 0  # 0=basic listing, 1=map marker, 2=full profile
+featured_level: 0  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lng: -45.8558  # Longitude coordinate
-location_lat: -22.6569  # Latitude coordinate  
+location_lat: -22.6569  # Latitude coordinate
 location_city: "贡萨尔维斯"  # City name (translatable)
 location_region: "米纳斯吉拉斯州"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code 
+location_country: "br"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/br-serra-verde/logo-color.png"

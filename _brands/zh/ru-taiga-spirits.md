@@ -3,7 +3,7 @@
 layout: brand
 ref: ru-taiga-spirits  # Global ID (country-brandslug format)
 title: "泰加烈酒"  # Display name, fallback if JSON lookup fails
-description: "手工酿酒厂用古老的西伯利亚配方和野生采集的原料，创造卓越的小批量伏特加和植物精酒。" 
+description: "手工酿酒厂用古老的西伯利亚配方和野生采集的原料，创造卓越的小批量伏特加和植物精酒。"
 slogan: "荒野之魂"
 lang: zh
 permalink: /zh/brands/ru-taiga-spirits/  # Simplified permalink without country code
@@ -22,14 +22,14 @@ signals: ["export-ready"]  # Optional: Business signals from taxonomy
 
 # Display Settings
 featured: true
-featured_level: 2  # 0=basic listing, 1=map marker, 2=full profile
+featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lat: 51.8561  # Latitude coordinate
-location_lng: 104.8625  # Longitude coordinate  
+location_lng: 104.8625  # Longitude coordinate
 location_city: "利斯特维扬卡"  # City name (translatable)
 location_region: "伊尔库茨克州"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/ru-taiga-spirits/logo-color.png"
