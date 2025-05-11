@@ -11,6 +11,23 @@
 
 # Author: Randal Eastman
 
+# USAGE EXAMPLES:
+#
+# 1. Process all image categories:
+#    ./_scripts/process_site_images.sh
+#
+# 2. Process only specific categories:
+#    ./_scripts/process_site_images.sh brands sectors
+#
+# 3. Force regeneration of images even if they exist:
+#    ./_scripts/process_site_images.sh --force
+#
+# 4. Process specific categories with forced regeneration:
+#    ./_scripts/process_site_images.sh brands sectors --force
+#
+# NOTE: Categories in this script are top-level directories under assets/images:
+#       brands, insights, attributes, markets, markets-sectors, sectors, signals, pages, site
+
 # Check if ImageMagick's `convert` is available
 command -v convert >/dev/null 2>&1 || {
   echo >&2 "ImageMagick is required but not installed. Aborting."

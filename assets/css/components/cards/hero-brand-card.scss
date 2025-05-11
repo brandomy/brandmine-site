@@ -1,0 +1,273 @@
+/* ==========================================================================
+   Hero Brand Card Component
+   ==========================================================================
+   Styling for larger, hero-style brand cards with full-width hero images
+   and more detailed information display.
+
+   Used for featured brand spotlights, detailed brand listings,
+   and anywhere a more prominent brand display is needed.
+*/
+
+/* --------------------------------------------------------------------------
+   1. CARD STRUCTURE
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card {
+  /* Base structure */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  /* Visual styling */
+  background-color: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+
+  /* Animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --------------------------------------------------------------------------
+   2. IMAGE AREA
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: var(--neutral-100);
+  overflow: hidden;
+}
+
+.hero-brand-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hero-brand-card:hover .hero-brand-card__img {
+  transform: scale(1.05);
+}
+
+.hero-brand-card__logo {
+  position: absolute;
+  bottom: -30px;
+  right: var(--space-6);
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-md);
+  background-color: white;
+  padding: var(--space-2);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.hero-brand-card__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 70px;
+  max-height: 70px;
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTENT AREA
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-brand-card__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0 0 var(--space-2) 0;
+  color: var(--neutral-900);
+  padding-right: 100px; /* Space for logo */
+}
+
+.hero-brand-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  color: var(--neutral-600);
+  font-size: var(--text-sm);
+}
+
+.hero-brand-card__founding-year,
+.hero-brand-card__location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.hero-brand-card__description {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   4. TAXONOMY SECTIONS
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__taxonomy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.hero-brand-card__taxonomy-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-800);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.hero-brand-card__sectors,
+.hero-brand-card__attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   5. FOOTER AREA
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__footer {
+  padding: var(--space-6);
+  border-top: 1px solid var(--neutral-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-brand-card__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.hero-brand-card__link {
+  font-weight: var(--font-semibold);
+}
+
+/* --------------------------------------------------------------------------
+   6. VARIANTS
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card--featured {
+  border-left: var(--border-width-thick) solid var(--primary-500);
+}
+
+/* --------------------------------------------------------------------------
+   7. GENERAL TAG STYLING
+   -------------------------------------------------------------------------- */
+
+.brand-tag {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.brand-tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border: 1px solid var(--olive-200);
+}
+
+.brand-tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
+}
+
+.brand-tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border: 1px solid var(--secondary-200);
+}
+
+.brand-tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .hero-brand-card__image {
+    height: 200px;
+  }
+
+  .hero-brand-card__logo {
+    width: 70px;
+    height: 70px;
+    bottom: -20px;
+    right: var(--space-4);
+    padding: var(--space-1);
+  }
+
+  .hero-brand-card__logo-img {
+    max-width: 55px;
+    max-height: 55px;
+  }
+
+  .hero-brand-card__body {
+    padding: var(--space-4);
+  }
+
+  .hero-brand-card__title {
+    font-size: var(--text-xl);
+    padding-right: 60px;
+  }
+
+  .hero-brand-card__description {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-brand-card__taxonomy {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .hero-brand-card__footer {
+    padding: var(--space-4);
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+}

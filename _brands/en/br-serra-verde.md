@@ -3,7 +3,7 @@
 layout: brand
 ref: br-serra-verde  # Global ID (country-brandslug format)
 title: "Serra Verde Organics"  # Display name, fallback if JSON lookup fails
-description: "Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region." 
+description: "Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region."
 lang: en
 permalink: /en/brands/br-serra-verde/  # Simplified permalink without country code
 
@@ -20,15 +20,15 @@ attributes: ["founder-led", "sustainability-pioneer"]  # Optional attributes
 signals: []  # Optional signals
 
 # Display Settings
-featured: false
+featured: true
 featured_level: 0  # 0=basic listing, 1=map marker, 2=full profile
 
 # Location (flat structure for easier data handling)
 location_lng: -45.8558  # Longitude coordinate
-location_lat: -22.6569  # Latitude coordinate  
+location_lat: -22.6569  # Latitude coordinate
 location_city: "Gonçalves"  # City name (translatable)
 location_region: "Minas Gerais"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code 
+location_country: "br"  # ISO country code
 
 # Image Paths (follow global ID pattern)
 logo: "/assets/images/brands/br-serra-verde/logo-color.png"

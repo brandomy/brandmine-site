@@ -1,30 +1,32 @@
-<!-- featured-brands.html component placeholder -->
 {% comment %}
-  Component: home/featured-brands.html
+  Component: pages/home/featured-brands.html
 
-  Purpose: Displays a carousel of featured brands on the homepage
+  Purpose: Displays a carousel of featured brands on the homepage using standard brand cards.
 
   Parameters:
     limit (optional): Number of brands to display, defaults to all featured brands
     carousel_class (optional): Additional CSS class for the carousel container
+    lead_text (optional): Custom lead text to display above the carousel
+    cta_text (optional): Custom text for the CTA button
 
   Dependencies:
-    - CSS: components/brand-card.css, components/featured-brand.css
-    - JS: home/carousels.js (to be extracted)
+    - CSS: components/cards/brand-card.css, pages/home/featured-brands.scss
+    - JS: pages/home/carousels.js
+    - Includes: components/cards/brand-card.html
 
   Usage:
-  {% include home/featured-brands.html %}
-  {% include home/featured-brands.html limit=4 %}
-  {% include home/featured-brands.html limit=6 carousel_class="large-carousel" %}
+  {% include pages/home/featured-brands.html %}
+  {% include pages/home/featured-brands.html limit=4 %}
+  {% include pages/home/featured-brands.html limit=6 carousel_class="large-carousel" %}
 {% endcomment %}
 
 {% assign limit = include.limit | default: 10 %}
 {% assign carousel_class = include.carousel_class | default: "" %}
 
-<div class="panel panel--primary-soft">
+<div class="panel panel--white featured-brands-section">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands }}</h2>
-    <p class="panel__lead-text">{{ include.lead_text | default: "Discover hand-selected brands with compelling narratives and global potential" }}</p>
+    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands.title | default: "Featured Brands" }}</h2>
+    <p class="panel__lead-text">{{ include.lead_text | default: site.data.translations[page.lang].home.featured_brands.subtitle | default: "Discover hand-selected brands with compelling narratives and global potential" }}</p>
 
     <div class="featured-brands-carousel {{ carousel_class }}">
       {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: limit %}
@@ -34,8 +36,12 @@
         {% endfor %}
       {% else %}
         <!-- Fallback to language-specific example if no featured brands are available -->
-        {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
-        {% include components/cards/brand-card.html brand=fallback_brand %}
+        {% if site.data.fallback[page.lang].teatime %}
+          {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
+          {% include components/cards/brand-card.html brand=fallback_brand %}
+        {% else %}
+          <p class="no-brands-message">{{ site.data.translations[page.lang].home.featured_brands.no_brands | default: "No featured brands available yet." }}</p>
+        {% endif %}
       {% endif %}
     </div>
 
@@ -48,7 +54,7 @@
 
     <div class="more-brands">
       <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="featured-brands">
-        {{ include.cta_text | default: site.data.translations[page.lang].buttons.all_brands | default: "Explore All Brands" }}
+        {{ include.cta_text | default: site.data.translations[page.lang].home.featured_brands.cta | default: "Explore All Brands" }}
       </a>
     </div>
   </div>

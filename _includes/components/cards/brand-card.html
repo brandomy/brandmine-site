@@ -1,13 +1,14 @@
 {% comment %}
   Include Name: components/cards/brand-card.html
-  
+
   Purpose: Displays a brand card component that shows essential brand information in a
-  structured format. Updated to match the new standardized brand template structure.
-  
+  structured format. Refined to improve logo display and layout.
+
   Parameters:
   - brand: Brand object with complete details (required)
     Expected properties from new template structure:
     - title: Brand name (translatable)
+    - ref: Global ID (country-brandslug format)
     - logo: Path to brand logo image
     - founding_year: Founding year
     - description: Short brand description (translatable)
@@ -15,11 +16,10 @@
     - markets: Array of market slugs
     - attributes: Array of attribute slugs
     - signals: Array of signal slugs
-    - url: URL to brand detail page
     - featured: Boolean flag for featured status
     - featured_level: Numeric level of feature status (0=basic, 1=list, 2=featured)
-    - country_code: Two-letter country code
-  
+    - slug: Brand slug (without country code)
+
   Dependencies:
   - Requires page.lang to be set for proper URL construction
   - CSS: components/cards/brand-card.css for styling
@@ -27,94 +27,74 @@
   - site.data.dimensions for taxonomy translations
 {% endcomment %}
 
-<article class="brand-card {% if brand.featured_level > 1 %}brand-card--featured{% endif %}">
+<article class="brand-card {% if brand.featured or brand.featured_level > 1 %}brand-card--featured{% endif %}">
   <header class="brand-card__header">
     <div class="brand-card__logo">
-      {% if brand.logo and brand.country_code %}
-        {% include components/images/brand-image.html 
-           country=brand.country_code
-           brand=brand.slug 
-           image="color"
-           purpose="logo"
-           ext="png"
-           alt=brand.title %}
+      {% if brand.ref %}
+        {% assign brand_slug = brand.ref %}
+        <img src="{{ site.baseurl }}/assets/images/brands/{{ brand_slug }}/logo-color-400w.png"
+             alt="{{ brand.title }} logo"
+             class="brand-card__logo-img">
+      {% else %}
+        <div class="brand-card__logo-placeholder">
+          {{ brand.title | slice: 0, 1 | upcase }}
+        </div>
       {% endif %}
     </div>
-    <h2 class="brand-card__title">{{ brand.title }}</h2>
-    {% if brand.founding_year %}
-    <p class="brand-card__founding-year">{{ site.data.translations[page.lang].brand.founding_year }} {{ brand.founding_year }}</p>
-    {% endif %}
+    <div class="brand-card__header-text">
+      <h2 class="brand-card__title">{{ brand.title }}</h2>
+      {% if brand.founding_year %}
+        <p class="brand-card__founding-year">{{ site.data.translations[page.lang].brand.founding_year }} {{ brand.founding_year }}</p>
+      {% endif %}
+    </div>
   </header>
 
   <div class="brand-card__body">
     <p class="brand-card__description">{{ brand.description }}</p>
 
-    <div class="brand-card__taxonomy">
+    <div class="brand-card__tags">
       {% if brand.sectors %}
-      <div class="brand-card__sectors">
-        {% for sector in brand.sectors limit:3 %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/" 
+        {% for sector in brand.sectors limit:2 %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
              class="brand-card__tag brand-card__tag--sector">
             {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
           </a>
         {% endfor %}
-        {% if brand.sectors.size > 3 %}
-          <span class="brand-card__more-tag">+{{ brand.sectors.size | minus:3 }}</span>
-        {% endif %}
-      </div>
       {% endif %}
-      
+
       {% if brand.markets %}
-      <div class="brand-card__markets">
-        {% for market in brand.markets limit:2 %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/" 
+        {% for market in brand.markets limit:1 %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
              class="brand-card__tag brand-card__tag--market">
             {{ site.data.dimensions[page.lang].markets[market] | default: market }}
           </a>
         {% endfor %}
-      </div>
       {% endif %}
-      
+
       {% if brand.attributes %}
-      <div class="brand-card__attributes">
-        {% for attribute in brand.attributes limit:2 %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/" 
+        {% for attribute in brand.attributes limit:1 %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
              class="brand-card__tag brand-card__tag--attribute">
             {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
           </a>
         {% endfor %}
-      </div>
       {% endif %}
     </div>
   </div>
 
   <footer class="brand-card__footer">
-    {% if brand.signals and brand.featured_level > 0 %}
-    <div class="brand-card__signals">
-      {% for signal in brand.signals limit:2 %}
-        <div class="brand-card__signal-indicator">
-          <span class="brand-card__tag brand-card__tag--signal">
-            {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
-          </span>
-        </div>
-      {% endfor %}
-    </div>
+    {% if brand.slug %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand.slug }}/" class="brand-card__link">
+        {{ site.data.translations[page.lang].buttons.view_profile }}
+      </a>
+    {% else %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand.ref | split: '-' | last }}/" class="brand-card__link">
+        {{ site.data.translations[page.lang].buttons.view_profile }}
+      </a>
     {% endif %}
 
-    <a href="{{ brand.url }}" class="brand-card__link">
-      {{ site.data.translations[page.lang].buttons.view_profile }}
-    </a>
-
-    {% if brand.featured_level > 1 %}
-      <div class="brand-card__featured-indicator">
-        <span class="brand-card__featured-icon">★</span>
-      </div>
-    {% endif %}
-    
-    {% if brand.founder.founder_led %}
-      <div class="brand-card__founder-led-badge" title="{{ site.data.translations[page.lang].brand.founder_led }}">
-        <span class="brand-card__founder-led-icon">F</span>
-      </div>
+    {% if brand.founders.size > 0 or brand.founder.founder_led %}
+      <div class="brand-card__founder-led" title="{{ site.data.translations[page.lang].brand.founder_led }}">F</div>
     {% endif %}
   </footer>
 </article>
