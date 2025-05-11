@@ -1,0 +1,76 @@
+/* --------------------------------------------------------------------------
+   5. FEATURED BRANDS SECTION
+   -------------------------------------------------------------------------- */
+
+.featured-brands-carousel {
+  display: flex;
+  flex-wrap: nowrap; /* No wrapping for horizontal scroll */
+  gap: var(--space-6);
+  overflow-x: auto;
+  padding: var(--space-4) 0;
+  margin: var(--space-6) 0;
+  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-300) var(--primary-50);
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  position: relative; /* Added for scroll indicator positioning */
+}
+
+/* Visual indicator that the carousel is scrollable */
+.featured-brands-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.featured-brands-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--neutral-300);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin: 0 var(--space-1);
+}
+
+.featured-brands-nav-dot:hover {
+  transform: scale(1.2);
+  background-color: var(--primary-300);
+}
+
+.featured-brands-nav-dot.active {
+  background-color: var(--primary-500);
+  transform: scale(1.2);
+}
+
+/* Brand card styles specific to the featured brands carousel */
+.featured-brands-carousel .brand-card {
+  flex: 0 0 auto; /* Don't grow or shrink, maintain auto width */
+  width: 300px; /* Fixed width for large screens */
+  max-width: 80vw; /* On small screens, cap at 80% of viewport width */
+  height: 340px; /* Reduced height for better aesthetics */
+  margin-bottom: var(--space-2); /* Add space between cards and bottom of container */
+}
+
+.featured-brands-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.featured-brands-carousel::-webkit-scrollbar-track {
+  background: var(--neutral-200);
+  border-radius: var(--radius-sm);
+}
+
+.featured-brands-carousel::-webkit-scrollbar-thumb {
+  background-color: var(--primary-300);
+  border-radius: var(--radius-sm);
+}
+
+.more-brands {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) 0;
+}

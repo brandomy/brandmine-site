@@ -1,9 +1,9 @@
 {% comment %}
   Include Name: collections/dimensions/discovery-dimensions-grid.html
-  
+
   Purpose: Displays a responsive grid of the four taxonomy dimensions (sectors, markets, attributes, signals)
   with color-coded cards, example tags, and consistent styling across the Brandmine platform.
-  
+
   Parameters:
   - title: Optional title override (default: comes from translations)
   - description: Optional description override (default: comes from translations)
@@ -13,7 +13,7 @@
   - cta_url: URL for CTA button (optional, default: discover page)
   - cta_text: Text for CTA button (optional, default: from translations)
   - limit: Number of example tags to show per dimension (optional, default: 3)
-  
+
   Dependencies:
   - Data files: site.data.sectors, site.data.markets, site.data.attributes, site.data.signals
   - Translation keys in site.data.translations[page.lang]
@@ -21,26 +21,26 @@
   - Include: components/icons/icon.html (for dimension icons)
   - Page language must be set (page.lang)
   - Tag styling from components/tags.css
-  
+
   Example Usage:
   Basic usage (all defaults):
   {% include collections/dimensions/discovery-dimensions-grid.html %}
-  
+
   Custom layout with two columns:
-  {% include collections/dimensions/discovery-dimensions-grid.html 
-     columns=2 
+  {% include collections/dimensions/discovery-dimensions-grid.html
+     columns=2
      limit=2 %}
-  
+
   Alternative CTA and no examples:
-  {% include collections/dimensions/discovery-dimensions-grid.html 
-     limit=0 
-     cta_text="View Dimension Options" 
+  {% include collections/dimensions/discovery-dimensions-grid.html
+     limit=0
+     cta_text="View Dimension Options"
      cta_url="/en/discover/sectors/" %}
-  
+
   Without CTA button:
-  {% include collections/dimensions/discovery-dimensions-grid.html 
+  {% include collections/dimensions/discovery-dimensions-grid.html
      show_cta=false %}
-  
+
   Notes:
   - Automatically displays color-coded cards for each taxonomy dimension
   - Responsive grid layout adjusts from 1 column on mobile to specified columns on larger screens
@@ -56,7 +56,7 @@
   <div class="discovery-dimension discovery-dimension--sectors">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html type="sector" name="sector-default" size="md" %}
+        {% include components/icons/dimension-icon.html type="sector" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].dimensions.sectors }}</h3>
     </div>
@@ -75,12 +75,12 @@
       {{ site.data.translations[page.lang].discover.view_all_sectors }}
     </a>
   </div>
-  
+
   <!-- Markets Dimension Card -->
   <div class="discovery-dimension discovery-dimension--markets">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html type="market" name="market-default" size="md" %}
+        {% include components/icons/dimension-icon.html type="market" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].dimensions.markets }}</h3>
     </div>
@@ -99,12 +99,12 @@
       {{ site.data.translations[page.lang].discover.view_all_markets }}
     </a>
   </div>
-  
+
   <!-- Attributes Dimension Card -->
   <div class="discovery-dimension discovery-dimension--attributes">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html type="attribute" name="attribute-default" size="md" %}
+        {% include components/icons/dimension-icon.html type="attribute" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].dimensions.attributes }}</h3>
     </div>
@@ -123,12 +123,12 @@
       {{ site.data.translations[page.lang].discover.view_all_attributes }}
     </a>
   </div>
-  
+
   <!-- Signals Dimension Card -->
   <div class="discovery-dimension discovery-dimension--signals">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html type="signal" name="signal-default" size="md" %}
+        {% include components/icons/dimension-icon.html type="signal" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].dimensions.signals }}</h3>
     </div>
