@@ -32,13 +32,21 @@ ref: featured-hero-test
       <p>Enhanced cards with more details:</p>
 
       <div class="featured-brands-grid">
-        {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | where: "featured_level", 1 %}
+       {% assign all_featured_brands = site.brands | where: "lang", page.lang | where: "featured", true %}
+        {% assign featured_brands = "" | split: "" %}
+
+        {% for brand in all_featured_brands %}
+            {% if brand.featured_level >= 1 %}
+                {% assign featured_brands = featured_brands | push: brand %}
+            {% endif %}
+        {% endfor %}
+
         {% if featured_brands.size > 0 %}
           {% for brand in featured_brands limit:3 %}
             {% include components/cards/featured-brand-card.html brand=brand %}
           {% endfor %}
         {% else %}
-          <p>No featured brands found (featured_level = 1)</p>
+          <p>No featured brands found (featured_level >= 1)</p>
         {% endif %}
       </div>
     </div>

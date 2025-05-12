@@ -120,18 +120,20 @@
     {% if brand.signals and brand.signals.size > 0 %}
     <div class="hero-brand-card__signals">
       {% for signal in brand.signals %}
-        <span class="brand-tag brand-tag--signal">
+        <!-- Change from span to a (link) to match other dimensions -->
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
+          class="brand-tag brand-tag--signal">
           {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
-        </span>
+        </a>
       {% endfor %}
     </div>
     {% endif %}
 
     {% if brand.ref %}
-      {% assign brand_slug = brand.ref | split: "-" | last %}
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="hero-brand-card__link btn btn--primary btn--sm">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand.ref }}/" class="hero-brand-card__link btn btn--primary">
         {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
       </a>
     {% endif %}
+  
   </div>
 </article>

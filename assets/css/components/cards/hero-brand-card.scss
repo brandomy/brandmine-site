@@ -53,12 +53,12 @@
 /* Logo overlay */
 .hero-brand-card__logo {
   position: absolute;
-  bottom: -30px;
+  bottom: 10px;
   right: var(--space-6);
   width: 90px;
   height: 90px;
   border-radius: var(--radius-md);
-  background-color: white;
+  background-color: var(--neutral-100);
   padding: var(--space-2);
   box-shadow: var(--shadow-md);
   display: flex;
@@ -110,6 +110,8 @@
   margin-bottom: var(--space-4);
   color: var(--neutral-600);
   font-size: var(--text-sm);
+  justify-content: center; /* Add this to center the meta information */
+  text-align: center; /* Add this for text alignment */
 }
 
 .hero-brand-card__founding-year,
@@ -174,8 +176,8 @@
 
 /* Make the View Profile button smaller */
 .hero-brand-card__link.btn--sm {
-  padding: var(--space-2) var(--space-4);
-  font-size: var(--text-sm);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
 }
 
 /* --------------------------------------------------------------------------
@@ -185,7 +187,7 @@
 .brand-tag {
   display: inline-flex;
   padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   text-decoration: none;

@@ -20,7 +20,7 @@ attributes: ["founder-led", "sustainability-pioneer"]  # Optional attributes
 signals: []  # Optional signals
 
 # Display Settings
-featured: true
+featured: false
 featured_level: 0  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
