@@ -60,6 +60,13 @@
    4. RESPONSIVE ADJUSTMENTS
    -------------------------------------------------------------------------- */
 
+@media (max-width: 479px) {
+  .process-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 /* Small screens */
 @media (max-width: 767px) {
   .featured-brands-section .panel__heading-secondary {
@@ -68,5 +75,17 @@
 
   .featured-brands-section .panel__lead-text {
     font-size: var(--text-base);
+  }
+
+  .process-steps {
+    gap: var(--space-6);
+  }
+}
+
+
+
+@media (min-width: 992px) {
+  .process-step {
+    max-width: 350px;
   }
 }
