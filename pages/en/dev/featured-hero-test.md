@@ -35,7 +35,7 @@ ref: featured-hero-test
         {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | where: "featured_level", 1 %}
         {% if featured_brands.size > 0 %}
           {% for brand in featured_brands limit:3 %}
-            {% include components/cards/featured-brand-card.html content=brand content_type="brand" %}
+            {% include components/cards/featured-brand-card.html brand=brand %}
           {% endfor %}
         {% else %}
           <p>No featured brands found (featured_level = 1)</p>
@@ -71,7 +71,7 @@ ref: featured-hero-test
             {% if brand.featured_level >= 2 %}
               {% include components/cards/hero-brand-card.html brand=brand %}
             {% else %}
-              {% include components/cards/featured-brand-card.html content=brand content_type="brand" %}
+              {% include components/cards/featured-brand-card.html brand=brand %}
             {% endif %}
           {% endfor %}
         {% else %}

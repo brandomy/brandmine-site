@@ -1,80 +1,66 @@
-/*
-  Component: Hero Brand Card
-  Purpose: Provides styling for the hero-brand-card component
-           A premium, visually rich card style for featured brands
+/* ==========================================================================
+   Hero Brand Card Component
+   ==========================================================================
+   Premium card styling with hero image, detailed information, and founder portrait
 */
 
+/* --------------------------------------------------------------------------
+   1. CARD STRUCTURE
+   -------------------------------------------------------------------------- */
+
 .hero-brand-card {
-  /* Base structure */
   display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-
-  /* Visual styling */
   background-color: white;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-
-  /* Animation */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-brand-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
 
-.hero-brand-card--featured {
-  border-top: 4px solid var(--primary-500);
-}
+/* --------------------------------------------------------------------------
+   2. IMAGE AREA
+   -------------------------------------------------------------------------- */
 
-/* Hero image styles */
 .hero-brand-card__image {
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: 200px;
+  height: 300px;
   background-color: var(--neutral-100);
-  overflow: visible;
-  padding-bottom: 2rem;
+  overflow: hidden;
 }
 
 .hero-brand-card__img {
   width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-.hero-brand-card__placeholder {
-  width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--neutral-100);
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.hero-brand-card__placeholder-icon {
-  font-size: 3rem;
-  color: var(--neutral-300);
+.hero-brand-card:hover .hero-brand-card__img {
+  transform: scale(1.05);
 }
 
-/* Logo positioning and styling */
+/* Logo overlay */
 .hero-brand-card__logo {
   position: absolute;
-  bottom: -10px;
+  bottom: -30px;
   right: var(--space-6);
   width: 90px;
   height: 90px;
   border-radius: var(--radius-md);
   background-color: white;
   padding: var(--space-2);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,47 +74,32 @@
   object-fit: contain;
 }
 
-.hero-brand-card__logo-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--primary-500);
-  color: white;
-  font-size: 2rem;
-  font-weight: var(--font-bold);
-}
+/* --------------------------------------------------------------------------
+   3. CONTENT AREA
+   -------------------------------------------------------------------------- */
 
-/* Body content styling */
 .hero-brand-card__body {
   padding: var(--space-6);
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+/* Content wrapper for title/description and portrait */
+.hero-brand-card__content-wrapper {
+  display: flex;
   gap: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
-/* Founder portrait styling */
-.hero-brand-card__founder {
-  flex-shrink: 0;
-  width: 120px;
-  margin-left: 1.5rem;
-  margin-top: 0; /* Aligned with the top of the title */
+.hero-brand-card__main-content {
+  flex: 1;
 }
 
-.hero-brand-card__founder-img {
-  width: 100%;
-  height: auto;
-  border-radius: 0.25rem;
-  box-shadow: var(--shadow-sm);
-}
-
+/* Title and metadata */
 .hero-brand-card__title {
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
-  margin-bottom: var(--space-3);
-  font-family: var(--font-heading);
+  margin: 0 0 var(--space-2) 0;
   color: var(--neutral-900);
 }
 
@@ -145,46 +116,50 @@
 .hero-brand-card__location {
   display: flex;
   align-items: center;
-}
-
-.hero-brand-card__location-icon {
-  margin-right: var(--space-1);
-  color: var(--accent-300); /* Light purple/indigo color instead of red */
+  gap: var(--space-1);
 }
 
 .hero-brand-card__description {
-  margin-bottom: var(--space-4);
-  color: var(--neutral-700);
+  font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
+  color: var(--neutral-700);
 }
 
-/* Taxonomy section styling */
+/* Founder portrait with 2:3 ratio */
+.hero-brand-card__founder {
+  flex-shrink: 0;
+  width: 120px;
+  height: 180px;
+}
+
+.hero-brand-card__founder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   4. TAXONOMY SECTIONS
+   -------------------------------------------------------------------------- */
+
 .hero-brand-card__taxonomy {
-  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
-.hero-brand-card__taxonomy-section {
-  margin-bottom: var(--space-2);
-}
-
-.hero-brand-card__taxonomy-title {
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  margin-bottom: var(--space-2);
-  color: var(--neutral-600);
-}
-
-.hero-brand-card__tags,
-.hero-brand-card__sectors,
-.hero-brand-card__attributes {
+.hero-brand-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
 
-/* Footer styling */
+/* --------------------------------------------------------------------------
+   5. FOOTER AREA
+   -------------------------------------------------------------------------- */
+
 .hero-brand-card__footer {
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-6);
   border-top: 1px solid var(--neutral-200);
   display: flex;
   justify-content: space-between;
@@ -193,68 +168,64 @@
 
 .hero-brand-card__signals {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-2);
 }
 
-// .hero-brand-card__link {
-//   flex-shrink: 0;
-//   font-weight: var(--font-medium);
-// }
-
-.hero-brand-card__link {
-  padding: var(--space-2) var(--space-4); /* Reduced from default button padding */
-  font-size: var(--text-base); /* Reduced from default */
-  font-weight: var(--font-semibold);
+/* Make the View Profile button smaller */
+.hero-brand-card__link.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
 }
 
-/* Brand tags styling */
+/* --------------------------------------------------------------------------
+   6. BRAND TAG STYLING
+   -------------------------------------------------------------------------- */
+
 .brand-tag {
   display: inline-flex;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .brand-tag--sector {
   background-color: var(--olive-100);
-  color: var(--olive-900);
-}
-
-.brand-tag--sector:hover {
-  background-color: var(--olive-200);
+  color: var(--olive-800);
+  border: 1px solid var(--olive-200);
 }
 
 .brand-tag--market {
   background-color: var(--sky-100);
-  color: var(--sky-900);
-}
-
-.brand-tag--market:hover {
-  background-color: var(--sky-200);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
 }
 
 .brand-tag--attribute {
   background-color: var(--secondary-100);
-  color: var(--secondary-900);
-}
-
-.brand-tag--attribute:hover {
-  background-color: var(--secondary-200);
+  color: var(--secondary-800);
+  border: 1px solid var(--secondary-200);
 }
 
 .brand-tag--signal {
   background-color: var(--accent-100);
-  color: var(--accent-900);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
 }
 
-.brand-tag--signal:hover {
-  background-color: var(--accent-200);
-}
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .hero-brand-card__image {
     height: 200px;
   }
@@ -263,30 +234,36 @@
     width: 70px;
     height: 70px;
     bottom: -20px;
+    right: var(--space-4);
   }
 
-  .hero-brand-card__footer {
-    flex-direction: column;
-    gap: var(--space-4);
-    align-items: flex-start;
-  }
-
-  .hero-brand-card__signals {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 480px) {
   .hero-brand-card__body {
     padding: var(--space-4);
   }
 
-  .hero-brand-card__footer {
-    padding: var(--space-4);
+  .hero-brand-card__content-wrapper {
+    flex-direction: column;
   }
 
-  .hero-brand-card__meta {
+  .hero-brand-card__founder {
+    width: 100px;
+    height: 150px;
+    order: -1; /* Move portrait above title on mobile */
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-brand-card__title {
+    font-size: var(--text-xl);
+  }
+
+  .hero-brand-card__description {
+    font-size: var(--text-base);
+  }
+
+  .hero-brand-card__footer {
+    padding: var(--space-4);
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-4);
+    align-items: flex-start;
   }
 }
