@@ -19,8 +19,8 @@
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "lead-capture" %}
-{% assign title = include.title | default: site.data.translations[page.lang].home.stay_updated | default: "Stay Updated on BRICS+ Opportunities" %}
-{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.subscribe_text | default: "Subscribe to receive curated insights about emerging brands and market trends" %}
+{% assign title = include.title | default: site.data.translations[page.lang].home.lead_capture.title | default: "Stay Updated on BRICS+ Opportunities" %}
+{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.lead_capture.subtitle | default: "Subscribe to receive curated insights about emerging brands and market trends" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">

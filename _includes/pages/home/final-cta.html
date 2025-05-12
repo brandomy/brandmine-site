@@ -14,6 +14,7 @@
 
   Dependencies:
     - CSS: components/layout/panels.css
+    - CSS: assets/css/pages/home/final-cta.scss
 
   Usage:
   {% include pages/home/final-cta.html %}
@@ -31,7 +32,7 @@
 {% assign secondary_cta_text = include.secondary_cta_text | default: site.data.translations[page.lang].home.final_cta.cta_secondary | default: "Get Profiled" %}
 {% assign secondary_cta_url = include.secondary_cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/about/#contact-us" %}
 
-<div class="panel panel--cta">
+<div class="panel panel--cta panel--final-cta">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ title }}</h2>
     <p class="panel__lead-text">{{ lead_text }}</p>
