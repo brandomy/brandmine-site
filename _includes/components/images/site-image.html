@@ -50,7 +50,10 @@
 {% assign alt = include.alt %}
 {% assign class = include.class %}
 {% assign ext = include.ext | default: "jpg" %}
-{% assign sizes = include.sizes | default: "(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" %}
+
+{% comment %} For retina displays, divide displayed size by device pixel ratio {% endcomment %}
+{% assign sizes = include.sizes | default: "(max-width: 600px) 133px, (max-width: 1200px) 266px, 400px" %}
+
 {% assign widths = include.widths | default: "400,800,1200" %}
 {% assign widths_array = widths | split: "," %}
 {% assign base_path = "/assets/images/" | append: category | append: "/" %}
