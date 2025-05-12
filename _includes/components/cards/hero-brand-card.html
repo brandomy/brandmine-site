@@ -1,35 +1,29 @@
 {% comment %}
   Include Name: components/cards/hero-brand-card.html
 
-  Purpose: Displays a large hero-style brand card with full-width hero image
-  at the top and more detailed information. Used for premium featured brands.
+  Purpose: Displays an enhanced brand card with hero image for higher-level featured brands (featured_level 2+).
+  This is an expanded version of the standard brand card, showcasing more details and a prominent hero image.
 
   Parameters:
   - brand: Brand object with complete details (required)
-    Expected properties:
-    - title: Brand name (translatable)
-    - ref: Global ID (country-brandslug format)
-    - description: Short brand description (translatable)
-    - founding_year: Founding year
-    - location_city: City name
-    - location_region: Region/province (optional)
-    - sectors: Array of sector slugs
-    - markets: Array of market slugs
-    - attributes: Array of attribute slugs
-    - signals: Array of signal slugs (optional)
-
-  Dependencies:
-  - Requires page.lang to be set for proper URL construction
-  - CSS: components/cards/hero-brand-card.css for styling
-  - site.data.translations for UI labels
-  - site.data.dimensions for taxonomy translations
 {% endcomment %}
+
+{% comment %}Determine hero image name based on brand ref{% endcomment %}
+{% assign hero_image = "storefront" %}
+{% if brand.ref contains "taiga-spirits" %}
+  {% assign hero_image = "distillery" %}
+{% endif %}
 
 <article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">
-    {% if brand.hero_image %}
-      <img src="{{ brand.hero_image }}"
-           alt="{{ brand.title }} hero image"
+    {% if brand.ref %}
+      <!-- Direct image tags with dynamic hero image name based on brand -->
+      <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-800w.jpg"
+           srcset="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-400w.jpg 400w,
+                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-800w.jpg 800w,
+                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-1200w.jpg 1200w"
+           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+           alt="{{ brand.title }}"
            class="hero-brand-card__img">
     {% else %}
       <div class="hero-brand-card__placeholder">
@@ -38,8 +32,9 @@
     {% endif %}
 
     <div class="hero-brand-card__logo">
-      {% if brand.logo %}
-        <img src="{{ brand.logo }}"
+      {% if brand.ref %}
+        <!-- Direct logo image tag -->
+        <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/logo-color-400w.png"
              alt="{{ brand.title }} logo"
              class="hero-brand-card__logo-img">
       {% else %}
@@ -51,53 +46,73 @@
   </div>
 
   <div class="hero-brand-card__body">
-    <h2 class="hero-brand-card__title">{{ brand.title }}</h2>
+    <div class="hero-brand-card__content-wrapper">
+      <div class="hero-brand-card__main-content">
+        <h2 class="hero-brand-card__title">{{ brand.title }}</h2>
 
-    <div class="hero-brand-card__meta">
-      {% if brand.founding_year %}
-      <div class="hero-brand-card__founding-year">
-        {{ site.data.translations[page.lang].brand.founding_year | default: "Founded" }} {{ brand.founding_year }}
+        <div class="hero-brand-card__meta">
+          {% if brand.founding_year %}
+          <div class="hero-brand-card__founding-year">
+            {{ site.data.translations[page.lang].brand.founding_year | default: "Founded" }} {{ brand.founding_year }}
+          </div>
+          {% endif %}
+
+          {% if brand.location_city %}
+          <div class="hero-brand-card__location">
+            <span class="hero-brand-card__location-icon">📍</span>
+            {{ brand.location_city }}{% if brand.location_region %}, {{ brand.location_region }}{% endif %}
+          </div>
+          {% endif %}
+        </div>
+
+        <p class="hero-brand-card__description">{{ brand.description }}</p>
       </div>
-      {% endif %}
 
-      {% if brand.location_city %}
-      <div class="hero-brand-card__location">
-        <span class="hero-brand-card__location-icon">📍</span>
-        {{ brand.location_city }}{% if brand.location_region %}, {{ brand.location_region }}{% endif %}
+      <!-- Founder portrait with 2:3 aspect ratio -->
+      {% if brand.ref %}
+      <div class="hero-brand-card__founder">
+        <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/founder-portrait-400w.jpg"
+             alt="Founder of {{ brand.title }}"
+             class="hero-brand-card__founder-img">
       </div>
       {% endif %}
     </div>
 
-    <p class="hero-brand-card__description">{{ brand.description }}</p>
-
+    <!-- Combined taxonomy in a single row -->
     <div class="hero-brand-card__taxonomy">
-      {% if brand.sectors %}
       <div class="hero-brand-card__taxonomy-section">
-        <h3 class="hero-brand-card__taxonomy-title">{{ site.data.translations[page.lang].tags.sectors | default: "Sectors" }}</h3>
-        <div class="hero-brand-card__sectors">
-          {% for sector in brand.sectors %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
-               class="brand-tag brand-tag--sector">
-              {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
-            </a>
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
+        <div class="hero-brand-card__tags">
+          <!-- Markets first -->
+          {% if brand.markets %}
+            {% for market in brand.markets %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
+                 class="brand-tag brand-tag--market">
+                {{ site.data.dimensions[page.lang].markets[market] | default: market }}
+              </a>
+            {% endfor %}
+          {% endif %}
 
-      {% if brand.attributes %}
-      <div class="hero-brand-card__taxonomy-section">
-        <h3 class="hero-brand-card__taxonomy-title">{{ site.data.translations[page.lang].tags.attributes | default: "Attributes" }}</h3>
-        <div class="hero-brand-card__attributes">
-          {% for attribute in brand.attributes %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
-               class="brand-tag brand-tag--attribute">
-              {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
-            </a>
-          {% endfor %}
+          <!-- Sectors next -->
+          {% if brand.sectors %}
+            {% for sector in brand.sectors %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
+                 class="brand-tag brand-tag--sector">
+                {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+              </a>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Attributes last -->
+          {% if brand.attributes %}
+            {% for attribute in brand.attributes %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
+                 class="brand-tag brand-tag--attribute">
+                {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
+              </a>
+            {% endfor %}
+          {% endif %}
         </div>
       </div>
-      {% endif %}
     </div>
   </div>
 
@@ -105,18 +120,16 @@
     {% if brand.signals and brand.signals.size > 0 %}
     <div class="hero-brand-card__signals">
       {% for signal in brand.signals %}
-        <div class="hero-brand-card__signal">
-          <span class="brand-tag brand-tag--signal">
-            {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
-          </span>
-        </div>
+        <span class="brand-tag brand-tag--signal">
+          {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
+        </span>
       {% endfor %}
     </div>
     {% endif %}
 
     {% if brand.ref %}
       {% assign brand_slug = brand.ref | split: "-" | last %}
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="hero-brand-card__link btn btn--primary">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="hero-brand-card__link btn btn--primary btn--sm">
         {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
       </a>
     {% endif %}

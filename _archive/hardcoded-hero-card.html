@@ -1,0 +1,104 @@
+{% comment %}
+  Special hardcoded hero card implementation with fixed URLs
+{% endcomment %}
+
+<article style="display: flex; flex-direction: column; max-width: 800px; margin: 0 auto; background-color: white; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 4px solid #38B2AC;">
+  <!-- Image section with fixed URLs -->
+  <div style="position: relative; width: 100%; height: 300px; background-color: #f5f5f5;">
+    <!-- Try with hardcoded URL -->
+    <img src="http://127.0.0.1:4000/assets/images/brands/ru-taiga-spirits/hero-distillery-800w.jpg"
+         alt="Taiga Spirits hero image"
+         style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+
+    <div style="position: absolute; bottom: -30px; right: 1.5rem; width: 90px; height: 90px; border-radius: 0.5rem; background-color: white; padding: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <img src="http://127.0.0.1:4000/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+           alt="Taiga Spirits logo"
+           style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+  </div>
+
+  <!-- Body section for brand info -->
+  <div style="padding: 1.5rem; flex-grow: 1;">
+    <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.75rem;">{{ brand.title | default: 'Taiga Spirits' }}</h2>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; color: #666; font-size: 0.875rem;">
+      <div>Founded {{ brand.founding_year | default: '2015' }}</div>
+      <div>📍 {{ brand.location_city | default: 'Novosibirsk' }}{% if brand.location_region %}, {{ brand.location_region }}{% else %}, Siberia{% endif %}</div>
+    </div>
+
+    <p style="margin-bottom: 1rem; line-height: 1.6;">{{ brand.description | default: 'Artisanal distillery crafting premium spirits using traditional Siberian ingredients and methods.' }}</p>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <!-- Sectors -->
+      <div>
+        <h3 style="font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem; color: #666;">{{ site.data.translations[page.lang].tags.sectors | default: 'Sectors' }}</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          {% if brand.sectors and brand.sectors.size > 0 %}
+            {% for sector in brand.sectors %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
+                 style="display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; background-color: #EBF2D2; color: #728445; text-decoration: none;">
+                {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+              </a>
+            {% endfor %}
+          {% else %}
+            <span style="display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; background-color: #EBF2D2; color: #728445;">
+              Artisanal Spirits
+            </span>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h3 style="font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem; color: #666;">{{ site.data.translations[page.lang].tags.attributes | default: 'Attributes' }}</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          {% if brand.attributes and brand.attributes.size > 0 %}
+            {% for attribute in brand.attributes %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
+                 style="display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; background-color: #FFEDD5; color: #C2410C; text-decoration: none;">
+                {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
+              </a>
+            {% endfor %}
+          {% else %}
+            <span style="display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; background-color: #FFEDD5; color: #C2410C;">
+              Founder-Led
+            </span>
+            <span style="display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; background-color: #FFEDD5; color: #C2410C;">
+              Artisanal Excellence
+            </span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer section with signals and link -->
+  <div style="padding: 1rem 1.5rem; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; gap: 0.5rem;">
+      {% if brand.signals and brand.signals.size > 0 %}
+        {% for signal in brand.signals %}
+          <span style="display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; background-color: #E0E7FF; color: #4338CA;">
+            {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
+          </span>
+        {% endfor %}
+      {% else %}
+        <span style="display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; background-color: #E0E7FF; color: #4338CA;">
+          Export Ready
+        </span>
+      {% endif %}
+    </div>
+
+    {% if brand.ref %}
+      {% assign brand_slug = brand.ref | split: "-" | last %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/"
+         style="display: inline-flex; padding: 0.5rem 1rem; background-color: #38B2AC; color: white; text-decoration: none; border-radius: 0.25rem; font-weight: 500;">
+        {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
+      </a>
+    {% else %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/taiga-spirits/"
+         style="display: inline-flex; padding: 0.5rem 1rem; background-color: #38B2AC; color: white; text-decoration: none; border-radius: 0.25rem; font-weight: 500;">
+        {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
+      </a>
+    {% endif %}
+  </div>
+</article>

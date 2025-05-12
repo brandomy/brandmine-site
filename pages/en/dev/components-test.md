@@ -3,6 +3,7 @@ layout: test
 title: Components Test
 permalink: /en/dev/components-test/
 lang: en
+ref: components-test
 ---
 <h1>A Page to Test and Learn About Includes Components</h1>
 

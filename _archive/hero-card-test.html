@@ -1,0 +1,107 @@
+<!-- Include file for hero card test -->
+<div class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">Hero Brand Card Test</h2>
+    <p class="panel__lead-text">Testing the hero brand card component with a single brand</p>
+
+    <div class="hero-card-test-container" style="max-width: 800px; margin: 0 auto;">
+      {% assign test_brand = site.brands | where: "lang", page.lang | where: "ref", "ru-taiga-spirits" | first %}
+      {% if test_brand %}
+        <h3>Using a real brand:</h3>
+        {% include components/cards/hero-brand-card.html brand=test_brand %}
+
+        <div style="margin-top: 2rem; padding: 1rem; background: #f3f4f6; border-radius: 0.5rem;">
+          <h4>Debug info:</h4>
+          <ul style="list-style: none; margin: 0; padding: 0;">
+            <li><strong>Brand title:</strong> {{ test_brand.title }}</li>
+            <li><strong>Brand ref:</strong> {{ test_brand.ref }}</li>
+            <li><strong>Description:</strong> {{ test_brand.description | truncate: 40 }}...</li>
+            <li><strong>Sectors count:</strong> {{ test_brand.sectors.size }}</li>
+            <li><strong>Attributes count:</strong> {{ test_brand.attributes.size }}</li>
+            <li><strong>Signals count:</strong> {{ test_brand.signals.size }}</li>
+          </ul>
+        </div>
+      {% else %}
+        <h3>Brand data not found, using fallback:</h3>
+        <!-- Create a simplified fallback with hardcoded paths -->
+        <div class="hero-brand-card hero-brand-card--featured">
+          <div class="hero-brand-card__image">
+            <img src="{{ site.baseurl }}/assets/images/brands/ru-taiga-spirits/hero-distillery-800w.jpg"
+                 alt="Taiga Spirits hero image"
+                 class="hero-brand-card__img">
+
+            <div class="hero-brand-card__logo">
+              <img src="{{ site.baseurl }}/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+                   alt="Taiga Spirits logo"
+                   class="hero-brand-card__logo-img">
+            </div>
+          </div>
+
+          <div class="hero-brand-card__body">
+            <h2 class="hero-brand-card__title">Taiga Spirits</h2>
+
+            <div class="hero-brand-card__meta">
+              <div class="hero-brand-card__founding-year">Founded 2015</div>
+              <div class="hero-brand-card__location">
+                <span class="hero-brand-card__location-icon">📍</span>
+                Novosibirsk, Siberia
+              </div>
+            </div>
+
+            <p class="hero-brand-card__description">Artisanal distillery crafting premium spirits using traditional Siberian ingredients and methods.</p>
+
+            <div class="hero-brand-card__taxonomy">
+              <div class="hero-brand-card__taxonomy-section">
+                <h3 class="hero-brand-card__taxonomy-title">Sectors</h3>
+                <div class="hero-brand-card__sectors">
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/artisanal-spirits/"
+                     class="brand-tag brand-tag--sector">
+                    Artisanal Spirits
+                  </a>
+                </div>
+              </div>
+
+              <div class="hero-brand-card__taxonomy-section">
+                <h3 class="hero-brand-card__taxonomy-title">Attributes</h3>
+                <div class="hero-brand-card__attributes">
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/"
+                     class="brand-tag brand-tag--attribute">
+                    Founder-Led
+                  </a>
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/artisanal-excellence/"
+                     class="brand-tag brand-tag--attribute">
+                    Artisanal Excellence
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-brand-card__footer">
+            <div class="hero-brand-card__signals">
+              <div class="hero-brand-card__signal">
+                <span class="brand-tag brand-tag--signal">
+                  Export Ready
+                </span>
+              </div>
+            </div>
+
+            <a href="{{ site.baseurl }}/{{ page.lang }}/brands/taiga-spirits/" class="hero-brand-card__link btn btn--primary">
+              View Profile
+            </a>
+          </div>
+        </div>
+      {% endif %}
+
+      <div style="margin-top: 3rem;">
+        <h3>Component details:</h3>
+        <ul style="text-align: left; margin-left: 1rem;">
+          <li><strong>Layout:</strong> The hero card has a full-width image at the top with a prominent logo</li>
+          <li><strong>Responsive:</strong> Card adapts to different screen sizes</li>
+          <li><strong>Graceful Fallbacks:</strong> Placeholders for missing images</li>
+          <li><strong>Visual Hierarchy:</strong> More detailed content than standard cards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

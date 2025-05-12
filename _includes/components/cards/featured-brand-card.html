@@ -1,0 +1,99 @@
+{% comment %}
+  Include Name: components/cards/featured-brand-card.html
+
+  Purpose: Renders a featured brand card with enhanced styling and additional details
+  compared to the standard brand card. Used on homepage and key landing pages.
+
+  Parameters:
+  - content: Brand object with complete details (required)
+  - content_type: Type of content being featured (required, usually "brand")
+{% endcomment %}
+
+<article class="featured-brand-card">
+  <div class="featured-brand-card__image">
+    {% if include.content_type == "brand" and include.content.ref %}
+      {% include components/images/brand-image.html
+         brand=include.content.ref
+         purpose="hero"
+         image="storefront"
+         alt=include.content.title %}
+    {% endif %}
+    <div class="featured-brand-card__badge">
+      {{ site.data.translations[include.content.lang].general.featured | default: "Featured" }}
+    </div>
+  </div>
+
+  <div class="featured-brand-card__body">
+    <h2 class="featured-brand-card__title">
+      <a href="{{ include.content.url | relative_url }}">{{ include.content.title }}</a>
+    </h2>
+
+    <div class="featured-brand-card__meta">
+      {% if include.content.founding_year %}
+        <span class="featured-brand-card__year">{{ site.data.translations[include.content.lang].brand.founding_year }} {{ include.content.founding_year }}</span>
+      {% endif %}
+
+      {% if include.content.location_city %}
+        <span class="featured-brand-card__location">
+          <span class="featured-brand-card__location-icon">📍</span>
+          {{ include.content.location_city }}{% if include.content.location_region %}, {{ include.content.location_region }}{% endif %}
+        </span>
+      {% endif %}
+    </div>
+
+    <p class="featured-brand-card__description">
+      {% if include.content.description %}
+        {{ include.content.description | truncate: 180 }}
+      {% else %}
+        {{ include.content.content | strip_html | truncate: 180 }}
+      {% endif %}
+    </p>
+
+    <div class="featured-brand-card__tags">
+      <!-- Markets first -->
+      {% if include.content.markets and include.content.markets.size > 0 %}
+        {% for market in include.content.markets limit:1 %}
+          <a href="{{ site.baseurl }}/{{ include.content.lang }}/discover/markets/{{ market | slugify }}/"
+             class="featured-brand-card__tag featured-brand-card__tag--market">
+            {{ site.data.dimensions[include.content.lang].markets[market] | default: market }}
+          </a>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Sectors next -->
+      {% if include.content.sectors and include.content.sectors.size > 0 %}
+        {% for sector in include.content.sectors limit:1 %}
+          <a href="{{ site.baseurl }}/{{ include.content.lang }}/discover/sectors/{{ sector | slugify }}/"
+             class="featured-brand-card__tag featured-brand-card__tag--sector">
+            {{ site.data.dimensions[include.content.lang].sectors[sector] | default: sector }}
+          </a>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Attributes last -->
+      {% if include.content.attributes and include.content.attributes.size > 0 %}
+        {% for attribute in include.content.attributes limit:3 %}
+          <a href="{{ site.baseurl }}/{{ include.content.lang }}/discover/attributes/{{ attribute | slugify }}/"
+             class="featured-brand-card__tag featured-brand-card__tag--attribute">
+            {{ site.data.dimensions[include.content.lang].attributes[attribute] | default: attribute }}
+          </a>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if include.content.founders.size > 0 or include.content.founder.founder_led %}
+      <div class="featured-brand-card__founder-tag">
+        <span class="featured-brand-card__founder-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+          </svg>
+        </span>
+        {{ site.data.translations[include.content.lang].attributes.founder-led | default: "Founder-Led" }}
+      </div>
+    {% endif %}
+
+    <a href="{{ include.content.url | relative_url }}" class="featured-brand-card__link">
+      {{ site.data.translations[include.content.lang].buttons.view_profile | default: "View Profile" }}
+    </a>
+  </div>
+</article>

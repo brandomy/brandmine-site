@@ -1,16 +1,8 @@
-/* ==========================================================================
-   Hero Brand Card Component
-   ==========================================================================
-   Styling for larger, hero-style brand cards with full-width hero images
-   and more detailed information display.
-
-   Used for featured brand spotlights, detailed brand listings,
-   and anywhere a more prominent brand display is needed.
+/*
+  Component: Hero Brand Card
+  Purpose: Provides styling for the hero-brand-card component
+           A premium, visually rich card style for featured brands
 */
-
-/* --------------------------------------------------------------------------
-   1. CARD STRUCTURE
-   -------------------------------------------------------------------------- */
 
 .hero-brand-card {
   /* Base structure */
@@ -32,58 +24,57 @@
 }
 
 .hero-brand-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
 
-/* --------------------------------------------------------------------------
-   2. IMAGE AREA
-   -------------------------------------------------------------------------- */
+.hero-brand-card--featured {
+  border-top: 4px solid var(--primary-500);
+}
 
+/* Hero image styles */
 .hero-brand-card__image {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: auto;
+  min-height: 200px;
   background-color: var(--neutral-100);
-  overflow: hidden;
+  overflow: visible;
+  padding-bottom: 2rem;
 }
 
 .hero-brand-card__img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
-.hero-brand-card:hover .hero-brand-card__img {
-  transform: scale(1.05);
-}
-
-/* Placeholder for missing hero image */
 .hero-brand-card__placeholder {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--neutral-200);
+  background-color: var(--neutral-100);
 }
 
 .hero-brand-card__placeholder-icon {
-  font-size: 4rem;
-  color: var(--neutral-400);
+  font-size: 3rem;
+  color: var(--neutral-300);
 }
 
+/* Logo positioning and styling */
 .hero-brand-card__logo {
   position: absolute;
-  bottom: -30px;
+  bottom: -10px;
   right: var(--space-6);
   width: 90px;
   height: 90px;
   border-radius: var(--radius-md);
   background-color: white;
   padding: var(--space-2);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,39 +86,50 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  max-width: 100%;
-  max-height: 100%;
 }
 
-/* Placeholder for missing logo */
 .hero-brand-card__logo-placeholder {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-100);
-  color: var(--primary-700);
-  font-size: var(--text-2xl);
+  background-color: var(--primary-500);
+  color: white;
+  font-size: 2rem;
   font-weight: var(--font-bold);
 }
 
-/* --------------------------------------------------------------------------
-   3. CONTENT AREA
-   -------------------------------------------------------------------------- */
-
+/* Body content styling */
 .hero-brand-card__body {
   padding: var(--space-6);
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Founder portrait styling */
+.hero-brand-card__founder {
+  flex-shrink: 0;
+  width: 120px;
+  margin-left: 1.5rem;
+  margin-top: 0; /* Aligned with the top of the title */
+}
+
+.hero-brand-card__founder-img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .hero-brand-card__title {
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
-  margin: 0 0 var(--space-2) 0;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-heading);
   color: var(--neutral-900);
-  padding-right: 100px; /* Space for logo */
 }
 
 .hero-brand-card__meta {
@@ -143,34 +145,36 @@
 .hero-brand-card__location {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+}
+
+.hero-brand-card__location-icon {
+  margin-right: var(--space-1);
+  color: var(--accent-300); /* Light purple/indigo color instead of red */
 }
 
 .hero-brand-card__description {
-  font-size: var(--text-lg);
-  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
   color: var(--neutral-700);
-  margin-bottom: var(--space-6);
+  line-height: var(--leading-relaxed);
 }
 
-/* --------------------------------------------------------------------------
-   4. TAXONOMY SECTIONS
-   -------------------------------------------------------------------------- */
-
+/* Taxonomy section styling */
 .hero-brand-card__taxonomy {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
-  margin-bottom: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.hero-brand-card__taxonomy-section {
+  margin-bottom: var(--space-2);
 }
 
 .hero-brand-card__taxonomy-title {
-  font-size: var(--text-base);
-  font-weight: var(--font-semibold);
-  color: var(--neutral-800);
-  margin: 0 0 var(--space-3) 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--space-2);
+  color: var(--neutral-600);
 }
 
+.hero-brand-card__tags,
 .hero-brand-card__sectors,
 .hero-brand-card__attributes {
   display: flex;
@@ -178,12 +182,9 @@
   gap: var(--space-2);
 }
 
-/* --------------------------------------------------------------------------
-   5. FOOTER AREA
-   -------------------------------------------------------------------------- */
-
+/* Footer styling */
 .hero-brand-card__footer {
-  padding: var(--space-6);
+  padding: var(--space-4) var(--space-6);
   border-top: 1px solid var(--neutral-200);
   display: flex;
   justify-content: space-between;
@@ -192,70 +193,68 @@
 
 .hero-brand-card__signals {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--space-2);
 }
 
+// .hero-brand-card__link {
+//   flex-shrink: 0;
+//   font-weight: var(--font-medium);
+// }
+
 .hero-brand-card__link {
+  padding: var(--space-2) var(--space-4); /* Reduced from default button padding */
+  font-size: var(--text-base); /* Reduced from default */
   font-weight: var(--font-semibold);
 }
 
-/* --------------------------------------------------------------------------
-   6. VARIANTS
-   -------------------------------------------------------------------------- */
-
-.hero-brand-card--featured {
-  border-left: var(--border-width-thick) solid var(--primary-500);
-}
-
-/* --------------------------------------------------------------------------
-   7. BRAND TAG STYLING (If not already defined elsewhere)
-   -------------------------------------------------------------------------- */
-
+/* Brand tags styling */
 .brand-tag {
   display: inline-flex;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.brand-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
 }
 
 .brand-tag--sector {
   background-color: var(--olive-100);
-  color: var(--olive-800);
-  border: 1px solid var(--olive-200);
+  color: var(--olive-900);
+}
+
+.brand-tag--sector:hover {
+  background-color: var(--olive-200);
 }
 
 .brand-tag--market {
   background-color: var(--sky-100);
-  color: var(--sky-800);
-  border: 1px solid var(--sky-200);
+  color: var(--sky-900);
+}
+
+.brand-tag--market:hover {
+  background-color: var(--sky-200);
 }
 
 .brand-tag--attribute {
   background-color: var(--secondary-100);
-  color: var(--secondary-800);
-  border: 1px solid var(--secondary-200);
+  color: var(--secondary-900);
+}
+
+.brand-tag--attribute:hover {
+  background-color: var(--secondary-200);
 }
 
 .brand-tag--signal {
   background-color: var(--accent-100);
-  color: var(--accent-800);
-  border: 1px solid var(--accent-200);
+  color: var(--accent-900);
 }
 
-/* --------------------------------------------------------------------------
-   8. RESPONSIVE ADJUSTMENTS
-   -------------------------------------------------------------------------- */
+.brand-tag--signal:hover {
+  background-color: var(--accent-200);
+}
 
-@media (max-width: 767px) {
+/* Responsive adjustments */
+@media (max-width: 640px) {
   .hero-brand-card__image {
     height: 200px;
   }
@@ -264,33 +263,30 @@
     width: 70px;
     height: 70px;
     bottom: -20px;
-    right: var(--space-4);
-    padding: var(--space-1);
   }
 
+  .hero-brand-card__footer {
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .hero-brand-card__signals {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
   .hero-brand-card__body {
     padding: var(--space-4);
   }
 
-  .hero-brand-card__title {
-    font-size: var(--text-xl);
-    padding-right: 60px;
-  }
-
-  .hero-brand-card__description {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-4);
-  }
-
-  .hero-brand-card__taxonomy {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-
   .hero-brand-card__footer {
     padding: var(--space-4);
+  }
+
+  .hero-brand-card__meta {
     flex-direction: column;
-    gap: var(--space-4);
-    align-items: flex-start;
+    gap: var(--space-2);
   }
 }
