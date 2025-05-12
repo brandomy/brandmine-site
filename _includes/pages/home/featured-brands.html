@@ -40,6 +40,14 @@
       {% assign brands = site.brands | where: "lang", page.lang | where_exp: "item", "item.featured" | limit: limit %}
     {% endif %}
 
+    <!-- Debug information - Remove these lines after debugging -->
+    <!-- Debug: Limit value: {{ limit }} -->
+    <!-- Debug: Premium only: {{ premium_only }} -->
+    <!-- Debug: Total brands with featured_level >= 2: {{ brands.size }} -->
+    {% for brand in brands %}
+      <!-- Debug: {{ forloop.index }}. {{ brand.title }} (Level: {{ brand.featured_level }}) -->
+    {% endfor %}
+
     {% if display_mode == "mixed" and brands.size > 0 %}
       <!-- Mixed mode: First brand as hero, rest in carousel -->
       {% assign first_brand = brands | first %}
@@ -87,7 +95,7 @@
     <!-- Scroll indicator dots - Dynamic based on number of brands -->
     {% if display_mode != "grid" %}
       <div class="featured-brands-nav">
-        {% assign dot_count = brands.size | divided_by: 3 | ceil | at_least: 1 %}
+        {% assign dot_count = brands.size | divided_by: 2 | ceil | at_least: 1 %}
         {% for i in (1..dot_count) %}
           <span class="featured-brands-nav-dot {% if forloop.first %}active{% endif %}"></span>
         {% endfor %}

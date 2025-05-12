@@ -22,7 +22,7 @@ signals: ["franchise-ready"]  # Optional: Business signals from taxonomy
 
 # Display Settings
 featured: true
-featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
+featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lat: -22.9068  # Latitude coordinate

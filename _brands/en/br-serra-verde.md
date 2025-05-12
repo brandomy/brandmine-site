@@ -20,8 +20,8 @@ attributes: ["founder-led", "sustainability-pioneer"]  # Optional attributes
 signals: []  # Optional signals
 
 # Display Settings
-featured: false
-featured_level: 0  # 0=basic listing, 1=standard featured, 2=premium featured
+featured: true
+featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Location (flat structure for easier data handling)
 location_lng: -45.8558  # Longitude coordinate

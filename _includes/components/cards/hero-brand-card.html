@@ -8,20 +8,26 @@
   - brand: Brand object with complete details (required)
 {% endcomment %}
 
-{% comment %}Determine hero image name based on brand ref{% endcomment %}
-{% assign hero_image = "storefront" %}
-{% if brand.ref contains "taiga-spirits" %}
-  {% assign hero_image = "distillery" %}
-{% endif %}
-
 <article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">
-    {% if brand.ref %}
-      <!-- Direct image tags with dynamic hero image name based on brand -->
-      <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-800w.jpg"
-           srcset="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-400w.jpg 400w,
-                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-800w.jpg 800w,
-                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-{{ hero_image }}-1200w.jpg 1200w"
+    {% if brand.hero_image %}
+      <!-- Extract the filename from the hero_image path -->
+      {% assign hero_filename = brand.hero_image | split: "/" | last | split: "." | first %}
+      {% assign hero_dir = brand.hero_image | remove: "/originals/" | split: "/" | reverse | shift | reverse | join: "/" %}
+
+      <img src="{{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-800w.jpg"
+           srcset="{{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-400w.jpg 400w,
+                   {{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-800w.jpg 800w,
+                   {{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-1200w.jpg 1200w"
+           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+           alt="{{ brand.title }}"
+           class="hero-brand-card__img">
+    {% elsif brand.ref %}
+      <!-- Fallback to generic hero image if no specific hero_image is set -->
+      <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-800w.jpg"
+           srcset="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-400w.jpg 400w,
+                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-800w.jpg 800w,
+                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-1200w.jpg 1200w"
            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
            alt="{{ brand.title }}"
            class="hero-brand-card__img">
@@ -120,7 +126,6 @@
     {% if brand.signals and brand.signals.size > 0 %}
     <div class="hero-brand-card__signals">
       {% for signal in brand.signals %}
-        <!-- Change from span to a (link) to match other dimensions -->
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
           class="brand-tag brand-tag--signal">
           {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
@@ -134,6 +139,5 @@
         {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
       </a>
     {% endif %}
-  
   </div>
 </article>
