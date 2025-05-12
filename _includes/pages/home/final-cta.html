@@ -1,6 +1,6 @@
 <!-- final-cta.html component placeholder -->
 {% comment %}
-  Component: home/final-cta.html
+  Component: pages/home/final-cta.html
 
   Purpose: Displays the final call-to-action section at the bottom of the homepage
 
@@ -13,22 +13,22 @@
     secondary_cta_url (optional): URL for secondary CTA button, defaults to contact section
 
   Dependencies:
-    - CSS: components/panels.css
+    - CSS: components/layout/panels.css
 
   Usage:
-  {% include home/final-cta.html %}
-  {% include home/final-cta.html
+  {% include pages/home/final-cta.html %}
+  {% include pages/home/final-cta.html
      title="Custom Title"
      lead_text="Custom description"
      primary_cta_text="Browse Brands"
      secondary_cta_text="Contact Us" %}
 {% endcomment %}
 
-{% assign title = include.title | default: "Start Exploring What Others Can't See" %}
-{% assign lead_text = include.lead_text | default: "Gain exclusive access to founder-led BRICS+ brands ready to grow" %}
-{% assign primary_cta_text = include.primary_cta_text | default: "Explore Brands" %}
+{% assign title = include.title | default: site.data.translations[page.lang].home.final_cta.title | default: "Start Exploring What Others Can't See" %}
+{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.final_cta.subtitle | default: "Gain exclusive access to founder-led BRICS+ brands ready to grow" %}
+{% assign primary_cta_text = include.primary_cta_text | default: site.data.translations[page.lang].home.final_cta.cta_primary | default: "Explore Brands" %}
 {% assign primary_cta_url = include.primary_cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/brands/" %}
-{% assign secondary_cta_text = include.secondary_cta_text | default: "Get Profiled" %}
+{% assign secondary_cta_text = include.secondary_cta_text | default: site.data.translations[page.lang].home.final_cta.cta_secondary | default: "Get Profiled" %}
 {% assign secondary_cta_url = include.secondary_cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/about/#contact-us" %}
 
 <div class="panel panel--cta">

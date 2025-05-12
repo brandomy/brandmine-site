@@ -1,5 +1,5 @@
 {% comment %}
-  Component: home/lead-capture.html
+  Component: pages/home/lead-capture.html
 
   Purpose: Displays a newsletter subscription section using MailerLite integration
 
@@ -13,9 +13,9 @@
     - External: MailerLite embed script (loaded in default layout)
 
   Usage:
-  {% include home/lead-capture.html %}
-  {% include home/lead-capture.html panel_type="primary-dark" %}
-  {% include home/lead-capture.html title="Custom Title" lead_text="Custom description" %}
+  {% include pages/home/lead-capture.html %}
+  {% include pages/home/lead-capture.html panel_type="primary-dark" %}
+  {% include pages/home/lead-capture.html title="Custom Title" lead_text="Custom description" %}
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "lead-capture" %}

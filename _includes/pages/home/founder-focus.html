@@ -1,6 +1,6 @@
 <!-- founder-focus.html component placeholder -->
 {% comment %}
-  Component: home/founder-focus.html
+  Component: pages/home/founder-focus.html
 
   Purpose: Displays the founder focus section highlighting founder stories
 
@@ -12,21 +12,23 @@
     cta_url (optional): Custom CTA button URL, defaults to the insights page
 
   Dependencies:
-    - CSS: components/panels.css
+    - CSS: components/layout/panels.css
 
   Usage:
-  {% include home/founder-focus.html %}
-  {% include home/founder-focus.html panel_type="accent-soft" %}
-  {% include home/founder-focus.html
+  {% include pages/home/founder-focus.html %}
+  {% include pages/home/founder-focus.html panel_type="accent-soft" %}
+  {% include pages/home/founder-focus.html
      title="Custom Title"
      lead_text="Custom description"
      cta_text="Read Stories" %}
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "secondary-soft" %}
-{% assign title = include.title | default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}
-{% assign lead_text = include.lead_text | default: "At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}
-{% assign cta_text = include.cta_text | default: "Read Founder Stories" %}
+
+{% assign title = include.title | default: site.data.translations[page.lang].home.founder_focus.title | default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}
+{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.founder_focus.subtitle | default: "At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}
+{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].home.founder_focus.cta | default: "Read Founder Stories" %}
+
 {% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/insights/" %}
 
 <div class="panel panel--{{ panel_type }}">

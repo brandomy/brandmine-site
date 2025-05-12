@@ -1,6 +1,6 @@
 <!-- brand-owners.html component placeholder -->
 {% comment %}
-  Component: home/brand-owners.html
+  Component: pages/home/brand-owners.html
 
   Purpose: Displays the section targeting BRICS+ brand owners with feature list
 
@@ -13,12 +13,12 @@
     features (optional): Array of feature objects with title and text properties
 
   Dependencies:
-    - CSS: components/panels.css, components/feature-list.css
+    - CSS: components/layout/panels.css, components/feature-list.css
 
   Usage:
-  {% include home/brand-owners.html %}
-  {% include home/brand-owners.html panel_type="primary" %}
-  {% include home/brand-owners.html
+  {% include pages/home/brand-owners.html %}
+  {% include pages/home/brand-owners.html panel_type="primary" %}
+  {% include pages/home/brand-owners.html
      title="Custom Title"
      lead_text="Custom description"
      cta_text="Contact Us" %}
@@ -29,13 +29,15 @@
     {'title': 'Custom Feature 2', 'text': 'Description of feature 2'},
     {'title': 'Custom Feature 3', 'text': 'Description of feature 3'}
   ]" | parse_json %}
-  {% include home/brand-owners.html features=custom_features %}
+  {% include pages/home/brand-owners.html features=custom_features %}
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "light" %}
-{% assign title = include.title | default: "For BRICS+ Brand Owners: Your Global Story Starts Here" %}
-{% assign lead_text = include.lead_text | default: "Ready to elevate your successful local brand to the global stage? Our platform offers the visibility, context, and connections you need." %}
-{% assign cta_text = include.cta_text | default: "Get Profiled" %}
+
+{% assign title = include.title | default: site.data.translations[page.lang].home.brand_owners.title | default: "For BRICS+ Brand Owners: Your Global Story Starts Here" %}
+{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.brand_owners.subtitle | default: "Ready to elevate your successful local brand to the global stage? Our platform offers the visibility, context, and connections you need." %}
+{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].home.brand_owners.cta | default: "Get Profiled" %}
+
 {% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/about/#contact-us" %}
 
 <div class="panel panel--{{ panel_type }}">
@@ -51,9 +53,9 @@
       </ul>
     {% else %}
       <ul class="feature-list feature-list--centered">
-        <li><span class="feature-list__title">Transcend</span> <span class="feature-list__text">language and cultural barriers to reach global markets</span></li>
-        <li><span class="feature-list__title">Position</span> <span class="feature-list__text">your brand within its proper international context</span></li>
-        <li><span class="feature-list__title">Connect</span> <span class="feature-list__text">with partners seeking precisely what you offer</span></li>
+        <li><span class="feature-list__title">{{ site.data.translations[page.lang].home.brand_owners.features.feature1.title | default: "Transcend" }}</span> <span class="feature-list__text">{{ site.data.translations[page.lang].home.brand_owners.features.feature1.text | default: "language and cultural barriers to reach global markets" }}</span></li>
+        <li><span class="feature-list__title">{{ site.data.translations[page.lang].home.brand_owners.features.feature2.title | default: "Position" }}</span> <span class="feature-list__text">{{ site.data.translations[page.lang].home.brand_owners.features.feature2.text | default: "your brand within its proper international context" }}</span></li>
+        <li><span class="feature-list__title">{{ site.data.translations[page.lang].home.brand_owners.features.feature3.title | default: "Connect" }}</span> <span class="feature-list__text">{{ site.data.translations[page.lang].home.brand_owners.features.feature3.text | default: "with partners seeking precisely what you offer" }}</span></li>
       </ul>
     {% endif %}
 
