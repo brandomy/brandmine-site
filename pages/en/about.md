@@ -29,7 +29,7 @@ ref: about
     <p class="panel__lead-text">
       Brand investors, distributors, importers, franchisors, and international partners face significant challenges when seeking opportunities in BRICS+ markets:
     </p>
-    
+
     <!-- Problem cards in 2x2 grid -->
 <div class="problem-grid">
   <div class="problem-card problem-card--1">
@@ -39,7 +39,7 @@ ref: about
     <h3>Information Fragmentation</h3>
     <p>Critical brand data scattered across multiple sources</p>
   </div>
-  
+
   <div class="problem-card problem-card--2">
     <div class="problem-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
@@ -47,7 +47,7 @@ ref: about
     <h3>Language Barriers</h3>
     <p>Essential information trapped in local languages</p>
   </div>
-  
+
   <div class="problem-card problem-card--3">
     <div class="problem-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
@@ -55,7 +55,7 @@ ref: about
     <h3>Cultural Context Gaps</h3>
     <p>Missing the "why" behind brand-consumer relationships</p>
   </div>
-  
+
   <div class="problem-card problem-card--4">
     <div class="problem-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
@@ -64,7 +64,7 @@ ref: about
     <p>No efficient way to identify promising brands</p>
   </div>
 </div>
-    
+
   <p class="panel__conclusion-text">
     This fractured landscape creates a lose-lose scenario — international partners waste resources searching for hidden gems, while innovative founders with proven models struggle to access the partners and capital needed for global growth.
   </p>
@@ -78,7 +78,7 @@ ref: about
       <p class="panel__lead-text">
         Brandmine's business intelligence hub brings clarity to this fragmented landscape by:
       </p>
-      
+
     <div class="solutions-list">
       <div class="solution-item">
         <div class="solution-number">1</div>
@@ -87,7 +87,7 @@ ref: about
           <p>Through comprehensive, multilingual profiles</p>
         </div>
       </div>
-      
+
       <div class="solution-item">
         <div class="solution-number">2</div>
         <div class="solution-content">
@@ -95,7 +95,7 @@ ref: about
           <p>Beyond simple language translation</p>
         </div>
       </div>
-      
+
       <div class="solution-item">
         <div class="solution-number">3</div>
         <div class="solution-content">
@@ -103,7 +103,7 @@ ref: about
           <p>With standardized metrics across regions</p>
         </div>
       </div>
-      
+
       <div class="solution-item">
         <div class="solution-number">4</div>
         <div class="solution-content">
@@ -111,7 +111,7 @@ ref: about
           <p>That resonate globally despite local origins</p>
         </div>
       </div>
-      
+
       <div class="solution-item">
         <div class="solution-number">5</div>
         <div class="solution-content">
@@ -130,13 +130,13 @@ ref: about
 <div class="panel panel--light team-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">Our Team</h2>
-    
+
     <div class="team-section">
       <div class="team-member">
-        {% include components/images/site-image.html 
-          category="people"
-          image="randal-eastman" 
-          purpose="profile"
+        {% include components/images/site-image.html
+          category="people/team"
+          image="randal-eastman"
+          purpose="headshot"
           alt="Randal Eastman"
           class="team-photo" %}
         <h3>Randal Eastman</h3>
@@ -157,12 +157,12 @@ ref: about
           </a>
         </div>
       </div>
-      
+
       <div class="team-member">
-        {% include components/images/site-image.html 
-          category="people"
-          image="olya-eastman" 
-          purpose="profile"
+        {% include components/images/site-image.html
+          category="people/team"
+          image="olya-eastman"
+          purpose="headshot"
           alt="Olya Eastman"
           class="team-photo" %}
         <h3>Olya Eastman</h3>
@@ -196,7 +196,7 @@ ref: about
       <p class="panel__lead-text">
         With over 25 years living and working across Asia—particularly in China and Russia—our founders bring a rare combination of linguistic capability, cultural insight, and business acumen to Brandmine:
       </p>
-      
+
     <ul class="perspective-list">
         <li><span><strong>Firsthand founder experience</strong> building and scaling an iconic brand across Asian markets</span></li>
         <li><span><strong>Entrepreneur's perspective</strong> on the challenges of securing international investment and partnerships</span></li>
@@ -204,7 +204,7 @@ ref: about
         <li><span><strong>Extensive networks</strong> across both BRICS+ countries and international markets</span></li>
         <li><span><strong>Focus on overlooked regions</strong> where extraordinary brands thrive without global recognition</span></li>
       </ul>
-      
+
       <p class="panel__conclusion-text">
         This distinctive background enables us to see valuable opportunities where others see only barriers.
       </p>
@@ -218,7 +218,7 @@ ref: about
     <p class="panel__lead-text">
       We offer services for BRICS+ Brands as well as for the Investors and Business Partners seeking to do business with them.
     </p>
-    
+
     <div class="services-container">
       <!-- Left Column: For International Partners -->
       <div class="service-panel service-panel--international">
@@ -258,7 +258,7 @@ ref: about
           </ul>
         </div>
       </div>
-      
+
       <!-- Right Column: For BRICS+ Brands -->
       <div class="service-panel service-panel--brands">
         <div class="service-panel__header">
@@ -311,7 +311,7 @@ ref: about
     <p class="panel__lead-text">
       Whether you're seeking new brand opportunities or looking to gain international visibility for your BRICS+ brand, we'd love to hear from you.
     </p>
-    
+
     <div class="contact-info">
       <div class="contact-item">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -322,12 +322,12 @@ ref: about
         <a href="tel:+60163199439">+60 16 3199439</a>
       </div>
     </div>
-    
+
    <!-- Contact Form Container with additional wrapper -->
     <div class="mobile-form-wrapper">
       <div class="contact-form-container">
         <iframe data-tally-src="https://tally.so/embed/3qvVaY?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
-        
+
         <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       </div>
     </div>
