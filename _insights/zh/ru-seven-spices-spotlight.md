@@ -2,6 +2,8 @@
 # NEW INSIGHT TEMPLATE - BRAND SPOTLIGHT
 layout: insight
 ref: ru-seven-spices-spotlight  # Global ID (market-slug format) For language switcher
+sample_data: true  # Add this flag
+sample_data: true  # Add this flag
 title: "品牌聚焦: 七香料 - 复兴俄罗斯香料传统"
 lang: zh
 permalink: /zh/insights/ru-seven-spices-spotlight/
@@ -35,7 +37,7 @@ location_lng: 49.1221  # Longitude coordinate (Kazan)
 location_lat: 55.7887  # Latitude coordinate (Kazan)
 location_city: "喀山"  # City name (translatable)
 location_region: "鞑靼斯坦"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Image Paths (follow the global ID pattern)
 hero_image: "/assets/images/insights/ru-seven-spices-spotlight/hero-moscow-spice-market.jpg"

@@ -2,6 +2,7 @@
 # NEW BRAND LITE TEMPLATE
 layout: brand
 ref: br-serra-verde  # Global ID (country-brandslug format)
+sample_data: true  # Add this flag
 title: "塞拉维德有机"  # Display name, fallback if JSON lookup fails
 description: "家族经营的有机食品生产商，专注于巴西大西洋森林地区的果酱、蜂蜜和特色咖啡。"
 lang: zh

@@ -2,6 +2,7 @@
 # INSIGHT: MARKET MOMENTUM TEMPLATE
 layout: insight
 ref: ru-russian-wine-renaissance  # insight slug For language switcher
+sample_data: true  # Add this flag
 title: "Russian Wine Renaissance: 52% Market Growth Over Five Years"
 lang: en
 permalink: /en/insights/ru-russian-wine-renaissance/

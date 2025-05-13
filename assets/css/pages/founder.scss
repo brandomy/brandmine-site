@@ -1,0 +1,232 @@
+/**
+ * Founder Profile Page Styles
+ */
+
+.founder-profile {
+  padding: 2rem 0;
+}
+
+.founder-header {
+  margin-bottom: 2rem;
+}
+
+.founder-portrait {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 1.5rem;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.founder-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  
+  &__link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-700);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: var(--color-primary-500);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    &--instagram:hover {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    }
+    
+    &--linkedin:hover {
+      background-color: #0077b5;
+    }
+    
+    &--twitter:hover {
+      background-color: #1da1f2;
+    }
+  }
+}
+
+.founder-profile__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-gray-900);
+}
+
+.founder-profile__title-position {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-gray-700);
+}
+
+.founder-profile__meta {
+  margin-bottom: 1.5rem;
+}
+
+.founder-profile__meta-item {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.founder-profile__meta-label {
+  font-weight: 600;
+  color: var(--color-gray-700);
+  margin-right: 0.5rem;
+  min-width: 80px;
+}
+
+.founder-profile__meta-value {
+  color: var(--color-gray-900);
+}
+
+.founder-profile__expertise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.founder-profile__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  
+  &--expertise {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-800);
+  }
+  
+  &--market {
+    background-color: var(--color-sky-100);
+    color: var(--color-sky-800);
+  }
+  
+  &--sector {
+    background-color: var(--color-olive-100);
+    color: var(--color-olive-800);
+  }
+  
+  &--attribute {
+    background-color: var(--color-secondary-100);
+    color: var(--color-secondary-800);
+  }
+  
+  &--signal {
+    background-color: var(--color-accent-100);
+    color: var(--color-accent-800);
+  }
+}
+
+/* Brand information section */
+.founder-brand-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-gray-50);
+  border-radius: 5px;
+  border-left: 4px solid var(--color-olive-400);
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  &__meta {
+    margin-bottom: 1rem;
+    
+    &-item {
+      margin-bottom: 0.5rem;
+      display: flex;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    &-label {
+      font-weight: 500;
+      color: var(--color-gray-700);
+      margin-right: 0.5rem;
+      min-width: 120px;
+    }
+    
+    &-value {
+      color: var(--color-gray-900);
+    }
+  }
+  
+  &__link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Expertise cloud */
+.expertise-cloud {
+  margin-top: 1.5rem;
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-800);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: var(--color-primary-100);
+      color: var(--color-primary-700);
+      transform: translateY(-1px);
+    }
+    
+    &--primary {
+      background-color: var(--color-primary-100);
+      color: var(--color-primary-700);
+      font-weight: 500;
+    }
+  }
+}

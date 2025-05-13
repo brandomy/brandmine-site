@@ -31,32 +31,47 @@
   <header class="founder-card__header">
     <div class="founder-card__portrait">
       {% if founder.portrait_image %}
-        <img src="{{ site.baseurl }}/{{ founder.portrait_image }}"
+        {% comment %}
+          Fix path formatting for all country codes and ensure proper responsive image paths
+          1. Convert country/brand format to country-brand format
+          2. Remove any trailing "/founder-portrait.jpg" if present
+        {% endcomment %}
+        {% assign image_path = founder.portrait_image %}
+        {% assign image_path = image_path | replace: "brands/ru/", "brands/ru-" %}
+        {% assign image_path = image_path | replace: "brands/br/", "brands/br-" %}
+        {% assign image_path = image_path | replace: "brands/zh/", "brands/zh-" %}
+        {% assign image_path = image_path | replace: "brands/eg/", "brands/eg-" %}
+        {% assign image_path = image_path | replace: "brands/in/", "brands/in-" %}
+        {% assign image_path = image_path | replace: "brands/id/", "brands/id-" %}
+        {% assign image_path = image_path | replace: "brands/ir/", "brands/ir-" %}
+        {% assign image_path = image_path | replace: "brands/za/", "brands/za-" %}
+        {% assign image_path = image_path | replace: "brands/ae/", "brands/ae-" %}
+        {% assign image_path = image_path | replace: "brands/et/", "brands/et-" %}
+        {% assign image_path = image_path | replace: "/founder-portrait.jpg", "" %}
+        {% assign image_path = image_path | replace: "/portrait.jpg", "" %}
+        <img src="{{ site.baseurl }}/{{ image_path }}/founder-portrait-800w.jpg"
+             srcset="{{ site.baseurl }}/{{ image_path }}/founder-portrait-400w.jpg 400w,
+                     {{ site.baseurl }}/{{ image_path }}/founder-portrait-800w.jpg 800w,
+                     {{ site.baseurl }}/{{ image_path }}/founder-portrait-1200w.jpg 1200w"
+             alt="{{ founder.name }}"
+             class="founder-card__portrait-img"
+             onerror="this.onerror=null; this.src='{{ site.baseurl }}/assets/images/site/founder-captain-placeholder.svg';">
+      {% else %}
+        <img src="{{ site.baseurl }}/assets/images/site/founder-captain-placeholder.svg" 
              alt="{{ founder.name }}"
              class="founder-card__portrait-img">
-      {% else %}
-        <div class="founder-card__portrait-placeholder">
-          {{ founder.name | slice: 0, 1 | upcase }}
-        </div>
       {% endif %}
     </div>
     <div class="founder-card__header-text">
       <h2 class="founder-card__title">{{ founder.name }}</h2>
       
-      {% if founder.generation %}
-        <p class="founder-card__generation">
-          {% case founder.generation %}
-            {% when "first" %}
-              {{ site.data.translations[page.lang].generation.first }}
-            {% when "second" %}
-              {{ site.data.translations[page.lang].generation.second }}
-            {% when "third" %}
-              {{ site.data.translations[page.lang].generation.third }}
-            {% when "transition" %}
-              {{ site.data.translations[page.lang].generation.transition }}
-            {% else %}
-              {{ founder.generation }}
-          {% endcase %}
+      {% if founder.city and founder.country_code %}
+        <p class="founder-card__location">
+          {{ founder.city }}, {{ site.data.countries.countries[founder.country_code].name[page.lang] | default: site.data.dimensions[page.lang].markets[founder.country_code] | default: founder.country_code }}
+        </p>
+      {% elsif founder.country_code %}
+        <p class="founder-card__location">
+          {{ site.data.countries.countries[founder.country_code].name[page.lang] | default: site.data.dimensions[page.lang].markets[founder.country_code] | default: founder.country_code }}
         </p>
       {% endif %}
     </div>
@@ -69,7 +84,6 @@
           {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
           {% if brand %}
             <p class="founder-card__brand">
-              {{ site.data.translations[page.lang].founder.founder_of }} 
               <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="founder-card__brand-link">
                 {{ brand.title }}
               </a>
@@ -85,19 +99,34 @@
       </div>
     {% endif %}
 
-    <div class="founder-card__tags">
-      {% if founder.country_code %}
-        <span class="founder-card__tag founder-card__tag--market">
-          {{ site.data.dimensions[page.lang].markets[founder.country_code] | default: founder.country_code }}
-        </span>
-      {% endif %}
-
+    {% if founder.brief_bio %}
+      <div class="founder-card__bio">
+        {{ founder.brief_bio | truncate: 120 }}
+      </div>
+    {% endif %}
+    
+    <div class="founder-card__expertise-cloud">
       {% if founder.expertise %}
-        {% for expertise in founder.expertise limit:2 %}
+        {% for expertise in founder.expertise limit:3 %}
           <span class="founder-card__tag founder-card__tag--expertise">
             {{ expertise }}
           </span>
         {% endfor %}
+      {% endif %}
+      
+      {% if founder.dimensions %}
+        {% for dimension in founder.dimensions limit:2 %}
+          {% assign dimension_type = dimension | split: ":" | first %}
+          {% assign dimension_value = dimension | split: ":" | last %}
+          
+          <span class="founder-card__tag founder-card__tag--{{ dimension_type }}">
+            {{ dimension_value }}
+          </span>
+        {% endfor %}
+      {% elsif founder.sector %}
+        <span class="founder-card__tag founder-card__tag--sector">
+          {{ founder.sector }}
+        </span>
       {% endif %}
     </div>
   </div>

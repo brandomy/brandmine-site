@@ -2,6 +2,7 @@
 # NEW INSIGHT TEMPLATE - FOUNDERS JOURNEY
 layout: insight
 ref: ru-teatime-founder-journey  # Global ID (market-slug format) For language switcher
+sample_data: true  # Add this flag
 title: "Alexei Sokolov: TeaTime's Journey from Moscow Mountains to Global Markets"
 lang: en
 permalink: /en/insights/ru-teatime-founder-journey/
@@ -35,7 +36,7 @@ location_lng: 37.6173  # Longitude coordinate (Moscow)
 location_lat: 55.7558  # Latitude coordinate (Moscow)
 location_city: "Moscow"  # City name (translatable)
 location_region: "Moscow"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Image Paths (follow the global ID pattern)
 hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime.jpg"

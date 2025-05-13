@@ -2,6 +2,7 @@
 # NEW BRAND LITE TEMPLATE
 layout: brand
 ref: br-serra-verde  # Global ID (country-brandslug format)
+sample_data: true  # Add this flag
 title: "Serra Verde Organics"  # Display name, fallback if JSON lookup fails
 description: "Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region."
 lang: en

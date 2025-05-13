@@ -2,6 +2,7 @@
 # NEW BRAND FULL TEMPLATE
 layout: brand
 ref: br-sojourn-hotels  # Global ID (country-brandslug format)
+sample_data: true  # Add this flag
 title: "索茹精品酒店"  # Display name, fallback if JSON lookup fails
 description: "一系列精致的精品酒店，通过可持续奢华和真实的当地体验，展示巴西多样化的景观。"
 slogan: "亲密体验巴西"

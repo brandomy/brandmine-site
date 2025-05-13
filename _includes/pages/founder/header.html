@@ -20,7 +20,18 @@
   <div class="col-md-4">
     {% if founder.portrait_image %}
     <div class="founder-portrait">
-      <img src="{{ site.baseurl }}/{{ founder.portrait_image }}" alt="{{ founder.name }}" class="founder-portrait__image">
+      {% assign image_path = founder.portrait_image | replace: "brands/ru/", "brands/ru-" | replace: "brands/br/", "brands/br-" | replace: "/founder-portrait.jpg", "" %}
+      <img src="{{ site.baseurl }}/{{ image_path }}/founder-portrait-1200w.jpg" 
+           srcset="{{ site.baseurl }}/{{ image_path }}/founder-portrait-400w.jpg 400w,
+                   {{ site.baseurl }}/{{ image_path }}/founder-portrait-800w.jpg 800w,
+                   {{ site.baseurl }}/{{ image_path }}/founder-portrait-1200w.jpg 1200w"
+           alt="{{ founder.name }}" 
+           class="founder-portrait__image"
+           onerror="this.onerror=null; this.src='{{ site.baseurl }}/assets/images/site/default-founder-portrait-1200w.jpg';">
+    </div>
+    {% else %}
+    <div class="founder-portrait">
+      <img src="{{ site.baseurl }}/assets/images/site/default-founder-portrait-1200w.jpg" alt="{{ founder.name }}" class="founder-portrait__image">
     </div>
     {% endif %}
 

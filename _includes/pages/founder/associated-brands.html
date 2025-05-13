@@ -19,28 +19,83 @@
 {% if founder.brands %}
 <div class="founder-profile__brands">
   <h3>{{ site.data.translations[founder.lang].founder.associated_brands | default: "Associated Brands" }}</h3>
-  <div class="founder-associated-brands">
-    {% for brand_slug in founder.brands %}
-      {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", founder.lang | first %}
-      {% if brand %}
-      <div class="founder-brand-card">
-        <h4><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h4>
-        <div class="brand-meta">
-          {% if brand.sectors and brand.sectors.size > 0 %}
-          <span class="brand-sector">
-            {{ site.data.dimensions[founder.lang].sectors[brand.sectors[0]] | default: brand.sectors[0] }}
-          </span>
-          {% endif %}
-          
-          {% if brand.founding_year %}
-          <span class="brand-founding-year">
-            {{ site.data.translations[founder.lang].brand.established | default: "Est." }} {{ brand.founding_year }}
-          </span>
-          {% endif %}
+  
+  {% for brand_slug in founder.brands %}
+    {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", founder.lang | first %}
+    {% if brand %}
+    <div class="founder-brand-info">
+      <h4 class="founder-brand-info__title">
+        <a href="{{ brand.url | relative_url }}">{{ brand.title }}</a>
+      </h4>
+      
+      <div class="founder-brand-info__meta">
+        <!-- Founder's position -->
+        {% if founder.position %}
+        <div class="founder-brand-info__meta-item">
+          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].founder.position | default: "Position" }}:</span>
+          <span class="founder-brand-info__meta-value">{{ founder.position }}</span>
         </div>
+        {% endif %}
+        
+        <!-- Founded year -->
+        {% if brand.founding_year %}
+        <div class="founder-brand-info__meta-item">
+          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.established | default: "Founded" }}:</span>
+          <span class="founder-brand-info__meta-value">{{ brand.founding_year }}</span>
+        </div>
+        {% endif %}
+        
+        <!-- Location -->
+        {% if brand.location.city or brand.location.country %}
+        <div class="founder-brand-info__meta-item">
+          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.location | default: "Location" }}:</span>
+          <span class="founder-brand-info__meta-value">
+            {% if brand.location.city %}{{ brand.location.city }}{% endif %}
+            {% if brand.location.city and brand.location.country %}, {% endif %}
+            {% if brand.location.country_code %}
+              {{ site.data.countries.countries[brand.location.country_code].name[founder.lang] | default: brand.location.country }}
+            {% elsif brand.location.country %}
+              {{ brand.location.country }}
+            {% endif %}
+          </span>
+        </div>
+        {% endif %}
+        
+        <!-- Sector -->
+        {% if brand.sectors and brand.sectors.size > 0 %}
+        <div class="founder-brand-info__meta-item">
+          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.sector | default: "Sector" }}:</span>
+          <span class="founder-brand-info__meta-value">
+            {% for sector in brand.sectors %}
+              {{ site.data.dimensions[founder.lang].sectors[sector] | default: sector }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </span>
+        </div>
+        {% endif %}
+        
+        <!-- Website -->
+        {% if brand.website %}
+        <div class="founder-brand-info__meta-item">
+          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.website | default: "Website" }}:</span>
+          <span class="founder-brand-info__meta-value">
+            <a href="{{ brand.website }}" target="_blank" rel="noopener noreferrer">{{ brand.website | replace: "https://", "" | replace: "http://", "" }}</a>
+          </span>
+        </div>
+        {% endif %}
+      </div>
+      
+      <!-- Brand description (if available) -->
+      {% if brand.description %}
+      <div class="founder-brand-info__description">
+        <p>{{ brand.description | truncate: 150 }}</p>
       </div>
       {% endif %}
-    {% endfor %}
-  </div>
+      
+      <a href="{{ brand.url | relative_url }}" class="founder-brand-info__link">
+        {{ site.data.translations[founder.lang].buttons.view_brand | default: "View Brand Profile" }} →
+      </a>
+    </div>
+    {% endif %}
+  {% endfor %}
 </div>
 {% endif %}

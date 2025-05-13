@@ -2,6 +2,7 @@
 # NEW BRAND LITE TEMPLATE
 layout: brand
 ref: ru-teatime  # Global ID (country-brandslug)
+sample_data: true  # Add this flag
 title: "TeaTime"  # Fallback if JSON lookup fails
 description: "Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием." # trx
 lang: ru

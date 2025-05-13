@@ -2,6 +2,7 @@
 # NEW BRAND FULL TEMPLATE
 layout: brand
 ref: ru-taiga-spirits  # Global ID (country-brandslug format)
+sample_data: true  # Add this flag
 title: "泰加烈酒"  # Display name, fallback if JSON lookup fails
 description: "手工酿酒厂用古老的西伯利亚配方和野生采集的原料，创造卓越的小批量伏特加和植物精酒。"
 slogan: "荒野之魂"

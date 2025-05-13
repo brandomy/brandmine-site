@@ -32,10 +32,10 @@ premium: false
 
 # Location (flat structure for easier data handling)
 location_lng: 0.0  # Longitude coordinate
-location_lat: 0.0  # Latitude coordinate  
+location_lat: 0.0  # Latitude coordinate
 location_city: ""  # City name (translatable)
 location_region: ""  # Region/state/province (translatable, optional)
-location_country: "xx"  # ISO country code 
+location_country: "xx"  # ISO country code
 
 # Image Paths (follow the global ID pattern)
 hero_image: "/assets/images/insights/xx-insight-slug/hero-description.jpg"
@@ -43,42 +43,22 @@ founder_portrait: "/assets/images/insights/xx-insight-slug/founder-portrait.jpg"
 logo: "/assets/images/insights/xx-insight-slug/logo-description.png"  # Optional
 ---
 
-## Origin Story Heading
+## Origin Story
 
-Opening paragraph establishing the founder's background and the early beginnings of the brand. Include personal details that humanize the founder and establish their life before the brand existed.
+[Write 2-3 paragraphs in ENGLISH about the founder's background and how the brand began. Include a quote from the founder about their journey.]
 
-"Direct quote from the founder about their unexpected path," attribution information with current context.
+## Key Turning Point
 
-Bridge paragraph connecting the founder's background to the brand's development, highlighting the transformation from initial idea to established business.
+[Describe a pivotal moment in the brand's development in ENGLISH (1-2 paragraphs). Include specific details and a quote if available.]
 
-## Key Turning Point Heading
+## Early Challenges
 
-Narrative about a pivotal decision, meeting, or event that significantly altered the brand's trajectory. Details should be specific and evocative.
+[Write about initial obstacles and how they were overcome in ENGLISH (2-3 paragraphs). Include both practical and personal challenges.]
 
-"Quote from founder or key figure about this critical moment," with attribution.
+## Growth and Evolution
 
-Explanation of how this pivotal moment shaped the brand's future direction and philosophy. Connect to larger business lessons when possible.
+[Describe how the brand grew while maintaining its values in ENGLISH (1-2 paragraphs). Include key milestones and innovative approaches.]
 
-## Early Challenges Heading
+## Current Status and Vision
 
-Description of initial obstacles and how the founder overcame them. Focus on both practical challenges (funding, production, etc.) and emotional/psychological hurdles.
-
-"Founder quote about a moment of doubt or difficulty," with context.
-
-Resolution paragraph showing how challenges were transformed into strengths or learning experiences. Include specific examples of adaptability.
-
-## Growth and Evolution Heading
-
-Narrative about how the brand scaled while maintaining its core values. Include key milestones in the business development.
-
-"Quote about maintaining brand integrity while growing," attribution.
-
-Details about innovative approaches to growth challenges that showcase the founder's unique perspective or problem-solving abilities.
-
-## Current Status and Vision Heading
-
-Description of where the brand stands today (metrics, achievements, market position) and the founder's ongoing role.
-
-"Quote about the founder's current vision and future aspirations," attribution.
-
-Conclusion that ties the brand's journey to broader principles of entrepreneurship, innovation, or cultural impact. End with a forward-looking statement that inspires.
+[Write about where the brand stands today and future aspirations in ENGLISH (2-3 paragraphs). End with an inspiring forward-looking statement.]

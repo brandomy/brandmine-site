@@ -32,10 +32,10 @@ premium: false
 
 # Location (flat structure for easier data handling)
 location_lng: 0.0  # Longitude coordinate
-location_lat: 0.0  # Latitude coordinate  
+location_lat: 0.0  # Latitude coordinate
 location_city: ""  # City name (translatable)
 location_region: ""  # Region/state/province (translatable, optional)
-location_country: "xx"  # ISO country code 
+location_country: "xx"  # ISO country code
 
 # Image Paths (follow the global ID pattern)
 hero_image: "/assets/images/insights/xx-insight-slug/hero-market-scene.jpg"
@@ -43,50 +43,26 @@ founder_portrait: "/assets/images/insights/xx-insight-slug/founder-portrait.jpg"
 logo: "/assets/images/insights/xx-insight-slug/logo-brand-name.png"  # Optional
 ---
 
-## Market Overview Heading
+## Market Overview
 
-Opening paragraph establishing the current state of the market and the specific sector being analyzed. Include key statistics about market size, growth rate, and recent developments.
+[Write 2-3 paragraphs in ENGLISH about the current market state. Include key statistics, growth rates, and why this momentum matters internationally.]
 
-Brief historical context explaining how this market has evolved and what factors have contributed to its current momentum.
+## Growth Drivers
 
-Summary of why this market momentum matters for international businesses and investors.
+[Describe the main factors driving growth in ENGLISH (2-3 paragraphs). Include economic, social, and technological factors with supporting data.]
 
-## Growth Drivers Heading
+## Brand Success Stories
 
-Analysis of the primary factors driving growth in this market sector. Include economic, social, and technological factors.
+[Profile 2-3 brands that exemplify market momentum in ENGLISH (2-3 paragraphs). Include specific metrics and a quote from a brand leader if available.]
 
-"Quote from industry expert about key growth drivers," with attribution.
+## Market Evolution
 
-Data-supported explanation of consumer behavior shifts, policy changes, or infrastructure improvements fueling growth.
+[Write about how the sector has transformed in ENGLISH (1-2 paragraphs). Include changes in consumer preferences and business models.]
 
-## Brand Success Stories Heading
+## Opportunity Assessment
 
-Profiles of 2-3 brands that exemplify the market momentum. Explain how these brands have capitalized on current trends.
+[Analyze current opportunities for businesses in ENGLISH (2-3 paragraphs). Include market gaps and recommendations for market entry.]
 
-"Quote from successful brand founder about market opportunity," with attribution.
+## Future Outlook
 
-Specific metrics showing growth (sales figures, market share gains, geographic expansion) and what strategies have proven effective.
-
-## Market Evolution Heading
-
-Discussion of how the sector has transformed in recent years. Include changes in consumer preferences, product innovation, and business models.
-
-Analysis of competitive landscape shifts and how market leaders have emerged or evolved.
-
-Identification of any disruptions or challenges that have actually accelerated market growth.
-
-## Opportunity Assessment Heading
-
-Detailed analysis of current opportunities for new market entrants or expansion strategies. Include market gaps and underserved segments.
-
-"Quote from market analyst about future potential," with attribution.
-
-Specific recommendations for businesses looking to enter or expand in this market, including timing considerations and strategic approaches.
-
-## Future Outlook Heading
-
-Prediction of market trajectory over the next 3-5 years based on current momentum indicators.
-
-Discussion of potential risks or factors that could slow momentum, balanced with opportunities for continued growth.
-
-Conclusion emphasizing the urgency of opportunity and specific steps international businesses should take to participate in this momentum.
+[Write about market trajectory over the next 3-5 years in ENGLISH (1-2 paragraphs). End with specific steps international businesses should take.]

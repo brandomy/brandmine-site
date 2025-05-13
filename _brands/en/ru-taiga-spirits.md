@@ -2,6 +2,7 @@
 # NEW BRAND FULL TEMPLATE
 layout: brand
 ref: ru-taiga-spirits  # Global ID (country-brandslug format)
+sample_data: true  # Add this flag
 title: "Taiga Spirits"  # Display name, fallback if JSON lookup fails
 description: "Craft distillery creating exceptional small-batch vodkas and botanical spirits using ancient Siberian recipes and wild-harvested ingredients."
 slogan: "Spirit of the Wilderness"

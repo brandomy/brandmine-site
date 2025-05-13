@@ -2,6 +2,7 @@
 # NEW BRAND FULL TEMPLATE
 layout: brand
 ref: br-sojourn-hotels  # Global ID (country-brandslug format)
+sample_data: true  # Add this flag
 title: "Сожурн Бутик-Отели"  # Display name, fallback if JSON lookup fails
 description: "Коллекция камерных бутик-отелей, подчеркивающих разнообразие бразильских ландшафтов через устойчивую роскошь и аутентичный местный опыт."
 slogan: "Познай Бразилию, Близко"

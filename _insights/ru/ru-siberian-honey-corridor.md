@@ -2,6 +2,7 @@
 # NEW INSIGHT TEMPLATE - LOCATION INTELLIGENCE
 layout: insight
 ref: ru-siberian-honey-corridor  # Global ID (market-slug format) For language switcher
+sample_data: true  # Add this flag
 title: "Сибирский медовый коридор: формирующаяся пчеловодческая экосистема России"
 lang: ru
 permalink: /ru/insights/ru-siberian-honey-corridor/
@@ -35,7 +36,7 @@ location_lng: 85.6000  # Longitude coordinate (Altai region)
 location_lat: 50.7500  # Latitude coordinate (Altai region)
 location_city: "Белокуриха"  # City name (translatable)
 location_region: "Алтайский край"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Image Paths (follow the global ID pattern)
 hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-honey.jpg"

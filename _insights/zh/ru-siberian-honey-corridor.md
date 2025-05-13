@@ -2,6 +2,7 @@
 # NEW INSIGHT TEMPLATE - LOCATION INTELLIGENCE
 layout: insight
 ref: ru-siberian-honey-corridor  # Global ID (market-slug format) For language switcher
+sample_data: true  # Add this flag
 title: "西伯利亚蜂蜜走廊：俄罗斯新兴蜂蜜生态系统"
 lang: zh
 permalink: /zh/insights/ru-siberian-honey-corridor/
@@ -35,7 +36,7 @@ location_lng: 85.6000  # Longitude coordinate (Altai region)
 location_lat: 50.7500  # Latitude coordinate (Altai region)
 location_city: "别洛库里哈"  # City name (translatable)
 location_region: "阿尔泰边疆区"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code 
+location_country: "ru"  # ISO country code
 
 # Image Paths (follow the global ID pattern)
 hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-honey.jpg"

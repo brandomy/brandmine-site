@@ -2,6 +2,7 @@
 # NEW BRAND FULL TEMPLATE
 layout: brand
 ref: ru-taiga-spirits  # Global ID (country-brandslug format)
+sample_data: true  # Add this flag
 title: "Тайга Спиритс"  # Display name, fallback if JSON lookup fails
 description: "Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов."
 slogan: "Дух Дикой Природы"

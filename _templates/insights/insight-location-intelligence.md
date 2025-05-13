@@ -32,10 +32,10 @@ premium: false
 
 # Location (flat structure for easier data handling)
 location_lng: 0.0  # Longitude coordinate
-location_lat: 0.0  # Latitude coordinate  
+location_lat: 0.0  # Latitude coordinate
 location_city: ""  # City name (translatable)
 location_region: ""  # Region/state/province (translatable, optional)
-location_country: "xx"  # ISO country code 
+location_country: "xx"  # ISO country code
 
 # Image Paths (follow the global ID pattern)
 hero_image: "/assets/images/insights/xx-insight-slug/hero-description.jpg"
@@ -43,50 +43,26 @@ founder_portrait: "/assets/images/insights/xx-insight-slug/founder-portrait.jpg"
 logo: "/assets/images/insights/xx-insight-slug/logo-description.png"  # Optional
 ---
 
-## Geographic Context Heading
+## Geographic Context
 
-Opening paragraph establishing the geographic focus area and its broader significance. Include key facts about the region's size, population, and economic importance.
+[Write 2-3 paragraphs in ENGLISH about the geographic area. Include facts about size, population, economic importance, and why this location matters for international businesses.]
 
-Description of the region's historical context and how it has shaped current business opportunities. Connect geographic features to economic advantages.
+## Economic Landscape
 
-Brief overview of why this location matters for international businesses and investors looking at this market.
+[Describe the region's economy in ENGLISH (2-3 paragraphs). Include data about growth, investment trends, infrastructure, and a quote from a local business leader if available.]
 
-## Economic Landscape Heading
+## Sector Concentration
 
-Analysis of the region's economic structure, key industries, and business climate. Include specific data points about economic growth, investment trends, and market size.
+[Write about how specific sectors have clustered in this location in ENGLISH (2-3 paragraphs). Include examples of successful brands and the ecosystem that supports them.]
 
-"Quote from local business leader or economist about regional opportunities," with attribution.
+## Market Trends and Opportunities
 
-Discussion of infrastructure, logistics, and connectivity that make this location attractive for business operations.
+[Identify emerging trends specific to this location in ENGLISH (2-3 paragraphs). Include consumer behavior data and a quote from a market analyst if available.]
 
-## Sector Concentration Heading
+## Regional Brand Spotlight
 
-Deep dive into how specific sectors have clustered in this location. Explain the factors that have led to this concentration (resources, skills, history, etc.).
+[Profile 1-2 representative brands from this location in ENGLISH (2-3 paragraphs). Include how they leverage geographic advantages and their growth stories.]
 
-Examples of successful brands from this location and their competitive advantages. Include specific success stories.
+## Strategic Insights
 
-Analysis of the ecosystem of suppliers, distributors, and supporting services that have developed around these sectors.
-
-## Market Trends and Opportunities Heading
-
-Identification of emerging trends specific to this location. Include data on consumer behavior, preferences, and purchasing power.
-
-"Quote from market researcher or industry analyst about local market dynamics," with attribution.
-
-Discussion of gaps in the market or underserved consumer needs that present opportunities for new entrants.
-
-## Regional Brand Spotlight Heading
-
-Profile of 1-2 representative brands from this location that exemplify the region's strengths. Include their founding stories and growth trajectories.
-
-Details about how these brands leverage their geographic advantages and what makes them distinctive in their sectors.
-
-Future outlook for the region, including infrastructure projects, policy changes, or demographic shifts that will impact business opportunities.
-
-## Strategic Insights Heading
-
-Actionable takeaways for businesses considering this location. Include advice on market entry, partnership strategies, and success factors.
-
-Key metrics and indicators to watch for gauging the region's continued development and opportunities.
-
-Conclusion summarizing why this location represents a compelling opportunity for international partnerships and investment.
+[Write actionable takeaways for businesses in ENGLISH (2-3 paragraphs). Include market entry advice and conclude with why this location is compelling for investment.]
