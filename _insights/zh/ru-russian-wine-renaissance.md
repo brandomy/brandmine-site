@@ -4,7 +4,7 @@ layout: insight
 ref: ru-russian-wine-renaissance  # insight slug For language switcher
 title: "俄罗斯葡萄酒复兴：五年内市场增长52%"
 lang: zh
-permalink: /zh/insights/ru/russian-wine-renaissance/
+permalink: /zh/insights/ru-russian-wine-renaissance/
 
 # Basic Information
 date: 2025-04-01  # Publication date

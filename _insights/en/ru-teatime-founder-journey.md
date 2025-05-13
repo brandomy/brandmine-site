@@ -38,7 +38,7 @@ location_region: "Moscow"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code 
 
 # Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime-production.jpg"
+hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime.jpg"
 founder_portrait: "/assets/images/insights/ru-teatime-founder-journey/founder-portrait-alexei-sokolov.jpg"  # Optional
 logo: "/assets/images/insights/ru-teatime-founder-journey/logo-teatime.jpg"  # Optional
 ---

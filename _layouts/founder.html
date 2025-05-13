@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<!-- ----------------------------------------------------------------------------
+  FOUNDER DETAIL LAYOUT (REFACTORED)
+  ------------------------------------------------------------------------------
+  Used for displaying the full profile of an individual founder:
+
+    - /en/founders/ru-ivan-petrov/
+    - /zh/founders/ru-ivan-petrov/
+    - /ru/founders/ru-ivan-petrov/
+
+  Purpose:
+  - Renders founder metadata (name, portrait, social media, expertise)
+  - Displays connected brands and founder story
+  - Links to related brands and insights
+  - Fully supports multilingual content using page.lang
+
+  Used by:
+  - Files in _founders/
+
+  Dependencies:
+  - _includes/pages/founder/* components
+  - site.data.translations
+  - site.data.dimensions
+---------------------------------------------------------------------------- -->
+<div class="founder-profile container">
+  <!-- Header with portrait and basic metadata -->
+  {% include pages/founder/header.html founder=page %}
+
+  <!-- Main Content -->
+  <div class="founder-profile__details row mt-4">
+    <!-- Main Content Column -->
+    <div class="col-md-8">
+      <!-- Founder Biography from Markdown Content -->
+      {% include pages/founder/content.html founder=page content=content %}
+    </div>
+
+    <!-- Sidebar Column -->
+    <div class="col-md-4">
+      {% include pages/founder/sidebar.html founder=page %}
+    </div>
+  </div>
+</div>

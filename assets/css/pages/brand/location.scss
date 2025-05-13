@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Brand Location Styles
+   ==========================================================================
+   Styles for the location component of the brand detail page.
+*/
+
+.brand-location {
+  margin-bottom: var(--space-8);
+  
+  &__heading {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--primary-800);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  &__map {
+    margin-bottom: var(--space-4);
+  }
+  
+  &__map-container {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--neutral-100);
+    
+    /* Placeholder styles when map is loading */
+    &:empty::before {
+      content: "Map loading...";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--neutral-500);
+      font-style: italic;
+    }
+  }
+  
+  &__details {
+    margin-top: var(--space-4);
+  }
+  
+  &__address {
+    color: var(--neutral-700);
+    margin: 0;
+  }
+  
+  @media (max-width: 767px) {
+    &__heading {
+      font-size: var(--text-xl);
+    }
+    
+    &__map-container {
+      height: 300px;
+    }
+  }
+}

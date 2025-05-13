@@ -1,0 +1,112 @@
+{% comment %}
+  Component: pages/founder/header.html
+  Purpose: Displays the header section of a founder page, including portrait, name, title and metadata
+  Parameters:
+    - founder: The founder object to display (default: page)
+  Dependencies:
+    - assets/css/pages/founder/header.scss
+    - site.data.translations[lang].founder
+    - site.data.dimensions[lang]
+
+  Usage examples:
+    {% include pages/founder/header.html %}
+    {% include pages/founder/header.html founder=page %}
+    {% include pages/founder/header.html founder=custom_founder %}
+{% endcomment %}
+
+{% assign founder = include.founder | default: page %}
+
+<div class="founder-header row">
+  <div class="col-md-4">
+    {% if founder.portrait_image %}
+    <div class="founder-portrait">
+      <img src="{{ site.baseurl }}/{{ founder.portrait_image }}" alt="{{ founder.name }}" class="founder-portrait__image">
+    </div>
+    {% endif %}
+
+    <!-- Social Media -->
+    {% if founder.social %}
+    <div class="founder-social">
+      {% if founder.social.instagram %}
+      <a href="https://instagram.com/{{ founder.social.instagram }}" target="_blank" rel="noopener" 
+         class="founder-social__link founder-social__link--instagram">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[founder.lang].social.instagram | default: "Instagram" }}</span>
+      </a>
+      {% endif %}
+      
+      {% if founder.social.linkedin %}
+      <a href="https://linkedin.com/in/{{ founder.social.linkedin }}" target="_blank" rel="noopener" 
+         class="founder-social__link founder-social__link--linkedin">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[founder.lang].social.linkedin | default: "LinkedIn" }}</span>
+      </a>
+      {% endif %}
+      
+      {% if founder.social.twitter %}
+      <a href="https://twitter.com/{{ founder.social.twitter }}" target="_blank" rel="noopener" 
+         class="founder-social__link founder-social__link--twitter">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[founder.lang].social.twitter | default: "Twitter" }}</span>
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  <div class="col-md-8">
+    <h1 class="founder-profile__title">{{ founder.name }}</h1>
+    
+    {% if founder.title_position %}
+    <div class="founder-profile__title-position">
+      {{ founder.title_position }}
+    </div>
+    {% endif %}
+    
+    <div class="founder-profile__meta">
+      <!-- Generation -->
+      {% if founder.generation %}
+      <div class="founder-profile__meta-item">
+        <span class="founder-profile__meta-label">{{ site.data.translations[founder.lang].founder.generation | default: "Generation" }}:</span>
+        <span class="founder-profile__meta-value">
+          {% case founder.generation %}
+            {% when "first" %}
+              {{ site.data.translations[founder.lang].generation.first }}
+            {% when "second" %}
+              {{ site.data.translations[founder.lang].generation.second }}
+            {% when "third" %}
+              {{ site.data.translations[founder.lang].generation.third }}
+            {% when "transition" %}
+              {{ site.data.translations[founder.lang].generation.transition }}
+            {% else %}
+              {{ founder.generation }}
+          {% endcase %}
+        </span>
+      </div>
+      {% endif %}
+      
+      <!-- Location -->
+      {% if founder.country_code or founder.region or founder.city %}
+      <div class="founder-profile__meta-item">
+        <span class="founder-profile__meta-label">{{ site.data.translations[founder.lang].founder.location | default: "Location" }}:</span>
+        <span class="founder-profile__meta-value">
+          {% if founder.city %}{{ founder.city }}{% endif %}
+          {% if founder.region %}{% if founder.city %}, {% endif %}{{ founder.region }}{% endif %}
+          {% if founder.country_code %}{% if founder.city or founder.region %}, {% endif %}{{ site.data.dimensions[founder.lang].markets[founder.country_code] | default: founder.country_code }}{% endif %}
+        </span>
+      </div>
+      {% endif %}
+      
+      <!-- Expertise -->
+      {% if founder.expertise %}
+      <div class="founder-profile__meta-item">
+        <span class="founder-profile__meta-label">{{ site.data.translations[founder.lang].founder.expertise | default: "Expertise" }}:</span>
+        <div class="founder-profile__expertise-tags">
+          {% for expertise in founder.expertise %}
+          <span class="founder-profile__tag founder-profile__tag--expertise">{{ expertise }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

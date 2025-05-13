@@ -1,0 +1,199 @@
+{% comment %}
+  Component: pages/brand/sidebar.html
+  Purpose: Displays the sidebar for a brand page with attributes, signals, contact info, social media
+  Parameters:
+    - brand: The brand object to display (default: page)
+  Dependencies:
+    - assets/css/pages/brand/sidebar.scss
+    - site.data.translations[lang].dimensions
+    - site.data.dimensions[lang]
+    - site.insights collection
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+
+<div class="brand-sidebar">
+  <!-- Brand Attributes -->
+  {% if brand.attributes %}
+  <div class="brand-sidebar__section">
+    <h3 class="brand-sidebar__heading">{{ site.data.translations[brand.lang].dimensions.attributes }}</h3>
+    <div class="brand-sidebar__tags">
+      {% for attribute in brand.attributes %}
+      <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/attributes/{{ attribute | slugify }}/" class="brand-sidebar__tag brand-sidebar__tag--attribute">
+        {{ site.data.dimensions[brand.lang].attributes[attribute] | default: attribute }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Brand Signals (only shown for featured_level > 0) -->
+  {% if brand.signals and brand.featured_level > 0 %}
+  <div class="brand-sidebar__section">
+    <h3 class="brand-sidebar__heading">{{ site.data.translations[brand.lang].dimensions.signals }}</h3>
+    <div class="brand-sidebar__tags">
+      {% for signal in brand.signals %}
+      <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/signals/{{ signal | slugify }}/" class="brand-sidebar__tag brand-sidebar__tag--signal">
+        {{ site.data.dimensions[brand.lang].signals[signal] | default: signal }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Contact Information (only for featured_level > 0) -->
+  {% if brand.featured_level > 0 %}
+  <div class="brand-sidebar__section">
+    <h3 class="brand-sidebar__heading">{{ site.data.translations[brand.lang].brand.contact }}</h3>
+    
+    {% if brand.contact_email %}
+    <p class="brand-sidebar__contact-item">
+      <span class="brand-sidebar__contact-label">{{ site.data.translations[brand.lang].brand.email }}:</span>
+      <a href="mailto:{{ brand.contact_email }}" class="brand-sidebar__contact-link">{{ brand.contact_email }}</a>
+    </p>
+    {% endif %}
+    
+    {% if brand.website %}
+    <p class="brand-sidebar__contact-item">
+      <span class="brand-sidebar__contact-label">{{ site.data.translations[brand.lang].brand.website }}:</span>
+      <a href="{{ brand.website }}" target="_blank" rel="noopener" class="brand-sidebar__contact-link">{{ brand.website }}</a>
+    </p>
+    {% endif %}
+  </div>
+  {% endif %}
+  
+  <!-- Social Media Links (for featured_level > 0) -->
+  {% if brand.featured_level > 0 and brand.social_media %}
+  <div class="brand-sidebar__section">
+    <h3 class="brand-sidebar__heading">{{ site.data.translations[brand.lang].brand.social_media }}</h3>
+    <div class="brand-sidebar__social-icons">
+      {% if brand.social_media.facebook %}
+      <a href="{{ brand.social_media.facebook }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.facebook }}">
+        <i class="fab fa-facebook" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.facebook }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.instagram %}
+      <a href="{{ brand.social_media.instagram }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.instagram }}">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.instagram }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.linkedin %}
+      <a href="{{ brand.social_media.linkedin }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.linkedin }}">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.linkedin }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.pinterest %}
+      <a href="{{ brand.social_media.pinterest }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.pinterest }}">
+        <i class="fab fa-pinterest" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.pinterest }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.redbook %}
+      <a href="{{ brand.social_media.redbook }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.redbook }}">
+        <i class="fab fa-book" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.redbook }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.telegram %}
+      <a href="{{ brand.social_media.telegram }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.telegram }}">
+        <i class="fab fa-telegram" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.telegram }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.tiktok %}
+      <a href="{{ brand.social_media.tiktok }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.tiktok }}">
+        <i class="fab fa-tiktok" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.tiktok }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.twitter %}
+      <a href="{{ brand.social_media.twitter }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.twitter }}">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.twitter }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.vk %}
+      <a href="{{ brand.social_media.vk }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.vk }}">
+        <i class="fab fa-vk" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.vk }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.wechat %}
+      <a href="{{ brand.social_media.wechat }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.wechat }}">
+        <i class="fab fa-weixin" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.wechat }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.weibo %}
+      <a href="{{ brand.social_media.weibo }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.weibo }}">
+        <i class="fab fa-weibo" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.weibo }}</span>
+      </a>
+      {% endif %}
+      
+      {% if brand.social_media.youtube %}
+      <a href="{{ brand.social_media.youtube }}" target="_blank" rel="noopener" 
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[brand.lang].social.youtube }}">
+        <i class="fab fa-youtube" aria-hidden="true"></i>
+        <span class="sr-only">{{ site.data.translations[brand.lang].social.youtube }}</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  
+  <!-- Related Insights Section -->
+  {% assign related_insights = site.insights | where: "lang", brand.lang | where_exp: "item", "item.brands contains brand.slug" | limit: 3 %}
+  {% if related_insights.size > 0 %}
+  <div class="brand-sidebar__section">
+    <h3 class="brand-sidebar__heading">{{ site.data.translations[brand.lang].brand.related_insights }}</h3>
+    {% for insight in related_insights %}
+    <div class="brand-sidebar__related-insight">
+      <h4 class="brand-sidebar__insight-title">
+        <a href="{{ insight.url | relative_url }}" class="brand-sidebar__insight-link">{{ insight.title }}</a>
+      </h4>
+      <span class="brand-sidebar__insight-type">
+        {% capture category_key %}{{ insight.category | replace: "-", "_" }}{% endcapture %}
+        {{ site.data.translations[brand.lang].insights[category_key] | default: insight.category }}
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

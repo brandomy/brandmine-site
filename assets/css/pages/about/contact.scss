@@ -1,0 +1,75 @@
+/* ==========================================================================
+   About Page - Contact Section
+   ==========================================================================
+   Styles for the contact section with form
+*/
+
+.about-contact {
+  &__title {
+    color: white;
+    text-align: center;
+    margin-bottom: var(--space-4);
+  }
+  
+  &__lead-text {
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-8);
+  }
+  
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    margin: var(--space-8) 0;
+    
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+  }
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    
+    a, a:visited {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+      
+      &:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: var(--space-3);
+    color: white;
+  }
+  
+  &__form-wrapper {
+    max-width: 800px;
+    margin: var(--space-8) auto;
+  }
+  
+  &__form-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    
+    @media (max-width: 767px) {
+      padding: var(--space-4);
+    }
+  }
+}

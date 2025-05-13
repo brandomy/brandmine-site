@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Brands Page - Brands Grid Section
+   ==========================================================================
+   Styles for the main brands grid display
+*/
+
+.brands-grid {
+  margin-bottom: var(--space-8);
+  
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+    margin: var(--space-6) 0;
+    
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+  
+  &__empty {
+    text-align: center;
+    padding: var(--space-8) 0;
+  }
+  
+  &__empty-message {
+    font-size: var(--text-lg);
+    color: var(--gray-500);
+  }
+  
+  &__load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-6);
+  }
+  
+  &__load-more-button {
+    padding: var(--space-2) var(--space-6);
+    background-color: var(--secondary-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: var(--secondary-600);
+    }
+  }
+}

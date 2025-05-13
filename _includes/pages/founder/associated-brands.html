@@ -1,0 +1,46 @@
+{% comment %}
+  Component: pages/founder/associated-brands.html
+  Purpose: Displays a list of brands associated with a founder
+  Parameters:
+    - founder: The founder object to display (default: page)
+  Dependencies:
+    - assets/css/pages/founder/associated-brands.scss
+    - site.data.translations[lang].founder
+    - site.data.dimensions[lang]
+
+  Usage examples:
+    {% include pages/founder/associated-brands.html %}
+    {% include pages/founder/associated-brands.html founder=page %}
+    {% include pages/founder/associated-brands.html founder=custom_founder %}
+{% endcomment %}
+
+{% assign founder = include.founder | default: page %}
+
+{% if founder.brands %}
+<div class="founder-profile__brands">
+  <h3>{{ site.data.translations[founder.lang].founder.associated_brands | default: "Associated Brands" }}</h3>
+  <div class="founder-associated-brands">
+    {% for brand_slug in founder.brands %}
+      {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", founder.lang | first %}
+      {% if brand %}
+      <div class="founder-brand-card">
+        <h4><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h4>
+        <div class="brand-meta">
+          {% if brand.sectors and brand.sectors.size > 0 %}
+          <span class="brand-sector">
+            {{ site.data.dimensions[founder.lang].sectors[brand.sectors[0]] | default: brand.sectors[0] }}
+          </span>
+          {% endif %}
+          
+          {% if brand.founding_year %}
+          <span class="brand-founding-year">
+            {{ site.data.translations[founder.lang].brand.established | default: "Est." }} {{ brand.founding_year }}
+          </span>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

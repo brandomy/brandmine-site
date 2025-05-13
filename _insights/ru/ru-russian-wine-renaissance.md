@@ -4,7 +4,7 @@ layout: insight
 ref: ru-russian-wine-renaissance  # insight slug For language switcher
 title: "Ренессанс российского виноделия: рост рынка на 52% за пять лет"
 lang: ru
-permalink: /ru/insights/ru/russian-wine-renaissance/
+permalink: /ru/insights/ru-russian-wine-renaissance/
 
 # Basic Information
 date: 2025-04-01  # Publication date

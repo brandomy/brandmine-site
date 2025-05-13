@@ -1,0 +1,53 @@
+{% comment %}
+  Component: pages/brand/certifications.html
+  Purpose: Displays the certifications and awards section of a brand page
+  Parameters:
+    - brand: The brand object to display (default: page)
+    - show_certifications: Whether to show the certifications section (default: true)
+  Dependencies:
+    - assets/css/pages/brand/certifications.scss
+    - site.data.translations[lang].brand
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+{% assign show_certifications = include.show_certifications | default: true %}
+
+{% if show_certifications and brand.featured_level > 0 and brand.certifications or brand.awards %}
+<div class="brand-certifications">
+  <h2 class="brand-certifications__heading">{{ site.data.translations[brand.lang].brand.certifications }}</h2>
+  
+  {% if brand.certifications %}
+  <div class="brand-certifications__section">
+    <h3 class="brand-certifications__subheading">{{ site.data.translations[brand.lang].brand.certifications }}</h3>
+    <ul class="brand-certifications__list">
+      {% for certification in brand.certifications %}
+      <li class="brand-certifications__item">
+        <span class="brand-certifications__name">{{ certification.name }}</span>
+        <span class="brand-certifications__year">({{ certification.year }})</span>
+        {% if certification.description %}
+        <p class="brand-certifications__description">{{ certification.description }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  {% if brand.awards %}
+  <div class="brand-certifications__section">
+    <h3 class="brand-certifications__subheading">{{ site.data.translations[brand.lang].general.awards }}</h3>
+    <ul class="brand-certifications__list">
+      {% for award in brand.awards %}
+      <li class="brand-certifications__item">
+        <span class="brand-certifications__name">{{ award.name }}</span>
+        <span class="brand-certifications__year">({{ award.year }})</span>
+        {% if award.description %}
+        <p class="brand-certifications__description">{{ award.description }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+{% endif %}

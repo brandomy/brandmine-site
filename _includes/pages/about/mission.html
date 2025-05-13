@@ -1,0 +1,25 @@
+{% comment %}
+  Component: pages/about/mission.html
+  
+  Purpose: Displays the mission statement section of the About page
+  
+  Parameters:
+    title (optional): Section title, defaults to mission translation
+    lead_text (optional): Main text, defaults to lead_text translation
+    panel_type (optional): Panel background style, defaults to "primary-soft"
+    
+  Dependencies:
+    - CSS: pages/about/mission.scss
+    - site.data.translations for titles and text
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "primary-soft" %}
+{% assign title = include.title | default: site.data.translations[page.lang].about.mission %}
+{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].about.lead_text %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary about-mission__title">{{ title }}</h2>
+    <p class="panel__lead-text about-mission__text">{{ lead_text }}</p>
+  </div>
+</div>

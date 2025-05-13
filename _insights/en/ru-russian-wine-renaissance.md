@@ -4,7 +4,7 @@ layout: insight
 ref: ru-russian-wine-renaissance  # insight slug For language switcher
 title: "Russian Wine Renaissance: 52% Market Growth Over Five Years"
 lang: en
-permalink: /en/insights/ru/russian-wine-renaissance/
+permalink: /en/insights/ru-russian-wine-renaissance/
 
 # Basic Information
 date: 2025-04-01  # Publication date

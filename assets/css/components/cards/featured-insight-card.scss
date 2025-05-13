@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Featured Insight Card Component (Mobile-First)
+   ========================================================================== */
+
+/* Base styling */
+.featured-insight-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-medium);
+  background: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+}
+
+/* Card link styling */
+.featured-insight-card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Image container */
+.featured-insight-card__image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--neutral-100);
+}
+
+/* Image styling */
+.featured-insight-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+/* Image hover effect */
+.featured-insight-card:hover .featured-insight-card__img {
+  transform: scale(1.05);
+}
+
+/* Placeholder for missing images */
+.featured-insight-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-400);
+}
+
+.featured-insight-card__placeholder svg {
+  width: 48px;
+  height: 48px;
+}
+
+/* Category badge */
+.featured-insight-card__category {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  text-transform: capitalize;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.featured-insight-card__category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.featured-insight-card__category-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Card content container */
+.featured-insight-card__content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: white;
+}
+
+/* Card title */
+.featured-insight-card__title {
+  color: var(--neutral-900);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-2) 0;
+}
+
+/* Meta information */
+.featured-insight-card__meta {
+  display: flex;
+  gap: var(--space-2);
+  color: var(--neutral-600);
+  font-size: var(--text-xs);
+  margin-bottom: var(--space-3);
+}
+
+/* Excerpt text */
+.featured-insight-card__excerpt {
+  color: var(--neutral-700);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-3);
+  flex-grow: 1;
+}
+
+/* Read more link */
+.featured-insight-card__read-more {
+  color: var(--primary-600);
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Category-specific styling */
+.featured-insight-card--brand-spotlight {
+  border-left: 4px solid var(--secondary-400);
+}
+
+.featured-insight-card--founders-journey {
+  border-left: 4px solid var(--accent-400);
+}
+
+.featured-insight-card--location-intelligence {
+  border-left: 4px solid var(--sky-400);
+}
+
+.featured-insight-card--market-momentum {
+  border-left: 4px solid var(--olive-400);
+}
+
+/* Category-specific badge styling */
+.featured-insight-card--brand-spotlight .featured-insight-card__category {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border: 1px solid var(--secondary-200);
+}
+
+.featured-insight-card--founders-journey .featured-insight-card__category {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
+}
+
+.featured-insight-card--location-intelligence .featured-insight-card__category {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
+}
+
+.featured-insight-card--market-momentum .featured-insight-card__category {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border: 1px solid var(--olive-200);
+}
+
+/* Featured card styling */
+.featured-insight-card--featured {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (min-width: 480px) {
+  .featured-insight-card__title {
+    font-size: var(--text-xl);
+  }
+  
+  .featured-insight-card__excerpt {
+    font-size: var(--text-base);
+  }
+  
+  .featured-insight-card__image {
+    height: 220px;
+  }
+}
+
+@media (min-width: 768px) {
+  .featured-insight-card__title {
+    font-size: var(--text-xl);
+  }
+  
+  .featured-insight-card__image {
+    height: 240px;
+  }
+  
+  .featured-insight-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .featured-insight-card--featured:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+@media (min-width: 992px) {
+  .featured-insight-card__category {
+    font-size: var(--text-sm);
+  }
+  
+  /* Hover effects for desktop */
+  .featured-insight-card--brand-spotlight:hover {
+    box-shadow: 0 8px 16px rgba(249, 115, 22, 0.1);
+  }
+  
+  .featured-insight-card--founders-journey:hover {
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.1);
+  }
+  
+  .featured-insight-card--location-intelligence:hover {
+    box-shadow: 0 8px 16px rgba(14, 165, 233, 0.1);
+  }
+  
+  .featured-insight-card--market-momentum:hover {
+    box-shadow: 0 8px 16px rgba(163, 183, 99, 0.1);
+  }
+}

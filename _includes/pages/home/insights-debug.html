@@ -1,0 +1,22 @@
+<div class="panel">
+  <div class="panel__content">
+    <h3>Insights Debug</h3>
+    <p>Total insights in collection: {{ site.insights.size }}</p>
+    <p>Current page language: {{ page.lang }}</p>
+    <p>Insights in {{ page.lang }}: {{ site.insights | where: "lang", page.lang | size }}</p>
+
+    <h4>All Insights:</h4>
+    <ul>
+      {% for insight in site.insights %}
+        <li>
+          Title: {{ insight.title }}<br>
+          Category: {{ insight.category }}<br>
+          Language: {{ insight.lang }}<br>
+          URL: {{ insight.url }}<br>
+          Date: {{ insight.date }}<br>
+          ---
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

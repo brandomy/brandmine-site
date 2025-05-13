@@ -1,0 +1,30 @@
+{% comment %}
+  Component: pages/brand/hero.html
+  Purpose: Displays the hero image for a brand page
+  Parameters:
+    - brand: The brand object to display (default: page)
+    - show_hero: Whether to show the hero image (default: true)
+  Dependencies:
+    - assets/css/pages/brand/hero.scss
+    - components/images/brand-image.html
+
+  Usage examples:
+    {% include pages/brand/hero.html %}
+    {% include pages/brand/hero.html brand=page %}
+    {% include pages/brand/hero.html show_hero=false %}
+    {% include pages/brand/hero.html brand=custom_brand show_hero=true %}
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+{% assign show_hero = include.show_hero | default: true %}
+
+{% if show_hero and brand.hero_image %}
+<div class="brand-hero">
+  {% include components/images/brand-image.html 
+     country=brand.country_code
+     brand=brand.slug
+     image="main"
+     purpose="hero"
+     alt=brand.title %}
+</div>
+{% endif %}

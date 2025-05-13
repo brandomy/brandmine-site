@@ -1,0 +1,37 @@
+{% comment %}
+  Component: pages/brands/featured-brands.html
+  
+  Purpose: Displays a featured brands section with highlighted brands
+  
+  Parameters:
+    title (optional): Custom section title, defaults to brands.featured_brands translation
+    description (optional): Custom description text, defaults to brands.featured_description translation
+    limit (optional): Number of featured brands to display, defaults to 3
+    panel_type (optional): Panel background style, defaults to "olive-soft"
+    
+  Dependencies:
+    - CSS: pages/brands/featured-brands.scss
+    - _includes/components/cards/featured-brand.html
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "olive-soft" %}
+{% assign limit = include.limit | default: 3 %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: site.data.translations[page.lang].brands.featured_brands }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.description | default: site.data.translations[page.lang].brands.featured_description }}
+    </p>
+    
+    <div class="featured-brands__grid">
+      {% assign featured_brands = site.brands | where: "lang", page.lang | where_exp: "b", "b.featured_level > 1" | limit: limit %}
+      {% for brand in featured_brands %}
+        {% include components/cards/featured-brand.html content=brand content_type="brand" %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+{% comment %}
+  Component: pages/insight/sidebar.html
+  Purpose: Displays the sidebar for an insight page with featured brands, related insights, etc.
+  Parameters:
+    - insight: The insight object (default: page)
+  Dependencies:
+    - assets/css/pages/insight/sidebar.scss
+    - site.data.translations[lang].insights
+    - site.brands collection
+    - site.insights collection
+{% endcomment %}
+
+{% assign insight = include.insight | default: page %}
+
+<div class="insight-sidebar">
+  <!-- Featured Brands Section -->
+  {% if insight.brands and insight.brands.size > 0 %}
+  <div class="insight-sidebar__section">
+    <h3 class="insight-sidebar__heading">{{ site.data.translations[insight.lang].insights.featured_brands }}</h3>
+    <div class="insight-sidebar__brands">
+      {% for brand_slug in insight.brands %}
+        {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", insight.lang | first %}
+        {% if brand %}
+        <div class="insight-sidebar__brand-card">
+          <h4 class="insight-sidebar__brand-title">
+            <a href="{{ brand.url | relative_url }}" class="insight-sidebar__brand-link">{{ brand.brand_name | default: brand.title }}</a>
+          </h4>
+          <div class="insight-sidebar__brand-info">
+            {% if brand.sectors and brand.sectors.size > 0 %}
+            <span class="insight-sidebar__brand-sector">
+              {{ site.data.dimensions[insight.lang].sectors[brand.sectors[0]] | default: brand.sectors[0] }}
+            </span>
+            {% endif %}
+            <p class="insight-sidebar__brand-description">{{ brand.description | truncate: 80 }}</p>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  
+  <!-- Related Insights Section -->
+  <div class="insight-sidebar__section">
+    <h3 class="insight-sidebar__heading">{{ site.data.translations[insight.lang].insights.related }}</h3>
+    <div class="insight-sidebar__related">
+      {% assign related_insights = site.insights | where: "lang", insight.lang | where: "category", insight.category | where_exp: "item", "item.url != insight.url" | sample: 3 %}
+      {% if related_insights.size > 0 %}
+        {% for related in related_insights %}
+        <div class="insight-sidebar__related-item">
+          <h4 class="insight-sidebar__related-title">
+            <a href="{{ related.url | relative_url }}" class="insight-sidebar__related-link">{{ related.title }}</a>
+          </h4>
+          <div class="insight-sidebar__related-meta">
+            <span class="insight-sidebar__related-date">{{ related.date | date: "%B %-d, %Y" }}</span>
+            {% if related.reading_time %}
+            <span class="insight-sidebar__related-reading-time">
+              {{ related.reading_time }} {{ site.data.translations[insight.lang].insights.reading_time }}
+            </span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p class="insight-sidebar__empty">{{ site.data.translations[insight.lang].insights.no_related }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Secondary Categories (if present) -->
+  {% if insight.secondary_categories and insight.secondary_categories.size > 0 %}
+  <div class="insight-sidebar__section">
+    <h3 class="insight-sidebar__heading">{{ site.data.translations[insight.lang].insights.secondary_categories }}</h3>
+    <div class="insight-sidebar__categories">
+      {% for category in insight.secondary_categories %}
+        <a href="{{ site.baseurl }}/{{ insight.lang }}/insights/categories/{{ category | slugify }}/" 
+           class="insight-sidebar__category insight-sidebar__category--{{ category | slugify }}">
+           {% capture category_key %}{{ category | replace: "-", "_" }}{% endcapture %}
+           {{ site.data.translations[insight.lang].insights[category_key] | default: category }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  
+  <!-- Country Information (if present) -->
+  {% if insight.country_code %}
+  <div class="insight-sidebar__section">
+    <h3 class="insight-sidebar__heading">{{ site.data.translations[insight.lang].insights.country_focus }}</h3>
+    <div class="insight-sidebar__country">
+      {% assign country_market = site.data.dimensions[insight.lang].markets[insight.country_code] | default: insight.country_code %}
+      <a href="{{ site.baseurl }}/{{ insight.lang }}/discover/markets/{{ insight.country_code }}/" 
+         class="insight-sidebar__country-link">
+        <span class="insight-sidebar__country-flag insight-sidebar__country-flag--{{ insight.country_code }}"></span>
+        <span class="insight-sidebar__country-name">{{ country_market }}</span>
+      </a>
+    </div>
+  </div>
+  {% endif %}
+</div>

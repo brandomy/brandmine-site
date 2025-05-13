@@ -1,103 +1,76 @@
-<!-- latest-insights.html component placeholder -->
 {% comment %}
   Component: pages/home/latest-insights.html
-
-  Purpose: Displays a 2x2 grid of latest insights organized by category
-
-  Parameters:
-    title (optional): Custom section title, defaults to translation key or "Latest Insights"
-    lead_text (optional): Custom lead text
-    panel_type (optional): Panel style/color, defaults to "primary-soft"
-    categories (optional): Array of category names to display, defaults to all categories
-    limit (optional): Number of insights per category, defaults to 1
-
-  Dependencies:
-    - CSS: components/layout/panels.css, components/insights-category-grid.css
-    <!-- not sure that the latter exists -->
-
-  Usage:
-  {% include pages/home/latest-insights.html %}
-  {% include pages/home/latest-insights.html panel_type="accent-soft" %}
-  {% include pages/home/latest-insights.html categories="markets,sectors" limit=2 %}
+  Purpose: Displays 4 featured insights, one from each category
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "primary-soft" %}
 {% assign title = include.title | default: site.data.translations[page.lang].insights.latest | default: "Latest Insights" %}
-{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].insights.discover_description | default: "Uncover hidden gems and compelling founder journeys from emerging markets that deserve global attention" %}
-{% assign categories = include.categories | default: "markets,sectors,attributes,signals" | split: "," %}
-{% assign limit = include.limit | default: 1 %}
+{% assign current_lang = page.lang | default: 'en' %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ title }}</h2>
-    <p class="panel__lead-text">{{ lead_text }}</p>
 
-    <!-- 2x2 Insights Grid by Category -->
-    <div class="insights-category-grid">
-      {% for category in categories %}
-        {% assign category_name = category | strip %}
+    <div class="latest-insights-featured">
+      <!-- Get all insights for current language -->
+      {% assign filtered_insights = site.insights | where: "lang", current_lang %}
 
-        <!-- {{ category_name | capitalize }} Category -->
-        <div class="insights-category insights-category--{{ category_name }}">
-          <div class="insights-category__header">
-            <div class="insights-category__icon insights-category__icon--{{ category_name }}">
-              {% assign icon_name = category_name | append: "-default" %}
-              {% include components/icons/icon.html type=category_name name=icon_name size="sm" %}
-            </div>
-            <h3 class="insights-category__title">{{ category_name | capitalize }}</h3>
-          </div>
-
-          {% assign category_insight = site.insights | where: "lang", page.lang | where: "primary_dimension", category_name | sort: "date" | reverse | first %}
-          {% if category_insight %}
-            <div class="insights-category__card">
-              <a href="{{ category_insight.url | relative_url }}">
-                <div class="insights-category__image-wrapper">
-                  <img src="{{ category_insight.image | relative_url }}" alt="{{ category_insight.title }}" class="insights-category__image">
-                </div>
-                <div class="insights-category__content">
-                  <h4 class="insights-category__card-title">{{ category_insight.title }}</h4>
-                  <p class="insights-category__excerpt">{{ category_insight.excerpt | strip_html | truncate: 120 }}</p>
-                  <div class="insights-category__meta">
-                    <div class="insights-category__tags">
-                      <!-- Content Type Tag -->
-                      <span class="tag">{{ category_insight.content_type }}</span>
-
-                      {% if category_insight[category_name].size > 0 %}
-                        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ category_name }}/{{ category_insight[category_name][0] | slugify }}/" class="tag tag--{{ category_name | singularize }}">{{ category_insight[category_name][0] }}</a>
-                      {% endif %}
-
-                      {% for dim in categories %}
-                        {% if dim != category_name and category_insight[dim].size > 0 %}
-                          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ dim }}/{{ category_insight[dim][0] | slugify }}/" class="tag tag--{{ dim | singularize }}">{{ category_insight[dim][0] }}</a>
-                          {% break %}
-                        {% endif %}
-                      {% endfor %}
-                    </div>
-                  </div>
-                  <div class="insights-category__footer">
-                    <span class="insights-category__date">{{ category_insight.date | date: "%b %-d, %Y" }}</span>
-                    <a href="{{ category_insight.url | relative_url }}" class="insights-category__read-more">
-                      <span>{{ site.data.translations[page.lang].home.latest_insights.read_more | default: "Read more" }}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
-                    </a>
-                  </div>
-                </div>
-              </a>
-            </div>
-          {% endif %}
-
-          <div class="insights-category__more">
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ category_name }}/" class="insights-category__more-link">
-             {{ site.data.translations[page.lang].home.latest_insights.explore_category | default: "Explore" }} {{ category_name | capitalize }} {{ site.data.translations[page.lang].home.latest_insights.insights_label | default: "Insights" }}
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
-            </a>
+      <!-- Brand Spotlight -->
+      {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
+      {% if brand_spotlight %}
+        <!-- Brand Spotlight Card -->
+        {% include components/cards/simple-insight-card.html insight=brand_spotlight %}
+      {% else %}
+        <div class="insight-card insight-card--brand-spotlight insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
           </div>
         </div>
-      {% endfor %}
+      {% endif %}
+
+
+      <!-- Founder's Journey -->
+      {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
+      {% if founders_journey %}
+        <!-- Founder's Journey Card -->
+        {% include components/cards/simple-insight-card.html insight=founders_journey %}
+      {% else %}
+        <div class="insight-card insight-card--founders-journey insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Location Intelligence -->
+      {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
+      {% if location_intelligence %}
+        {% include components/cards/simple-insight-card.html insight=location_intelligence %}
+      {% else %}
+        <div class="insight-card insight-card--location-intelligence insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Market Momentum -->
+      {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
+      {% if market_momentum %}
+        {% include components/cards/simple-insight-card.html insight=market_momentum %}
+      {% else %}
+        <div class="insight-card insight-card--market-momentum insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
     </div>
 
     <div class="view-all-insights">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--outline-light" data-track="latest-insights">{{ site.data.translations[page.lang].insights.view_all }}</a>
+      <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--outline-light">
+        {{ site.data.translations[current_lang].insights.view_all | default: "View All Insights" }}
+      </a>
     </div>
   </div>
 </div>

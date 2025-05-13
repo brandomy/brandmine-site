@@ -1,0 +1,70 @@
+{% comment %}
+  Component: pages/insight/header.html
+  Purpose: Displays the header section of an insight page, including title, meta information, and hero image
+  Parameters:
+    - insight: The insight object to display (required)
+    - back_link_path: Path for the back link (default: /[lang]/insights/)
+    - back_link_text: Text for the back link (default: from translations)
+  Dependencies:
+    - assets/css/pages/insight/header.scss
+    - site.data.translations[lang].insights
+
+  Usage examples:
+    {% include pages/insight/header.html %}
+    {% include pages/insight/header.html insight=page %}
+    {% include pages/insight/header.html back_link_path="/en/custom-path/" %}
+    {% include pages/insight/header.html insight=custom_insight back_link_text="Back" %}
+{% endcomment %}
+
+{% assign insight = include.insight | default: page %}
+{% assign back_link_path = include.back_link_path | default: site.baseurl | append: '/' | append: insight.lang | append: '/insights/' %}
+{% assign back_link_text = include.back_link_text | default: site.data.translations[insight.lang].insights.back_to_insights | default: 'Back to Insights' %}
+{% assign normalized_category = insight.category | replace: "-", "_" %}
+
+<div class="insight-header">
+  <a href="{{ back_link_path }}" class="insight-header__back-link">
+    ← {{ back_link_text }}
+  </a>
+  
+  <!-- Category Badge -->
+  <div class="insight-header__category-badge">
+    {{ site.data.translations[insight.lang].insights[normalized_category] | default: insight.category }}
+  </div>
+  
+  <h1 class="insight-header__title">{{ insight.title }}</h1>
+  
+  <div class="insight-header__meta">
+    <!-- Publication Date -->
+    <span class="insight-header__date">
+      {{ site.data.translations[insight.lang].insights.published_on }} 
+      {{ insight.date | date: "%B %-d, %Y" }}
+    </span>
+    
+    <!-- Author - using translation lookup -->
+    <span class="insight-header__author">
+      {{ site.data.translations[insight.lang].insights.author }}: 
+      {{ site.data.translations[insight.lang].authors[insight.author] }}
+    </span>
+    
+    <!-- Reading Time -->
+    {% if insight.reading_time %}
+    <span class="insight-header__reading-time">
+      {{ insight.reading_time }} {{ site.data.translations[insight.lang].insights.reading_time }}
+    </span>
+    {% endif %}
+    
+    <!-- Premium Badge -->
+    {% if insight.premium %}
+    <span class="insight-header__premium-badge">
+      {{ site.data.translations[insight.lang].insights.premium_content }}
+    </span>
+    {% endif %}
+  </div>
+  
+  <!-- Hero Image -->
+  {% if insight.images.hero %}
+  <div class="insight-header__image">
+    <img src="{{ insight.images.hero | relative_url }}" alt="{{ insight.title }}" class="insight-header__hero">
+  </div>
+  {% endif %}
+</div>

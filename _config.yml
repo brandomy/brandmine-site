@@ -38,6 +38,9 @@ collections:
   insights:
     output: true
     permalink: /:collection/:path/
+  founders:
+    output: true
+    permalink: /:collection/:path/
   styleguide:
     output: true
     permalink: /styleguide/:path/
@@ -140,6 +143,29 @@ defaults:
       show_time: false
       featured: false
       premium: false
+
+# Founders
+  - scope:
+      path: "_founders/en"
+      type: "founders"
+    values:
+      layout: "founder"
+      lang: "en"
+      featured: false
+  - scope:
+      path: "_founders/ru"
+      type: "founders"
+    values:
+      layout: "founder"
+      lang: "ru"
+      featured: false
+  - scope:
+      path: "_founders/zh"
+      type: "founders"
+    values:
+      layout: "founder"
+      lang: "zh"
+      featured: false
 
 # Style Guide Configuration
 styleguide:

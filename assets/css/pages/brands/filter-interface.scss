@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Brands Page - Filter Interface Section
+   ==========================================================================
+   Styles for the brands filtering and search interface
+*/
+
+.brands-filter {
+  margin-bottom: var(--space-6);
+  
+  &__results {
+    margin-top: var(--space-4);
+  }
+  
+  &__results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
+  &__results-title {
+    margin: 0;
+    font-size: var(--text-xl);
+    color: var(--gray-900);
+  }
+  
+  &__controls {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+  
+  &__featured,
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+  
+  &__label {
+    font-size: var(--text-sm);
+    color: var(--gray-700);
+    white-space: nowrap;
+  }
+  
+  &__select {
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    background-color: white;
+    min-width: 120px;
+    
+    @media (max-width: 767px) {
+      flex: 1;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: var(--primary-400);
+      box-shadow: 0 0 0 2px var(--primary-100);
+    }
+  }
+}

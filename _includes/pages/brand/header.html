@@ -1,0 +1,118 @@
+{% comment %}
+  Component: pages/brand/header.html
+  Purpose: Displays the header section of a brand page, including logo, basic metadata, and founder information
+  Parameters:
+    - brand: The brand object to display (default: page)
+  Dependencies:
+    - assets/css/pages/brand/header.scss
+    - components/images/brand-image.html
+    - site.data.translations[lang].dimensions
+    - site.data.dimensions[lang]
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+
+<div class="brand-header">
+  <div class="brand-header__logo-container">
+    {% if brand.logo %}
+    {% include components/images/brand-image.html 
+       country=brand.country_code
+       brand=brand.slug
+       image="color"
+       purpose="logo"
+       ext="png"
+       alt=brand.title %}
+    {% endif %}
+  </div>
+  
+  <div class="brand-header__content">
+    <h1 class="brand-header__title">{{ brand.title }}</h1>
+    
+    {% if brand.slogan %}
+    <div class="brand-header__slogan">
+      "{{ brand.slogan }}"
+    </div>
+    {% endif %}
+    
+    <div class="brand-header__meta">
+      <!-- Sectors -->
+      {% if brand.sectors %}
+      <div class="brand-header__meta-item">
+        <span class="brand-header__meta-label">{{ site.data.translations[brand.lang].dimensions.sectors }}:</span>
+        {% for sector in brand.sectors %}
+        <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/sectors/{{ sector | slugify }}/" class="brand-header__tag brand-header__tag--sector">
+          {{ site.data.dimensions[brand.lang].sectors[sector] | default: sector }}
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <!-- Subsectors -->
+      {% if brand.subsectors %}
+      <div class="brand-header__meta-item">
+        <span class="brand-header__meta-label">{{ site.data.translations[brand.lang].brand.subsectors }}:</span>
+        {% for subsector in brand.subsectors %}
+        <span class="brand-header__tag brand-header__tag--subsector">{{ subsector }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <!-- Markets -->
+      {% if brand.markets %}
+      <div class="brand-header__meta-item">
+        <span class="brand-header__meta-label">{{ site.data.translations[brand.lang].dimensions.markets }}:</span>
+        {% for market in brand.markets %}
+        <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/markets/{{ market | slugify }}/" class="brand-header__tag brand-header__tag--market">
+          {{ site.data.dimensions[brand.lang].markets[market] | default: market }}
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <!-- Founding Year -->
+      {% if brand.founding_year %}
+      <div class="brand-header__meta-item">
+        <span class="brand-header__meta-label">{{ site.data.translations[brand.lang].brand.founding_year }}:</span>
+        <span class="brand-header__meta-value">{{ brand.founding_year }}</span>
+      </div>
+      {% endif %}
+    </div>
+    
+    <!-- Founder (simplified) -->
+    {% if brand.founder.name %}
+    <div class="brand-header__founder-brief">
+      <strong>{{ site.data.translations[brand.lang].brand.founder }}:</strong> {{ brand.founder.name }}
+      
+      {% if brand.founder.generation %}
+      <span class="brand-header__founder-generation">
+        {% case brand.founder.generation %}
+          {% when "first" %}
+            ({{ site.data.translations[brand.lang].generation.first }})
+          {% when "second" %}
+            ({{ site.data.translations[brand.lang].generation.second }})
+          {% when "transition" %}
+            ({{ site.data.translations[brand.lang].generation.transition }})
+        {% endcase %}
+      </span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Founder Portrait (if available) -->
+    {% if brand.founder_portrait %}
+    <div class="brand-header__founder-portrait">
+      {% include components/images/brand-image.html 
+         country=brand.country_code
+         brand=brand.slug
+         image="portrait"
+         purpose="founder"
+         alt=brand.founder.name %}
+    </div>
+    {% endif %}
+    
+    <!-- Featured Level Indicator -->
+    {% if brand.featured_level > 1 %}
+    <div class="brand-header__featured-badge">{{ site.data.translations[brand.lang].general.featured }}</div>
+    {% endif %}
+  </div>
+</div>

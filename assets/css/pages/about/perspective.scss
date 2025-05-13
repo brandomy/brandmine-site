@@ -1,0 +1,79 @@
+/* ==========================================================================
+   About Page - Perspective Section
+   ==========================================================================
+   Styles for the perspective section with bullet points
+*/
+
+.about-perspective {
+  &__title {
+    text-align: center;
+    margin-bottom: var(--space-4);
+  }
+  
+  &__lead-text {
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-8);
+  }
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-8) auto;
+    max-width: 80%;
+    
+    @media (max-width: 767px) {
+      max-width: 100%;
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
+    }
+    
+    li {
+      position: relative;
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4) var(--space-3) var(--space-8);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      
+      @media (max-width: 767px) {
+        padding: var(--space-3) var(--space-3) var(--space-3) var(--space-8);
+      }
+      
+      &:before {
+        content: "•";
+        color: var(--primary-600);
+        font-size: 1.5rem;
+        line-height: 1;
+        position: absolute;
+        left: var(--space-2);
+        top: 50%;
+        transform: translateY(-50%);
+        
+        @media (max-width: 767px) {
+          left: var(--space-1);
+        }
+      }
+      
+      strong {
+        color: var(--primary-700);
+        font-weight: 600;
+        margin-right: var(--space-1);
+      }
+    }
+  }
+  
+  &__conclusion-text {
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--space-8);
+    font-style: italic;
+    color: var(--gray-700);
+  }
+}

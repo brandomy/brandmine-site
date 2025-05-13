@@ -1,102 +1,46 @@
 {% comment %}
-  Include Name: components/cards/insight-card.html
-  
-  Purpose: Displays an insight article in a card format with thumbnail image, metadata,
-  and taxonomy information. Updated to match the new standardized insight template structure.
-  
-  Parameters:
-  - insight: Insight object with complete details (required)
-    Expected properties from new template structure:
-    - title: Insight title (translatable)
-    - images.hero: Path to hero image 
-    - premium: Boolean flag for premium insights
-    - date: Publication date (YYYY-MM-DD)
-    - author: Author key for translation lookup
-    - excerpt: Short excerpt or description (translatable)
-    - sectors: Array of sector slugs
-    - markets: Array of market slugs
-    - url: URL to insight detail page
-    - reading_time: Estimated reading time in minutes
-    
-  Dependencies:
-  - CSS: insight-card.css for styling
-  - site.data.translations for dimension names and author translations
-  - site.data.dimensions for taxonomy translations
-  
-  Example Usage:
-  {% for insight in site.insights %}
-    {% include components/cards/insight-card.html insight=insight %}
-  {% endfor %}
-  
-  Notes:
-  - Uses standardized image paths
-  - Displays author using translation lookup
-  - Converts taxonomy slugs to display names using translations
+  Component: components/cards/insight-card.html
+  Simplified version that works
 {% endcomment %}
 
-<article class="insight-card">
-  <div class="insight-card__image">
-    {% if insight.images.hero %}
-      <img src="{{ insight.images.hero }}" alt="{{ insight.title }} thumbnail">
-    {% endif %}
-    {% if insight.premium %}
-      <div class="insight-card__premium-badge">
-        <span class="insight-card__premium-icon">★</span>
-        <span class="insight-card__premium-text">{{ site.data.translations[page.lang].premium.content }}</span>
+<article class="insight-card insight-card--{{ include.insight.category }}">
+  <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
+    {% if include.insight.hero_image %}
+      <div class="insight-card__image">
+        {% assign base_path = include.insight.hero_image | split: "." %}
+        {% assign base_name = base_path[0] %}
+        {% assign extension = base_path[1] | default: "jpg" %}
+
+        <img src="{{ base_name | relative_url }}-400w.{{ extension }}"
+             srcset="{{ base_name | relative_url }}-400w.{{ extension }} 400w,
+                     {{ base_name | relative_url }}-800w.{{ extension }} 800w,
+                     {{ base_name | relative_url }}-1200w.{{ extension }} 1200w"
+             sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+             alt="{{ include.insight.title }}"
+             loading="lazy">
+      </div>
+    {% else %}
+      <div class="insight-card__image">
+        <div class="insight-card__image-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
       </div>
     {% endif %}
-  </div>
 
-  <div class="insight-card__content">
-    <h3 class="insight-card__title">{{ insight.title }}</h3>
+    <div class="insight-card__content">
+      <h3 class="insight-card__title">{{ include.insight.title }}</h3>
 
-    <div class="insight-card__meta">
-      <span class="insight-card__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
-      <span class="insight-card__author">
-        {{ site.data.translations[page.lang].authors[insight.author] }}
-      </span>
-      {% if insight.reading_time %}
-        <span class="insight-card__reading-time">{{ insight.reading_time }} {{ site.data.translations[page.lang].insights.reading_time }}</span>
-      {% endif %}
-    </div>
-
-    <p class="insight-card__excerpt">{{ insight.excerpt }}</p>
-
-    <div class="insight-card__taxonomy">
-      {% if insight.sectors %}
-      <div class="insight-card__sectors">
-        {% for sector in insight.sectors limit:3 %}
-          <span class="insight-card__sector-tag">
-            {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
-          </span>
-        {% endfor %}
-        {% if insight.sectors.size > 3 %}
-          <span class="insight-card__more-tag">+{{ insight.sectors.size | minus:3 }}</span>
-        {% endif %}
+      <div class="insight-card__meta">
+        <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
       </div>
-      {% endif %}
-      
-      {% if insight.markets %}
-      <div class="insight-card__markets">
-        {% for market in insight.markets %}
-          <span class="insight-card__market-tag">
-            {{ site.data.dimensions[page.lang].markets[market] | default: market }}
-          </span>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
 
-    <a href="{{ insight.url }}" class="insight-card__read-more">
-      {{ site.data.translations[page.lang].insights.read_more }}
-    </a>
-    
-    {% if insight.category %}
-    <div class="insight-card__category">
-      <span class="insight-card__category-badge">
-        {{ site.data.translations[page.lang].insights[insight.category | replace: "-", "_"] | default: insight.category }}
-      </span>
+      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncate: 120 }}</p>
+
+      <span class="insight-card__read-more">{{ site.data.translations[page.lang].insights.read_more | default: "Read More" }} →</span>
     </div>
-    {% endif %}
-  </div>
+  </a>
 </article>

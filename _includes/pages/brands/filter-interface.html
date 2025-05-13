@@ -1,0 +1,49 @@
+{% comment %}
+  Component: pages/brands/filter-interface.html
+  
+  Purpose: Displays the filter and search interface for browsing brands
+  
+  Parameters:
+    content_type (optional): Type of content to filter, defaults to "brands"
+    taxonomy (optional): Taxonomy data for filtering
+    
+  Dependencies:
+    - CSS: pages/brands/filter-interface.scss
+    - _includes/components/search/search-filter.html
+    - site.data.translations for labels
+{% endcomment %}
+
+<div class="brands-filter">
+  <!-- Search filter include -->
+  {% include components/search/search-filter.html content_type=include.content_type|default:"brands" taxonomy=include.taxonomy|default:site.data.taxonomy %}
+  
+  <div class="brands-filter__results">
+    <div class="brands-filter__results-header">
+      <h2 id="results-count" class="brands-filter__results-title">{{ site.data.translations[page.lang].brands.all_brands }}</h2>
+      
+      <!-- Sort and Filter Options -->
+      <div class="brands-filter__controls">
+        <!-- Featured Level Filter -->
+        <div class="brands-filter__featured">
+          <label for="featured-select" class="brands-filter__label">{{ site.data.translations[page.lang].brands.featured_level }}:</label>
+          <select id="featured-select" class="brands-filter__select">
+            <option value="all">{{ site.data.translations[page.lang].brands.all_brands }}</option>
+            <option value="featured">{{ site.data.translations[page.lang].brands.featured_only }}</option>
+            <option value="standard">{{ site.data.translations[page.lang].brands.standard }}</option>
+          </select>
+        </div>
+        
+        <!-- Sort Options -->
+        <div class="brands-filter__sort">
+          <label for="sort-select" class="brands-filter__label">{{ site.data.translations[page.lang].brands.sort_by }}:</label>
+          <select id="sort-select" class="brands-filter__select">
+            <option value="name">{{ site.data.translations[page.lang].brands.sort_name }}</option>
+            <option value="sector">{{ site.data.translations[page.lang].brands.sort_sector }}</option>
+            <option value="market">{{ site.data.translations[page.lang].brands.sort_market }}</option>
+            <option value="founded">{{ site.data.translations[page.lang].brands.sort_founded }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

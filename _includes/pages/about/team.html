@@ -1,0 +1,80 @@
+{% comment %}
+  Component: pages/about/team.html
+  
+  Purpose: Displays the team section with team member profiles
+  
+  Parameters:
+    title (optional): Section title, defaults to "Our Team"
+    conclusion_text (optional): Text displayed after the team profiles
+    panel_type (optional): Panel background style, defaults to "light"
+    
+  Dependencies:
+    - CSS: pages/about/team.scss
+    - _includes/components/images/site-image.html
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "light" %}
+{% assign title = include.title | default: "Our Team" %}
+{% assign conclusion_text = include.conclusion_text | default: "With our combined expertise in brand development, market entry, and cross-cultural business, we're uniquely positioned to bridge the gap between visionary founders and the international partners they need to succeed." %}
+
+<div class="panel panel--{{ panel_type }} about-team">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary about-team__title">{{ title }}</h2>
+
+    <div class="about-team__grid">
+      <div class="about-team__member">
+        {% include components/images/site-image.html
+          category="people/team"
+          image="randal-eastman"
+          purpose="headshot"
+          alt="Randal Eastman"
+          class="about-team__photo" %}
+        <h3>Randal Eastman</h3>
+        <p class="about-team__position">Founder & CEO</p>
+        <p>Randal combines over 25 years of international business experience across Asia and Europe with deep expertise in brand development and market entry strategy. His unique background includes:</p>
+        <ul>
+          <li>Nearly two decades building and scaling Dragonfly, an iconic spa brand in China, as Partner and CEO</li>
+          <li>Extensive experience as a brand licensor, franchisor, and operator across multiple Asian markets</li>
+          <li>Professional working proficiency in Russian and Chinese, with a BA in Russian and German from McMaster University</li>
+          <li>MBA from Ivey Business School at Western University</li>
+          <li>Direct experience connecting brands with international partners and capital across cultural and linguistic divides</li>
+        </ul>
+        <p>This blend of operational leadership, brand-building expertise, and cross-cultural fluency gives Randal an exceptional ability to identify promising brands and understand their international potential.</p>
+        <div class="about-team__linkedin">
+          <a href="https://www.linkedin.com/in/randaleastman/" target="_blank" aria-label="Randal Eastman on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="about-team__member">
+        {% include components/images/site-image.html
+          category="people/team"
+          image="olya-eastman"
+          purpose="headshot"
+          alt="Olya Eastman"
+          class="about-team__photo" %}
+        <h3>Olya Eastman</h3>
+        <p class="about-team__position">Co-Founder & Director of People and Partnerships</p>
+        <p>Olya brings over 25 years of executive search experience with specialized expertise in connecting talent and opportunities across borders:</p>
+        <ul>
+          <li>Extensive experience placing senior executives in multinational companies throughout Greater China, Russia, and Southeast Asia</li>
+          <li>Native Russian speaker with professional proficiency in Chinese and English, plus working knowledge of Japanese</li>
+          <li>Master's degree in Japanese Language & Country Studies from Far Eastern Federal University</li>
+          <li>Co-founder of multiple successful executive search firms focused on cross-border talent solutions</li>
+          <li>Deep understanding of the people and relationships that drive successful brand growth</li>
+        </ul>
+        <p>Olya's unique ability to identify key talent and forge strategic partnerships is instrumental in connecting BRICS+ brands with the right international partners.</p>
+        <div class="about-team__linkedin">
+          <a href="https://www.linkedin.com/in/olya-eastman/" target="_blank" aria-label="Olya Eastman on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <p class="panel__conclusion-text about-team__conclusion-text">
+      {{ conclusion_text }}
+    </p>
+  </div>
+</div>

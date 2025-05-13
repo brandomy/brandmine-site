@@ -1,0 +1,19 @@
+{% comment %}
+  Component: pages/insights/hero.html
+  Purpose: Hero section for the insights page
+  Parameters:
+    - title: The title to display in the hero section (default: BRICS+ Market Insights)
+    - subtitle: The subtitle to display in the hero section (default: Get the latest brand perspectives across the BRICS+ countries)
+  Dependencies:
+    - assets/css/pages/insights/hero.scss
+{% endcomment %}
+
+{% assign title = include.title | default: site.data.translations[page.lang].insights.hero_title | default: "BRICS+ Market Insights" %}
+{% assign subtitle = include.subtitle | default: site.data.translations[page.lang].insights.hero_subtitle | default: "Get the latest brand perspectives across the BRICS+ countries" %}
+
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary insights-hero__title">{{ title }}</h1>
+    <p class="panel__subtitle">{{ subtitle }}</p>
+  </div>
+</div>

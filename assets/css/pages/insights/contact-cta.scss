@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Insights Contact CTA Styles
+   ==========================================================================
+   Styles for the contact CTA section on the insights page.
+*/
+
+.insights-contact-cta {
+  &__buttons {
+    margin-top: var(--space-6);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 479px) {
+    &__buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+  }
+}

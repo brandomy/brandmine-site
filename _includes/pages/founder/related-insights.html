@@ -1,0 +1,34 @@
+{% comment %}
+  Component: pages/founder/related-insights.html
+  Purpose: Displays insights related to a founder
+  Parameters:
+    - founder: The founder object to display (default: page)
+    - limit: Maximum number of insights to display (default: 3)
+  Dependencies:
+    - assets/css/pages/founder/related-insights.scss
+    - site.data.translations[lang].founder
+    - site.data.translations[lang].insights
+
+  Usage examples:
+    {% include pages/founder/related-insights.html %}
+    {% include pages/founder/related-insights.html founder=page %}
+    {% include pages/founder/related-insights.html founder=custom_founder limit=5 %}
+{% endcomment %}
+
+{% assign founder = include.founder | default: page %}
+{% assign limit = include.limit | default: 3 %}
+
+{% assign related_insights = site.insights | where: "lang", founder.lang | where: "category", "founders-journey" | where_exp: "item", "item.brands contains founder.brands[0]" | limit: limit %}
+{% if related_insights.size > 0 %}
+<div class="founder-profile__insights mt-3">
+  <h3>{{ site.data.translations[founder.lang].founder.related_insights | default: "Related Insights" }}</h3>
+  {% for insight in related_insights %}
+  <div class="founder-profile__insight-card">
+    <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
+    <span class="founder-profile__insight-type">
+      {{ site.data.translations[founder.lang].insights.founders_journey | default: "Founder's Journey" }}
+    </span>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

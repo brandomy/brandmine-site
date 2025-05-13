@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Brand Certifications Styles
+   ==========================================================================
+   Styles for the certifications component of the brand detail page.
+*/
+
+.brand-certifications {
+  margin-bottom: var(--space-8);
+  
+  &__heading {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--primary-800);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  &__section {
+    margin-bottom: var(--space-6);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__subheading {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--primary-700);
+    margin-bottom: var(--space-3);
+  }
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  &__item {
+    position: relative;
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-5);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--primary-300);
+    }
+  }
+  
+  &__name {
+    font-weight: var(--font-semibold);
+    color: var(--neutral-800);
+  }
+  
+  &__year {
+    color: var(--neutral-600);
+    margin-left: var(--space-2);
+  }
+  
+  &__description {
+    margin: var(--space-1) 0 0 0;
+    color: var(--neutral-600);
+    font-size: var(--text-sm);
+  }
+  
+  @media (max-width: 767px) {
+    &__heading {
+      font-size: var(--text-xl);
+    }
+    
+    &__subheading {
+      font-size: var(--text-lg);
+    }
+  }
+}

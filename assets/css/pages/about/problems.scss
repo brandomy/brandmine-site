@@ -1,0 +1,120 @@
+/* ==========================================================================
+   About Page - Problems Section
+   ==========================================================================
+   Styles for the problem section with card grid
+*/
+
+.about-problems {
+  &__title {
+    text-align: center;
+    margin-bottom: var(--space-4);
+  }
+  
+  &__lead-text {
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-8);
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: var(--space-8);
+    margin: var(--space-8) 0;
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto auto;
+      gap: var(--space-6);
+    }
+  }
+  
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    background-color: white;
+    min-height: 240px;
+    box-sizing: border-box;
+    border: 1px solid var(--neutral-200);
+    width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    position: relative;
+    z-index: 1;
+    
+    @media (max-width: 767px) {
+      padding: var(--space-4);
+      min-height: 200px;
+    }
+    
+    @media (max-width: 479px) {
+      min-height: 180px;
+    }
+    
+    h3 {
+      margin-top: var(--space-4);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      color: var(--primary-700);
+    }
+    
+    p {
+      margin: 0;
+      color: var(--neutral-700);
+    }
+  }
+  
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: var(--space-4);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__card--1 &__icon {
+    color: var(--primary-500);
+  }
+  
+  &__card--2 &__icon {
+    color: var(--primary-600);
+  }
+  
+  &__card--3 &__icon {
+    color: var(--primary-500);
+  }
+  
+  &__card--4 &__icon {
+    color: var(--primary-600);
+  }
+  
+  &__conclusion-text {
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--space-8);
+    font-style: italic;
+    color: var(--gray-700);
+  }
+}

@@ -1,0 +1,50 @@
+{% comment %}
+  Component: pages/dimension/market-sectors.html
+  Purpose: Displays market-specific sectors for a market dimension
+  Parameters:
+    - dimension: The dimension object (default: page)
+    - heading: The heading for the section (default: Key Sectors)
+    - panel_type: The panel type for styling (default: olive-soft)
+    - limit: Number of sectors to display (default: 3)
+  Dependencies:
+    - assets/css/pages/dimension/market-sectors.scss
+    - site.data.translations[lang].markets
+    - site.data.market_sectors[lang]
+{% endcomment %}
+
+{% assign dimension = include.dimension | default: page %}
+{% assign heading = include.heading | default: site.data.translations[dimension.lang].markets.key_sectors | default: "Key Sectors" %}
+{% assign panel_type = include.panel_type | default: "olive-soft" %}
+{% assign limit = include.limit | default: 3 %}
+
+{% assign market_sectors = site.data.market_sectors[dimension.lang][dimension.dimension] %}
+{% if market_sectors and dimension.tag_type == "market" %}
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ heading }}</h2>
+    
+    <div class="dimension-market-sectors">
+      {% for sector_entry in market_sectors limit: limit %}
+        {% assign sector_slug = sector_entry[0] %}
+        {% assign sector_data = sector_entry[1] %}
+        
+        <div class="dimension-market-sectors__item">
+          <h3 class="dimension-market-sectors__title">{{ sector_data.title }}</h3>
+          <p class="dimension-market-sectors__description">{{ sector_data.description }}</p>
+          <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/markets/{{ dimension.dimension }}/sectors/{{ sector_slug }}/" class="dimension-market-sectors__link">
+            {{ site.data.translations[dimension.lang].general.learn_more | default: "Learn More" }}
+          </a>
+        </div>
+      {% endfor %}
+      
+      {% if market_sectors.size > limit %}
+        <div class="dimension-market-sectors__view-all">
+          <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/markets/{{ dimension.dimension }}/sectors/" class="btn btn--secondary">
+            {{ site.data.translations[dimension.lang].markets.view_all_sectors | default: "View All Sectors" }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}

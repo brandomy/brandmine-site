@@ -1,0 +1,40 @@
+{% comment %}
+  Component: pages/about/perspective.html
+  
+  Purpose: Displays the perspective section with bullet points
+  
+  Parameters:
+    title (optional): Section title, defaults to "Our Unique Perspective"
+    lead_text (optional): Introductory text for the section
+    conclusion_text (optional): Text displayed after the bullet points
+    panel_type (optional): Panel background style, defaults to "secondary-soft"
+    
+  Dependencies:
+    - CSS: pages/about/perspective.scss
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "secondary-soft" %}
+{% assign title = include.title | default: "Our Unique Perspective" %}
+{% assign lead_text = include.lead_text | default: "With over 25 years living and working across Asia—particularly in China and Russia—our founders bring a rare combination of linguistic capability, cultural insight, and business acumen to Brandmine:" %}
+{% assign conclusion_text = include.conclusion_text | default: "This distinctive background enables us to see valuable opportunities where others see only barriers." %}
+
+<div class="panel panel--{{ panel_type }} about-perspective">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary about-perspective__title">{{ title }}</h2>
+    <p class="panel__lead-text about-perspective__lead-text">
+      {{ lead_text }}
+    </p>
+
+    <ul class="about-perspective__list">
+      <li><span><strong>Firsthand founder experience</strong> building and scaling an iconic brand across Asian markets</span></li>
+      <li><span><strong>Entrepreneur's perspective</strong> on the challenges of securing international investment and partnerships</span></li>
+      <li><span><strong>Cultural bridging expertise</strong> that goes beyond language translation</span></li>
+      <li><span><strong>Extensive networks</strong> across both BRICS+ countries and international markets</span></li>
+      <li><span><strong>Focus on overlooked regions</strong> where extraordinary brands thrive without global recognition</span></li>
+    </ul>
+
+    <p class="panel__conclusion-text about-perspective__conclusion-text">
+      {{ conclusion_text }}
+    </p>
+  </div>
+</div>

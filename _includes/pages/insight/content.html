@@ -1,0 +1,16 @@
+{% comment %}
+  Component: pages/insight/content.html
+  Purpose: Displays the main content of an insight article
+  Parameters:
+    - insight: The insight object (default: page)
+    - content: The content to display (default: content)
+  Dependencies:
+    - assets/css/pages/insight/content.scss
+{% endcomment %}
+
+{% assign insight = include.insight | default: page %}
+{% assign content_to_display = include.content | default: content %}
+
+<div class="insight-content {% if insight.premium %}insight-content--premium{% endif %}">
+  {{ content_to_display }}
+</div>

@@ -1,18 +1,21 @@
-<!-- founder-focus.html component placeholder -->
 {% comment %}
   Component: pages/home/founder-focus.html
 
-  Purpose: Displays the founder focus section highlighting founder stories
+  Purpose: Displays a scrollable horizontal section highlighting featured founder profiles on the homepage.
+  This component emphasizes Brandmine's unique positioning as a platform that elevates brand founders.
 
   Parameters:
     title (optional): Custom section title, defaults to "Beyond Listings: The Human Stories Driving BRICS+ Innovation"
     lead_text (optional): Custom lead text
-    panel_type (optional): Panel style/color, defaults to "secondary-soft"
-    cta_text (optional): Custom CTA button text, defaults to "Read Founder Stories"
-    cta_url (optional): Custom CTA button URL, defaults to the insights page
+    panel_type (optional): Panel style/color, defaults to "olive-soft"
+    cta_text (optional): Custom CTA button text, defaults to "Meet All Founders"
+    cta_url (optional): Custom CTA button URL, defaults to the founders page
+    limit (optional): Number of founders to display, defaults to 4
+    featured_only (optional): When true, only shows founders with featured=true (default: true)
 
   Dependencies:
-    - CSS: components/layout/panels.css
+    - CSS: components/cards/founder-card.scss
+    - Includes: components/cards/founder-card.html
 
   Usage:
   {% include pages/home/founder-focus.html %}
@@ -20,23 +23,103 @@
   {% include pages/home/founder-focus.html
      title="Custom Title"
      lead_text="Custom description"
-     cta_text="Read Stories" %}
+     cta_text="Meet the Founders" %}
 {% endcomment %}
 
-{% assign panel_type = include.panel_type | default: "secondary-soft" %}
+{% assign panel_type = include.panel_type | default: "olive-soft" %}
+{% assign limit = include.limit | default: 4 %}
+{% assign featured_only = include.featured_only | default: true %}
 
 {% assign title = include.title | default: site.data.translations[page.lang].home.founder_focus.title | default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}
 {% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.founder_focus.subtitle | default: "At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}
-{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].home.founder_focus.cta | default: "Read Founder Stories" %}
+{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].home.founder_focus.cta | default: "Meet All Founders" %}
 
-{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/insights/" %}
+{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/founders/" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ title }}</h2>
     <p class="panel__lead-text">{{ lead_text }}</p>
+
+    {% if featured_only %}
+      {% assign founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: limit %}
+    {% else %}
+      {% assign founders = site.founders | where: "lang", page.lang | limit: limit %}
+    {% endif %}
+
+    <div class="founder-focus-carousel">
+      {% if founders.size > 0 %}
+        {% for founder in founders %}
+          {% include components/cards/founder-card.html founder=founder %}
+        {% endfor %}
+      {% else %}
+        <!-- Temporary display until founder profiles are added -->
+        <div class="founder-focus-placeholder">
+          <div class="founder-card founder-card--placeholder">
+            <div class="founder-card__header">
+              <div class="founder-card__portrait founder-card__portrait-placeholder">
+                <span>IP</span>
+              </div>
+              <div class="founder-card__header-text">
+                <h3 class="founder-card__title">Ivan Petrov</h3>
+                <p class="founder-card__generation">{{ site.data.translations[page.lang].generation.first | default: "1st Generation" }}</p>
+              </div>
+            </div>
+            <div class="founder-card__body">
+              <p class="founder-card__brand">{{ site.data.translations[page.lang].founder.founder_of | default: "Founder of" }} <strong>Altai Honey</strong></p>
+              <div class="founder-card__tags">
+                <span class="founder-card__tag founder-card__tag--market">Russia</span>
+                <span class="founder-card__tag founder-card__tag--expertise">Beekeeping</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="founder-card founder-card--placeholder">
+            <div class="founder-card__header">
+              <div class="founder-card__portrait founder-card__portrait-placeholder">
+                <span>MS</span>
+              </div>
+              <div class="founder-card__header-text">
+                <h3 class="founder-card__title">Maria Silva</h3>
+                <p class="founder-card__generation">{{ site.data.translations[page.lang].generation.second | default: "2nd Generation" }}</p>
+              </div>
+            </div>
+            <div class="founder-card__body">
+              <p class="founder-card__brand">{{ site.data.translations[page.lang].founder.founder_of | default: "Founder of" }} <strong>Serra Verde</strong></p>
+              <div class="founder-card__tags">
+                <span class="founder-card__tag founder-card__tag--market">Brazil</span>
+                <span class="founder-card__tag founder-card__tag--expertise">Sustainable Agriculture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
     <div class="cta-buttons">
-      <a href="{{ cta_url }}" class="btn btn--standard" data-track="founder-focus">{{ cta_text }}</a>
+      <a href="{{ cta_url }}" class="btn btn--primary-cta" data-track="founder-focus">{{ cta_text }}</a>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Simple carousel scrolling for founder cards
+    const carousel = document.querySelector('.founder-focus-carousel');
+
+    if (carousel) {
+      // Add horizontal scrolling with mouse wheel
+      carousel.addEventListener('wheel', function(e) {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          carousel.scrollLeft += e.deltaY;
+        }
+      });
+
+      // Add touch scrolling indicators
+      if (carousel.scrollWidth > carousel.clientWidth) {
+        carousel.classList.add('scrollable');
+      }
+    }
+  });
+</script>

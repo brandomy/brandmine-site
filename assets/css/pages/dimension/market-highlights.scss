@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Dimension Market Highlights Styles
+   ==========================================================================
+   Styles for the market highlights component of the dimension page.
+*/
+
+.dimension-market-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}

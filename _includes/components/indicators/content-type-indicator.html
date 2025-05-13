@@ -35,13 +35,37 @@
 <div class="content-type-indicator content-type-indicator--{{ size_class }} content-type-indicator--{{ type_slug }}">
   {% case include.type %}
     {% when "Founder's Journey" or "Путь основателя" or "创始人之旅" %}
-      <span class="content-type-indicator__icon content-type-indicator__icon--founder"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--founder">
+        {% if size_class == "small" %}
+          {% include components/icons/insights/ultra-simple-founders-journey.svg %}
+        {% else %}
+          {% include components/icons/insights/simple-founders-journey.svg %}
+        {% endif %}
+      </span>
     {% when "Brand Spotlight" or "Особенности бренда" or "品牌聚焦" %}
-      <span class="content-type-indicator__icon content-type-indicator__icon--spotlight"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--spotlight">
+        {% if size_class == "small" %}
+          {% include components/icons/insights/ultra-simple-brand-spotlight.svg %}
+        {% else %}
+          {% include components/icons/insights/simple-brand-spotlight.svg %}
+        {% endif %}
+      </span>
     {% when "Market Momentum" or "Рыночный импульс" or "市场动力" %}
-      <span class="content-type-indicator__icon content-type-indicator__icon--momentum"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--momentum">
+        {% if size_class == "small" %}
+          {% include components/icons/insights/ultra-simple-market-momentum.svg %}
+        {% else %}
+          {% include components/icons/insights/simple-market-momentum.svg %}
+        {% endif %}
+      </span>
     {% when "Location Intelligence" or "Территориальная аналитика" or "区域情报" %}
-      <span class="content-type-indicator__icon content-type-indicator__icon--location"></span>
+      <span class="content-type-indicator__icon content-type-indicator__icon--location">
+        {% if size_class == "small" %}
+          {% include components/icons/insights/ultra-simple-location-intelligence.svg %}
+        {% else %}
+          {% include components/icons/insights/simple-location-intelligence.svg %}
+        {% endif %}
+      </span>
   {% endcase %}
   
   <span class="content-type-indicator__text">{{ include.type }}</span>

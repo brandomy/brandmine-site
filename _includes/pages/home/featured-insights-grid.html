@@ -1,0 +1,86 @@
+{% comment %}
+  Component: pages/home/featured-insights-grid.html
+  Purpose: Displays the latest insight from each category in a responsive grid
+  Parameters:
+    - panel_type: Optional panel type (default: primary-soft)
+    - title: Optional title (default: from translations)
+    - featured_only: Optional boolean to show only featured insights (default: false)
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "primary-soft" %}
+{% assign title = include.title | default: site.data.translations[page.lang].insights.latest | default: "Latest Insights" %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign featured_only = include.featured_only | default: false %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ title }}</h2>
+
+    <div class="featured-insights-grid">
+      <!-- Get all insights for current language -->
+      {% assign filtered_insights = site.insights | where: "lang", current_lang %}
+      
+      {% if featured_only %}
+        {% assign filtered_insights = filtered_insights | where: "featured", true %}
+      {% endif %}
+
+      <!-- Brand Spotlight -->
+      {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
+      {% if brand_spotlight %}
+        {% include components/cards/featured-insight-card.html insight=brand_spotlight %}
+      {% else %}
+        <div class="featured-insight-card featured-insight-card--brand-spotlight featured-insight-card--placeholder">
+          <div class="featured-insight-card__content">
+            <h3 class="featured-insight-card__title">{{ site.data.insights[current_lang].brand_spotlight.display_name | default: "Brand Spotlight" }}</h3>
+            <p>{{ site.data.translations[current_lang].insights.no_entries | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Founder's Journey -->
+      {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
+      {% if founders_journey %}
+        {% include components/cards/featured-insight-card.html insight=founders_journey %}
+      {% else %}
+        <div class="featured-insight-card featured-insight-card--founders-journey featured-insight-card--placeholder">
+          <div class="featured-insight-card__content">
+            <h3 class="featured-insight-card__title">{{ site.data.insights[current_lang].founders_journey.display_name | default: "Founder's Journey" }}</h3>
+            <p>{{ site.data.translations[current_lang].insights.no_entries | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Location Intelligence -->
+      {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
+      {% if location_intelligence %}
+        {% include components/cards/featured-insight-card.html insight=location_intelligence %}
+      {% else %}
+        <div class="featured-insight-card featured-insight-card--location-intelligence featured-insight-card--placeholder">
+          <div class="featured-insight-card__content">
+            <h3 class="featured-insight-card__title">{{ site.data.insights[current_lang].location_intelligence.display_name | default: "Location Intelligence" }}</h3>
+            <p>{{ site.data.translations[current_lang].insights.no_entries | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Market Momentum -->
+      {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
+      {% if market_momentum %}
+        {% include components/cards/featured-insight-card.html insight=market_momentum %}
+      {% else %}
+        <div class="featured-insight-card featured-insight-card--market-momentum featured-insight-card--placeholder">
+          <div class="featured-insight-card__content">
+            <h3 class="featured-insight-card__title">{{ site.data.insights[current_lang].market_momentum.display_name | default: "Market Momentum" }}</h3>
+            <p>{{ site.data.translations[current_lang].insights.no_entries | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="view-all-insights">
+      <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--outline-light">
+        {{ site.data.translations[current_lang].insights.view_all | default: "View All Insights" }}
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{% comment %}
+  Component: pages/brands/brands-grid.html
+  
+  Purpose: Displays the grid of brand cards with empty state and load more button
+  
+  Parameters:
+    limit (optional): Limit the number of brands to display initially
+    
+  Dependencies:
+    - CSS: pages/brands/brands-grid.scss
+    - _includes/components/cards/brand-card.html
+    - site.data.translations for labels
+{% endcomment %}
+
+<div class="brands-grid">
+  <!-- Brand Grid -->
+  <div id="brands-container" class="brands-grid__container">
+    {% assign brands = site.brands | where: "lang", page.lang %}
+    {% if include.limit %}
+      {% assign brands = brands | limit: include.limit %}
+    {% endif %}
+    
+    {% for brand in brands %}
+      {% include components/cards/brand-card.html brand=brand %}
+    {% endfor %}
+  </div>
+  
+  <!-- Empty State Message (shown when no results match) -->
+  <div id="empty-results" class="brands-grid__empty" style="display: none;">
+    <p class="brands-grid__empty-message">{{ site.data.translations[page.lang].brands.no_results }}</p>
+  </div>
+  
+  <!-- Load More Button -->
+  <div class="brands-grid__load-more">
+    <button id="load-more" class="btn-secondary brands-grid__load-more-button">
+      {{ site.data.translations[page.lang].brands.load_more }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+/* ==========================================================================
+   Insight Sidebar Styles
+   ==========================================================================
+   Styles for the sidebar component of the insight detail page.
+*/
+
+.insight-sidebar {
+  &__section {
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--neutral-200);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__heading {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--neutral-800);
+  }
+  
+  /* Featured Brands */
+  &__brands {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  &__brand-card {
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--neutral-200);
+    
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  
+  &__brand-title {
+    margin: 0 0 var(--space-1) 0;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+  }
+  
+  &__brand-link {
+    color: var(--primary-600);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  &__brand-info {
+    font-size: var(--text-sm);
+  }
+  
+  &__brand-sector {
+    display: inline-block;
+    background-color: var(--olive-100);
+    color: var(--olive-900);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-xs);
+  }
+  
+  &__brand-description {
+    color: var(--neutral-600);
+    margin: var(--space-1) 0 0 0;
+  }
+  
+  /* Related Insights */
+  &__related {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  &__related-item {
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--neutral-200);
+    
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  
+  &__related-title {
+    margin: 0 0 var(--space-1) 0;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+  }
+  
+  &__related-link {
+    color: var(--primary-600);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  &__related-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--neutral-600);
+  }
+  
+  &__empty {
+    color: var(--neutral-500);
+    font-style: italic;
+    margin: 0;
+  }
+  
+  /* Secondary Categories */
+  &__categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  &__category {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    text-decoration: none;
+    background-color: var(--primary-100);
+    color: var(--primary-700);
+    
+    &:hover {
+      background-color: var(--primary-200);
+    }
+  }
+  
+  /* Country Focus */
+  &__country {
+    padding: var(--space-2);
+  }
+  
+  &__country-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--neutral-800);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: var(--neutral-100);
+    }
+  }
+  
+  &__country-flag {
+    width: 24px;
+    height: 16px;
+    margin-right: var(--space-2);
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  &__country-name {
+    font-weight: var(--font-medium);
+  }
+  
+  @media (max-width: 991px) {
+    &__section {
+      padding: var(--space-3);
+    }
+  }
+}

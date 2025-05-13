@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Brand Hero Styles
+   ==========================================================================
+   Styles for the hero component of the brand detail page.
+*/
+
+.brand-hero {
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  width: 100%;
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 500px;
+    object-fit: cover;
+  }
+  
+  @media (max-width: 767px) {
+    margin-bottom: var(--space-6);
+    
+    img {
+      max-height: 300px;
+    }
+  }
+}

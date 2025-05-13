@@ -1,0 +1,327 @@
+/**
+ * Founder Card Component
+ * 
+ * Used to display founder profiles in a card format throughout the site:
+ * - Founders directory listings
+ * - Homepage founder focus section
+ * - Related founders on brand pages
+ *
+ * Follows BEM naming conventions and shares design tokens with other cards.
+ */
+
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 320px;
+  min-height: 320px;
+  border: 1px solid var(--color-gray-200);
+  position: relative;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    min-height: 380px;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Featured state */
+  &--featured {
+    border-color: var(--color-olive-200);
+    box-shadow: var(--shadow-md);
+    
+    .founder-card__portrait {
+      border: 2px solid var(--color-olive-300);
+    }
+  }
+
+  /* Placeholder styling for when no real data is available */
+  &--placeholder {
+    opacity: 0.7;
+    
+    &:hover {
+      transform: none;
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}
+
+.founder-card__header {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.founder-card__portrait {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+  flex-shrink: 0;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  &-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-olive-100);
+    color: var(--color-olive-700);
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+.founder-card__header-text {
+  flex: 1;
+}
+
+.founder-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--color-gray-900);
+}
+
+.founder-card__generation {
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  margin: 0;
+}
+
+.founder-card__body {
+  padding: 1rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-card__brand {
+  color: var(--color-gray-700);
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+  
+  &-link {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.founder-card__multiple-brands {
+  font-size: 0.8125rem;
+  color: var(--color-gray-500);
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+}
+
+.founder-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.founder-card__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  
+  &--market {
+    background-color: var(--color-sky-100);
+    color: var(--color-sky-800);
+  }
+  
+  &--expertise {
+    background-color: var(--color-olive-100);
+    color: var(--color-olive-800);
+  }
+}
+
+.founder-card__footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--color-gray-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.founder-card__link {
+  font-size: 0.875rem;
+  color: var(--color-primary-600);
+  text-decoration: none;
+  font-weight: 500;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.founder-card__featured-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-olive-500);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+/* Additional styles for the founder focus carousel on homepage */
+.founder-focus-carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  margin: 2rem -1rem;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-gray-100);
+    border-radius: 2px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-300);
+    border-radius: 2px;
+  }
+  
+  .founder-card {
+    scroll-snap-align: start;
+    flex: 0 0 calc(100% - 2rem);
+    
+    @media (min-width: 640px) {
+      flex: 0 0 calc(50% - 1.25rem);
+    }
+    
+    @media (min-width: 1024px) {
+      flex: 0 0 calc(33.333% - 1.25rem);
+    }
+  }
+  
+  &.scrollable {
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8));
+      pointer-events: none;
+    }
+  }
+}
+
+.founder-focus-placeholder {
+  display: flex;
+  gap: 1.25rem;
+  width: 100%;
+  
+  .founder-card {
+    flex: 1;
+  }
+}
+
+.founder-focus-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.founder-focus-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-gray-300);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+  &.active {
+    background-color: var(--color-olive-500);
+    transform: scale(1.2);
+  }
+}
+
+/* Founders grid on the founders index page */
+.founders__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.featured-founders__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.recent-founders__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,79 @@
+{% comment %}
+  Component: pages/home/latest-insights-tagged.html
+  Purpose: Displays 4 featured insights with dimension tags for better context
+  Parameters:
+    - panel_type: The panel type to use (default: primary-soft)
+    - title: The section title (default: "Latest Insights" from translations)
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "primary-soft" %}
+{% assign title = include.title | default: site.data.translations[page.lang].insights.latest | default: "Latest Insights" %}
+{% assign current_lang = page.lang | default: 'en' %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ title }}</h2>
+
+    <div class="latest-insights-featured">
+      <!-- Get all insights for current language -->
+      {% assign filtered_insights = site.insights | where: "lang", current_lang %}
+
+      <!-- Brand Spotlight -->
+      {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
+      {% if brand_spotlight %}
+        <!-- Brand Spotlight Card -->
+        {% include components/cards/tagged-insight-card.html insight=brand_spotlight %}
+      {% else %}
+        <div class="insight-card insight-card--brand-spotlight insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+
+      <!-- Founder's Journey -->
+      {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
+      {% if founders_journey %}
+        <!-- Founder's Journey Card -->
+        {% include components/cards/tagged-insight-card.html insight=founders_journey %}
+      {% else %}
+        <div class="insight-card insight-card--founders-journey insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Location Intelligence -->
+      {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
+      {% if location_intelligence %}
+        {% include components/cards/tagged-insight-card.html insight=location_intelligence %}
+      {% else %}
+        <div class="insight-card insight-card--location-intelligence insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Market Momentum -->
+      {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
+      {% if market_momentum %}
+        {% include components/cards/tagged-insight-card.html insight=market_momentum %}
+      {% else %}
+        <div class="insight-card insight-card--market-momentum insight-card--placeholder">
+          <div class="insight-card__content">
+            <p>{{ site.data.translations[current_lang].insights.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="view-all-insights">
+      <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--outline-light">
+        {{ site.data.translations[current_lang].insights.view_all | default: "View All Insights" }}
+      </a>
+    </div>
+  </div>
+</div>

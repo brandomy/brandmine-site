@@ -38,7 +38,7 @@ location_region: "阿尔泰边疆区"  # Region/state/province (translatable, op
 location_country: "ru"  # ISO country code 
 
 # Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-altai-forest.jpg"
+hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-honey.jpg"
 founder_portrait: "/assets/images/insights/ru-siberian-honey-corridor/founder-portrait-ivan-petrov.jpg"  # Optional
 logo: "/assets/images/insights/ru-siberian-honey-corridor/logo-siberian-honey.jpg"  # Optional
 ---

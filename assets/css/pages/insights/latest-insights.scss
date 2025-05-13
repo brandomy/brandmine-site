@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Latest Insights Styles
+   ==========================================================================
+   Styles for the latest insights section on the insights page.
+*/
+
+.insights-latest {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+    margin: var(--space-8) 0;
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-8);
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--neutral-300);
+    color: var(--neutral-600);
+    font-style: italic;
+  }
+
+  @media (max-width: 767px) {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+
+  @media (max-width: 479px) {
+    &__grid {
+      margin: var(--space-4) 0;
+    }
+  }
+}
