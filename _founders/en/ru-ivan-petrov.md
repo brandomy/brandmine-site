@@ -11,7 +11,7 @@ generation: first
 country_code: ru
 region: "Altai Republic"
 city: "Belokurikha"
-portrait_image: "assets/images/brands/ru/altai-honey/founder-portrait.jpg"
+portrait_image: "assets/images/founders/ru-ivan-petrov/headshot.jpg"
 social:
   instagram: ivan_petrov_honey
   linkedin: ivan-petrov-12345
@@ -19,6 +19,14 @@ expertise:
   - beekeeping
   - organic agriculture
   - sustainable harvesting
+brief_bio: "Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
+sectors: [honey-bee-products]
+markets: [ru, cn, kz]
+languages: ["Russian", "English"]
+achievements:
+  - "International organic certification"
+  - "Preserved traditional harvesting methods"
+  - "Community empowerment model"
 ---
 
 # Ivan Petrov: The Honey Pioneer of Altai

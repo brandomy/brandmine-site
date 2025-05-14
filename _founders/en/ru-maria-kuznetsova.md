@@ -11,7 +11,7 @@ generation: first
 country_code: ru
 region: "Tatarstan"
 city: "Kazan"
-portrait_image: "assets/images/brands/ru/seven-spices/founder-portrait.jpg"
+portrait_image: "assets/images/founders/ru-maria-kuznetsova/headshot.jpg"
 social:
   instagram: 7spices_russia
   linkedin: maria-kuznetsova-7spices
@@ -20,6 +20,15 @@ expertise:
   - traditional preservation techniques
   - sustainable sourcing
   - food artisan
+brief_bio: "Former chef rediscovering and reimagining Russia's rich condiment traditions through artisanal production and cultural preservation."
+sectors: [gourmet-foods]
+markets: [ru, eu]
+cross_border_expertise: true
+languages: ["Russian", "English", "Tatar"]
+achievements:
+  - "Gold at International Condiment Exhibition"
+  - "Network of 40 family farm suppliers"
+  - "Food archaeology research department"
 ---
 
 # Maria Kuznetsova: Reviving Russia's Culinary Heritage

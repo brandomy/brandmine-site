@@ -11,7 +11,7 @@ generation: third
 country_code: br
 region: "Minas Gerais"
 city: "Gonçalves"
-portrait_image: "assets/images/brands/br/serra-verde/founder-portrait.jpg"
+portrait_image: "assets/images/founders/br-eduardo-santos/headshot.jpg"
 social:
   instagram: serraverde_organics
   linkedin: eduardo-santos-serraverde
@@ -20,8 +20,16 @@ expertise:
   - sustainable farming
   - agroforestry
   - export development
+brief_bio: "Third-generation farmer transforming Brazil's Atlantic Forest agriculture through organic practices and supporting 28 family farms."
+sectors: [gourmet-foods]
+markets: [br, pt, es]
+cross_border_expertise: true
+languages: ["Portuguese", "Spanish", "English"]
+achievements:
+  - "Restored 500+ hectares of Atlantic Forest"
+  - "Network of 28 organic family farms"
+  - "International distribution in EU markets"
 ---
-
 # Eduardo Santos: Transforming Brazil's Atlantic Forest Agriculture
 
 Eduardo Santos represents the third generation of his family to farm the mountainous terrain of southern Minas Gerais, but his approach to agriculture marks a revolutionary departure from conventional practices. As the founder of Serra Verde Organics, he has transformed his family's traditional farm into a pioneering organic operation that now works with a network of 28 family farms throughout Brazil's Atlantic Forest region.

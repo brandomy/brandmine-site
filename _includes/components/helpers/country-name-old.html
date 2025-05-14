@@ -1,0 +1,34 @@
+{% comment %}
+  Component: components/helpers/country-name.html
+
+  Purpose: Displays country name from country code with optional city
+
+  Parameters:
+  - country_code: Two-letter country code (required)
+  - city: City name (optional)
+  - lang: Language for country name lookup (default: page.lang)
+  - class: Additional CSS classes (optional)
+
+  Example usage:
+  {% include components/helpers/country-name.html
+     country_code=founder.country_code
+     city=founder.city %}
+
+  {% include components/helpers/country-name.html
+     country_code="ru"
+     city="Moscow"
+     class="location-text" %}
+{% endcomment %}
+
+{% assign lang = include.lang | default: page.lang %}
+{% assign country_code = include.country_code %}
+{% assign city = include.city %}
+{% assign class = include.class | default: "" %}
+
+{% if country_code %}
+  {% assign country_name = site.data.countries[lang][country_code].name %}
+  <span class="location-display {{ class }}">
+    {% if city %}{{ city }}, {% endif %}
+    {{ country_name | default: country_code }}
+  </span>
+{% endif %}

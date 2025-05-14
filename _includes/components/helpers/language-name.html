@@ -1,0 +1,42 @@
+{% comment %}
+  Component: helpers/language-name.html
+
+  Purpose: Converts ISO language codes to human-readable language names
+  in the appropriate display language.
+
+  Parameters:
+  - code: (required) The 2-letter ISO language code to look up (e.g., "en", "ru", "zh")
+  - lang: (optional) The display language for the name. Defaults to current page language
+
+  Dependencies:
+  - _data/languages.json: Contains language code mappings with translations
+
+  Example Usage:
+  {% include helpers/language-name.html code="ru" %}
+  Returns: "Russian" (if page.lang is "en")
+
+  {% include helpers/language-name.html code="ru" lang="zh" %}
+  Returns: "俄语" (explicitly set to Chinese)
+
+  Fallback Behavior:
+  - If the language code isn't found in the JSON, returns the code itself
+  - If the requested display language isn't available, returns the code
+{% endcomment %}
+
+<!-- Get the language code to look up from the include parameter -->
+{% assign lang_code = include.code %}
+
+<!-- Determine which language to display the name in (default to current page language) -->
+{% assign display_lang = include.lang | default: page.lang %}
+
+<!-- Look up the language information from the JSON data file -->
+{% assign lang_info = site.data.languages.language_codes[lang_code] %}
+
+<!-- Check if we found language information -->
+{% if lang_info %}
+  <!-- Output the language name in the requested display language, with fallback to the code -->
+  {{ lang_info[display_lang] | default: lang_code }}
+{% else %}
+  <!-- If no language info found, just output the code itself -->
+  {{ lang_code }}
+{% endif %}

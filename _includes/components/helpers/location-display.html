@@ -1,0 +1,38 @@
+{% comment %}
+  Component: helpers/location-display.html
+
+  Purpose: Displays a formatted location string with city and country,
+  prefixed with a pushpin icon
+
+  Parameters:
+  - city: (optional) City name
+  - country_code: (required) 2-letter ISO country code
+  - lang: (optional) Display language, defaults to page language
+  - icon: (optional) Set to false to hide the pushpin icon, defaults to true
+  - class: (optional) CSS class for the wrapper, defaults to 'location'
+
+  Example Usage:
+  {% include helpers/location-display.html city="Moscow" country_code="ru" %}
+  Returns: "📍 Moscow, Russia"
+
+  {% include helpers/location-display.html country_code="br" icon=false %}
+  Returns: "Brazil" (without icon)
+{% endcomment %}
+
+{% assign show_icon = include.icon | default: true %}
+
+<span class="{{ include.class | default: 'location' }}">
+  {% if show_icon %}
+    <!-- Uncomment the line below to use Font Awesome icon -->
+    <!-- <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i> -->
+    <span class="location__icon" aria-hidden="true">📍</span>
+  {% endif %}
+  <span class="location__text">
+    {% if include.city %}
+      {{ include.city }}{% if include.country_code %}, {% endif %}
+    {% endif %}
+    {% if include.country_code %}
+      {% include helpers/country-name.html code=include.country_code lang=include.lang %}
+    {% endif %}
+  </span>
+</span>

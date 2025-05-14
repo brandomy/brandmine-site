@@ -1,0 +1,42 @@
+{% comment %}
+  Component: helpers/country-name.html
+
+  Purpose: Converts ISO country codes to human-readable country names
+  in the appropriate display language.
+
+  Parameters:
+  - code: (required) The 2-letter ISO country code to look up (e.g., "ru", "br", "cn")
+  - lang: (optional) The display language for the name. Defaults to current page language
+
+  Dependencies:
+  - _data/countries.json: Contains country code mappings with translations
+
+  Example Usage:
+  {% include helpers/country-name.html code="ru" %}
+  Returns: "Russia" (if page.lang is "en")
+
+  {% include helpers/country-name.html code="ru" lang="zh" %}
+  Returns: "俄罗斯" (explicitly set to Chinese)
+
+  Fallback Behavior:
+  - If the country code isn't found in the JSON, returns the code itself
+  - If the requested display language isn't available, returns the code
+{% endcomment %}
+
+<!-- Get the country code to look up from the include parameter -->
+{% assign country_code = include.code %}
+
+<!-- Determine which language to display the name in (default to current page language) -->
+{% assign display_lang = include.lang | default: page.lang %}
+
+<!-- Look up the country information from the JSON data file -->
+{% assign country_info = site.data.countries[display_lang][country_code] %}
+
+<!-- Check if we found country information -->
+{% if country_info and country_info.name %}
+  <!-- Output the country name -->
+  {{ country_info.name }}
+{% else %}
+  <!-- If no country info found, just output the code itself -->
+  {{ country_code | upcase }}
+{% endif %}

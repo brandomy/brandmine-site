@@ -11,7 +11,7 @@ generation: first
 country_code: ru
 region: "Moscow"
 city: "Moscow"
-portrait_image: "assets/images/brands/ru/teatime/founder-portrait.jpg"
+portrait_image: "assets/images/founders/ru-alexei-sokolov/headshot.jpg"
 social:
   instagram: teatime_russia
   linkedin: alexei-sokolov-teatime
@@ -20,6 +20,15 @@ expertise:
   - beverage innovation
   - cultural ambassador
   - brand storytelling
+brief_bio: "Transformed student tea ceremonies into Russia's most successful artisanal tea export with presence in 23 countries."
+sectors: [artisanal-spirits-vodka, gourmet-foods]
+markets: [ru, gb, fr, de, jp, sg]
+cross_border_expertise: true
+languages: [ru, en, fr]  # Using 2-letter ISO codes
+achievements:
+  - "Featured in Harrods London"
+  - "23 countries export presence"
+  - "30% annual growth rate"
 ---
 
 # Alexei Sokolov: Bridging Russian Tea Traditions with Global Markets
