@@ -27,10 +27,12 @@
   {% if brand.international.distribution_models %}
   <div class="brand-international__distribution">
     <h3 class="brand-international__subheading">{{ site.data.translations[brand.lang].brand.distribution_models }}</h3>
+    {% assign distribution_translations = site.data.translations[brand.lang].distribution_models %}
+
     {% include components/display/tag-list.html
        items=brand.international.distribution_models
        css_class="brand-international"
-       translations=site.data.translations[brand.lang].distribution_models
+       translations=distribution_translations
        lang=brand.lang %}
   </div>
   {% endif %}

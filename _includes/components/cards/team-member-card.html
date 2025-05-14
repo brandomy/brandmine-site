@@ -1,0 +1,65 @@
+{% comment %}
+  Component: components/cards/team-member-card.html
+
+  Purpose: Displays a single team member profile card
+
+  Parameters:
+  - member: Team member data object containing:
+    - name: Member name
+    - position: Job title/position
+    - photo_slug: Photo identifier
+    - bio: Biography text (optional)
+    - highlights: Array of achievement highlights (optional)
+    - summary: Summary text (optional)
+    - linkedin: LinkedIn URL (optional)
+  - lang: Language code for multilingual support
+
+  Dependencies:
+  - components/images/collection-image.html
+  - CSS: components/cards/team-member.scss
+
+  Example usage:
+  {% include components/cards/team-member-card.html member=member lang=page.lang %}
+{% endcomment %}
+
+<div class="team-member-card">
+  {% include components/images/collection-image.html
+    collection="people"
+    category="team"
+    slug=include.member.photo_slug
+    purpose="headshot"
+    aspect="square"
+    alt=include.member.name
+    class="team-member-card__photo" %}
+
+  <h3 class="team-member-card__name">{{ include.member.name }}</h3>
+  <p class="team-member-card__position">{{ include.member.position }}</p>
+
+  {% if include.member.bio %}
+    <p class="team-member-card__bio">{{ include.member.bio }}</p>
+  {% endif %}
+
+  {% if include.member.highlights %}
+    <ul class="team-member-card__highlights">
+      {% for highlight in include.member.highlights %}
+        <li>{{ highlight }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if include.member.summary %}
+    <p class="team-member-card__summary">{{ include.member.summary }}</p>
+  {% endif %}
+
+  {% if include.member.linkedin %}
+    <div class="team-member-card__social">
+      <a href="{{ include.member.linkedin }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="{{ include.member.name }} on LinkedIn"
+         class="team-member-card__linkedin">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+    </div>
+  {% endif %}
+</div>

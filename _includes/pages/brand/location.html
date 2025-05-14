@@ -13,18 +13,32 @@
 {% assign brand = include.brand | default: page %}
 {% assign show_location = include.show_location | default: true %}
 
-{% if show_location and brand.featured_level > 0 and brand.location.coordinates and brand.location_intelligence != false %}
+<!-- Location handling -->
+{% if brand.location.coordinates %}
+  {% assign has_location = true %}
+  {% assign coordinates = brand.location.coordinates %}
+  {% assign lat = coordinates[1] %}
+  {% assign lng = coordinates[0] %}
+{% elsif brand.location_lat and brand.location_lng %}
+  {% assign has_location = true %}
+  {% assign lat = brand.location_lat %}
+  {% assign lng = brand.location_lng %}
+{% else %}
+  {% assign has_location = false %}
+{% endif %}
+
+{% if show_location and brand.featured_level > 0 and has_location and brand.location_intelligence != false %}
 <div class="brand-location">
   <h2 class="brand-location__heading">{{ site.data.translations[brand.lang].brand.location_intelligence }}</h2>
-  
+
   <div class="brand-location__map">
     <!-- MapLibre map will be inserted here via JavaScript -->
-    <div id="brandLocationMap" class="brand-location__map-container" 
-         data-lat="{{ brand.location.coordinates[1] }}" 
-         data-lng="{{ brand.location.coordinates[0] }}" 
+    <div id="brandLocationMap" class="brand-location__map-container"
+         data-lat="{{ lat }}"
+         data-lng="{{ lng }}"
          data-name="{{ brand.title }}"></div>
   </div>
-  
+
   <div class="brand-location__details">
     <p class="brand-location__address">
       <strong>{{ site.data.translations[brand.lang].brand.location }}:</strong>

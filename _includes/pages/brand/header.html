@@ -37,11 +37,14 @@
     <div class="brand-header__meta">
       <!-- Sectors -->
       {% if brand.sectors %}
+        {% assign sectors_label = site.data.translations[brand.lang].dimensions.sectors %}
+        {% assign sectors_translations = site.data.dimensions[brand.lang].sectors %}
+
         {% include components/brand/meta-item.html
-           label=site.data.translations[brand.lang].dimensions.sectors
+           label=sectors_label
            items=brand.sectors
            type="sector"
-           translations=site.data.dimensions[brand.lang].sectors
+           translations=sectors_translations
            lang=brand.lang
            base_url=site.baseurl
            linkable=true %}
@@ -49,8 +52,10 @@
 
       <!-- Subsectors -->
       {% if brand.subsectors %}
+        {% assign subsectors_label = site.data.translations[brand.lang].brand.subsectors %}
+
         {% include components/brand/meta-item.html
-           label=site.data.translations[brand.lang].brand.subsectors
+           label=subsectors_label
            items=brand.subsectors
            type="subsector"
            linkable=false %}
@@ -58,11 +63,14 @@
 
       <!-- Markets -->
       {% if brand.markets %}
+        {% assign markets_label = site.data.translations[brand.lang].dimensions.markets %}
+        {% assign markets_translations = site.data.dimensions[brand.lang].markets %}
+
         {% include components/brand/meta-item.html
-           label=site.data.translations[brand.lang].dimensions.markets
+           label=markets_label
            items=brand.markets
            type="market"
-           translations=site.data.dimensions[brand.lang].markets
+           translations=markets_translations
            lang=brand.lang
            base_url=site.baseurl
            linkable=true %}

@@ -56,7 +56,7 @@ layout: default
 {% endif %}
 
 <!-- Only load map script if brand has location coordinates -->
-{% if page.location.coordinates or (page.location_lat and page.location_lng) %}
+{% if page.location.coordinates or page.location_lat and page.location_lng %}
 <script src="{{ '/assets/js/pages/brand/brand-map-script.js' | relative_url }}"></script>
 {% endif %}
 

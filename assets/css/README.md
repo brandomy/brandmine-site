@@ -66,12 +66,6 @@ css/
 │   ├── about.scss         # About page
 │   ├── brands.scss        # Brands listing page
 │   ├── dimension-page.scss # Generic dimension page
-│   ├── dimension-specific/ # Specialized dimension pages
-│   │   ├── discover-attributes.scss
-│   │   ├── discover-markets.scss
-│   │   ├── discover-sectors.scss
-│   │   ├── discover-signals.scss
-│   │   └── russian-sectors.scss
 │   ├── discovery-hub.scss # Discovery landing page
 │   ├── discovery.scss     # Discovery section
 │   ├── home.scss          # Homepage

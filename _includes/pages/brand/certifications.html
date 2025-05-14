@@ -17,12 +17,18 @@
 <div class="brand-certifications">
   <h2 class="brand-certifications__heading">{{ site.data.translations[brand.lang].brand.certifications }}</h2>
 
-  {% include components/brand/recognition-section.html
-     items=brand.certifications
-     heading=site.data.translations[brand.lang].brand.certifications %}
+  {% if brand.certifications %}
+    {% assign certifications_heading = site.data.translations[brand.lang].brand.certifications %}
+    {% include components/brand/recognition-section.html
+       items=brand.certifications
+       heading=certifications_heading %}
+  {% endif %}
 
-  {% include components/brand/recognition-section.html
-     items=brand.awards
-     heading=site.data.translations[brand.lang].general.awards %}
+  {% if brand.awards %}
+    {% assign awards_heading = site.data.translations[brand.lang].general.awards %}
+    {% include components/brand/recognition-section.html
+       items=brand.awards
+       heading=awards_heading %}
+  {% endif %}
 </div>
 {% endif %}
