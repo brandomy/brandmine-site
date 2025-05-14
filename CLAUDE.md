@@ -23,8 +23,10 @@ The site supports:
 
 ```
 /_brands/{lang}/       — One Markdown file per brand
+/_founders/{lang}/     — One Markdown file per founder
 /_dimensions/{lang}/{type}/  — Dimension files per type (sector, signal, etc.)
 /_data/                — YAML files for translations, sectors, navigation, social links, market-sectors
+                       — JSON files for countries, languages, etc.
 /_includes/            — HTML partials (headers, footers, language switcher, dimension lists)
 /_layouts/             — Jekyll templates (default, brand, sector, dimension, etc.)
 /_insights/{lang}/     — Insight content (curated stories, future blog)
@@ -74,6 +76,7 @@ Includes are organized into a structured hierarchy:
   collections/          — Collection-specific includes
     brands/             — Brand-related includes
     dimensions/         — Dimension-related includes
+    founders/           — Founder-related includes
     insights/           — Insight-related includes
   components/           — Reusable UI components
     buttons/            — Button components
@@ -83,11 +86,18 @@ Includes are organized into a structured hierarchy:
     forms/              — Form components
     icons/              — Icon components
     images/             — Image handling components
+      collection-image.html — Unified image component for collections
     indicators/         — UI indicators
     maps/               — Map components
     navigation/         — Navigation components
     search/             — Search components
   layout/               — Layout components (header, footer)
+  pages/                — Page-specific includes organized by page
+    about/              — About page sections (hero, mission, team, etc.)
+    brand/              — Brand page sections
+    founders/           — Founders page sections
+    home/               — Home page sections
+    insight/            — Insight page sections
   styleguide/           — Styleguide components
   utilities/            — Utility includes
 ```
@@ -103,6 +113,7 @@ This organization mirrors the CSS structure for consistency and maintainability.
 - `_data/navigation/{lang}.yml` configures nav structure per language
 - Layouts and includes dynamically pull from `_data/` based on `page.lang`
 - Language switcher and all permalinks respect language prefixing
+- JSON files (`_data/countries.json`, `_data/languages.json`) provide structured data for use across languages
 
 ---
 
@@ -122,7 +133,7 @@ Key components for brand display include:
 - `brand-card.html` - Card display for brand listings
 - `brand-list-item.html` - List view display for brand listings
 - `search-filter.html` - Filter interface for multi-dimensional discovery
-- `brand-image.html` - Responsive image handling for brand imagery
+- `collection-image.html` - Unified responsive image handling for all collections
 - `map-component.html` - Geographic visualization of brands
 
 These components implement a visual taxonomy system using consistent color-coding:
@@ -167,6 +178,7 @@ npm run build                            # Alias for jekyll build
 ```bash
 ./_scripts/check_language_consistency.sh        # Validate i18n coverage
 ./_scripts/enhanced-site-summary-advanced.sh    # Generate structural summary
+./_scripts/process_images.sh [collection] [identifier] # Unified image processing
 ./_scripts/process_brand_images.sh [country_code] [brand_name] # Process brand images
 ./_scripts/process_site_images.sh               # Process site images
 ./_scripts/process_people_images.sh             # Process people/team images
@@ -243,6 +255,20 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 - Respect content hierarchy with proper heading levels
 - Keep language-specific content in the appropriate language subfolder
 
+## "Logic Light" Approach
+- Push logic into smaller, focused includes that match individual CSS styles
+- Layouts include specific page sections as needed
+- Page content files remain minimal with just required front matter
+- Translation strings in `_data/translations/{lang}.yml` provide the text
+- Example structure:
+  ```
+  pages/en/about.md (minimal front matter)
+  _layouts/about.html (includes page sections)
+  _includes/pages/about/hero.html (section-specific include)
+  _includes/pages/about/mission.html
+  _data/translations/en.yml (provides text content)
+  ```
+
 ## JavaScript
 - Vanilla JS only (no frameworks)
 - ES6 preferred, backwards-compatible
@@ -270,24 +296,25 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 - Standardized naming conventions (`purpose-imagename.jpg`)
 - **Standard 3:2 aspect ratio** for most content images (1200×800px)
 - Responsive image sizes (400w, 800w, 1200w, 1600w)
-- Organization by brand in the assets directory
-- Processing with ImageMagick for optimization via dedicated scripts:
-  - `process_brand_images.sh` for brand assets
-  - `process_site_images.sh` for site assets
-  - `process_people_images.sh` for people/team images
+- Organization by collection type in the assets directory
+- Processing with ImageMagick for optimization via unified script:
+  - `process_images.sh` for all collection types
+  - Specialized scripts for specific collections
 
 ## Image Organization and Processing
 
-- **Directory Structure**: Organized by content type:
+- **Directory Structure**: Organized by collection type:
   - `assets/images/brands/[country-code]/[brand-name]/` for brand assets
+  - `assets/images/founders/[founder-id]/` for founder assets
   - `assets/images/people/` for team members and testimonials
   - `assets/images/icons/dimensions/` for dimension taxonomy icons
   - `assets/images/icons/insights/` for insights category icons
   - `assets/images/[category]/` for site-wide assets (sectors, markets, etc.)
 
-- **Naming Convention**: Purpose-first naming pattern:
-  - Original files: `purpose-descriptivename.extension`
-  - Processed files: `[brand-name]-purpose-descriptivename-[width]w.extension`
+- **Naming Convention**: 
+  - Brand images: `founder-portrait.jpg`, `founder-headshot.jpg`, `logo.png`, etc.
+  - Founder images: `portrait.jpg`, `headshot.jpg`
+  - Processed files include width indicators: `[identifier]-[image-type]-[width]w.extension`
 
 - **Aspect Ratios**: 
   - Standard content: 3:2 horizontal (1200×800px)
@@ -295,6 +322,7 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
   - Icons: 1:1 square (512×512px source)
 
 - **Processing Scripts**:
+  - `process_images.sh [collection] [identifier]` - Unified image processing
   - `process_brand_images.sh [country-code] [brand-name]` for brand assets
   - `process_site_images.sh [category]` for site-wide assets
   - `process_people_images.sh` for team/testimonial portraits
@@ -302,6 +330,7 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
   - `apply_teal_filter.sh` for team photos branding
 
 - **Implementation Includes**:
+  - `collection-image.html` for unified responsive image handling
   - `brand-image.html` for brand-specific imagery
   - `site-image.html` for site-wide imagery
   - `taxonomy-icon.html` for dimension taxonomy icons
@@ -365,6 +394,7 @@ General Rule:
   3. **Market Momentum** - Achievements, milestones, and expansion moments
   4. **Location Intelligence** - Geographical insights and regional context
 - Market-sector structured data in `_data/market_sectors/{lang}/{market}.yml`
+- Structured data in JSON files (`countries.json`, `languages.json`, etc.)
 - Future integration with Airtable using a flat table structure
 - JSON for complex data (timelines, products, secondary locations)
 - CSV import/export for efficient data management
@@ -535,8 +565,13 @@ Claude must align any navigation, filtering, or dimension-related output with th
 ### Adding a New Brand
 1. Create brand markdown file in each language folder (`_brands/en/`, `_brands/ru/`, `_brands/zh/`)
 2. Ensure the brand references existing dimensions
-3. Process brand images with `./_scripts/process_brand_images.sh [country_code] [brand_name]`
+3. Process brand images with `./_scripts/process_images.sh brands [country_code]-[brand_name]` or `./_scripts/process_brand_images.sh [country_code] [brand_name]`
 4. Add attributions for images in `_data/image_attributions.yml`
+
+### Adding a New Founder
+1. Create founder markdown file in each language folder (`_founders/en/`, `_founders/ru/`, `_founders/zh/`)
+2. Process founder images with `./_scripts/process_images.sh founders [founder-id]`
+3. Add attributions for images in `_data/image_attributions.yml`
 
 ### Adding a New Dimension
 1. Create dimension files in appropriate category subfolder for all languages
@@ -572,6 +607,10 @@ Three template options are available for creating brand profiles:
    - Supports rich storytelling and detailed brand information
 
 Always process brand images after creation using:
+```bash
+./_scripts/process_images.sh brands [country_code]-[brand_name]
+```
+or the legacy script:
 ```bash
 ./_scripts/process_brand_images.sh [country_code] [brand_name]
 ```
