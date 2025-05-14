@@ -7,7 +7,7 @@
     - limit: The number of related brands to display (default: all)
   Dependencies:
     - assets/css/pages/brand/related-brands.scss
-    - components/images/brand-image.html
+    - components/cards/related-brand-card.html
     - site.data.translations[lang].brand
     - site.brands collection
 {% endcomment %}
@@ -16,6 +16,7 @@
 {% assign show_related = include.show_related | default: true %}
 {% assign limit = include.limit | default: 100 %}
 
+<!-- Updated related-brands.html -->
 {% if show_related and brand.related_brands %}
 <div class="brand-related">
   <h2 class="brand-related__heading">{{ site.data.translations[brand.lang].brand.related_brands }}</h2>
@@ -23,28 +24,9 @@
     {% for related_brand_slug in brand.related_brands limit: limit %}
       {% assign related_brand = site.brands | where: "slug", related_brand_slug | where: "lang", brand.lang | first %}
       {% if related_brand %}
-      <div class="brand-related__card">
-        {% if related_brand.logo %}
-        {% include components/images/brand-image.html 
-           country=related_brand.country_code
-           brand=related_brand.slug
-           image="color"
-           purpose="logo"
-           ext="png"
-           alt=related_brand.title %}
-        {% endif %}
-        <h3 class="brand-related__title">
-          <a href="{{ related_brand.url | relative_url }}" class="brand-related__link">{{ related_brand.title }}</a>
-        </h3>
-        <p class="brand-related__description">{{ related_brand.description | truncate: 100 }}</p>
-        {% if related_brand.sectors and related_brand.sectors.size > 0 %}
-        <div class="brand-related__sector">
-          <span class="brand-related__sector-label">
-            {{ site.data.dimensions[brand.lang].sectors[related_brand.sectors[0]] | default: related_brand.sectors[0] }}
-          </span>
-        </div>
-        {% endif %}
-      </div>
+        {% include components/cards/related-brand-card.html
+           brand=related_brand
+           parent_lang=brand.lang %}
       {% endif %}
     {% endfor %}
   </div>

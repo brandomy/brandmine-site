@@ -6,7 +6,7 @@
     - show_gallery: Whether to show the gallery (default: true)
   Dependencies:
     - assets/css/pages/brand/gallery.scss
-    - components/images/brand-image.html
+    - components/images/collection-image.html
     - site.data.translations[lang].brand
 {% endcomment %}
 
@@ -19,11 +19,12 @@
   <div class="brand-gallery__container">
     {% for item in brand.gallery %}
     <figure class="brand-gallery__item">
-      {% include components/images/brand-image.html 
-         country=brand.country_code
-         brand=brand.slug
-         image=item.image
+      {% include components/images/collection-image.html
+         collection="brands"
+         slug=brand.slug
          purpose="gallery"
+         name=item.image
+         aspect="landscape"
          alt=item.caption %}
       <figcaption class="brand-gallery__caption">{{ item.caption }}</figcaption>
     </figure>

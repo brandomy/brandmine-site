@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Brands Page - Filters Component
+   ==========================================================================
+   Styles for the brand filtering categories
+*/
+
+.brands__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-6) 0;
+  justify-content: center;
+}
+
+.brands__filter {
+  background-color: white;
+  border: 1px solid var(--accent-300);
+  color: var(--accent-700);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 20px;
+  font-weight: var(--font-medium);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.brands__filter:hover {
+  background-color: var(--accent-50);
+  transform: translateY(-2px);
+}
+
+.brands__filter:focus-visible {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
+}
+
+.brands__filter--active {
+  background-color: var(--accent-100);
+  font-weight: var(--font-bold);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .brands__filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .brands__filter {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: var(--space-2) var(--space-4);
+  }
+}

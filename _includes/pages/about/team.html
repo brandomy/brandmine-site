@@ -1,16 +1,16 @@
 {% comment %}
   Component: pages/about/team.html
-  
+
   Purpose: Displays the team section with team member profiles
-  
+
   Parameters:
     title (optional): Section title, defaults to "Our Team"
     conclusion_text (optional): Text displayed after the team profiles
     panel_type (optional): Panel background style, defaults to "light"
-    
+
   Dependencies:
     - CSS: pages/about/team.scss
-    - _includes/components/images/site-image.html
+    - _includes/components/images/collection-image.html
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "light" %}
@@ -23,10 +23,12 @@
 
     <div class="about-team__grid">
       <div class="about-team__member">
-        {% include components/images/site-image.html
-          category="people/team"
-          image="randal-eastman"
+        {% include components/images/collection-image.html
+          collection="people"
+          category="team"
+          slug="randal-eastman"
           purpose="headshot"
+          aspect="square"
           alt="Randal Eastman"
           class="about-team__photo" %}
         <h3>Randal Eastman</h3>
@@ -48,10 +50,12 @@
       </div>
 
       <div class="about-team__member">
-        {% include components/images/site-image.html
-          category="people/team"
-          image="olya-eastman"
+        {% include components/images/collection-image.html
+          collection="people"
+          category="team"
+          slug="olya-eastman"
           purpose="headshot"
+          aspect="square"
           alt="Olya Eastman"
           class="about-team__photo" %}
         <h3>Olya Eastman</h3>
@@ -72,7 +76,7 @@
         </div>
       </div>
     </div>
-    
+
     <p class="panel__conclusion-text about-team__conclusion-text">
       {{ conclusion_text }}
     </p>

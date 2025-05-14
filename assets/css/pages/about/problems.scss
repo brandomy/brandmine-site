@@ -4,117 +4,106 @@
    Styles for the problem section with card grid
 */
 
-.about-problems {
-  &__title {
-    text-align: center;
-    margin-bottom: var(--space-4);
+/* Problem cards 2x2 grid - with overlap fix */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns with min width of 0 */
+  grid-template-rows: auto auto; /* Explicitly define rows */
+  gap: var(--space-8); /* Increase gap between rows */
+  margin: var(--space-8) 0;
+  max-width: 1200px; /* Match the standard content width */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Base card styling with fixed height to prevent overlap */
+.problem-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  background-color: white;
+  min-height: 240px; /* Fixed minimum height to prevent overlap */
+  box-sizing: border-box; /* Include padding in height calculation */
+  border: 1px solid var(--neutral-200);
+  width: 100%; /* Ensure it takes full width */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Problem icon container - make sure it's positioned correctly */
+.problem-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: var(--space-4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  position: relative; /* Ensure proper stacking context */
+  z-index: 2; /* Place above other content */
+}
+
+/* Make sure each card has its own stacking context */
+.problem-card--1, .problem-card--2, .problem-card--3, .problem-card--4 {
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon colors for problem cards - now using a more consistent color scheme */
+.problem-card--1 .problem-icon {
+  color: var(--primary-500);
+}
+
+.problem-card--2 .problem-icon {
+  color: var(--primary-600);
+}
+
+.problem-card--3 .problem-icon {
+  color: var(--primary-500);
+}
+
+.problem-card--4 .problem-icon {
+  color: var(--primary-600);
+}
+
+/* Card headings */
+.problem-card h3 {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--primary-700);
+}
+
+/* Card text */
+.problem-card p {
+  margin: 0;
+  color: var(--neutral-700);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .problem-grid {
+    grid-template-columns: 1fr; /* Stack cards on very small screens */
+    grid-template-rows: auto auto auto auto; /* Four explicit rows on mobile */
   }
   
-  &__lead-text {
-    text-align: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: var(--space-8);
+  .problem-card {
+    padding: var(--space-4); /* Reduced padding on mobile */
+    min-height: 200px; /* Smaller min-height on mobile */
   }
-  
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: auto auto;
-    gap: var(--space-8);
-    margin: var(--space-8) 0;
-    max-width: 1200px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    
-    @media (max-width: 767px) {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto auto auto;
-      gap: var(--space-6);
-    }
-  }
-  
-  &__card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    background-color: white;
-    min-height: 240px;
-    box-sizing: border-box;
-    border: 1px solid var(--neutral-200);
-    width: 100%;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    position: relative;
-    z-index: 1;
-    
-    @media (max-width: 767px) {
-      padding: var(--space-4);
-      min-height: 200px;
-    }
-    
-    @media (max-width: 479px) {
-      min-height: 180px;
-    }
-    
-    h3 {
-      margin-top: var(--space-4);
-      margin-bottom: var(--space-2);
-      font-size: var(--text-xl);
-      font-weight: var(--font-semibold);
-      color: var(--primary-700);
-    }
-    
-    p {
-      margin: 0;
-      color: var(--neutral-700);
-    }
-  }
-  
-  &__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    background-color: white;
-    border-radius: 50%;
-    margin-bottom: var(--space-4);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    position: relative;
-    z-index: 2;
-  }
-  
-  &__card--1 &__icon {
-    color: var(--primary-500);
-  }
-  
-  &__card--2 &__icon {
-    color: var(--primary-600);
-  }
-  
-  &__card--3 &__icon {
-    color: var(--primary-500);
-  }
-  
-  &__card--4 &__icon {
-    color: var(--primary-600);
-  }
-  
-  &__conclusion-text {
-    text-align: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: var(--space-8);
-    font-style: italic;
-    color: var(--gray-700);
+}
+
+@media (max-width: 479px) {
+  .problem-card {
+    min-height: 180px; /* Smaller minimum height on mobile */
   }
 }

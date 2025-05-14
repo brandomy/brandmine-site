@@ -12,27 +12,26 @@
 {% assign brand = include.brand | default: page %}
 {% assign show_international = include.show_international | default: true %}
 
+<!-- Updated international.html -->
 {% if show_international and brand.featured_level > 1 and brand.international.markets %}
 <div class="brand-international">
   <h2 class="brand-international__heading">{{ site.data.translations[brand.lang].brand.international }}</h2>
-  
+
   <div class="brand-international__markets">
     <h3 class="brand-international__subheading">{{ site.data.translations[brand.lang].brand.export_markets }}</h3>
-    <div class="brand-international__tags">
-      {% for market in brand.international.markets %}
-      <span class="brand-international__tag">{{ market }}</span>
-      {% endfor %}
-    </div>
+    {% include components/display/tag-list.html
+       items=brand.international.markets
+       css_class="brand-international" %}
   </div>
-  
+
   {% if brand.international.distribution_models %}
   <div class="brand-international__distribution">
     <h3 class="brand-international__subheading">{{ site.data.translations[brand.lang].brand.distribution_models }}</h3>
-    <div class="brand-international__tags">
-      {% for model in brand.international.distribution_models %}
-      <span class="brand-international__tag">{{ site.data.translations[brand.lang].distribution_models[model] | default: model }}</span>
-      {% endfor %}
-    </div>
+    {% include components/display/tag-list.html
+       items=brand.international.distribution_models
+       css_class="brand-international"
+       translations=site.data.translations[brand.lang].distribution_models
+       lang=brand.lang %}
   </div>
   {% endif %}
 </div>

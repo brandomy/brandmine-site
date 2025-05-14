@@ -1,3 +1,4 @@
+
 # Brandmine Includes Directory
 
 This directory contains all reusable components for the Brandmine Jekyll site, organized by function and purpose.
@@ -33,6 +34,7 @@ Reusable UI components across the site:
   - `featured-brand.html` - Enhanced card for featured brands
   - `insight-card.html` - Card for insight article previews
   - `market-sector-card.html` - Card for market-sector combinations
+  - `related-brand-card.html` - Card for related brand display
   - `sector-card.html` - Card for sector display
 
 - **carousels/**
@@ -54,10 +56,8 @@ Reusable UI components across the site:
     - signals/
 
 - **images/** - Image handling components
-  - `brand-image.html` - Responsive image component for brand assets
+  - `collection-image.html` - Unified responsive image component for all collections
   - `image-attribution.html` - Attribution display for images
-  - `responsive-image.html` - General responsive image component
-  - `site-image.html` - Component for site-wide imagery
 
 - **indicators/**
   - `content-type-indicator.html` - Visual indicator for content types
@@ -74,6 +74,22 @@ Reusable UI components across the site:
 - **search/** - Search functionality
   - `search-filter.html` - Advanced search with filtering
   - `simple-search.html` - Basic search interface
+
+### components/brand/
+Brand-specific components:
+- `founder-info.html` - Display founder information with portrait
+
+### components/pages/
+Page-specific components:
+- **about/**
+  - `team.html` - Team member display
+- **brand/**
+  - `gallery.html` - Brand gallery display
+  - `header.html` - Brand page header
+  - `hero.html` - Brand hero image
+  - `related-brands.html` - Related brands section
+- **home/**
+  - `testimonials.html` - Testimonials section
 
 ### layout/
 Core site structure components:
@@ -99,35 +115,66 @@ Utility functions and components:
 ### Brand Card
 
 ```liquid
-{% include components/cards/brand-card.html 
-   brand=brand 
+{% include components/cards/brand-card.html
+   brand=brand
    featured=false %}
 ```
 
 ### Dimension Navigation
 
 ```liquid
-{% include collections/dimensions/discovery-navigation.html 
-   active_type=page.discovery_path 
+{% include collections/dimensions/discovery-navigation.html
+   active_type=page.discovery_path
    container_class=discovery_class %}
 ```
 
-### Responsive Brand Image
+### Unified Image Component
 
 ```liquid
-{% include components/images/brand-image.html 
-   country=page.country_code
-   brand=page.slug
-   image="main"
+{% include components/images/collection-image.html
+   collection="brands"
+   slug=page.slug
    purpose="hero"
+   name="main"
+   aspect="landscape"
    alt=page.title %}
+```
+
+Examples for different collections:
+
+```liquid
+<!-- Brand hero image -->
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="hero"
+   name="storefront"
+   aspect="landscape"
+   loading="eager"
+   alt="TeaTime storefront" %}
+
+<!-- Team headshot -->
+{% include components/images/collection-image.html
+   collection="people"
+   category="team"
+   slug="olya-eastman"
+   purpose="headshot"
+   aspect="square"
+   alt="Olya Eastman" %}
+
+<!-- Sector image -->
+{% include components/images/collection-image.html
+   collection="sectors"
+   slug="wine"
+   purpose="hero"
+   alt="Wine sector overview" %}
 ```
 
 ## Layout Relationships
 
 The following layouts rely heavily on specific includes:
 
-- **brand.html** - Uses brand-image.html, icon.html components
+- **brand.html** - Uses collection-image.html, icon.html components
 - **dimension.html** - Uses discovery-navigation.html, dimension-list.html
 - **insights.html** - Uses insight-card.html, latest-insights-grid.html
 - **discover.html/discovery.html** - Uses discovery-navigation.html, discovery-dimensions-grid.html
@@ -143,10 +190,13 @@ The following layouts rely heavily on specific includes:
 
 - Components generally expect specific parameters; check component headers for requirements
 - Most components accept an optional `class` parameter for additional styling
-- The icon system uses standardized naming tied to taxonomy dimensions
+- The unified image component (`collection-image.html`) handles all image types
 - Language handling uses the `page.lang` variable throughout
+- Image slugs should include full identifiers (e.g., `ru-teatime` for brands)
 
 ## Additional Documentation
 
 - See [Component Relationships Map](../docs/component-relationships.md) for a detailed map of how these includes are used across layouts
 - See `includes_structure.txt` for a breakdown of the folder and file structure of our includes
+
+

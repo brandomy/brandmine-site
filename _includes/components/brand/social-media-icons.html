@@ -1,0 +1,32 @@
+<!-- _includes/components/brand/social-media-icons.html -->
+{% comment %}
+  Component: components/brand/social-media-icons.html
+  Purpose: Displays social media icons for a brand
+  Parameters:
+    - social: Social media links object
+    - lang: Language code
+    - show_if: Condition to show the section (optional)
+{% endcomment %}
+
+{% assign show_section = include.show_if | default: true %}
+
+{% if show_section and include.social %}
+<div class="brand-sidebar__section">
+  <h3 class="brand-sidebar__heading">{{ site.data.translations[include.lang].brand.social_media }}</h3>
+  <div class="brand-sidebar__social-icons">
+    {% for platform in include.social %}
+      {% assign platform_name = platform[0] %}
+      {% assign platform_url = platform[1] %}
+
+      {% if platform_url %}
+      <a href="{{ platform_url }}" target="_blank" rel="noopener"
+         class="brand-sidebar__social-icon"
+         title="{{ site.data.translations[include.lang].social[platform_name] }}">
+        {% include components/brand/social-icon.html platform=platform_name %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social[platform_name] }}</span>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

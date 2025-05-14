@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Brands Page - Cards Component
+   ==========================================================================
+   Styles for the brand grid cards
+*/
+
+.brands__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.brands__card {
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  padding: var(--space-6);
+  border: 1px solid var(--neutral-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brands__card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.brands__logo-placeholder {
+  width: 120px;
+  height: 80px;
+  background-color: var(--neutral-200);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4);
+}
+
+.brands__card-title {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+  color: var(--primary-700);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+}
+
+.brands__meta {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.brands__tag--country, 
+.brands__tag--sector {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-medium);
+}
+
+.brands__tag--country {
+  background-color: var(--sky-100);
+  color: var(--sky-900);
+}
+
+.brands__tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-900);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .brands__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 479px) {
+  .brands__card {
+    padding: var(--space-4);
+  }
+  
+  .brands__logo-placeholder {
+    width: 100px;
+    height: 70px;
+  }
+}

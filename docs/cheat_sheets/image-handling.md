@@ -1,12 +1,13 @@
 # Brandmine Image Handling Cheat Sheet
 
-*Last updated: May 7, 2025*
+*Last updated: May 14, 2025*
 
 ## 1. Image Preparation
 
 ### Standard Dimensions
 - **Regular Images**: 1200×800px (3:2 ratio)
 - **Portraits**: 800×1200px (2:3 ratio)
+- **Square Images**: 1200×1200px (1:1 ratio)
 - **Icons**: 512×512px (1:1 ratio)
 
 ### File Formats
@@ -35,134 +36,169 @@ purpose-descriptivename.extension
 
 ### Common Purposes:
 - `hero` - Main banner images
-- `founder` - Founder portraits (always use `founder-portrait.jpg` for all founder portraits)
+- `portrait` - General portrait images
+- `founder` - Founder-specific portraits (use `founder-portrait.jpg`)
+- `headshot` - Small team/testimonial photos
 - `logo` - Brand logos
 - `gallery` - Product collection images
 - `product` - Individual product images
 - `location` - Venue or regional images
 - `team` - Team member photos
 - `icon` - UI or taxonomy icons
+- `thumbnail` - Preview images
+- `feature` - Featured content images
 
 ## 3. Place in Correct Directory
 
-### For Brand Images:
+### Collection-Based Structure:
 ```
-assets/images/brands/[country-code]/[brand-name]/originals/
-```
-
-**Example:**
-```
-assets/images/brands/ru/teatime/originals/hero-storefront.jpg
-assets/images/brands/ru/teatime/originals/founder-portrait.jpg
-assets/images/brands/ru/teatime/originals/logo-color.png
+assets/images/[collection]/[slug]/originals/
 ```
 
-### For Site Images:
+**Examples:**
 ```
-assets/images/[category]/originals/
-```
+# Brands (using full slug)
+assets/images/brands/ru-teatime/originals/hero-storefront.jpg
+assets/images/brands/br-serraverde/originals/founder-portrait.jpg
 
-**Example:**
-```
-assets/images/sectors/originals/hero-wine.jpg
+# People with categories
+assets/images/people/team/olya-eastman/originals/headshot-professional.jpg
+assets/images/people/testimonials/georgie-yam/originals/portrait-casual.jpg
+
+# Sectors
+assets/images/sectors/wine/originals/hero-vineyard.jpg
+assets/images/sectors/hotels-resorts/originals/icon-category.png
+
+# Insights
+assets/images/insights/wine-trends-2025/originals/hero-market.jpg
 ```
 
 ## 4. Process Images (Run Script)
 
-
-### For People Images:
+### Unified processing script:
 ```bash
-./_scripts/process_people_images.sh
+# Process specific brand
+./_scripts/process_images.sh brands ru-teatime
+
+# Process all founders
+./_scripts/process_images.sh founders
+
+# Process specific sector
+./_scripts/process_images.sh sectors wine
+
+# Process everything
+./_scripts/process_images.sh all
 ```
 
-### For Site Images:
-```bash
-./_scripts/process_site_images.sh sectors
-```
+## 5. Use in Templates (NEW UNIFIED COMPONENT)
 
-### For Taxonomy Icons:
-```bash
-./_scripts/process_icons.sh dimensions
-```
+### All images now use the same component:
 
-## 5. Use in Templates
-
-### Brand Images:
-
-#### Hero Image:
+#### Brand Hero:
 ```liquid
-{% include components/images/brand-image.html 
-   country="ru"
-   brand="teatime" 
+{% include components/images/collection-image.html 
+   collection="brands" 
+   slug="ru-teatime" 
    purpose="hero"
-   image="storefront" 
+   name="storefront"
+   aspect="landscape"
    alt="TeaTime storefront in Moscow" %}
 ```
 
 #### Founder Portrait:
 ```liquid
-{% include components/images/brand-image.html 
-   country="ru"
-   brand="teatime" 
+{% include components/images/collection-image.html 
+   collection="brands" 
+   slug="ru-teatime" 
    purpose="founder"
-   image="portrait" 
+   aspect="portrait"
    alt="Alexei Sokolov, TeaTime founder" %}
 ```
 
-#### Brand Logo:
+#### Team Headshot:
 ```liquid
-{% include components/images/brand-image.html 
-   country="ru"
-   brand="teatime" 
+{% include components/images/collection-image.html 
+   collection="people"
+   category="team"
+   slug="olya-eastman"
+   purpose="headshot"
+   aspect="square"
+   alt="Olya Eastman" %}
+```
+
+#### Sector Hero:
+```liquid
+{% include components/images/collection-image.html 
+   collection="sectors"
+   slug="wine"
+   purpose="hero"
+   alt="Wine sector overview" %}
+```
+
+#### Logo:
+```liquid
+{% include components/images/collection-image.html 
+   collection="brands"
+   slug="ru-teatime"
    purpose="logo"
-   image="color" 
+   aspect="square"
    ext="png"
    alt="TeaTime logo" %}
 ```
 
-### Site Images:
-```liquid
-{% include components/images/site-image.html 
-   category="sectors"
-   purpose="hero"
-   image="wine" 
-   alt="Wine sector overview" %}
-```
-
-
 ## 6. Parameter Reference
 
-When using the `components/images/brand-image.html` include:
+For the unified `collection-image.html` component:
 
-- **`country`**: Country code for the brand (e.g., "ru", "cn")
-- **`brand`**: Brand slug/identifier (e.g., "teatime")
-- **`purpose`**: Purpose identifier that was prefixed to the original image (e.g., "hero", "founder")
-- **`image`**: The descriptive part of the image name *without* the purpose prefix (e.g., "storefront", "portrait")
-- **`alt`**: Alt text for accessibility (required)
-- **`ext`**: File extension (optional, default: "jpg")
+- **`collection`**: Collection name (required) - brands, people, sectors, etc.
+- **`category`**: Optional subcategory - team, testimonials, etc.
+- **`slug`**: Unique identifier (required) - uses full slug like `ru-teatime`
+- **`purpose`**: Image purpose (required) - hero, portrait, headshot, etc.
+- **`name`**: Optional additional identifier - storefront, casual, etc.
+- **`aspect`**: Aspect ratio (optional, default: landscape) - landscape, portrait, square
+- **`alt`**: Alt text (required)
+- **`ext`**: File extension (optional, default: jpg)
+- **`loading`**: Loading priority (optional, default: lazy) - lazy, eager
 - **`class`**: Additional CSS classes (optional)
-
-The processing scripts handle different image types appropriately:
-- Portrait/founder images are resized by height with higher quality (90%)
-- Regular images are resized by width with standard quality (85%)
-- Logos (PNG) preserve transparency
 
 ## 7. Example Workflow
 
-1. Prepare image at the correct dimensions (1200×800px or 800×1200px)
-2. Apply appropriate style using `stylize_images.sh`
-3. Name as `founder-portrait.jpg` and place in `assets/images/brands/ru/teatime/originals/`
-4. Run `./scripts/process_brand_images.sh ru teatime`
-5. Use in template:
+1. Prepare image at correct dimensions
+2. Stylize using appropriate style
+3. Name as `hero-storefront.jpg`
+4. Place in `assets/images/brands/ru-teatime/originals/`
+5. Run `./scripts/process_images.sh brands ru-teatime`
+6. Use in template:
    ```liquid
-   {% include components/images/brand-image.html 
-      country="ru"
-      brand="teatime" 
-      purpose="founder"
-      image="portrait"
-      alt="Alexei Sokolov, TeaTime founder" %}
+   {% include components/images/collection-image.html 
+      collection="brands"
+      slug="ru-teatime" 
+      purpose="hero"
+      name="storefront"
+      alt="TeaTime storefront" %}
    ```
-6. Final output filenames will be:
-   - `teatime-founder-portrait-400w.jpg`
-   - `teatime-founder-portrait-800w.jpg`
-   - `teatime-founder-portrait-1200w.jpg`
+7. Generated filenames:
+   - `hero-storefront-400w.jpg`
+   - `hero-storefront-800w.jpg`
+   - `hero-storefront-1200w.jpg`
+
+## 8. Mobile-First Considerations
+
+The new component automatically handles responsive sizing based on purpose and aspect ratio:
+
+- **Hero images**: Full width on mobile, progressively smaller on tablets/desktop
+- **Portraits**: Optimized for smaller display on mobile
+- **Thumbnails**: Small fixed sizes for efficient loading
+- **Logos**: Consistent small sizes across breakpoints
+
+Use `loading="eager"` for above-the-fold images:
+```liquid
+{% include components/images/collection-image.html 
+   collection="brands"
+   slug="ru-teatime"
+   purpose="hero"
+   loading="eager"
+   alt="Hero image" %}
+```
+
+

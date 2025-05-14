@@ -2,9 +2,9 @@
 layout: default
 ---
 <!-- ----------------------------------------------------------------------------
-  DISCOVER DIMENSION WRAPPER LAYOUT
+  DISCOVER DIMENSION CATEGORY WRAPPER LAYOUT
   ------------------------------------------------------------------------------
-  This layout is used for all individual dimension-specific pages in the 
+  This layout is used for all individual dimension-specific pages in the
   /discover/ section (e.g., Sectors, Markets, Attributes, Signals).
 
   It plays a key bridging role between:
@@ -14,7 +14,7 @@ layout: default
   Purpose:
   - Wraps each of the 4 dimension overviews in a consistent format
   - Injects the multilingual discovery navigation tabs via `collections/dimensions/discovery-navigation.html`
-  - Applies a context-aware background style via `container_class` 
+  - Applies a context-aware background style via `container_class`
     (e.g., sectors, markets) depending on the `page.discovery_path`
 
   Typical usage:
@@ -26,13 +26,13 @@ layout: default
 
   Related layouts:
   - `discovery.html`: used by /{lang}/discovery.md for hub-level introduction
-  - `dimension.html`: used for individual tag landing pages like 
+  - `dimension.html`: used for individual tag landing pages like
     /en/discover/sectors/wine or /zh/discover/markets/china
 
   Dependencies:
   - _includes/collections/dimensions/discovery-navigation.html
   - _layouts/default.html (as base wrapper)
-  - Uses `page.discovery_path` and `site.data.translations[lang]` 
+  - Uses `page.discovery_path` and `site.data.translations[lang]`
     for styling and multilingual support
 ---------------------------------------------------------------------------- -->
 {% assign container_class = '' %}

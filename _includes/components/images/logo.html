@@ -1,0 +1,37 @@
+{% comment %}
+  Component: components/images/logo.html
+  Purpose: Renders logos with consistent sizing
+
+  <!-- Brand logo -->
+{% include components/images/logo.html
+   collection="brands"
+   item="ru-teatime"
+   variant="color"
+   size="medium"
+   alt="TeaTime logo" %}
+
+
+{% endcomment %}
+
+{% assign size_map = "small:40,medium:60,large:120" | split: ',' %}
+{% assign size = include.size | default: 'medium' %}
+{% assign max_width = "" %}
+
+{% for size_option in size_map %}
+  {% assign size_parts = size_option | split: ':' %}
+  {% if size_parts[0] == size %}
+    {% assign max_width = size_parts[1] %}
+  {% endif %}
+{% endfor %}
+
+{% include components/images/base-image.html
+  collection=include.collection
+  item=include.item
+  filename="logo"
+  variant=include.variant | default: 'color'
+  widths="100,200,400"
+  sizes=max_width | append: "px"
+  alt=include.alt
+  class=include.class | append: " logo logo--" | append: size
+  ext=include.ext | default: 'png'
+%}

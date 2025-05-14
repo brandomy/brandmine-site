@@ -6,7 +6,7 @@
     - show_hero: Whether to show the hero image (default: true)
   Dependencies:
     - assets/css/pages/brand/hero.scss
-    - components/images/brand-image.html
+    - components/images/collection-image.html
 
   Usage examples:
     {% include pages/brand/hero.html %}
@@ -20,11 +20,13 @@
 
 {% if show_hero and brand.hero_image %}
 <div class="brand-hero">
-  {% include components/images/brand-image.html 
-     country=brand.country_code
-     brand=brand.slug
-     image="main"
+  {% include components/images/collection-image.html
+     collection="brands"
+     slug=brand.slug
      purpose="hero"
+     name="main"
+     aspect="landscape"
+     loading="eager"
      alt=brand.title %}
 </div>
 {% endif %}

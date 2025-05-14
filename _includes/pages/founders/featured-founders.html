@@ -1,0 +1,37 @@
+{% comment %}
+  Component: pages/founders/featured-founders.html
+  
+  Purpose: Displays a featured founders section with highlighted founder profiles
+  
+  Parameters:
+    title (optional): Custom section title, defaults to founder.featured_founders translation
+    description (optional): Custom description text, defaults to founder.featured_description translation
+    limit (optional): Number of featured founders to display, defaults to 3
+    panel_type (optional): Panel background style, defaults to "olive-soft"
+    
+  Dependencies:
+    - CSS: pages/founders/featured-founders.scss
+    - _includes/components/cards/founder-card.html
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "olive-soft" %}
+{% assign limit = include.limit | default: 3 %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: site.data.translations[page.lang].founder.featured_founders }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.description | default: site.data.translations[page.lang].founder.featured_description }}
+    </p>
+    
+    <div class="featured-founders__grid">
+      {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: limit %}
+      {% for founder in featured_founders %}
+        {% include components/cards/founder-card.html founder=founder featured=true %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

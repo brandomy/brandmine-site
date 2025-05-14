@@ -23,7 +23,7 @@
 #
 # Requirements:
 #     - ImageMagick must be installed
-#     - Texture files must exist in assets/images/textures/
+#     - Texture files must exist in assets/images/site/textures/
 #
 # Author: Randal Eastman
 
@@ -47,7 +47,7 @@ if ! command -v magick &> /dev/null; then
 fi
 
 # Define texture directory
-TEXTURE_DIR="assets/images/textures"
+TEXTURE_DIR="assets/images/site/textures"
 
 # Check if texture directory exists
 if [ ! -d "$TEXTURE_DIR" ]; then

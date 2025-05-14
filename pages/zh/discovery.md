@@ -3,7 +3,7 @@ layout: discovery
 title: 探索
 permalink: /zh/discovery/
 lang: zh
-ref: discovery-hub
+ref: discovery
 discovery_path: discovery
 ---
 
@@ -32,7 +32,7 @@ discovery_path: discovery
         <p class="discover__section-description">探索金砖国家+地区顶级行业的领先品牌</p>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discover__section-link">{{ site.data.translations[page.lang].discover.view_all_sectors }}</a>
       </div>
-      
+
       <!-- Showcase common sectors as tags -->
       <div class="discover__tag-cloud discover__tag-cloud--sector">
         <div class="discover__tags">
@@ -42,12 +42,12 @@ discovery_path: discovery
               {{ sector[1] }}
             </a>
           {% endfor %}
-          
+
           <!-- Special Russian Sectors tag -->
           <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="discover__tag discover__tag--russian-sector">
             俄罗斯行业
           </a>
-          
+
           {% if site.data.translations[page.lang].sectors.size > 8 %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discover__tag discover__tag--more discover__tag--sector">
               {{ site.data.translations[page.lang].buttons.view_more }}...
@@ -77,7 +77,7 @@ discovery_path: discovery
         <p class="discover__section-description">探索来自金砖国家+新兴地区的品牌</p>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discover__section-link">{{ site.data.translations[page.lang].discover.view_all_markets }}</a>
       </div>
-      
+
       <!-- Showcase markets as tags -->
       <div class="discover__tag-cloud discover__tag-cloud--market">
         <div class="discover__tags">
@@ -89,7 +89,7 @@ discovery_path: discovery
           {% endfor %}
         </div>
       </div>
-      
+
       <!-- Map preview for markets -->
       <div class="discover__map-preview">
         <div class="discover__map-container">
@@ -131,7 +131,7 @@ discovery_path: discovery
         <p class="discover__section-description">探索金砖国家+地区具有不同特点的品牌</p>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discover__section-link">{{ site.data.translations[page.lang].discover.view_all_attributes }}</a>
       </div>
-      
+
       <!-- Showcase attributes as tags -->
       <div class="discover__tag-cloud discover__tag-cloud--attribute">
         <div class="discover__tags">
@@ -164,7 +164,7 @@ discovery_path: discovery
         <p class="discover__section-description">探索准备增长的品牌</p>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discover__section-link">{{ site.data.translations[page.lang].discover.view_all_signals }}</a>
       </div>
-      
+
       <!-- Showcase growth signals as tags -->
       <div class="discover__tag-cloud discover__tag-cloud--signal">
         <div class="discover__tags">
@@ -196,7 +196,7 @@ discovery_path: discovery
         </h2>
         <p class="discover__section-description">发现精心挑选的、拥有吸引人故事和全球潜力的品牌</p>
       </div>
-      
+
       <div class="discover__brands-grid">
         {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
         {% if featured_brands.size > 0 %}
@@ -213,7 +213,7 @@ discovery_path: discovery
           </div>
         {% endif %}
       </div>
-      
+
       <div class="discover__section-action">
         <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta">{{ site.data.translations[page.lang].buttons.all_brands }}</a>
       </div>
@@ -239,7 +239,7 @@ discovery_path: discovery
         </h2>
         <p class="discover__section-description">发现来自新兴市场的隐藏瑰宝和引人入胜的创始人故事</p>
       </div>
-      
+
       <div class="discover__insights-grid">
         {% assign recent_insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: 2 %}
         {% if recent_insights.size > 0 %}
@@ -256,7 +256,7 @@ discovery_path: discovery
           </div>
         {% endif %}
       </div>
-      
+
       <div class="discover__section-action">
         <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--secondary-cta">{{ site.data.translations[page.lang].insights.view_all }}</a>
       </div>

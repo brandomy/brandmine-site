@@ -9,218 +9,30 @@
 /* Import component styles */
 @import 'insights/index';
 
-/* Base styles for insights page */
-.insights-page {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+/* Custom panels for insights page */
+.insights-panel .panel__content {
+  max-width: 1200px;
+  box-sizing: border-box;
 }
 
-/* Styles for the existing layout in _layouts/insights.html */
-.insights-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-8);
-  margin-top: var(--space-8);
-}
-
-.insights-main {
-  flex: 1 1 65%;
-  min-width: 300px;
-}
-
-.insights-sidebar {
-  flex: 1 1 30%;
-  min-width: 240px;
-}
-
-.insights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-6);
-  margin: var(--space-8) 0;
-}
-
-.insights-empty-state {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: var(--space-8);
-  background-color: var(--neutral-50);
-  border-radius: var(--radius-md);
-  border: 1px dashed var(--neutral-300);
-  color: var(--neutral-600);
-  font-style: italic;
-}
-
-.sidebar-section {
-  margin-bottom: var(--space-6);
-  padding: var(--space-4);
-  background-color: var(--neutral-50);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--neutral-200);
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: var(--space-4);
-    font-size: var(--text-lg);
-    color: var(--primary-700);
+/* Responsive Adjustments for layout */
+@media (min-width: 992px) {
+  .insights-panel .panel__content {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
   }
 }
 
-.content-type-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    margin-bottom: var(--space-2);
-  }
-
-  a {
-    color: var(--primary-600);
-    text-decoration: none;
-    
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .category-count {
-    color: var(--neutral-500);
-    font-size: var(--text-sm);
-  }
-}
-
-.sidebar-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.tag {
-  display: inline-block;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
-  text-decoration: none;
-  margin-bottom: var(--space-2);
-
-  &--sector {
-    background-color: var(--olive-100);
-    color: var(--olive-900);
-  }
-
-  &--market {
-    background-color: var(--sky-100);
-    color: var(--sky-900);
-  }
-
-  &--attribute {
-    background-color: var(--secondary-100);
-    color: var(--secondary-900);
-  }
-
-  &--signal {
-    background-color: var(--accent-100);
-    color: var(--accent-900);
-  }
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-.country-filter {
-  display: flex;
-  flex-direction: column;
-}
-
-.country-filter-option {
-  display: flex;
-  align-items: center;
-  padding: var(--space-2);
-  text-decoration: none;
-  color: var(--neutral-700);
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-1);
-
-  &:hover {
-    background-color: var(--neutral-100);
-  }
-
-  .country-flag {
-    width: 20px;
-    height: 15px;
-    margin-right: var(--space-2);
-    background-size: cover;
-    border-radius: 2px;
-  }
-
-  .country-count {
-    margin-left: auto;
-    color: var(--neutral-500);
-    font-size: var(--text-sm);
-  }
-}
-
-.featured-brands-filter {
-  display: flex;
-  flex-direction: column;
-}
-
-.featured-brand-filter-option {
-  display: block;
-  padding: var(--space-1) var(--space-2);
-  text-decoration: none;
-  color: var(--primary-600);
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-2);
-
-  &:hover {
-    background-color: var(--primary-50);
-  }
-
-  .brand-count {
-    margin-left: var(--space-2);
-    color: var(--neutral-500);
-    font-size: var(--text-sm);
-  }
-}
-
-.view-all-brands-link {
-  display: block;
-  margin-top: var(--space-2);
-  padding: var(--space-1) var(--space-2);
-  text-align: center;
-  color: var(--primary-600);
-  text-decoration: none;
-  border: 1px dashed var(--neutral-300);
-  border-radius: var(--radius-sm);
-
-  &:hover {
-    background-color: var(--primary-50);
-  }
-}
-
-/* Responsive adjustments */
 @media (max-width: 767px) {
-  .insights-container {
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .insights-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
+  .insights-panel .panel__content {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
   }
 }
 
 @media (max-width: 479px) {
-  .insights-grid {
-    margin: var(--space-4) 0;
-  }
-
-  .sidebar-section {
-    padding: var(--space-3);
+  .insights-panel .panel__content {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
   }
 }

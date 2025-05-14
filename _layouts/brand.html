@@ -6,9 +6,8 @@ layout: default
   ------------------------------------------------------------------------------
   Used for displaying the full profile of an individual brand:
 
-    - /en/brands/ru/teatime/
-    - /zh/brands/in/himalaya-herbs/
-    - /ru/brands/br/serra-verde/
+    - /en/brands/ru-teatime/
+    - /ru/brands/br-serra-verde/
 
   Purpose:
   - Renders brand metadata (logo, sector, market, founding year, etc.)
@@ -29,66 +28,36 @@ layout: default
 
 <div class="brand-profile">
   {% include pages/brand/header.html brand=page %}
-  
   {% include pages/brand/hero.html brand=page %}
-  
+
   <div class="brand-detail">
     <div class="brand-detail__main">
       {% include pages/brand/content.html brand=page content=content %}
     </div>
-    
     <div class="brand-detail__sidebar">
       {% include pages/brand/sidebar.html brand=page %}
     </div>
   </div>
-  
+
   {% include pages/brand/timeline.html brand=page %}
-  
   {% include pages/brand/certifications.html brand=page %}
-  
   {% include pages/brand/international.html brand=page %}
-  
   {% include pages/brand/gallery.html brand=page %}
-  
   {% include pages/brand/location.html brand=page %}
-  
   {% include pages/brand/related-brands.html brand=page %}
 </div>
 
-<!-- Initialize map for location intelligence section -->
-<script class="brand-map-script">
-  document.addEventListener('DOMContentLoaded', function() {
-    // Check if map element and coordinates exist
-    const mapElement = document.getElementById('brandLocationMap');
-    if (mapElement && mapElement.dataset.lat && mapElement.dataset.lng) {
-      const lat = parseFloat(mapElement.dataset.lat);
-      const lng = parseFloat(mapElement.dataset.lng);
-      const brandName = mapElement.dataset.name;
-      
-      // Initialize map if MapLibre is available 
-      if (typeof maplibregl !== 'undefined') {
-        const map = new maplibregl.Map({
-          container: 'brandLocationMap',
-          style: 'https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key={{ site.stadia_maps_api_key }}',
-          center: [lng, lat],
-          zoom: 7
-        });
-        
-        // Add navigation controls
-        map.addControl(new maplibregl.NavigationControl());
-        
-        // Add marker for brand location
-        new maplibregl.Marker()
-          .setLngLat([lng, lat])
-          .setPopup(new maplibregl.Popup().setHTML(`<h3>${brandName}</h3>`))
-          .addTo(map);
-      } else {
-        // Fallback if MapLibre is not available
-        mapElement.innerHTML = `<div class="map-placeholder">
-          <p>Map showing ${brandName} at coordinates ${lat}, ${lng}</p>
-          <p>Interactive map loading...</p>
-        </div>`;
-      }
-    }
-  });
-</script>
+
+<!-- Brand-specific JavaScript (conditional loading) -->
+
+<!-- Gallery script - only if gallery exists -->
+{% if page.gallery and page.featured_level > 1 %}
+<script src="{{ '/assets/js/pages/brand/gallery.js' | relative_url }}"></script>
+{% endif %}
+
+<!-- Only load map script if brand has location coordinates -->
+{% if page.location.coordinates or (page.location_lat and page.location_lng) %}
+<script src="{{ '/assets/js/pages/brand/brand-map-script.js' | relative_url }}"></script>
+{% endif %}
+
+<!-- Note: Timeline, certifications, and international sections are static HTML only -->

@@ -1,0 +1,21 @@
+{% comment %}
+  Component: pages/founders/header.html
+  
+  Purpose: Displays the header section of the founders page with title and search functionality
+  
+  Parameters:
+    title (optional): Custom section title, defaults to page.title
+    
+  Dependencies:
+    - CSS: pages/founders/header.scss
+    - site.data.translations for search placeholder and button text
+{% endcomment %}
+
+<div class="founders-header">
+  <h1 class="founders-header__title">{{ include.title | default: page.title }}</h1>
+  
+  <div class="founders-header__search">
+    <input type="text" id="founder-search" placeholder="{{ site.data.translations[page.lang].search.founder_placeholder | default: site.data.translations[page.lang].search.placeholder }}" class="founders-header__search-input">
+    <button id="search-button" class="founders-header__search-button">{{ site.data.translations[page.lang].search.button }}</button>
+  </div>
+</div>

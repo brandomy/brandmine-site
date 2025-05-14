@@ -1,0 +1,31 @@
+<!-- _includes/components/cards/related-brand-card.html -->
+{% comment %}
+  Component: components/cards/related-brand-card.html
+  Purpose: Displays a single related brand card
+  Parameters:
+    - brand: The related brand object
+    - parent_lang: Language of the parent page
+{% endcomment %}
+
+<div class="brand-related__card">
+  {% if include.brand.logo %}
+  {% include components/images/collection-image.html
+     collection="brands"
+     slug=include.brand.slug
+     purpose="logo"
+     aspect="square"
+     ext="png"
+     alt=include.brand.title %}
+  {% endif %}
+  <h3 class="brand-related__title">
+    <a href="{{ include.brand.url | relative_url }}" class="brand-related__link">{{ include.brand.title }}</a>
+  </h3>
+  <p class="brand-related__description">{{ include.brand.description | truncate: 100 }}</p>
+  {% if include.brand.sectors and include.brand.sectors.size > 0 %}
+  <div class="brand-related__sector">
+    <span class="brand-related__sector-label">
+      {{ site.data.dimensions[include.parent_lang].sectors[include.brand.sectors[0]] | default: include.brand.sectors[0] }}
+    </span>
+  </div>
+  {% endif %}
+</div>

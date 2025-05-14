@@ -1,0 +1,29 @@
+{% comment %}
+  Component: components/images/gallery.html
+  Purpose: Gallery images with flexible aspect ratios
+
+  <!-- Gallery image -->
+{% include components/images/gallery.html
+   collection="brands"
+   item="ru-teatime"
+   image="teapot-collection"
+   index="1"
+   alt="TeaTime signature teapot collection" %}
+   
+{% endcomment %}
+
+{% assign filename = "gallery-" | append: include.image %}
+{% if include.index %}
+  {% assign filename = filename | append: "-" | append: include.index %}
+{% endif %}
+
+{% include components/images/base-image.html
+  collection=include.collection
+  item=include.item
+  filename=filename
+  widths="400,800,1200"
+  sizes="90vw, (min-width: 768px) 45vw, (min-width: 1200px) 400px"
+  alt=include.alt
+  class=include.class | append: " gallery-image"
+  ext=include.ext | default: 'jpg'
+%}

@@ -1,6 +1,6 @@
 /**
  * Founder Card Component
- * 
+ *
  * Used to display founder profiles in a card format throughout the site:
  * - Founders directory listings
  * - Homepage founder focus section
@@ -46,7 +46,7 @@
   &--featured {
     border-color: var(--color-olive-200);
     box-shadow: var(--shadow-md);
-    
+
     .founder-card__portrait {
       border: 2px solid var(--color-olive-300);
     }
@@ -55,7 +55,7 @@
   /* Placeholder styling for when no real data is available */
   &--placeholder {
     opacity: 0.7;
-    
+
     &:hover {
       transform: none;
       box-shadow: var(--shadow-sm);
@@ -81,13 +81,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   &-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  
+
   &-placeholder {
     width: 100%;
     height: 100%;
@@ -137,12 +137,12 @@
   font-size: 0.9375rem;
   margin-bottom: 1rem;
   font-weight: normal;
-  
+
   &-link {
     color: var(--color-primary-600);
     text-decoration: none;
     font-weight: 600;
-    
+
     &:hover {
       text-decoration: underline;
     }
@@ -172,27 +172,27 @@
   border-radius: 2rem;
   font-size: 0.75rem;
   font-weight: 500;
-  
+
   &--market {
     background-color: var(--color-sky-100);
     color: var(--color-sky-800);
   }
-  
+
   &--sector {
     background-color: var(--color-olive-100);
     color: var(--color-olive-800);
   }
-  
+
   &--attribute {
     background-color: var(--color-secondary-100);
     color: var(--color-secondary-800);
   }
-  
+
   &--signal {
     background-color: var(--color-accent-100);
     color: var(--color-accent-800);
   }
-  
+
   &--expertise {
     background-color: var(--color-gray-100);
     color: var(--color-gray-800);
@@ -212,7 +212,7 @@
   color: white;
   text-decoration: none;
   font-weight: 600;
-  background-color: var(--olive-600);
+  background-color: var(--olive-400);
   padding: 0.5rem 1.25rem;
   border-radius: 4px;
   transition: all 0.2s ease;
@@ -221,13 +221,13 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 160px;
-  
+
   &:hover {
     background-color: var(--olive-700);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-  
+
   &:active {
     transform: translateY(0);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -256,34 +256,34 @@
   padding: 1rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  
+
   &::-webkit-scrollbar {
     height: 4px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background-color: var(--color-gray-100);
     border-radius: 2px;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background-color: var(--color-gray-300);
     border-radius: 2px;
   }
-  
+
   .founder-card {
     scroll-snap-align: start;
     flex: 0 0 calc(100% - 2rem);
-    
+
     @media (min-width: 640px) {
       flex: 0 0 calc(50% - 1.25rem);
     }
-    
+
     @media (min-width: 1024px) {
       flex: 0 0 calc(33.333% - 1.25rem);
     }
   }
-  
+
   &.scrollable {
     &::after {
       content: "";
@@ -303,7 +303,7 @@
   display: flex;
   gap: 1.25rem;
   width: 100%;
-  
+
   .founder-card {
     flex: 1;
   }
@@ -324,7 +324,7 @@
   background-color: var(--color-gray-300);
   cursor: pointer;
   transition: background-color 0.2s ease;
-  
+
   &.active {
     background-color: var(--color-olive-500);
     transform: scale(1.2);
@@ -336,15 +336,15 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1.5rem;
-  
+
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   @media (min-width: 1280px) {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -355,7 +355,7 @@
   grid-template-columns: repeat(1, 1fr);
   gap: 1.5rem;
   margin: 2rem 0;
-  
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -366,11 +366,11 @@
   grid-template-columns: repeat(1, 1fr);
   gap: 1.5rem;
   margin: 2rem 0;
-  
+
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
   }

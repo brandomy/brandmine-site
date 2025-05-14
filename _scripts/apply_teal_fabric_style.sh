@@ -5,7 +5,7 @@
 # Example: ./apply_teal_fabric_style.sh ./assets/images/people/team
 
 BASE_DIR="${1:-./assets/images/people}"
-TEXTURE="./assets/images/textures/fabric_weave_light.jpg"
+TEXTURE="./assets/images/site/textures/fabric_weave_light.jpg"
 
 echo "Starting full styling (teal + texture) from: $BASE_DIR"
 echo "Using texture overlay: $TEXTURE"

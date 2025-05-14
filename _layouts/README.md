@@ -51,8 +51,13 @@ The base layout that all other layouts extend.
 **Used for**: Individual brand profile pages (`_brands/{lang}/{brand}.md`)
 
 **Key includes**:
-- `components/images/brand-image.html`
+- `components/images/collection-image.html`
 - `components/icons/icon.html`
+- `components/brand/founder-info.html`
+- `components/pages/brand/hero.html`
+- `components/pages/brand/header.html`
+- `components/pages/brand/gallery.html`
+- `components/pages/brand/related-brands.html`
 
 **Key content sections**:
 - Brand header with metadata
@@ -142,7 +147,7 @@ The base layout that all other layouts extend.
 
 **Key includes**:
 - `components/indicators/content-type-indicator.html`
-- `components/images/responsive-image.html`
+- `components/images/collection-image.html`
 
 **Key content sections**:
 - Article metadata header
@@ -224,6 +229,7 @@ These are common front matter variables used across layouts:
 | `featured` | Boolean | Multiple layouts | Whether content is featured |
 | `featured_level` | Number | brand.html | Level of feature detail (0-2) |
 | `premium` | Boolean | Multiple layouts | Whether content is premium |
+| `slug` | String | brand.html, others | Unique identifier for assets |
 
 ## Multilingual Support
 
@@ -242,6 +248,19 @@ Some layouts include embedded JavaScript:
 - `brands.html`: Filtering and sorting functionality
 - `dimension.html`: Filtering and carousel behavior
 
+## Image Component Usage
+
+All layouts now use the unified image component system:
+
+```liquid
+{% include components/images/collection-image.html
+   collection="brands|people|sectors|insights|etc"
+   slug="unique-identifier"
+   purpose="hero|portrait|logo|gallery|etc"
+   aspect="landscape|portrait|square"
+   alt="Descriptive alt text" %}
+```
+
 ## Best Practices for Using These Layouts
 
 1. **Always set the language**: Ensure `lang` is set in front matter for proper translations
@@ -249,6 +268,7 @@ Some layouts include embedded JavaScript:
 3. **Minimize logic in content files**: Keep Liquid logic in layouts or includes
 4. **Pass explicit parameters**: When using includes, pass named parameters
 5. **Document dependencies**: Note which includes each layout requires
+6. **Use full slugs**: Include complete identifiers (e.g., `ru-teatime`)
 
 ## Adding New Layouts
 
@@ -257,8 +277,9 @@ When adding new layouts:
 1. Extend `default.html` or another appropriate base
 2. Follow established naming conventions
 3. Extract complex logic to includes
-4. Document the layout in this README
-5. Test with all supported languages
+4. Use the unified image component for all images
+5. Document the layout in this README
+6. Test with all supported languages
 
 ## Related Documentation
 

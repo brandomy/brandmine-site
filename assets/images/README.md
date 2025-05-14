@@ -1,34 +1,40 @@
+## Updated `README.md`:
+
+
 # Brandmine Images
 
-*Last updated: May 2, 2025*
+*Last updated: May 14, 2025*
 
-This directory contains all image assets used across the Brandmine platform. This README explains the organization system, naming conventions, and image processing workflow.
+This directory contains all image assets used across the Brandmine platform. This README explains the organization system, naming conventions, and the unified image processing workflow.
 
 ## Directory Structure
 
 ```
 assets/images/
 ├── brands/                     # Brand-specific imagery
-│   └── [country-code]/         # Organized by country code (e.g., ru, in, cn)
-│       └── [brand-name]/       # Each brand has its own directory
-│           ├── originals/      # Original high-resolution files 
-│           └── [responsive images]  # Generated responsive images
+│   └── [slug]/                 # Each brand uses full slug (e.g., ru-teatime)
+│       ├── originals/          # Original high-resolution files
+│       └── [responsive images] # Generated responsive images
+├── founders/                   # Dedicated founder collection
+│   └── [slug]/                 # Founder identifier
+├── people/                     # Non-brand people
+│   ├── team/                   # Team members
+│   │   └── [slug]/
+│   └── testimonials/           # Testimonial providers
+│       └── [slug]/
 ├── sectors/                    # Sector dimension images
+│   └── [slug]/
 ├── markets/                    # Market dimension images
+│   └── [slug]/
 ├── attributes/                 # Attribute dimension images
+│   └── [slug]/
 ├── signals/                    # Signal dimension images
-├── icons/                      # Dimension taxonomy icons
-│   ├── dimensions/             # Organized by dimension type
-│   │   ├── sectors/            # Sector-specific icons
-│   │   ├── attributes/         # Attribute-specific icons
-│   │   ├── signals/            # Signal-specific icons
-│   │   └── markets/            # Market-specific icons
-│   └── insights/               # Insights category icons
-├── people/                     # Non-brand team members and staff
+│   └── [slug]/
 ├── insights/                   # Insight article images
-└── site/                       # Site-wide UI elements
+│   └── [slug]/
+└── site/                       # Site-wide elements
     ├── ui/                     # UI components
-    ├── icons/                  # General UI icons
+    ├── icons/                  # General icons
     └── layout/                 # Layout elements
 ```
 
@@ -45,48 +51,175 @@ purpose-descriptivename.extension
 | Purpose | Usage | Examples |
 |---------|-------|----------|
 | `hero` | Main banner images | `hero-storefront.jpg`, `hero-overview.jpg` |
-| `founder` | Founder portraits | `founder-portrait.jpg`, `founder-informal.jpg` |
-| `team` | Group or staff photos | `team-leadership.jpg`, `team-production.jpg` |
+| `portrait` | General portraits | `portrait-professional.jpg`, `portrait-casual.jpg` |
+| `founder` | Founder-specific portraits | `founder-portrait.jpg` |
+| `headshot` | Small portraits for teams/testimonials | `headshot-formal.jpg` |
 | `gallery` | Image collections | `gallery-product.jpg`, `gallery-interior.jpg` |
 | `logo` | Brand logos | `logo-color.png`, `logo-dark.png` |
 | `product` | Product imagery | `product-teapot.jpg`, `product-lineup.jpg` |
-| `location` | Place imagery | `location-vineyard.jpg`, `location-factory.jpg` |
-| `certificate` | Certifications | `certificate-organic.jpg` |
-| `testimonial` | Customer/partner testimonials | `testimonial-georgie-yam.jpg` |
-| `icon` | UI and taxonomy icons | `icon-export-ready.png`, `icon-wine.svg` |
+| `thumbnail` | Preview images | `thumbnail-article.jpg` |
+| `feature` | Featured content images | `feature-announcement.jpg` |
+| `icon` | UI and taxonomy icons | `icon-export-ready.png` |
 
 ### Processed Images
 
 Processed images are automatically generated with this naming pattern:
 
 ```
-[brand-name]-[purpose]-[descriptivename]-[width]w.extension
+[purpose]-[descriptivename]-[width]w.extension
 ```
 
-**Input vs Output Examples:**
-
-*Input:* `assets/images/brands/ru/teatime/originals/hero-storefront.jpg`  
-*Outputs:*
-- `assets/images/brands/ru/teatime/teatime-hero-storefront-400w.jpg`
-- `assets/images/brands/ru/teatime/teatime-hero-storefront-800w.jpg`
-- `assets/images/brands/ru/teatime/teatime-hero-storefront-1200w.jpg`
-
-*Input:* `assets/images/sectors/originals/hero-wine.jpg`  
-*Outputs:*
-- `assets/images/sectors/sectors-hero-wine-400w.jpg`
-- `assets/images/sectors/sectors-hero-wine-800w.jpg`
-- `assets/images/sectors/sectors-hero-wine-1200w.jpg`
+**Examples:**
+- Original: `hero-storefront.jpg`
+- Outputs: `hero-storefront-400w.jpg`, `hero-storefront-800w.jpg`, `hero-storefront-1200w.jpg`
 
 ## Standard Dimensions
 
 | Image Type | Aspect Ratio | Recommended Size | Generated Sizes |
 |------------|--------------|------------------|-----------------|
 | Hero Images | 3:2 | 1200×800px | 400w, 800w, 1200w |
-| Gallery Images | 3:2 | 1200×800px | 400w, 800w, 1200w |
-| Founder/People Portraits | 2:3 | 800×1200px | 400w, 800w, 1200w |
-| Logos | - | 400px width | 200w, 400w |
-| Thumbnails | 1:1 | 400×400px | 200w, 400w |
-| Icons | 1:1 | 512×512px | 24px, 48px, 128px |
+| Portraits | 2:3 | 800×1200px | 400w, 800w, 1200w |
+| Square Images | 1:1 | 1200×1200px | 400w, 800w, 1200w |
+| Logos | Variable | 400px width | 400w, 800w, 1200w |
+| Icons | 1:1 | 512×512px | 400w, 800w, 1200w |
+
+## Unified Image Processing
+
+All images are now processed with a single script that handles all collections:
+
+### Basic Usage:
+```bash
+# Process specific collection and slug
+./_scripts/process_images.sh brands ru-teatime
+
+# Process entire collection
+./_scripts/process_images.sh sectors
+
+# Process all images
+./_scripts/process_images.sh all
+```
+
+### Processing Features:
+- Automatically detects image orientation (portrait vs landscape)
+- Applies appropriate quality settings (90% for portraits, 85% for landscapes)
+- Portrait images scale by height to avoid oversizing
+- Landscape images scale by width
+- Preserves originals if they're smaller than target size
+
+## Using Images in Templates
+
+All images now use the unified `collection-image.html` component:
+
+### Basic Usage:
+```liquid
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="hero"
+   alt="Alt text here" %}
+```
+
+### Complete Example with All Parameters:
+```liquid
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="hero"
+   name="storefront"
+   aspect="landscape"
+   ext="jpg"
+   loading="eager"
+   class="hero-image"
+   alt="TeaTime storefront in Moscow" %}
+```
+
+### Common Patterns:
+
+#### Brand Images:
+```liquid
+<!-- Hero image -->
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="hero"
+   name="storefront"
+   alt="TeaTime storefront" %}
+
+<!-- Founder portrait -->
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="founder"
+   aspect="portrait"
+   alt="TeaTime founder" %}
+
+<!-- Logo -->
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="logo"
+   aspect="square"
+   ext="png"
+   alt="TeaTime logo" %}
+```
+
+#### People Images:
+```liquid
+<!-- Team member -->
+{% include components/images/collection-image.html
+   collection="people"
+   category="team"
+   slug="olya-eastman"
+   purpose="headshot"
+   aspect="square"
+   alt="Olya Eastman" %}
+
+<!-- Testimonial -->
+{% include components/images/collection-image.html
+   collection="people"
+   category="testimonials"
+   slug="georgie-yam"
+   purpose="portrait"
+   aspect="portrait"
+   alt="Georgie Yam" %}
+```
+
+#### Sector Images:
+```liquid
+{% include components/images/collection-image.html
+   collection="sectors"
+   slug="wine"
+   purpose="hero"
+   alt="Wine sector overview" %}
+```
+
+## Mobile-First Image Handling
+
+The unified component includes mobile-first responsive handling:
+
+### Automatic Sizing by Purpose:
+- **Hero images**: 100vw on mobile → 50vw on desktop
+- **Portraits**: 50vw on mobile → 33vw on desktop
+- **Thumbnails**: 45vw on mobile → fixed 250px on desktop
+- **Logos**: Fixed small sizes across all breakpoints
+
+### Loading Priorities:
+```liquid
+<!-- Above-the-fold images -->
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="hero"
+   loading="eager"
+   alt="Hero image" %}
+
+<!-- Below-the-fold images (default) -->
+{% include components/images/collection-image.html
+   collection="brands"
+   slug="ru-teatime"
+   purpose="gallery"
+   alt="Gallery image" %}
+```
 
 ## Visual Style Framework
 
@@ -113,99 +246,6 @@ Brandmine employs four distinct visual styles to create meaningful differentiati
 
 See `docs/design/image-style-guide.md` for detailed style specifications and examples.
 
-## Image Processing Workflow
-
-1. **Prepare Original Images**
-   - Place in the appropriate `originals/` directory
-   - Follow naming conventions (`purpose-descriptivename.ext`)
-   - Ensure proper dimensions and aspect ratio (3:2 horizontal, 2:3 vertical)
-   - Optimize file size before adding
-
-2. **Convert PNG to JPG if Needed**
-   - For large illustration PNGs (>300KB), use the conversion script:
-   - `./_scripts/convert-to-jpg.sh`
-
-3. **Process with Scripts**
-   - For brand images: `./_scripts/process_brand_images.sh [country-code] [brand-name]`
-   - For site images: `./_scripts/process_site_images.sh [optional_category]`
-   - For people images: `./_scripts/process_people_images.sh`
-   - For icons: `./_scripts/process_icons.sh [optional_system]` (dimensions or insights)
-
-4. **Using in Templates**
-   - For brand images:
-     ```liquid
-     {% include components/images/brand-image.html 
-        country="ru"
-        brand="teatime" 
-        image="storefront" 
-        purpose="hero"
-        alt="TeaTime storefront in Moscow" %}
-     ```
-   
-   - For site images:
-     ```liquid
-     {% include components/images/site-image.html 
-        category="sectors"
-        image="wine" 
-        purpose="hero"
-        alt="Wine sector overview" %}
-     ```
-
-## File Format Guidelines
-
-- **JPG**: Use for photographs and most illustrations
-  - Quality setting: 85% (90% for portraits)
-  - Target file size: <300KB for full-size images
-
-- **PNG**: Use for logos, icons, and images requiring transparency
-  - For illustrations, consider JPG conversion if file size >300KB
-  - Use for source icons at 512×512px
-
-- **SVG**: Use for icons and simple graphics where possible
-  - Place in `_includes/components/icons/` directory
-  - Ensure proper viewBox attribute setting
-  - Example SVG with proper viewBox:
-    ```xml
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-      <!-- Icon content here -->
-    </svg>
-    ```
-
-## Special Case: Team & Testimonial Photography
-
-For Brandmine team members and testimonial providers, we use natural, professional photography rather than stylized illustrations:
-
-- **Professional Portraits**: Clean, consistent photography with neutral backgrounds
-- **Consistent Format**: 2:3 portrait orientation (800×1200px)
-- **Minimal Editing**: Professional color correction and basic retouching only
-- **Brand Filter**: Apply a subtle teal (#38B2AC) filter at 12% opacity
-
-### Batch Processing Script
-
-For applying the brand filter to multiple team photos, use the `apply_teal_filter.sh` script:
-
-```bash
-./_scripts/apply_teal_filter.sh input_directory/ output_directory/
-```
-
-This applies a consistent brand filter to all portrait images in the input directory.
-
-## Taxonomy Icons Implementation
-
-For dimension taxonomy icons (sectors, attributes, signals, markets) and insight category icons, we use a dedicated system:
-
-- **Icon Format**: PNG with transparent background
-- **Source Size**: 512×512 pixels
-- **Output Sizes**: 24px, 48px, 128px for responsive usage
-- **Style**: Flat, minimalist design with clean lines and dimension-specific color schemes:
-  - Sectors: Olive/Green (#A3B763)
-  - Attributes: Orange/Secondary (#F97316)
-  - Signals: Purple/Accent (#6366F1)
-  - Markets: Blue/Sky (#0EA5E9)
-  - Insights: Teal (#38B2AC)
-
-See `docs/design/taxonomy-icon-implementation.md` for the complete implementation guide.
-
 ## Image Attribution
 
 For third-party images (e.g., Unsplash photos):
@@ -215,52 +255,34 @@ For third-party images (e.g., Unsplash photos):
 
 ## Best Practices
 
-1. **Accessibility**
-   - Always provide meaningful alt text
-   - Do not embed text in images
-   - Maintain sufficient color contrast
-
-2. **Performance**
-   - Compress images before adding to repository
-   - Use appropriate dimensions (don't scale down large images with CSS)
-   - Consider lazy loading for below-the-fold images
-
-3. **Consistency**
-   - Follow established naming conventions
-   - Use the appropriate visual style for each content type
-   - Maintain consistent aspect ratios
-
-4. **Multilingual Support**
-   - Avoid text in images (use HTML/CSS instead)
-   - Consider cultural appropriateness across languages
+1. **Use Full Slugs**: Always use complete slugs (e.g., `ru-teatime` not just `teatime`)
+2. **Specify Aspect Ratio**: Include `aspect` parameter for better responsive handling
+3. **Consider Loading Priority**: Use `loading="eager"` for critical above-the-fold images
+4. **Proper Alt Text**: Always provide meaningful alt text for accessibility
+5. **File Organization**: Keep originals in the `originals/` subdirectory
 
 ## Troubleshooting
 
 Common issues and solutions:
 
 1. **Images not appearing**
-   - Check file path and case sensitivity
-   - Verify the file exists in the repository
-   - Check for proper extension
+   - Check collection and slug parameters match directory structure
+   - Verify the purpose-name combination exists
+   - Ensure proper case sensitivity
 
-2. **Responsive images not generating**
-   - Ensure original is in the correct `originals/` folder
-   - Check naming pattern follows conventions
-   - Run the appropriate processing script
+2. **Wrong responsive behavior**
+   - Add appropriate `aspect` parameter
+   - Check if `purpose` matches intended use
+   - Verify generated sizes exist
 
-3. **Incorrect dimensions**
-   - Verify original matches recommended dimensions
-   - Check aspect ratio of original image
-   - Re-run processing scripts after correction
+3. **Processing errors**
+   - Ensure originals are in correct directory
+   - Check naming follows `purpose-name` pattern
+   - Run script with correct collection/slug parameters
 
-4. **PNG file size too large**
-   - Use `./_scripts/convert-to-jpg.sh` to convert to JPG
-   - Ensure quality set to 85% for good balance
-   - Consider using image optimization tools before adding
+4. **Performance issues**
+   - Use appropriate `loading` attribute
+   - Ensure images are properly sized before processing
+   - Consider image optimization before adding to repository
 
-5. **Icons not displaying correctly**
-   - Verify SVG has proper viewBox attribute
-   - Check PNG transparency is preserved
-   - Ensure the correct dimension-specific classes are applied
-
-For additional help, contact the development team.
+For additional help, see the development journal entries or contact the development team.

@@ -4,160 +4,154 @@
    Styles for the services section with two columns
 */
 
-.about-services {
-  &__title {
-    text-align: center;
+/* Container for the two service panels */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns with min width of 0 */
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+  width: 100%; /* Ensure full width */
+  max-width: 1200px; /* Match the standard content width */
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Individual service panel styling */
+.service-panel {
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* Panel headers with colored top borders */
+.service-panel__header {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+/* Different color styling for each panel */
+.service-panel--international .service-panel__header {
+  border-top: 4px solid var(--primary-400);
+}
+
+.service-panel--brands .service-panel__header {
+  border-top: 4px solid var(--secondary-400);
+}
+
+/* Panel titles */
+.service-panel__title {
+  margin: 0;
+  color: var(--neutral-800);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+}
+
+/* Different colors for each panel title */
+.service-panel--international .service-panel__title {
+  color: var(--primary-600);
+}
+
+.service-panel--brands .service-panel__title {
+  color: var(--secondary-600);
+}
+
+/* Panel content area */
+.service-panel__content {
+  padding: var(--space-6);
+}
+
+/* Service list styling */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+}
+
+.service-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Bullet point styling */
+.service-item__bullet {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-right: var(--space-3);
+}
+
+/* Different colors for bullets in each panel */
+.service-panel--international .service-item__bullet {
+  color: var(--primary-400);
+}
+
+.service-panel--brands .service-item__bullet {
+  color: var(--secondary-400);
+}
+
+/* Service item content */
+.service-item__content {
+  flex: 1;
+}
+
+.service-item__title {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+}
+
+/* Different colors for titles in each panel */
+.service-panel--international .service-item__title {
+  color: var(--primary-600);
+}
+
+.service-panel--brands .service-item__title {
+  color: var(--secondary-600);
+}
+
+.service-item__content p {
+  margin: 0;
+  color: var(--neutral-700);
+}
+
+/* Responsive Adjustments for Services */
+@media (max-width: 767px) {
+  .services-container {
+    grid-template-columns: 1fr !important; /* Single column on mobile with higher specificity */
+    gap: var(--space-6); /* Slightly reduced gap on mobile */
+  }
+  
+  .service-panel__header {
+    padding: var(--space-4);
+  }
+  
+  .service-panel__content {
+    padding: var(--space-4);
+  }
+  
+  .service-item {
     margin-bottom: var(--space-4);
   }
-  
-  &__lead-text {
-    text-align: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: var(--space-8);
+}
+
+@media (max-width: 479px) {
+  .services-container {
+    gap: var(--space-4); /* Even smaller gap on very small screens */
   }
   
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-8);
-    margin-top: var(--space-10);
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    
-    @media (max-width: 767px) {
-      grid-template-columns: 1fr !important;
-      gap: var(--space-6);
-    }
-    
-    @media (max-width: 479px) {
-      gap: var(--space-4);
-    }
+  .service-panel__header {
+    padding: var(--space-3) var(--space-4);
   }
   
-  &__panel {
-    background-color: white;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
-  }
-  
-  &__panel-header {
-    padding: var(--space-4) var(--space-6);
-    border-bottom: 1px solid var(--neutral-200);
-    
-    @media (max-width: 767px) {
-      padding: var(--space-4);
-    }
-    
-    @media (max-width: 479px) {
-      padding: var(--space-3) var(--space-4);
-    }
-  }
-  
-  &__panel--international &__panel-header {
-    border-top: 4px solid var(--primary-400);
-  }
-  
-  &__panel--brands &__panel-header {
-    border-top: 4px solid var(--secondary-400);
-  }
-  
-  &__panel-title {
-    margin: 0;
-    font-size: var(--text-2xl);
-    font-weight: var(--font-semibold);
-  }
-  
-  &__panel--international &__panel-title {
-    color: var(--primary-600);
-  }
-  
-  &__panel--brands &__panel-title {
-    color: var(--secondary-600);
-  }
-  
-  &__panel-content {
-    padding: var(--space-6);
-    
-    @media (max-width: 767px) {
-      padding: var(--space-4);
-    }
-    
-    @media (max-width: 479px) {
-      padding: var(--space-3) var(--space-4);
-    }
-  }
-  
-  &__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  &__item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--space-6);
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-    
-    @media (max-width: 767px) {
-      margin-bottom: var(--space-4);
-    }
-  }
-  
-  &__bullet {
-    flex-shrink: 0;
-    font-size: 1.5rem;
-    line-height: 1;
-    margin-right: var(--space-3);
-  }
-  
-  &__panel--international &__bullet {
-    color: var(--primary-400);
-  }
-  
-  &__panel--brands &__bullet {
-    color: var(--secondary-400);
-  }
-  
-  &__item-content {
-    flex: 1;
-  }
-  
-  &__item-title {
-    display: block;
-    margin-bottom: var(--space-1);
-    font-size: var(--text-lg);
-    font-weight: var(--font-semibold);
-  }
-  
-  &__panel--international &__item-title {
-    color: var(--primary-600);
-  }
-  
-  &__panel--brands &__item-title {
-    color: var(--secondary-600);
-  }
-  
-  &__item-content p {
-    margin: 0;
-    color: var(--neutral-700);
-  }
-  
-  &__conclusion-text {
-    text-align: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: var(--space-8);
-    color: var(--gray-700);
+  .service-panel__content {
+    padding: var(--space-3) var(--space-4);
   }
 }
