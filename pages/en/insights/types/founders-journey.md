@@ -1,7 +1,7 @@
 ---
 layout: insights-type
 title: "Brand Spotlight"
-permalink: /en/insights/types/brand-spotlight/
+permalink: /en/insights/types/founders-journey/
 lang: en
 insight_type: "brand-spotlight"
 description: "In-depth profiles of noteworthy BRICS+ brands gaining international momentum."

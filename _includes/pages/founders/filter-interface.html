@@ -1,31 +1,34 @@
 {% comment %}
   Component: pages/founders/filter-interface.html
-  
+
   Purpose: Displays the filter and search interface for browsing founders
-  
+
   Parameters:
     content_type (optional): Type of content to filter, defaults to "founders"
     taxonomy (optional): Taxonomy data for filtering
-    
+
   Dependencies:
     - CSS: pages/founders/filter-interface.scss
     - _includes/components/search/search-filter.html
     - site.data.translations for labels
 {% endcomment %}
 
+{% assign t = site.data.translations[page.lang].founders.filter %}
+{% assign grid_t = site.data.translations[page.lang].founders.grid %}
+
 <div class="founders-filter">
   <div class="founders__interface">
     <!-- Filter Column -->
     <div class="founders__filters">
-      <h3>{{ site.data.translations[page.lang].filter.filter_by }}</h3>
-      
+      <h3>{{ t.title }}</h3>
+
       <!-- Market Filter -->
       <div class="filter-section">
-        <h4>{{ site.data.translations[page.lang].dimensions.markets }}</h4>
+        <h4>{{ t.by_market }}</h4>
         <div class="filter-options" id="market-filters">
           {% assign markets = "" | split: "," %}
           {% assign founder_markets = site.founders | where: "lang", page.lang | map: "country_code" | uniq %}
-          
+
           {% for market_code in founder_markets %}
             {% if market_code %}
               {% assign market_name = site.data.dimensions[page.lang].markets[market_code] | default: market_code %}
@@ -37,10 +40,10 @@
           {% endfor %}
         </div>
       </div>
-      
+
       <!-- Expertise Filter -->
       <div class="filter-section">
-        <h4>{{ site.data.translations[page.lang].founder.filter_by_expertise }}</h4>
+        <h4>{{ t.by_expertise }}</h4>
         <div class="filter-options" id="expertise-filters">
           {% assign all_expertise = "" | split: "," %}
           {% for founder in site.founders %}
@@ -50,7 +53,7 @@
               {% endfor %}
             {% endif %}
           {% endfor %}
-          
+
           {% assign unique_expertise = all_expertise | uniq | sort %}
           {% for exp in unique_expertise %}
             <div class="filter-option">
@@ -60,24 +63,25 @@
           {% endfor %}
         </div>
       </div>
-      
+
       <!-- Reset Filters -->
       <div class="filter-actions">
-        <button id="reset-filters" class="btn-text">{{ site.data.translations[page.lang].filter.reset }}</button>
+        <button id="reset-filters" class="btn-text">{{ t.reset }}</button>
       </div>
     </div>
-    
+
     <div class="founders__results">
       <div class="founders__results-header">
-        <h2 id="results-count">{{ site.data.translations[page.lang].founder.all_founders }}</h2>
-        
+        <h2 id="results-count">{{ grid_t.all_founders }}</h2>
+
         <!-- Sort Options -->
         <div class="founders__controls">
           <div class="founders__sort">
-            <label for="sort-select">{{ site.data.translations[page.lang].sort.label }}:</label>
+            <label for="sort-select">{{ grid_t.sort_by }}:</label>
             <select id="sort-select">
-              <option value="name">{{ site.data.translations[page.lang].sort.name }}</option>
-              <option value="market">{{ site.data.translations[page.lang].sort.market }}</option>
+              <option value="name">{{ grid_t.sort_name }}</option>
+              <option value="market">{{ grid_t.sort_market }}</option>
+              <option value="recent">{{ grid_t.sort_recent }}</option>
             </select>
           </div>
         </div>
