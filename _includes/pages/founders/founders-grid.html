@@ -1,0 +1,43 @@
+{% comment %}
+  Component: pages/founders/founders-grid.html
+
+  Purpose: Displays the grid of founder cards with empty state and load more button
+
+  Parameters:
+    limit (optional): Limit the number of founders to display initially
+
+  Dependencies:
+    - CSS: pages/founders/founders-grid.scss
+    - _includes/components/cards/founder-card.html
+    - site.data.translations for labels
+{% endcomment %}
+
+<div class="founders-grid">
+  <!-- Founders Grid -->
+  <div id="founders-container" class="founders__grid">
+    {% assign current_lang = page.lang | default: "en" %}
+    {% assign founders = site.founders | where: "lang", current_lang %}
+
+    {% if founders %}
+      {% if include.limit %}
+        {% assign founders = founders | limit: include.limit %}
+      {% endif %}
+
+      {% for founder in founders %}
+        {% include components/cards/founder-card.html founder=founder %}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Empty State Message (shown when no results match) -->
+  <div id="empty-results" class="founders__empty-results" style="display: none;">
+    {% assign empty_text = site.data.translations[current_lang].filter.no_results | default: "No results found" %}
+    <p>{{ empty_text }}</p>
+  </div>
+
+  <!-- Load More Button -->
+  <div class="founders__load-more-container">
+    {% assign load_more_text = site.data.translations[current_lang].pagination.load_more | default: "Load More" %}
+    <button id="load-more" class="btn-secondary">{{ load_more_text }}</button>
+  </div>
+</div>
