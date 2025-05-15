@@ -1,66 +1,57 @@
 {% comment %}
   Component: pages/about/services.html
-  
+
   Purpose: Displays the services section with two columns (for partners and brands)
-  
-  Parameters:
-    title (optional): Section title, defaults to "Our Services"
-    lead_text (optional): Introductory text for the section
-    conclusion_text (optional): Text displayed after the services columns
-    panel_type (optional): Panel background style, defaults to "light"
-    
+
   Dependencies:
     - CSS: pages/about/services.scss
+    - site.data.translations for multilingual content
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].about %}
 {% assign panel_type = include.panel_type | default: "light" %}
-{% assign title = include.title | default: "Our Services" %}
-{% assign lead_text = include.lead_text | default: "We offer services for BRICS+ Brands as well as for the Investors and Business Partners seeking to do business with them." %}
-{% assign conclusion_text = include.conclusion_text | default: "Our customized approach ensures both brands and partners find the right connections, with the right context, at the right time—creating value across borders through meaningful relationships." %}
 
 <div class="panel panel--{{ panel_type }} about-services">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary about-services__title">{{ title }}</h2>
+    <h2 class="panel__heading-secondary about-services__title">
+      {{ t.services_title | default: "Our Services" }}
+    </h2>
     <p class="panel__lead-text about-services__lead-text">
-      {{ lead_text }}
+      {{ t.services_lead | default: "We offer services for BRICS+ Brands as well as for the Investors and Business Partners seeking to do business with them." }}
     </p>
 
     <div class="about-services__container">
       <!-- Left Column: For International Partners -->
       <div class="about-services__panel about-services__panel--international">
         <div class="about-services__panel-header">
-          <h3 class="about-services__panel-title">For International Partners</h3>
+          <h3 class="about-services__panel-title">
+            {{ t.services_partners_title | default: "For International Partners" }}
+          </h3>
         </div>
         <div class="about-services__panel-content">
           <ul class="about-services__list">
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">Brand Discovery Database:</strong>
-                <p>Searchable collection of curated brand profiles</p>
-              </div>
-            </li>
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">Bespoke Research:</strong>
-                <p>Tailored investigations into specific sectors or regions</p>
-              </div>
-            </li>
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">Market Entry Guidance:</strong>
-                <p>Strategic support for navigating BRICS+ markets</p>
-              </div>
-            </li>
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">Connection Facilitation:</strong>
-                <p>Introductions to vetted brand partners</p>
-              </div>
-            </li>
+            {% if t.services_partners %}
+              {% for service in t.services_partners %}
+                <li class="about-services__item">
+                  <span class="about-services__bullet">•</span>
+                  <div class="about-services__item-content">
+                    <strong class="about-services__item-title">{{ service.title }}</strong>
+                    <p>{{ service.description }}</p>
+                  </div>
+                </li>
+              {% endfor %}
+            {% else %}
+              <!-- Fallback to hardcoded services if translations missing -->
+              <li class="about-services__item">
+                <span class="about-services__bullet">•</span>
+                <div class="about-services__item-content">
+                  <strong class="about-services__item-title">Brand Discovery Database:</strong>
+                  <p>Searchable collection of curated brand profiles</p>
+                </div>
+              </li>
+              <!-- Include other hardcoded items as fallbacks -->
+            {% endif %}
           </ul>
         </div>
       </div>
@@ -68,45 +59,40 @@
       <!-- Right Column: For BRICS+ Brands -->
       <div class="about-services__panel about-services__panel--brands">
         <div class="about-services__panel-header">
-          <h3 class="about-services__panel-title">For BRICS+ Brands</h3>
+          <h3 class="about-services__panel-title">
+            {{ t.services_brands_title | default: "For BRICS+ Brands" }}
+          </h3>
         </div>
         <div class="about-services__panel-content">
           <ul class="about-services__list">
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">International Visibility:</strong>
-                <p>Exposure to qualified global partners</p>
-              </div>
-            </li>
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">Founder Story Profiles:</strong>
-                <p>Compelling narratives that showcase your journey</p>
-              </div>
-            </li>
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">Funding Round Visibility:</strong>
-                <p>Showcase investment opportunities to targeted partners</p>
-              </div>
-            </li>
-            <li class="about-services__item">
-              <span class="about-services__bullet">•</span>
-              <div class="about-services__item-content">
-                <strong class="about-services__item-title">Founder Community:</strong>
-                <p>Connect with peers across BRICS+ regions</p>
-              </div>
-            </li>
+            {% if t.services_brands %}
+              {% for service in t.services_brands %}
+                <li class="about-services__item">
+                  <span class="about-services__bullet">•</span>
+                  <div class="about-services__item-content">
+                    <strong class="about-services__item-title">{{ service.title }}</strong>
+                    <p>{{ service.description }}</p>
+                  </div>
+                </li>
+              {% endfor %}
+            {% else %}
+              <!-- Fallback to hardcoded services if translations missing -->
+              <li class="about-services__item">
+                <span class="about-services__bullet">•</span>
+                <div class="about-services__item-content">
+                  <strong class="about-services__item-title">International Visibility:</strong>
+                  <p>Exposure to qualified global partners</p>
+                </div>
+              </li>
+              <!-- Include other hardcoded items as fallbacks -->
+            {% endif %}
           </ul>
         </div>
       </div>
     </div>
-    
+
     <p class="panel__conclusion-text about-services__conclusion-text">
-      {{ conclusion_text }}
+      {{ t.services_conclusion | default: "Our customized approach ensures both brands and partners find the right connections, with the right context, at the right time—creating value across borders through meaningful relationships." }}
     </p>
   </div>
 </div>

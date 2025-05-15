@@ -48,7 +48,16 @@
   <!-- Google Analytics -->
   {% include utilities/google-analytics.html %}
 </head>
-<body class="{% if page.permalink == '/en/' or page.permalink == '/ru/' or page.permalink == '/zh/' %}home-page{% elsif page.permalink contains '/about/' %}about-page{% endif %}">
+
+<body class="{% case page.ref %}
+  {% when 'home' %}home-page
+  {% when 'about' %}about-page
+  {% when 'brands' %}brands-page
+  {% when 'founders' %}founders-page
+  {% when 'discovery' %}discovery-page
+  {% when 'insights' %}insights-page
+  {% else %}default-page
+{% endcase %}">
   {% include layout/header.html %}
   <main class="layout">
     <div class="layout__wrapper">

@@ -1,5 +1,5 @@
 ---
-# NEW BRAND FULL TEMPLATE
+# NEW BRAND PROFILE FULL TEMPLATE
 layout: brand
 ref: xx-brandslug  # Global ID (country-brandslug format)
 title: "Brand Name"  # Display name, fallback if JSON lookup fails

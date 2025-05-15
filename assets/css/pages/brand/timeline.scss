@@ -1,125 +1,127 @@
-/* ==========================================================================
-   Brand Timeline Styles
-   ==========================================================================
-   Styles for the timeline component of the brand detail page.
-*/
+.brand-page {
+  /* ==========================================================================
+     Brand Timeline Styles
+     ==========================================================================
+     Styles for the timeline component of the brand detail page.
+  */
 
-.brand-timeline {
-  margin-bottom: var(--space-8);
-  
-  &__heading {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    color: var(--primary-800);
-    margin-bottom: var(--space-6);
-    padding-bottom: var(--space-2);
-    border-bottom: 1px solid var(--neutral-200);
-  }
-  
-  &__container {
-    position: relative;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 80px;
-      width: 2px;
-      background-color: var(--primary-100);
+  .brand-timeline {
+    margin-bottom: var(--space-8);
+
+    &__heading {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--primary-800);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--neutral-200);
     }
-  }
-  
-  &__item {
-    display: flex;
-    position: relative;
-    margin-bottom: var(--space-4);
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 5px;
-      left: 80px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: var(--primary-500);
-      transform: translateX(-6px);
-      z-index: 1;
-    }
-  }
-  
-  &__year {
-    flex: 0 0 80px;
-    font-weight: var(--font-bold);
-    color: var(--primary-700);
-    font-size: var(--text-lg);
-    padding-top: var(--space-1);
-  }
-  
-  &__content {
-    flex: 1;
-    padding-left: var(--space-6);
-  }
-  
-  &__event {
-    font-weight: var(--font-semibold);
-    color: var(--neutral-800);
-    margin-bottom: var(--space-1);
-  }
-  
-  &__description {
-    color: var(--neutral-600);
-    font-size: var(--text-sm);
-  }
-  
-  @media (max-width: 767px) {
+
     &__container {
+      position: relative;
+
       &::before {
-        left: 60px;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 80px;
+        width: 2px;
+        background-color: var(--primary-100);
       }
     }
-    
+
     &__item {
+      display: flex;
+      position: relative;
+      margin-bottom: var(--space-4);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       &::before {
-        left: 60px;
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 80px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--primary-500);
+        transform: translateX(-6px);
+        z-index: 1;
       }
     }
-    
+
     &__year {
-      flex: 0 0 60px;
-      font-size: var(--text-base);
+      flex: 0 0 80px;
+      font-weight: var(--font-bold);
+      color: var(--primary-700);
+      font-size: var(--text-lg);
+      padding-top: var(--space-1);
     }
-    
+
     &__content {
-      padding-left: var(--space-5);
+      flex: 1;
+      padding-left: var(--space-6);
     }
-  }
-  
-  @media (max-width: 479px) {
-    &__container {
-      &::before {
-        left: 40px;
-      }
+
+    &__event {
+      font-weight: var(--font-semibold);
+      color: var(--neutral-800);
+      margin-bottom: var(--space-1);
     }
-    
-    &__item {
-      &::before {
-        left: 40px;
-      }
-    }
-    
-    &__year {
-      flex: 0 0 40px;
+
+    &__description {
+      color: var(--neutral-600);
       font-size: var(--text-sm);
     }
-    
-    &__content {
-      padding-left: var(--space-4);
+
+    @media (max-width: 767px) {
+      &__container {
+        &::before {
+          left: 60px;
+        }
+      }
+
+      &__item {
+        &::before {
+          left: 60px;
+        }
+      }
+
+      &__year {
+        flex: 0 0 60px;
+        font-size: var(--text-base);
+      }
+
+      &__content {
+        padding-left: var(--space-5);
+      }
+    }
+
+    @media (max-width: 479px) {
+      &__container {
+        &::before {
+          left: 40px;
+        }
+      }
+
+      &__item {
+        &::before {
+          left: 40px;
+        }
+      }
+
+      &__year {
+        flex: 0 0 40px;
+        font-size: var(--text-sm);
+      }
+
+      &__content {
+        padding-left: var(--space-4);
+      }
     }
   }
 }

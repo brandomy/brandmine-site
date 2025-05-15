@@ -1,120 +1,147 @@
 /* ==========================================================================
    About Page - Team Section
    ==========================================================================
-   Styles for the team section with team member profiles
+   Page-scoped styles following mobile-first approach
 */
 
-/* Main team grid layout */
-.team-section {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns with min width of 0 */
-  gap: var(--space-8); /* 2rem - ensures space between columns */
-  margin: var(--space-8) 0; /* 2rem 0 */
-  width: 100%;
-  box-sizing: border-box;
-}
+.about-page {
+  .about-team {
+    &__lead {
+      text-align: center;
+      margin-bottom: var(--space-6);  /* Mobile-first: smaller margin */
 
-.team-member {
-  background-color: white;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-6); /* 1.5rem - reduced for better text fit */
-  border: 1px solid var(--neutral-200);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        margin-bottom: var(--space-8);
+      }
+    }
 
-.team-member:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-}
+    &__grid {
+      display: grid;
+      grid-template-columns: 1fr;  /* Mobile-first: single column */
+      gap: var(--space-6);         /* Mobile-first: smaller gap */
+      margin: var(--space-6) 0;
+      width: 100%;
+      box-sizing: border-box;
 
-.team-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: var(--space-6); /* 1.5rem */
-  border: 3px solid var(--primary-400);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-8);
+        margin: var(--space-8) 0;
+      }
+    }
 
-.team-member h3 {
-  margin-top: 0;
-  margin-bottom: var(--space-2); /* 0.5rem */
-  color: var(--neutral-800);
-  text-align: center;
-}
+    &__conclusion-text {
+      margin-top: var(--space-6);  /* Mobile-first: smaller margin */
 
-.team-title {
-  color: var(--primary-600);
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: var(--space-6); /* 1.5rem */
-  text-align: center;
-}
-
-.team-member ul {
-  margin-top: var(--space-4); /* 1rem */
-  margin-bottom: var(--space-6); /* 1.5rem */
-  padding-left: var(--space-6); /* 1.5rem */
-  text-align: left;
-}
-
-.team-member li {
-  margin-bottom: var(--space-2); /* 0.5rem */
-  text-align: left;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.team-member p {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.team-member-linkedin {
-  text-align: center;
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-2);
-}
-
-.team-member-linkedin a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary-400);
-  color: white;
-  text-align: center;
-  line-height: 40px;
-  font-size: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.team-member-linkedin a:hover {
-  background-color: var(--primary-500);
-}
-
-/* Responsive Adjustments for Team Section */
-@media (max-width: 767px) {
-  .team-section {
-    grid-template-columns: 1fr !important; /* Single column on mobile with higher specificity */
-    gap: var(--space-6); /* Slightly reduced gap on mobile */
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        margin-top: var(--space-8);
+      }
+    }
   }
-  
-  .team-member {
-    padding: var(--space-4); /* Reduced padding on mobile */
-  }
-}
 
-@media (max-width: 479px) {
-  .team-member-linkedin {
-    margin-top: var(--space-2);
+  /* Team member card styles - these should work with team-member-card component */
+  .team-member-card {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-4);  /* Mobile-first: smaller padding */
+    border: 1px solid var(--neutral-200);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    /* Tablet and up */
+    @media (min-width: 768px) {
+      padding: var(--space-6);
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    &__photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: var(--space-6);
+      border: 3px solid var(--primary-400);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__name {
+      margin-top: 0;
+      margin-bottom: var(--space-2);
+      color: var(--neutral-800);
+      text-align: center;
+    }
+
+    &__position {
+      color: var(--primary-600);
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: var(--space-6);
+      text-align: center;
+    }
+
+    &__bio {
+      margin-bottom: var(--space-4);
+    }
+
+    &__highlights {
+      margin-top: var(--space-4);
+      margin-bottom: var(--space-6);
+      padding-left: var(--space-6);
+      text-align: left;
+
+      li {
+        margin-bottom: var(--space-2);
+        text-align: left;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+    }
+
+    &__summary {
+      font-style: italic;
+      color: var(--neutral-700);
+      margin-top: var(--space-4);
+    }
+
+    &__linkedin {
+      text-align: center;
+      margin-top: var(--space-2);  /* Mobile-first: smaller margin */
+      margin-bottom: var(--space-2);
+
+      /* Small devices and up */
+      @media (min-width: 480px) {
+        margin-top: var(--space-4);
+      }
+
+      a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-400);
+        color: white;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: var(--primary-500);
+        }
+      }
+    }
   }
 }

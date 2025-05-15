@@ -1,62 +1,64 @@
-/* ==========================================================================
-   Brand Owners Section
-   ==========================================================================
-   Styling for the Brand Owners section on the homepage
-*/
+.home-page {
+  /* ==========================================================================
+     Brand Owners Section
+     ==========================================================================
+     Styling for the Brand Owners section on the homepage
+  */
 
-.feature-list--centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-4);
-  padding: 0;
-  margin: var(--space-8) 0;
-  list-style: none;
-}
+  .feature-list--centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    padding: 0;
+    margin: var(--space-8) 0;
+    list-style: none;
+  }
 
-.feature-list--centered li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: var(--space-4) var(--space-6);
-  background-color: white;
-  border-radius: var(--radius-md);
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.feature-list__title {
-  font-weight: var(--font-bold);
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-2);
-  color: var(--primary-600);
-}
-
-.feature-list__text {
-  color: var(--neutral-700);
-}
-
-/* Progressive background styling for feature list items */
-.feature-list--centered li:nth-child(1) {
-  background: linear-gradient(to right, white, var(--primary-50));
-  border-left: 3px solid var(--primary-300);
-}
-
-.feature-list--centered li:nth-child(2) {
-  background: linear-gradient(to right, white, var(--primary-100));
-  border-left: 3px solid var(--primary-400);
-}
-
-.feature-list--centered li:nth-child(3) {
-  background: linear-gradient(to right, white, var(--primary-200));
-  border-left: 3px solid var(--primary-500);
-}
-
-
-@media (max-width: 479px) {
   .feature-list--centered li {
-    padding: var(--space-3) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-4) var(--space-6);
+    background-color: white;
+    border-radius: var(--radius-md);
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .feature-list__title {
+    font-weight: var(--font-bold);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+    color: var(--primary-600);
+  }
+
+  .feature-list__text {
+    color: var(--neutral-700);
+  }
+
+  /* Progressive background styling for feature list items */
+  .feature-list--centered li:nth-child(1) {
+    background: linear-gradient(to right, white, var(--primary-50));
+    border-left: 3px solid var(--primary-300);
+  }
+
+  .feature-list--centered li:nth-child(2) {
+    background: linear-gradient(to right, white, var(--primary-100));
+    border-left: 3px solid var(--primary-400);
+  }
+
+  .feature-list--centered li:nth-child(3) {
+    background: linear-gradient(to right, white, var(--primary-200));
+    border-left: 3px solid var(--primary-500);
+  }
+
+
+  @media (max-width: 479px) {
+    .feature-list--centered li {
+      padding: var(--space-3) var(--space-4);
+    }
   }
 }

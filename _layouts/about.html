@@ -1,13 +1,25 @@
 ---
 layout: default
 ---
+{% comment %}
+  About Page Layout - Logic-light architecture
+  Dynamically includes page sections based on front matter arrays
+{% endcomment %}
+
 <div class="about-page">
-  {% include pages/about/hero.html %}
-  {% include pages/about/mission.html %}
-  {% include pages/about/problems.html %}
-  {% include pages/about/solutions.html %}
-  {% include pages/about/team.html %}
-  {% include pages/about/perspective.html %}
-  {% include pages/about/services.html %}
-  {% include pages/about/contact.html %}
+  {% if page.sections %}
+    {% for section in page.sections %}
+      {% include pages/about/{{ section }}.html %}
+    {% endfor %}
+  {% else %}
+    <!-- Default sections if not specified in front matter -->
+    {% include pages/about/hero.html %}
+    {% include pages/about/mission.html %}
+    {% include pages/about/problems.html %}
+    {% include pages/about/solutions.html %}
+    {% include pages/about/team.html %}
+    {% include pages/about/perspective.html %}
+    {% include pages/about/services.html %}
+    {% include pages/about/contact.html %}
+  {% endif %}
 </div>

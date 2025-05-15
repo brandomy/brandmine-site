@@ -1,40 +1,42 @@
-/* ==========================================================================
-   Final CTA Section - Homepage Specific
-   ==========================================================================
-   Styling for the Final CTA section on the homepage only
-*/
+.home-page {
+  /* ==========================================================================
+     Final CTA Section - Homepage Specific
+     ==========================================================================
+     Styling for the Final CTA section on the homepage only
+  */
 
-.panel--final-cta {
-  .panel__heading-secondary {
-    text-align: center;
+  .panel--final-cta {
+    .panel__heading-secondary {
+      text-align: center;
+    }
+
+    .panel__lead-text {
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      text-align: center;
+      margin-top: var(--space-8);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
   }
 
-  .panel__lead-text {
-    text-align: center;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
 
-  .cta-buttons {
-    text-align: center;
-    margin-top: var(--space-8);
-    display: flex;
-    justify-content: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-  }
-}
+  @media (max-width: 479px) {
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+    }
 
-
-@media (max-width: 479px) {
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-4);
-  }
-
-  .btn {
-    width: 100%;
+    .btn {
+      width: 100%;
+    }
   }
 }

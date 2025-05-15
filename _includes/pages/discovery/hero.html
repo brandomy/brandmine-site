@@ -1,0 +1,37 @@
+{% comment %}
+Component: hero.html
+
+Purpose: Hero section for the discovery hub page. Introduces the four-dimensional taxonomy
+         system and sets up the value proposition for discovering BRICS+ brands.
+
+Dependencies:
+- Data: site.data.translations[page.lang].discovery
+- CSS: /assets/css/pages/discovery/hero.scss
+- JS: None
+
+Variables Used:
+- page.lang: Current language for translations
+
+Classes:
+- .discovery-hero: Main container
+- .discovery-hero__content: Content wrapper
+- .discovery-hero__title: Main heading
+- .discovery-hero__subtitle: Subheading with line breaks
+
+Notes:
+- Uses panel component for consistent styling
+- Subtitle supports line breaks via newline_to_br filter
+{% endcomment %}
+
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <div class="discovery-hero">
+      <h1 class="discovery-hero__title">
+        {{ site.data.translations[page.lang].discovery.discover_title }}
+      </h1>
+      <p class="discovery-hero__subtitle">
+        {{ site.data.translations[page.lang].discovery.discover_subtitle | newline_to_br }}
+      </p>
+    </div>
+  </div>
+</div>

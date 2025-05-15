@@ -2,23 +2,28 @@
 layout: default
 ---
 <!-- Home layout for the landing page -->
-<div class="home-page">
-  <!-- Main content -->
-  {% include pages/home/hero.html %}
-  {% include pages/home/impact-statement.html %}
-  {% include pages/home/discovery-dimensions.html %}
-  {% include pages/home/how-it-works.html %}
-  {% include pages/home/testimonials.html %}
-  {% include pages/home/featured-brands.html premium_only=true %}
-  {% include pages/home/lead-capture.html %}
-  {% include pages/home/location-intelligence.html %}
-  {% include pages/home/founder-focus.html %}
-  {% include pages/home/brand-owners.html %}
-  {% include pages/home/latest-insights-tagged.html %}
-  {% include pages/home/final-cta.html %}
-</div>
+{% if page.sections %}
+  {% for section in page.sections %}
+    {% include pages/home/{{ section }}.html %}
+  {% endfor %}
+{% else %}
+    <!-- Default sections if not specified in front matter -->
+    {% include pages/about/hero.html %}
+    {% include pages/about/impact-statement.html %}
+    {% include pages/about/discovery-dimensions.html %}
+    {% include pages/about/how-it-works.html %}
+    {% include pages/about/testimonials.html %}
+    {% include pages/about/featured-brands.html %}
+    {% include pages/about/lead-capture.html %}
+    {% include pages/about/location-intelligence.html %}
+    {% include pages/about/founder-focus.html %}
+    {% include pages/about/brand-owners.html %}
+    {% include pages/about/latest-insights-tagged.html %}
+    {% include pages/about/final-cta.html %}
+{% endif %}
 
 <!-- Home-specific JavaScript -->
 <script src="{{ '/assets/js/pages/home/smooth-scroll.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/pages/home/carousels.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/pages/home/tracking.js' | relative_url }}"></script>
+

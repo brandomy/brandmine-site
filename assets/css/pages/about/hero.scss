@@ -1,27 +1,38 @@
 /* ==========================================================================
    About Page - Hero Section
    ==========================================================================
-   Styles for the hero section of the About page
+   Page-scoped styles following mobile-first approach
 */
 
-.about-hero {
-  &__title {
-    text-align: center;
-    margin-bottom: var(--space-4);
-    
-    @media (min-width: 768px) {
-      font-size: var(--text-5xl);
+.about-page {
+  .about-hero {
+    &__title {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      font-size: var(--text-3xl);  /* Mobile-first: smaller font */
+
+      /* Small devices and up */
+      @media (min-width: 480px) {
+        font-size: var(--text-4xl);
+      }
+
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        font-size: var(--text-5xl);
+      }
     }
-  }
-  
-  &__subtitle {
-    text-align: center;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @media (min-width: 768px) {
-      font-size: var(--text-xl);
+
+    &__subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: var(--text-lg);  /* Mobile-first: smaller font */
+
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        font-size: var(--text-xl);
+      }
     }
   }
 }

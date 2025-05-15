@@ -1,5 +1,5 @@
 ---
-# NEW BRAND LITE TEMPLATE
+# NEW BRAND PROFILE LITE TEMPLATE
 layout: brand
 ref: xx-brandslug  # Global ID (country-brandslug format)
 title: "Brand Name"  # Display name, fallback if JSON lookup fails

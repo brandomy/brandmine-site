@@ -1,0 +1,177 @@
+{% comment %}
+Component: dimensions-grid.html
+
+Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, attributes, signals).
+         Each quadrant provides visual navigation with icons, descriptions, and sample tags.
+
+Dependencies:
+- Data: site.data.translations[page.lang]
+- CSS: /assets/css/pages/discovery/dimensions-grid.scss
+- JS: /assets/js/pages/discovery/discovery.js (for hover effects)
+
+Variables Used:
+- page.lang: Current language
+- site.data.sectors, markets, attributes, signals: Tag data
+
+Classes:
+- .discovery-dimensions: Main container
+- .discovery-dimensions__grid: 2x2 grid layout
+- .discovery-dimensions__panel: Individual dimension panel
+- .discovery-dimensions__icon: Dimension icon
+- .discovery-dimensions__tags: Tag samples
+
+Notes:
+- Each dimension uses its designated color scheme
+- Shows limited tags with "View All" option
+- Icons are inline SVGs for flexibility
+{% endcomment %}
+
+<div class="discovery-dimensions">
+  <div class="discovery-dimensions__grid">
+
+    <!-- Sectors Panel (Top Left) -->
+    <div class="panel panel--olive-soft discovery-dimensions__panel">
+      <div class="panel__content">
+        <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--sector">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
+                </svg>
+              </span>
+              {{ site.data.translations[page.lang].nav.sectors }}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {{ site.data.translations[page.lang].discovery.sectors_description }}
+            </p>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-dimensions__link">
+              {{ site.data.translations[page.lang].discovery.view_all_sectors }}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for sector in site.data.translations[page.lang].sectors limit:5 %}
+              {% assign slug = sector[0] %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ slug }}/"
+                 class="tag tag--sector">
+                {{ sector[1] }}
+              </a>
+            {% endfor %}
+
+            {% if site.data.translations[page.lang].sectors.size > 5 %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/"
+                 class="tag tag--more tag--sector">
+                {{ site.data.translations[page.lang].discover.more }}...
+              </a>
+            {% endif %}
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Markets Panel (Top Right) -->
+    <div class="panel panel--sky-soft discovery-dimensions__panel">
+      <div class="panel__content">
+        <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--market">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </span>
+              {{ site.data.translations[page.lang].nav.markets }}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {{ site.data.translations[page.lang].discovery.markets_description }}
+            </p>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-dimensions__link">
+              {{ site.data.translations[page.lang].discovery.view_all_markets }}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for market in site.data.translations[page.lang].markets limit:5 %}
+              {% assign slug = market[0] %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ slug }}/"
+                 class="tag tag--market">
+                {{ market[1] }}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Attributes Panel (Bottom Left) -->
+    <div class="panel panel--secondary-soft discovery-dimensions__panel">
+      <div class="panel__content">
+        <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--attribute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 7h16M4 12h16M4 17h10"></path>
+                </svg>
+              </span>
+              {{ site.data.translations[page.lang].nav.attributes }}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {{ site.data.translations[page.lang].discovery.attributes_description }}
+            </p>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-dimensions__link">
+              {{ site.data.translations[page.lang].discovery.view_all_attributes }}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for attribute in site.data.translations[page.lang].attributes limit:5 %}
+              {% assign slug = attribute[0] %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ slug }}/"
+                 class="tag tag--attribute">
+                {{ attribute[1] }}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Signals Panel (Bottom Right) -->
+    <div class="panel panel--accent-soft discovery-dimensions__panel">
+      <div class="panel__content">
+        <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--signal">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </span>
+              {{ site.data.translations[page.lang].nav.signals }}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {{ site.data.translations[page.lang].discovery.signals_description }}
+            </p>
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-dimensions__link">
+              {{ site.data.translations[page.lang].discovery.view_all_signals }}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for signal in site.data.translations[page.lang].signals limit:5 %}
+              {% assign slug = signal[0] %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ slug }}/"
+                 class="tag tag--signal">
+                {{ signal[1] }}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</div>

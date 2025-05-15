@@ -1,27 +1,14 @@
 ---
 layout: default
 ---
+<!-- Discovery layout for the discovery hub page -->
+{% if page.sections %}
+  {% for section in page.sections %}
+    {% include pages/discovery/{{ section }}.html %}
+  {% endfor %}
+{% else %}
+  {{ content }}
+{% endif %}
 
-<!-- ----------------------------------------------------------------------------
-     DISCOVERY HUB LAYOUT
-     ------------------------------------------------------------------------------
-     This layout renders the multilingual discovery landing page at /{lang}/discovery/.
-     It introduces the full range of dimensions—sectors, markets, brand attributes,
-     and growth signals—and is used by discovery.md in each language.
-
-     This layout includes:
-     - Discovery tab navigation (via include)
-     - A light panel wrapper for the main content
-     ---------------------------------------------------------------------------- -->
-
-<!-- In discovery.html -->
-{% include collections/dimensions/discovery-navigation.html style_option='b' active_type=page.discovery_path %}
-
-<!-- Main Content Panel - with discovery-content modifier to remove top padding -->
-<div class="panel panel--light panel--discovery-content">
-  <div class="panel__content panel__content--full-width">
-    <div class="discovery__content">
-      {{ content }}
-    </div>
-  </div>
-</div>
+<!-- Discovery-specific JavaScript -->
+<script src="{{ '/assets/js/pages/discovery/discovery.js' | relative_url }}" defer></script>

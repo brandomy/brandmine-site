@@ -1,0 +1,70 @@
+{% comment %}
+Component: featured-brands.html
+
+Purpose: Showcases a selection of featured brands that exemplify Brandmine's mission
+         of illuminating founder-led brands with compelling narratives.
+
+Dependencies:
+- Data: site.brands collection, site.data.translations[page.lang]
+- CSS: /assets/css/pages/discovery/featured-brands.scss
+- JS: None
+- Includes: components/cards/brand-card.html
+
+Variables Used:
+- page.lang: Current language
+- site.brands: Brand collection filtered by featured status
+
+Classes:
+- .discovery-featured: Main container
+- .discovery-featured__header: Section header
+- .discovery-featured__grid: Brand card grid
+- .discovery-featured__empty: Empty state
+
+Notes:
+- Shows maximum of 3 featured brands
+- Falls back to empty state if no featured brands
+- Reuses existing brand-card component
+{% endcomment %}
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    <section class="discovery-featured">
+      <div class="discovery-featured__header">
+        <h2 class="discovery-featured__title">
+          <span class="discovery-featured__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"></path>
+            </svg>
+          </span>
+          {{ site.data.translations[page.lang].discovery.featured_brands }}
+        </h2>
+        <p class="discovery-featured__description">
+          {{ site.data.translations[page.lang].discovery.featured_description }}
+        </p>
+      </div>
+
+      <div class="discovery-featured__grid">
+        {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
+        {% if featured_brands.size > 0 %}
+          {% for brand in featured_brands %}
+            {% include components/cards/brand-card.html brand=brand %}
+          {% endfor %}
+        {% else %}
+          <div class="discovery-featured__empty">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <path d="M12 8v8m-4-4h8"></path>
+            </svg>
+            <p>{{ site.data.translations[page.lang].discovery.no_brands_found }}</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="discovery-featured__action">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">
+          {{ site.data.translations[page.lang].discover.explore_all_brands }}
+        </a>
+      </div>
+    </section>
+  </div>
+</div>

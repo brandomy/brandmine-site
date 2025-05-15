@@ -1,0 +1,47 @@
+{% comment %}
+Component: contact-cta.html
+
+Purpose: Final call-to-action encouraging visitors to engage directly with Brandmine
+         for specific partnership or exploration needs.
+
+Dependencies:
+- Data: site.data.translations[page.lang].home
+- CSS: /assets/css/pages/discovery/contact-cta.scss
+- JS: None
+
+Variables Used:
+- page.lang: Current language
+
+Classes:
+- .discovery-cta: Main container
+- .discovery-cta__content: Content wrapper
+- .discovery-cta__title: CTA heading
+- .discovery-cta__text: CTA description
+- .discovery-cta__actions: Button container
+
+Notes:
+- Uses panel--cta for consistent CTA styling
+- Links to about page contact section
+- Can be easily updated to link to a contact form
+{% endcomment %}
+
+<div class="panel panel--cta">
+  <div class="panel__content">
+    <section class="discovery-cta">
+      <div class="discovery-cta__content">
+        <h2 class="discovery-cta__title">
+          {{ site.data.translations[page.lang].home.cta_title }}
+        </h2>
+        <p class="discovery-cta__text">
+          {{ site.data.translations[page.lang].home.cta_text }}
+        </p>
+        <div class="discovery-cta__actions">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact"
+             class="btn btn--secondary-cta">
+            {{ site.data.translations[page.lang].home.cta_button }}
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

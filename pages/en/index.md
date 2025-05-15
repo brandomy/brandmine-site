@@ -4,6 +4,18 @@ title: Home
 ref: home
 permalink: /en/
 lang: en
+sections:
+  - hero
+  - impact-statement
+  - discovery-dimensions
+  - how-it-works
+  - testimonials
+  - featured-brands
+  - lead-capture
+  - location-intelligence
+  - founder-focus
+  - brand-owners
+  - latest-insights-tagged
+  - final-cta
 ---
-<!-- my fancy new refactored and logic light home page -->
-
+<!-- Brandmine home page - sections loaded via logic-light approach -->

@@ -1,157 +1,153 @@
 /* ==========================================================================
    About Page - Services Section
    ==========================================================================
-   Styles for the services section with two columns
+   Page-scoped styles following mobile-first approach
 */
 
-/* Container for the two service panels */
-.services-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns with min width of 0 */
-  gap: var(--space-8);
-  margin-top: var(--space-10);
-  width: 100%; /* Ensure full width */
-  max-width: 1200px; /* Match the standard content width */
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-}
+.about-page {
+  .about-services {
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr;  /* Mobile-first: single column */
+      gap: var(--space-4);         /* Mobile-first: smaller gap */
+      margin-top: var(--space-8);
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
 
-/* Individual service panel styling */
-.service-panel {
-  background-color: white;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
+      /* Small devices and up */
+      @media (min-width: 480px) {
+        gap: var(--space-6);
+      }
 
-/* Panel headers with colored top borders */
-.service-panel__header {
-  padding: var(--space-4) var(--space-6);
-  border-bottom: 1px solid var(--neutral-200);
-}
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-8);
+        margin-top: var(--space-10);
+      }
+    }
 
-/* Different color styling for each panel */
-.service-panel--international .service-panel__header {
-  border-top: 4px solid var(--primary-400);
-}
+    &__panel {
+      background-color: white;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
 
-.service-panel--brands .service-panel__header {
-  border-top: 4px solid var(--secondary-400);
-}
+      /* Color variations for different panels */
+      &--international .about-services__panel-header {
+        border-top: 4px solid var(--primary-400);
+      }
 
-/* Panel titles */
-.service-panel__title {
-  margin: 0;
-  color: var(--neutral-800);
-  font-size: var(--text-2xl);
-  font-weight: var(--font-semibold);
-}
+      &--brands .about-services__panel-header {
+        border-top: 4px solid var(--secondary-400);
+      }
+    }
 
-/* Different colors for each panel title */
-.service-panel--international .service-panel__title {
-  color: var(--primary-600);
-}
+    &__panel-header {
+      padding: var(--space-3) var(--space-4);  /* Mobile-first: smaller padding */
+      border-bottom: 1px solid var(--neutral-200);
 
-.service-panel--brands .service-panel__title {
-  color: var(--secondary-600);
-}
+      /* Small devices and up */
+      @media (min-width: 480px) {
+        padding: var(--space-4);
+      }
 
-/* Panel content area */
-.service-panel__content {
-  padding: var(--space-6);
-}
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        padding: var(--space-4) var(--space-6);
+      }
+    }
 
-/* Service list styling */
-.service-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+    &__panel-title {
+      margin: 0;
+      color: var(--neutral-800);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
 
-.service-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: var(--space-6);
-}
+      .about-services__panel--international & {
+        color: var(--primary-600);
+      }
 
-.service-item:last-child {
-  margin-bottom: 0;
-}
+      .about-services__panel--brands & {
+        color: var(--secondary-600);
+      }
+    }
 
-/* Bullet point styling */
-.service-item__bullet {
-  flex-shrink: 0;
-  font-size: 1.5rem;
-  line-height: 1;
-  margin-right: var(--space-3);
-}
+    &__panel-content {
+      padding: var(--space-3) var(--space-4);  /* Mobile-first: smaller padding */
 
-/* Different colors for bullets in each panel */
-.service-panel--international .service-item__bullet {
-  color: var(--primary-400);
-}
+      /* Small devices and up */
+      @media (min-width: 480px) {
+        padding: var(--space-4);
+      }
 
-.service-panel--brands .service-item__bullet {
-  color: var(--secondary-400);
-}
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        padding: var(--space-6);
+      }
+    }
 
-/* Service item content */
-.service-item__content {
-  flex: 1;
-}
+    &__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.service-item__title {
-  display: block;
-  margin-bottom: var(--space-1);
-  font-size: var(--text-lg);
-  font-weight: var(--font-semibold);
-}
+    &__item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: var(--space-4);  /* Mobile-first: smaller margin */
 
-/* Different colors for titles in each panel */
-.service-panel--international .service-item__title {
-  color: var(--primary-600);
-}
+      /* Tablet and up */
+      @media (min-width: 768px) {
+        margin-bottom: var(--space-6);
+      }
 
-.service-panel--brands .service-item__title {
-  color: var(--secondary-600);
-}
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
 
-.service-item__content p {
-  margin: 0;
-  color: var(--neutral-700);
-}
+    &__bullet {
+      flex-shrink: 0;
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-right: var(--space-3);
 
-/* Responsive Adjustments for Services */
-@media (max-width: 767px) {
-  .services-container {
-    grid-template-columns: 1fr !important; /* Single column on mobile with higher specificity */
-    gap: var(--space-6); /* Slightly reduced gap on mobile */
-  }
-  
-  .service-panel__header {
-    padding: var(--space-4);
-  }
-  
-  .service-panel__content {
-    padding: var(--space-4);
-  }
-  
-  .service-item {
-    margin-bottom: var(--space-4);
-  }
-}
+      .about-services__panel--international & {
+        color: var(--primary-400);
+      }
 
-@media (max-width: 479px) {
-  .services-container {
-    gap: var(--space-4); /* Even smaller gap on very small screens */
-  }
-  
-  .service-panel__header {
-    padding: var(--space-3) var(--space-4);
-  }
-  
-  .service-panel__content {
-    padding: var(--space-3) var(--space-4);
+      .about-services__panel--brands & {
+        color: var(--secondary-400);
+      }
+    }
+
+    &__item-content {
+      flex: 1;
+
+      p {
+        margin: 0;
+        color: var(--neutral-700);
+      }
+    }
+
+    &__item-title {
+      display: block;
+      margin-bottom: var(--space-1);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+
+      .about-services__panel--international & {
+        color: var(--primary-600);
+      }
+
+      .about-services__panel--brands & {
+        color: var(--secondary-600);
+      }
+    }
   }
 }
