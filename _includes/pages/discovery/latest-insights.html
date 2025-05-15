@@ -27,6 +27,11 @@ Notes:
 - Falls back to empty state if no insights
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang] %}
+{% assign insights = t.insights %}
+{% assign discovery = t.discovery %}
+
 <div class="panel panel--primary-soft">
   <div class="panel__content">
     <section class="discovery-insights">
@@ -38,15 +43,15 @@ Notes:
               <path d="M12 6v6l4 2"></path>
             </svg>
           </span>
-          {{ site.data.translations[page.lang].insights.latest }}
+          {{ insights.latest | default: "Latest Insights" }}
         </h2>
         <p class="discovery-insights__description">
-          {{ site.data.translations[page.lang].discovery.insights_description }}
+          {{ discovery.insights_description | default: "Uncover hidden gems and compelling founder journeys from emerging markets" }}
         </p>
       </div>
 
       <div class="discovery-insights__grid">
-        {% assign recent_insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: 2 %}
+        {% assign recent_insights = site.insights | where: "lang", current_lang | sort: "date" | reverse | limit: 2 %}
         {% if recent_insights.size > 0 %}
           {% for insight in recent_insights %}
             {% include components/cards/insight-card.html insight=insight %}
@@ -57,14 +62,14 @@ Notes:
               <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
               <path d="M8 10h8M8 14h8"></path>
             </svg>
-            <p>{{ site.data.translations[page.lang].discovery.no_insights_found }}</p>
+            <p>{{ discovery.no_insights_found | default: "No insights available yet" }}</p>
           </div>
         {% endif %}
       </div>
 
       <div class="discovery-insights__action">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--secondary">
-          {{ site.data.translations[page.lang].insights.view_all }}
+        <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--secondary">
+          {{ insights.view_all | default: "View All Insights" }}
         </a>
       </div>
     </section>

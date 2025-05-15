@@ -26,6 +26,15 @@ Notes:
 - Icons are inline SVGs for flexibility
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang] %}
+{% assign discovery = t.discovery %}
+{% assign nav = t.nav %}
+{% assign sectors = t.sectors %}
+{% assign markets = t.markets %}
+{% assign attributes = t.attributes %}
+{% assign signals = t.signals %}
+
 <div class="discovery-dimensions">
   <div class="discovery-dimensions__grid">
 
@@ -40,29 +49,29 @@ Notes:
                   <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
                 </svg>
               </span>
-              {{ site.data.translations[page.lang].nav.sectors }}
+              {{ nav.sectors | default: "Sectors" }}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ site.data.translations[page.lang].discovery.sectors_description }}
+              {{ discovery.sectors_description | default: "Explore leading brands from top sectors in the BRICS+" }}
             </p>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-dimensions__link">
-              {{ site.data.translations[page.lang].discovery.view_all_sectors }}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/" class="discovery-dimensions__link">
+              {{ discovery.view_all_sectors | default: "View All Sectors" }}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for sector in site.data.translations[page.lang].sectors limit:5 %}
+            {% for sector in sectors limit:5 %}
               {% assign slug = sector[0] %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ slug }}/"
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/{{ slug }}/"
                  class="tag tag--sector">
                 {{ sector[1] }}
               </a>
             {% endfor %}
 
-            {% if site.data.translations[page.lang].sectors.size > 5 %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/"
+            {% if sectors.size > 5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/"
                  class="tag tag--more tag--sector">
-                {{ site.data.translations[page.lang].discover.more }}...
+                {{ discovery.more | default: "More" }}...
               </a>
             {% endif %}
           </div>
@@ -82,20 +91,20 @@ Notes:
                   <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
               </span>
-              {{ site.data.translations[page.lang].nav.markets }}
+              {{ nav.markets | default: "Markets" }}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ site.data.translations[page.lang].discovery.markets_description }}
+              {{ discovery.markets_description | default: "Explore brands from growing BRICS+ regions" }}
             </p>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-dimensions__link">
-              {{ site.data.translations[page.lang].discovery.view_all_markets }}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/" class="discovery-dimensions__link">
+              {{ discovery.view_all_markets | default: "View All Markets" }}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for market in site.data.translations[page.lang].markets limit:5 %}
+            {% for market in markets limit:5 %}
               {% assign slug = market[0] %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ slug }}/"
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/{{ slug }}/"
                  class="tag tag--market">
                 {{ market[1] }}
               </a>
@@ -116,20 +125,20 @@ Notes:
                   <path d="M4 7h16M4 12h16M4 17h10"></path>
                 </svg>
               </span>
-              {{ site.data.translations[page.lang].nav.attributes }}
+              {{ nav.attributes | default: "Attributes" }}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ site.data.translations[page.lang].discovery.attributes_description }}
+              {{ discovery.attributes_description | default: "Explore brands with distinctive features from the BRICS+" }}
             </p>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-dimensions__link">
-              {{ site.data.translations[page.lang].discovery.view_all_attributes }}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/" class="discovery-dimensions__link">
+              {{ discovery.view_all_attributes | default: "View All Attributes" }}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for attribute in site.data.translations[page.lang].attributes limit:5 %}
+            {% for attribute in attributes limit:5 %}
               {% assign slug = attribute[0] %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ slug }}/"
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/{{ slug }}/"
                  class="tag tag--attribute">
                 {{ attribute[1] }}
               </a>
@@ -150,20 +159,20 @@ Notes:
                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                 </svg>
               </span>
-              {{ site.data.translations[page.lang].nav.signals }}
+              {{ nav.signals | default: "Signals" }}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ site.data.translations[page.lang].discovery.signals_description }}
+              {{ discovery.signals_description | default: "Explore brands poised for growth across different pathways" }}
             </p>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-dimensions__link">
-              {{ site.data.translations[page.lang].discovery.view_all_signals }}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/" class="discovery-dimensions__link">
+              {{ discovery.view_all_signals | default: "View All Growth Signals" }}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for signal in site.data.translations[page.lang].signals limit:5 %}
+            {% for signal in signals limit:5 %}
               {% assign slug = signal[0] %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ slug }}/"
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/{{ slug }}/"
                  class="tag tag--signal">
                 {{ signal[1] }}
               </a>

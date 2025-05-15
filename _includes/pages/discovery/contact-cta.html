@@ -25,20 +25,23 @@ Notes:
 - Can be easily updated to link to a contact form
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home %}
+
 <div class="panel panel--cta">
   <div class="panel__content">
     <section class="discovery-cta">
       <div class="discovery-cta__content">
         <h2 class="discovery-cta__title">
-          {{ site.data.translations[page.lang].home.cta_title }}
+          {{ t.cta_title | default: "Ready to Discover BRICS+ Brands?" }}
         </h2>
         <p class="discovery-cta__text">
-          {{ site.data.translations[page.lang].home.cta_text }}
+          {{ t.cta_text | default: "Contact us to learn more about our featured brands or to discuss your specific needs." }}
         </p>
         <div class="discovery-cta__actions">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact"
+          <a href="{{ site.baseurl }}/{{ current_lang }}/about/#contact"
              class="btn btn--secondary-cta">
-            {{ site.data.translations[page.lang].home.cta_button }}
+            {{ t.cta_button | default: "Get in Touch" }}
           </a>
         </div>
       </div>

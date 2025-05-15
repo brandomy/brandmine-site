@@ -24,6 +24,8 @@
   {% include pages/home/featured-brands.html display_mode="mixed" %}
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.featured_brands %}
 {% assign limit = include.limit | default: 10 %}
 {% assign carousel_class = include.carousel_class | default: "" %}
 {% assign premium_only = include.premium_only | default: false %}
@@ -31,22 +33,18 @@
 
 <div class="panel panel--white featured-brands-section">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.featured_brands.title | default: "Featured Brands" }}</h2>
-    <p class="panel__lead-text">{{ include.lead_text | default: site.data.translations[page.lang].home.featured_brands.subtitle | default: "Discover hand-selected brands with compelling narratives and global potential" }}</p>
+    <h2 class="panel__heading-secondary">
+      {{ t.title | default: "Featured Brands" }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.lead_text | default: t.subtitle | default: "Discover hand-selected brands with compelling narratives and global potential" }}
+    </p>
 
     {% if premium_only %}
-      {% assign brands = site.brands | where: "lang", page.lang | where_exp: "item", "item.featured_level >= 2" | limit: limit %}
+      {% assign brands = site.brands | where: "lang", current_lang | where_exp: "item", "item.featured_level >= 2" | limit: limit %}
     {% else %}
-      {% assign brands = site.brands | where: "lang", page.lang | where_exp: "item", "item.featured" | limit: limit %}
+      {% assign brands = site.brands | where: "lang", current_lang | where_exp: "item", "item.featured" | limit: limit %}
     {% endif %}
-
-    <!-- Debug information - Remove these lines after debugging -->
-    <!-- Debug: Limit value: {{ limit }} -->
-    <!-- Debug: Premium only: {{ premium_only }} -->
-    <!-- Debug: Total brands with featured_level >= 2: {{ brands.size }} -->
-    {% for brand in brands %}
-      <!-- Debug: {{ forloop.index }}. {{ brand.title }} (Level: {{ brand.featured_level }}) -->
-    {% endfor %}
 
     {% if display_mode == "mixed" and brands.size > 0 %}
       <!-- Mixed mode: First brand as hero, rest in carousel -->
@@ -82,11 +80,11 @@
           {% endfor %}
         {% else %}
           <!-- Fallback to language-specific example if no featured brands are available -->
-          {% if site.data.fallback[page.lang].teatime %}
-            {% assign fallback_brand = site.data.fallback[page.lang].teatime %}
+          {% if site.data.fallback[current_lang].teatime %}
+            {% assign fallback_brand = site.data.fallback[current_lang].teatime %}
             {% include components/cards/brand-card.html brand=fallback_brand %}
           {% else %}
-            <p class="no-brands-message">{{ site.data.translations[page.lang].home.featured_brands.no_brands | default: "No featured brands available yet." }}</p>
+            <p class="no-brands-message">{{ t.no_brands | default: "No featured brands available yet." }}</p>
           {% endif %}
         {% endif %}
       </div>
@@ -103,8 +101,10 @@
     {% endif %}
 
     <div class="more-brands">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="featured-brands">
-        {{ include.cta_text | default: site.data.translations[page.lang].home.featured_brands.cta | default: "Explore All Brands" }}
+      <a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
+         class="btn btn--primary-cta"
+         data-track="featured-brands">
+        {{ include.cta_text | default: t.cta | default: "Explore All Brands" }}
       </a>
     </div>
   </div>

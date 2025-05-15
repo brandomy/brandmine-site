@@ -25,20 +25,28 @@
      secondary_cta_text="Contact Us" %}
 {% endcomment %}
 
-{% assign title = include.title | default: site.data.translations[page.lang].home.final_cta.title | default: "Start Exploring What Others Can't See" %}
-{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.final_cta.subtitle | default: "Gain exclusive access to founder-led BRICS+ brands ready to grow" %}
-{% assign primary_cta_text = include.primary_cta_text | default: site.data.translations[page.lang].home.final_cta.cta_primary | default: "Explore Brands" %}
-{% assign primary_cta_url = include.primary_cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/brands/" %}
-{% assign secondary_cta_text = include.secondary_cta_text | default: site.data.translations[page.lang].home.final_cta.cta_secondary | default: "Get Profiled" %}
-{% assign secondary_cta_url = include.secondary_cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/about/#contact-us" %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.final_cta %}
 
 <div class="panel panel--cta panel--final-cta">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ title }}</h2>
-    <p class="panel__lead-text">{{ lead_text }}</p>
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: t.title | default: "Start Exploring What Others Can't See" }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.lead_text | default: t.subtitle | default: "Gain exclusive access to founder-led BRICS+ brands ready to grow" }}
+    </p>
     <div class="cta-buttons">
-      <a href="{{ primary_cta_url }}" class="btn btn--primary-cta" data-track="final-cta-explore">{{ primary_cta_text }}</a>
-      <a href="{{ secondary_cta_url }}" class="btn btn--secondary-cta" data-track="final-cta-profile">{{ secondary_cta_text }}</a>
+      <a href="{{ include.primary_cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/brands/' }}"
+         class="btn btn--primary-cta"
+         data-track="final-cta-explore">
+        {{ include.primary_cta_text | default: t.cta_primary | default: "Explore Brands" }}
+      </a>
+      <a href="{{ include.secondary_cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#contact-us' }}"
+         class="btn btn--secondary-cta"
+         data-track="final-cta-profile">
+        {{ include.secondary_cta_text | default: t.cta_secondary | default: "Get Profiled" }}
+      </a>
     </div>
   </div>
 </div>

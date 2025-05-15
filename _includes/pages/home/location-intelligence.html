@@ -23,20 +23,24 @@
      cta_text="View Maps" %}
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.location_intelligence %}
 {% assign panel_type = include.panel_type | default: "light" %}
-
-{% assign title = include.title | default: site.data.translations[page.lang].home.location_intelligence.title | default: "Location Intelligence: Mapping Hidden Opportunities" %}
-{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.location_intelligence.subtitle | default: "Visualize brand ecosystems through interactive maps that reveal geographic patterns and cultural connections" %}
-{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].home.location_intelligence.cta | default: "Explore Map" %}
-
-{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/discover/markets/" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ title }}</h2>
-    <p class="panel__lead-text">{{ lead_text }}</p>
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: t.title | default: "Location Intelligence: Mapping Hidden Opportunities" }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.lead_text | default: t.subtitle | default: "Visualize brand ecosystems through interactive maps that reveal geographic patterns and cultural connections" }}
+    </p>
     <div class="cta-buttons">
-      <a href="{{ cta_url }}" class="btn btn--standard" data-track="location-intelligence">{{ cta_text }}</a>
+      <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/discover/markets/' }}"
+         class="btn btn--standard"
+         data-track="location-intelligence">
+        {{ include.cta_text | default: t.cta | default: "Explore Map" }}
+      </a>
     </div>
   </div>
 </div>

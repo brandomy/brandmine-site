@@ -11,13 +11,26 @@
     - Translations: site.data.translations[page.lang]
 {% endcomment %}
 
-<!-- Primary Hero Panel (Teal) -->
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.hero %}
+
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="home-hero--no-image__heading-primary">{{ site.data.translations[page.lang].home.hero.title | default: "Illuminating and Elevating <br>Founder-led Brands from the BRICS+" }}</h1>
-<p class="home-hero--no-image__subtitle">{{ site.data.translations[page.lang].home.hero.subtitle | default: "Breaking through language, cultural, and geographic barriers to reveal exceptional founder-led brands at the perfect moment for global expansion" }}</p>
-<a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary-cta" data-track="primary-hero">{{ site.data.translations[page.lang].home.hero.cta_primary | default: "Explore Brands" }}</a>
-<a href="#how-it-works" class="btn btn--standard" data-track="secondary-hero">{{ site.data.translations[page.lang].home.hero.cta_secondary | default: "Learn How" }}</a>
-    </div>
+    <h1 class="home-hero--no-image__heading-primary">
+      {{ t.title | default: "Illuminating and Elevating <br>Founder-led Brands from the BRICS+" }}
+    </h1>
+    <p class="home-hero--no-image__subtitle">
+      {{ t.subtitle | default: "Breaking through language, cultural, and geographic barriers to reveal exceptional founder-led brands at the perfect moment for global expansion" }}
+    </p>
+    <a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
+       class="btn btn--primary-cta"
+       data-track="primary-hero">
+      {{ t.cta_primary | default: "Explore Brands" }}
+    </a>
+    <a href="#how-it-works"
+       class="btn btn--standard"
+       data-track="secondary-hero">
+      {{ t.cta_secondary | default: "Learn How" }}
+    </a>
   </div>
 </div>

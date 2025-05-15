@@ -32,18 +32,18 @@
   {% include pages/home/brand-owners.html features=custom_features %}
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.brand_owners %}
 {% assign panel_type = include.panel_type | default: "light" %}
-
-{% assign title = include.title | default: site.data.translations[page.lang].home.brand_owners.title | default: "For BRICS+ Brand Owners: Your Global Story Starts Here" %}
-{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.brand_owners.subtitle | default: "Ready to elevate your successful local brand to the global stage? Our platform offers the visibility, context, and connections you need." %}
-{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].home.brand_owners.cta | default: "Get Profiled" %}
-
-{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/about/#contact-us" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ title }}</h2>
-    <p class="panel__lead-text">{{ lead_text }}</p>
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: t.title | default: "For BRICS+ Brand Owners: Your Global Story Starts Here" }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.lead_text | default: t.subtitle | default: "Ready to elevate your successful local brand to the global stage? Our platform offers the visibility, context, and connections you need." }}
+    </p>
 
     {% if include.features %}
       <ul class="feature-list feature-list--centered">
@@ -53,14 +53,18 @@
       </ul>
     {% else %}
       <ul class="feature-list feature-list--centered">
-        <li><span class="feature-list__title">{{ site.data.translations[page.lang].home.brand_owners.features.feature1.title | default: "Transcend" }}</span> <span class="feature-list__text">{{ site.data.translations[page.lang].home.brand_owners.features.feature1.text | default: "language and cultural barriers to reach global markets" }}</span></li>
-        <li><span class="feature-list__title">{{ site.data.translations[page.lang].home.brand_owners.features.feature2.title | default: "Position" }}</span> <span class="feature-list__text">{{ site.data.translations[page.lang].home.brand_owners.features.feature2.text | default: "your brand within its proper international context" }}</span></li>
-        <li><span class="feature-list__title">{{ site.data.translations[page.lang].home.brand_owners.features.feature3.title | default: "Connect" }}</span> <span class="feature-list__text">{{ site.data.translations[page.lang].home.brand_owners.features.feature3.text | default: "with partners seeking precisely what you offer" }}</span></li>
+        <li><span class="feature-list__title">{{ t.features.feature1.title | default: "Transcend" }}</span> <span class="feature-list__text">{{ t.features.feature1.text | default: "language and cultural barriers to reach global markets" }}</span></li>
+        <li><span class="feature-list__title">{{ t.features.feature2.title | default: "Position" }}</span> <span class="feature-list__text">{{ t.features.feature2.text | default: "your brand within its proper international context" }}</span></li>
+        <li><span class="feature-list__title">{{ t.features.feature3.title | default: "Connect" }}</span> <span class="feature-list__text">{{ t.features.feature3.text | default: "with partners seeking precisely what you offer" }}</span></li>
       </ul>
     {% endif %}
 
     <div class="cta-buttons">
-      <a href="{{ cta_url }}" class="btn btn--secondary-cta" data-track="brand-owners">{{ cta_text }}</a>
+      <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#contact-us' }}"
+         class="btn btn--secondary-cta"
+         data-track="brand-owners">
+        {{ include.cta_text | default: t.cta | default: "Get Profiled" }}
+      </a>
     </div>
   </div>
 </div>

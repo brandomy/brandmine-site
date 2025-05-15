@@ -23,14 +23,17 @@ Notes:
 - Subtitle supports line breaks via newline_to_br filter
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].discovery %}
+
 <div class="panel panel--hero">
   <div class="panel__content">
     <div class="discovery-hero">
       <h1 class="discovery-hero__title">
-        {{ site.data.translations[page.lang].discovery.discover_title }}
+        {{ t.discover_title | default: "Discover Brands by Dimensions" }}
       </h1>
       <p class="discovery-hero__subtitle">
-        {{ site.data.translations[page.lang].discovery.discover_subtitle | newline_to_br }}
+        {{ t.discover_subtitle | default: "Explore BRICS+ brands through multiple dimensions" | newline_to_br }}
       </p>
     </div>
   </div>

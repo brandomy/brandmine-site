@@ -26,25 +26,28 @@
      cta_text="Meet the Founders" %}
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.founder_focus %}
+{% assign g = site.data.translations[current_lang].generation %}
+{% assign f = site.data.translations[current_lang].founder %}
+
 {% assign panel_type = include.panel_type | default: "olive-soft" %}
 {% assign limit = include.limit | default: 4 %}
 {% assign featured_only = include.featured_only | default: true %}
 
-{% assign title = include.title | default: site.data.translations[page.lang].home.founder_focus.title | default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}
-{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].home.founder_focus.subtitle | default: "At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}
-{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].home.founder_focus.cta | default: "Meet All Founders" %}
-
-{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/founders/" %}
-
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ title }}</h2>
-    <p class="panel__lead-text">{{ lead_text }}</p>
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: t.title | default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation" }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.lead_text | default: t.subtitle | default: "At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." }}
+    </p>
 
     {% if featured_only %}
-      {% assign founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: limit %}
+      {% assign founders = site.founders | where: "lang", current_lang | where: "featured", true | limit: limit %}
     {% else %}
-      {% assign founders = site.founders | where: "lang", page.lang | limit: limit %}
+      {% assign founders = site.founders | where: "lang", current_lang | limit: limit %}
     {% endif %}
 
     <div class="founder-focus-carousel">
@@ -62,11 +65,11 @@
               </div>
               <div class="founder-card__header-text">
                 <h3 class="founder-card__title">Ivan Petrov</h3>
-                <p class="founder-card__generation">{{ site.data.translations[page.lang].generation.first | default: "1st Generation" }}</p>
+                <p class="founder-card__generation">{{ g.first | default: "1st Generation" }}</p>
               </div>
             </div>
             <div class="founder-card__body">
-              <p class="founder-card__brand">{{ site.data.translations[page.lang].founder.founder_of | default: "Founder of" }} <strong>Altai Honey</strong></p>
+              <p class="founder-card__brand">{{ f.founder_of | default: "Founder of" }} <strong>Altai Honey</strong></p>
               <div class="founder-card__tags">
                 <span class="founder-card__tag founder-card__tag--market">Russia</span>
                 <span class="founder-card__tag founder-card__tag--expertise">Beekeeping</span>
@@ -81,11 +84,11 @@
               </div>
               <div class="founder-card__header-text">
                 <h3 class="founder-card__title">Maria Silva</h3>
-                <p class="founder-card__generation">{{ site.data.translations[page.lang].generation.second | default: "2nd Generation" }}</p>
+                <p class="founder-card__generation">{{ g.second | default: "2nd Generation" }}</p>
               </div>
             </div>
             <div class="founder-card__body">
-              <p class="founder-card__brand">{{ site.data.translations[page.lang].founder.founder_of | default: "Founder of" }} <strong>Serra Verde</strong></p>
+              <p class="founder-card__brand">{{ f.founder_of | default: "Founder of" }} <strong>Serra Verde</strong></p>
               <div class="founder-card__tags">
                 <span class="founder-card__tag founder-card__tag--market">Brazil</span>
                 <span class="founder-card__tag founder-card__tag--expertise">Sustainable Agriculture</span>
@@ -97,7 +100,11 @@
     </div>
 
     <div class="cta-buttons">
-      <a href="{{ cta_url }}" class="btn btn--primary-cta" data-track="founder-focus">{{ cta_text }}</a>
+      <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/founders/' }}"
+         class="btn btn--primary-cta"
+         data-track="founder-focus">
+        {{ include.cta_text | default: t.cta | default: "Meet All Founders" }}
+      </a>
     </div>
   </div>
 </div>

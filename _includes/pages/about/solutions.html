@@ -1,29 +1,29 @@
 {% comment %}
   Component: pages/about/solutions.html
-  
+
   Purpose: Displays the solutions section with numbered items
-  
+
   Parameters:
-    title (optional): Section title, defaults to "Our Solution"
+    title (optional): Section title, defaults to translation
     lead_text (optional): Introductory text for the section
     conclusion_text (optional): Text displayed after the solutions list
     panel_type (optional): Panel background style, defaults to "olive-soft"
-    
+
   Dependencies:
     - CSS: pages/about/solutions.scss
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "olive-soft" %}
 {% assign current_lang = include.lang | default: page.lang | default: 'en' %}
-{% assign title = include.title | default: site.data.translations[current_lang].about.solutions_title | default: "Our Solution" %}
-{% assign lead_text = include.lead_text | default: site.data.translations[current_lang].about.solutions_lead | default: "Brandmine's business intelligence hub brings clarity to this fragmented landscape by:" %}
-{% assign conclusion_text = include.conclusion_text | default: site.data.translations[current_lang].about.solutions_conclusion | default: "Through this comprehensive approach, we create a clear, accessible path to opportunity that benefits both visionary founders and the partners who can help them grow." %}
+{% assign t = site.data.translations[current_lang].about %}
 
 <div class="panel panel--{{ panel_type }} about-solutions">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary about-solutions__title">{{ title }}</h2>
+    <h2 class="panel__heading-secondary about-solutions__title">
+      {{ include.title | default: t.solutions_title | default: "Our Solution" }}
+    </h2>
     <p class="panel__lead-text about-solutions__lead-text">
-      {{ lead_text }}
+      {{ include.lead_text | default: t.solutions_lead | default: "Brandmine's business intelligence hub brings clarity to this fragmented landscape by:" }}
     </p>
 
     <div class="about-solutions__list">
@@ -35,41 +35,50 @@
         </div>
       </div>
 
-      <div class="about-solutions__item">
-        <div class="about-solutions__number">2</div>
-        <div class="about-solutions__content">
-          <h3>Decoding cultural significance</h3>
-          <p>Beyond simple language translation</p>
-        </div>
-      </div>
+<div class="about-solutions__list">
+  <div class="about-solutions__item">
+    <div class="about-solutions__number">1</div>
+    <div class="about-solutions__content">
+      <h3>{{ t.solutions.item1.title | default: "Illuminating hidden brand ecosystems" }}</h3>
+      <p>{{ t.solutions.item1.description | default: "Through comprehensive, multilingual profiles" }}</p>
+    </div>
+  </div>
 
-      <div class="about-solutions__item">
-        <div class="about-solutions__number">3</div>
-        <div class="about-solutions__content">
-          <h3>Creating structured comparisons</h3>
-          <p>With standardized metrics across regions</p>
-        </div>
-      </div>
-
-      <div class="about-solutions__item">
-        <div class="about-solutions__number">4</div>
-        <div class="about-solutions__content">
-          <h3>Showcasing founder journeys</h3>
-          <p>That resonate globally despite local origins</p>
-        </div>
-      </div>
-
-      <div class="about-solutions__item">
-        <div class="about-solutions__number">5</div>
-        <div class="about-solutions__content">
-          <h3>Curating qualified opportunities</h3>
-          <p>To streamline partnership pathways</p>
-        </div>
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">2</div>
+      <div class="about-solutions__content">
+        <h3>{{ t.solutions.item2.title | default: "Decoding cultural significance" }}</h3>
+        <p>{{ t.solutions.item2.description | default: "Beyond simple language translation" }}</p>
       </div>
     </div>
-    
+
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">3</div>
+      <div class="about-solutions__content">
+        <h3>{{ t.solutions.item3.title | default: "Creating structured comparisons" }}</h3>
+        <p>{{ t.solutions.item3.description | default: "With standardized metrics across regions" }}</p>
+      </div>
+    </div>
+
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">4</div>
+      <div class="about-solutions__content">
+        <h3>{{ t.solutions.item4.title | default: "Showcasing founder journeys" }}</h3>
+        <p>{{ t.solutions.item4.description | default: "That resonate globally despite local origins" }}</p>
+      </div>
+    </div>
+
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">5</div>
+      <div class="about-solutions__content">
+        <h3>{{ t.solutions.item5.title | default: "Curating qualified opportunities" }}</h3>
+        <p>{{ t.solutions.item5.description | default: "To streamline partnership pathways" }}</p>
+      </div>
+    </div>
+  </div>
+
     <p class="panel__conclusion-text about-solutions__conclusion-text">
-      {{ conclusion_text }}
+      {{ include.conclusion_text | default: t.solutions_conclusion | default: "Through this comprehensive approach, we create a clear, accessible path to opportunity that benefits both visionary founders and the partners who can help them grow." }}
     </p>
   </div>
 </div>

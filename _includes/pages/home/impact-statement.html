@@ -10,25 +10,29 @@
     - CSS: assets/css/pages/home.scss
 {% endcomment %}
 
-<!-- Impact Statement Panel -->
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.impact %}
+
 <div class="panel panel--primary panel--impact">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.impact.title | default: "Revealing the Invisible: BRICS+ Brands Ready for Global Markets" }}</h2>
+    <h2 class="panel__heading-secondary">
+      {{ t.title | default: "Revealing the Invisible: BRICS+ Brands Ready for Global Markets" }}
+    </h2>
     <p class="panel__lead-text">
-      {{ site.data.translations[page.lang].home.impact.text | default: "Exceptional founder-led brands across BRICS+ markets remain invisible to global partners due to language barriers, cultural context gaps, and fragmented information." }}
+      {{ t.text | default: "Exceptional founder-led brands across BRICS+ markets remain invisible to global partners due to language barriers, cultural context gaps, and fragmented information." }}
     </p>
     <div class="impact-stats">
       <div class="stat-item">
-        <span class="stat-number">{{ site.data.translations[page.lang].home.impact.stats.population_value | default: "40%+" }}</span>
-        <span class="stat-label">{{ site.data.translations[page.lang].home.impact.stats.population_label | default: "of global population in BRICS+ economies" }}</span>
+        <span class="stat-number">{{ t.stats.population_value | default: "40%+" }}</span>
+        <span class="stat-label">{{ t.stats.population_label | default: "of global population in BRICS+ economies" }}</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">{{ site.data.translations[page.lang].home.impact.stats.gdp_value | default: "25%+" }}</span>
-        <span class="stat-label">{{ site.data.translations[page.lang].home.impact.stats.gdp_label | default: "of worldwide GDP" }}</span>
+        <span class="stat-number">{{ t.stats.gdp_value | default: "25%+" }}</span>
+        <span class="stat-label">{{ t.stats.gdp_label | default: "of worldwide GDP" }}</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">{{ site.data.translations[page.lang].home.impact.stats.opportunities_value | default: "1000s" }}</span>
-        <span class="stat-label">{{ site.data.translations[page.lang].home.impact.stats.opportunities_label | default: "of untapped brand opportunities" }}</span>
+        <span class="stat-number">{{ t.stats.opportunities_value | default: "1000s" }}</span>
+        <span class="stat-label">{{ t.stats.opportunities_label | default: "of untapped brand opportunities" }}</span>
       </div>
     </div>
   </div>

@@ -11,42 +11,61 @@
     - Translations: site.data.translations[page.lang]
 {% endcomment %}
 
-<!-- How It Works Section -->
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].home.how_it_works %}
+{% assign discover = site.data.translations[current_lang].discover %}
+{% assign insights = site.data.translations[current_lang].insights %}
+{% assign buttons = site.data.translations[current_lang].buttons %}
+
 <div id="how-it-works" class="panel panel--light">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ site.data.translations[page.lang].home.how_it_works.title | default: "How It Works" }}</h2>
-    <p class="panel__lead-text">{{ site.data.translations[page.lang].home.how_it_works.subtitle | default: "Our platform bridges the gap between exceptional BRICS+ brands and international opportunities" }}</p>
+    <h2 class="panel__heading-secondary">
+      {{ t.title | default: "How It Works" }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ t.subtitle | default: "Our platform bridges the gap between exceptional BRICS+ brands and international opportunities" }}
+    </p>
     <div class="process-steps">
       <div class="process-step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h3>{{ site.data.translations[page.lang].home.how_it_works.steps.step1.title | default: "Illuminate" }}</h3>
-          <p>{{ site.data.translations[page.lang].home.how_it_works.steps.step1.text | default: "Explore previously invisible brand ecosystems across BRICS+ countries through our comprehensive mapping" }}</p>
-          <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="text-link">{{ site.data.translations[page.lang].discover.explore }}</a>
+          <h3>{{ t.steps.step1.title | default: "Illuminate" }}</h3>
+          <p>{{ t.steps.step1.text | default: "Explore previously invisible brand ecosystems across BRICS+ countries through our comprehensive mapping" }}</p>
+          <a href="{{ site.baseurl }}/{{ current_lang }}/brands/" class="text-link">
+            {{ discover.explore | default: "Explore" }}
+          </a>
         </div>
       </div>
 
       <div class="process-step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h3>{{ site.data.translations[page.lang].home.how_it_works.steps.step2.title | default: "Contextualize" }}</h3>
-          <p>{{ site.data.translations[page.lang].home.how_it_works.steps.step2.text | default: "Gain critical insights through founder stories and regional intelligence unavailable anywhere else" }}</p>
-          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="text-link">{{ site.data.translations[page.lang].insights.all_insights }}</a>
+          <h3>{{ t.steps.step2.title | default: "Contextualize" }}</h3>
+          <p>{{ t.steps.step2.text | default: "Gain critical insights through founder stories and regional intelligence unavailable anywhere else" }}</p>
+          <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="text-link">
+            {{ insights.all_insights | default: "All Insights" }}
+          </a>
         </div>
       </div>
 
       <div class="process-step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h3>{{ site.data.translations[page.lang].home.how_it_works.steps.step3.title | default: "Connect" }}</h3>
-          <p>{{ site.data.translations[page.lang].home.how_it_works.steps.step3.text | default: "Identify promising partnerships based on authentic understanding and context" }}</p>
-          <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact-us" class="text-link">{{ site.data.translations[page.lang].buttons.get_in_touch }}</a>
+          <h3>{{ t.steps.step3.title | default: "Connect" }}</h3>
+          <p>{{ t.steps.step3.text | default: "Identify promising partnerships based on authentic understanding and context" }}</p>
+          <a href="{{ site.baseurl }}/{{ current_lang }}/about/#contact-us" class="text-link">
+            {{ buttons.get_in_touch | default: "Get in Touch" }}
+          </a>
         </div>
       </div>
     </div>
 
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--standard" data-track="how-it-works">{{ site.data.translations[page.lang].home.how_it_works.cta | default: "Start Discovering" }}</a>
+      <a href="{{ site.baseurl }}/{{ current_lang }}/discover/"
+         class="btn btn--standard"
+         data-track="how-it-works">
+        {{ t.cta | default: "Start Discovering" }}
+      </a>
     </div>
   </div>
 </div>
