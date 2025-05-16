@@ -1,0 +1,58 @@
+{% comment %}
+  Component: pages/founder/sections/professional-details.html
+  Purpose: Displays the founder's professional details, achievements, and languages
+{% endcomment %}
+
+{% assign founder = include.founder | default: page %}
+
+<div class="founder-profile__professional">
+  <h3>{{ site.data.translations[founder.lang].founder.professional_details | default: "Professional Background" }}</h3>
+
+  <div class="founder-profile__details-grid">
+    <!-- Languages -->
+    {% if founder.languages and founder.languages.size > 0 %}
+    <div class="founder-profile__detail-item">
+      <h4>{{ site.data.translations[founder.lang].founder.languages | default: "Languages" }}</h4>
+      <ul class="founder-profile__languages">
+        {% for lang_code in founder.languages %}
+          <li>{{ site.data.languages[lang_code] | default: lang_code }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- Markets -->
+    {% if founder.markets and founder.markets.size > 0 %}
+    <div class="founder-profile__detail-item">
+      <h4>{{ site.data.translations[founder.lang].founder.markets | default: "Markets" }}</h4>
+      <ul class="founder-profile__markets">
+        {% for market_code in founder.markets %}
+          <li>{{ site.data.countries.countries[market_code].name[founder.lang] | default: market_code }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- Achievements -->
+    {% if founder.achievements and founder.achievements.size > 0 %}
+    <div class="founder-profile__detail-item">
+      <h4>{{ site.data.translations[founder.lang].founder.achievements | default: "Key Achievements" }}</h4>
+      <ul class="founder-profile__achievements">
+        {% for achievement in founder.achievements %}
+          <li>{{ achievement }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- Cross-Border Expertise -->
+    {% if founder.cross_border_expertise %}
+    <div class="founder-profile__detail-item">
+      <div class="founder-profile__cross-border">
+        <h4>{{ site.data.translations[founder.lang].founder.cross_border | default: "International Experience" }}</h4>
+        <p>{{ site.data.translations[founder.lang].founder.cross_border_description | default: "Has significant international business experience" }}</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>

@@ -3,6 +3,7 @@ layout: founder
 ref: ru-alexei-sokolov
 name: "Alexei Sokolov"
 title: "Alexei Sokolov - TeaTime's Visionary"
+date: 2025-05-02  # Date profile was created or updated
 lang: en
 permalink: /en/founders/ru-alexei-sokolov/
 brands: [ru-teatime]
@@ -29,6 +30,12 @@ achievements:
   - "Featured in Harrods London"
   - "23 countries export presence"
   - "30% annual growth rate"
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Alexei Sokolov: Bridging Russian Tea Traditions with Global Markets

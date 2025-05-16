@@ -3,6 +3,7 @@ layout: founder
 ref: ru-maria-kuznetsova
 name: "Maria Kuznetsova"
 title: "Maria Kuznetsova - Preserving Russian Flavor Heritage"
+date: 2025-05-04  # Date profile was created or updated
 lang: en
 permalink: /en/founders/ru-maria-kuznetsova/
 brands: [ru-seven-spices]
@@ -24,11 +25,17 @@ brief_bio: "Former chef rediscovering and reimagining Russia's rich condiment tr
 sectors: [gourmet-foods]
 markets: [ru, eu]
 cross_border_expertise: true
-languages: ["Russian", "English", "Tatar"]
+languages: ["ru", "en", "tt"]
 achievements:
   - "Gold at International Condiment Exhibition"
   - "Network of 40 family farm suppliers"
   - "Food archaeology research department"
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Maria Kuznetsova: Reviving Russia's Culinary Heritage

@@ -1,21 +1,68 @@
 {% comment %}
   Component: pages/founder/header.html
-  
-  Purpose: Displays the header section of the founders page with title and search functionality
-  
-  Parameters:
-    title (optional): Custom section title, defaults to page.title
-    
-  Dependencies:
-    - CSS: pages/founder/header.scss
-    - site.data.translations for search placeholder and button text
+  Purpose: Displays the founder's header with portrait and key information
 {% endcomment %}
 
-<div class="founders-header">
-  <h1 class="founders-header__title">{{ include.title | default: page.title }}</h1>
-  
-  <div class="founders-header__search">
-    <input type="text" id="founder-search" placeholder="{{ site.data.translations[page.lang].search.founder_placeholder | default: site.data.translations[page.lang].search.placeholder }}" class="founders-header__search-input">
-    <button id="search-button" class="founders-header__search-button">{{ site.data.translations[page.lang].search.button }}</button>
+{% assign founder = include.founder | default: page %}
+
+<div class="founder-profile__header">
+  <div class="founder-profile__portrait">
+    {% if founder.portrait_image %}
+      <img src="{{ site.baseurl }}/{{ founder.portrait_image }}" alt="{{ founder.name }}">
+    {% else %}
+      <div class="founder-profile__portrait-placeholder">
+        {{ founder.name | slice: 0, 1 }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="founder-profile__intro">
+    <h1 class="founder-profile__name">{{ founder.name }}</h1>
+    <h2 class="founder-profile__title">{{ founder.title | remove: founder.name | remove: '-' | strip }}</h2>
+
+    <div class="founder-profile__brief">
+      {{ founder.brief_bio }}
+    </div>
+
+    <div class="founder-profile__meta">
+      {% if founder.generation %}
+      <div class="founder-profile__meta-item">
+        <span class="founder-profile__meta-label">Generation:</span>
+        <span class="founder-profile__meta-value">{{ founder.generation | capitalize }}</span>
+      </div>
+      {% endif %}
+
+      {% if founder.region or founder.country_code %}
+      <div class="founder-profile__meta-item">
+        <span class="founder-profile__meta-label">Location:</span>
+        <span class="founder-profile__meta-value">
+          {% if founder.city %}{{ founder.city }}{% endif %}
+          {% if founder.city and founder.region %}, {% endif %}
+          {% if founder.region %}{{ founder.region }}{% endif %}
+          {% if founder.country_code and (founder.city or founder.region) %}, {% endif %}
+          {% if founder.country_code %}{{ site.data.countries.countries[founder.country_code].name[founder.lang] | default: founder.country_code }}{% endif %}
+        </span>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Social media links -->
+    {% if founder.social %}
+    <div class="founder-profile__social">
+      {% if founder.social.instagram %}
+      <a href="https://instagram.com/{{ founder.social.instagram }}" target="_blank" class="founder-profile__social-link">
+        <i class="fab fa-instagram"></i>
+      </a>
+      {% endif %}
+
+      {% if founder.social.linkedin %}
+      <a href="https://linkedin.com/in/{{ founder.social.linkedin }}" target="_blank" class="founder-profile__social-link">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      {% endif %}
+
+      <!-- Add other social networks following the same pattern -->
+    </div>
+    {% endif %}
   </div>
 </div>

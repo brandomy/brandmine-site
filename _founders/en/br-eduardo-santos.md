@@ -3,11 +3,12 @@ layout: founder
 ref: br-eduardo-santos
 name: "Eduardo Santos"
 title: "Eduardo Santos - Brazil's Organic Pioneer"
+date: 2025-05-01  # Date profile was created or updated
 lang: en
 permalink: /en/founders/br-eduardo-santos/
 brands: [br-serra-verde]
 featured: true
-generation: third
+generation: "third"
 country_code: br
 region: "Minas Gerais"
 city: "Gonçalves"
@@ -24,11 +25,17 @@ brief_bio: "Third-generation farmer transforming Brazil's Atlantic Forest agricu
 sectors: [gourmet-foods]
 markets: [br, pt, es]
 cross_border_expertise: true
-languages: ["Portuguese", "Spanish", "English"]
+languages: ["pt", "es", "en"]
 achievements:
   - "Restored 500+ hectares of Atlantic Forest"
   - "Network of 28 organic family farms"
   - "International distribution in EU markets"
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 # Eduardo Santos: Transforming Brazil's Atlantic Forest Agriculture
 

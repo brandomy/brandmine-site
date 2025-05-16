@@ -3,6 +3,7 @@ layout: founder
 ref: ru-ivan-petrov
 name: "Ivan Petrov"
 title: "Ivan Petrov - Altai Honey Pioneer"
+date: 2025-05-03  # Date profile was created or updated
 lang: en
 permalink: /en/founders/ru-ivan-petrov/
 brands: [ru-altai-honey]
@@ -22,11 +23,17 @@ expertise:
 brief_bio: "Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
 sectors: [honey-bee-products]
 markets: [ru, cn, kz]
-languages: ["Russian", "English"]
+languages: ["ru", "en"]
 achievements:
   - "International organic certification"
   - "Preserved traditional harvesting methods"
   - "Community empowerment model"
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Ivan Petrov: The Honey Pioneer of Altai
