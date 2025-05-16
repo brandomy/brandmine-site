@@ -26,23 +26,15 @@
       {{ include.lead_text | default: t.solutions_lead | default: "Brandmine's business intelligence hub brings clarity to this fragmented landscape by:" }}
     </p>
 
-    <div class="about-solutions__list">
+  <div class="about-solutions__list">
+    
       <div class="about-solutions__item">
         <div class="about-solutions__number">1</div>
         <div class="about-solutions__content">
-          <h3>Illuminating hidden brand ecosystems</h3>
-          <p>Through comprehensive, multilingual profiles</p>
+          <h3>{{ t.solutions.item1.title | default: "Illuminating hidden brand ecosystems" }}</h3>
+          <p>{{ t.solutions.item1.description | default: "Through comprehensive, multilingual profiles" }}</p>
         </div>
       </div>
-
-<div class="about-solutions__list">
-  <div class="about-solutions__item">
-    <div class="about-solutions__number">1</div>
-    <div class="about-solutions__content">
-      <h3>{{ t.solutions.item1.title | default: "Illuminating hidden brand ecosystems" }}</h3>
-      <p>{{ t.solutions.item1.description | default: "Through comprehensive, multilingual profiles" }}</p>
-    </div>
-  </div>
 
     <div class="about-solutions__item">
       <div class="about-solutions__number">2</div>

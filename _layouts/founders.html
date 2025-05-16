@@ -1,45 +1,61 @@
 ---
 layout: default
 ---
-<!-- ----------------------------------------------------------------------------
+{% comment %}
   FOUNDERS INDEX LAYOUT
-  ------------------------------------------------------------------------------
-  This layout powers the main directory page for viewing all founder profiles.
-  It is assigned to the `/founders/` page in each supported language.
 
-  Purpose:
-  - Renders a search-and-filter interface for browsing founders
-  - Displays founder cards in a responsive grid layout
-  - Supports dynamic search, filtering by market and expertise
-  - Multilingual content and labels are driven by `page.lang`
+  Purpose: Powers the main directory page for viewing all founder profiles.
 
-  Used by:
-  - pages/en/founders.md
-  - pages/ru/founders.md
-  - pages/zh/founders.md
+  Logic-light architecture:
+  - Uses page.sections array for dynamic section inclusion
+  - Special handling for founders-grid section with panel wrapping
+  - Fallback to default sections if none specified
+  - No logic in section components themselves
 
   Dependencies:
   - _includes/pages/founders/* components
-  - _includes/components/cards/founder-card.html (displays each founder summary)
+  - _includes/components/cards/founder-card.html
   - site.data.translations for UI labels
   - site.data.dimensions for taxonomy translations
----------------------------------------------------------------------------- -->
+{% endcomment %}
 
-<!-- Founders layout using logic-light architecture -->
-<!-- {% if page.sections %}
-  {% for section in page.sections %}
-    {% include pages/founders/{{ section }}.html %}
-  {% endfor %}
-{% else %} -->
-  <!-- Default sections if not specified in front matter -->
-  {% include pages/founders/header.html %}
-  {% include pages/founders/content.html %}
-  {% include pages/founders/filter-interface.html %}
-  {% include pages/founders/test-grid.html %}
-    {% include pages/founders/founders-grid-clean.html %}
-  {% include pages/founders/featured-founders.html %}
-  {% include pages/founders/recent-founders.html %}
-<!-- {% endif %} -->
+<main class="layout founders-page">
+  <div class="layout__wrapper">
+    <div class="layout__content">
+      {{ content }}
+
+      {% if page.sections %}
+        {% for section in page.sections %}
+          {% if section == "founders-grid" %}
+            <!-- Panel wrapper for founders grid -->
+            <div class="panel panel--light">
+              <div class="panel__content">
+                {% include pages/founders/founders-grid.html %}
+              </div>
+            </div>
+          {% else %}
+            {% include pages/founders/{{ section }}.html %}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <!-- Default sections if not specified in front matter -->
+        {% include pages/founders/header.html %}
+        {% include pages/founders/content.html %}
+        {% include pages/founders/filter-interface.html %}
+
+        <!-- Panel wrapper for founders grid -->
+        <div class="panel panel--light">
+          <div class="panel__content">
+            {% include pages/founders/founders-grid.html %}
+          </div>
+        </div>
+
+        {% include pages/founders/featured-founders.html %}
+        {% include pages/founders/recent-founders.html %}
+      {% endif %}
+    </div>
+  </div>
+</main>
 
 <!-- Founders-specific JavaScript -->
 <script src="{{ '/assets/js/pages/founders/founders.js' | relative_url }}"></script>
