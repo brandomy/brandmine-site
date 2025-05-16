@@ -1,0 +1,65 @@
+{% comment %}
+  Component: components/cards/testimonial-card.html
+
+  Purpose: Displays a single testimonial with quote, author info, and metrics
+
+  Parameters:
+    - testimonial: Testimonial data object (from translations)
+    - type: Type of testimonial ("brand" or "person")
+    - img_slug: Slug for the image
+{% endcomment %}
+
+<div class="testimonial-card">
+  <div class="testimonial-card__quote">
+    <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
+      <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
+    </svg>
+    <p class="testimonial-card__text">
+      {{ include.testimonial.text }}
+    </p>
+  </div>
+
+  <div class="testimonial-card__author">
+    <div class="testimonial-card__author-image">
+      {% if include.type == "brand" %}
+        {% include components/images/collection-image.html
+          collection="brands"
+          slug=include.img_slug
+          purpose="logo"
+          name="color"
+          aspect="square"
+          ext="png"
+          alt=include.testimonial.name
+          class="testimonial-card__author-img" %}
+      {% else %}
+        {% include components/images/collection-image.html
+          collection="people"
+          category="testimonials"
+          slug=include.img_slug
+          purpose="headshot"
+          aspect="square"
+          ext="png"
+          alt=include.testimonial.name
+          class="testimonial-card__author-img" %}
+      {% endif %}
+    </div>
+
+    <div class="testimonial-card__author-info">
+      <h4 class="testimonial-card__author-name">{{ include.testimonial.name }}</h4>
+      <p class="testimonial-card__author-title">{{ include.testimonial.label }}</p>
+    </div>
+  </div>
+
+  <div class="testimonial-card__metrics">
+    <div class="metric">
+      <span class="metric-value">{{ include.testimonial.metric1_value }}</span>
+      <span class="metric-label">{{ include.testimonial.metric1_label }}</span>
+    </div>
+
+    <div class="metric">
+      <span class="metric-value">{{ include.testimonial.metric2_value }}</span>
+      <span class="metric-label">{{ include.testimonial.metric2_label }}</span>
+    </div>
+  </div>
+</div>

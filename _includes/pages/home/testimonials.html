@@ -1,23 +1,13 @@
-<!-- testimonials.html component placeholder -->
 {% comment %}
   Component: pages/home/testimonials.html
 
   Purpose: Displays testimonials from brand founders and featured brands in a card-based layout
-
   Parameters:
-    None - Uses data from site.data.translations[page.lang] for labels
-
-  Dependencies:
-    - CSS: pages/home/testimonials.css
-    - Uses: components/images/collection-image.html
-
-  Usage:
-  {% include pages/home/testimonials.html %}
+    None - Uses data from site.data.translations[page.lang].home.testimonials for labels and content
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign t = site.data.translations[current_lang].home.testimonials %}
-{% assign test = site.data.translations[current_lang].testimonials %}
 
 <div class="panel panel--light testimonials-panel">
   <div class="panel__content">
@@ -28,83 +18,17 @@
       {{ t.subtitle | default: "What brand founders are saying about their Brandmine experience" }}
     </p>
     <div class="testimonials-container">
-      <div class="testimonial-card">
-        <div class="testimonial-card__quote">
-          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
-            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
-          </svg>
-          <p class="testimonial-card__text">
-            {{ t.testimonial1.text | default: "Brandmine helped us connect with international partners we never would have discovered on our own. The platform's focus on founder stories allowed us to showcase what makes our retreats unique and authentic." }}
-          </p>
-        </div>
-        <div class="testimonial-card__author">
-          <div class="testimonial-card__author-image">
-            {% include components/images/collection-image.html
-              collection="brands"
-              slug="cn-dragonfly-retreats"
-              purpose="logo"
-              name="color"
-              aspect="square"
-              ext="png"
-              alt="{{ test.dragonfly_retreats }} {{ test.logo }}"
-              class="testimonial-card__author-img" %}
-          </div>
-          <div class="testimonial-card__author-info">
-            <h4 class="testimonial-card__author-name">{{ test.dragonfly_retreats }}</h4>
-            <p class="testimonial-card__author-title">{{ t.brand_label | default: "Featured Brand" }}</p>
-          </div>
-        </div>
-        <div class="testimonial-card__metrics">
-          <div class="metric">
-            <span class="metric-value">{{ t.testimonial1.metric1_value | default: "4" }}</span>
-            <span class="metric-label">{{ t.testimonial1.metric1_label | default: "International Partners" }}</span>
-          </div>
-          <div class="metric">
-            <span class="metric-value">{{ t.testimonial1.metric2_value | default: "65%" }}</span>
-            <span class="metric-label">{{ t.testimonial1.metric2_label | default: "Revenue Growth" }}</span>
-          </div>
-        </div>
-      </div>
+      {% comment %} Brand testimonial {% endcomment %}
+      {% include components/cards/testimonial-card.html
+        testimonial=t.testimonial1
+        type="brand"
+        img_slug="cn-dragonfly-retreats" %}
 
-      <div class="testimonial-card">
-        <div class="testimonial-card__quote">
-          <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 11H6.21C6.48 9.84 7.79 9 9 9V7C6.69 7 4.81 8.79 4.24 11.11C4.11 11.65 4 12.19 4 12.8C4 14.52 5.47 16 7.2 16C8.93 16 10.4 14.52 10.4 12.8C10.4 12.17 10.25 11.59 10 11Z" fill="currentColor" fill-opacity="0.2"/>
-            <path d="M17 11H13.21C13.48 9.84 14.79 9 16 9V7C13.69 7 11.81 8.79 11.24 11.11C11.11 11.65 11 12.19 11 12.8C11 14.52 12.47 16 14.2 16C15.93 16 17.4 14.52 17.4 12.8C17.4 12.17 17.25 11.59 17 11Z" fill="currentColor" fill-opacity="0.2"/>
-          </svg>
-          <p class="testimonial-card__text">
-            {{ t.testimonial2.text | default: "As a founder, I struggled to communicate our brand's unique heritage to international markets. Brandmine's platform gave us the visibility and context we needed. The mapping feature helped distributors understand our regional significance." }}
-          </p>
-        </div>
-        <div class="testimonial-card__author">
-          <div class="testimonial-card__author-image">
-            {% include components/images/collection-image.html
-              collection="people"
-              category="testimonials"
-              slug="georgie-yam"
-              purpose="headshot"
-              aspect="square"
-              ext="png"
-              alt="{{ test.georgie_yam }} {{ test.founder_photo }}"
-              class="testimonial-card__author-img" %}
-          </div>
-          <div class="testimonial-card__author-info">
-            <h4 class="testimonial-card__author-name">{{ test.georgie_yam }}</h4>
-            <p class="testimonial-card__author-title">{{ t.founder_label | default: "Founder" }}</p>
-          </div>
-        </div>
-        <div class="testimonial-card__metrics">
-          <div class="metric">
-            <span class="metric-value">{{ t.testimonial2.metric1_value | default: "3" }}</span>
-            <span class="metric-label">{{ t.testimonial2.metric1_label | default: "New Markets" }}</span>
-          </div>
-          <div class="metric">
-            <span class="metric-value">{{ t.testimonial2.metric2_value | default: "40%" }}</span>
-            <span class="metric-label">{{ t.testimonial2.metric2_label | default: "Export Growth" }}</span>
-          </div>
-        </div>
-      </div>
+      {% comment %} Founder testimonial {% endcomment %}
+      {% include components/cards/testimonial-card.html
+        testimonial=t.testimonial2
+        type="person"
+        img_slug="georgie-yam" %}
     </div>
   </div>
 </div>

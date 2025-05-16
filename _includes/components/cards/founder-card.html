@@ -1,11 +1,12 @@
 {% comment %}
   Include Name: components/cards/founder-card.html
 
-  Updated to use new founder image structure:
-  - Simplified image paths (no "founder-" prefix)
-  - Using proper image sizes for card display
-  - Better responsive image loading
+  Logic-light implementation using translation assignments and minimal logic.
 {% endcomment %}
+
+{% assign t = site.data.translations[page.lang].founder %}
+{% assign general_t = site.data.translations[page.lang].general %}
+{% assign buttons_t = site.data.translations[page.lang].buttons %}
 
 <article class="founder-card {% if featured or founder.featured %}founder-card--featured{% endif %}"
          data-name="{{ founder.name }}"
@@ -16,17 +17,17 @@
   {% if founder.generation %}
   <div class="founder-card__generation-badge founder-card__generation-badge--{{ founder.generation }}">
     {% case founder.generation %}
-      {% when 'first' %}1st Gen
-      {% when 'second' %}2nd Gen
-      {% when 'third' %}3rd Gen
-      {% when 'transition' %}Transition
+      {% when 'first' %}{{ t.generation_first | default: "1st Gen" }}
+      {% when 'second' %}{{ t.generation_second | default: "2nd Gen" }}
+      {% when 'third' %}{{ t.generation_third | default: "3rd Gen" }}
+      {% when 'transition' %}{{ t.generation_transition | default: "Transition" }}
     {% endcase %}
   </div>
   {% endif %}
 
   {% comment %} Cross-border indicator {% endcomment %}
   {% if founder.markets.size > 1 or founder.cross_border_expertise %}
-  <div class="founder-card__cross-border" title="Cross-border expertise">
+  <div class="founder-card__cross-border" title="{{ t.cross_border | default: 'Cross-border expertise' }}">
     <i class="fas fa-globe-americas"></i>
   </div>
   {% endif %}
@@ -54,11 +55,16 @@
   <div class="founder-card__header-text">
     <h2 class="founder-card__title">{{ founder.name }}</h2>
 
-    {% comment %} Location with pushpin icon {% endcomment %}
-    {% include helpers/location-display.html
-      city=founder.city
-      country_code=founder.country_code
-      class="founder-card__location" %}
+    {% comment %} Location display {% endcomment %}
+    <div class="founder-card__location">
+      <i class="fas fa-map-marker-alt"></i>
+      {% if founder.city %}{{ founder.city }}{% endif %}
+      {% if founder.city and founder.country_code %}, {% endif %}
+      {% if founder.country_code %}
+        {% assign country_name = site.data.countries[page.lang][founder.country_code].name | default: founder.country_code %}
+        {{ country_name }}
+      {% endif %}
+    </div>
   </div>
 </header>
 
@@ -81,7 +87,7 @@
 
         {% if founder.brands.size > 1 %}
           <p class="founder-card__multiple-brands">
-            +{{ founder.brands.size | minus: 1 }} {{ site.data.translations[page.lang].founder.more_brands | default: "more brands" }}
+            +{{ founder.brands.size | minus: 1 }} {{ t.more_brands | default: "more brands" }}
           </p>
         {% endif %}
       </div>
@@ -131,34 +137,30 @@
 
   <footer class="founder-card__footer">
     <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
-      {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
+      {{ buttons_t.view_profile | default: "View Profile" }}
     </a>
 
     {% if founder.featured %}
-      <div class="founder-card__featured-badge" title="{{ site.data.translations[page.lang].general.featured }}">
+      <div class="founder-card__featured-badge" title="{{ general_t.featured | default: 'Featured' }}">
         <i class="fas fa-star"></i>
       </div>
-    {% endif />
+    {% endif %}
   </footer>
-
 
   {% comment %} Hover reveal info {% endcomment %}
   {% if founder.achievements or founder.languages %}
     <div class="founder-card__hover-info">
       {% if founder.achievements %}
         <p class="founder-card__achievements">
-          <strong>{{ site.data.translations[page.lang].founder.key_achievement | default: "Key Achievement" }}:</strong> {{ founder.achievements | first }}
+          <strong>{{ t.key_achievement | default: "Key Achievement" }}:</strong> {{ founder.achievements | first }}
         </p>
       {% endif %}
       {% if founder.languages %}
-        {% comment %} Display languages using the language helper {% endcomment %}
         <p class="founder-card__languages">
-          <strong>{{ site.data.translations[page.lang].founder.languages | default: "Languages" }}:</strong>
+          <strong>{{ t.languages | default: "Languages" }}:</strong>
           {% for lang_code in founder.languages %}
-            {% comment %} Add comma separator except for the first item {% endcomment %}
             {% if forloop.first == false %}, {% endif %}
-            {% comment %} Use the language helper to convert code to name {% endcomment %}
-            {% include helpers/language-name.html code=lang_code %}
+            {{ site.data.languages[page.lang][lang_code] | default: lang_code }}
           {% endfor %}
         </p>
       {% endif %}

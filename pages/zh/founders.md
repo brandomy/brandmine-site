@@ -1,5 +1,5 @@
 ---
-layout: founders
+layout: default
 title: "认识创始人"
 description: "探索金砖国家及其他国家新兴品牌背后的远见卓识者，了解他们的故事、专业知识以及他们创建的品牌。"
 permalink: /zh/founders/

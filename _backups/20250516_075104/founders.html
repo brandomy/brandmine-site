@@ -26,20 +26,19 @@ layout: default
 ---------------------------------------------------------------------------- -->
 
 <!-- Founders layout using logic-light architecture -->
-<!-- {% if page.sections %}
+{% if page.sections %}
   {% for section in page.sections %}
     {% include pages/founders/{{ section }}.html %}
   {% endfor %}
-{% else %} -->
+{% else %}
   <!-- Default sections if not specified in front matter -->
   {% include pages/founders/header.html %}
   {% include pages/founders/content.html %}
   {% include pages/founders/filter-interface.html %}
-  {% include pages/founders/test-grid.html %}
-    {% include pages/founders/founders-grid-clean.html %}
+  {% include pages/founders/founders-grid.html %}
   {% include pages/founders/featured-founders.html %}
   {% include pages/founders/recent-founders.html %}
-<!-- {% endif %} -->
+{% endif %}
 
 <!-- Founders-specific JavaScript -->
 <script src="{{ '/assets/js/pages/founders/founders.js' | relative_url }}"></script>
