@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: br-eduardo-santos
 name: "Eduardo Santos"
 title: "Eduardo Santos - Brazil's Organic Pioneer"

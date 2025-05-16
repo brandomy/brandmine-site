@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-alexei-sokolov
 name: "Alexei Sokolov"
 title: "Alexei Sokolov - TeaTime's Visionary"

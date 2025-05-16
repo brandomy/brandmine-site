@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "Maria Kuznetsova"
 title: "Maria Kuznetsova - Preserving Russian Flavor Heritage"

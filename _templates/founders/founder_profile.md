@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: xx-firstname-lastname  # Country code + name slug (e.g., ru-ivan-petrov)
 name: "Full Name"
 title: "Full Name - Brief Positioning"  # e.g., "Brazil's Organic Pioneer"

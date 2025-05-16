@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-ivan-petrov
 name: "Ivan Petrov"
 title: "Ivan Petrov - Altai Honey Pioneer"
