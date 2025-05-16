@@ -1,0 +1,94 @@
+/**
+ * Founder Profile - Associated Brands Component
+ */
+
+.founder-profile__brands {
+  margin-bottom: 2rem;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--color-gray-900);
+  }
+}
+
+.founder-brand-info {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background-color: var(--color-gray-50);
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--color-olive-500);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+
+    a {
+      color: var(--color-gray-900);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary-600);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__meta {
+    margin-bottom: 1rem;
+
+    &-item {
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &-label {
+      font-weight: 500;
+      color: var(--color-gray-600);
+      margin-right: 0.5rem;
+      min-width: 100px;
+      font-size: 0.875rem;
+    }
+
+    &-value {
+      color: var(--color-gray-900);
+      font-size: 0.875rem;
+    }
+  }
+
+  &__description {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+    line-height: 1.5;
+  }
+
+  &__link {
+    display: inline-block;
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

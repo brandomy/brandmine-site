@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "玛丽亚·库兹涅佐娃"
 title: "玛丽亚·库兹涅佐娃 - 俄罗斯风味遗产的守护者"
@@ -20,6 +20,12 @@ expertise:
   - 传统保存技术
   - 可持续采购
   - 食品工匠
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # 玛丽亚·库兹涅佐娃：复兴俄罗斯的烹饪遗产

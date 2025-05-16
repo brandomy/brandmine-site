@@ -1,0 +1,47 @@
+{% comment %}
+  Component: pages/brands/search.html
+
+  Purpose: Displays the search panel for the brands page
+
+  Parameters:
+    title (optional): Custom section title
+    description (optional): Custom description
+
+  Dependencies:
+    - CSS: components/panel.css
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].search %}
+{% assign brands_t = site.data.translations[page.lang].brands %}
+
+<div class="panel panel--sky-soft brands-panel">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: brands_t.search_title | default: "Search Our Brand Database" }}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.description | default: brands_t.search_description | default: "Looking for specific brands? Use our search to find exactly what you need." }}
+    </p>
+
+    <div class="brands__search-container">
+      <form action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get" class="brands__search-form">
+        <input type="text" name="q" class="brands__search-input" placeholder="{{ t.placeholder }}" aria-label="Search brands">
+        <button type="submit" class="brands__search-button">
+          <i class="fas fa-search"></i>
+          {{ t.button }}
+        </button>
+      </form>
+    </div>
+
+    <div class="brands__search-suggestions">
+      <p class="brands__search-suggestions-title">{{ t.popular_searches }}</p>
+      <div class="brands__search-tags">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=wine" class="brands__search-tag">Wine</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=beauty" class="brands__search-tag">Beauty</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=founder" class="brands__search-tag">Founder-led</a>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=moscow" class="brands__search-tag">Moscow</a>
+      </div>
+    </div>
+  </div>
+</div>

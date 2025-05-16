@@ -1,0 +1,36 @@
+{% comment %}
+  Component: components/helpers/taxonomy-tag.html
+
+  Purpose: Displays a taxonomy tag with appropriate styling and link
+
+  Parameters:
+    - type: Tag type - "sector", "market", "attribute", "signal" (required)
+    - value: Tag value/slug (required)
+    - class_name: CSS class prefix for styling (optional, defaults to "brand-card")
+    - label: Custom display text (optional, defaults to translation lookup)
+
+  Dependencies:
+    - site.data.dimensions for translations
+{% endcomment %}
+
+{% assign class_prefix = include.class_name | default: "brand-card" %}
+{% assign tag_type = include.type %}
+{% assign tag_value = include.value %}
+{% assign tag_type_plural = tag_type | append: "s" %}
+
+<!-- First try to get the label from the provided custom label -->
+{% assign display_label = include.label %}
+
+<!-- If no custom label provided, try to get it from dimensions.json structure -->
+{% if display_label == nil %}
+  {% if site.data.dimensions[tag_type_plural][tag_value][page.lang] %}
+    {% assign display_label = site.data.dimensions[tag_type_plural][tag_value][page.lang] %}
+  {% else %}
+    {% assign display_label = tag_value %}
+  {% endif %}
+{% endif %}
+
+<a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ tag_type_plural }}/{{ tag_value | slugify }}/"
+   class="{{ class_prefix }}__tag {{ class_prefix }}__tag--{{ tag_type }}">
+  {{ display_label }}
+</a>

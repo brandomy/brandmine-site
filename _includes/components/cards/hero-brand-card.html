@@ -1,53 +1,27 @@
 {% comment %}
   Include Name: components/cards/hero-brand-card.html
 
-  Purpose: Displays an enhanced brand card with hero image for higher-level featured brands (featured_level 2+).
-  This is an expanded version of the standard brand card, showcasing more details and a prominent hero image.
+  Purpose: Displays an enhanced brand card with hero image for higher-level featured brands.
 
   Parameters:
   - brand: Brand object with complete details (required)
 {% endcomment %}
 
+{% assign t = site.data.translations[page.lang].brand %}
+{% assign buttons_t = site.data.translations[page.lang].buttons %}
+
 <article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">
-    {% if brand.hero_image %}
-      <!-- Extract the filename from the hero_image path -->
-      {% assign hero_filename = brand.hero_image | split: "/" | last | split: "." | first %}
-      {% assign hero_dir = brand.hero_image | remove: "/originals/" | split: "/" | reverse | shift | reverse | join: "/" %}
-
-      <img src="{{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-800w.jpg"
-           srcset="{{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-400w.jpg 400w,
-                   {{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-800w.jpg 800w,
-                   {{ site.baseurl }}{{ hero_dir }}/{{ hero_filename }}-1200w.jpg 1200w"
-           sizes="(max-width: 600px) 133px, (max-width: 900px) 266px, 400px"
-           alt="{{ brand.title }}"
-           class="hero-brand-card__img">
-    {% elsif brand.ref %}
-      <!-- Fallback to generic hero image if no specific hero_image is set -->
-      <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-800w.jpg"
-           srcset="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-400w.jpg 400w,
-                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-800w.jpg 800w,
-                   {{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/hero-main-1200w.jpg 1200w"
-           sizes="(max-width: 600px) 133px, (max-width: 900px) 266px, 400px"
-           alt="{{ brand.title }}"
-           class="hero-brand-card__img">
-    {% else %}
-      <div class="hero-brand-card__placeholder">
-        <div class="hero-brand-card__placeholder-icon">🏙️</div>
-      </div>
-    {% endif %}
+    {% include components/helpers/brand-image.html
+       brand=brand
+       type="hero"
+       class_name="hero-brand-card" %}
 
     <div class="hero-brand-card__logo">
-      {% if brand.ref %}
-        <!-- Direct logo image tag -->
-        <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/logo-color-400w.png"
-             alt="{{ brand.title }} logo"
-             class="hero-brand-card__logo-img">
-      {% else %}
-        <div class="hero-brand-card__logo-placeholder">
-          {{ brand.title | slice: 0, 1 | upcase }}
-        </div>
-      {% endif %}
+      {% include components/helpers/brand-image.html
+         brand=brand
+         type="logo"
+         class_name="hero-brand-card" %}
     </div>
   </div>
 
@@ -57,64 +31,60 @@
         <h2 class="hero-brand-card__title">{{ brand.title }}</h2>
 
         <div class="hero-brand-card__meta">
-          {% if brand.founding_year %}
-          <div class="hero-brand-card__founding-year">
-            {{ site.data.translations[page.lang].brand.founding_year | default: "Founded" }} {{ brand.founding_year }}
-          </div>
-          {% endif %}
+          {% include components/helpers/founding-year.html
+             brand=brand
+             class_name="hero-brand-card" %}
 
-          {% if brand.location_city %}
-          <div class="hero-brand-card__location">
-            <span class="hero-brand-card__location-icon">📍</span>
-            {{ brand.location_city }}{% if brand.location_region %}, {{ brand.location_region }}{% endif %}
-          </div>
-          {% endif %}
+          {% include components/helpers/location-display.html
+             brand=brand
+             class_name="hero-brand-card" %}
         </div>
 
         <p class="hero-brand-card__description">{{ brand.description }}</p>
       </div>
 
-      <!-- Founder portrait with 2:3 aspect ratio -->
+      <!-- Founder portrait -->
       {% if brand.ref %}
       <div class="hero-brand-card__founder">
-        <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/founder-portrait-400w.jpg"
-             alt="Founder of {{ brand.title }}"
-             class="hero-brand-card__founder-img">
+        {% include components/helpers/brand-image.html
+           brand=brand
+           type="founder"
+           class_name="hero-brand-card" %}
       </div>
       {% endif %}
     </div>
 
-    <!-- Combined taxonomy in a single row -->
+    <!-- Taxonomy section -->
     <div class="hero-brand-card__taxonomy">
       <div class="hero-brand-card__taxonomy-section">
         <div class="hero-brand-card__tags">
-          <!-- Markets first -->
+          <!-- Markets -->
           {% if brand.markets %}
             {% for market in brand.markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
-                 class="brand-tag brand-tag--market">
-                {{ site.data.dimensions[page.lang].markets[market] | default: market }}
-              </a>
+              {% include components/helpers/taxonomy-tag.html
+                 type="market"
+                 value=market
+                 class_name="brand-tag" %}
             {% endfor %}
           {% endif %}
 
-          <!-- Sectors next -->
+          <!-- Sectors -->
           {% if brand.sectors %}
             {% for sector in brand.sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
-                 class="brand-tag brand-tag--sector">
-                {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
-              </a>
+              {% include components/helpers/taxonomy-tag.html
+                 type="sector"
+                 value=sector
+                 class_name="brand-tag" %}
             {% endfor %}
           {% endif %}
 
-          <!-- Attributes last -->
+          <!-- Attributes -->
           {% if brand.attributes %}
             {% for attribute in brand.attributes %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
-                 class="brand-tag brand-tag--attribute">
-                {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
-              </a>
+              {% include components/helpers/taxonomy-tag.html
+                 type="attribute"
+                 value=attribute
+                 class_name="brand-tag" %}
             {% endfor %}
           {% endif %}
         </div>
@@ -123,21 +93,22 @@
   </div>
 
   <div class="hero-brand-card__footer">
+    <!-- Signals -->
     {% if brand.signals and brand.signals.size > 0 %}
     <div class="hero-brand-card__signals">
       {% for signal in brand.signals %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
-          class="brand-tag brand-tag--signal">
-          {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
-        </a>
+        {% include components/helpers/taxonomy-tag.html
+           type="signal"
+           value=signal
+           class_name="brand-tag" %}
       {% endfor %}
     </div>
     {% endif %}
 
-    {% if brand.ref %}
-      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand.ref }}/" class="hero-brand-card__link btn btn--primary">
-        {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
-      </a>
-    {% endif %}
+    <a href="{{ brand.url | relative_url }}" class="hero-brand-card__link btn btn--primary">
+      {{ buttons_t.view_profile | default: "View Profile" }}
+    </a>
+
+    {% include components/helpers/founder-check.html brand=brand class_name="hero-brand-card" %}
   </div>
 </article>

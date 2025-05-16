@@ -1,39 +1,21 @@
 {% comment %}
   Include Name: components/cards/featured-brand-card.html
 
-  Purpose: Renders a featured brand card with enhanced styling and additional details
-  compared to the standard brand card. Used on homepage and key landing pages.
+  Purpose: Displays an enhanced brand card with additional details for featured brands.
+  Used on homepage and key landing pages for highlighting important brands.
 
   Parameters:
   - brand: Brand object with complete details (required)
 {% endcomment %}
 
+{% assign t = site.data.translations[page.lang].brand %}
+{% assign buttons_t = site.data.translations[page.lang].buttons %}
+
 <article class="featured-brand-card {% if brand.featured or brand.featured_level > 1 %}featured-brand-card--featured{% endif %}">
-  <header class="featured-brand-card__header">
-    <div class="featured-brand-card__logo">
-      {% if brand.ref %}
-        <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.ref }}/logo-color-400w.png"
-             alt="{{ brand.title }} logo"
-             class="featured-brand-card__logo-img">
-      {% else %}
-        <div class="featured-brand-card__logo-placeholder">
-          {{ brand.title | slice: 0, 1 | upcase }}
-        </div>
-      {% endif %}
-    </div>
-    <div class="featured-brand-card__header-text">
-      <h2 class="featured-brand-card__title">{{ brand.title }}</h2>
-      {% if brand.founding_year %}
-        <p class="featured-brand-card__founding-year">{{ site.data.translations[page.lang].brand.founding_year }} {{ brand.founding_year }}</p>
-      {% endif %}
-      {% if brand.location_city %}
-        <p class="featured-brand-card__location">
-          <span class="featured-brand-card__location-icon">📍</span>
-          {{ brand.location_city }}{% if brand.location_region %}, {{ brand.location_region }}{% endif %}
-        </p>
-      {% endif %}
-    </div>
-  </header>
+  {% include components/helpers/card-header.html
+     brand=brand
+     class_name="featured-brand-card"
+     show_location=true %}
 
   <div class="featured-brand-card__body">
     <p class="featured-brand-card__description">
@@ -48,55 +30,51 @@
       <!-- Markets first -->
       {% if brand.markets and brand.markets.size > 0 %}
         {% for market in brand.markets limit:1 %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
-             class="featured-brand-card__tag featured-brand-card__tag--market">
-            {{ site.data.dimensions[page.lang].markets[market] | default: market }}
-          </a>
+          {% include components/helpers/taxonomy-tag.html
+             type="market"
+             value=market
+             class_name="featured-brand-card" %}
         {% endfor %}
       {% endif %}
 
       <!-- Sectors next -->
       {% if brand.sectors and brand.sectors.size > 0 %}
         {% for sector in brand.sectors limit:1 %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
-             class="featured-brand-card__tag featured-brand-card__tag--sector">
-            {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
-          </a>
+          {% include components/helpers/taxonomy-tag.html
+             type="sector"
+             value=sector
+             class_name="featured-brand-card" %}
         {% endfor %}
       {% endif %}
 
       <!-- Attributes third -->
       {% if brand.attributes and brand.attributes.size > 0 %}
-        {% for attribute in brand.attributes limit:3 %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
-             class="featured-brand-card__tag featured-brand-card__tag--attribute">
-            {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
-          </a>
+        {% for attribute in brand.attributes limit:2 %}
+          {% include components/helpers/taxonomy-tag.html
+             type="attribute"
+             value=attribute
+             class_name="featured-brand-card" %}
         {% endfor %}
       {% endif %}
 
-            <!-- Signals last -->
+      <!-- Signals last -->
       {% if brand.signals and brand.signals.size > 0 %}
         {% for signal in brand.signals limit:1 %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
-             class="featured-brand-card__tag featured-brand-card__tag--signal">
-            {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
-          </a>
+          {% include components/helpers/taxonomy-tag.html
+             type="signal"
+             value=signal
+             class_name="featured-brand-card" %}
         {% endfor %}
       {% endif %}
     </div>
-
   </div>
 
-    <!-- View Profile -->
+  <!-- View Profile -->
   <footer class="featured-brand-card__footer">
     <a href="{{ brand.url | relative_url }}" class="featured-brand-card__link">
-      {{ site.data.translations[page.lang].buttons.view_profile | default: "View Profile" }}
+      {{ buttons_t.view_profile | default: "View Profile" }}
     </a>
 
-     <!-- Founder Led indicator -->
-    {% if brand.founders.size > 0 or brand.founder_led %}
-      <div class="featured-brand-card__founder-led" title="{{ site.data.translations[page.lang].brand.founder_led }}">F</div>
-    {% endif %}
+    {% include components/helpers/founder-check.html brand=brand class_name="featured-brand-card" %}
   </footer>
 </article>

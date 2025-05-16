@@ -1,0 +1,26 @@
+{% comment %}
+  Component: pages/brands/hero.html
+
+  Purpose: Displays the hero banner for the brands page
+
+  Parameters:
+    title (optional): Custom hero title
+    subtitle (optional): Custom hero subtitle
+
+  Dependencies:
+    - CSS: components/panel.css
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].brands %}
+
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary brands__title">
+      {{ include.title | default: t.hero_title | default: page.title }}
+    </h1>
+    <p class="panel__subtitle">
+      {{ include.subtitle | default: t.hero_subtitle }}
+    </p>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "Мария Кузнецова"
 title: "Мария Кузнецова - Сохраняя российское вкусовое наследие"
@@ -20,6 +20,12 @@ expertise:
   - традиционные техники консервации
   - устойчивые закупки
   - пищевой ремесленник
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Мария Кузнецова: Возрождая кулинарное наследие России

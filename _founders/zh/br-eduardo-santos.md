@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: br-eduardo-santos
 name: "爱德华多·桑托斯"
 title: "爱德华多·桑托斯 - 巴西有机先驱"
@@ -20,6 +20,12 @@ expertise:
   - 可持续耕作
   - 农林复合经营
   - 出口发展
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # 爱德华多·桑托斯：改变巴西大西洋森林农业

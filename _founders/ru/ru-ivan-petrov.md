@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-ivan-petrov
 name: "Иван Петров"
 title: "Иван Петров - Основатель Алтайского Мёда"
@@ -19,6 +19,12 @@ expertise:
   - пчеловодство
   - органическое сельское хозяйство
   - устойчивый сбор
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Иван Петров: Пионер Медового Производства на Алтае

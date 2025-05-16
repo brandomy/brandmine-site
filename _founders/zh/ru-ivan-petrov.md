@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-ivan-petrov
 name: "伊万·彼得罗夫"
 title: "伊万·彼得罗夫 - 阿尔泰蜂蜜先驱"
@@ -19,6 +19,12 @@ expertise:
   - 养蜂
   - 有机农业
   - 可持续采集
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # 伊万·彼得罗夫：阿尔泰蜂蜜先驱

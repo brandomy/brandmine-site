@@ -8,41 +8,28 @@ layout: default
   It is assigned to the `/brands/` page in each supported language.
 
   Purpose:
-  - Renders a search-and-filter interface for browsing brands
-  - Displays brand cards in a responsive grid layout
-  - Supports dynamic search, sorting, and filtering (via JavaScript)
-  - Multilingual content and labels are driven by `page.lang`
-  - Supports the new brand template structure
-
-  Used by:
-  - pages/en/brands.md
-  - pages/ru/brands.md
-  - pages/zh/brands.md
-
-  Dependencies:
-  - _includes/pages/brands/* (component sections)
-  - _includes/components/cards/brand-card.html (displays each brand summary)
-  - _includes/components/search/search-filter.html (filter UI)
-  - /assets/js/pages/brands/brands-filtering.js (dynamic filtering behavior)
-  - site.data.translations for UI labels
-  - site.data.dimensions for taxonomy translations
+  - Dynamically includes sections defined in the page's front matter
+  - Provides page-scoped CSS through the brands-page class
+  - Loads JavaScript for dynamic filtering behavior
 ---------------------------------------------------------------------------- -->
 
 <div class="brands-page">
-  <!-- Main content sections -->
-  <div class="panel panel--light">
-    <div class="panel__content">
-      {% include pages/brands/header.html %}
-      {% include pages/brands/filter-interface.html %}
-      {% include pages/brands/brands-grid.html %}
-    </div>
-  </div>
-  
-  <!-- Featured Brands Section -->
-  {% include pages/brands/featured-brands.html %}
-  
-  <!-- Recently Added Brands -->
-  {% include pages/brands/recent-brands.html %}
+  {% if page.sections %}
+    {% for section in page.sections %}
+      {% include pages/brands/{{ section }}.html %}
+    {% endfor %}
+  {% else %}
+    <!-- Fallback for pages without sections array -->
+    {% include pages/brands/hero.html %}
+    {% include pages/brands/intro.html %}
+    {% include pages/brands/search.html %}
+    {% include pages/brands/features.html %}
+    {% include pages/brands/brands-grid.html %}
+    {% include pages/brands/featured-brands.html %}
+    {% include pages/brands/recent-brands.html %}
+    {% include pages/brands/find-partner.html %}
+    {% include pages/brands/contact-cta.html %}
+  {% endif %}
 </div>
 
 <!-- JavaScript for brand filtering and display -->

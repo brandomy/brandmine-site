@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: br-eduardo-santos
 name: "Эдуардо Сантос"
 title: "Эдуардо Сантос - Бразильский органический первопроходец"
@@ -20,6 +20,12 @@ expertise:
   - устойчивое земледелие
   - агролесоводство
   - развитие экспорта
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Эдуардо Сантос: Трансформация сельского хозяйства Атлантического леса Бразилии

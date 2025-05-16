@@ -1,52 +1,148 @@
-/* ==========================================================================
-   Brands Page - Brands Grid Section
-   ==========================================================================
-   Styles for the main brands grid display
-*/
+/* assets/css/pages/brands/brands-grid.scss */
 
-.brands-grid {
-  margin-bottom: var(--space-8);
-  
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-6);
-    margin: var(--space-6) 0;
-    
-    @media (max-width: 767px) {
-      grid-template-columns: 1fr;
+.brands-page {
+  .brands-grid {
+    margin-bottom: var(--space-10);
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-6);
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+      }
+    }
+
+    &__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--neutral-900);
+
+      @media (max-width: 768px) {
+        font-size: var(--text-xl);
+      }
+    }
+
+    &__count {
+      font-size: var(--text-base);
+      color: var(--neutral-600);
+    }
+
+    &__actions {
+      display: flex;
+      gap: var(--space-4);
+
+      @media (max-width: 768px) {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    &__view-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+
+      button {
+        padding: var(--space-1) var(--space-2);
+        background-color: transparent;
+        border: 1px solid var(--neutral-300);
+        color: var(--neutral-600);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: var(--neutral-100);
+          color: var(--neutral-800);
+        }
+
+        &.active {
+          background-color: var(--primary-50);
+          border-color: var(--primary-400);
+          color: var(--primary-700);
+        }
+      }
+    }
+
+    &__sort {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+
+      label {
+        font-size: var(--text-sm);
+        color: var(--neutral-700);
+      }
+
+      select {
+        padding: var(--space-1) var(--space-2);
+        border: 1px solid var(--neutral-300);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-sm);
+        color: var(--neutral-900);
+        background-color: white;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary-400);
+        }
+      }
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-6);
+
+      @media (max-width: 640px) {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--space-4);
+      }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
       gap: var(--space-4);
     }
-  }
-  
-  &__empty {
-    text-align: center;
-    padding: var(--space-8) 0;
-  }
-  
-  &__empty-message {
-    font-size: var(--text-lg);
-    color: var(--gray-500);
-  }
-  
-  &__load-more {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-6);
-  }
-  
-  &__load-more-button {
-    padding: var(--space-2) var(--space-6);
-    background-color: var(--secondary-500);
-    color: white;
-    border: none;
-    border-radius: var(--radius-md);
-    font-size: var(--text-base);
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    
-    &:hover {
-      background-color: var(--secondary-600);
+
+    &__empty {
+      padding: var(--space-8) var(--space-4);
+      text-align: center;
+      background-color: var(--neutral-50);
+      border-radius: var(--radius-md);
+      color: var(--neutral-600);
+
+      h3 {
+        font-size: var(--text-xl);
+        margin-bottom: var(--space-2);
+        color: var(--neutral-700);
+      }
+
+      p {
+        margin-bottom: var(--space-4);
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &__pagination {
+      margin-top: var(--space-8);
+      display: flex;
+      justify-content: center;
+    }
+
+    &__load-more {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-8);
     }
   }
 }

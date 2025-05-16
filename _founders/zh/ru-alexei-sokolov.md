@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-alexei-sokolov
 name: "阿列克谢·索科洛夫"
 title: "阿列克谢·索科洛夫 - TeaTime的远见者"
@@ -20,6 +20,12 @@ expertise:
   - 饮料创新
   - 文化大使
   - 品牌讲述
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # 阿列克谢·索科洛夫：连接俄罗斯茶传统与全球市场

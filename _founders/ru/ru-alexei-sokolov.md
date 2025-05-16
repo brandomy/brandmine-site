@@ -1,5 +1,5 @@
 ---
-layout: founder
+layout: founder-profile
 ref: ru-alexei-sokolov
 name: "Алексей Соколов"
 title: "Алексей Соколов - Визионер TeaTime"
@@ -20,6 +20,12 @@ expertise:
   - инновации в области напитков
   - культурный посол
   - бренд-сторителлинг
+# Section Configuration - determines which sections appear in the sidebar
+# Remove or comment out sections you don't want to display
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Алексей Соколов: Объединяя российские чайные традиции с мировыми рынками

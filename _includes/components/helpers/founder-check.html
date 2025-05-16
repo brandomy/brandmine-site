@@ -1,0 +1,31 @@
+{% comment %}
+  Component: components/helpers/founder-check.html
+
+  Purpose: Determines if a brand is founder-led and renders the appropriate indicator
+
+  Parameters:
+    - brand: Brand object to check (required)
+    - class_name: CSS class prefix for styling (optional, defaults to "brand-card")
+
+  Output:
+    - Renders the founder-led indicator if the brand is founder-led
+    - Does not render anything if the brand is not founder-led
+
+  Dependencies:
+    - site.data.translations[page.lang].brand.founder_led for label
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].brand %}
+{% assign is_founder_led = false %}
+
+{% if brand.founder_led %}
+  {% assign is_founder_led = true %}
+{% elsif brand.founders.size > 0 %}
+  {% assign is_founder_led = true %}
+{% elsif brand.founder.founder_led %}
+  {% assign is_founder_led = true %}
+{% endif %}
+
+{% if is_founder_led %}
+  <div class="{{ include.class_name | default: 'brand-card' }}__founder-led" title="{{ t.founder_led }}">F</div>
+{% endif %}
