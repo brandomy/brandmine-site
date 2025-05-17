@@ -57,7 +57,7 @@
   right: var(--space-6);
   width: 90px;
   height: 90px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   background-color: var(--neutral-100);
   padding: var(--space-2);
   box-shadow: var(--shadow-md);
@@ -156,6 +156,49 @@
   gap: var(--space-2);
 }
 
+/* BEM-style Tag styling */
+.hero-brand-card__tag {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-right: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.hero-brand-card__tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tag color variants */
+.hero-brand-card__tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border: 1px solid var(--olive-200);
+}
+
+.hero-brand-card__tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
+}
+
+.hero-brand-card__tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border: 1px solid var(--secondary-200);
+}
+
+.hero-brand-card__tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
+}
+
 /* --------------------------------------------------------------------------
    5. FOOTER AREA
    -------------------------------------------------------------------------- */
@@ -181,12 +224,28 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. BRAND TAG STYLING
+   6. FOUNDER LED BADGE
    -------------------------------------------------------------------------- */
 
+.hero-brand-card__founder-led {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--accent-300);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+  cursor: help;
+}
+
+/* Legacy .brand-tag styling - keep for backwards compatibility */
 .brand-tag {
   display: inline-flex;
-  padding: var(--space-1) var(--space-3);
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
@@ -203,24 +262,28 @@
   background-color: var(--olive-100);
   color: var(--olive-800);
   border: 1px solid var(--olive-200);
+  border-left: 2px solid var(--olive-400); /* Optional left border */
 }
 
 .brand-tag--market {
   background-color: var(--sky-100);
   color: var(--sky-800);
   border: 1px solid var(--sky-200);
+  border-left: 2px solid var(--sky-400); /* Optional left border */
 }
 
 .brand-tag--attribute {
   background-color: var(--secondary-100);
   color: var(--secondary-800);
   border: 1px solid var(--secondary-200);
+  border-left: 2px solid var(--secondary-400); /* Optional left border */
 }
 
 .brand-tag--signal {
   background-color: var(--accent-100);
   color: var(--accent-800);
   border: 1px solid var(--accent-200);
+  border-left: 2px solid var(--accent-400); /* Optional left border */
 }
 
 /* --------------------------------------------------------------------------

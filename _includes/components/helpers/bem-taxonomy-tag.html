@@ -1,0 +1,67 @@
+{% comment %}
+  Component: components/helpers/bem-taxonomy-tag.html
+
+  Purpose: Displays a taxonomy tag with BEM-compliant styling and proper link
+
+  Parameters:
+    - type: Tag type - "sector", "market", "attribute", "signal" (required)
+    - value: Tag value/slug (required)
+    - block: The BEM block name (required, e.g., "hero-brand-card" or "brand-tag")
+    - element: The BEM element name (optional, e.g., "tag")
+    - label: Custom display text (optional, defaults to translation lookup)
+    - variant: Additional modifier if needed (optional)
+
+  Usage Examples:
+    {% include components/helpers/bem-taxonomy-tag.html
+       type="sector"
+       value="wine"
+       block="brand-tag" %}
+
+    {% include components/helpers/bem-taxonomy-tag.html
+       type="market"
+       value="brazil"
+       block="hero-brand-card"
+       element="tag" %}
+
+  Dependencies:
+    - site.data.dimensions for translations
+{% endcomment %}
+
+{% assign tag_type = include.type %}
+{% assign tag_value = include.value %}
+{% assign tag_type_plural = tag_type | append: "s" %}
+{% assign bem_block = include.block %}
+{% assign bem_element = include.element %}
+{% assign tag_variant = include.variant %}
+
+<!-- First try to get the label from the provided custom label -->
+{% assign display_label = include.label %}
+
+<!-- If no custom label provided, try to get it from dimensions data structure -->
+{% if display_label == nil %}
+  {% if site.data.dimensions[tag_type_plural][tag_value][page.lang] %}
+    {% assign display_label = site.data.dimensions[tag_type_plural][tag_value][page.lang] %}
+  {% else %}
+    {% assign display_label = tag_value %}
+  {% endif %}
+{% endif %}
+
+<!-- Structure classes according to BEM conventions -->
+{% if bem_element %}
+  <!-- Block__Element--Modifier pattern -->
+  {% capture tag_class %}{{ bem_block }}__{{ bem_element }} {{ bem_block }}__{{ bem_element }}--{{ tag_type }}{% endcapture %}
+  {% if tag_variant %}
+    {% capture tag_class %}{{ tag_class }} {{ bem_block }}__{{ bem_element }}--{{ tag_variant }}{% endcapture %}
+  {% endif %}
+{% else %}
+  <!-- Block--Modifier pattern (for global tags) -->
+  {% capture tag_class %}{{ bem_block }} {{ bem_block }}--{{ tag_type }}{% endcapture %}
+  {% if tag_variant %}
+    {% capture tag_class %}{{ tag_class }} {{ bem_block }}--{{ tag_variant }}{% endcapture %}
+  {% endif %}
+{% endif %}
+
+<a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ tag_type_plural }}/{{ tag_value | slugify }}/"
+   class="{{ tag_class }}">
+  {{ display_label }}
+</a>
