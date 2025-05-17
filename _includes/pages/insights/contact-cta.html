@@ -2,27 +2,22 @@
   Component: pages/insights/contact-cta.html
   Purpose: Contact CTA section for the insights page
   Parameters:
-    - heading: The heading for the section (default: Need Custom Research?)
-    - description: The description text for the section (default: Contact us to discuss your specific information needs about BRICS+ consumer brands.)
-    - button_text: The text for the CTA button (default: Get in Touch)
-    - button_url: The URL for the CTA button (default: /[lang]/about/#contact)
+    - heading: The heading for the section (default from translations)
+    - description: The description text for the section (default from translations)
     - panel_type: The type of panel to use (default: cta)
   Dependencies:
     - assets/css/pages/insights/contact-cta.scss
 {% endcomment %}
 
-{% assign heading = include.heading | default: site.data.translations[page.lang].insights.cta_heading | default: "Need Custom Research?" %}
-{% assign description = include.description | default: site.data.translations[page.lang].insights.cta_description | default: "Contact us to discuss your specific information needs about BRICS+ consumer brands." %}
-{% assign button_text = include.button_text | default: site.data.translations[page.lang].insights.cta_button | default: "Get in Touch" %}
-{% assign button_url = include.button_url | default: site.baseurl | append: "/" | append: page.lang | append: "/about/#contact" %}
+{% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "cta" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content panel--centered">
-    <h2 class="panel__heading-secondary">{{ heading }}</h2>
-    <p class="panel__lead-text">{{ description }}</p>
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.cta_heading }}</h2>
+    <p class="panel__lead-text">{{ include.description | default: t.cta_description }}</p>
     <div class="insights-contact-cta__buttons">
-      <a href="{{ button_url }}" class="btn btn--secondary-cta">{{ button_text }}</a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">{{ t.cta_button }}</a>
     </div>
   </div>
 </div>

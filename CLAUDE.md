@@ -1,3 +1,6 @@
+I'll update the CLAUDE.md file to include information about the semantic section implementation. Here's the updated version with the new section added:
+
+```markdown
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -12,7 +15,7 @@ This file provides Claude Code and other AI tools with the architectural context
 
 The site supports:
 - **Three languages**: English (`en`), Russian (`ru`), Chinese (`zh`)
-- A **dimension-based discovery model** (sector, attribute, signal, market)
+- A **dimension-based discovery model** (market, sector, attribute, signal)
 - Custom includes for maps, dimension clouds, related brand logic, and language switching
 - Integration with MapLibre for interactive maps
 - Planned integration with Airtable (flat table structure)
@@ -32,7 +35,8 @@ The site supports:
 /_insights/{lang}/     — Insight content (curated stories, future blog)
 /pages/{lang}/         — Main content pages like brands.md
 /assets/               — CSS (BEM), JS, fonts, images
-/_docs/templates/      — Styleguide components
+/_docs/                - Documents
+/_templates/{type}/    — templates
 _config.yml           — Site config, collections, language routing
 index.html            — Redirects to /en/index.html
 ```
@@ -46,16 +50,17 @@ Dimensions are stored as Markdown files in `_dimensions/{lang}/{type}/`. Each fi
 - Content describing the dimension in more detail
 
 **Valid dimension types** include:
+- `markets` — e.g. russia, brazil, india, china
 - `sectors` — e.g. natural-beauty, halal-foods, specialty-cheeses, wine
 - `attributes` — e.g. founder-led, heritage-brand, sustainability-pioneer
-- `signals` — e.g. export-ready, franchise-ready, rapid-growth
-- `markets` — e.g. russia, brazil, india, china
+- `signals` — e.g. export-ready, franchise-ready, growth-ready
 
 Brands reference dimensions in front matter like this:
 
 ```yaml
 ---
-title: BioGlow
+title: ru-BioGlow
+ref: ru-bioglow
 lang: en
 sector: natural-beauty
 dimensions: [organic, india, founder-led]
@@ -84,6 +89,7 @@ Includes are organized into a structured hierarchy:
     carousels/          — Carousel components
     content/            — Content display components
     forms/              — Form components
+    helpers/            - Small components
     icons/              — Icon components
     images/             — Image handling components
       collection-image.html — Unified image component for collections
@@ -161,35 +167,65 @@ Brandmine uses a two-tier approach for brand content:
 
 ---
 
+# 🏗️ Page Sectioning Architecture
+
+Brandmine uses a semantic sectioning approach for page layouts:
+
+- **Page layouts** use a section-based architecture where:
+  - Each page is wrapped in a `.{page-type}-page` container for CSS scoping (e.g., `.brands-page`)
+  - Each logical section is wrapped in a semantic `<section>` tag
+  - Sections have standardized class naming: `{page-type}-section--{section-name}` (e.g., `brands-section--hero`)
+  - Each section has a unique ID for accessibility and deep linking: `id="{page-type}-section-{section}"`
+  - ARIA attributes improve screen reader navigation: `aria-labelledby="heading-{section}"`
+
+- **Section includes** are loaded dynamically based on the page's front matter `sections` array:
+  ```liquid
+  {% for section in page.sections %}
+    <section class="{{ page.ref }}-section {{ page.ref }}-section--{{ section }}"
+             id="{{ page.ref }}-section-{{ section }}"
+             aria-labelledby="heading-{{ section }}">
+      {% include pages/{{ page.ref }}/{{ section }}.html %}
+    </section>
+  {% endfor %}
+  ```
+
+- **CSS scoping** follows a consistent pattern:
+  ```scss
+  .{page-type}-page {
+    .{page-type}-section--{section-name} {
+      /* Section-specific styles */
+    }
+  }
+  ```
+
+This architecture provides semantic HTML structure for accessibility and SEO while maintaining the modular, logic-light approach.
+
+---
+
 # 💡 Development Workflow
 
 ## Build Commands
 ```bash
-bundle exec jekyll serve                  # Local dev server  
-bundle exec jekyll serve --livereload    # Live reload mode  
-bundle exec jekyll serve --host=0.0.0.0  # Mobile device testing  
-bundle exec jekyll build                 # Build for dev  
-JEKYLL_ENV=production bundle exec jekyll build  # Production build  
-npm run start                            # Alias for jekyll serve  
+bundle exec jekyll serve                  # Local dev server
+bundle exec jekyll serve --livereload    # Live reload mode
+bundle exec jekyll serve --host=0.0.0.0  # Mobile device testing
+bundle exec jekyll build                 # Build for dev
+JEKYLL_ENV=production bundle exec jekyll build  # Production build
+npm run start                            # Alias for jekyll serve
 npm run build                            # Alias for jekyll build
 ```
 
 ## Scripts
 ```bash
 ./_scripts/check_language_consistency.sh        # Validate i18n coverage
-./_scripts/enhanced-site-summary-advanced.sh    # Generate structural summary
 ./_scripts/process_images.sh [collection] [identifier] # Unified image processing
-./_scripts/process_brand_images.sh [country_code] [brand_name] # Process brand images
-./_scripts/process_site_images.sh               # Process site images
-./_scripts/process_people_images.sh             # Process people/team images
-./_scripts/process_icons.sh                     # Process dimension/insights icons
 ./_scripts/apply_teal_filter.sh                 # Apply brand filter to team photos
 ./_scripts/add_image_attribution.py             # Add image attribution to _data/image_attributions.yml
 ```
 
 ## Validation
 ```bash
-jekyll doctor       # Check config  
+jekyll doctor       # Check config
 htmlproofer _site   # Validate HTML output (requires html-proofer gem)
 ```
 
@@ -304,29 +340,25 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 ## Image Organization and Processing
 
 - **Directory Structure**: Organized by collection type:
-  - `assets/images/brands/[country-code]/[brand-name]/` for brand assets
+  - `assets/images/brands/[country-code]-[brand-name]/` for brand assets
   - `assets/images/founders/[founder-id]/` for founder assets
   - `assets/images/people/` for team members and testimonials
   - `assets/images/icons/dimensions/` for dimension taxonomy icons
   - `assets/images/icons/insights/` for insights category icons
   - `assets/images/[category]/` for site-wide assets (sectors, markets, etc.)
 
-- **Naming Convention**: 
+- **Naming Convention**:
   - Brand images: `founder-portrait.jpg`, `founder-headshot.jpg`, `logo.png`, etc.
   - Founder images: `portrait.jpg`, `headshot.jpg`
   - Processed files include width indicators: `[identifier]-[image-type]-[width]w.extension`
 
-- **Aspect Ratios**: 
+- **Aspect Ratios**:
   - Standard content: 3:2 horizontal (1200×800px)
   - Portraits: 2:3 vertical (800×1200px)
   - Icons: 1:1 square (512×512px source)
 
 - **Processing Scripts**:
   - `process_images.sh [collection] [identifier]` - Unified image processing
-  - `process_brand_images.sh [country-code] [brand-name]` for brand assets
-  - `process_site_images.sh [category]` for site-wide assets
-  - `process_people_images.sh` for team/testimonial portraits
-  - `process_icons.sh [system]` for dimension/insights icons
   - `apply_teal_filter.sh` for team photos branding
 
 - **Implementation Includes**:
@@ -344,25 +376,25 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 
 Brandmine applies a structured visual language for all imagery based on content type:
 
-- **Textured Minimalism (TM):**  
-  Used for brand profile hero images, insights article hero images, and country-specific dimension pages (e.g., Russian sectors, Brazilian markets).  
+- **Textured Minimalism (TM):**
+  Used for brand profile hero images, insights article hero images, and country-specific dimension pages (e.g., Russian sectors, Brazilian markets).
   Characteristics: simplified forms, subtle textures, gentle shadows, rich muted colors, no embedded text.
 
-- **Muted Pastel Textured Minimalism (MPTM):**  
-  Used for inline illustrations within insights articles and brand profiles to create emotional breathing spaces.  
+- **Muted Pastel Textured Minimalism (MPTM):**
+  Used for inline illustrations within insights articles and brand profiles to create emotional breathing spaces.
   Characteristics: pastel-based color palette, soft textures, lighter emotional tone, clean simplified forms.
 
-- **Flat Colour Minimalism:**  
-  Used for generic dimension pages (e.g., global sector overviews, signals, attributes, markets).  
+- **Flat Colour Minimalism:**
+  Used for generic dimension pages (e.g., global sector overviews, signals, attributes, markets).
   Characteristics: bold flat colors, geometric abstraction, no textures, clean edges, strong contrast for quick discovery.
 
-- **Natural Photography:**
+- **Textured Images + Teal Filter:**
   Used for team members and testimonial providers.
-  Characteristics: professional, natural photography with clean backgrounds and subtle brand filter (12% teal).
+  Characteristics: professional, natural photography with clean backgrounds and subtle brand filter (20% teal).
 
-General Rule:  
-- Use TM for primary storytelling heroes.  
-- Use MPTM for secondary storytelling illustrations.  
+General Rule:
+- Use TM for primary storytelling heroes.
+- Use MPTM for secondary storytelling illustrations.
 - Use Flat Colour Minimalism for taxonomy navigation and abstract dimension discovery.
 - Use Natural Photography (with brand filter) for team/testimonial portraits.
 
@@ -430,13 +462,13 @@ title: "TeaTime"
 slug: teatime
 country_code: "ru"
 lang: en
-permalink: /en/brands/ru/teatime/
+permalink: /en/brands/ru-teatime/
 
 # Taxonomy
-sectors: ["Artisanal Tea", "Gourmet Foods"]
+sectors: ["Artisanal Spirits", "Gourmet Foods"]
 markets: ["Russia", "China"]
 attributes: ["Founder-Led", "Heritage Brand", "Artisanal Excellence"]
-signals: ["Export Ready", "Rapid Growth"]
+signals: ["Export Ready", "Growth Ready"]
 
 # Location
 location:
@@ -551,11 +583,11 @@ Claude must align any navigation, filtering, or dimension-related output with th
 ## Recommended Steps When Adding New Content or Features
 
 1. **Check Existing Structure**: Look at similar files or components before creating new ones.
-2. **Follow Naming Conventions**: 
+2. **Follow Naming Conventions**:
    - Files: `kebab-case.html`, `kebab-case.css`, etc.
    - Variables: camelCase for JavaScript, kebab-case for CSS
    - Classes: BEM format `.block__element--modifier`
-   
+
 3. **Test in All Languages**: Any new feature should be compatible with all three languages (EN, RU, ZH).
 4. **Mobile-First**: Design for mobile view first, then enhance for larger screens.
 5. **Component Reuse**: Look for opportunities to reuse existing components.
@@ -565,7 +597,7 @@ Claude must align any navigation, filtering, or dimension-related output with th
 ### Adding a New Brand
 1. Create brand markdown file in each language folder (`_brands/en/`, `_brands/ru/`, `_brands/zh/`)
 2. Ensure the brand references existing dimensions
-3. Process brand images with `./_scripts/process_images.sh brands [country_code]-[brand_name]` or `./_scripts/process_brand_images.sh [country_code] [brand_name]`
+3. Process brand images with `./_scripts/process_images.sh brands [country_code]-[brand_name]`
 4. Add attributions for images in `_data/image_attributions.yml`
 
 ### Adding a New Founder
@@ -584,23 +616,18 @@ Claude must align any navigation, filtering, or dimension-related output with th
 3. Use CSS custom properties from tokens
 4. Test responsive behavior on multiple screen sizes
 
-## Brand Templates
+## Brand Profile Templates
 
-Three template options are available for creating brand profiles:
+Two template options are available for creating brand profiles:
 
-1. **Core Template** (`_templates/brands/brand-core.md`): 
-   - Absolute minimum required fields
-   - Use for rapid initial data entry
-   - Contains only essential identification and basic categorization
-   - Typically completed in under 5 minutes
 
-2. **Lite Template** (`_templates/brands/brand-lite.md`): 
+1. **Basic Template** (`_templates/brands/brand_profile.md`):
    - Basic profile with essential sections
    - Use when moderate information is available
    - Contains founder details, basic timeline, and key attributes
    - Good for non-featured brands that need more than basic listing
 
-3. **Full Template** (`_templates/brands/brand-full.md`): 
+2. **Full Template** (`_templates/brands/brand_profile_full.md`):
    - Comprehensive profile with all possible fields
    - Use for featured brands or when extensive information is available
    - Includes complete taxonomy, social media, certifications, timeline, etc.
@@ -614,3 +641,14 @@ or the legacy script:
 ```bash
 ./_scripts/process_brand_images.sh [country_code] [brand_name]
 ```
+```
+
+I've added a new section titled "🏗️ Page Sectioning Architecture" after the "Two-Tier Content Approach" section. This new section explains the semantic sectioning approach we've implemented, including:
+
+1. The structure of using semantic `<section>` tags
+2. The consistent class naming pattern (`{page-type}-section--{section-name}`)
+3. The use of IDs and ARIA attributes for accessibility
+4. The pattern for dynamically loading section includes
+5. The corresponding CSS scoping approach
+
+This addition maintains the existing structure and style of the CLAUDE.md file while providing clear guidance on the new semantic sectioning architecture.

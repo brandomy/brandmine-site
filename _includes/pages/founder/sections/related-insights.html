@@ -8,6 +8,7 @@
     - assets/css/pages/founder/related-insights.scss
     - site.data.translations[lang].founder
     - site.data.translations[lang].insights
+    - components/images/collection-image.html
 
   Usage examples:
     {% include pages/founder/related-insights.html %}
@@ -24,10 +25,20 @@
   <h3>{{ site.data.translations[founder.lang].founder.related_insights | default: "Related Insights" }}</h3>
   {% for insight in related_insights %}
   <div class="founder-profile__insight-card">
-    <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
-    <span class="founder-profile__insight-type">
-      {{ site.data.translations[founder.lang].insights.founders_journey | default: "Founder's Journey" }}
-    </span>
+    <div class="founder-profile__insight-image">
+      {% include components/images/collection-image.html
+        collection="insights"
+        slug=insight.ref
+        purpose="thumbnail"
+        alt=insight.title %}
+    </div>
+    <div class="founder-profile__insight-content">
+      <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
+      <span class="founder-profile__insight-type">
+        {{ site.data.translations[founder.lang].insights.founders_journey | default: "Founder's Journey" }}
+      </span>
+      <p class="founder-profile__insight-excerpt">{{ insight.excerpt | truncate: 100 }}</p>
+    </div>
   </div>
   {% endfor %}
 </div>

@@ -1,6 +1,6 @@
 ---
 # NEW BRAND LITE TEMPLATE
-layout: brand
+layout: brand-profile
 ref: ru-teatime  # Global ID (country-brandslug)
 sample_data: true  # Add this flag
 title: "TeaTime"  # Fallback if JSON lookup fails

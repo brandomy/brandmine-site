@@ -1,89 +1,40 @@
 /* assets/css/pages/brands/contact-cta.scss */
 
+/* Contact CTA styles */
 .brands-page {
-  .contact-cta {
-    background-color: var(--primary-50);
-    border-radius: var(--radius-lg);
-    padding: var(--space-8) var(--space-6);
-    margin-top: var(--space-12);
-    margin-bottom: var(--space-12);
-    text-align: center;
+  .cta-buttons {
+    margin-top: var(--space-6);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
 
-    @media (max-width: 768px) {
-      padding: var(--space-6) var(--space-4);
-      margin-top: var(--space-8);
-      margin-bottom: var(--space-8);
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
     }
+  }
 
-    &__content {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+  /* Style extensions for buttons in CTAs */
+  .btn--secondary-cta {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background-color: white;
+    color: var(--primary-600);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
 
-    &__title {
-      font-family: var(--font-heading);
-      font-size: var(--text-3xl);
-      font-weight: var(--font-bold);
-      color: var(--primary-900);
-      margin-bottom: var(--space-4);
-
-      @media (max-width: 768px) {
-        font-size: var(--text-2xl);
-      }
-    }
-
-    &__text {
-      font-size: var(--text-lg);
-      line-height: var(--leading-relaxed);
-      color: var(--neutral-700);
-      margin-bottom: var(--space-6);
-
-      @media (max-width: 768px) {
-        font-size: var(--text-base);
-      }
-    }
-
-    &__buttons {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-4);
-
-      @media (max-width: 480px) {
-        flex-direction: column;
-        gap: var(--space-3);
-        max-width: 280px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-
-    &__button {
-      padding: var(--space-3) var(--space-6);
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      font-weight: var(--font-medium);
-      text-decoration: none;
-      transition: all 0.2s ease;
-
-      &--primary {
-        background-color: var(--primary-600);
-        color: white;
-
-        &:hover {
-          background-color: var(--primary-700);
-        }
-      }
-
-      &--secondary {
-        background-color: white;
-        color: var(--primary-700);
-        border: 1px solid var(--primary-300);
-
-        &:hover {
-          background-color: var(--primary-50);
-          color: var(--primary-800);
-        }
-      }
+    &:hover {
+      background-color: var(--neutral-50);
+      color: var(--primary-700);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
   }
 }

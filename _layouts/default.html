@@ -4,7 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.translations[page.lang].site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.translations[page.lang].site.description }}{% endif %}">
+
+  <!-- SEO Components -->
+  {% if page.layout == 'insight-article' %}
+    {% include components/seo/meta-article.html article=page site_twitter="brandmine" %}
+  {% else %}
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.translations[page.lang].site.description }}{% endif %}">
+  {% endif %}
+
+  <!-- Schema.org markup -->
+  {% include components/seo/schema-detector.html page=page %}
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/site/favicons/apple-touch-icon.png' | relative_url }}">
@@ -21,13 +30,11 @@
   <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
-
   <!-- Conditional preloading for Chinese fonts -->
   {% if page.lang == 'zh' %}
     <link rel="preload" href="{{ '/assets/fonts/NotoSerifSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/NotoSansSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {% endif %}
-
 
   <!-- Font Awesome icons -->
   <script src="https://kit.fontawesome.com/6c425ae2ba.js" crossorigin="anonymous"></script>
@@ -56,8 +63,12 @@
   {% when 'founders' %}founders-page
   {% when 'discovery' %}discovery-page
   {% when 'insights' %}insights-page
-  {% else %}default-page
-{% endcase %}">
+  {% else %}
+    {% case page.layout %}
+      {% when 'insight-article' %}insight-article-page
+      {% else %}default-page
+    {% endcase %}
+  {% endcase %}">
   {% include layout/header.html %}
   <main class="layout">
     <div class="layout__wrapper">
@@ -69,7 +80,5 @@
 
   {% include layout/footer.html %}
   <script src="{{ '/assets/js/header.js' | relative_url }}"></script>
-  <!-- <script src="{{ site.baseurl }}/assets/js/header.js"></script> -->
-
 </body>
 </html>

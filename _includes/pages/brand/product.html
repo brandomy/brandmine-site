@@ -1,0 +1,38 @@
+<!-- _includes/pages/brand/product.html -->
+{% assign t = site.data.translations[page.lang].brand %}
+
+<section class="brand-section brand-section--product" id="product">
+  <div class="brand-section__container">
+    <h2 class="brand-section__title">{{ t.products }}</h2>
+
+    <div class="brand-products">
+      <!-- Product Content from Markdown -->
+      <div class="brand-products__content">
+        {% assign content_parts = content | split: "## Product Range" %}
+        {% if content_parts.size > 1 %}
+          {% assign product_content = content_parts[1] | split: "##" | first %}
+          {{ product_content | markdownify }}
+        {% endif %}
+      </div>
+
+      <!-- Product Gallery -->
+      {% if page.gallery and page.gallery.size > 0 %}
+        <div class="brand-products__gallery product-gallery">
+          {% for item in page.gallery %}
+            <div class="product-gallery__item">
+              {% include components/images/collection-image.html
+                collection="brands"
+                slug=page.ref
+                purpose="gallery"
+                name=forloop.index
+                alt=item.caption %}
+              {% if item.caption %}
+                <div class="product-gallery__caption">{{ item.caption }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

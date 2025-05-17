@@ -1,6 +1,6 @@
 ---
 # NEW BRAND FULL TEMPLATE
-layout: brand
+layout: brand-profile
 ref: br-sojourn-hotels  # Global ID (country-brandslug format)
 sample_data: true  # Add this flag
 title: "索茹精品酒店"  # Display name, fallback if JSON lookup fails

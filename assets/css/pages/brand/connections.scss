@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Connections Section Styles
+   ==========================================================================
+   Styles for the brand profile connections section (related brands, etc.)
+*/
+
+.brand-connections {
+  &__related {
+    margin-bottom: var(--space-8);
+  }
+
+  &__all {
+    margin-top: var(--space-4);
+    text-align: center;
+  }
+
+  &__discovery {
+    margin-top: var(--space-8);
+
+    h3 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-4);
+      color: var(--neutral-800);
+      font-weight: var(--font-semibold);
+    }
+  }
+}
+
+.related-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.discovery-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.discovery-card {
+  display: flex;
+  align-items: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  &--sector {
+    background-color: var(--olive-50);
+
+    &:hover {
+      background-color: var(--olive-100);
+    }
+  }
+
+  &--market {
+    background-color: var(--sky-50);
+
+    &:hover {
+      background-color: var(--sky-100);
+    }
+  }
+
+  &__icon {
+    flex: 0 0 48px;
+    margin-right: var(--space-4);
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--neutral-800);
+    margin: 0 0 var(--space-1);
+  }
+
+  &__text {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    margin: 0;
+  }
+}

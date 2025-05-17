@@ -374,7 +374,7 @@ brands:
     no_gallery: "No gallery images available."
 
   # Location component
-  location:
+  location_component:
     title: "Location Intelligence"
     headquartered: "Headquartered in"
     production_facilities: "Production Facilities"
@@ -505,7 +505,7 @@ discovery:
     no_sectors: "No specific sector information available for this market."
 
   # Featured brands component
-  featured_brands:
+  featured_brands_component:
     title: "Featured Brands"
     view_profile: "View Profile"
     explore_all: "Explore All Brands"
@@ -543,13 +543,28 @@ discovery:
 insights:
   # Section headings
   latest: "Latest Insights"
+  latest_heading: "Latest Insights"  # For use in latest-insights.html
   featured: "Featured Insights"
+  featured_heading: "Featured Insights"  # For use in featured-insights.html
   all_insights: "All Insights"
   view_all: "View All Insights"
   back_to_insights: "Back to Insights"
+  categories_heading: "Insight Categories"  # For use in categories.html
+  categories_description: "Browse our insights by category to find the specific information you need."
+  category_highlights_heading: "Featured Categories"  # For the new category-highlights.html
+  category_highlights_description: "Explore our latest analysis across different aspects of BRICS+ brands."
+  subscribe_heading: "Stay Informed"  # For use in subscribe.html
+  subscribe_description: "Subscribe to receive our latest insights directly in your inbox."
+  subscribe_button: "Subscribe"
+  email_placeholder: "Your email address"
+  privacy_note: "We respect your privacy and will never share your information."
+  cta_heading: "Need Custom Research?"  # For use in contact-cta.html
+  cta_description: "Contact us to discuss your specific information needs about BRICS+ consumer brands."
+  cta_button: "Get in Touch"
 
   # Types
   types: "Types"
+  categories: "Categories"
   brand_spotlight: "Brand Spotlight"
   brand_spotlights: "Brand Spotlights"
   founders_journey: "Founder's Journey"
@@ -559,11 +574,23 @@ insights:
   market_momentum: "Market Momentum"
   market_momentums: "Market Momentum"
 
-  # Types descriptions
+  # Empty state messages for each category
+  no_brand_spotlight_insights: "No brand spotlight insights available yet."
+  no_founders_journey_insights: "No founder's journey insights available yet."
+  no_location_intelligence_insights: "No location intelligence insights available yet."
+  no_market_momentum_insights: "No market momentum insights available yet."
+
+  # Category descriptions (for categories.html and category-highlights.html)
   brand_spotlights_description: "Introducing noteworthy BRICS+ brands gaining momentum."
   founders_journeys_description: "The stories behind the brands and the people who created them."
   location_intelligence_description: "Geographic and spatial insights about BRICS+ brand ecosystems."
   market_momentum_description: "Trends, developments, and growth indicators in BRICS+ markets."
+
+  # Category actions
+  view_brand_spotlights: "View Brand Spotlights"
+  view_founders_journeys: "View Founder's Journeys"
+  view_location_intelligence: "View Location Intelligence"
+  view_market_momentum: "View Market Momentum"
 
   # Card and content elements
   read_more: "Read More"
@@ -572,9 +599,15 @@ insights:
   related: "Related Insights"
   premium_content: "Premium Content"
   featured_brands: "Featured Brands"
+  view_all_featured_brands: "View All Featured Brands"
+  country_focus: "Country Focus"
+  minute_read: "min read"
+  no_featured_brands: "No featured brands available yet."
+  no_featured: "No featured insights available yet."
 
   # Filters and search
   filter_by_type: "Filter by Type"
+  filter_by_category: "Filter by Category"
   filter_by_dimension: "Filter by Dimension"
   search_insights: "Search Insights"
   sort_by_date: "Sort by Date"
@@ -616,6 +649,7 @@ insights:
     attributes: "Brand Attributes"
     signals: "Growth Signals"
     explore_dimension: "Explore"
+    explore_related: "Explore Related"
 
   # Sidebar component
   sidebar:
@@ -1016,7 +1050,7 @@ authors:
   randal_eastman: "Randal Eastman"
 
 # Founder names (alphabetically ordered)
-founders:
+founder_names:
   alexei_sokolov: "Alexei Sokolov"
   anna_kuznetsova: "Anna Kuznetsova"
   dmitri_voronin: "Dmitri Voronin"

@@ -374,7 +374,7 @@ brands:
     no_gallery: "Нет доступных изображений в галерее."
 
   # Location component
-  location:
+  location_component:
     title: "Геоаналитика"
     headquartered: "Штаб-квартира в"
     production_facilities: "Производственные мощности"
@@ -505,7 +505,7 @@ discovery:
     no_sectors: "Нет доступной информации о конкретных секторах для этого рынка."
 
   # Featured brands component
-  featured_brands:
+  featured_brands_component:
     title: "Избранные бренды"
     view_profile: "Просмотреть профиль"
     explore_all: "Исследовать все бренды"
@@ -655,13 +655,28 @@ privacy:
 insights:
   # Section headings
   latest: "Последние аналитические материалы"
+  latest_heading: "Последние аналитические материалы"  # For use in latest-insights.html
   featured: "Рекомендуемые аналитические материалы"
+  featured_heading: "Рекомендуемые аналитические материалы"  # For use in featured-insights.html
   all_insights: "Все аналитические материалы"
   view_all: "Смотреть все аналитические материалы"
   back_to_insights: "Назад к аналитическим материалам"
+  categories_heading: "Категории аналитических материалов"  # For use in categories.html
+  categories_description: "Просматривайте наши аналитические материалы по категориям, чтобы найти нужную информацию."
+  category_highlights_heading: "Избранные категории"  # For the new category-highlights.html
+  category_highlights_description: "Изучите наш последний анализ различных аспектов брендов БРИКС+."
+  subscribe_heading: "Оставайтесь в курсе"  # For use in subscribe.html
+  subscribe_description: "Подпишитесь, чтобы получать наши последние аналитические материалы прямо на вашу электронную почту."
+  subscribe_button: "Подписаться"
+  email_placeholder: "Ваш email адрес"
+  privacy_note: "Мы уважаем вашу конфиденциальность и никогда не передадим вашу информацию третьим лицам."
+  cta_heading: "Нужны индивидуальные исследования?"  # For use in contact-cta.html
+  cta_description: "Свяжитесь с нами, чтобы обсудить ваши конкретные информационные потребности о потребительских брендах БРИКС+."
+  cta_button: "Связаться с нами"
 
   # Types
   types: "Типы"
+  categories: "Категории"
   brand_spotlight: "Бренд в фокусе"
   brand_spotlights: "Бренды в фокусе"
   founders_journey: "Путь основателя"
@@ -671,11 +686,23 @@ insights:
   market_momentum: "Рыночная динамика"
   market_momentums: "Рыночная динамика"
 
-  # Types descriptions
+  # Empty state messages for each category
+  no_brand_spotlight_insights: "Пока нет аналитических материалов о брендах в фокусе."
+  no_founders_journey_insights: "Пока нет аналитических материалов о путях основателей."
+  no_location_intelligence_insights: "Пока нет аналитических материалов по географическому анализу."
+  no_market_momentum_insights: "Пока нет аналитических материалов по рыночной динамике."
+
+  # Category descriptions (for categories.html and category-highlights.html)
   brand_spotlights_description: "Представление примечательных брендов BRICS+, набирающих популярность."
   founders_journeys_description: "Истории, стоящие за брендами, и люди, создавшие их."
   location_intelligence_description: "Географические и пространственные данные о экосистемах брендов BRICS+."
   market_momentum_description: "Тенденции, события и показатели роста на рынках BRICS+."
+
+  # Category actions
+  view_brand_spotlights: "Смотреть бренды в фокусе"
+  view_founders_journeys: "Смотреть пути основателей"
+  view_location_intelligence: "Смотреть географический анализ"
+  view_market_momentum: "Смотреть рыночную динамику"
 
   # Card and content elements
   read_more: "Читать далее"
@@ -684,9 +711,15 @@ insights:
   related: "Похожие материалы"
   premium_content: "Премиум контент"
   featured_brands: "Упомянутые бренды"
+  view_all_featured_brands: "Смотреть все упомянутые бренды"
+  country_focus: "Фокус на страну"
+  minute_read: "мин чтения"
+  no_featured_brands: "Пока нет упомянутых брендов."
+  no_featured: "Пока нет рекомендуемых аналитических материалов."
 
   # Filters and search
   filter_by_type: "Фильтр по типу"
+  filter_by_category: "Фильтр по категории"
   filter_by_dimension: "Фильтр по измерению"
   search_insights: "Искать в аналитике"
   sort_by_date: "Сортировать по дате"
@@ -728,6 +761,7 @@ insights:
     attributes: "Атрибуты бренда"
     signals: "Сигналы роста"
     explore_dimension: "Исследовать"
+    explore_related: "Исследовать связанные"
 
   # Sidebar component
   sidebar:
@@ -1016,7 +1050,7 @@ authors:
   randal_eastman: "Рэндал Истман"
 
 # Founder names (alphabetically ordered)
-founders:
+founder_names:
   alexei_sokolov: "Алексей Соколов"
   anna_kuznetsova: "Анна Кузнецова"
   dmitri_voronin: "Дмитрий Воронин"

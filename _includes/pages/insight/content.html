@@ -1,16 +1,22 @@
 {% comment %}
   Component: pages/insight/content.html
-  Purpose: Displays the main content of an insight article
+
+  Purpose: Renders the main content of the insight article
+           This displays the markdown content of the article
+
   Parameters:
-    - insight: The insight object (default: page)
-    - content: The content to display (default: content)
+  - insight: The insight page object (required)
+
   Dependencies:
-    - assets/css/pages/insight/content.scss
+  - CSS: pages/insight/content.scss
+
+  Used by:
+  - insight-article layout
+
+  Notes:
+  - This component is automatically included by the layout
+  - Uses the page's content variable from Jekyll
+  - Styles are scoped to the insight-article-page class
 {% endcomment %}
 
-{% assign insight = include.insight | default: page %}
-{% assign content_to_display = include.content | default: content %}
-
-<div class="insight-content {% if insight.premium %}insight-content--premium{% endif %}">
-  {{ content_to_display }}
-</div>
+<!-- Note: Content is rendered directly in the layout to ensure proper context -->

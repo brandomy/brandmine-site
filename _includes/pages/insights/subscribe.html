@@ -2,34 +2,27 @@
   Component: pages/insights/subscribe.html
   Purpose: Newsletter subscription section for the insights page
   Parameters:
-    - heading: The heading for the section (default: Stay Informed)
-    - description: The description text for the section (default: Subscribe to receive our latest insights directly in your inbox.)
-    - placeholder: The placeholder text for the email input (default: Your email address)
-    - button_text: The text for the submit button (default: Subscribe)
-    - note: The privacy note text (default: We respect your privacy and will never share your information.)
+    - heading: The heading for the section (default from translations)
+    - description: The description text for the section (default from translations)
     - panel_type: The type of panel to use (default: accent-soft)
   Dependencies:
     - assets/css/pages/insights/subscribe.scss
 {% endcomment %}
 
-{% assign heading = include.heading | default: site.data.translations[page.lang].insights.subscribe_heading | default: "Stay Informed" %}
-{% assign description = include.description | default: site.data.translations[page.lang].insights.subscribe_description | default: "Subscribe to receive our latest insights directly in your inbox." %}
-{% assign placeholder = include.placeholder | default: site.data.translations[page.lang].insights.email_placeholder | default: "Your email address" %}
-{% assign button_text = include.button_text | default: site.data.translations[page.lang].insights.subscribe_button | default: "Subscribe" %}
-{% assign note = include.note | default: site.data.translations[page.lang].insights.privacy_note | default: "We respect your privacy and will never share your information." %}
+{% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "accent-soft" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content panel--centered">
-    <h2 class="panel__heading-secondary">{{ heading }}</h2>
-    <p class="panel__lead-text">{{ description }}</p>
-    
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.subscribe_heading }}</h2>
+    <p class="panel__lead-text">{{ include.description | default: t.subscribe_description }}</p>
+
     <div class="insights-subscribe">
       <form class="insights-subscribe__form">
-        <input type="email" placeholder="{{ placeholder }}" class="insights-subscribe__input">
-        <button type="submit" class="btn btn--primary">{{ button_text }}</button>
+        <input type="email" placeholder="{{ t.email_placeholder }}" class="insights-subscribe__input">
+        <button type="submit" class="btn btn--primary">{{ t.subscribe_button }}</button>
       </form>
-      <p class="insights-subscribe__note">{{ note }}</p>
+      <p class="insights-subscribe__note">{{ t.privacy_note }}</p>
     </div>
   </div>
 </div>

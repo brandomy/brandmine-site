@@ -8,7 +8,13 @@
 <div class="founder-profile__header">
   <div class="founder-profile__portrait">
     {% if founder.portrait_image %}
-      <img src="{{ site.baseurl }}/{{ founder.portrait_image }}" alt="{{ founder.name }}">
+      {% include components/images/collection-image.html
+        collection="founders"
+        slug=founder.ref
+        purpose="portrait"
+        aspect="portrait"
+        loading="eager"
+        alt=founder.name %}
     {% else %}
       <div class="founder-profile__portrait-placeholder">
         {{ founder.name | slice: 0, 1 }}

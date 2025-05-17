@@ -1,0 +1,20 @@
+{% comment %}
+  Component: pages/insight/sidebar/taxonomy-cloud.html
+  Purpose: Displays a tag cloud of taxonomies for exploration
+  Parameters:
+    - insight: The insight page object (required)
+  Dependencies:
+    - CSS: pages/insight/sidebar/taxonomy-cloud.scss
+    - components/taxonomy/display.html
+  Notes:
+    - Acts as a wrapper for the reusable taxonomy display component
+    - Maintains backward compatibility with existing templates
+    - Uses sidebar-specific CSS class names for styling
+{% endcomment %}
+
+<div class="sidebar-section sidebar-taxonomy-cloud">
+  {% include components/taxonomy/display.html
+    parent=insight
+    display_style="cloud"
+    class_name="taxonomy-cloud" %}
+</div>

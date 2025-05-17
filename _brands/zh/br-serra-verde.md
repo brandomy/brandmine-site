@@ -1,6 +1,6 @@
 ---
 # NEW BRAND LITE TEMPLATE
-layout: brand
+layout: brand-profile
 ref: br-serra-verde  # Global ID (country-brandslug format)
 sample_data: true  # Add this flag
 title: "塞拉维德有机"  # Display name, fallback if JSON lookup fails

@@ -1,168 +1,81 @@
 /* assets/css/pages/brands/filter-interface.scss */
 
+/* Brands filter component */
 .brands-page {
-  .filter-interface {
+  .brands-filter {
     margin-bottom: var(--space-8);
-    background-color: var(--neutral-50);
-    border-radius: var(--radius-md);
-    padding: var(--space-6);
 
-    @media (max-width: 768px) {
-      padding: var(--space-4);
-      margin-bottom: var(--space-6);
+    &__results {
+      margin-top: var(--space-6);
     }
 
-    &__title {
-      font-family: var(--font-heading);
-      font-size: var(--text-xl);
-      font-weight: var(--font-semibold);
-      margin-bottom: var(--space-4);
-      color: var(--neutral-900);
-
-      @media (max-width: 768px) {
-        font-size: var(--text-lg);
-        margin-bottom: var(--space-3);
-      }
-    }
-
-    &__form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--space-4);
-
-      @media (max-width: 576px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    &__group {
-      margin-bottom: var(--space-4);
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    &__label {
-      display: block;
-      font-size: var(--text-sm);
-      font-weight: var(--font-medium);
-      margin-bottom: var(--space-2);
-      color: var(--neutral-700);
-    }
-
-    &__select {
-      width: 100%;
-      padding: var(--space-2) var(--space-3);
-      border: 1px solid var(--neutral-300);
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      color: var(--neutral-900);
-      background-color: white;
-      transition: border-color 0.2s ease;
-
-      &:focus {
-        outline: none;
-        border-color: var(--primary-400);
-        box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.2);
-      }
-    }
-
-    &__actions {
+    &__results-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: var(--space-4);
+      margin-bottom: var(--space-4);
 
-      @media (max-width: 576px) {
+      @media (max-width: 768px) {
         flex-direction: column;
+        align-items: flex-start;
         gap: var(--space-3);
       }
     }
 
-    &__submit {
-      padding: var(--space-2) var(--space-4);
-      background-color: var(--primary-600);
-      color: white;
-      border: none;
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      font-weight: var(--font-medium);
-      cursor: pointer;
-      transition: background-color 0.2s ease;
+    &__results-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--neutral-900);
 
-      &:hover {
-        background-color: var(--primary-700);
-      }
-
-      @media (max-width: 576px) {
-        width: 100%;
+      @media (max-width: 768px) {
+        font-size: var(--text-xl);
       }
     }
 
-    &__reset {
-      padding: var(--space-2) var(--space-4);
-      background-color: transparent;
-      color: var(--neutral-600);
+    &__controls {
+      display: flex;
+      gap: var(--space-4);
+
+      @media (max-width: 768px) {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 480px) {
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+    }
+
+    &__label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--neutral-700);
+      margin-right: var(--space-2);
+    }
+
+    &__select {
+      padding: var(--space-1) var(--space-3);
       border: 1px solid var(--neutral-300);
       border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      font-weight: var(--font-normal);
-      cursor: pointer;
-      transition: all 0.2s ease;
+      font-size: var(--text-sm);
+      color: var(--neutral-800);
 
-      &:hover {
-        background-color: var(--neutral-100);
-        color: var(--neutral-800);
+      &:focus {
+        outline: none;
+        border-color: var(--primary-400);
       }
+    }
 
-      @media (max-width: 576px) {
+    &__featured,
+    &__sort {
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 480px) {
         width: 100%;
-      }
-    }
-
-    /* Dimension-specific filter styling */
-    &__sectors-filter {
-      .filter-interface__label {
-        color: var(--olive-700);
-      }
-
-      .filter-interface__select:focus {
-        border-color: var(--olive-500);
-        box-shadow: 0 0 0 3px rgba(163, 183, 99, 0.2);
-      }
-    }
-
-    &__markets-filter {
-      .filter-interface__label {
-        color: var(--sky-700);
-      }
-
-      .filter-interface__select:focus {
-        border-color: var(--sky-500);
-        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
-      }
-    }
-
-    &__attributes-filter {
-      .filter-interface__label {
-        color: var(--secondary-700);
-      }
-
-      .filter-interface__select:focus {
-        border-color: var(--secondary-500);
-        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
-      }
-    }
-
-    &__signals-filter {
-      .filter-interface__label {
-        color: var(--accent-700);
-      }
-
-      .filter-interface__select:focus {
-        border-color: var(--accent-500);
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        justify-content: space-between;
       }
     }
   }

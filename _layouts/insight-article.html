@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+{% comment %}
+  Layout: insight-article.html
+
+  Purpose: Renders individual insight articles with a logic-light approach
+           using section arrays from front matter.
+
+  Structure:
+  - Uses page.sections array to include main content sections
+  - Uses page.sidebar_sections array to include sidebar components
+  - Maintains a consistent two-column layout for insight content
+
+  Dependencies:
+  - _includes/pages/insight/[section-name].html files for main content
+  - _includes/pages/insight/sidebar/[section-name].html files for sidebar
+  - CSS: pages/insight/_index.scss and related component files
+  - Page must have 'sections' and 'sidebar_sections' arrays in front matter
+
+  Example Usage:
+  In front matter:
+  layout: insight-article
+  sections:
+    - header
+    - featured-image
+    - taxonomy
+  sidebar_sections:
+    - brand-info
+    - related-brands
+    - related-insights
+    - taxonomy-cloud
+{% endcomment %}
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    <div class="insight-detail-container">
+      <div class="insight-detail-main {% if page.premium %}premium-content{% endif %}">
+        {% for section in page.sections %}
+          {% if section != 'content' %}
+            {% include pages/insight/{{ section }}.html insight=page %}
+          {% endif %}
+        {% endfor %}
+
+        <!-- Render content directly -->
+        {% if content and content != "" %}
+          <div class="insight-content">
+            {{ content }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="insight-detail-sidebar">
+        {% for section in page.sidebar_sections %}
+          {% include pages/insight/sidebar/{{ section }}.html insight=page %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,9 @@ layout: default
 <!-- Discovery layout for the discovery hub page -->
 {% if page.sections %}
   {% for section in page.sections %}
-    {% include pages/discovery/{{ section }}.html %}
+    <section class="discovery-section discovery-section--{{ section }}" id="discovery-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+      {% include pages/discovery/{{ section }}.html %}
+    </section>
   {% endfor %}
 {% else %}
   {{ content }}

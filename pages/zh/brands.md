@@ -1,9 +1,19 @@
 ---
-layout: default
+layout: brands
 title: 品牌
 permalink: /zh/brands/
 lang: zh
 ref: brands
+sections:
+  - hero
+  - intro
+  - search
+  - features
+  - brands-grid
+  - featured-brands
+  - recent-brands
+  - find-partner
+  - contact-cta
 ---
 
 <!-- Hero Panel -->
@@ -26,7 +36,7 @@ ref: brands
   <div class="panel__content">
     <h2 class="panel__heading-secondary">搜索我们的品牌数据库</h2>
     <p class="panel__lead-text">正在寻找特定品牌？使用我们的搜索功能找到您需要的内容。</p>
-    
+
     <div class="brands__search-container">
       <form action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get" class="brands__search-form">
         <input type="text" name="q" class="brands__search-input" placeholder="{{ site.data.translations[page.lang].search.placeholder }}" aria-label="搜索品牌">
@@ -36,7 +46,7 @@ ref: brands
         </button>
       </form>
     </div>
-    
+
     <div class="brands__search-suggestions">
       <p class="brands__search-suggestions-title">{{ site.data.translations[page.lang].search.popular_searches }}</p>
       <div class="brands__search-tags">
@@ -54,7 +64,7 @@ ref: brands
   <div class="panel__content">
     <h2 class="panel__heading-secondary">丰富的品牌简介</h2>
     <p class="panel__lead-text">我们精心策划的品牌简介超越基本公司信息，揭示：</p>
-    
+
     <div class="brands__features-list">
       <div class="brands__feature-item">
         <div class="brands__feature-icon">
@@ -65,7 +75,7 @@ ref: brands
           <p class="brands__feature-text">每个品牌背后的愿景和历程</p>
         </div>
       </div>
-      
+
       <div class="brands__feature-item">
         <div class="brands__feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
@@ -76,7 +86,7 @@ ref: brands
         </div>
 
         </div>
-      
+
       <div class="brands__feature-item">
         <div class="brands__feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line><rect x="2" y="20" width="20" height="2" rx="1"></rect></svg>
@@ -86,7 +96,7 @@ ref: brands
           <p class="brands__feature-text">竞争格局和消费者关系</p>
         </div>
       </div>
-      
+
       <div class="brands__feature-item">
         <div class="brands__feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -96,7 +106,7 @@ ref: brands
           <p class="brands__feature-text">领导层和决策者</p>
         </div>
       </div>
-      
+
       <div class="brands__feature-item">
         <div class="brands__feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
@@ -124,7 +134,7 @@ ref: brands
 <div class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">精选品牌</h2>
-    
+
     <div class="brands__grid">
       <!-- This will be populated dynamically in the future -->
       <div class="brands__card">
@@ -136,7 +146,7 @@ ref: brands
           <span class="brands__tag--sector">手工食品</span>
         </div>
       </div>
-      
+
       <!-- Add 2 more placeholder cards -->
       <div class="brands__card">
         <div class="brands__logo-placeholder"></div>
@@ -147,7 +157,7 @@ ref: brands
           <span class="brands__tag--sector">天然美容</span>
         </div>
       </div>
-      
+
       <div class="brands__card">
         <div class="brands__logo-placeholder"></div>
         <h3 class="brands__card-title">品牌名称</h3>
@@ -166,14 +176,14 @@ ref: brands
   <div class="panel__content">
     <h2 class="panel__heading-secondary">寻找您的下一个合作伙伴</h2>
     <p class="panel__lead-text">使用我们的高级搜索和过滤工具，按以下条件查找品牌：</p>
-    
+
     <div class="brands__filters">
       <div class="brands__filter">原产地市场</div>
       <div class="brands__filter">行业领域</div>
       <div class="brands__filter">信号指标</div>
       <div class="brands__filter">品牌属性</div>
     </div>
-    
+
     <div class="brands__cta">
       <button id="database-button" class="btn btn--primary-cta" onclick="trackButtonClick(this)">启动交互式数据库</button>
       <div id="button-feedback" class="brands__feedback" style="display: none; margin-top: var(--space-2); color: var(--primary-600);">
@@ -197,11 +207,11 @@ ref: brands
 <script>
   function trackButtonClick(button) {
     console.log('Database button clicked');
-    
+
     // Show feedback message
     const feedback = document.getElementById('button-feedback');
     feedback.style.display = 'block';
-    
+
     // Hide the message after 10 seconds
     setTimeout(() => {
       feedback.style.display = 'none';

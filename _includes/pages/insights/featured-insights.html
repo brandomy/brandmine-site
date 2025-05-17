@@ -2,25 +2,24 @@
   Component: pages/insights/featured-insights.html
   Purpose: Featured insights section for the insights page
   Parameters:
-    - heading: The heading for the section (default: Featured Insights)
-    - description: The description text for the section (default: Explore our latest analysis and thought leadership on consumer brands across BRICS+ markets.)
+    - heading: The heading for the section (default from translations)
+    - description: The description text for the section (default from translations)
     - panel_type: The type of panel to use (default: olive-soft)
     - limit: The number of featured insights to display (default: 3)
   Dependencies:
     - assets/css/pages/insights/featured-insights.scss
-    - _includes/components/cards/insight-card.html
+    - components/cards/insight-card.html
 {% endcomment %}
 
-{% assign heading = include.heading | default: site.data.translations[page.lang].insights.featured_heading | default: "Featured Insights" %}
-{% assign description = include.description | default: site.data.translations[page.lang].insights.featured_description | default: "Explore our latest analysis and thought leadership on consumer brands across BRICS+ markets." %}
+{% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "olive-soft" %}
 {% assign limit = include.limit | default: 3 %}
 
 <div class="panel panel--{{ panel_type }} insights-featured">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ heading }}</h2>
-    <p class="panel__lead-text">{{ description }}</p>
-    
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.featured_heading }}</h2>
+    <p class="panel__lead-text">{{ include.description | default: t.featured_description }}</p>
+
     <div class="insights-featured__grid">
       {% assign featured_insights = site.insights | where: "lang", page.lang | where: "featured", true | sort: "date" | reverse | limit: limit %}
       {% if featured_insights.size > 0 %}
@@ -29,7 +28,7 @@
         {% endfor %}
       {% else %}
         <div class="insights-featured__empty">
-          <p>{{ site.data.translations[page.lang].insights.no_featured | default: "No featured insights available yet." }}</p>
+          <p>{{ t.no_featured }}</p>
         </div>
       {% endif %}
     </div>

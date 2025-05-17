@@ -28,13 +28,17 @@ layout: default
         {% for section in page.sections %}
           {% if section == "founders-grid" %}
             <!-- Panel wrapper for founders grid -->
-            <div class="panel panel--light">
-              <div class="panel__content">
-                {% include pages/founders/founders-grid.html %}
+            <section class="founders-section founders-section--{{ section }}" id="founders-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+              <div class="panel panel--light">
+                <div class="panel__content">
+                  {% include pages/founders/founders-grid.html %}
+                </div>
               </div>
-            </div>
+            </section>
           {% else %}
-            {% include pages/founders/{{ section }}.html %}
+            <section class="founders-section founders-section--{{ section }}" id="founders-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+              {% include pages/founders/{{ section }}.html %}
+            </section>
           {% endif %}
         {% endfor %}
       {% else %}

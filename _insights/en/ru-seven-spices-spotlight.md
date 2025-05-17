@@ -1,6 +1,6 @@
 ---
 # NEW INSIGHT TEMPLATE - BRAND SPOTLIGHT
-layout: insight
+layout: insight-article
 ref: ru-seven-spices-spotlight  # Global ID (market-slug format) For language switcher
 sample_data: true  # Add this flag
 title: "Brand Spotlight: Seven Spices - Reviving Russian Spice Traditions"

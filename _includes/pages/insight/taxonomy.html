@@ -1,70 +1,20 @@
 {% comment %}
   Component: pages/insight/taxonomy.html
-  Purpose: Displays the taxonomy information for an insight (sectors, markets, attributes, signals)
+  Purpose: Displays taxonomy tags for the insight article with sections for each type
   Parameters:
-    - insight: The insight object (default: page)
+    - insight: The insight page object (required)
   Dependencies:
-    - assets/css/pages/insight/taxonomy.scss
-    - site.data.translations[lang].dimensions
-    - site.data.dimensions[lang]
+    - CSS: pages/insight/taxonomy.scss
+    - components/taxonomy/display.html
+  Notes:
+    - Acts as a wrapper for the reusable taxonomy display component
+    - Maintains backward compatibility with existing templates
+    - Uses insight-specific CSS class names for styling
 {% endcomment %}
 
-{% assign insight = include.insight | default: page %}
-
 <div class="insight-taxonomy">
-  <!-- Sectors -->
-  {% if insight.sectors and insight.sectors.size > 0 %}
-  <div class="insight-taxonomy__section">
-    <h4 class="insight-taxonomy__title">{{ site.data.translations[insight.lang].dimensions.sectors }}</h4>
-    <div class="insight-taxonomy__tags">
-      {% for sector in insight.sectors %}
-      <a href="{{ site.baseurl }}/{{ insight.lang }}/discover/sectors/{{ sector }}/" class="insight-taxonomy__tag insight-taxonomy__tag--sector">
-        {{ site.data.dimensions[insight.lang].sectors[sector] | default: sector }}
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-  
-  <!-- Markets -->
-  {% if insight.markets and insight.markets.size > 0 %}
-  <div class="insight-taxonomy__section">
-    <h4 class="insight-taxonomy__title">{{ site.data.translations[insight.lang].dimensions.markets }}</h4>
-    <div class="insight-taxonomy__tags">
-      {% for market in insight.markets %}
-      <a href="{{ site.baseurl }}/{{ insight.lang }}/discover/markets/{{ market }}/" class="insight-taxonomy__tag insight-taxonomy__tag--market">
-        {{ site.data.dimensions[insight.lang].markets[market] | default: market }}
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-  
-  <!-- Attributes -->
-  {% if insight.attributes and insight.attributes.size > 0 %}
-  <div class="insight-taxonomy__section">
-    <h4 class="insight-taxonomy__title">{{ site.data.translations[insight.lang].dimensions.attributes }}</h4>
-    <div class="insight-taxonomy__tags">
-      {% for attribute in insight.attributes %}
-      <a href="{{ site.baseurl }}/{{ insight.lang }}/discover/attributes/{{ attribute }}/" class="insight-taxonomy__tag insight-taxonomy__tag--attribute">
-        {{ site.data.dimensions[insight.lang].attributes[attribute] | default: attribute }}
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-  
-  <!-- Signals -->
-  {% if insight.signals and insight.signals.size > 0 %}
-  <div class="insight-taxonomy__section">
-    <h4 class="insight-taxonomy__title">{{ site.data.translations[insight.lang].dimensions.signals }}</h4>
-    <div class="insight-taxonomy__tags">
-      {% for signal in insight.signals %}
-      <a href="{{ site.baseurl }}/{{ insight.lang }}/discover/signals/{{ signal }}/" class="insight-taxonomy__tag insight-taxonomy__tag--signal">
-        {{ site.data.dimensions[insight.lang].signals[signal] | default: signal }}
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
+  {% include components/taxonomy/display.html
+    parent=insight
+    display_style="sections"
+    class_name="insight-taxonomy" %}
 </div>

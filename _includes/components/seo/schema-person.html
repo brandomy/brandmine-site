@@ -1,0 +1,56 @@
+{% comment %}
+  Component: components/seo/schema-person.html
+  Purpose: Adds structured data JSON-LD markup for founder/person pages
+  Parameters:
+    - person: The person/founder page object (required)
+    - organization_name: The publisher name (default: Brandmine)
+    - organization_logo: URL to the organization logo (default: site logo)
+  Dependencies:
+    - None
+{% endcomment %}
+
+{% assign organization_name = include.organization_name | default: "Brandmine" %}
+{% assign organization_logo = include.organization_logo | default: "/assets/images/site/logos/brandmine-logo.png" %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ include.person.title }}",
+  {% if include.person.portrait %}"image": "{{ include.person.portrait | absolute_url }}",{% endif %}
+  {% if include.person.description %}"description": "{{ include.person.description | strip_html | strip_newlines | truncate: 5000 }}",{% endif %}
+  {% if include.person.position %}"jobTitle": "{{ include.person.position }}",{% endif %}
+
+  {% if include.person.social_links %}
+  "sameAs": [
+    {% for link in include.person.social_links %}
+    "{{ link.url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  {% endif %}
+
+  {% if include.person.associated_brands %}
+  "affiliation": [
+    {% for brand in include.person.associated_brands %}
+    {
+      "@type": "Organization",
+      "name": "{{ brand.title }}"
+      {% if brand.url %}, "url": "{{ brand.url | absolute_url }}"{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  {% endif %}
+
+  {% if include.person.nationality %}
+  "nationality": {
+    "@type": "Country",
+    "name": "{{ include.person.nationality }}"
+  },
+  {% endif %}
+
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ include.person.url | absolute_url }}"
+  }
+}
+</script>

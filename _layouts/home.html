@@ -4,7 +4,9 @@ layout: default
 <!-- Home layout for the landing page -->
 {% if page.sections %}
   {% for section in page.sections %}
-    {% include pages/home/{{ section }}.html %}
+    <section class="home-section home-section--{{ section }}" id="home-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+      {% include pages/home/{{ section }}.html %}
+    </section>
   {% endfor %}
 {% else %}
     <!-- Default sections if not specified in front matter -->
@@ -26,4 +28,3 @@ layout: default
 <script src="{{ '/assets/js/pages/home/smooth-scroll.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/pages/home/carousels.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/pages/home/tracking.js' | relative_url }}"></script>
-

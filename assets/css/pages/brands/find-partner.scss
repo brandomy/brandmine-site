@@ -1,0 +1,59 @@
+/* assets/css/pages/brands/find-partner.scss */
+
+/* Find partner section styles */
+.brands-page {
+  .brands__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    margin: var(--space-6) 0;
+
+    @media (max-width: 480px) {
+      gap: var(--space-3);
+    }
+  }
+
+  .brands__filter {
+    padding: var(--space-3) var(--space-4);
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--text-base);
+    color: var(--neutral-800);
+
+    @media (max-width: 768px) {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-sm);
+    }
+  }
+
+  .brands__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: var(--space-8);
+  }
+
+  .btn--primary-cta {
+    padding: var(--space-3) var(--space-6);
+    background-color: var(--primary-600);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--primary-700);
+      transform: translateY(-2px);
+    }
+  }
+
+  .brands__feedback {
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+  }
+}

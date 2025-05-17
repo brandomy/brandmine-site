@@ -5,13 +5,13 @@ subtitle: Экспертный анализ и идеи о потребител�
 ref: insights
 permalink: /ru/insights/
 lang: ru
+sections:
+  - hero
+  - featured-insights
+  - category-highlights
+  - categories
+  - all-insights
+  - subscribe
+  - contact-cta
 ---
 
-<div class="insights-page">
-  {% include pages/insights/hero.html %}
-  {% include pages/insights/featured-insights.html %}
-  {% include pages/insights/categories.html %}
-  {% include pages/insights/latest-insights.html %}
-  {% include pages/insights/subscribe.html %}
-  {% include pages/insights/contact-cta.html %}
-</div>

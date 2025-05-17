@@ -2,70 +2,60 @@
   Component: pages/insights/categories.html
   Purpose: Insight categories section for the insights page
   Parameters:
-    - heading: The heading for the section (default: Insight Categories)
-    - description: The description text for the section (default: Browse our insights by category to find the specific information you need.)
+    - heading: The heading for the section (default from translations)
+    - description: The description text for the section (default from translations)
     - panel_type: The type of panel to use (default: light)
   Dependencies:
     - assets/css/pages/insights/categories.scss
 {% endcomment %}
 
-{% assign heading = include.heading | default: site.data.translations[page.lang].insights.categories_heading | default: "Insight Categories" %}
-{% assign description = include.description | default: site.data.translations[page.lang].insights.categories_description | default: "Browse our insights by category to find the specific information you need." %}
+{% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "light" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ heading }}</h2>
-    <p class="panel__lead-text">{{ description }}</p>
-    
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.categories_heading }}</h2>
+    <p class="panel__lead-text">{{ include.description | default: t.categories_description }}</p>
+
     <div class="insights-categories__grid">
-      <!-- Sector insights - olive/green -->
-      <div class="insights-categories__card insights-categories__card--sector">
-        <div class="insights-categories__icon insights-categories__icon--sector">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
-          </svg>
+      <!-- Brand Spotlight - secondary/orange -->
+      <div class="insights-categories__card insights-categories__card--brand-spotlight">
+        <div class="insights-categories__icon insights-categories__icon--brand-spotlight">
+          {% include components/icons/insight-icon.html type="brand-spotlight" %}
         </div>
-        <h3>{{ site.data.translations[page.lang].insights.sector_category | default: "Sector Analysis" }}</h3>
-        <p>{{ site.data.translations[page.lang].insights.sector_description | default: "Focused exploration of specific consumer sectors, from artisanal food to natural beauty products." }}</p>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="insights-categories__read-more">{{ site.data.translations[page.lang].insights.view_sector_insights | default: "View Sector Insights" }}</a>
+        <h3>{{ t.brand_spotlight }}</h3>
+        <p>{{ t.brand_spotlight_description }}</p>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/brand-spotlight/" class="insights-categories__read-more">{{ t.view_brand_spotlights }}</a>
       </div>
-      
-      <!-- Market insights - sky/blue -->
-      <div class="insights-categories__card insights-categories__card--market">
-        <div class="insights-categories__icon insights-categories__icon--market">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-          </svg>
+
+      <!-- Founders Journey - olive/green -->
+      <div class="insights-categories__card insights-categories__card--founders-journey">
+        <div class="insights-categories__icon insights-categories__icon--founders-journey">
+          {% include components/icons/insight-icon.html type="founders-journey" %}
         </div>
-        <h3>{{ site.data.translations[page.lang].insights.market_category | default: "Market Analysis" }}</h3>
-        <p>{{ site.data.translations[page.lang].insights.market_description | default: "In-depth analysis of market trends, consumer behavior, and growth opportunities across BRICS+ countries." }}</p>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="insights-categories__read-more">{{ site.data.translations[page.lang].insights.explore_market_analysis | default: "Explore Market Analysis" }}</a>
+        <h3>{{ t.founders_journey }}</h3>
+        <p>{{ t.founders_journey_description }}</p>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/founders-journey/" class="insights-categories__read-more">{{ t.view_founders_journeys }}</a>
       </div>
-      
-      <!-- Attributes insights - secondary/orange -->
-      <div class="insights-categories__card insights-categories__card--attribute">
-        <div class="insights-categories__icon insights-categories__icon--attribute">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 7h16M4 12h16M4 17h10"></path>
-          </svg>
+
+      <!-- Location Intelligence - sky/blue -->
+      <div class="insights-categories__card insights-categories__card--location-intelligence">
+        <div class="insights-categories__icon insights-categories__icon--location-intelligence">
+          {% include components/icons/insight-icon.html type="location-intelligence" %}
         </div>
-        <h3>{{ site.data.translations[page.lang].insights.brand_stories_category | default: "Brand Stories" }}</h3>
-        <p>{{ site.data.translations[page.lang].insights.brand_stories_description | default: "Compelling narratives about the founders, history, and growth of notable BRICS+ consumer brands." }}</p>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="insights-categories__read-more">{{ site.data.translations[page.lang].insights.discover_brand_stories | default: "Discover Brand Stories" }}</a>
+        <h3>{{ t.location_intelligence }}</h3>
+        <p>{{ t.location_intelligence_description }}</p>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/location-intelligence/" class="insights-categories__read-more">{{ t.view_location_intelligence }}</a>
       </div>
-      
-      <!-- Signals insights - accent/purple -->
-      <div class="insights-categories__card insights-categories__card--signal">
-        <div class="insights-categories__icon insights-categories__icon--signal">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-          </svg>
+
+      <!-- Market Momentum - accent/purple -->
+      <div class="insights-categories__card insights-categories__card--market-momentum">
+        <div class="insights-categories__icon insights-categories__icon--market-momentum">
+          {% include components/icons/insight-icon.html type="market-momentum" %}
         </div>
-        <h3>{{ site.data.translations[page.lang].insights.growth_indicators_category | default: "Growth Indicators" }}</h3>
-        <p>{{ site.data.translations[page.lang].insights.growth_indicators_description | default: "Expert analysis on brands showing signs of breakthrough growth and international expansion potential." }}</p>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="insights-categories__read-more">{{ site.data.translations[page.lang].insights.view_growth_insights | default: "View Growth Insights" }}</a>
+        <h3>{{ t.market_momentum }}</h3>
+        <p>{{ t.market_momentum_description }}</p>
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/market-momentum/" class="insights-categories__read-more">{{ t.view_market_momentum }}</a>
       </div>
     </div>
   </div>

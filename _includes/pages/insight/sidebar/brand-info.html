@@ -1,0 +1,88 @@
+{% comment %}
+  Component: pages/insight/sidebar/brand-info.html
+
+  Purpose: Displays information about the featured brand in the article
+
+  Parameters:
+  - insight: The insight page object (required)
+
+  Dependencies:
+  - CSS: pages/insight/sidebar/brand-info.scss
+  - site.data.translations[page.lang] for localized labels
+  - components/images/collection-image.html for brand logo/founder images
+
+  Used by:
+  - insight-article layout via sidebar_sections array
+
+  Notes:
+  - Only displayed if insight.brands array contains values
+  - Shows logo, brand name, founding year, and website
+  - Includes a button linking to the brand profile
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang] %}
+
+{% if insight.brands.size > 0 %}
+  <div class="sidebar-section sidebar-brand-info">
+    <h3 class="sidebar-title">{{ t.insights.featured_brands }}</h3>
+
+    {% for brand_slug in insight.brands %}
+      {% assign brand_parts = brand_slug | split: "-" %}
+      {% assign country_code = brand_parts | first %}
+      {% assign brand_name = brand_slug | remove_first: country_code | remove_first: "-" %}
+
+      <div class="featured-brand-card">
+        {% if insight.logo %}
+          <div class="brand-logo">
+            {% include components/images/collection-image.html
+              collection="brands"
+              slug=brand_slug
+              purpose="logo"
+              aspect="square"
+              ext="png"
+              alt=brand_name %}
+          </div>
+        {% endif %}
+
+        <div class="brand-meta">
+          <h4 class="brand-name">{{ brand_name | capitalize }}</h4>
+
+          {% if insight.founding_year %}
+            <div class="brand-founding-year">
+              {{ t.brand.founding_year }}: {{ insight.founding_year }}
+            </div>
+          {% endif %}
+
+          {% if insight.website %}
+            <div class="brand-website">
+              <a href="{{ insight.website }}" target="_blank" rel="noopener">
+                {{ t.brand.website }} <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if insight.founder_led %}
+        <div class="founder-portrait">
+          {% include components/images/collection-image.html
+            collection="brands"
+            slug=brand_slug
+            purpose="founder"
+            aspect="portrait"
+            alt="Founder of {{brand_name}}" %}
+
+          <div class="founder-badge">
+            <i class="fas fa-user"></i> {{ t.brand.founder_led }}
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="brand-cta">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="btn btn-primary btn-sm">
+          {{ t.buttons.view_profile }}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

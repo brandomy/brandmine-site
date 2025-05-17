@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Brand Identity Section Styles
+   ==========================================================================
+   Styles for the brand profile identity section: logo, hero image, metadata
+*/
+
+.brand-identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &__visuals {
+    flex: 0 0 100%;
+
+    @media (min-width: 768px) {
+      flex: 0 0 40%;
+      margin-right: var(--space-8);
+    }
+  }
+
+  &__logo {
+    margin-bottom: var(--space-4);
+    max-width: 200px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__hero {
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__core {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--neutral-900);
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-tight);
+
+    @media (min-width: 768px) {
+      font-size: var(--text-5xl);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+
+  &__description {
+    font-size: var(--text-lg);
+    color: var(--neutral-700);
+    margin-bottom: var(--space-6);
+    max-width: 800px;
+    line-height: var(--leading-relaxed);
+  }
+
+  &__taxonomy {
+    margin-top: var(--space-6);
+  }
+
+  &__taxonomy-group {
+    margin-bottom: var(--space-6);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__taxonomy-title {
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--neutral-600);
+    margin-bottom: var(--space-2);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  // Tag styles
+  &__tag {
+    display: inline-flex;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &--market {
+      background-color: var(--sky-100);
+      color: var(--sky-700);
+
+      &:hover {
+        background-color: var(--sky-200);
+        color: var(--sky-800);
+      }
+    }
+
+    &--sector {
+      background-color: var(--olive-100);
+      color: var(--olive-700);
+
+      &:hover {
+        background-color: var(--olive-200);
+        color: var(--olive-800);
+      }
+    }
+
+    &--attribute {
+      background-color: var(--secondary-100);
+      color: var(--secondary-700);
+
+      &:hover {
+        background-color: var(--secondary-200);
+        color: var(--secondary-800);
+      }
+    }
+
+    &--signal {
+      background-color: var(--accent-100);
+      color: var(--accent-700);
+
+      &:hover {
+        background-color: var(--accent-200);
+        color: var(--accent-800);
+      }
+    }
+  }
+}

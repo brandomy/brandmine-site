@@ -1,0 +1,51 @@
+<!-- _includes/pages/brand/location-intelligence.html -->
+{% assign t = site.data.translations[page.lang].brand %}
+
+<section class="brand-section brand-section--location-intelligence" id="location-intelligence">
+  <div class="brand-section__container">
+    <h2 class="brand-section__title">{{ t.location_intelligence }}</h2>
+
+    <div class="location-intelligence">
+      <!-- Location Map using map component -->
+      {% if page.location_lat and page.location_lng %}
+        <div class="location-intelligence__map">
+          {% include components/maps/map.html
+            lat=page.location_lat
+            lng=page.location_lng
+            title=page.title
+            zoom=10 %}
+        </div>
+      {% endif %}
+
+      <!-- Location Context using helper -->
+      <div class="location-intelligence__context">
+        <div class="location-context">
+          {% if page.location_city or page.location_region %}
+            <div class="location-context__address">
+              <h3>{{ t.location }}</h3>
+              {% include components/helpers/location-display.html
+                city=page.location_city
+                region=page.location_region
+                country_code=page.location_country
+                lang=page.lang %}
+            </div>
+          {% endif %}
+
+          {% if page.location_country %}
+            <div class="location-context__region">
+              <h3>{{ t.regional_context }}</h3>
+              <p>{% include components/helpers/country-name.html
+                code=page.location_country
+                lang=page.lang %}</p>
+
+              <!-- Link to the market page for this country -->
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ page.location_country }}/" class="btn btn-sm btn-outline-primary">
+                {{ site.data.translations[page.lang].discover.explore_market }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

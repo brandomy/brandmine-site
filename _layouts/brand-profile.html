@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<!-- Brand Profile Layout (Logic-Light Architecture) -->
+<div class="brand-profile">
+  <!-- Loop through sections defined in brand's front matter -->
+  {% for section in page.sections %}
+    {% capture section_include_path %}pages/brand/{{ section }}.html{% endcapture %}
+    {% include section_include_path brand=page %}
+  {% endfor %}
+</div>
+
+<!-- Scripts handled at the layout level, not in individual brand files -->
+<script src="{{ '/assets/js/pages/brand/brand-profile.js' | relative_url }}"></script>
+
+<!-- Conditional scripts based on section presence -->
+{% if page.sections contains 'location-intelligence' %}
+  <script src="{{ '/assets/js/pages/brand/brand-map-script.js' | relative_url }}"></script>
+{% endif %}
+
+{% if page.sections contains 'product' and page.gallery and page.gallery.size > 0 %}
+  <script src="{{ '/assets/js/pages/brand/gallery.js' | relative_url }}"></script>
+{% endif %}

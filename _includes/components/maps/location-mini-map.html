@@ -1,0 +1,55 @@
+{% comment %}
+  Component: components/maps/location-mini-map.html
+  Purpose: Displays a small map for a specific location or region
+  Parameters:
+    - center: Array with [longitude, latitude] coordinates (required)
+    - zoom: Initial zoom level (default: 8)
+    - markers: Array of marker objects with coordinates and optional popup content (optional)
+    - height: Height of the map container (default: 300px)
+    - width: Width of the map container (default: 100%)
+  Dependencies:
+    - assets/css/components/maps/location-mini-map.scss
+    - assets/js/maplibre.js
+{% endcomment %}
+
+{% assign zoom = include.zoom | default: 8 %}
+{% assign height = include.height | default: "300px" %}
+{% assign width = include.width | default: "100%" %}
+{% assign map_id = "mini-map-" | append: include.center[0] | append: "-" | append: include.center[1] | replace: ".", "_" %}
+
+<div class="location-mini-map">
+  <div id="{{ map_id }}" class="location-mini-map__container" style="height: {{ height }}; width: {{ width }};"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof maplibregl !== 'undefined') {
+        const map = new maplibregl.Map({
+          container: '{{ map_id }}',
+          style: 'https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key={{ site.stadia_maps_api_key }}',
+          center: [{{ include.center[0] }}, {{ include.center[1] }}],
+          zoom: {{ zoom }}
+        });
+
+        // Add navigation controls
+        map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+        // Add markers if provided
+        {% if include.markers %}
+          {% for marker in include.markers %}
+            new maplibregl.Marker()
+              .setLngLat([{{ marker.coordinates[0] }}, {{ marker.coordinates[1] }}])
+              {% if marker.popup %}
+                .setPopup(new maplibregl.Popup({ offset: 25 }).setHTML("{{ marker.popup }}"))
+              {% endif %}
+              .addTo(map);
+          {% endfor %}
+        {% else %}
+          // Add default marker at center if no markers provided
+          new maplibregl.Marker()
+            .setLngLat([{{ include.center[0] }}, {{ include.center[1] }}])
+            .addTo(map);
+        {% endif %}
+      }
+    });
+  </script>
+</div>

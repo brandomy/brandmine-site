@@ -1,6 +1,6 @@
 ---
 # NEW BRAND FULL TEMPLATE
-layout: brand
+layout: brand-profile
 ref: ru-taiga-spirits  # Global ID (country-brandslug format)
 sample_data: true  # Add this flag
 title: "泰加烈酒"  # Display name, fallback if JSON lookup fails

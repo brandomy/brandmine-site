@@ -1,0 +1,39 @@
+{% comment %}
+  Component: pages/insight/sidebar/market-info.html
+
+  Purpose: Displays market information for market momentum articles
+
+  Parameters:
+  - insight: The insight page object (required)
+
+  Dependencies:
+  - CSS: pages/insight/sidebar/market-info.scss
+  - site.data.translations[page.lang] for localized labels
+
+  Used by:
+  - insight-article layout via sidebar_sections array (for market-momentum articles)
+
+  Notes:
+  - Only used in market momentum articles
+  - Displays market growth indicators and key statistics
+  - May include external sources or data references
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang] %}
+
+<div class="sidebar-section sidebar-market-info">
+  <h3 class="sidebar-title">{{ t.brand.market_presence }}</h3>
+
+  {% if insight.market_data %}
+    <ul class="market-data-list">
+      {% for item in insight.market_data %}
+        <li class="market-data-item">
+          <span class="market-data-label">{{ item.label }}:</span>
+          <span class="market-data-value">{{ item.value }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="market-data-empty">Market data not available.</p>
+  {% endif %}
+</div>

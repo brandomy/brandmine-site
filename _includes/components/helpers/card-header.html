@@ -35,10 +35,11 @@
     {% endif %}
 
     {% if include.show_location and brand.location_city and brand.country_code %}
+      {% assign location_class = class_prefix | append: "__location" %}
       {% include helpers/location-display.html
         city=brand.location_city
         country_code=brand.country_code
-        class=class_prefix|append:"__location" %}
+        class=location_class %}
     {% endif %}
   </div>
 </header>

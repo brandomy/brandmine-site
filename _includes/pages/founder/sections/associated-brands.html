@@ -7,6 +7,7 @@
     - assets/css/pages/founder/associated-brands.scss
     - site.data.translations[lang].founder
     - site.data.dimensions[lang]
+    - components/images/collection-image.html
 
   Usage examples:
     {% include pages/founder/associated-brands.html %}
@@ -19,15 +20,26 @@
 {% if founder.brands %}
 <div class="founder-profile__brands">
   <h3>{{ site.data.translations[founder.lang].founder.associated_brands | default: "Associated Brands" }}</h3>
-  
+
   {% for brand_slug in founder.brands %}
     {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", founder.lang | first %}
     {% if brand %}
     <div class="founder-brand-info">
-      <h4 class="founder-brand-info__title">
-        <a href="{{ brand.url | relative_url }}">{{ brand.title }}</a>
-      </h4>
-      
+      <div class="founder-brand-info__header">
+        <div class="founder-brand-info__logo">
+          {% include components/images/collection-image.html
+            collection="brands"
+            slug=brand.ref
+            purpose="logo"
+            aspect="square"
+            ext="png"
+            alt=brand.title %}
+        </div>
+        <h4 class="founder-brand-info__title">
+          <a href="{{ brand.url | relative_url }}">{{ brand.title }}</a>
+        </h4>
+      </div>
+
       <div class="founder-brand-info__meta">
         <!-- Founder's position -->
         {% if founder.position %}
@@ -36,7 +48,7 @@
           <span class="founder-brand-info__meta-value">{{ founder.position }}</span>
         </div>
         {% endif %}
-        
+
         <!-- Founded year -->
         {% if brand.founding_year %}
         <div class="founder-brand-info__meta-item">
@@ -44,7 +56,7 @@
           <span class="founder-brand-info__meta-value">{{ brand.founding_year }}</span>
         </div>
         {% endif %}
-        
+
         <!-- Location -->
         {% if brand.location.city or brand.location.country %}
         <div class="founder-brand-info__meta-item">
@@ -60,7 +72,7 @@
           </span>
         </div>
         {% endif %}
-        
+
         <!-- Sector -->
         {% if brand.sectors and brand.sectors.size > 0 %}
         <div class="founder-brand-info__meta-item">
@@ -72,7 +84,7 @@
           </span>
         </div>
         {% endif %}
-        
+
         <!-- Website -->
         {% if brand.website %}
         <div class="founder-brand-info__meta-item">
@@ -83,14 +95,14 @@
         </div>
         {% endif %}
       </div>
-      
+
       <!-- Brand description (if available) -->
       {% if brand.description %}
       <div class="founder-brand-info__description">
         <p>{{ brand.description | truncate: 150 }}</p>
       </div>
       {% endif %}
-      
+
       <a href="{{ brand.url | relative_url }}" class="founder-brand-info__link">
         {{ site.data.translations[founder.lang].buttons.view_brand | default: "View Brand Profile" }} →
       </a>

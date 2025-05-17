@@ -1,10 +1,43 @@
 /* ==========================================================================
-   Insight Page Component Styles - Index
+   Insight Article - Main Styles
    ==========================================================================
-   Imports all the component styles for the insight detail page.
+   Core layout styles for insight article pages
 */
+.insight-article-page {
+  .insight-detail-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
 
-@import 'header';
-@import 'content';
-@import 'taxonomy';
-@import 'sidebar';
+    @media (min-width: 992px) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .premium-content {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 300px;
+      background: linear-gradient(to bottom, transparent, white);
+      pointer-events: none;
+    }
+  }
+}
+
+// Import all component styles
+@import "header";
+@import "featured-image";
+@import "content";
+@import "taxonomy";
+@import "map-view";
+@import "market-chart";
+
+// Import sidebar components (imports all sidebar styles)
+@import "sidebar/index";

@@ -1,0 +1,65 @@
+<!-- _includes/pages/brand/founder-narrative.html -->
+{% assign t = site.data.translations[page.lang].brand %}
+
+<section class="brand-section brand-section--founder-narrative" id="founder-narrative">
+  <div class="brand-section__container">
+    <h2 class="brand-section__title">{{ t.founders_journey }}</h2>
+
+    <div class="founder-narrative">
+      <!-- Founder Portrait -->
+      {% if page.founder_portrait %}
+        <div class="founder-narrative__portrait">
+          {% include components/images/collection-image.html
+            collection="brands"
+            slug=page.ref
+            purpose="founder"
+            aspect="portrait"
+            alt=t.founder %}
+
+          {% if page.founder_led %}
+            <div class="founder-narrative__badge">
+              <span class="founder-badge">{{ t.founder_led }}</span>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="founder-narrative__content">
+        <!-- Founder Information -->
+        {% if page.founders and page.founders.size > 0 %}
+          <div class="founder-narrative__meta">
+            {% for founder_key in page.founders %}
+              {% assign founder = site.data.founders[page.lang][founder_key] %}
+              {% if founder %}
+                <div class="founder-meta">
+                  <h3 class="founder-meta__name">{{ founder.name }}</h3>
+                  {% if founder.role %}
+                    <div class="founder-meta__role">{{ founder.role }}</div>
+                  {% endif %}
+
+                  {% if founder.generation %}
+                    <div class="founder-meta__generation">
+                      {{ t.generation }}:
+                      {% include components/brand/generation-display.html
+                        generation=founder.generation
+                        lang=page.lang %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Founder's Journey Content from Markdown -->
+        <div class="founder-narrative__story">
+          {% assign content_parts = content | split: "## Founder's Journey" %}
+          {% if content_parts.size > 1 %}
+            {% assign founder_content = content_parts[1] | split: "##" | first %}
+            {{ founder_content | markdownify }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

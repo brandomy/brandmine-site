@@ -1,6 +1,6 @@
 ---
 # NEW INSIGHT TEMPLATE - LOCATION INTELLIGENCE
-layout: insight
+layout: insight-article
 ref: ru-siberian-honey-corridor  # Global ID (market-slug format) For language switcher
 sample_data: true  # Add this flag
 title: "西伯利亚蜂蜜走廊：俄罗斯新兴蜂蜜生态系统"

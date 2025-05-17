@@ -9,7 +9,9 @@ layout: default
 <div class="about-page">
   {% if page.sections %}
     {% for section in page.sections %}
-      {% include pages/about/{{ section }}.html %}
+      <section class="about-section about-section--{{ section }}" id="about-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+        {% include pages/about/{{ section }}.html %}
+      </section>
     {% endfor %}
   {% else %}
     <!-- Default sections if not specified in front matter -->

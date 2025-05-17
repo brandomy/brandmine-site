@@ -1,14 +1,17 @@
 {% comment %}
   Component: pages/dimension/related-brands.html
-  Purpose: Displays a carousel of related (non-featured) brands for a dimension
+  Purpose: Displays a carousel of related brands for a dimension
   Parameters:
     - dimension: The dimension object (default: page)
     - heading: The heading for the section (default: More [dimension title] Brands)
     - limit: Number of brands to display (default: 8)
   Dependencies:
     - assets/css/pages/dimension/related-brands.scss
-    - site.data.translations[lang].dimensions
-    - site.brands collection
+    - components/relationships/related-brands.html
+  Notes:
+    - Acts as a wrapper for the reusable related-brands component
+    - Maintains existing carousel-specific features
+    - Uses dimension-specific CSS class names for styling
 {% endcomment %}
 
 {% assign dimension = include.dimension | default: page %}
@@ -20,73 +23,17 @@
 
 <div class="dimension-related-brands">
   <h2 class="dimension-related-brands__heading">{{ heading }}</h2>
-  
-  {% assign related_brands = site.brands | where: "lang", dimension.lang %}
-  {% assign filtered_brands = "" | split: "" %}
-  {% assign non_featured_brands = "" | split: "" %}
-  
-  {% for brand in related_brands %}
-    {% if dimension.tag_type == "sector" and brand.sectors contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured != true %}
-        {% assign non_featured_brands = non_featured_brands | push: brand %}
-      {% endif %}
-    {% elsif dimension.tag_type == "market" and brand.markets contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured != true %}
-        {% assign non_featured_brands = non_featured_brands | push: brand %}
-      {% endif %}
-    {% elsif dimension.tag_type == "attribute" and brand.attributes contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured != true %}
-        {% assign non_featured_brands = non_featured_brands | push: brand %}
-      {% endif %}
-    {% elsif dimension.tag_type == "signal" and brand.signals contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured != true %}
-        {% assign non_featured_brands = non_featured_brands | push: brand %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-  
-  {% if non_featured_brands.size > 0 %}
-    <div class="dimension-related-brands__carousel">
-      {% for brand in non_featured_brands limit: limit %}
-        <div class="dimension-related-brands__card">
-          {% if brand.logo %}
-          <div class="dimension-related-brands__logo">
-            <img src="{{ brand.logo }}" alt="{{ brand.title }} logo">
-          </div>
-          {% else %}
-          <div class="dimension-related-brands__logo-placeholder"></div>
-          {% endif %}
-          <h3 class="dimension-related-brands__title">
-            <a href="{{ brand.url | relative_url }}" class="dimension-related-brands__link">{{ brand.title }}</a>
-          </h3>
-          <p class="dimension-related-brands__description">{{ brand.description | truncate: 80 }}</p>
-          <div class="dimension-related-brands__meta">
-            {% if brand.sectors %}
-            <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/sectors/{{ brand.sectors[0] | slugify }}/" class="dimension-related-brands__tag dimension-related-brands__tag--sector">{{ brand.sectors[0] }}</a>
-            {% endif %}
-            {% if brand.markets %}
-            <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/markets/{{ brand.markets[0] | slugify }}/" class="dimension-related-brands__tag dimension-related-brands__tag--market">{{ brand.markets[0] }}</a>
-            {% endif %}
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-    
-    <!-- Carousel navigation dots -->
-    <div class="dimension-related-brands__carousel-nav">
-      <span class="dimension-related-brands__carousel-dot dimension-related-brands__carousel-dot--active"></span>
-      <span class="dimension-related-brands__carousel-dot"></span>
-      <span class="dimension-related-brands__carousel-dot"></span>
-    </div>
-  {% else %}
-    <div class="dimension-related-brands__empty">
-      <p>
-        {{ site.data.translations[dimension.lang].dimensions.no_additional_brands | default: "No additional brands available." }}
-      </p>
-    </div>
-  {% endif %}
+
+  {% include components/relationships/related-brands.html
+    parent=dimension
+    type="dimension"
+    limit=limit
+    class_name="dimension-related-brands" %}
+
+  <!-- Carousel navigation dots -->
+  <div class="dimension-related-brands__carousel-nav">
+    <span class="dimension-related-brands__carousel-dot dimension-related-brands__carousel-dot--active"></span>
+    <span class="dimension-related-brands__carousel-dot"></span>
+    <span class="dimension-related-brands__carousel-dot"></span>
+  </div>
 </div>

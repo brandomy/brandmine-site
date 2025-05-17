@@ -1,0 +1,47 @@
+<!-- _includes/pages/brand/market-presence.html -->
+{% assign t = site.data.translations[page.lang].brand %}
+
+<section class="brand-section brand-section--market-presence" id="market-presence">
+  <div class="brand-section__container">
+    <h2 class="brand-section__title">{{ t.market_presence }}</h2>
+
+    <div class="market-presence">
+      <!-- Market Presence Content from Markdown -->
+      <div class="market-presence__content">
+        {% assign content_parts = content | split: "## Market Presence" %}
+        {% if content_parts.size > 1 %}
+          {% assign market_content = content_parts[1] | split: "##" | first %}
+          {{ market_content | markdownify }}
+        {% endif %}
+      </div>
+
+      <!-- Social Media Links -->
+      {% if page.social_media %}
+        {% include components/brand/social-media-icons.html
+          social=page.social_media
+          lang=page.lang %}
+      {% endif %}
+
+      <!-- Distribution Models if available -->
+      {% if page.distribution_models and page.distribution_models.size > 0 %}
+        <div class="market-presence__distribution">
+          <h3 class="market-presence__distribution-title">{{ t.distribution_models }}</h3>
+
+          <ul class="distribution-models">
+            {% for model in page.distribution_models %}
+              <li class="distribution-model">
+                {{ site.data.translations[page.lang].distribution_models[model] | default: model }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <!-- Contact Information -->
+      {% include components/brand/contact-info.html
+        email=page.email
+        website=page.website
+        lang=page.lang %}
+    </div>
+  </div>
+</section>

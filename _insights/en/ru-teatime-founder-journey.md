@@ -1,6 +1,6 @@
 ---
 # NEW INSIGHT TEMPLATE - FOUNDERS JOURNEY
-layout: insight
+layout: insight-article
 ref: ru-teatime-founder-journey  # Global ID (market-slug format) For language switcher
 sample_data: true  # Add this flag
 title: "Alexei Sokolov: TeaTime's Journey from Moscow Mountains to Global Markets"

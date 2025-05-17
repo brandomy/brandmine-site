@@ -1,6 +1,6 @@
 ---
 # NEW INSIGHT TEMPLATE - LOCATION INTELLIGENCE
-layout: insight
+layout: insight-article
 ref: ru-siberian-honey-corridor  # Global ID (market-slug format) For language switcher
 sample_data: true  # Add this flag
 title: "Сибирский медовый коридор: формирующаяся пчеловодческая экосистема России"

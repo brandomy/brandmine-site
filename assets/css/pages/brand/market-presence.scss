@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Market Presence Section Styles
+   ==========================================================================
+   Styles for the brand profile market presence section
+*/
+
+.market-presence {
+  &__content {
+    margin-bottom: var(--space-8);
+
+    p {
+      margin-bottom: var(--space-4);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__social {
+    margin-bottom: var(--space-6);
+
+    &-title {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      color: var(--neutral-800);
+      margin-bottom: var(--space-4);
+    }
+  }
+
+  &__distribution {
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--neutral-200);
+
+    &-title {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      color: var(--neutral-800);
+      margin-bottom: var(--space-4);
+    }
+  }
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    margin-bottom: var(--space-2);
+  }
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  transition: color 0.2s ease;
+
+  i {
+    margin-right: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  &:hover {
+    color: var(--primary-600);
+  }
+
+  // Social platform specific colors
+  &--facebook:hover { color: #1877F2; }
+  &--instagram:hover { color: #E4405F; }
+  &--twitter:hover { color: #1DA1F2; }
+  &--linkedin:hover { color: #0A66C2; }
+  &--youtube:hover { color: #FF0000; }
+  &--telegram:hover { color: #0088CC; }
+  &--vk:hover { color: #4680C2; }
+  &--weibo:hover { color: #E6162D; }
+  &--wechat:hover { color: #07C160; }
+}
+
+.distribution-models {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+
+  .distribution-model {
+    background-color: var(--neutral-100);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--neutral-700);
+  }
+}
+
+// Brand contact info styling
+.brand-sidebar__section {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--neutral-200);
+
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+.brand-sidebar__heading {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-4);
+}
+
+.brand-sidebar__contact-item {
+  margin-bottom: var(--space-2);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.brand-sidebar__contact-label {
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  margin-right: var(--space-2);
+}
+
+.brand-sidebar__contact-link {
+  color: var(--primary-600);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Social media icons
+.brand-sidebar__social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.brand-sidebar__social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: var(--primary-100);
+    color: var(--primary-700);
+  }
+
+  // Platform-specific styling on hover
+  &[title="Facebook"]:hover { background-color: #1877F2; color: white; }
+  &[title="Instagram"]:hover { background-color: #E4405F; color: white; }
+  &[title="Twitter"]:hover, &[title="X/Twitter"]:hover { background-color: #1DA1F2; color: white; }
+  &[title="LinkedIn"]:hover { background-color: #0A66C2; color: white; }
+  &[title="YouTube"]:hover { background-color: #FF0000; color: white; }
+  &[title="Telegram"]:hover { background-color: #0088CC; color: white; }
+  &[title="VK"]:hover { background-color: #4680C2; color: white; }
+  &[title="Weibo"]:hover { background-color: #E6162D; color: white; }
+  &[title="WeChat"]:hover { background-color: #07C160; color: white; }
+}

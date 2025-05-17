@@ -11,15 +11,19 @@ layout: default
   - Dynamically includes sections defined in the page's front matter
   - Provides page-scoped CSS through the brands-page class
   - Loads JavaScript for dynamic filtering behavior
+  - Creates semantic <section> elements for better accessibility and SEO
 ---------------------------------------------------------------------------- -->
 
 <div class="brands-page">
   {% if page.sections %}
     {% for section in page.sections %}
-      {% include pages/brands/{{ section }}.html %}
+      <section class="brands-section brands-section--{{ section }}" id="brands-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+        {% include pages/brands/{{ section }}.html %}
+      </section>
     {% endfor %}
   {% else %}
     <!-- Fallback for pages without sections array -->
+        <!-- Fallback for pages without sections array -->
     {% include pages/brands/hero.html %}
     {% include pages/brands/intro.html %}
     {% include pages/brands/search.html %}

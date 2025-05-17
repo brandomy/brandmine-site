@@ -11,7 +11,7 @@
 
   Dependencies:
     - CSS: pages/brands/featured-brands.scss
-    - _includes/components/cards/featured-brand.html
+    - _includes/components/cards/featured-brand-card.html
     - site.data.translations for labels
 {% endcomment %}
 
@@ -31,7 +31,7 @@
     <div class="featured-brands__grid">
       {% assign featured_brands = site.brands | where: "lang", page.lang | where_exp: "b", "b.featured_level > 1" | limit: limit %}
       {% for brand in featured_brands %}
-        {% include components/cards/featured-brand.html content=brand content_type="brand" %}
+        {% include components/cards/featured-brand-card.html content=brand content_type="brand" %}
       {% endfor %}
     </div>
   </div>

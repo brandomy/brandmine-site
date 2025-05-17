@@ -1,0 +1,103 @@
+<!-- _includes/pages/brand/identity.html -->
+{% assign t = site.data.translations[page.lang].brand %}
+{% assign tags_t = site.data.translations[page.lang].tags %}
+
+<section class="brand-section brand-section--identity" id="identity">
+  <div class="brand-section__container">
+    <div class="brand-identity">
+      <!-- Logo and Hero Image -->
+      <div class="brand-identity__visuals">
+        {% if page.logo %}
+          <div class="brand-identity__logo">
+            {% include components/images/collection-image.html
+              collection="brands"
+              slug=page.ref
+              purpose="logo"
+              aspect="square"
+              ext="png"
+              alt=page.title %}
+          </div>
+        {% endif %}
+
+        {% if page.hero_image %}
+          <div class="brand-identity__hero">
+            {% include components/images/collection-image.html
+              collection="brands"
+              slug=page.ref
+              purpose="hero"
+              loading="eager"
+              alt=page.title %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Core Info -->
+      <div class="brand-identity__core">
+        <h1 class="brand-identity__title">{{ page.title }}</h1>
+
+        <div class="brand-identity__meta">
+          {% if page.founding_year %}
+            {% include components/brand/meta-item.html
+              label=t.founding_year
+              items=page.founding_year
+              linkable=false %}
+          {% endif %}
+
+          {% if page.website %}
+            <div class="brand-identity__website">
+              <span class="brand-identity__meta-label">{{ t.website }}:</span>
+              <a href="{{ page.website }}" target="_blank" rel="noopener" class="brand-identity__website-link">
+                {{ page.website }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+        {% if page.description %}
+          <div class="brand-identity__description">
+            <p>{{ page.description }}</p>
+          </div>
+        {% endif %}
+
+        <!-- Taxonomy Tags - reordered as requested: markets, sectors, attributes, signals -->
+        <div class="brand-identity__taxonomy">
+          <!-- Markets -->
+          {% if page.markets and page.markets.size > 0 %}
+            {% include components/brand/tag-list.html
+              tags=page.markets
+              dimension_type="markets"
+              heading=tags_t.markets
+              lang=page.lang %}
+          {% endif %}
+
+          <!-- Sectors -->
+          {% if page.sectors and page.sectors.size > 0 %}
+            {% include components/brand/tag-list.html
+              tags=page.sectors
+              dimension_type="sectors"
+              heading=tags_t.sectors
+              lang=page.lang %}
+          {% endif %}
+
+          <!-- Attributes -->
+          {% if page.attributes and page.attributes.size > 0 %}
+            {% include components/brand/tag-list.html
+              tags=page.attributes
+              dimension_type="attributes"
+              heading=tags_t.attributes
+              lang=page.lang %}
+          {% endif %}
+
+          <!-- Signals -->
+          {% if page.signals and page.signals.size > 0 %}
+            {% include components/brand/tag-list.html
+              tags=page.signals
+              dimension_type="signals"
+              heading=tags_t.signals
+              lang=page.lang %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

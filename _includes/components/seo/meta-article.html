@@ -1,0 +1,32 @@
+{% comment %}
+  Component: components/seo/meta-article.html
+  Purpose: Adds OpenGraph and Twitter meta tags for article pages
+  Parameters:
+    - article: The article page object (required)
+    - site_twitter: The site's Twitter handle (default: empty)
+  Dependencies:
+    - None
+{% endcomment %}
+
+{% assign site_twitter = include.site_twitter | default: "" %}
+
+<meta name="description" content="{{ include.article.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ include.article.title }}">
+<meta property="og:description" content="{{ include.article.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+{% if include.article.hero_image %}
+  <meta property="og:image" content="{{ include.article.hero_image | absolute_url }}">
+{% endif %}
+<meta property="article:published_time" content="{{ include.article.date | date_to_xmlschema }}">
+<meta property="article:author" content="{{ include.article.author }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ include.article.title }}">
+<meta name="twitter:description" content="{{ include.article.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+{% if include.article.hero_image %}
+  <meta name="twitter:image" content="{{ include.article.hero_image | absolute_url }}">
+{% endif %}
+{% if site_twitter != "" %}
+  <meta name="twitter:site" content="@{{ site_twitter }}">
+{% endif %}

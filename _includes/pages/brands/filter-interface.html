@@ -17,8 +17,10 @@
 {% assign filter_t = site.data.translations[page.lang].filter %}
 
 <div class="brands-filter">
-  <!-- Search filter include -->
-  {% include components/search/search-filter.html content_type=include.content_type|default:"brands" taxonomy=include.taxonomy|default:site.data.taxonomy %}
+<!-- Search filter include -->
+{% assign content_type = include.content_type | default: "brands" %}
+{% assign taxonomy = include.taxonomy | default: site.data.taxonomy %}
+{% include components/search/search-filter.html content_type=content_type taxonomy=taxonomy %}
 
   <div class="brands-filter__results">
     <div class="brands-filter__results-header">

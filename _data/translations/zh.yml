@@ -374,7 +374,7 @@ brands:
     no_gallery: "无可用图片。"
 
   # Location component
-  location:
+  location_component:
     title: "位置智能"
     headquartered: "总部位于"
     production_facilities: "生产设施"
@@ -505,7 +505,7 @@ discovery:
     no_sectors: "此市场暂无特定行业信息。"
 
   # Featured brands component
-  featured_brands:
+  featured_brands_component:
     title: "精选品牌"
     view_profile: "查看资料"
     explore_all: "探索所有品牌"
@@ -655,13 +655,28 @@ privacy:
 insights:
   # Section headings
   latest: "最新洞察"
+  latest_heading: "最新洞察"  # For use in latest-insights.html
   featured: "精选洞察"
+  featured_heading: "精选洞察"  # For use in featured-insights.html
   all_insights: "所有洞察"
   view_all: "查看全部洞察"
   back_to_insights: "返回洞察"
+  categories_heading: "洞察类别"  # For use in categories.html
+  categories_description: "按类别浏览我们的洞察，以找到您需要的特定信息。"
+  category_highlights_heading: "精选类别"  # For the new category-highlights.html
+  category_highlights_description: "探索我们对金砖国家+品牌各方面的最新分析。"
+  subscribe_heading: "保持更新"  # For use in subscribe.html
+  subscribe_description: "订阅以直接在您的收件箱中接收我们的最新洞察。"
+  subscribe_button: "订阅"
+  email_placeholder: "您的电子邮箱"
+  privacy_note: "我们尊重您的隐私，绝不会分享您的信息。"
+  cta_heading: "需要定制研究？"  # For use in contact-cta.html
+  cta_description: "联系我们，讨论您对金砖国家+消费品牌的特定信息需求。"
+  cta_button: "联系我们"
 
   # Types
   types: "类型"
+  categories: "类别"
   brand_spotlight: "品牌聚焦"
   brand_spotlights: "品牌聚焦"
   founders_journey: "创始人历程"
@@ -671,11 +686,23 @@ insights:
   market_momentum: "市场动态"
   market_momentums: "市场动态"
 
-  # Types descriptions
+  # Empty state messages for each category
+  no_brand_spotlight_insights: "暂无品牌聚焦洞察。"
+  no_founders_journey_insights: "暂无创始人历程洞察。"
+  no_location_intelligence_insights: "暂无地理智能洞察。"
+  no_market_momentum_insights: "暂无市场动态洞察。"
+
+  # Category descriptions (for categories.html and category-highlights.html)
   brand_spotlights_description: "介绍值得关注的金砖国家+新兴品牌。"
   founders_journeys_description: "品牌背后的故事和创造它们的人。"
   location_intelligence_description: "关于金砖国家+品牌生态系统的地理和空间洞察。"
   market_momentum_description: "金砖国家+市场的趋势、发展和增长指标。"
+
+  # Category actions
+  view_brand_spotlights: "查看品牌聚焦"
+  view_founders_journeys: "查看创始人历程"
+  view_location_intelligence: "查看地理智能"
+  view_market_momentum: "查看市场动态"
 
   # Card and content elements
   read_more: "阅读更多"
@@ -684,9 +711,15 @@ insights:
   related: "相关洞察"
   premium_content: "高级内容"
   featured_brands: "相关品牌"
+  view_all_featured_brands: "查看所有相关品牌"
+  country_focus: "国家焦点"
+  minute_read: "分钟阅读"
+  no_featured_brands: "暂无相关品牌。"
+  no_featured: "暂无精选洞察。"
 
   # Filters and search
   filter_by_type: "按类型筛选"
+  filter_by_category: "按类别筛选"
   filter_by_dimension: "按维度筛选"
   search_insights: "搜索洞察"
   sort_by_date: "按日期排序"
@@ -728,6 +761,7 @@ insights:
     attributes: "品牌属性"
     signals: "增长信号"
     explore_dimension: "探索"
+    explore_related: "探索相关"
 
   # Sidebar component
   sidebar:
@@ -1016,7 +1050,7 @@ authors:
   randal_eastman: "伊仁德"
 
 # Founder names (alphabetically ordered)
-founders:
+founder_names:
   alexei_sokolov: "阿列克谢·索科洛夫"
   anna_kuznetsova: "安娜·库兹涅佐娃"
   dmitri_voronin: "德米特里·沃罗宁"

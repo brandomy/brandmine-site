@@ -1,6 +1,6 @@
 ---
 # NEW INSIGHT TEMPLATE - FOUNDERS JOURNEY
-layout: insight
+layout: insight-article
 ref: ru-teatime-founder-journey  # Global ID (market-slug format) For language switcher
 sample_data: true  # Add this flag
 title: "阿列克谢·索科洛夫：TeaTime从莫斯科山丘到全球市场的旅程"
