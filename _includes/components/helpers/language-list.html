@@ -11,14 +11,14 @@
   - helpers/language-name.html: For individual language name lookup
 
   Example Usage:
-  {% include helpers/language-list.html languages=founder.languages %}
+  {% include components/helpers/language-list.html languages=founder.languages %}
   Returns: "English, Russian, Chinese"
 
-  {% include helpers/language-list.html languages=founder.languages lang="zh" %}
+  {% include components/helpers/language-list.html languages=founder.languages lang="zh" %}
   Returns: "英语, 俄语, 中文" (in Chinese)
 {% endcomment %}
 
 {% for lang_code in include.languages %}
   {% if forloop.first == false %}, {% endif %}
-  {% include helpers/language-name.html code=lang_code lang=include.lang %}
+  {% include components/helpers/language-name.html code=lang_code lang=include.lang %}
 {% endfor %}

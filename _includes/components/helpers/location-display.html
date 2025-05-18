@@ -32,7 +32,7 @@
       {{ include.city }}{% if include.country_code %}, {% endif %}
     {% endif %}
     {% if include.country_code %}
-      {% include helpers/country-name.html code=include.country_code lang=include.lang %}
+      {% include components/helpers/country-name.html code=include.country_code lang=include.lang %}
     {% endif %}
   </span>
 </span>
