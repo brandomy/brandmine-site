@@ -31,7 +31,7 @@
 .market-sector-card {
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   background-color: white;
 }
@@ -39,7 +39,7 @@
 .sector-card:hover,
 .market-sector-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 }
 
 /* Generic sector cards - olive accent */
@@ -126,7 +126,7 @@
   font-weight: var(--font-medium);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
 
 /* Market-specific statistics */
@@ -155,7 +155,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .market-sector-card__stats {
     flex-direction: column;
     gap: var(--space-2);

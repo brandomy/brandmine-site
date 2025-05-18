@@ -147,7 +147,7 @@
   }
   
   /* Arrow for tooltip */
-  .discovery-navigation--option-a .discovery-navigation__tooltip:after {
+  .discovery-navigation--option-a .discovery-navigation__tooltip::after {
     content: '';
     position: absolute;
     bottom: 100%;
@@ -239,7 +239,7 @@
 
 .discovery-navigation--option-b .discovery-navigation__icon svg {
   fill: none;
-  stroke: currentColor;
+  stroke: currentcolor;
   width: 100%;
   height: 100%;
   vertical-align: middle;
@@ -259,7 +259,7 @@
      Responsive Adjustments (shared between options)
      -------------------------------------------------------------------------- */
   
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .discovery-navigation__tab {
       padding: var(--space-3) var(--space-4);
       font-size: var(--text-base);
@@ -276,7 +276,7 @@
     }
   }
   
-  @media (max-width: 479px) {
+  @media (width <= 479px) {
     .discovery-navigation__container {
       padding: var(--space-2) 0;
     }

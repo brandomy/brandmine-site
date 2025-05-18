@@ -13,6 +13,7 @@
   color: var(--neutral-100);
   text-decoration: none;
 }
+
 .footer a:hover {
   color: var(--secondary-300);
   text-decoration: none;
@@ -32,6 +33,7 @@
 }
 .footer__section--left { text-align: left; }
 .footer__section--center { text-align: center; }
+
 .footer__section--right {
   text-align: right;
   display: flex;
@@ -46,6 +48,7 @@
   margin: var(--space-1) 0;
   line-height: 1.4;
 }
+
 .footer__tagline {
   font-size: var(--text-custom);
   margin: var(--space-2) 0;
@@ -69,6 +72,7 @@
   gap: var(--space-4);
   margin-top: var(--space-3);
 }
+
 .footer__social-icon {
   display: flex;
   align-items: center;
@@ -80,10 +84,12 @@
   border-radius: 50%;
   transition: all var(--transition-fast, 0.2s) ease;
 }
+
 .footer__social-icon:hover {
   background-color: var(--primary-500);
   transform: translateY(-2px);
 }
+
 .footer__social-icon svg {
   width: 1rem;
   height: 1rem;
@@ -105,11 +111,12 @@
 /* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
-@media (max-width: 767px) {
+@media (width <= 767px) {
   .footer__grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
   }
+
   .footer__section,
   .footer__section--left,
   .footer__section--center,
@@ -119,38 +126,46 @@
     text-align: center;
     box-sizing: border-box;
   }
+
   .footer__section--center,
   .footer__section--right {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .footer__newsletter {
     display: block;
     width: 100%;
     padding: 0 var(--space-4);
   }
+
   .newsletter-wrapper {
     max-width: 100%;
     margin: 0 auto;
     text-align: center;
   }
+
   .newsletter-wrapper > * {
     max-width: 100%;
     margin: 0 auto;
     display: block;
   }
+
   .ml-embedded {
     max-width: 100%;
     width: 100%;
   }
+
   .footer__social {
     justify-content: center;
     gap: var(--space-4);
   }
+
   .footer__tagline {
     font-size: 1rem;
   }
+
   .footer__lang {
     justify-content: center;
     gap: var(--space-2);

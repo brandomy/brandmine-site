@@ -116,7 +116,7 @@
    -------------------------------------------------------------------------- */
 
 /* Tablet screens (768px to 991px) */
-@media (max-width: 991px) {
+@media (width <= 991px) {
   .featured-brands-carousel {
     gap: var(--space-4);
   }
@@ -133,7 +133,7 @@
 }
 
 /* Mobile screens (under 768px) */
-@media (max-width: 767px) {
+@media (width <= 767px) {
   .featured-brands-carousel {
     /* Adjust spacing */
     padding-left: var(--space-2);
@@ -154,7 +154,7 @@
 }
 
 /* Large screens (1200px and up) */
-@media (min-width: 1200px) {
+@media (width >= 1200px) {
   /* Ensure consistent spacing on larger screens */
   .featured-brands-carousel {
     padding-left: var(--space-4);

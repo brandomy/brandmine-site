@@ -1,0 +1,34 @@
+<!-- _includes/components/brands/founder-info.html -->
+{% comment %}
+  Component: components/brand/founder-info.html
+  Purpose: Displays founder information with optional portrait
+  Parameters:
+    - founder: Founder object
+    - portrait: Path to portrait image
+    - lang: Language code
+    - brand_slug: Brand slug for image path (full slug format)
+{% endcomment %}
+
+{% if include.founder.name %}
+<div class="brand-header__founder-brief">
+  <strong>{{ site.data.translations[include.lang].brand.founder }}:</strong> {{ include.founder.name }}
+
+  {% if include.founder.generation %}
+  <span class="brand-header__founder-generation">
+    {% assign gen_key = include.founder.generation %}
+    ({{ site.data.translations[include.lang].generation[gen_key] | default: include.founder.generation }})
+  </span>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if include.portrait %}
+<div class="brand-header__founder-portrait">
+  {% include components/images/collection-image.html
+     collection="brands"
+     slug=include.brand_slug
+     purpose="founder"
+     aspect="portrait"
+     alt=include.founder.name %}
+</div>
+{% endif %}

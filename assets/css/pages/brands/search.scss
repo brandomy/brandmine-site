@@ -12,7 +12,7 @@
     display: flex;
     position: relative;
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       flex-direction: column;
       gap: var(--space-2);
     }
@@ -28,10 +28,10 @@
     &:focus {
       outline: none;
       border-color: var(--sky-400);
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+      box-shadow: 0 0 0 3px rgb(14 165 233 / 20%);
     }
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       border-radius: var(--radius-md);
     }
   }
@@ -51,7 +51,7 @@
       background-color: var(--sky-700);
     }
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       border-radius: var(--radius-md);
     }
   }

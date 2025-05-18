@@ -1,0 +1,27 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "plugins": ["stylelint-selector-bem-pattern"],
+  "rules": {
+    "selector-class-pattern": null,
+    "plugin/selector-bem-pattern": {
+      "componentName": "[a-z0-9]+(?:-[a-z0-9]+)*",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))*(?:--(?:[a-z0-9]+(?:-[a-z0-9]+)*))*$"
+      }
+    },
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ],
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["stylelint-commands"]
+      }
+    ]
+  }
+}

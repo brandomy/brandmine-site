@@ -85,11 +85,11 @@
     <div class="featured-content__taxonomy">
       {% if include.content_type == "insight" %}
         {% if include.content.sectors and include.content.sectors.size > 0 %}
-          {% include collections/dimensions/dimension-list.html tags=include.content.sectors type="sector" %}
+          {% include components/dimensions/dimension-list.html tags=include.content.sectors type="sector" %}
         {% endif %}
       {% elsif include.content_type == "brand" %}
         {% if include.content.attributes and include.content.attributes.size > 0 %}
-          {% include collections/dimensions/dimension-list.html tags=include.content.attributes type="attribute" %}
+          {% include components/dimensions/dimension-list.html tags=include.content.attributes type="attribute" %}
         {% endif %}
       {% endif %}
     </div>

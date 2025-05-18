@@ -10,7 +10,6 @@
     display: flex;
     gap: 1.25rem;
     overflow-x: auto;
-    padding: 1rem 0;
     margin: 2rem -1rem;
     padding: 1rem;
     scroll-snap-type: x mandatory;
@@ -34,11 +33,11 @@
       scroll-snap-align: start;
       flex: 0 0 calc(100% - 2rem);
 
-      @media (min-width: 640px) {
+      @media (width >= 640px) {
         flex: 0 0 calc(50% - 1.25rem);
       }
 
-      @media (min-width: 1024px) {
+      @media (width >= 1024px) {
         flex: 0 0 calc(33.333% - 1.25rem);
       }
     }
@@ -52,7 +51,7 @@
         top: 0;
         bottom: 0;
         width: 40px;
-        background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8));
+        background: linear-gradient(to right, rgb(255 255 255 / 0%), rgb(255 255 255 / 80%));
         pointer-events: none;
       }
     }

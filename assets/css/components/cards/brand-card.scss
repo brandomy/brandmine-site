@@ -80,6 +80,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+
   /* Display full logo within container */
   padding: 2px; /* Slight padding to prevent edge touching */
 }
@@ -251,7 +252,7 @@
   align-items: center;
   justify-content: center;
   opacity: 0.8; /* Slightly transparent */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Subtle shadow */
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%); /* Subtle shadow */
 }
 
 /* --------------------------------------------------------------------------
@@ -287,7 +288,7 @@
    -------------------------------------------------------------------------- */
 
 /* Small screens */
-@media (max-width: 767px) {
+@media (width <= 767px) {
   .brand-card__body {
     padding: var(--space-3);
   }

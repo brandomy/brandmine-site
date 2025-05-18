@@ -89,10 +89,23 @@ if [[ $MISSING_INCLUDES -eq 0 ]]; then
   echo "✓ All included files appear to exist" | tee -a "$LOG_FILE"
 fi
 
-# === 5. Validate all YAML files in _data/
+# === 5. Validate all YAML files in _data/ and collections
 echo "" | tee -a "$LOG_FILE"
-echo "📄 Validating YAML files in _data/..." | tee -a "$LOG_FILE"
-YAML_FILES=$(find _data -type f -name "*.yml")
+echo "📄 Validating YAML files in _data/, _founders/, _brands/, _insights/, _dimensions/..." | tee -a "$LOG_FILE"
+
+YAML_DIRS="_data _founders _brands _insights _dimensions"
+YAML_FILES=$(find $YAML_DIRS -type f \( -name "*.yml" -o -name "*.yaml" \))
+
+YAML_ERROR=0
+
+for file in $YAML_FILES; do
+  if ruby -ryaml -e "YAML.load_file('$file')" >/dev/null 2>&1; then
+    echo "✓ $file is valid" | tee -a "$LOG_FILE"
+  else
+    echo "❌ $file has YAML syntax errors" | tee -a "$LOG_FILE"
+    YAML_ERROR=1
+  fi
+done
 
 YAML_ERROR=0
 

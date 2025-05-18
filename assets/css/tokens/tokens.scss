@@ -131,18 +131,19 @@
 /* ==========================================================================
    2. TYPOGRAPHY
    ========================================================================== */
+
   /* 2.1 Font Families */
   :root {
-    --font-heading-en: 'PT Serif', Georgia, serif;
-    --font-body-en:    'PT Sans', Arial, sans-serif;
-    --font-heading-ru: 'PT Serif', Georgia, serif;
-    --font-body-ru:    'PT Sans', Arial, sans-serif;
+    --font-heading-en: 'PT Serif', georgia, serif;
+    --font-body-en:    'PT Sans', arial, sans-serif;
+    --font-heading-ru: 'PT Serif', georgia, serif;
+    --font-body-ru:    'PT Sans', arial, sans-serif;
     --font-heading-zh: 'Noto Serif SC', 'Songti SC', 'FangSong', 'STSong', serif;
     --font-body-zh:    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --font-heading:    var(--font-heading-en);
     --font-body:       var(--font-body-en);
     --font-ui:         var(--font-body);
-    --font-mono:       'Source Code Pro', Consolas, 'Liberation Mono', Menlo, monospace;
+    --font-mono:       'Source Code Pro', consolas, 'Liberation Mono', menlo, monospace;
   }
 
   /* 2.2 Font Sizes */
@@ -205,6 +206,7 @@
     --font-heading: var(--font-heading-ru);
     --font-body:    var(--font-body-ru);
   }
+
   html[lang="zh"] {
     --font-heading: var(--font-heading-zh);
     --font-body:    var(--font-body-zh);
@@ -237,13 +239,13 @@
   }
 
   /* Then enhance for larger screens */
-  @media (min-width: 480px) {
+  @media (width >= 480px) {
     .element {
       font-size: var(--text-base);
     }
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .element {
       font-size: var(--text-lg);
     }
@@ -278,6 +280,7 @@
   /* ==========================================================================
      6. ADDITIONAL TOKENS
      ========================================================================== */
+
   /* 6.1 Border & Radius Tokens */
   :root {
     /* A unified scale for border radii used throughout the system. */
@@ -289,7 +292,6 @@
 
     /* Specific token for card components; can be adjusted independently if needed */
     --radius-card: 0.75rem; /* 12px */
-
     --border-width-thin: 1px;
     --border-width-medium: 2px;
     --border-width-thick: 4px;
@@ -309,7 +311,6 @@
     --btn-padding-default: 1rem;
     --btn-padding-sm: var(--space-2) var(--space-4);
     --btn-padding-lg: var(--space-4) var(--space-6);
-
     --btn-height-default: 44px;
     --btn-height-sm: 36px;
     --btn-height-lg: 52px;
@@ -317,10 +318,10 @@
 
   /* 6.4 Shadow Tokens */
   :root {
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
-    --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 10%);
+    --shadow-md: 0 4px 6px rgb(0 0 0 / 10%);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%);
+    --card-shadow-hover: 0 8px 15px rgb(0 0 0 / 10%);
   }
 
 
@@ -332,7 +333,7 @@
       --card-padding-large: var(--space-6);
       --card-border-radius: var(--radius-md);
       --card-shadow: var(--shadow-lg);
-      --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+      --card-shadow-hover: 0 8px 15px rgb(0 0 0 / 10%);
       --card-border: var(--border-width-thin) solid var(--neutral-200);
     }
 
@@ -346,7 +347,7 @@
       --form-focus-border-color: var(--primary-400);
       --form-wrapper-padding: var(--space-4);
       --form-wrapper-padding-mobile: var(--space-2);
-      --form-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      --form-card-shadow: 0 4px 16px rgb(0 0 0 / 10%);
       --form-button-bg: var(--primary-400);
       --form-button-hover-bg: var(--primary-300);
     }

@@ -123,7 +123,7 @@ Utility functions and components:
 ### Dimension Navigation
 
 ```liquid
-{% include collections/dimensions/discovery-navigation.html
+{% include components/dimensions/discovery-navigation.html
    active_type=page.discovery_path
    container_class=discovery_class %}
 ```

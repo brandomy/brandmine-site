@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Discovery Dimensions Grid Component (BEM Implementation)
+   ==========================================================================
+   Displays a grid of discovery dimensions (sectors, markets, attributes, signals)
+   with consistent styling, example tags, and responsive behavior.
+*/
+
+/* --------------------------------------------------------------------------
+   1. GRID CONTAINER AND STRUCTURE
+   -------------------------------------------------------------------------- */
+
+   .discovery-dimensions-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin: var(--space-8) 0;
+  }
+  
+  /* Column variants */
+  .discovery-dimensions-grid--columns-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .discovery-dimensions-grid--columns-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .discovery-dimensions-grid--columns-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .discovery-dimensions-grid--columns-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  /* --------------------------------------------------------------------------
+     2. DIMENSION CARD STYLING
+     -------------------------------------------------------------------------- */
+  
+  .discovery-dimension {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-top: 3px solid transparent;
+  }
+  
+  .discovery-dimension:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  }
+  
+  .discovery-dimension--sectors {
+    border-top-color: var(--olive-500);
+  }
+  
+  .discovery-dimension--markets {
+    border-top-color: var(--sky-500);
+  }
+  
+  .discovery-dimension--attributes {
+    border-top-color: var(--secondary-500);
+  }
+  
+  .discovery-dimension--signals {
+    border-top-color: var(--accent-500);
+  }
+  
+  .discovery-dimension__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-4);
+  }
+  
+  .discovery-dimension__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: var(--space-3);
+    flex-shrink: 0;
+  }
+  
+  .discovery-dimension--sectors .discovery-dimension__icon {
+    background-color: var(--olive-100);
+    color: var(--olive-700);
+  }
+  
+  .discovery-dimension--markets .discovery-dimension__icon {
+    background-color: var(--sky-100);
+    color: var(--sky-700);
+  }
+  
+  .discovery-dimension--attributes .discovery-dimension__icon {
+    background-color: var(--secondary-100);
+    color: var(--secondary-700);
+  }
+  
+  .discovery-dimension--signals .discovery-dimension__icon {
+    background-color: var(--accent-100);
+    color: var(--accent-700);
+  }
+  
+  .discovery-dimension__title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    margin: 0;
+    color: var(--neutral-800);
+  }
+  
+  .discovery-dimension--sectors .discovery-dimension__title {
+    color: var(--olive-800);
+  }
+  
+  .discovery-dimension--markets .discovery-dimension__title {
+    color: var(--sky-800);
+  }
+  
+  .discovery-dimension--attributes .discovery-dimension__title {
+    color: var(--secondary-800);
+  }
+  
+  .discovery-dimension--signals .discovery-dimension__title {
+    color: var(--accent-800);
+  }
+  
+  .discovery-dimension__description {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    color: var(--neutral-600);
+    font-size: var(--text-base);
+    flex-grow: 1;
+  }
+  
+  .discovery-dimension__examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  
+  .discovery-dimension__examples .tag {
+    margin-bottom: var(--space-2);
+  }
+  
+  .discovery-dimension__more {
+    color: var(--neutral-400);
+    font-size: var(--text-sm);
+  }
+  
+  .discovery-dimension__link {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+  
+  .discovery-dimension__link--sectors {
+    color: var(--olive-700);
+    border-color: var(--olive-300);
+  }
+  
+  .discovery-dimension__link--markets {
+    color: var(--sky-700);
+    border-color: var(--sky-300);
+  }
+  
+  .discovery-dimension__link--attributes {
+    color: var(--secondary-700);
+    border-color: var(--secondary-300);
+  }
+  
+  .discovery-dimension__link--signals {
+    color: var(--accent-700);
+    border-color: var(--accent-300);
+  }
+  
+  .discovery-cta {
+    text-align: center;
+    margin-top: var(--space-6);
+  }
+  
+  /* --------------------------------------------------------------------------
+     3. RESPONSIVE ADJUSTMENTS
+     -------------------------------------------------------------------------- */
+  
+  /* Medium devices (768px and up) */
+  @media (width >= 768px) {
+    .discovery-dimensions-grid--columns-2,
+    .discovery-dimensions-grid--columns-3,
+    .discovery-dimensions-grid--columns-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Large devices (992px and up) */
+  @media (width >= 992px) {
+    .discovery-dimensions-grid--columns-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .discovery-dimensions-grid--columns-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }

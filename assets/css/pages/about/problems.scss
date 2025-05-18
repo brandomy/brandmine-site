@@ -18,7 +18,7 @@
       box-sizing: border-box;
 
       /* Tablet and up */
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: auto auto;
         gap: var(--space-8);
@@ -45,12 +45,12 @@
       z-index: 1;
 
       /* Small devices and up */
-      @media (min-width: 480px) {
+      @media (width >= 480px) {
         min-height: 200px;
       }
 
       /* Tablet and up */
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         padding: var(--space-6);
         min-height: 240px;
       }
@@ -95,7 +95,7 @@
       background-color: white;
       border-radius: 50%;
       margin-bottom: var(--space-4);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
       position: relative;
       z-index: 2;
     }

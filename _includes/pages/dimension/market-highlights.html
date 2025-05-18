@@ -34,7 +34,7 @@
       {% for market_entry in site.data.markets[dimension.lang] %}
         {% assign market_slug = market_entry.id %}
         {% if site.data.market_sectors[dimension.lang][market_slug] and site.data.market_sectors[dimension.lang][market_slug][dimension.dimension] %}
-          {% include collections/dimensions/market-sector-highlight.html market=market_slug sector=dimension.dimension %}
+          {% include components/dimensions/market-sector-highlight.html market=market_slug sector=dimension.dimension %}
         {% endif %}
       {% endfor %}
     </div>

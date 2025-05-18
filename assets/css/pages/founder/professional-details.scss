@@ -20,7 +20,7 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       grid-template-columns: 1fr;
     }
   }
@@ -46,7 +46,7 @@
       display: flex;
       align-items: center;
 
-      &:before {
+      &::before {
         content: "•";
         color: var(--color-primary-500);
         margin-right: 0.5rem;
@@ -56,19 +56,19 @@
   }
 
   &-languages li {
-    &:before {
+    &::before {
       color: var(--color-primary-500);
     }
   }
 
   &-markets li {
-    &:before {
+    &::before {
       color: var(--color-sky-500);
     }
   }
 
   &-achievements li {
-    &:before {
+    &::before {
       color: var(--color-olive-500);
     }
   }

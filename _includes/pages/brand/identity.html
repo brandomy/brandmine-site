@@ -37,7 +37,7 @@
 
         <div class="brand-identity__meta">
           {% if page.founding_year %}
-            {% include components/brand/meta-item.html
+            {% include components/brands/meta-item.html
               label=t.founding_year
               items=page.founding_year
               linkable=false %}
@@ -63,7 +63,7 @@
         <div class="brand-identity__taxonomy">
           <!-- Markets -->
           {% if page.markets and page.markets.size > 0 %}
-            {% include components/brand/tag-list.html
+            {% include components/brands/tag-list.html
               tags=page.markets
               dimension_type="markets"
               heading=tags_t.markets
@@ -72,7 +72,7 @@
 
           <!-- Sectors -->
           {% if page.sectors and page.sectors.size > 0 %}
-            {% include components/brand/tag-list.html
+            {% include components/brands/tag-list.html
               tags=page.sectors
               dimension_type="sectors"
               heading=tags_t.sectors
@@ -81,7 +81,7 @@
 
           <!-- Attributes -->
           {% if page.attributes and page.attributes.size > 0 %}
-            {% include components/brand/tag-list.html
+            {% include components/brands/tag-list.html
               tags=page.attributes
               dimension_type="attributes"
               heading=tags_t.attributes
@@ -90,7 +90,7 @@
 
           <!-- Signals -->
           {% if page.signals and page.signals.size > 0 %}
-            {% include components/brand/tag-list.html
+            {% include components/brands/tag-list.html
               tags=page.signals
               dimension_type="signals"
               heading=tags_t.signals

@@ -1,6 +1,3 @@
-I'll update the CLAUDE.md file to include information about the semantic section implementation. Here's the updated version with the new section added:
-
-```markdown
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -11,7 +8,7 @@ This file provides Claude Code and other AI tools with the architectural context
 
 # 🧭 Project Overview
 
-**Brandmine** is a multilingual, mobile-first website built with **Jekyll (no theme)** that showcases narrative-rich consumer brands from BRICS+ countries. It emphasizes founder stories, multidimensional tagging, and interactive discovery.
+**Brandmine** is a multilingual, mobile-first website built with **Jekyll** (using the Minima theme via GitHub Pages) that showcases narrative-rich consumer brands from BRICS+ countries. It emphasizes founder stories, multidimensional tagging, and interactive discovery.
 
 The site supports:
 - **Three languages**: English (`en`), Russian (`ru`), Chinese (`zh`)
@@ -25,20 +22,22 @@ The site supports:
 # 🗂 Folder Structure
 
 ```
-/_brands/{lang}/       — One Markdown file per brand
-/_founders/{lang}/     — One Markdown file per founder
-/_dimensions/{lang}/{type}/  — Dimension files per type (sector, signal, etc.)
-/_data/                — YAML files for translations, sectors, navigation, social links, market-sectors
-                       — JSON files for countries, languages, etc.
-/_includes/            — HTML partials (headers, footers, language switcher, dimension lists)
-/_layouts/             — Jekyll templates (default, brand, sector, dimension, etc.)
-/_insights/{lang}/     — Insight content (curated stories, future blog)
-/pages/{lang}/         — Main content pages like brands.md
-/assets/               — CSS (BEM), JS, fonts, images
-/_docs/                - Documents
-/_templates/{type}/    — templates
+_brands/{lang}/       — One Markdown file per brand
+_founders/{lang}/     — One Markdown file per founder
+_dimensions/{lang}/{type}/  — Dimension definition files per type (markets, sectors, attributes, signals)
+_data/                — YAML/JSON data (translations, navigation, social, market_sectors, etc.)
+_includes/            — Reusable partials (collections, components, layout, pages)
+_layouts/             — Jekyll layouts (default, brand, sector, dimension, etc.)
+_insights/{lang}/     — Insight article content
+pages/{lang}/         — Main content pages (about, brands, discovery, etc.)
+assets/               — CSS, JS, fonts, images
+_docs/                — Project documentation and guidelines
+_templates/{type}/    — Markdown and HTML templates for scaffolding
+_scripts/             — CLI scripts (validation, scaffolding, image processing, etc.)
+_exports/             — Exported artifacts (search index, reports)
+_site/                — Generated site output (Jekyll build directory)
 _config.yml           — Site config, collections, language routing
-index.html            — Redirects to /en/index.html
+index.html            — Entry point redirect to /en/index.html
 ```
 
 ---
@@ -49,11 +48,12 @@ Dimensions are stored as Markdown files in `_dimensions/{lang}/{type}/`. Each fi
 - A front matter section with name, slug, type, and optionally description
 - Content describing the dimension in more detail
 
-**Valid dimension types** include:
-- `markets` — e.g. russia, brazil, india, china
-- `sectors` — e.g. natural-beauty, halal-foods, specialty-cheeses, wine
-- `attributes` — e.g. founder-led, heritage-brand, sustainability-pioneer
-- `signals` — e.g. export-ready, franchise-ready, growth-ready
+**Valid dimension types** include (slugs match filenames in `_dimensions/{lang}/{type}/`):
+- `markets` — e.g. brazil, china, egypt, ethiopia, india, indonesia, iran, russia, south-africa, uae
+- `sectors` — e.g. artisan-ceramics, artisan-confectionery, artisanal-spirits, cured-meats
+- `attributes` — e.g. artisanal-excellence, cultural-bridge, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer
+- `signals` — e.g. export-ready, franchise-ready, investment-ready, rapid-growth
+You can review the full set of valid slugs in the corresponding `_dimensions/{lang}/{type}/` directories.
 
 Brands reference dimensions in front matter like this:
 
@@ -104,9 +104,8 @@ Includes are organized into a structured hierarchy:
     founders/           — Founders page sections
     home/               — Home page sections
     insight/            — Insight page sections
-  styleguide/           — Styleguide components
-  utilities/            — Utility includes
 ```
+We use small, focused section includes under `_includes/pages/<page>/<section>.html` to keep templates logic-light.
 
 This organization mirrors the CSS structure for consistency and maintainability.
 
@@ -216,12 +215,16 @@ npm run build                            # Alias for jekyll build
 ```
 
 ## Scripts
-```bash
-./_scripts/check_language_consistency.sh        # Validate i18n coverage
-./_scripts/process_images.sh [collection] [identifier] # Unified image processing
-./_scripts/apply_teal_filter.sh                 # Apply brand filter to team photos
-./_scripts/add_image_attribution.py             # Add image attribution to _data/image_attributions.yml
-```
+All helper scripts live in the `_scripts/` directory. Key examples:
+- **check_language_consistency.sh**: Ensure content exists in all language folders.
+- **validate_multilingual.sh**: Verify translation key consistency across languages.
+- **process_images.sh [collection] [identifier]**: Optimize and generate responsive images.
+- **generate_brand_template.py [country_code] [brand_slug]**: Scaffold new brand markdown files.
+- **generate_article_template.py [lang] [slug]**: Scaffold a new insight article.
+- **generate_search_index.py**: Build or update the `search.json` index.
+- **add_image_attribution.py [collection] [identifier]**: Add entries to `_data/image_attributions.yml`.
+- **apply_teal_filter.sh**: Apply the teal brand filter to team photos.
+- *(See `_scripts/` for the full list of available helper scripts.)*
 
 ## Validation
 ```bash
@@ -257,30 +260,11 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
   - Creating visual hierarchy between landing pages and interior content
   - Providing consistent user experience across different sections
 
-## CSS
-- Follows **BEM naming**: `Block__Element--Modifier`
-- Mobile-first with defined breakpoints
-- Organized with a manifest system for better modularity
-- Uses CSS custom properties for design tokens
-- File organization:
-  - `/assets/css/tokens/` - Design variables, typography, grid definitions
-  - `/assets/css/base/` - Core styling elements (layout, typography)
-  - `/assets/css/layout/` - Layout components (header, footer, panels)
-  - `/assets/css/components/` - UI elements (buttons, cards, etc.) with subdirectories:
-    - `/cards/` - Various card components
-    - `/carousels/` - Carousel components
-    - `/navigation/` - Navigation elements
-    - `/search/` - Search interfaces
-    - `/dimension/` - Dimension-related components
-  - `/assets/css/collections/` - Collection-specific styles:
-    - `/brands/` - Brand collection styling
-    - `/dimensions/` - Dimension collection styling
-    - `/insights/` - Insight collection styling
-    - `/markets/` - Market collection styling
-  - `/assets/css/pages/` - Page-specific styling
-    - `/dimension-specific/` - Styles for specific dimension pages
-  - `/assets/css/manifest/` - CSS import manifests that group related styles
-  - `/assets/css/utils/` - Utility styles
+## CSS Organization
+- Mobile-first and responsive, using **BEM** naming (`Block__Element--Modifier`) and CSS custom properties for design tokens.
+- Styles are organized under `/assets/css/` directories:
+  - `tokens/`, `base/`, `layout/`, `components/`, `collections/`, `pages/`, `manifest/`
+- Each component and page has its own SCSS file for modularity.
 
 ## HTML
 - Semantic HTML5
@@ -292,18 +276,18 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 - Keep language-specific content in the appropriate language subfolder
 
 ## "Logic Light" Approach
-- Push logic into smaller, focused includes that match individual CSS styles
-- Layouts include specific page sections as needed
-- Page content files remain minimal with just required front matter
-- Translation strings in `_data/translations/{lang}.yml` provide the text
-- Example structure:
-  ```
-  pages/en/about.md (minimal front matter)
-  _layouts/about.html (includes page sections)
-  _includes/pages/about/hero.html (section-specific include)
-  _includes/pages/about/mission.html
-  _data/translations/en.yml (provides text content)
-  ```
+- Translation strings in `_data/translations/{lang}.yml`; in templates assign them to a local variable:
+   ```liquid
+   {% raw %}{% assign t = site.data.translations[current_lang].about %}{% endraw %}
+   {{ t.perspective_title | default: "Our Unique Perspective" }}
+   ```
+ - Example structure:
+   ```
+   pages/en/about.md (minimal front matter)
+   _layouts/about.html (loads section includes)
+   _includes/pages/about/hero.html
+   _includes/pages/about/mission.html
+   ```
 
 ## JavaScript
 - Vanilla JS only (no frameworks)
@@ -367,10 +351,9 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
   - `site-image.html` for site-wide imagery
   - `taxonomy-icon.html` for dimension taxonomy icons
 
-- **Documentation**:
-  - Comprehensive image guide at `docs/design/image-guide.md`
-  - Style specifications at `docs/design/image-style-guide.md`
-  - Taxonomy icon implementation guide at `docs/design/taxonomy-icon-implementation.md`
+  - **Documentation**:
+    - Comprehensive image guide at `_docs/design/image-guide.md`
+    - Image style guide at `_docs/design/image-style-guide.md`
 
 ## Visual Style Strategy
 
@@ -426,7 +409,7 @@ General Rule:
   3. **Market Momentum** - Achievements, milestones, and expansion moments
   4. **Location Intelligence** - Geographical insights and regional context
 - Market-sector structured data in `_data/market_sectors/{lang}/{market}.yml`
-- Structured data in JSON files (`countries.json`, `languages.json`, etc.)
+- Structured data in JSON files (`countries.json`, `languages.json`, `market_sectors.json`, etc.) as the primary source; per-language YAML for countries will be removed.
 - Future integration with Airtable using a flat table structure
 - JSON for complex data (timelines, products, secondary locations)
 - CSV import/export for efficient data management
@@ -636,11 +619,6 @@ Two template options are available for creating brand profiles:
 Always process brand images after creation using:
 ```bash
 ./_scripts/process_images.sh brands [country_code]-[brand_name]
-```
-or the legacy script:
-```bash
-./_scripts/process_brand_images.sh [country_code] [brand_name]
-```
 ```
 
 I've added a new section titled "🏗️ Page Sectioning Architecture" after the "Two-Tier Content Approach" section. This new section explains the semantic sectioning approach we've implemented, including:

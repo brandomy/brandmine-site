@@ -9,12 +9,12 @@
       gap: var(--space-6);
       margin-top: var(--space-6);
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: var(--space-4);
       }
 
-      @media (max-width: 480px) {
+      @media (width <= 480px) {
         grid-template-columns: 1fr;
       }
     }

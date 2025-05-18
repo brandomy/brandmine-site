@@ -15,10 +15,7 @@
   .testimonials-panel::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2338b2ac' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
     z-index: 0;
@@ -32,8 +29,7 @@
   /* Testimonials Container */
   .testimonials-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
     gap: var(--space-6);
     margin-top: var(--space-8);
@@ -51,7 +47,7 @@
     max-width: 100%;
     background-color: white;
     border-radius: var(--radius-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 6%);
     padding: var(--space-6);
     display: flex;
     flex-direction: column;
@@ -179,7 +175,7 @@
   /* Responsive Adjustments */
 
 
-  @media (max-width: 479px) {
+  @media (width <= 479px) {
     .testimonials-container {
       flex-direction: column;
       align-items: center;
@@ -202,7 +198,7 @@
   }
 
 
-  @media (max-width: 767px) {
+  @media (width <= 767px) {
     .testimonials-container {
       flex-direction: column;
       align-items: center;

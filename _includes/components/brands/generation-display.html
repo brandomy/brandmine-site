@@ -1,0 +1,19 @@
+<!-- _includes/components/brands/generation-display.html -->
+{% comment %}
+  Component: components/brand/generation-display.html
+  Purpose: Displays translated generation text
+  Parameters:
+    - generation: Generation key (first, second, transition)
+    - lang: Language code
+{% endcomment %}
+
+{% case include.generation %}
+  {% when "first" %}
+    {{ site.data.translations[include.lang].generation.first }}
+  {% when "second" %}
+    {{ site.data.translations[include.lang].generation.second }}
+  {% when "transition" %}
+    {{ site.data.translations[include.lang].generation.transition }}
+  {% else %}
+    {{ include.generation }}
+{% endcase %}

@@ -27,6 +27,7 @@
 /* ==========================================================================
    1. Dependencies & Global Setup
    ========================================================================== */
+
 /* All tokens (colors, typography, spacing, breakpoints, grid) are loaded via tokens.css */
 
 /* Global Box Sizing */
@@ -71,16 +72,18 @@
 
 .styleguide-nav.is-open {
   transform: translateX(0);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 0 10px rgb(0 0 0 / 20%);
 }
 
 /* Navigation Logo/Header */
 .styleguide-logo {
   margin-bottom: var(--space-6);
 }
+
 .styleguide-logo a {
   text-decoration: none;
 }
+
 .styleguide-logo-text {
   font-size: var(--text-xl);
   font-weight: var(--font-bold);
@@ -113,9 +116,11 @@
   padding: var(--space-2);
   transition: color 0.2s ease;
 }
+
 .styleguide-nav a:hover {
   color: var(--primary-400);
 }
+
 .styleguide-nav a.active {
   color: var(--primary-400);
   font-weight: var(--font-semibold);
@@ -133,16 +138,19 @@
   display: flex;
   flex-direction: column;
 }
+
 .styleguide-page-header {
   margin-bottom: var(--space-8);
   border-bottom: 1px solid var(--neutral-200);
   padding-bottom: var(--space-4);
 }
+
 .styleguide-page-header h1 {
   font-size: var(--text-4xl);
   margin: 0 0 var(--space-2);
   color: var(--primary-600);
 }
+
 .styleguide-description {
   font-size: var(--text-lg);
   color: var(--neutral-700);
@@ -170,23 +178,27 @@
   border-radius: 0.5rem;
   overflow: hidden;
 }
+
 .example-preview {
   padding: var(--space-4);
   background-color: var(--neutral-50);
   border-bottom: 1px solid var(--neutral-200);
 }
+
 .example-code {
   position: relative;
   background-color: var(--neutral-900);
   color: var(--neutral-100);
   overflow: hidden;
 }
+
 .example-code pre {
   margin: 0;
   padding: var(--space-4);
   overflow-x: auto;
   white-space: pre-wrap;
 }
+
 .example-code code {
   font-family: var(--font-mono); /* Uses new Source Code Pro */
   font-size: var(--text-sm);
@@ -224,6 +236,7 @@
   background-color: var(--primary-400);
   color: white;
 }
+
 .neutral-800 {
   background-color: var(--neutral-800);
   color: white;
@@ -233,6 +246,7 @@
 .styleguide-container * {
   box-sizing: border-box;
 }
+
 .styleguide-content > * + * {
   margin-top: var(--space-6);
 }
@@ -242,41 +256,46 @@
    ========================================================================== */
 
 /* Small devices (min-width: 640px) */
-@media (min-width: 640px) {
+@media (width >= 640px) {
   .styleguide-container {
     font-size: var(--text-base);
   }
+
   .styleguide-content {
     padding: var(--space-8);
   }
 }
 
 /* Medium devices (min-width: 768px) */
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .styleguide-content {
     padding: var(--space-8) var(--space-8);
   }
 }
 
 /* Large devices (min-width: 992px) */
-@media (min-width: 992px) {
+@media (width >= 992px) {
   .styleguide-container {
     grid-template-areas: "navigation content";
     grid-template-columns: var(--sidebar-width, 250px) 1fr;
     max-width: var(--grid-max-width);
     margin: 0 auto;
   }
+
   .styleguide-nav {
     position: relative;
     transform: none;
     box-shadow: none;
   }
+
   .styleguide-nav-toggle {
     display: none;
   }
+
   .styleguide-overlay {
     display: none !important;
   }
+
   .styleguide-content {
     max-width: 100%;
     padding: var(--space-8);
@@ -284,7 +303,7 @@
 }
 
 /* Extra Large devices (min-width: 1200px) */
-@media (min-width: 1200px) {
+@media (width >= 1200px) {
   .styleguide-container {
     max-width: var(--grid-max-width);
   }
@@ -293,6 +312,7 @@
 /* ==========================================================================
    8. Miscellaneous & Overrides
    ========================================================================== */
+
 /* Override any legacy hard-coded values with tokens where applicable. */
 
 /* Example: ensure code blocks use the new mono font */

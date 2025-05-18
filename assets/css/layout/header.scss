@@ -6,6 +6,7 @@
   position: relative;
   z-index: var(--z-header);
 }
+
 .header a:hover {
   color: var(--secondary-300);
   font-weight: bold;
@@ -52,7 +53,7 @@
   left: 0;
   background-color: var(--primary-500);
   color: var(--neutral-100);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 15%);
   border-radius: var(--radius-sm);
   min-width: 200px;
   z-index: var(--z-dropdown); /* 200 */
@@ -63,18 +64,21 @@
   margin: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
+
 .header__dropdown:hover .header__dropdown-content,
 .header__dropdown:focus-within .header__dropdown-content {
   display: block;
 }
+
 .header__dropdown-content a {
   display: block;
   padding: var(--space-2) var(--space-3);
   color: white;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
   transition: background-color 0.2s ease;
 }
+
 .header__dropdown-content a:hover {
   background-color: var(--secondary-300);
   color: white;
@@ -104,12 +108,14 @@
   z-index: var(--z-toggle);
   align-self: center;
 }
+
 .header__toggle-icon {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 4px;
 }
+
 .header__toggle-icon span {
   display: block;
   width: 24px;
@@ -163,7 +169,7 @@
 */
 
 /* === MOBILE Overrides === */
-@media (max-width: 767px) { /* md breakpoint */
+@media (width <= 767px) { /* md breakpoint */
   /* Ensure dropdown link is easy to click */
   .header__dropdown > a {
     display: flex;
@@ -178,6 +184,7 @@
     margin: -10px; /* Offset the padding to maintain visual spacing */
     color: var(--secondary-400); /* Orange color to indicate it's interactive */
   }
+
   .header__nav {
     display: none;
     position: static;
@@ -192,6 +199,7 @@
     transform: translateY(-1rem);
     transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   }
+
   .header__nav.is-open {
     display: flex;
     max-height: 100vh;
@@ -199,6 +207,7 @@
     opacity: 1;
     transform: translateY(0);
   }
+
   .header__dropdown-content {
     max-height: none;
     overflow: visible;
@@ -218,6 +227,7 @@
   .header__dropdown--open .header__dropdown-content {
     display: block;
   }
+
   .header__dropdown-content a {
     padding-left: var(--space-2);
   }
@@ -225,7 +235,7 @@
 
 
 /* === Desktop Overrides === */
-@media (min-width: 768px) { /* md breakpoint + 1px */
+@media (width >= 768px) { /* md breakpoint + 1px */
   .header__nav {
     display: flex;
     position: absolute;
