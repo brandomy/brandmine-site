@@ -1,0 +1,31 @@
+{% comment %}
+  Market-Sector Regions
+  Displays region information for a market-sector intersection.
+{% endcomment %}
+
+{% assign market_sector_map = site.data.market_sector_map.market_sector_map %}
+
+{% for ms in market_sector_map %}
+  {% if ms.market == market and ms.sector == sector %}
+    {% assign market_sector_data = ms %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if market_sector_data.regions %}
+<div class="panel panel--light">
+  <div class="panel__content">
+    <div class="market-sector__regions">
+      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.regions | default: "Key Regions" }}</h2>
+      <div class="market-sector__regions-grid">
+        {% for region in market_sector_data.regions[page.lang] %}
+          <div class="market-sector__region">
+            <h3 class="market-sector__region-title">{{ region.name }}</h3>
+            <p class="market-sector__region-description">{{ region.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -21,6 +21,7 @@ else
   echo "⚠️ Possible unbalanced Liquid tags detected:" | tee -a "$LOG_FILE"
   echo "$LIQUID_ISSUES" | tee -a "$LOG_FILE"
 fi
+echo "📝 Report: Liquid tag check complete – $( [[ -z "$LIQUID_ISSUES" ]] && echo 'no issues found' || echo 'issues detected' )" | tee -a "$LOG_FILE"
 
 # === 2. Check for malformed endif tags
 echo "" | tee -a "$LOG_FILE"
@@ -34,6 +35,7 @@ else
   echo "⚠️ Found malformed endif tags:" | tee -a "$LOG_FILE"
   echo "$LIQUID_ENDIF_ISSUES" | tee -a "$LOG_FILE"
 fi
+echo "📝 Report: Malformed endif tag check complete – $( [[ -z "$LIQUID_ENDIF_ISSUES" ]] && echo 'no issues found' || echo 'issues detected' )" | tee -a "$LOG_FILE"
 
 # Check for unclosed comment tags
 echo "Checking for unbalanced comment tags..." | tee -a "$LOG_FILE"
@@ -46,6 +48,7 @@ else
   echo "Files with potentially unclosed comment tags:" | tee -a "$LOG_FILE"
   grep -r -l "{% comment %}" --include="*.html" . | xargs grep -L "{% endcomment %}" | tee -a "$LOG_FILE"
 fi
+echo "📝 Report: Comment tag balance check – ${COMMENT_OPENS} open / ${COMMENT_CLOSES} close" | tee -a "$LOG_FILE"
 
 # === 3. Check SCSS for suspicious '}}' (excluding Liquid)
 echo "" | tee -a "$LOG_FILE"
@@ -58,6 +61,7 @@ else
   echo "⚠️ Found suspicious double closing braces in SCSS files:" | tee -a "$LOG_FILE"
   echo "$SCSS_ISSUES" | tee -a "$LOG_FILE"
 fi
+echo "📝 Report: SCSS double brace check – $( [[ -z "$SCSS_ISSUES" ]] && echo 'no issues found' || echo 'issues detected' )" | tee -a "$LOG_FILE"
 
 # === 4. Check for missing include files
 echo "" | tee -a "$LOG_FILE"
@@ -88,6 +92,7 @@ rm /tmp/includes_temp.txt
 if [[ $MISSING_INCLUDES -eq 0 ]]; then
   echo "✓ All included files appear to exist" | tee -a "$LOG_FILE"
 fi
+echo "📝 Report: Include file existence check – $( [[ $MISSING_INCLUDES -eq 0 ]] && echo 'all includes found' || echo 'missing includes detected' )" | tee -a "$LOG_FILE"
 
 # === 5. Validate all YAML files in _data/ and collections
 echo "" | tee -a "$LOG_FILE"
@@ -117,6 +122,7 @@ for file in $YAML_FILES; do
     YAML_ERROR=1
   fi
 done
+echo "📝 Report: YAML validation check – $( [[ $YAML_ERROR -eq 0 ]] && echo 'all valid' || echo 'errors found' )" | tee -a "$LOG_FILE"
 
 # === 6. Check for potential self-referencing includes
 echo "" | tee -a "$LOG_FILE"
@@ -142,6 +148,36 @@ else
   echo "⚠️ Potential self-referencing includes detected:" | tee -a "$LOG_FILE"
   echo "$SELF_REFERENCES" | tee -a "$LOG_FILE"
 fi
+echo "📝 Report: Self-referencing include check – $( [[ -z "$SELF_REFERENCES" ]] && echo 'none found' || echo 'self-includes detected' )" | tee -a "$LOG_FILE"
+
+echo "" | tee -a "$LOG_FILE"
+echo "🖼️ Checking for broken image paths in markdown and HTML files..." | tee -a "$LOG_FILE"
+BROKEN_IMAGES=$(grep -rEo '!\[.*\]\(([^)]+)\)|<img [^>]*src="([^"]+)"' . | grep -oE 'assets/images/[^") ]+' | sort -u | while read -r img; do
+  if [[ ! -f "$img" ]]; then
+    echo "❌ Missing image file: $img"
+  fi
+done)
+if [[ -z "$BROKEN_IMAGES" ]]; then
+  echo "✓ No broken image paths detected" | tee -a "$LOG_FILE"
+else
+  echo "$BROKEN_IMAGES" | tee -a "$LOG_FILE"
+fi
+
+echo "" | tee -a "$LOG_FILE"
+echo "📁 Checking for empty or missing SCSS files in assets/css/components/ and pages/..." | tee -a "$LOG_FILE"
+find assets/css/components/ assets/css/pages/ -name "*.scss" | while read -r file; do
+  if [[ ! -s "$file" ]]; then
+    echo "⚠️ Empty or missing SCSS file: $file" | tee -a "$LOG_FILE"
+  fi
+done
+
+echo "" | tee -a "$LOG_FILE"
+echo "🧹 Checking for unused include files in _includes/..." | tee -a "$LOG_FILE"
+USED_INCLUDES=$(grep -r "{% include " . --include="*.html" | sed -E 's/.*{% include ([^ }]+).*/\1/' | sort -u)
+for f in $(find _includes -type f -name "*.html"); do
+  BASE=$(basename "$f")
+  echo "$USED_INCLUDES" | grep -q "$BASE" || echo "⚠️ Possibly unused include: $f" | tee -a "$LOG_FILE"
+done
 
 # === Final Summary
 echo "" | tee -a "$LOG_FILE"

@@ -10,7 +10,7 @@
     - label: Custom display text (optional, defaults to translation lookup)
 
   Dependencies:
-    - site.data.dimensions for translations
+    - JSON data files (sectors.json, markets.json, attributes.json, signals.json)
 {% endcomment %}
 
 {% assign class_prefix = include.class_name | default: "brand-card" %}
@@ -21,11 +21,25 @@
 <!-- First try to get the label from the provided custom label -->
 {% assign display_label = include.label %}
 
-<!-- If no custom label provided, try to get it from dimensions.json structure -->
+<!-- If no custom label provided, try to get it from JSON structure -->
 {% if display_label == nil %}
-  {% if site.data.dimensions[tag_type_plural][tag_value][page.lang] %}
-    {% assign display_label = site.data.dimensions[tag_type_plural][tag_value][page.lang] %}
+  <!-- Get the appropriate array based on the tag type -->
+  {% assign items_array = site.data[tag_type_plural][tag_type_plural] %}
+  {% assign found_item = nil %}
+
+  <!-- Loop through the array to find the matching item -->
+  {% for item in items_array %}
+    {% if item.id == tag_value %}
+      {% assign found_item = item %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  <!-- If item found, use the translated name -->
+  {% if found_item %}
+    {% assign display_label = found_item.translations[page.lang].name %}
   {% else %}
+    <!-- Fallback to the provided value if not found -->
     {% assign display_label = tag_value %}
   {% endif %}
 {% endif %}

@@ -1,0 +1,29 @@
+{% comment %}
+  All Sectors Grid (JSON Version)
+  Displays a grid of all sector items used in the discovery section.
+  Used in: /discover/sectors/
+{% endcomment %}
+
+{% assign sectors = site.data.sectors.sectors %}
+
+<div class="sectors-grid">
+  {% for sector in sectors %}
+    <div class="sector-card">
+      <div class="sector-card__icon">
+        {% if sector.icon %}
+          <img src="{{ '/assets/images/icons/' | append: sector.icon | relative_url }}" alt="{{ sector.name[page.lang] }} icon">
+        {% else %}
+          <div class="sector-card__placeholder-icon"></div>
+        {% endif %}
+      </div>
+
+      <h3 class="sector-card__title">{{ sector.name[page.lang] }}</h3>
+
+      <p class="sector-card__description">{{ sector.description[page.lang] }}</p>
+
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector.id }}/" class="sector-card__link">
+        {{ site.data.translations[page.lang].discover.explore_sector }}
+      </a>
+    </div>
+  {% endfor %}
+</div>

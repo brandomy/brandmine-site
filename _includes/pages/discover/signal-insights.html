@@ -1,0 +1,54 @@
+{% comment %}
+Component: pages/discover/signal-insights.html
+
+Purpose: Displays insights related to growth signals, showcasing relevant
+         articles and thought leadership content.
+
+Dependencies:
+- site.insights collection
+- site.data.translations[page.lang]
+- components/cards/insight-card.html include
+{% endcomment %}
+
+<div class="panel panel--accent-pattern">
+  <div class="panel__content">
+    <section class="signals__insights">
+      <div class="signals__section-header">
+        <h2 class="signals__section-title">
+          <span class="signals__icon signals__icon--insights">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </span>
+          {{ site.data.translations[page.lang].discover.signal_insights | default: "Signal Insights" }}
+        </h2>
+        <p class="signals__section-description">
+          {{ site.data.translations[page.lang].discover.signal_insights_description | default: "Learn about growth opportunities and expansion strategies" }}
+        </p>
+      </div>
+
+      <div class="signals__insights-grid">
+        {% assign signal_insights = site.insights | where: "lang", page.lang | where_exp: "insight", "insight.signals.size > 0" | sort: "date" | reverse %}
+
+        {% if signal_insights.size > 0 %}
+          {% for insight in signal_insights limit:3 %}
+            {% include components/cards/insight-card.html insight=insight %}
+          {% endfor %}
+
+          {% if signal_insights.size > 3 %}
+            <div class="signals__insights-action">
+              <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn--primary">
+                {{ site.data.translations[page.lang].discover.view_all_insights | default: "View All Insights" }}
+              </a>
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="signals__empty-state">
+            <p>{{ site.data.translations[page.lang].discover.no_insights_found | default: "No signal-related insights available yet." }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+</div>

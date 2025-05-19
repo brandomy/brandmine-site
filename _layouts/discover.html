@@ -1,40 +1,8 @@
----
+html---
 layout: default
 ---
-<!-- ----------------------------------------------------------------------------
-  DISCOVER DIMENSION CATEGORY WRAPPER LAYOUT
-  ------------------------------------------------------------------------------
-  This layout is used for all individual dimension-specific pages in the
-  /discover/ section (e.g., Sectors, Markets, Attributes, Signals).
+<!-- DISCOVER DIMENSION CATEGORY WRAPPER LAYOUT (LOGIC-LIGHT REFACTORED) -->
 
-  It plays a key bridging role between:
-    - `discovery.html` → the high-level Discovery landing hub
-    - `dimension.html` → the detailed view for each individual tag within a dimension
-
-  Purpose:
-  - Wraps each of the 4 dimension overviews in a consistent format
-  - Injects the multilingual discovery navigation tabs via `collections/dimensions/discovery-navigation.html`
-  - Applies a context-aware background style via `container_class`
-    (e.g., sectors, markets) depending on the `page.discovery_path`
-
-  Typical usage:
-  - Assigned in front matter of:
-    /en/discover/sectors.md
-    /en/discover/markets.md
-    /en/discover/attributes.md
-    /en/discover/signals.md
-
-  Related layouts:
-  - `discovery.html`: used by /{lang}/discovery.md for hub-level introduction
-  - `dimension.html`: used for individual tag landing pages like
-    /en/discover/sectors/wine or /zh/discover/markets/china
-
-  Dependencies:
-  - _includes/collections/dimensions/discovery-navigation.html
-  - _layouts/default.html (as base wrapper)
-  - Uses `page.discovery_path` and `site.data.translations[lang]`
-    for styling and multilingual support
----------------------------------------------------------------------------- -->
 {% assign container_class = '' %}
 {% if page.discovery_path == 'sectors' %}
   {% assign container_class = 'discovery-tabs-container--sectors' %}
@@ -49,12 +17,18 @@ layout: default
 <!-- Dimension Types under Discover Section-->
 {% include components/dimensions/discovery-navigation.html style_option='b' active_type=page.discovery_path %}
 
-
 <!-- Main Content Panel - with discovery-content modifier to remove top padding -->
 <div class="panel panel--light panel--discovery-content">
   <div class="panel__content panel__content--full-width">
     <div class="discovery__content">
-      {{ content }}
+      {% if page.sections %}
+        {% for section in page.sections %}
+          {% assign section_path = 'pages/discover/' | append: section | append: '.html' %}
+          {% include {{ section_path }} discovery_path=page.discovery_path %}
+        {% endfor %}
+      {% else %}
+        {{ content }}
+      {% endif %}
     </div>
   </div>
 </div>

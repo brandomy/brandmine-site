@@ -2,210 +2,82 @@
 layout: default
 ---
 <!-- ----------------------------------------------------------------------------
-  DIMENSION LAYOUT (REFACTORED)
+  DIMENSION LAYOUT (LOGIC-LIGHT REFACTORED)
   ------------------------------------------------------------------------------
   This layout is used for all individual tag pages under the /discover/ section,
-  such as a specific Sector (e.g., Wine), Market (e.g., Brazil), Attribute 
+  such as a specific Sector (e.g., Wine), Market (e.g., Brazil), Attribute
   (e.g., Founder-Led), or Signal (e.g., High Growth).
 
-  Purpose:
-  - Displays a filtered brand listing tied to a single tag and dimension type.
-  - Shows Featured Brands, Additional Brands, and Related Insights.
-  - Supports tag-type-specific filters (e.g., market dropdowns on sector pages).
-  - Handles multilingual rendering via page.lang and translation data files.
+  LOGIC-LIGHT ARCHITECTURE:
+  - Uses page.sections array to define content sections
+  - Loops through sections and includes relevant templates
+  - Falls back to default sections if none specified
 
-  Navigation:
-  - Uses pages/dimension/navigation.html component for consistent navigation tabs.
-  - Applies a dynamic class to style the tab background based on tag type.
-
-  Typically used in:
-  - /en/discover/sectors/wine.md
-  - /zh/discover/markets/china.md
-  - /ru/discover/attributes/founder-led.md
+  Sections typically used in dimension page front matter:
+  - navigation (required)
+  - header (required)
+  - market-highlights (for sector and attribute pages)
+  - market-sectors (for market pages)
+  - content-panel (contains sub-sections in page.panel_sections)
+  - related-brands
+  - all-brands
+  - related-insights
 
   Dependencies:
   - _includes/pages/dimension/* components
   - site.data.translations
-  - site.data.dimensions
   - site.brands collection
   - site.insights collection
 ----------------------------------------------------------------------------- -->
 
-{% include pages/dimension/navigation.html dimension=page %}
 
-{% include pages/dimension/header.html dimension=page %}
+{% if page.sections %}
+  {% for section in page.sections %}
+    {% if section == 'content-panel' %}
+      <!-- Content panel is a special case containing multiple sub-sections -->
+      <div class="panel panel--light">
+        <div class="panel__content">
+          {% if page.panel_sections %}
+            {% for panel_section in page.panel_sections %}
+              {% assign panel_section_path = 'pages/dimension/' | append: panel_section | append: '.html' %}
+              {% include {{ panel_section_path }} dimension=page %}
+            {% endfor %}
+          {% else %}
+            <!-- Default panel sections if not specified -->
+            {% include pages/dimension/featured-brands.html dimension=page %}
+            {% include pages/dimension/related-brands.html dimension=page %}
+            {% include pages/dimension/all-brands.html dimension=page %}
+            {% include pages/dimension/related-insights.html dimension=page %}
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      {% assign section_path = 'pages/dimension/' | append: section | append: '.html' %}
+      {% include {{ section_path }} dimension=page %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <!-- Fallback to default sections if none specified -->
+  {% include pages/dimension/navigation.html dimension=page %}
+  {% include pages/dimension/header.html dimension=page %}
 
-{% include pages/dimension/market-highlights.html dimension=page %}
+  {% if page.tag_type == 'sector' or page.tag_type == 'attribute' %}
+    {% include pages/dimension/market-highlights.html dimension=page %}
+  {% endif %}
 
-{% include pages/dimension/market-sectors.html dimension=page %}
+  {% if page.tag_type == 'market' %}
+    {% include pages/dimension/market-sectors.html dimension=page %}
+  {% endif %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    {% include pages/dimension/featured-brands.html dimension=page %}
-    
-    {% include pages/dimension/related-brands.html dimension=page %}
-    
-    {% include pages/dimension/all-brands.html dimension=page %}
-    
-    {% include pages/dimension/related-insights.html dimension=page %}
+  <div class="panel panel--light">
+    <div class="panel__content">
+      {% include pages/dimension/featured-brands.html dimension=page %}
+      {% include pages/dimension/related-brands.html dimension=page %}
+      {% include pages/dimension/all-brands.html dimension=page %}
+      {% include pages/dimension/related-insights.html dimension=page %}
+    </div>
   </div>
-</div>
+{% endif %}
 
-<!-- JavaScript for filtering and sorting functionality -->
-<script class="dimension-page-script">
-  document.addEventListener('DOMContentLoaded', function() {
-    // Brand filtering functionality
-    const searchInput = document.getElementById('brandsSearchInput');
-    const sortSelect = document.getElementById('brandsSortSelect');
-    const marketSelect = document.getElementById('brandsMarketSelect');
-    const brandItems = document.querySelectorAll('.dimension-all-brands__list-item');
-    const loadMoreBtn = document.getElementById('loadMoreBrands');
-    
-    let visibleCount = 20;
-    
-    // Initial setup - hide items beyond the initial count
-    if (brandItems.length > visibleCount) {
-      for (let i = visibleCount; i < brandItems.length; i++) {
-        brandItems[i].style.display = 'none';
-      }
-    }
-    
-    // Load more function
-    if (loadMoreBtn) {
-      loadMoreBtn.addEventListener('click', function() {
-        visibleCount += 20;
-        
-        // Show more items
-        for (let i = 0; i < Math.min(visibleCount, brandItems.length); i++) {
-          if (brandItems[i].classList.contains('filtered-in')) {
-            brandItems[i].style.display = 'flex';
-          }
-        }
-        
-        // Hide button if all items are shown
-        if (visibleCount >= brandItems.length) {
-          loadMoreBtn.style.display = 'none';
-        }
-      });
-    }
-    
-    // Filter function
-    function filterBrands() {
-      const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-      const sortValue = sortSelect ? sortSelect.value : 'name-asc';
-      const marketValue = marketSelect ? marketSelect.value : 'all';
-      
-      // Reset visible count
-      visibleCount = 20;
-      
-      // Show load more button if it exists
-      if (loadMoreBtn) {
-        loadMoreBtn.style.display = 'block';
-      }
-      
-      // Filter items
-      let filteredItems = Array.from(brandItems).filter(item => {
-        const name = item.getAttribute('data-name').toLowerCase();
-        const market = item.getAttribute('data-market').toLowerCase();
-        
-        const matchesSearch = !searchTerm || name.includes(searchTerm);
-        const matchesMarket = marketValue === 'all' || market === marketValue;
-        
-        const showItem = matchesSearch && matchesMarket;
-        
-        // Add/remove filtered-in class
-        if (showItem) {
-          item.classList.add('filtered-in');
-        } else {
-          item.classList.remove('filtered-in');
-        }
-        
-        return showItem;
-      });
-      
-      // Sort items
-      filteredItems.sort((a, b) => {
-        const nameA = a.getAttribute('data-name');
-        const nameB = b.getAttribute('data-name');
-        
-        if (sortValue === 'name-asc') {
-          return nameA.localeCompare(nameB);
-        } else if (sortValue === 'name-desc') {
-          return nameB.localeCompare(nameA);
-        }
-        // Add more sorting options as needed
-        return 0;
-      });
-      
-      // Update DOM order based on sorting
-      const container = document.querySelector('.dimension-all-brands__list');
-      filteredItems.forEach(item => container.appendChild(item));
-      
-      // Update visibility based on count
-      filteredItems.forEach((item, index) => {
-        item.style.display = index < visibleCount ? 'flex' : 'none';
-      });
-      
-      // Update load more button visibility
-      if (loadMoreBtn) {
-        loadMoreBtn.style.display = filteredItems.length > visibleCount ? 'block' : 'none';
-      }
-    }
-    
-    // Set up event listeners
-    if (searchInput) {
-      searchInput.addEventListener('input', filterBrands);
-    }
-    
-    if (sortSelect) {
-      sortSelect.addEventListener('change', filterBrands);
-    }
-    
-    if (marketSelect) {
-      marketSelect.addEventListener('change', filterBrands);
-    }
-    
-    // Carousel functionality
-    const carousel = document.querySelector('.dimension-related-brands__carousel');
-    const dots = document.querySelectorAll('.dimension-related-brands__carousel-dot');
-    
-    if (carousel && dots.length) {
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-          // Calculate scroll position
-          const cardWidth = 280; // Approximate width of a card
-          const gapWidth = 16; // Approximate gap between cards
-          const scrollAmount = index * (cardWidth + gapWidth) * 3; // 3 cards per page
-          
-          // Smooth scroll to position
-          carousel.scrollTo({
-            left: scrollAmount,
-            behavior: 'smooth'
-          });
-          
-          // Update active dot
-          dots.forEach(d => d.classList.remove('dimension-related-brands__carousel-dot--active'));
-          dot.classList.add('dimension-related-brands__carousel-dot--active');
-        });
-      });
-      
-      // Update dots on scroll
-      carousel.addEventListener('scroll', function() {
-        const scrollPosition = carousel.scrollLeft;
-        const cardWidth = 280 + 16; // card + gap
-        const visibleCards = 3;
-        const pageWidth = cardWidth * visibleCards;
-        
-        const activePage = Math.floor(scrollPosition / pageWidth);
-        
-        dots.forEach((dot, index) => {
-          if (index === activePage) {
-            dot.classList.add('dimension-related-brands__carousel-dot--active');
-          } else {
-            dot.classList.remove('dimension-related-brands__carousel-dot--active');
-          }
-        });
-      });
-    }
-  });
-</script>
+<!-- Reference the external JS file instead of inline script -->
+<script src="{{ '/assets/js/pages/dimension/dimension-filtering.js' | relative_url }}"></script>

@@ -1,0 +1,23 @@
+{% comment %}
+  Component: components/images/hero-image.html
+  Purpose: Simplified component for standard hero images
+
+  Parameters:
+  - path: Path to the image (required)
+  - alt: Alt text (required)
+  - class: Additional CSS classes (optional)
+  - loading: Loading priority (optional, default: "eager")
+{% endcomment %}
+
+{% comment %} Set loading priority {% endcomment %}
+{% assign loading_attr = include.loading | default: "eager" %}
+
+<img src="{{ include.path | append: '-1200w.jpg' | relative_url }}"
+     srcset="{{ include.path | append: '-400w.jpg' | relative_url }} 400w,
+             {{ include.path | append: '-800w.jpg' | relative_url }} 800w,
+             {{ include.path | append: '-1200w.jpg' | relative_url }} 1200w,
+             {{ include.path | append: '-1600w.jpg' | relative_url }} 1600w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+     alt="{{ include.alt }}"
+     {% if include.class %}class="{{ include.class }}"{% endif %}
+     loading="{{ loading_attr }}">

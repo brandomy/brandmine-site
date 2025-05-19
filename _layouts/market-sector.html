@@ -1,127 +1,39 @@
 ---
 layout: default
 ---
+{% comment %}
+  MARKET-SECTOR LAYOUT (LOGIC-LIGHT REFACTORED)
+
+  This layout renders pages at the intersection of markets and sectors, like:
+  /discover/markets/russia/sectors/wine/
+
+  Uses page.sections array in front matter to define content sections:
+  sections:
+    - hero
+    - hero-image (optional)
+    - overview
+    - statistics
+    - regions
+    - related-brands
+    - cross-navigation
+
+  If no sections are specified, displays the default set without hero-image.
+{% endcomment %}
 
 {% assign market_slug = page.market %}
 {% assign sector_slug = page.sector %}
 
-{% assign market_data = site.data.market_sectors[page.lang][market_slug] %}
-{% assign sector_data = market_data[sector_slug] %}
-
-{% assign market_name = site.data.translations[page.lang].markets[market_slug] %}
-{% assign sector_name = site.data.translations[page.lang].sectors[sector_slug] %}
-
-<!-- Hero Panel -->
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">{{ sector_data.title }}</h1>
-    <p class="panel__subtitle">{{ site.data.translations[page.lang].market_sectors.market_sector_subtitle | replace: '%market%', market_name | replace: '%sector%', sector_name }}</p>
-  </div>
-</div>
-
-<!-- Content Panel -->
-<div class="panel panel--light">
-  <div class="panel__content">
-    {% if sector_data and sector_data.image and sector_data.image != "" %}
-      {% assign image_path = sector_data.image | strip %}
-      {% if image_path contains '.jpg' or image_path contains '.png' or image_path contains '.jpeg' or image_path contains '.gif' %}
-        <div class="market-sector__image">
-          <img src="{{ image_path | relative_url }}" alt="{{ sector_data.title }}" class="market-sector__image-content">
-        </div>
-      {% endif %}
-    {% endif %}
-    
-    <div class="market-sector__content">
-      {{ sector_data.full_content | markdownify }}
-    </div>
-    
-    {% if sector_data and sector_data.highlights %}
-    <div class="market-sector__highlights">
-      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.highlights | default: "Key Highlights" }}</h2>
-      <ul class="market-sector__highlights-list">
-        {% for highlight in sector_data.highlights %}
-          <li class="market-sector__highlight-item">{{ highlight }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-    
-    {% if sector_data and sector_data.regions %}
-    <div class="market-sector__regions">
-      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.regions | default: "Key Regions" }}</h2>
-      <div class="market-sector__regions-grid">
-        {% for region in sector_data.regions %}
-          <div class="market-sector__region">
-            <h3 class="market-sector__region-title">{{ region.name }}</h3>
-            <p class="market-sector__region-description">{{ region.description }}</p>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
-    
-    {% if sector_data and sector_data.opportunities %}
-    <div class="market-sector__opportunities">
-      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.opportunities | default: "Market Opportunities" }}</h2>
-      <ul class="market-sector__opportunities-list">
-        {% for opportunity in sector_data.opportunities %}
-          <li class="market-sector__opportunity-item">{{ opportunity }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-  </div>
-</div>
-
-<!-- Related Brands Panel -->
-<div class="panel panel--olive-soft">
-  <div class="panel__content">
-    <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.related_brands | default: "Related Brands" }}</h2>
-    
-    {% assign related_brands = site.brands | where: "lang", page.lang | where: "sectors", sector_slug | where: "markets", market_slug %}
-    
-    {% if related_brands.size > 0 %}
-      <div class="brand-card-grid brand-card-grid--3col">
-        {% for brand in related_brands limit:3 %}
-          {% if brand.country_code %}
-            {% include components/cards/brand-card.html brand=brand %}
-          {% endif %}
-        {% endfor %}
-      </div>
-      
-      {% if related_brands.size > 3 %}
-        <div class="market-sector__view-all">
-          <a href="{{ site.baseurl }}/{{ page.lang }}/brands/?sector={{ sector_slug }}&market={{ market_slug }}" class="btn btn--outline">
-            {{ site.data.translations[page.lang].brands.view_all | default: "View All" }}
-          </a>
-        </div>
-      {% endif %}
-    {% else %}
-      <div class="market-sector__empty-state">
-        <p>{{ site.data.translations[page.lang].market_sectors.no_brands | default: "No brands available yet for this sector and market combination." }}</p>
-      </div>
-    {% endif %}
-  </div>
-</div>
-
-<!-- Navigation Panel -->
-<div class="panel panel--light">
-  <div class="panel__content">
-    <div class="market-sector__navigation">
-      <div class="market-sector__navigation-links">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_slug }}/" class="market-sector__navigation-link">
-          <span class="market-sector__navigation-icon">
-            {% include components/icons/icon.html type="sector" name="sector-default" size="sm" %}
-          </span>
-          {{ site.data.translations[page.lang].market_sectors.back_to_sector | replace: '%sector%', sector_name }}
-        </a>
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_slug }}/" class="market-sector__navigation-link">
-          <span class="market-sector__navigation-icon">
-            {% include components/icons/icon.html type="market" name="market-default" size="sm" %}
-          </span>
-          {{ site.data.translations[page.lang].market_sectors.back_to_market | replace: '%market%', market_name }}
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+{% if page.sections %}
+  {% for section in page.sections %}
+    {% assign section_path = 'pages/market-sector/' | append: section | append: '.html' %}
+    {% include {{ section_path }} market=market_slug sector=sector_slug %}
+  {% endfor %}
+{% else %}
+  <!-- Default sections if none specified -->
+  {% include pages/market-sector/hero.html market=market_slug sector=sector_slug %}
+  {% include pages/market-sector/overview.html market=market_slug sector=sector_slug %}
+  {% include pages/market-sector/statistics.html market=market_slug sector=sector_slug %}
+  {% include pages/market-sector/regions.html market=market_slug sector=sector_slug %}
+  {% include pages/market-sector/related-brands.html market=market_slug sector=sector_slug %}
+  {% include pages/market-sector/cross-navigation.html market=market_slug sector=sector_slug %}
+{% endif %}

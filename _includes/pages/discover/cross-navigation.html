@@ -1,0 +1,38 @@
+{% comment %}
+  Cross Navigation (JSON Version)
+  Provides links between discovery dimensions.
+  Used in all discovery pages.
+{% endcomment %}
+
+{% assign dimensions = site.data.dimensions.dimensions %}
+
+<div class="cross-navigation">
+  <h2 class="cross-navigation__title">{{ site.data.translations[page.lang].discover.explore | default: "Explore" }}</h2>
+
+  <div class="cross-navigation__links">
+    {% for dimension in dimensions %}
+      {% assign is_active = false %}
+      {% if discovery_path == dimension.id %}
+        {% assign is_active = true %}
+      {% endif %}
+
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ dimension.id }}/"
+         class="cross-navigation__link {% if is_active %}cross-navigation__link--active{% endif %} cross-navigation__link--{{ dimension.id }}">
+        <span class="cross-navigation__icon">
+          {% include components/icons/dimension-icon.html dimension=dimension.id size="sm" %}
+        </span>
+        {{ dimension.name[page.lang] }}
+      </a>
+    {% endfor %}
+
+    {% if page.lang == 'en' or page.lang == 'ru' %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russia-market-sectors/"
+         class="cross-navigation__link {% if discovery_path == 'russia-market-sectors' %}cross-navigation__link--active{% endif %} cross-navigation__link--russia-market-sectors">
+        <span class="cross-navigation__icon">
+          {% include components/icons/icon.html type="russia-market-sector" name="russia-market-sector-default" size="sm" %}
+        </span>
+        {{ site.data.translations[page.lang].discover.russia_market_sectors_title | default: "Russia Market Sectors" }}
+      </a>
+    {% endif %}
+  </div>
+</div>

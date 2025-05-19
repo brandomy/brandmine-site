@@ -3,6 +3,19 @@
    ==========================================================================
    Core layout styles for insight article pages
 */
+
+// Import all component styles
+@import "header";
+@import "featured-image";
+@import "content";
+@import "taxonomy";
+@import "map-view";
+@import "market-chart";
+
+// Import sidebar components (imports all sidebar styles)
+@import "sidebar/_index";
+
+
 .insight-article-page {
   .insight-detail-container {
     display: grid;
@@ -31,13 +44,3 @@
   }
 }
 
-// Import all component styles
-@import "header";
-@import "featured-image";
-@import "content";
-@import "taxonomy";
-@import "map-view";
-@import "market-chart";
-
-// Import sidebar components (imports all sidebar styles)
-@import "sidebar/index";
