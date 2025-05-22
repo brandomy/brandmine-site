@@ -4,6 +4,10 @@
 
   .discovery-dimensions {
     margin: var(--space-12) 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-4);
 
     &__grid {
       display: grid;
@@ -19,6 +23,15 @@
     &__panel {
       border-radius: var(--radius-lg);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      // Override the panel full-width behavior
+      width: 100% !important;
+      margin: 0 !important;
+      position: static !important;
+      left: auto !important;
+      right: auto !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
 
       &:hover {
         transform: translateY(-2px);
@@ -109,4 +122,32 @@
     }
   }
 
+}
+/* Override for discovery dimensions panels when not in discovery-page context */
+body:not(.discovery-page) .discovery-dimensions {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-4);
+
+  .discovery-dimensions__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+
+    @media (width <= 768px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+
+  .panel {
+    width: 100% !important;
+    margin: 0 !important;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }

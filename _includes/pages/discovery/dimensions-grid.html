@@ -3,27 +3,6 @@ Component: dimensions-grid.html
 
 Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, attributes, signals).
          Each quadrant provides visual navigation with icons, descriptions, and sample tags.
-
-Dependencies:
-- Data: site.data.translations[page.lang]
-- CSS: /assets/css/pages/discovery/dimensions-grid.scss
-- JS: /assets/js/pages/discovery/discovery.js (for hover effects)
-
-Variables Used:
-- page.lang: Current language
-- site.data.sectors, markets, attributes, signals: Tag data
-
-Classes:
-- .discovery-dimensions: Main container
-- .discovery-dimensions__grid: 2x2 grid layout
-- .discovery-dimensions__panel: Individual dimension panel
-- .discovery-dimensions__icon: Dimension icon
-- .discovery-dimensions__tags: Tag samples
-
-Notes:
-- Each dimension uses its designated color scheme
-- Shows limited tags with "View All" option
-- Icons are inline SVGs for flexibility
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
@@ -122,7 +101,8 @@ Notes:
             <h2 class="discovery-dimensions__title">
               <span class="discovery-dimensions__icon discovery-dimensions__icon--attribute">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 7h16M4 12h16M4 17h10"></path>
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
                 </svg>
               </span>
               {{ nav.attributes | default: "Attributes" }}
