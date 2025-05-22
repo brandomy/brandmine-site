@@ -1,69 +1,27 @@
 {% comment %}
   Include Name: components/dimensions/discovery-dimensions-grid.html
-
-  Purpose: Displays a responsive grid of the four taxonomy dimensions (sectors, markets, attributes, signals)
-  with color-coded cards, translated titles and descriptions, example tags, and consistent styling across the Brandmine platform.
-
-  Parameters:
-  - title: Optional title override (default: uses dimensions.sectors.title[page.lang], etc.)
-  - description: Optional description override (default: from dimensions.{type}.description[page.lang])
-  - columns: Number of columns to display (optional, default: responsive based on screen size)
-    Values: 1, 2, 3, 4
-  - show_cta: Whether to show the CTA button at bottom (optional, default: true)
-  - cta_url: URL for CTA button (optional, default: discover page)
-  - cta_text: Text for CTA button (optional, default: from dimensions.explore_all[page.lang])
-  - limit: Number of example tags to show per dimension (optional, default: 3)
-
-  Dependencies:
-  - Data source: site.data.dimensions
-  - All translated labels and descriptions are drawn from the unified dimensions.json
-  - CSS: assets/css/components/discovery-dimensions-grid.css
-  - Include: components/icons/dimension-icon.html
-  - Page must define `page.lang` to support multilingual rendering
-  - Tag styling: components/tags.css
-
-  Example Usage:
-  Basic usage (all defaults):
-  {% include components/dimensions/discovery-dimensions-grid.html %}
-
-  Custom layout with two columns:
-  {% include components/dimensions/discovery-dimensions-grid.html
-     columns=2
-     limit=2 %}
-
-  Alternative CTA and no examples:
-  {% include components/dimensions/discovery-dimensions-grid.html
-     limit=0
-     cta_text="View Dimension Options"
-     cta_url="/en/discover/sectors/" %}
-
-  Without CTA button:
-  {% include components/dimensions/discovery-dimensions-grid.html
-     show_cta=false %}
-
-  Notes:
-  - Each dimension has its own color scheme following Brandmine's visual taxonomy system
-    (sectors: olive, markets: sky, attributes: secondary, signals: accent)
-  - The grid is responsive and logic-light, relying on JSON for all content and translation
+  Purpose: Fixed version with correct data access paths
 {% endcomment %}
 
 <div class="discovery-dimensions-grid {% if include.columns %}discovery-dimensions-grid--columns-{{ include.columns }}{% endif %}">
   <!-- Sectors Dimension Card -->
   <div class="discovery-dimension discovery-dimension--sectors">
     <div class="discovery-dimension__header">
-      <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html system="dimensions" type="sectors" name="default" size="lg" %}
+      <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
+        {% include components/icons/icon.html system="dimensions" type="sectors" name="default"%}
       </div>
-      <h3 class="discovery-dimension__title">{{ site.data.dimensions.dimensions[0].translations[page.lang].name }}</h3>
+      <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.sectors }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.dimensions.dimensions[0].translations[page.lang].description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.sectors_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign sectors_array = site.data.sectors.sectors %}
       {% assign limit = include.limit | default: 3 %}
       {% for sector in sectors_array limit:limit %}
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector.id }}/" class="tag tag--sector">{{ sector.translations[page.lang].name }}</a>
       {% endfor %}
-      <span class="discovery-dimension__more">...</span>
+      {% if sectors_array.size > limit %}
+        <span class="discovery-dimension__more">+{{ sectors_array.size | minus: limit }} more</span>
+      {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--sectors">
       {{ site.data.translations[page.lang].discover.view_all_sectors }}
@@ -73,19 +31,21 @@
   <!-- Markets Dimension Card -->
   <div class="discovery-dimension discovery-dimension--markets">
     <div class="discovery-dimension__header">
-      <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html system="dimensions" type="markets" name="default"  size="lg" %}
+      <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
+        {% include components/icons/icon.html system="dimensions" type="markets" name="default" %}
       </div>
-      <h3 class="discovery-dimension__title">{{ site.data.dimensions.dimensions[1].translations[page.lang].name }}</h3>
+      <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.markets }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.dimensions.dimensions[1].translations[page.lang].description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.markets_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign markets_array = site.data.markets.markets %}
       {% assign limit = include.limit | default: 3 %}
       {% for market in markets_array limit:limit %}
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market.id }}/" class="tag tag--market">{{ market.translations[page.lang].name }}</a>
       {% endfor %}
-      <span class="discovery-dimension__more">...</span>
+      {% if markets_array.size > limit %}
+        <span class="discovery-dimension__more">+{{ markets_array.size | minus: limit }} more</span>
+      {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--markets">
       {{ site.data.translations[page.lang].discover.view_all_markets }}
@@ -95,19 +55,21 @@
   <!-- Attributes Dimension Card -->
   <div class="discovery-dimension discovery-dimension--attributes">
     <div class="discovery-dimension__header">
-      <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html system="dimensions" type="attributes" name="default"  size="lg" %}
+      <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
+        {% include components/icons/icon.html system="dimensions" type="attributes" name="default" %}
       </div>
-      <h3 class="discovery-dimension__title">{{ site.data.dimensions.dimensions[2].translations[page.lang].name }}</h3>
+      <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.attributes }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.dimensions.dimensions[2].translations[page.lang].description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.attributes_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign attributes_array = site.data.attributes.attributes %}
       {% assign limit = include.limit | default: 3 %}
       {% for attribute in attributes_array limit:limit %}
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute.id }}/" class="tag tag--attribute">{{ attribute.translations[page.lang].name }}</a>
       {% endfor %}
-      <span class="discovery-dimension__more">...</span>
+      {% if attributes_array.size > limit %}
+        <span class="discovery-dimension__more">+{{ attributes_array.size | minus: limit }} more</span>
+      {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--attributes">
       {{ site.data.translations[page.lang].discover.view_all_attributes }}
@@ -117,19 +79,21 @@
   <!-- Signals Dimension Card -->
   <div class="discovery-dimension discovery-dimension--signals">
     <div class="discovery-dimension__header">
-      <div class="discovery-dimension__icon">
-        {% include components/icons/icon.html system="dimensions" type="signals" name="default"  size="lg" %}
+      <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
+        {% include components/icons/icon.html system="dimensions" type="signals" name="default" %}
       </div>
-      <h3 class="discovery-dimension__title">{{ site.data.dimensions.dimensions[3].translations[page.lang].name }}</h3>
+      <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.signals }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.dimensions.dimensions[3].translations[page.lang].description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.signals_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign signals_array = site.data.signals.signals %}
       {% assign limit = include.limit | default: 3 %}
       {% for signal in signals_array limit:limit %}
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal.id }}/" class="tag tag--signal">{{ signal.translations[page.lang].name }}</a>
       {% endfor %}
-      <span class="discovery-dimension__more">...</span>
+      {% if signals_array.size > limit %}
+        <span class="discovery-dimension__more">+{{ signals_array.size | minus: limit }} more</span>
+      {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--signals">
       {{ site.data.translations[page.lang].discover.view_all_signals }}
