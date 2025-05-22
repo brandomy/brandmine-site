@@ -13,7 +13,7 @@
   Dependencies:
   - CSS: pages/insight/header.scss
   - site.data.translations[page.lang].insights for localized labels
-  - components/icons/insight-icon.html for category icon
+  - components/icons/icon.html for category icon
 
   Used by:
   - insight-article layout via sections array
@@ -33,9 +33,10 @@
   <div class="insight-meta">
     {% if insight.category %}
       <span class="insight-category">
-        {% include components/icons/insight-icon.html
-          category=insight.category
-          size=16
+        {% include components/icons/icon.html
+          system="insights"
+          name=insight.category
+          size="sm"
           class="insight-category-icon" %}
         {% assign normalized_category = insight.category | replace: "-", "_" %}
         {{ t[normalized_category] | default: insight.category }}

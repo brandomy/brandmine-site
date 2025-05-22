@@ -12,7 +12,7 @@
         {% assign base_path = include.insight.hero_image | split: "." %}
         {% assign base_name = base_path[0] %}
         {% assign extension = base_path[1] | default: "jpg" %}
-        
+
         <img src="{{ base_name | relative_url }}-400w.{{ extension }}"
              srcset="{{ base_name | relative_url }}-400w.{{ extension }} 400w,
                      {{ base_name | relative_url }}-800w.{{ extension }} 800w,
@@ -29,10 +29,10 @@
           </svg>
         </div>
       {% endif %}
-      
+
       {% if include.insight.category %}
         <span class="insight-card__category-badge">
-          {% include components/icons/insight-icon.html category=include.insight.category size=16 ultra_simple=true class="insight-card__category-icon" %}
+          {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="insight-card__category-icon" %}
           {% assign normalized_category = include.insight.category | replace: "-", "_" %}
           {{ site.data.translations[page.lang].insights[normalized_category] | default: include.insight.category }}
         </span>
@@ -50,7 +50,7 @@
       </div>
 
       <p class="insight-card__excerpt">{{ include.insight.excerpt | truncate: 120 }}</p>
-      
+
       <div class="insight-card__tags">
         {% if include.insight.markets %}
           {% for market in include.insight.markets limit:1 %}
@@ -59,7 +59,7 @@
             </span>
           {% endfor %}
         {% endif %}
-        
+
         {% if include.insight.sectors %}
           {% for sector in include.insight.sectors limit:1 %}
             <span class="insight-card__tag insight-card__tag--sector">
@@ -67,7 +67,7 @@
             </span>
           {% endfor %}
         {% endif %}
-        
+
         {% if include.insight.attributes %}
           {% for attribute in include.insight.attributes limit:1 %}
             <span class="insight-card__tag insight-card__tag--attribute">
@@ -75,7 +75,7 @@
             </span>
           {% endfor %}
         {% endif %}
-        
+
         {% if include.insight.signals %}
           {% for signal in include.insight.signals limit:1 %}
             <span class="insight-card__tag insight-card__tag--signal">

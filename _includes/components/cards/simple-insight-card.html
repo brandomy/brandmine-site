@@ -5,7 +5,7 @@
     - insight: The insight object to display
   Dependencies:
     - assets/css/components/cards/insight-card.scss
-    - components/icons/insight-icon.html
+    - components/icons/icon.html
     - site.data.translations[lang].insights
 {% endcomment %}
 
@@ -38,7 +38,7 @@
     <div class="insight-card__content">
       {% if include.insight.category %}
         <span class="insight-card__category-badge">
-          {% include components/icons/insight-icon.html category=include.insight.category size=16 ultra_simple=true class="insight-card__category-icon" %}
+          {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="insight-card__category-icon" %}
           {% assign normalized_category = include.insight.category | replace: "-", "_" %}
           {{ site.data.translations[page.lang].insights[normalized_category] | default: include.insight.category }}
         </span>

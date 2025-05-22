@@ -19,7 +19,7 @@
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ dimension.id }}/"
          class="cross-navigation__link {% if is_active %}cross-navigation__link--active{% endif %} cross-navigation__link--{{ dimension.id }}">
         <span class="cross-navigation__icon">
-          {% include components/icons/dimension-icon.html dimension=dimension.id size="sm" %}
+          {% include components/icons/icon.html system="dimensions" type=dimension.id name="default" size="sm" %}
         </span>
         {{ dimension.name[page.lang] }}
       </a>
@@ -29,7 +29,7 @@
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russia-market-sectors/"
          class="cross-navigation__link {% if discovery_path == 'russia-market-sectors' %}cross-navigation__link--active{% endif %} cross-navigation__link--russia-market-sectors">
         <span class="cross-navigation__icon">
-          {% include components/icons/icon.html type="russia-market-sector" name="russia-market-sector-default" size="sm" %}
+          {% include components/icons/icon.html system="dimensions" name="russian-sector" %}
         </span>
         {{ site.data.translations[page.lang].discover.russia_market_sectors_title | default: "Russia Market Sectors" }}
       </a>

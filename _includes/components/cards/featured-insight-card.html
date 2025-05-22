@@ -24,13 +24,13 @@
              class="featured-insight-card__img">
       {% else %}
         <div class="featured-insight-card__placeholder">
-          {% include components/icons/insights-default.svg %}
+          {% include components/icons/icon.html system="insights" name="default" %}
         </div>
       {% endif %}
-      
+
       {% if include.insight.category %}
         <span class="featured-insight-card__category">
-          {% include components/icons/insight-icon.html category=include.insight.category size=16 ultra_simple=true class="featured-insight-card__category-icon" %}
+          {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="featured-insight-card__category-icon" %}
           {% assign normalized_category = include.insight.category | replace: "-", "_" %}
           {{ site.data.translations[page.lang].insights[normalized_category] | default: include.insight.category }}
         </span>
@@ -39,16 +39,16 @@
 
     <div class="featured-insight-card__content">
       <h3 class="featured-insight-card__title">{{ include.insight.title }}</h3>
-      
+
       <div class="featured-insight-card__meta">
         <span class="featured-insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
         {% if include.insight.reading_time %}
           <span class="featured-insight-card__reading-time">{{ include.insight.reading_time }} {{ site.data.translations[page.lang].insights.minute_read | default: "min read" }}</span>
         {% endif %}
       </div>
-      
+
       <p class="featured-insight-card__excerpt">{{ include.insight.excerpt | truncate: 120 }}</p>
-      
+
       <span class="featured-insight-card__read-more">{{ site.data.translations[page.lang].insights.read_more | default: "Read More" }} →</span>
     </div>
   </a>

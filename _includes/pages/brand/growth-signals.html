@@ -15,8 +15,9 @@
             {% for signal in page.signals %}
               <div class="signal-badge">
                 <div class="signal-badge__icon">
-                  {% include components/icons/dimension-icon.html
-                    type="signal"
+                  {% include components/icons/icon.html
+                    system="dimensions"
+                    type="signals"
                     name=signal %}
                 </div>
                 <div class="signal-badge__name">{{ signal }}</div>

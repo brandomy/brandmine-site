@@ -49,7 +49,7 @@
           {% if page.sectors and page.sectors.size > 0 %}
             <div class="discovery-link">
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ page.sectors[0] }}/" class="discovery-card discovery-card--sector">
-                {% include components/icons/dimension-icon.html type="sector" name=page.sectors[0] %}
+                {% include components/icons/icon.html system="dimensions" type="sectors" name=page.sectors[0] %}
                 <div class="discovery-card__content">
                   <h4 class="discovery-card__title">{{ tags_t.sectors }}</h4>
                   <p class="discovery-card__text">{{ site.data.translations[page.lang].discover.explore_sector }}</p>
@@ -62,7 +62,7 @@
           {% if page.markets and page.markets.size > 0 %}
             <div class="discovery-link">
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ page.markets[0] }}/" class="discovery-card discovery-card--market">
-                {% include components/icons/dimension-icon.html type="market" name=page.markets[0] %}
+                {% include components/icons/icon.html system="dimensions" type="markets" name=page.markets[0] %}
                 <div class="discovery-card__content">
                   <h4 class="discovery-card__title">{{ tags_t.markets }}</h4>
                   <p class="discovery-card__text">{{ site.data.translations[page.lang].discover.explore_market }}</p>
