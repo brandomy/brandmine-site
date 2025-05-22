@@ -21,18 +21,6 @@
 <div class="discovery-navigation {{ nav_class }}">
   <div class="discovery-navigation__container {% if active_dimension %}discovery-navigation__container--{{ active_dimension }}{% endif %} {{ include.container_class }}">
     <div class="discovery-navigation__tabs">
-      <!-- Sectors -->
-      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/"
-         class="discovery-navigation__tab {% if active_dimension == 'sectors' %}active{% endif %}"
-         data-dimension="sectors">
-        <span class="discovery-navigation__icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </span>
-        <span class="discovery-navigation__label">{{ site.data.translations[page.lang].nav.sectors }}</span>
-        <span class="discovery-navigation__tooltip">{{ site.data.translations[page.lang].tooltips.sectors }}</span>
-      </a>
 
       <!-- Markets -->
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/"
@@ -47,6 +35,20 @@
         <span class="discovery-navigation__label">{{ site.data.translations[page.lang].nav.markets }}</span>
         <span class="discovery-navigation__tooltip">{{ site.data.translations[page.lang].tooltips.markets }}</span>
       </a>
+
+      <!-- Sectors -->
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/"
+         class="discovery-navigation__tab {% if active_dimension == 'sectors' %}active{% endif %}"
+         data-dimension="sectors">
+        <span class="discovery-navigation__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="discovery-navigation__label">{{ site.data.translations[page.lang].nav.sectors }}</span>
+        <span class="discovery-navigation__tooltip">{{ site.data.translations[page.lang].tooltips.sectors }}</span>
+      </a>
+
 
       <!-- Attributes -->
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/"
