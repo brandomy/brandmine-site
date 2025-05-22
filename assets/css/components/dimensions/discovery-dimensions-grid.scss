@@ -125,8 +125,11 @@
 .discovery-dimension__icon--isolated .icon svg {
   width: 24px !important;
   height: 24px !important;
-  fill: currentColor !important;
+  fill: none !important;
   stroke: currentColor !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
 }
 
 /* Apply dimension-specific backgrounds directly to the container */
@@ -254,4 +257,67 @@
   .discovery-dimensions-grid--columns-4 {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+/* --------------------------------------------------------------------------
+   6. ICON COMPONENT FIXES
+   -------------------------------------------------------------------------- */
+
+/* Fix for the SVG icons in discovery dimensions */
+.discovery-dimension__icon--isolated svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke-width: 2 !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+/* Fix for dimension-specific colors */
+.discovery-dimension--sectors .discovery-dimension__icon--isolated svg {
+  stroke: var(--olive-700) !important;
+  fill: none !important;
+}
+
+.discovery-dimension--markets .discovery-dimension__icon--isolated svg {
+  stroke: var(--sky-700) !important;
+  fill: none !important;
+}
+
+.discovery-dimension--attributes .discovery-dimension__icon--isolated svg {
+  stroke: var(--secondary-700) !important;
+  fill: none !important;
+}
+
+.discovery-dimension--signals .discovery-dimension__icon--isolated svg {
+  stroke: var(--accent-700) !important;
+  fill: none !important;
+}
+
+/* Additional fixes for icon wrappers */
+.discovery-dimension__icon--isolated .icon,
+.discovery-dimension__icon--isolated .icon-wrapper,
+.discovery-dimension__icon--isolated span {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Icon isolation class for test usage */
+.icon--discovery-test {
+  background: transparent !important;
+}
+
+.icon--discovery-test svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke-width: 2 !important;
+  fill: none !important;
 }

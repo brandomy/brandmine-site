@@ -1,6 +1,7 @@
 {% comment %}
   Include Name: components/dimensions/discovery-dimensions-grid.html
-  Purpose: Fixed version with correct data access paths
+  Purpose: Displays a grid of discovery dimensions (sectors, markets, attributes, signals)
+  with consistent styling, example tags, and calls-to-action.
 {% endcomment %}
 
 <div class="discovery-dimensions-grid {% if include.columns %}discovery-dimensions-grid--columns-{{ include.columns }}{% endif %}">
@@ -8,11 +9,11 @@
   <div class="discovery-dimension discovery-dimension--sectors">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
-        {% include components/icons/icon.html system="dimensions" type="sectors" name="default"%}
+        {% include components/icons/icon.html system="dimensions" type="sectors" name="default" class="icon--discovery-test" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.sectors }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.sectors_description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discovery.sectors_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign sectors_array = site.data.sectors.sectors %}
       {% assign limit = include.limit | default: 3 %}
@@ -24,7 +25,7 @@
       {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--sectors">
-      {{ site.data.translations[page.lang].discover.view_all_sectors }}
+      {{ site.data.translations[page.lang].discovery.view_all_sectors }}
     </a>
   </div>
 
@@ -32,11 +33,11 @@
   <div class="discovery-dimension discovery-dimension--markets">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
-        {% include components/icons/icon.html system="dimensions" type="markets" name="default" %}
+        {% include components/icons/icon.html system="dimensions" type="markets" name="default" class="icon--discovery-test" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.markets }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.markets_description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discovery.markets_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign markets_array = site.data.markets.markets %}
       {% assign limit = include.limit | default: 3 %}
@@ -48,7 +49,7 @@
       {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--markets">
-      {{ site.data.translations[page.lang].discover.view_all_markets }}
+      {{ site.data.translations[page.lang].discovery.view_all_markets }}
     </a>
   </div>
 
@@ -56,11 +57,11 @@
   <div class="discovery-dimension discovery-dimension--attributes">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
-        {% include components/icons/icon.html system="dimensions" type="attributes" name="default" %}
+        {% include components/icons/icon.html system="dimensions" type="attributes" name="default" class="icon--discovery-test" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.attributes }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.attributes_description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discovery.attributes_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign attributes_array = site.data.attributes.attributes %}
       {% assign limit = include.limit | default: 3 %}
@@ -72,7 +73,7 @@
       {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--attributes">
-      {{ site.data.translations[page.lang].discover.view_all_attributes }}
+      {{ site.data.translations[page.lang].discovery.view_all_attributes }}
     </a>
   </div>
 
@@ -80,11 +81,11 @@
   <div class="discovery-dimension discovery-dimension--signals">
     <div class="discovery-dimension__header">
       <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
-        {% include components/icons/icon.html system="dimensions" type="signals" name="default" %}
+        {% include components/icons/icon.html system="dimensions" type="signals" name="default" class="icon--discovery-test" %}
       </div>
       <h3 class="discovery-dimension__title">{{ site.data.translations[page.lang].tags.signals }}</h3>
     </div>
-    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discover.signals_description }}</p>
+    <p class="discovery-dimension__description">{{ site.data.translations[page.lang].discovery.signals_description }}</p>
     <div class="discovery-dimension__examples">
       {% assign signals_array = site.data.signals.signals %}
       {% assign limit = include.limit | default: 3 %}
@@ -96,13 +97,13 @@
       {% endif %}
     </div>
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/" class="discovery-dimension__link btn btn--outline discovery-dimension__link--signals">
-      {{ site.data.translations[page.lang].discover.view_all_signals }}
+      {{ site.data.translations[page.lang].discovery.view_all_signals }}
     </a>
   </div>
 </div>
 
 {% if include.show_cta != false %}
 <div class="discovery-cta">
-  <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/discover/' }}" class="btn btn--primary-cta">{{ include.cta_text | default: site.data.translations[page.lang].discover.explore_all | default: "Explore All Discovery Paths" }}</a>
+  <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/discover/' }}" class="btn btn--primary-cta">{{ include.cta_text | default: site.data.translations[page.lang].discovery.explore_all | default: "Explore All Discovery Paths" }}</a>
 </div>
 {% endif %}
