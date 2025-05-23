@@ -3,29 +3,54 @@ layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "玛丽亚·库兹涅佐娃"
 title: "玛丽亚·库兹涅佐娃 - 俄罗斯风味遗产的守护者"
+date: 2025-05-01
 lang: zh
 permalink: /zh/founders/ru-maria-kuznetsova/
+generate_json: true
+sample_data: true
+
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
+
 brands: [ru-seven-spices]
 featured: true
-generation: first
+generation: "first"
+role: "创始人兼美食总监"
+
 country_code: ru
 region: "鞑靼斯坦"
 city: "喀山"
-portrait_image: "assets/images/brands/ru/seven-spices/founder-portrait.jpg"
+
+markets: [ru, fr, se, cn]
+cross_border_expertise: true
+languages: ["ru", "en", "zh"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
 social:
   instagram: 7spices_russia
   linkedin: maria-kuznetsova-7spices
+
 expertise:
   - 烹饪艺术
   - 传统保存技术
   - 可持续采购
   - 食品工匠
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+
+achievements:
+  - "7 Spices在17国建立市场"
+  - "金奖产品：辣根苹果腌制品"
+  - "创建食品考古与区域采集网络"
+
+brief_bio: "7 Spices创始人，通过传统风味再创造，重塑俄罗斯美食在世界的形象。"
+
+description: "玛丽亚·库兹涅佐娃是7 Spices品牌的灵魂人物，致力于推广俄罗斯风味遗产与全球美食文化的融合。"
+keywords: [maria kuznetsova, 七味, 俄罗斯, 可持续, 传统食品]
 ---
 
 # 玛丽亚·库兹涅佐娃：复兴俄罗斯的烹饪遗产

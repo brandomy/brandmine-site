@@ -2,7 +2,7 @@
   Component: pages/home/featured-brands.html
 
   Purpose: Displays a carousel of featured brands on the homepage with different display styles
-  based on featured_level.
+  based on featured_level. Updated to work with new brand structure.
 
   Parameters:
     limit (optional): Number of brands to display, defaults to all featured brands
@@ -11,21 +11,9 @@
     cta_text (optional): Custom text for the CTA button
     premium_only (optional): When true, only shows brands with featured_level 2+ (default: false)
     display_mode (optional): "carousel" (default), "grid", or "mixed" (first brand as hero, rest as regular)
-
-  Dependencies:
-    - CSS: components/cards/brand-card.scss, components/cards/hero-brand-card.scss
-    - JS: pages/home/carousels.js
-    - Includes: components/cards/brand-card.html, components/cards/hero-brand-card.html
-
-  Usage:
-  {% include pages/home/featured-brands.html %}
-  {% include pages/home/featured-brands.html limit=4 %}
-  {% include pages/home/featured-brands.html premium_only=true %}
-  {% include pages/home/featured-brands.html display_mode="mixed" %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].home.featured_brands %}
 {% assign limit = include.limit | default: 10 %}
 {% assign carousel_class = include.carousel_class | default: "" %}
 {% assign premium_only = include.premium_only | default: false %}
@@ -34,37 +22,31 @@
 <div class="panel panel--white featured-brands-section">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ t.title | default: "Featured Brands" }}
+      {% include helpers/t.html key="home.featured_brands.title" fallback="Featured Brands" %}
     </h2>
     <p class="panel__lead-text">
-      {{ include.lead_text | default: t.subtitle | default: "Discover hand-selected brands with compelling narratives and global potential" }}
+      {{ include.lead_text | default: "Discover hand-selected brands with compelling narratives and global potential" }}
     </p>
 
-    {% if premium_only %}
-      {% assign brands = site.brands | where: "lang", current_lang | where_exp: "item", "item.featured_level >= 2" | limit: limit %}
-    {% else %}
-      {% assign brands = site.brands | where: "lang", current_lang | where_exp: "item", "item.featured" | limit: limit %}
-    {% endif %}
+    {% comment %} Use centralized brand filtering {% endcomment %}
+    {% include helpers/brand-filter.html lang=current_lang featured=true premium_only=premium_only limit=limit %}
+    {% assign brands = filtered_brands %}
 
     {% if display_mode == "mixed" and brands.size > 0 %}
       <!-- Mixed mode: First brand as hero, rest in carousel -->
       {% assign first_brand = brands | first %}
-      {% include components/cards/hero-brand-card.html brand=first_brand %}
+      {% include helpers/brand-card-selector.html brand=first_brand force_type="hero" %}
 
       <div class="featured-brands-carousel {{ carousel_class }}">
         {% for brand in brands offset:1 limit:limit %}
-          {% include components/cards/brand-card.html brand=brand %}
+          {% include helpers/brand-card-selector.html brand=brand %}
         {% endfor %}
       </div>
     {% elsif display_mode == "grid" %}
       <!-- Grid display mode -->
       <div class="featured-brands-grid">
         {% for brand in brands %}
-          {% if brand.featured_level >= 2 %}
-            {% include components/cards/hero-brand-card.html brand=brand %}
-          {% else %}
-            {% include components/cards/brand-card.html brand=brand %}
-          {% endif %}
+          {% include helpers/brand-card-selector.html brand=brand %}
         {% endfor %}
       </div>
     {% else %}
@@ -72,19 +54,15 @@
       <div class="featured-brands-carousel {{ carousel_class }}">
         {% if brands.size > 0 %}
           {% for brand in brands %}
-            {% if brand.featured_level >= 2 %}
-              {% include components/cards/hero-brand-card.html brand=brand %}
-            {% else %}
-              {% include components/cards/brand-card.html brand=brand %}
-            {% endif %}
+            {% include helpers/brand-card-selector.html brand=brand %}
           {% endfor %}
         {% else %}
           <!-- Fallback to language-specific example if no featured brands are available -->
           {% if site.data.fallback[current_lang].teatime %}
             {% assign fallback_brand = site.data.fallback[current_lang].teatime %}
-            {% include components/cards/brand-card.html brand=fallback_brand %}
+            {% include helpers/brand-card-selector.html brand=fallback_brand force_type="basic" %}
           {% else %}
-            <p class="no-brands-message">{{ t.no_brands | default: "No featured brands available yet." }}</p>
+            <p class="no-brands-message">{% include helpers/t.html key="common.empty_states.no_brands" fallback="No featured brands available yet." %}</p>
           {% endif %}
         {% endif %}
       </div>
@@ -104,7 +82,7 @@
       <a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
          class="btn btn--primary-cta"
          data-track="featured-brands">
-        {{ include.cta_text | default: t.cta | default: "Explore All Brands" }}
+        {{ include.cta_text | default: "Explore All Brands" }}
       </a>
     </div>
   </div>

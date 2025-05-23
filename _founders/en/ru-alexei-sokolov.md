@@ -3,35 +3,65 @@ layout: founder-profile
 ref: ru-alexei-sokolov
 name: "Alexei Sokolov"
 title: "Alexei Sokolov - TeaTime's Visionary"
-date: 2025-05-02  # Date profile was created or updated
+date: 2025-05-02
 lang: en
 permalink: /en/founders/ru-alexei-sokolov/
+
+# JSON Generation Control
+generate_json: true
+sample_data: true
+
 brands: [ru-teatime]
 featured: true
 generation: first
+role: "CEO & Tea Master"
+
+# Location
 country_code: ru
 region: "Moscow"
 city: "Moscow"
-portrait_image: "assets/images/founders/ru-alexei-sokolov/headshot.jpg"
+
+# Markets and Cross-border
+markets: [ru, gb, fr, de, jp, sg]
+cross_border_expertise: true
+languages: [ru, en, fr]
+
+# Images (Semantic structure)
+images:
+  portrait:
+    name: "portrait"
+    ext: "jpg"
+  headshot:
+    name: "headshot"
+    ext: "jpg"
+  action:
+    name: "action"
+    ext: "jpg"
+
+# Social Media
 social:
   instagram: teatime_russia
   linkedin: alexei-sokolov-teatime
+
+# Professional Info
 expertise:
   - tea blending
   - beverage innovation
   - cultural ambassador
   - brand storytelling
-brief_bio: "Transformed student tea ceremonies into Russia's most successful artisanal tea export with presence in 23 countries."
-sectors: [artisanal-spirits-vodka, gourmet-foods]
-markets: [ru, gb, fr, de, jp, sg]
-cross_border_expertise: true
-languages: [ru, en, fr]  # Using 2-letter ISO codes
+
 achievements:
   - "Featured in Harrods London"
   - "23 countries export presence"
   - "30% annual growth rate"
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
+
+brief_bio: "Transformed student tea ceremonies into Russia's most successful artisanal tea export with presence in 23 countries."
+
+# SEO
+description: "Alexei Sokolov profile - Russian tea entrepreneur who built TeaTime into an international artisanal tea brand with 23-country presence."
+keywords: [alexei sokolov, russia, teatime, tea, artisanal beverages, harrods, cultural ambassador]
+
+# Section Configuration
 sidebar_sections:
   - associated-brands
   - expertise-cloud

@@ -18,30 +18,12 @@
 {% assign tag_value = include.value %}
 {% assign tag_type_plural = tag_type | append: "s" %}
 
-<!-- First try to get the label from the provided custom label -->
-{% assign display_label = include.label %}
-
-<!-- If no custom label provided, try to get it from JSON structure -->
-{% if display_label == nil %}
-  <!-- Get the appropriate array based on the tag type -->
-  {% assign items_array = site.data[tag_type_plural][tag_type_plural] %}
-  {% assign found_item = nil %}
-
-  <!-- Loop through the array to find the matching item -->
-  {% for item in items_array %}
-    {% if item.id == tag_value %}
-      {% assign found_item = item %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-
-  <!-- If item found, use the translated name -->
-  {% if found_item %}
-    {% assign display_label = found_item.translations[page.lang].name %}
-  {% else %}
-    <!-- Fallback to the provided value if not found -->
-    {% assign display_label = tag_value %}
-  {% endif %}
+{% comment %} Use custom label or get from taxonomy data {% endcomment %}
+{% if include.label %}
+  {% assign display_label = include.label %}
+{% else %}
+  {% include helpers/taxonomy-data.html type=tag_type value=tag_value %}
+  {% assign display_label = taxonomy_label %}
 {% endif %}
 
 <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ tag_type_plural }}/{{ tag_value | slugify }}/"

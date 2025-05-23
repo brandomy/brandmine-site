@@ -2,11 +2,15 @@
 layout: default
 ---
 <!-- Brand Profile Layout (Logic-Light Architecture) -->
+{% include components/ui/breadcrumbs.html %}
 <div class="brand-profile">
   <!-- Loop through sections defined in brand's front matter -->
   {% for section in page.sections %}
-    {% capture section_include_path %}pages/brand/{{ section }}.html{% endcapture %}
-    {% include section_include_path brand=page %}
+    <section class="brand-section brand-section--{{ section }}"
+             id="brand-section-{{ section }}"
+             aria-labelledby="heading-{{ section }}">
+      {% include pages/brand/{{ section }}.html brand=page %}
+    </section>
   {% endfor %}
 </div>
 

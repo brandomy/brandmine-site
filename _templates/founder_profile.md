@@ -1,48 +1,82 @@
 ---
+# FOUNDER PROFILE TEMPLATE - Clean Hybrid Approach
+# Human-friendly YAML that auto-generates JSON for Airtable compatibility
+
 layout: founder-profile
-ref: xx-firstname-lastname  # Country code + name slug (e.g., ru-ivan-petrov)
+ref: xx-firstname-lastname  # Global founder ID (country-brandslug format)
 name: "Full Name"
 title: "Full Name - Brief Positioning"  # e.g., "Brazil's Organic Pioneer"
 date: YYYY-MM-DD  # Date profile was created or updated
 lang: en  # Language of this file
 permalink: /en/founders/xx-firstname-lastname/
+
+# JSON Generation Control (MATCHING BRAND PATTERN)
+generate_json: true  # Set to true to include in founders.json output
+sample_data: true    # Flag for sample/test data
+
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+# Controls which sections appear and in what order
+# Each section corresponds to _includes/pages/founder/sections/{section}.html
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
+
+# === CORE INFORMATION (Human-friendly entry) ===
+
+# Basic Founder Information
 brands: [xx-brand-slug]  # Array of associated brand slugs
 featured: false  # Is this a featured founder?
 generation: "first"  # Options: "first", "second", "third", "transition"
 role: "CEO & Founder"  # Their role in the primary brand
+
+# Location (Easy manual entry)
 country_code: xx   # Two-letter country code (ISO 3166-1 alpha-2)
 region: "Region/State"  # Optional: specific region or state
 city: "City Name"
-markets: [xx]  # Array of country codes where they operate  (ISO 3166-1 alpha-2)
+
+# Markets and Cross-border
+markets: [xx]  # Array of country codes where they operate (ISO 3166-1 alpha-2)
 cross_border_expertise: false  # Has international experience?
 languages: ["xx", "xx"]  # Languages they speak (ISO 639-1 codes: en, zh, ru, etc.)
-portrait_image: "/assets/images/founders/xx-firstname-lastname/portrait.jpg" # 2:3 aspect
-headshot_image: "/assets/images/founders/xx-firstname-lastname/headshot.jpg" # 1:1 aspect
-use_headshot: false  # Set to true to use square headshot format
+
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  portrait:
+    name: "portrait"     # Becomes xx-firstname-lastname-portrait-400w.jpg
+    ext: "jpg"
+  headshot:
+    name: "headshot"     # Becomes xx-firstname-lastname-headshot-400w.jpg
+    ext: "jpg"
+  action:
+    name: "action"       # Becomes xx-firstname-lastname-action-400w.jpg
+    ext: "jpg"
+
+# === SOCIAL MEDIA (Easy to edit) ===
 social:
   instagram: username
   linkedin: username
   telegram: username
   twitter: username
   wechat: username
+
+# === PROFESSIONAL INFO (Easy manual entry) ===
 expertise:
   - primary skill
   - secondary skill
   - third skill
   - max 4 items
+
 achievements:
   - "Key achievement 1"
   - "Key achievement 2"
   - "Key achievement 3"
+
 brief_bio: "Brief 1-2 sentence summary of the founder's key contribution or unique positioning. Keep under 120 characters for card display."
+
+# === SEO ===
 description: "SEO-friendly description of the founder profile page"
 keywords: [founder, brandname, expertise, country]
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
 ---
 
 # {{ page.name }}: One-Line Powerful Positioning

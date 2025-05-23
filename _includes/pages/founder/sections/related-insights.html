@@ -19,7 +19,8 @@
 {% assign founder = include.founder | default: page %}
 {% assign limit = include.limit | default: 3 %}
 
-{% assign related_insights = site.insights | where: "lang", founder.lang | where: "category", "founders-journey" | where_exp: "item", "item.brands contains founder.brands[0]" | limit: limit %}
+{% assign first_brand = founder.brands[0] %}
+{% assign related_insights = site.insights | where: "lang", founder.lang | where: "category", "founders-journey" | where_exp: "item", "item.brands contains first_brand" | limit: limit %}
 {% if related_insights.size > 0 %}
 <div class="founder-profile__insights mt-3">
   <h3>{{ site.data.translations[founder.lang].founder.related_insights | default: "Related Insights" }}</h3>

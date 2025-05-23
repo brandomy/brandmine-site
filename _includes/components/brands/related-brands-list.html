@@ -2,45 +2,47 @@
   Include Name: components/brands/related-brands-list.html
 
   Purpose: Displays a list of related brands with logo, title, sector, and description.
-  Used on brand detail pages, tag pages, and other contexts to show related brands.
+  Updated to work with new hybrid YAML/JSON structure.
 
   Parameters:
-  - brands: Array of brand slugs to display (required)
+  - brands: Array of brand IDs to display (required)
 
   Dependencies:
   - site.brands collection with valid brand objects
+  - helpers/brand-name.html and helpers/brand-image.html
   - CSS: related-brands-list.css
   - Data: site.data.translations[lang].brand.no_related_brands for empty state
-
-  Example Usage:
-  {% include components/brands/related-brands-list.html brands=page.related_brands %}
-  {% include components/brands/related-brands-list.html brands=tag.brands %}
-
-  Notes:
-  - Automatically filters brands to match the current page language
-  - Displays brand logo, title, primary sector, and truncated description
-  - Includes fallback message when no related brands are available
-  - Links to each brand's detail page
-  - Truncates descriptions to 80 characters
-  - Uses BEM naming conventions for styling
 {% endcomment %}
 
 {% if include.brands and include.brands.size > 0 %}
 <div class="related-brands">
-  {% for brand_slug in include.brands %}
-    {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
+  {% for brand_id in include.brands %}
+    {% comment %} Find brand by ref instead of slug {% endcomment %}
+    {% assign brand = site.brands | where: "ref", brand_id | where: "lang", page.lang | first %}
     {% if brand %}
     <div class="related-brands__item">
-      {% if brand.logo %}
+      {% comment %} Use helper for logo image {% endcomment %}
+      {% if brand.images.logo %}
       <div class="related-brands__logo">
-        <img src="{{ brand.logo | relative_url }}" alt="{{ brand.title }} logo" class="img-fluid">
+        {% include helpers/brand-image.html
+           brand_id=brand.ref
+           image_type="logo"
+           class="related-brands__logo-img" %}
       </div>
       {% endif %}
+
       <div class="related-brands__info">
-        <h4><a href="{{ brand.url | relative_url }}">{{ brand.title }}</a></h4>
+        <h4>
+          <a href="{{ brand.url | relative_url }}">
+            {% comment %} Use helper for brand name {% endcomment %}
+            {% include helpers/brand-name.html brand_id=brand.ref fallback=brand.title %}
+          </a>
+        </h4>
+
         {% if brand.sectors and brand.sectors.size > 0 %}
         <span class="related-brands__sector">{{ brand.sectors[0] }}</span>
         {% endif %}
+
         <p class="related-brands__description">{{ brand.description | truncate: 80 }}</p>
       </div>
     </div>

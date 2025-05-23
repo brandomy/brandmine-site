@@ -7,6 +7,60 @@ site:
   title: "Brandmine"
   description: "照亮并提升金砖国家及其他国家的创始人主导品牌"
 
+# =============================================================================
+# COMMON ELEMENTS - Centralized to eliminate duplication
+# =============================================================================
+
+common:
+  actions:
+    view_profile: "查看资料"
+    view_all: "查看全部"
+    view_more: "查看更多"
+    read_more: "阅读更多"
+    load_more: "加载更多"
+    get_in_touch: "联系我们"
+    explore: "探索"
+    discover: "发现"
+    browse: "浏览"
+    search: "搜索"
+    apply: "应用"
+    clear: "清除"
+    subscribe: "订阅"
+    submit: "提交"
+    back: "返回"
+    next: "下一个"
+    previous: "上一个"
+  
+  empty_states:
+    no_results: "未找到结果"
+    no_brands: "暂无品牌"
+    no_founders: "暂无创始人"
+    no_insights: "暂无洞察"
+    loading: "加载中..."
+    coming_soon: "即将推出"
+    try_search: "尝试搜索您要查找的内容"
+  
+  forms:
+    search_placeholder: "搜索..."
+    email_placeholder: "您的邮箱地址"
+    name_placeholder: "您的姓名"
+    message_placeholder: "您的留言"
+    required: "必填"
+    optional: "可选"
+  
+  labels:
+    featured: "精选"
+    premium: "高级"
+    new: "新"
+    popular: "热门"
+    trending: "趋势"
+    all: "全部"
+    filter: "筛选"
+    sort: "排序"
+    showing: "显示"
+    of: "共"
+    results: "结果"
+
 # Global navigation
 nav:
   # Main navigation items
@@ -51,10 +105,7 @@ filter:
 
 # Pagination controls
 pagination:
-  load_more: "加载更多"
   current: "当前页"
-  next: "下一页"
-  previous: "上一页"
 
 # Premium content indicators
 premium:
@@ -63,10 +114,7 @@ premium:
 
 # Common buttons
 buttons:
-  view_more: "查看更多"
   all_brands: "所有品牌"
-  view_profile: "查看资料"
-  get_in_touch: "联系我们"
 
 # Footer elements
 footer:
@@ -1049,37 +1097,5 @@ authors:
   olya_eastman: "欧丽雅"
   randal_eastman: "伊仁德"
 
-# Founder names (alphabetically ordered)
-founder_names:
-  alexei_sokolov: "阿列克谢·索科洛夫"
-  anna_kuznetsova: "安娜·库兹涅佐娃"
-  dmitri_voronin: "德米特里·沃罗宁"
-  eduardo_santos: "爱德华多·桑托斯"
-  georgie_yam: "任佐治"
-  isabela_mendez: "伊莎贝拉·门德斯"
-  ivan_petrov: "伊万·彼得罗夫"
-  maria_kuznetsova: "玛丽亚·库兹涅佐娃"
-  marina_petrova: "玛丽娜·彼得罗娃"
-  mikhail_sorokin: "米哈伊尔·索罗金"
-  nikolai_volkov: "尼古拉·沃尔科夫"
-  sofia_egorova: "索菲亚·叶戈罗娃"
-
-# Brand names (alphabetically ordered)
-brand_names:
-  altai_honey: "阿尔泰优质蜂蜜"
-  amazonia_organics: "亚马逊有机农场"
-  baikal_brewing: "贝加尔啤酒公司"
-  casa_do_sol: "太阳之家"
-  crimean_legacy: "克里米亚传承葡萄酒庄"
-  dragonfly_retreats: "上海悠庭保健俱乐部"
-  krasnodar_wines: "克拉斯诺达尔庄园酒庄"
-  moskva_chai: "莫斯科茶"
-  russian_brew: "俄罗斯酿造"
-  serra_verde: "塞拉维德有机农场"
-  seven_spices: "七香料贸易公司"
-  siberian_gold: "西伯利亚黄金蜂蜜"
-  siberian_harvest: "西伯利亚丰收"
-  sojourn_hotels: "寓居精品酒店"
-  taiga_spirits: "泰加烈酒"
-  teatime: "茶时光"
-  terra_brasil_tours: "巴西大地旅行"
+# Founder names - REMOVED: Now using founders.json with multilingual support
+# See: _data/founders.json and helpers/founder-name.html

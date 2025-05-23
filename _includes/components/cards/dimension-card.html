@@ -1,0 +1,57 @@
+{% comment %}
+Component: components/cards/dimension-card.html
+
+Purpose: Reusable dimension card for discovery grid
+
+Parameters:
+- type (required): Dimension type - "sectors", "markets", "attributes", "signals"
+- limit (optional): Number of example tags to show (default: 3)
+
+Dependencies:
+- site.data[type][type] - JSON data array
+- site.data.translations[page.lang] - Translation data
+- components/icons/icon.html - Icon component
+
+Usage:
+{% include components/cards/dimension-card.html type="sectors" limit=3 %}
+{% include components/cards/dimension-card.html type="markets" limit=4 %}
+{% endcomment %}
+
+{% assign limit = include.limit | default: 3 %}
+{% assign items_array = site.data[include.type][include.type] %}
+
+<div class="discovery-dimension discovery-dimension--{{ include.type }}">
+  <div class="discovery-dimension__header">
+    <div class="discovery-dimension__icon discovery-dimension__icon--isolated">
+      {% include components/icons/icon.html system="dimensions" type=include.type name="default" class="icon--discovery-test" %}
+    </div>
+    <h3 class="discovery-dimension__title">
+      {% assign title_key = "tags." | append: include.type %}
+      {% include helpers/t.html key=title_key fallback=include.type %}
+    </h3>
+  </div>
+  
+  <p class="discovery-dimension__description">
+    {% assign desc_key = "discovery." | append: include.type | append: "_description" %}
+    {% include helpers/t.html key=desc_key fallback="Explore" %}
+  </p>
+  
+  <div class="discovery-dimension__examples">
+    {% for item in items_array limit:limit %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/{{ item.id }}/" 
+         class="tag tag--{{ include.type | remove: 's' }}">
+        {{ item.translations[page.lang].name }}
+      </a>
+    {% endfor %}
+    {% if items_array.size > limit %}
+      <span class="discovery-dimension__more">+{{ items_array.size | minus: limit }} more</span>
+    {% endif %}
+  </div>
+  
+  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/" 
+     class="discovery-dimension__link btn btn--outline discovery-dimension__link--{{ include.type }}">
+    {% assign cta_key = "discovery.view_all_" | append: include.type %}
+    {% assign cta_fallback = "View All " | append: include.type | capitalize %}
+    {% include helpers/t.html key=cta_key fallback=cta_fallback %}
+  </a>
+</div>

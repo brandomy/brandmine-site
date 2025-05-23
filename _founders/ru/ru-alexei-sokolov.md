@@ -3,29 +3,54 @@ layout: founder-profile
 ref: ru-alexei-sokolov
 name: "Алексей Соколов"
 title: "Алексей Соколов - Визионер TeaTime"
-lang: ru
-permalink: /ru/founders/ru-alexei-sokolov/
+date: 2025-05-01
+lang: zh
+permalink: /zh/founders/ru-alexei-sokolov/
+generate_json: true
+sample_data: true
+
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
+
 brands: [ru-teatime]
 featured: true
-generation: first
+generation: "first"
+role: "Founder & CEO"
+
 country_code: ru
 region: "Москва"
 city: "Москва"
-portrait_image: "assets/images/brands/ru/teatime/founder-portrait.jpg"
+
+markets: [ru, gb, fr, de]
+cross_border_expertise: true
+languages: ["ru", "en", "zh"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
 social:
   instagram: teatime_russia
   linkedin: alexei-sokolov-teatime
+
 expertise:
   - чайное смешивание
   - инновации в области напитков
   - культурный посол
   - бренд-сторителлинг
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+
+achievements:
+  - "Разработал региональную сеть микро-производств"
+  - "Первый российский чай в Harrods (Лондон)"
+  - "30% годовой рост экспорта"
+
+brief_bio: "Основатель TeaTime, объединивший русские чайные традиции с глобальными рынками через инновации и подлинность."
+
+description: "Профиль Алексея Соколова, визионера TeaTime и культурного моста между российскими традициями и мировой чайной индустрией."
+keywords: [alexei sokolov, teatime, чай, россия, экспорт, ремесло]
 ---
 
 # Алексей Соколов: Объединяя российские чайные традиции с мировыми рынками

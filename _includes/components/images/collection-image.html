@@ -14,6 +14,7 @@
   - class: Additional CSS classes (optional)
   - ext: File extension (optional, default: "jpg")
   - loading: Loading priority (optional, default: "lazy")
+  - fallback: Use placeholder if image missing (optional, default: true)
 
   Supported purpose values:
   - Landscape: hero, thumbnail, gallery, product, feature, (default)
@@ -150,7 +151,13 @@
   {% assign file_ext = "jpg" %}
 {% endif %}
 
-{% comment %} Output the responsive image {% endcomment %}
+{% comment %} Build fallback path if needed {% endcomment %}
+{% unless include.fallback == false %}
+  {% assign fallback_filename = include.collection | append: "-" | append: include.purpose %}
+  {% assign fallback_path = "/assets/images/placeholders/" | append: fallback_filename | append: "-400w." | append: file_ext %}
+{% endunless %}
+
+{% comment %} Output the responsive image with fallback support {% endcomment %}
 <img src="{{ path | append: filename | append: '-400w.' | append: file_ext | relative_url }}"
      srcset="{{ path | append: filename | append: '-400w.' | append: file_ext | relative_url }} 400w,
              {{ path | append: filename | append: '-800w.' | append: file_ext | relative_url }} 800w,
@@ -160,4 +167,5 @@
      {% if include.class %}class="{{ include.class }}"{% endif %}
      {% if include.ratio %}data-ratio="{{ include.ratio }}"{% endif %}
      {% if include.purpose %}data-purpose="{{ include.purpose }}"{% endif %}
+     {% if fallback_path %}onerror="this.src='{{ fallback_path | relative_url }}'; this.onerror=null;"{% endif %}
      loading="{{ loading_attr }}">

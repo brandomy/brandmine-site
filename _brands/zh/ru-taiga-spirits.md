@@ -1,100 +1,59 @@
 ---
-# NEW BRAND FULL TEMPLATE
 layout: brand-profile
-ref: ru-taiga-spirits  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
-title: "泰加烈酒"  # Display name, fallback if JSON lookup fails
+ref: ru-taiga-spirits
+sample_data: true
+title: "泰加烈酒"
 description: "手工酿酒厂用古老的西伯利亚配方和野生采集的原料，创造卓越的小批量伏特加和植物精酒。"
 slogan: "荒野之魂"
 lang: zh
-permalink: /zh/brands/ru-taiga-spirits/  # Simplified permalink without country code
+permalink: /zh/brands/ru-taiga-spirits/
+generate_json: true
 
-# Basic Information
+sections:
+  - identity
+  - founder-narrative
+  - brand-story
+  - product
+  - market-presence
+  - location-intelligence
+  - growth-signals
+  - connections
+
 founding_year: 2014
 website: "https://taigaspirits.ru"
-founders: ["ru-nikolai-volkov"]  # Array of founder keys that match founder_names.json entries
-founder_led: true  # Boolean: Is the founder still actively leading?
+founders: ["ru-nikolai-volkov"]
+founder_led: true
 
-# Taxonomy (all using kebab-case)
-sectors: ["artisanal-spirits"]  # Required: At least one sector from taxonomy
-markets: ["russia"]  # Required: At least one market from taxonomy
-attributes: ["founder-led", "artisanal-excellence"]  # Optional: Brand attributes from taxonomy
-signals: ["export-ready"]  # Optional: Business signals from taxonomy
+sectors: ["artisanal-spirits"]
+markets: ["russia"]
+attributes: ["founder-led", "artisanal-excellence"]
+signals: ["export-ready"]
 
-# Display Settings
 featured: true
-featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
+featured_level: 2
 
-# Location (flat structure for easier data handling)
-location_lat: 51.8561  # Latitude coordinate
-location_lng: 104.8625  # Longitude coordinate
-location_city: "利斯特维扬卡"  # City name (translatable)
-location_region: "伊尔库茨克州"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code
+location:
+  lat: 51.8561
+  lng: 104.8625
+  city: "利斯特维扬卡"
+  region: "伊尔库茨克州"
+  country: "ru"
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/ru-taiga-spirits/logo-color.png"
-hero_image: "/assets/images/brands/ru-taiga-spirits/hero-distillery.jpg"
-founder_portrait: "/assets/images/brands/ru-taiga-spirits/founder-portrait.jpg"
+images:
+  logo: { name: "color", ext: "png" }
+  hero: { name: "storefront", ext: "jpg" }
+  founder: { name: "portrait", ext: "jpg" }
 
-# Social media presence (do not translate URLs)
-facebook: "https://facebook.com/taigaspirits"
-instagram: "https://instagram.com/taiga_spirits"
-linkedin: ""
-pinterest: ""
-redbook: ""
-telegram: "https://t.me/taigaspirits_official"
-tiktok: ""
-twitter: ""
-vk: "https://vk.com/taigaspirits"
-weibo: ""
-wechat: ""
-youtube: "https://youtube.com/c/taigaspirits"
+social_media:
+  facebook: "https://facebook.com/taigaspirits"
+  instagram: "https://instagram.com/taiga_spirits"
+  telegram: "https://t.me/taigaspirits_official"
+  vk: "https://vk.com/taigaspirits"
+  youtube: "https://youtube.com/c/taigaspirits"
 
-# International presence
 export_ready: true
-export_markets: [cn, mn, kz, de]  # Country codes, do not translate
-distribution_models: [direct-export, distributors]  # Do not translate codes
-
-# Timeline milestones (translate event descriptions only)
-timeline:
-  - year: 2014  # Do not translate year
-    event: "在贝加尔湖附近一个改建的木工车间创立了泰加烈酒品牌"  # Translate event description
-  - year: 2016  # Do not translate year
-    event: "推出备受好评的招牌产品'雪松与忍冬'伏特加"  # Translate event description
-  - year: 2018  # Do not translate year
-    event: "开设新的蒸馏厂和植物学实验室"  # Translate event description
-  - year: 2020  # Do not translate year
-    event: "首次向中国和蒙古国际出口"  # Translate event description
-  - year: 2022  # Do not translate year
-    event: "推出以稀有特有草本为特色的限量版'贝加尔深处'系列"  # Translate event description
-
-# Certifications and awards (translate names only)
-certifications:
-  - name: "俄罗斯联邦有机认证"  # Translate name
-    year: 2017  # Do not translate year
-  - name: "可持续野生植物采集认证"  # Translate name
-    year: 2019  # Do not translate year
-  - name: "ISO 22000食品安全管理"  # Translate name
-    year: 2020  # Do not translate year
-awards:
-  - name: "旧金山世界烈酒大赛双金奖"  # Translate name
-    year: 2019  # Do not translate year
-  - name: "国际葡萄酒与烈酒大赛杰出金奖"  # Translate name
-    year: 2021  # Do not translate year
-  - name: "柏林国际烈酒大赛俄罗斯年度蒸馏厂"  # Translate name
-    year: 2022  # Do not translate year
-
-# Gallery captions (translate captions only)
-gallery:
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-bottles.jpg"  # Do not translate path
-    caption: "泰加烈酒招牌系列，带有手绘植物成分标签"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-distillation.jpg"  # Do not translate path
-    caption: "用于小批量蒸馏的传统铜制蒸馏器"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-foraging.jpg"  # Do not translate path
-    caption: "创始人尼古拉·沃尔科夫在泰加林中采集野生植物"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-laboratory.jpg"  # Do not translate path
-    caption: "用于测试原料和开发配方的植物学实验室"  # Translate caption
+export_markets: [cn, mn, kz, de]
+distribution_models: [direct-export, distributors]
 ---
 
 ## 关于泰加烈酒

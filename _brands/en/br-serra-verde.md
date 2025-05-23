@@ -1,13 +1,27 @@
 ---
-# NEW BRAND LITE TEMPLATE
 layout: brand-profile
 ref: br-serra-verde  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
 title: "Serra Verde Organics"  # Display name, fallback if JSON lookup fails
 description: "Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region."
 lang: en
-permalink: /en/brands/br-serra-verde/  # Simplified permalink without country code
+permalink: /en/brands/br-serra-verde/
 
+# JSON Generation Control
+generate_json: true  # Set to true to include in brands.json output
+sample_data: true    # Flag for sample/test data
+
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 # Basic Information
 founding_year: 1986
 website: "https://serraverde.com.br"
@@ -24,22 +38,48 @@ signals: []  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# Location (flat structure for easier data handling)
-location_lng: -45.8558  # Longitude coordinate
-location_lat: -22.6569  # Latitude coordinate
-location_city: "Gonçalves"  # City name (translatable)
-location_region: "Minas Gerais"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: -22.6569  # Latitude coordinate
+  lng: -45.8558  # Longitude coordinate
+  city: "Gonçalves"  # City name (translatable)
+  region: "Minas Gerais"  # Region/state/province (translatable, optional)
+  country: "br"  # ISO country code
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/br-serra-verde/logo-color.png"
-hero_image: "/assets/images/brands/br-serra-verde/hero-farm-view.jpg"
-founder_portrait: "/assets/images/brands/br-serra-verde/founder-portrait.jpg"
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"     # Becomes logo-color-400w.png
+    ext: "png"
+  hero:
+    name: "pastoral"  # Becomes hero-pastoral-400w.jpg
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    ext: "jpg"
 
-# Gallery (translate captions only)
+# === SOCIAL MEDIA ===
+social_media:
+  facebook: ""
+  instagram: "serraverde_organics"
+  linkedin: ""
+  telegram: ""
+  twitter: ""
+  vk: ""
+  youtube: ""
+
+# === BUSINESS INFO ===
+export_ready: true
+export_markets: ["pt", "es"]  # ISO country codes
+distribution_models:
+  - "direct-export"
+  - "distributors"
+
+# === GALLERY ===
 gallery:
-  - image: "/assets/images/brands/br-serra-verde/location-pastoral.jpg"  # Do not translate path
-    caption: "Image of the rolling hills of Serre Verde"  # Translate caption
+  - name: "location-pastoral"
+    ext: "jpg"
+    caption: "Rolling hills of Serra Verde's organic farmland"
 ---
 
 ## About Serra Verde Organics
@@ -53,3 +93,5 @@ Eduardo Santos represents the third generation of his family to farm the mountai
 ## Market Presence
 
 The brand operates locally in its home region through independent retailers and has begun expanding into specialty food stores in major Brazilian cities. Their organic coffee and fruit preserves have gained particular recognition for exceptional quality, with limited export operations to specialty food retailers in Portugal and Spain. Serra Verde also operates a small farm shop and cafe that has become a popular destination for eco-tourists visiting the Serra da Mantiqueira mountain region.
+
+

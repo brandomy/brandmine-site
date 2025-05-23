@@ -1,0 +1,33 @@
+{% comment %}
+FOUNDER DETECTION HELPER
+Standardized logic to determine if a brand is founder-led
+
+Usage:
+{% include helpers/is-founder-led.html brand=brand %}
+<!-- Sets 'is_founder_led' variable to true or false -->
+
+Parameters:
+- brand (required): Brand object to check
+
+Returns: Sets 'is_founder_led' variable for use in calling template
+
+Logic priority:
+1. brand.founder_led (boolean) - explicit flag
+2. brand.founders array length > 0 - has founder entries
+3. brand.founder.founder_led - nested founder object flag
+{% endcomment %}
+
+{% assign is_founder_led = false %}
+
+{% comment %} Check explicit founder_led flag first {% endcomment %}
+{% if include.brand.founder_led == true %}
+  {% assign is_founder_led = true %}
+
+{% comment %} Check if founders array exists and has entries {% endcomment %}
+{% elsif include.brand.founders and include.brand.founders.size > 0 %}
+  {% assign is_founder_led = true %}
+
+{% comment %} Check nested founder object flag {% endcomment %}
+{% elsif include.brand.founder and include.brand.founder.founder_led == true %}
+  {% assign is_founder_led = true %}
+{% endif %}

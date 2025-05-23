@@ -9,7 +9,7 @@
     - show_location: Whether to show location (optional, defaults to false)
 
   Dependencies:
-    - components/helpers/brand-image.html
+    - helpers/brand-image.html
     - components/helpers/founding-year.html
     - components/helpers/location-display.html
 {% endcomment %}
@@ -19,10 +19,10 @@
 
 <header class="{{ class_prefix }}__header">
   <div class="{{ class_prefix }}__logo">
-    {% include components/helpers/brand-image.html
-      brand=brand
-      type="logo"
-      class_name=class_prefix %}
+    {% include helpers/brand-image.html
+      brand_id=brand.ref
+      image_type="logo"
+      class=class_prefix %}
   </div>
 
   <div class="{{ class_prefix }}__header-text">

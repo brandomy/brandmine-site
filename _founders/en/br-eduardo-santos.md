@@ -1,42 +1,74 @@
+# br-eduardo-santos.md
 ---
 layout: founder-profile
 ref: br-eduardo-santos
 name: "Eduardo Santos"
 title: "Eduardo Santos - Brazil's Organic Pioneer"
-date: 2025-05-01  # Date profile was created or updated
+date: 2025-05-01
 lang: en
 permalink: /en/founders/br-eduardo-santos/
+
+# JSON Generation Control
+generate_json: true
+sample_data: true
+
 brands: [br-serra-verde]
 featured: true
 generation: "third"
+role: "Founder & Chief Agriculturalist"
+
+# Location
 country_code: br
 region: "Minas Gerais"
 city: "Gonçalves"
-portrait_image: "assets/images/founders/br-eduardo-santos/headshot.jpg"
+
+# Markets and Cross-border
+markets: [br, pt, es]
+cross_border_expertise: true
+languages: ["pt", "es", "en"]
+
+# Images (Semantic structure)
+images:
+  portrait:
+    name: "portrait"
+    ext: "jpg"
+  headshot:
+    name: "headshot"
+    ext: "jpg"
+  action:
+    name: "action"
+    ext: "jpg"
+
+# Social Media
 social:
   instagram: serraverde_organics
   linkedin: eduardo-santos-serraverde
+
+# Professional Info
 expertise:
   - organic agriculture
   - sustainable farming
   - agroforestry
   - export development
-brief_bio: "Third-generation farmer transforming Brazil's Atlantic Forest agriculture through organic practices and supporting 28 family farms."
-sectors: [gourmet-foods]
-markets: [br, pt, es]
-cross_border_expertise: true
-languages: ["pt", "es", "en"]
+
 achievements:
   - "Restored 500+ hectares of Atlantic Forest"
   - "Network of 28 organic family farms"
   - "International distribution in EU markets"
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
+
+brief_bio: "Third-generation farmer transforming Brazil's Atlantic Forest agriculture through organic practices and supporting 28 family farms."
+
+# SEO
+description: "Eduardo Santos profile - Brazilian organic farming pioneer transforming Atlantic Forest agriculture through sustainable practices and supporting family farms."
+keywords: [eduardo santos, brazil, organic farming, serra verde, atlantic forest, sustainable agriculture]
+
+# Section Configuration
 sidebar_sections:
   - associated-brands
   - expertise-cloud
   - related-insights
 ---
+
 # Eduardo Santos: Transforming Brazil's Atlantic Forest Agriculture
 
 Eduardo Santos represents the third generation of his family to farm the mountainous terrain of southern Minas Gerais, but his approach to agriculture marks a revolutionary departure from conventional practices. As the founder of Serra Verde Organics, he has transformed his family's traditional farm into a pioneering organic operation that now works with a network of 28 family farms throughout Brazil's Atlantic Forest region.
@@ -84,3 +116,4 @@ While Serra Verde began selling locally through independent retailers in its hom
 Looking to the future, Eduardo remains committed to balancing growth with the company's core values. "Our approach has always been about quality over quantity, about depth of relationship rather than breadth of distribution," he reflects. "As we grow, my priority is ensuring that we maintain these principles—that we continue to farm in ways that heal rather than extract, that build community rather than just commerce."
 
 Through his leadership, Eduardo has not only transformed his family's agricultural legacy but has demonstrated a model for sustainable farming that respects Brazil's unique ecological heritage while creating products that command premium recognition in global markets.
+

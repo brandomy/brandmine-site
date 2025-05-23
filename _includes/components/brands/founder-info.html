@@ -1,34 +1,111 @@
 <!-- _includes/components/brands/founder-info.html -->
+<!-- ENHANCED: Works with both collection founders and JSON helpers (HYBRID APPROACH) -->
+
 {% comment %}
-  Component: components/brand/founder-info.html
-  Purpose: Displays founder information with optional portrait
+  Component: components/brands/founder-info.html
+  Purpose: Displays founder information on brand pages
+  HYBRID: Enhanced to use JSON helpers for brand pages with founder IDs
+
   Parameters:
-    - founder: Founder object
-    - portrait: Path to portrait image
+    - founder: Founder object (from collection - EXISTING)
+    - founder_ids: Array of founder IDs (for JSON lookup - NEW)
+    - portrait: Path to portrait image (legacy)
     - lang: Language code
-    - brand_slug: Brand slug for image path (full slug format)
+    - brand_slug: Brand slug for image path
 {% endcomment %}
 
-{% if include.founder.name %}
-<div class="brand-header__founder-brief">
-  <strong>{{ site.data.translations[include.lang].brand.founder }}:</strong> {{ include.founder.name }}
+{% if include.founder_ids %}
+  {% comment %}NEW: Handle founder IDs from brand front matter{% endcomment %}
+  <div class="brand-founder-info">
+    {% assign t = site.data.translations[page.lang].brand %}
 
-  {% if include.founder.generation %}
-  <span class="brand-header__founder-generation">
-    {% assign gen_key = include.founder.generation %}
-    ({{ site.data.translations[include.lang].generation[gen_key] | default: include.founder.generation }})
-  </span>
+    <h3 class="brand-founder-info__title">
+      {% if include.founder_ids.size == 1 %}
+        {{ t.founder | default: "Founder" }}
+      {% else %}
+        {{ t.founders | default: "Founders" }}
+      {% endif %}
+    </h3>
+
+    <div class="brand-founder-info__grid">
+      {% for founder_id in include.founder_ids %}
+        {% include helpers/founder-data.html founder_id=founder_id %}
+
+        {% if founder %}
+        <div class="brand-founder-info__item">
+          <div class="brand-founder-info__photo">
+            {% include helpers/founder-image.html
+               founder_id=founder_id
+               image_type="headshot"
+               alt="{{ founder.name[page.lang] | default: founder.name }} headshot"
+               class="brand-founder-info__image"
+               loading="lazy" %}
+          </div>
+
+          <div class="brand-founder-info__details">
+            <h4 class="brand-founder-info__name">
+              {% include helpers/founder-name.html founder_id=founder_id %}
+            </h4>
+
+            {% comment %} Handle both JSON and collection position data {% endcomment %}
+            {% if founder.position[page.lang] %}
+              <p class="brand-founder-info__position">{{ founder.position[page.lang] }}</p>
+            {% elsif founder.position %}
+              <p class="brand-founder-info__position">{{ founder.position }}</p>
+            {% elsif founder.role %}
+              <p class="brand-founder-info__position">{{ founder.role }}</p>
+            {% endif %}
+
+            {% if founder.generation %}
+            <p class="brand-founder-info__generation">
+              {{ founder.generation | capitalize }} Generation
+              {% if founder.founder_led %}
+                • {{ t.active_leadership | default: "Active Leadership" }}
+              {% endif %}
+            </p>
+            {% endif %}
+
+            {% comment %} Show brief bio if available {% endcomment %}
+            {% if founder.biography[page.lang] %}
+              <p class="brand-founder-info__bio">{{ founder.biography[page.lang] | truncate: 120 }}</p>
+            {% elsif founder.biography %}
+              <p class="brand-founder-info__bio">{{ founder.biography | truncate: 120 }}</p>
+            {% elsif founder.brief_bio %}
+              <p class="brand-founder-info__bio">{{ founder.brief_bio | truncate: 120 }}</p>
+            {% endif %}
+
+            {% comment %} Link to founder profile {% endcomment %}
+            <a href="/{{ page.lang }}/founders/{{ founder_id }}/" class="brand-founder-info__link">
+              {{ t.view_founder_profile | default: "View Founder Profile" }} →
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+{% elsif include.founder.name %}
+  {% comment %}EXISTING: Handle founder object (unchanged for backward compatibility){% endcomment %}
+  <div class="brand-header__founder-brief">
+    <strong>{{ site.data.translations[include.lang].brand.founder }}:</strong> {{ include.founder.name }}
+
+    {% if include.founder.generation %}
+    <span class="brand-header__founder-generation">
+      {% assign gen_key = include.founder.generation %}
+      ({{ site.data.translations[include.lang].generation[gen_key] | default: include.founder.generation }})
+    </span>
+    {% endif %}
+  </div>
+
+  {% if include.portrait %}
+  <div class="brand-header__founder-portrait">
+    {% include components/images/collection-image.html
+       collection="brands"
+       slug=include.brand_slug
+       purpose="founder"
+       aspect="portrait"
+       alt=include.founder.name %}
+  </div>
   {% endif %}
-</div>
-{% endif %}
-
-{% if include.portrait %}
-<div class="brand-header__founder-portrait">
-  {% include components/images/collection-image.html
-     collection="brands"
-     slug=include.brand_slug
-     purpose="founder"
-     aspect="portrait"
-     alt=include.founder.name %}
-</div>
 {% endif %}

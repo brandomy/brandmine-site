@@ -32,11 +32,6 @@ location_city: "Листвянка"  # City name (translatable)
 location_region: "Иркутская область"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/ru-taiga-spirits/logo-color.png"
-hero_image: "/assets/images/brands/ru-taiga-spirits/hero-distillery.jpg"
-founder_portrait: "/assets/images/brands/ru-taiga-spirits/founder-portrait.jpg"
-
 # Social media presence (do not translate URLs)
 facebook: "https://facebook.com/taigaspirits"
 instagram: "https://instagram.com/taiga_spirits"

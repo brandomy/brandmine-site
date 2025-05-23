@@ -1,18 +1,32 @@
 ---
-# NEW BRAND FULL TEMPLATE
 layout: brand-profile
 ref: br-sojourn-hotels  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
 title: "Sojourn Boutique Hotels"  # Display name, fallback if JSON lookup fails
 description: "A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences."
 slogan: "Experience Brazil, Intimately"
 lang: en
-permalink: /en/brands/br-sojourn-hotels/  # Simplified permalink without country code
+permalink: /en/brands/br-sojourn-hotels/
 
+# JSON Generation Control
+generate_json: true  # Set to true to include in brands.json output
+sample_data: true    # Flag for sample/test data
+
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 # Basic Information
 founding_year: 2012
 website: "https://sojournhotels.com.br"
-founders: ["br-isabela-mendez"]  # Array of founder keys that match founder_names.json entries
+founders: ["br-isabela-mendez"]  # Array of founder keys that match founders.json entries
 founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy (all using kebab-case)
@@ -25,37 +39,43 @@ signals: ["franchise-ready"]  # Optional: Business signals from taxonomy
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# Location (flat structure for easier data handling)
-location_lat: -22.9068  # Latitude coordinate
-location_lng: -43.1729  # Longitude coordinate
-location_city: "Rio de Janeiro"  # City name (translatable)
-location_region: "Multiple regions"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: -22.9068  # Latitude coordinate
+  lng: -43.1729  # Longitude coordinate
+  city: "Rio de Janeiro"  # City name (translatable)
+  region: "Multiple regions"  # Region/state/province (translatable, optional)
+  country: "br"  # ISO country code
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/br-sojourn-hotels/logo-color.png"
-hero_image: "/assets/images/brands/br-sojourn-hotels/hero-paraty-view.jpg"
-founder_portrait: "/assets/images/brands/br-sojourn-hotels/founder-portrait.jpg"
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"     # Becomes logo-color-400w.png
+    ext: "png"
+  hero:
+    name: "lobby"     # Becomes hero-lobby-400w.jpg
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    ext: "jpg"
 
-# Social media presence (do not translate URLs)
-facebook: "https://facebook.com/sojournhotelsbr"
-instagram: "https://instagram.com/sojournhotels"
-linkedin: "https://linkedin.com/company/sojourn-hotels"
-pinterest: ""
-redbook: ""
-telegram: ""
-tiktok: ""
-twitter: "https://twitter.com/sojournhotels"
-weibo: ""
-wechat: ""
-youtube: "https://youtube.com/c/sojournhotels"
+# === SOCIAL MEDIA ===
+social_media:
+  facebook: "https://facebook.com/sojournhotelsbr"
+  instagram: "https://instagram.com/sojournhotels"
+  linkedin: "https://linkedin.com/company/sojourn-hotels"
+  pinterest: ""
+  telegram: ""
+  twitter: "https://twitter.com/sojournhotels"
+  vk: ""
+  youtube: "https://youtube.com/c/sojournhotels"
 
-# International presence
+# === BUSINESS INFO ===
 export_ready: false
 export_markets: []  # Country codes, do not translate
-distribution_models: [franchise]  # Do not translate codes
+distribution_models: ["franchise"]  # Do not translate codes
 
-# Timeline milestones (translate event descriptions only)
+# === TIMELINE ===
 timeline:
   - year: 2012  # Do not translate year
     event: "First property opened in Paraty, coastal Rio state"  # Translate event description
@@ -68,7 +88,7 @@ timeline:
   - year: 2023  # Do not translate year
     event: "Opened fifth location in Alto Paraíso, Goiás"  # Translate event description
 
-# Certifications and awards (translate names only)
+# === CERTIFICATIONS ===
 certifications:
   - name: "Rainforest Alliance Sustainable Tourism Certification"  # Translate name
     year: 2017  # Do not translate year
@@ -76,6 +96,8 @@ certifications:
     year: 2018  # Do not translate year
   - name: "B Corporation Certification"  # Translate name
     year: 2019  # Do not translate year
+
+# === AWARDS ===
 awards:
   - name: "Condé Nast Traveler Readers' Choice Awards - Top Hotels in South America"  # Translate name
     year: 2020  # Do not translate year
@@ -84,16 +106,20 @@ awards:
   - name: "Sustainable Business Awards Brazil - Hospitality Category"  # Translate name
     year: 2023  # Do not translate year
 
-# Gallery captions (translate captions only)
+# === GALLERY ===
 gallery:
-  - image: "/assets/images/brands/br-sojourn-hotels/originals/gallery-lobby.jpg"  # Do not translate path
-    caption: "The open-air lobby of Sojourn Paraty featuring local materials and artisanal furnishings"  # Translate caption
-  - image: "/assets/images/brands/br-sojourn-hotels/originals/gallery-suite.jpg"  # Do not translate path
-    caption: "A rainforest view suite at Sojourn Chapada Diamantina with private plunge pool"  # Translate caption
-  - image: "/assets/images/brands/br-sojourn-hotels/originals/gallery-dining.jpg"  # Do not translate path
-    caption: "Farm-to-table dining experience at Sojourn Alto Paraíso featuring regional cuisine"  # Translate caption
-  - image: "/assets/images/brands/br-sojourn-hotels/originals/gallery-founder.jpg"  # Do not translate path
-    caption: "Founder Isabela Mendez at the opening of the fifth Sojourn property in 2023"  # Translate caption
+  - name: "lobby"
+    ext: "jpg"
+    caption: "The open-air lobby of Sojourn Paraty featuring local materials and artisanal furnishings"
+  - name: "suite"
+    ext: "jpg"
+    caption: "A rainforest view suite at Sojourn Chapada Diamantina with private plunge pool"
+  - name: "dining"
+    ext: "jpg"
+    caption: "Farm-to-table dining experience at Sojourn Alto Paraíso featuring regional cuisine"
+  - name: "founder"
+    ext: "jpg"
+    caption: "Founder Isabela Mendez at the opening of the fifth Sojourn property in 2023"
 ---
 
 ## About Sojourn Boutique Hotels

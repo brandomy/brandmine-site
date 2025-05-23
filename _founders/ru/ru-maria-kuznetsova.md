@@ -3,29 +3,54 @@ layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "Мария Кузнецова"
 title: "Мария Кузнецова - Сохраняя российское вкусовое наследие"
-lang: ru
-permalink: /ru/founders/ru-maria-kuznetsova/
+date: 2025-05-01
+lang: zh
+permalink: /zh/founders/ru-maria-kuznetsova/
+generate_json: true
+sample_data: true
+
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
+
 brands: [ru-seven-spices]
 featured: true
-generation: first
+generation: "first"
+role: "Founder & Culinary Director"
+
 country_code: ru
 region: "Татарстан"
 city: "Казань"
-portrait_image: "assets/images/brands/ru/seven-spices/founder-portrait.jpg"
+
+markets: [ru, fr, se, cn]
+cross_border_expertise: true
+languages: ["ru", "en", "zh"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
 social:
   instagram: 7spices_russia
   linkedin: maria-kuznetsova-7spices
+
 expertise:
   - кулинарное искусство
   - традиционные техники консервации
   - устойчивые закупки
   - пищевой ремесленник
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+
+achievements:
+  - "Международные награды за инновационные приправы"
+  - "Разработала модель распределённого производства"
+  - "Участие более 40 региональных поставщиков"
+
+brief_bio: "Основательница 7 Spices, переосмысляющая российские традиционные вкусы через инновации и устойчивость."
+
+description: "Профиль Марии Кузнецовой, кулинарного визионера и основателя 7 Spices — премиального бренда вкусового наследия России."
+keywords: [мария кузнецова, 7 spices, традиции, кулинария, устойчивость]
 ---
 
 # Мария Кузнецова: Возрождая кулинарное наследие России

@@ -1,0 +1,33 @@
+{% comment %}
+BRAND CARD SELECTOR HELPER
+Selects appropriate card component based on brand featured level
+
+Usage:
+{% include helpers/brand-card-selector.html brand=brand %}
+{% include helpers/brand-card-selector.html brand=brand force_type="hero" %}
+
+Parameters:
+- brand (required): Brand object
+- force_type (optional): Force specific card type ("hero", "featured", "basic")
+
+Outputs: Renders appropriate brand card component
+{% endcomment %}
+
+{% if include.force_type %}
+  {% assign card_type = include.force_type %}
+{% elsif include.brand.featured_level and include.brand.featured_level >= 2 %}
+  {% assign card_type = "hero" %}
+{% elsif include.brand.featured %}
+  {% assign card_type = "featured" %}
+{% else %}
+  {% assign card_type = "basic" %}
+{% endif %}
+
+{% case card_type %}
+  {% when "hero" %}
+    {% include components/cards/hero-brand-card.html brand=include.brand %}
+  {% when "featured" %}
+    {% include components/cards/featured-brand-card.html brand=include.brand %}
+  {% else %}
+    {% include components/cards/brand-card.html brand=include.brand %}
+{% endcase %}

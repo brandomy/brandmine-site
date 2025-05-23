@@ -2,6 +2,7 @@
   Component: components/cards/related-brand-card.html
 
   Purpose: Displays a single related brand card in a more compact format
+  Updated to use new brand image helper
 
   Parameters:
     - brand: The related brand object (required)
@@ -13,23 +14,28 @@
 
 <div class="brand-related__card">
   <div class="brand-related__logo">
-    {% include components/helpers/brand-image.html
-       brand=include.brand
-       type="logo"
-       class_name="brand-related" %}
+    {% comment %} Use new brand image helper {% endcomment %}
+    {% include helpers/brand-image.html
+       brand_id=include.brand.ref
+       image_type="logo"
+       class="brand-related__logo-img" %}
   </div>
 
   <h3 class="brand-related__title">
-    <a href="{{ include.brand.url | relative_url }}" class="brand-related__link">{{ include.brand.title }}</a>
+    <a href="{{ include.brand.url | relative_url }}" class="brand-related__link">
+      {% comment %} Use helper for consistent brand name display {% endcomment %}
+      {% include helpers/brand-name.html brand_id=include.brand.ref fallback=include.brand.title %}
+    </a>
   </h3>
 
   <p class="brand-related__description">{{ include.brand.description | truncate: 100 }}</p>
 
   {% if include.brand.sectors and include.brand.sectors.size > 0 %}
+    {% assign brand_sector = include.brand.sectors[0] %}
     <div class="brand-related__sector">
       {% include components/helpers/taxonomy-tag.html
          type="sector"
-         value=include.brand.sectors[0]
+         value=brand_sector
          class_name="brand-related" %}
     </div>
   {% endif %}

@@ -43,12 +43,12 @@
     <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/{{ include.content_type }}/" method="get">
       <div class="search-filter__input-group">
         <input type="text" id="search-input" name="q" class="search-filter__input" 
-               placeholder="{{ site.data.translations[page.lang].search.placeholder }}"
+               placeholder="{% include helpers/t.html key='common.forms.search_placeholder' fallback='Search...' %}"
                value="{{ page.url | split: '?' | last | split: 'q=' | last | replace: '+', ' ' | url_decode }}">
         <div class="search-filter__button-wrapper">
           <button type="submit" class="search-filter__button">
             <span class="search-icon"></span>
-            <span class="sr-only">{{ site.data.translations[page.lang].search.button }}</span>
+            <span class="sr-only">{% include helpers/t.html key='common.actions.search' fallback='Search' %}</span>
           </button>
         </div>
       </div>
@@ -64,7 +64,7 @@
       <!-- Active filters will be inserted here by JavaScript -->
       <div class="search-filter__clear" id="clear-all" style="display: none;">
         <button class="btn btn-sm btn-outline-secondary">
-          {{ site.data.translations[page.lang].filter.clear_all }}
+          {% include helpers/t.html key='common.actions.clear' fallback='Clear All' %}
         </button>
       </div>
     </div>

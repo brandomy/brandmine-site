@@ -15,17 +15,12 @@
     - site.data.translations[page.lang].brand.founder_led for label
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].brand %}
-{% assign is_founder_led = false %}
-
-{% if brand.founder_led %}
-  {% assign is_founder_led = true %}
-{% elsif brand.founders.size > 0 %}
-  {% assign is_founder_led = true %}
-{% elsif brand.founder.founder_led %}
-  {% assign is_founder_led = true %}
-{% endif %}
+{% comment %} Use standardized founder detection logic {% endcomment %}
+{% include helpers/is-founder-led.html brand=include.brand %}
 
 {% if is_founder_led %}
-  <div class="{{ include.class_name | default: 'brand-card' }}__founder-led" title="{{ t.founder_led }}">F</div>
+  <div class="{{ include.class_name | default: 'brand-card' }}__founder-led" 
+       title="{% include helpers/t.html key='brand.founder_led' fallback='Founder-Led' %}">
+    F
+  </div>
 {% endif %}

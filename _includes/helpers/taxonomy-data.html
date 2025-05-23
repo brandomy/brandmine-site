@@ -1,0 +1,34 @@
+{% comment %}
+TAXONOMY DATA HELPER
+Retrieves taxonomy item data and translated name
+
+Usage:
+{% include helpers/taxonomy-data.html type="sector" value="wine" %}
+<!-- Sets 'taxonomy_item' and 'taxonomy_label' variables -->
+
+Parameters:
+- type (required): Taxonomy type - "sector", "market", "attribute", "signal"  
+- value (required): Taxonomy value/slug to lookup
+- lang (optional): Language override (defaults to page.lang)
+
+Returns:
+- taxonomy_item: Full item object from JSON data
+- taxonomy_label: Translated display name
+{% endcomment %}
+
+{% assign lookup_lang = include.lang | default: page.lang | default: 'en' %}
+{% assign type_plural = include.type | append: "s" %}
+{% assign items_array = site.data[type_plural][type_plural] %}
+{% assign taxonomy_item = nil %}
+{% assign taxonomy_label = include.value %}
+
+{% comment %} Find the matching item in the taxonomy data {% endcomment %}
+{% for item in items_array %}
+  {% if item.id == include.value %}
+    {% assign taxonomy_item = item %}
+    {% if item.translations[lookup_lang].name %}
+      {% assign taxonomy_label = item.translations[lookup_lang].name %}
+    {% endif %}
+    {% break %}
+  {% endif %}
+{% endfor %}

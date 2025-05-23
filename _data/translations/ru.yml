@@ -7,6 +7,60 @@ site:
   title: "Brandmine"
   description: "Освещаем и продвигаем бренды, созданные основателями, из стран БРИКС+"
 
+# =============================================================================
+# COMMON ELEMENTS - Centralized to eliminate duplication
+# =============================================================================
+
+common:
+  actions:
+    view_profile: "Посмотреть профиль"
+    view_all: "Посмотреть все"
+    view_more: "Показать больше"
+    read_more: "Читать далее"
+    load_more: "Загрузить еще"
+    get_in_touch: "Связаться с нами"
+    explore: "Изучить"
+    discover: "Открыть"
+    browse: "Просмотреть"
+    search: "Поиск"
+    apply: "Применить"
+    clear: "Очистить"
+    subscribe: "Подписаться"
+    submit: "Отправить"
+    back: "Назад"
+    next: "Далее"
+    previous: "Предыдущий"
+  
+  empty_states:
+    no_results: "Результаты не найдены"
+    no_brands: "Бренды недоступны"
+    no_founders: "Основатели недоступны"
+    no_insights: "Аналитика недоступна"
+    loading: "Загрузка..."
+    coming_soon: "Скоро"
+    try_search: "Попробуйте найти то, что вы ищете"
+  
+  forms:
+    search_placeholder: "Поиск..."
+    email_placeholder: "Ваш email адрес"
+    name_placeholder: "Ваше имя"
+    message_placeholder: "Ваше сообщение"
+    required: "Обязательно"
+    optional: "Необязательно"
+  
+  labels:
+    featured: "Рекомендуемые"
+    premium: "Премиум"
+    new: "Новое"
+    popular: "Популярное"
+    trending: "В тренде"
+    all: "Все"
+    filter: "Фильтр"
+    sort: "Сортировка"
+    showing: "Показано"
+    of: "из"
+    results: "результатов"
+
 # Global navigation
 nav:
   # Main navigation items
@@ -51,10 +105,7 @@ filter:
 
 # Pagination controls
 pagination:
-  load_more: "Загрузить еще"
   current: "Текущая"
-  next: "Следующая"
-  previous: "Предыдущая"
 
 # Premium content indicators
 premium:
@@ -63,10 +114,7 @@ premium:
 
 # Common buttons
 buttons:
-  view_more: "Подробнее"
   all_brands: "Все бренды"
-  view_profile: "Открыть профиль"
-  get_in_touch: "Связаться"
 
 # Footer elements
 footer:
@@ -1049,37 +1097,6 @@ authors:
   olya_eastman: "Ольга Истман"
   randal_eastman: "Рэндал Истман"
 
-# Founder names (alphabetically ordered)
-founder_names:
-  alexei_sokolov: "Алексей Соколов"
-  anna_kuznetsova: "Анна Кузнецова"
-  dmitri_voronin: "Дмитрий Воронин"
-  eduardo_santos: "Эдуардо Сантос"
-  georgie_yam: "Джорджи Ям"
-  isabela_mendez: "Изабела Мендес"
-  ivan_petrov: "Иван Петров"
-  maria_kuznetsova: "Мария Кузнецова"
-  marina_petrova: "Марина Петрова"
-  mikhail_sorokin: "Михаил Сорокин"
-  nikolai_volkov: "Николай Волков"
-  sofia_egorova: "София Егорова"
+# Founder names - REMOVED: Now using founders.json with multilingual support
+# See: _data/founders.json and helpers/founder-name.html
 
-# Brand names (alphabetically ordered)
-brand_names:
-  altai_honey: "Алтайский Премиум Мёд"
-  amazonia_organics: "Амазония Органикс"
-  baikal_brewing: "Байкал Бреуинг Компани"
-  casa_do_sol: "Каса ду Сол"
-  crimean_legacy: "Крымское Наследие Винодельня"
-  dragonfly_retreats: "Драгонфлай Терапевтик Ретритс"
-  krasnodar_wines: "Краснодарские Винные Поместья"
-  moskva_chai: "Москва Чай"
-  russian_brew: "Рашен Брю"
-  serra_verde: "Серра Верде Органикс"
-  seven_spices: "Севен Спайсес Трейдинг Ко."
-  siberian_gold: "Сибирское Золото Мёд"
-  siberian_harvest: "Сибирский Урожай"
-  sojourn_hotels: "Сожурн Бутик-Отели"
-  taiga_spirits: "Тайга Спиритс"
-  teatime: "ТиТайм"
-  terra_brasil_tours: "Терра Бразил Турс"

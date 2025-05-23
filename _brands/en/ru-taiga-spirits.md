@@ -1,18 +1,32 @@
 ---
-# NEW BRAND FULL TEMPLATE
 layout: brand-profile
 ref: ru-taiga-spirits  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
 title: "Taiga Spirits"  # Display name, fallback if JSON lookup fails
 description: "Craft distillery creating exceptional small-batch vodkas and botanical spirits using ancient Siberian recipes and wild-harvested ingredients."
 slogan: "Spirit of the Wilderness"
 lang: en
-permalink: /en/brands/ru-taiga-spirits/  # Simplified permalink without country code
+permalink: /en/brands/ru-taiga-spirits/
 
+# JSON Generation Control
+generate_json: true  # Set to true to include in brands.json output
+sample_data: true    # Flag for sample/test data
+
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 # Basic Information
 founding_year: 2014
 website: "https://taigaspirits.ru"
-founders: ["ru-nikolai-volkov"]  # Array of founder keys that match founder_names.json entries
+founders: ["ru-nikolai-volkov"]  # Array of founder keys that match founders.json entries
 founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy (all using kebab-case)
@@ -25,38 +39,43 @@ signals: ["export-ready"]  # Optional: Business signals from taxonomy
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# Location (flat structure for easier data handling)
-location_lat: 51.8561  # Latitude coordinate
-location_lng: 104.8625  # Longitude coordinate
-location_city: "Listvyanka"  # City name (translatable)
-location_region: "Irkutsk Oblast"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: 51.8561  # Latitude coordinate
+  lng: 104.8625  # Longitude coordinate
+  city: "Listvyanka"  # City name (translatable)
+  region: "Irkutsk Oblast"  # Region/state/province (translatable, optional)
+  country: "ru"  # ISO country code
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/ru-taiga-spirits/logo-color.png"
-hero_image: "/assets/images/brands/ru-taiga-spirits/hero-distillery.jpg"
-founder_portrait: "/assets/images/brands/ru-taiga-spirits/founder-portrait.jpg"
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"     # Becomes logo-color-400w.png
+    ext: "png"
+  hero:
+    name: "bottles"   # Becomes hero-bottles-400w.jpg
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    ext: "jpg"
 
-# Social media presence (do not translate URLs)
-facebook: "https://facebook.com/taigaspirits"
-instagram: "https://instagram.com/taiga_spirits"
-linkedin: ""
-pinterest: ""
-redbook: ""
-telegram: "https://t.me/taigaspirits_official"
-tiktok: ""
-twitter: ""
-vk: "https://vk.com/taigaspirits"
-weibo: ""
-wechat: ""
-youtube: "https://youtube.com/c/taigaspirits"
+# === SOCIAL MEDIA ===
+social_media:
+  facebook: "https://facebook.com/taigaspirits"
+  instagram: "https://instagram.com/taiga_spirits"
+  linkedin: ""
+  pinterest: ""
+  telegram: "https://t.me/taigaspirits_official"
+  twitter: ""
+  vk: "https://vk.com/taigaspirits"
+  youtube: "https://youtube.com/c/taigaspirits"
 
-# International presence
+# === BUSINESS INFO ===
 export_ready: true
-export_markets: [cn, mn, kz, de]  # Country codes, do not translate
-distribution_models: [direct-export, distributors]  # Do not translate codes
+export_markets: ["cn", "mn", "kz", "de"]  # Country codes, do not translate
+distribution_models: ["direct-export", "distributors"]  # Do not translate codes
 
-# Timeline milestones (translate event descriptions only)
+# === TIMELINE ===
 timeline:
   - year: 2014  # Do not translate year
     event: "Founded Taiga Spirits in a converted woodworking shop near Lake Baikal"  # Translate event description
@@ -69,7 +88,7 @@ timeline:
   - year: 2022  # Do not translate year
     event: "Introduced limited 'Baikal Depths' collection featuring rare endemic herbs"  # Translate event description
 
-# Certifications and awards (translate names only)
+# === CERTIFICATIONS ===
 certifications:
   - name: "Russian Federation Organic Certification"  # Translate name
     year: 2017  # Do not translate year
@@ -77,6 +96,8 @@ certifications:
     year: 2019  # Do not translate year
   - name: "ISO 22000 Food Safety Management"  # Translate name
     year: 2020  # Do not translate year
+
+# === AWARDS ===
 awards:
   - name: "San Francisco World Spirits Competition Double Gold Medal"  # Translate name
     year: 2019  # Do not translate year
@@ -85,16 +106,20 @@ awards:
   - name: "Berlin International Spirits Competition Distillery of the Year in Russia"  # Translate name
     year: 2022  # Do not translate year
 
-# Gallery captions (translate captions only)
+# === GALLERY ===
 gallery:
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-bottles.jpg"  # Do not translate path
-    caption: "Taiga Spirits signature collection with hand-illustrated botanical ingredient labels"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-distillation.jpg"  # Do not translate path
-    caption: "Traditional copper stills used for small-batch distillation"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-foraging.jpg"  # Do not translate path
-    caption: "Founder Nikolai Volkov foraging for wild plants in the taiga"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-laboratory.jpg"  # Do not translate path
-    caption: "The botanical laboratory where ingredients are tested and recipes developed"  # Translate caption
+  - name: "bottles"
+    ext: "jpg"
+    caption: "Taiga Spirits signature collection with hand-illustrated botanical ingredient labels"
+  - name: "distillation"
+    ext: "jpg"
+    caption: "Traditional copper stills used for small-batch distillation"
+  - name: "foraging"
+    ext: "jpg"
+    caption: "Founder Nikolai Volkov foraging for wild plants in the taiga"
+  - name: "laboratory"
+    ext: "jpg"
+    caption: "The botanical laboratory where ingredients are tested and recipes developed"
 ---
 
 ## About Taiga Spirits

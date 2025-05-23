@@ -1,0 +1,44 @@
+{% comment %}
+CLEAN FOUNDER DATA HELPER
+Returns complete founder object from JSON or Collection
+
+Usage:
+{% include helpers/founder-data.html founder_id="ru-alexei-sokolov" assign="founder" %}
+{% include helpers/founder-data.html founder_id=page.ref assign="current_founder" %}
+
+Parameters:
+- founder_id (required): The founder ID to look up
+- assign (optional): Variable name to assign to, defaults to "founder"
+{% endcomment %}
+
+{% comment %} Try JSON data first (future Airtable source) {% endcomment %}
+{% assign founder_json = site.data.founders | where: "id", include.founder_id | first %}
+
+{% comment %} Fallback to collection if JSON not found {% endcomment %}
+{% unless founder_json %}
+  {% assign founder_collection = site.founders | where: "ref", include.founder_id | where: "lang", page.lang | first %}
+{% endunless %}
+
+{% comment %} Use JSON if available, otherwise collection data {% endcomment %}
+{% if founder_json %}
+  {% assign founder_lookup = founder_json %}
+{% elsif founder_collection %}
+  {% assign founder_lookup = founder_collection %}
+{% endif %}
+
+{% comment %} Assign to specified variable or default "founder" {% endcomment %}
+{% if include.assign %}
+  {% if include.assign == "founder_data" %}
+    {% assign founder_data = founder_lookup %}
+  {% elsif include.assign == "current_founder" %}
+    {% assign current_founder = founder_lookup %}
+  {% elsif include.assign == "brand_founder" %}
+    {% assign brand_founder = founder_lookup %}
+  {% elsif include.assign == "primary_founder" %}
+    {% assign primary_founder = founder_lookup %}
+  {% else %}
+    {% assign founder = founder_lookup %}
+  {% endif %}
+{% else %}
+  {% assign founder = founder_lookup %}
+{% endif %}

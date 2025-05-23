@@ -1,0 +1,100 @@
+{% comment %}
+Component: components/forms/textarea-field.html
+Purpose: Standardized textarea field with validation and accessibility
+
+Parameters:
+- name (required): Textarea name attribute
+- id (optional): Textarea ID (defaults to name)
+- label (optional): Field label text
+- placeholder (optional): Placeholder text
+- value (optional): Default value
+- required (optional): Field is required (default: false)
+- disabled (optional): Field is disabled (default: false)
+- readonly (optional): Field is readonly (default: false)
+- rows (optional): Number of visible rows (default: 4)
+- cols (optional): Number of visible columns
+- minlength (optional): Minimum length
+- maxlength (optional): Maximum length
+- help_text (optional): Help text below the field
+- error_message (optional): Error message to display
+- class_name (optional): Additional CSS classes
+
+Usage:
+{% include components/forms/textarea-field.html name="message" label="Message" required=true rows=6 %}
+{% include components/forms/textarea-field.html name="description" label="Brand Description" maxlength=500 help_text="Maximum 500 characters" %}
+{% endcomment %}
+
+{% assign field_id = include.id | default: include.name %}
+{% assign field_required = include.required | default: false %}
+{% assign field_disabled = include.disabled | default: false %}
+{% assign field_readonly = include.readonly | default: false %}
+{% assign field_rows = include.rows | default: 4 %}
+
+<div class="form-field {{ include.class_name }} {% if include.error_message %}form-field--error{% endif %}">
+  
+  {% if include.label %}
+    <label for="{{ field_id }}" class="form-field__label">
+      {{ include.label }}
+      {% if field_required %}
+        <span class="form-field__required" aria-label="required">*</span>
+      {% endif %}
+    </label>
+  {% endif %}
+
+  <div class="form-field__input-wrapper">
+    <textarea id="{{ field_id }}"
+              name="{{ include.name }}"
+              class="form-field__textarea"
+              rows="{{ field_rows }}"
+              {% if include.cols %}cols="{{ include.cols }}"{% endif %}
+              {% if include.placeholder %}placeholder="{{ include.placeholder }}"{% endif %}
+              {% if field_required %}required aria-required="true"{% endif %}
+              {% if field_disabled %}disabled{% endif %}
+              {% if field_readonly %}readonly{% endif %}
+              {% if include.minlength %}minlength="{{ include.minlength }}"{% endif %}
+              {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %}
+              {% if include.help_text %}aria-describedby="{{ field_id }}-help"{% endif %}
+              {% if include.error_message %}aria-invalid="true" aria-describedby="{{ field_id }}-error"{% endif %}>{{ include.value }}</textarea>
+  </div>
+
+  {% if include.maxlength %}
+    <div class="form-field__counter">
+      <span id="{{ field_id }}-counter">0</span>/{{ include.maxlength }}
+    </div>
+  {% endif %}
+
+  {% if include.help_text %}
+    <div class="form-field__help" id="{{ field_id }}-help">
+      {{ include.help_text }}
+    </div>
+  {% endif %}
+
+  {% if include.error_message %}
+    <div class="form-field__error" id="{{ field_id }}-error" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="15" y1="9" x2="9" y2="15"></line>
+        <line x1="9" y1="9" x2="15" y2="15"></line>
+      </svg>
+      {{ include.error_message }}
+    </div>
+  {% endif %}
+</div>
+
+{% if include.maxlength %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const textarea = document.getElementById('{{ field_id }}');
+  const counter = document.getElementById('{{ field_id }}-counter');
+  
+  if (textarea && counter) {
+    function updateCounter() {
+      counter.textContent = textarea.value.length;
+    }
+    
+    textarea.addEventListener('input', updateCounter);
+    updateCounter(); // Initial count
+  }
+});
+</script>
+{% endif %}

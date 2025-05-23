@@ -1,45 +1,52 @@
 ---
-# NEW BRAND LITE TEMPLATE
 layout: brand-profile
-ref: br-serra-verde  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
-title: "塞拉维德有机"  # Display name, fallback if JSON lookup fails
+ref: br-serra-verde
+sample_data: true
+title: "塞拉维德有机"
 description: "家族经营的有机食品生产商，专注于巴西大西洋森林地区的果酱、蜂蜜和特色咖啡。"
 lang: zh
-permalink: /zh/brands/br-serra-verde/  # Simplified permalink without country code
+permalink: /zh/brands/br-serra-verde/
+generate_json: true
 
-# Basic Information
+sections:
+  - identity
+  - founder-narrative
+  - brand-story
+  - product
+  - market-presence
+  - location-intelligence
+  - growth-signals
+  - connections
+
 founding_year: 1986
 website: "https://serraverde.com.br"
-founders: ["br-eduardo-santos"]  # Array of founder keys for JSON lookup
-founder_led: true  # Boolean: Is the founder still actively leading?
+founders: ["br-eduardo-santos"]
+founder_led: true
 
-# Taxonomy (all using kebab-case)
-sectors: ["gourmet-foods"]  # Required: At least one sector from taxonomy
-markets: ["brazil"]  # Required: At least one market from taxonomy
-attributes: ["founder-led", "sustainability-pioneer"]  # Optional attributes
-signals: []  # Optional signals
+sectors: ["gourmet-foods"]
+markets: ["brazil"]
+attributes: ["founder-led", "sustainability-pioneer"]
+signals: []
 
-# Display Settings
 featured: false
-featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
+featured_level: 1
 
-# Location (flat structure for easier data handling)
-location_lng: -45.8558  # Longitude coordinate
-location_lat: -22.6569  # Latitude coordinate
-location_city: "贡萨尔维斯"  # City name (translatable)
-location_region: "米纳斯吉拉斯州"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code
+location:
+  lat: -22.6569
+  lng: -45.8558
+  city: "贡萨尔维斯"
+  region: "米纳斯吉拉斯州"
+  country: "br"
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/br-serra-verde/logo-color.png"
-hero_image: "/assets/images/brands/br-serra-verde/hero-farm-view.jpg"
-founder_portrait: "/assets/images/brands/br-serra-verde/founder-portrait.jpg"
+images:
+  logo: { name: "color", ext: "png" }
+  hero: { name: "storefront", ext: "jpg" }
+  founder: { name: "portrait", ext: "jpg" }
 
-# Gallery (translate captions only)
 gallery:
-  - image: "/assets/images/brands/br-serra-verde/location-pastoral.jpg"  # Do not translate path
-    caption: "塞拉维德起伏的山丘景观"  # Translate caption
+  - name: "location-pastoral"
+    ext: "jpg"
+    caption: "塞拉维德起伏的山丘景观"
 ---
 
 ## 关于塞拉维德有机

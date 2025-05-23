@@ -3,29 +3,54 @@ layout: founder-profile
 ref: br-eduardo-santos
 name: "爱德华多·桑托斯"
 title: "爱德华多·桑托斯 - 巴西有机先驱"
+date: 2025-05-01
 lang: zh
 permalink: /zh/founders/br-eduardo-santos/
+generate_json: true
+sample_data: true
+
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
+
 brands: [br-serra-verde]
 featured: true
-generation: third
+generation: "third"
+role: "创始人兼首席农业顾问"
+
 country_code: br
 region: "米纳斯吉拉斯州"
 city: "贡萨尔维斯"
-portrait_image: "assets/images/brands/br/serra-verde/founder-portrait.jpg"
+
+markets: [br, pt, es]
+cross_border_expertise: true
+languages: ["pt", "es", "zh"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
 social:
   instagram: serraverde_organics
   linkedin: eduardo-santos-serraverde
+
 expertise:
   - 有机农业
   - 可持续耕作
   - 农林复合经营
   - 出口发展
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+
+achievements:
+  - "恢复500多公顷大西洋森林"
+  - "建立28个家庭农场网络"
+  - "拓展出口至欧洲市场"
+
+brief_bio: "有机农业先锋，通过28家家庭农场网络推动巴西生态农业转型。"
+
+description: "爱德华多·桑托斯是Serra Verde Organics创始人，推动巴西大西洋森林的有机农业转型。"
+keywords: [eduardo santos, 巴西, 有机农业, serra verde, 可持续]
 ---
 
 # 爱德华多·桑托斯：改变巴西大西洋森林农业

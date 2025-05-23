@@ -1,13 +1,27 @@
 ---
-# NEW BRAND PROFILE TEMPLATE
 layout: brand-profile
 ref: ru-teatime  # Global ID (country-brandslug)
-sample_data: true  # Add this flag
 title: "TeaTime"  # Fallback if JSON lookup fails
-description: "Moscow's premium tea destination offering artisanal blends and exceptional tea ceremonies in a modern setting with traditional Russian influences." # trx
+description: "Moscow's premium tea destination offering artisanal blends and exceptional tea ceremonies in a modern setting with traditional Russian influences."
 lang: en
 permalink: /en/brands/ru-teatime/
 
+# JSON Generation Control
+generate_json: true  # Set to true to include in brands.json output
+sample_data: true    # Flag for sample/test data
+
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 # Basic Information
 founding_year: 1998
 website: "https://teatime.ru"
@@ -15,7 +29,7 @@ founders: ["ru-alexei-sokolov"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy
-sectors: ["artisanal-spirits"]  # From existing taxonomy
+sectors: ["gourmet-foods"]  # Updated from artisanal-spirits to match tea business
 markets: ["russia"]  # From existing taxonomy
 attributes: ["founder-led", "artisanal-excellence"]  # Optional attributes
 signals: ["export-ready"]  # Optional signals
@@ -24,17 +38,42 @@ signals: ["export-ready"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# Location - Flat structure for Airtable integration
-location_lng: 37.6173  # Longitude coordinate
-location_lat: 55.7558  # Latitude coordinate
-location_city: "Moscow"  # trx
-location_region: "Moscow Oblast"  # trx (optional)
-location_country: "ru"  # ISO country code
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: 55.7558  # Latitude coordinate
+  lng: 37.6173  # Longitude coordinate
+  city: "Moscow"  # City name
+  region: "Moscow Oblast"  # Region (optional)
+  country: "ru"  # ISO country code
 
-# Images (paths follow the global ID pattern)
-logo: "/assets/images/brands/ru-teatime/logo-color.png"
-hero_image: "/assets/images/brands/ru-teatime/hero-storefront.jpg"
-founder_portrait: "/assets/images/brands/ru-teatime/founder-portrait.jpg"
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"     # Becomes logo-color-400w.png
+    ext: "png"
+  hero:
+    name: "storefront"  # Becomes hero-storefront-400w.jpg
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    ext: "jpg"
+
+# === SOCIAL MEDIA ===
+social_media:
+  facebook: ""
+  instagram: "teatime_russia"
+  linkedin: ""
+  telegram: ""
+  twitter: ""
+  vk: ""
+  youtube: ""
+
+# === BUSINESS INFO ===
+export_ready: true
+export_markets: ["gb", "fr", "de", "jp", "sg"]  # Based on founder profile
+distribution_models:
+  - "direct-export"
+  - "distributors"
 ---
 
 ## About TeaTime

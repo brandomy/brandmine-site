@@ -7,33 +7,34 @@
     <div class="brand-identity">
       <!-- Logo and Hero Image -->
       <div class="brand-identity__visuals">
-        {% if page.logo %}
+        {% comment %} Check if logo image exists in new structure {% endcomment %}
+        {% if page.images.logo %}
           <div class="brand-identity__logo">
-            {% include components/images/collection-image.html
-              collection="brands"
-              slug=page.ref
-              purpose="logo"
-              aspect="square"
-              ext="png"
-              alt=page.title %}
+            {% include helpers/brand-image.html
+              brand_id=page.ref
+              image_type="logo"
+              class="brand-identity__logo-image" %}
           </div>
         {% endif %}
 
-        {% if page.hero_image %}
+        {% comment %} Check if hero image exists in new structure {% endcomment %}
+        {% if page.images.hero %}
           <div class="brand-identity__hero">
-            {% include components/images/collection-image.html
-              collection="brands"
-              slug=page.ref
-              purpose="hero"
+            {% include helpers/brand-image.html
+              brand_id=page.ref
+              image_type="hero"
               loading="eager"
-              alt=page.title %}
+              class="brand-identity__hero-image" %}
           </div>
         {% endif %}
       </div>
 
       <!-- Core Info -->
       <div class="brand-identity__core">
-        <h1 class="brand-identity__title">{{ page.title }}</h1>
+        <h1 class="brand-identity__title">
+          {% comment %} Use helper for consistent name display {% endcomment %}
+          {% include helpers/brand-name.html brand_id=page.ref fallback=page.title %}
+        </h1>
 
         <div class="brand-identity__meta">
           {% if page.founding_year %}

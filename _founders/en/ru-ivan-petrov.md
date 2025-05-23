@@ -3,33 +3,65 @@ layout: founder-profile
 ref: ru-ivan-petrov
 name: "Ivan Petrov"
 title: "Ivan Petrov - Altai Honey Pioneer"
-date: 2025-05-03  # Date profile was created or updated
+date: 2025-05-03
 lang: en
 permalink: /en/founders/ru-ivan-petrov/
+
+# JSON Generation Control
+generate_json: true
+sample_data: true
+
 brands: [ru-altai-honey]
 featured: true
 generation: first
+role: "Founder & Master Beekeeper"
+
+# Location
 country_code: ru
 region: "Altai Republic"
 city: "Belokurikha"
-portrait_image: "assets/images/founders/ru-ivan-petrov/headshot.jpg"
+
+# Markets and Cross-border
+markets: [ru, cn, kz]
+cross_border_expertise: false
+languages: ["ru", "en"]
+
+# Images (Semantic structure)
+images:
+  portrait:
+    name: "portrait"
+    ext: "jpg"
+  headshot:
+    name: "headshot"
+    ext: "jpg"
+  action:
+    name: "action"
+    ext: "jpg"
+
+# Social Media
 social:
   instagram: ivan_petrov_honey
   linkedin: ivan-petrov-12345
+
+# Professional Info
 expertise:
   - beekeeping
   - organic agriculture
   - sustainable harvesting
-brief_bio: "Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
-sectors: [honey-bee-products]
-markets: [ru, cn, kz]
-languages: ["ru", "en"]
+  - community development
+
 achievements:
   - "International organic certification"
   - "Preserved traditional harvesting methods"
   - "Community empowerment model"
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
+
+brief_bio: "Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
+
+# SEO
+description: "Ivan Petrov profile - Third-generation Altai beekeeper preserving traditional honey harvesting while building sustainable community model."
+keywords: [ivan petrov, altai honey, beekeeping, russia, organic certification, traditional harvesting]
+
+# Section Configuration
 sidebar_sections:
   - associated-brands
   - expertise-cloud

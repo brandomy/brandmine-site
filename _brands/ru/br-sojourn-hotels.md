@@ -32,11 +32,6 @@ location_city: "Рио-де-Жанейро"  # City name (translatable)
 location_region: "Несколько регионов"  # Region/state/province (translatable, optional)
 location_country: "br"  # ISO country code
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/br-sojourn-hotels/logo-color.png"
-hero_image: "/assets/images/brands/br-sojourn-hotels/hero-paraty-view.jpg"
-founder_portrait: "/assets/images/brands/br-sojourn-hotels/founder-portrait.jpg"
-
 # Social media presence (do not translate URLs)
 facebook: "https://facebook.com/sojournhotelsbr"
 instagram: "https://instagram.com/sojournhotels"

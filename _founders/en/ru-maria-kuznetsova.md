@@ -3,35 +3,65 @@ layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "Maria Kuznetsova"
 title: "Maria Kuznetsova - Preserving Russian Flavor Heritage"
-date: 2025-05-04  # Date profile was created or updated
+date: 2025-05-04
 lang: en
 permalink: /en/founders/ru-maria-kuznetsova/
+
+# JSON Generation Control
+generate_json: true
+sample_data: true
+
 brands: [ru-seven-spices]
 featured: true
 generation: first
+role: "Founder & Culinary Director"
+
+# Location
 country_code: ru
 region: "Tatarstan"
 city: "Kazan"
-portrait_image: "assets/images/founders/ru-maria-kuznetsova/headshot.jpg"
+
+# Markets and Cross-border
+markets: [ru, eu]
+cross_border_expertise: true
+languages: ["ru", "en", "tt"]
+
+# Images (Semantic structure)
+images:
+  portrait:
+    name: "portrait"
+    ext: "jpg"
+  headshot:
+    name: "headshot"
+    ext: "jpg"
+  action:
+    name: "action"
+    ext: "jpg"
+
+# Social Media
 social:
   instagram: 7spices_russia
   linkedin: maria-kuznetsova-7spices
+
+# Professional Info
 expertise:
   - culinary arts
   - traditional preservation techniques
   - sustainable sourcing
   - food artisan
-brief_bio: "Former chef rediscovering and reimagining Russia's rich condiment traditions through artisanal production and cultural preservation."
-sectors: [gourmet-foods]
-markets: [ru, eu]
-cross_border_expertise: true
-languages: ["ru", "en", "tt"]
+
 achievements:
   - "Gold at International Condiment Exhibition"
   - "Network of 40 family farm suppliers"
   - "Food archaeology research department"
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
+
+brief_bio: "Former chef rediscovering and reimagining Russia's rich condiment traditions through artisanal production and cultural preservation."
+
+# SEO
+description: "Maria Kuznetsova profile - Russian culinary entrepreneur preserving traditional flavor heritage through artisanal condiment production and food archaeology."
+keywords: [maria kuznetsova, seven spices, russian cuisine, condiments, culinary heritage, food archaeology]
+
+# Section Configuration
 sidebar_sections:
   - associated-brands
   - expertise-cloud

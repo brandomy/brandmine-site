@@ -9,7 +9,6 @@
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].brand %}
-{% assign buttons_t = site.data.translations[page.lang].buttons %}
 
 <article class="featured-brand-card {% if brand.featured or brand.featured_level > 1 %}featured-brand-card--featured{% endif %}">
   {% include components/helpers/card-header.html
@@ -72,7 +71,7 @@
   <!-- View Profile -->
   <footer class="featured-brand-card__footer">
     <a href="{{ brand.url | relative_url }}" class="featured-brand-card__link">
-      {{ buttons_t.view_profile | default: "View Profile" }}
+      {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
     </a>
 
     {% include components/helpers/founder-check.html brand=brand class_name="featured-brand-card" %}

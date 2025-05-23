@@ -1,0 +1,38 @@
+{% comment %}
+TRANSLATION HELPER
+Centralized translation lookup with fallback support
+
+Usage:
+{% include helpers/t.html key="home.hero.title" fallback="Welcome to Brandmine" %}
+{% include helpers/t.html key="brands.featured_brands" fallback="Featured Brands" %}
+{% include helpers/t.html key="buttons.view_profile" %}
+
+Parameters:
+- key (required): Dot-separated path to translation (e.g. "home.hero.title")
+- fallback (optional): Default text if translation not found
+- lang (optional): Override language (defaults to page.lang)
+
+Returns: Translated text or fallback
+{% endcomment %}
+
+{% assign translation_lang = include.lang | default: page.lang | default: 'en' %}
+{% assign keys = include.key | split: "." %}
+{% assign result = site.data.translations[translation_lang] %}
+
+{% comment %} Navigate through the nested translation structure {% endcomment %}
+{% for key in keys %}
+  {% if result %}
+    {% assign result = result[key] %}
+  {% else %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Output result or fallback {% endcomment %}
+{% if result %}
+  {{ result }}
+{% elsif include.fallback %}
+  {{ include.fallback }}
+{% else %}
+  {{ include.key | replace: ".", " " | capitalize }}
+{% endif %}

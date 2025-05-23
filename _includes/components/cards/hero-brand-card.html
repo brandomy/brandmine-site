@@ -2,6 +2,7 @@
   Include Name: components/cards/hero-brand-card.html
 
   Purpose: Displays an enhanced brand card with hero image for higher-level featured brands.
+  Updated to use new image structure and helpers.
 
   Parameters:
   - brand: Brand object with complete details (required)
@@ -10,76 +11,30 @@
 {% assign t = site.data.translations[page.lang].brand %}
 {% assign buttons_t = site.data.translations[page.lang].buttons %}
 
-{% comment %}
-  Extract image names from full paths
-{% endcomment %}
-{% if brand.hero_image %}
-  {% assign hero_path_parts = brand.hero_image | split: "/" %}
-  {% assign hero_filename = hero_path_parts.last | split: "." | first %}
-  {% if hero_filename contains "hero-" %}
-    {% assign hero_name = hero_filename | remove: "hero-" %}
-  {% else %}
-    {% assign hero_name = hero_filename %}
-  {% endif %}
-{% endif %}
-
-{% if brand.logo %}
-  {% assign logo_path_parts = brand.logo | split: "/" %}
-  {% assign logo_filename = logo_path_parts.last | split: "." | first %}
-  {% if logo_filename contains "logo-" %}
-    {% assign logo_name = logo_filename | remove: "logo-" %}
-  {% else %}
-    {% assign logo_name = logo_filename %}
-  {% endif %}
-{% endif %}
-
-{% if brand.founder_portrait %}
-  {% assign founder_path_parts = brand.founder_portrait | split: "/" %}
-  {% assign founder_filename = founder_path_parts.last | split: "." | first %}
-  {% if founder_filename contains "founder-" %}
-    {% assign founder_name = founder_filename | remove: "founder-" %}
-  {% else %}
-    {% assign founder_name = founder_filename %}
-  {% endif %}
-{% endif %}
-
 <article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">
-    {% include components/images/collection-image.html
-       collection="brands"
-       slug=brand.ref
-       purpose="hero"
-       name=hero_name
-       alt=brand.title
+    {% comment %} Use helper for hero image {% endcomment %}
+    {% include helpers/brand-image.html
+       brand_id=brand.ref
+       image_type="hero"
        class="hero-brand-card__img" %}
 
     <div class="hero-brand-card__logo">
-      {% if logo_name %}
-        {% include components/images/collection-image.html
-           collection="brands"
-           slug=brand.ref
-           purpose="logo"
-           name=logo_name
-           ext="png"
-           alt=brand.title
-           class="hero-brand-card__logo-img" %}
-      {% else %}
-        {% comment %} Fallback if we can't extract the logo name {% endcomment %}
-        {% include components/images/collection-image.html
-           collection="brands"
-           slug=brand.ref
-           purpose="logo"
-           ext="png"
-           alt=brand.title
-           class="hero-brand-card__logo-img" %}
-      {% endif %}
+      {% comment %} Use helper for logo image {% endcomment %}
+      {% include helpers/brand-image.html
+         brand_id=brand.ref
+         image_type="logo"
+         class="hero-brand-card__logo-img" %}
     </div>
   </div>
 
   <div class="hero-brand-card__body">
     <div class="hero-brand-card__content-wrapper">
       <div class="hero-brand-card__main-content">
-        <h2 class="hero-brand-card__title">{{ brand.title }}</h2>
+        <h2 class="hero-brand-card__title">
+          {% comment %} Use helper for brand name {% endcomment %}
+          {% include helpers/brand-name.html brand_id=brand.ref fallback=brand.title %}
+        </h2>
 
         <div class="hero-brand-card__meta">
           {% include components/helpers/founding-year.html
@@ -95,15 +50,12 @@
       </div>
 
       <!-- Founder portrait -->
-      {% if brand.founder_portrait %}
+      {% if brand.images.founder %}
         <div class="hero-brand-card__founder">
-          {% include components/images/collection-image.html
-             collection="brands"
-             slug=brand.ref
-             purpose="founder"
-             name=founder_name
-             aspect="portrait"
-             alt=brand.founders.first
+          {% comment %} Use helper for founder image {% endcomment %}
+          {% include helpers/brand-image.html
+             brand_id=brand.ref
+             image_type="founder"
              class="hero-brand-card__founder-img" %}
         </div>
       {% endif %}
@@ -177,7 +129,7 @@
     {% endif %}
 
     <a href="{{ brand.url | relative_url }}" class="hero-brand-card__link btn btn--primary">
-      {{ buttons_t.view_profile | default: "View Profile" }}
+      {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
     </a>
 
     {% include components/helpers/founder-check.html brand=brand class_name="hero-brand-card" %}

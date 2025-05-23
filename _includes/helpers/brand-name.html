@@ -1,0 +1,28 @@
+{% comment %}
+BRAND NAME HELPER
+Looks up brand name from JSON data based on brand ID
+Falls back to provided fallback or page title
+
+Usage:
+{% include helpers/brand-name.html brand_id="ru-teatime" %}
+{% include helpers/brand-name.html brand_id=page.ref fallback=page.title %}
+{% include helpers/brand-name.html brand_id="br-serra-verde" lang="ru" %}
+
+Parameters:
+- brand_id (required): The brand ID to look up
+- lang (optional): Language code, defaults to page.lang
+- fallback (optional): Fallback text if brand not found, defaults to brand_id
+{% endcomment %}
+
+{% assign lookup_lang = include.lang | default: page.lang %}
+{% assign brand_lookup = site.data.brands | where: "id", include.brand_id | first %}
+
+{% if brand_lookup and brand_lookup.name[lookup_lang] %}
+  {{- brand_lookup.name[lookup_lang] -}}
+{% elsif brand_lookup and brand_lookup.name.en %}
+  {{- brand_lookup.name.en -}}
+{% elsif include.fallback %}
+  {{- include.fallback -}}
+{% else %}
+  {{- include.brand_id -}}
+{% endif %}

@@ -31,11 +31,6 @@ location_city: "Гонсалвес"  # City name (translatable)
 location_region: "Минас-Жерайс"  # Region/state/province (translatable, optional)
 location_country: "br"  # ISO country code
 
-# Image Paths (follow global ID pattern)
-logo: "/assets/images/brands/br-serra-verde/logo-color.png"
-hero_image: "/assets/images/brands/br-serra-verde/hero-farm-view.jpg"
-founder_portrait: "/assets/images/brands/br-serra-verde/founder-portrait.jpg"
-
 # Gallery (translate captions only)
 gallery:
   - image: "/assets/images/brands/br-serra-verde/location-pastoral.jpg"  # Do not translate path

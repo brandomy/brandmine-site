@@ -7,14 +7,12 @@
 
     <div class="founder-narrative">
       <!-- Founder Portrait -->
-      {% if page.founder_portrait %}
+      {% if page.images.founder %}
         <div class="founder-narrative__portrait">
-          {% include components/images/collection-image.html
-            collection="brands"
-            slug=page.ref
-            purpose="founder"
-            aspect="portrait"
-            alt=t.founder %}
+          {% include helpers/brand-image.html
+            brand_id=page.ref
+            image_type="founder"
+            class="founder-narrative__portrait-image" %}
 
           {% if page.founder_led %}
             <div class="founder-narrative__badge">
@@ -28,13 +26,17 @@
         <!-- Founder Information -->
         {% if page.founders and page.founders.size > 0 %}
           <div class="founder-narrative__meta">
-            {% for founder_key in page.founders %}
-              {% assign founder = site.data.founders[page.lang][founder_key] %}
+            {% for founder_id in page.founders %}
+              {% comment %} Use founder helper to get founder data {% endcomment %}
+              {% include helpers/founder-data.html founder_id=founder_id assign="founder" %}
               {% if founder %}
                 <div class="founder-meta">
-                  <h3 class="founder-meta__name">{{ founder.name }}</h3>
-                  {% if founder.role %}
-                    <div class="founder-meta__role">{{ founder.role }}</div>
+                  <h3 class="founder-meta__name">
+                    {% include helpers/founder-name.html founder_id=founder_id %}
+                  </h3>
+
+                  {% if founder.position[page.lang] %}
+                    <div class="founder-meta__role">{{ founder.position[page.lang] }}</div>
                   {% endif %}
 
                   {% if founder.generation %}

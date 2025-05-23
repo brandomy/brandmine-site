@@ -3,29 +3,54 @@ layout: founder-profile
 ref: br-eduardo-santos
 name: "Эдуардо Сантос"
 title: "Эдуардо Сантос - Бразильский органический первопроходец"
-lang: ru
-permalink: /ru/founders/br-eduardo-santos/
+date: 2025-05-01
+lang: zh
+permalink: /zh/founders/br-eduardo-santos/
+generate_json: true
+sample_data: true
+
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
+
 brands: [br-serra-verde]
 featured: true
-generation: third
+generation: "third"
+role: "Founder & Chief Agriculturalist"
+
 country_code: br
 region: "Минас-Жерайс"
 city: "Гонсалвис"
-portrait_image: "assets/images/brands/br/serra-verde/founder-portrait.jpg"
+
+markets: [br, pt, es]
+cross_border_expertise: true
+languages: ["pt", "es", "en"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
 social:
   instagram: serraverde_organics
   linkedin: eduardo-santos-serraverde
+
 expertise:
   - органическое сельское хозяйство
   - устойчивое земледелие
   - агролесоводство
   - развитие экспорта
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+
+achievements:
+  - "Восстановлено более 500 гектаров Атлантического леса"
+  - "Сеть из 28 семейных органических ферм"
+  - "Международные поставки в страны ЕС"
+
+brief_bio: "Органический аграрный пионер, преобразивший сельское хозяйство Атлантического леса Бразилии с сетью семейных ферм."
+
+description: "Эдуардо Сантос - лидер органического сельского хозяйства в Бразилии, основатель Serra Verde Organics."
+keywords: [eduardo santos, бразилия, органическое сельское хозяйство, serra verde, устойчивость]
 ---
 
 # Эдуардо Сантос: Трансформация сельского хозяйства Атлантического леса Бразилии

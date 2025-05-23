@@ -3,28 +3,53 @@ layout: founder-profile
 ref: ru-ivan-petrov
 name: "Иван Петров"
 title: "Иван Петров - Основатель Алтайского Мёда"
-lang: ru
-permalink: /ru/founders/ru-ivan-petrov/
-brands: [ru-altai-honey]
-featured: true
-generation: first
-country_code: ru
-region: "Республика Алтай"
-city: "Белокуриха"
-portrait_image: "assets/images/brands/ru/altai-honey/founder-portrait.jpg"
-social:
-  instagram: ivan_petrov_honey
-  linkedin: ivan-petrov-12345
-expertise:
-  - пчеловодство
-  - органическое сельское хозяйство
-  - устойчивый сбор
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
+date: 2025-05-01
+lang: zh
+permalink: /zh/founders/ru-ivan-petrov/
+generate_json: true
+sample_data: true
+
 sidebar_sections:
   - associated-brands
   - expertise-cloud
   - related-insights
+
+brands: [ru-altai-honey]
+featured: true
+generation: "first"
+role: "Founder & Head Beekeeper"
+
+country_code: ru
+region: "Республика Алтай"
+city: "Белокуриха"
+
+markets: [ru, cn, de]
+cross_border_expertise: true
+languages: ["ru", "zh", "en"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
+social:
+  instagram: ivan_petrov_honey
+  linkedin: ivan-petrov-12345
+
+expertise:
+  - пчеловодство
+  - органическое сельское хозяйство
+  - устойчивый сбор
+
+achievements:
+  - "Международные награды за органический мёд"
+  - "Создание сети экологичных пасек"
+  - "Устойчивое развитие сельских сообществ"
+
+brief_bio: "Третье поколение пчеловодов, превративший алтайский мёд в международный ремесленный бренд."
+
+description: "Иван Петров — основатель Алтайского Премиум Мёда и защитник устойчивого пчеловодства в России."
+keywords: [иван петров, алтай, мёд, органика, ремесло, пчеловодство]
 ---
 
 # Иван Петров: Пионер Медового Производства на Алтае

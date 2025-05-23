@@ -7,6 +7,60 @@ site:
   title: "Brandmine"
   description: "Illuminating and Elevating Founder-led Brands from the BRICS+"
 
+# =============================================================================
+# COMMON ELEMENTS - Centralized to eliminate duplication
+# =============================================================================
+
+common:
+  actions:
+    view_profile: "View Profile"
+    view_all: "View All"
+    view_more: "View More"
+    read_more: "Read More"
+    load_more: "Load More"
+    get_in_touch: "Get in Touch"
+    explore: "Explore"
+    discover: "Discover"
+    browse: "Browse"
+    search: "Search"
+    apply: "Apply"
+    clear: "Clear"
+    subscribe: "Subscribe"
+    submit: "Submit"
+    back: "Back"
+    next: "Next"
+    previous: "Previous"
+  
+  empty_states:
+    no_results: "No results found"
+    no_brands: "No brands available"
+    no_founders: "No founders available"
+    no_insights: "No insights available"
+    loading: "Loading..."
+    coming_soon: "Coming soon"
+    try_search: "Try searching for what you're looking for"
+  
+  forms:
+    search_placeholder: "Search..."
+    email_placeholder: "Your email address"
+    name_placeholder: "Your name"
+    message_placeholder: "Your message"
+    required: "Required"
+    optional: "Optional"
+  
+  labels:
+    featured: "Featured"
+    premium: "Premium"
+    new: "New"
+    popular: "Popular"
+    trending: "Trending"
+    all: "All"
+    filter: "Filter"
+    sort: "Sort"
+    showing: "Showing"
+    of: "of"
+    results: "results"
+
 # Global navigation
 nav:
   # Main navigation items
@@ -49,24 +103,18 @@ filter:
   all_brands: "All Brands"
   clear_all: "Clear All Filters"
 
-# Pagination controls
+# Pagination controls (deprecated - use common.actions instead)
 pagination:
-  load_more: "Load More"
   current: "Current"
-  next: "Next"
-  previous: "Previous"
 
 # Premium content indicators
 premium:
   signals_notice: "Signal filtering is a premium feature"
   content: "Premium Content"
 
-# Common buttons
+# Common buttons (deprecated - use common.actions instead)
 buttons:
-  view_more: "View More"
   all_brands: "All Brands"
-  view_profile: "View Profile"
-  get_in_touch: "Get in Touch"
 
 # Footer elements
 footer:
@@ -1049,37 +1097,5 @@ authors:
   olya_eastman: "Olya Eastman"
   randal_eastman: "Randal Eastman"
 
-# Founder names (alphabetically ordered)
-founder_names:
-  alexei_sokolov: "Alexei Sokolov"
-  anna_kuznetsova: "Anna Kuznetsova"
-  dmitri_voronin: "Dmitri Voronin"
-  eduardo_santos: "Eduardo Santos"
-  georgie_yam: "Georgie Yam"
-  isabela_mendez: "Isabela Mendez"
-  ivan_petrov: "Ivan Petrov"
-  maria_kuznetsova: "Maria Kuznetsova"
-  marina_petrova: "Marina Petrova"
-  mikhail_sorokin: "Mikhail Sorokin"
-  nikolai_volkov: "Nikolai Volkov"
-  sofia_egorova: "Sofia Egorova"
-
-# Brand names (alphabetically ordered)
-brand_names:
-  altai_honey: "Altai Premium Honey"
-  amazonia_organics: "Amazonia Organics"
-  baikal_brewing: "Baikal Brewing Company"
-  casa_do_sol: "Casa do Sol"
-  crimean_legacy: "Crimean Legacy Wines"
-  dragonfly_retreats: "Dragonfly Therapeutic Retreats"
-  krasnodar_wines: "Krasnodar Estates Winery"
-  moskva_chai: "Moskva Chai"
-  russian_brew: "Russian Brew"
-  serra_verde: "Serra Verde Organics"
-  seven_spices: "Seven Spices Trading Co."
-  siberian_gold: "Siberian Gold Honey"
-  siberian_harvest: "Siberian Harvest"
-  sojourn_hotels: "Sojourn Boutique Hotels"
-  taiga_spirits: "Taiga Spirits"
-  teatime: "TeaTime"
-  terra_brasil_tours: "Terra Brasil Tours"
+# Founder names - REMOVED: Now using founders.json with multilingual support
+# See: _data/founders.json and helpers/founder-name.html

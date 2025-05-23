@@ -1,0 +1,28 @@
+{% comment %}
+FOUNDER NAME HELPER
+Looks up founder name from JSON data based on founder ID
+Falls back to provided fallback or founder ID
+
+Usage:
+{% include helpers/founder-name.html founder_id="ru-alexei-sokolov" %}
+{% include helpers/founder-name.html founder_id=founder_ref fallback="Unknown Founder" %}
+{% include helpers/founder-name.html founder_id="br-eduardo-santos" lang="zh" %}
+
+Parameters:
+- founder_id (required): The founder ID to look up
+- lang (optional): Language code, defaults to page.lang
+- fallback (optional): Fallback text if founder not found, defaults to founder_id
+{% endcomment %}
+
+{% assign lookup_lang = include.lang | default: page.lang %}
+{% assign founder_lookup = site.data.founders | where: "id", include.founder_id | first %}
+
+{% if founder_lookup and founder_lookup.name[lookup_lang] %}
+  {{- founder_lookup.name[lookup_lang] -}}
+{% elsif founder_lookup and founder_lookup.name.en %}
+  {{- founder_lookup.name.en -}}
+{% elsif include.fallback %}
+  {{- include.fallback -}}
+{% else %}
+  {{- include.founder_id -}}
+{% endif %}

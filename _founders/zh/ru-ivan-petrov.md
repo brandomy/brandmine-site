@@ -3,28 +3,53 @@ layout: founder-profile
 ref: ru-ivan-petrov
 name: "伊万·彼得罗夫"
 title: "伊万·彼得罗夫 - 阿尔泰蜂蜜先驱"
+date: 2025-05-01
 lang: zh
 permalink: /zh/founders/ru-ivan-petrov/
-brands: [ru-altai-honey]
-featured: true
-generation: first
-country_code: ru
-region: "阿尔泰共和国"
-city: "别洛库里哈"
-portrait_image: "assets/images/brands/ru/altai-honey/founder-portrait.jpg"
-social:
-  instagram: ivan_petrov_honey
-  linkedin: ivan-petrov-12345
-expertise:
-  - 养蜂
-  - 有机农业
-  - 可持续采集
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
+generate_json: true
+sample_data: true
+
 sidebar_sections:
   - associated-brands
   - expertise-cloud
   - related-insights
+
+brands: [ru-altai-honey]
+featured: true
+generation: "first"
+role: "创始人兼首席养蜂顾问"
+
+country_code: ru
+region: "阿尔泰共和国"
+city: "别洛库里哈"
+
+markets: [ru, cn, de]
+cross_border_expertise: true
+languages: ["ru", "zh", "en"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
+social:
+  instagram: ivan_petrov_honey
+  linkedin: ivan-petrov-12345
+
+expertise:
+  - 养蜂
+  - 有机农业
+  - 可持续采集
+
+achievements:
+  - "在国际展会上荣获有机蜂蜜奖"
+  - "发展生态养蜂网络"
+  - "强化农村社区合作"
+
+brief_bio: "阿尔泰传统蜂蜜生产的传承者与现代化创新者，全球蜂蜜文化推广者。"
+
+description: "伊万·彼得罗夫是阿尔泰蜂蜜的创始人，将传统养蜂工艺带向国际市场。"
+keywords: [ivan petrov, 蜂蜜, 阿尔泰, 可持续农业, 俄罗斯]
 ---
 
 # 伊万·彼得罗夫：阿尔泰蜂蜜先驱

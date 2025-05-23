@@ -3,29 +3,54 @@ layout: founder-profile
 ref: ru-alexei-sokolov
 name: "阿列克谢·索科洛夫"
 title: "阿列克谢·索科洛夫 - TeaTime的远见者"
+date: 2025-05-01
 lang: zh
 permalink: /zh/founders/ru-alexei-sokolov/
+generate_json: true
+sample_data: true
+
+sidebar_sections:
+  - associated-brands
+  - expertise-cloud
+  - related-insights
+
 brands: [ru-teatime]
 featured: true
-generation: first
+generation: "first"
+role: "创始人兼CEO"
+
 country_code: ru
 region: "莫斯科"
 city: "莫斯科"
-portrait_image: "assets/images/brands/ru/teatime/founder-portrait.jpg"
+
+markets: [ru, gb, fr, de]
+cross_border_expertise: true
+languages: ["ru", "en", "zh"]
+
+images:
+  portrait: { name: "portrait", ext: "jpg" }
+  headshot: { name: "headshot", ext: "jpg" }
+  action: { name: "action", ext: "jpg" }
+
 social:
   instagram: teatime_russia
   linkedin: alexei-sokolov-teatime
+
 expertise:
   - 茶叶混合
   - 饮料创新
   - 文化大使
   - 品牌讲述
-# Section Configuration - determines which sections appear in the sidebar
-# Remove or comment out sections you don't want to display
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+
+achievements:
+  - "在23国建立出口网络"
+  - "开创地区微生产模式"
+  - "进入Harrods国际市场"
+
+brief_bio: "TeaTime创始人，将俄罗斯茶文化推广至全球市场的品牌远见者。"
+
+description: "阿列克谢·索科洛夫是TeaTime品牌的创始人，通过创新方式连接俄罗斯传统与全球消费者。"
+keywords: [alexei sokolov, teatime, 茶文化, 创始人, 俄罗斯]
 ---
 
 # 阿列克谢·索科洛夫：连接俄罗斯茶传统与全球市场

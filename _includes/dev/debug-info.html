@@ -1,0 +1,282 @@
+{% comment %}
+Component: dev/debug-info.html
+Purpose: Development debugging information panel
+
+Parameters:
+- show_page_data (optional): Show page variables (default: true)
+- show_site_data (optional): Show site variables (default: true)
+- show_collections (optional): Show collection counts (default: true)
+- show_translations (optional): Show translation info (default: true)
+- position (optional): Panel position - "top", "bottom", "float" (default: "bottom")
+- class_name (optional): Additional CSS classes
+
+Usage:
+{% if jekyll.environment == "development" %}
+  {% include dev/debug-info.html %}
+{% endif %}
+
+{% include dev/debug-info.html show_site_data=false position="float" %}
+{% endcomment %}
+
+{% unless jekyll.environment == "production" %}
+{% assign show_page_data = include.show_page_data | default: true %}
+{% assign show_site_data = include.show_site_data | default: true %}
+{% assign show_collections = include.show_collections | default: true %}
+{% assign show_translations = include.show_translations | default: true %}
+{% assign position = include.position | default: "bottom" %}
+
+<div class="debug-info debug-info--{{ position }} {{ include.class_name }}" id="debug-info">
+  <div class="debug-info__header">
+    <h4 class="debug-info__title">
+      🔧 Debug Info 
+      <small>({{ jekyll.environment | default: "development" }})</small>
+    </h4>
+    <button class="debug-info__toggle" onclick="toggleDebugSection()">
+      <span id="debug-toggle-text">Hide</span>
+    </button>
+  </div>
+
+  <div class="debug-info__content" id="debug-content">
+    {% if show_page_data %}
+    <div class="debug-info__section">
+      <h5 class="debug-info__section-title">📄 Page Info</h5>
+      <ul class="debug-info__list">
+        <li><strong>URL:</strong> {{ page.url }}</li>
+        <li><strong>Layout:</strong> {{ page.layout | default: "none" }}</li>
+        <li><strong>Language:</strong> {{ page.lang | default: "none" }}</li>
+        <li><strong>Title:</strong> {{ page.title | default: "none" }}</li>
+        <li><strong>Ref:</strong> {{ page.ref | default: "none" }}</li>
+        {% if page.sections %}
+          <li><strong>Sections:</strong> {{ page.sections | join: ", " }}</li>
+        {% endif %}
+        {% if page.collection %}
+          <li><strong>Collection:</strong> {{ page.collection }}</li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if show_site_data %}
+    <div class="debug-info__section">
+      <h5 class="debug-info__section-title">🌐 Site Info</h5>
+      <ul class="debug-info__list">
+        <li><strong>Base URL:</strong> {{ site.baseurl | default: "none" }}</li>
+        <li><strong>URL:</strong> {{ site.url | default: "none" }}</li>
+        <li><strong>Title:</strong> {{ site.title | default: "none" }}</li>
+        <li><strong>Time:</strong> {{ site.time | date: "%Y-%m-%d %H:%M:%S" }}</li>
+        <li><strong>Jekyll Version:</strong> {{ jekyll.version }}</li>
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if show_collections %}
+    <div class="debug-info__section">
+      <h5 class="debug-info__section-title">📚 Collections</h5>
+      <ul class="debug-info__list">
+        <li><strong>Brands:</strong> {{ site.brands.size | default: 0 }}</li>
+        <li><strong>Founders:</strong> {{ site.founders.size | default: 0 }}</li>
+        <li><strong>Insights:</strong> {{ site.insights.size | default: 0 }}</li>
+        <li><strong>Dimensions:</strong> {{ site.dimensions.size | default: 0 }}</li>
+        <li><strong>Pages:</strong> {{ site.pages.size | default: 0 }}</li>
+        <li><strong>Posts:</strong> {{ site.posts.size | default: 0 }}</li>
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if show_translations %}
+    <div class="debug-info__section">
+      <h5 class="debug-info__section-title">🌍 Translation Info</h5>
+      <ul class="debug-info__list">
+        <li><strong>Current Lang:</strong> {{ page.lang | default: "en" }}</li>
+        <li><strong>Available:</strong> 
+          {% if site.data.translations %}
+            {{ site.data.translations | map: "first" | join: ", " }}
+          {% else %}
+            none
+          {% endif %}
+        </li>
+        {% if site.data.translations[page.lang] %}
+          <li><strong>Translation Keys:</strong> {{ site.data.translations[page.lang] | size }}</li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="debug-info__section">
+      <h5 class="debug-info__section-title">🔗 Quick Actions</h5>
+      <div class="debug-info__actions">
+        <button onclick="console.log('Page object:', {{ page | jsonify }})">Log Page</button>
+        <button onclick="console.log('Site object:', {{ site | jsonify }})">Log Site</button>
+        <button onclick="window.location.reload()">Reload</button>
+        <button onclick="toggleDebugInfo()">Toggle</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.debug-info {
+  position: fixed;
+  z-index: 99999;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 400px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.debug-info--bottom {
+  bottom: 10px;
+  right: 10px;
+}
+
+.debug-info--top {
+  top: 10px;
+  right: 10px;
+}
+
+.debug-info--float {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.debug-info__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #2a2a2a;
+  border-bottom: 1px solid #333;
+}
+
+.debug-info__title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.debug-info__title small {
+  color: #888;
+  font-weight: normal;
+}
+
+.debug-info__toggle {
+  background: none;
+  border: 1px solid #555;
+  color: #fff;
+  padding: 2px 6px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.debug-info__toggle:hover {
+  background: #333;
+}
+
+.debug-info__content {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.debug-info__section {
+  margin-bottom: 12px;
+}
+
+.debug-info__section:last-child {
+  margin-bottom: 0;
+}
+
+.debug-info__section-title {
+  margin: 0 0 4px 0;
+  font-size: 11px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.debug-info__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.debug-info__list li {
+  margin-bottom: 2px;
+  color: #ccc;
+}
+
+.debug-info__list strong {
+  color: #fff;
+}
+
+.debug-info__actions {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.debug-info__actions button {
+  background: #333;
+  border: 1px solid #555;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.debug-info__actions button:hover {
+  background: #444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .debug-info {
+    max-width: 300px;
+    font-size: 10px;
+  }
+  
+  .debug-info--float {
+    position: static;
+    transform: none;
+    margin: 10px;
+  }
+}
+</style>
+
+<script>
+function toggleDebugSection() {
+  const content = document.getElementById('debug-content');
+  const toggleText = document.getElementById('debug-toggle-text');
+  
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    toggleText.textContent = 'Hide';
+  } else {
+    content.style.display = 'none';
+    toggleText.textContent = 'Show';
+  }
+}
+
+function toggleDebugInfo() {
+  const debugInfo = document.getElementById('debug-info');
+  debugInfo.style.display = debugInfo.style.display === 'none' ? 'block' : 'none';
+}
+
+// Keyboard shortcut: Ctrl+Shift+D to toggle debug info
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+    e.preventDefault();
+    toggleDebugInfo();
+  }
+});
+
+console.log('🔧 Debug info loaded. Press Ctrl+Shift+D to toggle or use the panel.');
+</script>
+{% endunless %}

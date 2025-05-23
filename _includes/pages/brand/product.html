@@ -24,7 +24,8 @@
                 collection="brands"
                 slug=page.ref
                 purpose="gallery"
-                name=forloop.index
+                name=item.name
+                ext=item.ext
                 alt=item.caption %}
               {% if item.caption %}
                 <div class="product-gallery__caption">{{ item.caption }}</div>

@@ -1,40 +1,47 @@
 ---
-# NEW BRAND LITE TEMPLATE
 layout: brand-profile
-ref: ru-teatime  # Global ID (country-brandslug)
-sample_data: true  # Add this flag
-title: "TeaTime"  # Fallback if JSON lookup fails
-description: "莫斯科的高级茶馆，在现代环境中融合传统俄罗斯元素，提供手工调配的茶饮和独特的茶道体验。" # trx
+ref: ru-teatime
+sample_data: true
+title: "TeaTime"
+description: "莫斯科的高级茶馆，在现代环境中融合传统俄罗斯元素，提供手工调配的茶饮和独特的茶道体验。"
 lang: zh
 permalink: /zh/brands/ru-teatime/
+generate_json: true
 
-# Basic Information
+sections:
+  - identity
+  - founder-narrative
+  - brand-story
+  - product
+  - market-presence
+  - location-intelligence
+  - growth-signals
+  - connections
+
 founding_year: 1998
 website: "https://teatime.ru"
-founders: ["ru-alexei-sokolov"]  # Array of founder keys for JSON lookup
-founder_led: true  # Boolean: Is the founder still actively leading?
+founders: ["ru-alexei-sokolov"]
+founder_led: true
 
-# Taxonomy
-sectors: ["artisanal-spirits"]  # From existing taxonomy
-markets: ["russia"]  # From existing taxonomy
-attributes: ["founder-led", "artisanal-excellence"]  # Optional attributes
-signals: ["export-ready"]  # Optional signals
+sectors: ["artisanal-spirits"]
+markets: ["russia"]
+attributes: ["founder-led", "artisanal-excellence"]
+signals: ["export-ready"]
 
-# Display Options
 featured: true
-featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
+featured_level: 2
 
-# Location - Flat structure for Airtable integration
-location_lng: 37.6173  # Longitude coordinate
-location_lat: 55.7558  # Latitude coordinate
-location_city: "莫斯科"  # trx
-location_region: "莫斯科州"  # trx (optional)
-location_country: "ru"  # ISO country code
+location:
+  lat: 55.7558
+  lng: 37.6173
+  city: "莫斯科"
+  region: "莫斯科州"
+  country: "ru"
 
-# Images (paths follow the global ID pattern)
-logo: "/assets/images/brands/ru-teatime/logo-color.png"
-hero_image: "/assets/images/brands/ru-teatime/hero-storefront.jpg"
-founder_portrait: "/assets/images/brands/ru-teatime/founder-portrait.jpg"
+images:
+  logo: { name: "color", ext: "png" }
+  hero: { name: "storefront", ext: "jpg" }
+  founder: { name: "portrait", ext: "jpg" }
 ---
 
 ## 关于 TeaTime

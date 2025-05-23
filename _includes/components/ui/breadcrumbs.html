@@ -1,0 +1,111 @@
+{% comment %}
+Component: components/ui/breadcrumbs.html
+Purpose: Navigation breadcrumb component for page hierarchy
+
+Parameters:
+- items (optional): Array of breadcrumb items with name and url
+- auto_generate (optional): Auto-generate from page structure (default: true)
+- show_home (optional): Include home link (default: true)
+- separator (optional): Custom separator (default: "›")
+- class_name (optional): Additional CSS classes
+
+Usage:
+{% include components/ui/breadcrumbs.html %}
+{% include components/ui/breadcrumbs.html separator="/" %}
+{% include components/ui/breadcrumbs.html show_home=false %}
+
+Custom items:
+{% assign custom_items = "Home,/|Brands,/brands|Russia,/discover/markets/russia" | split: "|" %}
+{% include components/ui/breadcrumbs.html items=custom_items %}
+{% endcomment %}
+
+{% assign auto_generate = include.auto_generate | default: true %}
+{% assign show_home = include.show_home | default: true %}
+{% assign separator = include.separator | default: "›" %}
+{% assign current_lang = page.lang | default: 'en' %}
+
+<nav class="breadcrumbs {{ include.class_name }}" aria-label="{% include helpers/t.html key='nav.breadcrumbs' fallback='Breadcrumb navigation' %}">
+  <ol class="breadcrumbs__list">
+    
+    {% if show_home %}
+      <li class="breadcrumbs__item">
+        <a href="{{ site.baseurl }}/{{ current_lang }}/" class="breadcrumbs__link">
+          {% include helpers/t.html key="nav.home" fallback="Home" %}
+        </a>
+      </li>
+    {% endif %}
+
+    {% if include.items %}
+      {% comment %} Custom breadcrumb items {% endcomment %}
+      {% for item_string in include.items %}
+        {% assign item_parts = item_string | split: "," %}
+        {% assign item_name = item_parts[0] %}
+        {% assign item_url = item_parts[1] %}
+        
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__separator" aria-hidden="true">{{ separator }}</span>
+          {% if forloop.last %}
+            <span class="breadcrumbs__current" aria-current="page">{{ item_name }}</span>
+          {% else %}
+            <a href="{{ site.baseurl }}{{ item_url }}" class="breadcrumbs__link">{{ item_name }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+
+    {% elsif auto_generate %}
+      {% comment %} Auto-generate from page structure {% endcomment %}
+      
+      {% comment %} Main section link {% endcomment %}
+      {% assign url_parts = page.url | split: "/" %}
+      {% if url_parts.size > 2 %}
+        {% assign main_section = url_parts[2] %}
+        
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__separator" aria-hidden="true">{{ separator }}</span>
+          <a href="{{ site.baseurl }}/{{ current_lang }}/{{ main_section }}/" class="breadcrumbs__link">
+            {% case main_section %}
+              {% when 'brands' %}
+                {% include helpers/t.html key="nav.brands" fallback="Brands" %}
+              {% when 'founders' %}
+                {% include helpers/t.html key="nav.founders" fallback="Founders" %}
+              {% when 'insights' %}
+                {% include helpers/t.html key="nav.insights" fallback="Insights" %}
+              {% when 'discovery' %}
+                {% include helpers/t.html key="nav.discovery" fallback="Discovery" %}
+              {% when 'discover' %}
+                {% include helpers/t.html key="nav.discovery" fallback="Discovery" %}
+              {% when 'about' %}
+                {% include helpers/t.html key="nav.about" fallback="About" %}
+              {% else %}
+                {{ main_section | capitalize }}
+            {% endcase %}
+          </a>
+        </li>
+
+        {% comment %} Sub-section link if exists {% endcomment %}
+        {% if url_parts.size > 3 and url_parts[3] != '' %}
+          {% assign sub_section = url_parts[3] %}
+          
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__separator" aria-hidden="true">{{ separator }}</span>
+            {% if forloop.last %}
+              <span class="breadcrumbs__current" aria-current="page">{{ page.title | default: sub_section | capitalize }}</span>
+            {% else %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/{{ main_section }}/{{ sub_section }}/" class="breadcrumbs__link">
+                {{ sub_section | capitalize }}
+              </a>
+            {% endif %}
+          </li>
+        {% endif %}
+
+        {% comment %} Current page if not already shown {% endcomment %}
+        {% if url_parts.size <= 3 %}
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__separator" aria-hidden="true">{{ separator }}</span>
+            <span class="breadcrumbs__current" aria-current="page">{{ page.title | default: main_section | capitalize }}</span>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </ol>
+</nav>

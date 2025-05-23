@@ -1,0 +1,99 @@
+{% comment %}
+Component: components/forms/select-field.html
+Purpose: Standardized select dropdown field with validation and accessibility
+
+Parameters:
+- name (required): Select name attribute
+- id (optional): Select ID (defaults to name)
+- label (optional): Field label text
+- options (required): Array of options in format "value:label" or just "value"
+- value (optional): Default selected value
+- required (optional): Field is required (default: false)
+- disabled (optional): Field is disabled (default: false)
+- multiple (optional): Allow multiple selections (default: false)
+- placeholder (optional): Placeholder option text
+- help_text (optional): Help text below the field
+- error_message (optional): Error message to display
+- class_name (optional): Additional CSS classes
+
+Usage:
+{% assign sector_options = "wine:Wine|natural-beauty:Natural Beauty|hotels:Hotels & Resorts" | split: "|" %}
+{% include components/forms/select-field.html name="sector" label="Sector" options=sector_options required=true %}
+
+{% assign country_options = "ru:Russia|br:Brazil|cn:China" | split: "|" %}
+{% include components/forms/select-field.html name="country" label="Country" options=country_options placeholder="Select a country" %}
+{% endcomment %}
+
+{% assign field_id = include.id | default: include.name %}
+{% assign field_required = include.required | default: false %}
+{% assign field_disabled = include.disabled | default: false %}
+{% assign field_multiple = include.multiple | default: false %}
+
+<div class="form-field {{ include.class_name }} {% if include.error_message %}form-field--error{% endif %}">
+  
+  {% if include.label %}
+    <label for="{{ field_id }}" class="form-field__label">
+      {{ include.label }}
+      {% if field_required %}
+        <span class="form-field__required" aria-label="required">*</span>
+      {% endif %}
+    </label>
+  {% endif %}
+
+  <div class="form-field__input-wrapper">
+    <select id="{{ field_id }}"
+            name="{{ include.name }}{% if field_multiple %}[]{% endif %}"
+            class="form-field__select"
+            {% if field_required %}required aria-required="true"{% endif %}
+            {% if field_disabled %}disabled{% endif %}
+            {% if field_multiple %}multiple{% endif %}
+            {% if include.help_text %}aria-describedby="{{ field_id }}-help"{% endif %}
+            {% if include.error_message %}aria-invalid="true" aria-describedby="{{ field_id }}-error"{% endif %}>
+      
+      {% if include.placeholder and field_multiple == false %}
+        <option value="" disabled {% unless include.value %}selected{% endunless %}>
+          {{ include.placeholder }}
+        </option>
+      {% endif %}
+
+      {% for option in include.options %}
+        {% assign option_parts = option | split: ":" %}
+        {% if option_parts.size > 1 %}
+          {% assign option_value = option_parts[0] %}
+          {% assign option_label = option_parts[1] %}
+        {% else %}
+          {% assign option_value = option %}
+          {% assign option_label = option %}
+        {% endif %}
+        
+        <option value="{{ option_value }}" 
+                {% if include.value == option_value %}selected{% endif %}>
+          {{ option_label }}
+        </option>
+      {% endfor %}
+    </select>
+    
+    <div class="form-field__select-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6,9 12,15 18,9"></polyline>
+      </svg>
+    </div>
+  </div>
+
+  {% if include.help_text %}
+    <div class="form-field__help" id="{{ field_id }}-help">
+      {{ include.help_text }}
+    </div>
+  {% endif %}
+
+  {% if include.error_message %}
+    <div class="form-field__error" id="{{ field_id }}-error" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="15" y1="9" x2="9" y2="15"></line>
+        <line x1="9" y1="9" x2="15" y2="15"></line>
+      </svg>
+      {{ include.error_message }}
+    </div>
+  {% endif %}
+</div>
