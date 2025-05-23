@@ -186,7 +186,7 @@ lang: ru
       </div>
       
       <div class="markets__insights">
-        {% assign market_insights = site.insights | where: "lang", page.lang | where: "category", "market" | sort: "date" | reverse | limit: 2 %}
+        {% assign market_insights = site.insights | default: ("" | split: "") | where: "lang", page.lang | where: "category", "market" | sort: "date" | reverse | limit: 2 %}
         {% if market_insights.size > 0 %}
           <div class="markets__insights-grid">
             {% for insight in market_insights %}

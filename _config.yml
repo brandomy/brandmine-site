@@ -14,6 +14,18 @@ url: "https://brandmine.io" # The base hostname & protocol for your site
 markdown: kramdown
 permalink: pretty
 
+# Re-enable feed generation (GitHub Pages compatible)
+# feed:
+#   disable: true
+
+# Disable GitHub Metadata plugin for local development to prevent hangs
+# This will be automatically enabled on GitHub Pages
+repository: false
+github: false
+
+# Note: When deploying to GitHub Pages, remove the above lines
+# or set JEKYLL_ENV=production for builds that need GitHub metadata
+
 # Exclude from processing
 exclude:
   - Gemfile
@@ -22,15 +34,18 @@ exclude:
   - README.md
   - CNAME
   - docs/
+  - _docs/
 
 # Allow unpublished pages during development
 unpublished: true
 
-# Collections
+# Collections restored
 collections:
   brands:
     output: true
-    # Note: Individual brand files now define their permalink pattern that includes country code
+    permalink: /:collection/:path/
+  founders:
+    output: true
     permalink: /:collection/:path/
   dimensions:
     output: true
@@ -38,12 +53,6 @@ collections:
   insights:
     output: true
     permalink: /:collection/:path/
-  founders:
-    output: true
-    permalink: /:collection/:path/
-  styleguide:
-    output: true
-    permalink: /styleguide/:path/
 
 
 # Default front matter

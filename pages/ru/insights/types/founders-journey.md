@@ -11,7 +11,8 @@ description: "Истории стоящих за брендами людей и 
 
 Истории стоящих за брендами людей и созданных ими компаний.
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

@@ -1,7 +1,7 @@
 {% comment %}
   Component: pages/founders/filter-interface.html
 
-  Purpose: Displays the filter and search interface for browsing founders
+  Purpose: Enhanced search and filter interface for browsing founders with text search and founder-specific filters
 
   Parameters:
     content_type (optional): Type of content to filter, defaults to "founders"
@@ -9,7 +9,8 @@
 
   Dependencies:
     - CSS: pages/founders/filter-interface.scss
-    - _includes/components/search/search-filter.html
+    - JS: assets/js/founders-search.js
+    - JSON: /search.json for text search
     - site.data.translations for labels
 {% endcomment %}
 
@@ -18,9 +19,22 @@
 
 <div class="founders-filter">
   <div class="founders__interface">
+    
+    <!-- Search Section -->
+    <div class="founders__search">
+      <h3>{{ t.search_title | default: "Search Founders" }}</h3>
+      <div class="search-input-section">
+        <input type="text" id="founders-search-query" class="search-input" 
+               placeholder="{{ t.search_placeholder | default: 'Search by name, expertise, or brand...' }}" 
+               aria-label="Search founders">
+        <button type="button" id="clear-founders-search" class="search-clear-btn" title="Clear search">×</button>
+      </div>
+      <div id="search-results-count" class="search-results-count"></div>
+    </div>
+
     <!-- Filter Column -->
     <div class="founders__filters">
-      <h3>{{ t.title }}</h3>
+      <h3>{{ t.filter_title | default: "Filter Founders" }}</h3>
 
       <!-- Market Filter -->
       <div class="filter-section">
@@ -41,9 +55,32 @@
         </div>
       </div>
 
+      <!-- Languages Filter -->
+      <div class="filter-section">
+        <h4>{{ t.by_languages | default: "Languages Spoken" }}</h4>
+        <div class="filter-options" id="languages-filters">
+          {% assign all_languages = "" | split: "," %}
+          {% for founder in site.founders %}
+            {% if founder.lang == page.lang and founder.languages %}
+              {% for lang in founder.languages %}
+                {% assign all_languages = all_languages | push: lang %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign unique_languages = all_languages | uniq | sort %}
+          {% for lang in unique_languages %}
+            <div class="filter-option">
+              <input type="checkbox" id="language-{{ lang | slugify }}" name="languages" value="{{ lang }}">
+              <label for="language-{{ lang | slugify }}">{{ lang }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
       <!-- Expertise Filter -->
       <div class="filter-section">
-        <h4>{{ t.by_expertise }}</h4>
+        <h4>{{ t.by_expertise | default: "Expertise Areas" }}</h4>
         <div class="filter-options" id="expertise-filters">
           {% assign all_expertise = "" | split: "," %}
           {% for founder in site.founders %}
@@ -64,28 +101,100 @@
         </div>
       </div>
 
+      <!-- Cross-Border Expertise Filter -->
+      <div class="filter-section">
+        <h4>{{ t.by_cross_border | default: "Cross-Border Focus" }}</h4>
+        <div class="filter-options" id="cross-border-filters">
+          <div class="filter-option">
+            <input type="checkbox" id="cross-border-yes" name="cross_border" value="true">
+            <label for="cross-border-yes">{{ t.cross_border_experience | default: "Has Cross-Border Experience" }}</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="international-expansion" name="international_expansion" value="true">
+            <label for="international-expansion">{{ t.international_expansion | default: "International Expansion Experience" }}</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generation Filter -->
+      <div class="filter-section">
+        <h4>{{ t.by_generation | default: "Generation" }}</h4>
+        <div class="filter-options" id="generation-filters">
+          {% assign all_generations = "" | split: "," %}
+          {% for founder in site.founders %}
+            {% if founder.lang == page.lang and founder.generation %}
+              {% assign all_generations = all_generations | push: founder.generation %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign unique_generations = all_generations | uniq | sort %}
+          {% for gen in unique_generations %}
+            <div class="filter-option">
+              <input type="checkbox" id="generation-{{ gen | slugify }}" name="generation" value="{{ gen }}">
+              <label for="generation-{{ gen | slugify }}">{{ gen }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
       <!-- Reset Filters -->
       <div class="filter-actions">
-        <button id="reset-filters" class="btn-text">{{ t.reset }}</button>
+        <button id="reset-founders-filters" class="btn-text">{{ t.reset | default: "Reset Filters" }}</button>
+        <button id="clear-all-founders" class="btn-text">{{ t.clear_all | default: "Clear All" }}</button>
       </div>
     </div>
 
     <div class="founders__results">
       <div class="founders__results-header">
-        <h2 id="results-count">{{ grid_t.all_founders }}</h2>
+        <h2 id="founders-results-count">{{ grid_t.all_founders | default: "All Founders" }}</h2>
 
         <!-- Sort Options -->
         <div class="founders__controls">
           <div class="founders__sort">
-            <label for="sort-select">{{ grid_t.sort_by }}:</label>
-            <select id="sort-select">
-              <option value="name">{{ grid_t.sort_name }}</option>
-              <option value="market">{{ grid_t.sort_market }}</option>
-              <option value="recent">{{ grid_t.sort_recent }}</option>
+            <label for="founders-sort-select">{{ grid_t.sort_by | default: "Sort by" }}:</label>
+            <select id="founders-sort-select">
+              <option value="name">{{ grid_t.sort_name | default: "Name" }}</option>
+              <option value="market">{{ grid_t.sort_market | default: "Market" }}</option>
+              <option value="languages">{{ grid_t.sort_languages | default: "Languages" }}</option>
+              <option value="expertise">{{ grid_t.sort_expertise | default: "Expertise" }}</option>
+              <option value="recent">{{ grid_t.sort_recent | default: "Most Recent" }}</option>
             </select>
           </div>
+
+          <!-- View Toggle -->
+          <div class="founders__view-toggle">
+            <button id="grid-view" class="view-toggle-btn active" title="Grid view">⊞</button>
+            <button id="list-view" class="view-toggle-btn" title="List view">☰</button>
+          </div>
         </div>
+      </div>
+
+      <!-- Active Filters Display -->
+      <div id="active-founders-filters" class="active-filters">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Search Results Grid -->
+      <div id="founders-search-results" class="founders-results-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Load More -->
+      <div id="load-more-founders-container" class="load-more-container" style="display: none;">
+        <button type="button" id="load-more-founders" class="load-more-btn">
+          {{ grid_t.load_more | default: "Load More Founders" }}
+        </button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Fallback for non-JS users -->
+<noscript>
+  <div class="founders-fallback">
+    <p>{{ t.js_required | default: "JavaScript is required for search functionality. Please enable JavaScript or browse founders using the main navigation." }}</p>
+  </div>
+</noscript>
+
+<!-- Load Founders Search JavaScript -->
+<script src="{{ '/assets/js/founders-search.js' | relative_url }}" defer></script>

@@ -1,0 +1,63 @@
+{% comment %}
+  Include Name: components/insights/insights-feed.html
+
+  Purpose: Renders a feed/list of insight cards in a grid layout. Used on the insights
+  index page, category pages, and related content sections to display multiple insights.
+
+  Parameters:
+  - insights: Array of insight objects to display (required)
+    Each insight object should have:
+    - title: Insight title
+    - url: URL to the insight detail page
+    - image: Path to thumbnail image (optional)
+    - excerpt: Summary or excerpt from the insight
+    - tags: Array of tag names (optional)
+    - date: Publication date
+
+  Dependencies:
+  - CSS: insights-feed.css, insight-card.css
+
+  Example Usage:
+  {% assign recent_insights = site.insights | sort: 'date' | reverse | limit: 3 %}
+  {% include components/insights/insights-feed.html insights=recent_insights %}
+
+  Notes:
+  - Automatically creates a responsive grid layout for insight cards
+  - Each card links to its detail page
+  - Truncates excerpts to 160 characters
+  - Displays tags with signal styling
+  - Formats dates in "Month Day, Year" format
+  - Gracefully handles missing images
+  - Used in conjunction with insight-card styling but with simplified structure
+  - All insights are displayed in their entirety, no pagination
+{% endcomment %}
+
+<div class="insights-feed">
+  {% for insight in insights %}
+    <div class="insight-card">
+      <a href="{{ insight.url }}" class="insight-card__link">
+        {% if insight.image %}
+          <div class="insight-card__image-wrapper">
+            <img src="{{ insight.image }}" alt="{{ insight.title }}" class="insight-card__image">
+          </div>
+        {% endif %}
+        <div class="insight-card__content">
+          <h3 class="insight-card__title">{{ insight.title }}</h3>
+          <p class="insight-card__excerpt">{{ insight.excerpt | strip_html | truncate: 160 }}</p>
+          <div class="insight-card__meta">
+            {% if insight.tags %}
+              <div class="insight-card__tags">
+                {% for tag in insight.tags %}
+                  <span class="tag tag--signal insight-card__tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            <div class="insight-card__date">
+              {{ insight.date | date: "%b %-d, %Y" }}
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>

@@ -9,6 +9,39 @@ layout: null
       "url": {{ brand.url | relative_url | jsonify }},
       "lang": {{ brand.lang | jsonify }},
       "type": "brand"
+    },
+    {% endif %}
+  {% endfor %}
+  {% for founder in site.founders %}
+    {% if founder.name and founder.lang %}
+    {
+      "title": {{ founder.name | jsonify }},
+      "url": {{ founder.url | relative_url | jsonify }},
+      "lang": {{ founder.lang | jsonify }},
+      "type": "founder"
+    },
+    {% endif %}
+  {% endfor %}
+  {% for dimension in site.dimensions %}
+    {% if dimension.title and dimension.lang %}
+    {
+      "title": {{ dimension.title | jsonify }},
+      "url": {{ dimension.url | relative_url | jsonify }},
+      "lang": {{ dimension.lang | jsonify }},
+      "type": "dimension",
+      "dimension_type": {{ dimension.tag_type | jsonify }}
+    },
+    {% endif %}
+  {% endfor %}
+  {% for insight in site.insights %}
+    {% if insight.title and insight.lang %}
+    {
+      "title": {{ insight.title | jsonify }},
+      "url": {{ insight.url | relative_url | jsonify }},
+      "lang": {{ insight.lang | jsonify }},
+      "type": "insight",
+      "category": {{ insight.category | jsonify }},
+      "excerpt": {{ insight.excerpt | strip_html | truncate: 150 | jsonify }}
     }{% unless forloop.last %},{% endunless %}
     {% endif %}
   {% endfor %}

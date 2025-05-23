@@ -1,0 +1,67 @@
+{% comment %}
+  Include Name: components/forms/newsletter-form.html
+  
+  Purpose: Newsletter subscription form with multilingual support
+  
+  Parameters:
+  - title: Optional custom title (defaults to translation)
+  - description: Optional custom description (defaults to translation)
+  - placeholder: Optional custom placeholder text (defaults to translation)
+  - class_name: Additional CSS classes
+  - form_id: Custom form ID (defaults to "newsletter-form")
+  
+  Dependencies:
+  - Translation keys in site.data.translations[page.lang].newsletter
+  - CSS: components/forms.scss
+  
+  Example Usage:
+  {% include components/forms/newsletter-form.html %}
+  {% include components/forms/newsletter-form.html title="Stay Updated" %}
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: site.lang | default: "en" %}
+{% assign t = site.data.translations[current_lang].newsletter | default: site.data.translations["en"].newsletter %}
+{% assign form_id = include.form_id | default: "newsletter-form" %}
+
+<div class="newsletter-form {{ include.class_name }}">
+  <div class="newsletter-form__content">
+    <h3 class="newsletter-form__title">
+      {{ include.title | default: t.title | default: "Stay Updated" }}
+    </h3>
+    <p class="newsletter-form__description">
+      {{ include.description | default: t.description | default: "Get the latest insights about emerging BRICS+ brands delivered to your inbox." }}
+    </p>
+    
+    <form id="{{ form_id }}" class="newsletter-form__form" action="#" method="post">
+      <div class="newsletter-form__input-group">
+        <input 
+          type="email" 
+          name="email" 
+          id="{{ form_id }}-email"
+          class="newsletter-form__input"
+          placeholder="{{ include.placeholder | default: t.placeholder | default: 'Enter your email address' }}"
+          required
+          aria-label="{{ t.email_label | default: 'Email address' }}"
+        >
+        <button type="submit" class="newsletter-form__button btn btn--primary">
+          {{ t.button_text | default: "Subscribe" }}
+        </button>
+      </div>
+      
+      <div class="newsletter-form__privacy">
+        <small class="newsletter-form__privacy-text">
+          {{ t.privacy_notice | default: "We respect your privacy. Unsubscribe at any time." }}
+        </small>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Success/Error Messages -->
+  <div id="{{ form_id }}-success" class="newsletter-form__message newsletter-form__message--success" style="display: none;">
+    {{ t.success_message | default: "Thank you for subscribing!" }}
+  </div>
+  
+  <div id="{{ form_id }}-error" class="newsletter-form__message newsletter-form__message--error" style="display: none;">
+    {{ t.error_message | default: "Something went wrong. Please try again." }}
+  </div>
+</div>

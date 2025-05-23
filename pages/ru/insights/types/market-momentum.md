@@ -11,7 +11,8 @@ description: "Заметные достижения, вехи и моменты 
 
 Отслеживайте эволюцию рынка и траектории роста брендов БРИКС+. Эти аналитические материалы освещают тенденции в секторах, стратегии расширения и трансформацию рынка.
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

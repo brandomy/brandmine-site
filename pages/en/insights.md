@@ -8,6 +8,7 @@ lang: en
 sections:
   - hero
   - featured-insights
+  - insights-search
   - category-highlights
   - categories
   - all-insights

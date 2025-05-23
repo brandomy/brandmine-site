@@ -11,7 +11,9 @@ description: "Подробные профили заметных брендов 
 
 Узнайте о развивающихся брендах региона БРИКС+. Эти аналитические материалы исследуют истории брендов, рыночное позиционирование и стратегии международного роста.
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

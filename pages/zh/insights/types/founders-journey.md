@@ -11,7 +11,8 @@ description: "品牌背后人物及其创业历程的故事。"
 
 品牌背后人物及其创业历程的故事。
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

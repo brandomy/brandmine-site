@@ -11,7 +11,8 @@ description: "Notable achievements, milestones, and expansion moments for emergi
 
 Track the market evolution and growth trajectories of BRICS+ brands. These insights highlight sector trends, expansion strategies, and market transformation.
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

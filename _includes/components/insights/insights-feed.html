@@ -18,7 +18,7 @@
   - CSS: insights-feed.css, insight-card.css
 
   Example Usage:
-  {% assign recent_insights = site.insights | sort: 'date' | reverse | limit: 3 %}
+  {%- comment -%}{% assign recent_insights = site.insights | sort: 'date' | reverse | limit: 3 %}{%- endcomment -%}
   {% include components/insights/insights-feed.html insights=recent_insights %}
 
   Notes:

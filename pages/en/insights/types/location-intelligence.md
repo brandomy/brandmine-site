@@ -11,7 +11,8 @@ description: "Geographical insights and regional context that shape brand develo
 
 Uncover how geography, regional trends, and spatial factors influence brand development and market opportunities across the BRICS+ region.
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

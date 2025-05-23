@@ -1,0 +1,69 @@
+{% comment %}
+Component: pages/discover/featured-sectors.html
+
+Purpose: Displays highlighted sectors with images, descriptions, and links.
+         Featured sectors showcase the breadth of available sectors.
+
+Dependencies:
+- site.data.sectors.sectors array
+- site.brands collection
+{% endcomment %}
+
+<div class="panel panel--secondary-soft">
+  <div class="panel__content panel__content--full-width">
+    <section class="sectors__section">
+      <div class="sectors__section-header">
+        <h2 class="sectors__section-title">
+          <span class="sectors__icon sectors__icon--featured">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"></path>
+            </svg>
+          </span>
+          {{ site.data.translations[page.lang].discover.featured_sectors | default: "Featured Sectors" }}
+        </h2>
+        <p class="sectors__section-description">
+          {{ site.data.translations[page.lang].discover.featured_sectors_description | default: "Explore our highlighted business sectors with the most promising brands" }}
+        </p>
+      </div>
+
+      <div class="sectors__featured">
+        <div class="sectors__featured-grid">
+          {% assign featured_sectors = site.data.sectors.sectors | where_exp: "sector", "sector.featured == true" | default: site.data.sectors.sectors | slice: 0, 3 %}
+
+          {% for sector in featured_sectors limit:3 %}
+            {% assign sector_id = sector.id %}
+            {% assign sector_name = sector.name[page.lang] %}
+            {% assign sector_description = sector.description[page.lang] %}
+            {% assign sector_hero_image = sector.hero_image %}
+
+            {% assign brand_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.sectors contains sector_id" | size %}
+
+            <div class="sectors__featured-item">
+              <div class="sectors__featured-image">
+                {% if sector_hero_image %}
+                  <img src="{{ sector_hero_image | relative_url }}" alt="{{ sector_name }}" class="sectors__featured-img">
+                {% else %}
+                  <div class="sectors__featured-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1">
+                      <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
+                    </svg>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="sectors__featured-content">
+                <h3 class="sectors__featured-title">{{ sector_name }}</h3>
+                <p class="sectors__featured-description">{{ sector_description }}</p>
+                <div class="sectors__featured-meta">
+                  <span class="sectors__featured-count">{{ brand_count }} brands</span>
+                </div>
+                <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_id }}/" class="sectors__featured-link btn btn-outline">
+                  {{ site.data.translations[page.lang].discover.explore_sector | default: "Explore Sector" }}
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

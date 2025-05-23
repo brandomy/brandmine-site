@@ -105,8 +105,8 @@ Usage:
     <div class="debug-info__section">
       <h5 class="debug-info__section-title">🔗 Quick Actions</h5>
       <div class="debug-info__actions">
-        <button onclick="console.log('Page object:', {{ page | jsonify }})">Log Page</button>
-        <button onclick="console.log('Site object:', {{ site | jsonify }})">Log Site</button>
+        <button onclick="console.log('Page object:', { title: '{{ page.title }}', lang: '{{ page.lang }}', layout: '{{ page.layout }}' })">Log Page</button>
+        <button onclick="console.log('Site collections:', { brands: {{ site.brands.size }}, founders: {{ site.founders.size }}, insights: {{ site.insights.size }} })">Log Site Info</button>
         <button onclick="window.location.reload()">Reload</button>
         <button onclick="toggleDebugInfo()">Toggle</button>
       </div>

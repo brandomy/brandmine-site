@@ -22,7 +22,8 @@
   {% include components/content/featured-content.html content=featured_brand content_type="brand" %}
   
   For a featured insight:
-  {% assign featured_insight = site.insights | where: "featured", true | first %}
+  {%- comment -%}{% assign featured_insight = site.insights | where: "featured", true | first %}{%- endcomment -%}
+  {% assign featured_insight = nil %}
   {% include components/content/featured-content.html content=featured_insight content_type="insight" %}
   
   Notes:

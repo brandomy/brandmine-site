@@ -1,0 +1,68 @@
+{% comment %}
+Component: pages/discover/featured-markets.html
+
+Purpose: Highlights selected markets with more detailed descriptions
+         and imagery, showcasing the most important or strategic markets.
+
+Dependencies:
+- site.data.markets.markets array
+- site.brands collection
+{% endcomment %}
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    <section class="markets__featured">
+      <div class="markets__section-header">
+        <h2 class="markets__section-title">
+          <span class="markets__icon markets__icon--featured">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"></path>
+            </svg>
+          </span>
+          {{ site.data.translations[page.lang].discover.featured_markets | default: "Featured Markets" }}
+        </h2>
+        <p class="markets__section-description">
+          {{ site.data.translations[page.lang].discover.featured_markets_description | default: "Explore our highlighted BRICS+ regions with exceptional growth potential" }}
+        </p>
+      </div>
+
+      <div class="markets__featured-grid">
+        {% assign featured_markets = site.data.markets.markets | where_exp: "market", "market.featured == true" | default: site.data.markets.markets | slice: 0, 3 %}
+
+        {% for market in featured_markets limit:3 %}
+          {% assign market_id = market.id %}
+          {% assign market_name = market.name[page.lang] %}
+          {% assign market_description = market.description[page.lang] %}
+          {% assign market_hero_image = market.hero_image %}
+
+          {% assign brand_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.markets contains market_id" | size %}
+
+          <div class="markets__featured-item">
+            <div class="markets__featured-image">
+              {% if market_hero_image %}
+                <img src="{{ market_hero_image | relative_url }}" alt="{{ market_name }}" class="markets__featured-img">
+              {% else %}
+                <div class="markets__featured-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+            <div class="markets__featured-content">
+              <h3 class="markets__featured-title">{{ market_name }}</h3>
+              <p class="markets__featured-description">{{ market_description }}</p>
+              <div class="markets__featured-meta">
+                <span class="markets__featured-count">{{ brand_count }} brands</span>
+              </div>
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_id }}/" class="markets__featured-link btn btn-outline">
+                {{ site.data.translations[page.lang].discover.explore_market | default: "Explore Market" }}
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div>

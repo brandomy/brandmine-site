@@ -11,7 +11,8 @@ description: "深入介绍具有国际影响力的金砖+国家值得关注的�
 
 探索金砖+地区正在崛起的品牌。这些分析深入剖析品牌故事、市场定位和国际增长战略。
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

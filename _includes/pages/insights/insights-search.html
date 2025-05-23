@@ -1,0 +1,181 @@
+{% comment %}
+  Component: pages/insights/insights-search.html
+
+  Purpose: Enhanced search and filter interface for browsing insights with text search and insights-specific filters
+
+  Parameters:
+    content_type (optional): Type of content to filter, defaults to "insights"
+
+  Dependencies:
+    - CSS: pages/insights/insights-search.scss (to be created)
+    - JS: assets/js/insights-search.js (to be created)
+    - JSON: /search.json for text search
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights.filter %}
+{% assign grid_t = site.data.translations[page.lang].insights.grid %}
+
+<div class="insights-filter">
+  <div class="insights__interface">
+    
+    <!-- Search Section -->
+    <div class="insights__search">
+      <h3>{{ t.search_title | default: "Search Insights" }}</h3>
+      <div class="search-input-section">
+        <input type="text" id="insights-search-query" class="search-input" 
+               placeholder="{{ t.search_placeholder | default: 'Search by title, content, or topic...' }}" 
+               aria-label="Search insights">
+        <button type="button" id="clear-insights-search" class="search-clear-btn" title="Clear search">×</button>
+      </div>
+      <div id="search-results-count" class="search-results-count"></div>
+    </div>
+
+    <!-- Filter Column -->
+    <div class="insights__filters">
+      <h3>{{ t.filter_title | default: "Filter Insights" }}</h3>
+
+      <!-- Category Filter -->
+      <div class="filter-section">
+        <h4>{{ t.by_category | default: "By Category" }}</h4>
+        <div class="filter-options" id="category-filters">
+          {% for category in site.data.insights[page.lang].categories %}
+            <div class="filter-option">
+              <input type="checkbox" id="category-{{ category.id }}" name="category" value="{{ category.id }}">
+              <label for="category-{{ category.id }}">{{ category.name }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Publication Date Filter -->
+      <div class="filter-section">
+        <h4>{{ t.by_date | default: "Publication Date" }}</h4>
+        <div class="filter-options" id="date-filters">
+          <div class="filter-option">
+            <input type="radio" id="date-all" name="date_range" value="all" checked>
+            <label for="date-all">{{ t.all_time | default: "All Time" }}</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="date-week" name="date_range" value="week">
+            <label for="date-week">{{ t.past_week | default: "Past Week" }}</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="date-month" name="date_range" value="month">
+            <label for="date-month">{{ t.past_month | default: "Past Month" }}</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="date-quarter" name="date_range" value="quarter">
+            <label for="date-quarter">{{ t.past_quarter | default: "Past Quarter" }}</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="date-year" name="date_range" value="year">
+            <label for="date-year">{{ t.past_year | default: "Past Year" }}</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reading Time Filter -->
+      <div class="filter-section">
+        <h4>{{ t.by_reading_time | default: "Reading Time" }}</h4>
+        <div class="filter-options" id="reading-time-filters">
+          <div class="filter-option">
+            <input type="checkbox" id="time-quick" name="reading_time" value="quick">
+            <label for="time-quick">{{ t.quick_read | default: "Quick Read (< 5 min)" }}</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="time-medium" name="reading_time" value="medium">
+            <label for="time-medium">{{ t.medium_read | default: "Medium (5-10 min)" }}</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="time-long" name="reading_time" value="long">
+            <label for="time-long">{{ t.long_read | default: "Deep Dive (10+ min)" }}</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Market Filter -->
+      <div class="filter-section">
+        <h4>{{ t.by_market | default: "By Market" }}</h4>
+        <div class="filter-options" id="market-filters">
+          {% assign insight_markets = "" | split: "," %}
+          {% for insight in site.insights %}
+            {% if insight.lang == page.lang and insight.markets %}
+              {% for market in insight.markets %}
+                {% assign insight_markets = insight_markets | push: market %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign unique_markets = insight_markets | uniq | sort %}
+          {% for market in unique_markets %}
+            {% assign market_name = site.data.dimensions[page.lang].markets[market] | default: market %}
+            <div class="filter-option">
+              <input type="checkbox" id="market-{{ market }}" name="market" value="{{ market }}">
+              <label for="market-{{ market }}">{{ market_name }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Reset Filters -->
+      <div class="filter-actions">
+        <button id="reset-insights-filters" class="btn-text">{{ t.reset | default: "Reset Filters" }}</button>
+        <button id="clear-all-insights" class="btn-text">{{ t.clear_all | default: "Clear All" }}</button>
+      </div>
+    </div>
+
+    <div class="insights__results">
+      <div class="insights__results-header">
+        <h2 id="insights-results-count">{{ grid_t.all_insights | default: "All Insights" }}</h2>
+
+        <!-- Sort Options -->
+        <div class="insights__controls">
+          <div class="insights__sort">
+            <label for="insights-sort-select">{{ grid_t.sort_by | default: "Sort by" }}:</label>
+            <select id="insights-sort-select">
+              <option value="date">{{ grid_t.sort_date | default: "Most Recent" }}</option>
+              <option value="title">{{ grid_t.sort_title | default: "Title" }}</option>
+              <option value="category">{{ grid_t.sort_category | default: "Category" }}</option>
+              <option value="reading_time">{{ grid_t.sort_reading_time | default: "Reading Time" }}</option>
+              <option value="relevance">{{ grid_t.sort_relevance | default: "Relevance" }}</option>
+            </select>
+          </div>
+
+          <!-- View Toggle -->
+          <div class="insights__view-toggle">
+            <button id="grid-view" class="view-toggle-btn active" title="Grid view">⊞</button>
+            <button id="list-view" class="view-toggle-btn" title="List view">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filters Display -->
+      <div id="active-insights-filters" class="active-filters">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Search Results Grid -->
+      <div id="insights-search-results" class="insights-results-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Load More -->
+      <div id="load-more-insights-container" class="load-more-container" style="display: none;">
+        <button type="button" id="load-more-insights" class="load-more-btn">
+          {{ grid_t.load_more | default: "Load More Insights" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fallback for non-JS users -->
+<noscript>
+  <div class="insights-fallback">
+    <p>{{ t.js_required | default: "JavaScript is required for search functionality. Please enable JavaScript or browse insights using the main navigation." }}</p>
+  </div>
+</noscript>
+
+<!-- Load Insights Search JavaScript -->
+<script src="{{ '/assets/js/insights-search.js' | relative_url }}" defer></script>

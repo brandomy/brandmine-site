@@ -11,7 +11,8 @@ description: "金砖+新兴品牌的重要成就、里程碑和扩张时机。"
 
 追踪金砖+品牌的市场演变和增长轨迹。这些洞察突出行业趋势、扩张策略和市场转型。
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

@@ -234,7 +234,8 @@ lang: ru
       </div>
       
       <div class="attributes__insights">
-        {% assign attribute_insights = site.insights | where: "lang", page.lang | where: "category", "attribute" | sort: "date" | reverse | limit: 2 %}
+        {% assign empty_array = "" | split: "" %}
+        {% assign attribute_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", "attribute" | sort: "date" | reverse | limit: 2 %}
         {% if attribute_insights.size > 0 %}
           <div class="attributes__insights-grid">
             {% for insight in attribute_insights %}

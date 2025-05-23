@@ -11,7 +11,8 @@ description: "对塑造品牌发展和商机的地理洞察和区域背景的分
 
 发现地理、区域趋势和空间因素如何影响金砖+地区的品牌发展和市场机遇。
 
-{% assign type_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
 
 <div class="insights-grid">
   {% for insight in type_insights %}

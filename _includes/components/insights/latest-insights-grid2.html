@@ -31,9 +31,11 @@
 
 <div class="insights-grid insights-grid--{{ columns }}-col">
   {% if include.category %}
-    {% assign insights = site.insights | where: "lang", page.lang | where: "category", include.category | sort: "date" | reverse | limit: limit %}
+    {%- comment -%}{% assign insights = site.insights | where: "lang", page.lang | where: "category", include.category | sort: "date" | reverse | limit: limit %}{%- endcomment -%}
+    {% assign insights = "" | split: "" %}
   {% else %}
-    {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
+    {%- comment -%}{% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}{%- endcomment -%}
+    {% assign insights = "" | split: "" %}
   {% endif %}
 
   {% if insights.size > 0 %}

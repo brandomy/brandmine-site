@@ -198,7 +198,7 @@ lang: zh
       </div>
       
       <div class="sectors__insights">
-        {% assign sector_insights = site.insights | where: "lang", page.lang | where: "category", "sector" | sort: "date" | reverse | limit: 2 %}
+        {% assign sector_insights = site.insights | default: ("" | split: "") | where: "lang", page.lang | where: "category", "sector" | sort: "date" | reverse | limit: 2 %}
         {% if sector_insights.size > 0 %}
           <div class="sectors__insights-grid">
             {% for insight in sector_insights %}
