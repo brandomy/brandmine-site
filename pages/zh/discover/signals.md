@@ -186,7 +186,8 @@ lang: zh
       </div>
       
       <div class="signals__insights">
-        {% assign signal_insights = site.insights | default: ("" | split: "") | where: "lang", page.lang | where: "category", "signal" | sort: "date" | reverse | limit: 2 %}
+        {% assign all_insights = site.insights | default: empty %}
+        {% assign signal_insights = all_insights | where: "lang", page.lang | where: "category", "signal" | sort: "date" | reverse | limit: 2 %}
         {% if signal_insights.size > 0 %}
           <div class="signals__insights-grid">
             {% for insight in signal_insights %}
