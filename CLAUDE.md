@@ -15,7 +15,6 @@ The site supports:
 - A **dimension-based discovery model** (market, sector, attribute, signal)
 - Custom includes for maps, dimension clouds, related brand logic, and language switching
 - Integration with MapLibre for interactive maps
-- Planned integration with Airtable (flat table structure)
 
 ---
 
@@ -223,8 +222,11 @@ All helper scripts live in the `_scripts/` directory. Key examples:
 - **generate_article_template.py [lang] [slug]**: Scaffold a new insight article.
 - **generate_search_index.py**: Build or update the `search.json` index.
 - **add_image_attribution.py [collection] [identifier]**: Add entries to `_data/image_attributions.yml`.
-- **apply_teal_filter.sh**: Apply the teal brand filter to team photos.
-- *(See `_scripts/` for the full list of available helper scripts.)*
+ - **apply_teal_filter.sh**: Apply the teal brand filter to team photos.
+ - **import_from_airtable.rb**: Import data from Airtable flat tables.
+ - **yml_to_json_converter.py**: Convert YAML data (e.g. market sectors) to JSON files.
+ - **claude-session-init.py**: Initialize AI sessions with project context and prompts.
+ - *(See `_scripts/` for the full list of available helper scripts.)*
 
 ## Validation
 ```bash
@@ -408,32 +410,15 @@ General Rule:
   2. **Founder's Journey** - Personal stories behind the brands
   3. **Market Momentum** - Achievements, milestones, and expansion moments
   4. **Location Intelligence** - Geographical insights and regional context
-- Market-sector structured data in `_data/market_sectors/{lang}/{market}.yml`
-- Structured data in JSON files (`countries.json`, `languages.json`, `market_sectors.json`, etc.) as the primary source; per-language YAML for countries will be removed.
-- Future integration with Airtable using a flat table structure
+- Market-sector structured data in `_data/market-sectors/{lang}/{market}.yml`
+- Structured data in JSON files (`countries.json`, `languages.json`, `market_sector_map.json`, `market-country-map.json`, `markets.json`) as the primary source.
 - JSON for complex data (timelines, products, secondary locations)
 - CSV import/export for efficient data management
 - Sector-specific fields for specialized information
 
 ---
 
-# ✅ Implementation Priorities
 
-1. Enhanced search and filter interface
-2. Visual taxonomy representation in brand cards
-3. MapLibre integration for geographic discovery
-4. Two-tier content approach (100+ listings, 2-3 profiles per sector)
-5. Multilingual support from day one
-
----
-
-# 🤖 AI Onboarding Prompt (use at start of session)
-
-Paste this in Claude or ChatGPT when starting a session:
-
-> This is a Jekyll-based multilingual site (Brandmine) that showcases brands from BRICS+ countries using a four-dimension taxonomy system (sectors, markets, attributes, signals). It features a two-tier content approach with basic listings (100+ per sector) and feature profiles (2-3 per sector). The site uses MapLibre for geographic visualization and has a mobile-first design philosophy. All content exists in three languages (EN/RU/ZH) with consistent URL structures. The design uses BEM naming conventions and CSS custom properties for styling.
-
----
 
 # 🧩 Sample File Structures and Styling Philosophy
 
@@ -550,16 +535,6 @@ Claude must align any navigation, filtering, or dimension-related output with th
 
 ---
 
-# 🤖 Your Responses (Reminder)
-
-1. Provide one file at a time, starting with the most foundational or requested item.
-2. Wait for my approval or "next" command before continuing with the next file or section.
-3. If writing markdown, wrap the file name and content in fenced code blocks (e.g. ```md or ```yaml) and avoid commentary between them.
-4. For multi-step tasks, give a preview plan before beginning (e.g., "I'll generate 3 files: X, Y, Z — shall I start with X?")
-
-⚠️ Do not attempt to return more than one document or major block of code in a single response unless I've asked for it explicitly. Wait for confirmation before proceeding.
-
----
 
 # 📋 Coding Tasks & Workflow
 
