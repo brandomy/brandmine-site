@@ -1,4 +1,3 @@
-# br-eduardo-santos.md
 ---
 layout: founder-profile
 ref: br-eduardo-santos

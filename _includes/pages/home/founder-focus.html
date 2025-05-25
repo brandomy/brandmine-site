@@ -14,7 +14,9 @@
     featured_only (optional): When true, only shows founders with featured=true (default: true)
 
   Dependencies:
-    - CSS: components/cards/founder-card.scss
+    - CSS: assets/css/pages/home/founder-focus.scss
+    - CSS: assets/css/components/cards/founder-card.scss
+    - JavaScript: assets/js/founder-carousel.js (for dot navigation and scrolling)
     - Includes: components/cards/founder-card.html
 
   Usage:
@@ -46,6 +48,7 @@
     {% else %}
       {% assign founders = site.founders | where: "lang", current_lang | limit: limit %}
     {% endif %}
+    
 
     <div class="founder-focus-carousel">
       {% if founders.size > 0 %}
@@ -96,6 +99,15 @@
       {% endif %}
     </div>
 
+    {% assign founder_count = founders.size | plus: 0 %}
+    {% if founder_count > 3 %}
+    <div class="founder-focus-nav">
+      <!-- For 4 founders with 3 visible, we need 2 positions: 0-2 and 1-3 -->
+      <div class="founder-focus-nav-dot active" data-slide="0"></div>
+      <div class="founder-focus-nav-dot" data-slide="1"></div>
+    </div>
+    {% endif %}
+
     <div class="cta-buttons">
       <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/founders/' }}"
          class="btn btn--primary-cta"
@@ -106,24 +118,3 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Simple carousel scrolling for founder cards
-    const carousel = document.querySelector('.founder-focus-carousel');
-
-    if (carousel) {
-      // Add horizontal scrolling with mouse wheel
-      carousel.addEventListener('wheel', function(e) {
-        if (e.deltaY !== 0) {
-          e.preventDefault();
-          carousel.scrollLeft += e.deltaY;
-        }
-      });
-
-      // Add touch scrolling indicators
-      if (carousel.scrollWidth > carousel.clientWidth) {
-        carousel.classList.add('scrollable');
-      }
-    }
-  });
-</script>

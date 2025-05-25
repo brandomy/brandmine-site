@@ -16,6 +16,7 @@ Components specific to handling collections of content across the site:
 - **dimensions/** - Components for taxonomy dimension displays
   - `dimension-cloud.html` - Tag cloud visualization for dimensions
   - `dimension-list.html` - List view of dimension items
+  - `dimension-tag-cloud.html` - Flexible tag cloud with selection/sorting options
   - `discovery-dimensions-grid.html` - Grid display of dimension categories
   - `discovery-navigation.html` - Navigation tabs for discovery section
 
@@ -31,6 +32,7 @@ Reusable UI components across the site:
 
 - **cards/** - Content card components
   - `brand-card.html` - Standard brand display card
+  - `dimension-card.html` - Reusable card for discovery dimensions
   - `featured-brand.html` - Enhanced card for featured brands
   - `insight-card.html` - Card for insight article previews
   - `market-sector-card.html` - Card for market-sector combinations
@@ -118,6 +120,35 @@ Utility functions and components:
 {% include components/cards/brand-card.html
    brand=brand
    featured=false %}
+```
+
+### Dimension Card
+
+```liquid
+{% include components/cards/dimension-card.html
+   type="sectors"
+   limit=3 %}
+   
+{% include components/cards/dimension-card.html
+   type="markets"
+   limit=4
+   tag_selection="alphabetic"
+   tag_sort="alphabetic" %}
+```
+
+### Dimension Tag Cloud
+
+```liquid
+{% include components/dimensions/dimension-tag-cloud.html
+   type="attributes" 
+   limit=5 
+   selection="featured" %}
+
+{% include components/dimensions/dimension-tag-cloud.html
+   type="sectors"
+   limit=10
+   selection="all"
+   sort="alphabetic" %}
 ```
 
 ### Dimension Navigation

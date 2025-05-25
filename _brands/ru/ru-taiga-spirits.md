@@ -32,6 +32,18 @@ location_city: "Листвянка"  # City name (translatable)
 location_region: "Иркутская область"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"     # Becomes logo-color-400w.png
+    ext: "png"
+  hero:
+    name: "distillery"   # Becomes hero-bottles-400w.jpg
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    ext: "jpg"
+    
 # Social media presence (do not translate URLs)
 facebook: "https://facebook.com/taigaspirits"
 instagram: "https://instagram.com/taiga_spirits"

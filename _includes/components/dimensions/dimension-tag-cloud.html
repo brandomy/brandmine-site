@@ -1,0 +1,147 @@
+{% comment %}
+Component: components/dimensions/dimension-tag-cloud.html
+
+Purpose: Displays a cloud of dimension tags with flexible selection and sorting options
+
+Parameters:
+- type (required): Dimension type - "sectors", "markets", "attributes", "signals"
+- limit (optional): Number of tags to show (default: 3)
+- selection (optional): Tag selection method - "featured", "alphabetic", "random", "all" (default: "featured")
+- sort (optional): Sort order - "alphabetic", "reverse-alphabetic", "frequency", "none" (default: "none")
+- show_more (optional): Whether to show "+X more" indicator (default: true)
+
+Dependencies:
+- Standardized data structure with featured flags
+- CSS: components/dimensions/dimension-tag-cloud.scss
+
+Usage:
+{% include components/dimensions/dimension-tag-cloud.html type="sectors" limit=3 %}
+{% include components/dimensions/dimension-tag-cloud.html type="markets" limit=4 selection="alphabetic" sort="alphabetic" %}
+{% include components/dimensions/dimension-tag-cloud.html type="attributes" selection="all" sort="frequency" limit=5 %}
+
+Selection Methods:
+- "featured": Show only items marked as featured (default)
+- "alphabetic": Show first N items alphabetically
+- "random": Show random selection (uses Jekyll's sample filter limitation)
+- "all": Show all items (respects limit and sort)
+
+Sort Methods:
+- "none": No sorting, use data order (default)
+- "alphabetic": Sort A-Z by name
+- "reverse-alphabetic": Sort Z-A by name  
+- "frequency": Sort by usage frequency (future enhancement)
+{% endcomment %}
+
+{% assign limit = include.limit | default: 3 %}
+{% assign selection = include.selection | default: "featured" %}
+{% assign sort = include.sort | default: "none" %}
+{% assign show_more = include.show_more | default: true %}
+
+{% comment %} Unified data access - handle different data structures {% endcomment %}
+{% if include.type == "sectors" %}
+  {% assign items_array = site.data.sectors.sectors %}
+  {% assign is_signals = false %}
+{% elsif include.type == "markets" %}
+  {% assign items_array = site.data.markets.markets %}
+  {% assign is_signals = false %}
+{% elsif include.type == "signals" %}
+  {% assign items_array = site.data.dimensions.signals %}
+  {% assign is_signals = true %}
+{% else %}
+  {% assign items_array = site.data[include.type] %}
+  {% assign is_signals = false %}
+{% endif %}
+
+{% comment %} Apply selection strategy {% endcomment %}
+{% if is_signals %}
+  {% comment %} Handle signals object structure {% endcomment %}
+  {% assign signal_keys = items_array | keys %}
+  {% assign selected_items = "" | split: "," %}
+  
+  {% if selection == "featured" %}
+    {% for key in signal_keys %}
+      {% assign item = items_array[key] %}
+      {% if item.featured %}
+        {% assign item_data = key | append: "|" | append: item.translations[page.lang].name | default: item.translations.en.name %}
+        {% assign selected_items = selected_items | push: item_data %}
+      {% endif %}
+    {% endfor %}
+  {% elsif selection == "alphabetic" or selection == "all" %}
+    {% for key in signal_keys %}
+      {% assign item = items_array[key] %}
+      {% assign item_name = item.translations[page.lang].name | default: item.translations.en.name %}
+      {% assign item_data = key | append: "|" | append: item_name %}
+      {% assign selected_items = selected_items | push: item_data %}
+    {% endfor %}
+  {% endif %}
+  
+{% else %}
+  {% comment %} Handle standard array structures {% endcomment %}
+  {% if selection == "featured" %}
+    {% assign selected_items = items_array | where: "featured", true %}
+  {% elsif selection == "alphabetic" or selection == "all" %}
+    {% assign selected_items = items_array %}
+  {% elsif selection == "random" %}
+    {% comment %} Jekyll doesn't have true random, but we can use sample {% endcomment %}
+    {% assign selected_items = items_array %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Apply sorting {% endcomment %}
+{% if sort == "alphabetic" and is_signals %}
+  {% assign selected_items = selected_items | sort %}
+{% elsif sort == "reverse-alphabetic" and is_signals %}
+  {% assign selected_items = selected_items | sort | reverse %}
+{% elsif sort == "alphabetic" and is_signals != true %}
+  {% if include.type == "sectors" %}
+    {% assign selected_items = selected_items | sort: "translations.en.name" %}
+  {% else %}
+    {% assign selected_items = selected_items | sort: "name.en" %}
+  {% endif %}
+{% elsif sort == "reverse-alphabetic" and is_signals != true %}
+  {% if include.type == "sectors" %}
+    {% assign selected_items = selected_items | sort: "translations.en.name" | reverse %}
+  {% else %}
+    {% assign selected_items = selected_items | sort: "name.en" | reverse %}
+  {% endif %}
+{% endif %}
+
+<div class="dimension-tag-cloud dimension-tag-cloud--{{ include.type }}">
+  {% comment %} Display selected and sorted items {% endcomment %}
+  {% if is_signals %}
+    {% assign displayed_count = 0 %}
+    {% for item_data in selected_items %}
+      {% if displayed_count < limit %}
+        {% assign item_parts = item_data | split: "|" %}
+        {% assign key = item_parts[0] %}
+        {% assign item_name = item_parts[1] %}
+        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/{{ key }}/" 
+           class="dimension-tag dimension-tag--{{ include.type }}">{{ item_name }}</a>
+        {% assign displayed_count = displayed_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% for item in selected_items limit: limit %}
+      {% if include.type == "sectors" %}
+        {% assign item_name = item.translations[page.lang].name | default: item.translations.en.name %}
+      {% else %}
+        {% assign item_name = item.name[page.lang] | default: item.name.en %}
+      {% endif %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/{{ item.id }}/" 
+         class="dimension-tag dimension-tag--{{ include.type }}">{{ item_name }}</a>
+    {% endfor %}
+  {% endif %}
+  
+  {% comment %} Show count of additional items {% endcomment %}
+  {% if show_more %}
+    {% if is_signals %}
+      {% assign total_items = items_array | size %}
+    {% else %}
+      {% assign total_items = items_array.size %}
+    {% endif %}
+    {% assign remaining = total_items | minus: limit %}
+    {% if remaining > 0 %}
+      <span class="dimension-tag-cloud__more">+{{ remaining }} more</span>
+    {% endif %}
+  {% endif %}
+</div>

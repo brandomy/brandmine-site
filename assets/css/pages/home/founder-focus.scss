@@ -25,7 +25,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--color-gray-300);
+      background-color: var(--color-olive-400);
       border-radius: 2px;
     }
 
@@ -38,21 +38,7 @@
       }
 
       @media (width >= 1024px) {
-        flex: 0 0 calc(33.333% - 1.25rem);
-      }
-    }
-
-    &.scrollable {
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 40px;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.80));
-        pointer-events: none;
+        flex: 0 0 calc(30% - 1rem); /* Slightly smaller to show 4th card partially */
       }
     }
   }
@@ -68,7 +54,7 @@
     }
   }
 
-  /* Navigation for founder carousel */
+  /* Navigation dots for founder carousel */
   .founder-focus-nav {
     display: flex;
     justify-content: center;
@@ -78,16 +64,22 @@
   }
 
   .founder-focus-nav-dot {
-    width: 8px;
-    height: 8px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background-color: var(--color-gray-300);
+    background-color: rgba(0, 0, 0, 0.3); /* Solid but muted */
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    border: none;
 
     &.active {
-      background-color: var(--color-olive-500);
+      background-color: #6b7280; /* Solid dark gray */
+      background-color: var(--olive-600, #6b7280); /* Olive with fallback */
       transform: scale(1.2);
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
     }
   }
 }

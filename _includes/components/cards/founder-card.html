@@ -121,40 +121,16 @@
       </div>
     {% endif %}
 
-    {% comment %} Enhanced tag cloud with markets and sectors {% endcomment %}
+    {% comment %} Expertise cloud {% endcomment %}
+    {% if founder.expertise %}
     <div class="founder-card__tag-cloud">
-      {% comment %} Markets {% endcomment %}
-      {% if founder.markets %}
-        {% for market in founder.markets limit:2 %}
-          {% assign market_name = site.data.countries.countries[market].name[page.lang] | default: market %}
-          <span class="founder-card__tag founder-card__tag--market">
-            {{ market_name }}
-          </span>
-        {% endfor %}
-      {% endif %}
-
-      {% comment %} Sectors {% endcomment %}
-      {% if founder.sectors %}
-        {% for sector in founder.sectors limit:2 %}
-          <span class="founder-card__tag founder-card__tag--sector">
-            {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
-          </span>
-        {% endfor %}
-      {% elsif founder.primary_sector %}
-        <span class="founder-card__tag founder-card__tag--sector">
-          {{ site.data.dimensions[page.lang].sectors[founder.primary_sector] | default: founder.primary_sector }}
+      {% for expertise in founder.expertise limit:4 %}
+        <span class="founder-card__tag founder-card__tag--expertise">
+          {{ expertise }}
         </span>
-      {% endif %}
-
-      {% comment %} Expertise (limited) {% endcomment %}
-      {% if founder.expertise %}
-        {% for expertise in founder.expertise limit:1 %}
-          <span class="founder-card__tag founder-card__tag--expertise">
-            {{ expertise }}
-          </span>
-        {% endfor %}
-      {% endif %}
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
 
   <footer class="founder-card__footer">

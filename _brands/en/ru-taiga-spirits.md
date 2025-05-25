@@ -53,7 +53,7 @@ images:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
   hero:
-    name: "bottles"   # Becomes hero-bottles-400w.jpg
+    name: "distillery"   # Becomes hero-bottles-400w.jpg
     ext: "jpg"
   founder:
     name: "portrait"    # Becomes founder-portrait-400w.jpg

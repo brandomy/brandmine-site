@@ -41,7 +41,7 @@ location:
 
 images:
   logo: { name: "color", ext: "png" }
-  hero: { name: "storefront", ext: "jpg" }
+  hero: { name: "distillery", ext: "jpg" }
   founder: { name: "portrait", ext: "jpg" }
 
 social_media:
