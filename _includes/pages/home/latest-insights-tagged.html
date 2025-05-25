@@ -17,8 +17,7 @@
 
     <div class="latest-insights-featured">
       <!-- Get all insights for current language -->
-      {%- comment -%}{% assign filtered_insights = site.insights | where: "lang", current_lang %}{%- endcomment -%}
-      {% assign filtered_insights = "" | split: "" %}
+      {% assign filtered_insights = site.insights | where: "lang", current_lang %}
 
       <!-- Brand Spotlight -->
       {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
