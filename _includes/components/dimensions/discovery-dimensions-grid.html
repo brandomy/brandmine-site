@@ -16,8 +16,8 @@
 {% endcomment %}
 
 <div class="discovery-dimensions-grid {% if include.columns %}discovery-dimensions-grid--columns-{{ include.columns }}{% endif %}">
-  {% include components/cards/dimension-card.html type="sectors" limit=include.limit %}
   {% include components/cards/dimension-card.html type="markets" limit=include.limit %}
+  {% include components/cards/dimension-card.html type="sectors" limit=include.limit %}
   {% include components/cards/dimension-card.html type="attributes" limit=include.limit %}
   {% include components/cards/dimension-card.html type="signals" limit=include.limit %}
 </div>

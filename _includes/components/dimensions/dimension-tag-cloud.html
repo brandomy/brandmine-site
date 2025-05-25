@@ -37,19 +37,16 @@ Sort Methods:
 {% assign sort = include.sort | default: "none" %}
 {% assign show_more = include.show_more | default: true %}
 
-{% comment %} Unified data access - handle different data structures {% endcomment %}
+{% comment %} Unified data access - all dimension types now use standardized structure {% endcomment %}
 {% if include.type == "sectors" %}
   {% assign items_array = site.data.sectors.sectors %}
-  {% assign is_signals = false %}
 {% elsif include.type == "markets" %}
   {% assign items_array = site.data.markets.markets %}
-  {% assign is_signals = false %}
 {% elsif include.type == "signals" %}
   {% assign items_array = site.data.dimensions.signals %}
   {% assign is_signals = true %}
 {% else %}
   {% assign items_array = site.data[include.type] %}
-  {% assign is_signals = false %}
 {% endif %}
 
 {% comment %} Apply selection strategy {% endcomment %}
@@ -62,14 +59,15 @@ Sort Methods:
     {% for key in signal_keys %}
       {% assign item = items_array[key] %}
       {% if item.featured %}
-        {% assign item_data = key | append: "|" | append: item.translations[page.lang].name | default: item.translations.en.name %}
+        {% assign item_name = item.name[page.lang] | default: item.name.en %}
+        {% assign item_data = key | append: "|" | append: item_name %}
         {% assign selected_items = selected_items | push: item_data %}
       {% endif %}
     {% endfor %}
   {% elsif selection == "alphabetic" or selection == "all" %}
     {% for key in signal_keys %}
       {% assign item = items_array[key] %}
-      {% assign item_name = item.translations[page.lang].name | default: item.translations.en.name %}
+      {% assign item_name = item.name[page.lang] | default: item.name.en %}
       {% assign item_data = key | append: "|" | append: item_name %}
       {% assign selected_items = selected_items | push: item_data %}
     {% endfor %}
@@ -122,11 +120,8 @@ Sort Methods:
     {% endfor %}
   {% else %}
     {% for item in selected_items limit: limit %}
-      {% if include.type == "sectors" %}
-        {% assign item_name = item.translations[page.lang].name | default: item.translations.en.name %}
-      {% else %}
-        {% assign item_name = item.name[page.lang] | default: item.name.en %}
-      {% endif %}
+      {% comment %} All dimension types now use standardized name pattern {% endcomment %}
+      {% assign item_name = item.name[page.lang] | default: item.name.en %}
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/{{ item.id }}/" 
          class="dimension-tag dimension-tag--{{ include.type }}">{{ item_name }}</a>
     {% endfor %}
