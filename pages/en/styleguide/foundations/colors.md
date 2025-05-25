@@ -4,6 +4,7 @@ title: Color System
 description: The Brandmine color palette establishes our visual identity with teal as our primary color, orange as our secondary color, and indigo as our accent color.
 permalink: /en/styleguide/foundations/colors/
 lang: en
+ref: styleguide-foundations-colors
 ---
 
 ## Primary Colors (Teal)

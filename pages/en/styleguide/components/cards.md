@@ -4,6 +4,7 @@ title: Cards
 description: Brandmine's card components provide consistent containers for various types of content.
 permalink: /en/styleguide/components/cards/
 lang: en
+ref: styleguide-components-cards
 ---
 
 ## Cards Overview

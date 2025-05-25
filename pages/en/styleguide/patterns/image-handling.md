@@ -4,6 +4,7 @@ title: Image Handling
 description: Brandmine's comprehensive image management system for consistent, high-performance visuals.
 permalink: /en/styleguide/patterns/image-handling/
 lang: en
+ref: styleguide-patterns-image-handling
 ---
 
 ## Image Handling Overview

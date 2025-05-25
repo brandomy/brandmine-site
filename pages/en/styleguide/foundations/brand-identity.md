@@ -4,6 +4,7 @@ title: Brand Identity
 description: Brandmine's visual identity guidelines for consistent branding across all platforms.
 permalink: /en/styleguide/foundations/brand-identity/
 lang: en
+ref: styleguide-foundations-brand-identity
 published: true
 ---
 

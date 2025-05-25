@@ -4,6 +4,7 @@ title: Multilingual Approach
 description: Brandmine's multilingual implementation supports English, Russian, and Chinese content with consistent design and user experience.
 permalink: /en/styleguide/patterns/multilingual/
 lang: en
+ref: styleguide-patterns-multilingual
 published: true
 ---
 

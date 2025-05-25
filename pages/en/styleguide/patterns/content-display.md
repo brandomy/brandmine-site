@@ -4,6 +4,7 @@ title: Content Display
 description: Brandmine's content display patterns provide consistent, flexible ways to present different types of information.
 permalink: /en/styleguide/patterns/content-display/
 lang: en
+ref: styleguide-patterns-content-display
 ---
 
 ## Content Display

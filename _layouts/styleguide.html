@@ -1,34 +1,8 @@
-<!DOCTYPE html>
-<html lang="{% if page.lang %}{{ page.lang }}{% else %}en{% endif %}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} | Brandmine Design System</title>
-  
-  <!-- Design Tokens and Base Styles -->
-  <!-- Consolidated tokens file loaded first to provide global CSS variables -->
-  <link rel="stylesheet" href="{{ '/assets/css/tokens/tokens.css' | relative_url }}">
+---
+layout: default
+---
 
-  <!-- Base Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  
-  <!-- Fixed Grid-Based Layout -->
-  <link rel="stylesheet" href="{{ '/assets/css/styleguide.css' | relative_url }}">
-  
-  <!-- Component Styles for Examples -->
-  <link rel="stylesheet" href="{{ '/assets/css/components/buttons.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/cards.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/hero-panels.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/components/dimensions.css' | relative_url }}">
-
-  <!-- Font Preloading for Performance -->
-  <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-
-  <!-- Fixed JavaScript -->
-  <script src="{{ '/assets/js/styleguide.js' | relative_url }}" defer></script>
-</head>
-<body>
+<div class="styleguide-page">
   <!-- Mobile Navigation Toggle Button -->
   <button class="styleguide__nav-toggle" aria-label="Toggle navigation menu">
     <span>Menu</span>
@@ -117,9 +91,9 @@
             </a>
           </li>
           <li>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/icons-test/" 
-               {% if page.url contains '/components/icons-test/' %}class="active"{% endif %}>
-              Icon Test
+            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/components/dimensions/" 
+               {% if page.url contains '/components/dimensions/' %}class="active"{% endif %}>
+              Dimensions
             </a>
           </li>
         </ul>
@@ -151,12 +125,6 @@
               Image Handling
             </a>
           </li>
-          <li>
-            <a href="{{ site.baseurl }}/{{ page.lang }}/styleguide/patterns/tags/" 
-               {% if page.url contains '/patterns/tags/' %}class="active"{% endif %}>
-              Tags
-            </a>
-          </li>
         </ul>
       </nav>
     </aside>
@@ -170,33 +138,51 @@
         {% endif %}
       </div>
       
-      {{ content }}
+      <!-- Semantic Sectioning for Page Content -->
+      {% if page.sections %}
+        {% for section in page.sections %}
+          <section class="styleguide-section styleguide-section--{{ section }}" 
+                   id="styleguide-section-{{ section }}" 
+                   aria-labelledby="heading-{{ section }}">
+            {% include pages/styleguide/{{ section }}.html %}
+          </section>
+        {% endfor %}
+      {% else %}
+        <!-- Default sections if not specified in front matter -->
+        <section class="styleguide-section styleguide-section--welcome" 
+                 id="styleguide-section-welcome" 
+                 aria-labelledby="heading-welcome">
+          {% include pages/styleguide/welcome.html %}
+        </section>
+        <section class="styleguide-section styleguide-section--overview" 
+                 id="styleguide-section-overview" 
+                 aria-labelledby="heading-overview">
+          {% include pages/styleguide/overview.html %}
+        </section>
+        <section class="styleguide-section styleguide-section--how-to-use" 
+                 id="styleguide-section-how-to-use" 
+                 aria-labelledby="heading-how-to-use">
+          {% include pages/styleguide/how-to-use.html %}
+        </section>
+        <section class="styleguide-section styleguide-section--design-principles" 
+                 id="styleguide-section-design-principles" 
+                 aria-labelledby="heading-design-principles">
+          {% include pages/styleguide/design-principles.html %}
+        </section>
+        <section class="styleguide-section styleguide-section--implementation" 
+                 id="styleguide-section-implementation" 
+                 aria-labelledby="heading-implementation">
+          {% include pages/styleguide/implementation.html %}
+        </section>
+        <section class="styleguide-section styleguide-section--maintenance" 
+                 id="styleguide-section-maintenance" 
+                 aria-labelledby="heading-maintenance">
+          {% include pages/styleguide/maintenance.html %}
+        </section>
+      {% endif %}
     </main>
   </div>
+</div>
 
-  <!-- Debug panel for development
-  {% if jekyll.environment != "production" %}
-  <div style="position: fixed; bottom: 0; right: 0; background: rgba(0,0,0,0.8); color: white; padding: 10px; font-size: 12px; max-width: 300px; z-index: 9999;">
-    <h4 style="margin: 0 0 5px 0;">Debug Info</h4>
-    <div id="screen-width">Width: --</div>
-    <div id="nav-state">Nav: --</div>
-    <div id="page-info">Page: {{ page.title }}</div>
-    <div id="url-info">URL: {{ page.url }}</div>
-    <script>
-      function updateDebugInfo() {
-        document.getElementById('screen-width').textContent = 'Width: ' + window.innerWidth + 'px';
-        
-        const nav = document.querySelector('.styleguide-nav');
-        document.getElementById('nav-state').textContent = 'Nav: ' + 
-          (nav.classList.contains('is-open') ? 'open' : 'closed');
-      }
-      
-      setInterval(updateDebugInfo, 500);
-      window.addEventListener('resize', updateDebugInfo);
-      document.addEventListener('DOMContentLoaded', updateDebugInfo);
-    </script>
-  </div>
-  {% endif %} -->
-  
-</body>
-</html>
+<!-- Styleguide-specific JavaScript -->
+<script src="{{ '/assets/js/styleguide.js' | relative_url }}" defer></script>

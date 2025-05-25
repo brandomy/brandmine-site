@@ -2,8 +2,9 @@
 layout: styleguide
 title: Dimensions System
 description: Brandmine's dimensions system provides consistent categorization and filtering across content.
-permalink: /en/styleguide/patterns/dimensions/
+permalink: /en/styleguide/components/dimensions/
 lang: en
+ref: styleguide-components-dimensions
 ---
 
 ## Dimensions System Overview

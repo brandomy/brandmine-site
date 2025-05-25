@@ -4,6 +4,7 @@ title: Forms
 description: Brandmine's forms provide consistent, accessible user input components across our platform.
 permalink: /en/styleguide/components/forms/
 lang: en
+ref: styleguide-components-forms
 ---
 
 ## Forms Overview

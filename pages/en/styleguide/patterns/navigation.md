@@ -4,6 +4,7 @@ title: Navigation System
 description: Brandmine's navigation system provides consistent wayfinding across our multilingual platform.
 permalink: /en/styleguide/patterns/navigation/
 lang: en
+ref: styleguide-patterns-navigation
 ---
 
 ## Navigation Overview
@@ -203,7 +204,7 @@ On smaller screens, the navigation transforms into a hamburger menu:
     document.body.classList.toggle('menu-open');
     this.classList.toggle('menu-open');
   });
-  
+
   // Handle dropdown in mobile view
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(dropdown =&gt; {
@@ -259,7 +260,7 @@ The footer provides supplementary navigation, contact information, and language 
               <p style="margin-bottom: 0.5rem;"><a href="#" style="color: white; text-decoration: none;">Brands</a></p>
               <p style="margin-bottom: 0.5rem;"><a href="#" style="color: white; text-decoration: none;">Contact</a></p>
             </div>
-            
+
             <div style="display: flex; justify-content: center; align-items: flex-start;">
               <div style="display: flex; gap: 1rem;">
                 <a href="#" style="display: flex; justify-content: center; align-items: center; width: 36px; height: 36px; background-color: rgba(255,255,255,0.1); border-radius: 50%;">
@@ -276,7 +277,7 @@ The footer provides supplementary navigation, contact information, and language 
                 </a>
               </div>
             </div>
-            
+
             <div style="display: flex; flex-direction: column; align-items: flex-end;">
               <div style="margin-bottom: 1rem;">
                 <a href="#" style="color: white; text-decoration: none; margin-right: 0.5rem;">English</a>
@@ -289,7 +290,7 @@ The footer provides supplementary navigation, contact information, and language 
               </div>
             </div>
           </div>
-          
+
           <div style="text-align: center; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.875rem; color: rgba(255,255,255,0.7);">
             © 2025 Brandmine. All rights reserved.
           </div>
@@ -308,7 +309,7 @@ The footer provides supplementary navigation, contact information, and language 
         &lt;p class="footer-text"&gt;&lt;a href="/en/brands/"&gt;Brands&lt;/a&gt;&lt;/p&gt;
         &lt;p class="footer-text"&gt;&lt;a href="/en/contact/"&gt;Contact&lt;/a&gt;&lt;/p&gt;
       &lt;/div&gt;
-      
+
       &lt;div class="footer-section-center"&gt;
         &lt;div class="social-icons"&gt;
           &lt;a href="https://linkedin.com/company/brandmine" class="social-icon" aria-label="LinkedIn"&gt;
@@ -325,7 +326,7 @@ The footer provides supplementary navigation, contact information, and language 
           &lt;/a&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      
+
       &lt;div class="footer-section-right"&gt;
         &lt;div&gt;
           &lt;a href="/en/" class="active"&gt;English&lt;/a&gt;
@@ -337,7 +338,7 @@ The footer provides supplementary navigation, contact information, and language 
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    
+
     &lt;div class="footer-copyright"&gt;
       © 2025 Brandmine. All rights reserved.
     &lt;/div&gt;
@@ -373,7 +374,7 @@ The navigation system is fully responsive, adapting to different screen sizes:
         <div>Desktop Layout</div>
         <div style="color: var(--neutral-500); font-size: 0.75rem;">992px+</div>
       </div>
-      
+
       <div>
         <div style="border: 1px solid var(--neutral-300); border-radius: 0.25rem; padding: var(--space-2); width: 220px; margin-bottom: var(--space-2);">
           <div style="background-color: var(--neutral-100); padding: var(--space-2); text-align: left; display: flex; justify-content: space-between; align-items: center;">
@@ -389,7 +390,7 @@ The navigation system is fully responsive, adapting to different screen sizes:
         <div>Tablet Layout</div>
         <div style="color: var(--neutral-500); font-size: 0.75rem;">768px - 991px</div>
       </div>
-      
+
       <div>
         <div style="border: 1px solid var(--neutral-300); border-radius: 0.25rem; padding: var(--space-2); width: 120px; margin-bottom: var(--space-2);">
           <div style="background-color: var(--neutral-100); padding: var(--space-2); text-align: left; display: flex; justify-content: space-between; align-items: center;">
@@ -439,7 +440,7 @@ The navigation system is fully responsive, adapting to different screen sizes:
     gap: 1rem;
     font-size: 0.875rem;
   }
-  
+
   .language-selector {
     font-size: 0.875rem;
   }
@@ -458,22 +459,22 @@ The navigation system is fully responsive, adapting to different screen sizes:
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
+
   .menu-toggle {
     display: block; /* Visible on mobile */
   }
-  
+
   body.menu-open .site-nav {
     display: flex; /* Show when menu is open */
   }
-  
+
   .dropdown-content {
     position: static;
     display: none;
     box-shadow: none;
     padding-left: 1rem;
   }
-  
+
   .dropdown.open .dropdown-content {
     display: block;
   }
@@ -489,15 +490,15 @@ The navigation system is fully responsive, adapting to different screen sizes:
 <header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/{{ page.lang }}/">{{ site.data.translations[page.lang].site.title }}</a>
-    
+
     <button class="menu-toggle" aria-label="Toggle menu">
       <span class="menu-icon"></span>
     </button>
-    
+
     <nav class="site-nav">
       <!-- Navigation links -->
     </nav>
-    
+
     <div class="language-selector">
       <!-- Language selection links -->
     </div>
@@ -513,19 +514,19 @@ The mobile menu requires JavaScript to toggle its visibility:
 // Mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.menu-toggle');
-  
+
   if (menuToggle) {
     menuToggle.addEventListener('click', function() {
       document.body.classList.toggle('menu-open');
       this.classList.toggle('menu-open');
     });
   }
-  
+
   // Mobile dropdown functionality
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(dropdown => {
     const dropbtn = dropdown.querySelector('.dropbtn');
-    
+
     if (dropbtn) {
       dropbtn.addEventListener('click', function(e) {
         if (window.innerWidth <= 767) {
@@ -545,4 +546,4 @@ document.addEventListener('DOMContentLoaded', function() {
 3. **Preserve language choice**: Maintain the user's language selection when navigating
 4. **Consider touch targets**: Ensure all clickable elements are at least 44px tall on mobile
 5. **Test thoroughly**: Verify navigation works correctly across all screen sizes and devices
-6. **Validate translations**: Ensure all navigation items are properly translated in all languages        
+6. **Validate translations**: Ensure all navigation items are properly translated in all languages

@@ -4,6 +4,7 @@ title: Layout System
 description: Brandmine's layout system provides flexible, responsive structures for organizing content.
 permalink: /en/styleguide/foundations/layouts/
 lang: en
+ref: styleguide-foundations-layouts
 ---
 
 ## Layout Overview

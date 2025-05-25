@@ -4,6 +4,7 @@ title: Buttons
 description: Standard button components for user interactions across Brandmine
 permalink: /en/styleguide/components/buttons/
 lang: en
+ref: styleguide-components-buttons
 ---
 
 ## Buttons Overview

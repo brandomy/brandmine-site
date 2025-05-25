@@ -4,6 +4,7 @@ title: Hero Panel Style Guide
 description: A comprehensive guide to Brandmine's hero panel system including variants, combinations, and usage guidelines.
 permalink: /en/styleguide/components/hero-panels/
 lang: en
+ref: styleguide-components-hero-panels
 ---
 
 <div class="full-width-panel light-panel">

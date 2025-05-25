@@ -4,6 +4,7 @@ title: Text Components
 description: Brandmine's specialized text components for creating emphasis and flow in content.
 permalink: /en/styleguide/components/text/
 lang: en
+ref: styleguide-components-text
 ---
 
 ## Text Components Overview
