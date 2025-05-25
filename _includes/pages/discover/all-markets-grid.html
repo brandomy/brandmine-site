@@ -22,7 +22,7 @@
       <p class="market-card__description">{{ market.description[page.lang] }}</p>
 
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market.id }}/" class="market-card__link">
-        {{ site.data.translations[page.lang].discover.explore_market }}
+        {% include helpers/t.html key="discover.explore_market" fallback="Explore Market" %}
       </a>
     </div>
   {% endfor %}

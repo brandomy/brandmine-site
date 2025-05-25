@@ -18,7 +18,7 @@
       </div>
 
       {% if signal.premium %}
-        <div class="signal-card__premium">{{ site.data.translations[page.lang].tags.premium }}</div>
+        <div class="signal-card__premium">{% include helpers/t.html key="tags.premium" fallback="Premium" %}</div>
       {% endif %}
 
       <h3 class="signal-card__title">{{ signal.name[page.lang] }}</h3>
@@ -26,7 +26,7 @@
       <p class="signal-card__description">{{ signal.description[page.lang] }}</p>
 
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal.id }}/" class="signal-card__link">
-        {{ site.data.translations[page.lang].discover.explore_signal }}
+        {% include helpers/t.html key="discover.explore_signal" fallback="Explore Signal" %}
       </a>
     </div>
   {% endfor %}

@@ -7,26 +7,27 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].home.testimonials %}
 
 <div class="panel panel--light testimonials-panel">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ t.title | default: "Success Stories" }}
+      {% include helpers/t.html key="home.testimonials.title" fallback="Success Stories" %}
     </h2>
     <p class="panel__lead-text">
-      {{ t.subtitle | default: "What brand founders are saying about their Brandmine experience" }}
+      {% include helpers/t.html key="home.testimonials.subtitle" fallback="What brand founders are saying about their Brandmine experience" %}
     </p>
     <div class="testimonials-container">
       {% comment %} Brand testimonial {% endcomment %}
+      {% assign testimonial1 = site.data.translations[current_lang].home.testimonials.testimonial1 %}
       {% include components/cards/testimonial-card.html
-        testimonial=t.testimonial1
+        testimonial=testimonial1
         type="brand"
         img_slug="cn-dragonfly-retreats" %}
 
       {% comment %} Founder testimonial {% endcomment %}
+      {% assign testimonial2 = site.data.translations[current_lang].home.testimonials.testimonial2 %}
       {% include components/cards/testimonial-card.html
-        testimonial=t.testimonial2
+        testimonial=testimonial2
         type="person"
         img_slug="georgie-yam" %}
     </div>

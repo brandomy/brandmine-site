@@ -6,20 +6,18 @@
   Dependencies: components/cards/team-member-card.html
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].team %}
-
-<div class="panel panel--{{ t.config.panel_type }} about-team">
+<div class="panel panel--light about-team">
   <div class="panel__content">
-    {% if t.config.title %}
-      <h2 class="panel__heading-secondary about-team__title">{{ t.config.title }}</h2>
-    {% endif %}
-
-    {% if t.config.lead %}
-      <p class="about-team__lead">{{ t.config.lead }}</p>
-    {% endif %}
+    <h2 class="panel__heading-secondary about-team__title">
+      {% include helpers/t.html key="team.config.title" fallback="Our Team" %}
+    </h2>
+    <p class="about-team__lead">
+      {% include helpers/t.html key="team.config.lead" fallback="Meet the team behind Brandmine." %}
+    </p>
 
     <div class="about-team__grid">
-      {% for member_entry in t.members %}
+      {% assign team_data = site.data.translations[page.lang].team %}
+      {% for member_entry in team_data.members %}
         {% assign member = member_entry[1] %}
         {% include components/cards/team-member-card.html
            member=member
@@ -27,10 +25,8 @@
       {% endfor %}
     </div>
 
-    {% if t.config.conclusion %}
-      <p class="panel__conclusion-text about-team__conclusion-text">
-        {{ t.config.conclusion }}
-      </p>
-    {% endif %}
+    <p class="panel__conclusion-text about-team__conclusion-text">
+      {% include helpers/t.html key="team.config.conclusion" fallback="Together, we're building bridges between exceptional brands and global opportunities." %}
+    </p>
   </div>
 </div>

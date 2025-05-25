@@ -20,17 +20,17 @@ Dependencies:
               <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
           </span>
-          {{ site.data.translations[page.lang].discover.market_map | default: "BRICS+ Markets Map" }}
+          {% include helpers/t.html key="discover.market_map" fallback="BRICS+ Markets Map" %}
         </h2>
         <p class="markets__section-description">
-          {{ site.data.translations[page.lang].discover.market_map_description | default: "Explore brand locations across BRICS+ countries" }}
+          {% include helpers/t.html key="discover.market_map_description" fallback="Explore brand locations across BRICS+ countries" %}
         </p>
       </div>
 
       <div class="markets__map-container" id="marketsMap" style="height: 400px;">
         <!-- Map will be rendered here by JavaScript -->
         <div class="markets__map-loading">
-          {{ site.data.translations[page.lang].discover.map_loading | default: "Map loading..." }}
+          {% include helpers/t.html key="discover.map_loading" fallback="Map loading..." %}
         </div>
       </div>
     </section>
@@ -45,7 +45,7 @@ Dependencies:
       stadiaApiKey: '{{ site.stadia_maps_api_key }}',
       baseUrl: '{{ site.baseurl }}',
       currentLang: '{{ page.lang }}',
-      exploreText: '{{ site.data.translations[page.lang].discover.explore_market | default: "Explore Market" }}',
+      exploreText: '{% include helpers/t.html key="discover.explore_market" fallback="Explore Market" %}',
       geoJsonUrl: '{{ site.baseurl }}/assets/data/markets-geojson.json'
     };
   });

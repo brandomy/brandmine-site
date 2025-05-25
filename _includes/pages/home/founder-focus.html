@@ -27,9 +27,6 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].home.founder_focus %}
-{% assign g = site.data.translations[current_lang].generation %}
-{% assign f = site.data.translations[current_lang].founder %}
 
 {% assign panel_type = include.panel_type | default: "olive-soft" %}
 {% assign limit = include.limit | default: 4 %}
@@ -38,10 +35,10 @@
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ include.title | default: t.title | default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation" }}
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.founder_focus.title" fallback="Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}{% endunless %}
     </h2>
     <p class="panel__lead-text">
-      {{ include.lead_text | default: t.subtitle | default: "At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." }}
+      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.founder_focus.subtitle" fallback="At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}{% endunless %}
     </p>
 
     {% if featured_only %}
@@ -65,11 +62,11 @@
               </div>
               <div class="founder-card__header-text">
                 <h3 class="founder-card__title">Ivan Petrov</h3>
-                <p class="founder-card__generation">{{ g.first | default: "1st Generation" }}</p>
+                <p class="founder-card__generation">{% include helpers/t.html key="generation.first" fallback="1st Generation" %}</p>
               </div>
             </div>
             <div class="founder-card__body">
-              <p class="founder-card__brand">{{ f.founder_of | default: "Founder of" }} <strong>Altai Honey</strong></p>
+              <p class="founder-card__brand">{% include helpers/t.html key="founder.founder_of" fallback="Founder of" %} <strong>Altai Honey</strong></p>
               <div class="founder-card__tags">
                 <span class="founder-card__tag founder-card__tag--market">Russia</span>
                 <span class="founder-card__tag founder-card__tag--expertise">Beekeeping</span>
@@ -84,11 +81,11 @@
               </div>
               <div class="founder-card__header-text">
                 <h3 class="founder-card__title">Maria Silva</h3>
-                <p class="founder-card__generation">{{ g.second | default: "2nd Generation" }}</p>
+                <p class="founder-card__generation">{% include helpers/t.html key="generation.second" fallback="2nd Generation" %}</p>
               </div>
             </div>
             <div class="founder-card__body">
-              <p class="founder-card__brand">{{ f.founder_of | default: "Founder of" }} <strong>Serra Verde</strong></p>
+              <p class="founder-card__brand">{% include helpers/t.html key="founder.founder_of" fallback="Founder of" %} <strong>Serra Verde</strong></p>
               <div class="founder-card__tags">
                 <span class="founder-card__tag founder-card__tag--market">Brazil</span>
                 <span class="founder-card__tag founder-card__tag--expertise">Sustainable Agriculture</span>
@@ -103,7 +100,7 @@
       <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/founders/' }}"
          class="btn btn--primary-cta"
          data-track="founder-focus">
-        {{ include.cta_text | default: t.cta | default: "Meet All Founders" }}
+        {{ include.cta_text | default: "" }}{% unless include.cta_text %}{% include helpers/t.html key="home.founder_focus.cta" fallback="Meet All Founders" %}{% endunless %}
       </a>
     </div>
   </div>

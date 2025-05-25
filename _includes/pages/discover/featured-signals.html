@@ -19,10 +19,10 @@ Dependencies:
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
             </svg>
           </span>
-          {{ site.data.translations[page.lang].discover.featured_signals | default: "Featured Growth Signals" }}
+          {% include helpers/t.html key="discover.featured_signals" fallback="Featured Signals" %}
         </h2>
         <p class="signals__section-description">
-          {{ site.data.translations[page.lang].discover.featured_signals_description | default: "Discover brands poised for different growth pathways" }}
+          {% include helpers/t.html key="discover.featured_signals_description" fallback="Explore our highlighted growth signals..." %}
         </p>
       </div>
 
@@ -51,7 +51,7 @@ Dependencies:
               <h3 class="signals__featured-title">{{ signal_name }}</h3>
               <p class="signals__featured-description">{{ signal_description }}</p>
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal_id }}/" class="signals__featured-link btn btn-outline">
-                {{ site.data.translations[page.lang].discover.explore_signal | default: "View Brands" }}
+                {% include helpers/t.html key="discover.explore_signal" fallback="Explore Signal" %}
               </a>
             </div>
           </div>

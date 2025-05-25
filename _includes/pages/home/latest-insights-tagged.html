@@ -7,13 +7,12 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].insights %}
 {% assign panel_type = include.panel_type | default: "primary-soft" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ include.title | default: t.latest | default: "Latest Insights" }}
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="insights.latest" fallback="Latest Insights" %}{% endunless %}
     </h2>
 
     <div class="latest-insights-featured">
@@ -28,7 +27,7 @@
       {% else %}
         <div class="insight-card insight-card--brand-spotlight insight-card--placeholder">
           <div class="insight-card__content">
-            <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+            <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
           </div>
         </div>
       {% endif %}
@@ -40,7 +39,7 @@
       {% else %}
         <div class="insight-card insight-card--founders-journey insight-card--placeholder">
           <div class="insight-card__content">
-            <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+            <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
           </div>
         </div>
       {% endif %}
@@ -52,7 +51,7 @@
       {% else %}
         <div class="insight-card insight-card--location-intelligence insight-card--placeholder">
           <div class="insight-card__content">
-            <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+            <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
           </div>
         </div>
       {% endif %}
@@ -64,7 +63,7 @@
       {% else %}
         <div class="insight-card insight-card--market-momentum insight-card--placeholder">
           <div class="insight-card__content">
-            <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+            <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
           </div>
         </div>
       {% endif %}
@@ -72,7 +71,7 @@
 
     <div class="view-all-insights">
       <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--outline-light">
-        {{ t.view_all | default: "View All Insights" }}
+        {% include helpers/t.html key="insights.view_all" fallback="View All Insights" %}
       </a>
     </div>
   </div>

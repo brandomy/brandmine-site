@@ -14,12 +14,10 @@
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "primary-soft" %}
-{% assign title = include.title | default: site.data.translations[page.lang].about.mission %}
-{% assign lead_text = include.lead_text | default: site.data.translations[page.lang].about.lead_text %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary about-mission__title">{{ title }}</h2>
-    <p class="panel__lead-text about-mission__text">{{ lead_text }}</p>
+    <h2 class="panel__heading-secondary about-mission__title">{{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.mission" fallback="Our Mission" %}{% endunless %}</h2>
+    <p class="panel__lead-text about-mission__text">{{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.lead_text" fallback="We illuminate and elevate founder-led brands from BRICS+ countries, bridging cultural and linguistic barriers to reveal exceptional opportunities." %}{% endunless %}</p>
   </div>
 </div>

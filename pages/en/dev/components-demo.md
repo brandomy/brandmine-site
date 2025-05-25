@@ -2,6 +2,7 @@
 layout: simple
 title: "Components Demo"
 permalink: /en/dev/components-demo/
+ref: dev-components-demo
 ---
 
 # New Components Demo

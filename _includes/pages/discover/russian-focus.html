@@ -19,10 +19,10 @@ Dependencies:
               <path d="M3 3h18v18H3V3zm4 4h4v4H7V7zm0 6h4v4H7v-4zm6-6h4v4h-4V7zm6 0h2v2h-2V7zm-6 6h4v4h-4v-4z"></path>
             </svg>
           </span>
-          {{ site.data.translations[page.lang].discover.russian_sectors_title | default: "Russian Sectors Special Focus" }}
+          {% include helpers/t.html key="discover.russian_sectors_title" fallback="Russian Sectors Special Focus" %}
         </h2>
         <p class="sectors__section-description">
-          {{ site.data.translations[page.lang].discover.russian_sectors_description | default: "Explore our in-depth analysis of high-potential Russian consumer sectors" }}
+          {% include helpers/t.html key="discover.russian_sectors_description" fallback="Explore our in-depth analysis of high-potential Russian consumer sectors" %}
         </p>
       </div>
 
@@ -32,12 +32,12 @@ Dependencies:
             <img src="{{ site.baseurl }}/assets/images/sectors/russian-overview.jpg" alt="Russian Sectors Overview" class="sectors__featured-img" onerror="this.src='{{ site.baseurl }}/assets/images/sectors/confectionery.jpg'">
           </div>
           <div class="sectors__featured-content">
-            <h3 class="sectors__featured-title">{{ site.data.translations[page.lang].discover.russian_sectors_heading | default: "Russian Consumer Brand Sectors" }}</h3>
+            <h3 class="sectors__featured-title">{% include helpers/t.html key="discover.russian_sectors_heading" fallback="Russian Consumer Brand Sectors" %}</h3>
 
             {% assign russian_sectors_count = site.data.market_sector_map.market_sector_map | where: "market", "russia" | size %}
 
             <p class="sectors__featured-description">
-              {{ site.data.translations[page.lang].discover.russian_sectors_lead | default: "Discover our curated selection of" }} {{ russian_sectors_count }} {{ site.data.translations[page.lang].discover.russian_sectors_lead_suffix | default: "high-potential Russian consumer sectors, from artisanal spirits and natural beauty products to specialty foods and hospitality. Each sector offers unique investment and partnership opportunities with compelling narratives." }}
+              {% include helpers/t.html key="discover.russian_sectors_lead" fallback="Discover our curated selection of" %} {{ russian_sectors_count }} {% include helpers/t.html key="discover.russian_sectors_lead_suffix" fallback="high-potential Russian consumer sectors, from artisanal spirits and natural beauty products to specialty foods and hospitality. Each sector offers unique investment and partnership opportunities with compelling narratives." %}
             </p>
 
             <div class="sectors__featured-highlights">
@@ -55,7 +55,7 @@ Dependencies:
             </div>
 
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russian-sectors/" class="sectors__featured-link btn btn-outline">
-              {{ site.data.translations[page.lang].discover.explore_russian_sectors | default: "Explore Russian Sectors" }}
+              {% include helpers/t.html key="discover.explore_russian_sectors" fallback="Explore Russian Sectors" %}
             </a>
           </div>
         </div>
@@ -64,7 +64,7 @@ Dependencies:
       {% assign featured_sector_mapping = site.data.market_sector_map.market_sector_map | where: "market", "russia" | sort: "popularity_rank" | first %}
       {% if featured_sector_mapping %}
         <div class="sectors__russian-stats">
-          <h3 class="sectors__stats-title">{{ featured_sector_mapping.translations[page.lang].title }} {{ site.data.translations[page.lang].discover.key_stats | default: "Key Statistics" }}</h3>
+          <h3 class="sectors__stats-title">{{ featured_sector_mapping.translations[page.lang].title }} {% include helpers/t.html key="discover.key_stats" fallback="Key Statistics" %}</h3>
 
           <div class="sectors__stats-grid">
             {% for stat in featured_sector_mapping.key_stats limit:3 %}

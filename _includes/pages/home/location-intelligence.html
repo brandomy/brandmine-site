@@ -24,22 +24,21 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].home.location_intelligence %}
 {% assign panel_type = include.panel_type | default: "light" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ include.title | default: t.title | default: "Location Intelligence: Mapping Hidden Opportunities" }}
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.location_intelligence.title" fallback="Location Intelligence: Mapping Hidden Opportunities" %}{% endunless %}
     </h2>
     <p class="panel__lead-text">
-      {{ include.lead_text | default: t.subtitle | default: "Visualize brand ecosystems through interactive maps that reveal geographic patterns and cultural connections" }}
+      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.location_intelligence.subtitle" fallback="Visualize brand ecosystems through interactive maps that reveal geographic patterns and cultural connections" %}{% endunless %}
     </p>
     <div class="cta-buttons">
       <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/discover/markets/' }}"
          class="btn btn--standard"
          data-track="location-intelligence">
-        {{ include.cta_text | default: t.cta | default: "Explore Map" }}
+        {{ include.cta_text | default: "" }}{% unless include.cta_text %}{% include helpers/t.html key="home.location_intelligence.cta" fallback="Explore Map" %}{% endunless %}
       </a>
     </div>
   </div>

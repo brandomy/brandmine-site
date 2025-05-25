@@ -8,7 +8,7 @@
 
 {% if attributes.size > 0 %}
   <div class="featured-attributes">
-    <h2 class="featured-attributes__title">{{ site.data.translations[page.lang].discover.featured_attributes | default: "Featured Attributes" }}</h2>
+    <h2 class="featured-attributes__title">{% include helpers/t.html key="discover.featured_attributes" fallback="Featured Attributes" %}</h2>
 
     <div class="featured-attributes__grid">
       {% for attribute in attributes %}
@@ -26,7 +26,7 @@
           <p class="attribute-card__description">{{ attribute.description[page.lang] }}</p>
 
           <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute.id }}/" class="attribute-card__link">
-            {{ site.data.translations[page.lang].discover.explore_attribute }}
+            {% include helpers/t.html key="discover.explore_attribute" fallback="Explore Attribute" %}
           </a>
         </div>
       {% endfor %}

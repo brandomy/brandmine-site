@@ -75,6 +75,6 @@ Brandmine Consulting Sdn. Bhd
 10250 George Town, Penang
 马来西亚
 
-<a href="mailto:{{ site.data.translations[page.lang].privacy.contact_email_label }}?subject={{ site.data.translations[page.lang].privacy.contact_email_subject | uri_escape }}&body={{ site.data.translations[page.lang].privacy.contact_email_body | uri_escape }}">
-  {{ site.data.translations[page.lang].privacy.contact_email_label }}
+<a href="mailto:{% include helpers/t.html key="privacy.contact_email_label" fallback="hello@brandmine.world" %}?subject={% include helpers/t.html key="privacy.contact_email_subject" fallback="隐私问题" %}&body={% include helpers/t.html key="privacy.contact_email_body" fallback="您好，我对您的隐私政策有疑问..." %}">
+  {% include helpers/t.html key="privacy.contact_email_label" fallback="hello@brandmine.world" %}
 </a>

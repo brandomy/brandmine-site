@@ -22,7 +22,7 @@
       <p class="attribute-card__description">{{ attribute.description[page.lang] }}</p>
 
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute.id }}/" class="attribute-card__link">
-        {{ site.data.translations[page.lang].discover.explore_attribute }}
+        {% include helpers/t.html key="discover.explore_attribute" fallback="Explore Attribute" %}
       </a>
     </div>
   {% endfor %}

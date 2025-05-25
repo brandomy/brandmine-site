@@ -53,7 +53,7 @@ images:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
   hero:
-    name: "lobby"     # Becomes hero-lobby-400w.jpg
+    name: "paraty-view"     # Becomes hero-paraty-view-400w.jpg
     ext: "jpg"
   founder:
     name: "portrait"    # Becomes founder-portrait-400w.jpg

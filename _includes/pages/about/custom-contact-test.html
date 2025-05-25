@@ -1,0 +1,102 @@
+<!-- Custom Contact Form Test Section for About Page -->
+<!-- This is a test section you can include in about.md to try the custom contact form -->
+
+<section class="about-section about-section--custom-contact" id="about-section-custom-contact" aria-labelledby="heading-custom-contact">
+  <div class="section-container">
+    <div class="section-content">
+      
+      <div class="section-header">
+        <h2 id="heading-custom-contact" class="section-title">
+          {{ t.about.contact_test_title | default: "Test Our Custom Contact Form" }}
+        </h2>
+        <p class="section-description">
+          {{ t.about.contact_test_description | default: "This is a test of our custom-built contact form (alternative to Tally). It includes validation, loading states, and success/error handling." }}
+        </p>
+      </div>
+
+      <div class="contact-form-wrapper">
+        {% include components/forms/custom-contact-form.html 
+           form_id="about-custom-contact"
+           form_title="Get in Touch"
+           form_description="We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+           submit_text="Send Message"
+           show_company=true
+           show_phone=false %}
+      </div>
+
+      <!-- Alternative Newsletter Test -->
+      <div class="newsletter-test-wrapper" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--neutral-200);">
+        <h3 style="text-align: center; margin-bottom: 1rem;">
+          {{ t.about.newsletter_test_title | default: "Or Try Our Custom Newsletter" }}
+        </h3>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--neutral-600);">
+          {{ t.about.newsletter_test_description | default: "Custom newsletter form (alternative to MailerLite) with inline layout." }}
+        </p>
+        
+        {% include components/forms/custom-newsletter.html 
+           form_id="about-custom-newsletter"
+           variant="inline"
+           form_title="Stay Connected"
+           form_description="Get updates on BRICS+ brands and market insights."
+           placeholder_text="Enter your email for updates"
+           submit_text="Subscribe" %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Include the custom forms JavaScript -->
+<script src="{{ '/assets/js/custom-forms.js' | relative_url }}"></script>
+
+<style>
+/* Specific styling for the test section */
+.about-section--custom-contact {
+  background-color: var(--neutral-25);
+  padding: var(--space-16) 0;
+}
+
+.contact-form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-test-wrapper {
+  max-width: 500px;
+  margin: 3rem auto 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+}
+
+.section-description {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .about-section--custom-contact {
+    padding: var(--space-12) 0;
+  }
+  
+  .section-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .section-description {
+    font-size: var(--text-base);
+  }
+}
+</style>

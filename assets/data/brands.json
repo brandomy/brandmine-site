@@ -1,3 +1,36 @@
 ---
+layout: null
 ---
-{{ site.brands | jsonify }}
+[
+  {% for brand in site.brands %}
+    {% if brand.title and brand.lang %}
+    {
+      "title": {{ brand.title | jsonify }},
+      "name": {{ brand.title | jsonify }},
+      "url": {{ brand.url | relative_url | jsonify }},
+      "permalink": {{ brand.url | relative_url | jsonify }},
+      "lang": {{ brand.lang | jsonify }},
+      "type": "brand",
+      "ref": {{ brand.ref | default: brand.slug | jsonify }},
+      "country_code": {{ brand.country_code | jsonify }},
+      "sectors": {{ brand.sectors | jsonify }},
+      "markets": {{ brand.markets | jsonify }},
+      "attributes": {{ brand.attributes | jsonify }},
+      "signals": {{ brand.signals | jsonify }},
+      "dimensions": {{ brand.dimensions | jsonify }},
+      "description": {{ brand.excerpt | strip_html | truncate: 200 | jsonify }},
+      "brief_description": {{ brand.excerpt | strip_html | truncate: 100 | jsonify }},
+      "founding_year": {{ brand.founding_year | jsonify }},
+      "founder_led": {{ brand.founder.founder_led | default: false | jsonify }},
+      "featured": {{ brand.featured | default: false | jsonify }},
+      "location": {
+        "country": {{ brand.location.country | jsonify }},
+        "country_code": {{ brand.location.country_code | jsonify }},
+        "city": {{ brand.location.city | jsonify }},
+        "region": {{ brand.location.region | jsonify }},
+        "coordinates": {{ brand.location.coordinates | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

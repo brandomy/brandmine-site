@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Textarea Field Component
+   ==========================================================================
+   Styles for textarea elements and multi-line text inputs.
+*/
+
+textarea {
+  width: 100%;
+  padding: var(--form-input-padding); /* Updated */
+  border: 1px solid var(--form-border-color); /* Updated */
+  border-radius: var(--radius-sm); /* Using new token */
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--neutral-700);
+  box-sizing: border-box;
+  margin-bottom: var(--form-element-spacing); /* Updated */
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+textarea:focus {
+  border-color: var(--form-focus-border-color); /* Updated */
+  outline: none;
+  box-shadow: var(--focus-shadow); /* Using new token for focus */
+}
+
+/* Textarea states */
+textarea:disabled {
+  background-color: var(--neutral-100);
+  color: var(--neutral-500);
+  cursor: not-allowed;
+  resize: none;
+}
+
+/* Textarea variants */
+.textarea-field {
+  &--small {
+    min-height: 80px;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+  }
+  
+  &--large {
+    min-height: 200px;
+    padding: var(--space-4) var(--space-3);
+    font-size: var(--text-lg);
+  }
+  
+  &--error {
+    border-color: var(--error-500);
+    
+    &:focus {
+      border-color: var(--error-600);
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+    }
+  }
+  
+  &--success {
+    border-color: var(--success-500);
+    
+    &:focus {
+      border-color: var(--success-600);
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.1);
+    }
+  }
+  
+  &--no-resize {
+    resize: none;
+  }
+  
+  &--auto-resize {
+    resize: none;
+    overflow: hidden;
+  }
+}

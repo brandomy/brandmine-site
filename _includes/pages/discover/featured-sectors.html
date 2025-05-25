@@ -19,10 +19,10 @@ Dependencies:
               <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"></path>
             </svg>
           </span>
-          {{ site.data.translations[page.lang].discover.featured_sectors | default: "Featured Sectors" }}
+          {% include helpers/t.html key="discover.featured_sectors" fallback="Featured Sectors" %}
         </h2>
         <p class="sectors__section-description">
-          {{ site.data.translations[page.lang].discover.featured_sectors_description | default: "Explore our highlighted business sectors with the most promising brands" }}
+          {% include helpers/t.html key="discover.featured_sectors_description" fallback="Explore our highlighted business sectors with the most promising brands" %}
         </p>
       </div>
 
@@ -57,7 +57,7 @@ Dependencies:
                   <span class="sectors__featured-count">{{ brand_count }} brands</span>
                 </div>
                 <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_id }}/" class="sectors__featured-link btn btn-outline">
-                  {{ site.data.translations[page.lang].discover.explore_sector | default: "Explore Sector" }}
+                  {% include helpers/t.html key="discover.explore_sector" fallback="Explore Sector" %}
                 </a>
               </div>
             </div>

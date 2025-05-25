@@ -87,7 +87,7 @@ Includes are organized into a structured hierarchy:
     cards/              — Card components
     carousels/          — Carousel components
     content/            — Content display components
-    forms/              — Form components
+    forms/              — Form components (modular: input, textarea, select, contact, newsletter, validation, custom alternatives)
     helpers/            - Small components
     icons/              — Icon components
     images/             — Image handling components
@@ -95,7 +95,8 @@ Includes are organized into a structured hierarchy:
     indicators/         — UI indicators
     maps/               — Map components
     navigation/         — Navigation components
-    search/             — Search components
+    search/             — Search components (simple search, multi-column filters, advanced search)
+    ui/                 — UI components (alerts, breadcrumbs, loading spinner, modal, tooltip)
   layout/               — Layout components (header, footer)
   pages/                — Page-specific includes organized by page
     about/              — About page sections (hero, mission, team, etc.)
@@ -226,6 +227,7 @@ All helper scripts live in the `_scripts/` directory. Key examples:
  - **import_from_airtable.rb**: Import data from Airtable flat tables.
  - **yml_to_json_converter.py**: Convert YAML data (e.g. market sectors) to JSON files.
  - **claude-session-init.py**: Initialize AI sessions with project context and prompts.
+ - **custom-forms.js**: JavaScript for custom contact and newsletter forms (validation, submission, state management).
  - *(See `_scripts/` for the full list of available helper scripts.)*
 
 ## Validation
@@ -267,6 +269,9 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 - Styles are organized under `/assets/css/` directories:
   - `tokens/`, `base/`, `layout/`, `components/`, `collections/`, `pages/`, `manifest/`
 - Each component and page has its own SCSS file for modularity.
+- **"Logic Light" Architecture**: CSS component structure mirrors includes organization
+- **Modular Components**: Forms, UI, and Search components organized in subdirectories with centralized `_index.scss` files
+- **Component Independence**: Each component can be modified independently without affecting others
 
 ## HTML
 - Semantic HTML5
@@ -415,6 +420,107 @@ General Rule:
 - JSON for complex data (timelines, products, secondary locations)
 - CSV import/export for efficient data management
 - Sector-specific fields for specialized information
+
+## Search Index Automation
+
+**Automated Generation:**
+- `generate_search_index.py` - Builds complete JSON search indexes from markdown collections
+- Generates `_data/brands.json` and `_data/founders.json` with multilingual content
+- Includes complete metadata: taxonomy, location, founding year, website URLs
+- Auto-generates from Jekyll collections when content is added/modified
+
+**Manual Steps Required:**
+- Translation files (`_data/translations/{lang}.yml`) - Manual editing only
+- Market-sector content (`_data/market-sectors/{lang}/{market}.yml`) - Currently empty placeholders
+
+**Update Search Indexes:**
+```bash
+python3 _scripts/generate_search_index.py
+```
+
+---
+
+# 🎛️ Forms & UI Components Architecture
+
+## "Logic Light" Component System
+
+Following the "logic light" principle, CSS component structure mirrors the includes organization for maximum maintainability and developer experience.
+
+### Forms Components Structure
+```
+_includes/components/forms/          CSS: assets/css/components/forms/
+├── form.html                      ↔ form.scss
+├── input-field.html               ↔ input-field.scss
+├── textarea-field.html            ↔ textarea-field.scss
+├── select-field.html              ↔ select-field.scss
+├── contact-form.html              ↔ contact-form.scss
+├── newsletter-form.html           ↔ newsletter-form.scss
+├── feedback-form.html             ↔ feedback-form.scss
+├── validation.html                ↔ validation.scss
+├── custom-contact-form.html       ↔ custom-contact-form.scss
+└── custom-newsletter.html         ↔ custom-newsletter.scss
+```
+
+### UI Components Structure
+```
+_includes/components/ui/            CSS: assets/css/components/ui/
+├── alerts.html                   ↔ alerts.scss
+├── breadcrumbs.html              ↔ breadcrumbs.scss
+├── loading-spinner.html          ↔ loading-spinner.scss
+├── modal.html                    ↔ modal.scss
+└── tooltip.html                  ↔ tooltip.scss
+```
+
+### Search Components Structure
+```
+_includes/components/search/        CSS: assets/css/components/search/
+├── simple-search.html            ↔ search-box.scss
+├── search-filter.html            ↔ search-filter.scss
+└── (advanced search planned)     ↔ advanced-search.scss
+```
+
+## Custom Form Alternatives
+
+**Custom Contact Form** (`custom-contact-form.html`):
+- Alternative to Tally forms with full control
+- Real-time validation, loading states, success/error feedback
+- Accessibility features (ARIA labels, screen reader support)
+- Multilingual support using translation files
+
+**Custom Newsletter Form** (`custom-newsletter.html`):
+- Alternative to MailerLite with multiple layout variants
+- Variants: default, inline, minimal, compact
+- Email validation with responsive design
+
+**JavaScript Integration** (`custom-forms.js`):
+- Handles validation, submission, and state management
+- Auto-initialization on DOM ready
+- Modular design for easy extension
+
+## Search & Filter System
+
+**Multi-Column Filter Layout:**
+- CSS Grid implementation for better space utilization
+- Responsive stacking on mobile devices
+- All 16 sectors displayed (previously limited to 8)
+
+**Dynamic Country Loading:**
+- Sorted alphabetically using `countries.json`
+- Multilingual country names based on current language
+- Proper display names instead of slugs
+
+**Enhanced JavaScript:**
+- Debounced search for better performance
+- Proper filter counting and result display
+- Grid/list view toggle functionality
+- Complete filter reset capabilities
+
+## Component Documentation
+
+Comprehensive guides available:
+- `_docs/cheat_sheets/forms-components-guide.md` - Complete forms documentation
+- `_docs/cheat_sheets/search-components-guide.md` - Search functionality guide
+- `_docs/cheat_sheets/ui-components-guide.md` - UI components documentation
 
 ---
 

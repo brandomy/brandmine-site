@@ -1,3 +1,35 @@
 ---
+layout: null
 ---
-{{ site.founders | jsonify }}
+[
+  {% for founder in site.founders %}
+    {% if founder.name and founder.lang %}
+    {
+      "name": {{ founder.name | jsonify }},
+      "title": {{ founder.name | jsonify }},
+      "url": {{ founder.url | relative_url | jsonify }},
+      "permalink": {{ founder.url | relative_url | jsonify }},
+      "lang": {{ founder.lang | jsonify }},
+      "type": "founder",
+      "ref": {{ founder.ref | default: founder.slug | jsonify }},
+      "country_code": {{ founder.country_code | jsonify }},
+      "brief_bio": {{ founder.excerpt | strip_html | truncate: 200 | jsonify }},
+      "description": {{ founder.excerpt | strip_html | truncate: 200 | jsonify }},
+      "position": {{ founder.position | jsonify }},
+      "generation": {{ founder.generation | jsonify }},
+      "languages": {{ founder.languages | jsonify }},
+      "cross_border_experience": {{ founder.cross_border_experience | default: false | jsonify }},
+      "featured": {{ founder.featured | default: false | jsonify }},
+      "sectors": {{ founder.sectors | jsonify }},
+      "markets": {{ founder.markets | jsonify }},
+      "attributes": {{ founder.attributes | jsonify }},
+      "signals": {{ founder.signals | jsonify }},
+      "location": {
+        "country": {{ founder.location.country | jsonify }},
+        "country_code": {{ founder.location.country_code | jsonify }},
+        "city": {{ founder.location.city | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

@@ -12,27 +12,23 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].home.how_it_works %}
-{% assign discover = site.data.translations[current_lang].discover %}
-{% assign insights = site.data.translations[current_lang].insights %}
-{% assign buttons = site.data.translations[current_lang].buttons %}
 
 <div id="how-it-works" class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ t.title | default: "How It Works" }}
+      {% include helpers/t.html key="home.how_it_works.title" fallback="How It Works" %}
     </h2>
     <p class="panel__lead-text">
-      {{ t.subtitle | default: "Our platform bridges the gap between exceptional BRICS+ brands and international opportunities" }}
+      {% include helpers/t.html key="home.how_it_works.subtitle" fallback="Our platform bridges the gap between exceptional BRICS+ brands and international opportunities" %}
     </p>
     <div class="process-steps">
       <div class="process-step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h3>{{ t.steps.step1.title | default: "Illuminate" }}</h3>
-          <p>{{ t.steps.step1.text | default: "Explore previously invisible brand ecosystems across BRICS+ countries through our comprehensive mapping" }}</p>
+          <h3>{% include helpers/t.html key="home.how_it_works.steps.step1.title" fallback="Illuminate" %}</h3>
+          <p>{% include helpers/t.html key="home.how_it_works.steps.step1.text" fallback="Explore previously invisible brand ecosystems across BRICS+ countries through our comprehensive mapping" %}</p>
           <a href="{{ site.baseurl }}/{{ current_lang }}/brands/" class="text-link">
-            {{ discover.explore | default: "Explore" }}
+            {% include helpers/t.html key="common.actions.explore" fallback="Explore" %}
           </a>
         </div>
       </div>
@@ -40,10 +36,10 @@
       <div class="process-step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h3>{{ t.steps.step2.title | default: "Contextualize" }}</h3>
-          <p>{{ t.steps.step2.text | default: "Gain critical insights through founder stories and regional intelligence unavailable anywhere else" }}</p>
+          <h3>{% include helpers/t.html key="home.how_it_works.steps.step2.title" fallback="Contextualize" %}</h3>
+          <p>{% include helpers/t.html key="home.how_it_works.steps.step2.text" fallback="Gain critical insights through founder stories and regional intelligence unavailable anywhere else" %}</p>
           <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="text-link">
-            {{ insights.all_insights | default: "All Insights" }}
+            {% include helpers/t.html key="insights.all_insights" fallback="All Insights" %}
           </a>
         </div>
       </div>
@@ -51,10 +47,10 @@
       <div class="process-step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h3>{{ t.steps.step3.title | default: "Connect" }}</h3>
-          <p>{{ t.steps.step3.text | default: "Identify promising partnerships based on authentic understanding and context" }}</p>
+          <h3>{% include helpers/t.html key="home.how_it_works.steps.step3.title" fallback="Connect" %}</h3>
+          <p>{% include helpers/t.html key="home.how_it_works.steps.step3.text" fallback="Identify promising partnerships based on authentic understanding and context" %}</p>
           <a href="{{ site.baseurl }}/{{ current_lang }}/about/#contact-us" class="text-link">
-            {{ buttons.get_in_touch | default: "Get in Touch" }}
+            {% include helpers/t.html key="common.actions.get_in_touch" fallback="Get in Touch" %}
           </a>
         </div>
       </div>
@@ -64,7 +60,7 @@
       <a href="{{ site.baseurl }}/{{ current_lang }}/discover/"
          class="btn btn--standard"
          data-track="how-it-works">
-        {{ t.cta | default: "Start Discovering" }}
+        {% include helpers/t.html key="home.how_it_works.cta" fallback="Start Discovering" %}
       </a>
     </div>
   </div>

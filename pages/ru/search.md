@@ -13,16 +13,16 @@ ref: search
     <div class="search-box">
       <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get">
         <input type="text" id="search-input" name="q" class="search-box__input" 
-               placeholder="{{ site.data.translations[page.lang].search.placeholder }}" aria-label="Поиск брендов">
+               placeholder="{% include helpers/t.html key="search.placeholder" fallback="Поиск брендов..." %}" aria-label="Поиск брендов">
         <button type="submit" class="search-box__button">
           <i class="fas fa-search"></i>
-          {{ site.data.translations[page.lang].search.button }}
+          {% include helpers/t.html key="search.button" fallback="Поиск" %}
         </button>
       </form>
     </div>
     
     <div class="search-popular">
-      <p class="search-popular__title">{{ site.data.translations[page.lang].search.popular_searches }}</p>
+      <p class="search-popular__title">{% include helpers/t.html key="search.popular_searches" fallback="Популярные поисковые запросы" %}</p>
       <div class="search-popular__tags">
         <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=вино" class="search-popular__tag">Вино</a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/search/?q=красота" class="search-popular__tag">Красота</a>

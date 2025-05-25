@@ -13,20 +13,17 @@
     - site.data.translations for labels
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].brands %}
-{% assign buttons_t = site.data.translations[page.lang].buttons %}
-
 <div class="panel panel--cta">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">
-      {{ include.title | default: t.cta_title | default: "Ready to Discover BRICS+ Brands?" }}
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="brands.cta_title" fallback="Ready to Discover BRICS+ Brands?" %}{% endunless %}
     </h2>
     <p class="panel__lead-text">
-      {{ include.description | default: t.cta_text | default: "Contact us to learn more about our featured brands or to discuss your specific needs." }}
+      {{ include.description | default: "" }}{% unless include.description %}{% include helpers/t.html key="brands.cta_text" fallback="Contact us to learn more about our featured brands or to discuss your specific needs." %}{% endunless %}
     </p>
     <div class="cta-buttons">
       <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">
-        {{ include.button_text | default: buttons_t.get_in_touch | default: "Get in Touch" }}
+        {{ include.button_text | default: "" }}{% unless include.button_text %}{% include helpers/t.html key="common.actions.get_in_touch" fallback="Get in Touch" %}{% endunless %}
       </a>
     </div>
   </div>

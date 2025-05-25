@@ -9,16 +9,15 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].about %}
 {% assign panel_type = include.panel_type | default: "light" %}
 
 <div class="panel panel--{{ panel_type }} about-services">
   <div class="panel__content">
     <h2 class="panel__heading-secondary about-services__title">
-      {{ t.services_title | default: "Our Services" }}
+      {% include helpers/t.html key="about.services_title" fallback="Our Services" %}
     </h2>
     <p class="panel__lead-text about-services__lead-text">
-      {{ t.services_lead | default: "We offer services for BRICS+ Brands as well as for the Investors and Business Partners seeking to do business with them." }}
+      {% include helpers/t.html key="about.services_lead" fallback="We offer services for BRICS+ Brands as well as for the Investors and Business Partners seeking to do business with them." %}
     </p>
 
     <div class="about-services__container">
@@ -26,13 +25,14 @@
       <div class="about-services__panel about-services__panel--international">
         <div class="about-services__panel-header">
           <h3 class="about-services__panel-title">
-            {{ t.services_partners_title | default: "For International Partners" }}
+            {% include helpers/t.html key="about.services_partners_title" fallback="For International Partners" %}
           </h3>
         </div>
         <div class="about-services__panel-content">
           <ul class="about-services__list">
-            {% if t.services_partners %}
-              {% for service in t.services_partners %}
+            {% assign services_data = site.data.translations[current_lang].about %}
+            {% if services_data.services_partners %}
+              {% for service in services_data.services_partners %}
                 <li class="about-services__item">
                   <span class="about-services__bullet">•</span>
                   <div class="about-services__item-content">
@@ -60,13 +60,13 @@
       <div class="about-services__panel about-services__panel--brands">
         <div class="about-services__panel-header">
           <h3 class="about-services__panel-title">
-            {{ t.services_brands_title | default: "For BRICS+ Brands" }}
+            {% include helpers/t.html key="about.services_brands_title" fallback="For BRICS+ Brands" %}
           </h3>
         </div>
         <div class="about-services__panel-content">
           <ul class="about-services__list">
-            {% if t.services_brands %}
-              {% for service in t.services_brands %}
+            {% if services_data.services_brands %}
+              {% for service in services_data.services_brands %}
                 <li class="about-services__item">
                   <span class="about-services__bullet">•</span>
                   <div class="about-services__item-content">
@@ -92,7 +92,7 @@
     </div>
 
     <p class="panel__conclusion-text about-services__conclusion-text">
-      {{ t.services_conclusion | default: "Our customized approach ensures both brands and partners find the right connections, with the right context, at the right time—creating value across borders through meaningful relationships." }}
+      {% include helpers/t.html key="about.services_conclusion" fallback="Our customized approach ensures both brands and partners find the right connections, with the right context, at the right time—creating value across borders through meaningful relationships." %}
     </p>
   </div>
 </div>

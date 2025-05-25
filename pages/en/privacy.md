@@ -104,6 +104,6 @@ Reg. No. 202401005480 (1551330-P)
 10250 George Town, Penang
 Malaysia
 
-<a href="mailto:{{ site.data.translations[page.lang].privacy.contact_email_label }}?subject={{ site.data.translations[page.lang].privacy.contact_email_subject | uri_escape }}&body={{ site.data.translations[page.lang].privacy.contact_email_body | uri_escape }}">
-  {{ site.data.translations[page.lang].privacy.contact_email_label }}
+<a href="mailto:{% include helpers/t.html key='privacy.contact_email_label' fallback='hello@brandmine.io' %}?subject={% include helpers/t.html key='privacy.contact_email_subject' fallback='Privacy%20Inquiry' %}&body={% include helpers/t.html key='privacy.contact_email_body' fallback='Hello' %}">
+  {% include helpers/t.html key="privacy.contact_email_label" fallback="hello@brandmine.io" %}
 </a>

@@ -1,0 +1,119 @@
+/* ==========================================================================
+   UI Component: Breadcrumbs Navigation
+   ========================================================================== */
+
+.breadcrumbs {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  
+  @media (min-width: 768px) {
+    margin-bottom: var(--space-6);
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  &__link {
+    color: var(--neutral-600);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: var(--brand-primary);
+      background-color: var(--neutral-100);
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline: 2px solid var(--brand-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  &__separator {
+    color: var(--neutral-400);
+    font-size: var(--text-xs);
+    margin: 0 var(--space-1);
+    user-select: none;
+  }
+
+  &__current {
+    color: var(--neutral-800);
+    font-weight: var(--font-medium);
+    padding: var(--space-1) var(--space-2);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .breadcrumbs {
+    &__list {
+      gap: 0;
+    }
+    
+    &__link,
+    &__current {
+      padding: var(--space-1);
+      font-size: var(--text-xs);
+    }
+    
+    &__separator {
+      margin: 0 2px;
+    }
+  }
+}
+
+/* Light theme variant */
+.breadcrumbs--light {
+  .breadcrumbs__link {
+    color: var(--neutral-500);
+    
+    &:hover {
+      color: var(--brand-primary);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+  
+  .breadcrumbs__separator {
+    color: var(--neutral-400);
+  }
+  
+  .breadcrumbs__current {
+    color: var(--neutral-700);
+  }
+}
+
+/* Dark theme variant */
+.breadcrumbs--dark {
+  .breadcrumbs__link {
+    color: var(--neutral-300);
+    
+    &:hover {
+      color: var(--brand-primary-light);
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .breadcrumbs__separator {
+    color: var(--neutral-500);
+  }
+  
+  .breadcrumbs__current {
+    color: var(--neutral-100);
+  }
+}

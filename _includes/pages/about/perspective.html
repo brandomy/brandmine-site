@@ -9,21 +9,21 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].about %}
 {% assign panel_type = include.panel_type | default: "secondary-soft" %}
 
 <div class="panel panel--{{ panel_type }} about-perspective">
   <div class="panel__content">
     <h2 class="panel__heading-secondary about-perspective__title">
-      {{ t.perspective_title | default: "Our Unique Perspective" }}
+      {% include helpers/t.html key="about.perspective_title" fallback="Our Unique Perspective" %}
     </h2>
     <p class="panel__lead-text about-perspective__lead-text">
-      {{ t.perspective_lead | default: "With over 25 years living and working across Asia—particularly in China and Russia—our founders bring a rare combination of linguistic capability, cultural insight, and business acumen to Brandmine:" }}
+      {% include helpers/t.html key="about.perspective_lead" fallback="With over 25 years living and working across Asia—particularly in China and Russia—our founders bring a rare combination of linguistic capability, cultural insight, and business acumen to Brandmine:" %}
     </p>
 
     <ul class="about-perspective__list">
-      {% if t.perspective_points %}
-        {% for point in t.perspective_points %}
+      {% assign perspective_data = site.data.translations[current_lang].about %}
+      {% if perspective_data.perspective_points %}
+        {% for point in perspective_data.perspective_points %}
           <li><span>{{ point }}</span></li>
         {% endfor %}
       {% else %}
@@ -37,7 +37,7 @@
     </ul>
 
     <p class="panel__conclusion-text about-perspective__conclusion-text">
-      {{ t.perspective_conclusion | default: "This distinctive background enables us to see valuable opportunities where others see only barriers." }}
+      {% include helpers/t.html key="about.perspective_conclusion" fallback="This distinctive background enables us to see valuable opportunities where others see only barriers." %}
     </p>
   </div>
 </div>

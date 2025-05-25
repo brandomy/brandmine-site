@@ -2,47 +2,97 @@
 layout: null
 ---
 [
+  {% assign comma_needed = false %}
   {% for brand in site.brands %}
     {% if brand.title and brand.lang %}
-    {
-      "title": {{ brand.title | jsonify }},
-      "url": {{ brand.url | relative_url | jsonify }},
-      "lang": {{ brand.lang | jsonify }},
-      "type": "brand"
-    },
+      {% if comma_needed %},{% endif %}
+      {
+        "title": {{ brand.title | jsonify }},
+        "name": {{ brand.title | jsonify }},
+        "url": {{ brand.url | relative_url | jsonify }},
+        "permalink": {{ brand.url | relative_url | jsonify }},
+        "lang": {{ brand.lang | jsonify }},
+        "type": "brand",
+        "ref": {{ brand.ref | default: brand.slug | jsonify }},
+        "country_code": {{ brand.country_code | jsonify }},
+        "sectors": {{ brand.sectors | jsonify }},
+        "markets": {{ brand.markets | jsonify }},
+        "attributes": {{ brand.attributes | jsonify }},
+        "signals": {{ brand.signals | jsonify }},
+        "description": {{ brand.excerpt | strip_html | truncate: 200 | jsonify }},
+        "founding_year": {{ brand.founding_year | jsonify }},
+        "founder_led": {{ brand.founder.founder_led | default: false | jsonify }},
+        "featured": {{ brand.featured | default: false | jsonify }},
+        "location": {
+          "country": {{ brand.location.country | jsonify }},
+          "city": {{ brand.location.city | jsonify }}
+        }
+      }
+      {% assign comma_needed = true %}
     {% endif %}
   {% endfor %}
   {% for founder in site.founders %}
     {% if founder.name and founder.lang %}
-    {
-      "title": {{ founder.name | jsonify }},
-      "url": {{ founder.url | relative_url | jsonify }},
-      "lang": {{ founder.lang | jsonify }},
-      "type": "founder"
-    },
+      {% if comma_needed %},{% endif %}
+      {
+        "title": {{ founder.name | jsonify }},
+        "name": {{ founder.name | jsonify }},
+        "url": {{ founder.url | relative_url | jsonify }},
+        "permalink": {{ founder.url | relative_url | jsonify }},
+        "lang": {{ founder.lang | jsonify }},
+        "type": "founder",
+        "ref": {{ founder.ref | default: founder.slug | jsonify }},
+        "country_code": {{ founder.country_code | jsonify }},
+        "brief_bio": {{ founder.excerpt | strip_html | truncate: 200 | jsonify }},
+        "description": {{ founder.excerpt | strip_html | truncate: 200 | jsonify }},
+        "position": {{ founder.position | jsonify }},
+        "generation": {{ founder.generation | jsonify }},
+        "sectors": {{ founder.sectors | jsonify }},
+        "markets": {{ founder.markets | jsonify }},
+        "attributes": {{ founder.attributes | jsonify }},
+        "signals": {{ founder.signals | jsonify }}
+      }
+      {% assign comma_needed = true %}
     {% endif %}
   {% endfor %}
   {% for dimension in site.dimensions %}
     {% if dimension.title and dimension.lang %}
-    {
-      "title": {{ dimension.title | jsonify }},
-      "url": {{ dimension.url | relative_url | jsonify }},
-      "lang": {{ dimension.lang | jsonify }},
-      "type": "dimension",
-      "dimension_type": {{ dimension.tag_type | jsonify }}
-    },
+      {% if comma_needed %},{% endif %}
+      {
+        "title": {{ dimension.title | jsonify }},
+        "name": {{ dimension.title | jsonify }},
+        "url": {{ dimension.url | relative_url | jsonify }},
+        "permalink": {{ dimension.url | relative_url | jsonify }},
+        "lang": {{ dimension.lang | jsonify }},
+        "type": "dimension",
+        "dimension_type": {{ dimension.tag_type | jsonify }},
+        "tag_type": {{ dimension.tag_type | jsonify }},
+        "slug": {{ dimension.slug | jsonify }},
+        "description": {{ dimension.excerpt | strip_html | truncate: 200 | jsonify }}
+      }
+      {% assign comma_needed = true %}
     {% endif %}
   {% endfor %}
   {% for insight in site.insights %}
     {% if insight.title and insight.lang %}
-    {
-      "title": {{ insight.title | jsonify }},
-      "url": {{ insight.url | relative_url | jsonify }},
-      "lang": {{ insight.lang | jsonify }},
-      "type": "insight",
-      "category": {{ insight.category | jsonify }},
-      "excerpt": {{ insight.excerpt | strip_html | truncate: 150 | jsonify }}
-    }{% unless forloop.last %},{% endunless %}
+      {% if comma_needed %},{% endif %}
+      {
+        "title": {{ insight.title | jsonify }},
+        "name": {{ insight.title | jsonify }},
+        "url": {{ insight.url | relative_url | jsonify }},
+        "permalink": {{ insight.url | relative_url | jsonify }},
+        "lang": {{ insight.lang | jsonify }},
+        "type": "insight",
+        "category": {{ insight.category | jsonify }},
+        "excerpt": {{ insight.excerpt | strip_html | truncate: 200 | jsonify }},
+        "description": {{ insight.excerpt | strip_html | truncate: 200 | jsonify }},
+        "date": {{ insight.date | date_to_xmlschema | jsonify }},
+        "sectors": {{ insight.sectors | jsonify }},
+        "markets": {{ insight.markets | jsonify }},
+        "attributes": {{ insight.attributes | jsonify }},
+        "signals": {{ insight.signals | jsonify }}
+      }
+      {% assign comma_needed = true %}
     {% endif %}
   {% endfor %}
 ]

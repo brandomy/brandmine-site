@@ -14,19 +14,20 @@
     - site.data.translations for labels
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].founders.recent %}
 {% assign panel_type = include.panel_type | default: "light" %}
 {% assign limit = include.limit | default: 4 %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
+    {% assign section_title = include.title | default: site.data.translations[page.lang].founders.recent.title | default: "Recently Added Founders" %}
     <h2 class="panel__heading-secondary">
-      {{ include.title | default: t.title }}
+      {{ section_title }}
     </h2>
 
-    {% if t.description %}
+    {% assign description_text = site.data.translations[page.lang].founders.recent.description | default: "Meet the newest founder profiles added to our growing network of BRICS+ business leaders." %}
+    {% if description_text %}
       <p class="panel__lead-text">
-        {{ t.description }}
+        {{ description_text }}
       </p>
     {% endif %}
 
@@ -37,10 +38,11 @@
       {% endfor %}
     </div>
 
-    {% if t.view_all %}
+    {% assign view_all_text = site.data.translations[page.lang].founders.recent.view_all | default: "View All Recent Founders" %}
+    {% if view_all_text %}
       <div class="recent-founders__footer">
         <a href="{{ site.baseurl }}/{{ page.lang }}/founders/?sort=recent" class="btn btn--secondary">
-          {{ t.view_all }}
+          {{ view_all_text }}
         </a>
       </div>
     {% endif %}

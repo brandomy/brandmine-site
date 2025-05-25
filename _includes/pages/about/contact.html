@@ -9,16 +9,15 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].about %}
 {% assign panel_type = include.panel_type | default: "cta" %}
 
 <div class="panel panel--{{ panel_type }} about-contact">
   <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary about-contact__title">
-      {{ t.contact_title | default: "Contact Us" }}
+      {% include helpers/t.html key="about.contact_title" fallback="Contact Us" %}
     </h2>
     <p class="panel__lead-text about-contact__lead-text">
-      {{ t.contact_lead | default: "Whether you're seeking new brand opportunities or looking to gain international visibility for your BRICS+ brand, we'd love to hear from you." }}
+      {% include helpers/t.html key="about.contact_lead" fallback="Whether you're seeking new brand opportunities or looking to gain international visibility for your BRICS+ brand, we'd love to hear from you." %}
     </p>
 
     <div class="about-contact__info">
@@ -35,7 +34,7 @@
     <!-- Contact Form Container with additional wrapper -->
     <div class="about-contact__form-wrapper">
       <div class="about-contact__form-container">
-        <iframe data-tally-src="https://tally.so/embed/3qvVaY?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="{{ t.contact_form_title | default: 'Contact Form' }}"></iframe>
+        <iframe data-tally-src="https://tally.so/embed/3qvVaY?alignLeft=1&hideTitle=0&transparentBackground=0&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="{% include helpers/t.html key='about.contact_form_title' fallback='Contact Form' %}"></iframe>
 
         <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       </div>

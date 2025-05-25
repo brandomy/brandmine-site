@@ -3,7 +3,7 @@ layout: default
 title: JSON Migration Test Page
 permalink: /en/dev/test-json-migration/
 lang: en
-ref: test-json-migration
+ref: dev-test-json-migration
 ---
 
 <div class="container">

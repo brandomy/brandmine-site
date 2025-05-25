@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Base Form Component
+   ==========================================================================
+   Base form styles and generic form containers.
+*/
+
+/* --------------------------------------------------------------------------
+   BASIC FORM ELEMENTS
+   -------------------------------------------------------------------------- */
+
+/* Form labels */
+label {
+  display: block;
+  margin-bottom: var(--space-2); /* 0.5rem */
+  font-weight: 500;
+  color: var(--neutral-700);
+}
+
+/* Standard form container */
+.form-container {
+  width: 100%;
+  margin-bottom: var(--space-8); /* 2rem */
+  max-width: var(--form-max-width); /* Using new token */
+}
+
+/* Base container styling */
+.mobile-form-wrapper {
+  width: 100%;
+  max-width: var(--form-max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Desktop adjustments */
+@media (width >= 768px) { /* md breakpoint */
+  .mobile-form-wrapper {
+    width: 92%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   PANEL & FOOTER CONNECTION FIXES
+   -------------------------------------------------------------------------- */
+
+/* Fix form spacing in CTA panels */
+.cta-panel .btn-primary,
+.cta-panel .cta-button {
+  margin-bottom: var(--space-8);    /* 2rem */
+}
+
+/* Make sure there's proper spacing in the CTA section */
+.cta-panel .panel-content {
+  padding-bottom: var(--space-8);   /* 2rem */
+}
+
+/* Footer spacing fixes to connect forms to footer */
+.full-width-panel.cta-panel {
+  margin-bottom: 0 !important;
+}
+
+/* Fix for the white horizontal bar on large screens */
+main.page-content {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Target that specific white space between sections */
+.page-content > .wrapper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* Small devices (phones) */
+@media (width <= 767px) { /* md breakpoint */
+  /* Fix general embeds on small screens (excluding Tally forms that we handle separately) */
+  iframe:not(.contact-form-container iframe) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+}

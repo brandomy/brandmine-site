@@ -22,7 +22,7 @@
       <p class="sector-card__description">{{ sector.description[page.lang] }}</p>
 
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector.id }}/" class="sector-card__link">
-        {{ site.data.translations[page.lang].discover.explore_sector }}
+        {% include helpers/t.html key="discover.explore_sector" fallback="Explore Sector" %}
       </a>
     </div>
   {% endfor %}

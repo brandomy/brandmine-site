@@ -34,7 +34,7 @@
 
 <header class="founder-card__header">
   <div class="founder-card__portrait {% if founder.use_headshot %}founder-card__portrait--headshot{% else %}founder-card__portrait--full{% endif %}">
-    {% if founder.portrait_image %}
+    {% if founder.images.headshot %}
       {% assign image_base = founder.ref %}
       <img src="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg"
            srcset="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg 400w,
@@ -42,13 +42,14 @@
            sizes="(max-width: 480px) 100px, 150px"
            alt="{{ founder.name }}"
            class="founder-card__portrait-img"
-           loading="lazy"
-           onerror="this.onerror=null; this.src='{{ site.baseurl }}/assets/images/founders/default-headshot-400w.jpg';">
-    {% else %}
-      <img src="{{ site.baseurl }}/assets/images/founders/default-headshot-400w.jpg"
-           alt="{{ founder.name }}"
-           class="founder-card__portrait-img founder-card__portrait-img--placeholder"
            loading="lazy">
+    {% else %}
+      <div class="founder-card__portrait-placeholder">
+        <span class="founder-card__portrait-initials">
+          {% assign name_parts = founder.name | split: " " %}
+          {% for part in name_parts limit:2 %}{{ part | first | upcase }}{% endfor %}
+        </span>
+      </div>
     {% endif %}
   </div>
 
@@ -61,7 +62,7 @@
       {% if founder.city %}{{ founder.city }}{% endif %}
       {% if founder.city and founder.country_code %}, {% endif %}
       {% if founder.country_code %}
-        {% assign country_name = site.data.countries[page.lang][founder.country_code].name | default: founder.country_code %}
+        {% assign country_name = site.data.countries.countries[founder.country_code].name[page.lang] | default: founder.country_code %}
         {{ country_name }}
       {% endif %}
     </div>
@@ -71,11 +72,11 @@
   <div class="founder-card__body">
     {% if founder.brands %}
       <div class="founder-card__brand-connections">
-        {% for brand_slug in founder.brands limit:1 %}
-          {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
+        {% for brand_ref in founder.brands limit:1 %}
+          {% assign brand = site.brands | where: "ref", brand_ref | where: "lang", page.lang | first %}
           {% if brand %}
             <p class="founder-card__brand">
-              <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="founder-card__brand-link">
+              <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_ref }}/" class="founder-card__brand-link">
                 {{ brand.title }}
               </a>
               {% if founder.role %}
@@ -99,12 +100,33 @@
       </div>
     {% endif %}
 
+    {% comment %} Key Achievement {% endcomment %}
+    {% if founder.achievements %}
+      <div class="founder-card__achievement">
+        <span class="founder-card__achievement-label">{{ t.key_achievement | default: "Key Achievement" }}:</span>
+        <span class="founder-card__achievement-text">{{ founder.achievements | first }}</span>
+      </div>
+    {% endif %}
+
+    {% comment %} Languages {% endcomment %}
+    {% if founder.languages %}
+      <div class="founder-card__languages">
+        <span class="founder-card__languages-label">{{ t.languages | default: "Languages" }}:</span>
+        <span class="founder-card__languages-list">
+          {% for lang_code in founder.languages %}
+            {% if forloop.first == false %}, {% endif %}
+            {{ site.data.languages[page.lang][lang_code] | default: lang_code }}
+          {% endfor %}
+        </span>
+      </div>
+    {% endif %}
+
     {% comment %} Enhanced tag cloud with markets and sectors {% endcomment %}
     <div class="founder-card__tag-cloud">
       {% comment %} Markets {% endcomment %}
       {% if founder.markets %}
         {% for market in founder.markets limit:2 %}
-          {% assign market_name = site.data.countries[page.lang][market].name | default: market %}
+          {% assign market_name = site.data.countries.countries[market].name[page.lang] | default: market %}
           <span class="founder-card__tag founder-card__tag--market">
             {{ market_name }}
           </span>
@@ -147,23 +169,4 @@
     {% endif %}
   </footer>
 
-  {% comment %} Hover reveal info {% endcomment %}
-  {% if founder.achievements or founder.languages %}
-    <div class="founder-card__hover-info">
-      {% if founder.achievements %}
-        <p class="founder-card__achievements">
-          <strong>{{ t.key_achievement | default: "Key Achievement" }}:</strong> {{ founder.achievements | first }}
-        </p>
-      {% endif %}
-      {% if founder.languages %}
-        <p class="founder-card__languages">
-          <strong>{{ t.languages | default: "Languages" }}:</strong>
-          {% for lang_code in founder.languages %}
-            {% if forloop.first == false %}, {% endif %}
-            {{ site.data.languages[page.lang][lang_code] | default: lang_code }}
-          {% endfor %}
-        </p>
-      {% endif %}
-    </div>
-  {% endif %}
 </article>

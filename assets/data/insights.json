@@ -1,3 +1,29 @@
 ---
+layout: null
 ---
-{{ site.insights | jsonify }}
+[
+  {% for insight in site.insights %}
+    {% if insight.title and insight.lang %}
+    {
+      "title": {{ insight.title | jsonify }},
+      "name": {{ insight.title | jsonify }},
+      "url": {{ insight.url | relative_url | jsonify }},
+      "permalink": {{ insight.url | relative_url | jsonify }},
+      "lang": {{ insight.lang | jsonify }},
+      "type": "insight",
+      "ref": {{ insight.ref | default: insight.slug | jsonify }},
+      "category": {{ insight.category | jsonify }},
+      "excerpt": {{ insight.excerpt | strip_html | truncate: 200 | jsonify }},
+      "description": {{ insight.excerpt | strip_html | truncate: 200 | jsonify }},
+      "date": {{ insight.date | date_to_xmlschema | jsonify }},
+      "reading_time": {{ insight.reading_time | jsonify }},
+      "featured": {{ insight.featured | default: false | jsonify }},
+      "sectors": {{ insight.sectors | jsonify }},
+      "markets": {{ insight.markets | jsonify }},
+      "attributes": {{ insight.attributes | jsonify }},
+      "signals": {{ insight.signals | jsonify }},
+      "tags": {{ insight.tags | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

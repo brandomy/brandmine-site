@@ -3,7 +3,7 @@ layout: default
 title: Discovery Dimensions Test
 permalink: /en/dev/discovery-dimensions-test/
 lang: en
-ref: discovery-dimensions-test
+ref: dev-discovery-dimensions-test
 ---
 
 <div class="panel panel--light">

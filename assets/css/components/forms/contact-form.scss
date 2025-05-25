@@ -1,0 +1,137 @@
+/* ==========================================================================
+   Contact Form Component
+   ==========================================================================
+   Styles for Tally embedded contact forms and form containers.
+*/
+
+/* --------------------------------------------------------------------------
+   TALLY FORM INTEGRATION
+   -------------------------------------------------------------------------- */
+
+.contact-form-container {
+  width: 100%;
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-sm); /* Using token for consistency */
+  padding: var(--form-wrapper-padding); /* Updated */
+  box-shadow: var(--form-card-shadow); /* Updated */
+  box-sizing: border-box;
+}
+
+/* Style the iframe to fill its container */
+.contact-form-container iframe {
+  border: none;
+  background-color: white;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove any conflicting styles */
+.tally-form-container {
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* Desktop adjustments */
+@media (width >= 768px) { /* md breakpoint */
+  .contact-form-container {
+    padding: var(--form-wrapper-padding-mobile); /* Updated */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   CONTACT FORM VARIANTS
+   -------------------------------------------------------------------------- */
+
+.contact-form {
+  &--compact {
+    .contact-form-container {
+      padding: var(--space-4);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+  
+  &--full-width {
+    .contact-form-container {
+      max-width: none;
+      border-radius: 0;
+    }
+  }
+  
+  &--bordered {
+    .contact-form-container {
+      border: 2px solid var(--neutral-200);
+      box-shadow: none;
+    }
+  }
+  
+  &--floating {
+    .contact-form-container {
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-4px);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-2xl);
+      }
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FORM STATES AND FEEDBACK
+   -------------------------------------------------------------------------- */
+
+.contact-form-loading {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    z-index: 10;
+  }
+}
+
+.contact-form-success {
+  background-color: var(--success-50);
+  border: 1px solid var(--success-200);
+  color: var(--success-800);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  
+  .success-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto var(--space-2);
+    color: var(--success-600);
+  }
+}
+
+.contact-form-error {
+  background-color: var(--error-50);
+  border: 1px solid var(--error-200);
+  color: var(--error-800);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  
+  .error-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto var(--space-2);
+    color: var(--error-600);
+  }
+}

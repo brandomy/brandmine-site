@@ -19,16 +19,15 @@
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].home.lead_capture %}
 {% assign panel_type = include.panel_type | default: "lead-capture" %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ include.title | default: t.title | default: "Stay Updated on BRICS+ Opportunities" }}
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.lead_capture.title" fallback="Stay Updated on BRICS+ Opportunities" %}{% endunless %}
     </h2>
     <p class="panel__lead-text">
-      {{ include.lead_text | default: t.subtitle | default: "Subscribe to receive curated insights about emerging brands and market trends" }}
+      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.lead_capture.subtitle" fallback="Subscribe to receive curated insights about emerging brands and market trends" %}{% endunless %}
     </p>
 
     <div class="lead-capture__container">

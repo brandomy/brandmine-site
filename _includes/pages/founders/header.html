@@ -40,22 +40,21 @@
   - Consider adding autocomplete or search suggestions in future iterations
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].founders.header %}
 
 <div class="panel panel--light">
   <div class="panel__content">
     <div class="founders-header">
-      <h1 class="founders-header__title">{{ t.title }}</h1>
+      <h1 class="founders-header__title">{% include helpers/t.html key="founders.header.title" fallback="Founders" %}</h1>
 
       {% unless include.show_search == false %}
       <div class="founders-header__search">
         <input type="text"
                id="founder-search"
-               placeholder="{{ t.search_placeholder }}"
+               placeholder="{% include helpers/t.html key='founders.header.search_placeholder' fallback='Search founders by name, expertise, or location...' %}"
                class="founders-header__search-input">
         <button id="search-button"
                 class="founders-header__search-button">
-          {{ t.search_button }}
+          {% include helpers/t.html key="founders.header.search_button" fallback="Search" %}
         </button>
       </div>
       {% endunless %}

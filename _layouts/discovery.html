@@ -2,6 +2,8 @@
 layout: default
 ---
 <!-- Discovery layout for the discovery hub page -->
+{% include components/ui/breadcrumbs.html %}
+
 {% if page.sections %}
   {% for section in page.sections %}
     <section class="discovery-section discovery-section--{{ section }}" id="discovery-section-{{ section }}" aria-labelledby="heading-{{ section }}">

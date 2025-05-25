@@ -52,7 +52,7 @@ images:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
   hero:
-    name: "pastoral"  # Becomes hero-pastoral-400w.jpg
+    name: "farm-view"  # Becomes hero-farm-view-400w.jpg
     ext: "jpg"
   founder:
     name: "portrait"    # Becomes founder-portrait-400w.jpg

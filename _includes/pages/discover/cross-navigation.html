@@ -7,7 +7,7 @@
 {% assign dimensions = site.data.dimensions.dimensions %}
 
 <div class="cross-navigation">
-  <h2 class="cross-navigation__title">{{ site.data.translations[page.lang].discover.explore | default: "Explore" }}</h2>
+  <h2 class="cross-navigation__title">{% include helpers/t.html key="discover.explore" fallback="Explore" %}</h2>
 
   <div class="cross-navigation__links">
     {% for dimension in dimensions %}
@@ -31,7 +31,7 @@
         <span class="cross-navigation__icon">
           {% include components/icons/icon.html system="dimensions" name="russian-sector" %}
         </span>
-        {{ site.data.translations[page.lang].discover.russia_market_sectors_title | default: "Russia Market Sectors" }}
+        {% include helpers/t.html key="discover.russia_market_sectors_title" fallback="Russia Market Sectors" %}
       </a>
     {% endif %}
   </div>

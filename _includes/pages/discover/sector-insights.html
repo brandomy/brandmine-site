@@ -22,10 +22,10 @@ Dependencies:
               <line x1="8" y1="11" x2="14" y2="11"></line>
             </svg>
           </span>
-          {{ site.data.translations[page.lang].discover.sector_insights | default: "Sector Insights" }}
+          {% include helpers/t.html key="discover.sector_insights" fallback="Sector Insights" %}
         </h2>
         <p class="sectors__section-description">
-          {{ site.data.translations[page.lang].discover.sector_insights_description | default: "Read our latest analyses and stories about BRICS+ business sectors" }}
+          {% include helpers/t.html key="discover.sector_insights_description" fallback="Read our latest analyses and stories about BRICS+ business sectors" %}
         </p>
       </div>
 
@@ -98,13 +98,13 @@ Dependencies:
               <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
               <path d="M8 10h8M8 14h8"></path>
             </svg>
-            <p>{{ site.data.translations[page.lang].insights.no_insights }}</p>
+            <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
           </div>
         {% endif %}
 
         <div class="sectors__section-action">
           <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?dimension=sectors" class="btn btn--secondary-cta">
-            {{ site.data.translations[page.lang].insights.view_all_insights }}
+            {% include helpers/t.html key="insights.view_all_insights" fallback="View All Insights" %}
           </a>
         </div>
       </div>

@@ -14,18 +14,16 @@
     - site.data.translations for labels
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].founders.filter %}
-{% assign grid_t = site.data.translations[page.lang].founders.grid %}
 
 <div class="founders-filter">
   <div class="founders__interface">
     
     <!-- Search Section -->
     <div class="founders__search">
-      <h3>{{ t.search_title | default: "Search Founders" }}</h3>
+      <h3>{% include helpers/t.html key="founders.filter.search_title" fallback="Search Founders" %}</h3>
       <div class="search-input-section">
         <input type="text" id="founders-search-query" class="search-input" 
-               placeholder="{{ t.search_placeholder | default: 'Search by name, expertise, or brand...' }}" 
+               placeholder="{% include helpers/t.html key="founders.filter.search_placeholder" fallback="Search by name, expertise, or brand..." %}" 
                aria-label="Search founders">
         <button type="button" id="clear-founders-search" class="search-clear-btn" title="Clear search">×</button>
       </div>
@@ -34,11 +32,11 @@
 
     <!-- Filter Column -->
     <div class="founders__filters">
-      <h3>{{ t.filter_title | default: "Filter Founders" }}</h3>
+      <h3>{% include helpers/t.html key="founders.filter.filter_title" fallback="Filter Founders" %}</h3>
 
       <!-- Market Filter -->
       <div class="filter-section">
-        <h4>{{ t.by_market }}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_market" fallback="By Market" %}</h4>
         <div class="filter-options" id="market-filters">
           {% assign markets = "" | split: "," %}
           {% assign founder_markets = site.founders | where: "lang", page.lang | map: "country_code" | uniq %}
@@ -57,7 +55,7 @@
 
       <!-- Languages Filter -->
       <div class="filter-section">
-        <h4>{{ t.by_languages | default: "Languages Spoken" }}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_languages" fallback="Languages Spoken" %}</h4>
         <div class="filter-options" id="languages-filters">
           {% assign all_languages = "" | split: "," %}
           {% for founder in site.founders %}
@@ -80,7 +78,7 @@
 
       <!-- Expertise Filter -->
       <div class="filter-section">
-        <h4>{{ t.by_expertise | default: "Expertise Areas" }}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_expertise" fallback="Expertise Areas" %}</h4>
         <div class="filter-options" id="expertise-filters">
           {% assign all_expertise = "" | split: "," %}
           {% for founder in site.founders %}
@@ -103,22 +101,22 @@
 
       <!-- Cross-Border Expertise Filter -->
       <div class="filter-section">
-        <h4>{{ t.by_cross_border | default: "Cross-Border Focus" }}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_cross_border" fallback="Cross-Border Focus" %}</h4>
         <div class="filter-options" id="cross-border-filters">
           <div class="filter-option">
             <input type="checkbox" id="cross-border-yes" name="cross_border" value="true">
-            <label for="cross-border-yes">{{ t.cross_border_experience | default: "Has Cross-Border Experience" }}</label>
+            <label for="cross-border-yes">{% include helpers/t.html key="founders.filter.cross_border_experience" fallback="Has Cross-Border Experience" %}</label>
           </div>
           <div class="filter-option">
             <input type="checkbox" id="international-expansion" name="international_expansion" value="true">
-            <label for="international-expansion">{{ t.international_expansion | default: "International Expansion Experience" }}</label>
+            <label for="international-expansion">{% include helpers/t.html key="founders.filter.international_expansion" fallback="International Expansion Experience" %}</label>
           </div>
         </div>
       </div>
 
       <!-- Generation Filter -->
       <div class="filter-section">
-        <h4>{{ t.by_generation | default: "Generation" }}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_generation" fallback="Generation" %}</h4>
         <div class="filter-options" id="generation-filters">
           {% assign all_generations = "" | split: "," %}
           {% for founder in site.founders %}
@@ -139,25 +137,25 @@
 
       <!-- Reset Filters -->
       <div class="filter-actions">
-        <button id="reset-founders-filters" class="btn-text">{{ t.reset | default: "Reset Filters" }}</button>
-        <button id="clear-all-founders" class="btn-text">{{ t.clear_all | default: "Clear All" }}</button>
+        <button id="reset-founders-filters" class="btn-text">{% include helpers/t.html key="founders.filter.reset" fallback="Reset Filters" %}</button>
+        <button id="clear-all-founders" class="btn-text">{% include helpers/t.html key="founders.filter.clear_all" fallback="Clear All" %}</button>
       </div>
     </div>
 
     <div class="founders__results">
       <div class="founders__results-header">
-        <h2 id="founders-results-count">{{ grid_t.all_founders | default: "All Founders" }}</h2>
+        <h2 id="founders-results-count">{% include helpers/t.html key="founders.grid.all_founders" fallback="All Founders" %}</h2>
 
         <!-- Sort Options -->
         <div class="founders__controls">
           <div class="founders__sort">
-            <label for="founders-sort-select">{{ grid_t.sort_by | default: "Sort by" }}:</label>
+            <label for="founders-sort-select">{% include helpers/t.html key="founders.grid.sort_by" fallback="Sort by" %}:</label>
             <select id="founders-sort-select">
-              <option value="name">{{ grid_t.sort_name | default: "Name" }}</option>
-              <option value="market">{{ grid_t.sort_market | default: "Market" }}</option>
-              <option value="languages">{{ grid_t.sort_languages | default: "Languages" }}</option>
-              <option value="expertise">{{ grid_t.sort_expertise | default: "Expertise" }}</option>
-              <option value="recent">{{ grid_t.sort_recent | default: "Most Recent" }}</option>
+              <option value="name">{% include helpers/t.html key="founders.grid.sort_name" fallback="Name" %}</option>
+              <option value="market">{% include helpers/t.html key="founders.grid.sort_market" fallback="Market" %}</option>
+              <option value="languages">{% include helpers/t.html key="founders.grid.sort_languages" fallback="Languages" %}</option>
+              <option value="expertise">{% include helpers/t.html key="founders.grid.sort_expertise" fallback="Expertise" %}</option>
+              <option value="recent">{% include helpers/t.html key="founders.grid.sort_recent" fallback="Most Recent" %}</option>
             </select>
           </div>
 
@@ -182,7 +180,7 @@
       <!-- Load More -->
       <div id="load-more-founders-container" class="load-more-container" style="display: none;">
         <button type="button" id="load-more-founders" class="load-more-btn">
-          {{ grid_t.load_more | default: "Load More Founders" }}
+          {% include helpers/t.html key="founders.grid.load_more" fallback="Load More Founders" %}
         </button>
       </div>
     </div>
@@ -192,7 +190,7 @@
 <!-- Fallback for non-JS users -->
 <noscript>
   <div class="founders-fallback">
-    <p>{{ t.js_required | default: "JavaScript is required for search functionality. Please enable JavaScript or browse founders using the main navigation." }}</p>
+    <p>{% include helpers/t.html key="founders.filter.js_required" fallback="JavaScript is required for search functionality. Please enable JavaScript or browse founders using the main navigation." %}</p>
   </div>
 </noscript>
 

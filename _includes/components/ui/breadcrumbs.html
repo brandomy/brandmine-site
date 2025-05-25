@@ -24,7 +24,8 @@ Custom items:
 {% assign separator = include.separator | default: "›" %}
 {% assign current_lang = page.lang | default: 'en' %}
 
-<nav class="breadcrumbs {{ include.class_name }}" aria-label="{% include helpers/t.html key='nav.breadcrumbs' fallback='Breadcrumb navigation' %}">
+{% assign aria_label = site.data.translations[current_lang].nav.breadcrumbs | default: "Breadcrumb navigation" %}
+<nav class="breadcrumbs {{ include.class_name }}" aria-label="{{ aria_label }}">
   <ol class="breadcrumbs__list">
     
     {% if show_home %}
@@ -54,6 +55,9 @@ Custom items:
 
     {% elsif auto_generate %}
       {% comment %} Auto-generate from page structure {% endcomment %}
+      
+      {% comment %} Skip breadcrumbs for error pages {% endcomment %}
+      {% unless page.ref == 'error-404' or page.title == 'Page Not Found' or page.url contains '404' %}
       
       {% comment %} Main section link {% endcomment %}
       {% assign url_parts = page.url | split: "/" %}
@@ -106,6 +110,7 @@ Custom items:
           </li>
         {% endif %}
       {% endif %}
+      {% endunless %}
     {% endif %}
   </ol>
 </nav>

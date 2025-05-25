@@ -12,15 +12,13 @@
     - site.data.translations for labels
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].brands %}
-
 <div class="panel panel--hero">
   <div class="panel__content">
     <h1 class="panel__heading-primary brands__title">
-      {{ include.title | default: t.hero_title | default: page.title }}
+      {{ include.title | default: page.title }}
     </h1>
     <p class="panel__subtitle">
-      {{ include.subtitle | default: t.hero_subtitle }}
+      {{ include.subtitle | default: "" }}{% unless include.subtitle %}{% include helpers/t.html key="brands.hero_subtitle" fallback="Discover founder-led brands with global potential" %}{% endunless %}
     </p>
   </div>
 </div>
