@@ -1,7 +1,7 @@
 ---
 layout: insights-type
 title: "Движение рынка"
-permalink: /ru/insights/types/market-momentum/
+permalink: /ru/insights/categories/market-momentum/
 lang: ru
 insight_type: "market-momentum"
 description: "Заметные достижения, вехи и моменты расширения появляющихся брендов БРИКС+."

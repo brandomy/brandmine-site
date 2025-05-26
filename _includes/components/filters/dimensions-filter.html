@@ -1,0 +1,27 @@
+{% comment %}
+  Component: components/filters/dimensions-filter.html
+  Purpose: Dimensions (sectors, markets, attributes) filter for insights sidebar
+  Parameters:
+    - insights: Array of insights to filter (required)
+    - dimension_type: Type of dimension (sectors, markets, attributes, signals)
+    - heading: Section heading (default from translations)
+  Dependencies:
+    - assets/css/components/filters/dimensions-filter.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign d = site.data.translations[page.lang].dimensions %}
+{% assign insights = include.insights %}
+{% assign dimension_type = include.dimension_type %}
+
+<div class="insights-all__sidebar-section">
+  <h3 class="insights-all__sidebar-heading">{{ include.heading | default: d[dimension_type] }}</h3>
+  <div class="insights-all__tags">
+    {% assign all_dimensions = insights | map: dimension_type | flatten | uniq %}
+    {% for dimension in all_dimensions %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ dimension_type }}/{{ dimension }}/" class="tag tag--{{ dimension_type }}">
+        {{ site.data.dimensions[page.lang][dimension_type][dimension] | default: dimension }}
+      </a>
+    {% endfor %}
+  </div>
+</div>

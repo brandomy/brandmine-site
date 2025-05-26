@@ -7,12 +7,12 @@ permalink: /en/insights/
 lang: en
 sections:
   - hero
-  - featured-insights
-  - insights-search
-  - category-highlights
+  # - featured-insights
+  # - insights-search
   - categories
+  - category-highlights
   - all-insights
-  - subscribe
+  # - subscribe
   - contact-cta
 ---
 

@@ -6,9 +6,13 @@
 
 .insights-category-highlights {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-8);
   margin: var(--space-6) 0;
+
+  @media (width >= 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   &__category {
     display: flex;
@@ -101,11 +105,7 @@
     }
   }
 
-  @media (width <= 991px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   @media (width <= 767px) {
-    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
 }

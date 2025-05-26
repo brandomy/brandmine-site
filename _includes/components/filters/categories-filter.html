@@ -1,0 +1,33 @@
+{% comment %}
+  Component: components/filters/categories-filter.html
+  Purpose: Categories filter for insights sidebar
+  Parameters:
+    - insights: Array of insights to filter (required)
+    - heading: Section heading (default from translations)
+  Dependencies:
+    - assets/css/components/filters/categories-filter.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign insights = include.insights %}
+
+<div class="insights-all__sidebar-section">
+  <h3 class="insights-all__sidebar-heading">{{ include.heading | default: t.categories }}</h3>
+  <ul class="insights-all__category-list">
+    {% assign categories = insights | map: "category" | uniq %}
+    {% assign ordered_categories = "brand-spotlight,founders-journey,location-intelligence,market-momentum" | split: "," %}
+    {% for category in ordered_categories %}
+      {% if categories contains category %}
+      <li class="insights-all__category-item">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category }}/" class="insights-all__category-link insights-all__category-link--{{ category }}">
+          {% assign normalized_category = category | replace: "-", "_" %}
+          {{ t[normalized_category] | default: category }}
+          <span class="insights-all__category-count">
+            ({{ insights | where: "category", category | size }})
+          </span>
+        </a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

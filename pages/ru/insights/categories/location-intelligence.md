@@ -1,7 +1,7 @@
 ---
 layout: insights-type
 title: "Географическая аналитика"
-permalink: /ru/insights/types/location-intelligence/
+permalink: /ru/insights/categories/location-intelligence/
 lang: ru
 insight_type: "location-intelligence"  
 description: "Географические данные и региональный контекст, влияющие на развитие брендов и возможности."

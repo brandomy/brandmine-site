@@ -1,7 +1,7 @@
 ---
 layout: insights-type
 title: "Market Momentum"
-permalink: /en/insights/types/market-momentum/
+permalink: /en/insights/categories/market-momentum/
 lang: en
 insight_type: "market-momentum"
 description: "Notable achievements, milestones, and expansion moments for emerging BRICS+ brands."

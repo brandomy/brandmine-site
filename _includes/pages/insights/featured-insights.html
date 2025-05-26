@@ -24,7 +24,7 @@
       {% assign featured_insights = site.insights | where: "lang", page.lang | where: "featured", true | sort: "date" | reverse | limit: limit %}
       {% if featured_insights.size > 0 %}
         {% for insight in featured_insights %}
-          {% include components/cards/insight-card.html insight=insight %}
+          {% include components/cards/simple-insight-card.html insight=insight %}
         {% endfor %}
       {% else %}
         <div class="insights-featured__empty">

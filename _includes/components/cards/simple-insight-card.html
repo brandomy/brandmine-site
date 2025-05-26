@@ -48,9 +48,6 @@
 
       <div class="insight-card__meta">
         <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
-        {% if include.insight.author %}
-          <span class="insight-card__author">{{ include.insight.author }}</span>
-        {% endif %}
       </div>
 
       <p class="insight-card__excerpt">{{ include.insight.excerpt | truncate: 150 }}</p>

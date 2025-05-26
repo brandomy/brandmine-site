@@ -1,7 +1,7 @@
 ---
 layout: insights-type
 title: "地理洞察"
-permalink: /zh/insights/types/location-intelligence/
+permalink: /zh/insights/categories/location-intelligence/
 lang: zh
 insight_type: "location-intelligence"  
 description: "对塑造品牌发展和商机的地理洞察和区域背景的分析。"

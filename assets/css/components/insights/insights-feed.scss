@@ -13,6 +13,7 @@
 .insight-card {
   background-color: #fff;
   border: 1px solid var(--neutral-200);
+  border-left: 4px solid var(--neutral-200);
   border-radius: var(--radius-md);
   overflow: hidden;
   transition: box-shadow 0.2s ease;
@@ -95,4 +96,21 @@
 .insight-card--highlighted {
   border-color: var(--primary-400);
   background-color: var(--primary-50);
+}
+
+/* Category-specific border colors */
+.insight-card--brand-spotlight {
+  border-left-color: var(--secondary-400);
+}
+
+.insight-card--founders-journey {
+  border-left-color: var(--accent-400);
+}
+
+.insight-card--location-intelligence {
+  border-left-color: var(--sky-400);
+}
+
+.insight-card--market-momentum {
+  border-left-color: var(--olive-400);
 }

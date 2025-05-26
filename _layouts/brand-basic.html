@@ -2,7 +2,7 @@
 layout: default
 ---
 <!-- Basic Brand Profile Layout for Level 0 Brands -->
-{% include components/ui/breadcrumbs.html %}
+<!-- {% include components/ui/breadcrumbs.html %} -->
 
 <div class="brand-basic-profile">
   <div class="container">
@@ -21,7 +21,7 @@ layout: default
               {% endif %}
             </p>
           {% endif %}
-          
+
           {% if page.founding_year %}
             <p class="brand-basic-founded">
               Founded {{ page.founding_year }}
@@ -32,7 +32,7 @@ layout: default
             </p>
           {% endif %}
         </div>
-        
+
         <div class="col-md-4 text-md-end">
           {% if page.website %}
             <a href="{{ page.website }}" class="btn btn--primary" target="_blank" rel="noopener">
@@ -99,7 +99,7 @@ layout: default
 
               {% if page.location.city %}
                 <div class="info-item">
-                  <strong>Location:</strong> 
+                  <strong>Location:</strong>
                   {{ page.location.city }}{% if page.location.region %}, {{ page.location.region }}{% endif %}
                 </div>
               {% endif %}
@@ -133,7 +133,7 @@ layout: default
                   <li><strong>Country:</strong> {{ country_name }}</li>
                 {% endif %}
                 {% if page.sectors and page.sectors.size > 0 %}
-                  <li><strong>Industry:</strong> 
+                  <li><strong>Industry:</strong>
                     {% for sector in page.sectors %}
                       {% assign sector_data = site.data.dimensions.sectors[sector] %}
                       {{ sector_data.translations[page.lang].name | default: sector }}{% unless forloop.last %}, {% endunless %}
@@ -175,7 +175,7 @@ layout: default
                     </a>
                   {% endfor %}
                 {% endif %}
-                
+
                 {% if page.markets and page.markets.size > 0 %}
                   {% for market in page.markets limit: 1 %}
                     <a href="/{{ page.lang }}/discover/markets/{{ market }}/" class="explore-link">
@@ -183,7 +183,7 @@ layout: default
                     </a>
                   {% endfor %}
                 {% endif %}
-                
+
                 <a href="/{{ page.lang }}/brands/" class="explore-link">
                   Browse All Brands
                 </a>

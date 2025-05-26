@@ -17,7 +17,7 @@
   <div class="panel__content">
     <div class="insights-all__container">
       <div class="insights-all__main">
-        <h2 class="insights-all__heading">{{ include.heading | default: t.all_insights }}</h2>
+        <h2 class="panel__heading-secondary">{{ include.heading | default: t.all_insights }}</h2>
 
         <div class="insights-all__grid">
           {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse %}
@@ -34,90 +34,12 @@
       </div>
 
       <div class="insights-all__sidebar">
-        <!-- Search -->
-        <div class="insights-all__search">
-          <input type="text" placeholder="{{ t.search_insights }}" class="insights-all__search-input">
-          <button class="insights-all__search-button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="M21 21l-4.35-4.35"></path>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Categories Filter -->
-        <div class="insights-all__sidebar-section">
-          <h3 class="insights-all__sidebar-heading">{{ t.categories }}</h3>
-          <ul class="insights-all__category-list">
-            {% assign categories = insights | map: "category" | uniq %}
-            {% for category in categories %}
-              <li class="insights-all__category-item">
-                <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/{{ category }}/" class="insights-all__category-link">
-                  {{ t[category] | default: category }}
-                  <span class="insights-all__category-count">
-                    ({{ insights | where: "category", category | size }})
-                  </span>
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <!-- Sectors Filter -->
-        <div class="insights-all__sidebar-section">
-          <h3 class="insights-all__sidebar-heading">{{ d.sectors }}</h3>
-          <div class="insights-all__tags">
-            {% assign all_sectors = insights | map: "sectors" | flatten | uniq %}
-            {% for sector in all_sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="tag tag--sector">
-                {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
-              </a>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- Markets Filter -->
-        <div class="insights-all__sidebar-section">
-          <h3 class="insights-all__sidebar-heading">{{ d.markets }}</h3>
-          <div class="insights-all__tags">
-            {% assign all_markets = insights | map: "markets" | flatten | uniq %}
-            {% for market in all_markets %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="tag tag--market">
-                {{ site.data.dimensions[page.lang].markets[market] | default: market }}
-              </a>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- Featured Brands -->
-        <div class="insights-all__sidebar-section">
-          <h3 class="insights-all__sidebar-heading">{{ t.featured_brands }}</h3>
-          <div class="insights-all__featured-brands">
-            {% assign featured_brands = insights | map: "brands" | flatten | compact | uniq %}
-            {% if featured_brands.size > 0 %}
-              {% for brand_slug in featured_brands limit:5 %}
-                {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
-                {% if brand %}
-                  <a href="{{ site.baseurl }}/{{ page.lang }}/insights/brands/{{ brand_slug }}/" class="insights-all__brand-link">
-                    {{ brand.title }}
-                    <span class="insights-all__brand-count">
-                      ({{ insights | where_exp: "item", "item.brands contains brand_slug" | size }})
-                    </span>
-                  </a>
-                {% endif %}
-              {% endfor %}
-              {% if featured_brands.size > 5 %}
-                <a href="{{ site.baseurl }}/{{ page.lang }}/insights/brands/" class="insights-all__view-all-link">
-                  {{ t.view_all_featured_brands }}
-                </a>
-              {% endif %}
-            {% else %}
-              <p class="insights-all__no-brands">
-                {{ t.no_featured_brands }}
-              </p>
-            {% endif %}
-          </div>
-        </div>
+        {% include components/search/insights-search.html %}
+        {% include components/filters/categories-filter.html insights=insights %}
+        {% include components/filters/dimensions-filter.html insights=insights dimension_type="markets" %}
+        {% include components/filters/dimensions-filter.html insights=insights dimension_type="sectors" %}
+        {% include components/filters/dimensions-filter.html insights=insights dimension_type="attributes" %}
+        {% include components/filters/featured-brands-filter.html insights=insights %}
       </div>
     </div>
   </div>

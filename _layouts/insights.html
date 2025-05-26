@@ -23,7 +23,7 @@ layout: default
   - assets/css/pages/insights/_index.scss
 ---------------------------------------------------------------------------- -->
 
-{% include components/ui/breadcrumbs.html %}
+<!-- {% include components/ui/breadcrumbs.html %} -->
 
 {{ content }}
 
@@ -31,3 +31,6 @@ layout: default
   {% assign section_path = "pages/insights/" | append: section | append: ".html" %}
   {% include {{ section_path }} %}
 {% endfor %}
+
+<!-- Insights search functionality -->
+<script src="{{ '/assets/js/simple-insights-search.js' | relative_url }}"></script>

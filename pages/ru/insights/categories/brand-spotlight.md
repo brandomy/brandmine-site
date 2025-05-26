@@ -1,7 +1,7 @@
 ---
 layout: insights-type
 title: "В центре внимания: бренды"
-permalink: /ru/insights/types/brand-spotlight/
+permalink: /ru/insights/categories/brand-spotlight/
 lang: ru
 insight_type: "brand-spotlight"
 description: "Подробные профили заметных брендов БРИКС+, набирающих международную популярность."

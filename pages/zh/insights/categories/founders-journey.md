@@ -1,7 +1,7 @@
 ---
 layout: insights-type  
 title: "创始人之路"
-permalink: /zh/insights/types/founders-journey/
+permalink: /zh/insights/categories/founders-journey/
 lang: zh
 insight_type: "founders-journey"
 description: "品牌背后人物及其创业历程的故事。"

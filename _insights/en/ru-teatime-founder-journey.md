@@ -28,7 +28,7 @@ attributes: [founder-led, artisanal-excellence]  # Optional: Use exact slugs fro
 signals: [rapid-growth, export-ready]  # Optional: Use exact slugs from dimensions file
 
 # Display Settings
-featured: false
+featured: true
 premium: false
 
 # Location (flat structure for easier data handling)

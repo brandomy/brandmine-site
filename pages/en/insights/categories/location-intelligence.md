@@ -1,7 +1,7 @@
 ---
 layout: insights-type
 title: "Location Intelligence"
-permalink: /en/insights/types/location-intelligence/
+permalink: /en/insights/categories/location-intelligence/
 lang: en
 insight_type: "location-intelligence"
 description: "Geographical insights and regional context that shape brand development and opportunities."

@@ -1,7 +1,7 @@
 ---
 layout: insights-type  
 title: "Путь основателей"
-permalink: /ru/insights/types/founders-journey/
+permalink: /ru/insights/categories/founders-journey/
 lang: ru
 insight_type: "founders-journey"
 description: "Истории стоящих за брендами людей и созданных ими компаний."

@@ -1,15 +1,15 @@
 ---
 layout: insights-type
-title: "品牌聚焦"
-permalink: /zh/insights/types/brand-spotlight/
+title: "市场动向"
+permalink: /zh/insights/categories/market-momentum/
 lang: zh
-insight_type: "brand-spotlight"
-description: "深入介绍具有国际影响力的金砖+国家值得关注的品牌。"
+insight_type: "market-momentum"
+description: "金砖+新兴品牌的重要成就、里程碑和扩张时机。"
 ---
 
-## 品牌聚焦
+## 市场动向
 
-探索金砖+地区正在崛起的品牌。这些分析深入剖析品牌故事、市场定位和国际增长战略。
+追踪金砖+品牌的市场演变和增长轨迹。这些洞察突出行业趋势、扩张策略和市场转型。
 
 {% assign empty_array = "" | split: "" %}
 {% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
@@ -21,5 +21,5 @@ description: "深入介绍具有国际影响力的金砖+国家值得关注的�
 </div>
 
 {% if type_insights.size == 0 %}
-  <p class="no-insights">品牌聚焦洞察暂时无法提供。请稍后查看！</p>
+  <p class="no-insights">市场动向洞察暂时无法提供。请稍后查看！</p>
 {% endif %}
