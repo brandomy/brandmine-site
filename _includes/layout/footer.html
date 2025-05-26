@@ -34,22 +34,24 @@
   - Three-column grid layout on desktop, stacks on mobile
 {% endcomment %}
 
+{% assign t = site.data.translations[page.lang] %}
+
 <footer class="footer">
   <div class="footer__grid">
     <div class="footer__section footer__section--left">
-      <p class="footer__text">{{ site.data.translations[page.lang].footer.company_name }}</p>
-      <p class="footer__text">{{ site.data.translations[page.lang].footer.company_number }}</p>
+      <p class="footer__text">{{ t.footer.company_name }}</p>
+      <p class="footer__text">{{ t.footer.company_number }}</p>
       <div class="language-selector footer__lang">
         {% include components/navigation/language-selector.html %}
       </div>
     </div>
 
     <div class="footer__section footer__section--center">
-      <p class="footer__tagline"><em>{{ site.data.translations[page.lang].footer.tagline }}</em></p>
+      <p class="footer__tagline"><em>{{ t.footer.tagline }}</em></p>
       <div class="footer__social">
         {% for item in site.data.social[page.lang] %}
           {% assign key = item.name | remove: 'social.' %}
-          <a href="{{ item.link }}" target="_blank" class="footer__social-icon" title="{{ site.data.translations[page.lang].social[key] }}">
+          <a href="{{ item.link }}" target="_blank" class="footer__social-icon" title="{{ t.social[key] }}">
             {% case key %}
               {% when 'twitter' %}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -103,13 +105,13 @@
 
   <div class="footer__copyright">
     <p class="footer__text">
-      © {{ site.time | date: '%Y' }} {{ site.data.translations[page.lang].footer.company_name }}.
-      {{ site.data.translations[page.lang].footer.copyright }}
+      © {{ site.time | date: '%Y' }} {{ t.footer.company_name }}.
+      {{ t.footer.copyright }}
       |
       {% for item in site.data.footer[page.lang] %}
         {% assign key = item.name | remove: 'footer.' %}
         <a href="{{ item.link | relative_url }}">
-          {{ site.data.translations[page.lang].footer[key] }}
+          {{ t.footer[key] }}
         </a>
         {% unless forloop.last %} | {% endunless %}
       {% endfor %}

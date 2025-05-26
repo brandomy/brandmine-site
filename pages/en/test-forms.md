@@ -4,6 +4,7 @@ title: "Form Testing & Airtable Integration"
 description: "Test page for all form components and Airtable integration setup"
 permalink: /en/test-forms/
 lang: en
+ref: test-forms
 ---
 
 # Form Testing & Integration Page
@@ -14,27 +15,27 @@ This page contains all the forms we plan to implement, ready for Airtable integr
 
 ## 1. Contact Form (General)
 
-{% include components/forms/contact-form.html 
-   variant="general" 
-   title="General Contact" 
+{% include components/forms/contact-form.html
+   variant="general"
+   title="General Contact"
    description="Get in touch with our team" %}
 
 ---
 
 ## 2. Brand Submission Form
 
-{% include components/forms/contact-form.html 
-   variant="brand-submission" 
-   title="Submit Your Brand" 
+{% include components/forms/contact-form.html
+   variant="brand-submission"
+   title="Submit Your Brand"
    description="Tell us about your brand for potential inclusion" %}
 
 ---
 
 ## 3. Partnership Inquiry Form
 
-{% include components/forms/contact-form.html 
-   variant="partnership" 
-   title="Partnership Inquiry" 
+{% include components/forms/contact-form.html
+   variant="partnership"
+   title="Partnership Inquiry"
    description="Interested in partnering with Brandmine?" %}
 
 ---
@@ -47,8 +48,8 @@ This page contains all the forms we plan to implement, ready for Airtable integr
 
 ## 5. Search Feedback Form
 
-{% include components/forms/feedback-form.html 
-   type="search" 
+{% include components/forms/feedback-form.html
+   type="search"
    title="Search Experience Feedback" %}
 
 ---

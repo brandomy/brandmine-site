@@ -4,6 +4,7 @@ title: "Signals Test Page"
 ref: test-signals
 permalink: /en/test-signals/
 lang: en
+ref: test-signals
 ---
 
 # Signals Test Page
