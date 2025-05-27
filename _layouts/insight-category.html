@@ -53,6 +53,13 @@ layout: default
                    data-insight-type="{{ page.insight_type }}">
             {% include pages/insights-category/{{ section }}.html %}
           </section>
+          
+          {% comment %} Add category navigation after hero section {% endcomment %}
+          {% if section == "hero" %}
+            {% include components/insights/insights-category-navigation.html 
+               style_option='b' 
+               active_category=page.insight_type %}
+          {% endif %}
         {% endunless %}
       {% endfor %}
     </div>

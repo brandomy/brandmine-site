@@ -8,6 +8,7 @@ lang: ru
 sections:
   - breadcrumbs
   - hero
+  - category-navigation
   - featured-insights
   - insights-search
   - category-highlights

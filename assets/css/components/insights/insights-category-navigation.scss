@@ -1,0 +1,336 @@
+/* ==========================================================================
+   Insights Category Navigation Component
+   ==========================================================================
+   Styling for the unified insights category navigation bar across all 
+   insights-related pages.
+*/
+
+/* --------------------------------------------------------------------------
+   Container and Background
+   -------------------------------------------------------------------------- */
+.insights-category-navigation {
+  width: 100%;
+  margin: 0;
+}
+
+.insights-category-navigation__container {
+  background-color: var(--primary-50);
+  width: 100vw;
+  margin: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 8px 0; /* Match breadcrumbs height */
+}
+
+/* Keep teal background consistent across all pages - remove category-specific backgrounds */
+/* .insights-category-navigation__container--brand-spotlight {
+  background-color: var(--amber-50);
+}
+
+.insights-category-navigation__container--founders-journey {
+  background-color: var(--secondary-50);
+}
+
+.insights-category-navigation__container--market-momentum {
+  background-color: var(--primary-50);
+}
+
+.insights-category-navigation__container--location-intelligence {
+  background-color: var(--sky-50);
+} */
+
+/* --------------------------------------------------------------------------
+   SHARED NAVIGATION STRUCTURE
+   -------------------------------------------------------------------------- */
+.insights-category-navigation__tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.insights-category-navigation__tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   OPTION A: Tooltip-style navigation (icons with labels and hover tooltips)
+   -------------------------------------------------------------------------- */
+.insights-category-navigation--option-a .insights-category-navigation__tab {
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2); /* Match breadcrumbs padding */
+  background-color: white;
+  color: var(--neutral-700);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full); /* Make it pill-shaped */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--neutral-200);
+  font-size: var(--text-sm); /* Match breadcrumbs font size */
+}
+
+/* Hover state - category-specific colors */
+.insights-category-navigation--option-a .insights-category-navigation__tab:hover {
+  transform: translateY(-1px);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="brand-spotlight"]:hover {
+  background-color: var(--secondary-100);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="founders-journey"]:hover {
+  background-color: var(--accent-100);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="market-momentum"]:hover {
+  background-color: var(--olive-100);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="location-intelligence"]:hover {
+  background-color: var(--sky-100);
+}
+
+/* Active state */
+.insights-category-navigation--option-a .insights-category-navigation__tab.active {
+  font-weight: var(--font-semibold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-width: 2px;
+}
+
+/* Category-specific active tab colors */
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="brand-spotlight"].active {
+  color: var(--amber-700);
+  background-color: var(--amber-50);
+  border-color: var(--amber-500);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="founders-journey"].active {
+  color: var(--secondary-700);
+  background-color: var(--secondary-50);
+  border-color: var(--secondary-500);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="market-momentum"].active {
+  color: var(--primary-700);
+  background-color: var(--primary-50);
+  border-color: var(--primary-500);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__tab[data-category="location-intelligence"].active {
+  color: var(--sky-700);
+  background-color: var(--sky-50);
+  border-color: var(--sky-500);
+}
+
+/* Icons and Labels */
+.insights-category-navigation--option-a .insights-category-navigation__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--neutral-700);
+}
+
+.insights-category-navigation--option-a .insights-category-navigation__label {
+  display: inline-block; /* Show text even in option A on mobile */
+}
+
+/* Tooltips */
+.insights-category-navigation--option-a .insights-category-navigation__tooltip {
+  display: none; /* Hide tooltips on mobile */
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--neutral-900);
+  color: white;
+  font-size: var(--text-xs);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+  max-width: 300px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Arrow for tooltip */
+.insights-category-navigation--option-a .insights-category-navigation__tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--neutral-900) transparent;
+}
+
+/* Show tooltip on hover */
+.insights-category-navigation--option-a .insights-category-navigation__tab:hover .insights-category-navigation__tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --------------------------------------------------------------------------
+   OPTION B: Inline labels with category-specific active backgrounds
+   -------------------------------------------------------------------------- */
+.insights-category-navigation--option-b .insights-category-navigation__tab {
+  padding: var(--space-1) var(--space-2); /* Match breadcrumbs padding */
+  margin: 0 var(--space-1);
+  color: var(--neutral-800);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full); /* Make it pill-shaped */
+  gap: var(--space-1);
+  line-height: 1.3;
+  background-color: white;
+  border: 1px solid var(--neutral-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  font-size: var(--text-sm); /* Match breadcrumbs font size */
+}
+
+/* Hover state - category-specific colors for option B */
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="brand-spotlight"]:hover {
+  background-color: var(--secondary-100);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="founders-journey"]:hover {
+  background-color: var(--accent-100);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="market-momentum"]:hover {
+  background-color: var(--olive-100);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="location-intelligence"]:hover {
+  background-color: var(--sky-100);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab.active {
+  font-weight: var(--font-semibold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-width: 2px;
+}
+
+/* Active tab text + border by category */
+.insights-category-navigation--option-b .insights-category-navigation__tab.active[data-category="brand-spotlight"] {
+  color: var(--amber-700);
+  background-color: var(--amber-50);
+  border-color: var(--amber-500);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab.active[data-category="founders-journey"] {
+  color: var(--secondary-700);
+  background-color: var(--secondary-50);
+  border-color: var(--secondary-500);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab.active[data-category="market-momentum"] {
+  color: var(--primary-700);
+  background-color: var(--primary-50);
+  border-color: var(--primary-500);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab.active[data-category="location-intelligence"] {
+  color: var(--sky-700);
+  background-color: var(--sky-50);
+  border-color: var(--sky-500);
+}
+
+/* Icon color matches category, even when inactive */
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="brand-spotlight"] .insights-category-navigation__icon {
+  color: var(--amber-700);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="founders-journey"] .insights-category-navigation__icon {
+  color: var(--secondary-700);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="market-momentum"] .insights-category-navigation__icon {
+  color: var(--primary-700);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tab[data-category="location-intelligence"] .insights-category-navigation__icon {
+  color: var(--sky-700);
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__label {
+  display: inline-block;
+}
+
+.insights-category-navigation--option-b .insights-category-navigation__tooltip {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adjustments (shared between options)
+   -------------------------------------------------------------------------- */
+
+@media (width >= 768px) {
+  .insights-category-navigation__tab {
+    padding: var(--space-1) var(--space-3); /* Slightly more padding on desktop but still compact */
+    font-size: var(--text-sm); /* Keep compact font size */
+  }
+
+  /* Hide labels again for option A on larger screens */
+  .insights-category-navigation--option-a .insights-category-navigation__label {
+    display: none;
+  }
+
+  /* Show tooltips for option A on larger screens */
+  .insights-category-navigation--option-a .insights-category-navigation__tooltip {
+    display: block;
+  }
+}
+
+@media (width <= 479px) {
+  .insights-category-navigation__container {
+    padding: 6px 0; /* Even more compact on mobile */
+  }
+  
+  .insights-category-navigation__tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 var(--space-4);
+    flex-wrap: nowrap;
+    gap: var(--space-1);
+  }
+  
+  .insights-category-navigation__tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs); /* Smaller on mobile */
+  }
+}

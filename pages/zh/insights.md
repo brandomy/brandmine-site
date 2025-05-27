@@ -8,6 +8,7 @@ lang: zh
 sections:
   - breadcrumbs
   - hero
+  - category-navigation
   - featured-insights
   - insights-search
   - category-highlights

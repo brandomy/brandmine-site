@@ -5,13 +5,13 @@ layout: default
 {% comment %}
   Layout: insight-article.html
 
-  Purpose: Renders individual insight articles with a logic-light approach
-           using section arrays from front matter.
+  Purpose: Renders individual insight articles with semantic sectioning and "logic-light" approach
 
   Structure:
-  - Uses page.sections array to include main content sections
-  - Uses page.sidebar_sections array to include sidebar components
-  - Maintains a consistent two-column layout for insight content
+  - Uses semantic <section> tags with proper ID and ARIA attributes
+  - Uses page.sections array to dynamically load main content sections
+  - Uses page.sidebar_sections array to load sidebar components
+  - Follows the established sectioning architecture
 
   Dependencies:
   - _includes/pages/insight/[section-name].html files for main content
@@ -19,45 +19,44 @@ layout: default
   - CSS: pages/insight/_index.scss and related component files
   - Page must have 'sections' and 'sidebar_sections' arrays in front matter
 
-  Example Usage:
-  In front matter:
-  layout: insight-article
-  sections:
-    - header
-    - featured-image
-    - taxonomy
-  sidebar_sections:
-    - brand-info
-    - related-brands
-    - related-insights
-    - taxonomy-cloud
+  Default sections if not specified:
+  - breadcrumbs, header, featured-image, content, taxonomy
+  
+  Default sidebar sections if not specified:
+  - brand-info, taxonomy-cloud, related-brands, related-insights
 {% endcomment %}
 
-<!-- {% include components/ui/breadcrumbs.html %} -->
+{% assign default_sections = "breadcrumbs,header,featured-image,content,taxonomy" | split: "," %}
+{% assign default_sidebar_sections = "brand-info,taxonomy-cloud,related-brands,related-insights" | split: "," %}
+{% assign current_sections = page.sections | default: default_sections %}
+{% assign current_sidebar_sections = page.sidebar_sections | default: default_sidebar_sections %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    <div class="insight-detail-container">
-      <div class="insight-detail-main {% if page.premium %}premium-content{% endif %}">
-        {% for section in page.sections %}
-          {% if section != 'content' %}
-            {% include pages/insight/{{ section }}.html insight=page %}
-          {% endif %}
-        {% endfor %}
-
-        <!-- Render content directly -->
+<div class="insight-article-page">
+  {% for section in current_sections %}
+    <section class="insight-article-section insight-article-section--{{ section }}"
+             id="insight-article-section-{{ section }}"
+             aria-labelledby="heading-{{ section }}">
+      {% if section == "content" %}
         {% if content and content != "" %}
-          <div class="insight-content">
+          <div class="insight-content {% if page.premium %}premium-content{% endif %}">
             {{ content }}
           </div>
         {% endif %}
-      </div>
+      {% else %}
+        {% include pages/insight/{{ section }}.html insight=page %}
+      {% endif %}
+    </section>
+  {% endfor %}
 
-      <div class="insight-detail-sidebar">
-        {% for section in page.sidebar_sections %}
+  {% if current_sidebar_sections.size > 0 %}
+    <aside class="insight-article-sidebar" role="complementary" aria-label="Related content">
+      {% for section in current_sidebar_sections %}
+        <section class="insight-sidebar-section insight-sidebar-section--{{ section }}"
+                 id="insight-sidebar-section-{{ section }}"
+                 aria-labelledby="sidebar-heading-{{ section }}">
           {% include pages/insight/sidebar/{{ section }}.html insight=page %}
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+        </section>
+      {% endfor %}
+    </aside>
+  {% endif %}
 </div>

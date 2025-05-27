@@ -8,6 +8,7 @@ permalink: /en/insights/xx-insight-slug/
 
 # Section Configuration - determines which sections appear in the article
 sections:
+  - breadcrumbs
   - header
   - featured-image
   - content

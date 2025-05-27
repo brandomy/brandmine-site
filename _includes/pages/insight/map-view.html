@@ -30,10 +30,9 @@
     {% endif %}
 
     <div class="insight-map-container">
-      {% include components/maps/map.html
-        center=insight.location_lat | append: "," | append: insight.location_lng
-        zoom=12
-        markers=insight.location_lat | append: "," | append: insight.location_lng | append: "," | append: insight.location_city %}
+      {% assign map_center = insight.location_lat | append: "," | append: insight.location_lng %}
+      {% assign map_markers = insight.location_lat | append: "," | append: insight.location_lng | append: "," | append: insight.location_city %}
+      {% include components/maps/map.html center=map_center zoom=12 markers=map_markers %}
     </div>
   </div>
 {% endif %}

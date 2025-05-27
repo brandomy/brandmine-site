@@ -31,6 +31,21 @@ signals: [export-ready, investment-ready]  # Optional: Use exact slugs from dime
 featured: true
 premium: false
 
+# Section Configuration - determines which sections appear in the article
+sections:
+  - breadcrumbs
+  - header
+  - featured-image
+  - content
+  - taxonomy
+
+# Sidebar Configuration - determines which sections appear in the sidebar
+sidebar_sections:
+  - brand-info
+  - taxonomy-cloud
+  - related-brands
+  - related-insights
+
 # Location (flat structure for easier data handling)
 location_lng: 49.1221  # Longitude coordinate (Kazan)
 location_lat: 55.7887  # Latitude coordinate (Kazan)

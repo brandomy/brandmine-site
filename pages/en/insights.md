@@ -8,6 +8,7 @@ lang: en
 sections:
   - breadcrumbs
   - hero
+  - category-navigation
   # - featured-insights
   # - insights-search
   - categories

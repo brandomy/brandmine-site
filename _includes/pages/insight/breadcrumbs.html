@@ -1,0 +1,27 @@
+{% comment %}
+  Section: insight/breadcrumbs.html
+  
+  Displays breadcrumb navigation for individual insight articles
+  Note: This section intentionally breaks out of the panel system for seamless header integration
+  
+  Dependencies:
+  - site.data.translations for insights navigation labels
+  - insight.category for category-specific breadcrumbs
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang] %}
+
+<div class="insight-breadcrumbs-wrapper">
+  <nav class="insight-breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="back-link">
+      ← {{ t.navigation.insights | default: "Insights" }}
+    </a>
+    {% if insight.category %}
+      <span class="breadcrumb-separator">·</span>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/{{ insight.category }}/" class="category-link">
+        {% assign normalized_category = insight.category | replace: "-", "_" %}
+        {{ t.insights[normalized_category] | default: insight.category }}
+      </a>
+    {% endif %}
+  </nav>
+</div>
