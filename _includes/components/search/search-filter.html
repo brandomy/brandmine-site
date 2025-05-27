@@ -9,7 +9,7 @@ Parameters:
 - class_name (optional): Additional CSS classes
 
 Dependencies:
-- assets/js/components/search-filter.js
+- assets/js/components/search/search-filter.js
 - assets/css/components/search/search-filter.scss
 {% endcomment %}
 
@@ -19,14 +19,14 @@ Dependencies:
 {% assign current_lang = page.lang | default: 'en' %}
 
 <div class="search-filter {{ include.class_name }}" data-content-type="{{ content_type }}">
-  
+
   <!-- Search Input -->
   <div class="search-filter__input-section">
     <div class="search-input-wrapper">
-      <input type="text" 
-             id="search-input-{{ content_type }}" 
-             class="search-input" 
-             placeholder="Search {{ content_type }}..." 
+      <input type="text"
+             id="search-input-{{ content_type }}"
+             class="search-input"
+             placeholder="Search {{ content_type }}..."
              aria-label="Search {{ content_type }}">
       <button type="button" id="search-button-{{ content_type }}" class="search-btn">
         <span class="sr-only">Search</span>
@@ -65,7 +65,7 @@ Dependencies:
     <button type="button" id="toggle-filters-{{ content_type }}" class="filter-toggle-btn">
       Filters <span class="filter-count" id="filter-count-{{ content_type }}">0</span>
     </button>
-    
+
     {% if show_sort %}
     <select id="sort-select-{{ content_type }}" class="sort-select">
       <option value="relevance">Most Relevant</option>
@@ -79,7 +79,7 @@ Dependencies:
 
   <!-- Advanced Filters (Collapsible) -->
   <div class="search-filter__advanced" id="advanced-filters-{{ content_type }}" style="display: none;">
-    
+
     <!-- Dimension Filters -->
     <div class="filter-groups">
       <!-- Sectors -->
@@ -174,7 +174,7 @@ Dependencies:
             <span>Featured brands only</span>
           </label>
         </div>
-      
+
       {% when 'founders' %}
         <div class="filter-group">
           <h4 class="filter-group__title">Generation</h4>
