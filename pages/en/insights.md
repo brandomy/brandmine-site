@@ -11,7 +11,6 @@ sections:
   - category-navigation
   - categories
   - category-highlights
-  # - featured-insights
   # - insights-search
   - all-insights
   # - subscribe

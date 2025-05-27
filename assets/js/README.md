@@ -6,10 +6,44 @@ This directory contains all JavaScript files for the Brandmine website. The Java
 
 ```
 js/
-├── brand-filtering.js     # Brand search, filter, and sort functionality
-├── header.js              # Header behavior, mobile menu, language switching
-├── premium-content.js     # Premium content handling and access
-└── styleguide.js          # Style guide interactive functionality
+├── components/           # Reusable UI component scripts
+│   ├── custom-forms.js   # Custom contact and newsletter forms
+│   ├── founder-carousel.js # Founder carousel navigation
+│   ├── header.js         # Header behavior, mobile menu, language switching
+│   ├── premium-content.js # Premium content handling and access
+│   └── search-filter.js  # Reusable search and filter functionality
+├── data/                 # Data processing and generation scripts
+│   └── generate-map-data.js # Map data generation utilities
+└── pages/                # Page-specific functionality
+    ├── about/            # About page scripts (currently empty)
+    ├── brand/            # Brand page scripts
+    │   ├── brand-filtering.js # Brand search and filtering
+    │   ├── brand-map-script.js # Brand location maps
+    │   └── gallery.js    # Brand image galleries
+    ├── brands/           # Brands listing page scripts
+    │   └── brands-filtering.js # Multi-brand search and filtering
+    ├── dimension/        # Dimension page scripts
+    │   └── dimension-filtering.js # Dimension-specific filtering
+    ├── discover/         # Discover page scripts
+    │   └── market-map.js # Interactive market maps
+    ├── discovery/        # Discovery page scripts
+    │   ├── discovery-search.js # Universal search functionality
+    │   └── discovery.js  # Discovery page interactions
+    ├── founders/         # Founders page scripts
+    │   ├── founders-search.js # Founder search and filtering
+    │   └── founders.js   # Founders page interactions
+    ├── home/             # Homepage scripts
+    │   ├── carousels.js  # Homepage carousels
+    │   ├── smooth-scroll.js # Smooth scrolling behavior
+    │   └── tracking.js   # Analytics and tracking
+    ├── insights/         # Insights page scripts
+    │   ├── insights-search.js # Advanced insights search
+    │   └── simple-insights-search.js # Simple insights search
+    ├── search/           # Search page scripts
+    │   ├── advanced-search.js # Advanced multi-dimensional search
+    │   └── search-results.js # Search results handling
+    └── styleguide/       # Style guide scripts
+        └── styleguide.js # Style guide interactive functionality
 ```
 
 ## JavaScript Philosophy
@@ -23,35 +57,34 @@ The Brandmine JavaScript follows these core principles:
 5. **Accessibility**: All interactive elements are fully accessible via keyboard and screen readers
 6. **Performance**: Scripts are optimized for fast loading and execution
 
-## File Purposes
+## Component Scripts
 
-### brand-filtering.js
+### custom-forms.js
 
-Handles the dynamic filtering, sorting, and searching of brand listings:
+Handles custom-built contact and newsletter forms as alternatives to external services:
 
 **Key Features:**
-- Text search with real-time filtering
-- Multi-dimension filtering (sectors, markets, attributes, signals)
-- Sorting functionality (name, sector, country, date)
-- Pagination and "load more" functionality
-- URL parameter handling for shareable filtered views
-- Mobile-friendly filter interface
+- Real-time validation with visual feedback
+- Loading states and success/error handling
+- Accessibility features (ARIA labels, screen reader support)
+- Multilingual support using translation files
+- Multiple form variants (default, inline, minimal, compact)
 
 **Usage:**
 ```html
-<!-- Filter Controls -->
-<div class="search-filter" data-filter-target="brands-container">
-  <!-- Filter controls here -->
-</div>
-
-<!-- Brand Container (filtered results appear here) -->
-<div id="brands-container" class="brands__grid">
-  <!-- Brand cards here -->
-</div>
-
-<!-- Include the script -->
-<script src="{{ '/assets/js/brand-filtering.js' | relative_url }}"></script>
+{% include components/forms/custom-contact-form.html %}
+<script src="{{ '/assets/js/components/custom-forms.js' | relative_url }}"></script>
 ```
+
+### founder-carousel.js
+
+Powers founder carousel navigation and interactions:
+
+**Key Features:**
+- Touch-friendly carousel navigation
+- Dot navigation for position tracking
+- Responsive behavior for different screen sizes
+- Smooth scrolling transitions
 
 ### header.js
 
@@ -64,133 +97,49 @@ Manages the site header behavior, especially on mobile devices:
 - Language switcher interaction
 - Header search box functionality
 
-**Usage:**
-```html
-<!-- Header element with necessary data attributes -->
-<header class="header" data-sticky="true">
-  <!-- Header content here -->
-  
-  <!-- Mobile menu toggle button -->
-  <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation">
-    <span class="sr-only">Toggle menu</span>
-    <span class="mobile-menu-toggle__icon"></span>
-  </button>
-  
-  <!-- Navigation menu -->
-  <nav id="main-navigation" class="main-navigation">
-    <!-- Navigation items -->
-  </nav>
-</header>
+### search-filter.js
 
-<!-- Include the script at the end of the body -->
-<script src="{{ '/assets/js/header.js' | relative_url }}"></script>
-```
-
-### premium-content.js
-
-Handles premium content access and functionality:
+Reusable search and filter component for different content types:
 
 **Key Features:**
-- Premium content visibility toggling
-- Premium feature access control
-- Premium indicator display
-- Premium registration/login prompts
-- Integration with user authentication
+- Multi-dimensional filtering (sectors, markets, attributes, signals)
+- Content type switching (brands, founders, insights, dimensions)
+- Filter presets and quick searches
+- Sort functionality and view toggles
+- Active filter display and management
 
-**Usage:**
-```html
-<!-- Premium content section -->
-<div class="premium-content" data-premium-id="brand-signals-section">
-  <!-- Premium content here -->
-</div>
+## Page-Specific Scripts
 
-<!-- Premium indicator -->
-<span class="premium-indicator">Premium</span>
+### Brand Pages
 
-<!-- Include the script -->
-<script src="{{ '/assets/js/premium-content.js' | relative_url }}"></script>
-```
+- **brand-filtering.js**: Search and filter functionality for individual brand pages
+- **brand-map-script.js**: Interactive maps showing brand locations
+- **gallery.js**: Image gallery functionality for brand photos
 
-### styleguide.js
+### Search & Discovery
 
-Powers the interactive elements in the style guide documentation:
+- **advanced-search.js**: Multi-dimensional search across all content types
+- **discovery-search.js**: Universal search for the discovery page
+- **insights-search.js**: Advanced search specifically for insights content
 
-**Key Features:**
-- Code example display with syntax highlighting
-- Interactive component demonstrations
-- Color palette and token visualization
-- Responsive breakpoint indicators
-- Dark/light mode toggle for style guide
+### Interactive Elements
 
-**Usage:**
-```html
-<!-- Only include on style guide pages -->
-{% if page.layout == 'styleguide' %}
-<script src="{{ '/assets/js/styleguide.js' | relative_url }}"></script>
-{% endif %}
-```
+- **carousels.js**: Homepage carousel functionality
+- **smooth-scroll.js**: Smooth scrolling behavior for navigation
+- **tracking.js**: Analytics and user interaction tracking
 
 ## Implementation Patterns
-
-### Event Delegation
-
-The JavaScript uses event delegation for optimal performance, especially with dynamic content:
-
-```javascript
-// Event delegation example
-document.addEventListener('DOMContentLoaded', function() {
-  // Instead of attaching to each button
-  document.body.addEventListener('click', function(event) {
-    // Find closest matching element
-    const filterButton = event.target.closest('.filter-button');
-    
-    if (filterButton) {
-      // Handle filter button click
-      const filterType = filterButton.dataset.filterType;
-      const filterValue = filterButton.dataset.filterValue;
-      
-      // Apply the filter
-      applyFilter(filterType, filterValue);
-      
-      // Update UI state
-      updateActiveFilters();
-    }
-  });
-});
-```
-
-### Data Attributes
-
-Data attributes are used for configuration and state management:
-
-```javascript
-// Reading data attributes
-function initializeFilter() {
-  const filterContainer = document.querySelector('.search-filter');
-  
-  if (filterContainer) {
-    // Get configuration from data attributes
-    const targetId = filterContainer.dataset.filterTarget;
-    const defaultSort = filterContainer.dataset.defaultSort || 'name';
-    const itemsPerPage = parseInt(filterContainer.dataset.itemsPerPage || '20', 10);
-    
-    // Initialize with configuration
-    // ...
-  }
-}
-```
 
 ### Module Pattern
 
 JavaScript is organized using the module pattern for encapsulation:
 
 ```javascript
-// Module pattern example
-const BrandFilter = (function() {
+const SearchFilter = (function() {
   // Private variables
   let activeFilters = {};
-  let currentSort = 'name';
-  let currentPage = 1;
+  let currentSort = 'relevance';
+  let contentType = 'brands';
   
   // Private methods
   function applyFilters() {
@@ -199,145 +148,54 @@ const BrandFilter = (function() {
   
   // Public API
   return {
-    initialize: function() {
+    initialize: function(options) {
       // Setup code...
     },
     addFilter: function(type, value) {
       // Add filter and apply...
     },
-    removeFilter: function(type, value) {
-      // Remove filter and apply...
-    },
-    setSort: function(sortType) {
-      // Set sort type and apply...
+    clearFilters: function() {
+      // Clear all filters...
     }
   };
 })();
+```
 
-// Usage
+### Event Delegation
+
+The JavaScript uses event delegation for optimal performance:
+
+```javascript
 document.addEventListener('DOMContentLoaded', function() {
-  BrandFilter.initialize();
+  document.body.addEventListener('click', function(event) {
+    const filterButton = event.target.closest('.filter-button');
+    
+    if (filterButton) {
+      const filterType = filterButton.dataset.filterType;
+      const filterValue = filterButton.dataset.filterValue;
+      
+      SearchFilter.addFilter(filterType, filterValue);
+    }
+  });
 });
 ```
 
-### Responsive Design Support
+### Progressive Enhancement
 
-JavaScript components adapt to different screen sizes:
-
-```javascript
-// Responsive behavior adaptation
-function setupResponsiveUI() {
-  // Check viewport width
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  
-  if (isMobile) {
-    // Mobile-specific setup
-    setupMobileFilters();
-  } else {
-    // Desktop-specific setup
-    setupDesktopFilters();
-  }
-  
-  // Rerun on resize 
-  window.addEventListener('resize', debounce(function() {
-    // Check if view changed between mobile and desktop
-    const newIsMobile = window.matchMedia('(max-width: 767px)').matches;
-    
-    if (newIsMobile !== isMobile) {
-      // Reinitialize for the new view
-      isMobile = newIsMobile;
-      
-      if (isMobile) {
-        setupMobileFilters();
-      } else {
-        setupDesktopFilters();
-      }
-    }
-  }, 250));
-}
-```
-
-### Utility Functions
-
-Common utility functions are shared across scripts:
+All scripts check for required elements before initialization:
 
 ```javascript
-// Debounce function for resize events
-function debounce(func, wait) {
-  let timeout;
-  return function() {
-    const context = this;
-    const args = arguments;
-    clearTimeout(timeout);
-    timeout = setTimeout(function() {
-      func.apply(context, args);
-    }, wait);
-  };
-}
-
-// Local storage helper
-const Storage = {
-  set: function(key, value) {
-    try {
-      localStorage.setItem(`brandmine_${key}`, JSON.stringify(value));
-      return true;
-    } catch (e) {
-      console.error('Local storage error:', e);
-      return false;
-    }
-  },
+function initializeComponent() {
+  const container = document.querySelector('.search-filter');
   
-  get: function(key, defaultValue = null) {
-    try {
-      const value = localStorage.getItem(`brandmine_${key}`);
-      return value ? JSON.parse(value) : defaultValue;
-    } catch (e) {
-      console.error('Local storage error:', e);
-      return defaultValue;
-    }
+  if (!container) {
+    // Component not present on this page, exit gracefully
+    return;
   }
-};
-```
-
-## MapLibre Integration
-
-For location-based brand visualization, MapLibre is integrated:
-
-```javascript
-// Map initialization 
-function initializeBrandMap() {
-  // Check if map element and coordinates exist
-  const mapElement = document.getElementById('brandLocationMap');
   
-  if (mapElement && mapElement.dataset.lat && mapElement.dataset.lng) {
-    const lat = parseFloat(mapElement.dataset.lat);
-    const lng = parseFloat(mapElement.dataset.lng);
-    const brandName = mapElement.dataset.name;
-    
-    // Initialize map if MapLibre is available 
-    if (typeof maplibregl !== 'undefined') {
-      const map = new maplibregl.Map({
-        container: 'brandLocationMap',
-        style: 'https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key={{ site.stadia_maps_api_key }}',
-        center: [lng, lat],
-        zoom: 7
-      });
-      
-      // Add controls and markers
-      map.addControl(new maplibregl.NavigationControl());
-      
-      new maplibregl.Marker()
-        .setLngLat([lng, lat])
-        .setPopup(new maplibregl.Popup().setHTML(`<h3>${brandName}</h3>`))
-        .addTo(map);
-    } else {
-      // Fallback if MapLibre is not available
-      mapElement.innerHTML = `<div class="map-placeholder">
-        <p>Map showing ${brandName} at coordinates ${lat}, ${lng}</p>
-        <p>Interactive map loading...</p>
-      </div>`;
-    }
-  }
+  // Component is present, initialize functionality
+  setupEventListeners();
+  loadInitialData();
 }
 ```
 
@@ -346,14 +204,11 @@ function initializeBrandMap() {
 JavaScript includes special handling for multilingual content:
 
 ```javascript
-// Language handling example
-const languageSupport = {
-  // Current language from html lang attribute
+const LanguageSupport = {
   getCurrentLanguage: function() {
     return document.documentElement.lang || 'en';
   },
   
-  // Language-specific text elements
   getTranslation: function(key) {
     const lang = this.getCurrentLanguage();
     const translations = {
@@ -375,207 +230,118 @@ const languageSupport = {
     };
     
     return translations[lang][key] || translations.en[key];
-  },
-  
-  // Language-specific date formatting
-  formatDate: function(dateString) {
-    const date = new Date(dateString);
-    const lang = this.getCurrentLanguage();
-    
-    const options = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    };
-    
-    return date.toLocaleDateString(this.getLanguageCode(lang), options);
-  },
-  
-  // Convert internal language code to locale code
-  getLanguageCode: function(lang) {
-    const localeMap = {
-      en: 'en-US',
-      ru: 'ru-RU',
-      zh: 'zh-CN'
-    };
-    
-    return localeMap[lang] || 'en-US';
   }
 };
 ```
 
-## Accessibility Features
+## MapLibre Integration
 
-JavaScript enhances accessibility through:
+For location-based visualizations, MapLibre is integrated:
 
 ```javascript
-// Focus management for modals
-function openModal(modalId) {
-  const modal = document.getElementById(modalId);
+function initializeBrandMap() {
+  const mapElement = document.getElementById('brandLocationMap');
   
-  if (!modal) return;
-  
-  // Store last active element to restore focus later
-  lastActiveElement = document.activeElement;
-  
-  // Show modal
-  modal.classList.add('modal--active');
-  modal.setAttribute('aria-hidden', 'false');
-  
-  // Set focus to first focusable element
-  const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  
-  if (focusableElements.length) {
-    focusableElements[0].focus();
-  }
-  
-  // Trap focus within modal
-  modal.addEventListener('keydown', trapFocus);
-}
-
-// Trap focus in modal
-function trapFocus(e) {
-  const modal = e.currentTarget;
-  const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  
-  const firstElement = focusableElements[0];
-  const lastElement = focusableElements[focusableElements.length - 1];
-  
-  // Handle tab key navigation
-  if (e.key === 'Tab') {
-    if (e.shiftKey && document.activeElement === firstElement) {
-      e.preventDefault();
-      lastElement.focus();
-    } else if (!e.shiftKey && document.activeElement === lastElement) {
-      e.preventDefault();
-      firstElement.focus();
-    }
-  }
-  
-  // Close on escape
-  if (e.key === 'Escape') {
-    closeModal(modal.id);
+  if (mapElement && typeof maplibregl !== 'undefined') {
+    const lat = parseFloat(mapElement.dataset.lat);
+    const lng = parseFloat(mapElement.dataset.lng);
+    
+    const map = new maplibregl.Map({
+      container: 'brandLocationMap',
+      style: 'https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key={{ site.stadia_maps_api_key }}',
+      center: [lng, lat],
+      zoom: 7
+    });
+    
+    map.addControl(new maplibregl.NavigationControl());
+    
+    new maplibregl.Marker()
+      .setLngLat([lng, lat])
+      .addTo(map);
   }
 }
 ```
 
-## Best Practices
+## Accessibility Features
 
-### Performance Optimization
+All JavaScript enhances accessibility through:
 
-1. **Minimize DOM Manipulation**:
+- Focus management for modal dialogs
+- Keyboard navigation support
+- Screen reader announcements
+- ARIA state updates
+- Proper heading hierarchy maintenance
+
+## Performance Optimization
+
+1. **Efficient DOM Manipulation**:
    - Batch DOM operations where possible
    - Use document fragments for multiple insertions
-   - Avoid layout thrashing by reading then writing
+   - Avoid layout thrashing
 
-2. **Event Handling Efficiency**:
+2. **Event Handling**:
    - Use event delegation for dynamic elements
    - Debounce resize and scroll handlers
-   - Remove event listeners for destroyed elements
+   - Remove event listeners when components are destroyed
 
 3. **Loading Strategy**:
-   - Scripts are loaded at the end of the document
-   - Critical scripts use `defer` attribute
-   - Optional scripts are loaded on demand
-
-### Maintainability
-
-1. **Code Organization**:
-   - Organize code using module pattern
-   - Keep functions small and focused
-   - Use meaningful variable and function names
-
-2. **Comments and Documentation**:
-   - Document function purpose and parameters
-   - Explain complex logic or unusual approaches
-   - Include example usage where helpful
-
-3. **Error Handling**:
-   - Gracefully handle script errors
-   - Provide fallbacks for missing elements
-   - Log useful error messages for debugging
-
-### Cross-Browser Compatibility
-
-1. **Feature Detection**:
-   - Check for feature support before using
-   - Provide polyfills or fallbacks as needed
-   - Test in all major browsers
-
-2. **Browser-Specific Issues**:
-   - Document known browser quirks
-   - Implement targeted fixes when necessary
-   - Avoid browser sniffing
+   - Scripts are loaded with `defer` attribute
+   - Page-specific scripts only load on relevant pages
+   - Optional functionality loads on demand
 
 ## Adding New JavaScript
 
 When adding new JavaScript functionality:
 
 1. **Determine Scope**:
-   - Is it page-specific or site-wide?
-   - Should it be a new file or extend existing?
+   - Component-level: Place in `components/`
+   - Page-specific: Place in `pages/[page-name]/`
+   - Data processing: Place in `data/`
 
-2. **Create File** (if needed):
-   - Place in `assets/js/` directory
-   - Follow naming conventions (`kebab-case.js`)
-   - Include file header documentation
+2. **Follow Naming Conventions**:
+   - Use `kebab-case.js` for filenames
+   - Match functionality to filename purpose
 
-3. **Follow Structure Pattern**:
+3. **Structure Pattern**:
    - Use module pattern for encapsulation
    - Include initialization on DOMContentLoaded
    - Provide clear public API
+   - Handle missing elements gracefully
 
 4. **Include in Template**:
-   - Add script tag at the end of the body
-   - Use relative_url filter for proper path
-   - Consider conditionally including if page-specific
+   ```html
+   <script src="{{ '/assets/js/[category]/[filename].js' | relative_url }}" defer></script>
+   ```
 
-## Troubleshooting
+## File Organization by Function
 
-### Common Issues
+### Search & Filtering
+- `components/search-filter.js` - Reusable search component
+- `pages/search/advanced-search.js` - Advanced multi-dimensional search
+- `pages/brands/brands-filtering.js` - Brand-specific filtering
+- `pages/founders/founders-search.js` - Founder-specific search
+- `pages/insights/insights-search.js` - Insight-specific search
+- `pages/discovery/discovery-search.js` - Universal discovery search
 
-1. **Script not running**:
-   - Check for JavaScript errors in console
-   - Verify script is being loaded
-   - Check if element IDs/selectors exist in DOM
+### User Interface
+- `components/header.js` - Header and navigation
+- `components/custom-forms.js` - Form interactions
+- `components/founder-carousel.js` - Carousel functionality
+- `pages/home/carousels.js` - Homepage carousels
+- `pages/styleguide/styleguide.js` - Style guide interactions
 
-2. **Events not firing**:
-   - Verify event listeners are attached
-   - Check for typos in event names
-   - Ensure proper event delegation
+### Maps & Location
+- `pages/brand/brand-map-script.js` - Individual brand maps
+- `pages/discover/market-map.js` - Market overview maps
+- `data/generate-map-data.js` - Map data utilities
 
-3. **Conflicts with other scripts**:
-   - Use module pattern to prevent global namespace pollution
-   - Check for duplicate IDs in the DOM
-   - Verify script execution order
-
-### Debug Tips
-
-```javascript
-// Enable debug mode
-const DEBUG = true;
-
-// Debug logging
-function debug(message, data) {
-  if (DEBUG && console) {
-    console.log(`[DEBUG] ${message}`, data || '');
-  }
-}
-
-// Track performance
-function measurePerformance(name, fn) {
-  if (DEBUG) {
-    console.time(name);
-    fn();
-    console.timeEnd(name);
-  } else {
-    fn();
-  }
-}
-```
+### Content Display
+- `pages/brand/gallery.js` - Image galleries
+- `components/premium-content.js` - Premium content access
+- `pages/home/tracking.js` - Analytics tracking
 
 ## Related Documentation
 
 - [Main Assets README](../README.md) - Overview of all assets
 - [CSS README](../css/README.md) - CSS architecture documentation
-- [Component Integration Guide](../../docs/component-integration.md) - How JavaScript integrates with components
+- [CLAUDE.md](../../CLAUDE.md) - Project architecture and conventions

@@ -4,19 +4,10 @@ Purpose: Navigation breadcrumb component for page hierarchy
 
 Parameters:
 - items (optional): Array of breadcrumb items with name and url
-- auto_generate (optional): Auto-generate from page structure (default: true)
+- auto_generate (optional): Auto-generate from page structure (default: true)  
 - show_home (optional): Include home link (default: true)
 - separator (optional): Custom separator (default: "›")
 - class_name (optional): Additional CSS classes
-
-Usage:
-{% include components/ui/breadcrumbs.html %}
-{% include components/ui/breadcrumbs.html separator="/" %}
-{% include components/ui/breadcrumbs.html show_home=false %}
-
-Custom items:
-{% assign custom_items = "Home,/|Brands,/brands|Russia,/discover/markets/russia" | split: "|" %}
-{% include components/ui/breadcrumbs.html items=custom_items %}
 {% endcomment %}
 
 {% assign auto_generate = include.auto_generate | default: true %}
@@ -24,15 +15,110 @@ Custom items:
 {% assign separator = include.separator | default: "›" %}
 {% assign current_lang = page.lang | default: 'en' %}
 
-{% assign aria_label = site.data.translations[current_lang].nav.breadcrumbs | default: "Breadcrumb navigation" %}
+{% comment %} Build breadcrumb items array {% endcomment %}
+{% assign breadcrumb_items = "" | split: "" %}
 
+{% comment %} Process custom items if provided {% endcomment %}
+{% if include.items %}
+  {% for item in include.items %}
+    {% assign item_parts = item | split: "," %}
+    {% assign breadcrumb_items = breadcrumb_items | push: item_parts %}
+  {% endfor %}
+{% elsif auto_generate %}
+  {% comment %} Home item {% endcomment %}
+  {% if show_home %}
+    {% assign home_name = site.data.translations[current_lang].navigation.home | default: "Home" %}
+    {% assign home_url = site.baseurl | append: "/" | append: current_lang | append: "/" %}
+    {% assign home_item = home_name | append: "," | append: home_url %}
+    {% assign home_parts = home_item | split: "," %}
+    {% assign breadcrumb_items = breadcrumb_items | push: home_parts %}
+  {% endif %}
+
+  {% comment %} Auto-generate based on page layout {% endcomment %}
+  {% case page.layout %}
+    {% when "insight-category" %}
+      {% comment %} Insights section {% endcomment %}
+      {% assign insights_name = site.data.translations[current_lang].navigation.insights | default: "Insights" %}
+      {% assign insights_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/" %}
+      {% assign insights_item = insights_name | append: "," | append: insights_url %}
+      {% assign insights_parts = insights_item | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: insights_parts %}
+      
+      {% comment %} Category item (current page) {% endcomment %}
+      {% if page.insight_type %}
+        {% assign category_key = page.insight_type | replace: "-", "_" %}
+        {% assign category_data = site.data.insights[current_lang].categories | where: "id", category_key | first %}
+        {% assign category_name = category_data.name | default: page.title %}
+        {% assign category_parts = category_name | split: "," %}
+        {% assign breadcrumb_items = breadcrumb_items | push: category_parts %}
+      {% endif %}
+
+    {% when "brand-profile" %}
+      {% assign brands_name = site.data.translations[current_lang].navigation.brands | default: "Brands" %}
+      {% assign brands_url = site.baseurl | append: "/" | append: current_lang | append: "/brands/" %}
+      {% assign brands_item = brands_name | append: "," | append: brands_url %}
+      {% assign brands_parts = brands_item | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: brands_parts %}
+      
+      {% assign brand_parts = page.title | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: brand_parts %}
+
+    {% when "founder-profile" %}
+      {% assign founders_name = site.data.translations[current_lang].navigation.founders | default: "Founders" %}
+      {% assign founders_url = site.baseurl | append: "/" | append: current_lang | append: "/founders/" %}
+      {% assign founders_item = founders_name | append: "," | append: founders_url %}
+      {% assign founders_parts = founders_item | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: founders_parts %}
+      
+      {% assign founder_parts = page.title | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: founder_parts %}
+
+    {% when "insight-article" %}
+      {% assign insights_name = site.data.translations[current_lang].navigation.insights | default: "Insights" %}
+      {% assign insights_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/" %}
+      {% assign insights_item = insights_name | append: "," | append: insights_url %}
+      {% assign insights_parts = insights_item | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: insights_parts %}
+      
+      {% if page.category %}
+        {% assign category_key = page.category | replace: "-", "_" %}
+        {% assign category_data = site.data.insights[current_lang].categories | where: "id", category_key | first %}
+        {% assign category_name = category_data.name | default: page.category %}
+        {% assign category_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/categories/" | append: page.category | append: "/" %}
+        {% assign category_item = category_name | append: "," | append: category_url %}
+        {% assign category_parts = category_item | split: "," %}
+        {% assign breadcrumb_items = breadcrumb_items | push: category_parts %}
+      {% endif %}
+      
+      {% assign article_parts = page.title | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: article_parts %}
+  {% endcase %}
+{% endif %}
+
+{% comment %} Render breadcrumbs {% endcomment %}
 <div class="breadcrumbs-wrapper">
-  <nav class="breadcrumbs {{ include.class_name }}" aria-label="{{ aria_label }}">
-    {% if show_home %}
-      <a href="{{ site.baseurl }}/{{ current_lang }}/" class="back-link">
-        ← {% include helpers/t.html key="navigation.home" fallback="Home" %}
-      </a>
-    {% endif %}
-
+  <nav class="breadcrumbs {{ include.class_name }}" aria-label="{{ site.data.translations[current_lang].nav.breadcrumbs | default: 'Breadcrumb navigation' }}">
+    {% for item in breadcrumb_items %}
+      {% assign item_name = item[0] %}
+      {% assign item_url = item[1] %}
+      
+      {% if forloop.first %}
+        {% comment %} First item - back link style {% endcomment %}
+        {% if forloop.last %}
+          {% comment %} Only one item (current page) {% endcomment %}
+          <span class="breadcrumb-current">{{ item_name }}</span>
+        {% else %}
+          <a href="{{ item_url }}" class="back-link">← {{ item_name }}</a>
+        {% endif %}
+      {% elsif forloop.last %}
+        {% comment %} Last item - current page {% endcomment %}
+        <span class="breadcrumb-separator">{{ separator }}</span>
+        <span class="breadcrumb-current">{{ item_name }}</span>
+      {% else %}
+        {% comment %} Middle items - regular links {% endcomment %}
+        <span class="breadcrumb-separator">{{ separator }}</span>
+        <a href="{{ item_url }}" class="breadcrumb-link">{{ item_name }}</a>
+      {% endif %}
+    {% endfor %}
   </nav>
 </div>

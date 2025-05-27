@@ -428,12 +428,12 @@ This test page expects these data endpoints:
 
 Include these scripts to test functionality:
 ```html
-<script src="/assets/js/advanced-search.js"></script>
-<script src="/assets/js/search-filter.js"></script>
-<script src="/assets/js/brand-filtering.js"></script>
-<script src="/assets/js/founders-search.js"></script>
-<script src="/assets/js/insights-search.js"></script>
-<script src="/assets/js/discovery-search.js"></script>
+<script src="/assets/js/pages/search/advanced-search.js"></script>
+<script src="/assets/js/components/search-filter.js"></script>
+<script src="/assets/js/pages/brand/brand-filtering.js"></script>
+<script src="/assets/js/pages/founders/founders-search.js"></script>
+<script src="/assets/js/pages/insights/insights-search.js"></script>
+<script src="/assets/js/pages/discovery/discovery-search.js"></script>
 ```
 
 ---

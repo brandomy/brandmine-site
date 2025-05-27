@@ -105,12 +105,12 @@
   {% assign png_path = "/assets/images/icons/" | append: system %}
 
   {% if system == "dimensions" and icon_type %}
-    {% assign png_path = png_path | append: "/" | append: icon_type | append: "/original icons/" | append: icon_name | append: ".png" %}
+    {% assign png_path = png_path | append: "/png/dimensions/" | append: icon_type | append: "/" | append: icon_name | append: ".png" %}
   {% elsif system == "insights" %}
-    {% assign png_path = png_path | append: "/original icons/" | append: icon_name | append: ".png" %}
+    {% assign png_path = png_path | append: "/png/insights/" | append: icon_name | append: ".png" %}
   {% else %}
     {% comment %} Fallback path {% endcomment %}
-    {% assign png_path = png_path | append: "/original icons/" | append: icon_name | append: ".png" %}
+    {% assign png_path = png_path | append: "/png/insights/" | append: icon_name | append: ".png" %}
   {% endif %}
 
   {% comment %} Generate alt text {% endcomment %}
