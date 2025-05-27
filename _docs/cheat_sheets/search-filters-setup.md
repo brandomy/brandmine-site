@@ -10,12 +10,19 @@ This guide covers how to set up and troubleshoot search and filtering functional
 ### Search Components Overview
 ```
 assets/js/
-├── advanced-search.js         # Site-wide advanced search
-├── brand-filtering.js         # Brands page filtering
-├── insights-search.js         # Insights page search
-├── founders-search.js         # Founders page search  
-├── discovery-search.js        # Discovery page search
-└── search-filter.js           # Generic filter component
+├── components/
+│   └── search-filter.js       # Generic filter component
+└── pages/
+    ├── search/
+    │   └── advanced-search.js # Site-wide advanced search
+    ├── brands/
+    │   └── brands-filtering.js # Brands page filtering
+    ├── insights/
+    │   └── insights-search.js # Insights page search
+    ├── founders/
+    │   └── founders-search.js # Founders page search
+    └── discovery/
+        └── discovery-search.js # Discovery page search
 
 _includes/components/search/
 ├── search-filter.html         # Filter interface component
@@ -43,7 +50,6 @@ assets/data/dimensions.json  # Taxonomy data for filters
 **Location**: `/en/brands/`
 **Files**:
 - `_includes/pages/brands/search.html`
-- `assets/js/brand-filtering.js`
 - `assets/js/pages/brands/brands-filtering.js`
 
 **Setup**:
