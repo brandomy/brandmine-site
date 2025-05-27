@@ -14,11 +14,11 @@ layout: default
   {% assign sections_to_render = page.sections %}
 {% endunless %}
 
-<div class="search-page">
+<div class="{{ page.ref }}-page">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
   {% if sections_to_render contains "breadcrumbs" %}
-    <section class="search-section search-section--breadcrumbs"
-             id="search-section-breadcrumbs"
+    <section class="{{ page.ref }}-section {{ page.ref }}-section--breadcrumbs"
+             id="{{ page.ref }}-section-breadcrumbs"
              aria-labelledby="heading-breadcrumbs">
       {% include components/ui/breadcrumbs.html %}
     </section>
@@ -32,8 +32,8 @@ layout: default
           {% if section == "content" %}
             {{ content }}
           {% else %}
-            <section class="search-section search-section--{{ section }}"
-                     id="search-section-{{ section }}"
+            <section class="{{ page.ref }}-section {{ page.ref }}-section--{{ section }}"
+                     id="{{ page.ref }}-section-{{ section }}"
                      aria-labelledby="heading-{{ section }}">
               {% include pages/search/{{ section }}.html %}
             </section>
