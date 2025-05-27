@@ -31,7 +31,12 @@ layout: default
   - site.insights collection
 ----------------------------------------------------------------------------- -->
 
-claude
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "breadcrumbs,hero,header,all-brands,related-insights" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
 
 <div class="dimension-page">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}

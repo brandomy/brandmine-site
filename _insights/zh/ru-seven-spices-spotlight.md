@@ -3,7 +3,6 @@
 layout: insight-article
 ref: ru-seven-spices-spotlight  # Global ID (market-slug format) For language switcher
 sample_data: true  # Add this flag
-sample_data: true  # Add this flag
 title: "品牌聚焦: 七香料 - 复兴俄罗斯香料传统"
 lang: zh
 permalink: /zh/insights/ru-seven-spices-spotlight/
@@ -31,6 +30,25 @@ signals: [export-ready, investment-ready]  # Optional: Use exact slugs from dime
 # Display Settings
 featured: false
 premium: false
+
+# Section Configuration - Brand Spotlight template (linear layout, no sidebar)
+sections:
+  - breadcrumbs
+  - hero
+  - header
+  - featured-image
+  - content
+  - taxonomy
+  - brand-info
+  - related-brands
+  - related-insights
+
+# Sidebar Configuration
+# sidebar_sections:
+#   - brand-info
+#   - related-brands
+#   - related-insights
+#   - taxonomy-cloud
 
 # Location (flat structure for easier data handling)
 location_lng: 49.1221  # Longitude coordinate (Kazan)

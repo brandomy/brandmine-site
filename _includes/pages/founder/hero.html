@@ -1,0 +1,62 @@
+{% comment %}
+  Component: pages/founder/hero.html
+  
+  Purpose: Hero section for individual founder profile pages. Displays founder name,
+           title/position, and key information.
+  
+  Dependencies:
+  - Data: site.data.translations[page.lang].founders
+  - CSS: /assets/css/pages/founder/hero.scss
+  - Parameter: founder (passed from layout)
+  
+  Variables Used:
+  - page.lang: Current language for translations
+  - founder.title: Founder name
+  - founder.position: Founder position/title
+  - founder.company: Associated company/brand
+  - founder.location: Founder location
+  
+  Classes:
+  - .founder-hero: Main container
+  - .founder-hero__title: Main founder name
+  - .founder-hero__position: Position/title
+  - .founder-hero__meta: Company and location
+  
+  Notes:
+  - Uses panel component for consistent styling
+  - Logic-light approach with translation helper
+{% endcomment %}
+
+{% assign founder = include.founder | default: page %}
+{% assign current_lang = founder.lang | default: 'en' %}
+
+<div class="panel panel--hero-subtle">
+  <div class="panel__content">
+    <div class="founder-hero">
+      <h1 class="founder-hero__title">
+        {{ founder.title }}
+      </h1>
+      
+      {% if founder.position %}
+        <p class="founder-hero__position">
+          {{ founder.position }}
+        </p>
+      {% endif %}
+      
+      <div class="founder-hero__meta">
+        {% if founder.company %}
+          <span class="founder-hero__company">
+            {{ founder.company }}
+          </span>
+        {% endif %}
+        
+        {% if founder.location and founder.location.city %}
+          <span class="founder-hero__location">
+            {% if founder.company %}{% include components/separators/bullet-separator.html %}{% endif %}
+            {{ founder.location.city }}{% if founder.location.country %}, {{ founder.location.country }}{% endif %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

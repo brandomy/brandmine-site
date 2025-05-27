@@ -9,10 +9,21 @@ permalink: /zh/founders/ru-ivan-petrov/
 generate_json: true
 sample_data: true
 
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Section Configuration - Linear layout (no sidebar)
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
+
+# sidebar_sections:
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 
 brands: [ru-altai-honey]
 featured: true

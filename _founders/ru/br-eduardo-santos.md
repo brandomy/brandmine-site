@@ -4,15 +4,26 @@ ref: br-eduardo-santos
 name: "Эдуардо Сантос"
 title: "Эдуардо Сантос - Бразильский органический первопроходец"
 date: 2025-05-01
-lang: zh
-permalink: /zh/founders/br-eduardo-santos/
+lang: ru
+permalink: /ru/founders/br-eduardo-santos/
 generate_json: true
 sample_data: true
 
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Section Configuration - Linear layout (no sidebar)
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
+
+# sidebar_sections:
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 
 brands: [br-serra-verde]
 featured: true

@@ -31,20 +31,25 @@ markets: []  # Geographic markets discussed: ["russia", "brazil", "china"]
 attributes: []  # Brand attributes highlighted: ["heritage-brand", "sustainability-pioneer"]
 signals: []  # Market signals analyzed: ["rapid-growth", "export-ready"]
 
-# Content Structure (sections to include in layout)
+# Content Structure (sections to include in layout) - Using linear layout (no sidebar)
 sections:
+  - breadcrumbs
+  - hero
   - header
   - featured-image
   - content
   - taxonomy
-
-# Sidebar Components
-sidebar_sections:
   - brand-info
-  - location-info
   - related-brands
   - related-insights
-  - taxonomy-cloud
+
+# NOTE: sidebar_sections removed for linear layout
+# sidebar_sections:
+#   - brand-info
+#   - location-info
+#   - related-brands
+#   - related-insights
+#   - taxonomy-cloud
 
 # SEO & Social
 seo:

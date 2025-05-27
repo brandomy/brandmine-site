@@ -7,6 +7,7 @@ lang: en
 ref: founders
 sections:
   - breadcrumbs
+  - hero
   - header
   - content
   - filter-interface

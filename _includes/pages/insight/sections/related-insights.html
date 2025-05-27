@@ -1,5 +1,5 @@
 {% comment %}
-  Component: pages/insight/sidebar/related-insights.html
+  Component: pages/insight/sections/related-insights.html
 
   Purpose: Displays related insights based on category
 
@@ -7,12 +7,12 @@
   - insight: The insight page object (required)
 
   Dependencies:
-  - CSS: pages/insight/sidebar/related-insights.scss
+  - CSS: pages/insight/sections/related-insights.scss
   - site.data.translations[page.lang] for localized labels
   - components/cards/simple-insight-card.html for insight display
 
   Used by:
-  - insight-article layout via sidebar_sections array
+  - insight-article layout via sections array
 
   Notes:
   - Identifies related insights based on same category
@@ -27,8 +27,8 @@
   {% assign related_insights = site.insights | where: "lang", page.lang | where: "category", insight.category | where_exp: "item", "item.ref != insight.ref" | sort: "date" | reverse | limit: 3 %}
 
   {% if related_insights.size > 0 %}
-    <div class="sidebar-section sidebar-related-insights">
-      <h3 class="sidebar-title">{{ t.insights.related }}</h3>
+    <div class="section-content section-related-insights">
+      <h3 class="section-title">{{ t.insights.related }}</h3>
 
       <div class="related-insights-list">
         {% for related in related_insights %}

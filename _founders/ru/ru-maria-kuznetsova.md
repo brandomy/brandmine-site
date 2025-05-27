@@ -4,15 +4,26 @@ ref: ru-maria-kuznetsova
 name: "Мария Кузнецова"
 title: "Мария Кузнецова - Сохраняя российское вкусовое наследие"
 date: 2025-05-01
-lang: zh
-permalink: /zh/founders/ru-maria-kuznetsova/
+lang: ru
+permalink: /ru/founders/ru-maria-kuznetsova/
 generate_json: true
 sample_data: true
 
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Section Configuration - Linear layout (no sidebar)
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
+
+# sidebar_sections:
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 
 brands: [ru-seven-spices]
 featured: true

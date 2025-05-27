@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Insight Article - Section Components
+   ==========================================================================
+   Common styles for all section components with semantic sectioning
+*/
+
+// Import all section component styles
+@import "brand-info";
+@import "location-info";
+@import "market-info";
+@import "related-brands";
+@import "related-insights";
+@import "taxonomy-cloud";
+
+.insight-article-page {
+  // Linear section styling - no sidebar complexity
+  .insight-article-section--brand-info,
+  .insight-article-section--location-info,
+  .insight-article-section--market-info,
+  .insight-article-section--related-brands,
+  .insight-article-section--related-insights,
+  .insight-article-section--taxonomy-cloud {
+      // Uses panel styling - no additional container needed
+      
+      .section-title {
+        font-size: var(--text-lg);
+        font-weight: var(--font-semibold);
+        margin-bottom: var(--space-4);
+        color: var(--neutral-900);
+        font-family: var(--font-heading);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        
+        // Icon support
+        svg, i {
+          width: 20px;
+          height: 20px;
+          color: var(--primary-600);
+        }
+      }
+
+      .section-content {
+        color: var(--neutral-700);
+        font-size: var(--text-sm);
+        line-height: var(--leading-relaxed);
+      }
+
+      // Links in sections
+      a {
+        color: var(--primary-600);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--primary-700);
+          text-decoration: underline;
+        }
+
+        &:focus {
+          outline: 2px solid var(--primary-400);
+          outline-offset: 2px;
+          border-radius: var(--radius-sm);
+        }
+      }
+
+      // Lists in sections
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-bottom: var(--space-2);
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      // Tags and badges in sections
+      .tag, .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-1);
+        padding: var(--space-1) var(--space-2);
+        background-color: var(--neutral-200);
+        color: var(--neutral-800);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-xs);
+        font-weight: var(--font-medium);
+        margin-right: var(--space-2);
+        margin-bottom: var(--space-2);
+      }
+    }
+  }
+}

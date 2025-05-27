@@ -4,15 +4,26 @@ ref: ru-ivan-petrov
 name: "Иван Петров"
 title: "Иван Петров - Основатель Алтайского Мёда"
 date: 2025-05-01
-lang: zh
-permalink: /zh/founders/ru-ivan-petrov/
+lang: ru
+permalink: /ru/founders/ru-ivan-petrov/
 generate_json: true
 sample_data: true
 
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Section Configuration - Linear layout (no sidebar)
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
+
+# sidebar_sections:
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 
 brands: [ru-altai-honey]
 featured: true

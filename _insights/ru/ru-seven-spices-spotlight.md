@@ -31,6 +31,25 @@ signals: [export-ready, investment-ready]  # Optional: Use exact slugs from dime
 featured: false
 premium: false
 
+# Section Configuration - Brand Spotlight template (linear layout, no sidebar)
+sections:
+  - breadcrumbs
+  - hero
+  - header
+  - featured-image
+  - content
+  - taxonomy
+  - brand-info
+  - related-brands
+  - related-insights
+
+# Sidebar Configuration
+# sidebar_sections:
+#   - brand-info
+#   - related-brands
+#   - related-insights
+#   - taxonomy-cloud
+
 # Location (flat structure for easier data handling)
 location_lng: 49.1221  # Longitude coordinate (Kazan)
 location_lat: 55.7887  # Latitude coordinate (Kazan)

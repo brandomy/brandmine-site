@@ -6,20 +6,24 @@ title: "[Market Code] Spotlight: [Brand Name] - [Main Focus]"
 lang: en
 permalink: /en/insights/xx-insight-slug/
 
-# Section Configuration - determines which sections appear in the article
+# Section Configuration - determines which sections appear in the article - Using linear layout (no sidebar)
 sections:
   - breadcrumbs
+  - hero
   - header
   - featured-image
   - content
   - taxonomy
-
-# Sidebar Configuration - determines which sections appear in the sidebar
-sidebar_sections:
   - brand-info
   - related-brands
   - related-insights
-  - taxonomy-cloud
+
+# NOTE: sidebar_sections removed for linear layout
+# sidebar_sections:
+#   - brand-info
+#   - related-brands
+#   - related-insights
+#   - taxonomy-cloud
 
 # Basic Information
 date: YYYY-MM-DD  # Publication date

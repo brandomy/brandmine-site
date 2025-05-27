@@ -9,54 +9,54 @@ layout: default
 
   Structure:
   - Uses semantic <section> tags with proper ID and ARIA attributes
-  - Uses page.sections array to dynamically load main content sections
-  - Uses page.sidebar_sections array to load sidebar components
-  - Follows the established sectioning architecture
+  - Uses page.sections array to dynamically load content sections in linear order
+  - Follows the established sectioning architecture (no sidebar)
 
   Dependencies:
   - _includes/pages/insight/[section-name].html files for main content
-  - _includes/pages/insight/sidebar/[section-name].html files for sidebar
+  - _includes/pages/insight/sections/[section-name].html files for additional sections
   - CSS: pages/insight/_index.scss and related component files
-  - Page must have 'sections' and 'sidebar_sections' arrays in front matter
+  - Page must have 'sections' array in front matter
 
   Default sections if not specified:
-  - breadcrumbs, header, featured-image, content, taxonomy
-  
-  Default sidebar sections if not specified:
-  - brand-info, taxonomy-cloud, related-brands, related-insights
+  - breadcrumbs, hero, header, featured-image, content, taxonomy, brand-info, related-brands, related-insights
 {% endcomment %}
 
-{% assign default_sections = "breadcrumbs,header,featured-image,content,taxonomy" | split: "," %}
-{% assign default_sidebar_sections = "brand-info,taxonomy-cloud,related-brands,related-insights" | split: "," %}
+{% assign default_sections = "breadcrumbs,hero,header,featured-image,content,taxonomy,brand-info,related-brands,related-insights" | split: "," %}
 {% assign current_sections = page.sections | default: default_sections %}
-{% assign current_sidebar_sections = page.sidebar_sections | default: default_sidebar_sections %}
 
 <div class="insight-article-page">
   {% for section in current_sections %}
-    <section class="insight-article-section insight-article-section--{{ section }}"
-             id="insight-article-section-{{ section }}"
-             aria-labelledby="heading-{{ section }}">
-      {% if section == "content" %}
-        {% if content and content != "" %}
-          <div class="insight-content {% if page.premium %}premium-content{% endif %}">
-            {{ content }}
+    {% if section == "content" %}
+      <section class="insight-article-section insight-article-section--content"
+               id="insight-article-section-content"
+               aria-labelledby="heading-content">
+        <div class="panel panel--light">
+          <div class="panel__content">
+            {% if content and content != "" %}
+              <div class="insight-content {% if page.premium %}premium-content{% endif %}">
+                {{ content }}
+              </div>
+            {% endif %}
           </div>
-        {% endif %}
-      {% else %}
+        </div>
+      </section>
+    {% elsif section == "brand-info" or section == "related-brands" or section == "related-insights" or section == "taxonomy-cloud" %}
+      <section class="insight-article-section insight-article-section--{{ section }}"
+               id="insight-article-section-{{ section }}"
+               aria-labelledby="heading-{{ section }}">
+        <div class="panel panel--light">
+          <div class="panel__content">
+            {% include pages/insight/sections/{{ section }}.html insight=page %}
+          </div>
+        </div>
+      </section>
+    {% else %}
+      <section class="insight-article-section insight-article-section--{{ section }}"
+               id="insight-article-section-{{ section }}"
+               aria-labelledby="heading-{{ section }}">
         {% include pages/insight/{{ section }}.html insight=page %}
-      {% endif %}
-    </section>
+      </section>
+    {% endif %}
   {% endfor %}
-
-  {% if current_sidebar_sections.size > 0 %}
-    <aside class="insight-article-sidebar" role="complementary" aria-label="Related content">
-      {% for section in current_sidebar_sections %}
-        <section class="insight-sidebar-section insight-sidebar-section--{{ section }}"
-                 id="insight-sidebar-section-{{ section }}"
-                 aria-labelledby="sidebar-heading-{{ section }}">
-          {% include pages/insight/sidebar/{{ section }}.html insight=page %}
-        </section>
-      {% endfor %}
-    </aside>
-  {% endif %}
 </div>

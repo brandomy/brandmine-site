@@ -1,9 +1,19 @@
-.discovery-page {
-// Discovery Hero Section
-// Introduces the four-dimensional taxonomy system
+/* ==========================================================================
+   Dimension Hero Section
+   ========================================================================== */
 
-  .discovery-hero {
+.dimension-page {
+  .dimension-hero {
     text-align: center;
+
+    &__category {
+      display: inline-block;
+      margin-bottom: var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
     &__title {
       font-size: var(--text-5xl);
@@ -18,11 +28,11 @@
       }
     }
 
-    &__subtitle {
-      font-size: var(--text-2xl);
+    &__description {
+      font-size: var(--text-xl);
       font-weight: var(--font-light);
       color: white;
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
       line-height: var(--leading-relaxed);
 

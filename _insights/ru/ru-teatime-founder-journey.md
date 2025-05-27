@@ -31,6 +31,25 @@ signals: [rapid-growth, export-ready]  # Optional: Use exact slugs from dimensio
 featured: false
 premium: false
 
+# Section Configuration - Founders Journey template (linear layout, no sidebar)
+sections:
+  - breadcrumbs
+  - hero
+  - header
+  - featured-image
+  - content
+  - taxonomy
+  - brand-info
+  - related-brands
+  - related-insights
+
+# Sidebar Configuration
+# sidebar_sections:
+#   - brand-info
+#   - related-brands
+#   - related-insights
+#   - taxonomy-cloud
+
 # Location (flat structure for easier data handling)
 location_lng: 37.6173  # Longitude coordinate (Moscow)
 location_lat: 55.7558  # Latitude coordinate (Moscow)

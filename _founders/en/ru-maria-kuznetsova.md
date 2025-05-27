@@ -62,10 +62,16 @@ description: "Maria Kuznetsova profile - Russian culinary entrepreneur preservin
 keywords: [maria kuznetsova, seven spices, russian cuisine, condiments, culinary heritage, food archaeology]
 
 # Section Configuration
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Section Configuration - Linear layout (no sidebar)
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 ---
 
 # Maria Kuznetsova: Reviving Russia's Culinary Heritage

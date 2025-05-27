@@ -6,21 +6,25 @@ title: "[Market Code] Market Momentum: [Sector] Sector Shows [X]% Growth"
 lang: en
 permalink: /en/insights/xx-insight-slug/
 
-# Section Configuration - determines which sections appear in the article
+# Section Configuration - determines which sections appear in the article - Using linear layout (no sidebar)
 sections:
   - breadcrumbs
+  - hero
   - header
   - featured-image
   - content
   - market-chart
   - taxonomy
-
-# Sidebar Configuration - determines which sections appear in the sidebar
-sidebar_sections:
-  - market-info
-  - related-insights
+  - brand-info
   - related-brands
-  - taxonomy-cloud
+  - related-insights
+
+# NOTE: sidebar_sections removed for linear layout
+# sidebar_sections:
+#   - market-info
+#   - related-insights
+#   - related-brands
+#   - taxonomy-cloud
 
 # Basic Information
 date: YYYY-MM-DD  # Publication date

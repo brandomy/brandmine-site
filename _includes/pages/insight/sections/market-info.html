@@ -1,5 +1,5 @@
 {% comment %}
-  Component: pages/insight/sidebar/market-info.html
+  Component: pages/insight/sections/market-info.html
 
   Purpose: Displays market information for market momentum articles
 
@@ -7,11 +7,11 @@
   - insight: The insight page object (required)
 
   Dependencies:
-  - CSS: pages/insight/sidebar/market-info.scss
+  - CSS: pages/insight/sections/market-info.scss
   - site.data.translations[page.lang] for localized labels
 
   Used by:
-  - insight-article layout via sidebar_sections array (for market-momentum articles)
+  - insight-article layout via sections array (for market-momentum articles)
 
   Notes:
   - Only used in market momentum articles
@@ -21,8 +21,8 @@
 
 {% assign t = site.data.translations[page.lang] %}
 
-<div class="sidebar-section sidebar-market-info">
-  <h3 class="sidebar-title">{{ t.brand.market_presence }}</h3>
+<div class="section-content section-market-info">
+  <h3 class="section-title">{{ t.brand.market_presence }}</h3>
 
   {% if insight.market_data %}
     <ul class="market-data-list">

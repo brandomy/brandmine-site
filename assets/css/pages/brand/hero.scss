@@ -1,8 +1,9 @@
-.discovery-page {
-// Discovery Hero Section
-// Introduces the four-dimensional taxonomy system
+/* ==========================================================================
+   Brand Hero Section
+   ========================================================================== */
 
-  .discovery-hero {
+.brand-profile {
+  .brand-hero {
     text-align: center;
 
     &__title {
@@ -18,17 +19,32 @@
       }
     }
 
-    &__subtitle {
+    &__tagline {
       font-size: var(--text-2xl);
       font-weight: var(--font-light);
       color: white;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin: 0 auto var(--space-4);
       line-height: var(--leading-relaxed);
 
       @media (width <= 768px) {
         font-size: var(--text-lg);
       }
+    }
+
+    &__meta {
+      font-size: var(--text-lg);
+      color: var(--secondary-100);
+      font-weight: var(--font-medium);
+
+      @media (width <= 768px) {
+        font-size: var(--text-base);
+      }
+    }
+
+    &__founded,
+    &__location {
+      display: inline;
     }
   }
 }

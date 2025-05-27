@@ -31,6 +31,25 @@ signals: [export-ready, rapid-growth]  # Optional: Use exact slugs from dimensio
 featured: false
 premium: false
 
+# Section Configuration - Location Intelligence template (linear layout, no sidebar)
+sections:
+  - breadcrumbs
+  - hero
+  - header
+  - featured-image
+  - content
+  - taxonomy
+  - brand-info
+  - related-brands
+  - related-insights
+
+# Sidebar Configuration
+# sidebar_sections:
+#   - brand-info
+#   - related-brands
+#   - related-insights
+#   - taxonomy-cloud
+
 # Location (flat structure for easier data handling)
 location_lng: 85.6000  # Longitude coordinate (Altai region)
 location_lat: 50.7500  # Latitude coordinate (Altai region)

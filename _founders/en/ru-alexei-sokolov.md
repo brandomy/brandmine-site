@@ -61,11 +61,16 @@ brief_bio: "Transformed student tea ceremonies into Russia's most successful art
 description: "Alexei Sokolov profile - Russian tea entrepreneur who built TeaTime into an international artisanal tea brand with 23-country presence."
 keywords: [alexei sokolov, russia, teatime, tea, artisanal beverages, harrods, cultural ambassador]
 
-# Section Configuration
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Section Configuration - Linear layout (no sidebar)
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 ---
 
 # Alexei Sokolov: Bridging Russian Tea Traditions with Global Markets

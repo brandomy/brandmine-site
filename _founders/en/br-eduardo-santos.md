@@ -61,11 +61,16 @@ brief_bio: "Third-generation farmer transforming Brazil's Atlantic Forest agricu
 description: "Eduardo Santos profile - Brazilian organic farming pioneer transforming Atlantic Forest agriculture through sustainable practices and supporting family farms."
 keywords: [eduardo santos, brazil, organic farming, serra verde, atlantic forest, sustainable agriculture]
 
-# Section Configuration
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Section Configuration - Linear layout (no sidebar)
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 ---
 
 # Eduardo Santos: Transforming Brazil's Atlantic Forest Agriculture

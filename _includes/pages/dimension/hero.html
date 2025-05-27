@@ -1,0 +1,53 @@
+{% comment %}
+  Component: pages/dimension/hero.html
+  
+  Purpose: Hero section for individual dimension pages (markets, sectors, attributes, signals).
+           Displays dimension title, category, and description with appropriate styling.
+  
+  Dependencies:
+  - Data: site.data.translations[page.lang].dimensions
+  - CSS: /assets/css/pages/dimension/hero.scss
+  - Parameter: dimension (passed from layout)
+  
+  Variables Used:
+  - page.lang: Current language for translations
+  - dimension.title: Dimension title
+  - dimension.category: Dimension category (market, sector, attribute, signal)
+  - dimension.description: Optional description
+  
+  Classes:
+  - .dimension-hero: Main container
+  - .dimension-hero__category: Category indicator
+  - .dimension-hero__title: Main heading
+  - .dimension-hero__description: Optional description text
+  
+  Notes:
+  - Uses panel component for consistent styling
+  - Category styling follows taxonomy color system
+{% endcomment %}
+
+{% assign dimension = include.dimension | default: page %}
+{% assign current_lang = dimension.lang | default: 'en' %}
+
+<div class="panel panel--hero-subtle">
+  <div class="panel__content">
+    <div class="dimension-hero">
+      {% if dimension.category %}
+        {% capture translation_key %}dimensions.categories.{{ dimension.category }}{% endcapture %}
+        <div class="dimension-hero__category dimension dimension--{{ dimension.category }}">
+          {% include helpers/t.html key=translation_key fallback=dimension.category %}
+        </div>
+      {% endif %}
+      
+      <h1 class="dimension-hero__title">
+        {{ dimension.title }}
+      </h1>
+      
+      {% if dimension.description %}
+        <p class="dimension-hero__description">
+          {{ dimension.description }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</div>

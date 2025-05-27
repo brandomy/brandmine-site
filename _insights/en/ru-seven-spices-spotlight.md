@@ -34,17 +34,21 @@ premium: false
 # Section Configuration - determines which sections appear in the article
 sections:
   - breadcrumbs
+  - hero
   - header
   - featured-image
   - content
   - taxonomy
-
-# Sidebar Configuration - determines which sections appear in the sidebar
-sidebar_sections:
   - brand-info
-  - taxonomy-cloud
   - related-brands
   - related-insights
+
+# Additional sections (former sidebar content now linear)
+# Uncomment to include:
+# - brand-info
+# - taxonomy-cloud  
+# - related-brands
+# - related-insights
 
 # Location (flat structure for easier data handling)
 location_lng: 49.1221  # Longitude coordinate (Kazan)

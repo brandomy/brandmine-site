@@ -1,5 +1,5 @@
 {% comment %}
-  Component: pages/insight/sidebar/location-info.html
+  Component: pages/insight/sections/location-info.html
 
   Purpose: Displays location details for location intelligence articles
 
@@ -7,12 +7,12 @@
   - insight: The insight page object (required)
 
   Dependencies:
-  - CSS: pages/insight/sidebar/location-info.scss
+  - CSS: pages/insight/sections/location-info.scss
   - site.data.translations[page.lang] for localized labels
   - components/helpers/country-name.html for country names
 
   Used by:
-  - insight-article layout via sidebar_sections array (for location-intelligence articles)
+  - insight-article layout via sections array (for location-intelligence articles)
 
   Notes:
   - Only used in location intelligence articles
@@ -22,8 +22,8 @@
 
 {% assign t = site.data.translations[page.lang] %}
 
-<div class="sidebar-section sidebar-location-info">
-  <h3 class="sidebar-title">{{ t.brand.location_intelligence }}</h3>
+<div class="section-content section-location-info">
+  <h3 class="section-title">{{ t.brand.location_intelligence }}</h3>
 
   <ul class="location-info-list">
     {% if insight.location_city %}

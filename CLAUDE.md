@@ -166,38 +166,90 @@ Brandmine uses a two-tier approach for brand content:
 
 ---
 
-# 🏗️ Page Sectioning Architecture
+# 🏗️ Linear Layout Architecture
 
-Brandmine uses a semantic sectioning approach for page layouts:
+Brandmine uses a **simplified linear sectioning approach** optimized for MVP development and scalability:
 
-- **Page layouts** use a section-based architecture where:
-  - Each page is wrapped in a `.{page-type}-page` container for CSS scoping (e.g., `.brands-page`)
-  - Each logical section is wrapped in a semantic `<section>` tag
-  - Sections have standardized class naming: `{page-type}-section--{section-name}` (e.g., `brands-section--hero`)
-  - Each section has a unique ID for accessibility and deep linking: `id="{page-type}-section-{section}"`
-  - ARIA attributes improve screen reader navigation: `aria-labelledby="heading-{section}"`
+## Core Principles
+
+**"Simple and Clean" Philosophy:** All page layouts use a single, consistent linear sectioning pattern that eliminates complexity while maintaining semantic structure and accessibility.
+
+**No Sidebar Complexity:** The site deliberately avoids grid-based sidebar layouts in favor of linear section flow, making it easier to maintain and scale with thousands of auto-generated profiles.
+
+## Layout Structure
+
+- **Page layouts** use a streamlined section-based architecture:
+  - Each page is wrapped in a `.{page-type}-page` container for CSS scoping (e.g., `.founder-profile-page`)
+  - Each logical section is wrapped in a semantic `<section>` tag with consistent panel wrapping
+  - Sections have standardized class naming: `{page-type}-section--{section-name}`
+  - Each section has a unique ID for accessibility: `id="{page-type}-section-{section}"`
+  - ARIA attributes support screen reader navigation: `aria-labelledby="heading-{section}"`
 
 - **Section includes** are loaded dynamically based on the page's front matter `sections` array:
   ```liquid
-  {% for section in page.sections %}
+  {% for section in sections_to_render %}
     <section class="{{ page.ref }}-section {{ page.ref }}-section--{{ section }}"
              id="{{ page.ref }}-section-{{ section }}"
              aria-labelledby="heading-{{ section }}">
-      {% include pages/{{ page.ref }}/{{ section }}.html %}
+      <div class="panel panel--light">
+        <div class="panel__content">
+          {% include pages/{{ page.ref }}/{{ section }}.html %}
+        </div>
+      </div>
     </section>
   {% endfor %}
   ```
 
-- **CSS scoping** follows a consistent pattern:
-  ```scss
-  .{page-type}-page {
-    .{page-type}-section--{section-name} {
-      /* Section-specific styles */
-    }
-  }
-  ```
+- **Panel System Integration:** All content sections are wrapped in the panel system for consistent visual presentation and spacing.
 
-This architecture provides semantic HTML structure for accessibility and SEO while maintaining the modular, logic-light approach.
+## Three-Tier Hero Panel System
+
+All pages implement a standardized hero system based on content type:
+
+**Tier 1: Navigation Pages** (Discovery, category listings)
+```scss
+.panel--hero {
+  background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-600) 100%);
+  color: white;
+  text-align: center;
+}
+```
+
+**Tier 2: Individual Profiles** (Brands, founders, dimensions)
+```scss
+.panel--hero-subtle {
+  background: radial-gradient(circle at center, var(--primary-300) 0%, var(--primary-500) 100%);
+  color: white;
+  text-align: center;
+}
+```
+
+**Tier 3: Editorial Content** (Insights, articles)
+```scss
+.panel--hero-image {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  
+  &::before {
+    content: '';
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+  }
+}
+```
+
+## Benefits of Linear Architecture
+
+1. **MVP Simplicity:** Single maintainer can manage thousands of profiles without layout complexity
+2. **Mobile-First:** Linear flow works perfectly across all device sizes
+3. **Consistent UX:** Every page follows the same interaction pattern
+4. **Scalable:** Auto-generation friendly with simple template structure
+5. **Accessible:** Semantic sectioning improves screen reader navigation
+6. **Maintainable:** One layout pattern to learn and debug
+
+This architecture provides semantic HTML structure for accessibility and SEO while maintaining the modular, logic-light approach optimized for rapid development and long-term maintenance.
 
 ---
 
@@ -283,18 +335,38 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 - Keep language-specific content in the appropriate language subfolder
 
 ## "Logic Light" Approach
-- Translation strings in `_data/translations/{lang}.yml`; in templates assign them to a local variable:
+**Principle:** Keep templates simple and logic-minimal while maintaining flexibility through structured data and modular includes.
+
+- **Translation strings** in `_data/translations/{lang}.yml`; in templates assign them to a local variable:
    ```liquid
    {% raw %}{% assign t = site.data.translations[current_lang].about %}{% endraw %}
    {{ t.perspective_title | default: "Our Unique Perspective" }}
    ```
- - Example structure:
+
+- **Linear sectioning structure** with minimal front matter:
    ```
-   pages/en/about.md (minimal front matter)
-   _layouts/about.html (loads section includes)
-   _includes/pages/about/hero.html
-   _includes/pages/about/mission.html
+   pages/en/about.md (minimal front matter with sections array)
+   _layouts/about.html (loops through sections array)
+   _includes/pages/about/hero.html (wrapped in panels)
+   _includes/pages/about/mission.html (wrapped in panels)
    ```
+
+- **Section-based content organization** eliminates complex conditional logic:
+   ```liquid
+   {% for section in sections_to_render %}
+     <section class="{{ page.ref }}-section--{{ section }}">
+       <div class="panel panel--light">
+         <div class="panel__content">
+           {% include pages/{{ page.ref }}/{{ section }}.html %}
+         </div>
+       </div>
+     </section>
+   {% endfor %}
+   ```
+
+- **Consistent panel wrapping** ensures visual unity while keeping section includes focused on content only.
+
+**Benefits:** Eliminates sidebar complexity, reduces conditional logic, maintains semantic structure, and scales efficiently for auto-generated content.
 
 ## JavaScript
 - Vanilla JS only (no frameworks)
@@ -702,12 +774,32 @@ Always process brand images after creation using:
 ./_scripts/process_images.sh brands [country_code]-[brand_name]
 ```
 
-I've added a new section titled "🏗️ Page Sectioning Architecture" after the "Two-Tier Content Approach" section. This new section explains the semantic sectioning approach we've implemented, including:
+# 🚨 Important Architecture Guidelines
 
-1. The structure of using semantic `<section>` tags
-2. The consistent class naming pattern (`{page-type}-section--{section-name}`)
-3. The use of IDs and ARIA attributes for accessibility
-4. The pattern for dynamically loading section includes
-5. The corresponding CSS scoping approach
+## Linear Layout Requirements
 
-This addition maintains the existing structure and style of the CLAUDE.md file while providing clear guidance on the new semantic sectioning architecture.
+**CRITICAL:** Brandmine has deliberately eliminated sidebar complexity for MVP simplicity. All new layouts must follow the linear sectioning architecture:
+
+- **NO SIDEBAR LAYOUTS:** Do not create grid-based layouts with sidebar components
+- **NO BOOTSTRAP GRID:** Avoid complex grid systems in favor of simple section flow  
+- **USE PANEL WRAPPING:** All content sections must be wrapped in the panel system
+- **SEMANTIC SECTIONS:** Each section must use proper `<section>` tags with IDs and ARIA attributes
+- **MOBILE-FIRST:** Linear flow ensures consistent behavior across all devices
+
+## Sidebar Elimination Status
+
+As of May 28, 2025, all functional sidebar references have been removed from the codebase:
+- Sidebar CSS files deleted and imports removed
+- All layouts converted to linear sectioning
+- Section includes updated to use `section-content` and `section-title` classes
+- Documentation updated to reflect new architecture
+
+**When adding new content or features, always use the linear sectioning pattern established in existing layouts like `founder-profile.html` and `insight-article.html`.**
+
+---
+
+# important-instruction-reminders
+Do what has been asked; nothing more, nothing less.
+NEVER create files unless they're absolutely necessary for achieving your goal.
+ALWAYS prefer editing an existing file to creating a new one.
+NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.

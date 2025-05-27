@@ -31,21 +31,18 @@ signals: [rapid-growth, export-ready]  # Exact slugs only
 featured: false
 premium: false
 
-# Section Configuration - Market Momentum template
+# Section Configuration - Linear layout (no sidebar)
 sections:
   - breadcrumbs
+  - hero
   - header
   - featured-image
   - content
   - market-chart
   - taxonomy
-
-# Sidebar Configuration
-sidebar_sections:
-  - market-info
+  - brand-info
   - related-insights
   - related-brands
-  - taxonomy-cloud
 
 # Location (flat structure for easier data handling)
 location_lng: 37.2986  # Longitude coordinate (Krasnodar region)

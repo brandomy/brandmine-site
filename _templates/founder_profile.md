@@ -16,11 +16,16 @@ sample_data: true    # Flag for sample/test data
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
-# Each section corresponds to _includes/pages/founder/sections/{section}.html
-sidebar_sections:
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+# Linear layout (no sidebar) - Each section corresponds to _includes/pages/founder/sections/{section}.html
+# Uncomment sections you want to include:
+# sections:
+#   - breadcrumbs
+#   - hero
+#   - professional-details
+#   - content
+#   - associated-brands
+#   - expertise-cloud
+#   - related-insights
 
 # === CORE INFORMATION (Human-friendly entry) ===
 

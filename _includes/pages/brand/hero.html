@@ -1,0 +1,62 @@
+{% comment %}
+  Component: pages/brand/hero.html
+  
+  Purpose: Hero section for individual brand profile pages. Displays brand name,
+           tagline, key information and founding details.
+  
+  Dependencies:
+  - Data: site.data.translations[page.lang].brands
+  - CSS: /assets/css/pages/brand/hero.scss
+  - Parameter: brand (passed from layout)
+  
+  Variables Used:
+  - page.lang: Current language for translations
+  - brand.title: Brand name
+  - brand.tagline: Brand tagline/subtitle
+  - brand.founding_year: Year founded
+  - brand.location: Brand location
+  
+  Classes:
+  - .brand-hero: Main container
+  - .brand-hero__title: Main brand name
+  - .brand-hero__tagline: Brand tagline
+  - .brand-hero__meta: Founding year and location
+  
+  Notes:
+  - Uses panel component for consistent styling
+  - Logic-light approach with translation helper
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+{% assign current_lang = brand.lang | default: 'en' %}
+
+<div class="panel panel--hero-subtle">
+  <div class="panel__content">
+    <div class="brand-hero">
+      <h1 class="brand-hero__title">
+        {{ brand.title }}
+      </h1>
+      
+      {% if brand.tagline %}
+        <p class="brand-hero__tagline">
+          {{ brand.tagline }}
+        </p>
+      {% endif %}
+      
+      <div class="brand-hero__meta">
+        {% if brand.founding_year %}
+          <span class="brand-hero__founded">
+            {% include helpers/t.html key="brands.hero.founded" fallback="Founded" %} {{ brand.founding_year }}
+          </span>
+        {% endif %}
+        
+        {% if brand.location and brand.location.city %}
+          <span class="brand-hero__location">
+            {% include components/separators/bullet-separator.html %}
+            {{ brand.location.city }}{% if brand.location.country %}, {{ brand.location.country }}{% endif %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@
 
 // Import all section component styles
 @import "breadcrumbs";
+@import "hero";
 @import "header";
 @import "featured-image";
 @import "content";
@@ -13,79 +14,24 @@
 @import "map-view";
 @import "market-chart";
 
-// Import sidebar components (imports all sidebar styles)
-@import "sidebar/_index";
+// Import section components (former sidebar components)
+@import "sections/_index";
 
 .insight-article-page {
-  // Base page container
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--space-4) var(--space-6);
-
-  @media (width >= 768px) {
-    padding: var(--space-6) var(--space-8);
-  }
-
-  // Main article layout  
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-
-  @media (width >= 768px) {
-    gap: var(--space-8);
-  }
-
-  @media (width >= 992px) {
-    grid-template-columns: 2fr 1fr;
-    gap: var(--space-12);
-  }
-
-  // Section architecture
+  // Simple linear layout - no sidebar complexity
+  
   .insight-article-section {
     margin-bottom: var(--space-6);
 
-    &--breadcrumbs {
-      grid-column: 1 / -1; // Full width
-      margin-bottom: var(--space-4);
-    }
-
-    &--header {
-      grid-column: 1 / -1; // Full width
-      margin-bottom: var(--space-8);
-    }
-
+    &--breadcrumbs,
+    &--hero,
+    &--header,
     &--featured-image {
-      grid-column: 1 / -1; // Full width
       margin-bottom: var(--space-8);
     }
 
-    &--content {
-      // Main content column
-      @media (width >= 992px) {
-        grid-column: 1;
-      }
-    }
-
-    &--taxonomy {
-      @media (width >= 992px) {
-        grid-column: 1;
-      }
-    }
-  }
-
-  // Sidebar layout
-  .insight-article-sidebar {
-    @media (width >= 992px) {
-      grid-column: 2;
-      grid-row: 4 / -1; // Start from content section
-    }
-
-    .insight-sidebar-section {
-      margin-bottom: var(--space-6);
-      
-      &:last-child {
-        margin-bottom: 0;
-      }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 

@@ -166,7 +166,7 @@
      3. PANEL MODIFIERS (Variations)
      -------------------------------------------------------------------------- */
 
-  /* Hero Panel */
+  /* Hero Panel - Primary (Navigation Pages) */
   .panel--hero {
     background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
     color: white;
@@ -175,7 +175,56 @@
     padding-bottom: var(--space-16);
   }
 
-  .panel--hero .panel__heading-primary {
+  /* Hero Panel - Subtle (Individual Profiles) */
+  .panel--hero-subtle {
+    background: radial-gradient(circle at center, var(--primary-300) 0%, var(--primary-500) 100%);
+    color: white;
+    text-align: center;
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+
+  /* Hero Panel - Image (Editorial Content) */
+  .panel--hero-image {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+
+    /* Dark overlay for text readability */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .panel__content {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (width <= 768px) {
+      min-height: 300px;
+      padding-top: var(--space-16);
+      padding-bottom: var(--space-16);
+    }
+  }
+
+  .panel--hero .panel__heading-primary,
+  .panel--hero-subtle .panel__heading-primary,
+  .panel--hero-image .panel__heading-primary {
     font-size: var(--text-6xl);
     font-weight: var(--font-bold);
     color: var(--secondary-200); /* Changed from white to secondary-200 */
@@ -183,7 +232,9 @@
     text-align: center;
   }
 
-  .panel--hero .panel__subtitle {
+  .panel--hero .panel__subtitle,
+  .panel--hero-subtle .panel__subtitle,
+  .panel--hero-image .panel__subtitle {
     font-size: var(--text-2xl);
     font-weight: var(--font-light);
     color: white;
@@ -191,6 +242,16 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Hero image specific text styling for better contrast */
+  .panel--hero-image .panel__heading-primary {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .panel--hero-image .panel__subtitle {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   }
 
   /* Color variations */
