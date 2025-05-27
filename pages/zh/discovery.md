@@ -5,6 +5,7 @@ permalink: /zh/discovery/
 lang: zh
 ref: discovery
 sections:
+  - breadcrumbs
   - hero
   - dimensions-navigation
   - dimensions-grid

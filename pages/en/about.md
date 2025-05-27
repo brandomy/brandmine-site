@@ -5,6 +5,7 @@ permalink: /en/about/
 lang: en
 ref: about
 sections:
+  - breadcrumbs
   - hero
   - mission
   - problems

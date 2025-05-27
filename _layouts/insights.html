@@ -26,7 +26,7 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "hero,categories,all-insights" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,hero,categories,all-insights" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
@@ -37,7 +37,7 @@ layout: default
     <section class="insights-section insights-section--breadcrumbs"
              id="insights-section-breadcrumbs"
              aria-labelledby="heading-breadcrumbs">
-      {% include pages/insights/breadcrumbs.html %}
+      {% include components/ui/breadcrumbs.html %}
     </section>
   {% endif %}
   

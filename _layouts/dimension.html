@@ -31,18 +31,7 @@ layout: default
   - site.insights collection
 ----------------------------------------------------------------------------- -->
 
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% if page.tag_type == 'sector' or page.tag_type == 'attribute' %}
-    {% assign sections_to_render = "navigation,header,market-highlights,content-panel" | split: "," %}
-  {% elsif page.tag_type == 'market' %}
-    {% assign sections_to_render = "navigation,header,market-sectors,content-panel" | split: "," %}
-  {% else %}
-    {% assign sections_to_render = "navigation,header,content-panel" | split: "," %}
-  {% endif %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
+claude
 
 <div class="dimension-page">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
@@ -50,10 +39,10 @@ layout: default
     <section class="dimension-section dimension-section--breadcrumbs"
              id="dimension-section-breadcrumbs"
              aria-labelledby="heading-breadcrumbs">
-      {% include pages/dimension/breadcrumbs.html dimension=page %}
+      {% include components/ui/breadcrumbs.html %}
     </section>
   {% endif %}
-  
+
   {% for section in sections_to_render %}
     {% unless section == "breadcrumbs" %}
       {% if section == 'content-panel' %}

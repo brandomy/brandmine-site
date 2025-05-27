@@ -6,22 +6,27 @@ layout: default
   Dynamically includes page sections based on front matter arrays
 {% endcomment %}
 
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "breadcrumbs,hero,mission,problems,solutions,team,perspective,services,contact" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+
 <div class="about-page">
-  {% if page.sections %}
-    {% for section in page.sections %}
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    {% include components/ui/breadcrumbs.html %}
+  {% endif %}
+  
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
       <section class="about-section about-section--{{ section }}" id="about-section-{{ section }}" aria-labelledby="heading-{{ section }}">
         {% include pages/about/{{ section }}.html %}
       </section>
-    {% endfor %}
-  {% else %}
-    <!-- Default sections if not specified in front matter -->
-    {% include pages/about/hero.html %}
-    {% include pages/about/mission.html %}
-    {% include pages/about/problems.html %}
-    {% include pages/about/solutions.html %}
-    {% include pages/about/team.html %}
-    {% include pages/about/perspective.html %}
-    {% include pages/about/services.html %}
-    {% include pages/about/contact.html %}
-  {% endif %}
+    {% endunless %}
+  {% endfor %}
 </div>
+
+{% if false %}
+{% endif %}

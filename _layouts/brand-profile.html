@@ -5,7 +5,7 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "identity,founder-narrative,product,location-intelligence,market-presence,growth-signals,connections" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,identity,founder-narrative,product,location-intelligence,market-presence,growth-signals,connections" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
@@ -13,11 +13,7 @@ layout: default
 <div class="brand-profile">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
   {% if sections_to_render contains "breadcrumbs" %}
-    <section class="brand-section brand-section--breadcrumbs"
-             id="brand-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      {% include pages/brand/breadcrumbs.html brand=page %}
-    </section>
+    {% include components/ui/breadcrumbs.html %}
   {% endif %}
   
   {% comment %} All other sections use normal layout {% endcomment %}

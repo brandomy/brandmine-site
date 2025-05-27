@@ -7,6 +7,7 @@ lang: en
 ref: signals
 discovery_path: signals
 sections:
+  - breadcrumbs
   - hero
   - all-signals-grid
   - featured-signals

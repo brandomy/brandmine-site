@@ -9,7 +9,7 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "content" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,content" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
@@ -20,7 +20,7 @@ layout: default
     <section class="search-section search-section--breadcrumbs"
              id="search-section-breadcrumbs"
              aria-labelledby="heading-breadcrumbs">
-      {% include pages/search/breadcrumbs.html %}
+      {% include components/ui/breadcrumbs.html %}
     </section>
   {% endif %}
   

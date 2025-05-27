@@ -2,9 +2,28 @@
 layout: default
 ---
 <!-- Basic Brand Profile Layout for Level 0 Brands -->
-<!-- {% include components/ui/breadcrumbs.html %} -->
 
-<div class="brand-basic-profile">
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "breadcrumbs,content" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+
+<div class="brand-basic-page">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="brand-basic-section brand-basic-section--breadcrumbs"
+             id="brand-basic-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include components/ui/breadcrumbs.html %}
+    </section>
+  {% endif %}
+  
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
+      {% if section == "content" %}
+        <div class="brand-basic-profile">
   <div class="container">
     <!-- Header Section -->
     <header class="brand-basic-header">
@@ -44,156 +63,165 @@ layout: default
     </header>
 
     <!-- Main Content -->
-    <main class="brand-basic-content">
-      <div class="row">
-        <div class="col-lg-8">
-          <!-- Description -->
-          {% if page.description %}
-            <section class="brand-basic-section">
-              <h2>About {{ page.name }}</h2>
-              <p class="brand-basic-description">{{ page.description }}</p>
-            </section>
-          {% endif %}
-
-          <!-- Key Information -->
-          <section class="brand-basic-section">
-            <h2>Key Information</h2>
-            <div class="brand-basic-info-grid">
-              {% if page.sectors and page.sectors.size > 0 %}
-                <div class="info-item">
-                  <strong>Industry:</strong>
-                  {% for sector in page.sectors %}
-                    {% assign sector_data = site.data.dimensions.sectors[sector] %}
-                    {% if sector_data %}
-                      <span class="dimension dimension--sector">
-                        {{ sector_data.translations[page.lang].name | default: sector }}
-                      </span>
-                    {% else %}
-                      <span class="dimension dimension--sector">{{ sector }}</span>
-                    {% endif %}
-                  {% endfor %}
-                </div>
+        <main class="brand-basic-content">
+          <div class="row">
+            <div class="col-lg-8">
+              <!-- Description -->
+              {% if page.description %}
+                <section class="brand-basic-section">
+                  <h2>About {{ page.name }}</h2>
+                  <p class="brand-basic-description">{{ page.description }}</p>
+                </section>
               {% endif %}
 
-              {% if page.markets and page.markets.size > 0 %}
-                <div class="info-item">
-                  <strong>Market:</strong>
-                  {% for market in page.markets %}
-                    {% assign market_data = site.data.dimensions.markets[market] %}
-                    {% if market_data %}
-                      <span class="dimension dimension--market">
-                        {{ market_data.translations[page.lang].name | default: market }}
-                      </span>
-                    {% else %}
-                      <span class="dimension dimension--market">{{ market }}</span>
-                    {% endif %}
-                  {% endfor %}
+              <!-- Key Information -->
+              <section class="brand-basic-section">
+                <h2>Key Information</h2>
+                <div class="brand-basic-info-grid">
+                  {% if page.sectors and page.sectors.size > 0 %}
+                    <div class="info-item">
+                      <strong>Industry:</strong>
+                      {% for sector in page.sectors %}
+                        {% assign sector_data = site.data.dimensions.sectors[sector] %}
+                        {% if sector_data %}
+                          <span class="dimension dimension--sector">
+                            {{ sector_data.translations[page.lang].name | default: sector }}
+                          </span>
+                        {% else %}
+                          <span class="dimension dimension--sector">{{ sector }}</span>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% if page.markets and page.markets.size > 0 %}
+                    <div class="info-item">
+                      <strong>Market:</strong>
+                      {% for market in page.markets %}
+                        {% assign market_data = site.data.dimensions.markets[market] %}
+                        {% if market_data %}
+                          <span class="dimension dimension--market">
+                            {{ market_data.translations[page.lang].name | default: market }}
+                          </span>
+                        {% else %}
+                          <span class="dimension dimension--market">{{ market }}</span>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% if page.founding_year %}
+                    <div class="info-item">
+                      <strong>Founded:</strong> {{ page.founding_year }}
+                    </div>
+                  {% endif %}
+
+                  {% if page.location.city %}
+                    <div class="info-item">
+                      <strong>Location:</strong>
+                      {{ page.location.city }}{% if page.location.region %}, {{ page.location.region }}{% endif %}
+                    </div>
+                  {% endif %}
                 </div>
-              {% endif %}
+              </section>
 
-              {% if page.founding_year %}
-                <div class="info-item">
-                  <strong>Founded:</strong> {{ page.founding_year }}
+              <!-- Call to Action -->
+              <section class="brand-basic-cta">
+                <div class="alert alert--info">
+                  <h3>Know this brand?</h3>
+                  <p>Help us improve this profile by sharing more information about {{ page.name }}.</p>
+                  <a href="/{{ page.lang }}/contact/?subject=Brand Update: {{ page.name | url_encode }}" class="btn btn--outline">
+                    Submit Information
+                  </a>
                 </div>
-              {% endif %}
-
-              {% if page.location.city %}
-                <div class="info-item">
-                  <strong>Location:</strong>
-                  {{ page.location.city }}{% if page.location.region %}, {{ page.location.region }}{% endif %}
-                </div>
-              {% endif %}
-            </div>
-          </section>
-
-          <!-- Call to Action -->
-          <section class="brand-basic-cta">
-            <div class="alert alert--info">
-              <h3>Know this brand?</h3>
-              <p>Help us improve this profile by sharing more information about {{ page.name }}.</p>
-              <a href="/{{ page.lang }}/contact/?subject=Brand Update: {{ page.name | url_encode }}" class="btn btn--outline">
-                Submit Information
-              </a>
-            </div>
-          </section>
-        </div>
-
-        <!-- Sidebar -->
-        <aside class="col-lg-4">
-          <div class="brand-basic-sidebar">
-            <!-- Quick Facts -->
-            <div class="sidebar-section">
-              <h3>Quick Facts</h3>
-              <ul class="fact-list">
-                {% if page.founding_year %}
-                  <li><strong>Founded:</strong> {{ page.founding_year }}</li>
-                {% endif %}
-                {% if page.location.country %}
-                  {% assign country_name = site.data.countries[page.location.country].name[page.lang] %}
-                  <li><strong>Country:</strong> {{ country_name }}</li>
-                {% endif %}
-                {% if page.sectors and page.sectors.size > 0 %}
-                  <li><strong>Industry:</strong>
-                    {% for sector in page.sectors %}
-                      {% assign sector_data = site.data.dimensions.sectors[sector] %}
-                      {{ sector_data.translations[page.lang].name | default: sector }}{% unless forloop.last %}, {% endunless %}
-                    {% endfor %}
-                  </li>
-                {% endif %}
-                <li><strong>Profile Level:</strong> Basic</li>
-              </ul>
+              </section>
             </div>
 
-            <!-- Related Brands -->
-            {% if page.sectors and page.sectors.size > 0 %}
-              {% assign related_brands = site.data.brands | where_exp: "brand", "brand.sectors" | sample: 3 %}
-              {% if related_brands and related_brands.size > 0 %}
+            <!-- Sidebar -->
+            <aside class="col-lg-4">
+              <div class="brand-basic-sidebar">
+                <!-- Quick Facts -->
                 <div class="sidebar-section">
-                  <h3>Similar Brands</h3>
-                  <div class="related-brands-list">
-                    {% for brand in related_brands limit: 3 %}
-                      {% if brand.id != page.id %}
-                        <a href="/{{ page.lang }}/brands/{{ brand.id }}/" class="related-brand-item">
-                          <strong>{{ brand.name[page.lang] | default: brand.name.en }}</strong>
-                          <span class="brand-location">{{ brand.location.city }}, {{ brand.location.region }}</span>
+                  <h3>Quick Facts</h3>
+                  <ul class="fact-list">
+                    {% if page.founding_year %}
+                      <li><strong>Founded:</strong> {{ page.founding_year }}</li>
+                    {% endif %}
+                    {% if page.location.country %}
+                      {% assign country_name = site.data.countries[page.location.country].name[page.lang] %}
+                      <li><strong>Country:</strong> {{ country_name }}</li>
+                    {% endif %}
+                    {% if page.sectors and page.sectors.size > 0 %}
+                      <li><strong>Industry:</strong>
+                        {% for sector in page.sectors %}
+                          {% assign sector_data = site.data.dimensions.sectors[sector] %}
+                          {{ sector_data.translations[page.lang].name | default: sector }}{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                      </li>
+                    {% endif %}
+                    <li><strong>Profile Level:</strong> Basic</li>
+                  </ul>
+                </div>
+
+                <!-- Related Brands -->
+                {% if page.sectors and page.sectors.size > 0 %}
+                  {% assign related_brands = site.data.brands | where_exp: "brand", "brand.sectors" | sample: 3 %}
+                  {% if related_brands and related_brands.size > 0 %}
+                    <div class="sidebar-section">
+                      <h3>Similar Brands</h3>
+                      <div class="related-brands-list">
+                        {% for brand in related_brands limit: 3 %}
+                          {% if brand.id != page.id %}
+                            <a href="/{{ page.lang }}/brands/{{ brand.id }}/" class="related-brand-item">
+                              <strong>{{ brand.name[page.lang] | default: brand.name.en }}</strong>
+                              <span class="brand-location">{{ brand.location.city }}, {{ brand.location.region }}</span>
+                            </a>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endif %}
+
+                <!-- Explore More -->
+                <div class="sidebar-section">
+                  <h3>Explore More</h3>
+                  <div class="explore-links">
+                    {% if page.sectors and page.sectors.size > 0 %}
+                      {% for sector in page.sectors limit: 1 %}
+                        <a href="/{{ page.lang }}/discover/sectors/{{ sector }}/" class="explore-link">
+                          More {{ site.data.dimensions.sectors[sector].translations[page.lang].name | default: sector }} Brands
                         </a>
-                      {% endif %}
-                    {% endfor %}
+                      {% endfor %}
+                    {% endif %}
+
+                    {% if page.markets and page.markets.size > 0 %}
+                      {% for market in page.markets limit: 1 %}
+                        <a href="/{{ page.lang }}/discover/markets/{{ market }}/" class="explore-link">
+                          More Brands from {{ site.data.dimensions.markets[market].translations[page.lang].name | default: market }}
+                        </a>
+                      {% endfor %}
+                    {% endif %}
+
+                    <a href="/{{ page.lang }}/brands/" class="explore-link">
+                      Browse All Brands
+                    </a>
                   </div>
                 </div>
-              {% endif %}
-            {% endif %}
-
-            <!-- Explore More -->
-            <div class="sidebar-section">
-              <h3>Explore More</h3>
-              <div class="explore-links">
-                {% if page.sectors and page.sectors.size > 0 %}
-                  {% for sector in page.sectors limit: 1 %}
-                    <a href="/{{ page.lang }}/discover/sectors/{{ sector }}/" class="explore-link">
-                      More {{ site.data.dimensions.sectors[sector].translations[page.lang].name | default: sector }} Brands
-                    </a>
-                  {% endfor %}
-                {% endif %}
-
-                {% if page.markets and page.markets.size > 0 %}
-                  {% for market in page.markets limit: 1 %}
-                    <a href="/{{ page.lang }}/discover/markets/{{ market }}/" class="explore-link">
-                      More Brands from {{ site.data.dimensions.markets[market].translations[page.lang].name | default: market }}
-                    </a>
-                  {% endfor %}
-                {% endif %}
-
-                <a href="/{{ page.lang }}/brands/" class="explore-link">
-                  Browse All Brands
-                </a>
               </div>
-            </div>
+            </aside>
           </div>
-        </aside>
-      </div>
-    </main>
-  </div>
+        </main>
+        </div>
+      {% else %}
+        <section class="brand-basic-section brand-basic-section--{{ section }}"
+                 id="brand-basic-section-{{ section }}"
+                 aria-labelledby="heading-{{ section }}">
+          {% include pages/brand-basic/{{ section }}.html brand=page %}
+        </section>
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
 </div>
 
 <!-- Schema Markup for SEO -->

@@ -1,119 +1,73 @@
 /* ==========================================================================
-   UI Component: Breadcrumbs Navigation
+   UI Component: Breadcrumbs Navigation (Seamless Teal Style)
    ========================================================================== */
 
+/* Breadcrumbs wrapper for full-width teal background */
+.breadcrumbs-wrapper {
+  margin: 0;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 8px 0;
+  background-color: var(--primary-50); // Light teal
+  border-bottom: none;
+}
+
 .breadcrumbs {
-  margin-bottom: var(--space-4);
-  font-size: var(--text-sm);
-  
-  @media (min-width: 768px) {
-    margin-bottom: var(--space-6);
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
+  .back-link {
+    display: inline-flex;
     align-items: center;
     gap: var(--space-1);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-  }
-
-  &__link {
-    color: var(--neutral-600);
+    color: var(--primary-600);
     text-decoration: none;
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-sm);
-    transition: all 0.2s ease;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    transition: color 0.2s ease;
     
     &:hover {
-      color: var(--brand-primary);
-      background-color: var(--neutral-100);
+      color: var(--primary-700);
       text-decoration: underline;
     }
-
-    &:focus {
-      outline: 2px solid var(--brand-primary);
-      outline-offset: 2px;
-    }
   }
+}
 
-  &__separator {
-    color: var(--neutral-400);
-    font-size: var(--text-xs);
-    margin: 0 var(--space-1);
-    user-select: none;
+/* Seamless connection: Remove top spacing from hero sections that follow breadcrumbs */
+.breadcrumbs-wrapper + *,
+.breadcrumbs-wrapper + .panel,
+.breadcrumbs-wrapper + div > .panel:first-child {
+  margin-top: 0;
+  border-top: none;
+  
+  .panel {
+    border-top: none;
+    margin-top: 0;
+    padding-top: var(--space-16); // Maintain internal padding
   }
+}
 
-  &__current {
-    color: var(--neutral-800);
-    font-weight: var(--font-medium);
-    padding: var(--space-1) var(--space-2);
-  }
+/* Page-specific seamless connections */
+.about-page .breadcrumbs-wrapper + * .about-section--hero,
+.discovery-page .breadcrumbs-wrapper + * .discovery-section--hero,
+.discover-page .breadcrumbs-wrapper + * .panel {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
 }
 
 /* Responsive adjustments */
 @media (max-width: 480px) {
+  .breadcrumbs-wrapper {
+    padding: 6px 0;
+  }
+  
   .breadcrumbs {
-    &__list {
-      gap: 0;
-    }
+    padding: 0 12px;
     
-    &__link,
-    &__current {
-      padding: var(--space-1);
+    .back-link {
       font-size: var(--text-xs);
     }
-    
-    &__separator {
-      margin: 0 2px;
-    }
-  }
-}
-
-/* Light theme variant */
-.breadcrumbs--light {
-  .breadcrumbs__link {
-    color: var(--neutral-500);
-    
-    &:hover {
-      color: var(--brand-primary);
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  }
-  
-  .breadcrumbs__separator {
-    color: var(--neutral-400);
-  }
-  
-  .breadcrumbs__current {
-    color: var(--neutral-700);
-  }
-}
-
-/* Dark theme variant */
-.breadcrumbs--dark {
-  .breadcrumbs__link {
-    color: var(--neutral-300);
-    
-    &:hover {
-      color: var(--brand-primary-light);
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-  }
-  
-  .breadcrumbs__separator {
-    color: var(--neutral-500);
-  }
-  
-  .breadcrumbs__current {
-    color: var(--neutral-100);
   }
 }

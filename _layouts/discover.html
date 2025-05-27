@@ -24,11 +24,7 @@ layout: default
 <div class="discover-page">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
   {% if sections_to_render contains "breadcrumbs" %}
-    <section class="discover-section discover-section--breadcrumbs"
-             id="discover-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      {% include pages/discover/breadcrumbs.html %}
-    </section>
+    {% include components/ui/breadcrumbs.html %}
   {% endif %}
   
   <!-- Dimension Types under Discover Section-->

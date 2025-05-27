@@ -16,7 +16,7 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "hero,intro,search,features,brands-grid,featured-brands,recent-brands,find-partner,contact-cta" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,hero,intro,search,features,brands-grid,featured-brands,recent-brands,find-partner,contact-cta" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
@@ -27,7 +27,7 @@ layout: default
     <section class="brands-section brands-section--breadcrumbs"
              id="brands-section-breadcrumbs"
              aria-labelledby="heading-breadcrumbs">
-      {% include pages/brands/breadcrumbs.html %}
+      {% include components/ui/breadcrumbs.html %}
     </section>
   {% endif %}
   

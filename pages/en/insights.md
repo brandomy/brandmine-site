@@ -9,12 +9,11 @@ sections:
   - breadcrumbs
   - hero
   - category-navigation
-  # - featured-insights
-  # - insights-search
   - categories
   - category-highlights
+  # - featured-insights
+  # - insights-search
   - all-insights
   # - subscribe
   - contact-cta
 ---
-

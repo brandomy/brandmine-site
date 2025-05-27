@@ -7,6 +7,7 @@ lang: en
 ref: markets
 discovery_path: markets
 sections:
+  - breadcrumbs
   - hero
   - all-markets-grid
   - featured-markets

@@ -5,6 +5,7 @@ permalink: /ru/discovery/
 lang: ru
 ref: discovery
 sections:
+  - breadcrumbs
   - hero
   - dimensions-navigation
   - dimensions-grid

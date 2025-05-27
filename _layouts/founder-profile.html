@@ -7,7 +7,7 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "header,content" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,header,content" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
@@ -18,7 +18,7 @@ layout: default
     <section class="founder-section founder-section--breadcrumbs"
              id="founder-section-breadcrumbs"
              aria-labelledby="heading-breadcrumbs">
-      {% include pages/founder/breadcrumbs.html founder=page %}
+      {% include components/ui/breadcrumbs.html %}
     </section>
   {% endif %}
   

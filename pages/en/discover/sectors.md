@@ -7,6 +7,7 @@ lang: en
 ref: sectors
 discovery_path: sectors
 sections:
+  - breadcrumbs
   - hero
   - all-sectors-grid
   - russian-focus

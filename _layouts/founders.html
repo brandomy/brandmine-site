@@ -21,7 +21,7 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "header,content,filter-interface,founders-grid,featured-founders,recent-founders" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,header,content,filter-interface,founders-grid,featured-founders,recent-founders" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
@@ -34,7 +34,7 @@ layout: default
         <section class="founders-section founders-section--breadcrumbs"
                  id="founders-section-breadcrumbs"
                  aria-labelledby="heading-breadcrumbs">
-          {% include pages/founders/breadcrumbs.html %}
+          {% include components/ui/breadcrumbs.html %}
         </section>
       {% endif %}
       

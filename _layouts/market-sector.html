@@ -9,6 +9,7 @@ layout: default
 
   Uses page.sections array in front matter to define content sections:
   sections:
+    - breadcrumbs
     - hero
     - hero-image (optional)
     - overview
@@ -20,22 +21,33 @@ layout: default
   If no sections are specified, displays the default set without hero-image.
 {% endcomment %}
 
-<!-- {% include components/ui/breadcrumbs.html %} -->
-
 {% assign market_slug = page.market %}
 {% assign sector_slug = page.sector %}
 
-{% if page.sections %}
-  {% for section in page.sections %}
-    {% assign section_path = 'pages/market-sector/' | append: section | append: '.html' %}
-    {% include {{ section_path }} market=market_slug sector=sector_slug %}
-  {% endfor %}
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "breadcrumbs,hero,overview,statistics,regions,related-brands,cross-navigation" | split: "," %}
 {% else %}
-  <!-- Default sections if none specified -->
-  {% include pages/market-sector/hero.html market=market_slug sector=sector_slug %}
-  {% include pages/market-sector/overview.html market=market_slug sector=sector_slug %}
-  {% include pages/market-sector/statistics.html market=market_slug sector=sector_slug %}
-  {% include pages/market-sector/regions.html market=market_slug sector=sector_slug %}
-  {% include pages/market-sector/related-brands.html market=market_slug sector=sector_slug %}
-  {% include pages/market-sector/cross-navigation.html market=market_slug sector=sector_slug %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+
+<div class="market-sector-page">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="market-sector-section market-sector-section--breadcrumbs"
+             id="market-sector-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include components/ui/breadcrumbs.html %}
+    </section>
+  {% endif %}
+  
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
+      {% assign section_path = 'pages/market-sector/' | append: section | append: '.html' %}
+      {% include {{ section_path }} market=market_slug sector=sector_slug %}
+    {% endunless %}
+  {% endfor %}
+</div>
+
+{% if false %}
 {% endif %}

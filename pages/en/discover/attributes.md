@@ -7,6 +7,7 @@ lang: en
 ref: attributes
 discovery_path: attributes
 sections:
+  - breadcrumbs
   - hero
   - all-attributes-grid
   - featured-attributes

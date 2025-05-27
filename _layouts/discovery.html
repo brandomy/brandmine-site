@@ -2,16 +2,31 @@
 layout: default
 ---
 <!-- Discovery layout for the discovery hub page -->
-<!-- {% include components/ui/breadcrumbs.html %} -->
 
-{% if page.sections %}
-  {% for section in page.sections %}
-    <section class="discovery-section discovery-section--{{ section }}" id="discovery-section-{{ section }}" aria-labelledby="heading-{{ section }}">
-      {% include pages/discovery/{{ section }}.html %}
-    </section>
-  {% endfor %}
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "breadcrumbs,hero,dimensions-grid,featured-brands,latest-insights,contact-cta" | split: "," %}
 {% else %}
-  {{ content }}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+
+<div class="discovery-page">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    {% include components/ui/breadcrumbs.html %}
+  {% endif %}
+  
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
+      <section class="discovery-section discovery-section--{{ section }}" id="discovery-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+        {% include pages/discovery/{{ section }}.html %}
+      </section>
+    {% endunless %}
+  {% endfor %}
+</div>
+
+{% if false %}
+{{ content }}
 {% endif %}
 
 <!-- Discovery-specific JavaScript -->
