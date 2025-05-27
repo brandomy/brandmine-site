@@ -6,6 +6,7 @@ lang: zh
 ref: discovery
 sections:
   - hero
+  - dimensions-navigation
   - dimensions-grid
   - featured-brands
   - latest-insights

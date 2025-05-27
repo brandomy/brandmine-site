@@ -6,6 +6,7 @@ lang: en
 ref: discovery
 sections:
   - hero
+  - dimensions-navigation
   # - universal-search
   - dimensions-grid
   - featured-brands
