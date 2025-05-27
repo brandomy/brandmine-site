@@ -6,6 +6,7 @@ permalink: /en/founders/
 lang: en
 ref: founders
 sections:
+  - breadcrumbs
   - header
   - content
   - filter-interface

@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+{% comment %}
+  Layout: insight-category.html
+  
+  Used for displaying insights filtered by category, such as:
+    - /en/insights/categories/brand-spotlight/
+    - /en/insights/categories/founders-journey/
+
+  Purpose:
+  - Displays all insights of a specific category type
+  - Uses section-based architecture for modularity
+  - Supports configurable sections via page front matter
+
+  Dependencies:
+  - Section includes in _includes/pages/insights-category/
+  - Translation helper include for multilingual labels
+  - _includes/components/cards/insight-card.html for insight display
+
+  Page Front Matter Requirements:
+  - ref: insights-categories-{category}
+  - sections: array of section names to include
+  - insight_type: category slug for filtering
+{% endcomment %}
+
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "breadcrumbs,hero,content,insights-grid" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+
+<div class="insights-category-page" data-insight-type="{{ page.insight_type }}">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="insights-category-section insights-category-section--breadcrumbs"
+             id="insights-category-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include pages/insights-category/breadcrumbs.html %}
+    </section>
+  {% endif %}
+  
+  {% comment %} All other sections use panel system {% endcomment %}
+  <div class="panel panel--light">
+    <div class="panel__content">
+      {% for section in sections_to_render %}
+        {% unless section == "breadcrumbs" %}
+          <section class="insights-category-section insights-category-section--{{ section }}"
+                   id="insights-category-section-{{ section }}"
+                   aria-labelledby="heading-{{ section }}"
+                   data-insight-type="{{ page.insight_type }}">
+            {% include pages/insights-category/{{ section }}.html %}
+          </section>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

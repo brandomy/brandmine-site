@@ -5,6 +5,7 @@ permalink: /zh/brands/
 lang: zh
 ref: brands
 sections:
+  - breadcrumbs
   - hero
   - intro
   - search

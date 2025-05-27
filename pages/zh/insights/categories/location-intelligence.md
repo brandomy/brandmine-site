@@ -1,25 +1,20 @@
 ---
-layout: insights-type
+layout: insight-category
 title: "地理洞察"
 permalink: /zh/insights/categories/location-intelligence/
 lang: zh
-insight_type: "location-intelligence"  
+insight_type: "location-intelligence"
 description: "对塑造品牌发展和商机的地理洞察和区域背景的分析。"
+ref: insights-categories-location-intelligence
+sections:
+  - breadcrumbs
+  - hero
+  - content
+  - insights-grid
+  # - subscribe
+  - contact-cta
 ---
 
 ## 地理洞察
 
-发现地理、区域趋势和空间因素如何影响金砖+地区的品牌发展和市场机遇。
-
-{% assign empty_array = "" | split: "" %}
-{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
-
-<div class="insights-grid">
-  {% for insight in type_insights %}
-    {% include components/cards/insight-card.html insight=insight %}
-  {% endfor %}
-</div>
-
-{% if type_insights.size == 0 %}
-  <p class="no-insights">地理洞察暂时无法提供。请稍后查看！</p>
-{% endif %}
+探索塑造品牌发展和商机的地理洞察和区域背景。这些洞察揭示了地理位置如何影响金砖国家+品牌的发展轨迹。

@@ -5,6 +5,7 @@ permalink: /en/brands/
 lang: en
 ref: brands
 sections:
+  - breadcrumbs
   - hero
   - intro
   - search

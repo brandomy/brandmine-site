@@ -1,25 +1,20 @@
 ---
-layout: insights-type  
+layout: insight-category
 title: "创始人之路"
 permalink: /zh/insights/categories/founders-journey/
 lang: zh
 insight_type: "founders-journey"
 description: "品牌背后人物及其创业历程的故事。"
+ref: insights-categories-founders-journey
+sections:
+  - breadcrumbs
+  - hero
+  - content
+  - insights-grid
+  # - subscribe
+  - contact-cta
 ---
 
-## 创始人之路
+## 创始人之路洞察
 
-品牌背后人物及其创业历程的故事。
-
-{% assign empty_array = "" | split: "" %}
-{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
-
-<div class="insights-grid">
-  {% for insight in type_insights %}
-    {% include components/cards/insight-card.html insight=insight %}
-  {% endfor %}
-</div>
-
-{% if type_insights.size == 0 %}
-  <p class="no-insights">创始人故事暂时无法提供。请稍后查看！</p>
-{% endif %}
+探索金砖国家+品牌背后的个人故事和创造它们的有远见的人们。这些洞察揭示了推动创新的企业家精神和决心。

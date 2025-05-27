@@ -3,7 +3,12 @@ layout: default
 ---
 <!-- DISCOVER DIMENSION CATEGORY WRAPPER LAYOUT (LOGIC-LIGHT REFACTORED) -->
 
-<!-- {% include components/ui/breadcrumbs.html %} -->
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "content" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
 
 {% assign container_class = '' %}
 {% if page.discovery_path == 'sectors' %}
@@ -16,21 +21,34 @@ layout: default
   {% assign container_class = 'discovery-tabs-container--signals' %}
 {% endif %}
 
-<!-- Dimension Types under Discover Section-->
-{% include components/dimensions/discovery-navigation.html style_option='b' active_type=page.discovery_path %}
+<div class="discover-page">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="discover-section discover-section--breadcrumbs"
+             id="discover-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include pages/discover/breadcrumbs.html %}
+    </section>
+  {% endif %}
+  
+  <!-- Dimension Types under Discover Section-->
+  {% include components/dimensions/discovery-navigation.html style_option='b' active_type=page.discovery_path %}
 
-<!-- Main Content Panel - with discovery-content modifier to remove top padding -->
-<div class="panel panel--light panel--discovery-content">
-  <div class="panel__content panel__content--full-width">
-    <div class="discovery__content">
-      {% if page.sections %}
-        {% for section in page.sections %}
-          {% assign section_path = 'pages/discover/' | append: section | append: '.html' %}
-          {% include {{ section_path }} discovery_path=page.discovery_path %}
+  <!-- Main Content Panel - with discovery-content modifier to remove top padding -->
+  <div class="panel panel--light panel--discovery-content">
+    <div class="panel__content panel__content--full-width">
+      <div class="discovery__content">
+        {% for section in sections_to_render %}
+          {% unless section == "breadcrumbs" %}
+            {% if section == "content" %}
+              {{ content }}
+            {% else %}
+              {% assign section_path = 'pages/discover/' | append: section | append: '.html' %}
+              {% include {{ section_path }} discovery_path=page.discovery_path %}
+            {% endif %}
+          {% endunless %}
         {% endfor %}
-      {% else %}
-        {{ content }}
-      {% endif %}
+      </div>
     </div>
   </div>
 </div>

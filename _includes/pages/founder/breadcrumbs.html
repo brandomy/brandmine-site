@@ -1,0 +1,17 @@
+{% comment %}
+  Section: founder/breadcrumbs.html
+  
+  Displays breadcrumb navigation for individual founder profile pages
+  Note: This section intentionally breaks out of the panel system for seamless header integration
+  
+  Dependencies:
+  - site.data.translations for founders navigation labels
+{% endcomment %}
+
+<div class="founder-breadcrumbs-wrapper">
+  <nav class="founder-breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/founders/" class="back-link">
+      ← {{ site.data.translations[page.lang].navigation.founders | default: "Founders" }}
+    </a>
+  </nav>
+</div>

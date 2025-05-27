@@ -1,14 +1,16 @@
 ---
-layout: default
+layout: search
 title: Search Results
 permalink: /en/search/
 lang: en
 ref: search
+sections:
+  - breadcrumbs
+  - content
 ---
 
-<div class="panel panel--light search-results-page">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">Search Results</h1>
+<div class="search-results-page">
+  <h1 class="panel__heading-primary">Search Results</h1>
     
     <div class="search-box">
       <form id="search-form" action="{{ site.baseurl }}/{{ page.lang }}/search/" method="get">
@@ -34,7 +36,6 @@ ref: search
     <div id="search-results" class="search-results">
       <p class="search-results__loading">Loading search results...</p>
     </div>
-  </div>
 </div>
 
 <script>

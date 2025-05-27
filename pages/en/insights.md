@@ -6,6 +6,7 @@ ref: insights
 permalink: /en/insights/
 lang: en
 sections:
+  - breadcrumbs
   - hero
   # - featured-insights
   # - insights-search

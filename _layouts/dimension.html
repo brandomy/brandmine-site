@@ -14,6 +14,7 @@ layout: default
   - Falls back to default sections if none specified
 
   Sections typically used in dimension page front matter:
+  - breadcrumbs (optional)
   - navigation (required)
   - header (required)
   - market-highlights (for sector and attribute pages)
@@ -30,55 +31,56 @@ layout: default
   - site.insights collection
 ----------------------------------------------------------------------------- -->
 
-<!-- {% include components/ui/breadcrumbs.html %} -->
-
-{% if page.sections %}
-  {% for section in page.sections %}
-    {% if section == 'content-panel' %}
-      <!-- Content panel is a special case containing multiple sub-sections -->
-      <div class="panel panel--light">
-        <div class="panel__content">
-          {% if page.panel_sections %}
-            {% for panel_section in page.panel_sections %}
-              {% assign panel_section_path = 'pages/dimension/' | append: panel_section | append: '.html' %}
-              {% include {{ panel_section_path }} dimension=page %}
-            {% endfor %}
-          {% else %}
-            <!-- Default panel sections if not specified -->
-            {% include pages/dimension/featured-brands.html dimension=page %}
-            {% include pages/dimension/related-brands.html dimension=page %}
-            {% include pages/dimension/all-brands.html dimension=page %}
-            {% include pages/dimension/related-insights.html dimension=page %}
-          {% endif %}
-        </div>
-      </div>
-    {% else %}
-      {% assign section_path = 'pages/dimension/' | append: section | append: '.html' %}
-      {% include {{ section_path }} dimension=page %}
-    {% endif %}
-  {% endfor %}
-{% else %}
-  <!-- Fallback to default sections if none specified -->
-  {% include pages/dimension/navigation.html dimension=page %}
-  {% include pages/dimension/header.html dimension=page %}
-
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
   {% if page.tag_type == 'sector' or page.tag_type == 'attribute' %}
-    {% include pages/dimension/market-highlights.html dimension=page %}
+    {% assign sections_to_render = "navigation,header,market-highlights,content-panel" | split: "," %}
+  {% elsif page.tag_type == 'market' %}
+    {% assign sections_to_render = "navigation,header,market-sectors,content-panel" | split: "," %}
+  {% else %}
+    {% assign sections_to_render = "navigation,header,content-panel" | split: "," %}
   {% endif %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
 
-  {% if page.tag_type == 'market' %}
-    {% include pages/dimension/market-sectors.html dimension=page %}
+<div class="dimension-page">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="dimension-section dimension-section--breadcrumbs"
+             id="dimension-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include pages/dimension/breadcrumbs.html dimension=page %}
+    </section>
   {% endif %}
-
-  <div class="panel panel--light">
-    <div class="panel__content">
-      {% include pages/dimension/featured-brands.html dimension=page %}
-      {% include pages/dimension/related-brands.html dimension=page %}
-      {% include pages/dimension/all-brands.html dimension=page %}
-      {% include pages/dimension/related-insights.html dimension=page %}
-    </div>
-  </div>
-{% endif %}
+  
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
+      {% if section == 'content-panel' %}
+        <!-- Content panel is a special case containing multiple sub-sections -->
+        <div class="panel panel--light">
+          <div class="panel__content">
+            {% if page.panel_sections %}
+              {% for panel_section in page.panel_sections %}
+                {% assign panel_section_path = 'pages/dimension/' | append: panel_section | append: '.html' %}
+                {% include {{ panel_section_path }} dimension=page %}
+              {% endfor %}
+            {% else %}
+              <!-- Default panel sections if not specified -->
+              {% include pages/dimension/featured-brands.html dimension=page %}
+              {% include pages/dimension/related-brands.html dimension=page %}
+              {% include pages/dimension/all-brands.html dimension=page %}
+              {% include pages/dimension/related-insights.html dimension=page %}
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        {% assign section_path = 'pages/dimension/' | append: section | append: '.html' %}
+        {% include {{ section_path }} dimension=page %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+</div>
 
 <!-- Reference the external JS file instead of inline script -->
 <script src="{{ '/assets/js/pages/dimension/dimension-filtering.js' | relative_url }}"></script>

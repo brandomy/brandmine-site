@@ -1,0 +1,48 @@
+// founders page: breadcrumbs section (outside panel system)
+.founders-page {
+  .founders-section--breadcrumbs {
+    margin: 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 8px 0; // Reduced padding for less real estate
+    background-color: var(--primary-50); // Light teal
+    border-bottom: none; // Remove bottom border to connect with hero
+    
+    .founders-breadcrumbs-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    
+    .founders-breadcrumbs {
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-1);
+        color: var(--primary-600);
+        text-decoration: none;
+        font-size: var(--text-sm);
+        font-weight: var(--font-medium);
+        transition: color 0.2s ease;
+        
+        &:hover {
+          color: var(--primary-700);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  // Remove top border/margin from header section to connect seamlessly with breadcrumbs
+  .founders-section--header {
+    margin-top: 0;
+    border-top: none;
+
+    .panel {
+      border: none;
+      border-top: none;
+      margin-top: 0;
+      padding-top: var(--space-16); // Maintain section padding but remove border
+    }
+  }
+}

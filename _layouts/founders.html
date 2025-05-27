@@ -19,15 +19,29 @@ layout: default
   - site.data.dimensions for taxonomy translations
 {% endcomment %}
 
-<!-- {% include components/ui/breadcrumbs.html %} -->
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "header,content,filter-interface,founders-grid,featured-founders,recent-founders" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
 
 <main class="layout founders-page">
   <div class="layout__wrapper">
     <div class="layout__content">
+      {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+      {% if sections_to_render contains "breadcrumbs" %}
+        <section class="founders-section founders-section--breadcrumbs"
+                 id="founders-section-breadcrumbs"
+                 aria-labelledby="heading-breadcrumbs">
+          {% include pages/founders/breadcrumbs.html %}
+        </section>
+      {% endif %}
+      
       {{ content }}
 
-      {% if page.sections %}
-        {% for section in page.sections %}
+      {% for section in sections_to_render %}
+        {% unless section == "breadcrumbs" %}
           {% if section == "founders-grid" %}
             <!-- Panel wrapper for founders grid -->
             <section class="founders-section founders-section--{{ section }}" id="founders-section-{{ section }}" aria-labelledby="heading-{{ section }}">
@@ -42,23 +56,8 @@ layout: default
               {% include pages/founders/{{ section }}.html %}
             </section>
           {% endif %}
-        {% endfor %}
-      {% else %}
-        <!-- Default sections if not specified in front matter -->
-        {% include pages/founders/header.html %}
-        {% include pages/founders/content.html %}
-        {% include pages/founders/filter-interface.html %}
-
-        <!-- Panel wrapper for founders grid -->
-        <div class="panel panel--light">
-          <div class="panel__content">
-            {% include pages/founders/founders-grid.html %}
-          </div>
-        </div>
-
-        {% include pages/founders/featured-founders.html %}
-        {% include pages/founders/recent-founders.html %}
-      {% endif %}
+        {% endunless %}
+      {% endfor %}
     </div>
   </div>
 </main>

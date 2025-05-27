@@ -14,28 +14,31 @@ layout: default
   - Creates semantic <section> elements for better accessibility and SEO
 ---------------------------------------------------------------------------- -->
 
-<!-- {% include components/ui/breadcrumbs.html %} -->
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "hero,intro,search,features,brands-grid,featured-brands,recent-brands,find-partner,contact-cta" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
 
 <div class="brands-page">
-  {% if page.sections %}
-    {% for section in page.sections %}
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="brands-section brands-section--breadcrumbs"
+             id="brands-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include pages/brands/breadcrumbs.html %}
+    </section>
+  {% endif %}
+  
+  {% comment %} All other sections use normal layout {% endcomment %}
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
       <section class="brands-section brands-section--{{ section }}" id="brands-section-{{ section }}" aria-labelledby="heading-{{ section }}">
         {% include pages/brands/{{ section }}.html %}
       </section>
-    {% endfor %}
-  {% else %}
-    <!-- Fallback for pages without sections array -->
-        <!-- Fallback for pages without sections array -->
-    {% include pages/brands/hero.html %}
-    {% include pages/brands/intro.html %}
-    {% include pages/brands/search.html %}
-    {% include pages/brands/features.html %}
-    {% include pages/brands/brands-grid.html %}
-    {% include pages/brands/featured-brands.html %}
-    {% include pages/brands/recent-brands.html %}
-    {% include pages/brands/find-partner.html %}
-    {% include pages/brands/contact-cta.html %}
-  {% endif %}
+    {% endunless %}
+  {% endfor %}
 </div>
 
 <!-- JavaScript for brand filtering and display -->

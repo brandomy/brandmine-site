@@ -6,6 +6,7 @@ permalink: /ru/founders/
 lang: ru
 ref: founders
 sections:
+  - breadcrumbs
   - header
   - content
   - filter-interface

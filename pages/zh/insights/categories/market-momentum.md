@@ -1,25 +1,20 @@
 ---
-layout: insights-type
+layout: insight-category
 title: "市场动向"
 permalink: /zh/insights/categories/market-momentum/
 lang: zh
 insight_type: "market-momentum"
 description: "金砖+新兴品牌的重要成就、里程碑和扩张时机。"
+ref: insights-categories-market-momentum
+sections:
+  - breadcrumbs
+  - hero
+  - content
+  - insights-grid
+  # - subscribe
+  - contact-cta
 ---
 
-## 市场动向
+## 市场动向洞察
 
-追踪金砖+品牌的市场演变和增长轨迹。这些洞察突出行业趋势、扩张策略和市场转型。
-
-{% assign empty_array = "" | split: "" %}
-{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
-
-<div class="insights-grid">
-  {% for insight in type_insights %}
-    {% include components/cards/insight-card.html insight=insight %}
-  {% endfor %}
-</div>
-
-{% if type_insights.size == 0 %}
-  <p class="no-insights">市场动向洞察暂时无法提供。请稍后查看！</p>
-{% endif %}
+追踪新兴金砖国家+品牌的重要成就、里程碑和扩张时机。这些洞察突出了增长轨迹和市场成功故事。

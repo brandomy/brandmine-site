@@ -1,26 +1,20 @@
 ---
-layout: insights-type
+layout: insight-category
 title: "Brand Spotlight"
 permalink: /en/insights/categories/brand-spotlight/
 lang: en
 insight_type: "brand-spotlight"
 description: "In-depth profiles of noteworthy BRICS+ brands gaining international momentum."
+ref: insights-categories-brand-spotlight
+sections:
+  - breadcrumbs
+  - hero
+  - content
+  - insights-grid
+  # - subscribe
+  - contact-cta
 ---
 
 ## Brand Spotlight Insights
 
 Discover comprehensive profiles of emerging brands from the BRICS+ region. These insights explore brand stories, market positioning, and international growth strategies.
-
-{% assign empty_array = "" | split: "" %}
-{% assign empty_array = "" | split: "" %}
-{% assign type_insights = site.insights | default: empty_array | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
-
-<div class="insights-grid">
-  {% for insight in type_insights %}
-    {% include components/cards/insight-card.html insight=insight %}
-  {% endfor %}
-</div>
-
-{% if type_insights.size == 0 %}
-  <p class="no-insights">No Brand Spotlight insights available yet. Check back soon!</p>
-{% endif %}

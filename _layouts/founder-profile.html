@@ -5,42 +5,70 @@ layout: default
   FOUNDER PROFILE LAYOUT (LOGIC-LIGHT)
   ------------------------------------------------------------------------------>
 
-<!-- {% include components/ui/breadcrumbs.html %} -->
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "header,content" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
 
-<div class="founder-profile container">
-  <!-- Header with portrait and basic metadata -->
-  {% include pages/founder/header.html founder=page %}
+<div class="founder-profile">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="founder-section founder-section--breadcrumbs"
+             id="founder-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include pages/founder/breadcrumbs.html founder=page %}
+    </section>
+  {% endif %}
+  
+  <div class="container">
+    {% for section in sections_to_render %}
+      {% unless section == "breadcrumbs" %}
+        {% if section == "header" %}
+          <!-- Header with portrait and basic metadata -->
+          {% include pages/founder/header.html founder=page %}
+        {% elsif section == "content" %}
+          <!-- Main Content -->
+          <div class="founder-profile__details row mt-4">
+            <!-- Main Content Column -->
+            <div class="col-md-8">
+              <!-- Professional Details Section -->
+              {% include pages/founder/sections/professional-details.html founder=page %}
 
-  <!-- Main Content -->
-  <div class="founder-profile__details row mt-4">
-    <!-- Main Content Column -->
-    <div class="col-md-8">
-      <!-- Professional Details Section -->
-      {% include pages/founder/sections/professional-details.html founder=page %}
+              <!-- Founder Biography from Markdown Content -->
+              {% include pages/founder/content.html founder=page content=content %}
+            </div>
 
-      <!-- Founder Biography from Markdown Content -->
-      {% include pages/founder/content.html founder=page content=content %}
-    </div>
+            <!-- Sidebar Column -->
+            <div class="col-md-4">
+              {% comment %}
+                Render sidebar sections based on page.sidebar_sections array
+              {% endcomment %}
+              {% if page.sidebar_sections %}
+                {% assign sidebar_sections = page.sidebar_sections %}
+                {% if sidebar_sections.first == nil %}
+                  {% assign sidebar_sections = sidebar_sections | split: "," %}
+                {% endif %}
+              {% else %}
+                {% assign sidebar_sections = "associated-brands,expertise-cloud,related-insights" | split: "," %}
+              {% endif %}
 
-    <!-- Sidebar Column -->
-    <div class="col-md-4">
-      {% comment %}
-        Render sidebar sections based on page.sidebar_sections array
-      {% endcomment %}
-      {% if page.sidebar_sections %}
-        {% assign sidebar_sections = page.sidebar_sections %}
-        {% if sidebar_sections.first == nil %}
-          {% assign sidebar_sections = sidebar_sections | split: "," %}
+              <div class="founder-profile__sidebar">
+                {% for sidebar_section in sidebar_sections %}
+                  {% include pages/founder/sections/{{ sidebar_section }}.html founder=page %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <section class="founder-section founder-section--{{ section }}"
+                   id="founder-section-{{ section }}"
+                   aria-labelledby="heading-{{ section }}">
+            {% include pages/founder/{{ section }}.html founder=page %}
+          </section>
         {% endif %}
-      {% else %}
-        {% assign sidebar_sections = "associated-brands,expertise-cloud,related-insights" | split: "," %}
-      {% endif %}
-
-      <div class="founder-profile__sidebar">
-        {% for section in sidebar_sections %}
-          {% include pages/founder/sections/{{ section }}.html founder=page %}
-        {% endfor %}
-      </div>
-    </div>
+      {% endunless %}
+    {% endfor %}
   </div>
 </div>

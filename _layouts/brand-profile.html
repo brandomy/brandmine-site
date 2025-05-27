@@ -2,15 +2,33 @@
 layout: default
 ---
 <!-- Brand Profile Layout (Logic-Light Architecture) -->
-<!-- {% include components/ui/breadcrumbs.html %} -->
+
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "identity,founder-narrative,product,location-intelligence,market-presence,growth-signals,connections" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+
 <div class="brand-profile">
-  <!-- Loop through sections defined in brand's front matter -->
-  {% for section in page.sections %}
-    <section class="brand-section brand-section--{{ section }}"
-             id="brand-section-{{ section }}"
-             aria-labelledby="heading-{{ section }}">
-      {% include pages/brand/{{ section }}.html brand=page %}
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="brand-section brand-section--breadcrumbs"
+             id="brand-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include pages/brand/breadcrumbs.html brand=page %}
     </section>
+  {% endif %}
+  
+  {% comment %} All other sections use normal layout {% endcomment %}
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
+      <section class="brand-section brand-section--{{ section }}"
+               id="brand-section-{{ section }}"
+               aria-labelledby="heading-{{ section }}">
+        {% include pages/brand/{{ section }}.html brand=page %}
+      </section>
+    {% endunless %}
   {% endfor %}
 </div>
 

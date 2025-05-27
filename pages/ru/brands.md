@@ -5,6 +5,7 @@ permalink: /ru/brands/
 lang: ru
 ref: brands
 sections:
+  - breadcrumbs
   - hero
   - intro
   - search

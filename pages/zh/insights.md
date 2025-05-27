@@ -6,6 +6,7 @@ ref: insights
 permalink: /zh/insights/
 lang: zh
 sections:
+  - breadcrumbs
   - hero
   - featured-insights
   - insights-search

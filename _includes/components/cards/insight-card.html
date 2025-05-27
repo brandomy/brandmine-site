@@ -1,7 +1,16 @@
 {% comment %}
   Component: components/cards/insight-card.html
-  Simplified version that works
+  
+  Displays insight article cards with responsive images and metadata
+  
+  Parameters:
+  - include.insight: insight object from site.insights collection
+  
+  Dependencies:
+  - Translation helper include for multilingual labels
+  - Responsive image strategy (400w, 800w, 1200w variants)
 {% endcomment %}
+
 
 <article class="insight-card insight-card--{{ include.insight.category }}">
   <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">

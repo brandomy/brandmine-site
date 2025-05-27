@@ -6,6 +6,7 @@ permalink: /zh/founders/
 lang: zh
 ref: founders
 sections:
+  - breadcrumbs
   - header
   - content
   - filter-interface
