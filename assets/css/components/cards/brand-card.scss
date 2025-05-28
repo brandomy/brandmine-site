@@ -278,6 +278,35 @@
   opacity: 0.8; /* Slightly transparent */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10); /* Subtle shadow */
   flex-shrink: 0; /* Prevent shrinking */
+  position: relative;
+  cursor: help;
+}
+
+/* Founder-led badge tooltip */
+.brand-card__founder-led::after {
+  content: "Founder-led Brand";
+  position: absolute;
+  top: -25px;
+  right: 100%;
+  margin-right: var(--space-1);
+  background-color: var(--accent-50);
+  color: var(--accent-800);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--accent-100);
+}
+
+.brand-card__founder-led:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* --------------------------------------------------------------------------
