@@ -332,6 +332,73 @@
     
   
     
+      <section class="brands-section brands-section--search" id="brands-section-search" aria-labelledby="heading-search">
+        
+          
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    
+    
+
+
+
+
+
+<div class="search-placeholder" id="brands-search">
+  <div class="search-placeholder__container">
+    <h3 class="search-placeholder__title">找到您的下一个隐藏品牌冠军</h3>
+    <div class="search-placeholder__input-group">
+      <input 
+        type="text" 
+        class="search-placeholder__input" 
+        placeholder="按品牌名称、国家或行业搜索..."
+        readonly
+        aria-label="找到您的下一个隐藏品牌冠军"
+      >
+      <button 
+        type="button" 
+        class="search-placeholder__button"
+        aria-label="Search"
+        data-search-placeholder
+      >
+        <svg class="search-placeholder__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <p class="search-placeholder__hint">Discover brands by location, sector, or founder story</p>
+  </div>
+</div>
+
+<!-- Coming Soon Modal -->
+<div class="search-modal" id="brands-search-modal" style="display: none;">
+  <div class="search-modal__backdrop" data-modal-close></div>
+  <div class="search-modal__content">
+    <div class="search-modal__header">
+      <h4 class="search-modal__title">Advanced Search Coming Soon!</h4>
+      <button class="search-modal__close" data-modal-close aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="search-modal__body">
+      <p>We're building powerful search and filtering capabilities to help you discover the perfect BRICS+ brands for your needs.</p>
+      <p>In the meantime, explore our curated collections and featured brands to find exactly what you're looking for.</p>
+    </div>
+    <div class="search-modal__footer">
+      <button class="button button--secondary" data-modal-close">Continue Exploring</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        
+      </section>
+    
+  
+    
       <section class="brands-section brands-section--featured-brands" id="brands-section-featured-brands" aria-labelledby="heading-featured-brands">
         
           
@@ -754,28 +821,7 @@
 
 
 
-  <div class="hero-brand-card__founder-led" 
-       title="
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  创始人领导
-">
+  <div class="hero-brand-card__founder-led">
     F
   </div>
 
@@ -1187,28 +1233,7 @@
 
 
 
-  <div class="hero-brand-card__founder-led" 
-       title="
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  创始人领导
-">
+  <div class="hero-brand-card__founder-led">
     F
   </div>
 
@@ -1620,28 +1645,7 @@ TeaTime
 
 
 
-  <div class="hero-brand-card__founder-led" 
-       title="
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  创始人领导
-">
+  <div class="hero-brand-card__founder-led">
     F
   </div>
 
@@ -1956,28 +1960,7 @@ TeaTime
 
 
 
-  <div class="brand-card__founder-led" 
-       title="
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  创始人领导
-">
+  <div class="brand-card__founder-led">
     F
   </div>
 
@@ -2266,28 +2249,7 @@ TeaTime
 
 
 
-  <div class="brand-card__founder-led" 
-       title="
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  创始人领导
-">
+  <div class="brand-card__founder-led">
     F
   </div>
 
@@ -2578,28 +2540,7 @@ TeaTime
 
 
 
-  <div class="brand-card__founder-led" 
-       title="
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  创始人领导
-">
+  <div class="brand-card__founder-led">
     F
   </div>
 
@@ -2856,28 +2797,7 @@ TeaTime
 
 
 
-  <div class="brand-card__founder-led" 
-       title="
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  创始人领导
-">
+  <div class="brand-card__founder-led">
     F
   </div>
 
@@ -3014,6 +2934,7 @@ TeaTime
 
 <!-- JavaScript for brand filtering and display -->
 <script src="/assets/js/pages/brands/brands-filtering.js"></script>
+<script src="/assets/js/components/search-placeholder.js"></script>
 
       </div>
     </div>
