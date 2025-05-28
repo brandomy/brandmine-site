@@ -1,0 +1,53 @@
+/**
+ * Founder Profile - Social Media Component
+ */
+
+.founder-profile__social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+
+  @media (width <= 768px) {
+    justify-content: center;
+  }
+
+  &-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-700);
+    transition: all 0.2s ease;
+    text-decoration: none;
+
+    &:hover {
+      background-color: var(--color-primary-500);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Social media brand colors */
+    &--instagram:hover {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    }
+
+    &--linkedin:hover {
+      background-color: #0077b5;
+    }
+
+    &--twitter:hover {
+      background-color: #1da1f2;
+    }
+
+    &--telegram:hover {
+      background-color: #08c;
+    }
+
+    &--wechat:hover {
+      background-color: #07C160;
+    }
+  }
+}

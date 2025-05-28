@@ -1,0 +1,428 @@
+/**
+ * Founder Card Component
+ *
+ * Used to display founder profiles in a card format throughout the site:
+ * - Founders directory listings
+ * - Homepage founder focus section
+ * - Related founders on brand pages
+ *
+ * Follows BEM naming conventions and shares design tokens with other cards.
+ */
+
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 320px;
+  min-height: 320px;
+  border: 1px solid var(--color-gray-200);
+  position: relative;
+  height: 100%;
+
+  /* Darker background for better contrast with panels */
+  background-color: var(--color-white);
+
+  @media (width >= 768px) {
+    min-height: 380px;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* On olive panel backgrounds, add contrast */
+  .panel--olive-soft & {
+    background-color: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Featured state */
+  &--featured {
+    border-color: var(--color-olive-200);
+    box-shadow: var(--shadow-md);
+
+    .founder-card__portrait {
+      border: 2px solid var(--color-olive-300);
+    }
+  }
+
+  /* Placeholder styling for when no real data is available */
+  &--placeholder {
+    opacity: 0.7;
+
+    &:hover {
+      transform: none;
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}
+
+.founder-card__header {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.founder-card__portrait {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+  flex-shrink: 0;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-olive-100);
+    color: var(--color-olive-700);
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+.founder-card__header-text {
+  flex: 1;
+}
+
+.founder-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--color-gray-900);
+}
+
+.founder-card__generation {
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  margin: 0;
+}
+
+.founder-card__location {
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  margin: 0;
+  font-style: normal;
+}
+
+.founder-card__body {
+  padding: 1rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-card__brand {
+  color: var(--color-gray-700);
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
+
+  &-link {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.founder-card__multiple-brands {
+  font-size: 0.8125rem;
+  color: var(--color-gray-500);
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+}
+
+.founder-card__tags,
+.founder-card__dimension-tags,
+.founder-card__expertise-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.founder-card__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  &--market {
+    background-color: var(--color-sky-100);
+    color: var(--color-sky-800);
+  }
+
+  &--sector {
+    background-color: var(--color-olive-100);
+    color: var(--color-olive-800);
+  }
+
+  &--attribute {
+    background-color: var(--color-secondary-100);
+    color: var(--color-secondary-800);
+  }
+
+  &--signal {
+    background-color: var(--color-accent-100);
+    color: var(--color-accent-800);
+  }
+
+  &--expertise {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-800);
+  }
+}
+
+.founder-card__footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--color-gray-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.founder-card__link {
+  font-size: 0.875rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  background-color: var(--olive-400);
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 160px;
+
+  &:hover {
+    background-color: var(--olive-700);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+  }
+}
+
+.founder-card__featured-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-olive-500);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+/* Founders grid on the founders index page */
+.founders__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+
+  @media (width >= 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width >= 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (width >= 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.featured-founders__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+
+  @media (width >= 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.recent-founders__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+
+  @media (width >= 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width >= 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* Portrait variations */
+.founder-card__portrait {
+  /* Existing styles... */
+
+  &--headshot {
+    width: 80px;
+    height: 80px;
+
+    /* Keep circular for headshots */
+  }
+
+  &--full {
+    width: 72px;
+    height: 96px; /* 2:3 ratio */
+    border-radius: 8px; /* Not circular */
+  }
+}
+
+/* Generation indicator */
+.founder-card__generation-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: var(--color-olive-100);
+  color: var(--color-olive-800);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  &--first {
+    background-color: var(--color-olive-100);
+    color: var(--color-olive-800);
+  }
+
+  &--second {
+    background-color: var(--color-secondary-100);
+    color: var(--color-secondary-800);
+  }
+
+  &--transition {
+    background-color: var(--color-accent-100);
+    color: var(--color-accent-800);
+  }
+}
+
+/* Cross-border indicator */
+.founder-card__cross-border {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-sky-100);
+  color: var(--color-sky-700);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+
+  i {
+    font-size: 0.75rem;
+  }
+}
+
+/* Bio styling */
+.founder-card__bio {
+  margin-bottom: 1rem;
+}
+
+/* Achievement and Languages styling */
+.founder-card__achievement,
+.founder-card__languages {
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.founder-card__achievement-label,
+.founder-card__languages-label {
+  font-weight: 600;
+  color: var(--color-gray-700);
+  margin-right: 0.25rem;
+}
+
+.founder-card__achievement-text,
+.founder-card__languages-list {
+  color: var(--color-gray-600);
+}
+
+.founder-card__achievement-text {
+  font-style: italic;
+}
+
+/* Role/title display */
+.founder-card__role {
+  font-size: 0.8125rem;
+  color: var(--color-gray-600);
+  margin-top: 0.25rem;
+}
+
+/* Location display styling */
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--neutral-600);
+  font-size: var(--text-sm);
+}
+
+.location__icon {
+  font-size: 0.875em;
+  color: var(--primary-500);
+  flex-shrink: 0;
+}
+
+.location__text {
+  line-height: 1.2;
+}
+
+/* Specific styling for founder card location */
+.founder-card__location {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+  color: var(--neutral-600);
+  font-size: var(--text-sm);
+}
+
+.founder-card__location .location__icon {
+  color: var(--primary-400);
+}

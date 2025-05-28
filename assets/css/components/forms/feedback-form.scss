@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Feedback Form Component
+   ==========================================================================
+   Styles for feedback forms and user input collection.
+*/
+
+/* --------------------------------------------------------------------------
+   FEEDBACK FORM CONTAINER
+   -------------------------------------------------------------------------- */
+
+.feedback-form {
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+}
+
+.feedback-form__header {
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.feedback-form__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-2);
+}
+
+.feedback-form__description {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   FEEDBACK FORM FIELDS
+   -------------------------------------------------------------------------- */
+
+.feedback-form__field-group {
+  margin-bottom: var(--space-4);
+}
+
+.feedback-form__label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-2);
+}
+
+.feedback-form__label--required::after {
+  content: ' *';
+  color: var(--error-500);
+}
+
+.feedback-form__input,
+.feedback-form__textarea,
+.feedback-form__select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  background-color: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-form__input:focus,
+.feedback-form__textarea:focus,
+.feedback-form__select:focus {
+  border-color: var(--primary-500);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.feedback-form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+   RATING COMPONENT
+   -------------------------------------------------------------------------- */
+
+.feedback-form__rating {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  margin: var(--space-4) 0;
+}
+
+.feedback-form__rating-input {
+  display: none;
+}
+
+.feedback-form__rating-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--neutral-300);
+  border-radius: var(--radius-full);
+  background-color: white;
+  color: var(--neutral-500);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feedback-form__rating-label:hover {
+  border-color: var(--primary-400);
+  background-color: var(--primary-50);
+  color: var(--primary-700);
+}
+
+.feedback-form__rating-input:checked + .feedback-form__rating-label {
+  border-color: var(--primary-500);
+  background-color: var(--primary-500);
+  color: white;
+}
+
+/* --------------------------------------------------------------------------
+   FEEDBACK FORM ACTIONS
+   -------------------------------------------------------------------------- */
+
+.feedback-form__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--neutral-200);
+}
+
+.feedback-form__button {
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.feedback-form__button--primary {
+  background-color: var(--primary-600);
+  color: white;
+  
+  &:hover {
+    background-color: var(--primary-700);
+  }
+  
+  &:disabled {
+    background-color: var(--neutral-400);
+    cursor: not-allowed;
+  }
+}
+
+.feedback-form__button--secondary {
+  background-color: white;
+  color: var(--neutral-700);
+  border-color: var(--neutral-300);
+  
+  &:hover {
+    background-color: var(--neutral-50);
+    border-color: var(--neutral-400);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FEEDBACK FORM STATES
+   -------------------------------------------------------------------------- */
+
+.feedback-form--loading {
+  position: relative;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-md);
+    z-index: 10;
+  }
+}
+
+.feedback-form--success {
+  border-color: var(--success-300);
+  background-color: var(--success-50);
+  
+  .feedback-form__title {
+    color: var(--success-800);
+  }
+}
+
+.feedback-form--error {
+  border-color: var(--error-300);
+  background-color: var(--error-50);
+  
+  .feedback-form__title {
+    color: var(--error-800);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+@media (width <= 640px) {
+  .feedback-form {
+    padding: var(--space-4);
+  }
+  
+  .feedback-form__actions {
+    flex-direction: column;
+  }
+  
+  .feedback-form__button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .feedback-form__rating {
+    gap: var(--space-1);
+  }
+  
+  .feedback-form__rating-label {
+    width: 32px;
+    height: 32px;
+    font-size: var(--text-sm);
+  }
+}

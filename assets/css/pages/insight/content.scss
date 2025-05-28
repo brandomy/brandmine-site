@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Insight Article - Content Component
+   ==========================================================================
+   Styles for the main content area of insight articles
+*/
+
+.insight-article-page {
+  .insight-content {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--neutral-800);
+    font-family: var(--font-body);
+    max-width: 720px;
+    
+    @media (width >= 992px) {
+      font-size: var(--text-xl);
+      line-height: 1.7;
+    }
+
+    // First paragraph styling
+    > p:first-child {
+      font-size: var(--text-xl);
+      font-weight: var(--font-medium);
+      color: var(--neutral-700);
+      margin-bottom: var(--space-8);
+      
+      @media (width >= 768px) {
+        font-size: var(--text-2xl);
+        line-height: 1.6;
+      }
+    }
+
+    h2 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      margin-top: var(--space-12);
+      margin-bottom: var(--space-6);
+      color: var(--neutral-900);
+      font-family: var(--font-heading);
+      line-height: var(--leading-tight);
+
+      @media (width >= 768px) {
+        font-size: var(--text-3xl);
+      }
+
+      // First h2 after first paragraph
+      &:first-of-type {
+        margin-top: var(--space-8);
+      }
+    }
+
+    h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      color: var(--neutral-800);
+      font-family: var(--font-heading);
+      line-height: var(--leading-snug);
+
+      @media (width >= 768px) {
+        font-size: var(--text-2xl);
+      }
+    }
+
+    h4 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+      color: var(--neutral-800);
+      font-family: var(--font-heading);
+
+      @media (width >= 768px) {
+        font-size: var(--text-xl);
+      }
+    }
+
+    p {
+      margin-bottom: var(--space-6);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Links
+    a {
+      color: var(--primary-600);
+      text-decoration: underline;
+      text-decoration-color: var(--primary-300);
+      text-underline-offset: 2px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: var(--primary-700);
+        text-decoration-color: var(--primary-600);
+      }
+
+      &:focus {
+        outline: 2px solid var(--primary-400);
+        outline-offset: 2px;
+        border-radius: var(--radius-sm);
+      }
+    }
+
+    // Blockquotes
+    blockquote {
+      border-left: 4px solid var(--primary-400);
+      padding: var(--space-6) var(--space-8);
+      margin: var(--space-8) 0;
+      background-color: var(--primary-50);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      font-style: italic;
+      font-size: var(--text-xl);
+      color: var(--neutral-700);
+      position: relative;
+
+      @media (width >= 768px) {
+        margin-left: calc(-1 * var(--space-8));
+        margin-right: calc(-1 * var(--space-8));
+      }
+
+      p {
+        margin-bottom: var(--space-4);
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      // Quote marks
+      &::before {
+        content: '"';
+        font-size: 4rem;
+        color: var(--primary-300);
+        position: absolute;
+        top: var(--space-2);
+        left: var(--space-4);
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+    }
+
+    // Lists
+    ul, ol {
+      margin-bottom: var(--space-6);
+      padding-left: var(--space-6);
+
+      li {
+        margin-bottom: var(--space-2);
+        
+        &::marker {
+          color: var(--primary-600);
+        }
+      }
+    }
+
+    // Horizontal rules
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--neutral-300), transparent);
+      margin: var(--space-12) 0;
+    }
+
+    // Code
+    code {
+      background-color: var(--neutral-100);
+      color: var(--neutral-800);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+    }
+
+    pre {
+      background-color: var(--neutral-900);
+      color: var(--neutral-100);
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      margin: var(--space-8) 0;
+
+      code {
+        background: none;
+        color: inherit;
+        padding: 0;
+      }
+    }
+  }
+}

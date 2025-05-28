@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Insights Grid - BEM Refactor
+   ==========================================================================
+*/
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.insights-grid__panel {
+  background-color: #fff;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  transition: box-shadow 0.2s ease;
+}
+
+.insights-grid__panel:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.insights-grid__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-2);
+}
+
+.insights-grid__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-3);
+}
+
+.insights-grid__text {
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-3);
+}
+
+.insights-grid__link {
+  font-size: var(--text-sm);
+  color: var(--brand-primary);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: auto;
+}
+
+.insights-grid__link:hover {
+  text-decoration: underline;
+}
+
+.insights-grid__link:focus-visible {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
+}
+
+.insights-grid__panel--highlighted {
+  background-color: var(--primary-50);
+  border-color: var(--primary-300);
+}
+
+.insights-grid__title:hover {
+  color: var(--brand-primary);
+}

@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Insights Page - Filters Component
+   ==========================================================================
+   Styles for the filter controls in the insights page
+*/
+
+.country-filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.country-filter-option {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2);
+  text-decoration: none;
+  color: var(--neutral-700);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-1);
+
+  &:hover {
+    background-color: var(--neutral-100);
+  }
+
+  .country-flag {
+    width: 20px;
+    height: 15px;
+    margin-right: var(--space-2);
+    background-size: cover;
+    border-radius: 2px;
+  }
+
+  .country-count {
+    margin-left: auto;
+    color: var(--neutral-500);
+    font-size: var(--text-sm);
+  }
+}
+
+.featured-brands-filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-brand-filter-option {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+  text-decoration: none;
+  color: var(--primary-600);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-2);
+
+  &:hover {
+    background-color: var(--primary-50);
+  }
+
+  .brand-count {
+    margin-left: var(--space-2);
+    color: var(--neutral-500);
+    font-size: var(--text-sm);
+  }
+}
+
+.view-all-brands-link {
+  display: block;
+  margin-top: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  text-align: center;
+  color: var(--primary-600);
+  text-decoration: none;
+  border: 1px dashed var(--neutral-300);
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    background-color: var(--primary-50);
+  }
+}

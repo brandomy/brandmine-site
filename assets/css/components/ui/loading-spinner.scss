@@ -1,0 +1,184 @@
+/* ==========================================================================
+   UI Component: Loading Spinner
+   ========================================================================== */
+
+.loading-spinner {
+  display: inline-block;
+  position: relative;
+
+  &__spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--neutral-200);
+    border-top: 2px solid var(--brand-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  &__text {
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    text-align: center;
+  }
+}
+
+/* Size variants */
+.loading-spinner--small {
+  .loading-spinner__spinner {
+    width: 1rem;
+    height: 1rem;
+    border-width: 1px;
+  }
+
+  .loading-spinner__text {
+    font-size: var(--text-xs);
+  }
+}
+
+.loading-spinner--large {
+  .loading-spinner__spinner {
+    width: 3rem;
+    height: 3rem;
+    border-width: 3px;
+  }
+
+  .loading-spinner__text {
+    font-size: var(--text-base);
+  }
+}
+
+.loading-spinner--extra-large {
+  .loading-spinner__spinner {
+    width: 4rem;
+    height: 4rem;
+    border-width: 4px;
+  }
+
+  .loading-spinner__text {
+    font-size: var(--text-lg);
+  }
+}
+
+/* Color variants */
+.loading-spinner--secondary {
+  .loading-spinner__spinner {
+    border-top-color: var(--secondary-600);
+  }
+}
+
+.loading-spinner--accent {
+  .loading-spinner__spinner {
+    border-top-color: var(--accent-600);
+  }
+}
+
+.loading-spinner--success {
+  .loading-spinner__spinner {
+    border-top-color: var(--emerald-600);
+  }
+}
+
+/* Overlay spinner */
+.loading-spinner--overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+
+  .loading-spinner__spinner {
+    width: 3rem;
+    height: 3rem;
+    border-width: 3px;
+  }
+
+  .loading-spinner__text {
+    font-size: var(--text-lg);
+    color: var(--neutral-700);
+    margin-top: var(--space-4);
+  }
+}
+
+/* Inline spinner for buttons */
+.loading-spinner--inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  .loading-spinner__spinner {
+    width: 1rem;
+    height: 1rem;
+    border-width: 1px;
+  }
+
+  .loading-spinner__text {
+    margin: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+}
+
+/* Dots spinner alternative */
+.loading-spinner--dots {
+  .loading-spinner__spinner {
+    display: flex;
+    gap: 4px;
+    width: auto;
+    height: auto;
+    border: none;
+    animation: none;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-color: var(--brand-primary);
+      border-radius: 50%;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    &::before {
+      animation-delay: -0.32s;
+    }
+
+    &::after {
+      animation-delay: -0.16s;
+    }
+  }
+}
+
+/* Keyframe animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Accessibility - Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner__spinner {
+    animation-duration: 2s;
+  }
+}

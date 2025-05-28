@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Featured Insights Grid Component (Mobile-First)
+   ========================================================================== */
+
+.featured-insights-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
+}
+
+/* Placeholder styling */
+.featured-insight-card--placeholder {
+  background-color: var(--neutral-50);
+  border: 1px dashed var(--neutral-300);
+  min-height: 300px;
+}
+
+.featured-insight-card--placeholder .featured-insight-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--neutral-50);
+}
+
+.featured-insight-card--placeholder p {
+  color: var(--neutral-500);
+  font-size: var(--text-sm);
+}
+
+/* View all button styling */
+.view-all-insights {
+  text-align: center;
+  margin-top: var(--space-8);
+}
+
+/* Small devices (480px and up) */
+@media (width >= 480px) {
+  .featured-insights-grid {
+    gap: var(--space-6);
+    margin: var(--space-8) 0;
+  }
+}
+
+/* Medium devices (768px and up) - 2 columns */
+@media (width >= 768px) {
+  .featured-insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .view-all-insights {
+    margin-top: var(--space-10);
+  }
+}
+
+/* Large devices (992px and up) - 4 columns */
+@media (width >= 992px) {
+  .featured-insights-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+/* Extra large devices (1200px and up) */
+@media (width >= 1200px) {
+  .featured-insights-grid {
+    gap: var(--space-8);
+    margin: var(--space-10) 0 var(--space-12) 0;
+  }
+}

@@ -1,0 +1,40 @@
+.insights-page {
+/* ==========================================================================
+   Insights Page - Recent Insights Section
+   ==========================================================================
+   Styles for the recent insights section (linear layout, no sidebar)
+*/
+
+.recent-insights__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+  
+  @media (width <= 480px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.recent-insights__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--gray-600);
+  
+  &-message {
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+}
+
+.recent-insights__footer {
+  text-align: center;
+  margin-top: var(--space-6);
+  
+  .btn {
+    padding: var(--space-3) var(--space-6);
+  }
+}
+}

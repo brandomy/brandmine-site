@@ -1,0 +1,34 @@
+{
+  "name": "brandmine-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:jekyll": "JEKYLL_ENV=production bundle exec jekyll build",
+    "serve:jekyll": "bundle exec jekyll serve",
+    "start": "bundle exec jekyll serve",
+    "build": "bundle exec jekyll build",
+    "generate-map-data": "node assets/js/data/generate-map-data.js",
+    "prebuild": "npm run generate-map-data",
+    "prebuild:jekyll": "npm run generate-map-data"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandomy/brandmine-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandomy/brandmine-site/issues"
+  },
+  "homepage": "https://github.com/brandomy/brandmine-site#readme",
+  "description": "",
+  "devDependencies": {
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-selector-bem-pattern": "^4.0.1"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

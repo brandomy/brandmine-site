@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Discovery Navigation Component
+   ==========================================================================
+   Styling for the unified discovery navigation bar across all 
+   discovery-related pages.
+*/
+
+/* --------------------------------------------------------------------------
+   Container and Background
+   -------------------------------------------------------------------------- */
+   .discovery-navigation {
+    width: 100%;
+    margin: 0 0 var(--space-4) 0;
+  }
+  
+  .discovery-navigation__container {
+    background-color: var(--primary-50);
+    width: 100vw;
+    margin: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: var(--space-4) 0;
+  }
+  
+  /* Dimension-specific background colors */
+  .discovery-navigation__container--sectors {
+    background-color: var(--olive-50);
+  }
+  
+  .discovery-navigation__container--markets {
+    background-color: var(--sky-50);
+  }
+  
+  .discovery-navigation__container--attributes {
+    background-color: var(--secondary-50);
+  }
+  
+  .discovery-navigation__container--signals {
+    background-color: var(--accent-50);
+  }
+  
+  /* --------------------------------------------------------------------------
+     SHARED NAVIGATION STRUCTURE
+     -------------------------------------------------------------------------- */
+  .discovery-navigation__tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+  
+  .discovery-navigation__tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  /* --------------------------------------------------------------------------
+     OPTION A: Tooltip-style navigation (icons only with hover tooltips)
+     -------------------------------------------------------------------------- */
+  .discovery-navigation--option-a .discovery-navigation__tab {
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--neutral-50);
+    color: var(--neutral-700);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--text-sm);
+  }
+  
+  /* Hover state */
+  .discovery-navigation--option-a .discovery-navigation__tab:hover {
+    background-color: var(--neutral-100);
+    transform: translateY(-1px);
+  }
+  
+  /* Active state */
+  .discovery-navigation--option-a .discovery-navigation__tab.active {
+    background-color: white;
+    color: var(--primary-700);
+    font-weight: var(--font-semibold);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Dimension-specific active tab colors */
+  .discovery-navigation--option-a .discovery-navigation__tab[data-dimension="sectors"].active {
+    color: var(--olive-700);
+    border-bottom: 3px solid var(--olive-500);
+  }
+  
+  .discovery-navigation--option-a .discovery-navigation__tab[data-dimension="markets"].active {
+    color: var(--sky-700);
+    border-bottom: 3px solid var(--sky-500);
+  }
+  
+  .discovery-navigation--option-a .discovery-navigation__tab[data-dimension="attributes"].active {
+    color: var(--secondary-700);
+    border-bottom: 3px solid var(--secondary-500);
+  }
+  
+  .discovery-navigation--option-a .discovery-navigation__tab[data-dimension="signals"].active {
+    color: var(--accent-700);
+    border-bottom: 3px solid var(--accent-500);
+  }
+  
+  /* Icons and Labels */
+  .discovery-navigation--option-a .discovery-navigation__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--neutral-700);
+  }
+  
+  .discovery-navigation--option-a .discovery-navigation__label {
+    display: inline-block; /* Show text even in option A on mobile */
+  }
+  
+  /* Tooltips */
+  .discovery-navigation--option-a .discovery-navigation__tooltip {
+    display: none; /* Hide tooltips on mobile */
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--neutral-900);
+    color: white;
+    font-size: var(--text-xs);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    pointer-events: none; /* So it doesn't interfere with clicks */
+  }
+  
+  /* Arrow for tooltip */
+  .discovery-navigation--option-a .discovery-navigation__tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--neutral-900) transparent;
+  }
+  
+  /* Show tooltip on hover */
+  .discovery-navigation--option-a .discovery-navigation__tab:hover .discovery-navigation__tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+/* --------------------------------------------------------------------------
+   OPTION B: Inline labels with dimension-specific active backgrounds
+   -------------------------------------------------------------------------- */
+.discovery-navigation--option-b .discovery-navigation__tab {
+  padding: var(--space-3) var(--space-4);
+  margin: 0 var(--space-2);
+  color: var(--neutral-800);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+  gap: var(--space-2);
+  line-height: 1.2;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  font-size: var(--text-base);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab:hover {
+  background-color: var(--neutral-50);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab.active {
+  background-color: white;
+  font-weight: var(--font-semibold);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Active tab text + border by dimension */
+.discovery-navigation--option-b .discovery-navigation__tab.active[data-dimension="sectors"] {
+  color: var(--olive-700);
+  border-bottom: 3px solid var(--olive-500);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab.active[data-dimension="markets"] {
+  color: var(--sky-700);
+  border-bottom: 3px solid var(--sky-500);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab.active[data-dimension="attributes"] {
+  color: var(--secondary-700);
+  border-bottom: 3px solid var(--secondary-500);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab.active[data-dimension="signals"] {
+  color: var(--accent-700);
+  border-bottom: 3px solid var(--accent-500);
+}
+
+/* Icon color matches dimension, even when inactive */
+.discovery-navigation--option-b .discovery-navigation__tab[data-dimension="sectors"] .discovery-navigation__icon {
+  color: var(--olive-700);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab[data-dimension="markets"] .discovery-navigation__icon {
+  color: var(--sky-700);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab[data-dimension="attributes"] .discovery-navigation__icon {
+  color: var(--secondary-700);
+}
+
+.discovery-navigation--option-b .discovery-navigation__tab[data-dimension="signals"] .discovery-navigation__icon {
+  color: var(--accent-700);
+}
+
+.discovery-navigation--option-b .discovery-navigation__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.discovery-navigation--option-b .discovery-navigation__icon svg {
+  fill: none;
+  stroke: currentcolor;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.discovery-navigation--option-b .discovery-navigation__label {
+  display: inline-block;
+}
+
+.discovery-navigation--option-b .discovery-navigation__tooltip {
+  display: none;
+}
+  
+  
+  
+  /* --------------------------------------------------------------------------
+     Responsive Adjustments (shared between options)
+     -------------------------------------------------------------------------- */
+  
+  @media (width >= 768px) {
+    .discovery-navigation__tab {
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-base);
+    }
+  
+    /* Hide labels again for option A on larger screens */
+    .discovery-navigation--option-a .discovery-navigation__label {
+      display: none;
+    }
+  
+    /* Show tooltips for option A on larger screens */
+    .discovery-navigation--option-a .discovery-navigation__tooltip {
+      display: block;
+    }
+  }
+  
+  @media (width <= 479px) {
+    .discovery-navigation__container {
+      padding: var(--space-2) 0;
+    }
+    
+    .discovery-navigation__tabs {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding: 0 var(--space-4);
+      flex-wrap: nowrap;
+    }
+    
+    .discovery-navigation__tab {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+  }
