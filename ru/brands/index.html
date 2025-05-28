@@ -91,8 +91,6 @@
     
       <a href="/ru/brands/" onclick="localStorage.setItem('preferredLanguage', 'ru');" class="active">RU</a>
     
-      <a href="/zh/brands/" onclick="localStorage.setItem('preferredLanguage', 'zh');" >ZH</a>
-    
   
 </div>
 
@@ -329,441 +327,6 @@
     
   
     
-      <section class="brands-section brands-section--content" id="brands-section-content" aria-labelledby="heading-content">
-        
-          
-
-
-<div class="panel panel--light">
-  <div class="panel__content">
-    <div class="brands-content">
-      <p>Brandmine предлагает беспрецедентный доступ к потребительским брендам, которые доказали свой успех на рынках БРИКС+, но остаются неоткрытыми на международном уровне из-за языковых, политических и культурных барьеров.</p>
-
-<p>Откройте для себя, как их уникальные пути сформировали бренды с глобальным потенциалом в различных секторах и на рынках. Используйте наши передовые инструменты поиска и фильтрации для изучения по рынку, сектору, атрибутам и сигналам роста.</p>
-
-
-    </div>
-  </div>
-</div>
-
-        
-      </section>
-    
-  
-    
-      <section class="brands-section brands-section--filter-interface" id="brands-section-filter-interface" aria-labelledby="heading-filter-interface">
-        
-          
-
-
-
-
-<div class="brands-filter">
-<!-- Search filter include -->
-
-
-
-
-
-
-
-
-
-<div class="search-filter " data-content-type="brands">
-
-  <!-- Search Input -->
-  <div class="search-filter__input-section">
-    <div class="search-input-wrapper">
-      <input type="text"
-             id="search-input-brands"
-             class="search-input"
-             placeholder="Search brands..."
-             aria-label="Search brands">
-      <button type="button" id="search-button-brands" class="search-btn">
-        <span class="sr-only">Search</span>
-        🔍
-      </button>
-      <button type="button" id="clear-search-brands" class="search-clear-btn" title="Clear search">×</button>
-    </div>
-  </div>
-
-  <!-- Quick Presets -->
-  
-  <div class="search-filter__presets">
-    
-        <button type="button" class="preset-btn" data-preset="featured">Featured</button>
-        <button type="button" class="preset-btn" data-preset="founder-led">Founder Led</button>
-        <button type="button" class="preset-btn" data-preset="export-ready">Export Ready</button>
-        <button type="button" class="preset-btn" data-preset="heritage">Heritage</button>
-        <button type="button" class="preset-btn" data-preset="sustainability">Sustainable</button>
-      
-  </div>
-  
-
-  <!-- Filter Controls -->
-  <div class="search-filter__controls">
-    <button type="button" id="toggle-filters-brands" class="filter-toggle-btn">
-      Filters <span class="filter-count" id="filter-count-brands">0</span>
-    </button>
-
-    
-    <select id="sort-select-brands" class="sort-select">
-      <option value="relevance">Most Relevant</option>
-      <option value="name-asc">A-Z</option>
-      <option value="name-desc">Z-A</option>
-      <option value="date-desc">Newest First</option>
-      <option value="date-asc">Oldest First</option>
-    </select>
-    
-  </div>
-
-  <!-- Advanced Filters (Collapsible) -->
-  <div class="search-filter__advanced" id="advanced-filters-brands" style="display: none;">
-
-    <!-- Dimension Filters -->
-    <div class="filter-groups">
-      <!-- Sectors -->
-      <div class="filter-group">
-        <h4 class="filter-group__title">Sectors</h4>
-        <div class="filter-options">
-          
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="wine">
-              <span>Wine</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="natural-beauty">
-              <span>Natural beauty</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="gourmet-foods">
-              <span>Gourmet foods</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="artisanal-spirits">
-              <span>Artisanal spirits</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="hotels-resorts">
-              <span>Hotels resorts</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="artisan-ceramics">
-              <span>Artisan ceramics</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="artisan-confectionery">
-              <span>Artisan confectionery</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="cured-meats">
-              <span>Cured meats</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="fashion-accessories">
-              <span>Fashion accessories</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="fermented-dairy">
-              <span>Fermented dairy</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="halal-foods">
-              <span>Halal foods</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="honey-bee-products">
-              <span>Honey bee products</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="jewelry-watches">
-              <span>Jewelry watches</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="mineral-waters">
-              <span>Mineral waters</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="natural-supplements">
-              <span>Natural supplements</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="sector" value="specialty-cheeses">
-              <span>Specialty cheeses</span>
-            </label>
-          
-        </div>
-      </div>
-
-      <!-- Markets -->
-      <div class="filter-group">
-        <h4 class="filter-group__title">Markets</h4>
-        <div class="filter-options">
-          
-          
-          
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="brazil">
-              <span>Бразилия</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="china">
-              <span>Китай</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="egypt">
-              <span>Египет</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="ethiopia">
-              <span>Эфиопия</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="india">
-              <span>Индия</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="indonesia">
-              <span>Индонезия</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="iran">
-              <span>Иран</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="russia">
-              <span>Россия</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="south-africa">
-              <span>Южная Африка</span>
-            </label>
-          
-            
-            
-            
-            
-            <label class="filter-option">
-              <input type="checkbox" name="market" value="uae">
-              <span>Объединенные Арабские Эмираты</span>
-            </label>
-          
-        </div>
-      </div>
-
-      <!-- Attributes -->
-      <div class="filter-group">
-        <h4 class="filter-group__title">Attributes</h4>
-        <div class="filter-options">
-          
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="founder-led">
-              <span>Founder led</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="heritage-brand">
-              <span>Heritage brand</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="artisanal-excellence">
-              <span>Artisanal excellence</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="sustainability-pioneer">
-              <span>Sustainability pioneer</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="innovation-leader">
-              <span>Innovation leader</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="premium-positioning">
-              <span>Premium positioning</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="regional-icon">
-              <span>Regional icon</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="attribute" value="cultural-bridge">
-              <span>Cultural bridge</span>
-            </label>
-          
-        </div>
-      </div>
-
-      <!-- Signals -->
-      <div class="filter-group">
-        <h4 class="filter-group__title">Signals</h4>
-        <div class="filter-options">
-          
-          
-            <label class="filter-option">
-              <input type="checkbox" name="signal" value="export-ready">
-              <span>Export ready</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="signal" value="franchise-ready">
-              <span>Franchise ready</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="signal" value="investment-ready">
-              <span>Investment ready</span>
-            </label>
-          
-            <label class="filter-option">
-              <input type="checkbox" name="signal" value="rapid-growth">
-              <span>Rapid growth</span>
-            </label>
-          
-        </div>
-      </div>
-    </div>
-
-    <!-- Content-Specific Filters -->
-    
-        <div class="filter-group">
-          <h4 class="filter-group__title">Brand Specifics</h4>
-          <label class="filter-option">
-            <input type="checkbox" name="founder-led-only" value="true">
-            <span>Founder-led only</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="featured-only" value="true">
-            <span>Featured brands only</span>
-          </label>
-        </div>
-
-      
-
-    <!-- Filter Actions -->
-    <div class="filter-actions">
-      <button type="button" id="apply-filters-brands" class="btn btn--primary">Apply Filters</button>
-      <button type="button" id="clear-filters-brands" class="btn btn--outline">Clear All</button>
-    </div>
-  </div>
-
-  <!-- Active Filters Display -->
-  <div class="search-filter__active" id="active-filters-brands" style="display: none;">
-    <div class="active-filters-header">
-      <span>Active Filters:</span>
-      <button type="button" id="clear-all-filters-brands" class="btn-text">Clear All</button>
-    </div>
-    <div class="filter-pills" id="filter-pills-brands">
-      <!-- Active filter pills will be added here -->
-    </div>
-  </div>
-
-</div>
-
-
-  <div class="brands-filter__results">
-    <div class="brands-filter__results-header">
-      <h2 id="results-count" class="brands-filter__results-title">Все бренды</h2>
-
-      <!-- Sort and Filter Options -->
-      <div class="brands-filter__controls">
-        <!-- Featured Level Filter -->
-        <div class="brands-filter__featured">
-          <label for="featured-select" class="brands-filter__label">Уровень избранности:</label>
-          <select id="featured-select" class="brands-filter__select">
-            <option value="all">Все бренды</option>
-            <option value="featured">Только избранные</option>
-            <option value="standard">Стандартный</option>
-          </select>
-        </div>
-
-        <!-- Sort Options -->
-        <div class="brands-filter__sort">
-          <label for="sort-select" class="brands-filter__label">Сортировать по:</label>
-          <select id="sort-select" class="brands-filter__select">
-            <option value="name">Названию</option>
-            <option value="sector">Сектору</option>
-            <option value="market">Рынку</option>
-            <option value="founded">Году основания</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-        
-      </section>
-    
-  
-    
       <section class="brands-section brands-section--featured-brands" id="brands-section-featured-brands" aria-labelledby="heading-featured-brands">
         
           
@@ -772,7 +335,7 @@
 
 
 
-<div class="panel panel--olive-soft">
+<div class="panel panel--amber-soft">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
       Избранные бренды
@@ -788,14 +351,10 @@
 
 
 
-<article class="featured-brand-card featured-brand-card--featured">
-  
 
-
-
-
-<header class="featured-brand-card__header">
-  <div class="featured-brand-card__logo">
+<article class="hero-brand-card hero-brand-card--featured">
+  <div class="hero-brand-card__image">
+    
     
 
 
@@ -842,7 +401,7 @@
              /assets/images/brands/br-sojourn-hotels/placeholder-1200w.jpg 1200w"
      sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
      alt=""
-     class="featured-brand-card"
+     class="hero-brand-card__img"
      
      data-purpose="placeholder"
      onerror="this.src='/assets/images/placeholders/brands-placeholder-400w.jpg'; this.onerror=null;"
@@ -850,83 +409,24 @@
 
 
 
-  </div>
 
-  <div class="featured-brand-card__header-text">
-    <h2 class="featured-brand-card__title">Сожурн Бутик-Отели</h2>
-
-    
-      <p class="featured-brand-card__founding-year">
-        Основан 2012
-      </p>
-    
-
-    
-  </div>
-</header>
-
-
-  <div class="featured-brand-card__body">
-    <p class="featured-brand-card__description">
+    <div class="hero-brand-card__logo">
       
-        Коллекция камерных бутик-отелей, подчеркивающих разнообразие бразильских ландшафтов через устойчивую роскошь и аутентичный местный опыт.
-      
-    </p>
-
-    <div class="featured-brand-card__tags">
-      <!-- Markets first -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/markets/brazil/"
-   class="featured-brand-card__tag featured-brand-card__tag--market">
-  brazil
-</a>
-
-        
       
 
-      <!-- Sectors next -->
-      
-        
-          
+
+
+  
+  
 
 
 
 
+  
 
 
 
-
+  
   
 
 
@@ -937,138 +437,143 @@
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
-    
-  
 
 
-<a href="/ru/discover/sectors/hotels-resorts/"
-   class="featured-brand-card__tag featured-brand-card__tag--sector">
-  hotels-resorts
-</a>
 
-        
-      
 
-      <!-- Attributes third -->
-      
-        
-          
 
 
+<img src="/assets/images/brands/br-sojourn-hotels/placeholder-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/placeholder-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/placeholder-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/placeholder-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
+     alt=""
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="placeholder"
+     onerror="this.src='/assets/images/placeholders/brands-placeholder-400w.jpg'; this.onerror=null;"
+     loading="lazy">
 
 
 
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/attributes/founder-led/"
-   class="featured-brand-card__tag featured-brand-card__tag--attribute">
-  founder-led
-</a>
-
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/attributes/sustainability-pioneer/"
-   class="featured-brand-card__tag featured-brand-card__tag--attribute">
-  sustainability-pioneer
-</a>
-
-        
-      
-
-      <!-- Signals last -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/signals/franchise-ready/"
-   class="featured-brand-card__tag featured-brand-card__tag--signal">
-  franchise-ready
-</a>
-
-        
-      
     </div>
   </div>
 
-  <!-- View Profile -->
-  <footer class="featured-brand-card__footer">
-    <a href="/ru/brands/br-sojourn-hotels/" class="featured-brand-card__link">
+  <div class="hero-brand-card__body">
+    <div class="hero-brand-card__content-wrapper">
+      <div class="hero-brand-card__main-content">
+        <h2 class="hero-brand-card__title">
+          
+          
+
+
+
+
+Сожурн Бутик-Отели
+
+        </h2>
+
+        <div class="hero-brand-card__meta">
+          
+
+
+
+
+
+  <div class="hero-brand-card__founding-year">
+    Основан 2012
+  </div>
+
+
+
+          
+
+
+
+<span class="hero-brand-card__location">
+  
+    <!-- Uncomment the line below to use Font Awesome icon -->
+    <!-- <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i> -->
+    <span class="location__icon" aria-hidden="true">📍</span>
+  
+  <span class="location__text">
+    
+    
+  </span>
+</span>
+
+        </div>
+
+        <p class="hero-brand-card__description">Коллекция камерных бутик-отелей, подчеркивающих разнообразие бразильских ландшафтов через устойчивую роскошь и аутентичный местный опыт.</p>
+      </div>
+
+      <!-- Founder portrait -->
+      
+    </div>
+
+    <!-- Taxonomy section -->
+    <div class="hero-brand-card__taxonomy">
+      <div class="hero-brand-card__taxonomy-section">
+        <div class="hero-brand-card__tags">
+          <!-- Markets -->
+          
+            
+              <a href="/ru/discover/markets/brazil/"
+                 class="brand-tag brand-tag--market">
+                
+                  brazil
+                
+              </a>
+            
+          
+
+          <!-- Sectors -->
+          
+            
+              <a href="/ru/discover/sectors/hotels-resorts/"
+                 class="brand-tag brand-tag--sector">
+                
+                  hotels-resorts
+                
+              </a>
+            
+          
+
+          <!-- Attributes -->
+          
+            
+              <a href="/ru/discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute">
+                
+                  founder-led
+                
+              </a>
+            
+              <a href="/ru/discover/attributes/sustainability-pioneer/"
+                 class="brand-tag brand-tag--attribute">
+                
+                  sustainability-pioneer
+                
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-brand-card__footer">
+    <a href="/ru/brands/br-sojourn-hotels/" class="hero-brand-card__link btn btn--primary">
       
 
 
@@ -1096,7 +601,22 @@
 
     </a>
 
-    
+    <div class="hero-brand-card__footer-right">
+      <!-- Signals -->
+      
+      <div class="hero-brand-card__signals">
+        
+          <a href="/ru/discover/signals/franchise-ready/"
+             class="brand-tag brand-tag--signal">
+            
+              franchise-ready
+            
+          </a>
+        
+      </div>
+      
+
+      
 
 
 
@@ -1107,7 +627,7 @@
 
 
 
-  <div class="featured-brand-card__founder-led" 
+  <div class="hero-brand-card__founder-led" 
        title="
 
 
@@ -1133,7 +653,8 @@
   </div>
 
 
-  </footer>
+    </div>
+  </div>
 </article>
 
       
@@ -1141,15 +662,83 @@
 
 
 
-<article class="featured-brand-card featured-brand-card--featured">
+
+<article class="hero-brand-card hero-brand-card--featured">
+  <div class="hero-brand-card__image">
+    
+    
+
+
+
+  
   
 
 
 
 
-<header class="featured-brand-card__header">
-  <div class="featured-brand-card__logo">
+  
+
+
+
+  
+
+  
+  
     
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" distillery"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy">
+
+
+
+
+
+    <div class="hero-brand-card__logo">
+      
+      
 
 
 
@@ -1209,7 +798,7 @@
              /assets/images/brands/ru-taiga-spirits/logo-color-1200w.png 1200w"
      sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
      alt=" logo"
-     class="featured-brand-card"
+     class="hero-brand-card__logo-img"
      
      data-purpose="logo"
      onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
@@ -1218,223 +807,186 @@
 
 
 
-  </div>
-
-  <div class="featured-brand-card__header-text">
-    <h2 class="featured-brand-card__title">Тайга Спиритс</h2>
-
-    
-      <p class="featured-brand-card__founding-year">
-        Основан 2014
-      </p>
-    
-
-    
-  </div>
-</header>
-
-
-  <div class="featured-brand-card__body">
-    <p class="featured-brand-card__description">
-      
-        Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов.
-      
-    </p>
-
-    <div class="featured-brand-card__tags">
-      <!-- Markets first -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/markets/russia/"
-   class="featured-brand-card__tag featured-brand-card__tag--market">
-  russia
-</a>
-
-        
-      
-
-      <!-- Sectors next -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/sectors/artisanal-spirits/"
-   class="featured-brand-card__tag featured-brand-card__tag--sector">
-  artisanal-spirits
-</a>
-
-        
-      
-
-      <!-- Attributes third -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/attributes/founder-led/"
-   class="featured-brand-card__tag featured-brand-card__tag--attribute">
-  founder-led
-</a>
-
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/attributes/artisanal-excellence/"
-   class="featured-brand-card__tag featured-brand-card__tag--attribute">
-  artisanal-excellence
-</a>
-
-        
-      
-
-      <!-- Signals last -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/signals/export-ready/"
-   class="featured-brand-card__tag featured-brand-card__tag--signal">
-  export-ready
-</a>
-
-        
-      
     </div>
   </div>
 
-  <!-- View Profile -->
-  <footer class="featured-brand-card__footer">
-    <a href="/ru/brands/ru-taiga-spirits/" class="featured-brand-card__link">
+  <div class="hero-brand-card__body">
+    <div class="hero-brand-card__content-wrapper">
+      <div class="hero-brand-card__main-content">
+        <h2 class="hero-brand-card__title">
+          
+          
+
+
+
+
+Тайга Спиритс
+
+        </h2>
+
+        <div class="hero-brand-card__meta">
+          
+
+
+
+
+
+  <div class="hero-brand-card__founding-year">
+    Основан 2014
+  </div>
+
+
+
+          
+
+
+
+<span class="hero-brand-card__location">
+  
+    <!-- Uncomment the line below to use Font Awesome icon -->
+    <!-- <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i> -->
+    <span class="location__icon" aria-hidden="true">📍</span>
+  
+  <span class="location__text">
+    
+    
+  </span>
+</span>
+
+        </div>
+
+        <p class="hero-brand-card__description">Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов.</p>
+      </div>
+
+      <!-- Founder portrait -->
+      
+        
+        
+        
+        
+        
+        <div class="hero-brand-card__founder" title="Founder: Николай Волков">
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy">
+
+
+
+</div>
+      
+    </div>
+
+    <!-- Taxonomy section -->
+    <div class="hero-brand-card__taxonomy">
+      <div class="hero-brand-card__taxonomy-section">
+        <div class="hero-brand-card__tags">
+          <!-- Markets -->
+          
+            
+              <a href="/ru/discover/markets/russia/"
+                 class="brand-tag brand-tag--market">
+                
+                  russia
+                
+              </a>
+            
+          
+
+          <!-- Sectors -->
+          
+            
+              <a href="/ru/discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector">
+                
+                  artisanal-spirits
+                
+              </a>
+            
+          
+
+          <!-- Attributes -->
+          
+            
+              <a href="/ru/discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute">
+                
+                  founder-led
+                
+              </a>
+            
+              <a href="/ru/discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute">
+                
+                  artisanal-excellence
+                
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-brand-card__footer">
+    <a href="/ru/brands/ru-taiga-spirits/" class="hero-brand-card__link btn btn--primary">
       
 
 
@@ -1462,7 +1014,22 @@
 
     </a>
 
-    
+    <div class="hero-brand-card__footer-right">
+      <!-- Signals -->
+      
+      <div class="hero-brand-card__signals">
+        
+          <a href="/ru/discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal">
+            
+              export-ready
+            
+          </a>
+        
+      </div>
+      
+
+      
 
 
 
@@ -1473,7 +1040,7 @@
 
 
 
-  <div class="featured-brand-card__founder-led" 
+  <div class="hero-brand-card__founder-led" 
        title="
 
 
@@ -1499,7 +1066,8 @@
   </div>
 
 
-  </footer>
+    </div>
+  </div>
 </article>
 
       
@@ -1507,14 +1075,10 @@
 
 
 
-<article class="featured-brand-card featured-brand-card--featured">
-  
 
-
-
-
-<header class="featured-brand-card__header">
-  <div class="featured-brand-card__logo">
+<article class="hero-brand-card hero-brand-card--featured">
+  <div class="hero-brand-card__image">
+    
     
 
 
@@ -1560,8 +1124,8 @@
              /assets/images/brands/ru-teatime/placeholder-800w.jpg 800w,
              /assets/images/brands/ru-teatime/placeholder-1200w.jpg 1200w"
      sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
-     alt=" logo"
-     class="featured-brand-card"
+     alt="Founder portrait"
+     class="hero-brand-card__img"
      
      data-purpose="placeholder"
      onerror="this.src='/assets/images/placeholders/brands-placeholder-400w.jpg'; this.onerror=null;"
@@ -1569,95 +1133,24 @@
 
 
 
-  </div>
 
-  <div class="featured-brand-card__header-text">
-    <h2 class="featured-brand-card__title">TeaTime</h2>
-
-    
-      <p class="featured-brand-card__founding-year">
-        Основан 1998
-      </p>
-    
-
-    
-  </div>
-</header>
-
-
-  <div class="featured-brand-card__body">
-    <p class="featured-brand-card__description">
+    <div class="hero-brand-card__logo">
       
-        Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием.
-      
-    </p>
-
-    <div class="featured-brand-card__tags">
-      <!-- Markets first -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/markets/russia/"
-   class="featured-brand-card__tag featured-brand-card__tag--market">
-  russia
-</a>
-
-        
       
 
-      <!-- Sectors next -->
-      
-        
-          
+
+
+  
+  
 
 
 
 
+  
 
 
 
-
+  
   
 
 
@@ -1668,29 +1161,12 @@
 
 
 
-  
 
-  
 
-  
-    
-    
-    
-  
 
 
-<a href="/ru/discover/sectors/artisanal-spirits/"
-   class="featured-brand-card__tag featured-brand-card__tag--sector">
-  artisanal-spirits
-</a>
 
-        
-      
 
-      <!-- Attributes third -->
-      
-        
-          
 
 
 
@@ -1699,93 +1175,129 @@
 
 
 
-  
 
+<img src="/assets/images/brands/ru-teatime/placeholder-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/placeholder-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/placeholder-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/placeholder-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
+     alt="Founder portrait"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="placeholder"
+     onerror="this.src='/assets/images/placeholders/brands-placeholder-400w.jpg'; this.onerror=null;"
+     loading="lazy">
 
 
 
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/attributes/founder-led/"
-   class="featured-brand-card__tag featured-brand-card__tag--attribute">
-  founder-led
-</a>
-
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/attributes/artisanal-excellence/"
-   class="featured-brand-card__tag featured-brand-card__tag--attribute">
-  artisanal-excellence
-</a>
-
-        
-      
-
-      <!-- Signals last -->
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<a href="/ru/discover/signals/export-ready/"
-   class="featured-brand-card__tag featured-brand-card__tag--signal">
-  export-ready
-</a>
-
-        
-      
     </div>
   </div>
 
-  <!-- View Profile -->
-  <footer class="featured-brand-card__footer">
-    <a href="/ru/brands/ru-teatime/" class="featured-brand-card__link">
+  <div class="hero-brand-card__body">
+    <div class="hero-brand-card__content-wrapper">
+      <div class="hero-brand-card__main-content">
+        <h2 class="hero-brand-card__title">
+          
+          
+
+
+
+
+TeaTime
+
+        </h2>
+
+        <div class="hero-brand-card__meta">
+          
+
+
+
+
+
+  <div class="hero-brand-card__founding-year">
+    Основан 1998
+  </div>
+
+
+
+          
+
+
+
+<span class="hero-brand-card__location">
+  
+    <!-- Uncomment the line below to use Font Awesome icon -->
+    <!-- <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i> -->
+    <span class="location__icon" aria-hidden="true">📍</span>
+  
+  <span class="location__text">
+    
+    
+  </span>
+</span>
+
+        </div>
+
+        <p class="hero-brand-card__description">Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием.</p>
+      </div>
+
+      <!-- Founder portrait -->
+      
+    </div>
+
+    <!-- Taxonomy section -->
+    <div class="hero-brand-card__taxonomy">
+      <div class="hero-brand-card__taxonomy-section">
+        <div class="hero-brand-card__tags">
+          <!-- Markets -->
+          
+            
+              <a href="/ru/discover/markets/russia/"
+                 class="brand-tag brand-tag--market">
+                
+                  russia
+                
+              </a>
+            
+          
+
+          <!-- Sectors -->
+          
+            
+              <a href="/ru/discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector">
+                
+                  artisanal-spirits
+                
+              </a>
+            
+          
+
+          <!-- Attributes -->
+          
+            
+              <a href="/ru/discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute">
+                
+                  founder-led
+                
+              </a>
+            
+              <a href="/ru/discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute">
+                
+                  artisanal-excellence
+                
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-brand-card__footer">
+    <a href="/ru/brands/ru-teatime/" class="hero-brand-card__link btn btn--primary">
       
 
 
@@ -1813,7 +1325,22 @@
 
     </a>
 
-    
+    <div class="hero-brand-card__footer-right">
+      <!-- Signals -->
+      
+      <div class="hero-brand-card__signals">
+        
+          <a href="/ru/discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal">
+            
+              export-ready
+            
+          </a>
+        
+      </div>
+      
+
+      
 
 
 
@@ -1824,7 +1351,7 @@
 
 
 
-  <div class="featured-brand-card__founder-led" 
+  <div class="hero-brand-card__founder-led" 
        title="
 
 
@@ -1850,7 +1377,8 @@
   </div>
 
 
-  </footer>
+    </div>
+  </div>
 </article>
 
       
@@ -1862,7 +1390,7 @@
     
   
     
-      <section class="brands-section brands-section--recent-brands" id="brands-section-recent-brands" aria-labelledby="heading-recent-brands">
+      <section class="brands-section brands-section--latest-brands" id="brands-section-latest-brands" aria-labelledby="heading-latest-brands">
         
           
 
@@ -1876,7 +1404,7 @@
       Недавно добавленные бренды
     </h2>
 
-    <div class="recent-brands__grid">
+    <div class="latest-brands__grid">
       
       
         
@@ -1937,7 +1465,7 @@
              /assets/images/brands/ru-teatime/placeholder-800w.jpg 800w,
              /assets/images/brands/ru-teatime/placeholder-1200w.jpg 1200w"
      sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
-     alt=" logo"
+     alt="Founder portrait"
      class="brand-card"
      
      data-purpose="placeholder"
@@ -1966,46 +1494,7 @@
     <p class="brand-card__description">Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием.</p>
 
     <div class="brand-card__tags">
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/sectors/artisanal-spirits/"
-   class="brand-card__tag brand-card__tag--sector">
-  artisanal-spirits
-</a>
-
-        
-      
-
+      <!-- Markets first -->
       
         
           
@@ -2058,6 +1547,48 @@
         
       
 
+      <!-- Sectors second -->
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+<a href="/ru/discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector">
+  artisanal-spirits
+</a>
+
+        
+      
+
+      <!-- Attributes third -->
       
         
           
@@ -2085,6 +1616,39 @@
 <a href="/ru/discover/attributes/founder-led/"
    class="brand-card__tag brand-card__tag--attribute">
   founder-led
+</a>
+
+        
+      
+
+      <!-- Signals fourth -->
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<a href="/ru/discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal">
+  export-ready
 </a>
 
         
@@ -2240,46 +1804,7 @@
     <p class="brand-card__description">Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов.</p>
 
     <div class="brand-card__tags">
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/sectors/artisanal-spirits/"
-   class="brand-card__tag brand-card__tag--sector">
-  artisanal-spirits
-</a>
-
-        
-      
-
+      <!-- Markets first -->
       
         
           
@@ -2332,6 +1857,48 @@
         
       
 
+      <!-- Sectors second -->
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+<a href="/ru/discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector">
+  artisanal-spirits
+</a>
+
+        
+      
+
+      <!-- Attributes third -->
       
         
           
@@ -2359,6 +1926,39 @@
 <a href="/ru/discover/attributes/founder-led/"
    class="brand-card__tag brand-card__tag--attribute">
   founder-led
+</a>
+
+        
+      
+
+      <!-- Signals fourth -->
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<a href="/ru/discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal">
+  export-ready
 </a>
 
         
@@ -2499,6 +2099,48 @@
     <p class="brand-card__description">Коллекция камерных бутик-отелей, подчеркивающих разнообразие бразильских ландшафтов через устойчивую роскошь и аутентичный местный опыт.</p>
 
     <div class="brand-card__tags">
+      <!-- Markets first -->
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+<a href="/ru/discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market">
+  brazil
+</a>
+
+        
+      
+
+      <!-- Sectors second -->
       
         
           
@@ -2553,46 +2195,7 @@
         
       
 
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/markets/brazil/"
-   class="brand-card__tag brand-card__tag--market">
-  brazil
-</a>
-
-        
-      
-
+      <!-- Attributes third -->
       
         
           
@@ -2620,6 +2223,39 @@
 <a href="/ru/discover/attributes/founder-led/"
    class="brand-card__tag brand-card__tag--attribute">
   founder-led
+</a>
+
+        
+      
+
+      <!-- Signals fourth -->
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<a href="/ru/discover/signals/franchise-ready/"
+   class="brand-card__tag brand-card__tag--signal">
+  franchise-ready
 </a>
 
         
@@ -2760,6 +2396,48 @@
     <p class="brand-card__description">Семейный производитель органических консервов, меда и элитного кофе из региона Атлантического леса Бразилии.</p>
 
     <div class="brand-card__tags">
+      <!-- Markets first -->
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+<a href="/ru/discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market">
+  brazil
+</a>
+
+        
+      
+
+      <!-- Sectors second -->
       
         
           
@@ -2808,46 +2486,7 @@
         
       
 
-      
-        
-          
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    
-    
-    
-  
-
-
-<a href="/ru/discover/markets/brazil/"
-   class="brand-card__tag brand-card__tag--market">
-  brazil
-</a>
-
-        
-      
-
+      <!-- Attributes third -->
       
         
           
@@ -2877,6 +2516,11 @@
   founder-led
 </a>
 
+        
+      
+
+      <!-- Signals fourth -->
+      
         
       
     </div>
@@ -2990,7 +2634,9 @@
 
     </p>
     <div class="cta-buttons">
-      <a href="/ru/about/#contact" class="btn btn--secondary-cta">
+      <a href="/ru/about/#about-section-contact" 
+         class="btn btn--primary-cta"
+         data-track="suggest-brand">
         
 
 
@@ -3009,12 +2655,37 @@
 
   
     
+
+
+
+  Suggest a Brand
+
+      </a>
+      <a href="/ru/about/#about-section-contact" 
+         class="btn btn--secondary-cta"
+         data-track="get-profiled">
+        
+
+
+
+
+
+
+
+  
+    
   
 
+  
+    
+  
+
+  
+    
 
 
 
-  Связаться с нами
+  Get Profiled
 
       </a>
     </div>
@@ -3054,8 +2725,6 @@
       <a href="/en/brands/" onclick="localStorage.setItem('preferredLanguage', 'en');" >EN</a>
     
       <a href="/ru/brands/" onclick="localStorage.setItem('preferredLanguage', 'ru');" class="active">RU</a>
-    
-      <a href="/zh/brands/" onclick="localStorage.setItem('preferredLanguage', 'zh');" >ZH</a>
     
   
 </div>

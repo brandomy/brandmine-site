@@ -58,8 +58,9 @@
   width: 90px;
   height: 90px;
   border-radius: var(--radius-sm);
-  background-color: var(--neutral-100);
-  padding: var(--space-2);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  padding: var(--space-1);
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
@@ -122,8 +123,8 @@
 }
 
 .hero-brand-card__description {
-  font-size: var(--text-lg);
-  line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
   color: var(--neutral-700);
 }
 
@@ -131,15 +132,62 @@
 .hero-brand-card__founder {
   flex-shrink: 0;
   width: 120px;
-  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible; /* Allow tooltip to show */
+  position: relative;
+  cursor: pointer;
 }
 
 .hero-brand-card__founder-img {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 180px;
   object-fit: cover;
   border-radius: var(--radius-md);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
+  margin-bottom: var(--space-2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-brand-card__founder:hover .hero-brand-card__founder-img {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom tooltip for founder name */
+.hero-brand-card__founder::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.hero-brand-card__founder:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-brand-card__founder-name {
+  font-size: var(--text-xs);
+  color: var(--neutral-600);
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
 }
 
 /* --------------------------------------------------------------------------
@@ -148,6 +196,7 @@
 
 .hero-brand-card__taxonomy {
   margin-bottom: var(--space-6);
+  margin-right: 140px; /* Leave space for founder portrait */
 }
 
 .hero-brand-card__tags {
@@ -204,17 +253,30 @@
    -------------------------------------------------------------------------- */
 
 .hero-brand-card__footer {
-  padding: var(--space-6);
+  padding: var(--space-4) var(--space-6);
   border-top: 1px solid var(--neutral-200);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: var(--space-4);
+}
+
+.hero-brand-card__footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto; /* Push to the right */
 }
 
 .hero-brand-card__signals {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+/* Reduce View Profile button padding - more pill-like */
+.hero-brand-card__link {
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--text-sm);
 }
 
 /* Make the View Profile button smaller */
@@ -234,8 +296,8 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: var(--accent-300);
-  color: white;
+  background-color: var(--accent-200);
+  color: var(--accent-800);
   font-weight: bold;
   font-size: 16px;
   position: relative;
@@ -245,7 +307,7 @@
 /* Legacy .brand-tag styling - keep for backwards compatibility */
 .brand-tag {
   display: inline-flex;
-  padding: var(--space-1) var(--space-2);
+  padding: calc(var(--space-1) / 2) var(--space-2);
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
@@ -300,6 +362,8 @@
     height: 70px;
     bottom: -20px;
     right: var(--space-4);
+    padding: 0; /* Reduce or remove padding */
+    object-fit: cover; /* Fill the space more aggressively (may crop) */
   }
 
   .hero-brand-card__body {

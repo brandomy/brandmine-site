@@ -5,21 +5,32 @@
   .featured-brands {
     &__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: var(--space-8);
-      margin-top: var(--space-6);
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-10);
+      margin-top: var(--space-8);
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media (width <= 1200px) {
+        gap: var(--space-8);
+        max-width: 1400px;
+      }
 
       @media (width <= 992px) {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: var(--space-6);
+        max-width: 1000px;
       }
 
       @media (width <= 768px) {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: var(--space-6);
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+        max-width: 800px;
       }
 
       @media (width <= 480px) {
-        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        max-width: 100%;
       }
     }
   }
