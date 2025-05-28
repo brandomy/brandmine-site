@@ -8,10 +8,9 @@ sections:
   - breadcrumbs
   - hero
   - impact
-  - content
-  - filter-interface
+  a
   - featured-brands
-  - recent-brands
+  - latest-brands
   - contact-cta
 ---
 

@@ -32,21 +32,14 @@
 <article class="brand-card {% if brand.featured or brand.featured_level > 1 %}brand-card--featured{% endif %}">
   {% include components/helpers/card-header.html
      brand=brand
-     class_name="brand-card" %}
+     class_name="brand-card"
+     show_location=true %}
 
   <div class="brand-card__body">
     <p class="brand-card__description">{{ brand.description }}</p>
 
     <div class="brand-card__tags">
-      {% if brand.sectors %}
-        {% for sector in brand.sectors limit:2 %}
-          {% include components/helpers/taxonomy-tag.html
-             type="sector"
-             value=sector
-             class_name="brand-card" %}
-        {% endfor %}
-      {% endif %}
-
+      <!-- Markets first -->
       {% if brand.markets %}
         {% for market in brand.markets limit:1 %}
           {% include components/helpers/taxonomy-tag.html
@@ -56,11 +49,32 @@
         {% endfor %}
       {% endif %}
 
+      <!-- Sectors second -->
+      {% if brand.sectors %}
+        {% for sector in brand.sectors limit:1 %}
+          {% include components/helpers/taxonomy-tag.html
+             type="sector"
+             value=sector
+             class_name="brand-card" %}
+        {% endfor %}
+      {% endif %}
+
+      <!-- Attributes third -->
       {% if brand.attributes %}
         {% for attribute in brand.attributes limit:1 %}
           {% include components/helpers/taxonomy-tag.html
              type="attribute"
              value=attribute
+             class_name="brand-card" %}
+        {% endfor %}
+      {% endif %}
+
+      <!-- Signals fourth -->
+      {% if brand.signals %}
+        {% for signal in brand.signals limit:1 %}
+          {% include components/helpers/taxonomy-tag.html
+             type="signal"
+             value=signal
              class_name="brand-card" %}
         {% endfor %}
       {% endif %}

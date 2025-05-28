@@ -4,8 +4,8 @@
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].brands %}
-{% assign panel_type = include.panel_type | default: "olive-soft" %}
-{% assign limit = include.limit | default: 3 %}
+{% assign panel_type = include.panel_type | default: "amber-soft" %}
+{% assign limit = include.limit | default: 4 %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
@@ -17,9 +17,9 @@
     </p>
 
     <div class="featured-brands__grid">
-      {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 3 %}
+      {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 4 %}
       {% for brand in featured_brands %}
-        {% include components/cards/featured-brand-card.html brand=brand %}
+        {% include components/cards/hero-brand-card.html brand=brand %}
       {% endfor %}
     </div>
   </div>

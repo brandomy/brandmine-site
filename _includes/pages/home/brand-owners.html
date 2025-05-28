@@ -59,7 +59,7 @@
     {% endif %}
 
     <div class="cta-buttons">
-      <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#contact-us' }}"
+      <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#about-section-contact' }}"
          class="btn btn--secondary-cta"
          data-track="brand-owners">
         {{ include.cta_text | default: "" }}{% unless include.cta_text %}{% include helpers/t.html key="home.brand_owners.cta" fallback="Get Profiled" %}{% endunless %}

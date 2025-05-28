@@ -42,21 +42,29 @@
              class_name="hero-brand-card" %}
 
           {% include components/helpers/location-display.html
-             brand=brand
-             class_name="hero-brand-card" %}
+             city=brand.location.city
+             country_code=brand.location.country
+             class="hero-brand-card__location" %}
         </div>
 
         <p class="hero-brand-card__description">{{ brand.description }}</p>
       </div>
 
       <!-- Founder portrait -->
-      {% if brand.images.founder %}
-        <div class="hero-brand-card__founder">
-          {% comment %} Use helper for founder image {% endcomment %}
-          {% include helpers/brand-image.html
-             brand_id=brand.ref
-             image_type="founder"
-             class="hero-brand-card__founder-img" %}
+      {% if brand.images.founder and brand.founders and brand.founders.size > 0 %}
+        {% comment %} Look up founder name from JSON data {% endcomment %}
+        {% assign founder_slug = brand.founders[0] %}
+        {% assign founder_data = site.data.founders | where: "ref", founder_slug | first %}
+        {% if founder_data and founder_data.name[page.lang] %}
+          {% assign founder_name = founder_data.name[page.lang] %}
+        {% elsif founder_data and founder_data.name.en %}
+          {% assign founder_name = founder_data.name.en %}
+        {% else %}
+          {% assign founder_name = founder_slug %}
+        {% endif %}
+        
+        <div class="hero-brand-card__founder" title="Founder: {{ founder_name }}">{%- comment -%} Ensure no whitespace {%- endcomment -%}
+          {%- include helpers/brand-image.html brand_id=brand.ref image_type="founder" alt="Founder portrait" class="hero-brand-card__founder-img" -%}
         </div>
       {% endif %}
     </div>
@@ -112,26 +120,28 @@
   </div>
 
   <div class="hero-brand-card__footer">
-    <!-- Signals -->
-    {% if brand.signals and brand.signals.size > 0 %}
-    <div class="hero-brand-card__signals">
-      {% for signal in brand.signals %}
-        <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
-           class="brand-tag brand-tag--signal">
-          {% if site.data.dimensions.signals[signal][page.lang] %}
-            {{ site.data.dimensions.signals[signal][page.lang] }}
-          {% else %}
-            {{ signal }}
-          {% endif %}
-        </a>
-      {% endfor %}
-    </div>
-    {% endif %}
-
     <a href="{{ brand.url | relative_url }}" class="hero-brand-card__link btn btn--primary">
       {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
     </a>
 
-    {% include components/helpers/founder-check.html brand=brand class_name="hero-brand-card" %}
+    <div class="hero-brand-card__footer-right">
+      <!-- Signals -->
+      {% if brand.signals and brand.signals.size > 0 %}
+      <div class="hero-brand-card__signals">
+        {% for signal in brand.signals %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
+             class="brand-tag brand-tag--signal">
+            {% if site.data.dimensions.signals[signal][page.lang] %}
+              {{ site.data.dimensions.signals[signal][page.lang] }}
+            {% else %}
+              {{ signal }}
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% include components/helpers/founder-check.html brand=brand class_name="hero-brand-card" %}
+    </div>
   </div>
 </article>

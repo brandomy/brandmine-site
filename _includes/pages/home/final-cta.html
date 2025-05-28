@@ -41,7 +41,7 @@
          data-track="final-cta-explore">
         {{ include.primary_cta_text | default: "" }}{% unless include.primary_cta_text %}{% include helpers/t.html key="home.final_cta.cta_primary" fallback="Explore Brands" %}{% endunless %}
       </a>
-      <a href="{{ include.secondary_cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#contact-us' }}"
+      <a href="{{ include.secondary_cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#about-section-contact' }}"
          class="btn btn--secondary-cta"
          data-track="final-cta-profile">
         {{ include.secondary_cta_text | default: "" }}{% unless include.secondary_cta_text %}{% include helpers/t.html key="home.final_cta.cta_secondary" fallback="Get Profiled" %}{% endunless %}

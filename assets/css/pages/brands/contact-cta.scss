@@ -18,23 +18,18 @@
     }
   }
 
-  /* Style extensions for buttons in CTAs */
+  /* Ensure button uses standard orange styling with proper alignment */
   .btn--secondary-cta {
-    display: inline-block;
-    padding: var(--space-3) var(--space-6);
-    background-color: white;
-    color: var(--primary-600);
-    font-weight: var(--font-medium);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: var(--neutral-50);
-      color: var(--primary-700);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }
+    /* Remove overrides to inherit standard orange button styling */
+    /* Standard styling from components/buttons/buttons.scss provides: */
+    /* - Orange background (var(--secondary-600)) */
+    /* - White text */
+    /* - Proper vertical centering with inline-flex */
+    /* - Enhanced hover effects with shimmer */
+    
+    /* Only add specific positioning if needed */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
