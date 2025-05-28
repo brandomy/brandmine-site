@@ -1,0 +1,75 @@
+{% comment %}
+Component: pages/brands/brands-grid.html
+Purpose: Displays a filterable grid of brands with search and pagination
+
+Parameters:
+- limit (optional): Number of brands per page (default: 12)
+- show_filters (optional): Show filter interface (default: true)
+- featured_first (optional): Show featured brands first (default: false)
+
+Dependencies:
+- helpers/brand-filter.html - Brand filtering logic
+- helpers/brand-card-selector.html - Card selection logic
+- components/search/search-filter.html - Filter interface
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign limit = include.limit | default: 12 %}
+{% assign show_filters = include.show_filters | default: true %}
+{% assign featured_first = include.featured_first | default: false %}
+
+<div class="brands-grid">
+  {% if show_filters %}
+    <div class="brands-grid__filters">
+      {% include components/search/search-filter.html %}
+    </div>
+  {% endif %}
+
+  <div class="brands-grid__container">
+    {% comment %} Get all brands for this language {% endcomment %}
+    {% if featured_first %}
+      {% include helpers/brand-filter.html lang=current_lang featured=true %}
+      {% assign featured_brands = filtered_brands %}
+      {% include helpers/brand-filter.html lang=current_lang %}
+      {% assign regular_brands = filtered_brands | where: "featured", false %}
+      {% assign all_brands = featured_brands | concat: regular_brands %}
+    {% else %}
+      {% include helpers/brand-filter.html lang=current_lang %}
+      {% assign all_brands = filtered_brands %}
+    {% endif %}
+
+    {% if all_brands.size > 0 %}
+      <div class="brands-grid__grid">
+        {% for brand in all_brands limit:limit %}
+          <div class="brands-grid__item">
+            {% include helpers/brand-card-selector.html brand=brand %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% comment %} Pagination controls {% endcomment %}
+      {% if all_brands.size > limit %}
+        <div class="brands-grid__pagination">
+          <p class="brands-grid__count">
+            Showing {{ limit }} of {{ all_brands.size }} brands
+          </p>
+          <div class="brands-grid__load-more">
+            <button class="btn btn--outline" data-load-more="brands">
+              {% include helpers/t.html key="common.actions.load_more" fallback="Load More" %}
+            </button>
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      {% comment %} Empty state {% endcomment %}
+      <div class="brands-grid__empty">
+        <p class="brands-grid__empty-message">
+          {% include helpers/t.html key="common.empty_states.no_brands" fallback="No brands available" %}
+        </p>
+        <a href="{{ site.baseurl }}/{{ current_lang }}/brands/" class="btn btn--outline">
+          {% include helpers/t.html key="common.actions.clear" fallback="Clear Filters" %}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

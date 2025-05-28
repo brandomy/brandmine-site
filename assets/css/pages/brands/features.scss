@@ -1,0 +1,82 @@
+/* assets/css/pages/brands/features.scss */
+
+/* Brand features section styles */
+.brands-page {
+  .brands__features-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+
+    @media (width <= 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (width <= 640px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+
+  .brands__feature-item {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+
+    @media (width <= 768px) {
+      gap: var(--space-3);
+    }
+  }
+
+  .brands__feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--olive-100);
+    color: var(--olive-700);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+
+    @media (width <= 768px) {
+      width: 40px;
+      height: 40px;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+
+      @media (width <= 768px) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .brands__feature-content {
+    flex-grow: 1;
+  }
+
+  .brands__feature-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-1);
+    color: var(--neutral-900);
+
+    @media (width <= 768px) {
+      font-size: var(--text-base);
+    }
+  }
+
+  .brands__feature-text {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--neutral-700);
+
+    @media (width <= 768px) {
+      font-size: var(--text-sm);
+    }
+  }
+}

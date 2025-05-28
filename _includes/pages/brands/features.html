@@ -1,0 +1,86 @@
+{% comment %}
+  Component: pages/brands/features.html
+
+  Purpose: Displays the brand profile features section
+
+  Parameters:
+    title (optional): Custom section title
+    description (optional): Custom section description
+
+  Dependencies:
+    - CSS: components/panel.css
+    - site.data.translations for labels
+{% endcomment %}
+
+<div class="panel panel--olive-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="brands.profile_features_title" fallback="Rich Brand Profiles" %}{% endunless %}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.description | default: "" }}{% unless include.description %}{% include helpers/t.html key="brands.profile_features_description" fallback="Our curated brand profiles go beyond basic company information to reveal:" %}{% endunless %}
+    </p>
+
+    <div class="brands__features-list">
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">{% include helpers/t.html key="brands.feature_founding_title" fallback="Founding Stories" %}</h3>
+          <p class="brands__feature-text">{% include helpers/t.html key="brands.feature_founding_text" fallback="The vision and journey behind each brand" %}</p>
+        </div>
+      </div>
+
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">{% include helpers/t.html key="brands.feature_visual_title" fallback="Visual Identity" %}</h3>
+          <p class="brands__feature-text">{% include helpers/t.html key="brands.feature_visual_text" fallback="Brand assets, packaging, and product imagery" %}</p>
+        </div>
+      </div>
+
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line><rect x="2" y="20" width="20" height="2" rx="1"></rect></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">{% include helpers/t.html key="brands.feature_market_title" fallback="Market Position" %}</h3>
+          <p class="brands__feature-text">{% include helpers/t.html key="brands.feature_market_text" fallback="Competitive landscape and consumer relationships" %}</p>
+        </div>
+      </div>
+
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">{% include helpers/t.html key="brands.feature_people_title" fallback="Key People" %}</h3>
+          <p class="brands__feature-text">{% include helpers/t.html key="brands.feature_people_text" fallback="Leadership and decision-makers" %}</p>
+        </div>
+      </div>
+
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">{% include helpers/t.html key="brands.feature_growth_title" fallback="Growth Trajectory" %}</h3>
+          <p class="brands__feature-text">{% include helpers/t.html key="brands.feature_growth_text" fallback="Historical milestones and future direction" %}</p>
+        </div>
+      </div>
+
+      <div class="brands__feature-item">
+        <div class="brands__feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div class="brands__feature-content">
+          <h3 class="brands__feature-title">{% include helpers/t.html key="brands.feature_presence_title" fallback="Market Presence" %}</h3>
+          <p class="brands__feature-text">{% include helpers/t.html key="brands.feature_presence_text" fallback="Location intelligence and retail footprint" %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
