@@ -18,12 +18,6 @@ sections:
   - brand-info
   - related-brands
   - related-insights
-
-# NOTE: sidebar_sections removed for linear layout
-# sidebar_sections:
-#   - location-info
-#   - related-insights
-#   - related-brands
 #   - taxonomy-cloud
 
 # Basic Information
