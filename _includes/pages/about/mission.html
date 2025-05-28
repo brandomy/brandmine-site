@@ -13,11 +13,11 @@
     - site.data.translations for titles and text
 {% endcomment %}
 
-{% assign panel_type = include.panel_type | default: "primary-soft" %}
+{% assign panel_type = include.panel_type | default: "primary" %}
 
-<div class="panel panel--{{ panel_type }}">
+<div class="panel panel--{{ panel_type }} panel--impact">
   <div class="panel__content">
-    <h2 class="panel__heading-secondary about-mission__title">{{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.mission" fallback="Our Mission" %}{% endunless %}</h2>
-    <p class="panel__lead-text about-mission__text">{{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.lead_text" fallback="We illuminate and elevate founder-led brands from BRICS+ countries, bridging cultural and linguistic barriers to reveal exceptional opportunities." %}{% endunless %}</p>
+    <h2 class="panel__heading-secondary">{{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.mission" fallback="Our Mission" %}{% endunless %}</h2>
+    <p class="panel__lead-text">{{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.mission_text" fallback="To illuminate what is currently invisible by breaking through language, cultural, and political barriers that hide exceptional BRICS+ brands from global view." %}{% endunless %}</p>
   </div>
 </div>

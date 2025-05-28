@@ -8,12 +8,12 @@ ref: founders
 sections:
   - breadcrumbs
   - hero
-  - header
+  - impact
   - content
   - filter-interface
-  - founders-grid
   - featured-founders
   - recent-founders
+  - contact-cta
 ---
 
 The Founders section celebrates the visionary entrepreneurs who have created and nurtured the brands featured on Brandmine. These individuals not only build businesses but are also cultural storytellers who bridge traditions with innovation.

@@ -1,38 +1,106 @@
 /* ==========================================================================
-   Featured Insights Styles
+   Category Highlights Styles
    ==========================================================================
-   Styles for the featured insights section on the insights page.
+   Styles for the category highlights section showing featured articles from each category
 */
 
-.insights-featured {
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--space-6);
-    margin: var(--space-8) 0;
+.insights-category-highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin: var(--space-6) 0;
+
+  @media (width >= 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-4);
+
+    &--brand-spotlight {
+      color: var(--secondary-700);
+    }
+
+    &--founders-journey {
+      color: var(--primary-700);
+    }
+
+    &--location-intelligence {
+      color: var(--sky-700);
+    }
+
+    &--market-momentum {
+      color: var(--olive-700);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-right: var(--space-2);
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &--brand-spotlight {
+      color: var(--secondary-700);
+    }
+
+    &--founders-journey {
+      color: var(--primary-700);
+    }
+
+    &--location-intelligence {
+      color: var(--sky-700);
+    }
+
+    &--market-momentum {
+      color: var(--olive-700);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
   }
 
   &__empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: var(--space-8);
+    padding: var(--space-4);
     background-color: var(--neutral-50);
     border-radius: var(--radius-md);
-    border: 1px dashed var(--neutral-300);
+    text-align: center;
     color: var(--neutral-600);
     font-style: italic;
+    margin-bottom: var(--space-4);
+  }
+
+  &__more {
+    display: inline-block;
+    margin-top: var(--space-3);
+    align-self: flex-end;
+    color: var(--primary-600);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   @media (width <= 767px) {
-    &__grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-  }
-
-  @media (width <= 479px) {
-    &__grid {
-      margin: var(--space-4) 0;
-    }
+    gap: var(--space-6);
   }
 }

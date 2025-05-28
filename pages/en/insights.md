@@ -8,11 +8,16 @@ lang: en
 sections:
   - breadcrumbs
   - hero
+  - impact
+  - content
   - category-navigation
   - categories
-  - category-highlights
-  # - insights-search
-  - all-insights
-  # - subscribe
+  - filter-interface
+  - featured-insights
+  - recent-insights
   - contact-cta
 ---
+
+Our Insights section provides expert analysis and thought leadership on BRICS+ consumer brands through four specialized content categories. Discover in-depth brand spotlights, founder journeys, location intelligence, and market momentum stories.
+
+Explore our curated articles to understand the dynamics shaping emerging markets and identify opportunities across the BRICS+ landscape.

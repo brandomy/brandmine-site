@@ -1,0 +1,37 @@
+{% comment %}
+  Component: pages/founders/contact-cta.html
+
+  Purpose: Displays the contact call-to-action panel for founders page
+           Focused on two key audiences:
+           1. Founders wanting to be featured
+           2. People wanting to suggest founders for profiling
+
+  Parameters:
+    title (optional): Custom CTA title
+    description (optional): Custom CTA description
+    founder_button_text (optional): Custom founder button text
+    suggest_button_text (optional): Custom suggest button text
+
+  Dependencies:
+    - CSS: components/panel.css
+    - site.data.translations for labels
+{% endcomment %}
+
+<div class="panel panel--cta">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="founders.cta_title" fallback="Connect with Brandmine" %}{% endunless %}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.description | default: "" }}{% unless include.description %}{% include helpers/t.html key="founders.cta_text" fallback="Are you a visionary founder ready to share your story? Or do you know an exceptional founder we should feature?" %}{% endunless %}
+    </p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--primary-cta">
+        {{ include.founder_button_text | default: "" }}{% unless include.founder_button_text %}{% include helpers/t.html key="founders.cta_founder_button" fallback="I'm a Founder" %}{% endunless %}
+      </a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">
+        {{ include.suggest_button_text | default: "" }}{% unless include.suggest_button_text %}{% include helpers/t.html key="founders.cta_suggest_button" fallback="Suggest a Founder" %}{% endunless %}
+      </a>
+    </div>
+  </div>
+</div>

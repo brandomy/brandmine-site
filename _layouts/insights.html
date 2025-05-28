@@ -14,10 +14,12 @@ layout: default
   sections:
     - breadcrumbs
     - hero
-    - featured-insights
+    - content
+    - category-navigation
     - categories
-    - all-insights
-    - subscribe
+    - filter-interface
+    - featured-insights
+    - recent-insights
     - contact-cta
 
   Dependencies:
@@ -26,10 +28,13 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,hero,categories,all-insights" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,hero,content,category-navigation,categories,filter-interface,featured-insights,recent-insights,contact-cta" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
+
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
 
 <div class="insights-page">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
@@ -41,22 +46,20 @@ layout: default
     </section>
   {% endif %}
   
-  {% comment %} All other sections use panel system {% endcomment %}
-  <div class="panel panel--light">
-    <div class="panel__content">
-      {{ content }}
-      
-      {% for section in sections_to_render %}
-        {% unless section == "breadcrumbs" %}
-          <section class="insights-section insights-section--{{ section }}"
-                   id="insights-section-{{ section }}"
-                   aria-labelledby="heading-{{ section }}">
-            {% include pages/insights/{{ section }}.html %}
-          </section>
-        {% endunless %}
-      {% endfor %}
-    </div>
-  </div>
+  {% comment %} All other sections use individual panel wrapping {% endcomment %}
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
+      <section class="insights-section insights-section--{{ section }}"
+               id="insights-section-{{ section }}"
+               aria-labelledby="heading-{{ section }}">
+        {% if section == "content" %}
+          {% include pages/insights/{{ section }}.html content=page_content %}
+        {% else %}
+          {% include pages/insights/{{ section }}.html %}
+        {% endif %}
+      </section>
+    {% endunless %}
+  {% endfor %}
 </div>
 
 <!-- Insights search functionality -->

@@ -16,10 +16,13 @@ layout: default
 
 {% comment %} Set default sections if none specified {% endcomment %}
 {% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,hero,intro,search,features,brands-grid,featured-brands,recent-brands,find-partner,contact-cta" | split: "," %}
+  {% assign sections_to_render = "breadcrumbs,hero,content,filter-interface,featured-brands,recent-brands,contact-cta" | split: "," %}
 {% else %}
   {% assign sections_to_render = page.sections %}
 {% endunless %}
+
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
 
 <div class="brands-page">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
@@ -35,7 +38,11 @@ layout: default
   {% for section in sections_to_render %}
     {% unless section == "breadcrumbs" %}
       <section class="brands-section brands-section--{{ section }}" id="brands-section-{{ section }}" aria-labelledby="heading-{{ section }}">
-        {% include pages/brands/{{ section }}.html %}
+        {% if section == "content" %}
+          {% include pages/brands/{{ section }}.html content=page_content %}
+        {% else %}
+          {% include pages/brands/{{ section }}.html %}
+        {% endif %}
       </section>
     {% endunless %}
   {% endfor %}

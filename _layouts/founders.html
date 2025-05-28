@@ -26,6 +26,9 @@ layout: default
   {% assign sections_to_render = page.sections %}
 {% endunless %}
 
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
+
 <main class="layout founders-page">
   <div class="layout__wrapper">
     <div class="layout__content">
@@ -37,8 +40,6 @@ layout: default
           {% include components/ui/breadcrumbs.html %}
         </section>
       {% endif %}
-      
-      {{ content }}
 
       {% for section in sections_to_render %}
         {% unless section == "breadcrumbs" %}
@@ -53,7 +54,11 @@ layout: default
             </section>
           {% else %}
             <section class="founders-section founders-section--{{ section }}" id="founders-section-{{ section }}" aria-labelledby="heading-{{ section }}">
-              {% include pages/founders/{{ section }}.html %}
+              {% if section == "content" %}
+                {% include pages/founders/{{ section }}.html content=page_content %}
+              {% else %}
+                {% include pages/founders/{{ section }}.html %}
+              {% endif %}
             </section>
           {% endif %}
         {% endunless %}

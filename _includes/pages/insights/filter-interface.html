@@ -1,0 +1,88 @@
+{% comment %}
+  Component: pages/insights/filter-interface.html
+
+  Purpose: Displays the filter and search interface for browsing insights
+           Linear layout replacing the old sidebar approach
+
+  Parameters:
+    content_type (optional): Type of content to filter, defaults to "insights"
+
+  Dependencies:
+    - CSS: pages/insights/filter-interface.scss
+    - _includes/components/search/search-filter.html
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign filter_t = site.data.translations[page.lang].filter %}
+
+<div class="insights-filter">
+  <!-- Search filter include -->
+  {% assign content_type = include.content_type | default: "insights" %}
+  {% include components/search/search-filter.html content_type=content_type %}
+
+  <div class="insights-filter__results">
+    <div class="insights-filter__results-header">
+      <h2 id="insights-results-count" class="insights-filter__results-title">{{ t.all_insights | default: "All Insights" }}</h2>
+
+      <!-- Sort and Filter Options -->
+      <div class="insights-filter__controls">
+        <!-- Category Filter -->
+        <div class="insights-filter__category">
+          <label for="category-select" class="insights-filter__label">{{ t.category }}:</label>
+          <select id="category-select" class="insights-filter__select">
+            <option value="all">{{ t.all_categories | default: "All Categories" }}</option>
+            <option value="brand-spotlight">{{ t.brand_spotlight | default: "Brand Spotlight" }}</option>
+            <option value="founders-journey">{{ t.founders_journey | default: "Founder's Journey" }}</option>
+            <option value="location-intelligence">{{ t.location_intelligence | default: "Location Intelligence" }}</option>
+            <option value="market-momentum">{{ t.market_momentum | default: "Market Momentum" }}</option>
+          </select>
+        </div>
+
+        <!-- Sort Options -->
+        <div class="insights-filter__sort">
+          <label for="insights-sort-select" class="insights-filter__label">{{ t.sort_by | default: "Sort by" }}:</label>
+          <select id="insights-sort-select" class="insights-filter__select">
+            <option value="date">{{ t.sort_newest | default: "Newest First" }}</option>
+            <option value="title">{{ t.sort_title | default: "Title" }}</option>
+            <option value="category">{{ t.sort_category | default: "Category" }}</option>
+            <option value="relevance">{{ t.sort_relevance | default: "Relevance" }}</option>
+          </select>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="insights-filter__view-toggle">
+          <button id="insights-grid-view" class="view-toggle-btn active" title="Grid view">⊞</button>
+          <button id="insights-list-view" class="view-toggle-btn" title="List view">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Filters Display -->
+    <div id="active-insights-filters" class="active-filters">
+      <!-- Populated by JavaScript -->
+    </div>
+
+    <!-- Search Results Grid -->
+    <div id="insights-search-results" class="insights-results-grid">
+      <!-- Populated by JavaScript -->
+    </div>
+
+    <!-- Load More -->
+    <div id="load-more-insights-container" class="load-more-container" style="display: none;">
+      <button type="button" id="load-more-insights" class="load-more-btn">
+        {{ t.load_more | default: "Load More Insights" }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Fallback for non-JS users -->
+<noscript>
+  <div class="insights-fallback">
+    <p>{{ t.js_required | default: "JavaScript is required for search functionality. Please enable JavaScript or browse insights using the main navigation." }}</p>
+  </div>
+</noscript>
+
+<!-- Load Insights Search JavaScript -->
+<script src="{{ '/assets/js/pages/insights/insights-search.js' | relative_url }}" defer></script>

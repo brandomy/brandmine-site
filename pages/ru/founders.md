@@ -1,18 +1,19 @@
 ---
 layout: founders
-title: "Познакомьтесь с основателями"
-description: "Откройте для себя визионеров, стоящих за развивающимися брендами стран БРИКС+, их истории, опыт и созданные ими бренды."
+title: "Meet the Founders"
+description: "Discover the visionaries behind BRICS+ emerging brands, their stories, expertise, and the brands they've built."
 permalink: /ru/founders/
 lang: ru
 ref: founders
 sections:
   - breadcrumbs
-  - header
+  - hero
+  - impact
   - content
   - filter-interface
-  - founders-grid
   - featured-founders
   - recent-founders
+  - contact-cta
 ---
 
 Раздел "Основатели" посвящен выдающимся предпринимателям, которые создали и развивают бренды, представленные на Brandmine. Эти люди не только строят бизнес, но и являются культурными рассказчиками, соединяющими традиции с инновациями.

@@ -101,9 +101,12 @@ Includes are organized into a structured hierarchy:
   pages/                — Page-specific includes organized by page
     about/              — About page sections (hero, mission, team, etc.)
     brand/              — Brand page sections
-    founders/           — Founders page sections
+    brands/             — Brands page sections (hero, impact, filter-interface, etc.)
+    discovery/          — Discovery page sections (hero, impact, dimensions-grid, etc.)
+    founders/           — Founders page sections (hero, impact, filter-interface, etc.)
     home/               — Home page sections
     insight/            — Insight page sections
+    insights/           — Insights page sections (hero, impact, categories, etc.)
 ```
 We use small, focused section includes under `_includes/pages/<page>/<section>.html` to keep templates logic-light.
 
@@ -198,6 +201,17 @@ Brandmine uses a **simplified linear sectioning approach** optimized for MVP dev
       </div>
     </section>
   {% endfor %}
+  ```
+
+- **Standardized Section Structure**: All topline pages (brands, founders, discovery, insights) follow identical section patterns across all languages:
+  ```yaml
+  sections:
+    - breadcrumbs
+    - hero
+    - impact          # Translation-driven impact statement
+    - content
+    - [page-specific sections]
+    - contact-cta
   ```
 
 - **Panel System Integration:** All content sections are wrapped in the panel system for consistent visual presentation and spacing.
@@ -341,6 +355,15 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
    ```liquid
    {% raw %}{% assign t = site.data.translations[current_lang].about %}{% endraw %}
    {{ t.perspective_title | default: "Our Unique Perspective" }}
+   ```
+
+- **Impact sections** use standardized translation structure for consistent messaging:
+   ```yaml
+   # _data/translations/en.yml
+   brands:
+     impact:
+       title: "Discover BRICS+ Brands Ready for Global Markets"
+       text: "Brandmine offers unprecedented access to consumer brands..."
    ```
 
 - **Linear sectioning structure** with minimal front matter:
@@ -795,6 +818,22 @@ As of May 28, 2025, all functional sidebar references have been removed from the
 - Documentation updated to reflect new architecture
 
 **When adding new content or features, always use the linear sectioning pattern established in existing layouts like `founder-profile.html` and `insight-article.html`.**
+
+## Page Structure Standardization
+
+As of May 28, 2025, all topline pages have been standardized across all languages:
+
+**Standardized Pages:**
+- `pages/{lang}/brands.md` - Brand discovery and listings
+- `pages/{lang}/founders.md` - Founder discovery and profiles  
+- `pages/{lang}/discovery.md` - Dimension-based navigation
+- `pages/{lang}/insights.md` - Content and insights hub
+
+**Key Features:**
+- **Identical section structure** across EN/RU/ZH languages
+- **Impact sections** positioned before content sections for strategic messaging
+- **Translation-driven content** eliminates hardcoded HTML
+- **Cross-language consistency** ensures maintainable codebase
 
 ---
 
