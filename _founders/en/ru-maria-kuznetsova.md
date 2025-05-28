@@ -61,17 +61,15 @@ brief_bio: "Former chef rediscovering and reimagining Russia's rich condiment tr
 description: "Maria Kuznetsova profile - Russian culinary entrepreneur preserving traditional flavor heritage through artisanal condiment production and food archaeology."
 keywords: [maria kuznetsova, seven spices, russian cuisine, condiments, culinary heritage, food archaeology]
 
-# Section Configuration
 # Section Configuration - Linear layout (no sidebar)
-# Uncomment sections you want to include:
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - professional-details
-#   - content
-#   - associated-brands
-#   - expertise-cloud
-#   - related-insights
+sections:
+  - breadcrumbs
+  - hero
+  - professional-details
+  - content
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Maria Kuznetsova: Reviving Russia's Culinary Heritage

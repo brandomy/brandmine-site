@@ -62,15 +62,14 @@ description: "Alexei Sokolov profile - Russian tea entrepreneur who built TeaTim
 keywords: [alexei sokolov, russia, teatime, tea, artisanal beverages, harrods, cultural ambassador]
 
 # Section Configuration - Linear layout (no sidebar)
-# Uncomment sections you want to include:
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - professional-details
-#   - content
-#   - associated-brands
-#   - expertise-cloud
-#   - related-insights
+sections:
+  - breadcrumbs
+  - hero
+  - professional-details
+  - content
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Alexei Sokolov: Bridging Russian Tea Traditions with Global Markets

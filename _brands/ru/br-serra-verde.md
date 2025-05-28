@@ -24,6 +24,19 @@ signals: []  # Optional signals
 featured: false
 featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
+# Page sections
+sections:
+  - breadcrumbs           # Navigation breadcrumbs
+  - hero                  # Brand hero panel
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
+
 # Location (flat structure for easier data handling)
 location_lng: -45.8558  # Longitude coordinate
 location_lat: -22.6569  # Latitude coordinate

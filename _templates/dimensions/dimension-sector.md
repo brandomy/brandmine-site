@@ -23,12 +23,8 @@ sections:
   - all-brands              # Complete list of sector brands
   - related-insights        # Articles about this sector
 
-# Optional: Override default sections  
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - header
-#   - all-brands
+# Optional: Override sections per dimension
+# sections: [breadcrumbs, hero, header, all-brands]  # Custom order example
 ---
 
 # [SECTOR_NAME] Sector Overview

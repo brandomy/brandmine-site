@@ -62,15 +62,14 @@ description: "Eduardo Santos profile - Brazilian organic farming pioneer transfo
 keywords: [eduardo santos, brazil, organic farming, serra verde, atlantic forest, sustainable agriculture]
 
 # Section Configuration - Linear layout (no sidebar)
-# Uncomment sections you want to include:
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - professional-details
-#   - content
-#   - associated-brands
-#   - expertise-cloud
-#   - related-insights
+sections:
+  - breadcrumbs
+  - hero
+  - professional-details
+  - content
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Eduardo Santos: Transforming Brazil's Atlantic Forest Agriculture

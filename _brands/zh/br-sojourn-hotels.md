@@ -10,14 +10,16 @@ permalink: /zh/brands/br-sojourn-hotels/
 generate_json: true
 
 sections:
-  - identity
-  - founder-narrative
-  - brand-story
-  - product
-  - market-presence
-  - location-intelligence
-  - growth-signals
-  - connections
+  - breadcrumbs           # Navigation breadcrumbs
+  - hero                  # Brand hero panel
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
 
 founding_year: 2012
 website: "https://sojournhotels.com.br"

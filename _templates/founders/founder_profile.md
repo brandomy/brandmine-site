@@ -17,15 +17,17 @@ sample_data: true    # Flag for sample/test data
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
 # Linear layout (no sidebar) - Each section corresponds to _includes/pages/founder/sections/{section}.html
-# Uncomment sections you want to include:
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - professional-details
-#   - content
-#   - associated-brands
-#   - expertise-cloud
-#   - related-insights
+sections:
+  - breadcrumbs           # Navigation breadcrumbs
+  - hero                  # Founder hero panel
+  - professional-details  # Role, expertise, achievements
+  - content              # Main founder story content
+  - associated-brands    # Brands associated with this founder
+  - expertise-cloud      # Skills and expertise visualization
+  - related-insights     # Related articles and content
+
+# Optional: Override sections per founder
+# sections: [breadcrumbs, hero, content, associated-brands]  # Custom order example
 
 # === CORE INFORMATION (Human-friendly entry) ===
 

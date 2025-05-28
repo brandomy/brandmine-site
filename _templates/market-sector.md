@@ -11,6 +11,7 @@ display: true
 featured: false
 hero_image: "/assets/images/market-sectors/russia/wine/hero" # Optional, omit if not using
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
   - hero
   - hero-image # Include only if hero_image is specified
   - overview

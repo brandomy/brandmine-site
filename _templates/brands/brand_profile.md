@@ -18,6 +18,8 @@ sample_data: true    # Flag for sample/test data
 # Controls which sections appear and in what order
 # Each section corresponds to _includes/pages/brand/{section}.html
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
+  - hero                  # Brand hero panel
   - identity              # Brand hero, logo, basic info
   - founder-narrative     # Founder story and journey
   - brand-story          # About the brand

@@ -25,12 +25,8 @@ sections:
   - all-brands              # Complete list of brands
   - related-insights        # Articles about this market
 
-# Optional: Override default sections
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - market-highlights
-#   - all-brands
+# Optional: Override sections per dimension
+# sections: [breadcrumbs, hero, market-highlights, all-brands]  # Custom order example
 ---
 
 # [MARKET_NAME] Market Overview

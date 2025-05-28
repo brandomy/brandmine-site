@@ -25,6 +25,19 @@ signals: ["franchise-ready"]  # Optional: Business signals from taxonomy
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
+# Page sections
+sections:
+  - breadcrumbs           # Navigation breadcrumbs
+  - hero                  # Brand hero panel
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
+
 # Location (flat structure for easier data handling)
 location_lat: -22.9068  # Latitude coordinate
 location_lng: -43.1729  # Longitude coordinate

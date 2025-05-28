@@ -12,6 +12,8 @@ sample_data: true    # Flag for sample/test data
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
+  - hero                  # Brand hero panel
   - identity              # Brand hero, logo, basic info
   - founder-narrative     # Founder story and journey
   - brand-story          # About the brand

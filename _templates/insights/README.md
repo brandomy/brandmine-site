@@ -1,245 +1,265 @@
-# Brandmine Insights Templates
+# Insight Articles Templates Usage Guide
 
-This directory contains templates for creating insight articles across four categories. These templates ensure consistent structure and proper taxonomy usage throughout the Brandmine platform.
-
-## Front Matter Structure
-
-The templates now clearly separate fields that must remain in English (metadata and taxonomy) from those that should be translated. The metadata section follows a logical grouping for better organization.
-
-### YAML Front Matter Organization
-
-```yaml
----
-# ============================================================================
-# METADATA SECTION - DO NOT TRANSLATE THESE FIELDS
-# Keep these fields exactly as shown, in English, for all language versions
-# ============================================================================
-
-# Core layout and category
-layout: insight                    # Always "insight"
-category: "brand-spotlight"        # Must match insights/en.yml
-
-# Language and routing
-lang: en                           # Language code
-permalink: /en/insights/ru/article/# Language code in URL only
-ref: article-slug                  # Language switcher reference
-
-# Content metadata
-country_code: "ru"                 # Market focus code
-date: YYYY-MM-DD                   # Publication date
-reading_time: 7                    # Number only
-
-# Display flags
-featured: false                    # Boolean value
-premium: false                     # Boolean value
-
-# Taxonomy - All exact slugs from dimensions/en.yml (DO NOT TRANSLATE)
-sectors: [wine, gourmet-foods]     # Exact slugs only
-markets: [russia, china]           # Exact slugs only
-attributes: [founder-led]          # Exact slugs only
-signals: [export-ready]            # Exact slugs only
-brands: [brand-slug]               # Exact slugs only
-
-# Images - Same for all language versions (DO NOT TRANSLATE)
-images:
-  hero: "/assets/images/insights/ru/article-slug/originals/hero.jpg"
-  founder_portrait: "/assets/images/insights/ru/article-slug/originals/founder-portrait.jpg"
-  logo: "/assets/images/insights/ru/article-slug/originals/logo.jpg"
-
-# ============================================================================
-# TRANSLATABLE SECTION - TRANSLATE THESE FIELDS FOR EACH LANGUAGE
-# Only these fields should be translated when creating RU/ZH versions
-# ============================================================================
-title: "Article Title in Target Language"
-author: "author_name"              # Key for translation lookup
-excerpt: "Article excerpt..."      # Translate this content
----
-```
+This directory contains templates for creating insight articles across the four insight categories.
 
 ## Available Templates
 
-### 1. Brand Spotlight (insight-brand-spotlight.md)
-- **Purpose**: In-depth profiles of noteworthy BRICS+ brands gaining international momentum
-- **Typical Length**: 1,500 words
-- **Reading Time**: 7 minutes
-- **Focus**: Brand story, differentiation, and market positioning
+- `insight-article-brand-spotlight.md` - In-depth profiles of noteworthy brands
+- `insight-article-founders-journey.md` - Personal stories behind brands and their visionaries  
+- `insight-article-market-momentum.md` - Notable achievements, milestones, and expansion moments
+- `insight-article-location-intelligence.md` - Geographical insights and regional context
+- `insight-template-enhanced.md` - General template with all options
 
-### 2. Founders Journey (insight-founders-journey.md)
-- **Purpose**: Personal stories behind the brands and the visionaries who created them
-- **Typical Length**: 2,000 words
-- **Reading Time**: 8 minutes
-- **Focus**: Founder narrative, key decisions, challenges, and vision
+## Insight Categories
 
-### 3. Location Intelligence (insight-location-intelligence.md)
-- **Purpose**: Geographical insights and regional context that shape brand development
-- **Typical Length**: 1,800 words
-- **Reading Time**: 6 minutes
-- **Focus**: Geographic analysis, regional clustering, spatial opportunities
+### 1. Brand Spotlight
+**Purpose**: In-depth profiles of noteworthy BRICS+ brands gaining international momentum
+**Recommended length**: 800-1200 words
+**Reading time**: 4-6 minutes
+**Focus**: Company story, unique value proposition, market impact
 
-### 4. Market Momentum (insight-market-momentum.md)
-- **Purpose**: Notable achievements, milestones, and expansion moments for BRICS+ brands
-- **Typical Length**: 1,200 words
-- **Reading Time**: 7 minutes
-- **Focus**: Market trends, growth metrics, future trajectory
+### 2. Founder's Journey  
+**Purpose**: Personal stories behind the brands and the visionaries who created them
+**Recommended length**: 1000-1500 words
+**Reading time**: 5-8 minutes
+**Focus**: Personal background, founding story, leadership philosophy
 
-## Translation Workflow
+### 3. Market Momentum
+**Purpose**: Notable achievements, milestones, and expansion moments for emerging brands
+**Recommended length**: 600-900 words
+**Reading time**: 3-5 minutes
+**Focus**: Growth metrics, market expansion, business milestones
 
-### Fields That Must Remain in English
-1. **Layout identifier**: Always `layout: insight`
-2. **Category identifier**: Must match exactly as listed in `_data/insights/en.yml`
-3. **Taxonomy fields**: All slugs (sectors, markets, attributes, signals, brands)
-4. **Technical metadata**: featured, premium, reading_time, country_code, date
-5. **Language switcher reference**: `ref` field
-6. **Image paths**: Same for all languages
+### 4. Location Intelligence
+**Purpose**: Geographical insights and regional context that shape brand development
+**Recommended length**: 700-1000 words
+**Reading time**: 4-6 minutes
+**Focus**: Regional characteristics, local market dynamics, geographic advantages
 
-### Fields to Translate
-1. **Title**: Translate to target language
-2. **Author**: Uses translation key (see below)
-3. **Excerpt**: Translate content
+## Using the Templates
 
-### Author Name Translation Approach
+### 1. Choose the Right Template
+Select the template that matches your insight category and content focus.
 
-Authors are now stored as a single key in the front matter. The actual display name is handled through the translation files:
+### 2. Replace Placeholders
+All templates use `[PLACEHOLDER]` format. Replace with actual values:
 
-**In article front matter:**
+```
+[BRAND_SLUG] → kebab-case-identifier (e.g., "ru-teatime")
+[INSIGHT_TITLE] → Article title (e.g., "Russian Wine Renaissance")
+[CATEGORY] → One of: brand-spotlight, founders-journey, market-momentum, location-intelligence
+etc.
+```
+
+### 3. Configure Sections
+Each template includes a `sections` array that controls which content blocks appear:
+
 ```yaml
-author: "randal_eastman"  # Use key for lookup
+sections:
+  - breadcrumbs
+  - hero
+  - header
+  - featured-image
+  - content
+  - taxonomy
+  - brand-info
+  - related-brands
+  - related-insights
 ```
 
-**In translation files:**
-- `_data/translations/en.yml`: `authors.randal_eastman: "Randal Eastman"`
-- `_data/translations/ru.yml`: `authors.randal_eastman: "Рэндал Истман"`  
-- `_data/translations/zh.yml`: `authors.randal_eastman: "兰达尔·伊斯特曼"`
+**Toggle sections on/off** by commenting out or removing lines.
 
-**In layout template:**
-```liquid
-{{ site.data.translations[page.lang].authors[page.author] }}
+### 4. Hero Images (Optional)
+Add a hero image to any insight article:
+
+```yaml
+hero_image: "/assets/images/insights/[slug]/hero-image.jpg"
 ```
 
-## Directory Structure
+**If no `hero_image` is specified**, the article will use the standard teal gradient hero panel.
 
-Articles should be organized by language and then market:
+### 5. File Placement
+Save completed files to:
 ```
-_insights/
-├── en/
-│   ├── ru/
-│   │   ├── article-slug-1.md
-│   │   └── article-slug-2.md
-│   ├── cn/
-│   └── br/
-├── ru/
-└── zh/
+_insights/en/[insight-slug].md
 ```
 
-## Image Organization
+Examples:
+- `_insights/en/ru-russian-wine-renaissance.md`
+- `_insights/en/br-eduardo-santos-journey.md`
+- `_insights/en/china-tea-market-expansion.md`
 
-Images follow the same pattern as brand profiles:
-```
-assets/images/insights/[market]/[article-slug]/originals/
-├── hero-[description].jpg
-├── founder-portrait-[name].jpg (optional)
-└── logo-[brand-name].jpg (optional)
-```
+## Required Front Matter Fields
 
-**Image Naming Convention:**
-- Format: `purpose-description.jpg`
-- Examples:
-  - `hero-teatime-moscow-headquarters.jpg`
-  - `founder-portrait-alexei-sokolov.jpg`
-  - `logo-sibirskaya-premium-edition.jpg`
-
-## Front Matter Requirements
-
-### Required Fields:
-- `layout`: Always "insight"
-- `title`: Article title (translated)
-- `category`: Must match insights/en.yml id
-- `country_code`: Two-letter code (not translated)
-- `date`: Publication date (not translated)
-- `author`: Author key for translation lookup
-- `excerpt`: Brief summary (translated)
-- `permalink`: Article URL path
-- `lang`: Article language
-- `reading_time`: Estimated minutes
-- `ref`: For language switcher
-
-### Taxonomy Fields (All Optional):
-- `sectors`: Array of sector slugs from dimensions/en.yml
-- `markets`: Array of market slugs from dimensions/en.yml
-- `attributes`: Array of attribute slugs from dimensions/en.yml
-- `signals`: Array of signal slugs from dimensions/en.yml
-- `brands`: Array of brand slugs
-
-**IMPORTANT**: Use exact slugs from the data files - no variations!
-
-## Processing Images
-
-After placing original images in the appropriate folder:
-```bash
-./_scripts/process_site_images.sh
+### Core Information
+```yaml
+layout: insight-article
+title: "Article Title"
+lang: en
+permalink: /en/insights/[slug]/
+date: YYYY-MM-DD
+category: brand-spotlight  # Must match one of the four categories
+reading_time: 5  # Estimated minutes
 ```
 
-## Category Values
+### Brand & Founder Information
+```yaml
+brands: [brand-slug]  # Associated brand slugs
+founders: [founder-slug]  # Associated founder slugs
+founder_led: true  # Boolean
+```
 
-Use these exact category values (kebab-case):
-- `brand-spotlight`
-- `founders-journey`
-- `location-intelligence`
-- `market-momentum`
+### Taxonomy (Optional)
+```yaml
+sectors: [wine, gourmet-foods]
+markets: [russia, china]
+attributes: [founder-led, heritage-brand]
+signals: [export-ready, rapid-growth]
+```
 
-## Slug Reference Chart
+### Images (Optional)
+```yaml
+hero_image: "/assets/images/insights/[slug]/hero-image.jpg"
+logo: "/assets/images/insights/[slug]/logo.jpg"
+founder_portrait: "/assets/images/insights/[slug]/founder.jpg"
+```
 
-**Sectors** (from dimensions/en.yml):
-- `artisan-confectionery`, `artisanal-spirits`, `fashion-accessories`, `fermented-dairy`, `gourmet-foods`, `halal-foods`, `honey-bee-products`, `hotels-resorts`, `jewelry-watches`, `mineral-waters`, `natural-beauty`, `natural-supplements`, `artisan-ceramics`, `cured-meats`, `specialty-cheeses`, `wine`
+### Location (Optional)
+```yaml
+location_lng: 37.6173
+location_lat: 55.7558
+location_city: "Moscow"
+location_region: "Moscow Oblast"
+location_country: "ru"
+```
 
-**Markets**:
-- `brazil`, `china`, `egypt`, `ethiopia`, `india`, `indonesia`, `iran`, `russia`, `south-africa`, `uae`
+## Content Guidelines
 
-**Attributes**:
-- `artisanal-excellence`, `cultural-bridge`, `founder-led`, `heritage-brand`, `innovation-leader`, `premium-positioning`, `regional-icon`, `sustainability-pioneer`
+### Brand Spotlight Articles
+- Focus on company story and unique value proposition
+- Include business metrics and market impact
+- Highlight what makes the brand distinctive
+- Emphasize international potential
 
-**Signals**:
-- `export-ready`, `franchise-ready`, `investment-ready`, `rapid-growth`
+### Founder's Journey Articles
+- Personal background and motivation
+- Founding story with specific challenges and pivots
+- Leadership philosophy and vision
+- Personal quotes and anecdotes
 
-## Best Practices
+### Market Momentum Articles
+- Specific growth metrics and milestones
+- Market expansion details
+- Revenue/export growth data
+- Investment or partnership announcements
 
-1. **Always use exact slugs** from data files to prevent errors
-2. **Include descriptive image names** for better asset management
-3. **Follow content structure** in templates for consistency
-4. **Add translations incrementally** - write in English first
-5. **Test articles** before publishing
-6. **Keep excerpts concise** (1-2 sentences) for better card display
-7. **Use proper metadata grouping** for easier template navigation
+### Location Intelligence Articles
+- Regional market characteristics
+- Geographic advantages or challenges
+- Local consumer behavior insights
+- Cultural context and opportunities
 
-## Common Errors to Avoid
+## Section Descriptions
 
-1. ❌ Translating metadata fields (country_code, date, reading_time)
-2. ❌ Translating taxonomy slugs
-3. ❌ Using multiple author fields in different languages
-4. ❌ Creating new category values not in insights/en.yml
-5. ❌ Mixing up taxonomy slugs
-6. ❌ Forgetting to process images
-7. ❌ Using placeholder values in required fields
-8. ❌ Changing image paths for different languages
+### Linear Layout Sections
 
-## Translation Workflow
+**Full-width sections** (appear before main content):
+- `breadcrumbs` - Navigation breadcrumbs
+- `hero` - Hero panel with title, category, meta info (uses hero image if specified)
+- `header` - Additional context and author info
+- `featured-image` - Large article image (separate from hero)
 
-1. Create English version first
-2. Add Russian version with same `ref` value
-3. Add Chinese version with same `ref` value
-4. Ensure all versions are in correct language directories
+**Content sections** (wrapped in light panels):
+- `content` - Main article content from markdown
+- `taxonomy` - Tag display for sectors, markets, attributes, signals
+- `brand-info` - Information about featured brands
+- `related-brands` - Links to related brand profiles
+- `related-insights` - Links to related articles
 
-## File Naming
+## Quick Creation Checklist
 
-Article files should use descriptive slugs that indicate content:
-- `seven-spices-spotlight.md` (not `article1.md`)
-- `teatime-founder-journey.md` (not `founder-story.md`)
-- `siberian-honey-corridor.md` (not `location-analysis.md`)
+- [ ] Choose appropriate template for insight category
+- [ ] Replace all `[PLACEHOLDERS]` with actual values
+- [ ] Set correct `category` (must match: brand-spotlight, founders-journey, market-momentum, location-intelligence)
+- [ ] Add `hero_image` if available (recommended for featured articles)
+- [ ] Include associated `brands` and `founders` slugs
+- [ ] Add relevant taxonomy tags (`sectors`, `markets`, `attributes`, `signals`)
+- [ ] Customize sections array for desired content blocks
+- [ ] Set appropriate `reading_time` estimate
+- [ ] Save to `_insights/en/[slug].md`
+- [ ] Add images to `assets/images/insights/[slug]/` if available
+- [ ] Test article generation and layout
+- [ ] Create RU and ZH versions once English is finalized
 
-## Support
+## Hero Image Requirements
 
-For questions about these templates, consult:
-- CLAUDE.md for site architecture
-- _data/dimensions/en.yml for taxonomy reference
-- _data/insights/en.yml for category reference
-- Component documentation for display includes
+When adding hero images to insight articles:
+
+- **Minimum resolution**: 1200×600px
+- **Aspect ratio**: 2:1 (recommended)
+- **File format**: JPG or PNG
+- **Optimized file size**: < 500KB
+- **High contrast areas**: Ensure text overlay readability
+- **Visual style**: Follow Brandmine's Textured Minimalism (TM) guidelines
+
+## Advanced Customization
+
+### Custom Sections
+You can override the default sections completely:
+
+```yaml
+sections:
+  - breadcrumbs
+  - hero
+  - content
+  - custom-section-name
+  - taxonomy
+```
+
+Just ensure the corresponding include exists at:
+`_includes/pages/insight/custom-section-name.html`
+
+### Additional Front Matter
+Add any custom fields needed for your specific article:
+
+```yaml
+special_field: "Custom value"
+custom_data:
+  - item1
+  - item2
+```
+
+Access in templates with `{{ page.special_field }}` or `{{ page.custom_data }}`.
+
+### Translation Support
+Add translation overrides for multilingual content:
+
+```yaml
+translations:
+  ru:
+    title: "Заголовок на русском"
+    excerpt: "Краткое описание"
+  zh:
+    title: "中文标题"
+    excerpt: "中文摘要"
+```
+
+## Content Quality Standards
+
+### Writing Guidelines
+- **Clear, engaging headlines** that explain the value proposition
+- **Strong opening paragraph** that hooks the reader
+- **Specific examples and data** rather than generic statements
+- **Quotes from founders/executives** when possible
+- **Forward-looking conclusion** that emphasizes potential
+
+### Editorial Standards
+- **Fact-check all business metrics** and claims
+- **Verify brand and founder information** matches profile data
+- **Ensure consistent terminology** across related articles
+- **Proofread for grammar and clarity**
+- **Optimize for SEO** with relevant keywords
+
+---
+
+*These templates follow the "logic-light" architecture and unified hero system established for the Brandmine site. All insights use linear layout (no sidebar) for MVP simplicity and maintainability.*

@@ -23,13 +23,8 @@ sections:
   - all-brands              # Complete list of brands with this attribute
   - related-insights        # Articles about this attribute
 
-# Optional: Override default sections
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - header
-#   - featured-brands
-#   - all-brands
+# Optional: Override sections per dimension
+# sections: [breadcrumbs, hero, header, featured-brands, all-brands]  # Custom order example
 ---
 
 # [ATTRIBUTE_NAME] Brand Attribute

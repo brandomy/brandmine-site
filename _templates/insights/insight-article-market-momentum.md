@@ -18,7 +18,10 @@ sections:
   - brand-info
   - related-brands
   - related-insights
-#   - taxonomy-cloud
+  - taxonomy-cloud
+
+# Optional: Override sections per article
+# sections: [breadcrumbs, hero, content, market-chart, taxonomy, related-insights]  # Custom order example
 
 # Basic Information
 date: YYYY-MM-DD  # Publication date

@@ -24,6 +24,19 @@ signals: ["export-ready"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
+# Page sections
+sections:
+  - breadcrumbs           # Navigation breadcrumbs
+  - hero                  # Brand hero panel
+  - identity              # Brand hero, logo, basic info
+  - founder-narrative     # Founder story and journey
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - location-intelligence # Map and geographic context
+  - growth-signals       # Business signals and opportunities
+  - connections          # Related brands and insights
+
 # Location - Flat structure for Airtable integration
 location_lng: 37.6173  # Longitude coordinate
 location_lat: 55.7558  # Latitude coordinate

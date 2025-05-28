@@ -61,17 +61,15 @@ brief_bio: "Third-generation beekeeper modernizing ancestral craft while preserv
 description: "Ivan Petrov profile - Third-generation Altai beekeeper preserving traditional honey harvesting while building sustainable community model."
 keywords: [ivan petrov, altai honey, beekeeping, russia, organic certification, traditional harvesting]
 
-# Section Configuration
 # Section Configuration - Linear layout (no sidebar)
-# Uncomment sections you want to include:
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - professional-details
-#   - content
-#   - associated-brands
-#   - expertise-cloud
-#   - related-insights
+sections:
+  - breadcrumbs
+  - hero
+  - professional-details
+  - content
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 ---
 
 # Ivan Petrov: The Honey Pioneer of Altai

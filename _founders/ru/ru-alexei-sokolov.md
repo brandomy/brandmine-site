@@ -10,20 +10,14 @@ generate_json: true
 sample_data: true
 
 # Section Configuration - Linear layout (no sidebar)
-# Uncomment sections you want to include:
-# sections:
-#   - breadcrumbs
-#   - hero
-#   - professional-details
-#   - content
-#   - associated-brands
-#   - expertise-cloud
-#   - related-insights
-
-# sidebar_sections:
-#   - associated-brands
-#   - expertise-cloud
-#   - related-insights
+sections:
+  - breadcrumbs
+  - hero
+  - professional-details
+  - content
+  - associated-brands
+  - expertise-cloud
+  - related-insights
 
 brands: [ru-teatime]
 featured: true
