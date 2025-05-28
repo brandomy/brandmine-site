@@ -28,6 +28,13 @@ jobs:
           ruby-version: '2.7'
           bundler-cache: true
 
+      # ✅ New Step: Configure Bundler for Robust CI Installs
+      - name: Configure Bundler
+        run: |
+          bundle config set --local path vendor/bundle
+          bundle config set --local deployment true
+          bundle config set --local without 'development'
+
       - name: Install Ruby dependencies
         run: bundle install
 
