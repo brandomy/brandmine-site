@@ -19,8 +19,7 @@
 {% include helpers/is-founder-led.html brand=include.brand %}
 
 {% if is_founder_led %}
-  <div class="{{ include.class_name | default: 'brand-card' }}__founder-led" 
-       title="{% include helpers/t.html key='brand.founder_led' fallback='Founder-Led' %}">
+  <div class="{{ include.class_name | default: 'brand-card' }}__founder-led">
     F
   </div>
 {% endif %}
