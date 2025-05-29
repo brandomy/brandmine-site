@@ -9,10 +9,10 @@ sections:
   - breadcrumbs
   - hero
   - impact
-  - content
+  # - content
   - category-navigation
   - categories
-  - filter-interface
+  # - filter-interface
   - featured-insights
   - recent-insights
   - contact-cta
