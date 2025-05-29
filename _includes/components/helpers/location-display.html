@@ -23,9 +23,7 @@
 
 <span class="{{ include.class | default: 'location' }}">
   {% if show_icon %}
-    <!-- Uncomment the line below to use Font Awesome icon -->
-    <!-- <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i> -->
-    <span class="location__icon" aria-hidden="true">📍</span>
+    <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i>
   {% endif %}
   <span class="location__text">
     {% if include.city %}
