@@ -1,0 +1,160 @@
+{% comment %}
+  Include Name: components/cards/featured-founder-card.html
+
+  Featured founder card for premium display with larger portraits and portrait images.
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].founder %}
+{% assign general_t = site.data.translations[page.lang].general %}
+{% assign common_t = site.data.translations[page.lang].common %}
+
+<article class="founder-card founder-card--featured"
+         data-name="{{ founder.name }}"
+         data-market="{{ founder.country_code }}"
+         data-expertise="{% for exp in founder.expertise %}{{ exp }}{% unless forloop.last %},{% endunless %}{% endfor %}">
+
+  {% comment %} Generation badge {% endcomment %}
+  {% if founder.generation %}
+  <div class="founder-card__generation-badge founder-card__generation-badge--{{ founder.generation }}">
+    {% case founder.generation %}
+      {% when 'first' %}{{ t.generation_first | default: "1st Gen" }}
+      {% when 'second' %}{{ t.generation_second | default: "2nd Gen" }}
+      {% when 'third' %}{{ t.generation_third | default: "3rd Gen" }}
+      {% when 'transition' %}{{ t.generation_transition | default: "Transition" }}
+    {% endcase %}
+  </div>
+  {% endif %}
+
+  {% comment %} Cross-border indicator {% endcomment %}
+  {% if founder.markets.size > 1 or founder.cross_border_expertise %}
+  <div class="founder-card__cross-border">
+    <i class="fas fa-globe-americas"></i>
+    <div class="founder-card__tooltip">
+      {{ t.cross_border | default: 'Cross-border expertise' }}
+    </div>
+  </div>
+  {% endif %}
+
+<header class="founder-card__header">
+  <div class="founder-card__portrait-container">
+    <div class="founder-card__portrait founder-card__portrait--full">
+      {% if founder.images.portrait %}
+        {% assign image_base = founder.ref %}
+        <img src="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/portrait-400w.jpg"
+             srcset="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/portrait-400w.jpg 400w,
+                     {{ site.baseurl }}/assets/images/founders/{{ image_base }}/portrait-800w.jpg 800w"
+             sizes="(max-width: 480px) 120px, 180px"
+             alt="{{ founder.name }}"
+             class="founder-card__portrait-img"
+             loading="lazy">
+      {% else %}
+        <div class="founder-card__portrait-placeholder">
+          <span class="founder-card__portrait-initials">
+            {% assign name_parts = founder.name | split: " " %}
+            {% for part in name_parts limit:2 %}{{ part | first | upcase }}{% endfor %}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="founder-card__header-text">
+    <h2 class="founder-card__title">{{ founder.name }}</h2>
+
+    {% comment %} Location display {% endcomment %}
+    <div class="founder-card__location">
+      <i class="fas fa-map-marker-alt location__icon"></i>
+      {% if founder.city %}{{ founder.city }}{% endif %}
+      {% if founder.city and founder.country_code %}, {% endif %}
+      {% if founder.country_code %}
+        {% assign country_name = site.data.countries.countries[founder.country_code].name[page.lang] | default: founder.country_code %}
+        {{ country_name }}
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+  <div class="founder-card__body">
+    {% comment %} Panel 1: Brand and Role Information {% endcomment %}
+    {% if founder.brands or founder.brief_bio %}
+    <div class="founder-card__panel founder-card__panel--primary">
+      {% if founder.brands %}
+        <div class="founder-card__brand-connections">
+          {% for brand_ref in founder.brands limit:1 %}
+            {% assign brand = site.brands | where: "ref", brand_ref | where: "lang", page.lang | first %}
+            {% if brand %}
+              <p class="founder-card__brand">
+                <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_ref }}/" class="founder-card__brand-link">
+                  {{ brand.title }}
+                </a>{% if founder.role %} – <span class="founder-card__role">{{ founder.role }}</span>{% endif %}
+              </p>
+            {% endif %}
+          {% endfor %}
+
+          {% if founder.brands.size > 1 %}
+            <p class="founder-card__multiple-brands">
+              +{{ founder.brands.size | minus: 1 }} {{ t.more_brands | default: "more brands" }}
+            </p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if founder.brief_bio %}
+        <div class="founder-card__bio">
+          {{ founder.brief_bio | truncate: 120 }}
+        </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% comment %} Panel 2: Achievements, Languages, and Expertise {% endcomment %}
+    {% if founder.achievements or founder.languages or founder.expertise %}
+    <div class="founder-card__panel founder-card__panel--secondary">
+      {% comment %} Key Achievement {% endcomment %}
+      {% if founder.achievements %}
+        <div class="founder-card__achievement">
+          <span class="founder-card__achievement-label">{{ t.key_achievement | default: "Key Achievement" }}:</span>
+          <span class="founder-card__achievement-text">{{ founder.achievements | first }}</span>
+        </div>
+      {% endif %}
+
+      {% comment %} Languages {% endcomment %}
+      {% if founder.languages %}
+        <div class="founder-card__languages">
+          <span class="founder-card__languages-label">{{ t.languages | default: "Languages" }}:</span>
+          <span class="founder-card__languages-list">
+            {% for lang_code in founder.languages %}
+              {% if forloop.first == false %}, {% endif %}
+              {{ site.data.languages[page.lang][lang_code] | default: lang_code }}
+            {% endfor %}
+          </span>
+        </div>
+      {% endif %}
+
+      {% comment %} Expertise cloud {% endcomment %}
+      {% if founder.expertise %}
+      <div class="founder-card__tag-cloud">
+        {% for expertise in founder.expertise limit:4 %}
+          <span class="founder-card__tag founder-card__tag--expertise">
+            {{ expertise }}
+          </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+  <footer class="founder-card__footer">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
+      {{ common_t.actions.view_profile | default: "View Profile" }}
+    </a>
+
+    {% if founder.featured %}
+      <div class="founder-card__featured-badge" title="{{ general_t.featured | default: 'Featured' }}">
+        <i class="fas fa-star"></i>
+      </div>
+    {% endif %}
+  </footer>
+
+</article>

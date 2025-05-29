@@ -6,7 +6,7 @@
 
 {% assign t = site.data.translations[page.lang].founder %}
 {% assign general_t = site.data.translations[page.lang].general %}
-{% assign buttons_t = site.data.translations[page.lang].buttons %}
+{% assign common_t = site.data.translations[page.lang].common %}
 
 <article class="founder-card {% if featured or founder.featured %}founder-card--featured{% endif %}"
          data-name="{{ founder.name }}"
@@ -27,44 +27,49 @@
 
   {% comment %} Cross-border indicator {% endcomment %}
   {% if founder.markets.size > 1 or founder.cross_border_expertise %}
-  <div class="founder-card__cross-border" title="{{ t.cross_border | default: 'Cross-border expertise' }}">
+  <div class="founder-card__cross-border">
     <i class="fas fa-globe-americas"></i>
+    <div class="founder-card__tooltip">
+      {{ t.cross_border | default: 'Cross-border expertise' }}
+    </div>
   </div>
   {% endif %}
 
 <header class="founder-card__header">
-  <div class="founder-card__portrait {% if founder.use_headshot %}founder-card__portrait--headshot{% else %}founder-card__portrait--full{% endif %}">
-    {% if founder.images.headshot %}
-      {% assign image_base = founder.ref %}
-      <img src="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg"
-           srcset="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg 400w,
-                   {{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-800w.jpg 800w"
-           sizes="(max-width: 480px) 100px, 150px"
-           alt="{{ founder.name }}"
-           class="founder-card__portrait-img"
-           loading="lazy">
-    {% else %}
-      <div class="founder-card__portrait-placeholder">
-        <span class="founder-card__portrait-initials">
-          {% assign name_parts = founder.name | split: " " %}
-          {% for part in name_parts limit:2 %}{{ part | first | upcase }}{% endfor %}
-        </span>
-      </div>
-    {% endif %}
-  </div>
-
-  <div class="founder-card__header-text">
-    <h2 class="founder-card__title">{{ founder.name }}</h2>
-
-    {% comment %} Location display {% endcomment %}
-    <div class="founder-card__location">
-      <i class="fas fa-map-marker-alt"></i>
-      {% if founder.city %}{{ founder.city }}{% endif %}
-      {% if founder.city and founder.country_code %}, {% endif %}
-      {% if founder.country_code %}
-        {% assign country_name = site.data.countries.countries[founder.country_code].name[page.lang] | default: founder.country_code %}
-        {{ country_name }}
+  <div class="founder-card__portrait-section">
+    <div class="founder-card__portrait founder-card__portrait--headshot">
+      {% if founder.images.headshot %}
+        {% assign image_base = founder.ref %}
+        <img src="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg"
+             srcset="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg 400w,
+                     {{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-800w.jpg 800w"
+             sizes="(max-width: 480px) 100px, 150px"
+             alt="{{ founder.name }}"
+             class="founder-card__portrait-img"
+             loading="lazy">
+      {% else %}
+        <div class="founder-card__portrait-placeholder">
+          <span class="founder-card__portrait-initials">
+            {% assign name_parts = founder.name | split: " " %}
+            {% for part in name_parts limit:2 %}{{ part | first | upcase }}{% endfor %}
+          </span>
+        </div>
       {% endif %}
+    </div>
+    
+    <div class="founder-card__header-text">
+      <h2 class="founder-card__title">{{ founder.name }}</h2>
+
+      {% comment %} Location display {% endcomment %}
+      <div class="founder-card__location">
+        <i class="fas fa-map-marker-alt location__icon"></i>
+        {% if founder.city %}{{ founder.city }}{% endif %}
+        {% if founder.city and founder.country_code %}, {% endif %}
+        {% if founder.country_code %}
+          {% assign country_name = site.data.countries.countries[founder.country_code].name[page.lang] | default: founder.country_code %}
+          {{ country_name }}
+        {% endif %}
+      </div>
     </div>
   </div>
 </header>
@@ -78,10 +83,7 @@
             <p class="founder-card__brand">
               <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_ref }}/" class="founder-card__brand-link">
                 {{ brand.title }}
-              </a>
-              {% if founder.role %}
-                <span class="founder-card__role">{{ founder.role }}</span>
-              {% endif %}
+              </a>{% if founder.role %} – <span class="founder-card__role">{{ founder.role }}</span>{% endif %}
             </p>
           {% endif %}
         {% endfor %}
@@ -135,14 +137,8 @@
 
   <footer class="founder-card__footer">
     <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
-      {{ buttons_t.view_profile | default: "View Profile" }}
+      {{ common_t.actions.view_profile | default: "View Profile" }}
     </a>
-
-    {% if founder.featured %}
-      <div class="founder-card__featured-badge" title="{{ general_t.featured | default: 'Featured' }}">
-        <i class="fas fa-star"></i>
-      </div>
-    {% endif %}
   </footer>
 
 </article>

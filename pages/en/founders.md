@@ -9,8 +9,9 @@ sections:
   - breadcrumbs
   - hero
   - impact
-  - content
-  - filter-interface
+  # - content
+  # - filter-interface
+  - search
   - featured-founders
   - recent-founders
   - contact-cta

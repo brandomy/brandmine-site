@@ -14,7 +14,7 @@
     - site.data.translations for labels
 {% endcomment %}
 
-{% assign panel_type = include.panel_type | default: "light" %}
+{% assign panel_type = include.panel_type | default: "primary" %}
 {% assign limit = include.limit | default: 4 %}
 
 <div class="panel panel--{{ panel_type }}">
@@ -41,7 +41,7 @@
     {% assign view_all_text = site.data.translations[page.lang].founders.recent.view_all | default: "View All Recent Founders" %}
     {% if view_all_text %}
       <div class="recent-founders__footer">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/founders/?sort=recent" class="btn btn--secondary">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/founders/?sort=recent" class="btn btn--primary">
           {{ view_all_text }}
         </a>
       </div>

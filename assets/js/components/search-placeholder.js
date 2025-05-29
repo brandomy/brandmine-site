@@ -78,10 +78,14 @@ class SearchPlaceholder {
 
   closeModal(e) {
     e.preventDefault();
+    console.log('Close modal triggered', e.target); // Debug log
     const modal = e.target.closest('.search-modal');
     if (modal) {
+      console.log('Modal found, closing...', modal); // Debug log
       modal.style.display = 'none';
       document.body.style.overflow = '';
+    } else {
+      console.log('No modal found to close'); // Debug log
     }
   }
 

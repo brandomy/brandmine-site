@@ -26,11 +26,15 @@
       {{ include.description | default: "" }}{% unless include.description %}{% include helpers/t.html key="founders.cta_text" fallback="Are you a visionary founder ready to share your story? Or do you know an exceptional founder we should feature?" %}{% endunless %}
     </p>
     <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--primary-cta">
-        {{ include.founder_button_text | default: "" }}{% unless include.founder_button_text %}{% include helpers/t.html key="founders.cta_founder_button" fallback="I'm a Founder" %}{% endunless %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" 
+         class="btn btn--primary-cta"
+         data-track="suggest-founder">
+        Suggest a Founder
       </a>
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#contact" class="btn btn--secondary-cta">
-        {{ include.suggest_button_text | default: "" }}{% unless include.suggest_button_text %}{% include helpers/t.html key="founders.cta_suggest_button" fallback="Suggest a Founder" %}{% endunless %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" 
+         class="btn btn--secondary-cta"
+         data-track="i-am-founder">
+        I'm a Founder
       </a>
     </div>
   </div>

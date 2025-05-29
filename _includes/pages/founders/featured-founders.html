@@ -15,8 +15,8 @@
     - site.data.translations for labels
 {% endcomment %}
 
-{% assign panel_type = include.panel_type | default: "olive-soft" %}
-{% assign limit = include.limit | default: 3 %}
+{% assign panel_type = include.panel_type | default: "amber-soft" %}
+{% assign limit = include.limit | default: 4 %}
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
@@ -32,7 +32,7 @@
     <div class="featured-founders__grid">
       {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: limit %}
       {% for founder in featured_founders %}
-        {% include components/cards/founder-card.html founder=founder featured=true %}
+        {% include components/cards/featured-founder-card.html founder=founder %}
       {% endfor %}
     </div>
 
