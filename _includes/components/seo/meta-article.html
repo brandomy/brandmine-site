@@ -30,3 +30,8 @@
 {% if site_twitter != "" %}
   <meta name="twitter:site" content="@{{ site_twitter }}">
 {% endif %}
+
+<!-- RSS Feed Discovery -->
+{% if site.enable_insights_feed %}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - Insights Feed" href="{{ '/feed/insights.xml' | absolute_url }}">
+{% endif %}

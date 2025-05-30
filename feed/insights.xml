@@ -1,0 +1,75 @@
+---
+layout: null
+---
+{% if site.enable_insights_feed %}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }} - Insights</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ "/feed/insights.xml" | absolute_url }}" rel="self" type="application/rss+xml" />
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    
+    {% comment %}
+      Get all insights from all languages and sort by date
+    {% endcomment %}
+    {% assign all_insights = site.insights | sort: 'date' | reverse %}
+    
+    {% for insight in all_insights limit:20 %}
+      {% comment %}
+        Only include published insights
+      {% endcomment %}
+      {% unless insight.published == false %}
+        <item>
+          <title>{{ insight.title | xml_escape }}</title>
+          <description>
+            {% if insight.excerpt %}
+              {{ insight.excerpt | strip_html | truncatewords: 50 | xml_escape }}
+            {% else %}
+              {{ insight.content | strip_html | truncatewords: 50 | xml_escape }}
+            {% endif %}
+          </description>
+          <pubDate>{{ insight.date | date_to_rfc822 }}</pubDate>
+          <link>{{ insight.url | absolute_url }}</link>
+          <guid isPermaLink="true">{{ insight.url | absolute_url }}</guid>
+          
+          {% comment %}
+            Add category based on insight type
+          {% endcomment %}
+          {% if insight.type %}
+            <category>{{ insight.type | xml_escape }}</category>
+          {% endif %}
+          
+          {% comment %}
+            Add market and sector categories if available
+          {% endcomment %}
+          {% if insight.market %}
+            <category>{{ insight.market | xml_escape }}</category>
+          {% endif %}
+          {% if insight.sector %}
+            <category>{{ insight.sector | xml_escape }}</category>
+          {% endif %}
+          
+          {% comment %}
+            Add language as category
+          {% endcomment %}
+          <category>{{ insight.lang | upcase | xml_escape }}</category>
+          
+          {% comment %}
+            Add author if available
+          {% endcomment %}
+          {% if insight.author %}
+            <author>{{ insight.author | xml_escape }}</author>
+          {% endif %}
+        </item>
+      {% endunless %}
+    {% endfor %}
+    
+  </channel>
+</rss>
+{% else %}
+<!-- RSS feed disabled. Enable by setting 'enable_insights_feed: true' in _config.yml -->
+{% endif %}

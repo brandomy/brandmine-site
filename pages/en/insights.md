@@ -10,11 +10,12 @@ sections:
   - hero
   - impact
   # - content
+  - featured-article
   - category-navigation
-  - categories
+  # - categories
   # - filter-interface
-  - featured-insights
-  - recent-insights
+  - category-highlights
+  - all-insights
   - contact-cta
 ---
 

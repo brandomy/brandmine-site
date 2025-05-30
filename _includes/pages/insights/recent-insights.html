@@ -25,25 +25,46 @@
       </p>
     {% endif %}
 
-    <div class="recent-insights__grid">
-      {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
-      {% if insights.size > 0 %}
-        {% for insight in insights %}
-          {% include components/cards/insight-card.html insight=insight %}
-        {% endfor %}
-      {% else %}
-        <div class="recent-insights__empty">
-          <p class="recent-insights__empty-message">{{ t.no_insights | default: "No insights available yet." }}</p>
+    {% assign use_carousel = include.carousel | default: false %}
+    
+    {% if use_carousel %}
+      <div class="recent-insights__carousel">
+        {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: 6 %}
+        {% if insights.size > 0 %}
+          {% for insight in insights %}
+            {% include components/cards/insight-card.html insight=insight %}
+          {% endfor %}
+        {% else %}
+          <div class="recent-insights__empty">
+            <p class="recent-insights__empty-message">{{ t.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        {% endif %}
+      </div>
+      
+      {% if insights.size > 3 %}
+        <div class="recent-insights__nav">
+          {% assign dot_count = insights.size | divided_by: 3 | plus: 1 %}
+          {% if dot_count > 3 %}{% assign dot_count = 3 %}{% endif %}
+          
+          {% for i in (1..dot_count) %}
+            <span class="recent-insights__nav-dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.index0 }}"></span>
+          {% endfor %}
         </div>
       {% endif %}
-    </div>
-
-    {% if site.insights.size > limit %}
-      <div class="recent-insights__footer">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/" class="btn btn--secondary">
-          {{ t.view_all_insights | default: "View All Insights" }}
-        </a>
+    {% else %}
+      <div class="recent-insights__grid">
+        {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
+        {% if insights.size > 0 %}
+          {% for insight in insights %}
+            {% include components/cards/insight-card.html insight=insight %}
+          {% endfor %}
+        {% else %}
+          <div class="recent-insights__empty">
+            <p class="recent-insights__empty-message">{{ t.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        {% endif %}
       </div>
     {% endif %}
+
   </div>
 </div>

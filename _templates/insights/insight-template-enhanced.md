@@ -38,6 +38,7 @@ sections:
   - header
   - featured-image
   - content
+  - social-sharing
   - taxonomy
   - brand-info
   - related-brands

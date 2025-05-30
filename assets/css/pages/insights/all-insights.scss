@@ -59,6 +59,20 @@
     }
   }
 
+  /* Pagination container */
+  &__pagination {
+    margin-top: var(--space-8);
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Hide items when paginating */
+  &__item {
+    &[style*="display: none"] {
+      display: none !important;
+    }
+  }
+
   /* Sidebar Styles */
   &__sidebar {
     /* Sidebar styles */

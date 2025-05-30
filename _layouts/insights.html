@@ -54,6 +54,8 @@ layout: default
                aria-labelledby="heading-{{ section }}">
         {% if section == "content" %}
           {% include pages/insights/{{ section }}.html content=page_content %}
+        {% elsif section == "recent-insights" %}
+          {% include pages/insights/{{ section }}.html carousel=true %}
         {% else %}
           {% include pages/insights/{{ section }}.html %}
         {% endif %}
@@ -64,3 +66,9 @@ layout: default
 
 <!-- Insights search functionality -->
 <script src="{{ '/assets/js/pages/insights/simple-insights-search.js' | relative_url }}"></script>
+
+<!-- Insights carousel functionality -->
+<script src="{{ '/assets/js/components/insights-carousel.js' | relative_url }}"></script>
+
+<!-- Insights pagination functionality -->
+<script src="{{ '/assets/js/pages/insights/insights-pagination.js' | relative_url }}"></script>
