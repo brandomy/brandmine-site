@@ -1,20 +1,23 @@
 ---
 layout: post
 title: "MapLibre: Наш путь создания географической визуализации брендов"
-date: 2025-05-30
+date: 2025-05-23
+permalink: /ru/journal/2025/05/23/maplibre-journey/
 author: randal_eastman
 excerpt: "Наше исследование MapLibre трансформировало способ географического отображения брендов, создав интерактивный опыт, который раскрывает паттерны и связи между рынками БРИКС+."
 tags: [разработка, инструменты, карты, brandmine, визуализация]
-image: /assets/images/journal/2025-05-30-maplibre-journey/hero.jpg
-image_caption: "Интерактивные карты оживляют истории брендов через географическую визуализацию"
+# Images (using collection-image semantic structure)
+images:
+  hero:
+    ext: "jpg"
+    caption: "Интерактивные карты оживляют истории брендов через географическую визуализацию"
 lang: ru
 reading_time: 8
 featured: true
 ref: maplibre-journey
 sections:
   - breadcrumbs
-  - header
-  - featured-image
+  - hero
   - content
   - author-profile
   - social-sharing

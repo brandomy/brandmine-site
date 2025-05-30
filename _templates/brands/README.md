@@ -40,7 +40,7 @@ sections:
   - product              # Product range and offerings
   - market-presence      # Market position and distribution
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
+  - business-intelligence # Business signals and opportunities
   - connections          # Related brands and insights
 ```
 

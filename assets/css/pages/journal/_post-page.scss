@@ -11,24 +11,40 @@
 
   // Section spacing following linear architecture
   .post-section {
-    // Each section wrapped in panels for consistency
-    .panel {
-      margin-bottom: 0; // Remove default panel margin
+    // Remove section margins - panels handle spacing
+    &:not(:last-child) {
+      margin-bottom: 0;
     }
     
-    &:not(:last-child) {
-      margin-bottom: 0; // Remove section margins - panels handle spacing
+    // Default panel settings for flowing layout
+    .panel {
+      margin-bottom: 0;
+      padding-bottom: var(--space-8); // Maintain bottom padding for content spacing
+    }
+    
+    // All sections except the first remove top padding for seamless flow
+    &:not(:first-of-type) .panel {
+      padding-top: 0;
+    }
+    
+    // First section maintains normal top padding
+    &:first-of-type .panel {
+      padding-top: var(--space-8);
     }
 
     // Section-specific overrides
     &--breadcrumbs {
       .panel {
         padding: var(--space-2) 0; // Reduced padding for breadcrumbs
+        margin-bottom: 0; // Remove space between breadcrumbs and hero
       }
     }
 
     &--hero {
       // Hero flows seamlessly - no additional margin needed
+      .panel {
+        margin-top: 0; // Remove space between breadcrumbs and hero
+      }
     }
 
     &--header {
@@ -48,11 +64,11 @@
     }
 
     &--social-sharing {
-      // Panel handles spacing
+      // Inherits seamless flow from parent rule
     }
 
     &--tag-cloud {
-      // Panel handles spacing
+      // Inherits seamless flow from parent rule
     }
 
     &--related-posts {
@@ -64,20 +80,21 @@
   .panel__content {
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: var(--space-8) var(--space-4);
+    padding: var(--space-6) var(--space-4);
     
     @media (min-width: 768px) {
-      padding: var(--space-10) var(--space-8);
+      padding: var(--space-8) var(--space-8);
     }
     
     @media (min-width: 992px) {
-      padding: var(--space-12) var(--space-10);
+      padding: var(--space-10) var(--space-10);
     }
   }
 
-  // Special content width for article text (narrower for readability)
+  // Article content should be full width and left-aligned
   .post-section--content .panel__content {
-    max-width: 800px; // Narrower for optimal reading experience
+    max-width: var(--container-max-width); // Full width like other content
+    text-align: left; // Ensure left alignment
   }
 
   // Responsive adjustments
@@ -101,9 +118,10 @@
 .post-page {
   // Enhanced readability for long-form content
   .post-content {
-    // Ensure optimal line length
-    max-width: 65ch;
-    margin: 0 auto;
+    // Full width content
+    max-width: 100%;
+    margin: 0;
+    text-align: left;
     
     // Better heading hierarchy
     h1 {

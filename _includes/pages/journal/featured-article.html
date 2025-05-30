@@ -18,17 +18,32 @@
 {% endif %}
 
 {% if featured_post %}
-  <div class="panel panel--hero-image" style="background-image: url('{{ featured_post.image | relative_url }}');">
-    <div class="panel__overlay"></div>
+  {% comment %} Build hero image path using post filename (includes date) {% endcomment %}
+  {% if featured_post.images.hero %}
+    {% assign post_filename = featured_post.path | split: '/' | last | split: '.' | first %}
+    {% assign hero_image_path = '/assets/images/journal/' | append: post_filename | append: '/hero-1200w.' | append: featured_post.images.hero.ext %}
+  {% else %}
+    {% assign hero_image_path = '/assets/images/placeholders/insight-hero-1200w.jpg' %}
+  {% endif %}
+  
+  <div class="panel panel--featured-split">
     <div class="panel__content">
-      <div class="featured-article">
-        <div class="featured-article__content">
+      <div class="featured-article featured-article--split">
+        <!-- Image Section -->
+        <div class="featured-article__image-section">
+          <img src="{{ hero_image_path | relative_url }}" alt="{{ featured_post.images.hero.caption | default: featured_post.title }}" class="featured-article__hero-image">
+        </div>
+        
+        <!-- Content Section -->
+        <div class="featured-article__content-section">
+          <div class="featured-article__content featured-article__content--centered">
           <div class="featured-article__meta">
             <time class="featured-article__date" datetime="{{ featured_post.date | date_to_xmlschema }}">
               {{ featured_post.date | date: "%B %d, %Y" }}
             </time>
             
             {% if featured_post.author %}
+              <span class="separator">•</span>
               <span class="featured-article__author">
                 {{ t.by | default: "by" }} 
                 {% assign author_data = site.data.translations[page.lang].authors[featured_post.author] %}
@@ -37,6 +52,7 @@
             {% endif %}
             
             {% if featured_post.reading_time %}
+              <span class="separator">•</span>
               <span class="featured-article__reading-time">
                 {{ featured_post.reading_time }} {{ t.min_read | default: "min read" }}
               </span>
@@ -54,7 +70,7 @@
           {% endif %}
           
           <div class="featured-article__actions">
-            <a href="{{ featured_post.url | relative_url }}" class="button button--secondary">
+            <a href="{{ featured_post.url | relative_url }}" class="btn btn--secondary">
               {{ t.read_more | default: "Read More" }}
             </a>
             
@@ -65,6 +81,7 @@
                 {% endfor %}
               </div>
             {% endif %}
+          </div>
           </div>
         </div>
       </div>

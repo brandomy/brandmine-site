@@ -1,0 +1,92 @@
+{% comment %}
+  Component: components/cards/author-card.html
+  Purpose: Reusable author profile card for journal pages and team sections
+  
+  Parameters:
+  - author: Author data object containing:
+    - name: Author name (required)
+    - position: Job title/position (optional)
+    - photo_slug: Photo identifier for collection-image (optional)
+    - bio: Biography text (optional)
+    - highlights: Array of achievement highlights (optional)
+    - summary: Summary text (optional)
+    - linkedin: LinkedIn URL (optional)
+  - layout: Card layout style (optional, default: "standard")
+    - "standard": Full width layout for single author
+    - "grid": Compact layout for author grids
+  - show_highlights: Show detailed highlights (optional, default: true for standard, false for grid)
+  - lang: Language code for translations (required)
+  
+  Dependencies:
+  - components/images/collection-image.html
+  - CSS: components/cards/author-card.scss
+  
+  Example usage:
+  {% include components/cards/author-card.html 
+     author=author_data 
+     layout="grid" 
+     lang=page.lang %}
+{% endcomment %}
+
+{% assign layout = include.layout | default: "standard" %}
+{% assign show_highlights = include.show_highlights %}
+{% if show_highlights == nil %}
+  {% if layout == "grid" %}
+    {% assign show_highlights = false %}
+  {% else %}
+    {% assign show_highlights = true %}
+  {% endif %}
+{% endif %}
+
+<div class="author-card author-card--{{ layout }}">
+  <div class="author-card__content">
+    {% if include.author.photo_slug %}
+      <div class="author-card__image">
+        {% include components/images/collection-image.html
+           collection="people"
+           category="authors"
+           slug=include.author.photo_slug
+           purpose="headshot"
+           alt=include.author.name
+           class="author-card__photo" %}
+      </div>
+    {% endif %}
+    
+    <div class="author-card__info">
+      <h3 class="author-card__name">{{ include.author.name }}</h3>
+      {% if include.author.position %}
+        <p class="author-card__position">{{ include.author.position }}</p>
+      {% endif %}
+      
+      {% if include.author.bio %}
+        <div class="author-card__bio">
+          <p>{{ include.author.bio }}</p>
+          
+          {% if show_highlights and include.author.highlights %}
+            <ul class="author-card__highlights">
+              {% for highlight in include.author.highlights %}
+                <li>{{ highlight }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          
+          {% if include.author.summary %}
+            <p class="author-card__summary">{{ include.author.summary }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    
+    {% if include.author.linkedin %}
+      <div class="author-card__social">
+        <a href="{{ include.author.linkedin }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="{{ include.author.name }} on LinkedIn"
+           class="author-card__linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,11 +1,12 @@
 {% comment %}
   Component: pages/journal/author-profile.html
-  Purpose: Display author profile information
+  Purpose: Display author profile information using reusable author-card component
   Parameters:
     - post: The post object (for individual posts)
     - author: Specific author ID to display (optional)
     - show_all: Display all authors (for landing page)
   Dependencies:
+    - components/cards/author-card.html
     - assets/css/pages/journal/author-profile.scss
 {% endcomment %}
 
@@ -35,92 +36,23 @@
       </div>
       
       {% if include.show_all %}
-        {% comment %} Show all authors for landing page {% endcomment %}
+        {% comment %} Show all authors for landing page using grid layout {% endcomment %}
         <div class="author-profiles-grid">
           {% for author_entry in authors_to_show %}
             {% assign author = author_entry[1] %}
-            <div class="author-profile__item">
-              <div class="author-profile__content">
-                {% if author.photo_slug %}
-                  <div class="author-profile__image">
-                    {% assign author_image_src = "/assets/images/people/" | append: author.photo_slug | append: ".jpg" %}
-                    {% include components/images/base-image.html 
-                       src=author_image_src 
-                       alt=author.name 
-                       class="author-profile__photo" %}
-                  </div>
-                {% endif %}
-                
-                <div class="author-profile__info">
-                  <h3 class="author-profile__name">{{ author.name }}</h3>
-                  <p class="author-profile__position">{{ author.position }}</p>
-                  
-                  {% if author.bio %}
-                    <div class="author-profile__bio">
-                      <p>{{ author.bio }}</p>
-                      {% if author.summary %}
-                        <p class="author-profile__summary">{{ author.summary }}</p>
-                      {% endif %}
-                    </div>
-                  {% endif %}
-                  
-                  {% if author.linkedin %}
-                    <div class="author-profile__social">
-                      <a href="{{ author.linkedin }}" class="author-profile__linkedin" target="_blank" rel="noopener">
-                        {{ t.social.linkedin | default: "LinkedIn" }}
-                      </a>
-                    </div>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
+            {% include components/cards/author-card.html 
+               author=author 
+               layout="grid" 
+               lang=page.lang %}
           {% endfor %}
         </div>
       {% else %}
-        {% comment %} Show single author for post pages {% endcomment %}
+        {% comment %} Show single author for post pages using standard layout {% endcomment %}
         {% if single_author %}
-          <div class="author-profile__content">
-            {% if single_author.photo_slug %}
-              <div class="author-profile__image">
-                {% assign author_image_src = "/assets/images/people/" | append: single_author.photo_slug | append: ".jpg" %}
-                {% include components/images/base-image.html 
-                   src=author_image_src 
-                   alt=single_author.name 
-                   class="author-profile__photo" %}
-              </div>
-            {% endif %}
-            
-            <div class="author-profile__info">
-              <h3 class="author-profile__name">{{ single_author.name }}</h3>
-              <p class="author-profile__position">{{ single_author.position }}</p>
-              
-              {% if single_author.bio %}
-                <div class="author-profile__bio">
-                  <p>{{ single_author.bio }}</p>
-                  
-                  {% if single_author.highlights %}
-                    <ul class="author-profile__highlights">
-                      {% for highlight in single_author.highlights %}
-                        <li>{{ highlight }}</li>
-                      {% endfor %}
-                    </ul>
-                  {% endif %}
-                  
-                  {% if single_author.summary %}
-                    <p class="author-profile__summary">{{ single_author.summary }}</p>
-                  {% endif %}
-                </div>
-              {% endif %}
-              
-              {% if single_author.linkedin %}
-                <div class="author-profile__social">
-                  <a href="{{ single_author.linkedin }}" class="author-profile__linkedin" target="_blank" rel="noopener">
-                    {{ t.social.linkedin | default: "LinkedIn" }}
-                  </a>
-                </div>
-              {% endif %}
-            </div>
-          </div>
+          {% include components/cards/author-card.html 
+             author=single_author 
+             layout="standard" 
+             lang=page.lang %}
         {% endif %}
       {% endif %}
     </div>

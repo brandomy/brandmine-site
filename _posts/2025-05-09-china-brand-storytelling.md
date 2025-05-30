@@ -1,12 +1,16 @@
 ---
 layout: post
 title: "The Art of Chinese Brand Narratives: Building Cross-Cultural Bridges"
-date: 2025-07-01
+date: 2025-05-09
+permalink: /en/journal/2025/05/09/china-brand-storytelling/
 author: randal_eastman
 excerpt: "Two decades of experience in Chinese markets taught us that successful brand storytelling requires understanding not just language, but cultural values, generational differences, and regional nuances."
 tags: [china, storytelling, cultural-intelligence, brand-strategy, methodology]
-image: /assets/images/journal/2025-07-01-china-brand-storytelling/hero.jpg
-image_caption: "Chinese brand stories unfold across generations and cultural traditions"
+# Images (using collection-image semantic structure)
+images:
+  hero:
+    ext: "jpg"
+    caption: "Chinese brand stories unfold across generations and cultural traditions"
 lang: en
 reading_time: 7
 featured: false

@@ -1,41 +1,84 @@
 ---
 layout: default
 ---
-<!-- Brand Profile Layout (Logic-Light Architecture) -->
-
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,hero,identity,founder-narrative,product,location-intelligence,market-presence,growth-signals,connections" | split: "," %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
-
-<div class="brand-profile">
-  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
-  {% if sections_to_render contains "breadcrumbs" %}
-    {% include components/ui/breadcrumbs.html %}
-  {% endif %}
+{% comment %}
+  Hybrid Brand Profile Layout
   
-  {% comment %} All other sections use normal layout {% endcomment %}
-  {% for section in sections_to_render %}
-    {% unless section == "breadcrumbs" %}
-      <section class="brand-section brand-section--{{ section }}"
-               id="brand-section-{{ section }}"
-               aria-labelledby="heading-{{ section }}">
-        {% include pages/brand/{{ section }}.html brand=page %}
-      </section>
-    {% endunless %}
-  {% endfor %}
-</div>
+  Supports both:
+  1. Curated YAML profiles (rich content + structured data)
+  2. JSON-only profiles (basic structured data only)
+  
+  Data source detection:
+  - YAML profiles have page.title defined
+  - JSON-only profiles use page.ref to lookup site.data.brands
+{% endcomment %}
 
-<!-- Scripts handled at the layout level, not in individual brand files -->
-<script src="{{ '/assets/js/pages/brand/brand-profile.js' | relative_url }}"></script>
-
-<!-- Conditional scripts based on section presence -->
-{% if page.sections contains 'location-intelligence' %}
-  <script src="{{ '/assets/js/pages/brand/brand-map-script.js' | relative_url }}"></script>
+{% comment %} Determine data source and create unified brand object {% endcomment %}
+{% if page.title %}
+  {% comment %} This is a curated YAML brand profile {% endcomment %}
+  {% assign brand = page %}
+  {% assign data_source = "curated" %}
+  {% assign brand_ref = page.ref %}
+{% else %}
+  {% comment %} This is a basic JSON-only brand {% endcomment %}
+  {% assign brand_ref = page.ref %}
+  {% assign brand = site.data.brands.brands | where: "ref", brand_ref | first %}
+  {% assign data_source = "basic" %}
 {% endif %}
 
-{% if page.sections contains 'product' and page.gallery and page.gallery.size > 0 %}
-  <script src="{{ '/assets/js/pages/brand/gallery.js' | relative_url }}"></script>
+{% comment %} Fallback if brand not found in either source {% endcomment %}
+{% unless brand %}
+  <div class="panel panel--light">
+    <div class="panel__content">
+      <h1>Brand Not Found</h1>
+      <p>The requested brand profile could not be located.</p>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">← Back to Brands</a>
+    </div>
+  </div>
+  {% assign brand = null %}
+{% endunless %}
+
+{% if brand %}
+  {% comment %} Set sections based on data completeness and availability {% endcomment %}
+  {% if data_source == "curated" %}
+    {% assign default_sections = "identity,founder-narrative,content,business-intelligence,location-intelligence,connections" | split: "," %}
+    {% assign sections_to_render = page.sections | default: default_sections %}
+  {% else %}
+    {% assign sections_to_render = "identity,business-intelligence,location-intelligence,connections" | split: "," %}
+  {% endif %}
+
+  {% comment %} Add breadcrumbs for all profiles {% endcomment %}
+  {% include components/ui/breadcrumbs.html %}
+
+  <div class="brand-profile brand-profile--{{ data_source }}">
+    {% for section in sections_to_render %}
+      {% if section == "content" and data_source == "curated" %}
+        {% comment %} Display markdown content for curated profiles only {% endcomment %}
+        <section class="brand-section brand-section--content">
+          <div class="panel panel--light">
+            <div class="panel__content">
+              <div class="brand-content">
+                {{ content }}
+              </div>
+            </div>
+          </div>
+        </section>
+      {% else %}
+        {% comment %} Display structured data sections {% endcomment %}
+        <section class="brand-section brand-section--{{ section }}" 
+                 id="brand-section-{{ section }}"
+                 aria-labelledby="heading-{{ section }}">
+          {% include pages/brand/{{ section }}.html 
+            brand=brand 
+            data_source=data_source 
+            brand_ref=brand_ref %}
+        </section>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% comment %} Conditional scripts based on section presence {% endcomment %}
+  {% if sections_to_render contains 'location-intelligence' %}
+    <script src="{{ '/assets/js/pages/brand/brand-map.js' | relative_url }}"></script>
+  {% endif %}
 {% endif %}

@@ -1,51 +1,62 @@
-<!-- _includes/pages/brand/location-intelligence.html -->
-{% assign t = site.data.translations[page.lang].brand %}
+{% comment %}
+  Location Intelligence Section
+  Displays: Interactive map, geographic context, regional significance
+  Supports: Both YAML and JSON data sources
+{% endcomment %}
 
-<section class="brand-section brand-section--location-intelligence" id="location-intelligence">
-  <div class="brand-section__container">
-    <h2 class="brand-section__title">{{ t.location_intelligence }}</h2>
+{% assign brand = include.brand %}
+{% assign data_source = include.data_source | default: "curated" %}
+{% assign t = site.data.translations[brand.lang].brand %}
 
+{% if brand.location and brand.location.lat and brand.location.lng %}
+<div class="panel panel--sky-soft">
+  <div class="panel__content">
+    <h2 id="heading-location-intelligence" class="panel__heading-secondary">
+      {{ t.location_intelligence | default: "Location Intelligence" }}
+    </h2>
+    
     <div class="location-intelligence">
-      <!-- Location Map using map component -->
-      {% if page.location_lat and page.location_lng %}
-        <div class="location-intelligence__map">
-          {% include components/maps/map.html
-            lat=page.location_lat
-            lng=page.location_lng
-            title=page.title
-            zoom=10 %}
+      <div class="brand-map" 
+           data-lat="{{ brand.location.lat }}" 
+           data-lng="{{ brand.location.lng }}"
+           data-brand-name="{{ brand.title | default: brand.name }}"
+           data-brand-ref="{{ include.brand_ref }}">
+        <div class="brand-map__container" id="brand-map-{{ include.brand_ref }}">
+          <!-- Map will be initialized by JavaScript -->
         </div>
-      {% endif %}
-
-      <!-- Location Context using helper -->
-      <div class="location-intelligence__context">
-        <div class="location-context">
-          {% if page.location_city or page.location_region %}
-            <div class="location-context__address">
-              <h3>{{ t.location }}</h3>
-              {% include components/helpers/location-display.html
-                city=page.location_city
-                region=page.location_region
-                country=page.location_country
-                lang=page.lang %}
-            </div>
-          {% endif %}
-
-          {% if page.location_country %}
-            <div class="location-context__region">
-              <h3>{{ t.regional_context }}</h3>
-              <p>{% include components/helpers/country-name.html
-                code=page.location_country
-                lang=page.lang %}</p>
-
-              <!-- Link to the market page for this country -->
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ page.location_country }}/" class="btn btn-sm btn-outline-primary">
-                {{ site.data.translations[page.lang].discover.explore_market }}
-              </a>
-            </div>
-          {% endif %}
+        <div class="brand-map__fallback">
+          <p>{{ t.map_loading | default: "Loading interactive map..." }}</p>
         </div>
+      </div>
+      
+      <div class="location-context">
+        <div class="location-context__primary">
+          <h3 class="location-context__title">
+            {{ brand.location.city }}{% if brand.location.region %}, {{ brand.location.region }}{% endif %}
+          </h3>
+          <p class="location-context__country">
+            {% assign country_name = site.data.countries.countries[brand.location.country].name[brand.lang] %}
+            {{ country_name | default: brand.location.country }}
+          </p>
+        </div>
+        
+        {% if brand.location.lat and brand.location.lng %}
+        <div class="location-context__coordinates">
+          <span class="coordinates-label">{{ t.coordinates | default: "Coordinates" }}:</span>
+          <span class="coordinates-value">{{ brand.location.lat }}, {{ brand.location.lng }}</span>
+        </div>
+        {% endif %}
+        
+        {% comment %} Link to market exploration {% endcomment %}
+        {% if brand.location.country %}
+        <div class="location-context__explore">
+          <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/markets/{{ brand.location.country }}/" class="btn btn--secondary">
+            {{ site.data.translations[brand.lang].discover.explore_market | default: "Explore Market" }}
+          </a>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
-</section>
+</div>
+{% endif %}

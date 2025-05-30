@@ -14,6 +14,8 @@
     // Each section wrapped in panels for consistency
     .panel {
       margin-bottom: 0; // Remove default panel margin
+      padding-top: 0; // Zero top padding for seamless flow
+      padding-bottom: 0; // Zero bottom padding for seamless flow
     }
     
     &:not(:last-child) {
@@ -24,11 +26,15 @@
     &--breadcrumbs {
       .panel {
         padding: var(--space-2) 0; // Reduced padding for breadcrumbs
+        margin-bottom: 0; // Remove space between breadcrumbs and hero
       }
     }
 
     &--hero {
       // Hero uses full panel system - no additional margin needed
+      .panel {
+        margin-top: 0; // Remove space between breadcrumbs and hero
+      }
     }
 
     &--featured-article {

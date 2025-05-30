@@ -14,7 +14,7 @@ sections:
   - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
   - content              # Markdown content area (NEW - enables rich content)
-  - business-intelligence # Business signals and opportunities (replaces growth-signals)
+  - business-intelligence # Business signals and opportunities
   - location-intelligence # Map and geographic context
   - connections          # Related brands and insights
 

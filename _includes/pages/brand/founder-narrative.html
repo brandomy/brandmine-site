@@ -1,67 +1,70 @@
-<!-- _includes/pages/brand/founder-narrative.html -->
-{% assign t = site.data.translations[page.lang].brand %}
+{% comment %}
+  Founder Narrative Section
+  Displays: Founder information, leadership status, generational context
+  Supports: Both YAML and JSON data sources
+{% endcomment %}
 
-<section class="brand-section brand-section--founder-narrative" id="founder-narrative">
-  <div class="brand-section__container">
-    <h2 class="brand-section__title">{{ t.founders_journey }}</h2>
+{% assign brand = include.brand %}
+{% assign data_source = include.data_source | default: "curated" %}
+{% assign t = site.data.translations[brand.lang].brand %}
 
+{% comment %} Check if we have founder information {% endcomment %}
+{% assign has_founders = false %}
+{% if brand.founders and brand.founders.size > 0 %}
+  {% assign has_founders = true %}
+{% endif %}
+
+{% if has_founders or brand.founder_led %}
+<div class="panel panel--secondary-soft">
+  <div class="panel__content">
+    <h2 id="heading-founder-narrative" class="panel__heading-secondary">
+      {{ t.founders_journey | default: "Founder Leadership" }}
+    </h2>
+    
     <div class="founder-narrative">
-      <!-- Founder Portrait -->
-      {% if page.images.founder %}
-        <div class="founder-narrative__portrait">
-          {% include helpers/brand-image.html
-            brand_id=page.ref
-            image_type="founder"
-            class="founder-narrative__portrait-image" %}
-
-          {% if page.founder_led %}
-            <div class="founder-narrative__badge">
-              <span class="founder-badge">{{ t.founder_led }}</span>
+      {% if has_founders %}
+        <div class="founder-list">
+          {% for founder_key in brand.founders %}
+            {% comment %} Look up founder in founders.json {% endcomment %}
+            {% assign founder = site.data.founders.founders | where: "ref", founder_key | first %}
+            {% if founder %}
+            <div class="founder-card">
+              <div class="founder-card__header">
+                <h3 class="founder-card__name">{{ founder.name }}</h3>
+                {% if founder.position %}
+                  <p class="founder-card__title">{{ founder.position }}</p>
+                {% endif %}
+              </div>
+              
+              {% if founder.brief_bio %}
+                <p class="founder-card__bio">{{ founder.brief_bio }}</p>
+              {% endif %}
+              
+              {% if founder.generation %}
+              <div class="founder-card__meta">
+                <span class="meta-label">{{ t.generation | default: "Generation" }}:</span>
+                <span class="meta-value">{{ founder.generation | capitalize }}</span>
+              </div>
+              {% endif %}
+              
+              {% comment %} Link to founder profile {% endcomment %}
+              <a href="{{ site.baseurl }}/{{ brand.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
+                {{ site.data.translations[brand.lang].buttons.view_founder | default: "View Founder Profile" }} →
+              </a>
             </div>
-          {% endif %}
+            {% endif %}
+          {% endfor %}
         </div>
       {% endif %}
-
-      <div class="founder-narrative__content">
-        <!-- Founder Information -->
-        {% if page.founders and page.founders.size > 0 %}
-          <div class="founder-narrative__meta">
-            {% for founder_id in page.founders %}
-              {% comment %} Use founder helper to get founder data {% endcomment %}
-              {% include helpers/founder-data.html founder_id=founder_id assign="founder" %}
-              {% if founder %}
-                <div class="founder-meta">
-                  <h3 class="founder-meta__name">
-                    {% include helpers/founder-name.html founder_id=founder_id %}
-                  </h3>
-
-                  {% if founder.position[page.lang] %}
-                    <div class="founder-meta__role">{{ founder.position[page.lang] }}</div>
-                  {% endif %}
-
-                  {% if founder.generation %}
-                    <div class="founder-meta__generation">
-                      {{ t.generation }}:
-                      {% include components/brands/generation-display.html
-                        generation=founder.generation
-                        lang=page.lang %}
-                    </div>
-                  {% endif %}
-                </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-        {% endif %}
-
-        <!-- Founder's Journey Content from Markdown -->
-        <div class="founder-narrative__story">
-          {% assign content_parts = content | split: "## Founder's Journey" %}
-          {% if content_parts.size > 1 %}
-            {% assign founder_content = content_parts[1] | split: "##" | first %}
-            {{ founder_content | markdownify }}
-          {% endif %}
+      
+      {% if brand.founder_led %}
+        <div class="founder-status">
+          <span class="status-badge status-badge--active">
+            {{ site.data.translations[brand.lang].attributes.founder-led | default: "Founder-Led" }}
+          </span>
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
-</section>
+</div>
+{% endif %}

@@ -21,14 +21,22 @@
   {% assign hero_type = 'post' %}
   {% assign hero_title = post.title %}
   {% assign hero_subtitle = post.excerpt %}
-  {% assign hero_image = post.image | default: '/assets/images/placeholders/insight-hero-1200w.jpg' %}
-  {% assign hero_alt = post.image_caption | default: post.title %}
+  {% comment %} Build hero image path using post filename (includes date) {% endcomment %}
+  {% if post.images.hero %}
+    {% assign post_filename = post.path | split: '/' | last | split: '.' | first %}
+    {% assign hero_image_path = '/assets/images/journal/' | append: post_filename | append: '/hero' %}
+    {% assign hero_image = hero_image_path | append: '-1200w.' | append: post.images.hero.ext %}
+    {% assign hero_alt = post.images.hero.caption | default: post.title %}
+  {% else %}
+    {% assign hero_image = '/assets/images/placeholders/insight-hero-1200w.jpg' %}
+    {% assign hero_alt = post.title %}
+  {% endif %}
 {% else %}
   {% assign hero_type = 'landing' %}
   {% assign hero_title = include.title | default: t.hero_title %}
   {% assign hero_subtitle = include.subtitle | default: t.hero_subtitle %}
-  {% assign hero_image = include.hero_image | default: '/assets/images/placeholders/insight-hero-1200w.jpg' %}
-  {% assign hero_alt = include.hero_alt | default: hero_title %}
+  {% assign hero_image = include.hero_image | default: page.hero_image | default: '/assets/images/placeholders/insight-hero-1200w.jpg' %}
+  {% assign hero_alt = include.hero_alt | default: page.hero_alt | default: hero_title %}
 {% endif %}
 
 {% if hero_type == 'post' %}
@@ -87,14 +95,41 @@
       
       <!-- Image Section -->
       <div class="journal-hero__image">
-        {% if hero_image %}
-          {% include components/images/base-image.html
-             src=hero_image
+        {% if hero_type == 'post' and post.images.hero %}
+          {% comment %} Use collection-image component for journal posts {% endcomment %}
+          {% assign post_filename = post.path | split: '/' | last | split: '.' | first %}
+          {% include components/images/collection-image.html
+             collection="journal"
+             slug=post_filename
+             purpose="hero"
              alt=hero_alt
-             sizes="(max-width: 767px) 100vw, 50vw"
-             loading="eager"
              class="journal-hero__img"
-          %}
+             loading="eager" %}
+        {% elsif hero_image %}
+          {% comment %} Direct image path for landing pages {% endcomment %}
+          {% if hero_image contains '-1200w.jpg' %}
+            {% comment %} Already has size suffix, build responsive srcset {% endcomment %}
+            {% assign image_base = hero_image | remove: '-1200w.jpg' %}
+            <img src="{{ hero_image | relative_url }}"
+                 srcset="{{ image_base | append: '-400w.jpg' | relative_url }} 400w,
+                         {{ image_base | append: '-800w.jpg' | relative_url }} 800w,
+                         {{ image_base | append: '-1200w.jpg' | relative_url }} 1200w"
+                 sizes="(max-width: 767px) 100vw, 50vw"
+                 alt="{{ hero_alt }}"
+                 class="journal-hero__img"
+                 loading="eager">
+          {% else %}
+            {% comment %} Legacy path without size suffix {% endcomment %}
+            {% assign image_path = hero_image | remove: '.jpg' | remove: '.jpeg' | remove: '.png' %}
+            <img src="{{ image_path | append: '-1200w.jpg' | relative_url }}"
+                 srcset="{{ image_path | append: '-400w.jpg' | relative_url }} 400w,
+                         {{ image_path | append: '-800w.jpg' | relative_url }} 800w,
+                         {{ image_path | append: '-1200w.jpg' | relative_url }} 1200w"
+                 sizes="(max-width: 767px) 100vw, 50vw"
+                 alt="{{ hero_alt }}"
+                 class="journal-hero__img"
+                 loading="eager">
+          {% endif %}
         {% endif %}
       </div>
     </div>

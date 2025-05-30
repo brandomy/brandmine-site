@@ -1,17 +1,26 @@
 {% comment %}
   Section: journal/breadcrumbs.html
   
-  Displays breadcrumb navigation for journal pages
+  Displays breadcrumb navigation for journal pages with full path
   Note: This section intentionally breaks out of the panel system for seamless header integration
   
   Dependencies:
   - site.data.translations for home navigation labels
+  - assets/css/components/ui/breadcrumbs.scss for styling
 {% endcomment %}
 
-<div class="journal-breadcrumbs-wrapper">
-  <nav class="journal-breadcrumbs" aria-label="Breadcrumb navigation">
+<div class="breadcrumbs-wrapper">
+  <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
     <a href="{{ site.baseurl }}/{{ page.lang }}/" class="back-link">
       ← {{ site.data.translations[page.lang].nav.home | default: "Home" }}
     </a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/journal/" class="breadcrumb-link">
+      {{ site.data.translations[page.lang].nav.journal | default: "Journal" }}
+    </a>
+    {% if page.title %}
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-current">{{ page.title }}</span>
+    {% endif %}
   </nav>
 </div>

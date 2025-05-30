@@ -36,11 +36,7 @@ layout: default
 <div class="journal-page">
   {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
   {% if sections_to_render contains "breadcrumbs" %}
-    <section class="journal-section journal-section--breadcrumbs"
-             id="journal-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      {% include components/ui/breadcrumbs.html %}
-    </section>
+    {% include pages/journal/breadcrumbs.html %}
   {% endif %}
   
   {% comment %} All other sections use individual panel wrapping {% endcomment %}

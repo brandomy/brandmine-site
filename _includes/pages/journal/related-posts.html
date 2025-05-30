@@ -6,7 +6,7 @@
     - limit: Number of related posts to show (default: 3)
   Dependencies:
     - assets/css/pages/journal/related-posts.scss
-    - _includes/pages/journal/entry-card.html
+    - _includes/components/cards/entry-card.html
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].journal %}
@@ -63,7 +63,7 @@
     
     <div class="related-posts__grid">
       {% for post in related_posts limit: limit %}
-        {% include pages/journal/entry-card.html post=post %}
+        {% include components/cards/entry-card.html item=post %}
       {% endfor %}
     </div>
     

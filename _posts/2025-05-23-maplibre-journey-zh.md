@@ -1,20 +1,23 @@
 ---
 layout: post
 title: "MapLibre：构建地理品牌可视化的旅程"
-date: 2025-05-30
+date: 2025-05-23
+permalink: /zh/journal/2025/05/23/maplibre-journey/
 author: randal_eastman
 excerpt: "我们对MapLibre的探索改变了品牌地理展示方式，创造了一种交互体验，揭示了金砖+市场中的模式和连接。"
 tags: [开发, 工具, 地图, brandmine, 可视化]
-image: /assets/images/journal/2025-05-30-maplibre-journey/hero.jpg
-image_caption: "交互式地图通过地理可视化使品牌故事生动起来"
+# Images (using collection-image semantic structure)
+images:
+  hero:
+    ext: "jpg"
+    caption: "交互式地图通过地理可视化使品牌故事生动起来"
 lang: zh
 reading_time: 8
 featured: true
 ref: maplibre-journey
 sections:
   - breadcrumbs
-  - header
-  - featured-image
+  - hero
   - content
   - author-profile
   - social-sharing

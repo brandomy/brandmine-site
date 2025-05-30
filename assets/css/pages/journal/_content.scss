@@ -6,16 +6,30 @@
 
 .journal-section--content {
   .panel--light {
-    background: white;
+    background: var(--primary-50); // Light teal background
+  }
+  
+  // Reduce excessive padding
+  .panel__content {
+    padding: var(--space-6) var(--space-4);
+    
+    @media (min-width: 768px) {
+      padding: var(--space-8) var(--space-8);
+    }
+    
+    @media (min-width: 992px) {
+      padding: var(--space-10) var(--space-10);
+    }
   }
 }
 
 .journal-content {
-  max-width: 65ch;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   line-height: var(--leading-relaxed);
   color: var(--neutral-800);
   font-size: var(--text-base);
+  text-align: left;
 
   @media (min-width: 768px) {
     font-size: var(--text-lg);
@@ -154,11 +168,12 @@
 }
 
 .post-content {
-  max-width: 65ch;
-  margin: 0 auto;
+  max-width: 100%; // Full width
+  margin: 0; // No margins
   line-height: var(--leading-relaxed);
   color: var(--neutral-800);
   font-size: var(--text-base);
+  text-align: left;
 
   @media (min-width: 768px) {
     font-size: var(--text-lg);

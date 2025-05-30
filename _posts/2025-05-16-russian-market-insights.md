@@ -1,12 +1,16 @@
 ---
 layout: post
 title: "Decoding Russian Brand Stories: Lessons from Our Market Research"
-date: 2025-06-15
+date: 2025-05-16
+permalink: /en/journal/2025/05/16/russian-market-insights/
 author: olya_eastman
 excerpt: "Six months of deep research into Russian consumer brands revealed patterns and cultural insights that transformed how we approach BRICS+ storytelling."
 tags: [market-research, russia, cultural-insights, branding, methodology]
-image: /assets/images/journal/2025-06-15-russian-market-insights/hero.jpg
-image_caption: "Russian brands carry deep cultural narratives that require careful interpretation"
+# Images (using collection-image semantic structure)
+images:
+  hero:
+    ext: "jpg"
+    caption: "Russian brands carry deep cultural narratives that require careful interpretation"
 lang: en
 reading_time: 6
 featured: false

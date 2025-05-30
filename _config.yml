@@ -15,7 +15,9 @@ markdown: kramdown
 permalink: pretty
 
 # Journal/Posts configuration
-permalink: /journal/:year/:month/:day/:title/
+# Note: Individual posts should define their own permalinks with language codes
+# e.g., permalink: /en/journal/2025/05/30/maplibre-journey/
+permalink: /:categories/:year/:month/:day/:title/
 # paginate: 10
 # paginate_path: "/journal/page:num/"
 # Note: Pagination disabled for multilingual journal - using custom pagination in JavaScript

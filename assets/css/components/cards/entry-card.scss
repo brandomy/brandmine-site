@@ -24,13 +24,9 @@
   // Image section
   &__image {
     position: relative;
-    aspect-ratio: 16/9;
+    aspect-ratio: 3/2; // Always use 3:2 to show full image
     overflow: hidden;
     background: var(--neutral-100);
-    
-    @media (min-width: 768px) {
-      aspect-ratio: 3/2;
-    }
   }
 
   &__image-element {
@@ -141,6 +137,11 @@
     flex-wrap: wrap;
     gap: var(--space-1);
     flex-grow: 1;
+    
+    .tag--small {
+      font-size: var(--text-xs) !important; // Ensure small size
+      padding: var(--space-1) var(--space-2) !important; // Minimal padding
+    }
   }
 
   &__read-more {

@@ -1,104 +1,122 @@
-<!-- _includes/pages/brand/identity.html -->
-{% assign t = site.data.translations[page.lang].brand %}
-{% assign tags_t = site.data.translations[page.lang].tags %}
+{% comment %}
+  Brand Identity Section
+  Displays: Brand name, tagline, founding info, basic meta
+  Supports: Both YAML and JSON data sources
+{% endcomment %}
 
-<section class="brand-section brand-section--identity" id="identity">
-  <div class="brand-section__container">
+{% assign brand = include.brand %}
+{% assign data_source = include.data_source | default: "curated" %}
+{% assign t = site.data.translations[brand.lang].brand %}
+{% assign tags_t = site.data.translations[brand.lang].tags %}
+
+{% comment %} Field mapping: YAML → JSON fallback {% endcomment %}
+{% assign brand_name = brand.title | default: brand.name %}
+{% assign brand_description = brand.description %}
+{% assign brand_slogan = brand.slogan %}
+{% assign founding_year = brand.founding_year | default: brand.founded %}
+{% assign website = brand.website %}
+
+<div class="panel panel--hero">
+  <div class="panel__content">
     <div class="brand-identity">
-      <!-- Logo and Hero Image -->
-      <div class="brand-identity__visuals">
-        {% comment %} Check if logo image exists in new structure {% endcomment %}
-        {% if page.images.logo %}
-          <div class="brand-identity__logo">
-            {% include helpers/brand-image.html
-              brand_id=page.ref
-              image_type="logo"
-              class="brand-identity__logo-image" %}
-          </div>
+      <div class="brand-identity__header">
+        <h1 id="heading-identity" class="brand-identity__name">{{ brand_name }}</h1>
+        {% if brand_slogan %}
+          <p class="brand-identity__slogan">{{ brand_slogan }}</p>
         {% endif %}
-
-        {% comment %} Check if hero image exists in new structure {% endcomment %}
-        {% if page.images.hero %}
-          <div class="brand-identity__hero">
-            {% include helpers/brand-image.html
-              brand_id=page.ref
-              image_type="hero"
-              loading="eager"
-              class="brand-identity__hero-image" %}
-          </div>
+        {% if brand_description %}
+          <p class="brand-identity__description">{{ brand_description }}</p>
+        {% endif %}
+        
+        {% comment %} Data source indicator {% endcomment %}
+        {% if data_source == "basic" %}
+          <span class="data-badge data-badge--basic">{{ site.data.translations[brand.lang].ui.basic_profile | default: "Basic Profile" }}</span>
+        {% endif %}
+      </div>
+      
+      <div class="brand-identity__meta">
+        {% if founding_year %}
+        <div class="meta-item">
+          <span class="meta-label">{{ t.founding_year | default: "Founded" }}:</span>
+          <span class="meta-value">{{ founding_year }}</span>
+        </div>
+        {% endif %}
+        
+        {% if brand.location %}
+        <div class="meta-item">
+          <span class="meta-label">{{ t.location | default: "Location" }}:</span>
+          <span class="meta-value">
+            {{ brand.location.city }}{% if brand.location.region %}, {{ brand.location.region }}{% endif %}
+          </span>
+        </div>
+        {% endif %}
+        
+        {% if website %}
+        <div class="meta-item">
+          <span class="meta-label">{{ t.website | default: "Website" }}:</span>
+          <a href="{{ website }}" target="_blank" class="meta-value meta-link">{{ website | remove: 'https://' | remove: 'http://' }}</a>
+        </div>
         {% endif %}
       </div>
 
-      <!-- Core Info -->
-      <div class="brand-identity__core">
-        <h1 class="brand-identity__title">
-          {% comment %} Use helper for consistent name display {% endcomment %}
-          {% include helpers/brand-name.html brand_id=page.ref fallback=page.title %}
-        </h1>
-
-        <div class="brand-identity__meta">
-          {% if page.founding_year %}
-            {% include components/brands/meta-item.html
-              label=t.founding_year
-              items=page.founding_year
-              linkable=false %}
-          {% endif %}
-
-          {% if page.website %}
-            <div class="brand-identity__website">
-              <span class="brand-identity__meta-label">{{ t.website }}:</span>
-              <a href="{{ page.website }}" target="_blank" rel="noopener" class="brand-identity__website-link">
-                {{ page.website }}
-              </a>
+      <!-- Taxonomy Tags - markets, sectors, attributes, signals -->
+      <div class="brand-identity__taxonomy">
+        <!-- Markets -->
+        {% if brand.markets and brand.markets.size > 0 %}
+          <div class="taxonomy-group">
+            <h3 class="taxonomy-heading">{{ tags_t.markets | default: "Markets" }}</h3>
+            <div class="taxonomy-tags">
+              {% for market in brand.markets %}
+                <span class="tag tag--market">
+                  {{ site.data.dimensions[brand.lang].markets[market] | default: market | replace: '-', ' ' | capitalize }}
+                </span>
+              {% endfor %}
             </div>
-          {% endif %}
-        </div>
-
-        {% if page.description %}
-          <div class="brand-identity__description">
-            <p>{{ page.description }}</p>
           </div>
         {% endif %}
 
-        <!-- Taxonomy Tags - reordered as requested: markets, sectors, attributes, signals -->
-        <div class="brand-identity__taxonomy">
-          <!-- Markets -->
-          {% if page.markets and page.markets.size > 0 %}
-            {% include components/brands/tag-list.html
-              tags=page.markets
-              dimension_type="markets"
-              heading=tags_t.markets
-              lang=page.lang %}
-          {% endif %}
+        <!-- Sectors -->
+        {% if brand.sectors and brand.sectors.size > 0 %}
+          <div class="taxonomy-group">
+            <h3 class="taxonomy-heading">{{ tags_t.sectors | default: "Sectors" }}</h3>
+            <div class="taxonomy-tags">
+              {% for sector in brand.sectors %}
+                <span class="tag tag--sector">
+                  {{ site.data.dimensions[brand.lang].sectors[sector] | default: sector | replace: '-', ' ' | capitalize }}
+                </span>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
 
-          <!-- Sectors -->
-          {% if page.sectors and page.sectors.size > 0 %}
-            {% include components/brands/tag-list.html
-              tags=page.sectors
-              dimension_type="sectors"
-              heading=tags_t.sectors
-              lang=page.lang %}
-          {% endif %}
+        <!-- Attributes -->
+        {% if brand.attributes and brand.attributes.size > 0 %}
+          <div class="taxonomy-group">
+            <h3 class="taxonomy-heading">{{ tags_t.attributes | default: "Attributes" }}</h3>
+            <div class="taxonomy-tags">
+              {% for attribute in brand.attributes %}
+                <span class="tag tag--attribute">
+                  {{ site.data.dimensions[brand.lang].attributes[attribute] | default: attribute | replace: '-', ' ' | capitalize }}
+                </span>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
 
-          <!-- Attributes -->
-          {% if page.attributes and page.attributes.size > 0 %}
-            {% include components/brands/tag-list.html
-              tags=page.attributes
-              dimension_type="attributes"
-              heading=tags_t.attributes
-              lang=page.lang %}
-          {% endif %}
-
-          <!-- Signals -->
-          {% if page.signals and page.signals.size > 0 %}
-            {% include components/brands/tag-list.html
-              tags=page.signals
-              dimension_type="signals"
-              heading=tags_t.signals
-              lang=page.lang %}
-          {% endif %}
-        </div>
+        <!-- Signals -->
+        {% if brand.signals and brand.signals.size > 0 %}
+          <div class="taxonomy-group">
+            <h3 class="taxonomy-heading">{{ tags_t.signals | default: "Signals" }}</h3>
+            <div class="taxonomy-tags">
+              {% for signal in brand.signals %}
+                <span class="tag tag--signal">
+                  {{ site.data.dimensions[brand.lang].signals[signal] | default: signal | replace: '-', ' ' | capitalize }}
+                </span>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
-</section>
+</div>

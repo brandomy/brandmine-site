@@ -93,6 +93,17 @@ Parameters:
 
       {% assign article_parts = page.title | split: "," %}
       {% assign breadcrumb_items = breadcrumb_items | push: article_parts %}
+      
+    {% when "post" %}
+      {% comment %} Journal post {% endcomment %}
+      {% assign journal_name = site.data.translations[current_lang].navigation.journal | default: "Journal" %}
+      {% assign journal_url = site.baseurl | append: "/" | append: current_lang | append: "/journal/" %}
+      {% assign journal_item = journal_name | append: "," | append: journal_url %}
+      {% assign journal_parts = journal_item | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: journal_parts %}
+
+      {% assign post_parts = page.title | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: post_parts %}
   {% endcase %}
 {% endif %}
 

@@ -1,0 +1,98 @@
+{% comment %}
+  Business Intelligence Section
+  Displays: Growth signals, export readiness, business opportunities
+  Supports: Both YAML and JSON data sources
+{% endcomment %}
+
+{% assign brand = include.brand %}
+{% assign data_source = include.data_source | default: "curated" %}
+{% assign t = site.data.translations[brand.lang].brand %}
+
+<div class="panel panel--accent-soft">
+  <div class="panel__content">
+    <h2 id="heading-business-intelligence" class="panel__heading-secondary">
+      {{ t.strategic_position | default: "Business Opportunities" }}
+    </h2>
+    
+    <div class="business-intelligence">
+      {% comment %} Export Readiness {% endcomment %}
+      {% if brand.export_ready or brand.export_markets %}
+      <div class="business-signal business-signal--export">
+        <h3 class="business-signal__title">
+          {{ t.export_ready | default: "Export Ready" }}
+        </h3>
+        {% if brand.export_markets and brand.export_markets.size > 0 %}
+          <p class="business-signal__description">
+            {{ t.currently_exporting | default: "Currently exporting to" }}:
+            {% for market_code in brand.export_markets %}
+              {% assign market_name = site.data.countries.countries[market_code].name[brand.lang] | default: market_code %}
+              {{ market_name }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </p>
+        {% endif %}
+      </div>
+      {% endif %}
+      
+      {% comment %} Growth Signals {% endcomment %}
+      {% if brand.signals and brand.signals.size > 0 %}
+      <div class="growth-signals">
+        <h3 class="growth-signals__title">
+          {{ site.data.translations[brand.lang].tags.signals | default: "Growth Signals" }}
+        </h3>
+
+        <div class="growth-signals__list">
+          {% for signal in brand.signals %}
+            <span class="tag tag--signal">
+              {{ site.data.translations[brand.lang].signals[signal] | default: signal | replace: '-', ' ' | capitalize }}
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      
+      {% comment %} Distribution Models {% endcomment %}
+      {% if brand.distribution_models and brand.distribution_models.size > 0 %}
+      <div class="distribution-info">
+        <h3 class="distribution-info__title">
+          {{ t.distribution_models | default: "Distribution Models" }}
+        </h3>
+        <div class="distribution-info__list">
+          {% for model in brand.distribution_models %}
+            <span class="tag tag--distribution">
+              {{ site.data.translations[brand.lang].distribution_models[model] | default: model | replace: '-', ' ' | capitalize }}
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% comment %} Certifications if available {% endcomment %}
+      {% if brand.certifications and brand.certifications.size > 0 %}
+        <div class="certifications-info">
+          <h3 class="certifications-info__title">
+            {{ t.certifications | default: "Certifications" }}
+          </h3>
+          <div class="certifications-list">
+            {% for cert in brand.certifications %}
+              <div class="certification-item">
+                <span class="certification-name">{{ cert.name }}</span>
+                {% if cert.year %}
+                  <span class="certification-year">({{ cert.year }})</span>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% comment %} Contact CTA {% endcomment %}
+      <div class="business-intelligence__cta">
+        <h3>{{ t.partnerships | default: "Partnership Opportunities" }}</h3>
+        <p>{{ t.seeking | default: "Interested in exploring business opportunities with this brand?" }}</p>
+        <a href="{{ site.baseurl }}/{{ brand.lang }}/contact/?brand={{ include.brand_ref }}" class="btn btn-primary">
+          {{ site.data.translations[brand.lang].buttons.get_in_touch | default: "Get in Touch" }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
