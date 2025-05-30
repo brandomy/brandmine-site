@@ -1,75 +1,72 @@
 ---
 layout: founder-profile
-ref: ru-alexei-sokolov
+ref: ru-alexei-sokolov  # Global founder ID (country-firstname-lastname format)
 name: "Alexei Sokolov"
-title: "Alexei Sokolov - TeaTime's Visionary"
-date: 2025-05-02
-lang: en
+title: "Alexei Sokolov - TeaTime's Visionary"  # e.g., "Alexei Sokolov - Moscow's Tea Master"
+position: "CEO & Tea Master"  # Their primary role/title
+brief_bio: "Tea blending master who revolutionized Russia's premium tea market with unique botanical infusions."
+date: 2025-05-02  # Date profile was created or updated
+lang: en  # Language of this file
 permalink: /en/founders/ru-alexei-sokolov/
 
 # JSON Generation Control
-generate_json: true
-sample_data: true
+generate_json: true  # Set to true to include in founders.json output
+sample_data: true    # Flag for sample/test data
 
-brands: [ru-teatime]
-featured: true
-generation: first
-role: "CEO & Tea Master"
+# === CORE INFORMATION ===
+# Basic Information
+brands: ["ru-teatime"]  # Array of associated brand slugs
+featured: true  # Is this a featured founder?
+generation: "first"  # Options: "first", "second", "transition"
+company: "TeaTime"  # Primary company association
 
-# Location
-country_code: ru
-region: "Moscow"
-city: "Moscow"
+# Location Information
+location:
+  country: "ru"      # ISO country code
+  region: "Moscow"   # Optional: specific region or state
+  city: "Moscow"
 
-# Markets and Cross-border
-markets: [ru, gb, fr, de, jp, sg]
-cross_border_expertise: true
-languages: [ru, en, fr]
+# International Scope
+markets: ["ru", "gb", "fr", "de", "jp", "sg"]  # Array of country codes where they operate
+cross_border_expertise: true  # Has international experience?
+languages: ["ru", "en", "fr"]  # Languages they speak (ISO 639-1 codes)
 
-# Images (Semantic structure)
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "portrait"
+    name: "portrait"     # Becomes founder-portrait-400w.jpg
     ext: "jpg"
   headshot:
-    name: "headshot"
-    ext: "jpg"
-  action:
-    name: "action"
+    name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# Social Media
+# === SOCIAL MEDIA ===
 social:
-  instagram: teatime_russia
-  linkedin: alexei-sokolov-teatime
+  instagram: "teatime_russia"  # Username only
+  linkedin: "alexei-sokolov-teatime"   # Username only
+  telegram: ""   # Username only
+  twitter: ""    # Username only
+  wechat: ""     # Username only
+  vk: ""         # Username only (for Russian founders)
 
-# Professional Info
-expertise:
-  - tea blending
-  - beverage innovation
-  - cultural ambassador
-  - brand storytelling
+# Professional Information
+expertise: ["tea blending", "beverage innovation", "cultural ambassador", "brand storytelling"]  # Max 4 items
+achievements: ["Featured in Harrods London", "23 countries export presence", "30% annual growth rate"]
 
-achievements:
-  - "Featured in Harrods London"
-  - "23 countries export presence"
-  - "30% annual growth rate"
-
-brief_bio: "Transformed student tea ceremonies into Russia's most successful artisanal tea export with presence in 23 countries."
-
-# SEO
+# === SEO ===
 description: "Alexei Sokolov profile - Russian tea entrepreneur who built TeaTime into an international artisanal tea brand with 23-country presence."
-keywords: [alexei sokolov, russia, teatime, tea, artisanal beverages, harrods, cultural ambassador]
+keywords: ["alexei sokolov", "russia", "teatime", "tea", "artisanal beverages", "harrods", "cultural ambassador"]
 
-# Section Configuration - Linear layout (no sidebar)
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+# Controls which sections appear and in what order
+# Must match section names in founder includes
 sections:
-  - breadcrumbs
-  - hero
-  - professional-details
-  - content
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+  - hero                  # Founder hero panel with name, position, key info
+  - content              # Main founder story content (markdown)
+  - professional-details # Role, expertise, achievements
+  - associated-brands    # Brands associated with this founder
+  - connections         # Related founders and insights
 ---
 
 # Alexei Sokolov: Bridging Russian Tea Traditions with Global Markets

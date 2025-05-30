@@ -1,53 +1,112 @@
 ---
-# NEW BRAND FULL TEMPLATE
 layout: brand-profile
-ref: br-sojourn-hotels  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
-title: "Сожурн Бутик-Отели"  # Display name, fallback if JSON lookup fails
+ref: br-sojourn-hotels
+sample_data: true
+title: "Сожурн Бутик-Отели"
 description: "Коллекция камерных бутик-отелей, подчеркивающих разнообразие бразильских ландшафтов через устойчивую роскошь и аутентичный местный опыт."
 slogan: "Познай Бразилию, Близко"
 lang: ru
-permalink: /ru/brands/br-sojourn-hotels/  # Simplified permalink without country code
+permalink: /ru/brands/br-sojourn-hotels/
+generate_json: true
 
-# Basic Information
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info (replaces hero)
+  - founder-narrative     # Founder story and journey
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
+  - location-intelligence # Map and geographic context
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 founding_year: 2012
 website: "https://sojournhotels.com.br"
-founders: ["br-isabela-mendez"]  # Array of founder keys that match founder_names.json entries
-founder_led: true  # Boolean: Is the founder still actively leading?
+email: "contact@sojournhotels.com.br"
+founders: ["br-isabela-mendez"]
+founder_led: true
 
 # Taxonomy (all using kebab-case)
-sectors: ["hotels-resorts"]  # Required: At least one sector from taxonomy
-markets: ["brazil"]  # Required: At least one market from taxonomy
-attributes: ["founder-led", "sustainability-pioneer"]  # Optional: Brand attributes from taxonomy
-signals: ["franchise-ready"]  # Optional: Business signals from taxonomy
+sectors: ["hotels-resorts"]
+markets: ["brazil"]
+attributes: ["founder-led", "sustainability-pioneer"]
+signals: ["franchise-ready"]
 
 # Display Settings
 featured: true
-featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
+featured_level: 2
 
-# Page sections
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
-  - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
-  - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
-  - connections          # Related brands and insights
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: -22.9068
+  lng: -43.1729
+  city: "Рио-де-Жанейро"
+  region: "Несколько регионов"
+  country: "br"
 
-# Location (flat structure for easier data handling)
-location_lat: -22.9068  # Latitude coordinate
-location_lng: -43.1729  # Longitude coordinate
-location_city: "Рио-де-Жанейро"  # City name (translatable)
-location_region: "Несколько регионов"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"
+    ext: "png"
+  hero:
+    name: "hotel-exterior"
+    ext: "jpg"
+  founder:
+    name: "portrait"
+    ext: "jpg"
 
-# Social media presence (do not translate URLs)
-facebook: "https://facebook.com/sojournhotelsbr"
-instagram: "https://instagram.com/sojournhotels"
+# === SOCIAL MEDIA ===
+social_media:
+  facebook: "sojournhotelsbr"
+  instagram: "sojournhotels"
+  linkedin: "sojourn-hotels"
+  pinterest: ""
+  telegram: ""
+  twitter: "sojournhotels"
+  vk: ""
+  youtube: "sojournhotels"
+
+# === BUSINESS INFO ===
+export_ready: false
+export_markets: []
+distribution_models: ["franchise"]
+
+# === TIMELINE ===
+timeline:
+  - year: 2012
+    event: "Открытие первого отеля в Парати"
+  - year: 2015
+    event: "Расширение в Баию"
+  - year: 2018
+    event: "Достижение 5 отелей"
+  - year: 2023
+    event: "Запуск франшизной программы"
+
+# === CERTIFICATIONS ===
+certifications:
+  - name: "Сертификация устойчивого туризма"
+    year: 2016
+  - name: "Премия зелёного туризма"
+    year: 2020
+
+# === AWARDS (Optional - for featured brands) ===
+awards:
+  - name: "Лучший бутик-отель Бразилии"
+    year: 2022
+  - name: "Премия лидера эко-туризма"
+    year: 2023
+
+# === GALLERY ===
+gallery:
+  - name: "property-paraty"
+    ext: "jpg"
+    caption: "Флагманский отель в Парати"
+  - name: "property-bahia"
+    ext: "jpg"
+    caption: "Прибрежный курорт в Баии"
+  - name: "property-minas"
+    ext: "jpg"
+    caption: "Горный курорт в Минас-Жерайс"
 linkedin: "https://linkedin.com/company/sojourn-hotels"
 pinterest: ""
 redbook: ""

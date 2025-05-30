@@ -1,75 +1,72 @@
 ---
 layout: founder-profile
-ref: ru-ivan-petrov
+ref: ru-ivan-petrov  # Global founder ID (country-firstname-lastname format)
 name: "Ivan Petrov"
-title: "Ivan Petrov - Altai Honey Pioneer"
-date: 2025-05-03
-lang: en
+title: "Ivan Petrov - Altai Honey Pioneer"  # e.g., "Alexei Sokolov - Moscow's Tea Master"
+position: "Founder & Master Beekeeper"  # Their primary role/title
+brief_bio: "Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
+date: 2025-05-03  # Date profile was created or updated
+lang: en  # Language of this file
 permalink: /en/founders/ru-ivan-petrov/
 
 # JSON Generation Control
-generate_json: true
-sample_data: true
+generate_json: true  # Set to true to include in founders.json output
+sample_data: true    # Flag for sample/test data
 
-brands: [ru-altai-honey]
-featured: true
-generation: first
-role: "Founder & Master Beekeeper"
+# === CORE INFORMATION ===
+# Basic Information
+brands: ["ru-altai-honey"]  # Array of associated brand slugs
+featured: true  # Is this a featured founder?
+generation: "first"  # Options: "first", "second", "transition"
+company: "Altai Honey"  # Primary company association
 
-# Location
-country_code: ru
-region: "Altai Republic"
-city: "Belokurikha"
+# Location Information
+location:
+  country: "ru"      # ISO country code
+  region: "Altai Republic"   # Optional: specific region or state
+  city: "Belokurikha"
 
-# Markets and Cross-border
-markets: [ru, cn, kz]
-cross_border_expertise: false
-languages: ["ru", "en"]
+# International Scope
+markets: ["ru", "cn", "kz"]  # Array of country codes where they operate
+cross_border_expertise: false  # Has international experience?
+languages: ["ru", "en"]  # Languages they speak (ISO 639-1 codes)
 
-# Images (Semantic structure)
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "portrait"
+    name: "portrait"     # Becomes founder-portrait-400w.jpg
     ext: "jpg"
   headshot:
-    name: "headshot"
-    ext: "jpg"
-  action:
-    name: "action"
+    name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# Social Media
+# === SOCIAL MEDIA ===
 social:
-  instagram: ivan_petrov_honey
-  linkedin: ivan-petrov-12345
+  instagram: "ivan_petrov_honey"  # Username only
+  linkedin: "ivan-petrov-12345"   # Username only
+  telegram: ""   # Username only
+  twitter: ""    # Username only
+  wechat: ""     # Username only
+  vk: ""         # Username only (for Russian founders)
 
-# Professional Info
-expertise:
-  - beekeeping
-  - organic agriculture
-  - sustainable harvesting
-  - community development
+# Professional Information
+expertise: ["beekeeping", "organic agriculture", "sustainable harvesting", "community development"]  # Max 4 items
+achievements: ["International organic certification", "Preserved traditional harvesting methods", "Community empowerment model"]
 
-achievements:
-  - "International organic certification"
-  - "Preserved traditional harvesting methods"
-  - "Community empowerment model"
-
-brief_bio: "Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
-
-# SEO
+# === SEO ===
 description: "Ivan Petrov profile - Third-generation Altai beekeeper preserving traditional honey harvesting while building sustainable community model."
-keywords: [ivan petrov, altai honey, beekeeping, russia, organic certification, traditional harvesting]
+keywords: ["ivan petrov", "altai honey", "beekeeping", "russia", "organic certification", "traditional harvesting"]
 
-# Section Configuration - Linear layout (no sidebar)
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+# Controls which sections appear and in what order
+# Must match section names in founder includes
 sections:
-  - breadcrumbs
-  - hero
-  - professional-details
-  - content
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+  - hero                  # Founder hero panel with name, position, key info
+  - content              # Main founder story content (markdown)
+  - professional-details # Role, expertise, achievements
+  - associated-brands    # Brands associated with this founder
+  - connections         # Related founders and insights
 ---
 
 # Ivan Petrov: The Honey Pioneer of Altai

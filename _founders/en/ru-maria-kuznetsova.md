@@ -1,75 +1,72 @@
 ---
 layout: founder-profile
-ref: ru-maria-kuznetsova
+ref: ru-maria-kuznetsova  # Global founder ID (country-firstname-lastname format)
 name: "Maria Kuznetsova"
-title: "Maria Kuznetsova - Preserving Russian Flavor Heritage"
-date: 2025-05-04
-lang: en
+title: "Maria Kuznetsova - Preserving Russian Flavor Heritage"  # e.g., "Alexei Sokolov - Moscow's Tea Master"
+position: "Founder & Culinary Director"  # Their primary role/title
+brief_bio: "Former chef rediscovering and reimagining Russia's rich condiment traditions through artisanal production and cultural preservation."
+date: 2025-05-04  # Date profile was created or updated
+lang: en  # Language of this file
 permalink: /en/founders/ru-maria-kuznetsova/
 
 # JSON Generation Control
-generate_json: true
-sample_data: true
+generate_json: true  # Set to true to include in founders.json output
+sample_data: true    # Flag for sample/test data
 
-brands: [ru-seven-spices]
-featured: true
-generation: first
-role: "Founder & Culinary Director"
+# === CORE INFORMATION ===
+# Basic Information
+brands: ["ru-seven-spices"]  # Array of associated brand slugs
+featured: true  # Is this a featured founder?
+generation: "first"  # Options: "first", "second", "transition"
+company: "Seven Spices"  # Primary company association
 
-# Location
-country_code: ru
-region: "Tatarstan"
-city: "Kazan"
+# Location Information
+location:
+  country: "ru"      # ISO country code
+  region: "Tatarstan"   # Optional: specific region or state
+  city: "Kazan"
 
-# Markets and Cross-border
-markets: [ru, eu]
-cross_border_expertise: true
-languages: ["ru", "en", "tt"]
+# International Scope
+markets: ["ru", "eu"]  # Array of country codes where they operate
+cross_border_expertise: true  # Has international experience?
+languages: ["ru", "en", "tt"]  # Languages they speak (ISO 639-1 codes)
 
-# Images (Semantic structure)
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "portrait"
+    name: "portrait"     # Becomes founder-portrait-400w.jpg
     ext: "jpg"
   headshot:
-    name: "headshot"
-    ext: "jpg"
-  action:
-    name: "action"
+    name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# Social Media
+# === SOCIAL MEDIA ===
 social:
-  instagram: 7spices_russia
-  linkedin: maria-kuznetsova-7spices
+  instagram: "7spices_russia"  # Username only
+  linkedin: "maria-kuznetsova-7spices"   # Username only
+  telegram: ""   # Username only
+  twitter: ""    # Username only
+  wechat: ""     # Username only
+  vk: ""         # Username only (for Russian founders)
 
-# Professional Info
-expertise:
-  - culinary arts
-  - traditional preservation techniques
-  - sustainable sourcing
-  - food artisan
+# Professional Information
+expertise: ["culinary arts", "traditional preservation techniques", "sustainable sourcing", "food artisan"]  # Max 4 items
+achievements: ["Gold at International Condiment Exhibition", "Network of 40 family farm suppliers", "Food archaeology research department"]
 
-achievements:
-  - "Gold at International Condiment Exhibition"
-  - "Network of 40 family farm suppliers"
-  - "Food archaeology research department"
-
-brief_bio: "Former chef rediscovering and reimagining Russia's rich condiment traditions through artisanal production and cultural preservation."
-
-# SEO
+# === SEO ===
 description: "Maria Kuznetsova profile - Russian culinary entrepreneur preserving traditional flavor heritage through artisanal condiment production and food archaeology."
-keywords: [maria kuznetsova, seven spices, russian cuisine, condiments, culinary heritage, food archaeology]
+keywords: ["maria kuznetsova", "seven spices", "russian cuisine", "condiments", "culinary heritage", "food archaeology"]
 
-# Section Configuration - Linear layout (no sidebar)
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+# Controls which sections appear and in what order
+# Must match section names in founder includes
 sections:
-  - breadcrumbs
-  - hero
-  - professional-details
-  - content
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+  - hero                  # Founder hero panel with name, position, key info
+  - content              # Main founder story content (markdown)
+  - professional-details # Role, expertise, achievements
+  - associated-brands    # Brands associated with this founder
+  - connections         # Related founders and insights
 ---
 
 # Maria Kuznetsova: Reviving Russia's Culinary Heritage

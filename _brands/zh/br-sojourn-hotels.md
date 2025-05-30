@@ -10,19 +10,16 @@ permalink: /zh/brands/br-sojourn-hotels/
 generate_json: true
 
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
+  - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
   - connections          # Related brands and insights
 
 founding_year: 2012
 website: "https://sojournhotels.com.br"
+email: "contact@sojournhotels.com.br"
 founders: ["br-isabela-mendez"]
 founder_led: true
 
@@ -42,20 +39,62 @@ location:
   country: "br"
 
 images:
-  logo: { name: "color", ext: "png" }
-  hero: { name: "storefront", ext: "jpg" }
-  founder: { name: "portrait", ext: "jpg" }
+  logo:
+    name: "color"
+    ext: "png"
+  hero:
+    name: "hotel-exterior"
+    ext: "jpg"
+  founder:
+    name: "portrait"
+    ext: "jpg"
 
 social_media:
-  facebook: "https://facebook.com/sojournhotelsbr"
-  instagram: "https://instagram.com/sojournhotels"
-  linkedin: "https://linkedin.com/company/sojourn-hotels"
-  twitter: "https://twitter.com/sojournhotels"
-  youtube: "https://youtube.com/c/sojournhotels"
+  facebook: "sojournhotelsbr"
+  instagram: "sojournhotels"
+  linkedin: "sojourn-hotels"
+  pinterest: ""
+  telegram: ""
+  twitter: "sojournhotels"
+  vk: ""
+  youtube: "sojournhotels"
 
 export_ready: false
 export_markets: []
-distribution_models: [franchise]
+distribution_models: ["franchise"]
+
+timeline:
+  - year: 2012
+    event: "在帕拉蒂开设第一家精品酒店"
+  - year: 2015
+    event: "扩张到巴伊亚州"
+  - year: 2018
+    event: "达到5家酒店的里程碑"
+  - year: 2023
+    event: "推出特许经营计划"
+
+certifications:
+  - name: "可持续旅游认证"
+    year: 2016
+  - name: "绿色旅游奖"
+    year: 2020
+
+awards:
+  - name: "巴西最佳精品酒店品牌"
+    year: 2022
+  - name: "环保旅游领袖奖"
+    year: 2023
+
+gallery:
+  - name: "property-paraty"
+    ext: "jpg"
+    caption: "帕拉蒂旗舰酒店"
+  - name: "property-bahia"
+    ext: "jpg"
+    caption: "巴伊亚海滨度假酒店"
+  - name: "property-minas"
+    ext: "jpg"
+    caption: "米纳斯吉拉斯山区酒店"
 ---
 
 ## 关于索茹精品酒店

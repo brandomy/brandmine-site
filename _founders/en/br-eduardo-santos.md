@@ -1,75 +1,72 @@
 ---
 layout: founder-profile
-ref: br-eduardo-santos
+ref: br-eduardo-santos  # Global founder ID (country-firstname-lastname format)
 name: "Eduardo Santos"
-title: "Eduardo Santos - Brazil's Organic Pioneer"
-date: 2025-05-01
-lang: en
+title: "Eduardo Santos - Brazil's Organic Pioneer"  # e.g., "Alexei Sokolov - Moscow's Tea Master"
+position: "Founder & Chief Agriculturalist"  # Their primary role/title
+brief_bio: "Third-generation farmer transforming Brazil's Atlantic Forest agriculture through organic practices and supporting 28 family farms."
+date: 2025-05-01  # Date profile was created or updated
+lang: en  # Language of this file
 permalink: /en/founders/br-eduardo-santos/
 
 # JSON Generation Control
-generate_json: true
-sample_data: true
+generate_json: true  # Set to true to include in founders.json output
+sample_data: true    # Flag for sample/test data
 
-brands: [br-serra-verde]
-featured: true
-generation: "third"
-role: "Founder & Chief Agriculturalist"
+# === CORE INFORMATION ===
+# Basic Information
+brands: ["br-serra-verde"]  # Array of associated brand slugs
+featured: true  # Is this a featured founder?
+generation: "third"  # Options: "first", "second", "transition"
+company: "Serra Verde Organics"  # Primary company association
 
-# Location
-country_code: br
-region: "Minas Gerais"
-city: "Gonçalves"
+# Location Information
+location:
+  country: "br"      # ISO country code
+  region: "Minas Gerais"   # Optional: specific region or state
+  city: "Gonçalves"
 
-# Markets and Cross-border
-markets: [br, pt, es]
-cross_border_expertise: true
-languages: ["pt", "es", "en"]
+# International Scope
+markets: ["br", "pt", "es"]  # Array of country codes where they operate
+cross_border_expertise: true  # Has international experience?
+languages: ["pt", "es", "en"]  # Languages they speak (ISO 639-1 codes)
 
-# Images (Semantic structure)
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "portrait"
+    name: "portrait"     # Becomes founder-portrait-400w.jpg
     ext: "jpg"
   headshot:
-    name: "headshot"
-    ext: "jpg"
-  action:
-    name: "action"
+    name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# Social Media
+# === SOCIAL MEDIA ===
 social:
-  instagram: serraverde_organics
-  linkedin: eduardo-santos-serraverde
+  instagram: "serraverde_organics"  # Username only
+  linkedin: "eduardo-santos-serraverde"   # Username only
+  telegram: ""   # Username only
+  twitter: ""    # Username only
+  wechat: ""     # Username only
+  vk: ""         # Username only (for Russian founders)
 
-# Professional Info
-expertise:
-  - organic agriculture
-  - sustainable farming
-  - agroforestry
-  - export development
+# Professional Information
+expertise: ["organic agriculture", "sustainable farming", "agroforestry", "export development"]  # Max 4 items
+achievements: ["Restored 500+ hectares of Atlantic Forest", "Network of 28 organic family farms", "International distribution in EU markets"]
 
-achievements:
-  - "Restored 500+ hectares of Atlantic Forest"
-  - "Network of 28 organic family farms"
-  - "International distribution in EU markets"
-
-brief_bio: "Third-generation farmer transforming Brazil's Atlantic Forest agriculture through organic practices and supporting 28 family farms."
-
-# SEO
+# === SEO ===
 description: "Eduardo Santos profile - Brazilian organic farming pioneer transforming Atlantic Forest agriculture through sustainable practices and supporting family farms."
-keywords: [eduardo santos, brazil, organic farming, serra verde, atlantic forest, sustainable agriculture]
+keywords: ["eduardo santos", "brazil", "organic farming", "serra verde", "atlantic forest", "sustainable agriculture"]
 
-# Section Configuration - Linear layout (no sidebar)
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+# Controls which sections appear and in what order
+# Must match section names in founder includes
 sections:
-  - breadcrumbs
-  - hero
-  - professional-details
-  - content
-  - associated-brands
-  - expertise-cloud
-  - related-insights
+  - hero                  # Founder hero panel with name, position, key info
+  - content              # Main founder story content (markdown)
+  - professional-details # Role, expertise, achievements
+  - associated-brands    # Brands associated with this founder
+  - connections         # Related founders and insights
 ---
 
 # Eduardo Santos: Transforming Brazil's Atlantic Forest Agriculture

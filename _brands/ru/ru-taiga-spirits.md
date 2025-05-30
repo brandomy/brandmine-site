@@ -1,49 +1,47 @@
 ---
-# NEW BRAND FULL TEMPLATE
 layout: brand-profile
-ref: ru-taiga-spirits  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
-title: "Тайга Спиритс"  # Display name, fallback if JSON lookup fails
+ref: ru-taiga-spirits
+sample_data: true
+title: "Тайга Спиритс"
 description: "Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов."
 slogan: "Дух Дикой Природы"
 lang: ru
-permalink: /ru/brands/ru-taiga-spirits/  # Simplified permalink without country code
+permalink: /ru/brands/ru-taiga-spirits/
+generate_json: true
 
-# Basic Information
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info (replaces hero)
+  - founder-narrative     # Founder story and journey
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
+  - location-intelligence # Map and geographic context
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 founding_year: 2014
 website: "https://taigaspirits.ru"
-founders: ["ru-nikolai-volkov"]  # Array of founder keys that match founder_names.json entries
-founder_led: true  # Boolean: Is the founder still actively leading?
+email: "contact@taigaspirits.ru"
+founders: ["ru-nikolai-volkov"]
+founder_led: true
 
 # Taxonomy (all using kebab-case)
-sectors: ["artisanal-spirits"]  # Required: At least one sector from taxonomy
-markets: ["russia"]  # Required: At least one market from taxonomy
-attributes: ["founder-led", "artisanal-excellence"]  # Optional: Brand attributes from taxonomy
-signals: ["export-ready"]  # Optional: Business signals from taxonomy
+sectors: ["artisanal-spirits"]
+markets: ["russia"]
+attributes: ["founder-led", "artisanal-excellence"]
+signals: ["export-ready"]
 
 # Display Settings
 featured: true
-featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
+featured_level: 2
 
-# Page sections
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
-  - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
-  - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
-  - connections          # Related brands and insights
-
-# Location (flat structure for easier data handling)
-location_lat: 51.8561  # Latitude coordinate
-location_lng: 104.8625  # Longitude coordinate
-location_city: "Листвянка"  # City name (translatable)
-location_region: "Иркутская область"  # Region/state/province (translatable, optional)
-location_country: "ru"  # ISO country code
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: 51.8561
+  lng: 104.8625
+  city: "Листвянка"
+  region: "Иркутская область"
+  country: "ru"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -57,24 +55,21 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
     
-# Social media presence (do not translate URLs)
-facebook: "https://facebook.com/taigaspirits"
-instagram: "https://instagram.com/taiga_spirits"
-linkedin: ""
-pinterest: ""
-redbook: ""
-telegram: "https://t.me/taigaspirits_official"
-tiktok: ""
-twitter: ""
-vk: "https://vk.com/taigaspirits"
-weibo: ""
-wechat: ""
-youtube: "https://youtube.com/c/taigaspirits"
+# === SOCIAL MEDIA ===
+social_media:
+  facebook: "taigaspirits"
+  instagram: "taiga_spirits"
+  linkedin: ""
+  pinterest: ""
+  telegram: "taigaspirits_official"
+  twitter: ""
+  vk: "taigaspirits"
+  youtube: "taigaspirits"
 
-# International presence
+# === BUSINESS INFO ===
 export_ready: true
-export_markets: [cn, mn, kz, de]  # Country codes, do not translate
-distribution_models: [direct-export, distributors]  # Do not translate codes
+export_markets: ["cn", "mn", "kz", "de"]
+distribution_models: ["direct-export", "distributors"]
 
 # Timeline milestones (translate event descriptions only)
 timeline:
@@ -105,16 +100,17 @@ awards:
   - name: "Берлинский международный конкурс спиртных напитков - Дистиллерия года в России"  # Translate name
     year: 2022  # Do not translate year
 
-# Gallery captions (translate captions only)
+# === GALLERY ===
 gallery:
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-bottles.jpg"  # Do not translate path
-    caption: "Фирменная коллекция Тайга Спиритс с этикетками с ручной иллюстрацией ботанических ингредиентов"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-distillation.jpg"  # Do not translate path
-    caption: "Традиционные медные перегонные кубы используются для малосерийной дистилляции"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-foraging.jpg"  # Do not translate path
-    caption: "Основатель Николай Волков собирает дикорастущие растения в тайге"  # Translate caption
-  - image: "/assets/images/brands/ru-taiga-spirits/originals/gallery-laboratory.jpg"  # Do not translate path
-    caption: "Ботаническая лаборатория, где тестируются ингредиенты и разрабатываются рецепты"  # Translate caption
+  - name: "distillery-interior"
+    ext: "jpg"
+    caption: "Современное оборудование для дистилляции"
+  - name: "botanical-lab"
+    ext: "jpg"
+    caption: "Ботаническая лаборатория"
+  - name: "product-line"
+    ext: "jpg"
+    caption: "Продуктовая линейка"
 ---
 
 ## О бренде Тайга Спиритс

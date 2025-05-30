@@ -4,24 +4,22 @@ ref: ru-teatime
 sample_data: true
 title: "TeaTime"
 description: "莫斯科的高级茶馆，在现代环境中融合传统俄罗斯元素，提供手工调配的茶饮和独特的茶道体验。"
+slogan: "传统与现代的完美融合"
 lang: zh
 permalink: /zh/brands/ru-teatime/
 generate_json: true
 
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
+  - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
   - connections          # Related brands and insights
 
 founding_year: 1998
 website: "https://teatime.ru"
+email: "contact@teatime.ru"
 founders: ["ru-alexei-sokolov"]
 founder_led: true
 
@@ -41,9 +39,62 @@ location:
   country: "ru"
 
 images:
-  logo: { name: "color", ext: "png" }
-  hero: { name: "storefront", ext: "jpg" }
-  founder: { name: "portrait", ext: "jpg" }
+  logo:
+    name: "color"
+    ext: "png"
+  hero:
+    name: "tearoom-interior"
+    ext: "jpg"
+  founder:
+    name: "portrait"
+    ext: "jpg"
+
+social_media:
+  facebook: "teatimeru"
+  instagram: "teatime_moscow"
+  linkedin: ""
+  pinterest: ""
+  telegram: "teatime_official"
+  twitter: ""
+  vk: "teatime_ru"
+  youtube: ""
+
+export_ready: true
+export_markets: ["eu", "cn"]
+distribution_models: ["retail", "wholesale"]
+
+timeline:
+  - year: 1998
+    event: "在莫斯科开设首家茶馆"
+  - year: 2005
+    event: "推出独家茶叶混合系列"
+  - year: 2015
+    event: "开始出口到欧洲市场"
+  - year: 2022
+    event: "在莫斯科开设第三家茶馆"
+
+certifications:
+  - name: "国际茶叶质量认证"
+    year: 2010
+  - name: "有机认证"
+    year: 2018
+
+awards:
+  - name: "俄罗斯最佳茶品牌"
+    year: 2020
+  - name: "莫斯科餐饮优秀奖"
+    year: 2023
+
+gallery:
+  - name: "tearoom-main"
+    ext: "jpg"
+    caption: "主茶室内部"
+  - name: "tea-ceremony"
+    ext: "jpg"
+    caption: "传统茶道体验"
+  - name: "product-display"
+    ext: "jpg"
+    caption: "特色茶叶展示"
 ---
 
 ## 关于 TeaTime

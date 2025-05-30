@@ -4,24 +4,22 @@ ref: br-serra-verde
 sample_data: true
 title: "塞拉维德有机"
 description: "家族经营的有机食品生产商，专注于巴西大西洋森林地区的果酱、蜂蜜和特色咖啡。"
+slogan: "从森林到餐桌"
 lang: zh
 permalink: /zh/brands/br-serra-verde/
 generate_json: true
 
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
+  - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
   - connections          # Related brands and insights
 
 founding_year: 1986
 website: "https://serraverde.com.br"
+email: "contact@serraverde.com.br"
 founders: ["br-eduardo-santos"]
 founder_led: true
 
@@ -41,14 +39,58 @@ location:
   country: "br"
 
 images:
-  logo: { name: "color", ext: "png" }
-  hero: { name: "storefront", ext: "jpg" }
-  founder: { name: "portrait", ext: "jpg" }
+  logo:
+    name: "color"
+    ext: "png"
+  hero:
+    name: "farm-view"
+    ext: "jpg"
+  founder:
+    name: "portrait"
+    ext: "jpg"
+
+social_media:
+  facebook: ""
+  instagram: "serraverde_organics"
+  linkedin: ""
+  pinterest: ""
+  telegram: ""
+  twitter: ""
+  vk: ""
+  youtube: ""
+
+export_ready: true
+export_markets: ["pt", "es"]
+distribution_models: ["direct-export", "distributors"]
+
+timeline:
+  - year: 1986
+    event: "公司成立"
+  - year: 2020
+    event: "获得有机认证"
+
+certifications:
+  - name: "有机认证"
+    year: 2017
+  - name: "公平贸易认证"
+    year: 2019
+
+awards:
+  - name: "巴西可持续农业奖"
+    year: 2022
+  - name: "米纳斯吉拉斯州最佳有机生产商"
+    year: 2023
 
 gallery:
   - name: "location-pastoral"
     ext: "jpg"
     caption: "塞拉维德起伏的山丘景观"
+  - name: "production-facility"
+    ext: "jpg"
+    caption: "现代化生产设施"
+  - name: "product-range"
+    ext: "jpg"
+    caption: "完整的产品系列"
 ---
 
 ## 关于塞拉维德有机

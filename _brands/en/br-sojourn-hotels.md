@@ -13,21 +13,18 @@ sample_data: true    # Flag for sample/test data
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
+  - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
   - connections          # Related brands and insights
 
 # === CORE INFORMATION ===
 # Basic Information
 founding_year: 2012
 website: "https://sojournhotels.com.br"
+email: "reservations@sojournhotels.com.br"  # Optional contact email
 founders: ["br-isabela-mendez"]  # Array of founder keys that match founders.json entries
 founder_led: true  # Boolean: Is the founder still actively leading?
 
@@ -63,14 +60,14 @@ images:
 
 # === SOCIAL MEDIA ===
 social_media:
-  facebook: "https://facebook.com/sojournhotelsbr"
-  instagram: "https://instagram.com/sojournhotels"
-  linkedin: "https://linkedin.com/company/sojourn-hotels"
-  pinterest: ""
+  facebook: "sojournhotelsbr"
+  instagram: "sojournhotels"
+  linkedin: "sojourn-hotels"
+  pinterest: ""  # Added for completeness
   telegram: ""
-  twitter: "https://twitter.com/sojournhotels"
+  twitter: "sojournhotels"
   vk: ""
-  youtube: "https://youtube.com/c/sojournhotels"
+  youtube: "sojournhotels"
 
 # === BUSINESS INFO ===
 export_ready: false

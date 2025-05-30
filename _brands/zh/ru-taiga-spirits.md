@@ -10,19 +10,16 @@ permalink: /zh/brands/ru-taiga-spirits/
 generate_json: true
 
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
+  - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
   - connections          # Related brands and insights
 
 founding_year: 2014
 website: "https://taigaspirits.ru"
+email: "contact@taigaspirits.ru"
 founders: ["ru-nikolai-volkov"]
 founder_led: true
 
@@ -42,20 +39,62 @@ location:
   country: "ru"
 
 images:
-  logo: { name: "color", ext: "png" }
-  hero: { name: "distillery", ext: "jpg" }
-  founder: { name: "portrait", ext: "jpg" }
+  logo:
+    name: "color"
+    ext: "png"
+  hero:
+    name: "distillery"
+    ext: "jpg"
+  founder:
+    name: "portrait"
+    ext: "jpg"
 
 social_media:
-  facebook: "https://facebook.com/taigaspirits"
-  instagram: "https://instagram.com/taiga_spirits"
-  telegram: "https://t.me/taigaspirits_official"
-  vk: "https://vk.com/taigaspirits"
-  youtube: "https://youtube.com/c/taigaspirits"
+  facebook: "taigaspirits"
+  instagram: "taiga_spirits"
+  linkedin: ""
+  pinterest: ""
+  telegram: "taigaspirits_official"
+  twitter: ""
+  vk: "taigaspirits"
+  youtube: "taigaspirits"
 
 export_ready: true
-export_markets: [cn, mn, kz, de]
-distribution_models: [direct-export, distributors]
+export_markets: ["cn", "mn", "kz", "de"]
+distribution_models: ["direct-export", "distributors"]
+
+timeline:
+  - year: 2014
+    event: "创立公司和建设蒸馏厂"
+  - year: 2016
+    event: "推出首款屠获奥奖伏特加"
+  - year: 2019
+    event: "开始国际出口"
+  - year: 2023
+    event: "在莫斯科开设概念店"
+
+certifications:
+  - name: "有机生产认证"
+    year: 2017
+  - name: "国际质量认证"
+    year: 2019
+
+awards:
+  - name: "国际烈酒大赛金牌"
+    year: 2022
+  - name: "俄罗斯最佳手工烈酒品牌"
+    year: 2023
+
+gallery:
+  - name: "distillery-interior"
+    ext: "jpg"
+    caption: "现代化蒸馏设备"
+  - name: "botanical-lab"
+    ext: "jpg"
+    caption: "植物学实验室"
+  - name: "product-line"
+    ext: "jpg"
+    caption: "产品系列"
 ---
 
 ## 关于泰加烈酒

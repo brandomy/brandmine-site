@@ -1,16 +1,30 @@
 ---
-# NEW BRAND LITE TEMPLATE
 layout: brand-profile
 ref: br-serra-verde  # Global ID (country-brandslug format)
-sample_data: true  # Add this flag
 title: "Серра Верде Органикс"  # Display name, fallback if JSON lookup fails
 description: "Семейный производитель органических консервов, меда и элитного кофе из региона Атлантического леса Бразилии."
+slogan: "От леса к столу"  # Optional
 lang: ru
-permalink: /ru/brands/br-serra-verde/  # Simplified permalink without country code
+permalink: /ru/brands/br-serra-verde/
 
+# JSON Generation Control
+generate_json: true  # Set to true to include in brands.json output
+sample_data: true    # Flag for sample/test data
+
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info (replaces hero)
+  - founder-narrative     # Founder story and journey
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
+  - location-intelligence # Map and geographic context
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 # Basic Information
 founding_year: 1986
 website: "https://serraverde.com.br"
+email: "contact@serraverde.com.br"  # Optional contact email
 founders: ["br-eduardo-santos"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
@@ -24,30 +38,74 @@ signals: []  # Optional signals
 featured: false
 featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# Page sections
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
-  - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
-  - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
-  - connections          # Related brands and insights
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: -22.6569  # Latitude coordinate
+  lng: -45.8558  # Longitude coordinate
+  city: "Гонсалвис"  # City name (translatable)
+  region: "Минас-Жерайс"  # Region/state/province (translatable, optional)
+  country: "br"  # ISO country code
 
-# Location (flat structure for easier data handling)
-location_lng: -45.8558  # Longitude coordinate
-location_lat: -22.6569  # Latitude coordinate
-location_city: "Гонсалвес"  # City name (translatable)
-location_region: "Минас-Жерайс"  # Region/state/province (translatable, optional)
-location_country: "br"  # ISO country code
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"     # Becomes logo-color-400w.png
+    ext: "png"
+  hero:
+    name: "farm-view"  # Becomes hero-farm-view-400w.jpg
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    ext: "jpg"
 
-# Gallery (translate captions only)
+# === SOCIAL MEDIA ===
+social_media:
+  facebook: ""
+  instagram: "serraverde_organics"
+  linkedin: ""
+  pinterest: ""  # Added for completeness
+  telegram: ""
+  twitter: ""
+  vk: ""
+  youtube: ""
+
+# === BUSINESS INFO ===
+export_ready: true
+export_markets: ["pt", "es"]  # ISO country codes, do not translate
+distribution_models: ["direct-export", "distributors"]  # Do not translate codes
+
+# === TIMELINE ===
+timeline:
+  - year: 1986  # Do not translate year
+    event: "Основание компании"  # Translate event description
+  - year: 2020  # Do not translate year
+    event: "Получение органической сертификации"  # Translate event description
+
+# === CERTIFICATIONS ===
+certifications:
+  - name: "Органическая сертификация"  # Translate name
+    year: 2017  # Do not translate year
+  - name: "Сертификат справедливой торговли"  # Translate name
+    year: 2019  # Do not translate year
+
+# === AWARDS (Optional - for featured brands) ===
+awards:
+  - name: "Бразильская премия устойчивого сельского хозяйства"  # Translate name
+    year: 2022  # Do not translate year
+  - name: "Лучший органический производитель - Минас-Жерайс"  # Translate name
+    year: 2023  # Do not translate year
+
+# === GALLERY ===
 gallery:
-  - image: "/assets/images/brands/br-serra-verde/location-pastoral.jpg"  # Do not translate path
-    caption: "Изображение холмистых пейзажей Серре Верде"  # Translate caption
+  - name: "location-pastoral"
+    ext: "jpg"
+    caption: "Холмистые пейзажи органических ферм Серра Верде"
+  - name: "production-facility"
+    ext: "jpg"
+    caption: "Современные производственные мощности"
+  - name: "product-range"
+    ext: "jpg"
+    caption: "Полный ассортимент продукции"
 ---
 
 ## О бренде Serra Verde Organics

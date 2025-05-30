@@ -1,16 +1,30 @@
 ---
-# NEW BRAND LITE TEMPLATE
 layout: brand-profile
-ref: ru-teatime  # Global ID (country-brandslug)
-sample_data: true  # Add this flag
-title: "TeaTime"  # Fallback if JSON lookup fails
-description: "Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием." # trx
+ref: ru-teatime  # Global ID (country-brandslug format)
+title: "TeaTime"  # Display name, fallback if JSON lookup fails
+description: "Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием."
+slogan: "Чайные традиции с русской душой"  # Optional
 lang: ru
 permalink: /ru/brands/ru-teatime/
 
+# JSON Generation Control
+generate_json: true  # Set to true to include in brands.json output
+sample_data: true    # Flag for sample/test data
+
+# === SECTION CONTROL (CRITICAL - Drives page layout) ===
+sections:
+  - identity              # Brand hero, logo, basic info (replaces hero)
+  - founder-narrative     # Founder story and journey
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
+  - location-intelligence # Map and geographic context
+  - connections          # Related brands and insights
+
+# === CORE INFORMATION ===
 # Basic Information
 founding_year: 1998
 website: "https://teatime.ru"
+email: "info@teatime.ru"  # Optional contact email
 founders: ["ru-alexei-sokolov"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
@@ -24,18 +38,13 @@ signals: ["export-ready"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# Page sections
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
-  - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
-  - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
-  - connections          # Related brands and insights
+# === LOCATION (Structured for collection-image compatibility) ===
+location:
+  lat: 55.7558  # Latitude coordinate
+  lng: 37.6173  # Longitude coordinate
+  city: "Москва"  # City name (translatable)
+  region: "Московская область"  # Region/state/province (translatable, optional)
+  country: "ru"  # ISO country code
 
 # Location - Flat structure for Airtable integration
 location_lng: 37.6173  # Longitude coordinate

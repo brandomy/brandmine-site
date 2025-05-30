@@ -13,21 +13,18 @@ sample_data: true    # Flag for sample/test data
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
+  - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
   - connections          # Related brands and insights
 
 # === CORE INFORMATION ===
 # Basic Information
 founding_year: 2014
 website: "https://taigaspirits.ru"
+email: "info@taigaspirits.ru"  # Optional contact email
 founders: ["ru-nikolai-volkov"]  # Array of founder keys that match founders.json entries
 founder_led: true  # Boolean: Is the founder still actively leading?
 
@@ -63,14 +60,14 @@ images:
 
 # === SOCIAL MEDIA ===
 social_media:
-  facebook: "https://facebook.com/taigaspirits"
-  instagram: "https://instagram.com/taiga_spirits"
+  facebook: "taigaspirits"
+  instagram: "taiga_spirits"
   linkedin: ""
-  pinterest: ""
-  telegram: "https://t.me/taigaspirits_official"
+  pinterest: ""  # Added for completeness
+  telegram: "taigaspirits_official"
   twitter: ""
-  vk: "https://vk.com/taigaspirits"
-  youtube: "https://youtube.com/c/taigaspirits"
+  vk: "taigaspirits"
+  youtube: "taigaspirits"
 
 # === BUSINESS INFO ===
 export_ready: true
