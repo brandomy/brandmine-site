@@ -505,11 +505,13 @@ General Rule:
 # 💾 Data Management
 
 - Initially using Jekyll collections and front matter
-- **Insights Content Categories** - Four standardized article types:
+- **Insights Blog Platform** - Five standardized article types with full blog functionality:
   1. **Brand Spotlight** - In-depth profiles of noteworthy brands
   2. **Founder's Journey** - Personal stories behind the brands
   3. **Market Momentum** - Achievements, milestones, and expansion moments
   4. **Location Intelligence** - Geographical insights and regional context
+  5. **Company News** - Latest updates, announcements, and company developments
+- **Blog Features** - Featured articles, pagination, RSS feeds, social sharing
 - Market-sector structured data in `_data/market-sectors/{lang}/{market}.yml`
 - Structured data in JSON files (`countries.json`, `languages.json`, `market_sector_map.json`, `market-country-map.json`, `markets.json`) as the primary source.
 - JSON for complex data (timelines, products, secondary locations)
@@ -721,16 +723,30 @@ Dimensions are defined as individual Markdown files in `_dimensions/{lang}/{type
 - Dimension filtering occurs on `/brands`, and dimension exploration happens via `/discover`.
 - Dimension clouds, related brand logic, and dimension-specific pages all derive from this model.
 
-## Insights Categories
+## Insights Blog System
 
-Insights articles must use one of the standardized content categories:
+The **Insights collection** functions as Brandmine's full-featured blog platform for sharing timely content that supports the mission of amplifying BRICS+ brand stories.
+
+### Content Categories
+
+Insights articles must use one of the five standardized content categories:
 
 1. **Brand Spotlight**: In-depth profiles of noteworthy BRICS+ brands gaining international momentum.
 2. **Founder's Journey**: Personal stories behind the brands and the visionaries who created them.
 3. **Market Momentum**: Notable achievements, milestones, and expansion moments for emerging BRICS+ brands.
 4. **Location Intelligence**: Geographical insights and regional context that shape brand development and opportunities.
+5. **Company News**: Latest updates, announcements, and developments from BRICS+ consumer brands.
 
 Each category has defined metadata including recommended length, reading time, and content guidelines (stored in `_data/insights/{lang}.yml`).
+
+### Blog Features
+
+- **Featured Articles**: Hero presentation controlled by `featured: true` in front matter
+- **Pagination**: Client-side JavaScript pagination (12 articles per page)
+- **RSS Feed**: Available at `/feed/insights.xml` (toggleable via `enable_insights_feed` config)
+- **Social Sharing**: LinkedIn, Twitter, Facebook, and Email sharing buttons
+- **Multilingual Support**: Full blog functionality across EN/RU/ZH languages
+- **Category Navigation**: Filter and browse by content type
 
 Claude must align any navigation, filtering, or dimension-related output with this architecture.
 
@@ -768,6 +784,18 @@ Claude must align any navigation, filtering, or dimension-related output with th
 1. Create dimension files in appropriate category subfolder for all languages
 2. Update any relevant translation files in `_data/`
 3. Ensure the dimension matches the established taxonomy
+
+### Adding Insights Articles
+1. Use the insight template from `_templates/insights/insight-template-enhanced.md`
+2. Choose one of the five standardized categories
+3. Add `featured: true` for hero display on insights home page
+4. Process images with `./_scripts/process_images.sh insights [article-slug]`
+5. Leverage social sharing and RSS feed distribution
+
+### Managing Blog Features
+- **RSS Feed**: Toggle via `enable_insights_feed: true/false` in `_config.yml`
+- **Featured Articles**: Control homepage hero with `featured: true` in front matter
+- **Pagination**: Automatic when more than 12 articles exist
 
 ### Updating Styles
 1. Identify the appropriate CSS file by component or page
