@@ -719,6 +719,14 @@ identify <span class="nt">-format</span> <span class="s2">"%f: %wx%h</span><span
   <li><strong>Component Independence</strong>: Each component can be modified independently without affecting others</li>
 </ul>
 
+<h3 id="sass-partials-convention">Sass Partials Convention</h3>
+<ul>
+  <li><strong>Underscore Prefix</strong>: Files like <code class="language-plaintext highlighter-rouge">_entry-card.scss</code> are Sass partials (import-only)</li>
+  <li><strong>Purpose</strong>: Partials won’t compile to individual CSS files, only when imported</li>
+  <li><strong>Usage</strong>: Import via <code class="language-plaintext highlighter-rouge">@import 'entry-card';</code> (no underscore needed in import statement)</li>
+  <li><strong>Organization</strong>: Standard convention throughout project for modular CSS architecture</li>
+</ul>
+
 <h2 id="html">HTML</h2>
 <ul>
   <li>Semantic HTML5</li>
@@ -826,11 +834,12 @@ identify <span class="nt">-format</span> <span class="s2">"%f: %wx%h</span><span
       <li>Processed files include width indicators: <code class="language-plaintext highlighter-rouge">[identifier]-[image-type]-[width]w.extension</code></li>
     </ul>
   </li>
-  <li><strong>Aspect Ratios</strong>:
+  <li><strong>Aspect Ratios</strong> (Brandmine Standards):
     <ul>
-      <li>Standard content: 3:2 horizontal (1200×800px)</li>
-      <li>Portraits: 2:3 vertical (800×1200px)</li>
-      <li>Icons: 1:1 square (512×512px source)</li>
+      <li><strong>3:2 horizontal</strong>: Standard content images (1200×800px)</li>
+      <li><strong>2:3 vertical</strong>: Portrait images (800×1200px)</li>
+      <li><strong>1:1 square</strong>: Icons and profile images (512×512px source)</li>
+      <li><strong>Note</strong>: Only these three aspect ratios are used site-wide (no 16:9 or other ratios)</li>
     </ul>
   </li>
   <li><strong>Processing Scripts</strong>:
@@ -929,7 +938,19 @@ Characteristics: professional, natural photography with clean backgrounds and su
       <li><strong>Company News</strong> - Latest updates, announcements, and company developments</li>
     </ol>
   </li>
-  <li><strong>Blog Features</strong> - Featured articles, pagination, RSS feeds, social sharing</li>
+  <li>
+    <p><strong>Blog Features</strong> - Featured articles, pagination, RSS feeds, social sharing</p>
+  </li>
+  <li><strong>Founders’ Journal Blog</strong> - Personal blog section documenting the Brandmine journey:
+    <ul>
+      <li><strong>Purpose</strong>: Transparent documentation of building Brandmine and exploring BRICS+ markets</li>
+      <li><strong>Content Types</strong>: Technical insights, market research learnings, founder reflections</li>
+      <li><strong>Architecture</strong>: Uses Jekyll posts collection with multilingual support</li>
+      <li><strong>URL Structure</strong>: <code class="language-plaintext highlighter-rouge">/[lang]/journal/YYYY/MM/DD/post-slug/</code> for language-specific access</li>
+      <li><strong>Features</strong>: Featured articles, responsive images with srcset, reusable entry cards</li>
+      <li><strong>Languages</strong>: Full EN/RU/ZH support with proper language switching via <code class="language-plaintext highlighter-rouge">ref</code> attributes</li>
+    </ul>
+  </li>
   <li>Market-sector structured data in <code class="language-plaintext highlighter-rouge">_data/market-sectors/{lang}/{market}.yml</code></li>
   <li>Structured data in JSON files (<code class="language-plaintext highlighter-rouge">countries.json</code>, <code class="language-plaintext highlighter-rouge">languages.json</code>, <code class="language-plaintext highlighter-rouge">market_sector_map.json</code>, <code class="language-plaintext highlighter-rouge">market-country-map.json</code>, <code class="language-plaintext highlighter-rouge">markets.json</code>) as the primary source.</li>
   <li>JSON for complex data (timelines, products, secondary locations)</li>
@@ -1041,6 +1062,66 @@ Characteristics: professional, natural photography with clean backgrounds and su
   <li>Proper filter counting and result display</li>
   <li>Grid/list view toggle functionality</li>
   <li>Complete filter reset capabilities</li>
+</ul>
+
+<h2 id="reusable-card-components">Reusable Card Components</h2>
+
+<p><strong>Entry Card Component</strong> (<code class="language-plaintext highlighter-rouge">components/cards/entry-card.html</code>):</p>
+<ul>
+  <li><strong>Purpose</strong>: Reusable card for displaying content entries (journal posts, insights, articles)</li>
+  <li><strong>Flexibility</strong>: Configurable parameters for different content types and display options</li>
+  <li><strong>Features</strong>: Responsive images with srcset, customizable meta information, fallback support</li>
+  <li><strong>Usage</strong>: `</li>
+</ul>
+
+<article class="entry-card">
+  
+  
+    
+    <div class="entry-card__image">
+      <div class="entry-card__image-placeholder">
+        <span>Article</span>
+      </div>
+    </div>
+  
+  
+  <div class="entry-card__content">
+    
+    <div class="entry-card__meta">
+      
+      
+      
+      
+      
+    </div>
+    
+    
+    <h3 class="entry-card__title">
+      <a href="" class="entry-card__link">
+        
+      </a>
+    </h3>
+    
+    
+    
+    
+    
+    <div class="entry-card__footer">
+      
+      
+      <a href="" class="entry-card__read-more">
+        Read More
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M6.72 13.28a.75.75 0 0 1 0-1.06L10.94 8 6.72 3.78a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0Z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>
+<p>`</p>
+<ul>
+  <li><strong>Image Standards</strong>: Enforces Brandmine’s 3:2, 2:3, 1:1 aspect ratio standards</li>
+  <li><strong>Performance</strong>: Lazy loading and optimal image sizes based on viewport</li>
 </ul>
 
 <h2 id="component-documentation">Component Documentation</h2>

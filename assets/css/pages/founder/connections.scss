@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Founder Connections Section Styles
+   ==========================================================================
+   Styles for the founder profile connections section showing related
+   founders, insights, and networking opportunities.
+*/
+
+.founder-connections {
+  &__section {
+    margin-bottom: var(--space-12);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--neutral-800);
+    margin-bottom: var(--space-6);
+    border-bottom: 2px solid var(--primary-200);
+    padding-bottom: var(--space-2);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: var(--space-6);
+    
+    // Mobile: single column
+    grid-template-columns: 1fr;
+    
+    // Tablet: two columns
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+    }
+    
+    // Desktop: three columns
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__network {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    
+    @media (min-width: 768px) {
+      gap: var(--space-6);
+    }
+  }
+
+  &__cta {
+    background-color: var(--primary-50);
+    padding: var(--space-8);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    border: 1px solid var(--primary-200);
+    
+    @media (min-width: 768px) {
+      padding: var(--space-10);
+    }
+    
+    .founder-connections__title {
+      border-bottom: none;
+      margin-bottom: var(--space-4);
+      color: var(--primary-800);
+    }
+    
+    p {
+      font-size: var(--text-lg);
+      color: var(--neutral-700);
+      margin-bottom: var(--space-6);
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .btn {
+      font-size: var(--text-lg);
+      padding: var(--space-4) var(--space-8);
+      
+      @media (min-width: 768px) {
+        padding: var(--space-4) var(--space-10);
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   Integration with existing card components
+   ==========================================================================
+   Ensure founder and insight cards work well in connections context
+*/
+
+.founder-connections {
+  // Founder cards in connections context
+  .founder-card {
+    height: 100%; // Ensure equal height in grid
+    display: flex;
+    flex-direction: column;
+    
+    .founder-card__content {
+      flex-grow: 1;
+    }
+  }
+  
+  // Insight cards in connections context
+  .insight-card,
+  .simple-insight-card {
+    height: 100%; // Ensure equal height in grid
+    display: flex;
+    flex-direction: column;
+    
+    .insight-card__content,
+    .simple-insight-card__content {
+      flex-grow: 1;
+    }
+  }
+}
+
+/* ==========================================================================
+   Responsive adjustments
+   ==========================================================================
+*/
+
+@media (max-width: 479px) {
+  .founder-connections {
+    &__title {
+      font-size: var(--text-xl);
+    }
+    
+    &__cta {
+      padding: var(--space-6);
+      
+      p {
+        font-size: var(--text-base);
+      }
+    }
+  }
+}

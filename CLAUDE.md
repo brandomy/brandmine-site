@@ -345,6 +345,12 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 - **Modular Components**: Forms, UI, and Search components organized in subdirectories with centralized `_index.scss` files
 - **Component Independence**: Each component can be modified independently without affecting others
 
+### Sass Partials Convention
+- **Underscore Prefix**: Files like `_entry-card.scss` are Sass partials (import-only)
+- **Purpose**: Partials won't compile to individual CSS files, only when imported
+- **Usage**: Import via `@import 'entry-card';` (no underscore needed in import statement)
+- **Organization**: Standard convention throughout project for modular CSS architecture
+
 ## HTML
 - Semantic HTML5
 - BEM class structure
@@ -444,10 +450,11 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
   - Founder images: `portrait.jpg`, `headshot.jpg`
   - Processed files include width indicators: `[identifier]-[image-type]-[width]w.extension`
 
-- **Aspect Ratios**:
-  - Standard content: 3:2 horizontal (1200×800px)
-  - Portraits: 2:3 vertical (800×1200px)
-  - Icons: 1:1 square (512×512px source)
+- **Aspect Ratios** (Brandmine Standards):
+  - **3:2 horizontal**: Standard content images (1200×800px)
+  - **2:3 vertical**: Portrait images (800×1200px)
+  - **1:1 square**: Icons and profile images (512×512px source)
+  - **Note**: Only these three aspect ratios are used site-wide (no 16:9 or other ratios)
 
 - **Processing Scripts**:
   - `process_images.sh [collection] [identifier]` - Unified image processing
@@ -518,6 +525,14 @@ General Rule:
   4. **Location Intelligence** - Geographical insights and regional context
   5. **Company News** - Latest updates, announcements, and company developments
 - **Blog Features** - Featured articles, pagination, RSS feeds, social sharing
+
+- **Founders' Journal Blog** - Personal blog section documenting the Brandmine journey:
+  - **Purpose**: Transparent documentation of building Brandmine and exploring BRICS+ markets
+  - **Content Types**: Technical insights, market research learnings, founder reflections
+  - **Architecture**: Uses Jekyll posts collection with multilingual support
+  - **URL Structure**: `/[lang]/journal/YYYY/MM/DD/post-slug/` for language-specific access
+  - **Features**: Featured articles, responsive images with srcset, reusable entry cards
+  - **Languages**: Full EN/RU/ZH support with proper language switching via `ref` attributes
 - Market-sector structured data in `_data/market-sectors/{lang}/{market}.yml`
 - Structured data in JSON files (`countries.json`, `languages.json`, `market_sector_map.json`, `market-country-map.json`, `markets.json`) as the primary source.
 - JSON for complex data (timelines, products, secondary locations)
@@ -617,6 +632,16 @@ _includes/components/search/        CSS: assets/css/components/search/
 - Proper filter counting and result display
 - Grid/list view toggle functionality
 - Complete filter reset capabilities
+
+## Reusable Card Components
+
+**Entry Card Component** (`components/cards/entry-card.html`):
+- **Purpose**: Reusable card for displaying content entries (journal posts, insights, articles)
+- **Flexibility**: Configurable parameters for different content types and display options
+- **Features**: Responsive images with srcset, customizable meta information, fallback support
+- **Usage**: `{% include components/cards/entry-card.html item=post show_author=false %}`
+- **Image Standards**: Enforces Brandmine's 3:2, 2:3, 1:1 aspect ratio standards
+- **Performance**: Lazy loading and optimal image sizes based on viewport
 
 ## Component Documentation
 
