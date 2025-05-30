@@ -1,0 +1,274 @@
+/* ==========================================================================
+   Author Profile Section
+   ==========================================================================
+   Author profile component styles for journal pages.
+   Uses Brandmine's design tokens and follows team member styling patterns.
+*/
+
+.journal-section--author-profile,
+.post-section--author-profile {
+  .panel--light {
+    background: var(--neutral-50);
+  }
+}
+
+.author-profile {
+  &__header {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    
+    h2 {
+      margin: 0;
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--neutral-900);
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-3xl);
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: var(--space-4);
+      text-align: center;
+    }
+  }
+
+  &__image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--neutral-200);
+    box-shadow: var(--shadow-md);
+
+    @media (max-width: 767px) {
+      width: 100px;
+      height: 100px;
+      align-self: center;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(10%) saturate(120%) hue-rotate(160deg) brightness(110%) contrast(95%);
+  }
+
+  &__info {
+    flex-grow: 1;
+  }
+
+  &__name {
+    margin: 0 0 var(--space-1) 0;
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--neutral-900);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  &__position {
+    margin: 0 0 var(--space-4) 0;
+    font-size: var(--text-base);
+    color: var(--neutral-600);
+    font-weight: var(--font-medium);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-lg);
+    }
+  }
+
+  &__bio {
+    color: var(--neutral-700);
+    line-height: var(--leading-relaxed);
+    font-size: var(--text-base);
+
+    p {
+      margin-bottom: var(--space-3);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__highlights {
+    margin: var(--space-4) 0;
+    padding-left: var(--space-4);
+    
+    @media (max-width: 767px) {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: var(--space-2);
+      color: var(--neutral-600);
+      line-height: var(--leading-relaxed);
+      
+      @media (max-width: 767px) {
+        &::before {
+          content: "• ";
+          color: var(--primary-400);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__summary {
+    margin-top: var(--space-4);
+    font-style: italic;
+    color: var(--neutral-600);
+    padding: var(--space-3);
+    background: var(--primary-50);
+    border-left: 3px solid var(--primary-400);
+    border-radius: var(--radius-sm);
+  }
+
+  &__social {
+    margin-top: var(--space-4);
+    display: flex;
+    gap: var(--space-3);
+    
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
+  }
+
+  &__linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--primary-600);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--primary-200);
+    transition: all var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      color: var(--primary-700);
+      background: var(--primary-50);
+      border-color: var(--primary-300);
+      text-decoration: none;
+    }
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+/* ==========================================================================
+   Multiple Authors Grid Layout
+   ==========================================================================
+   For journal landing page with all team members displayed.
+*/
+
+.author-profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-8);
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  @media (max-width: 479px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .author-profile__item {
+    background: white;
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--neutral-200);
+    transition: all var(--transition-medium);
+    
+    &:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .author-profile__content {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+
+      @media (max-width: 479px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    .author-profile__image {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+
+      @media (max-width: 479px) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    
+    .author-profile__name {
+      font-size: var(--text-lg);
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-xl);
+      }
+    }
+    
+    .author-profile__position {
+      font-size: var(--text-sm);
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-base);
+      }
+    }
+
+    .author-profile__bio {
+      // Shorter bio for grid view
+      .author-profile__highlights {
+        display: none; // Hide detailed highlights in grid view
+      }
+      
+      .author-profile__summary {
+        margin-top: var(--space-2);
+        font-size: var(--text-sm);
+      }
+    }
+    
+    .author-profile__social {
+      margin-top: var(--space-3);
+      
+      @media (max-width: 479px) {
+        justify-content: center;
+      }
+    }
+  }
+}

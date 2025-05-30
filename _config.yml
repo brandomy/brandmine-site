@@ -14,6 +14,12 @@ url: "https://brandmine.io" # The base hostname & protocol for your site
 markdown: kramdown
 permalink: pretty
 
+# Journal/Posts configuration
+permalink: /journal/:year/:month/:day/:title/
+# paginate: 10
+# paginate_path: "/journal/page:num/"
+# Note: Pagination disabled for multilingual journal - using custom pagination in JavaScript
+
 # Re-enable feed generation (GitHub Pages compatible)
 # feed:
 #   disable: true
@@ -156,6 +162,16 @@ defaults:
       show_time: false
       featured: false
       premium: false
+
+# Posts (Journal)
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+      show_author: true
+      show_date: true
+      featured: false
 
 # Founders
   - scope:

@@ -1,0 +1,61 @@
+{% comment %}
+  Component: pages/journal/entry-card.html
+  Purpose: Card component for displaying journal entries
+  Parameters:
+    - post: The post object to display
+  Dependencies:
+    - assets/css/components/cards/entry-card.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].journal %}
+{% assign post = include.post %}
+
+<article class="entry-card">
+  {% if post.image %}
+    <div class="entry-card__image">
+      {% include components/images/base-image.html 
+         src=post.image 
+         alt=post.title 
+         class="entry-card__image-element" %}
+    </div>
+  {% endif %}
+  
+  <div class="entry-card__content">
+    <div class="entry-card__meta">
+      <time class="entry-card__date" datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%B %d, %Y" }}
+      </time>
+      
+      {% if post.author %}
+        <span class="entry-card__author">{{ t.by | default: "by" }} 
+          {% assign author_data = site.data.translations[page.lang].authors[post.author] %}
+          {{ author_data | default: post.author }}
+        </span>
+      {% endif %}
+    </div>
+    
+    <h3 class="entry-card__title">
+      <a href="{{ post.url | relative_url }}" class="entry-card__link">
+        {{ post.title }}
+      </a>
+    </h3>
+    
+    {% if post.excerpt %}
+      <p class="entry-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+    {% endif %}
+    
+    <div class="entry-card__footer">
+      {% if post.tags and post.tags.size > 0 %}
+        <div class="entry-card__tags">
+          {% for tag in post.tags limit: 3 %}
+            <span class="tag tag--small">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <a href="{{ post.url | relative_url }}" class="entry-card__read-more">
+        {{ t.read_more | default: "Read More" }}
+      </a>
+    </div>
+  </div>
+</article>

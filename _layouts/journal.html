@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<!-- ----------------------------------------------------------------------------
+  JOURNAL LAYOUT
+  ------------------------------------------------------------------------------
+  Uses the logic-light architecture pattern with section-based composition.
+  Expects page.sections array in front matter of the page.
+
+  Each section is included from _includes/pages/journal/[section].html
+
+  Example page front matter:
+  sections:
+    - breadcrumbs
+    - hero
+    - content
+    - latest-entries
+    - author-profile
+    - contact-cta
+
+  Dependencies:
+  - assets/css/pages/journal/_index.scss
+---------------------------------------------------------------------------- -->
+
+{% comment %} Set default sections if none specified {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "breadcrumbs,hero,content,latest-entries,author-profile,contact-cta" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
+
+<div class="journal-page">
+  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
+  {% if sections_to_render contains "breadcrumbs" %}
+    <section class="journal-section journal-section--breadcrumbs"
+             id="journal-section-breadcrumbs"
+             aria-labelledby="heading-breadcrumbs">
+      {% include components/ui/breadcrumbs.html %}
+    </section>
+  {% endif %}
+  
+  {% comment %} All other sections use individual panel wrapping {% endcomment %}
+  {% for section in sections_to_render %}
+    {% unless section == "breadcrumbs" %}
+      <section class="journal-section journal-section--{{ section }}"
+               id="journal-section-{{ section }}"
+               aria-labelledby="heading-{{ section }}">
+        {% if section == "content" %}
+          {% include pages/journal/{{ section }}.html content=page_content %}
+        {% elsif section == "author-profile" %}
+          {% include pages/journal/{{ section }}.html show_all=true %}
+        {% else %}
+          {% include pages/journal/{{ section }}.html %}
+        {% endif %}
+      </section>
+    {% endunless %}
+  {% endfor %}
+</div>
+
+<!-- Journal pagination functionality -->
+<script src="{{ '/assets/js/pages/journal/journal-pagination.js' | relative_url }}"></script>

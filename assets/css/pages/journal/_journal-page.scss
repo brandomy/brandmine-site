@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Journal Page Structure
+   ==========================================================================
+   Styles for the main journal listing page following Brandmine's
+   linear layout architecture and panel system.
+*/
+
+.journal-page {
+  // Page-level container
+  min-height: 100vh;
+
+  // Section spacing following linear architecture
+  .journal-section {
+    // Each section wrapped in panels for consistency
+    .panel {
+      margin-bottom: 0; // Remove default panel margin
+    }
+    
+    &:not(:last-child) {
+      margin-bottom: 0; // Remove section margins - panels handle spacing
+    }
+
+    // Section-specific overrides
+    &--breadcrumbs {
+      .panel {
+        padding: var(--space-2) 0; // Reduced padding for breadcrumbs
+      }
+    }
+
+    &--hero {
+      // Hero uses full panel system - no additional margin needed
+    }
+
+    &--featured-article {
+      // Panel handles spacing
+    }
+
+    &--content {
+      // Panel handles spacing
+    }
+
+    &--latest-entries {
+      // Panel handles spacing
+    }
+
+    &--author-profile {
+      // Panel handles spacing
+    }
+
+    &--contact-cta {
+      // Last section - panel handles spacing
+    }
+  }
+
+  // Content max-width following Brandmine layout strategy
+  .panel__content {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-4);
+    
+    @media (min-width: 768px) {
+      padding: var(--space-10) var(--space-8);
+    }
+    
+    @media (min-width: 992px) {
+      padding: var(--space-12) var(--space-10);
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 479px) {
+    .panel__content {
+      padding: var(--space-6) var(--space-3);
+    }
+  }
+}

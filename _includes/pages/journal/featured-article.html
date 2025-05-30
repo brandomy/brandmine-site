@@ -1,0 +1,73 @@
+{% comment %}
+  Component: pages/journal/featured-article.html
+  Purpose: Display the featured journal article with hero image
+  Parameters:
+    - featured_post: Specific post to feature (optional)
+  Dependencies:
+    - assets/css/pages/journal/featured-article.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].journal %}
+
+{% comment %} Get featured post - either specified or the most recent featured post {% endcomment %}
+{% if include.featured_post %}
+  {% assign featured_post = include.featured_post %}
+{% else %}
+  {% assign featured_posts = site.posts | where: "lang", page.lang | where: "featured", true | sort: "date" | reverse %}
+  {% assign featured_post = featured_posts.first %}
+{% endif %}
+
+{% if featured_post %}
+  <div class="panel panel--hero-image" style="background-image: url('{{ featured_post.image | relative_url }}');">
+    <div class="panel__overlay"></div>
+    <div class="panel__content">
+      <div class="featured-article">
+        <div class="featured-article__content">
+          <div class="featured-article__meta">
+            <time class="featured-article__date" datetime="{{ featured_post.date | date_to_xmlschema }}">
+              {{ featured_post.date | date: "%B %d, %Y" }}
+            </time>
+            
+            {% if featured_post.author %}
+              <span class="featured-article__author">
+                {{ t.by | default: "by" }} 
+                {% assign author_data = site.data.translations[page.lang].authors[featured_post.author] %}
+                {{ author_data | default: featured_post.author }}
+              </span>
+            {% endif %}
+            
+            {% if featured_post.reading_time %}
+              <span class="featured-article__reading-time">
+                {{ featured_post.reading_time }} {{ t.min_read | default: "min read" }}
+              </span>
+            {% endif %}
+          </div>
+          
+          <h1 class="featured-article__title">
+            <a href="{{ featured_post.url | relative_url }}" class="featured-article__link">
+              {{ featured_post.title }}
+            </a>
+          </h1>
+          
+          {% if featured_post.excerpt %}
+            <p class="featured-article__excerpt">{{ featured_post.excerpt }}</p>
+          {% endif %}
+          
+          <div class="featured-article__actions">
+            <a href="{{ featured_post.url | relative_url }}" class="button button--secondary">
+              {{ t.read_more | default: "Read More" }}
+            </a>
+            
+            {% if featured_post.tags and featured_post.tags.size > 0 %}
+              <div class="featured-article__tags">
+                {% for tag in featured_post.tags limit: 3 %}
+                  <span class="tag tag--hero">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Journal Hero Section
+   ==========================================================================
+   Split hero layout with colored background + image side-by-side.
+   Color palette options for mixing and matching.
+*/
+
+.journal-section--hero {
+  .panel--hero {
+    background: none; // Remove default background
+    color: white;
+    
+    .panel__content {
+      padding: 0; // Remove default padding for split layout
+      max-width: none; // Allow full width
+    }
+  }
+}
+
+/* ==========================================================================
+   Split Hero Layout
+   ==========================================================================
+*/
+
+.journal-hero {
+  display: grid;
+  min-height: 500px;
+  
+  // Mobile: stacked layout
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  
+  // Desktop: side-by-side layout
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    min-height: 600px;
+  }
+  
+  @media (min-width: 992px) {
+    min-height: 700px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8) var(--space-6);
+    text-align: left;
+    
+    @media (min-width: 768px) {
+      padding: var(--space-12) var(--space-10);
+    }
+    
+    @media (min-width: 992px) {
+      padding: var(--space-16) var(--space-12);
+    }
+    
+    // Mobile: center text when stacked
+    @media (max-width: 767px) {
+      text-align: center;
+    }
+  }
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+    
+    // Mobile: aspect ratio maintained
+    @media (max-width: 767px) {
+      aspect-ratio: 3/2;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__title {
+    margin: 0 0 var(--space-4) 0;
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    color: white;
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-4xl);
+    }
+    
+    @media (min-width: 992px) {
+      font-size: var(--text-5xl);
+    }
+  }
+  
+  &__subtitle {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: var(--font-normal);
+    line-height: var(--leading-relaxed);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 50ch;
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-xl);
+    }
+    
+    // Mobile: center subtitle
+    @media (max-width: 767px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+/* ==========================================================================
+   Color Palette Options
+   ==========================================================================
+   Scientifically harmonious color schemes based on color theory.
+   All colors work harmoniously with Brandmine's core palette.
+*/
+
+// Option 1: Teal (Primary Brand)
+.journal-hero--teal {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--primary-400) 0%, var(--primary-600) 100%);
+  }
+}
+
+// Option 2: Ocean Blue (Analogous to Teal)
+.journal-hero--blue {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-blue-light) 0%, var(--journal-blue-dark) 100%);
+  }
+}
+
+// Option 3: Warm Orange (Existing Secondary)
+.journal-hero--orange {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--secondary-400) 0%, var(--secondary-600) 100%);
+  }
+}
+
+// Option 4: Rich Purple (Existing Accent)
+.journal-hero--purple {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-purple-light) 0%, var(--journal-purple-dark) 100%);
+  }
+}
+
+// Option 5: Emerald Green (Complementary to Orange)
+.journal-hero--green {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-green-light) 0%, var(--journal-green-dark) 100%);
+  }
+}
+
+// Option 6: Neutral Slate (Existing Neutrals)
+.journal-hero--slate {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-slate-light) 0%, var(--journal-slate-dark) 100%);
+  }
+}
+
+// Bonus Option 7: Coral (Analogous to Orange)
+.journal-hero--coral {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-coral-light) 0%, var(--journal-coral-dark) 100%);
+  }
+}
+
+// Bonus Option 8: Sage (Extended from Olive)
+.journal-hero--sage {
+  .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-sage-light) 0%, var(--journal-sage-dark) 100%);
+  }
+}
+
+/* ==========================================================================
+   Post-Specific Hero Styling
+   ==========================================================================
+   Additional styles when hero is used for individual posts
+*/
+
+.journal-hero--post {
+  // Post-specific adjustments
+  .journal-hero__title {
+    font-size: var(--text-2xl);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-3xl);
+    }
+    
+    @media (min-width: 992px) {
+      font-size: var(--text-4xl);
+    }
+  }
+  
+  .journal-hero__subtitle {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-lg);
+    }
+  }
+}
+
+/* ==========================================================================
+   Post Hero Meta Information
+   ==========================================================================
+*/
+
+.post-hero {
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-6);
+    
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
+    
+    .separator {
+      margin: 0 var(--space-2);
+      opacity: 0.7;
+    }
+  }
+  
+  &__date,
+  &__author,
+  &__reading-time {
+    font-weight: var(--font-medium);
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
+  }
+  
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    &:hover,
+    &:focus {
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

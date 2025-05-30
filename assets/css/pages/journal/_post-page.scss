@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Post Page Structure
+   ==========================================================================
+   Styles for individual journal post pages following Brandmine's
+   linear layout architecture and panel system.
+*/
+
+.post-page {
+  // Page-level container
+  min-height: 100vh;
+
+  // Section spacing following linear architecture
+  .post-section {
+    // Each section wrapped in panels for consistency
+    .panel {
+      margin-bottom: 0; // Remove default panel margin
+    }
+    
+    &:not(:last-child) {
+      margin-bottom: 0; // Remove section margins - panels handle spacing
+    }
+
+    // Section-specific overrides
+    &--breadcrumbs {
+      .panel {
+        padding: var(--space-2) 0; // Reduced padding for breadcrumbs
+      }
+    }
+
+    &--hero {
+      // Hero flows seamlessly - no additional margin needed
+    }
+
+    &--header {
+      // Panel handles spacing
+    }
+
+    &--featured-image {
+      // Panel handles spacing
+    }
+
+    &--content {
+      // Main content gets more emphasis
+    }
+
+    &--author-profile {
+      // Panel handles spacing
+    }
+
+    &--social-sharing {
+      // Panel handles spacing
+    }
+
+    &--tag-cloud {
+      // Panel handles spacing
+    }
+
+    &--related-posts {
+      // Last section - panel handles spacing
+    }
+  }
+
+  // Content max-width following Brandmine layout strategy
+  .panel__content {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-4);
+    
+    @media (min-width: 768px) {
+      padding: var(--space-10) var(--space-8);
+    }
+    
+    @media (min-width: 992px) {
+      padding: var(--space-12) var(--space-10);
+    }
+  }
+
+  // Special content width for article text (narrower for readability)
+  .post-section--content .panel__content {
+    max-width: 800px; // Narrower for optimal reading experience
+  }
+
+  // Responsive adjustments
+  @media (max-width: 479px) {
+    .panel__content {
+      padding: var(--space-6) var(--space-3);
+    }
+    
+    .post-section--content .panel__content {
+      padding: var(--space-6) var(--space-4);
+    }
+  }
+}
+
+/* ==========================================================================
+   Post Content Enhancements
+   ==========================================================================
+   Additional styling for post content beyond what's in _content.scss
+*/
+
+.post-page {
+  // Enhanced readability for long-form content
+  .post-content {
+    // Ensure optimal line length
+    max-width: 65ch;
+    margin: 0 auto;
+    
+    // Better heading hierarchy
+    h1 {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-6);
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-4xl);
+      }
+    }
+    
+    // Enhanced quote styling
+    blockquote {
+      position: relative;
+      font-size: var(--text-lg);
+      
+      &::before {
+        content: '"';
+        position: absolute;
+        left: -var(--space-2);
+        top: -var(--space-2);
+        font-size: var(--text-4xl);
+        color: var(--primary-400);
+        font-family: serif;
+        line-height: 1;
+      }
+    }
+    
+    // Emphasized lead paragraph
+    p:first-of-type {
+      font-size: var(--text-lg);
+      line-height: var(--leading-relaxed);
+      color: var(--neutral-700);
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-xl);
+      }
+    }
+    
+    // Enhanced table styling
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-6) 0;
+      
+      th, td {
+        padding: var(--space-3);
+        text-align: left;
+        border-bottom: 1px solid var(--neutral-200);
+      }
+      
+      th {
+        background: var(--neutral-50);
+        font-weight: var(--font-semibold);
+        color: var(--neutral-900);
+      }
+    }
+  }
+}

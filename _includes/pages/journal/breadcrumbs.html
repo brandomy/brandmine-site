@@ -1,0 +1,17 @@
+{% comment %}
+  Section: journal/breadcrumbs.html
+  
+  Displays breadcrumb navigation for journal pages
+  Note: This section intentionally breaks out of the panel system for seamless header integration
+  
+  Dependencies:
+  - site.data.translations for home navigation labels
+{% endcomment %}
+
+<div class="journal-breadcrumbs-wrapper">
+  <nav class="journal-breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/" class="back-link">
+      ← {{ site.data.translations[page.lang].nav.home | default: "Home" }}
+    </a>
+  </nav>
+</div>

@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+{% comment %}
+  Layout: post.html
+
+  Purpose: Renders individual journal/blog posts with semantic sectioning and "logic-light" approach
+
+  Structure:
+  - Uses semantic <section> tags with proper ID and ARIA attributes
+  - Uses page.sections array to dynamically load content sections in linear order
+  - Follows the established sectioning architecture (no sidebar)
+
+  Dependencies:
+  - _includes/pages/journal/[section-name].html files for main content
+  - CSS: pages/journal/_index.scss and related component files
+  - Page must have 'sections' array in front matter
+
+  Default sections if not specified:
+  - breadcrumbs, hero, content, author-profile, social-sharing, tag-cloud, related-posts
+{% endcomment %}
+
+{% assign default_sections = "breadcrumbs,hero,content,author-profile,social-sharing,tag-cloud,related-posts" | split: "," %}
+{% assign current_sections = page.sections | default: default_sections %}
+
+<div class="post-page">
+  {% for section in current_sections %}
+    {% if section == "content" %}
+      <section class="post-section post-section--content"
+               id="post-section-content"
+               aria-labelledby="heading-content">
+        <div class="panel panel--light">
+          <div class="panel__content">
+            {% if content and content != "" %}
+              <div class="post-content">
+                {{ content }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    {% elsif section == "social-sharing" or section == "author-profile" or section == "tag-cloud" or section == "related-posts" %}
+      <section class="post-section post-section--{{ section }}"
+               id="post-section-{{ section }}"
+               aria-labelledby="heading-{{ section }}">
+        <div class="panel panel--light">
+          <div class="panel__content">
+            {% include pages/journal/{{ section }}.html post=page %}
+          </div>
+        </div>
+      </section>
+    {% else %}
+      <section class="post-section post-section--{{ section }}"
+               id="post-section-{{ section }}"
+               aria-labelledby="heading-{{ section }}">
+        {% include pages/journal/{{ section }}.html post=page %}
+      </section>
+    {% endif %}
+  {% endfor %}
+</div>
