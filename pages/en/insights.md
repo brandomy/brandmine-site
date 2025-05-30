@@ -10,12 +10,13 @@ sections:
   - hero
   - impact
   # - content
-  - featured-article
+  - featured-article         # Most recent or featured article
+  # - simple-search          # Optional search box
   - category-navigation
-  # - categories
-  # - filter-interface
   - category-highlights
-  - all-insights
+  - latest-insights-carousel  # Latest insights in carousel (3 columns)
+  # - latest-insights-grid    # Latest insights in simple grid
+  # - all-insights            # Original with sidebar (NOT FOR MVP)
   - contact-cta
 ---
 

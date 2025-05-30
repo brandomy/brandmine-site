@@ -1,10 +1,10 @@
 ---
-# BRAND PROFILE TEMPLATE - Hybrid Approach
-# Human-friendly YAML that auto-generates JSON for Airtable compatibility
+# BRAND PROFILE TEMPLATE - Hybrid Architecture Compatible
+# Human-friendly YAML that integrates with hybrid brand-profile.html layout
 
 layout: brand-profile
-ref: xx-brandslug  # Global brand ID (used for JSON generation)
-title: "Brand Name"  # Primary display name
+ref: xx-brandslug  # Global brand ID (country-brandslug format)
+title: "Brand Name"  # Primary display name, fallback if JSON lookup fails
 description: "Brief brand description (1-2 sentences)."
 slogan: "Brand tagline or motto"  # Optional
 lang: en
@@ -17,57 +17,43 @@ sample_data: true    # Flag for sample/test data
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
 # Each section corresponds to _includes/pages/brand/{section}.html
+# MUST match the section names in hybrid-brand-profile-architecture.md
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand hero, logo, basic info
+  - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
+  - content              # Markdown content area (NEW - enables rich content)
+  - business-intelligence # Business signals and opportunities (replaces growth-signals)
   - location-intelligence # Map and geographic context
-  - growth-signals       # Business signals and opportunities
   - connections          # Related brands and insights
 
-# Optional: Override sections per brand
-# sections: [identity, product, founder-narrative]  # Custom order example
+# Alternative minimal sections for basic profiles:
+# sections: [identity, business-intelligence, location-intelligence]
 
-# === CORE INFORMATION (Human-friendly entry) ===
-
-# Basic Brand Information
-founding_year: YYYY
+# === CORE INFORMATION ===
+# Basic Information
+founding_year: YYYY  # Maps to JSON field: "founded"
 website: "https://example.com"
-email: "contact@example.com"
+email: "contact@example.com"  # Optional contact email
+founders: ["xx-founder-slug"]  # Array of founder keys for JSON lookup
+founder_led: true  # Boolean: Is the founder still actively leading?
 
-# Founder Information (easy to edit)
-founders:
-  - id: "xx-founder-slug"  # Links to founder profile
-    name: "Founder Name"   # Human-readable (auto-syncs to founders.json)
-    role: "CEO & Founder"  # Optional role
-founder_led: true          # Boolean flag
+# Taxonomy (all using kebab-case)
+markets: ["brazil"]  # Required: At least one market from taxonomy
+sectors: ["gourmet-foods"]  # Required: At least one sector from taxonomy
+attributes: ["founder-led", "sustainability-pioneer"]  # Optional attributes
+signals: ["export-ready"]  # Optional signals
 
-# Taxonomy (Human-readable, maps to taxonomy system)
-sectors:
-  - "gourmet-foods"       # Must match taxonomy slugs
-markets:
-  - "brazil"              # Must match taxonomy slugs
-attributes:
-  - "founder-led"         # Must match taxonomy slugs
-  - "sustainability-pioneer"
-signals:
-  - "export-ready"        # Must match taxonomy slugs
-
-# Display & Feature Settings
+# Display Settings
 featured: true
-featured_level: 2  # 0=basic, 1=standard, 2=premium
+featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Easy manual entry) ===
+# === LOCATION (Structured for collection-image compatibility) ===
 location:
-  lat: -22.6569
-  lng: -45.8558
-  city: "City Name"
-  region: "State/Province"  # Optional
-  country: "br"            # ISO code
+  lat: -22.6569  # Latitude coordinate
+  lng: -45.8558  # Longitude coordinate
+  city: "City Name"  # City name (translatable)
+  region: "State/Province"  # Region/state/province (translatable, optional)
+  country: "br"  # ISO country code
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -81,38 +67,44 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA (Easy to edit) ===
+# === SOCIAL MEDIA ===
 social_media:
   facebook: ""
   instagram: ""
   linkedin: ""
+  pinterest: ""  # Added for completeness
   telegram: ""
   twitter: ""
   vk: ""
   youtube: ""
 
-# === BUSINESS INFO (Easy manual entry) ===
+# === BUSINESS INFO ===
 export_ready: false
-export_markets: []  # ISO country codes
-distribution_models:
-  - "direct-export"
-  - "distributors"
+export_markets: []  # ISO country codes, do not translate
+distribution_models: ["direct-export", "distributors"]  # Do not translate codes
 
-# === TIMELINE (Human-friendly) ===
+# === TIMELINE ===
 timeline:
-  - year: 1986
-    event: "Company founded"
-  - year: 2020
-    event: "Achieved organic certification"
+  - year: 1986  # Do not translate year
+    event: "Company founded"  # Translate event description
+  - year: 2020  # Do not translate year
+    event: "Achieved organic certification"  # Translate event description
 
 # === CERTIFICATIONS ===
 certifications:
-  - name: "Organic Certification"
-    year: 2017
-  - name: "Fair Trade Certified"
-    year: 2019
+  - name: "Organic Certification"  # Translate name
+    year: 2017  # Do not translate year
+  - name: "Fair Trade Certified"  # Translate name
+    year: 2019  # Do not translate year
 
-# === GALLERY (Easy to manage) ===
+# === AWARDS (Optional - for featured brands) ===
+awards:
+  - name: "Industry Excellence Award"  # Translate name
+    year: 2022  # Do not translate year
+  - name: "Sustainability Leadership Recognition"  # Translate name
+    year: 2023  # Do not translate year
+
+# === GALLERY ===
 gallery:
   - name: "production-facility"
     ext: "jpg"
@@ -121,31 +113,27 @@ gallery:
     ext: "jpg"
     caption: "Complete product range"
 
-# === MULTILINGUAL CONTENT (Future expansion) ===
-# When we add RU/ZH versions, these will be translation overrides
-translations:
-  ru:
-    title: "Название на русском"
-    description: "Описание на русском"
-  zh:
-    title: "中文品牌名"
-    description: "中文描述"
+# === MULTILINGUAL APPROACH ===
+# We create separate files for each language:
+# _brands/en/xx-brandslug.md (this file)
+# _brands/ru/xx-brandslug.md (complete Russian translation)
+# _brands/zh/xx-brandslug.md (complete Chinese translation)
 ---
 
 ## About {{ page.title }}
 
-Manual content entry here - easy for humans to read and edit.
+This content area will be displayed in the "content" section of the brand profile. The hybrid architecture automatically handles the placement of this markdown content within the structured sections defined above.
 
-Brand information like name, founding year, website will be automatically pulled from the front matter above and can also be auto-generated into brands.json for Airtable sync.
+Key brand information like name, founding year, and website will be automatically pulled from the YAML front matter and displayed in the structured sections (identity, business-intelligence, etc.).
 
 ## Founder's Journey
 
-Content about founder - founder details pulled from the founders array above.
+Detailed founder narrative content goes here. The founder details from the `founders` array will be automatically looked up from the founders.json data and displayed in the founder-narrative section.
 
 ## Product Range
 
-Product information here.
+Information about the brand's products and services. This content works alongside the structured data in the front matter to create a complete brand profile.
 
 ## Market Presence
 
-Market information here.
+Market positioning, distribution, and business development information. The export markets and distribution models from the front matter will be displayed in the business-intelligence section.

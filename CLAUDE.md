@@ -10,6 +10,12 @@ This file provides Claude Code and other AI tools with the architectural context
 
 **Brandmine** is a multilingual, mobile-first website built with **Jekyll** (using the Minima theme via GitHub Pages) that showcases narrative-rich consumer brands from BRICS+ countries. It emphasizes founder stories, multidimensional tagging, and interactive discovery.
 
+## Business Mission
+
+✨ **To illuminate and elevate exceptional founder-led brands from the BRICS+ countries, breaking through language, cultural, and political barriers to amplify their stories globally and proactively connect them with the people, partners, and capital they need to grow beyond their borders.**
+
+The purpose of this site is to serve as the MVP for Brandmine where we curate a select small percentage of the brands and founders in our database.
+
 The site supports:
 - **Three languages**: English (`en`), Russian (`ru`), Chinese (`zh`)
 - A **dimension-based discovery model** (market, sector, attribute, signal)

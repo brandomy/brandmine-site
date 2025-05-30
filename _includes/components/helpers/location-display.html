@@ -1,22 +1,12 @@
 {% comment %}
   Component: helpers/location-display.html
 
-  Purpose: Displays a formatted location string with city and country,
-  prefixed with a pushpin icon
-
   Parameters:
   - city: (optional) City name
-  - country_code: (required) 2-letter ISO country code
+  - country: (required) 2-letter ISO country code (e.g., "br", "ru", "cn")
   - lang: (optional) Display language, defaults to page language
-  - icon: (optional) Set to false to hide the pushpin icon, defaults to true
-  - class: (optional) CSS class for the wrapper, defaults to 'location'
-
-  Example Usage:
-  {% include components/helpers/location-display.html city="Moscow" country_code="ru" %}
-  Returns: "📍 Moscow, Russia"
-
-  {% include components/helpers/location-display.html country_code="br" icon=false %}
-  Returns: "Brazil" (without icon)
+  - icon: (optional) Set to false to hide pushpin icon, defaults to true
+  - class: (optional) CSS class for wrapper, defaults to 'location'
 {% endcomment %}
 
 {% assign show_icon = include.icon | default: true %}
@@ -27,10 +17,10 @@
   {% endif %}
   <span class="location__text">
     {% if include.city %}
-      {{ include.city }}{% if include.country_code %}, {% endif %}
+      {{ include.city }}{% if include.country %}, {% endif %}
     {% endif %}
-    {% if include.country_code %}
-      {% include components/helpers/country-name.html code=include.country_code lang=include.lang %}
+    {% if include.country %}
+      {% include components/helpers/country-name.html code=include.country lang=include.lang %}
     {% endif %}
   </span>
 </span>

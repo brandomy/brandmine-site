@@ -1,89 +1,84 @@
 ---
-# FOUNDER PROFILE TEMPLATE - Clean Hybrid Approach
-# Human-friendly YAML that auto-generates JSON for Airtable compatibility
+# FOUNDER PROFILE TEMPLATE - Hybrid Architecture Compatible
+# Human-friendly YAML that auto-generates JSON for founders.json
 
 layout: founder-profile
-ref: xx-firstname-lastname  # Global founder ID (country-brandslug format)
+ref: xx-firstname-lastname  # Global founder ID (country-firstname-lastname format)
 name: "Full Name"
-title: "Full Name - Brief Positioning"  # e.g., "Brazil's Organic Pioneer"
+title: "Full Name - Brief Positioning"  # e.g., "Alexei Sokolov - Moscow's Tea Master"
+position: "CEO & Founder"  # Their primary role/title
+brief_bio: "Brief 1-2 sentence summary of the founder's key contribution or unique positioning. Keep under 120 characters for card display."
 date: YYYY-MM-DD  # Date profile was created or updated
 lang: en  # Language of this file
 permalink: /en/founders/xx-firstname-lastname/
 
-# JSON Generation Control (MATCHING BRAND PATTERN)
+# JSON Generation Control
 generate_json: true  # Set to true to include in founders.json output
 sample_data: true    # Flag for sample/test data
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
-# Linear layout (no sidebar) - Each section corresponds to _includes/pages/founder/sections/{section}.html
+# Must match section names in founder includes
 sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Founder hero panel
-  - professional-details  # Role, expertise, achievements
-  - content              # Main founder story content
+  - hero                  # Founder hero panel with name, position, key info
+  - content              # Main founder story content (markdown)
+  - professional-details # Role, expertise, achievements
   - associated-brands    # Brands associated with this founder
-  - expertise-cloud      # Skills and expertise visualization
-  - related-insights     # Related articles and content
+  - connections         # Related founders and insights
 
-# Optional: Override sections per founder
-# sections: [breadcrumbs, hero, content, associated-brands]  # Custom order example
+# Alternative minimal sections for basic profiles:
+# sections: [hero, content, associated-brands]
 
-# === CORE INFORMATION (Human-friendly entry) ===
-
-# Basic Founder Information
-brands: [xx-brand-slug]  # Array of associated brand slugs
+# === CORE INFORMATION ===
+# Basic Information
+brands: ["xx-brand-slug"]  # Array of associated brand slugs
 featured: false  # Is this a featured founder?
-generation: "first"  # Options: "first", "second", "third", "transition"
-role: "CEO & Founder"  # Their role in the primary brand
+generation: "first"  # Options: "first", "second", "transition"
+company: "Brand/Company Name"  # Primary company association
 
-# Location (Easy manual entry)
-country_code: xx   # Two-letter country code (ISO 3166-1 alpha-2)
-region: "Region/State"  # Optional: specific region or state
-city: "City Name"
+# Location Information
+location:
+  country: "xx"      # ISO country code
+  region: "Region/State"   # Optional: specific region or state
+  city: "City Name"
 
-# Markets and Cross-border
-markets: [xx]  # Array of country codes where they operate (ISO 3166-1 alpha-2)
+# Professional Information
+expertise: ["primary skill", "secondary skill", "third skill"]  # Max 4 items
+achievements: ["Key achievement 1", "Key achievement 2", "Key achievement 3"]
+
+# International Scope
+markets: ["xx"]  # Array of country codes where they operate
 cross_border_expertise: false  # Has international experience?
-languages: ["xx", "xx"]  # Languages they speak (ISO 639-1 codes: en, zh, ru, etc.)
+languages: ["en", "xx"]  # Languages they speak (ISO 639-1 codes)
 
 # === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "portrait"     # Becomes xx-firstname-lastname-portrait-400w.jpg
+    name: "portrait"     # Becomes founder-portrait-400w.jpg
     ext: "jpg"
   headshot:
-    name: "headshot"     # Becomes xx-firstname-lastname-headshot-400w.jpg
-    ext: "jpg"
-  action:
-    name: "action"       # Becomes xx-firstname-lastname-action-400w.jpg
+    name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA (Easy to edit) ===
+# === SOCIAL MEDIA ===
 social:
-  instagram: username
-  linkedin: username
-  telegram: username
-  twitter: username
-  wechat: username
-
-# === PROFESSIONAL INFO (Easy manual entry) ===
-expertise:
-  - primary skill
-  - secondary skill
-  - third skill
-  - max 4 items
-
-achievements:
-  - "Key achievement 1"
-  - "Key achievement 2"
-  - "Key achievement 3"
-
-brief_bio: "Brief 1-2 sentence summary of the founder's key contribution or unique positioning. Keep under 120 characters for card display."
+  instagram: ""  # Username only
+  linkedin: ""   # Username only
+  telegram: ""   # Username only
+  twitter: ""    # Username only
+  wechat: ""     # Username only
+  vk: ""         # Username only (for Russian founders)
 
 # === SEO ===
 description: "SEO-friendly description of the founder profile page"
-keywords: [founder, brandname, expertise, country]
+keywords: ["founder", "brandname", "expertise", "country"]
+
+# === MULTILINGUAL APPROACH ===
+# We create separate files for each language:
+# _founders/en/xx-firstname-lastname.md (this file)
+# _founders/ru/xx-firstname-lastname.md (complete Russian translation)
+# _founders/zh/xx-firstname-lastname.md (complete Chinese translation)
 ---
 
 # {{ page.name }}: One-Line Powerful Positioning

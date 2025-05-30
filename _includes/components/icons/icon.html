@@ -38,8 +38,8 @@
 {% if icon_name == "default" %}
   {% assign is_svg = true %}
 {% elsif system == "insights" and icon_name != "default" %}
-  {% comment %} Check if this is one of the 4 insight category SVGs {% endcomment %}
-  {% assign insight_svgs = "market-momentum,founders-journey,location-intelligence,brand-spotlight" | split: "," %}
+  {% comment %} Check if this is one of the 5 insight category SVGs {% endcomment %}
+  {% assign insight_svgs = "market-momentum,founders-journey,location-intelligence,brand-spotlight,company-news,brandmine-news" | split: "," %}
   {% if insight_svgs contains icon_name %}
     {% assign is_svg = true %}
   {% endif %}
@@ -90,6 +90,8 @@
         {% include components/icons/location-intelligence.svg %}
       {% elsif icon_name == "market-momentum" %}
         {% include components/icons/market-momentum.svg %}
+      {% elsif icon_name == "company-news" or icon_name == "brandmine-news" %}
+        {% include components/icons/company-news.svg %}
       {% else %}
         {% include components/icons/insights-default.svg %}
       {% endif %}

@@ -1,0 +1,58 @@
+{% comment %}
+  Component: pages/insights/latest-insights-grid.html
+  Purpose: Display all insights in a simple grid layout without sidebar
+  Parameters:
+    - heading: The heading for the section (default from translations)
+    - panel_type: The type of panel to use (default: light)
+    - columns: Number of columns (default: 3)
+    - limit: Maximum number of insights to show (optional)
+  Dependencies:
+    - assets/css/pages/insights/latest-insights-grid.scss
+    - components/cards/insight-card.html
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign panel_type = include.panel_type | default: "light" %}
+{% assign columns = include.columns | default: 3 %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.latest_insights | default: "Latest Insights" }}</h2>
+
+    {% assign description_text = include.description | default: t.all_insights_description %}
+    {% if description_text %}
+      <p class="panel__lead-text">
+        {{ description_text }}
+      </p>
+    {% endif %}
+
+    <div class="latest-insights-grid latest-insights-grid--{{ columns }}-col">
+      {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse %}
+      {% if include.limit %}
+        {% assign insights = insights | limit: include.limit %}
+      {% endif %}
+      
+      {% if insights.size > 0 %}
+        {% for insight in insights %}
+          <div class="latest-insights-grid__item">
+            {% include components/cards/insight-card.html insight=insight %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="latest-insights-grid__empty">
+          <p class="latest-insights-grid__empty-message">{{ t.no_insights | default: "No insights available yet." }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% comment %} Optional view all link {% endcomment %}
+    {% if include.show_view_all and insights.size == include.limit %}
+      <div class="latest-insights-grid__footer">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/archive/" class="btn btn--outline">
+          {{ t.view_all_insights | default: "View All Insights" }}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
