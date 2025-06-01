@@ -40,14 +40,14 @@
     <li class="pagination__item">
       <a href="{{ include.paginator.previous_page_path | relative_url }}" class="pagination__link" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">{{ site.data.translations[page.lang].pagination.previous }}</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.previous" fallback="Previous" %}</span>
       </a>
     </li>
     {% else %}
     <li class="pagination__item pagination__item--disabled">
       <span class="pagination__link" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">{{ site.data.translations[page.lang].pagination.previous }}</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.previous" fallback="Previous" %}</span>
       </span>
     </li>
     {% endif %}
@@ -58,7 +58,7 @@
       <li class="pagination__item pagination__item--active">
         <span class="pagination__link">
           {{ page }}
-          <span class="sr-only">{{ site.data.translations[page.lang].pagination.current }}</span>
+          <span class="sr-only">{% include helpers/t.html key="pagination.current" fallback="Current page" %}</span>
         </span>
       </li>
       {% elsif page == 1 %}
@@ -77,14 +77,14 @@
     <li class="pagination__item">
       <a href="{{ include.paginator.next_page_path | relative_url }}" class="pagination__link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">{{ site.data.translations[page.lang].pagination.next }}</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.next" fallback="Next" %}</span>
       </a>
     </li>
     {% else %}
     <li class="pagination__item pagination__item--disabled">
       <span class="pagination__link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">{{ site.data.translations[page.lang].pagination.next }}</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.next" fallback="Next" %}</span>
       </span>
     </li>
     {% endif %}

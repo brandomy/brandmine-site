@@ -19,12 +19,16 @@
   {% include components/forms/form.html %}
   
   Customized form with translations:
+  {% capture name_label %}{% include helpers/t.html key="common.forms.name_placeholder" fallback="Name" %}{% endcapture %}
+  {% capture email_label %}{% include helpers/t.html key="common.forms.email_placeholder" fallback="Email" %}{% endcapture %}
+  {% capture message_label %}{% include helpers/t.html key="common.forms.message_placeholder" fallback="Message" %}{% endcapture %}
+  {% capture submit_label %}{% include helpers/t.html key="common.actions.submit" fallback="Send Message" %}{% endcapture %}
   {% include components/forms/form.html 
      action="/submit-contact"
-     name_label=site.data.translations[page.lang].forms.name
-     email_label=site.data.translations[page.lang].forms.email
-     message_label=site.data.translations[page.lang].forms.message
-     submit_label=site.data.translations[page.lang].forms.submit %}
+     name_label=name_label
+     email_label=email_label
+     message_label=message_label
+     submit_label=submit_label %}
   
   Notes:
   - Uses semantic HTML5 form elements

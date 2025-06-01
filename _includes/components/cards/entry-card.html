@@ -38,8 +38,11 @@
 {% assign show_excerpt = include.show_excerpt | default: true %}
 {% assign excerpt_words = include.excerpt_words | default: 25 %}
 {% assign tag_limit = include.tag_limit | default: 3 %}
-{% assign translations = include.translations | default: site.data.translations[page.lang].journal %}
-{% assign read_more_text = include.read_more_text | default: translations.read_more | default: "Read More" %}
+{% comment %} Translation helper replaces manual lookup {% endcomment %}
+{% assign read_more_text = include.read_more_text %}
+{% unless read_more_text %}
+  {% capture read_more_text %}{% include helpers/t.html key="journal.read_more" fallback="Read More" %}{% endcapture %}
+{% endunless %}
 
 <article class="entry-card">
   {% comment %} Image section {% endcomment %}
@@ -88,7 +91,7 @@
       {% if show_author and item.author %}
         {% if show_date and item.date %}<span class="separator">•</span>{% endif %}
         <span class="entry-card__author">
-          {{ translations.by | default: "by" }} 
+          {% include helpers/t.html key="journal.by" fallback="by" %} 
           {% if site.data.translations[page.lang].authors[item.author] %}
             {{ site.data.translations[page.lang].authors[item.author] }}
           {% else %}
@@ -100,7 +103,7 @@
       {% if item.reading_time %}
         <span class="separator">•</span>
         <span class="entry-card__reading-time">
-          {{ item.reading_time }} {{ translations.min_read | default: "min read" }}
+          {{ item.reading_time }} {% include helpers/t.html key="journal.min_read" fallback="min read" %}
         </span>
       {% endif %}
     </div>

@@ -10,7 +10,7 @@
 {% endcomment %}
 
 {% assign lang = include.parent_lang | default: page.lang %}
-{% assign t = site.data.translations[lang].brand %}
+{% comment %} Translation helper replaces manual lookup {% endcomment %}
 
 <div class="brand-related__card">
   <div class="brand-related__logo">

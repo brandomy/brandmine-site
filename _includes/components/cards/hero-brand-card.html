@@ -8,8 +8,7 @@
   - brand: Brand object with complete details (required)
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].brand %}
-{% assign buttons_t = site.data.translations[page.lang].buttons %}
+{% comment %} Translation helper replaces manual lookup {% endcomment %}
 
 <article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">
