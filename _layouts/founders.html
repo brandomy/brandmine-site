@@ -19,50 +19,14 @@ layout: default
   - site.data.dimensions for taxonomy translations
 {% endcomment %}
 
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,header,content,filter-interface,founders-grid,featured-founders,recent-founders" | split: "," %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
-
 {% comment %} Store page content for section includes {% endcomment %}
 {% capture page_content %}{{ content }}{% endcapture %}
 
 <main class="layout founders-page">
   <div class="layout__wrapper">
     <div class="layout__content">
-      {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
-      {% if sections_to_render contains "breadcrumbs" %}
-        <section class="founders-section founders-section--breadcrumbs"
-                 id="founders-section-breadcrumbs"
-                 aria-labelledby="heading-breadcrumbs">
-          {% include components/ui/breadcrumbs.html %}
-        </section>
-      {% endif %}
-
-      {% for section in sections_to_render %}
-        {% unless section == "breadcrumbs" %}
-          {% if section == "founders-grid" %}
-            <!-- Panel wrapper for founders grid -->
-            <section class="founders-section founders-section--{{ section }}" id="founders-section-{{ section }}" aria-labelledby="heading-{{ section }}">
-              <div class="panel panel--light">
-                <div class="panel__content">
-                  {% include pages/founders/founders-grid.html %}
-                </div>
-              </div>
-            </section>
-          {% else %}
-            <section class="founders-section founders-section--{{ section }}" id="founders-section-{{ section }}" aria-labelledby="heading-{{ section }}">
-              {% if section == "content" %}
-                {% include pages/founders/{{ section }}.html content=page_content %}
-              {% else %}
-                {% include pages/founders/{{ section }}.html %}
-              {% endif %}
-            </section>
-          {% endif %}
-        {% endunless %}
-      {% endfor %}
+      {% comment %} Use data-driven section rendering {% endcomment %}
+      {% include helpers/page-sections.html page_type="founders" content=page_content %}
     </div>
   </div>
 </main>

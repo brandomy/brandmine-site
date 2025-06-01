@@ -2,27 +2,10 @@
 layout: default
 ---
 <!-- Home layout for the landing page -->
-{% if page.sections %}
-  {% for section in page.sections %}
-    <section class="home-section home-section--{{ section }}" id="home-section-{{ section }}" aria-labelledby="heading-{{ section }}">
-      {% include pages/home/{{ section }}.html %}
-    </section>
-  {% endfor %}
-{% else %}
-    <!-- Default sections if not specified in front matter -->
-    {% include pages/home/hero.html %}
-    {% include pages/home/impact-statement.html %}
-    {% include pages/home/discovery-dimensions.html %}
-    {% include pages/home/how-it-works.html %}
-    {% include pages/home/testimonials.html %}
-    {% include pages/home/featured-brands.html %}
-    {% include pages/home/lead-capture.html %}
-    {% include pages/home/location-intelligence.html %}
-    {% include pages/home/founder-focus.html %}
-    {% include pages/home/brand-owners.html %}
-    {% include pages/home/latest-insights-tagged.html %}
-    {% include pages/home/final-cta.html %}
-{% endif %}
+<div class="home-page">
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html page_type="home" %}
+</div>
 
 <!-- Home-specific JavaScript -->
 <script src="{{ '/assets/js/pages/home/smooth-scroll.js' | relative_url }}"></script>

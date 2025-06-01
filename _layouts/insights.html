@@ -26,42 +26,12 @@ layout: default
   - assets/css/pages/insights/_index.scss
 ---------------------------------------------------------------------------- -->
 
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,hero,content,category-navigation,categories,filter-interface,featured-insights,recent-insights,contact-cta" | split: "," %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
-
 {% comment %} Store page content for section includes {% endcomment %}
 {% capture page_content %}{{ content }}{% endcapture %}
 
 <div class="insights-page">
-  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
-  {% if sections_to_render contains "breadcrumbs" %}
-    <section class="insights-section insights-section--breadcrumbs"
-             id="insights-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      {% include components/ui/breadcrumbs.html %}
-    </section>
-  {% endif %}
-  
-  {% comment %} All other sections use individual panel wrapping {% endcomment %}
-  {% for section in sections_to_render %}
-    {% unless section == "breadcrumbs" %}
-      <section class="insights-section insights-section--{{ section }}"
-               id="insights-section-{{ section }}"
-               aria-labelledby="heading-{{ section }}">
-        {% if section == "content" %}
-          {% include pages/insights/{{ section }}.html content=page_content %}
-        {% elsif section == "recent-insights" %}
-          {% include pages/insights/{{ section }}.html carousel=true %}
-        {% else %}
-          {% include pages/insights/{{ section }}.html %}
-        {% endif %}
-      </section>
-    {% endunless %}
-  {% endfor %}
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html page_type="insights" content=page_content %}
 </div>
 
 <!-- Insights search functionality -->

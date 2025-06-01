@@ -5,6 +5,7 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
          Each quadrant provides visual navigation with icons, descriptions, and sample tags.
 {% endcomment %}
 
+{% comment %} Use translation helper for logic light architecture {% endcomment %}
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign t = site.data.translations[current_lang] %}
 {% assign discovery = t.discovery %}
@@ -18,9 +19,8 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
   <div class="discovery-dimensions__grid">
 
     <!-- Sectors Panel (Top Left) -->
-    <div class="panel panel--olive-soft discovery-dimensions__panel">
-      <div class="panel__content">
-        <section class="discovery-dimensions__section">
+    <div class="panel--olive-soft discovery-dimensions__panel">
+      <section class="discovery-dimensions__section">
           <div class="discovery-dimensions__header">
             <h2 class="discovery-dimensions__title">
               <span class="discovery-dimensions__icon discovery-dimensions__icon--sector">
@@ -55,13 +55,11 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
             {% endif %}
           </div>
         </section>
-      </div>
     </div>
 
     <!-- Markets Panel (Top Right) -->
-    <div class="panel panel--sky-soft discovery-dimensions__panel">
-      <div class="panel__content">
-        <section class="discovery-dimensions__section">
+    <div class="panel--sky-soft discovery-dimensions__panel">
+      <section class="discovery-dimensions__section">
           <div class="discovery-dimensions__header">
             <h2 class="discovery-dimensions__title">
               <span class="discovery-dimensions__icon discovery-dimensions__icon--market">
@@ -90,13 +88,11 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
             {% endfor %}
           </div>
         </section>
-      </div>
     </div>
 
     <!-- Attributes Panel (Bottom Left) -->
-    <div class="panel panel--secondary-soft discovery-dimensions__panel">
-      <div class="panel__content">
-        <section class="discovery-dimensions__section">
+    <div class="panel--secondary-soft discovery-dimensions__panel">
+      <section class="discovery-dimensions__section">
           <div class="discovery-dimensions__header">
             <h2 class="discovery-dimensions__title">
               <span class="discovery-dimensions__icon discovery-dimensions__icon--attribute">
@@ -125,13 +121,11 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
             {% endfor %}
           </div>
         </section>
-      </div>
     </div>
 
     <!-- Signals Panel (Bottom Right) -->
-    <div class="panel panel--accent-soft discovery-dimensions__panel">
-      <div class="panel__content">
-        <section class="discovery-dimensions__section">
+    <div class="panel--accent-soft discovery-dimensions__panel">
+      <section class="discovery-dimensions__section">
           <div class="discovery-dimensions__header">
             <h2 class="discovery-dimensions__title">
               <span class="discovery-dimensions__icon discovery-dimensions__icon--signal">
@@ -159,7 +153,6 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
             {% endfor %}
           </div>
         </section>
-      </div>
     </div>
 
   </div>

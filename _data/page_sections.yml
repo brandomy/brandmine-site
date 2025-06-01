@@ -1,0 +1,221 @@
+# Page Sections Configuration
+# Centralizes section definitions and panel mappings for data-driven page layouts
+# This eliminates hardcoded section logic in layout files
+
+# =============================================================================
+# HOME PAGE SECTIONS
+# =============================================================================
+
+home:
+  default_sections:
+    - hero
+    - impact-statement
+    - discovery-dimensions
+    - how-it-works
+    - testimonials
+    - featured-brands
+    - lead-capture
+    - location-intelligence
+    - founder-focus
+    - brand-owners
+    - latest-insights-tagged
+    - final-cta
+
+  panel_mappings:
+    hero:
+      type: panel--hero
+    impact-statement:
+      type: panel--primary
+    discovery-dimensions:
+      type: panel--light
+    how-it-works:
+      type: panel--light
+    testimonials:
+      type: panel--amber-soft
+    featured-brands:
+      type: panel--light
+    lead-capture:
+      type: panel--primary
+    location-intelligence:
+      type: panel--light
+    founder-focus:
+      type: panel--amber-soft
+    brand-owners:
+      type: panel--light
+    latest-insights-tagged:
+      type: panel--light
+    final-cta:
+      type: panel--cta
+      content_classes: panel--centered
+
+# =============================================================================
+# BRANDS PAGE SECTIONS
+# =============================================================================
+
+brands:
+  # Default section order for brands pages
+  default_sections:
+    - breadcrumbs
+    - hero
+    - impact
+    - content
+    - filter-interface
+    - featured-brands
+    - latest-brands
+    - contact-cta
+
+  # Panel type mappings for each section
+  panel_mappings:
+    breadcrumbs:
+      type: none  # Special case - rendered outside panel system
+    hero:
+      type: panel--hero
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
+    content:
+      type: panel--light
+    filter-interface:
+      type: panel--light
+    featured-brands:
+      type: panel--amber-soft
+    latest-brands:
+      type: panel--light
+    contact-cta:
+      type: panel--cta
+      content_classes: panel--centered
+
+# =============================================================================
+# FOUNDERS PAGE SECTIONS
+# =============================================================================
+
+founders:
+  default_sections:
+    - breadcrumbs
+    - header
+    - content
+    - filter-interface
+    - founders-grid
+    - featured-founders
+    - recent-founders
+
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    header:
+      type: panel--hero
+    content:
+      type: panel--light
+    filter-interface:
+      type: panel--light
+    founders-grid:
+      type: panel--light
+    featured-founders:
+      type: panel--amber-soft
+    recent-founders:
+      type: panel--light
+
+# =============================================================================
+# DISCOVERY PAGE SECTIONS
+# =============================================================================
+
+discovery:
+  default_sections:
+    - breadcrumbs
+    - hero
+    - content
+    - dimensions-navigation
+    - dimensions-grid
+    - featured-brands
+    - latest-insights
+    - contact-cta
+
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    hero:
+      type: panel--hero
+    content:
+      type: panel--light
+    dimensions-navigation:
+      type: panel--light
+    dimensions-grid:
+      type: panel--light
+    featured-brands:
+      type: panel--amber-soft
+    latest-insights:
+      type: panel--light
+    contact-cta:
+      type: panel--cta
+      content_classes: panel--centered
+
+# =============================================================================
+# INSIGHTS PAGE SECTIONS
+# =============================================================================
+
+insights:
+  default_sections:
+    - breadcrumbs
+    - hero
+    - content
+    - category-navigation
+    - categories
+    - filter-interface
+    - featured-insights
+    - recent-insights
+    - contact-cta
+
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    hero:
+      type: panel--hero
+    content:
+      type: panel--light
+    category-navigation:
+      type: panel--light
+    categories:
+      type: panel--light
+    filter-interface:
+      type: panel--light
+    featured-insights:
+      type: panel--amber-soft
+    recent-insights:
+      type: panel--light
+    contact-cta:
+      type: panel--cta
+      content_classes: panel--centered
+
+# =============================================================================
+# ABOUT PAGE SECTIONS
+# =============================================================================
+
+about:
+  default_sections:
+    - hero
+    - mission
+    - perspective
+    - problems
+    - solutions
+    - services
+    - team
+    - contact
+
+  panel_mappings:
+    hero:
+      type: panel--hero
+    mission:
+      type: panel--primary
+    perspective:
+      type: panel--light
+    problems:
+      type: panel--light
+    solutions:
+      type: panel--light
+    services:
+      type: panel--amber-soft
+    team:
+      type: panel--light
+    contact:
+      type: panel--cta
+      content_classes: panel--centered

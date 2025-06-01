@@ -363,45 +363,59 @@ identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
 ## "Logic Light" Approach
 **Principle:** Keep templates simple and logic-minimal while maintaining flexibility through structured data and modular includes.
 
-- **Translation strings** in `_data/translations/{lang}.yml`; in templates assign them to a local variable:
-   ```liquid
-   {% raw %}{% assign t = site.data.translations[current_lang].about %}{% endraw %}
-   {{ t.perspective_title | default: "Our Unique Perspective" }}
-   ```
+### Translation Helper Pattern
+Use the centralized translation helper instead of direct data access:
+```liquid
+{% comment %} OLD PATTERN - Avoid {% endcomment %}
+{% assign t = site.data.translations[current_lang].about %}
+{{ t.perspective_title | default: "Our Unique Perspective" }}
 
-- **Impact sections** use standardized translation structure for consistent messaging:
-   ```yaml
-   # _data/translations/en.yml
-   brands:
-     impact:
-       title: "Discover BRICS+ Brands Ready for Global Markets"
-       text: "Brandmine offers unprecedented access to consumer brands..."
-   ```
+{% comment %} NEW PATTERN - Use this {% endcomment %}
+{% include helpers/t.html key="about.perspective_title" fallback="Our Unique Perspective" %}
+```
 
-- **Linear sectioning structure** with minimal front matter:
-   ```
-   pages/en/about.md (minimal front matter with sections array)
-   _layouts/about.html (loops through sections array)
-   _includes/pages/about/hero.html (wrapped in panels)
-   _includes/pages/about/mission.html (wrapped in panels)
-   ```
+### Component Defaults System
+Centralized component configuration eliminates scattered default patterns:
+```liquid
+{% comment %} OLD PATTERN - Avoid {% endcomment %}
+{% assign show_author = include.show_author | default: true %}
+{% assign excerpt_words = include.excerpt_words | default: 25 %}
 
-- **Section-based content organization** eliminates complex conditional logic:
-   ```liquid
-   {% for section in sections_to_render %}
-     <section class="{{ page.ref }}-section--{{ section }}">
-       <div class="panel panel--light">
-         <div class="panel__content">
-           {% include pages/{{ page.ref }}/{{ section }}.html %}
-         </div>
-       </div>
-     </section>
-   {% endfor %}
-   ```
+{% comment %} NEW PATTERN - Use this {% endcomment %}
+{% capture default_show_author %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_author" fallback=true %}{% endcapture %}
+{% assign show_author = include.show_author | default: default_show_author %}
+```
 
-- **Consistent panel wrapping** ensures visual unity while keeping section includes focused on content only.
+### Data-Driven Section Rendering
+Page layouts use centralized configuration instead of hardcoded logic:
+```liquid
+{% comment %} OLD PATTERN - Avoid {% endcomment %}
+{% unless page.sections %}
+  {% assign sections_to_render = "hero,content,contact-cta" | split: "," %}
+{% else %}
+  {% assign sections_to_render = page.sections %}
+{% endunless %}
+{% for section in sections_to_render %}
+  {% case section %}
+    {% when "hero" %}
+      {% assign panel_type = "panel--hero" %}
+    {% else %}
+      {% assign panel_type = "panel--light" %}
+  {% endcase %}
+  <!-- render section with panel type -->
+{% endfor %}
 
-**Benefits:** Eliminates sidebar complexity, reduces conditional logic, maintains semantic structure, and scales efficiently for auto-generated content.
+{% comment %} NEW PATTERN - Use this {% endcomment %}
+{% include helpers/page-sections.html page_type="brands" content=page_content %}
+```
+
+### Configuration Files
+The "Logic Light" architecture relies on these centralized configuration files:
+- `_data/component_defaults.yml` - Component behavior defaults
+- `_data/page_sections.yml` - Page section order and panel mappings
+- `_data/translations/{lang}.yml` - UI text and labels
+
+**Benefits:** Eliminates hardcoded logic, reduces conditional templates, enables configuration-driven behavior changes, and provides consistent patterns across the entire codebase.
 
 ## JavaScript
 - Vanilla JS only (no frameworks)

@@ -27,14 +27,13 @@ Notes:
 - Falls back to empty state if no insights
 {% endcomment %}
 
+{% comment %} Use translation helper for logic light architecture {% endcomment %}
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign t = site.data.translations[current_lang] %}
 {% assign insights = t.insights %}
 {% assign discovery = t.discovery %}
 
-<div class="panel panel--primary-soft">
-  <div class="panel__content">
-    <section class="discovery-insights">
+<section class="discovery-insights">
       <div class="discovery-insights__header">
         <h2 class="discovery-insights__title">
           <span class="discovery-insights__icon">
@@ -73,5 +72,3 @@ Notes:
         </a>
       </div>
     </section>
-  </div>
-</div>
