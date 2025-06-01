@@ -68,8 +68,13 @@
       {% unless panel_type == "none" %}
         {% comment %} Handle content section specially {% endcomment %}
         {% if section == "content" and page_content %}
-          {% assign content_include_path = "pages/" | append: page_type | append: "/content.html" %}
-          {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="content=page_content" %}
+          {% if page_type == "discover" %}
+            {% comment %} Discover pages render content directly {% endcomment %}
+            {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes direct_content=page_content %}
+          {% else %}
+            {% assign content_include_path = "pages/" | append: page_type | append: "/content.html" %}
+            {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="content=page_content" %}
+          {% endif %}
         {% else %}
           {% assign content_include_path = "pages/" | append: page_type | append: "/" | append: section | append: ".html" %}
           {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path %}

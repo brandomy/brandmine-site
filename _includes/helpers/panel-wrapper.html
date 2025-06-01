@@ -8,7 +8,8 @@
   
   Parameters:
   - type (required): Panel type (e.g., "panel--light", "panel--hero", "panel--cta")
-  - content_include (required): Path to include file (e.g., "pages/brands/hero.html")
+  - content_include (optional): Path to include file (e.g., "pages/brands/hero.html")
+  - direct_content (optional): Direct content to render (alternative to content_include)
   - additional_classes (optional): Extra CSS classes for the panel
   - content_classes (optional): Extra CSS classes for panel__content
   - include_params (optional): Parameters to pass to the included content
@@ -45,6 +46,7 @@
 {% assign panel_additional_classes = include.additional_classes | default: "" %}
 {% assign content_additional_classes = include.content_classes | default: "" %}
 {% assign content_path = include.content_include %}
+{% assign direct_content = include.direct_content %}
 {% assign params = include.include_params | default: "" %}
 
 {% comment %} Build CSS classes {% endcomment %}
@@ -61,15 +63,20 @@
 {% comment %} Render panel with content {% endcomment %}
 <div class="{{ panel_classes }}">
   <div class="{{ content_classes }}">
-    {% if params != "" %}
-      {% comment %} Special handling for content parameter passing {% endcomment %}
-      {% if params == "content=page_content" %}
-        {% include {{ content_path }} content=page_content %}
+    {% if direct_content %}
+      {% comment %} Render direct content for discover pages {% endcomment %}
+      {{ direct_content }}
+    {% elsif content_path %}
+      {% if params != "" %}
+        {% comment %} Special handling for content parameter passing {% endcomment %}
+        {% if params == "content=page_content" %}
+          {% include {{ content_path }} content=page_content %}
+        {% else %}
+          {% include {{ content_path }} %}
+        {% endif %}
       {% else %}
         {% include {{ content_path }} %}
       {% endif %}
-    {% else %}
-      {% include {{ content_path }} %}
     {% endif %}
   </div>
 </div>
