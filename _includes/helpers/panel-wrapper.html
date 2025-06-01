@@ -81,6 +81,8 @@
           {% include {{ content_path }} dimension=page_dimension %}
         {% elsif params == "insight=page_insight" %}
           {% include {{ content_path }} insight=page_insight %}
+        {% elsif params == "show_all=true" %}
+          {% include {{ content_path }} show_all=true %}
         {% else %}
           {% include {{ content_path }} %}
         {% endif %}

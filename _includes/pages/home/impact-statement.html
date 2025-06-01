@@ -12,27 +12,23 @@
 
 {% assign current_lang = page.lang | default: 'en' %}
 
-<div class="panel panel--primary panel--impact">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">
-      {% include helpers/t.html key="home.impact.title" fallback="Revealing the Invisible: BRICS+ Brands Ready for Global Markets" lang=current_lang %}
-    </h2>
-    <p class="panel__lead-text">
-      {% include helpers/t.html key="home.impact.text" fallback="Exceptional founder-led brands across BRICS+ markets remain invisible to global partners due to language barriers, cultural context gaps, and fragmented information." lang=current_lang %}
-    </p>
-    <div class="impact-stats">
-      <div class="stat-item">
-        <span class="stat-number">{% include helpers/t.html key="home.impact.stats.population_value" fallback="40%+" lang=current_lang %}</span>
-        <span class="stat-label">{% include helpers/t.html key="home.impact.stats.population_label" fallback="of global population in BRICS+ economies" lang=current_lang %}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">{% include helpers/t.html key="home.impact.stats.gdp_value" fallback="25%+" lang=current_lang %}</span>
-        <span class="stat-label">{% include helpers/t.html key="home.impact.stats.gdp_label" fallback="of worldwide GDP" lang=current_lang %}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">{% include helpers/t.html key="home.impact.stats.opportunities_value" fallback="1000s" lang=current_lang %}</span>
-        <span class="stat-label">{% include helpers/t.html key="home.impact.stats.opportunities_label" fallback="of untapped brand opportunities" lang=current_lang %}</span>
-      </div>
-    </div>
+<h2 class="panel__heading-secondary">
+  {% include helpers/t.html key="home.impact.title" fallback="Revealing the Invisible: BRICS+ Brands Ready for Global Markets" lang=current_lang %}
+</h2>
+<p class="panel__lead-text">
+  {% include helpers/t.html key="home.impact.text" fallback="Exceptional founder-led brands across BRICS+ markets remain invisible to global partners due to language barriers, cultural context gaps, and fragmented information." lang=current_lang %}
+</p>
+<div class="impact-stats">
+  <div class="stat-item">
+    <span class="stat-number">{% include helpers/t.html key="home.impact.stats.population_value" fallback="40%+" lang=current_lang %}</span>
+    <span class="stat-label">{% include helpers/t.html key="home.impact.stats.population_label" fallback="of global population in BRICS+ economies" lang=current_lang %}</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">{% include helpers/t.html key="home.impact.stats.gdp_value" fallback="25%+" lang=current_lang %}</span>
+    <span class="stat-label">{% include helpers/t.html key="home.impact.stats.gdp_label" fallback="of worldwide GDP" lang=current_lang %}</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">{% include helpers/t.html key="home.impact.stats.opportunities_value" fallback="1000s" lang=current_lang %}</span>
+    <span class="stat-label">{% include helpers/t.html key="home.impact.stats.opportunities_label" fallback="of untapped brand opportunities" lang=current_lang %}</span>
   </div>
 </div>

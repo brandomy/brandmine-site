@@ -11,72 +11,14 @@
 
   // Section spacing following linear architecture
   .journal-section {
-    // Each section wrapped in panels for consistency
-    .panel {
-      margin-bottom: 0; // Remove default panel margin
-      padding-top: 0; // Zero top padding for seamless flow
-      padding-bottom: 0; // Zero bottom padding for seamless flow
-    }
+    // Use global panel system for consistent spacing
     
     &:not(:last-child) {
       margin-bottom: 0; // Remove section margins - panels handle spacing
     }
 
-    // Section-specific overrides
-    &--breadcrumbs {
-      .panel {
-        padding: var(--space-2) 0; // Reduced padding for breadcrumbs
-        margin-bottom: 0; // Remove space between breadcrumbs and hero
-      }
-    }
-
-    &--hero {
-      // Hero uses full panel system - no additional margin needed
-      .panel {
-        margin-top: 0; // Remove space between breadcrumbs and hero
-      }
-    }
-
-    &--featured-article {
-      // Panel handles spacing
-    }
-
-    &--content {
-      // Panel handles spacing
-    }
-
-    &--latest-entries {
-      // Panel handles spacing
-    }
-
-    &--author-profile {
-      // Panel handles spacing
-    }
-
-    &--contact-cta {
-      // Last section - panel handles spacing
-    }
+    // Let global panel system handle all spacing consistently
   }
 
-  // Content max-width following Brandmine layout strategy
-  .panel__content {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: var(--space-8) var(--space-4);
-    
-    @media (min-width: 768px) {
-      padding: var(--space-10) var(--space-8);
-    }
-    
-    @media (min-width: 992px) {
-      padding: var(--space-12) var(--space-10);
-    }
-  }
-
-  // Responsive adjustments
-  @media (max-width: 479px) {
-    .panel__content {
-      padding: var(--space-6) var(--space-3);
-    }
-  }
+  // Use global panel content system for consistent spacing
 }

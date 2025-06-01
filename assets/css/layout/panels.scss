@@ -590,7 +590,71 @@
 }
 
   /* --------------------------------------------------------------------------
-     5. RESPONSIVE ADJUSTMENTS (Mobile-first approach)
+     5. PANEL SPACING FIXES
+     -------------------------------------------------------------------------- */
+
+  /* Remove inter-panel gaps while preserving content padding */
+  .home-page,
+  .brands-page,
+  .founders-page,
+  .discovery-page,
+  .insights-page,
+  .journal-page {
+    
+    /* Remove gaps between panels while preserving content padding */
+    section + section .panel {
+      padding-top: 0;  /* Eliminate inter-panel gaps */
+      
+      /* Restore content breathing room */
+      .panel__content {
+        padding-top: var(--space-8);  /* 2rem base content padding */
+        
+        /* Responsive content padding scaling */
+        @media (width >= 768px) {
+          padding-top: var(--space-10);  /* 2.5rem on tablets */
+        }
+        
+        @media (width >= 992px) {
+          padding-top: var(--space-12);  /* 3rem on desktop */
+        }
+      }
+    }
+    
+    /* Maintain visual hierarchy after hero with content padding */
+    section:first-child + section .panel {
+      padding-top: 0;  /* Keep seamless flow */
+      
+      .panel__content {
+        padding-top: var(--space-6);  /* Slightly reduced for post-hero sections */
+        
+        @media (width >= 768px) {
+          padding-top: var(--space-8);
+        }
+        
+        @media (width >= 992px) {
+          padding-top: var(--space-10);
+        }
+      }
+    }
+    
+    /* Ensure hero panels maintain proper padding for split layouts */
+    .panel--hero,
+    .panel--hero-subtle,
+    .panel--hero-image {
+      /* Remove top padding for balanced split layout appearance */
+      padding-top: 0 !important;
+      /* Keep bottom padding for proper section separation */
+      padding-bottom: var(--space-16) !important;
+    }
+  }
+
+  /* About page uses manual system - keep existing behavior */
+  .about-page {
+    /* No changes needed */
+  }
+
+  /* --------------------------------------------------------------------------
+     6. RESPONSIVE ADJUSTMENTS (Mobile-first approach)
      -------------------------------------------------------------------------- */
 
   /* Small devices (480px and up) */

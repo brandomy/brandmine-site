@@ -83,6 +83,10 @@
             {% comment %} Insight articles render content directly with special wrapper {% endcomment %}
             {% capture insight_content %}<div class="insight-content {% if page.premium %}premium-content{% endif %}">{{ page_content }}</div>{% endcapture %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes direct_content=insight_content %}
+          {% elsif page_type == "journal" %}
+            {% comment %} Journal pages use content.html include {% endcomment %}
+            {% assign content_include_path = "pages/journal/content.html" %}
+            {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="content=page_content" %}
           {% else %}
             {% assign content_include_path = "pages/" | append: page_type | append: "/content.html" %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="content=page_content" %}
@@ -134,6 +138,15 @@
               {% assign content_include_path = "pages/insight/" | append: section | append: ".html" %}
             {% endif %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="insight=page_insight" %}
+          {% elsif page_type == "journal" %}
+            {% comment %} Handle special journal sections {% endcomment %}
+            {% if section == "author-profile" %}
+              {% assign content_include_path = "pages/journal/" | append: section | append: ".html" %}
+              {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="show_all=true" %}
+            {% else %}
+              {% assign content_include_path = "pages/journal/" | append: section | append: ".html" %}
+              {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path %}
+            {% endif %}
           {% else %}
             {% assign content_include_path = "pages/" | append: page_type | append: "/" | append: section | append: ".html" %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path %}

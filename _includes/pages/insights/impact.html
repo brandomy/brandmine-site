@@ -1,20 +1,16 @@
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign t = site.data.translations[current_lang].insights.impact %}
 
-<div class="panel panel--primary panel--impact">
-  <div class="panel__content">
-    {% if t.title %}
-      <h2 class="panel__heading-secondary">{{ t.title }}</h2>
-    {% endif %}
-    
-    {% if t.text %}
-      <p class="panel__lead-text">{{ t.text }}</p>
-    {% endif %}
-    
-    {% if include.content and include.content != empty %}
-      <div class="panel__paragraph">
-        {{ include.content }}
-      </div>
-    {% endif %}
+{% if t.title %}
+  <h2 class="panel__heading-secondary">{{ t.title }}</h2>
+{% endif %}
+
+{% if t.text %}
+  <p class="panel__lead-text">{{ t.text }}</p>
+{% endif %}
+
+{% if include.content and include.content != empty %}
+  <div class="panel__paragraph">
+    {{ include.content }}
   </div>
-</div>
+{% endif %}

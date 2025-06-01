@@ -1,23 +1,17 @@
 {% comment %}
   Component: pages/discovery/hero.html
   Purpose: Split hero section for Discovery page with text left, image right
-  Updated: 2025-05-31 - Changed from single panel to split layout
+  Updated: 2025-05-31 - Simplified translation logic to match working pattern
 {% endcomment %}
 
-{% comment %} Use translation helper for logic light architecture {% endcomment %}
 <div class="journal-hero journal-hero--teal journal-hero--landing">
   <!-- Text Content Section -->
   <div class="journal-hero__content">
     <h1 class="journal-hero__title">
-      {% assign key_var = "discovery.discover_title" %}
-      {% assign fallback_var = "Discover Brands by Dimensions" %}
-      {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+      {% include helpers/t.html key="discovery.discover_title" fallback="Discover Brands by Dimensions" %}
     </h1>
     <p class="journal-hero__subtitle">
-      {% assign key_var = "discovery.discover_subtitle" %}
-      {% assign fallback_var = "Explore BRICS+ brands through multiple dimensions" %}
-      {% capture subtitle_text %}{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}{% endcapture %}
-      {{ subtitle_text | newline_to_br }}
+      {% include helpers/t.html key="discovery.discover_subtitle" fallback="Explore BRICS+ brands through multiple dimensions" %}
     </p>
   </div>
   
