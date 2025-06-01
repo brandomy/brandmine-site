@@ -6,12 +6,9 @@
 
 {% assign brand = include.brand %}
 {% assign data_source = include.data_source | default: "curated" %}
-{% assign t = site.data.translations[brand.lang].brand %}
 
-<div class="panel panel--accent-soft">
-  <div class="panel__content">
-    <h2 id="heading-business-intelligence" class="panel__heading-secondary">
-      {{ t.strategic_position | default: "Business Opportunities" }}
+<h2 id="heading-business-intelligence" class="panel__heading-secondary">
+      {% include helpers/t.html key="brand.strategic_position" fallback="Business Opportunities" lang=brand.lang %}
     </h2>
     
     <div class="business-intelligence">
@@ -19,11 +16,11 @@
       {% if brand.export_ready or brand.export_markets %}
       <div class="business-signal business-signal--export">
         <h3 class="business-signal__title">
-          {{ t.export_ready | default: "Export Ready" }}
+          {% include helpers/t.html key="brand.export_ready" fallback="Export Ready" lang=brand.lang %}
         </h3>
         {% if brand.export_markets and brand.export_markets.size > 0 %}
           <p class="business-signal__description">
-            {{ t.currently_exporting | default: "Currently exporting to" }}:
+            {% include helpers/t.html key="brand.currently_exporting" fallback="Currently exporting to" lang=brand.lang %}:
             {% for market_code in brand.export_markets %}
               {% assign market_name = site.data.countries.countries[market_code].name[brand.lang] | default: market_code %}
               {{ market_name }}{% unless forloop.last %}, {% endunless %}
@@ -37,13 +34,13 @@
       {% if brand.signals and brand.signals.size > 0 %}
       <div class="growth-signals">
         <h3 class="growth-signals__title">
-          {{ site.data.translations[brand.lang].tags.signals | default: "Growth Signals" }}
+          {% include helpers/t.html key="tags.signals" fallback="Growth Signals" lang=brand.lang %}
         </h3>
 
         <div class="growth-signals__list">
           {% for signal in brand.signals %}
             <span class="tag tag--signal">
-              {{ site.data.translations[brand.lang].signals[signal] | default: signal | replace: '-', ' ' | capitalize }}
+              {% capture signal_key %}signals.{{ signal }}{% endcapture %}{% include helpers/t.html key=signal_key fallback=signal lang=brand.lang %}
             </span>
           {% endfor %}
         </div>
@@ -54,12 +51,12 @@
       {% if brand.distribution_models and brand.distribution_models.size > 0 %}
       <div class="distribution-info">
         <h3 class="distribution-info__title">
-          {{ t.distribution_models | default: "Distribution Models" }}
+          {% include helpers/t.html key="brand.distribution_models" fallback="Distribution Models" lang=brand.lang %}
         </h3>
         <div class="distribution-info__list">
           {% for model in brand.distribution_models %}
             <span class="tag tag--distribution">
-              {{ site.data.translations[brand.lang].distribution_models[model] | default: model | replace: '-', ' ' | capitalize }}
+              {% capture model_key %}distribution_models.{{ model }}{% endcapture %}{% include helpers/t.html key=model_key fallback=model lang=brand.lang %}
             </span>
           {% endfor %}
         </div>
@@ -70,7 +67,7 @@
       {% if brand.certifications and brand.certifications.size > 0 %}
         <div class="certifications-info">
           <h3 class="certifications-info__title">
-            {{ t.certifications | default: "Certifications" }}
+            {% include helpers/t.html key="brand.certifications" fallback="Certifications" lang=brand.lang %}
           </h3>
           <div class="certifications-list">
             {% for cert in brand.certifications %}
@@ -87,12 +84,9 @@
 
       {% comment %} Contact CTA {% endcomment %}
       <div class="business-intelligence__cta">
-        <h3>{{ t.partnerships | default: "Partnership Opportunities" }}</h3>
-        <p>{{ t.seeking | default: "Interested in exploring business opportunities with this brand?" }}</p>
+        <h3>{% include helpers/t.html key="brand.partnerships" fallback="Partnership Opportunities" lang=brand.lang %}</h3>
+        <p>{% include helpers/t.html key="brand.seeking" fallback="Interested in exploring business opportunities with this brand?" lang=brand.lang %}</p>
         <a href="{{ site.baseurl }}/{{ brand.lang }}/contact/?brand={{ include.brand_ref }}" class="btn btn-primary">
-          {{ site.data.translations[brand.lang].buttons.get_in_touch | default: "Get in Touch" }}
+          {% include helpers/t.html key="buttons.get_in_touch" fallback="Get in Touch" lang=brand.lang %}
         </a>
       </div>
-    </div>
-  </div>
-</div>

@@ -26,14 +26,14 @@
   - Toggle button has appropriate ARIA attributes for accessibility
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
+{% comment %} Header translations now handled via helpers/t.html {% endcomment %}
 
 <header class="header">
   <div class="header__container">
     <!-- Logo and Toggle -->
     <div class="header__branding">
       <a class="header__title" href="/{{ page.lang }}/">
-        {{ t.site.title }}
+        {% include helpers/t.html key="site.title" fallback="Brandmine" %}
       </a>
       <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
         <span class="header__toggle-icon">

@@ -26,11 +26,9 @@
 {% endfor %}
 
 {% if has_highlights and dimension.tag_type == "sector" %}
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ heading }}</h2>
+<h2 class="panel__heading-secondary">{{ heading }}</h2>
 
-    <div class="dimension-market-highlights">
+<div class="dimension-market-highlights">
       {% for market_entry in site.data.markets[dimension.lang] %}
         {% assign market_slug = market_entry.id %}
         {% if site.data.market_sectors[dimension.lang][market_slug] and site.data.market_sectors[dimension.lang][market_slug][dimension.dimension] %}
@@ -38,6 +36,4 @@
         {% endif %}
       {% endfor %}
     </div>
-  </div>
-</div>
 {% endif %}

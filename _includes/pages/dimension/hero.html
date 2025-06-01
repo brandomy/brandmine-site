@@ -29,9 +29,7 @@
 {% assign dimension = include.dimension | default: page %}
 {% assign current_lang = dimension.lang | default: 'en' %}
 
-<div class="panel panel--hero-subtle">
-  <div class="panel__content">
-    <div class="dimension-hero">
+<div class="dimension-hero">
       {% if dimension.category %}
         {% capture translation_key %}dimensions.categories.{{ dimension.category }}{% endcapture %}
         <div class="dimension-hero__category dimension dimension--{{ dimension.category }}">
@@ -48,6 +46,4 @@
           {{ dimension.description }}
         </p>
       {% endif %}
-    </div>
-  </div>
 </div>

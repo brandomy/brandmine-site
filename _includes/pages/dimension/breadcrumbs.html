@@ -11,7 +11,7 @@
 <div class="dimension-breadcrumbs-wrapper">
   <nav class="dimension-breadcrumbs" aria-label="Breadcrumb navigation">
     <a href="{{ site.baseurl }}/{{ page.lang }}/discovery/" class="back-link">
-      ← {{ site.data.translations[page.lang].navigation.discover | default: "Discover" }}
+      ← {% include helpers/t.html key="navigation.discover" fallback="Discover" %}
     </a>
   </nav>
 </div>

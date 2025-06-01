@@ -5,7 +5,7 @@
 
 <div class="insight-section__header">
   <h2 class="insight-section__title" id="heading-social-sharing">
-    {{ site.data.translations[page.lang].social.share_article | default: "Share this article" }}
+    {% include helpers/t.html key="social.share_article" fallback="Share this article" lang=page.lang %}
   </h2>
 </div>
 

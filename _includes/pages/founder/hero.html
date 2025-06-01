@@ -30,9 +30,7 @@
 {% assign founder = include.founder | default: page %}
 {% assign current_lang = founder.lang | default: 'en' %}
 
-<div class="panel panel--hero-subtle">
-  <div class="panel__content">
-    <div class="founder-hero">
+<div class="founder-hero">
       <h1 class="founder-hero__title">
         {{ founder.title }}
       </h1>
@@ -57,6 +55,4 @@
           </span>
         {% endif %}
       </div>
-    </div>
-  </div>
 </div>

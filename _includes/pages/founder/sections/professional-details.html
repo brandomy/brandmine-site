@@ -6,13 +6,13 @@
 {% assign founder = include.founder | default: page %}
 
 <div class="founder-profile__professional">
-  <h3>{{ site.data.translations[founder.lang].founder.professional_details | default: "Professional Background" }}</h3>
+  <h3>{% include helpers/t.html key="founder.professional_details" fallback="Professional Background" lang=founder.lang %}</h3>
 
   <div class="founder-profile__details-grid">
     <!-- Languages -->
     {% if founder.languages and founder.languages.size > 0 %}
     <div class="founder-profile__detail-item">
-      <h4>{{ site.data.translations[founder.lang].founder.languages | default: "Languages" }}</h4>
+      <h4>{% include helpers/t.html key="founder.languages" fallback="Languages" lang=founder.lang %}</h4>
       <ul class="founder-profile__languages">
         {% for lang_code in founder.languages %}
           <li>{{ site.data.languages[lang_code] | default: lang_code }}</li>
@@ -24,7 +24,7 @@
     <!-- Markets -->
     {% if founder.markets and founder.markets.size > 0 %}
     <div class="founder-profile__detail-item">
-      <h4>{{ site.data.translations[founder.lang].founder.markets | default: "Markets" }}</h4>
+      <h4>{% include helpers/t.html key="founder.markets" fallback="Markets" lang=founder.lang %}</h4>
       <ul class="founder-profile__markets">
         {% for market_code in founder.markets %}
           <li>{{ site.data.countries.countries[market_code].name[founder.lang] | default: market_code }}</li>
@@ -36,7 +36,7 @@
     <!-- Achievements -->
     {% if founder.achievements and founder.achievements.size > 0 %}
     <div class="founder-profile__detail-item">
-      <h4>{{ site.data.translations[founder.lang].founder.achievements | default: "Key Achievements" }}</h4>
+      <h4>{% include helpers/t.html key="founder.achievements" fallback="Key Achievements" lang=founder.lang %}</h4>
       <ul class="founder-profile__achievements">
         {% for achievement in founder.achievements %}
           <li>{{ achievement }}</li>
@@ -49,8 +49,8 @@
     {% if founder.cross_border_expertise %}
     <div class="founder-profile__detail-item">
       <div class="founder-profile__cross-border">
-        <h4>{{ site.data.translations[founder.lang].founder.cross_border | default: "International Experience" }}</h4>
-        <p>{{ site.data.translations[founder.lang].founder.cross_border_description | default: "Has significant international business experience" }}</p>
+        <h4>{% include helpers/t.html key="founder.cross_border" fallback="International Experience" lang=founder.lang %}</h4>
+        <p>{% include helpers/t.html key="founder.cross_border_description" fallback="Has significant international business experience" lang=founder.lang %}</p>
       </div>
     </div>
     {% endif %}

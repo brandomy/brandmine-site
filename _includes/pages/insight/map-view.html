@@ -21,13 +21,11 @@
 
 {% if insight.location_lat and insight.location_lng %}
   <div class="insight-map-view">
-    <h2 class="insight-section-title">Location Map</h2>
+    <h2 class="insight-section-title">{% include helpers/t.html key="insights.location_map" fallback="Location Map" lang=page.lang %}</h2>
 
-    {% if site.data.translations[page.lang].discover.map_preview %}
-      <p class="insight-map-description">
-        {{ site.data.translations[page.lang].discover.map_preview }}
-      </p>
-    {% endif %}
+    <p class="insight-map-description">
+      {% include helpers/t.html key="discover.map_preview" fallback="Explore the geographical context of this location." lang=page.lang %}
+    </p>
 
     <div class="insight-map-container">
       {% assign map_center = insight.location_lat | append: "," | append: insight.location_lng %}

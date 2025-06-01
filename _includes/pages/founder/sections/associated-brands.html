@@ -5,7 +5,7 @@
     - founder: The founder object to display (default: page)
   Dependencies:
     - assets/css/pages/founder/associated-brands.scss
-    - site.data.translations[lang].founder
+    - helpers/t.html for translations
     - site.data.dimensions[lang]
     - components/images/collection-image.html
 
@@ -19,7 +19,7 @@
 
 {% if founder.brands %}
 <div class="founder-profile__brands">
-  <h3>{{ site.data.translations[founder.lang].founder.associated_brands | default: "Associated Brands" }}</h3>
+  <h3>{% include helpers/t.html key="founder.associated_brands" fallback="Associated Brands" lang=founder.lang %}</h3>
 
   {% for brand_slug in founder.brands %}
     {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", founder.lang | first %}
@@ -44,7 +44,7 @@
         <!-- Founder's position -->
         {% if founder.position %}
         <div class="founder-brand-info__meta-item">
-          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].founder.position | default: "Position" }}:</span>
+          <span class="founder-brand-info__meta-label">{% include helpers/t.html key="founder.position" fallback="Position" lang=founder.lang %}:</span>
           <span class="founder-brand-info__meta-value">{{ founder.position }}</span>
         </div>
         {% endif %}
@@ -52,7 +52,7 @@
         <!-- Founded year -->
         {% if brand.founding_year %}
         <div class="founder-brand-info__meta-item">
-          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.established | default: "Founded" }}:</span>
+          <span class="founder-brand-info__meta-label">{% include helpers/t.html key="brand.established" fallback="Founded" lang=founder.lang %}:</span>
           <span class="founder-brand-info__meta-value">{{ brand.founding_year }}</span>
         </div>
         {% endif %}
@@ -60,7 +60,7 @@
         <!-- Location -->
         {% if brand.location.city or brand.location.country %}
         <div class="founder-brand-info__meta-item">
-          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.location | default: "Location" }}:</span>
+          <span class="founder-brand-info__meta-label">{% include helpers/t.html key="brand.location" fallback="Location" lang=founder.lang %}:</span>
           <span class="founder-brand-info__meta-value">
             {% if brand.location.city %}{{ brand.location.city }}{% endif %}
             {% if brand.location.city and brand.location.country %}, {% endif %}
@@ -76,7 +76,7 @@
         <!-- Sector -->
         {% if brand.sectors and brand.sectors.size > 0 %}
         <div class="founder-brand-info__meta-item">
-          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.sector | default: "Sector" }}:</span>
+          <span class="founder-brand-info__meta-label">{% include helpers/t.html key="brand.sector" fallback="Sector" lang=founder.lang %}:</span>
           <span class="founder-brand-info__meta-value">
             {% for sector in brand.sectors %}
               {{ site.data.dimensions[founder.lang].sectors[sector] | default: sector }}{% unless forloop.last %}, {% endunless %}
@@ -88,7 +88,7 @@
         <!-- Website -->
         {% if brand.website %}
         <div class="founder-brand-info__meta-item">
-          <span class="founder-brand-info__meta-label">{{ site.data.translations[founder.lang].brand.website | default: "Website" }}:</span>
+          <span class="founder-brand-info__meta-label">{% include helpers/t.html key="brand.website" fallback="Website" lang=founder.lang %}:</span>
           <span class="founder-brand-info__meta-value">
             <a href="{{ brand.website }}" target="_blank" rel="noopener noreferrer">{{ brand.website | replace: "https://", "" | replace: "http://", "" }}</a>
           </span>
@@ -104,7 +104,7 @@
       {% endif %}
 
       <a href="{{ brand.url | relative_url }}" class="founder-brand-info__link">
-        {{ site.data.translations[founder.lang].buttons.view_brand | default: "View Brand Profile" }} →
+        {% include helpers/t.html key="buttons.view_brand" fallback="View Brand Profile" lang=founder.lang %} →
       </a>
     </div>
     {% endif %}

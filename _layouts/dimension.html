@@ -1,79 +1,29 @@
 ---
 layout: default
 ---
-<!-- ----------------------------------------------------------------------------
-  DIMENSION LAYOUT (LOGIC-LIGHT REFACTORED)
-  ------------------------------------------------------------------------------
+{% comment %}
+  Dimension Layout (LOGIC-LIGHT REFACTORED)
+  
   This layout is used for all individual tag pages under the /discover/ section,
   such as a specific Sector (e.g., Wine), Market (e.g., Brazil), Attribute
   (e.g., Founder-Led), or Signal (e.g., High Growth).
 
-  LOGIC-LIGHT ARCHITECTURE:
-  - Uses page.sections array to define content sections
-  - Loops through sections and includes relevant templates
-  - Falls back to default sections if none specified
-
-  Sections typically used in dimension page front matter:
-  - breadcrumbs (optional)
-  - navigation (required)
-  - header (required)
-  - market-highlights (for sector and attribute pages)
-  - market-sectors (for market pages)
-  - content-panel (contains sub-sections in page.panel_sections)
-  - related-brands
-  - all-brands
-  - related-insights
-
+  Uses data-driven section rendering with helpers/page-sections.html
+  Supports configurable sections via page front matter or defaults
+  
   Dependencies:
   - _includes/pages/dimension/* components
   - site.data.translations
   - site.brands collection
   - site.insights collection
------------------------------------------------------------------------------ -->
+{% endcomment %}
 
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,hero,header,all-brands,related-insights" | split: "," %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
+{% comment %} Store dimension data for section includes {% endcomment %}
+{% assign page_dimension = page %}
 
 <div class="dimension-page">
-  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
-  {% if sections_to_render contains "breadcrumbs" %}
-    <section class="dimension-section dimension-section--breadcrumbs"
-             id="dimension-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      {% include components/ui/breadcrumbs.html %}
-    </section>
-  {% endif %}
-
-  {% for section in sections_to_render %}
-    {% unless section == "breadcrumbs" %}
-      {% if section == 'content-panel' %}
-        <!-- Content panel is a special case containing multiple sub-sections -->
-        <div class="panel panel--light">
-          <div class="panel__content">
-            {% if page.panel_sections %}
-              {% for panel_section in page.panel_sections %}
-                {% assign panel_section_path = 'pages/dimension/' | append: panel_section | append: '.html' %}
-                {% include {{ panel_section_path }} dimension=page %}
-              {% endfor %}
-            {% else %}
-              <!-- Default panel sections if not specified -->
-              {% include pages/dimension/featured-brands.html dimension=page %}
-              {% include pages/dimension/related-brands.html dimension=page %}
-              {% include pages/dimension/all-brands.html dimension=page %}
-              {% include pages/dimension/related-insights.html dimension=page %}
-            {% endif %}
-          </div>
-        </div>
-      {% else %}
-        {% assign section_path = 'pages/dimension/' | append: section | append: '.html' %}
-        {% include {{ section_path }} dimension=page %}
-      {% endif %}
-    {% endunless %}
-  {% endfor %}
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html page_type="dimension" %}
 </div>
 
 <!-- Reference the external JS file instead of inline script -->

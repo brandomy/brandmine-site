@@ -6,12 +6,9 @@
 
 {% assign brand = include.brand %}
 {% assign data_source = include.data_source | default: "curated" %}
-{% assign t = site.data.translations[brand.lang].brand %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    <h2 id="heading-connections" class="panel__heading-secondary">
-      {{ site.data.translations[brand.lang].discover.connections | default: "Connections & Discovery" }}
+<h2 id="heading-connections" class="panel__heading-secondary">
+      {% include helpers/t.html key="discover.connections" fallback="Connections & Discovery" lang=brand.lang %}
     </h2>
     
     <div class="connections">
@@ -19,7 +16,7 @@
       {% if brand.sectors or brand.markets or brand.attributes %}
       <div class="connections__section">
         <h3 class="connections__title">
-          {{ t.related_brands | default: "Related Brands" }}
+          {% include helpers/t.html key="brand.related_brands" fallback="Related Brands" lang=brand.lang %}
         </h3>
         
         {% comment %} Find brands with overlapping taxonomy {% endcomment %}
@@ -78,13 +75,13 @@
       {% comment %} Contact Information {% endcomment %}
       <div class="connections__section">
         <h3 class="connections__title">
-          {{ t.contact | default: "Contact Information" }}
+          {% include helpers/t.html key="brand.contact" fallback="Contact Information" lang=brand.lang %}
         </h3>
         
         <div class="contact-info">
           {% if brand.website %}
           <div class="contact-item">
-            <span class="contact-label">{{ t.website | default: "Website" }}:</span>
+            <span class="contact-label">{% include helpers/t.html key="brand.website" fallback="Website" lang=brand.lang %}:</span>
             <a href="{{ brand.website }}" target="_blank" class="contact-link">{{ brand.website }}</a>
           </div>
           {% endif %}
@@ -93,7 +90,7 @@
             {% for social_item in brand.social_media %}
               {% if social_item[1] and social_item[1] != "" %}
               <div class="contact-item">
-                <span class="contact-label">{{ site.data.translations[brand.lang].social[social_item[0]] | default: social_item[0] | capitalize }}:</span>
+                <span class="contact-label">{% include helpers/t.html key="social.{{ social_item[0] }}" fallback=social_item[0] lang=brand.lang %}:</span>
                 <a href="{{ social_item[1] }}" target="_blank" class="contact-link social-link social-link--{{ social_item[0] }}">
                   {{ social_item[1] | remove: 'https://' | remove: 'http://' }}
                 </a>
@@ -104,5 +101,3 @@
         </div>
       </div>
     </div>
-  </div>
-</div>

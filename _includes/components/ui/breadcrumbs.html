@@ -28,7 +28,7 @@ Parameters:
 {% elsif auto_generate %}
   {% comment %} Home item {% endcomment %}
   {% if show_home %}
-    {% assign home_name = site.data.translations[current_lang].navigation.home | default: "Home" %}
+    {% capture home_name %}{% include helpers/t.html key="navigation.home" fallback="Home" lang=current_lang %}{% endcapture %}
     {% assign home_url = site.baseurl | append: "/" | append: current_lang | append: "/" %}
     {% assign home_item = home_name | append: "," | append: home_url %}
     {% assign home_parts = home_item | split: "," %}
@@ -39,7 +39,7 @@ Parameters:
   {% case page.layout %}
     {% when "insight-category" %}
       {% comment %} Insights section {% endcomment %}
-      {% assign insights_name = site.data.translations[current_lang].navigation.insights | default: "Insights" %}
+      {% capture insights_name %}{% include helpers/t.html key="navigation.insights" fallback="Insights" lang=current_lang %}{% endcapture %}
       {% assign insights_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/" %}
       {% assign insights_item = insights_name | append: "," | append: insights_url %}
       {% assign insights_parts = insights_item | split: "," %}
@@ -55,7 +55,7 @@ Parameters:
       {% endif %}
 
     {% when "brand-profile" %}
-      {% assign brands_name = site.data.translations[current_lang].navigation.brands | default: "Brands" %}
+      {% capture brands_name %}{% include helpers/t.html key="navigation.brands" fallback="Brands" lang=current_lang %}{% endcapture %}
       {% assign brands_url = site.baseurl | append: "/" | append: current_lang | append: "/brands/" %}
       {% assign brands_item = brands_name | append: "," | append: brands_url %}
       {% assign brands_parts = brands_item | split: "," %}
@@ -65,7 +65,7 @@ Parameters:
       {% assign breadcrumb_items = breadcrumb_items | push: brand_parts %}
 
     {% when "founder-profile" %}
-      {% assign founders_name = site.data.translations[current_lang].navigation.founders | default: "Founders" %}
+      {% capture founders_name %}{% include helpers/t.html key="navigation.founders" fallback="Founders" lang=current_lang %}{% endcapture %}
       {% assign founders_url = site.baseurl | append: "/" | append: current_lang | append: "/founders/" %}
       {% assign founders_item = founders_name | append: "," | append: founders_url %}
       {% assign founders_parts = founders_item | split: "," %}
@@ -75,7 +75,7 @@ Parameters:
       {% assign breadcrumb_items = breadcrumb_items | push: founder_parts %}
 
     {% when "insight-article" %}
-      {% assign insights_name = site.data.translations[current_lang].navigation.insights | default: "Insights" %}
+      {% capture insights_name %}{% include helpers/t.html key="navigation.insights" fallback="Insights" lang=current_lang %}{% endcapture %}
       {% assign insights_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/" %}
       {% assign insights_item = insights_name | append: "," | append: insights_url %}
       {% assign insights_parts = insights_item | split: "," %}
@@ -96,7 +96,7 @@ Parameters:
       
     {% when "post" %}
       {% comment %} Journal post {% endcomment %}
-      {% assign journal_name = site.data.translations[current_lang].navigation.journal | default: "Journal" %}
+      {% capture journal_name %}{% include helpers/t.html key="navigation.journal" fallback="Journal" lang=current_lang %}{% endcapture %}
       {% assign journal_url = site.baseurl | append: "/" | append: current_lang | append: "/journal/" %}
       {% assign journal_item = journal_name | append: "," | append: journal_url %}
       {% assign journal_parts = journal_item | split: "," %}
@@ -109,7 +109,7 @@ Parameters:
 
 {% comment %} Render breadcrumbs - FIXED: Always show back arrow for first clickable item {% endcomment %}
 <div class="breadcrumbs-wrapper">
-  <nav class="breadcrumbs {{ include.class_name }}" aria-label="{{ site.data.translations[current_lang].nav.breadcrumbs | default: 'Breadcrumb navigation' }}">
+  <nav class="breadcrumbs {{ include.class_name }}" aria-label="{% include helpers/t.html key='nav.breadcrumbs' fallback='Breadcrumb navigation' lang=current_lang %}">
     {% for item in breadcrumb_items %}
       {% assign item_name = item[0] %}
       {% assign item_url = item[1] %}

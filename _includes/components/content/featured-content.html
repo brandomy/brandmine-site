@@ -46,7 +46,7 @@
     {% endif %}
     
     <div class="featured-content__badge">
-      {{ site.data.translations[include.content.lang].general.featured }}
+      {% include helpers/t.html key="general.featured" fallback="Featured" lang=include.content.lang %}
     </div>
   </div>
   
@@ -67,7 +67,7 @@
         {% endif %}
       {% elsif include.content_type == "brand" %}
         {% if include.content.founding_year %}
-          <span class="featured-content__year">{{ site.data.translations[include.content.lang].brand.est }} {{ include.content.founding_year }}</span>
+          <span class="featured-content__year">{% include helpers/t.html key="brand.est" fallback="Est." lang=include.content.lang %} {{ include.content.founding_year }}</span>
         {% endif %}
         {% if include.content.sectors and include.content.sectors.size > 0 %}
           <span class="featured-content__sector">{{ include.content.sectors[0] }}</span>
@@ -96,7 +96,7 @@
     </div>
     
     <a href="{{ include.content.url | relative_url }}" class="featured-content__link">
-      {{ site.data.translations[include.content.lang].general.read_more }}
+      {% include helpers/t.html key="general.read_more" fallback="Read more" lang=include.content.lang %}
     </a>
   </div>
 </div>

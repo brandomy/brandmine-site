@@ -28,19 +28,19 @@
     <div class="dimension-navigation__tabs">
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/sectors/" 
          class="dimension-navigation__tab dimension-navigation__tab--sectors {% if dimension.discovery_path == 'sectors' %}dimension-navigation__tab--active{% endif %}">
-        {{ site.data.translations[dimension.lang].dimensions.sectors }}
+        {% include helpers/t.html key="dimensions.sectors" fallback="Sectors" lang=dimension.lang %}
       </a>
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/markets/" 
          class="dimension-navigation__tab dimension-navigation__tab--markets {% if dimension.discovery_path == 'markets' %}dimension-navigation__tab--active{% endif %}">
-        {{ site.data.translations[dimension.lang].dimensions.markets }}
+        {% include helpers/t.html key="dimensions.markets" fallback="Markets" lang=dimension.lang %}
       </a>
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/attributes/" 
          class="dimension-navigation__tab dimension-navigation__tab--attributes {% if dimension.discovery_path == 'attributes' %}dimension-navigation__tab--active{% endif %}">
-        {{ site.data.translations[dimension.lang].dimensions.attributes }}
+        {% include helpers/t.html key="dimensions.attributes" fallback="Attributes" lang=dimension.lang %}
       </a>
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/signals/" 
          class="dimension-navigation__tab dimension-navigation__tab--signals {% if dimension.discovery_path == 'signals' %}dimension-navigation__tab--active{% endif %}">
-        {{ site.data.translations[dimension.lang].dimensions.signals }}
+        {% include helpers/t.html key="dimensions.signals" fallback="Signals" lang=dimension.lang %}
       </a>
     </div>
   </div>

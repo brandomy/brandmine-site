@@ -21,14 +21,12 @@
   - Includes a link to the insights index page
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
-
 {% if insight.category %}
   {% assign related_insights = site.insights | where: "lang", page.lang | where: "category", insight.category | where_exp: "item", "item.ref != insight.ref" | sort: "date" | reverse | limit: 3 %}
 
   {% if related_insights.size > 0 %}
     <div class="section-content section-related-insights">
-      <h3 class="section-title">{{ t.insights.related }}</h3>
+      <h3 class="section-title">{% include helpers/t.html key="insights.related" fallback="Related Insights" lang=page.lang %}</h3>
 
       <div class="related-insights-list">
         {% for related in related_insights %}
@@ -38,7 +36,7 @@
 
       <div class="related-insights-cta">
         <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn-outline-secondary btn-sm">
-          {{ t.insights.view_all }}
+          {% include helpers/t.html key="insights.view_all" fallback="View All Insights" lang=page.lang %}
         </a>
       </div>
     </div>

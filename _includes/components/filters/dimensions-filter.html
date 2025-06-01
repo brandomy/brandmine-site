@@ -9,18 +9,16 @@
     - assets/css/components/filters/dimensions-filter.scss
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].insights %}
-{% assign d = site.data.translations[page.lang].dimensions %}
 {% assign insights = include.insights %}
 {% assign dimension_type = include.dimension_type %}
 
 <div class="insights-all__sidebar-section">
-  <h3 class="insights-all__sidebar-heading">{{ include.heading | default: d[dimension_type] }}</h3>
+  <h3 class="insights-all__sidebar-heading">{{ include.heading | default: "" }}{% if include.heading == blank %}{% include helpers/t.html key="dimensions.{{ dimension_type }}" fallback=dimension_type %}{% endif %}</h3>
   <div class="insights-all__tags">
     {% assign all_dimensions = insights | map: dimension_type | flatten | uniq %}
     {% for dimension in all_dimensions %}
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ dimension_type }}/{{ dimension }}/" class="tag tag--{{ dimension_type }}">
-        {{ site.data.dimensions[page.lang][dimension_type][dimension] | default: dimension }}
+        {% include helpers/t.html key="dimensions.{{ dimension_type }}.{{ dimension }}" fallback=dimension %}
       </a>
     {% endfor %}
   </div>

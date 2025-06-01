@@ -6,7 +6,6 @@
 
 {% assign brand = include.brand %}
 {% assign data_source = include.data_source | default: "curated" %}
-{% assign t = site.data.translations[brand.lang].brand %}
 
 {% comment %} Check if we have founder information {% endcomment %}
 {% assign has_founders = false %}
@@ -15,10 +14,8 @@
 {% endif %}
 
 {% if has_founders or brand.founder_led %}
-<div class="panel panel--secondary-soft">
-  <div class="panel__content">
-    <h2 id="heading-founder-narrative" class="panel__heading-secondary">
-      {{ t.founders_journey | default: "Founder Leadership" }}
+<h2 id="heading-founder-narrative" class="panel__heading-secondary">
+      {% include helpers/t.html key="brand.founders_journey" fallback="Founder Leadership" lang=brand.lang %}
     </h2>
     
     <div class="founder-narrative">
@@ -42,14 +39,14 @@
               
               {% if founder.generation %}
               <div class="founder-card__meta">
-                <span class="meta-label">{{ t.generation | default: "Generation" }}:</span>
+                <span class="meta-label">{% include helpers/t.html key="brand.generation" fallback="Generation" lang=brand.lang %}:</span>
                 <span class="meta-value">{{ founder.generation | capitalize }}</span>
               </div>
               {% endif %}
               
               {% comment %} Link to founder profile {% endcomment %}
               <a href="{{ site.baseurl }}/{{ brand.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
-                {{ site.data.translations[brand.lang].buttons.view_founder | default: "View Founder Profile" }} →
+                {% include helpers/t.html key="buttons.view_founder" fallback="View Founder Profile" lang=brand.lang %} →
               </a>
             </div>
             {% endif %}
@@ -60,11 +57,9 @@
       {% if brand.founder_led %}
         <div class="founder-status">
           <span class="status-badge status-badge--active">
-            {{ site.data.translations[brand.lang].attributes.founder-led | default: "Founder-Led" }}
+            {% include helpers/t.html key="attributes.founder-led" fallback="Founder-Led" lang=brand.lang %}
           </span>
         </div>
       {% endif %}
     </div>
-  </div>
-</div>
 {% endif %}

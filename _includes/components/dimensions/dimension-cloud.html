@@ -33,7 +33,7 @@
     {% assign dimensions_array = site.data[type][type] %}
     {% if dimensions_array and dimensions_array.size > 0 %}
       <div class="dimension-cloud__group">
-        <h3 class="dimension-cloud__label">{{ site.data.translations[page.lang].dimensions["group_" | append: type] }}</h3>
+        <h3 class="dimension-cloud__label">{% include helpers/t.html key="dimensions.group_{{ type }}" fallback="{{ type | capitalize }}" %}</h3>
         <div class="dimension-cloud__dimensions">
           {% for dimension in dimensions_array %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ type }}/{{ dimension.id }}/"

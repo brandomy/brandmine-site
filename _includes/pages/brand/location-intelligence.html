@@ -6,13 +6,10 @@
 
 {% assign brand = include.brand %}
 {% assign data_source = include.data_source | default: "curated" %}
-{% assign t = site.data.translations[brand.lang].brand %}
 
 {% if brand.location and brand.location.lat and brand.location.lng %}
-<div class="panel panel--sky-soft">
-  <div class="panel__content">
-    <h2 id="heading-location-intelligence" class="panel__heading-secondary">
-      {{ t.location_intelligence | default: "Location Intelligence" }}
+<h2 id="heading-location-intelligence" class="panel__heading-secondary">
+      {% include helpers/t.html key="brand.location_intelligence" fallback="Location Intelligence" lang=brand.lang %}
     </h2>
     
     <div class="location-intelligence">
@@ -25,7 +22,7 @@
           <!-- Map will be initialized by JavaScript -->
         </div>
         <div class="brand-map__fallback">
-          <p>{{ t.map_loading | default: "Loading interactive map..." }}</p>
+          <p>{% include helpers/t.html key="brand.map_loading" fallback="Loading interactive map..." lang=brand.lang %}</p>
         </div>
       </div>
       
@@ -42,7 +39,7 @@
         
         {% if brand.location.lat and brand.location.lng %}
         <div class="location-context__coordinates">
-          <span class="coordinates-label">{{ t.coordinates | default: "Coordinates" }}:</span>
+          <span class="coordinates-label">{% include helpers/t.html key="brand.coordinates" fallback="Coordinates" lang=brand.lang %}:</span>
           <span class="coordinates-value">{{ brand.location.lat }}, {{ brand.location.lng }}</span>
         </div>
         {% endif %}
@@ -51,12 +48,9 @@
         {% if brand.location.country %}
         <div class="location-context__explore">
           <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/markets/{{ brand.location.country }}/" class="btn btn--secondary">
-            {{ site.data.translations[brand.lang].discover.explore_market | default: "Explore Market" }}
+            {% include helpers/t.html key="discover.explore_market" fallback="Explore Market" lang=brand.lang %}
           </a>
         </div>
         {% endif %}
       </div>
-    </div>
-  </div>
-</div>
 {% endif %}

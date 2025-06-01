@@ -17,9 +17,10 @@
 {% assign dimension = include.dimension | default: page %}
 {% assign limit = include.limit | default: 8 %}
 
-{% assign heading_default = site.data.translations[dimension.lang].dimensions.more_brands | default: "More" %}
-{% assign heading_default = heading_default | append: " " | append: dimension.title | append: " " | append: site.data.translations[dimension.lang].dimensions.brands | default: "Brands" %}
-{% assign heading = include.heading | default: heading_default %}
+{% assign heading = include.heading | default: "" %}
+{% if heading == "" %}
+  {% capture heading %}{% include helpers/t.html key="dimensions.more_brands" fallback="More" lang=dimension.lang %} {{ dimension.title }} {% include helpers/t.html key="dimensions.brands" fallback="Brands" lang=dimension.lang %}{% endcapture %}
+{% endif %}
 
 <div class="dimension-related-brands">
   <h2 class="dimension-related-brands__heading">{{ heading }}</h2>

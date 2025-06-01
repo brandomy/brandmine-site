@@ -49,7 +49,7 @@
 
   <div class="market-sector-highlight__footer">
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ include.market }}/sectors/{{ include.sector }}/" class="btn btn--outline">
-      {{ site.data.translations[page.lang].sectors.learn_more_market | default: "Learn More" }}
+      {% include helpers/t.html key="sectors.learn_more_market" fallback="Learn More" %}
     </a>
   </div>
 </div>

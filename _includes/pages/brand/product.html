@@ -1,9 +1,8 @@
 <!-- _includes/pages/brand/product.html -->
-{% assign t = site.data.translations[page.lang].brand %}
 
 <section class="brand-section brand-section--product" id="product">
   <div class="brand-section__container">
-    <h2 class="brand-section__title">{{ t.products }}</h2>
+    <h2 class="brand-section__title">{% include helpers/t.html key="brand.products" fallback="Products" lang=page.lang %}</h2>
 
     <div class="brand-products">
       <!-- Product Content from Markdown -->

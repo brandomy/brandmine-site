@@ -68,9 +68,19 @@
       {{ direct_content }}
     {% elsif content_path %}
       {% if params != "" %}
-        {% comment %} Special handling for content parameter passing {% endcomment %}
+        {% comment %} Special handling for parameter passing {% endcomment %}
         {% if params == "content=page_content" %}
           {% include {{ content_path }} content=page_content %}
+        {% elsif params == "brand=page_brand data_source=page_data_source brand_ref=page_brand_ref" %}
+          {% include {{ content_path }} brand=page_brand data_source=page_data_source brand_ref=page_brand_ref %}
+        {% elsif params == "founder=page_founder" %}
+          {% include {{ content_path }} founder=page_founder %}
+        {% elsif params == "founder=page_founder content=page_content" %}
+          {% include {{ content_path }} founder=page_founder content=page_content %}
+        {% elsif params == "dimension=page_dimension" %}
+          {% include {{ content_path }} dimension=page_dimension %}
+        {% elsif params == "insight=page_insight" %}
+          {% include {{ content_path }} insight=page_insight %}
         {% else %}
           {% include {{ content_path }} %}
         {% endif %}

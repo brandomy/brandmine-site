@@ -32,8 +32,8 @@
             <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="currentColor" stroke-width="2"></path>
           </svg>
         </span>
-        <span class="discovery-navigation__label">{{ site.data.translations[page.lang].nav.markets }}</span>
-        <span class="discovery-navigation__tooltip">{{ site.data.translations[page.lang].tooltips.markets }}</span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.markets" fallback="Markets" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.markets" fallback="Markets" %}</span>
       </a>
 
       <!-- Sectors -->
@@ -45,8 +45,8 @@
             <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </span>
-        <span class="discovery-navigation__label">{{ site.data.translations[page.lang].nav.sectors }}</span>
-        <span class="discovery-navigation__tooltip">{{ site.data.translations[page.lang].tooltips.sectors }}</span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.sectors" fallback="Sectors" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.sectors" fallback="Sectors" %}</span>
       </a>
 
 
@@ -60,8 +60,8 @@
             <line x1="7" y1="7" x2="7.01" y2="7"/>
           </svg>
         </span>
-        <span class="discovery-navigation__label">{{ site.data.translations[page.lang].nav.attributes }}</span>
-        <span class="discovery-navigation__tooltip">{{ site.data.translations[page.lang].tooltips.attributes }}</span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.attributes" fallback="Attributes" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.attributes" fallback="Attributes" %}</span>
       </a>
 
       <!-- Signals -->
@@ -73,8 +73,8 @@
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </span>
-        <span class="discovery-navigation__label">{{ site.data.translations[page.lang].nav.signals }}</span>
-        <span class="discovery-navigation__tooltip">{{ site.data.translations[page.lang].tooltips.signals }}</span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.signals" fallback="Signals" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.signals" fallback="Signals" %}</span>
       </a>
     </div>
   </div>

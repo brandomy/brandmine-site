@@ -25,7 +25,6 @@
 {% endif %}
 
 {% assign active_dimension = include.active_dimension | default: page.discovery_path %}
-{% assign t = site.data.translations[page.lang] %}
 
 <div class="dimensions-category-navigation {{ nav_class }}">
   <div class="dimensions-category-navigation__container {% if active_dimension %}dimensions-category-navigation__container--{{ active_dimension }}{% endif %} {{ include.container_class }}">
@@ -43,8 +42,8 @@
             size="md" 
             class="dimension-category-icon" %}
         </span>
-        <span class="dimensions-category-navigation__label">{{ t.nav.markets }}</span>
-        <span class="dimensions-category-navigation__tooltip">{{ t.nav.markets }}</span>
+        <span class="dimensions-category-navigation__label">{% include helpers/t.html key="nav.markets" fallback="Markets" %}</span>
+        <span class="dimensions-category-navigation__tooltip">{% include helpers/t.html key="nav.markets" fallback="Markets" %}</span>
       </a>
 
       <!-- Sectors -->
@@ -59,8 +58,8 @@
             size="md" 
             class="dimension-category-icon" %}
         </span>
-        <span class="dimensions-category-navigation__label">{{ t.nav.sectors }}</span>
-        <span class="dimensions-category-navigation__tooltip">{{ t.nav.sectors }}</span>
+        <span class="dimensions-category-navigation__label">{% include helpers/t.html key="nav.sectors" fallback="Sectors" %}</span>
+        <span class="dimensions-category-navigation__tooltip">{% include helpers/t.html key="nav.sectors" fallback="Sectors" %}</span>
       </a>
 
       <!-- Attributes -->
@@ -75,8 +74,8 @@
             size="md" 
             class="dimension-category-icon" %}
         </span>
-        <span class="dimensions-category-navigation__label">{{ t.nav.attributes }}</span>
-        <span class="dimensions-category-navigation__tooltip">{{ t.nav.attributes }}</span>
+        <span class="dimensions-category-navigation__label">{% include helpers/t.html key="nav.attributes" fallback="Attributes" %}</span>
+        <span class="dimensions-category-navigation__tooltip">{% include helpers/t.html key="nav.attributes" fallback="Attributes" %}</span>
       </a>
 
       <!-- Signals -->
@@ -91,8 +90,8 @@
             size="md" 
             class="dimension-category-icon" %}
         </span>
-        <span class="dimensions-category-navigation__label">{{ t.nav.signals }}</span>
-        <span class="dimensions-category-navigation__tooltip">{{ t.nav.signals }}</span>
+        <span class="dimensions-category-navigation__label">{% include helpers/t.html key="nav.signals" fallback="Signals" %}</span>
+        <span class="dimensions-category-navigation__tooltip">{% include helpers/t.html key="nav.signals" fallback="Signals" %}</span>
       </a>
 
     </div>

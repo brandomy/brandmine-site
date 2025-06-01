@@ -30,19 +30,7 @@
 {% assign insight = include.insight | default: page %}
 {% assign current_lang = insight.lang | default: 'en' %}
 
-{% comment %}
-  Determine panel type and background image
-  If insight has hero_image, use hero-image panel with background
-  Otherwise use standard hero panel
-{% endcomment %}
-{% if insight.hero_image %}
-  {% capture hero_style %}background-image: url('{{ insight.hero_image | relative_url }}'){% endcapture %}
-  <div class="panel panel--hero-image" style="{{ hero_style }}">
-{% else %}
-  <div class="panel panel--hero">
-{% endif %}
-  <div class="panel__content">
-    <div class="insight-hero">
+<div class="insight-hero">
       {% if insight.category %}
         {% capture translation_key %}insights.categories.{{ insight.category }}{% endcapture %}
         <div class="insight-hero__category">
@@ -68,6 +56,4 @@
           </span>
         {% endif %}
       </div>
-    </div>
-  </div>
 </div>

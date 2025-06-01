@@ -20,29 +20,27 @@
   - May include key statistics about the location
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
-
 <div class="section-content section-location-info">
-  <h3 class="section-title">{{ t.brand.location_intelligence }}</h3>
+  <h3 class="section-title">{% include helpers/t.html key="brand.location_intelligence" fallback="Location Intelligence" lang=page.lang %}</h3>
 
   <ul class="location-info-list">
     {% if insight.location_city %}
       <li class="location-info-item">
-        <span class="location-info-label">{{ t.brand.location }}:</span>
+        <span class="location-info-label">{% include helpers/t.html key="brand.location" fallback="Location" lang=page.lang %}:</span>
         <span class="location-info-value">{{ insight.location_city }}</span>
       </li>
     {% endif %}
 
     {% if insight.location_region %}
       <li class="location-info-item">
-        <span class="location-info-label">{{ t.brand.location_region }}:</span>
+        <span class="location-info-label">{% include helpers/t.html key="brand.location_region" fallback="Region" lang=page.lang %}:</span>
         <span class="location-info-value">{{ insight.location_region }}</span>
       </li>
     {% endif %}
 
     {% if insight.location_country %}
       <li class="location-info-item">
-        <span class="location-info-label">{{ t.brand.location_country }}:</span>
+        <span class="location-info-label">{% include helpers/t.html key="brand.location_country" fallback="Country" lang=page.lang %}:</span>
         <span class="location-info-value">
           {% include components/helpers/country-name.html code=insight.location_country %}
         </span>

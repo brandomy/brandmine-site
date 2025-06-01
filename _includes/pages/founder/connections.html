@@ -5,7 +5,7 @@
     - founder: The founder object to display (default: page)
   Dependencies:
     - assets/css/pages/founder/connections.scss
-    - site.data.translations[lang].founder
+    - helpers/t.html for translations
     - components/cards/founder-card.html
     - components/cards/insight-card.html
 
@@ -15,7 +15,7 @@
 {% endcomment %}
 
 {% assign founder = include.founder | default: page %}
-{% assign t = site.data.translations[founder.lang].founder %}
+{% comment %} Translation handled by helpers/t.html includes {% endcomment %}
 
 <div class="founder-connections">
   
@@ -27,7 +27,7 @@
   {% if same_market_founders.size > 0 %}
   <div class="founder-connections__section">
     <h3 class="founder-connections__title">
-      {{ t.related_founders | default: "Related Founders" }}
+      {% include helpers/t.html key="founder.related_founders" fallback="Related Founders" lang=founder.lang %}
     </h3>
     
     <div class="founder-connections__grid">
@@ -71,7 +71,7 @@
   {% if founder_insights.size > 0 %}
   <div class="founder-connections__section">
     <h3 class="founder-connections__title">
-      {{ t.related_insights | default: "Related Insights" }}
+      {% include helpers/t.html key="founder.related_insights" fallback="Related Insights" lang=founder.lang %}
     </h3>
     
     <div class="founder-connections__grid">
@@ -87,7 +87,7 @@
   {% if founder.connections and founder.connections.size > 0 %}
   <div class="founder-connections__section">
     <h3 class="founder-connections__title">
-      {{ t.founder_network | default: "Founder Network" }}
+      {% include helpers/t.html key="founder.founder_network" fallback="Founder Network" lang=founder.lang %}
     </h3>
     
     <div class="founder-connections__network">
@@ -104,13 +104,13 @@
   <!-- Call to Action -->
   <div class="founder-connections__cta">
     <h3 class="founder-connections__title">
-      {{ t.connect_with_founder | default: "Connect with this Founder" }}
+      {% include helpers/t.html key="founder.connect_with_founder" fallback="Connect with this Founder" lang=founder.lang %}
     </h3>
     
-    <p>{{ t.connect_description | default: "Interested in learning more about this founder's journey or exploring potential partnerships?" }}</p>
+    <p>{% include helpers/t.html key="founder.connect_description" fallback="Interested in learning more about this founder's journey or exploring potential partnerships?" lang=founder.lang %}</p>
     
     <a href="{{ site.baseurl }}/{{ founder.lang }}/contact/?founder={{ founder.ref }}" class="btn btn-primary">
-      {{ site.data.translations[founder.lang].buttons.get_in_touch | default: "Get in Touch" }}
+      {% include helpers/t.html key="buttons.get_in_touch" fallback="Get in Touch" lang=founder.lang %}
     </a>
   </div>
 </div>

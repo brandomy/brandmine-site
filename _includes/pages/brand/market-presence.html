@@ -1,9 +1,8 @@
 <!-- _includes/pages/brand/market-presence.html -->
-{% assign t = site.data.translations[page.lang].brand %}
 
 <section class="brand-section brand-section--market-presence" id="market-presence">
   <div class="brand-section__container">
-    <h2 class="brand-section__title">{{ t.market_presence }}</h2>
+    <h2 class="brand-section__title">{% include helpers/t.html key="brand.market_presence" fallback="Market Presence" lang=page.lang %}</h2>
 
     <div class="market-presence">
       <!-- Market Presence Content from Markdown -->
@@ -25,12 +24,12 @@
       <!-- Distribution Models if available -->
       {% if page.distribution_models and page.distribution_models.size > 0 %}
         <div class="market-presence__distribution">
-          <h3 class="market-presence__distribution-title">{{ t.distribution_models }}</h3>
+          <h3 class="market-presence__distribution-title">{% include helpers/t.html key="brand.distribution_models" fallback="Distribution Models" lang=page.lang %}</h3>
 
           <ul class="distribution-models">
             {% for model in page.distribution_models %}
               <li class="distribution-model">
-                {{ site.data.translations[page.lang].distribution_models[model] | default: model }}
+                {% include helpers/t.html key="distribution_models.{{ model }}" fallback=model lang=page.lang %}
               </li>
             {% endfor %}
           </ul>

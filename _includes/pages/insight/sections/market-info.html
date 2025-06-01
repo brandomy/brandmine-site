@@ -19,10 +19,8 @@
   - May include external sources or data references
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
-
 <div class="section-content section-market-info">
-  <h3 class="section-title">{{ t.brand.market_presence }}</h3>
+  <h3 class="section-title">{% include helpers/t.html key="brand.market_presence" fallback="Market Presence" lang=page.lang %}</h3>
 
   {% if insight.market_data %}
     <ul class="market-data-list">
@@ -34,6 +32,6 @@
       {% endfor %}
     </ul>
   {% else %}
-    <p class="market-data-empty">Market data not available.</p>
+    <p class="market-data-empty">{% include helpers/t.html key="insights.market_data_not_available" fallback="Market data not available." lang=page.lang %}</p>
   {% endif %}
 </div>

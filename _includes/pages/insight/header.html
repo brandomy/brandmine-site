@@ -19,8 +19,6 @@
   - insight-article layout via sections array
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].insights %}
-
 <div class="insight-header">
   <h1 class="insight-title">{{ insight.title }}</h1>
 
@@ -33,17 +31,17 @@
           size="sm"
           class="insight-category-icon" %}
         {% assign normalized_category = insight.category | replace: "-", "_" %}
-        {{ t[normalized_category] | default: insight.category }}
+        {% include helpers/t.html key="insights.{{ normalized_category }}" fallback=insight.category lang=page.lang %}
       </span>
     {% endif %}
 
     <span class="insight-date">
-      {{ t.published_on }} {% if insight.date %}{{ insight.date | date: "%B %d, %Y" }}{% endif %}
+      {% include helpers/t.html key="insights.published_on" fallback="Published on" lang=page.lang %} {% if insight.date %}{{ insight.date | date: "%B %d, %Y" }}{% endif %}
     </span>
 
     {% if insight.author %}
       <span class="insight-author">
-        {{ t.author }}: {{ site.data.translations[page.lang].authors[insight.author] }}
+        {% include helpers/t.html key="insights.author" fallback="Author" lang=page.lang %}: {{ site.data.translations[page.lang].authors[insight.author] }}
       </span>
     {% endif %}
 
@@ -56,7 +54,7 @@
 
   {% if insight.premium %}
     <div class="premium-badge">
-      <i class="fas fa-star"></i> {{ t.premium_content }}
+      <i class="fas fa-star"></i> {% include helpers/t.html key="insights.premium_content" fallback="Premium Content" lang=page.lang %}
     </div>
   {% endif %}
 </div>

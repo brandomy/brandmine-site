@@ -12,7 +12,7 @@
 
 {% if related_insights.size > 0 %}
 <div class="brand-sidebar__section">
-  <h3 class="brand-sidebar__heading">{{ site.data.translations[include.lang].brand.related_insights }}</h3>
+  <h3 class="brand-sidebar__heading">{% include helpers/t.html key="brand.related_insights" fallback="Related Insights" lang=include.lang %}</h3>
   {% for insight in related_insights %}
   <div class="brand-sidebar__related-insight">
     <h4 class="brand-sidebar__insight-title">
@@ -20,7 +20,7 @@
     </h4>
     <span class="brand-sidebar__insight-type">
       {% capture category_key %}{{ insight.category | replace: "-", "_" }}{% endcapture %}
-      {{ site.data.translations[include.lang].insights[category_key] | default: insight.category }}
+      {% include helpers/t.html key="insights.{{ category_key }}" fallback=insight.category lang=include.lang %}
     </span>
   </div>
   {% endfor %}

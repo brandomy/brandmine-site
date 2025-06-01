@@ -5,7 +5,7 @@
     - founder: The founder object to display (default: page)
   Dependencies:
     - assets/css/pages/founder.scss (styles for expertise-cloud)
-    - site.data.translations[lang].founder
+    - helpers/t.html for translations
 
   Usage examples:
     {% include pages/founder/sections/expertise-cloud.html %}
@@ -17,14 +17,14 @@
 {% if founder.expertise and founder.expertise.size > 0 %}
 <div class="expertise-cloud">
   <h3 class="expertise-cloud__title">
-    {{ site.data.translations[founder.lang].founder.expertise | default: "Areas of Expertise" }}
+    {% include helpers/t.html key="founder.expertise" fallback="Areas of Expertise" lang=founder.lang %}
   </h3>
   
   <div class="expertise-cloud__tags">
     {% for expertise in founder.expertise %}
       <a href="{{ site.baseurl }}/{{ founder.lang }}/founders/?expertise={{ expertise | url_encode }}" 
          class="expertise-cloud__tag {% if forloop.first %}expertise-cloud__tag--primary{% endif %}"
-         title="{{ site.data.translations[founder.lang].founder.find_similar | default: 'Find other founders with this expertise' }}">
+         title="{% include helpers/t.html key="founder.find_similar" fallback="Find other founders with this expertise" lang=founder.lang %}">
         {{ expertise }}
       </a>
     {% endfor %}

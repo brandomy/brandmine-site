@@ -1,9 +1,8 @@
 <!-- _includes/pages/brand/brand-story.html -->
-{% assign t = site.data.translations[page.lang].brand %}
 
 <section class="brand-section brand-section--brand-story" id="brand-story">
   <div class="brand-section__container">
-    <h2 class="brand-section__title">{{ t.about }}</h2>
+    <h2 class="brand-section__title">{% include helpers/t.html key="brand.about" fallback="About" lang=page.lang %}</h2>
 
     <div class="brand-story">
       <div class="brand-story__content">
@@ -18,7 +17,7 @@
       <!-- Timeline if available -->
       {% if page.timeline and page.timeline.size > 0 %}
         <div class="brand-story__timeline">
-          <h3 class="brand-story__timeline-title">{{ t.timeline }}</h3>
+          <h3 class="brand-story__timeline-title">{% include helpers/t.html key="brand.timeline" fallback="Timeline" lang=page.lang %}</h3>
 
           <ul class="timeline">
             {% for event in page.timeline %}

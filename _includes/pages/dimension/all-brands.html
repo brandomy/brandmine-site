@@ -27,8 +27,7 @@
   {% endif %}
 {% endfor %}
 
-{% assign heading_default = site.data.translations[dimension.lang].dimensions.all | default: "All" %}
-{% assign heading_default = heading_default | append: " " | append: dimension.title | append: " (" | append: filtered_brands.size | append: ")" %}
+{% capture heading_default %}{% include helpers/t.html key="dimensions.all" fallback="All" lang=dimension.lang %} {{ dimension.title }} ({{ filtered_brands.size }}){% endcapture %}
 {% assign heading = include.heading | default: heading_default %}
 
 <div class="dimension-all-brands">
@@ -37,7 +36,7 @@
   <!-- Filter interface -->
   <div class="dimension-all-brands__filter-controls">
     <div class="dimension-all-brands__filter-search">
-      <input type="text" class="dimension-all-brands__filter-input" placeholder="{{ site.data.translations[dimension.lang].dimensions.search_brands | default: 'Search brands...' }}" id="brandsSearchInput">
+      <input type="text" class="dimension-all-brands__filter-input" placeholder="{% include helpers/t.html key="dimensions.search_brands" fallback="Search brands..." lang=dimension.lang %}" id="brandsSearchInput">
       <button class="dimension-all-brands__filter-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </button>
@@ -45,14 +44,14 @@
     
     <div class="dimension-all-brands__filter-options">
       <select class="dimension-all-brands__filter-select" id="brandsSortSelect">
-        <option value="name-asc">{{ site.data.translations[dimension.lang].dimensions.name_az | default: "Name (A-Z)" }}</option>
-        <option value="name-desc">{{ site.data.translations[dimension.lang].dimensions.name_za | default: "Name (Z-A)" }}</option>
-        <option value="latest">{{ site.data.translations[dimension.lang].dimensions.newest_first | default: "Newest First" }}</option>
+        <option value="name-asc">{% include helpers/t.html key="dimensions.name_az" fallback="Name (A-Z)" lang=dimension.lang %}</option>
+        <option value="name-desc">{% include helpers/t.html key="dimensions.name_za" fallback="Name (Z-A)" lang=dimension.lang %}</option>
+        <option value="latest">{% include helpers/t.html key="dimensions.newest_first" fallback="Newest First" lang=dimension.lang %}</option>
       </select>
       
       {% if dimension.tag_type == "sector" %}
       <select class="dimension-all-brands__filter-select" id="brandsMarketSelect">
-        <option value="all">{{ site.data.translations[dimension.lang].dimensions.all_markets | default: "All Markets" }}</option>
+        <option value="all">{% include helpers/t.html key="dimensions.all_markets" fallback="All Markets" lang=dimension.lang %}</option>
         {% for market in site.data.translations[dimension.lang].markets %}
           <option value="{{ market[0] }}">{{ market[1] }}</option>
         {% endfor %}
@@ -89,12 +88,12 @@
     <!-- Load more button for large lists -->
     {% if filtered_brands.size > 20 %}
     <div class="dimension-all-brands__load-more">
-      <button class="btn btn--secondary" id="loadMoreBrands">{{ site.data.translations[dimension.lang].dimensions.load_more | default: "Load More" }}</button>
+      <button class="btn btn--secondary" id="loadMoreBrands">{% include helpers/t.html key="dimensions.load_more" fallback="Load More" lang=dimension.lang %}</button>
     </div>
     {% endif %}
   {% else %}
     <div class="dimension-all-brands__empty">
-      <p>{{ site.data.translations[dimension.lang].dimensions.no_brands_found | default: "No brands found in this category." }}</p>
+      <p>{% include helpers/t.html key="dimensions.no_brands_found" fallback="No brands found in this category." lang=dimension.lang %}</p>
     </div>
   {% endif %}
 </div>

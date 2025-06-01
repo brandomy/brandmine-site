@@ -5,13 +5,13 @@
   Note: This section intentionally breaks out of the panel system for seamless header integration
   
   Dependencies:
-  - site.data.translations for founders navigation labels
+  - helpers/t.html for translation labels
 {% endcomment %}
 
 <div class="founder-breadcrumbs-wrapper">
   <nav class="founder-breadcrumbs" aria-label="Breadcrumb navigation">
     <a href="{{ site.baseurl }}/{{ page.lang }}/founders/" class="back-link">
-      ← {{ site.data.translations[page.lang].navigation.founders | default: "Founders" }}
+      ← {% include helpers/t.html key="navigation.founders" fallback="Founders" lang=page.lang %}
     </a>
   </nav>
 </div>

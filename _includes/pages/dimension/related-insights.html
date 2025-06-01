@@ -12,7 +12,10 @@
 {% endcomment %}
 
 {% assign dimension = include.dimension | default: page %}
-{% assign heading = include.heading | default: site.data.translations[dimension.lang].dimensions.related_insights | default: "Related Insights" %}
+{% assign heading = include.heading | default: "" %}
+{% if heading == "" %}
+  {% capture heading %}{% include helpers/t.html key="dimensions.related_insights" fallback="Related Insights" lang=dimension.lang %}{% endcapture %}
+{% endif %}
 {% assign limit = include.limit | default: 4 %}
 
 <div class="dimension-related-insights">
@@ -51,7 +54,7 @@
           <div class="dimension-related-insights__meta">
             <span class="dimension-related-insights__date">{{ insight.date | date: "%B %-d, %Y" }}</span>
             <a href="{{ insight.url | relative_url }}" class="dimension-related-insights__read-more">
-              {{ site.data.translations[dimension.lang].dimensions.read_more | default: "Read More" }}
+              {% include helpers/t.html key="dimensions.read_more" fallback="Read More" lang=dimension.lang %}
             </a>
           </div>
         </div>
@@ -62,14 +65,14 @@
     {% if filtered_insights.size > limit %}
     <div class="dimension-related-insights__view-all">
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/insights/?{{ dimension.tag_type }}={{ dimension.tag }}" class="btn btn--secondary">
-        {{ site.data.translations[dimension.lang].dimensions.view_all_insights | default: "View All Insights" }}
+        {% include helpers/t.html key="dimensions.view_all_insights" fallback="View All Insights" lang=dimension.lang %}
       </a>
     </div>
     {% endif %}
   {% else %}
     <div class="dimension-related-insights__empty">
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path><path d="M8 10h8M8 14h8"></path></svg>
-      <p>{{ site.data.translations[dimension.lang].dimensions.no_insights | default: "No related insights available." }}</p>
+      <p>{% include helpers/t.html key="dimensions.no_insights" fallback="No related insights available." lang=dimension.lang %}</p>
     </div>
   {% endif %}
 </div>

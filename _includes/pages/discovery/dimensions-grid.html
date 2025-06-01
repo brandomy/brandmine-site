@@ -7,13 +7,6 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
 
 {% comment %} Use translation helper for logic light architecture {% endcomment %}
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang] %}
-{% assign discovery = t.discovery %}
-{% assign nav = t.nav %}
-{% assign sectors = t.sectors %}
-{% assign markets = t.markets %}
-{% assign attributes = t.attributes %}
-{% assign signals = t.signals %}
 
 <div class="discovery-dimensions">
   <div class="discovery-dimensions__grid">
@@ -28,29 +21,28 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
                   <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
                 </svg>
               </span>
-              {{ nav.sectors | default: "Sectors" }}
+              {% include helpers/t.html key="nav.sectors" fallback="Sectors" lang=current_lang %}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ discovery.sectors_description | default: "Explore leading brands from top sectors in the BRICS+" }}
+              {% include helpers/t.html key="discovery.sectors_description" fallback="Explore leading brands from top sectors in the BRICS+" lang=current_lang %}
             </p>
             <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/" class="discovery-dimensions__link">
-              {{ discovery.view_all_sectors | default: "View All Sectors" }}
+              {% include helpers/t.html key="discovery.view_all_sectors" fallback="View All Sectors" lang=current_lang %}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for sector in sectors limit:5 %}
-              {% assign slug = sector[0] %}
-              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/{{ slug }}/"
+            {% for sector in site.data.sectors.sectors limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/{{ sector.id }}/"
                  class="tag tag--sector">
-                {{ sector[1] }}
+                {{ sector.name[current_lang] | default: sector.name.en }}
               </a>
             {% endfor %}
 
-            {% if sectors.size > 5 %}
+            {% if site.data.sectors.sectors.size > 5 %}
               <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/"
                  class="tag tag--more tag--sector">
-                {{ discovery.more | default: "More" }}...
+                {% include helpers/t.html key="discovery.more" fallback="More" lang=current_lang %}...
               </a>
             {% endif %}
           </div>
@@ -68,22 +60,21 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
                   <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
               </span>
-              {{ nav.markets | default: "Markets" }}
+              {% include helpers/t.html key="nav.markets" fallback="Markets" lang=current_lang %}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ discovery.markets_description | default: "Explore brands from growing BRICS+ regions" }}
+              {% include helpers/t.html key="discovery.markets_description" fallback="Explore brands from growing BRICS+ regions" lang=current_lang %}
             </p>
             <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/" class="discovery-dimensions__link">
-              {{ discovery.view_all_markets | default: "View All Markets" }}
+              {% include helpers/t.html key="discovery.view_all_markets" fallback="View All Markets" lang=current_lang %}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for market in markets limit:5 %}
-              {% assign slug = market[0] %}
-              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/{{ slug }}/"
+            {% for market in site.data.markets.markets limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/{{ market.id }}/"
                  class="tag tag--market">
-                {{ market[1] }}
+                {{ market.name[current_lang] | default: market.name.en }}
               </a>
             {% endfor %}
           </div>
@@ -101,22 +92,21 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
                   <line x1="7" y1="7" x2="7.01" y2="7"></line>
                 </svg>
               </span>
-              {{ nav.attributes | default: "Attributes" }}
+              {% include helpers/t.html key="nav.attributes" fallback="Attributes" lang=current_lang %}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ discovery.attributes_description | default: "Explore brands with distinctive features from the BRICS+" }}
+              {% include helpers/t.html key="discovery.attributes_description" fallback="Explore brands with distinctive features from the BRICS+" lang=current_lang %}
             </p>
             <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/" class="discovery-dimensions__link">
-              {{ discovery.view_all_attributes | default: "View All Attributes" }}
+              {% include helpers/t.html key="discovery.view_all_attributes" fallback="View All Attributes" lang=current_lang %}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for attribute in attributes limit:5 %}
-              {% assign slug = attribute[0] %}
-              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/{{ slug }}/"
+            {% for attribute in site.data.attributes limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/{{ attribute.id }}/"
                  class="tag tag--attribute">
-                {{ attribute[1] }}
+                {{ attribute.name[current_lang] | default: attribute.name.en }}
               </a>
             {% endfor %}
           </div>
@@ -133,22 +123,21 @@ Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, at
                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                 </svg>
               </span>
-              {{ nav.signals | default: "Signals" }}
+              {% include helpers/t.html key="nav.signals" fallback="Signals" lang=current_lang %}
             </h2>
             <p class="discovery-dimensions__description">
-              {{ discovery.signals_description | default: "Explore brands poised for growth across different pathways" }}
+              {% include helpers/t.html key="discovery.signals_description" fallback="Explore brands poised for growth across different pathways" lang=current_lang %}
             </p>
             <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/" class="discovery-dimensions__link">
-              {{ discovery.view_all_signals | default: "View All Growth Signals" }}
+              {% include helpers/t.html key="discovery.view_all_signals" fallback="View All Growth Signals" lang=current_lang %}
             </a>
           </div>
 
           <div class="discovery-dimensions__tags">
-            {% for signal in signals limit:5 %}
-              {% assign slug = signal[0] %}
-              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/{{ slug }}/"
+            {% for signal in site.data.signals limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/{{ signal.id }}/"
                  class="tag tag--signal">
-                {{ signal[1] }}
+                {{ signal.name[current_lang] | default: signal.name.en }}
               </a>
             {% endfor %}
           </div>

@@ -6,8 +6,6 @@
 
 {% assign brand = include.brand %}
 {% assign data_source = include.data_source | default: "curated" %}
-{% assign t = site.data.translations[brand.lang].brand %}
-{% assign tags_t = site.data.translations[brand.lang].tags %}
 
 {% comment %} Field mapping: YAML → JSON fallback {% endcomment %}
 {% assign brand_name = brand.title | default: brand.name %}
@@ -16,9 +14,7 @@
 {% assign founding_year = brand.founding_year | default: brand.founded %}
 {% assign website = brand.website %}
 
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <div class="brand-identity">
+<div class="brand-identity">
       <div class="brand-identity__header">
         <h1 id="heading-identity" class="brand-identity__name">{{ brand_name }}</h1>
         {% if brand_slogan %}
@@ -30,21 +26,21 @@
         
         {% comment %} Data source indicator {% endcomment %}
         {% if data_source == "basic" %}
-          <span class="data-badge data-badge--basic">{{ site.data.translations[brand.lang].ui.basic_profile | default: "Basic Profile" }}</span>
+          <span class="data-badge data-badge--basic">{% include helpers/t.html key="ui.basic_profile" fallback="Basic Profile" lang=brand.lang %}</span>
         {% endif %}
       </div>
       
       <div class="brand-identity__meta">
         {% if founding_year %}
         <div class="meta-item">
-          <span class="meta-label">{{ t.founding_year | default: "Founded" }}:</span>
+          <span class="meta-label">{% include helpers/t.html key="brand.founding_year" fallback="Founded" lang=brand.lang %}:</span>
           <span class="meta-value">{{ founding_year }}</span>
         </div>
         {% endif %}
         
         {% if brand.location %}
         <div class="meta-item">
-          <span class="meta-label">{{ t.location | default: "Location" }}:</span>
+          <span class="meta-label">{% include helpers/t.html key="brand.location" fallback="Location" lang=brand.lang %}:</span>
           <span class="meta-value">
             {{ brand.location.city }}{% if brand.location.region %}, {{ brand.location.region }}{% endif %}
           </span>
@@ -53,7 +49,7 @@
         
         {% if website %}
         <div class="meta-item">
-          <span class="meta-label">{{ t.website | default: "Website" }}:</span>
+          <span class="meta-label">{% include helpers/t.html key="brand.website" fallback="Website" lang=brand.lang %}:</span>
           <a href="{{ website }}" target="_blank" class="meta-value meta-link">{{ website | remove: 'https://' | remove: 'http://' }}</a>
         </div>
         {% endif %}
@@ -64,7 +60,7 @@
         <!-- Markets -->
         {% if brand.markets and brand.markets.size > 0 %}
           <div class="taxonomy-group">
-            <h3 class="taxonomy-heading">{{ tags_t.markets | default: "Markets" }}</h3>
+            <h3 class="taxonomy-heading">{% include helpers/t.html key="tags.markets" fallback="Markets" lang=brand.lang %}</h3>
             <div class="taxonomy-tags">
               {% for market in brand.markets %}
                 <span class="tag tag--market">
@@ -78,7 +74,7 @@
         <!-- Sectors -->
         {% if brand.sectors and brand.sectors.size > 0 %}
           <div class="taxonomy-group">
-            <h3 class="taxonomy-heading">{{ tags_t.sectors | default: "Sectors" }}</h3>
+            <h3 class="taxonomy-heading">{% include helpers/t.html key="tags.sectors" fallback="Sectors" lang=brand.lang %}</h3>
             <div class="taxonomy-tags">
               {% for sector in brand.sectors %}
                 <span class="tag tag--sector">
@@ -92,7 +88,7 @@
         <!-- Attributes -->
         {% if brand.attributes and brand.attributes.size > 0 %}
           <div class="taxonomy-group">
-            <h3 class="taxonomy-heading">{{ tags_t.attributes | default: "Attributes" }}</h3>
+            <h3 class="taxonomy-heading">{% include helpers/t.html key="tags.attributes" fallback="Attributes" lang=brand.lang %}</h3>
             <div class="taxonomy-tags">
               {% for attribute in brand.attributes %}
                 <span class="tag tag--attribute">
@@ -106,7 +102,7 @@
         <!-- Signals -->
         {% if brand.signals and brand.signals.size > 0 %}
           <div class="taxonomy-group">
-            <h3 class="taxonomy-heading">{{ tags_t.signals | default: "Signals" }}</h3>
+            <h3 class="taxonomy-heading">{% include helpers/t.html key="tags.signals" fallback="Signals" lang=brand.lang %}</h3>
             <div class="taxonomy-tags">
               {% for signal in brand.signals %}
                 <span class="tag tag--signal">
@@ -117,6 +113,4 @@
           </div>
         {% endif %}
       </div>
-    </div>
-  </div>
 </div>

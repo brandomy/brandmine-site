@@ -6,8 +6,8 @@
     - limit: Maximum number of insights to display (default: 3)
   Dependencies:
     - assets/css/pages/founder/related-insights.scss
-    - site.data.translations[lang].founder
-    - site.data.translations[lang].insights
+    - helpers/t.html for translations
+    - helpers/t.html for translations
     - components/images/collection-image.html
 
   Usage examples:
@@ -23,7 +23,7 @@
 {% assign related_insights = site.insights | where: "lang", founder.lang | where: "category", "founders-journey" | where_exp: "item", "item.brands contains first_brand" | limit: limit %}
 {% if related_insights.size > 0 %}
 <div class="founder-profile__insights mt-3">
-  <h3>{{ site.data.translations[founder.lang].founder.related_insights | default: "Related Insights" }}</h3>
+  <h3>{% include helpers/t.html key="founder.related_insights" fallback="Related Insights" lang=founder.lang %}</h3>
   {% for insight in related_insights %}
   <div class="founder-profile__insight-card">
     <div class="founder-profile__insight-image">
@@ -36,7 +36,7 @@
     <div class="founder-profile__insight-content">
       <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
       <span class="founder-profile__insight-type">
-        {{ site.data.translations[founder.lang].insights.founders_journey | default: "Founder's Journey" }}
+        {% include helpers/t.html key="insights.founders_journey" fallback="Founder's Journey" lang=founder.lang %}
       </span>
       <p class="founder-profile__insight-excerpt">{{ insight.excerpt | truncate: 100 }}</p>
     </div>

@@ -19,12 +19,16 @@
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
-    {% assign section_title = include.title | default: site.data.translations[page.lang].founders.recent.title | default: "Recently Added Founders" %}
+    {% if include.title %}
+      {% assign section_title = include.title %}
+    {% else %}
+      {% capture section_title %}{% include helpers/t.html key="founders.recent.title" fallback="Recently Added Founders" %}{% endcapture %}
+    {% endif %}
     <h2 class="panel__heading-secondary">
       {{ section_title }}
     </h2>
 
-    {% assign description_text = site.data.translations[page.lang].founders.recent.description | default: "Meet the newest founder profiles added to our growing network of BRICS+ business leaders." %}
+    {% capture description_text %}{% include helpers/t.html key="founders.recent.description" fallback="Meet the newest founder profiles added to our growing network of BRICS+ business leaders." %}{% endcapture %}
     {% if description_text %}
       <p class="panel__lead-text">
         {{ description_text }}
@@ -38,7 +42,7 @@
       {% endfor %}
     </div>
 
-    {% assign view_all_text = site.data.translations[page.lang].founders.recent.view_all | default: "View All Recent Founders" %}
+    {% capture view_all_text %}{% include helpers/t.html key="founders.recent.view_all" fallback="View All Recent Founders" %}{% endcapture %}
     {% if view_all_text %}
       <div class="recent-founders__footer">
         <a href="{{ site.baseurl }}/{{ page.lang }}/founders/?sort=recent" class="btn btn--primary">

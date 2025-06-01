@@ -30,9 +30,7 @@
 {% assign brand = include.brand | default: page %}
 {% assign current_lang = brand.lang | default: 'en' %}
 
-<div class="panel panel--hero-subtle">
-  <div class="panel__content">
-    <div class="brand-hero">
+<div class="brand-hero">
       <h1 class="brand-hero__title">
         {{ brand.title }}
       </h1>
@@ -57,6 +55,4 @@
           </span>
         {% endif %}
       </div>
-    </div>
-  </div>
 </div>

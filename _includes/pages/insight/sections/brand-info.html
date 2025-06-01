@@ -20,11 +20,9 @@
   - Includes a button linking to the brand profile
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
-
 {% if insight.brands.size > 0 %}
   <div class="section-content section-brand-info">
-    <h3 class="section-title">{{ t.insights.featured_brands }}</h3>
+    <h3 class="section-title">{% include helpers/t.html key="insights.featured_brands" fallback="Featured Brands" lang=page.lang %}</h3>
 
     {% for brand_slug in insight.brands %}
       {% assign brand_parts = brand_slug | split: "-" %}
@@ -49,14 +47,14 @@
 
           {% if insight.founding_year %}
             <div class="brand-founding-year">
-              {{ t.brand.founding_year }}: {{ insight.founding_year }}
+              {% include helpers/t.html key="brand.founding_year" fallback="Founded" lang=page.lang %}: {{ insight.founding_year }}
             </div>
           {% endif %}
 
           {% if insight.website %}
             <div class="brand-website">
               <a href="{{ insight.website }}" target="_blank" rel="noopener">
-                {{ t.brand.website }} <i class="fas fa-external-link-alt"></i>
+                {% include helpers/t.html key="brand.website" fallback="Website" lang=page.lang %} <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
           {% endif %}
@@ -74,14 +72,14 @@
             alt=founder_alt %}
 
           <div class="founder-badge">
-            <i class="fas fa-user"></i> {{ t.brand.founder_led }}
+            <i class="fas fa-user"></i> {% include helpers/t.html key="brand.founder_led" fallback="Founder-Led" lang=page.lang %}
           </div>
         </div>
       {% endif %}
 
       <div class="brand-cta">
         <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_slug }}/" class="btn btn-primary btn-sm">
-          {{ t.buttons.view_profile }}
+          {% include helpers/t.html key="buttons.view_profile" fallback="View Profile" lang=page.lang %}
         </a>
       </div>
     {% endfor %}

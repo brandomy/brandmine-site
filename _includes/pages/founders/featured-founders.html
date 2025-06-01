@@ -20,11 +20,19 @@
 
 <div class="panel panel--{{ panel_type }}">
   <div class="panel__content">
-    {% assign section_title = include.title | default: site.data.translations[page.lang].founders.featured.title | default: "Featured Founders" %}
+    {% if include.title %}
+      {% assign section_title = include.title %}
+    {% else %}
+      {% capture section_title %}{% include helpers/t.html key="founders.featured.title" fallback="Featured Founders" %}{% endcapture %}
+    {% endif %}
     <h2 class="panel__heading-secondary">
       {{ section_title }}
     </h2>
-    {% assign section_description = include.description | default: site.data.translations[page.lang].founders.featured.description | default: "Meet the visionary founders driving innovation across BRICS+ markets." %}
+    {% if include.description %}
+      {% assign section_description = include.description %}
+    {% else %}
+      {% capture section_description %}{% include helpers/t.html key="founders.featured.description" fallback="Meet the visionary founders driving innovation across BRICS+ markets." %}{% endcapture %}
+    {% endif %}
     <p class="panel__lead-text">
       {{ section_description }}
     </p>
@@ -36,7 +44,7 @@
       {% endfor %}
     </div>
 
-    {% assign view_all_text = site.data.translations[page.lang].founders.featured.view_all | default: "View All Featured Founders" %}
+    {% capture view_all_text %}{% include helpers/t.html key="founders.featured.view_all" fallback="View All Featured Founders" %}{% endcapture %}
     {% if view_all_text %}
       <div class="featured-founders__footer">
         <a href="{{ site.baseurl }}/{{ page.lang }}/founders/?featured=true" class="btn btn--primary">
