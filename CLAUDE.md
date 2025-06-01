@@ -518,17 +518,16 @@ General Rule:
 # 💾 Data Management
 
 - Initially using Jekyll collections and front matter
-- **Insights Blog Platform** - Five standardized article types with full blog functionality:
+- **Insights Blog Platform** - Four standardized article types with full blog functionality:
   1. **Brand Spotlight** - In-depth profiles of noteworthy brands
   2. **Founder's Journey** - Personal stories behind the brands
   3. **Market Momentum** - Achievements, milestones, and expansion moments
   4. **Location Intelligence** - Geographical insights and regional context
-  5. **Company News** - Latest updates, announcements, and company developments
 - **Blog Features** - Featured articles, pagination, RSS feeds, social sharing
 
 - **Founders' Journal Blog** - Personal blog section documenting the Brandmine journey:
   - **Purpose**: Transparent documentation of building Brandmine and exploring BRICS+ markets
-  - **Content Types**: Technical insights, market research learnings, founder reflections
+  - **Content Types**: Technical insights, market research learnings, founder reflections, company news
   - **Architecture**: Uses Jekyll posts collection with multilingual support
   - **URL Structure**: `/[lang]/journal/YYYY/MM/DD/post-slug/` for language-specific access
   - **Features**: Featured articles, responsive images with srcset, reusable entry cards
@@ -760,13 +759,14 @@ The **Insights collection** functions as Brandmine's full-featured blog platform
 
 ### Content Categories
 
-Insights articles must use one of the five standardized content categories:
+Insights articles must use one of the four standardized content categories:
 
 1. **Brand Spotlight**: In-depth profiles of noteworthy BRICS+ brands gaining international momentum.
 2. **Founder's Journey**: Personal stories behind the brands and the visionaries who created them.
 3. **Market Momentum**: Notable achievements, milestones, and expansion moments for emerging BRICS+ brands.
 4. **Location Intelligence**: Geographical insights and regional context that shape brand development and opportunities.
-5. **Company News**: Latest updates, announcements, and developments from BRICS+ consumer brands.
+
+**Note**: Company news content is now published within the Founders' Journal section instead of the Insights collection.
 
 Each category has defined metadata including recommended length, reading time, and content guidelines (stored in `_data/insights/{lang}.yml`).
 
