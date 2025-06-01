@@ -1,0 +1,27 @@
+{% comment %}
+  Component: pages/about/hero.html
+
+  Purpose: Displays the hero section at the top of the About page
+
+  Parameters:
+    title (optional): Main heading, defaults to About translation
+    subtitle (optional): Subtitle text, defaults to About description
+    panel_type (optional): Panel background style, defaults to "hero"
+
+  Dependencies:
+    - CSS: pages/about/hero.scss
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "hero" %}
+{% assign current_lang = include.lang | default: page.lang | default: 'en' %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary about-hero__title">
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.title" fallback="About Brandmine" %}{% endunless %}
+    </h1>
+    <p class="panel__subtitle about-hero__subtitle">
+      {{ include.subtitle | default: "" }}{% unless include.subtitle %}{% include helpers/t.html key="about.description" fallback="Illuminating and Elevating Founder-led Brands from the BRICS+" %}{% endunless %}
+    </p>
+  </div>
+</div>

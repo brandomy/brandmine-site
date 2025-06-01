@@ -7,20 +7,16 @@
 {% assign panel_type = include.panel_type | default: "amber-soft" %}
 {% assign limit = include.limit | default: 4 %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">
-      {{ include.title | default: t.featured_brands }}
-    </h2>
-    <p class="panel__lead-text">
-      {{ include.description | default: t.featured_description }}
-    </p>
+<h2 class="panel__heading-secondary">
+  {{ include.title | default: t.featured_brands }}
+</h2>
+<p class="panel__lead-text">
+  {{ include.description | default: t.featured_description }}
+</p>
 
-    <div class="featured-brands__grid">
-      {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 4 %}
-      {% for brand in featured_brands %}
-        {% include components/cards/hero-brand-card.html brand=brand %}
-      {% endfor %}
-    </div>
-  </div>
+<div class="featured-brands__grid">
+  {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 4 %}
+  {% for brand in featured_brands %}
+    {% include components/cards/hero-brand-card.html brand=brand %}
+  {% endfor %}
 </div>

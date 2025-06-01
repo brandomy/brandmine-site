@@ -34,15 +34,46 @@ layout: default
     </section>
   {% endif %}
   
-  {% comment %} All other sections use normal layout {% endcomment %}
+  {% comment %} All other sections use panel wrapper logic {% endcomment %}
   {% for section in sections_to_render %}
     {% unless section == "breadcrumbs" %}
       <section class="brands-section brands-section--{{ section }}" id="brands-section-{{ section }}" aria-labelledby="heading-{{ section }}">
+        {% comment %} Determine panel type for each section {% endcomment %}
+        {% case section %}
+          {% when "hero" %}
+            {% assign panel_type = "panel--hero" %}
+          {% when "impact" %}
+            {% assign panel_type = "panel--primary" %}
+            {% assign additional_classes = "panel--impact" %}
+          {% when "featured-brands" %}
+            {% assign panel_type = "panel--amber-soft" %}
+          {% when "contact-cta" %}
+            {% assign panel_type = "panel--cta" %}
+            {% assign content_classes = "panel--centered" %}
+          {% else %}
+            {% assign panel_type = "panel--light" %}
+        {% endcase %}
+        
+        {% comment %} Use panel wrapper for section rendering {% endcomment %}
         {% if section == "content" %}
-          {% include pages/brands/{{ section }}.html content=page_content %}
+          {% include helpers/panel-wrapper.html 
+             type=panel_type 
+             additional_classes=additional_classes
+             content_classes=content_classes
+             content_include="pages/brands/content.html" 
+             include_params="content=page_content" %}
         {% else %}
-          {% include pages/brands/{{ section }}.html %}
+          {% assign content_include_path = "pages/brands/" | append: section | append: ".html" %}
+          {% include helpers/panel-wrapper.html 
+             type=panel_type 
+             additional_classes=additional_classes
+             content_classes=content_classes
+             content_include=content_include_path %}
         {% endif %}
+        
+        {% comment %} Reset variables for next iteration {% endcomment %}
+        {% assign additional_classes = nil %}
+        {% assign content_classes = nil %}
       </section>
     {% endunless %}
   {% endfor %}

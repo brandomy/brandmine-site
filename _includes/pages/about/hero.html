@@ -1,27 +1,35 @@
 {% comment %}
   Component: pages/about/hero.html
-
-  Purpose: Displays the hero section at the top of the About page
-
-  Parameters:
-    title (optional): Main heading, defaults to About translation
-    subtitle (optional): Subtitle text, defaults to About description
-    panel_type (optional): Panel background style, defaults to "hero"
-
-  Dependencies:
-    - CSS: pages/about/hero.scss
+  Purpose: Split hero section for About page with text left, image right
+  Updated: 2025-05-31 - Changed from single panel to split layout
 {% endcomment %}
 
-{% assign panel_type = include.panel_type | default: "hero" %}
-{% assign current_lang = include.lang | default: page.lang | default: 'en' %}
+{% assign t = site.data.translations[page.lang].about %}
 
-<div class="panel panel--{{ panel_type }}">
+<div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary about-hero__title">
-      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.title" fallback="About Brandmine" %}{% endunless %}
-    </h1>
-    <p class="panel__subtitle about-hero__subtitle">
-      {{ include.subtitle | default: "" }}{% unless include.subtitle %}{% include helpers/t.html key="about.description" fallback="Illuminating and Elevating Founder-led Brands from the BRICS+" %}{% endunless %}
-    </p>
+    <div class="journal-hero journal-hero--teal journal-hero--landing">
+      <!-- Text Content Section -->
+      <div class="journal-hero__content">
+        <h1 class="journal-hero__title">
+          {% include helpers/t.html key="about.title" fallback="About Brandmine" %}
+        </h1>
+        <p class="journal-hero__subtitle">
+          {% include helpers/t.html key="about.description" fallback="Illuminating and Elevating Founder-led Brands from the BRICS+" %}
+        </p>
+      </div>
+      
+      <!-- Image Section -->
+      <div class="journal-hero__image">
+        {% include components/images/collection-image.html
+           collection="site"
+           category="pages"
+           slug="about"
+           purpose="hero"
+           alt="About Brandmine - our mission and vision"
+           class="journal-hero__img"
+           loading="eager" %}
+      </div>
+    </div>
   </div>
 </div>

@@ -38,15 +38,16 @@ location:
   region: "莫斯科州"
   country: "ru"
 
+# === IMAGES (Semantic structure that works with collection-image) ===
 images:
   logo:
-    name: "color"
+    name: "color"     # Becomes logo-color-400w.png
     ext: "png"
   hero:
-    name: "tearoom-interior"
+    name: "storefront"  # Becomes hero-tearoom-400w.jpg
     ext: "jpg"
   founder:
-    name: "portrait"
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
 
 social_media:

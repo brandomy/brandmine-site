@@ -3,12 +3,8 @@ Search Section for Brands Page
 Purpose: Provides a placeholder search interface to track user search interest
 {% endcomment %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    {% assign t = site.data.translations[page.lang].brands %}
-    {% include components/search/search-placeholder.html 
-       title=t.search.title
-       placeholder=t.search.placeholder 
-       id="brands-search" %}
-  </div>
-</div>
+{% assign t = site.data.translations[page.lang].brands %}
+{% include components/search/search-placeholder.html 
+   title=t.search.title
+   placeholder=t.search.placeholder 
+   id="brands-search" %}

@@ -91,6 +91,27 @@
     }
   }
 
+  // Reduced white space experiment - remove top/bottom padding from light panels
+  .panel--light {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    
+    .panel__content {
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
+      
+      @media (min-width: 768px) {
+        padding-top: var(--space-6);
+        padding-bottom: var(--space-6);
+      }
+      
+      @media (min-width: 992px) {
+        padding-top: var(--space-8);
+        padding-bottom: var(--space-8);
+      }
+    }
+  }
+
   // Article content should be full width and left-aligned
   .post-section--content .panel__content {
     max-width: var(--container-max-width); // Full width like other content

@@ -15,6 +15,7 @@ lang: ru
 reading_time: 8
 featured: true
 ref: maplibre-journey
+color_scheme: blue
 sections:
   - breadcrumbs
   - hero

@@ -44,10 +44,11 @@
 <article class="entry-card">
   {% comment %} Image section {% endcomment %}
   {% if item.images.hero %}
-    {% assign item_filename = item.path | split: '/' | last | split: '.' | first %}
-    {% assign hero_400w_path = image_base_path | append: item_filename | append: '/hero-400w.' | append: item.images.hero.ext %}
-    {% assign hero_800w_path = image_base_path | append: item_filename | append: '/hero-800w.' | append: item.images.hero.ext %}
-    {% assign hero_1200w_path = image_base_path | append: item_filename | append: '/hero-1200w.' | append: item.images.hero.ext %}
+    {% comment %} Use ref field for multilingual image support {% endcomment %}
+    {% assign item_slug = item.ref | default: item.path | split: '/' | last | split: '.' | first %}
+    {% assign hero_400w_path = image_base_path | append: item_slug | append: '/hero-400w.' | append: item.images.hero.ext %}
+    {% assign hero_800w_path = image_base_path | append: item_slug | append: '/hero-800w.' | append: item.images.hero.ext %}
+    {% assign hero_1200w_path = image_base_path | append: item_slug | append: '/hero-1200w.' | append: item.images.hero.ext %}
     <div class="entry-card__image">
       <img src="{{ hero_400w_path | relative_url }}" 
            srcset="{{ hero_400w_path | relative_url }} 400w,

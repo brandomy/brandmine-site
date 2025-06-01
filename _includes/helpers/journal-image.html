@@ -1,0 +1,61 @@
+{% comment %}
+  Component: helpers/journal-image.html
+  Purpose: Journal-specific image helper using ref-based paths
+  
+  Usage: {% include helpers/journal-image.html image_type="hero" loading="eager" %}
+  
+  Parameters:
+    - image_type: The type of image to load (default: "hero")
+    - loading: Loading behavior for the image (default: "lazy")
+    - alt: Custom alt text (optional, will auto-generate if not provided)
+    - class: Additional CSS classes for the image
+    
+  Dependencies:
+    - components/images/collection-image.html
+    - page.images frontmatter configuration
+    - page.ref field for ref-based image organization
+{% endcomment %}
+
+{% if page.images[include.image_type] %}
+  {% assign image_config = page.images[include.image_type] %}
+
+  {% comment %} Generate alt text {% endcomment %}
+  {% unless include.alt %}
+    {% if image_config.caption %}
+      {% assign auto_alt = image_config.caption %}
+    {% elsif include.image_type == 'hero' %}
+      {% assign auto_alt = page.title | append: " - featured image" %}
+    {% else %}
+      {% assign auto_alt = page.title | append: " - " | append: include.image_type %}
+    {% endif %}
+    {% assign final_alt = auto_alt %}
+  {% else %}
+    {% assign final_alt = include.alt %}
+  {% endunless %}
+
+  {% comment %} Map image types to purposes {% endcomment %}
+  {% case include.image_type %}
+    {% when 'hero' %}
+      {% assign purpose = "hero" %}
+      {% assign aspect = "landscape" %}
+    {% else %}
+      {% assign purpose = include.image_type %}
+      {% assign aspect = "landscape" %}
+  {% endcase %}
+
+  {% comment %} Use collection-image component with ref-based slug {% endcomment %}
+  {% include components/images/collection-image.html
+     collection="journal"
+     slug=page.ref
+     purpose=purpose
+     ext=image_config.ext
+     aspect=aspect
+     alt=final_alt
+     class=include.class
+     loading=include.loading %}
+
+{% else %}
+  <div class="image-placeholder">
+    <p>Image not found: {{ include.image_type }}</p>
+  </div>
+{% endif %}

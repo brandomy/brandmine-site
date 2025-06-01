@@ -1,0 +1,75 @@
+{% comment %}
+  Component: helpers/panel-wrapper.html
+  Purpose: Universal panel wrapper for section content
+  
+  This helper centralizes panel wrapper logic that was previously duplicated
+  across 40+ section includes. It maintains exact visual compatibility while
+  enabling centralized panel type and class management.
+  
+  Parameters:
+  - type (required): Panel type (e.g., "panel--light", "panel--hero", "panel--cta")
+  - content_include (required): Path to include file (e.g., "pages/brands/hero.html")
+  - additional_classes (optional): Extra CSS classes for the panel
+  - content_classes (optional): Extra CSS classes for panel__content
+  - include_params (optional): Parameters to pass to the included content
+  
+  Usage Examples:
+  
+  Basic usage:
+  {% include helpers/panel-wrapper.html 
+     type="panel--light" 
+     content_include="pages/brands/content.html" 
+     include_params="content=page_content" %}
+  
+  With additional classes:
+  {% include helpers/panel-wrapper.html 
+     type="panel--primary" 
+     additional_classes="panel--impact"
+     content_classes="panel--centered"
+     content_include="pages/brands/impact.html" %}
+  
+  Design Philosophy:
+  - Maintains exact same HTML output as current section includes
+  - Preserves all existing CSS class names and structure
+  - Allows centralized management of panel types
+  - Enables future enhancements (e.g., data-driven panel configuration)
+  
+  Migration Strategy:
+  - Replace panel wrapper code in section includes with content only
+  - Update layouts to use this helper for section rendering
+  - Test visual consistency before removing old patterns
+{% endcomment %}
+
+{% comment %} Parameter validation and defaults {% endcomment %}
+{% assign panel_type = include.type | default: "panel--light" %}
+{% assign panel_additional_classes = include.additional_classes | default: "" %}
+{% assign content_additional_classes = include.content_classes | default: "" %}
+{% assign content_path = include.content_include %}
+{% assign params = include.include_params | default: "" %}
+
+{% comment %} Build CSS classes {% endcomment %}
+{% assign panel_classes = "panel " | append: panel_type %}
+{% if panel_additional_classes != "" %}
+  {% assign panel_classes = panel_classes | append: " " | append: panel_additional_classes %}
+{% endif %}
+
+{% assign content_classes = "panel__content" %}
+{% if content_additional_classes != "" %}
+  {% assign content_classes = content_classes | append: " " | append: content_additional_classes %}
+{% endif %}
+
+{% comment %} Render panel with content {% endcomment %}
+<div class="{{ panel_classes }}">
+  <div class="{{ content_classes }}">
+    {% if params != "" %}
+      {% comment %} Special handling for content parameter passing {% endcomment %}
+      {% if params == "content=page_content" %}
+        {% include {{ content_path }} content=page_content %}
+      {% else %}
+        {% include {{ content_path }} %}
+      {% endif %}
+    {% else %}
+      {% include {{ content_path }} %}
+    {% endif %}
+  </div>
+</div>

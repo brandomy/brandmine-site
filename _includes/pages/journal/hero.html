@@ -96,15 +96,15 @@
       <!-- Image Section -->
       <div class="journal-hero__image">
         {% if hero_type == 'post' and post.images.hero %}
-          {% comment %} Use collection-image component for journal posts {% endcomment %}
-          {% assign post_filename = post.path | split: '/' | last | split: '.' | first %}
-          {% include components/images/collection-image.html
-             collection="journal"
-             slug=post_filename
-             purpose="hero"
-             alt=hero_alt
-             class="journal-hero__img"
-             loading="eager" %}
+          {% comment %} Use journal-image helper for ref-based image paths {% endcomment %}
+          {% include helpers/journal-image.html
+             image_type="hero"
+             loading="eager"
+             class="journal-hero__img" %}
+          
+          {% if post.images.hero.caption %}
+            <p class="journal-hero__caption">{{ post.images.hero.caption }}</p>
+          {% endif %}
         {% elsif hero_image %}
           {% comment %} Direct image path for landing pages {% endcomment %}
           {% if hero_image contains '-1200w.jpg' %}

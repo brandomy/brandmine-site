@@ -18,10 +18,9 @@
 {% endif %}
 
 {% if featured_post %}
-  {% comment %} Build hero image path using post filename (includes date) {% endcomment %}
+  {% comment %} Build hero image path using post ref field for clean directory names {% endcomment %}
   {% if featured_post.images.hero %}
-    {% assign post_filename = featured_post.path | split: '/' | last | split: '.' | first %}
-    {% assign hero_image_path = '/assets/images/journal/' | append: post_filename | append: '/hero-1200w.' | append: featured_post.images.hero.ext %}
+    {% assign hero_image_path = '/assets/images/journal/' | append: featured_post.ref | append: '/hero-1200w.' | append: featured_post.images.hero.ext %}
   {% else %}
     {% assign hero_image_path = '/assets/images/placeholders/insight-hero-1200w.jpg' %}
   {% endif %}

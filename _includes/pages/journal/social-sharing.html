@@ -1,74 +1,17 @@
 {% comment %}
   Component: pages/journal/social-sharing.html
-  Purpose: Social sharing buttons for journal posts
+  Purpose: Social sharing for journal posts using the consolidated reusable component
   Parameters:
     - post: The post object to share
   Dependencies:
-    - assets/css/pages/journal/social-sharing.scss
+    - components/ui/social-sharing.html (consolidated component)
+    - assets/css/components/ui/social-sharing.scss
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
 {% assign post = include.post | default: page %}
 
-{% assign post_url = post.url | absolute_url %}
-{% assign post_title = post.title | url_encode %}
-{% assign post_excerpt = post.excerpt | default: post.description | strip_html | truncatewords: 25 | url_encode %}
-
-<div class="social-sharing">
-  <h3 class="social-sharing__title">{{ t.social_sharing.title | default: "Share this article" }}</h3>
-  
-  <div class="social-sharing__buttons">
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ post_url }}" 
-       class="social-sharing__button social-sharing__button--linkedin"
-       target="_blank" 
-       rel="noopener"
-       aria-label="{{ t.social_sharing.linkedin | default: 'Share on LinkedIn' }}">
-      <i class="fab fa-linkedin" aria-hidden="true"></i>
-    </a>
-    
-    <a href="https://twitter.com/intent/tweet?url={{ post_url }}&text={{ post_title }}" 
-       class="social-sharing__button social-sharing__button--twitter"
-       target="_blank" 
-       rel="noopener"
-       aria-label="{{ t.social_sharing.twitter | default: 'Share on Twitter' }}">
-      <i class="fab fa-twitter" aria-hidden="true"></i>
-    </a>
-    
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}" 
-       class="social-sharing__button social-sharing__button--facebook"
-       target="_blank" 
-       rel="noopener"
-       aria-label="{{ t.social_sharing.facebook | default: 'Share on Facebook' }}">
-      <i class="fab fa-facebook" aria-hidden="true"></i>
-    </a>
-    
-    <a href="https://t.me/share/url?url={{ post_url }}&text={{ post_title }}" 
-       class="social-sharing__button social-sharing__button--telegram"
-       target="_blank" 
-       rel="noopener"
-       aria-label="{{ t.social_sharing.telegram | default: 'Share on Telegram' }}">
-      <i class="fab fa-telegram" aria-hidden="true"></i>
-    </a>
-    
-    <a href="https://api.whatsapp.com/send?text={{ post_title }}%20{{ post_url }}" 
-       class="social-sharing__button social-sharing__button--whatsapp"
-       target="_blank" 
-       rel="noopener"
-       aria-label="{{ t.social_sharing.whatsapp | default: 'Share on WhatsApp' }}">
-      <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
-    
-    <a href="weixin://dl/chat" 
-       class="social-sharing__button social-sharing__button--wechat"
-       onclick="navigator.clipboard.writeText('{{ post_title }}: {{ post_url }}'); alert('Link copied to clipboard for WeChat sharing!');"
-       aria-label="{{ t.social_sharing.wechat | default: 'Share on WeChat' }}">
-      <i class="fab fa-weixin" aria-hidden="true"></i>
-    </a>
-    
-    <a href="mailto:?subject={{ post_title }}&body=I thought you might be interested in this article: {{ post_url }}" 
-       class="social-sharing__button social-sharing__button--email"
-       aria-label="{{ t.social_sharing.email | default: 'Share via Email' }}">
-      <i class="fas fa-envelope" aria-hidden="true"></i>
-    </a>
-  </div>
-</div>
+{% comment %} Use the consolidated social sharing component with enhanced BRICS+ platforms {% endcomment %}
+{% include components/ui/social-sharing.html 
+   item=post 
+   style="enhanced" 
+   icon_style="fontawesome" %}

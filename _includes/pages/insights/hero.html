@@ -1,18 +1,35 @@
 {% comment %}
   Component: pages/insights/hero.html
-  Purpose: Hero section for the insights page
-  Parameters:
-    - title: The title to display in the hero section (default from translations)
-    - subtitle: The subtitle to display in the hero section (default from translations)
-  Dependencies:
-    - assets/css/pages/insights/hero.scss
+  Purpose: Split hero section for Insights page with text left, image right
+  Updated: 2025-05-31 - Changed from single panel to split layout
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}
 
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary insights-hero__title">{{ include.title | default: t.hero_title }}</h1>
-    <p class="panel__subtitle">{{ include.subtitle | default: t.hero_subtitle }}</p>
+    <div class="journal-hero journal-hero--teal journal-hero--landing">
+      <!-- Text Content Section -->
+      <div class="journal-hero__content">
+        <h1 class="journal-hero__title">
+          {{ t.hero_title | default: "Insights" }}
+        </h1>
+        <p class="journal-hero__subtitle">
+          {{ t.hero_subtitle | default: "Expert analysis and thought leadership on BRICS+ consumer brands" }}
+        </p>
+      </div>
+      
+      <!-- Image Section -->
+      <div class="journal-hero__image">
+        {% include components/images/collection-image.html
+           collection="site"
+           category="pages"
+           slug="insights"
+           purpose="hero"
+           alt="Insights and market analysis"
+           class="journal-hero__img"
+           loading="eager" %}
+      </div>
+    </div>
   </div>
 </div>

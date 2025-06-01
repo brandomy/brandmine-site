@@ -1,38 +1,35 @@
 {% comment %}
-Component: hero.html
-
-Purpose: Hero section for the discovery hub page. Introduces the four-dimensional taxonomy
-         system and sets up the value proposition for discovering BRICS+ brands.
-
-Dependencies:
-- Data: site.data.translations[page.lang].discovery
-- CSS: /assets/css/pages/discovery/hero.scss
-- JS: None
-
-Variables Used:
-- page.lang: Current language for translations
-
-Classes:
-- .discovery-hero: Main container
-- .discovery-hero__content: Content wrapper
-- .discovery-hero__title: Main heading
-- .discovery-hero__subtitle: Subheading with line breaks
-
-Notes:
-- Uses panel component for consistent styling
-- Subtitle supports line breaks via newline_to_br filter
+  Component: pages/discovery/hero.html
+  Purpose: Split hero section for Discovery page with text left, image right
+  Updated: 2025-05-31 - Changed from single panel to split layout
 {% endcomment %}
 
-{% assign current_lang = page.lang | default: 'en' %}
-{% assign t = site.data.translations[current_lang].discovery %}
+{% assign t = site.data.translations[page.lang].discovery %}
 
 <div class="panel panel--hero">
   <div class="panel__content">
-    <h1 class="panel__heading-primary">
-      {{ t.discover_title | default: "Discover Brands by Dimensions" }}
-    </h1>
-    <p class="panel__subtitle">
-      {{ t.discover_subtitle | default: "Explore BRICS+ brands through multiple dimensions" | newline_to_br }}
-    </p>
+    <div class="journal-hero journal-hero--teal journal-hero--landing">
+      <!-- Text Content Section -->
+      <div class="journal-hero__content">
+        <h1 class="journal-hero__title">
+          {{ t.discover_title | default: "Discover Brands by Dimensions" }}
+        </h1>
+        <p class="journal-hero__subtitle">
+          {{ t.discover_subtitle | default: "Explore BRICS+ brands through multiple dimensions" | newline_to_br }}
+        </p>
+      </div>
+      
+      <!-- Image Section -->
+      <div class="journal-hero__image">
+        {% include components/images/collection-image.html
+           collection="site"
+           category="pages"
+           slug="discovery"
+           purpose="hero"
+           alt="Discovery hub - explore brand dimensions"
+           class="journal-hero__img"
+           loading="eager" %}
+      </div>
+    </div>
   </div>
 </div>
