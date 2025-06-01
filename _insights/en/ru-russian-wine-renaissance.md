@@ -11,7 +11,7 @@ permalink: /en/insights/ru-russian-wine-renaissance/
 date: 2025-04-01  # Publication date
 author: "randal_eastman"  # Key for translation lookup
 excerpt: "Russia's wine industry is experiencing unprecedented growth, with domestic production doubling and increasing international recognition."
-category: "market-momentum"  # Must match insights/en.yml
+category: "market_momentum"  # Must match insights/en.yml
 reading_time: 7
 
 # Brand Information

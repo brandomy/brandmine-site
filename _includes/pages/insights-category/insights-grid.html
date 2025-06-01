@@ -23,7 +23,7 @@
     </div>
   {% else %}
     <div class="insights-category-empty">
-      <p class="no-insights">{{ site.data.translations[page.lang].insights.no_insights_message | default: "No insights available yet. Check back soon!" }}</p>
+      <p class="no-insights">{% include helpers/t.html key="insights.no_insights_message" fallback="No insights available yet. Check back soon!" lang=page.lang %}</p>
     </div>
   {% endif %}
 </div>

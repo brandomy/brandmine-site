@@ -33,7 +33,9 @@
     <!-- Logo and Toggle -->
     <div class="header__branding">
       <a class="header__title" href="/{{ page.lang }}/">
-        {% include helpers/t.html key="site.title" fallback="Brandmine" %}
+        {% assign key_var = "site.title" %}
+        {% assign fallback_var = "Brandmine" %}
+        {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
       </a>
       <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
         <span class="header__toggle-icon">

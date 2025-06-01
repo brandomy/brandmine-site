@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Required field validation
     if (field.hasAttribute('required') && !value) {
-      errors.push('{% include helpers/t.html key="forms.validation.required" fallback="This field is required" %}');
+      errors.push('{% include helpers/t.html key="forms.validation.required" fallback="This field is required" lang=page.lang %}');
     }
 
     // Type-specific validation
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         case 'email':
           const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
           if (!emailPattern.test(value)) {
-            errors.push('{% include helpers/t.html key="forms.validation.email" fallback="Please enter a valid email address" %}');
+            errors.push('{% include helpers/t.html key="forms.validation.email" fallback="Please enter a valid email address" lang=page.lang %}');
           }
           break;
 
@@ -60,20 +60,20 @@ document.addEventListener('DOMContentLoaded', function() {
           try {
             new URL(value);
           } catch {
-            errors.push('{% include helpers/t.html key="forms.validation.url" fallback="Please enter a valid URL" %}');
+            errors.push('{% include helpers/t.html key="forms.validation.url" fallback="Please enter a valid URL" lang=page.lang %}');
           }
           break;
 
         case 'tel':
           const phonePattern = /^[\+]?[1-9][\d]{0,15}$/;
           if (!phonePattern.test(value.replace(/[\s\-\(\)]/g, ''))) {
-            errors.push('{% include helpers/t.html key="forms.validation.phone" fallback="Please enter a valid phone number" %}');
+            errors.push('{% include helpers/t.html key="forms.validation.phone" fallback="Please enter a valid phone number" lang=page.lang %}');
           }
           break;
 
         case 'number':
           if (isNaN(value)) {
-            errors.push('{% include helpers/t.html key="forms.validation.number" fallback="Please enter a valid number" %}');
+            errors.push('{% include helpers/t.html key="forms.validation.number" fallback="Please enter a valid number" lang=page.lang %}');
           }
           break;
       }
@@ -82,14 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
       if (field.hasAttribute('minlength')) {
         const minLength = parseInt(field.getAttribute('minlength'));
         if (value.length < minLength) {
-          errors.push(`{% include helpers/t.html key="forms.validation.minlength" fallback="Minimum" %} ${minLength} {% include helpers/t.html key="forms.validation.characters" fallback="characters required" %}`);
+          errors.push(`{% include helpers/t.html key="forms.validation.minlength" fallback="Minimum" lang=page.lang %} ${minLength} {% include helpers/t.html key="forms.validation.characters" fallback="characters required" lang=page.lang %}`);
         }
       }
 
       if (field.hasAttribute('maxlength')) {
         const maxLength = parseInt(field.getAttribute('maxlength'));
         if (value.length > maxLength) {
-          errors.push(`{% include helpers/t.html key="forms.validation.maxlength" fallback="Maximum" %} ${maxLength} {% include helpers/t.html key="forms.validation.characters" fallback="characters allowed" %}`);
+          errors.push(`{% include helpers/t.html key="forms.validation.maxlength" fallback="Maximum" lang=page.lang %} ${maxLength} {% include helpers/t.html key="forms.validation.characters" fallback="characters allowed" lang=page.lang %}`);
         }
       }
 
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (field.hasAttribute('pattern')) {
         const pattern = new RegExp(field.getAttribute('pattern'));
         if (!pattern.test(value)) {
-          errors.push('{% include helpers/t.html key="forms.validation.pattern" fallback="Please match the required format" %}');
+          errors.push('{% include helpers/t.html key="forms.validation.pattern" fallback="Please match the required format" lang=page.lang %}');
         }
       }
 
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (customRules[fieldName]) {
         const rule = customRules[fieldName];
         if (rule.pattern && !new RegExp(rule.pattern).test(value)) {
-          errors.push(rule.message || '{% include helpers/t.html key="forms.validation.invalid" fallback="Invalid format" %}');
+          errors.push(rule.message || '{% include helpers/t.html key="forms.validation.invalid" fallback="Invalid format" lang=page.lang %}');
         }
       }
     }

@@ -62,11 +62,13 @@ keywords: ["maria kuznetsova", "seven spices", "russian cuisine", "condiments", 
 # Controls which sections appear and in what order
 # Must match section names in founder includes
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
   - hero                  # Founder hero panel with name, position, key info
-  - content              # Main founder story content (markdown)
   - professional-details # Role, expertise, achievements
+  - content              # Main founder story content (markdown)
   - associated-brands    # Brands associated with this founder
-  - connections         # Related founders and insights
+  - expertise-cloud      # Skills and expertise visualization
+  - related-insights     # Related insights and articles
 ---
 
 # Maria Kuznetsova: Reviving Russia's Culinary Heritage

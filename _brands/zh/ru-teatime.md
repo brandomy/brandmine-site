@@ -10,6 +10,7 @@ permalink: /zh/brands/ru-teatime/
 generate_json: true
 
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
   - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
   - content              # Markdown content area (NEW - enables rich content)
@@ -23,7 +24,7 @@ email: "contact@teatime.ru"
 founders: ["ru-alexei-sokolov"]
 founder_led: true
 
-sectors: ["artisanal-spirits"]
+sectors: ["gourmet-foods"]
 markets: ["russia"]
 attributes: ["founder-led", "artisanal-excellence"]
 signals: ["export-ready"]

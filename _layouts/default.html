@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.translations[page.lang].site.title }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title }}{% else %}{% include helpers/t.html key="site.title" lang=page.lang %}{% endif %}</title>
 
   <!-- SEO Components -->
   {% if page.layout == 'insight-article' %}
     {% include components/seo/meta-article.html article=page site_twitter="brandmine" %}
   {% else %}
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.translations[page.lang].site.description }}{% endif %}">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{% include helpers/t.html key="site.description" lang=page.lang %}{% endif %}">
   {% endif %}
 
   <!-- Schema.org markup -->

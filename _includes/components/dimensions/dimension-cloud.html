@@ -33,7 +33,9 @@
     {% assign dimensions_array = site.data[type][type] %}
     {% if dimensions_array and dimensions_array.size > 0 %}
       <div class="dimension-cloud__group">
-        <h3 class="dimension-cloud__label">{% include helpers/t.html key="dimensions.group_{{ type }}" fallback="{{ type | capitalize }}" %}</h3>
+        {% assign group_key = "dimensions.group_" | append: type %}
+        {% assign fallback_text = type | capitalize %}
+        <h3 class="dimension-cloud__label">{% include helpers/t.html key=group_key fallback=fallback_text %}</h3>
         <div class="dimension-cloud__dimensions">
           {% for dimension in dimensions_array %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ type }}/{{ dimension.id }}/"

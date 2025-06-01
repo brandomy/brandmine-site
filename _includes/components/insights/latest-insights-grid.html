@@ -107,13 +107,21 @@
             <div class="insight-item__type-badge insight-item__type-badge--{{ insight.content_type }}">
               {% case insight.content_type %}
                 {% when "brand_spotlight" %}
-                  {% include helpers/t.html key="insights.brand_spotlight" fallback="Brand Spotlight" %}
+                  {% assign spotlight_key = "insights.brand_spotlight" %}
+                  {% assign spotlight_fallback = "Brand Spotlight" %}
+                  {% include helpers/t.html key=spotlight_key fallback=spotlight_fallback lang=page.lang %}
                 {% when "founders_journey" %}
-                  {% include helpers/t.html key="insights.founders_journey" fallback="Founder's Journey" %}
+                  {% assign insight_key = "insights.founders_journey" %}
+                  {% assign insight_fallback = "Founder's Journey" %}
+                  {% include helpers/t.html key=insight_key fallback=insight_fallback lang=page.lang %}
                 {% when "location_intelligence" %}
-                  Location Intelligence
+                  {% assign location_key = "insights.location_intelligence" %}
+                  {% assign location_fallback = "Location Intelligence" %}
+                  {% include helpers/t.html key=location_key fallback=location_fallback lang=page.lang %}
                 {% when "market_momentum" %}
-                  Market Momentum
+                  {% assign momentum_key = "insights.market_momentum" %}
+                  {% assign momentum_fallback = "Market Momentum" %}
+                  {% include helpers/t.html key=momentum_key fallback=momentum_fallback lang=page.lang %}
                 {% else %}
                   {{ insight.content_type | replace: "_", " " | capitalize }}
               {% endcase %}
@@ -127,7 +135,7 @@
 
             <div class="insight-item__meta">
               <span class="insight-item__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
-              <span class="insight-item__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read more" %} →</span>
+              <span class="insight-item__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read more" lang=page.lang %} →</span>
             </div>
           </div>
         </a>
@@ -143,7 +151,7 @@
     {% endfor %}
   {% else %}
     <div class="latest-insights-grid__empty">
-      <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available at this time." %}</p>
+      <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available at this time." lang=page.lang %}</p>
     </div>
   {% endif %}
 </div>
@@ -153,7 +161,7 @@
     <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/insights/' }}"
        class="btn btn--outline-light"
        data-track="latest-insights">
-       {% if include.cta_text %}{{ include.cta_text }}{% else %}{% include helpers/t.html key="insights.view_all" fallback="View All Insights" %}{% endif %}
+       {% if include.cta_text %}{{ include.cta_text }}{% else %}{% include helpers/t.html key="insights.view_all" fallback="View All Insights" lang=page.lang %}{% endif %}
     </a>
   </div>
 {% endif %}

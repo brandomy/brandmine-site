@@ -19,10 +19,10 @@
 <div class="panel panel--{{ panel_type }} about-solutions">
   <div class="panel__content">
     <h2 class="panel__heading-secondary about-solutions__title">
-      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.solutions_title" fallback="Our Solution" %}{% endunless %}
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.solutions_title" fallback="Our Solution" lang=current_lang %}{% endunless %}
     </h2>
     <p class="panel__lead-text about-solutions__lead-text">
-      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.solutions_lead" fallback="Brandmine's business intelligence hub brings clarity to this fragmented landscape by:" %}{% endunless %}
+      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.solutions_lead" fallback="Brandmine's business intelligence hub brings clarity to this fragmented landscape by:" lang=current_lang %}{% endunless %}
     </p>
 
   <div class="about-solutions__list">
@@ -30,46 +30,46 @@
       <div class="about-solutions__item">
         <div class="about-solutions__number">1</div>
         <div class="about-solutions__content">
-          <h3>{% include helpers/t.html key="about.solutions.item1.title" fallback="Illuminating hidden brand ecosystems" %}</h3>
-          <p>{% include helpers/t.html key="about.solutions.item1.description" fallback="Through comprehensive, multilingual profiles" %}</p>
+          <h3>{% include helpers/t.html key="about.solutions.item1.title" fallback="Illuminating hidden brand ecosystems" lang=current_lang %}</h3>
+          <p>{% include helpers/t.html key="about.solutions.item1.description" fallback="Through comprehensive, multilingual profiles" lang=current_lang %}</p>
         </div>
       </div>
 
     <div class="about-solutions__item">
       <div class="about-solutions__number">2</div>
       <div class="about-solutions__content">
-        <h3>{% include helpers/t.html key="about.solutions.item2.title" fallback="Decoding cultural significance" %}</h3>
-        <p>{% include helpers/t.html key="about.solutions.item2.description" fallback="Beyond simple language translation" %}</p>
+        <h3>{% include helpers/t.html key="about.solutions.item2.title" fallback="Decoding cultural significance" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item2.description" fallback="Beyond simple language translation" lang=current_lang %}</p>
       </div>
     </div>
 
     <div class="about-solutions__item">
       <div class="about-solutions__number">3</div>
       <div class="about-solutions__content">
-        <h3>{% include helpers/t.html key="about.solutions.item3.title" fallback="Creating structured comparisons" %}</h3>
-        <p>{% include helpers/t.html key="about.solutions.item3.description" fallback="With standardized metrics across regions" %}</p>
+        <h3>{% include helpers/t.html key="about.solutions.item3.title" fallback="Creating structured comparisons" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item3.description" fallback="With standardized metrics across regions" lang=current_lang %}</p>
       </div>
     </div>
 
     <div class="about-solutions__item">
       <div class="about-solutions__number">4</div>
       <div class="about-solutions__content">
-        <h3>{% include helpers/t.html key="about.solutions.item4.title" fallback="Showcasing founder journeys" %}</h3>
-        <p>{% include helpers/t.html key="about.solutions.item4.description" fallback="That resonate globally despite local origins" %}</p>
+        <h3>{% include helpers/t.html key="about.solutions.item4.title" fallback="Showcasing founder journeys" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item4.description" fallback="That resonate globally despite local origins" lang=current_lang %}</p>
       </div>
     </div>
 
     <div class="about-solutions__item">
       <div class="about-solutions__number">5</div>
       <div class="about-solutions__content">
-        <h3>{% include helpers/t.html key="about.solutions.item5.title" fallback="Curating qualified opportunities" %}</h3>
-        <p>{% include helpers/t.html key="about.solutions.item5.description" fallback="To streamline partnership pathways" %}</p>
+        <h3>{% include helpers/t.html key="about.solutions.item5.title" fallback="Curating qualified opportunities" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item5.description" fallback="To streamline partnership pathways" lang=current_lang %}</p>
       </div>
     </div>
   </div>
 
     <p class="panel__conclusion-text about-solutions__conclusion-text">
-      {{ include.conclusion_text | default: "" }}{% unless include.conclusion_text %}{% include helpers/t.html key="about.solutions_conclusion" fallback="Through this comprehensive approach, we create a clear, accessible path to opportunity that benefits both visionary founders and the partners who can help them grow." %}{% endunless %}
+      {{ include.conclusion_text | default: "" }}{% unless include.conclusion_text %}{% include helpers/t.html key="about.solutions_conclusion" fallback="Through this comprehensive approach, we create a clear, accessible path to opportunity that benefits both visionary founders and the partners who can help them grow." lang=current_lang %}{% endunless %}
     </p>
   </div>
 </div>

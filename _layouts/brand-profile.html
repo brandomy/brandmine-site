@@ -24,7 +24,7 @@ layout: default
 {% else %}
   {% comment %} This is a basic JSON-only brand {% endcomment %}
   {% assign brand_ref = page.ref %}
-  {% assign brand = site.data.brands.brands | where: "ref", brand_ref | first %}
+  {% assign brand = site.data.brands | where: "ref", brand_ref | first %}
   {% assign data_source = "basic" %}
 {% endif %}
 

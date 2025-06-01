@@ -8,8 +8,22 @@
 {% assign data_source = include.data_source | default: "curated" %}
 
 {% comment %} Field mapping: YAML → JSON fallback {% endcomment %}
-{% assign brand_name = brand.title | default: brand.name %}
-{% assign brand_description = brand.description %}
+{% comment %} Handle multilingual JSON fields vs YAML string fields {% endcomment %}
+{% if brand.title[brand.lang] %}
+  {% assign brand_name = brand.title[brand.lang] %}
+{% elsif brand.title[page.lang] %}
+  {% assign brand_name = brand.title[page.lang] %}
+{% else %}
+  {% assign brand_name = brand.title | default: brand.name %}
+{% endif %}
+
+{% if brand.description[brand.lang] %}
+  {% assign brand_description = brand.description[brand.lang] %}
+{% elsif brand.description[page.lang] %}
+  {% assign brand_description = brand.description[page.lang] %}
+{% else %}
+  {% assign brand_description = brand.description %}
+{% endif %}
 {% assign brand_slogan = brand.slogan %}
 {% assign founding_year = brand.founding_year | default: brand.founded %}
 {% assign website = brand.website %}

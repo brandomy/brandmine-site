@@ -1,46 +1,54 @@
-<!-- _includes/pages/brand/market-presence.html -->
+{% comment %}
+  Market Presence Section
+  Displays: Market presence content, social media, distribution models, contact info
+  Supports: Both YAML and JSON data sources
+{% endcomment %}
 
-<section class="brand-section brand-section--market-presence" id="market-presence">
-  <div class="brand-section__container">
-    <h2 class="brand-section__title">{% include helpers/t.html key="brand.market_presence" fallback="Market Presence" lang=page.lang %}</h2>
+{% assign brand = include.brand | default: page %}
+{% assign data_source = include.data_source | default: "curated" %}
 
-    <div class="market-presence">
-      <!-- Market Presence Content from Markdown -->
-      <div class="market-presence__content">
-        {% assign content_parts = content | split: "## Market Presence" %}
-        {% if content_parts.size > 1 %}
-          {% assign market_content = content_parts[1] | split: "##" | first %}
-          {{ market_content | markdownify }}
-        {% endif %}
-      </div>
+<h2 id="heading-market-presence" class="panel__heading-secondary">
+  {% include helpers/t.html key="brand.market_presence" fallback="Market Presence" lang=brand.lang %}
+</h2>
 
-      <!-- Social Media Links -->
-      {% if page.social_media %}
-        {% include components/brands/social-media-icons.html
-          social=page.social_media
-          lang=page.lang %}
-      {% endif %}
-
-      <!-- Distribution Models if available -->
-      {% if page.distribution_models and page.distribution_models.size > 0 %}
-        <div class="market-presence__distribution">
-          <h3 class="market-presence__distribution-title">{% include helpers/t.html key="brand.distribution_models" fallback="Distribution Models" lang=page.lang %}</h3>
-
-          <ul class="distribution-models">
-            {% for model in page.distribution_models %}
-              <li class="distribution-model">
-                {% include helpers/t.html key="distribution_models.{{ model }}" fallback=model lang=page.lang %}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-
-      <!-- Contact Information -->
-      {% include components/brands/contact-info.html
-        email=page.email
-        website=page.website
-        lang=page.lang %}
-    </div>
+<div class="market-presence">
+  <!-- Market Presence Content from Markdown -->
+  <div class="market-presence__content">
+    {% assign content_parts = content | split: "## Market Presence" %}
+    {% if content_parts.size > 1 %}
+      {% assign market_content = content_parts[1] | split: "##" | first %}
+      {{ market_content | markdownify }}
+    {% endif %}
   </div>
-</section>
+
+  <!-- Social Media Links -->
+  {% if brand.social_media %}
+    {% include components/brands/social-media-icons.html
+      social=brand.social_media
+      lang=brand.lang %}
+  {% endif %}
+
+  <!-- Distribution Models if available -->
+  {% if brand.distribution_models and brand.distribution_models.size > 0 %}
+    <div class="market-presence__distribution">
+      <h3 class="market-presence__distribution-title">
+        {% include helpers/t.html key="brand.distribution_models" fallback="Distribution Models" lang=brand.lang %}
+      </h3>
+
+      <ul class="distribution-models">
+        {% for model in brand.distribution_models %}
+          <li class="distribution-model">
+            {% assign model_key = "distribution_models." | append: model %}
+            {% include helpers/t.html key=model_key fallback=model lang=brand.lang %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <!-- Contact Information -->
+  {% include components/brands/contact-info.html
+    email=brand.email
+    website=brand.website
+    lang=brand.lang %}
+</div>

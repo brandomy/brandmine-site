@@ -9,10 +9,14 @@
   <!-- Text Content Section -->
   <div class="journal-hero__content">
     <h1 class="journal-hero__title">
-      {% include helpers/t.html key="discovery.discover_title" fallback="Discover Brands by Dimensions" %}
+      {% assign key_var = "discovery.discover_title" %}
+      {% assign fallback_var = "Discover Brands by Dimensions" %}
+      {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
     </h1>
     <p class="journal-hero__subtitle">
-      {% capture subtitle_text %}{% include helpers/t.html key="discovery.discover_subtitle" fallback="Explore BRICS+ brands through multiple dimensions" %}{% endcapture %}
+      {% assign key_var = "discovery.discover_subtitle" %}
+      {% assign fallback_var = "Explore BRICS+ brands through multiple dimensions" %}
+      {% capture subtitle_text %}{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}{% endcapture %}
       {{ subtitle_text | newline_to_br }}
     </p>
   </div>

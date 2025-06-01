@@ -13,12 +13,14 @@
 {% assign dimension_type = include.dimension_type %}
 
 <div class="insights-all__sidebar-section">
-  <h3 class="insights-all__sidebar-heading">{{ include.heading | default: "" }}{% if include.heading == blank %}{% include helpers/t.html key="dimensions.{{ dimension_type }}" fallback=dimension_type %}{% endif %}</h3>
+  {% if include.heading == blank %}{% assign dimension_key = "dimensions." | append: dimension_type %}{% endif %}
+  <h3 class="insights-all__sidebar-heading">{{ include.heading | default: "" }}{% if include.heading == blank %}{% include helpers/t.html key=dimension_key fallback=dimension_type %}{% endif %}</h3>
   <div class="insights-all__tags">
     {% assign all_dimensions = insights | map: dimension_type | flatten | uniq %}
     {% for dimension in all_dimensions %}
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ dimension_type }}/{{ dimension }}/" class="tag tag--{{ dimension_type }}">
-        {% include helpers/t.html key="dimensions.{{ dimension_type }}.{{ dimension }}" fallback=dimension %}
+        {% assign full_dimension_key = "dimensions." | append: dimension_type | append: "." | append: dimension %}
+        {% include helpers/t.html key=full_dimension_key fallback=dimension %}
       </a>
     {% endfor %}
   </div>

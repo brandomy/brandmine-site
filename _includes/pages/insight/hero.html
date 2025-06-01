@@ -32,9 +32,10 @@
 
 <div class="insight-hero">
       {% if insight.category %}
-        {% capture translation_key %}insights.categories.{{ insight.category }}{% endcapture %}
+        {% assign normalized_category = insight.category | replace: "-", "_" %}
+        {% capture translation_key %}insights.{{ normalized_category }}{% endcapture %}
         <div class="insight-hero__category">
-          {% include helpers/t.html key=translation_key fallback=insight.category %}
+          {% include helpers/t.html key=translation_key fallback=insight.category lang=current_lang %}
         </div>
       {% endif %}
       
@@ -52,7 +53,7 @@
         {% if insight.reading_time %}
           <span class="insight-hero__reading-time">
             {% include components/separators/bullet-separator.html %}
-            {{ insight.reading_time }} {% include helpers/t.html key="insights.hero.reading_time" fallback="min read" %}
+            {{ insight.reading_time }} {% include helpers/t.html key="insights.hero.reading_time" fallback="min read" lang=current_lang %}
           </span>
         {% endif %}
       </div>

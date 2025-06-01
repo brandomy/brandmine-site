@@ -11,7 +11,7 @@ permalink: /ru/insights/ru-seven-spices-spotlight/
 date: 2025-01-15  # Publication date
 author: "randal_eastman"  # Key for translation lookup
 excerpt: "Семь Специй возвращает традиционные русские пряные смеси в современную кухню, сочетая исторические рецепты с современным производством для экспорта на мировые рынки."
-category: "brand-spotlight"  # Must match insights/en.yml
+category: "brand_spotlight"  # Must match insights/en.yml
 reading_time: 7
 
 # Brand Information

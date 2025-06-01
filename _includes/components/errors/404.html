@@ -37,14 +37,14 @@ Usage:
       {% if include.message %}
         {{ include.message }}
       {% else %}
-        {% include helpers/t.html key="errors.not_found_description" fallback="The page you're looking for doesn't exist or has been moved." %}
+        {% include helpers/t.html key="errors.not_found_description" fallback="The page you're looking for doesn't exist or has been moved." lang=page.lang %}
       {% endif %}
     </p>
 
     {% if show_search %}
       <div class="error-404__search">
         <p class="error-404__search-prompt">
-          {% include helpers/t.html key="errors.try_search" fallback="Try searching for what you're looking for:" %}
+          {% include helpers/t.html key="errors.try_search" fallback="Try searching for what you're looking for:" lang=page.lang %}
         </p>
         {% include components/search/simple-search.html placeholder="Search Brandmine..." %}
       </div>
@@ -53,20 +53,20 @@ Usage:
     {% if show_suggestions %}
       <div class="error-404__suggestions">
         <h3 class="error-404__suggestions-title">
-          {% include helpers/t.html key="errors.suggested_pages" fallback="Suggested Pages" %}
+          {% include helpers/t.html key="errors.suggested_pages" fallback="Suggested Pages" lang=page.lang %}
         </h3>
         <ul class="error-404__suggestions-list">
           <li><a href="{{ site.baseurl }}/{{ page.lang | default: 'en' }}/">
-            {% include helpers/t.html key="nav.home" fallback="Home" %}
+            {% include helpers/t.html key="nav.home" fallback="Home" lang=page.lang %}
           </a></li>
           <li><a href="{{ site.baseurl }}/{{ page.lang | default: 'en' }}/brands/">
-            {% include helpers/t.html key="nav.brands" fallback="Brands" %}
+            {% include helpers/t.html key="nav.brands" fallback="Brands" lang=page.lang %}
           </a></li>
           <li><a href="{{ site.baseurl }}/{{ page.lang | default: 'en' }}/insights/">
-            {% include helpers/t.html key="nav.insights" fallback="Insights" %}
+            {% include helpers/t.html key="nav.insights" fallback="Insights" lang=page.lang %}
           </a></li>
           <li><a href="{{ site.baseurl }}/{{ page.lang | default: 'en' }}/discovery/">
-            {% include helpers/t.html key="nav.discovery" fallback="Discovery" %}
+            {% include helpers/t.html key="nav.discovery" fallback="Discovery" lang=page.lang %}
           </a></li>
         </ul>
       </div>
@@ -74,10 +74,10 @@ Usage:
 
     <div class="error-404__actions">
       <a href="javascript:history.back()" class="btn btn--outline">
-        {% include helpers/t.html key="common.actions.back" fallback="Go Back" %}
+        {% include helpers/t.html key="common.actions.back" fallback="Go Back" lang=page.lang %}
       </a>
       <a href="{{ site.baseurl }}/{{ page.lang | default: 'en' }}/" class="btn btn--primary">
-        {% include helpers/t.html key="nav.home" fallback="Home" %}
+        {% include helpers/t.html key="nav.home" fallback="Home" lang=page.lang %}
       </a>
     </div>
   </div>

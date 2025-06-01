@@ -11,7 +11,7 @@ permalink: /en/insights/ru-teatime-founder-journey/
 date: 2025-02-05  # Publication date
 author: "randal_eastman"  # Key for translation lookup
 excerpt: "The remarkable story of how a software engineer's passion for tea transformed into Russia's leading artisanal tea brand."
-category: "founders-journey"  # Must match insights/en.yml
+category: "founders_journey"  # Must match insights/en.yml
 reading_time: 8
 
 # Brand Information

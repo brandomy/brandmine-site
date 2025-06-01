@@ -54,7 +54,10 @@ Usage:
     <div class="loading-spinner__text">{{ include.text }}</div>
   {% else %}
     <span class="sr-only">
-      {% include helpers/t.html key="common.empty_states.loading" fallback="Loading..." %}
+      {% assign key_var = "common.empty_states.loading" %}
+      {% assign fallback_var = "Loading..." %}
+      {% assign lang_context = include.lang | default: page.lang | default: "en" %}
+      {% include helpers/t.html key=key_var fallback=fallback_var lang=lang_context %}
     </span>
   {% endif %}
 </div>

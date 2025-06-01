@@ -20,10 +20,10 @@
     
     <!-- Search Section -->
     <div class="founders__search">
-      <h3>{% include helpers/t.html key="founders.filter.search_title" fallback="Search Founders" %}</h3>
+      <h3>{% include helpers/t.html key="founders.filter.search_title" fallback="Search Founders" lang=page.lang %}</h3>
       <div class="search-input-section">
         <input type="text" id="founders-search-query" class="search-input" 
-               placeholder="{% include helpers/t.html key="founders.filter.search_placeholder" fallback="Search by name, expertise, or brand..." %}" 
+               placeholder="{% include helpers/t.html key="founders.filter.search_placeholder" fallback="Search by name, expertise, or brand..." lang=page.lang %}" 
                aria-label="Search founders">
         <button type="button" id="clear-founders-search" class="search-clear-btn" title="Clear search">×</button>
       </div>
@@ -32,11 +32,11 @@
 
     <!-- Filter Column -->
     <div class="founders__filters">
-      <h3>{% include helpers/t.html key="founders.filter.filter_title" fallback="Filter Founders" %}</h3>
+      <h3>{% include helpers/t.html key="founders.filter.filter_title" fallback="Filter Founders" lang=page.lang %}</h3>
 
       <!-- Market Filter -->
       <div class="filter-section">
-        <h4>{% include helpers/t.html key="founders.filter.by_market" fallback="By Market" %}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_market" fallback="By Market" lang=page.lang %}</h4>
         <div class="filter-options" id="market-filters">
           {% assign markets = "" | split: "," %}
           {% assign founder_markets = site.founders | where: "lang", page.lang | map: "country_code" | uniq %}
@@ -55,7 +55,7 @@
 
       <!-- Languages Filter -->
       <div class="filter-section">
-        <h4>{% include helpers/t.html key="founders.filter.by_languages" fallback="Languages Spoken" %}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_languages" fallback="Languages Spoken" lang=page.lang %}</h4>
         <div class="filter-options" id="languages-filters">
           {% assign all_languages = "" | split: "," %}
           {% for founder in site.founders %}
@@ -78,7 +78,7 @@
 
       <!-- Expertise Filter -->
       <div class="filter-section">
-        <h4>{% include helpers/t.html key="founders.filter.by_expertise" fallback="Expertise Areas" %}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_expertise" fallback="Expertise Areas" lang=page.lang %}</h4>
         <div class="filter-options" id="expertise-filters">
           {% assign all_expertise = "" | split: "," %}
           {% for founder in site.founders %}
@@ -101,22 +101,22 @@
 
       <!-- Cross-Border Expertise Filter -->
       <div class="filter-section">
-        <h4>{% include helpers/t.html key="founders.filter.by_cross_border" fallback="Cross-Border Focus" %}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_cross_border" fallback="Cross-Border Focus" lang=page.lang %}</h4>
         <div class="filter-options" id="cross-border-filters">
           <div class="filter-option">
             <input type="checkbox" id="cross-border-yes" name="cross_border" value="true">
-            <label for="cross-border-yes">{% include helpers/t.html key="founders.filter.cross_border_experience" fallback="Has Cross-Border Experience" %}</label>
+            <label for="cross-border-yes">{% include helpers/t.html key="founders.filter.cross_border_experience" fallback="Has Cross-Border Experience" lang=page.lang %}</label>
           </div>
           <div class="filter-option">
             <input type="checkbox" id="international-expansion" name="international_expansion" value="true">
-            <label for="international-expansion">{% include helpers/t.html key="founders.filter.international_expansion" fallback="International Expansion Experience" %}</label>
+            <label for="international-expansion">{% include helpers/t.html key="founders.filter.international_expansion" fallback="International Expansion Experience" lang=page.lang %}</label>
           </div>
         </div>
       </div>
 
       <!-- Generation Filter -->
       <div class="filter-section">
-        <h4>{% include helpers/t.html key="founders.filter.by_generation" fallback="Generation" %}</h4>
+        <h4>{% include helpers/t.html key="founders.filter.by_generation" fallback="Generation" lang=page.lang %}</h4>
         <div class="filter-options" id="generation-filters">
           {% assign all_generations = "" | split: "," %}
           {% for founder in site.founders %}
@@ -137,25 +137,25 @@
 
       <!-- Reset Filters -->
       <div class="filter-actions">
-        <button id="reset-founders-filters" class="btn-text">{% include helpers/t.html key="founders.filter.reset" fallback="Reset Filters" %}</button>
-        <button id="clear-all-founders" class="btn-text">{% include helpers/t.html key="founders.filter.clear_all" fallback="Clear All" %}</button>
+        <button id="reset-founders-filters" class="btn-text">{% include helpers/t.html key="founders.filter.reset" fallback="Reset Filters" lang=page.lang %}</button>
+        <button id="clear-all-founders" class="btn-text">{% include helpers/t.html key="founders.filter.clear_all" fallback="Clear All" lang=page.lang %}</button>
       </div>
     </div>
 
     <div class="founders__results">
       <div class="founders__results-header">
-        <h2 id="founders-results-count">{% include helpers/t.html key="founders.grid.all_founders" fallback="All Founders" %}</h2>
+        <h2 id="founders-results-count">{% include helpers/t.html key="founders.grid.all_founders" fallback="All Founders" lang=page.lang %}</h2>
 
         <!-- Sort Options -->
         <div class="founders__controls">
           <div class="founders__sort">
-            <label for="founders-sort-select">{% include helpers/t.html key="founders.grid.sort_by" fallback="Sort by" %}:</label>
+            <label for="founders-sort-select">{% include helpers/t.html key="founders.grid.sort_by" fallback="Sort by" lang=page.lang %}:</label>
             <select id="founders-sort-select">
-              <option value="name">{% include helpers/t.html key="founders.grid.sort_name" fallback="Name" %}</option>
-              <option value="market">{% include helpers/t.html key="founders.grid.sort_market" fallback="Market" %}</option>
-              <option value="languages">{% include helpers/t.html key="founders.grid.sort_languages" fallback="Languages" %}</option>
-              <option value="expertise">{% include helpers/t.html key="founders.grid.sort_expertise" fallback="Expertise" %}</option>
-              <option value="recent">{% include helpers/t.html key="founders.grid.sort_recent" fallback="Most Recent" %}</option>
+              <option value="name">{% include helpers/t.html key="founders.grid.sort_name" fallback="Name" lang=page.lang %}</option>
+              <option value="market">{% include helpers/t.html key="founders.grid.sort_market" fallback="Market" lang=page.lang %}</option>
+              <option value="languages">{% include helpers/t.html key="founders.grid.sort_languages" fallback="Languages" lang=page.lang %}</option>
+              <option value="expertise">{% include helpers/t.html key="founders.grid.sort_expertise" fallback="Expertise" lang=page.lang %}</option>
+              <option value="recent">{% include helpers/t.html key="founders.grid.sort_recent" fallback="Most Recent" lang=page.lang %}</option>
             </select>
           </div>
 
@@ -180,7 +180,7 @@
       <!-- Load More -->
       <div id="load-more-founders-container" class="load-more-container" style="display: none;">
         <button type="button" id="load-more-founders" class="load-more-btn">
-          {% include helpers/t.html key="founders.grid.load_more" fallback="Load More Founders" %}
+          {% include helpers/t.html key="founders.grid.load_more" fallback="Load More Founders" lang=page.lang %}
         </button>
       </div>
     </div>
@@ -190,7 +190,7 @@
 <!-- Fallback for non-JS users -->
 <noscript>
   <div class="founders-fallback">
-    <p>{% include helpers/t.html key="founders.filter.js_required" fallback="JavaScript is required for search functionality. Please enable JavaScript or browse founders using the main navigation." %}</p>
+    <p>{% include helpers/t.html key="founders.filter.js_required" fallback="JavaScript is required for search functionality. Please enable JavaScript or browse founders using the main navigation." lang=page.lang %}</p>
   </div>
 </noscript>
 

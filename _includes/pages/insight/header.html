@@ -31,7 +31,8 @@
           size="sm"
           class="insight-category-icon" %}
         {% assign normalized_category = insight.category | replace: "-", "_" %}
-        {% include helpers/t.html key="insights.{{ normalized_category }}" fallback=insight.category lang=page.lang %}
+        {% assign category_key = "insights." | append: normalized_category %}
+        {% include helpers/t.html key=category_key fallback=insight.category lang=page.lang %}
       </span>
     {% endif %}
 

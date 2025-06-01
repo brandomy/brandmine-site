@@ -1,33 +1,11 @@
 {% comment %}
-  Component: pages/brand/hero.html
-  
-  Purpose: Hero section for individual brand profile pages. Displays brand name,
-           tagline, key information and founding details.
-  
-  Dependencies:
-  - Data: site.data.translations[page.lang].brands
-  - CSS: /assets/css/pages/brand/hero.scss
-  - Parameter: brand (passed from layout)
-  
-  Variables Used:
-  - page.lang: Current language for translations
-  - brand.title: Brand name
-  - brand.tagline: Brand tagline/subtitle
-  - brand.founding_year: Year founded
-  - brand.location: Brand location
-  
-  Classes:
-  - .brand-hero: Main container
-  - .brand-hero__title: Main brand name
-  - .brand-hero__tagline: Brand tagline
-  - .brand-hero__meta: Founding year and location
-  
-  Notes:
-  - Uses panel component for consistent styling
-  - Logic-light approach with translation helper
+  Brand Hero Section
+  Displays: Brand name, tagline, founding year, location
+  Supports: Both YAML and JSON data sources
 {% endcomment %}
 
 {% assign brand = include.brand | default: page %}
+{% assign data_source = include.data_source | default: "curated" %}
 {% assign current_lang = brand.lang | default: 'en' %}
 
 <div class="brand-hero">
@@ -44,7 +22,7 @@
       <div class="brand-hero__meta">
         {% if brand.founding_year %}
           <span class="brand-hero__founded">
-            {% include helpers/t.html key="brands.hero.founded" fallback="Founded" %} {{ brand.founding_year }}
+            {% include helpers/t.html key="brands.hero.founded" fallback="Founded" lang=brand.lang %} {{ brand.founding_year }}
           </span>
         {% endif %}
         

@@ -90,7 +90,9 @@
             {% for social_item in brand.social_media %}
               {% if social_item[1] and social_item[1] != "" %}
               <div class="contact-item">
-                <span class="contact-label">{% include helpers/t.html key="social.{{ social_item[0] }}" fallback=social_item[0] lang=brand.lang %}:</span>
+                {% capture social_key %}social.{{ social_item[0] }}{% endcapture %}
+                {% assign social_fallback = social_item[0] %}
+                <span class="contact-label">{% include helpers/t.html key=social_key fallback=social_fallback lang=brand.lang %}:</span>
                 <a href="{{ social_item[1] }}" target="_blank" class="contact-link social-link social-link--{{ social_item[0] }}">
                   {{ social_item[1] | remove: 'https://' | remove: 'http://' }}
                 </a>

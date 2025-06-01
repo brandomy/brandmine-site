@@ -30,21 +30,29 @@ https://example.com → actual website
 ### 2. Section Control
 The template uses a `sections` array to control page layout:
 
+**Default sections** (as used in template):
 ```yaml
 sections:
   - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Brand hero panel
-  - identity              # Brand logo, basic info
+  - identity              # Brand logo, basic info (combines hero functionality)
   - founder-narrative     # Founder story and journey
-  - brand-story          # About the brand
-  - product              # Product range and offerings
-  - market-presence      # Market position and distribution
-  - location-intelligence # Map and geographic context
+  - content              # Markdown content area (flexible content)
   - business-intelligence # Business signals and opportunities
+  - location-intelligence # Map and geographic context
   - connections          # Related brands and insights
 ```
 
+**Alternative specific content sections** (replace 'content' with these for structured content):
+```yaml
+# Instead of 'content', you can use:
+  - brand-story          # About the brand
+  - product              # Product range and offerings
+  - market-presence      # Market position and distribution
+  - hero                 # Alternative brand hero (if not using identity)
+```
+
 **Toggle sections on/off** by commenting out or removing lines from the array.
+**IMPORTANT**: All sections must correspond to existing includes in `_includes/pages/brand/`
 
 ### 3. File Placement
 Save completed files to:

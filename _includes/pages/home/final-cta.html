@@ -30,21 +30,45 @@
 <div class="panel panel--cta panel--final-cta">
   <div class="panel__content">
     <h2 class="panel__heading-secondary">
-      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.final_cta.title" fallback="Start Exploring What Others Can't See" %}{% endunless %}
+      {% unless include.title %}
+        {% assign key_var = "home.final_cta.title" %}
+        {% assign fallback_var = "Start Exploring What Others Can't See" %}
+        {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+      {% else %}
+        {{ include.title }}
+      {% endunless %}
     </h2>
     <p class="panel__lead-text">
-      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.final_cta.subtitle" fallback="Gain exclusive access to founder-led BRICS+ brands ready to grow" %}{% endunless %}
+      {% unless include.lead_text %}
+        {% assign key_var = "home.final_cta.subtitle" %}
+        {% assign fallback_var = "Gain exclusive access to founder-led BRICS+ brands ready to grow" %}
+        {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+      {% else %}
+        {{ include.lead_text }}
+      {% endunless %}
     </p>
     <div class="cta-buttons">
       <a href="{{ include.primary_cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/brands/' }}"
          class="btn btn--primary-cta"
          data-track="final-cta-explore">
-        {{ include.primary_cta_text | default: "" }}{% unless include.primary_cta_text %}{% include helpers/t.html key="home.final_cta.cta_primary" fallback="Explore Brands" %}{% endunless %}
+        {% unless include.primary_cta_text %}
+          {% assign key_var = "home.final_cta.cta_primary" %}
+          {% assign fallback_var = "Explore Brands" %}
+          {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+        {% else %}
+          {{ include.primary_cta_text }}
+        {% endunless %}
       </a>
       <a href="{{ include.secondary_cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#about-section-contact' }}"
          class="btn btn--secondary-cta"
          data-track="final-cta-profile">
-        {{ include.secondary_cta_text | default: "" }}{% unless include.secondary_cta_text %}{% include helpers/t.html key="home.final_cta.cta_secondary" fallback="Get Profiled" %}{% endunless %}
+        {% unless include.secondary_cta_text %}
+          {% assign key_var = "home.final_cta.cta_secondary" %}
+          {% assign fallback_var = "Get Profiled" %}
+          {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+        {% else %}
+          {{ include.secondary_cta_text }}
+        {% endunless %}
       </a>
     </div>
   </div>

@@ -11,7 +11,7 @@ permalink: /zh/insights/ru-russian-wine-renaissance/
 date: 2025-04-01  # Publication date
 author: "randal_eastman"  # Key for translation lookup
 excerpt: "俄罗斯葡萄酒行业正经历前所未有的增长，国内生产量翻倍，并获得越来越多的国际认可。"
-category: "market-momentum"  # Must match insights/en.yml
+category: "market_momentum"  # Must match insights/en.yml
 reading_time: 7
 
 # Brand Information

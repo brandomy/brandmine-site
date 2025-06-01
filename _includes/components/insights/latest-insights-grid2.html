@@ -26,7 +26,9 @@
 
 {% assign columns = include.columns | default: 3 %}
 {% assign limit = include.limit | default: 6 %}
-{% assign cta_text = include.cta_text | default: site.data.translations[page.lang].insights.view_all | default: "View All Insights" %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% capture cta_fallback %}{% include helpers/t.html key="insights.view_all" fallback="View All Insights" lang=current_lang %}{% endcapture %}
+{% assign cta_text = include.cta_text | default: cta_fallback %}
 {% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/insights/" %}
 
 <div class="insights-grid insights-grid--{{ columns }}-col">
@@ -44,7 +46,7 @@
     {% endfor %}
   {% else %}
     <div class="insights-grid__empty">
-      <p>{{ site.data.translations[page.lang].insights.no_insights | default: "No insights available yet." }}</p>
+      <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." lang=current_lang %}</p>
     </div>
   {% endif %}
 </div>

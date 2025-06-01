@@ -11,7 +11,7 @@
 <div class="insights-category-breadcrumbs-wrapper">
   <nav class="insights-category-breadcrumbs" aria-label="Breadcrumb navigation">
     <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="back-link">
-      ← {{ site.data.translations[page.lang].insights.back_to_insights | default: "Back to Insights" }}
+      ← {% include helpers/t.html key="insights.back_to_insights" fallback="Back to Insights" lang=page.lang %}
     </a>
   </nav>
 </div>

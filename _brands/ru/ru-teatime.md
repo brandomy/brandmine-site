@@ -13,6 +13,7 @@ sample_data: true    # Flag for sample/test data
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
   - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
   - content              # Markdown content area (NEW - enables rich content)
@@ -29,7 +30,7 @@ founders: ["ru-alexei-sokolov"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy
-sectors: ["artisanal-spirits"]  # From existing taxonomy
+sectors: ["gourmet-foods"]  # From existing taxonomy
 markets: ["russia"]  # From existing taxonomy
 attributes: ["founder-led", "artisanal-excellence"]  # Optional attributes
 signals: ["export-ready"]  # Optional signals

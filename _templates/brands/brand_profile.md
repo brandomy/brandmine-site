@@ -17,17 +17,24 @@ sample_data: true    # Flag for sample/test data
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
 # Each section corresponds to _includes/pages/brand/{section}.html
-# MUST match the section names in hybrid-brand-profile-architecture.md
+# MUST match the section names in _data/page_sections.yml
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
   - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - content              # Markdown content area (NEW - enables rich content)
+  - content              # Markdown content area (enables rich content)
   - business-intelligence # Business signals and opportunities
   - location-intelligence # Map and geographic context
   - connections          # Related brands and insights
 
-# Alternative minimal sections for basic profiles:
-# sections: [identity, business-intelligence, location-intelligence]
+# Alternative sections available (replace 'content' with specific sections):
+# - brand-story          # About the brand
+# - product              # Product range and offerings
+# - market-presence      # Market position and distribution
+# - hero                 # Alternative hero section
+
+# Minimal sections for basic profiles:
+# sections: [breadcrumbs, identity, business-intelligence, location-intelligence, connections]
 
 # === CORE INFORMATION ===
 # Basic Information

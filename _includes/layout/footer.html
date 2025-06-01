@@ -39,19 +39,27 @@
 <footer class="footer">
   <div class="footer__grid">
     <div class="footer__section footer__section--left">
-      <p class="footer__text">{% include helpers/t.html key="footer.company_name" fallback="Brandmine" %}</p>
-      <p class="footer__text">{% include helpers/t.html key="footer.company_number" fallback="" %}</p>
+      {% assign key_var = "footer.company_name" %}
+      {% assign fallback_var = "Brandmine" %}
+      <p class="footer__text">{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}</p>
+      {% assign key_var = "footer.company_number" %}
+      {% assign fallback_var = "" %}
+      <p class="footer__text">{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}</p>
       <div class="language-selector footer__lang">
         {% include components/navigation/language-selector.html %}
       </div>
     </div>
 
     <div class="footer__section footer__section--center">
-      <p class="footer__tagline"><em>{% include helpers/t.html key="footer.tagline" fallback="Discovering exceptional brands from BRICS+ markets" %}</em></p>
+      {% assign key_var = "footer.tagline" %}
+      {% assign fallback_var = "Discovering exceptional brands from BRICS+ markets" %}
+      <p class="footer__tagline"><em>{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}</em></p>
       <div class="footer__social">
         {% for item in site.data.social[page.lang] %}
           {% assign key = item.name | remove: 'social.' %}
-          <a href="{{ item.link }}" target="_blank" class="footer__social-icon" title="{% include helpers/t.html key='social.' append=key fallback='' %}">
+          {% assign key_var = "social." | append: key %}
+          {% assign fallback_var = "" %}
+          <a href="{{ item.link }}" target="_blank" class="footer__social-icon" title="{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}">
             {% case key %}
               {% when 'twitter' %}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -105,13 +113,19 @@
 
   <div class="footer__copyright">
     <p class="footer__text">
-      © {{ site.time | date: '%Y' }} {% include helpers/t.html key="footer.company_name" fallback="Brandmine" %}.
-      {% include helpers/t.html key="footer.copyright" fallback="All rights reserved." %}
+      {% assign key_var = "footer.company_name" %}
+      {% assign fallback_var = "Brandmine" %}
+      © {{ site.time | date: '%Y' }} {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}.
+      {% assign key_var = "footer.copyright" %}
+      {% assign fallback_var = "All rights reserved." %}
+      {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
       |
       {% for item in site.data.footer[page.lang] %}
         {% assign key = item.name | remove: 'footer.' %}
         <a href="{{ item.link | relative_url }}">
-          {% include helpers/t.html key='footer.' append=key fallback='' %}
+          {% assign key_var = "footer." | append: key %}
+          {% assign fallback_var = "" %}
+          {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
         </a>
         {% unless forloop.last %} | {% endunless %}
       {% endfor %}

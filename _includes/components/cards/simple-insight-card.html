@@ -40,7 +40,8 @@
         <span class="insight-card__category-badge">
           {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="insight-card__category-icon" %}
           {% assign normalized_category = include.insight.category | replace: "-", "_" %}
-          {{ site.data.translations[page.lang].insights[normalized_category] | default: include.insight.category }}
+          {% assign category_key = "insights." | append: normalized_category %}
+          {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
         </span>
       {% endif %}
 
@@ -52,7 +53,7 @@
 
       <p class="insight-card__excerpt">{{ include.insight.excerpt | truncate: 150 }}</p>
 
-      <span class="insight-card__read-more">{{ site.data.translations[page.lang].insights.read_more | default: "Read More" }} →</span>
+      <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
     </div>
   </a>
 </article>

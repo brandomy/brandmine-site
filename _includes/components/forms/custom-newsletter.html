@@ -28,13 +28,13 @@
       {% if form_title %}
         <h3 class="newsletter-title">{{ form_title }}</h3>
       {% else %}
-        <h3 class="newsletter-title">{% include helpers/t.html key="footer.newsletter.title" fallback="Stay Updated" %}</h3>
+        <h3 class="newsletter-title">{% include helpers/t.html key="footer.newsletter.title" fallback="Stay Updated" lang=current_lang %}</h3>
       {% endif %}
       
       {% if form_description %}
         <p class="newsletter-description">{{ form_description }}</p>
       {% else %}
-        <p class="newsletter-description">{% include helpers/t.html key="footer.newsletter_description" fallback="Get the latest insights on BRICS+ brands and emerging market opportunities." %}</p>
+        <p class="newsletter-description">{% include helpers/t.html key="footer.newsletter_description" fallback="Get the latest insights on BRICS+ brands and emerging market opportunities." lang=current_lang %}</p>
       {% endif %}
     </div>
     {% endunless %}
@@ -46,14 +46,14 @@
       {% if show_name %}
       <div class="newsletter-field" data-field="name">
         <label for="{{ form_id }}-name" class="sr-only">
-          {% include helpers/t.html key="common.forms.name_placeholder" fallback="First Name" %}
+          {% include helpers/t.html key="common.forms.name_placeholder" fallback="First Name" lang=current_lang %}
         </label>
         <input 
           type="text" 
           id="{{ form_id }}-name" 
           name="name" 
           class="newsletter-input"
-          placeholder="{% include helpers/t.html key="common.forms.name_placeholder" fallback="First Name" %}"
+          placeholder="{% include helpers/t.html key="common.forms.name_placeholder" fallback="First Name" lang=current_lang %}"
           autocomplete="given-name">
         <div class="newsletter-message" role="alert"></div>
       </div>
@@ -62,7 +62,7 @@
       <!-- Email Field -->
       <div class="newsletter-field" data-field="email">
         <label for="{{ form_id }}-email" class="sr-only">
-          {% include helpers/t.html key="common.forms.email_placeholder" fallback="Email Address" %}
+          {% include helpers/t.html key="common.forms.email_placeholder" fallback="Email Address" lang=current_lang %}
         </label>
         <input 
           type="email" 
@@ -95,9 +95,9 @@
     {% if show_privacy_notice %}
     <div class="newsletter-privacy">
       <p class="privacy-text">
-        {% include helpers/t.html key="footer.privacy_notice" fallback="We respect your privacy. Unsubscribe at any time." %}
+        {% include helpers/t.html key="footer.privacy_notice" fallback="We respect your privacy. Unsubscribe at any time." lang=current_lang %}
         <a href="/{{ current_lang }}/privacy/" class="privacy-link">
-          {% include helpers/t.html key="footer.privacy" fallback="Privacy Policy" %}
+          {% include helpers/t.html key="footer.privacy" fallback="Privacy Policy" lang=current_lang %}
         </a>
       </p>
     </div>

@@ -1,8 +1,12 @@
 {% comment %} Use translation helper for logic light architecture {% endcomment %}
 {% assign t_title = "" %}
-{% capture t_title %}{% include helpers/t.html key="discovery.impact.title" fallback="" %}{% endcapture %}
+{% assign key_var = "discovery.impact.title" %}
+{% assign fallback_var = "" %}
+{% capture t_title %}{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}{% endcapture %}
 {% assign t_text = "" %}
-{% capture t_text %}{% include helpers/t.html key="discovery.impact.text" fallback="" %}{% endcapture %}
+{% assign key_var = "discovery.impact.text" %}
+{% assign fallback_var = "" %}
+{% capture t_text %}{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}{% endcapture %}
 
 {% if t_title != "" %}
   <h2 class="panel__heading-secondary">{{ t_title }}</h2>

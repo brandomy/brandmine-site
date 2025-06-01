@@ -36,7 +36,9 @@
     <div class="founder-profile__insight-content">
       <h4><a href="{{ insight.url | relative_url }}">{{ insight.title }}</a></h4>
       <span class="founder-profile__insight-type">
-        {% include helpers/t.html key="insights.founders_journey" fallback="Founder's Journey" lang=founder.lang %}
+        {% assign insight_type_key = "insights.founders_journey" %}
+        {% assign insight_type_fallback = "Founder's Journey" %}
+        {% include helpers/t.html key=insight_type_key fallback=insight_type_fallback lang=founder.lang %}
       </span>
       <p class="founder-profile__insight-excerpt">{{ insight.excerpt | truncate: 100 }}</p>
     </div>

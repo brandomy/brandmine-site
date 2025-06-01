@@ -11,6 +11,7 @@ generate_json: true
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
   - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
   - content              # Markdown content area (NEW - enables rich content)

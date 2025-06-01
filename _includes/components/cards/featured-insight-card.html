@@ -32,7 +32,8 @@
         <span class="featured-insight-card__category">
           {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="featured-insight-card__category-icon" %}
           {% assign normalized_category = include.insight.category | replace: "-", "_" %}
-          {{ site.data.translations[page.lang].insights[normalized_category] | default: include.insight.category }}
+          {% assign category_key = "insights." | append: normalized_category %}
+          {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
         </span>
       {% endif %}
     </div>
@@ -43,13 +44,13 @@
       <div class="featured-insight-card__meta">
         <span class="featured-insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
         {% if include.insight.reading_time %}
-          <span class="featured-insight-card__reading-time">{{ include.insight.reading_time }} {{ site.data.translations[page.lang].insights.minute_read | default: "min read" }}</span>
+          <span class="featured-insight-card__reading-time">{{ include.insight.reading_time }} {% include helpers/t.html key="insights.minute_read" fallback="min read" lang=include.insight.lang %}</span>
         {% endif %}
       </div>
 
       <p class="featured-insight-card__excerpt">{{ include.insight.excerpt | truncate: 120 }}</p>
 
-      <span class="featured-insight-card__read-more">{{ site.data.translations[page.lang].insights.read_more | default: "Read More" }} →</span>
+      <span class="featured-insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
     </div>
   </a>
 </article>

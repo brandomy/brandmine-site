@@ -11,7 +11,7 @@ permalink: /zh/insights/ru-siberian-honey-corridor/
 date: 2025-03-10  # Publication date
 author: "olya_eastman"  # Key for translation lookup
 excerpt: "南西伯利亚的原始森林如何成为俄罗斯优质蜂蜜产业的中心，吸引国际关注。"
-category: "location-intelligence"  # Must match insights/en.yml
+category: "location_intelligence"  # Must match insights/en.yml
 reading_time: 6
 
 # Brand Information

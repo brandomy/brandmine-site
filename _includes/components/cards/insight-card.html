@@ -60,7 +60,7 @@
 
       <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
 
-      <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" %} →</span>
+      <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
     </div>
   </a>
 </article>

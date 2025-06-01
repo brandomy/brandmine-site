@@ -13,9 +13,10 @@ sample_data: true    # Flag for sample/test data
 
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 sections:
+  - breadcrumbs           # Navigation breadcrumbs
   - identity              # Brand hero, logo, basic info (replaces hero)
   - founder-narrative     # Founder story and journey
-  - content              # Markdown content area (NEW - enables rich content)
+  - content              # Markdown content area (enables rich content)
   - business-intelligence # Business signals and opportunities
   - location-intelligence # Map and geographic context
   - connections          # Related brands and insights
@@ -29,7 +30,7 @@ founders: ["ru-alexei-sokolov"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy (all using kebab-case)
-sectors: ["artisanal-spirits", "gourmet-foods"]  # Required: At least one sector from taxonomy
+sectors: ["gourmet-foods"]  # Required: At least one sector from taxonomy
 markets: ["russia", "china"]  # Required: At least one market from taxonomy
 attributes: ["founder-led", "heritage-brand", "artisanal-excellence"]  # Optional attributes
 signals: ["export-ready", "rapid-growth"]  # Optional signals

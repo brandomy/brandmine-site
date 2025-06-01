@@ -22,7 +22,7 @@ layout: default
 <div class="panel panel--light">
   <div class="panel__content">
     <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="back-link">
-      ← {{ site.data.translations[page.lang].insights.back_to_insights }}
+      ← {% include helpers/t.html key="insights.back_to_insights" lang=page.lang %}
     </a>
     
     <h1>{{ page.title }}</h1>
