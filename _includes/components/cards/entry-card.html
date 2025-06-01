@@ -28,16 +28,25 @@
        read_more_text="Read Insight" %}
 {% endcomment %}
 
-{% comment %} Set defaults {% endcomment %}
+{% comment %} Set defaults using centralized component defaults {% endcomment %}
 {% assign item = include.item %}
-{% assign image_base_path = include.image_base_path | default: "/assets/images/journal/" %}
-{% assign image_size = include.image_size | default: "400w" %}
-{% assign show_author = include.show_author | default: true %}
-{% assign show_date = include.show_date | default: true %}
-{% assign show_tags = include.show_tags | default: true %}
-{% assign show_excerpt = include.show_excerpt | default: true %}
-{% assign excerpt_words = include.excerpt_words | default: 25 %}
-{% assign tag_limit = include.tag_limit | default: 3 %}
+{% capture default_image_base_path %}{% include helpers/component-defaults.html component="cards.entry-card" param="image_base_path" fallback="/assets/images/journal/" %}{% endcapture %}
+{% capture default_image_size %}{% include helpers/component-defaults.html component="cards.entry-card" param="image_size" fallback="400w" %}{% endcapture %}
+{% capture default_show_author %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_author" fallback=true %}{% endcapture %}
+{% capture default_show_date %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_date" fallback=true %}{% endcapture %}
+{% capture default_show_tags %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_tags" fallback=true %}{% endcapture %}
+{% capture default_show_excerpt %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_excerpt" fallback=true %}{% endcapture %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.entry-card" param="excerpt_words" fallback=25 %}{% endcapture %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.entry-card" param="tag_limit" fallback=3 %}{% endcapture %}
+
+{% assign image_base_path = include.image_base_path | default: default_image_base_path %}
+{% assign image_size = include.image_size | default: default_image_size %}
+{% assign show_author = include.show_author | default: default_show_author %}
+{% assign show_date = include.show_date | default: default_show_date %}
+{% assign show_tags = include.show_tags | default: default_show_tags %}
+{% assign show_excerpt = include.show_excerpt | default: default_show_excerpt %}
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
 {% comment %} Translation helper replaces manual lookup {% endcomment %}
 {% assign read_more_text = include.read_more_text %}
 {% unless read_more_text %}

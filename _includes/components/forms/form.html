@@ -5,14 +5,16 @@
   Used on contact pages and other areas requiring user input.
   
   Parameters:
-  - action: Form submission URL (optional, default: '#')
-  - name_label: Custom label for name field (optional, default: 'Name')
-  - email_label: Custom label for email field (optional, default: 'Email')
-  - message_label: Custom label for message field (optional, default: 'Message')
-  - submit_label: Custom label for submit button (optional, default: 'Send Message')
+  - action: Form submission URL (optional, uses component defaults)
+  - method: Form method (optional, uses component defaults)
+  - name_label: Custom label for name field (optional, uses component defaults)
+  - email_label: Custom label for email field (optional, uses component defaults)
+  - message_label: Custom label for message field (optional, uses component defaults)
+  - submit_label: Custom label for submit button (optional, uses component defaults)
   
   Dependencies:
   - CSS: forms.css for styling
+  - Component defaults for configurable behavior
   
   Example Usage:
   Basic form with defaults:
@@ -29,32 +31,38 @@
      email_label=email_label
      message_label=message_label
      submit_label=submit_label %}
-  
-  Notes:
-  - Uses semantic HTML5 form elements
-  - All fields are marked as required
-  - Uses BEM naming conventions for styling
-  - Supports custom labels for internationalization
-  - Default form action is '#' (submit to current page)
-  - Uses POST method by default
-  - Simple structure with name, email, message fields
 {% endcomment %}
 
-<form class="form" action="{{ include.action | default: '#' }}" method="post">
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_action %}{% include helpers/component-defaults.html component="forms.form" param="action" fallback="#" %}{% endcapture %}
+{% capture default_method %}{% include helpers/component-defaults.html component="forms.form" param="method" fallback="post" %}{% endcapture %}
+{% capture default_name_label %}{% include helpers/component-defaults.html component="forms.form" param="name_label" fallback="Name" %}{% endcapture %}
+{% capture default_email_label %}{% include helpers/component-defaults.html component="forms.form" param="email_label" fallback="Email" %}{% endcapture %}
+{% capture default_message_label %}{% include helpers/component-defaults.html component="forms.form" param="message_label" fallback="Message" %}{% endcapture %}
+{% capture default_submit_label %}{% include helpers/component-defaults.html component="forms.form" param="submit_label" fallback="Send Message" %}{% endcapture %}
+
+{% assign action = include.action | default: default_action %}
+{% assign method = include.method | default: default_method %}
+{% assign name_label = include.name_label | default: default_name_label %}
+{% assign email_label = include.email_label | default: default_email_label %}
+{% assign message_label = include.message_label | default: default_message_label %}
+{% assign submit_label = include.submit_label | default: default_submit_label %}
+
+<form class="form" action="{{ action }}" method="{{ method }}">
   <div class="form__group">
-    <label for="name" class="form__label">{{ include.name_label | default: 'Name' }}</label>
+    <label for="name" class="form__label">{{ name_label }}</label>
     <input type="text" id="name" name="name" class="form__input" required>
   </div>
 
   <div class="form__group">
-    <label for="email" class="form__label">{{ include.email_label | default: 'Email' }}</label>
+    <label for="email" class="form__label">{{ email_label }}</label>
     <input type="email" id="email" name="email" class="form__input" required>
   </div>
 
   <div class="form__group">
-    <label for="message" class="form__label">{{ include.message_label | default: 'Message' }}</label>
+    <label for="message" class="form__label">{{ message_label }}</label>
     <textarea id="message" name="message" class="form__textarea" required></textarea>
   </div>
 
-  <button type="submit" class="form__submit">{{ include.submit_label | default: 'Send Message' }}</button>
+  <button type="submit" class="form__submit">{{ submit_label }}</button>
 </form>

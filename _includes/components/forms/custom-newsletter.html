@@ -1,12 +1,19 @@
 <!-- Custom Newsletter Subscription Include -->
 <!-- Usage: {% include components/forms/custom-newsletter.html variant="inline" %} -->
 
-{% assign variant = include.variant | default: "default" %}
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_variant %}{% include helpers/component-defaults.html component="forms.newsletter" param="variant" fallback="default" %}{% endcapture %}
+{% capture default_show_name %}{% include helpers/component-defaults.html component="forms.newsletter" param="show_name" fallback=false %}{% endcapture %}
+{% capture default_submit_text %}{% include helpers/component-defaults.html component="forms.newsletter" param="submit_text" fallback="Subscribe" %}{% endcapture %}
+{% capture default_show_privacy_notice %}{% include helpers/component-defaults.html component="forms.newsletter" param="show_privacy_notice" fallback=true %}{% endcapture %}
+
+{% assign variant = include.variant | default: default_variant %}
 {% assign form_id = include.form_id | default: "newsletter-form" %}
 {% assign form_title = include.form_title %}
 {% assign form_description = include.form_description %}
-{% assign submit_text = include.submit_text | default: "Subscribe" %}
-{% assign show_name = include.show_name | default: false %}
+{% assign submit_text = include.submit_text | default: default_submit_text %}
+{% assign show_name = include.show_name | default: default_show_name %}
+{% assign show_privacy_notice = include.show_privacy_notice | default: default_show_privacy_notice %}
 {% assign placeholder_text = include.placeholder_text %}
 
 <!-- Translation helper replaces manual lookup -->
@@ -85,6 +92,7 @@
     </div>
 
     <!-- Privacy Notice -->
+    {% if show_privacy_notice %}
     <div class="newsletter-privacy">
       <p class="privacy-text">
         {% include helpers/t.html key="footer.privacy_notice" fallback="We respect your privacy. Unsubscribe at any time." %}
@@ -93,6 +101,7 @@
         </a>
       </p>
     </div>
+    {% endif %}
 
     <!-- Success Message -->
     <div class="newsletter-success" id="{{ form_id }}-success" style="display: none;">

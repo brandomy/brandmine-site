@@ -1,0 +1,172 @@
+# Component Defaults Configuration
+# Centralizes default values for component parameters to eliminate
+# scattered {% assign param = include.param | default: value %} patterns
+
+# =============================================================================
+# CARD COMPONENTS
+# =============================================================================
+
+cards:
+  # Entry Card (journal posts, insights, articles)
+  entry-card:
+    image_base_path: "/assets/images/journal/"
+    image_size: "400w"
+    show_author: true
+    show_date: true
+    show_tags: true
+    show_excerpt: true
+    excerpt_words: 25
+    tag_limit: 3
+    read_more_text: null  # Will use translation helper
+
+  # Brand Card
+  brand-card:
+    show_founder: true
+    show_location: true
+    show_sector: true
+    show_featured_badge: true
+    layout: "vertical"
+    tag_limit: 4
+
+  # Hero Brand Card  
+  hero-brand-card:
+    show_founder: true
+    show_location: true
+    show_sectors: true
+    show_attributes: true
+    show_signals: true
+    show_logo: true
+    show_hero_image: true
+    tag_limit: 6
+
+  # Insight Card
+  insight-card:
+    show_category: true
+    show_author: true
+    show_date: true
+    show_reading_time: true
+    excerpt_words: 30
+    image_fallback: true
+
+  # Founder Card
+  founder-card:
+    show_brands: true
+    show_expertise: true
+    show_generation: true
+    show_location: true
+
+# =============================================================================
+# FORM COMPONENTS  
+# =============================================================================
+
+forms:
+  # Basic Contact Form
+  form:
+    action: "#"
+    method: "post"
+    name_label: "Name"
+    email_label: "Email"
+    message_label: "Message"
+    submit_label: "Send Message"
+    required_fields: ["name", "email", "message"]
+
+  # Newsletter Form
+  newsletter:
+    variant: "default"
+    show_name: false
+    submit_text: "Subscribe"
+    show_privacy_notice: true
+    placeholder_text: null  # Will use translation helper
+    form_title: null  # Will use translation helper
+    form_description: null  # Will use translation helper
+
+  # Custom Contact Form
+  contact:
+    show_phone: false
+    show_company: false
+    show_subject: true
+    success_redirect: null
+    error_message: null  # Will use translation helper
+
+# =============================================================================
+# NAVIGATION COMPONENTS
+# =============================================================================
+
+navigation:
+  # Pagination
+  pagination:
+    max_pages: 10
+    show_first_last: true
+    show_prev_next: true
+    current_page_label: null  # Will use translation helper
+    previous_label: null  # Will use translation helper
+    next_label: null  # Will use translation helper
+
+  # Breadcrumbs
+  breadcrumbs:
+    show_home: true
+    separator: "/"
+    home_label: null  # Will use translation helper
+
+# =============================================================================
+# SEARCH COMPONENTS
+# =============================================================================
+
+search:
+  # Simple Search
+  simple-search:
+    placeholder: null  # Will use translation helper
+    button_text: null  # Will use translation helper
+    min_chars: 3
+    show_suggestions: true
+
+  # Search Filter
+  search-filter:
+    show_sort: true
+    show_filters: true
+    default_sort: "name"
+    results_per_page: 12
+
+# =============================================================================
+# IMAGE COMPONENTS
+# =============================================================================
+
+images:
+  # Collection Image
+  collection-image:
+    loading: "lazy"
+    sizes: "(max-width: 479px) 100vw, (max-width: 767px) 50vw, 33vw"
+    aspect_ratio: "3:2"
+    fallback_image: "/assets/images/fallbacks/default.jpg"
+
+# =============================================================================
+# UI COMPONENTS
+# =============================================================================
+
+ui:
+  # Social Sharing
+  social-sharing:
+    style: "basic"
+    layout: "horizontal"
+    show_label: true
+    icon_style: "svg"
+
+  # Modal
+  modal:
+    closable: true
+    backdrop_close: true
+    show_close_button: true
+    size: "medium"
+
+  # Alert
+  alert:
+    dismissible: true
+    show_icon: true
+    auto_hide: false
+    type: "info"
+
+  # Loading Spinner
+  loading:
+    size: "medium"
+    color: "primary"
+    show_text: false

@@ -26,13 +26,19 @@
   - site.data.dimensions for taxonomy translations
 {% endcomment %}
 
-{% comment %} Translation helper replaces manual lookup {% endcomment %}
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture show_location %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_location" fallback=true %}{% endcapture %}
+{% capture show_sector %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_sector" fallback=true %}{% endcapture %}
+{% capture tag_limit %}{% include helpers/component-defaults.html component="cards.brand-card" param="tag_limit" fallback=4 %}{% endcapture %}
+{% assign show_location = include.show_location | default: show_location %}
+{% assign show_sector = include.show_sector | default: show_sector %}
+{% assign tag_limit = include.tag_limit | default: tag_limit %}
 
 <article class="brand-card {% if brand.featured or brand.featured_level > 1 %}brand-card--featured{% endif %}">
   {% include components/helpers/card-header.html
      brand=brand
      class_name="brand-card"
-     show_location=true %}
+     show_location=show_location %}
 
   <div class="brand-card__body">
     <p class="brand-card__description">{{ brand.description }}</p>

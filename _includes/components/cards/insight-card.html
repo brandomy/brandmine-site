@@ -5,11 +5,20 @@
   
   Parameters:
   - include.insight: insight object from site.insights collection
+  - include.show_date: Show publication date (optional, uses component defaults)
+  - include.excerpt_words: Number of words in excerpt (optional, uses component defaults)
   
   Dependencies:
   - Translation helper include for multilingual labels
   - Responsive image strategy (400w, 800w, 1200w variants)
+  - Component defaults for configurable behavior
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_show_date %}{% include helpers/component-defaults.html component="cards.insight-card" param="show_date" fallback=true %}{% endcapture %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.insight-card" param="excerpt_words" fallback=30 %}{% endcapture %}
+{% assign show_date = include.show_date | default: default_show_date %}
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
 
 
 <article class="insight-card insight-card--{{ include.insight.category }}">
@@ -43,13 +52,15 @@
     <div class="insight-card__content">
       <h3 class="insight-card__title">{{ include.insight.title }}</h3>
 
+      {% if show_date %}
       <div class="insight-card__meta">
         <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
       </div>
+      {% endif %}
 
-      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncate: 120 }}</p>
+      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
 
-      <span class="insight-card__read-more">{{ site.data.translations[page.lang].insights.read_more | default: "Read More" }} →</span>
+      <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" %} →</span>
     </div>
   </a>
 </article>

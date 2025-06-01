@@ -24,14 +24,20 @@
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign t = site.data.translations[current_lang] %}
 
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_style %}{% include helpers/component-defaults.html component="ui.social-sharing" param="style" fallback="basic" %}{% endcapture %}
+{% capture default_layout %}{% include helpers/component-defaults.html component="ui.social-sharing" param="layout" fallback="horizontal" %}{% endcapture %}
+{% capture default_show_label %}{% include helpers/component-defaults.html component="ui.social-sharing" param="show_label" fallback=true %}{% endcapture %}
+{% capture default_icon_style %}{% include helpers/component-defaults.html component="ui.social-sharing" param="icon_style" fallback="svg" %}{% endcapture %}
+
 {% comment %} Content item - use provided item or fallback to current page {% endcomment %}
 {% assign content_item = include.item | default: page %}
 
 {% comment %} Configuration {% endcomment %}
-{% assign style = include.style | default: 'basic' %}
-{% assign layout = include.layout | default: 'horizontal' %}
-{% assign show_label = include.show_label | default: true %}
-{% assign icon_style = include.icon_style | default: 'svg' %}
+{% assign style = include.style | default: default_style %}
+{% assign layout = include.layout | default: default_layout %}
+{% assign show_label = include.show_label | default: default_show_label %}
+{% assign icon_style = include.icon_style | default: default_icon_style %}
 
 {% comment %} URL and content preparation {% endcomment %}
 {% assign share_url = content_item.url | absolute_url %}

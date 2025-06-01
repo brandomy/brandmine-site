@@ -1,0 +1,67 @@
+{% comment %}
+  Component: helpers/component-defaults.html
+  Purpose: Centralized component default value lookup
+  
+  This helper retrieves default values from _data/component_defaults.yml
+  to eliminate scattered {% assign param = include.param | default: value %}
+  patterns throughout components.
+  
+  Parameters:
+  - component: Component path (e.g., "cards.entry-card", "forms.newsletter")
+  - param: Parameter name to get default for
+  - fallback: Fallback value if not found in defaults (optional)
+  
+  Usage Examples:
+  
+  Get default value:
+  {% include helpers/component-defaults.html 
+     component="cards.entry-card" 
+     param="show_author" 
+     fallback=true %}
+  
+  Use in assign statement:
+  {% capture default_value %}{% include helpers/component-defaults.html component="cards.entry-card" param="excerpt_words" fallback=25 %}{% endcapture %}
+  {% assign excerpt_words = include.excerpt_words | default: default_value %}
+  
+  Design Philosophy:
+  - Centralizes all component defaults in one YAML file
+  - Maintains exact same component behavior
+  - Enables easy configuration changes without touching component code
+  - Provides clear fallback chain: include param → defaults file → helper fallback
+  
+  Implementation Notes:
+  - Navigates nested YAML structure using dot notation
+  - Returns fallback if path not found or value is null
+  - Supports both string and boolean default values
+  - Compatible with existing | default: liquid filters
+{% endcomment %}
+
+{% comment %} Parameter validation {% endcomment %}
+{% assign component_path = include.component %}
+{% assign param_name = include.param %}
+{% assign helper_fallback = include.fallback %}
+
+{% comment %} Navigate to component defaults {% endcomment %}
+{% assign path_segments = component_path | split: "." %}
+{% assign defaults = site.data.component_defaults %}
+
+{% comment %} Walk through the nested structure {% endcomment %}
+{% for segment in path_segments %}
+  {% if defaults %}
+    {% assign defaults = defaults[segment] %}
+  {% else %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Get the parameter value {% endcomment %}
+{% if defaults and param_name %}
+  {% assign param_value = defaults[param_name] %}
+{% endif %}
+
+{% comment %} Output the value or fallback {% endcomment %}
+{% if param_value != null and param_value != "" %}
+  {{ param_value }}
+{% elsif helper_fallback != null %}
+  {{ helper_fallback }}
+{% endif %}
