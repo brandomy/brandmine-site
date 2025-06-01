@@ -741,35 +741,9238 @@ identify <span class="nt">-format</span> <span class="s2">"%f: %wx%h</span><span
 <h2 id="logic-light-approach">“Logic Light” Approach</h2>
 <p><strong>Principle:</strong> Keep templates simple and logic-minimal while maintaining flexibility through structured data and modular includes.</p>
 
+<h3 id="translation-helper-pattern">Translation Helper Pattern</h3>
+<p>Use the centralized translation helper instead of direct data access:</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+Our Unique Perspective
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Our Unique Perspective
+
+</code></pre></div></div>
+
+<h3 id="component-defaults-system">Component Defaults System</h3>
+<p>Centralized component configuration eliminates scattered default patterns:</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+
+</code></pre></div></div>
+
+<h3 id="data-driven-section-rendering">Data-Driven Section Rendering</h3>
+<p>Page layouts use centralized configuration instead of hardcoded logic:</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+  
+  &lt;!-- render section with panel type --&gt;
+
+  
+  &lt;!-- render section with panel type --&gt;
+
+  
+  &lt;!-- render section with panel type --&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;section class="brands-section brands-section--breadcrumbs"
+           id="brands-section-breadcrumbs"
+           aria-labelledby="heading-breadcrumbs"&gt;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="breadcrumbs-wrapper"&gt;
+  &lt;nav class="breadcrumbs " aria-label="Breadcrumb navigation"&gt;
+    
+      
+      
+
+      
+        
+        
+          &lt;a href="/en/" class="back-link"&gt;← Home&lt;/a&gt;
+        
+      
+    
+  &lt;/nav&gt;
+&lt;/div&gt;
+
+  &lt;/section&gt;
+
+
+
+
+  
+
+  
+    &lt;section class="brands-section brands-section--hero" 
+             id="brands-section-hero" 
+             aria-labelledby="heading-hero"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--hero"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+
+&lt;div class="journal-hero journal-hero--teal journal-hero--landing"&gt;
+  &lt;!-- Text Content Section --&gt;
+  &lt;div class="journal-hero__content"&gt;
+    &lt;h1 class="journal-hero__title"&gt;CLAUDE.md&lt;/h1&gt;
+    &lt;p class="journal-hero__subtitle"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Discover founder-led brands with global potential
+
+    &lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Image Section --&gt;
+  &lt;div class="journal-hero__image"&gt;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/site/pages/brands/hero-400w.jpg"
+     srcset="/assets/images/site/pages/brands/hero-400w.jpg 400w,
+             /assets/images/site/pages/brands/hero-800w.jpg 800w,
+             /assets/images/site/pages/brands/hero-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="BRICS+ consumer brands"
+     class="journal-hero__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/site-hero-400w.jpg'; this.onerror=null;"
+     loading="eager"&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+        
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+    &lt;section class="brands-section brands-section--impact" 
+             id="brands-section-impact" 
+             aria-labelledby="heading-impact"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--primary panel--impact"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+
+
+
+
+
+
+
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+        
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+    &lt;section class="brands-section brands-section--content" 
+             id="brands-section-content" 
+             aria-labelledby="heading-content"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--light"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+
+
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+        
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+    &lt;section class="brands-section brands-section--filter-interface" 
+             id="brands-section-filter-interface" 
+             aria-labelledby="heading-filter-interface"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--light"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+
+
+
+
+&lt;div class="brands-filter"&gt;
+&lt;!-- Search filter include --&gt;
+
+
+
+
+
+
+
+
+
+&lt;div class="search-filter " data-content-type="brands"&gt;
+
+  &lt;!-- Search Input --&gt;
+  &lt;div class="search-filter__input-section"&gt;
+    &lt;div class="search-input-wrapper"&gt;
+      &lt;input type="text"
+             id="search-input-brands"
+             class="search-input"
+             placeholder="Search brands..."
+             aria-label="Search brands"&gt;
+      &lt;button type="button" id="search-button-brands" class="search-btn"&gt;
+        &lt;span class="sr-only"&gt;Search&lt;/span&gt;
+        🔍
+      &lt;/button&gt;
+      &lt;button type="button" id="clear-search-brands" class="search-clear-btn" title="Clear search"&gt;×&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Quick Presets --&gt;
+  
+  &lt;div class="search-filter__presets"&gt;
+    
+        &lt;button type="button" class="preset-btn" data-preset="featured"&gt;Featured&lt;/button&gt;
+        &lt;button type="button" class="preset-btn" data-preset="founder-led"&gt;Founder Led&lt;/button&gt;
+        &lt;button type="button" class="preset-btn" data-preset="export-ready"&gt;Export Ready&lt;/button&gt;
+        &lt;button type="button" class="preset-btn" data-preset="heritage"&gt;Heritage&lt;/button&gt;
+        &lt;button type="button" class="preset-btn" data-preset="sustainability"&gt;Sustainable&lt;/button&gt;
+      
+  &lt;/div&gt;
+  
+
+  &lt;!-- Filter Controls --&gt;
+  &lt;div class="search-filter__controls"&gt;
+    &lt;button type="button" id="toggle-filters-brands" class="filter-toggle-btn"&gt;
+      Filters &lt;span class="filter-count" id="filter-count-brands"&gt;0&lt;/span&gt;
+    &lt;/button&gt;
+
+    
+    &lt;select id="sort-select-brands" class="sort-select"&gt;
+      &lt;option value="relevance"&gt;Most Relevant&lt;/option&gt;
+      &lt;option value="name-asc"&gt;A-Z&lt;/option&gt;
+      &lt;option value="name-desc"&gt;Z-A&lt;/option&gt;
+      &lt;option value="date-desc"&gt;Newest First&lt;/option&gt;
+      &lt;option value="date-asc"&gt;Oldest First&lt;/option&gt;
+    &lt;/select&gt;
+    
+  &lt;/div&gt;
+
+  &lt;!-- Advanced Filters (Collapsible) --&gt;
+  &lt;div class="search-filter__advanced" id="advanced-filters-brands" style="display: none;"&gt;
+
+    &lt;!-- Dimension Filters --&gt;
+    &lt;div class="filter-groups"&gt;
+      &lt;!-- Sectors --&gt;
+      &lt;div class="filter-group"&gt;
+        &lt;h4 class="filter-group__title"&gt;Sectors&lt;/h4&gt;
+        &lt;div class="filter-options"&gt;
+          
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="wine"&gt;
+              &lt;span&gt;Wine&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="natural-beauty"&gt;
+              &lt;span&gt;Natural beauty&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="gourmet-foods"&gt;
+              &lt;span&gt;Gourmet foods&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="artisanal-spirits"&gt;
+              &lt;span&gt;Artisanal spirits&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="hotels-resorts"&gt;
+              &lt;span&gt;Hotels resorts&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="artisan-ceramics"&gt;
+              &lt;span&gt;Artisan ceramics&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="artisan-confectionery"&gt;
+              &lt;span&gt;Artisan confectionery&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="cured-meats"&gt;
+              &lt;span&gt;Cured meats&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="fashion-accessories"&gt;
+              &lt;span&gt;Fashion accessories&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="fermented-dairy"&gt;
+              &lt;span&gt;Fermented dairy&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="halal-foods"&gt;
+              &lt;span&gt;Halal foods&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="honey-bee-products"&gt;
+              &lt;span&gt;Honey bee products&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="jewelry-watches"&gt;
+              &lt;span&gt;Jewelry watches&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="mineral-waters"&gt;
+              &lt;span&gt;Mineral waters&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="natural-supplements"&gt;
+              &lt;span&gt;Natural supplements&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="sector" value="specialty-cheeses"&gt;
+              &lt;span&gt;Specialty cheeses&lt;/span&gt;
+            &lt;/label&gt;
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Markets --&gt;
+      &lt;div class="filter-group"&gt;
+        &lt;h4 class="filter-group__title"&gt;Markets&lt;/h4&gt;
+        &lt;div class="filter-options"&gt;
+          
+          
+          
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="brazil"&gt;
+              &lt;span&gt;Brazil&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="china"&gt;
+              &lt;span&gt;China&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="egypt"&gt;
+              &lt;span&gt;Egypt&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="ethiopia"&gt;
+              &lt;span&gt;Ethiopia&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="india"&gt;
+              &lt;span&gt;India&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="indonesia"&gt;
+              &lt;span&gt;Indonesia&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="iran"&gt;
+              &lt;span&gt;Iran&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="russia"&gt;
+              &lt;span&gt;Russia&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="south-africa"&gt;
+              &lt;span&gt;South Africa&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="uae"&gt;
+              &lt;span&gt;United Arab Emirates&lt;/span&gt;
+            &lt;/label&gt;
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Attributes --&gt;
+      &lt;div class="filter-group"&gt;
+        &lt;h4 class="filter-group__title"&gt;Attributes&lt;/h4&gt;
+        &lt;div class="filter-options"&gt;
+          
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="founder-led"&gt;
+              &lt;span&gt;Founder led&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="heritage-brand"&gt;
+              &lt;span&gt;Heritage brand&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="artisanal-excellence"&gt;
+              &lt;span&gt;Artisanal excellence&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="sustainability-pioneer"&gt;
+              &lt;span&gt;Sustainability pioneer&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="innovation-leader"&gt;
+              &lt;span&gt;Innovation leader&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="premium-positioning"&gt;
+              &lt;span&gt;Premium positioning&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="regional-icon"&gt;
+              &lt;span&gt;Regional icon&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="cultural-bridge"&gt;
+              &lt;span&gt;Cultural bridge&lt;/span&gt;
+            &lt;/label&gt;
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Signals --&gt;
+      &lt;div class="filter-group"&gt;
+        &lt;h4 class="filter-group__title"&gt;Signals&lt;/h4&gt;
+        &lt;div class="filter-options"&gt;
+          
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="signal" value="export-ready"&gt;
+              &lt;span&gt;Export ready&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="signal" value="franchise-ready"&gt;
+              &lt;span&gt;Franchise ready&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="signal" value="investment-ready"&gt;
+              &lt;span&gt;Investment ready&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="signal" value="rapid-growth"&gt;
+              &lt;span&gt;Rapid growth&lt;/span&gt;
+            &lt;/label&gt;
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Content-Specific Filters --&gt;
+    
+        &lt;div class="filter-group"&gt;
+          &lt;h4 class="filter-group__title"&gt;Brand Specifics&lt;/h4&gt;
+          &lt;label class="filter-option"&gt;
+            &lt;input type="checkbox" name="founder-led-only" value="true"&gt;
+            &lt;span&gt;Founder-led only&lt;/span&gt;
+          &lt;/label&gt;
+          &lt;label class="filter-option"&gt;
+            &lt;input type="checkbox" name="featured-only" value="true"&gt;
+            &lt;span&gt;Featured brands only&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/div&gt;
+
+      
+
+    &lt;!-- Filter Actions --&gt;
+    &lt;div class="filter-actions"&gt;
+      &lt;button type="button" id="apply-filters-brands" class="btn btn--primary"&gt;Apply Filters&lt;/button&gt;
+      &lt;button type="button" id="clear-filters-brands" class="btn btn--outline"&gt;Clear All&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Active Filters Display --&gt;
+  &lt;div class="search-filter__active" id="active-filters-brands" style="display: none;"&gt;
+    &lt;div class="active-filters-header"&gt;
+      &lt;span&gt;Active Filters:&lt;/span&gt;
+      &lt;button type="button" id="clear-all-filters-brands" class="btn-text"&gt;Clear All&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="filter-pills" id="filter-pills-brands"&gt;
+      &lt;!-- Active filter pills will be added here --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+
+  &lt;div class="brands-filter__results"&gt;
+    &lt;div class="brands-filter__results-header"&gt;
+      &lt;h2 id="results-count" class="brands-filter__results-title"&gt;&lt;/h2&gt;
+
+      &lt;!-- Sort and Filter Options --&gt;
+      &lt;div class="brands-filter__controls"&gt;
+        &lt;!-- Featured Level Filter --&gt;
+        &lt;div class="brands-filter__featured"&gt;
+          &lt;label for="featured-select" class="brands-filter__label"&gt;:&lt;/label&gt;
+          &lt;select id="featured-select" class="brands-filter__select"&gt;
+            &lt;option value="all"&gt;&lt;/option&gt;
+            &lt;option value="featured"&gt;&lt;/option&gt;
+            &lt;option value="standard"&gt;&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Sort Options --&gt;
+        &lt;div class="brands-filter__sort"&gt;
+          &lt;label for="sort-select" class="brands-filter__label"&gt;:&lt;/label&gt;
+          &lt;select id="sort-select" class="brands-filter__select"&gt;
+            &lt;option value="name"&gt;&lt;/option&gt;
+            &lt;option value="sector"&gt;&lt;/option&gt;
+            &lt;option value="market"&gt;&lt;/option&gt;
+            &lt;option value="founded"&gt;&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+        
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+    &lt;section class="brands-section brands-section--featured-brands" 
+             id="brands-section-featured-brands" 
+             aria-labelledby="heading-featured-brands"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--amber-soft"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+
+
+
+
+
+&lt;h2 class="panel__heading-secondary"&gt;
+  
+&lt;/h2&gt;
+&lt;p class="panel__lead-text"&gt;
+  
+&lt;/p&gt;
+
+&lt;div class="featured-brands__grid"&gt;
+  
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-serra-verde/hero-farm-view-400w.jpg"
+     srcset="/assets/images/brands/br-serra-verde/hero-farm-view-400w.jpg 400w,
+             /assets/images/brands/br-serra-verde/hero-farm-view-800w.jpg 800w,
+             /assets/images/brands/br-serra-verde/hero-farm-view-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" farm view"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-serra-verde/logo-color-400w.png"
+     srcset="/assets/images/brands/br-serra-verde/logo-color-400w.png 400w,
+             /assets/images/brands/br-serra-verde/logo-color-800w.png 800w,
+             /assets/images/brands/br-serra-verde/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+Serra Verde Organics
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 1986
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Gonçalves, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Eduardo Santos"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-serra-verde/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/br-serra-verde/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/br-serra-verde/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/br-serra-verde/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/brazil/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  brazil
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/gourmet-foods/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  gourmet-foods
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/sustainability-pioneer/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  sustainability-pioneer
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/en/brands/br-serra-verde/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/hero-paraty-view-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/hero-paraty-view-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/hero-paraty-view-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/hero-paraty-view-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" paraty view"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png"
+     srcset="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png 400w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-800w.png 800w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+Sojourn Boutique Hotels
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 2012
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Rio de Janeiro, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Isabela Mendez"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/brazil/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  brazil
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/hotels-resorts/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  hotels-resorts
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/sustainability-pioneer/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  sustainability-pioneer
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/en/brands/br-sojourn-hotels/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/franchise-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              franchise-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" distillery"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png 400w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-800w.png 800w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+Taiga Spirits
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 2014
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Listvyanka, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;Craft distillery creating exceptional small-batch vodkas and botanical spirits using ancient Siberian recipes and wild-harvested ingredients.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Nikolai Volkov"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/russia/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  russia
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  artisanal-spirits
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  artisanal-excellence
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/en/brands/ru-taiga-spirits/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              export-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/hero-storefront-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/hero-storefront-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/hero-storefront-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/hero-storefront-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" storefront"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-teatime/logo-color-400w.png 400w,
+             /assets/images/brands/ru-teatime/logo-color-800w.png 800w,
+             /assets/images/brands/ru-teatime/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+TeaTime
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 1998
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Moscow, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;Moscow's premium tea house offering artisanal tea blends and exceptional tea ceremonies in modern settings with traditional Russian influences.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Alexei Sokolov"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/russia/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  russia
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/markets/china/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  china
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  artisanal-spirits
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/sectors/gourmet-foods/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  gourmet-foods
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/heritage-brand/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  heritage-brand
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  artisanal-excellence
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/en/brands/ru-teatime/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              export-ready
+            
+          &lt;/a&gt;
+        
+          &lt;a href="//discover/signals/rapid-growth/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              rapid-growth
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" hotel exterior"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png"
+     srcset="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png 400w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-800w.png 800w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+Сожурн Бутик-Отели
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 2012
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Рио-де-Жанейро, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;Коллекция камерных бутик-отелей, подчеркивающих разнообразие бразильских ландшафтов через устойчивую роскошь и аутентичный местный опыт.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Isabela Mendez"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/brazil/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  brazil
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/hotels-resorts/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  hotels-resorts
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/sustainability-pioneer/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  sustainability-pioneer
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/ru/brands/br-sojourn-hotels/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/franchise-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              franchise-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" distillery"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png 400w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-800w.png 800w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+Тайга Спиритс
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 2014
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Листвянка, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Nikolai Volkov"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/russia/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  russia
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  artisanal-spirits
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  artisanal-excellence
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/ru/brands/ru-taiga-spirits/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              export-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/placeholder-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/placeholder-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/placeholder-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/placeholder-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
+     alt="Founder portrait"
+     class="hero-brand-card__img"
+     
+     data-purpose="placeholder"
+     onerror="this.src='/assets/images/placeholders/brands-placeholder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/placeholder-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/placeholder-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/placeholder-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/placeholder-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
+     alt="Founder portrait"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="placeholder"
+     onerror="this.src='/assets/images/placeholders/brands-placeholder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+TeaTime
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 1998
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Москва, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/russia/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  russia
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  artisanal-spirits
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  artisanal-excellence
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/ru/brands/ru-teatime/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              export-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/hero-hotel-exterior-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" hotel exterior"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png"
+     srcset="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png 400w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-800w.png 800w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+索茹精品酒店
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 2012
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      里约热内卢, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;一系列精致的精品酒店，通过可持续奢华和真实的当地体验，展示巴西多样化的景观。&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Isabela Mendez"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/brazil/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  brazil
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/hotels-resorts/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  hotels-resorts
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/sustainability-pioneer/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  sustainability-pioneer
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/zh/brands/br-sojourn-hotels/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/franchise-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              franchise-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/hero-distillery-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/hero-distillery-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" distillery"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png 400w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-800w.png 800w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+泰加烈酒
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 2014
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      利斯特维扬卡, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;手工酿酒厂用古老的西伯利亚配方和野生采集的原料，创造卓越的小批量伏特加和植物精酒。&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Nikolai Volkov"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/russia/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  russia
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  artisanal-spirits
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  artisanal-excellence
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/zh/brands/ru-taiga-spirits/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              export-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+&lt;article class="hero-brand-card hero-brand-card--featured"&gt;
+  &lt;div class="hero-brand-card__image"&gt;
+    
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/hero-storefront-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/hero-storefront-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/hero-storefront-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/hero-storefront-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt=" storefront"
+     class="hero-brand-card__img"
+     
+     data-purpose="hero"
+     onerror="this.src='/assets/images/placeholders/brands-hero-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+
+    &lt;div class="hero-brand-card__logo"&gt;
+      
+      
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-teatime/logo-color-400w.png 400w,
+             /assets/images/brands/ru-teatime/logo-color-800w.png 800w,
+             /assets/images/brands/ru-teatime/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="hero-brand-card__logo-img"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__body"&gt;
+    &lt;div class="hero-brand-card__content-wrapper"&gt;
+      &lt;div class="hero-brand-card__main-content"&gt;
+        &lt;h2 class="hero-brand-card__title"&gt;
+          
+          
+
+
+
+
+TeaTime
+
+        &lt;/h2&gt;
+
+        &lt;div class="hero-brand-card__meta"&gt;
+          
+
+
+
+
+
+  &lt;div class="hero-brand-card__founding-year"&gt;
+    Founded 1998
+  &lt;/div&gt;
+
+
+
+          
+
+
+
+&lt;span class="hero-brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      莫斯科, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class="hero-brand-card__description"&gt;莫斯科的高级茶馆，在现代环境中融合传统俄罗斯元素，提供手工调配的茶饮和独特的茶道体验。&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Founder portrait --&gt;
+      
+        
+        
+        
+        
+        
+        &lt;div class="hero-brand-card__founder" title="Founder: Alexei Sokolov"&gt;
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/founder-portrait-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/founder-portrait-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/founder-portrait-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/founder-portrait-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px"
+     alt="Founder portrait"
+     class="hero-brand-card__founder-img"
+     
+     data-purpose="founder"
+     onerror="this.src='/assets/images/placeholders/brands-founder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+&lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Taxonomy section --&gt;
+    &lt;div class="hero-brand-card__taxonomy"&gt;
+      &lt;div class="hero-brand-card__taxonomy-section"&gt;
+        &lt;div class="hero-brand-card__tags"&gt;
+          &lt;!-- Markets --&gt;
+          
+            
+              &lt;a href="//discover/markets/russia/"
+                 class="brand-tag brand-tag--market"&gt;
+                
+                  russia
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Sectors --&gt;
+          
+            
+              &lt;a href="//discover/sectors/artisanal-spirits/"
+                 class="brand-tag brand-tag--sector"&gt;
+                
+                  artisanal-spirits
+                
+              &lt;/a&gt;
+            
+          
+
+          &lt;!-- Attributes --&gt;
+          
+            
+              &lt;a href="//discover/attributes/founder-led/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  founder-led
+                
+              &lt;/a&gt;
+            
+              &lt;a href="//discover/attributes/artisanal-excellence/"
+                 class="brand-tag brand-tag--attribute"&gt;
+                
+                  artisanal-excellence
+                
+              &lt;/a&gt;
+            
+          
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="hero-brand-card__footer"&gt;
+    &lt;a href="/zh/brands/ru-teatime/" class="hero-brand-card__link btn btn--primary"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    &lt;div class="hero-brand-card__footer-right"&gt;
+      &lt;!-- Signals --&gt;
+      
+      &lt;div class="hero-brand-card__signals"&gt;
+        
+          &lt;a href="//discover/signals/export-ready/"
+             class="brand-tag brand-tag--signal"&gt;
+            
+              export-ready
+            
+          &lt;/a&gt;
+        
+      &lt;/div&gt;
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="hero-brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+  
+&lt;/div&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+        
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+    &lt;section class="brands-section brands-section--latest-brands" 
+             id="brands-section-latest-brands" 
+             aria-labelledby="heading-latest-brands"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--light"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+
+
+
+
+
+&lt;h2 class="panel__heading-secondary"&gt;
+  
+&lt;/h2&gt;
+
+&lt;div class="latest-brands__grid"&gt;
+  
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-teatime/logo-color-400w.png 400w,
+             /assets/images/brands/ru-teatime/logo-color-800w.png 800w,
+             /assets/images/brands/ru-teatime/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;TeaTime&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 1998
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      莫斯科, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;莫斯科的高级茶馆，在现代环境中融合传统俄罗斯元素，提供手工调配的茶饮和独特的茶道体验。&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/russia/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  russia
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  artisanal-spirits
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  export-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/zh/brands/ru-teatime/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png 400w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-800w.png 800w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;泰加烈酒&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 2014
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      利斯特维扬卡, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;手工酿酒厂用古老的西伯利亚配方和野生采集的原料，创造卓越的小批量伏特加和植物精酒。&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/russia/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  russia
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  artisanal-spirits
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  export-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/zh/brands/ru-taiga-spirits/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png"
+     srcset="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png 400w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-800w.png 800w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;索茹精品酒店&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 2012
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      里约热内卢, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;一系列精致的精品酒店，通过可持续奢华和真实的当地体验，展示巴西多样化的景观。&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  brazil
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/hotels-resorts/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  hotels-resorts
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/franchise-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  franchise-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/zh/brands/br-sojourn-hotels/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card "&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-serra-verde/logo-color-400w.png"
+     srcset="/assets/images/brands/br-serra-verde/logo-color-400w.png 400w,
+             /assets/images/brands/br-serra-verde/logo-color-800w.png 800w,
+             /assets/images/brands/br-serra-verde/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;塞拉维德有机&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 1986
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      贡萨尔维斯, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;家族经营的有机食品生产商，专注于巴西大西洋森林地区的果酱、蜂蜜和特色咖啡。&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  brazil
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/gourmet-foods/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  gourmet-foods
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/zh/brands/br-serra-verde/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/placeholder-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/placeholder-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/placeholder-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/placeholder-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1200px) 50vw, 600px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="placeholder"
+     onerror="this.src='/assets/images/placeholders/brands-placeholder-400w.jpg'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;TeaTime&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 1998
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Москва, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционным русским влиянием.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/russia/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  russia
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  artisanal-spirits
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  export-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/ru/brands/ru-teatime/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png 400w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-800w.png 800w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;Тайга Спиритс&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 2014
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Листвянка, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и дикорастущих ингредиентов.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/russia/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  russia
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  artisanal-spirits
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  export-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/ru/brands/ru-taiga-spirits/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png"
+     srcset="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png 400w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-800w.png 800w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;Сожурн Бутик-Отели&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 2012
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Рио-де-Жанейро, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;Коллекция камерных бутик-отелей, подчеркивающих разнообразие бразильских ландшафтов через устойчивую роскошь и аутентичный местный опыт.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  brazil
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/hotels-resorts/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  hotels-resorts
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/franchise-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  franchise-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/ru/brands/br-sojourn-hotels/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card "&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-serra-verde/logo-color-400w.png"
+     srcset="/assets/images/brands/br-serra-verde/logo-color-400w.png 400w,
+             /assets/images/brands/br-serra-verde/logo-color-800w.png 800w,
+             /assets/images/brands/br-serra-verde/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;Серра Верде Органикс&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 1986
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Гонсалвис, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;Семейный производитель органических консервов, меда и элитного кофе из региона Атлантического леса Бразилии.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  brazil
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/gourmet-foods/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  gourmet-foods
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/ru/brands/br-serra-verde/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-teatime/logo-color-400w.png 400w,
+             /assets/images/brands/ru-teatime/logo-color-800w.png 800w,
+             /assets/images/brands/ru-teatime/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;TeaTime&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 1998
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Moscow, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;Moscow's premium tea house offering artisanal tea blends and exceptional tea ceremonies in modern settings with traditional Russian influences.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/russia/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  russia
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  artisanal-spirits
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  export-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/en/brands/ru-teatime/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png"
+     srcset="/assets/images/brands/ru-taiga-spirits/logo-color-400w.png 400w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-800w.png 800w,
+             /assets/images/brands/ru-taiga-spirits/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;Taiga Spirits&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 2014
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Listvyanka, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  RU
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;Craft distillery creating exceptional small-batch vodkas and botanical spirits using ancient Siberian recipes and wild-harvested ingredients.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/russia/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  russia
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/artisanal-spirits/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  artisanal-spirits
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/export-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  export-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/en/brands/ru-taiga-spirits/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png"
+     srcset="/assets/images/brands/br-sojourn-hotels/logo-color-400w.png 400w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-800w.png 800w,
+             /assets/images/brands/br-sojourn-hotels/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;Sojourn Boutique Hotels&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 2012
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Rio de Janeiro, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  brazil
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/hotels-resorts/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  hotels-resorts
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/signals/franchise-ready/"
+   class="brand-card__tag brand-card__tag--signal"&gt;
+  franchise-ready
+&lt;/a&gt;
+
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/en/brands/br-sojourn-hotels/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+    
+
+
+
+
+
+
+
+
+
+&lt;article class="brand-card brand-card--featured"&gt;
+  
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+  
+
+  
+  
+    
+        
+      
+    
+  
+
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-serra-verde/logo-color-400w.png"
+     srcset="/assets/images/brands/br-serra-verde/logo-color-400w.png 400w,
+             /assets/images/brands/br-serra-verde/logo-color-800w.png 800w,
+             /assets/images/brands/br-serra-verde/logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+     alt=" logo"
+     class="brand-card"
+     
+     data-purpose="logo"
+     onerror="this.src='/assets/images/placeholders/brands-logo-400w.png'; this.onerror=null;"
+     loading="lazy"&gt;
+
+
+
+
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;Serra Verde Organics&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        Founded 1986
+      &lt;/p&gt;
+    
+
+    
+      
+      
+
+
+
+&lt;span class="brand-card__location"&gt;
+  
+    &lt;i class="fas fa-map-marker-alt location__icon" aria-hidden="true"&gt;&lt;/i&gt;
+  
+  &lt;span class="location__text"&gt;
+    
+      Gonçalves, 
+    
+    
+      
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+
+  &lt;!-- If no country info found, just output the code itself --&gt;
+  BR
+
+
+    
+  &lt;/span&gt;
+&lt;/span&gt;
+
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+  &lt;div class="brand-card__body"&gt;
+    &lt;p class="brand-card__description"&gt;Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region.&lt;/p&gt;
+
+    &lt;div class="brand-card__tags"&gt;
+      &lt;!-- Markets first --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/markets/brazil/"
+   class="brand-card__tag brand-card__tag--market"&gt;
+  brazil
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Sectors second --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+  
+
+
+&lt;a href="//discover/sectors/gourmet-foods/"
+   class="brand-card__tag brand-card__tag--sector"&gt;
+  gourmet-foods
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Attributes third --&gt;
+      
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;a href="//discover/attributes/founder-led/"
+   class="brand-card__tag brand-card__tag--attribute"&gt;
+  founder-led
+&lt;/a&gt;
+
+        
+      
+
+      &lt;!-- Signals fourth --&gt;
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="brand-card__footer"&gt;
+    &lt;a href="/en/brands/br-serra-verde/" class="brand-card__link"&gt;
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+
+    &lt;/a&gt;
+
+    
+
+
+
+
+
+
+
+
+
+
+  &lt;div class="brand-card__founder-led"&gt;
+    F
+  &lt;/div&gt;
+
+
+  &lt;/footer&gt;
+&lt;/article&gt;
+
+  
+&lt;/div&gt;
+
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+        
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+    &lt;section class="brands-section brands-section--contact-cta" 
+             id="brands-section-contact-cta" 
+             aria-labelledby="heading-contact-cta"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--cta"&gt;
+  &lt;div class="panel__content panel--centered"&gt;
+    
+      
+
+&lt;h2 class="panel__heading-secondary"&gt;
+  
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Ready to Discover BRICS+ Brands?
+
+&lt;/h2&gt;
+&lt;p class="panel__lead-text"&gt;
+  
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Contact us to learn more about our featured brands or to discuss your specific needs.
+
+&lt;/p&gt;
+&lt;div class="cta-buttons"&gt;
+  &lt;a href="//about/#about-section-contact" 
+     class="btn btn--primary-cta"
+     data-track="suggest-brand"&gt;
+    
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+
+
+
+  Suggest a Brand
+
+  &lt;/a&gt;
+  &lt;a href="//about/#about-section-contact" 
+     class="btn btn--secondary-cta"
+     data-track="get-profiled"&gt;
+    
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+
+
+
+  Get Profiled
+
+  &lt;/a&gt;
+&lt;/div&gt;
+
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+        
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+</code></pre></div></div>
+
+<h3 id="configuration-files">Configuration Files</h3>
+<p>The “Logic Light” architecture relies on these centralized configuration files:</p>
 <ul>
-  <li><strong>Translation strings</strong> in <code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code>; in templates assign them to a local variable:
-    <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">data</span><span class="p">.</span><span class="nv">translations</span><span class="p">[</span><span class="nv">current_lang</span><span class="p">].</span><span class="nv">about</span><span class="w"> </span><span class="p">%}</span>
- Our Unique Perspective
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Impact sections</strong> use standardized translation structure for consistent messaging:
-    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># _data/translations/en.yml</span>
- <span class="na">brands</span><span class="pi">:</span>
-   <span class="na">impact</span><span class="pi">:</span>
-     <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Discover</span><span class="nv"> </span><span class="s">BRICS+</span><span class="nv"> </span><span class="s">Brands</span><span class="nv"> </span><span class="s">Ready</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">Markets"</span>
-     <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Brandmine</span><span class="nv"> </span><span class="s">offers</span><span class="nv"> </span><span class="s">unprecedented</span><span class="nv"> </span><span class="s">access</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">consumer</span><span class="nv"> </span><span class="s">brands..."</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Linear sectioning structure</strong> with minimal front matter:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> pages/en/about.md (minimal front matter with sections array)
- _layouts/about.html (loops through sections array)
- _includes/pages/about/hero.html (wrapped in panels)
- _includes/pages/about/mission.html (wrapped in panels)
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Section-based content organization</strong> eliminates complex conditional logic:
-    <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Consistent panel wrapping</strong> ensures visual unity while keeping section includes focused on content only.</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code> - Component behavior defaults</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/page_sections.yml</code> - Page section order and panel mappings</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code> - UI text and labels</li>
 </ul>
 
-<p><strong>Benefits:</strong> Eliminates sidebar complexity, reduces conditional logic, maintains semantic structure, and scales efficiently for auto-generated content.</p>
+<p><strong>Benefits:</strong> Eliminates hardcoded logic, reduces conditional templates, enables configuration-driven behavior changes, and provides consistent patterns across the entire codebase.</p>
 
 <h2 id="javascript">JavaScript</h2>
 <ul>
