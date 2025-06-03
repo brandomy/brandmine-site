@@ -69,7 +69,7 @@ brands:
     breadcrumbs:
       type: none  # Special case - rendered outside panel system
     hero:
-      type: panel--hero
+      type: panel--hero-split
     impact:
       type: panel--primary
       additional_classes: panel--impact
@@ -92,7 +92,8 @@ brands:
 founders:
   default_sections:
     - breadcrumbs
-    - header
+    - hero
+    - impact
     - content
     - filter-interface
     - founders-grid
@@ -102,10 +103,11 @@ founders:
   panel_mappings:
     breadcrumbs:
       type: none
-    header:
-      type: panel--hero
     hero:
-      type: panel--hero
+      type: panel--hero-split
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     content:
       type: panel--light
     filter-interface:
@@ -125,6 +127,7 @@ discovery:
   default_sections:
     - breadcrumbs
     - hero
+    - impact
     - content
     - dimensions-navigation
     - dimensions-grid
@@ -136,7 +139,10 @@ discovery:
     breadcrumbs:
       type: none
     hero:
-      type: panel--hero
+      type: panel--hero-split
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     content:
       type: panel--light
     dimensions-navigation:
@@ -159,6 +165,7 @@ insights:
   default_sections:
     - breadcrumbs
     - hero
+    - impact
     - content
     - category-navigation
     - categories
@@ -171,7 +178,10 @@ insights:
     breadcrumbs:
       type: none
     hero:
-      type: panel--hero
+      type: panel--hero-split
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     content:
       type: panel--light
     category-navigation:
@@ -196,6 +206,7 @@ journal:
   default_sections:
     - breadcrumbs
     - hero
+    - impact
     - content
     - latest-entries
     - author-profile
@@ -205,7 +216,10 @@ journal:
     breadcrumbs:
       type: none
     hero:
-      type: panel--hero
+      type: panel--hero-split
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     content:
       type: panel--light
     latest-entries:
@@ -217,10 +231,10 @@ journal:
       content_classes: panel--centered
 
 # =============================================================================
-# DISCOVER CATEGORY PAGES (Legacy System)
+# DIMENSION CATEGORY PAGES
 # =============================================================================
 
-discover:
+dimension-category:
   default_sections:
     - breadcrumbs
     - content
@@ -271,7 +285,7 @@ about:
 
   panel_mappings:
     hero:
-      type: panel--hero
+      type: panel--hero-split
     mission:
       type: panel--primary
     perspective:
@@ -297,6 +311,7 @@ brand-profile:
   default_sections:
     - breadcrumbs
     - identity
+    - impact
     - founder-narrative
     - content
     - business-intelligence
@@ -307,7 +322,10 @@ brand-profile:
     breadcrumbs:
       type: none
     identity:
-      type: panel--hero
+      type: panel--hero-subtle
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     founder-narrative:
       type: panel--light
     content:
@@ -324,6 +342,7 @@ founder-profile:
   default_sections:
     - breadcrumbs
     - hero
+    - impact
     - professional-details
     - content
     - associated-brands
@@ -335,6 +354,9 @@ founder-profile:
       type: none
     hero:
       type: panel--hero-subtle
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     professional-details:
       type: panel--light
     content:
@@ -351,6 +373,7 @@ dimension:
   default_sections:
     - breadcrumbs
     - hero
+    - impact
     - header
     - featured-brands
     - all-brands
@@ -361,6 +384,9 @@ dimension:
       type: none
     hero:
       type: panel--hero-subtle
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     header:
       type: panel--light
     navigation:
@@ -394,7 +420,7 @@ insight-article:
     breadcrumbs:
       type: none
     hero:
-      type: panel--hero
+      type: panel--hero  # Note: will use panel--hero-image when featured_image present
     header:
       type: panel--light
     featured-image:
@@ -411,3 +437,120 @@ insight-article:
       type: panel--light
     related-insights:
       type: panel--light
+
+# =============================================================================
+# MARKET SECTOR PAGES
+# =============================================================================
+
+market-sector:
+  default_sections:
+    - breadcrumbs
+    - hero
+    - content
+    - featured-brands
+    - all-brands
+  
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    hero:
+      type: panel--hero-subtle
+    content:
+      type: panel--light
+    featured-brands:
+      type: panel--light
+    all-brands:
+      type: panel--light
+
+# =============================================================================
+# ERROR 404 PAGES
+# =============================================================================
+
+error-404:
+  default_sections:
+    - breadcrumbs
+    - hero
+    - content
+    - search-suggestions
+  
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    hero:
+      type: panel--hero
+    content:
+      type: panel--light
+    search-suggestions:
+      type: panel--light
+
+# =============================================================================
+# SEARCH PAGES
+# =============================================================================
+
+search:
+  default_sections:
+    - breadcrumbs
+    - content
+  
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    content:
+      type: panel--light
+
+# =============================================================================
+# JOURNAL POST PAGES
+# =============================================================================
+
+post:
+  default_sections:
+    - breadcrumbs
+    - hero
+    - header
+    - content
+    - social-sharing
+    - taxonomy
+    - related-posts
+    - author-profile
+  
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    hero:
+      type: panel--hero-subtle
+    header:
+      type: panel--light
+    content:
+      type: panel--light
+    social-sharing:
+      type: panel--light
+    taxonomy:
+      type: panel--light
+    related-posts:
+      type: panel--light
+    author-profile:
+      type: panel--amber-soft
+
+# =============================================================================
+# BRAND BASIC PAGES
+# =============================================================================
+
+brand-basic:
+  default_sections:
+    - breadcrumbs
+    - identity
+    - content
+    - taxonomy
+    - location
+  
+  panel_mappings:
+    breadcrumbs:
+      type: none
+    identity:
+      type: panel--hero-subtle
+    content:
+      type: panel--light
+    taxonomy:
+      type: panel--light
+    location:
+      type: panel--sky-soft

@@ -1,45 +1,10 @@
 ---
 layout: default
 ---
-<!-- ----------------------------------------------------------------------------
-  ERROR 404 LAYOUT
-  ------------------------------------------------------------------------------
-  Custom layout for 404 error pages with seamless breadcrumbs support
----------------------------------------------------------------------------- -->
+{% comment %}
+  Error 404 Layout - Data-driven architecture
+  Custom layout for 404 error pages with multilingual support
+  Updated: 2025-06-02 - Converted to data-driven pattern
+{% endcomment %}
 
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,content" | split: "," %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
-
-<div class="error-404-page">
-  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
-  {% if sections_to_render contains "breadcrumbs" %}
-    <section class="error-404-section error-404-section--breadcrumbs"
-             id="error-404-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      {% include components/ui/breadcrumbs.html %}
-    </section>
-  {% endif %}
-  
-  {% comment %} Main content panel {% endcomment %}
-  <div class="panel panel--light">
-    <div class="panel__content">
-      {% for section in sections_to_render %}
-        {% unless section == "breadcrumbs" %}
-          {% if section == "content" %}
-            {{ content }}
-          {% else %}
-            <section class="error-404-section error-404-section--{{ section }}"
-                     id="error-404-section-{{ section }}"
-                     aria-labelledby="heading-{{ section }}">
-              {% include pages/error-404/{{ section }}.html %}
-            </section>
-          {% endif %}
-        {% endunless %}
-      {% endfor %}
-    </div>
-  </div>
-</div>
+{% include helpers/page-sections.html page_type="error-404" content=page.content %}

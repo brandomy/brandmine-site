@@ -1,0 +1,62 @@
+{% comment %}
+  Component: pages/dimension/impact.html
+  Purpose: Dimension impact statement for strategic messaging
+  Parameters:
+    - dimension: The dimension object (default: page)
+  Dependencies:
+    - Translation helper
+    - Dimension data structure
+{% endcomment %}
+
+{% assign dimension = include.dimension | default: page %}
+
+<div class="dimension-impact">
+  <div class="dimension-impact__content">
+    <h2 class="dimension-impact__title">
+      {% include helpers/t.html key="dimension.impact.title" fallback="Market Significance" %}
+    </h2>
+    
+    <div class="dimension-impact__text">
+      {% if dimension.impact_statement %}
+        <p>{{ dimension.impact_statement }}</p>
+      {% else %}
+        {% case dimension.tag_type %}
+          {% when "sector" %}
+            <p>{% include helpers/t.html key="dimension.sector_impact.text" fallback="Explore this strategic industry sector driving innovation and growth across BRICS+ markets." %}</p>
+          {% when "market" %}
+            <p>{% include helpers/t.html key="dimension.market_impact.text" fallback="Discover the unique opportunities and cultural dynamics shaping this emerging market." %}</p>
+          {% when "attribute" %}
+            <p>{% include helpers/t.html key="dimension.attribute_impact.text" fallback="Understand this key brand characteristic that defines excellence in BRICS+ business." %}</p>
+          {% when "signal" %}
+            <p>{% include helpers/t.html key="dimension.signal_impact.text" fallback="Identify growth potential through this strategic business indicator." %}</p>
+          {% else %}
+            <p>{% include helpers/t.html key="dimension.impact.text" fallback="Explore the strategic importance of this dimension in the BRICS+ business landscape." %}</p>
+        {% endcase %}
+      {% endif %}
+    </div>
+    
+    {% if dimension.related_brands_count or dimension.tag_type %}
+      <div class="dimension-impact__highlights">
+        {% if dimension.related_brands_count %}
+          <div class="impact-highlight">
+            <span class="impact-highlight__label">{% include helpers/t.html key="dimension.brands_featured" fallback="Brands Featured" %}:</span>
+            <span class="highlight-value">{{ dimension.related_brands_count }}+</span>
+          </div>
+        {% endif %}
+        
+        <div class="impact-highlight">
+          <span class="impact-highlight__label">{% include helpers/t.html key="dimension.category" fallback="Category" %}:</span>
+          <span class="dimension dimension--{{ dimension.tag_type }}">
+            {% case dimension.tag_type %}
+              {% when "sector" %}{% include helpers/t.html key="dimension.types.sector" fallback="Industry Sector" %}
+              {% when "market" %}{% include helpers/t.html key="dimension.types.market" fallback="Market Region" %}
+              {% when "attribute" %}{% include helpers/t.html key="dimension.types.attribute" fallback="Brand Attribute" %}
+              {% when "signal" %}{% include helpers/t.html key="dimension.types.signal" fallback="Growth Signal" %}
+              {% else %}{{ dimension.tag_type | capitalize }}
+            {% endcase %}
+          </span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

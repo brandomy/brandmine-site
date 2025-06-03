@@ -5,6 +5,7 @@ layout: dimension
 title: "Россия"
 dimension: russia
 category: market
+featured: true
 country_code: ru  # Add this line
 permalink: /ru/discover/markets/russia/
 ---

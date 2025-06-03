@@ -29,13 +29,26 @@
    SHARED NAVIGATION STRUCTURE
    -------------------------------------------------------------------------- */
 
-/* Override icon component styles to prevent colored backgrounds */
-.dimensions-category-navigation .icon {
-  width: 16px !important;
-  height: 16px !important;
-  background: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
+/* Reset icon component styles for navigation context */
+.dimensions-category-navigation__icon {
+  /* Override base .icon styles with higher specificity */
+  &.icon {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+  }
+  
+  /* Also handle dimension-specific icon classes */
+  &.icon--sectors,
+  &.icon--markets,
+  &.icon--attributes,
+  &.icon--signals {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+  }
 }
 
 /* Ensure all SVG icons display properly */
@@ -44,6 +57,9 @@
   height: 100%;
   display: block;
   color: inherit;
+  /* Reset any stroke styles from base icon component */
+  stroke: currentColor;
+  fill: none;
 }
 .dimensions-category-navigation__tabs {
   display: flex;
@@ -73,7 +89,7 @@
   color: var(--neutral-700);
   font-weight: var(--font-medium);
   border-radius: var(--radius-full); /* Make it pill-shaped */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
   border: 1px solid var(--neutral-200);
   font-size: var(--text-sm); /* Match breadcrumbs font size */
 }
@@ -102,7 +118,7 @@
 /* Active state */
 .dimensions-category-navigation--option-a .dimensions-category-navigation__tab.active {
   font-weight: var(--font-semibold);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-medium);
   border-width: 2px;
 }
 
@@ -208,7 +224,7 @@
   line-height: 1.3;
   background-color: white;
   border: 1px solid var(--neutral-200);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
   transition: all 0.2s ease;
   font-size: var(--text-sm); /* Match breadcrumbs font size */
 }
@@ -232,7 +248,7 @@
 
 .dimensions-category-navigation--option-b .dimensions-category-navigation__tab.active {
   font-weight: var(--font-semibold);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-medium);
   border-width: 2px;
 }
 

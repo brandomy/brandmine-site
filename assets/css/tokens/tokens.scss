@@ -429,4 +429,107 @@
     --focus-shadow: 0 0 0 3px rgba(var(--primary-400-rgb), 0.2);
   }
 
+  /* ==========================================================================
+     7. ALPHA TRANSPARENCY & OVERLAY TOKENS
+     ========================================================================== */
+
+  /* 7.1 Alpha Transparency Tokens */
+  :root {
+    /* Black alpha variants for overlays, shadows, and borders */
+    --neutral-alpha-05: rgba(0, 0, 0, 0.05);
+    --neutral-alpha-10: rgba(0, 0, 0, 0.10);
+    --neutral-alpha-15: rgba(0, 0, 0, 0.15);
+    --neutral-alpha-20: rgba(0, 0, 0, 0.20);
+    --neutral-alpha-30: rgba(0, 0, 0, 0.30);
+    --neutral-alpha-40: rgba(0, 0, 0, 0.40);
+    --neutral-alpha-50: rgba(0, 0, 0, 0.50);
+    --neutral-alpha-70: rgba(0, 0, 0, 0.70);
+    --neutral-alpha-80: rgba(0, 0, 0, 0.80);
+
+    /* White alpha variants for overlays, highlights, and backgrounds */
+    --surface-alpha-10: rgba(255, 255, 255, 0.10);
+    --surface-alpha-20: rgba(255, 255, 255, 0.20);
+    --surface-alpha-30: rgba(255, 255, 255, 0.30);
+    --surface-alpha-50: rgba(255, 255, 255, 0.50);
+    --surface-alpha-80: rgba(255, 255, 255, 0.80);
+    --surface-alpha-90: rgba(255, 255, 255, 0.90);
+
+    /* Brand color alpha variants */
+    --primary-alpha-15: rgba(56, 178, 172, 0.15);
+    --primary-alpha-20: rgba(56, 178, 172, 0.20);
+    --secondary-alpha-20: rgba(251, 146, 60, 0.20);
+    --olive-alpha-20: rgba(163, 183, 99, 0.20);
+    --sky-alpha-20: rgba(14, 165, 233, 0.20);
+  }
+
+  /* 7.2 Enhanced Shadow System */
+  :root {
+    /* Light shadows for subtle depth */
+    --shadow-xs: 0 1px 2px var(--neutral-alpha-05);
+    --shadow-light: 0 1px 3px var(--neutral-alpha-10);
+    --shadow-subtle: 0 2px 4px var(--neutral-alpha-10);
+    
+    /* Medium shadows for cards and components */
+    --shadow-card: 0 2px 6px var(--neutral-alpha-50);
+    --shadow-card-hover: 0 4px 12px var(--neutral-alpha-10);
+    --shadow-medium: 0 4px 8px var(--neutral-alpha-15);
+    
+    /* Heavy shadows for elevated components */
+    --shadow-elevated: 0 4px 8px var(--neutral-alpha-80);
+    --shadow-strong: 0 6px 12px var(--neutral-alpha-10);
+    --shadow-heavy: 0 8px 16px var(--neutral-alpha-15);
+    
+    /* Text shadows */
+    --text-shadow-light: 0 1px 2px var(--neutral-alpha-50);
+    --text-shadow-medium: 0 2px 4px var(--neutral-alpha-50);
+    --text-shadow-strong: 1px 1px 2px var(--neutral-alpha-70);
+    --text-shadow-heavy: 2px 2px 4px var(--neutral-alpha-70);
+  }
+
+  /* 7.3 Border System */
+  :root {
+    /* Border utilities with consistent alpha values */
+    --border-light: 1px solid var(--neutral-alpha-10);
+    --border-medium: 1px solid var(--neutral-alpha-20);
+    --border-subtle: 1px solid var(--neutral-alpha-05);
+    
+    /* Surface borders (white on dark backgrounds) */
+    --border-surface-light: 1px solid var(--surface-alpha-10);
+    --border-surface-medium: 1px solid var(--surface-alpha-30);
+    
+    /* Brand color borders */
+    --border-primary-light: 3px solid var(--primary-alpha-20);
+    --border-secondary-light: 3px solid var(--secondary-alpha-20);
+    --border-olive-light: 3px solid var(--olive-alpha-20);
+    --border-sky-light: 3px solid var(--sky-alpha-20);
+  }
+
+  /* 7.4 Overlay System */
+  :root {
+    /* Background overlays for modals and hero images */
+    --overlay-light: var(--neutral-alpha-10);
+    --overlay-medium: var(--neutral-alpha-30);
+    --overlay-modal: var(--neutral-alpha-40);
+    --overlay-dark: var(--neutral-alpha-50);
+    --overlay-heavy: var(--neutral-alpha-70);
+    
+    /* Surface overlays for subtle highlighting */
+    --surface-overlay-subtle: var(--surface-alpha-20);
+    --surface-overlay-medium: var(--surface-alpha-30);
+    --surface-overlay-strong: var(--surface-alpha-50);
+  }
+
+  /* 7.5 Category-Specific Shadow Tokens */
+  :root {
+    /* Insight category shadows for hover effects */
+    --shadow-brand-spotlight: 0 6px 12px rgba(249, 115, 22, 0.15);
+    --shadow-brand-spotlight-hover: 0 8px 16px rgba(249, 115, 22, 0.10);
+    --shadow-founders-journey: 0 6px 12px rgba(99, 102, 241, 0.15);
+    --shadow-founders-journey-hover: 0 8px 16px rgba(99, 102, 241, 0.10);
+    --shadow-location-intelligence: 0 6px 12px rgba(14, 165, 233, 0.15);
+    --shadow-location-intelligence-hover: 0 8px 16px rgba(14, 165, 233, 0.10);
+    --shadow-market-momentum: 0 6px 12px rgba(163, 183, 99, 0.15);
+    --shadow-market-momentum-hover: 0 8px 16px rgba(163, 183, 99, 0.10);
+  }
+
   /* End of Design Tokens */

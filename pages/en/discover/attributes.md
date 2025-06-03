@@ -1,5 +1,5 @@
 ---
-layout: discover
+layout: dimension-category
 title: Discover by Brand Attribute
 subtitle: Explore brands with distinctive characteristics from the BRICS+
 permalink: /en/discover/attributes/
@@ -9,8 +9,8 @@ discovery_path: attributes
 sections:
   - breadcrumbs
   - hero
-  - all-attributes-grid
   - featured-attributes
+  - all-attributes-grid
   - attribute-insights
   - cross-navigation
 ---

@@ -1,0 +1,791 @@
+/* ==========================================================================
+   Panel Types - Hero System & Color Variants
+   ==========================================================================
+   Four-tier hero panel architecture and color scheme variations.
+   
+   Hero Tiers:
+   1. Navigation Pages (.panel--hero)
+   2. Individual Profiles (.panel--hero-subtle)
+   3. Editorial Content (.panel--hero-image)
+   4. Split Layout (.panel--hero-split)
+   
+   Color Variants:
+   - Light backgrounds (.panel--light, .panel--primary, etc.)
+   - Soft backgrounds (.panel--amber-soft, .panel--sky-soft, etc.)
+   - Pattern variants (.panel--primary-pattern, etc.)
+   - Special purpose (.panel--cta, .panel--discovery)
+*/
+
+/* ==========================================================================
+   HERO PANEL SYSTEM - FOUR-TIER ARCHITECTURE
+   ========================================================================== */
+
+/* Tier 1: Navigation Pages (Discovery, category listings) */
+.panel--hero {
+  background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
+  color: white;
+  text-align: center;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+/* Home page specific hero adjustments */
+.home-page .panel--hero .panel__heading-primary {
+  margin-top: 60px;
+}
+
+/* Founders page specific hero content styling */
+.founders-page .founders-hero {
+  text-align: center;
+
+  &__title {
+    font-size: var(--text-5xl);
+    font-weight: var(--font-bold);
+    color: var(--secondary-200);
+    margin-bottom: var(--space-4);
+    font-family: var(--font-heading);
+    line-height: var(--leading-tight);
+
+    @media (width <= 768px) {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  &__subtitle {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-light);
+    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: var(--leading-relaxed);
+
+    @media (width <= 768px) {
+      font-size: var(--text-lg);
+    }
+  }
+}
+
+/* Tier 2: Individual Profiles (Brands, founders, dimensions) */
+.panel--hero-subtle {
+  background: radial-gradient(circle at center, var(--primary-300) 0%, var(--primary-500) 100%);
+  color: white;
+  text-align: center;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+
+  /* Brand-specific hero content styling */
+  .brand-hero {
+    text-align: center;
+
+    &__title {
+      font-size: var(--text-5xl);
+      font-weight: var(--font-bold);
+      color: var(--secondary-200);
+      margin-bottom: var(--space-4);
+      font-family: var(--font-heading);
+      line-height: var(--leading-tight);
+
+      @media (width <= 768px) {
+        font-size: var(--text-3xl);
+      }
+    }
+
+    &__tagline {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-light);
+      color: white;
+      max-width: 700px;
+      margin: 0 auto var(--space-4);
+      line-height: var(--leading-relaxed);
+
+      @media (width <= 768px) {
+        font-size: var(--text-lg);
+      }
+    }
+
+    &__meta {
+      font-size: var(--text-lg);
+      color: var(--secondary-100);
+      font-weight: var(--font-medium);
+
+      @media (width <= 768px) {
+        font-size: var(--text-base);
+      }
+    }
+
+    &__founded,
+    &__location {
+      display: inline;
+    }
+  }
+
+  /* Founder-specific hero content styling */
+  .founder-hero {
+    text-align: center;
+
+    &__title {
+      font-size: var(--text-5xl);
+      font-weight: var(--font-bold);
+      color: var(--secondary-200);
+      margin-bottom: var(--space-4);
+      font-family: var(--font-heading);
+      line-height: var(--leading-tight);
+
+      @media (width <= 768px) {
+        font-size: var(--text-3xl);
+      }
+    }
+
+    &__position {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-light);
+      color: white;
+      max-width: 600px;
+      margin: 0 auto var(--space-4);
+      line-height: var(--leading-relaxed);
+
+      @media (width <= 768px) {
+        font-size: var(--text-lg);
+      }
+    }
+
+    &__meta {
+      font-size: var(--text-lg);
+      color: var(--secondary-100);
+      font-weight: var(--font-medium);
+
+      @media (width <= 768px) {
+        font-size: var(--text-base);
+      }
+    }
+
+    &__company,
+    &__location {
+      display: inline;
+    }
+  }
+}
+
+/* Tier 3: Editorial Content (Insights, articles with background images) */
+.panel--hero-image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+
+  /* Dark overlay for text readability */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--overlay-modal);
+    z-index: 1;
+  }
+
+  .panel__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    min-height: 50vh;
+  }
+
+  .hero-content {
+    color: white;
+    text-align: center;
+    width: 100%;
+    
+    .panel__heading-primary {
+      color: white;
+      text-shadow: var(--text-shadow-medium);
+      margin-bottom: 1rem;
+    }
+    
+    .panel__subtitle {
+      color: var(--surface-alpha-90);
+      text-shadow: var(--text-shadow-light);
+      margin-bottom: 2rem;
+    }
+  }
+  
+  .hero-actions {
+    margin-top: 2rem;
+  }
+
+  @media (width <= 768px) {
+    min-height: 40vh;
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    
+    .panel__content {
+      min-height: 40vh;
+    }
+    
+    .panel__heading-primary {
+      font-size: 2rem;
+    }
+  }
+}
+
+/* Insight-specific hero content styling (applies to both panel--hero and panel--hero-image) */
+.panel--hero .insight-hero,
+.panel--hero-image .insight-hero {
+  text-align: center;
+
+  &__category {
+    display: inline-block;
+    margin-bottom: var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    background-color: var(--secondary-100);
+    color: var(--secondary-800);
+  }
+
+  &__title {
+    font-size: var(--text-5xl);
+    font-weight: var(--font-bold);
+    color: var(--secondary-200);
+    margin-bottom: var(--space-4);
+    font-family: var(--font-heading);
+    line-height: var(--leading-tight);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (width <= 768px) {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  &__meta {
+    font-size: var(--text-lg);
+    color: var(--secondary-100);
+    font-weight: var(--font-medium);
+
+    @media (width <= 768px) {
+      font-size: var(--text-base);
+    }
+  }
+
+  &__date,
+  &__reading-time {
+    display: inline;
+  }
+}
+
+/* Special styling for insight categories on image backgrounds */
+.panel--hero-image .insight-hero__category {
+  background-color: var(--surface-alpha-90);
+  color: var(--secondary-800);
+}
+
+/* Tier 4: Split Layout (Side-by-side content + image) */
+.panel--hero-split {
+  background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
+  color: white;
+  padding: 0; /* Remove default panel padding for grid layout */
+  
+  .journal-hero {
+    display: grid;
+    min-height: 200px;
+    
+    /* Mobile: stacked layout */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    
+    /* Desktop: side-by-side layout */
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      min-height: 250px;
+    }
+    
+    @media (min-width: 992px) {
+      min-height: 300px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-8) var(--space-6);
+      text-align: left;
+      
+      @media (min-width: 768px) {
+        padding: var(--space-12) var(--space-10);
+      }
+      
+      @media (min-width: 992px) {
+        padding: var(--space-16) var(--space-12);
+      }
+      
+      /* Mobile: center text when stacked */
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+
+    &__image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/2; /* Maintain 3:2 aspect ratio on all screen sizes */
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    &__title {
+      margin: 0 0 var(--space-4) 0;
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-tight);
+      color: white;
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-4xl);
+      }
+      
+      @media (min-width: 992px) {
+        font-size: var(--text-5xl);
+      }
+    }
+    
+    &__subtitle {
+      margin: 0;
+      font-size: var(--text-lg);
+      font-weight: var(--font-normal);
+      line-height: var(--leading-relaxed);
+      color: var(--surface-alpha-90);
+      max-width: 50ch;
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-xl);
+      }
+      
+      /* Mobile: center subtitle */
+      @media (max-width: 767px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  /* Color Palette Options - Fixed selector structure */
+  .journal-hero--teal .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--primary-400) 0%, var(--primary-600) 100%);
+  }
+
+  .journal-hero--blue .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-blue-light) 0%, var(--journal-blue-dark) 100%);
+  }
+
+  .journal-hero--orange .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--secondary-400) 0%, var(--secondary-600) 100%);
+  }
+
+  .journal-hero--purple .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-purple-light) 0%, var(--journal-purple-dark) 100%);
+  }
+
+  .journal-hero--green .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-green-light) 0%, var(--journal-green-dark) 100%);
+  }
+
+  .journal-hero--slate .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-slate-light) 0%, var(--journal-slate-dark) 100%);
+  }
+
+  .journal-hero--coral .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-coral-light) 0%, var(--journal-coral-dark) 100%);
+  }
+
+  .journal-hero--sage .journal-hero__content {
+    background: radial-gradient(circle at 30% 40%, var(--journal-sage-light) 0%, var(--journal-sage-dark) 100%);
+  }
+
+  /* Post-specific styling for individual journal posts */
+  .journal-hero--post .journal-hero__title {
+    font-size: var(--text-2xl);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-3xl);
+    }
+    
+    @media (min-width: 992px) {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .journal-hero--post .journal-hero__subtitle {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-lg);
+    }
+  }
+
+  /* Post meta information styling */
+  .post-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--surface-alpha-90);
+    margin-bottom: var(--space-6);
+    
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
+    
+    .separator {
+      margin: 0 var(--space-2);
+      opacity: 0.7;
+    }
+  }
+
+  .post-hero__date,
+  .post-hero__author,
+  .post-hero__reading-time {
+    font-weight: var(--font-medium);
+  }
+
+  .post-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
+  }
+
+  .post-hero__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-2);
+    background: var(--surface-overlay-subtle);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-fast);
+    border: var(--border-surface-medium);
+    
+    &:hover,
+    &:focus {
+      background: var(--surface-overlay-medium);
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+/* RESERVED FOR FUTURE EXPANSION:
+   Tier 5: Taxonomy Rollups - .panel--hero-taxonomy
+   Tier 6: Content Categories - .panel--hero-category  
+   Tier 7: Specialized Profiles - .panel--hero-profile-enhanced
+*/
+
+/* Shared Hero Typography */
+.panel--hero .panel__heading-primary,
+.panel--hero-subtle .panel__heading-primary,
+.panel--hero-image .panel__heading-primary {
+  font-size: var(--text-3xl);  /* Mobile-first smaller size */
+  font-weight: var(--font-bold);
+  color: var(--secondary-200);
+  margin-bottom: var(--space-4);
+  text-align: center;
+  line-height: var(--leading-tight);
+}
+
+.panel--hero .panel__subtitle,
+.panel--hero-subtle .panel__subtitle,
+.panel--hero-image .panel__subtitle {
+  font-size: var(--text-lg);  /* Mobile-first smaller size */
+  font-weight: var(--font-light);
+  color: white;
+  margin-top: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--leading-relaxed);
+}
+
+/* Note: panel--hero-split uses journal-hero__title and journal-hero__subtitle 
+   classes for typography, defined within the .panel--hero-split block above */
+
+/* Hero image specific text styling for better contrast */
+.panel--hero-image .panel__heading-primary {
+  color: white;
+  text-shadow: var(--text-shadow-heavy);
+}
+
+.panel--hero-image .panel__subtitle {
+  text-shadow: var(--text-shadow-strong);
+}
+
+/* ==========================================================================
+   COLOR VARIANTS
+   ========================================================================== */
+
+/* Basic Color Variations */
+.panel--light {
+  background-color: white;
+  color: var(--neutral-700);
+}
+
+/* Special panel for discovery content that removes top spacing */
+.panel--discovery-content {
+  padding-top: 0; /* Remove top padding to connect with tabs */
+}
+
+.panel--light .panel__content {
+  max-width: 1200px;    /* Updated to follow the new width strategy */
+  text-align: center;   /* Center all content */
+}
+
+.panel--light .panel__lead-text {
+  font-size: var(--text-lg);     /* Increased size */
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel--primary {
+  background-color: var(--primary-50);
+  color: var(--neutral-700);
+}
+
+.panel--primary-dark {
+  background-color: var(--primary-700);
+  color: white;
+}
+
+.panel--secondary {
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
+}
+
+.panel--accent {
+  background-color: var(--accent-50);
+  color: var(--neutral-700);
+}
+
+.panel--accent-dark {
+  background-color: var(--accent-800);
+  color: white;
+}
+
+.panel--olive {
+  background-color: var(--olive-50);
+  color: var(--neutral-700);
+}
+
+/* Solid Color Panel Styles */
+
+/* Solid primary (teal) for Team section */
+.panel--primary-solid {
+  background-color: var(--primary-100);
+  color: var(--neutral-700);
+  border-bottom: var(--border-primary-light); /* Primary color with opacity */
+}
+
+/* Soft accent (indigo) for Mission panel */
+.panel--accent-soft {
+  background-color: var(--accent-50);
+  color: var(--neutral-700);
+}
+
+/* Make sure headings stay dark for readability */
+.panel--accent-soft .panel__heading-secondary {
+  color: var(--neutral-800); /* Keep headers dark */
+}
+
+/* Remove any border bottom rules */
+.panel--accent-soft,
+.panel--primary-solid {
+  border-bottom: none;
+}
+
+/* Soft olive (olive green) background for Mission panel */
+.panel--olive-soft {
+  background-color: var(--olive-50);
+  color: var(--neutral-700);
+  border-bottom: var(--border-olive-light); /* Quaternary color with opacity */
+}
+
+/* Special treatment for olive panel */
+.panel--olive-soft .panel__heading-secondary {
+  color: var(--olive-700);
+}
+
+/* Amber soft background for featured brands */
+.panel--amber-soft {
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
+  border-bottom: var(--border-secondary-light); /* Amber color with opacity */
+}
+
+/* Special treatment for amber panel - center content and black headings */
+.panel--amber-soft .panel__content {
+  text-align: center;
+}
+
+.panel--amber-soft .panel__heading-secondary {
+  color: var(--neutral-900);
+}
+
+.panel--amber-soft .panel__lead-text {
+  text-align: center;
+}
+
+/* Services section styling */
+.panel--secondary-soft {
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
+}
+
+/* Ensure services columns stand out on secondary background */
+.panel--secondary-soft .services-column {
+  background-color: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  border-top: 3px solid var(--secondary-500);
+}
+
+.panel--secondary-soft .services-column h3 {
+  color: var(--secondary-600);
+}
+
+.panel--secondary-soft .service-list li::before {
+  color: var(--secondary-500);
+}
+
+/* Sky Soft Panel (for Markets dimension) */
+.panel--sky-soft {
+  background-color: var(--sky-50);
+  color: var(--neutral-700);
+  border-bottom: var(--border-sky-light); /* Sky color with opacity */
+}
+
+.panel--sky-soft .panel__heading-secondary {
+  color: var(--sky-800);
+}
+
+/* Make sure headings stay dark for readability */
+.panel--sky-soft h3 {
+  color: var(--sky-800);
+}
+
+/* Enhance buttons on sky backgrounds */
+.panel--sky-soft .btn--standard {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border-color: var(--sky-300);
+}
+
+.panel--sky-soft .btn--standard:hover {
+  background-color: var(--sky-200);
+  border-color: var(--sky-400);
+}
+
+/* Pattern Variations */
+.panel--primary-pattern {
+  background-color: var(--primary-50);
+  color: var(--neutral-700);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338b2ac' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.panel--primary-dark-pattern {
+  background-color: var(--primary-700);
+  color: white;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2381E6D9' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.panel--secondary-pattern {
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.panel--accent-pattern {
+  background-color: var(--accent-100);
+  color: var(--neutral-700);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.panel--accent-dark-pattern {
+  background-color: var(--accent-800);
+  color: white;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A5B4FC' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.panel--olive-pattern {
+  background-color: var(--olive-50);
+  color: var(--neutral-700);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A3B763' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Special Purpose Modifiers */
+.panel--cta {
+  background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%);
+  color: white;
+  padding: var(--space-12) var(--space-4);  /* Mobile-first smaller padding */
+}
+
+.panel--text .panel__content {
+  max-width: 800px;
+}
+
+/* Utility modifiers */
+.panel--centered {
+  text-align: center;
+}
+
+/* Impact statement modifier - standardized across all pages */
+.panel--impact {
+  .panel__heading-secondary {
+    text-align: center;
+  }
+
+  .panel__lead-text {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Discovery panel */
+.panel--discovery {
+  background: linear-gradient(135deg, var(--primary-500), var(--sky-600));
+  color: white;
+}

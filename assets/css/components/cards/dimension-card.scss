@@ -13,7 +13,7 @@
   background-color: white;
   border-radius: var(--radius-lg);
   padding: var(--space-6);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-light);
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -22,7 +22,7 @@
 
 .dimension-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-medium);
 }
 
 /* --------------------------------------------------------------------------
@@ -88,15 +88,34 @@
   color: var(--accent-700);
 }
 
-/* Icon SVG styling */
-.dimension-card__icon-svg svg {
-  width: 24px !important;
-  height: 24px !important;
-  fill: none !important;
-  stroke: currentColor !important;
-  stroke-width: 2 !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
+/* Icon SVG styling with higher specificity */
+.dimension-card__icon .dimension-card__icon-svg {
+  /* Ensure proper sizing without !important */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+/* Override base icon styles when used in dimension cards */
+.dimension-card .icon {
+  /* Reset any conflicting base icon styles */
+  &.dimension-card__icon-svg {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+  }
 }
 
 /* --------------------------------------------------------------------------

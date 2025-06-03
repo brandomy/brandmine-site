@@ -5,6 +5,7 @@ layout: dimension
 title: "Heritage Brand"
 dimension: heritage-brand
 category: attribute
+featured: true
 verification_required: true
 permalink: /en/discover/attributes/heritage-brand/
 ---

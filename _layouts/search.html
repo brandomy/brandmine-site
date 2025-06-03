@@ -1,45 +1,12 @@
 ---
 layout: default
 ---
-<!-- ----------------------------------------------------------------------------
-  SEARCH LAYOUT
-  ------------------------------------------------------------------------------
-  Custom layout for search pages with seamless breadcrumbs support
----------------------------------------------------------------------------- -->
-
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,content" | split: "," %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
-
-<div class="{{ page.ref }}-page">
-  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
-  {% if sections_to_render contains "breadcrumbs" %}
-    <section class="{{ page.ref }}-section {{ page.ref }}-section--breadcrumbs"
-             id="{{ page.ref }}-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      {% include components/ui/breadcrumbs.html %}
-    </section>
-  {% endif %}
+{% comment %}
+  Search Layout - Data-driven architecture
+  Custom layout for search pages with JavaScript search functionality
+  Updated: 2025-06-02 - Converted to data-driven pattern
   
-  {% comment %} Main content panel {% endcomment %}
-  <div class="panel panel--light">
-    <div class="panel__content">
-      {% for section in sections_to_render %}
-        {% unless section == "breadcrumbs" %}
-          {% if section == "content" %}
-            {{ content }}
-          {% else %}
-            <section class="{{ page.ref }}-section {{ page.ref }}-section--{{ section }}"
-                     id="{{ page.ref }}-section-{{ section }}"
-                     aria-labelledby="heading-{{ section }}">
-              {% include pages/search/{{ section }}.html %}
-            </section>
-          {% endif %}
-        {% endunless %}
-      {% endfor %}
-    </div>
-  </div>
-</div>
+  Note: Maintains custom content rendering for search-specific functionality
+{% endcomment %}
+
+{% include helpers/page-sections.html page_type="search" content=page.content %}

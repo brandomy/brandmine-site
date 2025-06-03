@@ -5,6 +5,7 @@ layout: dimension
 title: "手工烈酒与伏特加"
 dimension: artisanal-spirits
 category: sector
+featured: true
 permalink: /zh/discover/sectors/artisanal-spirits/
 ---
 

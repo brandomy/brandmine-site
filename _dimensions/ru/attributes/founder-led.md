@@ -5,6 +5,7 @@ layout: dimension
 title: "Управляемые основателями"
 dimension: founder-led
 category: attribute
+featured: true
 verification_required: true
 permalink: /ru/discover/attributes/founder-led/
 ---

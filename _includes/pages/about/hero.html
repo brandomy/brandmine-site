@@ -1,12 +1,13 @@
 {% comment %}
   Component: pages/about/hero.html
   Purpose: Split hero section for About page with text left, image right
-  Updated: 2025-05-31 - Changed from single panel to split layout
+  Updated: 2025-06-02 - Updated to use panel--hero-split styling
+  Note: About page uses manual panel wrapping system, not data-driven panels
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].about %}
 
-<div class="panel panel--hero">
+<div class="panel panel--hero-split">
   <div class="panel__content">
     <div class="journal-hero journal-hero--teal journal-hero--landing">
       <!-- Text Content Section -->

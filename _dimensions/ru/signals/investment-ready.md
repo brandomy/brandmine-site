@@ -5,6 +5,7 @@ layout: dimension
 title: "Готовность к инвестициям"
 dimension: investment-ready
 category: signal
+featured: true
 verification_required: true
 permalink: /ru/discover/signals/investment-ready/
 ---

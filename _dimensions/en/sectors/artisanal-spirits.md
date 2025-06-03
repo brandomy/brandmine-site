@@ -5,6 +5,7 @@ layout: dimension
 title: "Artisanal Spirits & Vodka"
 dimension: artisanal-spirits
 category: sector
+featured: true
 permalink: /en/discover/sectors/artisanal-spirits/
 ---
 

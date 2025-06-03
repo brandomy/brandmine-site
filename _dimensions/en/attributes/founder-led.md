@@ -5,6 +5,7 @@ layout: dimension
 title: "Founder-Led"
 dimension: founder-led
 category: attribute
+featured: true
 verification_required: true
 permalink: /en/discover/attributes/founder-led/
 ---

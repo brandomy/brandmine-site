@@ -5,6 +5,7 @@ layout: dimension
 title: "Готовность к экспорту"
 dimension: export-ready
 category: signal
+featured: true
 verification_required: true
 permalink: /ru/discover/signals/export-ready/
 ---

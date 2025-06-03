@@ -2,31 +2,9 @@
 layout: default
 ---
 {% comment %}
-  About Page Layout - Logic-light architecture
-  Dynamically includes page sections based on front matter arrays
+  About Page Layout - Data-driven architecture
+  Uses centralized page sections configuration for consistency
+  Updated: 2025-06-02 - Converted to data-driven pattern
 {% endcomment %}
 
-{% comment %} Set default sections if none specified {% endcomment %}
-{% unless page.sections %}
-  {% assign sections_to_render = "breadcrumbs,hero,mission,problems,solutions,team,perspective,services,contact" | split: "," %}
-{% else %}
-  {% assign sections_to_render = page.sections %}
-{% endunless %}
-
-<div class="about-page">
-  {% comment %} Handle breadcrumbs separately outside panel system {% endcomment %}
-  {% if sections_to_render contains "breadcrumbs" %}
-    {% include components/ui/breadcrumbs.html %}
-  {% endif %}
-  
-  {% for section in sections_to_render %}
-    {% unless section == "breadcrumbs" %}
-      <section class="about-section about-section--{{ section }}" id="about-section-{{ section }}" aria-labelledby="heading-{{ section }}">
-        {% include pages/about/{{ section }}.html %}
-      </section>
-    {% endunless %}
-  {% endfor %}
-</div>
-
-{% if false %}
-{% endif %}
+{% include helpers/page-sections.html page_type="about" content=page.content %}

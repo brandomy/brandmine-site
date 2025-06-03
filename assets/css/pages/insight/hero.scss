@@ -1,53 +1,15 @@
 /* ==========================================================================
-   Insight Hero Section
+   Insight Hero Section - MOVED TO PANELS.CSS
    ========================================================================== */
 
-.insight-article-page {
-  .insight-hero {
-    text-align: center;
-
-    &__category {
-      display: inline-block;
-      margin-bottom: var(--space-3);
-      font-size: var(--text-sm);
-      font-weight: var(--font-medium);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: var(--space-1) var(--space-3);
-      border-radius: var(--radius-full);
-      background-color: var(--secondary-100);
-      color: var(--secondary-800);
-    }
-
-    &__title {
-      font-size: var(--text-5xl);
-      font-weight: var(--font-bold);
-      color: var(--secondary-200);
-      margin-bottom: var(--space-4);
-      font-family: var(--font-heading);
-      line-height: var(--leading-tight);
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-
-      @media (width <= 768px) {
-        font-size: var(--text-3xl);
-      }
-    }
-
-    &__meta {
-      font-size: var(--text-lg);
-      color: var(--secondary-100);
-      font-weight: var(--font-medium);
-
-      @media (width <= 768px) {
-        font-size: var(--text-base);
-      }
-    }
-
-    &__date,
-    &__reading-time {
-      display: inline;
-    }
-  }
-}
+/* Insight hero styles have been consolidated into assets/css/layout/panels.scss
+   under the .panel--hero and .panel--hero-image sections to align with the 
+   four-tier hero system.
+   
+   This includes:
+   - .insight-hero layout and typography
+   - Category badge styling  
+   - Title, meta, date, and reading time styling
+   - Special styling for image backgrounds
+   
+   This file is maintained for any future insight-specific non-hero styling. */

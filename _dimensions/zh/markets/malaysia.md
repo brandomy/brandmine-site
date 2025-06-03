@@ -5,6 +5,7 @@ layout: dimension
 title: "马来西亚"
 dimension: malaysia
 category: market
+featured: true
 country_code: my
 permalink: /zh/discover/markets/malaysia/
 ---

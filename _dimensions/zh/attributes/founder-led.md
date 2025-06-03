@@ -5,6 +5,7 @@ layout: dimension
 title: "创始人领导"
 dimension: founder-led
 category: attribute
+featured: true
 verification_required: true
 permalink: /zh/discover/attributes/founder-led/
 ---

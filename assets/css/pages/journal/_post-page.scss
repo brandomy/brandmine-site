@@ -92,9 +92,10 @@
   }
 
   // Reduced white space experiment - remove top/bottom padding from light panels
-  .panel--light {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+  // Using higher specificity to override default panel padding
+  &.journal-post-page .panel--light {
+    padding-top: 0;
+    padding-bottom: 0;
     
     .panel__content {
       padding-top: var(--space-4);

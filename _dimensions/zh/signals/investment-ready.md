@@ -5,6 +5,7 @@ layout: dimension
 title: "投资就绪"
 dimension: investment-ready
 category: signal
+featured: true
 verification_required: true
 permalink: /zh/discover/signals/investment-ready/
 ---

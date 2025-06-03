@@ -5,6 +5,7 @@ layout: dimension
 title: "Wine"
 dimension: wine
 category: sector
+featured: true
 permalink: /en/discover/sectors/wine/
 ---
 

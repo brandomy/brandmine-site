@@ -8,6 +8,7 @@ lang: ru
 sections:
   - breadcrumbs
   - hero
+  - impact
   - featured-article
   - content
   - latest-entries

@@ -5,6 +5,7 @@ layout: dimension
 title: "Исторический бренд"
 dimension: heritage-brand
 category: attribute
+featured: true
 verification_required: true
 permalink: /ru/discover/attributes/heritage-brand/
 ---

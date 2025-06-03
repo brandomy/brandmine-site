@@ -5,6 +5,7 @@ layout: dimension
 title: "传承品牌"
 dimension: heritage-brand
 category: attribute
+featured: true
 verification_required: true
 permalink: /zh/discover/attributes/heritage-brand/
 ---

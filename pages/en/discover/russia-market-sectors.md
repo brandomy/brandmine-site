@@ -1,5 +1,5 @@
 ---
-layout: discover
+layout: dimension-category
 title: Russia Market Sectors
 subtitle: Exploring 16 High-Potential Russian Market Sectors
 permalink: /en/discover/russia-market-sectors/

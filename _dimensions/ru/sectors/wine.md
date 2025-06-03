@@ -5,6 +5,7 @@ layout: dimension
 title: "Вино"
 dimension: wine
 category: sector
+featured: true
 permalink: /ru/discover/sectors/wine/
 ---
 

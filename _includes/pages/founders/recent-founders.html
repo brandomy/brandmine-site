@@ -38,7 +38,7 @@
     <div class="recent-founders__grid">
       {% assign recent_founders = site.founders | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
       {% for founder in recent_founders %}
-        {% include components/cards/founder-card.html founder=founder %}
+        {% include components/cards/founder-card.html founder=founder variant="recent" %}
       {% endfor %}
     </div>
 

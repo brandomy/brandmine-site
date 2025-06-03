@@ -1,0 +1,298 @@
+/* ==========================================================================
+   Panel Specific Implementations
+   ==========================================================================
+   Page-specific panel styling and component enhancements.
+   
+   Includes:
+   - Component styling on colored backgrounds
+   - Category card implementations
+   - Panel spacing fixes
+   - Responsive adjustments
+*/
+
+/* --------------------------------------------------------------------------
+   COMPONENT ENHANCEMENTS ON COLORED BACKGROUNDS
+   -------------------------------------------------------------------------- */
+
+/* Enhancement for team cards on colored background */
+.panel--primary-solid .team-member {
+  background-color: white;
+  box-shadow: var(--shadow-elevated);
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel--primary-solid .team-member:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Enhancement for services columns on colored background */
+.panel--accent-soft .services-split {
+  margin-top: var(--space-8);
+}
+
+.panel--accent-soft .services-column {
+  background-color: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  border-top: 3px solid var(--accent-400); /* Change from primary to accent */
+}
+
+.panel--accent-soft .services-column h3 {
+  color: var(--accent-600); /* Change from primary to accent */
+}
+
+.panel--accent-soft .service-list li::before {
+  color: var(--accent-400); /* Change from primary to accent */
+}
+
+/* --------------------------------------------------------------------------
+   CATEGORY CARD IMPLEMENTATIONS
+   -------------------------------------------------------------------------- */
+
+/* Category card styling for Insights page */
+.insights__category-card {
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  background-color: white;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insights__category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Dimension-specific category cards */
+.insights__category-card--sector {
+  border-top: 3px solid var(--olive-500);
+}
+
+.insights__category-icon--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-700);
+  padding: var(--space-2);
+  border-radius: 50%;
+  display: inline-flex;
+  margin-bottom: var(--space-2);
+}
+
+.insights__category-card--sector h3 {
+  color: var(--olive-700);
+}
+
+.insights__category-card--market {
+  border-top: 3px solid var(--sky-500);
+}
+
+.insights__category-icon--market {
+  background-color: var(--sky-100);
+  color: var(--sky-700);
+  padding: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   PANEL SPACING FIXES
+   -------------------------------------------------------------------------- */
+
+/* Remove inter-panel gaps while preserving content padding */
+.home-page,
+.brands-page,
+.founders-page,
+.discovery-page,
+.insights-page,
+.journal-page {
+  
+  /* Remove gaps between panels while preserving content padding */
+  section + section .panel {
+    padding-top: 0;  /* Eliminate inter-panel gaps */
+    
+    /* Restore content breathing room */
+    .panel__content {
+      padding-top: var(--space-8);  /* 2rem base content padding */
+      
+      /* Responsive content padding scaling */
+      @media (width >= 768px) {
+        padding-top: var(--space-10);  /* 2.5rem on tablets */
+      }
+      
+      @media (width >= 992px) {
+        padding-top: var(--space-12);  /* 3rem on desktop */
+      }
+    }
+  }
+  
+  /* Maintain visual hierarchy after hero with content padding */
+  section:first-child + section .panel {
+    padding-top: 0;  /* Keep seamless flow */
+    
+    .panel__content {
+      padding-top: var(--space-6);  /* Slightly reduced for post-hero sections */
+      
+      @media (width >= 768px) {
+        padding-top: var(--space-8);
+      }
+      
+      @media (width >= 992px) {
+        padding-top: var(--space-10);
+      }
+    }
+  }
+  
+  /* Hero panels use specific padding values - override section defaults */
+  /* Using :is() pseudo-class to increase specificity without duplication */
+  section:is(:first-child, :nth-child(2)) :is(.panel--hero, .panel--hero-subtle, .panel--hero-image) {
+    /* Remove top padding for balanced split layout appearance */
+    padding-top: 0;
+    /* Keep bottom padding for proper section separation */
+    padding-bottom: var(--space-16);
+  }
+}
+
+/* About page uses manual system - align padding with data-driven pages */
+.about-page {
+  .panel--hero-split .panel__content {
+    padding-top: var(--space-8);  /* Match other pages: 2rem base content padding */
+    
+    /* Responsive content padding scaling to match other pages */
+    @media (width >= 768px) {
+      padding-top: var(--space-10);  /* 2.5rem on tablets */
+    }
+    
+    @media (width >= 992px) {
+      padding-top: var(--space-10);  /* Keep 2.5rem on desktop for about page consistency */
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS (Mobile-first approach)
+   -------------------------------------------------------------------------- */
+
+/* Small devices (480px and up) */
+@media (width >= 480px) { /* xs breakpoint */
+  .panel__content {
+    padding: 0 var(--space-6);
+  }
+
+  .panel__heading-primary {
+    font-size: var(--text-4xl);
+  }
+
+  .panel__heading-secondary {
+    font-size: var(--text-3xl);
+  }
+
+  /* Hero responsive typography */
+  .panel--hero .panel__heading-primary,
+  .panel--hero-subtle .panel__heading-primary,
+  .panel--hero-image .panel__heading-primary {
+    font-size: var(--text-4xl);
+  }
+
+  .panel--hero .panel__subtitle,
+  .panel--hero-subtle .panel__subtitle,
+  .panel--hero-image .panel__subtitle {
+    font-size: var(--text-xl);
+  }
+
+  .panel--cta {
+    padding: var(--space-16) var(--space-6);
+  }
+}
+
+/* Medium devices (768px and up) */
+@media (width >= 768px) { /* md breakpoint */
+  .panel {
+    padding: var(--space-12) 0;
+  }
+
+  .panel__content {
+    padding: 0 var(--space-8);
+  }
+
+  .panel__lead-text {
+    font-size: var(--text-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .panel__paragraph {
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .panel--cta {
+    padding: var(--space-16) var(--space-8);
+  }
+
+  .panel--hero {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+
+  /* For future use - hero variants */
+  .panel--hero-tall {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+  }
+
+  .panel--hero-short {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .panel__heading-secondary {
+      font-size: var(--text-4xl);  /* Even larger on bigger screens */
+  }
+
+  .panel--light .panel__lead-text {
+    font-size: var(--text-xl);   /* Larger on bigger screens */
+  }
+
+  .perspective-list {
+    max-width: 70%;     /* More contained on larger screens */
+    margin: 0 auto;
+    padding-left: var(--space-12);    /* Increased padding on larger screens */
+  }
+}
+
+/* Large devices (992px and up) */
+@media (width >= 992px) { /* lg breakpoint */
+  .panel__heading-primary {
+    font-size: var(--text-5xl);
+  }
+
+  /* Hero large screen typography */
+  .panel--hero .panel__heading-primary,
+  .panel--hero-subtle .panel__heading-primary,
+  .panel--hero-image .panel__heading-primary {
+    font-size: var(--text-6xl);
+  }
+
+  /* Hero split layout already has responsive typography built into journal-hero__title */
+
+  .panel__heading-secondary {
+    font-size: var(--text-4xl);
+  }
+}
+
+/* Extra large devices (1200px and up) */
+@media (width >= 1200px) { /* xl breakpoint */
+  .panel {
+    padding: var(--space-16) 0;
+  }
+
+  .panel__content {
+    max-width: var(--grid-max-width);
+  }
+
+  .panel--cta {
+    padding: var(--space-20) var(--space-8);
+  }
+}

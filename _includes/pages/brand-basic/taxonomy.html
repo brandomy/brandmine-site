@@ -1,0 +1,79 @@
+{% comment %}
+  Component: pages/brand-basic/taxonomy.html
+  Purpose: Brand basic taxonomy and quick facts
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+
+<div class="brand-basic-taxonomy">
+  <div class="brand-basic-sidebar">
+    <!-- Quick Facts -->
+    <div class="sidebar-section">
+      <h3>Quick Facts</h3>
+      <ul class="fact-list">
+        {% if brand.founding_year %}
+          <li><strong>Founded:</strong> {{ brand.founding_year }}</li>
+        {% endif %}
+        {% if brand.location.country %}
+          {% assign country_name = site.data.countries[brand.location.country].name[brand.lang] %}
+          <li><strong>Country:</strong> {{ country_name }}</li>
+        {% endif %}
+        {% if brand.sectors and brand.sectors.size > 0 %}
+          <li><strong>Industry:</strong>
+            {% for sector in brand.sectors %}
+              {% assign sector_data = site.data.dimensions.sectors[sector] %}
+              {{ sector_data.translations[brand.lang].name | default: sector }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </li>
+        {% endif %}
+        <li><strong>Profile Level:</strong> Basic</li>
+      </ul>
+    </div>
+
+    <!-- Related Brands -->
+    {% if brand.sectors and brand.sectors.size > 0 %}
+      {% assign related_brands = site.data.brands | where_exp: "brand", "brand.sectors" | sample: 3 %}
+      {% if related_brands and related_brands.size > 0 %}
+        <div class="sidebar-section">
+          <h3>Similar Brands</h3>
+          <div class="related-brands-list">
+            {% for related_brand in related_brands limit: 3 %}
+              {% if related_brand.id != brand.id %}
+                <a href="/{{ brand.lang }}/brands/{{ related_brand.id }}/" class="related-brand-item">
+                  <strong>{{ related_brand.name[brand.lang] | default: related_brand.name.en }}</strong>
+                  <span class="brand-location">{{ related_brand.location.city }}, {{ related_brand.location.region }}</span>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <!-- Explore More -->
+    <div class="sidebar-section">
+      <h3>Explore More</h3>
+      <div class="explore-links">
+        {% if brand.sectors and brand.sectors.size > 0 %}
+          {% for sector in brand.sectors limit: 1 %}
+            <a href="/{{ brand.lang }}/discover/sectors/{{ sector }}/" class="explore-link">
+              More {{ site.data.dimensions.sectors[sector].translations[brand.lang].name | default: sector }} Brands
+            </a>
+          {% endfor %}
+        {% endif %}
+
+        {% if brand.markets and brand.markets.size > 0 %}
+          {% for market in brand.markets limit: 1 %}
+            <a href="/{{ brand.lang }}/discover/markets/{{ market }}/" class="explore-link">
+              More Brands from {{ site.data.dimensions.markets[market].translations[brand.lang].name | default: market }}
+            </a>
+          {% endfor %}
+        {% endif %}
+
+        <a href="/{{ brand.lang }}/brands/" class="explore-link">
+          Browse All Brands
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

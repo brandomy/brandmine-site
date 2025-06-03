@@ -3,59 +3,30 @@ layout: default
 ---
 
 {% comment %}
-  Layout: post.html
+  Layout: post.html (REFACTORED TO DATA-DRIVEN)
 
-  Purpose: Renders individual journal/blog posts with semantic sectioning and "logic-light" approach
+  Purpose: Renders individual journal/blog posts with semantic sectioning and data-driven approach
 
   Structure:
-  - Uses semantic <section> tags with proper ID and ARIA attributes
-  - Uses page.sections array to dynamically load content sections in linear order
-  - Follows the established sectioning architecture (no sidebar)
+  - Uses data-driven section rendering with helpers/page-sections.html
+  - Supports configurable sections via page front matter or defaults
+  - Follows the established linear sectioning architecture
 
   Dependencies:
-  - _includes/pages/journal/[section-name].html files for main content
+  - _includes/pages/post/[section-name].html files for content sections
   - CSS: pages/journal/_index.scss and related component files
-  - Page must have 'sections' array in front matter
+  - _data/page_sections.yml for section configuration
 
   Default sections if not specified:
-  - breadcrumbs, hero, content, author-profile, social-sharing, tag-cloud, related-posts
+  - breadcrumbs, hero, header, content, taxonomy, related-posts, author-profile
 {% endcomment %}
 
-{% assign default_sections = "breadcrumbs,hero,content,author-profile,social-sharing,tag-cloud,related-posts" | split: "," %}
-{% assign current_sections = page.sections | default: default_sections %}
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
 
 <div class="post-page">
-  {% for section in current_sections %}
-    {% if section == "content" %}
-      <section class="post-section post-section--content"
-               id="post-section-content"
-               aria-labelledby="heading-content">
-        <div class="panel panel--light">
-          <div class="panel__content">
-            {% if content and content != "" %}
-              <div class="post-content">
-                {{ content }}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      </section>
-    {% elsif section == "social-sharing" or section == "author-profile" or section == "tag-cloud" or section == "related-posts" %}
-      <section class="post-section post-section--{{ section }}"
-               id="post-section-{{ section }}"
-               aria-labelledby="heading-{{ section }}">
-        <div class="panel panel--light">
-          <div class="panel__content">
-            {% include pages/journal/{{ section }}.html post=page %}
-          </div>
-        </div>
-      </section>
-    {% else %}
-      <section class="post-section post-section--{{ section }}"
-               id="post-section-{{ section }}"
-               aria-labelledby="heading-{{ section }}">
-        {% include pages/journal/{{ section }}.html post=page %}
-      </section>
-    {% endif %}
-  {% endfor %}
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html 
+     page_type="post" 
+     content=page_content %}
 </div>

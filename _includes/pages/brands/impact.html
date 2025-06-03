@@ -1,16 +1,17 @@
-{% assign t = site.data.translations[page.lang].brands.impact %}
-{% assign current_lang = page.lang %}
+{% comment %}
+  Component: pages/brands/impact.html
+  Purpose: Impact statement for the Brands page
+  Updated: 2025-06-02 - Standardized to use translation helper pattern
+{% endcomment %}
 
-{% if t.title %}
-  <h2 class="panel__heading-secondary">{{ t.title }}</h2>
+{% assign current_lang = page.lang | default: 'en' %}
+
+{% capture t_title %}{% include helpers/t.html key="brands.impact.title" fallback="" lang=current_lang %}{% endcapture %}
+{% capture t_text %}{% include helpers/t.html key="brands.impact.text" fallback="" lang=current_lang %}{% endcapture %}
+
+{% if t_title != "" %}
+  <h2 class="panel__heading-secondary">{{ t_title }}</h2>
 {% endif %}
-
-{% if t.text %}
-  <p class="panel__lead-text">{{ t.text }}</p>
-{% endif %}
-
-{% if include.content and include.content != empty %}
-  <div class="panel__paragraph">
-    {{ include.content }}
-  </div>
+{% if t_text != "" %}
+  <p class="panel__lead-text">{{ t_text }}</p>
 {% endif %}

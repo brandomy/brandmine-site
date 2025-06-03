@@ -20,10 +20,14 @@
 │   │   └── buttons.scss
 │   ├── cards
 │   │   ├── _index.scss
+│   │   ├── author-card.scss
 │   │   ├── brand-card.scss
 │   │   ├── cards.scss
+│   │   ├── dimension-card.scss
+│   │   ├── entry-card.scss
 │   │   ├── featured-brand-card.scss
 │   │   ├── featured-brands-grid.scss
+│   │   ├── featured-founder-card.scss
 │   │   ├── featured-insight-card.scss
 │   │   ├── founder-card.scss
 │   │   ├── hero-brand-card.scss
@@ -41,14 +45,32 @@
 │   │   ├── dimension-cloud.scss
 │   │   ├── dimension-list.scss
 │   │   ├── dimension-navigation.scss
+│   │   ├── dimension-tag-cloud.scss
 │   │   ├── dimension.scss
+│   │   ├── dimensions-category-navigation.scss
 │   │   ├── discovery-dimensions-grid.scss
 │   │   ├── discovery-tooltips.scss
 │   │   ├── featured-dimensions.scss
 │   │   ├── markets-grid.scss
 │   │   ├── sectors-grid.scss
 │   │   └── signals-grid.scss
-│   ├── forms.scss
+│   ├── filters
+│   │   ├── _index.scss
+│   │   ├── categories-filter.scss
+│   │   ├── dimensions-filter.scss
+│   │   └── featured-brands-filter.scss
+│   ├── forms
+│   │   ├── _index.scss
+│   │   ├── contact-form.scss
+│   │   ├── custom-contact-form.scss
+│   │   ├── custom-newsletter.scss
+│   │   ├── feedback-form.scss
+│   │   ├── form.scss
+│   │   ├── input-field.scss
+│   │   ├── newsletter-form.scss
+│   │   ├── select-field.scss
+│   │   ├── textarea-field.scss
+│   │   └── validation.scss
 │   ├── icons
 │   │   └── icon.scss
 │   ├── image.scss
@@ -57,6 +79,7 @@
 │   ├── insights
 │   │   ├── _index.scss
 │   │   ├── featured-insights-grid.scss
+│   │   ├── insights-category-navigation.scss
 │   │   ├── insights-feed.scss
 │   │   ├── insights-grid-categories.scss
 │   │   ├── insights-grid.scss
@@ -68,10 +91,15 @@
 │   ├── mobile-fixes.scss
 │   ├── navigation
 │   │   ├── discovery-navigation.scss
-│   │   └── navigation.scss
+│   │   ├── navigation.scss
+│   │   └── pagination.scss
 │   ├── search
+│   │   ├── _index.scss
+│   │   ├── advanced-search.scss
+│   │   ├── insights-search.scss
 │   │   ├── search-box.scss
-│   │   └── search-filter.scss
+│   │   ├── search-filter.scss
+│   │   └── search-placeholder.scss
 │   ├── separators
 │   │   ├── _index.scss
 │   │   ├── bullet-separator.scss
@@ -83,8 +111,17 @@
 │   │   ├── slash-separator.scss
 │   │   └── spacer.scss
 │   ├── solutions.scss
-│   └── text.scss
+│   ├── text.scss
+│   └── ui
+│       ├── _index.scss
+│       ├── alerts.scss
+│       ├── breadcrumbs.scss
+│       ├── loading-spinner.scss
+│       ├── modal.scss
+│       ├── social-sharing.scss
+│       └── tooltip.scss
 ├── debug.scss
+├── Image Prompt for Chatgpt for Founders Journal.txt
 ├── layout
 │   ├── footer.scss
 │   ├── header.scss
@@ -108,31 +145,33 @@
 │   ├── brand
 │   │   ├── _index.scss
 │   │   ├── brand-story.scss
+│   │   ├── breadcrumbs.scss
+│   │   ├── business-intelligence.scss
 │   │   ├── connections.scss
 │   │   ├── founder-narrative.scss
-│   │   ├── growth-signals.scss
+│   │   ├── hero.scss
 │   │   ├── identity.scss
 │   │   ├── location-intelligence.scss
 │   │   ├── market-presence.scss
 │   │   └── product.scss
+│   ├── brand-basic.scss
 │   ├── brands
 │   │   ├── _index.scss
-│   │   ├── brands-grid.scss
+│   │   ├── breadcrumbs.scss
 │   │   ├── contact-cta.scss
+│   │   ├── content.scss
 │   │   ├── featured-brands.scss
-│   │   ├── features.scss
 │   │   ├── filter-interface.scss
-│   │   ├── find-partner.scss
-│   │   ├── header.scss
 │   │   ├── hero.scss
-│   │   ├── intro.scss
-│   │   ├── recent-brands.scss
+│   │   ├── latest-brands.scss
 │   │   └── search.scss
 │   ├── dimension
 │   │   ├── _index.scss
 │   │   ├── all-brands.scss
+│   │   ├── breadcrumbs.scss
 │   │   ├── featured-brands.scss
 │   │   ├── header.scss
+│   │   ├── hero.scss
 │   │   ├── market-highlights.scss
 │   │   ├── market-sectors.scss
 │   │   ├── navigation.scss
@@ -141,6 +180,7 @@
 │   ├── discover
 │   │   ├── _index.scss
 │   │   ├── attributes.scss
+│   │   ├── breadcrumbs.scss
 │   │   ├── market-sector.scss
 │   │   ├── markets.scss
 │   │   ├── russia-market-sectors.scss
@@ -149,26 +189,36 @@
 │   ├── discovery
 │   │   ├── _index.scss
 │   │   ├── contact-cta.scss
+│   │   ├── content.scss
 │   │   ├── dimensions-grid.scss
 │   │   ├── featured-brands.scss
 │   │   ├── hero.scss
 │   │   └── latest-insights.scss
+│   ├── error-404
+│   │   ├── _index.scss
+│   │   └── breadcrumbs.scss
 │   ├── founder
 │   │   ├── _index.scss
 │   │   ├── associated-brands.scss
+│   │   ├── breadcrumbs.scss
+│   │   ├── connections.scss
 │   │   ├── content.scss
 │   │   ├── expertise-cloud.scss
 │   │   ├── header.scss
+│   │   ├── hero.scss
 │   │   ├── professional-details.scss
 │   │   ├── related.scss
 │   │   └── social.scss
 │   ├── founders
 │   │   ├── _index.scss
+│   │   ├── breadcrumbs.scss
+│   │   ├── contact-cta.scss
 │   │   ├── content.scss
 │   │   ├── featured-founders.scss
 │   │   ├── filter-interface.scss
 │   │   ├── founders-grid.scss
 │   │   ├── header.scss
+│   │   ├── hero.scss
 │   │   └── recent-founders.scss
 │   ├── home
 │   │   ├── _index.scss
@@ -189,9 +239,10 @@
 │   │   ├── content.scss
 │   │   ├── featured-image.scss
 │   │   ├── header.scss
+│   │   ├── hero.scss
 │   │   ├── map-view.scss
 │   │   ├── market-chart.scss
-│   │   ├── sidebar
+│   │   ├── sections
 │   │   │   ├── _index.scss
 │   │   │   ├── brand-info.scss
 │   │   │   ├── location-info.scss
@@ -199,32 +250,64 @@
 │   │   │   ├── related-brands.scss
 │   │   │   ├── related-insights.scss
 │   │   │   └── taxonomy-cloud.scss
-│   │   ├── sidebar.scss
 │   │   └── taxonomy.scss
 │   ├── insights
 │   │   ├── _index.scss
 │   │   ├── all-insights.scss
+│   │   ├── breadcrumbs.scss
 │   │   ├── categories.scss
 │   │   ├── category-highlights.scss
 │   │   ├── contact-cta.scss
+│   │   ├── content.scss
+│   │   ├── featured-article.scss
 │   │   ├── featured-insights.scss
+│   │   ├── filter-interface.scss
 │   │   ├── filters.scss
 │   │   ├── grid.scss
 │   │   ├── hero.scss
+│   │   ├── insights-search.scss
+│   │   ├── latest-insights-carousel.scss
+│   │   ├── latest-insights-grid.scss
 │   │   ├── latest-insights.scss
 │   │   ├── layout.scss
-│   │   ├── sidebar.scss
+│   │   ├── recent-insights.scss
+│   │   ├── search-filters.scss
+│   │   ├── simple-search.scss
 │   │   ├── subscribe.scss
 │   │   └── tags.scss
-│   └── search
-│       ├── _index.scss
-│       ├── badges.scss
-│       ├── box.scss
-│       └── results.scss
+│   ├── insights-category
+│   │   ├── _index.scss
+│   │   ├── breadcrumbs.scss
+│   │   ├── contact-cta.scss
+│   │   ├── content.scss
+│   │   ├── hero.scss
+│   │   ├── insights-grid.scss
+│   │   └── subscribe.scss
+│   ├── journal
+│   │   ├── _author-profile.scss
+│   │   ├── _content.scss
+│   │   ├── _featured-article.scss
+│   │   ├── _featured-image.scss
+│   │   ├── _header.scss
+│   │   ├── _hero.scss
+│   │   ├── _index.scss
+│   │   ├── _journal-page.scss
+│   │   ├── _latest-entries.scss
+│   │   ├── _post-page.scss
+│   │   ├── _related-posts.scss
+│   │   ├── _social-sharing.scss
+│   │   └── _tag-cloud.scss
+│   ├── search
+│   │   ├── _index.scss
+│   │   ├── badges.scss
+│   │   ├── box.scss
+│   │   ├── breadcrumbs.scss
+│   │   └── results.scss
+│   └── styleguide.scss
 ├── styleguide.scss
 └── tokens
     ├── grid.scss
     ├── icons.scss
     └── tokens.scss
 
-33 directories, 195 files
+39 directories, 272 files

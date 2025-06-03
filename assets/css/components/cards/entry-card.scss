@@ -138,9 +138,10 @@
     gap: var(--space-1);
     flex-grow: 1;
     
-    .tag--small {
-      font-size: var(--text-xs) !important; // Ensure small size
-      padding: var(--space-1) var(--space-2) !important; // Minimal padding
+    /* Override base tag styles for small variant within entry cards */
+    .tag.tag--small {
+      font-size: var(--text-xs);
+      padding: var(--space-1) var(--space-2);
     }
   }
 
