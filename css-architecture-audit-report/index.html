@@ -3,27 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  Brandmine
-</title>
+  <title>CSS Architecture Audit Report</title>
 
   <!-- SEO Components -->
   
@@ -421,34 +401,209 @@
   <main class="layout">
     <div class="layout__wrapper">
       <div class="layout__content">
-        <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Page Not Found</title>
-  <script>
-    // Language detection and redirection
-    (function() {
-      var path = window.location.pathname;
-      var language = 'en'; // Default language
-      
-      // Check if URL contains language indicator
-      if (path.startsWith('/ru/')) {
-        language = 'ru';
-      } else if (path.startsWith('/zh/')) {
-        language = 'zh';
-      }
-      
-      // Redirect to language-specific 404 page
-      window.location.replace('/' + language + '/404.html');
-    })();
-  </script>
-  <meta http-equiv="refresh" content="0;url=/en/404.html">
-</head>
-<body>
-  <p>Redirecting to <a href="/en/404.html">error page</a>...</p>
-</body>
-</html>
+        <h1 id="css-architecture-audit-report">CSS Architecture Audit Report</h1>
+
+<p><strong>Date:</strong> 2025-06-03<br />
+<strong>Scope:</strong> Brandmine CSS Architecture Compliance<br />
+<strong>Focus:</strong> BEM methodology, mobile-first strategy, design tokens, specificity management</p>
+
+<h2 id="executive-summary">Executive Summary</h2>
+
+<p>The audit reveals a generally well-structured CSS architecture with some areas requiring attention:</p>
+
+<ul>
+  <li><strong>Panel System</strong>: ✅ Successfully modularized with proper import structure</li>
+  <li><strong>BEM Compliance</strong>: ⚠️ Good overall adherence with minor violations</li>
+  <li><strong>Mobile-First</strong>: ❌ Mixed approach with 31% max-width queries indicating desktop-first patterns</li>
+  <li><strong>Design Tokens</strong>: ⚠️ Comprehensive token system but hardcoded values persist</li>
+  <li><strong>Specificity</strong>: ✅ Excellent !important reduction (12 remaining, within acceptable range)</li>
+</ul>
+
+<h2 id="1-panel-system-architecture">1. Panel System Architecture</h2>
+
+<h3 id="-pass---successful-modularization">✅ PASS - Successful Modularization</h3>
+
+<p><strong>Finding:</strong> Panel system properly modularized into 5 logical files:</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="s1">'panel-base'</span><span class="p">;</span>        <span class="c1">// Core framework</span>
+<span class="k">@import</span> <span class="s1">'panel-utilities'</span><span class="p">;</span>   <span class="c1">// Utility classes</span>
+<span class="k">@import</span> <span class="s1">'panel-content'</span><span class="p">;</span>     <span class="c1">// Typography/content</span>
+<span class="k">@import</span> <span class="s1">'panel-types'</span><span class="p">;</span>       <span class="c1">// Hero variants</span>
+<span class="k">@import</span> <span class="s1">'panel-implementations'</span><span class="p">;</span> <span class="c1">// Component fixes</span>
+</code></pre></div></div>
+
+<p><strong>Assessment:</strong> Clean architecture following single responsibility principle.</p>
+
+<h2 id="2-bem-methodology-compliance">2. BEM Methodology Compliance</h2>
+
+<h3 id="️-partial-pass---minor-violations-found">⚠️ PARTIAL PASS - Minor Violations Found</h3>
+
+<p><strong>Correct BEM Usage (90% compliance):</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Proper BEM structure found in most components</span>
+<span class="nc">.entry-card</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.entry-card__image</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.entry-card__image-element</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.entry-card--recent</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Issues Found:</strong></p>
+
+<ol>
+  <li><strong>Generic HTML selectors</strong> in form.scss:
+    <ul>
+      <li><strong>Location:</strong> <code class="language-plaintext highlighter-rouge">assets/css/components/forms/form.scss:12-17</code></li>
+      <li><strong>Issue:</strong> Direct <code class="language-plaintext highlighter-rouge">label</code> styling instead of <code class="language-plaintext highlighter-rouge">.form__label</code></li>
+      <li><strong>Severity:</strong> Medium</li>
+      <li><strong>Fix:</strong>
+```scss
+// Current
+label { }</li>
+    </ul>
+
+    <p>// Recommended
+.form__label { }
+```</p>
+  </li>
+  <li><strong>Non-semantic class names</strong> in some components:
+    <ul>
+      <li><strong>Location:</strong> <code class="language-plaintext highlighter-rouge">assets/css/components/forms/form.scss:27</code></li>
+      <li><strong>Issue:</strong> <code class="language-plaintext highlighter-rouge">.mobile-form-wrapper</code> mixes context with structure</li>
+      <li><strong>Severity:</strong> Low</li>
+      <li><strong>Fix:</strong> Use <code class="language-plaintext highlighter-rouge">.form__wrapper</code> with mobile-first styles</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="3-mobile-first-strategy">3. Mobile-First Strategy</h2>
+
+<h3 id="-fail---mixed-mobiledesktop-first-approach">❌ FAIL - Mixed Mobile/Desktop-First Approach</h3>
+
+<p><strong>Critical Issue:</strong> 31% of media queries use <code class="language-plaintext highlighter-rouge">max-width</code> (desktop-first)</p>
+
+<p><strong>Statistics:</strong></p>
+<ul>
+  <li>Min-width queries: 106 (69%)</li>
+  <li>Max-width queries: 48 (31%)</li>
+</ul>
+
+<p><strong>Breakpoint Inconsistencies:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>768px  - 37 uses ✅
+767px  - 18 uses ❌ (should be 768px - 1px = 767px only when needed)
+992px  - 11 uses ✅
+480px  - 11 uses ✅
+479px  - 7 uses  ❌ (inconsistent)
+640px  - 6 uses  ❌ (non-standard)
+</code></pre></div></div>
+
+<p><strong>High Priority Files to Fix:</strong></p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/pages/journal/_post-page.scss</code> - Uses max-width</li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/components/cards/entry-card.scss</code> - Mixed approach</li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/layout/panels/_panel-implementations.scss</code> - Has max-width queries</li>
+</ol>
+
+<p><strong>Recommendation:</strong> Standardize on three breakpoints: 480px, 768px, 992px using min-width only.</p>
+
+<h2 id="4-design-token-compliance">4. Design Token Compliance</h2>
+
+<h3 id="️-partial-pass---hardcoded-values-persist">⚠️ PARTIAL PASS - Hardcoded Values Persist</h3>
+
+<p><strong>Token System:</strong> Comprehensive with 200+ CSS custom properties ✅</p>
+
+<p><strong>Issues Found:</strong></p>
+
+<ol>
+  <li><strong>Hardcoded pixel values</strong> in card components:
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// assets/css/components/cards/brand-card.scss</span>
+<span class="nl">height</span><span class="p">:</span> <span class="m">380px</span><span class="p">;</span>    <span class="c1">// Should use token</span>
+<span class="nl">width</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>      <span class="c1">// Should use token</span>
+<span class="nl">padding</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>     <span class="c1">// Should use var(--space-1)</span>
+<span class="nl">top</span><span class="p">:</span> <span class="m">-25px</span><span class="p">;</span>       <span class="c1">// Should use calc(var(--space-6) * -1)</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Hardcoded colors</strong> in social icons:
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// assets/css/components/brands/social-icon.scss</span>
+<span class="nl">background-color</span><span class="p">:</span> <span class="mh">#1877F2</span><span class="p">;</span>  <span class="c1">// Facebook blue</span>
+<span class="nl">background-color</span><span class="p">:</span> <span class="mh">#000000</span><span class="p">;</span>  <span class="c1">// Should use var(--neutral-900)</span>
+<span class="nl">background-color</span><span class="p">:</span> <span class="mh">#0A66C2</span><span class="p">;</span>  <span class="c1">// LinkedIn blue</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Legacy files with rgba values:</strong>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">assets/css/layout/panels.scss.backup</code> - Contains 20+ rgba values</li>
+      <li><strong>Recommendation:</strong> Delete backup file</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Acceptable Exceptions:</strong></p>
+<ul>
+  <li>Third-party brand colors (social media)</li>
+  <li>Very specific layout constraints</li>
+</ul>
+
+<h2 id="5-specificity-management">5. Specificity Management</h2>
+
+<h3 id="-pass---excellent-important-reduction">✅ PASS - Excellent !important Reduction</h3>
+
+<p><strong>Current Status:</strong> 12 !important declarations (from 58)</p>
+
+<p><strong>Breakdown:</strong></p>
+<ul>
+  <li>2 in backup file (should be deleted)</li>
+  <li>3 in styleguide (acceptable for demos)</li>
+  <li>2 for accessibility (tooltip transforms)</li>
+  <li>2 for third-party overrides (MailerLite)</li>
+  <li>3 for JavaScript state management</li>
+</ul>
+
+<p><strong>Assessment:</strong> All remaining uses are justified per guidelines.</p>
+
+<h2 id="priority-action-items">Priority Action Items</h2>
+
+<h3 id="high-priority">High Priority</h3>
+<ol>
+  <li><strong>Convert max-width queries to min-width</strong> (48 files)</li>
+  <li><strong>Standardize breakpoints</strong> to 480px, 768px, 992px</li>
+  <li><strong>Replace hardcoded pixel values</strong> with design tokens</li>
+</ol>
+
+<h3 id="medium-priority">Medium Priority</h3>
+<ol>
+  <li><strong>Fix BEM violations</strong> in form components</li>
+  <li><strong>Remove backup files</strong> containing legacy code</li>
+  <li><strong>Create token variables</strong> for brand colors</li>
+</ol>
+
+<h3 id="low-priority">Low Priority</h3>
+<ol>
+  <li><strong>Document breakpoint strategy</strong> in tokens file</li>
+  <li><strong>Add CSS linting rules</strong> for BEM compliance</li>
+  <li><strong>Consider CSS custom properties</strong> for component variants</li>
+</ol>
+
+<h2 id="compliance-score">Compliance Score</h2>
+
+<ul>
+  <li><strong>Panel Architecture:</strong> 10/10 ✅</li>
+  <li><strong>BEM Methodology:</strong> 8/10 ⚠️</li>
+  <li><strong>Mobile-First:</strong> 5/10 ❌</li>
+  <li><strong>Design Tokens:</strong> 7/10 ⚠️</li>
+  <li><strong>Specificity:</strong> 9/10 ✅</li>
+</ul>
+
+<p><strong>Overall Score:</strong> 7.8/10</p>
+
+<h2 id="recommendations">Recommendations</h2>
+
+<ol>
+  <li><strong>Immediate Action:</strong> Fix mobile-first violations in high-traffic components</li>
+  <li><strong>Next Sprint:</strong> Standardize breakpoints and replace hardcoded values</li>
+  <li><strong>Future Enhancement:</strong> Implement CSS linting to prevent regressions</li>
+  <li><strong>Documentation:</strong> Update CLAUDE.md with finalized breakpoint strategy</li>
+</ol>
+
+<p>The CSS architecture shows strong fundamentals with the recent panel modularization and specificity improvements. Addressing the mobile-first inconsistencies and hardcoded values will bring the codebase to production-ready standards.</p>
+
       </div>
     </div>
   </main>

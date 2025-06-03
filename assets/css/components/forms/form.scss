@@ -44,13 +44,15 @@ label {
    RESPONSIVE ADJUSTMENTS
    -------------------------------------------------------------------------- */
 
-/* Small devices (phones) */
-@media (width <= 767px) { /* md breakpoint */
-  /* Responsive iframe handling */
-  iframe:not(.contact-form-container iframe) {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    display: block;
-  }
+/* Mobile-first: Base iframe styles */
+iframe:not(.contact-form-container iframe) {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Tablet and desktop adjustments if needed */
+@media (min-width: 768px) {
+  /* Iframe handling already optimal at mobile base */
 }

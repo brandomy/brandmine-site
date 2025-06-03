@@ -101,15 +101,18 @@
 // Filter Section
 .insights__filters {
   h3 {
-    margin: 0 0 var(--space-6);
+    /* Mobile-first: Include mobile styles in base */
+    margin: var(--space-6) 0;
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--gray-200);
     font-size: var(--text-lg);
     font-weight: var(--font-semibold);
     color: var(--gray-900);
 
-    @media (max-width: 767px) {
-      margin-top: var(--space-6);
-      padding-top: var(--space-6);
-      border-top: 1px solid var(--gray-200);
+    @media (min-width: 768px) {
+      margin: 0 0 var(--space-6);
+      padding-top: 0;
+      border-top: none;
     }
   }
 
@@ -197,14 +200,16 @@
 .insights__results {
   .insights__results-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    /* Mobile-first: Start with column layout */
+    flex-direction: column;
+    align-items: stretch;
     margin-bottom: var(--space-6);
     gap: var(--space-4);
 
-    @media (max-width: 767px) {
-      flex-direction: column;
-      align-items: stretch;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
     }
 
     h2 {
@@ -219,9 +224,11 @@
     display: flex;
     align-items: center;
     gap: var(--space-4);
+    /* Mobile-first: Start with space-between layout */
+    justify-content: space-between;
 
-    @media (max-width: 767px) {
-      justify-content: space-between;
+    @media (min-width: 768px) {
+      justify-content: flex-start;
     }
   }
 
