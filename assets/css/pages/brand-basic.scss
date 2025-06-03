@@ -2,18 +2,26 @@
 // Minimal, clean design for Level 0 auto-generated brand pages
 
 .brand-basic-profile {
-  padding: var(--space-6) 0;
+  /* Mobile-first: Start with mobile padding */
+  padding: var(--space-4) 0;
   
   .brand-basic-header {
-    margin-bottom: var(--space-8);
+    /* Mobile-first: Start with mobile styles */
+    text-align: center;
+    margin-bottom: var(--space-6);
     padding-bottom: var(--space-6);
     border-bottom: 1px solid var(--gray-200);
     
     .brand-basic-title {
-      font-size: var(--text-3xl);
+      /* Mobile-first: Start with smaller font */
+      font-size: var(--text-2xl);
       font-weight: var(--font-bold);
       color: var(--gray-900);
       margin-bottom: var(--space-2);
+    }
+    
+    .btn {
+      margin-top: var(--space-4);
     }
     
     .brand-basic-location,
@@ -170,28 +178,32 @@
       }
     }
   }
+  
+  .brand-basic-sidebar {
+    margin-top: var(--space-6);
+  }
 }
 
-// Mobile responsiveness
-@media (max-width: 768px) {
+// Desktop and tablet enhancements
+@media (min-width: 768px) {
   .brand-basic-profile {
-    padding: var(--space-4) 0;
+    padding: var(--space-6) 0;
     
     .brand-basic-header {
-      text-align: center;
-      margin-bottom: var(--space-6);
+      text-align: left;
+      margin-bottom: var(--space-8);
       
       .brand-basic-title {
-        font-size: var(--text-2xl);
+        font-size: var(--text-3xl);
       }
       
       .btn {
-        margin-top: var(--space-4);
+        margin-top: 0;
       }
     }
     
     .brand-basic-sidebar {
-      margin-top: var(--space-6);
+      margin-top: 0;
     }
   }
 }

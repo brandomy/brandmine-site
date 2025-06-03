@@ -13,7 +13,7 @@
 .custom-contact-form {
   background-color: var(--neutral-50);
   border-radius: var(--radius-md);
-  padding: var(--space-8);
+  padding: var(--space-6); /* Mobile-first: Start with smaller padding */
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--neutral-200);
 }
@@ -24,11 +24,11 @@
 
 .form-header {
   text-align: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6); /* Mobile-first: Smaller spacing */
 }
 
 .form-title {
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl); /* Mobile-first: Smaller title */
   font-weight: var(--font-semibold);
   color: var(--neutral-900);
   margin-bottom: var(--space-3);
@@ -47,7 +47,7 @@
 
 .form-fields {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-4); /* Mobile-first: Smaller gap */
 }
 
 .form-field {
@@ -296,25 +296,51 @@
    RESPONSIVE DESIGN
    -------------------------------------------------------------------------- */
 
-@media (max-width: 640px) {
+/* Mobile-first: Base styles already optimized for mobile */
+.custom-contact-form {
+  padding: var(--space-6);
+}
+
+.form-title {
+  font-size: var(--text-xl);
+}
+
+.form-fields {
+  gap: var(--space-4);
+}
+
+.form-actions {
+  margin-top: var(--space-6);
+}
+
+.form-submit {
+  width: 100%;
+}
+
+/* Small device enhancements */
+@media (min-width: 480px) {
+  .form-submit {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
+/* Tablet and desktop enhancements */
+@media (min-width: 768px) {
   .custom-contact-form {
-    padding: var(--space-6);
+    padding: var(--space-8);
   }
   
   .form-title {
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
   }
   
   .form-fields {
-    gap: var(--space-4);
+    gap: var(--space-6);
   }
   
   .form-actions {
-    margin-top: var(--space-6);
-  }
-  
-  .form-submit {
-    width: 100%;
+    margin-top: var(--space-8);
   }
 }
 

@@ -144,13 +144,14 @@
 
 .filter-groups {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-6);
+  /* Mobile-first: Start with single column */
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
   margin-bottom: var(--space-6);
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
   }
 }
 
@@ -167,11 +168,12 @@
 
 .filter-options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Mobile-first: Start with single column */
+  grid-template-columns: 1fr;
   gap: var(--space-2);
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
 

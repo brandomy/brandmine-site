@@ -80,7 +80,12 @@
   .panel__content {
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: var(--space-6) var(--space-4);
+    /* Mobile-first: Start with smallest padding */
+    padding: var(--space-6) var(--space-3);
+    
+    @media (min-width: 480px) {
+      padding: var(--space-6) var(--space-4);
+    }
     
     @media (min-width: 768px) {
       padding: var(--space-8) var(--space-8);
@@ -119,16 +124,7 @@
     text-align: left; // Ensure left alignment
   }
 
-  // Responsive adjustments
-  @media (max-width: 479px) {
-    .panel__content {
-      padding: var(--space-6) var(--space-3);
-    }
-    
-    .post-section--content .panel__content {
-      padding: var(--space-6) var(--space-4);
-    }
-  }
+  /* Mobile-first: Base padding already defined above, removed max-width override */
 }
 
 /* ==========================================================================

@@ -44,9 +44,11 @@
   &__image-section {
     position: relative;
     overflow: hidden;
+    /* Mobile-first: Set mobile aspect ratio as base */
+    aspect-ratio: 16 / 9;
     
-    @media (max-width: 767px) {
-      aspect-ratio: 16 / 9;
+    @media (min-width: 768px) {
+      aspect-ratio: auto;
     }
   }
   
