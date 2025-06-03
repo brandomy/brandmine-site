@@ -37,22 +37,22 @@
   /* On olive panel backgrounds, add contrast */
   .panel--olive-soft & {
     background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border: var(--border-strong);
+    box-shadow: var(--shadow-strong);
   }
 
   /* On amber panel backgrounds, add contrast */
   .panel--amber-soft & {
     background-color: white;
     border: 1px solid var(--neutral-200);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-medium);
   }
 
   /* On primary panel backgrounds (recent founders), subtle border */
   .panel--primary & {
     background-color: white;
     border: 0.5px solid var(--neutral-200);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-light);
   }
 
   /* On light panel backgrounds, match brand card styling with grey background */
@@ -246,7 +246,7 @@
   transition: all 0.2s ease;
   display: inline-block;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-medium);
   width: auto;
   max-width: 120px;
   font-size: 0.8125rem;
@@ -254,46 +254,46 @@
   &:hover {
     background-color: var(--primary-700);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
+    box-shadow: var(--shadow-strong);
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    box-shadow: var(--shadow-light);
   }
 }
 
-/* Recent founders section specific styling */
-.recent-founders__grid {
-  /* Remove border from headshots and make them square (1:1) - higher specificity */
-  .founder-card .founder-card__portrait--headshot {
-    border: none !important;
-    box-shadow: none !important;
-    width: 72px !important;
-    height: 72px !important; /* Force square 1:1 ratio */
+/* Recent founders card variant */
+.founder-card--recent {
+  /* Minimal portrait styling for recent founders */
+  .founder-card__portrait--headshot {
+    border: none;
+    box-shadow: none;
+    width: 72px;
+    height: 72px; /* Force square 1:1 ratio */
   }
   
-  /* Remove teal background from generation indicator - higher specificity */
-  .founder-card .founder-card__generation-badge {
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+  /* Transparent generation indicator */
+  .founder-card__generation-badge {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
   
-  /* Add left/right padding to content area - higher specificity */
-  .founder-card .founder-card__body {
-    padding: 1rem 1.25rem !important; /* Force proper padding */
+  /* Adjusted padding for content area */
+  .founder-card__body {
+    padding: 1rem 1.25rem;
   }
   
-  /* Remove grey background from experience cloud and reduce padding/border */
+  /* Minimal expertise tag styling */
   .founder-card__tag--expertise {
     background-color: transparent;
     color: var(--neutral-700);
-    border: 0.5px solid var(--neutral-300); /* Thinner border */
-    padding: 0.125rem 0.375rem; /* Reduced padding */
+    border: 0.5px solid var(--neutral-300);
+    padding: 0.125rem 0.375rem;
   }
   
-  /* Dark teal text links for recent founders */
+  /* Text-only link style */
   .founder-card__link {
     background-color: transparent;
     color: var(--primary-600);
@@ -469,7 +469,7 @@
   transition: all 0.2s ease;
   pointer-events: none;
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-medium);
 
   /* Tooltip arrow */
   &::before {

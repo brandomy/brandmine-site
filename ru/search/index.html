@@ -262,22 +262,26 @@
   <main class="layout">
     <div class="layout__wrapper">
       <div class="layout__content">
-        <!-- ----------------------------------------------------------------------------
-  SEARCH LAYOUT
-  ------------------------------------------------------------------------------
-  Custom layout for search pages with seamless breadcrumbs support
----------------------------------------------------------------------------- -->
+        
 
 
 
 
-<div class="search-page">
-  
-  
-    <section class="search-section search-section--breadcrumbs"
-             id="search-section-breadcrumbs"
-             aria-labelledby="heading-breadcrumbs">
-      
+
+
+
+
+
+
+
+
+
+
+
+  <section class="search-section search-section--breadcrumbs"
+           id="search-section-breadcrumbs"
+           aria-labelledby="heading-breadcrumbs">
+    
 
 
 
@@ -345,25 +349,226 @@
   </nav>
 </div>
 
-    </section>
+  </section>
+
+
+
+
   
+
   
-  
-  <div class="panel panel--light">
-    <div class="panel__content">
+    <section class="search-section search-section--content" 
+             id="search-section-content" 
+             aria-labelledby="heading-content">
+      
+      
+      
+      
+      
+      
+      
+      
       
         
-      
         
           
             
+            
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    
+      
+        
+        
+          
+
+<h1 class="panel__heading-primary">
+  
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Search Results
+
+</h1>
+
+<div class="search-box">
+  <form id="search-form" action="/ru/search/" method="get">
+    <input type="text" id="search-input" name="q" class="search-box__input"
+           placeholder="
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Поиск по Brandmine...
+" 
+           aria-label="
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Search brands
+">
+    <button type="submit" class="search-box__button">
+      <i class="fas fa-search"></i>
+      
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Поиск
+
+    </button>
+  </form>
+</div>
+
+<div class="search-popular">
+  <p class="search-popular__title">
+    
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Популярные запросы
+
+  </p>
+  <div class="search-popular__tags">
+    <a href="/ru/search/?q=wine" class="search-popular__tag">Wine</a>
+    <a href="/ru/search/?q=beauty" class="search-popular__tag">Beauty</a>
+    <a href="/ru/search/?q=founder" class="search-popular__tag">Founder-led</a>
+    <a href="/ru/search/?q=moscow" class="search-popular__tag">Moscow</a>
+  </div>
+</div>
+
+<div id="search-results" class="search-results">
+  <p class="search-results__loading">
+    
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Loading search results...
+
+  </p>
+</div>
+
+<script src="/assets/js/pages/search/search-results.js"></script>
+        
+      
+    
+  </div>
+</div>
           
         
       
-    </div>
-  </div>
-</div>
+      
+      
+      
+      
+    </section>
+  
+
       </div>
     </div>
   </main>

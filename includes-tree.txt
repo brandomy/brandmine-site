@@ -14,9 +14,12 @@
 │   ├── buttons
 │   │   └── button.html
 │   ├── cards
+│   │   ├── author-card.html
 │   │   ├── brand-card.html
 │   │   ├── dimension-card.html
+│   │   ├── entry-card.html
 │   │   ├── featured-brand-card.html
+│   │   ├── featured-founder-card.html
 │   │   ├── featured-insight-card.html
 │   │   ├── founder-card.html
 │   │   ├── hero-brand-card.html
@@ -36,6 +39,7 @@
 │   │   ├── dimension-cloud.html
 │   │   ├── dimension-list.html
 │   │   ├── dimension-tag-cloud.html
+│   │   ├── dimensions-category-navigation.html
 │   │   ├── discovery-dimensions-grid.html
 │   │   ├── discovery-navigation.html
 │   │   └── market-sector-highlight.html
@@ -45,6 +49,10 @@
 │   │   ├── 404.html
 │   │   ├── 500.html
 │   │   └── network-error.html
+│   ├── filters
+│   │   ├── categories-filter.html
+│   │   ├── dimensions-filter.html
+│   │   └── featured-brands-filter.html
 │   ├── forms
 │   │   ├── contact-form.html
 │   │   ├── custom-contact-form.html
@@ -90,10 +98,7 @@
 │   ├── indicators
 │   │   └── content-type-indicator.html
 │   ├── insights
-│   │   ├── insights-feed.html
-│   │   ├── latest-insights-grid.html
-│   │   └── latest-insights-grid2.html
-│   ├── insights_disabled
+│   │   ├── insights-category-navigation.html
 │   │   ├── insights-feed.html
 │   │   ├── latest-insights-grid.html
 │   │   └── latest-insights-grid2.html
@@ -108,8 +113,10 @@
 │   ├── relationships
 │   │   └── related-brands.html
 │   ├── search
+│   │   ├── insights-search.html
 │   │   ├── search-filter.html
 │   │   ├── search-filter.html.disabled
+│   │   ├── search-placeholder.html
 │   │   └── simple-search.html
 │   ├── seo
 │   │   ├── meta-article.html
@@ -137,6 +144,7 @@
 │       ├── breadcrumbs.html
 │       ├── loading-spinner.html
 │       ├── modal.html
+│       ├── social-sharing.html
 │       └── tooltip.html
 ├── dev
 │   ├── debug-info.html
@@ -148,10 +156,14 @@
 │   ├── brand-filter.html
 │   ├── brand-image.html
 │   ├── brand-name.html
+│   ├── component-defaults.html
 │   ├── founder-data.html
 │   ├── founder-image.html
 │   ├── founder-name.html
 │   ├── is-founder-led.html
+│   ├── journal-image.html
+│   ├── page-sections.html
+│   ├── panel-wrapper.html
 │   ├── t.html
 │   └── taxonomy-data.html
 ├── layout
@@ -170,9 +182,11 @@
 │   │   └── team.html
 │   ├── brand
 │   │   ├── brand-story.html
+│   │   ├── business-intelligence.html
 │   │   ├── connections.html
+│   │   ├── content.html
 │   │   ├── founder-narrative.html
-│   │   ├── growth-signals.html
+│   │   ├── hero.html
 │   │   ├── identity.html
 │   │   ├── location-intelligence.html
 │   │   ├── market-presence.html
@@ -180,19 +194,23 @@
 │   ├── brands
 │   │   ├── brands-grid.html
 │   │   ├── contact-cta.html
+│   │   ├── content.html
 │   │   ├── featured-brands.html
 │   │   ├── features.html
 │   │   ├── filter-interface.html
 │   │   ├── find-partner.html
 │   │   ├── header.html
 │   │   ├── hero.html
+│   │   ├── impact.html
 │   │   ├── intro.html
-│   │   ├── recent-brands.html
+│   │   ├── latest-brands.html
 │   │   └── search.html
 │   ├── dimension
 │   │   ├── all-brands.html
+│   │   ├── breadcrumbs.html
 │   │   ├── featured-brands.html
 │   │   ├── header.html
+│   │   ├── hero.html
 │   │   ├── market-highlights.html
 │   │   ├── market-sectors.html
 │   │   ├── navigation.html
@@ -215,45 +233,41 @@
 │   │   ├── russian-focus.html
 │   │   ├── sector-insights.html
 │   │   └── signal-insights.html
-│   ├── discover_disabled
-│   │   ├── all-attributes-grid.html
-│   │   ├── all-markets-grid.html
-│   │   ├── all-sectors-grid.html
-│   │   ├── all-signals-grid.html
-│   │   ├── attribute-insights.html
-│   │   ├── cross-navigation.html
-│   │   ├── featured-attributes.html
-│   │   ├── featured-markets.html
-│   │   ├── featured-sectors.html
-│   │   ├── featured-signals.html
-│   │   ├── hero.html
-│   │   ├── market-insights.html
-│   │   ├── market-map.html
-│   │   ├── russian-focus.html
-│   │   ├── sector-insights.html
-│   │   └── signal-insights.html
 │   ├── discovery
 │   │   ├── contact-cta.html
+│   │   ├── content.html
 │   │   ├── dimensions-grid.html
+│   │   ├── dimensions-navigation.html
 │   │   ├── featured-brands.html
 │   │   ├── hero.html
+│   │   ├── impact.html
 │   │   ├── latest-insights.html
 │   │   └── universal-search.html
+│   ├── error-404
+│   │   └── breadcrumbs.html
 │   ├── founder
+│   │   ├── breadcrumbs.html
+│   │   ├── connections.html
 │   │   ├── content.html
 │   │   ├── header.html
+│   │   ├── hero.html
 │   │   └── sections
 │   │       ├── associated-brands.html
 │   │       ├── expertise-cloud.html
 │   │       ├── professional-details.html
 │   │       └── related-insights.html
 │   ├── founders
+│   │   ├── breadcrumbs.html
+│   │   ├── contact-cta.html
 │   │   ├── content.html
 │   │   ├── featured-founders.html
 │   │   ├── filter-interface.html
 │   │   ├── founders-grid.html
 │   │   ├── header.html
-│   │   └── recent-founders.html
+│   │   ├── hero.html
+│   │   ├── impact.html
+│   │   ├── recent-founders.html
+│   │   └── search.html
 │   ├── home
 │   │   ├── brand-owners.html
 │   │   ├── discovery-dimensions.html
@@ -269,30 +283,65 @@
 │   │   ├── location-intelligence.html
 │   │   └── testimonials.html
 │   ├── insight
+│   │   ├── breadcrumbs.html
 │   │   ├── content.html
 │   │   ├── featured-image.html
 │   │   ├── header.html
+│   │   ├── hero.html
 │   │   ├── map-view.html
 │   │   ├── market-chart.html
-│   │   ├── sidebar
+│   │   ├── sections
 │   │   │   ├── brand-info.html
 │   │   │   ├── location-info.html
 │   │   │   ├── market-info.html
 │   │   │   ├── related-brands.html
 │   │   │   ├── related-insights.html
 │   │   │   └── taxonomy-cloud.html
+│   │   ├── social-sharing.html
 │   │   └── taxonomy.html
 │   ├── insights
-│   │   ├── all-insights.html
+│   │   ├── breadcrumbs.html
 │   │   ├── categories.html
 │   │   ├── category-highlights.html
+│   │   ├── category-navigation.html
 │   │   ├── contact-cta.html
-│   │   ├── featured-insights.html
+│   │   ├── content.html
+│   │   ├── featured-article.html
 │   │   ├── hero.html
-│   │   ├── insights-search.html
-│   │   ├── latest-insights.html
+│   │   ├── impact.html
+│   │   ├── latest-insights-carousel.html
 │   │   └── subscribe.html
+│   ├── insights_disabled
+│   │   ├── all-insights.html
+│   │   ├── filter-interface.html
+│   │   ├── insights-search.html
+│   │   ├── latest-insights-grid.html
+│   │   ├── latest-insights.html
+│   │   ├── recent-insights.html
+│   │   ├── search-filters.html
+│   │   └── simple-search.html
+│   ├── insights-category
+│   │   ├── breadcrumbs.html
+│   │   ├── contact-cta.html
+│   │   ├── content.html
+│   │   ├── hero.html
+│   │   ├── insights-grid.html
+│   │   └── subscribe.html
+│   ├── journal
+│   │   ├── author-profile.html
+│   │   ├── breadcrumbs.html
+│   │   ├── contact-cta.html
+│   │   ├── content.html
+│   │   ├── featured-article.html
+│   │   ├── featured-image.html
+│   │   ├── header.html
+│   │   ├── hero.html
+│   │   ├── latest-entries.html
+│   │   ├── related-posts.html
+│   │   ├── social-sharing.html
+│   │   └── tag-cloud.html
 │   ├── market-sector
+│   │   ├── breadcrumbs.html
 │   │   ├── cross-navigation.html
 │   │   ├── hero-image.html
 │   │   ├── hero.html
@@ -300,6 +349,9 @@
 │   │   ├── regions.html
 │   │   ├── related-brands.html
 │   │   └── statistics.html
+│   ├── search
+│   │   ├── breadcrumbs.html
+│   │   └── content.html
 │   └── styleguide
 │       ├── design-principles.html
 │       ├── how-to-use.html
@@ -315,4 +367,4 @@
 └── utilities
     └── google-analytics.html
 
-50 directories, 266 files
+54 directories, 314 files

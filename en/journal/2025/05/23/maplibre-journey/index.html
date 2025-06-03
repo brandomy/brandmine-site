@@ -255,35 +255,177 @@
 
 <div class="post-page">
   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="post-section post-section--breadcrumbs"
+           id="post-section-breadcrumbs"
+           aria-labelledby="heading-breadcrumbs">
     
-      <section class="post-section post-section--breadcrumbs"
-               id="post-section-breadcrumbs"
-               aria-labelledby="heading-breadcrumbs">
-        
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="breadcrumbs-wrapper">
-  <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
-    <a href="/en/" class="back-link">
-      ← Home
-    </a>
-    <span class="breadcrumb-separator">›</span>
-    <a href="/en/journal/" class="breadcrumb-link">
-      Journal
-    </a>
+  <nav class="breadcrumbs " aria-label="
+
+
+
+
+
+
+
+  
     
-      <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-current">MapLibre: Our Journey Building Geographic Brand Visualization</span>
+  
+
+  
+    
+  
+
+
+
+
+  Breadcrumb navigation
+">
+    
+      
+      
+
+      
+        
+        
+          <a href="/en/" class="back-link">← 
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+
+
+
+  Home
+</a>
+        
+      
+    
+      
+      
+
+      
+        
+        <span class="breadcrumb-separator">›</span>
+        <a href="/en/journal/" class="breadcrumb-link">
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+
+
+
+  Journal
+</a>
+      
+    
+      
+      
+
+      
+        
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current">MapLibre: Our Journey Building Geographic Brand Visualization</span>
+      
     
   </nav>
 </div>
-      </section>
-    
+
+  </section>
+
+
+
+
   
-    
-      <section class="post-section post-section--hero"
-               id="post-section-hero"
-               aria-labelledby="heading-hero">
+
+  
+    <section class="post-section post-section--hero" 
+             id="post-section-hero" 
+             aria-labelledby="heading-hero">
+      
+      
+      
+      
+      
+      
+      
+      
+      
         
+        
+          
+          
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel--hero-subtle">
+  <div class="panel__content">
+    
+      
+        
+
+
 
 
 
@@ -409,109 +551,130 @@
     
   </div>
 </div>
-      </section>
+      
     
+  </div>
+</div>
+          
+        
+      
+      
+      
+      
+      
+    </section>
   
-    
-      <section class="post-section post-section--content"
-               id="post-section-content"
-               aria-labelledby="heading-content">
-        <div class="panel panel--light">
-          <div class="panel__content">
-            
-              <div class="post-content">
-                <p>When we set out to build Brandmine, we knew that geography would play a crucial role in telling the stories of BRICS+ brands. But choosing the right mapping technology proved to be more complex than we initially anticipated.</p>
 
-<h2 id="the-challenge-bringing-brands-to-life-on-the-map">The Challenge: Bringing Brands to Life on the Map</h2>
-
-<p>Traditional business directories treat location as just another data point—a pin on a map at best. We wanted something fundamentally different: an interactive experience that would reveal the geographic patterns underlying brand ecosystems across emerging markets.</p>
-
-<p>Our requirements were specific:</p>
-<ul>
-  <li><strong>Performance</strong>: Fast loading with hundreds of brand locations</li>
-  <li><strong>Clustering</strong>: Intelligent grouping of nearby brands without losing detail</li>
-  <li><strong>Customization</strong>: Complete visual control to match Brandmine’s design language</li>
-  <li><strong>Multilingual</strong>: Seamless support for English, Russian, and Chinese interfaces</li>
-  <li><strong>Mobile-first</strong>: Responsive design that works beautifully on all devices</li>
-</ul>
-
-<h2 id="why-maplibre-won-our-hearts">Why MapLibre Won Our Hearts</h2>
-
-<p>After evaluating several options including Google Maps, Mapbox, and Leaflet, we chose <a href="https://maplibre.org/">MapLibre GL JS</a> for our geographic visualization needs. Here’s why this decision transformed our platform:</p>
-
-<h3 id="open-source-freedom">Open Source Freedom</h3>
-
-<p>MapLibre’s open-source nature aligned perfectly with our long-term vision. Unlike proprietary solutions, we have complete control over our implementation without worrying about licensing changes or vendor lock-in.</p>
-
-<h3 id="vector-tile-performance">Vector Tile Performance</h3>
-
-<p>The vector tile approach means our maps load incredibly fast, even when displaying complex datasets. This performance boost is crucial when showcasing hundreds of brands across multiple countries.</p>
-
-<h3 id="styling-flexibility">Styling Flexibility</h3>
-
-<p>MapLibre’s styling capabilities allowed us to create a visual language that feels distinctly “Brandmine.” Our custom map styles complement our design tokens and enhance rather than compete with brand storytelling.</p>
-
-<h2 id="implementation-insights">Implementation Insights</h2>
-
-<h3 id="clustering-strategy">Clustering Strategy</h3>
-
-<p>One of our biggest breakthroughs was implementing intelligent clustering that preserves brand identity while managing visual complexity:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="dl">'</span><span class="s1">brands</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">geojson</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">data</span><span class="p">:</span> <span class="nx">brandsGeoJSON</span><span class="p">,</span>
-  <span class="na">cluster</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="na">clusterMaxZoom</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-  <span class="na">clusterRadius</span><span class="p">:</span> <span class="mi">50</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
-<p>The key was finding the right balance between clustering efficiency and brand discoverability. Too aggressive, and individual brands disappear. Too conservative, and the map becomes cluttered.</p>
-
-<h2 id="the-results-beyond-our-expectations">The Results: Beyond Our Expectations</h2>
-
-<p>The MapLibre implementation exceeded our initial goals:</p>
-
-<ul>
-  <li><strong>45% faster load times</strong> compared to our previous mapping solution</li>
-  <li><strong>Improved user engagement</strong> with 60% more map interactions</li>
-  <li><strong>Better brand discovery</strong> through geographic exploration patterns</li>
-  <li><strong>Enhanced storytelling</strong> that connects location with brand narrative</li>
-</ul>
-
-<p>Most importantly, the maps became a discovery tool that reveals insights we hadn’t anticipated. Users find brands through geographic proximity, identify regional clustering patterns, and understand market dynamics through spatial relationships.</p>
-
-<h2 id="looking-forward">Looking Forward</h2>
-
-<p>Our MapLibre implementation continues to evolve. We’re currently exploring:</p>
-
-<ul>
-  <li><strong>Temporal visualization</strong> to show brand growth over time</li>
-  <li><strong>Supply chain mapping</strong> to reveal brand relationships and dependencies</li>
-  <li><strong>Market sentiment layers</strong> that overlay economic and cultural data</li>
-  <li><strong>Predictive clustering</strong> that suggests expansion opportunities</li>
-</ul>
-
-<p>For BRICS+ brands, geographic visualization isn’t just about pretty maps—it’s about revealing the invisible networks that connect successful brands to their markets and opportunities.</p>
-
-<hr />
-
-<p><em>Have questions about our technical choices or want to share your own mapping experiences? <a href="/en/about/#contact">Get in touch</a> - we’d love to hear from you.</em></p>
-
-              </div>
-            
-          </div>
-        </div>
-      </section>
-    
   
-    
-      <section class="post-section post-section--author-profile"
-               id="post-section-author-profile"
-               aria-labelledby="heading-author-profile">
-        <div class="panel panel--light">
-          <div class="panel__content">
+    <section class="post-section post-section--content" 
+             id="post-section-content" 
+             aria-labelledby="heading-content">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
             
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    
+      
+        
+        
+          
+
+
+
+
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    
+  </div>
+</div>
+        
+      
+    
+  </div>
+</div>
+          
+        
+      
+      
+      
+      
+      
+    </section>
+  
+
+  
+    <section class="post-section post-section--author-profile" 
+             id="post-section-author-profile" 
+             aria-labelledby="heading-author-profile">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel--amber-soft">
+  <div class="panel__content">
+    
+      
+        
+
+
 
 
 
@@ -632,18 +795,63 @@
     </div>
   </div>
 </div>
-          </div>
-        </div>
-      </section>
+      
     
+  </div>
+</div>
+          
+        
+      
+      
+      
+      
+      
+    </section>
   
-    
-      <section class="post-section post-section--social-sharing"
-               id="post-section-social-sharing"
-               aria-labelledby="heading-social-sharing">
-        <div class="panel panel--light">
-          <div class="panel__content">
+
+  
+    <section class="post-section post-section--social-sharing" 
+             id="post-section-social-sharing" 
+             aria-labelledby="heading-social-sharing">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
             
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    
+      
+        
+
+
 
 
 
@@ -791,18 +999,63 @@
     
   </div>
 </div>
-          </div>
-        </div>
-      </section>
+      
     
+  </div>
+</div>
+          
+        
+      
+      
+      
+      
+      
+    </section>
   
-    
-      <section class="post-section post-section--tag-cloud"
-               id="post-section-tag-cloud"
-               aria-labelledby="heading-tag-cloud">
-        <div class="panel panel--light">
-          <div class="panel__content">
+
+  
+    <section class="post-section post-section--tag-cloud" 
+             id="post-section-tag-cloud" 
+             aria-labelledby="heading-tag-cloud">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
             
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    
+      
+        
+
+
 
 
 
@@ -830,18 +1083,63 @@
   
   
 
-          </div>
-        </div>
-      </section>
+      
     
+  </div>
+</div>
+          
+        
+      
+      
+      
+      
+      
+    </section>
   
-    
-      <section class="post-section post-section--related-posts"
-               id="post-section-related-posts"
-               aria-labelledby="heading-related-posts">
-        <div class="panel panel--light">
-          <div class="panel__content">
+
+  
+    <section class="post-section post-section--related-posts" 
+             id="post-section-related-posts" 
+             aria-labelledby="heading-related-posts">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
             
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    
+      
+        
+
+
 
 
 
@@ -1261,11 +1559,20 @@
     
   </div>
 
-          </div>
-        </div>
-      </section>
+      
     
+  </div>
+</div>
+          
+        
+      
+      
+      
+      
+      
+    </section>
   
+
 </div>
       </div>
     </div>

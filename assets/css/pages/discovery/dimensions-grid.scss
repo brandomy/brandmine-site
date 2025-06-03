@@ -23,19 +23,13 @@
     &__panel {
       border-radius: var(--radius-lg);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-      // Override the panel full-width behavior
-      width: 100% !important;
-      margin: 0 !important;
-      position: static !important;
-      left: auto !important;
-      right: auto !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
+      
+      // Use contained panel modifier instead of overrides
+      // The panel--contained class is applied in the HTML
 
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.10);
+        box-shadow: var(--shadow-heavy);
       }
     }
 
@@ -123,7 +117,7 @@
   }
 
 }
-/* Override for discovery dimensions panels when not in discovery-page context */
+/* Additional styling for discovery dimensions when not on discovery page */
 body:not(.discovery-page) .discovery-dimensions {
   max-width: 1200px;
   margin-left: auto;
@@ -139,15 +133,5 @@ body:not(.discovery-page) .discovery-dimensions {
       grid-template-columns: 1fr;
       gap: var(--space-4);
     }
-  }
-
-  .panel {
-    width: 100% !important;
-    margin: 0 !important;
-    position: static !important;
-    left: auto !important;
-    right: auto !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
   }
 }

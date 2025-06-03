@@ -17,7 +17,7 @@
 
 .social-sharing__label {
   font-size: var(--text-sm);
-  color: var(--gray-600);
+  color: var(--neutral-600);
   font-weight: var(--font-medium);
 }
 
@@ -34,14 +34,14 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-full);
-  background-color: var(--gray-100);
-  color: var(--gray-700);
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
   text-decoration: none;
   transition: all 0.2s ease;
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-strong);
   }
   
   &:active {
@@ -55,17 +55,17 @@
   
   // Brand-specific colors on hover
   &--linkedin:hover {
-    background-color: #0077b5;
+    background-color: var(--linkedin-blue);
     color: white;
   }
   
   &--twitter:hover {
-    background-color: #000000;
+    background-color: var(--neutral-900);
     color: white;
   }
   
   &--facebook:hover {
-    background-color: #1877f2;
+    background-color: var(--facebook-blue);
     color: white;
   }
   
@@ -78,15 +78,15 @@
 // Dark mode support
 @media (prefers-color-scheme: dark) {
   .social-sharing__label {
-    color: var(--gray-400);
+    color: var(--neutral-400);
   }
   
   .social-sharing__button {
-    background-color: var(--gray-800);
-    color: var(--gray-300);
+    background-color: var(--neutral-800);
+    color: var(--neutral-300);
     
     &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-medium);
     }
   }
 }
