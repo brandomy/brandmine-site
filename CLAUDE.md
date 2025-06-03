@@ -31,14 +31,14 @@ _brands/{lang}/       — One Markdown file per brand
 _founders/{lang}/     — One Markdown file per founder
 _dimensions/{lang}/{type}/  — Dimension definition files per type (markets, sectors, attributes, signals)
 _data/                — YAML/JSON data (translations, navigation, social, market_sectors, etc.)
-_includes/            — Reusable partials (collections, components, layout, pages)
+_includes/            — Reusable partials (components, layout, pages, helpers)
 _layouts/             — Jekyll layouts (default, brand, sector, dimension, etc.)
 _insights/{lang}/     — Insight article content
 pages/{lang}/         — Main content pages (about, brands, discovery, etc.)
 assets/               — CSS, JS, fonts, images
-_docs/                — Project documentation and guidelines
+_docs/                — Project documentation and guidelines (minimal foundation)
 _templates/{type}/    — Markdown and HTML templates for scaffolding
-_scripts/             — CLI scripts (validation, scaffolding, image processing, etc.)
+_scripts/             — CLI scripts organized by function (validation, image processing, etc.)
 _exports/             — Exported artifacts (search index, reports)
 _site/                — Generated site output (Jekyll build directory)
 _config.yml           — Site config, collections, language routing
@@ -54,7 +54,7 @@ Dimensions are stored as Markdown files in `_dimensions/{lang}/{type}/`. Each fi
 - Content describing the dimension in more detail
 
 **Valid dimension types** include (slugs match filenames in `_dimensions/{lang}/{type}/`):
-- `markets` — e.g. brazil, china, egypt, ethiopia, india, indonesia, iran, russia, south-africa, uae
+- `markets` — e.g. brazil, china, egypt, ethiopia, india, indonesia, iran, malaysia, mongolia, russia, south-africa, uae
 - `sectors` — e.g. artisan-ceramics, artisan-confectionery, artisanal-spirits, cured-meats
 - `attributes` — e.g. artisanal-excellence, cultural-bridge, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer
 - `signals` — e.g. export-ready, franchise-ready, investment-ready, rapid-growth
@@ -83,26 +83,23 @@ Includes are organized into a structured hierarchy:
 
 ```
 /_includes/
-  collections/          — Collection-specific includes
-    brands/             — Brand-related includes
-    dimensions/         — Dimension-related includes
-    founders/           — Founder-related includes
-    insights/           — Insight-related includes
   components/           — Reusable UI components
+    brands/             — Brand-specific components
     buttons/            — Button components
     cards/              — Card components
     carousels/          — Carousel components
     content/            — Content display components
+    dimensions/         — Dimension-related components
     forms/              — Form components (modular: input, textarea, select, contact, newsletter, validation, custom alternatives)
-    helpers/            - Small components
+    helpers/            — Small components
     icons/              — Icon components
     images/             — Image handling components
-      collection-image.html — Unified image component for collections
     indicators/         — UI indicators
     maps/               — Map components
     navigation/         — Navigation components
     search/             — Search components (simple search, multi-column filters, advanced search)
     ui/                 — UI components (alerts, breadcrumbs, loading spinner, modal, tooltip)
+  helpers/              — Helper includes (translations, component defaults, etc.)
   layout/               — Layout components (header, footer)
   pages/                — Page-specific includes organized by page
     about/              — About page sections (hero, mission, team, etc.)
@@ -287,20 +284,36 @@ npm run build                            # Alias for jekyll build
 ```
 
 ## Scripts
-All helper scripts live in the `_scripts/` directory. Key examples:
-- **check_language_consistency.sh**: Ensure content exists in all language folders.
-- **validate_multilingual.sh**: Verify translation key consistency across languages.
-- **process_images.sh [collection] [identifier]**: Optimize and generate responsive images.
-- **generate_brand_template.py [country_code] [brand_slug]**: Scaffold new brand markdown files.
-- **generate_article_template.py [lang] [slug]**: Scaffold a new insight article.
-- **generate_search_index.py**: Build or update the `search.json` index.
-- **add_image_attribution.py [collection] [identifier]**: Add entries to `_data/image_attributions.yml`.
- - **apply_teal_filter.sh**: Apply the teal brand filter to team photos.
- - **import_from_airtable.rb**: Import data from Airtable flat tables.
- - **yml_to_json_converter.py**: Convert YAML data (e.g. market sectors) to JSON files.
- - **claude-session-init.py**: Initialize AI sessions with project context and prompts.
- - **custom-forms.js**: JavaScript for custom contact and newsletter forms (validation, submission, state management).
- - *(See `_scripts/` for the full list of available helper scripts.)*
+All helper scripts live in the `_scripts/` directory organized by function:
+
+### Core Scripts
+- **`core/pre-commit_check.sh`**: Run all validation checks before commits
+- **`core/generate-all-json.py`**: Generate all JSON data files
+- **`core/process_images.sh [collection] [identifier]`**: Process images for any collection
+- **`core/optimize-build.sh`**: Optimize Jekyll build performance
+
+### Content Creation
+- **`content-creation/generate_brand_template.py [country_code] [brand_slug]`**: Scaffold new brand markdown files
+- **`content-creation/generate_article_template.py [type] [slug]`**: Scaffold new article/insight/founder
+- **`content-creation/add_brand.rb`**: Add brand via Ruby script
+
+### Data Generation
+- **`data-generation/generate-brands-json.py`**: Generate brands JSON index
+- **`data-generation/generate-founders-json.py`**: Generate founders JSON index
+- **`data-generation/import_from_airtable.rb`**: Import data from Airtable
+
+### Image Processing
+- **`image-processing/apply_teal_filter.sh`**: Apply brand filter to team photos
+- **`image-processing/add_image_attribution.py`**: Add image attributions
+
+### Validation
+- **`validation/language_consistency_checker.py`**: Check content exists in all languages
+- **`validation/validate_yaml.sh`**: Validate YAML syntax
+- **`validation/find_translation_keys.py`**: Find missing translation keys
+
+### Utilities
+- **`utilities/generate-language-map.py`**: Generate language switcher optimization
+- **`utilities/generate-navigation-cache.py`**: Generate navigation cache for performance
 
 ## Validation
 ```bash
@@ -315,7 +328,7 @@ bundle exec jekyll serve               # Start local server
 open http://localhost:4000             # View in browser
 
 # Test multilingual functionality
-./_scripts/check_language_consistency.sh # Check if pages exist in all languages
+_scripts/validation/language_consistency_checker.py # Check if pages exist in all languages
 
 # Check image processing & optimization
 identify -format "%f: %wx%h\n" assets/images/**/*.jpg # Verify image dimensions
@@ -446,8 +459,8 @@ The "Logic Light" architecture relies on these centralized configuration files:
 - Responsive image sizes (400w, 800w, 1200w, 1600w)
 - Organization by collection type in the assets directory
 - Processing with ImageMagick for optimization via unified script:
-  - `process_images.sh` for all collection types
-  - Specialized scripts for specific collections
+  - `core/process_images.sh` for all collection types
+  - Specialized scripts for specific processing needs
 
 ## Image Organization and Processing
 
@@ -471,18 +484,18 @@ The "Logic Light" architecture relies on these centralized configuration files:
   - **Note**: Only these three aspect ratios are used site-wide (no 16:9 or other ratios)
 
 - **Processing Scripts**:
-  - `process_images.sh [collection] [identifier]` - Unified image processing
-  - `apply_teal_filter.sh` for team photos branding
+  - `core/process_images.sh [collection] [identifier]` - Unified image processing
+  - `image-processing/apply_teal_filter.sh` for team photos branding
 
 - **Implementation Includes**:
-  - `collection-image.html` for unified responsive image handling
-  - `brand-image.html` for brand-specific imagery
-  - `site-image.html` for site-wide imagery
-  - `taxonomy-icon.html` for dimension taxonomy icons
+  - `components/images/collection-image.html` for unified responsive image handling
+  - `components/images/brand-image.html` for brand-specific imagery
+  - `components/images/site-image.html` for site-wide imagery
+  - `helpers/taxonomy-icon.html` for dimension taxonomy icons
 
   - **Documentation**:
-    - Comprehensive image guide at `_docs/design/image-guide.md`
-    - Image style guide at `_docs/design/image-style-guide.md`
+    - Comprehensive image guide at `_docs/images.md`
+    - Color palette guide at `_docs/colors.md`
 
 ## Visual Style Strategy
 
@@ -555,7 +568,7 @@ General Rule:
 ## Search Index Automation
 
 **Automated Generation:**
-- `generate_search_index.py` - Builds complete JSON search indexes from markdown collections
+- `core/generate-all-json.py` - Builds complete JSON search indexes from markdown collections
 - Generates `_data/brands.json` and `_data/founders.json` with multilingual content
 - Includes complete metadata: taxonomy, location, founding year, website URLs
 - Auto-generates from Jekyll collections when content is added/modified
@@ -566,7 +579,7 @@ General Rule:
 
 **Update Search Indexes:**
 ```bash
-python3 _scripts/generate_search_index.py
+python3 _scripts/core/generate-all-json.py
 ```
 
 ---
@@ -658,10 +671,10 @@ _includes/components/search/        CSS: assets/css/components/search/
 
 ## Component Documentation
 
-Comprehensive guides available:
-- `_docs/cheat_sheets/forms-components-guide.md` - Complete forms documentation
-- `_docs/cheat_sheets/search-components-guide.md` - Search functionality guide
-- `_docs/cheat_sheets/ui-components-guide.md` - UI components documentation
+Comprehensive guides available in `_docs/`:
+- `daily-workflows.md` - Step-by-step content workflows
+- `technical-reference.md` - Architecture patterns and examples
+- `troubleshooting.md` - Common issues and solutions
 
 ---
 
@@ -715,109 +728,37 @@ TeaTime has established itself as Russia's premier artisanal tea brand, combinin
 Alexei Sokolov discovered his passion for tea while traveling through China...
 ```
 
-# 🎨 Color System Architecture
-
-## Brand Color Hierarchy
-- **Primary Teal** (`--primary-*`) - Site navigation, base components, brand elements
-- **Secondary Orange** (`--secondary-*`) - Accent elements, attribute dimensions
-- **Neutral Gray** (`--neutral-*`) - Text, backgrounds, borders
-
-## Visual Taxonomy Color Coding
-Brandmine uses consistent color-coding across discovery interfaces and content categorization:
-
-### Discovery Dimensions
-- **Sectors** → Olive green (`--olive-*`) - Industry categories
-- **Markets** → Sky blue (`--sky-*`) - Regional focus  
-- **Attributes** → Orange (`--secondary-*`) - Brand qualities
-- **Signals** → Indigo (`--accent-*`) - Growth indicators
-
-### Insights Categories
-- **Brand Spotlight** → Amber (`--amber-*`) - Premium/gold theme
-- **Founder's Journey** → Purple (`--accent-*`) - Personal stories
-- **Market Momentum** → Olive (`--olive-*`) - Growth/business
-- **Location Intelligence** → Sky blue (`--sky-*`) - Geographic analysis
-
-## Color Token Compliance
-- **100% design token usage required** - No hardcoded color values
-- **All colors must pass WCAG AA contrast requirements** (4.5:1 minimum)
-- **Semantic color assignment** - Colors follow meaning, not appearance
-- **Approved exceptions:** Social media brand colors, debug tools only
-
-## Implementation Standards
-```scss
-/* ✅ Base components use primary teal */
+## Visual Taxonomy CSS Example
+```css
+/* Dimension styling with color coding */
 .dimension {
-  background-color: var(--primary-100);  /* Base component background */
-  color: var(--primary-800);             /* Base component text */
-  border: 1px solid var(--primary-500);  /* Base component border */
+  display: inline-flex;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
 }
 
-/* ✅ Specific dimension contexts use taxonomy colors */
 .dimension--sector {
-  background-color: var(--olive-100);    /* Sector-specific olive */
-  color: var(--olive-800);               /* Olive text */
-  border: 1px solid var(--olive-500);    /* Olive border */
+  background-color: var(--olive-100);
+  color: var(--olive-900);
 }
 
 .dimension--market {
-  background-color: var(--sky-100);      /* Market-specific sky blue */
-  color: var(--sky-800);                 /* Sky blue text */
-  border: 1px solid var(--sky-500);      /* Sky blue border */
+  background-color: var(--sky-100);
+  color: var(--sky-900);
 }
 
 .dimension--attribute {
-  background-color: var(--secondary-100); /* Attribute-specific orange */
-  color: var(--secondary-800);            /* Orange text */
-  border: 1px solid var(--secondary-500); /* Orange border */
+  background-color: var(--secondary-100);
+  color: var(--secondary-900);
 }
 
 .dimension--signal {
-  background-color: var(--accent-100);   /* Signal-specific indigo */
-  color: var(--accent-800);              /* Indigo text */
-  border: 1px solid var(--accent-500);   /* Indigo border */
-}
-
-/* ✅ Correct insights category styling */
-.insight-card--brand-spotlight {
-  background: var(--amber-100);
-  color: var(--amber-700);
-  border-left: 4px solid var(--amber-500);
-}
-
-.insight-card--founders-journey {
-  background: var(--accent-100);
-  color: var(--accent-700);
-  border-left: 4px solid var(--accent-500);
-}
-
-.insight-card--market-momentum {
-  background: var(--olive-100);
-  color: var(--olive-700);
-  border-left: 4px solid var(--olive-500);
-}
-
-.insight-card--location-intelligence {
-  background: var(--sky-100);
-  color: var(--sky-700);
-  border-left: 4px solid var(--sky-500);
+  background-color: var(--accent-100);
+  color: var(--accent-900);
 }
 ```
-
-## Color Usage Rules
-1. **Always use design tokens** from `assets/css/tokens/tokens.scss`
-2. **Base components use primary teal** - Navigation, generic elements
-3. **Dimension-specific components use taxonomy colors** - Context-dependent styling
-4. **Follow semantic assignments** - Same meaning = same color across components
-5. **Maintain contrast ratios** - All text must be readable on backgrounds
-6. **Document exceptions** - Comment any non-standard color usage
-7. **Test across languages** - Colors work in EN/RU/ZH contexts
-
-### Color Assignment Hierarchy
-- **Generic/Base components** → `--primary-*` (teal)
-- **Sector-specific contexts** → `--olive-*` (olive green)
-- **Market-specific contexts** → `--sky-*` (sky blue)
-- **Attribute-specific contexts** → `--secondary-*` (orange)
-- **Signal-specific contexts** → `--accent-*` (indigo)
 
 ---
 
@@ -889,12 +830,12 @@ Claude must align any navigation, filtering, or dimension-related output with th
 ### Adding a New Brand
 1. Create brand markdown file in each language folder (`_brands/en/`, `_brands/ru/`, `_brands/zh/`)
 2. Ensure the brand references existing dimensions
-3. Process brand images with `./_scripts/process_images.sh brands [country_code]-[brand_name]`
+3. Process brand images with `_scripts/core/process_images.sh brands [country_code]-[brand_name]`
 4. Add attributions for images in `_data/image_attributions.yml`
 
 ### Adding a New Founder
 1. Create founder markdown file in each language folder (`_founders/en/`, `_founders/ru/`, `_founders/zh/`)
-2. Process founder images with `./_scripts/process_images.sh founders [founder-id]`
+2. Process founder images with `_scripts/core/process_images.sh founders [founder-id]`
 3. Add attributions for images in `_data/image_attributions.yml`
 
 ### Adding a New Dimension
@@ -904,9 +845,9 @@ Claude must align any navigation, filtering, or dimension-related output with th
 
 ### Adding Insights Articles
 1. Use the insight template from `_templates/insights/insight-template-enhanced.md`
-2. Choose one of the five standardized categories
+2. Choose one of the four standardized categories
 3. Add `featured: true` for hero display on insights home page
-4. Process images with `./_scripts/process_images.sh insights [article-slug]`
+4. Process images with `_scripts/core/process_images.sh insights [article-slug]`
 5. Leverage social sharing and RSS feed distribution
 
 ### Managing Blog Features
@@ -939,7 +880,7 @@ Two template options are available for creating brand profiles:
 
 Always process brand images after creation using:
 ```bash
-./_scripts/process_images.sh brands [country_code]-[brand_name]
+_scripts/core/process_images.sh brands [country_code]-[brand_name]
 ```
 
 # 🚨 Important Architecture Guidelines
@@ -981,6 +922,12 @@ As of May 28, 2025, all topline pages have been standardized across all language
 - **Cross-language consistency** ensures maintainable codebase
 
 ---
+
+# important-instruction-reminders
+Do what has been asked; nothing more, nothing less.
+NEVER create files unless they're absolutely necessary for achieving your goal.
+ALWAYS prefer editing an existing file to creating a new one.
+NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.
 
 # important-instruction-reminders
 Do what has been asked; nothing more, nothing less.
