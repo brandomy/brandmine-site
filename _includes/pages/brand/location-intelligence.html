@@ -1,7 +1,36 @@
 {% comment %}
-  Location Intelligence Section
-  Displays: Interactive map, geographic context, regional significance
-  Supports: Both YAML and JSON data sources
+SECTION: Location Intelligence
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display interactive map visualization and geographic context for brand location, enabling regional market exploration
+
+DATA SOURCES:
+- Primary: brand.location object (lat, lng, city, region, country)
+- Country Names: site.data.countries.countries[code].name[lang]
+- Data Format: Both YAML and JSON supported
+
+CONTEXT REQUIRED:
+- brand: Brand object with location data (lat, lng required for map)
+- include.brand_ref: Unique identifier for map instance
+- brand.lang: Current language for translations and country names
+
+CONTENT STRUCTURE:
+1. Section heading (h2)
+2. Interactive map component:
+   - MapLibre GL JS visualization
+   - Data attributes for JavaScript initialization
+   - Fallback message while loading
+3. Location context panel:
+   - City and region display
+   - Country name (localized)
+   - GPS coordinates
+   - Link to explore market dimension page
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Data: site.data.countries for localized country names
+- JavaScript: MapLibre GL JS, brand-map.js
+- CSS: pages/brand/location-intelligence.scss
+- Translations: brand.location_intelligence, brand.map_loading, brand.coordinates, discover.explore_market
 {% endcomment %}
 
 {% assign brand = include.brand %}

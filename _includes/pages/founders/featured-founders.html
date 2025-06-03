@@ -1,18 +1,40 @@
 {% comment %}
-  Component: pages/founders/featured-founders.html
+================================================================================
+PAGE SECTION: Founders > Featured Founders
+FILE: _includes/pages/founders/featured-founders.html
+================================================================================
 
-  Purpose: Displays a featured founders section with highlighted founder profiles
+Purpose:
+Displays a featured founders section with highlighted founder profiles using the
+featured founder card variant. This section showcases selected founders who have
+been marked as featured in their front matter.
 
-  Parameters:
-    title (optional): Custom section title, defaults to founder.featured_founders translation
-    description (optional): Custom description text, defaults to founder.featured_description translation
-    limit (optional): Number of featured founders to display, defaults to 3
-    panel_type (optional): Panel background style, defaults to "olive-soft"
+Parameters:
+- title (optional): Custom section title
+  Default: Pulled from founders.featured.title translation
+- description (optional): Custom description text
+  Default: Pulled from founders.featured.description translation
+- limit (optional): Number of featured founders to display
+  Default: 4
+- panel_type (optional): Panel background style
+  Default: "amber-soft"
 
-  Dependencies:
-    - CSS: pages/founders/featured-founders.scss
-    - _includes/components/cards/founder-card.html
-    - site.data.translations for labels
+Dependencies:
+- CSS: pages/founders/featured-founders.scss
+- Component: components/cards/featured-founder-card.html
+- Data: site.data.translations for UI labels
+- Collection: site.founders filtered by featured flag
+
+Data Sources:
+- site.founders collection filtered by lang and featured: true
+- Translation keys for section heading and description
+
+Notes:
+- Founders must have featured: true in front matter to appear
+- View all button links to founders page with featured filter
+
+Last Updated: 2025-06-03
+================================================================================
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "amber-soft" %}

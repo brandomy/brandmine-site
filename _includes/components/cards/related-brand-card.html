@@ -1,12 +1,21 @@
 {% comment %}
-  Component: components/cards/related-brand-card.html
+COMPONENT: Related Brand Card
+PURPOSE: Compact brand display for related brands sections showing logo, name, description, and primary sector
 
-  Purpose: Displays a single related brand card in a more compact format
-  Updated to use new brand image helper
+USAGE: {% include components/cards/related-brand-card.html brand=brand %}
 
-  Parameters:
-    - brand: The related brand object (required)
-    - parent_lang: Language of the parent page (optional, defaults to page.lang)
+PARAMETERS:
+- brand (required): Brand object with ref, title, description, sectors, url
+- parent_lang (optional): Language code string of parent page, defaults to page.lang
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/related-brand-card.scss
+- Data: None
+- Includes: helpers/brand-image.html, helpers/brand-name.html, components/helpers/taxonomy-tag.html, components/helpers/founder-check.html
+
+VARIANTS: None - single compact layout
+
+NOTES: Description truncated to 100 chars. Shows only first sector tag. Uses brand-image helper for logo. Includes founder-led indicator in footer.
 {% endcomment %}
 
 {% assign lang = include.parent_lang | default: page.lang %}

@@ -2,17 +2,19 @@
 layout: default
 ---
 {% comment %}
-  Hybrid Brand Profile Layout (LOGIC-LIGHT REFACTORED)
+  LAYOUT: Brand Profile
+  PURPOSE: Renders individual brand profiles with hybrid data source support
+  USED BY: _brands/ collection and auto-generated JSON brand profiles
+  SECTIONS RENDERED: Data-driven via page_sections.yml (brand-profile)
+  FRONT MATTER REQUIRED: Either page.title (curated) or page.ref (JSON-only)
+  PANEL SYSTEM: Uses panel--hero-subtle for identity, panel--primary for impact, varies by section
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/brand-profile/[section].html
   
-  Supports both:
-  1. Curated YAML profiles (rich content + structured data)
-  2. JSON-only profiles (basic structured data only)
-  
-  Data source detection:
-  - YAML profiles have page.title defined
-  - JSON-only profiles use page.ref to lookup site.data.brands
-  
-  Uses data-driven section rendering with helpers/page-sections.html
+  HYBRID ARCHITECTURE:
+  - Curated YAML profiles: Rich content + structured data (page.title exists)
+  - JSON-only profiles: Basic structured data only (page.ref lookup)
+  - Auto-detects data source and adapts section rendering accordingly
+  - Fallback handling for missing brands with branded error panel
 {% endcomment %}
 
 {% comment %} Determine data source and create unified brand object {% endcomment %}

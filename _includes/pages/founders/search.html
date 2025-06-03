@@ -1,6 +1,40 @@
 {% comment %}
-Search Section for Founders Page
-Purpose: Provides a placeholder search interface to track user search interest for founders
+================================================================================
+PAGE SECTION: Founders > Search
+FILE: _includes/pages/founders/search.html
+================================================================================
+
+Purpose:
+Provides a placeholder search interface to track user search interest for 
+founders. This component uses the search-placeholder component to provide a 
+non-functional search box that captures user intent for analytics.
+
+Context:
+- Placeholder implementation for MVP
+- Tracks search attempts for future feature development
+- Provides visual consistency with functional search interfaces
+
+Parameters:
+- None (configuration is hardcoded for founders context)
+
+Dependencies:
+- Component: components/search/search-placeholder.html
+- Data: site.data.translations for text labels
+
+Component Configuration:
+- Title: "Search Founders"
+- Placeholder: "Search by founder name, country, sector, or expertise..."
+- ID: "founders-search"
+- Content Type: "founders"
+- Hint: "Discover founders by location, expertise, or business story"
+
+Notes:
+- This is a placeholder that doesn't perform actual searches
+- Used to gauge user interest in founder search functionality
+- Will be replaced with functional search in future iterations
+
+Last Updated: 2025-06-03
+================================================================================
 {% endcomment %}
 
 <div class="panel panel--light">

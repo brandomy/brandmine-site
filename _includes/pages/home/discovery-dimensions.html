@@ -1,15 +1,28 @@
-<!-- discovery-dimensions.html component placeholder -->
 {% comment %}
-  Include: pages/home/discovery-dimensions.html
-  Purpose: Displays the discovery dimensions grid section showcasing different ways to explore brands
-
+  Page Section: pages/home/discovery-dimensions.html
+  
+  Purpose: Displays the discovery dimensions grid section showcasing different
+           ways to explore brands through the four-tier dimension system
+  
+  Section Type: Content
+  Template: home.html
+  
   Parameters:
-    - columns (optional): Number of columns to display in the grid (default: 4)
-    - limit (optional): Maximum number of items to show per dimension (default: 3)
-
+    columns (optional): Number of columns to display in the grid
+                       Default: 4
+    limit (optional): Maximum number of items to show per dimension
+                     Default: 6
+    new_component (optional): Debug flag for component status
+  
   Dependencies:
+    - Translation keys: home.discovery.*
     - CSS: assets/css/pages/home.scss
-    - Include: collections/dimensions/discovery-dimensions-grid.html
+    - Include: components/dimensions/discovery-dimensions-grid.html
+    - Helper: helpers/t.html
+  
+  Usage:
+    {% include pages/home/discovery-dimensions.html %}
+    {% include pages/home/discovery-dimensions.html columns=3 limit=4 %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

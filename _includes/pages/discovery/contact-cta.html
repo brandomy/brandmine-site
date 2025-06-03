@@ -1,28 +1,32 @@
 {% comment %}
-Component: contact-cta.html
+================================================================================
+PAGE SECTION: Contact CTA
+PATH: _includes/pages/discovery/contact-cta.html
 
-Purpose: Final call-to-action encouraging visitors to engage directly with Brandmine
-         for specific partnership or exploration needs.
+PURPOSE:
+Final call-to-action encouraging visitors to engage directly with Brandmine
+for specific partnership or exploration needs.
 
-Dependencies:
+USAGE:
+Displayed as the final section on the Discovery page to convert engaged visitors
+into potential leads or contacts.
+
+PARAMETERS:
+- None (uses page.lang from page context)
+
+DEPENDENCIES:
 - Data: site.data.translations[page.lang].home
 - CSS: /assets/css/pages/discovery/contact-cta.scss
 - JS: None
 
-Variables Used:
-- page.lang: Current language
-
-Classes:
-- .discovery-cta: Main container
-- .discovery-cta__content: Content wrapper
-- .discovery-cta__title: CTA heading
-- .discovery-cta__text: CTA description
-- .discovery-cta__actions: Button container
-
-Notes:
-- Uses panel--cta for consistent CTA styling
+CUSTOMIZATION:
+- Translation keys: home.cta_title, home.cta_text, home.cta_button
 - Links to about page contact section
 - Can be easily updated to link to a contact form
+
+EXAMPLE:
+{% include pages/discovery/contact-cta.html %}
+================================================================================
 {% endcomment %}
 
 {% comment %} Use translation helper for logic light architecture {% endcomment %}

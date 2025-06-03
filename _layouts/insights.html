@@ -2,29 +2,22 @@
 layout: default
 ---
 
-<!-- ----------------------------------------------------------------------------
-  INSIGHTS LAYOUT
-  ------------------------------------------------------------------------------
-  Uses the logic-light architecture pattern with section-based composition.
-  Expects page.sections array in front matter of the page.
-
-  Each section is included from _includes/pages/insights/[section].html
-
-  Example page front matter:
-  sections:
-    - breadcrumbs
-    - hero
-    - content
-    - category-navigation
-    - categories
-    - filter-interface
-    - featured-insights
-    - recent-insights
-    - contact-cta
-
-  Dependencies:
-  - assets/css/pages/insights/_index.scss
----------------------------------------------------------------------------- -->
+{% comment %}
+  LAYOUT: Insights
+  PURPOSE: Main hub page for insights blog with full blog functionality
+  USED BY: pages/{lang}/insights.md (insights discovery and blog)
+  SECTIONS RENDERED: Data-driven via page_sections.yml (insights)
+  FRONT MATTER REQUIRED: Standard page front matter, uses defaults from page_sections.yml
+  PANEL SYSTEM: Uses panel--hero-split for hero, panel--primary for impact, panel--amber-soft for featured
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/insights/[section].html, insights JS files
+  
+  LOGIC-LIGHT ARCHITECTURE:
+  - Standardized across all languages with identical section structure
+  - Data-driven section rendering eliminates hardcoded logic
+  - Impact section positioned before content for strategic messaging
+  - Includes category navigation, filter interface, and featured insights
+  - Multiple JavaScript files for search, carousel, and pagination functionality
+{% endcomment %}
 
 {% comment %} Store page content for section includes {% endcomment %}
 {% capture page_content %}{{ content }}{% endcapture %}

@@ -1,29 +1,40 @@
 {% comment %}
-Component: featured-brands.html
+================================================================================
+PAGE SECTION: Featured Brands
+PATH: _includes/pages/discovery/featured-brands.html
 
-Purpose: Showcases a selection of featured brands that exemplify Brandmine's mission
-         of illuminating founder-led brands with compelling narratives.
+PURPOSE:
+Showcases a selection of featured brands that exemplify Brandmine's mission
+of illuminating founder-led brands with compelling narratives from BRICS+
+markets.
 
-Dependencies:
+USAGE:
+Displays up to 3 featured brands on the Discovery page to demonstrate the
+quality and diversity of brands in the Brandmine ecosystem.
+
+PARAMETERS:
+- None (uses page.lang from page context)
+
+DEPENDENCIES:
 - Data: site.brands collection, site.data.translations[page.lang]
 - CSS: /assets/css/pages/discovery/featured-brands.scss
-- JS: None
-- Includes: components/cards/brand-card.html
+- Components: components/cards/brand-card.html
 
-Variables Used:
-- page.lang: Current language
-- site.brands: Brand collection filtered by featured status
+CUSTOMIZATION:
+- Translation keys: discovery.featured_brands, discovery.featured_description
+- Maximum brands displayed: 3 (hardcoded limit)
+- Featured flag in brand front matter controls inclusion
+- Empty state message when no featured brands exist
 
-Classes:
-- .discovery-featured: Main container
-- .discovery-featured__header: Section header
-- .discovery-featured__grid: Brand card grid
-- .discovery-featured__empty: Empty state
+EXAMPLE:
+{% include pages/discovery/featured-brands.html %}
 
-Notes:
-- Shows maximum of 3 featured brands
-- Falls back to empty state if no featured brands
-- Reuses existing brand-card component
+NOTES:
+- Filters brands by current language and featured: true
+- Includes CTA button to explore all brands
+- Responsive grid layout with brand cards
+- Empty state includes placeholder icon and message
+================================================================================
 {% endcomment %}
 
 {% comment %} Use translation helper for logic light architecture {% endcomment %}

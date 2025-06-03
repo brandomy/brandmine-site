@@ -1,8 +1,17 @@
 {% comment %}
-  Component: pages/about/hero.html
+  Page Section: pages/about/hero.html
   Purpose: Split hero section for About page with text left, image right
-  Updated: 2025-06-02 - Updated to use panel--hero-split styling
-  Note: About page uses manual panel wrapping system, not data-driven panels
+  Updated: 2025-06-03 - Standardized page section template
+
+  Features:
+    - Split layout with text content and hero image
+    - Uses panel--hero-split styling
+    - About page uses manual panel wrapping system
+
+  Dependencies:
+    - CSS: journal hero styles, panel--hero-split
+    - Component: collection-image.html
+    - Translation keys: about.title, about.description
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].about %}

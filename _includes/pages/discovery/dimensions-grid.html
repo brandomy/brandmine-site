@@ -1,8 +1,40 @@
 {% comment %}
-Component: dimensions-grid.html
+================================================================================
+PAGE SECTION: Dimensions Grid
+PATH: _includes/pages/discovery/dimensions-grid.html
 
-Purpose: 2x2 grid showcasing the four discovery dimensions (sectors, markets, attributes, signals).
-         Each quadrant provides visual navigation with icons, descriptions, and sample tags.
+PURPOSE:
+2x2 grid showcasing the four discovery dimensions (sectors, markets, attributes,
+signals). Each quadrant provides visual navigation with icons, descriptions,
+and sample tags for exploring the Brandmine taxonomy.
+
+USAGE:
+Main navigation interface on the Discovery page, providing visual access to
+all four dimension types with color-coded panels and sample content.
+
+PARAMETERS:
+- None (uses page.lang from page context)
+
+DEPENDENCIES:
+- Data: site.data.sectors, site.data.markets, site.data.attributes, site.data.signals
+- Data: site.data.translations[page.lang]
+- CSS: /assets/css/pages/discovery/dimensions-grid.scss
+- Components: helpers/t.html
+
+CUSTOMIZATION:
+- Translation keys in discovery.* namespace
+- Limit of 5 sample tags per dimension (configurable)
+- Panel colors via panel--olive-soft, panel--sky-soft, etc.
+- Icon SVGs can be customized per dimension type
+
+EXAMPLE:
+{% include pages/discovery/dimensions-grid.html %}
+
+NOTES:
+- Each panel links to its respective dimension category page
+- "More..." link appears when dimensions exceed display limit
+- Responsive grid layout for mobile/desktop viewing
+================================================================================
 {% endcomment %}
 
 {% comment %} Use translation helper for logic light architecture {% endcomment %}

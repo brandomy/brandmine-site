@@ -2,11 +2,29 @@
 layout: default
 ---
 {% comment %}
-  Search Layout - Data-driven architecture
-  Custom layout for search pages with JavaScript search functionality
-  Updated: 2025-06-02 - Converted to data-driven pattern
-  
-  Note: Maintains custom content rendering for search-specific functionality
+  Layout: search.html (DATA-DRIVEN REFACTORED)
+
+  Purpose: Search results page with filtering and JavaScript-powered search functionality
+
+  Structure:
+  - Uses data-driven section rendering with helpers/page-sections.html
+  - Supports configurable sections via page front matter or defaults
+  - Follows the established linear sectioning architecture
+  - Maintains custom search functionality integration
+
+  Dependencies:
+  - _includes/pages/search/[section-name].html files for content sections
+  - CSS: pages/search/_index.scss and related component files
+  - _data/page_sections.yml for section configuration
+  - JavaScript search functionality for results filtering
+  - Search index data from various collections
+
+  Default sections if not specified:
+  - hero, search-interface, results, filters
+
+  Used by:
+  - /[lang]/search.md pages
+  - Site-wide search functionality
 {% endcomment %}
 
 {% include helpers/page-sections.html page_type="search" content=page.content %}

@@ -1,27 +1,34 @@
 {% comment %}
-Component: components/forms/select-field.html
-Purpose: Standardized select dropdown field with validation and accessibility
+COMPONENT: Select Field
+PURPOSE: Dropdown select field with custom styling, validation support, and accessibility features
 
-Parameters:
-- name (required): Select name attribute
-- id (optional): Select ID (defaults to name)
-- label (optional): Field label text
-- options (required): Array of options in format "value:label" or just "value"
-- value (optional): Default selected value
-- required (optional): Field is required (default: false)
-- disabled (optional): Field is disabled (default: false)
-- multiple (optional): Allow multiple selections (default: false)
-- placeholder (optional): Placeholder option text
-- help_text (optional): Help text below the field
-- error_message (optional): Error message to display
-- class_name (optional): Additional CSS classes
+USAGE: {% assign options = "ru:Russia|br:Brazil|cn:China" | split: "|" %}
+       {% include components/forms/select-field.html name="country" label="Country" options=options %}
 
-Usage:
-{% assign sector_options = "wine:Wine|natural-beauty:Natural Beauty|hotels:Hotels & Resorts" | split: "|" %}
-{% include components/forms/select-field.html name="sector" label="Sector" options=sector_options required=true %}
+PARAMETERS:
+- name (required): Select name attribute string
+- options (required): Array of option strings in "value:label" or "value" format
+- id (optional): Select ID string, defaults to name
+- label (optional): Field label text string
+- value (optional): Default selected value string
+- required (optional): Boolean field required, defaults to false
+- disabled (optional): Boolean field disabled, defaults to false
+- multiple (optional): Boolean allow multiple selections, defaults to false
+- placeholder (optional): Placeholder option text string
+- help_text (optional): Help text string below field
+- error_message (optional): Error message string to display
+- class_name (optional): Additional CSS classes string
 
-{% assign country_options = "ru:Russia|br:Brazil|cn:China" | split: "|" %}
-{% include components/forms/select-field.html name="country" label="Country" options=country_options placeholder="Select a country" %}
+DEPENDENCIES:
+- CSS: assets/css/components/forms/select-field.scss
+- Data: None
+- Includes: None
+
+VARIANTS:
+- Single select: Default dropdown behavior
+- Multiple select: Adds [] to name, allows multiple selections
+
+NOTES: Custom dropdown arrow icon included. Options support value:label format for different display/value pairs. Placeholder disabled and shown only for single select.
 {% endcomment %}
 
 {% assign field_id = include.id | default: include.name %}

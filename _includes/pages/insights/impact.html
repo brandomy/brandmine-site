@@ -1,7 +1,17 @@
 {% comment %}
-  Component: pages/insights/impact.html
-  Purpose: Impact statement for the Insights page
-  Updated: 2025-06-02 - Standardized to use translation helper pattern
+  Page Section: insights/impact.html
+  
+  Purpose: Strategic impact statement for insights collection
+  Context: Explains value proposition and mission alignment
+  
+  Dependencies:
+  - Translation Helper: helpers/t.html
+  - Translation: insights.impact.* keys
+  
+  Notes:
+  - Uses translation helper pattern for logic-light architecture
+  - Only renders if translation content exists
+  - Follows standardized impact section pattern
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

@@ -1,43 +1,50 @@
 {% comment %}
-  Component: pages/founders/header.html
+================================================================================
+PAGE SECTION: Founders > Header
+FILE: _includes/pages/founders/header.html
+================================================================================
 
-  Purpose: Renders the main header section of the founders index page, including
-           the page title and search functionality. This provides the primary
-           entry point for users to discover and search for founder profiles.
+Purpose:
+Renders the main header section of the founders index page, including the page 
+title and search functionality. This provides the primary entry point for users 
+to discover and search for founder profiles.
 
-  Context:
-  - Part of the founders page logic-light architecture
-  - Typically appears after content section but before filters
-  - Creates visual hierarchy and immediate search capability
+Context:
+- Part of the founders page logic-light architecture
+- Typically appears after content section but before filters
+- Creates visual hierarchy and immediate search capability
 
-  Parameters:
-  - title (optional): Override the default page title
-    Default: Uses page.title from front matter
-  - show_search (optional): Toggle search box visibility
-    Default: true
+Parameters:
+- title (optional): Override the default page title
+  Default: Uses translation key founders.header.title
+- show_search (optional): Toggle search box visibility
+  Default: true
 
-  Dependencies:
-  - CSS: pages/founders/header.scss
-  - JS: Requires founders.js for search functionality
-  - Translations: Uses site.data.translations for search labels
+Dependencies:
+- CSS: pages/founders/header.scss
+- JS: Requires founders.js for search functionality
+- Data: site.data.translations for UI labels
 
-  Data Sources:
-  - page.title: Main heading text from page front matter
-  - page.lang: Language code for translation lookups
-  - site.data.translations[page.lang].search: Search UI labels
+DOM Elements:
+- #founder-search: Search input field for JavaScript binding
+- #search-button: Search trigger button for JavaScript binding
 
-  DOM Elements:
-  - #founder-search: Search input field for JavaScript binding
-  - #search-button: Search trigger button for JavaScript binding
+Translation Keys Used:
+- founders.header.title: Page title
+- founders.header.search_placeholder: Search input placeholder
+- founders.header.search_button: Search button text
 
-  Example Usage:
-  {% include pages/founders/header.html %}
-  {% include pages/founders/header.html title="Custom Title" show_search=false %}
+Example Usage:
+{% include pages/founders/header.html %}
+{% include pages/founders/header.html title="Custom Title" show_search=false %}
 
-  Notes:
-  - Search functionality requires JavaScript to be enabled
-  - Placeholder text falls back to general search if founder-specific not available
-  - Consider adding autocomplete or search suggestions in future iterations
+Notes:
+- Search functionality requires JavaScript to be enabled
+- Uses translation helper for all text content
+- Consider adding autocomplete or search suggestions in future iterations
+
+Last Updated: 2025-06-03
+================================================================================
 {% endcomment %}
 
 

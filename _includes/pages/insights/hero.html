@@ -1,7 +1,17 @@
 {% comment %}
-  Component: pages/insights/hero.html
-  Purpose: Split hero section for Insights page with text left, image right
-  Updated: 2025-05-31 - Changed from single panel to split layout
+  Page Section: insights/hero.html
+  
+  Purpose: Split layout hero with text left, image right
+  Context: Primary page header for insights collection
+  
+  Dependencies:
+  - Translation: insights.hero_* keys
+  - Components: components/images/collection-image.html
+  
+  Notes:
+  - Uses journal-hero component styling with teal variant
+  - Split layout optimized for landing page presentation
+  - Image loads eagerly for above-the-fold performance
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}

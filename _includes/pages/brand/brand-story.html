@@ -1,7 +1,30 @@
 {% comment %}
-  Brand Story Section
-  Displays: Brand story content and timeline
-  Supports: Both YAML and JSON data sources
+SECTION: Brand Story
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display brand's history, narrative, and chronological timeline of key milestones
+
+DATA SOURCES:
+- Content: Extracted from markdown content after "## About" heading
+- Timeline: brand.timeline array with year/event objects
+- Data Format: Both YAML and JSON supported
+
+CONTEXT REQUIRED:
+- brand: Brand object with optional timeline array
+- content: Full markdown content (split to extract section)
+- data_source: "curated" or "basic" (defaults to "curated")
+
+CONTENT STRUCTURE:
+1. Section heading (h2) - "About"
+2. Brand story content from markdown
+3. Timeline component (if present):
+   - Chronological list of milestones
+   - Year and event description pairs
+   - Visual timeline styling
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- CSS: pages/brand/brand-story.scss, components/ui/timeline.scss
+- Translations: brand.about, brand.timeline
 {% endcomment %}
 
 {% assign brand = include.brand | default: page %}

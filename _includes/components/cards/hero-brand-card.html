@@ -1,11 +1,21 @@
 {% comment %}
-  Include Name: components/cards/hero-brand-card.html
+COMPONENT: Hero Brand Card
+PURPOSE: Premium brand display with hero image, logo overlay, founder portrait, and complete taxonomy for featured brands
 
-  Purpose: Displays an enhanced brand card with hero image for higher-level featured brands.
-  Updated to use new image structure and helpers.
+USAGE: {% include components/cards/hero-brand-card.html brand=brand %}
 
-  Parameters:
-  - brand: Brand object with complete details (required)
+PARAMETERS:
+- brand (required): Brand object with complete details including images.hero and images.founder
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/hero-brand-card.scss
+- Data: site.data.dimensions, site.data.founders, site.data.translations
+- Includes: helpers/brand-image.html, helpers/brand-name.html, components/helpers/founding-year.html, components/helpers/location-display.html, helpers/t.html, components/helpers/founder-check.html
+
+VARIANTS:
+- hero-brand-card--featured: Applied when brand.featured or brand.featured_level > 1
+
+NOTES: Shows all taxonomy tags without limits. Founder portrait appears in corner circle. Uses brand-image helper for all images. Primary CTA button styling. Signals displayed separately in footer.
 {% endcomment %}
 
 {% comment %} Translation helper replaces manual lookup {% endcomment %}

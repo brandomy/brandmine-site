@@ -1,31 +1,30 @@
 {% comment %}
-  Component: components/cards/entry-card.html
-  Purpose: Reusable card component for displaying content entries (journal posts, insights, articles)
-  
-  Parameters:
-    - item: The content item to display (post, insight, article, etc.)
-    - image_base_path: Base path for images (optional, defaults to /assets/images/journal/)
-    - image_size: Image size suffix (optional, defaults to 400w)
-    - show_author: Whether to show author (optional, defaults to true)
-    - show_date: Whether to show date (optional, defaults to true)
-    - show_tags: Whether to show tags (optional, defaults to true)
-    - show_excerpt: Whether to show excerpt (optional, defaults to true)
-    - excerpt_words: Number of words in excerpt (optional, defaults to 25)
-    - tag_limit: Number of tags to show (optional, defaults to 3)
-    - read_more_text: Custom read more text (optional)
-    - translations: Translation object (optional, defaults to journal translations)
-    
-  Dependencies:
-    - assets/css/pages/journal/_entry-card.scss (or components/cards/entry-card.scss)
-    
-  Example Usage:
-    {% include components/cards/entry-card.html item=post %}
-    
-    {% include components/cards/entry-card.html 
-       item=insight 
-       image_base_path="/assets/images/insights/"
-       show_author=false
-       read_more_text="Read Insight" %}
+COMPONENT: Entry Card
+PURPOSE: Flexible content card for displaying journal posts, insights, and articles with responsive images and metadata
+
+USAGE: {% include components/cards/entry-card.html item=post %}
+
+PARAMETERS:
+- item (required): Content item object (post, insight, article) with title, excerpt, url, etc.
+- image_base_path (optional): Base path string for images, defaults from component defaults
+- image_size (optional): Image size suffix string, defaults from component defaults
+- show_author (optional): Boolean to show author, defaults from component defaults
+- show_date (optional): Boolean to show date, defaults from component defaults
+- show_tags (optional): Boolean to show tags, defaults from component defaults
+- show_excerpt (optional): Boolean to show excerpt, defaults from component defaults
+- excerpt_words (optional): Integer word count for excerpt, defaults from component defaults
+- tag_limit (optional): Integer limit for tags display, defaults from component defaults
+- read_more_text (optional): Custom read more text string, defaults to translation
+- translations: Translation object (optional, defaults to journal translations)
+
+DEPENDENCIES:
+- CSS: assets/css/pages/journal/_entry-card.scss or assets/css/components/cards/entry-card.scss
+- Data: site.data.translations, site.data.component_defaults
+- Includes: helpers/component-defaults.html, helpers/t.html
+
+VARIANTS: None - layout adapts based on content and parameters
+
+NOTES: Supports multilingual ref-based image paths. Responsive images use 400w, 800w, 1200w variants. Falls back to placeholder when no image available. Author names auto-translate from site.data.translations.
 {% endcomment %}
 
 {% comment %} Set defaults using centralized component defaults {% endcomment %}

@@ -1,31 +1,37 @@
 {% comment %}
-Component: components/forms/input-field.html
-Purpose: Standardized form input field with validation and accessibility
+COMPONENT: Input Field
+PURPOSE: Reusable form input with built-in validation, accessibility features, and consistent styling
 
-Parameters:
-- type (optional): Input type - "text", "email", "password", "tel", "url", "number" (default: "text")
-- name (required): Input name attribute
-- id (optional): Input ID (defaults to name)
-- label (optional): Field label text
-- placeholder (optional): Placeholder text
-- value (optional): Default value
-- required (optional): Field is required (default: false)
-- disabled (optional): Field is disabled (default: false)
-- readonly (optional): Field is readonly (default: false)
-- autocomplete (optional): Autocomplete attribute
-- pattern (optional): Validation pattern (regex)
-- min (optional): Minimum value (for number/date inputs)
-- max (optional): Maximum value (for number/date inputs)
-- minlength (optional): Minimum length
-- maxlength (optional): Maximum length
-- help_text (optional): Help text below the field
-- error_message (optional): Error message to display
-- class_name (optional): Additional CSS classes
+USAGE: {% include components/forms/input-field.html name="email" type="email" label="Email Address" required=true %}
 
-Usage:
-{% include components/forms/input-field.html name="email" type="email" label="Email Address" required=true %}
-{% include components/forms/input-field.html name="website" type="url" label="Website" placeholder="https://example.com" %}
-{% include components/forms/input-field.html name="phone" type="tel" label="Phone" help_text="Include country code" %}
+PARAMETERS:
+- name (required): Input name attribute string
+- type (optional): Input type string - "text", "email", "password", "tel", "url", "number", defaults to "text"
+- id (optional): Input ID string, defaults to name
+- label (optional): Field label text string
+- placeholder (optional): Placeholder text string
+- value (optional): Default value string
+- required (optional): Boolean field required, defaults to false
+- disabled (optional): Boolean field disabled, defaults to false
+- readonly (optional): Boolean field readonly, defaults to false
+- autocomplete (optional): Autocomplete attribute string
+- pattern (optional): Validation pattern regex string
+- min (optional): Minimum value for number/date inputs
+- max (optional): Maximum value for number/date inputs
+- minlength (optional): Minimum character length integer
+- maxlength (optional): Maximum character length integer
+- help_text (optional): Help text string below field
+- error_message (optional): Error message string to display
+- class_name (optional): Additional CSS classes string
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/input-field.scss
+- Data: None
+- Includes: None
+
+VARIANTS: None - styling adapts based on state (error, disabled, readonly)
+
+NOTES: ARIA attributes automatically added for accessibility. Required asterisk shown in label. Error icon included. Help text connected via aria-describedby.
 {% endcomment %}
 
 {% assign field_id = include.id | default: include.name %}

@@ -2,10 +2,18 @@
 layout: default
 ---
 {% comment %}
-  Founder Profile Layout (LOGIC-LIGHT REFACTORED)
+  LAYOUT: Founder Profile
+  PURPOSE: Renders individual founder profiles with semantic sectioning
+  USED BY: _founders/ collection content
+  SECTIONS RENDERED: Data-driven via page_sections.yml (founder-profile)
+  FRONT MATTER REQUIRED: Standard Jekyll front matter with founder metadata
+  PANEL SYSTEM: Uses panel--hero-subtle for hero, panel--primary for impact, panel--light for content
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/founder-profile/[section].html
   
-  Uses data-driven section rendering with helpers/page-sections.html
-  Supports configurable sections via page front matter or defaults
+  LOGIC-LIGHT ARCHITECTURE:
+  - Configurable sections via page.sections or defaults from page_sections.yml
+  - All section logic abstracted to individual includes
+  - Consistent panel wrapping across all sections
 {% endcomment %}
 
 {% comment %} Store founder data for section includes {% endcomment %}

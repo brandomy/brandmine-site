@@ -1,18 +1,22 @@
 ---
 layout: default
 ---
-<!-- ----------------------------------------------------------------------------
-  BRANDS INDEX LAYOUT
-  ------------------------------------------------------------------------------
-  This layout powers the main directory page for viewing all brand profiles.
-  It is assigned to the `/brands/` page in each supported language.
-
-  Purpose:
-  - Dynamically includes sections defined in the page's front matter
-  - Provides page-scoped CSS through the brands-page class
-  - Loads JavaScript for dynamic filtering behavior
-  - Creates semantic <section> elements for better accessibility and SEO
----------------------------------------------------------------------------- -->
+{% comment %}
+  LAYOUT: Brands
+  PURPOSE: Main directory page for viewing and filtering all brand profiles
+  USED BY: pages/{lang}/brands.md (brand discovery and listings)
+  SECTIONS RENDERED: Data-driven via page_sections.yml (brands)
+  FRONT MATTER REQUIRED: Standard page front matter, uses defaults from page_sections.yml
+  PANEL SYSTEM: Uses panel--hero-split for hero, panel--primary for impact, panel--light for content
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/brands/[section].html, brands-filtering.js
+  
+  LOGIC-LIGHT ARCHITECTURE:
+  - Standardized across all languages with identical section structure
+  - Data-driven section rendering eliminates hardcoded logic
+  - Impact section positioned before content for strategic messaging
+  - Includes filter interface, featured brands carousel, and contact CTA
+  - JavaScript handles dynamic filtering and search functionality
+{% endcomment %}
 
 {% comment %} Store page content for section includes {% endcomment %}
 {% capture page_content %}{{ content }}{% endcapture %}

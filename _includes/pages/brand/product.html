@@ -1,7 +1,31 @@
 {% comment %}
-  Product Section
-  Displays: Product range content and gallery
-  Supports: Both YAML and JSON data sources
+SECTION: Product
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display brand's product range information with optional gallery showcase
+
+DATA SOURCES:
+- Content: Extracted from markdown content after "## Product Range" heading
+- Gallery: brand.gallery array containing image metadata
+- Data Format: Both YAML and JSON supported
+
+CONTEXT REQUIRED:
+- brand: Brand object with optional gallery array
+- content: Full markdown content (split to extract section)
+- data_source: "curated" or "basic" (defaults to "curated")
+
+CONTENT STRUCTURE:
+1. Section heading (h2)
+2. Product content from markdown
+3. Product gallery (if present):
+   - Grid layout of product images
+   - Collection-based image handling
+   - Optional captions per image
+
+DEPENDENCIES:
+- Components: components/images/collection-image.html
+- Helpers: helpers/t.html (translations)
+- CSS: pages/brand/product.scss
+- Translations: brand.products
 {% endcomment %}
 
 {% assign brand = include.brand | default: page %}

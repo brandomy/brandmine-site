@@ -1,8 +1,22 @@
 {% comment %}
-  Component: components/cards/tagged-insight-card.html
-  Purpose: Display an insight card with dimension tags (sectors, markets, attributes, signals)
-  Parameters:
-    - insight: The insight object to display
+COMPONENT: Tagged Insight Card
+PURPOSE: Enhanced insight card with dimension taxonomy tags showing content relationships to markets, sectors, attributes, and signals
+
+USAGE: {% include components/cards/tagged-insight-card.html insight=insight %}
+
+PARAMETERS:
+- insight (required): Insight object with markets, sectors, attributes, signals arrays in addition to standard fields
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/insight-card.scss, assets/css/components/cards/tagged-insight-card.scss
+- Data: site.data.dimensions[page.lang], site.data.translations
+- Includes: components/icons/icon.html, helpers/t.html
+
+VARIANTS:
+- insight-card--tagged: Additional tagged variant class
+- insight-card__tag--[type]: Tag type styling (market, sector, attribute, signal)
+
+NOTES: Shows 1 tag per dimension type. Tags use dimension translations. Excerpt limited to 120 chars. Adds reading time display. Same responsive image handling.
 {% endcomment %}
 
 <article class="insight-card insight-card--{{ include.insight.category }} insight-card--tagged">

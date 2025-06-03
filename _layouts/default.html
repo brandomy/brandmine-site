@@ -1,3 +1,32 @@
+{% comment %}
+LAYOUT: Default
+PURPOSE: Base layout template providing HTML structure, head section, and body framework for all pages
+
+USED BY: All other layouts inherit from this template via Jekyll's layout inheritance
+
+SECTIONS RENDERED:
+- Document head: Meta tags, SEO components, stylesheets, font preloading
+- Body wrapper: Dynamic body classes based on page.ref or layout type
+- Header: Site navigation and branding
+- Main content: Layout wrapper containing child layout content
+- Footer: Site footer with links and newsletter signup
+
+FRONT MATTER REQUIRED:
+- lang: Language code (defaults to 'en')
+- title: Page title (optional, falls back to site.title translation)
+
+PANEL SYSTEM: Not applicable - provides base structure for panel-using layouts
+
+DEPENDENCIES:
+- components/seo/meta-article.html (for insight articles)
+- components/seo/schema-detector.html (for structured data)
+- layout/header.html (site header)
+- layout/footer.html (site footer)
+- utilities/google-analytics.html (tracking)
+- assets/main.css (compiled SCSS)
+- Various font files (PT Sans, PT Serif, Noto Sans/Serif SC for Chinese)
+{% endcomment %}
+
 <!DOCTYPE html>
 <html lang="{% if page.lang %}{{ page.lang }}{% else %}en{% endif %}">
 <head>

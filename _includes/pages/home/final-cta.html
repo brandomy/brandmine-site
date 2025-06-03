@@ -1,28 +1,33 @@
-<!-- final-cta.html component placeholder -->
 {% comment %}
-  Component: pages/home/final-cta.html
-
+  Page Section: pages/home/final-cta.html
+  
   Purpose: Displays the final call-to-action section at the bottom of the homepage
-
+           with dual CTAs for exploration and brand profiling
+  
+  Section Type: CTA
+  Template: home.html
+  
   Parameters:
-    title (optional): Custom section title, defaults to "Start Exploring What Others Can't See"
-    lead_text (optional): Custom lead text
-    primary_cta_text (optional): Text for primary CTA button, defaults to "Explore Brands"
-    primary_cta_url (optional): URL for primary CTA button, defaults to brands page
-    secondary_cta_text (optional): Text for secondary CTA button, defaults to "Get Profiled"
-    secondary_cta_url (optional): URL for secondary CTA button, defaults to contact section
-
+    title (optional): Custom section title
+                     Default: "Start Exploring What Others Can't See"
+    lead_text (optional): Custom lead text describing the call to action
+    primary_cta_text (optional): Text for primary CTA button
+                               Default: "Explore Brands"
+    primary_cta_url (optional): URL for primary CTA button
+                              Default: brands page
+    secondary_cta_text (optional): Text for secondary CTA button
+                                 Default: "Get Profiled"
+    secondary_cta_url (optional): URL for secondary CTA button
+                                Default: contact section
+  
   Dependencies:
-    - CSS: components/layout/panels.css
+    - Translation keys: home.final_cta.*
     - CSS: assets/css/pages/home/final-cta.scss
-
+    - Helper: helpers/t.html
+  
   Usage:
-  {% include pages/home/final-cta.html %}
-  {% include pages/home/final-cta.html
-     title="Custom Title"
-     lead_text="Custom description"
-     primary_cta_text="Browse Brands"
-     secondary_cta_text="Contact Us" %}
+    {% include pages/home/final-cta.html %}
+    {% include pages/home/final-cta.html title="Custom Title" primary_cta_text="Browse Brands" %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

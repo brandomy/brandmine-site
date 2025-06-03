@@ -1,28 +1,32 @@
 {% comment %}
-BRAND DATA HELPER
-Retrieves complete brand object from JSON data
-Assigns to a variable for complex operations
+HELPER: Brand Data
+PURPOSE: Retrieves complete brand object from JSON data source to support data-driven brand components and cross-references
 
-Usage:
-{% include helpers/brand-data.html brand_id="ru-teatime" assign="brand_data" %}
-{% if brand_data %}
-  <p>{{ brand_data.description[page.lang] }}</p>
-  <p>Founded: {{ brand_data.founding_year }}</p>
+USAGE: {% include helpers/brand-data.html brand_id="ru-teatime" %}
+
+PARAMETERS:
+- brand_id (required): Brand identifier string to lookup
+- assign (optional): Variable name for assignment (Note: Liquid limitation requires using 'brand' variable)
+
+RETURNS: Sets 'brand' variable with complete brand object, sets 'brand_data' captured JSON string
+
+DEPENDENCIES:
+- Data: site.data.brands collection
+- Includes: None
+- Variables: page.lang for multilingual support
+
+EXAMPLE:
+{% include helpers/brand-data.html brand_id="ru-teatime" %}
+{% if brand %}
+  <p>{{ brand.description[page.lang] }}</p>
+  <p>Founded: {{ brand.founding_year }}</p>
 {% endif %}
-
-{% include helpers/brand-data.html brand_id=page.ref assign="current_brand" %}
-{% if current_brand %}
-  <img src="{{ current_brand.logo }}" alt="{{ current_brand.name[page.lang] }}">
-{% endif %}
-
-Parameters:
-- brand_id (required): The brand ID to look up
-- assign (required): Variable name to assign the brand object to
 {% endcomment %}
 
+{% comment %} Lookup brand from JSON data source {% endcomment %}
 {% assign brand_lookup = site.data.brands | where: "id", include.brand_id | first %}
 {% if brand_lookup %}
-  {% comment %} Dynamic assign is not supported in Liquid - return via capture {% endcomment %}
+  {% comment %} Dynamic assign is not supported in Liquid - return via capture and brand variable {% endcomment %}
   {% capture brand_data %}{{ brand_lookup | jsonify }}{% endcapture %}
   {% assign brand = brand_lookup %}
 {% endif %}

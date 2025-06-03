@@ -1,14 +1,16 @@
 {% comment %}
-  Section: insights/category-navigation.html
+  Page Section: insights/category-navigation.html
   
-  Purpose: Displays the insights category navigation bar on the main insights page
+  Purpose: Category navigation bar for insights content filtering
+  Context: Provides horizontal navigation between insight categories
   
   Dependencies:
-  - components/insights/insights-category-navigation.html
+  - Component: components/insights/insights-category-navigation.html
   - CSS: components/insights/insights-category-navigation.scss
   
-  Used by:
-  - insights layout via sections array
+  Notes:
+  - Uses style_option 'b' for specific navigation styling
+  - Simple wrapper for reusable navigation component
 {% endcomment %}
 
 {% include components/insights/insights-category-navigation.html style_option='b' %}

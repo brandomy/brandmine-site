@@ -1,33 +1,43 @@
 {% comment %}
-FOUNDER DETECTION HELPER
-Standardized logic to determine if a brand is founder-led
+HELPER: Is Founder Led
+PURPOSE: Standardized founder-led detection logic to eliminate duplicate conditional patterns across brand components
 
-Usage:
+USAGE: {% include helpers/is-founder-led.html brand=brand %}
+
+PARAMETERS:
+- brand (required): Brand object with potential founder data structures
+
+RETURNS: Sets 'is_founder_led' boolean variable for use in calling template
+
+DEPENDENCIES:
+- Data: brand.founder_led (boolean), brand.founders (array), brand.founder.founder_led (boolean)
+- Includes: None
+- Variables: None
+
+EXAMPLE:
 {% include helpers/is-founder-led.html brand=brand %}
-<!-- Sets 'is_founder_led' variable to true or false -->
+{% if is_founder_led %}
+  <span class="founder-badge">Founder-Led</span>
+{% endif %}
 
-Parameters:
-- brand (required): Brand object to check
-
-Returns: Sets 'is_founder_led' variable for use in calling template
-
-Logic priority:
+LOGIC PRIORITY:
 1. brand.founder_led (boolean) - explicit flag
-2. brand.founders array length > 0 - has founder entries
+2. brand.founders array length > 0 - has founder entries  
 3. brand.founder.founder_led - nested founder object flag
 {% endcomment %}
 
+{% comment %} Initialize as false and check conditions in priority order {% endcomment %}
 {% assign is_founder_led = false %}
 
-{% comment %} Check explicit founder_led flag first {% endcomment %}
+{% comment %} Priority 1: Check explicit founder_led flag {% endcomment %}
 {% if include.brand.founder_led == true %}
   {% assign is_founder_led = true %}
 
-{% comment %} Check if founders array exists and has entries {% endcomment %}
+{% comment %} Priority 2: Check if founders array exists and has entries {% endcomment %}
 {% elsif include.brand.founders and include.brand.founders.size > 0 %}
   {% assign is_founder_led = true %}
 
-{% comment %} Check nested founder object flag {% endcomment %}
+{% comment %} Priority 3: Check nested founder object flag {% endcomment %}
 {% elsif include.brand.founder and include.brand.founder.founder_led == true %}
   {% assign is_founder_led = true %}
 {% endif %}

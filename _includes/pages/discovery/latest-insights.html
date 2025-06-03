@@ -1,30 +1,40 @@
 {% comment %}
-Component: latest-insights.html
+================================================================================
+PAGE SECTION: Latest Insights
+PATH: _includes/pages/discovery/latest-insights.html
 
-Purpose: Displays the most recent insights to reinforce Brandmine's narrative-rich
-         approach and showcase the depth of content available on the platform.
+PURPOSE:
+Displays the most recent insights to reinforce Brandmine's narrative-rich
+approach and showcase the depth of content available on the platform, encouraging
+visitors to explore beyond just brand discovery.
 
-Dependencies:
+USAGE:
+Secondary content section on the Discovery page, demonstrating the editorial
+content that complements brand profiles.
+
+PARAMETERS:
+- None (uses page.lang from page context)
+
+DEPENDENCIES:
 - Data: site.insights collection, site.data.translations[page.lang]
 - CSS: /assets/css/pages/discovery/latest-insights.scss
-- JS: None
-- Includes: components/cards/insight-card.html
+- Components: components/cards/insight-card.html
 
-Variables Used:
-- page.lang: Current language
-- site.insights: Insights collection filtered by language
+CUSTOMIZATION:
+- Translation keys in insights.* and discovery.* namespaces
+- Maximum insights displayed: 2 (hardcoded limit)
+- Sort order: most recent first (by date field)
+- Empty state message for no insights
 
-Classes:
-- .discovery-insights: Main container
-- .discovery-insights__header: Section header
-- .discovery-insights__grid: Insight card grid
-- .discovery-insights__empty: Empty state
+EXAMPLE:
+{% include pages/discovery/latest-insights.html %}
 
-Notes:
-- Shows maximum of 2 recent insights
-- Sorted by date in descending order
-- Reuses existing insight-card component
-- Falls back to empty state if no insights
+NOTES:
+- Filters insights by current language
+- Includes CTA button to view all insights
+- Responsive grid layout with insight cards
+- Clock icon indicates time-sensitive content
+================================================================================
 {% endcomment %}
 
 {% comment %} Use translation helper for logic light architecture {% endcomment %}

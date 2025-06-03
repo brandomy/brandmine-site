@@ -1,21 +1,29 @@
 {% comment %}
-  Component: pages/home/lead-capture.html
-
+  Page Section: pages/home/lead-capture.html
+  
   Purpose: Displays a newsletter subscription section using MailerLite integration
-
+           with language-specific forms for EN/RU/ZH audiences
+  
+  Section Type: CTA
+  Template: home.html
+  
   Parameters:
-    title (optional): Custom section title, defaults to translation
-    lead_text (optional): Custom lead text, defaults to translation
-    panel_type (optional): Panel style/color, defaults to "lead-capture"
-
+    title (optional): Custom section title
+                     Default: from translations
+    lead_text (optional): Custom lead text describing newsletter value
+                         Default: from translations
+    panel_type (optional): Panel style/color
+                          Default: "lead-capture"
+  
   Dependencies:
-    - CSS: components/lead-capture.css
+    - Translation keys: home.lead_capture.*
+    - CSS: assets/css/pages/home/lead-capture.scss
     - External: MailerLite embed script (loaded in default layout)
-
+    - Helper: helpers/t.html
+  
   Usage:
-  {% include pages/home/lead-capture.html %}
-  {% include pages/home/lead-capture.html panel_type="primary-dark" %}
-  {% include pages/home/lead-capture.html title="Custom Title" lead_text="Custom description" %}
+    {% include pages/home/lead-capture.html %}
+    {% include pages/home/lead-capture.html panel_type="primary-dark" %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

@@ -1,18 +1,43 @@
 {% comment %}
-  Component: pages/discovery/universal-search.html
+================================================================================
+PAGE SECTION: Universal Search
+PATH: _includes/pages/discovery/universal-search.html
 
-  Purpose: Universal search hub for discovering all content types (brands, founders, insights, dimensions)
-           with dimension-aware filtering across the taxonomy system.
+PURPOSE:
+Universal search hub for discovering all content types (brands, founders, insights,
+dimensions) with dimension-aware filtering across the Brandmine taxonomy system.
+Provides comprehensive discovery beyond simple browsing.
 
-  Parameters:
-    title (optional): Custom section title
-    description (optional): Custom description
+USAGE:
+Advanced discovery interface on the Discovery page for users who want to search
+rather than browse. Includes sophisticated filtering and preset discovery paths.
 
-  Dependencies:
-    - CSS: pages/discovery/universal-search.scss
-    - JS: assets/js/discovery-search.js
-    - JSON: /search.json for comprehensive search data
-    - site.data.translations for labels
+PARAMETERS:
+- title (optional): Custom section title
+- description (optional): Custom description
+
+DEPENDENCIES:
+- CSS: pages/discovery/universal-search.scss
+- JS: assets/js/pages/discovery/discovery-search.js
+- JSON: /search.json for comprehensive search data
+- Data: site.data.translations for all interface labels
+
+CUSTOMIZATION:
+- Translation keys in discovery.search.* namespace
+- Configurable preset searches and dimension filters
+- Supports multiple view modes (grid, list, map)
+- Advanced filtering by content type, language, date
+
+EXAMPLE:
+{% include pages/discovery/universal-search.html %}
+{% include pages/discovery/universal-search.html title="Custom Title" %}
+
+NOTES:
+- Includes JavaScript for real-time search and filtering
+- Fallback interface provided for non-JS users
+- Supports search analytics and saved searches (future)
+- Responsive design with mobile-optimized controls
+================================================================================
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].discovery.search %}

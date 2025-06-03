@@ -1,26 +1,20 @@
 {% comment %}
-  Include Name: components/images/image-attribution.html
-  
-  Purpose: Displays attribution information for images, complying with licensing requirements
-  for photos used from stock photo services or other sources. Links to original source.
-  
-  Parameters:
-  - filename: The original image filename to look up (required, e.g., "moscow-gum.jpg")
-  
-  Dependencies:
-  - Data: site.data.image_attributions.images collection with attribution records
-  - CSS: image-attribution.css for styling
-  
-  Example Usage:
-  {% include components/images/image-attribution.html filename="moscow-gum.jpg" %}
-  
-  Notes:
-  - Looks up attribution information in the site.data.image_attributions.images collection
-  - Only displays attribution if found in the data file
-  - Provides credit to image creator with link to their profile
-  - Shows the image source (e.g., Unsplash, Pexels)
-  - Uses noopener for security on external links
-  - Attribution data can be added using _scripts/add_image_attribution.py
+COMPONENT: Image Attribution
+PURPOSE: Displays copyright attribution for stock photos to comply with licensing requirements and give proper credit
+
+USAGE: {% include components/images/image-attribution.html filename="moscow-gum.jpg" %}
+
+PARAMETERS:
+- filename (required): Original image filename string to lookup (e.g., "moscow-gum.jpg")
+
+DEPENDENCIES:
+- CSS: assets/css/components/images/image-attribution.scss
+- Data: site.data.image_attributions.images collection
+- Includes: None
+
+VARIANTS: None - single attribution format
+
+NOTES: Only displays if attribution found in data file. Links open in new tab with noopener security. Attribution data managed via _scripts/add_image_attribution.py script. Currently supports Unsplash format, easily extensible for other sources.
 {% endcomment %}
 
 {% assign filename = include.filename %}

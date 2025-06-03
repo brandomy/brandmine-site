@@ -1,9 +1,31 @@
 {% comment %}
-  Component: components/cards/featured-insight-card.html
-  Purpose: Display a featured or latest insight card
-  Parameters:
-    - insight: The insight object to display
-    - featured: Optional boolean, if true applies featured styling
+COMPONENT: Featured Insight Card
+PURPOSE: Displays featured or latest insights with hero image, category badge, and metadata for homepage and insight sections
+
+USAGE: {% include components/cards/featured-insight-card.html insight=insight featured=true %}
+
+PARAMETERS:
+- insight (required): Insight object with:
+  - title: Article title string
+  - permalink: URL path string
+  - hero_image: Hero image path string
+  - category: Category slug string
+  - date: Publication date
+  - reading_time: Reading time integer
+  - excerpt: Article excerpt string
+  - lang: Language code string
+- featured (optional): Boolean to apply featured styling
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/featured-insight-card.scss
+- Data: site.data.translations
+- Includes: components/icons/icon.html, helpers/t.html
+
+VARIANTS:
+- featured-insight-card--[category]: Category-specific styling
+- featured-insight-card--featured: Enhanced featured styling
+
+NOTES: Responsive images use 400w, 800w, 1200w variants. Category badge includes icon and translated label. Excerpt truncated to 120 chars. Falls back to placeholder icon when no hero image.
 {% endcomment %}
 
 <article class="featured-insight-card featured-insight-card--{{ include.insight.category }}{% if include.featured %} featured-insight-card--featured{% endif %}">

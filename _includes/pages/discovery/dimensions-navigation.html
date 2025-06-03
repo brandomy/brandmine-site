@@ -1,18 +1,35 @@
 {% comment %}
-Component: dimensions-navigation.html
+================================================================================
+PAGE SECTION: Dimensions Navigation
+PATH: _includes/pages/discovery/dimensions-navigation.html
 
-Purpose: Navigation section for the discovery page showing the four dimension categories
+PURPOSE:
+Navigation section for the discovery page showing the four dimension categories
+in a horizontal layout for easy access to dimension exploration.
 
-Dependencies:
+USAGE:
+Alternative or supplementary navigation to the dimensions grid, providing a
+more compact navigation option for dimension categories.
+
+PARAMETERS:
+- None (uses page.lang from page context)
+
+DEPENDENCIES:
 - Component: components/dimensions/dimensions-category-navigation.html
 - CSS: components/dimensions/dimensions-category-navigation.scss
 
-Variables Used:
-- page.lang: Current language for translations
+CUSTOMIZATION:
+- Style option 'b' provides inline text style
+- No active dimension since this is the overview page
+- Component handles all styling and translation
 
-Notes:
-- No active dimension specified since this is the overview page
-- Uses style option 'b' for inline text style to match the full navigation approach
+EXAMPLE:
+{% include pages/discovery/dimensions-navigation.html %}
+
+NOTES:
+- Delegates all rendering to the reusable dimensions-category-navigation component
+- Provides consistent navigation across dimension-related pages
+================================================================================
 {% endcomment %}
 
 {% include components/dimensions/dimensions-category-navigation.html style_option="b" %}

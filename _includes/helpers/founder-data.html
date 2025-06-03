@@ -1,32 +1,43 @@
 {% comment %}
-CLEAN FOUNDER DATA HELPER
-Returns complete founder object from JSON or Collection
+HELPER: Founder Data
+PURPOSE: Unified founder data retrieval from both JSON data source and Jekyll collections with flexible variable assignment
 
-Usage:
-{% include helpers/founder-data.html founder_id="ru-alexei-sokolov" assign="founder" %}
-{% include helpers/founder-data.html founder_id=page.ref assign="current_founder" %}
+USAGE: {% include helpers/founder-data.html founder_id="ru-alexei-sokolov" %}
 
-Parameters:
-- founder_id (required): The founder ID to look up
-- assign (optional): Variable name to assign to, defaults to "founder"
+PARAMETERS:
+- founder_id (required): Founder identifier string to lookup
+- assign (optional): Variable name string for assignment (supports: founder_data, current_founder, brand_founder, primary_founder)
+
+RETURNS: Sets founder variable (default) or specified assign variable with complete founder object
+
+DEPENDENCIES:
+- Data: site.data.founders JSON collection, site.founders Jekyll collection
+- Includes: None
+- Variables: page.lang for collection filtering
+
+EXAMPLE:
+{% include helpers/founder-data.html founder_id="ru-alexei-sokolov" assign="founder_data" %}
+{% if founder_data %}
+  <h3>{{ founder_data.name[page.lang] }}</h3>
+{% endif %}
 {% endcomment %}
 
-{% comment %} Try JSON data first (future Airtable source) {% endcomment %}
+{% comment %} Prioritize JSON data source (future Airtable integration) {% endcomment %}
 {% assign founder_json = site.data.founders | where: "id", include.founder_id | first %}
 
-{% comment %} Fallback to collection if JSON not found {% endcomment %}
+{% comment %} Fallback to Jekyll collection if JSON not available {% endcomment %}
 {% unless founder_json %}
   {% assign founder_collection = site.founders | where: "ref", include.founder_id | where: "lang", page.lang | first %}
 {% endunless %}
 
-{% comment %} Use JSON if available, otherwise collection data {% endcomment %}
+{% comment %} Select best available data source {% endcomment %}
 {% if founder_json %}
   {% assign founder_lookup = founder_json %}
 {% elsif founder_collection %}
   {% assign founder_lookup = founder_collection %}
 {% endif %}
 
-{% comment %} Assign to specified variable or default "founder" {% endcomment %}
+{% comment %} Flexible variable assignment with predefined options {% endcomment %}
 {% if include.assign %}
   {% if include.assign == "founder_data" %}
     {% assign founder_data = founder_lookup %}

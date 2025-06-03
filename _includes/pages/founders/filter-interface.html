@@ -1,17 +1,53 @@
 {% comment %}
-  Component: pages/founders/filter-interface.html
+================================================================================
+PAGE SECTION: Founders > Filter Interface
+FILE: _includes/pages/founders/filter-interface.html
+================================================================================
 
-  Purpose: Enhanced search and filter interface for browsing founders with text search and founder-specific filters
+Purpose:
+Enhanced search and filter interface for browsing founders with text search and 
+founder-specific filters. Provides comprehensive filtering by market, languages, 
+expertise areas, cross-border experience, and generation.
 
-  Parameters:
-    content_type (optional): Type of content to filter, defaults to "founders"
-    taxonomy (optional): Taxonomy data for filtering
+Features:
+- Text search across founder names, expertise, and brands
+- Market filter based on founder country codes
+- Language filtering for languages spoken
+- Expertise area filtering
+- Cross-border and international expansion filters
+- Generation filtering (1st, 2nd, 3rd generation, etc.)
+- Active filter display with removal capability
+- Sort options and view toggle (grid/list)
 
-  Dependencies:
-    - CSS: pages/founders/filter-interface.scss
-    - JS: assets/js/founders-search.js
-    - JSON: /search.json for text search
-    - site.data.translations for labels
+Parameters:
+- content_type (optional): Type of content to filter
+  Default: "founders"
+- taxonomy (optional): Taxonomy data for filtering
+  Default: Uses site dimensions data
+
+Dependencies:
+- CSS: pages/founders/filter-interface.scss
+- JS: assets/js/pages/founders/founders-search.js
+- Data: /search.json for text search functionality
+- Data: site.data.translations for UI labels
+- Data: site.data.dimensions for market names
+
+DOM Elements:
+- #founders-search-query: Main search input
+- #market-filters: Market filter checkboxes
+- #languages-filters: Language filter checkboxes
+- #expertise-filters: Expertise area checkboxes
+- #cross-border-filters: International experience filters
+- #generation-filters: Generation filter checkboxes
+- #founders-search-results: Results container
+
+Notes:
+- Requires JavaScript for functionality
+- Falls back to noscript message for non-JS users
+- Dynamically builds filter options from collection data
+
+Last Updated: 2025-06-03
+================================================================================
 {% endcomment %}
 
 

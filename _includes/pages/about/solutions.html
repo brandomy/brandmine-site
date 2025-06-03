@@ -1,16 +1,18 @@
 {% comment %}
-  Component: pages/about/solutions.html
-
-  Purpose: Displays the solutions section with numbered items
+  Page Section: pages/about/solutions.html
+  Purpose: Solutions section with numbered items showing Brandmine's approach
+  Updated: 2025-06-03 - Standardized page section template
 
   Parameters:
     title (optional): Section title, defaults to translation
     lead_text (optional): Introductory text for the section
     conclusion_text (optional): Text displayed after the solutions list
     panel_type (optional): Panel background style, defaults to "olive-soft"
+    lang (optional): Language override, defaults to page.lang
 
   Dependencies:
     - CSS: pages/about/solutions.scss
+    - Translation keys: about.solutions_*, about.solutions.item[1-5].*
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "olive-soft" %}

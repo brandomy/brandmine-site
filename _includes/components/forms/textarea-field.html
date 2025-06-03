@@ -1,27 +1,35 @@
 {% comment %}
-Component: components/forms/textarea-field.html
-Purpose: Standardized textarea field with validation and accessibility
+COMPONENT: Textarea Field
+PURPOSE: Multi-line text input with character counter, validation, and accessibility features
 
-Parameters:
-- name (required): Textarea name attribute
-- id (optional): Textarea ID (defaults to name)
-- label (optional): Field label text
-- placeholder (optional): Placeholder text
-- value (optional): Default value
-- required (optional): Field is required (default: false)
-- disabled (optional): Field is disabled (default: false)
-- readonly (optional): Field is readonly (default: false)
-- rows (optional): Number of visible rows (default: 4)
-- cols (optional): Number of visible columns
-- minlength (optional): Minimum length
-- maxlength (optional): Maximum length
-- help_text (optional): Help text below the field
-- error_message (optional): Error message to display
-- class_name (optional): Additional CSS classes
+USAGE: {% include components/forms/textarea-field.html name="message" label="Message" required=true rows=6 %}
 
-Usage:
-{% include components/forms/textarea-field.html name="message" label="Message" required=true rows=6 %}
-{% include components/forms/textarea-field.html name="description" label="Brand Description" maxlength=500 help_text="Maximum 500 characters" %}
+PARAMETERS:
+- name (required): Textarea name attribute string
+- id (optional): Textarea ID string, defaults to name
+- label (optional): Field label text string
+- placeholder (optional): Placeholder text string
+- value (optional): Default value string
+- required (optional): Boolean field required, defaults to false
+- disabled (optional): Boolean field disabled, defaults to false
+- readonly (optional): Boolean field readonly, defaults to false
+- rows (optional): Number of visible rows integer, defaults to 4
+- cols (optional): Number of visible columns integer
+- minlength (optional): Minimum character length integer
+- maxlength (optional): Maximum character length integer
+- help_text (optional): Help text string below field
+- error_message (optional): Error message string to display
+- class_name (optional): Additional CSS classes string
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/textarea-field.scss
+- Data: None
+- Includes: None
+- JavaScript: Inline character counter when maxlength specified
+
+VARIANTS: None - behavior changes with maxlength (adds counter)
+
+NOTES: Character counter automatically added when maxlength specified. Updates in real-time. Same error/help text patterns as input-field.
 {% endcomment %}
 
 {% assign field_id = include.id | default: include.name %}

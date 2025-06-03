@@ -1,12 +1,23 @@
 {% comment %}
-  Component: pages/insights/category-highlights.html
-  Purpose: Shows one featured article from each insight category
+  Page Section: insights/category-highlights.html
+  
+  Purpose: Displays one featured article from each insight category
+  Context: Provides curated highlights across all four content categories
+  
   Parameters:
-    - heading: The heading for the section (default from translations)
-    - panel_type: The type of panel to use (default: olive-soft)
+  - heading: Section heading text (from translations)
+  - panel_type: Panel styling variant (default: amber-soft)
+  
   Dependencies:
-    - assets/css/pages/insights/category-highlights.scss
-    - components/cards/featured-insight-card.html
+  - Translation: insights.category_highlights_* keys
+  - CSS: assets/css/pages/insights/category-highlights.scss
+  - Components: components/cards/featured-insight-card.html
+  - Collection: site.insights
+  
+  Notes:
+  - Shows most recent article from each category if exists
+  - Falls back to empty state message if no articles in category
+  - Includes 'View All' links to category-specific pages
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}

@@ -1,7 +1,45 @@
 {% comment %}
-  Component: pages/founders/hero.html
-  Purpose: Split hero section for Founders page with text left, image right
-  Updated: 2025-06-01 - Fixed to match teal background pattern
+================================================================================
+PAGE SECTION: Founders > Hero
+FILE: _includes/pages/founders/hero.html
+================================================================================
+
+Purpose:
+Split hero section for Founders page with text left, image right. Uses the 
+journal-hero component with teal background pattern for consistent branding
+across landing pages.
+
+Layout:
+- Split layout: text content left, image right
+- Teal background with landing page variant styling
+- Responsive: stacks on mobile devices
+
+Parameters:
+- None (uses page data directly)
+
+Dependencies:
+- CSS: pages/journal/_hero.scss (shared journal hero styles)
+- Component: components/images/collection-image.html
+- Data: page.title from front matter
+- Translation: founders.hero_subtitle for subtitle text
+
+Image Configuration:
+- Collection: site
+- Category: pages
+- Slug: founders
+- Purpose: hero
+- Loading: eager (above the fold)
+
+Translation Keys Used:
+- founders.hero_subtitle: Hero section subtitle text
+
+Notes:
+- Uses journal-hero component for consistency across landing pages
+- Fixed 2025-06-01 to match teal background pattern
+- Image is loaded eagerly as it's above the fold
+
+Last Updated: 2025-06-03
+================================================================================
 {% endcomment %}
 
 <div class="journal-hero journal-hero--teal journal-hero--landing">

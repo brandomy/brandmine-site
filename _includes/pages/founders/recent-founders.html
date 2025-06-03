@@ -1,17 +1,44 @@
 {% comment %}
-  Component: pages/founders/recent-founders.html
+================================================================================
+PAGE SECTION: Founders > Recent Founders
+FILE: _includes/pages/founders/recent-founders.html
+================================================================================
 
-  Purpose: Displays recently added founders section
+Purpose:
+Displays recently added founders section. Shows the newest founder profiles added
+to the platform, sorted by date in descending order. Useful for highlighting
+fresh content and encouraging repeat visits.
 
-  Parameters:
-    title (optional): Custom section title, defaults to founder.recently_added translation
-    limit (optional): Number of recent founders to display, defaults to 4
-    panel_type (optional): Panel background style, defaults to "light"
+Parameters:
+- title (optional): Custom section title
+  Default: Pulled from founders.recent.title translation
+- limit (optional): Number of recent founders to display
+  Default: 4
+- panel_type (optional): Panel background style
+  Default: "light"
 
-  Dependencies:
-    - CSS: pages/founders/recent-founders.scss
-    - _includes/components/cards/founder-card.html
-    - site.data.translations for labels
+Dependencies:
+- CSS: pages/founders/recent-founders.scss
+- Component: components/cards/founder-card.html with variant="recent"
+- Data: site.data.translations for UI labels
+- Collection: site.founders sorted by date
+
+Data Sources:
+- site.founders collection filtered by language and sorted by date
+- Translation keys for section text and buttons
+
+Translation Keys Used:
+- founders.recent.title: Section heading
+- founders.recent.description: Section description
+- founders.recent.view_all: View all button text
+
+Notes:
+- Founders are sorted by date field in reverse order (newest first)
+- View all button links to founders page with recent sort parameter
+- Uses founder-card component with "recent" variant for styling
+
+Last Updated: 2025-06-03
+================================================================================
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "light" %}

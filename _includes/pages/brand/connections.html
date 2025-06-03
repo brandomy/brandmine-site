@@ -1,7 +1,33 @@
 {% comment %}
-  Connections Section
-  Displays: Related brands, relevant insights, contact information
-  Supports: Both YAML and JSON data sources
+SECTION: Connections
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display related brands based on shared taxonomy and comprehensive contact information
+
+DATA SOURCES:
+- Related Brands: site.data.brands.brands filtered by taxonomy overlap
+- Contact Data: brand.website, brand.social_media object
+- Matching Logic: Sectors and markets overlap detection
+
+CONTEXT REQUIRED:
+- brand: Brand object with taxonomy and contact data
+- include.brand_ref: Current brand reference for exclusion
+- site.data.brands: Global brands data for finding relationships
+
+CONTENT STRUCTURE:
+1. Section heading (h2) - "Connections & Discovery"
+2. Related brands subsection:
+   - Finds brands with overlapping sectors/markets
+   - Displays up to 3 matching brands
+   - Compact card format with links
+3. Contact information subsection:
+   - Website link
+   - Social media links (all platforms)
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Data: site.data.brands for related brand discovery
+- CSS: pages/brand/connections.scss
+- Translations: discover.connections, brand.related_brands, brand.contact, brand.website, social.*
 {% endcomment %}
 
 {% assign brand = include.brand %}

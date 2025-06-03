@@ -1,36 +1,25 @@
 {% comment %}
-  Include Name: components/forms/form.html
-  
-  Purpose: Renders a standard contact form with name, email, and message fields.
-  Used on contact pages and other areas requiring user input.
-  
-  Parameters:
-  - action: Form submission URL (optional, uses component defaults)
-  - method: Form method (optional, uses component defaults)
-  - name_label: Custom label for name field (optional, uses component defaults)
-  - email_label: Custom label for email field (optional, uses component defaults)
-  - message_label: Custom label for message field (optional, uses component defaults)
-  - submit_label: Custom label for submit button (optional, uses component defaults)
-  
-  Dependencies:
-  - CSS: forms.css for styling
-  - Component defaults for configurable behavior
-  
-  Example Usage:
-  Basic form with defaults:
-  {% include components/forms/form.html %}
-  
-  Customized form with translations:
-  {% capture name_label %}{% include helpers/t.html key="common.forms.name_placeholder" fallback="Name" %}{% endcapture %}
-  {% capture email_label %}{% include helpers/t.html key="common.forms.email_placeholder" fallback="Email" %}{% endcapture %}
-  {% capture message_label %}{% include helpers/t.html key="common.forms.message_placeholder" fallback="Message" %}{% endcapture %}
-  {% capture submit_label %}{% include helpers/t.html key="common.actions.submit" fallback="Send Message" %}{% endcapture %}
-  {% include components/forms/form.html 
-     action="/submit-contact"
-     name_label=name_label
-     email_label=email_label
-     message_label=message_label
-     submit_label=submit_label %}
+COMPONENT: Form
+PURPOSE: Basic contact form with standard fields for simple user inquiries
+
+USAGE: {% include components/forms/form.html %}
+
+PARAMETERS:
+- action (optional): Form submission URL string, defaults from component defaults
+- method (optional): Form method string, defaults from component defaults
+- name_label (optional): Name field label string, defaults from component defaults
+- email_label (optional): Email field label string, defaults from component defaults
+- message_label (optional): Message field label string, defaults from component defaults
+- submit_label (optional): Submit button label string, defaults from component defaults
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/form.scss
+- Data: site.data.component_defaults
+- Includes: helpers/component-defaults.html
+
+VARIANTS: None - single standard layout
+
+NOTES: All fields required. Simple semantic structure. Component defaults enable centralized label management. Often wrapped with translation helpers for multilingual support.
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}

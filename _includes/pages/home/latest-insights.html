@@ -1,6 +1,26 @@
 {% comment %}
-  Component: pages/home/latest-insights.html
-  Purpose: Displays 4 featured insights, one from each category
+  Page Section: pages/home/latest-insights.html
+  
+  Purpose: Displays 4 featured insights (one from each category) using simple
+           card layout without dimension tags
+  
+  Section Type: Content
+  Template: home.html
+  
+  Parameters:
+    panel_type (optional): Panel style/color
+                          Default: "primary-soft"
+    title (optional): Custom section title
+                     Default: "Latest Insights" from translations
+  
+  Dependencies:
+    - Translation keys: insights.*
+    - CSS: assets/css/pages/home/latest-insights.scss
+    - Include: components/cards/simple-insight-card.html
+  
+  Usage:
+    {% include pages/home/latest-insights.html %}
+    {% include pages/home/latest-insights.html panel_type="light" %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

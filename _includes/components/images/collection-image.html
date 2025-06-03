@@ -1,77 +1,33 @@
 {% comment %}
-  Component: components/images/collection-image.html
-  Purpose: Universal image component for all collections with mobile-first optimization
+COMPONENT: Collection Image
+PURPOSE: Universal responsive image component for all collections with mobile-first optimization and intelligent sizing
 
-  Parameters:
-  - collection: Collection name (required, e.g., "brands", "founders", "insights")
-  - category: Subcategory (optional, e.g., "team", "testimonials")
-  - slug: Unique identifier (required, e.g., "ru-teatime", "br-eduardo-santos")
-  - purpose: Image purpose (required, e.g., "hero", "portrait", "headshot")
-  - name: Additional identifier (optional, e.g., "storefront", "alexei")
-  - aspect: Aspect ratio type (optional, default: "landscape")
-  - ratio: Specific ratio (optional, default: "3:2")
-  - alt: Alt text (required)
-  - class: Additional CSS classes (optional)
-  - ext: File extension (optional, default: "jpg")
-  - loading: Loading priority (optional, default: "lazy")
-  - fallback: Use placeholder if image missing (optional, default: true)
+USAGE: {% include components/images/collection-image.html collection="brands" slug="ru-teatime" purpose="hero" alt="TeaTime store" %}
 
-  Supported purpose values:
-  - Landscape: hero, thumbnail, gallery, product, feature, (default)
-  - Portrait: headshot, testimonial, founder, profile, (default)
-  - Square: logo, avatar, icon, (default)
+PARAMETERS:
+- collection (required): Collection name string (e.g., "brands", "founders", "insights")
+- slug (required): Unique identifier string (e.g., "ru-teatime", "br-eduardo-santos")
+- purpose (required): Image purpose string (e.g., "hero", "portrait", "headshot")
+- alt (required): Alt text string for accessibility
+- category (optional): Subcategory string (e.g., "team", "testimonials")
+- name (optional): Additional identifier string (e.g., "storefront", "alexei")
+- aspect (optional): Aspect ratio type string - "landscape", "portrait", "square", defaults to "landscape"
+- ratio (optional): Specific ratio string for data attribute
+- class (optional): Additional CSS classes string
+- ext (optional): File extension string, defaults to "jpg"
+- loading (optional): Loading priority string - "lazy" or "eager", defaults to "lazy"
+- fallback (optional): Boolean to use placeholder if missing, defaults to true
 
-  Usage Examples:
+DEPENDENCIES:
+- CSS: None (inline responsive sizing)
+- Data: None
+- Includes: None
 
-  1. Hero image (full width on mobile):
-     {% include components/images/collection-image.html
-        collection="brands"
-        slug="ru-teatime"
-        purpose="hero"
-        name="storefront"
-        loading="eager"
-        alt="TeaTime flagship store in Moscow" %}
+VARIANTS:
+- Purpose-based sizing: hero (full-width), thumbnail (small), gallery (grid), product (medium), feature (large)
+- Aspect-based layouts: landscape (3:2), portrait (2:3), square (1:1)
 
-  2. Founder portrait (responsive sizing):
-     {% include components/images/collection-image.html
-        collection="brands"
-        slug="ru-teatime"
-        purpose="founder"
-        aspect="portrait"
-        alt="Alexei Sokolov, TeaTime founder" %}
-
-  3. Gallery image (grid-optimized):
-     {% include components/images/collection-image.html
-        collection="brands"
-        slug="ru-teatime"
-        purpose="gallery"
-        name="tea-ceremony"
-        alt="Traditional tea ceremony at TeaTime" %}
-
-  4. Logo (small fixed size):
-     {% include components/images/collection-image.html
-        collection="brands"
-        slug="ru-teatime"
-        purpose="logo"
-        aspect="square"
-        ext="png"
-        alt="TeaTime logo" %}
-
-  5. Team headshot (square):
-     {% include components/images/collection-image.html
-        collection="people"
-        category="team"
-        slug="olya-eastman"
-        purpose="headshot"
-        aspect="square"
-        alt="Olya Eastman" %}
-
-  6. Insight article hero:
-     {% include components/images/collection-image.html
-        collection="insights"
-        slug="2025-wine-trends"
-        purpose="hero"
-        alt="Russian wine industry trends 2025" %}
+NOTES: Mobile-first sizes attribute calculated based on purpose and aspect. Fallback placeholder path: /assets/images/placeholders/[collection]-[purpose]-400w.[ext]. Standard widths: 400w, 800w, 1200w.
 {% endcomment %}
 
 

@@ -1,29 +1,35 @@
 {% comment %}
-  Include Name: components/cards/brand-card.html
+COMPONENT: Brand Card
+PURPOSE: Displays essential brand information in a structured card format with logo, description, and taxonomy tags
 
-  Purpose: Displays a brand card component that shows essential brand information in a
-  structured format. Refined to improve logo display and layout.
+USAGE: {% include components/cards/brand-card.html brand=brand %}
 
-  Parameters:
-  - brand: Brand object with complete details (required)
-    Expected properties from new template structure:
-    - title: Brand name (translatable)
-    - ref: Global ID (country-brandslug format)
-    - logo: Path to brand logo image
-    - founding_year: Founding year
-    - description: Short brand description (translatable)
-    - sectors: Array of sector slugs
-    - markets: Array of market slugs
-    - attributes: Array of attribute slugs
-    - signals: Array of signal slugs
-    - featured: Boolean flag for featured status
-    - featured_level: Numeric level of feature status (0=basic, 1=list, 2=featured)
+PARAMETERS:
+- brand (required): Brand object with complete details:
+  - title: Brand name string (translatable)
+  - ref: Global ID string (country-brandslug format)
+  - logo: Path to brand logo image
+  - founding_year: Founding year integer
+  - description: Short brand description string (translatable)
+  - sectors: Array of sector slug strings
+  - markets: Array of market slug strings
+  - attributes: Array of attribute slug strings
+  - signals: Array of signal slug strings
+  - featured: Boolean flag for featured status
+  - featured_level: Integer level of feature status (0=basic, 1=list, 2=featured)
+- show_location (optional): Boolean to show location, defaults from component defaults
+- show_sector (optional): Boolean to show sector tag, defaults from component defaults
+- tag_limit (optional): Integer limit for taxonomy tags, defaults from component defaults
 
-  Dependencies:
-  - Requires page.lang to be set for proper URL construction
-  - CSS: components/cards/brand-card.css for styling
-  - site.data.translations for UI labels
-  - site.data.dimensions for taxonomy translations
+DEPENDENCIES:
+- CSS: assets/css/components/cards/brand-card.scss
+- Data: site.data.translations, site.data.dimensions, site.data.component_defaults
+- Includes: helpers/component-defaults.html, components/helpers/card-header.html, components/helpers/taxonomy-tag.html, helpers/t.html, components/helpers/founder-check.html
+
+VARIANTS:
+- brand-card--featured: Applied when brand.featured or brand.featured_level > 1
+
+NOTES: Tag display order is markets > sectors > attributes > signals, with 1 tag each for balanced layout. Uses BEM class naming throughout.
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}

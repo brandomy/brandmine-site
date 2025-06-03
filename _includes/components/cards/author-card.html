@@ -1,31 +1,32 @@
 {% comment %}
-  Component: components/cards/author-card.html
-  Purpose: Reusable author profile card for journal pages and team sections
-  
-  Parameters:
-  - author: Author data object containing:
-    - name: Author name (required)
-    - position: Job title/position (optional)
-    - photo_slug: Photo identifier for collection-image (optional)
-    - bio: Biography text (optional)
-    - highlights: Array of achievement highlights (optional)
-    - summary: Summary text (optional)
-    - linkedin: LinkedIn URL (optional)
-  - layout: Card layout style (optional, default: "standard")
-    - "standard": Full width layout for single author
-    - "grid": Compact layout for author grids
-  - show_highlights: Show detailed highlights (optional, default: true for standard, false for grid)
-  - lang: Language code for translations (required)
-  
-  Dependencies:
-  - components/images/collection-image.html
-  - CSS: components/cards/author-card.scss
-  
-  Example usage:
-  {% include components/cards/author-card.html 
-     author=author_data 
-     layout="grid" 
-     lang=page.lang %}
+COMPONENT: Author Card
+PURPOSE: Displays author profile with biography, achievements, and social links for journal and team sections
+
+USAGE: {% include components/cards/author-card.html author=author_data layout="grid" lang=page.lang %}
+
+PARAMETERS:
+- author (required): Author data object containing:
+  - name: Author name string
+  - position: Job title/position string
+  - photo_slug: Photo identifier string for collection-image
+  - bio: Biography text string
+  - highlights: Array of achievement highlight strings
+  - summary: Summary text string
+  - linkedin: LinkedIn URL string
+- layout (optional): Card layout style - "standard" or "grid", defaults to "standard"
+- show_highlights (optional): Boolean to show detailed highlights, defaults based on layout
+- lang (required): Language code string for translations
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/author-card.scss
+- Data: None
+- Includes: components/images/collection-image.html
+
+VARIANTS:
+- standard: Full width layout with complete bio and highlights
+- grid: Compact layout for author grids with minimal information
+
+NOTES: Highlights automatically hidden in grid layout to save space. LinkedIn icon uses Font Awesome.
 {% endcomment %}
 
 {% assign layout = include.layout | default: "standard" %}

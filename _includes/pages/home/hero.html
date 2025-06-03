@@ -1,14 +1,22 @@
-<!-- hero.html component placeholder -->
 {% comment %}
-  Include: pages/home/hero.html
-  Purpose: Renders the primary hero section for the home page with heading, subtitle, and CTA buttons
-
+  Page Section: pages/home/hero.html
+  
+  Purpose: Renders the primary hero section for the home page with main heading,
+           subtitle, and primary/secondary CTA buttons
+  
+  Section Type: Hero
+  Template: home.html
+  
   Parameters:
-    - None (accesses page language from page.lang)
-
+    None - Uses page.lang for localization
+  
   Dependencies:
-    - CSS: assets/css/pages/home.scss
-    - Translations: site.data.translations[page.lang]
+    - Translation keys: home.hero.*
+    - CSS: assets/css/pages/home/hero.scss
+    - Helper: helpers/t.html
+  
+  Usage:
+    {% include pages/home/hero.html %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

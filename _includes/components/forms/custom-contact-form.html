@@ -1,6 +1,27 @@
-<!-- Custom Contact Form Include -->
 {% comment %}
-  Usage: {% include components/forms/custom-contact-form.html form_id="about-contact" %}
+COMPONENT: Custom Contact Form
+PURPOSE: Alternative contact form with full client-side control, real-time validation, and custom styling options
+
+USAGE: {% include components/forms/custom-contact-form.html form_id="about-contact" %}
+
+PARAMETERS:
+- form_id (optional): Form ID string, defaults to "contact-form"
+- form_class (optional): Form CSS class string, defaults to "custom-contact-form"
+- form_title (optional): Form title string, defaults to "Get in Touch"
+- form_description (optional): Form description text string
+- submit_text (optional): Submit button text string, defaults to "Send Message"
+- show_company (optional): Boolean to show company field, defaults to true
+- show_phone (optional): Boolean to show phone field, defaults to false
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/custom-contact-form.scss
+- Data: site.data.translations[current_lang]
+- Includes: None
+- JavaScript: custom-forms.js (initializeCustomContactForm function)
+
+VARIANTS: None - layout controlled by parameters
+
+NOTES: Includes consent checkbox with privacy policy link. Success/error states built-in. Loading spinner SVG animation. Requires custom-forms.js to be loaded.
 {% endcomment %}
 
 {% assign form_id = include.form_id | default: "contact-form" %}

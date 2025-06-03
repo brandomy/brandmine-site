@@ -1,7 +1,39 @@
 {% comment %}
-  Brand Identity Section
-  Displays: Brand name, tagline, founding info, basic meta
-  Supports: Both YAML and JSON data sources
+SECTION: Brand Identity
+PAGE: Brand Profile (brand-profile.html, brand-basic.html)
+PURPOSE: Display comprehensive brand identity information including name, description, metadata, and complete taxonomy tagging
+
+DATA SOURCES:
+- Primary: include.brand (YAML for curated, JSON for basic)
+- Data Types: Handles both single-language YAML fields and multilingual JSON objects
+- Field Mapping: title/name, description, slogan, founding_year/founded, website
+
+CONTEXT REQUIRED:
+- brand: Complete brand object with identity and taxonomy data
+- data_source: "curated" or "basic" (determines badge display)
+- brand.lang or page.lang: Current language for multilingual field extraction
+
+CONTENT STRUCTURE:
+1. Brand header:
+   - Name (h1)
+   - Slogan (if present)
+   - Description (if present)
+   - Data source badge (for basic profiles)
+2. Metadata section:
+   - Founding year
+   - Location (city, region)
+   - Website link
+3. Taxonomy groups (4 types):
+   - Markets (blue tags)
+   - Sectors (olive tags)
+   - Attributes (orange tags)
+   - Signals (purple tags)
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Data: site.data.dimensions[lang] for tag display names
+- CSS: pages/brand/identity.scss, components/ui/tags.scss
+- Translations: brand.*, tags.*, ui.basic_profile
 {% endcomment %}
 
 {% assign brand = include.brand %}

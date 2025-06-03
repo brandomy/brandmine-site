@@ -1,7 +1,18 @@
 {% comment %}
-  Featured Article Hero Section
-  Displays the latest featured insight in a large hero format
-  Falls back to most recent article if no featured article exists
+  Page Section: insights/featured-article.html
+  
+  Purpose: Hero display of featured insight article
+  Context: Large format showcase for highlighted content
+  
+  Dependencies:
+  - Translation: insights.* keys
+  - Components: components/images/hero-image.html
+  - Collection: site.insights
+  
+  Notes:
+  - Finds article with featured: true in front matter
+  - Falls back to most recent article if no featured article exists
+  - Includes category badge, title, excerpt, and meta information
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

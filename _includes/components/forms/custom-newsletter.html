@@ -1,5 +1,33 @@
-<!-- Custom Newsletter Subscription Include -->
-<!-- Usage: {% include components/forms/custom-newsletter.html variant="inline" %} -->
+{% comment %}
+COMPONENT: Custom Newsletter
+PURPOSE: Flexible newsletter subscription form with multiple layout variants and real-time validation
+
+USAGE: {% include components/forms/custom-newsletter.html variant="inline" %}
+
+PARAMETERS:
+- variant (optional): Layout variant string - "default", "inline", "minimal", "compact", defaults from component defaults
+- form_id (optional): Form ID string, defaults to "newsletter-form"
+- form_title (optional): Custom title string
+- form_description (optional): Custom description string
+- submit_text (optional): Submit button text string, defaults from component defaults
+- show_name (optional): Boolean to show name field, defaults from component defaults
+- show_privacy_notice (optional): Boolean to show privacy notice, defaults from component defaults
+- placeholder_text (optional): Email field placeholder string
+
+DEPENDENCIES:
+- CSS: Inline styles included, assets/css/components/forms/custom-newsletter.scss
+- Data: site.data.translations[current_lang], site.data.component_defaults
+- Includes: helpers/component-defaults.html, helpers/t.html
+- JavaScript: custom-forms.js (initializeCustomNewsletter function)
+
+VARIANTS:
+- default: Standard vertical layout with header
+- inline: Horizontal layout for footers/sidebars
+- minimal: Transparent background with border
+- compact: Smaller sizing for tight spaces
+
+NOTES: Screen reader labels included. Success/error animations. Privacy policy link. Responsive breakpoint at 640px for inline variant.
+{% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
 {% capture default_variant %}{% include helpers/component-defaults.html component="forms.newsletter" param="variant" fallback="default" %}{% endcapture %}

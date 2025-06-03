@@ -1,12 +1,31 @@
 {% comment %}
-  Component: components/cards/testimonial-card.html
+COMPONENT: Testimonial Card
+PURPOSE: Displays customer testimonial with quote, author details, and success metrics for social proof
 
-  Purpose: Displays a single testimonial with quote, author info, and metrics
+USAGE: {% include components/cards/testimonial-card.html testimonial=testimonial type="brand" img_slug="ru-teatime" %}
 
-  Parameters:
-    - testimonial: Testimonial data object (from translations)
-    - type: Type of testimonial ("brand" or "person")
-    - img_slug: Slug for the image
+PARAMETERS:
+- testimonial (required): Testimonial data object containing:
+  - text: Quote text string
+  - name: Author/company name string
+  - label: Title/description string
+  - metric1_value: First metric value string
+  - metric1_label: First metric label string
+  - metric2_value: Second metric value string
+  - metric2_label: Second metric label string
+- type (required): Testimonial type string - "brand" or "person"
+- img_slug (required): Image slug string for author photo/logo
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/testimonial-card.scss
+- Data: None
+- Includes: components/images/collection-image.html
+
+VARIANTS:
+- type="brand": Uses brand logo from brands collection
+- type="person": Uses headshot from people/testimonials collection
+
+NOTES: Quote icon is inline SVG with 20% opacity. Metrics displayed side-by-side. Square aspect ratio for all images.
 {% endcomment %}
 
 <div class="testimonial-card">

@@ -1,14 +1,22 @@
-<!-- how-it-works.html component placeholder -->
 {% comment %}
-  Include: pages/home/how-it-works.html
-  Purpose: Displays the three-step process explaining how the Brandmine platform works
-
+  Page Section: pages/home/how-it-works.html
+  
+  Purpose: Displays the three-step process explaining how the Brandmine platform
+           works with numbered steps and corresponding CTAs
+  
+  Section Type: Content
+  Template: home.html
+  
   Parameters:
-    - None (accesses page language from page.lang)
-
+    None - Uses page.lang for localization
+  
   Dependencies:
-    - CSS: assets/css/pages/home.scss
-    - Translations: site.data.translations[page.lang]
+    - Translation keys: home.how_it_works.*
+    - CSS: assets/css/pages/home/how-it-works.scss
+    - Helper: helpers/t.html
+  
+  Usage:
+    {% include pages/home/how-it-works.html %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

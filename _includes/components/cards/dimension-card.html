@@ -1,25 +1,27 @@
 {% comment %}
-Component: components/cards/dimension-card.html
+COMPONENT: Dimension Card
+PURPOSE: Displays a discovery dimension category with icon, description, example tags, and view-all link
 
-Purpose: Reusable dimension card component for discovery grid display
+USAGE: {% include components/cards/dimension-card.html type="sectors" limit=3 %}
 
-Parameters:
-- type (required): Dimension type - "sectors", "markets", "attributes", "signals"
-- limit (optional): Number of example tags to show (default: 3)
-- tag_selection (optional): Tag selection method - "featured", "alphabetic", "all" (default: "featured")
-- tag_sort (optional): Tag sort order - "alphabetic", "reverse-alphabetic", "none" (default: "none")
+PARAMETERS:
+- type (required): Dimension type string - "sectors", "markets", "attributes", "signals"
+- limit (optional): Integer number of example tags to show, defaults to 3
+- tag_selection (optional): Tag selection method string - "featured", "alphabetic", "all", defaults to "featured"
+- tag_sort (optional): Tag sort order string - "alphabetic", "reverse-alphabetic", "none", defaults to "none"
 
-Dependencies:
-- Translation data in site.data.translations[page.lang]
-- Icon component at components/icons/icon.html
-- Tag cloud component at components/dimensions/dimension-tag-cloud.html
-- CSS: components/cards/dimension-card.scss
-- CSS: components/dimensions/dimension-tag-cloud.scss
+DEPENDENCIES:
+- CSS: assets/css/components/cards/dimension-card.scss, assets/css/components/dimensions/dimension-tag-cloud.scss
+- Data: site.data.translations[page.lang]
+- Includes: components/icons/icon.html, components/dimensions/dimension-tag-cloud.html, helpers/t.html
 
-Usage:
-{% include components/cards/dimension-card.html type="sectors" limit=3 %}
-{% include components/cards/dimension-card.html type="markets" limit=4 tag_selection="alphabetic" %}
-{% include components/cards/dimension-card.html type="attributes" tag_sort="alphabetic" %}
+VARIANTS:
+- dimension-card--sectors: Sector-specific styling
+- dimension-card--markets: Market-specific styling
+- dimension-card--attributes: Attribute-specific styling
+- dimension-card--signals: Signal-specific styling
+
+NOTES: Each dimension type has its own icon and color scheme. Tag cloud component handles tag display logic. Links to language-specific discovery pages.
 {% endcomment %}
 
 {% assign limit = include.limit | default: 3 %}

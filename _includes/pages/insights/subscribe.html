@@ -1,12 +1,22 @@
 {% comment %}
-  Component: pages/insights/subscribe.html
-  Purpose: Newsletter subscription section for the insights page
+  Page Section: insights/subscribe.html
+  
+  Purpose: Newsletter subscription form for insights updates
+  Context: Captures email subscriptions for content marketing
+  
   Parameters:
-    - heading: The heading for the section (default from translations)
-    - description: The description text for the section (default from translations)
-    - panel_type: The type of panel to use (default: accent-soft)
+  - heading: Subscription heading text (from translations)
+  - description: Subscription description text (from translations)
+  - panel_type: Panel styling variant (default: accent-soft)
+  
   Dependencies:
-    - assets/css/pages/insights/subscribe.scss
+  - Translation: insights.subscribe_* keys
+  - CSS: assets/css/pages/insights/subscribe.scss
+  
+  Notes:
+  - Simple email subscription form with validation
+  - Includes privacy note for compliance
+  - Uses centered panel layout for emphasis
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}

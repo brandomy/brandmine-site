@@ -1,22 +1,24 @@
 {% comment %}
-  Include Name: components/forms/newsletter-form.html
-  
-  Purpose: Newsletter subscription form with multilingual support
-  
-  Parameters:
-  - title: Optional custom title (defaults to translation)
-  - description: Optional custom description (defaults to translation)
-  - placeholder: Optional custom placeholder text (defaults to translation)
-  - class_name: Additional CSS classes
-  - form_id: Custom form ID (defaults to "newsletter-form")
-  
-  Dependencies:
-  - Translation keys in site.data.translations[page.lang].newsletter
-  - CSS: components/forms.scss
-  
-  Example Usage:
-  {% include components/forms/newsletter-form.html %}
-  {% include components/forms/newsletter-form.html title="Stay Updated" %}
+COMPONENT: Newsletter Form
+PURPOSE: Simple newsletter subscription form with email-only input and multilingual messaging
+
+USAGE: {% include components/forms/newsletter-form.html %}
+
+PARAMETERS:
+- title (optional): Custom title string, defaults to translation
+- description (optional): Custom description string, defaults to translation
+- placeholder (optional): Custom placeholder text string, defaults to translation
+- class_name (optional): Additional CSS classes string
+- form_id (optional): Custom form ID string, defaults to "newsletter-form"
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/newsletter-form.scss
+- Data: site.data.translations[current_lang].newsletter
+- Includes: None
+
+VARIANTS: None - single inline layout with email + button
+
+NOTES: Privacy notice included below form. Success/error messages hidden by default. Email field has aria-label for accessibility. Submit button inside input group for compact design.
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: site.lang | default: "en" %}

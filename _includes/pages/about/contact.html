@@ -1,11 +1,15 @@
 {% comment %}
-  Component: pages/about/contact.html
+  Page Section: pages/about/contact.html
+  Purpose: Contact section with form and contact details for About page
+  Updated: 2025-06-03 - Standardized page section template
 
-  Purpose: Displays the contact section with form and contact details
+  Parameters:
+    panel_type (optional): Panel background style, defaults to "cta"
 
   Dependencies:
     - CSS: pages/about/contact.scss
-    - site.data.translations for multilingual content
+    - Translation keys: about.contact_*
+    - Tally form integration
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

@@ -1,31 +1,19 @@
 {% comment %}
-  Component: pages/insights/content.html
-
-  Purpose: Renders the main content/introduction from the page's markdown body.
-           This component displays any written content between the front matter
-           and end of the markdown file, providing page-specific content.
-
-  Context:
-  - Used within the insights layout's logic-light architecture
-  - Can be positioned anywhere in page.sections array
-  - Displays the actual markdown content written in the page file
-
+  Page Section: insights/content.html
+  
+  Purpose: Renders main content from page's markdown body
+  Context: Displays any written content from the page markdown file
+  
   Parameters:
-  - None (uses the content variable passed from layout)
-
+  - content: Markdown content passed from layout
+  
   Dependencies:
-  - CSS: pages/insights/content.scss (if specific styling needed)
-  - Relies on content variable passed from layout
-
-  Usage in Front Matter:
-  sections:
-    - content
-    - hero
-    - ...other sections
-
+  - CSS: pages/insights/content.scss
+  
   Notes:
-  - If no content exists in the markdown file, this section will be empty
-  - Content is passed from the layout and contains the page's markdown body
+  - Only renders if content exists and is not empty
+  - Content variable passed from layout contains page markdown body
+  - Can be positioned anywhere in page.sections array
 {% endcomment %}
 
 {% if include.content and include.content != "" %}

@@ -1,12 +1,22 @@
 {% comment %}
-  Component: pages/insights/categories.html
-  Purpose: Insight categories section for the insights page
+  Page Section: insights/categories.html
+  
+  Purpose: Displays four insight categories with icons and descriptions
+  Context: Shows categorized content navigation for insights collection
+  
   Parameters:
-    - heading: The heading for the section (default from translations)
-    - description: The description text for the section (default from translations)
-    - panel_type: The type of panel to use (default: light)
+  - heading: Section heading text (from translations)
+  - description: Section description text (from translations)
+  - panel_type: Panel styling variant (default: light)
+  
   Dependencies:
-    - assets/css/pages/insights/categories.scss
+  - Translation: insights.categories_* keys
+  - CSS: assets/css/pages/insights/categories.scss
+  - Components: components/icons/icon.html
+  
+  Notes:
+  - Four hardcoded categories: brand-spotlight, founders-journey, location-intelligence, market-momentum
+  - Each category has color-coded styling and dedicated icon
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}

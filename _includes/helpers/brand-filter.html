@@ -1,21 +1,29 @@
 {% comment %}
-BRAND FILTER HELPER
-Centralized brand filtering logic
+HELPER: Brand Filter
+PURPOSE: Centralized brand filtering logic to eliminate duplicate filtering code across brand listing components
 
-Usage:
+USAGE: {% include helpers/brand-filter.html lang="en" featured=true limit=3 %}
+
+PARAMETERS:
+- lang (required): Language code string for multilingual filtering
+- featured (optional): Boolean to filter only featured brands
+- premium_only (optional): Boolean to filter only premium brands (featured_level >= 2)
+- sector (optional): String to filter by specific sector slug
+- market (optional): String to filter by specific market slug
+- limit (optional): Integer maximum number of brands to return
+
+RETURNS: Sets 'filtered_brands' variable with array of filtered brand objects
+
+DEPENDENCIES:
+- Data: site.brands collection
+- Includes: None
+- Variables: None
+
+EXAMPLE:
 {% include helpers/brand-filter.html lang="en" featured=true limit=3 %}
-{% include helpers/brand-filter.html lang="en" premium_only=true limit=5 %}
-{% include helpers/brand-filter.html lang="en" sector="wine" %}
-
-Parameters:
-- lang (required): Language code for filtering
-- featured (optional): Only featured brands (boolean)
-- premium_only (optional): Only premium featured brands (featured_level >= 2)
-- sector (optional): Filter by specific sector
-- market (optional): Filter by specific market
-- limit (optional): Maximum number of brands to return
-
-Returns: Sets 'filtered_brands' variable with results
+{% for brand in filtered_brands %}
+  <h3>{{ brand.title }}</h3>
+{% endfor %}
 {% endcomment %}
 
 {% comment %} Start with all brands in the specified language {% endcomment %}
@@ -26,22 +34,22 @@ Returns: Sets 'filtered_brands' variable with results
   {% assign filtered_brands = filtered_brands | where: "featured", true %}
 {% endif %}
 
-{% comment %} Apply premium filtering {% endcomment %}
+{% comment %} Apply premium filtering (featured_level >= 2) {% endcomment %}
 {% if include.premium_only %}
   {% assign filtered_brands = filtered_brands | where_exp: "item", "item.featured_level and item.featured_level >= 2" %}
 {% endif %}
 
-{% comment %} Apply sector filtering {% endcomment %}
+{% comment %} Apply sector taxonomy filtering {% endcomment %}
 {% if include.sector %}
   {% assign filtered_brands = filtered_brands | where_exp: "item", "item.sectors contains include.sector" %}
 {% endif %}
 
-{% comment %} Apply market filtering {% endcomment %}
+{% comment %} Apply market taxonomy filtering {% endcomment %}
 {% if include.market %}
   {% assign filtered_brands = filtered_brands | where_exp: "item", "item.markets contains include.market" %}
 {% endif %}
 
-{% comment %} Apply limit {% endcomment %}
+{% comment %} Apply result limit {% endcomment %}
 {% if include.limit %}
   {% assign filtered_brands = filtered_brands | limit: include.limit %}
 {% endif %}

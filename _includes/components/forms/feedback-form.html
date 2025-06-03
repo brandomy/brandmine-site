@@ -1,22 +1,28 @@
 {% comment %}
-  Include Name: components/forms/feedback-form.html
-  
-  Purpose: Feedback form for collecting user feedback about site features
-  
-  Parameters:
-  - type: Type of feedback (search, site, feature) - affects form fields
-  - title: Optional custom title (defaults based on type)
-  - description: Optional custom description
-  - class_name: Additional CSS classes
-  - form_id: Custom form ID (defaults based on type)
-  
-  Dependencies:
-  - Translation keys in site.data.translations[page.lang].feedback
-  - CSS: components/forms.scss
-  
-  Example Usage:
-  {% include components/forms/feedback-form.html type="search" %}
-  {% include components/forms/feedback-form.html type="site" title="General Feedback" %}
+COMPONENT: Feedback Form
+PURPOSE: Collects user feedback with type-specific fields for search experience, site feedback, and feature requests
+
+USAGE: {% include components/forms/feedback-form.html type="search" %}
+
+PARAMETERS:
+- type (optional): Feedback type string - "search", "site", "feature", "general", defaults to "general"
+- title (optional): Custom title string, defaults based on type
+- description (optional): Custom description string
+- class_name (optional): Additional CSS classes string
+- form_id (optional): Custom form ID string, defaults to "feedback-form-[type]"
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/feedback-form.scss
+- Data: site.data.translations[current_lang].feedback
+- Includes: None
+
+VARIANTS:
+- search: Includes rating, search query, and found results fields
+- site: Includes rating and general feedback
+- feature: Feature request form without rating
+- general: Basic feedback form
+
+NOTES: Star rating uses emoji for simplicity. Email field optional for follow-up. Success/error messages included but hidden by default.
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: site.lang | default: "en" %}

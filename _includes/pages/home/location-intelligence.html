@@ -1,26 +1,31 @@
-<!-- location-intelligence.html component placeholder -->
 {% comment %}
-  Component: pages/home/location-intelligence.html
-
-  Purpose: Displays the location intelligence section highlighting the map feature
-
+  Page Section: pages/home/location-intelligence.html
+  
+  Purpose: Displays the location intelligence section highlighting the interactive
+           map feature and geographic brand discovery capabilities
+  
+  Section Type: Content
+  Template: home.html
+  
   Parameters:
-    title (optional): Custom section title, defaults to "Location Intelligence: Mapping Hidden Opportunities"
-    lead_text (optional): Custom lead text
-    panel_type (optional): Panel style/color, defaults to "light"
-    cta_text (optional): Custom CTA button text, defaults to "Explore Map"
-    cta_url (optional): Custom CTA button URL, defaults to the markets discovery page
-
+    title (optional): Custom section title
+                     Default: "Location Intelligence: Mapping Hidden Opportunities"
+    lead_text (optional): Custom lead text describing map functionality
+    panel_type (optional): Panel style/color
+                          Default: "light"
+    cta_text (optional): Custom CTA button text
+                        Default: "Explore Map"
+    cta_url (optional): Custom CTA button URL
+                       Default: markets discovery page
+  
   Dependencies:
-    - CSS: components/panels.css
-
+    - Translation keys: home.location_intelligence.*
+    - CSS: assets/css/pages/home/location-intelligence.scss
+    - Helper: helpers/t.html
+  
   Usage:
-  {% include pages/home/location-intelligence.html %}
-  {% include pages/home/location-intelligence.html panel_type="primary" %}
-  {% include pages/home/location-intelligence.html
-     title="Custom Title"
-     lead_text="Custom description"
-     cta_text="View Maps" %}
+    {% include pages/home/location-intelligence.html %}
+    {% include pages/home/location-intelligence.html panel_type="primary" cta_text="View Maps" %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

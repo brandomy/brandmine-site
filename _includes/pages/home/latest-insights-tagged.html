@@ -1,9 +1,27 @@
 {% comment %}
-  Component: pages/home/latest-insights-tagged.html
-  Purpose: Displays 4 featured insights with dimension tags for better context
+  Page Section: pages/home/latest-insights-tagged.html
+  
+  Purpose: Displays 4 featured insights (one from each category) with dimension
+           tags for enhanced context and discovery
+  
+  Section Type: Content
+  Template: home.html
+  
   Parameters:
-    - panel_type: The panel type to use (default: primary-soft)
-    - title: The section title (default: "Latest Insights" from translations)
+    panel_type (optional): Panel style/color
+                          Default: "primary-soft"
+    title (optional): Custom section title
+                     Default: "Latest Insights" from translations
+  
+  Dependencies:
+    - Translation keys: insights.*
+    - CSS: assets/css/pages/home/latest-insights.scss
+    - Include: components/cards/tagged-insight-card.html
+    - Helper: helpers/t.html
+  
+  Usage:
+    {% include pages/home/latest-insights-tagged.html %}
+    {% include pages/home/latest-insights-tagged.html panel_type="light" %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

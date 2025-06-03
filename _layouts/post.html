@@ -3,22 +3,29 @@ layout: default
 ---
 
 {% comment %}
-  Layout: post.html (REFACTORED TO DATA-DRIVEN)
+  Layout: post.html (DATA-DRIVEN REFACTORED)
 
-  Purpose: Renders individual journal/blog posts with semantic sectioning and data-driven approach
+  Purpose: Individual journal/blog post articles with rich content display and navigation
 
   Structure:
   - Uses data-driven section rendering with helpers/page-sections.html
   - Supports configurable sections via page front matter or defaults
   - Follows the established linear sectioning architecture
+  - Optimized for long-form content with proper typography
 
   Dependencies:
   - _includes/pages/post/[section-name].html files for content sections
   - CSS: pages/journal/_index.scss and related component files
   - _data/page_sections.yml for section configuration
+  - Site posts collection for related content
 
   Default sections if not specified:
   - breadcrumbs, hero, header, content, taxonomy, related-posts, author-profile
+
+  Used by:
+  - Individual journal posts at /[lang]/journal/YYYY/MM/DD/[slug]/
+  - Founder's personal blog entries
+  - Company news and updates
 {% endcomment %}
 
 {% comment %} Store page content for section includes {% endcomment %}

@@ -1,7 +1,30 @@
 ---
 layout: default
 ---
-<!-- Journal layout for the founder's journal page -->
+{% comment %}
+  Layout: journal.html (DATA-DRIVEN REFACTORED)
+
+  Purpose: Founder's journal blog listing page with pagination and filtering
+
+  Structure:
+  - Uses data-driven section rendering with helpers/page-sections.html
+  - Supports configurable sections via page front matter or defaults
+  - Follows the established linear sectioning architecture
+  - Includes JavaScript for journal pagination functionality
+
+  Dependencies:
+  - _includes/pages/journal/[section-name].html files for content sections
+  - CSS: pages/journal/_index.scss and related component files
+  - _data/page_sections.yml for section configuration
+  - JavaScript: assets/js/pages/journal/journal-pagination.js
+  - Site posts collection for journal entries
+
+  Default sections if not specified:
+  - hero, impact, featured-article, recent-posts, pagination
+
+  Used by:
+  - /[lang]/journal.md pages
+{% endcomment %}
 
 {% comment %} Store page content for section includes {% endcomment %}
 {% capture page_content %}{{ content }}{% endcapture %}

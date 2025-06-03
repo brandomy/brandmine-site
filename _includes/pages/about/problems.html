@@ -1,16 +1,18 @@
 {% comment %}
-  Component: pages/about/problems.html
-
-  Purpose: Displays the problem section with a 2x2 grid of challenge cards
+  Page Section: pages/about/problems.html
+  Purpose: Problem section with 2x2 grid of challenge cards showing market issues
+  Updated: 2025-06-03 - Standardized page section template
 
   Parameters:
     title (optional): Section title, defaults to translation
     lead_text (optional): Introductory text for the section
     conclusion_text (optional): Text displayed after the problem grid
     panel_type (optional): Panel background style, defaults to "light"
+    lang (optional): Language override, defaults to page.lang
 
   Dependencies:
     - CSS: pages/about/problems.scss
+    - Translation keys: about.problems_*, about.problems.card[1-4].*
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "light" %}

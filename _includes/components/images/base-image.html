@@ -1,6 +1,29 @@
 {% comment %}
-  Component: components/images/base-image.html
-  Internal base component for all responsive images
+COMPONENT: Base Image
+PURPOSE: Internal base component for building responsive image paths with consistent structure across collections
+
+USAGE: Internal use only - called by other image components
+
+PARAMETERS:
+- collection (required): Collection name string (e.g., "brands", "founders")
+- category (optional): Subcategory path string
+- item (optional): Item identifier string
+- filename (required): Base filename string
+- variant (optional): Filename variant modifier string
+- widths (required): Comma-separated width values string
+- sizes (required): Responsive sizes attribute string
+- alt (required): Alt text string
+- class (optional): CSS classes string
+- ext (optional): File extension string, defaults to "jpg"
+
+DEPENDENCIES:
+- CSS: None
+- Data: None
+- Includes: None
+
+VARIANTS: None
+
+NOTES: Builds srcset from widths array. Always lazy loads. Path structure: /assets/images/[collection]/[category]/[item]/[filename]-[variant]-[width]w.[ext]
 {% endcomment %}
 
 {% assign base_path = "/assets/images/" | append: include.collection | append: "/" %}

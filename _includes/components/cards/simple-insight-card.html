@@ -1,12 +1,21 @@
 {% comment %}
-  Component: components/cards/simple-insight-card.html
-  Purpose: Displays a simplified insight card for insights listings with streamlined design
-  Parameters:
-    - insight: The insight object to display
-  Dependencies:
-    - assets/css/components/cards/insight-card.scss
-    - components/icons/icon.html
-    - site.data.translations[lang].insights
+COMPONENT: Simple Insight Card
+PURPOSE: Streamlined insight display with category badge and minimal metadata for compact listings
+
+USAGE: {% include components/cards/simple-insight-card.html insight=insight %}
+
+PARAMETERS:
+- insight (required): Insight object with title, permalink, hero_image, category, date, excerpt, lang
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/insight-card.scss
+- Data: site.data.translations
+- Includes: components/icons/icon.html, helpers/t.html
+
+VARIANTS:
+- insight-card--[category]: Category-specific styling via class
+
+NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncated to 150 chars. Same responsive image strategy as standard insight-card.
 {% endcomment %}
 
 <article class="insight-card insight-card--{{ include.insight.category }}">

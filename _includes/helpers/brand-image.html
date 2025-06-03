@@ -1,33 +1,38 @@
 {% comment %}
-CLEAN BRAND IMAGE HELPER
-Uses collection-image.html with brand data (YAML or JSON)
+HELPER: Brand Image
+PURPOSE: Unified brand image rendering with intelligent alt text generation and fallback handling across YAML page data and JSON collections
 
-Usage:
-{% include helpers/brand-image.html brand_id="ru-teatime" image_type="hero" %}
-{% include helpers/brand-image.html brand_id=page.ref image_type="logo" class="header-logo" %}
-{% include helpers/brand-image.html brand_id=page.ref image_type="founder" %}
+USAGE: {% include helpers/brand-image.html brand_id="ru-teatime" image_type="hero" %}
 
-Parameters:
-- brand_id (required): Brand ID for lookup
-- image_type (required): "logo", "hero", "founder"
-- alt (optional): Override alt text (auto-generated if not provided)
-- class (optional): CSS classes
-- loading (optional): "eager"/"lazy"
-- aspect (optional): "landscape"/"portrait"/"square"
+PARAMETERS:
+- brand_id (required): Brand identifier string for lookup
+- image_type (required): Image type string - "logo", "hero", "founder"
+- alt (optional): Override alt text string (auto-generated if not provided)
+- class (optional): Additional CSS classes string
+- loading (optional): Loading behavior string - "eager"/"lazy"
+- aspect (optional): Aspect ratio override string - "landscape"/"portrait"/"square"
 
-Alt Text Generation:
-- logo: "[Brand Name] logo"
-- hero: "[Brand Name] [image name]"
-- founder: "[Founder Name] portrait"
+RETURNS: Renders responsive image component with proper alt text and fallback handling
+
+DEPENDENCIES:
+- Data: page.images frontmatter, site.data.brands collection
+- Includes: helpers/brand-data.html, helpers/founder-name.html, components/images/collection-image.html
+- Variables: page.ref, page.lang for context-aware lookup
+
+EXAMPLE:
+{% include helpers/brand-image.html brand_id="ru-teatime" image_type="logo" %}
+<!-- Auto-generates: "TeaTime logo" -->
+{% include helpers/brand-image.html brand_id=page.ref image_type="founder" class="founder-portrait" %}
+<!-- Uses founder name for better alt text -->
 {% endcomment %}
 
-{% comment %} Get brand data from YAML (page context) or JSON {% endcomment %}
+{% comment %} Intelligent data source selection: page YAML vs JSON lookup {% endcomment %}
 {% if page.ref == include.brand_id %}
-  {% comment %} Current page - use YAML data {% endcomment %}
+  {% comment %} Current page context - use YAML frontmatter data {% endcomment %}
   {% assign brand = page %}
   {% assign brand_name = page.title %}
 {% else %}
-  {% comment %} Different brand - lookup from JSON {% endcomment %}
+  {% comment %} Cross-reference - lookup from JSON data source {% endcomment %}
   {% include helpers/brand-data.html brand_id=include.brand_id %}
   {% assign brand_name = brand.name[page.lang] | default: brand.name.en %}
 {% endif %}

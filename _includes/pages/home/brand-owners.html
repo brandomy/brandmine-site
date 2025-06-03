@@ -1,35 +1,34 @@
-<!-- brand-owners.html component placeholder -->
 {% comment %}
-  Component: pages/home/brand-owners.html
-
-  Purpose: Displays the section targeting BRICS+ brand owners with feature list
-
+  Page Section: pages/home/brand-owners.html
+  
+  Purpose: Displays the brand owners CTA section with feature list highlighting
+           Brandmine's value proposition for BRICS+ brand owners seeking global exposure
+  
+  Section Type: Content
+  Template: home.html
+  
   Parameters:
-    title (optional): Custom section title, defaults to "For BRICS+ Brand Owners: Your Global Story Starts Here"
-    lead_text (optional): Custom lead text
-    panel_type (optional): Panel style/color, defaults to "light"
-    cta_text (optional): Custom CTA button text, defaults to "Get Profiled"
-    cta_url (optional): Custom CTA button URL, defaults to the contact section
+    title (optional): Custom section title
+                     Default: "For BRICS+ Brand Owners: Your Global Story Starts Here"
+    lead_text (optional): Custom lead text describing the value proposition
+    panel_type (optional): Panel style/color
+                          Default: "light"
+    cta_text (optional): Custom CTA button text
+                        Default: "Get Profiled"
+    cta_url (optional): Custom CTA button URL
+                       Default: contact section
     features (optional): Array of feature objects with title and text properties
-
+                        Default: uses translation keys
+  
   Dependencies:
-    - CSS: components/layout/panels.css, components/feature-list.css
-
+    - Translation keys: home.brand_owners.*
+    - CSS: assets/css/pages/home/brand-owners.scss
+    - Helper: helpers/t.html
+  
   Usage:
-  {% include pages/home/brand-owners.html %}
-  {% include pages/home/brand-owners.html panel_type="primary" %}
-  {% include pages/home/brand-owners.html
-     title="Custom Title"
-     lead_text="Custom description"
-     cta_text="Contact Us" %}
-
-  Advanced usage with custom features:
-  {% assign custom_features = "[
-    {'title': 'Custom Feature 1', 'text': 'Description of feature 1'},
-    {'title': 'Custom Feature 2', 'text': 'Description of feature 2'},
-    {'title': 'Custom Feature 3', 'text': 'Description of feature 3'}
-  ]" | parse_json %}
-  {% include pages/home/brand-owners.html features=custom_features %}
+    {% include pages/home/brand-owners.html %}
+    {% include pages/home/brand-owners.html panel_type="primary" %}
+    {% include pages/home/brand-owners.html title="Custom Title" cta_text="Contact Us" %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

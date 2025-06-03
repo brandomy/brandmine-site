@@ -1,7 +1,32 @@
 {% comment %}
-  Founder Narrative Section
-  Displays: Founder information, leadership status, generational context
-  Supports: Both YAML and JSON data sources
+SECTION: Founder Narrative
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display founder information with links to individual founder profiles and leadership status
+
+DATA SOURCES:
+- Founders: brand.founders array containing founder references
+- Founder Data: site.data.founders.founders for detailed founder information
+- Status: brand.founder_led boolean flag
+
+CONTEXT REQUIRED:
+- brand: Brand object with founders array and founder_led flag
+- site.data.founders: Global founders data for lookup
+- brand.lang: Current language for translations and links
+
+CONTENT STRUCTURE:
+1. Section heading (h2) - "Founder Leadership"
+2. Founder cards (if founders present):
+   - Name and position
+   - Brief biography
+   - Generation information
+   - Link to full founder profile
+3. Founder-led status badge (if applicable)
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Data: site.data.founders for founder details
+- CSS: pages/brand/founder-narrative.scss, components/cards/founder-card.scss
+- Translations: brand.founders_journey, brand.generation, buttons.view_founder, attributes.founder-led
 {% endcomment %}
 
 {% assign brand = include.brand %}

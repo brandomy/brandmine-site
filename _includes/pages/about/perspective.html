@@ -1,11 +1,14 @@
 {% comment %}
-  Component: pages/about/perspective.html
+  Page Section: pages/about/perspective.html
+  Purpose: Unique perspective section with bullet points highlighting team expertise
+  Updated: 2025-06-03 - Standardized page section template
 
-  Purpose: Displays the perspective section with bullet points
+  Parameters:
+    panel_type (optional): Panel background style, defaults to "secondary-soft"
 
   Dependencies:
     - CSS: pages/about/perspective.scss
-    - site.data.translations for multilingual content
+    - Translation keys: about.perspective_*, about.perspective_points array
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

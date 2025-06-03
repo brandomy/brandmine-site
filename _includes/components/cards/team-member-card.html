@@ -1,25 +1,28 @@
 {% comment %}
-  Component: components/cards/team-member-card.html
+COMPONENT: Team Member Card
+PURPOSE: Displays team member profile with photo, bio, achievements, and social links for about page team sections
 
-  Purpose: Displays a single team member profile card
+USAGE: {% include components/cards/team-member-card.html member=member lang=page.lang %}
 
-  Parameters:
-  - member: Team member data object containing:
-    - name: Member name
-    - position: Job title/position
-    - photo_slug: Photo identifier
-    - bio: Biography text (optional)
-    - highlights: Array of achievement highlights (optional)
-    - summary: Summary text (optional)
-    - linkedin: LinkedIn URL (optional)
-  - lang: Language code for multilingual support
+PARAMETERS:
+- member (required): Team member data object containing:
+  - name: Member name string
+  - position: Job title/position string
+  - photo_slug: Photo identifier string
+  - bio: Biography text string
+  - highlights: Array of achievement highlight strings
+  - summary: Summary text string
+  - linkedin: LinkedIn URL string
+- lang (required): Language code string for multilingual support
 
-  Dependencies:
-  - components/images/collection-image.html
-  - CSS: components/cards/team-member.scss
+DEPENDENCIES:
+- CSS: assets/css/components/cards/team-member-card.scss
+- Data: None
+- Includes: components/images/collection-image.html
 
-  Example usage:
-  {% include components/cards/team-member-card.html member=member lang=page.lang %}
+VARIANTS: None - single standard layout
+
+NOTES: Photo uses square aspect ratio from people/team collection. LinkedIn icon uses Font Awesome. All optional fields gracefully hidden when not provided.
 {% endcomment %}
 
 <div class="team-member-card">

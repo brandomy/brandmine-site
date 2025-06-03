@@ -1,31 +1,38 @@
 {% comment %}
-  Component: pages/home/founder-focus.html
-
-  Purpose: Displays a scrollable horizontal section highlighting featured founder profiles on the homepage.
-  This component emphasizes Brandmine's unique positioning as a platform that elevates brand founders.
-
+  Page Section: pages/home/founder-focus.html
+  
+  Purpose: Displays a scrollable carousel of featured founder profiles highlighting
+           the human stories behind BRICS+ brands and Brandmine's founder-centric approach
+  
+  Section Type: Content
+  Template: home.html
+  
   Parameters:
-    title (optional): Custom section title, defaults to "Beyond Listings: The Human Stories Driving BRICS+ Innovation"
-    lead_text (optional): Custom lead text
-    panel_type (optional): Panel style/color, defaults to "olive-soft"
-    cta_text (optional): Custom CTA button text, defaults to "Meet All Founders"
-    cta_url (optional): Custom CTA button URL, defaults to the founders page
-    limit (optional): Number of founders to display, defaults to 4
-    featured_only (optional): When true, only shows founders with featured=true (default: true)
-
+    title (optional): Custom section title
+                     Default: "Beyond Listings: The Human Stories Driving BRICS+ Innovation"
+    lead_text (optional): Custom lead text describing founder focus
+    panel_type (optional): Panel style/color
+                          Default: "olive-soft"
+    cta_text (optional): Custom CTA button text
+                        Default: "Meet All Founders"
+    cta_url (optional): Custom CTA button URL
+                       Default: founders page
+    limit (optional): Number of founders to display
+                     Default: 4
+    featured_only (optional): When true, only shows founders with featured=true
+                             Default: true
+  
   Dependencies:
+    - Translation keys: home.founder_focus.*
     - CSS: assets/css/pages/home/founder-focus.scss
     - CSS: assets/css/components/cards/founder-card.scss
-    - JavaScript: assets/js/founder-carousel.js (for dot navigation and scrolling)
-    - Includes: components/cards/founder-card.html
-
+    - JavaScript: assets/js/founder-carousel.js
+    - Include: components/cards/founder-card.html
+    - Helper: helpers/t.html
+  
   Usage:
-  {% include pages/home/founder-focus.html %}
-  {% include pages/home/founder-focus.html panel_type="accent-soft" %}
-  {% include pages/home/founder-focus.html
-     title="Custom Title"
-     lead_text="Custom description"
-     cta_text="Meet the Founders" %}
+    {% include pages/home/founder-focus.html %}
+    {% include pages/home/founder-focus.html panel_type="accent-soft" limit=6 %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

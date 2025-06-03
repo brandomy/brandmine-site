@@ -1,17 +1,23 @@
 {% comment %}
-  Component: components/cards/insight-card.html
-  
-  Displays insight article cards with responsive images and metadata
-  
-  Parameters:
-  - include.insight: insight object from site.insights collection
-  - include.show_date: Show publication date (optional, uses component defaults)
-  - include.excerpt_words: Number of words in excerpt (optional, uses component defaults)
-  
-  Dependencies:
-  - Translation helper include for multilingual labels
-  - Responsive image strategy (400w, 800w, 1200w variants)
-  - Component defaults for configurable behavior
+COMPONENT: Insight Card
+PURPOSE: Standard insight article card with responsive hero image, metadata, and excerpt for insight listings
+
+USAGE: {% include components/cards/insight-card.html insight=insight %}
+
+PARAMETERS:
+- insight (required): Insight object from site.insights collection
+- show_date (optional): Boolean to show publication date, defaults from component defaults
+- excerpt_words (optional): Integer word count for excerpt, defaults from component defaults
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/insight-card.scss
+- Data: site.data.translations, site.data.component_defaults
+- Includes: helpers/component-defaults.html, helpers/t.html
+
+VARIANTS:
+- insight-card--[category]: Category-specific styling applied via class
+
+NOTES: Responsive images use 400w, 800w, 1200w srcset. Falls back to SVG placeholder when no hero image. Date format: "Jan 1, 2025". Read more arrow included.
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}

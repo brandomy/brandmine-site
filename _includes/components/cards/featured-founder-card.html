@@ -1,7 +1,36 @@
 {% comment %}
-  Include Name: components/cards/featured-founder-card.html
+COMPONENT: Featured Founder Card
+PURPOSE: Premium founder display with full portrait images, extended bio, and comprehensive achievements for featured listings
 
-  Featured founder card for premium display with larger portraits and portrait images.
+USAGE: {% include components/cards/featured-founder-card.html founder=founder %}
+
+PARAMETERS:
+- founder (required): Founder object with:
+  - name: Founder name string
+  - ref: Founder reference ID string
+  - location: Location object with city and country
+  - generation: Generation type string (first, second, third, transition)
+  - brands: Array of brand reference strings
+  - role: Role/position string
+  - brief_bio: Biography text string
+  - achievements: Array of achievement strings
+  - languages: Array of language code strings
+  - expertise: Array of expertise tag strings
+  - featured: Boolean featured flag
+  - markets: Array of market strings
+  - cross_border_expertise: Boolean cross-border flag
+  - images.portrait: Portrait image configuration
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/founder-card.scss
+- Data: site.data.translations[page.lang], site.data.countries, site.data.languages
+- Includes: None
+
+VARIANTS:
+- founder-card--featured: Applied to article element
+- Uses portrait images (2:3 aspect) instead of headshots
+
+NOTES: Displays up to 4 expertise tags. Shows generation badge and cross-border indicator. Uses 400w/800w responsive portrait images. LinkedIn hidden if not provided.
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].founder %}

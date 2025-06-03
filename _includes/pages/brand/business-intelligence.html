@@ -1,7 +1,32 @@
 {% comment %}
-  Business Intelligence Section
-  Displays: Growth signals, export readiness, business opportunities
-  Supports: Both YAML and JSON data sources
+SECTION: Business Intelligence
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display strategic business information including growth signals, export capabilities, and partnership opportunities
+
+DATA SOURCES:
+- Export Data: brand.export_ready, brand.export_markets array
+- Growth Signals: brand.signals array
+- Distribution: brand.distribution_models array
+- Certifications: brand.certifications array with name/year objects
+
+CONTEXT REQUIRED:
+- brand: Complete brand object with business metadata
+- include.brand_ref: Brand reference for contact form pre-fill
+- data_source: "curated" or "basic" (defaults to "curated")
+
+CONTENT STRUCTURE:
+1. Section heading (h2) - "Business Opportunities"
+2. Export readiness indicator (if applicable)
+3. Growth signals tags (if present)
+4. Distribution models (if present)
+5. Certifications list (if present)
+6. Partnership CTA with pre-filled contact link
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Data: site.data.countries for market names
+- CSS: pages/brand/business-intelligence.scss
+- Translations: brand.*, tags.signals, distribution_models.*, buttons.get_in_touch
 {% endcomment %}
 
 {% assign brand = include.brand %}

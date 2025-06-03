@@ -2,21 +2,20 @@
 layout: default
 ---
 {% comment %}
-  FOUNDERS INDEX LAYOUT
-
-  Purpose: Powers the main directory page for viewing all founder profiles.
-
-  Logic-light architecture:
-  - Uses page.sections array for dynamic section inclusion
-  - Special handling for founders-grid section with panel wrapping
-  - Fallback to default sections if none specified
-  - No logic in section components themselves
-
-  Dependencies:
-  - _includes/pages/founders/* components
-  - _includes/components/cards/founder-card.html
-  - site.data.translations for UI labels
-  - site.data.dimensions for taxonomy translations
+  LAYOUT: Founders
+  PURPOSE: Main directory page for viewing and filtering all founder profiles
+  USED BY: pages/{lang}/founders.md (founder discovery and listings)
+  SECTIONS RENDERED: Data-driven via page_sections.yml (founders)
+  FRONT MATTER REQUIRED: Standard page front matter, uses defaults from page_sections.yml
+  PANEL SYSTEM: Uses panel--hero-split for hero, panel--primary for impact, panel--amber-soft for featured
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/founders/[section].html, founders.js
+  
+  LOGIC-LIGHT ARCHITECTURE:
+  - Standardized across all languages with identical section structure
+  - Data-driven section rendering eliminates hardcoded logic
+  - Impact section positioned before content for strategic messaging
+  - Includes filter interface, founders grid, and featured founders
+  - JavaScript handles dynamic filtering and search functionality
 {% endcomment %}
 
 {% comment %} Store page content for section includes {% endcomment %}

@@ -1,9 +1,23 @@
 {% comment %}
-  Component: pages/home/testimonials.html
-
-  Purpose: Displays testimonials from brand founders and featured brands in a card-based layout
+  Page Section: pages/home/testimonials.html
+  
+  Purpose: Displays testimonials from brand founders and featured brands in a
+           card-based layout showcasing success stories and platform value
+  
+  Section Type: Content
+  Template: home.html
+  
   Parameters:
-    None - Uses data from site.data.translations[page.lang].home.testimonials for labels and content
+    None - Uses translation data for all content and labels
+  
+  Dependencies:
+    - Translation keys: home.testimonials.*
+    - CSS: assets/css/pages/home/testimonials.scss
+    - Include: components/cards/testimonial-card.html
+    - Helper: helpers/t.html
+  
+  Usage:
+    {% include pages/home/testimonials.html %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

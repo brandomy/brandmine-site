@@ -1,6 +1,37 @@
 ---
 layout: default
 ---
+{% comment %}
+  Layout: styleguide.html (SPECIALIZED LAYOUT)
+
+  Purpose: Design system documentation with navigation sidebar and sectioned content display
+
+  Structure:
+  - Custom grid layout with navigation sidebar and main content area
+  - Mobile navigation toggle functionality
+  - Semantic sectioning with configurable sections via front matter
+  - Specialized styling for design system documentation
+
+  Dependencies:
+  - _includes/pages/styleguide/[section-name].html files for content sections
+  - CSS: pages/styleguide/_index.scss and related component files
+  - JavaScript: assets/js/pages/styleguide/styleguide.js
+  - Navigation structure hardcoded for design system organization
+
+  Features:
+  - Responsive sidebar navigation with mobile toggle
+  - Active state indicators for current page
+  - Organized by Foundations, Components, and Patterns sections
+  - Default sections if not specified in front matter
+
+  Default sections if not specified:
+  - welcome, overview, how-to-use, design-principles, implementation, maintenance
+
+  Used by:
+  - Design system documentation pages
+  - Component library documentation
+  - Style guide and pattern library
+{% endcomment %}
 
 <div class="styleguide-page">
   <!-- Mobile Navigation Toggle Button -->

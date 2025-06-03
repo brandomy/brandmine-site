@@ -1,7 +1,25 @@
 {% comment %}
-  Include Name: components/cards/founder-card.html
+COMPONENT: Founder Card
+PURPOSE: Standard founder display with headshot, bio summary, and key achievements for founder listings
 
-  Logic-light implementation using translation assignments and minimal logic.
+USAGE: {% include components/cards/founder-card.html founder=founder %}
+
+PARAMETERS:
+- founder (required): Founder object (same structure as featured-founder-card)
+- variant (optional): Card variant string modifier
+- featured (optional): Boolean to apply featured styling
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/founder-card.scss
+- Data: site.data.translations[page.lang], site.data.countries, site.data.languages
+- Includes: None
+
+VARIANTS:
+- founder-card--featured: Applied when featured=true or founder.featured
+- founder-card--[variant]: Custom variant from variant parameter
+- Uses headshot images (1:1 aspect) vs featured's portrait
+
+NOTES: Displays single brand connection with role. Shows up to 4 expertise tags. Truncates bio to 120 chars. Generation badge and cross-border indicator included. Uses 400w/800w responsive headshots.
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].founder %}

@@ -1,7 +1,30 @@
 {% comment %}
-  Brand Hero Section
-  Displays: Brand name, tagline, founding year, location
-  Supports: Both YAML and JSON data sources
+SECTION: Brand Hero
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display brand's primary identity information in a visually prominent hero section at the top of brand profiles
+
+DATA SOURCES:
+- Primary: include.brand (passed from layout)
+- Fallback: page (when viewing as standalone page)
+- Source Type: Supports both YAML (curated profiles) and JSON (basic listings)
+
+CONTEXT REQUIRED:
+- brand: Brand object containing title, tagline, founding_year, location
+- data_source: "curated" or "basic" (defaults to "curated")
+- current_lang: Language code for translations
+
+CONTENT STRUCTURE:
+1. Brand title (h1)
+2. Optional tagline (if present)
+3. Meta information bar:
+   - Founding year with translated label
+   - Location (city, country) with bullet separator
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Components: components/separators/bullet-separator.html
+- CSS: pages/brand/hero.scss
+- Translations: brands.hero.founded
 {% endcomment %}
 
 {% assign brand = include.brand | default: page %}

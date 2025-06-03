@@ -1,12 +1,23 @@
 {% comment %}
-  Component: components/images/hero-image.html
-  Purpose: Simplified component for standard hero images
+COMPONENT: Hero Image
+PURPOSE: Simplified responsive image component specifically for full-width hero images with eager loading
 
-  Parameters:
-  - path: Path to the image (required)
-  - alt: Alt text (required)
-  - class: Additional CSS classes (optional)
-  - loading: Loading priority (optional, default: "eager")
+USAGE: {% include components/images/hero-image.html path="/assets/images/heroes/home" alt="Brandmine homepage hero" %}
+
+PARAMETERS:
+- path (required): Base path to image without size suffix or extension string
+- alt (required): Alt text string for accessibility
+- class (optional): Additional CSS classes string
+- loading (optional): Loading priority string, defaults to "eager"
+
+DEPENDENCIES:
+- CSS: None
+- Data: None
+- Includes: None
+
+VARIANTS: None - always full-width hero sizing
+
+NOTES: Expects images at path-400w.jpg, path-800w.jpg, path-1200w.jpg, path-1600w.jpg. Fixed sizes attribute for hero images. Always uses .jpg extension.
 {% endcomment %}
 
 {% comment %} Set loading priority {% endcomment %}

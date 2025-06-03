@@ -1,20 +1,29 @@
 {% comment %}
-Component: components/forms/contact-form.html
-Purpose: Complete contact form for inquiries and brand submissions
+COMPONENT: Contact Form
+PURPOSE: Complete contact form with dynamic fields based on form type for general inquiries, brand submissions, and partnerships
 
-Parameters:
-- action (optional): Form action URL (default: "/contact")
-- method (optional): Form method (default: "POST")
-- form_type (optional): Type of contact form - "general", "brand-submission", "partnership" (default: "general")
-- show_company (optional): Show company field (default: true)
-- show_country (optional): Show country field (default: true)
-- success_message (optional): Custom success message
-- class_name (optional): Additional CSS classes
+USAGE: {% include components/forms/contact-form.html form_type="brand-submission" %}
 
-Usage:
-{% include components/forms/contact-form.html %}
-{% include components/forms/contact-form.html form_type="brand-submission" %}
-{% include components/forms/contact-form.html show_company=false action="/api/contact" %}
+PARAMETERS:
+- action (optional): Form action URL string, defaults to "/contact"
+- method (optional): Form method string, defaults to "POST"
+- form_type (optional): Form type string - "general", "brand-submission", "partnership", defaults to "general"
+- show_company (optional): Boolean to show company field, defaults to true
+- show_country (optional): Boolean to show country field, defaults to true
+- success_message (optional): Custom success message string
+- class_name (optional): Additional CSS classes string
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/contact-form.scss
+- Data: site.data.translations[page.lang]
+- Includes: helpers/t.html, components/forms/input-field.html, components/forms/select-field.html, components/forms/textarea-field.html, components/ui/alerts.html
+
+VARIANTS:
+- general: Basic contact form with standard fields
+- brand-submission: Extended fields for sector, website
+- partnership: Partnership-specific subject options
+
+NOTES: Form includes client-side validation. Success/error messages hidden by default. Privacy policy link included in footer.
 {% endcomment %}
 
 {% assign form_action = include.action | default: "/contact" %}

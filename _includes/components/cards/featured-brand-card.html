@@ -1,11 +1,21 @@
 {% comment %}
-  Include Name: components/cards/featured-brand-card.html
+COMPONENT: Featured Brand Card
+PURPOSE: Enhanced brand card with extended description and additional taxonomy tags for homepage and landing pages
 
-  Purpose: Displays an enhanced brand card with additional details for featured brands.
-  Used on homepage and key landing pages for highlighting important brands.
+USAGE: {% include components/cards/featured-brand-card.html brand=brand %}
 
-  Parameters:
-  - brand: Brand object with complete details (required)
+PARAMETERS:
+- brand (required): Brand object with complete details (same structure as brand-card)
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/featured-brand-card.scss
+- Data: site.data.translations[page.lang].brand
+- Includes: components/helpers/card-header.html, components/helpers/taxonomy-tag.html, helpers/t.html, components/helpers/founder-check.html
+
+VARIANTS:
+- featured-brand-card--featured: Applied when brand.featured or brand.featured_level > 1
+
+NOTES: Shows more taxonomy tags than basic brand-card (2 attributes vs 1). Description truncated to 180 chars. Falls back to content strip_html if no description field.
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].brand %}

@@ -1,7 +1,32 @@
 {% comment %}
-  Market Presence Section
-  Displays: Market presence content, social media, distribution models, contact info
-  Supports: Both YAML and JSON data sources
+SECTION: Market Presence
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display brand's market presence information including distribution channels, social media links, and contact methods
+
+DATA SOURCES:
+- Content: Extracted from markdown content after "## Market Presence" heading
+- Brand Data: brand.social_media, brand.distribution_models, brand.email, brand.website
+- Translations: site.data.translations for model names and labels
+
+CONTEXT REQUIRED:
+- brand: Brand object with market presence data
+- content: Full markdown content (split to extract section)
+- data_source: "curated" or "basic" (defaults to "curated")
+
+CONTENT STRUCTURE:
+1. Section heading (h2)
+2. Market presence content from markdown
+3. Social media icons component (if present)
+4. Distribution models list (if present):
+   - Translated model names
+   - Bulleted list format
+5. Contact information component
+
+DEPENDENCIES:
+- Components: components/brands/social-media-icons.html, components/brands/contact-info.html
+- Helpers: helpers/t.html (translations)
+- CSS: pages/brand/market-presence.scss
+- Translations: brand.market_presence, brand.distribution_models, distribution_models.*
 {% endcomment %}
 
 {% assign brand = include.brand | default: page %}
