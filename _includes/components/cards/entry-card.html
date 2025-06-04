@@ -38,14 +38,14 @@ NOTES: Supports multilingual ref-based image paths. Responsive images use 400w, 
 {% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.entry-card" param="excerpt_words" fallback=25 %}{% endcapture %}
 {% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.entry-card" param="tag_limit" fallback=3 %}{% endcapture %}
 
-{% assign image_base_path = include.image_base_path | default: default_image_base_path %}
-{% assign image_size = include.image_size | default: default_image_size %}
-{% assign show_author = include.show_author | default: default_show_author %}
-{% assign show_date = include.show_date | default: default_show_date %}
-{% assign show_tags = include.show_tags | default: default_show_tags %}
-{% assign show_excerpt = include.show_excerpt | default: default_show_excerpt %}
-{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
-{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
+{% assign image_base_path = include.image_base_path | default: default_image_base_path | strip %}
+{% assign image_size = include.image_size | default: default_image_size | strip %}
+{% assign show_author = include.show_author | default: default_show_author | strip %}
+{% assign show_date = include.show_date | default: default_show_date | strip %}
+{% assign show_tags = include.show_tags | default: default_show_tags | strip %}
+{% assign show_excerpt = include.show_excerpt | default: default_show_excerpt | strip %}
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words | strip | plus: 0 %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit | strip %}
 {% comment %} Translation helper replaces manual lookup {% endcomment %}
 {% assign read_more_text = include.read_more_text %}
 {% unless read_more_text %}

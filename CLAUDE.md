@@ -422,10 +422,38 @@ Page layouts use centralized configuration instead of hardcoded logic:
 {% include helpers/page-sections.html page_type="brands" content=page_content %}
 ```
 
+### Centralized Dimension Configuration
+All dimension data is now managed through `_data/dimensions_config.yml`:
+- Eliminates hardcoded dimension lists throughout templates
+- Provides consistent ordering and metadata
+- Enables easy addition of new dimensions
+
+### Enhanced Component Defaults
+The `_data/component_defaults.yml` now includes comprehensive configuration for:
+- Dimension display components
+- Search and filter components  
+- Card display components
+- Form validation and behavior
+- Map integration settings
+
+### Translation Key Standardization
+New helper `translation-key-builder.html` provides consistent key construction:
+```liquid
+{% capture key %}{% include helpers/translation-key-builder.html base="dimensions" parts=dimension_parts %}{% endcapture %}
+```
+
+### Body Class Generation
+Centralized body class logic eliminates complex conditionals in layouts:
+```liquid
+<body class="{% include helpers/body-class.html %}">
+```
+
 ### Configuration Files
 The "Logic Light" architecture relies on these centralized configuration files:
 - `_data/component_defaults.yml` - Component behavior defaults
 - `_data/page_sections.yml` - Page section order and panel mappings
+- `_data/dimensions_config.yml` - Dimension lists, ordering, and metadata
+- `_data/search_presets.yml` - Search filter presets configuration
 - `_data/translations/{lang}.yml` - UI text and labels
 
 **Benefits:** Eliminates hardcoded logic, reduces conditional templates, enables configuration-driven behavior changes, and provides consistent patterns across the entire codebase.

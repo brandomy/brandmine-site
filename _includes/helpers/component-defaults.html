@@ -1,13 +1,13 @@
 {% comment %}
   Component: helpers/component-defaults.html
-  Purpose: Centralized component default value lookup
+  Purpose: Centralized component default value lookup with enhanced path support
   
   This helper retrieves default values from _data/component_defaults.yml
   to eliminate scattered {% assign param = include.param | default: value %}
   patterns throughout components.
   
   Parameters:
-  - component: Component path (e.g., "cards.entry-card", "forms.newsletter")
+  - component: Component path (e.g., "cards.entry-card", "forms.newsletter", "dimensions.dimension-cloud")
   - param: Parameter name to get default for
   - fallback: Fallback value if not found in defaults (optional)
   
@@ -23,17 +23,22 @@
   {% capture default_value %}{% include helpers/component-defaults.html component="cards.entry-card" param="excerpt_words" fallback=25 %}{% endcapture %}
   {% assign excerpt_words = include.excerpt_words | default: default_value %}
   
+  Enhanced features:
+  {% capture default_value %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_location" fallback=true %}{% endcapture %}
+  
   Design Philosophy:
   - Centralizes all component defaults in one YAML file
   - Maintains exact same component behavior
   - Enables easy configuration changes without touching component code
   - Provides clear fallback chain: include param → defaults file → helper fallback
+  - Now supports enhanced component configurations added in Phase 1.3
   
   Implementation Notes:
   - Navigates nested YAML structure using dot notation
   - Returns fallback if path not found or value is null
   - Supports both string and boolean default values
   - Compatible with existing | default: liquid filters
+  - Enhanced to support deeper nesting and new component types
 {% endcomment %}
 
 {% comment %} Parameter validation {% endcomment %}

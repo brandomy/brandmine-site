@@ -41,11 +41,15 @@ Dependencies:
   <div class="search-filter__presets">
     {% case content_type %}
       {% when 'brands' %}
-        <button type="button" class="preset-btn" data-preset="featured">Featured</button>
-        <button type="button" class="preset-btn" data-preset="founder-led">Founder Led</button>
-        <button type="button" class="preset-btn" data-preset="export-ready">Export Ready</button>
-        <button type="button" class="preset-btn" data-preset="heritage">Heritage</button>
-        <button type="button" class="preset-btn" data-preset="sustainability">Sustainable</button>
+        {% assign search_presets = site.data.search_presets.brands %}
+        {% for preset in search_presets %}
+          <button type="button" 
+                  class="preset-btn" 
+                  data-preset="{{ preset.id }}"
+                  data-filters='{{ preset.filters | jsonify }}'>
+            {% include helpers/t.html key=preset.label_key fallback=preset.id %}
+          </button>
+        {% endfor %}
       {% when 'founders' %}
         <button type="button" class="preset-btn" data-preset="cross-border">Cross-border</button>
         <button type="button" class="preset-btn" data-preset="first-gen">1st Generation</button>
@@ -86,11 +90,11 @@ Dependencies:
       <div class="filter-group">
         <h4 class="filter-group__title">Sectors</h4>
         <div class="filter-options">
-          {% assign sectors = "wine,natural-beauty,gourmet-foods,artisanal-spirits,hotels-resorts,artisan-ceramics,artisan-confectionery,cured-meats,fashion-accessories,fermented-dairy,halal-foods,honey-bee-products,jewelry-watches,mineral-waters,natural-supplements,specialty-cheeses" | split: "," %}
-          {% for sector in sectors %}
+          {% include helpers/dimension-data.html type="sectors" %}
+          {% for item in dimension_items %}
             <label class="filter-option">
-              <input type="checkbox" name="sector" value="{{ sector }}">
-              <span>{{ sector | replace: "-", " " | capitalize }}</span>
+              <input type="checkbox" name="sector" value="{{ item.slug }}">
+              <span>{{ item.slug | replace: "-", " " | capitalize }}</span>
             </label>
           {% endfor %}
         </div>
@@ -100,31 +104,16 @@ Dependencies:
       <div class="filter-group">
         <h4 class="filter-group__title">Markets</h4>
         <div class="filter-options">
-          {% comment %} Create sorted markets list from countries data {% endcomment %}
-          {% assign market_slugs = "brazil,china,egypt,ethiopia,india,indonesia,iran,russia,south-africa,uae" | split: "," %}
-          {% assign sorted_markets = market_slugs | sort %}
-          {% for market_slug in sorted_markets %}
-            {% comment %} Map market slug to country code for display name {% endcomment %}
-            {% case market_slug %}
-              {% when 'brazil' %}{% assign country_code = 'br' %}
-              {% when 'china' %}{% assign country_code = 'cn' %}
-              {% when 'egypt' %}{% assign country_code = 'eg' %}
-              {% when 'ethiopia' %}{% assign country_code = 'et' %}
-              {% when 'india' %}{% assign country_code = 'in' %}
-              {% when 'indonesia' %}{% assign country_code = 'id' %}
-              {% when 'iran' %}{% assign country_code = 'ir' %}
-              {% when 'russia' %}{% assign country_code = 'ru' %}
-              {% when 'south-africa' %}{% assign country_code = 'za' %}
-              {% when 'uae' %}{% assign country_code = 'ae' %}
-            {% endcase %}
-            {% assign country_data = site.data.countries.countries[country_code] %}
+          {% include helpers/dimension-data.html type="markets" %}
+          {% for item in dimension_items %}
+            {% assign country_data = site.data.countries.countries[item.country_code] %}
             {% if country_data %}
               {% assign country_name = country_data.name[current_lang] | default: country_data.name.en %}
             {% else %}
-              {% assign country_name = market_slug | replace: "-", " " | capitalize %}
+              {% assign country_name = item.slug | replace: "-", " " | capitalize %}
             {% endif %}
             <label class="filter-option">
-              <input type="checkbox" name="market" value="{{ market_slug }}">
+              <input type="checkbox" name="market" value="{{ item.slug }}">
               <span>{{ country_name }}</span>
             </label>
           {% endfor %}
@@ -135,11 +124,11 @@ Dependencies:
       <div class="filter-group">
         <h4 class="filter-group__title">Attributes</h4>
         <div class="filter-options">
-          {% assign attributes = "founder-led,heritage-brand,artisanal-excellence,sustainability-pioneer,innovation-leader,premium-positioning,regional-icon,cultural-bridge" | split: "," %}
-          {% for attribute in attributes %}
+          {% include helpers/dimension-data.html type="attributes" %}
+          {% for item in dimension_items %}
             <label class="filter-option">
-              <input type="checkbox" name="attribute" value="{{ attribute }}">
-              <span>{{ attribute | replace: "-", " " | capitalize }}</span>
+              <input type="checkbox" name="attribute" value="{{ item.slug }}">
+              <span>{{ item.slug | replace: "-", " " | capitalize }}</span>
             </label>
           {% endfor %}
         </div>
@@ -149,11 +138,11 @@ Dependencies:
       <div class="filter-group">
         <h4 class="filter-group__title">Signals</h4>
         <div class="filter-options">
-          {% assign signals = "export-ready,franchise-ready,investment-ready,rapid-growth" | split: "," %}
-          {% for signal in signals %}
+          {% include helpers/dimension-data.html type="signals" %}
+          {% for item in dimension_items %}
             <label class="filter-option">
-              <input type="checkbox" name="signal" value="{{ signal }}">
-              <span>{{ signal | replace: "-", " " | capitalize }}</span>
+              <input type="checkbox" name="signal" value="{{ item.slug }}">
+              <span>{{ item.slug | replace: "-", " " | capitalize }}</span>
             </label>
           {% endfor %}
         </div>

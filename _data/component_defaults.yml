@@ -170,3 +170,130 @@ ui:
     size: "medium"
     color: "primary"
     show_text: false
+
+# =============================================================================
+# DIMENSION COMPONENTS
+# =============================================================================
+
+dimensions:
+  # Dimension Cloud
+  dimension-cloud:
+    max_tags: 20
+    min_font_size: 14
+    max_font_size: 24
+    show_count: true
+    layout: cloud
+  
+  # Dimension List
+  dimension-list:
+    show_description: true
+    layout: vertical
+    max_items: 50
+    show_empty: false
+  
+  # Dimension Tag
+  dimension-tag:
+    show_icon: true
+    style: pill
+    clickable: true
+
+# =============================================================================
+# ENHANCED SEARCH COMPONENTS
+# =============================================================================
+
+search:
+  # Search Filter (Enhanced)
+  search-filter:
+    debounce_delay: 300
+    min_query_length: 3
+    max_results: 100
+    show_count: true
+    enable_presets: true
+    show_sort: true
+    show_filters: true
+    default_sort: "name"
+    results_per_page: 12
+  
+  # Search Results
+  search-results:
+    items_per_page: 12
+    layout: grid
+    show_pagination: true
+
+# =============================================================================
+# ENHANCED CARD COMPONENTS
+# =============================================================================
+
+cards:
+  # Brand Card (Enhanced)
+  brand-card:
+    show_location: true
+    show_sector: true
+    show_attributes: true
+    tag_limit: 4
+    image_aspect_ratio: "3:2"
+    show_founder: true
+    show_featured_badge: true
+    layout: "vertical"
+  
+  # Founder Card (Enhanced)
+  founder-card:
+    show_company: true
+    show_location: true
+    show_generation: true
+    image_aspect_ratio: "2:3"
+    show_brands: true
+    show_expertise: true
+  
+  # Insight Card (Enhanced)
+  insight-card:
+    show_author: true
+    show_date: true
+    show_category: true
+    excerpt_words: 25
+    show_reading_time: true
+    image_fallback: true
+
+# =============================================================================
+# ENHANCED FORM COMPONENTS
+# =============================================================================
+
+forms:
+  # Validation
+  validation:
+    email_pattern: "^[^@]+@[^@]+\\.[^@]+$"
+    required_message_key: "forms.validation.required"
+    email_message_key: "forms.validation.email"
+    min_length_message_key: "forms.validation.min_length"
+  
+  # Contact Form (Enhanced)
+  contact-form:
+    enable_validation: true
+    show_labels: true
+    required_fields: ["name", "email", "message"]
+    show_phone: false
+    show_company: false
+    show_subject: true
+    success_redirect: null
+    error_message: null
+  
+  # Newsletter Form (Enhanced)
+  newsletter-form:
+    enable_validation: true
+    placeholder_key: "forms.newsletter.placeholder"
+    button_key: "forms.newsletter.submit"
+    variant: "default"
+    show_name: false
+    show_privacy_notice: true
+
+# =============================================================================
+# MAP COMPONENTS
+# =============================================================================
+
+maps:
+  # Brand Map
+  brand-map:
+    zoom_level: 6
+    cluster_radius: 50
+    show_popup: true
+    popup_fields: ["name", "sector", "location"]

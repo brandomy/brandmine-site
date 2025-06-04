@@ -23,8 +23,8 @@ NOTES: Responsive images use 400w, 800w, 1200w srcset. Falls back to SVG placeho
 {% comment %} Component defaults for configurable behavior {% endcomment %}
 {% capture default_show_date %}{% include helpers/component-defaults.html component="cards.insight-card" param="show_date" fallback=true %}{% endcapture %}
 {% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.insight-card" param="excerpt_words" fallback=30 %}{% endcapture %}
-{% assign show_date = include.show_date | default: default_show_date %}
-{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
+{% assign show_date = include.show_date | default: default_show_date | strip %}
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words | strip | plus: 0 %}
 
 
 <article class="insight-card insight-card--{{ include.insight.category }}">

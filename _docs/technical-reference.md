@@ -216,6 +216,102 @@ assets/css/
 }
 ```
 
+## Centralized Configuration Files
+
+### Dimensions Configuration (`_data/dimensions_config.yml`)
+
+**Central source for all dimension data**, replacing scattered hardcoded values:
+
+```yaml
+dimensions:
+  sectors:
+    display_name: "Sectors"
+    items:
+      - slug: wine
+        order: 1
+      - slug: natural-beauty
+        order: 2
+  markets:
+    display_name: "Markets"  
+    items:
+      - slug: brazil
+        country_code: br
+        order: 1
+      - slug: russia
+        country_code: ru
+        order: 2
+```
+
+**Benefits:**
+- Single source of truth for dimension order and metadata
+- Eliminates hardcoded dimension lists in templates
+- Automatic dimension discovery and ordering
+- Country code mapping for markets
+
+### Search Presets Configuration (`_data/search_presets.yml`)
+
+**Defines search preset buttons** for quick filtering:
+
+```yaml
+brands:
+  - id: featured
+    label_key: "search.presets.featured" 
+    filters:
+      featured: true
+    icon: "star"
+  - id: founder-led
+    label_key: "search.presets.founder_led"
+    filters:
+      attributes: ["founder-led"]
+    icon: "user"
+```
+
+**Features:**
+- Translation-driven labels using `label_key`
+- Complex filter combinations support
+- Icon integration for visual hierarchy
+- Extensible for new preset types
+
+### Enhanced Component Defaults (`_data/component_defaults.yml`)
+
+**Comprehensive defaults organized by component type**, eliminating scattered `{% assign param = include.param | default: value %}` patterns:
+
+```yaml
+cards:
+  brand-card:
+    show_location: true
+    show_sector: true
+    tag_limit: 4
+    layout: "vertical"
+
+forms:
+  newsletter:
+    variant: "default"
+    show_privacy_notice: true
+    
+search:
+  search-filter:
+    debounce_delay: 300
+    max_results: 100
+    enable_presets: true
+```
+
+**Organization:**
+- **Cards**: Entry cards, brand cards, insight cards, founder cards
+- **Forms**: Contact forms, newsletter forms, validation settings
+- **Navigation**: Pagination, breadcrumbs
+- **Search**: Simple search, search filters, results display
+- **Images**: Collection images, responsive settings
+- **UI**: Social sharing, modals, alerts, loading spinners
+- **Dimensions**: Dimension clouds, lists, tags
+- **Maps**: Brand maps, zoom levels, clustering
+
+**Key Benefits:**
+- Eliminates hardcoded values in templates
+- Centralizes component behavior configuration
+- Supports null values that defer to translation helpers
+- Enables configuration-driven component changes
+
 ## Data Management
 
 ### JSON Generation

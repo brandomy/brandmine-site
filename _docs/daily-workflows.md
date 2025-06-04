@@ -73,6 +73,55 @@ mkdir -p assets/images/insights/originals/
 _scripts/process_images.sh insights
 ```
 
+### Adding a New Dimension
+
+**1. Add to central configuration:**
+```bash
+# Edit _data/dimensions_config.yml
+# Add new dimension with proper order number under appropriate type:
+dimensions:
+  sectors:  # or markets, attributes, signals
+    items:
+      - slug: new-dimension-slug
+        order: 17  # Next sequential number
+```
+
+**2. Create dimension files (all languages):**
+```bash
+# Create markdown files for all languages
+touch _dimensions/en/sectors/new-dimension-slug.md
+touch _dimensions/ru/sectors/new-dimension-slug.md  
+touch _dimensions/zh/sectors/new-dimension-slug.md
+
+# Add front matter and content to each file:
+# ---
+# name: "Dimension Name"
+# slug: "new-dimension-slug"
+# type: "sector"  # or market, attribute, signal
+# description: "Brief description"
+# ---
+```
+
+**3. Add translations:**
+```bash
+# Add dimension name to translation files
+# _data/translations/en.yml:
+dimensions:
+  sectors:
+    new-dimension-slug: "Dimension Display Name"
+
+# Repeat for ru.yml and zh.yml
+```
+
+**4. Automatic integration:**
+- **No template updates needed** - dimensions automatically appear in:
+  - Discovery page grids
+  - Search filters
+  - Dimension navigation
+  - Brand/founder taxonomy displays
+- Order controlled by `order` field in `dimensions_config.yml`
+- Display names driven by translation files
+
 ## Image Processing
 
 ### Standard Image Workflow
