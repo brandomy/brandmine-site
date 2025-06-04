@@ -5,7 +5,7 @@ PURPOSE: Display interactive map visualization and geographic context for brand 
 
 DATA SOURCES:
 - Primary: brand.location object (lat, lng, city, region, country)
-- Country Names: site.data.countries.countries[code].name[lang]
+- Country Names: site.data.countries_basic.countries[code].name[lang]
 - Data Format: Both YAML and JSON supported
 
 CONTEXT REQUIRED:
@@ -27,7 +27,7 @@ CONTENT STRUCTURE:
 
 DEPENDENCIES:
 - Helpers: helpers/t.html (translations)
-- Data: site.data.countries for localized country names
+- Data: site.data.countries_basic for localized country names
 - JavaScript: MapLibre GL JS, brand-map.js
 - CSS: pages/brand/location-intelligence.scss
 - Translations: brand.location_intelligence, brand.map_loading, brand.coordinates, discover.explore_market
@@ -61,8 +61,7 @@ DEPENDENCIES:
             {{ brand.location.city }}{% if brand.location.region %}, {{ brand.location.region }}{% endif %}
           </h3>
           <p class="location-context__country">
-            {% assign country_name = site.data.countries.countries[brand.location.country].name[brand.lang] %}
-            {{ country_name | default: brand.location.country }}
+            {% include components/helpers/country-name.html code=brand.location.country lang=brand.lang %}
           </p>
         </div>
         

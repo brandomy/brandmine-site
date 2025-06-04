@@ -106,9 +106,8 @@ Dependencies:
         <div class="filter-options">
           {% include helpers/dimension-data.html type="markets" %}
           {% for item in dimension_items %}
-            {% assign country_data = site.data.countries.countries[item.country_code] %}
-            {% if country_data %}
-              {% assign country_name = country_data.name[current_lang] | default: country_data.name.en %}
+            {% if item.country_code %}
+              {% capture country_name %}{% include components/helpers/country-name.html code=item.country_code lang=current_lang %}{% endcapture %}
             {% else %}
               {% assign country_name = item.slug | replace: "-", " " | capitalize %}
             {% endif %}

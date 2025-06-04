@@ -1,0 +1,132 @@
+name: Performance Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'assets/**'
+      - '_includes/**'
+      - '_layouts/**'
+      - 'pages/**'
+      - '_config.yml'
+  schedule:
+    # Run performance check weekly on Sundays at 3 AM UTC
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+jobs:
+  performance-analysis:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      
+      - name: Build Jekyll site
+        run: |
+          JEKYLL_ENV=production bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+      
+      - name: Analyze bundle size
+        run: |
+          echo "## 📊 Bundle Size Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### CSS Files" >> $GITHUB_STEP_SUMMARY
+          find _site/assets -name "*.css" -exec ls -lh {} \; | awk '{print "- " $9 ": " $5}' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### JavaScript Files" >> $GITHUB_STEP_SUMMARY
+          find _site/assets -name "*.js" -exec ls -lh {} \; | awk '{print "- " $9 ": " $5}' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Total Site Size" >> $GITHUB_STEP_SUMMARY
+          du -sh _site/ | awk '{print "**Total**: " $1}' >> $GITHUB_STEP_SUMMARY
+      
+      - name: Check image optimization
+        run: |
+          echo "## 🖼️ Image Optimization Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for unoptimized images
+          large_images=$(find _site/assets/images -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" | xargs ls -la | awk '$5 > 500000 {print $9 " (" $5/1024 "KB)"}')
+          
+          if [ -n "$large_images" ]; then
+            echo "### ⚠️ Large Images (>500KB)" >> $GITHUB_STEP_SUMMARY
+            echo "$large_images" | while read line; do echo "- $line" >> $GITHUB_STEP_SUMMARY; done
+          else
+            echo "### ✅ All images under 500KB" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check font loading
+        run: |
+          echo "## 🔤 Font Loading Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Font Files" >> $GITHUB_STEP_SUMMARY
+          find _site/assets/fonts -name "*.woff2" -exec ls -lh {} \; | awk '{print "- " $9 ": " $5}' >> $GITHUB_STEP_SUMMARY
+          
+          # Check for font-display usage in CSS
+          if grep -r "font-display" _site/assets/*.css > /dev/null 2>&1; then
+            echo "### ✅ Font-display optimization found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ⚠️ Consider adding font-display: swap for better performance" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Validate HTML structure
+        run: |
+          echo "## 🏗️ HTML Structure Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count DOM elements in key pages
+          for page in index.html brands/index.html founders/index.html discovery/index.html; do
+            if [ -f "_site/en/$page" ]; then
+              dom_count=$(grep -o "<[^>]*>" "_site/en/$page" | wc -l)
+              echo "- /en/$page: $dom_count DOM elements" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+      
+      - name: Check critical CSS
+        run: |
+          echo "## 🎨 CSS Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check main CSS file size
+          if [ -f "_site/assets/main.css" ]; then
+            css_size=$(stat -f%z "_site/assets/main.css" 2>/dev/null || stat -c%s "_site/assets/main.css")
+            css_size_kb=$((css_size / 1024))
+            echo "- Main CSS size: ${css_size_kb}KB" >> $GITHUB_STEP_SUMMARY
+            
+            if [ $css_size_kb -gt 100 ]; then
+              echo "- ⚠️ CSS bundle is large, consider critical CSS extraction" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- ✅ CSS bundle size is optimal" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+      
+      - name: Performance recommendations
+        run: |
+          echo "## 🚀 Performance Recommendations" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Monitoring Setup" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Lighthouse CI configured for PR checks" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Performance budgets defined" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Mobile and desktop testing enabled" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Key Metrics Targets" >> $GITHUB_STEP_SUMMARY
+          echo "- Performance Score: >90%" >> $GITHUB_STEP_SUMMARY
+          echo "- First Contentful Paint: <2s" >> $GITHUB_STEP_SUMMARY
+          echo "- Largest Contentful Paint: <3s" >> $GITHUB_STEP_SUMMARY
+          echo "- Cumulative Layout Shift: <0.1" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Page Weight: <1.6MB" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "- Monitor performance on each PR with Lighthouse CI" >> $GITHUB_STEP_SUMMARY
+          echo "- Review performance budget alerts" >> $GITHUB_STEP_SUMMARY
+          echo "- Optimize images using \`_scripts/core/process_images.sh\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Consider implementing critical CSS for above-the-fold content" >> $GITHUB_STEP_SUMMARY

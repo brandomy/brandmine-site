@@ -96,8 +96,7 @@ NOTES: Displays up to 4 expertise tags. Shows generation badge and cross-border 
       {% if founder.location.city %}{{ founder.location.city }}{% endif %}
       {% if founder.location.city and founder.location.country %}, {% endif %}
       {% if founder.location.country %}
-        {% assign country_name = site.data.countries.countries[founder.location.country].name[page.lang] | default: founder.location.country %}
-        {{ country_name }}
+        {% include components/helpers/country-name.html code=founder.location.country lang=page.lang %}
       {% endif %}
     </div>
   </div>

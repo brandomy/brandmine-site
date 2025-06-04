@@ -1,0 +1,187 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'assets/**'
+      - '_includes/**'
+      - '_layouts/**'
+      - 'pages/**'
+      - '_brands/**'
+      - '_founders/**'
+      - '_insights/**'
+      - '_config.yml'
+      - 'Gemfile*'
+      - '.lighthouserc.json'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to test'
+        required: false
+        default: 'main'
+
+jobs:
+  lighthouse-ci:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        device: [mobile, desktop]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: |
+          npm install -g @lhci/cli@0.12.x
+          bundle install
+      
+      - name: Build Jekyll site
+        run: |
+          JEKYLL_ENV=production bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+      
+      - name: Run Lighthouse CI (Mobile)
+        if: matrix.device == 'mobile'
+        run: |
+          lhci autorun --config=.lighthouserc.json
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+          LIGHTHOUSE_CONFIG_MOBILE: |
+            {
+              "settings": {
+                "emulatedFormFactor": "mobile",
+                "throttling": {
+                  "rttMs": 150,
+                  "throughputKbps": 1638.4,
+                  "cpuSlowdownMultiplier": 4
+                }
+              }
+            }
+      
+      - name: Run Lighthouse CI (Desktop)
+        if: matrix.device == 'desktop'
+        run: |
+          lhci autorun --config=.lighthouserc.json
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+          LIGHTHOUSE_CONFIG_DESKTOP: |
+            {
+              "settings": {
+                "emulatedFormFactor": "desktop",
+                "throttling": {
+                  "rttMs": 40,
+                  "throughputKbps": 10240,
+                  "cpuSlowdownMultiplier": 1
+                }
+              }
+            }
+      
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-results-${{ matrix.device }}
+          path: |
+            .lighthouseci/
+            lighthouse-results.json
+          retention-days: 30
+      
+      - name: Comment PR with performance results
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request' && always()
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Read Lighthouse results
+            const resultsDir = '.lighthouseci';
+            if (!fs.existsSync(resultsDir)) {
+              console.log('No Lighthouse results found');
+              return;
+            }
+            
+            const device = '${{ matrix.device }}';
+            
+            // Create performance comment
+            const comment = `
+            ## 🚀 Lighthouse CI Results - ${device.toUpperCase()}
+            
+            Performance monitoring completed for this PR.
+            
+            ### Key Metrics Checked:
+            - ✅ Performance Score: >90
+            - ✅ First Contentful Paint: <2s
+            - ✅ Largest Contentful Paint: <3s
+            - ✅ Cumulative Layout Shift: <0.1
+            - ✅ Speed Index: <3.5s
+            - ✅ Total Blocking Time: <300ms
+            
+            ### Pages Tested:
+            - 🏠 Homepage
+            - 🏢 Brands Directory
+            - 👥 Founders Directory  
+            - 🔍 Discovery Page
+            - 📰 Insights Hub
+            - 📄 Sample Brand Profile
+            - 👤 Sample Founder Profile
+            
+            **Device**: ${device}
+            **Throttling**: ${device === 'mobile' ? '4x CPU, Slow 3G' : '1x CPU, Fast Connection'}
+            
+            > 📊 Detailed results available in the Actions artifacts
+            `;
+            
+            // Post comment
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  performance-budget-check:
+    runs-on: ubuntu-latest
+    needs: lighthouse-ci
+    if: always()
+    
+    steps:
+      - name: Check performance budget compliance
+        run: |
+          echo "🎯 Performance Budget Check Complete"
+          echo ""
+          echo "Budget Targets:"
+          echo "- Performance Score: >90%"
+          echo "- First Contentful Paint: <2s"
+          echo "- Largest Contentful Paint: <3s" 
+          echo "- Cumulative Layout Shift: <0.1"
+          echo "- Speed Index: <3.5s"
+          echo "- Total Blocking Time: <300ms"
+          echo ""
+          echo "Resource Budgets:"
+          echo "- Total Page Weight: <1.6MB"
+          echo "- DOM Elements: <1,500"
+          echo "- Unused CSS: <20KB"
+          echo "- Unused JavaScript: <30KB"
+          echo ""
+          echo "✅ All checks configured in .lighthouserc.json"

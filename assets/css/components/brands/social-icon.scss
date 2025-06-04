@@ -9,141 +9,141 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: var(--size-9);
+  height: var(--size-9);
+  border-radius: var(--radius-full);
   background-color: var(--neutral-100);
   color: var(--neutral-700);
   transition: all 0.2s ease;
   text-decoration: none;
 
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(var(--space-1));
   }
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: var(--size-4);
+    height: var(--size-4);
   }
 
   /* Size variations */
   &--small {
-    width: 30px;
-    height: 30px;
+    width: var(--size-7);
+    height: var(--size-7);
 
     svg {
-      width: 14px;
-      height: 14px;
+      width: var(--size-3);
+      height: var(--size-3);
     }
   }
 
   &--large {
-    width: 44px;
-    height: 44px;
+    width: var(--size-11);
+    height: var(--size-11);
 
     svg {
-      width: 22px;
-      height: 22px;
+      width: var(--size-5);
+      height: var(--size-5);
     }
   }
 
   /* Platform-specific colors */
   &--facebook {
-    background-color: #1877F2;
+    background-color: var(--social-facebook);
     color: white;
 
     &:hover {
-      background-color: darken(#1877F2, 10%);
+      background-color: var(--social-facebook-hover);
     }
   }
 
   &--twitter, &--x {
-    background-color: #000000;
+    background-color: var(--social-twitter);
     color: white;
 
     &:hover {
-      background-color: #333333;
+      background-color: var(--social-twitter-hover);
     }
   }
 
   &--instagram {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background-color: var(--social-instagram);
     color: white;
 
     &:hover {
-      opacity: 0.9;
+      background-color: var(--social-instagram-hover);
     }
   }
 
   &--linkedin {
-    background-color: #0A66C2;
+    background-color: var(--social-linkedin);
     color: white;
 
     &:hover {
-      background-color: darken(#0A66C2, 10%);
+      background-color: var(--social-linkedin-hover);
     }
   }
 
   &--youtube {
-    background-color: #FF0000;
+    background-color: var(--social-youtube);
     color: white;
 
     &:hover {
-      background-color: darken(#FF0000, 10%);
+      background-color: var(--social-youtube-hover);
     }
   }
 
   &--telegram {
-    background-color: #26A5E4;
+    background-color: var(--social-telegram);
     color: white;
 
     &:hover {
-      background-color: darken(#26A5E4, 10%);
+      background-color: var(--social-telegram-hover);
     }
   }
 
   &--vk {
-    background-color: #0077FF;
+    background-color: var(--social-vk);
     color: white;
 
     &:hover {
-      background-color: darken(#0077FF, 10%);
+      background-color: var(--social-vk-hover);
     }
   }
 
   &--weibo {
-    background-color: #DF2029;
+    background-color: var(--social-weibo);
     color: white;
 
     &:hover {
-      background-color: darken(#DF2029, 10%);
+      background-color: var(--social-weibo-hover);
     }
   }
 
   &--wechat {
-    background-color: #07C160;
+    background-color: var(--social-wechat);
     color: white;
 
     &:hover {
-      background-color: darken(#07C160, 10%);
+      background-color: var(--social-wechat-hover);
     }
   }
 
   &--website {
-    background-color: var(--primary-500);
+    background-color: var(--social-website);
     color: white;
 
     &:hover {
-      background-color: var(--primary-600);
+      background-color: var(--social-website-hover);
     }
   }
 
   &--email {
-    background-color: var(--neutral-600);
+    background-color: var(--social-email);
     color: white;
 
     &:hover {
-      background-color: var(--neutral-700);
+      background-color: var(--social-email-hover);
     }
   }
 
@@ -153,16 +153,16 @@
     border: 1px solid currentColor;
 
     &.social-icon--facebook {
-      color: #1877F2;
+      color: var(--social-facebook);
       background-color: transparent;
 
       &:hover {
-        background-color: var(--facebook-alpha);
+        background-color: var(--neutral-alpha-10);
       }
     }
 
     &.social-icon--twitter, &.social-icon--x {
-      color: #000000;
+      color: var(--social-twitter);
       background-color: transparent;
 
       &:hover {

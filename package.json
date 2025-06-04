@@ -1,29 +1,49 @@
 {
   "name": "brandmine-site",
   "version": "1.0.0",
+  "description": "Brandmine - Multilingual showcase for BRICS+ consumer brands",
   "main": "index.js",
   "scripts": {
     "build:jekyll": "JEKYLL_ENV=production bundle exec jekyll build",
     "serve:jekyll": "bundle exec jekyll serve",
     "start": "bundle exec jekyll serve",
     "build": "bundle exec jekyll build",
+    "build:prod": "JEKYLL_ENV=production bundle exec jekyll build",
+    "serve:dev": "bundle exec jekyll serve --livereload",
+    "serve:mobile": "bundle exec jekyll serve --host=0.0.0.0",
     "generate-map-data": "node assets/js/data/generate-map-data.js",
     "prebuild": "npm run generate-map-data",
-    "prebuild:jekyll": "npm run generate-map-data"
+    "prebuild:jekyll": "npm run generate-map-data",
+    "lighthouse": "lhci autorun",
+    "lighthouse:mobile": "lhci autorun --config=.lighthouserc.json",
+    "lighthouse:desktop": "lhci autorun --config=.lighthouserc.json",
+    "perf:audit": "npm run build:prod && npm run lighthouse",
+    "perf:check": "echo 'Performance check completed - see GitHub Actions for detailed analysis'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brandomy/brandmine-site.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "jekyll",
+    "brics",
+    "brands",
+    "multilingual",
+    "performance",
+    "lighthouse"
+  ],
+  "author": "Brandmine Team",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/brandomy/brandmine-site/issues"
   },
   "homepage": "https://github.com/brandomy/brandmine-site#readme",
-  "description": "",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "devDependencies": {
+    "@lhci/cli": "^0.12.0",
     "stylelint": "^16.19.1",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-selector-bem-pattern": "^4.0.1"

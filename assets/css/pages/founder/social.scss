@@ -12,9 +12,9 @@
   }
 
   &-link {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: var(--size-9);
+    height: var(--size-9);
+    border-radius: var(--radius-full);
     background-color: var(--color-gray-100);
     display: flex;
     align-items: center;
@@ -26,7 +26,7 @@
     &:hover {
       background-color: var(--color-primary-500);
       color: white;
-      transform: translateY(-2px);
+      transform: translateY(var(--space-1));
     }
 
     /* Social media brand colors */
@@ -35,19 +35,19 @@
     }
 
     &--linkedin:hover {
-      background-color: #0077b5;
+      background-color: var(--social-linkedin-hover);
     }
 
     &--twitter:hover {
-      background-color: #1da1f2;
+      background-color: var(--social-twitter-hover);
     }
 
     &--telegram:hover {
-      background-color: #08c;
+      background-color: var(--social-telegram-hover);
     }
 
     &--wechat:hover {
-      background-color: #07C160;
+      background-color: var(--social-wechat-hover);
     }
   }
 }

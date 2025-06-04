@@ -222,12 +222,4 @@ NOTES: Includes consent checkbox with privacy policy link. Success/error states 
   </form>
 </div>
 
-<!-- Include the custom contact form JavaScript -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('{{ form_id }}');
-  if (form) {
-    initializeCustomContactForm('{{ form_id }}');
-  }
-});
-</script>
+<!-- Form initialization handled by main.js via data-custom-form attribute -->

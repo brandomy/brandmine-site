@@ -227,12 +227,4 @@ NOTES: Screen reader labels included. Success/error animations. Privacy policy l
 }
 </style>
 
-<!-- Include the custom newsletter JavaScript -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('{{ form_id }}');
-  if (form) {
-    initializeCustomNewsletter('{{ form_id }}');
-  }
-});
-</script>
+<!-- Form initialization handled by main.js via data-newsletter-form attribute -->

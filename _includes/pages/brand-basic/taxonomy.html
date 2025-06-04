@@ -15,8 +15,7 @@
           <li><strong>Founded:</strong> {{ brand.founding_year }}</li>
         {% endif %}
         {% if brand.location.country %}
-          {% assign country_name = site.data.countries.countries[brand.location.country].name[brand.lang] %}
-          <li><strong>Country:</strong> {{ country_name }}</li>
+          <li><strong>Country:</strong> {% include components/helpers/country-name.html code=brand.location.country lang=brand.lang %}</li>
         {% endif %}
         {% if brand.sectors and brand.sectors.size > 0 %}
           <li><strong>Industry:</strong>

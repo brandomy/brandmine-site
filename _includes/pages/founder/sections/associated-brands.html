@@ -65,7 +65,7 @@
             {% if brand.location.city %}{{ brand.location.city }}{% endif %}
             {% if brand.location.city and brand.location.country %}, {% endif %}
             {% if brand.location.country_code %}
-              {{ site.data.countries.countries[brand.location.country_code].name[founder.lang] | default: brand.location.country }}
+              {% include components/helpers/country-name.html code=brand.location.country_code lang=founder.lang %}
             {% elsif brand.location.country %}
               {{ brand.location.country }}
             {% endif %}

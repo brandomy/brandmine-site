@@ -48,45 +48,24 @@ DEPENDENCIES:
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/site/favicons/apple-touch-icon.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/site/favicons/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/site/favicons/favicon-16x16.png' | relative_url }}">
-  <link rel="shortcut icon" href="{{ '/assets/images/site/favicons/favicon.ico' | relative_url }}">
   <link rel="manifest" href="{{ '/assets/images/site/favicons/site.webmanifest' | relative_url }}">
 
-  <!-- Style Sheets -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-  <!-- end of Style Sheets -->
 
-  <!-- Font preloading for performance -->
-  <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <!-- Font Preloading for Performance -->
   <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-
-  <!-- Conditional preloading for Chinese fonts -->
+  <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  
   {% if page.lang == 'zh' %}
-    <link rel="preload" href="{{ '/assets/fonts/NotoSerifSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/NotoSansSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/NotoSerifSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {% endif %}
-
-  <!-- Font Awesome icons -->
-  <script src="https://kit.fontawesome.com/6c425ae2ba.js" crossorigin="anonymous"></script>
-
-  <!-- Premium Content -->
-  <script src="{{ '/assets/js/components/premium-content.js' | relative_url }}"></script>
-
-  <!-- MailerLite Universal -->
-  <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '1377139');
-  </script>
-  <!-- End MailerLite Universal -->
-
-  <!-- Tally popup script -->
-  <script async src="https://tally.so/widgets/embed.js"></script>
-
-  <!-- Google Analytics -->
-  {% include utilities/google-analytics.html %}
 </head>
 
-<body class="{% include helpers/body-class.html %}">
+<body class="{{ page.ref | default: page.layout }}-page">
   {% include layout/header.html %}
+
   <main class="layout">
     <div class="layout__wrapper">
       <div class="layout__content">
@@ -96,6 +75,58 @@ DEPENDENCIES:
   </main>
 
   {% include layout/footer.html %}
+  
+  <!-- Core Components -->
   <script src="{{ '/assets/js/components/header.js' | relative_url }}"></script>
+  
+  <!-- Conditional Components Based on Layout -->
+  {% case page.layout %}
+    {% when 'brands' %}
+      <script src="{{ '/assets/js/components/search-filter.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/brands/brands-filtering.js' | relative_url }}"></script>
+    {% when 'founders' %}
+      <script src="{{ '/assets/js/components/search-filter.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/founders/founders.js' | relative_url }}"></script>
+    {% when 'discovery' %}
+      <script src="{{ '/assets/js/components/search-filter.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/discovery/discovery.js' | relative_url }}"></script>
+    {% when 'insights' %}
+      <script src="{{ '/assets/js/components/insights-carousel.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/insights/insights-pagination.js' | relative_url }}"></script>
+    {% when 'insight-article' %}
+      <script src="{{ '/assets/js/components/insights-carousel.js' | relative_url }}"></script>
+    {% when 'dimension' %}
+      <script src="{{ '/assets/js/pages/dimension/dimension-filtering.js' | relative_url }}"></script>
+  {% endcase %}
+  
+  <!-- Optional Components Based on Page Features -->
+  {% if page.custom_forms %}
+    <script src="{{ '/assets/js/components/custom-forms.js' | relative_url }}"></script>
+  {% endif %}
+  
+  {% if page.has_carousel %}
+    <script src="{{ '/assets/js/components/founder-carousel.js' | relative_url }}"></script>
+  {% endif %}
+  
+  <!-- UI Components -->
+  {% if content contains 'class="modal"' or content contains 'openModal(' %}
+    <script src="{{ '/assets/js/components/modal.js' | relative_url }}"></script>
+  {% endif %}
+  
+  {% if content contains 'data-map-container' %}
+    <script>
+      window.STADIA_MAPS_API_KEY = '{{ site.stadia_maps_api_key }}';
+    </script>
+    <script src="{{ '/assets/js/components/map-initializer.js' | relative_url }}"></script>
+  {% endif %}
+  
+  <!-- Central Initialization -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  
+  <!-- Analytics -->
+  {% include utilities/google-analytics.html %}
 </body>
 </html>

@@ -24,7 +24,7 @@ CONTENT STRUCTURE:
 
 DEPENDENCIES:
 - Helpers: helpers/t.html (translations)
-- Data: site.data.countries for market names
+- Data: site.data.countries_basic for market names
 - CSS: pages/brand/business-intelligence.scss
 - Translations: brand.*, tags.signals, distribution_models.*, buttons.get_in_touch
 {% endcomment %}
@@ -47,8 +47,7 @@ DEPENDENCIES:
           <p class="business-signal__description">
             {% include helpers/t.html key="brand.currently_exporting" fallback="Currently exporting to" lang=brand.lang %}:
             {% for market_code in brand.export_markets %}
-              {% assign market_name = site.data.countries.countries[market_code].name[brand.lang] | default: market_code %}
-              {{ market_name }}{% unless forloop.last %}, {% endunless %}
+              {% include components/helpers/country-name.html code=market_code lang=brand.lang %}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
           </p>
         {% endif %}

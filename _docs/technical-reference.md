@@ -37,6 +37,145 @@ brands:
 {% include helpers/page-sections.html page_type="brands" %}
 ```
 
+## Countries Data System
+
+### Two-Tier Architecture
+
+Brandmine implements a **two-tier country data system** optimized for performance and multilingual support:
+
+**Tier 1: Basic Data** (`_data/countries.json`)
+- Country names in EN/RU/ZH
+- ISO alpha3 codes
+- Fast access for common operations
+- ~250 countries, minimal data per country
+
+**Tier 2: Detailed Regional Data** (`_data/countries/{region}.json`)
+- Complete country information (currency, capital, phone codes, etc.)
+- Organized by region: `asia.json`, `europe.json`, `americas.json`, `africa.json`, `oceania.json`, `brics.json`
+- Loaded only when detailed data is needed
+
+### Data Structure
+
+**Basic Data Structure** (`countries.json`):
+```json
+{
+  "countries": {
+    "th": {
+      "name": {"en": "Thailand", "ru": "Таиланд", "zh": "泰国"},
+      "alpha3": "THA"
+    }
+  }
+}
+```
+
+**Detailed Regional Data Structure** (`asia.json`):
+```json
+{
+  "countries": {
+    "th": {
+      "name": {"en": "Thailand", "ru": "Таиланд", "zh": "泰国"},
+      "alpha3": "THA",
+      "numeric": "764",
+      "region": "Asia",
+      "currency": "THB",
+      "capital": {"en": "Bangkok", "ru": "Бангкок", "zh": "曼谷"},
+      "continent": {"en": "Asia", "ru": "Азия", "zh": "亚洲"},
+      "phone_code": "+66",
+      "tld": ".th",
+      "emoji": "🇹🇭",
+      "primary_language": "th"
+    }
+  }
+}
+```
+
+### Usage Patterns
+
+**Direct Basic Access:**
+```liquid
+{{ site.data.countries_basic.countries.th.name.en }}
+<!-- Output: Thailand -->
+
+{{ site.data.countries_basic.countries.th.alpha3 }}
+<!-- Output: THA -->
+```
+
+**Direct Detailed Access:**
+```liquid
+{{ site.data.countries.asia.countries.th.currency }}
+<!-- Output: THB -->
+
+{{ site.data.countries.asia.countries.th.capital.ru }}
+<!-- Output: Бангкок -->
+```
+
+**Helper-Based Access** (Recommended):
+```liquid
+{% comment %} Basic data - fast access {% endcomment %}
+{% include helpers/country-lookup.html country_code="th" property="name" %}
+<!-- Output: Thailand (auto-detects language) -->
+
+{% comment %} Detailed data - auto-detects regional file {% endcomment %}
+{% include helpers/country-lookup.html country_code="th" data_type="detailed" property="currency" %}
+<!-- Output: THB -->
+
+{% comment %} Localized detailed data {% endcomment %}
+{% include helpers/country-lookup.html country_code="th" data_type="detailed" property="capital" lang="ru" %}
+<!-- Output: Бангкок -->
+```
+
+### Country Lookup Helper
+
+**File**: `_includes/helpers/country-lookup.html`
+
+**Parameters**:
+- `country_code` (required): ISO 2-letter country code
+- `data_type`: `"basic"` (default) or `"detailed"`
+- `property`: Specific property to return
+- `lang`: Language code (`en`, `ru`, `zh`)
+- `fallback`: Default value if data not found
+
+**Auto-Detection**: Helper automatically detects which regional file contains the country data.
+
+**Error Handling**: Graceful fallback to English, then to fallback value.
+
+**Performance**: Basic data loads from single file, detailed data loads appropriate regional file only when needed.
+
+### Regional File Organization
+
+| Region | File | Coverage |
+|--------|------|----------|
+| **Asia** | `asia.json` | Asian countries including Middle East |
+| **Europe** | `europe.json` | European countries |
+| **Americas** | `americas.json` | North, Central, and South America |
+| **Africa** | `africa.json` | African countries |
+| **Oceania** | `oceania.json` | Australia, New Zealand, Pacific islands |
+| **BRICS** | `brics.json` | BRICS+ member countries with additional trade data |
+
+### Integration with Dimensions
+
+Regional markets added to `_data/dimensions_config.yml`:
+```yaml
+markets:
+  items:
+    # Individual countries...
+    - slug: americas
+      order: 14
+    - slug: europe  
+      order: 15
+    - slug: africa
+      order: 16
+    - slug: oceania
+      order: 17
+```
+
+### Performance Characteristics
+
+- **Basic access**: Single JSON parse, ~2KB overhead
+- **Detailed access**: Loads appropriate 15-30KB regional file
+- **Caching**: Jekyll caches all data files in memory during build
+- **Multilingual**: No performance penalty for language switching
+
 ### Linear Layout System
 
 **NO SIDEBARS** - All layouts use simple section flow:
