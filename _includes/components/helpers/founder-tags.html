@@ -13,7 +13,7 @@
 {% comment %} Markets {% endcomment %}
 {% if include.markets %}
   {% for market in include.markets limit:2 %}
-    {% assign market_name = site.data.countries[page.lang][market].name | default: market %}
+    {% assign market_name = site.data.countries.countries[market].name[page.lang] | default: market %}
     <span class="founder-card__tag founder-card__tag--market">
       {{ market_name }}
     </span>

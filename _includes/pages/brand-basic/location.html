@@ -14,7 +14,7 @@
         <div class="location-details">
           <h3>{{ brand.location.city }}, {{ brand.location.region }}</h3>
           {% if brand.location.country %}
-            {% assign country_name = site.data.countries[brand.location.country].name[brand.lang] %}
+            {% assign country_name = site.data.countries.countries[brand.location.country].name[brand.lang] %}
             <p class="country-context">Located in {{ country_name }}</p>
           {% endif %}
         </div>
