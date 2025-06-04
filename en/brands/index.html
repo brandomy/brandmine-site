@@ -43,48 +43,19 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/site/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/site/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/site/favicons/favicon-16x16.png">
-  <link rel="shortcut icon" href="/assets/images/site/favicons/favicon.ico">
   <link rel="manifest" href="/assets/images/site/favicons/site.webmanifest">
 
-  <!-- Style Sheets -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/main.css">
-  <!-- end of Style Sheets -->
 
-  <!-- Font preloading for performance -->
-  <link rel="preload" href="/assets/fonts/pt-serif_regular.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Font Preloading for Performance -->
   <link rel="preload" href="/assets/fonts/pt-sans_regular.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- Conditional preloading for Chinese fonts -->
+  <link rel="preload" href="/assets/fonts/pt-serif_regular.woff2" as="font" type="font/woff2" crossorigin>
   
-
-  <!-- Font Awesome icons -->
-  <script src="https://kit.fontawesome.com/6c425ae2ba.js" crossorigin="anonymous"></script>
-
-  <!-- Premium Content -->
-  <script src="/assets/js/components/premium-content.js"></script>
-
-  <!-- MailerLite Universal -->
-  <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '1377139');
-  </script>
-  <!-- End MailerLite Universal -->
-
-  <!-- Tally popup script -->
-  <script async src="https://tally.so/widgets/embed.js"></script>
-
-  <!-- Google Analytics -->
   
-
-
 </head>
 
-<body class="
-
-
-
-  brands-page
-">
+<body class="brands-page">
   
 
 
@@ -281,6 +252,7 @@
   </ul>
 </nav>
 </header>
+
   <main class="layout">
     <div class="layout__wrapper">
       <div class="layout__content">
@@ -1003,8 +975,8 @@ Serra Verde Organics
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  BR
+  <!-- Output the country name in the requested language -->
+  Brazil
 
 
     
@@ -1408,8 +1380,8 @@ Sojourn Boutique Hotels
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  BR
+  <!-- Output the country name in the requested language -->
+  Brazil
 
 
     
@@ -1824,8 +1796,8 @@ Altai Gold Honey
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -2247,8 +2219,8 @@ Seven Spices of Siberia
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -2677,8 +2649,8 @@ Taiga Spirits
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -3093,8 +3065,8 @@ TeaTime
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -3667,8 +3639,8 @@ TeaTime
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -4038,8 +4010,8 @@ TeaTime
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -4401,8 +4373,8 @@ TeaTime
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -4772,8 +4744,8 @@ TeaTime
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  RU
+  <!-- Output the country name in the requested language -->
+  Russia
 
 
     
@@ -5147,8 +5119,8 @@ TeaTime
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  BR
+  <!-- Output the country name in the requested language -->
+  Brazil
 
 
     
@@ -5510,8 +5482,8 @@ TeaTime
 
 <!-- Check if we found country information -->
 
-  <!-- If no country info found, just output the code itself -->
-  BR
+  <!-- Output the country name in the requested language -->
+  Brazil
 
 
     
@@ -5892,9 +5864,7 @@ TeaTime
 
 </div>
 
-<!-- JavaScript for brand filtering and display -->
-<script src="/assets/js/pages/brands/brands-filtering.js"></script>
-<script src="/assets/js/components/search-placeholder.js"></script>
+<!-- Brand-specific scripts are loaded by default.html based on layout -->
 
       </div>
     </div>
@@ -6316,6 +6286,33 @@ TeaTime
     </p>
   </div>
 </footer>
+  
+  <!-- Core Components -->
   <script src="/assets/js/components/header.js"></script>
+  
+  <!-- Conditional Components Based on Layout -->
+  
+      <script src="/assets/js/components/search-filter.js"></script>
+      <script src="/assets/js/components/search-placeholder.js"></script>
+      <script src="/assets/js/pages/brands/brands-filtering.js"></script>
+    
+  
+  <!-- Optional Components Based on Page Features -->
+  
+  
+  
+  
+  <!-- UI Components -->
+  
+  
+  
+  
+  <!-- Central Initialization -->
+  <script src="/assets/js/main.js"></script>
+  
+  <!-- Analytics -->
+  
+
+
 </body>
 </html>

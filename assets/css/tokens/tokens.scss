@@ -156,6 +156,42 @@
     /* Journal Slate - Use existing neutrals */
     --journal-slate-light: var(--neutral-600);  /* Use existing neutral-600 */
     --journal-slate-dark:  var(--neutral-800);  /* Use existing neutral-800 */
+
+    /* ==========================================================================
+       Social Media Brand Colors
+       ==========================================================================
+       Consistent social media brand colors used across components.
+    */
+
+    /* Social Platform Colors */
+    --social-facebook: #1877F2;
+    --social-linkedin: #0A66C2;
+    --social-twitter: #1DA1F2;
+    --social-youtube: #FF0000;
+    --social-instagram: #E4405F;
+    --social-telegram: #0088CC;
+    --social-vk: #4C75A3;
+    --social-weibo: #D52B1E;
+    --social-wechat: #09B83E;
+    --social-douyin: #000000;
+    --social-xiaohongshu: #FF2442;
+    --social-email: #34495E;
+    --social-website: #6B7280;
+
+    /* Social Media Hover Colors */
+    --social-facebook-hover: #1864C7;
+    --social-linkedin-hover: #094F9A;
+    --social-twitter-hover: #1A8CD8;
+    --social-youtube-hover: #CC0000;
+    --social-instagram-hover: #C13584;
+    --social-telegram-hover: #006699;
+    --social-vk-hover: #3D5A82;
+    --social-weibo-hover: #AA2217;
+    --social-wechat-hover: #078A32;
+    --social-douyin-hover: #161823;
+    --social-xiaohongshu-hover: #E01E3A;
+    --social-email-hover: #2C3E50;
+    --social-website-hover: #4B5563;
 }
 
 /* ==========================================================================
@@ -286,16 +322,37 @@
      4. SPACING
      ========================================================================== */
   :root {
+    --space-0:  0;
     --space-1:  0.25rem;
     --space-2:  0.5rem;
     --space-3:  0.75rem;
     --space-4:  1rem;
+    --space-5:  1.25rem;
     --space-6:  1.5rem;
+    --space-7:  1.75rem;
     --space-8:  2rem;
+    --space-9:  2.25rem;
     --space-10: 2.5rem;
+    --space-11: 2.75rem;
     --space-12: 3rem;
+    --space-14: 3.5rem;
     --space-16: 4rem;
+    --space-18: 4.5rem;
     --space-20: 5rem;
+    --space-24: 6rem;
+    --space-28: 7rem;
+    --space-32: 8rem;
+    --space-36: 9rem;
+    --space-40: 10rem;
+    --space-44: 11rem;
+    --space-48: 12rem;
+    --space-52: 13rem;
+    --space-56: 14rem;
+    --space-60: 15rem;
+    --space-64: 16rem;
+    --space-72: 18rem;
+    --space-80: 20rem;
+    --space-96: 24rem;
   }
 
   /* ==========================================================================
@@ -314,23 +371,79 @@
   /* 6.1 Border & Radius Tokens */
   :root {
     /* A unified scale for border radii used throughout the system. */
+    --radius-none: 0;
     --radius-xs: 0.125rem; /* 2px */
     --radius-sm: 0.25rem;  /* 4px */
     --radius-md: 0.5rem;   /* 8px */
     --radius-lg: 1rem;     /* 16px */
     --radius-xl: 1.5rem;   /* 24px */
+    --radius-2xl: 2rem;    /* 32px */
+    --radius-3xl: 3rem;    /* 48px */
+    --radius-full: 50%;    /* Full circle/pill shape */
 
     /* Specific token for card components; can be adjusted independently if needed */
     --radius-card: 0.75rem; /* 12px */
+    
+    /* Border widths */
+    --border-width-0: 0;
     --border-width-thin: 1px;
     --border-width-medium: 2px;
-    --border-width-thick: 4px;
+    --border-width-thick: 3px;
+    --border-width-heavy: 4px;
+    --border-width-ultra: 5px;
   }
 
   /* 6.2 Layout Tokens */
   :root {
+    /* Content widths */
+    --content-width-sm: 640px;
+    --content-width-md: 768px;
+    --content-width-lg: 1024px;
+    --content-width-xl: 1200px;
+    --content-width-2xl: 1400px;
+    
+    /* Form and component specific widths */
     --form-max-width: 700px;
+    --form-min-width: 280px;
     --container-max-width: 1200px; /* General container maximum width */
+    --search-filter-width: 300px;
+    --sidebar-width: 280px;
+    --card-min-width: 280px;
+    --card-max-width: 400px;
+    
+    /* Height values */
+    --header-height: 80px;
+    --hero-height-sm: 300px;
+    --hero-height-md: 400px;
+    --hero-height-lg: 500px;
+    --hero-height-xl: 600px;
+    --hero-height-full: 100vh;
+    
+    /* Common sizing values */
+    --size-1: 0.25rem;   /* 4px */
+    --size-2: 0.5rem;    /* 8px */
+    --size-3: 0.75rem;   /* 12px */
+    --size-4: 1rem;      /* 16px */
+    --size-5: 1.25rem;   /* 20px */
+    --size-6: 1.5rem;    /* 24px */
+    --size-7: 1.75rem;   /* 28px */
+    --size-8: 2rem;      /* 32px */
+    --size-9: 2.25rem;   /* 36px */
+    --size-10: 2.5rem;   /* 40px */
+    --size-11: 2.75rem;  /* 44px */
+    --size-12: 3rem;     /* 48px */
+    --size-14: 3.5rem;   /* 56px */
+    --size-16: 4rem;     /* 64px */
+    --size-20: 5rem;     /* 80px */
+    --size-24: 6rem;     /* 96px */
+    --size-32: 8rem;     /* 128px */
+    --size-40: 10rem;    /* 160px */
+    --size-48: 12rem;    /* 192px */
+    --size-56: 14rem;    /* 224px */
+    --size-64: 16rem;    /* 256px */
+    --size-72: 18rem;    /* 288px */
+    --size-80: 20rem;    /* 320px */
+    --size-96: 24rem;    /* 384px */
   }
 
 

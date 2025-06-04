@@ -1,0 +1,645 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 Performance Monitoring Setup</title>
+
+  <!-- SEO Components -->
+  
+    <meta name="description" content="
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Illuminating and Elevating Founder-led Brands from the BRICS+
+">
+  
+
+  <!-- Schema.org markup -->
+  
+
+
+
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/site/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/site/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/site/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/site/favicons/site.webmanifest">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- Font Preloading for Performance -->
+  <link rel="preload" href="/assets/fonts/pt-sans_regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/pt-serif_regular.woff2" as="font" type="font/woff2" crossorigin>
+  
+  
+</head>
+
+<body class="default-page">
+  
+
+
+
+<header class="header">
+  <div class="header__container">
+    <!-- Logo and Toggle -->
+    <div class="header__branding">
+      <a class="header__title" href="//">
+        
+        
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine
+
+      </a>
+      <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="header__toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+    
+    <!-- Language Switcher -->
+    <div class="header__lang">
+      
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  
+
+<nav class="header__nav" id="main-nav">
+  <ul class="header__nav-list">
+    
+    
+    
+    
+      
+      
+      
+      
+    
+  </ul>
+</nav>
+</header>
+
+  <main class="layout">
+    <div class="layout__wrapper">
+      <div class="layout__content">
+        <h1 id="-performance-monitoring-setup">🚀 Performance Monitoring Setup</h1>
+
+<p><strong>Status</strong>: ✅ <strong>FULLY CONFIGURED</strong></p>
+
+<p>This document outlines the comprehensive performance monitoring implementation for the Brandmine Jekyll site.</p>
+
+<h2 id="-overview">📊 Overview</h2>
+
+<p>Performance monitoring has been implemented using <strong>Lighthouse CI</strong> with automated testing on every pull request. The system tracks key performance metrics and enforces performance budgets to catch regressions as the site scales.</p>
+
+<h2 id="️-configuration-files">🛠️ Configuration Files</h2>
+
+<h3 id="1-lighthouse-ci-configuration-lighthousercjson">1. Lighthouse CI Configuration (<code class="language-plaintext highlighter-rouge">.lighthouserc.json</code>)</h3>
+<p><strong>Purpose</strong>: Main configuration for Lighthouse CI with performance budgets and assertions</p>
+
+<p><strong>Key Features</strong>:</p>
+<ul>
+  <li>Tests 7 critical pages (home, brands, founders, discovery, insights, sample profiles)</li>
+  <li>Runs 3 times per page for reliable results</li>
+  <li>Enforces strict performance budgets</li>
+  <li>Includes accessibility, SEO, and best practices checks</li>
+</ul>
+
+<p><strong>Performance Budgets</strong>:</p>
+<ul>
+  <li>Performance Score: &gt;90%</li>
+  <li>First Contentful Paint: &lt;2s</li>
+  <li>Largest Contentful Paint: &lt;3s</li>
+  <li>Cumulative Layout Shift: &lt;0.1</li>
+  <li>Speed Index: &lt;3.5s</li>
+  <li>Total Blocking Time: &lt;300ms</li>
+</ul>
+
+<h3 id="2-resource-budgets-lighthouse-budgetjson">2. Resource Budgets (<code class="language-plaintext highlighter-rouge">lighthouse-budget.json</code>)</h3>
+<p><strong>Purpose</strong>: Detailed resource size and count budgets per page type</p>
+
+<p><strong>Budgets Include</strong>:</p>
+<ul>
+  <li>Total page weight: &lt;1.6MB</li>
+  <li>CSS files: &lt;100KB</li>
+  <li>JavaScript files: &lt;200KB</li>
+  <li>Images: &lt;800KB</li>
+  <li>Fonts: &lt;200KB</li>
+</ul>
+
+<h3 id="3-github-actions-workflows">3. GitHub Actions Workflows</h3>
+
+<h4 id="lighthouse-ci-workflow-githubworkflowslighthouse-ciyml"><strong>Lighthouse CI Workflow</strong> (<code class="language-plaintext highlighter-rouge">.github/workflows/lighthouse-ci.yml</code>)</h4>
+<ul>
+  <li><strong>Triggers</strong>: Pull requests, workflow dispatch</li>
+  <li><strong>Matrix Strategy</strong>: Mobile and desktop testing</li>
+  <li><strong>Features</strong>:
+    <ul>
+      <li>Automatic Jekyll build</li>
+      <li>Lighthouse CI execution with proper throttling</li>
+      <li>Results uploaded as artifacts</li>
+      <li>PR comments with performance summary</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="performance-check-workflow-githubworkflowsperformance-checkyml"><strong>Performance Check Workflow</strong> (<code class="language-plaintext highlighter-rouge">.github/workflows/performance-check.yml</code>)</h4>
+<ul>
+  <li><strong>Triggers</strong>: Push to main, PR, weekly schedule</li>
+  <li><strong>Features</strong>:
+    <ul>
+      <li>Bundle size analysis</li>
+      <li>Image optimization check</li>
+      <li>Font loading analysis</li>
+      <li>HTML structure validation</li>
+      <li>Performance recommendations</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-performance-targets">📈 Performance Targets</h2>
+
+<h3 id="core-web-vitals">Core Web Vitals</h3>
+<p>| Metric | Target | Budget Level |
+|——–|——–|————–|
+| <strong>First Contentful Paint</strong> | &lt;2s | Error |
+| <strong>Largest Contentful Paint</strong> | &lt;3s | Error |
+| <strong>Cumulative Layout Shift</strong> | &lt;0.1 | Error |
+| <strong>Speed Index</strong> | &lt;3.5s | Error |
+| <strong>Total Blocking Time</strong> | &lt;300ms | Error |</p>
+
+<h3 id="overall-scores">Overall Scores</h3>
+<p>| Category | Target | Budget Level |
+|———-|——–|————–|
+| <strong>Performance</strong> | &gt;90% | Error |
+| <strong>Accessibility</strong> | &gt;95% | Error |
+| <strong>Best Practices</strong> | &gt;90% | Error |
+| <strong>SEO</strong> | &gt;95% | Error |</p>
+
+<h3 id="resource-budgets">Resource Budgets</h3>
+<p>| Resource Type | Budget | Pages |
+|—————|——–|——-|
+| <strong>Total Size</strong> | 1.6MB | All pages |
+| <strong>CSS</strong> | 100KB | All pages |
+| <strong>JavaScript</strong> | 200KB | All pages |
+| <strong>Images</strong> | 800KB | All pages |
+| <strong>Fonts</strong> | 200KB | All pages |</p>
+
+<h2 id="-local-testing">🔧 Local Testing</h2>
+
+<h3 id="install-dependencies">Install Dependencies</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> @lhci/cli
+</code></pre></div></div>
+
+<h3 id="run-performance-audit">Run Performance Audit</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Build site and run full Lighthouse audit</span>
+npm run perf:audit
+
+<span class="c"># Run Lighthouse CI only</span>
+npm run lighthouse
+
+<span class="c"># Build production version</span>
+npm run build:prod
+</code></pre></div></div>
+
+<h3 id="test-configuration">Test Configuration</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Test with relaxed budgets</span>
+lhci autorun <span class="nt">--config</span><span class="o">=</span>.lighthouserc.test.json
+</code></pre></div></div>
+
+<h2 id="-cicd-integration">🎯 CI/CD Integration</h2>
+
+<h3 id="pull-request-flow">Pull Request Flow</h3>
+<ol>
+  <li><strong>Trigger</strong>: PR created/updated affecting performance-related files</li>
+  <li><strong>Build</strong>: Jekyll site built in production mode</li>
+  <li><strong>Test</strong>: Lighthouse CI runs on mobile and desktop</li>
+  <li><strong>Report</strong>: Results posted as PR comment and uploaded as artifacts</li>
+  <li><strong>Gates</strong>: Performance budgets must pass for PR approval</li>
+</ol>
+
+<h3 id="monitored-file-paths">Monitored File Paths</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">assets/**</code> - CSS, JS, images, fonts</li>
+  <li><code class="language-plaintext highlighter-rouge">_includes/**</code> - Layout components</li>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/**</code> - Page layouts</li>
+  <li><code class="language-plaintext highlighter-rouge">pages/**</code> - Content pages</li>
+  <li><code class="language-plaintext highlighter-rouge">_brands/**</code>, <code class="language-plaintext highlighter-rouge">_founders/**</code>, <code class="language-plaintext highlighter-rouge">_insights/**</code> - Content collections</li>
+  <li><code class="language-plaintext highlighter-rouge">_config.yml</code> - Site configuration</li>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile*</code> - Dependencies</li>
+  <li><code class="language-plaintext highlighter-rouge">.lighthouserc.json</code> - Performance configuration</li>
+</ul>
+
+<h3 id="artifacts">Artifacts</h3>
+<ul>
+  <li>Lighthouse reports (30-day retention)</li>
+  <li>Performance metrics JSON</li>
+  <li>Bundle size analysis</li>
+  <li>Image optimization report</li>
+</ul>
+
+<h2 id="-mobile-vs-desktop-testing">📱 Mobile vs Desktop Testing</h2>
+
+<h3 id="mobile-configuration">Mobile Configuration</h3>
+<ul>
+  <li><strong>Emulation</strong>: Mobile device</li>
+  <li><strong>Throttling</strong>: 4x CPU slowdown, Slow 3G (1.6 Mbps)</li>
+  <li><strong>Network</strong>: 150ms RTT</li>
+  <li><strong>Focus</strong>: Touch interfaces, mobile-first design</li>
+</ul>
+
+<h3 id="desktop-configuration">Desktop Configuration</h3>
+<ul>
+  <li><strong>Emulation</strong>: Desktop device</li>
+  <li><strong>Throttling</strong>: 1x CPU, Fast connection (10 Mbps)</li>
+  <li><strong>Network</strong>: 40ms RTT</li>
+  <li><strong>Focus</strong>: Large screen optimization, desktop features</li>
+</ul>
+
+<h2 id="-performance-budget-enforcement">🚨 Performance Budget Enforcement</h2>
+
+<h3 id="error-level-blocks-pr">Error Level (Blocks PR)</h3>
+<ul>
+  <li>Performance score below 90%</li>
+  <li>Core Web Vitals exceeding targets</li>
+  <li>Unminified CSS/JavaScript</li>
+  <li>Missing font-display optimization</li>
+</ul>
+
+<h3 id="warning-level-requires-review">Warning Level (Requires Review)</h3>
+<ul>
+  <li>Unused CSS/JavaScript above thresholds</li>
+  <li>Large images (&gt;500KB)</li>
+  <li>DOM size over 1,500 elements</li>
+  <li>Total page weight approaching 1.6MB</li>
+</ul>
+
+<h2 id="-monitoring-pages">📊 Monitoring Pages</h2>
+
+<p>The system monitors these critical user journeys:</p>
+
+<ol>
+  <li><strong>Homepage</strong> (<code class="language-plaintext highlighter-rouge">/en/</code>) - First impression, hero content</li>
+  <li><strong>Brands Directory</strong> (<code class="language-plaintext highlighter-rouge">/en/brands/</code>) - Main discovery page with filtering</li>
+  <li><strong>Founders Directory</strong> (<code class="language-plaintext highlighter-rouge">/en/founders/</code>) - Founder profiles with search</li>
+  <li><strong>Discovery Hub</strong> (<code class="language-plaintext highlighter-rouge">/en/discovery/</code>) - Dimension-based navigation</li>
+  <li><strong>Insights Hub</strong> (<code class="language-plaintext highlighter-rouge">/en/insights/</code>) - Content and blog functionality</li>
+  <li><strong>Brand Profile</strong> (<code class="language-plaintext highlighter-rouge">/en/brands/ru-teatime/</code>) - Detailed brand showcase</li>
+  <li><strong>Founder Profile</strong> (<code class="language-plaintext highlighter-rouge">/en/founders/ru-alexei-sokolov/</code>) - Individual founder story</li>
+</ol>
+
+<h2 id="-weekly-reports">🔄 Weekly Reports</h2>
+
+<p>Automated weekly performance reports run every Sunday at 3 AM UTC, providing:</p>
+<ul>
+  <li>Performance trend analysis</li>
+  <li>Bundle size tracking</li>
+  <li>Image optimization opportunities</li>
+  <li>Font loading recommendations</li>
+  <li>Overall site health metrics</li>
+</ul>
+
+<h2 id="-best-practices-integration">🎯 Best Practices Integration</h2>
+
+<h3 id="image-optimization">Image Optimization</h3>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">_scripts/core/process_images.sh</code> for image processing</li>
+  <li>Maintain 3:2, 2:3, and 1:1 aspect ratios</li>
+  <li>Target &lt;500KB per image</li>
+  <li>Implement responsive image sets</li>
+</ul>
+
+<h3 id="css-optimization">CSS Optimization</h3>
+<ul>
+  <li>Follow BEM methodology for maintainable CSS</li>
+  <li>Use CSS custom properties for consistent theming</li>
+  <li>Monitor unused CSS with Lighthouse CI</li>
+  <li>Consider critical CSS extraction for above-the-fold content</li>
+</ul>
+
+<h3 id="javascript-performance">JavaScript Performance</h3>
+<ul>
+  <li>Utilize the centralized main.js initialization system</li>
+  <li>Implement conditional component loading</li>
+  <li>Use intersection observers for lazy loading</li>
+  <li>Monitor Total Blocking Time for JavaScript efficiency</li>
+</ul>
+
+<h2 id="-future-enhancements">🚀 Future Enhancements</h2>
+
+<h3 id="immediate-opportunities">Immediate Opportunities</h3>
+<ol>
+  <li><strong>Critical CSS</strong>: Extract above-the-fold CSS for faster rendering</li>
+  <li><strong>Service Worker</strong>: Implement caching for repeat visits</li>
+  <li><strong>Image Formats</strong>: WebP/AVIF format adoption</li>
+  <li><strong>Code Splitting</strong>: Dynamic imports for page-specific JavaScript</li>
+</ol>
+
+<h3 id="advanced-monitoring">Advanced Monitoring</h3>
+<ol>
+  <li><strong>Real User Monitoring (RUM)</strong>: Track actual user performance</li>
+  <li><strong>Performance Analytics</strong>: User experience correlation</li>
+  <li><strong>Regional Testing</strong>: Performance across BRICS+ markets</li>
+  <li><strong>A/B Testing</strong>: Performance impact of design changes</li>
+</ol>
+
+<h2 id="-resources">📚 Resources</h2>
+
+<h3 id="documentation">Documentation</h3>
+<ul>
+  <li><a href="https://github.com/GoogleChrome/lighthouse-ci">Lighthouse CI Documentation</a></li>
+  <li><a href="https://web.dev/vitals/">Web Vitals Guide</a></li>
+  <li><a href="https://web.dev/performance-budgets-101/">Performance Budgets</a></li>
+</ul>
+
+<h3 id="tools">Tools</h3>
+<ul>
+  <li><a href="https://pagespeed.web.dev/">PageSpeed Insights</a></li>
+  <li><a href="https://www.webpagetest.org/">WebPageTest</a></li>
+  <li><a href="https://developer.chrome.com/docs/devtools/performance/">Chrome DevTools Performance Panel</a></li>
+</ul>
+
+<hr />
+
+<p><strong>Implementation Date</strong>: January 4, 2025<br />
+<strong>Last Updated</strong>: January 4, 2025<br />
+<strong>Status</strong>: Production Ready ✅</p>
+
+      </div>
+    </div>
+  </main>
+
+  
+
+
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__section footer__section--left">
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+</p>
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  202401005480 (1551330-P)
+</p>
+      <div class="language-selector footer__lang">
+        
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--center">
+      
+      
+      <p class="footer__tagline"><em>
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  ✨Illuminating and elevating exceptional founder-led brands from the BRICS+
+</em></p>
+      <div class="footer__social">
+        
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--right">
+      <div class="footer__newsletter">
+        <div class="newsletter-wrapper">
+          
+            <div class="ml-embedded" data-form="480swE"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__copyright">
+    <p class="footer__text">
+      
+      
+      © 2025 
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+.
+      
+      
+      
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  All rights reserved.
+
+      |
+      
+    </p>
+  </div>
+</footer>
+  
+  <!-- Core Components -->
+  <script src="/assets/js/components/header.js"></script>
+  
+  <!-- Conditional Components Based on Layout -->
+  
+  
+  <!-- Optional Components Based on Page Features -->
+  
+  
+  
+  
+  <!-- UI Components -->
+  
+  
+  
+  
+  <!-- Central Initialization -->
+  <script src="/assets/js/main.js"></script>
+  
+  <!-- Analytics -->
+  
+
+
+</body>
+</html>
