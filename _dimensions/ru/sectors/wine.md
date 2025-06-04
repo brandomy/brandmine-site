@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-wine
-layout: dimension
+layout: dimension-profile
 title: "Вино"
 dimension: wine
 category: sector

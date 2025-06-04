@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-regional-icon
-layout: dimension
+layout: dimension-profile
 title: "区域标志"
 dimension: regional-icon
 category: attribute

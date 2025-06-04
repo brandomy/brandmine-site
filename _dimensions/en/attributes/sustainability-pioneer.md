@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-sustainability-pioneer
-layout: dimension
+layout: dimension-profile
 title: "Sustainability Pioneer"
 dimension: sustainability-pioneer
 category: attribute

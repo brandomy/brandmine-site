@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-cultural-bridge
-layout: dimension
+layout: dimension-profile
 title: "文化桥梁"
 dimension: cultural-bridge
 category: attribute

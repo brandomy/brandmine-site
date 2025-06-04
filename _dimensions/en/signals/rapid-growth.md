@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: signal-rapid-growth
-layout: dimension
+layout: dimension-profile
 title: "Rapid Growth"
 dimension: rapid-growth
 category: signal

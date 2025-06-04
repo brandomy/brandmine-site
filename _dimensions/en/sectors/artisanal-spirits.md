@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-artisanal-spirits
-layout: dimension
+layout: dimension-profile
 title: "Artisanal Spirits & Vodka"
 dimension: artisanal-spirits
 category: sector

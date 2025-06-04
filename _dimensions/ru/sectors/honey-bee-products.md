@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-honey-bee-products
-layout: dimension
+layout: dimension-profile
 title: "Мёд и продукты пчеловодства"
 dimension: honey-bee-products
 category: sector

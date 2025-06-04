@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-halal-foods
-layout: dimension
+layout: dimension-profile
 title: "Халяльные продукты питания"
 dimension: halal-foods
 category: sector

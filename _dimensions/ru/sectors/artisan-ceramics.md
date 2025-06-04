@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-artisan-ceramics
-layout: dimension
+layout: dimension-profile
 title: "Фарфор и керамика"
 dimension: artisan-ceramics
 category: sector

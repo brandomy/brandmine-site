@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-heritage-brand
-layout: dimension
+layout: dimension-profile
 title: "Heritage Brand"
 dimension: heritage-brand
 category: attribute

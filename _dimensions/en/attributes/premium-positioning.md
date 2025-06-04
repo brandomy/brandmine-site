@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-premium-positioning
-layout: dimension
+layout: dimension-profile
 title: "Premium Positioning"
 dimension: premium-positioning
 category: attribute

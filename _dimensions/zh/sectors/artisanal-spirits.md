@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-artisanal-spirits
-layout: dimension
+layout: dimension-profile
 title: "手工烈酒与伏特加"
 dimension: artisanal-spirits
 category: sector

@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: signal-[SLUG]
-layout: dimension
+layout: dimension-profile
 title: "[SIGNAL_NAME]"
 dimension: [SLUG]
 category: signal

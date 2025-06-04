@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-founder-led
-layout: dimension
+layout: dimension-profile
 title: "创始人领导"
 dimension: founder-led
 category: attribute

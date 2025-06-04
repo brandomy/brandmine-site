@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-natural-beauty
-layout: dimension
+layout: dimension-profile
 title: "Натуральные косметические продукты"
 dimension: natural-beauty
 category: sector

@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-sustainability-pioneer
-layout: dimension
+layout: dimension-profile
 title: "可持续先锋"
 dimension: sustainability-pioneer
 category: attribute

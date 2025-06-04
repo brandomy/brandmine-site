@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-fashion-accessories
-layout: dimension
+layout: dimension-profile
 title: "Fashion & Accessories"
 dimension: fashion-accessories
 category: sector

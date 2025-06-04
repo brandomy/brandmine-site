@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-[SLUG]
-layout: dimension
+layout: dimension-profile
 title: "[ATTRIBUTE_NAME]"
 dimension: [SLUG]
 category: attribute

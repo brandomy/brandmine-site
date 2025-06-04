@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-hotels-resorts
-layout: dimension
+layout: dimension-profile
 title: "Hotels & Resorts"
 dimension: hotels-resorts
 category: sector

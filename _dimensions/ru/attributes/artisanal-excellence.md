@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: attribute-artisanal-excellence
-layout: dimension
+layout: dimension-profile
 title: "Ремесленное совершенство"
 dimension: artisanal-excellence
 category: attribute

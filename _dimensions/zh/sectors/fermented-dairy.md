@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-fermented-dairy
-layout: dimension
+layout: dimension-profile
 title: "发酵乳制品（开菲尔）"
 dimension: fermented-dairy
 category: sector

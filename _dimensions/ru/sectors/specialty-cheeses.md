@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-specialty-cheeses
-layout: dimension
+layout: dimension-profile
 title: "Специальные сыры"
 dimension: specialty-cheeses
 category: sector

@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-cultural-bridge
-layout: dimension
+layout: dimension-profile
 title: "Cultural Bridge"
 dimension: cultural-bridge
 category: attribute

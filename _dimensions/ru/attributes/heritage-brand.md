@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: attribute-heritage-brand
-layout: dimension
+layout: dimension-profile
 title: "Исторический бренд"
 dimension: heritage-brand
 category: attribute

@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-cured-meats
-layout: dimension
+layout: dimension-profile
 title: "Salami & Cured Meats"
 dimension: cured-meats
 category: sector

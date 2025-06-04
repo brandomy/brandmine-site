@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-fashion-accessories
-layout: dimension
+layout: dimension-profile
 title: "时尚与配饰"
 dimension: fashion-accessories
 category: sector

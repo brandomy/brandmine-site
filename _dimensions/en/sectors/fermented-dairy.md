@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-fermented-dairy
-layout: dimension
+layout: dimension-profile
 title: "Fermented Dairy (Kefir)"
 dimension: fermented-dairy
 category: sector

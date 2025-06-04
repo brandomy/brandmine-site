@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-mineral-waters
-layout: dimension
+layout: dimension-profile
 title: "Mineral Waters"
 dimension: mineral-waters
 category: sector

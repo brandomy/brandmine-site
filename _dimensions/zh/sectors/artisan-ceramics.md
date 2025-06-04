@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-artisan-ceramics
-layout: dimension
+layout: dimension-profile
 title: "手工瓷器与陶瓷"
 dimension: artisan-ceramics
 category: sector

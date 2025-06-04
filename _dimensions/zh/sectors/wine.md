@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-wine
-layout: dimension
+layout: dimension-profile
 title: "葡萄酒"
 dimension: wine
 category: sector

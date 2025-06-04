@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: signal-export-ready
-layout: dimension
+layout: dimension-profile
 title: "出口就绪"
 dimension: export-ready
 category: signal

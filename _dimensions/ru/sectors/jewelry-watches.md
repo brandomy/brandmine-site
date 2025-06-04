@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-jewelry-watches
-layout: dimension
+layout: dimension-profile
 title: "Ювелирные изделия и часы"
 dimension: jewelry-watches
 category: sector

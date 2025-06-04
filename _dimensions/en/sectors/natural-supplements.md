@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-natural-supplements
-layout: dimension
+layout: dimension-profile
 title: "Natural Supplements"
 dimension: natural-supplements
 category: sector

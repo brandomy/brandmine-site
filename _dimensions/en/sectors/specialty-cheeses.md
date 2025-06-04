@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-specialty-cheeses
-layout: dimension
+layout: dimension-profile
 title: "Specialty Cheeses"
 dimension: specialty-cheeses
 category: sector

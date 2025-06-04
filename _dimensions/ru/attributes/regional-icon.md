@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: attribute-regional-icon
-layout: dimension
+layout: dimension-profile
 title: "Региональная икона"
 dimension: regional-icon
 category: attribute

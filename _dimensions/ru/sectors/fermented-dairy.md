@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-fermented-dairy
-layout: dimension
+layout: dimension-profile
 title: "Ферментированные молочные продукты (Кефир)"
 dimension: fermented-dairy
 category: sector

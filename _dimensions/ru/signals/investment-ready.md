@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: signal-investment-ready
-layout: dimension
+layout: dimension-profile
 title: "Готовность к инвестициям"
 dimension: investment-ready
 category: signal

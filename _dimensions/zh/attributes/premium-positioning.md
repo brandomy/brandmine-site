@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-premium-positioning
-layout: dimension
+layout: dimension-profile
 title: "高端定位"
 dimension: premium-positioning
 category: attribute

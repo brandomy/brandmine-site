@@ -1,5 +1,5 @@
 ---
-layout: dimension
+layout: dimension-profile
 title: Wine & Spirits
 tag_type: sector
 tag: wine

@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-specialty-cheeses
-layout: dimension
+layout: dimension-profile
 title: "特色奶酪"
 dimension: specialty-cheeses
 category: sector

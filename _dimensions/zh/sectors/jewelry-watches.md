@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-jewelry-watches
-layout: dimension
+layout: dimension-profile
 title: "珠宝与手表"
 dimension: jewelry-watches
 category: sector

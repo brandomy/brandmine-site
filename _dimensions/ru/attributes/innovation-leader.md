@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: attribute-innovation-leader
-layout: dimension
+layout: dimension-profile
 title: "Лидер инноваций"
 dimension: innovation-leader
 category: attribute

@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: signal-franchise-ready
-layout: dimension
+layout: dimension-profile
 title: "特许经营就绪"
 dimension: franchise-ready
 category: signal

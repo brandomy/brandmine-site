@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-[SLUG]
-layout: dimension
+layout: dimension-profile
 title: "[SECTOR_NAME]"
 dimension: [SLUG]
 category: sector

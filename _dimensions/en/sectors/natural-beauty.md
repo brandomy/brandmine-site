@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-natural-beauty
-layout: dimension
+layout: dimension-profile
 title: "Natural Beauty Products"
 dimension: natural-beauty
 category: sector

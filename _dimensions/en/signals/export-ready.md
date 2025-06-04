@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: signal-export-ready
-layout: dimension
+layout: dimension-profile
 title: "Export-Ready"
 dimension: export-ready
 category: signal

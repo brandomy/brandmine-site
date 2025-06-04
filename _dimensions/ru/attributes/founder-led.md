@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: attribute-founder-led
-layout: dimension
+layout: dimension-profile
 title: "Управляемые основателями"
 dimension: founder-led
 category: attribute

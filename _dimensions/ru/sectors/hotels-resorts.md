@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-hotels-resorts
-layout: dimension
+layout: dimension-profile
 title: "Отели и курорты"
 dimension: hotels-resorts
 category: sector

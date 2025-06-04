@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-natural-supplements
-layout: dimension
+layout: dimension-profile
 title: "天然食品补充剂"
 dimension: natural-supplements
 category: sector

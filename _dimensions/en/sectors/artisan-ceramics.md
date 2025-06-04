@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-artisan-ceramics
-layout: dimension
+layout: dimension-profile
 title: "Artisan Porcelain & Ceramics"
 dimension: artisan-ceramics
 category: sector

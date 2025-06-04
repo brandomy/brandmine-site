@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: attribute-sustainability-pioneer
-layout: dimension
+layout: dimension-profile
 title: "Пионер устойчивого развития"
 dimension: sustainability-pioneer
 category: attribute

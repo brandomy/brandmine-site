@@ -1,8 +1,8 @@
 ---
 lang: zh
 ref: sector-hotels-resorts
-layout: dimension
-layout: dimension
+layout: dimension-profile
+layout: dimension-profile
 title: "酒店与度假村"
 dimension: hotels-resorts
 category: sector

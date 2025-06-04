@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-mineral-waters
-layout: dimension
+layout: dimension-profile
 title: "Минеральные воды"
 dimension: mineral-waters
 category: sector

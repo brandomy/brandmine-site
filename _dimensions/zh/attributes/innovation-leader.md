@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-innovation-leader
-layout: dimension
+layout: dimension-profile
 title: "创新领袖"
 dimension: innovation-leader
 category: attribute

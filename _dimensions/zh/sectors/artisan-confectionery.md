@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-artisan-confectionery
-layout: dimension
+layout: dimension-profile
 title: "手工糖果"
 dimension: artisan-confectionery
 category: sector

@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: signal-rapid-growth
-layout: dimension
+layout: dimension-profile
 title: "快速增长"
 dimension: rapid-growth
 category: signal

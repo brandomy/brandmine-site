@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-artisanal-excellence
-layout: dimension
+layout: dimension-profile
 title: "匠心卓越"
 dimension: artisanal-excellence
 category: attribute

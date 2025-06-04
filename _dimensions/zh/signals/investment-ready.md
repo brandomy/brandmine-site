@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: signal-investment-ready
-layout: dimension
+layout: dimension-profile
 title: "投资就绪"
 dimension: investment-ready
 category: signal

@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-cured-meats
-layout: dimension
+layout: dimension-profile
 title: "Салями и вяленые мясопродукты"
 dimension: cured-meats
 category: sector

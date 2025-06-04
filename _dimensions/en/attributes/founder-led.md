@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-founder-led
-layout: dimension
+layout: dimension-profile
 title: "Founder-Led"
 dimension: founder-led
 category: attribute

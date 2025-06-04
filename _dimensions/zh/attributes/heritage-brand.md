@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: attribute-heritage-brand
-layout: dimension
+layout: dimension-profile
 title: "传承品牌"
 dimension: heritage-brand
 category: attribute

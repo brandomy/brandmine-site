@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-jewelry-watches
-layout: dimension
+layout: dimension-profile
 title: "Jewelry & Watches"
 dimension: jewelry-watches
 category: sector

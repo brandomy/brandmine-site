@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-honey-bee-products
-layout: dimension
+layout: dimension-profile
 title: "蜂蜜与蜂产品"
 dimension: honey-bee-products
 category: sector

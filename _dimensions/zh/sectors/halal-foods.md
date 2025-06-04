@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-halal-foods
-layout: dimension
+layout: dimension-profile
 title: "清真食品"
 dimension: halal-foods
 category: sector

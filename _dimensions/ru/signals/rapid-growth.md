@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: signal-rapid-growth
-layout: dimension
+layout: dimension-profile
 title: "Быстрый рост"
 dimension: rapid-growth
 category: signal

@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: attribute-cultural-bridge
-layout: dimension
+layout: dimension-profile
 title: "Культурный мост"
 dimension: cultural-bridge
 category: attribute

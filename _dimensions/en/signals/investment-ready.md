@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: signal-investment-ready
-layout: dimension
+layout: dimension-profile
 title: "Investment Ready"
 dimension: investment-ready
 category: signal

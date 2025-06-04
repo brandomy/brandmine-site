@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-halal-foods
-layout: dimension
+layout: dimension-profile
 title: "Halal Food Products"
 dimension: halal-foods
 category: sector

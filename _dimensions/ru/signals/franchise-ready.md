@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: signal-franchise-ready
-layout: dimension
+layout: dimension-profile
 title: "Готовность к франчайзингу"
 dimension: franchise-ready
 category: signal

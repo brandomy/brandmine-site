@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-wine
-layout: dimension
+layout: dimension-profile
 title: "Wine"
 dimension: wine
 category: sector

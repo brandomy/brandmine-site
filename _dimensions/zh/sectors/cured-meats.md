@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-cured-meats
-layout: dimension
+layout: dimension-profile
 title: "萨拉米香肠和腌制肉品"
 dimension: cured-meats
 category: sector

@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-innovation-leader
-layout: dimension
+layout: dimension-profile
 title: "Innovation Leader"
 dimension: innovation-leader
 category: attribute

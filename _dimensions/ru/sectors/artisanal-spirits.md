@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-artisanal-spirits
-layout: dimension
+layout: dimension-profile
 title: "Ремесленные спиртные напитки и водка"
 dimension: artisanal-spirits
 category: sector

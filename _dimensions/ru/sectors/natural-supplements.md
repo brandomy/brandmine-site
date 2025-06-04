@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-natural-supplements
-layout: dimension
+layout: dimension-profile
 title: "Натуральные пищевые добавки"
 dimension: natural-supplements
 category: sector

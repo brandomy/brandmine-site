@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-regional-icon
-layout: dimension
+layout: dimension-profile
 title: "Regional Icon"
 dimension: regional-icon
 category: attribute

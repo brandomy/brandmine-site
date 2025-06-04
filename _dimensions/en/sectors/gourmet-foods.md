@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-gourmet-foods
-layout: dimension
+layout: dimension-profile
 title: "Gourmet Foods"
 dimension: gourmet-foods
 category: sector

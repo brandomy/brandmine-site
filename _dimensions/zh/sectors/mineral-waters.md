@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-mineral-waters
-layout: dimension
+layout: dimension-profile
 title: "矿泉水"
 dimension: mineral-waters
 category: sector

@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-artisan-confectionery
-layout: dimension
+layout: dimension-profile
 title: "Artisan Confectionery"
 dimension: artisan-confectionery
 category: sector

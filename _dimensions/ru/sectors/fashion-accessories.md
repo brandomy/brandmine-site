@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-fashion-accessories
-layout: dimension
+layout: dimension-profile
 title: "Мода и аксессуары"
 dimension: fashion-accessories
 category: sector

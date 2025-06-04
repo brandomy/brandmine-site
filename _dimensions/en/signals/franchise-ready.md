@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: signal-franchise-ready
-layout: dimension
+layout: dimension-profile
 title: "Franchise Ready"
 dimension: franchise-ready
 category: signal

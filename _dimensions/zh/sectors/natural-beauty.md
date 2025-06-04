@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-natural-beauty
-layout: dimension
+layout: dimension-profile
 title: "天然美容产品"
 dimension: natural-beauty
 category: sector

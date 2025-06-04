@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: market-[SLUG]
-layout: dimension
+layout: dimension-profile
 title: "[MARKET_NAME]"
 dimension: [SLUG]
 category: market

@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: signal-export-ready
-layout: dimension
+layout: dimension-profile
 title: "Готовность к экспорту"
 dimension: export-ready
 category: signal

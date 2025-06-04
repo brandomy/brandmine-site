@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: attribute-artisanal-excellence
-layout: dimension
+layout: dimension-profile
 title: "Artisanal Excellence"
 dimension: artisanal-excellence
 category: attribute

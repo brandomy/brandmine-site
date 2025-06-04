@@ -1,7 +1,7 @@
 ---
 lang: en
 ref: sector-honey-bee-products
-layout: dimension
+layout: dimension-profile
 title: "Honey & Bee Products"
 dimension: honey-bee-products
 category: sector

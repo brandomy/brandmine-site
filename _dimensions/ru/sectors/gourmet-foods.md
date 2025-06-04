@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-gourmet-foods
-layout: dimension
+layout: dimension-profile
 title: "Изысканные продукты питания"
 dimension: gourmet-foods
 category: sector

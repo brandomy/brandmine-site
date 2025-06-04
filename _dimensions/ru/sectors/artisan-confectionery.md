@@ -1,7 +1,7 @@
 ---
 lang: ru
 ref: sector-artisan-confectionery
-layout: dimension
+layout: dimension-profile
 title: "Ремесленные кондитерские изделия"
 dimension: artisan-confectionery
 category: sector
