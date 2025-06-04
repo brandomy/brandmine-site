@@ -154,8 +154,6 @@
 
 <p>This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.</p>
 
-<p>This file provides Claude Code and other AI tools with the architectural context and development practices used in the Brandmine website project.</p>
-
 <hr />
 
 <h1 id="-project-overview">🧭 Project Overview</h1>
@@ -189,7 +187,7 @@ _layouts/             — Jekyll layouts (default, brand, sector, dimension, etc
 _insights/{lang}/     — Insight article content
 pages/{lang}/         — Main content pages (about, brands, discovery, etc.)
 assets/               — CSS, JS, fonts, images
-_docs/                — Project documentation and guidelines (minimal foundation)
+_docs/                — Project documentation and guidelines
 _templates/{type}/    — Markdown and HTML templates for scaffolding
 _scripts/             — CLI scripts organized by function (validation, image processing, etc.)
 _exports/             — Exported artifacts (search index, reports)
@@ -213,9 +211,10 @@ index.html            — Entry point redirect to /en/index.html
   <li><code class="language-plaintext highlighter-rouge">markets</code> — e.g. brazil, china, egypt, ethiopia, india, indonesia, iran, malaysia, mongolia, russia, south-africa, uae</li>
   <li><code class="language-plaintext highlighter-rouge">sectors</code> — e.g. artisan-ceramics, artisan-confectionery, artisanal-spirits, cured-meats</li>
   <li><code class="language-plaintext highlighter-rouge">attributes</code> — e.g. artisanal-excellence, cultural-bridge, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer</li>
-  <li><code class="language-plaintext highlighter-rouge">signals</code> — e.g. export-ready, franchise-ready, investment-ready, rapid-growth
-You can review the full set of valid slugs in the corresponding <code class="language-plaintext highlighter-rouge">_dimensions/{lang}/{type}/</code> directories.</li>
+  <li><code class="language-plaintext highlighter-rouge">signals</code> — e.g. export-ready, franchise-ready, investment-ready, rapid-growth</li>
 </ul>
+
+<p>You can review the full set of valid slugs in the corresponding <code class="language-plaintext highlighter-rouge">_dimensions/{lang}/{type}/</code> directories.</p>
 
 <p>Brands reference dimensions in front matter like this:</p>
 
@@ -228,398 +227,23 @@ You can review the full set of valid slugs in the corresponding <code class="lan
 <span class="nn">---</span>
 </code></pre></div></div>
 
-<p>Rendering includes:</p>
+<p><strong>CRITICAL TAXONOMY RULES:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">dimension-cloud.html</code>, <code class="language-plaintext highlighter-rouge">dimension-list.html</code>, <code class="language-plaintext highlighter-rouge">related-brands-list.html</code></li>
+  <li>Do <strong>not create new dimension types</strong>. Always use the four approved ones.</li>
+  <li>Dimension filtering occurs on <code class="language-plaintext highlighter-rouge">/brands</code>, and dimension exploration happens via <code class="language-plaintext highlighter-rouge">/discover</code></li>
+  <li>Dimensions are defined as individual Markdown files and referenced in brand front matter using the correct slug</li>
 </ul>
 
 <hr />
 
-<h1 id="-includes-organization">📁 Includes Organization</h1>
+<h1 id="-architecture-overview">📁 Architecture Overview</h1>
 
-<p>Includes are organized into a structured hierarchy:</p>
+<h2 id="logic-light-design-philosophy">“Logic Light” Design Philosophy</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/_includes/
-  components/           — Reusable UI components
-    brands/             — Brand-specific components
-    buttons/            — Button components
-    cards/              — Card components
-    carousels/          — Carousel components
-    content/            — Content display components
-    dimensions/         — Dimension-related components
-    forms/              — Form components (modular: input, textarea, select, contact, newsletter, validation, custom alternatives)
-    helpers/            — Small components
-    icons/              — Icon components
-    images/             — Image handling components
-    indicators/         — UI indicators
-    maps/               — Map components
-    navigation/         — Navigation components
-    search/             — Search components (simple search, multi-column filters, advanced search)
-    ui/                 — UI components (alerts, breadcrumbs, loading spinner, modal, tooltip)
-  helpers/              — Helper includes (translations, component defaults, etc.)
-  layout/               — Layout components (header, footer)
-  pages/                — Page-specific includes organized by page
-    about/              — About page sections (hero, mission, team, etc.)
-    brand/              — Brand page sections
-    brands/             — Brands page sections (hero, impact, filter-interface, etc.)
-    discovery/          — Discovery page sections (hero, impact, dimensions-grid, etc.)
-    founders/           — Founders page sections (hero, impact, filter-interface, etc.)
-    home/               — Home page sections
-    insight/            — Insight page sections
-    insights/           — Insights page sections (hero, impact, categories, etc.)
-</code></pre></div></div>
-<p>We use small, focused section includes under <code class="language-plaintext highlighter-rouge">_includes/pages/&lt;page&gt;/&lt;section&gt;.html</code> to keep templates logic-light.</p>
+<p>Brandmine uses <strong>data-driven configuration</strong> instead of template logic. See <code class="language-plaintext highlighter-rouge">_docs/architecture.md</code> for comprehensive details.</p>
 
-<p>This organization mirrors the CSS structure for consistency and maintainability.</p>
-
-<hr />
-
-<h1 id="-multilingual-logic">🌐 Multilingual Logic</h1>
-
-<ul>
-  <li><strong>All content exists in language-specific subfolders</strong>: <code class="language-plaintext highlighter-rouge">/en/</code>, <code class="language-plaintext highlighter-rouge">/ru/</code>, <code class="language-plaintext highlighter-rouge">/zh/</code></li>
-  <li><code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code> stores UI labels and common text strings</li>
-  <li><code class="language-plaintext highlighter-rouge">_data/navigation/{lang}.yml</code> configures nav structure per language</li>
-  <li>Layouts and includes dynamically pull from <code class="language-plaintext highlighter-rouge">_data/</code> based on <code class="language-plaintext highlighter-rouge">page.lang</code></li>
-  <li>Language switcher and all permalinks respect language prefixing</li>
-  <li>JSON files (<code class="language-plaintext highlighter-rouge">_data/countries.json</code>, <code class="language-plaintext highlighter-rouge">_data/languages.json</code>) provide structured data for use across languages</li>
-</ul>
-
-<hr />
-
-<h1 id="️-map-integration">🗺️ Map Integration</h1>
-
-<ul>
-  <li>Using <strong>MapLibre</strong> with <strong>Stadia Maps</strong> for geographic visualization</li>
-  <li>Clustering for efficient display of large numbers of brands</li>
-  <li>Brand points link to their respective profile pages</li>
-  <li>Filtering capabilities aligned with taxonomy system</li>
-  <li>Responsive design for mobile and desktop use</li>
-</ul>
-
-<hr />
-
-<h1 id="-brand-display-components">🎨 Brand Display Components</h1>
-
-<p>Key components for brand display include:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">brand-card.html</code> - Card display for brand listings</li>
-  <li><code class="language-plaintext highlighter-rouge">brand-list-item.html</code> - List view display for brand listings</li>
-  <li><code class="language-plaintext highlighter-rouge">search-filter.html</code> - Filter interface for multi-dimensional discovery</li>
-  <li><code class="language-plaintext highlighter-rouge">collection-image.html</code> - Unified responsive image handling for all collections</li>
-  <li><code class="language-plaintext highlighter-rouge">map-component.html</code> - Geographic visualization of brands</li>
-</ul>
-
-<p>These components implement a visual taxonomy system using consistent color-coding:</p>
-<ul>
-  <li>Sectors -&gt; mint green/olive</li>
-  <li>Markets -&gt; light blue</li>
-  <li>Attributes -&gt; light orange</li>
-  <li>Signals -&gt; light purple/accent</li>
-</ul>
-
-<hr />
-
-<h1 id="-two-tier-content-approach">📊 Two-Tier Content Approach</h1>
-
-<p>Brandmine uses a two-tier approach for brand content:</p>
-<ul>
-  <li><strong>Tier 1: Basic Listings</strong> (100+ per sector)
-    <ul>
-      <li>Name, location, sector</li>
-      <li>Brief description</li>
-      <li>Basic taxonomy</li>
-      <li>Geographic coordinates</li>
-    </ul>
-  </li>
-  <li><strong>Tier 2: Feature Profiles</strong> (2-3 per sector)
-    <ul>
-      <li>Rich founder narratives</li>
-      <li>High-quality imagery</li>
-      <li>Complete taxonomy</li>
-      <li>Timeline and milestones</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h1 id="️-linear-layout-architecture">🏗️ Linear Layout Architecture</h1>
-
-<p>Brandmine uses a <strong>simplified linear sectioning approach</strong> optimized for MVP development and scalability:</p>
-
-<h2 id="core-principles">Core Principles</h2>
-
-<p><strong>“Simple and Clean” Philosophy:</strong> All page layouts use a single, consistent linear sectioning pattern that eliminates complexity while maintaining semantic structure and accessibility.</p>
-
-<p><strong>No Sidebar Complexity:</strong> The site deliberately avoids grid-based sidebar layouts in favor of linear section flow, making it easier to maintain and scale with thousands of auto-generated profiles.</p>
-
-<h2 id="layout-structure">Layout Structure</h2>
-
-<ul>
-  <li><strong>Page layouts</strong> use a streamlined section-based architecture:
-    <ul>
-      <li>Each page is wrapped in a <code class="language-plaintext highlighter-rouge">.{page-type}-page</code> container for CSS scoping (e.g., <code class="language-plaintext highlighter-rouge">.founder-profile-page</code>)</li>
-      <li>Each logical section is wrapped in a semantic <code class="language-plaintext highlighter-rouge">&lt;section&gt;</code> tag with consistent panel wrapping</li>
-      <li>Sections have standardized class naming: <code class="language-plaintext highlighter-rouge">{page-type}-section--{section-name}</code></li>
-      <li>Each section has a unique ID for accessibility: <code class="language-plaintext highlighter-rouge">id="{page-type}-section-{section}"</code></li>
-      <li>ARIA attributes support screen reader navigation: <code class="language-plaintext highlighter-rouge">aria-labelledby="heading-{section}"</code></li>
-    </ul>
-  </li>
-  <li><strong>Section includes</strong> are loaded dynamically based on the page’s front matter <code class="language-plaintext highlighter-rouge">sections</code> array:
-    <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Standardized Section Structure</strong>: All topline pages (brands, founders, discovery, insights) follow identical section patterns across all languages:
-```yaml
-sections:
-    <ul>
-      <li>breadcrumbs</li>
-      <li>hero</li>
-      <li>impact          # Translation-driven impact statement</li>
-      <li>content</li>
-      <li>[page-specific sections]</li>
-      <li>contact-cta
-```</li>
-    </ul>
-  </li>
-  <li><strong>Panel System Integration:</strong> All content sections are wrapped in the panel system for consistent visual presentation and spacing.</li>
-</ul>
-
-<h2 id="three-tier-hero-panel-system">Three-Tier Hero Panel System</h2>
-
-<p>All pages implement a standardized hero system based on content type:</p>
-
-<p><strong>Tier 1: Navigation Pages</strong> (Discovery, category listings)</p>
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.panel--hero</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">135deg</span><span class="o">,</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">primary-400</span><span class="p">)</span> <span class="m">0%</span><span class="o">,</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">primary-600</span><span class="p">)</span> <span class="m">100%</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
-  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><strong>Tier 2: Individual Profiles</strong> (Brands, founders, dimensions)</p>
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.panel--hero-subtle</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="nf">radial-gradient</span><span class="p">(</span><span class="nb">circle</span> <span class="n">at</span> <span class="nb">center</span><span class="o">,</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">primary-300</span><span class="p">)</span> <span class="m">0%</span><span class="o">,</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">primary-500</span><span class="p">)</span> <span class="m">100%</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
-  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><strong>Tier 3: Editorial Content</strong> (Insights, articles)</p>
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.panel--hero-image</span> <span class="p">{</span>
-  <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
-  <span class="nl">background-position</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
-  
-  <span class="k">&amp;</span><span class="nd">::before</span> <span class="p">{</span>
-    <span class="nl">content</span><span class="p">:</span> <span class="s1">''</span><span class="p">;</span>
-    <span class="nl">background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.4</span><span class="p">);</span>
-    <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
-    <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h2 id="benefits-of-linear-architecture">Benefits of Linear Architecture</h2>
-
-<ol>
-  <li><strong>MVP Simplicity:</strong> Single maintainer can manage thousands of profiles without layout complexity</li>
-  <li><strong>Mobile-First:</strong> Linear flow works perfectly across all device sizes</li>
-  <li><strong>Consistent UX:</strong> Every page follows the same interaction pattern</li>
-  <li><strong>Scalable:</strong> Auto-generation friendly with simple template structure</li>
-  <li><strong>Accessible:</strong> Semantic sectioning improves screen reader navigation</li>
-  <li><strong>Maintainable:</strong> One layout pattern to learn and debug</li>
-</ol>
-
-<p>This architecture provides semantic HTML structure for accessibility and SEO while maintaining the modular, logic-light approach optimized for rapid development and long-term maintenance.</p>
-
-<hr />
-
-<h1 id="-development-workflow">💡 Development Workflow</h1>
-
-<h2 id="build-commands">Build Commands</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve                  <span class="c"># Local dev server</span>
-bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>    <span class="c"># Live reload mode</span>
-bundle <span class="nb">exec </span>jekyll serve <span class="nt">--host</span><span class="o">=</span>0.0.0.0  <span class="c"># Mobile device testing</span>
-bundle <span class="nb">exec </span>jekyll build                 <span class="c"># Build for dev</span>
-<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build  <span class="c"># Production build</span>
-npm run start                            <span class="c"># Alias for jekyll serve</span>
-npm run build                            <span class="c"># Alias for jekyll build</span>
-</code></pre></div></div>
-
-<h2 id="scripts">Scripts</h2>
-<p>All helper scripts live in the <code class="language-plaintext highlighter-rouge">_scripts/</code> directory organized by function:</p>
-
-<h3 id="core-scripts">Core Scripts</h3>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">core/pre-commit_check.sh</code></strong>: Run all validation checks before commits</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">core/generate-all-json.py</code></strong>: Generate all JSON data files</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">core/process_images.sh [collection] [identifier]</code></strong>: Process images for any collection</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">core/optimize-build.sh</code></strong>: Optimize Jekyll build performance</li>
-</ul>
-
-<h3 id="content-creation">Content Creation</h3>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">content-creation/generate_brand_template.py [country_code] [brand_slug]</code></strong>: Scaffold new brand markdown files</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">content-creation/generate_article_template.py [type] [slug]</code></strong>: Scaffold new article/insight/founder</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">content-creation/add_brand.rb</code></strong>: Add brand via Ruby script</li>
-</ul>
-
-<h3 id="data-generation">Data Generation</h3>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">data-generation/generate-brands-json.py</code></strong>: Generate brands JSON index</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">data-generation/generate-founders-json.py</code></strong>: Generate founders JSON index</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">data-generation/import_from_airtable.rb</code></strong>: Import data from Airtable</li>
-</ul>
-
-<h3 id="image-processing">Image Processing</h3>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">image-processing/apply_teal_filter.sh</code></strong>: Apply brand filter to team photos</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">image-processing/add_image_attribution.py</code></strong>: Add image attributions</li>
-</ul>
-
-<h3 id="validation">Validation</h3>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">validation/language_consistency_checker.py</code></strong>: Check content exists in all languages</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">validation/validate_yaml.sh</code></strong>: Validate YAML syntax</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">validation/find_translation_keys.py</code></strong>: Find missing translation keys</li>
-</ul>
-
-<h3 id="utilities">Utilities</h3>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">utilities/generate-language-map.py</code></strong>: Generate language switcher optimization</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">utilities/generate-navigation-cache.py</code></strong>: Generate navigation cache for performance</li>
-</ul>
-
-<h2 id="validation-1">Validation</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll doctor       <span class="c"># Check config</span>
-htmlproofer _site   <span class="c"># Validate HTML output (requires html-proofer gem)</span>
-</code></pre></div></div>
-
-<h2 id="testing--checking-content">Testing &amp; Checking Content</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Test changes locally before deploying</span>
-bundle <span class="nb">exec </span>jekyll serve               <span class="c"># Start local server</span>
-open http://localhost:4000             <span class="c"># View in browser</span>
-
-<span class="c"># Test multilingual functionality</span>
-_scripts/validation/language_consistency_checker.py <span class="c"># Check if pages exist in all languages</span>
-
-<span class="c"># Check image processing &amp; optimization</span>
-identify <span class="nt">-format</span> <span class="s2">"%f: %wx%h</span><span class="se">\n</span><span class="s2">"</span> assets/images/<span class="k">**</span>/<span class="k">*</span>.jpg <span class="c"># Verify image dimensions</span>
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="-code-style-guidelines">🎨 Code Style Guidelines</h1>
-
-<h2 id="layout-width-strategy">Layout Width Strategy</h2>
-<ul>
-  <li><strong>Home page</strong>: Full-width layout for maximum visual impact</li>
-  <li><strong>Interior pages</strong>: Max-width of 1200px for content areas</li>
-  <li><strong>Panel content</strong>: Standard 1200px max-width for consistency across pages</li>
-  <li><strong>Responsive behavior</strong>: Widths automatically adjust on smaller screens</li>
-  <li>This strategy balances:
-    <ul>
-      <li>Using screen real estate effectively on modern large displays</li>
-      <li>Maintaining readability for text-heavy content</li>
-      <li>Creating visual hierarchy between landing pages and interior content</li>
-      <li>Providing consistent user experience across different sections</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="css-organization">CSS Organization</h2>
-<ul>
-  <li>Mobile-first and responsive, using <strong>BEM</strong> naming (<code class="language-plaintext highlighter-rouge">Block__Element--Modifier</code>) and CSS custom properties for design tokens.</li>
-  <li>Styles are organized under <code class="language-plaintext highlighter-rouge">/assets/css/</code> directories:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">tokens/</code>, <code class="language-plaintext highlighter-rouge">base/</code>, <code class="language-plaintext highlighter-rouge">layout/</code>, <code class="language-plaintext highlighter-rouge">components/</code>, <code class="language-plaintext highlighter-rouge">collections/</code>, <code class="language-plaintext highlighter-rouge">pages/</code>, <code class="language-plaintext highlighter-rouge">manifest/</code></li>
-    </ul>
-  </li>
-  <li>Each component and page has its own SCSS file for modularity.</li>
-  <li><strong>“Logic Light” Architecture</strong>: CSS component structure mirrors includes organization</li>
-  <li><strong>Modular Components</strong>: Forms, UI, and Search components organized in subdirectories with centralized <code class="language-plaintext highlighter-rouge">_index.scss</code> files</li>
-  <li><strong>Component Independence</strong>: Each component can be modified independently without affecting others</li>
-</ul>
-
-<h3 id="sass-partials-convention">Sass Partials Convention</h3>
-<ul>
-  <li><strong>Underscore Prefix</strong>: Files like <code class="language-plaintext highlighter-rouge">_entry-card.scss</code> are Sass partials (import-only)</li>
-  <li><strong>Purpose</strong>: Partials won’t compile to individual CSS files, only when imported</li>
-  <li><strong>Usage</strong>: Import via <code class="language-plaintext highlighter-rouge">@import 'entry-card';</code> (no underscore needed in import statement)</li>
-  <li><strong>Organization</strong>: Standard convention throughout project for modular CSS architecture</li>
-</ul>
-
-<h2 id="html">HTML</h2>
-<ul>
-  <li>Semantic HTML5</li>
-  <li>BEM class structure</li>
-  <li><code class="language-plaintext highlighter-rouge">id</code>s used for JS targeting</li>
-  <li>ARIA attributes for accessibility</li>
-  <li>Use includes for reusable components</li>
-  <li>Respect content hierarchy with proper heading levels</li>
-  <li>Keep language-specific content in the appropriate language subfolder</li>
-</ul>
-
-<h2 id="logic-light-approach">“Logic Light” Approach</h2>
-<p><strong>Principle:</strong> Keep templates simple and logic-minimal while maintaining flexibility through structured data and modular includes.</p>
-
-<h3 id="translation-helper-pattern">Translation Helper Pattern</h3>
-<p>Use the centralized translation helper instead of direct data access:</p>
+<p><strong>Key Pattern: Configuration over conditionals</strong></p>
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
-Our Unique Perspective
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  Our Unique Perspective
-
-</code></pre></div></div>
-
-<h3 id="component-defaults-system">Component Defaults System</h3>
-<p>Centralized component configuration eliminates scattered default patterns:</p>
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
-
-
-
-
-
-</code></pre></div></div>
-
-<h3 id="data-driven-section-rendering">Data-Driven Section Rendering</h3>
-<p>Page layouts use centralized configuration instead of hardcoded logic:</p>
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
-
-  
-  &lt;!-- render section with panel type --&gt;
-
-  
-  &lt;!-- render section with panel type --&gt;
-
-  
-  &lt;!-- render section with panel type --&gt;
 
 
 
@@ -15420,41 +15044,8 @@ TeaTime
 
 </code></pre></div></div>
 
-<h3 id="centralized-dimension-configuration">Centralized Dimension Configuration</h3>
-<p>All dimension data is now managed through <code class="language-plaintext highlighter-rouge">_data/dimensions_config.yml</code>:</p>
-<ul>
-  <li>Eliminates hardcoded dimension lists throughout templates</li>
-  <li>Provides consistent ordering and metadata</li>
-  <li>Enables easy addition of new dimensions</li>
-</ul>
+<h2 id="centralized-configuration-files">Centralized Configuration Files</h2>
 
-<h3 id="enhanced-component-defaults">Enhanced Component Defaults</h3>
-<p>The <code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code> now includes comprehensive configuration for:</p>
-<ul>
-  <li>Dimension display components</li>
-  <li>Search and filter components</li>
-  <li>Card display components</li>
-  <li>Form validation and behavior</li>
-  <li>Map integration settings</li>
-</ul>
-
-<h3 id="translation-key-standardization">Translation Key Standardization</h3>
-<p>New helper <code class="language-plaintext highlighter-rouge">translation-key-builder.html</code> provides consistent key construction:</p>
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-</code></pre></div></div>
-
-<h3 id="body-class-generation">Body Class Generation</h3>
-<p>Centralized body class logic eliminates complex conditionals in layouts:</p>
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;body class="
-
-
-
-  default-page
-"&gt;
-</code></pre></div></div>
-
-<h3 id="configuration-files">Configuration Files</h3>
-<p>The “Logic Light” architecture relies on these centralized configuration files:</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code> - Component behavior defaults</li>
   <li><code class="language-plaintext highlighter-rouge">_data/page_sections.yml</code> - Page section order and panel mappings</li>
@@ -15462,623 +15053,6 @@ TeaTime
   <li><code class="language-plaintext highlighter-rouge">_data/search_presets.yml</code> - Search filter presets configuration</li>
   <li><code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code> - UI text and labels</li>
 </ul>
-
-<p><strong>Benefits:</strong> Eliminates hardcoded logic, reduces conditional templates, enables configuration-driven behavior changes, and provides consistent patterns across the entire codebase.</p>
-
-<h2 id="javascript">JavaScript</h2>
-<ul>
-  <li>Vanilla JS only (no frameworks)</li>
-  <li>ES6 preferred, backwards-compatible</li>
-  <li>Avoid direct DOM manipulation</li>
-  <li>Use event delegation for dynamic elements</li>
-  <li>Keep scripts modular, limited to specific functionality</li>
-  <li>Ensure all scripts are compatible with multilingual content</li>
-</ul>
-
-<h2 id="markdownfront-matter">Markdown/Front Matter</h2>
-<ul>
-  <li>Use consistent indentation (2 spaces)</li>
-  <li>Include language code in all content files</li>
-  <li>Ensure all dimensions are properly referenced and exist as dimension files</li>
-  <li>For brand files, include all required frontmatter (title, slug, country, etc.)</li>
-  <li>For translated content, keep the same structure across languages</li>
-</ul>
-
-<h2 id="error-handling">Error Handling</h2>
-<ul>
-  <li>Use Jekyll’s multilingual fallback system for missing translations</li>
-  <li>Validate language consistency with checking script before commits</li>
-  <li>Handle missing images gracefully with responsive image component</li>
-</ul>
-
-<hr />
-
-<h1 id="️-image-strategy">🖼️ Image Strategy</h1>
-
-<ul>
-  <li>Standardized naming conventions (<code class="language-plaintext highlighter-rouge">purpose-imagename.jpg</code>)</li>
-  <li><strong>Standard 3:2 aspect ratio</strong> for most content images (1200×800px)</li>
-  <li>Responsive image sizes (400w, 800w, 1200w, 1600w)</li>
-  <li>Organization by collection type in the assets directory</li>
-  <li>Processing with ImageMagick for optimization via unified script:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">core/process_images.sh</code> for all collection types</li>
-      <li>Specialized scripts for specific processing needs</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="image-organization-and-processing">Image Organization and Processing</h2>
-
-<ul>
-  <li><strong>Directory Structure</strong>: Organized by collection type:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">assets/images/brands/[country-code]-[brand-name]/</code> for brand assets</li>
-      <li><code class="language-plaintext highlighter-rouge">assets/images/founders/[founder-id]/</code> for founder assets</li>
-      <li><code class="language-plaintext highlighter-rouge">assets/images/people/</code> for team members and testimonials</li>
-      <li><code class="language-plaintext highlighter-rouge">assets/images/icons/dimensions/</code> for dimension taxonomy icons</li>
-      <li><code class="language-plaintext highlighter-rouge">assets/images/icons/insights/</code> for insights category icons</li>
-      <li><code class="language-plaintext highlighter-rouge">assets/images/[category]/</code> for site-wide assets (sectors, markets, etc.)</li>
-    </ul>
-  </li>
-  <li><strong>Naming Convention</strong>:
-    <ul>
-      <li>Brand images: <code class="language-plaintext highlighter-rouge">founder-portrait.jpg</code>, <code class="language-plaintext highlighter-rouge">founder-headshot.jpg</code>, <code class="language-plaintext highlighter-rouge">logo.png</code>, etc.</li>
-      <li>Founder images: <code class="language-plaintext highlighter-rouge">portrait.jpg</code>, <code class="language-plaintext highlighter-rouge">headshot.jpg</code></li>
-      <li>Processed files include width indicators: <code class="language-plaintext highlighter-rouge">[identifier]-[image-type]-[width]w.extension</code></li>
-    </ul>
-  </li>
-  <li><strong>Aspect Ratios</strong> (Brandmine Standards):
-    <ul>
-      <li><strong>3:2 horizontal</strong>: Standard content images (1200×800px)</li>
-      <li><strong>2:3 vertical</strong>: Portrait images (800×1200px)</li>
-      <li><strong>1:1 square</strong>: Icons and profile images (512×512px source)</li>
-      <li><strong>Note</strong>: Only these three aspect ratios are used site-wide (no 16:9 or other ratios)</li>
-    </ul>
-  </li>
-  <li><strong>Processing Scripts</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">core/process_images.sh [collection] [identifier]</code> - Unified image processing</li>
-      <li><code class="language-plaintext highlighter-rouge">image-processing/apply_teal_filter.sh</code> for team photos branding</li>
-    </ul>
-  </li>
-  <li><strong>Implementation Includes</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">components/images/collection-image.html</code> for unified responsive image handling</li>
-      <li><code class="language-plaintext highlighter-rouge">components/images/brand-image.html</code> for brand-specific imagery</li>
-      <li><code class="language-plaintext highlighter-rouge">components/images/site-image.html</code> for site-wide imagery</li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">helpers/taxonomy-icon.html</code> for dimension taxonomy icons</p>
-      </li>
-      <li><strong>Documentation</strong>:
-        <ul>
-          <li>Comprehensive image guide at <code class="language-plaintext highlighter-rouge">_docs/images.md</code></li>
-          <li>Color palette guide at <code class="language-plaintext highlighter-rouge">_docs/colors.md</code></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="visual-style-strategy">Visual Style Strategy</h2>
-
-<p>Brandmine applies a structured visual language for all imagery based on content type:</p>
-
-<ul>
-  <li>
-    <p><strong>Textured Minimalism (TM):</strong>
-Used for brand profile hero images, insights article hero images, and country-specific dimension pages (e.g., Russian sectors, Brazilian markets).
-Characteristics: simplified forms, subtle textures, gentle shadows, rich muted colors, no embedded text.</p>
-  </li>
-  <li>
-    <p><strong>Muted Pastel Textured Minimalism (MPTM):</strong>
-Used for inline illustrations within insights articles and brand profiles to create emotional breathing spaces.
-Characteristics: pastel-based color palette, soft textures, lighter emotional tone, clean simplified forms.</p>
-  </li>
-  <li>
-    <p><strong>Flat Colour Minimalism:</strong>
-Used for generic dimension pages (e.g., global sector overviews, signals, attributes, markets).
-Characteristics: bold flat colors, geometric abstraction, no textures, clean edges, strong contrast for quick discovery.</p>
-  </li>
-  <li>
-    <p><strong>Textured Images + Teal Filter:</strong>
-Used for team members and testimonial providers.
-Characteristics: professional, natural photography with clean backgrounds and subtle brand filter (20% teal).</p>
-  </li>
-</ul>
-
-<p>General Rule:</p>
-<ul>
-  <li>Use TM for primary storytelling heroes.</li>
-  <li>Use MPTM for secondary storytelling illustrations.</li>
-  <li>Use Flat Colour Minimalism for taxonomy navigation and abstract dimension discovery.</li>
-  <li>Use Natural Photography (with brand filter) for team/testimonial portraits.</li>
-</ul>
-
-<p>⚠️ Avoid mixing raw unprocessed photographs with stylized or illustrated content directly side-by-side. All imagery must maintain consistent visual processing to preserve Brandmine’s premium, editorial aesthetic.</p>
-
-<hr />
-
-<h1 id="-mobile-optimization--responsive-design">📱 Mobile Optimization &amp; Responsive Design</h1>
-
-<ul>
-  <li>Mobile-first approach for all components</li>
-  <li>Standardized breakpoints used consistently across all CSS:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">min-width: 480px</code> - Small devices</li>
-      <li><code class="language-plaintext highlighter-rouge">min-width: 768px</code> - Medium devices (tablets)</li>
-      <li><code class="language-plaintext highlighter-rouge">min-width: 992px</code> - Large devices (desktops)</li>
-    </ul>
-  </li>
-  <li>Write mobile styles first, then enhance for larger screens within media queries</li>
-  <li>Critical for Russian and Chinese markets where mobile usage dominates</li>
-  <li>Card layouts designed for touch interfaces</li>
-  <li>Map controls optimized for smaller screens</li>
-  <li>Progressive loading to optimize performance</li>
-</ul>
-
-<hr />
-
-<h1 id="-data-management">💾 Data Management</h1>
-
-<ul>
-  <li>Initially using Jekyll collections and front matter</li>
-  <li><strong>Insights Blog Platform</strong> - Four standardized article types with full blog functionality:
-    <ol>
-      <li><strong>Brand Spotlight</strong> - In-depth profiles of noteworthy brands</li>
-      <li><strong>Founder’s Journey</strong> - Personal stories behind the brands</li>
-      <li><strong>Market Momentum</strong> - Achievements, milestones, and expansion moments</li>
-      <li><strong>Location Intelligence</strong> - Geographical insights and regional context</li>
-    </ol>
-  </li>
-  <li>
-    <p><strong>Blog Features</strong> - Featured articles, pagination, RSS feeds, social sharing</p>
-  </li>
-  <li><strong>Founders’ Journal Blog</strong> - Personal blog section documenting the Brandmine journey:
-    <ul>
-      <li><strong>Purpose</strong>: Transparent documentation of building Brandmine and exploring BRICS+ markets</li>
-      <li><strong>Content Types</strong>: Technical insights, market research learnings, founder reflections, company news</li>
-      <li><strong>Architecture</strong>: Uses Jekyll posts collection with multilingual support</li>
-      <li><strong>URL Structure</strong>: <code class="language-plaintext highlighter-rouge">/[lang]/journal/YYYY/MM/DD/post-slug/</code> for language-specific access</li>
-      <li><strong>Features</strong>: Featured articles, responsive images with srcset, reusable entry cards</li>
-      <li><strong>Languages</strong>: Full EN/RU/ZH support with proper language switching via <code class="language-plaintext highlighter-rouge">ref</code> attributes</li>
-    </ul>
-  </li>
-  <li>Market-sector structured data in <code class="language-plaintext highlighter-rouge">_data/market-sectors/{lang}/{market}.yml</code></li>
-  <li>Structured data in JSON files (<code class="language-plaintext highlighter-rouge">countries.json</code>, <code class="language-plaintext highlighter-rouge">languages.json</code>, <code class="language-plaintext highlighter-rouge">market_sector_map.json</code>, <code class="language-plaintext highlighter-rouge">market-country-map.json</code>, <code class="language-plaintext highlighter-rouge">markets.json</code>) as the primary source.</li>
-  <li>JSON for complex data (timelines, products, secondary locations)</li>
-  <li>CSV import/export for efficient data management</li>
-  <li>Sector-specific fields for specialized information</li>
-</ul>
-
-<h2 id="search-index-automation">Search Index Automation</h2>
-
-<p><strong>Automated Generation:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">core/generate-all-json.py</code> - Builds complete JSON search indexes from markdown collections</li>
-  <li>Generates <code class="language-plaintext highlighter-rouge">_data/brands.json</code> and <code class="language-plaintext highlighter-rouge">_data/founders.json</code> with multilingual content</li>
-  <li>Includes complete metadata: taxonomy, location, founding year, website URLs</li>
-  <li>Auto-generates from Jekyll collections when content is added/modified</li>
-</ul>
-
-<p><strong>Manual Steps Required:</strong></p>
-<ul>
-  <li>Translation files (<code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code>) - Manual editing only</li>
-  <li>Market-sector content (<code class="language-plaintext highlighter-rouge">_data/market-sectors/{lang}/{market}.yml</code>) - Currently empty placeholders</li>
-</ul>
-
-<p><strong>Update Search Indexes:</strong></p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 _scripts/core/generate-all-json.py
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="️-forms--ui-components-architecture">🎛️ Forms &amp; UI Components Architecture</h1>
-
-<h2 id="logic-light-component-system">“Logic Light” Component System</h2>
-
-<p>Following the “logic light” principle, CSS component structure mirrors the includes organization for maximum maintainability and developer experience.</p>
-
-<h3 id="forms-components-structure">Forms Components Structure</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_includes/components/forms/          CSS: assets/css/components/forms/
-├── form.html                      ↔ form.scss
-├── input-field.html               ↔ input-field.scss
-├── textarea-field.html            ↔ textarea-field.scss
-├── select-field.html              ↔ select-field.scss
-├── contact-form.html              ↔ contact-form.scss
-├── newsletter-form.html           ↔ newsletter-form.scss
-├── feedback-form.html             ↔ feedback-form.scss
-├── validation.html                ↔ validation.scss
-├── custom-contact-form.html       ↔ custom-contact-form.scss
-└── custom-newsletter.html         ↔ custom-newsletter.scss
-</code></pre></div></div>
-
-<h3 id="ui-components-structure">UI Components Structure</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_includes/components/ui/            CSS: assets/css/components/ui/
-├── alerts.html                   ↔ alerts.scss
-├── breadcrumbs.html              ↔ breadcrumbs.scss
-├── loading-spinner.html          ↔ loading-spinner.scss
-├── modal.html                    ↔ modal.scss
-└── tooltip.html                  ↔ tooltip.scss
-</code></pre></div></div>
-
-<h3 id="search-components-structure">Search Components Structure</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_includes/components/search/        CSS: assets/css/components/search/
-├── simple-search.html            ↔ search-box.scss
-├── search-filter.html            ↔ search-filter.scss
-└── (advanced search planned)     ↔ advanced-search.scss
-</code></pre></div></div>
-
-<h2 id="custom-form-alternatives">Custom Form Alternatives</h2>
-
-<p><strong>Custom Contact Form</strong> (<code class="language-plaintext highlighter-rouge">custom-contact-form.html</code>):</p>
-<ul>
-  <li>Alternative to Tally forms with full control</li>
-  <li>Real-time validation, loading states, success/error feedback</li>
-  <li>Accessibility features (ARIA labels, screen reader support)</li>
-  <li>Multilingual support using translation files</li>
-</ul>
-
-<p><strong>Custom Newsletter Form</strong> (<code class="language-plaintext highlighter-rouge">custom-newsletter.html</code>):</p>
-<ul>
-  <li>Alternative to MailerLite with multiple layout variants</li>
-  <li>Variants: default, inline, minimal, compact</li>
-  <li>Email validation with responsive design</li>
-</ul>
-
-<p><strong>JavaScript Integration</strong> (<code class="language-plaintext highlighter-rouge">custom-forms.js</code>):</p>
-<ul>
-  <li>Handles validation, submission, and state management</li>
-  <li>Auto-initialization on DOM ready</li>
-  <li>Modular design for easy extension</li>
-</ul>
-
-<h2 id="search--filter-system">Search &amp; Filter System</h2>
-
-<p><strong>Multi-Column Filter Layout:</strong></p>
-<ul>
-  <li>CSS Grid implementation for better space utilization</li>
-  <li>Responsive stacking on mobile devices</li>
-  <li>All 16 sectors displayed (previously limited to 8)</li>
-</ul>
-
-<p><strong>Dynamic Country Loading:</strong></p>
-<ul>
-  <li>Sorted alphabetically using <code class="language-plaintext highlighter-rouge">countries.json</code></li>
-  <li>Multilingual country names based on current language</li>
-  <li>Proper display names instead of slugs</li>
-</ul>
-
-<p><strong>Enhanced JavaScript:</strong></p>
-<ul>
-  <li>Debounced search for better performance</li>
-  <li>Proper filter counting and result display</li>
-  <li>Grid/list view toggle functionality</li>
-  <li>Complete filter reset capabilities</li>
-</ul>
-
-<h2 id="reusable-card-components">Reusable Card Components</h2>
-
-<p><strong>Entry Card Component</strong> (<code class="language-plaintext highlighter-rouge">components/cards/entry-card.html</code>):</p>
-<ul>
-  <li><strong>Purpose</strong>: Reusable card for displaying content entries (journal posts, insights, articles)</li>
-  <li><strong>Flexibility</strong>: Configurable parameters for different content types and display options</li>
-  <li><strong>Features</strong>: Responsive images with srcset, customizable meta information, fallback support</li>
-  <li><strong>Usage</strong>: `</li>
-</ul>
-
-<article class="entry-card">
-  
-  
-    
-    <div class="entry-card__image">
-      <div class="entry-card__image-placeholder">
-        <span>Article</span>
-      </div>
-    </div>
-  
-  
-  <div class="entry-card__content">
-    
-    <div class="entry-card__meta">
-      
-      
-      
-      
-      
-    </div>
-    
-    
-    <h3 class="entry-card__title">
-      <a href="" class="entry-card__link">
-        
-      </a>
-    </h3>
-    
-    
-    
-    
-    
-    <div class="entry-card__footer">
-      
-      
-      <a href="" class="entry-card__read-more">
-        
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  Read More
-
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-          <path d="M6.72 13.28a.75.75 0 0 1 0-1.06L10.94 8 6.72 3.78a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0Z" />
-        </svg>
-      </a>
-    </div>
-  </div>
-</article>
-<p>`</p>
-<ul>
-  <li><strong>Image Standards</strong>: Enforces Brandmine’s 3:2, 2:3, 1:1 aspect ratio standards</li>
-  <li><strong>Performance</strong>: Lazy loading and optimal image sizes based on viewport</li>
-</ul>
-
-<h2 id="component-documentation">Component Documentation</h2>
-
-<p>Comprehensive guides available in <code class="language-plaintext highlighter-rouge">_docs/</code>:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">daily-workflows.md</code> - Step-by-step content workflows</li>
-  <li><code class="language-plaintext highlighter-rouge">technical-reference.md</code> - Architecture patterns and examples</li>
-  <li><code class="language-plaintext highlighter-rouge">troubleshooting.md</code> - Common issues and solutions</li>
-</ul>
-
-<hr />
-
-<h1 id="-sample-file-structures-and-styling-philosophy">🧩 Sample File Structures and Styling Philosophy</h1>
-
-<h2 id="brand-markdown-example">Brand Markdown Example</h2>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">brand</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">TeaTime"</span>
-<span class="na">slug</span><span class="pi">:</span> <span class="s">teatime</span>
-<span class="na">country_code</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ru"</span>
-<span class="na">lang</span><span class="pi">:</span> <span class="s">en</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/en/brands/ru-teatime/</span>
-
-<span class="c1"># Taxonomy</span>
-<span class="na">sectors</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">Artisanal</span><span class="nv"> </span><span class="s">Spirits"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Gourmet</span><span class="nv"> </span><span class="s">Foods"</span><span class="pi">]</span>
-<span class="na">markets</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">Russia"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">China"</span><span class="pi">]</span>
-<span class="na">attributes</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">Founder-Led"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Heritage</span><span class="nv"> </span><span class="s">Brand"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Artisanal</span><span class="nv"> </span><span class="s">Excellence"</span><span class="pi">]</span>
-<span class="na">signals</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">Export</span><span class="nv"> </span><span class="s">Ready"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Growth</span><span class="nv"> </span><span class="s">Ready"</span><span class="pi">]</span>
-
-<span class="c1"># Location</span>
-<span class="na">location</span><span class="pi">:</span>
-  <span class="na">country</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Russia"</span>
-  <span class="na">country_code</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ru"</span>
-  <span class="na">region</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Moscow</span><span class="nv"> </span><span class="s">Oblast"</span>
-  <span class="na">city</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Moscow"</span>
-  <span class="na">coordinates</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">37.6173</span><span class="pi">,</span> <span class="nv">55.7558</span><span class="pi">]</span>
-
-<span class="c1"># Founder Information</span>
-<span class="na">founder</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Alexei</span><span class="nv"> </span><span class="s">Sokolov"</span>
-  <span class="na">position</span><span class="pi">:</span> <span class="s2">"</span><span class="s">CEO</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Tea</span><span class="nv"> </span><span class="s">Master"</span>
-  <span class="na">story</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Alexei</span><span class="nv"> </span><span class="s">discovered</span><span class="nv"> </span><span class="s">his</span><span class="nv"> </span><span class="s">passion</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">tea</span><span class="nv"> </span><span class="s">while</span><span class="nv"> </span><span class="s">traveling</span><span class="nv"> </span><span class="s">across</span><span class="nv"> </span><span class="s">Asia..."</span>
-  <span class="na">generation</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1st</span><span class="nv"> </span><span class="s">Generation"</span>
-  <span class="na">founder_led</span><span class="pi">:</span> <span class="no">true</span>
-
-<span class="c1"># Basic Information</span>
-<span class="na">founding_year</span><span class="pi">:</span> <span class="m">1998</span>
-<span class="na">website</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://teatime.ru"</span>
-<span class="nn">---</span>
-
-<span class="c1"># TeaTime: Moscow's Premium Tea Artisans</span>
-
-<span class="s">TeaTime has established itself as Russia's premier artisanal tea brand, combining traditional Chinese and Indian tea cultivation knowledge with distinctly Russian flavors and blending techniques.</span>
-
-<span class="c1">## Founder's Journey</span>
-
-<span class="s">Alexei Sokolov discovered his passion for tea while traveling through China...</span>
-</code></pre></div></div>
-
-<h2 id="visual-taxonomy-css-example">Visual Taxonomy CSS Example</h2>
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Dimension styling with color coding */</span>
-<span class="nc">.dimension</span> <span class="p">{</span>
-  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
-  <span class="nl">padding</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--space-1</span><span class="p">)</span> <span class="n">var</span><span class="p">(</span><span class="n">--space-2</span><span class="p">);</span>
-  <span class="nl">border-radius</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--radius-sm</span><span class="p">);</span>
-  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--text-xs</span><span class="p">);</span>
-  <span class="nl">font-weight</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--font-medium</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.dimension--sector</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--olive-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--olive-900</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.dimension--market</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--sky-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--sky-900</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.dimension--attribute</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--secondary-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--secondary-900</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.dimension--signal</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--accent-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--accent-900</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="-claude-dimension-awareness-and-discovery-instruction">🧠 Claude Dimension Awareness and Discovery Instruction</h1>
-
-<p>This site relies on a <strong>structured dimension system</strong> across four distinct types:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">sectors</code> — Industry categories (e.g., natural-beauty, wine, hotels-resorts)</li>
-  <li><code class="language-plaintext highlighter-rouge">attributes</code> — Brand qualities (e.g., founder-led, heritage-brand, artisanal-excellence)</li>
-  <li><code class="language-plaintext highlighter-rouge">signals</code> — Growth potential indicators (e.g., export-ready, franchise-ready, rapid-growth)</li>
-  <li><code class="language-plaintext highlighter-rouge">markets</code> — Regional focus (e.g., russia, brazil, india, china)</li>
-</ul>
-
-<p>Dimensions are defined as individual Markdown files in <code class="language-plaintext highlighter-rouge">_dimensions/{lang}/{type}/</code>, and referenced in brand front matter using the correct slug.</p>
-
-<h2 id="discovery-logic">Discovery Logic</h2>
-
-<ul>
-  <li>The <strong>Discovery section</strong> is driven by these dimension types.</li>
-  <li>Do <strong>not create new dimension types</strong>. Always use the four approved ones.</li>
-  <li>Dimension filtering occurs on <code class="language-plaintext highlighter-rouge">/brands</code>, and dimension exploration happens via <code class="language-plaintext highlighter-rouge">/discover</code>.</li>
-  <li>Dimension clouds, related brand logic, and dimension-specific pages all derive from this model.</li>
-</ul>
-
-<h2 id="insights-blog-system">Insights Blog System</h2>
-
-<p>The <strong>Insights collection</strong> functions as Brandmine’s full-featured blog platform for sharing timely content that supports the mission of amplifying BRICS+ brand stories.</p>
-
-<h3 id="content-categories">Content Categories</h3>
-
-<p>Insights articles must use one of the four standardized content categories:</p>
-
-<ol>
-  <li><strong>Brand Spotlight</strong>: In-depth profiles of noteworthy BRICS+ brands gaining international momentum.</li>
-  <li><strong>Founder’s Journey</strong>: Personal stories behind the brands and the visionaries who created them.</li>
-  <li><strong>Market Momentum</strong>: Notable achievements, milestones, and expansion moments for emerging BRICS+ brands.</li>
-  <li><strong>Location Intelligence</strong>: Geographical insights and regional context that shape brand development and opportunities.</li>
-</ol>
-
-<p><strong>Note</strong>: Company news content is now published within the Founders’ Journal section instead of the Insights collection.</p>
-
-<p>Each category has defined metadata including recommended length, reading time, and content guidelines (stored in <code class="language-plaintext highlighter-rouge">_data/insights/{lang}.yml</code>).</p>
-
-<h3 id="blog-features">Blog Features</h3>
-
-<ul>
-  <li><strong>Featured Articles</strong>: Hero presentation controlled by <code class="language-plaintext highlighter-rouge">featured: true</code> in front matter</li>
-  <li><strong>Pagination</strong>: Client-side JavaScript pagination (12 articles per page)</li>
-  <li><strong>RSS Feed</strong>: Available at <code class="language-plaintext highlighter-rouge">/feed/insights.xml</code> (toggleable via <code class="language-plaintext highlighter-rouge">enable_insights_feed</code> config)</li>
-  <li><strong>Social Sharing</strong>: LinkedIn, Twitter, Facebook, and Email sharing buttons</li>
-  <li><strong>Multilingual Support</strong>: Full blog functionality across EN/RU/ZH languages</li>
-  <li><strong>Category Navigation</strong>: Filter and browse by content type</li>
-</ul>
-
-<p>Claude must align any navigation, filtering, or dimension-related output with this architecture.</p>
-
-<hr />
-
-<h1 id="-coding-tasks--workflow">📋 Coding Tasks &amp; Workflow</h1>
-
-<h2 id="recommended-steps-when-adding-new-content-or-features">Recommended Steps When Adding New Content or Features</h2>
-
-<ol>
-  <li><strong>Check Existing Structure</strong>: Look at similar files or components before creating new ones.</li>
-  <li><strong>Follow Naming Conventions</strong>:
-    <ul>
-      <li>Files: <code class="language-plaintext highlighter-rouge">kebab-case.html</code>, <code class="language-plaintext highlighter-rouge">kebab-case.css</code>, etc.</li>
-      <li>Variables: camelCase for JavaScript, kebab-case for CSS</li>
-      <li>Classes: BEM format <code class="language-plaintext highlighter-rouge">.block__element--modifier</code></li>
-    </ul>
-  </li>
-  <li><strong>Test in All Languages</strong>: Any new feature should be compatible with all three languages (EN, RU, ZH).</li>
-  <li><strong>Mobile-First</strong>: Design for mobile view first, then enhance for larger screens.</li>
-  <li><strong>Component Reuse</strong>: Look for opportunities to reuse existing components.</li>
-</ol>
-
-<h2 id="common-tasks">Common Tasks</h2>
-
-<h3 id="adding-a-new-brand">Adding a New Brand</h3>
-<ol>
-  <li>Create brand markdown file in each language folder (<code class="language-plaintext highlighter-rouge">_brands/en/</code>, <code class="language-plaintext highlighter-rouge">_brands/ru/</code>, <code class="language-plaintext highlighter-rouge">_brands/zh/</code>)</li>
-  <li>Ensure the brand references existing dimensions</li>
-  <li>Process brand images with <code class="language-plaintext highlighter-rouge">_scripts/core/process_images.sh brands [country_code]-[brand_name]</code></li>
-  <li>Add attributions for images in <code class="language-plaintext highlighter-rouge">_data/image_attributions.yml</code></li>
-</ol>
-
-<h3 id="adding-a-new-founder">Adding a New Founder</h3>
-<ol>
-  <li>Create founder markdown file in each language folder (<code class="language-plaintext highlighter-rouge">_founders/en/</code>, <code class="language-plaintext highlighter-rouge">_founders/ru/</code>, <code class="language-plaintext highlighter-rouge">_founders/zh/</code>)</li>
-  <li>Process founder images with <code class="language-plaintext highlighter-rouge">_scripts/core/process_images.sh founders [founder-id]</code></li>
-  <li>Add attributions for images in <code class="language-plaintext highlighter-rouge">_data/image_attributions.yml</code></li>
-</ol>
-
-<h3 id="adding-a-new-dimension">Adding a New Dimension</h3>
-<ol>
-  <li>Create dimension files in appropriate category subfolder for all languages</li>
-  <li>Update any relevant translation files in <code class="language-plaintext highlighter-rouge">_data/</code></li>
-  <li>Ensure the dimension matches the established taxonomy</li>
-</ol>
-
-<h3 id="adding-insights-articles">Adding Insights Articles</h3>
-<ol>
-  <li>Use the insight template from <code class="language-plaintext highlighter-rouge">_templates/insights/insight-template-enhanced.md</code></li>
-  <li>Choose one of the four standardized categories</li>
-  <li>Add <code class="language-plaintext highlighter-rouge">featured: true</code> for hero display on insights home page</li>
-  <li>Process images with <code class="language-plaintext highlighter-rouge">_scripts/core/process_images.sh insights [article-slug]</code></li>
-  <li>Leverage social sharing and RSS feed distribution</li>
-</ol>
-
-<h3 id="managing-blog-features">Managing Blog Features</h3>
-<ul>
-  <li><strong>RSS Feed</strong>: Toggle via <code class="language-plaintext highlighter-rouge">enable_insights_feed: true/false</code> in <code class="language-plaintext highlighter-rouge">_config.yml</code></li>
-  <li><strong>Featured Articles</strong>: Control homepage hero with <code class="language-plaintext highlighter-rouge">featured: true</code> in front matter</li>
-  <li><strong>Pagination</strong>: Automatic when more than 12 articles exist</li>
-</ul>
-
-<h3 id="updating-styles">Updating Styles</h3>
-<ol>
-  <li>Identify the appropriate CSS file by component or page</li>
-  <li>Follow BEM naming conventions</li>
-  <li>Use CSS custom properties from tokens</li>
-  <li>Test responsive behavior on multiple screen sizes</li>
-</ol>
-
-<h2 id="brand-profile-templates">Brand Profile Templates</h2>
-
-<p>Two template options are available for creating brand profiles:</p>
-
-<ol>
-  <li><strong>Basic Template</strong> (<code class="language-plaintext highlighter-rouge">_templates/brands/brand_profile.md</code>):
-    <ul>
-      <li>Basic profile with essential sections</li>
-      <li>Use when moderate information is available</li>
-      <li>Contains founder details, basic timeline, and key attributes</li>
-      <li>Good for non-featured brands that need more than basic listing</li>
-    </ul>
-  </li>
-  <li><strong>Full Template</strong> (<code class="language-plaintext highlighter-rouge">_templates/brands/brand_profile_full.md</code>):
-    <ul>
-      <li>Comprehensive profile with all possible fields</li>
-      <li>Use for featured brands or when extensive information is available</li>
-      <li>Includes complete taxonomy, social media, certifications, timeline, etc.</li>
-      <li>Supports rich storytelling and detailed brand information</li>
-    </ul>
-  </li>
-</ol>
-
-<p>Always process brand images after creation using:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_scripts/core/process_images.sh brands <span class="o">[</span>country_code]-[brand_name]
-</code></pre></div></div>
-
-<h1 id="-important-architecture-guidelines">🚨 Important Architecture Guidelines</h1>
 
 <h2 id="linear-layout-requirements">Linear Layout Requirements</h2>
 
@@ -16092,47 +15066,212 @@ Characteristics: professional, natural photography with clean backgrounds and su
   <li><strong>MOBILE-FIRST:</strong> Linear flow ensures consistent behavior across all devices</li>
 </ul>
 
-<h2 id="sidebar-elimination-status">Sidebar Elimination Status</h2>
+<hr />
 
-<p>As of May 28, 2025, all functional sidebar references have been removed from the codebase:</p>
+<h1 id="-multilingual-logic">🌐 Multilingual Logic</h1>
+
 <ul>
-  <li>Sidebar CSS files deleted and imports removed</li>
-  <li>All layouts converted to linear sectioning</li>
-  <li>Section includes updated to use <code class="language-plaintext highlighter-rouge">section-content</code> and <code class="language-plaintext highlighter-rouge">section-title</code> classes</li>
-  <li>Documentation updated to reflect new architecture</li>
+  <li><strong>All content exists in language-specific subfolders</strong>: <code class="language-plaintext highlighter-rouge">/en/</code>, <code class="language-plaintext highlighter-rouge">/ru/</code>, <code class="language-plaintext highlighter-rouge">/zh/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code> stores UI labels and common text strings</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/navigation/{lang}.yml</code> configures nav structure per language</li>
+  <li>Layouts and includes dynamically pull from <code class="language-plaintext highlighter-rouge">_data/</code> based on <code class="language-plaintext highlighter-rouge">page.lang</code></li>
+  <li>Language switcher and all permalinks respect language prefixing</li>
 </ul>
 
-<p><strong>When adding new content or features, always use the linear sectioning pattern established in existing layouts like <code class="language-plaintext highlighter-rouge">founder-profile.html</code> and <code class="language-plaintext highlighter-rouge">insight-article.html</code>.</strong></p>
+<p><strong>Translation Helper Pattern (use this):</strong></p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-<h2 id="page-structure-standardization">Page Structure Standardization</h2>
 
-<p>As of May 28, 2025, all topline pages have been standardized across all languages:</p>
 
-<p><strong>Standardized Pages:</strong></p>
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Our Unique Perspective
+
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="-code-style-guidelines">🎨 Code Style Guidelines</h1>
+
+<h2 id="file-naming-conventions">File Naming Conventions</h2>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">pages/{lang}/brands.md</code> - Brand discovery and listings</li>
-  <li><code class="language-plaintext highlighter-rouge">pages/{lang}/founders.md</code> - Founder discovery and profiles</li>
-  <li><code class="language-plaintext highlighter-rouge">pages/{lang}/discovery.md</code> - Dimension-based navigation</li>
-  <li><code class="language-plaintext highlighter-rouge">pages/{lang}/insights.md</code> - Content and insights hub</li>
+  <li><strong>Files</strong>: <code class="language-plaintext highlighter-rouge">kebab-case.html</code>, <code class="language-plaintext highlighter-rouge">kebab-case.css</code></li>
+  <li><strong>Variables</strong>: camelCase for JavaScript, kebab-case for CSS</li>
+  <li><strong>Classes</strong>: BEM format <code class="language-plaintext highlighter-rouge">.block__element--modifier</code></li>
+  <li><strong>Content Files</strong>: <code class="language-plaintext highlighter-rouge">[country-code]-[brand-name].md</code> (e.g., <code class="language-plaintext highlighter-rouge">ru-teatime.md</code>)</li>
 </ul>
 
-<p><strong>Key Features:</strong></p>
+<h2 id="css-organization">CSS Organization</h2>
 <ul>
-  <li><strong>Identical section structure</strong> across EN/RU/ZH languages</li>
-  <li><strong>Impact sections</strong> positioned before content sections for strategic messaging</li>
-  <li><strong>Translation-driven content</strong> eliminates hardcoded HTML</li>
-  <li><strong>Cross-language consistency</strong> ensures maintainable codebase</li>
+  <li>Mobile-first and responsive, using <strong>BEM</strong> naming and CSS custom properties</li>
+  <li>Styles organized under <code class="language-plaintext highlighter-rouge">/assets/css/</code>: <code class="language-plaintext highlighter-rouge">tokens/</code>, <code class="language-plaintext highlighter-rouge">base/</code>, <code class="language-plaintext highlighter-rouge">layout/</code>, <code class="language-plaintext highlighter-rouge">components/</code>, <code class="language-plaintext highlighter-rouge">pages/</code>, <code class="language-plaintext highlighter-rouge">manifest/</code></li>
+  <li>CSS component structure mirrors includes organization</li>
+  <li>See <code class="language-plaintext highlighter-rouge">_docs/technical-reference.md</code> for detailed patterns</li>
+</ul>
+
+<h2 id="html-standards">HTML Standards</h2>
+<ul>
+  <li>Semantic HTML5 with BEM class structure</li>
+  <li><code class="language-plaintext highlighter-rouge">id</code>s used for JS targeting, ARIA attributes for accessibility</li>
+  <li>Use includes for reusable components</li>
+  <li>Keep language-specific content in the appropriate language subfolder</li>
+</ul>
+
+<h2 id="front-matter-standards">Front Matter Standards</h2>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">brand-profile</span>    <span class="c1"># Required: layout type</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Brand</span><span class="nv"> </span><span class="s">Name"</span>      <span class="c1"># Required: display name</span>
+<span class="na">slug</span><span class="pi">:</span> <span class="s2">"</span><span class="s">brand-slug"</span>       <span class="c1"># Required: URL identifier  </span>
+<span class="na">lang</span><span class="pi">:</span> <span class="s">en</span>                 <span class="c1"># Required: language code</span>
+<span class="na">country_code</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ru"</span>       <span class="c1"># Required: ISO country code</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/en/brands/ru-brand/</span>  <span class="c1"># Required: full URL path</span>
+
+<span class="c1"># Taxonomy (use existing dimension slugs only)</span>
+<span class="na">sectors</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">wine"</span><span class="pi">]</span>
+<span class="na">markets</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">russia"</span><span class="pi">]</span> 
+<span class="na">attributes</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">founder-led"</span><span class="pi">]</span>
+<span class="na">signals</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">export-ready"</span><span class="pi">]</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="️-image-strategy">🖼️ Image Strategy</h1>
+
+<ul>
+  <li><strong>Standard aspect ratios</strong>: 3:2 horizontal (1200×800px), 2:3 vertical (800×1200px), 1:1 square (512×512px)</li>
+  <li><strong>Naming convention</strong>: <code class="language-plaintext highlighter-rouge">purpose-imagename.jpg</code> (e.g., <code class="language-plaintext highlighter-rouge">hero-storefront.jpg</code>)</li>
+  <li><strong>Processing</strong>: Unified script <code class="language-plaintext highlighter-rouge">core/process_images.sh [collection] [identifier]</code></li>
+  <li><strong>Organization</strong>: By collection type in assets directory</li>
+</ul>
+
+<p><strong>Image Processing Workflow:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Place original images in originals/ directory</span>
+<span class="c"># Process with appropriate script</span>
+_scripts/core/process_images.sh brands <span class="o">[</span>country]-[brand]
+</code></pre></div></div>
+
+<p>See <code class="language-plaintext highlighter-rouge">_docs/images.md</code> for comprehensive image guide and <code class="language-plaintext highlighter-rouge">_docs/colors.md</code> for visual style standards.</p>
+
+<hr />
+
+<h1 id="-development-workflow">💻 Development Workflow</h1>
+
+<h2 id="quick-commands">Quick Commands</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Development server</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+
+<span class="c"># Production build  </span>
+<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
+
+<span class="c"># Pre-commit validation</span>
+_scripts/core/pre-commit_check.sh
+</code></pre></div></div>
+
+<h2 id="content-creation">Content Creation</h2>
+<p>For step-by-step workflows, see <code class="language-plaintext highlighter-rouge">_docs/daily-workflows.md</code>:</p>
+<ul>
+  <li>Adding brands, founders, dimensions, insights</li>
+  <li>Image processing and optimization</li>
+  <li>Translation management</li>
+  <li>Testing and validation</li>
+</ul>
+
+<h2 id="core-scripts">Core Scripts</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">core/generate-all-json.py</code> - Generate all JSON data files</li>
+  <li><code class="language-plaintext highlighter-rouge">validation/language_consistency_checker.py</code> - Check content exists in all languages</li>
+  <li><code class="language-plaintext highlighter-rouge">utilities/generate-language-map.py</code> - Generate language switcher optimization</li>
 </ul>
 
 <hr />
 
-<h1 id="important-instruction-reminders">important-instruction-reminders</h1>
-<p>Do what has been asked; nothing more, nothing less.
-NEVER create files unless they’re absolutely necessary for achieving your goal.
-ALWAYS prefer editing an existing file to creating a new one.
-NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.</p>
+<h1 id="-data-management">📊 Data Management</h1>
 
-<h1 id="important-instruction-reminders-1">important-instruction-reminders</h1>
+<h2 id="collections">Collections</h2>
+<ul>
+  <li><strong>Brands</strong>: <code class="language-plaintext highlighter-rouge">_brands/{lang}/[country-code]-[brand-name].md</code></li>
+  <li><strong>Founders</strong>: <code class="language-plaintext highlighter-rouge">_founders/{lang}/[founder-id].md</code></li>
+  <li><strong>Insights</strong>: <code class="language-plaintext highlighter-rouge">_insights/{lang}/[article-slug].md</code> (Four categories: Brand Spotlight, Founder’s Journey, Market Momentum, Location Intelligence)</li>
+  <li><strong>Dimensions</strong>: <code class="language-plaintext highlighter-rouge">_dimensions/{lang}/{type}/[dimension-slug].md</code></li>
+</ul>
+
+<h2 id="search-index-automation">Search Index Automation</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Auto-generates search indexes from markdown collections</span>
+python3 _scripts/core/generate-all-json.py
+</code></pre></div></div>
+
+<h2 id="blog-features">Blog Features</h2>
+<ul>
+  <li><strong>Insights Platform</strong>: Full blog functionality with featured articles, pagination, RSS feeds</li>
+  <li><strong>Founders’ Journal</strong>: Personal blog documenting the Brandmine journey</li>
+  <li><strong>Multilingual Support</strong>: Full functionality across EN/RU/ZH languages</li>
+</ul>
+
+<hr />
+
+<h1 id="-technical-references">🔧 Technical References</h1>
+
+<p>For detailed technical information, consult these specialized documentation files:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">_docs/architecture.md</code></strong> - “Logic Light” patterns, data-driven architecture, component systems</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_docs/technical-reference.md</code></strong> - CSS architecture, component patterns, countries data system, performance optimizations</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_docs/daily-workflows.md</code></strong> - Step-by-step content creation, image processing, testing workflows</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_docs/setup-guide.md</code></strong> - Environment setup and quick start</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_docs/troubleshooting.md</code></strong> - Common issues and solutions</li>
+</ul>
+
+<hr />
+
+<h1 id="-claude-development-guidelines">🧠 Claude Development Guidelines</h1>
+
+<h2 id="content-creation-tasks">Content Creation Tasks</h2>
+
+<ol>
+  <li><strong>Check Existing Structure</strong>: Look at similar files or components before creating new ones</li>
+  <li><strong>Follow Naming Conventions</strong>: Use established patterns for files, variables, and classes</li>
+  <li><strong>Test in All Languages</strong>: Ensure compatibility with EN, RU, ZH</li>
+  <li><strong>Mobile-First</strong>: Design for mobile view first, then enhance for larger screens</li>
+  <li><strong>Component Reuse</strong>: Look for opportunities to reuse existing components</li>
+</ol>
+
+<h2 id="brand-profile-creation">Brand Profile Creation</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Use template generator</span>
+python3 _scripts/content-creation/generate_brand_template.py ru teatime
+
+<span class="c"># Process images</span>
+_scripts/core/process_images.sh brands ru-teatime
+
+<span class="c"># Update search indexes</span>
+_scripts/core/generate-all-json.py
+</code></pre></div></div>
+
+<h2 id="validation--testing">Validation &amp; Testing</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run full validation suite before commits</span>
+_scripts/core/pre-commit_check.sh
+
+<span class="c"># Test build performance (should be ~12-13s)</span>
+<span class="nb">time </span><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="important-instruction-reminders">important-instruction-reminders</h1>
 <p>Do what has been asked; nothing more, nothing less.
 NEVER create files unless they’re absolutely necessary for achieving your goal.
 ALWAYS prefer editing an existing file to creating a new one.
