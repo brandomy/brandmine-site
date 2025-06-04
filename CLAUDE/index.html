@@ -80,9 +80,11 @@
 </head>
 
 <body class="
-    default-page
-    
-  ">
+
+
+
+  default-page
+">
   
 
 
@@ -210,14 +212,14 @@
 _founders/{lang}/     — One Markdown file per founder
 _dimensions/{lang}/{type}/  — Dimension definition files per type (markets, sectors, attributes, signals)
 _data/                — YAML/JSON data (translations, navigation, social, market_sectors, etc.)
-_includes/            — Reusable partials (collections, components, layout, pages)
+_includes/            — Reusable partials (components, layout, pages, helpers)
 _layouts/             — Jekyll layouts (default, brand, sector, dimension, etc.)
 _insights/{lang}/     — Insight article content
 pages/{lang}/         — Main content pages (about, brands, discovery, etc.)
 assets/               — CSS, JS, fonts, images
-_docs/                — Project documentation and guidelines
+_docs/                — Project documentation and guidelines (minimal foundation)
 _templates/{type}/    — Markdown and HTML templates for scaffolding
-_scripts/             — CLI scripts (validation, scaffolding, image processing, etc.)
+_scripts/             — CLI scripts organized by function (validation, image processing, etc.)
 _exports/             — Exported artifacts (search index, reports)
 _site/                — Generated site output (Jekyll build directory)
 _config.yml           — Site config, collections, language routing
@@ -236,7 +238,7 @@ index.html            — Entry point redirect to /en/index.html
 
 <p><strong>Valid dimension types</strong> include (slugs match filenames in <code class="language-plaintext highlighter-rouge">_dimensions/{lang}/{type}/</code>):</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">markets</code> — e.g. brazil, china, egypt, ethiopia, india, indonesia, iran, russia, south-africa, uae</li>
+  <li><code class="language-plaintext highlighter-rouge">markets</code> — e.g. brazil, china, egypt, ethiopia, india, indonesia, iran, malaysia, mongolia, russia, south-africa, uae</li>
   <li><code class="language-plaintext highlighter-rouge">sectors</code> — e.g. artisan-ceramics, artisan-confectionery, artisanal-spirits, cured-meats</li>
   <li><code class="language-plaintext highlighter-rouge">attributes</code> — e.g. artisanal-excellence, cultural-bridge, founder-led, heritage-brand, innovation-leader, premium-positioning, regional-icon, sustainability-pioneer</li>
   <li><code class="language-plaintext highlighter-rouge">signals</code> — e.g. export-ready, franchise-ready, investment-ready, rapid-growth
@@ -266,26 +268,23 @@ You can review the full set of valid slugs in the corresponding <code class="lan
 <p>Includes are organized into a structured hierarchy:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/_includes/
-  collections/          — Collection-specific includes
-    brands/             — Brand-related includes
-    dimensions/         — Dimension-related includes
-    founders/           — Founder-related includes
-    insights/           — Insight-related includes
   components/           — Reusable UI components
+    brands/             — Brand-specific components
     buttons/            — Button components
     cards/              — Card components
     carousels/          — Carousel components
     content/            — Content display components
+    dimensions/         — Dimension-related components
     forms/              — Form components (modular: input, textarea, select, contact, newsletter, validation, custom alternatives)
-    helpers/            - Small components
+    helpers/            — Small components
     icons/              — Icon components
     images/             — Image handling components
-      collection-image.html — Unified image component for collections
     indicators/         — UI indicators
     maps/               — Map components
     navigation/         — Navigation components
     search/             — Search components (simple search, multi-column filters, advanced search)
     ui/                 — UI components (alerts, breadcrumbs, loading spinner, modal, tooltip)
+  helpers/              — Helper includes (translations, component defaults, etc.)
   layout/               — Layout components (header, footer)
   pages/                — Page-specific includes organized by page
     about/              — About page sections (hero, mission, team, etc.)
@@ -478,24 +477,50 @@ npm run build                            <span class="c"># Alias for jekyll buil
 </code></pre></div></div>
 
 <h2 id="scripts">Scripts</h2>
-<p>All helper scripts live in the <code class="language-plaintext highlighter-rouge">_scripts/</code> directory. Key examples:</p>
+<p>All helper scripts live in the <code class="language-plaintext highlighter-rouge">_scripts/</code> directory organized by function:</p>
+
+<h3 id="core-scripts">Core Scripts</h3>
 <ul>
-  <li><strong>check_language_consistency.sh</strong>: Ensure content exists in all language folders.</li>
-  <li><strong>validate_multilingual.sh</strong>: Verify translation key consistency across languages.</li>
-  <li><strong>process_images.sh [collection] [identifier]</strong>: Optimize and generate responsive images.</li>
-  <li><strong>generate_brand_template.py [country_code] [brand_slug]</strong>: Scaffold new brand markdown files.</li>
-  <li><strong>generate_article_template.py [lang] [slug]</strong>: Scaffold a new insight article.</li>
-  <li><strong>generate_search_index.py</strong>: Build or update the <code class="language-plaintext highlighter-rouge">search.json</code> index.</li>
-  <li><strong>add_image_attribution.py [collection] [identifier]</strong>: Add entries to <code class="language-plaintext highlighter-rouge">_data/image_attributions.yml</code>.</li>
-  <li><strong>apply_teal_filter.sh</strong>: Apply the teal brand filter to team photos.</li>
-  <li><strong>import_from_airtable.rb</strong>: Import data from Airtable flat tables.</li>
-  <li><strong>yml_to_json_converter.py</strong>: Convert YAML data (e.g. market sectors) to JSON files.</li>
-  <li><strong>claude-session-init.py</strong>: Initialize AI sessions with project context and prompts.</li>
-  <li><strong>custom-forms.js</strong>: JavaScript for custom contact and newsletter forms (validation, submission, state management).</li>
-  <li><em>(See <code class="language-plaintext highlighter-rouge">_scripts/</code> for the full list of available helper scripts.)</em></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">core/pre-commit_check.sh</code></strong>: Run all validation checks before commits</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">core/generate-all-json.py</code></strong>: Generate all JSON data files</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">core/process_images.sh [collection] [identifier]</code></strong>: Process images for any collection</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">core/optimize-build.sh</code></strong>: Optimize Jekyll build performance</li>
 </ul>
 
-<h2 id="validation">Validation</h2>
+<h3 id="content-creation">Content Creation</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">content-creation/generate_brand_template.py [country_code] [brand_slug]</code></strong>: Scaffold new brand markdown files</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">content-creation/generate_article_template.py [type] [slug]</code></strong>: Scaffold new article/insight/founder</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">content-creation/add_brand.rb</code></strong>: Add brand via Ruby script</li>
+</ul>
+
+<h3 id="data-generation">Data Generation</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">data-generation/generate-brands-json.py</code></strong>: Generate brands JSON index</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">data-generation/generate-founders-json.py</code></strong>: Generate founders JSON index</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">data-generation/import_from_airtable.rb</code></strong>: Import data from Airtable</li>
+</ul>
+
+<h3 id="image-processing">Image Processing</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">image-processing/apply_teal_filter.sh</code></strong>: Apply brand filter to team photos</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">image-processing/add_image_attribution.py</code></strong>: Add image attributions</li>
+</ul>
+
+<h3 id="validation">Validation</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">validation/language_consistency_checker.py</code></strong>: Check content exists in all languages</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">validation/validate_yaml.sh</code></strong>: Validate YAML syntax</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">validation/find_translation_keys.py</code></strong>: Find missing translation keys</li>
+</ul>
+
+<h3 id="utilities">Utilities</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">utilities/generate-language-map.py</code></strong>: Generate language switcher optimization</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">utilities/generate-navigation-cache.py</code></strong>: Generate navigation cache for performance</li>
+</ul>
+
+<h2 id="validation-1">Validation</h2>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll doctor       <span class="c"># Check config</span>
 htmlproofer _site   <span class="c"># Validate HTML output (requires html-proofer gem)</span>
 </code></pre></div></div>
@@ -506,7 +531,7 @@ bundle <span class="nb">exec </span>jekyll serve               <span class="c">#
 open http://localhost:4000             <span class="c"># View in browser</span>
 
 <span class="c"># Test multilingual functionality</span>
-./_scripts/check_language_consistency.sh <span class="c"># Check if pages exist in all languages</span>
+_scripts/validation/language_consistency_checker.py <span class="c"># Check if pages exist in all languages</span>
 
 <span class="c"># Check image processing &amp; optimization</span>
 identify <span class="nt">-format</span> <span class="s2">"%f: %wx%h</span><span class="se">\n</span><span class="s2">"</span> assets/images/<span class="k">**</span>/<span class="k">*</span>.jpg <span class="c"># Verify image dimensions</span>
@@ -1099,11 +1124,136 @@ Our Unique Perspective
   
   &lt;div class="search-filter__presets"&gt;
     
-        &lt;button type="button" class="preset-btn" data-preset="featured"&gt;Featured&lt;/button&gt;
-        &lt;button type="button" class="preset-btn" data-preset="founder-led"&gt;Founder Led&lt;/button&gt;
-        &lt;button type="button" class="preset-btn" data-preset="export-ready"&gt;Export Ready&lt;/button&gt;
-        &lt;button type="button" class="preset-btn" data-preset="heritage"&gt;Heritage&lt;/button&gt;
-        &lt;button type="button" class="preset-btn" data-preset="sustainability"&gt;Sustainable&lt;/button&gt;
+        
+        
+          &lt;button type="button" 
+                  class="preset-btn" 
+                  data-preset="featured"
+                  data-filters='{"featured":true}'&gt;
+            
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Featured
+
+          &lt;/button&gt;
+        
+          &lt;button type="button" 
+                  class="preset-btn" 
+                  data-preset="founder-led"
+                  data-filters='{"attributes":["founder-led"]}'&gt;
+            
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founder Led
+
+          &lt;/button&gt;
+        
+          &lt;button type="button" 
+                  class="preset-btn" 
+                  data-preset="export-ready"
+                  data-filters='{"signals":["export-ready"]}'&gt;
+            
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Export Ready
+
+          &lt;/button&gt;
+        
+          &lt;button type="button" 
+                  class="preset-btn" 
+                  data-preset="heritage"
+                  data-filters='{"attributes":["heritage-brand"]}'&gt;
+            
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Heritage
+
+          &lt;/button&gt;
+        
       
   &lt;/div&gt;
   
@@ -1135,6 +1285,11 @@ Our Unique Perspective
         &lt;h4 class="filter-group__title"&gt;Sectors&lt;/h4&gt;
         &lt;div class="filter-options"&gt;
           
+
+
+
+
+
           
             &lt;label class="filter-option"&gt;
               &lt;input type="checkbox" name="sector" value="wine"&gt;
@@ -1224,11 +1379,12 @@ Our Unique Perspective
         &lt;h4 class="filter-group__title"&gt;Markets&lt;/h4&gt;
         &lt;div class="filter-options"&gt;
           
+
+
+
+
+
           
-          
-          
-            
-            
             
             
             &lt;label class="filter-option"&gt;
@@ -1238,33 +1394,11 @@ Our Unique Perspective
           
             
             
-            
-            
             &lt;label class="filter-option"&gt;
-              &lt;input type="checkbox" name="market" value="china"&gt;
-              &lt;span&gt;China&lt;/span&gt;
+              &lt;input type="checkbox" name="market" value="russia"&gt;
+              &lt;span&gt;Russia&lt;/span&gt;
             &lt;/label&gt;
           
-            
-            
-            
-            
-            &lt;label class="filter-option"&gt;
-              &lt;input type="checkbox" name="market" value="egypt"&gt;
-              &lt;span&gt;Egypt&lt;/span&gt;
-            &lt;/label&gt;
-          
-            
-            
-            
-            
-            &lt;label class="filter-option"&gt;
-              &lt;input type="checkbox" name="market" value="ethiopia"&gt;
-              &lt;span&gt;Ethiopia&lt;/span&gt;
-            &lt;/label&gt;
-          
-            
-            
             
             
             &lt;label class="filter-option"&gt;
@@ -1274,33 +1408,11 @@ Our Unique Perspective
           
             
             
-            
-            
             &lt;label class="filter-option"&gt;
-              &lt;input type="checkbox" name="market" value="indonesia"&gt;
-              &lt;span&gt;Indonesia&lt;/span&gt;
+              &lt;input type="checkbox" name="market" value="china"&gt;
+              &lt;span&gt;China&lt;/span&gt;
             &lt;/label&gt;
           
-            
-            
-            
-            
-            &lt;label class="filter-option"&gt;
-              &lt;input type="checkbox" name="market" value="iran"&gt;
-              &lt;span&gt;Iran&lt;/span&gt;
-            &lt;/label&gt;
-          
-            
-            
-            
-            
-            &lt;label class="filter-option"&gt;
-              &lt;input type="checkbox" name="market" value="russia"&gt;
-              &lt;span&gt;Russia&lt;/span&gt;
-            &lt;/label&gt;
-          
-            
-            
             
             
             &lt;label class="filter-option"&gt;
@@ -1310,11 +1422,51 @@ Our Unique Perspective
           
             
             
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="iran"&gt;
+              &lt;span&gt;Iran&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="egypt"&gt;
+              &lt;span&gt;Egypt&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="ethiopia"&gt;
+              &lt;span&gt;Ethiopia&lt;/span&gt;
+            &lt;/label&gt;
+          
             
             
             &lt;label class="filter-option"&gt;
               &lt;input type="checkbox" name="market" value="uae"&gt;
               &lt;span&gt;United Arab Emirates&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="indonesia"&gt;
+              &lt;span&gt;Indonesia&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="mongolia"&gt;
+              &lt;span&gt;Mongolia&lt;/span&gt;
+            &lt;/label&gt;
+          
+            
+            
+            &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="market" value="malaysia"&gt;
+              &lt;span&gt;Malaysia&lt;/span&gt;
             &lt;/label&gt;
           
         &lt;/div&gt;
@@ -1325,6 +1477,11 @@ Our Unique Perspective
         &lt;h4 class="filter-group__title"&gt;Attributes&lt;/h4&gt;
         &lt;div class="filter-options"&gt;
           
+
+
+
+
+
           
             &lt;label class="filter-option"&gt;
               &lt;input type="checkbox" name="attribute" value="founder-led"&gt;
@@ -1352,6 +1509,11 @@ Our Unique Perspective
             &lt;/label&gt;
           
             &lt;label class="filter-option"&gt;
+              &lt;input type="checkbox" name="attribute" value="cultural-bridge"&gt;
+              &lt;span&gt;Cultural bridge&lt;/span&gt;
+            &lt;/label&gt;
+          
+            &lt;label class="filter-option"&gt;
               &lt;input type="checkbox" name="attribute" value="premium-positioning"&gt;
               &lt;span&gt;Premium positioning&lt;/span&gt;
             &lt;/label&gt;
@@ -1359,11 +1521,6 @@ Our Unique Perspective
             &lt;label class="filter-option"&gt;
               &lt;input type="checkbox" name="attribute" value="regional-icon"&gt;
               &lt;span&gt;Regional icon&lt;/span&gt;
-            &lt;/label&gt;
-          
-            &lt;label class="filter-option"&gt;
-              &lt;input type="checkbox" name="attribute" value="cultural-bridge"&gt;
-              &lt;span&gt;Cultural bridge&lt;/span&gt;
             &lt;/label&gt;
           
         &lt;/div&gt;
@@ -1374,6 +1531,11 @@ Our Unique Perspective
         &lt;h4 class="filter-group__title"&gt;Signals&lt;/h4&gt;
         &lt;div class="filter-options"&gt;
           
+
+
+
+
+
           
             &lt;label class="filter-option"&gt;
               &lt;input type="checkbox" name="signal" value="export-ready"&gt;
@@ -15036,11 +15198,46 @@ TeaTime
 
 </code></pre></div></div>
 
+<h3 id="centralized-dimension-configuration">Centralized Dimension Configuration</h3>
+<p>All dimension data is now managed through <code class="language-plaintext highlighter-rouge">_data/dimensions_config.yml</code>:</p>
+<ul>
+  <li>Eliminates hardcoded dimension lists throughout templates</li>
+  <li>Provides consistent ordering and metadata</li>
+  <li>Enables easy addition of new dimensions</li>
+</ul>
+
+<h3 id="enhanced-component-defaults">Enhanced Component Defaults</h3>
+<p>The <code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code> now includes comprehensive configuration for:</p>
+<ul>
+  <li>Dimension display components</li>
+  <li>Search and filter components</li>
+  <li>Card display components</li>
+  <li>Form validation and behavior</li>
+  <li>Map integration settings</li>
+</ul>
+
+<h3 id="translation-key-standardization">Translation Key Standardization</h3>
+<p>New helper <code class="language-plaintext highlighter-rouge">translation-key-builder.html</code> provides consistent key construction:</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<h3 id="body-class-generation">Body Class Generation</h3>
+<p>Centralized body class logic eliminates complex conditionals in layouts:</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;body class="
+
+
+
+  default-page
+"&gt;
+</code></pre></div></div>
+
 <h3 id="configuration-files">Configuration Files</h3>
 <p>The “Logic Light” architecture relies on these centralized configuration files:</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code> - Component behavior defaults</li>
   <li><code class="language-plaintext highlighter-rouge">_data/page_sections.yml</code> - Page section order and panel mappings</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/dimensions_config.yml</code> - Dimension lists, ordering, and metadata</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/search_presets.yml</code> - Search filter presets configuration</li>
   <li><code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code> - UI text and labels</li>
 </ul>
 
@@ -15083,8 +15280,8 @@ TeaTime
   <li>Organization by collection type in the assets directory</li>
   <li>Processing with ImageMagick for optimization via unified script:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">process_images.sh</code> for all collection types</li>
-      <li>Specialized scripts for specific collections</li>
+      <li><code class="language-plaintext highlighter-rouge">core/process_images.sh</code> for all collection types</li>
+      <li>Specialized scripts for specific processing needs</li>
     </ul>
   </li>
 </ul>
@@ -15119,22 +15316,22 @@ TeaTime
   </li>
   <li><strong>Processing Scripts</strong>:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">process_images.sh [collection] [identifier]</code> - Unified image processing</li>
-      <li><code class="language-plaintext highlighter-rouge">apply_teal_filter.sh</code> for team photos branding</li>
+      <li><code class="language-plaintext highlighter-rouge">core/process_images.sh [collection] [identifier]</code> - Unified image processing</li>
+      <li><code class="language-plaintext highlighter-rouge">image-processing/apply_teal_filter.sh</code> for team photos branding</li>
     </ul>
   </li>
   <li><strong>Implementation Includes</strong>:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">collection-image.html</code> for unified responsive image handling</li>
-      <li><code class="language-plaintext highlighter-rouge">brand-image.html</code> for brand-specific imagery</li>
-      <li><code class="language-plaintext highlighter-rouge">site-image.html</code> for site-wide imagery</li>
+      <li><code class="language-plaintext highlighter-rouge">components/images/collection-image.html</code> for unified responsive image handling</li>
+      <li><code class="language-plaintext highlighter-rouge">components/images/brand-image.html</code> for brand-specific imagery</li>
+      <li><code class="language-plaintext highlighter-rouge">components/images/site-image.html</code> for site-wide imagery</li>
       <li>
-        <p><code class="language-plaintext highlighter-rouge">taxonomy-icon.html</code> for dimension taxonomy icons</p>
+        <p><code class="language-plaintext highlighter-rouge">helpers/taxonomy-icon.html</code> for dimension taxonomy icons</p>
       </li>
       <li><strong>Documentation</strong>:
         <ul>
-          <li>Comprehensive image guide at <code class="language-plaintext highlighter-rouge">_docs/design/image-guide.md</code></li>
-          <li>Image style guide at <code class="language-plaintext highlighter-rouge">_docs/design/image-style-guide.md</code></li>
+          <li>Comprehensive image guide at <code class="language-plaintext highlighter-rouge">_docs/images.md</code></li>
+          <li>Color palette guide at <code class="language-plaintext highlighter-rouge">_docs/colors.md</code></li>
         </ul>
       </li>
     </ul>
@@ -15236,7 +15433,7 @@ Characteristics: professional, natural photography with clean backgrounds and su
 
 <p><strong>Automated Generation:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">generate_search_index.py</code> - Builds complete JSON search indexes from markdown collections</li>
+  <li><code class="language-plaintext highlighter-rouge">core/generate-all-json.py</code> - Builds complete JSON search indexes from markdown collections</li>
   <li>Generates <code class="language-plaintext highlighter-rouge">_data/brands.json</code> and <code class="language-plaintext highlighter-rouge">_data/founders.json</code> with multilingual content</li>
   <li>Includes complete metadata: taxonomy, location, founding year, website URLs</li>
   <li>Auto-generates from Jekyll collections when content is added/modified</li>
@@ -15249,7 +15446,7 @@ Characteristics: professional, natural photography with clean backgrounds and su
 </ul>
 
 <p><strong>Update Search Indexes:</strong></p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 _scripts/generate_search_index.py
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 _scripts/core/generate-all-json.py
 </code></pre></div></div>
 
 <hr />
@@ -15421,11 +15618,11 @@ Characteristics: professional, natural photography with clean backgrounds and su
 
 <h2 id="component-documentation">Component Documentation</h2>
 
-<p>Comprehensive guides available:</p>
+<p>Comprehensive guides available in <code class="language-plaintext highlighter-rouge">_docs/</code>:</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">_docs/cheat_sheets/forms-components-guide.md</code> - Complete forms documentation</li>
-  <li><code class="language-plaintext highlighter-rouge">_docs/cheat_sheets/search-components-guide.md</code> - Search functionality guide</li>
-  <li><code class="language-plaintext highlighter-rouge">_docs/cheat_sheets/ui-components-guide.md</code> - UI components documentation</li>
+  <li><code class="language-plaintext highlighter-rouge">daily-workflows.md</code> - Step-by-step content workflows</li>
+  <li><code class="language-plaintext highlighter-rouge">technical-reference.md</code> - Architecture patterns and examples</li>
+  <li><code class="language-plaintext highlighter-rouge">troubleshooting.md</code> - Common issues and solutions</li>
 </ul>
 
 <hr />
@@ -15477,120 +15674,36 @@ Characteristics: professional, natural photography with clean backgrounds and su
 <span class="s">Alexei Sokolov discovered his passion for tea while traveling through China...</span>
 </code></pre></div></div>
 
-<h1 id="-color-system-architecture">🎨 Color System Architecture</h1>
-
-<h2 id="brand-color-hierarchy">Brand Color Hierarchy</h2>
-<ul>
-  <li><strong>Primary Teal</strong> (<code class="language-plaintext highlighter-rouge">--primary-*</code>) - Site navigation, base components, brand elements</li>
-  <li><strong>Secondary Orange</strong> (<code class="language-plaintext highlighter-rouge">--secondary-*</code>) - Accent elements, attribute dimensions</li>
-  <li><strong>Neutral Gray</strong> (<code class="language-plaintext highlighter-rouge">--neutral-*</code>) - Text, backgrounds, borders</li>
-</ul>
-
-<h2 id="visual-taxonomy-color-coding">Visual Taxonomy Color Coding</h2>
-<p>Brandmine uses consistent color-coding across discovery interfaces and content categorization:</p>
-
-<h3 id="discovery-dimensions">Discovery Dimensions</h3>
-<ul>
-  <li><strong>Sectors</strong> → Olive green (<code class="language-plaintext highlighter-rouge">--olive-*</code>) - Industry categories</li>
-  <li><strong>Markets</strong> → Sky blue (<code class="language-plaintext highlighter-rouge">--sky-*</code>) - Regional focus</li>
-  <li><strong>Attributes</strong> → Orange (<code class="language-plaintext highlighter-rouge">--secondary-*</code>) - Brand qualities</li>
-  <li><strong>Signals</strong> → Indigo (<code class="language-plaintext highlighter-rouge">--accent-*</code>) - Growth indicators</li>
-</ul>
-
-<h3 id="insights-categories">Insights Categories</h3>
-<ul>
-  <li><strong>Brand Spotlight</strong> → Amber (<code class="language-plaintext highlighter-rouge">--amber-*</code>) - Premium/gold theme</li>
-  <li><strong>Founder’s Journey</strong> → Purple (<code class="language-plaintext highlighter-rouge">--accent-*</code>) - Personal stories</li>
-  <li><strong>Market Momentum</strong> → Olive (<code class="language-plaintext highlighter-rouge">--olive-*</code>) - Growth/business</li>
-  <li><strong>Location Intelligence</strong> → Sky blue (<code class="language-plaintext highlighter-rouge">--sky-*</code>) - Geographic analysis</li>
-</ul>
-
-<h2 id="color-token-compliance">Color Token Compliance</h2>
-<ul>
-  <li><strong>100% design token usage required</strong> - No hardcoded color values</li>
-  <li><strong>All colors must pass WCAG AA contrast requirements</strong> (4.5:1 minimum)</li>
-  <li><strong>Semantic color assignment</strong> - Colors follow meaning, not appearance</li>
-  <li><strong>Approved exceptions:</strong> Social media brand colors, debug tools only</li>
-</ul>
-
-<h2 id="implementation-standards">Implementation Standards</h2>
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* ✅ Base components use primary teal */</span>
+<h2 id="visual-taxonomy-css-example">Visual Taxonomy CSS Example</h2>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Dimension styling with color coding */</span>
 <span class="nc">.dimension</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">primary-100</span><span class="p">);</span>  <span class="cm">/* Base component background */</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">primary-800</span><span class="p">);</span>             <span class="cm">/* Base component text */</span>
-  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">primary-500</span><span class="p">);</span>  <span class="cm">/* Base component border */</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--space-1</span><span class="p">)</span> <span class="n">var</span><span class="p">(</span><span class="n">--space-2</span><span class="p">);</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--radius-sm</span><span class="p">);</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--text-xs</span><span class="p">);</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--font-medium</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="cm">/* ✅ Specific dimension contexts use taxonomy colors */</span>
 <span class="nc">.dimension--sector</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">olive-100</span><span class="p">);</span>    <span class="cm">/* Sector-specific olive */</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">olive-800</span><span class="p">);</span>               <span class="cm">/* Olive text */</span>
-  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">olive-500</span><span class="p">);</span>    <span class="cm">/* Olive border */</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--olive-100</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--olive-900</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nc">.dimension--market</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">sky-100</span><span class="p">);</span>      <span class="cm">/* Market-specific sky blue */</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">sky-800</span><span class="p">);</span>                 <span class="cm">/* Sky blue text */</span>
-  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">sky-500</span><span class="p">);</span>      <span class="cm">/* Sky blue border */</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--sky-100</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--sky-900</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nc">.dimension--attribute</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">secondary-100</span><span class="p">);</span> <span class="cm">/* Attribute-specific orange */</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">secondary-800</span><span class="p">);</span>            <span class="cm">/* Orange text */</span>
-  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">secondary-500</span><span class="p">);</span> <span class="cm">/* Orange border */</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--secondary-100</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--secondary-900</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nc">.dimension--signal</span> <span class="p">{</span>
-  <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">accent-100</span><span class="p">);</span>   <span class="cm">/* Signal-specific indigo */</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">accent-800</span><span class="p">);</span>              <span class="cm">/* Indigo text */</span>
-  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">accent-500</span><span class="p">);</span>   <span class="cm">/* Indigo border */</span>
-<span class="p">}</span>
-
-<span class="cm">/* ✅ Correct insights category styling */</span>
-<span class="nc">.insight-card--brand-spotlight</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">amber-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">amber-700</span><span class="p">);</span>
-  <span class="nl">border-left</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">amber-500</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.insight-card--founders-journey</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">accent-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">accent-700</span><span class="p">);</span>
-  <span class="nl">border-left</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">accent-500</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.insight-card--market-momentum</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">olive-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">olive-700</span><span class="p">);</span>
-  <span class="nl">border-left</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">olive-500</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.insight-card--location-intelligence</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">sky-100</span><span class="p">);</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">sky-700</span><span class="p">);</span>
-  <span class="nl">border-left</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">sky-500</span><span class="p">);</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--accent-100</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--accent-900</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
-
-<h2 id="color-usage-rules">Color Usage Rules</h2>
-<ol>
-  <li><strong>Always use design tokens</strong> from <code class="language-plaintext highlighter-rouge">assets/css/tokens/tokens.scss</code></li>
-  <li><strong>Base components use primary teal</strong> - Navigation, generic elements</li>
-  <li><strong>Dimension-specific components use taxonomy colors</strong> - Context-dependent styling</li>
-  <li><strong>Follow semantic assignments</strong> - Same meaning = same color across components</li>
-  <li><strong>Maintain contrast ratios</strong> - All text must be readable on backgrounds</li>
-  <li><strong>Document exceptions</strong> - Comment any non-standard color usage</li>
-  <li><strong>Test across languages</strong> - Colors work in EN/RU/ZH contexts</li>
-</ol>
-
-<h3 id="color-assignment-hierarchy">Color Assignment Hierarchy</h3>
-<ul>
-  <li><strong>Generic/Base components</strong> → <code class="language-plaintext highlighter-rouge">--primary-*</code> (teal)</li>
-  <li><strong>Sector-specific contexts</strong> → <code class="language-plaintext highlighter-rouge">--olive-*</code> (olive green)</li>
-  <li><strong>Market-specific contexts</strong> → <code class="language-plaintext highlighter-rouge">--sky-*</code> (sky blue)</li>
-  <li><strong>Attribute-specific contexts</strong> → <code class="language-plaintext highlighter-rouge">--secondary-*</code> (orange)</li>
-  <li><strong>Signal-specific contexts</strong> → <code class="language-plaintext highlighter-rouge">--accent-*</code> (indigo)</li>
-</ul>
 
 <hr />
 
@@ -15674,14 +15787,14 @@ Characteristics: professional, natural photography with clean backgrounds and su
 <ol>
   <li>Create brand markdown file in each language folder (<code class="language-plaintext highlighter-rouge">_brands/en/</code>, <code class="language-plaintext highlighter-rouge">_brands/ru/</code>, <code class="language-plaintext highlighter-rouge">_brands/zh/</code>)</li>
   <li>Ensure the brand references existing dimensions</li>
-  <li>Process brand images with <code class="language-plaintext highlighter-rouge">./_scripts/process_images.sh brands [country_code]-[brand_name]</code></li>
+  <li>Process brand images with <code class="language-plaintext highlighter-rouge">_scripts/core/process_images.sh brands [country_code]-[brand_name]</code></li>
   <li>Add attributions for images in <code class="language-plaintext highlighter-rouge">_data/image_attributions.yml</code></li>
 </ol>
 
 <h3 id="adding-a-new-founder">Adding a New Founder</h3>
 <ol>
   <li>Create founder markdown file in each language folder (<code class="language-plaintext highlighter-rouge">_founders/en/</code>, <code class="language-plaintext highlighter-rouge">_founders/ru/</code>, <code class="language-plaintext highlighter-rouge">_founders/zh/</code>)</li>
-  <li>Process founder images with <code class="language-plaintext highlighter-rouge">./_scripts/process_images.sh founders [founder-id]</code></li>
+  <li>Process founder images with <code class="language-plaintext highlighter-rouge">_scripts/core/process_images.sh founders [founder-id]</code></li>
   <li>Add attributions for images in <code class="language-plaintext highlighter-rouge">_data/image_attributions.yml</code></li>
 </ol>
 
@@ -15695,9 +15808,9 @@ Characteristics: professional, natural photography with clean backgrounds and su
 <h3 id="adding-insights-articles">Adding Insights Articles</h3>
 <ol>
   <li>Use the insight template from <code class="language-plaintext highlighter-rouge">_templates/insights/insight-template-enhanced.md</code></li>
-  <li>Choose one of the five standardized categories</li>
+  <li>Choose one of the four standardized categories</li>
   <li>Add <code class="language-plaintext highlighter-rouge">featured: true</code> for hero display on insights home page</li>
-  <li>Process images with <code class="language-plaintext highlighter-rouge">./_scripts/process_images.sh insights [article-slug]</code></li>
+  <li>Process images with <code class="language-plaintext highlighter-rouge">_scripts/core/process_images.sh insights [article-slug]</code></li>
   <li>Leverage social sharing and RSS feed distribution</li>
 </ol>
 
@@ -15740,7 +15853,7 @@ Characteristics: professional, natural photography with clean backgrounds and su
 </ol>
 
 <p>Always process brand images after creation using:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./_scripts/process_images.sh brands <span class="o">[</span>country_code]-[brand_name]
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_scripts/core/process_images.sh brands <span class="o">[</span>country_code]-[brand_name]
 </code></pre></div></div>
 
 <h1 id="-important-architecture-guidelines">🚨 Important Architecture Guidelines</h1>
@@ -15792,6 +15905,12 @@ Characteristics: professional, natural photography with clean backgrounds and su
 <hr />
 
 <h1 id="important-instruction-reminders">important-instruction-reminders</h1>
+<p>Do what has been asked; nothing more, nothing less.
+NEVER create files unless they’re absolutely necessary for achieving your goal.
+ALWAYS prefer editing an existing file to creating a new one.
+NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.</p>
+
+<h1 id="important-instruction-reminders-1">important-instruction-reminders</h1>
 <p>Do what has been asked; nothing more, nothing less.
 NEVER create files unless they’re absolutely necessary for achieving your goal.
 ALWAYS prefer editing an existing file to creating a new one.
