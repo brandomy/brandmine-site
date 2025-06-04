@@ -1,7 +1,7 @@
 ---
 lang: zh
 ref: sector-gourmet-foods
-layout: dimension
+layout: dimension-profile
 title: "美食佳肴"
 dimension: gourmet-foods
 category: sector
