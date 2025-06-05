@@ -25,8 +25,19 @@ VARIANTS:
 - featured-insight-card--[category]: Category-specific styling
 - featured-insight-card--featured: Enhanced featured styling
 
-NOTES: Responsive images use 400w, 800w, 1200w variants. Category badge includes icon and translated label. Excerpt truncated to 120 chars. Falls back to placeholder icon when no hero image.
+NOTES: Responsive images use 400w, 800w, 1200w variants. Category badge includes icon and translated label. Excerpt truncation configurable via component defaults. Falls back to placeholder icon when no hero image.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.featured-insight-card" param="excerpt_words" fallback=120 %}{% endcapture %}
+{% capture default_show_category %}{% include helpers/component-defaults.html component="cards.featured-insight-card" param="show_category" fallback=true %}{% endcapture %}
+{% capture default_show_date %}{% include helpers/component-defaults.html component="cards.featured-insight-card" param="show_date" fallback=true %}{% endcapture %}
+{% capture default_show_author %}{% include helpers/component-defaults.html component="cards.featured-insight-card" param="show_author" fallback=true %}{% endcapture %}
+
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
+{% assign show_category = include.show_category | default: default_show_category %}
+{% assign show_date = include.show_date | default: default_show_date %}
+{% assign show_author = include.show_author | default: default_show_author %}
 
 <article class="featured-insight-card featured-insight-card--{{ include.insight.category }}{% if include.featured %} featured-insight-card--featured{% endif %}">
   <a href="{{ include.insight.permalink | relative_url }}" class="featured-insight-card__link">
@@ -50,7 +61,7 @@ NOTES: Responsive images use 400w, 800w, 1200w variants. Category badge includes
         </div>
       {% endif %}
 
-      {% if include.insight.category %}
+      {% if show_category and include.insight.category %}
         <span class="featured-insight-card__category">
           {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="featured-insight-card__category-icon" %}
           {% assign normalized_category = include.insight.category | replace: "-", "_" %}
@@ -64,13 +75,18 @@ NOTES: Responsive images use 400w, 800w, 1200w variants. Category badge includes
       <h3 class="featured-insight-card__title">{{ include.insight.title }}</h3>
 
       <div class="featured-insight-card__meta">
-        <span class="featured-insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
+        {% if show_date %}
+          <span class="featured-insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
+        {% endif %}
         {% if include.insight.reading_time %}
           <span class="featured-insight-card__reading-time">{{ include.insight.reading_time }} {% include helpers/t.html key="insights.minute_read" fallback="min read" lang=include.insight.lang %}</span>
         {% endif %}
+        {% if show_author and include.insight.author %}
+          <span class="featured-insight-card__author">{{ include.insight.author }}</span>
+        {% endif %}
       </div>
 
-      <p class="featured-insight-card__excerpt">{{ include.insight.excerpt | truncate: 120 }}</p>
+      <p class="featured-insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
 
       <span class="featured-insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
     </div>

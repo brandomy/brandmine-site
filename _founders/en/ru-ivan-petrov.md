@@ -58,6 +58,18 @@ achievements: ["International organic certification", "Preserved traditional har
 description: "Ivan Petrov profile - Third-generation Altai beekeeper preserving traditional honey harvesting while building sustainable community model."
 keywords: ["ivan petrov", "altai honey", "beekeeping", "russia", "organic certification", "traditional harvesting"]
 
+# === QUOTES ===
+quotes:
+  - text: "Bees teach us patience and respect for nature. In our fast world, honey reminds us that the best things take time."
+    type: "philosophy"
+    context: "On the lessons of beekeeping"
+  - text: "The Altai mountains produce honey unlike anywhere else. Our role is simply to be guardians of this natural treasure."
+    type: "insight"
+    context: "On Altai's unique terroir"
+  - text: "Success in beekeeping, like in business, comes from listening more than talking—listening to nature, to traditions, to your customers."
+    type: "advice"
+    context: "Business wisdom from the hives"
+
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
 # Must match section names in founder includes

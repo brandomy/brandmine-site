@@ -15,8 +15,19 @@ DEPENDENCIES:
 VARIANTS:
 - featured-brand-card--featured: Applied when brand.featured or brand.featured_level > 1
 
-NOTES: Shows more taxonomy tags than basic brand-card (2 attributes vs 1). Description truncated to 180 chars. Falls back to content strip_html if no description field.
+NOTES: Shows more taxonomy tags than basic brand-card. Description truncation and tag limits configurable via component defaults. Falls back to content strip_html if no description field.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.featured-brand-card" param="tag_limit" fallback=2 %}{% endcapture %}
+{% capture default_description_words %}{% include helpers/component-defaults.html component="cards.featured-brand-card" param="description_words" fallback=180 %}{% endcapture %}
+{% capture default_show_featured_badge %}{% include helpers/component-defaults.html component="cards.featured-brand-card" param="show_featured_badge" fallback=true %}{% endcapture %}
+{% capture default_layout %}{% include helpers/component-defaults.html component="cards.featured-brand-card" param="layout" fallback="horizontal" %}{% endcapture %}
+
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
+{% assign description_words = include.description_words | default: default_description_words %}
+{% assign show_featured_badge = include.show_featured_badge | default: default_show_featured_badge %}
+{% assign layout = include.layout | default: default_layout %}
 
 {% assign t = site.data.translations[page.lang].brand %}
 
@@ -29,9 +40,9 @@ NOTES: Shows more taxonomy tags than basic brand-card (2 attributes vs 1). Descr
   <div class="featured-brand-card__body">
     <p class="featured-brand-card__description">
       {% if brand.description %}
-        {{ brand.description | truncate: 180 }}
+        {{ brand.description | truncatewords: description_words }}
       {% else %}
-        {{ brand.content | strip_html | truncate: 180 }}
+        {{ brand.content | strip_html | truncatewords: description_words }}
       {% endif %}
     </p>
 

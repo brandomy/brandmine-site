@@ -16,8 +16,19 @@ VARIANTS:
 - insight-card--tagged: Additional tagged variant class
 - insight-card__tag--[type]: Tag type styling (market, sector, attribute, signal)
 
-NOTES: Shows 1 tag per dimension type. Tags use dimension translations. Excerpt limited to 120 chars. Adds reading time display. Same responsive image handling.
+NOTES: Tag limits and excerpt truncation configurable via component defaults. Tags use dimension translations. Adds reading time display. Same responsive image handling.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="excerpt_words" fallback=120 %}{% endcapture %}
+{% capture default_show_tags %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="show_tags" fallback=true %}{% endcapture %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="tag_limit" fallback=3 %}{% endcapture %}
+{% capture default_show_category %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="show_category" fallback=true %}{% endcapture %}
+
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
+{% assign show_tags = include.show_tags | default: default_show_tags %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
+{% assign show_category = include.show_category | default: default_show_category %}
 
 <article class="insight-card insight-card--{{ include.insight.category }} insight-card--tagged">
   <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
@@ -64,7 +75,7 @@ NOTES: Shows 1 tag per dimension type. Tags use dimension translations. Excerpt 
         {% endif %}
       </div>
 
-      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncate: 120 }}</p>
+      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
 
       <div class="insight-card__tags">
         {% if include.insight.markets %}

@@ -8,6 +8,13 @@
 
 Insight articles form Brandmine's full-featured blog platform, designed to share timely content that supports the mission of amplifying BRICS+ brand stories. The system features four standardized content categories, multilingual support, RSS feeds, pagination, and social sharing capabilities.
 
+### "Logic Light" Architecture
+Insight articles follow Brandmine's data-driven "Logic Light" philosophy:
+- **Centralized configuration** via `_data/page_sections.yml` and `_data/component_defaults.yml`
+- **Section-based rendering** using `helpers/page-sections.html`
+- **Minimal template logic** with maximum configurability
+- **Consistent component behavior** across all page types
+
 ### Blog Architecture Highlights
 - **Four standardized categories** with specific content guidelines
 - **Featured article system** for homepage hero display
@@ -609,7 +616,11 @@ enable_insights_feed: true
 
 **Implementation**:
 ```liquid
+{% comment %} Uses centralized component defaults {% endcomment %}
 {% include pages/insight/social-sharing.html %}
+
+{% comment %} Component behavior configured in _data/component_defaults.yml {% endcomment %}
+{% comment %} Override defaults with include parameters as needed {% endcomment %}
 ```
 
 ---

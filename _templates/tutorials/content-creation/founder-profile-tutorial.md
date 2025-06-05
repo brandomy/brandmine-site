@@ -8,6 +8,14 @@
 
 Founder profiles showcase the visionaries behind BRICS+ brands, emphasizing their personal journeys, expertise, and cross-border capabilities. The system uses a sophisticated architecture with bidirectional brand relationships and comprehensive validation.
 
+### "Logic Light" Architecture
+Founder profiles implement Brandmine's configuration-driven "Logic Light" patterns:
+- **Data-driven sections** configured in `_data/page_sections.yml`
+- **Centralized component defaults** via `_data/component_defaults.yml`
+- **Section rendering** through `helpers/page-sections.html`
+- **Minimal template logic** with maximum configurability
+- **Consistent patterns** shared across all profile types
+
 ### Architecture Highlights
 - **Bidirectional brand relationships** with cross-validation
 - **Generation-based categorization** (1st, 2nd, 3rd Gen, Transition)
@@ -35,6 +43,7 @@ Layout: founder-profile.html → helpers/page-sections.html → pages/founder/[s
 - `breadcrumbs` - Navigation context
 - `hero` - Founder name, position, location, generation badge
 - `content` - Rich markdown content area (founder story)
+- `founder-wisdom` - Inspirational quotes from the founder (NEW)
 - `professional-details` - Languages, markets, achievements, expertise
 - `associated-brands` - Connected brands with full information
 - `expertise-cloud` - Skills visualization
@@ -190,6 +199,18 @@ certifications:
 
 # Featured status
 featured: true
+
+# Inspirational quotes
+quotes:
+  - text: "Tea is not just a beverage—it's a bridge between cultures. When we share tea, we share stories, traditions, and understanding."
+    type: "philosophy"
+    context: "On TeaTime's mission to connect cultures"
+  - text: "Each region in Russia has unique botanical traditions that deserve to be preserved and celebrated globally."
+    type: "insight"
+    context: "On regional specialization strategy"
+  - text: "Don't just build a product; build a bridge between worlds. Find your bridge, and build it with absolute integrity."
+    type: "advice"
+    context: "Advice to aspiring entrepreneurs"
 ---
 
 # Alexei Sokolov: Bridging Tradition and Innovation in Russian Tea Culture
@@ -315,7 +336,35 @@ markets: ["russia", "china", "japan", "germany"]
 [Chinese content translation...]
 ```
 
-### Step 3: Set Up Image Structure
+### Step 3: Add Inspirational Quotes (Optional)
+
+The founder quote card system allows you to showcase powerful quotes that capture the founder's philosophy, vision, or business insights. Add quotes to the front matter:
+
+```yaml
+quotes:
+  - text: "Your inspirational quote here"
+    type: "philosophy"  # Options: "vision", "philosophy", "advice", "insight"
+    context: "Context about when or why this was said"
+  - text: "Another meaningful quote"
+    type: "advice"
+    context: "Additional context"
+```
+
+**Quote Types:**
+- `vision` - Future-focused statements about company direction
+- `philosophy` - Core beliefs about business/industry
+- `advice` - Guidance for other entrepreneurs  
+- `insight` - Key learnings from experience
+
+**Best Practices:**
+- Use 1-3 quotes maximum per founder
+- Keep quotes under 200 characters for optimal display
+- Provide meaningful context that adds value
+- Choose quotes that differentiate the founder's perspective
+
+The quotes will automatically appear in the "Words of Wisdom" section on founder profiles across all languages (EN/RU/ZH).
+
+### Step 4: Set Up Image Structure
 
 Create image directories:
 ```bash
@@ -326,7 +375,7 @@ Add source images following Brandmine standards:
 - `portrait.jpg` - 2:3 aspect ratio (800×1200px), JPG for featured displays
 - `headshot.jpg` - 1:1 aspect ratio (800×800px), JPG for card displays
 
-### Step 4: Process Images
+### Step 5: Process Images
 
 ```bash
 # Process all founder images with responsive versions
@@ -337,7 +386,7 @@ This generates:
 - `portrait-400w.jpg`, `portrait-800w.jpg`, `portrait-1200w.jpg`
 - `headshot-400w.jpg`, `headshot-800w.jpg`, `headshot-1200w.jpg`
 
-### Step 5: Update Data Indexes
+### Step 6: Update Data Indexes
 
 ```bash
 # Generate updated founders JSON index with validation
@@ -346,7 +395,7 @@ python3 _scripts/data-generation/generate-founders-json.py --verbose --validate
 
 This updates `_data/founders.json` and validates brand cross-references.
 
-### Step 6: Link to Brand Profiles
+### Step 7: Link to Brand Profiles
 
 Ensure the brands referenced in the founder's `brands` array also reference this founder:
 

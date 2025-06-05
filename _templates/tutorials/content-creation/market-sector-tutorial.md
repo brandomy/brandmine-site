@@ -8,6 +8,15 @@
 
 Market-sector pages showcase brands at the intersection of specific markets and sectors (e.g., Russian Wine, Brazilian Artisanal Spirits, Mongolia Natural-Beauty). They use a data-driven system that combines:
 
+### "Logic Light" Architecture
+Market-sector pages exemplify Brandmine's data-driven "Logic Light" philosophy:
+- **Pure JSON data source** with no template conditionals
+- **Section configuration** via `_data/page_sections.yml`
+- **Centralized rendering** through `helpers/page-sections.html`
+- **Consistent behavior patterns** across all market-sector combinations
+- **Linear layout compliance** with panel wrapper system
+
+### System Components
 1. **Structured data** from `market_sector_map.json`
 2. **Linear sectioning** with configurable sections
 3. **Multilingual support** across EN/RU/ZH

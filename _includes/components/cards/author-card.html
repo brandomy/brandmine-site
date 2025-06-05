@@ -29,13 +29,21 @@ VARIANTS:
 NOTES: Highlights automatically hidden in grid layout to save space. LinkedIn icon uses Font Awesome.
 {% endcomment %}
 
-{% assign layout = include.layout | default: "standard" %}
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_layout %}{% include helpers/component-defaults.html component="cards.author-card" param="layout" fallback="standard" %}{% endcapture %}
+{% capture default_show_highlights %}{% include helpers/component-defaults.html component="cards.author-card" param="show_highlights" fallback=true %}{% endcapture %}
+{% capture default_show_bio %}{% include helpers/component-defaults.html component="cards.author-card" param="show_bio" fallback=true %}{% endcapture %}
+{% capture default_bio_words %}{% include helpers/component-defaults.html component="cards.author-card" param="bio_words" fallback=120 %}{% endcapture %}
+
+{% assign layout = include.layout | default: default_layout %}
+{% assign show_bio = include.show_bio | default: default_show_bio %}
+{% assign bio_words = include.bio_words | default: default_bio_words %}
 {% assign show_highlights = include.show_highlights %}
 {% if show_highlights == nil %}
   {% if layout == "grid" %}
     {% assign show_highlights = false %}
   {% else %}
-    {% assign show_highlights = true %}
+    {% assign show_highlights = default_show_highlights %}
   {% endif %}
 {% endif %}
 
@@ -59,9 +67,9 @@ NOTES: Highlights automatically hidden in grid layout to save space. LinkedIn ic
         <p class="author-card__position">{{ include.author.position }}</p>
       {% endif %}
       
-      {% if include.author.bio %}
+      {% if show_bio and include.author.bio %}
         <div class="author-card__bio">
-          <p>{{ include.author.bio }}</p>
+          <p>{{ include.author.bio | truncatewords: bio_words }}</p>
           
           {% if show_highlights and include.author.highlights %}
             <ul class="author-card__highlights">

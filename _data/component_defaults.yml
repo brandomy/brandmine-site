@@ -24,9 +24,11 @@ cards:
     show_founder: true
     show_location: true
     show_sector: true
+    show_attributes: true
     show_featured_badge: true
     layout: "vertical"
     tag_limit: 4
+    image_aspect_ratio: "3:2"
 
   # Hero Brand Card  
   hero-brand-card:
@@ -45,15 +47,97 @@ cards:
     show_author: true
     show_date: true
     show_reading_time: true
-    excerpt_words: 30
+    excerpt_words: 25
     image_fallback: true
 
   # Founder Card
   founder-card:
+    show_company: true
     show_brands: true
     show_expertise: true
     show_generation: true
     show_location: true
+    image_aspect_ratio: "2:3"
+
+  # Founder Quote Card
+  founder-quote-card:
+    style: "inline"
+    show_context: true
+    show_attribution: true
+    show_type_badge: true
+
+  # Author Card
+  author-card:
+    layout: "standard"
+    show_highlights: true
+    show_bio: true
+    bio_words: 120
+
+  # Dimension Card
+  dimension-card:
+    limit: 3
+    tag_selection: "featured"
+    tag_sort: "none"
+    show_count: true
+
+  # Featured Brand Card
+  featured-brand-card:
+    tag_limit: 2
+    description_words: 180
+    show_featured_badge: true
+    layout: "horizontal"
+    image_aspect_ratio: "3:2"
+
+  # Featured Founder Card
+  featured-founder-card:
+    bio_words: 120
+    tag_limit: 4
+    show_achievement: true
+    show_generation: true
+    image_aspect_ratio: "2:3"
+
+  # Featured Insight Card
+  featured-insight-card:
+    excerpt_words: 120
+    show_category: true
+    show_date: true
+    show_author: true
+    image_aspect_ratio: "3:2"
+
+  # Related Brand Card
+  related-brand-card:
+    description_words: 100
+    show_sector: true
+    show_location: true
+    tag_limit: 2
+
+  # Simple Insight Card
+  simple-insight-card:
+    excerpt_words: 150
+    show_date: true
+    show_category: false
+    layout: "minimal"
+
+  # Tagged Insight Card
+  tagged-insight-card:
+    excerpt_words: 120
+    show_tags: true
+    tag_limit: 3
+    show_category: true
+
+  # Team Member Card
+  team-member-card:
+    show_role: true
+    show_bio: true
+    bio_words: 80
+    image_aspect_ratio: "1:1"
+
+  # Testimonial Card
+  testimonial-card:
+    show_attribution: true
+    show_company: true
+    quote_words: 200
+    layout: "standard"
 
 # =============================================================================
 # FORM COMPONENTS  
@@ -87,6 +171,33 @@ forms:
     show_subject: true
     success_redirect: null
     error_message: null  # Will use translation helper
+
+  # Validation
+  validation:
+    email_pattern: "^[^@]+@[^@]+\\.[^@]+$"
+    required_message_key: "forms.validation.required"
+    email_message_key: "forms.validation.email"
+    min_length_message_key: "forms.validation.min_length"
+  
+  # Contact Form (Enhanced)
+  contact-form:
+    enable_validation: true
+    show_labels: true
+    required_fields: ["name", "email", "message"]
+    show_phone: false
+    show_company: false
+    show_subject: true
+    success_redirect: null
+    error_message: null
+  
+  # Newsletter Form (Enhanced)
+  newsletter-form:
+    enable_validation: true
+    placeholder_key: "forms.newsletter.placeholder"
+    button_key: "forms.newsletter.submit"
+    variant: "default"
+    show_name: false
+    show_privacy_notice: true
 
 # =============================================================================
 # NAVIGATION COMPONENTS
@@ -122,10 +233,21 @@ search:
 
   # Search Filter
   search-filter:
+    debounce_delay: 300
+    min_query_length: 3
+    max_results: 100
+    show_count: true
+    enable_presets: true
     show_sort: true
     show_filters: true
     default_sort: "name"
     results_per_page: 12
+
+  # Search Results
+  search-results:
+    items_per_page: 12
+    layout: grid
+    show_pagination: true
 
 # =============================================================================
 # IMAGE COMPONENTS
@@ -197,94 +319,6 @@ dimensions:
     style: pill
     clickable: true
 
-# =============================================================================
-# ENHANCED SEARCH COMPONENTS
-# =============================================================================
-
-search:
-  # Search Filter (Enhanced)
-  search-filter:
-    debounce_delay: 300
-    min_query_length: 3
-    max_results: 100
-    show_count: true
-    enable_presets: true
-    show_sort: true
-    show_filters: true
-    default_sort: "name"
-    results_per_page: 12
-  
-  # Search Results
-  search-results:
-    items_per_page: 12
-    layout: grid
-    show_pagination: true
-
-# =============================================================================
-# ENHANCED CARD COMPONENTS
-# =============================================================================
-
-cards:
-  # Brand Card (Enhanced)
-  brand-card:
-    show_location: true
-    show_sector: true
-    show_attributes: true
-    tag_limit: 4
-    image_aspect_ratio: "3:2"
-    show_founder: true
-    show_featured_badge: true
-    layout: "vertical"
-  
-  # Founder Card (Enhanced)
-  founder-card:
-    show_company: true
-    show_location: true
-    show_generation: true
-    image_aspect_ratio: "2:3"
-    show_brands: true
-    show_expertise: true
-  
-  # Insight Card (Enhanced)
-  insight-card:
-    show_author: true
-    show_date: true
-    show_category: true
-    excerpt_words: 25
-    show_reading_time: true
-    image_fallback: true
-
-# =============================================================================
-# ENHANCED FORM COMPONENTS
-# =============================================================================
-
-forms:
-  # Validation
-  validation:
-    email_pattern: "^[^@]+@[^@]+\\.[^@]+$"
-    required_message_key: "forms.validation.required"
-    email_message_key: "forms.validation.email"
-    min_length_message_key: "forms.validation.min_length"
-  
-  # Contact Form (Enhanced)
-  contact-form:
-    enable_validation: true
-    show_labels: true
-    required_fields: ["name", "email", "message"]
-    show_phone: false
-    show_company: false
-    show_subject: true
-    success_redirect: null
-    error_message: null
-  
-  # Newsletter Form (Enhanced)
-  newsletter-form:
-    enable_validation: true
-    placeholder_key: "forms.newsletter.placeholder"
-    button_key: "forms.newsletter.submit"
-    variant: "default"
-    show_name: false
-    show_privacy_notice: true
 
 # =============================================================================
 # MAP COMPONENTS

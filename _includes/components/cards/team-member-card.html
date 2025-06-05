@@ -22,8 +22,17 @@ DEPENDENCIES:
 
 VARIANTS: None - single standard layout
 
-NOTES: Photo uses square aspect ratio from people/team collection. LinkedIn icon uses Font Awesome. All optional fields gracefully hidden when not provided.
+NOTES: Display options configurable via component defaults. Photo uses square aspect ratio from people/team collection. All optional fields gracefully hidden when not provided.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_show_role %}{% include helpers/component-defaults.html component="cards.team-member-card" param="show_role" fallback=true %}{% endcapture %}
+{% capture default_show_bio %}{% include helpers/component-defaults.html component="cards.team-member-card" param="show_bio" fallback=true %}{% endcapture %}
+{% capture default_bio_words %}{% include helpers/component-defaults.html component="cards.team-member-card" param="bio_words" fallback=80 %}{% endcapture %}
+
+{% assign show_role = include.show_role | default: default_show_role %}
+{% assign show_bio = include.show_bio | default: default_show_bio %}
+{% assign bio_words = include.bio_words | default: default_bio_words %}
 
 <div class="team-member-card">
   {% include components/images/collection-image.html

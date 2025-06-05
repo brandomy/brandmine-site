@@ -58,6 +58,18 @@ achievements: ["Gold at International Condiment Exhibition", "Network of 40 fami
 description: "Maria Kuznetsova profile - Russian culinary entrepreneur preserving traditional flavor heritage through artisanal condiment production and food archaeology."
 keywords: ["maria kuznetsova", "seven spices", "russian cuisine", "condiments", "culinary heritage", "food archaeology"]
 
+# === QUOTES ===
+quotes:
+  - text: "Every forgotten recipe is a story waiting to be retold. My mission is to ensure these culinary narratives don't disappear into history."
+    type: "vision"
+    context: "On Seven Spices' cultural preservation mission"
+  - text: "The secret to authentic flavor isn't just ingredients—it's understanding the culture, history, and family traditions behind each recipe."
+    type: "philosophy"
+    context: "On the essence of culinary authenticity"
+  - text: "Start with your grandmother's recipes. The best business ideas often come from preserving what we're about to lose."
+    type: "advice"
+    context: "To aspiring food entrepreneurs"
+
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
 # Must match section names in founder includes

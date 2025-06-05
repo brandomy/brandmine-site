@@ -15,10 +15,27 @@ DEPENDENCIES:
 VARIANTS:
 - hero-brand-card--featured: Applied when brand.featured or brand.featured_level > 1
 
-NOTES: Shows all taxonomy tags without limits. Founder portrait appears in corner circle. Uses brand-image helper for all images. Primary CTA button styling. Signals displayed separately in footer.
+NOTES: Taxonomy display and image options configurable via component defaults. Founder portrait appears in corner circle. Uses brand-image helper for all images. Primary CTA button styling.
 {% endcomment %}
 
-{% comment %} Translation helper replaces manual lookup {% endcomment %}
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_show_founder %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_founder" fallback=true %}{% endcapture %}
+{% capture default_show_location %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_location" fallback=true %}{% endcapture %}
+{% capture default_show_sectors %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_sectors" fallback=true %}{% endcapture %}
+{% capture default_show_attributes %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_attributes" fallback=true %}{% endcapture %}
+{% capture default_show_signals %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_signals" fallback=true %}{% endcapture %}
+{% capture default_show_logo %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_logo" fallback=true %}{% endcapture %}
+{% capture default_show_hero_image %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_hero_image" fallback=true %}{% endcapture %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="tag_limit" fallback=6 %}{% endcapture %}
+
+{% assign show_founder = include.show_founder | default: default_show_founder %}
+{% assign show_location = include.show_location | default: default_show_location %}
+{% assign show_sectors = include.show_sectors | default: default_show_sectors %}
+{% assign show_attributes = include.show_attributes | default: default_show_attributes %}
+{% assign show_signals = include.show_signals | default: default_show_signals %}
+{% assign show_logo = include.show_logo | default: default_show_logo %}
+{% assign show_hero_image = include.show_hero_image | default: default_show_hero_image %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
 
 <article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">

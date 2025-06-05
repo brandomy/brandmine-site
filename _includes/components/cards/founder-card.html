@@ -19,8 +19,25 @@ VARIANTS:
 - founder-card--[variant]: Custom variant from variant parameter
 - Uses headshot images (1:1 aspect) vs featured's portrait
 
-NOTES: Displays single brand connection with role. Shows up to 4 expertise tags. Truncates bio to 120 chars. Generation badge and cross-border indicator included. Uses 400w/800w responsive headshots.
+NOTES: Expertise tag limits and bio truncation configurable via component defaults. Generation badge and cross-border indicator included. Uses 400w/800w responsive headshots.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_bio_words %}{% include helpers/component-defaults.html component="cards.founder-card" param="bio_words" fallback=120 %}{% endcapture %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.founder-card" param="tag_limit" fallback=4 %}{% endcapture %}
+{% capture default_show_company %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_company" fallback=true %}{% endcapture %}
+{% capture default_show_brands %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_brands" fallback=true %}{% endcapture %}
+{% capture default_show_expertise %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_expertise" fallback=true %}{% endcapture %}
+{% capture default_show_generation %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_generation" fallback=true %}{% endcapture %}
+{% capture default_show_location %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_location" fallback=true %}{% endcapture %}
+
+{% assign bio_words = include.bio_words | default: default_bio_words %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
+{% assign show_company = include.show_company | default: default_show_company %}
+{% assign show_brands = include.show_brands | default: default_show_brands %}
+{% assign show_expertise = include.show_expertise | default: default_show_expertise %}
+{% assign show_generation = include.show_generation | default: default_show_generation %}
+{% assign show_location = include.show_location | default: default_show_location %}
 
 {% assign t = site.data.translations[page.lang].founder %}
 {% assign general_t = site.data.translations[page.lang].general %}
@@ -115,7 +132,7 @@ NOTES: Displays single brand connection with role. Shows up to 4 expertise tags.
 
     {% if founder.brief_bio %}
       <div class="founder-card__bio">
-        {{ founder.brief_bio | truncate: 120 }}
+        {{ founder.brief_bio | truncatewords: bio_words }}
       </div>
     {% endif %}
 
@@ -143,7 +160,7 @@ NOTES: Displays single brand connection with role. Shows up to 4 expertise tags.
     {% comment %} Expertise cloud {% endcomment %}
     {% if founder.expertise %}
     <div class="founder-card__tag-cloud">
-      {% for expertise in founder.expertise limit:4 %}
+      {% for expertise in founder.expertise limit:tag_limit %}
         <span class="founder-card__tag founder-card__tag--expertise">
           {{ expertise }}
         </span>

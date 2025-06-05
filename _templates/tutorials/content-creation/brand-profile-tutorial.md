@@ -8,6 +8,14 @@
 
 Brand profiles are the core content type in Brandmine, showcasing narrative-rich consumer brands from BRICS+ countries. The system uses a hybrid architecture that supports both curated YAML profiles with rich content and basic JSON-only profiles for simple listings.
 
+### "Logic Light" Architecture
+Brand profiles exemplify Brandmine's data-driven "Logic Light" philosophy:
+- **Configuration over conditionals** using `_data/page_sections.yml`
+- **Centralized component defaults** via `_data/component_defaults.yml`
+- **Section-based rendering** through `helpers/page-sections.html`
+- **Linear layout requirements** eliminating sidebar complexity
+- **Consistent behavior patterns** across all content types
+
 ### Architecture Highlights
 - **Data-driven sections** with configurable layouts
 - **Semantic image structure** with responsive processing
@@ -588,6 +596,13 @@ brand_family:
 Override default sections by creating:
 - `_includes/pages/brand/identity-br-guarana-artisans.html` for custom identity section
 - `_includes/pages/brand/content-featured.html` for featured brand content style
+
+### Component Defaults Integration
+```liquid
+{% comment %} Components use centralized defaults from _data/component_defaults.yml {% endcomment %}
+{% capture default_show_founder %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_founder" fallback=true %}{% endcapture %}
+{% assign show_founder = include.show_founder | default: default_show_founder %}
+```
 
 ---
 

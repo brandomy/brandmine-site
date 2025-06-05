@@ -15,8 +15,19 @@ DEPENDENCIES:
 VARIANTS:
 - insight-card--[category]: Category-specific styling via class
 
-NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncated to 150 chars. Same responsive image strategy as standard insight-card.
+NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation and display options configurable via component defaults. Same responsive image strategy as standard insight-card.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.simple-insight-card" param="excerpt_words" fallback=150 %}{% endcapture %}
+{% capture default_show_date %}{% include helpers/component-defaults.html component="cards.simple-insight-card" param="show_date" fallback=true %}{% endcapture %}
+{% capture default_show_category %}{% include helpers/component-defaults.html component="cards.simple-insight-card" param="show_category" fallback=false %}{% endcapture %}
+{% capture default_layout %}{% include helpers/component-defaults.html component="cards.simple-insight-card" param="layout" fallback="minimal" %}{% endcapture %}
+
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
+{% assign show_date = include.show_date | default: default_show_date %}
+{% assign show_category = include.show_category | default: default_show_category %}
+{% assign layout = include.layout | default: default_layout %}
 
 <article class="insight-card insight-card--{{ include.insight.category }}">
   <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
@@ -60,7 +71,7 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncated 
         <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
       </div>
 
-      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncate: 150 }}</p>
+      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
 
       <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
     </div>

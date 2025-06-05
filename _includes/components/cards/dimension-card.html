@@ -24,9 +24,16 @@ VARIANTS:
 NOTES: Each dimension type has its own icon and color scheme. Tag cloud component handles tag display logic. Links to language-specific discovery pages.
 {% endcomment %}
 
-{% assign limit = include.limit | default: 3 %}
-{% assign tag_selection = include.tag_selection | default: "featured" %}
-{% assign tag_sort = include.tag_sort | default: "none" %}
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_limit %}{% include helpers/component-defaults.html component="cards.dimension-card" param="limit" fallback=3 %}{% endcapture %}
+{% capture default_tag_selection %}{% include helpers/component-defaults.html component="cards.dimension-card" param="tag_selection" fallback="featured" %}{% endcapture %}
+{% capture default_tag_sort %}{% include helpers/component-defaults.html component="cards.dimension-card" param="tag_sort" fallback="none" %}{% endcapture %}
+{% capture default_show_count %}{% include helpers/component-defaults.html component="cards.dimension-card" param="show_count" fallback=true %}{% endcapture %}
+
+{% assign limit = include.limit | default: default_limit %}
+{% assign tag_selection = include.tag_selection | default: default_tag_selection %}
+{% assign tag_sort = include.tag_sort | default: default_tag_sort %}
+{% assign show_count = include.show_count | default: default_show_count %}
 
 <div class="dimension-card dimension-card--{{ include.type }}">
   <div class="dimension-card__header">
@@ -49,7 +56,8 @@ NOTES: Each dimension type has its own icon and color scheme. Tag cloud componen
      type=include.type 
      limit=limit 
      selection=tag_selection 
-     sort=tag_sort %}
+     sort=tag_sort 
+     show_count=show_count %}
   
   <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/" 
      class="dimension-card__link btn btn--outline dimension-card__link--{{ include.type }}">

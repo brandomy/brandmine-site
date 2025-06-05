@@ -58,6 +58,18 @@ achievements: ["Featured in Harrods London", "23 countries export presence", "30
 description: "Alexei Sokolov profile - Russian tea entrepreneur who built TeaTime into an international artisanal tea brand with 23-country presence."
 keywords: ["alexei sokolov", "russia", "teatime", "tea", "artisanal beverages", "harrods", "cultural ambassador"]
 
+# === QUOTES ===
+quotes:
+  - text: "Tea is not just a beverage—it's a bridge between cultures. When we share tea, we share stories, traditions, and understanding."
+    type: "philosophy"
+    context: "On TeaTime's mission to connect cultures"
+  - text: "Each region in Russia has unique botanical traditions that deserve to be preserved and celebrated globally."
+    type: "insight"
+    context: "On regional specialization strategy"
+  - text: "Don't just build a product; build a bridge between worlds. Find your bridge, and build it with absolute integrity."
+    type: "advice"
+    context: "Advice to aspiring entrepreneurs"
+
 # === SECTION CONTROL (CRITICAL - Drives page layout) ===
 # Controls which sections appear and in what order
 # Must match section names in founder includes

@@ -70,6 +70,17 @@ social:
   wechat: ""     # Username only
   vk: ""         # Username only (for Russian founders)
 
+# === QUOTES ===
+# Inspirational quotes from the founder that capture their philosophy, vision, or insights
+# Up to 3 quotes will be displayed in the founder-wisdom section
+quotes:
+  - text: "Sample inspirational quote that captures the founder's philosophy or vision"
+    type: "philosophy"  # Options: "vision", "philosophy", "advice", "insight"
+    context: "Context about when or why this was said"
+  - text: "Another quote showing business insight or advice"
+    type: "advice"
+    context: "Context for this advice"
+
 # === SEO ===
 description: "SEO-friendly description of the founder profile page"
 keywords: ["founder", "brandname", "expertise", "country"]

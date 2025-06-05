@@ -30,8 +30,19 @@ VARIANTS:
 - founder-card--featured: Applied to article element
 - Uses portrait images (2:3 aspect) instead of headshots
 
-NOTES: Displays up to 4 expertise tags. Shows generation badge and cross-border indicator. Uses 400w/800w responsive portrait images. LinkedIn hidden if not provided.
+NOTES: Expertise tag limits and bio truncation configurable via component defaults. Shows generation badge and cross-border indicator. Uses 400w/800w responsive portrait images.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_bio_words %}{% include helpers/component-defaults.html component="cards.featured-founder-card" param="bio_words" fallback=120 %}{% endcapture %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.featured-founder-card" param="tag_limit" fallback=4 %}{% endcapture %}
+{% capture default_show_achievement %}{% include helpers/component-defaults.html component="cards.featured-founder-card" param="show_achievement" fallback=true %}{% endcapture %}
+{% capture default_show_generation %}{% include helpers/component-defaults.html component="cards.featured-founder-card" param="show_generation" fallback=true %}{% endcapture %}
+
+{% assign bio_words = include.bio_words | default: default_bio_words %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
+{% assign show_achievement = include.show_achievement | default: default_show_achievement %}
+{% assign show_generation = include.show_generation | default: default_show_generation %}
 
 {% assign t = site.data.translations[page.lang].founder %}
 {% assign general_t = site.data.translations[page.lang].general %}
@@ -129,7 +140,7 @@ NOTES: Displays up to 4 expertise tags. Shows generation badge and cross-border 
 
       {% if founder.brief_bio %}
         <div class="founder-card__bio">
-          {{ founder.brief_bio | truncate: 120 }}
+          {{ founder.brief_bio | truncatewords: bio_words }}
         </div>
       {% endif %}
     </div>
@@ -162,7 +173,7 @@ NOTES: Displays up to 4 expertise tags. Shows generation badge and cross-border 
       {% comment %} Expertise cloud {% endcomment %}
       {% if founder.expertise %}
       <div class="founder-card__tag-cloud">
-        {% for expertise in founder.expertise limit:4 %}
+        {% for expertise in founder.expertise limit:tag_limit %}
           <span class="founder-card__tag founder-card__tag--expertise">
             {{ expertise }}
           </span>

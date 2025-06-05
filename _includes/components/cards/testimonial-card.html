@@ -25,8 +25,19 @@ VARIANTS:
 - type="brand": Uses brand logo from brands collection
 - type="person": Uses headshot from people/testimonials collection
 
-NOTES: Quote icon is inline SVG with 20% opacity. Metrics displayed side-by-side. Square aspect ratio for all images.
+NOTES: Display options configurable via component defaults. Quote icon is inline SVG with 20% opacity. Metrics displayed side-by-side. Square aspect ratio for all images.
 {% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_show_attribution %}{% include helpers/component-defaults.html component="cards.testimonial-card" param="show_attribution" fallback=true %}{% endcapture %}
+{% capture default_show_company %}{% include helpers/component-defaults.html component="cards.testimonial-card" param="show_company" fallback=true %}{% endcapture %}
+{% capture default_quote_words %}{% include helpers/component-defaults.html component="cards.testimonial-card" param="quote_words" fallback=200 %}{% endcapture %}
+{% capture default_layout %}{% include helpers/component-defaults.html component="cards.testimonial-card" param="layout" fallback="standard" %}{% endcapture %}
+
+{% assign show_attribution = include.show_attribution | default: default_show_attribution %}
+{% assign show_company = include.show_company | default: default_show_company %}
+{% assign quote_words = include.quote_words | default: default_quote_words %}
+{% assign layout = include.layout | default: default_layout %}
 
 <div class="testimonial-card">
   <div class="testimonial-card__quote">
