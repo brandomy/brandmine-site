@@ -30,7 +30,7 @@ cards:
     tag_limit: 4
     image_aspect_ratio: "3:2"
 
-  # Hero Brand Card  
+  # Hero Brand Card
   hero-brand-card:
     show_founder: true
     show_location: true
@@ -139,8 +139,19 @@ cards:
     quote_words: 200
     layout: "standard"
 
+  # Case Study Card
+  case-study-card:
+    show_client: true
+    show_industry: true
+    show_metrics: true
+    excerpt_words: 30
+    image_aspect_ratio: "3:2"
+    tag_limit: 2
+
+
+
 # =============================================================================
-# FORM COMPONENTS  
+# FORM COMPONENTS
 # =============================================================================
 
 forms:
@@ -178,7 +189,7 @@ forms:
     required_message_key: "forms.validation.required"
     email_message_key: "forms.validation.email"
     min_length_message_key: "forms.validation.min_length"
-  
+
   # Contact Form (Enhanced)
   contact-form:
     enable_validation: true
@@ -189,7 +200,7 @@ forms:
     show_subject: true
     success_redirect: null
     error_message: null
-  
+
   # Newsletter Form (Enhanced)
   newsletter-form:
     enable_validation: true
@@ -305,20 +316,66 @@ dimensions:
     max_font_size: 24
     show_count: true
     layout: cloud
-  
+
   # Dimension List
   dimension-list:
     show_description: true
     layout: vertical
     max_items: 50
     show_empty: false
-  
+
   # Dimension Tag
   dimension-tag:
     show_icon: true
     style: pill
     clickable: true
 
+
+# =============================================================================
+# CASE STUDIES COMPONENTS
+# =============================================================================
+
+case-studies:
+  # Case Study Hero
+  case-study-hero:
+    show_timeline: true
+    show_client_info: true
+    show_key_metrics: true
+    layout: "split"
+
+  # Case Study Metrics
+  case-study-metrics:
+    layout: "grid"
+    show_icons: true
+    highlight_primary: true
+    max_metrics: 6
+
+  # Case Study Quote
+  case-study-quote:
+    style: "pullout"
+    show_portrait: true
+    show_context: true
+    layout: "standard"
+
+# =============================================================================
+# CAROUSEL COMPONENTS
+# =============================================================================
+
+carousels:
+  # Featured Case Studies Carousel
+  featured-case-studies-carousel:
+    max_items: 4
+    show_metrics: true
+    show_tags: true
+    layout: "horizontal"
+    auto_scroll: false
+    scroll_speed: 5000
+    show_navigation: true
+    show_indicators: true
+    cards_per_view_desktop: 3
+    cards_per_view_tablet: 2
+    cards_per_view_mobile: 1
+    gap: "1.5rem"
 
 # =============================================================================
 # MAP COMPONENTS
@@ -331,3 +388,4 @@ maps:
     cluster_radius: 50
     show_popup: true
     popup_fields: ["name", "sector", "location"]
+

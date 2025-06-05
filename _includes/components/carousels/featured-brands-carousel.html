@@ -22,22 +22,50 @@
 {% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/brands/" %}
 
 <div class="featured-brands-carousel {{ carousel_class }}">
-  {% assign brands = site.brands | where: "lang", page.lang | where: "featured", true %}
+  {% comment %} Use static data approach to avoid collection filtering issues {% endcomment %}
+  {% assign brands = site.data.featured_content.brands[page.lang] %}
 
-  {% comment %} Updated filtering for new structure {% endcomment %}
+  {% comment %} Apply sector filtering if specified {% endcomment %}
   {% if include.sector %}
-    {% assign brands = brands | where_exp: "item", "item.sectors contains include.sector" %}
+    {% assign filtered_brands = "" | split: "," %}
+    {% for brand in brands %}
+      {% if brand.sector == include.sector %}
+        {% assign filtered_brands = filtered_brands | push: brand %}
+      {% endif %}
+    {% endfor %}
+    {% assign brands = filtered_brands %}
   {% endif %}
 
+  {% comment %} Apply market filtering if specified {% endcomment %}
   {% if include.market %}
-    {% assign brands = brands | where_exp: "item", "item.markets contains include.market" %}
+    {% assign filtered_brands = "" | split: "," %}
+    {% for brand in brands %}
+      {% if brand.market contains include.market %}
+        {% assign filtered_brands = filtered_brands | push: brand %}
+      {% endif %}
+    {% endfor %}
+    {% assign brands = filtered_brands %}
   {% endif %}
 
+  {% comment %} Apply attribute filtering if specified {% endcomment %}
   {% if include.attribute %}
-    {% assign brands = brands | where_exp: "item", "item.attributes contains include.attribute" %}
+    {% assign filtered_brands = "" | split: "," %}
+    {% for brand in brands %}
+      {% if brand.attributes contains include.attribute %}
+        {% assign filtered_brands = filtered_brands | push: brand %}
+      {% endif %}
+    {% endfor %}
+    {% assign brands = filtered_brands %}
   {% endif %}
 
-  {% assign brands = brands | limit: limit %}
+  {% comment %} Apply limit {% endcomment %}
+  {% if brands.size > limit %}
+    {% assign limited_brands = "" | split: "," %}
+    {% for brand in brands limit: limit %}
+      {% assign limited_brands = limited_brands | push: brand %}
+    {% endfor %}
+    {% assign brands = limited_brands %}
+  {% endif %}
 
   {% if brands.size > 0 %}
     {% for brand in brands %}

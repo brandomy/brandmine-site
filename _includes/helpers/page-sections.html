@@ -30,7 +30,7 @@
 {% comment %} Get section configuration from data file {% endcomment %}
 {% assign section_config = site.data.page_sections[page_type] %}
 
-{% comment %} Determine sections to render {% endcomment %}
+{% comment %} Determine sections to render and ensure they're strings {% endcomment %}
 {% if include.sections %}
   {% assign sections_to_render = include.sections %}
 {% elsif page.sections %}
@@ -41,6 +41,14 @@
   {% comment %} Fallback if no configuration found {% endcomment %}
   {% assign sections_to_render = "hero,content" | split: "," %}
 {% endif %}
+
+{% comment %} Convert all sections to strings to prevent type mismatches {% endcomment %}
+{% assign sections_to_render_strings = "" | split: "," %}
+{% for section_item in sections_to_render %}
+  {% assign section_as_string = section_item | append: "" %}
+  {% assign sections_to_render_strings = sections_to_render_strings | push: section_as_string %}
+{% endfor %}
+{% assign sections_to_render = sections_to_render_strings %}
 
 {% comment %} Render breadcrumbs separately if included {% endcomment %}
 {% if sections_to_render contains "breadcrumbs" %}
@@ -53,6 +61,8 @@
 
 {% comment %} Render all other sections using panel mappings {% endcomment %}
 {% for section in sections_to_render %}
+  {% comment %} Ensure section is treated as string {% endcomment %}
+  {% assign section = section | append: "" %}
   {% unless section == "breadcrumbs" %}
     <section class="{{ page_type }}-section {{ page_type }}-section--{{ section }}" 
              id="{{ page_type }}-section-{{ section }}" 

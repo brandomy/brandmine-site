@@ -1,0 +1,23 @@
+{% comment %}
+  Section: case-study/content.html
+  Purpose: Display main case study markdown content
+  Dependencies: Page content passed from layout
+{% endcomment %}
+
+<section class="case-study-content">
+  
+  <div class="case-study-content__container">
+    
+    {% if include.content %}
+      <div class="case-study-content__markdown">
+        {{ include.content }}
+      </div>
+    {% else %}
+      <div class="case-study-content__markdown">
+        {{ content }}
+      </div>
+    {% endif %}
+    
+  </div>
+  
+</section>

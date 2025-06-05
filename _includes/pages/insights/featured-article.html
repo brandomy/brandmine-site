@@ -18,17 +18,15 @@
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign t = site.data.translations[current_lang] %}
 
-{% comment %} Find featured article or fallback to most recent {% endcomment %}
+{% comment %} Use static data approach to avoid collection filtering issues {% endcomment %}
+{% assign featured_insights = site.data.featured_content.insights[current_lang] %}
 {% assign featured_article = nil %}
-{% assign all_insights = site.insights | where: "lang", current_lang | sort: "date" | reverse %}
 
-{% for insight in all_insights %}
-  {% if insight.featured == true and featured_article == nil %}
-    {% assign featured_article = insight %}
-  {% endif %}
-{% endfor %}
-
-{% if featured_article == nil %}
+{% if featured_insights.size > 0 %}
+  {% assign featured_article = featured_insights | first %}
+{% else %}
+  {% comment %} Fallback to collection if no static data available {% endcomment %}
+  {% assign all_insights = site.insights | where: "lang", current_lang | sort: "date" | reverse %}
   {% assign featured_article = all_insights | first %}
 {% endif %}
 
@@ -59,7 +57,7 @@
         {% endif %}
         
         <h2 class="featured-article__title">
-          <a href="{{ featured_article.url }}" class="featured-article__link">
+          <a href="{{ featured_article.permalink | default: featured_article.url }}" class="featured-article__link">
             {{ featured_article.title }}
           </a>
         </h2>
@@ -93,7 +91,7 @@
         </div>
         
         <div class="featured-article__actions">
-          <a href="{{ featured_article.url }}" class="featured-article__cta btn btn--primary">
+          <a href="{{ featured_article.permalink | default: featured_article.url }}" class="featured-article__cta btn btn--primary">
             {{ t.insights.read_full_article | default: "Read Full Article" }}
             <span class="featured-article__cta-arrow" aria-hidden="true">→</span>
           </a>

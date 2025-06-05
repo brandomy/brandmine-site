@@ -1,0 +1,27 @@
+{% comment %}
+  Page Section: pages/home/featured-case-studies.html
+  
+  Purpose: Displays a carousel of featured case studies on the homepage
+  
+  Section Type: Content
+  Template: home.html
+  
+  Dependencies:
+    - Translation keys: home.featured_case_studies.*
+    - Data: _data/case_studies.yml
+    - Component: components/carousels/featured-case-studies-carousel.html
+  
+  Usage:
+    {% include pages/home/featured-case-studies.html %}
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+
+<h2 class="panel__heading-secondary" id="heading-featured-case-studies">
+  {% include helpers/t.html key="home.featured_case_studies.title" fallback="Success Stories" %}
+</h2>
+<p class="panel__lead-text">
+  {% include helpers/t.html key="home.featured_case_studies.subtitle" fallback="Real transformations of founder-led brands breaking through global markets" %}
+</p>
+
+{% include components/carousels/featured-case-studies-carousel.html %}
