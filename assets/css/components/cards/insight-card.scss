@@ -87,47 +87,95 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: var(--space-3);
 }
 
 .insight-card__title {
-  font-size: var(--text-custom);
+  font-size: var(--text-lg);
   font-weight: var(--font-semibold);
-  margin: 0 0 var(--space-2) 0;
+  margin: 0;
   color: var(--neutral-900);
-  line-height: 1.4;
+  line-height: var(--leading-tight);
+  order: 2; /* Position after category badge */
 }
 
 .insight-card__meta {
   display: flex;
-  gap: var(--space-2);
-  margin-bottom: var(--space-2);
-  font-size: var(--text-sm);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
   color: var(--neutral-500);
+  order: 3; /* Position after title */
+}
+
+.insight-card__date,
+.insight-card__read-time,
+.insight-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  
+  &::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--neutral-400);
+    border-radius: var(--radius-full);
+  }
+  
+  &:first-child::before {
+    display: none;
+  }
+}
+
+.insight-card__author {
+  font-weight: var(--font-medium);
+  color: var(--neutral-600);
 }
 
 .insight-card__excerpt {
   font-size: var(--text-sm);
-  line-height: 1.5;
-  color: var(--neutral-600);
-  margin-bottom: var(--space-4);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-700);
+  flex: 1; /* Take remaining space */
+  order: 4;
 }
 
-/* Read more link */
-.insight-card__read-more {
+/* Enhanced footer and CTA */
+.insight-card__footer {
+  margin-top: auto;
+  order: 5;
+}
+
+.insight-card__cta {
   color: var(--primary-600);
   font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  gap: var(--space-2);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: var(--primary-700);
+    gap: var(--space-3);
+  }
 }
 
-.insight-card__read-more:hover {
-  text-decoration: underline;
+.insight-card__cta-arrow {
+  transition: transform 0.2s ease;
+  font-size: var(--text-base);
 }
 
-.insight-card__read-more:focus-visible {
+.insight-card:hover .insight-card__cta-arrow {
+  transform: translateX(2px);
+}
+
+.insight-card__cta:focus-visible {
   outline: 2px solid var(--primary-300);
   outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* Taxonomy tags */
@@ -151,7 +199,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  margin-bottom: var(--space-2);
+  align-self: flex-start;
+  order: 1; /* Position first */
 }
 
 /* Category badge overlay variant (for positioning over images) */
