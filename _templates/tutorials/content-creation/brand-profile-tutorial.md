@@ -1,12 +1,19 @@
-# Brand Profile Creation Tutorial
+# Brand Profile Creation Tutorial - Strategic Content Edition
 
-**Complete guide to creating rich brand profiles in the Brandmine system**
+**Complete guide to creating conversion-optimized brand profiles that showcase BRICS+ brand potential**
 
 ---
 
 ## 🎯 Overview
 
-Brand profiles are the core content type in Brandmine, showcasing narrative-rich consumer brands from BRICS+ countries. The system uses a hybrid architecture that supports both curated YAML profiles with rich content and basic JSON-only profiles for simple listings.
+Brand profiles are the core content type in Brandmine, showcasing narrative-rich consumer brands from BRICS+ countries. The system has been enhanced with strategic content fields that transform profiles from data displays into conversion tools that answer "Why should I care?" while positioning emerging markets as opportunities, not risks.
+
+### Strategic Enhancement Goals
+- **Lead with compelling value propositions** that immediately communicate brand value
+- **Showcase founder credibility** through achievements and personal stories
+- **Highlight business scale** with metrics and market context
+- **Position BRICS+ markets** as legitimate, high-potential opportunities
+- **Build trust through specificity** using concrete achievements and data
 
 ### "Logic Light" Architecture
 Brand profiles exemplify Brandmine's data-driven "Logic Light" philosophy:
@@ -97,6 +104,24 @@ sectors: ["artisanal-spirits", "gourmet-foods"]
 attributes: ["founder-led", "heritage-brand", "sustainability-pioneer"]
 signals: ["export-ready", "rapid-growth"]
 
+# 🎯 STRATEGIC CONTENT (New Requirements for Enhanced Cards)
+value_proposition: "Brazil's premier guaraná artisan bringing 100-year Amazon family traditions to premium global beverage markets"
+founder_display_name: "Carlos Silva"
+founder_role: "Founder & Master Blender"
+
+# 📊 Business Credibility (Key Metric)
+key_metric:
+  label: "International Markets"
+  value: "12 Countries"
+  period: "Since 2019"
+
+# 🏆 Enhanced Credibility Signals
+breakthrough_moment: "First Brazilian guaraná brand to achieve international organic certification"
+credibility_signals:
+  - "100-year family heritage"
+  - "Amazon sustainability certified"
+  - "Export quality standards"
+
 # Location (required)
 location:
   lat: -3.1190
@@ -105,7 +130,7 @@ location:
   region: "Amazonas"
   country: "br"
 
-# Founder information
+# Enhanced founder information
 founder:
   name: "Carlos Silva"
   position: "Founder & Master Blender"
@@ -113,11 +138,13 @@ founder:
   generation: "3rd Generation"
   founder_led: true
 
-# Business details
+# Business details (enhanced for credibility)
 founding_year: 2015
 website: "https://guaranaartisans.com"
 employees: 24
 annual_revenue: 2800000
+export_markets: ["us", "de", "fr", "jp", "ca", "au", "se", "dk", "no", "fi", "nl", "be"]
+certifications: ["Organic", "Fair Trade", "Amazon Stewardship"]
 
 # Images (semantic structure)
 images:

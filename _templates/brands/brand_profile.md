@@ -44,6 +44,29 @@ email: "contact@example.com"  # Optional contact email
 founders: ["xx-founder-slug"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
+# === STRATEGIC CONTENT (NEW - For conversion optimization) ===
+# One-line value proposition that answers "Why should I care?"
+value_proposition: "Brief compelling statement about unique value and market position"
+
+# Key business metric for credibility
+key_metric:
+  label: "Revenue Growth"  # e.g., "Revenue Growth", "Market Expansion", "Export Volume"
+  value: "300%"           # e.g., "300%", "$2.5M", "15 Countries"
+  period: "2023-2024"     # Time context for the metric
+
+# Founder display information
+founder_display_name: "Founder Full Name"  # How founder appears on cards
+founder_role: "CEO & Tea Master"           # Founder's role/title
+
+# Major achievement or milestone
+breakthrough_moment: "Expanded to 15 countries in 2023 with zero-waste production"
+
+# Credibility signals for social proof
+credibility_signals: 
+  - "Featured in Forbes Asia"
+  - "Winner: Global Sustainability Award 2023"
+  - "Partnered with major international retailers"
+
 # Taxonomy (all using kebab-case)
 markets: ["brazil"]  # Required: At least one market from taxonomy
 sectors: ["gourmet-foods"]  # Required: At least one sector from taxonomy

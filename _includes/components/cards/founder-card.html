@@ -95,7 +95,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
     <div class="founder-card__header-text">
       <h2 class="founder-card__title">{{ founder.name }}</h2>
 
-      {% comment %} Location display {% endcomment %}
+      {% comment %} Location display with BRICS+ context {% endcomment %}
       <div class="founder-card__location">
         <i class="fas fa-map-marker-alt location__icon"></i>
         {% if founder.location.city %}{{ founder.location.city }}{% endif %}
@@ -104,47 +104,72 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
           {% include components/helpers/country-name.html code=founder.location.country lang=page.lang %}
         {% endif %}
       </div>
+      
+      {% comment %} BRICS+ market context for founder credibility {% endcomment %}
+      {% if founder.location.country %}
+        <div class="founder-card__market-context">
+          {% include helpers/market-context.html country_code=founder.location.country context_type="business" format="badge" %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </header>
 
   <div class="founder-card__body">
+    
+    {% comment %} Primary brand connection (most important) {% endcomment %}
     {% if founder.brands %}
-      <div class="founder-card__brand-connections">
+      <div class="founder-card__primary-brand">
         {% for brand_ref in founder.brands limit:1 %}
           {% assign brand = site.brands | where: "ref", brand_ref | where: "lang", page.lang | first %}
           {% if brand %}
-            <p class="founder-card__brand">
+            <div class="founder-card__brand-badge">
+              <span class="founder-card__brand-label">{{ t.brand | default: "Brand" }}:</span>
               <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_ref }}/" class="founder-card__brand-link">
                 {{ brand.title }}
-              </a>{% if founder.role %} – <span class="founder-card__role">{{ founder.role }}</span>{% endif %}
-            </p>
+              </a>
+            </div>
+            {% if founder.role %}
+              <div class="founder-card__role">{{ founder.role }}</div>
+            {% endif %}
           {% endif %}
         {% endfor %}
 
         {% if founder.brands.size > 1 %}
-          <p class="founder-card__multiple-brands">
-            +{{ founder.brands.size | minus: 1 }} {{ t.more_brands | default: "more brands" }}
-          </p>
+          <div class="founder-card__additional-brands">
+            <span class="founder-card__brand-count">+{{ founder.brands.size | minus: 1 }} {{ t.more_brands | default: "more brands" }}</span>
+          </div>
         {% endif %}
       </div>
     {% endif %}
 
+    {% comment %} Key Achievement (prioritized for credibility) {% endcomment %}
+    {% if founder.achievements %}
+      <div class="founder-card__achievement">
+        <span class="founder-card__achievement-label">{{ t.breakthrough | default: "Breakthrough" }}:</span>
+        <span class="founder-card__achievement-text">{{ founder.achievements | first }}</span>
+      </div>
+    {% endif %}
+
+    {% comment %} Brief bio for context {% endcomment %}
     {% if founder.brief_bio %}
       <div class="founder-card__bio">
         {{ founder.brief_bio | truncatewords: bio_words }}
       </div>
     {% endif %}
 
-    {% comment %} Key Achievement {% endcomment %}
-    {% if founder.achievements %}
-      <div class="founder-card__achievement">
-        <span class="founder-card__achievement-label">{{ t.key_achievement | default: "Key Achievement" }}:</span>
-        <span class="founder-card__achievement-text">{{ founder.achievements | first }}</span>
+    {% comment %} Expertise tags (visual credibility) {% endcomment %}
+    {% if founder.expertise %}
+      <div class="founder-card__expertise">
+        {% for expertise in founder.expertise limit:tag_limit %}
+          <span class="founder-card__tag founder-card__tag--expertise">
+            {{ expertise }}
+          </span>
+        {% endfor %}
       </div>
     {% endif %}
 
-    {% comment %} Languages {% endcomment %}
+    {% comment %} Languages (secondary info) {% endcomment %}
     {% if founder.languages %}
       <div class="founder-card__languages">
         <span class="founder-card__languages-label">{{ t.languages | default: "Languages" }}:</span>
@@ -156,22 +181,12 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
         </span>
       </div>
     {% endif %}
-
-    {% comment %} Expertise cloud {% endcomment %}
-    {% if founder.expertise %}
-    <div class="founder-card__tag-cloud">
-      {% for expertise in founder.expertise limit:tag_limit %}
-        <span class="founder-card__tag founder-card__tag--expertise">
-          {{ expertise }}
-        </span>
-      {% endfor %}
-    </div>
-    {% endif %}
   </div>
 
   <footer class="founder-card__footer">
-    <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
-      {{ common_t.actions.view_profile | default: "View Profile" }}
+    <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__cta">
+      <span class="founder-card__cta-text">{{ t.connect_with | default: "Connect with" }} {{ founder.name | split: " " | first }}</span>
+      <span class="founder-card__cta-arrow">→</span>
     </a>
   </footer>
 

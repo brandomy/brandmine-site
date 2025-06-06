@@ -29,6 +29,24 @@ email: "info@teatime.ru"  # Optional contact email
 founders: ["ru-alexei-sokolov"]  # Array of founder keys for JSON lookup
 founder_led: true  # Boolean: Is the founder still actively leading?
 
+# === STRATEGIC CONTENT (NEW - For conversion optimization) ===
+value_proposition: "Moscow's premium tea house bringing authentic Russian tea culture to global markets"
+
+key_metric:
+  label: "International Expansion"
+  value: "12 Countries"
+  period: "2020-2024"
+
+founder_display_name: "Alexei Sokolov"
+founder_role: "CEO & Tea Master"
+
+breakthrough_moment: "First Russian tea brand to establish retail presence across BRICS+ markets"
+
+credibility_signals: 
+  - "Featured in Russian Business Journal"
+  - "Official tea supplier to Moscow cultural centers"
+  - "Partnership with Chinese tea importers association"
+
 # Taxonomy (all using kebab-case)
 sectors: ["gourmet-foods"]  # Required: At least one sector from taxonomy
 markets: ["russia", "china"]  # Required: At least one market from taxonomy

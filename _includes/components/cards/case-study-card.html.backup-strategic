@@ -62,7 +62,7 @@
 
 <article class="{{ card_classes }}">
   
-  {% comment %} Hero Image with founder portrait overlay {% endcomment %}
+  {% comment %} Hero Image {% endcomment %}
   {% if case_study.hero_image %}
     <div class="case-study-card__image">
       <a href="{{ case_study_url }}" class="case-study-card__image-link">
@@ -74,55 +74,26 @@
            loading="lazy"
            class="case-study-card__image-element" %}
       </a>
-      
-      {% comment %} Founder portrait overlay (if available) {% endcomment %}
-      {% if case_study.founder_portrait %}
-        <div class="case-study-card__founder-overlay">
-          <img src="{{ case_study.founder_portrait }}" 
-               alt="{{ case_study.founder_name }}" 
-               class="case-study-card__founder-portrait">
-        </div>
-      {% endif %}
     </div>
   {% endif %}
   
   <div class="case-study-card__content">
     
-    {% comment %} Strategic header with brand + founder + country {% endcomment %}
+    {% comment %} Header with client and industry info {% endcomment %}
     <header class="case-study-card__header">
       
-      {% comment %} Brand name + Country flag {% endcomment %}
-      <div class="case-study-card__brand-info">
-        {% if show_client and case_study.client %}
-          <h4 class="case-study-card__client-name">{{ case_study.client }}</h4>
-        {% endif %}
-        
-        {% if case_study.country %}
-          <div class="case-study-card__location">
-            {% include helpers/country-flag.html country_code=case_study.country size="sm" %}
-            {% comment %} Add BRICS+ economic context {% endcomment %}
-            {% include helpers/market-context.html country_code=case_study.country context_type="economic" format="badge" %}
-          </div>
-        {% endif %}
-      </div>
-      
-      {% comment %} Founder name prominently displayed {% endcomment %}
-      {% if case_study.founder_name %}
-        <div class="case-study-card__founder-credit">
-          <span class="case-study-card__founder-label">Founder:</span>
-          <span class="case-study-card__founder-name">{{ case_study.founder_name }}</span>
+      {% if show_client and case_study.client %}
+        <div class="case-study-card__client">
+          <span class="case-study-card__client-label">{% include helpers/t.html key="case_studies.client" fallback="Client" %}</span>
+          <span class="case-study-card__client-name">{{ case_study.client }}</span>
         </div>
       {% endif %}
       
-      {% comment %} Industry + Country context {% endcomment %}
-      <div class="case-study-card__context">
-        {% if show_industry and case_study.industry %}
+      {% if show_industry and case_study.industry %}
+        <div class="case-study-card__industry">
           <span class="case-study-card__industry-tag">{{ case_study.industry }}</span>
-        {% endif %}
-        {% if case_study.country_context %}
-          <span class="case-study-card__country-context">{{ case_study.country_context }}</span>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
       
     </header>
     
@@ -135,29 +106,10 @@
         </a>
       </h3>
       
-      {% comment %} Breakthrough moment highlight {% endcomment %}
-      {% if case_study.breakthrough_moment %}
-        <div class="case-study-card__breakthrough">
-          <span class="case-study-card__breakthrough-label">Breakthrough:</span>
-          <p class="case-study-card__breakthrough-text">{{ case_study.breakthrough_moment }}</p>
-        </div>
-      {% endif %}
-      
-      {% comment %} Standard description if no breakthrough moment {% endcomment %}
-      {% if case_study.description and case_study.breakthrough_moment == nil %}
+      {% if case_study.description %}
         <p class="case-study-card__description">
           {{ case_study.description | truncatewords: excerpt_words }}
         </p>
-      {% endif %}
-      
-      {% comment %} Quote snippet for personality {% endcomment %}
-      {% if case_study.quote_snippet %}
-        <blockquote class="case-study-card__quote">
-          <p class="case-study-card__quote-text">"{{ case_study.quote_snippet }}"</p>
-          {% if case_study.founder_name %}
-            <cite class="case-study-card__quote-attribution">— {{ case_study.founder_name }}</cite>
-          {% endif %}
-        </blockquote>
       {% endif %}
       
       {% comment %} Duration indicator {% endcomment %}

@@ -56,17 +56,59 @@ NOTES: Responsive images use 400w, 800w, 1200w srcset. Falls back to SVG placeho
     {% endif %}
 
     <div class="insight-card__content">
+      
+      {% comment %} Category badge for visual hierarchy {% endcomment %}
+      {% if include.insight.category %}
+        <div class="insight-card__category-badge insight-card__category-badge--{{ include.insight.category }}">
+          <span class="insight-card__category-icon">
+            {% include components/icons/icon.html name=include.insight.category %}
+          </span>
+          {% assign category_key = "insights.categories." | append: include.insight.category %}
+          {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
+        </div>
+      {% endif %}
+      
       <h3 class="insight-card__title">{{ include.insight.title }}</h3>
 
-      {% if show_date %}
+      {% comment %} Enhanced meta section with reading time estimate {% endcomment %}
       <div class="insight-card__meta">
-        <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
+        {% if show_date %}
+          <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
+        {% endif %}
+        {% if include.insight.read_time %}
+          <span class="insight-card__read-time">{{ include.insight.read_time }} {% include helpers/t.html key="insights.min_read" fallback="min read" lang=include.insight.lang %}</span>
+        {% endif %}
+        {% if include.insight.author %}
+          <span class="insight-card__author">{{ include.insight.author }}</span>
+        {% endif %}
+        {% comment %} Add BRICS+ market context for location-based insights {% endcomment %}
+        {% if include.insight.primary_market %}
+          <span class="insight-card__market-context">
+            {% include helpers/market-context.html country_code=include.insight.primary_market context_type="growth" format="inline" %}
+          </span>
+        {% endif %}
       </div>
-      {% endif %}
 
       <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
 
-      <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
+      {% comment %} Enhanced CTA with context-specific action {% endcomment %}
+      <div class="insight-card__footer">
+        <span class="insight-card__cta">
+          {% case include.insight.category %}
+            {% when 'brand-spotlight' %}
+              {% include helpers/t.html key="insights.discover_brand" fallback="Discover Brand" lang=include.insight.lang %}
+            {% when 'founders-journey' %}
+              {% include helpers/t.html key="insights.read_journey" fallback="Read Journey" lang=include.insight.lang %}
+            {% when 'location-intelligence' %}
+              {% include helpers/t.html key="insights.explore_market" fallback="Explore Market" lang=include.insight.lang %}
+            {% when 'market-momentum' %}
+              {% include helpers/t.html key="insights.view_analysis" fallback="View Analysis" lang=include.insight.lang %}
+            {% else %}
+              {% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %}
+          {% endcase %}
+          <span class="insight-card__cta-arrow">→</span>
+        </span>
+      </div>
     </div>
   </a>
 </article>
