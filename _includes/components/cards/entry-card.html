@@ -118,10 +118,12 @@ NOTES: Supports multilingual ref-based image paths. Responsive images use 400w, 
         {% if show_date and item.date %}<span class="separator">•</span>{% endif %}
         <span class="entry-card__author">
           {% include helpers/t.html key="journal.by" fallback="by" %} 
-          {% if site.data.translations[page.lang].authors[item.author] %}
-            {{ site.data.translations[page.lang].authors[item.author] }}
-          {% else %}
+          {% assign author_key = "authors." | append: item.author %}
+          {% capture translated_author %}{% include helpers/t.html key=author_key fallback=item.author %}{% endcapture %}
+          {% if translated_author == item.author %}
             {{ item.author | replace: "_", " " | capitalize }}
+          {% else %}
+            {{ translated_author }}
           {% endif %}
         </span>
       {% endif %}

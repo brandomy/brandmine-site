@@ -11,11 +11,10 @@
     - site.data.translations for label
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].brand %}
 {% assign class_prefix = include.class_name | default: "brand-card" %}
 
 {% if brand.founding_year %}
   <div class="{{ class_prefix }}__founding-year">
-    {{ t.founding_year | default: "Founded" }} {{ brand.founding_year }}
+    {% include helpers/t.html key="brand.founding_year" fallback="Founded" %} {{ brand.founding_year }}
   </div>
 {% endif %}

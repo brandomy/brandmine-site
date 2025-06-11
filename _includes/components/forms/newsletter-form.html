@@ -22,16 +22,16 @@ NOTES: Privacy notice included below form. Success/error messages hidden by defa
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: site.lang | default: "en" %}
-{% assign t = site.data.translations[current_lang].newsletter | default: site.data.translations["en"].newsletter %}
 {% assign form_id = include.form_id | default: "newsletter-form" %}
+{% comment %}Using t.html helper for form translations{% endcomment %}
 
 <div class="newsletter-form {{ include.class_name }}">
   <div class="newsletter-form__content">
     <h3 class="newsletter-form__title">
-      {{ include.title | default: t.title | default: "Stay Updated" }}
+      {% if include.title %}{{ include.title }}{% else %}{% include helpers/t.html key="newsletter.title" fallback="Stay Updated" lang=current_lang %}{% endif %}
     </h3>
     <p class="newsletter-form__description">
-      {{ include.description | default: t.description | default: "Get the latest insights about emerging BRICS+ brands delivered to your inbox." }}
+      {% if include.description %}{{ include.description }}{% else %}{% include helpers/t.html key="newsletter.description" fallback="Get the latest insights about emerging BRICS+ brands delivered to your inbox." lang=current_lang %}{% endif %}
     </p>
     
     <form id="{{ form_id }}" class="newsletter-form__form" action="#" method="post">
@@ -41,18 +41,18 @@ NOTES: Privacy notice included below form. Success/error messages hidden by defa
           name="email" 
           id="{{ form_id }}-email"
           class="newsletter-form__input"
-          placeholder="{{ include.placeholder | default: t.placeholder | default: 'Enter your email address' }}"
+          placeholder="{% if include.placeholder %}{{ include.placeholder }}{% else %}{% include helpers/t.html key='newsletter.placeholder' fallback='Enter your email address' lang=current_lang %}{% endif %}"
           required
-          aria-label="{{ t.email_label | default: 'Email address' }}"
+          aria-label="{% include helpers/t.html key='newsletter.email_label' fallback='Email address' lang=current_lang %}"
         >
         <button type="submit" class="newsletter-form__button btn btn--primary">
-          {{ t.button_text | default: "Subscribe" }}
+          {% include helpers/t.html key="newsletter.button_text" fallback="Subscribe" lang=current_lang %}
         </button>
       </div>
       
       <div class="newsletter-form__privacy">
         <small class="newsletter-form__privacy-text">
-          {{ t.privacy_notice | default: "We respect your privacy. Unsubscribe at any time." }}
+          {% include helpers/t.html key="newsletter.privacy_notice" fallback="We respect your privacy. Unsubscribe at any time." lang=current_lang %}
         </small>
       </div>
     </form>
@@ -60,10 +60,10 @@ NOTES: Privacy notice included below form. Success/error messages hidden by defa
   
   <!-- Success/Error Messages -->
   <div id="{{ form_id }}-success" class="newsletter-form__message newsletter-form__message--success" style="display: none;">
-    {{ t.success_message | default: "Thank you for subscribing!" }}
+    {% include helpers/t.html key="newsletter.success_message" fallback="Thank you for subscribing!" lang=current_lang %}
   </div>
   
   <div id="{{ form_id }}-error" class="newsletter-form__message newsletter-form__message--error" style="display: none;">
-    {{ t.error_message | default: "Something went wrong. Please try again." }}
+    {% include helpers/t.html key="newsletter.error_message" fallback="Something went wrong. Please try again." lang=current_lang %}
   </div>
 </div>

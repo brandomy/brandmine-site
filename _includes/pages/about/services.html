@@ -33,6 +33,7 @@
         </div>
         <div class="about-services__panel-content">
           <ul class="about-services__list">
+            {% comment %}Using direct access for structured data arrays - this is appropriate{% endcomment %}
             {% assign services_data = site.data.translations[current_lang].about %}
             {% if services_data.services_partners %}
               {% for service in services_data.services_partners %}

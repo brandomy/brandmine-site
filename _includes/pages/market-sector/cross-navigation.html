@@ -29,14 +29,16 @@
             {% include components/icons/icon.html type="sector" name="sector-default" size="sm" %}
           </span>
           {% capture sector_name %}{% include helpers/dimension-name.html type="sectors" id=sector %}{% endcapture %}
-          {{ site.data.translations[page.lang].market_sectors.back_to_sector | replace: '%sector%', sector_name | strip }}
+          {% capture back_to_sector_text %}{% include helpers/t.html key="market_sectors.back_to_sector" fallback="Back to %sector% sector" %}{% endcapture %}
+          {{ back_to_sector_text | replace: '%sector%', sector_name | strip }}
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="market-sector__navigation-link">
           <span class="market-sector__navigation-icon">
             {% include components/icons/icon.html type="market" name="market-default" size="sm" %}
           </span>
           {% capture market_name %}{% include helpers/dimension-name.html type="markets" id=market %}{% endcapture %}
-          {{ site.data.translations[page.lang].market_sectors.back_to_market | replace: '%market%', market_name | strip }}
+          {% capture back_to_market_text %}{% include helpers/t.html key="market_sectors.back_to_market" fallback="Back to %market% market" %}{% endcapture %}
+          {{ back_to_market_text | replace: '%market%', market_name | strip }}
         </a>
       </div>
     </div>

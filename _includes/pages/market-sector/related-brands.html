@@ -5,7 +5,7 @@
 
 <div class="panel panel--olive-soft">
   <div class="panel__content">
-    <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.related_brands | default: "Related Brands" }}</h2>
+    <h2 class="market-sector__section-title">{% include helpers/t.html key="market_sectors.related_brands" fallback="Related Brands" %}</h2>
 
     {% assign brands = site.data.brands.brands %}
     {% assign related_brands = brands | where_exp: "brand", "brand.markets contains market and brand.sectors contains sector and brand.lang == page.lang" %}
@@ -22,13 +22,13 @@
       {% if related_brands.size > 3 %}
         <div class="market-sector__view-all">
           <a href="{{ site.baseurl }}/{{ page.lang }}/brands/?sector={{ sector }}&market={{ market }}" class="btn btn--outline">
-            {{ site.data.translations[page.lang].brands.view_all | default: "View All" }}
+            {% include helpers/t.html key="brands.view_all" fallback="View All" %}
           </a>
         </div>
       {% endif %}
     {% else %}
       <div class="market-sector__empty-state">
-        <p>{{ site.data.translations[page.lang].market_sectors.no_brands | default: "No brands available yet for this sector and market combination." }}</p>
+        <p>{% include helpers/t.html key="market_sectors.no_brands" fallback="No brands available yet for this sector and market combination." %}</p>
       </div>
     {% endif %}
   </div>

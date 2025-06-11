@@ -30,7 +30,7 @@
   - Child items inherit the parent's active state
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
+{% comment %}Using t.html helper for navigation translations{% endcomment %}
 
 <nav class="header__nav" id="main-nav">
   <ul class="header__nav-list">
@@ -45,7 +45,8 @@
         <a href="{{ item.link | relative_url }}" 
            {% if item.children %}role="button" aria-haspopup="true" aria-expanded="false"{% endif %}
            {% if item_active %}class="active"{% endif %}>
-          {{ t.nav[key] }}
+          {% assign nav_key = "nav." | append: key %}
+          {% include helpers/t.html key=nav_key fallback=key %}
           {% if item.children %}<span class="header__dropdown-icon" aria-hidden="true">&#x25BE;</span>{% endif %}
         </a>
         
@@ -61,7 +62,8 @@
               <li class="header__dropdown-item {% if child_active %}header__dropdown-item--active{% endif %}">
                 <a href="{{ child.link | relative_url }}" 
                    {% if child_active %}class="active"{% endif %}>
-                  {{ t.nav[child_key] }}
+                  {% assign child_nav_key = "nav." | append: child_key %}
+                  {% include helpers/t.html key=child_nav_key fallback=child_key %}
                 </a>
               </li>
             {% endfor %}

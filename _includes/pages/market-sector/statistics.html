@@ -17,7 +17,7 @@
   <div class="panel__content">
     {% if market_sector_data.key_stats %}
     <div class="market-sector__stats">
-      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.key_stats | default: "Key Statistics" }}</h2>
+      <h2 class="market-sector__section-title">{% include helpers/t.html key="market_sectors.key_stats" fallback="Key Statistics" %}</h2>
       <div class="market-sector__stats-grid">
         {% for stat in market_sector_data.key_stats[page.lang] %}
           <div class="market-sector__stat">
@@ -36,7 +36,7 @@
 
     {% if market_sector_data.highlights %}
     <div class="market-sector__highlights">
-      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.highlights | default: "Key Highlights" }}</h2>
+      <h2 class="market-sector__section-title">{% include helpers/t.html key="market_sectors.highlights" fallback="Key Highlights" %}</h2>
       <ul class="market-sector__highlights-list">
         {% for highlight in market_sector_data.highlights[page.lang] %}
           <li class="market-sector__highlight-item">{{ highlight }}</li>
@@ -47,7 +47,7 @@
 
     {% if market_sector_data.opportunities %}
     <div class="market-sector__opportunities">
-      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.opportunities | default: "Market Opportunities" }}</h2>
+      <h2 class="market-sector__section-title">{% include helpers/t.html key="market_sectors.opportunities" fallback="Market Opportunities" %}</h2>
       <ul class="market-sector__opportunities-list">
         {% for opportunity in market_sector_data.opportunities[page.lang] %}
           <li class="market-sector__opportunity-item">{{ opportunity }}</li>

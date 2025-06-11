@@ -14,7 +14,8 @@
 {% endcomment %}
 
 {% assign dimension = include.dimension | default: page %}
-{% assign heading = include.heading | default: site.data.translations[dimension.lang].sectors.market_highlights | default: "Market Highlights" %}
+{% capture default_heading %}{% include helpers/t.html key="sectors.market_highlights" fallback="Market Highlights" lang=dimension.lang %}{% endcapture %}
+{% assign heading = include.heading | default: default_heading %}
 {% assign panel_type = include.panel_type | default: "accent-soft" %}
 
 {% assign has_highlights = false %}

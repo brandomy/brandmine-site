@@ -11,7 +11,7 @@
     - components/cards/related-brand-card.html or components/cards/brand-card.html
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang] %}
+{% comment %}Using t.html helper for related brands translations{% endcomment %}
 {% assign limit = include.limit | default: 3 %}
 {% assign class_name = include.class_name | default: "related-brands" %}
 
@@ -63,7 +63,7 @@
 
   {% if related_brands.size > 0 %}
     <div class="{{ class_name }}">
-      <h3 class="{{ class_name }}__heading">{{ t.tags.related_brands }}</h3>
+      <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.related_brands" fallback="Related Brands" %}</h3>
 
       <div class="{{ class_name }}__list">
         {% for brand in related_brands %}
@@ -73,7 +73,7 @@
 
       <div class="{{ class_name }}__cta">
         <a href="{{ site.baseurl }}/{{ parent.lang }}/brands/" class="btn btn-outline-secondary btn-sm">
-          {{ t.tags.view_all_brands }}
+          {% include helpers/t.html key="tags.view_all_brands" fallback="View All Brands" %}
         </a>
       </div>
     </div>

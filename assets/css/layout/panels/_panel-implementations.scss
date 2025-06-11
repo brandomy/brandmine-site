@@ -104,7 +104,8 @@
 .founders-page,
 .discovery-page,
 .insights-page,
-.journal-page {
+.journal-page,
+.about-page {
   
   /* Remove gaps between panels while preserving content padding */
   section + section .panel {
@@ -152,21 +153,7 @@
   }
 }
 
-/* About page uses manual system - align padding with data-driven pages */
-.about-page {
-  .panel--hero-split .panel__content {
-    padding-top: var(--space-8);  /* Match other pages: 2rem base content padding */
-    
-    /* Responsive content padding scaling to match other pages */
-    @media (width >= 768px) {
-      padding-top: var(--space-10);  /* 2.5rem on tablets */
-    }
-    
-    @media (width >= 992px) {
-      padding-top: var(--space-10);  /* Keep 2.5rem on desktop for about page consistency */
-    }
-  }
-}
+/* About page now uses data-driven system - no longer needs manual overrides */
 
 /* --------------------------------------------------------------------------
    RESPONSIVE ADJUSTMENTS (Mobile-first approach)

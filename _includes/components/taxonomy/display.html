@@ -10,7 +10,7 @@
     - components/helpers/taxonomy-tag.html
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].tags %}
+{% comment %}Using t.html helper for tags translations{% endcomment %}
 {% assign display_style = include.display_style | default: "cloud" %}
 {% assign class_name = include.class_name | default: "taxonomy" %}
 
@@ -22,7 +22,7 @@
 
       {% case display_style %}
         {% when "cloud" %}
-          <h3 class="{{ class_name }}__heading">{{ t.explore_related }}</h3>
+          <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.explore_related" fallback="Explore Related" %}</h3>
           <div class="{{ class_name }}__tags">
             {% if parent.sectors.size > 0 %}
               {% for sector in parent.sectors %}
@@ -64,7 +64,7 @@
         {% when "sections" %}
           {% if parent.sectors.size > 0 %}
             <div class="{{ class_name }}__section">
-              <h3 class="{{ class_name }}__heading">{{ t.sectors }}</h3>
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.sectors" fallback="Sectors" %}</h3>
               <div class="{{ class_name }}__tags">
                 {% for sector in parent.sectors %}
                   {% include components/helpers/taxonomy-tag.html
@@ -78,7 +78,7 @@
 
           {% if parent.markets.size > 0 %}
             <div class="{{ class_name }}__section">
-              <h3 class="{{ class_name }}__heading">{{ t.markets }}</h3>
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.markets" fallback="Markets" %}</h3>
               <div class="{{ class_name }}__tags">
                 {% for market in parent.markets %}
                   {% include components/helpers/taxonomy-tag.html
@@ -92,7 +92,7 @@
 
           {% if parent.attributes.size > 0 %}
             <div class="{{ class_name }}__section">
-              <h3 class="{{ class_name }}__heading">{{ t.attributes }}</h3>
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.attributes" fallback="Attributes" %}</h3>
               <div class="{{ class_name }}__tags">
                 {% for attribute in parent.attributes %}
                   {% include components/helpers/taxonomy-tag.html
@@ -106,7 +106,7 @@
 
           {% if parent.signals.size > 0 %}
             <div class="{{ class_name }}__section">
-              <h3 class="{{ class_name }}__heading">{{ t.signals }}</h3>
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.signals" fallback="Signals" %}</h3>
               <div class="{{ class_name }}__tags">
                 {% for signal in parent.signals %}
                   {% include components/helpers/taxonomy-tag.html

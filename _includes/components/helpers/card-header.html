@@ -15,7 +15,6 @@
 {% endcomment %}
 
 {% assign class_prefix = include.class_name | default: "brand-card" %}
-{% assign t = site.data.translations[page.lang].brand %}
 
 <header class="{{ class_prefix }}__header">
   <div class="{{ class_prefix }}__logo">
@@ -30,7 +29,7 @@
 
     {% if brand.founding_year %}
       <p class="{{ class_prefix }}__founding-year">
-        {{ t.founding_year | default: "Founded" }} {{ brand.founding_year }}
+        {% include helpers/t.html key="brand.founding_year" fallback="Founded" %} {{ brand.founding_year }}
       </p>
     {% endif %}
 

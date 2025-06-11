@@ -184,11 +184,11 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
 
   <footer class="founder-card__footer">
     <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
-      {{ common_t.actions.view_profile | default: "View Profile" }}
+      {% include helpers/t.html key="actions.view_profile" fallback="View Profile" %}
     </a>
 
     {% if founder.featured %}
-      <div class="founder-card__featured-badge" title="{{ general_t.featured | default: 'Featured' }}">
+      <div class="founder-card__featured-badge" title="{% include helpers/t.html key='general.featured' fallback='Featured' %}">
         <i class="fas fa-star"></i>
       </div>
     {% endif %}
