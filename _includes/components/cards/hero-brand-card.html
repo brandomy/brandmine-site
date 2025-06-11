@@ -19,14 +19,30 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
-{% capture default_show_founder %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_founder" fallback=true %}{% endcapture %}
-{% capture default_show_location %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_location" fallback=true %}{% endcapture %}
-{% capture default_show_sectors %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_sectors" fallback=true %}{% endcapture %}
-{% capture default_show_attributes %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_attributes" fallback=true %}{% endcapture %}
-{% capture default_show_signals %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_signals" fallback=true %}{% endcapture %}
-{% capture default_show_logo %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_logo" fallback=true %}{% endcapture %}
-{% capture default_show_hero_image %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_hero_image" fallback=true %}{% endcapture %}
-{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.hero-brand-card" param="tag_limit" fallback=6 %}{% endcapture %}
+{% capture default_show_founder %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_founder" fallback=true %}
+{% endcapture %}
+{% capture default_show_location %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_location" fallback=true %}
+{% endcapture %}
+{% capture default_show_sectors %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_sectors" fallback=true %}
+{% endcapture %}
+{% capture default_show_attributes %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_attributes" fallback=true %}
+{% endcapture %}
+{% capture default_show_signals %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_signals" fallback=true %}
+{% endcapture %}
+{% capture default_show_logo %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_logo" fallback=true %}
+{% endcapture %}
+{% capture default_show_hero_image %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_hero_image" fallback=true %}
+{% endcapture %}
+{% capture default_tag_limit %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="tag_limit" fallback=6 %}
+{% endcapture %}
 
 {% assign show_founder = include.show_founder | default: default_show_founder %}
 {% assign show_location = include.show_location | default: default_show_location %}

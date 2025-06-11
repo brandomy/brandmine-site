@@ -23,13 +23,27 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
-{% capture default_bio_words %}{% include helpers/component-defaults.html component="cards.founder-card" param="bio_words" fallback=120 %}{% endcapture %}
-{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.founder-card" param="tag_limit" fallback=4 %}{% endcapture %}
-{% capture default_show_company %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_company" fallback=true %}{% endcapture %}
-{% capture default_show_brands %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_brands" fallback=true %}{% endcapture %}
-{% capture default_show_expertise %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_expertise" fallback=true %}{% endcapture %}
-{% capture default_show_generation %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_generation" fallback=true %}{% endcapture %}
-{% capture default_show_location %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_location" fallback=true %}{% endcapture %}
+{% capture default_bio_words %}
+{% include helpers/component-defaults.html component="cards.founder-card" param="bio_words" fallback=120 %}
+{% endcapture %}
+{% capture default_tag_limit %}
+{% include helpers/component-defaults.html component="cards.founder-card" param="tag_limit" fallback=4 %}
+{% endcapture %}
+{% capture default_show_company %}
+{% include helpers/component-defaults.html component="cards.founder-card" param="show_company" fallback=true %}
+{% endcapture %}
+{% capture default_show_brands %}
+{% include helpers/component-defaults.html component="cards.founder-card" param="show_brands" fallback=true %}
+{% endcapture %}
+{% capture default_show_expertise %}
+{% include helpers/component-defaults.html component="cards.founder-card" param="show_expertise" fallback=true %}
+{% endcapture %}
+{% capture default_show_generation %}
+{% include helpers/component-defaults.html component="cards.founder-card" param="show_generation" fallback=true %}
+{% endcapture %}
+{% capture default_show_location %}
+{% include helpers/component-defaults.html component="cards.founder-card" param="show_location" fallback=true %}
+{% endcapture %}
 
 {% assign bio_words = include.bio_words | default: default_bio_words %}
 {% assign tag_limit = include.tag_limit | default: default_tag_limit %}
@@ -39,9 +53,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
 {% assign show_generation = include.show_generation | default: default_show_generation %}
 {% assign show_location = include.show_location | default: default_show_location %}
 
-{% assign t = site.data.translations[page.lang].founder %}
-{% assign general_t = site.data.translations[page.lang].general %}
-{% assign common_t = site.data.translations[page.lang].common %}
+{% comment %} Using t.html helper for translations {% endcomment %}
 
 <article class="founder-card {% if featured or founder.featured %}founder-card--featured{% endif %}{% if include.variant %} founder-card--{{ include.variant }}{% endif %}"
          data-name="{{ founder.name }}"
@@ -52,10 +64,10 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
   {% if founder.generation %}
   <div class="founder-card__generation-badge founder-card__generation-badge--{{ founder.generation }}">
     {% case founder.generation %}
-      {% when 'first' %}{{ t.generation_first | default: "1st Gen" }}
-      {% when 'second' %}{{ t.generation_second | default: "2nd Gen" }}
-      {% when 'third' %}{{ t.generation_third | default: "3rd Gen" }}
-      {% when 'transition' %}{{ t.generation_transition | default: "Transition" }}
+      {% when 'first' %}{% include helpers/t.html key="founder.generation_first" fallback="1st Gen" %}
+      {% when 'second' %}{% include helpers/t.html key="founder.generation_second" fallback="2nd Gen" %}
+      {% when 'third' %}{% include helpers/t.html key="founder.generation_third" fallback="3rd Gen" %}
+      {% when 'transition' %}{% include helpers/t.html key="founder.generation_transition" fallback="Transition" %}
     {% endcase %}
   </div>
   {% endif %}

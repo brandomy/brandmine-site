@@ -23,12 +23,24 @@ NOTES: All fields required. Simple semantic structure. Component defaults enable
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
-{% capture default_action %}{% include helpers/component-defaults.html component="forms.form" param="action" fallback="#" %}{% endcapture %}
-{% capture default_method %}{% include helpers/component-defaults.html component="forms.form" param="method" fallback="post" %}{% endcapture %}
-{% capture default_name_label %}{% include helpers/component-defaults.html component="forms.form" param="name_label" fallback="Name" %}{% endcapture %}
-{% capture default_email_label %}{% include helpers/component-defaults.html component="forms.form" param="email_label" fallback="Email" %}{% endcapture %}
-{% capture default_message_label %}{% include helpers/component-defaults.html component="forms.form" param="message_label" fallback="Message" %}{% endcapture %}
-{% capture default_submit_label %}{% include helpers/component-defaults.html component="forms.form" param="submit_label" fallback="Send Message" %}{% endcapture %}
+{% capture default_action %}
+{% include helpers/component-defaults.html component="forms.form" param="action" fallback="#" %}
+{% endcapture %}
+{% capture default_method %}
+{% include helpers/component-defaults.html component="forms.form" param="method" fallback="post" %}
+{% endcapture %}
+{% capture default_name_label %}
+{% include helpers/component-defaults.html component="forms.form" param="name_label" fallback="Name" %}
+{% endcapture %}
+{% capture default_email_label %}
+{% include helpers/component-defaults.html component="forms.form" param="email_label" fallback="Email" %}
+{% endcapture %}
+{% capture default_message_label %}
+{% include helpers/component-defaults.html component="forms.form" param="message_label" fallback="Message" %}
+{% endcapture %}
+{% capture default_submit_label %}
+{% include helpers/component-defaults.html component="forms.form" param="submit_label" fallback="Send Message" %}
+{% endcapture %}
 
 {% assign action = include.action | default: default_action %}
 {% assign method = include.method | default: default_method %}

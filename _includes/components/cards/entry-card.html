@@ -29,14 +29,30 @@ NOTES: Supports multilingual ref-based image paths. Responsive images use 400w, 
 
 {% comment %} Set defaults using centralized component defaults {% endcomment %}
 {% assign item = include.item %}
-{% capture default_image_base_path %}{% include helpers/component-defaults.html component="cards.entry-card" param="image_base_path" fallback="/assets/images/journal/" %}{% endcapture %}
-{% capture default_image_size %}{% include helpers/component-defaults.html component="cards.entry-card" param="image_size" fallback="400w" %}{% endcapture %}
-{% capture default_show_author %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_author" fallback=true %}{% endcapture %}
-{% capture default_show_date %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_date" fallback=true %}{% endcapture %}
-{% capture default_show_tags %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_tags" fallback=true %}{% endcapture %}
-{% capture default_show_excerpt %}{% include helpers/component-defaults.html component="cards.entry-card" param="show_excerpt" fallback=true %}{% endcapture %}
-{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.entry-card" param="excerpt_words" fallback=25 %}{% endcapture %}
-{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.entry-card" param="tag_limit" fallback=3 %}{% endcapture %}
+{% capture default_image_base_path %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="image_base_path" fallback="/assets/images/journal/" %}
+{% endcapture %}
+{% capture default_image_size %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="image_size" fallback="400w" %}
+{% endcapture %}
+{% capture default_show_author %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_author" fallback=true %}
+{% endcapture %}
+{% capture default_show_date %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_date" fallback=true %}
+{% endcapture %}
+{% capture default_show_tags %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_tags" fallback=true %}
+{% endcapture %}
+{% capture default_show_excerpt %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_excerpt" fallback=true %}
+{% endcapture %}
+{% capture default_excerpt_words %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="excerpt_words" fallback=25 %}
+{% endcapture %}
+{% capture default_tag_limit %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="tag_limit" fallback=3 %}
+{% endcapture %}
 
 {% assign image_base_path = include.image_base_path | default: default_image_base_path | strip %}
 {% assign image_size = include.image_size | default: default_image_size | strip %}
@@ -49,7 +65,9 @@ NOTES: Supports multilingual ref-based image paths. Responsive images use 400w, 
 {% comment %} Translation helper replaces manual lookup {% endcomment %}
 {% assign read_more_text = include.read_more_text %}
 {% unless read_more_text %}
-  {% capture read_more_text %}{% include helpers/t.html key="journal.read_more" fallback="Read More" %}{% endcapture %}
+  {% capture read_more_text %}
+  {% include helpers/t.html key="journal.read_more" fallback="Read More" %}
+  {% endcapture %}
 {% endunless %}
 
 <article class="entry-card">

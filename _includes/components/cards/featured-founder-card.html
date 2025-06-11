@@ -44,9 +44,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
 {% assign show_achievement = include.show_achievement | default: default_show_achievement %}
 {% assign show_generation = include.show_generation | default: default_show_generation %}
 
-{% assign t = site.data.translations[page.lang].founder %}
-{% assign general_t = site.data.translations[page.lang].general %}
-{% assign common_t = site.data.translations[page.lang].common %}
+{% comment %} Using t.html helper for translations {% endcomment %}
 
 <article class="founder-card founder-card--featured"
          data-name="{{ founder.name }}"
@@ -57,10 +55,10 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
   {% if founder.generation %}
   <div class="founder-card__generation-badge founder-card__generation-badge--{{ founder.generation }}">
     {% case founder.generation %}
-      {% when 'first' %}{{ t.generation_first | default: "1st Gen" }}
-      {% when 'second' %}{{ t.generation_second | default: "2nd Gen" }}
-      {% when 'third' %}{{ t.generation_third | default: "3rd Gen" }}
-      {% when 'transition' %}{{ t.generation_transition | default: "Transition" }}
+      {% when 'first' %}{% include helpers/t.html key="founder.generation_first" fallback="1st Gen" %}
+      {% when 'second' %}{% include helpers/t.html key="founder.generation_second" fallback="2nd Gen" %}
+      {% when 'third' %}{% include helpers/t.html key="founder.generation_third" fallback="3rd Gen" %}
+      {% when 'transition' %}{% include helpers/t.html key="founder.generation_transition" fallback="Transition" %}
     {% endcase %}
   </div>
   {% endif %}
@@ -70,7 +68,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
   <div class="founder-card__cross-border">
     <i class="fas fa-globe-americas"></i>
     <div class="founder-card__tooltip">
-      {{ t.cross_border | default: 'Cross-border expertise' }}
+      {% include helpers/t.html key="founder.cross_border" fallback="Cross-border expertise" %}
     </div>
   </div>
   {% endif %}
@@ -132,7 +130,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
 
           {% if founder.brands.size > 1 %}
             <p class="founder-card__multiple-brands">
-              +{{ founder.brands.size | minus: 1 }} {{ t.more_brands | default: "more brands" }}
+              +{{ founder.brands.size | minus: 1 }} {% include helpers/t.html key="founder.more_brands" fallback="more brands" %}
             </p>
           {% endif %}
         </div>
@@ -152,7 +150,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
       {% comment %} Key Achievement {% endcomment %}
       {% if founder.achievements %}
         <div class="founder-card__achievement">
-          <span class="founder-card__achievement-label">{{ t.key_achievement | default: "Key Achievement" }}:</span>
+          <span class="founder-card__achievement-label">{% include helpers/t.html key="founder.key_achievement" fallback="Key Achievement" %}:</span>
           <span class="founder-card__achievement-text">{{ founder.achievements | first }}</span>
         </div>
       {% endif %}
@@ -160,7 +158,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
       {% comment %} Languages {% endcomment %}
       {% if founder.languages %}
         <div class="founder-card__languages">
-          <span class="founder-card__languages-label">{{ t.languages | default: "Languages" }}:</span>
+          <span class="founder-card__languages-label">{% include helpers/t.html key="founder.languages" fallback="Languages" %}:</span>
           <span class="founder-card__languages-list">
             {% for lang_code in founder.languages %}
               {% if forloop.first == false %}, {% endif %}
