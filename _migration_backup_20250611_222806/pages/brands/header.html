@@ -1,0 +1,24 @@
+{% comment %}
+  Component: pages/brands/header.html
+
+  Purpose: Displays the header section of the brands page with title and search functionality
+
+  Parameters:
+    title (optional): Custom section title, defaults to page.title
+
+  Dependencies:
+    - CSS: pages/brands/header.scss
+    - site.data.translations for search placeholder and button text
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].brands %}
+{% assign search_t = site.data.translations[page.lang].search %}
+
+<div class="brands-header">
+  <h1 class="brands-header__title">{{ include.title | default: page.title }}</h1>
+
+  <div class="brands-header__search">
+    <input type="text" id="brand-search" placeholder="{{ search_t.placeholder }}" class="brands-header__search-input">
+    <button id="search-button" class="brands-header__search-button">{{ t.search_button }}</button>
+  </div>
+</div>

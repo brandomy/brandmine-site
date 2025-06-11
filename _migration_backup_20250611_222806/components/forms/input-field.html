@@ -1,0 +1,90 @@
+{% comment %}
+COMPONENT: Input Field
+PURPOSE: Reusable form input with built-in validation, accessibility features, and consistent styling
+
+USAGE: {% include components/forms/input-field.html name="email" type="email" label="Email Address" required=true %}
+
+PARAMETERS:
+- name (required): Input name attribute string
+- type (optional): Input type string - "text", "email", "password", "tel", "url", "number", defaults to "text"
+- id (optional): Input ID string, defaults to name
+- label (optional): Field label text string
+- placeholder (optional): Placeholder text string
+- value (optional): Default value string
+- required (optional): Boolean field required, defaults to false
+- disabled (optional): Boolean field disabled, defaults to false
+- readonly (optional): Boolean field readonly, defaults to false
+- autocomplete (optional): Autocomplete attribute string
+- pattern (optional): Validation pattern regex string
+- min (optional): Minimum value for number/date inputs
+- max (optional): Maximum value for number/date inputs
+- minlength (optional): Minimum character length integer
+- maxlength (optional): Maximum character length integer
+- help_text (optional): Help text string below field
+- error_message (optional): Error message string to display
+- class_name (optional): Additional CSS classes string
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/input-field.scss
+- Data: None
+- Includes: None
+
+VARIANTS: None - styling adapts based on state (error, disabled, readonly)
+
+NOTES: ARIA attributes automatically added for accessibility. Required asterisk shown in label. Error icon included. Help text connected via aria-describedby.
+{% endcomment %}
+
+{% assign field_id = include.id | default: include.name %}
+{% assign field_required = include.required | default: false %}
+{% assign field_disabled = include.disabled | default: false %}
+{% assign field_readonly = include.readonly | default: false %}
+{% assign input_type = include.type | default: "text" %}
+
+<div class="form-field {{ include.class_name }} {% if include.error_message %}form-field--error{% endif %}">
+  
+  {% if include.label %}
+    <label for="{{ field_id }}" class="form-field__label">
+      {{ include.label }}
+      {% if field_required %}
+        <span class="form-field__required" aria-label="required">*</span>
+      {% endif %}
+    </label>
+  {% endif %}
+
+  <div class="form-field__input-wrapper">
+    <input type="{{ input_type }}"
+           id="{{ field_id }}"
+           name="{{ include.name }}"
+           class="form-field__input"
+           {% if include.placeholder %}placeholder="{{ include.placeholder }}"{% endif %}
+           {% if include.value %}value="{{ include.value }}"{% endif %}
+           {% if field_required %}required aria-required="true"{% endif %}
+           {% if field_disabled %}disabled{% endif %}
+           {% if field_readonly %}readonly{% endif %}
+           {% if include.autocomplete %}autocomplete="{{ include.autocomplete }}"{% endif %}
+           {% if include.pattern %}pattern="{{ include.pattern }}"{% endif %}
+           {% if include.min %}min="{{ include.min }}"{% endif %}
+           {% if include.max %}max="{{ include.max }}"{% endif %}
+           {% if include.minlength %}minlength="{{ include.minlength }}"{% endif %}
+           {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %}
+           {% if include.help_text %}aria-describedby="{{ field_id }}-help"{% endif %}
+           {% if include.error_message %}aria-invalid="true" aria-describedby="{{ field_id }}-error"{% endif %}>
+  </div>
+
+  {% if include.help_text %}
+    <div class="form-field__help" id="{{ field_id }}-help">
+      {{ include.help_text }}
+    </div>
+  {% endif %}
+
+  {% if include.error_message %}
+    <div class="form-field__error" id="{{ field_id }}-error" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="15" y1="9" x2="9" y2="15"></line>
+        <line x1="9" y1="9" x2="15" y2="15"></line>
+      </svg>
+      {{ include.error_message }}
+    </div>
+  {% endif %}
+</div>

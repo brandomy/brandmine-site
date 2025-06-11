@@ -51,12 +51,7 @@ Dependencies:
 
                         {% if insight.markets.size > 0 %}
                           {% assign market_id = insight.markets[0] %}
-                          {% for market in site.data.markets.markets %}
-                            {% if market.id == market_id %}
-                              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_id }}/" class="tag tag--market">{{ market.name[page.lang] }}</a>
-                              {% break %}
-                            {% endif %}
-                          {% endfor %}
+                          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_id }}/" class="tag tag--market">{% include helpers/dimension-name.html type="markets" id=market_id %}</a>
                         {% endif %}
                       </div>
                     </div>

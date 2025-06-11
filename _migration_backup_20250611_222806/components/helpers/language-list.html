@@ -1,0 +1,24 @@
+{% comment %}
+  Component: helpers/language-list.html
+
+  Purpose: Displays a comma-separated list of language names from ISO codes
+
+  Parameters:
+  - languages: (required) Array of language codes
+  - lang: (optional) The display language for the names. Defaults to current page language
+
+  Dependencies:
+  - helpers/language-name.html: For individual language name lookup
+
+  Example Usage:
+  {% include components/helpers/language-list.html languages=founder.languages %}
+  Returns: "English, Russian, Chinese"
+
+  {% include components/helpers/language-list.html languages=founder.languages lang="zh" %}
+  Returns: "英语, 俄语, 中文" (in Chinese)
+{% endcomment %}
+
+{% for lang_code in include.languages %}
+  {% if forloop.first == false %}, {% endif %}
+  {% include components/helpers/language-name.html code=lang_code lang=include.lang %}
+{% endfor %}

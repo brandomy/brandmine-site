@@ -1,0 +1,244 @@
+{% comment %}
+COMPONENT: Validation
+PURPOSE: Client-side form validation with real-time feedback, custom rules, and accessibility support
+
+USAGE: {% include components/forms/validation.html form_id="contact-form" %}
+
+PARAMETERS:
+- form_id (required): ID string of the form to validate
+- rules (optional): Custom validation rules in JSON format string
+- show_realtime (optional): Boolean to show validation errors in real-time, defaults to true
+- scroll_to_error (optional): Boolean to scroll to first error on submit, defaults to true
+
+DEPENDENCIES:
+- CSS: Inline styles for error states
+- Data: site.data.translations for validation messages
+- Includes: helpers/t.html for multilingual messages
+- JavaScript: Standalone validation logic
+
+VARIANTS: None - behavior controlled by parameters
+
+NOTES: Validates email, URL, phone, number types. Supports pattern, min/max length, required. Custom rules override defaults. Smooth scroll to errors. ARIA attributes for screen readers.
+{% endcomment %}
+
+{% assign show_realtime = include.show_realtime | default: true %}
+{% assign scroll_to_error = include.scroll_to_error | default: true %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('{{ include.form_id }}');
+  if (!form) return;
+
+  // Custom validation rules
+  let customRules = {};
+  {% if include.rules %}
+    try {
+      customRules = JSON.parse('{{ include.rules }}');
+    } catch (e) {
+      console.warn('Invalid validation rules JSON');
+    }
+  {% endif %}
+
+  // Validation functions
+  function validateField(field) {
+    const errors = [];
+    const value = field.value.trim();
+    const fieldName = field.name;
+
+    // Required field validation
+    if (field.hasAttribute('required') && !value) {
+      errors.push('{% include helpers/t.html key="forms.validation.required" fallback="This field is required" lang=page.lang %}');
+    }
+
+    // Type-specific validation
+    if (value) {
+      switch (field.type) {
+        case 'email':
+          const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          if (!emailPattern.test(value)) {
+            errors.push('{% include helpers/t.html key="forms.validation.email" fallback="Please enter a valid email address" lang=page.lang %}');
+          }
+          break;
+
+        case 'url':
+          try {
+            new URL(value);
+          } catch {
+            errors.push('{% include helpers/t.html key="forms.validation.url" fallback="Please enter a valid URL" lang=page.lang %}');
+          }
+          break;
+
+        case 'tel':
+          const phonePattern = /^[\+]?[1-9][\d]{0,15}$/;
+          if (!phonePattern.test(value.replace(/[\s\-\(\)]/g, ''))) {
+            errors.push('{% include helpers/t.html key="forms.validation.phone" fallback="Please enter a valid phone number" lang=page.lang %}');
+          }
+          break;
+
+        case 'number':
+          if (isNaN(value)) {
+            errors.push('{% include helpers/t.html key="forms.validation.number" fallback="Please enter a valid number" lang=page.lang %}');
+          }
+          break;
+      }
+
+      // Length validation
+      if (field.hasAttribute('minlength')) {
+        const minLength = parseInt(field.getAttribute('minlength'));
+        if (value.length < minLength) {
+          errors.push(`{% include helpers/t.html key="forms.validation.minlength" fallback="Minimum" lang=page.lang %} ${minLength} {% include helpers/t.html key="forms.validation.characters" fallback="characters required" lang=page.lang %}`);
+        }
+      }
+
+      if (field.hasAttribute('maxlength')) {
+        const maxLength = parseInt(field.getAttribute('maxlength'));
+        if (value.length > maxLength) {
+          errors.push(`{% include helpers/t.html key="forms.validation.maxlength" fallback="Maximum" lang=page.lang %} ${maxLength} {% include helpers/t.html key="forms.validation.characters" fallback="characters allowed" lang=page.lang %}`);
+        }
+      }
+
+      // Pattern validation
+      if (field.hasAttribute('pattern')) {
+        const pattern = new RegExp(field.getAttribute('pattern'));
+        if (!pattern.test(value)) {
+          errors.push('{% include helpers/t.html key="forms.validation.pattern" fallback="Please match the required format" lang=page.lang %}');
+        }
+      }
+
+      // Custom validation rules
+      if (customRules[fieldName]) {
+        const rule = customRules[fieldName];
+        if (rule.pattern && !new RegExp(rule.pattern).test(value)) {
+          errors.push(rule.message || '{% include helpers/t.html key="forms.validation.invalid" fallback="Invalid format" lang=page.lang %}');
+        }
+      }
+    }
+
+    return errors;
+  }
+
+  function showFieldError(field, errors) {
+    const fieldContainer = field.closest('.form-field');
+    if (!fieldContainer) return;
+
+    // Remove existing error
+    const existingError = fieldContainer.querySelector('.form-field__error');
+    if (existingError) {
+      existingError.remove();
+    }
+
+    // Add error class
+    if (errors.length > 0) {
+      fieldContainer.classList.add('form-field--error');
+      field.setAttribute('aria-invalid', 'true');
+
+      // Create error message
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'form-field__error';
+      errorDiv.setAttribute('role', 'alert');
+      errorDiv.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+        ${errors[0]}
+      `;
+
+      fieldContainer.appendChild(errorDiv);
+    } else {
+      fieldContainer.classList.remove('form-field--error');
+      field.removeAttribute('aria-invalid');
+    }
+  }
+
+  function clearFieldError(field) {
+    const fieldContainer = field.closest('.form-field');
+    if (fieldContainer) {
+      fieldContainer.classList.remove('form-field--error');
+      field.removeAttribute('aria-invalid');
+      const errorDiv = fieldContainer.querySelector('.form-field__error');
+      if (errorDiv) {
+        errorDiv.remove();
+      }
+    }
+  }
+
+  // Real-time validation
+  {% if show_realtime %}
+  const formFields = form.querySelectorAll('input, textarea, select');
+  formFields.forEach(field => {
+    field.addEventListener('blur', function() {
+      const errors = validateField(field);
+      showFieldError(field, errors);
+    });
+
+    field.addEventListener('input', function() {
+      if (field.closest('.form-field').classList.contains('form-field--error')) {
+        const errors = validateField(field);
+        if (errors.length === 0) {
+          clearFieldError(field);
+        }
+      }
+    });
+  });
+  {% endif %}
+
+  // Form submission validation
+  form.addEventListener('submit', function(e) {
+    const formFields = form.querySelectorAll('input, textarea, select');
+    let hasErrors = false;
+    let firstErrorField = null;
+
+    formFields.forEach(field => {
+      const errors = validateField(field);
+      showFieldError(field, errors);
+      
+      if (errors.length > 0) {
+        hasErrors = true;
+        if (!firstErrorField) {
+          firstErrorField = field;
+        }
+      }
+    });
+
+    if (hasErrors) {
+      e.preventDefault();
+      
+      {% if scroll_to_error %}
+      if (firstErrorField) {
+        firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstErrorField.focus();
+      }
+      {% endif %}
+    }
+  });
+});
+</script>
+
+<style>
+.form-field--error .form-field__input,
+.form-field--error .form-field__textarea,
+.form-field--error .form-field__select {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 1px #dc2626;
+}
+
+.form-field__error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: #dc2626;
+  font-size: 0.875rem;
+}
+
+.form-field__error svg {
+  flex-shrink: 0;
+}
+
+.form-field__required {
+  color: #dc2626;
+  margin-left: 0.25rem;
+}
+</style>

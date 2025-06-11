@@ -11,13 +11,13 @@
     <div class="sector-card">
       <div class="sector-card__icon">
         {% if sector.icon %}
-          <img src="{{ '/assets/images/icons/' | append: sector.icon | relative_url }}" alt="{{ sector.name[page.lang] }} icon">
+          <img src="{{ '/assets/images/icons/' | append: sector.icon | relative_url }}" alt="{% include helpers/dimension-name.html type="sectors" id=sector.id %} icon">
         {% else %}
           <div class="sector-card__placeholder-icon"></div>
         {% endif %}
       </div>
 
-      <h3 class="sector-card__title">{{ sector.name[page.lang] }}</h3>
+      <h3 class="sector-card__title">{% include helpers/dimension-name.html type="sectors" id=sector.id %}</h3>
 
       <p class="sector-card__description">{{ sector.description[page.lang] }}</p>
 

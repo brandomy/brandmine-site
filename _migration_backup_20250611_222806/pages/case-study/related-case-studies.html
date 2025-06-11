@@ -1,0 +1,79 @@
+{% comment %}
+  Section: case-study/related-case-studies.html
+  Purpose: Display links to related case studies
+  Dependencies: components/cards/case-study-card.html (if implemented as cards)
+{% endcomment %}
+
+<section class="related-case-studies">
+  
+  <div class="related-case-studies__container">
+    
+    <header class="related-case-studies__header">
+      <h2 class="related-case-studies__title">
+        {% include helpers/t.html key="case_studies.related_case_studies" fallback="Related Case Studies" %}
+      </h2>
+    </header>
+    
+    {% comment %} For now, display as simple links until we have multiple case studies {% endcomment %}
+    <div class="related-case-studies__list">
+      
+      {% comment %} Static links to other case studies {% endcomment %}
+      {% assign current_slug = page.slug %}
+      
+      {% unless current_slug == "sugar-cosmetics" %}
+        <div class="related-case-studies__item">
+          <h3 class="related-case-studies__item-title">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/case-studies/sugar-cosmetics/" class="related-case-studies__link">
+              SUGAR Cosmetics: Digital-First Beauty Revolution
+            </a>
+          </h3>
+          <p class="related-case-studies__item-description">
+            How SUGAR Cosmetics leveraged social media and data analytics to capture India's premium beauty market.
+          </p>
+        </div>
+      {% endunless %}
+      
+      {% unless current_slug == "solerebels" %}
+        <div class="related-case-studies__item">
+          <h3 class="related-case-studies__item-title">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/case-studies/solerebels/" class="related-case-studies__link">
+              SoleRebels: Sustainable Footwear Goes Global
+            </a>
+          </h3>
+          <p class="related-case-studies__item-description">
+            Ethiopia's first global footwear brand built on sustainability and fair trade principles.
+          </p>
+        </div>
+      {% endunless %}
+      
+      {% unless current_slug == "walk-of-shame" %}
+        <div class="related-case-studies__item">
+          <h3 class="related-case-studies__item-title">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/case-studies/walk-of-shame/" class="related-case-studies__link">
+              Walk of Shame: From Moscow to Milan
+            </a>
+          </h3>
+          <p class="related-case-studies__item-description">
+            How a Moscow-born streetwear brand conquered European fashion markets through bold design.
+          </p>
+        </div>
+      {% endunless %}
+      
+      {% unless current_slug == "perfect-diary" %}
+        <div class="related-case-studies__item">
+          <h3 class="related-case-studies__item-title">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/case-studies/perfect-diary/" class="related-case-studies__link">
+              Perfect Diary: China's Beauty Unicorn
+            </a>
+          </h3>
+          <p class="related-case-studies__item-description">
+            The rise of China's fastest-growing beauty brand through innovative social commerce strategies.
+          </p>
+        </div>
+      {% endunless %}
+      
+    </div>
+    
+  </div>
+  
+</section>

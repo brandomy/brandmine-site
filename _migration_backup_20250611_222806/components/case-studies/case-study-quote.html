@@ -1,0 +1,129 @@
+{% comment %}
+  Component: case-studies/case-study-quote.html
+  Purpose: Display client testimonials and founder quotes with attribution and context
+  
+  Parameters:
+  - quote: Quote object with text, attribution, title, context (required)
+  - style: Quote style - pullout, inline, featured, testimonial (optional, defaults from component defaults)
+  - show_portrait: Display person's portrait image (optional, defaults from component defaults)
+  - show_context: Display additional context information (optional, defaults from component defaults)
+  - layout: Quote layout - standard, centered, split (optional, defaults from component defaults)
+  
+  Usage Examples:
+  {% include components/case-studies/case-study-quote.html quote=page.client_quote %}
+  
+  {% include components/case-studies/case-study-quote.html 
+     quote=testimonial 
+     style="featured"
+     show_portrait=true
+     layout="split" %}
+  
+  Quote Object Structure:
+  - text: The quote content (required)
+  - attribution: Person's name (required)
+  - title: Person's job title or role (optional)
+  - company: Company or organization (optional)
+  - context: Additional context about when/why quote was given (optional)
+  - portrait: Image path for person's photo (optional)
+  
+  Design Philosophy:
+  - Extends existing founder-quote-card patterns for business context
+  - Uses centralized defaults from _data/component_defaults.yml
+  - Supports multiple visual styles for different contexts
+  - Integrates with existing image helpers for portrait display
+  - Maintains accessibility with proper quote semantics
+{% endcomment %}
+
+{% comment %} Get centralized defaults {% endcomment %}
+{% capture default_style %}{% include helpers/component-defaults.html component="case-studies.case-study-quote" param="style" fallback="pullout" %}{% endcapture %}
+{% capture default_show_portrait %}{% include helpers/component-defaults.html component="case-studies.case-study-quote" param="show_portrait" fallback=true %}{% endcapture %}
+{% capture default_show_context %}{% include helpers/component-defaults.html component="case-studies.case-study-quote" param="show_context" fallback=true %}{% endcapture %}
+{% capture default_layout %}{% include helpers/component-defaults.html component="case-studies.case-study-quote" param="layout" fallback="standard" %}{% endcapture %}
+
+{% comment %} Apply parameter hierarchy: include param → defaults → fallback {% endcomment %}
+{% assign style = include.style | default: default_style %}
+{% assign show_portrait = include.show_portrait | default: default_show_portrait %}
+{% assign show_context = include.show_context | default: default_show_context %}
+{% assign layout = include.layout | default: default_layout %}
+
+{% comment %} Required parameter {% endcomment %}
+{% assign quote = include.quote %}
+
+{% comment %} Validate required data {% endcomment %}
+{% unless quote and quote.text and quote.attribution %}
+  {% comment %} Exit gracefully if required quote data is missing {% endcomment %}
+  {% break %}
+{% endunless %}
+
+{% comment %} Build CSS classes using BEM methodology {% endcomment %}
+{% assign quote_classes = "case-study-quote" %}
+{% assign quote_classes = quote_classes | append: " case-study-quote--" | append: style %}
+{% assign quote_classes = quote_classes | append: " case-study-quote--" | append: layout %}
+
+{% if show_portrait and quote.portrait %}
+  {% assign quote_classes = quote_classes | append: " case-study-quote--with-portrait" %}
+{% endif %}
+
+<blockquote class="{{ quote_classes }}">
+  
+  <div class="case-study-quote__container">
+    
+    {% comment %} Portrait image (if available and enabled) {% endcomment %}
+    {% if show_portrait and quote.portrait %}
+      <div class="case-study-quote__portrait">
+        {% include components/images/base-image.html
+           src=quote.portrait
+           alt=quote.attribution
+           aspect_ratio="1:1"
+           sizes="(max-width: 767px) 80px, 100px"
+           loading="lazy"
+           class="case-study-quote__portrait-image" %}
+      </div>
+    {% endif %}
+    
+    {% comment %} Quote content {% endcomment %}
+    <div class="case-study-quote__content">
+      
+      {% comment %} Quote text {% endcomment %}
+      <div class="case-study-quote__text">
+        <p class="case-study-quote__paragraph">
+          "{{ quote.text }}"
+        </p>
+      </div>
+      
+      {% comment %} Attribution section {% endcomment %}
+      <footer class="case-study-quote__attribution">
+        
+        <div class="case-study-quote__author">
+          <cite class="case-study-quote__name">{{ quote.attribution }}</cite>
+          
+          {% if quote.title %}
+            <span class="case-study-quote__title">{{ quote.title }}</span>
+          {% endif %}
+          
+          {% if quote.company %}
+            <span class="case-study-quote__company">{{ quote.company }}</span>
+          {% endif %}
+        </div>
+        
+        {% comment %} Context information {% endcomment %}
+        {% if show_context and quote.context %}
+          <div class="case-study-quote__context">
+            <span class="case-study-quote__context-text">{{ quote.context }}</span>
+          </div>
+        {% endif %}
+        
+      </footer>
+      
+    </div>
+    
+  </div>
+  
+  {% comment %} Quote decoration (visual element for pullout style) {% endcomment %}
+  {% if style == "pullout" or style == "featured" %}
+    <div class="case-study-quote__decoration">
+      <span class="case-study-quote__quotemark">"</span>
+    </div>
+  {% endif %}
+  
+</blockquote>

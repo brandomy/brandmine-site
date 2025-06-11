@@ -109,7 +109,9 @@
 
           {% assign unique_markets = insight_markets | uniq | sort %}
           {% for market in unique_markets %}
-            {% assign market_name = site.data.dimensions[page.lang].markets[market] | default: market %}
+            {% comment %} Use dimension-name helper for market lookup {% endcomment %}
+            {% capture market_name %}{% include helpers/dimension-name.html type="markets" id=market %}{% endcapture %}
+            {% assign market_name = market_name | strip %}
             <div class="filter-option">
               <input type="checkbox" id="market-{{ market }}" name="market" value="{{ market }}">
               <label for="market-{{ market }}">{{ market_name }}</label>

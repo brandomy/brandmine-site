@@ -1,0 +1,52 @@
+{% comment %}
+Component: pages/discover/featured-attributes.html
+
+Purpose: Highlights strategic attributes with featured status from dimensions collection
+         showcasing Founder-Led and Heritage Brand as core values
+
+Dependencies:
+- site.dimensions collection with featured: true
+- site.brands collection for brand counts
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].discovery %}
+{% assign featured_attributes = site.dimensions | where: "lang", page.lang | where: "category", "attribute" | where: "featured", true %}
+
+{% if featured_attributes.size > 0 %}
+<div class="featured-section">
+  <div class="featured-section__header">
+    <h2 class="section-title">{{ t.featured_attributes | default: "Featured Attributes" }}</h2>
+    <p class="section-subtitle">{{ t.featured_attributes_description | default: "Key brand characteristics that drive international success" }}</p>
+  </div>
+  
+  <div class="featured-dimensions-grid">
+    {% for dimension in featured_attributes %}
+      {% assign brand_count = site.brands | where: "lang", page.lang | where_exp: "brand", "brand.attributes contains dimension.dimension" | size %}
+      
+      <div class="featured-dimension-card featured-dimension-card--attribute">
+        <div class="featured-dimension-card__content">
+          <h3 class="featured-dimension-card__title">
+            <a href="{{ dimension.url | relative_url }}">{{ dimension.title }}</a>
+          </h3>
+          {% if dimension.content %}
+            <p class="featured-dimension-card__description">
+              {{ dimension.content | strip_html | truncate: 120 }}
+            </p>
+          {% endif %}
+          <div class="featured-dimension-card__meta">
+            <span class="featured-dimension-card__count">{{ brand_count }} brands</span>
+          </div>
+          <span class="featured-dimension-card__badge">{{ t.featured | default: "Featured" }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  <div class="featured-section__actions">
+    <a href="{{ '/' | append: page.lang | append: '/discover/attributes/' | relative_url }}" 
+       class="btn btn--primary">
+      {{ t.view_all_attributes | default: "View All Attributes" }}
+    </a>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,26 @@
+{% comment %}
+  Include Name: components/separators/dot-separator.html
+
+  Purpose: Renders a styled dot (•) separator for inline metadata and list items.
+  Commonly used in text like "Founder • 2019 • Russia" or signal badges.
+
+  Parameters:
+  - None
+
+  Dependencies:
+  - CSS: dot-separator.css (in assets/css/components/separators/)
+  - Color: Uses CSS variable --primary-400 as brand accent (fallback included)
+
+  Example Usage:
+  Inline metadata:
+  Founder-led
+  {% include components/separators/dot-separator.html %}
+  Women-owned
+
+  Notes:
+  - Output is a single <span> with class 'separator--dot'
+  - aria-hidden is set to true to prevent screen readers from announcing the dot
+  - Custom properties allow for theming via --primary-400
+{% endcomment %}
+
+<span class="separator separator--dot" aria-hidden="true">•</span>

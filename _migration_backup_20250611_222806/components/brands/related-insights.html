@@ -1,0 +1,29 @@
+<!-- _includes/components/brands/related-insights.html -->
+{% comment %}
+  Component: components/brand/related-insights.html
+  Purpose: Displays related insights for a brand
+  Parameters:
+    - brand_slug: The brand's slug
+    - lang: Language code
+    - limit: Number of insights to show (default: 3)
+{% endcomment %}
+
+{% assign related_insights = site.insights | where: "lang", include.lang | where_exp: "item", "item.brands contains include.brand_slug" | limit: include.limit | default: 3 %}
+
+{% if related_insights.size > 0 %}
+<div class="brand-sidebar__section">
+  <h3 class="brand-sidebar__heading">{% include helpers/t.html key="brand.related_insights" fallback="Related Insights" lang=include.lang %}</h3>
+  {% for insight in related_insights %}
+  <div class="brand-sidebar__related-insight">
+    <h4 class="brand-sidebar__insight-title">
+      <a href="{{ insight.url | relative_url }}" class="brand-sidebar__insight-link">{{ insight.title }}</a>
+    </h4>
+    <span class="brand-sidebar__insight-type">
+      {% capture category_key %}{{ insight.category | replace: "-", "_" }}{% endcapture %}
+      {% assign full_category_key = "insights." | append: category_key %}
+      {% include helpers/t.html key=full_category_key fallback=insight.category lang=include.lang %}
+    </span>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

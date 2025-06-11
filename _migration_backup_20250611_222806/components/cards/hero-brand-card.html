@@ -1,0 +1,189 @@
+{% comment %}
+COMPONENT: Hero Brand Card
+PURPOSE: Premium brand display with hero image, logo overlay, founder portrait, and complete taxonomy for featured brands
+
+USAGE: {% include components/cards/hero-brand-card.html brand=brand %}
+
+PARAMETERS:
+- brand (required): Brand object with complete details including images.hero and images.founder
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/hero-brand-card.scss
+- Data: site.data.dimensions, site.data.founders, site.data.translations
+- Includes: helpers/brand-image.html, helpers/brand-name.html, components/helpers/founding-year.html, components/helpers/location-display.html, helpers/t.html, components/helpers/founder-check.html
+
+VARIANTS:
+- hero-brand-card--featured: Applied when brand.featured or brand.featured_level > 1
+
+NOTES: Taxonomy display and image options configurable via component defaults. Founder portrait appears in corner circle. Uses brand-image helper for all images. Primary CTA button styling.
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_show_founder %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_founder" fallback=true %}
+{% endcapture %}
+{% capture default_show_location %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_location" fallback=true %}
+{% endcapture %}
+{% capture default_show_sectors %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_sectors" fallback=true %}
+{% endcapture %}
+{% capture default_show_attributes %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_attributes" fallback=true %}
+{% endcapture %}
+{% capture default_show_signals %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_signals" fallback=true %}
+{% endcapture %}
+{% capture default_show_logo %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_logo" fallback=true %}
+{% endcapture %}
+{% capture default_show_hero_image %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_hero_image" fallback=true %}
+{% endcapture %}
+{% capture default_tag_limit %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="tag_limit" fallback=6 %}
+{% endcapture %}
+
+{% assign show_founder = include.show_founder | default: default_show_founder %}
+{% assign show_location = include.show_location | default: default_show_location %}
+{% assign show_sectors = include.show_sectors | default: default_show_sectors %}
+{% assign show_attributes = include.show_attributes | default: default_show_attributes %}
+{% assign show_signals = include.show_signals | default: default_show_signals %}
+{% assign show_logo = include.show_logo | default: default_show_logo %}
+{% assign show_hero_image = include.show_hero_image | default: default_show_hero_image %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
+
+<article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
+  <div class="hero-brand-card__image">
+    {% comment %} Use helper for hero image {% endcomment %}
+    {% include helpers/brand-image.html
+       brand_id=brand.ref
+       image_type="hero"
+       class="hero-brand-card__img" %}
+
+    <div class="hero-brand-card__logo">
+      {% comment %} Use helper for logo image {% endcomment %}
+      {% include helpers/brand-image.html
+         brand_id=brand.ref
+         image_type="logo"
+         class="hero-brand-card__logo-img" %}
+    </div>
+  </div>
+
+  <div class="hero-brand-card__body">
+    <div class="hero-brand-card__content-wrapper">
+      <div class="hero-brand-card__main-content">
+        <h2 class="hero-brand-card__title">
+          {% comment %} Use helper for brand name {% endcomment %}
+          {% include helpers/brand-name.html brand_id=brand.ref fallback=brand.title %}
+        </h2>
+
+        <div class="hero-brand-card__meta">
+          {% include components/helpers/founding-year.html
+             brand=brand
+             class_name="hero-brand-card" %}
+
+          {% include components/helpers/location-display.html
+             city=brand.location.city
+             country=brand.location.country
+             class="hero-brand-card__location" %}
+        </div>
+
+        <p class="hero-brand-card__description">{{ brand.description }}</p>
+      </div>
+
+      <!-- Founder portrait -->
+      {% if brand.images.founder and brand.founders and brand.founders.size > 0 %}
+        {% comment %} Look up founder name from JSON data {% endcomment %}
+        {% assign founder_slug = brand.founders[0] %}
+        {% assign founder_data = site.data.founders | where: "ref", founder_slug | first %}
+        {% if founder_data and founder_data.name[page.lang] %}
+          {% assign founder_name = founder_data.name[page.lang] %}
+        {% elsif founder_data and founder_data.name.en %}
+          {% assign founder_name = founder_data.name.en %}
+        {% else %}
+          {% assign founder_name = founder_slug %}
+        {% endif %}
+        
+        <div class="hero-brand-card__founder" title="Founder: {{ founder_name }}">{%- comment -%} Ensure no whitespace {%- endcomment -%}
+          {%- include helpers/brand-image.html brand_id=brand.ref image_type="founder" alt="Founder portrait" class="hero-brand-card__founder-img" -%}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Taxonomy section -->
+    <div class="hero-brand-card__taxonomy">
+      <div class="hero-brand-card__taxonomy-section">
+        <div class="hero-brand-card__tags">
+          <!-- Markets -->
+          {% if brand.markets %}
+            {% for market in brand.markets %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
+                 class="brand-tag brand-tag--market">
+                {% if site.data.dimensions.markets[market][page.lang] %}
+                  {{ site.data.dimensions.markets[market][page.lang] }}
+                {% else %}
+                  {{ market }}
+                {% endif %}
+              </a>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Sectors -->
+          {% if brand.sectors %}
+            {% for sector in brand.sectors %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
+                 class="brand-tag brand-tag--sector">
+                {% if site.data.dimensions.sectors[sector][page.lang] %}
+                  {{ site.data.dimensions.sectors[sector][page.lang] }}
+                {% else %}
+                  {{ sector }}
+                {% endif %}
+              </a>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Attributes -->
+          {% if brand.attributes %}
+            {% for attribute in brand.attributes %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
+                 class="brand-tag brand-tag--attribute">
+                {% if site.data.dimensions.attributes[attribute][page.lang] %}
+                  {{ site.data.dimensions.attributes[attribute][page.lang] }}
+                {% else %}
+                  {{ attribute }}
+                {% endif %}
+              </a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-brand-card__footer">
+    <a href="{{ brand.url | relative_url }}" class="hero-brand-card__link btn btn--primary">
+      {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
+    </a>
+
+    <div class="hero-brand-card__footer-right">
+      <!-- Signals -->
+      {% if brand.signals and brand.signals.size > 0 %}
+      <div class="hero-brand-card__signals">
+        {% for signal in brand.signals %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
+             class="brand-tag brand-tag--signal">
+            {% if site.data.dimensions.signals[signal][page.lang] %}
+              {{ site.data.dimensions.signals[signal][page.lang] }}
+            {% else %}
+              {{ signal }}
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% include components/helpers/founder-check.html brand=brand class_name="hero-brand-card" %}
+    </div>
+  </div>
+</article>

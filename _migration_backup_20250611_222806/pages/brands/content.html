@@ -1,0 +1,35 @@
+{% comment %}
+  Component: pages/brands/content.html
+
+  Purpose: Renders the main content/introduction from the page's markdown body.
+           This component displays any written content between the front matter
+           and end of the markdown file, providing page-specific content.
+
+  Context:
+  - Used within the brands layout's logic-light architecture
+  - Can be positioned anywhere in page.sections array
+  - Displays the actual markdown content written in the page file
+
+  Parameters:
+  - None (uses the content variable passed from layout)
+
+  Dependencies:
+  - CSS: pages/brands/content.scss (if specific styling needed)
+  - Relies on content variable passed from layout
+
+  Usage in Front Matter:
+  sections:
+    - content
+    - hero
+    - ...other sections
+
+  Notes:
+  - If no content exists in the markdown file, this section will be empty
+  - Content is passed from the layout and contains the page's markdown body
+{% endcomment %}
+
+{% if include.content and include.content != "" %}
+  <div class="brands-content">
+    {{ include.content }}
+  </div>
+{% endif %}

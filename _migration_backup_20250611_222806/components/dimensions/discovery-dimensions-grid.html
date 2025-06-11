@@ -1,0 +1,31 @@
+{% comment %}
+  Include Name: components/dimensions/discovery-dimensions-grid.html
+  Purpose: Displays a grid of discovery dimensions using reusable dimension cards
+  
+  Parameters:
+  - columns (optional): Grid column layout (1, 2, 3, or 4)
+  - limit (optional): Number of examples per dimension (default: 3)
+  
+  Dependencies:
+  - components/cards/dimension-card.html - Individual dimension card component
+  - CSS: components/dimensions/discovery-dimensions-grid.scss (grid layout)
+  - CSS: components/cards/dimension-card.scss (card styling)
+  
+  Usage:
+  {% include components/dimensions/discovery-dimensions-grid.html columns=4 limit=3 %}
+{% endcomment %}
+
+<div class="discovery-dimensions-grid {% if include.columns %}discovery-dimensions-grid--columns-{{ include.columns }}{% endif %}">
+  {% include components/cards/dimension-card.html type="markets" limit=include.limit %}
+  {% include components/cards/dimension-card.html type="sectors" limit=include.limit %}
+  {% include components/cards/dimension-card.html type="attributes" limit=include.limit %}
+  {% include components/cards/dimension-card.html type="signals" limit=include.limit %}
+</div>
+
+{% if include.show_cta != false %}
+<div class="discovery-cta">
+  <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/discover/' }}" class="btn btn--primary-cta">
+    {{ include.cta_text | default: "Explore All Discovery Paths" }}
+  </a>
+</div>
+{% endif %}

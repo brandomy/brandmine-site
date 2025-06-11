@@ -1,0 +1,90 @@
+{% comment %}
+SECTION: Founder Narrative
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display founder information with links to individual founder profiles and leadership status
+
+DATA SOURCES:
+- Founders: brand.founders array containing founder references
+- Founder Data: site.data.founders.founders for detailed founder information
+- Status: brand.founder_led boolean flag
+
+CONTEXT REQUIRED:
+- brand: Brand object with founders array and founder_led flag
+- site.data.founders: Global founders data for lookup
+- brand.lang: Current language for translations and links
+
+CONTENT STRUCTURE:
+1. Section heading (h2) - "Founder Leadership"
+2. Founder cards (if founders present):
+   - Name and position
+   - Brief biography
+   - Generation information
+   - Link to full founder profile
+3. Founder-led status badge (if applicable)
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Data: site.data.founders for founder details
+- CSS: pages/brand/founder-narrative.scss, components/cards/founder-card.scss
+- Translations: brand.founders_journey, brand.generation, buttons.view_founder, attributes.founder-led
+{% endcomment %}
+
+{% assign brand = include.brand %}
+{% assign data_source = include.data_source | default: "curated" %}
+
+{% comment %} Check if we have founder information {% endcomment %}
+{% assign has_founders = false %}
+{% if brand.founders and brand.founders.size > 0 %}
+  {% assign has_founders = true %}
+{% endif %}
+
+{% if has_founders or brand.founder_led %}
+<h2 id="heading-founder-narrative" class="panel__heading-secondary">
+      {% include helpers/t.html key="brand.founders_journey" fallback="Founder Leadership" lang=brand.lang %}
+    </h2>
+    
+    <div class="founder-narrative">
+      {% if has_founders %}
+        <div class="founder-list">
+          {% for founder_key in brand.founders %}
+            {% comment %} Look up founder in founders.json {% endcomment %}
+            {% assign founder = site.data.founders.founders | where: "ref", founder_key | first %}
+            {% if founder %}
+            <div class="founder-card">
+              <div class="founder-card__header">
+                <h3 class="founder-card__name">{{ founder.name }}</h3>
+                {% if founder.position %}
+                  <p class="founder-card__title">{{ founder.position }}</p>
+                {% endif %}
+              </div>
+              
+              {% if founder.brief_bio %}
+                <p class="founder-card__bio">{{ founder.brief_bio }}</p>
+              {% endif %}
+              
+              {% if founder.generation %}
+              <div class="founder-card__meta">
+                <span class="meta-label">{% include helpers/t.html key="brand.generation" fallback="Generation" lang=brand.lang %}:</span>
+                <span class="meta-value">{{ founder.generation | capitalize }}</span>
+              </div>
+              {% endif %}
+              
+              {% comment %} Link to founder profile {% endcomment %}
+              <a href="{{ site.baseurl }}/{{ brand.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
+                {% include helpers/t.html key="buttons.view_founder" fallback="View Founder Profile" lang=brand.lang %} →
+              </a>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      {% if brand.founder_led %}
+        <div class="founder-status">
+          <span class="status-badge status-badge--active">
+            {% include helpers/t.html key="attributes.founder-led" fallback="Founder-Led" lang=brand.lang %}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+{% endif %}

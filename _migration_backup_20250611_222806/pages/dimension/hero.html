@@ -1,0 +1,29 @@
+{% comment %}
+Dimension hero - uses unified journal-hero classes (same as Discovery, Journal, etc.)
+Consistent styling across all hero panels site-wide
+{% endcomment %}
+
+{% assign hero_image = '/assets/images/dimensions/' | append: page.category | append: 's/' | append: page.dimension | append: '-1200w.jpg' %}
+
+<div class="journal-hero journal-hero--teal journal-hero--landing">
+  <!-- Text Content Section -->
+  <div class="journal-hero__content">
+    <h1 class="journal-hero__title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="journal-hero__subtitle">{{ page.description }}</p>
+    {% endif %}
+  </div>
+  
+  <!-- Image Section -->
+  <div class="journal-hero__image">
+    {% assign image_base = hero_image | remove: '-1200w.jpg' %}
+    <img src="{{ hero_image | relative_url }}"
+         srcset="{{ image_base | append: '-400w.jpg' | relative_url }} 400w,
+                 {{ image_base | append: '-800w.jpg' | relative_url }} 800w,
+                 {{ image_base | append: '-1200w.jpg' | relative_url }} 1200w"
+         sizes="(max-width: 767px) 100vw, 50vw"
+         alt="{{ page.title }}"
+         class="journal-hero__img"
+         loading="eager">
+  </div>
+</div>

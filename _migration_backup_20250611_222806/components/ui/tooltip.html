@@ -1,0 +1,209 @@
+{% comment %}
+Component: components/ui/tooltip.html
+Purpose: Accessible tooltip component for contextual help
+
+Parameters:
+- text (required): Tooltip text content
+- position (optional): Tooltip position - "top", "bottom", "left", "right" (default: "top")
+- trigger (optional): Trigger event - "hover", "click", "focus" (default: "hover")
+- class_name (optional): Additional CSS classes
+- id (optional): Unique ID for the tooltip
+
+Content should be wrapped with this component
+
+Usage:
+{% include components/ui/tooltip.html text="This helps you understand the feature" %}
+  <button>Help</button>
+{% endcapture %}
+
+{% include components/ui/tooltip.html text="Click to edit this brand" position="bottom" %}
+  <span class="edit-icon">✏️</span>
+{% endcapture %}
+{% endcomment %}
+
+{% assign position = include.position | default: "top" %}
+{% assign trigger = include.trigger | default: "hover" %}
+{% assign tooltip_id = include.id | default: "tooltip-" | append: include.text | slugify %}
+
+<div class="tooltip-wrapper {{ include.class_name }}" 
+     data-tooltip="{{ include.text }}"
+     data-position="{{ position }}"
+     data-trigger="{{ trigger }}">
+  
+  <div class="tooltip-trigger" 
+       aria-describedby="{{ tooltip_id }}"
+       {% if trigger == "click" %}onclick="toggleTooltip('{{ tooltip_id }}')"{% endif %}
+       {% if trigger == "focus" %}onfocus="showTooltip('{{ tooltip_id }}')" onblur="hideTooltip('{{ tooltip_id }}')"{% endif %}>
+    {{ include.content }}
+  </div>
+  
+  <div class="tooltip tooltip--{{ position }}" 
+       id="{{ tooltip_id }}" 
+       role="tooltip" 
+       aria-hidden="true">
+    <div class="tooltip__content">{{ include.text }}</div>
+    <div class="tooltip__arrow"></div>
+  </div>
+</div>
+
+<style>
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1000;
+  padding: 0.5rem 0.75rem;
+  background: #1f2937;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: 200px;
+  white-space: normal;
+}
+
+.tooltip.tooltip--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip__content {
+  position: relative;
+  z-index: 1;
+}
+
+.tooltip__arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Position variants */
+.tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+.tooltip--top .tooltip__arrow {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-color: #1f2937 transparent transparent transparent;
+}
+
+.tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+
+.tooltip--bottom .tooltip__arrow {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #1f2937 transparent;
+}
+
+.tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+
+.tooltip--left .tooltip__arrow {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent #1f2937;
+}
+
+.tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}
+
+.tooltip--right .tooltip__arrow {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-color: transparent #1f2937 transparent transparent;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .tooltip {
+    max-width: 150px;
+    font-size: 0.8rem;
+  }
+}
+</style>
+
+<script>
+// Initialize tooltips on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const tooltipWrappers = document.querySelectorAll('.tooltip-wrapper');
+  
+  tooltipWrappers.forEach(function(wrapper) {
+    const trigger = wrapper.getAttribute('data-trigger');
+    const tooltipElement = wrapper.querySelector('.tooltip');
+    const triggerElement = wrapper.querySelector('.tooltip-trigger');
+    
+    if (trigger === 'hover') {
+      wrapper.addEventListener('mouseenter', function() {
+        showTooltip(tooltipElement.id);
+      });
+      
+      wrapper.addEventListener('mouseleave', function() {
+        hideTooltip(tooltipElement.id);
+      });
+    }
+  });
+});
+
+function showTooltip(tooltipId) {
+  const tooltip = document.getElementById(tooltipId);
+  if (tooltip) {
+    tooltip.classList.add('tooltip--visible');
+    tooltip.setAttribute('aria-hidden', 'false');
+  }
+}
+
+function hideTooltip(tooltipId) {
+  const tooltip = document.getElementById(tooltipId);
+  if (tooltip) {
+    tooltip.classList.remove('tooltip--visible');
+    tooltip.setAttribute('aria-hidden', 'true');
+  }
+}
+
+function toggleTooltip(tooltipId) {
+  const tooltip = document.getElementById(tooltipId);
+  if (tooltip) {
+    const isVisible = tooltip.classList.contains('tooltip--visible');
+    if (isVisible) {
+      hideTooltip(tooltipId);
+    } else {
+      showTooltip(tooltipId);
+    }
+  }
+}
+</script>

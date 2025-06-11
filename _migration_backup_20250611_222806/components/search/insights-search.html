@@ -1,0 +1,23 @@
+{% comment %}
+  Component: components/search/insights-search.html
+  Purpose: Search input for insights sidebar
+  Parameters:
+    - placeholder: Search placeholder text (default from translations)
+  Dependencies:
+    - assets/css/components/search/insights-search.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+
+<div class="insights-all__search">
+  <input type="text" 
+         id="insights-search-input" 
+         placeholder="{{ include.placeholder | default: t.search_insights }}" 
+         class="insights-all__search-input">
+  <button class="insights-all__search-button" id="insights-search-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="M21 21l-4.35-4.35"></path>
+    </svg>
+  </button>
+</div>

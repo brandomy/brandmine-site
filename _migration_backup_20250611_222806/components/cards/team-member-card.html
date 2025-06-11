@@ -1,0 +1,77 @@
+{% comment %}
+COMPONENT: Team Member Card
+PURPOSE: Displays team member profile with photo, bio, achievements, and social links for about page team sections
+
+USAGE: {% include components/cards/team-member-card.html member=member lang=page.lang %}
+
+PARAMETERS:
+- member (required): Team member data object containing:
+  - name: Member name string
+  - position: Job title/position string
+  - photo_slug: Photo identifier string
+  - bio: Biography text string
+  - highlights: Array of achievement highlight strings
+  - summary: Summary text string
+  - linkedin: LinkedIn URL string
+- lang (required): Language code string for multilingual support
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/team-member-card.scss
+- Data: None
+- Includes: components/images/collection-image.html
+
+VARIANTS: None - single standard layout
+
+NOTES: Display options configurable via component defaults. Photo uses square aspect ratio from people/team collection. All optional fields gracefully hidden when not provided.
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_show_role %}{% include helpers/component-defaults.html component="cards.team-member-card" param="show_role" fallback=true %}{% endcapture %}
+{% capture default_show_bio %}{% include helpers/component-defaults.html component="cards.team-member-card" param="show_bio" fallback=true %}{% endcapture %}
+{% capture default_bio_words %}{% include helpers/component-defaults.html component="cards.team-member-card" param="bio_words" fallback=80 %}{% endcapture %}
+
+{% assign show_role = include.show_role | default: default_show_role %}
+{% assign show_bio = include.show_bio | default: default_show_bio %}
+{% assign bio_words = include.bio_words | default: default_bio_words %}
+
+<div class="team-member-card">
+  {% include components/images/collection-image.html
+    collection="people"
+    category="team"
+    slug=include.member.photo_slug
+    purpose="headshot"
+    aspect="square"
+    alt=include.member.name
+    class="team-member-card__photo" %}
+
+  <h3 class="team-member-card__name">{{ include.member.name }}</h3>
+  <p class="team-member-card__position">{{ include.member.position }}</p>
+
+  {% if include.member.bio %}
+    <p class="team-member-card__bio">{{ include.member.bio }}</p>
+  {% endif %}
+
+  {% if include.member.highlights %}
+    <ul class="team-member-card__highlights">
+      {% for highlight in include.member.highlights %}
+        <li>{{ highlight }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if include.member.summary %}
+    <p class="team-member-card__summary">{{ include.member.summary }}</p>
+  {% endif %}
+
+  {% if include.member.linkedin %}
+    <div class="team-member-card__social">
+      <a href="{{ include.member.linkedin }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="{{ include.member.name }} on LinkedIn"
+         class="team-member-card__linkedin">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+    </div>
+  {% endif %}
+</div>

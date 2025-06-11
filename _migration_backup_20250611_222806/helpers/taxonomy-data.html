@@ -1,0 +1,43 @@
+{% comment %}
+HELPER: Taxonomy Data
+PURPOSE: Unified taxonomy item lookup with multilingual label resolution for dimension system components
+
+USAGE: {% include helpers/taxonomy-data.html type="sector" value="wine" %}
+
+PARAMETERS:
+- type (required): Taxonomy type string - "sector", "market", "attribute", "signal"
+- value (required): Taxonomy slug string to lookup
+- lang (optional): Language code string override (defaults to page.lang)
+
+RETURNS: Sets 'taxonomy_item' variable with full object and 'taxonomy_label' variable with translated name
+
+DEPENDENCIES:
+- Data: site.data[type+'s'] collections with multilingual translations structure
+- Includes: None
+- Variables: page.lang for language context
+
+EXAMPLE:
+{% include helpers/taxonomy-data.html type="sector" value="wine" %}
+{% if taxonomy_item %}
+  <h3>{{ taxonomy_label }}</h3>
+  <p>{{ taxonomy_item.translations[page.lang].description }}</p>
+{% endif %}
+{% endcomment %}
+
+{% comment %} Determine lookup language with fallback to page context {% endcomment %}
+{% assign lookup_lang = include.lang | default: page.lang | default: 'en' %}
+{% assign type_plural = include.type | append: "s" %}
+{% assign items_array = site.data[type_plural][type_plural] %}
+{% assign taxonomy_item = nil %}
+{% assign taxonomy_label = include.value %}
+
+{% comment %} Find matching item by ID in taxonomy data collection {% endcomment %}
+{% for item in items_array %}
+  {% if item.id == include.value %}
+    {% assign taxonomy_item = item %}
+    {% if item.translations[lookup_lang].name %}
+      {% assign taxonomy_label = item.translations[lookup_lang].name %}
+    {% endif %}
+    {% break %}
+  {% endif %}
+{% endfor %}

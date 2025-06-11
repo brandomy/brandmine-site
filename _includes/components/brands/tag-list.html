@@ -18,23 +18,9 @@
   <div class="brand-sidebar__tags">
     {% for tag in include.tags %}
       {% assign dimension_type_singular = include.dimension_type | singularize %}
-      {% assign dimensions_array = site.data[include.dimension_type][include.dimension_type] %}
-      {% assign found_dimension = nil %}
-
-      {% for dimension in dimensions_array %}
-        {% if dimension.id == tag %}
-          {% assign found_dimension = dimension %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-
       <a href="{{ site.baseurl }}/{{ include.lang }}/discover/{{ include.dimension_type }}/{{ tag | slugify }}/"
          class="brand-sidebar__tag brand-sidebar__tag--{{ dimension_type_singular }}">
-         {% if found_dimension %}
-           {{ found_dimension.translations[include.lang].name }}
-         {% else %}
-           {{ tag }}
-         {% endif %}
+         {% include helpers/dimension-name.html type=include.dimension_type id=tag fallback=tag %}
       </a>
     {% endfor %}
   </div>

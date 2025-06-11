@@ -1,0 +1,23 @@
+{% comment %}
+  Component: pages/insights-category/contact-cta.html
+  Purpose: Contact CTA section for the insights category pages
+  Parameters:
+    - heading: The heading for the section (default from translations)
+    - description: The description text for the section (default from translations)
+    - panel_type: The type of panel to use (default: cta)
+  Dependencies:
+    - assets/css/pages/insights-category/contact-cta.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign panel_type = include.panel_type | default: "cta" %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.cta_heading | default: "Want to Feature Your Brand?" }}</h2>
+    <p class="panel__lead-text">{{ include.description | default: t.cta_description | default: "Get in touch to share your brand story with our global audience." }}</p>
+    <div class="insights-contact-cta__buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" class="btn btn--secondary-cta">{{ t.cta_button | default: "Contact Us" }}</a>
+    </div>
+  </div>
+</div>

@@ -11,13 +11,13 @@
     <div class="attribute-card">
       <div class="attribute-card__icon">
         {% if attribute.icon %}
-          <img src="{{ '/assets/images/icons/' | append: attribute.icon | relative_url }}" alt="{{ attribute.name[page.lang] }} icon">
+          <img src="{{ '/assets/images/icons/' | append: attribute.icon | relative_url }}" alt="{% include helpers/dimension-name.html type="attributes" id=attribute.id %} icon">
         {% else %}
           <div class="attribute-card__placeholder-icon"></div>
         {% endif %}
       </div>
 
-      <h3 class="attribute-card__title">{{ attribute.name[page.lang] }}</h3>
+      <h3 class="attribute-card__title">{% include helpers/dimension-name.html type="attributes" id=attribute.id %}</h3>
 
       <p class="attribute-card__description">{{ attribute.description[page.lang] }}</p>
 

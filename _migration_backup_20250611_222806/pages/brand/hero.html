@@ -1,0 +1,59 @@
+{% comment %}
+SECTION: Brand Hero
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display brand's primary identity information in a visually prominent hero section at the top of brand profiles
+
+DATA SOURCES:
+- Primary: include.brand (passed from layout)
+- Fallback: page (when viewing as standalone page)
+- Source Type: Supports both YAML (curated profiles) and JSON (basic listings)
+
+CONTEXT REQUIRED:
+- brand: Brand object containing title, tagline, founding_year, location
+- data_source: "curated" or "basic" (defaults to "curated")
+- current_lang: Language code for translations
+
+CONTENT STRUCTURE:
+1. Brand title (h1)
+2. Optional tagline (if present)
+3. Meta information bar:
+   - Founding year with translated label
+   - Location (city, country) with bullet separator
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Components: components/separators/bullet-separator.html
+- CSS: pages/brand/hero.scss
+- Translations: brands.hero.founded
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+{% assign data_source = include.data_source | default: "curated" %}
+{% assign current_lang = brand.lang | default: 'en' %}
+
+<div class="brand-hero">
+      <h1 class="brand-hero__title">
+        {{ brand.title }}
+      </h1>
+      
+      {% if brand.tagline %}
+        <p class="brand-hero__tagline">
+          {{ brand.tagline }}
+        </p>
+      {% endif %}
+      
+      <div class="brand-hero__meta">
+        {% if brand.founding_year %}
+          <span class="brand-hero__founded">
+            {% include helpers/t.html key="brands.hero.founded" fallback="Founded" lang=brand.lang %} {{ brand.founding_year }}
+          </span>
+        {% endif %}
+        
+        {% if brand.location and brand.location.city %}
+          <span class="brand-hero__location">
+            {% include components/separators/bullet-separator.html %}
+            {{ brand.location.city }}{% if brand.location.country %}, {{ brand.location.country }}{% endif %}
+          </span>
+        {% endif %}
+      </div>
+</div>

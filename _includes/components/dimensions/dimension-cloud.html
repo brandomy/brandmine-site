@@ -7,12 +7,12 @@
   Parameters:
   - None directly passed to the include, but it uses:
     - page.lang: Current page language
-    - site.data.dimensions: JSON with all dimensions by type
+    - site.data.markets, site.data.sectors, site.data.attributes, site.data.signals: JSON dimension data
     - site.data.translations[lang].dimensions: Localized names for dimension type groups
 
   Dependencies:
   - CSS: dimensions.css
-  - Data: site.data.dimensions structure with dimensions
+  - Data: site.data.markets, site.data.sectors, site.data.attributes, site.data.signals
 
   Example Usage:
   {% include components/dimensions/dimension-cloud.html %}
@@ -40,7 +40,7 @@
           {% for dimension in dimensions_array %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ type }}/{{ dimension.id }}/"
                class="dimension dimension--{{ type | replace: 's', '' }}">
-              {{ dimension.translations[page.lang].name }}
+              {% include helpers/dimension-name.html type=type id=dimension.id %}
             </a>
           {% endfor %}
         </div>

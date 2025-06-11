@@ -1,0 +1,21 @@
+{% comment %}
+  Component: pages/insight/sections/related-brands.html
+  Purpose: Displays related brands based on shared taxonomy
+  Parameters:
+    - insight: The insight page object (required)
+  Dependencies:
+    - CSS: pages/insight/sections/related-brands.scss
+    - components/relationships/related-brands.html
+  Notes:
+    - Acts as a wrapper for the reusable related-brands component
+    - Maintains backward compatibility with existing templates
+    - Uses insight-specific CSS class names for styling
+{% endcomment %}
+
+<div class="section-content section-related-brands">
+  {% include components/relationships/related-brands.html
+    parent=insight
+    type="insight"
+    limit=3
+    class_name="section-related-brands" %}
+</div>

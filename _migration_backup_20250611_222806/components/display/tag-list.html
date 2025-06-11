@@ -1,0 +1,24 @@
+<!-- _includes/components/display/tag-list.html -->
+{% comment %}
+  Component: components/display/tag-list.html
+  Purpose: Displays a list of tags with optional translations
+  Parameters:
+    - items: Array of items to display
+    - css_class: CSS class for styling (default: tag-list)
+    - translations: Optional translation lookup path
+    - lang: Language for translations
+{% endcomment %}
+
+{% assign css_class = include.css_class | default: "tag-list" %}
+
+<div class="{{ css_class }}__tags">
+  {% for item in include.items %}
+  <span class="{{ css_class }}__tag">
+    {% if include.translations %}
+      {{ include.translations[item] | default: item }}
+    {% else %}
+      {{ item }}
+    {% endif %}
+  </span>
+  {% endfor %}
+</div>

@@ -31,7 +31,7 @@ CONTENT STRUCTURE:
 
 DEPENDENCIES:
 - Helpers: helpers/t.html (translations)
-- Data: site.data.dimensions[lang] for tag display names
+- Data: site.data.markets, site.data.attributes, site.data.dimensions for tag display names
 - CSS: pages/brand/identity.scss, components/ui/tags.scss
 - Translations: brand.*, tags.*, ui.basic_profile
 {% endcomment %}
@@ -110,7 +110,7 @@ DEPENDENCIES:
             <div class="taxonomy-tags">
               {% for market in brand.markets %}
                 <span class="tag tag--market">
-                  {{ site.data.dimensions[brand.lang].markets[market] | default: market | replace: '-', ' ' | capitalize }}
+                  {% include helpers/dimension-name.html type="markets" id=market %}
                 </span>
               {% endfor %}
             </div>
@@ -124,7 +124,7 @@ DEPENDENCIES:
             <div class="taxonomy-tags">
               {% for sector in brand.sectors %}
                 <span class="tag tag--sector">
-                  {{ site.data.dimensions[brand.lang].sectors[sector] | default: sector | replace: '-', ' ' | capitalize }}
+                  {% include helpers/dimension-name.html type="sectors" id=sector %}
                 </span>
               {% endfor %}
             </div>
@@ -138,7 +138,7 @@ DEPENDENCIES:
             <div class="taxonomy-tags">
               {% for attribute in brand.attributes %}
                 <span class="tag tag--attribute">
-                  {{ site.data.dimensions[brand.lang].attributes[attribute] | default: attribute | replace: '-', ' ' | capitalize }}
+                  {% include helpers/dimension-name.html type="attributes" id=attribute %}
                 </span>
               {% endfor %}
             </div>
@@ -152,7 +152,7 @@ DEPENDENCIES:
             <div class="taxonomy-tags">
               {% for signal in brand.signals %}
                 <span class="tag tag--signal">
-                  {{ site.data.dimensions[brand.lang].signals[signal] | default: signal | replace: '-', ' ' | capitalize }}
+                  {% include helpers/dimension-name.html type="signals" id=signal %}
                 </span>
               {% endfor %}
             </div>

@@ -1,0 +1,93 @@
+{% comment %}
+  Include Name: components/navigation/pagination.html
+  
+  Purpose: Renders a pagination control for navigating through multi-page content.
+  Used on listing pages like brands, insights, and search results.
+  
+  Parameters:
+  - paginator: Jekyll paginator object (required)
+    Expected properties:
+    - total_pages: Total number of pages
+    - page: Current page number
+    - previous_page: Boolean indicating if there's a previous page
+    - previous_page_path: Path to previous page
+    - next_page: Boolean indicating if there's a next page
+    - next_page_path: Path to next page
+  
+  Dependencies:
+  - CSS: pagination.css for styling
+  - Data: site.data.translations[lang].pagination for localized labels
+  - Jekyll paginator configuration in _config.yml
+  
+  Example Usage:
+  {% include components/navigation/pagination.html paginator=paginator %}
+  
+  Notes:
+  - Only displays when there is more than one page of content
+  - Shows previous/next navigation arrows with proper localization
+  - Highlights the current page with active styling
+  - Uses special case for first page link (typically the root path)
+  - Includes accessibility support with ARIA labels and screen reader text
+  - BEM class naming for styling consistency
+  - Supports language-specific navigation text through translations
+{% endcomment %}
+
+{% if include.paginator.total_pages > 1 %}
+<div class="pagination">
+  <ul class="pagination__list">
+    <!-- Previous page link -->
+    {% if include.paginator.previous_page %}
+    <li class="pagination__item">
+      <a href="{{ include.paginator.previous_page_path | relative_url }}" class="pagination__link" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.previous" fallback="Previous" %}</span>
+      </a>
+    </li>
+    {% else %}
+    <li class="pagination__item pagination__item--disabled">
+      <span class="pagination__link" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.previous" fallback="Previous" %}</span>
+      </span>
+    </li>
+    {% endif %}
+
+    <!-- Page number links -->
+    {% for page in (1..include.paginator.total_pages) %}
+      {% if page == include.paginator.page %}
+      <li class="pagination__item pagination__item--active">
+        <span class="pagination__link">
+          {{ page }}
+          <span class="sr-only">{% include helpers/t.html key="pagination.current" fallback="Current page" %}</span>
+        </span>
+      </li>
+      {% elsif page == 1 %}
+      <li class="pagination__item">
+        <a href="{{ site.baseurl }}/" class="pagination__link">{{ page }}</a>
+      </li>
+      {% else %}
+      <li class="pagination__item">
+        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination__link">{{ page }}</a>
+      </li>
+      {% endif %}
+    {% endfor %}
+
+    <!-- Next page link -->
+    {% if include.paginator.next_page %}
+    <li class="pagination__item">
+      <a href="{{ include.paginator.next_page_path | relative_url }}" class="pagination__link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.next" fallback="Next" %}</span>
+      </a>
+    </li>
+    {% else %}
+    <li class="pagination__item pagination__item--disabled">
+      <span class="pagination__link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">{% include helpers/t.html key="common.actions.next" fallback="Next" %}</span>
+      </span>
+    </li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}

@@ -1,0 +1,69 @@
+{% comment %}
+COMPONENT: Form
+PURPOSE: Basic contact form with standard fields for simple user inquiries
+
+USAGE: {% include components/forms/form.html %}
+
+PARAMETERS:
+- action (optional): Form submission URL string, defaults from component defaults
+- method (optional): Form method string, defaults from component defaults
+- name_label (optional): Name field label string, defaults from component defaults
+- email_label (optional): Email field label string, defaults from component defaults
+- message_label (optional): Message field label string, defaults from component defaults
+- submit_label (optional): Submit button label string, defaults from component defaults
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/form.scss
+- Data: site.data.component_defaults
+- Includes: helpers/component-defaults.html
+
+VARIANTS: None - single standard layout
+
+NOTES: All fields required. Simple semantic structure. Component defaults enable centralized label management. Often wrapped with translation helpers for multilingual support.
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_action %}
+{% include helpers/component-defaults.html component="forms.form" param="action" fallback="#" %}
+{% endcapture %}
+{% capture default_method %}
+{% include helpers/component-defaults.html component="forms.form" param="method" fallback="post" %}
+{% endcapture %}
+{% capture default_name_label %}
+{% include helpers/component-defaults.html component="forms.form" param="name_label" fallback="Name" %}
+{% endcapture %}
+{% capture default_email_label %}
+{% include helpers/component-defaults.html component="forms.form" param="email_label" fallback="Email" %}
+{% endcapture %}
+{% capture default_message_label %}
+{% include helpers/component-defaults.html component="forms.form" param="message_label" fallback="Message" %}
+{% endcapture %}
+{% capture default_submit_label %}
+{% include helpers/component-defaults.html component="forms.form" param="submit_label" fallback="Send Message" %}
+{% endcapture %}
+
+{% assign action = include.action | default: default_action %}
+{% assign method = include.method | default: default_method %}
+{% assign name_label = include.name_label | default: default_name_label %}
+{% assign email_label = include.email_label | default: default_email_label %}
+{% assign message_label = include.message_label | default: default_message_label %}
+{% assign submit_label = include.submit_label | default: default_submit_label %}
+
+<form class="form" action="{{ action }}" method="{{ method }}">
+  <div class="form__group">
+    <label for="name" class="form__label">{{ name_label }}</label>
+    <input type="text" id="name" name="name" class="form__input" required>
+  </div>
+
+  <div class="form__group">
+    <label for="email" class="form__label">{{ email_label }}</label>
+    <input type="email" id="email" name="email" class="form__input" required>
+  </div>
+
+  <div class="form__group">
+    <label for="message" class="form__label">{{ message_label }}</label>
+    <textarea id="message" name="message" class="form__textarea" required></textarea>
+  </div>
+
+  <button type="submit" class="form__submit">{{ submit_label }}</button>
+</form>

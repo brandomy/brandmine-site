@@ -1,0 +1,102 @@
+{% comment %}
+COMPONENT: Brand Card
+PURPOSE: Displays essential brand information in a structured card format with logo, description, and taxonomy tags
+
+USAGE: {% include components/cards/brand-card.html brand=brand %}
+
+PARAMETERS:
+- brand (required): Brand object with complete details:
+  - title: Brand name string (translatable)
+  - ref: Global ID string (country-brandslug format)
+  - logo: Path to brand logo image
+  - founding_year: Founding year integer
+  - description: Short brand description string (translatable)
+  - sectors: Array of sector slug strings
+  - markets: Array of market slug strings
+  - attributes: Array of attribute slug strings
+  - signals: Array of signal slug strings
+  - featured: Boolean flag for featured status
+  - featured_level: Integer level of feature status (0=basic, 1=list, 2=featured)
+- show_location (optional): Boolean to show location, defaults from component defaults
+- show_sector (optional): Boolean to show sector tag, defaults from component defaults
+- tag_limit (optional): Integer limit for taxonomy tags, defaults from component defaults
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/brand-card.scss
+- Data: site.data.translations, site.data.dimensions, site.data.component_defaults
+- Includes: helpers/component-defaults.html, components/helpers/card-header.html, components/helpers/taxonomy-tag.html, helpers/t.html, components/helpers/founder-check.html
+
+VARIANTS:
+- brand-card--featured: Applied when brand.featured or brand.featured_level > 1
+
+NOTES: Tag display order is markets > sectors > attributes > signals, with 1 tag each for balanced layout. Uses BEM class naming throughout.
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture show_location %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_location" fallback=true %}{% endcapture %}
+{% capture show_sector %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_sector" fallback=true %}{% endcapture %}
+{% capture tag_limit %}{% include helpers/component-defaults.html component="cards.brand-card" param="tag_limit" fallback=4 %}{% endcapture %}
+{% assign show_location = include.show_location | default: show_location %}
+{% assign show_sector = include.show_sector | default: show_sector %}
+{% assign tag_limit = include.tag_limit | default: tag_limit %}
+
+<article class="brand-card {% if brand.featured or brand.featured_level > 1 %}brand-card--featured{% endif %}">
+  {% include components/helpers/card-header.html
+     brand=brand
+     class_name="brand-card"
+     show_location=show_location %}
+
+  <div class="brand-card__body">
+    <p class="brand-card__description">{{ brand.description }}</p>
+
+    <div class="brand-card__tags">
+      <!-- Markets first -->
+      {% if brand.markets %}
+        {% for market in brand.markets limit:1 %}
+          {% include components/helpers/taxonomy-tag.html
+             type="market"
+             value=market
+             class_name="brand-card" %}
+        {% endfor %}
+      {% endif %}
+
+      <!-- Sectors second -->
+      {% if brand.sectors %}
+        {% for sector in brand.sectors limit:1 %}
+          {% include components/helpers/taxonomy-tag.html
+             type="sector"
+             value=sector
+             class_name="brand-card" %}
+        {% endfor %}
+      {% endif %}
+
+      <!-- Attributes third -->
+      {% if brand.attributes %}
+        {% for attribute in brand.attributes limit:1 %}
+          {% include components/helpers/taxonomy-tag.html
+             type="attribute"
+             value=attribute
+             class_name="brand-card" %}
+        {% endfor %}
+      {% endif %}
+
+      <!-- Signals fourth -->
+      {% if brand.signals %}
+        {% for signal in brand.signals limit:1 %}
+          {% include components/helpers/taxonomy-tag.html
+             type="signal"
+             value=signal
+             class_name="brand-card" %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+  <footer class="brand-card__footer">
+    <a href="{{ brand.url | relative_url }}" class="brand-card__link">
+      {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
+    </a>
+
+    {% include components/helpers/founder-check.html brand=brand class_name="brand-card" %}
+  </footer>
+</article>

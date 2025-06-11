@@ -1,0 +1,10 @@
+{% comment %}
+Search Section for Brands Page
+Purpose: Provides a placeholder search interface to track user search interest
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].brands %}
+{% include components/search/search-placeholder.html 
+   title=t.search.title
+   placeholder=t.search.placeholder 
+   id="brands-search" %}

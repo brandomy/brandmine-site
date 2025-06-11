@@ -1,0 +1,30 @@
+{% comment %}
+  Component: pages/brands/latest-brands.html
+
+  Purpose: Displays latest brands section
+
+  Parameters:
+    title (optional): Custom section title, defaults to brands.recently_added translation
+    limit (optional): Number of latest brands to display, defaults to 4
+    panel_type (optional): Panel background style, defaults to "light"
+
+  Dependencies:
+    - CSS: pages/brands/latest-brands.scss
+    - _includes/components/cards/brand-card.html
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].brands %}
+{% assign panel_type = include.panel_type | default: "light" %}
+{% assign limit = include.limit | default: 4 %}
+
+<h2 class="panel__heading-secondary">
+  {{ include.title | default: t.recently_added }}
+</h2>
+
+<div class="latest-brands__grid">
+  {% assign recent_brands = site.brands | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
+  {% for brand in recent_brands %}
+    {% include components/cards/brand-card.html brand=brand %}
+  {% endfor %}
+</div>

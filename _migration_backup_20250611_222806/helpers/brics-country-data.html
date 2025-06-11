@@ -1,0 +1,47 @@
+{% comment %}
+  Helper: brics-country-data.html
+  
+  Purpose: Retrieves detailed country data for BRICS+ countries only.
+  Falls back to basic country name if not a BRICS+ country.
+  
+  Parameters:
+  - code: (required) The 2-letter ISO country code
+  - field: (optional) Specific field to return (e.g., "capital", "currency", "phone_code")
+  - lang: (optional) Language for multilingual fields (defaults to current page language)
+  
+  Example Usage:
+  {% include helpers/brics-country-data.html code="ru" field="capital" %}
+  Returns: {"en": "Moscow", "ru": "Москва", "zh": "莫斯科"}
+  
+  {% include helpers/brics-country-data.html code="ru" field="currency" %}
+  Returns: "RUB"
+  
+  {% include helpers/brics-country-data.html code="ru" %}
+  Returns: Full country object with all detailed data
+{% endcomment %}
+
+{% assign country_code = include.code %}
+{% assign field = include.field %}
+{% assign display_lang = include.lang | default: page.lang %}
+
+<!-- Check if this is a BRICS+ country -->
+{% assign brics_country = site.data.countries.brics.countries[country_code] %}
+
+{% if brics_country %}
+  <!-- This is a BRICS+ country, return detailed data -->
+  {% if field %}
+    <!-- Return specific field -->
+    {% assign field_data = brics_country[field] %}
+    {% if field_data[display_lang] %}
+      {{ field_data[display_lang] }}
+    {% else %}
+      {{ field_data }}
+    {% endif %}
+  {% else %}
+    <!-- Return full country object -->
+    {{ brics_country | jsonify }}
+  {% endif %}
+{% else %}
+  <!-- Not a BRICS+ country, fall back to basic country name -->
+  {% include helpers/country-name.html code=country_code lang=display_lang %}
+{% endif %}

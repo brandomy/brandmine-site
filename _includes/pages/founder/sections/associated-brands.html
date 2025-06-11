@@ -6,7 +6,7 @@
   Dependencies:
     - assets/css/pages/founder/associated-brands.scss
     - helpers/t.html for translations
-    - site.data.dimensions[lang]
+    - helpers/dimension-name.html for dimension names
     - components/images/collection-image.html
 
   Usage examples:
@@ -79,7 +79,7 @@
           <span class="founder-brand-info__meta-label">{% include helpers/t.html key="brand.sector" fallback="Sector" lang=founder.lang %}:</span>
           <span class="founder-brand-info__meta-value">
             {% for sector in brand.sectors %}
-              {{ site.data.dimensions[founder.lang].sectors[sector] | default: sector }}{% unless forloop.last %}, {% endunless %}
+              {% include helpers/dimension-name.html type="sectors" id=sector %}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
           </span>
         </div>

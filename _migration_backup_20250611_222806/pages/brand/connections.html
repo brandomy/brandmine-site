@@ -1,0 +1,131 @@
+{% comment %}
+SECTION: Connections
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display related brands based on shared taxonomy and comprehensive contact information
+
+DATA SOURCES:
+- Related Brands: site.data.brands.brands filtered by taxonomy overlap
+- Contact Data: brand.website, brand.social_media object
+- Matching Logic: Sectors and markets overlap detection
+
+CONTEXT REQUIRED:
+- brand: Brand object with taxonomy and contact data
+- include.brand_ref: Current brand reference for exclusion
+- site.data.brands: Global brands data for finding relationships
+
+CONTENT STRUCTURE:
+1. Section heading (h2) - "Connections & Discovery"
+2. Related brands subsection:
+   - Finds brands with overlapping sectors/markets
+   - Displays up to 3 matching brands
+   - Compact card format with links
+3. Contact information subsection:
+   - Website link
+   - Social media links (all platforms)
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- Data: site.data.brands for related brand discovery
+- CSS: pages/brand/connections.scss
+- Translations: discover.connections, brand.related_brands, brand.contact, brand.website, social.*
+{% endcomment %}
+
+{% assign brand = include.brand %}
+{% assign data_source = include.data_source | default: "curated" %}
+
+<h2 id="heading-connections" class="panel__heading-secondary">
+      {% include helpers/t.html key="discover.connections" fallback="Connections & Discovery" lang=brand.lang %}
+    </h2>
+    
+    <div class="connections">
+      {% comment %} Related Brands {% endcomment %}
+      {% if brand.sectors or brand.markets or brand.attributes %}
+      <div class="connections__section">
+        <h3 class="connections__title">
+          {% include helpers/t.html key="brand.related_brands" fallback="Related Brands" lang=brand.lang %}
+        </h3>
+        
+        {% comment %} Find brands with overlapping taxonomy {% endcomment %}
+        {% assign related_brands = site.data.brands.brands | where_exp: "b", "b.ref != include.brand_ref" %}
+        {% assign matching_brands = "" | split: "" %}
+        
+        {% for related_brand in related_brands limit: 6 %}
+          {% assign has_match = false %}
+          
+          {% comment %} Check for sector overlap {% endcomment %}
+          {% if brand.sectors %}
+            {% for sector in brand.sectors %}
+              {% if related_brand.sectors contains sector %}
+                {% assign has_match = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          
+          {% comment %} Check for market overlap {% endcomment %}
+          {% unless has_match %}
+            {% if brand.markets %}
+              {% for market in brand.markets %}
+                {% if related_brand.markets contains market %}
+                  {% assign has_match = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endunless %}
+          
+          {% if has_match %}
+            {% assign matching_brands = matching_brands | push: related_brand %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if matching_brands.size > 0 %}
+        <div class="related-brands">
+          {% for related_brand in matching_brands limit: 3 %}
+            <div class="brand-card brand-card--compact">
+              <h4 class="brand-card__name">
+                <a href="{{ site.baseurl }}/{{ brand.lang }}/brands/{{ related_brand.ref }}/">
+                  {{ related_brand.name }}
+                </a>
+              </h4>
+              {% if related_brand.description %}
+                <p class="brand-card__description">{{ related_brand.description | truncate: 100 }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      
+      {% comment %} Contact Information {% endcomment %}
+      <div class="connections__section">
+        <h3 class="connections__title">
+          {% include helpers/t.html key="brand.contact" fallback="Contact Information" lang=brand.lang %}
+        </h3>
+        
+        <div class="contact-info">
+          {% if brand.website %}
+          <div class="contact-item">
+            <span class="contact-label">{% include helpers/t.html key="brand.website" fallback="Website" lang=brand.lang %}:</span>
+            <a href="{{ brand.website }}" target="_blank" class="contact-link">{{ brand.website }}</a>
+          </div>
+          {% endif %}
+          
+          {% if brand.social_media %}
+            {% for social_item in brand.social_media %}
+              {% if social_item[1] and social_item[1] != "" %}
+              <div class="contact-item">
+                {% capture social_key %}social.{{ social_item[0] }}{% endcapture %}
+                {% assign social_fallback = social_item[0] %}
+                <span class="contact-label">{% include helpers/t.html key=social_key fallback=social_fallback lang=brand.lang %}:</span>
+                <a href="{{ social_item[1] }}" target="_blank" class="contact-link social-link social-link--{{ social_item[0] }}">
+                  {{ social_item[1] | remove: 'https://' | remove: 'http://' }}
+                </a>
+              </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>

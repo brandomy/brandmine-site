@@ -1,0 +1,38 @@
+{% comment %}
+  Layout: simple.html (MINIMAL LAYOUT)
+
+  Purpose: Minimal layout for testing, utilities, or special pages that need basic structure without full site styling
+
+  Structure:
+  - Basic HTML5 document structure
+  - Includes only header and footer components
+  - No CSS loading or complex styling
+  - Direct content rendering without panels or sections
+
+  Dependencies:
+  - _includes/layout/header.html
+  - _includes/layout/footer.html
+  - Minimal or no CSS dependencies
+
+  Used for:
+  - Test pages
+  - Utility pages
+  - Lightweight content that doesn't need full site styling
+  - Development and debugging purposes
+{% endcomment %}
+
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+</head>
+<body>
+  {% include layout/header.html %}
+  <main role="main">
+    {{ content }}
+  </main>
+  {% include layout/footer.html %}
+</body>
+</html>

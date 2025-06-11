@@ -1,0 +1,54 @@
+{% comment %}
+  Component: pages/brands/filter-interface.html
+
+  Purpose: Displays the filter and search interface for browsing brands
+
+  Parameters:
+    content_type (optional): Type of content to filter, defaults to "brands"
+    taxonomy (optional): Taxonomy data for filtering
+
+  Dependencies:
+    - CSS: pages/brands/filter-interface.scss
+    - _includes/components/search/search-filter.html
+    - site.data.translations for labels
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].brands %}
+{% assign filter_t = site.data.translations[page.lang].filter %}
+
+<div class="brands-filter">
+<!-- Search filter include -->
+{% assign content_type = include.content_type | default: "brands" %}
+{% assign taxonomy = include.taxonomy | default: site.data.taxonomy %}
+{% include components/search/search-filter.html content_type=content_type taxonomy=taxonomy %}
+
+  <div class="brands-filter__results">
+    <div class="brands-filter__results-header">
+      <h2 id="results-count" class="brands-filter__results-title">{{ t.all_brands }}</h2>
+
+      <!-- Sort and Filter Options -->
+      <div class="brands-filter__controls">
+        <!-- Featured Level Filter -->
+        <div class="brands-filter__featured">
+          <label for="featured-select" class="brands-filter__label">{{ t.featured_level }}:</label>
+          <select id="featured-select" class="brands-filter__select">
+            <option value="all">{{ t.all_brands }}</option>
+            <option value="featured">{{ t.featured_only }}</option>
+            <option value="standard">{{ t.standard }}</option>
+          </select>
+        </div>
+
+        <!-- Sort Options -->
+        <div class="brands-filter__sort">
+          <label for="sort-select" class="brands-filter__label">{{ t.sort_by }}:</label>
+          <select id="sort-select" class="brands-filter__select">
+            <option value="name">{{ t.sort_name }}</option>
+            <option value="sector">{{ t.sort_sector }}</option>
+            <option value="market">{{ t.sort_market }}</option>
+            <option value="founded">{{ t.sort_founded }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

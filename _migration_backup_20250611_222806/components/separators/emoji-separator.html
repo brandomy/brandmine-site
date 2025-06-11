@@ -1,0 +1,30 @@
+{% comment %}
+  Include Name: components/separators/emoji-separator.html
+
+  Purpose: Renders an emoji as a symbolic separator between visual metadata or thematic tags.
+  Ideal for editorial, product storytelling, or playfully styled summary highlights.
+
+  Parameters:
+  - symbol (optional): Unicode emoji or symbol to render. Defaults to "🌱"
+
+  Dependencies:
+  - CSS: emoji-separator.css (in assets/css/components/separators/)
+
+  Example Usage:
+  Sustainable {% include components/separators/emoji-separator.html %} Organic
+
+  With a custom symbol:
+  Natural {% include components/separators/emoji-separator.html symbol="✨" %} Ethical
+
+  Notes:
+  - Output is a <span> element with class 'separator--emoji'
+  - aria-hidden="true" prevents emoji from being read by screen readers
+  - Symbols can be overridden for seasonal or theme-based variants
+  - Recommended Brandmine symbols include:
+  ✨ (magic/surprise), ✦ (refinement/discovery), 🌱 (growth/sustainability)
+{% endcomment %}
+
+
+<span class="separator separator--emoji" aria-hidden="true">
+  {{ include.symbol | default: "🌱" }}
+</span>

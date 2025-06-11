@@ -1,0 +1,43 @@
+{% comment %}
+HELPER: Brand Card Selector
+PURPOSE: Intelligently selects appropriate brand card component based on featured level to ensure visual hierarchy consistency across brand listings
+
+USAGE: {% include helpers/brand-card-selector.html brand=brand %}
+
+PARAMETERS:
+- brand (required): Brand object with featured_level and featured properties
+- force_type (optional): Override automatic selection - "hero", "featured", "basic"
+
+RETURNS: Renders the appropriate brand card component (hero-brand-card, featured-brand-card, or brand-card)
+
+DEPENDENCIES:
+- Data: brand.featured_level (integer), brand.featured (boolean)
+- Includes: components/cards/hero-brand-card.html, components/cards/featured-brand-card.html, components/cards/brand-card.html
+- Variables: None
+
+EXAMPLE:
+{% include helpers/brand-card-selector.html brand=brand %}
+<!-- Auto-selects hero card for featured_level >= 2 -->
+{% include helpers/brand-card-selector.html brand=brand force_type="featured" %}
+<!-- Forces featured card regardless of brand status -->
+{% endcomment %}
+
+{% comment %} Selection logic: force_type > featured_level >= 2 > featured > basic {% endcomment %}
+{% if include.force_type %}
+  {% assign card_type = include.force_type %}
+{% elsif include.brand.featured_level and include.brand.featured_level >= 2 %}
+  {% assign card_type = "hero" %}
+{% elsif include.brand.featured %}
+  {% assign card_type = "featured" %}
+{% else %}
+  {% assign card_type = "basic" %}
+{% endif %}
+
+{% case card_type %}
+  {% when "hero" %}
+    {% include components/cards/hero-brand-card.html brand=include.brand %}
+  {% when "featured" %}
+    {% include components/cards/featured-brand-card.html brand=include.brand %}
+  {% else %}
+    {% include components/cards/brand-card.html brand=include.brand %}
+{% endcase %}

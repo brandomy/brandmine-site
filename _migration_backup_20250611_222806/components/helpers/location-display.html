@@ -1,0 +1,26 @@
+{% comment %}
+  Component: helpers/location-display.html
+
+  Parameters:
+  - city: (optional) City name
+  - country: (required) 2-letter ISO country code (e.g., "br", "ru", "cn")
+  - lang: (optional) Display language, defaults to page language
+  - icon: (optional) Set to false to hide pushpin icon, defaults to true
+  - class: (optional) CSS class for wrapper, defaults to 'location'
+{% endcomment %}
+
+{% assign show_icon = include.icon | default: true %}
+
+<span class="{{ include.class | default: 'location' }}">
+  {% if show_icon %}
+    <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i>
+  {% endif %}
+  <span class="location__text">
+    {% if include.city %}
+      {{ include.city }}{% if include.country %}, {% endif %}
+    {% endif %}
+    {% if include.country %}
+      {% include components/helpers/country-name.html code=include.country lang=include.lang %}
+    {% endif %}
+  </span>
+</span>

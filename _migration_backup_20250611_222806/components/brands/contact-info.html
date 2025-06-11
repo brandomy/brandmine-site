@@ -1,0 +1,32 @@
+<!-- _includes/components/brands/contact-info.html -->
+{% comment %}
+  Component: components/brand/contact-info.html
+  Purpose: Displays contact information for a brand
+  Parameters:
+    - email: Contact email address
+    - website: Brand website URL
+    - lang: Language code
+    - show_if: Condition to show the section (optional)
+{% endcomment %}
+
+{% assign show_section = include.show_if | default: true %}
+
+{% if show_section and (include.email or include.website) %}
+<div class="brand-sidebar__section">
+  <h3 class="brand-sidebar__heading">{{ site.data.translations[include.lang].brand.contact }}</h3>
+
+  {% if include.email %}
+  <p class="brand-sidebar__contact-item">
+    <span class="brand-sidebar__contact-label">{{ site.data.translations[include.lang].brand.email }}:</span>
+    <a href="mailto:{{ include.email }}" class="brand-sidebar__contact-link">{{ include.email }}</a>
+  </p>
+  {% endif %}
+
+  {% if include.website %}
+  <p class="brand-sidebar__contact-item">
+    <span class="brand-sidebar__contact-label">{{ site.data.translations[include.lang].brand.website }}:</span>
+    <a href="{{ include.website }}" target="_blank" rel="noopener" class="brand-sidebar__contact-link">{{ include.website }}</a>
+  </p>
+  {% endif %}
+</div>
+{% endif %}

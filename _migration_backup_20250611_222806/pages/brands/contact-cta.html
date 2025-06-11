@@ -1,0 +1,33 @@
+{% comment %}
+  Component: pages/brands/contact-cta.html
+
+  Purpose: Displays the contact call-to-action panel
+
+  Parameters:
+    title (optional): Custom CTA title
+    description (optional): Custom CTA description
+    button_text (optional): Custom button text
+
+  Dependencies:
+    - CSS: components/panel.css
+    - site.data.translations for labels
+{% endcomment %}
+
+<h2 class="panel__heading-secondary">
+  {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="brands.cta_title" fallback="Ready to Discover BRICS+ Brands?" %}{% endunless %}
+</h2>
+<p class="panel__lead-text">
+  {{ include.description | default: "" }}{% unless include.description %}{% include helpers/t.html key="brands.cta_text" fallback="Contact us to learn more about our featured brands or to discuss your specific needs." %}{% endunless %}
+</p>
+<div class="cta-buttons">
+  <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" 
+     class="btn btn--primary-cta"
+     data-track="suggest-brand">
+    {% include helpers/t.html key="brands.cta.suggest_brand" fallback="Suggest a Brand" %}
+  </a>
+  <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" 
+     class="btn btn--secondary-cta"
+     data-track="get-profiled">
+    {% include helpers/t.html key="brands.cta.get_profiled" fallback="Get Profiled" %}
+  </a>
+</div>

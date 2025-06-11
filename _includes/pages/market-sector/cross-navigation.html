@@ -28,13 +28,15 @@
           <span class="market-sector__navigation-icon">
             {% include components/icons/icon.html type="sector" name="sector-default" size="sm" %}
           </span>
-          {{ site.data.translations[page.lang].market_sectors.back_to_sector | replace: '%sector%', current_sector.name[page.lang] }}
+          {% capture sector_name %}{% include helpers/dimension-name.html type="sectors" id=sector %}{% endcapture %}
+          {{ site.data.translations[page.lang].market_sectors.back_to_sector | replace: '%sector%', sector_name | strip }}
         </a>
         <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="market-sector__navigation-link">
           <span class="market-sector__navigation-icon">
             {% include components/icons/icon.html type="market" name="market-default" size="sm" %}
           </span>
-          {{ site.data.translations[page.lang].market_sectors.back_to_market | replace: '%market%', current_market.name[page.lang] }}
+          {% capture market_name %}{% include helpers/dimension-name.html type="markets" id=market %}{% endcapture %}
+          {{ site.data.translations[page.lang].market_sectors.back_to_market | replace: '%market%', market_name | strip }}
         </a>
       </div>
     </div>

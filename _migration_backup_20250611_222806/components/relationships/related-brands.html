@@ -1,0 +1,81 @@
+{% comment %}
+  Component: components/relationships/related-brands.html
+  Purpose: Displays brands related to a content object (insight, dimension, etc.)
+  Parameters:
+    - parent: The parent object (insight or dimension)
+    - type: The type of relationship (insight, dimension, etc.)
+    - limit: Maximum number of brands to display (default: 3)
+    - class_name: Optional CSS class name prefix for styling
+  Dependencies:
+    - CSS: components/relationships/related-brands.scss
+    - components/cards/related-brand-card.html or components/cards/brand-card.html
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang] %}
+{% assign limit = include.limit | default: 3 %}
+{% assign class_name = include.class_name | default: "related-brands" %}
+
+{% if include.parent %}
+  {% assign parent = include.parent %}
+  {% assign related_brands = "" | split: "" %}
+
+  {% case include.type %}
+    {% when "insight" %}
+      {% if parent.sectors.size > 0 or parent.markets.size > 0 %}
+        {% assign possible_brands = site.brands | where: "lang", parent.lang | where_exp: "brand", "brand.featured == true" %}
+
+        {% if parent.sectors.size > 0 %}
+          {% for brand in possible_brands %}
+            {% if brand.sectors contains parent.sectors[0] %}
+              {% assign related_brands = related_brands | push: brand %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% if parent.markets.size > 0 and related_brands.size < limit %}
+          {% for brand in possible_brands %}
+            {% unless related_brands contains brand %}
+              {% if brand.markets contains parent.markets[0] %}
+                {% assign related_brands = related_brands | push: brand %}
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+
+    {% when "dimension" %}
+      {% assign possible_brands = site.brands | where: "lang", parent.lang %}
+
+      {% for brand in possible_brands %}
+        {% if parent.tag_type == "sector" and brand.sectors contains parent.tag %}
+          {% assign related_brands = related_brands | push: brand %}
+        {% elsif parent.tag_type == "market" and brand.markets contains parent.tag %}
+          {% assign related_brands = related_brands | push: brand %}
+        {% elsif parent.tag_type == "attribute" and brand.attributes contains parent.tag %}
+          {% assign related_brands = related_brands | push: brand %}
+        {% elsif parent.tag_type == "signal" and brand.signals contains parent.tag %}
+          {% assign related_brands = related_brands | push: brand %}
+        {% endif %}
+      {% endfor %}
+  {% endcase %}
+
+  {% assign related_brands = related_brands | sort: "title" | limit: limit %}
+
+  {% if related_brands.size > 0 %}
+    <div class="{{ class_name }}">
+      <h3 class="{{ class_name }}__heading">{{ t.tags.related_brands }}</h3>
+
+      <div class="{{ class_name }}__list">
+        {% for brand in related_brands %}
+          {% include components/cards/related-brand-card.html brand=brand parent_lang=parent.lang %}
+        {% endfor %}
+      </div>
+
+      <div class="{{ class_name }}__cta">
+        <a href="{{ site.baseurl }}/{{ parent.lang }}/brands/" class="btn btn-outline-secondary btn-sm">
+          {{ t.tags.view_all_brands }}
+        </a>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}

@@ -67,7 +67,7 @@ NOTES:
             {% for sector in site.data.sectors.sectors limit:5 %}
               <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/{{ sector.id }}/"
                  class="tag tag--sector">
-                {{ sector.name[current_lang] | default: sector.name.en }}
+                {% include helpers/dimension-name.html type="sectors" id=sector.id %}
               </a>
             {% endfor %}
 
@@ -106,7 +106,7 @@ NOTES:
             {% for market in site.data.markets.markets limit:5 %}
               <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/{{ market.id }}/"
                  class="tag tag--market">
-                {{ market.name[current_lang] | default: market.name.en }}
+                {% include helpers/dimension-name.html type="markets" id=market.id %}
               </a>
             {% endfor %}
           </div>
@@ -138,7 +138,7 @@ NOTES:
             {% for attribute in site.data.attributes limit:5 %}
               <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/{{ attribute.id }}/"
                  class="tag tag--attribute">
-                {{ attribute.name[current_lang] | default: attribute.name.en }}
+                {% include helpers/dimension-name.html type="attributes" id=attribute.id %}
               </a>
             {% endfor %}
           </div>
@@ -169,7 +169,7 @@ NOTES:
             {% for signal in site.data.signals limit:5 %}
               <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/{{ signal.id }}/"
                  class="tag tag--signal">
-                {{ signal.name[current_lang] | default: signal.name.en }}
+                {% include helpers/dimension-name.html type="signals" id=signal.id %}
               </a>
             {% endfor %}
           </div>

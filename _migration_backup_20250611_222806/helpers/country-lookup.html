@@ -1,0 +1,99 @@
+{% comment %}
+  Helper: country-lookup.html
+  Purpose: Unified country data access helper for two-tier country system
+  
+  Parameters:
+    - country_code: ISO 2-letter country code (required)
+    - data_type: 'basic' (default) or 'detailed'
+    - property: specific property to return (optional, returns full object if not specified)
+    - lang: language code for localized data (optional, defaults to page.lang or 'en')
+    - fallback: fallback value if data not found (optional)
+  
+  Usage Examples:
+    Basic country name:
+    {% include helpers/country-lookup.html country_code="th" property="name" %}
+    
+    Detailed currency data:
+    {% include helpers/country-lookup.html country_code="th" data_type="detailed" property="currency" %}
+    
+    Localized capital city:
+    {% include helpers/country-lookup.html country_code="th" data_type="detailed" property="capital" lang="ru" %}
+  
+  Returns:
+    - For basic data: data from countries.json
+    - For detailed data: data from appropriate regional file (asia.json, europe.json, etc.)
+    - Auto-detects regional file based on country code
+{% endcomment %}
+
+{% assign country_code = include.country_code | downcase %}
+{% assign data_type = include.data_type | default: "basic" %}
+{% assign requested_lang = include.lang | default: page.lang | default: "en" %}
+{% assign property = include.property %}
+{% assign fallback = include.fallback %}
+
+{% comment %} Determine data source based on data_type {% endcomment %}
+{% if data_type == "detailed" %}
+  {% comment %} Auto-detect regional file based on country code {% endcomment %}
+  {% assign regional_file = nil %}
+  
+  {% comment %} Check each regional file for the country {% endcomment %}
+  {% if site.data.countries.asia.countries[country_code] %}
+    {% assign regional_file = "asia" %}
+  {% elsif site.data.countries.europe.countries[country_code] %}
+    {% assign regional_file = "europe" %}
+  {% elsif site.data.countries.americas.countries[country_code] %}
+    {% assign regional_file = "americas" %}
+  {% elsif site.data.countries.africa.countries[country_code] %}
+    {% assign regional_file = "africa" %}
+  {% elsif site.data.countries.oceania.countries[country_code] %}
+    {% assign regional_file = "oceania" %}
+  {% elsif site.data.countries.brics.countries[country_code] %}
+    {% assign regional_file = "brics" %}
+  {% endif %}
+  
+  {% if regional_file %}
+    {% assign country_data = site.data.countries[regional_file].countries[country_code] %}
+  {% else %}
+    {% assign country_data = nil %}
+  {% endif %}
+{% else %}
+  {% comment %} Use basic data from countries_basic.json {% endcomment %}
+  {% if site.data.countries_basic.countries[country_code] %}
+    {% assign country_data = site.data.countries_basic.countries[country_code] %}
+  {% else %}
+    {% comment %} Fallback to regional files if not in basic data {% endcomment %}
+    {% assign country_data = nil %}
+    {% if site.data.countries.asia.countries[country_code] %}
+      {% assign country_data = site.data.countries.asia.countries[country_code] %}
+    {% elsif site.data.countries.europe.countries[country_code] %}
+      {% assign country_data = site.data.countries.europe.countries[country_code] %}
+    {% elsif site.data.countries.americas.countries[country_code] %}
+      {% assign country_data = site.data.countries.americas.countries[country_code] %}
+    {% elsif site.data.countries.africa.countries[country_code] %}
+      {% assign country_data = site.data.countries.africa.countries[country_code] %}
+    {% elsif site.data.countries.oceania.countries[country_code] %>
+      {% assign country_data = site.data.countries.oceania.countries[country_code] %}
+    {% elsif site.data.countries.brics.countries[country_code] %}
+      {% assign country_data = site.data.countries.brics.countries[country_code] %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Return requested property or full object {% endcomment %}
+{% if country_data %}
+  {% if property %}
+    {% assign result = country_data[property] %}
+    {% comment %} Handle localized properties {% endcomment %}
+    {% if result[requested_lang] %}
+      {% assign result = result[requested_lang] %}
+    {% elsif result["en"] %}
+      {% assign result = result["en"] %}
+    {% endif %}
+    {{ result }}{% unless result %}{{ fallback }}{% endunless %}
+  {% else %}
+    {% comment %} Return full country object as JSON {% endcomment %}
+    {{ country_data | jsonify }}
+  {% endif %}
+{% else %}
+  {{ fallback }}
+{% endif %}

@@ -1,0 +1,70 @@
+{% comment %}
+  Component: pages/insights/recent-insights.html
+  Purpose: Shows recent insights section with linear layout (no sidebar)
+  Parameters:
+    - heading: The heading for the section (default from translations)
+    - panel_type: The type of panel to use (default: light)
+    - limit: Number of insights to show (default: 8)
+  Dependencies:
+    - assets/css/pages/insights/recent-insights.scss
+    - components/cards/insight-card.html
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign panel_type = include.panel_type | default: "light" %}
+{% assign limit = include.limit | default: 8 %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.recent_insights | default: "Recent Insights" }}</h2>
+
+    {% assign description_text = t.recent_insights_description | default: "Stay current with the latest analysis and thought leadership on BRICS+ consumer brands and emerging market trends." %}
+    {% if description_text %}
+      <p class="panel__lead-text">
+        {{ description_text }}
+      </p>
+    {% endif %}
+
+    {% assign use_carousel = include.carousel | default: false %}
+    
+    {% if use_carousel %}
+      <div class="recent-insights__carousel">
+        {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: 6 %}
+        {% if insights.size > 0 %}
+          {% for insight in insights %}
+            {% include components/cards/insight-card.html insight=insight %}
+          {% endfor %}
+        {% else %}
+          <div class="recent-insights__empty">
+            <p class="recent-insights__empty-message">{{ t.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        {% endif %}
+      </div>
+      
+      {% if insights.size > 3 %}
+        <div class="recent-insights__nav">
+          {% assign dot_count = insights.size | divided_by: 3 | plus: 1 %}
+          {% if dot_count > 3 %}{% assign dot_count = 3 %}{% endif %}
+          
+          {% for i in (1..dot_count) %}
+            <span class="recent-insights__nav-dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.index0 }}"></span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="recent-insights__grid">
+        {% assign insights = site.insights | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
+        {% if insights.size > 0 %}
+          {% for insight in insights %}
+            {% include components/cards/insight-card.html insight=insight %}
+          {% endfor %}
+        {% else %}
+          <div class="recent-insights__empty">
+            <p class="recent-insights__empty-message">{{ t.no_insights | default: "No insights available yet." }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>

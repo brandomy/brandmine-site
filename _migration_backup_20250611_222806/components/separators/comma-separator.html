@@ -1,0 +1,29 @@
+{% comment %}
+  Include Name: components/separators/comma-separator.html
+
+  Purpose: Renders a localized comma separator. Used in multi-part names or
+  lists where commas must match language or typographic style.
+
+  Parameters:
+  - page.lang (inferred from page context): used to localize comma if present in
+    site.data.translations[lang].comma
+
+  Dependencies:
+  - CSS: comma-separator.css (in assets/css/components/separators/)
+  - Data: site.data.translations[page.lang].comma
+
+  Example Usage:
+  Tag list:
+  Natural Beauty Products
+  {% include components/separators/comma-separator.html %}
+  Fashion & Accessories
+
+  Notes:
+  - If localized comma is not found, defaults to standard ASCII comma (,)
+  - aria-hidden prevents the comma from being announced by screen readers
+  - You may customize per language with ideographic commas (、) for Chinese
+{% endcomment %}
+
+<span class="separator separator--comma" aria-hidden="true">
+  {{ site.data.translations[page.lang].comma | default: ',' }}
+</span>

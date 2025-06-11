@@ -51,32 +51,17 @@ Dependencies:
 
                         {% if insight.sectors.size > 0 %}
                           {% assign sector_id = insight.sectors[0] %}
-                          {% for sector in site.data.sectors.sectors %}
-                            {% if sector.id == sector_id %}
-                              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_id }}/" class="tag tag--sector">{{ sector.name[page.lang] }}</a>
-                              {% break %}
-                            {% endif %}
-                          {% endfor %}
+                          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector_id }}/" class="tag tag--sector">{% include helpers/dimension-name.html type="sectors" id=sector_id %}</a>
                         {% endif %}
 
                         {% if insight.markets.size > 0 %}
                           {% assign market_id = insight.markets[0] %}
-                          {% for market in site.data.markets.markets %}
-                            {% if market.id == market_id %}
-                              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_id }}/" class="tag tag--market">{{ market.name[page.lang] }}</a>
-                              {% break %}
-                            {% endif %}
-                          {% endfor %}
+                          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_id }}/" class="tag tag--market">{% include helpers/dimension-name.html type="markets" id=market_id %}</a>
                         {% endif %}
 
                         {% if insight.attributes.size > 0 %}
                           {% assign attribute_id = insight.attributes[0] %}
-                          {% for attribute in site.data.attributes.attributes %}
-                            {% if attribute.id == attribute_id %}
-                              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute_id }}/" class="tag tag--attribute">{{ attribute.name[page.lang] }}</a>
-                              {% break %}
-                            {% endif %}
-                          {% endfor %}
+                          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute_id }}/" class="tag tag--attribute">{% include helpers/dimension-name.html type="attributes" id=attribute_id %}</a>
                         {% endif %}
                       </div>
                     </div>

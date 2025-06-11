@@ -1,0 +1,22 @@
+{% comment %}
+  Section: error-404/content.html
+  404 error page content with helpful navigation options
+{% endcomment %}
+
+<h1 class="panel__heading-primary">
+  {% include helpers/t.html key="error_404.title" fallback="Page Not Found" %}
+</h1>
+
+<p class="panel__lead-text">
+  {% include helpers/t.html key="error_404.message" fallback="Sorry, the page you're looking for doesn't exist." %}
+</p>
+
+<div class="error-404__actions">
+  <a href="{{ site.baseurl }}/{{ page.lang }}/" class="btn btn--primary">
+    {% include helpers/t.html key="error_404.home_button" fallback="Go Home" %}
+  </a>
+  
+  <a href="{{ site.baseurl }}/{{ page.lang }}/search/" class="btn btn--secondary">
+    {% include helpers/t.html key="error_404.search_button" fallback="Search" %}
+  </a>
+</div>

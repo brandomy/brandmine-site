@@ -1,0 +1,32 @@
+{% comment %}
+  Component: Featured Case Studies Carousel
+  Displays rotating showcase of case studies
+{% endcomment %}
+
+{% capture defaults %}{% include helpers/component-defaults.html component="carousels.featured-case-studies-carousel" %}{% endcapture %}
+{% assign config = defaults | split: '|' %}
+
+<div class="featured-case-studies-carousel">
+  <div class="carousel-container">
+    <div class="carousel-track">
+      {% assign case_studies = site.data.case_studies[page.lang] | where: "featured", true | limit: 4 %}
+      {% for case_study in case_studies %}
+        <div class="carousel-slide">
+          {% include components/cards/case-study-card.html
+             case_study=case_study
+             style="featured" %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <button class="carousel-nav carousel-nav--prev" aria-label="Previous">‹</button>
+    <button class="carousel-nav carousel-nav--next" aria-label="Next">›</button>
+  </div>
+
+  <div class="carousel-indicators">
+    {% for i in (1..4) %}
+      <button class="carousel-indicator{% if forloop.first %} active{% endif %}"
+              data-slide="{{ forloop.index0 }}"></button>
+    {% endfor %}
+  </div>
+</div>

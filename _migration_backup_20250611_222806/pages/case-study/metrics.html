@@ -1,0 +1,11 @@
+{% comment %}
+  Section: case-study/metrics.html
+  Purpose: Display key performance indicators and results metrics
+  Dependencies: components/case-studies/case-study-metrics.html
+{% endcomment %}
+
+{% if page.metrics and page.metrics.size > 0 %}
+  {% include components/case-studies/case-study-metrics.html 
+     metrics=page.metrics 
+     title="Key Results" %}
+{% endif %}

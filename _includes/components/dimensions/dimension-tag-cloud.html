@@ -68,9 +68,8 @@ Sort Methods:
 <div class="dimension-tag-cloud dimension-tag-cloud--{{ include.type }}">
   {% comment %} Display selected and sorted items - unified processing for all dimension types {% endcomment %}
   {% for item in selected_items limit: limit %}
-    {% assign item_name = item.name[page.lang] | default: item.name.en %}
     <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/{{ item.id }}/" 
-       class="dimension-tag dimension-tag--{{ include.type }}">{{ item_name }}</a>
+       class="dimension-tag dimension-tag--{{ include.type }}">{% include helpers/dimension-name.html type=include.type id=item.id %}</a>
   {% endfor %}
   
   {% comment %} Show count of additional items {% endcomment %}

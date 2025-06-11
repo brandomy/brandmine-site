@@ -1,0 +1,35 @@
+{% comment %}
+  Market-Sector Related Brands
+  Displays brands related to a market-sector intersection.
+{% endcomment %}
+
+<div class="panel panel--olive-soft">
+  <div class="panel__content">
+    <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.related_brands | default: "Related Brands" }}</h2>
+
+    {% assign brands = site.data.brands.brands %}
+    {% assign related_brands = brands | where_exp: "brand", "brand.markets contains market and brand.sectors contains sector and brand.lang == page.lang" %}
+
+    {% if related_brands.size > 0 %}
+      <div class="brand-card-grid brand-card-grid--3col">
+        {% for brand in related_brands limit:3 %}
+          {% if brand.country_code %}
+            {% include components/cards/brand-card.html brand=brand %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% if related_brands.size > 3 %}
+        <div class="market-sector__view-all">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/brands/?sector={{ sector }}&market={{ market }}" class="btn btn--outline">
+            {{ site.data.translations[page.lang].brands.view_all | default: "View All" }}
+          </a>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="market-sector__empty-state">
+        <p>{{ site.data.translations[page.lang].market_sectors.no_brands | default: "No brands available yet for this sector and market combination." }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>

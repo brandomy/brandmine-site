@@ -23,12 +23,12 @@
 {% if include.sectors %}
   {% for sector in include.sectors limit:2 %}
     <span class="founder-card__tag founder-card__tag--sector">
-      {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+      {% include helpers/dimension-name.html type="sectors" id=sector %}
     </span>
   {% endfor %}
 {% elsif include.primary_sector %}
   <span class="founder-card__tag founder-card__tag--sector">
-    {{ site.data.dimensions[page.lang].sectors[include.primary_sector] | default: include.primary_sector }}
+    {% include helpers/dimension-name.html type="sectors" id=include.primary_sector %}
   </span>
 {% endif %}
 

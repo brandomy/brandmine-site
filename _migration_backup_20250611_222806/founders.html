@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{% comment %}
+  LAYOUT: Founders
+  PURPOSE: Main directory page for viewing and filtering all founder profiles
+  USED BY: pages/{lang}/founders.md (founder discovery and listings)
+  SECTIONS RENDERED: Data-driven via page_sections.yml (founders)
+  FRONT MATTER REQUIRED: Standard page front matter, uses defaults from page_sections.yml
+  PANEL SYSTEM: Uses panel--hero-split for hero, panel--primary for impact, panel--amber-soft for featured
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/founders/[section].html, founders.js
+  
+  LOGIC-LIGHT ARCHITECTURE:
+  - Standardized across all languages with identical section structure
+  - Data-driven section rendering eliminates hardcoded logic
+  - Impact section positioned before content for strategic messaging
+  - Includes filter interface, founders grid, and featured founders
+  - JavaScript handles dynamic filtering and search functionality
+{% endcomment %}
+
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
+
+<main class="layout founders-page">
+  <div class="layout__wrapper">
+    <div class="layout__content">
+      {% comment %} Use data-driven section rendering {% endcomment %}
+      {% include helpers/page-sections.html page_type="founders" content=page_content %}
+    </div>
+  </div>
+</main>
+
+<!-- Founders-specific JavaScript -->
+<script src="{{ '/assets/js/pages/founders/founders.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>

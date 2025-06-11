@@ -1,0 +1,68 @@
+{% comment %}
+  Page Section: pages/home/brand-owners.html
+  
+  Purpose: Displays the brand owners CTA section with feature list highlighting
+           Brandmine's value proposition for BRICS+ brand owners seeking global exposure
+  
+  Section Type: Content
+  Template: home.html
+  
+  Parameters:
+    title (optional): Custom section title
+                     Default: "For BRICS+ Brand Owners: Your Global Story Starts Here"
+    lead_text (optional): Custom lead text describing the value proposition
+    panel_type (optional): Panel style/color
+                          Default: "light"
+    cta_text (optional): Custom CTA button text
+                        Default: "Get Profiled"
+    cta_url (optional): Custom CTA button URL
+                       Default: contact section
+    features (optional): Array of feature objects with title and text properties
+                        Default: uses translation keys
+  
+  Dependencies:
+    - Translation keys: home.brand_owners.*
+    - CSS: assets/css/pages/home/brand-owners.scss
+    - Helper: helpers/t.html
+  
+  Usage:
+    {% include pages/home/brand-owners.html %}
+    {% include pages/home/brand-owners.html panel_type="primary" %}
+    {% include pages/home/brand-owners.html title="Custom Title" cta_text="Contact Us" %}
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign panel_type = include.panel_type | default: "light" %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.brand_owners.title" fallback="For BRICS+ Brand Owners: Your Global Story Starts Here" %}{% endunless %}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.brand_owners.subtitle" fallback="Ready to elevate your successful local brand to the global stage? Our platform offers the visibility, context, and connections you need." %}{% endunless %}
+    </p>
+
+    {% if include.features %}
+      <ul class="feature-list feature-list--centered">
+        {% for feature in include.features %}
+          <li><span class="feature-list__title">{{ feature.title }}</span> <span class="feature-list__text">{{ feature.text }}</span></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <ul class="feature-list feature-list--centered">
+        <li><span class="feature-list__title">{% include helpers/t.html key="home.brand_owners.features.feature1.title" fallback="Transcend" %}</span> <span class="feature-list__text">{% include helpers/t.html key="home.brand_owners.features.feature1.text" fallback="language and cultural barriers to reach global markets" %}</span></li>
+        <li><span class="feature-list__title">{% include helpers/t.html key="home.brand_owners.features.feature2.title" fallback="Position" %}</span> <span class="feature-list__text">{% include helpers/t.html key="home.brand_owners.features.feature2.text" fallback="your brand within its proper international context" %}</span></li>
+        <li><span class="feature-list__title">{% include helpers/t.html key="home.brand_owners.features.feature3.title" fallback="Connect" %}</span> <span class="feature-list__text">{% include helpers/t.html key="home.brand_owners.features.feature3.text" fallback="with partners seeking precisely what you offer" %}</span></li>
+      </ul>
+    {% endif %}
+
+    <div class="cta-buttons">
+      <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/about/#about-section-contact' }}"
+         class="btn btn--secondary-cta"
+         data-track="brand-owners">
+        {{ include.cta_text | default: "" }}{% unless include.cta_text %}{% include helpers/t.html key="home.brand_owners.cta" fallback="Get Profiled" %}{% endunless %}
+      </a>
+    </div>
+  </div>
+</div>

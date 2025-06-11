@@ -1,0 +1,29 @@
+{% comment %}
+  Section: insights-category/insights-grid.html
+  
+  Displays filtered insights grid for specific category type
+  
+  Dependencies:
+  - Translation helper include for multilingual labels
+  - _includes/components/cards/insight-card.html for individual cards
+  - site.insights collection
+  - page.lang and page.insight_type for filtering
+{% endcomment %}
+
+{% comment %} Filter insights by language and category {% endcomment %}
+{% assign empty_array = "" | split: "" %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+
+<div class="insights-category-grid">
+  {% if type_insights.size > 0 %}
+    <div class="insights-grid">
+      {% for insight in type_insights %}
+        {% include components/cards/insight-card.html insight=insight %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="insights-category-empty">
+      <p class="no-insights">{% include helpers/t.html key="insights.no_insights_message" fallback="No insights available yet. Check back soon!" lang=page.lang %}</p>
+    </div>
+  {% endif %}
+</div>

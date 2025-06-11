@@ -1,0 +1,67 @@
+{% comment %}
+SECTION: Product
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display brand's product range information with optional gallery showcase
+
+DATA SOURCES:
+- Content: Extracted from markdown content after "## Product Range" heading
+- Gallery: brand.gallery array containing image metadata
+- Data Format: Both YAML and JSON supported
+
+CONTEXT REQUIRED:
+- brand: Brand object with optional gallery array
+- content: Full markdown content (split to extract section)
+- data_source: "curated" or "basic" (defaults to "curated")
+
+CONTENT STRUCTURE:
+1. Section heading (h2)
+2. Product content from markdown
+3. Product gallery (if present):
+   - Grid layout of product images
+   - Collection-based image handling
+   - Optional captions per image
+
+DEPENDENCIES:
+- Components: components/images/collection-image.html
+- Helpers: helpers/t.html (translations)
+- CSS: pages/brand/product.scss
+- Translations: brand.products
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+{% assign data_source = include.data_source | default: "curated" %}
+
+<h2 id="heading-product" class="panel__heading-secondary">
+  {% include helpers/t.html key="brand.products" fallback="Products" lang=brand.lang %}
+</h2>
+
+<div class="brand-products">
+  <!-- Product Content from Markdown -->
+  <div class="brand-products__content">
+    {% assign content_parts = content | split: "## Product Range" %}
+    {% if content_parts.size > 1 %}
+      {% assign product_content = content_parts[1] | split: "##" | first %}
+      {{ product_content | markdownify }}
+    {% endif %}
+  </div>
+
+  <!-- Product Gallery -->
+  {% if brand.gallery and brand.gallery.size > 0 %}
+    <div class="brand-products__gallery product-gallery">
+      {% for item in brand.gallery %}
+        <div class="product-gallery__item">
+          {% include components/images/collection-image.html
+            collection="brands"
+            slug=brand.ref
+            purpose="gallery"
+            name=item.name
+            ext=item.ext
+            alt=item.caption %}
+          {% if item.caption %}
+            <div class="product-gallery__caption">{{ item.caption }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>

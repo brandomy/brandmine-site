@@ -1,0 +1,26 @@
+{% comment %}
+  Attribute Insights (JSON Version)
+  Displays insights related to attributes.
+  Used in: /discover/attributes/
+{% endcomment %}
+
+{% assign insights = site.data.insights.insights | where_exp: "insight", "insight.featured == true" | limit: 3 %}
+{% assign attributes_insights = insights | where_exp: "insight", "insight.primary_dimension == 'attribute'" %}
+
+{% if attributes_insights.size > 0 %}
+  <div class="attribute-insights">
+    <h2 class="attribute-insights__title">{% include helpers/t.html key="discover.insights_description" fallback="Latest Insights" %}</h2>
+
+    <div class="insights-grid insights-grid--3col">
+      {% for insight in attributes_insights %}
+        {% include components/cards/insight-card.html insight=insight %}
+      {% endfor %}
+    </div>
+
+    <div class="attribute-insights__view-all">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?dimension=attribute" class="btn btn--outline">
+        {% include helpers/t.html key="discover.view_all_insights" fallback="View All Insights" %}
+      </a>
+    </div>
+  </div>
+{% endif %}

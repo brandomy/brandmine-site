@@ -1,0 +1,60 @@
+{% comment %}
+  Market-Sector Statistics
+  Displays key metrics and statistics for a market-sector intersection.
+{% endcomment %}
+
+{% assign market_sector_map = site.data.market_sector_map.market_sector_map %}
+
+{% for ms in market_sector_map %}
+  {% if ms.market == market and ms.sector == sector %}
+    {% assign market_sector_data = ms %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if market_sector_data.highlights or market_sector_data.key_stats %}
+<div class="panel panel--olive-soft">
+  <div class="panel__content">
+    {% if market_sector_data.key_stats %}
+    <div class="market-sector__stats">
+      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.key_stats | default: "Key Statistics" }}</h2>
+      <div class="market-sector__stats-grid">
+        {% for stat in market_sector_data.key_stats[page.lang] %}
+          <div class="market-sector__stat">
+            <div class="market-sector__stat-icon">
+              {% if stat.icon %}
+                <i class="fa fa-{{ stat.icon }}"></i>
+              {% endif %}
+            </div>
+            <div class="market-sector__stat-label">{{ stat.label }}</div>
+            <div class="market-sector__stat-value">{{ stat.value }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if market_sector_data.highlights %}
+    <div class="market-sector__highlights">
+      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.highlights | default: "Key Highlights" }}</h2>
+      <ul class="market-sector__highlights-list">
+        {% for highlight in market_sector_data.highlights[page.lang] %}
+          <li class="market-sector__highlight-item">{{ highlight }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if market_sector_data.opportunities %}
+    <div class="market-sector__opportunities">
+      <h2 class="market-sector__section-title">{{ site.data.translations[page.lang].market_sectors.opportunities | default: "Market Opportunities" }}</h2>
+      <ul class="market-sector__opportunities-list">
+        {% for opportunity in market_sector_data.opportunities[page.lang] %}
+          <li class="market-sector__opportunity-item">{{ opportunity }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,43 @@
+{% comment %}
+  Component: components/filters/featured-brands-filter.html
+  Purpose: Featured brands filter for insights sidebar
+  Parameters:
+    - insights: Array of insights to filter (required)
+    - heading: Section heading (default from translations)
+    - limit: Number of brands to show (default: 5)
+  Dependencies:
+    - assets/css/components/filters/featured-brands-filter.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign insights = include.insights %}
+{% assign limit = include.limit | default: 5 %}
+
+<div class="insights-all__sidebar-section">
+  <h3 class="insights-all__sidebar-heading">{{ include.heading | default: t.featured_brands }}</h3>
+  <div class="insights-all__featured-brands">
+    {% assign featured_brands = insights | map: "brands" | flatten | compact | uniq %}
+    {% if featured_brands.size > 0 %}
+      {% for brand_slug in featured_brands limit: limit %}
+        {% assign brand = site.brands | where: "slug", brand_slug | where: "lang", page.lang | first %}
+        {% if brand %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/insights/brands/{{ brand_slug }}/" class="insights-all__brand-link">
+            {{ brand.title }}
+            <span class="insights-all__brand-count">
+              ({{ insights | where_exp: "item", "item.brands contains brand_slug" | size }})
+            </span>
+          </a>
+        {% endif %}
+      {% endfor %}
+      {% if featured_brands.size > limit %}
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/brands/" class="insights-all__view-all-link">
+          {{ t.view_all_featured_brands }}
+        </a>
+      {% endif %}
+    {% else %}
+      <p class="insights-all__no-brands">
+        {{ t.no_featured_brands }}
+      </p>
+    {% endif %}
+  </div>
+</div>

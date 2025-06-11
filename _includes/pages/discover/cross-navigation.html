@@ -21,7 +21,7 @@
         <span class="cross-navigation__icon">
           {% include components/icons/icon.html system="dimensions" type=dimension.id name="default" size="sm" %}
         </span>
-        {{ dimension.name[page.lang] }}
+        {% include helpers/dimension-name.html type=dimension.dimension_type id=dimension.id %}
       </a>
     {% endfor %}
 

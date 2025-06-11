@@ -1,0 +1,81 @@
+{% comment %}
+  Include Name: components/dimensions/discovery-navigation.html
+
+  Purpose: Renders a unified navigation bar for the discovery section with two styling options
+
+  Parameters:
+    - container_class: Additional class for the container (optional)
+    - active_dimension: The currently active dimension (sectors, markets, attributes, signals)
+    - style_option: 'a' (tooltip style) or 'b' (inline text style)
+{% endcomment %}
+
+{% assign style_option = include.style_option | default: 'a' %}
+{% if style_option == 'a' %}
+  {% assign nav_class = 'discovery-navigation--option-a' %}
+{% else %}
+  {% assign nav_class = 'discovery-navigation--option-b' %}
+{% endif %}
+
+{% assign active_dimension = include.active_dimension | default: page.discovery_path %}
+
+<div class="discovery-navigation {{ nav_class }}">
+  <div class="discovery-navigation__container {% if active_dimension %}discovery-navigation__container--{{ active_dimension }}{% endif %} {{ include.container_class }}">
+    <div class="discovery-navigation__tabs">
+
+      <!-- Markets -->
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/"
+         class="discovery-navigation__tab {% if active_dimension == 'markets' %}active{% endif %}"
+         data-dimension="markets">
+        <span class="discovery-navigation__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.markets" fallback="Markets" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.markets" fallback="Markets" %}</span>
+      </a>
+
+      <!-- Sectors -->
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/"
+         class="discovery-navigation__tab {% if active_dimension == 'sectors' %}active{% endif %}"
+         data-dimension="sectors">
+        <span class="discovery-navigation__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.sectors" fallback="Sectors" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.sectors" fallback="Sectors" %}</span>
+      </a>
+
+
+      <!-- Attributes -->
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/"
+         class="discovery-navigation__tab {% if active_dimension == 'attributes' %}active{% endif %}"
+         data-dimension="attributes">
+        <span class="discovery-navigation__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+        </span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.attributes" fallback="Attributes" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.attributes" fallback="Attributes" %}</span>
+      </a>
+
+      <!-- Signals -->
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/"
+         class="discovery-navigation__tab {% if active_dimension == 'signals' %}active{% endif %}"
+         data-dimension="signals">
+        <span class="discovery-navigation__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="discovery-navigation__label">{% include helpers/t.html key="nav.signals" fallback="Signals" %}</span>
+        <span class="discovery-navigation__tooltip">{% include helpers/t.html key="tooltips.signals" fallback="Signals" %}</span>
+      </a>
+    </div>
+  </div>
+</div>

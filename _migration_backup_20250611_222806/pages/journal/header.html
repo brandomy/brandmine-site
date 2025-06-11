@@ -1,0 +1,55 @@
+{% comment %}
+  Component: pages/journal/header.html
+
+  Purpose: Renders the header section of a journal post including:
+           - Back navigation
+           - Post title
+           - Metadata (date, author, reading time)
+
+  Parameters:
+  - post: The post page object (required)
+
+  Dependencies:
+  - CSS: pages/journal/header.scss
+  - site.data.translations[page.lang].journal for localized labels
+
+  Used by:
+  - post layout via sections array
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].journal %}
+{% assign post = include.post | default: page %}
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    <div class="post-header">
+      <nav class="post-navigation">
+        <a href="{{ '/journal/' | prepend: '/' | append: page.lang | append: '/' | relative_url }}" class="post-navigation__back">
+          ← {{ t.back_to_journal | default: "Back to Journal" }}
+        </a>
+      </nav>
+
+      <h1 class="post-title">{{ post.title }}</h1>
+
+      <div class="post-meta">
+        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
+          {{ t.published_on | default: "Published on" }} {{ post.date | date: "%B %d, %Y" }}
+        </time>
+
+        {% if post.author %}
+          <span class="post-author">
+            {{ t.by | default: "by" }} 
+            {% assign author_data = site.data.translations[page.lang].authors[post.author] %}
+            {{ author_data | default: post.author }}
+          </span>
+        {% endif %}
+
+        {% if post.reading_time %}
+          <span class="post-reading-time">
+            {{ post.reading_time }} {{ t.min_read | default: "min read" }}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

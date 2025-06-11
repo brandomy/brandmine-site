@@ -1,0 +1,93 @@
+{% comment %}
+Component: pages/discover/market-insights.html
+
+Purpose: Displays insights related to geographic markets, showcasing
+         regional expertise and market-specific analysis.
+
+Dependencies:
+- site.data.translations[page.lang]
+- site.insights collection
+{% endcomment %}
+
+<div class="panel panel--sky-pattern">
+  <div class="panel__content panel__content--full-width">
+    <section class="markets__section">
+      <div class="markets__section-header">
+        <h2 class="markets__section-title">
+          <span class="markets__icon markets__icon--insights">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </span>
+          {% include helpers/t.html key="discover.market_insights" fallback="Market Insights" %}
+        </h2>
+        <p class="markets__section-description">
+          {% include helpers/t.html key="discover.market_insights_description" fallback="Learn about key trends and opportunities in BRICS+ markets" %}
+        </p>
+      </div>
+
+      <div class="markets__insights">
+        {% assign market_insights = site.insights | where: "lang", page.lang | where_exp: "insight", "insight.markets.size > 0" | sort: "date" | reverse | limit: 2 %}
+
+        {% if market_insights.size > 0 %}
+          <div class="insights-category-grid">
+            {% for insight in market_insights %}
+              <div class="insights-category__card">
+                <a href="{{ insight.url | relative_url }}">
+                  <div class="insights-category__image-wrapper">
+                    <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}" class="insights-category__image">
+                  </div>
+                  <div class="insights-category__content">
+                    <div class="insights-category__type">{{ insight.content_type }}</div>
+                    <h4 class="insights-category__card-title">{{ insight.title }}</h4>
+                    <p class="insights-category__excerpt">{{ insight.excerpt | strip_html | truncate: 120 }}</p>
+                    <div class="insights-category__meta">
+                      <div class="insights-category__tags">
+                        <!-- Content Type Tag -->
+                        <span class="tag">{{ insight.content_type }}</span>
+
+                        {% if insight.markets.size > 0 %}
+                          {% assign market_id = insight.markets[0] %}
+                          {% for market in site.data.markets.markets %}
+                            {% if market.id == market_id %}
+                              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market_id }}/" class="tag tag--market">{{ market.name[page.lang] }}</a>
+                              {% break %}
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="insights-category__footer">
+                      <span class="insights-category__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
+                      <a href="{{ insight.url | relative_url }}" class="insights-category__read-more">
+                        <span>Read more</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="markets__section-action">
+            <a href="{{ site.baseurl }}/{{ page.lang }}/insights/?dimension=markets" class="btn btn--secondary-cta">
+              {% include helpers/t.html key="insights.view_all_insights" fallback="View All Insights" %}
+            </a>
+          </div>
+        {% else %}
+          <div class="markets__empty-state">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+              <path d="M8 10h8M8 14h8"></path>
+            </svg>
+            <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+</div>

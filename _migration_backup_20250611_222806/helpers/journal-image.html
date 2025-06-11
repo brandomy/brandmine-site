@@ -1,0 +1,71 @@
+{% comment %}
+HELPER: Journal Image
+PURPOSE: Journal-specific image rendering using ref-based paths with automatic alt text generation for blog post imagery
+
+USAGE: {% include helpers/journal-image.html image_type="hero" loading="eager" %}
+
+PARAMETERS:
+- image_type (optional): Image type string to load (defaults to "hero")
+- loading (optional): Loading behavior string (defaults to "lazy")
+- alt (optional): Custom alt text string (auto-generates if not provided)
+- class (optional): Additional CSS classes string
+
+RETURNS: Renders responsive image component with ref-based slug or fallback placeholder
+
+DEPENDENCIES:
+- Data: page.images frontmatter configuration
+- Includes: components/images/collection-image.html
+- Variables: page.ref for ref-based image organization, page.title for alt text generation
+
+EXAMPLE:
+{% include helpers/journal-image.html image_type="hero" loading="eager" %}
+<!-- Auto-generates alt: "Post Title - featured image" -->
+{% include helpers/journal-image.html image_type="inline" alt="Custom description" %}
+<!-- Uses custom alt text -->
+{% endcomment %}
+
+{% comment %} Check if image configuration exists in frontmatter {% endcomment %}
+{% if page.images[include.image_type] %}
+  {% assign image_config = page.images[include.image_type] %}
+
+  {% comment %} Generate contextual alt text with priority: caption > custom > auto-generated {% endcomment %}
+  {% unless include.alt %}
+    {% if image_config.caption %}
+      {% assign auto_alt = image_config.caption %}
+    {% elsif include.image_type == 'hero' %}
+      {% assign auto_alt = page.title | append: " - featured image" %}
+    {% else %}
+      {% assign auto_alt = page.title | append: " - " | append: include.image_type %}
+    {% endif %}
+    {% assign final_alt = auto_alt %}
+  {% else %}
+    {% assign final_alt = include.alt %}
+  {% endunless %}
+
+  {% comment %} Map image types to collection-image purposes and aspects {% endcomment %}
+  {% case include.image_type %}
+    {% when 'hero' %}
+      {% assign purpose = "hero" %}
+      {% assign aspect = "landscape" %}
+    {% else %}
+      {% assign purpose = include.image_type %}
+      {% assign aspect = "landscape" %}
+  {% endcase %}
+
+  {% comment %} Render using collection-image component with ref-based slug {% endcomment %}
+  {% include components/images/collection-image.html
+     collection="journal"
+     slug=page.ref
+     purpose=purpose
+     ext=image_config.ext
+     aspect=aspect
+     alt=final_alt
+     class=include.class
+     loading=include.loading %}
+
+{% else %}
+  {% comment %} Fallback for missing image configuration {% endcomment %}
+  <div class="image-placeholder">
+    <p>Image not found: {{ include.image_type }}</p>
+  </div>
+{% endif %}

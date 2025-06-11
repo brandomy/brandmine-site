@@ -1,0 +1,54 @@
+{% comment %}
+  Component: components/seo/schema-product.html
+  Purpose: Adds structured data JSON-LD markup for brand/product pages
+  Parameters:
+    - product: The brand/product page object (required)
+    - organization_name: The publisher name (default: Brandmine)
+    - organization_logo: URL to the organization logo (default: site logo)
+  Dependencies:
+    - None
+{% endcomment %}
+
+{% assign organization_name = include.organization_name | default: "Brandmine" %}
+{% assign organization_logo = include.organization_logo | default: "/assets/images/site/logos/brandmine-logo.png" %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ include.product.title }}",
+  {% if include.product.description %}"description": "{{ include.product.description | strip_html | strip_newlines | truncate: 5000 }}",{% endif %}
+  {% if include.product.logo %}"image": "{{ include.product.logo | absolute_url }}",{% endif %}
+  {% if include.product.founding_year %}"productionDate": "{{ include.product.founding_year }}",{% endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": "{{ include.product.title }}"
+    {% if include.product.logo %}, "logo": "{{ include.product.logo | absolute_url }}"{% endif %}
+    {% if include.product.slogan %}, "slogan": "{{ include.product.slogan }}"{% endif %}
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "{{ include.product.title }}"
+    {% if include.product.location.country %}, "location": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "{{ include.product.location.country }}",
+        "addressLocality": "{{ include.product.location.city }}"
+      }
+    }{% endif %}
+  }
+  {% if include.product.founder %}
+  , "founder": {
+    "@type": "Person",
+    "name": "{{ include.product.founder.name }}"
+  }
+  {% endif %}
+  {% if include.product.sectors %}
+  , "category": "{{ include.product.sectors | join: ', ' }}"
+  {% endif %}
+  {% if include.product.website %}
+  , "url": "{{ include.product.website }}"
+  {% endif %}
+}
+</script>

@@ -1,0 +1,116 @@
+{% comment %}
+  Component: pages/founder/connections.html
+  Purpose: Displays related founders and insights connected to this founder
+  Parameters:
+    - founder: The founder object to display (default: page)
+  Dependencies:
+    - assets/css/pages/founder/connections.scss
+    - helpers/t.html for translations
+    - components/cards/founder-card.html
+    - components/cards/insight-card.html
+
+  Usage examples:
+    {% include pages/founder/connections.html %}
+    {% include pages/founder/connections.html founder=page %}
+{% endcomment %}
+
+{% assign founder = include.founder | default: page %}
+{% comment %} Translation handled by helpers/t.html includes {% endcomment %}
+
+<div class="founder-connections">
+  
+  <!-- Related Founders Section -->
+  {% comment %} Find founders in the same markets or with similar expertise {% endcomment %}
+  {% assign related_founders = site.founders | where: "lang", founder.lang | where_exp: "item", "item.ref != founder.ref" %}
+  {% assign same_market_founders = related_founders | where_exp: "item", "item.markets contains founder.markets[0]" | limit: 3 %}
+  
+  {% if same_market_founders.size > 0 %}
+  <div class="founder-connections__section">
+    <h3 class="founder-connections__title">
+      {% include helpers/t.html key="founder.related_founders" fallback="Related Founders" lang=founder.lang %}
+    </h3>
+    
+    <div class="founder-connections__grid">
+      {% for related_founder in same_market_founders %}
+        {% include components/cards/founder-card.html founder=related_founder %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Related Insights Section -->
+  {% comment %} Find insights mentioning this founder or their brands {% endcomment %}
+  {% assign related_insights = site.insights | where: "lang", founder.lang %}
+  {% assign founder_insights = "" | split: "" %}
+  
+  {% comment %} Look for insights that mention founder name or their brands {% endcomment %}
+  {% for insight in related_insights %}
+    {% assign content_lower = insight.content | downcase %}
+    {% assign founder_name_lower = founder.name | downcase %}
+    
+    {% comment %} Check if insight mentions this founder {% endcomment %}
+    {% if content_lower contains founder_name_lower %}
+      {% assign founder_insights = founder_insights | push: insight %}
+    {% else %}
+      {% comment %} Check if insight mentions any of their brands {% endcomment %}
+      {% for brand_slug in founder.brands %}
+        {% assign brand = site.brands | where: "ref", brand_slug | where: "lang", founder.lang | first %}
+        {% if brand %}
+          {% assign brand_name_lower = brand.title | downcase %}
+          {% if content_lower contains brand_name_lower %}
+            {% assign founder_insights = founder_insights | push: insight %}
+            {% break %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  
+  {% assign founder_insights = founder_insights | uniq | limit: 3 %}
+  
+  {% if founder_insights.size > 0 %}
+  <div class="founder-connections__section">
+    <h3 class="founder-connections__title">
+      {% include helpers/t.html key="founder.related_insights" fallback="Related Insights" lang=founder.lang %}
+    </h3>
+    
+    <div class="founder-connections__grid">
+      {% for insight in founder_insights %}
+        {% include components/cards/simple-insight-card.html insight=insight %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Founder Network Section (if we expand to include founder relationships) -->
+  {% comment %} Future enhancement: founder.connections array for explicit relationships {% endcomment %}
+  {% if founder.connections and founder.connections.size > 0 %}
+  <div class="founder-connections__section">
+    <h3 class="founder-connections__title">
+      {% include helpers/t.html key="founder.founder_network" fallback="Founder Network" lang=founder.lang %}
+    </h3>
+    
+    <div class="founder-connections__network">
+      {% for connection_ref in founder.connections %}
+        {% assign connected_founder = site.founders | where: "ref", connection_ref | where: "lang", founder.lang | first %}
+        {% if connected_founder %}
+          {% include components/cards/founder-card.html founder=connected_founder %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Call to Action -->
+  <div class="founder-connections__cta">
+    <h3 class="founder-connections__title">
+      {% include helpers/t.html key="founder.connect_with_founder" fallback="Connect with this Founder" lang=founder.lang %}
+    </h3>
+    
+    <p>{% include helpers/t.html key="founder.connect_description" fallback="Interested in learning more about this founder's journey or exploring potential partnerships?" lang=founder.lang %}</p>
+    
+    <a href="{{ site.baseurl }}/{{ founder.lang }}/contact/?founder={{ founder.ref }}" class="btn btn-primary">
+      {% include helpers/t.html key="buttons.get_in_touch" fallback="Get in Touch" lang=founder.lang %}
+    </a>
+  </div>
+</div>

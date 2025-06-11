@@ -11,13 +11,13 @@
     <div class="market-card">
       <div class="market-card__icon">
         {% if market.icon %}
-          <img src="{{ '/assets/images/icons/' | append: market.icon | relative_url }}" alt="{{ market.name[page.lang] }} icon">
+          <img src="{{ '/assets/images/icons/' | append: market.icon | relative_url }}" alt="{% include helpers/dimension-name.html type="markets" id=market.id %} icon">
         {% else %}
           <div class="market-card__placeholder-icon"></div>
         {% endif %}
       </div>
 
-      <h3 class="market-card__title">{{ market.name[page.lang] }}</h3>
+      <h3 class="market-card__title">{% include helpers/dimension-name.html type="markets" id=market.id %}</h3>
 
       <p class="market-card__description">{{ market.description[page.lang] }}</p>
 

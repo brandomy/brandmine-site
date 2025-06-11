@@ -1,0 +1,17 @@
+{% comment %}
+  Section: search/breadcrumbs.html
+  
+  Displays breadcrumb navigation for search page
+  Note: This section intentionally breaks out of the panel system for seamless header integration
+  
+  Dependencies:
+  - site.data.translations for home navigation labels
+{% endcomment %}
+
+<div class="search-breadcrumbs-wrapper">
+  <nav class="search-breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/" class="back-link">
+      ← {{ site.data.translations[page.lang].navigation.home | default: "Home" }}
+    </a>
+  </nav>
+</div>

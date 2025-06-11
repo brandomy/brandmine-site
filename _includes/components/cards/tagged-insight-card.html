@@ -9,7 +9,7 @@ PARAMETERS:
 
 DEPENDENCIES:
 - CSS: assets/css/components/cards/insight-card.scss, assets/css/components/cards/tagged-insight-card.scss
-- Data: site.data.dimensions[page.lang], site.data.translations
+- Data: site.data.markets, site.data.attributes, site.data.dimensions, site.data.translations
 - Includes: components/icons/icon.html, helpers/t.html
 
 VARIANTS:
@@ -81,7 +81,7 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
         {% if include.insight.markets %}
           {% for market in include.insight.markets limit:1 %}
             <span class="insight-card__tag insight-card__tag--market">
-              {{ site.data.dimensions[page.lang].markets[market] | default: market }}
+              {% include helpers/dimension-name.html type="markets" id=market %}
             </span>
           {% endfor %}
         {% endif %}
@@ -89,7 +89,7 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
         {% if include.insight.sectors %}
           {% for sector in include.insight.sectors limit:1 %}
             <span class="insight-card__tag insight-card__tag--sector">
-              {{ site.data.dimensions[page.lang].sectors[sector] | default: sector }}
+              {% include helpers/dimension-name.html type="sectors" id=sector %}
             </span>
           {% endfor %}
         {% endif %}
@@ -97,7 +97,7 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
         {% if include.insight.attributes %}
           {% for attribute in include.insight.attributes limit:1 %}
             <span class="insight-card__tag insight-card__tag--attribute">
-              {{ site.data.dimensions[page.lang].attributes[attribute] | default: attribute }}
+              {% include helpers/dimension-name.html type="attributes" id=attribute %}
             </span>
           {% endfor %}
         {% endif %}
@@ -105,7 +105,7 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
         {% if include.insight.signals %}
           {% for signal in include.insight.signals limit:1 %}
             <span class="insight-card__tag insight-card__tag--signal">
-              {{ site.data.dimensions[page.lang].signals[signal] | default: signal }}
+              {% include helpers/dimension-name.html type="signals" id=signal %}
             </span>
           {% endfor %}
         {% endif %}

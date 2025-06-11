@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{% comment %}
+  Layout: brand-basic.html (REFACTORED TO DATA-DRIVEN)
+
+  Purpose: Basic Brand Profile Layout for Level 0 Brands with minimal content
+
+  Structure:
+  - Uses data-driven section rendering with helpers/page-sections.html
+  - Supports configurable sections via page front matter or defaults
+  - Follows the established linear sectioning architecture
+
+  Dependencies:
+  - _includes/pages/brand-basic/[section-name].html files for content sections
+  - CSS: pages/brand-basic/_index.scss and related component files
+  - _data/page_sections.yml for section configuration
+
+  Default sections if not specified:
+  - breadcrumbs, identity, content, taxonomy, location
+{% endcomment %}
+
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
+
+<div class="brand-basic-page">
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html 
+     page_type="brand-basic" 
+     content=page_content %}
+</div>
+
+<!-- Schema Markup for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ page.name }}",
+  {% if page.description %}"description": "{{ page.description | strip_html | escape }}",{% endif %}
+  {% if page.website %}"url": "{{ page.website }}",{% endif %}
+  {% if page.founding_year %}"foundingDate": "{{ page.founding_year }}",{% endif %}
+  {% if page.location %}
+  "address": {
+    "@type": "PostalAddress",
+    {% if page.location.city %}"addressLocality": "{{ page.location.city }}",{% endif %}
+    {% if page.location.region %}"addressRegion": "{{ page.location.region }}",{% endif %}
+    {% if page.location.country %}"addressCountry": "{{ page.location.country | upcase }}"{% endif %}
+  },
+  {% endif %}
+  "additionalType": "{{ page.sectors.first | default: 'Brand' }}"
+}
+</script>

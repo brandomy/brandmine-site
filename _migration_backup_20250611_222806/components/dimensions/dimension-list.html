@@ -1,0 +1,60 @@
+{% comment %}
+  Include Name: components/dimensions/dimension-list.html
+
+  Purpose: Renders a list of dimensions (sectors, markets, attributes, signals) with
+  proper styling and links. Used for displaying brand dimensions and filtering options.
+
+  Parameters:
+  - dimensions: Array of dimension objects (required)
+    Each dimension object should have:
+    - dimension: The dimension identifier
+    - category: The type of dimension (sector, market, attribute, signal)
+    - lang: The language code
+    - title: A fallback title if dimension data is not found
+
+  Dependencies:
+  - CSS: dimension-list.css
+  - Data: site.data[category] structure for dimension details
+
+  Example Usage:
+  {% include components/dimensions/dimension-list.html dimensions=page.dimensions %}
+  {% include components/dimensions/dimension-list.html dimensions=brand.dimensions %}
+
+  Notes:
+  - Retrieves dimension details from the appropriate data file based on type and language
+  - Links each dimension item to its corresponding discovery page
+  - Uses the dimension's name from translations when available, falls back to title
+  - Applies type-specific styling via CSS classes
+  - Skips rendering if dimensions array is empty
+  - Supports all dimension types (sectors, markets, attributes, signals)
+{% endcomment %}
+
+{% if include.dimensions.size > 0 %}
+  <div class="dimension-list">
+    {% for dimension in include.dimensions %}
+      {% assign dimension_id = dimension.dimension %}
+      {% assign category = dimension.category %}
+      {% assign category_plural = category | append: 's' %}
+      {% assign lang = dimension.lang %}
+
+      {% assign dimensions_array = site.data[category_plural][category_plural] %}
+      {% assign dimension_data = nil %}
+
+      {% for item in dimensions_array %}
+        {% if item.id == dimension_id %}
+          {% assign dimension_data = item %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      <a href="{{ site.baseurl }}/{{ lang }}/discover/{{ category_plural }}/{{ dimension_id }}/"
+        class="dimension-list__item dimension dimension--{{ category }}">
+        {% if dimension_data %}
+          {{ dimension_data.translations[lang].name }}
+        {% else %}
+          {{ dimension.title | default: dimension_id }}
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}

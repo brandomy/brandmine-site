@@ -11,7 +11,7 @@
     <div class="signal-card">
       <div class="signal-card__icon">
         {% if signal.icon %}
-          <img src="{{ '/assets/images/icons/' | append: signal.icon | relative_url }}" alt="{{ signal.name[page.lang] }} icon">
+          <img src="{{ '/assets/images/icons/' | append: signal.icon | relative_url }}" alt="{% include helpers/dimension-name.html type="signals" id=signal.id %} icon">
         {% else %}
           <div class="signal-card__placeholder-icon"></div>
         {% endif %}
@@ -21,7 +21,7 @@
         <div class="signal-card__premium">{% include helpers/t.html key="tags.premium" fallback="Premium" %}</div>
       {% endif %}
 
-      <h3 class="signal-card__title">{{ signal.name[page.lang] }}</h3>
+      <h3 class="signal-card__title">{% include helpers/dimension-name.html type="signals" id=signal.id %}</h3>
 
       <p class="signal-card__description">{{ signal.description[page.lang] }}</p>
 

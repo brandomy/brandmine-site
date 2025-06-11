@@ -1,0 +1,58 @@
+{% comment %}
+Search Placeholder Component
+Purpose: Collect evidence of user search interest for customer discovery
+Displays a beautiful search interface that shows "coming soon" message when clicked
+Usage: {% include components/search/search-placeholder.html title="Search Brands" placeholder="Search by brand name, country, or sector..." %}
+{% endcomment %}
+
+{% assign search_title = include.title | default: "Search" %}
+{% assign search_placeholder = include.placeholder | default: "Search..." %}
+{% assign search_id = include.id | default: "search-placeholder" %}
+
+<div class="search-placeholder" id="{{ search_id }}">
+  <div class="search-placeholder__container">
+    <h3 class="search-placeholder__title">{{ search_title }}</h3>
+    <div class="search-placeholder__input-group">
+      <input 
+        type="text" 
+        class="search-placeholder__input" 
+        placeholder="{{ search_placeholder }}"
+        readonly
+        aria-label="{{ search_title }}"
+      >
+      <button 
+        type="button" 
+        class="search-placeholder__button"
+        aria-label="Search"
+        data-search-placeholder
+      >
+        <svg class="search-placeholder__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <p class="search-placeholder__hint">{{ include.hint | default: "Discover brands by location, sector, or founder story" }}</p>
+  </div>
+</div>
+
+<!-- Coming Soon Modal -->
+<div class="search-modal" id="{{ search_id }}-modal" style="display: none;">
+  <div class="search-modal__backdrop" data-modal-close></div>
+  <div class="search-modal__content">
+    <div class="search-modal__header">
+      <h4 class="search-modal__title">Advanced Search Coming Soon!</h4>
+      <button class="search-modal__close" data-modal-close aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="search-modal__body">
+      <p>We're building powerful search and filtering capabilities to help you discover the perfect BRICS+ {{ include.content_type | default: "content" }} for your needs.</p>
+      <p>In the meantime, explore our curated collections and featured {{ include.content_type | default: "content" }} to find exactly what you're looking for.</p>
+    </div>
+    <div class="search-modal__footer">
+      <button class="btn btn--secondary" data-modal-close>Continue Exploring</button>
+    </div>
+  </div>
+</div>

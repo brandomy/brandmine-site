@@ -1,0 +1,64 @@
+{% comment %}
+SECTION: Brand Story
+PAGE: Brand Profile (brand-profile.html)
+PURPOSE: Display brand's history, narrative, and chronological timeline of key milestones
+
+DATA SOURCES:
+- Content: Extracted from markdown content after "## About" heading
+- Timeline: brand.timeline array with year/event objects
+- Data Format: Both YAML and JSON supported
+
+CONTEXT REQUIRED:
+- brand: Brand object with optional timeline array
+- content: Full markdown content (split to extract section)
+- data_source: "curated" or "basic" (defaults to "curated")
+
+CONTENT STRUCTURE:
+1. Section heading (h2) - "About"
+2. Brand story content from markdown
+3. Timeline component (if present):
+   - Chronological list of milestones
+   - Year and event description pairs
+   - Visual timeline styling
+
+DEPENDENCIES:
+- Helpers: helpers/t.html (translations)
+- CSS: pages/brand/brand-story.scss, components/ui/timeline.scss
+- Translations: brand.about, brand.timeline
+{% endcomment %}
+
+{% assign brand = include.brand | default: page %}
+{% assign data_source = include.data_source | default: "curated" %}
+
+<h2 id="heading-brand-story" class="panel__heading-secondary">
+  {% include helpers/t.html key="brand.about" fallback="About" lang=brand.lang %}
+</h2>
+
+<div class="brand-story">
+  <div class="brand-story__content">
+    <!-- About Content from Markdown -->
+    {% assign content_parts = content | split: "## About" %}
+    {% if content_parts.size > 1 %}
+      {% assign about_content = content_parts[1] | split: "##" | first %}
+      {{ about_content | markdownify }}
+    {% endif %}
+  </div>
+
+  <!-- Timeline if available -->
+  {% if brand.timeline and brand.timeline.size > 0 %}
+    <div class="brand-story__timeline">
+      <h3 class="brand-story__timeline-title">
+        {% include helpers/t.html key="brand.timeline" fallback="Timeline" lang=brand.lang %}
+      </h3>
+
+      <ul class="timeline">
+        {% for event in brand.timeline %}
+          <li class="timeline__item">
+            <div class="timeline__year">{{ event.year }}</div>
+            <div class="timeline__event">{{ event.event }}</div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</div>

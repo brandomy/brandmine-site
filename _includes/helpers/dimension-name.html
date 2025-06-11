@@ -1,0 +1,68 @@
+{% comment %}
+  Helper: dimension-name.html
+  Purpose: Centralized dimension name lookup with multilingual support
+  
+  Parameters:
+  - type: The dimension type (markets, sectors, attributes, signals)
+  - id: The dimension ID/slug
+  - fallback: Optional fallback text if dimension not found
+  
+  Usage:
+  {% include helpers/dimension-name.html type="markets" id="brazil" %}
+  {% include helpers/dimension-name.html type="sectors" id=sector_variable fallback="Unknown Sector" %}
+  
+  Returns: The localized name of the dimension or fallback
+{% endcomment %}
+
+{% comment %} Get the dimension collection based on type {% endcomment %}
+{% assign dimension_collection = site.data[include.type] %}
+
+{% comment %} Handle the nested structure - markets.markets, but attributes is direct array {% endcomment %}
+{% if include.type == "markets" %}
+  {% assign dimensions = dimension_collection.markets %}
+{% elsif include.type == "sectors" or include.type == "signals" %}
+  {% comment %} Sectors and signals use the new JSON structure {% endcomment %}
+  {% assign dimensions = dimension_collection[include.type] %}
+{% else %}
+  {% comment %} Attributes is a direct array {% endcomment %}
+  {% assign dimensions = dimension_collection %}
+{% endif %}
+
+{% comment %} Look up the specific dimension by ID (for markets and attributes) {% endcomment %}
+{% unless display_name %}
+  {% if dimensions %}
+    {% comment %} First try direct ID match {% endcomment %}
+    {% assign dimension = dimensions | where: "id", include.id | first %}
+    
+    {% comment %} For markets, also try country code lookup {% endcomment %}
+    {% if dimension == nil and include.type == "markets" %}
+      {% for market in dimensions %}
+        {% if market.country_codes contains include.id %}
+          {% assign dimension = market %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
+    {% if dimension %}
+      {% comment %} Handle different name structures based on type {% endcomment %}
+      {% if dimension.name[page.lang] %}
+        {% assign display_name = dimension.name[page.lang] %}
+      {% elsif dimension.name.en %}
+        {% assign display_name = dimension.name.en %}
+      {% elsif dimension.translations[page.lang].name %}
+        {% assign display_name = dimension.translations[page.lang].name %}
+      {% elsif dimension.translations.en.name %}
+        {% assign display_name = dimension.translations.en.name %}
+      {% else %}
+        {% assign display_name = include.id %}
+      {% endif %}
+    {% else %}
+      {% assign display_name = include.fallback | default: include.id %}
+    {% endif %}
+  {% else %}
+    {% assign display_name = include.fallback | default: include.id %}
+  {% endif %}
+{% endunless %}
+
+{{ display_name }}

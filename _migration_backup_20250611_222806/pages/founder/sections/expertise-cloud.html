@@ -1,0 +1,33 @@
+{% comment %}
+  Component: pages/founder/expertise-cloud.html
+  Purpose: Displays a clickable cloud of expertise tags for a founder
+  Parameters:
+    - founder: The founder object to display (default: page)
+  Dependencies:
+    - assets/css/pages/founder.scss (styles for expertise-cloud)
+    - helpers/t.html for translations
+
+  Usage examples:
+    {% include pages/founder/sections/expertise-cloud.html %}
+    {% include pages/founder/sections/expertise-cloud.html founder=page %}
+{% endcomment %}
+
+{% assign founder = include.founder | default: page %}
+
+{% if founder.expertise and founder.expertise.size > 0 %}
+<div class="expertise-cloud">
+  <h3 class="expertise-cloud__title">
+    {% include helpers/t.html key="founder.expertise" fallback="Areas of Expertise" lang=founder.lang %}
+  </h3>
+  
+  <div class="expertise-cloud__tags">
+    {% for expertise in founder.expertise %}
+      <a href="{{ site.baseurl }}/{{ founder.lang }}/founders/?expertise={{ expertise | url_encode }}" 
+         class="expertise-cloud__tag {% if forloop.first %}expertise-cloud__tag--primary{% endif %}"
+         title="{% include helpers/t.html key="founder.find_similar" fallback="Find other founders with this expertise" lang=founder.lang %}">
+        {{ expertise }}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

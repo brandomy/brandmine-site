@@ -79,7 +79,9 @@ Last Updated: 2025-06-03
 
           {% for market_code in founder_markets %}
             {% if market_code %}
-              {% assign market_name = site.data.dimensions[page.lang].markets[market_code] | default: market_code %}
+              {% comment %} Use dimension-name helper for market lookup {% endcomment %}
+              {% capture market_name %}{% include helpers/dimension-name.html type="markets" id=market_code %}{% endcapture %}
+              {% assign market_name = market_name | strip %}
               <div class="filter-option">
                 <input type="checkbox" id="market-{{ market_code }}" name="market" value="{{ market_code }}">
                 <label for="market-{{ market_code }}">{{ market_name }}</label>

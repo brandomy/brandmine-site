@@ -1,0 +1,155 @@
+{% comment %}
+COMPONENT: Feedback Form
+PURPOSE: Collects user feedback with type-specific fields for search experience, site feedback, and feature requests
+
+USAGE: {% include components/forms/feedback-form.html type="search" %}
+
+PARAMETERS:
+- type (optional): Feedback type string - "search", "site", "feature", "general", defaults to "general"
+- title (optional): Custom title string, defaults based on type
+- description (optional): Custom description string
+- class_name (optional): Additional CSS classes string
+- form_id (optional): Custom form ID string, defaults to "feedback-form-[type]"
+
+DEPENDENCIES:
+- CSS: assets/css/components/forms/feedback-form.scss
+- Data: site.data.translations[current_lang].feedback
+- Includes: None
+
+VARIANTS:
+- search: Includes rating, search query, and found results fields
+- site: Includes rating and general feedback
+- feature: Feature request form without rating
+- general: Basic feedback form
+
+NOTES: Star rating uses emoji for simplicity. Email field optional for follow-up. Success/error messages included but hidden by default.
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: site.lang | default: "en" %}
+{% assign t = site.data.translations[current_lang].feedback | default: site.data.translations["en"].feedback %}
+{% assign feedback_type = include.type | default: "general" %}
+{% assign form_id = include.form_id | default: "feedback-form-" | append: feedback_type %}
+
+<!-- Set default titles and descriptions based on type -->
+{% case feedback_type %}
+  {% when "search" %}
+    {% assign default_title = "Search Experience Feedback" %}
+    {% assign default_description = "Help us improve your search experience on Brandmine." %}
+  {% when "site" %}
+    {% assign default_title = "Site Feedback" %}
+    {% assign default_description = "Share your thoughts about your experience on Brandmine." %}
+  {% when "feature" %}
+    {% assign default_title = "Feature Request" %}
+    {% assign default_description = "Suggest new features or improvements for Brandmine." %}
+  {% else %}
+    {% assign default_title = "General Feedback" %}
+    {% assign default_description = "We'd love to hear from you!" %}
+{% endcase %}
+
+<div class="feedback-form {{ include.class_name }}">
+  <div class="feedback-form__content">
+    <h3 class="feedback-form__title">
+      {{ include.title | default: t[feedback_type].title | default: default_title }}
+    </h3>
+    <p class="feedback-form__description">
+      {{ include.description | default: t[feedback_type].description | default: default_description }}
+    </p>
+    
+    <form id="{{ form_id }}" class="feedback-form__form" action="/api/feedback" method="post">
+      <input type="hidden" name="feedback_type" value="{{ feedback_type }}">
+      
+      <!-- Rating Section (for search and site feedback) -->
+      {% if feedback_type == "search" or feedback_type == "site" %}
+      <div class="feedback-form__field">
+        <label class="feedback-form__label" for="{{ form_id }}-rating">
+          {{ t.rating_label | default: "How would you rate your experience?" }}
+        </label>
+        <div class="feedback-form__rating">
+          {% for i in (1..5) %}
+            <input type="radio" id="{{ form_id }}-rating-{{ i }}" name="rating" value="{{ i }}" class="feedback-form__rating-input">
+            <label for="{{ form_id }}-rating-{{ i }}" class="feedback-form__rating-label">
+              <span class="sr-only">{{ i }} {{ t.stars | default: "stars" }}</span>
+              ⭐
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      
+      <!-- Specific fields for search feedback -->
+      {% if feedback_type == "search" %}
+      <div class="feedback-form__field">
+        <label class="feedback-form__label" for="{{ form_id }}-search-query">
+          {{ t.search_query_label | default: "What were you searching for?" }}
+        </label>
+        <input 
+          type="text" 
+          id="{{ form_id }}-search-query"
+          name="search_query"
+          class="feedback-form__input"
+          placeholder="{{ t.search_query_placeholder | default: 'e.g., Russian wine brands' }}"
+        >
+      </div>
+      
+      <div class="feedback-form__field">
+        <label class="feedback-form__label" for="{{ form_id }}-found-results">
+          {{ t.found_results_label | default: "Did you find what you were looking for?" }}
+        </label>
+        <select id="{{ form_id }}-found-results" name="found_results" class="feedback-form__select">
+          <option value="">{{ t.select_option | default: "Please select..." }}</option>
+          <option value="yes">{{ t.yes | default: "Yes" }}</option>
+          <option value="partially">{{ t.partially | default: "Partially" }}</option>
+          <option value="no">{{ t.no | default: "No" }}</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      <!-- Main feedback textarea -->
+      <div class="feedback-form__field">
+        <label class="feedback-form__label" for="{{ form_id }}-message">
+          {{ t.message_label | default: "Your feedback" }} <span class="feedback-form__required">*</span>
+        </label>
+        <textarea 
+          id="{{ form_id }}-message"
+          name="message"
+          class="feedback-form__textarea"
+          rows="5"
+          placeholder="{{ t.message_placeholder | default: 'Tell us about your experience or suggestions...' }}"
+          required
+        ></textarea>
+      </div>
+      
+      <!-- Contact information (optional) -->
+      <div class="feedback-form__field">
+        <label class="feedback-form__label" for="{{ form_id }}-email">
+          {{ t.email_label | default: "Email (optional)" }}
+        </label>
+        <input 
+          type="email" 
+          id="{{ form_id }}-email"
+          name="email"
+          class="feedback-form__input"
+          placeholder="{{ t.email_placeholder | default: 'your.email@example.com' }}"
+        >
+        <small class="feedback-form__help-text">
+          {{ t.email_help | default: "Only if you'd like us to follow up on your feedback." }}
+        </small>
+      </div>
+      
+      <div class="feedback-form__actions">
+        <button type="submit" class="feedback-form__button btn btn--primary">
+          {{ t.submit_button | default: "Send Feedback" }}
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Success/Error Messages -->
+  <div id="{{ form_id }}-success" class="feedback-form__message feedback-form__message--success" style="display: none;">
+    {{ t.success_message | default: "Thank you for your feedback!" }}
+  </div>
+  
+  <div id="{{ form_id }}-error" class="feedback-form__message feedback-form__message--error" style="display: none;">
+    {{ t.error_message | default: "Something went wrong. Please try again." }}
+  </div>
+</div>

@@ -1,0 +1,169 @@
+{% comment %}
+COMPONENT: Entry Card
+PURPOSE: Flexible content card for displaying journal posts, insights, and articles with responsive images and metadata
+
+USAGE: {% include components/cards/entry-card.html item=post %}
+
+PARAMETERS:
+- item (required): Content item object (post, insight, article) with title, excerpt, url, etc.
+- image_base_path (optional): Base path string for images, defaults from component defaults
+- image_size (optional): Image size suffix string, defaults from component defaults
+- show_author (optional): Boolean to show author, defaults from component defaults
+- show_date (optional): Boolean to show date, defaults from component defaults
+- show_tags (optional): Boolean to show tags, defaults from component defaults
+- show_excerpt (optional): Boolean to show excerpt, defaults from component defaults
+- excerpt_words (optional): Integer word count for excerpt, defaults from component defaults
+- tag_limit (optional): Integer limit for tags display, defaults from component defaults
+- read_more_text (optional): Custom read more text string, defaults to translation
+- translations: Translation object (optional, defaults to journal translations)
+
+DEPENDENCIES:
+- CSS: assets/css/pages/journal/_entry-card.scss or assets/css/components/cards/entry-card.scss
+- Data: site.data.translations, site.data.component_defaults
+- Includes: helpers/component-defaults.html, helpers/t.html
+
+VARIANTS: None - layout adapts based on content and parameters
+
+NOTES: Supports multilingual ref-based image paths. Responsive images use 400w, 800w, 1200w variants. Falls back to placeholder when no image available. Author names auto-translate from site.data.translations.
+{% endcomment %}
+
+{% comment %} Set defaults using centralized component defaults {% endcomment %}
+{% assign item = include.item %}
+{% capture default_image_base_path %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="image_base_path" fallback="/assets/images/journal/" %}
+{% endcapture %}
+{% capture default_image_size %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="image_size" fallback="400w" %}
+{% endcapture %}
+{% capture default_show_author %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_author" fallback=true %}
+{% endcapture %}
+{% capture default_show_date %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_date" fallback=true %}
+{% endcapture %}
+{% capture default_show_tags %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_tags" fallback=true %}
+{% endcapture %}
+{% capture default_show_excerpt %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="show_excerpt" fallback=true %}
+{% endcapture %}
+{% capture default_excerpt_words %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="excerpt_words" fallback=25 %}
+{% endcapture %}
+{% capture default_tag_limit %}
+{% include helpers/component-defaults.html component="cards.entry-card" param="tag_limit" fallback=3 %}
+{% endcapture %}
+
+{% assign image_base_path = include.image_base_path | default: default_image_base_path | strip %}
+{% assign image_size = include.image_size | default: default_image_size | strip %}
+{% assign show_author = include.show_author | default: default_show_author | strip %}
+{% assign show_date = include.show_date | default: default_show_date | strip %}
+{% assign show_tags = include.show_tags | default: default_show_tags | strip %}
+{% assign show_excerpt = include.show_excerpt | default: default_show_excerpt | strip %}
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words | strip | plus: 0 %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit | strip %}
+{% comment %} Translation helper replaces manual lookup {% endcomment %}
+{% assign read_more_text = include.read_more_text %}
+{% unless read_more_text %}
+  {% capture read_more_text %}
+  {% include helpers/t.html key="journal.read_more" fallback="Read More" %}
+  {% endcapture %}
+{% endunless %}
+
+<article class="entry-card">
+  {% comment %} Image section {% endcomment %}
+  {% if item.images.hero %}
+    {% comment %} Use ref field for multilingual image support {% endcomment %}
+    {% assign item_slug = item.ref | default: item.path | split: '/' | last | split: '.' | first %}
+    {% assign hero_400w_path = image_base_path | append: item_slug | append: '/hero-400w.' | append: item.images.hero.ext %}
+    {% assign hero_800w_path = image_base_path | append: item_slug | append: '/hero-800w.' | append: item.images.hero.ext %}
+    {% assign hero_1200w_path = image_base_path | append: item_slug | append: '/hero-1200w.' | append: item.images.hero.ext %}
+    <div class="entry-card__image">
+      <img src="{{ hero_400w_path | relative_url }}" 
+           srcset="{{ hero_400w_path | relative_url }} 400w,
+                   {{ hero_800w_path | relative_url }} 800w,
+                   {{ hero_1200w_path | relative_url }} 1200w"
+           sizes="(max-width: 479px) 100vw, (max-width: 767px) 50vw, 33vw"
+           alt="{{ item.images.hero.caption | default: item.title }}" 
+           class="entry-card__image-element"
+           loading="lazy">
+    </div>
+  {% elsif item.image %}
+    {% comment %} Fallback for simpler image structure {% endcomment %}
+    <div class="entry-card__image">
+      <img src="{{ item.image | relative_url }}" 
+           alt="{{ item.image_alt | default: item.title }}" 
+           class="entry-card__image-element"
+           loading="lazy">
+    </div>
+  {% else %}
+    {% comment %} Placeholder if no image {% endcomment %}
+    <div class="entry-card__image">
+      <div class="entry-card__image-placeholder">
+        <span>{{ item.category | default: "Article" }}</span>
+      </div>
+    </div>
+  {% endif %}
+  
+  <div class="entry-card__content">
+    {% comment %} Meta information {% endcomment %}
+    <div class="entry-card__meta">
+      {% if show_date and item.date %}
+        <time class="entry-card__date" datetime="{{ item.date | date_to_xmlschema }}">
+          {{ item.date | date: "%B %d, %Y" }}
+        </time>
+      {% endif %}
+      
+      {% if show_author and item.author %}
+        {% if show_date and item.date %}<span class="separator">•</span>{% endif %}
+        <span class="entry-card__author">
+          {% include helpers/t.html key="journal.by" fallback="by" %} 
+          {% if site.data.translations[page.lang].authors[item.author] %}
+            {{ site.data.translations[page.lang].authors[item.author] }}
+          {% else %}
+            {{ item.author | replace: "_", " " | capitalize }}
+          {% endif %}
+        </span>
+      {% endif %}
+      
+      {% if item.reading_time %}
+        <span class="separator">•</span>
+        <span class="entry-card__reading-time">
+          {{ item.reading_time }} {% include helpers/t.html key="journal.min_read" fallback="min read" %}
+        </span>
+      {% endif %}
+    </div>
+    
+    {% comment %} Title {% endcomment %}
+    <h3 class="entry-card__title">
+      <a href="{{ item.url | relative_url }}" class="entry-card__link">
+        {{ item.title }}
+      </a>
+    </h3>
+    
+    {% comment %} Excerpt {% endcomment %}
+    {% if show_excerpt and item.excerpt %}
+      <p class="entry-card__excerpt">
+        {{ item.excerpt | strip_html | truncatewords: excerpt_words }}
+      </p>
+    {% endif %}
+    
+    {% comment %} Footer with tags and read more {% endcomment %}
+    <div class="entry-card__footer">
+      {% if show_tags and item.tags and item.tags.size > 0 %}
+        <div class="entry-card__tags">
+          {% for tag in item.tags limit: tag_limit %}
+            <span class="tag tag--small">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <a href="{{ item.url | relative_url }}" class="entry-card__read-more">
+        {{ read_more_text }}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M6.72 13.28a.75.75 0 0 1 0-1.06L10.94 8 6.72 3.78a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>

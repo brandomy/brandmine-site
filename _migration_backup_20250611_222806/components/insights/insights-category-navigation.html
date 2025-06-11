@@ -1,0 +1,54 @@
+{% comment %}
+  Include Name: components/insights/insights-category-navigation.html
+
+  Purpose: Renders a unified navigation bar for insights categories
+
+  Parameters:
+    - container_class: Additional class for the container (optional)
+    - active_category: The currently active category (brand-spotlight, founders-journey, market-momentum, location-intelligence)
+    - style_option: 'a' (tooltip style) or 'b' (inline text style) - default: 'a'
+
+  Dependencies:
+    - CSS: components/insights/insights-category-navigation.scss
+    - Translation data: site.data.insights[page.lang].categories
+    - Icon components: components/icons/icon.html
+
+  Usage:
+    {% include components/insights/insights-category-navigation.html active_category="brand-spotlight" %}
+{% endcomment %}
+
+{% assign style_option = include.style_option | default: 'a' %}
+{% if style_option == 'a' %}
+  {% assign nav_class = 'insights-category-navigation--option-a' %}
+{% else %}
+  {% assign nav_class = 'insights-category-navigation--option-b' %}
+{% endif %}
+
+{% assign active_category = include.active_category | default: page.category %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign categories = site.data.insights[current_lang].categories %}
+
+<div class="insights-category-navigation {{ nav_class }}">
+  <div class="insights-category-navigation__container {% if active_category %}insights-category-navigation__container--{{ active_category }}{% endif %} {{ include.container_class }}">
+    <div class="insights-category-navigation__tabs">
+
+      {% for category in categories %}
+        {% assign category_slug = category.id | replace: "_", "-" %}
+        <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/{{ category_slug }}/"
+           class="insights-category-navigation__tab {% if active_category == category_slug %}active{% endif %}"
+           data-category="{{ category_slug }}">
+          <span class="insights-category-navigation__icon">
+            {% include components/icons/icon.html 
+              system="insights" 
+              name=category.icon 
+              size="md" 
+              class="insights-category-icon" %}
+          </span>
+          <span class="insights-category-navigation__label">{{ category.name }}</span>
+          <span class="insights-category-navigation__tooltip">{{ category.description }}</span>
+        </a>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
