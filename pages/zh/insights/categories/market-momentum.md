@@ -6,13 +6,7 @@ lang: zh
 insight_type: "market-momentum"
 description: "金砖+新兴品牌的重要成就、里程碑和扩张时机。"
 ref: insights-categories-market-momentum
-sections:
-  - breadcrumbs
-  - hero
-  - content
-  - insights-grid
-  # - subscribe
-  - contact-cta
+# sections: managed by _data/page_sections.yml (insights-category layout)
 ---
 
 ## 市场动向洞察

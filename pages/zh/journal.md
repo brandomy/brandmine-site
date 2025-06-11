@@ -5,15 +5,7 @@ subtitle: 构建Brandmine - 我们照亮金砖+品牌故事的旅程
 ref: journal
 permalink: /zh/journal/
 lang: zh
-sections:
-  - breadcrumbs
-  - hero
-  - impact
-  - featured-article
-  - content
-  - latest-entries
-  - author-profile
-  - contact-cta
+# sections: managed by _data/page_sections.yml (journal layout)
 hero_image: /assets/images/journal/journal-home/hero-1200w.jpg
 hero_alt: "创始人合作并构建创新的金砖+品牌"
 color_scheme: blue

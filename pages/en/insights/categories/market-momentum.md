@@ -6,13 +6,7 @@ lang: en
 insight_type: "market-momentum"
 description: "Notable achievements, milestones, and expansion moments for emerging BRICS+ brands."
 ref: insights-categories-market-momentum
-sections:
-  - breadcrumbs
-  - hero
-  - content
-  - insights-grid
-  # - subscribe
-  - contact-cta
+# sections: managed by _data/page_sections.yml (insights-category layout)
 ---
 
 ## Market Momentum Insights

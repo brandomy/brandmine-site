@@ -6,13 +6,7 @@ lang: en
 insight_type: "founders-journey"
 description: "Personal stories behind the brands and the visionaries who created them."
 ref: insights-categories-founders-journey
-sections:
-  - breadcrumbs
-  - hero
-  - content
-  - insights-grid
-  # - subscribe
-  - contact-cta
+# sections: managed by _data/page_sections.yml (insights-category layout)
 ---
 
 ## Founder's Journey Insights

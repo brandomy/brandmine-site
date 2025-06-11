@@ -6,13 +6,7 @@ lang: en
 insight_type: "brand-spotlight"
 description: "In-depth profiles of noteworthy BRICS+ brands gaining international momentum."
 ref: insights-categories-brand-spotlight
-sections:
-  - breadcrumbs
-  - hero
-  - content
-  - insights-grid
-  # - subscribe
-  - contact-cta
+# sections: managed by _data/page_sections.yml (insights-category layout)
 ---
 
 ## Brand Spotlight Insights

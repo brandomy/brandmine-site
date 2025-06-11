@@ -5,15 +5,7 @@ subtitle: Создание Brandmine - наш путь освещения ист
 ref: journal
 permalink: /ru/journal/
 lang: ru
-sections:
-  - breadcrumbs
-  - hero
-  - impact
-  - featured-article
-  - content
-  - latest-entries
-  - author-profile
-  - contact-cta
+# sections: managed by _data/page_sections.yml (journal layout)
 hero_image: /assets/images/journal/journal-home/hero-1200w.jpg
 hero_alt: "Основатели сотрудничают и создают инновационные бренды БРИКС+"
 color_scheme: sage

@@ -4,16 +4,7 @@ title: Discovery
 permalink: /ru/discovery/
 lang: ru
 ref: discovery
-sections:
-  - breadcrumbs
-  - hero
-  - impact
-  - content
-  - dimensions-navigation
-  - dimensions-grid
-  - featured-brands
-  - latest-insights
-  - contact-cta
+# sections: managed by _data/page_sections.yml (discovery layout)
 ---
 
 Раздел "Исследование" - это ваш портал для изучения богатого разнообразия брендов БРИКС+ через четыре мощных измерения. Навигируйте по рынку, сектору, атрибутам или сигналам роста, чтобы обнаружить скрытые жемчужины и новые возможности.

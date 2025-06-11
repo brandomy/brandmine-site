@@ -6,13 +6,7 @@ lang: zh
 insight_type: "founders-journey"
 description: "品牌背后人物及其创业历程的故事。"
 ref: insights-categories-founders-journey
-sections:
-  - breadcrumbs
-  - hero
-  - content
-  - insights-grid
-  # - subscribe
-  - contact-cta
+# sections: managed by _data/page_sections.yml (insights-category layout)
 ---
 
 ## 创始人之路洞察

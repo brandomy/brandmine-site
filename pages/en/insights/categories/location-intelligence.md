@@ -6,13 +6,7 @@ lang: en
 insight_type: "location-intelligence"
 description: "Geographical insights and regional context that shape brand development and opportunities."
 ref: insights-categories-location-intelligence
-sections:
-  - breadcrumbs
-  - hero
-  - content
-  - insights-grid
-  # - subscribe
-  - contact-cta
+# sections: managed by _data/page_sections.yml (insights-category layout)
 ---
 
 ## Location Intelligence Insights

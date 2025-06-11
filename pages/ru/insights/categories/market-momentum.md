@@ -6,13 +6,7 @@ lang: ru
 insight_type: "market-momentum"
 description: "Заметные достижения, вехи и моменты расширения появляющихся брендов БРИКС+."
 ref: insights-categories-market-momentum
-sections:
-  - breadcrumbs
-  - hero
-  - content
-  - insights-grid
-  # - subscribe
-  - contact-cta
+# sections: managed by _data/page_sections.yml (insights-category layout)
 ---
 
 ## Движение рынка

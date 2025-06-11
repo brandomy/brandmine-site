@@ -4,16 +4,7 @@ title: Discovery
 permalink: /zh/discovery/
 lang: zh
 ref: discovery
-sections:
-  - breadcrumbs
-  - hero
-  - impact
-  - content
-  - dimensions-navigation
-  - dimensions-grid
-  - featured-brands
-  - latest-insights
-  - contact-cta
+# sections: managed by _data/page_sections.yml (discovery layout)
 ---
 
 探索部分是您通过四个强大维度了解金砖国家+品牌丰富多样性的门户。按市场、行业、属性或增长信号导航，发现隐藏的宝石和新兴机会。
