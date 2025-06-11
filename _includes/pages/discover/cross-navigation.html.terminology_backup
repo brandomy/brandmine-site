@@ -12,7 +12,7 @@
   <div class="cross-navigation__links">
     {% for dimension in dimensions %}
       {% assign is_active = false %}
-      {% if dimension_type == dimension.id %}
+      {% if discovery_path == dimension.id %}
         {% assign is_active = true %}
       {% endif %}
 
@@ -27,7 +27,7 @@
 
     {% if page.lang == 'en' or page.lang == 'ru' %}
       <a href="{{ site.baseurl }}/{{ page.lang }}/discover/russia-market-sectors/"
-         class="cross-navigation__link {% if dimension_type == 'russia-market-sectors' %}cross-navigation__link--active{% endif %} cross-navigation__link--russia-market-sectors">
+         class="cross-navigation__link {% if discovery_path == 'russia-market-sectors' %}cross-navigation__link--active{% endif %} cross-navigation__link--russia-market-sectors">
         <span class="cross-navigation__icon">
           {% include components/icons/icon.html system="dimensions" name="russian-sector" %}
         </span>

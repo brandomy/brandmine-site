@@ -8,13 +8,13 @@
 {% assign current_dimension = nil %}
 
 {% for dimension in dimensions %}
-  {% if dimension.id == dimension_type %}
+  {% if dimension.id == discovery_path %}
     {% assign current_dimension = dimension %}
     {% break %}
   {% endif %}
 {% endfor %}
 
-{% if dimension_type == 'russia-market-sectors' %}
+{% if discovery_path == 'russia-market-sectors' %}
   {% assign hero_title = "" %}{% include helpers/t.html key="discover.russia_market_sectors_title" fallback="Russian Sectors" %}{% assign hero_title = helpers_result %}
   {% assign hero_description = "" %}{% include helpers/t.html key="discover.russia_market_sectors_description" fallback="Explore consumer sectors with Russian heritage and traditions" %}{% assign hero_description = helpers_result %}
 {% elsif current_dimension %}
@@ -29,7 +29,7 @@
   {% endif %}
 {% endif %}
 
-<div class="discover-hero discover-hero--{{ dimension_type }}">
+<div class="discover-hero discover-hero--{{ discovery_path }}">
   <div class="discover-hero__content">
     <h1 class="discover-hero__title">{{ hero_title }}</h1>
     <p class="discover-hero__description">{{ hero_description }}</p>

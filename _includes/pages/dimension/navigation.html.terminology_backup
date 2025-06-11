@@ -13,13 +13,13 @@
 {% assign container_class = include.container_class | default: '' %}
 
 {% assign discovery_class = '' %}
-{% if dimension.dimension_type == 'sectors' %}
+{% if dimension.discovery_path == 'sectors' %}
   {% assign discovery_class = 'discovery-tabs-container--sectors' %}
-{% elsif dimension.dimension_type == 'markets' %}
+{% elsif dimension.discovery_path == 'markets' %}
   {% assign discovery_class = 'discovery-tabs-container--markets' %}
-{% elsif dimension.dimension_type == 'attributes' %}
+{% elsif dimension.discovery_path == 'attributes' %}
   {% assign discovery_class = 'discovery-tabs-container--attributes' %}
-{% elsif dimension.dimension_type == 'signals' %}
+{% elsif dimension.discovery_path == 'signals' %}
   {% assign discovery_class = 'discovery-tabs-container--signals' %}
 {% endif %}
 
@@ -27,19 +27,19 @@
   <div class="dimension-navigation__container">
     <div class="dimension-navigation__tabs">
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/sectors/" 
-         class="dimension-navigation__tab dimension-navigation__tab--sectors {% if dimension.dimension_type == 'sectors' %}dimension-navigation__tab--active{% endif %}">
+         class="dimension-navigation__tab dimension-navigation__tab--sectors {% if dimension.discovery_path == 'sectors' %}dimension-navigation__tab--active{% endif %}">
         {% include helpers/t.html key="dimensions.sectors" fallback="Sectors" lang=dimension.lang %}
       </a>
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/markets/" 
-         class="dimension-navigation__tab dimension-navigation__tab--markets {% if dimension.dimension_type == 'markets' %}dimension-navigation__tab--active{% endif %}">
+         class="dimension-navigation__tab dimension-navigation__tab--markets {% if dimension.discovery_path == 'markets' %}dimension-navigation__tab--active{% endif %}">
         {% include helpers/t.html key="dimensions.markets" fallback="Markets" lang=dimension.lang %}
       </a>
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/attributes/" 
-         class="dimension-navigation__tab dimension-navigation__tab--attributes {% if dimension.dimension_type == 'attributes' %}dimension-navigation__tab--active{% endif %}">
+         class="dimension-navigation__tab dimension-navigation__tab--attributes {% if dimension.discovery_path == 'attributes' %}dimension-navigation__tab--active{% endif %}">
         {% include helpers/t.html key="dimensions.attributes" fallback="Attributes" lang=dimension.lang %}
       </a>
       <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/signals/" 
-         class="dimension-navigation__tab dimension-navigation__tab--signals {% if dimension.dimension_type == 'signals' %}dimension-navigation__tab--active{% endif %}">
+         class="dimension-navigation__tab dimension-navigation__tab--signals {% if dimension.discovery_path == 'signals' %}dimension-navigation__tab--active{% endif %}">
         {% include helpers/t.html key="dimensions.signals" fallback="Signals" lang=dimension.lang %}
       </a>
     </div>

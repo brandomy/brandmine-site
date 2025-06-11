@@ -24,7 +24,7 @@
   {% assign nav_class = 'dimensions-category-navigation--option-b' %}
 {% endif %}
 
-{% assign active_dimension = include.active_dimension | default: page.dimension_type %}
+{% assign active_dimension = include.active_dimension | default: page.discovery_path %}
 
 <div class="dimensions-category-navigation {{ nav_class }}">
   <div class="dimensions-category-navigation__container {% if active_dimension %}dimensions-category-navigation__container--{{ active_dimension }}{% endif %} {{ include.container_class }}">
