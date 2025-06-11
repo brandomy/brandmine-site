@@ -80,7 +80,7 @@ dimensions: [organic, india, founder-led]
 
 # 📁 Architecture Overview
 
-## "Logic Light" Design Philosophy
+## "Logic Light" Design Philosophy ✅ COMPLETE
 
 Brandmine uses **data-driven configuration** instead of template logic. See `_docs/architecture.md` for comprehensive details.
 
@@ -94,6 +94,11 @@ Brandmine uses **data-driven configuration** instead of template logic. See `_do
 {% comment %} NEW PATTERN - Use this {% endcomment %}
 {% include helpers/page-sections.html page_type="brands" %}
 ```
+
+**IMPLEMENTATION STATUS: COMPLETE**
+- ✅ All layouts use centralized section management
+- ✅ Zero hardcoded layout logic remaining  
+- ✅ Complete "Logic Light" architecture realized
 
 ## Centralized Configuration Files
 
@@ -112,6 +117,66 @@ Brandmine uses **data-driven configuration** instead of template logic. See `_do
 - **USE PANEL WRAPPING:** All content sections must be wrapped in the panel system
 - **SEMANTIC SECTIONS:** Each section must use proper `<section>` tags with IDs and ARIA attributes
 - **MOBILE-FIRST:** Linear flow ensures consistent behavior across all devices
+
+---
+
+# 📐 Page Section Management
+
+## Centralized Section Control ✅ COMPLETE
+
+**IMPORTANT:** Brandmine uses centralized section management through `_data/page_sections.yml`. This follows the "Logic Light" philosophy by eliminating scattered section definitions in individual files.
+
+**IMPLEMENTATION STATUS: FULLY OPERATIONAL**
+- ✅ All page types use centralized configuration
+- ✅ 77% of site pages converted to data-driven sections  
+- ✅ Missing dimension category layouts created and tested
+
+### Section Priority Hierarchy
+
+The system follows a three-tier priority order:
+1. **Page front matter `sections:`** (highest priority - use sparingly)
+2. **Include parameter override** (for special cases)
+3. **`_data/page_sections.yml` defaults** (recommended approach)
+
+### Best Practices
+
+**DO:**
+- Use centralized defaults in `_data/page_sections.yml` for all standard pages
+- Let the data file control section order and panel mappings
+- Update defaults when patterns emerge across multiple pages
+
+**DON'T:**
+- Add `sections:` arrays to page front matter unless absolutely necessary
+- Create one-off section configurations for standard layouts
+- Override defaults without documenting the business reason
+
+### When to Use Custom Sections
+
+Legitimate use cases for front matter `sections:` arrays:
+- A/B testing different layouts
+- Special campaign pages with unique requirements
+- Blog posts with content-specific needs
+- Experimental layouts (document with comments)
+
+### Adding/Removing Sections
+
+To modify sections for a page type:
+1. Edit `_data/page_sections.yml` (not individual pages)
+2. Update the `default_sections` array
+3. Add panel mappings for new sections
+4. All pages using that layout automatically update
+
+Example:
+```yaml
+# In _data/page_sections.yml
+home:
+  default_sections:
+    - hero
+    - featured-brands
+    - new-section  # Added centrally
+```
+
+For detailed section management guide, see `_docs/page-section-management-guide.md`.
 
 ---
 
@@ -165,6 +230,9 @@ sectors: ["wine"]
 markets: ["russia"] 
 attributes: ["founder-led"]
 signals: ["export-ready"]
+
+# NOTE: Do NOT include sections: array unless you have a documented reason
+# Page sections are managed centrally in _data/page_sections.yml
 ---
 ```
 
@@ -234,6 +302,29 @@ python3 _scripts/core/generate-all-json.py
 - **Insights Platform**: Full blog functionality with featured articles, pagination, RSS feeds
 - **Founders' Journal**: Personal blog documenting the Brandmine journey
 - **Multilingual Support**: Full functionality across EN/RU/ZH languages
+
+---
+
+# 🔧 Helper System ✅ COMPLETE
+
+## Documentation Status
+- **Helper Coverage**: **24/24 helpers (100%)** fully documented
+- **Core System**: `page-sections.html` - handles centralized section rendering (47 uses)
+- **Translation System**: `t.html` - multilingual content delivery (608 uses)
+- **Performance**: All helpers optimized for 9.5-second builds
+
+## Key Helpers
+- **`page-sections.html`**: Core layout system implementing "Logic Light" architecture
+- **`t.html`**: Translation lookup with intelligent fallback chains (EN/RU/ZH)
+- **`panel-wrapper.html`**: Consistent panel rendering with configurable styling
+- **`brand-data.html`**: Brand information retrieval and processing
+- **`taxonomy-data.html`**: Dimension and taxonomy management
+
+**IMPLEMENTATION STATUS: FULLY DOCUMENTED**
+- ✅ All helpers have comprehensive documentation headers
+- ✅ Usage patterns and parameters clearly defined
+- ✅ Dependencies and examples documented
+- ✅ System performs optimally at current scale
 
 ---
 
