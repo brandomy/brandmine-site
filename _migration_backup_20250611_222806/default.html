@@ -1,0 +1,132 @@
+{% comment %}
+LAYOUT: Default
+PURPOSE: Base layout template providing HTML structure, head section, and body framework for all pages
+
+USED BY: All other layouts inherit from this template via Jekyll's layout inheritance
+
+SECTIONS RENDERED:
+- Document head: Meta tags, SEO components, stylesheets, font preloading
+- Body wrapper: Dynamic body classes based on page.ref or layout type
+- Header: Site navigation and branding
+- Main content: Layout wrapper containing child layout content
+- Footer: Site footer with links and newsletter signup
+
+FRONT MATTER REQUIRED:
+- lang: Language code (defaults to 'en')
+- title: Page title (optional, falls back to site.title translation)
+
+PANEL SYSTEM: Not applicable - provides base structure for panel-using layouts
+
+DEPENDENCIES:
+- components/seo/meta-article.html (for insight articles)
+- components/seo/schema-detector.html (for structured data)
+- layout/header.html (site header)
+- layout/footer.html (site footer)
+- utilities/google-analytics.html (tracking)
+- assets/main.css (compiled SCSS)
+- Various font files (PT Sans, PT Serif, Noto Sans/Serif SC for Chinese)
+{% endcomment %}
+
+<!DOCTYPE html>
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}en{% endif %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }}{% else %}{% include helpers/t.html key="site.title" lang=page.lang %}{% endif %}</title>
+
+  <!-- SEO Components -->
+  {% if page.layout == 'insight-article' %}
+    {% include components/seo/meta-article.html article=page site_twitter="brandmine" %}
+  {% else %}
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{% include helpers/t.html key="site.description" lang=page.lang %}{% endif %}">
+  {% endif %}
+
+  <!-- Schema.org markup -->
+  {% include components/seo/schema-detector.html page=page %}
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/site/favicons/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/site/favicons/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/site/favicons/favicon-16x16.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/images/site/favicons/site.webmanifest' | relative_url }}">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+  <!-- Font Preloading for Performance -->
+  <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  
+  {% if page.lang == 'zh' %}
+    <link rel="preload" href="{{ '/assets/fonts/NotoSansSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/NotoSerifSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  {% endif %}
+</head>
+
+<body class="{{ page.ref | default: page.layout }}-page">
+  {% include layout/header.html %}
+
+  <main class="layout">
+    <div class="layout__wrapper">
+      <div class="layout__content">
+        {{ content }}
+      </div>
+    </div>
+  </main>
+
+  {% include layout/footer.html %}
+  
+  <!-- Core Components -->
+  <script src="{{ '/assets/js/components/header.js' | relative_url }}"></script>
+  
+  <!-- Conditional Components Based on Layout -->
+  {% case page.layout %}
+    {% when 'brands' %}
+      <script src="{{ '/assets/js/components/search-filter.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/brands/brands-filtering.js' | relative_url }}"></script>
+    {% when 'founders' %}
+      <script src="{{ '/assets/js/components/search-filter.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/founders/founders.js' | relative_url }}"></script>
+    {% when 'discovery' %}
+      <script src="{{ '/assets/js/components/search-filter.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/discovery/discovery.js' | relative_url }}"></script>
+    {% when 'insights' %}
+      <script src="{{ '/assets/js/components/insights-carousel.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/pages/insights/insights-pagination.js' | relative_url }}"></script>
+    {% when 'insight-article' %}
+      <script src="{{ '/assets/js/components/insights-carousel.js' | relative_url }}"></script>
+    {% when 'dimension' %}
+      <script src="{{ '/assets/js/pages/dimension/dimension-filtering.js' | relative_url }}"></script>
+  {% endcase %}
+  
+  <!-- Optional Components Based on Page Features -->
+  {% if page.custom_forms %}
+    <script src="{{ '/assets/js/components/custom-forms.js' | relative_url }}"></script>
+  {% endif %}
+  
+  {% if page.has_carousel %}
+    <script src="{{ '/assets/js/components/founder-carousel.js' | relative_url }}"></script>
+  {% endif %}
+  
+  <!-- UI Components -->
+  {% if content contains 'class="modal"' or content contains 'openModal(' %}
+    <script src="{{ '/assets/js/components/modal.js' | relative_url }}"></script>
+  {% endif %}
+  
+  {% if content contains 'data-map-container' %}
+    <script>
+      window.STADIA_MAPS_API_KEY = '{{ site.stadia_maps_api_key }}';
+    </script>
+    <script src="{{ '/assets/js/components/map-initializer.js' | relative_url }}"></script>
+  {% endif %}
+  
+  <!-- Central Initialization -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  
+  <!-- Analytics -->
+  {% include utilities/google-analytics.html %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% comment %}
+HELPER: Translation Lookup
+PURPOSE: Centralized multilingual translation with intelligent fallback chain
+USAGE: {% include helpers/t.html key="path.to.text" fallback="Default Text" %}
+PARAMETERS: 
+  - key (required, string): Dot-separated translation path (e.g., "brands.hero.title")
+  - fallback (optional, string): Default text if translation not found
+  - lang (optional, string): Language code override (defaults to page.lang)
+RETURNS: Translated text string with fallback chain: translation → fallback → humanized key
+DEPENDENCIES: site.data.translations[lang] nested YAML structure
+EXAMPLE: {% include helpers/t.html key="brands.featured_title" fallback="Featured Brands" %}
+NOTE: Most critical helper - used 672 times across site. Handles EN/RU/ZH automatically.
+{% endcomment %}
+
+{% comment %} Determine translation language with fallback chain {% endcomment %}
+{% assign translation_lang = include.lang | default: page.lang | default: 'en' %}
+{% assign keys = include.key | split: "." %}
+{% assign result = site.data.translations[translation_lang] %}
+
+{% comment %} Navigate through nested translation structure {% endcomment %}
+{% for key in keys %}
+  {% if result %}
+    {% assign result = result[key] %}
+  {% else %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Output with fallback chain: translation > fallback > humanized key {% endcomment %}
+{% if result %}
+  {{ result }}
+{% elsif include.fallback %}
+  {{ include.fallback }}
+{% else %}
+  {{ include.key | replace: ".", " " | capitalize }}
+{% endif %}

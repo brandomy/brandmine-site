@@ -1,0 +1,141 @@
+{% comment %}
+HELPER: Market Context Display
+PURPOSE: Display BRICS+ economic and business context for market positioning
+
+USAGE: {% include helpers/market-context.html country_code="ru" context_type="economic" %}
+
+PARAMETERS:
+- country_code (required): ISO country code (e.g., "ru", "br", "cn")
+- context_type (optional): "economic", "business", "growth" (default: "business")
+- show_gdp (optional): Show GDP context (default: true for economic type)
+- format (optional): "inline", "badge", "tooltip" (default: "inline")
+
+RETURNS: Displays market context information with proper business positioning
+
+DEPENDENCIES:
+- Data: Market context data structure
+- Translations: Market context translations
+- CSS: market-context component styles
+
+DESIGN NOTES:
+- Emphasizes BRICS+ market opportunity and scale
+- Provides credibility through economic indicators
+- Supports multiple display formats for different use cases
+{% endcomment %}
+
+{% comment %} Parameter setup {% endcomment %}
+{% assign country_code = include.country_code %}
+{% assign context_type = include.context_type | default: "business" %}
+{% assign show_gdp = include.show_gdp | default: true %}
+{% assign format = include.format | default: "inline" %}
+
+{% comment %} Market context data for BRICS+ countries {% endcomment %}
+{% case country_code %}
+  {% when "br" %}
+    {% assign market_size = "220M consumers" %}
+    {% assign gdp_position = "9th largest economy" %}
+    {% assign business_context = "Leading Latin American market" %}
+    {% assign growth_signal = "Emerging market leader" %}
+  {% when "ru" %}
+    {% assign market_size = "146M consumers" %}
+    {% assign gdp_position = "11th largest economy" %}
+    {% assign business_context = "Resource-rich federation" %}
+    {% assign growth_signal = "Natural resources powerhouse" %}
+  {% when "in" %}
+    {% assign market_size = "1.4B consumers" %}
+    {% assign gdp_position = "5th largest economy" %}
+    {% assign business_context = "World's largest democracy" %}
+    {% assign growth_signal = "Fastest-growing major economy" %}
+  {% when "cn" %}
+    {% assign market_size = "1.4B consumers" %}
+    {% assign gdp_position = "2nd largest economy" %}
+    {% assign business_context = "Global manufacturing hub" %}
+    {% assign growth_signal = "Innovation superpower" %}
+  {% when "za" %}
+    {% assign market_size = "60M consumers" %}
+    {% assign gdp_position = "African economic leader" %}
+    {% assign business_context = "Gateway to Africa" %}
+    {% assign growth_signal = "Continental market access" %}
+  {% when "ir" %}
+    {% assign market_size = "85M consumers" %}
+    {% assign gdp_position = "Regional power" %}
+    {% assign business_context = "Middle East connector" %}
+    {% assign growth_signal = "Strategic trade position" %}
+  {% when "eg" %}
+    {% assign market_size = "104M consumers" %}
+    {% assign gdp_position = "MENA region leader" %}
+    {% assign business_context = "Cultural crossroads" %}
+    {% assign growth_signal = "Historical trade hub" %}
+  {% when "et" %}
+    {% assign market_size = "120M consumers" %}
+    {% assign gdp_position = "East African hub" %}
+    {% assign business_context = "Coffee origin country" %}
+    {% assign growth_signal = "Rapid growth market" %}
+  {% when "ae" %}
+    {% assign market_size = "10M consumers" %}
+    {% assign gdp_position = "Gulf economic center" %}
+    {% assign business_context = "Global business hub" %}
+    {% assign growth_signal = "Innovation catalyst" %}
+  {% when "my" %}
+    {% assign market_size = "33M consumers" %}
+    {% assign gdp_position = "ASEAN economic leader" %}
+    {% assign business_context = "Southeast Asian gateway" %}
+    {% assign growth_signal = "Export manufacturing base" %}
+  {% when "id" %}
+    {% assign market_size = "275M consumers" %}
+    {% assign gdp_position = "16th largest economy" %}
+    {% assign business_context = "Archipelago nation" %}
+    {% assign growth_signal = "Emerging market giant" %}
+  {% when "mn" %}
+    {% assign market_size = "3.3M consumers" %}
+    {% assign gdp_position = "Resource-rich nation" %}
+    {% assign business_context = "Central Asian connector" %}
+    {% assign growth_signal = "Mining economy potential" %}
+  {% else %}
+    {% assign market_size = "Global market" %}
+    {% assign gdp_position = "International presence" %}
+    {% assign business_context = "Cross-border opportunity" %}
+    {% assign growth_signal = "Global expansion ready" %}
+{% endcase %}
+
+{% comment %} Select context based on type {% endcomment %}
+{% case context_type %}
+  {% when "economic" %}
+    {% assign context_text = gdp_position %}
+    {% if show_gdp %}
+      {% assign context_detail = market_size %}
+    {% endif %}
+  {% when "business" %}
+    {% assign context_text = business_context %}
+    {% assign context_detail = market_size %}
+  {% when "growth" %}
+    {% assign context_text = growth_signal %}
+    {% assign context_detail = market_size %}
+  {% else %}
+    {% assign context_text = business_context %}
+    {% assign context_detail = market_size %}
+{% endcase %}
+
+{% comment %} Get translations if available {% endcomment %}
+{% assign t = site.data.translations[page.lang].market_context %}
+
+{% comment %} Format-based display {% endcomment %}
+{% case format %}
+  {% when "badge" %}
+    <span class="market-context market-context--badge market-context--{{ context_type }}" 
+          title="{{ context_text }}{% if context_detail %} • {{ context_detail }}{% endif %}">
+      <span class="market-context__text">{{ context_text }}</span>
+    </span>
+  {% when "tooltip" %}
+    <span class="market-context market-context--tooltip" 
+          data-tooltip="{{ context_text }}{% if context_detail %} • {{ context_detail }}{% endif %}">
+      <span class="market-context__icon">ⓘ</span>
+    </span>
+  {% else %}
+    <span class="market-context market-context--inline market-context--{{ context_type }}">
+      <span class="market-context__text">{{ context_text }}</span>
+      {% if context_detail %}
+        <span class="market-context__detail">{{ context_detail }}</span>
+      {% endif %}
+    </span>
+{% endcase %}

@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{% comment %}
+  LAYOUT: Brands
+  PURPOSE: Main directory page for viewing and filtering all brand profiles
+  USED BY: pages/{lang}/brands.md (brand discovery and listings)
+  SECTIONS RENDERED: Data-driven via page_sections.yml (brands)
+  FRONT MATTER REQUIRED: Standard page front matter, uses defaults from page_sections.yml
+  PANEL SYSTEM: Uses panel--hero-split for hero, panel--primary for impact, panel--light for content
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/brands/[section].html, brands-filtering.js
+  
+  LOGIC-LIGHT ARCHITECTURE:
+  - Standardized across all languages with identical section structure
+  - Data-driven section rendering eliminates hardcoded logic
+  - Impact section positioned before content for strategic messaging
+  - Includes filter interface, featured brands carousel, and contact CTA
+  - JavaScript handles dynamic filtering and search functionality
+{% endcomment %}
+
+{% comment %} Store page content for section includes {% endcomment %}
+{% capture page_content %}{{ content }}{% endcapture %}
+
+<div class="brands-page">
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html page_type="brands" content=page_content %}
+</div>
+
+<!-- Brand-specific scripts are loaded by default.html based on layout -->

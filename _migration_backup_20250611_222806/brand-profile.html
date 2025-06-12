@@ -1,0 +1,75 @@
+---
+layout: default
+---
+{% comment %}
+  LAYOUT: Brand Profile
+  PURPOSE: Renders individual brand profiles with hybrid data source support
+  USED BY: _brands/ collection and auto-generated JSON brand profiles
+  SECTIONS RENDERED: Data-driven via page_sections.yml (brand-profile)
+  FRONT MATTER REQUIRED: Either page.title (curated) or page.ref (JSON-only)
+  PANEL SYSTEM: Uses panel--hero-subtle for identity, panel--primary for impact, varies by section
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/brand-profile/[section].html
+  
+  HYBRID ARCHITECTURE:
+  - Curated YAML profiles: Rich content + structured data (page.title exists)
+  - JSON-only profiles: Basic structured data only (page.ref lookup)
+  - Auto-detects data source and adapts section rendering accordingly
+  - Fallback handling for missing brands with branded error panel
+{% endcomment %}
+
+{% comment %} Determine data source and create unified brand object {% endcomment %}
+{% if page.title %}
+  {% comment %} This is a curated YAML brand profile {% endcomment %}
+  {% assign brand = page %}
+  {% assign data_source = "curated" %}
+  {% assign brand_ref = page.ref %}
+{% else %}
+  {% comment %} This is a basic JSON-only brand {% endcomment %}
+  {% assign brand_ref = page.ref %}
+  {% assign brand = site.data.brands | where: "ref", brand_ref | first %}
+  {% assign data_source = "basic" %}
+{% endif %}
+
+{% comment %} Fallback if brand not found in either source {% endcomment %}
+{% unless brand %}
+  {% capture brand_not_found_content %}
+    <h1>Brand Not Found</h1>
+    <p>The requested brand profile could not be located.</p>
+    <a href="{{ site.baseurl }}/{{ page.lang }}/brands/" class="btn btn--primary">← Back to Brands</a>
+  {% endcapture %}
+  {% include helpers/panel-wrapper.html 
+     type="panel--light" 
+     direct_content=brand_not_found_content %}
+  {% assign brand = null %}
+{% endunless %}
+
+{% if brand %}
+  {% comment %} Store brand variables for section includes {% endcomment %}
+  {% assign page_brand = brand %}
+  {% assign page_data_source = data_source %}
+  {% assign page_brand_ref = brand_ref %}
+  
+  {% comment %} Store page content for section includes {% endcomment %}
+  {% capture page_content %}{{ content }}{% endcapture %}
+  
+  {% comment %} Set sections based on data completeness and availability {% endcomment %}
+  {% if data_source == "curated" %}
+    {% assign default_sections = "breadcrumbs,identity,founder-narrative,content,business-intelligence,location-intelligence,connections" | split: "," %}
+    {% assign sections_to_render = page.sections | default: default_sections %}
+  {% else %}
+    {% assign sections_to_render = "breadcrumbs,identity,business-intelligence,location-intelligence,connections" | split: "," %}
+  {% endif %}
+
+  <div class="brand-profile brand-profile--{{ data_source }}">
+    {% comment %} Use data-driven section rendering {% endcomment %}
+    {% include helpers/page-sections.html 
+       page_type="brand-profile" 
+       sections=sections_to_render 
+       content=page_content %}
+  </div>
+
+  {% comment %} Conditional scripts based on section presence {% endcomment %}
+  {% if sections_to_render contains 'location-intelligence' %}
+    <script src="{{ '/assets/js/pages/brand/brand-map.js' | relative_url }}"></script>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% comment %}
+  LAYOUT: Home
+  PURPOSE: Renders the main landing page with full-width hero and comprehensive sections
+  USED BY: pages/{lang}/index.md (site homepage)
+  SECTIONS RENDERED: Data-driven via page_sections.yml (home)
+  FRONT MATTER REQUIRED: Minimal - uses all defaults from page_sections.yml
+  PANEL SYSTEM: Uses panel--hero for hero, mixed panel types (primary, light, amber-soft, cta)
+  DEPENDENCIES: helpers/page-sections.html, _includes/pages/home/[section].html, home-specific JS
+  
+  LOGIC-LIGHT ARCHITECTURE:
+  - Fully data-driven section rendering with comprehensive defaults
+  - Mixed panel types for visual hierarchy and engagement
+  - Includes carousels, testimonials, lead capture, and founder focus
+  - Home-specific JavaScript for smooth scrolling, carousels, and tracking
+{% endcomment %}
+
+<!-- Home layout for the landing page -->
+<div class="home-page">
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html page_type="home" %}
+</div>
+
+<!-- Home-specific JavaScript -->
+<script src="{{ '/assets/js/pages/home/smooth-scroll.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/pages/home/carousels.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/components/founder-carousel.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/pages/home/tracking.js' | relative_url }}"></script>

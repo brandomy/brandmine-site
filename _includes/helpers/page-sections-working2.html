@@ -1,0 +1,78 @@
+{% comment %}
+HELPER: Page Sections Renderer - Jekyll 3.9.5 Compatible
+PURPOSE: Data-driven page section rendering using page_sections.yml configuration
+USAGE: {% include helpers/page-sections.html page_type="home" %}
+PARAMETERS:
+  - page_type (required): Type of page (home, brands, about, discovery, founders, insights)
+  - sections (optional): Override sections array
+  - content (optional): Page content to pass to sections
+ARCHITECTURE: Uses centralized configuration with Jekyll 3.9.5 compatible includes
+{% endcomment %}
+
+{% assign page_type = include.page_type %}
+{% assign page_content = include.content %}
+
+{% comment %} Get section configuration from data file {% endcomment %}
+{% assign section_config = site.data.page_sections[page_type] %}
+
+{% comment %} Determine sections to render {% endcomment %}
+{% if include.sections %}
+  {% assign sections_to_render = include.sections %}
+{% elsif page.sections %}
+  {% assign sections_to_render = page.sections %}
+{% elsif section_config.default_sections %}
+  {% assign sections_to_render = section_config.default_sections %}
+{% else %}
+  {% assign sections_to_render = "hero,content" | split: "," %}
+{% endif %}
+
+{% comment %} Render breadcrumbs separately if included {% endcomment %}
+{% if sections_to_render contains "breadcrumbs" %}
+  <section class="{{ page_type }}-section {{ page_type }}-section--breadcrumbs"
+           id="{{ page_type }}-section-breadcrumbs"
+           aria-labelledby="heading-breadcrumbs">
+    {% include components/ui/breadcrumbs.html %}
+  </section>
+{% endif %}
+
+{% comment %} Render all other sections using panel mappings {% endcomment %}
+{% for section in sections_to_render %}
+  {% unless section == "breadcrumbs" %}
+    <section class="{{ page_type }}-section {{ page_type }}-section--{{ section }}" 
+             id="{{ page_type }}-section-{{ section }}" 
+             aria-labelledby="heading-{{ section }}">
+      
+      {% comment %} Get panel configuration for this section {% endcomment %}
+      {% assign panel_config = section_config.panel_mappings[section] %}
+      {% assign panel_type = panel_config.type | default: "panel--light" %}
+      {% assign additional_classes = panel_config.additional_classes %}
+      {% assign content_classes = panel_config.content_classes %}
+      
+      {% comment %} Handle special content section for different page types {% endcomment %}
+      {% if section == "content" %}
+        {% if page_type == "brand-profile" %}
+          {% comment %} Brand profiles render content directly {% endcomment %}
+          {% assign brand_content_html = '<div class="brand-content">' | append: page_content | append: '</div>' %}
+          {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes direct_content=brand_content_html %}
+        {% elsif page_type == "insight-article" %}
+          {% comment %} Insight articles render content with special wrapper {% endcomment %}
+          {% assign insight_class = "insight-content" %}
+          {% if page.premium %}{% assign insight_class = insight_class | append: " premium-content" %}{% endif %}
+          {% assign insight_content_html = '<div class="' | append: insight_class | append: '">' | append: page_content | append: '</div>' %}
+          {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes direct_content=insight_content_html %}
+        {% else %}
+          {% assign content_include_path = "pages/" | append: page_type | append: "/content.html" %}
+          {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path %}
+        {% endif %}
+      {% else %}
+        {% comment %} Standard section rendering {% endcomment %}
+        {% assign content_include_path = "pages/" | append: page_type | append: "/" | append: section | append: ".html" %}
+        {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path %}
+      {% endif %}
+    </section>
+  {% endunless %}
+  
+  {% comment %} Reset variables for next iteration {% endcomment %}
+  {% assign additional_classes = nil %}
+  {% assign content_classes = nil %}
+{% endfor %}

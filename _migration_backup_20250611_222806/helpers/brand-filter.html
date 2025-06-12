@@ -1,0 +1,72 @@
+{% comment %}
+HELPER: Brand Filter
+PURPOSE: Centralized brand filtering logic to eliminate duplicate filtering code across brand listing components
+
+USAGE: {% include helpers/brand-filter.html lang="en" featured=true limit=3 %}
+
+PARAMETERS:
+- lang (required): Language code string for multilingual filtering
+- featured (optional): Boolean to filter only featured brands (always true when using static data)
+- premium_only (optional): Boolean to filter only premium brands (featured_level >= 2)
+- sector (optional): String to filter by specific sector slug
+- market (optional): String to filter by specific market slug
+- limit (optional): Integer maximum number of brands to return
+
+RETURNS: Sets 'filtered_brands' variable with array of filtered brand objects
+
+DEPENDENCIES:
+- Data: site.data.featured_content.brands[lang] (static data approach)
+- Includes: None
+- Variables: None
+
+EXAMPLE:
+{% include helpers/brand-filter.html lang="en" featured=true limit=3 %}
+{% for brand in filtered_brands %}
+  <h3>{{ brand.title }}</h3>
+{% endfor %}
+{% endcomment %}
+
+{% comment %} Start with featured brands from static data for the specified language {% endcomment %}
+{% assign filtered_brands = site.data.featured_content.brands[include.lang] %}
+
+{% comment %} Apply premium filtering (featured_level >= 2) {% endcomment %}
+{% if include.premium_only %}
+  {% assign premium_brands = "" | split: "," %}
+  {% for brand in filtered_brands %}
+    {% if brand.featured_level and brand.featured_level >= 2 %}
+      {% assign premium_brands = premium_brands | push: brand %}
+    {% endif %}
+  {% endfor %}
+  {% assign filtered_brands = premium_brands %}
+{% endif %}
+
+{% comment %} Apply sector taxonomy filtering {% endcomment %}
+{% if include.sector %}
+  {% assign sector_brands = "" | split: "," %}
+  {% for brand in filtered_brands %}
+    {% if brand.sector == include.sector %}
+      {% assign sector_brands = sector_brands | push: brand %}
+    {% endif %}
+  {% endfor %}
+  {% assign filtered_brands = sector_brands %}
+{% endif %}
+
+{% comment %} Apply market taxonomy filtering {% endcomment %}
+{% if include.market %}
+  {% assign market_brands = "" | split: "," %}
+  {% for brand in filtered_brands %}
+    {% if brand.market contains include.market %}
+      {% assign market_brands = market_brands | push: brand %}
+    {% endif %}
+  {% endfor %}
+  {% assign filtered_brands = market_brands %}
+{% endif %}
+
+{% comment %} Apply result limit {% endcomment %}
+{% if include.limit %}
+  {% assign limited_brands = "" | split: "," %}
+  {% for brand in filtered_brands limit: include.limit %}
+    {% assign limited_brands = limited_brands | push: brand %}
+  {% endfor %}
+  {% assign filtered_brands = limited_brands %}
+{% endif %}

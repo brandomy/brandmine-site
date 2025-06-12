@@ -1,0 +1,148 @@
+{% comment %}
+HELPER: Business Credibility Indicators
+PURPOSE: Display business scale and credibility signals for BRICS+ brands
+
+USAGE: {% include helpers/business-credibility.html brand=brand indicator_type="scale" %}
+
+PARAMETERS:
+- brand (required): Brand object with business data
+- indicator_type (optional): "scale", "growth", "market_position", "export" (default: "scale")
+- format (optional): "compact", "detailed", "highlight" (default: "compact")
+- max_indicators (optional): Number of indicators to show (default: 2)
+
+RETURNS: Displays business credibility indicators with BRICS+ market context
+
+DEPENDENCIES:
+- Data: Brand business metrics and market data
+- Translations: Business credibility translations
+- CSS: business-credibility component styles
+
+DESIGN NOTES:
+- Emphasizes emerging market opportunity scale
+- Showcases business legitimacy and growth potential
+- Adapts display based on available data
+{% endcomment %}
+
+{% comment %} Parameter setup {% endcomment %}
+{% assign brand = include.brand %}
+{% assign indicator_type = include.indicator_type | default: "scale" %}
+{% assign format = include.format | default: "compact" %}
+{% assign max_indicators = include.max_indicators | default: 2 %}
+
+{% comment %} Get translations {% endcomment %}
+{% assign t = site.data.translations[page.lang].business_credibility %}
+
+{% comment %} Build credibility indicators based on available brand data {% endcomment %}
+{% assign indicators = "" | split: "" %}
+
+{% comment %} Scale indicators {% endcomment %}
+{% if indicator_type == "scale" or indicator_type == "all" %}
+  {% if brand.employees %}
+    {% assign indicator = brand.employees | append: " " | append: (t.employees | default: "employees") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+  
+  {% if brand.annual_revenue %}
+    {% assign indicator = brand.annual_revenue | append: " " | append: (t.revenue | default: "revenue") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+  
+  {% if brand.locations %}
+    {% assign indicator = brand.locations | append: " " | append: (t.locations | default: "locations") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Growth indicators {% endcomment %}
+{% if indicator_type == "growth" or indicator_type == "all" %}
+  {% if brand.growth_rate %}
+    {% assign indicator = brand.growth_rate | append: " " | append: (t.growth | default: "growth") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+  
+  {% if brand.market_share %}
+    {% assign indicator = brand.market_share | append: " " | append: (t.market_share | default: "market share") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Market position indicators {% endcomment %}
+{% if indicator_type == "market_position" or indicator_type == "all" %}
+  {% if brand.market_ranking %}
+    {% assign indicator = "#" | append: brand.market_ranking | append: " " | append: (t.market_position | default: "in market") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+  
+  {% if brand.certifications %}
+    {% assign cert_count = brand.certifications | size %}
+    {% assign indicator = cert_count | append: " " | append: (t.certifications | default: "certifications") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Export indicators {% endcomment %}
+{% if indicator_type == "export" or indicator_type == "all" %}
+  {% if brand.export_markets %}
+    {% assign export_count = brand.export_markets | size %}
+    {% assign indicator = export_count | append: " " | append: (t.export_markets | default: "export markets") %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+  
+  {% if brand.international_presence %}
+    {% assign indicator = t.international_presence | default: "International presence" %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Fallback indicators based on dimensions {% endcomment %}
+{% if indicators.size == 0 %}
+  {% if brand.signals contains "export-ready" %}
+    {% assign indicator = t.export_ready | default: "Export ready" %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+  
+  {% if brand.attributes contains "heritage-brand" %}
+    {% assign indicator = t.heritage_brand | default: "Heritage brand" %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+  
+  {% if brand.attributes contains "innovation-leader" %}
+    {% assign indicator = t.innovation_leader | default: "Innovation leader" %}
+    {% assign indicators = indicators | push: indicator %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Display indicators if any exist {% endcomment %}
+{% if indicators.size > 0 %}
+  <div class="business-credibility business-credibility--{{ format }} business-credibility--{{ indicator_type }}">
+    {% case format %}
+      {% when "highlight" %}
+        <div class="business-credibility__highlight">
+          {% for indicator in indicators limit: max_indicators %}
+            <div class="business-credibility__indicator business-credibility__indicator--highlight">
+              <span class="business-credibility__value">{{ indicator }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% when "detailed" %}
+        <div class="business-credibility__detailed">
+          <span class="business-credibility__label">{{ t.credentials | default: "Business Credentials" }}:</span>
+          <div class="business-credibility__indicators">
+            {% for indicator in indicators limit: max_indicators %}
+              <span class="business-credibility__indicator">{{ indicator }}</span>
+              {% unless forloop.last %}<span class="business-credibility__separator">•</span>{% endunless %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="business-credibility__compact">
+          {% for indicator in indicators limit: max_indicators %}
+            <span class="business-credibility__indicator business-credibility__indicator--compact">
+              {{ indicator }}
+            </span>
+            {% unless forloop.last %}<span class="business-credibility__separator">•</span>{% endunless %}
+          {% endfor %}
+        </div>
+    {% endcase %}
+  </div>
+{% endif %}

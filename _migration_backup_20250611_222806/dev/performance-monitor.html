@@ -1,0 +1,378 @@
+{% comment %}
+Component: dev/performance-monitor.html
+Purpose: Client-side performance monitoring for Core Web Vitals and page metrics
+
+Parameters:
+- show_panel (optional): Show performance panel UI (default: true)
+- auto_report (optional): Auto-report metrics to console (default: true)
+- track_vitals (optional): Track Core Web Vitals (default: true)
+- track_resources (optional): Track resource loading (default: false)
+- position (optional): Panel position - "top-left", "top-right", "bottom-left", "bottom-right" (default: "top-right")
+
+Usage:
+{% unless jekyll.environment == "production" %}
+  {% include dev/performance-monitor.html %}
+{% endunless %}
+
+{% include dev/performance-monitor.html show_panel=false auto_report=true %}
+{% endcomment %}
+
+{% unless jekyll.environment == "production" %}
+{% assign show_panel = include.show_panel | default: true %}
+{% assign auto_report = include.auto_report | default: true %}
+{% assign track_vitals = include.track_vitals | default: true %}
+{% assign track_resources = include.track_resources | default: false %}
+{% assign position = include.position | default: "top-right" %}
+
+{% if show_panel %}
+<div class="perf-monitor perf-monitor--{{ position }}" id="perf-monitor">
+  <div class="perf-monitor__header">
+    <h4 class="perf-monitor__title">⚡ Performance</h4>
+    <button class="perf-monitor__toggle" onclick="togglePerfMonitor()">−</button>
+  </div>
+  
+  <div class="perf-monitor__content" id="perf-content">
+    <div class="perf-monitor__section">
+      <h5>Core Web Vitals</h5>
+      <div class="perf-monitor__metrics">
+        <div class="perf-metric">
+          <span class="perf-metric__label">LCP</span>
+          <span class="perf-metric__value" id="lcp-value">-</span>
+        </div>
+        <div class="perf-metric">
+          <span class="perf-metric__label">FID</span>
+          <span class="perf-metric__value" id="fid-value">-</span>
+        </div>
+        <div class="perf-metric">
+          <span class="perf-metric__label">CLS</span>
+          <span class="perf-metric__value" id="cls-value">-</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="perf-monitor__section">
+      <h5>Page Timing</h5>
+      <div class="perf-monitor__metrics">
+        <div class="perf-metric">
+          <span class="perf-metric__label">DOMContentLoaded</span>
+          <span class="perf-metric__value" id="dcl-value">-</span>
+        </div>
+        <div class="perf-metric">
+          <span class="perf-metric__label">Load</span>
+          <span class="perf-metric__value" id="load-value">-</span>
+        </div>
+        <div class="perf-metric">
+          <span class="perf-metric__label">TTFB</span>
+          <span class="perf-metric__value" id="ttfb-value">-</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="perf-monitor__actions">
+      <button onclick="exportMetrics()">Export</button>
+      <button onclick="clearMetrics()">Clear</button>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<style>
+.perf-monitor {
+  position: fixed;
+  z-index: 99998;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+}
+
+.perf-monitor--top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.perf-monitor--top-left {
+  top: 10px;
+  left: 10px;
+}
+
+.perf-monitor--bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
+.perf-monitor--bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.perf-monitor__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #e9ecef;
+  border-bottom: 1px solid #dee2e6;
+  border-radius: 5px 5px 0 0;
+}
+
+.perf-monitor__title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.perf-monitor__toggle {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6c757d;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perf-monitor__content {
+  padding: 12px;
+}
+
+.perf-monitor__section {
+  margin-bottom: 12px;
+}
+
+.perf-monitor__section:last-child {
+  margin-bottom: 0;
+}
+
+.perf-monitor__section h5 {
+  margin: 0 0 6px 0;
+  font-size: 11px;
+  color: #6c757d;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.perf-monitor__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.perf-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.perf-metric__label {
+  color: #495057;
+  font-weight: 500;
+}
+
+.perf-metric__value {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 11px;
+  color: #28a745;
+}
+
+.perf-metric__value.warning {
+  color: #ffc107;
+}
+
+.perf-metric__value.error {
+  color: #dc3545;
+}
+
+.perf-monitor__actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #dee2e6;
+}
+
+.perf-monitor__actions button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.perf-monitor__actions button:hover {
+  background: #0056b3;
+}
+</style>
+
+<script>
+(function() {
+  const metrics = {
+    lcp: null,
+    fid: null,
+    cls: null,
+    ttfb: null,
+    dcl: null,
+    load: null
+  };
+
+  function formatMetric(value, type) {
+    if (value === null) return '-';
+    
+    switch (type) {
+      case 'time':
+        return value < 1000 ? `${Math.round(value)}ms` : `${(value / 1000).toFixed(2)}s`;
+      case 'score':
+        return (value * 1000).toFixed(3);
+      default:
+        return Math.round(value);
+    }
+  }
+
+  function updateDisplay() {
+    {% if show_panel %}
+    const updates = {
+      'lcp-value': formatMetric(metrics.lcp, 'time'),
+      'fid-value': formatMetric(metrics.fid, 'time'),
+      'cls-value': formatMetric(metrics.cls, 'score'),
+      'ttfb-value': formatMetric(metrics.ttfb, 'time'),
+      'dcl-value': formatMetric(metrics.dcl, 'time'),
+      'load-value': formatMetric(metrics.load, 'time')
+    };
+
+    Object.entries(updates).forEach(([id, value]) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = value;
+        
+        // Color coding for Core Web Vitals
+        if (id === 'lcp-value' && metrics.lcp) {
+          element.className = `perf-metric__value ${metrics.lcp > 4000 ? 'error' : metrics.lcp > 2500 ? 'warning' : ''}`;
+        } else if (id === 'fid-value' && metrics.fid) {
+          element.className = `perf-metric__value ${metrics.fid > 300 ? 'error' : metrics.fid > 100 ? 'warning' : ''}`;
+        } else if (id === 'cls-value' && metrics.cls) {
+          element.className = `perf-metric__value ${metrics.cls > 0.25 ? 'error' : metrics.cls > 0.1 ? 'warning' : ''}`;
+        }
+      }
+    });
+    {% endif %}
+  }
+
+  {% if track_vitals %}
+  // Core Web Vitals tracking
+  function trackWebVitals() {
+    // LCP (Largest Contentful Paint)
+    new PerformanceObserver((entryList) => {
+      const entries = entryList.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      metrics.lcp = lastEntry.startTime;
+      updateDisplay();
+      {% if auto_report %}console.log('LCP:', metrics.lcp);{% endif %}
+    }).observe({ entryTypes: ['largest-contentful-paint'] });
+
+    // FID (First Input Delay)
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        if (entry.name === 'first-input') {
+          metrics.fid = entry.processingStart - entry.startTime;
+          updateDisplay();
+          {% if auto_report %}console.log('FID:', metrics.fid);{% endif %}
+        }
+      }
+    }).observe({ entryTypes: ['first-input'] });
+
+    // CLS (Cumulative Layout Shift)
+    let clsValue = 0;
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        if (!entry.hadRecentInput) {
+          clsValue += entry.value;
+          metrics.cls = clsValue;
+          updateDisplay();
+        }
+      }
+      {% if auto_report %}console.log('CLS:', metrics.cls);{% endif %}
+    }).observe({ entryTypes: ['layout-shift'] });
+  }
+
+  // Initialize Core Web Vitals tracking
+  if ('PerformanceObserver' in window) {
+    trackWebVitals();
+  }
+  {% endif %}
+
+  // Navigation Timing
+  window.addEventListener('load', function() {
+    const navigation = performance.getEntriesByType('navigation')[0];
+    if (navigation) {
+      metrics.ttfb = navigation.responseStart - navigation.requestStart;
+      metrics.dcl = navigation.domContentLoadedEventEnd - navigation.navigationStart;
+      metrics.load = navigation.loadEventEnd - navigation.navigationStart;
+      updateDisplay();
+    }
+  });
+
+  // Global functions for panel
+  window.togglePerfMonitor = function() {
+    const content = document.getElementById('perf-content');
+    const toggle = document.querySelector('.perf-monitor__toggle');
+    if (content && toggle) {
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        toggle.textContent = '−';
+      } else {
+        content.style.display = 'none';
+        toggle.textContent = '+';
+      }
+    }
+  };
+
+  window.exportMetrics = function() {
+    const data = {
+      timestamp: new Date().toISOString(),
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      metrics: metrics
+    };
+    
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `performance-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  window.clearMetrics = function() {
+    Object.keys(metrics).forEach(key => metrics[key] = null);
+    updateDisplay();
+    console.log('Performance metrics cleared');
+  };
+
+  {% if auto_report %}
+  // Auto-report summary after page load
+  window.addEventListener('load', function() {
+    setTimeout(() => {
+      console.group('🚀 Performance Summary');
+      console.log('LCP:', formatMetric(metrics.lcp, 'time'));
+      console.log('FID:', formatMetric(metrics.fid, 'time'));
+      console.log('CLS:', formatMetric(metrics.cls, 'score'));
+      console.log('TTFB:', formatMetric(metrics.ttfb, 'time'));
+      console.log('Page Load:', formatMetric(metrics.load, 'time'));
+      console.groupEnd();
+    }, 3000);
+  });
+  {% endif %}
+})();
+</script>
+{% endunless %}

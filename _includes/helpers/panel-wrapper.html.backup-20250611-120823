@@ -1,0 +1,62 @@
+{% comment %}
+HELPER: Panel Wrapper
+PURPOSE: Universal panel wrapper for section content with centralized styling
+USAGE: {% include helpers/panel-wrapper.html type="panel--light" content_include="pages/brands/hero.html" %}
+PARAMETERS:
+  - type (required, string): Panel type class (panel--light, panel--hero, etc.)
+  - content_include (optional, string): Path to include file for content
+  - direct_content (optional, string): Direct content alternative to include
+  - additional_classes (optional, string): Extra CSS classes to add
+RETURNS: Wrapped panel content with consistent styling structure
+DEPENDENCIES: CSS panel system, section-specific includes
+EXAMPLE: {% include helpers/panel-wrapper.html type="panel--hero" content_include="pages/discovery/hero.html" %}
+NOTE: Core layout component. Used by page-sections.html for consistent panel structure.
+{% endcomment %}
+
+{% comment %} Parameter validation and defaults {% endcomment %}
+{% assign panel_type = include.type | default: "panel--light" %}
+{% assign panel_additional_classes = include.additional_classes | default: "" %}
+{% assign content_additional_classes = include.content_classes | default: "" %}
+{% assign content_path = include.content_include %}
+{% assign direct_content = include.direct_content %}
+{% assign params = include.include_params | default: "" %}
+
+{% comment %} Build CSS classes {% endcomment %}
+{% assign panel_classes = "panel " | append: panel_type %}
+{% if panel_additional_classes != "" %}
+  {% assign panel_classes = panel_classes | append: " " | append: panel_additional_classes %}
+{% endif %}
+
+{% assign content_classes = "panel__content" %}
+{% if content_additional_classes != "" %}
+  {% assign content_classes = content_classes | append: " " | append: content_additional_classes %}
+{% endif %}
+
+{% comment %} Render panel with content {% endcomment %}
+<div class="{{ panel_classes }}">
+  <div class="{{ content_classes }}">
+    {% if direct_content %}
+      {% comment %} Render direct content for discover pages {% endcomment %}
+      {{ direct_content }}
+    {% elsif content_path %}
+      {% comment %} Route to specific includes based on content_path {% endcomment %}
+      {% case content_path %}
+        {% when "pages/home/discovery-dimensions.html" %}
+          {% include pages/home/discovery-dimensions.html %}
+        {% when "pages/brands/hero.html" %}
+          {% include pages/brands/hero.html %}
+        {% when "pages/discovery/hero.html" %}
+          {% include pages/discovery/hero.html %}
+        {% when "components/cards/dimension-card.html" %}
+          {% include components/cards/dimension-card.html type=include.dimension_type limit=include.dimension_limit %}
+        {% when "components/dimensions/discovery-dimensions-grid.html" %}
+          {% include components/dimensions/discovery-dimensions-grid.html columns=include.grid_columns limit=include.grid_limit %}
+        {% else %}
+          {% comment %} Fallback - render a placeholder for unknown includes {% endcomment %}
+          <div class="panel-content-placeholder">
+            <p><em>Content section: {{ content_path }}</em></p>
+          </div>
+      {% endcase %}
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% comment %}
+  Layout: case-study.html
+  Purpose: Renders individual case study pages with business context and metrics
+  Used By: pages/case-studies/ static pages
+  Front Matter Required: Standard case study metadata (client, industry, duration, metrics)
+  Sections Rendered: Data-driven via page_sections.yml (case-study)
+  Panel System: Uses various panel types for different content sections
+  Dependencies: helpers/page-sections.html, _includes/pages/case-study/[section].html
+  
+  Architecture Notes:
+  - Follows "Logic Light" design philosophy with data-driven sectioning
+  - Uses existing panel wrapper system for consistent styling
+  - Integrates with component defaults for configurable behavior
+  - Supports markdown content rendering in designated content sections
+  - Maintains mobile-first responsive design patterns
+{% endcomment %}
+
+{% assign page_case_study = page %}
+{% capture page_content %}{{ content }}{% endcapture %}
+
+<div class="case-study-page">
+  {% include helpers/page-sections.html 
+     page_type="case-study" 
+     content=page_content %}
+</div>

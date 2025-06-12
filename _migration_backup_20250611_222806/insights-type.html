@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<!-- ----------------------------------------------------------------------------
+  INSIGHTS TYPE LAYOUT
+  ------------------------------------------------------------------------------
+  Used for displaying insights filtered by type (category), such as:
+    - /en/insights/types/brand-spotlight/
+    - /en/insights/types/founders-journey/
+
+  Purpose:
+  - Displays all insights of a specific type
+  - Filters insights based on category
+  - Shows description and metadata for the insight type
+
+  Dependencies:
+  - _includes/components/cards/insight-card.html
+  - site.data.translations for multilingual labels
+---------------------------------------------------------------------------- -->
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="back-link">
+      ← {% include helpers/t.html key="insights.back_to_insights" lang=page.lang %}
+    </a>
+    
+    <h1>{{ page.title }}</h1>
+    
+    {% if page.description %}
+    <p class="insight-type-description">{{ page.description }}</p>
+    {% endif %}
+    
+    {{ content }}
+  </div>
+</div>

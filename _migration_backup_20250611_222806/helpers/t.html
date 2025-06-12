@@ -1,0 +1,47 @@
+{% comment %}
+HELPER: Translation (t)
+PURPOSE: Centralized multilingual translation lookup with intelligent fallback chain to eliminate hardcoded text across templates
+
+USAGE: {% include helpers/t.html key="home.hero.title" fallback="Welcome to Brandmine" %}
+
+PARAMETERS:
+- key (required): Dot-separated translation path string (e.g. "home.hero.title")
+- fallback (optional): Default text string if translation not found
+- lang (optional): Language code string override (defaults to page.lang)
+
+RETURNS: Outputs translated text string with fallback chain: translation > fallback > humanized key
+
+DEPENDENCIES:
+- Data: site.data.translations[lang] nested structure
+- Includes: None
+- Variables: page.lang for language context
+
+EXAMPLE:
+{% include helpers/t.html key="brands.featured_brands" fallback="Featured Brands" %}
+<!-- Outputs: "Избранные бренды" (in Russian) or "Featured Brands" -->
+{% include helpers/t.html key="buttons.view_profile" %}
+<!-- Auto-fallback: "View profile" from key humanization -->
+{% endcomment %}
+
+{% comment %} Determine translation language with fallback chain {% endcomment %}
+{% assign translation_lang = include.lang | default: page.lang | default: 'en' %}
+{% assign keys = include.key | split: "." %}
+{% assign result = site.data.translations[translation_lang] %}
+
+{% comment %} Navigate through nested translation structure {% endcomment %}
+{% for key in keys %}
+  {% if result %}
+    {% assign result = result[key] %}
+  {% else %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Output with fallback chain: translation > fallback > humanized key {% endcomment %}
+{% if result %}
+  {{ result }}
+{% elsif include.fallback %}
+  {{ include.fallback }}
+{% else %}
+  {{ include.key | replace: ".", " " | capitalize }}
+{% endif %}

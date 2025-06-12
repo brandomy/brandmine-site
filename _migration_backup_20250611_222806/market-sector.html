@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% comment %}
+  Layout: market-sector.html (DATA-DRIVEN REFACTORED)
+
+  Purpose: Market-sector intersection pages showing brands at the crossroads of specific markets and sectors
+
+  Structure:
+  - Uses data-driven section rendering with helpers/page-sections.html
+  - Supports configurable sections via page front matter or defaults
+  - Follows the established linear sectioning architecture
+  - Specialized for dual-taxonomy filtering
+
+  Dependencies:
+  - _includes/pages/market-sector/[section-name].html files for content sections
+  - CSS: pages/market-sector/_index.scss and related component files
+  - _data/page_sections.yml for section configuration
+  - Site brands collection for filtered display
+
+  Default sections if not specified:
+  - hero, content, featured-brands, all-brands
+
+  Used by pages like:
+  - /[lang]/discover/markets/russia/sectors/wine/
+  - /[lang]/discover/markets/brazil/sectors/artisanal-spirits/
+  - /[lang]/discover/markets/china/sectors/natural-beauty/
+{% endcomment %}
+
+{% include helpers/page-sections.html page_type="market-sector" content=page.content %}

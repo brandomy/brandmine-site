@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% comment %}
+  Layout: test.html (DEVELOPMENT LAYOUT)
+
+  Purpose: Basic testing layout for development and debugging purposes
+
+  Structure:
+  - Extends default layout
+  - Simple content wrapper with minimal styling
+  - Direct content rendering without complex sectioning
+  - Suitable for quick prototyping and testing
+
+  Dependencies:
+  - Layout: default.html
+  - CSS: Basic site styles only
+  - No specialized JavaScript or components
+
+  Used for:
+  - Development testing
+  - Component prototyping
+  - Debugging layout issues
+  - Quick content validation
+{% endcomment %}
+
+<h1>{{ page.title }}</h1>
+<div class="test-content">
+  {{ content }}
+</div>
