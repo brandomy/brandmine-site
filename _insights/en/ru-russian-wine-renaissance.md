@@ -13,6 +13,7 @@ author: "randal_eastman"  # Key for translation lookup
 excerpt: "Russia's wine industry is experiencing unprecedented growth, with domestic production doubling and increasing international recognition."
 category: "market_momentum"  # Must match insights/en.yml
 reading_time: 7
+hero_image: "/assets/images/insights/ru-russian-wine-renaissance/hero-russian-vineyards.jpg"  # Week 3 enhancement
 
 # Brand Information
 brands: [ru-krasnodar-wines]  # Exact slugs only

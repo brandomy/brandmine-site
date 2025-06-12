@@ -13,6 +13,7 @@ author: "olya_eastman"  # Key for translation lookup
 excerpt: "How the pristine forests of Southern Siberia are becoming the epicenter of Russia's premium honey industry, attracting international attention."
 category: "location_intelligence"  # Must match insights/en.yml
 reading_time: 6
+hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-apiaries.jpg"  # Week 3 enhancement
 
 # Brand Information
 brands: [ru-siberian-gold, ru-altai-honey]  # Featured brand(s) with market prefix

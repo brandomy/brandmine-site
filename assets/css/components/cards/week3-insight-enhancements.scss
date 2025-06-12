@@ -1,0 +1,382 @@
+// Week 3 Strategic Enhancements - Insight Card Differentiation
+// Uses Brandmine design token system for consistency
+
+// ==========================================================================
+// INSIGHT CARD BASE ENHANCEMENTS
+// ==========================================================================
+
+.insight-card {
+  // Enhanced card structure
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-medium);
+  background: var(--neutral-50);
+  border: var(--border-width-thin) solid var(--neutral-200);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  // Category-specific hero styling
+  &__hero {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  &__hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  &:hover &__hero-image {
+    transform: scale(1.05);
+  }
+
+  &__hero-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--neutral-100);
+    color: var(--neutral-400);
+  }
+
+  &__category-overlay {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+  }
+
+  &__category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--surface-alpha-90);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    border: var(--border-width-thin) solid var(--surface-alpha-30);
+  }
+
+  &__category-icon {
+    font-size: var(--text-sm);
+  }
+
+  // Enhanced header with reading investment
+  &__header {
+    padding: var(--space-4);
+  }
+
+  &__meta-enhanced {
+    margin-bottom: var(--space-3);
+  }
+
+  &__reading-investment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-2);
+  }
+
+  &__reading-time {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    color: var(--neutral-500);
+    font-weight: var(--font-medium);
+  }
+
+  &__time-icon {
+    font-size: var(--text-xs);
+  }
+
+  &__value-prop {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: var(--primary-600);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  &__byline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--neutral-500);
+  }
+
+  &__author {
+    font-weight: var(--font-medium);
+  }
+
+  &__date {
+    &::before {
+      content: "•";
+      margin-right: var(--space-2);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+  }
+
+  &__title-link {
+    color: var(--neutral-900);
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--primary-600);
+    }
+  }
+
+  // Enhanced content area
+  &__content {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+
+  &__excerpt {
+    font-size: var(--text-sm);
+    color: var(--neutral-700);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-3) 0;
+  }
+
+  &__featured-context {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    padding: var(--space-2) var(--space-3);
+    background: var(--neutral-100);
+    border-radius: var(--radius-sm);
+  }
+
+  &__context-label {
+    color: var(--neutral-500);
+    font-weight: var(--font-medium);
+  }
+
+  &__context-value {
+    color: var(--neutral-700);
+    font-weight: var(--font-semibold);
+  }
+
+  // Strategic footer with enhanced CTAs
+  &__footer {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    transition: all var(--transition-medium);
+    cursor: pointer;
+  }
+
+  &__cta-text {
+    flex: 1;
+  }
+
+  &__cta-icon {
+    font-size: var(--text-base);
+    transition: transform var(--transition-fast);
+  }
+
+  &__cta:hover &__cta-icon {
+    transform: translateX(4px);
+  }
+}
+
+// ==========================================================================
+// CATEGORY-SPECIFIC STYLING
+// ==========================================================================
+
+// Brand Spotlight - Orange theme
+.insight-card--brand-spotlight {
+  .insight-card__category-badge {
+    color: var(--secondary-700);
+    background: var(--secondary-100);
+    border-color: var(--secondary-200);
+  }
+
+  .insight-card__value-prop {
+    color: var(--secondary-600);
+  }
+
+  .insight-card__cta--brand-spotlight {
+    background: var(--secondary-500);
+    color: var(--neutral-50);
+    
+    &:hover {
+      background: var(--secondary-600);
+      box-shadow: var(--shadow-card-hover);
+    }
+  }
+}
+
+// Founders Journey - Indigo theme
+.insight-card--founders-journey {
+  .insight-card__category-badge {
+    color: var(--accent-700);
+    background: var(--accent-100);
+    border-color: var(--accent-200);
+  }
+
+  .insight-card__value-prop {
+    color: var(--accent-600);
+  }
+
+  .insight-card__cta--founders-journey {
+    background: var(--accent-500);
+    color: var(--neutral-50);
+    
+    &:hover {
+      background: var(--accent-600);
+      box-shadow: var(--shadow-card-hover);
+    }
+  }
+}
+
+// Location Intelligence - Sky blue theme
+.insight-card--location-intelligence {
+  .insight-card__category-badge {
+    color: var(--sky-700);
+    background: var(--sky-100);
+    border-color: var(--sky-200);
+  }
+
+  .insight-card__value-prop {
+    color: var(--sky-600);
+  }
+
+  .insight-card__cta--location-intelligence {
+    background: var(--sky-500);
+    color: var(--neutral-50);
+    
+    &:hover {
+      background: var(--sky-600);
+      box-shadow: var(--shadow-card-hover);
+    }
+  }
+}
+
+// Market Momentum - Olive theme
+.insight-card--market-momentum {
+  .insight-card__category-badge {
+    color: var(--olive-700);
+    background: var(--olive-100);
+    border-color: var(--olive-200);
+  }
+
+  .insight-card__value-prop {
+    color: var(--olive-600);
+  }
+
+  .insight-card__cta--market-momentum {
+    background: var(--olive-500);
+    color: var(--neutral-50);
+    
+    &:hover {
+      background: var(--olive-600);
+      box-shadow: var(--shadow-card-hover);
+    }
+  }
+}
+
+// Default category - Primary theme
+.insight-card--default {
+  .insight-card__category-badge {
+    color: var(--primary-700);
+    background: var(--primary-100);
+    border-color: var(--primary-200);
+  }
+
+  .insight-card__value-prop {
+    color: var(--primary-600);
+  }
+
+  .insight-card__cta--default {
+    background: var(--primary-500);
+    color: var(--neutral-50);
+    
+    &:hover {
+      background: var(--primary-600);
+      box-shadow: var(--shadow-card-hover);
+    }
+  }
+}
+
+// ==========================================================================
+// MOBILE OPTIMIZATIONS
+// ==========================================================================
+
+@media (max-width: 767px) {
+  .insight-card {
+    &__hero {
+      height: 160px;
+    }
+
+    &__header {
+      padding: var(--space-3);
+    }
+
+    &__content {
+      padding: 0 var(--space-3) var(--space-3);
+    }
+
+    &__footer {
+      padding: 0 var(--space-3) var(--space-3);
+    }
+
+    &__reading-investment {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
+
+    &__title {
+      font-size: var(--text-base);
+    }
+
+    &__excerpt {
+      font-size: var(--text-xs);
+    }
+  }
+}
+
+// ==========================================================================
+// ENHANCED GRID LAYOUT
+// ==========================================================================
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
