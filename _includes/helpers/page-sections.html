@@ -1,26 +1,67 @@
 {% comment %}
-  Component: helpers/page-sections.html
-  Purpose: Data-driven page section rendering using page_sections.yml configuration
+  HELPER: page-sections.html
+  PURPOSE: Data-driven page section rendering using centralized configuration - core layout system for Brandmine
   
-  This helper eliminates hardcoded section logic in layout files by using
-  centralized configuration for section order and panel mappings.
+  PARAMETERS:
+  - page_type (required): String - Type of page ("brands", "founders", "discovery", "insights", "about", "home", "brand-profile", "founder-profile")
+  - sections (optional): Array - Override for sections to render (defaults to page.sections or config defaults)
+  - content (optional): String - Page content to pass to content section for rendering
   
-  Parameters:
-  - page_type: Type of page (brands, founders, discovery, insights, about) - required
-  - sections: Optional override for sections array (uses page.sections or defaults)
-  - content: Optional page content to pass to content section
+  DATA DEPENDENCIES:
+  - _data/page_sections.yml - Central configuration for all page types
+  - _data/component_defaults.yml - Default component settings
+  - Individual section includes in _includes/pages/[page_type]/
   
-  Usage Examples:
+  RETURNS:
+  Renders a complete page structure with sections wrapped in semantic HTML and appropriate panels
+  
+  USAGE:
   {% include helpers/page-sections.html page_type="brands" %}
-  {% include helpers/page-sections.html page_type="insights" sections=custom_sections %}
-  {% include helpers/page-sections.html page_type="about" content=page_content %}
+  {% include helpers/page-sections.html page_type="discovery" sections=page.sections %}
+  {% include helpers/page-sections.html page_type="about" content=page.content %}
   
-  Design Philosophy:
-  - Centralizes all section configuration in _data/page_sections.yml
-  - Eliminates complex conditional logic in layout files
-  - Provides consistent panel mappings across all page types
-  - Maintains flexibility through parameter overrides
-  - Supports special cases like breadcrumbs and content sections
+  EXAMPLES FROM BRANDMINE:
+  1. In brand profile layout (_layouts/brand-profile.html):
+     {% include helpers/page-sections.html page_type="brand-profile" %}
+  
+  2. In discovery page (_pages/en/discovery.md):
+     sections: [hero, dimensions-grid, featured-brands, latest-insights, contact-cta]
+     {% include helpers/page-sections.html page_type="discovery" %}
+  
+  3. In about page with content override:
+     {% capture about_content %}{{ content }}{% endcapture %}
+     {% include helpers/page-sections.html page_type="about" content=about_content %}
+  
+  ARCHITECTURE NOTES:
+  - Implements "Logic Light" design pattern - configuration over conditionals
+  - Each section gets semantic HTML wrapper with proper IDs and ARIA labels
+  - Panel types are configured in page_sections.yml, not hardcoded
+  - Supports both simple sections and complex multi-include sections
+  - Breadcrumbs handled separately to maintain consistent positioning
+  
+  ERROR HANDLING:
+  - Missing page_type: Falls back to basic hero,content sections
+  - Missing section include: Gracefully skips with Jekyll's include handling
+  - Invalid panel type: Falls back to default panel styling
+  - Type conversion ensures string comparisons work correctly
+  
+  PERFORMANCE NOTES:
+  - Configuration loaded once at build time
+  - Section includes are cached by Jekyll
+  - Minimal runtime logic for fast page rendering
+  
+  RESPONSIVE BEHAVIOR:
+  - Each section include handles its own responsive design
+  - Panel wrapper provides consistent mobile padding
+  - Section ordering maintained across all screen sizes
+  
+  ACCESSIBILITY:
+  - Semantic section tags with proper IDs
+  - ARIA labelledby attributes link to headings
+  - Consistent heading hierarchy maintained
+  
+  LAST UPDATED: 2025-01-12 by Claude
+  VERSION: 2.0 (Logic Light migration complete)
 {% endcomment %}
 
 {% comment %} Parameter validation {% endcomment %}

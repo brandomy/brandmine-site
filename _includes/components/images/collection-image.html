@@ -1,33 +1,96 @@
 {% comment %}
-COMPONENT: Collection Image
-PURPOSE: Universal responsive image component for all collections with mobile-first optimization and intelligent sizing
-
-USAGE: {% include components/images/collection-image.html collection="brands" slug="ru-teatime" purpose="hero" alt="TeaTime store" %}
-
-PARAMETERS:
-- collection (required): Collection name string (e.g., "brands", "founders", "insights")
-- slug (required): Unique identifier string (e.g., "ru-teatime", "br-eduardo-santos")
-- purpose (required): Image purpose string (e.g., "hero", "portrait", "headshot")
-- alt (required): Alt text string for accessibility
-- category (optional): Subcategory string (e.g., "team", "testimonials")
-- name (optional): Additional identifier string (e.g., "storefront", "alexei")
-- aspect (optional): Aspect ratio type string - "landscape", "portrait", "square", defaults to "landscape"
-- ratio (optional): Specific ratio string for data attribute
-- class (optional): Additional CSS classes string
-- ext (optional): File extension string, defaults to "jpg"
-- loading (optional): Loading priority string - "lazy" or "eager", defaults to "lazy"
-- fallback (optional): Boolean to use placeholder if missing, defaults to true
-
-DEPENDENCIES:
-- CSS: None (inline responsive sizing)
-- Data: None
-- Includes: None
-
-VARIANTS:
-- Purpose-based sizing: hero (full-width), thumbnail (small), gallery (grid), product (medium), feature (large)
-- Aspect-based layouts: landscape (3:2), portrait (2:3), square (1:1)
-
-NOTES: Mobile-first sizes attribute calculated based on purpose and aspect. Fallback placeholder path: /assets/images/placeholders/[collection]-[purpose]-400w.[ext]. Standard widths: 400w, 800w, 1200w.
+  IMAGE COMPONENT: Collection Image
+  PURPOSE: Universal responsive image component for all collections with mobile-first optimization and intelligent sizing
+  LOCATION: Used throughout Brandmine for brands, founders, insights, dimensions, and site images
+  
+  PARAMETERS:
+  - collection (required): String - Collection name ("brands", "founders", "insights", "dimensions", "site")
+  - slug (required): String - Unique identifier (e.g., "ru-teatime", "br-eduardo-santos", "2025-01-market-update")
+  - purpose (required): String - Image purpose determining sizing behavior:
+    - "hero": Full-width hero images (100vw on mobile)
+    - "logo": Brand/company logos (fixed sizes)
+    - "portrait": Founder portraits (2:3 aspect)
+    - "headshot": Square profile images (1:1 aspect)
+    - "gallery": Grid gallery images
+    - "thumbnail": Small preview images
+    - "feature": Featured content images
+  - alt (required): String - Descriptive alt text for accessibility (e.g., "TeaTime storefront in Moscow")
+  - category (optional): String - Subcategory for organization ("team", "testimonials", "gallery")
+  - name (optional): String - Specific image name override (e.g., "storefront", "portrait", "ceremony")
+  - aspect (optional): String - Aspect ratio type. Default: "landscape"
+    - "landscape": 3:2 ratio for content images
+    - "portrait": 2:3 ratio for people/products
+    - "square": 1:1 ratio for logos/icons
+  - ratio (optional): String - Custom aspect ratio for data-aspect-ratio attribute
+  - class (optional): String - Additional CSS classes for styling
+  - ext (optional): String - File extension. Default: "jpg" (also supports "png", "webp")
+  - loading (optional): String - Loading priority. Default: "lazy"
+    - "lazy": Defer loading until near viewport
+    - "eager": Load immediately (use for above-fold images)
+  - fallback (optional): Boolean - Use placeholder if image missing. Default: true
+  
+  GENERATED OUTPUT:
+  - Responsive <img> tag with optimized srcset for 400w, 800w, 1200w versions
+  - Mobile-first sizes attribute based on purpose and viewport
+  - Proper loading and decoding attributes for performance
+  - Accessibility-compliant alt text
+  - Optional placeholder fallback for missing images
+  
+  USAGE:
+  {% include components/images/collection-image.html 
+     collection="brands" slug="ru-teatime" purpose="hero" 
+     alt="TeaTime storefront in Moscow" %}
+  
+  {% include components/images/collection-image.html 
+     collection="founders" slug="ru-alexei-sokolov" purpose="portrait" 
+     alt="Alexei Sokolov, founder of TeaTime" loading="eager" %}
+  
+  EXAMPLES FROM BRANDMINE:
+  1. Brand hero image (_includes/pages/brand/hero.html):
+     {% include components/images/collection-image.html
+        collection="brands" slug=brand.ref purpose="hero" name="storefront"
+        alt=brand.title loading="eager" %}
+  
+  2. Founder portrait (_includes/components/cards/founder-card.html):
+     {% include components/images/collection-image.html
+        collection="founders" slug=founder.ref purpose="portrait"
+        alt=founder.name aspect="portrait" %}
+  
+  3. Insight feature image (_includes/pages/insight/hero.html):
+     {% include components/images/collection-image.html
+        collection="insights" slug=page.slug purpose="feature"
+        alt=page.title ratio="16:9" %}
+  
+  IMAGE REQUIREMENTS:
+  - Original images: /assets/images/[collection]/[slug]/originals/[purpose]-[name].[ext]
+  - Processed versions: Generated by _scripts/core/process_images.sh
+  - Required sizes: 400w, 800w, 1200w for each image
+  - Naming convention: [purpose]-[name]-[width]w.[ext]
+  
+  RESPONSIVE BEHAVIOR:
+  - Hero images: 100vw on mobile, 80vw on tablet, 1200px max on desktop
+  - Gallery images: 100vw on mobile, 50vw on tablet, 33vw on desktop
+  - Thumbnails: Fixed 200px on all devices
+  - Portraits: 100vw mobile, 300px tablet+
+  
+  ACCESSIBILITY:
+  - Required alt text parameter ensures all images have descriptions
+  - Decorative images can use alt="" but must be explicitly set
+  - Images lazy load with proper sizing to prevent layout shift
+  
+  PERFORMANCE NOTES:
+  - Mobile-first sizes attribute minimizes bandwidth usage
+  - Lazy loading by default reduces initial page load
+  - WebP format supported with fallback to JPEG
+  - Placeholder prevents broken image layouts
+  
+  ERROR HANDLING:
+  - Missing images fall back to collection-specific placeholders
+  - Invalid parameters use sensible defaults
+  - Console warnings in development for missing required parameters
+  
+  LAST UPDATED: 2025-01-12 by Claude
+  VERSION: 3.0 (Complete mobile-first responsive implementation)
 {% endcomment %}
 
 

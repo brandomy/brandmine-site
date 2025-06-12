@@ -1,18 +1,52 @@
 {% comment %}
-  Helper: dimension-name.html
-  Purpose: Centralized dimension name lookup with multilingual support
+  HELPER: dimension-name.html
+  PURPOSE: Centralized dimension name lookup with multilingual support for the Brandmine taxonomy system
   
-  Parameters:
-  - type: The dimension type (markets, sectors, attributes, signals)
-  - id: The dimension ID/slug
-  - lang: Language code (optional, defaults to page.lang)
-  - fallback: Optional fallback text if dimension not found
+  PARAMETERS:
+  - type (required): String - The dimension type ("markets", "sectors", "attributes", "signals")
+  - id (required): String - The dimension ID/slug to look up (e.g., "russia", "gourmet-foods")
+  - lang (optional): String - Language code ("en", "ru", "zh"). Defaults to page.lang then "en"
+  - fallback (optional): String - Text to display if dimension not found. Defaults to the ID
   
-  Usage:
+  RETURNS:
+  The localized name of the dimension in the requested language, or fallback text if not found
+  
+  USAGE:
   {% include helpers/dimension-name.html type="markets" id="brazil" %}
-  {% include helpers/dimension-name.html type="sectors" id=sector_variable lang="ru" fallback="Unknown Sector" %}
+  {% include helpers/dimension-name.html type="sectors" id=brand.sectors[0] %}
+  {% include helpers/dimension-name.html type="attributes" id="founder-led" lang="ru" %}
+  {% include helpers/dimension-name.html type="signals" id=signal_var fallback="Unknown Signal" %}
   
-  Returns: The localized name of the dimension or fallback
+  EXAMPLES FROM BRANDMINE:
+  1. In brand identity taxonomy display (_includes/pages/brand/identity.html):
+     {% include helpers/dimension-name.html type="sectors" id=sector %}
+  
+  2. In dimension cards (_includes/components/cards/dimension-card.html):
+     {% include helpers/dimension-name.html type=dimension.type id=dimension.id %}
+  
+  DATA DEPENDENCIES:
+  - _data/markets.json - Market dimension definitions (nested structure: {"markets": [...]})
+  - _data/sectors.json - Sector dimension definitions (nested structure: {"sectors": [...]})
+  - _data/attributes.json - Attribute dimension definitions (direct array: [...])
+  - _data/signals.json - Signal dimension definitions (direct array: [...])
+  
+  ERROR HANDLING:
+  - Missing dimension type: Returns fallback or ID
+  - Missing dimension ID: Returns fallback or ID
+  - Missing translation: Falls back to English, then ID
+  - Invalid data structure: Attempts nested then direct array lookup
+  
+  PERFORMANCE NOTES:
+  - Liquid where filter is used for efficient ID lookup
+  - Country code lookup for markets adds minimal overhead
+  - No caching needed as Jekyll builds are static
+  
+  ACCESSIBILITY:
+  - Always returns human-readable text for screen readers
+  - Fallback ensures no empty strings are rendered
+  
+  LAST UPDATED: 2025-01-12 by Claude (Fixed taxonomy rendering bug)
+  VERSION: 2.0 (Fixed variable scope and data structure handling)
 {% endcomment %}
 
 {% comment %} Get the dimension collection based on type {% endcomment %}

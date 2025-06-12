@@ -1,35 +1,73 @@
 {% comment %}
-COMPONENT: Brand Card
-PURPOSE: Displays essential brand information in a structured card format with logo, description, and taxonomy tags
-
-USAGE: {% include components/cards/brand-card.html brand=brand %}
-
-PARAMETERS:
-- brand (required): Brand object with complete details:
-  - title: Brand name string (translatable)
-  - ref: Global ID string (country-brandslug format)
-  - logo: Path to brand logo image
-  - founding_year: Founding year integer
-  - description: Short brand description string (translatable)
-  - sectors: Array of sector slug strings
-  - markets: Array of market slug strings
-  - attributes: Array of attribute slug strings
-  - signals: Array of signal slug strings
-  - featured: Boolean flag for featured status
-  - featured_level: Integer level of feature status (0=basic, 1=list, 2=featured)
-- show_location (optional): Boolean to show location, defaults from component defaults
-- show_sector (optional): Boolean to show sector tag, defaults from component defaults
-- tag_limit (optional): Integer limit for taxonomy tags, defaults from component defaults
-
-DEPENDENCIES:
-- CSS: assets/css/components/cards/brand-card.scss
-- Data: site.data.translations, site.data.dimensions, site.data.component_defaults
-- Includes: helpers/component-defaults.html, components/helpers/card-header.html, components/helpers/taxonomy-tag.html, helpers/t.html, components/helpers/founder-check.html
-
-VARIANTS:
-- brand-card--featured: Applied when brand.featured or brand.featured_level > 1
-
-NOTES: Tag display order is markets > sectors > attributes > signals, with 1 tag each for balanced layout. Uses BEM class naming throughout.
+  COMPONENT: Brand Card
+  PURPOSE: Displays essential brand information in a structured card format with logo, description, and taxonomy tags
+  LOCATION: Used in brand grids, search results, related brands sections, and homepage featured brands
+  
+  PARAMETERS:
+  - brand (required): Object - Complete brand data object containing:
+    - title: String/Object - Brand name (can be string or multilingual object {en:, ru:, zh:})
+    - ref: String - Global ID in country-brandslug format (e.g., "ru-teatime")
+    - logo: String - Path to brand logo image
+    - founding_year: Integer - Year the brand was founded (e.g., 1998)
+    - description: String/Object - Short brand description (multilingual support)
+    - sectors: Array - Sector slug strings (e.g., ["gourmet-foods"])
+    - markets: Array - Market slug strings (e.g., ["russia", "china"])
+    - attributes: Array - Attribute slug strings (e.g., ["founder-led", "heritage-brand"])
+    - signals: Array - Signal slug strings (e.g., ["export-ready", "rapid-growth"])
+    - featured: Boolean - Featured status flag
+    - featured_level: Integer - Feature prominence (0=basic, 1=list, 2=featured)
+    - location: Object - Location data {city:, region:, country:}
+  - show_location (optional): Boolean - Show location info. Default: component_defaults value (true)
+  - show_sector (optional): Boolean - Show sector tag. Default: component_defaults value (true)
+  - tag_limit (optional): Integer - Max taxonomy tags to display. Default: component_defaults value (4)
+  
+  DEPENDENCIES:
+  - helpers/component-defaults.html - Retrieves configurable defaults
+  - helpers/brand-image.html - Renders responsive brand logo
+  - helpers/t.html - Translation helper for UI text
+  - helpers/dimension-name.html - Resolves dimension names
+  - _data/component_defaults.yml - Default configuration values
+  
+  USAGE:
+  {% include components/cards/brand-card.html brand=brand %}
+  {% include components/cards/brand-card.html brand=brand show_location=false tag_limit=2 %}
+  
+  EXAMPLES FROM BRANDMINE:
+  1. In brand grid (_includes/pages/brands/latest-brands.html):
+     {% for brand in filtered_brands limit: 12 %}
+       {% include components/cards/brand-card.html brand=brand %}
+     {% endfor %}
+  
+  2. In search results (_includes/pages/search/results.html):
+     {% include components/cards/brand-card.html brand=result show_sector=true %}
+  
+  3. In related brands (_includes/pages/brand/connections.html):
+     {% include components/cards/brand-card.html brand=related_brand tag_limit=2 %}
+  
+  STYLING:
+  - CSS File: assets/css/components/cards/brand-card.scss
+  - BEM Classes: .brand-card, .brand-card__header, .brand-card__body, .brand-card__meta
+  - Modifiers: .brand-card--featured (enhanced styling for featured brands)
+  
+  ACCESSIBILITY:
+  - Logo images include alt text with brand name
+  - Links have descriptive text for screen readers
+  - Semantic HTML structure with proper heading hierarchy
+  - Color contrast meets WCAG AA standards
+  
+  RESPONSIVE:
+  - Mobile: Stack layout with full-width logo
+  - Tablet: 2-column grid layout
+  - Desktop: 3-4 column grid layout
+  - Touch-friendly tap targets on all interactive elements
+  
+  PERFORMANCE NOTES:
+  - Logo images use responsive srcset via brand-image helper
+  - Lazy loading applied to images below the fold
+  - Minimal DOM elements for efficient rendering
+  
+  LAST UPDATED: 2025-01-12 by Claude
+  VERSION: 2.1 (Enhanced documentation to professional standards)
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
