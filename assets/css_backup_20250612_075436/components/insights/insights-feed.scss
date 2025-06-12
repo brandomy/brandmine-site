@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Insights Feed - BEM Refactor
+   ==========================================================================
+*/
+
+.insights-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+}
+
+.insight-card {
+  background-color: var(--neutral-white);
+  border: 1px solid var(--neutral-200);
+  border-left: 4px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-card__link {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.insight-card__link:hover,
+.insight-card__link:focus-visible {
+  box-shadow: var(--shadow-md);
+}
+
+.insight-card__image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.insight-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.insight-card__content {
+  padding: var(--space-3);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.insight-card__title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.insight-card__excerpt {
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-3);
+}
+
+.insight-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+  color: var(--neutral-500);
+}
+
+.insight-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.insight-card__tag {
+  font-size: var(--text-xs);
+  background-color: var(--neutral-200);
+  color: var(--neutral-700);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.insight-card__date {
+  white-space: nowrap;
+}
+
+.insight-card--highlighted {
+  border-color: var(--primary-400);
+  background-color: var(--primary-50);
+}
+
+/* Category-specific border colors */
+.insight-card--brand-spotlight {
+  border-left-color: var(--secondary-400);
+}
+
+.insight-card--founders-journey {
+  border-left-color: var(--accent-400);
+}
+
+.insight-card--location-intelligence {
+  border-left-color: var(--sky-400);
+}
+
+.insight-card--market-momentum {
+  border-left-color: var(--olive-400);
+}

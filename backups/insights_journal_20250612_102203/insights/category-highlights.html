@@ -1,0 +1,126 @@
+{% comment %}
+  Page Section: insights/category-highlights.html
+  
+  Purpose: Displays one featured article from each insight category
+  Context: Provides curated highlights across all four content categories
+  
+  Parameters:
+  - heading: Section heading text (from translations)
+  - panel_type: Panel styling variant (default: amber-soft)
+  
+  Dependencies:
+  - Translation: insights.category_highlights_* keys
+  - CSS: assets/css/pages/insights/category-highlights.scss
+  - Components: components/cards/featured-insight-card.html
+  - Collection: site.insights
+  
+  Notes:
+  - Shows most recent article from each category if exists
+  - Falls back to empty state message if no articles in category
+  - Includes 'View All' links to category-specific pages
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign panel_type = include.panel_type | default: "amber-soft" %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content">
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.category_highlights_heading }}</h2>
+
+    <div class="insights-category-highlights">
+      {% assign all_insights = site.insights | where: "lang", page.lang | sort: "date" | reverse %}
+
+      <!-- Brand Spotlight -->
+      <div class="insights-category-highlights__category">
+        <div class="insights-category-highlights__header insights-category-highlights__header--brand-spotlight">
+          <div class="insights-category-highlights__icon insights-category-highlights__icon--brand-spotlight">
+            {% include components/icons/icon.html system="insights" name="brand-spotlight" %}
+          </div>
+          <h3 class="insights-category-highlights__title">{{ t.brand_spotlight }}</h3>
+        </div>
+
+        {% assign brand_spotlight = all_insights | where: "category", "brand-spotlight" | first %}
+        {% if brand_spotlight %}
+          {% include components/cards/featured-insight-card.html insight=brand_spotlight %}
+        {% else %}
+          <div class="insights-category-highlights__empty">
+            <p>{{ t.no_brand_spotlight_insights }}</p>
+          </div>
+        {% endif %}
+
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/brand-spotlight/" class="insights-category-highlights__more">
+          {{ t.view_all_brand_spotlights }} →
+        </a>
+      </div>
+
+      <!-- Founder's Journey -->
+      <div class="insights-category-highlights__category">
+        <div class="insights-category-highlights__header insights-category-highlights__header--founders-journey">
+          <div class="insights-category-highlights__icon insights-category-highlights__icon--founders-journey">
+            {% include components/icons/icon.html system="insights" name="founders-journey" %}
+          </div>
+          <h3 class="insights-category-highlights__title">{{ t.founders_journey }}</h3>
+        </div>
+
+        {% assign founders_journey = all_insights | where: "category", "founders-journey" | first %}
+        {% if founders_journey %}
+          {% include components/cards/featured-insight-card.html insight=founders_journey %}
+        {% else %}
+          <div class="insights-category-highlights__empty">
+            <p>{{ t.no_founders_journey_insights }}</p>
+          </div>
+        {% endif %}
+
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/founders-journey/" class="insights-category-highlights__more">
+          {{ t.view_all_founders_journeys }} →
+        </a>
+      </div>
+
+      <!-- Location Intelligence -->
+      <div class="insights-category-highlights__category">
+        <div class="insights-category-highlights__header insights-category-highlights__header--location-intelligence">
+          <div class="insights-category-highlights__icon insights-category-highlights__icon--location-intelligence">
+            {% include components/icons/icon.html system="insights" name="location-intelligence" %}
+          </div>
+          <h3 class="insights-category-highlights__title">{{ t.location_intelligence }}</h3>
+        </div>
+
+        {% assign location_intelligence = all_insights | where: "category", "location-intelligence" | first %}
+        {% if location_intelligence %}
+          {% include components/cards/featured-insight-card.html insight=location_intelligence %}
+        {% else %}
+          <div class="insights-category-highlights__empty">
+            <p>{{ t.no_location_intelligence_insights }}</p>
+          </div>
+        {% endif %}
+
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/location-intelligence/" class="insights-category-highlights__more">
+          {{ t.view_all_location_intelligence }} →
+        </a>
+      </div>
+
+      <!-- Market Momentum -->
+      <div class="insights-category-highlights__category">
+        <div class="insights-category-highlights__header insights-category-highlights__header--market-momentum">
+          <div class="insights-category-highlights__icon insights-category-highlights__icon--market-momentum">
+            {% include components/icons/icon.html system="insights" name="market-momentum" %}
+          </div>
+          <h3 class="insights-category-highlights__title">{{ t.market_momentum }}</h3>
+        </div>
+
+        {% assign market_momentum = all_insights | where: "category", "market-momentum" | first %}
+        {% if market_momentum %}
+          {% include components/cards/featured-insight-card.html insight=market_momentum %}
+        {% else %}
+          <div class="insights-category-highlights__empty">
+            <p>{{ t.no_market_momentum_insights }}</p>
+          </div>
+        {% endif %}
+
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/market-momentum/" class="insights-category-highlights__more">
+          {{ t.view_all_market_momentum }} →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

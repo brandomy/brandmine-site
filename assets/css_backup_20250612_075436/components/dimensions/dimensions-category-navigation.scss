@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Dimensions Category Navigation Component
+   ==========================================================================
+   Styling for the unified dimensions category navigation bar across all 
+   dimensions-related pages. Matches the styling of insights navigation.
+*/
+
+/* --------------------------------------------------------------------------
+   Container and Background
+   -------------------------------------------------------------------------- */
+.dimensions-category-navigation {
+  width: 100%;
+  margin: 0;
+}
+
+.dimensions-category-navigation__container {
+  background-color: var(--primary-50); /* Consistent teal background like insights navigation */
+  width: 100vw;
+  margin: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 8px 0; /* Match breadcrumbs height */
+}
+
+/* --------------------------------------------------------------------------
+   SHARED NAVIGATION STRUCTURE
+   -------------------------------------------------------------------------- */
+
+/* Reset icon component styles for navigation context */
+.dimensions-category-navigation__icon {
+  /* Override base .icon styles with higher specificity */
+  &.icon {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+  }
+  
+  /* Also handle dimension-specific icon classes */
+  &.icon--sectors,
+  &.icon--markets,
+  &.icon--attributes,
+  &.icon--signals {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+/* Ensure all SVG icons display properly */
+.dimensions-category-navigation__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: inherit;
+  /* Reset any stroke styles from base icon component */
+  stroke: currentColor;
+  fill: none;
+}
+.dimensions-category-navigation__tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.dimensions-category-navigation__tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   OPTION A: Tooltip-style navigation (icons with labels and hover tooltips)
+   -------------------------------------------------------------------------- */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab {
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2); /* Match breadcrumbs padding */
+  background-color: white;
+  color: var(--neutral-700);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full); /* Make it pill-shaped */
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--neutral-200);
+  font-size: var(--text-sm); /* Match breadcrumbs font size */
+}
+
+/* Hover state - dimension-specific colors */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab:hover {
+  transform: translateY(-1px);
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="markets"]:hover {
+  background-color: var(--sky-100);
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="sectors"]:hover {
+  background-color: var(--olive-100);
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="attributes"]:hover {
+  background-color: var(--secondary-100);
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="signals"]:hover {
+  background-color: var(--accent-100);
+}
+
+/* Active state */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab.active {
+  font-weight: var(--font-semibold);
+  box-shadow: var(--shadow-medium);
+  border-width: 2px;
+}
+
+/* Dimension-specific active tab colors */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="markets"].active {
+  color: var(--sky-700);
+  background-color: var(--sky-50);
+  border-color: var(--sky-500);
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="sectors"].active {
+  color: var(--olive-700);
+  background-color: var(--olive-50);
+  border-color: var(--olive-500);
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="attributes"].active {
+  color: var(--secondary-700);
+  background-color: var(--secondary-50);
+  border-color: var(--secondary-500);
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab[data-dimension="signals"].active {
+  color: var(--accent-700);
+  background-color: var(--accent-50);
+  border-color: var(--accent-500);
+}
+
+/* Icons and Labels */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--neutral-700);
+  background: none;
+  border-radius: 0;
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dimensions-category-navigation--option-a .dimensions-category-navigation__label {
+  display: inline-block; /* Show text even in option A on mobile */
+}
+
+/* Tooltips */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tooltip {
+  display: none; /* Hide tooltips on mobile */
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--neutral-900);
+  color: white;
+  font-size: var(--text-xs);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+  max-width: 300px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Arrow for tooltip */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--neutral-900) transparent;
+}
+
+/* Show tooltip on hover */
+.dimensions-category-navigation--option-a .dimensions-category-navigation__tab:hover .dimensions-category-navigation__tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --------------------------------------------------------------------------
+   OPTION B: Inline labels with dimension-specific active backgrounds
+   -------------------------------------------------------------------------- */
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab {
+  padding: var(--space-1) var(--space-2); /* Match breadcrumbs padding */
+  margin: 0 var(--space-1);
+  color: var(--neutral-800);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full); /* Make it pill-shaped */
+  gap: var(--space-1);
+  line-height: 1.3;
+  background-color: white;
+  border: 1px solid var(--neutral-200);
+  box-shadow: var(--shadow-light);
+  transition: all 0.2s ease;
+  font-size: var(--text-sm); /* Match breadcrumbs font size */
+}
+
+/* Hover state - dimension-specific colors for option B */
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab[data-dimension="markets"]:hover {
+  background-color: var(--sky-100);
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab[data-dimension="sectors"]:hover {
+  background-color: var(--olive-100);
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab[data-dimension="attributes"]:hover {
+  background-color: var(--secondary-100);
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab[data-dimension="signals"]:hover {
+  background-color: var(--accent-100);
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab.active {
+  font-weight: var(--font-semibold);
+  box-shadow: var(--shadow-medium);
+  border-width: 2px;
+}
+
+/* Active tab text + border by dimension */
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab.active[data-dimension="markets"] {
+  color: var(--sky-700);
+  background-color: var(--sky-50);
+  border-color: var(--sky-500);
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab.active[data-dimension="sectors"] {
+  color: var(--olive-700);
+  background-color: var(--olive-50);
+  border-color: var(--olive-500);
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab.active[data-dimension="attributes"] {
+  color: var(--secondary-700);
+  background-color: var(--secondary-50);
+  border-color: var(--secondary-500);
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tab.active[data-dimension="signals"] {
+  color: var(--accent-700);
+  background-color: var(--accent-50);
+  border-color: var(--accent-500);
+}
+
+/* Remove dimension-specific icon colors to match insights navigation */
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__label {
+  display: inline-block;
+}
+
+.dimensions-category-navigation--option-b .dimensions-category-navigation__tooltip {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adjustments (shared between options)
+   -------------------------------------------------------------------------- */
+
+@media (width >= 768px) {
+  .dimensions-category-navigation__tab {
+    padding: var(--space-1) var(--space-3); /* Slightly more padding on desktop but still compact */
+    font-size: var(--text-sm); /* Keep compact font size */
+  }
+
+  /* Hide labels again for option A on larger screens */
+  .dimensions-category-navigation--option-a .dimensions-category-navigation__label {
+    display: none;
+  }
+
+  /* Show tooltips for option A on larger screens */
+  .dimensions-category-navigation--option-a .dimensions-category-navigation__tooltip {
+    display: block;
+  }
+}
+
+@media (width <= 479px) {
+  .dimensions-category-navigation__container {
+    padding: 6px 0; /* Even more compact on mobile */
+  }
+  
+  .dimensions-category-navigation__tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 var(--space-4);
+    flex-wrap: nowrap;
+    gap: var(--space-1);
+  }
+  
+  .dimensions-category-navigation__tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs); /* Smaller on mobile */
+  }
+}

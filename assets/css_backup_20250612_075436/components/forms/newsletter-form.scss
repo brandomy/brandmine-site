@@ -1,0 +1,177 @@
+/* ==========================================================================
+   Newsletter Form Component
+   ==========================================================================
+   Styles for MailerLite newsletter forms and subscription components.
+*/
+
+/* --------------------------------------------------------------------------
+   MAILERLITE FORM INTEGRATION
+   -------------------------------------------------------------------------- */
+
+.newsletter-container {
+  margin: var(--space-2) 0; /* 0.5rem 0 */
+}
+
+.ml-embedded {
+  width: 100%;
+}
+
+.ml-embedded .ml-form-embedWrapper {
+  background-color: var(--primary-600);
+  border-radius: var(--radius-sm); /* Using token */
+  padding: var(--space-4); /* 1rem */
+  max-width: 100%;
+  width: 100%;
+}
+
+.ml-embedded .ml-form-embedBody {
+  padding: 0;
+}
+
+.ml-embedded .ml-form-fieldRow input {
+  background-color: white;
+  border: 1px solid var(--form-button-bg); /* Updated */
+  border-radius: var(--radius-sm); /* Using token */
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  padding: var(--form-input-padding); /* Updated */
+  color: var(--neutral-700);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ml-embedded .ml-form-fieldRow input:focus {
+  border-color: var(--form-button-hover-bg); /* Updated */
+  outline: none;
+  box-shadow: var(--focus-shadow); /* Using token */
+}
+
+.ml-embedded .ml-form-horizontalRow button {
+  background-color: var(--form-button-bg); /* Updated */
+  border: 1px solid var(--form-button-bg); /* Updated */
+  border-radius: var(--radius-sm); /* Using token */
+  color: white;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  padding: var(--space-2) var(--space-4); /* 0.5rem 1rem */
+  cursor: pointer;
+  width: 100%;
+  margin-top: var(--space-2); /* 0.5rem */
+  transition: all 0.2s ease;
+}
+
+.ml-embedded .ml-form-horizontalRow button:hover {
+  background-color: var(--form-button-hover-bg); /* Updated */
+  border-color: var(--form-button-hover-bg); /* Updated */
+  transform: translateY(-1px);
+}
+
+.ml-embedded .ml-form-successBody {
+  background-color: var(--primary-600);
+  color: var(--neutral-100);
+  padding: var(--space-4); /* 1rem */
+  border-radius: var(--radius-sm); /* Using token */
+  text-align: center;
+}
+
+.ml-embedded .ml-form-successBody p {
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   NEWSLETTER FORM VARIANTS
+   -------------------------------------------------------------------------- */
+
+.newsletter-form {
+  &--inline {
+    .ml-embedded .ml-form-embedWrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3);
+    }
+    
+    .ml-embedded .ml-form-fieldRow {
+      flex: 1;
+      margin: 0;
+    }
+    
+    .ml-embedded .ml-form-horizontalRow {
+      margin: 0;
+    }
+    
+    .ml-embedded .ml-form-horizontalRow button {
+      margin-top: 0;
+      width: auto;
+      padding: var(--space-2) var(--space-6);
+    }
+    
+    @media (width <= 640px) {
+      .ml-embedded .ml-form-embedWrapper {
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+      
+      .ml-embedded .ml-form-horizontalRow button {
+        width: 100%;
+      }
+    }
+  }
+  
+  &--minimal {
+    .ml-embedded .ml-form-embedWrapper {
+      background-color: transparent;
+      border: 1px solid var(--neutral-300);
+      padding: var(--space-3);
+    }
+    
+    .ml-embedded .ml-form-horizontalRow button {
+      background-color: var(--neutral-800);
+      border-color: var(--neutral-800);
+      
+      &:hover {
+        background-color: var(--neutral-900);
+        border-color: var(--neutral-900);
+      }
+    }
+  }
+  
+  &--compact {
+    .newsletter-container {
+      margin: var(--space-1) 0;
+    }
+    
+    .ml-embedded .ml-form-embedWrapper {
+      padding: var(--space-3);
+    }
+    
+    .ml-embedded .ml-form-fieldRow input {
+      font-size: var(--text-xs);
+      padding: var(--space-2);
+    }
+    
+    .ml-embedded .ml-form-horizontalRow button {
+      font-size: var(--text-xs);
+      padding: var(--space-2) var(--space-3);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* Extra small devices */
+@media (width <= 639px) { /* sm breakpoint */
+  /* MailerLite form adjustments */
+  .ml-embedded .ml-form-embedWrapper {
+    padding: var(--space-2); /* 0.5rem */
+  }
+  
+  .ml-embedded .ml-form-horizontalRow button {
+    margin-top: var(--space-1); /* 0.25rem */
+  }
+}

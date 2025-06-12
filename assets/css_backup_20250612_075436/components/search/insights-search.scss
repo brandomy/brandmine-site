@@ -1,0 +1,87 @@
+/* =============================================================================
+   INSIGHTS SEARCH COMPONENT
+   Component-specific styles for insights search functionality
+   ============================================================================= */
+
+.insights-all__search {
+  position: relative;
+  margin-bottom: var(--space-6);
+
+  .insights-all__search-input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    padding-right: var(--space-12);
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    
+    &:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px var(--primary-100);
+    }
+    
+    &::placeholder {
+      color: var(--neutral-500);
+    }
+  }
+
+  .insights-all__search-button {
+    position: absolute;
+    right: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--neutral-500);
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    
+    &:hover {
+      color: var(--primary-600);
+      background-color: var(--neutral-100);
+    }
+    
+    &:focus {
+      outline: none;
+      color: var(--primary-600);
+      background-color: var(--neutral-100);
+    }
+    
+    svg {
+      display: block;
+    }
+  }
+}
+
+/* Search results indicators */
+.insights-search-results {
+  margin-bottom: var(--space-4);
+  
+  .search-results-count,
+  .search-no-results {
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--neutral-50);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    
+    strong {
+      color: var(--primary-600);
+    }
+    
+    .btn {
+      margin-left: var(--space-3);
+    }
+  }
+  
+  .search-no-results {
+    text-align: center;
+    color: var(--neutral-600);
+    
+    p {
+      margin-bottom: var(--space-3);
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.founders-page {
+/* ==========================================================================
+   Founders Page - Featured Founders Section
+   ==========================================================================
+   Styles for the featured founders section on the founders page
+*/
+
+.featured-founders__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+
+  @media (width >= 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  .founder-card {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+.featured-founders__footer {
+  text-align: center;
+  margin-top: var(--space-6);
+}
+}

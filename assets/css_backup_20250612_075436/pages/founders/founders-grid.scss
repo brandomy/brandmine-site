@@ -1,0 +1,61 @@
+.founders-page {
+/* ==========================================================================
+   Founders Page - Founders Grid Section
+   ==========================================================================
+   Styles for the main founders grid display
+*/
+
+.founders-grid {
+  margin-bottom: var(--space-8);
+}
+
+.founders__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
+
+  @media (width >= 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width >= 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (width >= 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.founders__empty-results {
+  text-align: center;
+  padding: var(--space-8) 0;
+
+  p {
+    font-size: var(--text-lg);
+    color: var(--gray-500);
+  }
+}
+
+.founders__load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-6);
+
+  button {
+    padding: var(--space-2) var(--space-6);
+    background-color: var(--olive-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--olive-600);
+    }
+  }
+}
+}

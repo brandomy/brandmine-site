@@ -1,0 +1,195 @@
+/* assets/css/components/brands/social-icon.scss */
+
+/*
+ * Brand social icon component
+ * Used to display social media icons with links
+ */
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-9);
+  height: var(--size-9);
+  border-radius: var(--radius-full);
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(var(--space-1));
+  }
+
+  svg {
+    width: var(--size-4);
+    height: var(--size-4);
+  }
+
+  /* Size variations */
+  &--small {
+    width: var(--size-7);
+    height: var(--size-7);
+
+    svg {
+      width: var(--size-3);
+      height: var(--size-3);
+    }
+  }
+
+  &--large {
+    width: var(--size-11);
+    height: var(--size-11);
+
+    svg {
+      width: var(--size-5);
+      height: var(--size-5);
+    }
+  }
+
+  /* Platform-specific colors */
+  &--facebook {
+    background-color: var(--social-facebook);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-facebook-hover);
+    }
+  }
+
+  &--twitter, &--x {
+    background-color: var(--social-twitter);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-twitter-hover);
+    }
+  }
+
+  &--instagram {
+    background-color: var(--social-instagram);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-instagram-hover);
+    }
+  }
+
+  &--linkedin {
+    background-color: var(--social-linkedin);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-linkedin-hover);
+    }
+  }
+
+  &--youtube {
+    background-color: var(--social-youtube);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-youtube-hover);
+    }
+  }
+
+  &--telegram {
+    background-color: var(--social-telegram);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-telegram-hover);
+    }
+  }
+
+  &--vk {
+    background-color: var(--social-vk);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-vk-hover);
+    }
+  }
+
+  &--weibo {
+    background-color: var(--social-weibo);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-weibo-hover);
+    }
+  }
+
+  &--wechat {
+    background-color: var(--social-wechat);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-wechat-hover);
+    }
+  }
+
+  &--website {
+    background-color: var(--social-website);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-website-hover);
+    }
+  }
+
+  &--email {
+    background-color: var(--social-email);
+    color: white;
+
+    &:hover {
+      background-color: var(--social-email-hover);
+    }
+  }
+
+  /* Style variations */
+  &--outline {
+    background-color: transparent;
+    border: 1px solid currentColor;
+
+    &.social-icon--facebook {
+      color: var(--social-facebook);
+      background-color: transparent;
+
+      &:hover {
+        background-color: var(--neutral-alpha-10);
+      }
+    }
+
+    &.social-icon--twitter, &.social-icon--x {
+      color: var(--social-twitter);
+      background-color: transparent;
+
+      &:hover {
+        background-color: var(--neutral-alpha-10);
+      }
+    }
+
+    /* Add similar rules for other platforms */
+  }
+
+  /* Tooltip for username */
+  &__tooltip {
+    position: relative;
+
+    &:hover::after {
+      content: attr(data-username);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: var(--space-2);
+      padding: var(--space-1) var(--space-2);
+      background-color: var(--neutral-800);
+      color: white;
+      font-size: var(--text-xs);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+  }
+}

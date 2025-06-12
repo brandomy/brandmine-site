@@ -1,0 +1,26 @@
+{% comment %}
+SECTION: Breadcrumbs
+PAGE: Founders Index (founders.html)
+PURPOSE: Display breadcrumb navigation linking back to home page with seamless header integration
+
+DATA SOURCES:
+- YAML: page.lang for current language
+- Translations: site.data.translations[lang].navigation.home
+
+CONTEXT REQUIRED:
+- page.lang for translations
+- site.baseurl for URL construction
+
+DEPENDENCIES:
+- Translations: site.data.translations[lang].navigation.home
+- CSS: assets/css/pages/founders/breadcrumbs.scss
+- Note: Intentionally positioned outside panel system for header flow
+{% endcomment %}
+
+<div class="founders-breadcrumbs-wrapper">
+  <nav class="founders-breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/" class="back-link">
+      ← {{ site.data.translations[page.lang].navigation.home | default: "Home" }}
+    </a>
+  </nav>
+</div>

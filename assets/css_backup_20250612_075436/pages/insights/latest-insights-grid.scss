@@ -1,0 +1,65 @@
+// Latest Insights Grid
+// Simple grid layout for latest insights without sidebar
+
+.latest-insights-grid {
+  display: grid;
+  gap: var(--space-6);
+  
+  // Default: 1 column on mobile
+  grid-template-columns: 1fr;
+  
+  // 2 columns on tablets
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  // Column variations
+  &--2-col {
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &--3-col {
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &--4-col {
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  // Grid items
+  &__item {
+    display: flex;
+    
+    // Ensure cards stretch to fill grid cell
+    > * {
+      width: 100%;
+    }
+  }
+
+  // Empty state
+  &__empty {
+    grid-column: 1 / -1;
+    padding: var(--space-12) var(--space-4);
+    text-align: center;
+  }
+
+  &__empty-message {
+    font-size: var(--text-lg);
+    color: var(--neutral-600);
+  }
+
+  // Footer
+  &__footer {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: var(--space-8);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--neutral-200);
+  }
+}

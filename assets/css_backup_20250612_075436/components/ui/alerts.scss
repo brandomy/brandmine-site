@@ -1,0 +1,149 @@
+/* ==========================================================================
+   UI Component: Alerts
+   ========================================================================== */
+
+.alert {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+
+  &__icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  &__message {
+    margin: 0;
+  }
+
+  &__actions {
+    margin-top: var(--space-3);
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    padding: var(--space-1);
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.7;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    
+    &:hover {
+      opacity: 1;
+      background-color: var(--neutral-alpha-10);
+    }
+
+    &:focus {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* Alert variants */
+.alert--info {
+  background-color: var(--sky-50);
+  border-color: var(--sky-200);
+  color: var(--sky-800);
+
+  .alert__icon {
+    color: var(--sky-600);
+  }
+}
+
+.alert--success {
+  background-color: var(--emerald-50);
+  border-color: var(--emerald-200);
+  color: var(--emerald-800);
+
+  .alert__icon {
+    color: var(--emerald-600);
+  }
+}
+
+.alert--warning {
+  background-color: var(--amber-50);
+  border-color: var(--amber-200);
+  color: var(--amber-800);
+
+  .alert__icon {
+    color: var(--amber-600);
+  }
+}
+
+.alert--error {
+  background-color: var(--red-50);
+  border-color: var(--red-200);
+  color: var(--red-800);
+
+  .alert__icon {
+    color: var(--red-600);
+  }
+}
+
+/* Solid variants */
+.alert--solid {
+  color: var(--neutral-white);
+
+  &.alert--info {
+    background-color: var(--sky-600);
+    border-color: var(--sky-700);
+  }
+
+  &.alert--success {
+    background-color: var(--emerald-600);
+    border-color: var(--emerald-700);
+  }
+
+  &.alert--warning {
+    background-color: var(--amber-600);
+    border-color: var(--amber-700);
+  }
+
+  &.alert--error {
+    background-color: var(--red-600);
+    border-color: var(--red-700);
+  }
+}
+
+/* Minimal variant */
+.alert--minimal {
+  background: none;
+  border: none;
+  padding: var(--space-2) 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .alert {
+    padding: var(--space-3);
+    font-size: var(--text-xs);
+
+    &__actions {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+  }
+}

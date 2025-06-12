@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Insights Page - Grid Component
+   ==========================================================================
+   Styles for the insights grid layout
+*/
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.insights-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-8);
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--neutral-300);
+  color: var(--neutral-600);
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (width <= 767px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+@media (width <= 479px) {
+  .insights-grid {
+    margin: var(--space-4) 0;
+  }
+}

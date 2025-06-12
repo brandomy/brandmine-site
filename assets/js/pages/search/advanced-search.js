@@ -36,15 +36,15 @@ class BrandmineSearch {
       // Try to load from Jekyll's generated site data first
       const baseUrl = window.location.origin;
       
-      const [brandsRes, foundersRes] = await Promise.all([
+      const [brandsRes, foundersRes, dimensionsRes] = await Promise.all([
         fetch(`${baseUrl}/assets/data/brands.json`),
-        fetch(`${baseUrl}/assets/data/founders.json`)
+        fetch(`${baseUrl}/assets/data/founders.json`), 
+        fetch(`${baseUrl}/assets/data/dimensions.json`)
       ]);
 
       this.data.brands = await brandsRes.json();
       this.data.founders = await foundersRes.json();
-      // dimensions.json removed - using modern taxonomy from other sources
-      this.data.dimensions = {};
+      this.data.dimensions = await dimensionsRes.json();
 
       console.log(`Loaded ${this.data.brands.length} brands, ${this.data.founders.length} founders`);
       
@@ -64,15 +64,15 @@ class BrandmineSearch {
         }
         
         // Last resort: try relative paths
-        const [brandsRes, foundersRes] = await Promise.all([
+        const [brandsRes, foundersRes, dimensionsRes] = await Promise.all([
           fetch('/_data/brands.json'),
-          fetch('/_data/founders.json')
+          fetch('/_data/founders.json'), 
+          fetch('/_data/dimensions.json')
         ]);
         
         this.data.brands = await brandsRes.json();
         this.data.founders = await foundersRes.json();
-        // dimensions.json removed - using modern taxonomy
-        this.data.dimensions = {};
+        this.data.dimensions = await dimensionsRes.json();
         
         this.initializeFilterOptions();
       } catch (fallbackError) {

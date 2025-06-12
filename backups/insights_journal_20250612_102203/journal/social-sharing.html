@@ -1,0 +1,17 @@
+{% comment %}
+  Component: pages/journal/social-sharing.html
+  Purpose: Social sharing for journal posts using the consolidated reusable component
+  Parameters:
+    - post: The post object to share
+  Dependencies:
+    - components/ui/social-sharing.html (consolidated component)
+    - assets/css/components/ui/social-sharing.scss
+{% endcomment %}
+
+{% assign post = include.post | default: page %}
+
+{% comment %} Use the consolidated social sharing component with enhanced BRICS+ platforms {% endcomment %}
+{% include components/ui/social-sharing.html 
+   item=post 
+   style="enhanced" 
+   icon_style="fontawesome" %}

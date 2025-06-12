@@ -81,9 +81,9 @@ class DiscoverySearch {
   }
 
   async loadDimensionsData() {
-    // Use search.json as it contains dimension data from collections
-    // dimensions.json has been removed in favor of modern taxonomy system
-    this.dimensionsData = this.searchData.filter(item => item.type === 'dimension');
+    const response = await fetch('/assets/data/dimensions.json');
+    if (!response.ok) throw new Error('Failed to load dimensions data');
+    this.dimensionsData = await response.json();
   }
 
   setupEventListeners() {

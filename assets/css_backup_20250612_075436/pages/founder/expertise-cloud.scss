@@ -1,0 +1,43 @@
+/**
+ * Founder Profile - Expertise Cloud Component
+ */
+
+.expertise-cloud {
+  margin-top: 1.5rem;
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-800);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: var(--color-primary-100);
+      color: var(--color-primary-700);
+      transform: translateY(-1px);
+    }
+    
+    &--primary {
+      background-color: var(--color-primary-100);
+      color: var(--color-primary-700);
+      font-weight: 500;
+    }
+  }
+}

@@ -51,8 +51,18 @@
   <!-- Font Preloading for Performance -->
   <link rel="preload" href="/assets/fonts/pt-sans_regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/pt-serif_regular.woff2" as="font" type="font/woff2" crossorigin>
+
   
-  
+
+  <!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1377139');
+</script>
+<!-- End MailerLite Universal -->
 </head>
 
 <body class="dev-data-verification-page">
@@ -261,7 +271,7 @@ async function verifyDataLoading() {
     { name: 'Brands', url: '/assets/data/brands.json' },
     { name: 'Founders', url: '/assets/data/founders.json' },
     { name: 'Insights', url: '/assets/data/insights.json' },
-    // Dimensions data now integrated into search.json and modern taxonomy system
+    { name: 'Dimensions', url: '/assets/data/dimensions.json' },
     { name: 'Search Index', url: '/search.json' }
   ];
 
@@ -368,7 +378,7 @@ document.addEventListener('DOMContentLoaded', verifyDataLoading);
       <li><code class="language-plaintext highlighter-rouge">/assets/data/brands.json</code></li>
       <li><code class="language-plaintext highlighter-rouge">/assets/data/founders.json</code></li>
       <li><code class="language-plaintext highlighter-rouge">/assets/data/insights.json</code></li>
-      <li>Modern taxonomy system (replaces legacy dimensions.json)</li>
+      <li><code class="language-plaintext highlighter-rouge">/assets/data/dimensions.json</code></li>
       <li><code class="language-plaintext highlighter-rouge">/search.json</code></li>
     </ul>
   </li>
@@ -828,26 +838,26 @@ document.addEventListener('DOMContentLoaded', verifyDataLoading);
     </p>
   </div>
 </footer>
-  
+
   <!-- Core Components -->
   <script src="/assets/js/components/header.js"></script>
-  
+
   <!-- Conditional Components Based on Layout -->
   
-  
+
   <!-- Optional Components Based on Page Features -->
   
+
   
-  
-  
+
   <!-- UI Components -->
   
+
   
-  
-  
+
   <!-- Central Initialization -->
   <script src="/assets/js/main.js"></script>
-  
+
   <!-- Analytics -->
   
 

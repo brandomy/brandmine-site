@@ -1,0 +1,73 @@
+{% comment %}
+  Page Section: pages/about/solutions.html
+  Purpose: Solutions section with numbered items showing Brandmine's approach
+  Updated: 2025-06-03 - Standardized page section template
+
+  Parameters:
+    title (optional): Section title, defaults to translation
+    lead_text (optional): Introductory text for the section
+    conclusion_text (optional): Text displayed after the solutions list
+    panel_type (optional): Panel background style, defaults to "olive-soft"
+    lang (optional): Language override, defaults to page.lang
+
+  Dependencies:
+    - CSS: pages/about/solutions.scss
+    - Translation keys: about.solutions_*, about.solutions.item[1-5].*
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "olive-soft" %}
+{% assign current_lang = include.lang | default: page.lang | default: 'en' %}
+
+    <h2 class="panel__heading-secondary about-solutions__title">
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.solutions_title" fallback="Our Solution" lang=current_lang %}{% endunless %}
+    </h2>
+    <p class="panel__lead-text about-solutions__lead-text">
+      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.solutions_lead" fallback="Brandmine's business intelligence hub brings clarity to this fragmented landscape by:" lang=current_lang %}{% endunless %}
+    </p>
+
+  <div class="about-solutions__list">
+    
+      <div class="about-solutions__item">
+        <div class="about-solutions__number">1</div>
+        <div class="about-solutions__content">
+          <h3>{% include helpers/t.html key="about.solutions.item1.title" fallback="Illuminating hidden brand ecosystems" lang=current_lang %}</h3>
+          <p>{% include helpers/t.html key="about.solutions.item1.description" fallback="Through comprehensive, multilingual profiles" lang=current_lang %}</p>
+        </div>
+      </div>
+
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">2</div>
+      <div class="about-solutions__content">
+        <h3>{% include helpers/t.html key="about.solutions.item2.title" fallback="Decoding cultural significance" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item2.description" fallback="Beyond simple language translation" lang=current_lang %}</p>
+      </div>
+    </div>
+
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">3</div>
+      <div class="about-solutions__content">
+        <h3>{% include helpers/t.html key="about.solutions.item3.title" fallback="Creating structured comparisons" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item3.description" fallback="With standardized metrics across regions" lang=current_lang %}</p>
+      </div>
+    </div>
+
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">4</div>
+      <div class="about-solutions__content">
+        <h3>{% include helpers/t.html key="about.solutions.item4.title" fallback="Showcasing founder journeys" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item4.description" fallback="That resonate globally despite local origins" lang=current_lang %}</p>
+      </div>
+    </div>
+
+    <div class="about-solutions__item">
+      <div class="about-solutions__number">5</div>
+      <div class="about-solutions__content">
+        <h3>{% include helpers/t.html key="about.solutions.item5.title" fallback="Curating qualified opportunities" lang=current_lang %}</h3>
+        <p>{% include helpers/t.html key="about.solutions.item5.description" fallback="To streamline partnership pathways" lang=current_lang %}</p>
+      </div>
+    </div>
+  </div>
+
+    <p class="panel__conclusion-text about-solutions__conclusion-text">
+      {{ include.conclusion_text | default: "" }}{% unless include.conclusion_text %}{% include helpers/t.html key="about.solutions_conclusion" fallback="Through this comprehensive approach, we create a clear, accessible path to opportunity that benefits both visionary founders and the partners who can help them grow." lang=current_lang %}{% endunless %}
+    </p>

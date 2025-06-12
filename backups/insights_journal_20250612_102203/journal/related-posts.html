@@ -1,0 +1,78 @@
+{% comment %}
+  Component: pages/journal/related-posts.html
+  Purpose: Display related journal posts
+  Parameters:
+    - post: The current post object
+    - limit: Number of related posts to show (default: 3)
+  Dependencies:
+    - assets/css/pages/journal/related-posts.scss
+    - _includes/components/cards/entry-card.html
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].journal %}
+{% assign current_post = include.post | default: page %}
+{% assign limit = include.limit | default: 3 %}
+
+{% comment %} Get posts in same language excluding current post {% endcomment %}
+{% assign posts_by_lang = site.posts | where: "lang", page.lang %}
+{% assign other_posts = "" | split: "," %}
+
+{% for post in posts_by_lang %}
+  {% unless post.url == current_post.url %}
+    {% assign other_posts = other_posts | push: post %}
+  {% endunless %}
+{% endfor %}
+
+{% comment %} Try to find related posts by tags first {% endcomment %}
+{% assign related_posts = "" | split: "," %}
+
+{% if current_post.tags and current_post.tags.size > 0 %}
+  {% for post in other_posts %}
+    {% if post.tags %}
+      {% assign has_common_tag = false %}
+      {% for tag in current_post.tags %}
+        {% if post.tags contains tag %}
+          {% assign has_common_tag = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if has_common_tag %}
+        {% assign related_posts = related_posts | push: post %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} If not enough related posts by tags, fill with recent posts {% endcomment %}
+{% if related_posts.size < limit %}
+  {% assign recent_posts = other_posts | sort: "date" | reverse %}
+  {% for post in recent_posts %}
+    {% unless related_posts contains post %}
+      {% assign related_posts = related_posts | push: post %}
+      {% if related_posts.size >= limit %}
+        {% break %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+{% endif %}
+
+{% if related_posts.size > 0 %}
+  <div class="related-posts">
+    <h3 class="related-posts__title">{{ t.related_posts_title | default: "Related Articles" }}</h3>
+    
+    <div class="related-posts__grid">
+      {% for post in related_posts limit: limit %}
+        {% include components/cards/entry-card.html item=post %}
+      {% endfor %}
+    </div>
+    
+    {% if other_posts.size > limit %}
+      <div class="related-posts__actions">
+        <a href="{{ '/journal/' | prepend: '/' | append: page.lang | append: '/' | relative_url }}" class="button button--secondary">
+          {{ t.view_all_entries | default: "View All Journal Entries" }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

@@ -1,0 +1,371 @@
+/* ==========================================================================
+   Custom Contact Form Component
+   ==========================================================================
+   Styles for the custom contact form (alternative to Tally forms).
+*/
+
+.custom-contact-form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.custom-contact-form {
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  padding: var(--space-6); /* Mobile-first: Start with smaller padding */
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+}
+
+/* --------------------------------------------------------------------------
+   FORM HEADER
+   -------------------------------------------------------------------------- */
+
+.form-header {
+  text-align: center;
+  margin-bottom: var(--space-6); /* Mobile-first: Smaller spacing */
+}
+
+.form-title {
+  font-size: var(--text-xl); /* Mobile-first: Smaller title */
+  font-weight: var(--font-semibold);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-3);
+}
+
+.form-description {
+  font-size: var(--text-base);
+  color: var(--neutral-600);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   FORM FIELDS
+   -------------------------------------------------------------------------- */
+
+.form-fields {
+  display: grid;
+  gap: var(--space-4); /* Mobile-first: Smaller gap */
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-2);
+}
+
+.required {
+  color: var(--error-500);
+  margin-left: var(--space-1);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--neutral-700);
+  background-color: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--primary-500);
+  outline: none;
+  box-shadow: var(--focus-ring-primary);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--space-3) center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: var(--space-10);
+  appearance: none;
+}
+
+/* --------------------------------------------------------------------------
+   CHECKBOX FIELD
+   -------------------------------------------------------------------------- */
+
+.form-field--checkbox {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--neutral-400);
+  border-radius: var(--radius-xs);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background-color: var(--primary-500);
+  border-color: var(--primary-500);
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+  content: '';
+  width: 6px;
+  height: 10px;
+  border: 2px solid white;
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+.checkbox-text {
+  color: var(--neutral-700);
+}
+
+.privacy-link {
+  color: var(--primary-600);
+  text-decoration: underline;
+  
+  &:hover {
+    color: var(--primary-700);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FORM ACTIONS
+   -------------------------------------------------------------------------- */
+
+.form-actions {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: center;
+}
+
+.form-submit {
+  min-width: 140px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.submit-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   SUCCESS AND ERROR STATES
+   -------------------------------------------------------------------------- */
+
+.form-success,
+.form-error {
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.form-success {
+  background-color: var(--success-50);
+  border: 1px solid var(--success-200);
+  color: var(--success-800);
+}
+
+.form-error {
+  background-color: var(--error-50);
+  border: 1px solid var(--error-200);
+  color: var(--error-800);
+}
+
+.success-icon,
+.error-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+}
+
+.success-icon {
+  background-color: var(--success-100);
+  color: var(--success-600);
+}
+
+.error-icon {
+  background-color: var(--error-100);
+  color: var(--error-600);
+}
+
+.success-title,
+.error-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  margin: 0;
+}
+
+.success-message,
+.error-message {
+  font-size: var(--text-base);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   VALIDATION MESSAGES
+   -------------------------------------------------------------------------- */
+
+.form-message {
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
+  min-height: 18px;
+  display: none;
+}
+
+.form-field--error .form-message {
+  display: block;
+  color: var(--error-600);
+}
+
+.form-field--error .form-input,
+.form-field--error .form-textarea,
+.form-field--error .form-select {
+  border-color: var(--error-500);
+}
+
+.form-field--error .form-input:focus,
+.form-field--error .form-textarea:focus,
+.form-field--error .form-select:focus {
+  border-color: var(--error-600);
+  box-shadow: var(--focus-ring-error);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN
+   -------------------------------------------------------------------------- */
+
+/* Mobile-first: Base styles already optimized for mobile */
+.custom-contact-form {
+  padding: var(--space-6);
+}
+
+.form-title {
+  font-size: var(--text-xl);
+}
+
+.form-fields {
+  gap: var(--space-4);
+}
+
+.form-actions {
+  margin-top: var(--space-6);
+}
+
+.form-submit {
+  width: 100%;
+}
+
+/* Small device enhancements */
+@media (min-width: 480px) {
+  .form-submit {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
+/* Tablet and desktop enhancements */
+@media (min-width: 768px) {
+  .custom-contact-form {
+    padding: var(--space-8);
+  }
+  
+  .form-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .form-fields {
+    gap: var(--space-6);
+  }
+  
+  .form-actions {
+    margin-top: var(--space-8);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   LOADING STATE
+   -------------------------------------------------------------------------- */
+
+.custom-contact-form--loading {
+  pointer-events: none;
+  
+  .form-submit {
+    cursor: not-allowed;
+    
+    .submit-text {
+      display: none;
+    }
+    
+    .submit-loading {
+      display: flex;
+    }
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-select {
+    opacity: 0.6;
+  }
+}
