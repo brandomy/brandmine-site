@@ -117,6 +117,41 @@
     font-style: italic;
   }
 
+  // Founder quote snippet styling
+  &__founder-quote {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: var(--space-3) 0;
+    padding: var(--space-3);
+    background: rgba(34, 197, 94, 0.08); // Note: Could add this as --success-alpha-8 to tokens
+    border-left: var(--border-width-medium) solid var(--primary-400);
+    border-radius: var(--radius-sm);
+  }
+
+  &__quote-icon {
+    font-size: var(--text-base);
+    color: var(--primary-500);
+    align-self: flex-start;
+  }
+
+  &__quote-text {
+    font-size: var(--text-sm);
+    color: var(--neutral-800);
+    font-style: italic;
+    margin: 0;
+    line-height: var(--leading-relaxed);
+    quotes: none; // Remove default quote marks since we're adding them manually
+  }
+
+  &__quote-attribution {
+    font-size: var(--text-xs);
+    color: var(--neutral-600);
+    font-weight: var(--font-medium);
+    font-style: normal;
+    align-self: flex-end;
+  }
+
   // Mobile optimizations using breakpoint system
   @media (max-width: 767px) {
     &__value-hook {
@@ -131,6 +166,14 @@
     &__founder-avatar {
       width: var(--size-10);
       height: var(--size-10);
+    }
+
+    &__founder-quote {
+      padding: var(--space-2);
+    }
+
+    &__quote-text {
+      font-size: var(--text-xs);
     }
   }
 

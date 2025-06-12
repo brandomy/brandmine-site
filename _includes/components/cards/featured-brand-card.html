@@ -144,6 +144,17 @@ NOTES: Shows more taxonomy tags than basic brand-card. Description truncation an
   </div>
   {% endif %}
 
+  {% comment %} STRATEGIC ENHANCEMENT: Founder Quote Snippet {% endcomment %}
+  {% if brand.founder_quote_snippet %}
+  <div class="featured-brand-card__founder-quote">
+    <span class="featured-brand-card__quote-icon">💬</span>
+    <blockquote class="featured-brand-card__quote-text">"{{ brand.founder_quote_snippet }}"</blockquote>
+    {% if brand.founder_display_name %}
+      <cite class="featured-brand-card__quote-attribution">— {{ brand.founder_display_name }}</cite>
+    {% endif %}
+  </div>
+  {% endif %}
+
   <!-- View Profile -->
   <footer class="featured-brand-card__footer">
     <a href="{{ brand.url | relative_url }}" class="featured-brand-card__link">
