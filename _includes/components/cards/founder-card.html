@@ -120,6 +120,31 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
   </div>
 </header>
 
+  {% comment %} WEEK 2 ENHANCEMENT: Prominent Achievement Display {% endcomment %}
+  {% if founder.achievements and founder.achievements.size > 0 %}
+  <div class="founder-card__achievement-highlight">
+    <span class="founder-card__achievement-icon">🏆</span>
+    <div class="founder-card__achievement-content">
+      <h4 class="founder-card__achievement-title">
+        {% include helpers/t.html key="founder_profile.achievements.highlight" fallback="Key Achievement" %}
+      </h4>
+      <p class="founder-card__achievement-text">{{ founder.achievements.first }}</p>
+    </div>
+  </div>
+  {% endif %}
+
+  {% comment %} WEEK 2 ENHANCEMENT: Business Impact Metrics {% endcomment %}
+  {% if founder.business_impact %}
+  <div class="founder-card__business-impact">
+    <div class="founder-card__impact-metric">
+      {% if founder.business_impact.primary_metric %}
+        <span class="founder-card__impact-value">{{ founder.business_impact.primary_metric.value }}</span>
+        <span class="founder-card__impact-label">{{ founder.business_impact.primary_metric.label }}</span>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
   <div class="founder-card__body">
     {% if founder.brands %}
       <div class="founder-card__brand-connections">
@@ -181,10 +206,18 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
     {% endif %}
   </div>
 
+  {% comment %} WEEK 2 ENHANCEMENT: Personalized CTA {% endcomment %}
   <footer class="founder-card__footer">
-    <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
-      {{ common_t.actions.view_profile | default: "View Profile" }}
-    </a>
+    <div class="founder-card__cta">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" 
+         class="founder-card__link founder-card__link--enhanced">
+        <span class="founder-card__cta-text">
+          {% assign first_name = founder.name | split: ' ' | first %}
+          {% include helpers/t.html key="founders.connect_with" fallback="Connect with" %} {{ first_name }}
+        </span>
+        <span class="founder-card__cta-icon" aria-hidden="true">→</span>
+      </a>
+    </div>
   </footer>
 
 </article>

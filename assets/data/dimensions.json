@@ -1,0 +1,23 @@
+---
+layout: null
+---
+[
+  {% for dimension in site.dimensions %}
+    {% if dimension.title and dimension.lang %}
+    {
+      "title": {{ dimension.title | jsonify }},
+      "name": {{ dimension.title | jsonify }},
+      "url": {{ dimension.url | relative_url | jsonify }},
+      "permalink": {{ dimension.url | relative_url | jsonify }},
+      "lang": {{ dimension.lang | jsonify }},
+      "type": "dimension",
+      "dimension_type": {{ dimension.tag_type | jsonify }},
+      "tag_type": {{ dimension.tag_type | jsonify }},
+      "slug": {{ dimension.slug | jsonify }},
+      "ref": {{ dimension.ref | default: dimension.slug | jsonify }},
+      "description": {{ dimension.excerpt | strip_html | truncate: 200 | jsonify }},
+      "excerpt": {{ dimension.excerpt | strip_html | truncate: 100 | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

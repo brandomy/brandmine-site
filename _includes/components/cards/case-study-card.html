@@ -97,6 +97,87 @@
       
     </header>
     
+    {% comment %} WEEK 2 ENHANCEMENT: Prominent Metrics Display {% endcomment %}
+    {% if show_metrics and case_study.metrics and case_study.metrics.size > 0 %}
+    <div class="case-study-card__metrics case-study-card__metrics--prominent">
+      <h4 class="case-study-card__metrics-title">
+        {% include helpers/t.html key="case_studies.results" fallback="Key Results" %}
+      </h4>
+      <div class="case-study-card__metrics-grid">
+        {% for metric in case_study.metrics limit: 3 %}
+          <div class="case-study-card__metric case-study-card__metric--highlight">
+            {% if metric.icon %}
+              <span class="case-study-card__metric-icon" aria-hidden="true">
+                {% case metric.icon %}
+                  {% when 'globe' %}🌍
+                  {% when 'trending-up' %}📈
+                  {% when 'users' %}👥
+                  {% when 'award' %}🏆
+                  {% when 'map-pin' %}📍
+                  {% when 'tree' %}🌳
+                  {% when 'export' %}🚀
+                  {% else %}📊
+                {% endcase %}
+              </span>
+            {% endif %}
+            <div class="case-study-card__metric-content">
+              <span class="case-study-card__metric-value">{{ metric.value }}</span>
+              <span class="case-study-card__metric-label">{{ metric.label }}</span>
+            </div>
+            {% if metric.trend %}
+              <span class="case-study-card__metric-trend case-study-card__metric-trend--{{ metric.trend }}" aria-label="Trend: {{ metric.trend }}">
+                {% case metric.trend %}
+                  {% when 'up' %}↗️
+                  {% when 'down' %}↘️
+                  {% when 'stable' %}➡️
+                {% endcase %}
+              </span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% comment %} WEEK 2 ENHANCEMENT: Founder Integration Section {% endcomment %}
+    {% if case_study.founder_name %}
+    <div class="case-study-card__founder-section">
+      <div class="case-study-card__founder-header">
+        {% if case_study.founder_portrait %}
+          <div class="case-study-card__founder-avatar">
+            <img src="{{ case_study.founder_portrait }}" 
+                 alt="{{ case_study.founder_name }}" 
+                 loading="lazy">
+          </div>
+        {% endif %}
+        <div class="case-study-card__founder-info">
+          <h4 class="case-study-card__founder-name">{{ case_study.founder_name }}</h4>
+          <span class="case-study-card__founder-role">{{ case_study.founder_role }}</span>
+          {% if case_study.country %}
+            <span class="case-study-card__founder-country">
+              {% include helpers/country-flag.html country=case_study.country %}
+              {% include helpers/market-context.html country=case_study.country format="inline" %}
+            </span>
+          {% endif %}
+        </div>
+      </div>
+      
+      {% if case_study.breakthrough_moment %}
+        <div class="case-study-card__breakthrough">
+          <span class="case-study-card__breakthrough-icon">🏆</span>
+          <span class="case-study-card__breakthrough-text">{{ case_study.breakthrough_moment }}</span>
+        </div>
+      {% endif %}
+      
+      {% if case_study.quote_snippet %}
+        <blockquote class="case-study-card__quote-snippet">
+          <p>"{{ case_study.quote_snippet }}"</p>
+          <cite>{{ case_study.founder_name }}</cite>
+        </blockquote>
+      {% endif %}
+    </div>
+    {% endif %}
+    
     {% comment %} Main content {% endcomment %}
     <div class="case-study-card__main">
       
@@ -122,28 +203,16 @@
       
     </div>
     
-    {% comment %} Metrics display {% endcomment %}
-    {% if show_metrics and case_study.metrics and case_study.metrics.size > 0 %}
-      <div class="case-study-card__metrics">
-        {% for metric in case_study.metrics limit:2 %}
-          <div class="case-study-card__metric">
-            {% if metric.icon %}
-              <span class="case-study-card__metric-icon">
-                {% include components/icons/icon.html name=metric.icon %}
-              </span>
-            {% endif %}
-            <span class="case-study-card__metric-value">{{ metric.value }}</span>
-            <span class="case-study-card__metric-label">{{ metric.label }}</span>
-          </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-    
-    {% comment %} Footer with call-to-action {% endcomment %}
+    {% comment %} WEEK 2 ENHANCEMENT: Strategic CTA {% endcomment %}
     <footer class="case-study-card__footer">
-      <a href="{{ case_study_url }}" class="case-study-card__cta">
-        {% include helpers/t.html key="case_studies.read_case_study" fallback="Read Case Study" %}
-      </a>
+      <div class="case-study-card__cta">
+        <a href="{{ case_study_url }}" class="case-study-card__link case-study-card__link--strategic">
+          <span class="case-study-card__cta-text">
+            {% include helpers/t.html key="actions.read_success_story" fallback="Read Success Story" %}
+          </span>
+          <span class="case-study-card__cta-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
     </footer>
     
   </div>
