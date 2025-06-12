@@ -18,6 +18,8 @@
 {% assign panel_type = include.panel_type | default: "light" %}
 {% assign current_lang = include.lang | default: page.lang | default: 'en' %}
 
+<div class="panel panel--{{ panel_type }} about-problems">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary about-problems__title">
       {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.problems_title" fallback="The Problem We Solve" lang=current_lang %}{% endunless %}
     </h2>
@@ -63,3 +65,5 @@
     <p class="panel__conclusion-text about-problems__conclusion-text">
       {{ include.conclusion_text | default: "" }}{% unless include.conclusion_text %}{% include helpers/t.html key="about.problems_conclusion" fallback="This fractured landscape creates a lose-lose scenario — international partners waste resources searching for hidden gems, while innovative founders with proven models struggle to access the partners and capital needed for global growth." lang=current_lang %}{% endunless %}
     </p>
+  </div>
+</div>

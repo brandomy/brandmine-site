@@ -18,6 +18,8 @@
 {% assign panel_type = include.panel_type | default: "olive-soft" %}
 {% assign current_lang = include.lang | default: page.lang | default: 'en' %}
 
+<div class="panel panel--{{ panel_type }} about-solutions">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary about-solutions__title">
       {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.solutions_title" fallback="Our Solution" lang=current_lang %}{% endunless %}
     </h2>
@@ -71,3 +73,5 @@
     <p class="panel__conclusion-text about-solutions__conclusion-text">
       {{ include.conclusion_text | default: "" }}{% unless include.conclusion_text %}{% include helpers/t.html key="about.solutions_conclusion" fallback="Through this comprehensive approach, we create a clear, accessible path to opportunity that benefits both visionary founders and the partners who can help them grow." lang=current_lang %}{% endunless %}
     </p>
+  </div>
+</div>

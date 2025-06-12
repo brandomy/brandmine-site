@@ -14,6 +14,8 @@
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign panel_type = include.panel_type | default: "secondary-soft" %}
 
+<div class="panel panel--{{ panel_type }} about-perspective">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary about-perspective__title">
       {% include helpers/t.html key="about.perspective_title" fallback="Our Unique Perspective" %}
     </h2>
@@ -40,3 +42,5 @@
     <p class="panel__conclusion-text about-perspective__conclusion-text">
       {% include helpers/t.html key="about.perspective_conclusion" fallback="This distinctive background enables us to see valuable opportunities where others see only barriers." %}
     </p>
+  </div>
+</div>

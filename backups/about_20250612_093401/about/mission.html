@@ -15,5 +15,9 @@
 
 {% assign panel_type = include.panel_type | default: "primary" %}
 
+<div class="panel panel--{{ panel_type }} panel--impact">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary">{{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.mission" fallback="Our Mission" %}{% endunless %}</h2>
     <p class="panel__lead-text">{{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.mission_text" fallback="To illuminate what is currently invisible by breaking through language, cultural, and political barriers that hide exceptional BRICS+ brands from global view." %}{% endunless %}</p>
+  </div>
+</div>

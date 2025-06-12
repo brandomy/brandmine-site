@@ -14,6 +14,8 @@
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign panel_type = include.panel_type | default: "light" %}
 
+<div class="panel panel--{{ panel_type }} about-services">
+  <div class="panel__content">
     <h2 class="panel__heading-secondary about-services__title">
       {% include helpers/t.html key="about.services_title" fallback="Our Services" %}
     </h2>
@@ -23,7 +25,7 @@
 
     <div class="about-services__container">
       <!-- Left Column: For International Partners -->
-      <div class="about-services__column about-services__column--international">
+      <div class="about-services__panel about-services__panel--international">
         <div class="about-services__panel-header">
           <h3 class="about-services__panel-title">
             {% include helpers/t.html key="about.services_partners_title" fallback="For International Partners" %}
@@ -59,7 +61,7 @@
       </div>
 
       <!-- Right Column: For BRICS+ Brands -->
-      <div class="about-services__column about-services__column--brands">
+      <div class="about-services__panel about-services__panel--brands">
         <div class="about-services__panel-header">
           <h3 class="about-services__panel-title">
             {% include helpers/t.html key="about.services_brands_title" fallback="For BRICS+ Brands" %}
@@ -96,3 +98,5 @@
     <p class="panel__conclusion-text about-services__conclusion-text">
       {% include helpers/t.html key="about.services_conclusion" fallback="Our customized approach ensures both brands and partners find the right connections, with the right context, at the right time—creating value across borders through meaningful relationships." %}
     </p>
+  </div>
+</div>
