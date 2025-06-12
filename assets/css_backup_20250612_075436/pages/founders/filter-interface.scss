@@ -1,0 +1,156 @@
+.founders-page {
+/* ==========================================================================
+   Founders Page - Filter Interface Section
+   ==========================================================================
+   Styles for the founders filtering and search interface
+*/
+
+.founders-filter {
+  margin-bottom: var(--space-6);
+}
+
+.founders__interface {
+  display: flex;
+  gap: var(--space-6);
+  
+  @media (width <= 991px) {
+    flex-direction: column;
+  }
+}
+
+.founders__filters {
+  width: 240px;
+  border-right: 1px solid var(--gray-200);
+  padding-right: var(--space-4);
+  
+  @media (width <= 991px) {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);
+    padding-right: 0;
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  
+  h3 {
+    font-size: var(--text-lg);
+    color: var(--gray-900);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+}
+
+.filter-section {
+  margin-bottom: var(--space-4);
+  
+  h4 {
+    font-size: var(--text-base);
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+  }
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  
+  input[type="checkbox"] {
+    margin-right: var(--space-2);
+  }
+  
+  label {
+    font-size: var(--text-sm);
+    color: var(--gray-700);
+    cursor: pointer;
+  }
+}
+
+.filter-actions {
+  margin-top: var(--space-4);
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--olive-600);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  
+  &:hover {
+    color: var(--olive-800);
+  }
+}
+
+.founders__results {
+  flex: 1;
+  
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    
+    @media (width <= 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    h2 {
+      margin: 0;
+      font-size: var(--text-xl);
+      color: var(--gray-900);
+    }
+  }
+}
+
+.founders__controls {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  
+  @media (width <= 767px) {
+    width: 100%;
+  }
+}
+
+.founders__sort {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  
+  label {
+    font-size: var(--text-sm);
+    color: var(--gray-700);
+    white-space: nowrap;
+  }
+  
+  select {
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    background-color: white;
+    min-width: 120px;
+    
+    @media (width <= 767px) {
+      flex: 1;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: var(--olive-400);
+      box-shadow: 0 0 0 2px var(--olive-100);
+    }
+  }
+}
+}

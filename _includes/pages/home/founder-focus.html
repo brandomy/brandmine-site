@@ -37,33 +37,29 @@
 
 {% assign current_lang = page.lang | default: 'en' %}
 
-{% assign panel_type = include.panel_type | default: "olive-soft" %}
 {% assign limit = include.limit | default: 4 %}
 {% assign featured_only = include.featured_only | default: true %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">
-      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.founder_focus.title" fallback="Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}{% endunless %}
-    </h2>
-    <p class="panel__lead-text">
-      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.founder_focus.subtitle" fallback="At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}{% endunless %}
-    </p>
+<h2 class="panel__heading-secondary">
+  {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.founder_focus.title" fallback="Beyond Listings: The Human Stories Driving BRICS+ Innovation" %}{% endunless %}
+</h2>
+<p class="panel__lead-text">
+  {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.founder_focus.subtitle" fallback="At a critical generational transition point, we illuminate the founder journeys behind BRICS+ brands—providing context and insight impossible to find through traditional research." %}{% endunless %}
+</p>
 
-    {% if featured_only %}
-      {% assign founders = site.founders | where: "lang", current_lang | where: "featured", true | limit: limit %}
-    {% else %}
-      {% assign founders = site.founders | where: "lang", current_lang | limit: limit %}
-    {% endif %}
-    
+{% if featured_only %}
+  {% assign founders = site.founders | where: "lang", current_lang | where: "featured", true | limit: limit %}
+{% else %}
+  {% assign founders = site.founders | where: "lang", current_lang | limit: limit %}
+{% endif %}
 
-    <div class="founder-focus-carousel">
-      {% if founders.size > 0 %}
-        {% for founder in founders %}
-          {% include components/cards/founder-card.html founder=founder %}
-        {% endfor %}
-      {% else %}
-        <!-- Temporary display until founder profiles are added -->
+<div class="founder-focus-carousel">
+  {% if founders.size > 0 %}
+    {% for founder in founders %}
+      {% include components/cards/founder-card.html founder=founder %}
+    {% endfor %}
+  {% else %}
+    <!-- Temporary display until founder profiles are added -->
         <div class="founder-focus-placeholder">
           <div class="founder-card founder-card--placeholder">
             <div class="founder-card__header">
@@ -115,13 +111,11 @@
     </div>
     {% endif %}
 
-    <div class="cta-buttons">
-      <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/founders/' }}"
-         class="btn btn--primary-cta"
-         data-track="founder-focus">
-        {{ include.cta_text | default: "" }}{% unless include.cta_text %}{% include helpers/t.html key="home.founder_focus.cta" fallback="Meet All Founders" %}{% endunless %}
-      </a>
-    </div>
-  </div>
+<div class="cta-buttons">
+  <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/founders/' }}"
+     class="btn btn--primary-cta"
+     data-track="founder-focus">
+    {{ include.cta_text | default: "" }}{% unless include.cta_text %}{% include helpers/t.html key="home.founder_focus.cta" fallback="Meet All Founders" %}{% endunless %}
+  </a>
 </div>
 

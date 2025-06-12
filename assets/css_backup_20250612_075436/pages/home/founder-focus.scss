@@ -1,0 +1,85 @@
+.home-page {
+  /* ==========================================================================
+     Founder Focus Section
+     ==========================================================================
+     Styling for the Founder Focus section on the homepage
+  */
+
+  /* Founder Focus Carousel */
+  .founder-focus-carousel {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    margin: 2rem -1rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--color-gray-100);
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-olive-400);
+      border-radius: 2px;
+    }
+
+    .founder-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc(100% - 2rem);
+
+      @media (width >= 640px) {
+        flex: 0 0 calc(50% - 1.25rem);
+      }
+
+      @media (width >= 1024px) {
+        flex: 0 0 calc(30% - 1rem); /* Slightly smaller to show 4th card partially */
+      }
+    }
+  }
+
+  /* Founder Focus Placeholder */
+  .founder-focus-placeholder {
+    display: flex;
+    gap: 1.25rem;
+    width: 100%;
+
+    .founder-card {
+      flex: 1;
+    }
+  }
+
+  /* Navigation dots for founder carousel */
+  .founder-focus-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .founder-focus-nav-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--neutral-alpha-30); /* Solid but muted */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+
+    &.active {
+      background-color: #6b7280; /* Solid dark gray */
+      background-color: var(--olive-600, #6b7280); /* Olive with fallback */
+      transform: scale(1.2);
+    }
+
+    &:hover {
+      background-color: var(--neutral-alpha-50);
+    }
+  }
+}

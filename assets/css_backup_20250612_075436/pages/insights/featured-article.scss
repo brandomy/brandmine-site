@@ -1,0 +1,221 @@
+// Featured Article Hero Section
+// Large hero format for featured insights
+
+.featured-article {
+  position: relative;
+  overflow: hidden;
+  
+  &__container {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+    
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+    
+    @media (min-width: 992px) {
+      grid-template-columns: 3fr 2fr;
+      gap: var(--space-10);
+    }
+  }
+  
+  &__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    aspect-ratio: 16 / 9;
+    background: var(--primary-50);
+    
+    @media (min-width: 768px) {
+      aspect-ratio: 4 / 3;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    
+    &--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-200) 100%);
+      
+      svg {
+        width: 80px;
+        height: 80px;
+        opacity: 0.3;
+        
+        @media (min-width: 768px) {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  &__category {
+    display: flex;
+    gap: var(--space-2);
+  }
+  
+  &__category-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    
+    &--brand-spotlight {
+      background: var(--accent-100);
+      color: var(--accent-800);
+    }
+    
+    &--founders-journey {
+      background: var(--secondary-100);
+      color: var(--secondary-800);
+    }
+    
+    &--market-momentum {
+      background: var(--success-100);
+      color: var(--success-900);
+    }
+    
+    &--location-intelligence {
+      background: var(--info-100);
+      color: var(--info-900);
+    }
+  }
+  
+  &__title {
+    margin: 0;
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    line-height: 1.2;
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-3xl);
+    }
+    
+    @media (min-width: 992px) {
+      font-size: var(--text-4xl);
+    }
+  }
+  
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover,
+    &:focus {
+      color: var(--primary-700);
+      text-decoration: none;
+    }
+  }
+  
+  &__excerpt {
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-700);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-lg);
+    }
+  }
+  
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    
+    .separator {
+      margin: 0 var(--space-1);
+    }
+  }
+  
+  &__author,
+  &__date,
+  &__reading-time {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  &__actions {
+    margin-top: var(--space-2);
+  }
+  
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    transition: all 0.2s ease;
+    
+    &:hover,
+    &:focus {
+      gap: var(--space-3);
+      
+      .featured-article__cta-arrow {
+        transform: translateX(2px);
+      }
+    }
+  }
+  
+  &__cta-arrow {
+    transition: transform 0.2s ease;
+  }
+  
+  // Empty state
+  &--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+  }
+  
+  &__empty-message {
+    margin: 0;
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    text-align: center;
+  }
+  
+  // Hover effects
+  &__image-wrapper:hover &__image {
+    transform: scale(1.05);
+  }
+  
+  // RTL support
+  [dir="rtl"] & {
+    &__cta-arrow {
+      transform: rotate(180deg);
+    }
+    
+    &__cta:hover &__cta-arrow,
+    &__cta:focus &__cta-arrow {
+      transform: rotate(180deg) translateX(-2px);
+    }
+  }
+}

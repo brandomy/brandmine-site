@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Insight Article - Main Styles
+   ==========================================================================
+   Core layout styles for insight article pages with semantic sectioning
+*/
+
+// Import all section component styles
+// Breadcrumbs now use generic UI component
+@import "hero";
+@import "header";
+@import "featured-image";
+@import "content";
+@import "taxonomy";
+@import "map-view";
+@import "market-chart";
+
+// Import section components (former sidebar components)
+@import "sections/_index";
+
+.insight-article-page {
+  // Simple linear layout - no sidebar complexity
+  
+  .insight-article-section {
+    margin-bottom: var(--space-6);
+
+    &--breadcrumbs,
+    &--hero,
+    &--header,
+    &--featured-image {
+      margin-bottom: var(--space-8);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Premium content styling
+  .premium-content {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 300px;
+      background: linear-gradient(to bottom, transparent, var(--neutral-50));
+      pointer-events: none;
+    }
+  }
+}
+

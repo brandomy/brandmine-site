@@ -1,0 +1,80 @@
+// Component: related-case-studies.scss
+// Purpose: Styles for related case studies section
+// Architecture: BEM methodology with design tokens
+
+.related-case-studies {
+  padding: var(--space-8) 0;
+  
+  &__container {
+    max-width: var(--grid-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+  
+  &__header {
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+  
+  &__title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-semibold);
+    color: var(--neutral-900);
+  }
+  
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+  
+  &__item {
+    padding: var(--space-4);
+    background-color: var(--neutral-50);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-md);
+    transition: var(--transition-base);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-200);
+    }
+  }
+  
+  &__item-title {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+  }
+  
+  &__link {
+    color: var(--neutral-900);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    
+    &:hover {
+      color: var(--primary-600);
+    }
+  }
+  
+  &__item-description {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--neutral-700);
+    line-height: var(--leading-relaxed);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .related-case-studies {
+    &__list {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+}

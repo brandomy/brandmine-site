@@ -1,0 +1,62 @@
+.founders-page {
+/* ==========================================================================
+   Founders Page - Header Section
+   ==========================================================================
+   Styles for the founders page header section including title and search
+*/
+
+.founders-header {
+  margin-bottom: var(--space-6);
+  
+  &__title {
+    color: var(--gray-900);
+    margin-bottom: var(--space-4);
+    text-align: center;
+  }
+  
+  &__search {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    
+    @media (width <= 767px) {
+      flex-direction: column;
+    }
+  }
+  
+  &__search-input {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    border: none;
+    font-size: var(--text-base);
+    outline: none;
+    
+    &:focus {
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+  
+  &__search-button {
+    background-color: var(--olive-600);
+    color: white;
+    border: none;
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    font-size: var(--text-base);
+    transition: background-color 0.2s ease;
+    
+    @media (width <= 767px) {
+      width: 100%;
+    }
+    
+    &:hover {
+      background-color: var(--olive-700);
+    }
+  }
+}
+}

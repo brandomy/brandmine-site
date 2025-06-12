@@ -1,0 +1,42 @@
+/* assets/css/components/separators/spacer.scss */
+
+.separator--spacer {
+  display: inline-block;
+  width: 0.5em;
+  height: 1px;
+  content: '';
+}
+
+/* Icon styling for use with spacers */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  vertical-align: middle;
+  margin-right: 0.2em;
+}
+
+/* Tag styling for use with spacers */
+.tag {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  margin: 0 0.3em;
+  background-color: var(--primary-100, #e6fffa);
+  color: var(--primary-700, #285e61);
+  border-radius: 4px;
+  font-size: 2em;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Make sure vertical alignment is consistent */
+.tag, .icon, .separator--spacer {
+  vertical-align: middle;
+}
+
+/* Ensure proper spacing when tags are adjacent */
+.tag + .tag {
+  margin-left: 0.5em;
+}

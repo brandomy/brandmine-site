@@ -1,0 +1,272 @@
+/* ==========================================================================
+   Form Validation Component
+   ==========================================================================
+   Styles for form validation states, error messages, and feedback.
+*/
+
+/* --------------------------------------------------------------------------
+   VALIDATION STATES
+   -------------------------------------------------------------------------- */
+
+/* Error state */
+.form-field--error {
+  .form-label {
+    color: var(--error-700);
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-select {
+    border-color: var(--error-500);
+    
+    &:focus {
+      border-color: var(--error-600);
+      box-shadow: var(--focus-ring-error);
+    }
+  }
+}
+
+/* Success state */
+.form-field--success {
+  .form-label {
+    color: var(--success-700);
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-select {
+    border-color: var(--success-500);
+    
+    &:focus {
+      border-color: var(--success-600);
+      box-shadow: var(--focus-ring-success);
+    }
+  }
+}
+
+/* Warning state */
+.form-field--warning {
+  .form-label {
+    color: var(--warning-700);
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-select {
+    border-color: var(--warning-500);
+    
+    &:focus {
+      border-color: var(--warning-600);
+      box-shadow: var(--focus-ring-warning);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   VALIDATION MESSAGES
+   -------------------------------------------------------------------------- */
+
+.form-message {
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+}
+
+.form-message__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.form-message--error {
+  color: var(--error-600);
+  
+  .form-message__icon {
+    color: var(--error-500);
+  }
+}
+
+.form-message--success {
+  color: var(--success-600);
+  
+  .form-message__icon {
+    color: var(--success-500);
+  }
+}
+
+.form-message--warning {
+  color: var(--warning-600);
+  
+  .form-message__icon {
+    color: var(--warning-500);
+  }
+}
+
+.form-message--info {
+  color: var(--info-600);
+  
+  .form-message__icon {
+    color: var(--info-500);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   VALIDATION SUMMARY
+   -------------------------------------------------------------------------- */
+
+.validation-summary {
+  background-color: var(--error-50);
+  border: 1px solid var(--error-200);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.validation-summary__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--error-800);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.validation-summary__title-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--error-600);
+}
+
+.validation-summary__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.validation-summary__item {
+  font-size: var(--text-xs);
+  color: var(--error-700);
+  margin-bottom: var(--space-1);
+  padding-left: var(--space-4);
+  position: relative;
+}
+
+.validation-summary__item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--error-500);
+}
+
+.validation-summary__item:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   VALIDATION INDICATORS
+   -------------------------------------------------------------------------- */
+
+.form-field-indicator {
+  position: relative;
+}
+
+.form-field-indicator__icon {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.form-field-indicator--error .form-field-indicator__icon {
+  color: var(--error-500);
+}
+
+.form-field-indicator--success .form-field-indicator__icon {
+  color: var(--success-500);
+}
+
+.form-field-indicator--warning .form-field-indicator__icon {
+  color: var(--warning-500);
+}
+
+/* Adjust input padding when indicator is present */
+.form-field-indicator .form-input,
+.form-field-indicator .form-select {
+  padding-right: var(--space-10);
+}
+
+/* --------------------------------------------------------------------------
+   REAL-TIME VALIDATION
+   -------------------------------------------------------------------------- */
+
+.form-field--validating {
+  .form-input,
+  .form-textarea,
+  .form-select {
+    border-color: var(--info-400);
+  }
+  
+  .form-field-indicator__icon {
+    animation: spin 1s linear infinite;
+    color: var(--info-500);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   VALIDATION TOOLTIPS
+   -------------------------------------------------------------------------- */
+
+.validation-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.validation-tooltip__content {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--neutral-900);
+  color: white;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  margin-bottom: var(--space-1);
+}
+
+.validation-tooltip__content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--neutral-900);
+}
+
+.validation-tooltip:hover .validation-tooltip__content,
+.validation-tooltip:focus-within .validation-tooltip__content {
+  opacity: 1;
+  visibility: visible;
+}

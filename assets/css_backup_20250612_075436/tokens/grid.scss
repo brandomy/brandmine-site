@@ -1,0 +1,48 @@
+/* assets/css/tokens/grid.css */
+
+/* Base grid container */
+.grid-container {
+    display: grid;
+    width: 100%;
+    max-width: var(--grid-max-width);
+    margin: 0 auto;
+    grid-gap: var(--grid-gap);
+}
+
+/* Responsive grid columns */
+.grid-container--12 {
+    grid-template-columns: repeat(12, 1fr);
+}
+
+/* Language-specific grid adjustments */
+.grid-container[lang="ru"],
+.grid-container[lang="zh"] {
+    /* Accommodate longer text in some languages */
+    font-size: 0.95rem;
+}
+
+/* Responsive breakpoints */
+@media screen and (width <= 768px) {
+    .grid-container--12 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Grid column span utilities */
+.col-span-1 { grid-column: span 1; }
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+.col-span-4 { grid-column: span 4; }
+.col-span-6 { grid-column: span 6; }
+.col-span-12 { grid-column: span 12; }
+
+/* Responsive column spanning */
+@media screen and (width <= 768px) {
+    .col-span-1,
+    .col-span-2,
+    .col-span-3,
+    .col-span-4,
+    .col-span-6 {
+        grid-column: span 12; /* Full width on mobile */
+    }
+}

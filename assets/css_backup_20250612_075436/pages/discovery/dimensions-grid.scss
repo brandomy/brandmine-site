@@ -1,0 +1,137 @@
+.discovery-page {
+// Discovery Dimensions Grid
+// 2x2 grid showcasing the four discovery dimensions
+
+  .discovery-dimensions {
+    margin: var(--space-12) 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-4);
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+
+      @media (width <= 768px) {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+    }
+
+    &__panel {
+      border-radius: var(--radius-lg);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      
+      // Use contained panel modifier instead of overrides
+      // The panel--contained class is applied in the HTML
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-heavy);
+      }
+    }
+
+    &__section {
+      padding: var(--space-2) 0;
+    }
+
+    &__header {
+      margin-bottom: var(--space-6);
+    }
+
+    &__title {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-2);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: inherit;
+
+      @media (width <= 768px) {
+        font-size: var(--text-xl);
+      }
+    }
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &--sector {
+        background-color: var(--olive-100);
+        color: var(--olive-700);
+      }
+
+      &--market {
+        background-color: var(--sky-100);
+        color: var(--sky-700);
+      }
+
+      &--attribute {
+        background-color: var(--secondary-100);
+        color: var(--secondary-700);
+      }
+
+      &--signal {
+        background-color: var(--accent-100);
+        color: var(--accent-700);
+      }
+    }
+
+    &__description {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-3);
+      color: inherit;
+      opacity: 0.9;
+    }
+
+    &__link {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+  }
+
+}
+/* Additional styling for discovery dimensions when not on discovery page */
+body:not(.discovery-page) .discovery-dimensions {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-4);
+
+  .discovery-dimensions__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+
+    @media (width <= 768px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+}

@@ -1,0 +1,79 @@
+.discovery-page {
+  // Discovery Featured Brands Section
+// Showcases selected brands with compelling narratives
+
+  .discovery-featured {
+    &__header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    &__title {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+
+      @media (width <= 768px) {
+        font-size: var(--text-2xl);
+      }
+    }
+
+    &__icon {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 28px;
+        height: 28px;
+        color: var(--secondary-500);
+      }
+    }
+
+    &__description {
+      font-size: var(--text-lg);
+      color: var(--neutral-600);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: var(--leading-relaxed);
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+
+      @media (width <= 768px) {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+    }
+
+    &__empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: var(--space-12) var(--space-4);
+      color: var(--neutral-500);
+
+      svg {
+        margin: 0 auto var(--space-4);
+        opacity: 0.5;
+      }
+
+      p {
+        font-size: var(--text-lg);
+      }
+    }
+
+    &__action {
+      text-align: center;
+    }
+  }
+}

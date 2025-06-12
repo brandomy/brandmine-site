@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Insight Article - Sidebar Location Info Component
+   ==========================================================================
+   Styles for the location information in the sidebar
+*/
+.insight-article-page {
+  .sidebar-location-info {
+    .location-info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .location-info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--neutral-200);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .location-info-label {
+      font-weight: var(--font-medium);
+      color: var(--neutral-600);
+    }
+
+    .location-info-value {
+      color: var(--neutral-800);
+    }
+  }
+}

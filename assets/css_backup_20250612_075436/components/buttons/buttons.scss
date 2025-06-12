@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Buttons - Consolidated BEM Implementation
+   ========================================================================== 
+   This file contains all button styles for the Brandmine site.
+   Following BEM naming convention: .block__element--modifier
+*/
+
+/* --------------------------------------------------------------------------
+   1. BUTTON BASE STYLES
+   -------------------------------------------------------------------------- */
+
+/* Base button block */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-height-default);
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
+  line-height: 1;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--primary-600);
+  outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. BUTTON VARIATIONS
+   -------------------------------------------------------------------------- */
+
+/* Primary button (teal) */
+.btn--primary {
+  background-color: var(--primary-600);
+  color: white;
+  border: none;
+}
+
+.btn--primary:hover {
+  background-color: var(--primary-700);
+}
+
+/* Secondary button (orange) */
+.btn--secondary {
+  background-color: var(--secondary-600);
+  color: white;
+  border: none;
+}
+
+.btn--secondary:hover {
+  background-color: var(--secondary-700);
+}
+
+/* Outline button */
+.btn--outline {
+  background-color: transparent;
+  color: var(--neutral-800);
+  border: 2px solid var(--neutral-400);
+}
+
+.btn--outline:hover {
+  background-color: var(--neutral-100);
+}
+
+/* Outline light button (for dark backgrounds) */
+.btn--outline-light {
+  background-color: transparent;
+  color: white;
+  border: 2px solid var(--surface-alpha-80);
+  padding: calc(var(--space-3) - 2px) calc(var(--space-6) - 2px);
+}
+
+.btn--outline-light:hover {
+  background-color: var(--surface-overlay-subtle);
+  color: white;
+}
+
+/* White button for CTA panel */
+.btn--white {
+  background-color: white;
+  color: var(--primary-700);
+  border: none;
+}
+
+.btn--white:hover {
+  background-color: var(--neutral-100);
+}
+
+/* Standard button */
+.btn--standard {
+  background-color: var(--neutral-200);
+  color: var(--neutral-700);
+  border: none;
+}
+
+.btn--standard:hover {
+  background-color: var(--neutral-300);
+}
+
+/* --------------------------------------------------------------------------
+   3. BUTTON SIZES
+   -------------------------------------------------------------------------- */
+
+/* Small size button */
+.btn--sm {
+  padding: var(--btn-padding-sm);
+  height: var(--btn-height-sm);
+  font-size: var(--text-sm);
+}
+
+/* Large size button */
+.btn--lg {
+  padding: var(--btn-padding-lg);
+  height: var(--btn-height-lg);
+  font-size: var(--text-lg);
+}
+
+/* Full-width button */
+.btn--block {
+  display: flex;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   4. ENHANCED CTA BUTTONS
+   -------------------------------------------------------------------------- */
+
+/* Enhanced Primary CTA - Explore Brands */
+.btn--primary-cta {
+  background-color: var(--primary-600);
+  color: white;
+  border: none;
+  font-size: var(--text-lg);
+  padding: 0 var(--space-8);
+  height: var(--btn-height-lg); /* Slightly larger than standard */
+  font-weight: var(--font-bold);
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--surface-overlay-subtle), transparent);
+  transition: 0.4s;
+}
+
+.btn--primary-cta:hover {
+  background-color: var(--primary-700);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong);
+}
+
+.btn--primary-cta:hover::after {
+  left: 100%;
+}
+
+/* Enhanced Secondary CTA - Get Profiled */
+.btn--secondary-cta {
+  background-color: var(--secondary-600);
+  color: white;
+  border: none;
+  font-size: var(--text-lg);
+  padding: 0 var(--space-8);
+  height: var(--btn-height-lg); /* Slightly larger than standard */
+  font-weight: var(--font-bold);
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--secondary-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--surface-overlay-subtle), transparent);
+  transition: 0.4s;
+}
+
+.btn--secondary-cta:hover {
+  background-color: var(--secondary-700);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong);
+}
+
+.btn--secondary-cta:hover::after {
+  left: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   5. BUTTONS CONTAINER
+   -------------------------------------------------------------------------- */
+
+/* Unified .cta-buttons style for grouping buttons */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   6. CONTEXT-SPECIFIC BUTTONS
+   -------------------------------------------------------------------------- */
+
+/* Hero panel specific buttons (if needed) */
+.home-hero--no-image__btn-primary {
+  background-color: white;
+  color: var(--primary-600);
+  border: none;
+}
+
+.home-hero--no-image__btn-primary:hover {
+  background-color: var(--secondary-200);
+}
+
+.home-hero--no-image__btn-secondary {
+  background-color: var(--secondary-500);
+  color: white;
+  border: none;
+}
+
+.home-hero--no-image__btn-secondary:hover {
+  background-color: var(--secondary-600);
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+@media (width <= 767px) { /* md breakpoint */
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-buttons .btn {
+    width: 100%;
+  }
+}

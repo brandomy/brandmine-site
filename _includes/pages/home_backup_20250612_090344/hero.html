@@ -1,0 +1,47 @@
+{% comment %}
+  Page Section: pages/home/hero.html
+  
+  Purpose: Renders the primary hero section for the home page with main heading,
+           subtitle, and primary/secondary CTA buttons
+  
+  Section Type: Hero
+  Template: home.html
+  
+  Parameters:
+    None - Uses page.lang for localization
+  
+  Dependencies:
+    - Translation keys: home.hero.*
+    - CSS: assets/css/pages/home/hero.scss
+    - Helper: helpers/t.html
+  
+  Usage:
+    {% include pages/home/hero.html %}
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+
+<h1 class="panel__heading-primary">
+  {% assign key_var = "home.hero.title" %}
+  {% assign fallback_var = "Illuminating and Elevating <br>Founder-led Brands from the BRICS+" %}
+  {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+</h1>
+<p class="panel__subtitle">
+  {% assign key_var = "home.hero.subtitle" %}
+  {% assign fallback_var = "Breaking through language, cultural, and geographic barriers to reveal exceptional founder-led brands at the perfect moment for global expansion" %}
+  {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+</p>
+<a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
+   class="btn btn--primary-cta"
+   data-track="primary-hero">
+  {% assign key_var = "home.hero.cta_primary" %}
+  {% assign fallback_var = "Explore Brands" %}
+  {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+</a>
+<a href="#how-it-works"
+   class="btn btn--standard"
+   data-track="secondary-hero">
+  {% assign key_var = "home.hero.cta_secondary" %}
+  {% assign fallback_var = "Learn How" %}
+  {% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}
+</a>

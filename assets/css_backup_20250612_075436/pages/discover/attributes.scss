@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Attributes Discovery Page Styles
+   ========================================================================== */
+
+/* Main container for attributes grid */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+/* Attribute cards styles */
+.attribute-card {
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  border-left: 4px solid var(--secondary-500);
+}
+
+.attribute-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.attribute-card__icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--secondary-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.attribute-card__icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.attribute-card__placeholder-icon {
+  width: 24px;
+  height: 24px;
+  background-color: var(--secondary-300);
+  mask-image: url('/assets/images/icons/attribute-default.svg');
+  mask-size: cover;
+}
+
+.attribute-card__title {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+  color: var(--secondary-800);
+}
+
+.attribute-card__description {
+  font-size: var(--text-base);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-4);
+}
+
+.attribute-card__link {
+  display: inline-block;
+  color: var(--secondary-700);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  border: 1px solid var(--secondary-300);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.attribute-card__link:hover {
+  background-color: var(--secondary-50);
+  color: var(--secondary-800);
+}
+
+/* Featured attributes section */
+.featured-attributes {
+  margin-bottom: var(--space-10);
+}
+
+.featured-attributes__title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-6);
+  color: var(--secondary-800);
+}
+
+.featured-attributes__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .attributes-grid,
+  .featured-attributes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .attributes-grid,
+  .featured-attributes__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

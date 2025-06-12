@@ -21,55 +21,51 @@
 
 {% assign current_lang = page.lang | default: 'en' %}
 
-<div id="how-it-works" class="panel panel--light">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">
-      {% include helpers/t.html key="home.how_it_works.title" fallback="How It Works" lang=current_lang %}
-    </h2>
-    <p class="panel__lead-text">
-      {% include helpers/t.html key="home.how_it_works.subtitle" fallback="Our platform bridges the gap between exceptional BRICS+ brands and international opportunities" lang=current_lang %}
-    </p>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h3>{% include helpers/t.html key="home.how_it_works.steps.step1.title" fallback="Illuminate" lang=current_lang %}</h3>
-          <p>{% include helpers/t.html key="home.how_it_works.steps.step1.text" fallback="Explore previously invisible brand ecosystems across BRICS+ countries through our comprehensive mapping" lang=current_lang %}</p>
-          <a href="{{ site.baseurl }}/{{ current_lang }}/brands/" class="text-link">
-            {% include helpers/t.html key="common.actions.explore" fallback="Explore" lang=current_lang %}
-          </a>
-        </div>
-      </div>
-
-      <div class="process-step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h3>{% include helpers/t.html key="home.how_it_works.steps.step2.title" fallback="Contextualize" lang=current_lang %}</h3>
-          <p>{% include helpers/t.html key="home.how_it_works.steps.step2.text" fallback="Gain critical insights through founder stories and regional intelligence unavailable anywhere else" lang=current_lang %}</p>
-          <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="text-link">
-            {% include helpers/t.html key="insights.all_insights" fallback="All Insights" lang=current_lang %}
-          </a>
-        </div>
-      </div>
-
-      <div class="process-step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h3>{% include helpers/t.html key="home.how_it_works.steps.step3.title" fallback="Connect" lang=current_lang %}</h3>
-          <p>{% include helpers/t.html key="home.how_it_works.steps.step3.text" fallback="Identify promising partnerships based on authentic understanding and context" lang=current_lang %}</p>
-          <a href="{{ site.baseurl }}/{{ current_lang }}/about/#contact-us" class="text-link">
-            {% include helpers/t.html key="common.actions.get_in_touch" fallback="Get in Touch" lang=current_lang %}
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-buttons">
-      <a href="{{ site.baseurl }}/{{ current_lang }}/discover/"
-         class="btn btn--standard"
-         data-track="how-it-works">
-        {% include helpers/t.html key="home.how_it_works.cta" fallback="Start Discovering" lang=current_lang %}
+<h2 class="panel__heading-secondary">
+  {% include helpers/t.html key="home.how_it_works.title" fallback="How It Works" lang=current_lang %}
+</h2>
+<p class="panel__lead-text">
+  {% include helpers/t.html key="home.how_it_works.subtitle" fallback="Our platform bridges the gap between exceptional BRICS+ brands and international opportunities" lang=current_lang %}
+</p>
+<div class="process-steps">
+  <div class="process-step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <h3>{% include helpers/t.html key="home.how_it_works.steps.step1.title" fallback="Illuminate" lang=current_lang %}</h3>
+      <p>{% include helpers/t.html key="home.how_it_works.steps.step1.text" fallback="Explore previously invisible brand ecosystems across BRICS+ countries through our comprehensive mapping" lang=current_lang %}</p>
+      <a href="{{ site.baseurl }}/{{ current_lang }}/brands/" class="text-link">
+        {% include helpers/t.html key="common.actions.explore" fallback="Explore" lang=current_lang %}
       </a>
     </div>
   </div>
+
+  <div class="process-step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <h3>{% include helpers/t.html key="home.how_it_works.steps.step2.title" fallback="Contextualize" lang=current_lang %}</h3>
+      <p>{% include helpers/t.html key="home.how_it_works.steps.step2.text" fallback="Gain critical insights through founder stories and regional intelligence unavailable anywhere else" lang=current_lang %}</p>
+      <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="text-link">
+        {% include helpers/t.html key="insights.all_insights" fallback="All Insights" lang=current_lang %}
+      </a>
+    </div>
+  </div>
+
+  <div class="process-step">
+    <div class="step-number">3</div>
+    <div class="step-content">
+      <h3>{% include helpers/t.html key="home.how_it_works.steps.step3.title" fallback="Connect" lang=current_lang %}</h3>
+      <p>{% include helpers/t.html key="home.how_it_works.steps.step3.text" fallback="Identify promising partnerships based on authentic understanding and context" lang=current_lang %}</p>
+      <a href="{{ site.baseurl }}/{{ current_lang }}/about/#contact-us" class="text-link">
+        {% include helpers/t.html key="common.actions.get_in_touch" fallback="Get in Touch" lang=current_lang %}
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="cta-buttons">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/discover/"
+     class="btn btn--standard"
+     data-track="how-it-works">
+    {% include helpers/t.html key="home.how_it_works.cta" fallback="Start Discovering" lang=current_lang %}
+  </a>
 </div>

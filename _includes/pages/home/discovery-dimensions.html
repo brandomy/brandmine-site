@@ -27,18 +27,14 @@
 
 {% assign current_lang = page.lang | default: 'en' %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">
-      {% include helpers/t.html key="home.discovery.title" fallback="Explore By Dimension" %}
-      {% if include.new_component %} (New Component){% endif %}
-    </h2>
-    <p class="panel__lead-text">
-      {% include helpers/t.html key="home.discovery.subtitle" fallback="Discover brands through different perspectives from business sectors to growth signals" %}
-    </p>
+<h2 class="panel__heading-secondary">
+  {% include helpers/t.html key="home.discovery.title" fallback="Explore By Dimension" %}
+  {% if include.new_component %} (New Component){% endif %}
+</h2>
+<p class="panel__lead-text">
+  {% include helpers/t.html key="home.discovery.subtitle" fallback="Discover brands through different perspectives from business sectors to growth signals" %}
+</p>
 
-    {% assign default_columns = include.columns | default: 4 %}
-    {% assign default_limit = include.limit | default: 6 %}
-    {% include components/dimensions/discovery-dimensions-grid.html columns=default_columns limit=default_limit %}
-  </div>
-</div>
+{% assign default_columns = include.columns | default: 4 %}
+{% assign default_limit = include.limit | default: 6 %}
+{% include components/dimensions/discovery-dimensions-grid.html columns=default_columns limit=default_limit %}

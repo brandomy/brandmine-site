@@ -44,19 +44,7 @@
     box-sizing: border-box;
   }
 
-/* Panel content refinements for section-specific panels */
-.team-panel .panel__content,
-.problems-panel .panel__content,
-.solutions-panel .panel__content,
-.services-panel .panel__content,
-.brands-panel .panel__content,
-.discover-panel .panel__content,
-.insights-panel .panel__content {
-  max-width: 1200px;
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
-  box-sizing: border-box;
-}
+/* Section-specific panels use base panel content styles */
 
 /* --------------------------------------------------------------------------
    3. PANEL MODIFIERS (Variations)
@@ -72,28 +60,4 @@
   margin-right: 0;
 }
 
-@media (width >= 992px) {
-  .team-panel .panel__content,
-  .problems-panel .panel__content,
-  .solutions-panel .panel__content,
-  .services-panel .panel__content,
-  .brands-panel .panel__content,
-  .discover-panel .panel__content,
-  .insights-panel .panel__content {
-    padding-left: var(--space-8);
-    padding-right: var(--space-8);
-  }
-}
-
-@media (width <= 767px) {
-  .team-panel .panel__content,
-  .problems-panel .panel__content,
-  .solutions-panel .panel__content,
-  .services-panel .panel__content,
-  .brands-panel .panel__content,
-  .discover-panel .panel__content,
-  .insights-panel .panel__content {
-    padding-left: var(--space-4);
-    padding-right: var(--space-4);
-  }
-}
+/* Responsive behavior handled by base panel__content rules in _panel-implementations.scss */

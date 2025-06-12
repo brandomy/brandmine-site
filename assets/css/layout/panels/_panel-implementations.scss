@@ -98,59 +98,9 @@
    PANEL SPACING FIXES
    -------------------------------------------------------------------------- */
 
-/* Remove inter-panel gaps while preserving content padding */
-.home-page,
-.brands-page,
-.founders-page,
-.discovery-page,
-.insights-page,
-.journal-page,
-.about-page {
-  
-  /* Remove gaps between panels while preserving content padding */
-  section + section .panel {
-    padding-top: 0;  /* Eliminate inter-panel gaps */
-    
-    /* Restore content breathing room */
-    .panel__content {
-      padding-top: var(--space-8);  /* 2rem base content padding */
-      
-      /* Responsive content padding scaling */
-      @media (width >= 768px) {
-        padding-top: var(--space-10);  /* 2.5rem on tablets */
-      }
-      
-      @media (width >= 992px) {
-        padding-top: var(--space-12);  /* 3rem on desktop */
-      }
-    }
-  }
-  
-  /* Maintain visual hierarchy after hero with content padding */
-  section:first-child + section .panel {
-    padding-top: 0;  /* Keep seamless flow */
-    
-    .panel__content {
-      padding-top: var(--space-6);  /* Slightly reduced for post-hero sections */
-      
-      @media (width >= 768px) {
-        padding-top: var(--space-8);
-      }
-      
-      @media (width >= 992px) {
-        padding-top: var(--space-10);
-      }
-    }
-  }
-  
-  /* Hero panels use specific padding values - override section defaults */
-  /* Using :is() pseudo-class to increase specificity without duplication */
-  section:is(:first-child, :nth-child(2)) :is(.panel--hero, .panel--hero-subtle, .panel--hero-image) {
-    /* Remove top padding for balanced split layout appearance */
-    padding-top: 0;
-    /* Keep bottom padding for proper section separation */
-    padding-bottom: var(--space-16);
-  }
+/* Seamless panel flow - simplified approach */
+.panel + .panel {
+  margin-top: 0;
 }
 
 /* About page now uses data-driven system - no longer needs manual overrides */
@@ -193,9 +143,7 @@
 
 /* Medium devices (768px and up) */
 @media (width >= 768px) { /* md breakpoint */
-  .panel {
-    padding: var(--space-12) 0;
-  }
+  /* Panel padding remains consistent - keep var(--space-8) from base */
 
   .panel__content {
     padding: 0 var(--space-8);
@@ -214,14 +162,7 @@
     margin-right: auto;
   }
 
-  .panel--cta {
-    padding: var(--space-16) var(--space-8);
-  }
-
-  .panel--hero {
-    padding-top: var(--space-16);
-    padding-bottom: var(--space-16);
-  }
+  /* CTA and hero panels use consistent system padding */
 
   /* For future use - hero variants */
   .panel--hero-tall {
@@ -271,15 +212,10 @@
 
 /* Extra large devices (1200px and up) */
 @media (width >= 1200px) { /* xl breakpoint */
-  .panel {
-    padding: var(--space-16) 0;
-  }
+  /* Panel padding remains consistent - keep var(--space-8) from base */
 
   .panel__content {
     max-width: var(--grid-max-width);
-  }
-
-  .panel--cta {
-    padding: var(--space-20) var(--space-8);
+    padding: 0 var(--space-12); /* Increase horizontal padding for desktop */
   }
 }

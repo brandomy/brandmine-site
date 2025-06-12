@@ -25,8 +25,7 @@
   background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
   color: white;
   text-align: center;
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
+  padding: var(--space-8) 0; /* Consistent with base system */
 }
 
 /* Home page specific hero adjustments */
@@ -70,8 +69,7 @@
   background: radial-gradient(circle at center, var(--primary-300) 0%, var(--primary-500) 100%);
   color: white;
   text-align: center;
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
+  padding: var(--space-8) 0; /* Consistent with base system */
 
   /* Brand-specific hero content styling */
   .brand-hero {
@@ -174,8 +172,7 @@
   background-repeat: no-repeat;
   color: white;
   text-align: center;
-  padding-top: var(--space-20);
-  padding-bottom: var(--space-20);
+  padding: var(--space-8) 0; /* Consistent with base system */
   min-height: 50vh;
   display: flex;
   align-items: center;
@@ -224,8 +221,7 @@
 
   @media (width <= 768px) {
     min-height: 40vh;
-    padding-top: var(--space-16);
-    padding-bottom: var(--space-16);
+    /* Padding remains consistent with base system */
     
     .panel__content {
       min-height: 40vh;
@@ -297,7 +293,7 @@
 .panel--hero-split {
   background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
   color: white;
-  padding: 0; /* Remove default panel padding for grid layout */
+  padding: var(--space-8) 0; /* Maintain system consistency */
   
   .journal-hero {
     display: grid;
@@ -558,9 +554,9 @@
   color: var(--neutral-700);
 }
 
-/* Special panel for discovery content that removes top spacing */
+/* Discovery content panel maintains consistent spacing */
 .panel--discovery-content {
-  padding-top: 0; /* Remove top padding to connect with tabs */
+  padding: var(--space-8) 0; /* Consistent with system */
 }
 
 .panel--light .panel__content {
@@ -758,7 +754,7 @@
 .panel--cta {
   background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%);
   color: white;
-  padding: var(--space-12) var(--space-4);  /* Mobile-first smaller padding */
+  padding: var(--space-8) 0; /* Consistent vertical spacing */
 }
 
 .panel--text .panel__content {

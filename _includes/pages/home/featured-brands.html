@@ -36,71 +36,67 @@
 {% assign premium_only = include.premium_only | default: false %}
 {% assign display_mode = include.display_mode | default: "carousel" %}
 
-<div class="panel panel--white featured-brands-section">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">
-      {% include helpers/t.html key="home.featured_brands.title" fallback="Featured Brands" %}
-    </h2>
-    <p class="panel__lead-text">
-      {{ include.lead_text | default: "Discover hand-selected brands with compelling narratives and global potential" }}
-    </p>
+<h2 class="panel__heading-secondary">
+  {% include helpers/t.html key="home.featured_brands.title" fallback="Featured Brands" %}
+</h2>
+<p class="panel__lead-text">
+  {{ include.lead_text | default: "Discover hand-selected brands with compelling narratives and global potential" }}
+</p>
 
-    {% comment %} Use centralized brand filtering {% endcomment %}
-    {% include helpers/brand-filter.html lang=current_lang featured=true premium_only=premium_only limit=limit %}
-    {% assign brands = filtered_brands %}
+{% comment %} Use centralized brand filtering {% endcomment %}
+{% include helpers/brand-filter.html lang=current_lang featured=true premium_only=premium_only limit=limit %}
+{% assign brands = filtered_brands %}
 
-    {% if display_mode == "mixed" and brands.size > 0 %}
-      <!-- Mixed mode: First brand as hero, rest in carousel -->
-      {% assign first_brand = brands | first %}
-      {% include helpers/brand-card-selector.html brand=first_brand force_type="hero" %}
+{% if display_mode == "mixed" and brands.size > 0 %}
+  <!-- Mixed mode: First brand as hero, rest in carousel -->
+  {% assign first_brand = brands | first %}
+  {% include helpers/brand-card-selector.html brand=first_brand force_type="hero" %}
 
-      <div class="featured-brands-carousel {{ carousel_class }}">
-        {% for brand in brands offset:1 limit:limit %}
-          {% include helpers/brand-card-selector.html brand=brand %}
-        {% endfor %}
-      </div>
-    {% elsif display_mode == "grid" %}
-      <!-- Grid display mode -->
-      <div class="featured-brands-grid">
-        {% for brand in brands %}
-          {% include helpers/brand-card-selector.html brand=brand %}
-        {% endfor %}
-      </div>
-    {% else %}
-      <!-- Default carousel mode -->
-      <div class="featured-brands-carousel {{ carousel_class }}">
-        {% if brands.size > 0 %}
-          {% for brand in brands %}
-            {% include helpers/brand-card-selector.html brand=brand %}
-          {% endfor %}
-        {% else %}
-          <!-- Fallback to language-specific example if no featured brands are available -->
-          {% if site.data.fallback[current_lang].teatime %}
-            {% assign fallback_brand = site.data.fallback[current_lang].teatime %}
-            {% include helpers/brand-card-selector.html brand=fallback_brand force_type="basic" %}
-          {% else %}
-            <p class="no-brands-message">{% include helpers/t.html key="common.empty_states.no_brands" fallback="No featured brands available yet." %}</p>
-          {% endif %}
-        {% endif %}
-      </div>
-    {% endif %}
-
-    <!-- Scroll indicator dots - Dynamic based on number of brands -->
-    {% if display_mode != "grid" %}
-      <div class="featured-brands-nav">
-        {% assign dot_count = brands.size | divided_by: 2 | ceil | at_least: 1 %}
-        {% for i in (1..dot_count) %}
-          <span class="featured-brands-nav-dot {% if forloop.first %}active{% endif %}"></span>
-        {% endfor %}
-      </div>
-    {% endif %}
-
-    <div class="more-brands">
-      <a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
-         class="btn btn--primary-cta"
-         data-track="featured-brands">
-        {{ include.cta_text | default: "Explore All Brands" }}
-      </a>
-    </div>
+  <div class="featured-brands-carousel {{ carousel_class }}">
+    {% for brand in brands offset:1 limit:limit %}
+      {% include helpers/brand-card-selector.html brand=brand %}
+    {% endfor %}
   </div>
+{% elsif display_mode == "grid" %}
+  <!-- Grid display mode -->
+  <div class="featured-brands-grid">
+    {% for brand in brands %}
+      {% include helpers/brand-card-selector.html brand=brand %}
+    {% endfor %}
+  </div>
+{% else %}
+  <!-- Default carousel mode -->
+  <div class="featured-brands-carousel {{ carousel_class }}">
+    {% if brands.size > 0 %}
+      {% for brand in brands %}
+        {% include helpers/brand-card-selector.html brand=brand %}
+      {% endfor %}
+    {% else %}
+      <!-- Fallback to language-specific example if no featured brands are available -->
+      {% if site.data.fallback[current_lang].teatime %}
+        {% assign fallback_brand = site.data.fallback[current_lang].teatime %}
+        {% include helpers/brand-card-selector.html brand=fallback_brand force_type="basic" %}
+      {% else %}
+        <p class="no-brands-message">{% include helpers/t.html key="common.empty_states.no_brands" fallback="No featured brands available yet." %}</p>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endif %}
+
+<!-- Scroll indicator dots - Dynamic based on number of brands -->
+{% if display_mode != "grid" %}
+  <div class="featured-brands-nav">
+    {% assign dot_count = brands.size | divided_by: 2 | ceil | at_least: 1 %}
+    {% for i in (1..dot_count) %}
+      <span class="featured-brands-nav-dot {% if forloop.first %}active{% endif %}"></span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="more-brands">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
+     class="btn btn--primary-cta"
+     data-track="featured-brands">
+    {{ include.cta_text | default: "Explore All Brands" }}
+  </a>
 </div>
