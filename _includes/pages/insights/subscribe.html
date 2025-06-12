@@ -22,9 +22,7 @@
 {% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "accent-soft" %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content panel--centered">
-    <h2 class="panel__heading-secondary">{{ include.heading | default: t.subscribe_heading }}</h2>
+<h2 class="panel__heading-secondary">{{ include.heading | default: t.subscribe_heading }}</h2>
     <p class="panel__lead-text">{{ include.description | default: t.subscribe_description }}</p>
 
     <div class="insights-subscribe">
@@ -34,5 +32,3 @@
       </form>
       <p class="insights-subscribe__note">{{ t.privacy_note }}</p>
     </div>
-  </div>
-</div>

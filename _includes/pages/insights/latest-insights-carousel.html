@@ -26,9 +26,7 @@
 {% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "light" %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ include.heading | default: t.latest_insights | default: "Latest Insights" }}</h2>
+<h2 class="panel__heading-secondary">{{ include.heading | default: t.latest_insights | default: "Latest Insights" }}</h2>
 
     {% assign description_text = include.description | default: t.latest_insights_description | default: "Stay current with fresh analysis and timely stories from BRICS+ consumer brands making waves in emerging markets." %}
     {% if description_text %}
@@ -78,5 +76,3 @@
         </a>
       </div>
     {% endif %}
-  </div>
-</div>

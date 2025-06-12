@@ -21,12 +21,8 @@
 {% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "cta" %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content panel--centered">
-    <h2 class="panel__heading-secondary">{{ include.heading | default: t.cta_heading }}</h2>
+<h2 class="panel__heading-secondary">{{ include.heading | default: t.cta_heading }}</h2>
     <p class="panel__lead-text">{{ include.description | default: t.cta_description }}</p>
     <div class="insights-contact-cta__buttons">
       <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" class="btn btn--secondary-cta">{{ t.cta_button }}</a>
     </div>
-  </div>
-</div>

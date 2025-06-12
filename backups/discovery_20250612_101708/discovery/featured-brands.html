@@ -1,0 +1,82 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Featured Brands
+PATH: _includes/pages/discovery/featured-brands.html
+
+PURPOSE:
+Showcases a selection of featured brands that exemplify Brandmine's mission
+of illuminating founder-led brands with compelling narratives from BRICS+
+markets.
+
+USAGE:
+Displays up to 3 featured brands on the Discovery page to demonstrate the
+quality and diversity of brands in the Brandmine ecosystem.
+
+PARAMETERS:
+- None (uses page.lang from page context)
+
+DEPENDENCIES:
+- Data: site.brands collection, site.data.translations[page.lang]
+- CSS: /assets/css/pages/discovery/featured-brands.scss
+- Components: components/cards/brand-card.html
+
+CUSTOMIZATION:
+- Translation keys: discovery.featured_brands, discovery.featured_description
+- Maximum brands displayed: 3 (hardcoded limit)
+- Featured flag in brand front matter controls inclusion
+- Empty state message when no featured brands exist
+
+EXAMPLE:
+{% include pages/discovery/featured-brands.html %}
+
+NOTES:
+- Filters brands by current language and featured: true
+- Includes CTA button to explore all brands
+- Responsive grid layout with brand cards
+- Empty state includes placeholder icon and message
+================================================================================
+{% endcomment %}
+
+{% comment %} Use translation helper for logic light architecture {% endcomment %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.translations[current_lang].discovery %}
+{% assign discover = site.data.translations[current_lang].discover %}
+
+<section class="discovery-featured">
+      <div class="discovery-featured__header">
+        <h2 class="discovery-featured__title">
+          <span class="discovery-featured__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"></path>
+            </svg>
+          </span>
+          {{ t.featured_brands | default: "Featured Brands" }}
+        </h2>
+        <p class="discovery-featured__description">
+          {{ t.featured_description | default: "Discover exceptional brands from the BRICS+ with compelling stories" }}
+        </p>
+      </div>
+
+      <div class="discovery-featured__grid">
+        {% assign featured_brands = site.brands | where: "lang", current_lang | where: "featured", true | limit: 3 %}
+        {% if featured_brands.size > 0 %}
+          {% for brand in featured_brands %}
+            {% include components/cards/brand-card.html brand=brand %}
+          {% endfor %}
+        {% else %}
+          <div class="discovery-featured__empty">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <path d="M12 8v8m-4-4h8"></path>
+            </svg>
+            <p>{{ t.no_brands_found | default: "No brands found for this criteria" }}</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="discovery-featured__action">
+        <a href="{{ site.baseurl }}/{{ current_lang }}/brands/" class="btn btn--primary">
+          {{ discover.explore_all_brands | default: "Explore All Brands" }}
+        </a>
+      </div>
+    </section>

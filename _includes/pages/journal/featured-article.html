@@ -25,9 +25,7 @@
     {% assign hero_image_path = '/assets/images/placeholders/insight-hero-1200w.jpg' %}
   {% endif %}
   
-  <div class="panel panel--featured-split">
-    <div class="panel__content">
-      <div class="featured-article featured-article--split">
+  <div class="featured-article featured-article--split">
         <!-- Image Section -->
         <div class="featured-article__image-section">
           <img src="{{ hero_image_path | relative_url }}" alt="{{ featured_post.images.hero.caption | default: featured_post.title }}" class="featured-article__hero-image">
@@ -83,7 +81,5 @@
           </div>
           </div>
         </div>
-      </div>
-    </div>
   </div>
 {% endif %}

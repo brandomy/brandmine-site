@@ -40,8 +40,6 @@ Last Updated: 2025-06-03
 {% assign panel_type = include.panel_type | default: "amber-soft" %}
 {% assign limit = include.limit | default: 4 %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content">
     {% if include.title %}
       {% assign section_title = include.title %}
     {% else %}
@@ -74,5 +72,3 @@ Last Updated: 2025-06-03
         </a>
       </div>
     {% endif %}
-  </div>
-</div>

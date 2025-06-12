@@ -11,14 +11,9 @@
 {% assign post = include.post | default: page %}
 
 {% if post.image %}
-  <div class="panel panel--hero-image" style="background-image: url('{{ post.image | relative_url }}');">
-    <div class="panel__overlay"></div>
-    <div class="panel__content">
-      <div class="featured-image__content">
+  <div class="featured-image__content" style="background-image: url('{{ post.image | relative_url }}');">
         {% if post.image_caption %}
           <p class="featured-image__caption">{{ post.image_caption }}</p>
         {% endif %}
-      </div>
-    </div>
   </div>
 {% endif %}

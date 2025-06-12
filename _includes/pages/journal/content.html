@@ -9,12 +9,8 @@
 
 {% assign t = site.data.translations[page.lang].journal %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    {% if include.content and include.content != "" %}
-      <div class="journal-content">
-        {{ include.content }}
-      </div>
-    {% endif %}
+{% if include.content and include.content != "" %}
+  <div class="journal-content">
+    {{ include.content }}
   </div>
-</div>
+{% endif %}

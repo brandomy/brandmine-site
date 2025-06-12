@@ -23,9 +23,7 @@
 {% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "amber-soft" %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ include.heading | default: t.category_highlights_heading }}</h2>
+<h2 class="panel__heading-secondary">{{ include.heading | default: t.category_highlights_heading }}</h2>
 
     <div class="insights-category-highlights">
       {% assign all_insights = site.insights | where: "lang", page.lang | sort: "date" | reverse %}
@@ -122,5 +120,3 @@
         </a>
       </div>
     </div>
-  </div>
-</div>

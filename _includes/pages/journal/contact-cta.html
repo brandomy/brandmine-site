@@ -12,12 +12,8 @@
 {% assign t = site.data.translations[page.lang].about %}
 {% assign panel_type = include.panel_type | default: "cta" %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content panel--centered">
-    <h2 class="panel__heading-secondary">{{ include.heading | default: "Share Your Thoughts" }}</h2>
+<h2 class="panel__heading-secondary">{{ include.heading | default: "Share Your Thoughts" }}</h2>
     <p class="panel__lead-text">{{ include.description | default: "Have questions about our journey building Brandmine? Want to share your own insights about BRICS+ brands or mapping technologies? We'd love to hear from you." }}</p>
     <div class="journal-contact-cta__buttons">
       <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" class="btn btn--secondary-cta">{{ t.contact_button | default: "Get in Touch" }}</a>
     </div>
-  </div>
-</div>

@@ -20,9 +20,7 @@
 {% assign post = include.post | default: page %}
 {% comment %}Using t.html helper for journal translations{% endcomment %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    <div class="post-header">
+<div class="post-header">
       <nav class="post-navigation">
         <a href="{{ '/journal/' | prepend: '/' | append: page.lang | append: '/' | relative_url }}" class="post-navigation__back">
           ← {% include helpers/t.html key="journal.back_to_journal" fallback="Back to Journal" %}
@@ -55,6 +53,4 @@
           </span>
         {% endif %}
       </div>
-    </div>
-  </div>
 </div>

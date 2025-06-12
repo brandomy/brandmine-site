@@ -33,7 +33,7 @@ EXAMPLE:
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign t = site.data.translations[current_lang].home %}
 
-<section class="discovery-cta">
+<div class="discovery-cta">
       <div class="discovery-cta__content">
         <h2 class="discovery-cta__title">
           {{ t.cta_title | default: "Ready to Discover BRICS+ Brands?" }}
@@ -48,4 +48,4 @@ EXAMPLE:
           </a>
         </div>
       </div>
-    </section>
+    </div>

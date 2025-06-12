@@ -5,11 +5,12 @@
   Parameters:
   - type: The dimension type (markets, sectors, attributes, signals)
   - id: The dimension ID/slug
+  - lang: Language code (optional, defaults to page.lang)
   - fallback: Optional fallback text if dimension not found
   
   Usage:
   {% include helpers/dimension-name.html type="markets" id="brazil" %}
-  {% include helpers/dimension-name.html type="sectors" id=sector_variable fallback="Unknown Sector" %}
+  {% include helpers/dimension-name.html type="sectors" id=sector_variable lang="ru" fallback="Unknown Sector" %}
   
   Returns: The localized name of the dimension or fallback
 {% endcomment %}
@@ -17,22 +18,26 @@
 {% comment %} Get the dimension collection based on type {% endcomment %}
 {% assign dimension_collection = site.data[include.type] %}
 
-{% comment %} Handle the nested structure - markets.markets, but attributes is direct array {% endcomment %}
+{% comment %} Handle the data structure - markets/sectors are nested, attributes/signals are direct arrays {% endcomment %}
 {% if include.type == "markets" %}
   {% assign dimensions = dimension_collection.markets %}
-{% elsif include.type == "sectors" or include.type == "signals" %}
-  {% comment %} Sectors and signals use the new JSON structure {% endcomment %}
-  {% assign dimensions = dimension_collection[include.type] %}
-{% else %}
-  {% comment %} Attributes is a direct array {% endcomment %}
+{% elsif include.type == "sectors" %}
+  {% assign dimensions = dimension_collection.sectors %}
+{% elsif include.type == "attributes" or include.type == "signals" %}
+  {% comment %} Attributes and signals are direct arrays {% endcomment %}
   {% assign dimensions = dimension_collection %}
+{% else %}
+  {% comment %} Fallback - try nested first, then direct {% endcomment %}
+  {% assign dimensions = dimension_collection[include.type] | default: dimension_collection %}
 {% endif %}
 
-{% comment %} Look up the specific dimension by ID (for markets and attributes) {% endcomment %}
-{% unless display_name %}
-  {% if dimensions %}
-    {% comment %} First try direct ID match {% endcomment %}
-    {% assign dimension = dimensions | where: "id", include.id | first %}
+{% comment %} Look up the specific dimension by ID {% endcomment %}
+{% assign display_name = nil %}
+{% assign dimension = nil %}
+
+{% if dimensions %}
+  {% comment %} First try direct ID match {% endcomment %}
+  {% assign dimension = dimensions | where: "id", include.id | first %}
     
     {% comment %} For markets, also try country code lookup {% endcomment %}
     {% if dimension == nil and include.type == "markets" %}
@@ -45,13 +50,16 @@
     {% endif %}
     
     {% if dimension %}
+      {% comment %} Determine language to use {% endcomment %}
+      {% assign lookup_lang = include.lang | default: page.lang | default: "en" %}
+      
       {% comment %} Handle different name structures based on type {% endcomment %}
-      {% if dimension.name[page.lang] %}
-        {% assign display_name = dimension.name[page.lang] %}
+      {% if dimension.name[lookup_lang] %}
+        {% assign display_name = dimension.name[lookup_lang] %}
       {% elsif dimension.name.en %}
         {% assign display_name = dimension.name.en %}
-      {% elsif dimension.translations[page.lang].name %}
-        {% assign display_name = dimension.translations[page.lang].name %}
+      {% elsif dimension.translations[lookup_lang].name %}
+        {% assign display_name = dimension.translations[lookup_lang].name %}
       {% elsif dimension.translations.en.name %}
         {% assign display_name = dimension.translations.en.name %}
       {% else %}
@@ -60,9 +68,8 @@
     {% else %}
       {% assign display_name = include.fallback | default: include.id %}
     {% endif %}
-  {% else %}
-    {% assign display_name = include.fallback | default: include.id %}
-  {% endif %}
-{% endunless %}
+{% else %}
+  {% assign display_name = include.fallback | default: include.id %}
+{% endif %}
 
 {{ display_name }}

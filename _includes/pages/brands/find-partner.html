@@ -14,8 +14,6 @@
 
 {% assign t = site.data.translations[page.lang].brands %}
 
-<div class="panel panel--accent-soft">
-  <div class="panel__content">
     <h2 class="panel__heading-secondary">
       {{ include.title | default: t.find_partner_title | default: "Find Your Next Partner" }}
     </h2>
@@ -38,8 +36,6 @@
         {{ t.coming_soon | default: "Coming soon! We're working on this feature." }}
       </div>
     </div>
-  </div>
-</div>
 
 <script>
   function trackButtonClick(button) {

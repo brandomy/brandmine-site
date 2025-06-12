@@ -1,0 +1,47 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Founders > Impact
+FILE: _includes/pages/founders/impact.html
+================================================================================
+
+Purpose:
+Impact statement for the Founders page. Displays a compelling statement about
+the value and impact of the founders featured on Brandmine, positioned 
+strategically before main content sections.
+
+Context:
+- Part of standardized topline page structure
+- Positioned after hero, before content sections
+- Uses translation-driven content for multilingual support
+
+Parameters:
+- None (uses page language context)
+
+Dependencies:
+- Component: helpers/t.html for translations
+- Data: site.data.translations for impact text
+
+Translation Keys Used:
+- founders.impact.title: Section heading (optional)
+- founders.impact.text: Impact statement text
+
+Notes:
+- Updated 2025-06-02 to use standardized translation helper pattern
+- Both title and text are optional via translation fallbacks
+- Maintains consistent impact section structure across all topline pages
+
+Last Updated: 2025-06-03
+================================================================================
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+
+{% capture t_title %}{% include helpers/t.html key="founders.impact.title" fallback="" lang=current_lang %}{% endcapture %}
+{% capture t_text %}{% include helpers/t.html key="founders.impact.text" fallback="" lang=current_lang %}{% endcapture %}
+
+{% if t_title != "" %}
+  <h2 class="panel__heading-secondary">{{ t_title }}</h2>
+{% endif %}
+{% if t_text != "" %}
+  <p class="panel__lead-text">{{ t_text }}</p>
+{% endif %}

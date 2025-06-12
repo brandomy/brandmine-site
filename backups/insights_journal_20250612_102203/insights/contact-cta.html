@@ -1,0 +1,32 @@
+{% comment %}
+  Page Section: insights/contact-cta.html
+  
+  Purpose: Call-to-action section encouraging visitor engagement
+  Context: Typically displayed at end of insights page to drive contact
+  
+  Parameters:
+  - heading: CTA heading text (from translations)
+  - description: CTA description text (from translations)
+  - panel_type: Panel styling variant (default: cta)
+  
+  Dependencies:
+  - Translation: insights.cta_* keys
+  - CSS: assets/css/pages/insights/contact-cta.scss
+  
+  Notes:
+  - Links to about page contact section
+  - Uses centered panel layout for emphasis
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].insights %}
+{% assign panel_type = include.panel_type | default: "cta" %}
+
+<div class="panel panel--{{ panel_type }}">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">{{ include.heading | default: t.cta_heading }}</h2>
+    <p class="panel__lead-text">{{ include.description | default: t.cta_description }}</p>
+    <div class="insights-contact-cta__buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" class="btn btn--secondary-cta">{{ t.cta_button }}</a>
+    </div>
+  </div>
+</div>

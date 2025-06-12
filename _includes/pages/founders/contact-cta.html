@@ -18,8 +18,6 @@ DEPENDENCIES:
 - Tracking: data-track attributes for analytics
 {% endcomment %}
 
-<div class="panel panel--cta">
-  <div class="panel__content panel--centered">
     <h2 class="panel__heading-secondary">
       {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="founders.cta_title" fallback="Connect with Brandmine" %}{% endunless %}
     </h2>
@@ -38,5 +36,3 @@ DEPENDENCIES:
         I'm a Founder
       </a>
     </div>
-  </div>
-</div>

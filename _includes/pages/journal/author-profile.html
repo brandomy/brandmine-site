@@ -24,9 +24,7 @@
   {% assign single_author = team_t.members[author_id] %}
 {% endif %}
 
-<div class="panel panel--light">
-  <div class="panel__content">
-    <div class="author-profile">
+<div class="author-profile">
       <div class="author-profile__header">
         {% if include.show_all %}
           <h2 class="section-title">{{ t.journal.about_authors | default: "About the Authors" }}</h2>
@@ -55,6 +53,4 @@
              lang=page.lang %}
         {% endif %}
       {% endif %}
-    </div>
-  </div>
 </div>

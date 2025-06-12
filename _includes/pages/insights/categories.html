@@ -22,9 +22,7 @@
 {% assign t = site.data.translations[page.lang].insights %}
 {% assign panel_type = include.panel_type | default: "light" %}
 
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content">
-    <h2 class="panel__heading-secondary">{{ include.heading | default: t.categories_heading }}</h2>
+<h2 class="panel__heading-secondary">{{ include.heading | default: t.categories_heading }}</h2>
     <p class="panel__lead-text">{{ include.description | default: t.categories_description }}</p>
 
     <div class="insights-categories__grid">
@@ -68,5 +66,3 @@
         <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/market-momentum/" class="insights-categories__read-more">{{ t.view_market_momentum }}</a>
       </div>
     </div>
-  </div>
-</div>
