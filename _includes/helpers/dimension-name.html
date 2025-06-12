@@ -12,17 +12,17 @@
   The localized name of the dimension in the requested language, or fallback text if not found
   
   USAGE:
-  {% include helpers/dimension-name.html type="markets" id="brazil" %}
-  {% include helpers/dimension-name.html type="sectors" id=brand.sectors[0] %}
-  {% include helpers/dimension-name.html type="attributes" id="founder-led" lang="ru" %}
-  {% include helpers/dimension-name.html type="signals" id=signal_var fallback="Unknown Signal" %}
+  {% raw %}{% include helpers/dimension-name.html type="markets" id="brazil" %}{% endraw %}
+  {% raw %}{% include helpers/dimension-name.html type="sectors" id=brand.sectors.first %}{% endraw %}
+  {% raw %}{% include helpers/dimension-name.html type="attributes" id="founder-led" lang="ru" %}{% endraw %}
+  {% raw %}{% include helpers/dimension-name.html type="signals" id=signal_var fallback="Unknown Signal" %}{% endraw %}
   
   EXAMPLES FROM BRANDMINE:
   1. In brand identity taxonomy display (_includes/pages/brand/identity.html):
-     {% include helpers/dimension-name.html type="sectors" id=sector %}
+     {% raw %}{% include helpers/dimension-name.html type="sectors" id=sector %}{% endraw %}
   
   2. In dimension cards (_includes/components/cards/dimension-card.html):
-     {% include helpers/dimension-name.html type=dimension.type id=dimension.id %}
+     {% raw %}{% include helpers/dimension-name.html type=dimension.type id=dimension.id %}{% endraw %}
   
   DATA DEPENDENCIES:
   - _data/markets.json - Market dimension definitions (nested structure: {"markets": [...]})
