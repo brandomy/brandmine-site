@@ -37,6 +37,23 @@ NOTES: Shows more taxonomy tags than basic brand-card. Description truncation an
      class_name="featured-brand-card"
      show_location=true %}
 
+  {% comment %} STRATEGIC ENHANCEMENT: Value Proposition Section {% endcomment %}
+  {% if brand.value_proposition %}
+  <div class="featured-brand-card__value-proposition">
+    <h3 class="featured-brand-card__value-hook">{{ brand.value_proposition }}</h3>
+  </div>
+  {% endif %}
+
+  {% comment %} STRATEGIC ENHANCEMENT: Market Context {% endcomment %}
+  {% if brand.market and brand.market.size > 0 %}
+    {% assign primary_market = brand.market.first %}
+    {% include helpers/market-context.html
+       country=primary_market
+       format="badge"
+       emphasis="opportunity"
+       class="featured-brand-card" %}
+  {% endif %}
+
   <div class="featured-brand-card__body">
     <p class="featured-brand-card__description">
       {% if brand.description %}
@@ -88,6 +105,44 @@ NOTES: Shows more taxonomy tags than basic brand-card. Description truncation an
       {% endif %}
     </div>
   </div>
+
+  {% comment %} ENHANCED FOUNDER INTEGRATION {% endcomment %}
+  {% if brand.founder_display_name %}
+  <div class="featured-brand-card__founder">
+    <div class="featured-brand-card__founder-info">
+      <span class="featured-brand-card__founder-name">{{ brand.founder_display_name }}</span>
+      <span class="featured-brand-card__founder-role">{{ brand.founder_role | default: "Founder" }}</span>
+    </div>
+    {% if brand.images.founder %}
+      <div class="featured-brand-card__founder-avatar">
+        <img src="{{ site.baseurl }}/assets/images/brands/{{ brand.market.first }}/{{ brand.ref | remove: brand.market.first | remove: '-' }}/{{ brand.images.founder }}" 
+             alt="{{ brand.founder_display_name }}" 
+             loading="lazy">
+      </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% comment %} STRATEGIC ENHANCEMENT: Business Credibility {% endcomment %}
+  {% if brand.key_metric %}
+  <div class="featured-brand-card__credibility">
+    <div class="featured-brand-card__metric-highlight">
+      <span class="featured-brand-card__metric-value">{{ brand.key_metric.value }}</span>
+      <span class="featured-brand-card__metric-label">{{ brand.key_metric.label }}</span>
+      {% if brand.key_metric.period %}
+        <span class="featured-brand-card__metric-period">{{ brand.key_metric.period }}</span>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% comment %} STRATEGIC ENHANCEMENT: Breakthrough Moment {% endcomment %}
+  {% if brand.breakthrough_moment %}
+  <div class="featured-brand-card__breakthrough">
+    <span class="featured-brand-card__breakthrough-icon">🏆</span>
+    <span class="featured-brand-card__breakthrough-text">{{ brand.breakthrough_moment }}</span>
+  </div>
+  {% endif %}
 
   <!-- View Profile -->
   <footer class="featured-brand-card__footer">
