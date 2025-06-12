@@ -1,16 +1,33 @@
 {% comment %}
-  Component: pages/journal/hero.html
-  Purpose: Split hero section for both journal landing page and individual posts
-  Parameters:
-    - title: The title to display in the hero section (default from translations or post.title)
-    - subtitle: The subtitle to display in the hero section (default from translations or post.excerpt)
-    - color_scheme: Color scheme for the background (teal, blue, orange, purple, green, slate)
-    - hero_image: Path to the hero image (optional)
-    - hero_alt: Alt text for the hero image
-    - post: Post object for individual post pages
-    - type: "landing" or "post" (auto-detected)
-  Dependencies:
-    - assets/css/pages/journal/hero.scss
+================================================================================
+PAGE SECTION: Hero
+PATH: _includes/pages/journal/hero.html
+PURPOSE: Split hero section for both journal landing page and individual posts
+STANDARDIZED: 2025-06-12 - Unified hero section structure with fallback support
+================================================================================
+
+Features:
+- Split layout with text content and hero image
+- Dual mode: landing page and individual post support
+- Auto-detection of page type (landing vs post)
+- Color scheme customization (teal, blue, orange, purple, green, slate)
+- Post metadata display (date, author, reading time, tags)
+- Responsive image handling with srcset
+
+Parameters:
+- title: The title to display in the hero section (default from translations or post.title)
+- subtitle: The subtitle to display in the hero section (default from translations or post.excerpt)
+- color_scheme: Color scheme for the background (default: teal)
+- hero_image: Path to the hero image (optional)
+- hero_alt: Alt text for the hero image
+- post: Post object for individual post pages
+- type: "landing" or "post" (auto-detected)
+
+Dependencies:
+- CSS: assets/css/pages/journal/hero.scss
+- Components: helpers/journal-image.html
+- Translation keys: journal.hero.title, journal.hero.subtitle (with legacy fallbacks)
+================================================================================
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].journal %}
@@ -33,8 +50,8 @@
   {% endif %}
 {% else %}
   {% assign hero_type = 'landing' %}
-  {% assign hero_title = include.title | default: t.hero_title %}
-  {% assign hero_subtitle = include.subtitle | default: t.hero_subtitle %}
+  {% assign hero_title = include.title | default: t.hero.title | default: t.hero_title %}
+  {% assign hero_subtitle = include.subtitle | default: t.hero.subtitle | default: t.hero_subtitle %}
   {% assign hero_image = include.hero_image | default: page.hero_image | default: '/assets/images/placeholders/insight-hero-1200w.jpg' %}
   {% assign hero_alt = include.hero_alt | default: page.hero_alt | default: hero_title %}
 {% endif %}

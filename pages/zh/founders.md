@@ -1,6 +1,6 @@
 ---
 layout: founders
-title: "Meet the Founders"
+title: "创始人"
 description: "Discover the visionaries behind BRICS+ emerging brands, their stories, expertise, and the brands they've built."
 permalink: /zh/founders/
 lang: zh

@@ -1,6 +1,6 @@
 ---
 layout: founders
-title: "Meet the Founders"
+title: "Основатели"
 description: "Discover the visionaries behind BRICS+ emerging brands, their stories, expertise, and the brands they've built."
 permalink: /ru/founders/
 lang: ru

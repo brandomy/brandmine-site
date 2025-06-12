@@ -2,36 +2,27 @@
 ================================================================================
 PAGE SECTION: Hero
 PATH: _includes/pages/discovery/hero.html
+PURPOSE: Split hero section for Discovery page with standardized translation keys
+STANDARDIZED: 2025-06-12 - Unified hero section structure
+================================================================================
 
-PURPOSE:
-Split hero section for Discovery page featuring text content on the left and
-a hero image on the right, introducing visitors to the dimension-based
-discovery system.
+Features:
+- Split layout with text content and hero image
+- Uses journal-hero component with teal background
+- Introduces dimension-based discovery system
 
-USAGE:
-Primary hero section for the Discovery page, typically the first visual element
-after the header.
-
-PARAMETERS:
-- None (uses page.lang from page context)
-
-DEPENDENCIES:
+Dependencies:
 - CSS: Uses journal-hero styles for consistent split layout
 - Components: helpers/t.html, components/images/collection-image.html
 - Images: Requires discovery hero image in assets/images/pages/
+- Translation keys: discovery.hero.title, discovery.hero.subtitle
 
-CUSTOMIZATION:
-- Translation keys: discovery.discover_title, discovery.discover_subtitle
-- Hero image via collection-image component
-- Teal color scheme via journal-hero--teal modifier
-
-EXAMPLE:
-{% include pages/discovery/hero.html %}
-
-NOTES:
-- Uses journal-hero component for consistency across landing pages
-- Image loaded eagerly for above-fold performance
-- Responsive layout stacks on mobile devices
+Image Configuration:
+- Collection: site
+- Category: pages
+- Slug: discovery
+- Purpose: hero
+- Loading: eager (above the fold)
 ================================================================================
 {% endcomment %}
 
@@ -39,10 +30,10 @@ NOTES:
   <!-- Text Content Section -->
   <div class="journal-hero__content">
     <h1 class="journal-hero__title">
-      {% include helpers/t.html key="discovery.discover_title" fallback="Discover Brands by Dimensions" %}
+      {% include helpers/t.html key="discovery.hero.title" fallback="Discover Brands by Dimensions" %}
     </h1>
     <p class="journal-hero__subtitle">
-      {% include helpers/t.html key="discovery.discover_subtitle" fallback="Explore BRICS+ brands through multiple dimensions" %}
+      {% include helpers/t.html key="discovery.hero.subtitle" fallback="Explore BRICS+ brands through multiple dimensions" %}
     </p>
   </div>
   

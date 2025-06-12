@@ -1,17 +1,20 @@
 {% comment %}
-  Page Section: pages/about/hero.html
-  Purpose: Split hero section for About page with text left, image right
-  Updated: 2025-06-03 - Standardized page section template
+================================================================================
+PAGE SECTION: Hero
+PATH: _includes/pages/about/hero.html
+PURPOSE: Split hero section for About page with standardized translation keys
+STANDARDIZED: 2025-06-12 - Unified hero section structure
+================================================================================
 
-  Features:
-    - Split layout with text content and hero image
-    - Uses panel--hero-split styling
-    - About page uses manual panel wrapping system
+Features:
+  - Split layout with text content and hero image
+  - Uses panel--hero-split styling
+  - About page uses manual panel wrapping system
 
-  Dependencies:
-    - CSS: journal hero styles, panel--hero-split
-    - Component: collection-image.html
-    - Translation keys: about.title, about.description
+Dependencies:
+  - CSS: journal hero styles, panel--hero-split
+  - Component: collection-image.html
+  - Translation keys: about.hero.title, about.hero.subtitle
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].about %}
@@ -20,10 +23,10 @@
       <!-- Text Content Section -->
       <div class="journal-hero__content">
         <h1 class="journal-hero__title">
-          {% include helpers/t.html key="about.title" fallback="About Brandmine" %}
+          {% include helpers/t.html key="about.hero.title" fallback="About Brandmine" %}
         </h1>
         <p class="journal-hero__subtitle">
-          {% include helpers/t.html key="about.description" fallback="Illuminating and Elevating Founder-led Brands from the BRICS+" %}
+          {% include helpers/t.html key="about.hero.subtitle" fallback="Illuminating and Elevating Founder-led Brands from the BRICS+" %}
         </p>
       </div>
       

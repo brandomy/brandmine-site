@@ -1,6 +1,6 @@
 ---
 layout: brands
-title: Explore Founder-Led BRICS+ Consumer Brands
+title: "Бренды"
 permalink: /ru/brands/
 lang: ru
 ref: brands

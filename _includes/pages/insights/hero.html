@@ -1,29 +1,38 @@
 {% comment %}
-  Page Section: insights/hero.html
-  
-  Purpose: Split layout hero with text left, image right
-  Context: Primary page header for insights collection
-  
-  Dependencies:
-  - Translation: insights.hero_* keys
-  - Components: components/images/collection-image.html
-  
-  Notes:
-  - Uses journal-hero component styling with teal variant
-  - Split layout optimized for landing page presentation
-  - Image loads eagerly for above-the-fold performance
-{% endcomment %}
+================================================================================
+PAGE SECTION: Hero
+PATH: _includes/pages/insights/hero.html
+PURPOSE: Split hero section for Insights page with standardized translation keys
+STANDARDIZED: 2025-06-12 - Unified hero section structure
+================================================================================
 
-{% assign t = site.data.translations[page.lang].insights %}
+Features:
+- Split layout with text content and hero image
+- Uses journal-hero component with teal background
+- Primary page header for insights collection
+
+Dependencies:
+- CSS: Uses journal-hero styles for consistent split layout
+- Components: helpers/t.html, components/images/collection-image.html
+- Translation keys: insights.hero.title, insights.hero.subtitle
+
+Image Configuration:
+- Collection: site
+- Category: pages
+- Slug: insights
+- Purpose: hero
+- Loading: eager (above the fold)
+================================================================================
+{% endcomment %}
 
 <div class="journal-hero journal-hero--teal journal-hero--landing">
   <!-- Text Content Section -->
   <div class="journal-hero__content">
     <h1 class="journal-hero__title">
-      {{ t.hero_title | default: "Insights" }}
+      {% include helpers/t.html key="insights.hero.title" fallback="Insights" %}
     </h1>
     <p class="journal-hero__subtitle">
-      {{ t.hero_subtitle | default: "Expert analysis and thought leadership on BRICS+ consumer brands" }}
+      {% include helpers/t.html key="insights.hero.subtitle" fallback="In-depth analysis and insights into BRICS+ brands, founders, and market dynamics." %}
     </p>
   </div>
   

@@ -1,15 +1,29 @@
 {% comment %}
-  Component: pages/brands/hero.html
-  Purpose: Split hero section for Brands page with text left, image right
-  Updated: 2025-05-31 - Changed from single panel to split layout
+================================================================================
+PAGE SECTION: Hero
+PATH: _includes/pages/brands/hero.html
+PURPOSE: Split hero section for Brands page with standardized translation keys
+STANDARDIZED: 2025-06-12 - Unified hero section structure
+================================================================================
+
+Features:
+  - Split layout with text content and hero image
+  - Uses journal-hero component styling
+
+Dependencies:
+  - CSS: journal hero styles
+  - Component: collection-image.html
+  - Translation keys: brands.hero.title, brands.hero.subtitle
 {% endcomment %}
 
 <div class="journal-hero journal-hero--teal journal-hero--landing">
   <!-- Text Content Section -->
   <div class="journal-hero__content">
-    <h1 class="journal-hero__title">{{ page.title }}</h1>
+    <h1 class="journal-hero__title">
+      {% include helpers/t.html key="brands.hero.title" fallback="Explore Founder-Led BRICS+ Consumer Brands" %}
+    </h1>
     <p class="journal-hero__subtitle">
-      {% include helpers/t.html key="brands.hero_subtitle" fallback="Discover founder-led brands with global potential" %}
+      {% include helpers/t.html key="brands.hero.subtitle" fallback="Discover founder-led brands with global potential" %}
     </p>
   </div>
   

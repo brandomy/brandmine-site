@@ -1,6 +1,6 @@
 ---
 layout: brands
-title: Explore Founder-Led BRICS+ Consumer Brands
+title: "品牌"
 permalink: /zh/brands/
 lang: zh
 ref: brands
