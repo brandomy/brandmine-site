@@ -56,14 +56,21 @@ DEPENDENCIES:
   <!-- Font Preloading for Performance -->
   <link rel="preload" href="{{ '/assets/fonts/pt-sans_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/pt-serif_regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  
+
   {% if page.lang == 'zh' %}
     <link rel="preload" href="{{ '/assets/fonts/NotoSansSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/NotoSerifSC-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {% endif %}
-  
-  <!-- MailerLite Universal Script -->
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v=47f88a96bb9983b7abf78e25982b3f9e" type="text/javascript"></script>
+
+  <!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1377139');
+</script>
+<!-- End MailerLite Universal -->
 </head>
 
 <body class="{{ page.ref | default: page.layout }}-page">
@@ -78,10 +85,10 @@ DEPENDENCIES:
   </main>
 
   {% include layout/footer.html %}
-  
+
   <!-- Core Components -->
   <script src="{{ '/assets/js/components/header.js' | relative_url }}"></script>
-  
+
   <!-- Conditional Components Based on Layout -->
   {% case page.layout %}
     {% when 'brands' %}
@@ -104,31 +111,31 @@ DEPENDENCIES:
     {% when 'dimension' %}
       <script src="{{ '/assets/js/pages/dimension/dimension-filtering.js' | relative_url }}"></script>
   {% endcase %}
-  
+
   <!-- Optional Components Based on Page Features -->
   {% if page.custom_forms %}
     <script src="{{ '/assets/js/components/custom-forms.js' | relative_url }}"></script>
   {% endif %}
-  
+
   {% if page.has_carousel %}
     <script src="{{ '/assets/js/components/founder-carousel.js' | relative_url }}"></script>
   {% endif %}
-  
+
   <!-- UI Components -->
   {% if content contains 'class="modal"' or content contains 'openModal(' %}
     <script src="{{ '/assets/js/components/modal.js' | relative_url }}"></script>
   {% endif %}
-  
+
   {% if content contains 'data-map-container' %}
     <script>
       window.STADIA_MAPS_API_KEY = '{{ site.stadia_maps_api_key }}';
     </script>
     <script src="{{ '/assets/js/components/map-initializer.js' | relative_url }}"></script>
   {% endif %}
-  
+
   <!-- Central Initialization -->
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-  
+
   <!-- Analytics -->
   {% include utilities/google-analytics.html %}
 </body>
