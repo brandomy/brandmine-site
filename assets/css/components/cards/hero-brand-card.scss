@@ -356,13 +356,15 @@
 
 .hero-brand-card__taxonomy {
   margin-bottom: var(--space-6);
-  margin-right: 140px; /* Leave space for founder portrait */
+  margin-right: 120px; /* Reduced space for founder portrait - more room for tags */
 }
 
 .hero-brand-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 /* BEM-style Tag styling */
@@ -374,8 +376,7 @@
   font-weight: var(--font-medium);
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-right: var(--space-2);
-  margin-bottom: var(--space-2);
+  /* Removed individual margins - flexbox gap handles spacing */
 }
 
 .hero-brand-card__tag:hover {
@@ -621,6 +622,16 @@
   
   .founding-location__separator {
     margin: 0 var(--space-1);
+  }
+
+  /* Mobile adjustments for taxonomy tags */
+  .hero-brand-card__taxonomy {
+    margin-right: 0; /* Remove founder portrait space constraint on mobile */
+  }
+
+  .hero-brand-card__tags {
+    justify-content: center; /* Center tags on mobile */
+    gap: var(--space-1); /* Reduce gap on mobile for better fit */
   }
 
   /* Advanced mobile content hierarchy optimization */

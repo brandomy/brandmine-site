@@ -25,6 +25,9 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
 {% capture default_show_location %}
 {% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_location" fallback=true %}
 {% endcapture %}
+{% capture default_show_markets %}
+{% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_markets" fallback=true %}
+{% endcapture %}
 {% capture default_show_sectors %}
 {% include helpers/component-defaults.html component="cards.hero-brand-card" param="show_sectors" fallback=true %}
 {% endcapture %}
@@ -46,6 +49,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
 
 {% assign show_founder = include.show_founder | default: default_show_founder %}
 {% assign show_location = include.show_location | default: default_show_location %}
+{% assign show_markets = include.show_markets | default: default_show_markets %}
 {% assign show_sectors = include.show_sectors | default: default_show_sectors %}
 {% assign show_attributes = include.show_attributes | default: default_show_attributes %}
 {% assign show_signals = include.show_signals | default: default_show_signals %}
@@ -164,8 +168,8 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
       <div class="hero-brand-card__taxonomy-section">
         <div class="hero-brand-card__tags">
           <!-- Markets -->
-          {% if brand.markets %}
-            {% for market in brand.markets %}
+          {% if brand.market %}
+            {% for market in brand.market %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
                  class="brand-tag brand-tag--market">
                 {% if site.data.dimensions.markets[market][page.lang] %}
@@ -178,21 +182,19 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
           {% endif %}
 
           <!-- Sectors -->
-          {% if brand.sectors %}
-            {% for sector in brand.sectors %}
-              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
-                 class="brand-tag brand-tag--sector">
-                {% if site.data.dimensions.sectors[sector][page.lang] %}
-                  {{ site.data.dimensions.sectors[sector][page.lang] }}
-                {% else %}
-                  {{ sector }}
-                {% endif %}
-              </a>
-            {% endfor %}
+          {% if brand.sector %}
+            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ brand.sector | slugify }}/"
+               class="brand-tag brand-tag--sector">
+              {% if site.data.dimensions.sectors[brand.sector][page.lang] %}
+                {{ site.data.dimensions.sectors[brand.sector][page.lang] }}
+              {% else %}
+                {{ brand.sector }}
+              {% endif %}
+            </a>
           {% endif %}
 
           <!-- Attributes -->
-          {% if brand.attributes %}
+          {% if show_attributes and brand.attributes %}
             {% for attribute in brand.attributes %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
                  class="brand-tag brand-tag--attribute">
@@ -216,7 +218,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
 
     <div class="hero-brand-card__footer-right">
       <!-- Signals -->
-      {% if brand.signals and brand.signals.size > 0 %}
+      {% if show_signals and brand.signals and brand.signals.size > 0 %}
       <div class="hero-brand-card__signals">
         {% for signal in brand.signals %}
           <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"

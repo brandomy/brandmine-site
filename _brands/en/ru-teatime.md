@@ -31,7 +31,7 @@ founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy (all using kebab-case)
 sectors: ["gourmet-foods"]  # Required: At least one sector from taxonomy
-markets: ["russia", "china"]  # Required: At least one market from taxonomy
+markets: ["russia"]  # Required: At least one market from taxonomy
 attributes: ["founder-led", "heritage-brand", "artisanal-excellence"]  # Optional attributes
 signals: ["export-ready", "rapid-growth"]  # Optional signals
 
