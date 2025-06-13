@@ -122,9 +122,12 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
           {% endif %}
         </div>
 
+        {% comment %} Divider after description {% endcomment %}
+        <div class="hero-brand-card__divider"></div>
+
         {% comment %} Founder quote section {% endcomment %}
         {% if featured_data.founder_quote_snippet %}
-          <blockquote class="hero-brand-card__founder-quote">
+          <blockquote class="hero-brand-card__founder-quote hero-brand-card__full-width-section">
             <p class="founder-quote__text">"{{ featured_data.founder_quote_snippet }}"</p>
             {% if featured_data.founder_display_name %}
               <cite class="founder-quote__attribution">
@@ -137,7 +140,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
 
         {% comment %} Breakthrough moment highlight {% endcomment %}
         {% if featured_data.breakthrough_moment %}
-          <div class="hero-brand-card__breakthrough">
+          <div class="hero-brand-card__breakthrough hero-brand-card__full-width-section">
             <div class="breakthrough__icon">⚡</div>
             <p class="breakthrough__text">{{ featured_data.breakthrough_moment }}</p>
           </div>
@@ -164,7 +167,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
     </div>
 
     <!-- Taxonomy section -->
-    <div class="hero-brand-card__taxonomy">
+    <div class="hero-brand-card__taxonomy hero-brand-card__full-width-section">
       <div class="hero-brand-card__taxonomy-section">
         <div class="hero-brand-card__tags">
           <!-- Markets -->
