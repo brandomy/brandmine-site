@@ -1,0 +1,59 @@
+{% comment %}
+COMPONENT: Metric Highlight
+PURPOSE: Display key business metrics with visual emphasis for conversion
+
+USAGE: {% include components/ui/metric-highlight.html metric=brand.key_metric %}
+
+PARAMETERS:
+- metric (required): Object with label, value, period
+- style (optional): Visual style - "primary", "success", "accent" (default: "primary")
+- size (optional): Size variant - "sm", "md", "lg" (default: "md")
+- show_period (optional): Whether to show time period (default: true)
+
+METRIC OBJECT STRUCTURE:
+metric:
+  label: "Revenue Growth"
+  value: "300%"
+  period: "2023-2024"
+
+DESIGN NOTES:
+- Optimized for scanning and credibility
+- Supports percentage, currency, and count formats
+- Mobile-first responsive design
+- High contrast for accessibility
+{% endcomment %}
+
+{% comment %} Parameter setup {% endcomment %}
+{% assign metric = include.metric %}
+{% assign style = include.style | default: "primary" %}
+{% assign size = include.size | default: "md" %}
+{% assign show_period = include.show_period | default: true %}
+
+{% comment %} Validate required data {% endcomment %}
+{% unless metric.label and metric.value %}
+  {% comment %} Exit silently if required data missing {% endcomment %}
+  {% break %}
+{% endunless %}
+
+{% comment %} Build CSS classes {% endcomment %}
+{% assign metric_classes = "metric-highlight metric-highlight--" | append: style %}
+{% assign metric_classes = metric_classes | append: " metric-highlight--" | append: size %}
+
+{% comment %} Auto-detect metric type for styling {% endcomment %}
+{% if metric.value contains "%" %}
+  {% assign metric_classes = metric_classes | append: " metric-highlight--percentage" %}
+{% elsif metric.value contains "$" %}
+  {% assign metric_classes = metric_classes | append: " metric-highlight--currency" %}
+{% elsif metric.value contains "Countries" or metric.value contains "Markets" %}
+  {% assign metric_classes = metric_classes | append: " metric-highlight--geographic" %}
+{% endif %}
+
+<div class="{{ metric_classes }}">
+  <div class="metric-highlight__content">
+    <div class="metric-highlight__value">{{ metric.value }}</div>
+    <div class="metric-highlight__label">{{ metric.label }}</div>
+    {% if show_period and metric.period %}
+      <div class="metric-highlight__period">{{ metric.period }}</div>
+    {% endif %}
+  </div>
+</div>

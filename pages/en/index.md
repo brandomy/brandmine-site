@@ -4,6 +4,11 @@ title: Home
 ref: home
 permalink: /en/
 lang: en
-# sections: managed by _data/page_sections.yml (home layout)
+# Override default sections to focus on styling specific ones
+sections:
+  - hero
+  - impact-statement
+  - featured-brands
+  - final-cta
 ---
-<!-- Brandmine home page - sections loaded via logic-light approach -->
+<!-- Brandmine home page - sections limited for styling focus -->

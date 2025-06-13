@@ -1,105 +1,151 @@
 {% comment %}
-HELPER: Brand Image
-PURPOSE: Unified brand image rendering with intelligent alt text generation and fallback handling across YAML page data and JSON collections
+HELPER: Brand Image (Simplified)
+PURPOSE: Easy brand image rendering with current file structure support
 
-USAGE: {% include helpers/brand-image.html brand_id="ru-teatime" image_type="hero" %}
+USAGE:
+{% include helpers/brand-image.html brand_id="ru-teatime" image_type="hero" %}
+{% include helpers/brand-image.html brand_id="ru-teatime" image_type="logo" %}
+{% include helpers/brand-image.html brand_id="ru-teatime" image_type="portrait" %}
 
 PARAMETERS:
-- brand_id (required): Brand identifier string for lookup
-- image_type (required): Image type string - "logo", "hero", "founder"
-- alt (optional): Override alt text string (auto-generated if not provided)
-- class (optional): Additional CSS classes string
-- loading (optional): Loading behavior string - "eager"/"lazy"
-- aspect (optional): Aspect ratio override string - "landscape"/"portrait"/"square"
+- brand_id (required): Brand identifier (e.g., "ru-teatime")
+- image_type (required): "hero", "logo", or "portrait"
+- alt (optional): Override alt text
+- class (optional): Additional CSS classes
+- loading (optional): "eager" or "lazy"
 
-RETURNS: Renders responsive image component with proper alt text and fallback handling
-
-DEPENDENCIES:
-- Data: page.images frontmatter, site.data.brands collection
-- Includes: helpers/brand-data.html, helpers/founder-name.html, components/images/collection-image.html
-- Variables: page.ref, page.lang for context-aware lookup
-
-EXAMPLE:
-{% include helpers/brand-image.html brand_id="ru-teatime" image_type="logo" %}
-<!-- Auto-generates: "TeaTime logo" -->
-{% include helpers/brand-image.html brand_id=page.ref image_type="founder" class="founder-portrait" %}
-<!-- Uses founder name for better alt text -->
+HANDLES YOUR CURRENT FILES:
+- hero-storefront-1200w.jpg → Uses name="storefront"
+- hero-moscow-spice-market-1200w.jpg → Uses name="moscow-spice-market"
+- logo-color-1200w.png → Uses name="color"
+- founder-portrait-1200w.jpg → Uses purpose="portrait"
 {% endcomment %}
 
-{% comment %} Intelligent data source selection: page YAML vs JSON lookup {% endcomment %}
+{% comment %} Get brand data for intelligent naming {% endcomment %}
 {% if page.ref == include.brand_id %}
-  {% comment %} Current page context - use YAML frontmatter data {% endcomment %}
   {% assign brand = page %}
   {% assign brand_name = page.title %}
 {% else %}
-  {% comment %} Cross-reference - lookup from JSON data source {% endcomment %}
-  {% include helpers/brand-data.html brand_id=include.brand_id %}
-  {% assign brand_name = brand.name[page.lang] | default: brand.name.en %}
+  {% comment %} Look up from site data {% endcomment %}
+  {% for brand_data in site.brands %}
+    {% if brand_data.ref == include.brand_id and brand_data.lang == page.lang %}
+      {% assign brand = brand_data %}
+      {% assign brand_name = brand_data.title %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
 {% endif %}
 
-{% if brand and brand.images[include.image_type] %}
-  {% assign image_config = brand.images[include.image_type] %}
+{% comment %} Map your current file patterns {% endcomment %}
+{% case include.brand_id %}
+  {% when 'ru-teatime' %}
+    {% if include.image_type == 'hero' %}
+      {% assign image_name = "storefront" %}
+    {% elsif include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+  {% when 'ru-seven-spices' %}
+    {% if include.image_type == 'hero' %}
+      {% assign image_name = "moscow-spice-market" %}
+    {% elsif include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+  {% when 'ru-altai-honey' %}
+    {% if include.image_type == 'hero' %}
+      {% assign image_name = "siberian-apiaries" %}
+    {% elsif include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+  {% when 'ru-taiga-spirits' %}
+    {% if include.image_type == 'hero' %}
+      {% assign image_name = "distillery" %}
+    {% elsif include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+  {% when 'br-serra-verde' %}
+    {% if include.image_type == 'hero' %}
+      {% assign image_name = "farm-view" %}
+    {% elsif include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+  {% when 'br-sojourn-hotels' %}
+    {% if include.image_type == 'hero' %}
+      {% assign image_name = "paraty-view" %}
+    {% elsif include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+  {% when 'cn-dragonfly-retreats' %}
+    {% if include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+  {% else %}
+    {% comment %} Default naming for new brands {% endcomment %}
+    {% if include.image_type == 'logo' %}
+      {% assign image_name = "color" %}
+    {% endif %}
+{% endcase %}
 
-  {% comment %} Generate contextual alt text if not provided {% endcomment %}
+{% comment %} Handle founder portraits - use founder collection instead {% endcomment %}
+{% if include.image_type == 'portrait' %}
+  {% comment %} Map brand to founder {% endcomment %}
+  {% case include.brand_id %}
+    {% when 'ru-teatime' %}
+      {% assign founder_id = "ru-alexei-sokolov" %}
+    {% when 'ru-seven-spices' %}
+      {% assign founder_id = "ru-maria-kuznetsova" %}
+    {% when 'ru-altai-honey' %}
+      {% assign founder_id = "ru-ivan-petrov" %}
+    {% when 'ru-taiga-spirits' %}
+      {% assign founder_id = "ru-nikolai-volkov" %}
+    {% when 'br-serra-verde' %}
+      {% assign founder_id = "br-eduardo-santos" %}
+    {% when 'br-sojourn-hotels' %}
+      {% assign founder_id = "br-isabela-mendez" %}
+    {% when 'cn-dragonfly-retreats' %}
+      {% assign founder_id = "cn-georgie-yam" %}
+  {% endcase %}
+
+  {% if founder_id %}
+    {% include components/images/collection-image.html
+       collection="founders"
+       slug=founder_id
+       purpose="portrait"
+       alt=include.alt
+       class=include.class
+       loading=include.loading %}
+  {% endif %}
+{% else %}
+  {% comment %} Generate auto alt text {% endcomment %}
   {% unless include.alt %}
     {% case include.image_type %}
       {% when 'logo' %}
         {% assign auto_alt = brand_name | append: " logo" %}
       {% when 'hero' %}
-        {% assign auto_alt = brand_name | append: " " | append: image_config.name | replace: "-", " " %}
-      {% when 'founder' %}
-        {% comment %} Get founder name for better alt text {% endcomment %}
-        {% if brand.founders and brand.founders.first %}
-          {% include helpers/founder-name.html founder_id=brand.founders.first assign="founder_name" %}
-          {% assign auto_alt = founder_name | append: " portrait" %}
-        {% else %}
-          {% assign auto_alt = brand_name | append: " founder portrait" %}
-        {% endif %}
+        {% assign auto_alt = brand_name | append: " storefront" %}
       {% else %}
         {% assign auto_alt = brand_name | append: " " | append: include.image_type %}
     {% endcase %}
-    {% assign final_alt = auto_alt %}
   {% else %}
-    {% assign final_alt = include.alt %}
+    {% assign auto_alt = include.alt %}
   {% endunless %}
 
-  {% comment %} Map image types to purposes {% endcomment %}
-  {% case include.image_type %}
-    {% when 'logo' %}
-      {% assign purpose = "logo" %}
-      {% assign aspect = "square" %}
-    {% when 'hero' %}
-      {% assign purpose = "hero" %}
-      {% assign aspect = "landscape" %}
-    {% when 'founder' %}
-      {% assign purpose = "founder" %}
-      {% assign aspect = "portrait" %}
-    {% else %}
-      {% assign purpose = include.image_type %}
-      {% assign aspect = "landscape" %}
-  {% endcase %}
+  {% comment %} Set aspect ratio {% endcomment %}
+  {% if include.image_type == 'logo' %}
+    {% assign aspect = "square" %}
+  {% elsif include.image_type == 'portrait' %}
+    {% assign aspect = "portrait" %}
+  {% else %}
+    {% assign aspect = "landscape" %}
+  {% endif %}
 
-  {% comment %} Use collection-image component {% endcomment %}
-  {% assign final_aspect = include.aspect | default: aspect %}
+  {% comment %} Render the image {% endcomment %}
   {% include components/images/collection-image.html
      collection="brands"
      slug=include.brand_id
-     purpose=purpose
-     name=image_config.name
-     ext=image_config.ext
-     aspect=final_aspect
-     alt=final_alt
+     purpose=include.image_type
+     name=image_name
+     aspect=aspect
+     alt=auto_alt
      class=include.class
      loading=include.loading %}
-
-{% else %}
-  {% comment %} Fallback for missing data {% endcomment %}
-  {% include components/images/collection-image.html
-     collection="brands"
-     slug=include.brand_id
-     purpose="placeholder"
-     alt=final_alt
-     class=include.class
-     loading=include.loading
-     fallback=true %}
 {% endif %}
