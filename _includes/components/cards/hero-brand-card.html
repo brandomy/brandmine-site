@@ -79,6 +79,18 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
         </h2>
 
         <div class="hero-brand-card__meta">
+          {% comment %} Key metric display (highest priority) {% endcomment %}
+          {% if featured_data.key_metric %}
+            <div class="hero-brand-card__key-metric">
+              <span class="key-metric__value">{{ featured_data.key_metric.value }}</span>
+              <span class="key-metric__label">{{ featured_data.key_metric.label }}</span>
+              {% if featured_data.key_metric.period %}
+                <span class="key-metric__period">{{ featured_data.key_metric.period }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% comment %} Existing meta information {% endcomment %}
           {% include components/helpers/founding-year.html
              brand=brand
              class_name="hero-brand-card" %}
@@ -89,7 +101,17 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
              class="hero-brand-card__location" %}
         </div>
 
-        <p class="hero-brand-card__description">{{ brand.description }}</p>
+        {% comment %} Look up featured content data {% endcomment %}
+        {% assign featured_data = site.data.featured_content.brands[page.lang] | where: "ref", brand.ref | first %}
+
+        {% comment %} Enhanced description section {% endcomment %}
+        <div class="hero-brand-card__description-area">
+          {% if featured_data.value_proposition %}
+            <p class="hero-brand-card__value-proposition">{{ featured_data.value_proposition }}</p>
+          {% else %}
+            <p class="hero-brand-card__description">{{ brand.description }}</p>
+          {% endif %}
+        </div>
       </div>
 
       <!-- Founder portrait -->
