@@ -37,9 +37,11 @@ images:
   portrait:
     name: "portrait"     # Becomes founder-portrait-400w.jpg
     ext: "jpg"
+    alt: "Alexei Sokolov, founder of TeaTime, preparing traditional Russian tea ceremony with antique brass samovar while wearing traditional Russian vest in elegant tearoom setting"
   headshot:
     name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
+    alt: "Professional headshot of Alexei Sokolov against neutral background, wearing business attire with confident expression"
 
 # === SOCIAL MEDIA ===
 social:

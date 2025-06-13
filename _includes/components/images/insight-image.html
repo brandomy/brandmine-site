@@ -1,0 +1,115 @@
+{% comment %}
+  IMAGE COMPONENT: Insight Image (Specialized for Flexible Schema)
+  PURPOSE: Specialized component for insights with flexible image arrays and types
+  OPTIMIZED: For insights variable schema (hero + 1-10+ additional images)
+
+  PARAMETERS:
+  - slug (required): String - Insight identifier (e.g., "ru-seven-spices-spotlight")
+  - type (required): String - Image type ("hero", "gallery", "infographic", "founder_portrait")
+  - index (optional): Number - Gallery image index (0-based, for gallery images)
+  - alt (optional): String - Override alt text (uses front matter if not provided)
+  - class (optional): String - Additional CSS classes for styling
+  - loading (optional): String - Loading priority. Default: "lazy" (hero uses "eager")
+  - sizes (optional): String - Override responsive sizes
+
+  SPECIALIZED FEATURES:
+  - Baked-in path building: /assets/images/insights/{slug}/
+  - Hero image handling with eager loading
+  - Gallery array processing with lazy loading
+  - Infographic and specialized image support
+  - Front matter alt text lookup with intelligent fallbacks
+  - Auto-responsive sizing optimized for insights layout
+{% endcomment %}
+
+{% comment %} Get the insight page data {% endcomment %}
+{% if page.ref == include.slug %}
+  {% assign insight = page %}
+{% else %}
+  {% for insight_data in site.insights %}
+    {% if insight_data.ref == include.slug and insight_data.lang == page.lang %}
+      {% assign insight = insight_data %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} Build base path with baked-in insights structure {% endcomment %}
+{% assign base_path = '/assets/images/insights/' | append: include.slug | append: '/' %}
+
+{% comment %} Handle different image types {% endcomment %}
+{% case include.type %}
+  {% when 'hero' %}
+    {% comment %} Hero image processing {% endcomment %}
+    {% if insight.hero_image %}
+      {% assign image_name = insight.hero_image %}
+      {% assign alt_text = insight.hero_alt | default: insight.title | append: " hero image" %}
+      {% assign loading_priority = "eager" %}
+      {% assign default_sizes = "(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px" %}
+    {% endif %}
+
+  {% when 'gallery' %}
+    {% comment %} Gallery image processing {% endcomment %}
+    {% if insight.gallery_images and include.index %}
+      {% assign gallery_item = insight.gallery_images[include.index] %}
+      {% if gallery_item %}
+        {% assign image_name = gallery_item.name %}
+        {% assign alt_text = gallery_item.alt | default: insight.title | append: " gallery image" %}
+        {% assign loading_priority = "lazy" %}
+        {% assign default_sizes = "(max-width: 480px) 100vw, (max-width: 768px) 85vw, 600px" %}
+      {% endif %}
+    {% endif %}
+
+  {% when 'infographic' %}
+    {% comment %} Infographic processing {% endcomment %}
+    {% if insight.infographic %}
+      {% assign image_name = insight.infographic %}
+      {% assign alt_text = insight.infographic_alt | default: insight.title | append: " infographic" %}
+      {% assign loading_priority = "lazy" %}
+      {% assign default_sizes = "(max-width: 480px) 100vw, (max-width: 768px) 85vw, 800px" %}
+    {% endif %}
+
+  {% when 'founder_portrait' %}
+    {% comment %} Founder portrait processing {% endcomment %}
+    {% if insight.founder_portrait %}
+      {% assign image_name = insight.founder_portrait %}
+      {% assign alt_text = insight.founder_portrait_alt | default: insight.title | append: " founder portrait" %}
+      {% assign loading_priority = "lazy" %}
+      {% assign default_sizes = "(max-width: 480px) 70vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 500px" %}
+    {% endif %}
+
+  {% else %}
+    {% comment %} Generic image processing {% endcomment %}
+    {% assign image_name = include.type %}
+    {% assign alt_text = insight.title | append: " " | append: include.type %}
+    {% assign loading_priority = "lazy" %}
+    {% assign default_sizes = "(max-width: 480px) 100vw, (max-width: 768px) 85vw, 600px" %}
+{% endcase %}
+
+{% comment %} Override alt text if provided {% endcomment %}
+{% if include.alt %}
+  {% assign alt_text = include.alt %}
+{% endif %}
+
+{% comment %} Set loading priority and sizes {% endcomment %}
+{% assign loading_attr = include.loading | default: loading_priority | default: "lazy" %}
+{% assign sizes_attr = include.sizes | default: default_sizes %}
+
+{% comment %} Only render if we have an image name {% endcomment %}
+{% if image_name %}
+  {% comment %} Build responsive image paths {% endcomment %}
+  {% assign src_400 = base_path | append: image_name | append: '-400w.jpg' %}
+  {% assign src_800 = base_path | append: image_name | append: '-800w.jpg' %}
+  {% assign src_1200 = base_path | append: image_name | append: '-1200w.jpg' %}
+
+  {% comment %} Output responsive image {% endcomment %}
+  <img src="{{ src_800 | relative_url }}"
+       srcset="{{ src_400 | relative_url }} 400w,
+               {{ src_800 | relative_url }} 800w,
+               {{ src_1200 | relative_url }} 1200w"
+       sizes="{{ sizes_attr }}"
+       alt="{{ alt_text }}"
+       {% if include.class %}class="{{ include.class }}"{% endif %}
+       data-type="{{ include.type }}"
+       {% if include.index %}data-index="{{ include.index }}"{% endif %}
+       loading="{{ loading_attr }}">
+{% endif %}

@@ -44,12 +44,15 @@ images:
   logo:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
+    alt: "TeaTime标志，采用优雅的西里尔字母设计，配有传统俄式茶壶装饰图案"
   hero:
     name: "storefront"  # Becomes hero-tearoom-400w.jpg
     ext: "jpg"
+    alt: "TeaTime位于莫斯科历史悠久的阿尔巴特区的旗舰茶馆，大窗户展示传统俄式茶具摆设和温馨的环境照明"
   founder:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
+    alt: "TeaTime创始人阿列克谢·索科洛夫在优雅的茶馆环境中用古董黄铜茶炊准备传统俄式茶道"
 
 social_media:
   facebook: "teatimeru"

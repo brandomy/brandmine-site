@@ -13,7 +13,23 @@ author: "randal_eastman"  # Key for translation lookup
 excerpt: "Seven Spices is reintroducing traditional Russian spice blends to modern cuisine, combining heritage recipes with modern production for export to global markets."
 category: "brand-spotlight"  # Must match insights/en.yml
 reading_time: 7
-hero_image: "/assets/images/insights/ru-seven-spices-spotlight/hero-moscow-spice-market.jpg"  # Week 3 enhancement
+# === IMAGES (Specialized Flexible Structure for Insights) ===
+# Hero image (always present)
+hero_image: "hero-moscow-spice-market"
+hero_alt: "Bustling Moscow spice market with colorful displays of traditional Russian spices and Seven Spices branded products prominently featured among market stalls"
+
+# Gallery images (flexible array)
+gallery_images:
+  - name: "gallery-spice-preparation"
+    alt: "Maria Kuznetsova carefully measuring traditional spice blends in Seven Spices workshop surrounded by heritage recipe books"
+  - name: "gallery-storefront"
+    alt: "Seven Spices flagship location in Moscow's historic district with traditional Russian architecture and warm storefront lighting"
+  - name: "gallery-product-display"
+    alt: "Elegant display of Seven Spices premium spice blends in traditional Russian packaging with Cyrillic labels"
+
+# Specialized images (optional)
+founder_portrait: "maria-portrait"
+founder_portrait_alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress holding signature spice blend with confident expression"
 
 # Brand Information
 brands: [ru-seven-spices]  # Featured brand(s) with market prefix

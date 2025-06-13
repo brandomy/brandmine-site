@@ -52,12 +52,15 @@ images:
   logo:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
+    alt: "Логотип Seven Spices с символами традиционных русских пряных смесей, кириллическим текстом и теплыми земляными цветами"
   hero:
     name: "spice-market"  # Becomes hero-spice-market-400w.jpg
     ext: "jpg"
+    alt: "Оживленный московский рынок специй с красочными витринами традиционных русских пряностей и продукцией Seven Spices на видном месте среди рыночных прилавков"
   founder:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
+    alt: "Мария Кузнецова, основательница Seven Spices, в традиционном русском платье тщательно отмеряет ароматные пряные смеси в своей мастерской в окружении старинных книг рецептов"
 
 # === SOCIAL MEDIA ===
 social_media:

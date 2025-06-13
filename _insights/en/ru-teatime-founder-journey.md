@@ -13,7 +13,24 @@ author: "randal_eastman"  # Key for translation lookup
 excerpt: "The remarkable story of how a software engineer's passion for tea transformed into Russia's leading artisanal tea brand."
 category: "founders_journey"  # Must match insights/en.yml
 reading_time: 8
-hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime.jpg"  # Week 3 enhancement
+# === IMAGES (Specialized Flexible Structure for Insights) ===
+# Hero image (always present)
+hero_image: "hero-teatime"
+hero_alt: "Alexei Sokolov in his flagship TeaTime tearoom in Moscow's Arbat district, demonstrating traditional Russian tea ceremony with brass samovar"
+
+# Gallery images (flexible array)
+gallery_images:
+  - name: "gallery-tea-sourcing"
+    alt: "Alexei traveling through tea gardens in China during his early sourcing expeditions that inspired TeaTime's premium blends"
+  - name: "gallery-workshop"
+    alt: "TeaTime's blending workshop showing Alexei and his team carefully crafting artisanal tea mixtures using traditional methods"
+
+# Specialized images (optional)
+founder_portrait: "alexei-portrait"
+founder_portrait_alt: "Alexei Sokolov, founder of TeaTime, in traditional Russian vest preparing tea ceremony with antique samovar in elegant tearoom setting"
+
+infographic: "growth-timeline"
+infographic_alt: "TeaTime growth timeline from 2010 startup to 2024 international expansion showing key milestones and market expansion"
 
 # Brand Information
 brands: [ru-teatime]  # Featured brand(s) with market prefix

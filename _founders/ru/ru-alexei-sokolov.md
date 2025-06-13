@@ -33,9 +33,18 @@ cross_border_expertise: true
 languages: ["ru", "en", "zh"]
 
 images:
-  portrait: { name: "portrait", ext: "jpg" }
-  headshot: { name: "headshot", ext: "jpg" }
-  action: { name: "action", ext: "jpg" }
+  portrait:
+    name: "portrait"
+    ext: "jpg"
+    alt: "Алексей Соколов, основатель TeaTime, готовит традиционную русскую чайную церемонию с антикварным латунным самоваром, одетый в традиционный русский жилет в элегантной обстановке чайной"
+  headshot:
+    name: "headshot"
+    ext: "jpg"
+    alt: "Профессиональный портрет Алексея Соколова на нейтральном фоне в деловом костюме с уверенным выражением лица"
+  action:
+    name: "action"
+    ext: "jpg"
+    alt: "Алексей Соколов в действии, руководит чайной церемонией в своей флагманской чайной, демонстрируя мастерство и страсть к чайной культуре"
 
 social:
   instagram: teatime_russia

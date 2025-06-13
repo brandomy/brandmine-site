@@ -47,6 +47,21 @@ location:
   region: "Московская область"  # Region/state/province (translatable, optional)
   country: "ru"  # ISO country code
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+images:
+  logo:
+    name: "color"     # Becomes logo-color-400w.png
+    ext: "png"
+    alt: "Логотип TeaTime с элегантной кириллической надписью и орнаментальным дизайном чайника в традиционном русском стиле"
+  hero:
+    name: "storefront"  # Becomes hero-tearoom-400w.jpg
+    ext: "jpg"
+    alt: "Флагманская чайная TeaTime в историческом районе Арбат в Москве с большими окнами, демонстрирующими традиционную русскую чайную сервировку и теплое окружающее освещение"
+  founder:
+    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    ext: "jpg"
+    alt: "Алексей Соколов, основатель TeaTime, готовит традиционную русскую чайную церемонию с антикварным латунным самоваром в элегантной обстановке чайной"
+
 # Location - Flat structure for Airtable integration
 location_lng: 37.6173  # Longitude coordinate
 location_lat: 55.7558  # Latitude coordinate

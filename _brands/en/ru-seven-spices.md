@@ -52,12 +52,15 @@ images:
   logo:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
+    alt: "Seven Spices logo featuring traditional Russian spice blend symbols with Cyrillic text and warm earth-tone colors"
   hero:
     name: "spice-market"  # Becomes hero-spice-market-400w.jpg
     ext: "jpg"
+    alt: "Bustling Moscow spice market with colorful displays of traditional Russian spices and Seven Spices branded products prominently featured among market stalls"
   founder:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
+    alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress carefully measuring aromatic spice blends in her workshop surrounded by heritage recipe books"
 
 # === SOCIAL MEDIA ===
 social_media:

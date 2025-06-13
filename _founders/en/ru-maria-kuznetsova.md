@@ -37,9 +37,11 @@ images:
   portrait:
     name: "portrait"     # Becomes founder-portrait-400w.jpg
     ext: "jpg"
+    alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress carefully measuring aromatic spice blends in her workshop surrounded by heritage recipe books and traditional wooden tools"
   headshot:
     name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
+    alt: "Professional headshot of Maria Kuznetsova wearing traditional Russian jewelry against warm background, expressing confidence and culinary expertise"
 
 # === SOCIAL MEDIA ===
 social:

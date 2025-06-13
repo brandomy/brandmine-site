@@ -1,13 +1,13 @@
 {% comment %}
-  IMAGE COMPONENT: Collection Image (Updated for Flexible Naming)
-  PURPOSE: Universal responsive image component with intelligent file detection
+  IMAGE COMPONENT: Collection Image (Enhanced with Front Matter Alt Text)
+  PURPOSE: Universal responsive image component with intelligent file detection and accessibility
   HANDLES: Both generic naming (hero-) and descriptive naming (hero-storefront-)
 
   PARAMETERS:
   - collection (required): String - Collection name ("brands", "founders", "insights", "dimensions", "site")
   - slug (required): String - Unique identifier (e.g., "ru-teatime", "br-eduardo-santos")
   - purpose (required): String - Image purpose ("hero", "logo", "portrait", "headshot")
-  - alt (required): String - Descriptive alt text for accessibility
+  - alt (optional): String - Override alt text for accessibility (uses front matter if not provided)
   - name (optional): String - Specific image name for descriptive naming (e.g., "storefront", "moscow-spice-market")
   - aspect (optional): String - Aspect ratio type. Default: "landscape"
   - class (optional): String - Additional CSS classes for styling
@@ -18,7 +18,7 @@
   ENHANCED FEATURES:
   - Auto-detects file extension based on purpose (PNG for logos, JPG for others)
   - Tries multiple filename patterns (generic first, then descriptive)
-  - Intelligent fallback system
+  - Intelligent alt text lookup from front matter with fallbacks
   - Optimized mobile-first responsive sizing
 {% endcomment %}
 
@@ -29,6 +29,59 @@
   {% assign file_ext = "png" %}
 {% else %}
   {% assign file_ext = "jpg" %}
+{% endif %}
+
+{% comment %} Enhanced Alt Text Lookup System {% endcomment %}
+{% comment %} 1. Use provided alt parameter (highest priority) {% endcomment %}
+{% if include.alt %}
+  {% assign alt_text = include.alt %}
+{% else %}
+  {% comment %} 2. Try to get alt text from front matter {% endcomment %}
+  {% comment %} Look for current page first, then search collections {% endcomment %}
+  {% if page.ref == include.slug %}
+    {% assign source_page = page %}
+  {% elsif include.collection == 'brands' %}
+    {% for brand in site.brands %}
+      {% if brand.ref == include.slug and brand.lang == page.lang %}
+        {% assign source_page = brand %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% elsif include.collection == 'founders' %}
+    {% for founder in site.founders %}
+      {% if founder.ref == include.slug and founder.lang == page.lang %}
+        {% assign source_page = founder %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% elsif include.collection == 'insights' %}
+    {% for insight in site.insights %}
+      {% if insight.ref == include.slug and insight.lang == page.lang %}
+        {% assign source_page = insight %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% comment %} Extract alt text from front matter images object {% endcomment %}
+  {% if source_page.images[include.purpose].alt %}
+    {% assign alt_text = source_page.images[include.purpose].alt %}
+  {% else %}
+    {% comment %} 3. Generate intelligent fallback alt text {% endcomment %}
+    {% assign page_title = source_page.title | default: include.slug %}
+    {% case include.purpose %}
+      {% when 'logo' %}
+        {% assign alt_text = page_title | append: " logo" %}
+      {% when 'hero' %}
+        {% assign alt_text = page_title | append: " hero image" %}
+      {% when 'portrait' %}
+        {% assign alt_text = page_title | append: " portrait" %}
+      {% when 'headshot' %}
+        {% assign alt_text = page_title | append: " headshot" %}
+      {% else %}
+        {% assign alt_text = page_title | append: " " | append: include.purpose %}
+    {% endcase %}
+  {% endif %}
 {% endif %}
 
 {% comment %} Build the image path {% endcomment %}
@@ -101,7 +154,7 @@
              {{ primary_srcset_800 | relative_url }} 800w,
              {{ primary_srcset_1200 | relative_url }} 1200w"
      sizes="{{ sizes }}"
-     alt="{{ include.alt }}"
+     alt="{{ alt_text }}"
      {% if include.class %}class="{{ include.class }}"{% endif %}
      {% if include.purpose %}data-purpose="{{ include.purpose }}"{% endif %}
      {% if fallback_src %}onerror="
