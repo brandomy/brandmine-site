@@ -13,7 +13,20 @@ author: "randal_eastman"  # Key for translation lookup
 excerpt: "Russia's wine industry is experiencing unprecedented growth, with domestic production doubling and increasing international recognition."
 category: "market_momentum"  # Must match insights/en.yml
 reading_time: 7
-hero_image: "/assets/images/insights/ru-russian-wine-renaissance/hero-russian-vineyards.jpg"  # Week 3 enhancement
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-russian-vineyards"
+    alt: "Russian vineyards in Krasnodar region showing modern viticulture techniques"
+    ext: "jpg"
+  founder_portrait:
+    name: "founder-portrait-anna-kuznetsova"
+    alt: "Anna Kuznetsova, founder of Krasnodar Wines"
+    ext: "jpg"
+  logo:
+    name: "logo-russian-wine"
+    alt: "Russian wine logo"
+    ext: "jpg"
 
 # Brand Information
 brands: [ru-krasnodar-wines]  # Exact slugs only
@@ -32,18 +45,7 @@ signals: [rapid-growth, export-ready]  # Exact slugs only
 featured: false
 premium: false
 
-# Section Configuration - Linear layout (no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - market-chart
-  - taxonomy
-  - brand-info
-  - related-insights
-  - related-brands
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
 # Location (flat structure for easier data handling)
 location_lng: 37.2986  # Longitude coordinate (Krasnodar region)
@@ -52,10 +54,6 @@ location_city: "Krasnodar"  # City name (translatable)
 location_region: "Krasnodar Krai"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-logo: "/assets/images/insights/ru-russian-wine-renaissance/logo-russian-wine.jpg"
-hero_image: "/assets/images/insights/ru-russian-wine-renaissance/hero-krasnodar-vineyard.jpg"
-founder_portrait: "/assets/images/insights/ru-russian-wine-renaissance/founder-portrait-anna-kuznetsova.jpg"
 ---
 
 ## A New Direction for Russian Spirits

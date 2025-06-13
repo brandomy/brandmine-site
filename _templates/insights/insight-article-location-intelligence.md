@@ -6,22 +6,8 @@ title: "[City/Region] Emerging as [Sector] Hub: [Market Code] Regional Analysis"
 lang: en
 permalink: /en/insights/xx-insight-slug/
 
-# Section Configuration - determines which sections appear in the article - Using linear layout (no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - map-view
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-  - taxonomy-cloud
-
-# Optional: Override sections per article
-# sections: [breadcrumbs, hero, content, map-view, taxonomy, related-insights]  # Custom order example
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
+# No need to specify sections in front matter - they are standardized
 
 # Basic Information
 date: YYYY-MM-DD  # Publication date
@@ -54,10 +40,21 @@ location_city: ""  # City name (translatable)
 location_region: ""  # Region/state/province (translatable, optional)
 location_country: "xx"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/xx-insight-slug/hero-description.jpg"
-map_image: "/assets/images/insights/xx-insight-slug/map-location.jpg"  # Optional
-chart_image: "/assets/images/insights/xx-insight-slug/region-chart.jpg"  # Optional
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+# Semantic image structure for collection-image.html include
+images:
+  hero:
+    name: "description"  # e.g., "market-chart", "city-skyline"
+    alt: "Descriptive alt text for accessibility"
+    ext: "jpg"
+  infographic:  # Optional for charts/maps
+    name: "map-location"
+    alt: "Geographic location map description"
+    ext: "jpg"
+  chart:  # Optional
+    name: "region-chart"
+    alt: "Regional data chart description"
+    ext: "jpg"
 ---
 
 ## Geographic Context

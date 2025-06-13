@@ -6,22 +6,8 @@ title: "[Market Code] Market Momentum: [Sector] Sector Shows [X]% Growth"
 lang: en
 permalink: /en/insights/xx-insight-slug/
 
-# Section Configuration - determines which sections appear in the article - Using linear layout (no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - market-chart
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-  - taxonomy-cloud
-
-# Optional: Override sections per article
-# sections: [breadcrumbs, hero, content, market-chart, taxonomy, related-insights]  # Custom order example
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
+# No need to specify sections in front matter - they are standardized
 
 # Basic Information
 date: YYYY-MM-DD  # Publication date
@@ -63,10 +49,21 @@ market_data:
   - label: "Key Driver"
     value: "Consumer demand for [attribute]"
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/xx-insight-slug/hero-market-scene.jpg"
-chart_image: "/assets/images/insights/xx-insight-slug/market-chart.jpg"  # Optional
-logo: "/assets/images/insights/xx-insight-slug/logo-brand-name.png"  # Optional
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+# Semantic image structure for collection-image.html include
+images:
+  hero:
+    name: "market-scene"  # e.g., "market-chart", "city-skyline"
+    alt: "Descriptive alt text for accessibility"
+    ext: "jpg"
+  infographic:  # Optional for charts/maps
+    name: "market-chart"
+    alt: "Market data visualization description"
+    ext: "jpg"
+  logo:  # Optional
+    name: "brand-name"
+    alt: "Brand logo"
+    ext: "png"
 ---
 
 ## Market Overview

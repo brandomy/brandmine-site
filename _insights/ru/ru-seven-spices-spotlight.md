@@ -31,24 +31,7 @@ signals: [export-ready, investment-ready]  # Optional: Use exact slugs from dime
 featured: false
 premium: false
 
-# Section Configuration - Brand Spotlight template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
 # Location (flat structure for easier data handling)
 location_lng: 49.1221  # Longitude coordinate (Kazan)
@@ -57,10 +40,20 @@ location_city: "Казань"  # City name (translatable)
 location_region: "Татарстан"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-seven-spices-spotlight/hero-moscow-spice-market.jpg"
-founder_portrait: "/assets/images/insights/ru-seven-spices-spotlight/founder-portrait-marina-petrova.jpg"  # Optional
-logo: "/assets/images/insights/ru-seven-spices-spotlight/logo-seven-spices.png"  # Optional
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "moscow-spice-market"
+    alt: "Шумный московский рынок специй с красочными витринами традиционных русских специй и продукцией брендов Семь Специй"
+    ext: "jpg"
+  founder_portrait:
+    name: "maria-portrait"
+    alt: "Мария Кузнецова, основательница Семь Специй, в традиционном русском платье держит фирменную смесь специй"
+    ext: "jpg"
+  logo:
+    name: "seven-spices"
+    alt: "Логотип бренда Семь Специй"
+    ext: "png"
 ---
 
 ## Переосмысление российской вкусовой палитры

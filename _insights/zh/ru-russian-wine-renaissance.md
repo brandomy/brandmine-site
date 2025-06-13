@@ -31,24 +31,22 @@ signals: [rapid-growth, export-ready]  # Exact slugs only
 featured: false
 premium: false
 
-# Section Configuration - Market Momentum template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-russian-vineyards"
+    alt: "俄罗斯克拉斯诺达尔地区的葡萄园，展示现代葡萄栽培技术"
+    ext: "jpg"
+  founder_portrait:
+    name: "founder-portrait-anna-kuznetsova"
+    alt: "克拉斯诺达尔葡萄酒创始人安娜·库兹涅佐娃"
+    ext: "jpg"
+  logo:
+    name: "logo-russian-wine"
+    alt: "俄罗斯葡萄酒标志"
+    ext: "jpg"
 
 # Location (flat structure for easier data handling)
 location_lng: 37.2986  # Longitude coordinate (Krasnodar region)
@@ -57,10 +55,6 @@ location_city: "克拉斯诺达尔"  # City name (translatable)
 location_region: "克拉斯诺达尔边疆区"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-logo: "/assets/images/insights/ru-russian-wine-renaissance/logo-russian-wine.jpg"
-hero_image: "/assets/images/insights/ru-russian-wine-renaissance/hero-krasnodar-vineyard.jpg"
-founder_portrait: "/assets/images/insights/ru-russian-wine-renaissance/founder-portrait-anna-kuznetsova.jpg"
 ---
 
 ## 俄罗斯烈酒的新方向

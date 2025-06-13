@@ -31,24 +31,22 @@ signals: [export-ready, rapid-growth]  # Optional: Use exact slugs from dimensio
 featured: false
 premium: false
 
-# Section Configuration - Location Intelligence template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-siberian-apiaries"
+    alt: "原始森林环境中的西伯利亚养蜂场"
+    ext: "jpg"
+  founder_portrait:
+    name: "founder-portrait-ivan-petrov"
+    alt: "西伯利亚地区蜂蜜生产者伊万·彼得罗夫"
+    ext: "jpg"
+  logo:
+    name: "logo-siberian-honey"
+    alt: "西伯利亚蜂蜜标志"
+    ext: "jpg"
 
 # Location (flat structure for easier data handling)
 location_lng: 85.6000  # Longitude coordinate (Altai region)
@@ -57,10 +55,6 @@ location_city: "别洛库里哈"  # City name (translatable)
 location_region: "阿尔泰边疆区"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-honey.jpg"
-founder_portrait: "/assets/images/insights/ru-siberian-honey-corridor/founder-portrait-ivan-petrov.jpg"  # Optional
-logo: "/assets/images/insights/ru-siberian-honey-corridor/logo-siberian-honey.jpg"  # Optional
 ---
 
 ## 地理优势：天然有机区域

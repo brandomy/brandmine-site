@@ -13,23 +13,21 @@ author: "randal_eastman"  # Key for translation lookup
 excerpt: "Seven Spices is reintroducing traditional Russian spice blends to modern cuisine, combining heritage recipes with modern production for export to global markets."
 category: "brand-spotlight"  # Must match insights/en.yml
 reading_time: 7
-# === IMAGES (Specialized Flexible Structure for Insights) ===
-# Hero image (always present)
-hero_image: "hero-moscow-spice-market"
-hero_alt: "Bustling Moscow spice market with colorful displays of traditional Russian spices and Seven Spices branded products prominently featured among market stalls"
-
-# Gallery images (flexible array)
-gallery_images:
-  - name: "gallery-spice-preparation"
-    alt: "Maria Kuznetsova carefully measuring traditional spice blends in Seven Spices workshop surrounded by heritage recipe books"
-  - name: "gallery-storefront"
-    alt: "Seven Spices flagship location in Moscow's historic district with traditional Russian architecture and warm storefront lighting"
-  - name: "gallery-product-display"
-    alt: "Elegant display of Seven Spices premium spice blends in traditional Russian packaging with Cyrillic labels"
-
-# Specialized images (optional)
-founder_portrait: "maria-portrait"
-founder_portrait_alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress holding signature spice blend with confident expression"
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+# Semantic image structure for collection-image.html include
+images:
+  hero:
+    name: "moscow-spice-market"
+    alt: "Bustling Moscow spice market with colorful displays of traditional Russian spices and Seven Spices branded products prominently featured among market stalls"
+    ext: "jpg"
+  founder_portrait:
+    name: "maria-portrait"
+    alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress holding signature spice blend with confident expression"
+    ext: "jpg"
+  logo:
+    name: "seven-spices"
+    alt: "Seven Spices brand logo"
+    ext: "png"
 
 # Brand Information
 brands: [ru-seven-spices]  # Featured brand(s) with market prefix
@@ -48,24 +46,8 @@ signals: [export-ready, investment-ready]  # Optional: Use exact slugs from dime
 featured: true
 premium: false
 
-# Section Configuration - determines which sections appear in the article
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-
-# Additional sections (former sidebar content now linear)
-# Uncomment to include:
-# - brand-info
-# - taxonomy-cloud  
-# - related-brands
-# - related-insights
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
+# No need to specify sections in front matter - they are standardized
 
 # Location (flat structure for easier data handling)
 location_lng: 49.1221  # Longitude coordinate (Kazan)
@@ -74,10 +56,6 @@ location_city: "Kazan"  # City name (translatable)
 location_region: "Tatarstan"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-seven-spices-spotlight/hero-moscow-spice-market.jpg"
-founder_portrait: "/assets/images/insights/ru-seven-spices-spotlight/founder-portrait-marina-petrova.jpg"  # Optional
-logo: "/assets/images/insights/ru-seven-spices-spotlight/logo-seven-spices.png"  # Optional
 ---
 
 ## Reimagining Russia's Flavor Palette

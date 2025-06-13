@@ -31,24 +31,22 @@ signals: [export-ready, investment-ready]  # Optional: Use exact slugs from dime
 featured: false
 premium: false
 
-# Section Configuration - Brand Spotlight template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "moscow-spice-market"
+    alt: "繁忙的莫斯科香料市场，色彩斑斓的传统俄罗斯香料展示，七香料品牌产品在市场摊位中显著展示"
+    ext: "jpg"
+  founder_portrait:
+    name: "maria-portrait"
+    alt: "七香料创始人玛丽亚·库兹涅佐娃，身着传统俄罗斯服装，手持标志性香料混合物，表情自信"
+    ext: "jpg"
+  logo:
+    name: "seven-spices"
+    alt: "七香料品牌标志"
+    ext: "png"
 
 # Location (flat structure for easier data handling)
 location_lng: 49.1221  # Longitude coordinate (Kazan)
@@ -57,10 +55,6 @@ location_city: "喀山"  # City name (translatable)
 location_region: "鞑靼斯坦"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-seven-spices-spotlight/hero-moscow-spice-market.jpg"
-founder_portrait: "/assets/images/insights/ru-seven-spices-spotlight/founder-portrait-marina-petrova.jpg"  # Optional
-logo: "/assets/images/insights/ru-seven-spices-spotlight/logo-seven-spices.png"  # Optional
 ---
 
 ## 重新想象俄罗斯的风味调色板

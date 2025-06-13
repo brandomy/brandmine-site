@@ -31,24 +31,7 @@ signals: [rapid-growth, export-ready]  # Exact slugs only
 featured: false
 premium: false
 
-# Section Configuration - Market Momentum template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
 # Location (flat structure for easier data handling)
 location_lng: 37.2986  # Longitude coordinate (Krasnodar region)
@@ -57,10 +40,20 @@ location_city: "Краснодар"  # City name (translatable)
 location_region: "Краснодарский край"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-logo: "/assets/images/insights/ru-russian-wine-renaissance/logo-russian-wine.jpg"
-hero_image: "/assets/images/insights/ru-russian-wine-renaissance/hero-krasnodar-vineyard.jpg"
-founder_portrait: "/assets/images/insights/ru-russian-wine-renaissance/founder-portrait-anna-kuznetsova.jpg"
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-russian-vineyards"
+    alt: "Российские виноградники в Краснодарском крае с современными технологиями виноделия"
+    ext: "jpg"
+  founder_portrait:
+    name: "founder-portrait-anna-kuznetsova"
+    alt: "Анна Кузнецова, основательница Краснодар Вайнс"
+    ext: "jpg"
+  logo:
+    name: "logo-russian-wine"
+    alt: "Логотип российского вина"
+    ext: "jpg"
 ---
 
 ## Новое направление для российских спиртных напитков

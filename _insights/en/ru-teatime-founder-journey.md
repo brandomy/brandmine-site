@@ -13,24 +13,16 @@ author: "randal_eastman"  # Key for translation lookup
 excerpt: "The remarkable story of how a software engineer's passion for tea transformed into Russia's leading artisanal tea brand."
 category: "founders_journey"  # Must match insights/en.yml
 reading_time: 8
-# === IMAGES (Specialized Flexible Structure for Insights) ===
-# Hero image (always present)
-hero_image: "hero-teatime"
-hero_alt: "Alexei Sokolov in his flagship TeaTime tearoom in Moscow's Arbat district, demonstrating traditional Russian tea ceremony with brass samovar"
-
-# Gallery images (flexible array)
-gallery_images:
-  - name: "gallery-tea-sourcing"
-    alt: "Alexei traveling through tea gardens in China during his early sourcing expeditions that inspired TeaTime's premium blends"
-  - name: "gallery-workshop"
-    alt: "TeaTime's blending workshop showing Alexei and his team carefully crafting artisanal tea mixtures using traditional methods"
-
-# Specialized images (optional)
-founder_portrait: "alexei-portrait"
-founder_portrait_alt: "Alexei Sokolov, founder of TeaTime, in traditional Russian vest preparing tea ceremony with antique samovar in elegant tearoom setting"
-
-infographic: "growth-timeline"
-infographic_alt: "TeaTime growth timeline from 2010 startup to 2024 international expansion showing key milestones and market expansion"
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-teatime"
+    alt: "Alexei Sokolov in his flagship TeaTime tearoom in Moscow's Arbat district, demonstrating traditional Russian tea ceremony with brass samovar"
+    ext: "jpg"
+  founder_portrait:
+    name: "alexei-portrait"
+    alt: "Alexei Sokolov, founder of TeaTime, in traditional Russian vest preparing tea ceremony with antique samovar in elegant tearoom setting"
+    ext: "jpg"
 
 # Brand Information
 brands: [ru-teatime]  # Featured brand(s) with market prefix
@@ -49,24 +41,7 @@ signals: [rapid-growth, export-ready]  # Optional: Use exact slugs from dimensio
 featured: true
 premium: false
 
-# Section Configuration - Founders Journey template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
 # Location (flat structure for easier data handling)
 location_lng: 37.6173  # Longitude coordinate (Moscow)
@@ -75,10 +50,6 @@ location_city: "Moscow"  # City name (translatable)
 location_region: "Moscow"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime.jpg"
-founder_portrait: "/assets/images/insights/ru-teatime-founder-journey/founder-portrait-alexei-sokolov.jpg"  # Optional
-logo: "/assets/images/insights/ru-teatime-founder-journey/logo-teatime.jpg"  # Optional
 ---
 
 ## From Dormitory to Global Markets

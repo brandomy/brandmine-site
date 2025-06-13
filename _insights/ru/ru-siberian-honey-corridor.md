@@ -31,24 +31,7 @@ signals: [export-ready, rapid-growth]  # Optional: Use exact slugs from dimensio
 featured: false
 premium: false
 
-# Section Configuration - Location Intelligence template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
 # Location (flat structure for easier data handling)
 location_lng: 85.6000  # Longitude coordinate (Altai region)
@@ -57,10 +40,20 @@ location_city: "Белокуриха"  # City name (translatable)
 location_region: "Алтайский край"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-honey.jpg"
-founder_portrait: "/assets/images/insights/ru-siberian-honey-corridor/founder-portrait-ivan-petrov.jpg"  # Optional
-logo: "/assets/images/insights/ru-siberian-honey-corridor/logo-siberian-honey.jpg"  # Optional
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-siberian-apiaries"
+    alt: "Сибирские пасеки в нетронутой лесной обстановке"
+    ext: "jpg"
+  founder_portrait:
+    name: "founder-portrait-ivan-petrov"
+    alt: "Иван Петров, производитель мёда в сибирском регионе"
+    ext: "jpg"
+  logo:
+    name: "logo-siberian-honey"
+    alt: "Логотип сибирского мёда"
+    ext: "jpg"
 ---
 
 ## Географическое преимущество: естественная органическая зона

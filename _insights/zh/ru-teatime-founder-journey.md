@@ -31,24 +31,18 @@ signals: [rapid-growth, export-ready]  # Optional: Use exact slugs from dimensio
 featured: false
 premium: false
 
-# Section Configuration - Founders Journey template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-teatime"
+    alt: "阿列克谢·索科洛夫在位于莫斯科阿尔巴特区的TeaTime旗舰茶室中，用黄铜茶炙演示传统俄罗斯茶道"
+    ext: "jpg"
+  founder_portrait:
+    name: "alexei-portrait"
+    alt: "TeaTime创始人阿列克谢·索科洛夫，身着传统俄罗斯背心，在优雅的茶室中用古董茶炙准备茶道"
+    ext: "jpg"
 
 # Location (flat structure for easier data handling)
 location_lng: 37.6173  # Longitude coordinate (Moscow)
@@ -57,10 +51,6 @@ location_city: "莫斯科"  # City name (translatable)
 location_region: "莫斯科州"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime.jpg"
-founder_portrait: "/assets/images/insights/ru-teatime-founder-journey/founder-portrait-alexei-sokolov.jpg"  # Optional
-logo: "/assets/images/insights/ru-teatime-founder-journey/logo-teatime.jpg"  # Optional
 ---
 
 ## 从宿舍到全球市场

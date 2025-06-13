@@ -13,7 +13,20 @@ author: "olya_eastman"  # Key for translation lookup
 excerpt: "How the pristine forests of Southern Siberia are becoming the epicenter of Russia's premium honey industry, attracting international attention."
 category: "location_intelligence"  # Must match insights/en.yml
 reading_time: 6
-hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-apiaries.jpg"  # Week 3 enhancement
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-siberian-apiaries"
+    alt: "Siberian apiaries in pristine forest setting"
+    ext: "jpg"
+  founder_portrait:
+    name: "founder-portrait-ivan-petrov"
+    alt: "Ivan Petrov, honey producer in Siberian region"
+    ext: "jpg"
+  logo:
+    name: "logo-siberian-honey"
+    alt: "Siberian honey logo"
+    ext: "jpg"
 
 # Brand Information
 brands: [ru-siberian-gold, ru-altai-honey]  # Featured brand(s) with market prefix
@@ -32,24 +45,7 @@ signals: [export-ready, rapid-growth]  # Optional: Use exact slugs from dimensio
 featured: false
 premium: false
 
-# Section Configuration - Location Intelligence template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-
-# Sidebar Configuration
-# sidebar_sections:
-#   - location-info
-#   - related-insights
-#   - related-brands
-#   - taxonomy-cloud
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
 # Location (flat structure for easier data handling)
 location_lng: 85.6000  # Longitude coordinate (Altai region)
@@ -58,10 +54,6 @@ location_city: "Belokurikha"  # City name (translatable)
 location_region: "Altai Krai"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-siberian-honey-corridor/hero-siberian-honey.jpg"
-founder_portrait: "/assets/images/insights/ru-siberian-honey-corridor/founder-portrait-ivan-petrov.jpg"  # Optional
-logo: "/assets/images/insights/ru-siberian-honey-corridor/logo-siberian-honey.jpg"  # Optional
 ---
 
 ## The Geographic Advantage: A Natural Organic Zone

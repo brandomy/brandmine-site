@@ -31,24 +31,7 @@ signals: [rapid-growth, export-ready]  # Optional: Use exact slugs from dimensio
 featured: false
 premium: false
 
-# Section Configuration - Founders Journey template (linear layout, no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-
-# Sidebar Configuration
-# sidebar_sections:
-#   - brand-info
-#   - related-brands
-#   - related-insights
-#   - taxonomy-cloud
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
 
 # Location (flat structure for easier data handling)
 location_lng: 37.6173  # Longitude coordinate (Moscow)
@@ -57,10 +40,16 @@ location_city: "Москва"  # City name (translatable)
 location_region: "Московская область"  # Region/state/province (translatable, optional)
 location_country: "ru"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/ru-teatime-founder-journey/hero-teatime.jpg"
-founder_portrait: "/assets/images/insights/ru-teatime-founder-journey/founder-portrait-alexei-sokolov.jpg"  # Optional
-logo: "/assets/images/insights/ru-teatime-founder-journey/logo-teatime.jpg"  # Optional
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hero-teatime"
+    alt: "Алексей Соколов в своей флагманской чайной TeaTime в московском Арбате, демонстрирует традиционную русскую чайную церемонию с латунным самоваром"
+    ext: "jpg"
+  founder_portrait:
+    name: "alexei-portrait"
+    alt: "Алексей Соколов, основатель TeaTime, в традиционном русском жилете готовит чайную церемонию с антикварным самоваром в элегантной чайной"
+    ext: "jpg"
 ---
 
 ## От общежития до мировых рынков

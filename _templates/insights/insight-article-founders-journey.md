@@ -6,21 +6,8 @@ title: "[Founder Name]: [Brand Name]'s Journey from [Origin] to [Destination]"
 lang: en
 permalink: /en/insights/xx-insight-slug/
 
-# Section Configuration - determines which sections appear in the article - Using linear layout (no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-  - taxonomy-cloud
-
-# Optional: Override sections per article
-# sections: [breadcrumbs, hero, content, taxonomy, related-insights]  # Custom order example
+# Sections are now controlled centrally via _data/page_sections.yml (insight-article)
+# No need to specify sections in front matter - they are standardized
 
 # Basic Information
 date: YYYY-MM-DD  # Publication date
@@ -53,10 +40,21 @@ location_city: ""  # City name (translatable)
 location_region: ""  # Region/state/province (translatable, optional)
 location_country: "xx"  # ISO country code
 
-# Image Paths (follow the global ID pattern)
-hero_image: "/assets/images/insights/xx-insight-slug/hero-description.jpg"
-founder_portrait: "/assets/images/insights/xx-insight-slug/founder-portrait.jpg"  # Optional
-logo: "/assets/images/insights/xx-insight-slug/logo-description.png"  # Optional
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+# Semantic image structure for collection-image.html include
+images:
+  hero:
+    name: "description"  # e.g., "founder-workshop", "tea-ceremony"
+    alt: "Descriptive alt text for accessibility"
+    ext: "jpg"
+  founder_portrait:  # Required for founder journey
+    name: "founder-portrait"
+    alt: "Founder name portrait description"
+    ext: "jpg"
+  infographic:  # Optional for timeline/growth charts
+    name: "growth-timeline"
+    alt: "Company growth timeline description"
+    ext: "jpg"
 ---
 
 ## Origin Story
