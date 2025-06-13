@@ -37,9 +37,13 @@ images:
   headshot: { name: "headshot", ext: "jpg" }
   action: { name: "action", ext: "jpg" }
 
-social:
-  instagram: teatime_russia
-  linkedin: alexei-sokolov-teatime
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "teatime_russia"
+social_linkedin: "alexei-sokolov-teatime"
+social_telegram: ""
+social_twitter: ""
+social_wechat: ""
+social_vk: ""
 
 expertise:
   - 茶叶混合

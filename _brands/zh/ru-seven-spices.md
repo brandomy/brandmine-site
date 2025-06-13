@@ -39,13 +39,12 @@ signals: ["export-ready", "rapid-growth"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: 55.0084  # Latitude coordinate (Novosibirsk)
-  lng: 82.9357  # Longitude coordinate
-  city: "新西伯利亚"  # City name (translatable)
-  region: "新西伯利亚州"  # Region/state/province (translatable, optional)
-  country: "ru"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "新西伯利亚"
+country: "ru"
+latitude: 55.0084
+longitude: 82.9357
+region: "新西伯利亚州"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -62,16 +61,15 @@ images:
     ext: "jpg"
     alt: "Seven Spices创始人玛丽亚·库兹涅佐娃身着传统俄式服装，在被古老配方书籍环绕的工作室中仔细调配芳香香料"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: "sevenspices.siberia"
-  instagram: "@sevenspices_ru"
-  linkedin: ""
-  pinterest: "sevenspices_recipes"
-  telegram: "sevenspices"
-  twitter: ""
-  vk: "sevenspices"
-  youtube: "sevenspices_cooking"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "sevenspices.siberia"
+social_instagram: "@sevenspices_ru"
+social_linkedin: ""
+social_pinterest: "sevenspices_recipes"
+social_telegram: "sevenspices"
+social_twitter: ""
+social_vk: "sevenspices"
+social_youtube: "sevenspices_cooking"
 
 # === BUSINESS INFO ===
 export_ready: true

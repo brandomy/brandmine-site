@@ -37,9 +37,13 @@ images:
   headshot: { name: "headshot", ext: "jpg" }
   action: { name: "action", ext: "jpg" }
 
-social:
-  instagram: 7spices_russia
-  linkedin: maria-kuznetsova-7spices
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "7spices_russia"
+social_linkedin: "maria-kuznetsova-7spices"
+social_telegram: ""
+social_twitter: ""
+social_wechat: ""
+social_vk: ""
 
 expertise:
   - 烹饪艺术

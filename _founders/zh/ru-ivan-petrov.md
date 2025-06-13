@@ -37,9 +37,13 @@ images:
   headshot: { name: "headshot", ext: "jpg" }
   action: { name: "action", ext: "jpg" }
 
-social:
-  instagram: ivan_petrov_honey
-  linkedin: ivan-petrov-12345
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "ivan_petrov_honey"
+social_linkedin: "ivan-petrov-12345"
+social_telegram: ""
+social_twitter: ""
+social_wechat: ""
+social_vk: ""
 
 expertise:
   - 养蜂

@@ -26,8 +26,19 @@ EXAMPLE:
 {% endfor %}
 {% endcomment %}
 
-{% comment %} Start with featured brands from static data for the specified language {% endcomment %}
-{% assign filtered_brands = site.data.featured_content.brands[include.lang] %}
+{% comment %} Start with all brands from collection for the specified language, filter for featured ones {% endcomment %}
+{% assign all_brands = site.brands | where: "lang", include.lang %}
+{% if include.featured %}
+  {% assign featured_brands = "" | split: "," %}
+  {% for brand in all_brands %}
+    {% if brand.featured %}
+      {% assign featured_brands = featured_brands | push: brand %}
+    {% endif %}
+  {% endfor %}
+  {% assign filtered_brands = featured_brands %}
+{% else %}
+  {% assign filtered_brands = all_brands %}
+{% endif %}
 
 {% comment %} Apply premium filtering (featured_level >= 2) {% endcomment %}
 {% if include.premium_only %}

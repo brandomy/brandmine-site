@@ -39,13 +39,12 @@ signals: ["franchise-ready"]  # Optional: Business signals from taxonomy
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: -22.9068  # Latitude coordinate
-  lng: -43.1729  # Longitude coordinate
-  city: "Rio de Janeiro"  # City name (translatable)
-  region: "Multiple regions"  # Region/state/province (translatable, optional)
-  country: "br"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "Rio de Janeiro"
+country: "br"
+latitude: -22.9068
+longitude: -43.1729
+region: "Multiple regions"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -59,16 +58,15 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: "sojournhotelsbr"
-  instagram: "sojournhotels"
-  linkedin: "sojourn-hotels"
-  pinterest: ""  # Added for completeness
-  telegram: ""
-  twitter: "sojournhotels"
-  vk: ""
-  youtube: "sojournhotels"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "sojournhotelsbr"
+social_instagram: "sojournhotels"
+social_linkedin: "sojourn-hotels"
+social_pinterest: ""  # Added for completeness
+social_telegram: ""
+social_twitter: "sojournhotels"
+social_vk: ""
+social_youtube: "sojournhotels"
 
 # === BUSINESS INFO ===
 export_ready: false

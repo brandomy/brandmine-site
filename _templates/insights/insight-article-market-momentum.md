@@ -33,12 +33,12 @@ signals: [signal-slug]  # Optional: Use exact slugs from dimensions file
 featured: false
 premium: false
 
-# Location (flat structure for easier data handling)
-location_lng: 0.0  # Longitude coordinate
-location_lat: 0.0  # Latitude coordinate
-location_city: ""  # City name (translatable)
-location_region: ""  # Region/state/province (translatable, optional)
-location_country: "xx"  # ISO country code
+# Location (flattened structure for easier data handling)
+longitude: 0.0  # Longitude coordinate
+latitude: 0.0  # Latitude coordinate
+city: ""  # City name (translatable)
+region: ""  # Region/state/province (translatable, optional)
+country: "xx"  # ISO country code
 
 # Market data for visualization
 market_data:

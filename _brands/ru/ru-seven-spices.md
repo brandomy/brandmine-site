@@ -39,13 +39,12 @@ signals: ["export-ready", "rapid-growth"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: 55.0084  # Latitude coordinate (Novosibirsk)
-  lng: 82.9357  # Longitude coordinate
-  city: "Новосибирск"  # City name (translatable)
-  region: "Новосибирская область"  # Region/state/province (translatable, optional)
-  country: "ru"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "Новосибирск"
+country: "ru"
+latitude: 55.0084
+longitude: 82.9357
+region: "Новосибирская область"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -62,16 +61,15 @@ images:
     ext: "jpg"
     alt: "Мария Кузнецова, основательница Seven Spices, в традиционном русском платье тщательно отмеряет ароматные пряные смеси в своей мастерской в окружении старинных книг рецептов"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: "sevenspices.siberia"
-  instagram: "@sevenspices_ru"
-  linkedin: ""
-  pinterest: "sevenspices_recipes"
-  telegram: "sevenspices"
-  twitter: ""
-  vk: "sevenspices"
-  youtube: "sevenspices_cooking"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "sevenspices.siberia"
+social_instagram: "@sevenspices_ru"
+social_linkedin: ""
+social_pinterest: "sevenspices_recipes"
+social_telegram: "sevenspices"
+social_twitter: ""
+social_vk: "sevenspices"
+social_youtube: "sevenspices_cooking"
 
 # === BUSINESS INFO ===
 export_ready: true

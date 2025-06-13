@@ -39,13 +39,12 @@ signals: ["export-ready", "rapid-growth"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: 55.7558  # Latitude coordinate
-  lng: 37.6173  # Longitude coordinate
-  city: "Moscow"  # City name (translatable)
-  region: "Moscow Oblast"  # Region/state/province (translatable, optional)
-  country: "ru"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "Moscow"
+country: "ru"
+latitude: 55.7558
+longitude: 37.6173
+region: "Moscow Oblast"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -62,16 +61,15 @@ images:
     ext: "jpg"
     alt: "Alexei Sokolov, founder of TeaTime, preparing traditional Russian tea ceremony with antique brass samovar in elegant tearoom setting"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: "teatime.moscow"
-  instagram: "teatime_russia"
-  linkedin: ""
-  pinterest: ""  # Added for completeness
-  telegram: "teatime_official"
-  twitter: ""
-  vk: "teatime_moscow"
-  youtube: ""
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "teatime.moscow"
+social_instagram: "teatime_russia"
+social_linkedin: ""
+social_pinterest: ""
+social_telegram: "teatime_official"
+social_twitter: ""
+social_vk: "teatime_moscow"
+social_youtube: ""
 
 # === BUSINESS INFO ===
 export_ready: true

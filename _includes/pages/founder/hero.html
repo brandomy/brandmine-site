@@ -48,10 +48,10 @@
           </span>
         {% endif %}
         
-        {% if founder.location and founder.location.city %}
+        {% if founder.city %}
           <span class="founder-hero__location">
             {% if founder.company %}{% include components/separators/bullet-separator.html %}{% endif %}
-            {{ founder.location.city }}{% if founder.location.country %}, {{ founder.location.country }}{% endif %}
+            {{ founder.city }}{% if founder.country %}, {{ founder.country }}{% endif %}
           </span>
         {% endif %}
       </div>

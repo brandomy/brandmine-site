@@ -20,11 +20,10 @@ featured: true  # Is this a featured founder?
 generation: "first"  # Options: "first", "second", "transition"
 company: "TeaTime"  # Primary company association
 
-# Location Information
-location:
-  country: "ru"      # ISO country code
-  region: "Moscow"   # Optional: specific region or state
-  city: "Moscow"
+# Location Information (FLATTENED)
+country: "ru"      # ISO country code
+region: "Moscow"   # Optional: specific region or state
+city: "Moscow"
 
 # International Scope
 markets: ["ru", "gb", "fr", "de", "jp", "sg"]  # Array of country codes where they operate
@@ -43,14 +42,13 @@ images:
     ext: "jpg"
     alt: "Professional headshot of Alexei Sokolov against neutral background, wearing business attire with confident expression"
 
-# === SOCIAL MEDIA ===
-social:
-  instagram: "teatime_russia"  # Username only
-  linkedin: "alexei-sokolov-teatime"   # Username only
-  telegram: ""   # Username only
-  twitter: ""    # Username only
-  wechat: ""     # Username only
-  vk: ""         # Username only (for Russian founders)
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "teatime_russia"  # Username only
+social_linkedin: "alexei-sokolov-teatime"   # Username only
+social_telegram: ""   # Username only
+social_twitter: ""    # Username only
+social_wechat: ""     # Username only
+social_vk: ""         # Username only (for Russian founders)
 
 # Professional Information
 expertise: ["tea blending", "beverage innovation", "cultural ambassador", "brand storytelling"]  # Max 4 items

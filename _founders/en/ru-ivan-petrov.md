@@ -20,11 +20,10 @@ featured: true  # Is this a featured founder?
 generation: "first"  # Options: "first", "second", "transition"
 company: "Altai Honey"  # Primary company association
 
-# Location Information
-location:
-  country: "ru"      # ISO country code
-  region: "Altai Republic"   # Optional: specific region or state
-  city: "Belokurikha"
+# Location Information (FLATTENED)
+country: "ru"      # ISO country code
+region: "Altai Republic"   # Optional: specific region or state
+city: "Belokurikha"
 
 # International Scope
 markets: ["ru", "cn", "kz"]  # Array of country codes where they operate
@@ -41,14 +40,13 @@ images:
     name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social:
-  instagram: "ivan_petrov_honey"  # Username only
-  linkedin: "ivan-petrov-12345"   # Username only
-  telegram: ""   # Username only
-  twitter: ""    # Username only
-  wechat: ""     # Username only
-  vk: ""         # Username only (for Russian founders)
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "ivan_petrov_honey"  # Username only
+social_linkedin: "ivan-petrov-12345"   # Username only
+social_telegram: ""   # Username only
+social_twitter: ""    # Username only
+social_wechat: ""     # Username only
+social_vk: ""         # Username only (for Russian founders)
 
 # Professional Information
 expertise: ["beekeeping", "organic agriculture", "sustainable harvesting", "community development"]  # Max 4 items

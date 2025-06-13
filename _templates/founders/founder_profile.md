@@ -36,11 +36,10 @@ featured: false  # Is this a featured founder?
 generation: "first"  # Options: "first", "second", "transition"
 company: "Brand/Company Name"  # Primary company association
 
-# Location Information
-location:
-  country: "xx"      # ISO country code
-  region: "Region/State"   # Optional: specific region or state
-  city: "City Name"
+# Location Information (flattened structure)
+country: "xx"      # ISO country code
+region: "Region/State"   # Optional: specific region or state
+city: "City Name"
 
 # Professional Information
 expertise: ["primary skill", "secondary skill", "third skill"]  # Max 4 items
@@ -61,14 +60,13 @@ images:
     name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social:
-  instagram: ""  # Username only
-  linkedin: ""   # Username only
-  telegram: ""   # Username only
-  twitter: ""    # Username only
-  wechat: ""     # Username only
-  vk: ""         # Username only (for Russian founders)
+# === SOCIAL MEDIA (Flattened structure for easier data handling) ===
+social_instagram: ""  # Username only
+social_linkedin: ""   # Username only
+social_telegram: ""   # Username only
+social_twitter: ""    # Username only
+social_wechat: ""     # Username only
+social_vk: ""         # Username only (for Russian founders)
 
 # === QUOTES ===
 # Inspirational quotes from the founder that capture their philosophy, vision, or insights

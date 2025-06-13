@@ -97,18 +97,18 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
             </div>
           {% endif %}
 
-          {% comment %} LOCATION INTELLIGENCE - Working solution using featured_content.yml {% endcomment %}
+          {% comment %} ROBUST SOLUTION - Use flattened front matter data {% endcomment %}
           <div class="hero-brand-card__founding-location">
             {% comment %} Founding year from front matter {% endcomment %}
             {% if brand.founding_year %}
               <span class="founding-location__year">Founded {{ brand.founding_year }}</span>
             {% endif %}
 
-            {% comment %} Location data from featured_content.yml (Jekyll can't parse nested YAML in collections) {% endcomment %}
-            {% if featured_data.city and featured_data.country %}
+            {% comment %} Use flattened city and country fields from front matter {% endcomment %}
+            {% if brand.city and brand.country %}
               <span class="founding-location__separator"> • </span>
-              <span class="founding-location__city">{{ featured_data.city }}</span>
-              <span class="founding-location__flag">{% include helpers/country-flag.html country_code=featured_data.country %}</span>
+              <span class="founding-location__city">{{ brand.city }}</span>
+              <span class="founding-location__flag">{% include helpers/country-flag.html country_code=brand.country %}</span>
             {% endif %}
           </div>
         </div>

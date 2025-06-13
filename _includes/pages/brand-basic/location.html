@@ -5,21 +5,21 @@
 
 {% assign brand = include.brand | default: page %}
 
-{% if brand.location %}
+{% if brand.city or brand.country %}
   <div class="brand-basic-location-section">
     <h2>Location & Market Context</h2>
     
     <div class="location-info">
-      {% if brand.location.city and brand.location.region %}
+      {% if brand.city and brand.region %}
         <div class="location-details">
-          <h3>{{ brand.location.city }}, {{ brand.location.region }}</h3>
-          {% if brand.location.country %}
-            <p class="country-context">Located in {% include components/helpers/country-name.html code=brand.location.country lang=brand.lang %}</p>
+          <h3>{{ brand.city }}, {{ brand.region }}</h3>
+          {% if brand.country %}
+            <p class="country-context">Located in {% include components/helpers/country-name.html code=brand.country lang=brand.lang %}</p>
           {% endif %}
         </div>
       {% endif %}
       
-      {% if brand.location.coordinates %}
+      {% if brand.latitude and brand.longitude %}
         <div class="location-map">
           <!-- Placeholder for future map integration -->
           <p class="map-placeholder">

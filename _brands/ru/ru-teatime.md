@@ -39,13 +39,12 @@ signals: ["export-ready"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: 55.7558  # Latitude coordinate
-  lng: 37.6173  # Longitude coordinate
-  city: "Москва"  # City name (translatable)
-  region: "Московская область"  # Region/state/province (translatable, optional)
-  country: "ru"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "Москва"
+country: "ru"
+latitude: 55.7558
+longitude: 37.6173
+region: "Московская область"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:

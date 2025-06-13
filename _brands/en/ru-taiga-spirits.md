@@ -39,13 +39,12 @@ signals: ["export-ready"]  # Optional: Business signals from taxonomy
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: 51.8561  # Latitude coordinate
-  lng: 104.8625  # Longitude coordinate
-  city: "Listvyanka"  # City name (translatable)
-  region: "Irkutsk Oblast"  # Region/state/province (translatable, optional)
-  country: "ru"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "Listvyanka"
+country: "ru"
+latitude: 51.8561
+longitude: 104.8625
+region: "Irkutsk Oblast"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -59,16 +58,15 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: "taigaspirits"
-  instagram: "taiga_spirits"
-  linkedin: ""
-  pinterest: ""  # Added for completeness
-  telegram: "taigaspirits_official"
-  twitter: ""
-  vk: "taigaspirits"
-  youtube: "taigaspirits"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "taigaspirits"
+social_instagram: "taiga_spirits"
+social_linkedin: ""
+social_pinterest: ""  # Added for completeness
+social_telegram: "taigaspirits_official"
+social_twitter: ""
+social_vk: "taigaspirits"
+social_youtube: "taigaspirits"
 
 # === BUSINESS INFO ===
 export_ready: true

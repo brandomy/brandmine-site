@@ -20,11 +20,10 @@ featured: true  # Is this a featured founder?
 generation: "first"  # Options: "first", "second", "transition"
 company: "Seven Spices"  # Primary company association
 
-# Location Information
-location:
-  country: "ru"      # ISO country code
-  region: "Tatarstan"   # Optional: specific region or state
-  city: "Kazan"
+# Location Information (FLATTENED)
+country: "ru"      # ISO country code
+region: "Tatarstan"   # Optional: specific region or state
+city: "Kazan"
 
 # International Scope
 markets: ["ru", "eu"]  # Array of country codes where they operate
@@ -43,14 +42,13 @@ images:
     ext: "jpg"
     alt: "Professional headshot of Maria Kuznetsova wearing traditional Russian jewelry against warm background, expressing confidence and culinary expertise"
 
-# === SOCIAL MEDIA ===
-social:
-  instagram: "7spices_russia"  # Username only
-  linkedin: "maria-kuznetsova-7spices"   # Username only
-  telegram: ""   # Username only
-  twitter: ""    # Username only
-  wechat: ""     # Username only
-  vk: ""         # Username only (for Russian founders)
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "7spices_russia"  # Username only
+social_linkedin: "maria-kuznetsova-7spices"   # Username only
+social_telegram: ""   # Username only
+social_twitter: ""    # Username only
+social_wechat: ""     # Username only
+social_vk: ""         # Username only (for Russian founders)
 
 # Professional Information
 expertise: ["culinary arts", "traditional preservation techniques", "sustainable sourcing", "food artisan"]  # Max 4 items

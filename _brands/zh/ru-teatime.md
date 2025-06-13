@@ -32,12 +32,11 @@ signals: ["export-ready"]
 featured: true
 featured_level: 2
 
-location:
-  lat: 55.7558
-  lng: 37.6173
-  city: "莫斯科"
-  region: "莫斯科州"
-  country: "ru"
+city: "莫斯科"
+country: "ru"
+latitude: 55.7558
+longitude: 37.6173
+region: "莫斯科州"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -54,15 +53,15 @@ images:
     ext: "jpg"
     alt: "TeaTime创始人阿列克谢·索科洛夫在优雅的茶馆环境中用古董黄铜茶炊准备传统俄式茶道"
 
-social_media:
-  facebook: "teatimeru"
-  instagram: "teatime_moscow"
-  linkedin: ""
-  pinterest: ""
-  telegram: "teatime_official"
-  twitter: ""
-  vk: "teatime_ru"
-  youtube: ""
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "teatimeru"
+social_instagram: "teatime_moscow"
+social_linkedin: ""
+social_pinterest: ""
+social_telegram: "teatime_official"
+social_twitter: ""
+social_vk: "teatime_ru"
+social_youtube: ""
 
 export_ready: true
 export_markets: ["eu", "cn"]

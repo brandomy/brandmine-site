@@ -97,13 +97,12 @@ sectors: ["artisanal-spirits", "gourmet-foods"]
 attributes: ["founder-led", "heritage-brand", "sustainability-pioneer"]
 signals: ["export-ready", "rapid-growth"]
 
-# Location (required)
-location:
-  lat: -3.1190
-  lng: -60.0217
-  city: "Manaus"
-  region: "Amazonas"
-  country: "br"
+# Location (required - flattened structure)
+latitude: -3.1190
+longitude: -60.0217
+city: "Manaus"
+region: "Amazonas"
+country: "br"
 
 # Founder information
 founder:
@@ -136,11 +135,10 @@ contact:
   email: "carlos@guaranaartisans.com"
   phone: "+55 92 3234-5678"
 
-# Social media
-social:
-  instagram: "@guaranaartisans"
-  facebook: "guaranaartisansbr"
-  linkedin: "company/guarana-artisans"
+# Social media (flattened structure)
+social_instagram: "@guaranaartisans"
+social_facebook: "guaranaartisansbr"
+social_linkedin: "company/guarana-artisans"
 
 # Certifications
 certifications:
@@ -206,12 +204,11 @@ sectors: ["artisanal-spirits", "gourmet-foods"]
 attributes: ["founder-led", "heritage-brand", "sustainability-pioneer"]
 signals: ["export-ready", "rapid-growth"]
 
-location:
-  lat: -3.1190
-  lng: -60.0217
-  city: "Манаус"
-  region: "Амазонас"
-  country: "br"
+latitude: -3.1190
+longitude: -60.0217
+city: "Манаус"
+region: "Амазонас"
+country: "br"
 
 founder:
   name: "Карлос Силва"
@@ -244,12 +241,11 @@ sectors: ["artisanal-spirits", "gourmet-foods"]
 attributes: ["founder-led", "heritage-brand", "sustainability-pioneer"]
 signals: ["export-ready", "rapid-growth"]
 
-location:
-  lat: -3.1190
-  lng: -60.0217
-  city: "马瑙斯"
-  region: "亚马逊州"
-  country: "br"
+latitude: -3.1190
+longitude: -60.0217
+city: "马瑙斯"
+region: "亚马逊州"
+country: "br"
 
 founder:
   name: "卡洛斯·席尔瓦"
@@ -349,13 +345,12 @@ sectors: ["gourmet-foods"]
 attributes: ["founder-led"]  # Optional
 signals: ["export-ready"]   # Optional
 
-# Location (required)
-location:
-  lat: -22.6569
-  lng: -45.8558
-  city: "City Name"
-  region: "State/Province"
-  country: "br"
+# Location (required - flattened structure)
+latitude: -22.6569
+longitude: -45.8558
+city: "City Name"
+region: "State/Province"
+country: "br"
 ```
 
 ### Optional Enhancement Fields
@@ -386,15 +381,14 @@ images:
     name: "portrait"
     ext: "jpg"
 
-# Contact & social
+# Contact & social (flattened structure)
 contact:
   email: "info@brand.com"
   phone: "+55 11 1234-5678"
 
-social:
-  instagram: "@brandname"
-  facebook: "brandpage"
-  linkedin: "company/brand"
+social_instagram: "@brandname"
+social_facebook: "brandpage"
+social_linkedin: "company/brand"
 
 # Achievements
 certifications:

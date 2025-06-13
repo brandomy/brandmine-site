@@ -39,13 +39,12 @@ signals: []  # Optional signals
 featured: false
 featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: -22.6569  # Latitude coordinate
-  lng: -45.8558  # Longitude coordinate
-  city: "Гонсалвис"  # City name (translatable)
-  region: "Минас-Жерайс"  # Region/state/province (translatable, optional)
-  country: "br"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "Гонсалвис"
+country: "br"
+latitude: -22.6569
+longitude: -45.8558
+region: "Минас-Жерайс"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -59,16 +58,15 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: ""
-  instagram: "serraverde_organics"
-  linkedin: ""
-  pinterest: ""  # Added for completeness
-  telegram: ""
-  twitter: ""
-  vk: ""
-  youtube: ""
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: ""
+social_instagram: "serraverde_organics"
+social_linkedin: ""
+social_pinterest: ""  # Added for completeness
+social_telegram: ""
+social_twitter: ""
+social_vk: ""
+social_youtube: ""
 
 # === BUSINESS INFO ===
 export_ready: true

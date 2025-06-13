@@ -58,16 +58,16 @@
         {% endif %}
 
         <!-- Location -->
-        {% if brand.location.city or brand.location.country %}
+        {% if brand.city or brand.country %}
         <div class="founder-brand-info__meta-item">
           <span class="founder-brand-info__meta-label">{% include helpers/t.html key="brand.location" fallback="Location" lang=founder.lang %}:</span>
           <span class="founder-brand-info__meta-value">
-            {% if brand.location.city %}{{ brand.location.city }}{% endif %}
-            {% if brand.location.city and brand.location.country %}, {% endif %}
-            {% if brand.location.country_code %}
-              {% include components/helpers/country-name.html code=brand.location.country_code lang=founder.lang %}
-            {% elsif brand.location.country %}
-              {{ brand.location.country }}
+            {% if brand.city %}{{ brand.city }}{% endif %}
+            {% if brand.city and brand.country %}, {% endif %}
+            {% if brand.country_code %}
+              {% include components/helpers/country-name.html code=brand.country_code lang=founder.lang %}
+            {% elsif brand.country %}
+              {{ brand.country }}
             {% endif %}
           </span>
         </div>

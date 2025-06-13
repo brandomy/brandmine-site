@@ -32,12 +32,11 @@ signals: ["franchise-ready"]
 featured: true
 featured_level: 2
 
-location:
-  lat: -22.9068
-  lng: -43.1729
-  city: "里约热内卢"
-  region: "多个地区"
-  country: "br"
+city: "里约热内卢"
+country: "br"
+latitude: -22.9068
+longitude: -43.1729
+region: "多个地区"
 
 images:
   logo:
@@ -50,15 +49,15 @@ images:
     name: "portrait"
     ext: "jpg"
 
-social_media:
-  facebook: "sojournhotelsbr"
-  instagram: "sojournhotels"
-  linkedin: "sojourn-hotels"
-  pinterest: ""
-  telegram: ""
-  twitter: "sojournhotels"
-  vk: ""
-  youtube: "sojournhotels"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "sojournhotelsbr"
+social_instagram: "sojournhotels"
+social_linkedin: "sojourn-hotels"
+social_pinterest: ""
+social_telegram: ""
+social_twitter: "sojournhotels"
+social_vk: ""
+social_youtube: "sojournhotels"
 
 export_ready: false
 export_markets: []

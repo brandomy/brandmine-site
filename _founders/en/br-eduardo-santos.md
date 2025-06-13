@@ -20,11 +20,10 @@ featured: true  # Is this a featured founder?
 generation: "third"  # Options: "first", "second", "transition"
 company: "Serra Verde Organics"  # Primary company association
 
-# Location Information
-location:
-  country: "br"      # ISO country code
-  region: "Minas Gerais"   # Optional: specific region or state
-  city: "Gonçalves"
+# Location Information (FLATTENED)
+country: "br"      # ISO country code
+region: "Minas Gerais"   # Optional: specific region or state
+city: "Gonçalves"
 
 # International Scope
 markets: ["br", "pt", "es"]  # Array of country codes where they operate
@@ -41,14 +40,13 @@ images:
     name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social:
-  instagram: "serraverde_organics"  # Username only
-  linkedin: "eduardo-santos-serraverde"   # Username only
-  telegram: ""   # Username only
-  twitter: ""    # Username only
-  wechat: ""     # Username only
-  vk: ""         # Username only (for Russian founders)
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "serraverde_organics"  # Username only
+social_linkedin: "eduardo-santos-serraverde"   # Username only
+social_telegram: ""   # Username only
+social_twitter: ""    # Username only
+social_wechat: ""     # Username only
+social_vk: ""         # Username only (for Russian founders)
 
 # Professional Information
 expertise: ["organic agriculture", "sustainable farming", "agroforestry", "export development"]  # Max 4 items

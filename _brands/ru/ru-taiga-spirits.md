@@ -36,13 +36,12 @@ signals: ["export-ready"]
 featured: true
 featured_level: 2
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: 51.8561
-  lng: 104.8625
-  city: "Листвянка"
-  region: "Иркутская область"
-  country: "ru"
+# === LOCATION (FLATTENED) ===
+city: "Листвянка"
+country: "ru"
+latitude: 51.8561
+longitude: 104.8625
+region: "Иркутская область"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -56,16 +55,15 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
     
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: "taigaspirits"
-  instagram: "taiga_spirits"
-  linkedin: ""
-  pinterest: ""
-  telegram: "taigaspirits_official"
-  twitter: ""
-  vk: "taigaspirits"
-  youtube: "taigaspirits"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "taigaspirits"
+social_instagram: "taiga_spirits"
+social_linkedin: ""
+social_pinterest: ""
+social_telegram: "taigaspirits_official"
+social_twitter: ""
+social_vk: "taigaspirits"
+social_youtube: "taigaspirits"
 
 # === BUSINESS INFO ===
 export_ready: true

@@ -54,13 +54,12 @@ signals: ["export-ready"]  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: -22.6569  # Latitude coordinate
-  lng: -45.8558  # Longitude coordinate
-  city: "City Name"  # City name (translatable)
-  region: "State/Province"  # Region/state/province (translatable, optional)
-  country: "br"  # ISO country code
+# === LOCATION (Flattened structure for easier data handling) ===
+latitude: -22.6569  # Latitude coordinate
+longitude: -45.8558  # Longitude coordinate
+city: "City Name"  # City name (translatable)
+region: "State/Province"  # Region/state/province (translatable, optional)
+country: "br"  # ISO country code
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -74,16 +73,15 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: ""
-  instagram: ""
-  linkedin: ""
-  pinterest: ""  # Added for completeness
-  telegram: ""
-  twitter: ""
-  vk: ""
-  youtube: ""
+# === SOCIAL MEDIA (Flattened structure for easier data handling) ===
+social_facebook: ""
+social_instagram: ""
+social_linkedin: ""
+social_pinterest: ""  # Added for completeness
+social_telegram: ""
+social_twitter: ""
+social_vk: ""
+social_youtube: ""
 
 # === BUSINESS INFO ===
 export_ready: false

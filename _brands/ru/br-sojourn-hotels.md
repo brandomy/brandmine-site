@@ -36,13 +36,12 @@ signals: ["franchise-ready"]
 featured: true
 featured_level: 2
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: -22.9068
-  lng: -43.1729
-  city: "Рио-де-Жанейро"
-  region: "Несколько регионов"
-  country: "br"
+# === LOCATION (FLATTENED) ===
+city: "Рио-де-Жанейро"
+country: "br"
+latitude: -22.9068
+longitude: -43.1729
+region: "Несколько регионов"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -56,16 +55,15 @@ images:
     name: "portrait"
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: "sojournhotelsbr"
-  instagram: "sojournhotels"
-  linkedin: "sojourn-hotels"
-  pinterest: ""
-  telegram: ""
-  twitter: "sojournhotels"
-  vk: ""
-  youtube: "sojournhotels"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "sojournhotelsbr"
+social_instagram: "sojournhotels"
+social_linkedin: "sojourn-hotels"
+social_pinterest: ""
+social_telegram: ""
+social_twitter: "sojournhotels"
+social_vk: ""
+social_youtube: "sojournhotels"
 
 # === BUSINESS INFO ===
 export_ready: false

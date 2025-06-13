@@ -39,12 +39,12 @@ layout: default
   {% if page.description %}"description": "{{ page.description | strip_html | escape }}",{% endif %}
   {% if page.website %}"url": "{{ page.website }}",{% endif %}
   {% if page.founding_year %}"foundingDate": "{{ page.founding_year }}",{% endif %}
-  {% if page.location %}
+  {% if page.city or page.country %}
   "address": {
     "@type": "PostalAddress",
-    {% if page.location.city %}"addressLocality": "{{ page.location.city }}",{% endif %}
-    {% if page.location.region %}"addressRegion": "{{ page.location.region }}",{% endif %}
-    {% if page.location.country %}"addressCountry": "{{ page.location.country | upcase }}"{% endif %}
+    {% if page.city %}"addressLocality": "{{ page.city }}",{% endif %}
+    {% if page.region %}"addressRegion": "{{ page.region }}",{% endif %}
+    {% if page.country %}"addressCountry": "{{ page.country | upcase }}"{% endif %}
   },
   {% endif %}
   "additionalType": "{{ page.sectors.first | default: 'Brand' }}"

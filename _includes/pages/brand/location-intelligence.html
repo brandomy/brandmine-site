@@ -36,15 +36,15 @@ DEPENDENCIES:
 {% assign brand = include.brand %}
 {% assign data_source = include.data_source | default: "curated" %}
 
-{% if brand.location and brand.location.lat and brand.location.lng %}
+{% if brand.latitude and brand.longitude %}
 <h2 id="heading-location-intelligence" class="panel__heading-secondary">
       {% include helpers/t.html key="brand.location_intelligence" fallback="Location Intelligence" lang=brand.lang %}
     </h2>
     
     <div class="location-intelligence">
       <div class="brand-map" 
-           data-lat="{{ brand.location.lat }}" 
-           data-lng="{{ brand.location.lng }}"
+           data-lat="{{ brand.latitude }}" 
+           data-lng="{{ brand.longitude }}"
            data-brand-name="{{ brand.title | default: brand.name }}"
            data-brand-ref="{{ include.brand_ref }}">
         <div class="brand-map__container" id="brand-map-{{ include.brand_ref }}">
@@ -58,24 +58,24 @@ DEPENDENCIES:
       <div class="location-context">
         <div class="location-context__primary">
           <h3 class="location-context__title">
-            {{ brand.location.city }}{% if brand.location.region %}, {{ brand.location.region }}{% endif %}
+            {{ brand.city }}{% if brand.region %}, {{ brand.region }}{% endif %}
           </h3>
           <p class="location-context__country">
-            {% include components/helpers/country-name.html code=brand.location.country lang=brand.lang %}
+            {% include components/helpers/country-name.html code=brand.country lang=brand.lang %}
           </p>
         </div>
         
-        {% if brand.location.lat and brand.location.lng %}
+        {% if brand.latitude and brand.longitude %}
         <div class="location-context__coordinates">
           <span class="coordinates-label">{% include helpers/t.html key="brand.coordinates" fallback="Coordinates" lang=brand.lang %}:</span>
-          <span class="coordinates-value">{{ brand.location.lat }}, {{ brand.location.lng }}</span>
+          <span class="coordinates-value">{{ brand.latitude }}, {{ brand.longitude }}</span>
         </div>
         {% endif %}
         
         {% comment %} Link to market exploration {% endcomment %}
-        {% if brand.location.country %}
+        {% if brand.country %}
         <div class="location-context__explore">
-          <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/markets/{{ brand.location.country }}/" class="btn btn--secondary">
+          <a href="{{ site.baseurl }}/{{ brand.lang }}/discover/markets/{{ brand.country }}/" class="btn btn--secondary">
             {% include helpers/t.html key="discover.explore_market" fallback="Explore Market" lang=brand.lang %}
           </a>
         </div>

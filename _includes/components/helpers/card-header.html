@@ -33,11 +33,11 @@
       </p>
     {% endif %}
 
-    {% if include.show_location and brand.location.city and brand.location.country %}
+    {% if include.show_location and brand.city and brand.country %}
       {% assign location_class = class_prefix | append: "__location" %}
       {% include components/helpers/location-display.html
-        city=brand.location.city
-        country=brand.location.country
+        city=brand.city
+        country=brand.country
         class=location_class %}
     {% endif %}
   </div>

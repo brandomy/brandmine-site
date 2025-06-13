@@ -46,9 +46,13 @@ images:
     ext: "jpg"
     alt: "Алексей Соколов в действии, руководит чайной церемонией в своей флагманской чайной, демонстрируя мастерство и страсть к чайной культуре"
 
-social:
-  instagram: teatime_russia
-  linkedin: alexei-sokolov-teatime
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "teatime_russia"
+social_linkedin: "alexei-sokolov-teatime"
+social_telegram: ""
+social_twitter: ""
+social_wechat: ""
+social_vk: ""
 
 expertise:
   - чайное смешивание

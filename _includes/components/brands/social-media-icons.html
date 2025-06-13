@@ -3,30 +3,110 @@
   Component: components/brand/social-media-icons.html
   Purpose: Displays social media icons for a brand
   Parameters:
-    - social: Social media links object
+    - brand: Brand object with flattened social fields
     - lang: Language code
     - show_if: Condition to show the section (optional)
+  
+  Updated to use flattened social fields with backward compatibility
 {% endcomment %}
 
 {% assign show_section = include.show_if | default: true %}
+{% assign brand = include.brand %}
 
-{% if show_section and include.social %}
+{% if show_section and brand %}
 <div class="brand-sidebar__section">
   <h3 class="brand-sidebar__heading">{{ site.data.translations[include.lang].brand.social_media }}</h3>
   <div class="brand-sidebar__social-icons">
-    {% for platform in include.social %}
-      {% assign platform_name = platform[0] %}
-      {% assign platform_url = platform[1] %}
-
-      {% if platform_url %}
-      <a href="{{ platform_url }}" target="_blank" rel="noopener"
-         class="brand-sidebar__social-icon"
-         title="{{ site.data.translations[include.lang].social[platform_name] }}">
-        {% include components/brands/social-icon.html platform=platform_name %}
-        <span class="sr-only">{{ site.data.translations[include.lang].social[platform_name] }}</span>
+    
+    {% comment %} Instagram {% endcomment %}
+    {% assign instagram = brand.social_instagram | default: brand.social_media.instagram %}
+    {% if instagram and instagram != "" %}
+      <a href="https://instagram.com/{{ instagram }}" class="brand-sidebar__social-icon social-icon--instagram" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.instagram }}">
+        {% include components/brands/social-icon.html platform="instagram" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.instagram }}</span>
       </a>
-      {% endif %}
-    {% endfor %}
+    {% endif %}
+
+    {% comment %} Facebook {% endcomment %}
+    {% assign facebook = brand.social_facebook | default: brand.social_media.facebook %}
+    {% if facebook and facebook != "" %}
+      <a href="https://facebook.com/{{ facebook }}" class="brand-sidebar__social-icon social-icon--facebook" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.facebook }}">
+        {% include components/brands/social-icon.html platform="facebook" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.facebook }}</span>
+      </a>
+    {% endif %}
+
+    {% comment %} LinkedIn {% endcomment %}
+    {% assign linkedin = brand.social_linkedin | default: brand.social_media.linkedin %}
+    {% if linkedin and linkedin != "" %}
+      <a href="https://linkedin.com/company/{{ linkedin }}" class="brand-sidebar__social-icon social-icon--linkedin" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.linkedin }}">
+        {% include components/brands/social-icon.html platform="linkedin" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.linkedin }}</span>
+      </a>
+    {% endif %}
+
+    {% comment %} Twitter {% endcomment %}
+    {% assign twitter = brand.social_twitter | default: brand.social_media.twitter %}
+    {% if twitter and twitter != "" %}
+      <a href="https://twitter.com/{{ twitter }}" class="brand-sidebar__social-icon social-icon--twitter" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.twitter }}">
+        {% include components/brands/social-icon.html platform="twitter" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.twitter }}</span>
+      </a>
+    {% endif %}
+
+    {% comment %} Telegram {% endcomment %}
+    {% assign telegram = brand.social_telegram | default: brand.social_media.telegram %}
+    {% if telegram and telegram != "" %}
+      <a href="https://t.me/{{ telegram }}" class="brand-sidebar__social-icon social-icon--telegram" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.telegram }}">
+        {% include components/brands/social-icon.html platform="telegram" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.telegram }}</span>
+      </a>
+    {% endif %}
+
+    {% comment %} VK (VKontakte) {% endcomment %}
+    {% assign vk = brand.social_vk | default: brand.social_media.vk %}
+    {% if vk and vk != "" %}
+      <a href="https://vk.com/{{ vk }}" class="brand-sidebar__social-icon social-icon--vk" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.vk }}">
+        {% include components/brands/social-icon.html platform="vk" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.vk }}</span>
+      </a>
+    {% endif %}
+
+    {% comment %} YouTube {% endcomment %}
+    {% assign youtube = brand.social_youtube | default: brand.social_media.youtube %}
+    {% if youtube and youtube != "" %}
+      <a href="https://youtube.com/{{ youtube }}" class="brand-sidebar__social-icon social-icon--youtube" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.youtube }}">
+        {% include components/brands/social-icon.html platform="youtube" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.youtube }}</span>
+      </a>
+    {% endif %}
+
+    {% comment %} Pinterest {% endcomment %}
+    {% assign pinterest = brand.social_pinterest | default: brand.social_media.pinterest %}
+    {% if pinterest and pinterest != "" %}
+      <a href="https://pinterest.com/{{ pinterest }}" class="brand-sidebar__social-icon social-icon--pinterest" target="_blank" rel="noopener"
+         title="{{ site.data.translations[include.lang].social.pinterest }}">
+        {% include components/brands/social-icon.html platform="pinterest" %}
+        <span class="sr-only">{{ site.data.translations[include.lang].social.pinterest }}</span>
+      </a>
+    {% endif %}
+
+    {% comment %} WeChat (for Chinese market) {% endcomment %}
+    {% assign wechat = brand.social_wechat | default: brand.social.wechat %}
+    {% if wechat and wechat != "" %}
+      <span class="brand-sidebar__social-icon social-icon--wechat" title="WeChat: {{ wechat }}">
+        {% include components/brands/social-icon.html platform="wechat" %}
+        <span class="sr-only">WeChat: {{ wechat }}</span>
+      </span>
+    {% endif %}
+
   </div>
 </div>
 {% endif %}

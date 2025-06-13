@@ -57,7 +57,7 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
 
 <article class="founder-card {% if featured or founder.featured %}founder-card--featured{% endif %}{% if include.variant %} founder-card--{{ include.variant }}{% endif %}"
          data-name="{{ founder.name }}"
-         data-market="{{ founder.location.country }}"
+         data-market="{{ founder.country }}"
          data-expertise="{% for exp in founder.expertise %}{{ exp }}{% unless forloop.last %},{% endunless %}{% endfor %}">
 
   {% comment %} Generation badge {% endcomment %}
@@ -110,10 +110,10 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
       {% comment %} Location display {% endcomment %}
       <div class="founder-card__location">
         <i class="fas fa-map-marker-alt location__icon"></i>
-        {% if founder.location.city %}{{ founder.location.city }}{% endif %}
-        {% if founder.location.city and founder.location.country %}, {% endif %}
-        {% if founder.location.country %}
-          {% include components/helpers/country-name.html code=founder.location.country lang=page.lang %}
+        {% if founder.city %}{{ founder.city }}{% endif %}
+        {% if founder.city and founder.country %}, {% endif %}
+        {% if founder.country %}
+          {% include components/helpers/country-name.html code=founder.country lang=page.lang %}
         {% endif %}
       </div>
     </div>

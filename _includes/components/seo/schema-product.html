@@ -29,12 +29,12 @@
   "manufacturer": {
     "@type": "Organization",
     "name": "{{ include.product.title }}"
-    {% if include.product.location.country %}, "location": {
+    {% if include.product.country %}, "location": {
       "@type": "Place",
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "{{ include.product.location.country }}",
-        "addressLocality": "{{ include.product.location.city }}"
+        "addressCountry": "{{ include.product.country }}",
+        "addressLocality": "{{ include.product.city }}"
       }
     }{% endif %}
   }

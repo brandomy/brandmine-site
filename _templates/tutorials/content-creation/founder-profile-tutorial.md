@@ -97,12 +97,12 @@ generation: "third"  # first, second, third, transition
 founder_led: true
 cross_border_expertise: true
 
-# Location information
-location:
-  country: "ru"
-  city: "Moscow"
-  region: "Moscow Oblast"
-  coordinates: [37.6173, 55.7558]
+# Location information (flattened structure)
+country: "ru"
+city: "Moscow"
+region: "Moscow Oblast"
+latitude: 55.7558
+longitude: 37.6173
 
 # Professional expertise (max 4 for optimal display)
 expertise: ["tea-blending", "sustainable-sourcing", "export-management", "cultural-preservation"]
@@ -129,11 +129,10 @@ contact:
   email: "alexei@teatime.ru"
   phone: "+7 495 123-4567"
 
-# Social media presence
-social:
-  linkedin: "alexei-sokolov-tea"
-  instagram: "@temaster_alexei"
-  facebook: "alexei.sokolov.teamaster"
+# Social media presence (flattened structure)
+social_linkedin: "alexei-sokolov-tea"
+social_instagram: "@temaster_alexei"
+social_facebook: "alexei.sokolov.teamaster"
 
 # Professional history
 career_highlights:
@@ -271,11 +270,11 @@ generation: "third"
 founder_led: true
 cross_border_expertise: true
 
-location:
-  country: "ru"
-  city: "Москва"
-  region: "Московская область"
-  coordinates: [37.6173, 55.7558]
+country: "ru"
+city: "Москва"
+region: "Московская область"
+latitude: 55.7558
+longitude: 37.6173
 
 expertise: ["tea-blending", "sustainable-sourcing", "export-management", "cultural-preservation"]
 
@@ -312,11 +311,11 @@ generation: "third"
 founder_led: true
 cross_border_expertise: true
 
-location:
-  country: "ru"
-  city: "莫斯科"
-  region: "莫斯科州"
-  coordinates: [37.6173, 55.7558]
+country: "ru"
+city: "莫斯科"
+region: "莫斯科州"
+latitude: 55.7558
+longitude: 37.6173
 
 expertise: ["tea-blending", "sustainable-sourcing", "export-management", "cultural-preservation"]
 
@@ -459,12 +458,12 @@ permalink: /en/founders/ru-firstname-lastname/ # Required: full URL
 brands: ["brand-slug"]    # Required: at least one brand
 generation: "third"       # Required: first, second, third, transition
 
-# Location (required)
-location:
-  country: "ru"          # Required: ISO country code
-  city: "City Name"      # Required: city
-  region: "State/Province" # Optional: region
-  coordinates: [lng, lat] # Optional: mapping
+# Location (required - flattened structure)
+country: "ru"          # Required: ISO country code
+city: "City Name"      # Required: city
+region: "State/Province" # Optional: region
+latitude: 0.0           # Optional: mapping
+longitude: 0.0          # Optional: mapping
 ```
 
 ### Enhancement Fields
@@ -487,11 +486,10 @@ contact:
   email: "founder@brand.com"
   phone: "+7 495 123-4567"
 
-# Social media
-social:
-  linkedin: "username"
-  instagram: "@username"
-  facebook: "username"
+# Social media (flattened structure)
+social_linkedin: "username"
+social_instagram: "@username"
+social_facebook: "username"
 
 # Images
 images:

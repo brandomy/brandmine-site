@@ -37,9 +37,13 @@ images:
   headshot: { name: "headshot", ext: "jpg" }
   action: { name: "action", ext: "jpg" }
 
-social:
-  instagram: serraverde_organics
-  linkedin: eduardo-santos-serraverde
+# === SOCIAL MEDIA (FLATTENED) ===
+social_instagram: "serraverde_organics"
+social_linkedin: "eduardo-santos-serraverde"
+social_telegram: ""
+social_twitter: ""
+social_wechat: ""
+social_vk: ""
 
 expertise:
   - 有机农业

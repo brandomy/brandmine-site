@@ -14,8 +14,8 @@
         {% if brand.founding_year %}
           <li><strong>Founded:</strong> {{ brand.founding_year }}</li>
         {% endif %}
-        {% if brand.location.country %}
-          <li><strong>Country:</strong> {% include components/helpers/country-name.html code=brand.location.country lang=brand.lang %}</li>
+        {% if brand.country %}
+          <li><strong>Country:</strong> {% include components/helpers/country-name.html code=brand.country lang=brand.lang %}</li>
         {% endif %}
         {% if brand.sectors and brand.sectors.size > 0 %}
           <li><strong>Industry:</strong>
@@ -39,7 +39,7 @@
               {% if related_brand.id != brand.id %}
                 <a href="/{{ brand.lang }}/brands/{{ related_brand.id }}/" class="related-brand-item">
                   <strong>{{ related_brand.name[brand.lang] | default: related_brand.name.en }}</strong>
-                  <span class="brand-location">{{ related_brand.location.city }}, {{ related_brand.location.region }}</span>
+                  <span class="brand-location">{{ related_brand.city }}, {{ related_brand.region }}</span>
                 </a>
               {% endif %}
             {% endfor %}

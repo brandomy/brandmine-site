@@ -32,12 +32,11 @@ signals: []
 featured: false
 featured_level: 1
 
-location:
-  lat: -22.6569
-  lng: -45.8558
-  city: "贡萨尔维斯"
-  region: "米纳斯吉拉斯州"
-  country: "br"
+city: "贡萨尔维斯"
+country: "br"
+latitude: -22.6569
+longitude: -45.8558
+region: "米纳斯吉拉斯州"
 
 images:
   logo:
@@ -50,15 +49,15 @@ images:
     name: "portrait"
     ext: "jpg"
 
-social_media:
-  facebook: ""
-  instagram: "serraverde_organics"
-  linkedin: ""
-  pinterest: ""
-  telegram: ""
-  twitter: ""
-  vk: ""
-  youtube: ""
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: ""
+social_instagram: "serraverde_organics"
+social_linkedin: ""
+social_pinterest: ""
+social_telegram: ""
+social_twitter: ""
+social_vk: ""
+social_youtube: ""
 
 export_ready: true
 export_markets: ["pt", "es"]

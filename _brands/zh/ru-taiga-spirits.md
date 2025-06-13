@@ -32,12 +32,11 @@ signals: ["export-ready"]
 featured: true
 featured_level: 2
 
-location:
-  lat: 51.8561
-  lng: 104.8625
-  city: "利斯特维扬卡"
-  region: "伊尔库茨克州"
-  country: "ru"
+city: "利斯特维扬卡"
+country: "ru"
+latitude: 51.8561
+longitude: 104.8625
+region: "伊尔库茨克州"
 
 images:
   logo:
@@ -50,15 +49,15 @@ images:
     name: "portrait"
     ext: "jpg"
 
-social_media:
-  facebook: "taigaspirits"
-  instagram: "taiga_spirits"
-  linkedin: ""
-  pinterest: ""
-  telegram: "taigaspirits_official"
-  twitter: ""
-  vk: "taigaspirits"
-  youtube: "taigaspirits"
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: "taigaspirits"
+social_instagram: "taiga_spirits"
+social_linkedin: ""
+social_pinterest: ""
+social_telegram: "taigaspirits_official"
+social_twitter: ""
+social_vk: "taigaspirits"
+social_youtube: "taigaspirits"
 
 export_ready: true
 export_markets: ["cn", "mn", "kz", "de"]

@@ -11,12 +11,12 @@
       <div class="brand-basic-title-section">
         <h1 class="brand-basic-title">{{ brand.name }}</h1>
         
-        {% if brand.location.city and brand.location.region %}
+        {% if brand.city and brand.region %}
           <p class="brand-basic-location">
             <i class="icon icon--location"></i>
-            {{ brand.location.city }}, {{ brand.location.region }}
-            {% if brand.location.country %}
-              , {% include components/helpers/country-name.html code=brand.location.country lang=brand.lang %}
+            {{ brand.city }}, {{ brand.region }}
+            {% if brand.country %}
+              , {% include components/helpers/country-name.html code=brand.country lang=brand.lang %}
             {% endif %}
           </p>
         {% endif %}

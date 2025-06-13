@@ -49,10 +49,10 @@ DEPENDENCIES:
           </span>
         {% endif %}
         
-        {% if brand.location and brand.location.city %}
+        {% if brand.city %}
           <span class="brand-hero__location">
             {% include components/separators/bullet-separator.html %}
-            {{ brand.location.city }}{% if brand.location.country %}, {{ brand.location.country }}{% endif %}
+            {{ brand.city }}{% if brand.country %}, {{ brand.country }}{% endif %}
           </span>
         {% endif %}
       </div>

@@ -39,13 +39,12 @@ signals: ["export-ready"]  # Optional signals
 featured: true
 featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
-# === LOCATION (Structured for collection-image compatibility) ===
-location:
-  lat: 51.9581  # Latitude coordinate (Barnaul, Altai)
-  lng: 85.9603  # Longitude coordinate
-  city: "Барнаул"  # City name (translatable)
-  region: "Алтайский край"  # Region/state/province (translatable, optional)
-  country: "ru"  # ISO country code
+# === LOCATION (FLATTENED) ===
+city: "Барнаул"
+country: "ru"
+latitude: 51.9581
+longitude: 85.9603
+region: "Алтайский край"
 
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
@@ -59,16 +58,15 @@ images:
     name: "portrait"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
 
-# === SOCIAL MEDIA ===
-social_media:
-  facebook: ""
-  instagram: "@altaigoldhoney"
-  linkedin: ""
-  pinterest: ""
-  telegram: ""
-  twitter: ""
-  vk: "altaigoldhoney"
-  youtube: ""
+# === SOCIAL MEDIA (FLATTENED) ===
+social_facebook: ""
+social_instagram: "@altaigoldhoney"
+social_linkedin: ""
+social_pinterest: ""
+social_telegram: ""
+social_twitter: ""
+social_vk: "altaigoldhoney"
+social_youtube: ""
 
 # === BUSINESS INFO ===
 export_ready: true

@@ -84,11 +84,11 @@ DEPENDENCIES:
         </div>
         {% endif %}
         
-        {% if brand.location %}
+        {% if brand.city %}
         <div class="meta-item">
           <span class="meta-label">{% include helpers/t.html key="brand.location" fallback="Location" lang=brand.lang %}:</span>
           <span class="meta-value">
-            {{ brand.location.city }}{% if brand.location.region %}, {{ brand.location.region }}{% endif %}
+            {{ brand.city }}{% if brand.region %}, {{ brand.region }}{% endif %}
           </span>
         </div>
         {% endif %}
