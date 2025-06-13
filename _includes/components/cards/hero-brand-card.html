@@ -118,7 +118,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
           {% if featured_data.value_proposition %}
             <p class="hero-brand-card__value-proposition">{{ featured_data.value_proposition }}</p>
           {% else %}
-            <p class="hero-brand-card__description">{{ brand.description }}</p>
+            <p class="hero-brand-card__value-proposition">{{ brand.description }}</p>
           {% endif %}
         </div>
 
@@ -158,7 +158,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
         {% endif %}
         
         <div class="hero-brand-card__founder" title="Founder: {{ founder_name }}">{%- comment -%} Ensure no whitespace {%- endcomment -%}
-          {%- include helpers/brand-image.html brand_id=brand.ref image_type="founder" alt="Founder portrait" class="hero-brand-card__founder-img" -%}
+          {%- include helpers/brand-image.html brand_id=brand.ref image_type="portrait" alt="Founder portrait" class="hero-brand-card__founder-img" -%}
         </div>
       {% endif %}
     </div>
@@ -168,8 +168,8 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
       <div class="hero-brand-card__taxonomy-section">
         <div class="hero-brand-card__tags">
           <!-- Markets -->
-          {% if brand.market %}
-            {% for market in brand.market %}
+          {% if show_markets and brand.markets and brand.markets.size > 0 %}
+            {% for market in brand.markets %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
                  class="brand-tag brand-tag--market">
                 {% if site.data.dimensions.markets[market][page.lang] %}
@@ -182,15 +182,17 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
           {% endif %}
 
           <!-- Sectors -->
-          {% if brand.sector %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ brand.sector | slugify }}/"
-               class="brand-tag brand-tag--sector">
-              {% if site.data.dimensions.sectors[brand.sector][page.lang] %}
-                {{ site.data.dimensions.sectors[brand.sector][page.lang] }}
-              {% else %}
-                {{ brand.sector }}
-              {% endif %}
-            </a>
+          {% if show_sectors and brand.sectors and brand.sectors.size > 0 %}
+            {% for sector in brand.sectors %}
+              <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
+                 class="brand-tag brand-tag--sector">
+                {% if site.data.dimensions.sectors[sector][page.lang] %}
+                  {{ site.data.dimensions.sectors[sector][page.lang] }}
+                {% else %}
+                  {{ sector }}
+                {% endif %}
+              </a>
+            {% endfor %}
           {% endif %}
 
           <!-- Attributes -->
