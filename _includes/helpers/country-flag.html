@@ -1,87 +1,15 @@
 {% comment %}
-HELPER: Country Flag Display
-PURPOSE: Display country flag emoji and name for BRICS+ countries
-
-USAGE: {% include helpers/country-flag.html country_code="ru" show_name=true %}
-
+HELPER: Country Flag (Data-Driven)
+PURPOSE: Get flag emoji from countries_basic.json data file
+USAGE: {% include helpers/country-flag.html country_code="ru" %}
+OUTPUT: Flag emoji from data file or fallback globe
 PARAMETERS:
-- country_code (required): ISO country code (e.g., "ru", "br", "cn")
-- show_name (optional): Whether to show country name text (default: true)
-- size (optional): Size variant - "sm", "md", "lg" (default: "md")
-
-RETURNS: Displays flag emoji + country name with proper styling
-
-DEPENDENCIES:
-- Translations: Uses existing country name translations
-- CSS: country-flag component styles
-
-DESIGN NOTES:
-- Respects flag display protocols
-- Fallback for unsupported country codes
-- Accessible with proper alt text
+- country_code (required): ISO 2-letter country code
 {% endcomment %}
 
-{% comment %} Parameter setup {% endcomment %}
-{% assign country_code = include.country_code %}
-{% assign show_name = include.show_name | default: true %}
-{% assign size = include.size | default: "md" %}
-
-{% comment %} Flag emoji mapping for BRICS+ countries {% endcomment %}
-{% case country_code %}
-  {% when "br" %}
-    {% assign flag_emoji = "🇧🇷" %}
-    {% assign country_name = "Brazil" %}
-  {% when "ru" %}
-    {% assign flag_emoji = "🇷🇺" %}
-    {% assign country_name = "Russia" %}
-  {% when "in" %}
-    {% assign flag_emoji = "🇮🇳" %}
-    {% assign country_name = "India" %}
-  {% when "cn" %}
-    {% assign flag_emoji = "🇨🇳" %}
-    {% assign country_name = "China" %}
-  {% when "za" %}
-    {% assign flag_emoji = "🇿🇦" %}
-    {% assign country_name = "South Africa" %}
-  {% when "ir" %}
-    {% assign flag_emoji = "🇮🇷" %}
-    {% assign country_name = "Iran" %}
-  {% when "eg" %}
-    {% assign flag_emoji = "🇪🇬" %}
-    {% assign country_name = "Egypt" %}
-  {% when "et" %}
-    {% assign flag_emoji = "🇪🇹" %}
-    {% assign country_name = "Ethiopia" %}
-  {% when "ae" %}
-    {% assign flag_emoji = "🇦🇪" %}
-    {% assign country_name = "UAE" %}
-  {% when "my" %}
-    {% assign flag_emoji = "🇲🇾" %}
-    {% assign country_name = "Malaysia" %}
-  {% when "id" %}
-    {% assign flag_emoji = "🇮🇩" %}
-    {% assign country_name = "Indonesia" %}
-  {% when "mn" %}
-    {% assign flag_emoji = "🇲🇳" %}
-    {% assign country_name = "Mongolia" %}
-  {% else %}
-    {% assign flag_emoji = "🌍" %}
-    {% assign country_name = "Global" %}
-{% endcase %}
-
-{% comment %} Get translated country name if available {% endcomment %}
-{% if country_name and site.data.translations[page.lang].countries[country_code] %}
-  {% assign country_name = site.data.translations[page.lang].countries[country_code] %}
+{% assign country_data = site.data.countries_basic.countries[include.country_code] %}
+{% if country_data and country_data.emoji %}
+  {{ country_data.emoji }}
+{% else %}
+  🌍
 {% endif %}
-
-{% comment %} Size-based CSS classes {% endcomment %}
-{% assign flag_classes = "country-flag country-flag--" | append: size %}
-
-<span class="{{ flag_classes }}" 
-      aria-label="{{ country_name }}" 
-      title="{{ country_name }}">
-  <span class="country-flag__emoji" role="img" aria-hidden="true">{{ flag_emoji }}</span>
-  {% if show_name %}
-    <span class="country-flag__name">{{ country_name }}</span>
-  {% endif %}
-</span>

@@ -40,11 +40,11 @@ Result: {{ site.data.countries_basic.countries.th.name.ru }}
 ```
 Result: {{ site.data.countries_basic.countries.th.name.zh }}
 
-**Thailand Alpha3 Code:**
+**Thailand Emoji Flag:**
 ```liquid
-{{ site.data.countries_basic.countries.th.alpha3 }}
+{{ site.data.countries_basic.countries.th.emoji }}
 ```
-Result: {{ site.data.countries_basic.countries.th.alpha3 }}
+Result: {{ site.data.countries_basic.countries.th.emoji }}
 
 ## Alternative: Basic Data via Regional Files
 
@@ -68,11 +68,11 @@ Result: {{ site.data.countries.asia.countries.th.name.ru }}
 ```
 Result: {{ site.data.countries.asia.countries.th.name.zh }}
 
-**Thailand Alpha3 Code - Working:**
+**Thailand Emoji Flag - Working:**
 ```liquid
-{{ site.data.countries.asia.countries.th.alpha3 }}
+{{ site.data.countries.asia.countries.th.emoji }}
 ```
-Result: {{ site.data.countries.asia.countries.th.alpha3 }}
+Result: {{ site.data.countries.asia.countries.th.emoji }}
 
 ## Detailed Regional Data Access
 
@@ -126,11 +126,11 @@ Result: {% include helpers/country-lookup.html country_code="th" property="name"
 ```
 Result: {% include helpers/country-lookup.html country_code="th" property="name" lang="ru" %}
 
-**Basic Alpha3 Code:**
+**Basic Country Emoji:**
 ```liquid
-{% include helpers/country-lookup.html country_code="th" property="alpha3" %}
+{% include helpers/country-lookup.html country_code="th" property="emoji" %}
 ```
-Result: {% include helpers/country-lookup.html country_code="th" property="alpha3" %}
+Result: {% include helpers/country-lookup.html country_code="th" property="emoji" %}
 
 ### Detailed Data via Helper
 
@@ -164,10 +164,10 @@ Result: {% include helpers/country-lookup.html country_code="th" data_type="deta
 
 {% assign brics_countries = "br,ru,in,cn,za" | split: "," %}
 
-| Alpha2 Code | Country | Name (EN) | Name (RU) | Name (ZH) | Alpha3 |
-|-------------|---------|-----------|-----------|-----------|--------|
+| Alpha2 Code | Country | Name (EN) | Name (RU) | Name (ZH) | Emoji |
+|-------------|---------|-----------|-----------|-----------|-------|
 {% for country_code in brics_countries -%}
-| **{{ country_code }}** | {{ country_code | upcase }} | {% include helpers/country-lookup.html country_code=country_code property="name" lang="en" %} | {% include helpers/country-lookup.html country_code=country_code property="name" lang="ru" %} | {% include helpers/country-lookup.html country_code=country_code property="name" lang="zh" %} | {% include helpers/country-lookup.html country_code=country_code property="alpha3" %} |
+| **{{ country_code }}** | {{ country_code | upcase }} | {% include helpers/country-lookup.html country_code=country_code property="name" lang="en" %} | {% include helpers/country-lookup.html country_code=country_code property="name" lang="ru" %} | {% include helpers/country-lookup.html country_code=country_code property="name" lang="zh" %} | {% include helpers/country-lookup.html country_code=country_code property="emoji" %} |
 {% endfor %}
 
 ### BRICS Countries Detailed Data

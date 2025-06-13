@@ -78,6 +78,9 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
           {% include helpers/brand-name.html brand_id=brand.ref fallback=brand.title %}
         </h2>
 
+        {% comment %} CRITICAL: Featured data lookup MUST happen FIRST {% endcomment %}
+        {% assign featured_data = site.data.featured_content.brands[page.lang] | where: "ref", brand.ref | first %}
+
         <div class="hero-brand-card__meta">
           {% comment %} Key metric display (highest priority) {% endcomment %}
           {% if featured_data.key_metric %}
@@ -90,28 +93,21 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
             </div>
           {% endif %}
 
-          {% comment %} Existing meta information {% endcomment %}
-          {% include components/helpers/founding-year.html
-             brand=brand
-             class_name="hero-brand-card" %}
-
-          {% comment %} Enhanced location display {% endcomment %}
-          <div class="hero-brand-card__location-enhanced">
-            {% if brand.location.country %}
-              {% include helpers/country-flag.html 
-                 country_code=brand.location.country 
-                 show_name=true
-                 size="sm" %}
+          {% comment %} LOCATION INTELLIGENCE - Working solution using featured_content.yml {% endcomment %}
+          <div class="hero-brand-card__founding-location">
+            {% comment %} Founding year from front matter {% endcomment %}
+            {% if brand.founding_year %}
+              <span class="founding-location__year">Founded {{ brand.founding_year }}</span>
             {% endif %}
-            
-            {% if brand.location.city %}
-              <span class="location__city">{{ brand.location.city }}</span>
+
+            {% comment %} Location data from featured_content.yml (Jekyll can't parse nested YAML in collections) {% endcomment %}
+            {% if featured_data.city and featured_data.country %}
+              <span class="founding-location__separator"> • </span>
+              <span class="founding-location__city">{{ featured_data.city }}</span>
+              <span class="founding-location__flag">{% include helpers/country-flag.html country_code=featured_data.country %}</span>
             {% endif %}
           </div>
         </div>
-
-        {% comment %} Look up featured content data {% endcomment %}
-        {% assign featured_data = site.data.featured_content.brands[page.lang] | where: "ref", brand.ref | first %}
 
         {% comment %} Enhanced description section {% endcomment %}
         <div class="hero-brand-card__description-area">
@@ -133,6 +129,14 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
               </cite>
             {% endif %}
           </blockquote>
+        {% endif %}
+
+        {% comment %} Breakthrough moment highlight {% endcomment %}
+        {% if featured_data.breakthrough_moment %}
+          <div class="hero-brand-card__breakthrough">
+            <div class="breakthrough__icon">⚡</div>
+            <p class="breakthrough__text">{{ featured_data.breakthrough_moment }}</p>
+          </div>
         {% endif %}
       </div>
 

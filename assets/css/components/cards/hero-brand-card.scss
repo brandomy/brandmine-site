@@ -140,6 +140,7 @@
   padding: var(--space-2) var(--space-4);
   margin-right: var(--space-4);
   box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .key-metric__value {
@@ -193,6 +194,7 @@
   border-left: 3px solid var(--accent-400);
   border-radius: var(--radius-md);
   font-style: italic;
+  transition: border-left-color 0.3s ease;
 }
 
 .founder-quote__text {
@@ -212,34 +214,78 @@
   text-align: right;
 }
 
-/* Enhanced location styling */
-.hero-brand-card__location-enhanced {
+/* Enhanced founding year + location display */
+.hero-brand-card__founding-location {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
   font-size: var(--text-sm);
   color: var(--neutral-600);
+  margin-bottom: var(--space-2);
 }
 
-.hero-brand-card__location-enhanced .country-flag {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-}
-
-.hero-brand-card__location-enhanced .country-flag__name {
-  font-weight: var(--font-medium);
-  color: var(--neutral-700);
-}
-
-.hero-brand-card__location-enhanced .location__city {
+.founding-location__year {
   color: var(--neutral-600);
+  font-weight: var(--font-medium);
 }
 
-.hero-brand-card__location-enhanced .location__city::before {
-  content: "• ";
-  margin-right: var(--space-1);
+.founding-location__separator {
+  margin: 0 var(--space-2);
   color: var(--neutral-400);
+}
+
+.founding-location__city {
+  color: var(--neutral-700);
+  font-weight: var(--font-medium);
+}
+
+.founding-location__flag {
+  margin-left: var(--space-1);
+  font-size: var(--text-base);
+  line-height: 1;
+}
+
+/* Breakthrough moment styling */
+.hero-brand-card__breakthrough {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(135deg, var(--amber-50) 0%, var(--amber-100) 100%);
+  border: 1px solid var(--amber-200);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.breakthrough__icon {
+  font-size: var(--text-xl);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: var(--space-1);
+}
+
+.breakthrough__text {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--amber-800);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Enhanced hover interactions */
+.hero-brand-card:hover .hero-brand-card__key-metric {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-brand-card:hover .hero-brand-card__founder-quote {
+  border-left-color: var(--accent-500);
+}
+
+.hero-brand-card:hover .hero-brand-card__breakthrough {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Founder portrait with 2:3 ratio */
@@ -565,10 +611,42 @@
     font-size: var(--text-xs);
   }
 
-  /* Mobile adjustments for enhanced location */
-  .hero-brand-card__location-enhanced {
+  /* Mobile adjustments for founding location */
+  .hero-brand-card__founding-location {
     justify-content: center;
     text-align: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  
+  .founding-location__separator {
+    margin: 0 var(--space-1);
+  }
+
+  /* Advanced mobile content hierarchy optimization */
+  .hero-brand-card__content-wrapper {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .hero-brand-card__key-metric {
+    order: -1; /* Move metrics to top on mobile */
+    align-self: center;
+    margin-bottom: var(--space-2);
+  }
+  
+  .hero-brand-card__founder-quote {
+    order: 1; /* After main content */
+  }
+
+  .hero-brand-card__breakthrough {
+    order: 2; /* After founder quote */
+    margin: var(--space-3) 0;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .breakthrough__text {
+    font-size: var(--text-xs);
   }
 
   .hero-brand-card__footer {
