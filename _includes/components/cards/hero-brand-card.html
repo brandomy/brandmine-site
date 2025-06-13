@@ -95,10 +95,19 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
              brand=brand
              class_name="hero-brand-card" %}
 
-          {% include components/helpers/location-display.html
-             city=brand.location.city
-             country=brand.location.country
-             class="hero-brand-card__location" %}
+          {% comment %} Enhanced location display {% endcomment %}
+          <div class="hero-brand-card__location-enhanced">
+            {% if brand.location.country %}
+              {% include helpers/country-flag.html 
+                 country_code=brand.location.country 
+                 show_name=true
+                 size="sm" %}
+            {% endif %}
+            
+            {% if brand.location.city %}
+              <span class="location__city">{{ brand.location.city }}</span>
+            {% endif %}
+          </div>
         </div>
 
         {% comment %} Look up featured content data {% endcomment %}
@@ -112,6 +121,19 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
             <p class="hero-brand-card__description">{{ brand.description }}</p>
           {% endif %}
         </div>
+
+        {% comment %} Founder quote section {% endcomment %}
+        {% if featured_data.founder_quote_snippet %}
+          <blockquote class="hero-brand-card__founder-quote">
+            <p class="founder-quote__text">"{{ featured_data.founder_quote_snippet }}"</p>
+            {% if featured_data.founder_display_name %}
+              <cite class="founder-quote__attribution">
+                — {{ featured_data.founder_display_name }}
+                {% if featured_data.founder_role %}, {{ featured_data.founder_role }}{% endif %}
+              </cite>
+            {% endif %}
+          </blockquote>
+        {% endif %}
       </div>
 
       <!-- Founder portrait -->

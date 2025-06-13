@@ -185,6 +185,63 @@
   margin: 0;
 }
 
+/* Founder quote styling */
+.hero-brand-card__founder-quote {
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--neutral-50);
+  border-left: 3px solid var(--accent-400);
+  border-radius: var(--radius-md);
+  font-style: italic;
+}
+
+.founder-quote__text {
+  font-size: var(--text-base);
+  color: var(--neutral-700);
+  margin: 0 0 var(--space-2) 0;
+  line-height: var(--leading-relaxed);
+  font-family: var(--font-serif);
+}
+
+.founder-quote__attribution {
+  font-size: var(--text-sm);
+  color: var(--accent-600);
+  font-weight: var(--font-medium);
+  font-style: normal;
+  display: block;
+  text-align: right;
+}
+
+/* Enhanced location styling */
+.hero-brand-card__location-enhanced {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.hero-brand-card__location-enhanced .country-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.hero-brand-card__location-enhanced .country-flag__name {
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+}
+
+.hero-brand-card__location-enhanced .location__city {
+  color: var(--neutral-600);
+}
+
+.hero-brand-card__location-enhanced .location__city::before {
+  content: "• ";
+  margin-right: var(--space-1);
+  color: var(--neutral-400);
+}
+
 /* Founder portrait with 2:3 ratio */
 .hero-brand-card__founder {
   flex-shrink: 0;
@@ -492,6 +549,26 @@
 
   .hero-brand-card__description {
     font-size: var(--text-base);
+  }
+
+  /* Mobile adjustments for founder quotes */
+  .hero-brand-card__founder-quote {
+    margin: var(--space-3) 0;
+    padding: var(--space-2) var(--space-3);
+  }
+  
+  .founder-quote__text {
+    font-size: var(--text-sm);
+  }
+  
+  .founder-quote__attribution {
+    font-size: var(--text-xs);
+  }
+
+  /* Mobile adjustments for enhanced location */
+  .hero-brand-card__location-enhanced {
+    justify-content: center;
+    text-align: center;
   }
 
   .hero-brand-card__footer {
