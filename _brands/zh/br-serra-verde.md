@@ -9,15 +9,6 @@ lang: zh
 permalink: /zh/brands/br-serra-verde/
 generate_json: true
 
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - identity              # Brand hero, logo, basic info (replaces hero)
-  - founder-narrative     # Founder story and journey
-  - content              # Markdown content area (NEW - enables rich content)
-  - business-intelligence # Business signals and opportunities
-  - location-intelligence # Map and geographic context
-  - connections          # Related brands and insights
-
 founding_year: 1986
 website: "https://serraverde.com.br"
 email: "contact@serraverde.com.br"

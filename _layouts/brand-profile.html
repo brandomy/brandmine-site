@@ -52,24 +52,16 @@ layout: default
   {% comment %} Store page content for section includes {% endcomment %}
   {% capture page_content %}{{ content }}{% endcapture %}
   
-  {% comment %} Set sections based on data completeness and availability {% endcomment %}
-  {% if data_source == "curated" %}
-    {% assign default_sections = "breadcrumbs,identity,founder-narrative,content,business-intelligence,location-intelligence,connections" | split: "," %}
-    {% assign sections_to_render = page.sections | default: default_sections %}
-  {% else %}
-    {% assign sections_to_render = "breadcrumbs,identity,business-intelligence,location-intelligence,connections" | split: "," %}
-  {% endif %}
-
   <div class="brand-profile brand-profile--{{ data_source }}">
     {% comment %} Use data-driven section rendering {% endcomment %}
     {% include helpers/page-sections.html 
        page_type="brand-profile" 
-       sections=sections_to_render 
        content=page_content %}
   </div>
 
-  {% comment %} Conditional scripts based on section presence {% endcomment %}
-  {% if sections_to_render contains 'location-intelligence' %}
+  {% comment %} Conditional scripts based on centralized section configuration {% endcomment %}
+  {% assign brand_sections = site.data.page_sections['brand-profile'].default_sections %}
+  {% if brand_sections contains 'location-intelligence' %}
     <script src="{{ '/assets/js/pages/brand/brand-map.js' | relative_url }}"></script>
   {% endif %}
 {% endif %}

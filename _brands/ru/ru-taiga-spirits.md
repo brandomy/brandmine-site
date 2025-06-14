@@ -9,16 +9,6 @@ lang: ru
 permalink: /ru/brands/ru-taiga-spirits/
 generate_json: true
 
-# === SECTION CONTROL (CRITICAL - Drives page layout) ===
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - identity              # Brand hero, logo, basic info (replaces hero)
-  - founder-narrative     # Founder story and journey
-  - content              # Markdown content area (NEW - enables rich content)
-  - business-intelligence # Business signals and opportunities
-  - location-intelligence # Map and geographic context
-  - connections          # Related brands and insights
-
 # === CORE INFORMATION ===
 founding_year: 2014
 website: "https://taigaspirits.ru"

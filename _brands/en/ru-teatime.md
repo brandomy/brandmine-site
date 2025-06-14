@@ -11,16 +11,6 @@ permalink: /en/brands/ru-teatime/
 generate_json: true  # Set to true to include in brands.json output
 sample_data: true    # Flag for sample/test data
 
-# === SECTION CONTROL (CRITICAL - Drives page layout) ===
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - identity              # Brand hero, logo, basic info (replaces hero)
-  - founder-narrative     # Founder story and journey
-  - content              # Markdown content area (enables rich content)
-  - business-intelligence # Business signals and opportunities
-  - location-intelligence # Map and geographic context
-  - connections          # Related brands and insights
-
 # === CORE INFORMATION ===
 # Basic Information
 founding_year: 1998

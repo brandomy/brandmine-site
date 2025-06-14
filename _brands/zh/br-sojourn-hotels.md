@@ -9,15 +9,6 @@ lang: zh
 permalink: /zh/brands/br-sojourn-hotels/
 generate_json: true
 
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - identity              # Brand hero, logo, basic info (replaces hero)
-  - founder-narrative     # Founder story and journey
-  - content              # Markdown content area (NEW - enables rich content)
-  - business-intelligence # Business signals and opportunities
-  - location-intelligence # Map and geographic context
-  - connections          # Related brands and insights
-
 founding_year: 2012
 website: "https://sojournhotels.com.br"
 email: "contact@sojournhotels.com.br"

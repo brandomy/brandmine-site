@@ -194,9 +194,22 @@ for f in $(find _includes -type f -name "*.html"); do
   echo "$USED_INCLUDES" | grep -q "$BASE" || echo "⚠️ Possibly unused include: $f" | tee -a "$LOG_FILE"
 done
 
+# === Check for section arrays in content files (should not exist)
+echo "" | tee -a "$LOG_FILE"
+echo "🚫 Checking for section arrays in content files..." | tee -a "$LOG_FILE"
+SECTION_ARRAYS_FOUND=$(find _brands _founders _insights _dimensions -name "*.md" -exec grep -l "^sections:" {} \; 2>/dev/null)
+if [[ -z "$SECTION_ARRAYS_FOUND" ]]; then
+  echo "✅ No section arrays found in content files (correct - using centralized configuration)" | tee -a "$LOG_FILE"
+else
+  echo "❌ Found sections: arrays in content files (should use _data/page_sections.yml instead):" | tee -a "$LOG_FILE"
+  echo "$SECTION_ARRAYS_FOUND" | tee -a "$LOG_FILE"
+  SECTION_ARRAY_ERROR=1
+fi
+echo "📝 Report: Section array check – $( [[ -z "$SECTION_ARRAYS_FOUND" ]] && echo 'no arrays found (correct)' || echo 'arrays found (should be centralized)' )" | tee -a "$LOG_FILE"
+
 # === Final Summary
 echo "" | tee -a "$LOG_FILE"
-if [[ $YAML_ERROR -eq 0 && $MISSING_INCLUDES -eq 0 ]]; then
+if [[ $YAML_ERROR -eq 0 && $MISSING_INCLUDES -eq 0 && -z "$SECTION_ARRAYS_FOUND" ]]; then
   echo "✅ All checks passed successfully" | tee -a "$LOG_FILE"
 else
   echo "⚠️ Some checks failed - review the log for details" | tee -a "$LOG_FILE"
@@ -208,7 +221,7 @@ echo "==========================================" | tee -a "$LOG_FILE"
 echo "📄 Log saved to: $LOG_FILE"
 
 # Exit with error code if issues were found
-if [[ $YAML_ERROR -ne 0 || $MISSING_INCLUDES -ne 0 ]]; then
+if [[ $YAML_ERROR -ne 0 || $MISSING_INCLUDES -ne 0 || -n "$SECTION_ARRAYS_FOUND" ]]; then
   exit 1
 else
   exit 0

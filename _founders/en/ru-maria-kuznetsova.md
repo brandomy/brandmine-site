@@ -70,17 +70,6 @@ quotes:
     type: "advice"
     context: "To aspiring food entrepreneurs"
 
-# === SECTION CONTROL (CRITICAL - Drives page layout) ===
-# Controls which sections appear and in what order
-# Must match section names in founder includes
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero                  # Founder hero panel with name, position, key info
-  - professional-details # Role, expertise, achievements
-  - content              # Main founder story content (markdown)
-  - associated-brands    # Brands associated with this founder
-  - expertise-cloud      # Skills and expertise visualization
-  - related-insights     # Related insights and articles
 ---
 
 # Maria Kuznetsova: Reviving Russia's Culinary Heritage
