@@ -13,18 +13,20 @@ prevalence: "[PREVALENCE_DATA]"
 key_sectors: "[COMMON_SECTORS]"
 key_markets: "[COMMON_MARKETS]"
 
-# Toggle sections on/off
-sections:
-  - breadcrumbs
-  - hero
-  - header                    # Attribute definition and importance
-  - market-highlights         # How this attribute manifests across markets
-  - featured-brands          # Brands exemplifying this attribute
-  - all-brands              # Complete list of brands with this attribute
-  - related-insights        # Articles about this attribute
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: dimension-profile determines which sections appear and in what order
+# No manual section configuration required
 
-# Optional: Override sections per dimension
-# sections: [breadcrumbs, hero, header, featured-brands, all-brands]  # Custom order example
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: dimension-profile automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in _data/page_sections.yml
+- **Consistency**: All dimension pages use identical section structure
+
+No manual section configuration is needed in the front matter.
 ---
 
 # [ATTRIBUTE_NAME] Brand Attribute

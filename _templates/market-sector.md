@@ -10,13 +10,18 @@ ref: russia-wine
 display: true
 featured: false
 hero_image: "/assets/images/market-sectors/russia/wine/hero" # Optional, omit if not using
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - hero
-  - hero-image # Include only if hero_image is specified
-  - overview
-  - statistics
-  - regions
-  - related-brands
-  - cross-navigation
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: market-sector determines which sections appear and in what order
+# No manual section configuration required
+
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: market-sector automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in _data/page_sections.yml
+- **Consistency**: All market-sector pages use identical section structure
+
+No manual section configuration is needed in the front matter.
 ---

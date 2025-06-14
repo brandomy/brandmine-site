@@ -1,6 +1,6 @@
 ---
-# BRAND PROFILE TEMPLATE - Hybrid Architecture Compatible
-# Human-friendly YAML that integrates with hybrid brand-profile.html layout
+# BRAND PROFILE TEMPLATE
+# Uses centralized section control via _data/page_sections.yml
 
 layout: brand-profile
 ref: xx-brandslug  # Global brand ID (country-brandslug format)
@@ -14,27 +14,10 @@ permalink: /en/brands/xx-brandslug/
 generate_json: true  # Set to true to include in brands.json output
 sample_data: true    # Flag for sample/test data
 
-# === SECTION CONTROL (CRITICAL - Drives page layout) ===
-# Controls which sections appear and in what order
-# Each section corresponds to _includes/pages/brand/{section}.html
-# MUST match the section names in _data/page_sections.yml
-sections:
-  - breadcrumbs           # Navigation breadcrumbs
-  - identity              # Brand hero, logo, basic info (replaces hero)
-  - founder-narrative     # Founder story and journey
-  - content              # Markdown content area (enables rich content)
-  - business-intelligence # Business signals and opportunities
-  - location-intelligence # Map and geographic context
-  - connections          # Related brands and insights
-
-# Alternative sections available (replace 'content' with specific sections):
-# - brand-story          # About the brand
-# - product              # Product range and offerings
-# - market-presence      # Market position and distribution
-# - hero                 # Alternative hero section
-
-# Minimal sections for basic profiles:
-# sections: [breadcrumbs, identity, business-intelligence, location-intelligence, connections]
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: brand-profile determines which sections appear and in what order
+# No manual section configuration required
 
 # === CORE INFORMATION ===
 # Basic Information
@@ -124,6 +107,16 @@ gallery:
 # _brands/ru/xx-brandslug.md (complete Russian translation)
 # _brands/zh/xx-brandslug.md (complete Chinese translation)
 ---
+
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: brand-profile automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in `_data/page_sections.yml`
+- **Consistency**: All brand profiles use identical section structure
+
+No manual section configuration is needed in the front matter.
 
 ## About {{ page.title }}
 

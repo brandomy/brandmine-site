@@ -13,18 +13,20 @@ timeframe: "[TYPICAL_TIMEFRAME]"
 key_indicators: "[MEASUREMENT_CRITERIA]"
 success_rate: "[SUCCESS_STATISTICS]"
 
-# Toggle sections on/off
-sections:
-  - breadcrumbs
-  - hero
-  - header                    # Signal definition and criteria
-  - market-highlights         # Growth opportunities and market readiness
-  - featured-brands          # Brands showing this signal
-  - all-brands              # Complete list of brands with this signal
-  - related-insights        # Articles about this growth signal
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: dimension-profile determines which sections appear and in what order
+# No manual section configuration required
 
-# Optional: Override sections per dimension
-# sections: [breadcrumbs, hero, header, featured-brands, all-brands]  # Custom order example
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: dimension-profile automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in _data/page_sections.yml
+- **Consistency**: All dimension pages use identical section structure
+
+No manual section configuration is needed in the front matter.
 ---
 
 # [SIGNAL_NAME] Growth Signal

@@ -13,18 +13,20 @@ market_size: "[MARKET_SIZE]"
 growth_rate: "[GROWTH_RATE]"
 key_markets: "[KEY_MARKETS]"
 
-# Toggle sections on/off
-sections:
-  - breadcrumbs
-  - hero
-  - header                    # Sector overview and characteristics
-  - market-highlights         # Key trends and opportunities
-  - featured-brands          # Highlighted brands in this sector
-  - all-brands              # Complete list of sector brands
-  - related-insights        # Articles about this sector
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: dimension-profile determines which sections appear and in what order
+# No manual section configuration required
 
-# Optional: Override sections per dimension
-# sections: [breadcrumbs, hero, header, all-brands]  # Custom order example
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: dimension-profile automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in _data/page_sections.yml
+- **Consistency**: All dimension pages use identical section structure
+
+No manual section configuration is needed in the front matter.
 ---
 
 # [SECTOR_NAME] Sector Overview

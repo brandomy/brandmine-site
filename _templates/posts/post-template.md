@@ -10,15 +10,20 @@ image_caption: "Interactive maps bring brand stories to life through geographic 
 lang: en
 reading_time: 8
 featured: false
-sections:
-  - breadcrumbs
-  - header
-  - featured-image
-  - content
-  - author-profile
-  - social-sharing
-  - tag-cloud
-  - related-posts
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: post determines which sections appear and in what order
+# No manual section configuration required
+
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: post automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in _data/page_sections.yml
+- **Consistency**: All posts use identical section structure
+
+No manual section configuration is needed in the front matter.
 ---
 
 When we set out to build Brandmine, we knew that geography would play a crucial role in telling the stories of BRICS+ brands. But choosing the right mapping technology proved to be more complex than we initially anticipated.

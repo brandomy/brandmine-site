@@ -1,6 +1,6 @@
 ---
-# FOUNDER PROFILE TEMPLATE - Hybrid Architecture Compatible
-# Human-friendly YAML that auto-generates JSON for founders.json
+# FOUNDER PROFILE TEMPLATE
+# Uses centralized section control via _data/page_sections.yml
 
 layout: founder-profile
 ref: xx-firstname-lastname  # Global founder ID (country-firstname-lastname format)
@@ -16,18 +16,10 @@ permalink: /en/founders/xx-firstname-lastname/
 generate_json: true  # Set to true to include in founders.json output
 sample_data: true    # Flag for sample/test data
 
-# === SECTION CONTROL (CRITICAL - Drives page layout) ===
-# Controls which sections appear and in what order
-# Must match section names in founder includes
-sections:
-  - hero                  # Founder hero panel with name, position, key info
-  - content              # Main founder story content (markdown)
-  - professional-details # Role, expertise, achievements
-  - associated-brands    # Brands associated with this founder
-  - connections         # Related founders and insights
-
-# Alternative minimal sections for basic profiles:
-# sections: [hero, content, associated-brands]
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: founder-profile determines which sections appear and in what order
+# No manual section configuration required
 
 # === CORE INFORMATION ===
 # Basic Information
@@ -89,6 +81,16 @@ keywords: ["founder", "brandname", "expertise", "country"]
 # _founders/ru/xx-firstname-lastname.md (complete Russian translation)
 # _founders/zh/xx-firstname-lastname.md (complete Chinese translation)
 ---
+
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: founder-profile automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in `_data/page_sections.yml`
+- **Consistency**: All founder profiles use identical section structure
+
+No manual section configuration is needed in the front matter.
 
 # {{ page.name }}: One-Line Powerful Positioning
 

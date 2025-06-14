@@ -14,19 +14,20 @@ population: "[POPULATION]"
 gdp: "[GDP]"
 currency: "[CURRENCY]"
 
-# Toggle sections on/off
-sections:
-  - breadcrumbs
-  - hero
-  - header                    # Market overview and key stats
-  - market-highlights         # Key characteristics and trends  
-  - market-sectors           # Sectors prominent in this market
-  - featured-brands          # Highlighted brands from this market
-  - all-brands              # Complete list of brands
-  - related-insights        # Articles about this market
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: dimension-profile determines which sections appear and in what order
+# No manual section configuration required
 
-# Optional: Override sections per dimension
-# sections: [breadcrumbs, hero, market-highlights, all-brands]  # Custom order example
+## Architecture Notes
+
+This template uses Brandmine's centralized section control system:
+
+- **Layout**: dimension-profile automatically loads appropriate sections
+- **Configuration**: Section order and behavior defined in _data/page_sections.yml
+- **Consistency**: All dimension pages use identical section structure
+
+No manual section configuration is needed in the front matter.
 ---
 
 # [MARKET_NAME] Market Overview

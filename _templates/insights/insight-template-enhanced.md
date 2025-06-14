@@ -31,19 +31,10 @@ markets: []  # Geographic markets discussed: ["russia", "brazil", "china"]
 attributes: []  # Brand attributes highlighted: ["heritage-brand", "sustainability-pioneer"]
 signals: []  # Market signals analyzed: ["rapid-growth", "export-ready"]
 
-# Content Structure (sections to include in layout) - Using linear layout (no sidebar)
-sections:
-  - breadcrumbs
-  - hero
-  - header
-  - featured-image
-  - content
-  - social-sharing
-  - taxonomy
-  - brand-info
-  - related-brands
-  - related-insights
-#   - taxonomy-cloud
+# === LAYOUT CONTROL ===
+# Page sections automatically loaded from _data/page_sections.yml
+# Layout: insight-article determines which sections appear and in what order
+# No manual section configuration required
 
 # SEO & Social
 seo:
