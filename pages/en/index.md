@@ -8,7 +8,7 @@ lang: en
 sections:
   - hero
   - impact-statement
-  - featured-brands
+  - latest-insights-tagged
   - final-cta
 ---
 <!-- Brandmine home page - sections limited for styling focus -->
