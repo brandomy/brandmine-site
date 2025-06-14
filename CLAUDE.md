@@ -22,6 +22,7 @@ The site supports three languages (English, Russian, Chinese), dimension-based d
 _brands/{lang}/           — Brand profiles
 _founders/{lang}/         — Founder profiles  
 _dimensions/{lang}/{type}/ — Taxonomy definitions
+_posts/                   — Journal content (Jekyll posts)
 _data/                    — Configuration and translations
 _includes/                — Reusable components
 _layouts/                 — Page templates
