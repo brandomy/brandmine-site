@@ -85,57 +85,126 @@
 
   {% if insights_to_show.size > 0 %}
     {% for insight in insights_to_show %}
-      <div class="insight-item {% if insight.content_type %}insight-item--{{ insight.content_type }}{% endif %}">
+      <div class="insight-item {% if insight.category %}insight-item--{{ insight.category }}{% endif %}">
         <a href="{{ insight.url | relative_url }}" class="insight-item__link">
           <div class="insight-item__image-wrapper">
-            {% if insight.image %}
+            {% comment %} Use semantic image structure for insights {% endcomment %}
+            {% if insight.images.hero.name %}
+              {% assign image_base = '/assets/images/insights/' | append: insight.images.hero.name %}
+              {% assign image_extension = insight.images.hero.ext | default: 'jpg' %}
+              <img src="{{ image_base | append: '.' | append: image_extension | relative_url }}" 
+                   alt="{{ insight.images.hero.alt | default: insight.title }}" 
+                   class="insight-item__image"
+                   loading="lazy">
+            {% elsif insight.image %}
+              {% comment %} Fallback for legacy image structure {% endcomment %}
               <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}" class="insight-item__image">
             {% else %}
               <div class="insight-item__image-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <line x1="21.2" y1="8" x2="12" y2="8"></line>
-                  <line x1="3.5" y1="12" x2="8" y2="12"></line>
-                  <line x1="21.2" y1="16" x2="12" y2="16"></line>
-                  <line x1="3.5" y1="16" x2="8" y2="16"></line>
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
                 </svg>
               </div>
             {% endif %}
 
-            {% if insight.content_type %}
-            <div class="insight-item__type-badge insight-item__type-badge--{{ insight.content_type }}">
-              {% case insight.content_type %}
+            {% if insight.category %}
+            <div class="insight-item__type-badge insight-item__type-badge--{{ insight.category }}">
+              {% case insight.category %}
                 {% when "brand_spotlight" %}
+                  <span class="insight-item__category-icon">🏆</span>
                   {% assign spotlight_key = "insights.brand_spotlight" %}
                   {% assign spotlight_fallback = "Brand Spotlight" %}
                   {% include helpers/t.html key=spotlight_key fallback=spotlight_fallback lang=page.lang %}
                 {% when "founders_journey" %}
+                  <span class="insight-item__category-icon">🚀</span>
                   {% assign insight_key = "insights.founders_journey" %}
                   {% assign insight_fallback = "Founder's Journey" %}
                   {% include helpers/t.html key=insight_key fallback=insight_fallback lang=page.lang %}
                 {% when "location_intelligence" %}
+                  <span class="insight-item__category-icon">🌍</span>
                   {% assign location_key = "insights.location_intelligence" %}
                   {% assign location_fallback = "Location Intelligence" %}
                   {% include helpers/t.html key=location_key fallback=location_fallback lang=page.lang %}
                 {% when "market_momentum" %}
+                  <span class="insight-item__category-icon">📈</span>
                   {% assign momentum_key = "insights.market_momentum" %}
                   {% assign momentum_fallback = "Market Momentum" %}
                   {% include helpers/t.html key=momentum_key fallback=momentum_fallback lang=page.lang %}
                 {% else %}
-                  {{ insight.content_type | replace: "_", " " | capitalize }}
+                  <span class="insight-item__category-icon">📝</span>
+                  {{ insight.category | replace: "_", " " | capitalize }}
               {% endcase %}
             </div>
           {% endif %}
           </div>
 
           <div class="insight-item__content">
+            {% comment %} Business-focused header with reading investment {% endcomment %}
+            <div class="insight-item__business-header">
+              {% if insight.reading_time %}
+                <span class="insight-item__reading-time">
+                  <span class="insight-item__time-icon" aria-hidden="true">⏱️</span>
+                  {{ insight.reading_time }} min read
+                </span>
+              {% endif %}
+              
+              {% comment %} Category-specific value proposition {% endcomment %}
+              <span class="insight-item__value-prop">
+                {% case insight.category %}
+                  {% when 'brand_spotlight' %}
+                    {% include helpers/t.html key="insights.value_props.brand_spotlight" fallback="Investment insights" lang=page.lang %}
+                  {% when 'founders_journey' %}
+                    {% include helpers/t.html key="insights.value_props.founders_journey" fallback="Leadership lessons" lang=page.lang %}
+                  {% when 'location_intelligence' %}
+                    {% include helpers/t.html key="insights.value_props.location_intelligence" fallback="Market intelligence" lang=page.lang %}
+                  {% when 'market_momentum' %}
+                    {% include helpers/t.html key="insights.value_props.market_momentum" fallback="Industry trends" lang=page.lang %}
+                  {% else %}
+                    {% include helpers/t.html key="insights.value_props.default" fallback="Key insights" lang=page.lang %}
+                {% endcase %}
+              </span>
+            </div>
+
             <h3 class="insight-item__title">{{ insight.title }}</h3>
             <p class="insight-item__excerpt">{{ insight.excerpt | strip_html | truncate: 120 }}</p>
 
+            {% comment %} Featured brand/founder context for business relevance {% endcomment %}
+            {% if insight.brands and insight.brands.size > 0 %}
+              <div class="insight-item__featured-context">
+                <span class="insight-item__context-label">
+                  {% case insight.category %}
+                    {% when 'brand_spotlight' %}
+                      {% include helpers/t.html key="insights.context.featured_brand" fallback="Featured Brand" lang=page.lang %}
+                    {% when 'founders_journey' %}
+                      {% include helpers/t.html key="insights.context.featured_founder" fallback="Featured Founder" lang=page.lang %}
+                    {% else %}
+                      {% include helpers/t.html key="insights.context.featured_case" fallback="Featured Case" lang=page.lang %}
+                  {% endcase %}:
+                </span>
+                <span class="insight-item__context-value">{{ insight.brands.first | replace: 'ru-', '' | replace: 'br-', '' | replace: 'cn-', '' | replace: '-', ' ' | capitalize }}</span>
+              </div>
+            {% endif %}
+
             <div class="insight-item__meta">
               <span class="insight-item__date">{{ insight.date | date: "%b %-d, %Y" }}</span>
-              <span class="insight-item__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read more" lang=page.lang %} →</span>
+              
+              {% comment %} Business-focused CTA based on category {% endcomment %}
+              <span class="insight-item__read-more insight-item__read-more--{{ insight.category | default: 'default' }}">
+                {% case insight.category %}
+                  {% when 'brand_spotlight' %}
+                    {% include helpers/t.html key="actions.discover_success" fallback="Discover Success" lang=page.lang %}
+                  {% when 'founders_journey' %}
+                    {% include helpers/t.html key="actions.read_journey" fallback="Read Journey" lang=page.lang %}
+                  {% when 'location_intelligence' %}
+                    {% include helpers/t.html key="actions.explore_market" fallback="Explore Market" lang=page.lang %}
+                  {% when 'market_momentum' %}
+                    {% include helpers/t.html key="actions.analyze_trends" fallback="Analyze Trends" lang=page.lang %}
+                  {% else %}
+                    {% include helpers/t.html key="insights.read_more" fallback="Read more" lang=page.lang %}
+                {% endcase %} →
+              </span>
             </div>
           </div>
         </a>

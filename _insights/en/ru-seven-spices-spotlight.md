@@ -11,7 +11,7 @@ permalink: /en/insights/ru-seven-spices-spotlight/
 date: 2025-01-15  # Publication date
 author: "randal_eastman"  # Key for translation lookup
 excerpt: "Seven Spices is reintroducing traditional Russian spice blends to modern cuisine, combining heritage recipes with modern production for export to global markets."
-category: "brand-spotlight"  # Must match insights/en.yml
+category: "brand_spotlight"  # Must match insights/en.yml
 reading_time: 7
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 # Semantic image structure for collection-image.html include

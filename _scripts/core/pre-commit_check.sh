@@ -207,9 +207,39 @@ else
 fi
 echo "📝 Report: Section array check – $( [[ -z "$SECTION_ARRAYS_FOUND" ]] && echo 'no arrays found (correct)' || echo 'arrays found (should be centralized)' )" | tee -a "$LOG_FILE"
 
+# === 10. Check for category naming consistency (prevent insight display issues)
+echo "" | tee -a "$LOG_FILE"
+echo "🏷️ Checking insight category naming consistency..." | tee -a "$LOG_FILE"
+
+# Check for hyphenated categories in insight files (should use underscores)
+HYPHENATED_CATEGORIES=$(find _insights -name "*.md" -exec grep -H "category.*-" {} \; 2>/dev/null)
+# Check for consistent category usage across all templates
+TEMPLATE_CATEGORY_USAGE=$(find _includes -name "*.html" -exec grep -H 'where.*category.*-' {} \; 2>/dev/null)
+
+CATEGORY_ERROR=0
+if [[ -n "$HYPHENATED_CATEGORIES" ]]; then
+  echo "⚠️ Found hyphenated categories in insight files (should use underscores):" | tee -a "$LOG_FILE"
+  echo "$HYPHENATED_CATEGORIES" | tee -a "$LOG_FILE"
+  echo "💡 Fix: Use underscores instead (e.g., 'founders_journey' not 'founders-journey')" | tee -a "$LOG_FILE"
+  CATEGORY_ERROR=1
+fi
+
+if [[ -n "$TEMPLATE_CATEGORY_USAGE" ]]; then
+  echo "⚠️ Found hyphenated category filtering in templates:" | tee -a "$LOG_FILE"
+  echo "$TEMPLATE_CATEGORY_USAGE" | tee -a "$LOG_FILE"
+  echo "💡 Fix: Update template filters to use underscores to match insight files" | tee -a "$LOG_FILE"
+  CATEGORY_ERROR=1
+fi
+
+if [[ $CATEGORY_ERROR -eq 0 ]]; then
+  echo "✅ Category naming is consistent across insight files and templates" | tee -a "$LOG_FILE"
+fi
+
+echo "📝 Report: Category naming check – $( [[ $CATEGORY_ERROR -eq 0 ]] && echo 'consistent naming' || echo 'inconsistencies found' )" | tee -a "$LOG_FILE"
+
 # === Final Summary
 echo "" | tee -a "$LOG_FILE"
-if [[ $YAML_ERROR -eq 0 && $MISSING_INCLUDES -eq 0 && -z "$SECTION_ARRAYS_FOUND" ]]; then
+if [[ $YAML_ERROR -eq 0 && $MISSING_INCLUDES -eq 0 && -z "$SECTION_ARRAYS_FOUND" && $CATEGORY_ERROR -eq 0 ]]; then
   echo "✅ All checks passed successfully" | tee -a "$LOG_FILE"
 else
   echo "⚠️ Some checks failed - review the log for details" | tee -a "$LOG_FILE"
@@ -221,7 +251,7 @@ echo "==========================================" | tee -a "$LOG_FILE"
 echo "📄 Log saved to: $LOG_FILE"
 
 # Exit with error code if issues were found
-if [[ $YAML_ERROR -ne 0 || $MISSING_INCLUDES -ne 0 || -n "$SECTION_ARRAYS_FOUND" ]]; then
+if [[ $YAML_ERROR -ne 0 || $MISSING_INCLUDES -ne 0 || -n "$SECTION_ARRAYS_FOUND" || $CATEGORY_ERROR -ne 0 ]]; then
   exit 1
 else
   exit 0

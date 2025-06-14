@@ -36,7 +36,7 @@
   {% assign filtered_insights = site.insights | where: "lang", current_lang %}
 
   <!-- Brand Spotlight -->
-  {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
+  {% assign brand_spotlight = filtered_insights | where: "category", "brand_spotlight" | sort: "date" | reverse | first %}
   {% if brand_spotlight %}
     {% include components/cards/tagged-insight-card.html insight=brand_spotlight %}
   {% else %}
@@ -48,7 +48,7 @@
   {% endif %}
 
   <!-- Founder's Journey -->
-  {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
+  {% assign founders_journey = filtered_insights | where: "category", "founders_journey" | sort: "date" | reverse | first %}
   {% if founders_journey %}
     {% include components/cards/tagged-insight-card.html insight=founders_journey %}
   {% else %}
@@ -60,7 +60,7 @@
   {% endif %}
 
   <!-- Location Intelligence -->
-  {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
+  {% assign location_intelligence = filtered_insights | where: "category", "location_intelligence" | sort: "date" | reverse | first %}
   {% if location_intelligence %}
     {% include components/cards/tagged-insight-card.html insight=location_intelligence %}
   {% else %}
@@ -72,7 +72,7 @@
   {% endif %}
 
   <!-- Market Momentum -->
-  {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
+  {% assign market_momentum = filtered_insights | where: "category", "market_momentum" | sort: "date" | reverse | first %}
   {% if market_momentum %}
     {% include components/cards/tagged-insight-card.html insight=market_momentum %}
   {% else %}

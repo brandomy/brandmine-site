@@ -20,7 +20,7 @@
 {% assign limit = include.limit | default: 3 %}
 
 {% assign first_brand = founder.brands[0] %}
-{% assign related_insights = site.insights | where: "lang", founder.lang | where: "category", "founders-journey" | where_exp: "item", "item.brands contains first_brand" | limit: limit %}
+{% assign related_insights = site.insights | where: "lang", founder.lang | where: "category", "founders_journey" | where_exp: "item", "item.brands contains first_brand" | limit: limit %}
 {% if related_insights.size > 0 %}
 <div class="founder-profile__insights mt-3">
   <h3>{% include helpers/t.html key="founder.related_insights" fallback="Related Insights" lang=founder.lang %}</h3>

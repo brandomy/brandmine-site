@@ -37,7 +37,7 @@
           <h3 class="insights-category-highlights__title">{{ t.brand_spotlight }}</h3>
         </div>
 
-        {% assign brand_spotlight = all_insights | where: "category", "brand-spotlight" | first %}
+        {% assign brand_spotlight = all_insights | where: "category", "brand_spotlight" | first %}
         {% if brand_spotlight %}
           {% include components/cards/featured-insight-card.html insight=brand_spotlight %}
         {% else %}
@@ -60,7 +60,7 @@
           <h3 class="insights-category-highlights__title">{{ t.founders_journey }}</h3>
         </div>
 
-        {% assign founders_journey = all_insights | where: "category", "founders-journey" | first %}
+        {% assign founders_journey = all_insights | where: "category", "founders_journey" | first %}
         {% if founders_journey %}
           {% include components/cards/featured-insight-card.html insight=founders_journey %}
         {% else %}
@@ -83,7 +83,7 @@
           <h3 class="insights-category-highlights__title">{{ t.location_intelligence }}</h3>
         </div>
 
-        {% assign location_intelligence = all_insights | where: "category", "location-intelligence" | first %}
+        {% assign location_intelligence = all_insights | where: "category", "location_intelligence" | first %}
         {% if location_intelligence %}
           {% include components/cards/featured-insight-card.html insight=location_intelligence %}
         {% else %}
@@ -106,7 +106,7 @@
           <h3 class="insights-category-highlights__title">{{ t.market_momentum }}</h3>
         </div>
 
-        {% assign market_momentum = all_insights | where: "category", "market-momentum" | first %}
+        {% assign market_momentum = all_insights | where: "category", "market_momentum" | first %}
         {% if market_momentum %}
           {% include components/cards/featured-insight-card.html insight=market_momentum %}
         {% else %}
