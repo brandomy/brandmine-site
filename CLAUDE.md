@@ -147,6 +147,20 @@ signals: ["export-ready"]
 - **Color system**: Primary teal, secondary orange, dimension-specific colors
 - **Typography**: Language-specific font stacks (PT fonts, Noto for Chinese)
 
+### Color Assignments
+| Type | Color | CSS Property |
+|------|-------|--------------|
+| **Dimensions:** | | |
+| Sectors | Olive Green | `--olive-*` |
+| Markets | Sky Blue | `--sky-*` |
+| Attributes | Secondary Orange | `--secondary-*` |
+| Signals | Accent Indigo | `--accent-*` |
+| **Insights:** | | |
+| Brand Spotlight | Amber/Orange | `--secondary-*` |
+| Founder's Journey | Accent Purple | `--accent-*` |
+| Market Momentum | Olive Green | `--olive-*` |
+| Location Intelligence | Sky Blue | `--sky-*` |
+
 See `_docs/technical-reference.md` for complete patterns.
 
 ---

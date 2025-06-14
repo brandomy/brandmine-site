@@ -66,6 +66,21 @@ Visual taxonomy uses consistent color-coding for all discovery interfaces:
 - **Theme:** Geographic insights, spatial context
 - **Implementation:** Background `--sky-100`, Text `--sky-800`
 
+## Color Assignment Reference
+
+| Category | Type | Primary Color | CSS Property | Light BG | Dark Text |
+|----------|------|---------------|--------------|----------|-----------|
+| **Dimensions** | | | | | |
+| Sectors | Olive Green | `#A3B763` | `--olive-*` | `--olive-100` | `--olive-800` |
+| Markets | Sky Blue | `#0EA5E9` | `--sky-*` | `--sky-100` | `--sky-800` |
+| Attributes | Secondary Orange | `#F97316` | `--secondary-*` | `--secondary-100` | `--secondary-800` |
+| Signals | Accent Indigo | `#6366F1` | `--accent-*` | `--accent-100` | `--accent-800` |
+| **Insights** | | | | | |
+| Brand Spotlight | Amber/Orange | `#F59E0B` | `--secondary-*` | `--secondary-100` | `--secondary-800` |
+| Founder's Journey | Accent Purple | `#6366F1` | `--accent-*` | `--accent-100` | `--accent-800` |
+| Market Momentum | Olive Green | `#A3B763` | `--olive-*` | `--olive-100` | `--olive-800` |
+| Location Intelligence | Sky Blue | `#0EA5E9` | `--sky-*` | `--sky-100` | `--sky-800` |
+
 ## Special Purpose Colors
 
 ### Journal Hero Gradients
