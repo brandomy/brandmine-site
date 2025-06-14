@@ -65,17 +65,17 @@ signals: ["export-ready"]
 
 # 📁 Data-Driven Architecture
 
-Brandmine uses **configuration over conditionals** - centralized data files control behavior instead of template logic.
+Brandmine uses **configuration over conditionals** - 100% centralized control achieved June 2025.
 
 **Key Pattern:**
 ```liquid
-{% comment %} Avoid conditional logic {% endcomment %}
-{% if page.layout == "brands" %}
-  {% assign panel_type = "panel--hero" %}
-{% endif %}
-
-{% comment %} Use centralized configuration {% endcomment %}
+{% comment %} CURRENT PATTERN - Use this {% endcomment %}
 {% include helpers/page-sections.html page_type="brands" %}
+
+{% comment %} DEPRECATED - No longer used anywhere {% endcomment %}
+{% for section in page.sections %}
+  {% include pages/brands/{{ section }}.html %}
+{% endfor %}
 ```
 
 ## Centralized Configuration
@@ -238,7 +238,7 @@ All collections follow identical architectural patterns with complete trilingual
 4. **Mobile-first approach** - Design for mobile, enhance for larger screens
 
 ## Key Principles
-- **No section arrays in front matter** - Use centralized control
+- **NO sections: arrays in content** - Use `_data/page_sections.yml` (enforced by validation)
 - **Semantic image structure** - All content uses `images:` pattern
 - **Component reuse** - Look for existing components before creating new ones
 - **Clean templates** - Data only in front matter, logic in includes
@@ -255,6 +255,9 @@ time JEKYLL_ENV=production bundle exec jekyll build
 ---
 
 # 📚 Documentation Reference
+
+**Architecture foundation:**
+- 100% data-driven section control (migration completed June 2025)
 
 **Complete technical details:**
 - `_docs/technical-reference.md` - Architecture patterns, CSS organization, component systems
