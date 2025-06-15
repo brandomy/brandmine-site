@@ -516,3 +516,33 @@ assets/css/pages/dimension/_index.scss:@import "all-brands";
 assets/css/pages/dimension/_index.scss:@import "related-insights";
 ### Import Naming Issues (actual violations):
 ✅ No actual import naming violations found
+
+## CSS Class Naming Issues
+
+### Classes with underscores (should use hyphens):
+assets/css/layout/panels/_panel-content.scss:.panel__heading-primary {
+assets/css/layout/panels/_panel-content.scss:.panel__heading-secondary {
+assets/css/layout/panels/_panel-content.scss:.panel__heading-secondary--after-lead {
+assets/css/layout/panels/_panel-content.scss:.panel__lead-text {
+assets/css/layout/panels/_panel-content.scss:.panel__conclusion-text {
+assets/css/layout/panels/_panel-content.scss:.panel__paragraph {
+assets/css/layout/panels/_panel-content.scss:.panel__paragraph:last-child {
+assets/css/layout/panels/_panel-content.scss:.panel__subtitle {
+assets/css/layout/panels/_panel-types.scss:.home-page .panel--hero .panel__heading-primary {
+assets/css/layout/panels/_panel-types.scss:  .panel__content {
+
+### CSS Custom Properties with underscores or uppercase:
+assets/css/components/ui/tooltip.scss:  &.tooltip--bottom .tooltip__content::before {
+assets/css/components/ui/tooltip.scss:  &.tooltip--left .tooltip__content::before {
+assets/css/components/ui/tooltip.scss:  &.tooltip--right .tooltip__content::before {
+assets/css/components/ui/tooltip.scss:  &.tooltip--bottom .tooltip__content::before {
+assets/css/components/ui/tooltip.scss:  &.tooltip--left .tooltip__content::before {
+assets/css/components/ui/tooltip.scss:  &.tooltip--right .tooltip__content::before {
+assets/css/components/ui/tooltip.scss:  .tooltip--light .tooltip__content {
+assets/css/layout/header.scss:.header__dropdown--open .header__dropdown-icon {
+assets/css/layout/header.scss:.header__dropdown.header__dropdown--open .header__dropdown-content {
+assets/css/layout/header.scss:  .header__dropdown--open .header__dropdown-content {
+
+## Include-SCSS Mapping Validation
+
+### Checking component includes have matching SCSS files:
