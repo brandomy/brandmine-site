@@ -24,8 +24,8 @@ cross_border_expertise: true
 languages: ["ru", "zh", "en"]
 
 images:
-  portrait: { name: "portrait", ext: "jpg" }
-  headshot: { name: "headshot", ext: "jpg" }
+  portrait: { name: "working", ext: "jpg" }
+  headshot: { name: "outdoor", ext: "jpg" }
   action: { name: "action", ext: "jpg" }
 
 # === SOCIAL MEDIA (FLATTENED) ===

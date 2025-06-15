@@ -43,11 +43,11 @@ location_country: "ru"  # ISO country code
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "siberian-honey"
+    name: "corridor"
     alt: "Сибирские пасеки в нетронутой лесной обстановке"
     ext: "jpg"
-  founder_portrait:
-    name: "ivan-petrov"
+  founder:
+    name: "portrait"
     alt: "Иван Петров, производитель мёда в сибирском регионе"
     ext: "jpg"
   logo:

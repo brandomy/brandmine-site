@@ -36,11 +36,11 @@ premium: false
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "siberian-honey"
+    name: "corridor"
     alt: "原始森林环境中的西伯利亚养蜂场"
     ext: "jpg"
-  founder_portrait:
-    name: "ivan-petrov"
+  founder:
+    name: "portrait"
     alt: "西伯利亚地区蜂蜜生产者伊万·彼得罗夫"
     ext: "jpg"
   logo:

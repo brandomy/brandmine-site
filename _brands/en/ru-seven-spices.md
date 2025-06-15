@@ -43,7 +43,7 @@ images:
     ext: "png"
     alt: "Seven Spices logo featuring traditional Russian spice blend symbols with Cyrillic text and warm earth-tone colors"
   hero:
-    name: "spice-market"  # Becomes hero-spice-market-400w.jpg
+    name: "workshop"  # Becomes hero-spice-market-400w.jpg
     ext: "jpg"
     alt: "Bustling Moscow spice market with colorful displays of traditional Russian spices and Seven Spices branded products prominently featured among market stalls"
   founder:

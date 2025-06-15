@@ -16,11 +16,11 @@ reading_time: 8
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "storefront"
+    name: "ceremony"
     alt: "Alexei Sokolov in his flagship TeaTime tearoom in Moscow's Arbat district, demonstrating traditional Russian tea ceremony with brass samovar"
     ext: "jpg"
-  founder_portrait:
-    name: "alexei-sokolov"
+  founder:
+    name: "portrait"
     alt: "Alexei Sokolov, founder of TeaTime, in traditional Russian vest preparing tea ceremony with antique samovar in elegant tearoom setting"
     ext: "jpg"
   logo:

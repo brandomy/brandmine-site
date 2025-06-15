@@ -43,11 +43,11 @@ location_country: "ru"  # ISO country code
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "krasnodar-vineyard"
+    name: "vineyard"
     alt: "Российские виноградники в Краснодарском крае с современными технологиями виноделия"
     ext: "jpg"
-  founder_portrait:
-    name: "anna-kuznetsova"
+  founder:
+    name: "portrait"
     alt: "Анна Кузнецова, основательница Краснодар Вайнс"
     ext: "jpg"
   logo:

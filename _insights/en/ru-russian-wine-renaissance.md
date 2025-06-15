@@ -16,11 +16,11 @@ reading_time: 7
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "krasnodar-vineyard"
+    name: "vineyard"
     alt: "Russian vineyards in Krasnodar region showing modern viticulture techniques"
     ext: "jpg"
-  founder_portrait:
-    name: "anna-kuznetsova"
+  founder:
+    name: "portrait"
     alt: "Anna Kuznetsova, founder of Krasnodar Wines"
     ext: "jpg"
   logo:

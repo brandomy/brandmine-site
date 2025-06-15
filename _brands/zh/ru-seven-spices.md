@@ -43,7 +43,7 @@ images:
     ext: "png"
     alt: "Seven Spices标志，配有传统俄式香料混合物符号、西里尔文字和温暖的大地色调"
   hero:
-    name: "spice-market"  # Becomes hero-spice-market-400w.jpg
+    name: "workshop"  # Becomes hero-workshop-400w.jpg
     ext: "jpg"
     alt: "繁忙的莫斯科香料市场，展示传统俄式香料的多彩陈列，Seven Spices品牌产品在市场摊位中显眼展示"
   founder:

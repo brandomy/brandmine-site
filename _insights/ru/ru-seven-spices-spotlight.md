@@ -43,11 +43,11 @@ location_country: "ru"  # ISO country code
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "moscow-spice-market"
+    name: "market"
     alt: "Шумный московский рынок специй с красочными витринами традиционных русских специй и продукцией брендов Семь Специй"
     ext: "jpg"
-  founder_portrait:
-    name: "maria-kuznetsova"
+  founder:
+    name: "portrait"
     alt: "Мария Кузнецова, основательница Семь Специй, в традиционном русском платье держит фирменную смесь специй"
     ext: "jpg"
   logo:

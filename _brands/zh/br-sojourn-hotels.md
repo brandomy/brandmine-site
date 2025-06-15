@@ -34,7 +34,7 @@ images:
     name: "color"
     ext: "png"
   hero:
-    name: "hotel-exterior"
+    name: "lobby"
     ext: "jpg"
   founder:
     name: "portrait"

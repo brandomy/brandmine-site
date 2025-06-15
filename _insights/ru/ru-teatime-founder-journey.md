@@ -43,11 +43,11 @@ location_country: "ru"  # ISO country code
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "storefront"
+    name: "ceremony"
     alt: "Алексей Соколов в своей флагманской чайной TeaTime в московском Арбате, демонстрирует традиционную русскую чайную церемонию с латунным самоваром"
     ext: "jpg"
-  founder_portrait:
-    name: "alexei-sokolov"
+  founder:
+    name: "portrait"
     alt: "Алексей Соколов, основатель TeaTime, в традиционном русском жилете готовит чайную церемонию с антикварным самоваром в элегантной чайной"
     ext: "jpg"
   logo:

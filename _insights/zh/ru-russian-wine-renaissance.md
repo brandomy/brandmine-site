@@ -36,11 +36,11 @@ premium: false
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "krasnodar-vineyard"
+    name: "vineyard"
     alt: "俄罗斯克拉斯诺达尔地区的葡萄园，展示现代葡萄栽培技术"
     ext: "jpg"
-  founder_portrait:
-    name: "anna-kuznetsova"
+  founder:
+    name: "portrait"
     alt: "克拉斯诺达尔葡萄酒创始人安娜·库兹涅佐娃"
     ext: "jpg"
   logo:

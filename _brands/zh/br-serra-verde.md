@@ -34,7 +34,7 @@ images:
     name: "color"
     ext: "png"
   hero:
-    name: "farm-view"
+    name: "farmland"
     ext: "jpg"
   founder:
     name: "portrait"

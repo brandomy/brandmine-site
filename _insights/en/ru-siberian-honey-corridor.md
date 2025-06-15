@@ -16,11 +16,11 @@ reading_time: 6
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "siberian-honey"
+    name: "corridor"
     alt: "Siberian apiaries in pristine forest setting"
     ext: "jpg"
-  founder_portrait:
-    name: "ivan-petrov"
+  founder:
+    name: "portrait"
     alt: "Ivan Petrov, honey producer in Siberian region"
     ext: "jpg"
   logo:

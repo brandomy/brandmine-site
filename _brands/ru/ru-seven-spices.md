@@ -43,7 +43,7 @@ images:
     ext: "png"
     alt: "Логотип Seven Spices с символами традиционных русских пряных смесей, кириллическим текстом и теплыми земляными цветами"
   hero:
-    name: "spice-market"  # Becomes hero-spice-market-400w.jpg
+    name: "workshop"  # Becomes hero-workshop-400w.jpg
     ext: "jpg"
     alt: "Оживленный московский рынок специй с красочными витринами традиционных русских пряностей и продукцией Seven Spices на видном месте среди рыночных прилавков"
   founder:
