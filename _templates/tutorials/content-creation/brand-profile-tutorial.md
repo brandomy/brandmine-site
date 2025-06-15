@@ -118,16 +118,16 @@ website: "https://guaranaartisans.com"
 employees: 24
 annual_revenue: 2800000
 
-# Images (semantic structure)
+# Images (semantic structure - context-aware naming)
 images:
   logo:
-    name: "color"
+    name: "color"     # Brand identity: color, mono, white
     ext: "png"
   hero:
-    name: "production"
+    name: "farmland"  # Context-aware: farmland, workshop, lobby, ceremony
     ext: "jpg"
   founder:
-    name: "portrait"
+    name: "portrait"  # Generic: portrait (standardized across all content)
     ext: "jpg"
 
 # Contact information
@@ -271,8 +271,8 @@ mkdir -p assets/images/brands/br/guarana-artisans/originals/
 
 Add source images following Brandmine standards:
 - `logo-color.png` - 1:1 square (512×512px), PNG with transparency
-- `hero-production.jpg` - 3:2 aspect ratio (1200×800px), JPG
-- `founder-portrait.jpg` - 2:3 aspect ratio (800×1200px), JPG
+- `hero-farmland.jpg` - 3:2 aspect ratio (1200×800px), JPG (context-aware naming)
+- `founder-portrait.jpg` - 2:3 aspect ratio (800×1200px), JPG (generic naming)
 
 ### Step 4: Process Images
 
@@ -283,7 +283,7 @@ _scripts/core/process_images.sh brands br-guarana-artisans
 
 This generates:
 - `logo-color-400w.png`, `logo-color-800w.png`
-- `hero-production-400w.jpg`, `hero-production-800w.jpg`, `hero-production-1200w.jpg`
+- `hero-farmland-400w.jpg`, `hero-farmland-800w.jpg`, `hero-farmland-1200w.jpg`
 - `founder-portrait-400w.jpg`, `founder-portrait-800w.jpg`, `founder-portrait-1200w.jpg`
 
 ### Step 5: Update Search Index
@@ -369,16 +369,16 @@ website: "https://brand.com"
 employees: 24
 annual_revenue: 2800000
 
-# Images (semantic structure)
+# Images (semantic structure - context-aware naming)
 images:
   logo:
-    name: "color"
+    name: "color"     # Brand identity: color, mono, white
     ext: "png"
   hero:
-    name: "storefront"
+    name: "farmland"  # Context-aware: farmland, workshop, lobby, ceremony, distillery
     ext: "jpg"
   founder:
-    name: "portrait"
+    name: "portrait"  # Generic: portrait (standardized across all content)
     ext: "jpg"
 
 # Contact & social (flattened structure)
@@ -427,7 +427,7 @@ product_lines:
 - **Source size**: 1200×800px minimum
 - **Format**: JPG
 - **Style**: Textured Minimalism (TM)
-- **Naming**: `hero-[description].jpg`
+- **Naming**: `hero-[context-aware-description].jpg` (e.g., farmland, workshop, lobby, ceremony)
 - **Usage**: Page headers, featured displays
 
 **Founder Portraits**
@@ -449,6 +449,33 @@ product_lines:
 - **Textured Minimalism (TM)**: Hero images, brand storytelling
 - **Natural Photography + Teal Filter**: Founder portraits, team photos
 - **Consistent branding**: All images follow Brandmine aesthetic standards
+
+### Image Naming Standardization
+
+**Context-Aware Naming Strategy**: Use semantic descriptions that focus on the scene/content rather than location-specific details:
+
+**✅ Good Examples:**
+- `hero: name: "farmland"` (describes the scene)
+- `hero: name: "workshop"` (describes the setting)
+- `hero: name: "lobby"` (describes the space)
+- `hero: name: "ceremony"` (describes the activity)
+
+**❌ Avoid Location-Specific Names:**
+- `hero: name: "krasnodar-vineyard"` (too location-specific)
+- `hero: name: "moscow-spice-market"` (redundant with directory context)
+- `hero: name: "paraty-view"` (location already implied)
+
+**Cross-Language Consistency**: All three language versions (EN/RU/ZH) must use identical image names:
+```yaml
+# _brands/en/br-brand.md
+hero: name: "farmland"
+
+# _brands/ru/br-brand.md  
+hero: name: "farmland"  # ✅ Same name
+
+# _brands/zh/br-brand.md
+hero: name: "farmland"  # ✅ Same name
+```
 
 ---
 
@@ -531,10 +558,25 @@ python3 _scripts/core/generate-all-json.py
 - [ ] Front matter validates successfully
 - [ ] Required taxonomy dimensions exist
 - [ ] Images processed and responsive
+- [ ] **Image names identical across all languages**
+- [ ] **Hero names use context-aware patterns (farmland, workshop, lobby)**
+- [ ] **Founder images use generic "portrait" naming**
 - [ ] Content renders correctly in all sections
 - [ ] Navigation and breadcrumbs work
 - [ ] Brand appears in search index
 - [ ] Related founder profiles link correctly
+
+### Image Standardization Validation
+```bash
+# Check cross-language image consistency
+grep -A 6 "images:" _brands/en/brand-slug.md _brands/ru/brand-slug.md _brands/zh/brand-slug.md
+
+# Verify context-aware naming (should show farmland, workshop, etc.)
+grep -r "hero:" _brands/en/ | grep "name:"
+
+# Ensure no location-specific names remain
+grep -r "krasnodar\|moscow\|paraty" _brands/*/
+```
 
 ---
 

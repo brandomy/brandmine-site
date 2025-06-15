@@ -178,13 +178,13 @@ press_mentions:
     title: "Export Success from Moscow to Beijing"
     year: 2021
 
-# Images (semantic structure)
+# Images (semantic structure - standardized naming)
 images:
   portrait:
-    name: "portrait"  # 2:3 aspect ratio for featured display
+    name: "formal"     # Context-aware: formal, traditional, working, business
     ext: "jpg"
   headshot:
-    name: "headshot"  # 1:1 aspect ratio for card display
+    name: "professional"  # Context-aware: professional, outdoor, business
     ext: "jpg"
 
 # Recognition and certifications
@@ -371,8 +371,8 @@ mkdir -p assets/images/founders/ru-alexei-sokolov/originals/
 ```
 
 Add source images following Brandmine standards:
-- `portrait.jpg` - 2:3 aspect ratio (800×1200px), JPG for featured displays
-- `headshot.jpg` - 1:1 aspect ratio (800×800px), JPG for card displays
+- `portrait-formal.jpg` - 2:3 aspect ratio (800×1200px), JPG for featured displays
+- `headshot-professional.jpg` - 1:1 aspect ratio (800×800px), JPG for card displays
 
 ### Step 5: Process Images
 
@@ -382,8 +382,8 @@ _scripts/core/process_images.sh founders ru-alexei-sokolov
 ```
 
 This generates:
-- `portrait-400w.jpg`, `portrait-800w.jpg`, `portrait-1200w.jpg`
-- `headshot-400w.jpg`, `headshot-800w.jpg`, `headshot-1200w.jpg`
+- `portrait-formal-400w.jpg`, `portrait-formal-800w.jpg`, `portrait-formal-1200w.jpg`
+- `headshot-professional-400w.jpg`, `headshot-professional-800w.jpg`, `headshot-professional-1200w.jpg`
 
 ### Step 6: Update Data Indexes
 
@@ -491,13 +491,13 @@ social_linkedin: "username"
 social_instagram: "@username"
 social_facebook: "username"
 
-# Images
+# Images (standardized naming)
 images:
   portrait:
-    name: "portrait"
+    name: "formal"      # Context-aware: formal, traditional, working, business
     ext: "jpg"
   headshot:
-    name: "headshot"
+    name: "professional" # Context-aware: professional, outdoor, business
     ext: "jpg"
 
 # Recognition
@@ -588,7 +588,7 @@ Automatically displayed in hero sections and cards:
 - **Source size**: 800×1200px minimum
 - **Format**: JPG
 - **Style**: Natural photography with teal filter
-- **Naming**: `portrait.jpg`
+- **Naming**: `portrait-[context].jpg` (e.g., formal, traditional, working, business)
 - **Usage**: Hero sections, featured founder cards
 
 **Headshot Images (Card Display)**
@@ -596,7 +596,7 @@ Automatically displayed in hero sections and cards:
 - **Source size**: 800×800px minimum
 - **Format**: JPG
 - **Style**: Professional headshot with teal filter
-- **Naming**: `headshot.jpg`
+- **Naming**: `headshot-[context].jpg` (e.g., professional, outdoor, business)
 - **Usage**: Founder cards, grid displays
 
 ### Image Processing Workflow
@@ -610,6 +610,37 @@ Automatically displayed in hero sections and cards:
 - **Natural Photography + Teal Filter**: Professional, approachable founder portraits
 - **Consistent lighting**: Well-lit, professional photography standards
 - **Clean backgrounds**: Minimal distractions, focus on founder
+
+### Image Naming Standardization
+
+**Context-Aware Naming Strategy**: Use descriptive names that capture the style/context rather than generic terms:
+
+**✅ Good Examples:**
+- `portrait: name: "formal"` (describes the style)
+- `portrait: name: "traditional"` (describes the setting/clothing)
+- `portrait: name: "working"` (describes the context)
+- `headshot: name: "professional"` (describes the style)
+- `headshot: name: "outdoor"` (describes the setting)
+
+**❌ Avoid Generic Names:**
+- `portrait: name: "portrait"` (too generic)
+- `headshot: name: "headshot"` (too generic)
+- `portrait: name: "alexei-sokolov"` (person-specific, not reusable)
+
+**Cross-Language Consistency**: All three language versions (EN/RU/ZH) must use identical image names:
+```yaml
+# _founders/en/ru-founder.md
+portrait: name: "formal"
+headshot: name: "professional"
+
+# _founders/ru/ru-founder.md  
+portrait: name: "formal"     # ✅ Same names
+headshot: name: "professional"
+
+# _founders/zh/ru-founder.md
+portrait: name: "formal"     # ✅ Same names  
+headshot: name: "professional"
+```
 
 ---
 
@@ -695,11 +726,28 @@ _scripts/core/pre-commit_check.sh
 - [ ] Front matter validates successfully
 - [ ] Brand cross-references exist and validate
 - [ ] Images processed and responsive
+- [ ] **Image names identical across all languages**
+- [ ] **Portrait/headshot names use context-aware patterns (formal, traditional, professional)**
+- [ ] **No generic "portrait"/"headshot" naming used**
 - [ ] Generation category is valid
 - [ ] Expertise limited to 4 skills
 - [ ] Content renders correctly in all sections
 - [ ] Founder appears in search index
 - [ ] Associated brands link correctly
+
+### Image Standardization Validation
+```bash
+# Check cross-language image consistency for founders
+grep -A 6 "images:" _founders/en/founder-slug.md _founders/ru/founder-slug.md _founders/zh/founder-slug.md
+
+# Verify context-aware naming (should show formal, traditional, etc.)
+grep -r "portrait:" _founders/en/ | grep "name:"
+grep -r "headshot:" _founders/en/ | grep "name:"
+
+# Ensure no generic naming remains
+grep -r "name: \"portrait\"" _founders/*/
+grep -r "name: \"headshot\"" _founders/*/
+```
 
 ---
 

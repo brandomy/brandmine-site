@@ -235,6 +235,7 @@ Create or source a hero image following Brandmine visual standards:
 - **Aspect ratio**: 3:2 (1200×800px)
 - **Style**: Textured Minimalism (TM) 
 - **Content**: Mongolian landscape with natural beauty elements
+- **Naming**: `hero.jpg` (market-sector pages use simple naming)
 - **File**: `assets/images/market-sectors/mongolia/natural-beauty/hero.jpg`
 
 Process with:
@@ -362,6 +363,18 @@ title: "Gobi Desert Botanicals"
 markets: ["mongolia"]          # Must match your market
 sectors: ["natural-beauty"]    # Must match your sector
 attributes: ["founder-led", "heritage-brand"]
+
+# Images (follow brand standardization)
+images:
+  logo:
+    name: "color"
+    ext: "png"
+  hero:
+    name: "workshop"    # Context-aware naming
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Generic naming
+    ext: "jpg"
 ---
 ```
 

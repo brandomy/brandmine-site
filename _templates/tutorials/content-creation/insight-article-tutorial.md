@@ -107,6 +107,21 @@ featured: true     # Featured on homepage hero
 premium: false
 sample_data: false
 
+# Images (semantic structure - standardized naming)
+images:
+  hero:
+    name: "vineyard"    # Context-aware: vineyard, corridor, ceremony, market
+    alt: "Russian vineyards in Krasnodar region showing modern viticulture techniques"
+    ext: "jpg"
+  founder:
+    name: "portrait"    # Generic: portrait (standardized across all content)
+    alt: "Anna Kuznetsova, founder of Krasnodar Wines"
+    ext: "jpg"
+  logo:
+    name: "russian-wine"  # Brand-specific: keep actual brand names for logos
+    alt: "Russian wine logo"
+    ext: "png"
+
 # Cross-linking (use exact slugs)
 brands: ["ru-kuban-estates", "ru-abrau-durso", "ru-fanagoria"]
 founders: ["ru-viktor-drachev", "ru-pavel-titov"]
@@ -342,9 +357,9 @@ mkdir -p assets/images/insights/ru-russian-wine-renaissance/originals/
 ```
 
 Add source images following Brandmine standards:
-- `hero.jpg` - 3:2 aspect ratio (1200×800px), JPG for featured display
-- `vineyard-landscape.jpg` - Supporting content images
-- `winemaker-portrait.jpg` - 2:3 aspect ratio for inline portraits
+- `hero-vineyard.jpg` - 3:2 aspect ratio (1200×800px), JPG for featured display (context-aware naming)
+- `founder-portrait.jpg` - 2:3 aspect ratio for founder portraits (generic naming)
+- `logo-russian-wine.png` - 1:1 aspect ratio for brand logos (brand-specific naming)
 
 ### Step 4: Process Images
 
@@ -354,8 +369,9 @@ _scripts/core/process_images.sh insights ru-russian-wine-renaissance
 ```
 
 This generates:
-- `hero-400w.jpg`, `hero-800w.jpg`, `hero-1200w.jpg`
-- `vineyard-landscape-400w.jpg`, `vineyard-landscape-800w.jpg`, `vineyard-landscape-1200w.jpg`
+- `hero-vineyard-400w.jpg`, `hero-vineyard-800w.jpg`, `hero-vineyard-1200w.jpg`
+- `founder-portrait-400w.jpg`, `founder-portrait-800w.jpg`, `founder-portrait-1200w.jpg`
+- `logo-russian-wine-400w.png`, `logo-russian-wine-800w.png`, `logo-russian-wine-1200w.png`
 
 ### Step 5: Update Data Indexes
 
@@ -432,6 +448,21 @@ word_count: 1500          # Required: approximate word count
 featured: false           # Set true for homepage hero
 premium: false           # Premium content flag
 sample_data: false       # Mark as sample/demo content
+
+# Images (standardized structure)
+images:
+  hero:
+    name: "vineyard"      # Context-aware: vineyard, corridor, ceremony, market
+    alt: "Hero image description"
+    ext: "jpg"
+  founder:
+    name: "portrait"      # Generic: portrait (standardized across all content)
+    alt: "Founder portrait description"
+    ext: "jpg"
+  logo:
+    name: "brand-name"    # Brand-specific: keep actual brand names
+    alt: "Brand logo description"
+    ext: "png"
 
 # Cross-linking
 brands: ["brand-slug"]   # Referenced brands
@@ -533,16 +564,24 @@ sections:
 - **Source size**: 1200×800px minimum
 - **Format**: JPG
 - **Style**: Textured Minimalism (TM)
-- **Naming**: `hero.jpg`
+- **Naming**: `hero-[context-aware-description].jpg` (e.g., vineyard, corridor, ceremony, market)
 - **Usage**: Article hero, social sharing, featured displays
 
-**Content Images (Inline)**
-- **Aspect ratio**: 3:2 horizontal or 2:3 vertical
-- **Source size**: 800×533px (horizontal) or 533×800px (vertical)
+**Founder Portrait Images**
+- **Aspect ratio**: 2:3 vertical  
+- **Source size**: 800×1200px minimum
 - **Format**: JPG
-- **Style**: MPTM (Muted Pastel Textured Minimalism) for emotional spaces
-- **Naming**: `[description].jpg`
-- **Usage**: Within article content, supporting visuals
+- **Style**: Natural photography with teal filter
+- **Naming**: `founder-portrait.jpg` (generic naming for all founders)
+- **Usage**: Founder references within articles
+
+**Logo Images**
+- **Aspect ratio**: 1:1 square
+- **Source size**: 512×512px minimum  
+- **Format**: PNG with transparency
+- **Style**: Brand-specific design
+- **Naming**: `logo-[brand-name].png` (brand-specific naming)
+- **Usage**: Brand references, article logos
 
 ### Image Processing Workflow
 
@@ -553,8 +592,59 @@ sections:
 ### Visual Style Guidelines
 
 - **Textured Minimalism (TM)**: Hero images, primary storytelling
-- **Muted Pastel Textured Minimalism (MPTM)**: Supporting illustrations, emotional breathing spaces
+- **Natural Photography + Teal Filter**: Founder portraits, supporting visuals
 - **Consistent branding**: All images follow Brandmine aesthetic standards
+
+### Image Naming Standardization
+
+**CRITICAL: Front Matter Key Standardization**
+Always use `founder:` (not `founder_portrait:`) for consistency with other content types:
+
+```yaml
+# ✅ CORRECT - Standardized key
+images:
+  founder:
+    name: "portrait"
+    
+# ❌ INCORRECT - Legacy key  
+images:
+  founder_portrait:
+    name: "portrait"
+```
+
+**Context-Aware Hero Naming Strategy**: Use semantic descriptions that focus on the scene/content:
+
+**✅ Good Examples:**
+- `hero: name: "vineyard"` (describes the scene)
+- `hero: name: "corridor"` (describes the space/concept)
+- `hero: name: "ceremony"` (describes the activity)
+- `hero: name: "market"` (describes the setting)
+
+**❌ Avoid Location-Specific Names:**
+- `hero: name: "krasnodar-vineyard"` (too location-specific)
+- `hero: name: "siberian-honey"` (location redundant with context)
+- `hero: name: "moscow-spice-market"` (location already implied)
+
+**Generic Founder Naming**: All founder portraits use the same name for consistency:
+```yaml
+founder:
+  name: "portrait"    # ✅ Always use "portrait" for all founders
+```
+
+**Cross-Language Consistency**: All three language versions (EN/RU/ZH) must use identical image names:
+```yaml
+# _insights/en/article.md
+hero: name: "vineyard"
+founder: name: "portrait"
+
+# _insights/ru/article.md  
+hero: name: "vineyard"    # ✅ Same names
+founder: name: "portrait"
+
+# _insights/zh/article.md
+hero: name: "vineyard"    # ✅ Same names
+founder: name: "portrait"
+```
 
 ---
 
@@ -697,11 +787,31 @@ _scripts/core/pre-commit_check.sh
 - [ ] Category is one of four approved options
 - [ ] Word count matches category guidelines
 - [ ] Images processed and responsive
+- [ ] **Image names identical across all languages**
+- [ ] **Uses `founder:` key (not `founder_portrait:`)**
+- [ ] **Hero names use context-aware patterns (vineyard, corridor, ceremony)**
+- [ ] **Founder images use generic "portrait" naming**
 - [ ] Cross-references exist (brands/founders)
 - [ ] Featured article setting managed properly
 - [ ] Content renders correctly in all sections
 - [ ] Social sharing works
 - [ ] SEO metadata complete
+
+### Image Standardization Validation
+```bash
+# Check cross-language image consistency for insights
+grep -A 6 "images:" _insights/en/article-slug.md _insights/ru/article-slug.md _insights/zh/article-slug.md
+
+# Verify correct key usage (should show "founder:", not "founder_portrait:")
+grep -r "founder:" _insights/en/ | wc -l
+grep -r "founder_portrait:" _insights/en/ | wc -l  # Should be 0
+
+# Verify context-aware hero naming
+grep -r "hero:" _insights/en/ | grep "name:"
+
+# Check for location-specific names (should find none)
+grep -r "krasnodar\|siberian\|moscow" _insights/*/
+```
 
 ---
 
