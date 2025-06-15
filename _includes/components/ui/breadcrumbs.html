@@ -29,7 +29,7 @@ Parameters:
   {% comment %} Home item {% endcomment %}
   {% if show_home %}
     {% capture home_name %}
-{% include helpers/t.html key="navigation.home" fallback="Home" lang=current_lang %}
+{% include helpers/t.html key="nav.home" fallback="Home" lang=current_lang %}
 {% endcapture %}
     {% assign home_url = site.baseurl | append: "/" | append: current_lang | append: "/" %}
     {% assign home_item = home_name | append: "," | append: home_url %}
@@ -42,7 +42,7 @@ Parameters:
     {% when "insight-category" %}
       {% comment %} Insights section {% endcomment %}
       {% capture insights_name %}
-{% include helpers/t.html key="navigation.insights" fallback="Insights" lang=current_lang %}
+{% include helpers/t.html key="nav.insights" fallback="Insights" lang=current_lang %}
 {% endcapture %}
       {% assign insights_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/" %}
       {% assign insights_item = insights_name | append: "," | append: insights_url %}
@@ -60,7 +60,7 @@ Parameters:
 
     {% when "brand-profile" %}
       {% capture brands_name %}
-{% include helpers/t.html key="navigation.brands" fallback="Brands" lang=current_lang %}
+{% include helpers/t.html key="nav.brands" fallback="Brands" lang=current_lang %}
 {% endcapture %}
       {% assign brands_url = site.baseurl | append: "/" | append: current_lang | append: "/brands/" %}
       {% assign brands_item = brands_name | append: "," | append: brands_url %}
@@ -72,7 +72,7 @@ Parameters:
 
     {% when "founder-profile" %}
       {% capture founders_name %}
-{% include helpers/t.html key="navigation.founders" fallback="Founders" lang=current_lang %}
+{% include helpers/t.html key="nav.founders" fallback="Founders" lang=current_lang %}
 {% endcapture %}
       {% assign founders_url = site.baseurl | append: "/" | append: current_lang | append: "/founders/" %}
       {% assign founders_item = founders_name | append: "," | append: founders_url %}
@@ -84,7 +84,7 @@ Parameters:
 
     {% when "insight-article" %}
       {% capture insights_name %}
-{% include helpers/t.html key="navigation.insights" fallback="Insights" lang=current_lang %}
+{% include helpers/t.html key="nav.insights" fallback="Insights" lang=current_lang %}
 {% endcapture %}
       {% assign insights_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/" %}
       {% assign insights_item = insights_name | append: "," | append: insights_url %}
@@ -107,7 +107,7 @@ Parameters:
     {% when "post" %}
       {% comment %} Journal post {% endcomment %}
       {% capture journal_name %}
-{% include helpers/t.html key="navigation.journal" fallback="Journal" lang=current_lang %}
+{% include helpers/t.html key="nav.journal" fallback="Journal" lang=current_lang %}
 {% endcapture %}
       {% assign journal_url = site.baseurl | append: "/" | append: current_lang | append: "/journal/" %}
       {% assign journal_item = journal_name | append: "," | append: journal_url %}
