@@ -225,7 +225,7 @@ _scripts/utilities/generate-language-map.py
 _scripts/utilities/generate-navigation-cache.py
 ```
 
-See `_docs/daily-workflows.md` for step-by-step content creation processes.
+See `_docs/developer-daily-workflows.md` for step-by-step content creation processes.
 
 ---
 
@@ -286,7 +286,7 @@ time JEKYLL_ENV=production bundle exec jekyll build
 
 **Complete technical details:**
 - `_docs/technical-reference.md` - Architecture patterns, CSS organization, component systems
-- `_docs/daily-workflows.md` - Step-by-step content creation and maintenance
+- `_docs/developer-daily-workflows.md` - Step-by-step content creation and maintenance
 - `_docs/images.md` - Image processing and visual style standards
 - `_docs/colors.md` - Color palette and usage guidelines
 
