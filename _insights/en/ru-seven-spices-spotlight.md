@@ -17,11 +17,11 @@ reading_time: 7
 # Semantic image structure for collection-image.html include
 images:
   hero:
-    name: "moscow-spice-market"
+    name: "market"
     alt: "Bustling Moscow spice market with colorful displays of traditional Russian spices and Seven Spices branded products prominently featured among market stalls"
     ext: "jpg"
-  founder_portrait:
-    name: "maria-kuznetsova"
+  founder:
+    name: "portrait"
     alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress holding signature spice blend with confident expression"
     ext: "jpg"
   logo:

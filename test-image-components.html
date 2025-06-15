@@ -1,0 +1,311 @@
+---
+layout: default
+title: "Image Component Testing - Phase 1"
+permalink: /test-image-components/
+---
+
+<div class="container">
+  <h1>Image Component Testing - Phase 1</h1>
+  <p class="lead">Testing ALL card components with CURRENT file structure (before any file renaming)</p>
+  
+  <hr>
+
+  <!-- Test 1: Brand Cards -->
+  <section class="test-section">
+    <h2>1. Brand Cards Testing</h2>
+    <p>Testing: brand-card.html, featured-brand-card.html, related-brand-card.html, hero-brand-card.html</p>
+    
+    {% assign test_brands = site.brands | where: "lang", "en" | where: "generate_json", true %}
+    {% for brand in test_brands limit:3 %}
+      <div class="test-item">
+        <h3>{{ brand.title }} ({{ brand.ref }})</h3>
+        
+        <div class="test-grid">
+          <!-- Standard Brand Card -->
+          <div class="test-card">
+            <h4>brand-card.html:</h4>
+            {% include components/cards/brand-card.html brand=brand %}
+          </div>
+          
+          <!-- Featured Brand Card -->
+          <div class="test-card">
+            <h4>featured-brand-card.html:</h4>
+            {% include components/cards/featured-brand-card.html brand=brand %}
+          </div>
+          
+          <!-- Related Brand Card -->
+          <div class="test-card">
+            <h4>related-brand-card.html:</h4>
+            {% include components/cards/related-brand-card.html brand=brand %}
+          </div>
+        </div>
+        
+        <!-- Hero Brand Card (full width) -->
+        <div class="test-card-full">
+          <h4>hero-brand-card.html:</h4>
+          {% include components/cards/hero-brand-card.html brand=brand %}
+        </div>
+        
+        <!-- Direct Image Helper Tests -->
+        <div class="test-helpers">
+          <h4>Direct brand-image.html helper tests:</h4>
+          <div class="test-images">
+            <div>
+              <p>Hero:</p>
+              {% include helpers/brand-image.html brand_id=brand.ref image_type="hero" %}
+            </div>
+            <div>
+              <p>Logo:</p>
+              {% include helpers/brand-image.html brand_id=brand.ref image_type="logo" %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </section>
+
+  <!-- Test 2: Founder Cards -->
+  <section class="test-section">
+    <h2>2. Founder Cards Testing</h2>
+    <p>Testing: founder-card.html, featured-founder-card.html (FIXED to use collection-image)</p>
+    
+    {% assign test_founders = site.founders | where: "lang", "en" | where: "generate_json", true %}
+    {% for founder in test_founders limit:2 %}
+      <div class="test-item">
+        <h3>{{ founder.name }} ({{ founder.ref }})</h3>
+        
+        <div class="test-grid">
+          <!-- Standard Founder Card -->
+          <div class="test-card">
+            <h4>founder-card.html:</h4>
+            {% include components/cards/founder-card.html founder=founder %}
+          </div>
+          
+          <!-- Featured Founder Card -->
+          <div class="test-card">
+            <h4>featured-founder-card.html:</h4>
+            {% include components/cards/featured-founder-card.html founder=founder %}
+          </div>
+        </div>
+        
+        <!-- Direct Image Helper Tests -->
+        <div class="test-helpers">
+          <h4>Direct collection-image.html tests:</h4>
+          <div class="test-images">
+            {% if founder.images.portrait %}
+            <div>
+              <p>Portrait ({{ founder.images.portrait.name }}):</p>
+              {% include components/images/collection-image.html
+                 collection="founders"
+                 slug=founder.ref
+                 purpose="portrait"
+                 name=founder.images.portrait.name
+                 alt=founder.images.portrait.alt %}
+            </div>
+            {% endif %}
+            {% if founder.images.headshot %}
+            <div>
+              <p>Headshot ({{ founder.images.headshot.name }}):</p>
+              {% include components/images/collection-image.html
+                 collection="founders"
+                 slug=founder.ref
+                 purpose="headshot"
+                 name=founder.images.headshot.name
+                 alt=founder.images.headshot.alt %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </section>
+
+  <!-- Test 3: Insight Cards -->
+  <section class="test-section">
+    <h2>3. Insight Cards Testing</h2>
+    <p>Testing: insight-card.html, simple-insight-card.html, tagged-insight-card.html (ALL FIXED)</p>
+    
+    {% assign test_insights = site.insights | where: "lang", "en" %}
+    {% for insight in test_insights limit:2 %}
+      <div class="test-item">
+        <h3>{{ insight.title }}</h3>
+        <p>ref: {{ insight.ref }} | category: {{ insight.category }}</p>
+        
+        <div class="test-grid">
+          <!-- Standard Insight Card -->
+          <div class="test-card">
+            <h4>insight-card.html:</h4>
+            {% include components/cards/insight-card.html insight=insight %}
+          </div>
+          
+          <!-- Simple Insight Card -->
+          <div class="test-card">
+            <h4>simple-insight-card.html:</h4>
+            {% include components/cards/simple-insight-card.html insight=insight %}
+          </div>
+          
+          <!-- Tagged Insight Card -->
+          <div class="test-card">
+            <h4>tagged-insight-card.html:</h4>
+            {% include components/cards/tagged-insight-card.html insight=insight %}
+          </div>
+        </div>
+        
+        <!-- Direct Image Test -->
+        <div class="test-helpers">
+          <h4>Direct collection-image.html test:</h4>
+          {% if insight.images.hero %}
+          <div class="test-images">
+            <div>
+              <p>Hero ({{ insight.images.hero.name }}):</p>
+              {% include components/images/collection-image.html
+                 collection="insights"
+                 slug=insight.ref
+                 purpose="hero"
+                 name=insight.images.hero.name
+                 alt=insight.images.hero.alt %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </section>
+
+  <!-- Test 4: Other Cards -->
+  <section class="test-section">
+    <h2>4. Other Cards Testing</h2>
+    
+    <!-- Author Card -->
+    {% assign test_author = site.data.authors.randal_eastman %}
+    {% if test_author %}
+    <div class="test-item">
+      <h3>Author Card</h3>
+      <div class="test-card">
+        <h4>author-card.html:</h4>
+        {% include components/cards/author-card.html author=test_author lang="en" %}
+      </div>
+    </div>
+    {% endif %}
+    
+    <!-- Team Member Card -->
+    {% assign test_member = site.data.team.randal_eastman %}
+    {% if test_member %}
+    <div class="test-item">
+      <h3>Team Member Card</h3>
+      <div class="test-card">
+        <h4>team-member-card.html:</h4>
+        {% include components/cards/team-member-card.html member=test_member lang="en" %}
+      </div>
+    </div>
+    {% endif %}
+  </section>
+
+  <!-- Validation Checklist -->
+  <section class="test-section">
+    <h2>Validation Checklist</h2>
+    <p>For each card above, verify:</p>
+    <ul>
+      <li>✓ Images display correctly (no broken images)</li>
+      <li>✓ Responsive variants load (check Network tab)</li>
+      <li>✓ Alt text appears (inspect element)</li>
+      <li>✓ Cards render with proper layout</li>
+      <li>✓ No console errors</li>
+    </ul>
+    
+    <div class="alert alert-info">
+      <strong>Note:</strong> This test uses CURRENT file names. Once verified, we can proceed with Phase 3 (file standardization).
+    </div>
+  </section>
+</div>
+
+<style>
+.test-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+}
+
+.test-section h2 {
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.test-item {
+  background: white;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}
+
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.test-card {
+  border: 1px dashed #6c757d;
+  padding: 1rem;
+  background: #f8f9fa;
+}
+
+.test-card h4 {
+  margin: 0 0 1rem 0;
+  color: #6c757d;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.test-card-full {
+  margin: 2rem 0;
+  border: 1px dashed #6c757d;
+  padding: 1rem;
+  background: #f8f9fa;
+}
+
+.test-helpers {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.test-images {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.test-images > div {
+  text-align: center;
+}
+
+.test-images img {
+  max-width: 200px;
+  height: auto;
+  border: 1px solid #dee2e6;
+}
+
+.alert {
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+</style>

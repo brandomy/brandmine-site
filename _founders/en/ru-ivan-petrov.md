@@ -34,11 +34,13 @@ languages: ["ru", "en"]  # Languages they speak (ISO 639-1 codes)
 portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "portrait"     # Becomes founder-portrait-400w.jpg
+    name: "working"     # Becomes portrait-working-400w.jpg
     ext: "jpg"
+    alt: "Ivan Petrov working with bees in Siberian apiary, wearing protective gear and checking honeycomb frames"
   headshot:
-    name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
+    name: "outdoor"     # Becomes headshot-outdoor-400w.jpg
     ext: "jpg"
+    alt: "Ivan Petrov outdoors in natural Siberian setting, confident expression with forest backdrop"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "ivan_petrov_honey"  # Username only

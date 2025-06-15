@@ -86,14 +86,17 @@ NOTES: Expertise tag limits and bio truncation configurable via component defaul
   <div class="founder-card__portrait-section">
     <div class="founder-card__portrait founder-card__portrait--headshot">
       {% if founder.images.headshot %}
-        {% assign image_base = founder.ref %}
-        <img src="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg"
-             srcset="{{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-400w.jpg 400w,
-                     {{ site.baseurl }}/assets/images/founders/{{ image_base }}/headshot-800w.jpg 800w"
-             sizes="(max-width: 480px) 100px, 150px"
-             alt="{{ founder.name }}"
-             class="founder-card__portrait-img"
-             loading="lazy">
+        {% comment %} Updated to use collection-image for consistency {% endcomment %}
+        {% include components/images/collection-image.html
+           collection="founders"
+           slug=founder.ref
+           purpose="headshot"
+           name=founder.images.headshot.name
+           ext=founder.images.headshot.ext
+           alt=founder.images.headshot.alt
+           class="founder-card__portrait-img"
+           sizes="(max-width: 480px) 100px, 150px"
+           loading="lazy" %}
       {% else %}
         <div class="founder-card__portrait-placeholder">
           <span class="founder-card__portrait-initials">

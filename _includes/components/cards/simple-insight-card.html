@@ -32,7 +32,19 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation
 <article class="insight-card insight-card--{{ include.insight.category }}">
   <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
     <div class="insight-card__image">
-      {% if include.insight.hero_image %}
+      {% if include.insight.images.hero %}
+        {% comment %} Updated to use collection-image for consistency {% endcomment %}
+        {% include components/images/collection-image.html
+           collection="insights"
+           slug=include.insight.ref
+           purpose="hero"
+           name=include.insight.images.hero.name
+           ext=include.insight.images.hero.ext
+           alt=include.insight.images.hero.alt
+           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+           loading="lazy" %}
+      {% elsif include.insight.hero_image %}
+        {% comment %} Legacy support for old hero_image format {% endcomment %}
         {% assign base_path = include.insight.hero_image | split: "." %}
         {% assign base_name = base_path[0] %}
         {% assign extension = base_path[1] | default: "jpg" %}

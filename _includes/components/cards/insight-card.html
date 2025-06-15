@@ -37,16 +37,20 @@ WEEK 3 ENHANCEMENTS:
          data-category="{{ include.insight.category }}"
          role="article">
 
-  {% comment %} Category-specific hero image with overlay {% endcomment %}
-  {% if include.insight.images.hero.name %}
+  {% comment %} Category-specific hero image with overlay - Updated to use collection-image {% endcomment %}
+  {% if include.insight.images.hero %}
     <div class="insight-card__hero">
-      {% assign image_base = '/assets/images/insights/' | append: include.insight.images.hero.name %}
-      {% assign image_extension = include.insight.images.hero.ext | default: 'jpg' %}
-      <img src="{{ image_base | append: '.' | append: image_extension | relative_url }}" 
-           alt="{{ include.insight.images.hero.alt | default: include.insight.title }}" 
-           class="insight-card__hero-image"
-           loading="lazy">
+      {% include components/images/collection-image.html
+         collection="insights"
+         slug=include.insight.ref
+         purpose="hero"
+         name=include.insight.images.hero.name
+         ext=include.insight.images.hero.ext
+         alt=include.insight.images.hero.alt
+         class="insight-card__hero-image"
+         loading="lazy" %}
   {% elsif include.insight.hero_image %}
+    {% comment %} Legacy support for old hero_image format {% endcomment %}
     <div class="insight-card__hero">
       {% assign base_path = include.insight.hero_image | split: "." %}
       {% assign base_name = base_path[0] %}

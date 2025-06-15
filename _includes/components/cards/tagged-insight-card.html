@@ -34,16 +34,17 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
   <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
     <div class="insight-card__image">
       {% if include.insight.images.hero %}
-        {% comment %} Build the image path based on semantic structure {% endcomment %}
-        {% capture image_path %}/assets/images/insights/{{ include.insight.ref }}/hero-{{ include.insight.images.hero.name }}{% endcapture %}
-        
-        <img src="{{ image_path | relative_url }}-400w.{{ include.insight.images.hero.ext | default: 'jpg' }}"
-             srcset="{{ image_path | relative_url }}-400w.{{ include.insight.images.hero.ext | default: 'jpg' }} 400w,
-                     {{ image_path | relative_url }}-800w.{{ include.insight.images.hero.ext | default: 'jpg' }} 800w,
-                     {{ image_path | relative_url }}-1200w.{{ include.insight.images.hero.ext | default: 'jpg' }} 1200w"
-             sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
-             alt="{{ include.insight.images.hero.alt | default: include.insight.title }}"
-             loading="lazy">
+        {% comment %} Updated to use collection-image for consistency {% endcomment %}
+        {% include components/images/collection-image.html
+           collection="insights"
+           slug=include.insight.ref
+           purpose="hero"
+           name=include.insight.images.hero.name
+           ext=include.insight.images.hero.ext
+           alt=include.insight.images.hero.alt
+           class="insight-card__image-img"
+           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+           loading="lazy" %}
       {% else %}
         <div class="insight-card__image-placeholder">
           <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
