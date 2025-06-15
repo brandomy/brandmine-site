@@ -2,6 +2,16 @@
 
 **Find what you need in 30 seconds or less**
 
+## 🎯 Quick Navigation
+
+### For Content Creators (Randal & Olya)
+👉 **[Content Creators Hub](content-creators-hub.md)** - Everything you need for daily content creation
+
+### For Developers
+👉 **[Developer Hub](developer-hub.md)** - Technical documentation and workflows
+
+---
+
 This navigation hub helps you quickly locate the right documentation for your task. All documentation follows our core principles: minimal, practical, and task-focused.
 
 ---
@@ -17,7 +27,7 @@ These four documents contain 90% of what you need for daily development:
 - Initial project setup
 - Development tools
 
-### 2. [Daily Workflows](daily-workflows.md)
+### 2. [Developer Daily Workflows](developer-daily-workflows.md)
 **Find common tasks in 20 seconds**
 - Content creation workflows
 - Image processing
@@ -63,7 +73,7 @@ Additional guides for specific aspects of the project:
 Detailed tutorials for content creation are maintained separately in `_templates/tutorials/`:
 
 ### Content Creation Tutorials
-Located in `_templates/tutorials/content-creation/`:
+Located in `_docs/`:
 - **Brand Profile Tutorial** - Complete guide to adding new brands
 - **Founder Profile Tutorial** - Creating founder profiles with quotes
 - **Insight Article Tutorial** - Writing and categorizing insights
@@ -103,7 +113,7 @@ _scripts/core/pre-commit_check.sh
 
 ## 📏 Documentation Rules
 
-Per [DOCUMENTATION_GOVERNANCE.md](DOCUMENTATION_GOVERNANCE.md):
+Per [documentation-governance.md](documentation-governance.md):
 - Maximum 4 core documents (foundation)
 - 30-second information discovery
 - Task-focused, not theory-focused
