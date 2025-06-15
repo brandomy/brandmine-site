@@ -11,7 +11,7 @@ permalink: /en/insights/ru-siberian-honey-corridor/
 date: 2025-03-10  # Publication date
 author: "olya_eastman"  # Key for translation lookup
 excerpt: "How the pristine forests of Southern Siberia are becoming the epicenter of Russia's premium honey industry, attracting international attention."
-category: "location_intelligence"  # Must match insights/en.yml
+category: "location-intelligence"  # Must match insights/en.yml
 reading_time: 6
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:

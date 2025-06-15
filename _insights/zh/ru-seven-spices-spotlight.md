@@ -11,7 +11,7 @@ permalink: /zh/insights/ru-seven-spices-spotlight/
 date: 2025-01-15  # Publication date
 author: "randal_eastman"  # Key for translation lookup
 excerpt: "七香料正在将传统俄罗斯香料混合物重新引入现代烹饪，结合传统配方与现代生产工艺，为全球市场提供出口产品。"
-category: "brand_spotlight"  # Must match insights/en.yml
+category: "brand-spotlight"  # Must match insights/en.yml
 reading_time: 7
 
 # Brand Information

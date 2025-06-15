@@ -11,7 +11,7 @@ permalink: /ru/insights/ru-siberian-honey-corridor/
 date: 2025-03-10  # Publication date
 author: "olya_eastman"  # Key for translation lookup
 excerpt: "Как нетронутые леса Южной Сибири становятся эпицентром премиальной медовой индустрии России, привлекая международное внимание."
-category: "location_intelligence"  # Must match insights/en.yml
+category: "location-intelligence"  # Must match insights/en.yml
 reading_time: 6
 
 # Brand Information

@@ -11,7 +11,7 @@ permalink: /ru/insights/ru-russian-wine-renaissance/
 date: 2025-04-01  # Publication date
 author: "randal_eastman"  # Key for translation lookup
 excerpt: "Российская винодельческая отрасль переживает беспрецедентный рост: увеличение отечественного производства вдвое и растущее международное признание."
-category: "market_momentum"  # Must match insights/en.yml
+category: "market-momentum"  # Must match insights/en.yml
 reading_time: 7
 
 # Brand Information
