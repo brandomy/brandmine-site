@@ -36,17 +36,17 @@ premium: false
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "hero-russian-vineyards"
+    name: "krasnodar-vineyard"
     alt: "俄罗斯克拉斯诺达尔地区的葡萄园，展示现代葡萄栽培技术"
     ext: "jpg"
   founder_portrait:
-    name: "founder-portrait-anna-kuznetsova"
+    name: "anna-kuznetsova"
     alt: "克拉斯诺达尔葡萄酒创始人安娜·库兹涅佐娃"
     ext: "jpg"
   logo:
-    name: "logo-russian-wine"
+    name: "russian-wine"
     alt: "俄罗斯葡萄酒标志"
-    ext: "jpg"
+    ext: "png"
 
 # Location (flat structure for easier data handling)
 location_lng: 37.2986  # Longitude coordinate (Krasnodar region)

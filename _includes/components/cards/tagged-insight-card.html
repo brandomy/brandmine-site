@@ -33,17 +33,16 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
 <article class="insight-card insight-card--{{ include.insight.category }} insight-card--tagged">
   <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
     <div class="insight-card__image">
-      {% if include.insight.hero_image %}
-        {% assign base_path = include.insight.hero_image | split: "." %}
-        {% assign base_name = base_path[0] %}
-        {% assign extension = base_path[1] | default: "jpg" %}
-
-        <img src="{{ base_name | relative_url }}-400w.{{ extension }}"
-             srcset="{{ base_name | relative_url }}-400w.{{ extension }} 400w,
-                     {{ base_name | relative_url }}-800w.{{ extension }} 800w,
-                     {{ base_name | relative_url }}-1200w.{{ extension }} 1200w"
+      {% if include.insight.images.hero %}
+        {% comment %} Build the image path based on semantic structure {% endcomment %}
+        {% capture image_path %}/assets/images/insights/{{ include.insight.ref }}/hero-{{ include.insight.images.hero.name }}{% endcapture %}
+        
+        <img src="{{ image_path | relative_url }}-400w.{{ include.insight.images.hero.ext | default: 'jpg' }}"
+             srcset="{{ image_path | relative_url }}-400w.{{ include.insight.images.hero.ext | default: 'jpg' }} 400w,
+                     {{ image_path | relative_url }}-800w.{{ include.insight.images.hero.ext | default: 'jpg' }} 800w,
+                     {{ image_path | relative_url }}-1200w.{{ include.insight.images.hero.ext | default: 'jpg' }} 1200w"
              sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
-             alt="{{ include.insight.title }}"
+             alt="{{ include.insight.images.hero.alt | default: include.insight.title }}"
              loading="lazy">
       {% else %}
         <div class="insight-card__image-placeholder">
@@ -57,7 +56,9 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
 
       {% if include.insight.category %}
         <span class="insight-card__category-badge">
-          {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="insight-card__category-icon" %}
+          {% comment %} Convert underscores to hyphens for icon filename {% endcomment %}
+          {% assign icon_name = include.insight.category | replace: "_", "-" %}
+          {% include components/icons/icon.html system="insights" name=icon_name size="sm" class="insight-card__category-icon" %}
           {% assign normalized_category = include.insight.category | replace: "-", "_" %}
           {% assign category_key = "insights." | append: normalized_category %}
           {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
@@ -80,33 +81,33 @@ NOTES: Tag limits and excerpt truncation configurable via component defaults. Ta
       <div class="insight-card__tags">
         {% if include.insight.markets %}
           {% for market in include.insight.markets limit:1 %}
-            <span class="insight-card__tag insight-card__tag--market">
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/markets/{{ market }}/" class="insight-card__tag insight-card__tag--market">
               {% include helpers/dimension-name.html type="markets" id=market %}
-            </span>
+            </a>
           {% endfor %}
         {% endif %}
 
         {% if include.insight.sectors %}
           {% for sector in include.insight.sectors limit:1 %}
-            <span class="insight-card__tag insight-card__tag--sector">
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/sectors/{{ sector }}/" class="insight-card__tag insight-card__tag--sector">
               {% include helpers/dimension-name.html type="sectors" id=sector %}
-            </span>
+            </a>
           {% endfor %}
         {% endif %}
 
         {% if include.insight.attributes %}
           {% for attribute in include.insight.attributes limit:1 %}
-            <span class="insight-card__tag insight-card__tag--attribute">
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/attributes/{{ attribute }}/" class="insight-card__tag insight-card__tag--attribute">
               {% include helpers/dimension-name.html type="attributes" id=attribute %}
-            </span>
+            </a>
           {% endfor %}
         {% endif %}
 
         {% if include.insight.signals %}
           {% for signal in include.insight.signals limit:1 %}
-            <span class="insight-card__tag insight-card__tag--signal">
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/signals/{{ signal }}/" class="insight-card__tag insight-card__tag--signal">
               {% include helpers/dimension-name.html type="signals" id=signal %}
-            </span>
+            </a>
           {% endfor %}
         {% endif %}
       </div>

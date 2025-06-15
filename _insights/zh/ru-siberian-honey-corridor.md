@@ -36,17 +36,17 @@ premium: false
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "hero-siberian-apiaries"
+    name: "siberian-honey"
     alt: "原始森林环境中的西伯利亚养蜂场"
     ext: "jpg"
   founder_portrait:
-    name: "founder-portrait-ivan-petrov"
+    name: "ivan-petrov"
     alt: "西伯利亚地区蜂蜜生产者伊万·彼得罗夫"
     ext: "jpg"
   logo:
-    name: "logo-siberian-honey"
+    name: "siberian-honey"
     alt: "西伯利亚蜂蜜标志"
-    ext: "jpg"
+    ext: "png"
 
 # Location (flat structure for easier data handling)
 location_lng: 85.6000  # Longitude coordinate (Altai region)

@@ -16,17 +16,17 @@ reading_time: 6
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "hero-siberian-apiaries"
+    name: "siberian-honey"
     alt: "Siberian apiaries in pristine forest setting"
     ext: "jpg"
   founder_portrait:
-    name: "founder-portrait-ivan-petrov"
+    name: "ivan-petrov"
     alt: "Ivan Petrov, honey producer in Siberian region"
     ext: "jpg"
   logo:
-    name: "logo-siberian-honey"
+    name: "siberian-honey"
     alt: "Siberian honey logo"
-    ext: "jpg"
+    ext: "png"
 
 # Brand Information
 brands: [ru-siberian-gold, ru-altai-honey]  # Featured brand(s) with market prefix

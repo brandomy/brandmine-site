@@ -40,7 +40,7 @@ images:
     alt: "繁忙的莫斯科香料市场，色彩斑斓的传统俄罗斯香料展示，七香料品牌产品在市场摊位中显著展示"
     ext: "jpg"
   founder_portrait:
-    name: "maria-portrait"
+    name: "maria-kuznetsova"
     alt: "七香料创始人玛丽亚·库兹涅佐娃，身着传统俄罗斯服装，手持标志性香料混合物，表情自信"
     ext: "jpg"
   logo:

@@ -16,17 +16,17 @@ reading_time: 7
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "hero-russian-vineyards"
+    name: "krasnodar-vineyard"
     alt: "Russian vineyards in Krasnodar region showing modern viticulture techniques"
     ext: "jpg"
   founder_portrait:
-    name: "founder-portrait-anna-kuznetsova"
+    name: "anna-kuznetsova"
     alt: "Anna Kuznetsova, founder of Krasnodar Wines"
     ext: "jpg"
   logo:
-    name: "logo-russian-wine"
+    name: "russian-wine"
     alt: "Russian wine logo"
-    ext: "jpg"
+    ext: "png"
 
 # Brand Information
 brands: [ru-krasnodar-wines]  # Exact slugs only

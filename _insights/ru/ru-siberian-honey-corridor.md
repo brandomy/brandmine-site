@@ -43,17 +43,17 @@ location_country: "ru"  # ISO country code
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "hero-siberian-apiaries"
+    name: "siberian-honey"
     alt: "Сибирские пасеки в нетронутой лесной обстановке"
     ext: "jpg"
   founder_portrait:
-    name: "founder-portrait-ivan-petrov"
+    name: "ivan-petrov"
     alt: "Иван Петров, производитель мёда в сибирском регионе"
     ext: "jpg"
   logo:
-    name: "logo-siberian-honey"
+    name: "siberian-honey"
     alt: "Логотип сибирского мёда"
-    ext: "jpg"
+    ext: "png"
 ---
 
 ## Географическое преимущество: естественная органическая зона
