@@ -16,7 +16,7 @@ cards:
     show_sector: true
     tag_limit: 4
 
-# _data/page_sections.yml  
+# _data/page_sections.yml
 brands:
   sections: ["hero", "impact", "content", "contact-cta"]
   hero:
@@ -42,7 +42,7 @@ brands:
 **NO SIDEBARS** - All layouts use simple section flow:
 
 ```html
-<section class="brands-section brands-section--hero" 
+<section class="brands-section brands-section--hero"
          id="brands-section-hero"
          aria-labelledby="heading-hero">
   <div class="panel panel--hero">
@@ -58,7 +58,7 @@ brands:
 ### Core Architecture
 ```
 _includes/pages/[page]/[section].html    # Page sections
-_layouts/[page-type].html                # Page templates  
+_layouts/[page-type].html                # Page templates
 _data/page_sections.yml                  # Section configuration
 _data/component_defaults.yml             # Component defaults
 _data/translations/[lang].yml            # UI text
@@ -67,7 +67,7 @@ _data/translations/[lang].yml            # UI text
 ### Content Collections
 ```
 _brands/[lang]/[country]-[brand].md      # Brand profiles
-_founders/[lang]/[founder-id].md         # Founder profiles  
+_founders/[lang]/[founder-id].md         # Founder profiles
 _dimensions/[lang]/[type]/[slug].md      # Taxonomy definitions
 _insights/[lang]/[article-slug].md       # Blog articles
 ```
@@ -86,7 +86,7 @@ assets/css/pages/[page]/                 # Page-specific styles
 
 **Unified responsive images:**
 ```liquid
-{% include components/images/brand-image.html 
+{% include components/images/brand-image.html
    country="ru" brand="teatime" purpose="hero" image="storefront"
    alt="TeaTime storefront" %}
 ```
@@ -105,7 +105,7 @@ assets/css/pages/[page]/                 # Page-specific styles
 
 **Configurable cards:**
 ```liquid
-{% include components/cards/brand-card.html 
+{% include components/cards/brand-card.html
    brand=brand show_location=true show_sector=false %}
 ```
 
@@ -162,7 +162,7 @@ brands:
 ```
 
 **Navigation cache** (eliminates translation lookups):
-```python  
+```python
 # _scripts/utilities/generate-navigation-cache.py
 # Generates _data/navigation_cache.json with pre-rendered navigation HTML
 ```
@@ -178,7 +178,7 @@ brands:
 // Block
 .brand-card { }
 
-// Element  
+// Element
 .brand-card__title { }
 .brand-card__meta { }
 
@@ -186,6 +186,17 @@ brands:
 .brand-card--featured { }
 .brand-card--compact { }
 ```
+## Build Performance Guidelines
+
+### File Placement Rules
+- **Audit reports**: Place in `_docs/reports/` (excluded from processing)
+- **Large documentation**: Keep in `_docs/` to avoid Jekyll processing
+- **Development artifacts**: Remove from `assets/` and content directories
+
+### Performance Targets
+- **Development builds**: <25 seconds
+- **Production builds**: <25 seconds
+- **Clean rebuilds**: <30 seconds
 
 ### Component Organization
 ```
@@ -194,7 +205,7 @@ assets/css/
 ├── base/            # Reset, typography, base elements
 ├── layout/          # Header, footer, panels, grid
 ├── components/      # Reusable UI components
-├── collections/     # Collection-specific styles  
+├── collections/     # Collection-specific styles
 ├── pages/           # Page-specific styles
 └── manifest/        # Import files (@import statements)
 ```
@@ -224,7 +235,7 @@ assets/css/
 python3 _scripts/data-generation/generate-all-json.py
 
 # Creates:
-# _data/brands.json     - All brand data with metadata  
+# _data/brands.json     - All brand data with metadata
 # _data/founders.json   - All founder profiles
 # _data/insights.json   - All insight articles
 ```
@@ -235,7 +246,7 @@ python3 _scripts/data-generation/generate-all-json.py
 _scripts/validation/check_language_consistency.sh
 
 # YAML validation
-_scripts/validation/validate_yaml.sh  
+_scripts/validation/validate_yaml.sh
 
 # Translation key checking
 _scripts/validation/find_translation_keys.py
@@ -247,7 +258,7 @@ _scripts/validation/find_translation_keys.py
 ```yaml
 dimensions:
   markets: ["russia", "china", "brazil", "india"]      # Geographic focus
-  sectors: ["wine", "natural-beauty", "gourmet-foods"] # Industry categories  
+  sectors: ["wine", "natural-beauty", "gourmet-foods"] # Industry categories
   attributes: ["founder-led", "heritage-brand"]        # Brand qualities
   signals: ["export-ready", "rapid-growth"]            # Growth indicators
 ```
@@ -257,7 +268,7 @@ dimensions:
 # _dimensions/en/markets/russia.md
 ---
 name: "Russia"
-slug: "russia"  
+slug: "russia"
 type: "market"
 description: "Vast market with rich cultural traditions"
 ---
@@ -270,7 +281,7 @@ Content about Russian market dynamics...
 # _brands/en/ru-teatime.md
 ---
 title: "TeaTime"
-sectors: ["artisanal-spirits"] 
+sectors: ["artisanal-spirits"]
 markets: ["russia"]
 attributes: ["founder-led", "heritage-brand"]
 signals: ["export-ready"]
@@ -289,14 +300,14 @@ signals: ["export-ready"]
 ---
 layout: brand-profile    # Required: layout type
 title: "Brand Name"      # Required: display name
-slug: "brand-slug"       # Required: URL identifier  
+slug: "brand-slug"       # Required: URL identifier
 lang: en                 # Required: language code
 country_code: "ru"       # Required: ISO country code
 permalink: /en/brands/ru-brand/  # Required: full URL path
 
 # Taxonomy (use existing dimension slugs only)
 sectors: ["wine"]
-markets: ["russia"] 
+markets: ["russia"]
 attributes: ["founder-led"]
 signals: ["export-ready"]
 
@@ -309,15 +320,15 @@ featured: false          # Homepage feature flag
 ### Include Parameters
 ```liquid
 {% comment %} Always provide required parameters {% endcomment %}
-{% include components/cards/brand-card.html 
+{% include components/cards/brand-card.html
    brand=brand                    # Required: brand object
    show_location=true            # Optional: override default
    class="featured-brand"        # Optional: additional CSS %}
 
 {% comment %} Use meaningful parameter names {% endcomment %}
-{% include components/images/brand-image.html 
+{% include components/images/brand-image.html
    country="ru"                  # Required: country code
-   brand="teatime"              # Required: brand slug  
+   brand="teatime"              # Required: brand slug
    purpose="hero"               # Required: image purpose
    image="storefront"           # Required: image name
    alt="TeaTime storefront" %}  # Required: accessibility text

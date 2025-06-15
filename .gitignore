@@ -8,21 +8,34 @@ vendor/
 # macOS system files
 .DS_Store
 **/.DS_Store
-.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
 
+# Windows system files
+Thumbs.db
+Desktop.ini
+
 # Project specific
 _archive/       # Archived content typically shouldn't be version controlled
 _exports/      # Temporary export files for external systems (Airtable)
 **/.claude/settings.local.json
 
+# Audit reports (keep in _docs/reports/ instead)
+*AUDIT*.md
+*STANDARDS*.md
+*NAMING*.md
+*COMPLIANCE*.md
+*REPORT*.md
+
 # Editor files
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
 # Python cache (if using Python scripts)
 __pycache__/
@@ -53,8 +66,12 @@ gitstatus.txt
 .env.test.local
 .env.production.local
 
-# Vim swap files (very minor addition)
-*.swp
-*.swo
-*~
-.DS_Store
+# Development artifacts
+week*.scss
+temp*.scss
+test*.scss
+debug*.scss
+
+# Image processing temp files
+**/originals/.processing/
+**/*-temp.*
