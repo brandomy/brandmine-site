@@ -51,7 +51,7 @@ images:
     alt: "Иван Петров, производитель мёда в сибирском регионе"
     ext: "jpg"
   logo:
-    name: "siberian-honey"
+    name: "brand"
     alt: "Логотип сибирского мёда"
     ext: "png"
 ---

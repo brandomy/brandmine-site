@@ -47,7 +47,7 @@ images:
     ext: "jpg"
     alt: "TeaTime's flagship tearoom in Moscow's historic Arbat district with large windows showcasing traditional Russian tea service setup and warm ambient lighting"
   founder:
-    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    name: "formal"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
     alt: "Alexei Sokolov, founder of TeaTime, preparing traditional Russian tea ceremony with antique brass samovar in elegant tearoom setting"
 

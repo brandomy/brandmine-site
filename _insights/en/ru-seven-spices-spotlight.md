@@ -25,7 +25,7 @@ images:
     alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress holding signature spice blend with confident expression"
     ext: "jpg"
   logo:
-    name: "seven-spices"
+    name: "brand"
     alt: "Seven Spices brand logo"
     ext: "png"
 

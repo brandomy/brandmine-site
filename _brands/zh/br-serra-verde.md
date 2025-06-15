@@ -34,10 +34,10 @@ images:
     name: "color"
     ext: "png"
   hero:
-    name: "farmland"
+    name: "farm-view"
     ext: "jpg"
   founder:
-    name: "portrait"
+    name: "working"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

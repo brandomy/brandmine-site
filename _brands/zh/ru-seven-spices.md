@@ -43,11 +43,11 @@ images:
     ext: "png"
     alt: "Seven Spices标志，配有传统俄式香料混合物符号、西里尔文字和温暖的大地色调"
   hero:
-    name: "workshop"  # Becomes hero-workshop-400w.jpg
+    name: "market"  # Becomes hero-workshop-400w.jpg
     ext: "jpg"
     alt: "繁忙的莫斯科香料市场，展示传统俄式香料的多彩陈列，Seven Spices品牌产品在市场摊位中显眼展示"
   founder:
-    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    name: "traditional"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
     alt: "Seven Spices创始人玛丽亚·库兹涅佐娃身着传统俄式服装，在被古老配方书籍环绕的工作室中仔细调配芳香香料"
 

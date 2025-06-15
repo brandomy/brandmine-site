@@ -26,7 +26,6 @@ languages: ["ru", "en", "zh"]
 images:
   portrait: { name: "formal", ext: "jpg" }
   headshot: { name: "business", ext: "jpg" }
-  action: { name: "action", ext: "jpg" }
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "teatime_russia"

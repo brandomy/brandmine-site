@@ -36,7 +36,7 @@ premium: false
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
-    name: "ceremony"
+    name: "storefront"
     alt: "阿列克谢·索科洛夫在位于莫斯科阿尔巴特区的TeaTime旗舰茶室中，用黄铜茶炙演示传统俄罗斯茶道"
     ext: "jpg"
   founder:
@@ -44,7 +44,7 @@ images:
     alt: "TeaTime创始人阿列克谢·索科洛夫，身着传统俄罗斯背心，在优雅的茶室中用古董茶炙准备茶道"
     ext: "jpg"
   logo:
-    name: "teatime"
+    name: "brand"
     alt: "Teatime logo"
     ext: "png"
 

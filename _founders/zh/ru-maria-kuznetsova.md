@@ -26,7 +26,6 @@ languages: ["ru", "en", "zh"]
 images:
   portrait: { name: "traditional", ext: "jpg" }
   headshot: { name: "professional", ext: "jpg" }
-  action: { name: "action", ext: "jpg" }
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "7spices_russia"

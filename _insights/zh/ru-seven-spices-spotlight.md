@@ -44,7 +44,7 @@ images:
     alt: "七香料创始人玛丽亚·库兹涅佐娃，身着传统俄罗斯服装，手持标志性香料混合物，表情自信"
     ext: "jpg"
   logo:
-    name: "seven-spices"
+    name: "brand"
     alt: "七香料品牌标志"
     ext: "png"
 

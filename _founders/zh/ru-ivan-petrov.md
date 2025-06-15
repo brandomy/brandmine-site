@@ -26,7 +26,6 @@ languages: ["ru", "zh", "en"]
 images:
   portrait: { name: "working", ext: "jpg" }
   headshot: { name: "outdoor", ext: "jpg" }
-  action: { name: "action", ext: "jpg" }
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "ivan_petrov_honey"

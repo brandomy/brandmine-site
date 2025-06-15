@@ -42,7 +42,7 @@ images:
     name: "distillery"   # Becomes hero-bottles-400w.jpg
     ext: "jpg"
   founder:
-    name: "portrait"    # Becomes founder-portrait-400w.jpg
+    name: "working"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
     
 # === SOCIAL MEDIA (FLATTENED) ===

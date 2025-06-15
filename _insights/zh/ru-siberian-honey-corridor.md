@@ -44,7 +44,7 @@ images:
     alt: "西伯利亚地区蜂蜜生产者伊万·彼得罗夫"
     ext: "jpg"
   logo:
-    name: "siberian-honey"
+    name: "brand"
     alt: "西伯利亚蜂蜜标志"
     ext: "png"
 

@@ -39,10 +39,10 @@ images:
     name: "color"
     ext: "png"
   hero:
-    name: "lobby"
+    name: "paraty-view"
     ext: "jpg"
   founder:
-    name: "portrait"
+    name: "business"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

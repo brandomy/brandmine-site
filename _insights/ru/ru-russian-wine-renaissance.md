@@ -51,7 +51,7 @@ images:
     alt: "Анна Кузнецова, основательница Краснодар Вайнс"
     ext: "jpg"
   logo:
-    name: "russian-wine"
+    name: "brand"
     alt: "Логотип российского вина"
     ext: "png"
 ---

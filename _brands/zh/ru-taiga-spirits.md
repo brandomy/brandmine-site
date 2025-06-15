@@ -37,7 +37,7 @@ images:
     name: "distillery"
     ext: "jpg"
   founder:
-    name: "portrait"
+    name: "working"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

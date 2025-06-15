@@ -44,7 +44,7 @@ images:
     alt: "克拉斯诺达尔葡萄酒创始人安娜·库兹涅佐娃"
     ext: "jpg"
   logo:
-    name: "russian-wine"
+    name: "brand"
     alt: "俄罗斯葡萄酒标志"
     ext: "png"
 

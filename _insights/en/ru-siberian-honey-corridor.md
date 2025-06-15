@@ -24,7 +24,7 @@ images:
     alt: "Ivan Petrov, honey producer in Siberian region"
     ext: "jpg"
   logo:
-    name: "siberian-honey"
+    name: "brand"
     alt: "Siberian honey logo"
     ext: "png"
 

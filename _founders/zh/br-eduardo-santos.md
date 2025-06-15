@@ -24,9 +24,8 @@ cross_border_expertise: true
 languages: ["pt", "es", "zh"]
 
 images:
-  portrait: { name: "portrait", ext: "jpg" }
-  headshot: { name: "headshot", ext: "jpg" }
-  action: { name: "action", ext: "jpg" }
+  portrait: { name: "formal", ext: "jpg" }
+  headshot: { name: "business", ext: "jpg" }
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "serraverde_organics"

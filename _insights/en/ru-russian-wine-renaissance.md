@@ -24,7 +24,7 @@ images:
     alt: "Anna Kuznetsova, founder of Krasnodar Wines"
     ext: "jpg"
   logo:
-    name: "russian-wine"
+    name: "brand"
     alt: "Russian wine logo"
     ext: "png"
 
