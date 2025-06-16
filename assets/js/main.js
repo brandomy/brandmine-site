@@ -95,6 +95,19 @@
       }
     },
 
+    caseStudiesCarousel: {
+      selector: '.featured-case-studies-carousel',
+      init: () => {
+        if (typeof CaseStudiesCarousel === 'function') {
+          const carousels = document.querySelectorAll('.featured-case-studies-carousel');
+          carousels.forEach(carousel => {
+            new CaseStudiesCarousel(carousel);
+            console.log('[Main] Initialized case studies carousel');
+          });
+        }
+      }
+    },
+
     // Page-specific components
     brandsFiltering: {
       selector: 'body.brands-page',

@@ -363,7 +363,53 @@ case-studies:
 # =============================================================================
 
 carousels:
-  # Featured Case Studies Carousel
+  # Universal Carousel - Base configuration for all carousels
+  universal:
+    # Responsive breakpoints
+    cards_per_view_desktop: 3
+    cards_per_view_tablet: 2
+    cards_per_view_mobile: 1
+    
+    # Pagination settings
+    show_dots: true
+    show_arrows: true
+    auto_advance: false
+    
+    # CSS classes (BEM methodology)
+    container_class: "carousel"
+    item_class: "carousel__item"
+    dot_class: "carousel__dot"
+    arrow_class: "carousel__arrow"
+    
+    # Behavior settings
+    enable_touch: true
+    enable_keyboard: true
+    transition_duration: 300
+    gap: "1.5rem"
+
+  # Section-specific carousel configurations
+  case-studies:
+    cards_per_view_desktop: 3
+    cards_per_view_tablet: 2
+    cards_per_view_mobile: 1
+    show_arrows: true
+    show_dots: true
+    
+  featured-brands:
+    cards_per_view_desktop: 2
+    cards_per_view_tablet: 2
+    cards_per_view_mobile: 1
+    show_arrows: true
+    show_dots: true
+    
+  founder-stories:
+    cards_per_view_desktop: 3
+    cards_per_view_tablet: 2
+    cards_per_view_mobile: 1
+    show_arrows: true
+    show_dots: true
+
+  # Legacy - Featured Case Studies Carousel (for backwards compatibility)
   featured-case-studies-carousel:
     max_items: 4
     show_metrics: true

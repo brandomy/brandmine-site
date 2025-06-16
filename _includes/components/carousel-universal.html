@@ -1,0 +1,141 @@
+{% comment %}
+  Component: Universal Carousel
+  
+  Purpose: Reusable carousel component that reads configuration from component_defaults.yml
+           and calculates pagination dots based on responsive breakpoints
+  
+  Parameters:
+    items (required): Array of content items to display
+    component_type (required): String identifier for configuration lookup (e.g., "case-studies")
+    card_template (required): Path to card template include (e.g., "components/cards/case-study-card.html")
+    section_id (required): Unique identifier for this carousel instance
+    additional_classes (optional): Additional CSS classes for the container
+    
+  Dependencies:
+    - Configuration: _data/component_defaults.yml (carousels section)
+    - CSS: assets/css/components/carousel-universal.scss
+    - JavaScript: assets/js/components/carousel-universal.js
+    - Translation keys: carousel.* (for accessibility)
+    
+  Usage:
+    {% include components/carousel-universal.html 
+       items=case_studies 
+       component_type="case-studies"
+       card_template="components/cards/case-study-card.html"
+       section_id="homepage-case-studies" %}
+{% endcomment %}
+
+{% comment %} Validate required parameters {% endcomment %}
+{% unless include.items and include.component_type and include.card_template and include.section_id %}
+  {% assign error_msg = "carousel-universal.html: Missing required parameters. Need: items, component_type, card_template, section_id" %}
+  <!-- {{ error_msg }} -->
+  {% break %}
+{% endunless %}
+
+{% comment %} Get configuration with fallback to universal defaults {% endcomment %}
+{% assign config = site.data.component_defaults.carousels[include.component_type] %}
+{% unless config %}
+  {% assign config = site.data.component_defaults.carousels.universal %}
+{% endunless %}
+
+{% comment %} Merge with universal defaults for missing values {% endcomment %}
+{% assign universal_config = site.data.component_defaults.carousels.universal %}
+{% assign cards_per_view_desktop = config.cards_per_view_desktop | default: universal_config.cards_per_view_desktop %}
+{% assign cards_per_view_tablet = config.cards_per_view_tablet | default: universal_config.cards_per_view_tablet %}
+{% assign cards_per_view_mobile = config.cards_per_view_mobile | default: universal_config.cards_per_view_mobile %}
+{% assign show_dots = config.show_dots | default: universal_config.show_dots %}
+{% assign show_arrows = config.show_arrows | default: universal_config.show_arrows %}
+{% assign container_class = config.container_class | default: universal_config.container_class %}
+{% assign item_class = config.item_class | default: universal_config.item_class %}
+{% assign dot_class = config.dot_class | default: universal_config.dot_class %}
+{% assign arrow_class = config.arrow_class | default: universal_config.arrow_class %}
+
+{% comment %} Calculate pagination dots based on desktop breakpoint (primary) {% endcomment %}
+{% comment %} Fix for Liquid integer division: 4÷3=1, but we need ceil(4/3)=2 {% endcomment %}
+{% assign remainder = include.items.size | modulo: cards_per_view_desktop %}
+{% assign total_dots = include.items.size | divided_by: cards_per_view_desktop %}
+{% if remainder > 0 %}
+  {% assign total_dots = total_dots | plus: 1 %}
+{% endif %}
+{% assign min_dots = 1 %}
+{% assign total_dots = total_dots | at_least: min_dots %}
+
+{% comment %} Show pagination if we have more items than can fit in one view {% endcomment %}
+{% assign show_pagination = false %}
+{% if include.items.size > cards_per_view_desktop %}
+  {% assign show_pagination = true %}
+{% endif %}
+
+<div class="{{ container_class }} {{ container_class }}--{{ include.component_type }}{% if include.additional_classes %} {{ include.additional_classes }}{% endif %}"
+     id="{{ include.section_id }}"
+     data-cards-desktop="{{ cards_per_view_desktop }}"
+     data-cards-tablet="{{ cards_per_view_tablet }}"
+     data-cards-mobile="{{ cards_per_view_mobile }}"
+     data-total-items="{{ include.items.size }}"
+     data-component-type="{{ include.component_type }}"
+     aria-label="{% include helpers/t.html key='carousel.aria_label' fallback='Content carousel' %}"
+     role="region">
+  
+  <div class="{{ container_class }}__track" role="group" aria-live="polite">
+    {% for item in include.items %}
+      <div class="{{ item_class }}" 
+           data-index="{{ forloop.index0 }}"
+           id="{{ include.section_id }}-slide-{{ forloop.index0 }}"
+           role="tabpanel"
+           aria-roledescription="slide"
+           aria-label="{% include helpers/t.html key='carousel.slide_label' fallback='Slide' %} {{ forloop.index }} {% include helpers/t.html key='carousel.of_label' fallback='of' %} {{ include.items.size }}">
+        {% comment %} Pass type parameter for universal-card-mvp {% endcomment %}
+        {% if include.card_template contains "universal-card-mvp" %}
+          {% case include.component_type %}
+            {% when "case-studies" %}
+              {% include {{ include.card_template }} item=item type="case-study" %}
+            {% when "featured-brands" %}
+              {% include {{ include.card_template }} item=item type="brand" %}
+            {% when "founder-stories" %}
+              {% include {{ include.card_template }} item=item type="founder" %}
+            {% else %}
+              {% include {{ include.card_template }} item=item %}
+          {% endcase %}
+        {% else %}
+          {% include {{ include.card_template }} item=item %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% if show_dots and show_pagination %}
+    <div class="{{ container_class }}__pagination" 
+         role="tablist" 
+         aria-label="{% include helpers/t.html key='carousel.pagination_label' fallback='Carousel navigation' %}">
+      {% for i in (1..total_dots) %}
+        <button class="{{ dot_class }}{% if forloop.first %} {{ dot_class }}--active{% endif %}"
+                role="tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="{{ include.section_id }}-slide-{{ forloop.index0 }}"
+                data-slide="{{ forloop.index0 }}"
+                aria-label="{% include helpers/t.html key='carousel.go_to_slide' fallback='Go to slide' %} {{ forloop.index }}">
+          <span class="sr-only">{% include helpers/t.html key='carousel.slide_label' fallback='Slide' %} {{ forloop.index }}</span>
+        </button>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  {% if show_arrows and show_pagination %}
+    <button class="{{ arrow_class }} {{ arrow_class }}--prev"
+            aria-label="{% include helpers/t.html key='carousel.previous_label' fallback='Previous slide' %}"
+            data-direction="prev"
+            disabled>
+      <span aria-hidden="true">‹</span>
+    </button>
+    <button class="{{ arrow_class }} {{ arrow_class }}--next"
+            aria-label="{% include helpers/t.html key='carousel.next_label' fallback='Next slide' %}"
+            data-direction="next">
+      <span aria-hidden="true">›</span>
+    </button>
+  {% endif %}
+</div>
+
+{% comment %} Debug information for development {% endcomment %}
+{% if site.development %}
+  <!-- Carousel Debug: {{ include.component_type }} | Items: {{ include.items.size }} | Desktop cards: {{ cards_per_view_desktop }} | Calculated dots: {{ total_dots }} -->
+{% endif %}

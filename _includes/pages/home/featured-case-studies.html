@@ -1,7 +1,7 @@
 {% comment %}
   Page Section: pages/home/featured-case-studies.html
   
-  Purpose: Displays a carousel of featured case studies on the homepage
+  Purpose: Displays a carousel of featured case studies on the homepage using universal carousel component
   
   Section Type: Content
   Template: home.html
@@ -9,7 +9,8 @@
   Dependencies:
     - Translation keys: home.featured_case_studies.*
     - Data: _data/case_studies.yml
-    - Component: components/carousels/featured-case-studies-carousel.html
+    - Component: components/carousel-universal.html
+    - Card Template: components/cards/case-study-card.html
   
   Usage:
     {% include pages/home/featured-case-studies.html %}
@@ -24,4 +25,12 @@
   {% include helpers/t.html key="home.featured_case_studies.subtitle" fallback="Real transformations of founder-led brands breaking through global markets" %}
 </p>
 
-{% include components/carousels/featured-case-studies-carousel.html %}
+{% comment %} Get case studies data with featured filter {% endcomment %}
+{% assign case_studies = site.data.case_studies[current_lang] | where: "featured", true | limit: 4 %}
+
+{% comment %} Use universal carousel component {% endcomment %}
+{% include components/carousel-universal.html 
+   items=case_studies 
+   component_type="case-studies"
+   card_template="components/cards/universal-card-mvp.html"
+   section_id="homepage-case-studies" %}

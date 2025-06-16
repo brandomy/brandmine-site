@@ -1,0 +1,180 @@
+{% comment %}
+COMPONENT: Universal Card MVP
+PURPOSE: Single card component for homepage carousels
+SUPPORTS: brands, founders, case-studies
+VERSION: MVP 1.0
+
+PARAMETERS:
+- item (required): Content object to display
+- type (optional): Content type [brand|founder|case-study] - auto-detected if not specified
+
+USAGE:
+{% include components/cards/universal-card-mvp.html 
+   item=brand 
+   type="brand" %}
+{% endcomment %}
+
+{% comment %} Parameter validation {% endcomment %}
+{% unless include.item %}
+  <!-- Universal Card MVP: Missing required parameter 'item' -->
+  {% break %}
+{% endunless %}
+
+{% comment %} Auto-detect content type if not specified {% endcomment %}
+{% assign card_type = include.type %}
+{% unless card_type %}
+  {% if include.item.client %}
+    {% assign card_type = "case-study" %}
+  {% elsif include.item.name and include.item.bio %}
+    {% assign card_type = "founder" %}
+  {% elsif include.item.title and include.item.sectors %}
+    {% assign card_type = "brand" %}
+  {% else %}
+    {% assign card_type = "content" %}
+  {% endif %}
+{% endunless %}
+
+{% comment %} Set CSS classes {% endcomment %}
+{% assign card_classes = "universal-card universal-card--" | append: card_type %}
+
+<article class="{{ card_classes }}" role="article">
+  
+  {% comment %} IMAGE SECTION {% endcomment %}
+  <div class="universal-card__image">
+    {% case card_type %}
+      {% when "brand" %}
+        {% if include.item.images.hero %}
+          <img src="{{ '/assets/images/brands/' | append: include.item.country_code | append: '/' | append: include.item.slug | append: '/' | append: include.item.slug | append: '-hero-' | append: include.item.images.hero.name | append: '-800w.' | append: include.item.images.hero.ext | relative_url }}"
+               alt="{{ include.item.images.hero.alt | default: include.item.title }}"
+               loading="lazy">
+        {% endif %}
+        
+      {% when "founder" %}
+        {% if include.item.images.portrait %}
+          <img src="{{ '/assets/images/people/' | append: include.item.ref | append: '-portrait-' | append: include.item.images.portrait.name | append: '-400w.' | append: include.item.images.portrait.ext | relative_url }}"
+               alt="{{ include.item.images.portrait.alt | default: include.item.name }}"
+               loading="lazy">
+        {% endif %}
+        
+      {% when "case-study" %}
+        {% if include.item.images.logo %}
+          <img src="{{ '/assets/images/case-studies/' | append: include.item.slug | append: '-logo-' | append: include.item.images.logo.name | append: '.' | append: include.item.images.logo.ext | relative_url }}"
+               alt="{{ include.item.images.logo.alt | default: include.item.title }}"
+               loading="lazy">
+        {% endif %}
+    {% endcase %}
+  </div>
+
+  {% comment %} HEADER SECTION {% endcomment %}
+  <header class="universal-card__header">
+    {% case card_type %}
+      {% when "brand" %}
+        <h3 class="universal-card__title">
+          <a href="{{ include.item.url }}">{{ include.item.title }}</a>
+        </h3>
+        {% if include.item.founding_year %}
+          <p class="universal-card__meta">Founded {{ include.item.founding_year }}</p>
+        {% endif %}
+        {% if include.item.location %}
+          <p class="universal-card__location">{{ include.item.location }}</p>
+        {% endif %}
+        
+      {% when "founder" %}
+        <h3 class="universal-card__title">
+          <a href="{{ include.item.url }}">{{ include.item.name }}</a>
+        </h3>
+        {% if include.item.role %}
+          <p class="universal-card__meta">{{ include.item.role }}</p>
+        {% endif %}
+        {% if include.item.company %}
+          <p class="universal-card__company">{{ include.item.company }}</p>
+        {% endif %}
+        
+      {% when "case-study" %}
+        <h3 class="universal-card__title">
+          <a href="{{ include.item.permalink | default: '#' }}">{{ include.item.title }}</a>
+        </h3>
+        {% if include.item.client %}
+          <p class="universal-card__meta">{{ include.item.client }}</p>
+        {% endif %}
+        {% if include.item.duration %}
+          <p class="universal-card__duration">{{ include.item.duration }}</p>
+        {% endif %}
+    {% endcase %}
+  </header>
+
+  {% comment %} CONTENT SECTION {% endcomment %}
+  <div class="universal-card__content">
+    {% case card_type %}
+      {% when "brand" %}
+        {% if include.item.description %}
+          <p class="universal-card__description">{{ include.item.description | truncatewords: 25 }}</p>
+        {% endif %}
+        
+      {% when "founder" %}
+        {% if include.item.bio %}
+          <p class="universal-card__description">{{ include.item.bio | truncatewords: 30 }}</p>
+        {% endif %}
+        
+      {% when "case-study" %}
+        {% if include.item.description %}
+          <p class="universal-card__description">{{ include.item.description | truncatewords: 20 }}</p>
+        {% endif %}
+        {% if include.item.excerpt %}
+          <p class="universal-card__excerpt">{{ include.item.excerpt | truncatewords: 15 }}</p>
+        {% endif %}
+    {% endcase %}
+  </div>
+
+  {% comment %} TAXONOMY SECTION (for brands and founders) {% endcomment %}
+  {% if card_type == "brand" or card_type == "founder" %}
+    <div class="universal-card__taxonomy">
+      {% case card_type %}
+        {% when "brand" %}
+          {% if include.item.sectors %}
+            {% for sector in include.item.sectors limit: 2 %}
+              <span class="universal-card__tag universal-card__tag--sector">{{ sector | replace: '-', ' ' | capitalize }}</span>
+            {% endfor %}
+          {% endif %}
+          {% if include.item.markets %}
+            {% for market in include.item.markets limit: 1 %}
+              <span class="universal-card__tag universal-card__tag--market">{{ market | replace: '-', ' ' | capitalize }}</span>
+            {% endfor %}
+          {% endif %}
+          
+        {% when "founder" %}
+          {% if include.item.expertise %}
+            {% for skill in include.item.expertise limit: 3 %}
+              <span class="universal-card__tag universal-card__tag--expertise">{{ skill }}</span>
+            {% endfor %}
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ACTIONS SECTION {% endcomment %}
+  <footer class="universal-card__actions">
+    {% case card_type %}
+      {% when "brand" %}
+        <a href="{{ include.item.url }}" class="universal-card__action">
+          {% include helpers/t.html key="brands.view_brand" fallback="View Brand" %}
+        </a>
+        
+      {% when "founder" %}
+        <a href="{{ include.item.url }}" class="universal-card__action">
+          {% include helpers/t.html key="founders.view_profile" fallback="View Profile" %}
+        </a>
+        
+      {% when "case-study" %}
+        <a href="{{ include.item.permalink | default: '#' }}" class="universal-card__action">
+          {% include helpers/t.html key="case_studies.read_story" fallback="Read Success Story" %}
+        </a>
+    {% endcase %}
+  </footer>
+
+</article>
+
+{% comment %} Debug information {% endcomment %}
+{% if site.development %}
+  <!-- Universal Card MVP Debug: {{ card_type }} | Title: {{ include.item.title | default: include.item.name }} | URL: {{ include.item.url | default: include.item.permalink }} -->
+{% endif %}

@@ -1,0 +1,347 @@
+/* ==========================================================================
+   UNIVERSAL CAROUSEL COMPONENT
+   ==========================================================================
+   
+   Purpose: Single, reusable carousel component following BEM methodology
+            that supports all carousel types across the Brandmine site
+   
+   Features:
+   - Responsive behavior using CSS custom properties
+   - Touch-friendly interactions
+   - Accessibility support (ARIA, keyboard navigation)
+   - Consistent styling with design tokens
+   - Support for different content types (case studies, brands, founders)
+   
+   Usage:
+   - Used by the carousel-universal.html component
+   - Configured via _data/component_defaults.yml
+   - Controlled by carousel-universal.js
+   
+   Dependencies:
+   - Design tokens: tokens/tokens.scss
+   - BEM methodology for CSS classes
+   - CSS custom properties for responsive behavior
+   ========================================================================== */
+
+/* Base carousel container */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  
+  /* CSS custom properties for responsive cards per view */
+  --cards-per-view: 1;
+  --gap: var(--space-4);
+  --transition-duration: 300ms;
+  
+  /* Carousel track (contains all items) */
+  &__track {
+    display: flex;
+    transition: transform var(--transition-duration) ease-out;
+    will-change: transform;
+    
+    /* Enable hardware acceleration for smooth transitions */
+    transform: translateZ(0);
+    
+    /* Touch scroll behavior for better mobile experience */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    
+    /* Hide scrollbars */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+  }
+  
+  /* Individual carousel items */
+  &__item {
+    flex: 0 0 auto;
+    width: calc(100% / var(--cards-per-view));
+    padding-right: var(--gap);
+    scroll-snap-align: start;
+    
+    /* Remove padding from last item to prevent overflow */
+    &:last-child {
+      padding-right: 0;
+    }
+    
+    /* Ensure consistent spacing */
+    box-sizing: border-box;
+  }
+  
+  /* Pagination dots container */
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    
+    /* Accessibility */
+    role: tablist;
+  }
+  
+  /* Individual pagination dots */
+  &__dot {
+    width: var(--size-3);
+    height: var(--size-3);
+    border-radius: var(--radius-full);
+    border: none;
+    background-color: var(--neutral-300);
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    position: relative;
+    
+    /* Accessibility improvements */
+    role: tab;
+    
+    /* Larger touch target for mobile */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--size-6);
+      height: var(--size-6);
+      background: transparent;
+    }
+    
+    /* Hover state */
+    &:hover {
+      background-color: var(--neutral-400);
+      transform: scale(1.1);
+    }
+    
+    /* Active/selected state */
+    &--active {
+      background-color: var(--primary-500);
+      transform: scale(1.2);
+      
+      &:hover {
+        background-color: var(--primary-600);
+      }
+    }
+    
+    /* Focus state for accessibility */
+    &:focus {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+    
+    /* Disabled state */
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      
+      &:hover {
+        transform: none;
+        background-color: var(--neutral-300);
+      }
+    }
+  }
+  
+  /* Navigation arrows */
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--size-10);
+    height: var(--size-10);
+    border: none;
+    border-radius: var(--radius-full);
+    background-color: var(--surface-alpha-90);
+    color: var(--neutral-700);
+    font-size: var(--text-xl);
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    z-index: var(--z-content);
+    
+    /* Shadow for better visibility */
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(8px);
+    
+    /* Hover state */
+    &:hover {
+      background-color: var(--primary-50);
+      color: var(--primary-700);
+      transform: translateY(-50%) scale(1.05);
+    }
+    
+    /* Focus state */
+    &:focus {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+    
+    /* Disabled state */
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      
+      &:hover {
+        transform: translateY(-50%);
+        background-color: var(--surface-alpha-90);
+        color: var(--neutral-700);
+      }
+    }
+    
+    /* Previous arrow positioning */
+    &--prev {
+      left: var(--space-4);
+    }
+    
+    /* Next arrow positioning */
+    &--next {
+      right: var(--space-4);
+    }
+  }
+  
+  /* Component-specific variations */
+  
+  /* Case Studies carousel */
+  &--case-studies {
+    .carousel__dot--active {
+      background-color: var(--secondary-500);
+      
+      &:hover {
+        background-color: var(--secondary-600);
+      }
+    }
+  }
+  
+  /* Featured Brands carousel */
+  &--featured-brands {
+    .carousel__dot--active {
+      background-color: var(--primary-500);
+      
+      &:hover {
+        background-color: var(--primary-600);
+      }
+    }
+  }
+  
+  /* Founder Stories carousel */
+  &--founder-stories {
+    .carousel__dot--active {
+      background-color: var(--accent-500);
+      
+      &:hover {
+        background-color: var(--accent-600);
+      }
+    }
+  }
+}
+
+/* Responsive breakpoints */
+@media (max-width: 767px) {
+  .carousel {
+    --cards-per-view: var(--cards-mobile, 1);
+    --gap: var(--space-3);
+    
+    &__arrow {
+      display: none; /* Hide arrows on mobile to avoid clutter */
+    }
+    
+    &__pagination {
+      margin-top: var(--space-3);
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .carousel {
+    --cards-per-view: var(--cards-tablet, 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel {
+    --cards-per-view: var(--cards-desktop, 3);
+  }
+}
+
+/* Accessibility improvements */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .carousel {
+    &__track {
+      transition: none;
+      scroll-behavior: auto;
+    }
+    
+    &__dot,
+    &__arrow {
+      transition: none;
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .carousel {
+    &__dot {
+      border: 2px solid var(--neutral-700);
+      
+      &--active {
+        background-color: var(--neutral-900);
+        border-color: var(--neutral-900);
+      }
+    }
+    
+    &__arrow {
+      border: 2px solid var(--neutral-700);
+      background-color: var(--neutral-50);
+      color: var(--neutral-900);
+    }
+  }
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Loading state (for carousels that load content dynamically) */
+.carousel--loading {
+  .carousel__track {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  .carousel__pagination,
+  .carousel__arrow {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+/* Empty state (when no items are available) */
+.carousel--empty {
+  .carousel__track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    text-align: center;
+    color: var(--neutral-500);
+    font-style: italic;
+  }
+  
+  .carousel__pagination,
+  .carousel__arrow {
+    display: none;
+  }
+}

@@ -1,0 +1,171 @@
+// Universal Card MVP Styles
+// Purpose: Temporary styles for homepage carousel cards
+// Will be replaced by full universal card system
+
+.universal-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-primary);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.universal-card__image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.universal-card__header {
+  padding: var(--space-4);
+  padding-bottom: var(--space-2);
+}
+
+.universal-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  margin-bottom: var(--space-2);
+  
+  a {
+    color: var(--neutral-900);
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--primary-600);
+    }
+  }
+}
+
+.universal-card__meta,
+.universal-card__location,
+.universal-card__company,
+.universal-card__duration {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-1);
+}
+
+.universal-card__content {
+  padding: 0 var(--space-4);
+  flex-grow: 1;
+}
+
+.universal-card__description,
+.universal-card__excerpt {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--neutral-700);
+  margin-bottom: var(--space-3);
+}
+
+.universal-card__taxonomy {
+  padding: var(--space-2) var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.universal-card__tag {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-medium);
+  
+  &--sector {
+    background: var(--olive-100);
+    color: var(--olive-800);
+  }
+  
+  &--market {
+    background: var(--sky-100);
+    color: var(--sky-800);
+  }
+  
+  &--expertise {
+    background: var(--accent-100);
+    color: var(--accent-800);
+  }
+}
+
+.universal-card__actions {
+  padding: var(--space-4);
+  padding-top: var(--space-2);
+  margin-top: auto;
+}
+
+.universal-card__action {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  background: var(--primary-500);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background: var(--primary-600);
+  }
+}
+
+// Type-specific modifications
+.universal-card--brand {
+  // Brand-specific styles if needed
+}
+
+.universal-card--founder {
+  .universal-card__image {
+    height: 240px;
+    
+    img {
+      object-position: top;
+    }
+  }
+}
+
+.universal-card--case-study {
+  .universal-card__image {
+    height: 160px;
+    background: var(--neutral-50);
+    
+    img {
+      object-fit: contain;
+      padding: var(--space-4);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .universal-card__image {
+    height: 180px;
+  }
+  
+  .universal-card--founder .universal-card__image {
+    height: 200px;
+  }
+  
+  .universal-card--case-study .universal-card__image {
+    height: 140px;
+  }
+}
