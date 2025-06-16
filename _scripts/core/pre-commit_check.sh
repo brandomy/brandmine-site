@@ -368,3 +368,7 @@ if [[ $YAML_ERROR -ne 0 || $MISSING_INCLUDES -ne 0 || -n "$SECTION_ARRAYS_FOUND"
 else
   exit 0
 fi
+
+echo "📁 File integrity check..."
+ls -la | grep -i claude | wc -l  # Should return 1 (only CLAUDE.md)
+git ls-files | grep -i claude    # Should show only CLAUDE.md
