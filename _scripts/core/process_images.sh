@@ -98,7 +98,7 @@ case "$COLLECTION" in
         echo "Processing all collections..."
         process_images "assets/images"
         ;;
-    "brands"|"founders"|"insights"|"case-studies"|"journal")
+    "brands"|"founders"|"insights"|"case-studies"|"journal"|"pages")
         if [ -n "$SLUG" ]; then
             process_specific "$COLLECTION" "$SLUG"
         else
@@ -110,13 +110,15 @@ case "$COLLECTION" in
         echo "Usage: $0 [collection] [slug]"
         echo "       $0 all"
         echo ""
-        echo "Collections: brands, founders, insights, case-studies, journal"
+        echo "Collections: brands, founders, insights, case-studies, journal, pages"
         echo "Examples:"
         echo "  $0 brands ru-teatime"
         echo "  $0 founders br-eduardo-santos"
         echo "  $0 insights ru-russian-wine-renaissance"
         echo "  $0 case-studies perfect-diary"
         echo "  $0 journal china-brand-storytelling"
+        echo "  $0 pages brands"
+        echo "  $0 pages founders"
         echo "  $0 brands (process entire brands collection)"
         echo "  $0 all (process everything)"
         exit 1
