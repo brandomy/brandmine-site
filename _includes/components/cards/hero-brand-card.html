@@ -59,18 +59,41 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
 
 <article class="hero-brand-card {% if brand.featured or brand.featured_level > 1 %}hero-brand-card--featured{% endif %}">
   <div class="hero-brand-card__image">
-    {% comment %} Use helper for hero image {% endcomment %}
-    {% include helpers/brand-image.html
-       brand_id=brand.ref
-       image_type="hero"
-       class="hero-brand-card__img" %}
+    {% comment %} Use semantic image structure for hero image {% endcomment %}
+    {% if brand.images and brand.images.hero and brand.images.hero.name %}
+      {% include components/images/collection-image.html
+         collection="brands"
+         slug=brand.ref
+         purpose="hero"
+         name=brand.images.hero.name
+         alt=brand.images.hero.alt
+         class="hero-brand-card__img" %}
+    {% else %}
+      {% comment %} Fallback for brands without semantic image structure {% endcomment %}
+      {% include components/images/collection-image.html
+         collection="brands"
+         slug=brand.ref
+         purpose="hero"
+         class="hero-brand-card__img" %}
+    {% endif %}
 
     <div class="hero-brand-card__logo">
-      {% comment %} Use helper for logo image {% endcomment %}
-      {% include helpers/brand-image.html
-         brand_id=brand.ref
-         image_type="logo"
-         class="hero-brand-card__logo-img" %}
+      {% comment %} Use semantic image structure for logo {% endcomment %}
+      {% if brand.images and brand.images.logo and brand.images.logo.name %}
+        {% include components/images/collection-image.html
+           collection="brands"
+           slug=brand.ref
+           purpose="logo"
+           name=brand.images.logo.name
+           alt=brand.images.logo.alt
+           class="hero-brand-card__logo-img" %}
+      {% else %}
+        {% include components/images/collection-image.html
+           collection="brands"
+           slug=brand.ref
+           purpose="logo"
+           class="hero-brand-card__logo-img" %}
+      {% endif %}
     </div>
   </div>
 
@@ -161,7 +184,22 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
         {% endif %}
         
         <div class="hero-brand-card__founder" title="Founder: {{ founder_name }}">{%- comment -%} Ensure no whitespace {%- endcomment -%}
-          {%- include helpers/brand-image.html brand_id=brand.ref image_type="portrait" alt="Founder portrait" class="hero-brand-card__founder-img" -%}
+          {%- if brand.images.founder and brand.images.founder.name -%}
+            {%- include components/images/collection-image.html
+               collection="brands"
+               slug=brand.ref
+               purpose="portrait"
+               name=brand.images.founder.name
+               alt=brand.images.founder.alt
+               class="hero-brand-card__founder-img" -%}
+          {%- else -%}
+            {%- include components/images/collection-image.html
+               collection="brands"
+               slug=brand.ref
+               purpose="portrait"
+               alt="Founder portrait"
+               class="hero-brand-card__founder-img" -%}
+          {%- endif -%}
         </div>
       {% endif %}
     </div>

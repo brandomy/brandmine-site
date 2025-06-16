@@ -18,10 +18,21 @@
 
 <header class="{{ class_prefix }}__header">
   <div class="{{ class_prefix }}__logo">
-    {% include helpers/brand-image.html
-      brand_id=brand.ref
-      image_type="logo"
-      class=class_prefix %}
+    {% if brand.images and brand.images.logo and brand.images.logo.name %}
+      {% include components/images/collection-image.html
+        collection="brands"
+        slug=brand.ref
+        purpose="logo"
+        name=brand.images.logo.name
+        alt=brand.images.logo.alt
+        class=class_prefix %}
+    {% else %}
+      {% include components/images/collection-image.html
+        collection="brands"
+        slug=brand.ref
+        purpose="logo"
+        class=class_prefix %}
+    {% endif %}
   </div>
 
   <div class="{{ class_prefix }}__header-text">

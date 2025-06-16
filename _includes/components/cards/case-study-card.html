@@ -1,7 +1,7 @@
 {% comment %}
   Component: cards/case-study-card.html
   Purpose: Display case study cards in grid layouts with client info, metrics, and project overview
-  
+
   Parameters:
   - case_study: Case study page object (required)
   - show_client: Display client information (optional, defaults from component defaults)
@@ -10,15 +10,15 @@
   - excerpt_words: Number of words in excerpt (optional, defaults from component defaults)
   - style: Visual style variant - default, featured, compact (optional)
   - image_aspect_ratio: Aspect ratio for hero image (optional, defaults from component defaults)
-  
+
   Usage Examples:
   {% include components/cards/case-study-card.html case_study=page %}
-  
-  {% include components/cards/case-study-card.html 
-     case_study=case_study 
-     style="featured" 
+
+  {% include components/cards/case-study-card.html
+     case_study=case_study
+     style="featured"
      show_metrics=true %}
-  
+
   Design Philosophy:
   - Uses centralized defaults from _data/component_defaults.yml
   - Follows BEM naming conventions for CSS classes
@@ -61,24 +61,23 @@
 {% endif %}
 
 <article class="{{ card_classes }}">
-  
-  {% comment %} Hero Image - Using brand images via mapping {% endcomment %}
-  {% assign mapping = site.data.case_study_mappings[case_study.slug] %}
-  {% if mapping and mapping.brand_slug %}
+
+  {% comment %} Hero Image - UPDATED: Using semantic image structure {% endcomment %}
+  {% if case_study.images and case_study.images.hero %}
     <div class="case-study-card__image">
       <a href="{{ case_study_url }}" class="case-study-card__image-link">
         {% include components/images/collection-image.html
-           collection="brands"
-           slug=mapping.brand_slug
+           collection="case-studies"
+           slug=case_study.slug
            purpose="hero"
-           name=mapping.hero_name
-           alt=case_study.title
+           name=case_study.images.hero.name
+           alt=case_study.images.hero.alt
            loading="lazy"
            class="case-study-card__image-element" %}
       </a>
     </div>
   {% elsif case_study.hero_image %}
-    {% comment %} Fallback to hero_image if no mapping {% endcomment %}
+    {% comment %} Fallback to old hero_image if no semantic structure {% endcomment %}
     <div class="case-study-card__image">
       <a href="{{ case_study_url }}" class="case-study-card__image-link">
         <img src="{{ case_study.hero_image | relative_url }}"
@@ -88,28 +87,28 @@
       </a>
     </div>
   {% endif %}
-  
+
   <div class="case-study-card__content">
-    
+
     {% comment %} Header with client and industry info {% endcomment %}
     <header class="case-study-card__header">
-      
+
       {% if show_client and case_study.client %}
         <div class="case-study-card__client">
           <span class="case-study-card__client-label">{% include helpers/t.html key="case_studies.client" fallback="Client" %}</span>
           <span class="case-study-card__client-name">{{ case_study.client }}</span>
         </div>
       {% endif %}
-      
+
       {% if show_industry and case_study.industry %}
         <div class="case-study-card__industry">
           <span class="case-study-card__industry-tag">{{ case_study.industry }}</span>
         </div>
       {% endif %}
-      
+
     </header>
-    
-    {% comment %} WEEK 2 ENHANCEMENT: Prominent Metrics Display {% endcomment %}
+
+    {% comment %} Metrics Display {% endcomment %}
     {% if show_metrics and case_study.metrics and case_study.metrics.size > 0 %}
     <div class="case-study-card__metrics case-study-card__metrics--prominent">
       <h4 class="case-study-card__metrics-title">
@@ -151,31 +150,37 @@
     </div>
     {% endif %}
 
-    {% comment %} WEEK 2 ENHANCEMENT: Founder Integration Section {% endcomment %}
-    {% if case_study.founder_name %}
+    {% comment %} Founder Integration Section - UPDATED: Using semantic image structure {% endcomment %}
+    {% if case_study.founder_name or case_study.founder_quote %}
     <div class="case-study-card__founder-section">
       <div class="case-study-card__founder-header">
-        {% if mapping and mapping.founder_slug %}
+        {% comment %} Use semantic portrait structure if available {% endcomment %}
+        {% if case_study.images and case_study.images.portrait %}
           <div class="case-study-card__founder-avatar">
             {% include components/images/collection-image.html
-               collection="founders"
-               slug=mapping.founder_slug
-               purpose="headshot"
-               name="business"
-               alt=case_study.founder_name
+               collection="case-studies"
+               slug=case_study.slug
+               purpose="portrait"
+               name=case_study.images.portrait.name
+               alt=case_study.images.portrait.alt
                loading="lazy"
                class="case-study-card__founder-avatar-img" %}
           </div>
         {% elsif case_study.founder_portrait %}
           <div class="case-study-card__founder-avatar">
-            <img src="{{ case_study.founder_portrait }}" 
-                 alt="{{ case_study.founder_name }}" 
-                 loading="lazy">
+            <img src="{{ case_study.founder_portrait }}"
+                 alt="{{ case_study.founder_name }}"
+                 loading="lazy"
+                 class="case-study-card__founder-avatar-img">
           </div>
         {% endif %}
+
+        {% if case_study.founder_name %}
         <div class="case-study-card__founder-info">
           <h4 class="case-study-card__founder-name">{{ case_study.founder_name }}</h4>
-          <span class="case-study-card__founder-role">{{ case_study.founder_role }}</span>
+          {% if case_study.founder_role %}
+            <span class="case-study-card__founder-role">{{ case_study.founder_role }}</span>
+          {% endif %}
           {% if case_study.country %}
             <span class="case-study-card__founder-country">
               {% include helpers/country-flag.html country=case_study.country %}
@@ -183,16 +188,23 @@
             </span>
           {% endif %}
         </div>
+        {% endif %}
       </div>
-      
+
       {% if case_study.breakthrough_moment %}
         <div class="case-study-card__breakthrough">
           <span class="case-study-card__breakthrough-icon">🏆</span>
           <span class="case-study-card__breakthrough-text">{{ case_study.breakthrough_moment }}</span>
         </div>
       {% endif %}
-      
-      {% if case_study.quote_snippet %}
+
+      {% comment %} Enhanced founder quote display {% endcomment %}
+      {% if case_study.founder_quote and case_study.founder_quote.text %}
+        <blockquote class="case-study-card__quote-snippet">
+          <p>"{{ case_study.founder_quote.text | truncatewords: 25 }}"</p>
+          <cite>{{ case_study.founder_quote.attribution }}</cite>
+        </blockquote>
+      {% elsif case_study.quote_snippet %}
         <blockquote class="case-study-card__quote-snippet">
           <p>"{{ case_study.quote_snippet }}"</p>
           <cite>{{ case_study.founder_name }}</cite>
@@ -200,22 +212,26 @@
       {% endif %}
     </div>
     {% endif %}
-    
+
     {% comment %} Main content {% endcomment %}
     <div class="case-study-card__main">
-      
+
       <h3 class="case-study-card__title">
         <a href="{{ case_study_url }}" class="case-study-card__title-link">
           {{ case_study.title }}
         </a>
       </h3>
-      
+
       {% if case_study.description %}
         <p class="case-study-card__description">
           {{ case_study.description | truncatewords: excerpt_words }}
         </p>
+      {% elsif case_study.excerpt %}
+        <p class="case-study-card__description">
+          {{ case_study.excerpt | truncatewords: excerpt_words }}
+        </p>
       {% endif %}
-      
+
       {% comment %} Duration indicator {% endcomment %}
       {% if case_study.duration %}
         <div class="case-study-card__duration">
@@ -223,10 +239,10 @@
           <span class="case-study-card__duration-value">{{ case_study.duration }}</span>
         </div>
       {% endif %}
-      
+
     </div>
-    
-    {% comment %} WEEK 2 ENHANCEMENT: Strategic CTA {% endcomment %}
+
+    {% comment %} Strategic CTA {% endcomment %}
     <footer class="case-study-card__footer">
       <div class="case-study-card__cta">
         <a href="{{ case_study_url }}" class="case-study-card__link case-study-card__link--strategic">
@@ -237,7 +253,7 @@
         </a>
       </div>
     </footer>
-    
+
   </div>
-  
+
 </article>
