@@ -84,17 +84,17 @@
            role="tabpanel"
            aria-roledescription="slide"
            aria-label="{% include helpers/t.html key='carousel.slide_label' fallback='Slide' %} {{ forloop.index }} {% include helpers/t.html key='carousel.of_label' fallback='of' %} {{ include.items.size }}">
-        {% comment %} Pass type parameter for universal-card-mvp {% endcomment %}
-        {% if include.card_template contains "universal-card-mvp" %}
+        {% comment %} Pass type parameter for universal-card components {% endcomment %}
+        {% if include.card_template contains "universal-card" %}
           {% case include.component_type %}
             {% when "case-studies" %}
-              {% include {{ include.card_template }} item=item type="case-study" %}
+              {% include {{ include.card_template }} item=item type="case-study" context="carousel" %}
             {% when "featured-brands" %}
-              {% include {{ include.card_template }} item=item type="brand" %}
+              {% include {{ include.card_template }} item=item type="brand" context="carousel" variant="featured" %}
             {% when "founder-stories" %}
-              {% include {{ include.card_template }} item=item type="founder" %}
+              {% include {{ include.card_template }} item=item type="founder" context="carousel" %}
             {% else %}
-              {% include {{ include.card_template }} item=item %}
+              {% include {{ include.card_template }} item=item context="carousel" %}
           {% endcase %}
         {% else %}
           {% include {{ include.card_template }} item=item %}

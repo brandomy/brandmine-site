@@ -149,6 +149,43 @@ cards:
     image_aspect_ratio: "3:2"
     tag_limit: 2
 
+  # Universal Card v2.0 Configuration
+  universal-card-v2:
+    # Global defaults
+    default:
+      variant: "standard"
+      context: "carousel"
+      show_image: true
+      show_taxonomy: true
+      show_actions: true
+      
+    # Type-specific configurations
+    brand:
+      excerpt_words: 25
+      taxonomy_limit: 4
+      taxonomy_types: ["sectors", "markets", "attributes"]
+      show_founding_year: true
+      show_location: true
+      
+    founder:
+      bio_words: 30
+      expertise_limit: 3
+      language_limit: 2
+      show_company: true
+      show_generation: true
+      
+    case-study:
+      description_words: 20
+      metrics_limit: 2
+      show_industry: true
+      show_duration: true
+      
+    insight:
+      excerpt_words: 25
+      show_category: true
+      show_date: true
+      show_reading_time: true
+
 
 
 # =============================================================================
