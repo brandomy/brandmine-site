@@ -23,9 +23,17 @@ markets: [ru, fr, se, cn]
 cross_border_expertise: true
 languages: ["ru", "en", "zh"]
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
-  portrait: { name: "traditional", ext: "jpg" }
-  headshot: { name: "professional", ext: "jpg" }
+  portrait:
+    name: "traditional"
+    alt: "玛丽亚·库兹涅佐娃，7 Spices创始人，身着传统俄罗斯服装在工作室中精心调配香料混合物，周围摆放着传统配方书籍和木制工具"
+    ext: "jpg"
+  headshot:
+    name: "professional"
+    alt: "玛丽亚·库兹涅佐娃的专业头像照，佩戴传统俄罗斯首饰，温暖背景下展现烹饪专业素养"
+    ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "7spices_russia"

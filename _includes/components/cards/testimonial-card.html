@@ -63,15 +63,32 @@ NOTES: Display options configurable via component defaults. Quote icon is inline
           alt=include.testimonial.name
           class="testimonial-card__author-img" %}
       {% else %}
-        {% include components/images/collection-image.html
-          collection="people"
-          category="testimonials"
-          slug=include.img_slug
-          purpose="headshot"
-          aspect="square"
-          ext="png"
-          alt=include.testimonial.name
-          class="testimonial-card__author-img" %}
+        {% comment %} Person testimonial - check if we have a founder match first {% endcomment %}
+        {% assign testimonial_slug = include.img_slug %}
+        {% comment %} Map testimonial slugs to correct paths {% endcomment %}
+        {% case testimonial_slug %}
+          {% when "georgie-yam" %}
+            {% comment %} Use actual founder image {% endcomment %}
+            {% include components/images/collection-image.html
+              collection="founders"
+              slug="cn-georgie-yam"
+              purpose="headshot"
+              name="business"
+              aspect="square"
+              alt=include.testimonial.name
+              class="testimonial-card__author-img" %}
+          {% else %}
+            {% comment %} Fallback to people/testimonials if exists {% endcomment %}
+            {% include components/images/collection-image.html
+              collection="people"
+              category="testimonials"
+              slug=testimonial_slug
+              purpose="headshot"
+              aspect="square"
+              ext="png"
+              alt=include.testimonial.name
+              class="testimonial-card__author-img" %}
+        {% endcase %}
       {% endif %}
     </div>
 

@@ -39,13 +39,16 @@ region: "Multiple regions"
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
   logo:
-    name: "color"     # Becomes logo-color-400w.png
+    name: "color"
+    alt: "Sojourn Boutique Hotels logo"
     ext: "png"
   hero:
-    name: "paraty-view"     # Becomes hero-paraty-view-400w.jpg
+    name: "property"
+    alt: "Sojourn hotel property with Brazilian landscape"
     ext: "jpg"
-  founder:
-    name: "business"    # Becomes founder-portrait-400w.jpg
+  portrait:
+    name: "business"
+    alt: "Isabela Mendez, founder of Sojourn Hotels"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

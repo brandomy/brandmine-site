@@ -39,13 +39,16 @@ region: "Irkutsk Oblast"
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
   logo:
-    name: "color"     # Becomes logo-color-400w.png
+    name: "color"
+    alt: "Taiga Spirits logo with wilderness motifs"
     ext: "png"
   hero:
-    name: "distillery"   # Becomes hero-bottles-400w.jpg
+    name: "distillery"
+    alt: "Taiga Spirits distillery near Lake Baikal"
     ext: "jpg"
-  founder:
-    name: "working"    # Becomes founder-portrait-400w.jpg
+  portrait:
+    name: "working"
+    alt: "Nikolai Volkov working in the distillery"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

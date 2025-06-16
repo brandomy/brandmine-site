@@ -23,15 +23,17 @@ markets: [ru, gb, fr, de]
 cross_border_expertise: true
 languages: ["ru", "en", "zh"]
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
     name: "formal"
+    alt: "Алексей Соколов, основатель TeaTime, готовит традиционную русскую чайную церемонию с античным латунным самоваром, одетый в традиционный русский жилет в элегантной чайной комнате"
     ext: "jpg"
-    alt: "Алексей Соколов, основатель TeaTime, готовит традиционную русскую чайную церемонию с антикварным латунным самоваром, одетый в традиционный русский жилет в элегантной обстановке чайной"
   headshot:
     name: "business"
+    alt: "Профессиональное фото Алексея Соколова на нейтральном фоне, в деловом костюме с уверенным выражением лица"
     ext: "jpg"
-    alt: "Профессиональный портрет Алексея Соколова на нейтральном фоне в деловом костюме с уверенным выражением лица"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "teatime_russia"

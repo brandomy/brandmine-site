@@ -39,13 +39,16 @@ region: "Altai Krai"
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
   logo:
-    name: "color"     # Becomes logo-color-400w.png
+    name: "color"
+    alt: "Altai Gold Honey logo"
     ext: "png"
   hero:
-    name: "siberian-apiaries"  # Becomes hero-apiaries-400w.jpg
+    name: "apiaries"
+    alt: "Altai mountain apiaries in pristine natural setting"
     ext: "jpg"
-  founder:
-    name: "working"    # Becomes founder-portrait-400w.jpg
+  portrait:
+    name: "working"
+    alt: "Ivan Petrov working with beehives in Altai mountains"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

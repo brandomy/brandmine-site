@@ -39,13 +39,16 @@ region: "Minas Gerais"
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
   logo:
-    name: "color"     # Becomes logo-color-400w.png
+    name: "color"
+    alt: "Serra Verde Organics logo"
     ext: "png"
   hero:
-    name: "farm-view"  # Becomes hero-farm-view-400w.jpg
+    name: "farmland"
+    alt: "Serra Verde organic farm in Atlantic Forest region"
     ext: "jpg"
-  founder:
-    name: "working"    # Becomes founder-portrait-400w.jpg
+  portrait:
+    name: "working"
+    alt: "Eduardo Santos working on organic farm"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

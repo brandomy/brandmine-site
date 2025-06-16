@@ -62,17 +62,29 @@
 
 <article class="{{ card_classes }}">
   
-  {% comment %} Hero Image {% endcomment %}
-  {% if case_study.hero_image %}
+  {% comment %} Hero Image - Using brand images via mapping {% endcomment %}
+  {% assign mapping = site.data.case_study_mappings[case_study.slug] %}
+  {% if mapping and mapping.brand_slug %}
     <div class="case-study-card__image">
       <a href="{{ case_study_url }}" class="case-study-card__image-link">
-        {% include components/images/base-image.html
-           src=case_study.hero_image
+        {% include components/images/collection-image.html
+           collection="brands"
+           slug=mapping.brand_slug
+           purpose="hero"
+           name=mapping.hero_name
            alt=case_study.title
-           aspect_ratio=image_aspect_ratio
-           sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
            loading="lazy"
            class="case-study-card__image-element" %}
+      </a>
+    </div>
+  {% elsif case_study.hero_image %}
+    {% comment %} Fallback to hero_image if no mapping {% endcomment %}
+    <div class="case-study-card__image">
+      <a href="{{ case_study_url }}" class="case-study-card__image-link">
+        <img src="{{ case_study.hero_image | relative_url }}"
+             alt="{{ case_study.title }}"
+             loading="lazy"
+             class="case-study-card__image-element">
       </a>
     </div>
   {% endif %}
@@ -143,7 +155,18 @@
     {% if case_study.founder_name %}
     <div class="case-study-card__founder-section">
       <div class="case-study-card__founder-header">
-        {% if case_study.founder_portrait %}
+        {% if mapping and mapping.founder_slug %}
+          <div class="case-study-card__founder-avatar">
+            {% include components/images/collection-image.html
+               collection="founders"
+               slug=mapping.founder_slug
+               purpose="headshot"
+               name="business"
+               alt=case_study.founder_name
+               loading="lazy"
+               class="case-study-card__founder-avatar-img" %}
+          </div>
+        {% elsif case_study.founder_portrait %}
           <div class="case-study-card__founder-avatar">
             <img src="{{ case_study.founder_portrait }}" 
                  alt="{{ case_study.founder_name }}" 

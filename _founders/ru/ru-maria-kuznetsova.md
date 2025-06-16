@@ -23,9 +23,17 @@ markets: [ru, fr, se, cn]
 cross_border_expertise: true
 languages: ["ru", "en", "zh"]
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
-  portrait: { name: "traditional", ext: "jpg" }
-  headshot: { name: "professional", ext: "jpg" }
+  portrait:
+    name: "traditional"
+    alt: "Мария Кузнецова, основательница 7 Spices, в традиционном русском платье аккуратно отмеряет ароматные смеси специй в своей мастерской"
+    ext: "jpg"
+  headshot:
+    name: "professional"
+    alt: "Профессиональное фото Марии Кузнецовой в традиционных русских украшениях на теплом фоне"
+    ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "7spices_russia"

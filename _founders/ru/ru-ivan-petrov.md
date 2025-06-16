@@ -23,9 +23,17 @@ markets: [ru, cn, de]
 cross_border_expertise: true
 languages: ["ru", "zh", "en"]
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
-  portrait: { name: "working", ext: "jpg" }
-  headshot: { name: "outdoor", ext: "jpg" }
+  portrait:
+    name: "working"
+    alt: "Иван Петров работает с пчелами в сибирской пасеке, в защитном костюме проверяет соты"
+    ext: "jpg"
+  headshot:
+    name: "outdoor"
+    alt: "Иван Петров на открытом воздухе в природной сибирской обстановке, уверенное выражение лица на фоне леса"
+    ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "ivan_petrov_honey"

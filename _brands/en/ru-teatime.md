@@ -39,17 +39,17 @@ region: "Moscow Oblast"
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
   logo:
-    name: "color"     # Becomes logo-color-400w.png
+    name: "color"
+    alt: "TeaTime logo featuring elegant Cyrillic lettering"
     ext: "png"
-    alt: "TeaTime logo featuring elegant Cyrillic lettering with ornate teapot design in traditional Russian style"
   hero:
-    name: "storefront"  # Becomes hero-tearoom-400w.jpg
+    name: "storefront"
+    alt: "TeaTime's flagship tearoom in Moscow's historic Arbat district"
     ext: "jpg"
-    alt: "TeaTime's flagship tearoom in Moscow's historic Arbat district with large windows showcasing traditional Russian tea service setup and warm ambient lighting"
-  founder:
-    name: "formal"    # Becomes founder-portrait-400w.jpg
+  portrait:
+    name: "formal"
+    alt: "Alexei Sokolov preparing traditional Russian tea ceremony"
     ext: "jpg"
-    alt: "Alexei Sokolov, founder of TeaTime, preparing traditional Russian tea ceremony with antique brass samovar in elegant tearoom setting"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_facebook: "teatime.moscow"

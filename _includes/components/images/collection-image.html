@@ -22,6 +22,12 @@
   - Optimized mobile-first responsive sizing
 {% endcomment %}
 
+{% comment %} Validate required parameters {% endcomment %}
+{% unless include.collection and include.slug and include.purpose %}
+  <!-- Missing required image parameters: collection={{ include.collection }}, slug={{ include.slug }}, purpose={{ include.purpose }} -->
+  {% break %}
+{% endunless %}
+
 {% comment %} Auto-detect file extension based on purpose {% endcomment %}
 {% if include.ext %}
   {% assign file_ext = include.ext %}
@@ -134,15 +140,15 @@
   {% assign primary_filename = generic_filename %}
 {% endif %}
 
-{% comment %} Build image paths {% endcomment %}
-{% assign primary_src = path | append: primary_filename | append: '-400w.' | append: file_ext %}
-{% assign primary_srcset_400 = path | append: primary_filename | append: '-400w.' | append: file_ext %}
-{% assign primary_srcset_800 = path | append: primary_filename | append: '-800w.' | append: file_ext %}
-{% assign primary_srcset_1200 = path | append: primary_filename | append: '-1200w.' | append: file_ext %}
+{% comment %} Build image paths with collection identifier prefix {% endcomment %}
+{% assign primary_src = path | append: include.slug | append: "-" | append: primary_filename | append: '-400w.' | append: file_ext %}
+{% assign primary_srcset_400 = path | append: include.slug | append: "-" | append: primary_filename | append: '-400w.' | append: file_ext %}
+{% assign primary_srcset_800 = path | append: include.slug | append: "-" | append: primary_filename | append: '-800w.' | append: file_ext %}
+{% assign primary_srcset_1200 = path | append: include.slug | append: "-" | append: primary_filename | append: '-1200w.' | append: file_ext %}
 
 {% comment %} Fallback paths if primary doesn't work {% endcomment %}
 {% if fallback_filename %}
-  {% assign fallback_src = path | append: fallback_filename | append: '-400w.' | append: file_ext %}
+  {% assign fallback_src = path | append: include.slug | append: "-" | append: fallback_filename | append: '-400w.' | append: file_ext %}
 {% elsif include.fallback != false %}
   {% assign placeholder_filename = include.collection | append: "-" | append: include.purpose %}
   {% assign fallback_src = "/assets/images/placeholders/" | append: placeholder_filename | append: "-400w." | append: file_ext %}
@@ -160,7 +166,7 @@
      {% if fallback_src %}onerror="
        {% if fallback_filename %}
          this.src='{{ fallback_src | relative_url }}';
-         this.srcset='{{ path | append: fallback_filename | append: '-400w.' | append: file_ext | relative_url }} 400w, {{ path | append: fallback_filename | append: '-800w.' | append: file_ext | relative_url }} 800w, {{ path | append: fallback_filename | append: '-1200w.' | append: file_ext | relative_url }} 1200w';
+         this.srcset='{{ path | append: include.slug | append: "-" | append: fallback_filename | append: '-400w.' | append: file_ext | relative_url }} 400w, {{ path | append: include.slug | append: "-" | append: fallback_filename | append: '-800w.' | append: file_ext | relative_url }} 800w, {{ path | append: include.slug | append: "-" | append: fallback_filename | append: '-1200w.' | append: file_ext | relative_url }} 1200w';
          this.onerror=function(){this.src='{{ fallback_src | relative_url }}'; this.onerror=null;};
        {% else %}
          this.src='{{ fallback_src | relative_url }}'; this.onerror=null;

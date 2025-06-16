@@ -23,9 +23,17 @@ markets: [ru, gb, fr, de]
 cross_border_expertise: true
 languages: ["ru", "en", "zh"]
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
-  portrait: { name: "formal", ext: "jpg" }
-  headshot: { name: "business", ext: "jpg" }
+  portrait:
+    name: "formal"
+    alt: "阿列克谢·索科洛夫，TeaTime创始人，使用古董黄铜茶炊准备传统俄罗斯茶道，身着传统俄罗斯马甲，在优雅的茶室环境中"
+    ext: "jpg"
+  headshot:
+    name: "business"
+    alt: "阿列克谢·索科洛夫的专业头像照，中性背景，身着商务装，自信表情"
+    ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "teatime_russia"

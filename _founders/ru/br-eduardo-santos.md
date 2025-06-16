@@ -23,9 +23,17 @@ markets: [br, pt, es]
 cross_border_expertise: true
 languages: ["pt", "es", "en"]
 
+# === IMAGES (Semantic structure that works with collection-image) ===
+portrait_image: true  # Flag indicating portrait image exists
 images:
-  portrait: { name: "formal", ext: "jpg" }
-  headshot: { name: "business", ext: "jpg" }
+  portrait:
+    name: "formal"
+    alt: "Эдуардо Сантос работает на органических фермерских полях"
+    ext: "jpg"
+  headshot:
+    name: "business"
+    alt: "Профессиональное фото Эдуардо Сантоса"
+    ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_instagram: "serraverde_organics"

@@ -96,10 +96,10 @@
 
 {% comment %} Only render if we have an image name {% endcomment %}
 {% if image_name %}
-  {% comment %} Build responsive image paths {% endcomment %}
-  {% assign src_400 = base_path | append: image_name | append: '-400w.jpg' %}
-  {% assign src_800 = base_path | append: image_name | append: '-800w.jpg' %}
-  {% assign src_1200 = base_path | append: image_name | append: '-1200w.jpg' %}
+  {% comment %} Build responsive image paths with collection identifier prefix {% endcomment %}
+  {% assign src_400 = base_path | append: include.slug | append: "-" | append: image_name | append: '-400w.jpg' %}
+  {% assign src_800 = base_path | append: include.slug | append: "-" | append: image_name | append: '-800w.jpg' %}
+  {% assign src_1200 = base_path | append: include.slug | append: "-" | append: image_name | append: '-1200w.jpg' %}
 
   {% comment %} Output responsive image {% endcomment %}
   <img src="{{ src_800 | relative_url }}"

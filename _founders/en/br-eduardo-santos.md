@@ -34,10 +34,12 @@ languages: ["pt", "es", "en"]  # Languages they speak (ISO 639-1 codes)
 portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "portrait"     # Becomes founder-portrait-400w.jpg
+    name: "farming"      # ✅ Context describing the scene/setting
+    alt: "Eduardo Santos working in organic farm fields"
     ext: "jpg"
   headshot:
-    name: "headshot"     # Optional: becomes founder-headshot-400w.jpg
+    name: "business"     # ✅ Context describing the style/setting
+    alt: "Professional headshot of Eduardo Santos"
     ext: "jpg"
 
 # === SOCIAL MEDIA (FLATTENED) ===

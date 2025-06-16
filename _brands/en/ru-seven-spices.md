@@ -39,17 +39,17 @@ region: "Novosibirsk Oblast"
 # === IMAGES (Semantic structure that works with collection-image) ===
 images:
   logo:
-    name: "color"     # Becomes logo-color-400w.png
+    name: "color"
+    alt: "Seven Spices logo featuring traditional Russian spice blend symbols"
     ext: "png"
-    alt: "Seven Spices logo featuring traditional Russian spice blend symbols with Cyrillic text and warm earth-tone colors"
   hero:
-    name: "market"  # Becomes hero-spice-market-400w.jpg
+    name: "market"
+    alt: "Bustling Moscow spice market with Seven Spices products"
     ext: "jpg"
-    alt: "Bustling Moscow spice market with colorful displays of traditional Russian spices and Seven Spices branded products prominently featured among market stalls"
-  founder:
-    name: "traditional"    # Becomes founder-portrait-400w.jpg
+  portrait:
+    name: "traditional"
+    alt: "Maria Kuznetsova in traditional Russian dress with spice blends"
     ext: "jpg"
-    alt: "Maria Kuznetsova, founder of Seven Spices, in traditional Russian dress carefully measuring aromatic spice blends in her workshop surrounded by heritage recipe books"
 
 # === SOCIAL MEDIA (FLATTENED) ===
 social_facebook: "sevenspices.siberia"
