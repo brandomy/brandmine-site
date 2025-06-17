@@ -74,6 +74,19 @@
     },
 
     // Carousel components
+    universalCarousel: {
+      selector: '.carousel',
+      init: () => {
+        if (typeof UniversalCarousel === 'function') {
+          const carousels = document.querySelectorAll('.carousel');
+          carousels.forEach(carousel => {
+            new UniversalCarousel(carousel);
+            console.log('[Main] Initialized universal carousel:', carousel.id);
+          });
+        }
+      }
+    },
+
     founderCarousel: {
       selector: '.founder-carousel',
       init: () => {

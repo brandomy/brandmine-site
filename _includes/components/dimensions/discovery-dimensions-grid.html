@@ -15,11 +15,74 @@
   {% include components/dimensions/discovery-dimensions-grid.html columns=4 limit=3 %}
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: 'en' %}
+
 <div class="discovery-dimensions-grid {% if include.columns %}discovery-dimensions-grid--columns-{{ include.columns }}{% endif %}">
-  {% include components/cards/dimension-card.html type="markets" limit=include.limit %}
-  {% include components/cards/dimension-card.html type="sectors" limit=include.limit %}
-  {% include components/cards/dimension-card.html type="attributes" limit=include.limit %}
-  {% include components/cards/dimension-card.html type="signals" limit=include.limit %}
+  {% comment %} Create simple dimension cards for each type {% endcomment %}
+  
+  {% comment %} Markets dimension card {% endcomment %}
+  <div class="dimension-card dimension-card--markets">
+    <h3 class="dimension-card__title">
+      <a href="/{{ current_lang }}/discovery/markets/">
+        {% include helpers/t.html key="dimensions.markets.title" fallback="Markets" %}
+      </a>
+    </h3>
+    <p class="dimension-card__description">
+      {% include helpers/t.html key="dimensions.markets.description" fallback="Geographic regions and markets" %}
+    </p>
+    <span class="dimension-card__count">
+      {% assign markets_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "markets" | size %}
+      {{ markets_count }} {% if markets_count == 1 %}market{% else %}markets{% endif %}
+    </span>
+  </div>
+  
+  {% comment %} Sectors dimension card {% endcomment %}
+  <div class="dimension-card dimension-card--sectors">
+    <h3 class="dimension-card__title">
+      <a href="/{{ current_lang }}/discovery/sectors/">
+        {% include helpers/t.html key="dimensions.sectors.title" fallback="Sectors" %}
+      </a>
+    </h3>
+    <p class="dimension-card__description">
+      {% include helpers/t.html key="dimensions.sectors.description" fallback="Business sectors and industries" %}
+    </p>
+    <span class="dimension-card__count">
+      {% assign sectors_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "sectors" | size %}
+      {{ sectors_count }} {% if sectors_count == 1 %}sector{% else %}sectors{% endif %}
+    </span>
+  </div>
+  
+  {% comment %} Attributes dimension card {% endcomment %}
+  <div class="dimension-card dimension-card--attributes">
+    <h3 class="dimension-card__title">
+      <a href="/{{ current_lang }}/discovery/attributes/">
+        {% include helpers/t.html key="dimensions.attributes.title" fallback="Attributes" %}
+      </a>
+    </h3>
+    <p class="dimension-card__description">
+      {% include helpers/t.html key="dimensions.attributes.description" fallback="Brand characteristics and qualities" %}
+    </p>
+    <span class="dimension-card__count">
+      {% assign attributes_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "attributes" | size %}
+      {{ attributes_count }} {% if attributes_count == 1 %}attribute{% else %}attributes{% endif %}
+    </span>
+  </div>
+  
+  {% comment %} Signals dimension card {% endcomment %}
+  <div class="dimension-card dimension-card--signals">
+    <h3 class="dimension-card__title">
+      <a href="/{{ current_lang }}/discovery/signals/">
+        {% include helpers/t.html key="dimensions.signals.title" fallback="Signals" %}
+      </a>
+    </h3>
+    <p class="dimension-card__description">
+      {% include helpers/t.html key="dimensions.signals.description" fallback="Growth indicators and readiness signals" %}
+    </p>
+    <span class="dimension-card__count">
+      {% assign signals_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "signals" | size %}
+      {{ signals_count }} {% if signals_count == 1 %}signal{% else %}signals{% endif %}
+    </span>
+  </div>
 </div>
 
 {% if include.show_cta != false %}

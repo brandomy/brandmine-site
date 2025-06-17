@@ -37,9 +37,26 @@
   {{ include.lead_text | default: "Discover hand-selected brands with compelling narratives and global potential" }}
 </p>
 
-{% comment %} Use centralized brand filtering {% endcomment %}
-{% include helpers/brand-filter.html lang=current_lang featured=true premium_only=premium_only limit=limit %}
-{% assign brands = filtered_brands %}
+{% comment %} Get featured brands directly from collection {% endcomment %}
+{% assign all_brands = site.brands | where: "lang", current_lang %}
+{% assign featured_brands = "" | split: "," %}
+{% for brand in all_brands %}
+  {% if brand.featured %}
+    {% assign featured_brands = featured_brands | push: brand %}
+  {% endif %}
+{% endfor %}
+
+{% if premium_only %}
+  {% assign premium_brands = "" | split: "," %}
+  {% for brand in featured_brands %}
+    {% if brand.featured_level and brand.featured_level >= 2 %}
+      {% assign premium_brands = premium_brands | push: brand %}
+    {% endif %}
+  {% endfor %}
+  {% assign brands = premium_brands | limit: limit %}
+{% else %}
+  {% assign brands = featured_brands | limit: limit %}
+{% endif %}
 
 {% if display_mode == "grid" %}
   <!-- Grid display mode (fallback to original implementation) -->
@@ -51,11 +68,11 @@
 {% else %}
   <!-- Carousel mode using universal carousel component -->
   {% if brands.size > 0 %}
-    {% comment %} Use universal carousel component {% endcomment %}
+    {% comment %} Use universal carousel component with new universal content card {% endcomment %}
     {% include components/carousel-universal.html 
        items=brands 
        component_type="featured-brands"
-       card_template="components/cards/universal-card-v2.html"
+       card_template="components/cards/universal-content-card.html"
        section_id="homepage-featured-brands" %}
   {% else %}
     <!-- Fallback when no featured brands are available -->

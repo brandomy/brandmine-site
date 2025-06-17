@@ -1,0 +1,164 @@
+{% comment %}
+TEST PAGE: Universal Card Enhanced System
+PURPOSE: Validate all 6 card types with enhanced configurations
+STATUS: Phase 1 Testing
+{% endcomment %}
+
+<h2>Universal Card Enhanced - Phase 1 Testing</h2>
+
+{% comment %} Get test data {% endcomment %}
+{% assign test_brand = site.brands | where: "lang", "en" | where: "ref", "ru-teatime" | first %}
+{% assign test_founder = site.founders | where: "lang", "en" | where: "ref", "ru-alexei-sokolov" | first %}
+{% assign test_case_study = site.data.case_studies.en | first %}
+{% assign test_insight = site.insights | where: "lang", "en" | first %}
+
+<div class="test-grid">
+
+  <section class="test-section">
+    <h3>1. Brand Card Enhanced (10 sections)</h3>
+    <div class="test-card-container">
+      {% include components/cards/universal-card-enhanced.html 
+         item=test_brand 
+         type="brand" 
+         variant="featured"
+         context="grid" %}
+    </div>
+    <div class="test-details">
+      <p><strong>Expected sections:</strong> Hero image with overlay, logo corner, title, founded/location, description, quote with attribution, achievement highlight, primary tags, signal tags, split footer</p>
+      <p><strong>CSS classes expected:</strong> universal-card--brand, universal-card--layout-full-hero-with-overlay, universal-card--overlay-metrics, universal-card--split-footer</p>
+    </div>
+  </section>
+
+  <section class="test-section">
+    <h3>2. Insight Card Enhanced (8 sections)</h3>
+    <div class="test-card-container">
+      {% include components/cards/universal-card-enhanced.html 
+         item=test_insight 
+         type="insight" 
+         variant="standard"
+         context="grid" %}
+    </div>
+    <div class="test-details">
+      <p><strong>Expected sections:</strong> Hero image, category badge overlay, title, meta info (date + reading time), description, primary tags, signal tags (two-tier), CTA</p>
+      <p><strong>CSS classes expected:</strong> universal-card--insight, universal-card--layout-full-hero-with-category, universal-card--category-border, universal-card--two-tier-tags</p>
+    </div>
+  </section>
+
+  <section class="test-section">
+    <h3>3. Founder Card Enhanced (10 sections)</h3>
+    <div class="test-card-container">
+      {% include components/cards/universal-card-enhanced.html 
+         item=test_founder 
+         type="founder" 
+         variant="standard"
+         context="grid" %}
+    </div>
+    <div class="test-details">
+      <p><strong>Expected sections:</strong> Portrait image, generation badge, name, position/company, biography, key achievement, language skills, expertise skill cloud, CTA</p>
+      <p><strong>CSS classes expected:</strong> universal-card--founder, universal-card--layout-portrait-focus, universal-card--skill-cloud, universal-card--generation-badge</p>
+    </div>
+  </section>
+
+  <section class="test-section">
+    <h3>4. Case Study Card Enhanced (8 sections)</h3>
+    <div class="test-card-container">
+      {% include components/cards/universal-card-enhanced.html 
+         item=test_case_study 
+         type="case-study" 
+         variant="standard"
+         context="grid" %}
+    </div>
+    <div class="test-details">
+      <p><strong>Expected sections:</strong> Hero image, client label, company name, case title, description, timeline, large metrics display, founder quote with emphasis, CTA</p>
+      <p><strong>CSS classes expected:</strong> universal-card--case-study, universal-card--layout-metrics-emphasis, universal-card--large-display</p>
+    </div>
+  </section>
+
+  <section class="test-section">
+    <h3>5. Testimonial Card Enhanced (6 sections)</h3>
+    <div class="test-card-container">
+      {% comment %} Create test testimonial data {% endcomment %}
+      {% assign test_testimonial = site.data.testimonials.en.first | default: test_case_study %}
+      {% include components/cards/universal-card-enhanced.html 
+         item=test_testimonial 
+         type="testimonial" 
+         variant="standard"
+         context="grid" %}
+    </div>
+    <div class="test-details">
+      <p><strong>Expected sections:</strong> Large quote emphasis, profile image, name/role/company, impact metrics (2x2 grid), no CTA footer</p>
+      <p><strong>CSS classes expected:</strong> universal-card--testimonial, universal-card--layout-quote-emphasis, universal-card--impact-grid</p>
+    </div>
+  </section>
+
+  <section class="test-section">
+    <h3>6. Dimension Card Enhanced (4 sections)</h3>
+    <div class="test-card-container">
+      {% comment %} Create test dimension data {% endcomment %}
+      {% assign test_dimension = site.dimensions | where: "type", "sectors" | first %}
+      {% unless test_dimension %}
+        {% assign test_dimension = hash %}
+        {% assign test_dimension = test_dimension | map: "title", "Wine & Spirits" %}
+        {% assign test_dimension = test_dimension | map: "description", "Premium alcoholic beverages from traditional wine regions" %}
+        {% assign test_dimension = test_dimension | map: "count", "12" %}
+        {% assign test_dimension = test_dimension | map: "type", "sectors" %}
+      {% endunless %}
+      {% include components/cards/universal-card-enhanced.html 
+         item=test_dimension 
+         type="dimension" 
+         variant="standard"
+         context="grid" %}
+    </div>
+    <div class="test-details">
+      <p><strong>Expected sections:</strong> Dimension icon, title, description, count indicator (+X more), CTA</p>
+      <p><strong>CSS classes expected:</strong> universal-card--dimension, universal-card--layout-simple, universal-card--color-coded, universal-card--icon-header</p>
+    </div>
+  </section>
+
+</div>
+
+<style>
+.test-grid {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.test-section {
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: #f8fafc;
+}
+
+.test-section h3 {
+  color: #1e293b;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 0.5rem;
+}
+
+.test-card-container {
+  max-width: 400px;
+  margin: 1rem 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.test-details {
+  background: white;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.test-details p {
+  margin-bottom: 0.5rem;
+}
+
+.test-details strong {
+  color: #374151;
+}
+</style>

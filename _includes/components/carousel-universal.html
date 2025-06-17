@@ -85,7 +85,7 @@
            aria-roledescription="slide"
            aria-label="{% include helpers/t.html key='carousel.slide_label' fallback='Slide' %} {{ forloop.index }} {% include helpers/t.html key='carousel.of_label' fallback='of' %} {{ include.items.size }}">
         {% comment %} Pass type parameter for universal-card components {% endcomment %}
-        {% if include.card_template contains "universal-card" %}
+        {% if include.card_template contains "universal" %}
           {% case include.component_type %}
             {% when "case-studies" %}
               {% include {{ include.card_template }} item=item type="case-study" context="carousel" %}

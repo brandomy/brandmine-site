@@ -1,0 +1,1372 @@
+/*
+ * Universal Card System
+ * Master file importing all universal card styles
+ * Phase II: Site-wide expansion of Universal Card architecture
+ */
+
+// Import individual universal card components
+@import 'universal-content-card';
+@import 'universal-utility-card';
+@import 'universal-hero-card';
+
+// Shared universal card base styles
+.universal-card {
+  // Base reset and foundation
+  box-sizing: border-box;
+  
+  // Ensure consistent behavior across all universal card types
+  * {
+    box-sizing: inherit;
+  }
+  
+  // Typography inheritance
+  font-family: inherit;
+  line-height: inherit;
+  
+  // Focus states for accessibility
+  &:focus-within {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+  }
+  
+  // Print styles
+  @media print {
+    box-shadow: none !important;
+    transform: none !important;
+    
+    &:hover {
+      transform: none !important;
+    }
+  }
+  
+  // Reduced motion support
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+    
+    * {
+      transition: none;
+      animation: none;
+    }
+  }
+  
+  // High contrast mode support
+  @media (prefers-contrast: high) {
+    border: 2px solid;
+    
+    &--brand {
+      border-color: var(--primary-700);
+    }
+    
+    &--founder {
+      border-color: var(--accent-700);
+    }
+    
+    &--case-study {
+      border-color: var(--secondary-700);
+    }
+    
+    &--insight {
+      border-color: var(--primary-800);
+    }
+    
+    &--entry {
+      border-color: var(--neutral-600);
+    }
+    
+    &--team-member {
+      border-color: var(--olive-700);
+    }
+  }
+}
+
+// Shared link styles across all card types
+.universal-card a {
+  &:focus {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 1px;
+    border-radius: var(--border-radius-sm);
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// Shared image styles across all card types
+.universal-card img {
+  &[loading="lazy"] {
+    // Smooth loading animation
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
+
+// =============================================================================
+// PHASE 2: SOPHISTICATED VISUAL ENHANCEMENTS
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// BRAND CARD SOPHISTICATED FEATURES
+// -----------------------------------------------------------------------------
+
+.universal-card--brand {
+  position: relative; // Enable absolute positioning context
+  
+  // Metric Overlay Positioning System
+  .universal-card__metric-overlay {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(56, 178, 172, 0.95); // Primary teal with transparency
+    backdrop-filter: blur(8px); // Modern glass effect
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: 600;
+    color: white;
+    font-size: 0.875rem;
+    z-index: 2;
+    transition: all 0.2s ease;
+    
+    // Responsive adjustments
+    @media (max-width: 768px) {
+      top: 12px;
+      left: 12px;
+      padding: 6px 12px;
+      font-size: 0.8125rem;
+    }
+    
+    &:hover {
+      background: rgba(56, 178, 172, 1);
+      transform: scale(1.02);
+    }
+  }
+  
+  // Logo Corner Positioning System
+  .universal-card__logo-corner {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    transition: all 0.2s ease;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+      bottom: 12px;
+      right: 12px;
+    }
+  }
+  
+  // Split Footer Layout System
+  .universal-card__actions--split {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    
+    .actions-left {
+      flex: 0 0 auto;
+    }
+    
+    .actions-right {
+      flex: 0 0 auto;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+      
+      .actions-right {
+        justify-content: center;
+      }
+    }
+  }
+  
+  // Quote with Attribution System
+  .universal-card__quote--with-attribution {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-500);
+    
+    .universal-card__quote-text {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--neutral-700);
+      font-style: italic;
+      margin: 0 0 1rem 0;
+      
+      &::before {
+        content: "\201C";
+        font-size: 1.5rem;
+        color: var(--primary-500);
+        margin-right: 0.25rem;
+      }
+      
+      &::after {
+        content: "\201D";
+        font-size: 1.5rem;
+        color: var(--primary-500);
+        margin-left: 0.25rem;
+      }
+    }
+    
+    .universal-card__quote-attribution {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--neutral-600);
+      font-style: normal;
+      font-weight: 600;
+      
+      &::before {
+        content: "— ";
+        color: var(--primary-500);
+      }
+      
+      .quote-author {
+        display: block;
+      }
+      
+      .quote-title {
+        display: block;
+        font-weight: 400;
+        color: var(--neutral-500);
+      }
+    }
+  }
+  
+  // Achievement Highlight Box
+  .universal-card__achievement--highlight-box-with-icon {
+    background: linear-gradient(135deg, var(--secondary-50), var(--secondary-100));
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-500);
+    
+    .universal-card__achievement-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      
+      .achievement-icon {
+        font-size: 1.25rem;
+        color: var(--secondary-600);
+      }
+      
+      .achievement-text {
+        font-weight: 600;
+        color: var(--neutral-800);
+        font-size: 0.9375rem;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// INSIGHT CARD CATEGORY DIFFERENTIATION
+// -----------------------------------------------------------------------------
+
+.universal-card--insight {
+  border-radius: 16px;
+  overflow: hidden;
+  
+  // Category-specific border colors and badges
+  &.insight-brand-spotlight {
+    border-top: 4px solid var(--secondary-500); // Orange
+    
+    .universal-card__category-badge {
+      background: var(--secondary-500);
+      color: white;
+      
+      .universal-card__category-icon::before {
+        content: "⭐"; // Star icon
+      }
+    }
+  }
+  
+  &.insight-founders-journey {
+    border-top: 4px solid var(--accent-500); // Purple
+    
+    .universal-card__category-badge {
+      background: var(--accent-500);
+      color: white;
+      
+      .universal-card__category-icon::before {
+        content: "👤"; // Person icon
+      }
+    }
+  }
+  
+  &.insight-location-intelligence {
+    border-top: 4px solid var(--sky-500); // Blue
+    
+    .universal-card__category-badge {
+      background: var(--sky-500);
+      color: white;
+      
+      .universal-card__category-icon::before {
+        content: "📍"; // Location icon
+      }
+    }
+  }
+  
+  &.insight-market-momentum {
+    border-top: 4px solid var(--olive-500); // Green
+    
+    .universal-card__category-badge {
+      background: var(--olive-500);
+      color: white;
+      
+      .universal-card__category-icon::before {
+        content: "📈"; // Growth icon
+      }
+    }
+  }
+  
+  // Category Badge Positioning
+  .universal-card__category-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    .universal-card__category-icon {
+      font-size: 1rem;
+    }
+    
+    .universal-card__category-text {
+      font-size: 0.75rem;
+    }
+  }
+  
+  // Two-Tier Tag System
+  .universal-card__taxonomy--two-tier {
+    .universal-card__tags-primary {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      
+      .universal-card__tag {
+        background: var(--neutral-100);
+        color: var(--neutral-700);
+        padding: 0.375rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8125rem;
+        font-weight: 500;
+      }
+    }
+    
+    .universal-card__signals {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      
+      .universal-card__tag--signal {
+        background: var(--primary-100);
+        color: var(--primary-800);
+        padding: 0.375rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        border: 1px solid var(--primary-200);
+      }
+    }
+  }
+  
+  // Reading Time Enhancement
+  .universal-card__reading-time {
+    font-size: 0.8125rem;
+    color: var(--neutral-500);
+    font-weight: 500;
+    
+    &::before {
+      content: "• ";
+      margin: 0 0.25rem;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FOUNDER CARD PORTRAIT FOCUS & GENERATION BADGES
+// -----------------------------------------------------------------------------
+
+.universal-card--founder {
+  // Portrait Focus Layout
+  .universal-card__header--portrait-focus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 1.5rem 1.5rem 1rem;
+    
+    .universal-card__portrait {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+  
+  // Generation Badge System
+  .universal-card__generation-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--primary-100);
+    color: var(--primary-800);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--primary-200);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: var(--primary-200);
+      transform: scale(1.05);
+    }
+    
+    // Generation-specific styling
+    &--first {
+      background: var(--secondary-100);
+      color: var(--secondary-800);
+      border-color: var(--secondary-200);
+    }
+    
+    &--second {
+      background: var(--olive-100);
+      color: var(--olive-800);
+      border-color: var(--olive-200);
+    }
+    
+    &--third {
+      background: var(--accent-100);
+      color: var(--accent-800);
+      border-color: var(--accent-200);
+    }
+  }
+  
+  // Skill Cloud Layout
+  .universal-card__tags--skill-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+    
+    .universal-card__tag--expertise {
+      background: var(--accent-100);
+      color: var(--accent-800);
+      padding: 0.25rem 0.75rem;
+      border-radius: 16px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      border: 1px solid var(--accent-200);
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: var(--accent-200);
+        transform: translateY(-1px);
+      }
+    }
+  }
+  
+  // Key Achievement Callout
+  .universal-card__achievement-callout {
+    background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-500);
+    text-align: center;
+    
+    strong {
+      color: var(--primary-800);
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+  }
+  
+  // Language Skills Display
+  .universal-card__languages {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0.75rem 0;
+    
+    .universal-card__language-tag {
+      background: var(--sky-100);
+      color: var(--sky-800);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border: 1px solid var(--sky-200);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CASE STUDY CARD LARGE METRICS & TIMELINE
+// -----------------------------------------------------------------------------
+
+.universal-card--case-study {
+  // Client Label Styling
+  .universal-card__client-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--neutral-500);
+    margin-bottom: 0.25rem;
+  }
+  
+  .universal-card__client-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--neutral-900);
+    margin-bottom: 0.75rem;
+  }
+  
+  // Large Metric Display System
+  .universal-card__metrics--large-display {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border-radius: 8px;
+    margin: 1rem 0;
+    
+    .universal-card__metric--large-display {
+      text-align: center;
+      
+      .universal-card__metric-value--large {
+        display: block;
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: var(--neutral-900);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        
+        @media (max-width: 768px) {
+          font-size: 1.75rem;
+        }
+      }
+      
+      .universal-card__metric-label {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--neutral-600);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1.5rem 1rem;
+    }
+  }
+  
+  // Timeline Display
+  .universal-card__timeline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+    padding: 0.75rem 1rem;
+    background: var(--neutral-50);
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-500);
+    
+    .timeline-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--neutral-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .timeline-value {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--neutral-800);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// TESTIMONIAL CARD QUOTE EMPHASIS & IMPACT GRIDS
+// -----------------------------------------------------------------------------
+
+.universal-card--testimonial {
+  // Large Quote Emphasis System
+  .universal-card__quote--large-emphasis {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: var(--primary-500);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    &::before {
+      top: 1rem;
+    }
+    
+    &::after {
+      bottom: 1rem;
+    }
+    
+    .universal-card__quote-text--large {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--neutral-800);
+      font-weight: 500;
+      margin: 0;
+      font-style: italic;
+      
+      @media (max-width: 768px) {
+        font-size: 1.125rem;
+      }
+    }
+  }
+  
+  // Impact Grid System (2x2)
+  .universal-card__impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(56, 178, 172, 0.05);
+    border-radius: 8px;
+    margin: 1rem 0;
+    
+    .impact-metric {
+      text-align: center;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: translateY(-2px);
+      }
+      
+      .impact-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-600);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        
+        @media (max-width: 768px) {
+          font-size: 1.25rem;
+        }
+      }
+      
+      .impact-label {
+        display: block;
+        font-size: 0.8125rem;
+        color: var(--neutral-600);
+        font-weight: 500;
+        line-height: 1.2;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+  
+  // Profile Image for Testimonials
+  .universal-card__profile-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// DIMENSION CARD ICON SYSTEMS & COLOR CODING
+// -----------------------------------------------------------------------------
+
+.universal-card--dimension {
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Color coding by dimension type
+  &.dimension-markets {
+    border-top: 3px solid var(--sky-500);
+    
+    .universal-card__dimension-icon {
+      background: var(--sky-100);
+      color: var(--sky-700);
+    }
+  }
+  
+  &.dimension-sectors {
+    border-top: 3px solid var(--olive-500);
+    
+    .universal-card__dimension-icon {
+      background: var(--olive-100);
+      color: var(--olive-700);
+    }
+  }
+  
+  &.dimension-attributes {
+    border-top: 3px solid var(--secondary-500);
+    
+    .universal-card__dimension-icon {
+      background: var(--secondary-100);
+      color: var(--secondary-700);
+    }
+  }
+  
+  &.dimension-signals {
+    border-top: 3px solid var(--accent-500);
+    
+    .universal-card__dimension-icon {
+      background: var(--accent-100);
+      color: var(--accent-700);
+    }
+  }
+  
+  // Dimension Icon System
+  .universal-card__dimension-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    // Type-specific icons
+    &--markets .dimension-icon::before {
+      content: "🌍";
+    }
+    
+    &--sectors .dimension-icon::before {
+      content: "🏭";
+    }
+    
+    &--attributes .dimension-icon::before {
+      content: "⭐";
+    }
+    
+    &--signals .dimension-icon::before {
+      content: "📈";
+    }
+  }
+  
+  // Count Indicator
+  .universal-card__count-indicator {
+    text-align: center;
+    margin: 0.75rem 0;
+    
+    .count-text {
+      font-size: 0.8125rem;
+      color: var(--neutral-500);
+      font-weight: 500;
+      background: var(--neutral-100);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+  }
+}
+
+// =============================================================================
+// UNIVERSAL CARD TYPOGRAPHY & VISUAL POLISH
+// =============================================================================
+
+// Enhanced Universal Card Base with Visual Polish
+.universal-card--enhanced {
+  // Enhanced card foundation
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: white;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--neutral-200);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--neutral-300);
+  }
+  
+  // Enhanced image section
+  .universal-card__image {
+    position: relative;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover img {
+      transform: scale(1.02);
+    }
+  }
+  
+  // Typography hierarchy
+  .universal-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--neutral-900);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: var(--primary-600);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+  
+  .universal-card__meta {
+    font-size: 0.875rem;
+    color: var(--neutral-600);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    
+    time {
+      font-weight: 600;
+    }
+  }
+  
+  .universal-card__description {
+    font-size: 0.9375rem;
+    color: var(--neutral-700);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  // Content section padding
+  .universal-card__header {
+    padding: 1.5rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .universal-card__content {
+    padding: 0 1.5rem;
+    padding-bottom: 1rem;
+  }
+  
+  .universal-card__quote,
+  .universal-card__achievement,
+  .universal-card__metrics,
+  .universal-card__taxonomy {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  
+  .universal-card__actions {
+    padding: 1.5rem;
+    margin-top: auto;
+    border-top: 1px solid var(--neutral-100);
+    background: var(--neutral-50);
+    
+    .universal-card__action--primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary-500);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: var(--primary-600);
+        transform: translateX(2px);
+      }
+    }
+  }
+  
+  // Tag styling consistency
+  .universal-card__tag {
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-1px);
+    }
+    
+    // Enhanced tag colors using Brandmine's system
+    &--sector {
+      background: var(--olive-100);
+      color: var(--olive-800);
+      border: 1px solid var(--olive-200);
+      
+      &:hover {
+        background: var(--olive-200);
+      }
+    }
+    
+    &--market {
+      background: var(--sky-100);
+      color: var(--sky-800);
+      border: 1px solid var(--sky-200);
+      
+      &:hover {
+        background: var(--sky-200);
+      }
+    }
+    
+    &--attribute {
+      background: var(--secondary-100);
+      color: var(--secondary-800);
+      border: 1px solid var(--secondary-200);
+      
+      &:hover {
+        background: var(--secondary-200);
+      }
+    }
+    
+    &--signal {
+      background: var(--accent-100);
+      color: var(--accent-800);
+      border: 1px solid var(--accent-200);
+      
+      &:hover {
+        background: var(--accent-200);
+      }
+    }
+    
+    &--footer {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+  
+  // Responsive typography adjustments
+  @media (max-width: 768px) {
+    .universal-card__header,
+    .universal-card__content,
+    .universal-card__actions {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .universal-card__quote,
+    .universal-card__achievement,
+    .universal-card__metrics,
+    .universal-card__taxonomy {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    
+    .universal-card__title {
+      font-size: 1.125rem;
+    }
+    
+    .universal-card__description {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// Enhanced button styling for all card types
+.universal-card__action {
+  &--primary {
+    transition: all 0.2s ease;
+    
+    &:focus {
+      outline: 2px solid var(--primary-300);
+      outline-offset: 2px;
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  
+  &--coming-soon {
+    background: var(--neutral-100);
+    color: var(--neutral-600);
+    cursor: default;
+    font-style: italic;
+    opacity: 0.7;
+  }
+}
+
+// Enhanced hover states for all card types
+.universal-card--enhanced {
+  // Staggered hover animations for child elements
+  &:hover {
+    .universal-card__metric-overlay,
+    .universal-card__logo-corner,
+    .universal-card__category-badge,
+    .universal-card__generation-badge {
+      animation: pulse 0.6s ease-in-out;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+// Grid and layout utilities for card containers
+.universal-cards-grid {
+  display: grid;
+  gap: var(--spacing-6);
+  
+  // Responsive grid layouts
+  &--1-col {
+    grid-template-columns: 1fr;
+  }
+  
+  &--2-col {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--3-col {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--4-col {
+    grid-template-columns: repeat(4, 1fr);
+    
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  // Gap variations
+  &--gap-sm {
+    gap: var(--spacing-3);
+  }
+  
+  &--gap-md {
+    gap: var(--spacing-4);
+  }
+  
+  &--gap-lg {
+    gap: var(--spacing-6);
+  }
+  
+  &--gap-xl {
+    gap: var(--spacing-8);
+  }
+}
+
+// Flex layout utilities for card containers
+.universal-cards-flex {
+  display: flex;
+  gap: var(--spacing-4);
+  
+  &--wrap {
+    flex-wrap: wrap;
+  }
+  
+  &--column {
+    flex-direction: column;
+  }
+  
+  &--center {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &--space-between {
+    justify-content: space-between;
+  }
+  
+  &--align-start {
+    align-items: flex-start;
+  }
+  
+  @media (max-width: 768px) {
+    &:not(&--column) {
+      flex-direction: column;
+    }
+  }
+}
+
+// Responsive behavior for all card types
+@media (max-width: 768px) {
+  .universal-card {
+    // Ensure cards don't become too small on mobile
+    min-width: 280px;
+    
+    // Adjust spacing for mobile
+    &--content .universal-card__header,
+    &--content .universal-card__content,
+    &--content .universal-card__actions {
+      padding-left: var(--spacing-3);
+      padding-right: var(--spacing-3);
+    }
+    
+    // Simplify complex layouts on mobile
+    &--hero {
+      &--layout-split,
+      &--layout-banner {
+        .universal-card__hero-image {
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .universal-card {
+    min-width: 260px;
+    
+    // Further simplification for very small screens
+    &--content {
+      .universal-card__taxonomy {
+        display: none; // Hide taxonomy on very small screens
+      }
+      
+      .universal-card__description {
+        -webkit-line-clamp: 2; // Limit to 2 lines
+      }
+    }
+    
+    &--utility {
+      &--layout-horizontal {
+        flex-direction: column; // Force vertical layout
+      }
+    }
+  }
+  
+  .universal-cards-grid {
+    gap: var(--spacing-3); // Smaller gaps on mobile
+  }
+  
+  .universal-cards-flex {
+    gap: var(--spacing-2);
+  }
+}
+
+// Animation utilities for enhanced interactions
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.universal-card {
+  // Stagger animation for grids
+  &--animate-in {
+    animation: cardEnter 0.6s ease-out forwards;
+    
+    &:nth-child(1) { animation-delay: 0ms; }
+    &:nth-child(2) { animation-delay: 100ms; }
+    &:nth-child(3) { animation-delay: 200ms; }
+    &:nth-child(4) { animation-delay: 300ms; }
+    &:nth-child(5) { animation-delay: 400ms; }
+    &:nth-child(6) { animation-delay: 500ms; }
+    &:nth-child(n+7) { animation-delay: 600ms; }
+  }
+}
+
+// Loading states
+.universal-card {
+  &--loading {
+    opacity: 0.6;
+    pointer-events: none;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+      );
+      animation: shimmer 1.5s infinite;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Error states
+.universal-card {
+  &--error {
+    border-color: var(--error-300);
+    background-color: var(--error-25);
+    
+    .universal-card__title {
+      color: var(--error-700);
+    }
+    
+    .universal-card__description {
+      color: var(--error-600);
+    }
+  }
+}

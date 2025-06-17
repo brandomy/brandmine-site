@@ -1,0 +1,172 @@
+{% comment %}
+COMPONENT: Universal Utility Card
+PURPOSE: Specialized card for utility content types
+SUPPORTS: dimensions, testimonials, quotes, metrics, social-links
+VERSION: 1.0.0
+
+DESIGN PHILOSOPHY:
+- Simpler structure than content cards
+- Focus on utility over narrative
+- Compact, efficient layouts
+- Specialized for functional content
+
+PARAMETERS:
+- item (required): Content object to display
+- type (required): Content type [dimension|testimonial|metric|social-link|quote]
+- variant (optional): Display variant [standard|compact|featured]
+- layout (optional): Layout style [vertical|horizontal]
+
+ARCHITECTURE: Integrates with Brandmine's design tokens and translation system
+{% endcomment %}
+
+{% unless include.item and include.type %}
+  <!-- Universal Utility Card: Missing parameters -->
+  {% break %}
+{% endunless %}
+
+{% assign variant = include.variant | default: "standard" %}
+{% assign layout = include.layout | default: "vertical" %}
+{% assign config = site.data.component_defaults.cards.universal-utility-card[include.type] | default: site.data.component_defaults.cards.universal-utility-card.default %}
+
+{% assign card_classes = "universal-card universal-card--utility" %}
+{% assign card_classes = card_classes | append: " universal-card--" | append: include.type %}
+{% assign card_classes = card_classes | append: " universal-card--" | append: variant %}
+{% assign card_classes = card_classes | append: " universal-card--layout-" | append: layout %}
+
+<div class="{{ card_classes }}" role="complementary">
+  
+  {% case include.type %}
+    {% when "dimension" %}
+      <div class="universal-card__dimension">
+        {% comment %} Dimension icon/visual indicator {% endcomment %}
+        {% if include.item.icon %}
+          <div class="universal-card__dimension-icon">
+            {{ include.item.icon }}
+          </div>
+        {% endif %}
+        
+        <div class="universal-card__dimension-content">
+          <h4 class="universal-card__dimension-name">
+            {% if include.item.url %}
+              <a href="{{ include.item.url }}">{{ include.item.name | default: include.item.title }}</a>
+            {% else %}
+              {{ include.item.name | default: include.item.title }}
+            {% endif %}
+          </h4>
+          
+          {% if include.item.description %}
+            <p class="universal-card__dimension-description">
+              {{ include.item.description | truncatewords: config.description_words }}
+            </p>
+          {% endif %}
+          
+          {% if include.item.count and config.show_count %}
+            <span class="universal-card__dimension-count">
+              {{ include.item.count }} 
+              {% if include.item.count == 1 %}
+                {% include helpers/t.html key="dimensions.brand_singular" fallback="brand" %}
+              {% else %}
+                {% include helpers/t.html key="dimensions.brand_plural" fallback="brands" %}
+              {% endif %}
+            </span>
+          {% endif %}
+        </div>
+      </div>
+      
+    {% when "testimonial" %}
+      <blockquote class="universal-card__quote">
+        <div class="universal-card__quote-content">
+          <p class="universal-card__quote-text">{{ include.item.quote | truncatewords: config.quote_words }}</p>
+        </div>
+        
+        <footer class="universal-card__quote-attribution">
+          <cite class="universal-card__quote-author">{{ include.item.author }}</cite>
+          {% if include.item.company and config.show_company %}
+            <span class="universal-card__quote-company">{{ include.item.company }}</span>
+          {% endif %}
+          {% if include.item.role %}
+            <span class="universal-card__quote-role">{{ include.item.role }}</span>
+          {% endif %}
+        </footer>
+      </blockquote>
+      
+    {% when "metric" %}
+      <div class="universal-card__metric">
+        <div class="universal-card__metric-primary">
+          <span class="universal-card__metric-value">{{ include.item.value }}</span>
+          <span class="universal-card__metric-label">{{ include.item.label }}</span>
+        </div>
+        
+        {% if include.item.change and config.show_change %}
+          <div class="universal-card__metric-secondary">
+            <span class="universal-card__metric-change universal-card__metric-change--{{ include.item.change_type | default: 'neutral' }}">
+              {% if include.item.change_type == 'positive' %}+{% endif %}{{ include.item.change }}
+            </span>
+            {% if include.item.period %}
+              <span class="universal-card__metric-period">{{ include.item.period }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        {% if include.item.description %}
+          <p class="universal-card__metric-description">{{ include.item.description }}</p>
+        {% endif %}
+      </div>
+      
+    {% when "social-link" %}
+      <a href="{{ include.item.url }}" class="universal-card__social-link" target="_blank" rel="noopener">
+        {% if include.item.icon %}
+          <span class="universal-card__social-icon">{{ include.item.icon }}</span>
+        {% endif %}
+        <span class="universal-card__social-label">{{ include.item.label }}</span>
+        {% if include.item.handle %}
+          <span class="universal-card__social-handle">{{ include.item.handle }}</span>
+        {% endif %}
+      </a>
+      
+    {% when "quote" %}
+      <div class="universal-card__standalone-quote">
+        <blockquote class="universal-card__quote-content">
+          <p class="universal-card__quote-text">{{ include.item.text | truncatewords: config.quote_words }}</p>
+        </blockquote>
+        
+        {% if include.item.author %}
+          <footer class="universal-card__quote-attribution">
+            <cite class="universal-card__quote-author">{{ include.item.author }}</cite>
+            {% if include.item.context %}
+              <span class="universal-card__quote-context">{{ include.item.context }}</span>
+            {% endif %}
+          </footer>
+        {% endif %}
+      </div>
+      
+    {% when "stat" %}
+      <div class="universal-card__stat">
+        <div class="universal-card__stat-visual">
+          <span class="universal-card__stat-number">{{ include.item.number }}</span>
+          {% if include.item.unit %}
+            <span class="universal-card__stat-unit">{{ include.item.unit }}</span>
+          {% endif %}
+        </div>
+        
+        <div class="universal-card__stat-content">
+          <h4 class="universal-card__stat-label">{{ include.item.label }}</h4>
+          {% if include.item.description %}
+            <p class="universal-card__stat-description">{{ include.item.description }}</p>
+          {% endif %}
+        </div>
+        
+        {% if include.item.trend %}
+          <div class="universal-card__stat-trend universal-card__stat-trend--{{ include.item.trend_direction | default: 'neutral' }}">
+            {{ include.item.trend }}
+          </div>
+        {% endif %}
+      </div>
+  {% endcase %}
+
+</div>
+
+{% comment %} Debug information for development {% endcomment %}
+{% if site.development %}
+  <!-- Universal Utility Card: {{ include.type }} | Layout: {{ layout }} | Variant: {{ variant }} -->
+{% endif %}
