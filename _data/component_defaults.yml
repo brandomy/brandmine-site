@@ -194,12 +194,30 @@ cards:
     
     # Case study configuration with large metrics
     case-study:
-      layout_variant: "professional-metrics"
-      description_words: 20
-      metrics_limit: 2
-      show_timeline: true
-      show_large_metrics: true
-      show_professional_styling: true
+      layout_variant: "metrics-emphasis" 
+      sections:
+        header:
+          show_hero_image: true
+        content:
+          show_client_label: false       # "CLIENT" - disabled for cleaner look
+          show_company_name: true
+          show_case_title: true
+          show_description: true
+          show_timeline: true            # Duration: X years (YYYY-YYYY)
+          description_words: 20
+        metrics:
+          show_large_metrics: true       # $400M+ style display
+          metrics_style: "large-display"
+          metrics_limit: 2
+        quote:
+          show_founder_quote: true       # Client/founder quotes
+          quote_style: "emphasis"
+        footer:
+          show_cta: true
+      # CSS generation
+      css_modifiers: ["case-study", "metrics-emphasis", "large-display"]
+      enable_large_metrics: true
+      enable_timeline_display: true
     
     # Dimension configuration with icon systems
     dimension:
@@ -315,275 +333,6 @@ cards:
       show_social: true
       show_role: true
       show_department: true
-
-  # PHASE 1 ENHANCEMENT: Sophisticated Universal Card Configurations
-  # Enhanced configurations for wireframe-level sophistication
-  universal-card-enhanced:
-    # Global sophisticated defaults
-    default:
-      variant: "standard"
-      context: "grid"
-      show_image: true
-      show_taxonomy: true
-      show_actions: true
-      enable_overlays: false
-      enable_split_footer: false
-      
-    # BRAND CARDS - 10 sections, complexity 9/10
-    brand:
-      # Layout configuration
-      layout_variant: "full-hero-with-overlay"
-      sections:
-        header:
-          show_hero_image: true
-          show_metric_overlay: true      # "23 Countries" badge
-          show_logo_corner: true         # Bottom-right logo placement
-        content:
-          show_title: true
-          show_founded_location: true    # "Founded 1998 • Moscow 🇷🇺"  
-          show_description: true
-          description_words: 25
-        quote:
-          show_founder_quote: true
-          quote_style: "with-attribution" # Multi-line with name/title
-          quote_words: 40
-        achievement:
-          show_success_highlight: true
-          achievement_style: "highlight-box-with-icon" # ⚡ icon
-        taxonomy:
-          show_primary_tags: true
-          show_signal_tags: true
-          taxonomy_limit: 4
-          taxonomy_types: ["sectors", "markets", "attributes"]
-        footer:
-          layout: "split"                # CTA left, signal tags right
-          show_cta: true
-          show_signal_tags: true
-      # CSS generation
-      css_modifiers: ["brand", "overlay-metrics", "split-footer", "quote-attribution"]
-      enable_overlays: true
-      enable_split_footer: true
-
-    # INSIGHT CARDS - 8 sections, complexity 8/10  
-    insight:
-      # Layout configuration
-      layout_variant: "full-hero-with-category"
-      sections:
-        header:
-          show_hero_image: true
-          show_category_badge: true      # Top-left overlay with icon
-        content:
-          show_title: true
-          show_meta_info: true           # Date + reading time
-          show_description: true
-          excerpt_words: 25
-        tags:
-          show_primary_tags: true        # Market/sector tags
-          show_signal_tags: true         # Separate tier
-          tag_layout: "two-tier"
-          tag_limit: 3
-        footer:
-          show_cta: true
-      # CSS generation  
-      css_modifiers: ["insight", "category-border", "two-tier-tags", "category-badge"]
-      enable_category_borders: true
-      enable_two_tier_tags: true
-
-    # FOUNDER CARDS - 10 sections, complexity 7/10
-    founder:
-      # Layout configuration
-      layout_variant: "portrait-focus"
-      sections:
-        header:
-          show_portrait: true            # Instead of hero image
-          show_generation_badge: true    # 1st Gen, 3rd Gen
-        content:
-          show_name: true
-          show_location: true
-          show_associated_brand: true
-          show_biography: true
-          bio_words: 30
-        achievement:
-          show_key_achievement: true     # Specific achievement callout
-        meta:
-          show_languages: true           # Language skills display
-          show_position: true
-          show_company: true
-        tags:
-          show_expertise_tags: true      # Skill cloud
-          tag_layout: "skill-cloud"
-          taxonomy_limit: 3
-        footer:
-          show_cta: true
-      # CSS generation
-      css_modifiers: ["founder", "portrait-focus", "skill-cloud", "generation-badge"]
-      enable_portrait_focus: true
-      enable_generation_badges: true
-
-    # CASE STUDY CARDS - 8 sections, complexity 8/10
-    case-study:
-      # Layout configuration
-      layout_variant: "metrics-emphasis" 
-      sections:
-        header:
-          show_hero_image: true
-        content:
-          show_client_label: true        # "CLIENT"
-          show_company_name: true
-          show_case_title: true
-          show_description: true
-          show_timeline: true            # Duration: X years (YYYY-YYYY)
-          description_words: 20
-        metrics:
-          show_large_metrics: true       # $400M+ style display
-          metrics_style: "large-display"
-          metrics_limit: 2
-        quote:
-          show_founder_quote: true       # Client/founder quotes
-          quote_style: "emphasis"
-        footer:
-          show_cta: true
-      # CSS generation
-      css_modifiers: ["case-study", "metrics-emphasis", "large-display"]
-      enable_large_metrics: true
-      enable_timeline_display: true
-
-    # TESTIMONIAL CARDS - 6 sections, complexity 7/10
-    testimonial:
-      # Layout configuration
-      layout_variant: "quote-emphasis"
-      sections:
-        quote:
-          show_large_quote: true         # Large quote emphasis area
-          quote_words: 30
-        profile:
-          show_profile_image: true       # Small profile image
-          show_name: true
-          show_role_company: true
-        metrics:
-          show_impact_metrics: true      # 2x2 grid format
-          metrics_style: "impact-grid"   # 4/65% style layout
-          metrics_limit: 4
-        footer:
-          show_cta: false                # Testimonials typically don't have CTAs
-      # CSS generation
-      css_modifiers: ["testimonial", "quote-emphasis", "impact-grid"]
-      enable_quote_emphasis: true
-      enable_impact_grid: true
-
-    # DIMENSION CARDS - 4 sections, complexity 4/10
-    dimension:
-      # Layout configuration
-      layout_variant: "simple"
-      sections:
-        header:
-          show_icon: true                # Dimension-specific icons
-          show_title: true
-        content:
-          show_description: true
-          show_count_indicator: true     # "+X more"
-          description_words: 15
-        footer:
-          show_cta: true
-      # CSS generation
-      css_modifiers: ["dimension", "color-coded", "icon-header"]
-      enable_color_coding: true
-      enable_icons: true
-
-  # Universal Utility Card
-  universal-utility-card:
-    default:
-      variant: "standard"
-      layout: "vertical"
-      
-    dimension:
-      show_count: true
-      description_words: 15
-      
-    testimonial:
-      quote_words: 30
-      show_company: true
-      show_role: true
-      
-    metric:
-      show_change: true
-      highlight_positive: true
-      
-    social-link:
-      show_handle: true
-      
-    quote:
-      quote_words: 25
-      show_context: true
-      
-    stat:
-      show_trend: true
-      show_description: true
-
-  # Universal Hero Card
-  universal-hero-card:
-    default:
-      layout: "split"
-      features: ["image", "content", "taxonomy", "action"]
-      
-    brand:
-      description_words: 50
-      taxonomy_limit: 6
-      show_location: true
-      show_founding_year: true
-      
-    founder:
-      bio_words: 50
-      taxonomy_limit: 4
-      show_achievements: true
-      show_generation: true
-      
-    case-study:
-      description_words: 40
-      show_metrics: true
-      show_client: true
-      show_industry: true
-      
-    insight:
-      excerpt_words: 50
-      tag_limit: 5
-      show_author: true
-      show_category: true
-      show_reading_time: true
-      
-    entry:
-      excerpt_words: 45
-      show_author: true
-      show_date: true
-
-    # AUTHOR CARDS - 5 sections, journal profile focus
-    author:
-      # Layout configuration
-      layout_variant: "journal-profile"
-      sections:
-        header:
-          show_portrait: true
-          show_name: true
-        content:
-          show_role: true
-          show_bio: true
-          bio_words: 120
-        highlights:
-          show_highlights: true
-          highlights_limit: 5
-        meta:
-          show_attribution: true
-        social:
-          show_linkedin: true
-          show_social_links: true
-        footer:
-          show_journal_link: false
-      # CSS generation
-      css_modifiers: ["author", "journal-profile", "circular-portrait"]
-      enable_portrait_focus: true
-      enable_social_links: true
-
-
 
 # =============================================================================
 # FORM COMPONENTS
@@ -823,7 +572,7 @@ carousels:
 
   # Section-specific carousel configurations
   case-studies:
-    cards_per_view_desktop: 3
+    cards_per_view_desktop: 2
     cards_per_view_tablet: 2
     cards_per_view_mobile: 1
     show_arrows: true

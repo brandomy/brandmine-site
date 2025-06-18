@@ -36,6 +36,7 @@
   /* Carousel track (contains all items) */
   &__track {
     display: flex;
+    flex-wrap: nowrap;
     transition: transform var(--transition-duration) ease-out;
     will-change: transform;
     
@@ -46,29 +47,37 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--gap);
+    padding: var(--space-4) 0;
+    margin: var(--space-6) 0;
+    width: 100%;
+    position: relative;
     
-    /* Hide scrollbars */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    /* Styled scrollbars for better UX */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-300) var(--primary-50);
     
     &::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
+      height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: var(--neutral-200);
+      border-radius: var(--radius-sm);
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--primary-300);
+      border-radius: var(--radius-sm);
     }
   }
   
   /* Individual carousel items */
   &__item {
     flex: 0 0 auto;
-    width: calc(100% / var(--cards-per-view));
-    padding-right: var(--gap);
+    width: calc(100% / var(--cards-per-view) - var(--gap) + (var(--gap) / var(--cards-per-view)));
     scroll-snap-align: start;
-    
-    /* Remove padding from last item to prevent overflow */
-    &:last-child {
-      padding-right: 0;
-    }
-    
-    /* Ensure consistent spacing */
     box-sizing: border-box;
   }
   
@@ -86,34 +95,22 @@
   
   /* Individual pagination dots */
   &__dot {
-    width: var(--size-3);
-    height: var(--size-3);
-    border-radius: var(--radius-full);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
     border: none;
     background-color: var(--neutral-300);
     cursor: pointer;
-    transition: all var(--transition-medium);
+    transition: transform 0.2s ease, background-color 0.2s ease;
     position: relative;
     
     /* Accessibility improvements */
     role: tab;
     
-    /* Larger touch target for mobile */
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: var(--size-6);
-      height: var(--size-6);
-      background: transparent;
-    }
-    
     /* Hover state */
     &:hover {
-      background-color: var(--neutral-400);
-      transform: scale(1.1);
+      transform: scale(1.2);
+      background-color: var(--primary-300);
     }
     
     /* Active/selected state */
@@ -202,8 +199,19 @@
   
   /* Component-specific variations */
   
-  /* Case Studies carousel */
+  /* Case Studies carousel - 2-wide layout */
   &--case-studies {
+    /* Override default cards per view for case studies */
+    --gap: var(--space-6);
+    
+    .carousel__item {
+      /* 2-wide layout on desktop/tablet, 1-wide on mobile */
+      flex: 0 0 calc(50% - (var(--space-6) / 2));
+      width: calc(50% - (var(--space-6) / 2));
+      max-width: none;
+      scroll-snap-align: start;
+    }
+    
     .carousel__dot--active {
       background-color: var(--secondary-500);
       
@@ -249,12 +257,24 @@
     &__pagination {
       margin-top: var(--space-3);
     }
+    
+    /* Case studies specific mobile override */
+    &--case-studies .carousel__item {
+      flex: 0 0 100%;
+      width: 100%;
+    }
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .carousel {
     --cards-per-view: var(--cards-tablet, 2);
+    
+    /* Keep case studies at 2-wide on tablet */
+    &--case-studies .carousel__item {
+      flex: 0 0 calc(50% - (var(--space-6) / 2));
+      width: calc(50% - (var(--space-6) / 2));
+    }
   }
 }
 

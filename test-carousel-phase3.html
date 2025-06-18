@@ -1,0 +1,502 @@
+---
+# No layout specified - should use content directly
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 3: Jekyll Data Carousel Test</title>
+    <style>
+        /* Essential tokens for testing */
+        :root {
+            --primary-50:  #E6FFFA;
+            --primary-100: #B2F5EA;
+            --primary-200: #81E6D9;
+            --primary-300: #4FD1C5;
+            --primary-400: #38B2AC;
+            --primary-500: #319795;
+            --primary-600: #2C7A7B;
+            --primary-700: #285E61;
+            --primary-800: #234E52;
+            --primary-900: #1D4044;
+            
+            --neutral-50:  #F9FAFB;
+            --neutral-100: #F3F4F6;
+            --neutral-200: #E5E7EB;
+            --neutral-300: #D1D5DB;
+            --neutral-600: #4B5563;
+            --neutral-800: #1F2937;
+            
+            --sky-100: #E0F2FE;
+            --sky-800: #075985;
+            
+            --olive-100: #F7FEE7;
+            --olive-800: #365314;
+            
+            --accent-100: #DBEAFE;
+            --accent-800: #1E40AF;
+            
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            
+            --radius-sm: 0.125rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: var(--space-6);
+            background-color: var(--neutral-50);
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-8);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: var(--primary-800);
+            margin-bottom: var(--space-6);
+            text-align: center;
+        }
+        
+        .phase-label {
+            background: var(--accent-100);
+            color: var(--accent-800);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            display: inline-block;
+        }
+        
+        /* Universal Carousel Styles */
+        .universal-carousel[data-component-type="case-studies"] {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: var(--space-6);
+            padding: var(--space-4) 0;
+            margin: var(--space-6) 0;
+            width: 100%;
+            position: relative;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-300) var(--primary-50);
+            scroll-snap-type: x mandatory;
+        }
+        
+        .universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar-track {
+            background: var(--neutral-200);
+            border-radius: var(--radius-sm);
+        }
+        
+        .universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar-thumb {
+            background-color: var(--primary-300);
+            border-radius: var(--radius-sm);
+        }
+        
+        .universal-carousel[data-component-type="case-studies"] .test-card {
+            flex: 0 0 calc(50% - (var(--space-6) / 2));
+            width: calc(50% - (var(--space-6) / 2));
+            max-width: none;
+            scroll-snap-align: start;
+        }
+        
+        /* Navigation Dots */
+        .universal-carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-2);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        
+        .universal-carousel-nav-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--neutral-300);
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            margin: 0 var(--space-1);
+        }
+        
+        .universal-carousel-nav-dot:hover {
+            transform: scale(1.2);
+            background-color: var(--primary-300);
+        }
+        
+        .universal-carousel-nav-dot.active {
+            background-color: var(--primary-500);
+            transform: scale(1.2);
+        }
+        
+        /* Test Card Styling */
+        .test-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 360px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .test-card-image {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            background: var(--neutral-100); /* Fallback background */
+        }
+        
+        .test-card-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .test-card:hover .test-card-hero-img {
+            transform: scale(1.05);
+        }
+        
+        /* Custom Tooltip */
+        .test-card-tooltip {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--primary-50);
+            color: var(--primary-800);
+            border: 1px solid var(--primary-200);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            font-size: var(--text-sm);
+            white-space: nowrap;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-card-image:hover .test-card-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .test-card-content {
+            padding: var(--space-6);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .test-card-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--primary-800);
+            margin: 0 0 var(--space-2) 0;
+        }
+        
+        .test-card-subtitle {
+            font-size: var(--text-base);
+            color: var(--neutral-600);
+            line-height: 1.5;
+            margin: 0 0 var(--space-4) 0;
+            flex: 1;
+        }
+        
+        .test-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-top: auto;
+        }
+        
+        .test-card-market,
+        .test-card-sector,
+        .test-card-attribute,
+        .test-card-signal {
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-md);
+            font-size: var(--text-sm);
+            font-weight: 600;
+        }
+        
+        .test-card-market {
+            background: var(--sky-100);
+            color: var(--sky-800);
+        }
+        
+        .test-card-sector {
+            background: var(--olive-100);
+            color: var(--olive-800);
+        }
+        
+        .test-card-attribute {
+            background: #FFE4E1;  /* Light orange for attributes */
+            color: #CC5500;       /* Dark orange for attributes */
+        }
+        
+        .test-card-signal {
+            background: #E0E0FF;  /* Light indigo for signals */
+            color: #4B0082;       /* Dark indigo for signals */
+        }
+        
+        /* Responsive */
+        @media (width <= 991px) {
+            .universal-carousel[data-component-type="case-studies"] {
+                gap: var(--space-4);
+            }
+            
+            .universal-carousel[data-component-type="case-studies"] .test-card {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+        }
+        
+        @media (width <= 767px) {
+            .universal-carousel[data-component-type="case-studies"] {
+                padding-left: var(--space-2);
+                padding-right: var(--space-2);
+                gap: var(--space-4);
+            }
+            
+            .test-card {
+                height: 320px;
+            }
+            
+            .test-card-content {
+                padding: var(--space-4);
+            }
+        }
+        
+        @media (width >= 1200px) {
+            .universal-carousel[data-component-type="case-studies"] {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="phase-label">Phase 3.5: Jekyll Data + Responsive Images</div>
+        <h1>Case Studies Carousel (Jekyll Data + Hero Images)</h1>
+        
+        <!-- Carousel Container -->
+        <div class="universal-carousel" data-component-type="case-studies">
+            {% for case_study in site.data.case_studies.en %}
+            <div class="test-card">
+                <div class="test-card-image">
+                    <img src="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg"
+                         srcset="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg 400w,
+                                 /assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-800w.jpg 800w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
+                         alt="{{ case_study.images.hero.alt }}"
+                         title="{{ case_study.images.hero.alt }}"
+                         loading="lazy"
+                         class="test-card-hero-img">
+                    <div class="test-card-tooltip">{{ case_study.images.hero.alt }}</div>
+                </div>
+                <div class="test-card-content">
+                    <h3 class="test-card-title">{{ case_study.title | split: ':' | first }}</h3>
+                    <p class="test-card-subtitle">{{ case_study.title | split: ':' | last | strip }}</p>
+                    <div class="test-card-meta">
+                        {% if case_study.markets %}
+                            {% for market in case_study.markets %}
+                                <span class="test-card-market">{{ market | capitalize }}</span>
+                            {% endfor %}
+                        {% endif %}
+                        {% if case_study.sectors %}
+                            {% for sector in case_study.sectors %}
+                                <span class="test-card-sector">{{ sector | replace: '-', ' ' | capitalize }}</span>
+                            {% endfor %}
+                        {% endif %}
+                        {% if case_study.attributes %}
+                            {% for attribute in case_study.attributes %}
+                                <span class="test-card-attribute">{{ attribute | replace: '-', ' ' | capitalize }}</span>
+                            {% endfor %}
+                        {% endif %}
+                        {% if case_study.signals %}
+                            {% for signal in case_study.signals %}
+                                <span class="test-card-signal">{{ signal | replace: '-', ' ' | capitalize }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Navigation Dots (Generated Dynamically) -->
+        <div class="universal-carousel-nav">
+            <!-- Dots will be generated by JavaScript -->
+        </div>
+        
+        <!-- Test Results -->
+        <div style="margin-top: var(--space-8); padding: var(--space-4); background: var(--neutral-100); border-radius: var(--radius-md);">
+            <h3>Phase 3.5 Success Criteria:</h3>
+            <ul>
+                <li>✓ Jekyll data drives content from <code>site.data.case_studies.en</code></li>
+                <li>✓ Carousel mechanics unchanged (JavaScript preserved)</li>
+                <li>✓ 2-dot navigation preserved (desktop) / 4-dot (mobile)</li>
+                <li>✓ Dynamic content generation via Liquid templates</li>
+                <li><strong>✓ Hero images replace colored panels</strong></li>
+                <li><strong>✓ Responsive loading (400w mobile, 800w desktop)</strong></li>
+                <li><strong>✓ Carousel functionality preserved</strong></li>
+                <li><strong>✓ Proper aspect ratios maintained</strong></li>
+            </ul>
+            <div style="margin-top: var(--space-4); padding: var(--space-3); background: white; border-radius: var(--radius-sm);">
+                <strong>Phase 3.5 Implementation:</strong><br>
+                • Data Source: <code>site.data.case_studies.en</code><br>
+                • Image Paths: <code>/assets/images/case-studies/{{ slug }}/</code><br>
+                • Responsive Images: <code>srcset</code> with 400w and 800w variants<br>
+                • Lazy Loading: <code>loading="lazy"</code> for performance<br>
+                • Hover Effect: Subtle zoom on image hover<br>
+                • Full Taxonomy: Markets, Sectors, Attributes, Signals
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Phase 3: Same JavaScript as Phase 2 (unchanged mechanics)
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.universal-carousel[data-component-type="case-studies"]');
+            const navContainer = document.querySelector('.universal-carousel-nav');
+            
+            if (!carousel || !navContainer) return;
+            
+            const totalCards = 4; // Total case studies from Jekyll data
+            let dots = [];
+            
+            function generateDots() {
+                const cardsPerView = window.innerWidth <= 991 ? 1 : 2;
+                const totalDots = Math.ceil(totalCards / cardsPerView);
+                
+                navContainer.innerHTML = '';
+                dots = [];
+                
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'universal-carousel-nav-dot';
+                    if (i === 0) dot.classList.add('active');
+                    navContainer.appendChild(dot);
+                    dots.push(dot);
+                }
+                
+                return { cardsPerView, totalDots };
+            }
+            
+            function calculateScrollPositions() {
+                const cardsPerView = window.innerWidth <= 991 ? 1 : 2;
+                const cardWidth = carousel.children[0].offsetWidth;
+                const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
+                
+                const positions = {};
+                for (let i = 0; i < dots.length; i++) {
+                    positions[i] = i * cardWidth * cardsPerView + (i * gap * cardsPerView);
+                }
+                
+                return positions;
+            }
+            
+            function updateActiveDot() {
+                const scrollLeft = carousel.scrollLeft;
+                const positions = calculateScrollPositions();
+                const threshold = 50;
+                
+                let activeDotIndex = 0;
+                
+                for (let i = 0; i < dots.length; i++) {
+                    if (Math.abs(scrollLeft - positions[i]) < threshold) {
+                        activeDotIndex = i;
+                        break;
+                    } else if (scrollLeft > positions[i]) {
+                        activeDotIndex = i;
+                    }
+                }
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeDotIndex);
+                });
+            }
+            
+            function attachDotHandlers() {
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', function() {
+                        const positions = calculateScrollPositions();
+                        const targetPosition = positions[index] || 0;
+                        
+                        carousel.scrollTo({
+                            left: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        dots.forEach(d => d.classList.remove('active'));
+                        dot.classList.add('active');
+                    });
+                });
+            }
+            
+            function initCarousel() {
+                const { cardsPerView, totalDots } = generateDots();
+                attachDotHandlers();
+                updateActiveDot();
+                
+                console.log(`Phase 3: Jekyll carousel initialized - ${totalDots} dots for ${cardsPerView} cards per view`);
+            }
+            
+            let scrollTimeout;
+            carousel.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveDot, 100);
+            });
+            
+            window.addEventListener('resize', function() {
+                setTimeout(() => {
+                    initCarousel();
+                }, 100);
+            });
+            
+            initCarousel();
+        });
+    </script>
+</body>
+</html>

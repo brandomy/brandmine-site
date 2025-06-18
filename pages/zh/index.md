@@ -9,8 +9,8 @@ lang: zh
 sections:
   - hero
   # - impact-statement
-  - discovery-dimensions
-  # - featured-case-studies
+  # - discovery-dimensions
+  - featured-case-studies
   # - how-it-works
   # - testimonials
   # - featured-brands

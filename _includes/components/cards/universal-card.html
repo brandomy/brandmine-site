@@ -579,11 +579,16 @@ ARCHITECTURE: Single component replaces ALL card variants - true universal syste
         {% endif %}
         
       {% when "case-study" %}
-        {% if config.sections.content.show_client_label %}
-          <p class="universal-card__client-label">CLIENT</p>
-        {% endif %}
-        {% if config.sections.content.show_company_name and include.item.client %}
-          <p class="universal-card__client-name">{{ include.item.client }}</p>
+        <div class="universal-card__client-section">
+          {% if config.sections.content.show_client_label %}
+            <p class="universal-card__client-label">CLIENT</p>
+          {% endif %}
+          {% if config.sections.content.show_company_name and include.item.client %}
+            <p class="universal-card__client-name">{{ include.item.client }}</p>
+          {% endif %}
+        </div>
+        {% if include.item.industry %}
+          <span class="universal-card__industry-tag">{{ include.item.industry }}</span>
         {% endif %}
         {% if config.sections.content.show_case_title %}
           <h3 class="universal-card__title" itemprop="name">
