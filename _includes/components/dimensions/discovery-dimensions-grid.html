@@ -18,76 +18,118 @@
 {% assign current_lang = page.lang | default: 'en' %}
 
 <div class="discovery-dimensions-grid {% if include.columns %}discovery-dimensions-grid--columns-{{ include.columns }}{% endif %}">
-  {% comment %} Create simple dimension cards for each type {% endcomment %}
+  {% comment %} Create dimension cards using universal card system {% endcomment %}
   
   {% comment %} Markets dimension card {% endcomment %}
-  <div class="dimension-card dimension-card--markets">
-    <h3 class="dimension-card__title">
-      <a href="/{{ current_lang }}/discovery/markets/">
+  {% assign markets_count = site.dimensions | where: "lang", current_lang | where: "category", "market" | size %}
+  
+  <div class="universal-card universal-card--dimension universal-card--dimension-markets">
+    <div class="universal-card__dimension-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </div>
+    <h3 class="universal-card__dimension-title">
+      <a href="/{{ current_lang }}/discover/markets/">
         {% include helpers/t.html key="dimensions.markets.title" fallback="Markets" %}
       </a>
     </h3>
-    <p class="dimension-card__description">
-      {% include helpers/t.html key="dimensions.markets.description" fallback="Geographic regions and markets" %}
+    <p class="universal-card__dimension-description">
+      {% include helpers/t.html key="dimensions.markets.description" fallback="Explore brands from growing BRICS+ regions" %}
     </p>
-    <span class="dimension-card__count">
-      {% assign markets_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "markets" | size %}
-      {{ markets_count }} {% if markets_count == 1 %}market{% else %}markets{% endif %}
+    <span class="universal-card__dimension-count">
+      +{{ markets_count | minus: 3 }} more
     </span>
+    <a href="/{{ current_lang }}/discover/markets/" class="universal-card__dimension-view-all">
+      {% include helpers/t.html key="dimensions.markets.view_all" fallback="View All Markets" %}
+    </a>
   </div>
-  
+
   {% comment %} Sectors dimension card {% endcomment %}
-  <div class="dimension-card dimension-card--sectors">
-    <h3 class="dimension-card__title">
-      <a href="/{{ current_lang }}/discovery/sectors/">
+  {% assign sectors_count = site.dimensions | where: "lang", current_lang | where: "category", "sector" | size %}
+  
+  <div class="universal-card universal-card--dimension universal-card--dimension-sectors">
+    <div class="universal-card__dimension-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+    <h3 class="universal-card__dimension-title">
+      <a href="/{{ current_lang }}/discover/sectors/">
         {% include helpers/t.html key="dimensions.sectors.title" fallback="Sectors" %}
       </a>
     </h3>
-    <p class="dimension-card__description">
-      {% include helpers/t.html key="dimensions.sectors.description" fallback="Business sectors and industries" %}
+    <p class="universal-card__dimension-description">
+      {% include helpers/t.html key="dimensions.sectors.description" fallback="Explore leading brands from top sectors in the BRICS+" %}
     </p>
-    <span class="dimension-card__count">
-      {% assign sectors_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "sectors" | size %}
-      {{ sectors_count }} {% if sectors_count == 1 %}sector{% else %}sectors{% endif %}
+    <span class="universal-card__dimension-count">
+      +{{ sectors_count | minus: 3 }} more
     </span>
+    <a href="/{{ current_lang }}/discover/sectors/" class="universal-card__dimension-view-all">
+      {% include helpers/t.html key="dimensions.sectors.view_all" fallback="View All Sectors" %}
+    </a>
   </div>
-  
+
   {% comment %} Attributes dimension card {% endcomment %}
-  <div class="dimension-card dimension-card--attributes">
-    <h3 class="dimension-card__title">
-      <a href="/{{ current_lang }}/discovery/attributes/">
+  {% assign attributes_count = site.dimensions | where: "lang", current_lang | where: "category", "attribute" | size %}
+  
+  <div class="universal-card universal-card--dimension universal-card--dimension-attributes">
+    <div class="universal-card__dimension-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+        <line x1="7" y1="7" x2="7.01" y2="7"/>
+      </svg>
+    </div>
+    <h3 class="universal-card__dimension-title">
+      <a href="/{{ current_lang }}/discover/attributes/">
         {% include helpers/t.html key="dimensions.attributes.title" fallback="Attributes" %}
       </a>
     </h3>
-    <p class="dimension-card__description">
-      {% include helpers/t.html key="dimensions.attributes.description" fallback="Brand characteristics and qualities" %}
+    <p class="universal-card__dimension-description">
+      {% include helpers/t.html key="dimensions.attributes.description" fallback="Explore brands with distinctive features from the BRICS+" %}
     </p>
-    <span class="dimension-card__count">
-      {% assign attributes_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "attributes" | size %}
-      {{ attributes_count }} {% if attributes_count == 1 %}attribute{% else %}attributes{% endif %}
+    <span class="universal-card__dimension-count">
+      +{{ attributes_count | minus: 2 }} more
     </span>
+    <a href="/{{ current_lang }}/discover/attributes/" class="universal-card__dimension-view-all">
+      {% include helpers/t.html key="dimensions.attributes.view_all" fallback="View All Attributes" %}
+    </a>
   </div>
-  
+
   {% comment %} Signals dimension card {% endcomment %}
-  <div class="dimension-card dimension-card--signals">
-    <h3 class="dimension-card__title">
-      <a href="/{{ current_lang }}/discovery/signals/">
+  {% assign signals_count = site.dimensions | where: "lang", current_lang | where: "category", "signal" | size %}
+  
+  <div class="universal-card universal-card--dimension universal-card--dimension-signals">
+    <div class="universal-card__dimension-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+    <h3 class="universal-card__dimension-title">
+      <a href="/{{ current_lang }}/discover/signals/">
         {% include helpers/t.html key="dimensions.signals.title" fallback="Signals" %}
       </a>
     </h3>
-    <p class="dimension-card__description">
-      {% include helpers/t.html key="dimensions.signals.description" fallback="Growth indicators and readiness signals" %}
+    <p class="universal-card__dimension-description">
+      {% include helpers/t.html key="dimensions.signals.description" fallback="Explore brands poised for growth across different pathways" %}
     </p>
-    <span class="dimension-card__count">
-      {% assign signals_count = site.dimensions | where: "lang", current_lang | where: "dimension_type", "signals" | size %}
-      {{ signals_count }} {% if signals_count == 1 %}signal{% else %}signals{% endif %}
+    <span class="universal-card__dimension-count">
+      {% if signals_count > 0 %}
+        {{ signals_count }} {% if signals_count == 1 %}signal{% else %}signals{% endif %}
+      {% else %}
+        Coming soon
+      {% endif %}
     </span>
+    <a href="/{{ current_lang }}/discover/signals/" class="universal-card__dimension-view-all">
+      {% include helpers/t.html key="dimensions.signals.view_all" fallback="View All Growth Signals" %}
+    </a>
   </div>
 </div>
 
 {% if include.show_cta != false %}
 <div class="discovery-cta">
-  <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/discover/' }}" class="btn btn--primary-cta">
+  <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/discovery/' }}" class="btn btn--primary-cta">
     {{ include.cta_text | default: "Explore All Discovery Paths" }}
   </a>
 </div>

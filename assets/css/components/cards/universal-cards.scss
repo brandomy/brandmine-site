@@ -1014,48 +1014,142 @@
 // -----------------------------------------------------------------------------
 
 .universal-card--dimension {
-  border-radius: 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-light);
+  padding: var(--space-6);
   transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  // Top border accent
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   }
   
-  // Color coding by dimension type
-  &.dimension-markets {
-    border-top: 3px solid var(--sky-500);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+  }
+  
+  // Color coding by dimension type - note the double dash pattern
+  &.universal-card--dimension-markets {
+    &::before {
+      background: var(--sky-500);
+    }
     
     .universal-card__dimension-icon {
       background: var(--sky-100);
       color: var(--sky-700);
     }
+    
+    .universal-card__dimension-title a {
+      color: var(--sky-700);
+      &:hover {
+        color: var(--sky-800);
+      }
+    }
+    
+    .universal-card__dimension-view-all {
+      color: var(--sky-600);
+      border-color: var(--sky-300);
+      
+      &:hover {
+        background: var(--sky-50);
+        border-color: var(--sky-400);
+      }
+    }
   }
   
-  &.dimension-sectors {
-    border-top: 3px solid var(--olive-500);
+  &.universal-card--dimension-sectors {
+    &::before {
+      background: var(--olive-500);
+    }
     
     .universal-card__dimension-icon {
       background: var(--olive-100);
       color: var(--olive-700);
     }
+    
+    .universal-card__dimension-title a {
+      color: var(--olive-700);
+      &:hover {
+        color: var(--olive-800);
+      }
+    }
+    
+    .universal-card__dimension-view-all {
+      color: var(--olive-600);
+      border-color: var(--olive-300);
+      
+      &:hover {
+        background: var(--olive-50);
+        border-color: var(--olive-400);
+      }
+    }
   }
   
-  &.dimension-attributes {
-    border-top: 3px solid var(--secondary-500);
+  &.universal-card--dimension-attributes {
+    &::before {
+      background: var(--secondary-500);
+    }
     
     .universal-card__dimension-icon {
       background: var(--secondary-100);
       color: var(--secondary-700);
     }
+    
+    .universal-card__dimension-title a {
+      color: var(--secondary-700);
+      &:hover {
+        color: var(--secondary-800);
+      }
+    }
+    
+    .universal-card__dimension-view-all {
+      color: var(--secondary-600);
+      border-color: var(--secondary-300);
+      
+      &:hover {
+        background: var(--secondary-50);
+        border-color: var(--secondary-400);
+      }
+    }
   }
   
-  &.dimension-signals {
-    border-top: 3px solid var(--accent-500);
+  &.universal-card--dimension-signals {
+    &::before {
+      background: var(--accent-500);
+    }
     
     .universal-card__dimension-icon {
       background: var(--accent-100);
       color: var(--accent-700);
+    }
+    
+    .universal-card__dimension-title a {
+      color: var(--accent-700);
+      &:hover {
+        color: var(--accent-800);
+      }
+    }
+    
+    .universal-card__dimension-view-all {
+      color: var(--accent-600);
+      border-color: var(--accent-300);
+      
+      &:hover {
+        background: var(--accent-50);
+        border-color: var(--accent-400);
+      }
     }
   }
   
@@ -1066,46 +1160,84 @@
     justify-content: center;
     width: 48px;
     height: 48px;
-    border-radius: 12px;
-    margin: 0 auto 1rem;
-    font-size: 1.5rem;
+    border-radius: 50%;
+    margin-bottom: var(--space-4);
     transition: all 0.2s ease;
     
-    &:hover {
-      transform: scale(1.1);
-    }
-    
-    // Type-specific icons
-    &--markets .dimension-icon::before {
-      content: "🌍";
-    }
-    
-    &--sectors .dimension-icon::before {
-      content: "🏭";
-    }
-    
-    &--attributes .dimension-icon::before {
-      content: "⭐";
-    }
-    
-    &--signals .dimension-icon::before {
-      content: "📈";
+    svg {
+      width: 24px;
+      height: 24px;
     }
   }
   
-  // Count Indicator
-  .universal-card__count-indicator {
-    text-align: center;
-    margin: 0.75rem 0;
+  // Typography and layout
+  .universal-card__dimension-title {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
     
-    .count-text {
-      font-size: 0.8125rem;
-      color: var(--neutral-500);
-      font-weight: 500;
-      background: var(--neutral-100);
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      display: inline-block;
+    a {
+      text-decoration: none;
+      transition: color var(--transition-fast);
+      
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  
+  .universal-card__dimension-description {
+    margin: 0 0 var(--space-4);
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    line-height: var(--leading-relaxed);
+  }
+  
+  .universal-card__dimension-count {
+    display: block;
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    font-style: italic;
+  }
+  
+  .universal-card__dimension-view-all {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    text-decoration: none;
+    border: var(--border-width-medium) solid;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    margin-top: auto;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: var(--space-4);
+    
+    .universal-card__dimension-icon {
+      width: 40px;
+      height: 40px;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    
+    .universal-card__dimension-title {
+      font-size: var(--text-lg);
+    }
+    
+    .universal-card__dimension-description {
+      font-size: var(--text-sm);
     }
   }
 }
