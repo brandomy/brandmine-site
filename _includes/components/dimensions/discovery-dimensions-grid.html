@@ -32,17 +32,17 @@
     </div>
     <h3 class="universal-card__dimension-title">
       <a href="/{{ current_lang }}/discover/markets/">
-        {% include helpers/t.html key="dimensions.markets.title" fallback="Markets" %}
+        {% include helpers/t.html key="home.discovery.dimensions.markets.title" fallback="Markets" %}
       </a>
     </h3>
     <p class="universal-card__dimension-description">
-      {% include helpers/t.html key="dimensions.markets.description" fallback="Explore brands from growing BRICS+ regions" %}
+      {% include helpers/t.html key="home.discovery.dimensions.markets.description" fallback="Explore brands from growing BRICS+ regions" %}
     </p>
     <span class="universal-card__dimension-count">
-      +{{ markets_count | minus: 3 }} more
+      +{{ markets_count | minus: 3 }} {% include helpers/t.html key="home.discovery.more_text" fallback="more" %}
     </span>
     <a href="/{{ current_lang }}/discover/markets/" class="universal-card__dimension-view-all">
-      {% include helpers/t.html key="dimensions.markets.view_all" fallback="View All Markets" %}
+      {% include helpers/t.html key="home.discovery.dimensions.markets.view_all" fallback="View All Markets" %}
     </a>
   </div>
 
@@ -57,17 +57,17 @@
     </div>
     <h3 class="universal-card__dimension-title">
       <a href="/{{ current_lang }}/discover/sectors/">
-        {% include helpers/t.html key="dimensions.sectors.title" fallback="Sectors" %}
+        {% include helpers/t.html key="home.discovery.dimensions.sectors.title" fallback="Sectors" %}
       </a>
     </h3>
     <p class="universal-card__dimension-description">
-      {% include helpers/t.html key="dimensions.sectors.description" fallback="Explore leading brands from top sectors in the BRICS+" %}
+      {% include helpers/t.html key="home.discovery.dimensions.sectors.description" fallback="Explore leading brands from top sectors in the BRICS+" %}
     </p>
     <span class="universal-card__dimension-count">
-      +{{ sectors_count | minus: 3 }} more
+      +{{ sectors_count | minus: 3 }} {% include helpers/t.html key="home.discovery.more_text" fallback="more" %}
     </span>
     <a href="/{{ current_lang }}/discover/sectors/" class="universal-card__dimension-view-all">
-      {% include helpers/t.html key="dimensions.sectors.view_all" fallback="View All Sectors" %}
+      {% include helpers/t.html key="home.discovery.dimensions.sectors.view_all" fallback="View All Sectors" %}
     </a>
   </div>
 
@@ -83,17 +83,17 @@
     </div>
     <h3 class="universal-card__dimension-title">
       <a href="/{{ current_lang }}/discover/attributes/">
-        {% include helpers/t.html key="dimensions.attributes.title" fallback="Attributes" %}
+        {% include helpers/t.html key="home.discovery.dimensions.attributes.title" fallback="Attributes" %}
       </a>
     </h3>
     <p class="universal-card__dimension-description">
-      {% include helpers/t.html key="dimensions.attributes.description" fallback="Explore brands with distinctive features from the BRICS+" %}
+      {% include helpers/t.html key="home.discovery.dimensions.attributes.description" fallback="Explore brands with distinctive features from the BRICS+" %}
     </p>
     <span class="universal-card__dimension-count">
-      +{{ attributes_count | minus: 2 }} more
+      +{{ attributes_count | minus: 2 }} {% include helpers/t.html key="home.discovery.more_text" fallback="more" %}
     </span>
     <a href="/{{ current_lang }}/discover/attributes/" class="universal-card__dimension-view-all">
-      {% include helpers/t.html key="dimensions.attributes.view_all" fallback="View All Attributes" %}
+      {% include helpers/t.html key="home.discovery.dimensions.attributes.view_all" fallback="View All Attributes" %}
     </a>
   </div>
 
@@ -108,21 +108,21 @@
     </div>
     <h3 class="universal-card__dimension-title">
       <a href="/{{ current_lang }}/discover/signals/">
-        {% include helpers/t.html key="dimensions.signals.title" fallback="Signals" %}
+        {% include helpers/t.html key="home.discovery.dimensions.signals.title" fallback="Signals" %}
       </a>
     </h3>
     <p class="universal-card__dimension-description">
-      {% include helpers/t.html key="dimensions.signals.description" fallback="Explore brands poised for growth across different pathways" %}
+      {% include helpers/t.html key="home.discovery.dimensions.signals.description" fallback="Explore brands poised for growth across different pathways" %}
     </p>
     <span class="universal-card__dimension-count">
       {% if signals_count > 0 %}
-        {{ signals_count }} {% if signals_count == 1 %}signal{% else %}signals{% endif %}
+        {{ signals_count }} {% if signals_count == 1 %}{% include helpers/t.html key="home.discovery.signals_text.singular" fallback="signal" %}{% else %}{% include helpers/t.html key="home.discovery.signals_text.plural" fallback="signals" %}{% endif %}
       {% else %}
-        Coming soon
+        {% include helpers/t.html key="common.empty_states.coming_soon" fallback="Coming soon" %}
       {% endif %}
     </span>
     <a href="/{{ current_lang }}/discover/signals/" class="universal-card__dimension-view-all">
-      {% include helpers/t.html key="dimensions.signals.view_all" fallback="View All Growth Signals" %}
+      {% include helpers/t.html key="home.discovery.dimensions.signals.view_all" fallback="View All Growth Signals" %}
     </a>
   </div>
 </div>
@@ -130,7 +130,7 @@
 {% if include.show_cta != false %}
 <div class="discovery-cta">
   <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/discovery/' }}" class="btn btn--primary-cta">
-    {{ include.cta_text | default: "Explore All Discovery Paths" }}
+    {% include helpers/t.html key="home.discovery.cta_button" fallback="Explore All Discovery Paths" %}
   </a>
 </div>
 {% endif %}
