@@ -38,19 +38,23 @@
         <div class="author-profiles-grid">
           {% for author_entry in authors_to_show %}
             {% assign author = author_entry[1] %}
-            {% include components/cards/author-card.html 
-               author=author 
-               layout="grid" 
-               lang=page.lang %}
+            {% include components/cards/universal-card.html
+               item=author
+               type="team-member"
+               variant="compact"
+               context="grid"
+               config_set="universal-card" %}
           {% endfor %}
         </div>
       {% else %}
         {% comment %} Show single author for post pages using standard layout {% endcomment %}
         {% if single_author %}
-          {% include components/cards/author-card.html 
-             author=single_author 
-             layout="standard" 
-             lang=page.lang %}
+          {% include components/cards/universal-card.html
+             item=single_author
+             type="team-member"
+             variant="standard"
+             context="grid"
+             config_set="universal-card" %}
         {% endif %}
       {% endif %}
 </div>

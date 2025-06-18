@@ -31,15 +31,17 @@
 <div class="testimonials-container">
   {% comment %} Brand testimonial {% endcomment %}
   {% assign testimonial1 = site.data.translations[current_lang].home.testimonials.testimonial1 %}
-  {% include components/cards/testimonial-card.html
-    testimonial=testimonial1
-    type="brand"
-    img_slug="cn-dragonfly-retreats" %}
+  {% include components/cards/universal-card.html
+    item=testimonial1
+    type="testimonial"
+    variant="featured"
+    config_set="universal-card" %}
 
   {% comment %} Founder testimonial {% endcomment %}
   {% assign testimonial2 = site.data.translations[current_lang].home.testimonials.testimonial2 %}
-  {% include components/cards/testimonial-card.html
-    testimonial=testimonial2
-    type="person"
-    img_slug="georgie-yam" %}
+  {% include components/cards/universal-card.html
+    item=testimonial2
+    type="testimonial"
+    variant="featured"
+    config_set="universal-card" %}
 </div>

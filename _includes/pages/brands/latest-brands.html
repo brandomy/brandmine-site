@@ -25,6 +25,11 @@
 <div class="latest-brands__grid">
   {% assign recent_brands = site.brands | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
   {% for brand in recent_brands %}
-    {% include components/cards/brand-card.html brand=brand %}
+    {% include components/cards/universal-card.html
+       item=brand
+       type="brand"
+       variant="standard"
+       context="grid"
+       config_set="universal-card" %}
   {% endfor %}
 </div>

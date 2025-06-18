@@ -1,0 +1,38 @@
+Create a hero image for a blog series titled **“Founders’ Journal”**, published by Brandmine — a platform dedicated to illuminating exceptional **founder-led brands from BRICS+ countries**. The image should visually reflect Brandmine’s mission: to **break through language, cultural, and political barriers**, and **amplify authentic entrepreneurial stories globally**, helping these founders connect with partners, capital, and visibility beyond their borders.
+
+**Important Guidelines:**  
+- **Do NOT include any text or logos** in the image.  
+- The final image must be in a **3:2 horizontal (landscape) aspect ratio**, minimum resolution **1200x800px**.  
+- Leave negative space where editorial overlays *could* be placed, but the image itself must remain **text-free**.
+
+**Style:**  
+Adopt a **textured minimalism** style — clean and restrained. Use soft grain or paper-like textures, abstract forms, flat layering, and open composition. Avoid realism, complex gradients, and unnecessary detail. Focus on **symbolic clarity** and **elegant simplicity**.
+
+**Color Palette (Brandmine):**  
+Use up to 4–5 tones drawn from the Brandmine palette:
+
+- **Primary (Teal):** `#38B2AC`, `#319795`, `#2C7A7B`
+- **Secondary (Orange):** `#FB923C`, `#F97316`
+- **Neutral Grays:** `#F3F4F6`, `#E5E7EB`, `#9CA3AF`, `#374151`
+- **Accent Options:**  
+  - Indigo: `#6366F1`, `#4F46E5`  
+  - Olive: `#A3B763`, `#8CA254`  
+  - Sky Blue: `#0EA5E9`  
+  - Amber: `#F59E0B`
+
+**Imagery Direction:**  
+Use **abstract or symbolic elements**, not literal scenes. Consider motifs such as:
+
+- Cultural bridges, sparks, or networks  
+- Abstract globes, constellation paths, or rising arcs  
+- Stylized figures, seeds sprouting, hands building, paper boats  
+- Thresholds, arches, topographic or landscape forms  
+- Inspiration rooted in **BRICS+ regions** (Asia, Africa, Latin America), but without clichés
+
+**Post-Specific Focus:**  
+*Reflect the following topic or narrative in the image:*  
+→ `{{ INSERT TOPIC OR THEME HERE }}`  
+(e.g., "From artisan workshop to export market in South Africa")
+
+**Tone & Mood:**  
+Ensure the composition feels **globally relevant**, **humble**, and **forward-looking** — appropriate for a founder-focused editorial series.

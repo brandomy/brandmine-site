@@ -1,30 +1,31 @@
 /* ==========================================================================
-   Card Components Index
+   Card Components Index - Universal Card System
    ========================================================================== */
 
-/* UNIVERSAL CARD SYSTEM (Phase II) - New primary system */
-@import "universal-cards";
+/* UNIVERSAL CARD SYSTEM - Production system (100% deployment achieved) */
+@import "universal-cards";          // THE universal card system
 
-/* Legacy card components (maintained for compatibility) */
-@import "cards";
-@import "author-card";
-@import "featured-founder-card";
-@import "founder-quote-card";
-@import "hero-brand-card";
+/* Base components (foundation styles) */
+@import "cards";                    // Base card utilities
+@import "featured-brands-grid";     // Brand layout utilities (active usage)
 
-/* Featured & tagged card variations (legacy) */
-@import "featured-brand-card";
-@import "featured-brand-card-strategic";
-@import "featured-brands-grid";
-@import "featured-insight-card";
-@import "tagged-insight-card";
-
-/* Related and utility cards (legacy) */
-@import "related-brand-card";
-@import "simple-insight-card";
-
-/* Universal Card v2.0 (Phase I) - Legacy but maintained */
-@import "universal-card-v2";
-
-/* MVP prototypes (deprecated) */
-@import "universal-card-mvp";
+/* === LEGACY COMPONENTS MOVED TO deprecated/legacy-cleanup/ ===
+   The following components have been successfully replaced by universal-cards.scss:
+   - brand-card.scss → universal-cards.scss
+   - case-study-card.scss → universal-cards.scss  
+   - founder-card.scss → universal-cards.scss
+   - insight-card.scss → universal-cards.scss
+   - testimonial-card.scss → universal-cards.scss
+   - featured-brand-card-strategic.scss → universal-cards.scss
+   - featured-founder-card.scss → universal-cards.scss
+   - featured-insight-card.scss → universal-cards.scss
+   - hero-brand-card.scss → universal-cards.scss
+   - simple-insight-card.scss → universal-cards.scss
+   - entry-card.scss → universal-content-card.scss (wrapper exists)
+   - team-member-card.scss → universal-content-card.scss (migrated)
+   - author-card.scss → universal-cards.scss (migrated to universal system)
+   - universal-card-mvp.scss → deprecated (development artifact)
+   - universal-card-v2.scss → deprecated (development artifact)
+   
+   CLEANUP SUMMARY: 15 legacy CSS files moved to deprecated/legacy-cleanup/
+*/ 

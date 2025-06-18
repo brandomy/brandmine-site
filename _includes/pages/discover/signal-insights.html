@@ -33,7 +33,12 @@ Dependencies:
 
         {% if signal_insights.size > 0 %}
           {% for insight in signal_insights limit:3 %}
-            {% include components/cards/insight-card.html insight=insight %}
+            {% include components/cards/universal-card.html
+               item=insight
+               type="insight"
+               variant="standard"
+               context="grid"
+               config_set="universal-card" %}
           {% endfor %}
 
           {% if signal_insights.size > 3 %}

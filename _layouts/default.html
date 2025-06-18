@@ -104,10 +104,9 @@ DEPENDENCIES:
       <script src="{{ '/assets/js/components/search-placeholder.js' | relative_url }}"></script>
       <script src="{{ '/assets/js/pages/discovery/discovery.js' | relative_url }}"></script>
     {% when 'insights' %}
-      <script src="{{ '/assets/js/components/insights-carousel.js' | relative_url }}"></script>
-      <script src="{{ '/assets/js/pages/insights/insights-pagination.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/carousel-universal.js' | relative_url }}"></script>
     {% when 'insight-article' %}
-      <script src="{{ '/assets/js/components/insights-carousel.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/components/carousel-universal.js' | relative_url }}"></script>
     {% when 'dimension' %}
       <script src="{{ '/assets/js/pages/dimension/dimension-filtering.js' | relative_url }}"></script>
   {% endcase %}
@@ -118,7 +117,7 @@ DEPENDENCIES:
   {% endif %}
 
   {% if page.has_carousel %}
-    <script src="{{ '/assets/js/components/founder-carousel.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/components/carousel-universal.js' | relative_url }}"></script>
   {% endif %}
 
   <!-- UI Components -->

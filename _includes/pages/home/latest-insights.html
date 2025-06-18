@@ -16,7 +16,7 @@
   Dependencies:
     - Translation keys: insights.*
     - CSS: assets/css/pages/home/latest-insights.scss
-    - Include: components/cards/simple-insight-card.html
+    - Include: components/cards/universal-card.html
   
   Usage:
     {% include pages/home/latest-insights.html %}
@@ -38,7 +38,12 @@
   <!-- Brand Spotlight -->
   {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
   {% if brand_spotlight %}
-    {% include components/cards/simple-insight-card.html insight=brand_spotlight %}
+    {% include components/cards/universal-card.html
+       item=brand_spotlight
+       type="insight"
+       variant="simple"
+       context="home-featured"
+       config_set="universal-card" %}
   {% else %}
     <div class="insight-card insight-card--brand-spotlight insight-card--placeholder">
       <div class="insight-card__content">
@@ -51,7 +56,12 @@
   {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
   {% if founders_journey %}
     <!-- Founder's Journey Card -->
-    {% include components/cards/simple-insight-card.html insight=founders_journey %}
+    {% include components/cards/universal-card.html
+       item=founders_journey
+       type="insight"
+       variant="simple"
+       context="home-featured"
+       config_set="universal-card" %}
   {% else %}
     <div class="insight-card insight-card--founders-journey insight-card--placeholder">
       <div class="insight-card__content">
@@ -63,7 +73,12 @@
   <!-- Location Intelligence -->
   {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
   {% if location_intelligence %}
-    {% include components/cards/simple-insight-card.html insight=location_intelligence %}
+    {% include components/cards/universal-card.html
+       item=location_intelligence
+       type="insight"
+       variant="simple"
+       context="home-featured"
+       config_set="universal-card" %}
   {% else %}
     <div class="insight-card insight-card--location-intelligence insight-card--placeholder">
       <div class="insight-card__content">
@@ -75,7 +90,12 @@
   <!-- Market Momentum -->
   {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
   {% if market_momentum %}
-    {% include components/cards/simple-insight-card.html insight=market_momentum %}
+    {% include components/cards/universal-card.html
+       item=market_momentum
+       type="insight"
+       variant="simple"
+       context="home-featured"
+       config_set="universal-card" %}
   {% else %}
     <div class="insight-card insight-card--market-momentum insight-card--placeholder">
       <div class="insight-card__content">

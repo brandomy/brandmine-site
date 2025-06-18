@@ -30,7 +30,12 @@
 
       <div class="related-insights-list">
         {% for related in related_insights %}
-          {% include components/cards/simple-insight-card.html insight=related %}
+          {% include components/cards/universal-card.html
+             item=related
+             type="insight"
+             variant="compact"
+             context="sidebar"
+             config_set="universal-card" %}
         {% endfor %}
       </div>
 

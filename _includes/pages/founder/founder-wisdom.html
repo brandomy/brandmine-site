@@ -3,10 +3,11 @@ SECTION: Founder Wisdom
 PURPOSE: Displays inspirational quotes from the founder
 
 DEPENDENCIES:
-- components/cards/founder-quote-card.html
+- components/cards/universal-card.html
 - Data: page.quotes (array)
 
 NOTES: Only renders if quotes exist in front matter
+MIGRATION: Updated to use universal card system
 {% endcomment %}
 
 {% if page.quotes and page.quotes.size > 0 %}
@@ -19,12 +20,16 @@ NOTES: Only renders if quotes exist in front matter
     
     <div class="founder-wisdom__quotes">
       {% for quote in page.quotes limit:3 %}
-        {% include components/cards/founder-quote-card.html 
-           quote=quote 
-           founder=page 
-           style="inline" 
-           show_context=true 
-           show_attribution=true %}
+        {% comment %} Create quote data object for universal card {% endcomment %}
+        {% assign quote_data = page %}
+        {% assign quote_data = quote_data | assign: "current_quote", quote %}
+        
+        {% include components/cards/universal-card.html
+           item=quote_data
+           type="founder"
+           variant="quote-focus"
+           context="wisdom"
+           config_set="universal-card" %}
       {% endfor %}
     </div>
   </div>

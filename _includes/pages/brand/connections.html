@@ -82,16 +82,12 @@ DEPENDENCIES:
         {% if matching_brands.size > 0 %}
         <div class="related-brands">
           {% for related_brand in matching_brands limit: 3 %}
-            <div class="brand-card brand-card--compact">
-              <h4 class="brand-card__name">
-                <a href="{{ site.baseurl }}/{{ brand.lang }}/brands/{{ related_brand.ref }}/">
-                  {{ related_brand.name }}
-                </a>
-              </h4>
-              {% if related_brand.description %}
-                <p class="brand-card__description">{{ related_brand.description | truncate: 100 }}</p>
-              {% endif %}
-            </div>
+            {% include components/cards/universal-card.html
+               item=related_brand
+               type="brand"
+               variant="compact"
+               context="sidebar"
+               config_set="universal-card" %}
           {% endfor %}
         </div>
         {% endif %}

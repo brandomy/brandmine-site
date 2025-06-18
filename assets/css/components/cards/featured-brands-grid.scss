@@ -7,25 +7,28 @@
   width: 100%;
 }
 
-/* Make hero cards span 2 columns on larger screens */
+/* Make hero variant universal cards span 2 columns on larger screens */
 @media (width >= 992px) {
-  .featured-brands-grid .hero-brand-card {
+  .featured-brands-grid .universal-card--hero,
+  .featured-brands-grid .universal-card[data-variant="hero"] {
     grid-column: span 2;
   }
 }
 
 /* Add special styling for mixed mode */
-.featured-brands-section .hero-brand-card {
+.featured-brands-section .universal-card--hero,
+.featured-brands-section .universal-card[data-variant="hero"] {
   margin-bottom: var(--space-8);
 }
 
-/* Ensure consistent height for standard cards in grid view */
-.featured-brands-grid .brand-card {
+/* Ensure consistent height for standard universal cards in grid view */
+.featured-brands-grid .universal-card {
   height: 340px;
 }
 
-/* Allow hero cards to have flexible height */
-.featured-brands-grid .hero-brand-card {
+/* Allow hero variant universal cards to have flexible height */
+.featured-brands-grid .universal-card--hero,
+.featured-brands-grid .universal-card[data-variant="hero"] {
   height: auto;
   min-height: 500px;
 }

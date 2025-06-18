@@ -20,9 +20,10 @@
       {% assign team_data = site.data.translations[page.lang].team %}
       {% for member_entry in team_data.members %}
         {% assign member = member_entry[1] %}
-        {% include components/cards/team-member-card.html
-           member=member
-           lang=page.lang %}
+        {% include components/cards/universal-card.html
+           item=member
+           type="team-member"
+           variant="standard" %}
       {% endfor %}
     </div>
 

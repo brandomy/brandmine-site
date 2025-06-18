@@ -9,7 +9,7 @@
   Dependencies:
     - Translation keys: home.featured_case_studies.*
     - Data: _data/case_studies.yml
-    - Component: components/carousel-universal.html
+    - Component: components/carousels/carousel-universal.html
     - Card Template: components/cards/case-study-card.html
   
   Usage:
@@ -29,8 +29,8 @@
 {% assign case_studies = site.data.case_studies[current_lang] | where: "featured", true | limit: 4 %}
 
 {% comment %} Use universal carousel component {% endcomment %}
-{% include components/carousel-universal.html 
+{% include components/carousels/carousel-universal.html 
    items=case_studies 
    component_type="case-studies"
-   card_template="components/cards/universal-content-card.html"
+   card_template="components/cards/universal-card.html"
    section_id="homepage-case-studies" %}

@@ -13,7 +13,12 @@
 
     <div class="insights-grid insights-grid--3col">
       {% for insight in attributes_insights %}
-        {% include components/cards/insight-card.html insight=insight %}
+        {% include components/cards/universal-card.html
+           item=insight
+           type="insight"
+           variant="standard"
+           context="grid"
+           config_set="universal-card" %}
       {% endfor %}
     </div>
 

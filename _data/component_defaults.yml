@@ -149,6 +149,86 @@ cards:
     image_aspect_ratio: "3:2"
     tag_limit: 2
 
+  # Universal Card - Primary Configuration (THE UNIVERSAL SYSTEM)
+  universal-card:
+    # Brand configuration with sophisticated features
+    brand:
+      layout_variant: "full-hero-with-overlay"
+      description_words: 25
+      quote_words: 40
+      tag_limit: 4
+      show_metric_overlay: true
+      show_logo_corner: true
+      show_founder_quote: true
+      enable_split_footer: true
+    
+    # Insight configuration with category styling
+    insight:
+      layout_variant: "full-hero-with-category"
+      excerpt_words: 25
+      description_words: 25
+      tag_limit: 3
+      show_category_border: true
+      show_icon_badge: true
+      show_reading_time: true
+      show_tags: true
+    
+    # Founder configuration with generation badges
+    founder:
+      layout_variant: "portrait-focus"
+      bio_words: 30
+      quote_words: 40
+      expertise_limit: 3
+      language_limit: 2
+      show_generation_badge: true
+      show_achievement_highlight: true
+      show_skill_cloud: true
+    
+    # Testimonial configuration with quote emphasis
+    testimonial:
+      layout_variant: "quote-focus"
+      quote_words: 200
+      show_quote_emphasis: true
+      show_attribution: true
+      show_impact_grid: true
+    
+    # Case study configuration with large metrics
+    case-study:
+      layout_variant: "professional-metrics"
+      description_words: 20
+      metrics_limit: 2
+      show_timeline: true
+      show_large_metrics: true
+      show_professional_styling: true
+    
+    # Dimension configuration with icon systems
+    dimension:
+      layout_variant: "icon-system"
+      description_words: 15
+      show_color_coding: true
+      show_icon_badge: true
+      show_count_indicator: true
+    
+    # Entry configuration for journal/blog posts
+    entry:
+      layout_variant: "standard-article"
+      excerpt_words: 25
+      description_words: 25
+      tag_limit: 3
+      show_date: true
+      show_author: true
+      show_reading_time: true
+      show_tags: true
+    
+    # Team member configuration
+    team-member:
+      layout_variant: "professional-profile"
+      bio_words: 80
+      show_role: true
+      show_portrait: true
+      show_skills: true
+      show_social_links: true
+
   # Universal Card v2.0 Configuration (Legacy - maintained for compatibility)
   universal-card-v2:
     # Global defaults
@@ -475,6 +555,33 @@ cards:
       excerpt_words: 45
       show_author: true
       show_date: true
+
+    # AUTHOR CARDS - 5 sections, journal profile focus
+    author:
+      # Layout configuration
+      layout_variant: "journal-profile"
+      sections:
+        header:
+          show_portrait: true
+          show_name: true
+        content:
+          show_role: true
+          show_bio: true
+          bio_words: 120
+        highlights:
+          show_highlights: true
+          highlights_limit: 5
+        meta:
+          show_attribution: true
+        social:
+          show_linkedin: true
+          show_social_links: true
+        footer:
+          show_journal_link: false
+      # CSS generation
+      css_modifiers: ["author", "journal-profile", "circular-portrait"]
+      enable_portrait_focus: true
+      enable_social_links: true
 
 
 

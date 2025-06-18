@@ -21,7 +21,7 @@ Parameters:
 
 Dependencies:
 - CSS: pages/founders/featured-founders.scss
-- Component: components/cards/featured-founder-card.html
+- Component: components/cards/universal-card.html
 - Data: site.data.translations for UI labels
 - Collection: site.founders filtered by featured flag
 
@@ -60,7 +60,12 @@ Last Updated: 2025-06-03
     <div class="featured-founders__grid">
       {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: limit %}
       {% for founder in featured_founders %}
-        {% include components/cards/featured-founder-card.html founder=founder %}
+        {% include components/cards/universal-card.html
+           item=founder
+           type="founder"
+           variant="featured"
+           context="featured-grid"
+           config_set="universal-card" %}
       {% endfor %}
     </div>
 

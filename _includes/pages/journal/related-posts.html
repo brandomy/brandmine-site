@@ -63,7 +63,12 @@
     
     <div class="related-posts__grid">
       {% for post in related_posts limit: limit %}
-        {% include components/cards/entry-card.html item=post %}
+        {% include components/cards/universal-card.html
+           item=post
+           type="entry"
+           variant="standard"
+           context="grid"
+           config_set="universal-card" %}
       {% endfor %}
     </div>
     

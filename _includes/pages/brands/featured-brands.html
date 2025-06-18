@@ -17,6 +17,11 @@
 <div class="featured-brands__grid">
   {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 4 %}
   {% for brand in featured_brands %}
-    {% include components/cards/hero-brand-card.html brand=brand %}
+    {% include components/cards/universal-card.html
+       item=brand
+       type="brand"
+       variant="hero"
+       context="featured-grid"
+       config_set="universal-card" %}
   {% endfor %}
 </div>

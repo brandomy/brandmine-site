@@ -17,7 +17,7 @@ STATUS: Phase 1 Testing
   <section class="test-section">
     <h3>1. Brand Card Enhanced (10 sections)</h3>
     <div class="test-card-container">
-      {% include components/cards/universal-card-enhanced.html 
+      {% include components/cards/universal-card.html 
          item=test_brand 
          type="brand" 
          variant="featured"
@@ -32,7 +32,7 @@ STATUS: Phase 1 Testing
   <section class="test-section">
     <h3>2. Insight Card Enhanced (8 sections)</h3>
     <div class="test-card-container">
-      {% include components/cards/universal-card-enhanced.html 
+      {% include components/cards/universal-card.html 
          item=test_insight 
          type="insight" 
          variant="standard"
@@ -47,7 +47,7 @@ STATUS: Phase 1 Testing
   <section class="test-section">
     <h3>3. Founder Card Enhanced (10 sections)</h3>
     <div class="test-card-container">
-      {% include components/cards/universal-card-enhanced.html 
+      {% include components/cards/universal-card.html 
          item=test_founder 
          type="founder" 
          variant="standard"
@@ -62,7 +62,7 @@ STATUS: Phase 1 Testing
   <section class="test-section">
     <h3>4. Case Study Card Enhanced (8 sections)</h3>
     <div class="test-card-container">
-      {% include components/cards/universal-card-enhanced.html 
+      {% include components/cards/universal-card.html 
          item=test_case_study 
          type="case-study" 
          variant="standard"
@@ -79,7 +79,7 @@ STATUS: Phase 1 Testing
     <div class="test-card-container">
       {% comment %} Create test testimonial data {% endcomment %}
       {% assign test_testimonial = site.data.testimonials.en.first | default: test_case_study %}
-      {% include components/cards/universal-card-enhanced.html 
+      {% include components/cards/universal-card.html 
          item=test_testimonial 
          type="testimonial" 
          variant="standard"
@@ -103,7 +103,7 @@ STATUS: Phase 1 Testing
         {% assign test_dimension = test_dimension | map: "count", "12" %}
         {% assign test_dimension = test_dimension | map: "type", "sectors" %}
       {% endunless %}
-      {% include components/cards/universal-card-enhanced.html 
+      {% include components/cards/universal-card.html 
          item=test_dimension 
          type="dimension" 
          variant="standard"

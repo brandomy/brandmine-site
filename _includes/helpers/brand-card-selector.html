@@ -12,7 +12,7 @@ RETURNS: Renders the appropriate brand card component (hero-brand-card, featured
 
 DEPENDENCIES:
 - Data: brand.featured_level (integer), brand.featured (boolean)
-- Includes: components/cards/hero-brand-card.html, components/cards/featured-brand-card.html, components/cards/brand-card.html
+- Includes: components/cards/universal-card.html (single universal system)
 - Variables: None
 
 EXAMPLE:
@@ -33,11 +33,24 @@ EXAMPLE:
   {% assign card_type = "basic" %}
 {% endif %}
 
+{% comment %} Use universal card enhanced system with appropriate variants {% endcomment %}
 {% case card_type %}
   {% when "hero" %}
-    {% include components/cards/hero-brand-card.html brand=include.brand %}
+    {% include components/cards/universal-card.html
+       item=include.brand
+       type="brand"
+       variant="hero"
+       config_set="universal-card" %}
   {% when "featured" %}
-    {% include components/cards/featured-brand-card.html brand=include.brand %}
+    {% include components/cards/universal-card.html
+       item=include.brand
+       type="brand"
+       variant="featured"
+       config_set="universal-card" %}
   {% else %}
-    {% include components/cards/brand-card.html brand=include.brand %}
+    {% include components/cards/universal-card.html
+       item=include.brand
+       type="brand"
+       variant="standard"
+       config_set="universal-card" %}
 {% endcase %}

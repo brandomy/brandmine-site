@@ -27,7 +27,7 @@ languages: ["pt", "es", "zh"]
 portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "formal"
+    name: "farming"
     alt: "爱德华多·桑托斯在有机农场田地中工作"
     ext: "jpg"
   headshot:

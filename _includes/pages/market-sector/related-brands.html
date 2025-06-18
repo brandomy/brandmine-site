@@ -1,6 +1,7 @@
 {% comment %}
   Market-Sector Related Brands
   Displays brands related to a market-sector intersection.
+  MIGRATION: Updated to use universal card system
 {% endcomment %}
 
 <div class="panel panel--olive-soft">
@@ -14,7 +15,12 @@
       <div class="brand-card-grid brand-card-grid--3col">
         {% for brand in related_brands limit:3 %}
           {% if brand.country_code %}
-            {% include components/cards/brand-card.html brand=brand %}
+            {% include components/cards/universal-card.html
+               item=brand
+               type="brand"
+               variant="standard"
+               context="market-sector"
+               config_set="universal-card" %}
           {% endif %}
         {% endfor %}
       </div>

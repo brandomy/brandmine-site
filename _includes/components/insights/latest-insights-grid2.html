@@ -42,7 +42,12 @@
 
   {% if insights.size > 0 %}
     {% for insight in insights %}
-      {% include components/cards/insight-card.html insight=insight %}
+      {% include components/cards/universal-card.html
+         item=insight
+         type="insight"
+         variant="standard"
+         context="grid"
+         config_set="universal-card" %}
     {% endfor %}
   {% else %}
     <div class="insights-grid__empty">

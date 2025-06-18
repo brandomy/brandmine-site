@@ -16,7 +16,7 @@
   
   Dependencies:
     - Translation keys: home.founder_focus.*
-    - Component: components/carousel-universal.html
+    - Component: components/carousels/carousel-universal.html
     - Card Template: components/cards/founder-card.html
     - Helper: helpers/t.html
   
@@ -44,11 +44,11 @@
 {% endif %}
 
 {% if founders.size > 0 %}
-  {% comment %} Use universal carousel component with new universal content card {% endcomment %}
-  {% include components/carousel-universal.html 
+  {% comment %} Use universal carousel component with enhanced universal card {% endcomment %}
+  {% include components/carousels/carousel-universal.html 
      items=founders 
      component_type="founder-stories"
-     card_template="components/cards/universal-content-card.html"
+     card_template="components/cards/universal-card.html"
      section_id="homepage-founder-stories" %}
 {% else %}
   <!-- Fallback placeholder when no founders are available -->

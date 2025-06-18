@@ -38,10 +38,14 @@
   <!-- Brand Spotlight -->
   {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
   {% if brand_spotlight %}
-    {% include components/cards/tagged-insight-card.html insight=brand_spotlight %}
+    {% include components/cards/universal-card.html
+       item=brand_spotlight
+       type="insight"
+       variant="featured"
+       config_set="universal-card" %}
   {% else %}
-    <div class="insight-card insight-card--brand-spotlight insight-card--placeholder">
-      <div class="insight-card__content">
+    <div class="universal-card universal-card--insight universal-card--placeholder insight-brand-spotlight">
+      <div class="universal-card__content">
         <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
       </div>
     </div>
@@ -50,10 +54,14 @@
   <!-- Founder's Journey -->
   {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
   {% if founders_journey %}
-    {% include components/cards/tagged-insight-card.html insight=founders_journey %}
+    {% include components/cards/universal-card.html
+       item=founders_journey
+       type="insight"
+       variant="featured"
+       config_set="universal-card" %}
   {% else %}
-    <div class="insight-card insight-card--founders-journey insight-card--placeholder">
-      <div class="insight-card__content">
+    <div class="universal-card universal-card--insight universal-card--placeholder insight-founders-journey">
+      <div class="universal-card__content">
         <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
       </div>
     </div>
@@ -62,10 +70,14 @@
   <!-- Location Intelligence -->
   {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
   {% if location_intelligence %}
-    {% include components/cards/tagged-insight-card.html insight=location_intelligence %}
+    {% include components/cards/universal-card.html
+       item=location_intelligence
+       type="insight"
+       variant="featured"
+       config_set="universal-card" %}
   {% else %}
-    <div class="insight-card insight-card--location-intelligence insight-card--placeholder">
-      <div class="insight-card__content">
+    <div class="universal-card universal-card--insight universal-card--placeholder insight-location-intelligence">
+      <div class="universal-card__content">
         <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
       </div>
     </div>
@@ -74,10 +86,14 @@
   <!-- Market Momentum -->
   {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
   {% if market_momentum %}
-    {% include components/cards/tagged-insight-card.html insight=market_momentum %}
+    {% include components/cards/universal-card.html
+       item=market_momentum
+       type="insight"
+       variant="featured"
+       config_set="universal-card" %}
   {% else %}
-    <div class="insight-card insight-card--market-momentum insight-card--placeholder">
-      <div class="insight-card__content">
+    <div class="universal-card universal-card--insight universal-card--placeholder insight-market-momentum">
+      <div class="universal-card__content">
         <p>{% include helpers/t.html key="insights.no_insights" fallback="No insights available yet." %}</p>
       </div>
     </div>

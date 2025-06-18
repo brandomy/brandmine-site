@@ -32,7 +32,12 @@
     {% if recent_posts.size > 0 %}
       <div class="journal-entries-grid">
         {% for post in recent_posts %}
-          {% include components/cards/entry-card.html item=post %}
+          {% include components/cards/universal-card.html
+             item=post
+             type="entry"
+             variant="standard"
+             context="grid"
+             config_set="universal-card" %}
         {% endfor %}
       </div>
       

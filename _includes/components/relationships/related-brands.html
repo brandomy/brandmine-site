@@ -67,7 +67,12 @@
 
       <div class="{{ class_name }}__list">
         {% for brand in related_brands %}
-          {% include components/cards/related-brand-card.html brand=brand parent_lang=parent.lang %}
+          {% include components/cards/universal-card.html
+             item=brand
+             type="brand"
+             variant="compact"
+             context="sidebar"
+             config_set="universal-card" %}
         {% endfor %}
       </div>
 

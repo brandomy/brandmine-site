@@ -18,7 +18,12 @@
   {% if type_insights.size > 0 %}
     <div class="insights-grid">
       {% for insight in type_insights %}
-        {% include components/cards/insight-card.html insight=insight %}
+        {% include components/cards/universal-card.html
+           item=insight
+           type="insight"
+           variant="standard"
+           context="grid"
+           config_set="universal-card" %}
       {% endfor %}
     </div>
   {% else %}

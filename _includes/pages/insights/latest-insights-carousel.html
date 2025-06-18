@@ -13,9 +13,11 @@
   Dependencies:
   - Translation: insights.latest_insights_* keys
   - CSS: assets/css/pages/insights/latest-insights-carousel.scss
-  - JavaScript: assets/js/components/insights-carousel.js
-  - Components: components/cards/insight-card.html
+  - JavaScript: assets/js/components/carousel-universal.js
+  - Components: components/cards/universal-card.html
   - Collection: site.insights
+  
+  MIGRATION: Updated to use universal card and carousel systems
   
   Notes:
   - Shows navigation dots if more than 3 insights
@@ -45,7 +47,12 @@
         {% if insights.size > 0 %}
           <div class="latest-insights-carousel__track">
             {% for insight in insights %}
-              {% include components/cards/insight-card.html insight=insight %}
+              {% include components/cards/universal-card.html
+                 item=insight
+                 type="insight"
+                 variant="featured"
+                 context="carousel"
+                 config_set="universal-card" %}
             {% endfor %}
           </div>
         {% else %}

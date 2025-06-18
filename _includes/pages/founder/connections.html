@@ -6,12 +6,13 @@
   Dependencies:
     - assets/css/pages/founder/connections.scss
     - helpers/t.html for translations
-    - components/cards/founder-card.html
-    - components/cards/insight-card.html
+    - components/cards/universal-card.html
 
   Usage examples:
     {% include pages/founder/connections.html %}
     {% include pages/founder/connections.html founder=page %}
+  
+  MIGRATION: Updated to use universal card system
 {% endcomment %}
 
 {% assign founder = include.founder | default: page %}
@@ -32,7 +33,12 @@
     
     <div class="founder-connections__grid">
       {% for related_founder in same_market_founders %}
-        {% include components/cards/founder-card.html founder=related_founder %}
+        {% include components/cards/universal-card.html
+           item=related_founder
+           type="founder"
+           variant="compact"
+           context="connections"
+           config_set="universal-card" %}
       {% endfor %}
     </div>
   </div>
@@ -76,7 +82,12 @@
     
     <div class="founder-connections__grid">
       {% for insight in founder_insights %}
-        {% include components/cards/simple-insight-card.html insight=insight %}
+        {% include components/cards/universal-card.html
+           item=insight
+           type="insight"
+           variant="compact"
+           context="connections"
+           config_set="universal-card" %}
       {% endfor %}
     </div>
   </div>
@@ -94,7 +105,12 @@
       {% for connection_ref in founder.connections %}
         {% assign connected_founder = site.founders | where: "ref", connection_ref | where: "lang", founder.lang | first %}
         {% if connected_founder %}
-          {% include components/cards/founder-card.html founder=connected_founder %}
+          {% include components/cards/universal-card.html
+             item=connected_founder
+             type="founder"
+             variant="compact"
+             context="network"
+             config_set="universal-card" %}
         {% endif %}
       {% endfor %}
     </div>

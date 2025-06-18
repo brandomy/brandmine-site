@@ -13,12 +13,12 @@
     
   Dependencies:
     - Configuration: _data/component_defaults.yml (carousels section)
-    - CSS: assets/css/components/carousel-universal.scss
+    - CSS: assets/css/components/carousels/carousel-universal.scss
     - JavaScript: assets/js/components/carousel-universal.js
     - Translation keys: carousel.* (for accessibility)
     
   Usage:
-    {% include components/carousel-universal.html 
+    {% include components/carousels/carousel-universal.html 
        items=case_studies 
        component_type="case-studies"
        card_template="components/cards/case-study-card.html"
@@ -51,13 +51,18 @@
 {% assign arrow_class = config.arrow_class | default: universal_config.arrow_class %}
 
 {% comment %} Calculate pagination dots based on desktop breakpoint (primary) {% endcomment %}
-{% assign total_dots = include.items.size | divided_by: cards_per_view_desktop | ceil %}
+{% comment %} Fix for Liquid integer division: 4÷3=1, but we need ceil(4/3)=2 {% endcomment %}
+{% assign remainder = include.items.size | modulo: cards_per_view_desktop %}
+{% assign total_dots = include.items.size | divided_by: cards_per_view_desktop %}
+{% if remainder > 0 %}
+  {% assign total_dots = total_dots | plus: 1 %}
+{% endif %}
 {% assign min_dots = 1 %}
 {% assign total_dots = total_dots | at_least: min_dots %}
 
-{% comment %} Only show pagination if we have more than one effective screen {% endcomment %}
+{% comment %} Show pagination if we have more items than can fit in one view {% endcomment %}
 {% assign show_pagination = false %}
-{% if total_dots > 1 %}
+{% if include.items.size > cards_per_view_desktop %}
   {% assign show_pagination = true %}
 {% endif %}
 
@@ -79,7 +84,21 @@
            role="tabpanel"
            aria-roledescription="slide"
            aria-label="{% include helpers/t.html key='carousel.slide_label' fallback='Slide' %} {{ forloop.index }} {% include helpers/t.html key='carousel.of_label' fallback='of' %} {{ include.items.size }}">
-        {% include {{ include.card_template }} item=item %}
+        {% comment %} Pass type parameter for universal-card components {% endcomment %}
+        {% if include.card_template contains "universal" %}
+          {% case include.component_type %}
+            {% when "case-studies" %}
+              {% include {{ include.card_template }} item=item type="case-study" context="carousel" %}
+            {% when "featured-brands" %}
+              {% include {{ include.card_template }} item=item type="brand" context="carousel" variant="featured" %}
+            {% when "founder-stories" %}
+              {% include {{ include.card_template }} item=item type="founder" context="carousel" %}
+            {% else %}
+              {% include {{ include.card_template }} item=item context="carousel" %}
+          {% endcase %}
+        {% else %}
+          {% include {{ include.card_template }} item=item %}
+        {% endif %}
       </div>
     {% endfor %}
   </div>
