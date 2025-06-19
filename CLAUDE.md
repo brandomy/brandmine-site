@@ -1,303 +1,177 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Master project guide for Claude Code collaboration on Brandmine.
 
 ---
 
 # 🧭 Project Overview
 
-**Brandmine** is a multilingual, mobile-first Jekyll website showcasing narrative-rich consumer brands from BRICS+ countries, emphasizing founder stories and multidimensional discovery.
+**Brandmine** is a multilingual Jekyll site showcasing BRICS+ consumer brands with founder stories and dimension-based discovery.
 
 ## Business Mission
+Illuminate exceptional founder-led brands from BRICS+ countries, connecting them globally with partners and capital for growth.
 
-To illuminate exceptional founder-led brands from BRICS+ countries, connecting them globally with partners and capital they need to grow beyond borders.
-
-The site supports three languages (English, Russian, Chinese), dimension-based discovery (market, sector, attribute, signal), and MapLibre integration for interactive maps.
+**Architecture**: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment.
 
 ---
 
-# 🗂 Key Architecture
+# 🗂 Key Structure
 
 ```
 _brands/{lang}/           — Brand profiles
-_founders/{lang}/         — Founder profiles  
-_dimensions/{lang}/{type}/ — Taxonomy definitions
-_posts/                   — Journal content (Jekyll posts)
+_founders/{lang}/         — Founder profiles
+_dimensions/{lang}/{type}/ — Taxonomy (markets, sectors, attributes, signals)
+_insights/{lang}/         — Blog content
 _data/                    — Configuration and translations
 _includes/                — Reusable components
-_layouts/                 — Page templates
-_insights/{lang}/         — Blog content
-pages/{lang}/             — Main pages
 assets/                   — CSS, JS, images
-_scripts/                 — Automation tools
 ```
-
-See `_docs/technical-reference.md` for complete directory structure.
 
 ---
 
 # 🏷️ Dimensions System
 
-Dimensions are Markdown files in `_dimensions/{lang}/{type}/` defining the taxonomy:
+**Four dimension types** (never create new types):
+- `markets` — Geographic regions (brazil, russia, china)
+- `sectors` — Industries (wine, natural-beauty, artisanal-spirits)
+- `attributes` — Brand qualities (founder-led, heritage-brand)
+- `signals` — Growth indicators (export-ready, franchise-ready)
 
-**Valid dimension types:**
-- `markets` — Geographic regions (brazil, russia, china, etc.)
-- `sectors` — Industries (wine, natural-beauty, artisanal-spirits, etc.)  
-- `attributes` — Brand qualities (founder-led, heritage-brand, etc.)
-- `signals` — Growth indicators (export-ready, franchise-ready, etc.)
-
-Brands reference dimensions in front matter:
+**Brand taxonomy usage:**
 ```yaml
----
-title: "TeaTime"
-sectors: ["artisanal-spirits"]
+sectors: ["wine"]
 markets: ["russia"]
 attributes: ["founder-led"]
 signals: ["export-ready"]
----
 ```
 
-**CRITICAL RULES:**
-- Use only the four approved dimension types
-- Reference existing dimension slugs found in `_dimensions/{lang}/{type}/`
-- No new dimension types without architectural review
+---
+
+# 🎴 Universal Component System
+
+**Single component handles all card types:**
+```liquid
+{% include components/cards/universal-card.html
+   item=content_object
+   type="brand|insight|founder|testimonial"
+   variant="standard|featured|compact|quote-focus"
+   config_set="universal-card" %}
+```
+
+**Configuration-driven behavior** via `_data/component_defaults.yml`.
 
 ---
 
 # 📁 Data-Driven Architecture
 
-Brandmine uses **configuration over conditionals** - 100% centralized control achieved June 2025.
+**Core principle**: Configuration over conditionals.
 
-**Key Pattern:**
+**Current pattern:**
 ```liquid
-{% comment %} CURRENT PATTERN - Use this {% endcomment %}
 {% include helpers/page-sections.html page_type="brands" %}
-
-{% comment %} DEPRECATED - No longer used anywhere {% endcomment %}
-{% for section in page.sections %}
-  {% include pages/brands/{{ section }}.html %}
-{% endfor %}
 ```
 
-## Centralized Configuration
-
-- `_data/page_sections.yml` - Section control for all content types
-- `_data/component_defaults.yml` - Component behavior defaults  
-- `_data/dimensions_config.yml` - Dimension ordering and metadata
-- `_data/translations/{lang}.yml` - UI text and labels
-
-## Linear Layout Requirements
-
-**All layouts use simple section flow - NO SIDEBARS:**
-- Use panel wrapping for all content sections
-- Semantic `<section>` tags with IDs and ARIA attributes
-- Mobile-first linear flow ensures consistency
+**Centralized configuration:**
+- `_data/page_sections.yml` - Section control
+- `_data/component_defaults.yml` - Component behavior
+- `_data/translations/{lang}.yml` - UI text
 
 ---
 
-# 🌐 Multilingual Logic
-
-All content exists in language-specific subfolders (`/en/`, `/ru/`, `/zh/`) with dynamic data loading based on `page.lang`.
-
-**Translation Helper Pattern:**
-```liquid
-{% include helpers/t.html key="brands.hero_title" fallback="Discover Brands" %}
-```
-
-Language switcher and permalinks automatically respect language prefixing.
-
----
-
-# 🎨 Essential Patterns
+# 🎨 Essential Standards
 
 ## File Naming
 - **Files**: `kebab-case.html`, `kebab-case.scss`
-- **Content**: `[country-code]-[brand-name].md` (e.g., `ru-teatime.md`)
-- **Images**: `purpose-description.jpg` (e.g., `hero-storefront.jpg`)
-- **Collections**: Brands, founders, insights, dimensions in language-specific folders
+- **Content**: `[country-code]-[brand-name].md`
+- **Images**: `purpose-description.jpg`
 
-## Front Matter Standards
+## Front Matter
 ```yaml
 ---
-layout: brand-profile    # Required: layout type
-title: "Brand Name"      # Required: display name
-ref: "xx-brand-slug"     # Required: global identifier
-lang: en                 # Required: language code
-country_code: "ru"       # Required: ISO country code
-permalink: /en/brands/ru-brand/  # Required: full URL path
+layout: brand-profile
+title: "Brand Name"
+ref: "xx-brand-slug"
+lang: en
+country_code: "ru"
+permalink: /en/brands/ru-brand/
 
-# Semantic image structure (all content types)
+# Semantic image structure
 images:
   hero:
-    name: "descriptive-name"
-    alt: "Alt text description"
+    name: "storefront"
+    alt: "Description"
     ext: "jpg"
 
 # Taxonomy (existing slugs only)
 sectors: ["wine"]
 markets: ["russia"]
-attributes: ["founder-led"]
-signals: ["export-ready"]
 ---
 ```
 
-## CSS Standards
-- **Design tokens**: Use CSS custom properties from `assets/css/tokens/tokens.scss`
-- **BEM methodology**: `.block__element--modifier` pattern
-- **Color system**: Primary teal, secondary orange, dimension-specific colors
-- **Typography**: Language-specific font stacks (PT fonts, Noto for Chinese)
-
-### Color Assignments
+## Color System
 | Type | Color | CSS Property |
 |------|-------|--------------|
-| **Dimensions:** | | |
-| Sectors | Olive Green | `--olive-*` |
-| Markets | Sky Blue | `--sky-*` |
-| Attributes | Secondary Orange | `--secondary-*` |
-| Signals | Accent Indigo | `--accent-*` |
-| **Insights:** | | |
-| Brand Spotlight | Amber/Orange | `--secondary-*` |
-| Founder's Journey | Accent Purple | `--accent-*` |
-| Market Momentum | Olive Green | `--olive-*` |
-| Location Intelligence | Sky Blue | `--sky-*` |
-
-See `_docs/technical-reference.md` for complete patterns.
+| **Sectors** | Olive Green | `--olive-*` |
+| **Markets** | Sky Blue | `--sky-*` |
+| **Attributes** | Orange | `--secondary-*` |
+| **Signals** | Indigo | `--accent-*` |
 
 ---
 
-# 🖼️ Image Strategy
+# 💻 Essential Commands
 
-**Semantic Structure (Universal Pattern):**
-```yaml
-images:
-  hero:
-    name: "storefront"    # Context-aware: scene only
-    alt: "Accessibility description"
-    ext: "jpg"
-  founder:                # Standardized key (enforced by validation)
-    name: "formal"        # Context-aware: role only
-    ext: "jpg"
-```
-
-**Context-Aware Naming:** Directory provides context, filename describes content only
-- **Heroes:** Scene (`storefront`, `market`, `vineyard`) 
-- **Logos:** Variant (`color`, `mono`, `brand`)
-- **Founders:** Role (`formal`, `traditional`, `working`)
-
-**Processing:** `_scripts/core/process_images.sh [collection] [identifier]`
-
-**Status:** 100% standardized across 52 content files, zero violations
-
----
-
-# 💻 Quick Development
-
-## Quick Development
-
-### Core Commands
 ```bash
-# Development server with live reload
+# Development
 bundle exec jekyll serve --livereload
 
-# Production build (target: 12-13 seconds)
+# Production build (target: <15s)
 JEKYLL_ENV=production bundle exec jekyll build
 
-# Complete validation suite
+# Validation
 _scripts/core/pre-commit_check.sh
 
-# Image validation (enforced)
-_scripts/core/pre-commit_check.sh  # Validates naming standards
-
-# Image processing (unified script)
+# Image processing
 _scripts/core/process_images.sh [collection] [identifier]
-```
 
-### Data Management
-```bash
-# Update all search indexes and JSON data
+# Data generation
 _scripts/core/generate-all-json.py
-
-# Language consistency validation
-_scripts/validation/language_consistency_checker.py
-
-# Performance optimization utilities
-_scripts/utilities/generate-language-map.py
-_scripts/utilities/generate-navigation-cache.py
 ```
 
-See `_docs/developer-daily-workflows.md` for step-by-step content creation processes.
+---
+
+# 📚 Documentation Architecture
+
+**4-document system** (find anything in 30 seconds):
+- `_docs/brandmine-guide.md` - Master navigation hub
+- `_docs/setup-and-workflows.md` - Complete workflows
+- `_docs/technical-standards.md` - Architecture patterns and standards
+- `_docs/troubleshooting-and-tools.md` - Problem resolution
+
+**Operational guides**: `_templates/tutorials/` for step-by-step workflows.
 
 ---
 
-# 📊 Content Collections
+# 🎯 Key Development Principles
 
-All collections follow identical architectural patterns with complete trilingual support:
-
-**Content Types:**
-- **Insights:** `_insights/{lang}/[article-slug].md` - Blog articles in 4 categories (Brand Spotlight, Founder's Journey, Market Momentum, Location Intelligence)
-- **Brands:** `_brands/{lang}/[country-code]-[brand-name].md` - Brand profiles with business intelligence
-- **Founders:** `_founders/{lang}/[founder-id].md` - Founder narratives and achievements
-- **Dimensions:** `_dimensions/{lang}/{type}/[dimension-slug].md` - Taxonomy definitions for discovery
-
-**Current Content Inventory:**
-- **7 brands** with standardized image system ✅
-- **4 founders** with complete multilingual profiles  
-- **4 insight articles** covering market analysis and founder stories
-- **125+ dimension definitions** supporting discovery taxonomy
-- **Image System:** 100% standardized, enforced by validation ✅
-
-**Universal Implementation Patterns:**
-- Centralized section control via `_data/page_sections.yml`
-- Semantic image structure using `images:` front matter object
-- Clean YAML without embedded logic
-- Automated JSON generation for search functionality
-
----
-
-# 🧠 Claude Development Guidelines
-
-## Content Creation
-1. **Follow existing patterns** - Check similar files before creating new ones
-2. **Use centralized configuration** - Avoid hardcoded values in templates
-3. **Test all languages** - Ensure compatibility with EN/RU/ZH
-4. **Mobile-first approach** - Design for mobile, enhance for larger screens
-
-## Key Principles
-- **NO sections: arrays in content** - Use `_data/page_sections.yml` (enforced by validation)
-- **Semantic image structure** - All content uses `images:` pattern
-- **Component reuse** - Look for existing components before creating new ones
-- **Clean templates** - Data only in front matter, logic in includes
+1. **Universal components only** - Use `universal-card.html` for all cards
+2. **Configuration-driven** - Avoid hardcoded values, use `component_defaults.yml`
+3. **Mobile-first** - Linear layouts, no sidebars
+4. **Multilingual** - Test all changes across EN/RU/ZH
+5. **Performance** - Maintain <15 second builds
 
 ## Validation Workflow
 ```bash
-# Before any commit
+# Before commits
 _scripts/core/pre-commit_check.sh
 
-# Performance check (target: ~12-13s)
-time JEKYLL_ENV=production bundle exec jekyll build
+# Verify universal card usage
+grep -r "universal-card" _includes/pages/ | wc -l  # Should show 42+ references
 ```
-
----
-
-# 📚 Documentation Reference
-
-**Architecture foundation:**
-- 100% data-driven section control (migration completed June 2025)
-
-**Complete technical details:**
-- `_docs/technical-reference.md` - Architecture patterns, CSS organization, component systems
-- `_docs/developer-daily-workflows.md` - Step-by-step content creation and maintenance
-- `_docs/images.md` - Image processing and visual style standards
-- `_docs/colors.md` - Color palette and usage guidelines
-
-**Quick setup:**
-- `_docs/setup-guide.md` - Environment setup and first steps
-- `_docs/troubleshooting.md` - Common issues and solutions
 
 ---
 
 # important-instruction-reminders
-Do what has been asked; nothing more, nothing less.
-NEVER create files unless they're absolutely necessary for achieving your goal.
-ALWAYS prefer editing an existing file to creating a new one.
-NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.
+- Do what has been asked; nothing more, nothing less
+- NEVER create files unless absolutely necessary
+- ALWAYS prefer editing existing files over creating new ones
+- NEVER proactively create documentation files unless explicitly requested

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup log directory and timestamped log file
-LOG_DIR="_docs/pre_commit_checks"
+LOG_DIR="_logs/pre_commit_checks"
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 LOG_FILE="${LOG_DIR}/pre_commit_check_${TIMESTAMP}.log"
 
