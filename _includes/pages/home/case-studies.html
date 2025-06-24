@@ -1,0 +1,74 @@
+{% comment %}
+  Page Section: pages/home/case-studies.html
+  Purpose: Production-ready case studies carousel with metrics, dimension tags, and CTA buttons
+  Dependencies: case-studies-carousel.css, case-studies-carousel.js, _data/case_studies.yml
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+
+<h2 class="panel__heading-secondary" id="heading-case-studies">
+  {% include helpers/t.html key="home.case_studies.title" fallback="Success Stories" %}
+</h2>
+<p class="panel__lead-text">
+  {% include helpers/t.html key="home.case_studies.subtitle" fallback="Real transformations of founder-led brands breaking through global markets" %}
+</p>
+
+<!-- NEW CAROUSEL: Complete implementation from carousel-card-test.md -->
+<div class="universal-carousel" data-component-type="case-studies">
+  {% for case_study in site.data.case_studies[page.lang] %}
+  <div class="test-card">
+    <div class="test-card-image">
+      <img src="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg"
+           srcset="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg 400w,
+                   /assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-800w.jpg 800w"
+           sizes="(max-width: 768px) 100vw, 50vw"
+           alt="{{ case_study.images.hero.alt }}"
+           title="{{ case_study.images.hero.alt }}"
+           loading="lazy"
+           class="test-card-hero-img">
+      <!-- Two-line Metric Badge -->
+      {% if case_study.metrics and case_study.metrics.size > 0 %}
+        <div class="test-card-metric-badge">
+          <div class="metric-value">{{ case_study.metrics[0].value }}</div>
+          <div class="metric-label">{{ case_study.metrics[0].label }}</div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="test-card-content">
+      <h3 class="test-card-title">{{ case_study.title | split: ':' | first }}</h3>
+      <p class="test-card-subtitle">{{ case_study.title | split: ':' | last | strip }}</p>
+      <div class="test-card-meta">
+        {% if case_study.markets %}
+          {% for market in case_study.markets %}
+            <a href="/{{ page.lang }}/discover/markets/{{ market }}/" class="test-card-market">{{ market | capitalize }}</a>
+          {% endfor %}
+        {% endif %}
+        {% if case_study.sectors %}
+          {% for sector in case_study.sectors %}
+            <a href="/{{ page.lang }}/discover/sectors/{{ sector }}/" class="test-card-sector">{{ sector | replace: '-', ' ' | capitalize }}</a>
+          {% endfor %}
+        {% endif %}
+        {% if case_study.attributes %}
+          {% for attribute in case_study.attributes %}
+            <a href="/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="test-card-attribute">{{ attribute | replace: '-', ' ' | capitalize }}</a>
+          {% endfor %}
+        {% endif %}
+        {% if case_study.signals %}
+          {% for signal in case_study.signals %}
+            <a href="/{{ page.lang }}/discover/signals/{{ signal }}/" class="test-card-signal">{{ signal | replace: '-', ' ' | capitalize }}</a>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <!-- CTA Button -->
+      <div class="test-card-cta">
+        <a href="{{ case_study.permalink }}" class="test-card-button">
+          Read Full Story →
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Navigation Dots -->
+<div class="universal-carousel-nav" data-carousel-id="case-studies"></div>
