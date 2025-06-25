@@ -23,6 +23,11 @@ signals: ["export-ready"]
 featured: true
 featured_level: 2
 
+# Card Display Metric
+card_metric:
+  value: "4"
+  label: "个出口市场"
+
 city: "利斯特维扬卡"
 country: "ru"
 latitude: 51.8561

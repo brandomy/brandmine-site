@@ -26,6 +26,11 @@ signals: ["export-ready"]
 featured: true
 featured_level: 2
 
+# Card Display Metric
+card_metric:
+  value: "4"
+  label: "Экспортных рынка"
+
 # === LOCATION (FLATTENED) ===
 city: "Листвянка"
 country: "ru"

@@ -23,6 +23,11 @@ signals: ["export-ready"]
 featured: true
 featured_level: 2
 
+# Card Display Metric
+card_metric:
+  value: "23"
+  label: "个国家"
+
 city: "莫斯科"
 country: "ru"
 latitude: 55.7558

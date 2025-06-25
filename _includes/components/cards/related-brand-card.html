@@ -53,10 +53,10 @@ NOTES: Description truncation and display options configurable via component def
   {% if include.brand.sectors and include.brand.sectors.size > 0 %}
     {% assign brand_sector = include.brand.sectors[0] %}
     <div class="brand-related__sector">
-      {% include components/helpers/taxonomy-tag.html
-         type="sector"
-         value=brand_sector
-         class_name="brand-related" %}
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ brand_sector | slugify }}/"
+         class="brand-related__tag brand-related__tag--sector">
+        {% include helpers/dimension-name.html type="sectors" id=brand_sector %}
+      </a>
     </div>
   {% endif %}
 

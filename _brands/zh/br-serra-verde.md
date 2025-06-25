@@ -23,6 +23,11 @@ signals: []
 featured: false
 featured_level: 1
 
+# Card Display Metric
+card_metric:
+  value: "28"
+  label: "个家庭"
+
 city: "贡萨尔维斯"
 country: "br"
 latitude: -22.6569
@@ -34,7 +39,7 @@ images:
     name: "color"
     ext: "png"
   hero:
-    name: "farm-view"
+    name: "farmland"
     ext: "jpg"
   founder:
     name: "working"

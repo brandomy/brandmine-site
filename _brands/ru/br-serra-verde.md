@@ -29,6 +29,11 @@ signals: []  # Optional signals
 featured: false
 featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
+# Card Display Metric
+card_metric:
+  value: "28"
+  label: "Семей"
+
 # === LOCATION (FLATTENED) ===
 city: "Гонсалвис"
 country: "br"
@@ -42,7 +47,7 @@ images:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
   hero:
-    name: "farm-view"  # Becomes hero-farmland-400w.jpg
+    name: "farmland"  # Becomes hero-farmland-400w.jpg
     ext: "jpg"
   founder:
     name: "working"    # Becomes founder-portrait-400w.jpg

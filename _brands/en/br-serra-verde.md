@@ -29,6 +29,11 @@ signals: []  # Optional signals
 featured: true
 featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
+# Card Display Metric
+card_metric:
+  value: "28"
+  label: "Families"
+
 # === LOCATION (FLATTENED) ===
 city: "Gonçalves"
 country: "br"

@@ -1,4 +1,20 @@
 {% comment %}
+  ⚠️  DEPRECATED COMPONENT - taxonomy-tag.html
+  
+  DEPRECATED: 2025-06-25
+  REASON: Inconsistent formatting and multilingual support issues
+  REPLACEMENT: helpers/dimension-name.html with manual <a> wrapper
+  
+  MIGRATION PATTERN:
+  OLD: {% include components/helpers/taxonomy-tag.html type="sector" value=X %}
+  NEW: <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ X }}/" class="component__tag component__tag--sector">{% include helpers/dimension-name.html type="sectors" id=X %}</a>
+  
+  REMOVAL PLANNED: 2025-07-15 (after site-wide migration)
+  
+  This component will continue to work but should not be used in new code.
+  See _docs/MIGRATION-taxonomy-tags.md for detailed migration instructions.
+
+  ===== ORIGINAL DOCUMENTATION =====
   Component: components/helpers/taxonomy-tag.html
 
   Purpose: Displays a taxonomy tag with appropriate styling and link

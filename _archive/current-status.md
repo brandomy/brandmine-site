@@ -1,82 +1,59 @@
 # Brandmine Current Status
-**Last Updated**: June 18, 2025
-**Current Phase**: CASE STUDIES COMPONENT IMPLEMENTATION
+**Last Updated**: June 25, 2025
+**Current Phase**: BRAND CARDS + CASE STUDY CONSOLIDATION
 **Build Performance**: 14.2 seconds ✅
 
-## 🎯 CASE STUDIES SECTION IMPLEMENTATION IN PROGRESS
+## 🎯 CASE STUDIES SECTION - COMPLETE
 
-### Implementation Status: PARTIAL ✅
-- **Data Integration**: Complete - 4 case studies per language in _data/case_studies.yml
-- **Universal Card Integration**: Working - Cards display with basic content
-- **Translation Support**: Complete - EN/RU/ZH all functional
-- **Basic Styling**: Applied - Some visual improvements implemented
+### Implementation Status: ✅ COMPLETE
+- **Carousel Integration**: New `case-studies` carousel fully implemented on homepage
+- **Card Design**: Progressive Disclosure strategy applied with simplified clean cards
+- **Localization**: EN/RU/ZH fully translated, all CTA buttons localized
+- **Visual Hierarchy**: Case study card structure refined for mobile/desktop
+- **Obsolete Code**: Old `featured-case-studies` components fully removed
 
-### Critical Issues Remaining ❌
-- **Hero Images**: Wrong sizing (1200w instead of 400w), not displaying properly
-- **Carousel Functionality**: Missing navigation controls and 2-wide layout
-- **Visual Polish**: Incomplete styling vs reference design
-- **Component Details**: Missing borders, sector tags, proper spacing
+## 🧼 BRAND CARDS – SIMPLIFIED
 
-## 🔧 TECHNICAL CHALLENGES IDENTIFIED
+### Simplification Status: ✅ COMPLETE
+- **Hero Image Priority**: Enlarged hero visuals improve emotional impact
+- **Single Metric Badge**: Strong visual credibility indicator
+- **Max 4 Tags**: Balanced cognitive load + discovery support
+- **Clear CTA**: "View Profile →" adopted as sole action button
+- **"Founder-Led" Tag**: Adopted over "F" badge for clarity + discovery
+- **Logo/Quote moved**: Brand logos and quotes moved to profile page
 
-### Image System Issues
-- Responsive image component calling incorrect sizes
-- Hero images exist but display as blank space with clickable links
-- Image processing working but sizing configuration broken
+## 🔍 FEATURED BRANDS SECTION – UNDER REVIEW
 
-### Carousel System Problems
-- JavaScript loading but navigation controls missing
-- Configuration shows 2 cards but displaying 4 narrow cards
-- Carousel dots and navigation arrows not appearing
+### Current Status: ❌ Not Yet Updated
+- Still using older card structure (dense info, multiple CTAs)
+- Visual hierarchy inconsistent with simplified case study + brand cards
+- Needs restyling to align with Progressive Disclosure + Fresh Aesthetic
 
-### Styling Gaps
-- Universal card system partially implemented
-- Reference design patterns from case-study-card.scss not fully applied
-- Spacing, borders, hover effects incomplete
+## 🧠 SYSTEM-WIDE DESIGN STRATEGY
 
-## 📊 System Architecture Status
+### Key UX Principle: Progressive Disclosure
+- **Cards = Curiosity Drivers**
+- **Profiles = Detail Containers**
 
-### Universal Component System: STABLE ✅
-- **42+ references** maintained across all components
-- **Configuration-driven** approach working for basic functionality
-- **Cross-language** consistency preserved
-- **Build performance** maintained at <15 seconds
-
-### Documentation System: COMPLETE ✅
-- **4-document structure** optimized and working
-- **Development workflows** documented
-- **Troubleshooting guides** available
-- **Claude collaboration** framework established
-
-## 🎯 IMMEDIATE PRIORITIES
-
-### Phase 1: Core Functionality (Critical)
-1. **Fix image sizing** - 400w responsive images displaying
-2. **Enable carousel** - Working navigation with 2 wide cards
-3. **Complete styling** - Professional appearance matching reference
-4. **Verify cross-language** - All three languages working
-
-### Phase 2: Visual Polish (Important)
-1. Hover effects and animations
-2. Proper spacing and typography
-3. Sector tags and industry labels
-4. CTA button styling and positioning
+### Standard Card Format Now Includes:
+1. **Hero Image** (not logo)
+2. **Brand Name + Metric**
+3. **"Founded YYYY • City 🇧🇷"**
+4. **Max 4 Tags** (e.g. market, sector, signal, attribute)
+5. **Single CTA** ("View Profile →")
 
 ## ✅ Success Metrics Progress
 
-| Component | Target | Current Status |
-|-----------|--------|----------------|
-| Data Structure | Complete | ✅ 100% |
-| Universal Card Integration | Working | ✅ 80% |
-| Visual Design | Professional | ⚠️ 40% |
-| Carousel Functionality | Working | ❌ 20% |
-| Cross-language Support | Complete | ✅ 100% |
-| Build Performance | <15s | ✅ 14.2s |
+| Component                 | Target             | Status     |
+|--------------------------|--------------------|------------|
+| Case Study Carousel      | Fully Functional   | ✅ 100%     |
+| Brand Card Simplification| Progressive Design | ✅ 100%     |
+| Featured Brands Restyle  | Match New Cards    | ❌ 0%       |
+| Multilingual Support     | EN/RU/ZH           | ✅ 100%     |
+| Build Performance        | Under 15s          | ✅ 14.2s    |
 
 ## 🚀 NEXT SESSION GOALS
 
-**Primary Objective**: Resolve image sizing and carousel functionality
-**Secondary Objective**: Complete visual styling to match reference design
-**Success Criteria**: Professional case studies section with working carousel
-
-**Status**: Foundation solid, debugging required for image system and carousel implementation.
+**Objective**: Redesign Featured Brands carousel + cards using successful case study pattern
+**Approach**: Apply "Clean Card Minimalism" + storytelling visual hierarchy
+**Task**: Initiate Claude session to review implementation files and build a fresh plan  

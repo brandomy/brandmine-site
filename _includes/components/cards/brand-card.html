@@ -91,40 +91,40 @@
       <!-- Markets first -->
       {% if brand.markets %}
         {% for market in brand.markets limit:1 %}
-          {% include components/helpers/taxonomy-tag.html
-             type="market"
-             value=market
-             class_name="brand-card" %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
+             class="brand-card__tag brand-card__tag--market">
+            {% include helpers/dimension-name.html type="markets" id=market %}
+          </a>
         {% endfor %}
       {% endif %}
 
       <!-- Sectors second -->
       {% if brand.sectors %}
         {% for sector in brand.sectors limit:1 %}
-          {% include components/helpers/taxonomy-tag.html
-             type="sector"
-             value=sector
-             class_name="brand-card" %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
+             class="brand-card__tag brand-card__tag--sector">
+            {% include helpers/dimension-name.html type="sectors" id=sector %}
+          </a>
         {% endfor %}
       {% endif %}
 
       <!-- Attributes third -->
       {% if brand.attributes %}
         {% for attribute in brand.attributes limit:1 %}
-          {% include components/helpers/taxonomy-tag.html
-             type="attribute"
-             value=attribute
-             class_name="brand-card" %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
+             class="brand-card__tag brand-card__tag--attribute">
+            {% include helpers/dimension-name.html type="attributes" id=attribute %}
+          </a>
         {% endfor %}
       {% endif %}
 
       <!-- Signals fourth -->
       {% if brand.signals %}
         {% for signal in brand.signals limit:1 %}
-          {% include components/helpers/taxonomy-tag.html
-             type="signal"
-             value=signal
-             class_name="brand-card" %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
+             class="brand-card__tag brand-card__tag--signal">
+            {% include helpers/dimension-name.html type="signals" id=signal %}
+          </a>
         {% endfor %}
       {% endif %}
     </div>

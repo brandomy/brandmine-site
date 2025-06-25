@@ -29,6 +29,11 @@ signals: ["export-ready"]  # Optional signals
 featured: true
 featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
 
+# Card Display Metric
+card_metric:
+  value: "50+"
+  label: "个蜂场"
+
 # === LOCATION (FLATTENED) ===
 city: "巴尔瑙尔"
 country: "ru"
@@ -42,7 +47,7 @@ images:
     name: "color"     # Becomes logo-color-400w.png
     ext: "png"
   hero:
-    name: "siberian-apiaries"  # Becomes hero-apiaries-400w.jpg
+    name: "apiaries"  # Becomes hero-apiaries-400w.jpg
     ext: "jpg"
   founder:
     name: "working"    # Becomes founder-portrait-400w.jpg

@@ -1,0 +1,57 @@
+{% comment %}
+Page Section: pages/home/featured-brands-simplified.html
+
+PURPOSE: Simplified featured brands carousel matching Case Studies design pattern
+DEPENDENCIES: helpers/brand-filter.html, components/cards/simplified-brand-card.html
+PARAMETERS: All optional with sensible defaults
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign limit = include.limit | default: 10 %}
+
+<!-- Section Header -->
+<h2 class="panel__heading-secondary">
+  {% include helpers/t.html key="home.featured_brands_simplified.title" fallback="Featured Brands" %}
+</h2>
+<p class="panel__lead-text">
+  {% include helpers/t.html key="home.featured_brands_simplified.subtitle" fallback="Discover exceptional founder-led brands from BRICS+ countries" %}
+</p>
+
+{% comment %} Filter featured brands {% endcomment %}
+{% include helpers/brand-filter.html lang=current_lang featured=true limit=limit %}
+{% assign brands = filtered_brands %}
+
+<!-- Carousel Container -->
+<div class="universal-carousel" data-component-type="featured-brands-simplified">
+  {% if brands.size > 0 %}
+    {% for brand in brands %}
+      <div class="simplified-carousel-card">
+        {% include components/cards/simplified-brand-card.html brand=brand %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="no-brands-message">
+      {% include helpers/t.html key="common.empty_states.no_featured_brands" fallback="No featured brands available yet." %}
+    </div>
+  {% endif %}
+</div>
+
+<!-- Navigation Dots -->
+{% if brands.size > 1 %}
+  <div class="universal-carousel-nav" data-target="featured-brands-simplified">
+    {% assign dot_count = brands.size | divided_by: 2 | ceil | at_least: 1 %}
+    {% for i in (1..dot_count) %}
+      <span class="universal-carousel-nav-dot {% if forloop.first %}active{% endif %}" 
+            data-slide="{{ forloop.index0 }}"></span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- More Brands CTA -->
+<div class="featured-brands-simplified__more">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
+     class="btn btn--primary"
+     data-track="featured-brands-simplified">
+    {% include helpers/t.html key="home.featured_brands_simplified.cta" fallback="Explore All Brands" %}
+  </a>
+</div>

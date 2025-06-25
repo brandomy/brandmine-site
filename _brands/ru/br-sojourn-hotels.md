@@ -26,6 +26,11 @@ signals: ["franchise-ready"]
 featured: true
 featured_level: 2
 
+# Card Display Metric
+card_metric:
+  value: "5"
+  label: "Отелей"
+
 # === LOCATION (FLATTENED) ===
 city: "Рио-де-Жанейро"
 country: "br"
@@ -39,7 +44,7 @@ images:
     name: "color"
     ext: "png"
   hero:
-    name: "paraty-view"
+    name: "property"
     ext: "jpg"
   founder:
     name: "business"

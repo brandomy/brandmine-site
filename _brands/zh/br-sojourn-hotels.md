@@ -23,6 +23,11 @@ signals: ["franchise-ready"]
 featured: true
 featured_level: 2
 
+# Card Display Metric
+card_metric:
+  value: "5"
+  label: "家酒店"
+
 city: "里约热内卢"
 country: "br"
 latitude: -22.9068
@@ -34,7 +39,7 @@ images:
     name: "color"
     ext: "png"
   hero:
-    name: "paraty-view"
+    name: "property"
     ext: "jpg"
   founder:
     name: "business"

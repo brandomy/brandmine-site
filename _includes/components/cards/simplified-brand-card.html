@@ -1,0 +1,112 @@
+{% comment %}
+COMPONENT: Simplified Brand Card
+PURPOSE: Clean, progressive disclosure card matching Case Studies design pattern
+USAGE: {% include components/cards/simplified-brand-card.html brand=brand %}
+
+DESIGN PATTERN:
+- Large hero image with metric badge overlay
+- Brand name + Founded year • City Flag
+- Max 4 taxonomy tags (market, sector, attributes, signals)
+- Single CTA: "View Profile →"
+{% endcomment %}
+
+{% comment %} Component defaults (no tag limits - show all for discovery) {% endcomment %}
+
+<article class="simplified-brand-card">
+  <!-- Hero Image with Metric Badge -->
+  <div class="simplified-brand-card__image">
+    {% comment %} Use semantic image structure for hero image {% endcomment %}
+    {% if include.brand.images and include.brand.images.hero and include.brand.images.hero.name %}
+      {% include components/images/collection-image.html
+         collection="brands"
+         slug=include.brand.ref
+         purpose="hero"
+         name=include.brand.images.hero.name
+         alt=include.brand.images.hero.alt
+         class="simplified-brand-card__img" %}
+    {% else %}
+      {% include components/images/collection-image.html
+         collection="brands"
+         slug=include.brand.ref
+         purpose="hero"
+         alt="Hero image for {{ include.brand.title }}"
+         class="simplified-brand-card__img" %}
+    {% endif %}
+
+    <!-- Metric Badge (top-right) -->
+    {% if include.brand.card_metric %}
+      <div class="simplified-brand-card__metric-badge">
+        <div class="metric-value">{{ include.brand.card_metric.value }}</div>
+        {% if include.brand.card_metric.label and include.brand.card_metric.label != "" %}
+          <div class="metric-label">{{ include.brand.card_metric.label }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Card Content -->
+  <div class="simplified-brand-card__content">
+    <!-- Brand Name -->
+    <h3 class="simplified-brand-card__title">{{ include.brand.title }}</h3>
+
+    <!-- Founded year + City + Flag -->
+    <div class="simplified-brand-card__meta">
+      {% if include.brand.founding_year %}
+        <span class="meta-founding">{% include helpers/t.html key="brands.founded" fallback="Founded" %} {{ include.brand.founding_year }}</span>
+      {% endif %}
+      {% if include.brand.city and include.brand.country %}
+        {% if include.brand.founding_year %}<span class="meta-separator"> • </span>{% endif %}
+        <span class="meta-location">
+          {{ include.brand.city }} 
+          {% include helpers/country-flag.html country_code=include.brand.country %}
+        </span>
+      {% endif %}
+    </div>
+
+    <!-- Taxonomy Tags (Show ALL relevant tags - no limits) -->
+    <div class="simplified-brand-card__tags">
+      <!-- Markets (all markets for discovery) -->
+      {% if include.brand.markets %}
+        {% for market in include.brand.markets %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="simplified-brand-card__tag simplified-brand-card__tag--market">
+            {% include helpers/dimension-name.html type="markets" id=market %}
+          </a>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Sectors (all sectors for discovery) -->
+      {% if include.brand.sectors %}
+        {% for sector in include.brand.sectors %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="simplified-brand-card__tag simplified-brand-card__tag--sector">
+            {% include helpers/dimension-name.html type="sectors" id=sector %}
+          </a>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Attributes (all attributes for discovery) -->
+      {% if include.brand.attributes %}
+        {% for attribute in include.brand.attributes %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="simplified-brand-card__tag simplified-brand-card__tag--attribute">
+            {% include helpers/dimension-name.html type="attributes" id=attribute %}
+          </a>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Signals (all signals for discovery) -->
+      {% if include.brand.signals %}
+        {% for signal in include.brand.signals %}
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="simplified-brand-card__tag simplified-brand-card__tag--signal">
+            {% include helpers/dimension-name.html type="signals" id=signal %}
+          </a>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- Single CTA -->
+    <div class="simplified-brand-card__cta">
+      <a href="{{ include.brand.url | relative_url }}" class="simplified-brand-card__button">
+        {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %} →
+      </a>
+    </div>
+  </div>
+</article>
