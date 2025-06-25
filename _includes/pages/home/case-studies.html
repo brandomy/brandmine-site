@@ -18,9 +18,9 @@
   {% for case_study in site.data.case_studies[page.lang] %}
   <div class="test-card">
     <div class="test-card-image">
-      <img src="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg"
-           srcset="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg 400w,
-                   /assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-800w.jpg 800w"
+      <img src="/assets/images/case-studies/{{ case_study.ref }}/{{ case_study.ref }}-hero-{{ case_study.images.hero.name }}-400w.jpg"
+           srcset="/assets/images/case-studies/{{ case_study.ref }}/{{ case_study.ref }}-hero-{{ case_study.images.hero.name }}-400w.jpg 400w,
+                   /assets/images/case-studies/{{ case_study.ref }}/{{ case_study.ref }}-hero-{{ case_study.images.hero.name }}-800w.jpg 800w"
            sizes="(max-width: 768px) 100vw, 50vw"
            alt="{{ case_study.images.hero.alt }}"
            title="{{ case_study.images.hero.alt }}"
@@ -35,34 +35,34 @@
       {% endif %}
     </div>
     <div class="test-card-content">
-      <h3 class="test-card-title">{{ case_study.title | split: ':' | first }}</h3>
-      <p class="test-card-subtitle">{{ case_study.title | split: ':' | last | strip }}</p>
+      <h3 class="test-card-title">{{ case_study.brand }}</h3>
+      <p class="test-card-subtitle">{{ case_study.description }}</p>
       <div class="test-card-meta">
         {% if case_study.markets %}
           {% for market in case_study.markets %}
-            <a href="/{{ page.lang }}/discover/markets/{{ market }}/" class="test-card-market">{{ market | capitalize }}</a>
+            <a href="/{{ page.lang }}/discover/markets/{{ market }}/" class="test-card-market">{% include helpers/dimension-name.html type="markets" id=market %}</a>
           {% endfor %}
         {% endif %}
         {% if case_study.sectors %}
           {% for sector in case_study.sectors %}
-            <a href="/{{ page.lang }}/discover/sectors/{{ sector }}/" class="test-card-sector">{{ sector | replace: '-', ' ' | capitalize }}</a>
+            <a href="/{{ page.lang }}/discover/sectors/{{ sector }}/" class="test-card-sector">{% include helpers/dimension-name.html type="sectors" id=sector %}</a>
           {% endfor %}
         {% endif %}
         {% if case_study.attributes %}
           {% for attribute in case_study.attributes %}
-            <a href="/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="test-card-attribute">{{ attribute | replace: '-', ' ' | capitalize }}</a>
+            <a href="/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="test-card-attribute">{% include helpers/dimension-name.html type="attributes" id=attribute %}</a>
           {% endfor %}
         {% endif %}
         {% if case_study.signals %}
           {% for signal in case_study.signals %}
-            <a href="/{{ page.lang }}/discover/signals/{{ signal }}/" class="test-card-signal">{{ signal | replace: '-', ' ' | capitalize }}</a>
+            <a href="/{{ page.lang }}/discover/signals/{{ signal }}/" class="test-card-signal">{% include helpers/dimension-name.html type="signals" id=signal %}</a>
           {% endfor %}
         {% endif %}
       </div>
       <!-- CTA Button -->
       <div class="test-card-cta">
         <a href="{{ case_study.permalink }}" class="test-card-button">
-          Read Full Story →
+          {% include helpers/t.html key="brands.content.read_more" fallback="Read Full Story" %} →
         </a>
       </div>
     </div>

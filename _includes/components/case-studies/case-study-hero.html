@@ -58,10 +58,10 @@
       {% comment %} Project overview {% endcomment %}
       <header class="case-study-hero__header">
         
-        {% if show_client_info and case_study.client %}
+        {% if show_client_info and case_study.brand %}
           <div class="case-study-hero__client">
             <span class="case-study-hero__client-label">{% include helpers/t.html key="case_studies.client" fallback="Client" %}</span>
-            <h2 class="case-study-hero__client-name">{{ case_study.client }}</h2>
+            <h2 class="case-study-hero__client-name">{{ case_study.brand }}</h2>
           </div>
         {% endif %}
         

@@ -68,7 +68,7 @@
       <a href="{{ case_study_url }}" class="case-study-card__image-link">
         {% include components/images/collection-image.html
            collection="case-studies"
-           slug=case_study.slug
+           slug=case_study.ref
            purpose="hero"
            name=case_study.images.hero.name
            alt=case_study.images.hero.alt
@@ -93,10 +93,10 @@
     {% comment %} Header with client and industry info {% endcomment %}
     <header class="case-study-card__header">
 
-      {% if show_client and case_study.client %}
+      {% if show_client and case_study.brand %}
         <div class="case-study-card__client">
           <span class="case-study-card__client-label">{% include helpers/t.html key="case_studies.client" fallback="Client" %}</span>
-          <span class="case-study-card__client-name">{{ case_study.client }}</span>
+          <span class="case-study-card__client-name">{{ case_study.brand }}</span>
         </div>
       {% endif %}
 
@@ -159,7 +159,7 @@
           <div class="case-study-card__founder-avatar">
             {% include components/images/collection-image.html
                collection="case-studies"
-               slug=case_study.slug
+               slug=case_study.ref
                purpose="portrait"
                name=case_study.images.portrait.name
                alt=case_study.images.portrait.alt

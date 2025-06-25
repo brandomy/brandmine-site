@@ -21,9 +21,9 @@ robots: noindex, nofollow   # Additional SEO protection
             {% for case_study in site.data.case_studies.en %}
             <div class="test-card">
                 <div class="test-card-image">
-                    <img src="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg"
-                         srcset="/assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-400w.jpg 400w,
-                                 /assets/images/case-studies/{{ case_study.slug }}/{{ case_study.slug }}-hero-{{ case_study.images.hero.name }}-800w.jpg 800w"
+                    <img src="/assets/images/case-studies/{{ case_study.ref }}/{{ case_study.ref }}-hero-{{ case_study.images.hero.name }}-400w.jpg"
+                         srcset="/assets/images/case-studies/{{ case_study.ref }}/{{ case_study.ref }}-hero-{{ case_study.images.hero.name }}-400w.jpg 400w,
+                                 /assets/images/case-studies/{{ case_study.ref }}/{{ case_study.ref }}-hero-{{ case_study.images.hero.name }}-800w.jpg 800w"
                          sizes="(max-width: 768px) 100vw, 50vw"
                          alt="{{ case_study.images.hero.alt }}"
                          title="{{ case_study.images.hero.alt }}"
