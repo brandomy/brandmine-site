@@ -1,0 +1,180 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Dimensions Grid
+PATH: _includes/pages/discovery/dimensions-grid.html
+
+PURPOSE:
+2x2 grid showcasing the four discovery dimensions (sectors, markets, attributes,
+signals). Each quadrant provides visual navigation with icons, descriptions,
+and sample tags for exploring the Brandmine taxonomy.
+
+USAGE:
+Main navigation interface on the Discovery page, providing visual access to
+all four dimension types with color-coded panels and sample content.
+
+PARAMETERS:
+- None (uses page.lang from page context)
+
+DEPENDENCIES:
+- Data: site.data.sectors, site.data.markets, site.data.attributes, site.data.signals
+- Data: site.data.translations[page.lang]
+- CSS: /assets/css/pages/discovery/dimensions-grid.scss
+- Components: helpers/t.html
+
+CUSTOMIZATION:
+- Translation keys in discovery.* namespace
+- Limit of 5 sample tags per dimension (configurable)
+- Panel colors via panel--olive-soft, panel--sky-soft, etc.
+- Icon SVGs can be customized per dimension type
+
+EXAMPLE:
+{% include pages/discovery/dimensions-grid.html %}
+
+NOTES:
+- Each panel links to its respective dimension category page
+- "More..." link appears when dimensions exceed display limit
+- Responsive grid layout for mobile/desktop viewing
+================================================================================
+{% endcomment %}
+
+{% comment %} Use translation helper for logic light architecture {% endcomment %}
+{% assign current_lang = page.lang | default: 'en' %}
+
+<div class="discovery-dimensions">
+  <div class="discovery-dimensions__grid">
+
+    <!-- Sectors Panel (Top Left) -->
+    <div class="discovery-dimensions__column discovery-dimensions__column--olive discovery-dimensions__column--contained">
+      <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--sector">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3"></path>
+                </svg>
+              </span>
+              {% include helpers/t.html key="nav.sectors" fallback="Sectors" lang=current_lang %}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {% include helpers/t.html key="discovery.sectors_description" fallback="Explore leading brands from top sectors in the BRICS+" lang=current_lang %}
+            </p>
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/" class="discovery-dimensions__link">
+              {% include helpers/t.html key="discovery.view_all_sectors" fallback="View All Sectors" lang=current_lang %}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for sector in site.data.sectors.sectors limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/{{ sector.id }}/"
+                 class="tag tag--sector">
+                {% include helpers/dimension-name.html type="sectors" id=sector.id %}
+              </a>
+            {% endfor %}
+
+            {% if site.data.sectors.sectors.size > 5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/"
+                 class="tag tag--more tag--sector">
+                {% include helpers/t.html key="discovery.more" fallback="More" lang=current_lang %}...
+              </a>
+            {% endif %}
+          </div>
+        </section>
+    </div>
+
+    <!-- Markets Panel (Top Right) -->
+    <div class="discovery-dimensions__column discovery-dimensions__column--sky discovery-dimensions__column--contained">
+      <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--market">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </span>
+              {% include helpers/t.html key="nav.markets" fallback="Markets" lang=current_lang %}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {% include helpers/t.html key="discovery.markets_description" fallback="Explore brands from growing BRICS+ regions" lang=current_lang %}
+            </p>
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/" class="discovery-dimensions__link">
+              {% include helpers/t.html key="discovery.view_all_markets" fallback="View All Markets" lang=current_lang %}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for market in site.data.markets.markets limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/{{ market.id }}/"
+                 class="tag tag--market">
+                {% include helpers/dimension-name.html type="markets" id=market.id %}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+    </div>
+
+    <!-- Attributes Panel (Bottom Left) -->
+    <div class="discovery-dimensions__column discovery-dimensions__column--secondary discovery-dimensions__column--contained">
+      <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--attribute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+              </span>
+              {% include helpers/t.html key="nav.attributes" fallback="Attributes" lang=current_lang %}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {% include helpers/t.html key="discovery.attributes_description" fallback="Explore brands with distinctive features from the BRICS+" lang=current_lang %}
+            </p>
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/" class="discovery-dimensions__link">
+              {% include helpers/t.html key="discovery.view_all_attributes" fallback="View All Attributes" lang=current_lang %}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for attribute in site.data.attributes limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/{{ attribute.id }}/"
+                 class="tag tag--attribute">
+                {% include helpers/dimension-name.html type="attributes" id=attribute.id %}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+    </div>
+
+    <!-- Signals Panel (Bottom Right) -->
+    <div class="discovery-dimensions__column discovery-dimensions__column--accent discovery-dimensions__column--contained">
+      <section class="discovery-dimensions__section">
+          <div class="discovery-dimensions__header">
+            <h2 class="discovery-dimensions__title">
+              <span class="discovery-dimensions__icon discovery-dimensions__icon--signal">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </span>
+              {% include helpers/t.html key="nav.signals" fallback="Signals" lang=current_lang %}
+            </h2>
+            <p class="discovery-dimensions__description">
+              {% include helpers/t.html key="discovery.signals_description" fallback="Explore brands poised for growth across different pathways" lang=current_lang %}
+            </p>
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/" class="discovery-dimensions__link">
+              {% include helpers/t.html key="discovery.view_all_signals" fallback="View All Growth Signals" lang=current_lang %}
+            </a>
+          </div>
+
+          <div class="discovery-dimensions__tags">
+            {% for signal in site.data.signals limit:5 %}
+              <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/{{ signal.id }}/"
+                 class="tag tag--signal">
+                {% include helpers/dimension-name.html type="signals" id=signal.id %}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+    </div>
+
+  </div>
+</div>

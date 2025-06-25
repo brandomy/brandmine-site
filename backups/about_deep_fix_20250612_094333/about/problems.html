@@ -1,0 +1,65 @@
+{% comment %}
+  Page Section: pages/about/problems.html
+  Purpose: Problem section with 2x2 grid of challenge cards showing market issues
+  Updated: 2025-06-03 - Standardized page section template
+
+  Parameters:
+    title (optional): Section title, defaults to translation
+    lead_text (optional): Introductory text for the section
+    conclusion_text (optional): Text displayed after the problem grid
+    panel_type (optional): Panel background style, defaults to "light"
+    lang (optional): Language override, defaults to page.lang
+
+  Dependencies:
+    - CSS: pages/about/problems.scss
+    - Translation keys: about.problems_*, about.problems.card[1-4].*
+{% endcomment %}
+
+{% assign panel_type = include.panel_type | default: "light" %}
+{% assign current_lang = include.lang | default: page.lang | default: 'en' %}
+
+    <h2 class="panel__heading-secondary about-problems__title">
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.problems_title" fallback="The Problem We Solve" lang=current_lang %}{% endunless %}
+    </h2>
+    <p class="panel__lead-text about-problems__lead-text">
+      {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.problems_lead" fallback="Brand investors, distributors, importers, franchisors, and international partners face significant challenges when seeking opportunities in BRICS+ markets:" lang=current_lang %}{% endunless %}
+    </p>
+
+  <!-- Problem cards in 2x2 grid -->
+  <div class="about-problems__grid">
+    <div class="about-problems__card about-problems__card--1">
+      <div class="about-problems__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
+      </div>
+      <h3>{% include helpers/t.html key="about.problems.card1.title" fallback="Information Fragmentation" lang=current_lang %}</h3>
+      <p>{% include helpers/t.html key="about.problems.card1.description" fallback="Critical brand data scattered across multiple sources" lang=current_lang %}</p>
+    </div>
+
+    <div class="about-problems__card about-problems__card--2">
+      <div class="about-problems__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+      </div>
+      <h3>{% include helpers/t.html key="about.problems.card2.title" fallback="Language Barriers" lang=current_lang %}</h3>
+      <p>{% include helpers/t.html key="about.problems.card2.description" fallback="Essential information trapped in local languages" lang=current_lang %}</p>
+    </div>
+
+    <div class="about-problems__card about-problems__card--3">
+      <div class="about-problems__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+      </div>
+      <h3>{% include helpers/t.html key="about.problems.card3.title" fallback="Cultural Context Gaps" lang=current_lang %}</h3>
+      <p>{% include helpers/t.html key="about.problems.card3.description" fallback="Missing the 'why' behind brand-consumer relationships" lang=current_lang %}</p>
+    </div>
+
+    <div class="about-problems__card about-problems__card--4">
+      <div class="about-problems__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
+      </div>
+      <h3>{% include helpers/t.html key="about.problems.card4.title" fallback="Discovery Challenges" lang=current_lang %}</h3>
+      <p>{% include helpers/t.html key="about.problems.card4.description" fallback="No efficient way to identify promising brands" lang=current_lang %}</p>
+    </div>
+  </div>
+
+    <p class="panel__conclusion-text about-problems__conclusion-text">
+      {{ include.conclusion_text | default: "" }}{% unless include.conclusion_text %}{% include helpers/t.html key="about.problems_conclusion" fallback="This fractured landscape creates a lose-lose scenario — international partners waste resources searching for hidden gems, while innovative founders with proven models struggle to access the partners and capital needed for global growth." lang=current_lang %}{% endunless %}
+    </p>

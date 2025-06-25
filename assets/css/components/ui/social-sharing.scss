@@ -1,0 +1,92 @@
+// Social Sharing Buttons
+// Simple, clean social sharing without external dependencies
+// Mobile-friendly and GitHub Pages compatible
+
+.social-sharing {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
+
+.social-sharing__label {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+}
+
+.social-sharing__buttons {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.social-sharing__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  // Brand-specific colors on hover
+  &--linkedin:hover {
+    background-color: var(--linkedin-blue);
+    color: white;
+  }
+  
+  &--twitter:hover {
+    background-color: var(--neutral-900);
+    color: white;
+  }
+  
+  &--facebook:hover {
+    background-color: var(--facebook-blue);
+    color: white;
+  }
+  
+  &--email:hover {
+    background-color: var(--primary-500);
+    color: white;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .social-sharing__label {
+    color: var(--neutral-400);
+  }
+  
+  .social-sharing__button {
+    background-color: var(--neutral-800);
+    color: var(--neutral-300);
+    
+    &:hover {
+      box-shadow: var(--shadow-medium);
+    }
+  }
+}

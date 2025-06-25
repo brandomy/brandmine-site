@@ -1,0 +1,42 @@
+{% comment %}
+SECTION: Contact CTA
+PAGE: Founders Index (founders.html)
+PURPOSE: Display dual-purpose call-to-action for founder submissions and suggestions
+
+DATA SOURCES:
+- Translations: site.data.translations[lang].founders.cta_*
+- Parameters: Optional custom title, description, button texts
+
+CONTEXT REQUIRED:
+- page.lang for translations and URL construction
+- site.baseurl for link generation
+
+DEPENDENCIES:
+- Translations: site.data.translations[lang].founders.cta_title, cta_text
+- CSS: assets/css/pages/founders/contact-cta.scss
+- Links to: About page contact section
+- Tracking: data-track attributes for analytics
+{% endcomment %}
+
+<div class="panel panel--cta">
+  <div class="panel__content panel--centered">
+    <h2 class="panel__heading-secondary">
+      {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="founders.cta_title" fallback="Connect with Brandmine" %}{% endunless %}
+    </h2>
+    <p class="panel__lead-text">
+      {{ include.description | default: "" }}{% unless include.description %}{% include helpers/t.html key="founders.cta_text" fallback="Are you a visionary founder ready to share your story? Or do you know an exceptional founder we should feature?" %}{% endunless %}
+    </p>
+    <div class="cta-buttons">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" 
+         class="btn btn--primary-cta"
+         data-track="suggest-founder">
+        Suggest a Founder
+      </a>
+      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" 
+         class="btn btn--secondary-cta"
+         data-track="i-am-founder">
+        I'm a Founder
+      </a>
+    </div>
+  </div>
+</div>

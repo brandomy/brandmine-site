@@ -1,0 +1,64 @@
+// insights-category page: content section
+.insights-category-page {
+  .insights-category-section--content {
+    margin-bottom: 0; // Remove bottom margin to connect with insights-grid
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+    
+    // Full width background like panel system
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    position: relative;
+    
+    // Category-specific background colors (darker)
+    &[data-insight-type="brand-spotlight"] {
+      background-color: var(--secondary-100); // Darker orange tones for brand spotlight
+    }
+    
+    &[data-insight-type="founders-journey"] {
+      background-color: var(--accent-100); // Darker purple tones for founders journey
+    }
+    
+    &[data-insight-type="market-momentum"] {
+      background-color: var(--olive-100); // Darker green tones for market momentum
+    }
+    
+    &[data-insight-type="location-intelligence"] {
+      background-color: var(--sky-100); // Darker blue tones for location intelligence
+    }
+    
+    .insights-category-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 var(--space-6); // Add horizontal padding for mobile
+      
+      h2 {
+        font-size: var(--text-2xl);
+        font-weight: var(--font-semibold);
+        color: var(--gray-900);
+        margin-bottom: var(--space-4);
+        
+        @media (min-width: 768px) {
+          font-size: var(--text-3xl);
+        }
+      }
+      
+      p {
+        font-size: var(--text-base);
+        color: var(--gray-600);
+        line-height: var(--leading-relaxed);
+        margin-bottom: var(--space-4);
+        
+        @media (min-width: 768px) {
+          font-size: var(--text-lg);
+        }
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

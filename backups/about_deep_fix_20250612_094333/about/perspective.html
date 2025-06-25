@@ -1,0 +1,42 @@
+{% comment %}
+  Page Section: pages/about/perspective.html
+  Purpose: Unique perspective section with bullet points highlighting team expertise
+  Updated: 2025-06-03 - Standardized page section template
+
+  Parameters:
+    panel_type (optional): Panel background style, defaults to "secondary-soft"
+
+  Dependencies:
+    - CSS: pages/about/perspective.scss
+    - Translation keys: about.perspective_*, about.perspective_points array
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign panel_type = include.panel_type | default: "secondary-soft" %}
+
+    <h2 class="panel__heading-secondary about-perspective__title">
+      {% include helpers/t.html key="about.perspective_title" fallback="Our Unique Perspective" %}
+    </h2>
+    <p class="panel__lead-text about-perspective__lead-text">
+      {% include helpers/t.html key="about.perspective_lead" fallback="With over 25 years living and working across Asia—particularly in China and Russia—our founders bring a rare combination of linguistic capability, cultural insight, and business acumen to Brandmine:" %}
+    </p>
+
+    <ul class="about-perspective__list">
+      {% assign perspective_data = site.data.translations[current_lang].about %}
+      {% if perspective_data.perspective_points %}
+        {% for point in perspective_data.perspective_points %}
+          <li><span>{{ point }}</span></li>
+        {% endfor %}
+      {% else %}
+        <!-- Fallback to hardcoded points if translations missing -->
+        <li><span><strong>Firsthand founder experience</strong> building and scaling an iconic brand across Asian markets</span></li>
+        <li><span><strong>Entrepreneur's perspective</strong> on the challenges of securing international investment and partnerships</span></li>
+        <li><span><strong>Cultural bridging expertise</strong> that goes beyond language translation</span></li>
+        <li><span><strong>Extensive networks</strong> across both BRICS+ countries and international markets</span></li>
+        <li><span><strong>Focus on overlooked regions</strong> where extraordinary brands thrive without global recognition</span></li>
+      {% endif %}
+    </ul>
+
+    <p class="panel__conclusion-text about-perspective__conclusion-text">
+      {% include helpers/t.html key="about.perspective_conclusion" fallback="This distinctive background enables us to see valuable opportunities where others see only barriers." %}
+    </p>

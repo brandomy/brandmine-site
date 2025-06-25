@@ -1,0 +1,824 @@
+/* ==========================================================================
+   Hero Brand Card Component
+   ==========================================================================
+   Premium card styling with hero image, detailed information, and founder portrait
+*/
+
+/* --------------------------------------------------------------------------
+   1. CARD STRUCTURE
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --------------------------------------------------------------------------
+   2. NEW LAYOUT STYLES - REORGANIZED CONTENT FLOW
+   -------------------------------------------------------------------------- */
+
+/* Description section with founder portrait */
+.hero-brand-card__description-section {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}
+
+.hero-brand-card__description-content {
+  flex: 1;
+}
+
+.hero-brand-card__founder-portrait {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  
+  @media (max-width: 768px) {
+    align-self: center;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .founder-portrait__image {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    border: 2px solid var(--neutral-200);
+  }
+}
+
+/* Dividers */
+.hero-brand-card__divider {
+  width: 100%;
+  
+  &--primary {
+    border-top: 1px solid var(--neutral-200);
+    margin: var(--space-4) 0;
+  }
+  
+  &--secondary {
+    border-top: 1px solid var(--neutral-200);
+    margin: var(--space-4) 0 0 0;
+  }
+}
+
+/* Content section reorganization */
+.hero-brand-card__content {
+  padding: 0 var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+/* Founder quote styling */
+.hero-brand-card__founder-quote {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3);
+  background-color: var(--neutral-50);
+  border-left: 3px solid var(--primary-400);
+  border-radius: var(--radius-md);
+  
+  .founder-quote__text {
+    font-style: italic;
+    margin: 0 0 var(--space-2) 0;
+    color: var(--neutral-700);
+  }
+  
+  .founder-quote__attribution {
+    font-size: var(--text-sm);
+    color: var(--primary-600);
+    font-weight: 500;
+  }
+}
+
+/* Key metric badge reorganized */
+.hero-brand-card__key-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--amber-100);
+  color: var(--amber-800);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+  
+  .key-metric__icon {
+    font-size: var(--text-base);
+  }
+}
+
+/* Actions section - full width with signals on right */
+.hero-brand-card__actions {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin-left: calc(-1 * var(--space-4));
+  margin-right: calc(-1 * var(--space-4));
+  margin-bottom: calc(-1 * var(--space-4));
+  background-color: var(--neutral-50);
+}
+
+.hero-brand-card__actions-content {
+  padding: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: stretch;
+  }
+}
+
+.hero-brand-card__footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. IMAGE AREA
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: var(--neutral-100);
+  overflow: hidden;
+}
+
+.hero-brand-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hero-brand-card:hover .hero-brand-card__img {
+  transform: scale(1.05);
+}
+
+/* Logo overlay - UPDATED with white background and shadow */
+.hero-brand-card__logo {
+  position: absolute;
+  bottom: 10px;
+  right: var(--space-6);
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-md);
+
+  /* FIXED: Replace transparent background with white + shadow */
+  background-color: white;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--neutral-200);
+
+  /* Keep the padding and layout */
+  padding: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.hero-brand-card__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  /* Help logos blend naturally */
+  mix-blend-mode: multiply;
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTENT AREA
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content wrapper for title/description and portrait */
+.hero-brand-card__content-wrapper {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.hero-brand-card__main-content {
+  flex: 1;
+}
+
+/* Title and metadata */
+.hero-brand-card__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0 0 var(--space-2) 0;
+  color: var(--neutral-900);
+}
+
+.hero-brand-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  color: var(--neutral-600);
+  font-size: var(--text-sm);
+  justify-content: center; /* Add this to center the meta information */
+  text-align: center; /* Add this for text alignment */
+}
+
+.hero-brand-card__founding-year,
+.hero-brand-card__location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Key metric styling */
+.hero-brand-card__key-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
+  border: 1px solid var(--primary-200);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  margin-right: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.key-metric__value {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--primary-700);
+  line-height: 1;
+}
+
+.key-metric__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--primary-600);
+  line-height: 1;
+}
+
+.key-metric__period {
+  font-size: var(--text-xs);
+  color: var(--primary-500);
+  font-style: italic;
+  line-height: 1;
+}
+
+/* Enhanced description area */
+.hero-brand-card__description-area {
+  margin-bottom: var(--space-4);
+}
+
+/* Divider after description */
+.hero-brand-card__divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--neutral-200);
+  margin: var(--space-4) 0;
+}
+
+/* Full-width sections below divider */
+.hero-brand-card__full-width-section {
+  margin-left: calc(-1 * var(--space-6));
+  margin-right: calc(-1 * var(--space-6));
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.hero-brand-card__value-proposition {
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-800);
+  margin: 0;
+  font-family: var(--font-serif); /* More elegant, story-driven feel */
+}
+
+/* Keep existing description styling for fallback */
+.hero-brand-card__description {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--neutral-700);
+  margin: 0;
+}
+
+/* Founder quote styling */
+.hero-brand-card__founder-quote {
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--neutral-50);
+  border-left: 3px solid var(--accent-400);
+  border-radius: var(--radius-md);
+  font-style: italic;
+  transition: border-left-color 0.3s ease;
+}
+
+.founder-quote__text {
+  font-size: var(--text-base);
+  color: var(--neutral-700);
+  margin: 0 0 var(--space-2) 0;
+  line-height: var(--leading-relaxed);
+  font-family: var(--font-serif);
+}
+
+.founder-quote__attribution {
+  font-size: var(--text-sm);
+  color: var(--accent-600);
+  font-weight: var(--font-medium);
+  font-style: normal;
+  display: block;
+  text-align: right;
+}
+
+/* Enhanced founding year + location display */
+.hero-brand-card__founding-location {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-2);
+}
+
+.founding-location__year {
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+}
+
+.founding-location__separator {
+  margin: 0 var(--space-2);
+  color: var(--neutral-400);
+}
+
+.founding-location__city {
+  color: var(--neutral-700);
+  font-weight: var(--font-medium);
+}
+
+.founding-location__flag {
+  margin-left: var(--space-1);
+  font-size: var(--text-base);
+  line-height: 1;
+}
+
+/* Breakthrough moment styling */
+.hero-brand-card__breakthrough {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(135deg, var(--amber-50) 0%, var(--amber-100) 100%);
+  border: 1px solid var(--amber-200);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.breakthrough__icon {
+  font-size: var(--text-xl);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: var(--space-1);
+}
+
+.breakthrough__text {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--amber-800);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Enhanced hover interactions */
+.hero-brand-card:hover .hero-brand-card__key-metric {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-brand-card:hover .hero-brand-card__founder-quote {
+  border-left-color: var(--accent-500);
+}
+
+.hero-brand-card:hover .hero-brand-card__breakthrough {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Founder portrait with 2:3 ratio */
+.hero-brand-card__founder {
+  flex-shrink: 0;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible; /* Allow tooltip to show */
+  position: relative;
+  cursor: pointer;
+}
+
+.hero-brand-card__founder-img {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-light);
+  margin-bottom: var(--space-2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-brand-card__founder:hover .hero-brand-card__founder-img {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Custom tooltip for founder name */
+.hero-brand-card__founder::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  box-shadow: var(--shadow-medium);
+}
+
+.hero-brand-card__founder:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-brand-card__founder-name {
+  font-size: var(--text-xs);
+  color: var(--neutral-600);
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   4. TAXONOMY SECTIONS
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__taxonomy {
+  margin-bottom: var(--space-6);
+}
+
+/* When taxonomy has full-width class, override margin constraints */
+.hero-brand-card__taxonomy.hero-brand-card__full-width-section {
+  margin-right: calc(-1 * var(--space-6));
+}
+
+.hero-brand-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* BEM-style Tag styling */
+.hero-brand-card__tag {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Removed individual margins - flexbox gap handles spacing */
+}
+
+.hero-brand-card__tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+/* Tag color variants */
+.hero-brand-card__tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border: 1px solid var(--olive-200);
+}
+
+.hero-brand-card__tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
+}
+
+.hero-brand-card__tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border: 1px solid var(--secondary-200);
+}
+
+.hero-brand-card__tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
+}
+
+/* --------------------------------------------------------------------------
+   5. FOOTER AREA
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--neutral-200);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.hero-brand-card__footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto; /* Push to the right */
+}
+
+.hero-brand-card__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Reduce View Profile button padding - more pill-like */
+.hero-brand-card__link {
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+/* Make the View Profile button smaller */
+.hero-brand-card__link.btn--sm {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+}
+
+/* --------------------------------------------------------------------------
+   6. FOUNDER LED BADGE
+   -------------------------------------------------------------------------- */
+
+.hero-brand-card__founder-led {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--accent-200);
+  color: var(--accent-700);
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+  cursor: help;
+}
+
+/* Founder-led badge tooltip */
+.hero-brand-card__founder-led::after {
+  content: "Founder-led Brand";
+  position: absolute;
+  top: -35px;
+  right: 100%;
+  margin-right: var(--space-2);
+  background-color: var(--accent-50);
+  color: var(--accent-800);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--accent-100);
+}
+
+.hero-brand-card__founder-led:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Legacy .brand-tag styling - keep for backwards compatibility */
+.brand-tag {
+  display: inline-flex;
+  padding: calc(var(--space-1) / 2) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+.brand-tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border: 1px solid var(--olive-200);
+  border-left: 2px solid var(--olive-400); /* Optional left border */
+}
+
+.brand-tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border: 1px solid var(--sky-200);
+  border-left: 2px solid var(--sky-400); /* Optional left border */
+}
+
+.brand-tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border: 1px solid var(--secondary-200);
+  border-left: 2px solid var(--secondary-400); /* Optional left border */
+}
+
+.brand-tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border: 1px solid var(--accent-200);
+  border-left: 2px solid var(--accent-400); /* Optional left border */
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+@media (width <= 767px) {
+  .hero-brand-card__image {
+    height: 200px;
+  }
+
+  .hero-brand-card__logo {
+    width: 70px;
+    height: 70px;
+    bottom: -20px;
+    right: var(--space-4);
+    padding: 0; /* Reduce or remove padding */
+    object-fit: cover; /* Fill the space more aggressively (may crop) */
+  }
+
+  .hero-brand-card__body {
+    padding: var(--space-4);
+  }
+
+  .hero-brand-card__content-wrapper {
+    flex-direction: column;
+  }
+
+  .hero-brand-card__founder {
+    width: 100px;
+    height: 150px;
+    order: -1; /* Move portrait above title on mobile */
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-brand-card__title {
+    font-size: var(--text-xl);
+  }
+
+  /* Mobile adjustments for key metric */
+  .hero-brand-card__key-metric {
+    flex-direction: column;
+    gap: var(--space-1);
+    text-align: center;
+    margin-right: var(--space-2);
+  }
+  
+  .key-metric__value {
+    font-size: var(--text-base);
+  }
+  
+  .key-metric__label {
+    font-size: var(--text-xs);
+  }
+
+  .hero-brand-card__value-proposition {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+  }
+
+  .hero-brand-card__description {
+    font-size: var(--text-base);
+  }
+
+  /* Mobile adjustments for founder quotes */
+  .hero-brand-card__founder-quote {
+    margin: var(--space-3) 0;
+    padding: var(--space-2) var(--space-3);
+  }
+  
+  .founder-quote__text {
+    font-size: var(--text-sm);
+  }
+  
+  .founder-quote__attribution {
+    font-size: var(--text-xs);
+  }
+
+  /* Mobile adjustments for founding location */
+  .hero-brand-card__founding-location {
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  
+  .founding-location__separator {
+    margin: 0 var(--space-1);
+  }
+
+  /* Mobile adjustments for taxonomy tags */
+  .hero-brand-card__taxonomy {
+    margin-right: 0; /* Remove founder portrait space constraint on mobile */
+  }
+
+  .hero-brand-card__tags {
+    justify-content: center; /* Center tags on mobile */
+    gap: var(--space-1); /* Reduce gap on mobile for better fit */
+  }
+
+  /* Advanced mobile content hierarchy optimization */
+  .hero-brand-card__content-wrapper {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .hero-brand-card__key-metric {
+    order: -1; /* Move metrics to top on mobile */
+    align-self: center;
+    margin-bottom: var(--space-2);
+  }
+  
+  .hero-brand-card__founder-quote {
+    order: 1; /* After main content */
+  }
+
+  .hero-brand-card__breakthrough {
+    order: 2; /* After founder quote */
+    margin: var(--space-3) 0;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .breakthrough__text {
+    font-size: var(--text-xs);
+  }
+
+  .hero-brand-card__footer {
+    padding: var(--space-4);
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+}

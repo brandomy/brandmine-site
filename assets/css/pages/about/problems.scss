@@ -1,0 +1,103 @@
+/* ==========================================================================
+   About Page - Problems Section
+   ==========================================================================
+   Page-scoped styles following mobile-first approach
+*/
+
+.about-page {
+  .about-problems {
+    &__grid {
+      display: grid;
+      grid-template-columns: 1fr;  /* Mobile-first: single column */
+      gap: var(--space-6);         /* Mobile-first: smaller gap */
+      margin: var(--space-6) 0;
+      max-width: 1200px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+
+      /* Tablet and up */
+      @media (width >= 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto auto;
+        gap: var(--space-8);
+        margin: var(--space-8) 0;
+      }
+    }
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: var(--space-4);  /* Mobile-first: smaller padding */
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      background-color: white;
+      min-height: 180px;       /* Mobile-first: smaller height */
+      box-sizing: border-box;
+      border: 1px solid var(--neutral-200);
+      width: 100%;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      position: relative;
+      z-index: 1;
+
+      /* Small devices and up */
+      @media (width >= 480px) {
+        min-height: 200px;
+      }
+
+      /* Tablet and up */
+      @media (width >= 768px) {
+        padding: var(--space-6);
+        min-height: 240px;
+      }
+
+      h3 {
+        margin-top: var(--space-4);
+        margin-bottom: var(--space-2);
+        font-size: var(--text-xl);
+        font-weight: var(--font-semibold);
+        color: var(--primary-700);
+      }
+
+      p {
+        margin: 0;
+        color: var(--neutral-700);
+      }
+
+      /* Color variations for different cards */
+      &--1 .about-problems__icon {
+        color: var(--primary-500);
+      }
+
+      &--2 .about-problems__icon {
+        color: var(--primary-600);
+      }
+
+      &--3 .about-problems__icon {
+        color: var(--primary-500);
+      }
+
+      &--4 .about-problems__icon {
+        color: var(--primary-600);
+      }
+    }
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      background-color: white;
+      border-radius: 50%;
+      margin-bottom: var(--space-4);
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+      z-index: 2;
+    }
+  }
+}

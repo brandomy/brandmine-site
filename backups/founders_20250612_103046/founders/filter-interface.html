@@ -1,0 +1,236 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Founders > Filter Interface
+FILE: _includes/pages/founders/filter-interface.html
+================================================================================
+
+Purpose:
+Enhanced search and filter interface for browsing founders with text search and 
+founder-specific filters. Provides comprehensive filtering by market, languages, 
+expertise areas, cross-border experience, and generation.
+
+Features:
+- Text search across founder names, expertise, and brands
+- Market filter based on founder country codes
+- Language filtering for languages spoken
+- Expertise area filtering
+- Cross-border and international expansion filters
+- Generation filtering (1st, 2nd, 3rd generation, etc.)
+- Active filter display with removal capability
+- Sort options and view toggle (grid/list)
+
+Parameters:
+- content_type (optional): Type of content to filter
+  Default: "founders"
+- taxonomy (optional): Taxonomy data for filtering
+  Default: Uses site dimensions data
+
+Dependencies:
+- CSS: pages/founders/filter-interface.scss
+- JS: assets/js/pages/founders/founders-search.js
+- Data: /search.json for text search functionality
+- Data: site.data.translations for UI labels
+- Data: site.data.dimensions for market names
+
+DOM Elements:
+- #founders-search-query: Main search input
+- #market-filters: Market filter checkboxes
+- #languages-filters: Language filter checkboxes
+- #expertise-filters: Expertise area checkboxes
+- #cross-border-filters: International experience filters
+- #generation-filters: Generation filter checkboxes
+- #founders-search-results: Results container
+
+Notes:
+- Requires JavaScript for functionality
+- Falls back to noscript message for non-JS users
+- Dynamically builds filter options from collection data
+
+Last Updated: 2025-06-03
+================================================================================
+{% endcomment %}
+
+
+<div class="founders-filter">
+  <div class="founders__interface">
+    
+    <!-- Search Section -->
+    <div class="founders__search">
+      <h3>{% include helpers/t.html key="founders.filter.search_title" fallback="Search Founders" lang=page.lang %}</h3>
+      <div class="search-input-section">
+        <input type="text" id="founders-search-query" class="search-input" 
+               placeholder="{% include helpers/t.html key="founders.filter.search_placeholder" fallback="Search by name, expertise, or brand..." lang=page.lang %}" 
+               aria-label="Search founders">
+        <button type="button" id="clear-founders-search" class="search-clear-btn" title="Clear search">×</button>
+      </div>
+      <div id="search-results-count" class="search-results-count"></div>
+    </div>
+
+    <!-- Filter Column -->
+    <div class="founders__filters">
+      <h3>{% include helpers/t.html key="founders.filter.filter_title" fallback="Filter Founders" lang=page.lang %}</h3>
+
+      <!-- Market Filter -->
+      <div class="filter-section">
+        <h4>{% include helpers/t.html key="founders.filter.by_market" fallback="By Market" lang=page.lang %}</h4>
+        <div class="filter-options" id="market-filters">
+          {% assign markets = "" | split: "," %}
+          {% assign founder_markets = site.founders | where: "lang", page.lang | map: "country_code" | uniq %}
+
+          {% for market_code in founder_markets %}
+            {% if market_code %}
+              {% comment %} Use dimension-name helper for market lookup {% endcomment %}
+              {% capture market_name %}{% include helpers/dimension-name.html type="markets" id=market_code %}{% endcapture %}
+              {% assign market_name = market_name | strip %}
+              <div class="filter-option">
+                <input type="checkbox" id="market-{{ market_code }}" name="market" value="{{ market_code }}">
+                <label for="market-{{ market_code }}">{{ market_name }}</label>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Languages Filter -->
+      <div class="filter-section">
+        <h4>{% include helpers/t.html key="founders.filter.by_languages" fallback="Languages Spoken" lang=page.lang %}</h4>
+        <div class="filter-options" id="languages-filters">
+          {% assign all_languages = "" | split: "," %}
+          {% for founder in site.founders %}
+            {% if founder.lang == page.lang and founder.languages %}
+              {% for lang in founder.languages %}
+                {% assign all_languages = all_languages | push: lang %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign unique_languages = all_languages | uniq | sort %}
+          {% for lang in unique_languages %}
+            <div class="filter-option">
+              <input type="checkbox" id="language-{{ lang | slugify }}" name="languages" value="{{ lang }}">
+              <label for="language-{{ lang | slugify }}">{{ lang }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Expertise Filter -->
+      <div class="filter-section">
+        <h4>{% include helpers/t.html key="founders.filter.by_expertise" fallback="Expertise Areas" lang=page.lang %}</h4>
+        <div class="filter-options" id="expertise-filters">
+          {% assign all_expertise = "" | split: "," %}
+          {% for founder in site.founders %}
+            {% if founder.lang == page.lang and founder.expertise %}
+              {% for exp in founder.expertise %}
+                {% assign all_expertise = all_expertise | push: exp %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign unique_expertise = all_expertise | uniq | sort %}
+          {% for exp in unique_expertise %}
+            <div class="filter-option">
+              <input type="checkbox" id="expertise-{{ exp | slugify }}" name="expertise" value="{{ exp }}">
+              <label for="expertise-{{ exp | slugify }}">{{ exp }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Cross-Border Expertise Filter -->
+      <div class="filter-section">
+        <h4>{% include helpers/t.html key="founders.filter.by_cross_border" fallback="Cross-Border Focus" lang=page.lang %}</h4>
+        <div class="filter-options" id="cross-border-filters">
+          <div class="filter-option">
+            <input type="checkbox" id="cross-border-yes" name="cross_border" value="true">
+            <label for="cross-border-yes">{% include helpers/t.html key="founders.filter.cross_border_experience" fallback="Has Cross-Border Experience" lang=page.lang %}</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="international-expansion" name="international_expansion" value="true">
+            <label for="international-expansion">{% include helpers/t.html key="founders.filter.international_expansion" fallback="International Expansion Experience" lang=page.lang %}</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generation Filter -->
+      <div class="filter-section">
+        <h4>{% include helpers/t.html key="founders.filter.by_generation" fallback="Generation" lang=page.lang %}</h4>
+        <div class="filter-options" id="generation-filters">
+          {% assign all_generations = "" | split: "," %}
+          {% for founder in site.founders %}
+            {% if founder.lang == page.lang and founder.generation %}
+              {% assign all_generations = all_generations | push: founder.generation %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign unique_generations = all_generations | uniq | sort %}
+          {% for gen in unique_generations %}
+            <div class="filter-option">
+              <input type="checkbox" id="generation-{{ gen | slugify }}" name="generation" value="{{ gen }}">
+              <label for="generation-{{ gen | slugify }}">{{ gen }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Reset Filters -->
+      <div class="filter-actions">
+        <button id="reset-founders-filters" class="btn-text">{% include helpers/t.html key="founders.filter.reset" fallback="Reset Filters" lang=page.lang %}</button>
+        <button id="clear-all-founders" class="btn-text">{% include helpers/t.html key="founders.filter.clear_all" fallback="Clear All" lang=page.lang %}</button>
+      </div>
+    </div>
+
+    <div class="founders__results">
+      <div class="founders__results-header">
+        <h2 id="founders-results-count">{% include helpers/t.html key="founders.grid.all_founders" fallback="All Founders" lang=page.lang %}</h2>
+
+        <!-- Sort Options -->
+        <div class="founders__controls">
+          <div class="founders__sort">
+            <label for="founders-sort-select">{% include helpers/t.html key="founders.grid.sort_by" fallback="Sort by" lang=page.lang %}:</label>
+            <select id="founders-sort-select">
+              <option value="name">{% include helpers/t.html key="founders.grid.sort_name" fallback="Name" lang=page.lang %}</option>
+              <option value="market">{% include helpers/t.html key="founders.grid.sort_market" fallback="Market" lang=page.lang %}</option>
+              <option value="languages">{% include helpers/t.html key="founders.grid.sort_languages" fallback="Languages" lang=page.lang %}</option>
+              <option value="expertise">{% include helpers/t.html key="founders.grid.sort_expertise" fallback="Expertise" lang=page.lang %}</option>
+              <option value="recent">{% include helpers/t.html key="founders.grid.sort_recent" fallback="Most Recent" lang=page.lang %}</option>
+            </select>
+          </div>
+
+          <!-- View Toggle -->
+          <div class="founders__view-toggle">
+            <button id="grid-view" class="view-toggle-btn active" title="Grid view">⊞</button>
+            <button id="list-view" class="view-toggle-btn" title="List view">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filters Display -->
+      <div id="active-founders-filters" class="active-filters">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Search Results Grid -->
+      <div id="founders-search-results" class="founders-results-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Load More -->
+      <div id="load-more-founders-container" class="load-more-container" style="display: none;">
+        <button type="button" id="load-more-founders" class="load-more-btn">
+          {% include helpers/t.html key="founders.grid.load_more" fallback="Load More Founders" lang=page.lang %}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fallback for non-JS users -->
+<noscript>
+  <div class="founders-fallback">
+    <p>{% include helpers/t.html key="founders.filter.js_required" fallback="JavaScript is required for search functionality. Please enable JavaScript or browse founders using the main navigation." lang=page.lang %}</p>
+  </div>
+</noscript>
+
+<!-- Load Founders Search JavaScript -->
+<script src="{{ '/assets/js/pages/founders/founders-search.js' | relative_url }}" defer></script>

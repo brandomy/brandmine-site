@@ -1,0 +1,60 @@
+{% comment %}
+  Component: pages/journal/header.html
+
+  Purpose: Renders the header section of a journal post including:
+           - Back navigation
+           - Post title
+           - Metadata (date, author, reading time)
+
+  Parameters:
+  - post: The post page object (required)
+
+  Dependencies:
+  - CSS: pages/journal/header.scss
+  - site.data.translations[page.lang].journal for localized labels
+
+  Used by:
+  - post layout via sections array
+{% endcomment %}
+
+{% assign post = include.post | default: page %}
+{% comment %}Using t.html helper for journal translations{% endcomment %}
+
+<div class="panel panel--light">
+  <div class="panel__content">
+    <div class="post-header">
+      <nav class="post-navigation">
+        <a href="{{ '/journal/' | prepend: '/' | append: page.lang | append: '/' | relative_url }}" class="post-navigation__back">
+          ← {% include helpers/t.html key="journal.back_to_journal" fallback="Back to Journal" %}
+        </a>
+      </nav>
+
+      <h1 class="post-title">{{ post.title }}</h1>
+
+      <div class="post-meta">
+        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
+          {% include helpers/t.html key="journal.published_on" fallback="Published on" %} {{ post.date | date: "%B %d, %Y" }}
+        </time>
+
+        {% if post.author %}
+          <span class="post-author">
+            {% include helpers/t.html key="journal.by" fallback="by" %} 
+            {% assign author_key = "authors." | append: post.author %}
+            {% capture translated_author %}{% include helpers/t.html key=author_key fallback=post.author %}{% endcapture %}
+            {% if translated_author == post.author %}
+              {{ post.author | replace: "_", " " | capitalize }}
+            {% else %}
+              {{ translated_author }}
+            {% endif %}
+          </span>
+        {% endif %}
+
+        {% if post.reading_time %}
+          <span class="post-reading-time">
+            {{ post.reading_time }} {% include helpers/t.html key="journal.min_read" fallback="min read" %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

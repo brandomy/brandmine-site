@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLAUDE.md</title>
+
+  <!-- SEO Components -->
+  
+    <meta name="description" content="
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Illuminating and Elevating Founder-led Brands from the BRICS+
+">
+  
+
+  <!-- Schema.org markup -->
+  
+
+
+
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/site/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/site/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/site/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/site/favicons/site.webmanifest">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- Font Preloading for Performance -->
+  <link rel="preload" href="/assets/fonts/pt-sans_regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/pt-serif_regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  
+
+  <!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1377139');
+</script>
+<!-- End MailerLite Universal -->
+</head>
+
+<body class="default-page">
+  
+
+
+
+<header class="header">
+  <div class="header__container">
+    <!-- Logo and Toggle -->
+    <div class="header__branding">
+      <a class="header__title" href="//">
+        
+        
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine
+
+      </a>
+      <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="header__toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+    
+    <!-- Language Switcher -->
+    <div class="header__lang">
+      
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  
+
+<nav class="header__nav" id="main-nav">
+  <ul class="header__nav-list">
+    
+    
+    
+    
+      
+      
+      
+      
+    
+  </ul>
+</nav>
+</header>
+
+  <main class="layout">
+    <div class="layout__wrapper">
+      <div class="layout__content">
+        <h1 id="claudemd">CLAUDE.md</h1>
+
+<p>Master project guide for Claude Code collaboration on Brandmine.</p>
+
+<hr />
+
+<h1 id="-project-overview">🧭 Project Overview</h1>
+
+<p><strong>Brandmine</strong> is a multilingual Jekyll site showcasing BRICS+ consumer brands with founder stories and dimension-based discovery.</p>
+
+<h2 id="business-mission">Business Mission</h2>
+<p>Illuminate exceptional founder-led brands from BRICS+ countries, connecting them globally with partners and capital for growth.</p>
+
+<p><strong>Architecture</strong>: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment.</p>
+
+<hr />
+
+<h1 id="-key-structure">🗂 Key Structure</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_brands/{lang}/           — Brand profiles
+_founders/{lang}/         — Founder profiles
+_dimensions/{lang}/{type}/ — Taxonomy (markets, sectors, attributes, signals)
+_insights/{lang}/         — Blog content
+_data/                    — Configuration and translations
+_includes/                — Reusable components
+assets/                   — CSS, JS, images
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="️-dimensions-system">🏷️ Dimensions System</h1>
+
+<p><strong>Four dimension types</strong> (never create new types):</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">markets</code> — Geographic regions (brazil, russia, china)</li>
+  <li><code class="language-plaintext highlighter-rouge">sectors</code> — Industries (wine, natural-beauty, artisanal-spirits)</li>
+  <li><code class="language-plaintext highlighter-rouge">attributes</code> — Brand qualities (founder-led, heritage-brand)</li>
+  <li><code class="language-plaintext highlighter-rouge">signals</code> — Growth indicators (export-ready, franchise-ready)</li>
+</ul>
+
+<p><strong>Brand taxonomy usage:</strong></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sectors</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">wine"</span><span class="pi">]</span>
+<span class="na">markets</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">russia"</span><span class="pi">]</span>
+<span class="na">attributes</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">founder-led"</span><span class="pi">]</span>
+<span class="na">signals</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">export-ready"</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="-universal-component-system">🎴 Universal Component System</h1>
+
+<p><strong>Single component handles all card types:</strong>
+```liquid</p>
+
+<p><!-- Universal Card: Missing required parameters --></p>
+
+
+      </div>
+    </div>
+  </main>
+
+  
+
+
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__section footer__section--left">
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+</p>
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  202401005480 (1551330-P)
+</p>
+      <div class="language-selector footer__lang">
+        
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--center">
+      
+      
+      <p class="footer__tagline"><em>
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  ✨Illuminating and elevating exceptional founder-led brands from the BRICS+
+</em></p>
+      <div class="footer__social">
+        
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--right">
+      <div class="footer__newsletter">
+        <div class="newsletter-wrapper">
+          
+            <div class="ml-embedded" data-form="480swE"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__copyright">
+    <p class="footer__text">
+      
+      
+      © 2025 
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+.
+      
+      
+      
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  All rights reserved.
+
+      |
+      
+    </p>
+  </div>
+</footer>
+
+  <!-- Core Components -->
+  <script src="/assets/js/components/header.js"></script>
+
+  <!-- Conditional Components Based on Layout -->
+  
+
+  <!-- Optional Components Based on Page Features -->
+  
+
+  
+
+  <!-- UI Components -->
+  
+
+  
+
+  <!-- Central Initialization -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Analytics -->
+  
+
+
+</body>
+</html>

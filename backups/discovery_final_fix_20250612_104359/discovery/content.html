@@ -1,0 +1,43 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Content
+PATH: _includes/pages/discovery/content.html
+
+PURPOSE:
+Renders the main content/introduction from the page's markdown body. This
+component displays any written content between the front matter and end of
+the markdown file, providing page-specific content.
+
+USAGE:
+Positioned dynamically within the discovery layout's logic-light architecture
+based on the page.sections array in front matter.
+
+PARAMETERS:
+- content: The markdown content passed from the layout
+
+DEPENDENCIES:
+- CSS: pages/discovery/content.scss (if specific styling needed)
+- Relies on content variable passed from layout
+
+CUSTOMIZATION:
+- No direct customization - content comes from the markdown file
+- Styling can be adjusted via CSS
+
+EXAMPLE:
+In page front matter:
+sections:
+  - hero
+  - content
+  - dimensions-grid
+
+NOTES:
+- If no content exists in the markdown file, this section will be empty
+- Content is automatically wrapped in .discovery-content for styling
+================================================================================
+{% endcomment %}
+
+{% if include.content and include.content != "" %}
+<div class="discovery-content">
+  {{ include.content }}
+</div>
+{% endif %}

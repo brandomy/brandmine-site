@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Insight Article - Header Component
+   ==========================================================================
+   Styles for the header section of insight articles
+*/
+
+.insight-article-page {
+  .insight-header {
+    text-align: center;
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--neutral-200);
+    
+    @media (width >= 768px) {
+      padding: var(--space-12) 0;
+    }
+
+    .insight-title {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-6);
+      line-height: var(--leading-tight);
+      color: var(--neutral-900);
+      font-family: var(--font-heading);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media (width >= 480px) {
+        font-size: var(--text-4xl);
+      }
+
+      @media (width >= 768px) {
+        font-size: var(--text-5xl);
+      }
+    }
+
+    .insight-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-3) var(--space-6);
+      font-size: var(--text-sm);
+      color: var(--neutral-600);
+      margin-bottom: var(--space-4);
+
+      @media (width >= 768px) {
+        font-size: var(--text-base);
+      }
+
+      > * {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+      }
+    }
+
+    .insight-category {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background-color: var(--secondary-100);
+      color: var(--secondary-800);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-weight: var(--font-medium);
+      font-size: var(--text-sm);
+
+      .insight-category-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .insight-date {
+      font-weight: var(--font-medium);
+    }
+
+    .insight-author {
+      font-weight: var(--font-medium);
+    }
+
+    .insight-reading-time {
+      color: var(--neutral-500);
+      
+      i {
+        opacity: 0.7;
+      }
+    }
+
+    .premium-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background-color: var(--amber-100);
+      color: var(--amber-800);
+      font-weight: var(--font-medium);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      margin-top: var(--space-4);
+      font-size: var(--text-sm);
+
+      i {
+        font-size: 14px;
+      }
+    }
+  }
+}
