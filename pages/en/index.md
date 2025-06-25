@@ -9,7 +9,7 @@ lang: en
   # - hero
   # - impact-statement
   # - discovery-dimensions
-  # - featured-case-studies
+  # - case-studies
   # - how-it-works
   # - testimonials
   # - featured-brands
@@ -19,5 +19,6 @@ lang: en
   # - brand-owners
   # - latest-insights-tagged
   # - final-cta
+
 ---
 <!-- Brandmine home page - sections limited for styling focus -->

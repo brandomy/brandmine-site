@@ -9,7 +9,7 @@ lang: zh
   # - hero
   # - impact-statement
   # - discovery-dimensions
-  # - featured-case-studies
+  # - case-studies
   # - how-it-works
   # - testimonials
   # - featured-brands
