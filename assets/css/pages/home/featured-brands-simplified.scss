@@ -134,6 +134,30 @@
     color: var(--neutral-400);
 }
 
+/* Description - Mobile First */
+.simplified-brand-card__description {
+    // Mobile base styles
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+    color: var(--neutral-600);
+    margin: var(--space-2) 0 var(--space-3) 0;
+    
+    // Text truncation for card consistency
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    // Progressive enhancement for larger screens
+    @media (width >= 480px) {
+        font-size: var(--text-sm);
+    }
+    
+    @media (width >= 768px) {
+        -webkit-line-clamp: 3; // Allow 3 lines on tablets and up
+    }
+}
+
 /* Taxonomy Tags */
 .simplified-brand-card__tags {
     display: flex;

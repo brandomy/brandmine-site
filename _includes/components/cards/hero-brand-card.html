@@ -213,11 +213,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
             {% for market in brand.markets %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
                  class="brand-tag brand-tag--market">
-                {% if site.data.dimensions.markets[market][page.lang] %}
-                  {{ site.data.dimensions.markets[market][page.lang] }}
-                {% else %}
-                  {{ market }}
-                {% endif %}
+                {% include helpers/dimension-name.html type="markets" id=market %}
               </a>
             {% endfor %}
           {% endif %}
@@ -227,11 +223,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
             {% for sector in brand.sectors %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
                  class="brand-tag brand-tag--sector">
-                {% if site.data.dimensions.sectors[sector][page.lang] %}
-                  {{ site.data.dimensions.sectors[sector][page.lang] }}
-                {% else %}
-                  {{ sector }}
-                {% endif %}
+                {% include helpers/dimension-name.html type="sectors" id=sector %}
               </a>
             {% endfor %}
           {% endif %}
@@ -241,11 +233,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
             {% for attribute in brand.attributes %}
               <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
                  class="brand-tag brand-tag--attribute">
-                {% if site.data.dimensions.attributes[attribute][page.lang] %}
-                  {{ site.data.dimensions.attributes[attribute][page.lang] }}
-                {% else %}
-                  {{ attribute }}
-                {% endif %}
+                {% include helpers/dimension-name.html type="attributes" id=attribute %}
               </a>
             {% endfor %}
           {% endif %}
@@ -266,11 +254,7 @@ NOTES: Taxonomy display and image options configurable via component defaults. F
         {% for signal in brand.signals %}
           <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
              class="brand-tag brand-tag--signal">
-            {% if site.data.dimensions.signals[signal][page.lang] %}
-              {{ site.data.dimensions.signals[signal][page.lang] }}
-            {% else %}
-              {{ signal }}
-            {% endif %}
+            {% include helpers/dimension-name.html type="signals" id=signal %}
           </a>
         {% endfor %}
       </div>

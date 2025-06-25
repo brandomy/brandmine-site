@@ -63,6 +63,11 @@ DESIGN PATTERN:
       {% endif %}
     </div>
 
+    <!-- Description -->
+    {% if include.brand.description and include.brand.description != "" %}
+      <p class="simplified-brand-card__description">{{ include.brand.description }}</p>
+    {% endif %}
+
     <!-- Taxonomy Tags (Show ALL relevant tags - no limits) -->
     <div class="simplified-brand-card__tags">
       <!-- Markets (all markets for discovery) -->
