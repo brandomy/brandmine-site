@@ -14,19 +14,29 @@ ref: dev-test-json-migration
     <h2>1. Basic Tag Components Tests</h2>
 
     <h3>taxonomy-tag.html (sector)</h3>
-    {% include components/helpers/taxonomy-tag.html type="sector" value="wine" %}
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/wine/" class="test-tag test-tag--sector">
+      {% include helpers/dimension-name.html type="sectors" id="wine" %}
+    </a>
 
     <h3>taxonomy-tag.html (market)</h3>
-    {% include components/helpers/taxonomy-tag.html type="market" value="russia" %}
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/russia/" class="test-tag test-tag--market">
+      {% include helpers/dimension-name.html type="markets" id="russia" %}
+    </a>
 
     <h3>taxonomy-tag.html (attribute)</h3>
-    {% include components/helpers/taxonomy-tag.html type="attribute" value="founder-led" %}
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/founder-led/" class="test-tag test-tag--attribute">
+      {% include helpers/dimension-name.html type="attributes" id="founder-led" %}
+    </a>
 
     <h3>taxonomy-tag.html (signal)</h3>
-    {% include components/helpers/taxonomy-tag.html type="signal" value="export-ready" %}
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/export-ready/" class="test-tag test-tag--signal">
+      {% include helpers/dimension-name.html type="signals" id="export-ready" %}
+    </a>
 
     <h3>taxonomy-tag.html (non-existent)</h3>
-    {% include components/helpers/taxonomy-tag.html type="sector" value="nonexistent-tag" %}
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/nonexistent-tag/" class="test-tag test-tag--sector">
+      {% include helpers/dimension-name.html type="sectors" id="nonexistent-tag" %}
+    </a>
 
     <h3>bem-taxonomy-tag.html</h3>
     {% include components/helpers/bem-taxonomy-tag.html type="sector" value="wine" block="test-tag" %}
