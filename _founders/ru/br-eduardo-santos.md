@@ -14,6 +14,7 @@ brands: [br-serra-verde]
 featured: true
 generation: "third"
 role: "Founder & Chief Agriculturalist"
+company: "Serra Verde Organics"
 
 country_code: br
 region: "Минас-Жерайс"
@@ -27,7 +28,7 @@ languages: ["pt", "es", "en"]
 portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "formal"
+    name: "farming"
     alt: "Эдуардо Сантос работает на органических фермерских полях"
     ext: "jpg"
   headshot:

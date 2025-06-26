@@ -62,19 +62,21 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     };
     
-    // Add click handlers to dots
+    // Add click handlers to dots with interaction tracking
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
         console.log(`Dot ${index} clicked, scrolling to slide ${index}`);
         scrollToSlide(index);
+        resetInteractionTimer(); // Pause auto-advance on user interaction
       });
     });
     
-    // Update dots on scroll
+    // Update dots on scroll with interaction tracking
     let scrollTimeout;
     track.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(updateActiveDot, 50);
+      resetInteractionTimer(); // Track scroll as user interaction
     }, { passive: true });
     
     // Keyboard navigation
@@ -93,19 +95,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make track focusable for keyboard navigation
     track.setAttribute('tabindex', '0');
     
-    // Auto-advance functionality
+    // Auto-advance functionality with user interaction tracking
     let autoAdvanceInterval;
+    let userHasInteracted = false;
+    let interactionTimer;
+    const SLIDE_DURATION = 10000; // 10 seconds for comfortable reading
+    const INTERACTION_PAUSE = 5000; // 5 seconds after user interaction
     
     const startAutoAdvance = () => {
+      if (autoAdvanceInterval) clearInterval(autoAdvanceInterval);
+      
       autoAdvanceInterval = setInterval(() => {
-        const currentIndex = Math.round(track.scrollLeft / getSlideWidth());
-        const nextIndex = (currentIndex + 1) % slides.length;
-        scrollToSlide(nextIndex);
-      }, 8000);
+        // Only advance if user hasn't interacted recently
+        if (!userHasInteracted) {
+          const currentIndex = Math.round(track.scrollLeft / getSlideWidth());
+          const nextIndex = (currentIndex + 1) % slides.length;
+          scrollToSlide(nextIndex);
+        }
+      }, SLIDE_DURATION);
     };
     
     const stopAutoAdvance = () => {
       clearInterval(autoAdvanceInterval);
+    };
+    
+    // Track user interactions to pause auto-advance
+    const resetInteractionTimer = () => {
+      userHasInteracted = true;
+      clearTimeout(interactionTimer);
+      
+      // Resume auto-advance after period of no interaction
+      interactionTimer = setTimeout(() => {
+        userHasInteracted = false;
+      }, INTERACTION_PAUSE);
     };
     
     // Auto-advance when in viewport
@@ -121,10 +143,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     observer.observe(carouselElement);
     
-    // Pause auto-advance on user interaction
-    carouselElement.addEventListener('mouseenter', stopAutoAdvance);
+    // Enhanced user interaction handling
+    carouselElement.addEventListener('mouseenter', () => {
+      resetInteractionTimer();
+      stopAutoAdvance();
+    });
     carouselElement.addEventListener('mouseleave', startAutoAdvance);
-    carouselElement.addEventListener('touchstart', stopAutoAdvance);
+    carouselElement.addEventListener('touchstart', resetInteractionTimer);
     
     // Initial setup
     updateActiveDot();

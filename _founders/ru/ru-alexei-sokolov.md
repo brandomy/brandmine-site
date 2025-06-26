@@ -14,6 +14,7 @@ brands: [ru-teatime]
 featured: true
 generation: "first"
 role: "Founder & CEO"
+company: "TeaTime"
 
 country_code: ru
 region: "Москва"

@@ -14,6 +14,7 @@ brands: [br-serra-verde]
 featured: true
 generation: "third"
 role: "创始人兼首席农业顾问"
+company: "Serra Verde Organics"
 
 country_code: br
 region: "米纳斯吉拉斯州"
@@ -27,7 +28,7 @@ languages: ["pt", "es", "zh"]
 portrait_image: true  # Flag indicating portrait image exists
 images:
   portrait:
-    name: "formal"
+    name: "farming"
     alt: "爱德华多·桑托斯在有机农场田地中工作"
     ext: "jpg"
   headshot:

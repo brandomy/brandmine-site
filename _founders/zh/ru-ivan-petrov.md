@@ -14,6 +14,7 @@ brands: [ru-altai-honey]
 featured: true
 generation: "first"
 role: "创始人兼首席养蜂顾问"
+company: "Altai Honey"
 
 country_code: ru
 region: "阿尔泰共和国"

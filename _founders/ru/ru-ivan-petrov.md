@@ -14,6 +14,7 @@ brands: [ru-altai-honey]
 featured: true
 generation: "first"
 role: "Founder & Head Beekeeper"
+company: "Altai Honey"
 
 country_code: ru
 region: "Республика Алтай"

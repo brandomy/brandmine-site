@@ -25,12 +25,12 @@ Optimized for emotional impact and founder-focus experience
       </div>
       
       <div class="founder-intense-card__achievement">
-        <span class="founder-intense-card__achievement-label">🏆 Key Achievement</span>
+        <span class="founder-intense-card__achievement-label">🏆 {% include helpers/t.html key="founders.featured.key_achievement" fallback="Key Achievement" %}</span>
         <p class="founder-intense-card__achievement-text">{{ include.achievement }}</p>
       </div>
       
       <div class="founder-intense-card__brand">
-        <span class="founder-intense-card__brand-label">🔗</span>
+        <span class="founder-intense-card__brand-label">🔗 {% include helpers/t.html key="founders.featured.brand_label" fallback="Brand" %}:</span>
         {{ include.brand }}
       </div>
       
@@ -43,7 +43,7 @@ Optimized for emotional impact and founder-focus experience
       
       <p class="founder-intense-card__description">{{ include.description }}</p>
       
-      <a href="#" class="founder-intense-card__cta">Connect with {{ include.name }} →</a>
+      <a href="#" class="founder-intense-card__cta">{% include helpers/t.html key="founders.featured.connect_with" fallback="Connect with" %} {{ include.name }} →</a>
     </div>
   {% else %}
     <!-- Content panel first -->
@@ -54,12 +54,12 @@ Optimized for emotional impact and founder-focus experience
       </div>
       
       <div class="founder-intense-card__achievement">
-        <span class="founder-intense-card__achievement-label">🏆 Key Achievement</span>
+        <span class="founder-intense-card__achievement-label">🏆 {% include helpers/t.html key="founders.featured.key_achievement" fallback="Key Achievement" %}</span>
         <p class="founder-intense-card__achievement-text">{{ include.achievement }}</p>
       </div>
       
       <div class="founder-intense-card__brand">
-        <span class="founder-intense-card__brand-label">🔗</span>
+        <span class="founder-intense-card__brand-label">🔗 {% include helpers/t.html key="founders.featured.brand_label" fallback="Brand" %}:</span>
         {{ include.brand }}
       </div>
       
@@ -72,7 +72,7 @@ Optimized for emotional impact and founder-focus experience
       
       <p class="founder-intense-card__description">{{ include.description }}</p>
       
-      <a href="#" class="founder-intense-card__cta">Connect with {{ include.name }} →</a>
+      <a href="#" class="founder-intense-card__cta">{% include helpers/t.html key="founders.featured.connect_with" fallback="Connect with" %} {{ include.name }} →</a>
     </div>
     
     <!-- Portrait panel second -->

@@ -1,86 +1,395 @@
-.home-page {
-  /* ==========================================================================
-     Founder Focus Section
-     ==========================================================================
-     Styling for the Founder Focus section on the homepage
-  */
+/**
+ * SIMPLE ARCHITECTURE: Founder Focus Homepage Section
+ * Revolutionary 50% portrait cards with mobile-friendly universal carousel pattern
+ * Matches Featured Brands/Case Studies architecture for consistency
+ */
 
-  /* Founder Focus Carousel */
-  .founder-focus-carousel {
-    display: flex;
-    gap: 1.25rem;
-    overflow-x: auto;
-    margin: 2rem -1rem;
-    padding: 1rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
 
-    &::-webkit-scrollbar {
-      height: 4px;
-    }
+/* =============================================================================
+   SECTION LAYOUT - No container wrapper conflicts
+   ============================================================================= */
 
-    &::-webkit-scrollbar-track {
-      background-color: var(--color-gray-100);
-      border-radius: 2px;
-    }
+.founder-focus-section {
+  padding: var(--space-8) 0;
+  background: var(--accent-50);
+  position: relative;
+}
 
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--color-olive-400);
-      border-radius: 2px;
-    }
+/* Header - Only header needs padding */
+.founder-focus__header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  padding: 0 var(--space-4);
+}
 
-    .founder-card,
-    .simplified-founder-card {
-      scroll-snap-align: start;
-      flex: 0 0 calc(100% - 2rem);
+.founder-focus__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-tight);
+}
 
-      @media (width >= 640px) {
-        flex: 0 0 calc(50% - 1.25rem);
-      }
+.founder-focus__subtitle {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--leading-relaxed);
+}
 
-      @media (width >= 1024px) {
-        flex: 0 0 calc(30% - 1rem); /* Slightly smaller to show 4th card partially */
-      }
-    }
+/* Footer - Only footer needs padding */
+.founder-focus__footer {
+  text-align: center;
+  margin-top: var(--space-8);
+  padding: 0 var(--space-4);
+}
+
+/* =============================================================================
+   UNIVERSAL CAROUSEL PATTERN - Matches Featured Brands/Case Studies
+   ============================================================================= */
+
+.universal-carousel[data-component-type="founder-focus"] {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  margin: var(--space-6) 0;
+  width: 100%;
+  position: relative;
+  scroll-snap-type: x mandatory;
+  
+  /* Hide scrollbar for clean appearance */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
   }
+}
 
-  /* Founder Focus Placeholder */
-  .founder-focus-placeholder {
-    display: flex;
-    gap: 1.25rem;
+/* FIXED CARD SIZING - Account for carousel padding */
+.universal-carousel[data-component-type="founder-focus"] .founder-focus-card {
+  flex: 0 0 900px;
+  max-width: 900px;
+  scroll-snap-align: center;
+  
+  @media (max-width: 768px) {
+    /* Account for mobile carousel padding (space-3 * 2 = 3rem) + safety margin */
+    flex: 0 0 calc(100vw - 3rem) !important;
+    max-width: calc(100vw - 3rem) !important;
+  }
+  
+  @media (max-width: 480px) {
+    /* Tighter calculation for small screens - minimum padding */
+    flex: 0 0 calc(100vw - 1rem) !important;
+    max-width: calc(100vw - 1rem) !important;
+  }
+}
+
+/* =============================================================================
+   REVOLUTIONARY 50% PORTRAIT CARD DESIGN
+   ============================================================================= */
+
+.founder-focus-card {
+  display: flex;
+  height: 400px;
+  background: white;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+/* Portrait side (50%) */
+.founder-focus-card__portrait {
+  width: 50%;
+  height: 100%;
+  position: relative !important; /* CRITICAL: Provides positioning context */
+  overflow: visible !important; /* ALLOW GENERATION TAG TO SHOW */
+}
+
+.founder-focus-card__portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.founder-focus-card__generation {
+  position: absolute !important;
+  top: var(--space-4) !important;
+  right: var(--space-4) !important;
+  left: auto !important; /* ENSURE NOT POSITIONED LEFT */
+  z-index: 20 !important; /* HIGHER Z-INDEX */
+  
+  /* Force containment within portrait area */
+  max-width: calc(50% - 3rem) !important; /* Account for portrait width + padding */
+  
+  background: white !important;
+  color: var(--primary-700) !important;
+  font-size: var(--text-xs) !important;
+  font-weight: var(--font-semibold) !important;
+  padding: var(--space-2) var(--space-3) !important;
+  border-radius: var(--radius-full) !important;
+  border: 1px solid var(--primary-200) !important;
+  box-shadow: var(--shadow-md) !important;
+  
+  /* Text overflow handling */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Content side (50%) */
+.founder-focus-card__content {
+  width: 50%;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.founder-focus-card__header {
+  border-bottom: 1px solid var(--accent-200);
+  padding-bottom: var(--space-2);
+}
+
+.founder-focus-card__name {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.founder-focus-card__location {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin: 0;
+}
+
+.founder-focus-card__achievement {
+  background: var(--accent-100);
+  padding: var(--space-2);
+  border-radius: 0; /* REMOVED BORDER RADIUS */
+  border: 1px solid var(--accent-200);
+}
+
+.founder-focus-card__achievement-label {
+  display: block;
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  color: var(--accent-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.founder-focus-card__achievement-text {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-800);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.founder-focus-card__company {
+  font-size: var(--text-sm);
+  color: var(--primary-600);
+  font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.founder-focus-card__brand-link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--primary-700);
+  }
+}
+
+.founder-focus-card__brand-name {
+  color: var(--primary-600);
+  font-weight: var(--font-medium);
+}
+
+.founder-focus-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.founder-focus-card__tag {
+  background: var(--neutral-100);
+  color: var(--neutral-700);
+  padding: 2px var(--space-2);
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: var(--font-medium);
+  border: 1px solid var(--neutral-200);
+  white-space: nowrap;
+}
+
+.founder-focus-card__description {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-600);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.founder-focus-card__cta {
+  margin-top: auto; /* Push to bottom */
+}
+
+.founder-focus-card__cta-button {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  display: block; /* MAKE FULL WIDTH */
+  width: 100%; /* FULL WIDTH */
+  box-sizing: border-box;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* =============================================================================
+   DOT NAVIGATION
+   ============================================================================= */
+
+.founder-focus__navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+.founder-focus__dots {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.founder-focus__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--neutral-300);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--primary-400);
+  }
+  
+  &.founder-focus__dot--active {
+    background: var(--primary-500);
+  }
+}
+
+/* =============================================================================
+   MOBILE RESPONSIVE - Simple stacked layout
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .founder-focus-section {
+    padding: var(--space-6) 0;
+  }
+  
+  .founder-focus__header {
+    margin-bottom: var(--space-6);
+    padding: 0 var(--space-3);
+  }
+  
+  .founder-focus__title {
+    font-size: var(--text-3xl);
+  }
+  
+  .founder-focus__subtitle {
+    font-size: var(--text-base);
+  }
+  
+  .universal-carousel[data-component-type="founder-focus"] {
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  
+  .founder-focus-card {
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+  }
+  
+  .founder-focus-card__portrait,
+  .founder-focus-card__content {
     width: 100%;
-
-    .founder-card {
-      flex: 1;
-    }
   }
-
-  /* Navigation dots for founder carousel */
-  .founder-focus-nav {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+  
+  .founder-focus-card__portrait {
+    height: 250px;
   }
+  
+  .founder-focus-card__generation {
+    top: var(--space-3) !important;
+    right: var(--space-3) !important;
+    max-width: calc(100% - 3rem) !important; /* Mobile: use full card width */
+  }
+  
+  .founder-focus-card__content {
+    padding: var(--space-4);
+  }
+  
+  .founder-focus-card__description {
+    -webkit-line-clamp: 4;
+  }
+  
+  .founder-focus__footer {
+    margin-top: var(--space-6);
+    padding: 0 var(--space-3);
+  }
+}
 
-  .founder-focus-nav-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: var(--neutral-alpha-30); /* Solid but muted */
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-
-    &.active {
-      background-color: #6b7280; /* Solid dark gray */
-      background-color: var(--olive-600, #6b7280); /* Olive with fallback */
-      transform: scale(1.2);
-    }
-
-    &:hover {
-      background-color: var(--neutral-alpha-50);
-    }
+@media (max-width: 480px) {
+  .founder-focus__header {
+    padding: 0 var(--space-2);
+  }
+  
+  .universal-carousel[data-component-type="founder-focus"] {
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .founder-focus__footer {
+    padding: 0 var(--space-2);
   }
 }
