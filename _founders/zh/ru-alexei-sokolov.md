@@ -3,20 +3,22 @@ layout: founder-profile
 ref: ru-alexei-sokolov
 name: "阿列克谢·索科洛夫"
 title: "阿列克谢·索科洛夫 - TeaTime的远见者"
+position: "创始人兼CEO"
 date: 2025-05-01
 lang: zh
 permalink: /zh/founders/ru-alexei-sokolov/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [ru-teatime]
 featured: true
 generation: "first"
-role: "创始人兼CEO"
 company: "TeaTime"
 
-country_code: ru
+# Location Information (FLATTENED)
+country: "ru"
 region: "莫斯科"
 city: "莫斯科"
 

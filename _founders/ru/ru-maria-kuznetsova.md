@@ -3,19 +3,22 @@ layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "Мария Кузнецова"
 title: "Мария Кузнецова - Сохраняя российское вкусовое наследие"
+position: "Founder & Culinary Director"
 date: 2025-05-01
 lang: ru
 permalink: /ru/founders/ru-maria-kuznetsova/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [ru-seven-spices]
 featured: true
 generation: "first"
-role: "Founder & Culinary Director"
+company: "7 Spices"
 
-country_code: ru
+# Location Information (FLATTENED)
+country: "ru"
 region: "Татарстан"
 city: "Казань"
 

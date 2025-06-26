@@ -3,20 +3,22 @@ layout: founder-profile
 ref: ru-ivan-petrov
 name: "伊万·彼得罗夫"
 title: "伊万·彼得罗夫 - 阿尔泰蜂蜜先驱"
+position: "创始人兼首席养蜂顾问"
 date: 2025-05-01
 lang: zh
 permalink: /zh/founders/ru-ivan-petrov/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [ru-altai-honey]
 featured: true
 generation: "first"
-role: "创始人兼首席养蜂顾问"
-company: "Altai Honey"
+company: "阿尔泰蜂蜜"
 
-country_code: ru
+# Location Information (FLATTENED)
+country: "ru"
 region: "阿尔泰共和国"
 city: "别洛库里哈"
 

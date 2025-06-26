@@ -41,10 +41,6 @@ Optimized for emotional impact with mobile-friendly design
 
 {% assign full_location = full_location_parts | append: country_name | append: " " | append: country_flag %}
 
-{% comment %} Generate generation display {% endcomment %}
-{% assign generation_key = 'founders.featured.generation.' | append: founder.generation %}
-{% include helpers/t.html key=generation_key fallback=founder.generation %}
-{% assign generation_display = t_result %}
 
 {% comment %} Generate portrait image path {% endcomment %}
 {% assign portrait_path = '/assets/images/founders/' | append: founder.ref | append: '/' | append: founder.ref | append: '-portrait-' | append: founder.images.portrait.name | append: '-800w.' | append: founder.images.portrait.ext %}
@@ -52,11 +48,6 @@ Optimized for emotional impact with mobile-friendly design
 <div class="founder-focus-card">
   <!-- Portrait side (50%) -->
   <div class="founder-focus-card__portrait">
-    <!-- Generation badge -->
-    <div class="founder-focus-card__generation">
-      {{ generation_display }}
-    </div>
-    
     <!-- Portrait image -->
     <img src="{{ portrait_path | relative_url }}" 
          alt="{{ founder.images.portrait.alt | default: founder.name }}" 

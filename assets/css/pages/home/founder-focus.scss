@@ -114,8 +114,8 @@
 .founder-focus-card__portrait {
   width: 50%;
   height: 100%;
-  position: relative !important; /* CRITICAL: Provides positioning context */
-  overflow: visible !important; /* ALLOW GENERATION TAG TO SHOW */
+  position: relative;
+  overflow: hidden;
 }
 
 .founder-focus-card__portrait-image {
@@ -124,33 +124,6 @@
   object-fit: cover;
   object-position: center;
   display: block;
-}
-
-.founder-focus-card__generation {
-  position: absolute !important;
-  top: var(--space-4) !important;
-  right: var(--space-4) !important;
-  left: auto !important; /* ENSURE NOT POSITIONED LEFT */
-  z-index: 20 !important; /* HIGHER Z-INDEX */
-  
-  /* Force containment within portrait area */
-  max-width: calc(50% - 3rem) !important; /* Account for portrait width + padding */
-  
-  background: white !important;
-  color: var(--primary-700) !important;
-  font-size: var(--text-xs) !important;
-  font-weight: var(--font-semibold) !important;
-  padding: var(--space-2) var(--space-3) !important;
-  border-radius: var(--radius-full) !important;
-  border: 1px solid var(--primary-200) !important;
-  box-shadow: var(--shadow-md) !important;
-  
-  /* Text overflow handling */
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 /* Content side (50%) */
@@ -360,11 +333,6 @@
     height: 250px;
   }
   
-  .founder-focus-card__generation {
-    top: var(--space-3) !important;
-    right: var(--space-3) !important;
-    max-width: calc(100% - 3rem) !important; /* Mobile: use full card width */
-  }
   
   .founder-focus-card__content {
     padding: var(--space-4);

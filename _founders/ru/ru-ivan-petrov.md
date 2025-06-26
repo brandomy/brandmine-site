@@ -3,20 +3,22 @@ layout: founder-profile
 ref: ru-ivan-petrov
 name: "Иван Петров"
 title: "Иван Петров - Основатель Алтайского Мёда"
+position: "Founder & Head Beekeeper"
 date: 2025-05-01
 lang: ru
 permalink: /ru/founders/ru-ivan-petrov/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [ru-altai-honey]
 featured: true
 generation: "first"
-role: "Founder & Head Beekeeper"
-company: "Altai Honey"
+company: "Алтайский Премиум Мёд"
 
-country_code: ru
+# Location Information (FLATTENED)
+country: "ru"
 region: "Республика Алтай"
 city: "Белокуриха"
 

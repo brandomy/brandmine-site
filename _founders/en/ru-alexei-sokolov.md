@@ -22,7 +22,7 @@ company: "TeaTime"  # Primary company association
 
 # Location Information (FLATTENED)
 country: "ru"      # ISO country code
-region: "Moscow"   # Optional: specific region or state
+region: "Moscow Region"   # Optional: specific region or state
 city: "Moscow"
 
 # International Scope

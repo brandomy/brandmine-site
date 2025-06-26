@@ -3,20 +3,22 @@ layout: founder-profile
 ref: br-eduardo-santos
 name: "Эдуардо Сантос"
 title: "Эдуардо Сантос - Бразильский органический первопроходец"
+position: "Основатель и главный агроном"
 date: 2025-05-01
 lang: ru
 permalink: /ru/founders/br-eduardo-santos/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [br-serra-verde]
 featured: true
 generation: "third"
-role: "Founder & Chief Agriculturalist"
 company: "Serra Verde Organics"
 
-country_code: br
+# Location Information (FLATTENED)
+country: "br"
 region: "Минас-Жерайс"
 city: "Гонсалвис"
 

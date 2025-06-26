@@ -3,19 +3,22 @@ layout: founder-profile
 ref: ru-maria-kuznetsova
 name: "玛丽亚·库兹涅佐娃"
 title: "玛丽亚·库兹涅佐娃 - 俄罗斯风味遗产的守护者"
+role: "创始人兼美食总监"
 date: 2025-05-01
 lang: zh
 permalink: /zh/founders/ru-maria-kuznetsova/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [ru-seven-spices]
 featured: true
 generation: "first"
-role: "创始人兼美食总监"
+company: "风味遗产"
 
-country_code: ru
+# Location Information (FLATTENED)
+country: "ru"
 region: "鞑靼斯坦"
 city: "喀山"
 

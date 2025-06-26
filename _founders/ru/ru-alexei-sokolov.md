@@ -3,20 +3,22 @@ layout: founder-profile
 ref: ru-alexei-sokolov
 name: "Алексей Соколов"
 title: "Алексей Соколов - Визионер TeaTime"
+position: "Founder & CEO"
 date: 2025-05-01
 lang: ru
 permalink: /ru/founders/ru-alexei-sokolov/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [ru-teatime]
 featured: true
 generation: "first"
-role: "Founder & CEO"
 company: "TeaTime"
 
-country_code: ru
+# Location Information (FLATTENED)
+country: "ru"
 region: "Москва"
 city: "Москва"
 

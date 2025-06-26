@@ -3,20 +3,22 @@ layout: founder-profile
 ref: br-eduardo-santos
 name: "爱德华多·桑托斯"
 title: "爱德华多·桑托斯 - 巴西有机先驱"
+position: "创始人兼首席农业顾问"
 date: 2025-05-01
 lang: zh
 permalink: /zh/founders/br-eduardo-santos/
 generate_json: true
 sample_data: true
 
-
+# === CORE INFORMATION ===
+# Basic Information
 brands: [br-serra-verde]
 featured: true
 generation: "third"
-role: "创始人兼首席农业顾问"
 company: "Serra Verde Organics"
 
-country_code: br
+# Location Information (FLATTENED)
+country: "br"
 region: "米纳斯吉拉斯州"
 city: "贡萨尔维斯"
 
