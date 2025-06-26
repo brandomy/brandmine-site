@@ -62,8 +62,7 @@
   /* Base mobile sizing (320px-480px) */
   .latest-insights__container .insight-latest-card {
     width: 100%;
-    min-height: 380px; /* Mobile-first: ensure all content fits */
-    height: auto; /* Allow natural content flow */
+    height: auto; /* Natural height based on content */
     /* All other styling inherited from carousel design */
   }
 
@@ -73,9 +72,7 @@
 
   /* Small tablets (481px+) */
   @media (min-width: 481px) {
-    .latest-insights__container .insight-latest-card {
-      min-height: 420px;
-    }
+    /* Cards size naturally - no fixed heights needed */
   }
 
   /* Tablet: 2x2 grid (768px+) */
@@ -87,9 +84,7 @@
       gap: var(--space-5);
     }
     
-    .latest-insights__container .insight-latest-card {
-      min-height: 460px;
-    }
+    /* Cards size naturally - no fixed heights needed */
   }
 
   /* Desktop: optimized spacing (992px+) */
@@ -101,9 +96,7 @@
       margin: var(--space-8) auto;
     }
     
-    .latest-insights__container .insight-latest-card {
-      min-height: 480px; /* Final height with generous spacing */
-    }
+    /* Cards size naturally - no fixed heights needed */
   }
 
   /* Large screens: maximum spacing (1200px+) */
@@ -143,53 +136,119 @@
     }
   }
 
-  /* Large tablets (768px+): Enhanced typography with optimized spacing */
+  /* Large tablets (768px+): Aggressive desktop density optimization */
   @media (min-width: 768px) {
     .insight-latest-card__content {
-      padding: var(--space-4); /* Reduced from space-5 */
-      gap: var(--space-3); /* Comfortable but not excessive */
+      padding: var(--space-3); /* Much tighter desktop padding */
+      gap: var(--space-2); /* Tight desktop gaps for density */
+    }
+    
+    .insight-latest-card__category {
+      margin-bottom: var(--space-1); /* Minimal spacing on desktop */
     }
     
     .insight-latest-card__title {
       font-size: var(--text-xl); /* Larger title on tablets */
-      line-height: 1.4;
+      line-height: 1.3; /* Tighter desktop line height */
+      margin-bottom: var(--space-1); /* Tight title spacing */
+    }
+    
+    .insight-latest-card__meta {
+      margin-bottom: var(--space-1); /* Minimal meta spacing */
     }
     
     .insight-latest-card__description {
       font-size: var(--text-base); /* Larger description on tablets */
-      line-height: 1.5; /* Slightly tighter than 1.6 */
-      -webkit-line-clamp: 4; /* More lines available on larger screens */
+      line-height: 1.45; /* Tight but readable line height */
+      margin-bottom: var(--space-2); /* Controlled spacing */
+      -webkit-line-clamp: 3; /* Reduced to ~100 characters for better balance */
     }
     
     .insight-latest-card__cta {
-      padding-top: var(--space-3);
+      padding-top: var(--space-2); /* Moderate CTA separation */
     }
   }
 
-  /* Desktop (992px+): Full experience with controlled density */
+  /* Desktop (992px+): Premium density matching Founder Focus */
   @media (min-width: 992px) {
     .insight-latest-card__content {
-      padding: var(--space-5); /* Reduced from space-6 */
-      gap: var(--space-4); /* Comfortable desktop spacing */
+      padding: var(--space-4); /* Tight desktop padding for premium feel */
+      gap: var(--space-2); /* Keep gaps tight for substantial appearance */
+    }
+    
+    /* Desktop-specific element spacing overrides */
+    .insight-latest-card__title {
+      margin-bottom: var(--space-2); /* Slightly more than tablet */
+    }
+    
+    .insight-latest-card__description {
+      margin-bottom: var(--space-2);
+      -webkit-line-clamp: 3; /* Reduced to ~100 characters for visual balance */
     }
     
     .insight-latest-card__cta {
-      padding-top: var(--space-3);
+      padding-top: var(--space-2); /* Keep CTA spacing controlled */
     }
   }
 
-  /* Large screens (1200px+): Controlled maximum spacing */
+  /* Large screens (1200px+): Premium density with 50% whitespace reduction */
   @media (min-width: 1200px) {
     .insight-latest-card__content {
-      gap: var(--space-4); /* Reduced from space-6 for consistency */
+      padding: var(--space-5); /* Maximum, but controlled */
+      gap: var(--space-3); /* Tighter gaps for premium density */
     }
     
     .insight-latest-card__content-link {
-      gap: var(--space-3); /* Comfortable spacing without excess */
+      gap: var(--space-2); /* Minimal gaps between elements */
     }
     
-    .insight-latest-card__image {
-      margin-bottom: var(--space-4); /* Consistent with content padding */
+    /* Override all element spacing for maximum density */
+    .insight-latest-card__category {
+      margin-bottom: var(--space-2); /* Controlled spacing */
+    }
+    
+    .insight-latest-card__title {
+      font-size: var(--text-2xl); /* Larger title on big screens */
+      margin-bottom: var(--space-2); /* Tight title spacing */
+    }
+    
+    .insight-latest-card__meta {
+      margin-bottom: var(--space-2); /* Consistent minimal spacing */
+    }
+    
+    .insight-latest-card__description {
+      font-size: var(--text-lg); /* Larger text on big screens */
+      line-height: 1.5; /* Comfortable but compact */
+      margin-bottom: var(--space-3); /* Slightly more for readability */
+      -webkit-line-clamp: 3; /* Perfect ~100 characters for premium brevity */
+    }
+    
+    .insight-latest-card__cta {
+      padding-top: var(--space-3); /* Premium CTA spacing */
+    }
+  }
+
+  /* ==========================================================================
+     PROGRESSIVE ENHANCEMENT FOR DESCRIPTION HEIGHT CONTROL
+     ========================================================================== */
+
+  /* Tablet and up: Progressive enhancement */
+  @media (min-width: 768px) {
+    .insight-latest-card__description {
+      height: 96px; /* ~4-5 lines with larger font */
+      -webkit-line-clamp: 5;
+    }
+    
+    .insight-latest-card__cta {
+      margin-top: var(--space-4); /* ~16px maximum for tablets */
+    }
+  }
+
+  /* Large desktop: Maximum controlled height */
+  @media (min-width: 1200px) {
+    .insight-latest-card__description {
+      height: 108px; /* ~5-6 lines for complete thoughts */
+      -webkit-line-clamp: 6;
     }
   }
 
@@ -220,13 +279,12 @@
     flex-direction: column;
     text-decoration: none;
     color: inherit;
-    flex: 1; /* Take up available space */
     gap: var(--space-3); /* Natural spacing between content elements */
   }
 
-  /* Image area (40% of card height) */
+  /* Image area with fixed aspect ratio */
   .insight-latest-card__image {
-    height: 40%;
+    aspect-ratio: 16 / 9; /* Fixed aspect ratio instead of percentage height */
     position: relative;
     overflow: hidden;
     background: var(--neutral-100);
@@ -260,7 +318,6 @@
     padding: var(--space-2); /* Reduced padding for better density */
     display: flex;
     flex-direction: column;
-    flex: 1; /* Take up available space */
     gap: var(--space-1); /* Tighter gaps for cohesive content */
     overflow: hidden;
     box-sizing: border-box;
@@ -342,17 +399,18 @@
     font-size: var(--text-sm); /* Mobile-first: smaller description */
     line-height: 1.4; /* Mobile-first: comfortable but compact */
     color: var(--neutral-600);
-    margin: 0; /* No bottom margin - let gap handle spacing */
+    margin: 0; /* Remove default paragraph margins */
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Mobile-first: fewer lines to ensure CTA visibility */
+    -webkit-line-clamp: 4; /* Allow 4 lines for better readability */
     -webkit-box-orient: vertical;
     overflow: hidden;
-    flex: 1; /* Take up available space, pushing CTA down */
+    text-overflow: ellipsis;
     text-align: center; /* Center description text */
+    height: 84px; /* Increased from 60px for ~4 lines of content */
   }
 
   .insight-latest-card__cta {
-    margin-top: auto; /* CRITICAL: Always anchor to bottom */
+    margin-top: var(--space-3); /* ~12px - reasonable separation instead of auto */
     padding-top: var(--space-1); /* Very minimal padding for density */
     text-align: center;
     border-top: 1px solid var(--neutral-100); /* Subtle separator */
