@@ -55,14 +55,30 @@
     grid-template-rows: repeat(4, auto);
   }
 
-  /* Grid cards - Enhanced sizing for better content display */
+  /* ==========================================================================
+     MOBILE-FIRST CARD SIZING - Start with mobile constraints
+     ========================================================================== */
+
+  /* Base mobile sizing (320px-480px) */
   .latest-insights__container .insight-latest-card {
     width: 100%;
-    height: 504px; /* Increased by 20% from 420px for better content visibility */
+    min-height: 380px; /* Mobile-first: ensure all content fits */
+    height: auto; /* Allow natural content flow */
     /* All other styling inherited from carousel design */
   }
 
-  /* Responsive grid adjustments */
+  /* ==========================================================================
+     PROGRESSIVE ENHANCEMENT FOR LARGER SCREENS
+     ========================================================================== */
+
+  /* Small tablets (481px+) */
+  @media (min-width: 481px) {
+    .latest-insights__container .insight-latest-card {
+      min-height: 420px;
+    }
+  }
+
+  /* Tablet: 2x2 grid (768px+) */
   @media (width >= 768px) {
     .latest-insights__container {
       /* Tablet: 2 columns */
@@ -70,8 +86,13 @@
       grid-template-rows: repeat(2, auto);
       gap: var(--space-5);
     }
+    
+    .latest-insights__container .insight-latest-card {
+      min-height: 460px;
+    }
   }
 
+  /* Desktop: optimized spacing (992px+) */
   @media (width >= 992px) {
     .latest-insights__container {
       /* Desktop: 2x2 grid with optimal spacing */
@@ -81,10 +102,11 @@
     }
     
     .latest-insights__container .insight-latest-card {
-      height: 480px; /* Increased by 20% from 400px for better content visibility */
+      min-height: 480px; /* Final height with generous spacing */
     }
   }
 
+  /* Large screens: maximum spacing (1200px+) */
   @media (width >= 1200px) {
     .latest-insights__container {
       max-width: 900px;
@@ -93,40 +115,81 @@
   }
 
   /* ==========================================================================
-     MOBILE RESPONSIVE ADJUSTMENTS
+     PROGRESSIVE ENHANCEMENT FOR CONTENT SPACING
      ========================================================================== */
 
-  @media (max-width: 768px) {
-    .latest-insights__header {
-      margin-bottom: var(--space-4);
+  /* Small tablets (481px+): Moderate density increase */
+  @media (min-width: 481px) {
+    .insight-latest-card__content {
+      padding: var(--space-3); /* Reduced from space-4 */
+      gap: var(--space-2); /* Moderate gaps */
     }
     
-    .latest-insights__subtitle {
-      font-size: var(--text-base);
+    .insight-latest-card__category {
+      top: 10px; /* Maintain 10px from image across all breakpoints */
+      margin-bottom: var(--space-2); /* Moderate spacing */
     }
     
-    .latest-insights__container {
-      gap: var(--space-4);
-      margin: var(--space-4) 0;
+    .insight-latest-card__title {
+      margin-bottom: var(--space-2);
     }
     
-    .latest-insights__container .insight-latest-card {
-      height: 456px; /* Increased by 20% from 380px for better mobile content display */
+    .insight-latest-card__meta {
+      margin-bottom: var(--space-2);
     }
     
-    .latest-insights__footer {
-      margin-top: var(--space-4);
+    .insight-latest-card__cta {
+      padding-top: var(--space-2);
     }
   }
 
-  @media (max-width: 480px) {
-    .latest-insights__container {
-      gap: var(--space-3);
-      margin: var(--space-3) 0;
+  /* Large tablets (768px+): Enhanced typography with optimized spacing */
+  @media (min-width: 768px) {
+    .insight-latest-card__content {
+      padding: var(--space-4); /* Reduced from space-5 */
+      gap: var(--space-3); /* Comfortable but not excessive */
     }
     
-    .latest-insights__container .insight-latest-card {
-      height: 432px; /* Increased by 20% from 360px for better small mobile display */
+    .insight-latest-card__title {
+      font-size: var(--text-xl); /* Larger title on tablets */
+      line-height: 1.4;
+    }
+    
+    .insight-latest-card__description {
+      font-size: var(--text-base); /* Larger description on tablets */
+      line-height: 1.5; /* Slightly tighter than 1.6 */
+      -webkit-line-clamp: 4; /* More lines available on larger screens */
+    }
+    
+    .insight-latest-card__cta {
+      padding-top: var(--space-3);
+    }
+  }
+
+  /* Desktop (992px+): Full experience with controlled density */
+  @media (min-width: 992px) {
+    .insight-latest-card__content {
+      padding: var(--space-5); /* Reduced from space-6 */
+      gap: var(--space-4); /* Comfortable desktop spacing */
+    }
+    
+    .insight-latest-card__cta {
+      padding-top: var(--space-3);
+    }
+  }
+
+  /* Large screens (1200px+): Controlled maximum spacing */
+  @media (min-width: 1200px) {
+    .insight-latest-card__content {
+      gap: var(--space-4); /* Reduced from space-6 for consistency */
+    }
+    
+    .insight-latest-card__content-link {
+      gap: var(--space-3); /* Comfortable spacing without excess */
+    }
+    
+    .insight-latest-card__image {
+      margin-bottom: var(--space-4); /* Consistent with content padding */
     }
   }
 
@@ -152,12 +215,13 @@
     }
   }
 
-  .insight-latest-card__link {
+  .insight-latest-card__content-link {
     display: flex;
     flex-direction: column;
-    height: 100%;
     text-decoration: none;
     color: inherit;
+    flex: 1; /* Take up available space */
+    gap: var(--space-3); /* Natural spacing between content elements */
   }
 
   /* Image area (40% of card height) */
@@ -166,6 +230,7 @@
     position: relative;
     overflow: hidden;
     background: var(--neutral-100);
+    /* No margin - content padding handles spacing */
   }
 
   .insight-latest-card__image img {
@@ -190,19 +255,21 @@
     color: var(--neutral-400);
   }
 
-  /* Content area (60% of card height) */
+  /* Content area - Mobile-first approach with optimized density */
   .insight-latest-card__content {
-    padding: var(--space-5);
+    padding: var(--space-2); /* Reduced padding for better density */
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    gap: var(--space-3);
+    flex: 1; /* Take up available space */
+    gap: var(--space-1); /* Tighter gaps for cohesive content */
     overflow: hidden;
     box-sizing: border-box;
   }
 
   .insight-latest-card__category {
-    margin-bottom: var(--space-1);
+    position: relative;
+    top: 10px; /* CRITICAL: 10px below hero image as specified */
+    margin-bottom: var(--space-1); /* Reduced spacing for better density */
   }
 
   .insight-latest-card__category-badge {
@@ -215,18 +282,38 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: 1px solid var(--primary-200);
+    display: inline-block;
+  }
+
+  /* Category link styling */
+  .insight-latest-card__category-link {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+      border-radius: var(--radius-full);
+    }
   }
 
   .insight-latest-card__title {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg); /* Mobile-first: smaller title */
     font-weight: var(--font-bold);
     color: var(--neutral-900);
     margin: 0;
-    line-height: var(--leading-tight);
+    line-height: 1.3; /* Mobile-first: tighter line height */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-bottom: var(--space-1); /* Tighter title spacing for density */
   }
 
   .insight-latest-card__meta {
@@ -235,8 +322,9 @@
     align-items: center;
     font-size: var(--text-sm);
     color: var(--neutral-500);
-    margin: 0;
+    margin: 0 0 var(--space-1) 0; /* Reduced spacing for cohesion */
     text-align: center;
+    order: -1; /* Move meta above title in content-link flex order */
   }
 
   .insight-latest-card__date,
@@ -251,21 +339,24 @@
   }
 
   .insight-latest-card__description {
-    font-size: var(--text-sm);
-    line-height: var(--leading-relaxed);
+    font-size: var(--text-sm); /* Mobile-first: smaller description */
+    line-height: 1.4; /* Mobile-first: comfortable but compact */
     color: var(--neutral-600);
-    margin: 0;
+    margin: 0; /* No bottom margin - let gap handle spacing */
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 3; /* Mobile-first: fewer lines to ensure CTA visibility */
     -webkit-box-orient: vertical;
     overflow: hidden;
-    flex-grow: 1;
+    flex: 1; /* Take up available space, pushing CTA down */
     text-align: center; /* Center description text */
   }
 
   .insight-latest-card__cta {
-    margin-top: auto;
+    margin-top: auto; /* CRITICAL: Always anchor to bottom */
+    padding-top: var(--space-1); /* Very minimal padding for density */
     text-align: center;
+    border-top: 1px solid var(--neutral-100); /* Subtle separator */
+    font-size: var(--text-sm); /* Mobile-first: ensure CTA is always visible */
   }
 
   .insight-latest-card__read-more {
@@ -290,6 +381,12 @@
     border-color: var(--secondary-200);
   }
 
+  .insight-latest-card__category-badge--brand-spotlight.insight-latest-card__category-link:hover {
+    background: var(--secondary-600);
+    color: white;
+    border-color: var(--secondary-600);
+  }
+
   .insight-latest-card--founders-journey {
     border-left-color: var(--accent-500);
   }
@@ -298,6 +395,12 @@
     background: var(--accent-100);
     color: var(--accent-800);
     border-color: var(--accent-200);
+  }
+
+  .insight-latest-card__category-badge--founders-journey.insight-latest-card__category-link:hover {
+    background: var(--accent-600);
+    color: white;
+    border-color: var(--accent-600);
   }
 
   .insight-latest-card--location-intelligence {
@@ -310,6 +413,12 @@
     border-color: var(--sky-200);
   }
 
+  .insight-latest-card__category-badge--location-intelligence.insight-latest-card__category-link:hover {
+    background: var(--sky-600);
+    color: white;
+    border-color: var(--sky-600);
+  }
+
   .insight-latest-card--market-momentum {
     border-left-color: var(--olive-500);
   }
@@ -318,6 +427,12 @@
     background: var(--olive-100);
     color: var(--olive-800);
     border-color: var(--olive-200);
+  }
+
+  .insight-latest-card__category-badge--market-momentum.insight-latest-card__category-link:hover {
+    background: var(--olive-600);
+    color: white;
+    border-color: var(--olive-600);
   }
 
   .insight-latest-card--placeholder {
