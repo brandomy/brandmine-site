@@ -1,16 +1,363 @@
 /* ==========================================================================
-   Home Page - Latest Insights Section (Mobile-First)
+   Home Page - Latest Insights Grid Section (2x2 Premium Layout)
    ========================================================================== */
 /*
-   Homepage-specific styling for the latest insights section.
-   NOTE: Tagged insight card styles moved to:
-   - Component: assets/css/components/cards/tagged-insight-card.scss  
-   - Section: assets/css/pages/home/latest-insights-tagged.scss
+   Premium 2x2 grid design using the same high-quality cards as the carousel version.
+   Features mobile-first responsive grid with category color coding.
+   
+   Architecture:
+   - CSS Grid layout for precise 2x2 positioning
+   - Same premium card design as carousel version
+   - Category-specific color coding for visual hierarchy
+   - Mobile-first responsive behavior (1x4 on mobile, 2x2 on desktop)
 
-   Location: assets/css/pages/home/latest-insights.scss
+   Location: assets/css/pages/home/latest-insights-grid.scss
 */
 
 .home-page {
-  /* Reserved for non-tagged insights layouts or shared insights section styles */
-  /* All tagged insight card styles have been moved to latest-insights-tagged.scss */
+  
+  /* ==========================================================================
+     SECTION LAYOUT - Using standard panel system spacing
+     ========================================================================== */
+
+  .latest-insights__header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+    padding: 0;
+  }
+
+  .latest-insights__subtitle {
+    font-size: var(--text-lg);
+    color: var(--neutral-600);
+    max-width: 700px;
+    margin: var(--space-3) auto 0;
+    line-height: var(--leading-relaxed);
+  }
+
+  .latest-insights__footer {
+    text-align: center;
+    margin-top: var(--space-6);
+    padding: 0;
+  }
+
+  /* ==========================================================================
+     2x2 GRID LAYOUT - Premium responsive grid
+     ========================================================================== */
+
+  .latest-insights__container {
+    display: grid;
+    gap: var(--space-6);
+    margin: var(--space-6) 0;
+    width: 100%;
+    
+    /* Mobile: 1 column (1x4 stack) */
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+
+  /* Grid cards - Enhanced sizing for better content display */
+  .latest-insights__container .insight-latest-card {
+    width: 100%;
+    height: 504px; /* Increased by 20% from 420px for better content visibility */
+    /* All other styling inherited from carousel design */
+  }
+
+  /* Responsive grid adjustments */
+  @media (width >= 768px) {
+    .latest-insights__container {
+      /* Tablet: 2 columns */
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(2, auto);
+      gap: var(--space-5);
+    }
+  }
+
+  @media (width >= 992px) {
+    .latest-insights__container {
+      /* Desktop: 2x2 grid with optimal spacing */
+      gap: var(--space-6);
+      max-width: 800px;
+      margin: var(--space-8) auto;
+    }
+    
+    .latest-insights__container .insight-latest-card {
+      height: 480px; /* Increased by 20% from 400px for better content visibility */
+    }
+  }
+
+  @media (width >= 1200px) {
+    .latest-insights__container {
+      max-width: 900px;
+      gap: var(--space-8);
+    }
+  }
+
+  /* ==========================================================================
+     MOBILE RESPONSIVE ADJUSTMENTS
+     ========================================================================== */
+
+  @media (max-width: 768px) {
+    .latest-insights__header {
+      margin-bottom: var(--space-4);
+    }
+    
+    .latest-insights__subtitle {
+      font-size: var(--text-base);
+    }
+    
+    .latest-insights__container {
+      gap: var(--space-4);
+      margin: var(--space-4) 0;
+    }
+    
+    .latest-insights__container .insight-latest-card {
+      height: 456px; /* Increased by 20% from 380px for better mobile content display */
+    }
+    
+    .latest-insights__footer {
+      margin-top: var(--space-4);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .latest-insights__container {
+      gap: var(--space-3);
+      margin: var(--space-3) 0;
+    }
+    
+    .latest-insights__container .insight-latest-card {
+      height: 432px; /* Increased by 20% from 360px for better small mobile display */
+    }
+  }
+
+  /* ==========================================================================
+     INSIGHT LATEST CARD STYLES - Premium card design
+     ========================================================================== */
+
+  .insight-latest-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    border-left: 4px solid var(--neutral-200);
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+  }
+
+  .insight-latest-card__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Image area (40% of card height) */
+  .insight-latest-card__image {
+    height: 40%;
+    position: relative;
+    overflow: hidden;
+    background: var(--neutral-100);
+  }
+
+  .insight-latest-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  .insight-latest-card:hover .insight-latest-card__image img {
+    transform: scale(1.05);
+  }
+
+  .insight-latest-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--neutral-100);
+    color: var(--neutral-400);
+  }
+
+  /* Content area (60% of card height) */
+  .insight-latest-card__content {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--space-3);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .insight-latest-card__category {
+    margin-bottom: var(--space-1);
+  }
+
+  .insight-latest-card__category-badge {
+    background: var(--primary-100);
+    color: var(--primary-800);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--primary-200);
+  }
+
+  .insight-latest-card__title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--neutral-900);
+    margin: 0;
+    line-height: var(--leading-tight);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .insight-latest-card__meta {
+    display: flex;
+    justify-content: center; /* Center the metadata */
+    align-items: center;
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    margin: 0;
+    text-align: center;
+  }
+
+  .insight-latest-card__date,
+  .insight-latest-card__reading-time {
+    font-weight: var(--font-medium);
+  }
+
+  .insight-latest-card__separator {
+    color: var(--neutral-400);
+    font-weight: var(--font-bold);
+    margin: 0 var(--space-1);
+  }
+
+  .insight-latest-card__description {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--neutral-600);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+    text-align: center; /* Center description text */
+  }
+
+  .insight-latest-card__cta {
+    margin-top: auto;
+    text-align: center;
+  }
+
+  .insight-latest-card__read-more {
+    color: var(--primary-600);
+    font-weight: var(--font-semibold);
+    font-size: var(--text-sm);
+    transition: color 0.2s ease;
+  }
+
+  .insight-latest-card:hover .insight-latest-card__read-more {
+    color: var(--primary-700);
+  }
+
+  /* Category-specific styling */
+  .insight-latest-card--brand-spotlight {
+    border-left-color: var(--secondary-500);
+  }
+
+  .insight-latest-card--brand-spotlight .insight-latest-card__category-badge {
+    background: var(--secondary-100);
+    color: var(--secondary-800);
+    border-color: var(--secondary-200);
+  }
+
+  .insight-latest-card--founders-journey {
+    border-left-color: var(--accent-500);
+  }
+
+  .insight-latest-card--founders-journey .insight-latest-card__category-badge {
+    background: var(--accent-100);
+    color: var(--accent-800);
+    border-color: var(--accent-200);
+  }
+
+  .insight-latest-card--location-intelligence {
+    border-left-color: var(--sky-500);
+  }
+
+  .insight-latest-card--location-intelligence .insight-latest-card__category-badge {
+    background: var(--sky-100);
+    color: var(--sky-800);
+    border-color: var(--sky-200);
+  }
+
+  .insight-latest-card--market-momentum {
+    border-left-color: var(--olive-500);
+  }
+
+  .insight-latest-card--market-momentum .insight-latest-card__category-badge {
+    background: var(--olive-100);
+    color: var(--olive-800);
+    border-color: var(--olive-200);
+  }
+
+  .insight-latest-card--placeholder {
+    background: var(--neutral-50);
+    border-left-color: var(--neutral-300);
+    
+    .insight-latest-card__content {
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .insight-latest-card__title {
+      color: var(--neutral-600);
+      font-size: var(--text-lg);
+    }
+    
+    .insight-latest-card__description {
+      color: var(--neutral-500);
+      font-style: italic;
+    }
+  }
+
+  /* ==========================================================================
+     VISUAL ENHANCEMENTS - Grid-specific improvements
+     ========================================================================== */
+
+  /* Optional: Add subtle animation to grid items */
+  .latest-insights__container .insight-latest-card {
+    transition: all 0.3s ease;
+  }
+
+  /* Grid hover effects - slightly different from carousel */
+  .latest-insights__container .insight-latest-card:hover {
+    transform: translateY(-6px); /* Slightly more pronounced than carousel */
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Grid-specific focus states for accessibility */
+  .latest-insights__container .insight-latest-card:focus-within {
+    outline: 2px solid var(--primary-400);
+    outline-offset: 4px;
+  }
 }

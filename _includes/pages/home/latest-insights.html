@@ -1,8 +1,8 @@
 {% comment %}
   Page Section: pages/home/latest-insights.html
   
-  Purpose: Displays 4 featured insights (one from each category) using simple
-           card layout without dimension tags
+  Purpose: Displays latest insights in a premium 2x2 grid layout with enhanced
+           card design, perfect spacing, and mobile-first responsive behavior
   
   Section Type: Content
   Template: home.html
@@ -16,7 +16,7 @@
   Dependencies:
     - Translation keys: insights.*
     - CSS: assets/css/pages/home/latest-insights.scss
-    - Include: components/cards/simple-insight-card.html
+    - Include: components/cards/insight-latest-card.html
   
   Usage:
     {% include pages/home/latest-insights.html %}
@@ -27,22 +27,31 @@
 {% assign t = site.data.translations[current_lang].insights %}
 {% assign panel_type = include.panel_type | default: "primary-soft" %}
 
-<h2 class="panel__heading-secondary">
-  {{ include.title | default: t.latest | default: "Latest Insights" }}
-</h2>
+<div class="latest-insights__header">
+  <h2 class="panel__heading-secondary">
+    {{ include.title | default: t.latest | default: "Latest Insights" }}
+  </h2>
+  <p class="latest-insights__subtitle">
+    {% include helpers/t.html key="insights.latest_description" fallback="Stay updated with the latest perspectives from BRICS+ markets, founder stories, and growth opportunities" %}
+  </p>
+</div>
 
-<div class="latest-insights-featured">
+<div class="latest-insights__container">
   <!-- Get all insights for current language -->
   {% assign filtered_insights = site.insights | where: "lang", current_lang %}
 
   <!-- Brand Spotlight -->
   {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
   {% if brand_spotlight %}
-    {% include components/cards/simple-insight-card.html insight=brand_spotlight %}
+    {% include components/cards/insight-latest-card.html insight=brand_spotlight %}
   {% else %}
-    <div class="insight-card insight-card--brand-spotlight insight-card--placeholder">
-      <div class="insight-card__content">
-        <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+    <div class="insight-latest-card insight-latest-card--brand-spotlight insight-latest-card--placeholder">
+      <div class="insight-latest-card__content">
+        <div class="insight-latest-card__category">
+          <span class="insight-latest-card__category-badge">Brand Spotlight</span>
+        </div>
+        <h3 class="insight-latest-card__title">{{ t.no_insights | default: "No insights available yet" }}</h3>
+        <p class="insight-latest-card__description">{{ t.coming_soon | default: "New content coming soon" }}</p>
       </div>
     </div>
   {% endif %}
@@ -50,12 +59,15 @@
   <!-- Founder's Journey -->
   {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
   {% if founders_journey %}
-    <!-- Founder's Journey Card -->
-    {% include components/cards/simple-insight-card.html insight=founders_journey %}
+    {% include components/cards/insight-latest-card.html insight=founders_journey %}
   {% else %}
-    <div class="insight-card insight-card--founders-journey insight-card--placeholder">
-      <div class="insight-card__content">
-        <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+    <div class="insight-latest-card insight-latest-card--founders-journey insight-latest-card--placeholder">
+      <div class="insight-latest-card__content">
+        <div class="insight-latest-card__category">
+          <span class="insight-latest-card__category-badge">Founder's Journey</span>
+        </div>
+        <h3 class="insight-latest-card__title">{{ t.no_insights | default: "No insights available yet" }}</h3>
+        <p class="insight-latest-card__description">{{ t.coming_soon | default: "New content coming soon" }}</p>
       </div>
     </div>
   {% endif %}
@@ -63,11 +75,15 @@
   <!-- Location Intelligence -->
   {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
   {% if location_intelligence %}
-    {% include components/cards/simple-insight-card.html insight=location_intelligence %}
+    {% include components/cards/insight-latest-card.html insight=location_intelligence %}
   {% else %}
-    <div class="insight-card insight-card--location-intelligence insight-card--placeholder">
-      <div class="insight-card__content">
-        <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+    <div class="insight-latest-card insight-latest-card--location-intelligence insight-latest-card--placeholder">
+      <div class="insight-latest-card__content">
+        <div class="insight-latest-card__category">
+          <span class="insight-latest-card__category-badge">Location Intelligence</span>
+        </div>
+        <h3 class="insight-latest-card__title">{{ t.no_insights | default: "No insights available yet" }}</h3>
+        <p class="insight-latest-card__description">{{ t.coming_soon | default: "New content coming soon" }}</p>
       </div>
     </div>
   {% endif %}
@@ -75,18 +91,22 @@
   <!-- Market Momentum -->
   {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
   {% if market_momentum %}
-    {% include components/cards/simple-insight-card.html insight=market_momentum %}
+    {% include components/cards/insight-latest-card.html insight=market_momentum %}
   {% else %}
-    <div class="insight-card insight-card--market-momentum insight-card--placeholder">
-      <div class="insight-card__content">
-        <p>{{ t.no_insights | default: "No insights available yet." }}</p>
+    <div class="insight-latest-card insight-latest-card--market-momentum insight-latest-card--placeholder">
+      <div class="insight-latest-card__content">
+        <div class="insight-latest-card__category">
+          <span class="insight-latest-card__category-badge">Market Momentum</span>
+        </div>
+        <h3 class="insight-latest-card__title">{{ t.no_insights | default: "No insights available yet" }}</h3>
+        <p class="insight-latest-card__description">{{ t.coming_soon | default: "New content coming soon" }}</p>
       </div>
     </div>
   {% endif %}
 </div>
 
-<div class="view-all-insights">
-  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--outline-light">
+<div class="latest-insights__footer">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--primary-cta">
     {{ t.view_all | default: "View All Insights" }}
   </a>
 </div>
