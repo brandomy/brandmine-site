@@ -1,0 +1,118 @@
+{% comment %}
+  Page Section: pages/home/founder-focus-intense.html
+  
+  Purpose: Revolutionary single-card 50% portrait founder carousel for homepage
+           Maximum emotional impact through focused founder storytelling
+  
+  Section Type: Homepage Feature
+  Template: Home layout integration
+  
+  Dependencies:
+    - Component: components/cards/founder-intense-card.html
+    - CSS: assets/css/components/founder-intense-cards.scss
+    - CSS: assets/css/pages/home/founder-focus-intense.scss
+    - JavaScript: assets/js/founder-focus-intense.js
+{% endcomment %}
+
+<section class="founder-focus-intense-section">
+  <div class="container">
+    <header class="founder-focus-intense__header">
+      <h2 class="founder-focus-intense__title">Meet the Visionaries</h2>
+      <p class="founder-focus-intense__subtitle">
+        The remarkable founders building bridges between cultures through exceptional brands
+      </p>
+    </header>
+    
+    <div class="carousel carousel--founders" id="founderFocusIntenseCarousel" data-carousel="founders">
+      <div class="carousel__track" id="founderFocusIntenseTrack">
+        
+        <!-- Eduardo Santos Slide -->
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% include components/cards/founder-intense-card.html
+             portrait_position="left"
+             width_variant="-50"
+             name="Eduardo Santos"
+             location="Gonçalves, Brazil 🇧🇷"
+             generation="3rd Gen"
+             achievement="Restored 500+ hectares of Atlantic Forest"
+             brand="Serra Verde Organics"
+             tags="organic agriculture, sustainable farming, agroforestry, export development"
+             description="Third-generation farmer who transformed his family's traditional operation into a pioneering organic network supporting 28 families across Brazil's Atlantic Forest region."
+             portrait_image="/assets/images/founders/br-eduardo-santos/br-eduardo-santos-portrait-farming-800w.jpg" %}
+          </div>
+        </div>
+        
+        <!-- Alexei Sokolov Slide -->
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% include components/cards/founder-intense-card.html
+             portrait_position="left"
+             width_variant="-50"
+             name="Alexei Sokolov"
+             location="Moscow, Russia 🇷🇺"
+             generation="1st Gen"
+             achievement="Featured in Harrods London"
+             brand="TeaTime"
+             tags="tea blending, beverage innovation, cultural ambassador, brand storytelling"
+             description="Tea blending master who revolutionized Russia's premium tea market with unique botanical infusions, achieving 23-country international presence."
+             portrait_image="/assets/images/founders/ru-alexei-sokolov/ru-alexei-sokolov-portrait-formal-800w.jpg" %}
+          </div>
+        </div>
+        
+        <!-- Maria Kuznetsova Slide -->
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% include components/cards/founder-intense-card.html
+             portrait_position="left"
+             width_variant="-50"
+             name="Maria Kuznetsova"
+             location="Kazan, Russia 🇷🇺"
+             generation="1st Gen"
+             achievement="Gold at International Condiment Exhibition"
+             brand="Seven Spices"
+             tags="culinary arts, traditional preservation, sustainable sourcing, food artisan"
+             description="Former chef rediscovering and reimagining Russia's rich condiment traditions through artisanal production and cultural preservation."
+             portrait_image="/assets/images/founders/ru-maria-kuznetsova/ru-maria-kuznetsova-portrait-traditional-800w.jpg" %}
+          </div>
+        </div>
+        
+        <!-- Ivan Petrov Slide -->
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% include components/cards/founder-intense-card.html
+             portrait_position="left"
+             width_variant="-50"
+             name="Ivan Petrov"
+             location="Belokurikha, Russia 🇷🇺"
+             generation="1st Gen"
+             achievement="International organic certification"
+             brand="Altai Honey"
+             tags="beekeeping, organic agriculture, sustainable harvesting, community development"
+             description="Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
+             portrait_image="/assets/images/founders/ru-ivan-petrov/ru-ivan-petrov-portrait-working-800w.jpg" %}
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Navigation Dots -->
+      <div class="carousel__navigation">
+        <div class="founder-focus-nav" id="founderFocusIntenseDots">
+          <div class="founder-focus-nav-dot active" data-slide="0" aria-label="Eduardo Santos"></div>
+          <div class="founder-focus-nav-dot" data-slide="1" aria-label="Alexei Sokolov"></div>
+          <div class="founder-focus-nav-dot" data-slide="2" aria-label="Maria Kuznetsova"></div>
+          <div class="founder-focus-nav-dot" data-slide="3" aria-label="Ivan Petrov"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="founder-focus-intense__footer">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/founders/" class="btn btn-outline-primary btn-lg">
+        Explore All Founders →
+      </a>
+    </div>
+    
+  </div>
+</section>

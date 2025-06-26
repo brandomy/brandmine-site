@@ -1,0 +1,211 @@
+/**
+ * PRODUCTION COMPONENT: Founder Intense Cards
+ * High-impact 50% portrait layout for homepage founder carousel
+ * Optimized for emotional connection and premium presentation
+ */
+
+.founder-intense-card {
+  display: grid;
+  min-height: 450px;
+  border-radius: 24px; // Premium rounded corners
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+  margin-bottom: var(--space-8);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.06);
+  }
+  
+  // Portrait left variations
+  &--left-40 { grid-template-columns: 40% 60%; }
+  &--left-45 { grid-template-columns: 45% 55%; }
+  &--left-50 { grid-template-columns: 50% 50%; }
+  
+  // Portrait right variations
+  &--right-40 { grid-template-columns: 60% 40%; }
+  &--right-45 { grid-template-columns: 55% 45%; }
+  &--right-50 { grid-template-columns: 50% 50%; }
+}
+
+.founder-intense-card__portrait {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: var(--space-4);
+}
+
+.founder-intense-card__generation-badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--accent-700);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 20px;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.founder-intense-card__content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.founder-intense-card__header {
+  border-bottom: 1px solid var(--accent-200);
+  padding-bottom: var(--space-3);
+}
+
+.founder-intense-card__name {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.founder-intense-card__location {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin: 0;
+}
+
+.founder-intense-card__achievement {
+  background: var(--accent-100);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--rounded-lg);
+  border: 1px solid var(--accent-200);
+  margin-bottom: var(--space-3);
+}
+
+.founder-intense-card__achievement-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--accent-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.founder-intense-card__achievement-text {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-800);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.founder-intense-card__brand {
+  font-size: var(--text-sm);
+  color: var(--primary-600);
+  font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.founder-intense-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.founder-intense-card__tag {
+  background: var(--neutral-100);
+  color: var(--neutral-700);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 16px;
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border: 1px solid var(--neutral-200);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--neutral-200);
+    border-color: var(--neutral-300);
+    transform: translateY(-1px);
+  }
+}
+
+.founder-intense-card__description {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-600);
+  margin: 0;
+}
+
+.founder-intense-card__cta {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  color: white;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+// Mobile responsive behavior
+@media (max-width: 768px) {
+  .founder-intense-card {
+    grid-template-columns: 1fr !important;
+    min-height: auto;
+    border-radius: 20px; // Slightly smaller radius on mobile
+    
+    &--mobile-portrait-top {
+      grid-template-rows: 300px auto;
+    }
+    
+    &--mobile-portrait-bottom {
+      grid-template-rows: auto 300px;
+    }
+  }
+  
+  .founder-intense-card__portrait {
+    min-height: 300px;
+    border-radius: 20px 20px 0 0; // Rounded top corners only when stacked
+  }
+  
+  .founder-intense-card__content {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+  
+  .founder-intense-card__name {
+    font-size: var(--text-xl);
+  }
+}

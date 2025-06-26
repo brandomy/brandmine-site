@@ -1,0 +1,66 @@
+{% comment %}
+  Page Section: pages/home/featured-founders-simplified.html
+  
+  Purpose: Displays a clean carousel of featured founders using simplified cards
+           for Progressive Disclosure consistency across Case Studies/Brands/Founders
+  
+  Section Type: Content
+  Template: home.html
+  
+  Parameters:
+    title (optional): Custom section title
+    limit (optional): Number of founders to display (default: 4)
+    panel_type (optional): Panel style (default: "accent-soft")
+    featured_only (optional): Show only featured founders (default: true)
+    cta_text (optional): Custom CTA button text
+    cta_url (optional): Custom CTA URL
+  
+  Dependencies:
+    - Translation keys: home.founders.*
+    - CSS: assets/css/pages/home/featured-founders-simplified.scss
+    - CSS: assets/css/components/cards/simplified-founder-card.scss
+    - Include: components/cards/simplified-founder-card.html
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign limit = include.limit | default: 4 %}
+{% assign featured_only = include.featured_only | default: true %}
+
+<h2 class="panel__heading-secondary">
+  {{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="home.founders.title" fallback="The Founders Behind BRICS+ Innovation" %}{% endunless %}
+</h2>
+
+<p class="panel__lead-text">
+  {{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="home.founders.subtitle" fallback="Meet the visionary entrepreneurs building the next generation of global consumer brands from BRICS+ markets." %}{% endunless %}
+</p>
+
+{% if featured_only %}
+  {% assign founders = site.founders | where: "lang", current_lang | where: "featured", true | limit: limit %}
+{% else %}
+  {% assign founders = site.founders | where: "lang", current_lang | limit: limit %}
+{% endif %}
+
+<div class="featured-founders-simplified">
+  {% if founders.size > 0 %}
+    <div class="featured-founders-simplified__grid">
+      {% for founder in founders %}
+        {% include components/cards/simplified-founder-card.html founder=founder %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <!-- Fallback content when no founders are available -->
+    <div class="featured-founders-simplified__placeholder">
+      <p class="placeholder-text">
+        {% include helpers/t.html key="home.founders.coming_soon" fallback="Featured founder profiles coming soon." %}
+      </p>
+    </div>
+  {% endif %}
+</div>
+
+<div class="cta-buttons">
+  <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: current_lang | append: '/founders/' }}"
+     class="btn btn--primary-cta"
+     data-track="featured-founders-simplified">
+    {{ include.cta_text | default: "" }}{% unless include.cta_text %}{% include helpers/t.html key="home.founders.cta" fallback="Meet All Founders" %}{% endunless %}
+  </a>
+</div>

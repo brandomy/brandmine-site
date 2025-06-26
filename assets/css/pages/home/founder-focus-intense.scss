@@ -1,0 +1,118 @@
+/**
+ * Homepage Section: Founder Focus Intense
+ * Uses proven carousel approach for reliable performance
+ * Integrates with existing carousel system for consistency
+ */
+
+.founder-focus-intense-section {
+  padding: var(--space-16) 0;
+  background: var(--accent-50);
+  position: relative;
+  overflow: hidden;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+}
+
+.founder-focus-intense__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.founder-focus-intense__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+}
+
+.founder-focus-intense__subtitle {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--leading-relaxed);
+}
+
+.founder-focus-intense__footer {
+  text-align: center;
+  margin-top: var(--space-12);
+}
+
+// Homepage-specific carousel container styling
+.founder-focus-intense-section {
+  .carousel {
+    margin: var(--space-8) 0;
+    
+    .carousel__track {
+      /* Enhanced styling for homepage integration */
+      padding: var(--space-6) 0;
+      margin: var(--space-4) 0;
+      
+      /* Remove scrollbar for cleaner homepage appearance */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      
+      &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+    }
+    
+    .carousel__slide {
+      /* Ensure proper card sizing for homepage */
+      flex: 0 0 900px;
+      
+      .carousel__slide-content {
+        padding: 0 var(--space-2);
+        display: flex;
+        justify-content: center;
+      }
+      
+      @media (max-width: 1024px) {
+        flex: 0 0 calc(100vw - var(--space-8));
+      }
+      
+      @media (max-width: 768px) {
+        flex: 0 0 calc(100vw - var(--space-6));
+      }
+    }
+    
+    .carousel__navigation {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-8);
+    }
+  }
+}
+
+// Mobile responsive adjustments
+@media (max-width: 768px) {
+  .founder-focus-intense-section {
+    padding: var(--space-12) 0;
+    
+    .container {
+      padding: 0 var(--space-2);
+    }
+  }
+  
+  .founder-focus-intense__title {
+    font-size: var(--text-3xl);
+  }
+  
+  .founder-focus-intense__subtitle {
+    font-size: var(--text-base);
+    padding: 0 var(--space-4);
+  }
+  
+  .founder-focus-intense__header {
+    margin-bottom: var(--space-8);
+  }
+  
+  .founder-focus-intense__footer {
+    margin-top: var(--space-8);
+    padding: 0 var(--space-4);
+  }
+}

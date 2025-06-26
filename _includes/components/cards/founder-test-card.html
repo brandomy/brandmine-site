@@ -1,0 +1,83 @@
+{% comment %}
+NEW TEST COMPONENT: Founder Test Card
+PURPOSE: Testing side-panel portrait layouts (left vs right positioning)
+USAGE: 
+  {% include components/cards/founder-test-card.html 
+     portrait_position="left" 
+     width_variant="-45"
+     name="Name" location="Location" %}
+
+This is a SEPARATE test component - does NOT replace existing founder cards
+{% endcomment %}
+
+<div class="founder-test-card founder-test-card--{{ include.portrait_position }}{{ include.width_variant }}">
+  {% if include.portrait_position == "left" %}
+    <!-- Portrait panel first -->
+    <div class="founder-test-card__portrait" style="background-image: url('{{ include.portrait_image }}');">
+      <div class="founder-test-card__generation-badge">{{ include.generation }}</div>
+    </div>
+    
+    <!-- Content panel second -->
+    <div class="founder-test-card__content">
+      <div class="founder-test-card__header">
+        <h3 class="founder-test-card__name">{{ include.name }}</h3>
+        <p class="founder-test-card__location">{{ include.location }}</p>
+      </div>
+      
+      <div class="founder-test-card__achievement">
+        <span class="founder-test-card__achievement-label">🏆 Key Achievement</span>
+        <p class="founder-test-card__achievement-text">{{ include.achievement }}</p>
+      </div>
+      
+      <div class="founder-test-card__brand">
+        <span class="founder-test-card__brand-label">🔗</span>
+        {{ include.brand }}
+      </div>
+      
+      <div class="founder-test-card__tags">
+        {% assign tags = include.tags | split: "," %}
+        {% for tag in tags limit: 4 %}
+          <span class="founder-test-card__tag">{{ tag | strip }}</span>
+        {% endfor %}
+      </div>
+      
+      <p class="founder-test-card__description">{{ include.description }}</p>
+      
+      <a href="#" class="founder-test-card__cta">Connect with {{ include.name }} →</a>
+    </div>
+  {% else %}
+    <!-- Content panel first -->
+    <div class="founder-test-card__content">
+      <div class="founder-test-card__header">
+        <h3 class="founder-test-card__name">{{ include.name }}</h3>
+        <p class="founder-test-card__location">{{ include.location }}</p>
+      </div>
+      
+      <div class="founder-test-card__achievement">
+        <span class="founder-test-card__achievement-label">🏆 Key Achievement</span>
+        <p class="founder-test-card__achievement-text">{{ include.achievement }}</p>
+      </div>
+      
+      <div class="founder-test-card__brand">
+        <span class="founder-test-card__brand-label">🔗</span>
+        {{ include.brand }}
+      </div>
+      
+      <div class="founder-test-card__tags">
+        {% assign tags = include.tags | split: "," %}
+        {% for tag in tags limit: 4 %}
+          <span class="founder-test-card__tag">{{ tag | strip }}</span>
+        {% endfor %}
+      </div>
+      
+      <p class="founder-test-card__description">{{ include.description }}</p>
+      
+      <a href="#" class="founder-test-card__cta">Connect with {{ include.name }} →</a>
+    </div>
+    
+    <!-- Portrait panel second -->
+    <div class="founder-test-card__portrait" style="background-image: url('{{ include.portrait_image }}');">
+      <div class="founder-test-card__generation-badge">{{ include.generation }}</div>
+    </div>
+  {% endif %}
+</div>

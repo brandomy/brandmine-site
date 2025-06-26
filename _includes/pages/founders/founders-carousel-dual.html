@@ -1,0 +1,134 @@
+{% comment %}
+  Page Section: pages/founders/founders-carousel-dual.html
+  
+  Purpose: Displays a horizontal carousel showing 2 founder cards per view
+           for efficient comparison and faster discovery
+  
+  Section Type: Content  
+  Template: Compatible with all layouts
+  
+  Parameters:
+    title (optional): Custom section title
+    subtitle (optional): Custom section subtitle
+    carousel_class (optional): Additional CSS classes
+    show_nav (optional): Whether to show navigation dots (default: true)
+    cta_text (optional): Custom CTA button text
+    cta_url (optional): Custom CTA button URL
+  
+  Dependencies:
+    - CSS: assets/css/components/founders-carousel.scss
+    - JavaScript: assets/js/components/founder-carousel.js
+    - Include: components/cards/founder-test-card.html
+{% endcomment %}
+
+{% assign show_nav = include.show_nav | default: true %}
+{% assign carousel_class = include.carousel_class | default: "" %}
+{% assign cta_text = include.cta_text | default: "Explore All Founders" %}
+{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/founders/" %}
+
+<section class="carousel-section carousel-section--founders carousel-section--dual {{ carousel_class }}">
+  <div class="container">
+    <header class="carousel-header">
+      <h2 class="carousel-title">
+        {{ include.title | default: "Founders Comparison View" }}
+      </h2>
+      <p class="carousel-subtitle">
+        {{ include.subtitle | default: "Compare founder stories side-by-side for efficient discovery" }}
+      </p>
+    </header>
+    
+    <div class="founders-carousel founders-carousel--dual" data-carousel="founders-dual">
+      <div class="founders-carousel__track">
+        
+        {% comment %} Slide 1: Eduardo + Alexei {% endcomment %}
+        <div class="founders-carousel__slide founders-carousel__slide--dual">
+          <div class="founders-carousel__card-pair">
+            
+            <div class="founders-carousel__card-container">
+              {% include components/cards/founder-test-card.html
+                 portrait_position="left"
+                 width_variant="-50"
+                 name="Eduardo Santos"
+                 location="Gonçalves, Brazil 🇧🇷"
+                 generation="3rd Gen"
+                 achievement="Restored 500+ hectares of Atlantic Forest"
+                 brand="Serra Verde Organics"
+                 tags="organic agriculture, sustainable farming, agroforestry"
+                 description="Third-generation farmer who transformed his family's traditional operation into a pioneering organic network."
+                 portrait_image="/assets/images/founders/br-eduardo-santos/br-eduardo-santos-portrait-farming-800w.jpg" %}
+            </div>
+            
+            <div class="founders-carousel__card-container">
+              {% include components/cards/founder-test-card.html
+                 portrait_position="left"
+                 width_variant="-50"
+                 name="Alexei Sokolov"
+                 location="Moscow, Russia 🇷🇺"
+                 generation="1st Gen"
+                 achievement="Featured in Harrods London"
+                 brand="TeaTime"
+                 tags="tea blending, beverage innovation, cultural ambassador"
+                 description="Tea blending master who revolutionized Russia's premium tea market with unique botanical infusions."
+                 portrait_image="/assets/images/founders/ru-alexei-sokolov/ru-alexei-sokolov-portrait-formal-800w.jpg" %}
+            </div>
+            
+          </div>
+        </div>
+        
+        {% comment %} Slide 2: Maria + Ivan {% endcomment %}
+        <div class="founders-carousel__slide founders-carousel__slide--dual">
+          <div class="founders-carousel__card-pair">
+            
+            <div class="founders-carousel__card-container">
+              {% include components/cards/founder-test-card.html
+                 portrait_position="left"
+                 width_variant="-50"
+                 name="Maria Kuznetsova"
+                 location="Kazan, Russia 🇷🇺"
+                 generation="1st Gen"
+                 achievement="Gold at International Condiment Exhibition"
+                 brand="Seven Spices"
+                 tags="culinary arts, traditional preservation, sustainable sourcing"
+                 description="Former chef rediscovering Russia's rich condiment traditions through artisanal production."
+                 portrait_image="/assets/images/founders/ru-maria-kuznetsova/ru-maria-kuznetsova-portrait-traditional-800w.jpg" %}
+            </div>
+            
+            <div class="founders-carousel__card-container">
+              {% include components/cards/founder-test-card.html
+                 portrait_position="left"
+                 width_variant="-50"
+                 name="Ivan Petrov"
+                 location="Belokurikha, Russia 🇷🇺"
+                 generation="1st Gen"
+                 achievement="International organic certification"
+                 brand="Altai Honey"
+                 tags="beekeeping, organic agriculture, sustainable harvesting"
+                 description="Third-generation beekeeper modernizing ancestral craft while preserving traditional techniques."
+                 portrait_image="/assets/images/founders/ru-ivan-petrov/ru-ivan-petrov-portrait-working-800w.jpg" %}
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+      {% comment %} Dual-card navigation (2 dots) {% endcomment %}
+      {% if show_nav %}
+      <div class="carousel__navigation">
+        <div class="carousel-dots">
+          <button class="carousel-dot carousel-dot--active" data-slide="0" aria-label="Eduardo & Alexei"></button>
+          <button class="carousel-dot" data-slide="1" aria-label="Maria & Ivan"></button>
+        </div>
+      </div>
+      {% endif %}
+      
+    </div>
+    
+    <div class="carousel-footer">
+      <a href="{{ cta_url }}" class="btn btn--primary-cta btn--lg">
+        {{ cta_text }} →
+      </a>
+    </div>
+    
+  </div>
+</section>
