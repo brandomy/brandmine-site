@@ -6,7 +6,7 @@
 
 // Configuration for auto-advance behavior
 const CONFIG = {
-    ADVANCE_INTERVAL: 6000,        // 6 seconds between slides
+    ADVANCE_INTERVAL: 8000,        // 8 seconds between slides
     PAUSE_DURATION: 4000,          // 4 seconds resume delay after interaction
     SMOOTH_SCROLL_DURATION: 800,   // Scroll animation time (for native behavior)
     ENABLE_AUTO_ADVANCE: true,     // Feature toggle

@@ -45,9 +45,9 @@
   overflow-x: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  gap: var(--space-4);
+  gap: var(--space-6);
   padding: var(--space-4) 0;
-  margin: var(--space-4) 0;
+  margin: var(--space-6) 0;
   width: 100%;
   position: relative;
   scroll-snap-type: x mandatory;
@@ -61,22 +61,29 @@
   }
 }
 
-/* FIXED CARD SIZING - Account for carousel padding */
+/* RESPONSIVE CARD SIZING - Mobile first approach */
 .universal-carousel[data-component-type="founder-focus"] .founder-focus-card {
-  flex: 0 0 900px;
-  max-width: 900px;
+  flex: 0 0 100%;
+  width: 100%;
   scroll-snap-align: center;
-  
-  @media (max-width: 768px) {
-    /* Account for mobile carousel padding (space-3 * 2 = 3rem) + safety margin */
-    flex: 0 0 calc(100vw - 3rem) !important;
-    max-width: calc(100vw - 3rem) !important;
+}
+
+/* Responsive gap adjustments */
+@media (width >= 768px) {
+  .universal-carousel[data-component-type="founder-focus"] {
+    gap: var(--space-4);
+  }
+}
+
+@media (width >= 992px) {
+  .universal-carousel[data-component-type="founder-focus"] {
+    gap: var(--space-6);
   }
   
-  @media (max-width: 480px) {
-    /* Tighter calculation for small screens - minimum padding */
-    flex: 0 0 calc(100vw - 1rem) !important;
-    max-width: calc(100vw - 1rem) !important;
+  .universal-carousel[data-component-type="founder-focus"] .founder-focus-card {
+    flex: 0 0 900px;
+    width: 900px;
+    max-width: 900px;
   }
 }
 
@@ -93,6 +100,7 @@
   box-shadow: var(--shadow-lg);
   position: relative;
   transition: all 0.3s ease;
+  box-sizing: border-box;
   
   &:hover {
     transform: translateY(-2px);
@@ -106,6 +114,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .founder-focus-card__portrait-image {
@@ -124,6 +133,8 @@
   flex-direction: column;
   justify-content: space-between;
   gap: var(--space-3);
+  overflow: hidden; /* Ensure content stays within bounds */
+  box-sizing: border-box; /* Include padding in width calculations */
 }
 
 .founder-focus-card__header {
@@ -136,12 +147,18 @@
   font-weight: var(--font-bold);
   color: var(--neutral-900);
   margin: 0 0 var(--space-1) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .founder-focus-card__location {
   font-size: var(--text-sm);
   color: var(--neutral-600);
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .founder-focus-card__achievement {
@@ -149,6 +166,8 @@
   padding: var(--space-2);
   border-radius: 0; /* REMOVED BORDER RADIUS */
   border: 1px solid var(--accent-200);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .founder-focus-card__achievement-label {
@@ -167,6 +186,10 @@
   color: var(--neutral-800);
   margin: 0;
   line-height: var(--leading-snug);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .founder-focus-card__company {
@@ -198,6 +221,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .founder-focus-card__tag {
@@ -297,8 +322,7 @@
   
   .universal-carousel[data-component-type="founder-focus"] {
     gap: var(--space-3);
-    padding: var(--space-3) 0;
-    margin: var(--space-3) 0;
+    margin: var(--space-4) 0;
   }
   
   .founder-focus-card {
@@ -332,6 +356,6 @@
 
 @media (max-width: 480px) {
   .universal-carousel[data-component-type="founder-focus"] {
-    padding: var(--space-2) 0;
+    margin: var(--space-3) 0;
   }
 }
