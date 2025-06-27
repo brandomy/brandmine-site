@@ -1,28 +1,19 @@
-# Page Sections Configuration
-# Centralizes section definitions and panel mappings for data-driven page layouts
-# This eliminates hardcoded section logic in layout files
-
-# =============================================================================
-# HOME PAGE SECTIONS
-# =============================================================================
-
 home:
-  body_class: "home-page"
+  body_class: home-page
   default_sections:
-    - hero
-    - impact-statement
-    - discovery-dimensions
-    - case-studies                      # Current working
-    - how-it-works
-    - testimonials
-    - featured-brands-simplified        # Current working
-    - lead-capture
-    - location-intelligence
-    - founder-focus                     # Current working
-    - brand-owners
-    - latest-insights                   # Grid - no change needed
-    - final-cta
-
+  - hero
+  - impact-statement
+  - discovery-dimensions
+  - case-studies
+  - how-it-works
+  - testimonials
+  - featured-brands-simplified
+  - lead-capture
+  - location-intelligence
+  - founder-focus
+  - brand-owners
+  - latest-insights
+  - final-cta
   panel_mappings:
     hero:
       type: panel--hero
@@ -51,28 +42,24 @@ home:
     final-cta:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# BRANDS PAGE SECTIONS
-# =============================================================================
-
 brands:
-  body_class: "brands-page"
-  # Default section order for brands pages
+  body_class: brands-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - impact
-    - featured-brands
-    - latest-brands
-    - content
-    # - filter-interface    # DEFERRED: Advanced filtering complexity
-    - contact-cta
-
-  # Panel type mappings for each section
+  - breadcrumbs
+  - hero
+  - impact
+  - featured-brands-grid
+  - featured-brands-carousel-big
+  - featured-brands-carousel-small
+  - featured-brands
+  - latest-brands
+  - content
+  - contact-cta
+  - brand-carousel-test
+  - brand-grid-test
   panel_mappings:
     breadcrumbs:
-      type: none  # Special case - rendered outside panel system
+      type: none
     hero:
       type: panel--hero-split
     impact:
@@ -89,24 +76,21 @@ brands:
     contact-cta:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# FOUNDERS PAGE SECTIONS
-# =============================================================================
-
+    brand-carousel-test: panel--amber-soft
+    brand-grid-test: panel--light
+    featured-brands-grid: panel--neutral-soft
+    featured-brands-carousel-big: panel--neutral-soft
+    featured-brands-carousel-small: panel--neutral-soft
 founders:
-  body_class: "founders-page"
+  body_class: founders-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - impact
-    - featured-founders
-    - recent-founders
-    - content
-    # - filter-interface    # DEFERRED: Advanced filtering complexity
-    # - founders-grid       # DEFERRED: Basic discovery sufficient for MVP
-    - contact-cta
-
+  - breadcrumbs
+  - hero
+  - impact
+  - featured-founders
+  - recent-founders
+  - content
+  - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
@@ -128,24 +112,18 @@ founders:
     contact-cta:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# DISCOVERY PAGE SECTIONS
-# =============================================================================
-
 discovery:
-  body_class: "discovery-page"
+  body_class: discovery-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - impact
-    - dimensions-navigation
-    - dimensions-grid
-    - content
-    - featured-brands
-    - latest-insights
-    - contact-cta
-
+  - breadcrumbs
+  - hero
+  - impact
+  - dimensions-navigation
+  - dimensions-grid
+  - content
+  - featured-brands
+  - latest-insights
+  - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
@@ -167,23 +145,17 @@ discovery:
     contact-cta:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# INSIGHTS PAGE SECTIONS
-# =============================================================================
-
 insights:
-  body_class: "insights-page"
+  body_class: insights-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - impact
-    - featured-article
-    - category-navigation
-    - category-highlights
-    - latest-insights-carousel
-    - contact-cta
-
+  - breadcrumbs
+  - hero
+  - impact
+  - featured-article
+  - category-navigation
+  - category-highlights
+  - latest-insights-carousel
+  - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
@@ -207,23 +179,17 @@ insights:
     contact-cta:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# JOURNAL PAGE SECTIONS
-# =============================================================================
-
 journal:
-  body_class: "journal-page"
+  body_class: journal-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - impact
-    - featured-article
-    - content
-    - latest-entries
-    - author-profile
-    - contact-cta
-
+  - breadcrumbs
+  - hero
+  - impact
+  - featured-article
+  - content
+  - latest-entries
+  - author-profile
+  - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
@@ -243,17 +209,11 @@ journal:
     contact-cta:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# DIMENSION CATEGORY PAGES
-# =============================================================================
-
 dimension-category:
-  body_class: "dimension-category-page"
+  body_class: dimension-category-page
   default_sections:
-    - breadcrumbs
-    - content
-
+  - breadcrumbs
+  - content
   panel_mappings:
     breadcrumbs:
       type: none
@@ -261,20 +221,14 @@ dimension-category:
       type: panel--light
       additional_classes: panel--discovery-content
       content_classes: panel__content--full-width
-
-# =============================================================================
-# INSIGHTS CATEGORY PAGES
-# =============================================================================
-
 insights-category:
-  body_class: "insights-category-page"
+  body_class: insights-category-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - content
-    - insights-grid
-    - contact-cta
-
+  - breadcrumbs
+  - hero
+  - content
+  - insights-grid
+  - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
@@ -287,25 +241,19 @@ insights-category:
     contact-cta:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# ABOUT PAGE SECTIONS
-# =============================================================================
-
 about:
-  body_class: "about-page"
+  body_class: about-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - impact
-    - mission
-    - perspective
-    - problems
-    - solutions
-    - services
-    - team
-    - contact
-
+  - breadcrumbs
+  - hero
+  - impact
+  - mission
+  - perspective
+  - problems
+  - solutions
+  - services
+  - team
+  - contact
   panel_mappings:
     breadcrumbs:
       type: none
@@ -329,23 +277,16 @@ about:
     contact:
       type: panel--cta
       content_classes: panel--centered
-
-# =============================================================================
-# INDIVIDUAL PROFILE/ARTICLE PAGES
-# =============================================================================
-
-# Brand Profile Layout
 brand-profile:
-  body_class: "brand-profile-page"
+  body_class: brand-profile-page
   default_sections:
-    - breadcrumbs
-    - identity
-    - founder-narrative
-    - content
-    - business-intelligence
-    - location-intelligence
-    - connections
-
+  - breadcrumbs
+  - identity
+  - founder-narrative
+  - content
+  - business-intelligence
+  - location-intelligence
+  - connections
   panel_mappings:
     breadcrumbs:
       type: none
@@ -361,19 +302,16 @@ brand-profile:
       type: panel--sky-soft
     connections:
       type: panel--light
-
-# Founder Profile Layout
 founder-profile:
-  body_class: "founder-profile-page"
+  body_class: founder-profile-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - professional-details
-    - content
-    - associated-brands
-    - expertise-cloud
-    - related-insights
-
+  - breadcrumbs
+  - hero
+  - professional-details
+  - content
+  - associated-brands
+  - expertise-cloud
+  - related-insights
   panel_mappings:
     breadcrumbs:
       type: none
@@ -389,19 +327,16 @@ founder-profile:
       type: panel--light
     related-insights:
       type: panel--light
-
-# Dimension Layout
 dimension:
-  body_class: "dimension-page"
+  body_class: dimension-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - impact
-    - header
-    - featured-brands
-    - all-brands
-    - related-insights
-
+  - breadcrumbs
+  - hero
+  - impact
+  - header
+  - featured-brands
+  - all-brands
+  - related-insights
   panel_mappings:
     breadcrumbs:
       type: none
@@ -424,27 +359,24 @@ dimension:
       type: panel--light
     related-insights:
       type: panel--light
-
-# Insight Article Layout
 insight-article:
-  body_class: "insight-article-page"
+  body_class: insight-article-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - header
-    - featured-image
-    - content
-    - social-sharing
-    - taxonomy
-    - brand-info
-    - related-brands
-    - related-insights
-
+  - breadcrumbs
+  - hero
+  - header
+  - featured-image
+  - content
+  - social-sharing
+  - taxonomy
+  - brand-info
+  - related-brands
+  - related-insights
   panel_mappings:
     breadcrumbs:
       type: none
     hero:
-      type: panel--hero  # Note: will use panel--hero-image when featured_image present
+      type: panel--hero
     header:
       type: panel--light
     featured-image:
@@ -461,20 +393,14 @@ insight-article:
       type: panel--light
     related-insights:
       type: panel--light
-
-# =============================================================================
-# MARKET SECTOR PAGES
-# =============================================================================
-
 market-sector:
-  body_class: "market-sector-page"
+  body_class: market-sector-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - content
-    - featured-brands
-    - all-brands
-
+  - breadcrumbs
+  - hero
+  - content
+  - featured-brands
+  - all-brands
   panel_mappings:
     breadcrumbs:
       type: none
@@ -486,19 +412,13 @@ market-sector:
       type: panel--light
     all-brands:
       type: panel--light
-
-# =============================================================================
-# ERROR 404 PAGES
-# =============================================================================
-
 error-404:
-  body_class: "error-404-page"
+  body_class: error-404-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - content
-    - search-suggestions
-
+  - breadcrumbs
+  - hero
+  - content
+  - search-suggestions
   panel_mappings:
     breadcrumbs:
       type: none
@@ -508,39 +428,27 @@ error-404:
       type: panel--light
     search-suggestions:
       type: panel--light
-
-# =============================================================================
-# SEARCH PAGES
-# =============================================================================
-
 search:
-  body_class: "search-page"
+  body_class: search-page
   default_sections:
-    - breadcrumbs
-    - content
-
+  - breadcrumbs
+  - content
   panel_mappings:
     breadcrumbs:
       type: none
     content:
       type: panel--light
-
-# =============================================================================
-# JOURNAL POST PAGES
-# =============================================================================
-
 post:
-  body_class: "post-page"
+  body_class: post-page
   default_sections:
-    - breadcrumbs
-    - hero
-    - header
-    - content
-    - social-sharing
-    - taxonomy
-    - related-posts
-    - author-profile
-
+  - breadcrumbs
+  - hero
+  - header
+  - content
+  - social-sharing
+  - taxonomy
+  - related-posts
+  - author-profile
   panel_mappings:
     breadcrumbs:
       type: none
@@ -558,20 +466,14 @@ post:
       type: panel--light
     author-profile:
       type: panel--amber-soft
-
-# =============================================================================
-# BRAND BASIC PAGES
-# =============================================================================
-
 brand-basic:
-  body_class: "brand-basic-page"
+  body_class: brand-basic-page
   default_sections:
-    - breadcrumbs
-    - identity
-    - content
-    - taxonomy
-    - location
-
+  - breadcrumbs
+  - identity
+  - content
+  - taxonomy
+  - location
   panel_mappings:
     breadcrumbs:
       type: none
@@ -583,35 +485,3 @@ brand-basic:
       type: panel--light
     location:
       type: panel--sky-soft
-
-# =============================================================================
-# CASE STUDY PAGES
-# =============================================================================
-
-# case-study:
-#   body_class: "case-study-page"
-#   default_sections:
-#     - "breadcrumbs"
-#     - "hero"
-#     - "summary"
-#     - "content"
-#     - "metrics"
-#     - "quote"
-#     - "related-case-studies"
-#
-#   panel_mappings:
-#     breadcrumbs:
-#       type: none
-#     hero:
-#       type: panel--hero-subtle
-#     summary:
-#       type: panel--light
-#     content:
-#       type: panel--light
-#     metrics:
-#       type: panel--accent-soft
-#     quote:
-#       type: panel--amber-soft
-#     related-case-studies:
-#       type: panel--light
-

@@ -1,0 +1,40 @@
+{% comment %}
+  SECTION: featured-brands-carousel-big
+  PURPOSE: Testing large carousel layout with prominent cards
+  LAYOUT: Horizontal scrolling carousel
+{% endcomment %}
+
+<div class="featured-brands-carousel-big">
+  <div class="panel__content-header">
+    <h2 id="heading-featured-brands-carousel-big" class="panel__heading-secondary">
+      {% include helpers/t.html key="brands.featured-brands-carousel-big_title" fallback="Featured Brands Carousel (Large)" %}
+    </h2>
+    <p class="panel__subtitle">
+      {% include helpers/t.html key="brands.featured-brands-carousel-big_subtitle" fallback="Testing large carousel layout with prominent cards" %}
+    </p>
+  </div>
+
+  <div class="featured-brands-carousel-big__container">
+    {% assign test_items = site.brands | where: "lang", page.lang | limit: 10 %}
+    
+    <div class="featured-brands-carousel-big__carousel" data-carousel="true">
+      <div class="featured-brands-carousel-big__track">
+        {% for item in test_items %}
+          <div class="featured-brands-carousel-big__slide">
+            {% include components/cards/universal-card.html
+               item=item
+               type="brand"
+               variant="featured"
+               context="carousel"
+               config_set="universal-card" %}
+          </div>
+        {% endfor %}
+      </div>
+      
+      <div class="featured-brands-carousel-big__nav">
+        <button class="featured-brands-carousel-big__nav-btn featured-brands-carousel-big__nav-btn--prev" aria-label="Previous">‹</button>
+        <button class="featured-brands-carousel-big__nav-btn featured-brands-carousel-big__nav-btn--next" aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+</div>

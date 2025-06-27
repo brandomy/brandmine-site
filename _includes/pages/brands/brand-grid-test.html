@@ -1,0 +1,31 @@
+{% comment %}
+  SECTION: brand-grid-test
+  PURPOSE: SUBBrand Grid Test
+  LAYOUT: Grid display with responsive cards
+{% endcomment %}
+
+<div class="brand-grid-test">
+  <div class="panel__content-header">
+    <h2 id="heading-brand-grid-test" class="panel__heading-secondary">
+      {% include helpers/t.html key="brands.brand-grid-test_title" fallback="Brand Grid Test" %}
+    </h2>
+    <p class="panel__subtitle">
+      {% include helpers/t.html key="brands.brand-grid-test_subtitle" fallback="SUBBrand Grid Test" %}
+    </p>
+  </div>
+
+  <div class="brand-grid-test__container">
+    {% assign test_items = site.brands | where: "lang", page.lang | limit: 6 %}
+    
+    <div class="brand-grid-test__grid">
+      {% for item in test_items %}
+        {% include components/cards/universal-card.html
+           item=item
+           type="brand"
+           variant="standard"
+           context="grid-test"
+           config_set="universal-card" %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
