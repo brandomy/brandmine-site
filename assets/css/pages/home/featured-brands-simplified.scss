@@ -248,28 +248,5 @@
    RESPONSIVE DESIGN
    ============================================================================= */
 
-/* Mobile First - Single card (inherits from earlier definition) */
-
-@media (width >= 768px) {
-    .universal-carousel[data-component-type="featured-brands-simplified"] {
-        gap: var(--space-4);
-    }
-}
-
-@media (width >= 992px) {
-    .universal-carousel[data-component-type="featured-brands-simplified"] {
-        gap: var(--space-6);
-    }
-
-    .universal-carousel[data-component-type="featured-brands-simplified"] .simplified-carousel-card {
-        flex: 0 0 calc(50% - (var(--space-6) / 2));
-        width: calc(50% - (var(--space-6) / 2));
-    }
-}
-
-@media (width >= 1200px) {
-    .universal-carousel[data-component-type="featured-brands-simplified"] {
-        padding-left: var(--space-4);
-        padding-right: var(--space-4);
-    }
-}
+/* Responsive Design - Now handled by universal-carousel.scss mixins */
+/* Component-specific responsive adjustments only */

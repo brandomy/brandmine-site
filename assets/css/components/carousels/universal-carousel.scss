@@ -230,7 +230,168 @@
 }
 
 /* -----------------------------------------------------------------------------
-   7. RESPONSIVE ADJUSTMENTS
+   7. RESPONSIVE MIXINS AND UTILITIES
+   ----------------------------------------------------------------------------- */
+
+// Responsive mixin for carousel layouts - MOBILE FIRST
+@mixin carousel-responsive($mobile-cards: 1, $tablet-cards: 1, $desktop-cards: 2) {
+  // Mobile first - base styles (no media query)
+  > * {
+    flex: 0 0 calc(100% / #{$mobile-cards} - var(--carousel-gap, var(--space-6)) / #{$mobile-cards});
+    scroll-snap-align: start;
+  }
+  
+  // Small devices (480px and up)
+  @media (width >= 480px) {
+    > * {
+      flex: 0 0 calc(100% / #{$mobile-cards} - var(--carousel-gap, var(--space-4)) / #{$mobile-cards});
+    }
+  }
+  
+  // Medium devices/tablets (768px and up) 
+  @media (width >= 768px) {
+    gap: var(--space-4);
+    
+    > * {
+      flex: 0 0 calc(100% / #{$tablet-cards} - var(--carousel-gap, var(--space-4)) / #{$tablet-cards});
+    }
+  }
+  
+  // Large devices/desktops (992px and up)
+  @media (width >= 992px) {
+    gap: var(--space-6);
+    
+    > * {
+      flex: 0 0 calc(100% / #{$desktop-cards} - var(--carousel-gap, var(--space-6)) / #{$desktop-cards});
+    }
+  }
+}
+
+// Common responsive gap adjustments - MOBILE FIRST
+@mixin carousel-responsive-gaps() {
+  // Mobile first - base styles
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  margin: var(--space-3) 0;
+  
+  // Small devices (480px and up)
+  @media (width >= 480px) {
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    margin: var(--space-4) 0;
+  }
+  
+  // Medium devices (768px and up)
+  @media (width >= 768px) {
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    margin: var(--space-6) 0;
+  }
+  
+  // Large devices (992px and up) 
+  @media (width >= 992px) {
+    gap: var(--space-6);
+    padding: var(--space-4) 0;
+    margin: var(--space-6) 0;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   8. COMPONENT-SPECIFIC RESPONSIVE PATTERNS
+   ----------------------------------------------------------------------------- */
+
+// Standard 1 mobile / 2 desktop pattern
+.universal-carousel[data-component-type="featured-brands-simplified"] {
+  @include carousel-responsive(1, 1, 2);
+  @include carousel-responsive-gaps();
+}
+
+// Case Studies - Special case requiring specific .test-card targeting
+.universal-carousel[data-component-type="case-studies"] {
+  @include carousel-responsive-gaps(); /* Keep gap management */
+  
+  /* Case Studies specific responsive behavior - targets .test-card specifically */
+  .test-card {
+    /* Mobile first - ensure single card display */
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    scroll-snap-align: start;
+    
+    /* Small devices (480px and up) - still single card */
+    @media (width >= 480px) {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    
+    /* Medium devices (768px and up) - still single card */
+    @media (width >= 768px) {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    
+    /* Large devices (992px and up) - 2 cards side by side */
+    @media (width >= 992px) {
+      flex: 0 0 calc(50% - (var(--space-6) / 2));
+      width: calc(50% - (var(--space-6) / 2));
+      max-width: calc(50% - (var(--space-6) / 2));
+    }
+  }
+}
+
+// Founder Focus - Special case with fixed desktop width
+.universal-carousel[data-component-type="founder-focus"] {
+  @include carousel-responsive-gaps();
+  
+  // Custom responsive pattern for founder focus
+  > * {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    
+    @media (width >= 992px) {
+      flex: 0 0 900px;
+      width: 900px;
+      max-width: 900px;
+    }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   9. RESPONSIVE UTILITIES
+   ----------------------------------------------------------------------------- */
+
+// Use existing breakpoint standards from tokens.scss:
+// - 480px (Small devices)  
+// - 768px (Medium devices/tablets)
+// - 992px (Large devices/desktops)
+
+:root {
+  --carousel-gap-mobile: var(--space-3);
+  --carousel-gap-tablet: var(--space-4);
+  --carousel-gap-desktop: var(--space-6);
+}
+
+// Utility classes for common responsive patterns
+.carousel-hide-mobile {
+  @media (width >= 768px) {
+    display: block;
+  }
+  
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.carousel-show-mobile {
+  display: none;
+  
+  @media (max-width: 767px) {
+    display: block;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   10. LEGACY RESPONSIVE ADJUSTMENTS
    ----------------------------------------------------------------------------- */
 
 /* Small mobile adjustments */
