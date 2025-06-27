@@ -25,7 +25,13 @@
 {% if include.show_cta != false %}
 <div class="discovery-cta">
   <a href="{{ include.cta_url | default: site.baseurl | append: '/' | append: page.lang | append: '/discover/' }}" class="btn btn--primary-cta">
-    {{ include.cta_text | default: "Explore All Discovery Paths" }}
+    {% assign default_text = "Explore All Discovery Paths" %}
+    {% assign cta_text = include.cta_text | default: default_text %}
+    {% if cta_text == default_text %}
+      {% include helpers/t.html key="discovery.explore_all_paths" fallback=default_text %}
+    {% else %}
+      {{ cta_text }}
+    {% endif %}
   </a>
 </div>
 {% endif %}

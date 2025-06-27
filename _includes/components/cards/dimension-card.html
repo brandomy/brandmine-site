@@ -41,7 +41,7 @@ NOTES: Each dimension type has its own icon and color scheme. Tag cloud componen
       {% include components/icons/icon.html system="dimensions" type=include.type name="default" class="dimension-card__icon-svg" %}
     </div>
     <h3 class="dimension-card__title">
-      {% assign title_key = "tags." | append: include.type %}
+      {% assign title_key = "discovery." | append: include.type %}
       {% include helpers/t.html key=title_key fallback=include.type %}
     </h3>
   </div>

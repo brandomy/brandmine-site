@@ -72,12 +72,11 @@ Sort Methods:
        class="dimension-tag dimension-tag--{{ include.type }}">{% include helpers/dimension-name.html type=include.type id=item.id %}</a>
   {% endfor %}
   
-  {% comment %} Show count of additional items {% endcomment %}
+  {% comment %} Show total count of items {% endcomment %}
   {% if show_more %}
     {% assign total_items = items_array.size %}
-    {% assign remaining = total_items | minus: limit %}
-    {% if remaining > 0 %}
-      <span class="dimension-tag-cloud__more">+{{ remaining }} more</span>
+    {% if total_items > 0 %}
+      <span class="dimension-tag-cloud__more">{{ total_items }} {% assign lang = page.lang | default: 'en' %}{% if include.type == "markets" %}{% if lang == 'ru' %}рынков{% elsif lang == 'zh' %}个市场{% else %}markets{% endif %}{% elsif include.type == "sectors" %}{% if lang == 'ru' %}секторов{% elsif lang == 'zh' %}个行业{% else %}sectors{% endif %}{% elsif include.type == "attributes" %}{% if lang == 'ru' %}атрибутов{% elsif lang == 'zh' %}个属性{% else %}attributes{% endif %}{% elsif include.type == "signals" %}{% if lang == 'ru' %}сигналов{% elsif lang == 'zh' %}个信号{% else %}signals{% endif %}{% endif %}</span>
     {% endif %}
   {% endif %}
 </div>
