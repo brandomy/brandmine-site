@@ -1,20 +1,37 @@
 /**
  * Founder Carousel JavaScript
  * 
- * Simple dot navigation carousel for founder focus section
- * following the "logic light" approach with separated concerns.
+ * Enhanced carousel system supporting single and dual-card carousels
+ * with proper dot navigation and smooth scrolling.
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  const carousel = document.querySelector('.founder-focus-carousel');
-  const dots = document.querySelectorAll('.founder-focus-nav-dot');
+  // Initialize founder-focus carousel (existing)
+  initializeFounderCarousel('.founder-focus-carousel', '.founder-focus-nav-dot', '.founder-card');
+  
+  // Initialize new single-card founders carousel
+  const singleCarousel = document.querySelector('[data-carousel="founders"]');
+  if (singleCarousel) {
+    initializeFoundersCarousel(singleCarousel, 'single');
+  }
+  
+  // Initialize dual-card carousel
+  const dualCarousel = document.querySelector('[data-carousel="founders-dual"]');
+  if (dualCarousel) {
+    initializeFoundersCarousel(dualCarousel, 'dual');
+  }
+  
+  // Legacy carousel support
+  function initializeFounderCarousel(carouselSelector, dotsSelector, cardSelector) {
+    const carousel = document.querySelector(carouselSelector);
+    const dots = document.querySelectorAll(dotsSelector);
 
   if (carousel && dots.length > 0) {
     console.log('Founder carousel initialized with', dots.length, 'dots');
 
     // Calculate card width for navigation
     const getCardWidth = () => {
-      const card = carousel.querySelector('.founder-card');
+      const card = carousel.querySelector(cardSelector);
       if (!card) return 0;
       const style = getComputedStyle(card);
       const marginRight = parseFloat(style.marginRight) || 0;
@@ -75,5 +92,53 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Carousel scroll width:', carousel.scrollWidth);
       console.log('Is scrollable:', carousel.scrollWidth > carousel.offsetWidth);
     }, 200);
+  }
+  } // Close legacy initializeFounderCarousel function
+  
+  // Enhanced carousel initialization for new carousels
+  function initializeFoundersCarousel(carousel, type) {
+    const dots = carousel.querySelectorAll('.founder-focus-nav-dot, .carousel-dot');
+    const slides = carousel.querySelectorAll('.carousel__slide, .founders-carousel__slide');
+    
+    if (!dots.length || !slides.length) return;
+    
+    console.log(`Initializing ${type} founders carousel with ${dots.length} dots and ${slides.length} slides`);
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', function() {
+        // Update active dot
+        dots.forEach(d => {
+          d.classList.remove('active', 'carousel-dot--active');
+        });
+        this.classList.add(this.classList.contains('carousel-dot') ? 'carousel-dot--active' : 'active');
+        
+        // Scroll to slide
+        if (slides[index]) {
+          slides[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+          });
+        }
+      });
+    });
+    
+    // Handle scroll events to update active dots
+    const track = carousel.querySelector('.carousel__track, .founders-carousel__track');
+    if (track) {
+      track.addEventListener('scroll', function() {
+        const scrollLeft = track.scrollLeft;
+        const slideWidth = slides[0] ? slides[0].offsetWidth : 0;
+        const currentIndex = Math.round(scrollLeft / slideWidth);
+        
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.classList.add(dot.classList.contains('carousel-dot') ? 'carousel-dot--active' : 'active');
+          } else {
+            dot.classList.remove('active', 'carousel-dot--active');
+          }
+        });
+      });
+    }
   }
 });
