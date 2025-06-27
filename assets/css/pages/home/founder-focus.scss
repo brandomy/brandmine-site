@@ -261,20 +261,28 @@
 }
 
 .founder-focus__dot {
-  width: 12px;
-  height: 12px;
+  width: 16px;        // Match standard carousel size
+  height: 16px;       // Match standard carousel size
   border-radius: 50%;
   border: none;
-  background: var(--neutral-300);
+  background: var(--neutral-300);  // Same as carousel-nav-dot
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.4s ease;       // Slower, smoother transitions
   
   &:hover {
-    background: var(--primary-400);
+    transform: scale(1.2);           // Match standard carousel scale effect
+    background: var(--primary-300);  // Match standard carousel hover (bright teal)
   }
   
   &.founder-focus__dot--active {
-    background: var(--primary-500);
+    background: var(--primary-500);  // Match standard active state
+    transform: scale(1.2);           // Match standard active scaling
+  }
+  
+  // Mobile responsive (same as standard carousel)
+  @media (max-width: 768px) {
+    width: 12px;
+    height: 12px;
   }
 }
 
