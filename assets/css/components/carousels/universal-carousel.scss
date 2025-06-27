@@ -391,7 +391,168 @@
 }
 
 /* -----------------------------------------------------------------------------
-   10. LEGACY RESPONSIVE ADJUSTMENTS
+   10. PHASE 5: ADVANCED ANIMATION AND TRANSITION MIXINS
+   ----------------------------------------------------------------------------- */
+
+// Animation enhancement mixins
+@mixin carousel-smooth-transitions($duration: 0.3s) {
+  transition: all #{$duration} ease-out;
+  
+  // Smooth scroll behavior
+  scroll-behavior: smooth;
+  
+  // Enhanced scroll snap
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  
+  > * {
+    scroll-snap-align: start;
+    transition: transform #{$duration} ease-out, opacity #{$duration} ease-out;
+  }
+}
+
+// Fade-in animation for cards
+@mixin carousel-fade-in-cards($delay: 0.1s) {
+  > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: carousel-fade-in 0.6s ease-out forwards;
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * $delay};
+      }
+    }
+  }
+  
+  // Only animate if motion is not reduced
+  @media (prefers-reduced-motion: reduce) {
+    > * {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes carousel-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Hover effects for carousel cards
+@mixin carousel-hover-effects($lift: 4px) {
+  > * {
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    
+    &:hover {
+      transform: translateY(-#{$lift});
+      box-shadow: var(--shadow-lg);
+    }
+    
+    // Respect reduced motion
+    @media (prefers-reduced-motion: reduce) {
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+
+// Parallax scroll effect for background images
+@mixin carousel-parallax-cards() {
+  > * {
+    position: relative;
+    overflow: hidden;
+    
+    .card-background,
+    .card-image {
+      transition: transform var(--transition-slow);
+    }
+    
+    &:hover .card-background,
+    &:hover .card-image {
+      transform: scale(1.05);
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .card-background,
+      .card-image {
+        transition: none;
+      }
+      
+      &:hover .card-background,
+      &:hover .card-image {
+        transform: none;
+      }
+    }
+  }
+}
+
+// Staggered card entrance animations
+@mixin carousel-stagger-entrance($base-delay: 0.1s, $stagger-delay: 0.05s) {
+  > * {
+    opacity: 0;
+    transform: translateX(30px);
+    animation: carousel-slide-in 0.5s ease-out forwards;
+    
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$base-delay + ($i - 1) * $stagger-delay};
+      }
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    > * {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes carousel-slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Enhanced loading state
+@mixin carousel-loading-state() {
+  &.carousel-loading {
+    > * {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid var(--primary-200);
+      border-top-color: var(--primary-500);
+      border-radius: 50%;
+      animation: carousel-spinner 1s linear infinite;
+    }
+  }
+}
+
+@keyframes carousel-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   11. LEGACY RESPONSIVE ADJUSTMENTS
    ----------------------------------------------------------------------------- */
 
 /* Small mobile adjustments */
