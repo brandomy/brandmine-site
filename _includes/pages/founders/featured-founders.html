@@ -60,7 +60,11 @@ Last Updated: 2025-06-03
     <div class="featured-founders__grid">
       {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: limit %}
       {% for founder in featured_founders %}
-        {% include components/cards/featured-founder-card.html founder=founder %}
+        {% include components/cards/universal-card.html 
+           item=founder 
+           type="founder" 
+           variant="featured" 
+           config_set="universal-card" %}
       {% endfor %}
     </div>
 

@@ -63,7 +63,11 @@ Last Updated: 2025-06-03
     <div class="recent-founders__grid">
       {% assign recent_founders = site.founders | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
       {% for founder in recent_founders %}
-        {% include components/cards/founder-card.html founder=founder variant="recent" %}
+        {% include components/cards/universal-card.html 
+           item=founder 
+           type="founder" 
+           variant="standard" 
+           config_set="universal-card" %}
       {% endfor %}
     </div>
 

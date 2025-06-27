@@ -1,36 +1,79 @@
 /* assets/css/pages/brands/featured-brands.scss */
+/* Enhanced: Phase 1 - Universal carousel implementation */
 
-/* Featured brands section */
+/* Featured brands section with universal carousel */
 .brands-page {
-  .featured-brands {
-    &__grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-10);
-      margin-top: var(--space-8);
-      max-width: 1800px;
-      margin-left: auto;
-      margin-right: auto;
-
-      @media (width <= 1200px) {
-        gap: var(--space-8);
-        max-width: 1400px;
+  
+  /* Universal carousel for featured brands */
+  .universal-carousel[data-component-type="featured-brands"] {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-6);
+    padding: var(--space-4) 0;
+    margin: var(--space-6) 0;
+    width: 100%;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-300) var(--primary-50);
+    scroll-snap-type: x mandatory;
+    
+    /* Mobile: 1 card per view */
+    > * {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+    }
+    
+    /* Tablet+: 2 cards per view */
+    @media (width >= 768px) {
+      > * {
+        flex: 0 0 calc(50% - (var(--space-6) / 2));
       }
-
-      @media (width <= 992px) {
-        gap: var(--space-6);
-        max-width: 1000px;
+    }
+    
+    /* Scrollbar styling */
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: var(--neutral-200);
+      border-radius: var(--radius-sm);
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--primary-300);
+      border-radius: var(--radius-sm);
+    }
+  }
+  
+  /* Navigation dots */
+  .universal-carousel-nav[data-target="featured-brands"] {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+    
+    .universal-carousel-nav-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--neutral-300);
+      cursor: pointer;
+      transition: transform var(--transition-fast), background-color var(--transition-fast);
+      margin: 0 var(--space-1);
+      
+      &:hover {
+        transform: scale(1.2);
+        background-color: var(--primary-300);
       }
-
-      @media (width <= 768px) {
-        grid-template-columns: 1fr;
-        gap: var(--space-8);
-        max-width: 800px;
-      }
-
-      @media (width <= 480px) {
-        gap: var(--space-6);
-        max-width: 100%;
+      
+      &.active {
+        background-color: var(--primary-500);
+        transform: scale(1.2);
       }
     }
   }

@@ -1,6 +1,7 @@
 {% comment %}
   Component: pages/brands/featured-brands.html
-  Purpose: Displays a featured brands section with highlighted brands
+  Purpose: Displays featured brands in universal carousel with enhanced presentation
+  Enhanced: Phase 1 - Applied homepage universal carousel pattern
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].brands %}
@@ -14,9 +15,22 @@
   {{ include.description | default: t.featured_description }}
 </p>
 
-<div class="featured-brands__grid">
+<!-- Universal Carousel Implementation -->
+<div class="universal-carousel" data-component-type="featured-brands">
   {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 4 %}
   {% for brand in featured_brands %}
-    {% include components/cards/hero-brand-card.html brand=brand %}
+    {% include components/cards/universal-card.html 
+       item=brand 
+       type="brand" 
+       variant="featured" 
+       config_set="universal-card" %}
+  {% endfor %}
+</div>
+
+<!-- Navigation Dots -->
+<div class="universal-carousel-nav" data-target="featured-brands">
+  {% for brand in featured_brands %}
+    <span class="universal-carousel-nav-dot {% if forloop.first %}active{% endif %}" 
+          data-slide="{{ forloop.index0 }}"></span>
   {% endfor %}
 </div>

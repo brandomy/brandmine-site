@@ -1,7 +1,7 @@
 {% comment %}
   Component: pages/brands/latest-brands.html
 
-  Purpose: Displays latest brands section
+  Purpose: Displays latest brands in 2x2 grid using homepage pattern
 
   Parameters:
     title (optional): Custom section title, defaults to brands.recently_added translation
@@ -10,8 +10,9 @@
 
   Dependencies:
     - CSS: pages/brands/latest-brands.scss
-    - _includes/components/cards/brand-card.html
+    - _includes/components/cards/universal-card.html
     - site.data.translations for labels
+  Enhanced: Phase 1 - Applied Latest Insights 2x2 grid pattern
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].brands %}
@@ -22,9 +23,14 @@
   {{ include.title | default: t.recently_added }}
 </h2>
 
-<div class="latest-brands__grid">
+<!-- Latest Insights 2x2 Grid Pattern -->
+<div class="latest-brands__container">
   {% assign recent_brands = site.brands | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
   {% for brand in recent_brands %}
-    {% include components/cards/brand-card.html brand=brand %}
+    {% include components/cards/universal-card.html 
+       item=brand 
+       type="brand" 
+       variant="latest" 
+       config_set="universal-card" %}
   {% endfor %}
 </div>

@@ -31,12 +31,12 @@
 {% assign current_lang = founder.lang | default: 'en' %}
 
 <div class="founder-hero">
-      <h1 class="founder-hero__title">
+      <h1 class="panel__heading-primary founder-hero__title">
         {{ founder.title }}
       </h1>
       
       {% if founder.position %}
-        <p class="founder-hero__position">
+        <p class="panel__subtitle founder-hero__position">
           {{ founder.position }}
         </p>
       {% endif %}

@@ -32,7 +32,11 @@
     
     <div class="founder-connections__grid">
       {% for related_founder in same_market_founders %}
-        {% include components/cards/founder-card.html founder=related_founder %}
+        {% include components/cards/universal-card.html 
+           item=related_founder 
+           type="founder" 
+           variant="compact" 
+           config_set="universal-card" %}
       {% endfor %}
     </div>
   </div>
@@ -94,7 +98,11 @@
       {% for connection_ref in founder.connections %}
         {% assign connected_founder = site.founders | where: "ref", connection_ref | where: "lang", founder.lang | first %}
         {% if connected_founder %}
-          {% include components/cards/founder-card.html founder=connected_founder %}
+          {% include components/cards/universal-card.html 
+             item=connected_founder 
+             type="founder" 
+             variant="compact" 
+             config_set="universal-card" %}
         {% endif %}
       {% endfor %}
     </div>

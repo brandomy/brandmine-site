@@ -44,7 +44,11 @@
   {% if founders.size > 0 %}
     <div class="featured-founders-simplified__grid">
       {% for founder in founders %}
-        {% include components/cards/simplified-founder-card.html founder=founder %}
+        {% include components/cards/universal-card.html 
+           item=founder 
+           type="founder" 
+           variant="compact" 
+           config_set="universal-card" %}
       {% endfor %}
     </div>
   {% else %}

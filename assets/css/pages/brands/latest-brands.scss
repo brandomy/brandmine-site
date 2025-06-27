@@ -1,35 +1,37 @@
 /* assets/css/pages/brands/latest-brands.scss */
+/* Enhanced: Phase 1 - Latest Insights 2x2 grid pattern */
 
-/* Latest brands section */
+/* Latest brands section with 2x2 grid pattern */
 .brands-page {
   .latest-brands {
-    &__grid {
+    &__container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: var(--space-6);
-      margin-top: var(--space-6);
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
-
-      @media (width <= 1200px) {
-        gap: var(--space-4);
-        max-width: 1200px;
+      margin: var(--space-6) 0;
+      width: 100%;
+      
+      /* Mobile: 1 column (1x4 stack) */
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, auto);
+      
+      /* Tablet: 2x2 grid (768px+) */
+      @media (width >= 768px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, auto);
+        gap: var(--space-5);
       }
-
-      @media (width <= 992px) {
-        grid-template-columns: repeat(2, 1fr);
+      
+      /* Desktop: optimized spacing (992px+) */
+      @media (width >= 992px) {
+        gap: var(--space-6);
         max-width: 800px;
+        margin: var(--space-8) auto;
       }
-
-      @media (width <= 768px) {
-        gap: var(--space-4);
-        max-width: 600px;
-      }
-
-      @media (width <= 480px) {
-        grid-template-columns: 1fr;
-        max-width: 400px;
+      
+      /* Large screens: maximum spacing (1200px+) */
+      @media (width >= 1200px) {
+        max-width: 900px;
+        gap: var(--space-8);
       }
     }
   }
