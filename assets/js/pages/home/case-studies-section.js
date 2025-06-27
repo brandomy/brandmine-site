@@ -1,14 +1,16 @@
 // Case Studies Section JavaScript - Homepage Integration
-// Handles horizontal scrolling carousel with dot navigation
+// Using universal carousel consolidation (Phase 3) with preserved dynamic dots
 
 document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.universal-carousel[data-component-type="case-studies"]');
+    // Use universal initialization for basic setup
+    const carouselInstance = window.UniversalCarousel.init('case-studies');
+    if (!carouselInstance) return;
+    
     const navContainer = document.querySelector('.universal-carousel-nav[data-carousel-id="case-studies"]');
-
-    if (!carousel || !navContainer) return;
+    if (!navContainer) return;
 
     // Count the actual number of cards dynamically
-    const totalCards = carousel.children.length;
+    const totalCards = carouselInstance.cards.length;
     let dots = [];
 
     /**
@@ -40,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function calculateScrollPositions() {
         const cardsPerView = window.innerWidth <= 991 ? 1 : 2;
-        const cardWidth = carousel.children[0].offsetWidth;
-        const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
+        const cardWidth = carouselInstance.getCardWidth();
+        const gap = carouselInstance.getGap();
 
         const positions = {};
         for (let i = 0; i < dots.length; i++) {
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
      * Finds closest position match with threshold tolerance
      */
     function updateActiveDot() {
-        const scrollLeft = carousel.scrollLeft;
+        const scrollLeft = carouselInstance.carousel.scrollLeft;
         const positions = calculateScrollPositions();
         const threshold = 50;
 
@@ -86,10 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const positions = calculateScrollPositions();
                 const targetPosition = positions[index] || 0;
 
-                carousel.scrollTo({
-                    left: targetPosition,
-                    behavior: 'smooth'
-                });
+                carouselInstance.scrollToPosition(targetPosition);
 
                 dots.forEach(d => d.classList.remove('active'));
                 dot.classList.add('active');
@@ -109,11 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`Case studies carousel initialized - ${totalDots} dots for ${cardsPerView} cards per view (${totalCards} total cards)`);
     }
 
-    // Update active dot during manual scrolling
-    let scrollTimeout;
-    carousel.addEventListener('scroll', function() {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(updateActiveDot, 100);
+    // Use universal scroll handling with custom case studies logic
+    window.UniversalCarousel.addScrollHandler(carouselInstance, function(slideIndex) {
+        // Custom update logic for case studies - use our special updateActiveDot
+        updateActiveDot();
     });
 
     // Reinitialize on window resize (desktop/mobile transitions)

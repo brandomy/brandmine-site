@@ -15,12 +15,11 @@ const CONFIG = {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all founder focus carousels
-    const carousels = document.querySelectorAll('.universal-carousel[data-component-type="founder-focus"]');
-
-    carousels.forEach(function(carousel) {
-        initializeFounderFocusCarousel(carousel);
-    });
+    // Use universal initialization for basic setup (Phase 3 minimal integration)
+    const carouselInstance = window.UniversalCarousel.init('founder-focus');
+    if (!carouselInstance) return;
+    
+    initializeFounderFocusCarousel(carouselInstance.carousel);
 });
 
 function initializeFounderFocusCarousel(carousel) {

@@ -168,5 +168,87 @@ window.UniversalCarousel = {
     initialize: initializeUniversalCarousel,
     getCardsPerView: getCardsPerView,
     scrollToSlide: scrollToSlide,
-    updateActiveDot: updateActiveDot
+    updateActiveDot: updateActiveDot,
+    
+    /**
+     * Initialize a carousel with common patterns (Phase 3 Consolidation)
+     * @param {string} componentType - The data-component-type value
+     * @param {Object} options - Configuration options
+     */
+    init: function(componentType, options = {}) {
+        const carousel = document.querySelector(`.universal-carousel[data-component-type="${componentType}"]`);
+        const navContainer = document.querySelector(`.universal-carousel-nav[data-target="${componentType}"]`);
+        
+        if (!carousel) {
+            console.warn(`Carousel not found for component type: ${componentType}`);
+            return null;
+        }
+        
+        return {
+            carousel: carousel,
+            navContainer: navContainer,
+            cards: carousel.children,
+            // Common utility methods
+            scrollToPosition: function(position) {
+                carousel.scrollTo({
+                    left: position,
+                    behavior: 'smooth'
+                });
+            },
+            getCardWidth: function() {
+                const firstCard = carousel.children[0];
+                return firstCard ? firstCard.offsetWidth : 0;
+            },
+            getGap: function() {
+                return parseFloat(getComputedStyle(carousel).gap) || 24;
+            }
+        };
+    },
+    
+    /**
+     * Add configurable scroll handling that page-specific files can use
+     * @param {Object} carouselInstance - Instance returned by init()
+     * @param {Function} updateCallback - Callback function for scroll updates
+     */
+    addScrollHandler: function(carouselInstance, updateCallback) {
+        if (!carouselInstance.carousel) return;
+        
+        let scrollTimeout;
+        carouselInstance.carousel.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollLeft = carouselInstance.carousel.scrollLeft;
+                const cardWidth = carouselInstance.getCardWidth();
+                const gap = carouselInstance.getGap();
+                
+                if (cardWidth > 0) {
+                    const slideIndex = Math.round(scrollLeft / (cardWidth + gap));
+                    updateCallback(slideIndex);
+                }
+            }, 100);
+        });
+    },
+    
+    /**
+     * Add standard dot functionality that most carousels can use
+     * @param {Object} carouselInstance - Instance returned by init()
+     * @param {NodeList} dots - Array/NodeList of dot elements
+     */
+    addDotHandlers: function(carouselInstance, dots) {
+        if (!dots || !dots.length) return;
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                const cardWidth = carouselInstance.getCardWidth();
+                const gap = carouselInstance.getGap();
+                const position = index * (cardWidth + gap);
+                
+                carouselInstance.scrollToPosition(position);
+                
+                // Update active dot
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+    }
 };
