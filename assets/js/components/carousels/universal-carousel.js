@@ -21,7 +21,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all universal carousels
-    const carousels = document.querySelectorAll('.universal-carousel[data-component-type^="featured-"]');
+    const carousels = document.querySelectorAll('.carousel[data-component-type^="featured-"]');
     
     carousels.forEach(function(carousel) {
         initializeUniversalCarousel(carousel);
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeUniversalCarousel(carousel) {
     const componentType = carousel.getAttribute('data-component-type');
     const pageContext = carousel.getAttribute('data-page-context') || 'default-page';
-    const navContainer = document.querySelector(`.universal-carousel-nav[data-target="${componentType}"]`);
+    const navContainer = document.querySelector(`.carousel-nav[data-target="${componentType}"]`);
     
     if (!navContainer) {
         console.warn(`No navigation container found for ${componentType}`);
@@ -39,7 +39,7 @@ function initializeUniversalCarousel(carousel) {
     }
     
     const cards = carousel.children;
-    const dots = navContainer.querySelectorAll('.universal-carousel-nav-dot');
+    const dots = navContainer.querySelectorAll('.carousel-nav-dot');
     
     if (cards.length === 0) return;
     
@@ -191,8 +191,8 @@ window.UniversalCarousel = {
      * @param {Object} options - Configuration options
      */
     init: function(componentType, options = {}) {
-        const carousel = document.querySelector(`.universal-carousel[data-component-type="${componentType}"]`);
-        const navContainer = document.querySelector(`.universal-carousel-nav[data-target="${componentType}"]`);
+        const carousel = document.querySelector(`.carousel[data-component-type="${componentType}"]`);
+        const navContainer = document.querySelector(`.carousel-nav[data-target="${componentType}"]`);
         
         if (!carousel) {
             console.warn(`Carousel not found for component type: ${componentType}`);

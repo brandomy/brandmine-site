@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const carouselInstance = window.UniversalCarousel.init('case-studies');
     if (!carouselInstance) return;
     
-    const navContainer = document.querySelector('.universal-carousel-nav[data-carousel-id="case-studies"]');
+    const navContainer = document.querySelector('.carousel-nav[data-carousel-id="case-studies"]');
     if (!navContainer) return;
 
     // Count the actual number of cards dynamically
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         for (let i = 0; i < totalDots; i++) {
             const dot = document.createElement('div');
-            dot.className = 'universal-carousel-nav-dot';
+            dot.className = 'carousel-nav-dot';
             if (i === 0) dot.classList.add('active');
             navContainer.appendChild(dot);
             dots.push(dot);

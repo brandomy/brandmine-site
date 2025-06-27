@@ -96,9 +96,9 @@
     },
 
     featuredCarousel: {
-      selector: '.universal-carousel[data-component-type^="featured-"]',
+      selector: '.carousel[data-component-type^="featured-"]',
       init: () => {
-        // Universal carousel initializes via DOMContentLoaded in universal-carousel.js
+        // Carousel initializes via DOMContentLoaded in carousel.js
         console.log('[Main] Featured carousel component detected');
       }
     },

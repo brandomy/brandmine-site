@@ -6,8 +6,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize featured brands carousel on brands page
-    const carousel = document.querySelector('.universal-carousel[data-component-type="featured-brands"]');
-    const navContainer = document.querySelector('.universal-carousel-nav[data-target="featured-brands"]');
+    const carousel = document.querySelector('.carousel[data-component-type="featured-brands"]');
+    const navContainer = document.querySelector('.carousel-nav[data-target="featured-brands"]');
     
     if (!carousel || !navContainer) return;
     
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeFeaturedBrandsCarousel(carousel, navContainer) {
     const cards = carousel.children;
-    const dots = navContainer.querySelectorAll('.universal-carousel-nav-dot');
+    const dots = navContainer.querySelectorAll('.carousel-nav-dot');
     
     if (cards.length === 0) return;
     

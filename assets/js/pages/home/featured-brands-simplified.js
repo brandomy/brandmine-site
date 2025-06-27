@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const carousel = window.UniversalCarousel.init('featured-brands-simplified');
     if (!carousel) return;
     
-    const dots = document.querySelectorAll('.universal-carousel-nav[data-target="featured-brands-simplified"] .universal-carousel-nav-dot');
+    const dots = document.querySelectorAll('.carousel-nav[data-target="featured-brands-simplified"] .carousel-nav-dot');
     const cards = carousel.carousel.querySelectorAll('.simplified-carousel-card');
     
     if (cards.length === 0) return;
