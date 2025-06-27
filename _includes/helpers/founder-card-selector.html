@@ -1,0 +1,40 @@
+{% comment %}
+HELPER: Founder Card Selector
+PURPOSE: Intelligently selects appropriate universal card variant based on featured level to ensure visual hierarchy consistency across founder listings
+
+USAGE: {% include helpers/founder-card-selector.html founder=founder %}
+
+PARAMETERS:
+- founder (required): Founder object with featured_level and featured properties
+- force_variant (optional): Override automatic selection - "hero", "featured", "standard"
+
+RETURNS: Renders universal-card with appropriate variant
+
+DEPENDENCIES:
+- Data: founder.featured_level (integer), founder.featured (boolean)
+- Includes: components/cards/universal-card.html
+- Variables: None
+
+EXAMPLE:
+{% include helpers/founder-card-selector.html founder=founder %}
+<!-- Auto-selects hero variant for featured_level >= 2 -->
+{% include helpers/founder-card-selector.html founder=founder force_variant="featured" %}
+<!-- Forces featured variant regardless of founder status -->
+{% endcomment %}
+
+{% comment %} Selection logic: force_variant > featured_level >= 2 > featured > standard {% endcomment %}
+{% if include.force_variant %}
+  {% assign card_variant = include.force_variant %}
+{% elsif include.founder.featured_level and include.founder.featured_level >= 2 %}
+  {% assign card_variant = "hero" %}
+{% elsif include.founder.featured %}
+  {% assign card_variant = "featured" %}
+{% else %}
+  {% assign card_variant = "standard" %}
+{% endif %}
+
+{% include components/cards/universal-card.html 
+   item=include.founder 
+   type="founder" 
+   variant=card_variant 
+   config_set="universal-card" %}

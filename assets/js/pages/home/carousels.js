@@ -56,10 +56,10 @@ const BrandmineCarousel = (function() {
      */
     init: function() {
       // Initialize brand carousel
-      setupCarousel('.featured-brands-carousel', '.featured-brands-nav-dot');
+      setupCarousel('.universal-carousel[data-component-type="featured-brands"]', '.universal-carousel-nav-dot');
 
       // Initialize insights carousel (if exists)
-      setupCarousel('.insights-carousel', '.insights-carousel-nav-dot');
+      setupCarousel('.universal-carousel[data-component-type="insights"]', '.universal-carousel-nav-dot');
     }
   };
 })();

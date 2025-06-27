@@ -1,0 +1,209 @@
+{% comment %}
+  COMPONENT: Universal Carousel
+  PURPOSE: Shared carousel component for featured content across all pages
+  
+  PARAMETERS:
+    content_type (required): "brands" or "founders"
+    page_context (optional): "home-page", "brands-page", "founders-page" - for CSS custom properties
+    limit (optional): Number of items to display (default: 10)
+    display_mode (optional): "carousel", "grid", "mixed" (default: "carousel")
+    premium_only (optional): Show only premium content (featured_level >= 2)
+    title (optional): Custom section title
+    description (optional): Custom section description
+    cta_text (optional): Custom CTA button text
+    carousel_class (optional): Additional CSS classes
+  
+  USAGE:
+    {% include components/carousels/universal-carousel.html
+       content_type="brands"
+       page_context="home-page"
+       limit=10 %}
+       
+    {% include components/carousels/universal-carousel.html
+       content_type="founders"
+       page_context="founders-page"
+       limit=6
+       display_mode="grid" %}
+       
+  DEPENDENCIES:
+    - CSS: assets/css/components/carousels/universal-carousel.scss
+    - JS: assets/js/components/carousels/universal-carousel.js
+    - Helpers: helpers/brand-filter.html (for brands), helpers/founder-filter.html (for founders)
+    - Helpers: helpers/brand-card-selector.html, helpers/founder-card-selector.html
+{% endcomment %}
+
+{% comment %} Parameter validation {% endcomment %}
+{% unless include.content_type %}
+  <!-- Universal Carousel: Missing required content_type parameter -->
+  {% break %}
+{% endunless %}
+
+{% comment %} Parameter setup {% endcomment %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign content_type = include.content_type %}
+{% assign page_context = include.page_context | default: "default-page" %}
+{% assign limit = include.limit | default: 10 %}
+{% assign display_mode = include.display_mode | default: "carousel" %}
+{% assign premium_only = include.premium_only | default: false %}
+{% assign carousel_class = include.carousel_class | default: "" %}
+
+{% comment %} Content-type specific setup {% endcomment %}
+{% case content_type %}
+  {% when "brands" %}
+    {% assign collection_name = "brands" %}
+    {% assign card_selector = "helpers/brand-card-selector.html" %}
+    {% assign filter_helper = "helpers/brand-filter.html" %}
+    {% assign translation_key_prefix = "brands" %}
+    {% assign default_title = "Featured Brands" %}
+    {% assign default_description = "Market-proven winners with compelling founder stories and explosive growth potential" %}
+    {% assign default_cta = "Explore All Brands" %}
+    {% assign target_url = site.baseurl | append: "/" | append: current_lang | append: "/brands/" %}
+  {% when "founders" %}
+    {% assign collection_name = "founders" %}
+    {% assign card_selector = "helpers/founder-card-selector.html" %}
+    {% assign filter_helper = "helpers/founder-filter.html" %}
+    {% assign translation_key_prefix = "founders" %}
+    {% assign default_title = "Featured Founders" %}
+    {% assign default_description = "Meet the visionary entrepreneurs behind BRICS+ brands with global potential" %}
+    {% assign default_cta = "Explore All Founders" %}
+    {% assign target_url = site.baseurl | append: "/" | append: current_lang | append: "/founders/" %}
+  {% when "case-studies" %}
+    {% assign collection_name = "case-studies" %}
+    {% assign card_selector = "helpers/case-study-card-selector.html" %}
+    {% assign filter_helper = "helpers/case-study-filter.html" %}
+    {% assign translation_key_prefix = "case_studies" %}
+    {% assign default_title = "Success Stories" %}
+    {% assign default_description = "Real transformations of founder-led brands breaking through global markets" %}
+    {% assign default_cta = "View All Case Studies" %}
+    {% assign target_url = site.baseurl | append: "/" | append: current_lang | append: "/case-studies/" %}
+  {% else %}
+    <!-- Unknown content_type: {{ content_type }} -->
+    {% break %}
+{% endcase %}
+
+{% comment %} Section heading {% endcomment %}
+<h2 class="panel__heading-secondary">
+  {% if include.title %}
+    {{ include.title }}
+  {% else %}
+    {% include helpers/t.html key="{{ translation_key_prefix }}.featured.title" fallback=default_title %}
+  {% endif %}
+</h2>
+<p class="panel__lead-text">
+  {% if include.description %}
+    {{ include.description }}
+  {% else %}
+    {{ default_description }}
+  {% endif %}
+</p>
+
+{% comment %} Content filtering {% endcomment %}
+{% if content_type == "brands" %}
+  {% include helpers/brand-filter.html lang=current_lang featured=true premium_only=premium_only limit=limit %}
+  {% assign filtered_content = filtered_brands %}
+{% elsif content_type == "founders" %}
+  {% comment %} Founder filtering - fallback to direct collection filter if helper doesn't exist {% endcomment %}
+  {% assign all_founders = site.founders | where: "lang", current_lang %}
+  {% if premium_only %}
+    {% assign filtered_content = all_founders | where: "featured_level", 2 %}
+    {% if filtered_content.size == 0 %}
+      {% assign filtered_content = all_founders | where: "featured", true %}
+    {% endif %}
+  {% else %}
+    {% assign filtered_content = all_founders | where: "featured", true %}
+  {% endif %}
+  {% assign filtered_content = filtered_content | limit: limit %}
+{% elsif content_type == "case-studies" %}
+  {% comment %} Case studies filtering from data file {% endcomment %}
+  {% assign all_case_studies = site.data.case_studies[current_lang] %}
+  {% assign filtered_content = all_case_studies | where: "featured", true | limit: limit %}
+{% endif %}
+
+{% comment %} Display modes {% endcomment %}
+{% if display_mode == "mixed" and filtered_content.size > 0 %}
+  <!-- Mixed mode: First item as hero, rest in carousel -->
+  {% assign first_item = filtered_content | first %}
+  {% if content_type == "brands" %}
+    {% include helpers/brand-card-selector.html brand=first_item force_variant="hero" %}
+  {% elsif content_type == "founders" %}
+    {% include helpers/founder-card-selector.html founder=first_item force_variant="hero" %}
+  {% elsif content_type == "case-studies" %}
+    {% include helpers/case-study-card-selector.html case_study=first_item force_variant="hero" %}
+  {% endif %}
+
+  <div class="universal-carousel universal-carousel--{{ content_type }} {{ carousel_class }}" 
+       data-component-type="featured-{{ content_type }}" 
+       data-page-context="{{ page_context }}">
+    {% for item in filtered_content offset:1 limit:limit %}
+      {% if content_type == "brands" %}
+        {% include helpers/brand-card-selector.html brand=item %}
+      {% elsif content_type == "founders" %}
+        {% include helpers/founder-card-selector.html founder=item %}
+      {% elsif content_type == "case-studies" %}
+        {% include helpers/case-study-card-selector.html case_study=item %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+{% elsif display_mode == "grid" %}
+  <!-- Grid display mode -->
+  <div class="universal-grid universal-grid--{{ content_type }}" 
+       data-component-type="featured-{{ content_type }}-grid" 
+       data-page-context="{{ page_context }}">
+    {% for item in filtered_content %}
+      {% if content_type == "brands" %}
+        {% include helpers/brand-card-selector.html brand=item %}
+      {% elsif content_type == "founders" %}
+        {% include helpers/founder-card-selector.html founder=item %}
+      {% elsif content_type == "case-studies" %}
+        {% include helpers/case-study-card-selector.html case_study=item %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+{% else %}
+  <!-- Default carousel mode -->
+  <div class="universal-carousel universal-carousel--{{ content_type }} {{ carousel_class }}" 
+       data-component-type="featured-{{ content_type }}" 
+       data-page-context="{{ page_context }}">
+    {% if filtered_content.size > 0 %}
+      {% for item in filtered_content %}
+        {% if content_type == "brands" %}
+          {% include helpers/brand-card-selector.html brand=item %}
+        {% elsif content_type == "founders" %}
+          {% include helpers/founder-card-selector.html founder=item %}
+        {% elsif content_type == "case-studies" %}
+          {% include helpers/case-study-card-selector.html case_study=item %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <!-- Fallback content if no items available -->
+      <p class="no-content-message">
+        {% include helpers/t.html key="common.empty_states.no_{{ content_type }}" fallback="No featured {{ content_type }} available yet." %}
+      </p>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% comment %} Navigation dots for carousel modes {% endcomment %}
+{% if display_mode != "grid" %}
+  <div class="universal-carousel-nav" data-target="featured-{{ content_type }}" data-page-context="{{ page_context }}">
+    {% assign dot_count = filtered_content.size | divided_by: 2 | ceil | at_least: 1 %}
+    {% for i in (1..dot_count) %}
+      <span class="universal-carousel-nav-dot {% if forloop.first %}active{% endif %}"></span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% comment %} CTA Button {% endcomment %}
+<div class="universal-carousel-cta">
+  <a href="{{ target_url }}"
+     class="btn btn--primary-cta"
+     data-track="featured-{{ content_type }}">
+    {% if include.cta_text %}
+      {{ include.cta_text }}
+    {% else %}
+      {{ default_cta }}
+    {% endif %}
+  </a>
+</div>

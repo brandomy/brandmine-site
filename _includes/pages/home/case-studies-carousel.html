@@ -1,0 +1,13 @@
+{% comment %}
+  Page Section: pages/home/case-studies-carousel.html
+  Purpose: Test universal carousel component with case-studies content type
+  Testing: Side-by-side with existing case-studies section for comparison
+  Dependencies: components/carousels/universal-carousel.html, helpers/case-study-card-selector.html
+{% endcomment %}
+
+{% include components/carousels/universal-carousel.html
+   content_type="case-studies"
+   page_context="home-page"
+   limit=4
+   title="Success Stories (Universal)"
+   description="Testing universal carousel component - should match existing section above" %}

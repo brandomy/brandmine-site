@@ -1,36 +1,102 @@
 {% comment %}
-  Component: pages/brands/featured-brands.html
-  Purpose: Displays featured brands in universal carousel with enhanced presentation
-  Enhanced: Phase 1 - Applied homepage universal carousel pattern
+  Page Section: pages/brands/featured-brands.html
+  
+  Purpose: Displays a carousel/grid of featured brands on the brands page with multiple
+           display modes and filtering options for showcasing curated brand selection
+  
+  Section Type: Content
+  Template: brands.html
+  
+  Parameters:
+    limit (optional): Number of brands to display
+                     Default: 10
+    carousel_class (optional): Additional CSS class for the carousel container
+    lead_text (optional): Custom lead text to display above the carousel
+    cta_text (optional): Custom text for the CTA button
+                        Default: "Explore All Brands"
+    premium_only (optional): When true, only shows brands with featured_level 2+
+                            Default: false
+    display_mode (optional): Display style - "carousel", "grid", or "mixed"
+                           Default: "carousel"
+  
+  Dependencies:
+    - Translation keys: brands.featured_brands.*
+    - CSS: assets/css/pages/brands/featured-brands.scss
+    - Helper: helpers/brand-filter.html, helpers/brand-card-selector.html
+    - Fallback: site.data.fallback[lang].teatime
+  
+  Usage:
+    {% include pages/brands/featured-brands.html %}
+    {% include pages/brands/featured-brands.html display_mode="grid" premium_only=true %}
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].brands %}
-{% assign panel_type = include.panel_type | default: "amber-soft" %}
-{% assign limit = include.limit | default: 4 %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign limit = include.limit | default: 10 %}
+{% assign carousel_class = include.carousel_class | default: "" %}
+{% assign premium_only = include.premium_only | default: false %}
+{% assign display_mode = include.display_mode | default: "carousel" %}
 
 <h2 class="panel__heading-secondary">
-  {{ include.title | default: t.featured_brands }}
+  {% include helpers/t.html key="brands.featured_brands.title" fallback="Featured Brands" %}
 </h2>
 <p class="panel__lead-text">
-  {{ include.description | default: t.featured_description }}
+  {{ include.lead_text | default: "Market-proven winners with compelling founder stories and explosive growth potential" }}
 </p>
 
-<!-- Universal Carousel Implementation -->
-<div class="universal-carousel" data-component-type="featured-brands">
-  {% assign featured_brands = site.brands | where: "lang", page.lang | where: "featured", true | limit: 4 %}
-  {% for brand in featured_brands %}
-    {% include components/cards/universal-card.html 
-       item=brand 
-       type="brand" 
-       variant="featured" 
-       config_set="universal-card" %}
-  {% endfor %}
-</div>
+{% comment %} Use centralized brand filtering {% endcomment %}
+{% include helpers/brand-filter.html lang=current_lang featured=true premium_only=premium_only limit=limit %}
+{% assign brands = filtered_brands %}
 
-<!-- Navigation Dots -->
-<div class="universal-carousel-nav" data-target="featured-brands">
-  {% for brand in featured_brands %}
-    <span class="universal-carousel-nav-dot {% if forloop.first %}active{% endif %}" 
-          data-slide="{{ forloop.index0 }}"></span>
-  {% endfor %}
+{% if display_mode == "mixed" and brands.size > 0 %}
+  <!-- Mixed mode: First brand as hero, rest in carousel -->
+  {% assign first_brand = brands | first %}
+  {% include helpers/brand-card-selector.html brand=first_brand force_type="hero" %}
+
+  <div class="featured-brands-carousel {{ carousel_class }}">
+    {% for brand in brands offset:1 limit:limit %}
+      {% include helpers/brand-card-selector.html brand=brand %}
+    {% endfor %}
+  </div>
+{% elsif display_mode == "grid" %}
+  <!-- Grid display mode -->
+  <div class="featured-brands-grid">
+    {% for brand in brands %}
+      {% include helpers/brand-card-selector.html brand=brand %}
+    {% endfor %}
+  </div>
+{% else %}
+  <!-- Default carousel mode -->
+  <div class="featured-brands-carousel {{ carousel_class }}">
+    {% if brands.size > 0 %}
+      {% for brand in brands %}
+        {% include helpers/brand-card-selector.html brand=brand %}
+      {% endfor %}
+    {% else %}
+      <!-- Fallback to language-specific example if no featured brands are available -->
+      {% if site.data.fallback[current_lang].teatime %}
+        {% assign fallback_brand = site.data.fallback[current_lang].teatime %}
+        {% include helpers/brand-card-selector.html brand=fallback_brand force_type="basic" %}
+      {% else %}
+        <p class="no-brands-message">{% include helpers/t.html key="common.empty_states.no_brands" fallback="No featured brands available yet." %}</p>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endif %}
+
+<!-- Scroll indicator dots - Dynamic based on number of brands -->
+{% if display_mode != "grid" %}
+  <div class="featured-brands-nav">
+    {% assign dot_count = brands.size | divided_by: 2 | ceil | at_least: 1 %}
+    {% for i in (1..dot_count) %}
+      <span class="featured-brands-nav-dot {% if forloop.first %}active{% endif %}"></span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="more-brands">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/brands/"
+     class="btn btn--primary-cta"
+     data-track="featured-brands">
+    {{ include.cta_text | default: "Explore All Brands" }}
+  </a>
 </div>

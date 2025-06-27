@@ -1,0 +1,261 @@
+/* =============================================================================
+   UNIVERSAL CAROUSEL COMPONENT
+   =============================================================================
+   Shared carousel component for featured content across all pages.
+   
+   Uses CSS custom properties for page-specific customization:
+   --carousel-height: Default card height
+   --carousel-gap: Gap between cards
+   --dot-color: Navigation dot color
+   --dot-active-color: Active navigation dot color
+   
+   Supports: brands, founders, insights, etc.
+   Pages: home, brands, founders, insights
+   Modes: carousel, grid, mixed
+*/
+
+/* -----------------------------------------------------------------------------
+   1. CAROUSEL CONTAINER
+   ----------------------------------------------------------------------------- */
+
+.universal-carousel {
+  /* CSS Custom Properties for easy page-specific customization */
+  --carousel-height: 360px;
+  --carousel-gap: var(--space-6);
+  --dot-color: var(--primary-300);
+  --dot-active-color: var(--primary-500);
+  --scrollbar-color: var(--primary-300);
+  --scrollbar-track: var(--neutral-200);
+  
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: var(--carousel-gap);
+  padding: var(--space-4) 0;
+  margin: var(--space-6) 0;
+  width: 100%;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-color) var(--scrollbar-track);
+  scroll-snap-type: x mandatory;
+  
+  /* Mobile: 1 card per view */
+  > * {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    height: var(--carousel-height);
+  }
+  
+  /* Tablet+: 2 cards per view */
+  @media (width >= 768px) {
+    > * {
+      flex: 0 0 calc(50% - (var(--carousel-gap) / 2));
+    }
+  }
+  
+  /* Desktop: 3 cards per view for some content types */
+  @media (width >= 1200px) {
+    &.universal-carousel--insights > *,
+    &.universal-carousel--founders > * {
+      flex: 0 0 calc(33.333% - (var(--carousel-gap) * 2 / 3));
+    }
+  }
+  
+  /* Scrollbar styling */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: var(--radius-sm);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: var(--radius-sm);
+    
+    &:hover {
+      background-color: var(--dot-active-color);
+    }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   2. GRID DISPLAY MODE
+   ----------------------------------------------------------------------------- */
+
+.universal-grid {
+  --grid-gap: var(--space-6);
+  --card-height: 360px;
+  
+  display: grid;
+  gap: var(--grid-gap);
+  margin: var(--space-6) 0;
+  
+  /* Mobile: 1 column */
+  grid-template-columns: 1fr;
+  
+  /* Tablet: 2 columns */
+  @media (width >= 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Desktop: 3 columns for some content types */
+  @media (width >= 1200px) {
+    &.universal-grid--insights,
+    &.universal-grid--founders {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  > * {
+    height: var(--card-height);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   3. NAVIGATION DOTS
+   ----------------------------------------------------------------------------- */
+
+.universal-carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+  
+  .universal-carousel-nav-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--dot-color);
+    cursor: pointer;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+    border: none;
+    
+    &:hover {
+      transform: scale(1.2);
+      background-color: var(--dot-active-color);
+    }
+    
+    &.active {
+      background-color: var(--dot-active-color);
+      transform: scale(1.2);
+    }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   4. CTA BUTTON
+   ----------------------------------------------------------------------------- */
+
+.universal-carousel-cta {
+  text-align: center;
+  margin-top: var(--space-6);
+}
+
+/* -----------------------------------------------------------------------------
+   5. NO CONTENT MESSAGE
+   ----------------------------------------------------------------------------- */
+
+.no-content-message {
+  text-align: center;
+  color: var(--neutral-600);
+  font-style: italic;
+  padding: var(--space-8) 0;
+}
+
+/* -----------------------------------------------------------------------------
+   6. PAGE-SPECIFIC CUSTOMIZATIONS
+   ----------------------------------------------------------------------------- */
+
+/* Home Page Customizations */
+.home-page {
+  .universal-carousel {
+    --carousel-height: 380px;
+    --carousel-gap: var(--space-8);
+  }
+  
+  .universal-carousel--brands {
+    --dot-color: var(--olive-300);
+    --dot-active-color: var(--olive-500);
+  }
+  
+  .universal-carousel--founders {
+    --dot-color: var(--secondary-300);
+    --dot-active-color: var(--secondary-500);
+  }
+}
+
+/* Brands Page Customizations */
+.brands-page {
+  .universal-carousel {
+    --carousel-height: 360px;
+  }
+  
+  .universal-carousel--brands {
+    --dot-color: var(--olive-300);
+    --dot-active-color: var(--olive-500);
+    border-top: 1px solid var(--olive-100);
+    border-bottom: 1px solid var(--olive-100);
+    background-color: var(--olive-50);
+  }
+}
+
+/* Founders Page Customizations */
+.founders-page {
+  .universal-carousel {
+    --carousel-height: 360px;
+  }
+  
+  .universal-carousel--founders {
+    --dot-color: var(--secondary-300);
+    --dot-active-color: var(--secondary-500);
+    border-top: 1px solid var(--secondary-100);
+    border-bottom: 1px solid var(--secondary-100);
+    background-color: var(--secondary-50);
+  }
+}
+
+/* Insights Page Customizations */
+.insights-page {
+  .universal-carousel--insights {
+    --dot-color: var(--accent-300);
+    --dot-active-color: var(--accent-500);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   7. RESPONSIVE ADJUSTMENTS
+   ----------------------------------------------------------------------------- */
+
+/* Small mobile adjustments */
+@media (width < 480px) {
+  .universal-carousel {
+    --carousel-gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+  
+  .universal-carousel-nav {
+    gap: var(--space-1);
+    
+    .universal-carousel-nav-dot {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+/* Large desktop adjustments */
+@media (width >= 1400px) {
+  .universal-carousel {
+    --carousel-gap: var(--space-8);
+  }
+  
+  .universal-grid {
+    --grid-gap: var(--space-8);
+  }
+}

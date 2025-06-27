@@ -1,63 +1,72 @@
-/* assets/css/pages/brands/featured-brands.scss */
-/* Enhanced: Phase 1 - Universal carousel implementation */
-
-/* Featured brands section with universal carousel */
 .brands-page {
-  
-  /* Universal carousel for featured brands */
-  .universal-carousel[data-component-type="featured-brands"] {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: var(--space-6);
-    padding: var(--space-4) 0;
-    margin: var(--space-6) 0;
-    width: 100%;
-    position: relative;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-300) var(--primary-50);
-    scroll-snap-type: x mandatory;
-    
-    /* Mobile: 1 card per view */
-    > * {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
-    }
-    
-    /* Tablet+: 2 cards per view */
-    @media (width >= 768px) {
-      > * {
-        flex: 0 0 calc(50% - (var(--space-6) / 2));
-      }
-    }
-    
-    /* Scrollbar styling */
-    &::-webkit-scrollbar {
-      height: 8px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background: var(--neutral-200);
-      border-radius: var(--radius-sm);
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--primary-300);
-      border-radius: var(--radius-sm);
-    }
+  /* ==========================================================================
+     Featured Brands Section - Brands Page
+     ==========================================================================
+     Page-specific styling for the featured brands section on the brands page.
+
+     This file contains only overrides and specific styling for the featured
+     brands section as it appears on the brands page, utilizing the core components:
+     - components/carousels/featured-brands-carousel.scss
+     - components/cards/brand-card.scss
+  */
+
+  /* --------------------------------------------------------------------------
+     1. SECTION CONTAINER
+     -------------------------------------------------------------------------- */
+
+  .featured-brands-section {
+    /* Section-specific styling */
+    // background-color: var(--primary-50);
+    background-color: white;
+    border-top: 1px solid var(--primary-100);
+    border-bottom: 1px solid var(--primary-100);
+  }
+
+  /* Center the section's lead text */
+  .featured-brands-section .panel__lead-text {
+    text-align: center;
+  }
+
+  /* --------------------------------------------------------------------------
+     2. CAROUSEL CUSTOMIZATION
+     -------------------------------------------------------------------------- */
+
+  /* Section-specific carousel styling */
+  .featured-brands-section .featured-brands-carousel {
+    /* Any section-specific adjustments to the carousel */
+    padding-bottom: var(--space-6);
+  }
+
+  /* Specific card styling within this section */
+  .featured-brands-section .brand-card {
+    /* Any brands page-specific adjustments to the cards */
+    height: 360px; /* Slightly taller cards on brands page */
+  }
+
+  /* --------------------------------------------------------------------------
+     3. NO BRANDS MESSAGE
+     -------------------------------------------------------------------------- */
+
+  .no-brands-message {
+    text-align: center;
+    color: var(--neutral-600);
+    font-style: italic;
+    padding: var(--space-8) 0;
   }
   
+  /* --------------------------------------------------------------------------
+     4. NAVIGATION DOTS
+     -------------------------------------------------------------------------- */
+
   /* Navigation dots */
-  .universal-carousel-nav[data-target="featured-brands"] {
+  .featured-brands-nav {
     display: flex;
     justify-content: center;
     gap: var(--space-2);
     margin-top: var(--space-4);
     margin-bottom: var(--space-4);
     
-    .universal-carousel-nav-dot {
+    .featured-brands-nav-dot {
       width: 16px;
       height: 16px;
       border-radius: 50%;
@@ -76,5 +85,14 @@
         transform: scale(1.2);
       }
     }
+  }
+
+  /* --------------------------------------------------------------------------
+     5. MORE BRANDS CTA
+     -------------------------------------------------------------------------- */
+
+  .more-brands {
+    text-align: center;
+    margin-top: var(--space-6);
   }
 }

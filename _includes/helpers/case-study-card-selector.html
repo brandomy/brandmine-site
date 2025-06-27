@@ -1,0 +1,38 @@
+{% comment %}
+HELPER: Case Study Card Selector
+PURPOSE: Intelligently selects appropriate universal card variant for case studies
+
+USAGE: {% include helpers/case-study-card-selector.html case_study=case_study %}
+
+PARAMETERS:
+- case_study (required): Case study object with featured property
+- force_variant (optional): Override automatic selection - "hero", "featured", "standard"
+
+RETURNS: Renders universal-card with appropriate variant
+
+DEPENDENCIES:
+- Data: case_study.featured (boolean)
+- Includes: components/cards/universal-card.html
+- Variables: None
+
+EXAMPLE:
+{% include helpers/case-study-card-selector.html case_study=case_study %}
+<!-- Auto-selects featured variant for featured case studies -->
+{% include helpers/case-study-card-selector.html case_study=case_study force_variant="hero" %}
+<!-- Forces hero variant regardless of case study status -->
+{% endcomment %}
+
+{% comment %} Selection logic: force_variant > featured > standard {% endcomment %}
+{% if include.force_variant %}
+  {% assign card_variant = include.force_variant %}
+{% elsif include.case_study.featured %}
+  {% assign card_variant = "featured" %}
+{% else %}
+  {% assign card_variant = "standard" %}
+{% endif %}
+
+{% include components/cards/universal-card.html 
+   item=include.case_study 
+   type="case-study" 
+   variant=card_variant 
+   config_set="universal-card" %}

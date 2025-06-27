@@ -1,0 +1,24 @@
+{% comment %}
+  Page Section: pages/home/featured-founders-carousel.html
+  
+  Purpose: Test section for universal featured carousel component with founders
+           Side-by-side comparison with existing founder-focus section
+  
+  Section Type: Content
+  Template: home.html
+  
+  Dependencies:
+    - Component: components/carousels/universal-carousel.html
+    - CSS: assets/css/components/carousels/universal-carousel.scss
+    - JS: assets/js/components/carousels/universal-carousel.js
+  
+  Usage:
+    {% include pages/home/featured-founders-carousel.html %}
+{% endcomment %}
+
+{% include components/carousels/universal-carousel.html
+   content_type="founders"
+   page_context="home-page"
+   limit=6
+   title="Featured Founders (Universal)"
+   description="Testing universal carousel component - should match existing section above" %}

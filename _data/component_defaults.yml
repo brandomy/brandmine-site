@@ -150,7 +150,40 @@ cards:
 
   # Universal Card Configuration
   universal-card:
+    brand:
+      # Backward compatibility - flat structure
+      description_words: 180
+      tag_limit: 4
+      show_founder: true
+      show_location: true
+      show_sector: true
+      show_attributes: true
+      show_featured_badge: true
+      show_signals: true
+      show_markets: true
+      image_aspect_ratio: "3:2"
+      excerpt_words: 25
+      # New nested structure for enhanced features
+      sections:
+        header:
+          show_hero_image: true
+          show_logo_corner: false
+          show_metric_overlay: false
+          show_featured_badge: true
+        content:
+          description_words: 180
+          show_founder: true
+          show_location: true
+          show_sector: true
+        taxonomy:
+          tag_limit: 4
+          show_attributes: true
+          show_signals: true
+          show_markets: true
+        action:
+          show_explore_link: true
     founder:
+      # Backward compatibility - flat structure
       bio_words: 120
       tag_limit: 4
       show_achievement: true
@@ -161,6 +194,22 @@ cards:
       show_expertise: true
       image_aspect_ratio: "2:3"
       excerpt_words: 25
+      # New nested structure for enhanced features
+      sections:
+        header:
+          show_portrait: true
+          show_generation_badge: true
+        content:
+          bio_words: 120
+          show_achievement: true
+          show_location: true
+          show_company: true
+          show_brands: true
+          show_expertise: true
+        taxonomy:
+          tag_limit: 4
+        action:
+          show_read_story: true
 
 
 # =============================================================================

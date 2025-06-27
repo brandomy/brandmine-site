@@ -12,15 +12,18 @@ home:
     - hero
     - impact-statement
     - discovery-dimensions
-    - case-studies
+    - case-studies                      # Current working
+    - case-studies-carousel             # NEW: Test shared component
     - how-it-works
     - testimonials
-    - featured-brands-simplified
+    - featured-brands-simplified        # Current working
+    - featured-brands-carousel          # NEW: Test shared component
     - lead-capture
     - location-intelligence
-    - founder-focus
+    - founder-focus                     # Current working
+    - featured-founders-carousel        # NEW: Test shared component
     - brand-owners
-    - latest-insights             # Final 2x2 grid version
+    - latest-insights                   # Grid - no change needed
     - final-cta
 
   panel_mappings:
@@ -32,18 +35,24 @@ home:
       type: panel--light
     case-studies:
       type: panel--amber-soft
+    case-studies-carousel:
+      type: panel--light
     how-it-works:
       type: panel--light
     testimonials:
       type: panel--amber-soft
     featured-brands-simplified:
       type: panel--light
+    featured-brands-carousel:
+      type: panel--amber-soft
     lead-capture:
       type: panel--primary
     location-intelligence:
       type: panel--light
     founder-focus:
       type: panel--accent-soft
+    featured-founders-carousel:
+      type: panel--primary
     brand-owners:
       type: panel--light
     latest-insights:
@@ -63,10 +72,10 @@ brands:
     - breadcrumbs
     - hero
     - impact
-    - content
-    # - filter-interface    # DEFERRED: Advanced filtering complexity
     - featured-brands
     - latest-brands
+    - content
+    # - filter-interface    # DEFERRED: Advanced filtering complexity
     - contact-cta
 
   # Panel type mappings for each section
@@ -78,13 +87,13 @@ brands:
     impact:
       type: panel--primary
       additional_classes: panel--impact
-    content:
-      type: panel--light
-    filter-interface:
-      type: panel--light
     featured-brands:
       type: panel--amber-soft
     latest-brands:
+      type: panel--light
+    content:
+      type: panel--light
+    filter-interface:
       type: panel--light
     contact-cta:
       type: panel--cta
@@ -100,11 +109,11 @@ founders:
     - breadcrumbs
     - hero
     - impact
+    - featured-founders
+    - recent-founders
     - content
     # - filter-interface    # DEFERRED: Advanced filtering complexity
     # - founders-grid       # DEFERRED: Basic discovery sufficient for MVP
-    - featured-founders
-    - recent-founders
     - contact-cta
 
   panel_mappings:
@@ -115,16 +124,19 @@ founders:
     impact:
       type: panel--primary
       additional_classes: panel--impact
+    featured-founders:
+      type: panel--amber-soft
+    recent-founders:
+      type: panel--light
     content:
       type: panel--light
     filter-interface:
       type: panel--light
     founders-grid:
       type: panel--light
-    featured-founders:
-      type: panel--amber-soft
-    recent-founders:
-      type: panel--light
+    contact-cta:
+      type: panel--cta
+      content_classes: panel--centered
 
 # =============================================================================
 # DISCOVERY PAGE SECTIONS
@@ -136,9 +148,9 @@ discovery:
     - breadcrumbs
     - hero
     - impact
-    - content
     - dimensions-navigation
     - dimensions-grid
+    - content
     - featured-brands
     - latest-insights
     - contact-cta

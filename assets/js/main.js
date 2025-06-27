@@ -95,6 +95,14 @@
       }
     },
 
+    featuredCarousel: {
+      selector: '.universal-carousel[data-component-type^="featured-"]',
+      init: () => {
+        // Universal carousel initializes via DOMContentLoaded in universal-carousel.js
+        console.log('[Main] Featured carousel component detected');
+      }
+    },
+
     // Page-specific components
     brandsFiltering: {
       selector: 'body.brands-page',

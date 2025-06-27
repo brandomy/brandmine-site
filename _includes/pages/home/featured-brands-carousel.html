@@ -1,0 +1,24 @@
+{% comment %}
+  Page Section: pages/home/featured-brands-carousel.html
+  
+  Purpose: Test section for universal featured carousel component with brands
+           Side-by-side comparison with existing featured-brands-simplified section
+  
+  Section Type: Content
+  Template: home.html
+  
+  Dependencies:
+    - Component: components/carousels/universal-carousel.html
+    - CSS: assets/css/components/carousels/universal-carousel.scss
+    - JS: assets/js/components/carousels/universal-carousel.js
+  
+  Usage:
+    {% include pages/home/featured-brands-carousel.html %}
+{% endcomment %}
+
+{% include components/carousels/universal-carousel.html
+   content_type="brands"
+   page_context="home-page"
+   limit=10
+   title="Featured Brands (Universal)"
+   description="Testing universal carousel component - should match existing section above" %}
