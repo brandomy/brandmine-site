@@ -22,7 +22,7 @@ PARAMETERS: All optional with sensible defaults
 {% assign brands = filtered_brands %}
 
 <!-- Carousel Container -->
-<div class="universal-carousel" data-component-type="featured-brands-simplified">
+<div class="carousel" data-component-type="featured-brands-simplified">
   {% if brands.size > 0 %}
     {% for brand in brands %}
       <div class="simplified-carousel-card">
@@ -38,10 +38,10 @@ PARAMETERS: All optional with sensible defaults
 
 <!-- Navigation Dots -->
 {% if brands.size > 1 %}
-  <div class="universal-carousel-nav" data-target="featured-brands-simplified">
+  <div class="carousel-nav" data-target="featured-brands-simplified">
     {% assign dot_count = brands.size | divided_by: 2 | ceil | at_least: 1 %}
     {% for i in (1..dot_count) %}
-      <span class="universal-carousel-nav-dot {% if forloop.first %}active{% endif %}" 
+      <span class="carousel-nav-dot {% if forloop.first %}active{% endif %}" 
             data-slide="{{ forloop.index0 }}"></span>
     {% endfor %}
   </div>

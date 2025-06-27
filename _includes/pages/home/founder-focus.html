@@ -24,7 +24,7 @@
   </header>
   
   <!-- Simple universal carousel pattern -->
-  <div class="universal-carousel" data-component-type="founder-focus">
+  <div class="carousel" data-component-type="founder-focus">
     {% comment %} Get featured founders for this language {% endcomment %}
     {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: 4 %}
     

@@ -39,8 +39,8 @@
    UNIVERSAL CAROUSEL PATTERN - Matches Featured Brands/Case Studies
    ============================================================================= */
 
-.universal-carousel[data-component-type="founder-focus"] {
-  /* Inherits base styles from universal-carousel.scss */
+.carousel[data-component-type="founder-focus"] {
+  /* Inherits base styles from carousel.scss */
   /* Founder-specific: Hide scrollbar for clean appearance */
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -51,13 +51,13 @@
 }
 
 /* RESPONSIVE CARD SIZING - Mobile first approach */
-.universal-carousel[data-component-type="founder-focus"] .founder-focus-card {
+.carousel[data-component-type="founder-focus"] .founder-focus-card {
   flex: 0 0 100%;
   width: 100%;
   scroll-snap-align: center;
 }
 
-/* Responsive gap adjustments - Now handled by universal-carousel.scss mixins */
+/* Responsive gap adjustments - Now handled by carousel.scss mixins */
 /* Custom 900px desktop width is preserved in universal component */
 
 /* =============================================================================
@@ -293,7 +293,7 @@
     font-size: var(--text-base);
   }
   
-  /* Carousel gap/margin now handled by universal-carousel.scss mixins */
+  /* Carousel gap/margin now handled by carousel.scss mixins */
   
   /* KEEP - Unique founder focus card mobile layout */
   .founder-focus-card {
@@ -324,4 +324,4 @@
   }
 }
 
-/* Small mobile adjustments - Now handled by universal-carousel.scss */
+/* Small mobile adjustments - Now handled by carousel.scss */

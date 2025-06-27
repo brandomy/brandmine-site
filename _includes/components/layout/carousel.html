@@ -131,7 +131,7 @@
     {% include helpers/case-study-card-selector.html case_study=first_item force_variant="hero" %}
   {% endif %}
 
-  <div class="universal-carousel universal-carousel--{{ content_type }} {{ carousel_class }}" 
+  <div class="carousel carousel--{{ content_type }} {{ carousel_class }}" 
        data-component-type="featured-{{ content_type }}" 
        data-page-context="{{ page_context }}">
     {% for item in filtered_content offset:1 limit:limit %}
@@ -163,7 +163,7 @@
   
 {% else %}
   <!-- Default carousel mode -->
-  <div class="universal-carousel universal-carousel--{{ content_type }} {{ carousel_class }}" 
+  <div class="carousel carousel--{{ content_type }} {{ carousel_class }}" 
        data-component-type="featured-{{ content_type }}" 
        data-page-context="{{ page_context }}">
     {% if filtered_content.size > 0 %}
@@ -187,16 +187,16 @@
 
 {% comment %} Navigation dots for carousel modes {% endcomment %}
 {% if display_mode != "grid" %}
-  <div class="universal-carousel-nav" data-target="featured-{{ content_type }}" data-page-context="{{ page_context }}">
+  <div class="carousel-nav" data-target="featured-{{ content_type }}" data-page-context="{{ page_context }}">
     {% assign dot_count = filtered_content.size | divided_by: 2 | ceil | at_least: 1 %}
     {% for i in (1..dot_count) %}
-      <span class="universal-carousel-nav-dot {% if forloop.first %}active{% endif %}"></span>
+      <span class="carousel-nav-dot {% if forloop.first %}active{% endif %}"></span>
     {% endfor %}
   </div>
 {% endif %}
 
 {% comment %} CTA Button {% endcomment %}
-<div class="universal-carousel-cta">
+<div class="carousel-cta">
   <a href="{{ target_url }}"
      class="btn btn--primary-cta"
      data-track="featured-{{ content_type }}">

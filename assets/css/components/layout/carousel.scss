@@ -1,5 +1,5 @@
 /* =============================================================================
-   UNIVERSAL CAROUSEL COMPONENT
+   CAROUSEL COMPONENT
    =============================================================================
    Shared carousel component for featured content across all pages.
    
@@ -18,7 +18,7 @@
    1. CAROUSEL CONTAINER
    ----------------------------------------------------------------------------- */
 
-.universal-carousel {
+.carousel {
   /* CSS Custom Properties for easy page-specific customization */
   --carousel-height: 360px;
   --carousel-gap: var(--space-6);
@@ -57,8 +57,8 @@
   
   /* Desktop: 3 cards per view for some content types */
   @media (width >= 1200px) {
-    &.universal-carousel--insights > *,
-    &.universal-carousel--founders > * {
+    &.carousel--insights > *,
+    &.carousel--founders > * {
       flex: 0 0 calc(33.333% - (var(--carousel-gap) * 2 / 3));
     }
   }
@@ -120,14 +120,14 @@
    3. NAVIGATION DOTS
    ----------------------------------------------------------------------------- */
 
-.universal-carousel-nav {
+.carousel-nav {
   display: flex;
   justify-content: center;
   gap: var(--space-2);
   margin-top: var(--space-4);
   margin-bottom: var(--space-4);
   
-  .universal-carousel-nav-dot {
+  .carousel-nav-dot {
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -153,7 +153,7 @@
    4. CTA BUTTON
    ----------------------------------------------------------------------------- */
 
-.universal-carousel-cta {
+.carousel-cta {
   text-align: center;
   margin-top: var(--space-6);
 }
@@ -175,17 +175,17 @@
 
 /* Home Page Customizations */
 .home-page {
-  .universal-carousel {
+  .carousel {
     --carousel-height: 380px;
     --carousel-gap: var(--space-8);
   }
   
-  .universal-carousel--brands {
+  .carousel--brands {
     --dot-color: var(--olive-300);
     --dot-active-color: var(--olive-500);
   }
   
-  .universal-carousel--founders {
+  .carousel--founders {
     --dot-color: var(--secondary-300);
     --dot-active-color: var(--secondary-500);
   }
@@ -193,11 +193,11 @@
 
 /* Brands Page Customizations */
 .brands-page {
-  .universal-carousel {
+  .carousel {
     --carousel-height: 360px;
   }
   
-  .universal-carousel--brands {
+  .carousel--brands {
     --dot-color: var(--olive-300);
     --dot-active-color: var(--olive-500);
     border-top: 1px solid var(--olive-100);
@@ -208,11 +208,11 @@
 
 /* Founders Page Customizations */
 .founders-page {
-  .universal-carousel {
+  .carousel {
     --carousel-height: 360px;
   }
   
-  .universal-carousel--founders {
+  .carousel--founders {
     --dot-color: var(--secondary-300);
     --dot-active-color: var(--secondary-500);
     border-top: 1px solid var(--secondary-100);
@@ -223,7 +223,7 @@
 
 /* Insights Page Customizations */
 .insights-page {
-  .universal-carousel--insights {
+  .carousel--insights {
     --dot-color: var(--accent-300);
     --dot-active-color: var(--accent-500);
   }
@@ -301,13 +301,13 @@
    ----------------------------------------------------------------------------- */
 
 // Standard 1 mobile / 2 desktop pattern
-.universal-carousel[data-component-type="featured-brands-simplified"] {
+.carousel[data-component-type="featured-brands-simplified"] {
   @include carousel-responsive(1, 1, 2);
   @include carousel-responsive-gaps();
 }
 
 // Case Studies - Special case requiring specific .test-card targeting
-.universal-carousel[data-component-type="case-studies"] {
+.carousel[data-component-type="case-studies"] {
   @include carousel-responsive-gaps(); /* Keep gap management */
   
   /* Case Studies specific responsive behavior - targets .test-card specifically */
@@ -340,7 +340,7 @@
 }
 
 // Founder Focus - Special case with fixed desktop width
-.universal-carousel[data-component-type="founder-focus"] {
+.carousel[data-component-type="founder-focus"] {
   @include carousel-responsive-gaps();
   
   // Custom responsive pattern for founder focus
@@ -557,15 +557,15 @@
 
 /* Small mobile adjustments */
 @media (width < 480px) {
-  .universal-carousel {
+  .carousel {
     --carousel-gap: var(--space-4);
     margin: var(--space-4) 0;
   }
   
-  .universal-carousel-nav {
+  .carousel-nav {
     gap: var(--space-1);
     
-    .universal-carousel-nav-dot {
+    .carousel-nav-dot {
       width: 12px;
       height: 12px;
     }
@@ -574,7 +574,7 @@
 
 /* Large desktop adjustments */
 @media (width >= 1400px) {
-  .universal-carousel {
+  .carousel {
     --carousel-gap: var(--space-8);
   }
   

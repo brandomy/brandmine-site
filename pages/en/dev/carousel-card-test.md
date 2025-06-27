@@ -17,7 +17,7 @@ robots: noindex, nofollow   # Additional SEO protection
 
         <!-- TOP SECTION: Image-based Cards -->
         <h2>Version A: Hero Images with Metrics</h2>
-        <div class="universal-carousel" data-component-type="case-studies">
+        <div class="carousel" data-component-type="case-studies">
             {% for case_study in site.data.case_studies.en %}
             <div class="test-card">
                 <div class="test-card-image">
@@ -74,7 +74,7 @@ robots: noindex, nofollow   # Additional SEO protection
         </div>
 
         <!-- Navigation Dots for Image Carousel -->
-        <div class="universal-carousel-nav" data-carousel-id="images"></div>
+        <div class="carousel-nav" data-carousel-id="images"></div>
 
         <!-- Divider -->
         <div class="test-divider"></div>
@@ -152,7 +152,7 @@ robots: noindex, nofollow   # Additional SEO protection
 
         <!-- BOTTOM SECTION: Gradient-based Cards -->
         <h2>Version B: Teal Gradients with Metrics</h2>
-        <div class="universal-carousel" data-component-type="case-studies" data-carousel-id="gradients">
+        <div class="carousel" data-component-type="case-studies" data-carousel-id="gradients">
             {% for case_study in site.data.case_studies.en %}
             <div class="test-card">
                 <div class="test-card-gradient">
@@ -202,7 +202,7 @@ robots: noindex, nofollow   # Additional SEO protection
         </div>
 
         <!-- Navigation Dots for Gradient Carousel -->
-        <div class="universal-carousel-nav" data-carousel-id="gradients"></div>
+        <div class="carousel-nav" data-carousel-id="gradients"></div>
 
         <!-- Test Results -->
         <div style="margin-top: var(--space-8); padding: var(--space-4); background: var(--neutral-100); border-radius: var(--radius-md);">
