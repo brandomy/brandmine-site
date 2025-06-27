@@ -1,35 +1,10 @@
 /* Case Studies Section - Homepage Integration */
 /* Independent SCSS file for the case studies carousel on homepage */
 
-/* Carousel Container */
+/* Carousel Container - Case Studies Specific Overrides */
 .universal-carousel[data-component-type="case-studies"] {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: var(--space-6);
-    padding: var(--space-4) 0;
-    margin: var(--space-6) 0;
-    width: 100%;
-    position: relative;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-300) var(--primary-50);
-    scroll-snap-type: x mandatory;
-}
-
-.universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar {
-    height: 8px;
-}
-
-.universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar-track {
-    background: var(--neutral-200);
-    border-radius: var(--radius-sm);
-}
-
-.universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar-thumb {
-    background-color: var(--primary-300);
-    border-radius: var(--radius-sm);
+    /* Inherits base styles from universal-carousel.scss */
+    /* Only case-studies specific customizations below */
 }
 
 .universal-carousel[data-component-type="case-studies"] .test-card {

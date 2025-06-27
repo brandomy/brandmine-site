@@ -2,43 +2,24 @@
 /* Matches Case Studies design pattern with brand-specific adaptations */
 
 /* =============================================================================
-   CAROUSEL CONTAINER
+   CAROUSEL CONTAINER - FEATURED BRANDS SPECIFIC
    ============================================================================= */
 
 .universal-carousel[data-component-type="featured-brands-simplified"] {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: var(--space-6);
-    padding: var(--space-4) 0;
-    margin: var(--space-6) 0;
-    width: 100%;
-    position: relative;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-300) var(--primary-50);
-    scroll-snap-type: x mandatory;
-}
-
-.universal-carousel[data-component-type="featured-brands-simplified"]::-webkit-scrollbar {
-    height: 8px;
-}
-
-.universal-carousel[data-component-type="featured-brands-simplified"]::-webkit-scrollbar-track {
-    background: var(--neutral-200);
-    border-radius: var(--radius-sm);
-}
-
-.universal-carousel[data-component-type="featured-brands-simplified"]::-webkit-scrollbar-thumb {
-    background-color: var(--primary-300);
-    border-radius: var(--radius-sm);
+    /* Inherits base styles from universal-carousel.scss */
+    /* Featured brands specific height management */
+    --carousel-height: 500px; /* Override default 360px height */
+    min-height: 520px; /* Ensure container fits cards + padding */
+    overflow-y: hidden; /* Prevent vertical scrolling */
+    align-items: stretch; /* Ensure cards stretch to full height */
 }
 
 .simplified-carousel-card {
     flex: 0 0 100%;
     width: 100%;
     scroll-snap-align: start;
+    height: 500px; /* Match card height */
+    max-height: 500px; /* Prevent overflow */
 }
 
 /* =============================================================================
@@ -295,12 +276,7 @@
    RESPONSIVE DESIGN
    ============================================================================= */
 
-/* Mobile First - Single card */
-.universal-carousel[data-component-type="featured-brands-simplified"] .simplified-carousel-card {
-    flex: 0 0 100%;
-    width: 100%;
-    scroll-snap-align: start;
-}
+/* Mobile First - Single card (inherits from earlier definition) */
 
 @media (width >= 768px) {
     .universal-carousel[data-component-type="featured-brands-simplified"] {
