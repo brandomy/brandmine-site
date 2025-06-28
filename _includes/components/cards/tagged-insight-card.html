@@ -1,0 +1,119 @@
+{% comment %}
+COMPONENT: Tagged Insight Card
+PURPOSE: Enhanced insight card with dimension taxonomy tags showing content relationships to markets, sectors, attributes, and signals
+
+USAGE: {% include components/cards/tagged-insight-card.html insight=insight %}
+
+PARAMETERS:
+- insight (required): Insight object with markets, sectors, attributes, signals arrays in addition to standard fields
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/insight-card.scss, assets/css/components/cards/tagged-insight-card.scss
+- Data: site.data.markets, site.data.attributes, site.data.dimensions, site.data.translations
+- Includes: components/icons/icon.html, helpers/t.html
+
+VARIANTS:
+- insight-card--tagged: Additional tagged variant class
+- insight-card__tag--[type]: Tag type styling (market, sector, attribute, signal)
+
+NOTES: Tag limits and excerpt truncation configurable via component defaults. Tags use dimension translations. Adds reading time display. Same responsive image handling.
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="excerpt_words" fallback=120 %}{% endcapture %}
+{% capture default_show_tags %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="show_tags" fallback=true %}{% endcapture %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="tag_limit" fallback=3 %}{% endcapture %}
+{% capture default_show_category %}{% include helpers/component-defaults.html component="cards.tagged-insight-card" param="show_category" fallback=true %}{% endcapture %}
+
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words %}
+{% assign show_tags = include.show_tags | default: default_show_tags %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
+{% assign show_category = include.show_category | default: default_show_category %}
+
+<article class="insight-card insight-card--{{ include.insight.category }} insight-card--tagged">
+  <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
+    <div class="insight-card__image">
+      {% if include.insight.images.hero %}
+        {% comment %} Updated to use collection-image for consistency {% endcomment %}
+        {% include components/images/collection-image.html
+           collection="insights"
+           slug=include.insight.ref
+           purpose="hero"
+           name=include.insight.images.hero.name
+           ext=include.insight.images.hero.ext
+           alt=include.insight.images.hero.alt
+           class="insight-card__image-img"
+           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+           loading="lazy" %}
+      {% else %}
+        <div class="insight-card__image-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
+      {% endif %}
+
+      {% if include.insight.category %}
+        <span class="insight-card__category-badge">
+          {% comment %} Convert underscores to hyphens for icon filename {% endcomment %}
+          {% assign icon_name = include.insight.category | replace: "_", "-" %}
+          {% include components/icons/icon.html system="insights" name=icon_name size="sm" class="insight-card__category-icon" %}
+          {% assign normalized_category = include.insight.category | replace: "-", "_" %}
+          {% assign category_key = "insights." | append: normalized_category %}
+          {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="insight-card__content">
+      <h3 class="insight-card__title">{{ include.insight.title }}</h3>
+
+      <div class="insight-card__meta">
+        <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
+        {% if include.insight.reading_time %}
+          <span class="insight-card__reading-time">{{ include.insight.reading_time }} {% include helpers/t.html key="insights.minute_read" fallback="min read" lang=include.insight.lang %}</span>
+        {% endif %}
+      </div>
+
+      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
+
+      <div class="insight-card__tags">
+        {% if include.insight.markets %}
+          {% for market in include.insight.markets limit:1 %}
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/markets/{{ market }}/" class="insight-card__tag insight-card__tag--market">
+              {% include helpers/dimension-name.html type="markets" id=market %}
+            </a>
+          {% endfor %}
+        {% endif %}
+
+        {% if include.insight.sectors %}
+          {% for sector in include.insight.sectors limit:1 %}
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/sectors/{{ sector }}/" class="insight-card__tag insight-card__tag--sector">
+              {% include helpers/dimension-name.html type="sectors" id=sector %}
+            </a>
+          {% endfor %}
+        {% endif %}
+
+        {% if include.insight.attributes %}
+          {% for attribute in include.insight.attributes limit:1 %}
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/attributes/{{ attribute }}/" class="insight-card__tag insight-card__tag--attribute">
+              {% include helpers/dimension-name.html type="attributes" id=attribute %}
+            </a>
+          {% endfor %}
+        {% endif %}
+
+        {% if include.insight.signals %}
+          {% for signal in include.insight.signals limit:1 %}
+            <a href="{{ site.baseurl }}/{{ include.insight.lang }}/signals/{{ signal }}/" class="insight-card__tag insight-card__tag--signal">
+              {% include helpers/dimension-name.html type="signals" id=signal %}
+            </a>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,51 @@
+{% comment %}
+Universal Grid Component
+Provides consistent grid layouts across all page types
+Integrates with universal-card system
+
+Parameters:
+- items: Collection of content items to display
+- card_type: Type of card to render (brand|insight|founder)
+- variant: Visual styling variant (standard|featured|compact)
+- grid_type: Layout behavior (auto|featured)
+- config_set: Configuration set name (default: "universal-grid")
+{% endcomment %}
+
+{% assign config = site.data.component_defaults.grids[include.config_set | default: "universal-grid"][include.card_type] %}
+{% assign grid_config = config.grid_types[include.grid_type] %}
+{% assign variant_config = config.variants[include.variant] %}
+
+<div class="grid 
+            grid--{{ include.card_type }} 
+            grid--{{ include.variant }}
+            grid--{{ include.grid_type }}"
+     data-component="grid"
+     data-card-type="{{ include.card_type }}"
+     data-variant="{{ include.variant }}"
+     data-grid-type="{{ include.grid_type }}">
+  
+  {% if include.items and include.items.size > 0 %}
+    <div class="grid__container">
+      {% for item in include.items %}
+        <div class="grid__item">
+          {% comment %}
+          Allow override of card component for legacy support
+          {% endcomment %}
+          {% if include.card_component == "legacy-insight-card" %}
+            {% include components/cards/insight-latest-card.html insight=item %}
+          {% else %}
+            {% include components/cards/universal-card.html
+               item=item
+               type=include.card_type
+               variant=include.variant
+               config_set="universal-card" %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="grid__empty">
+      <p class="grid__empty-message">No {{ include.card_type }}s available</p>
+    </div>
+  {% endif %}
+</div>
