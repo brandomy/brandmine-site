@@ -1,5 +1,5 @@
 {% comment %}
-Universal Grid Component
+Universal Grid Component - EMERGENCY FIX VERSION
 Provides consistent grid layouts across all page types
 Integrates with universal-card system
 
@@ -10,6 +10,16 @@ Parameters:
 - grid_type: Layout behavior (auto|featured)
 - config_set: Configuration set name (default: "universal-grid")
 {% endcomment %}
+
+<!-- EMERGENCY DEBUG: Check grid component state -->
+<div style="background: lightblue; padding: 0.5rem; margin: 0.5rem 0; font-size: 12px;">
+  <strong>GRID DEBUG:</strong>
+  Items: {{ include.items.size }} | 
+  Type: {{ include.card_type }} | 
+  Variant: {{ include.variant }} | 
+  Grid Type: {{ include.grid_type }} | 
+  Card Component: {{ include.card_component }}
+</div>
 
 {% assign config = site.data.component_defaults.grids[include.config_set | default: "universal-grid"][include.card_type] %}
 {% assign grid_config = config.grid_types[include.grid_type] %}

@@ -210,6 +210,29 @@ cards:
           tag_limit: 4
         action:
           show_read_story: true
+    insight:
+      # Backward compatibility - flat structure
+      excerpt_words: 25
+      show_category: true
+      show_author: true
+      show_date: true
+      show_reading_time: true
+      image_fallback: true
+      image_aspect_ratio: "16:9"
+      # New nested structure for enhanced features
+      sections:
+        header:
+          show_hero_image: true
+          show_category_badge: true
+        content:
+          excerpt_words: 25
+          show_author: true
+          show_date: true
+          show_reading_time: true
+        taxonomy:
+          show_category: true
+        action:
+          show_read_more: true
 
 
 # =============================================================================
@@ -452,6 +475,10 @@ grids:
         featured:
           min_width: "350px"
           gap: "var(--space-8)"
+        fixed-2x2:
+          columns: 2
+          rows: 2
+          gap: "var(--space-6)"
       variants:
         standard:
           emphasis: "normal"
@@ -462,18 +489,21 @@ grids:
     brand:
       grid_types:
         auto:
-          min_width: "300px"
+          min_width: "320px"
           gap: "var(--space-6)"
         featured:
-          min_width: "350px"
+          min_width: "380px"
           gap: "var(--space-8)"
       variants:
         standard:
           emphasis: "normal"
+          card_height: "300px"
         compact:
           gap_override: "var(--space-4)"
+          card_height: "280px"
         featured:
           gap_override: "var(--space-8)"
+          card_height: "320px"
     founder:
       grid_types:
         auto:

@@ -78,6 +78,26 @@
   }
 }
 
+/* NEW: Fixed 2x2 Grid Type for premium sections */
+.grid--fixed-2x2 {
+  .grid__container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--space-6);
+    max-width: 800px;
+    margin: 0 auto;
+    
+    .grid__item {
+      min-height: 250px;
+    }
+    
+    @media (min-width: 1200px) {
+      max-width: 900px;
+      gap: var(--space-8);
+    }
+  }
+}
+
 /* ==========================================================================
    Visual Variants - Control card presentation
    ========================================================================== */
@@ -140,6 +160,10 @@
   .grid--founder .grid__container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
+  
+  .grid--fixed-2x2 .grid__container {
+    gap: var(--space-4);
+  }
 }
 
 /* Desktop (992px+) */
@@ -167,9 +191,16 @@
 /* Mobile override for very small screens */
 @media (max-width: 480px) {
   .grid--auto .grid__container,
-  .grid--featured .grid__container {
+  .grid--featured .grid__container,
+  .grid--fixed-2x2 .grid__container {
     grid-template-columns: 1fr;
     gap: var(--space-4);
+  }
+  
+  .grid--fixed-2x2 .grid__container {
+    grid-template-rows: repeat(4, auto);
+    max-width: 100%;
+    margin: 0;
   }
 }
 

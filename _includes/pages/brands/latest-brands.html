@@ -1,36 +1,30 @@
 {% comment %}
-  Component: pages/brands/latest-brands.html
-
-  Purpose: Displays latest brands in 2x2 grid using homepage pattern
-
-  Parameters:
-    title (optional): Custom section title, defaults to brands.recently_added translation
-    limit (optional): Number of latest brands to display, defaults to 4
-    panel_type (optional): Panel background style, defaults to "light"
-
-  Dependencies:
-    - CSS: pages/brands/latest-brands.scss
-    - _includes/components/cards/universal-card.html
-    - site.data.translations for labels
-  Enhanced: Phase 1 - Applied Latest Insights 2x2 grid pattern
+Latest Brands Section - Universal Grid Implementation
+Uses same pattern as successful homepage latest-insights
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].brands %}
-{% assign panel_type = include.panel_type | default: "light" %}
-{% assign limit = include.limit | default: 4 %}
+{% assign latest_brands = site.brands | where: "lang", page.lang | sort: "date" | reverse | limit: 8 %}
 
-<h2 class="panel__heading-secondary">
-  {{ include.title | default: t.recently_added }}
-</h2>
+<div class="latest-brands__header">
+  <h2 class="panel__heading-secondary">
+    {% include helpers/t.html key="brands.latest_brands.title" fallback="Latest Brands" %}
+  </h2>
+  <p class="panel__subtitle">
+    {% include helpers/t.html key="brands.latest_brands.subtitle" fallback="Recently added exceptional brands from emerging markets" %}
+  </p>
+</div>
 
-<!-- Latest Insights 2x2 Grid Pattern -->
-<div class="latest-brands__container">
-  {% assign recent_brands = site.brands | where: "lang", page.lang | sort: "date" | reverse | limit: limit %}
-  {% for brand in recent_brands %}
-    {% include components/cards/universal-card.html 
-       item=brand 
-       type="brand" 
-       variant="latest" 
-       config_set="universal-card" %}
-  {% endfor %}
+<div class="latest-brands__content">
+  {% include components/layout/grid.html
+     items=latest_brands
+     card_type="brand"
+     variant="standard"
+     grid_type="auto"
+     config_set="universal-grid" %}
+</div>
+
+<div class="latest-brands__footer">
+  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--primary-cta">
+    {% include helpers/t.html key="brands.latest_brands.discover_all" fallback="Discover All Brands" %}
+  </a>
 </div>
