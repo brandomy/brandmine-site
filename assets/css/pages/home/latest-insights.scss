@@ -533,4 +533,29 @@
     outline: 2px solid var(--primary-400);
     outline-offset: 4px;
   }
+
+  /* ==========================================================================
+     NEW: ATOMIC GRID CONTAINER (NO GRID PROPERTIES)
+     ========================================================================== */
+  
+  /* NEW: Atomic grid container (no grid properties) */
+  .latest-insights__container--atomic {
+    max-width: 900px;
+    margin: 0 auto var(--space-8);
+    
+    /* Responsive spacing only - no grid properties */
+    @media (width >= 768px) {
+      margin-bottom: var(--space-6);
+    }
+    
+    @media (width >= 992px) {
+      max-width: 800px;
+    }
+    
+    @media (width >= 1200px) {
+      max-width: 900px;
+      margin-bottom: var(--space-8);
+    }
+  }
+
 }

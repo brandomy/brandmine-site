@@ -69,11 +69,13 @@ document.addEventListener('DOMContentLoaded', function() {
         {% assign test_insights = test_insights | push: market_momentum %}
       {% endif %}
       
-      {% comment %} Universal grid component with same data as working version {% endcomment %}
-      {% include components/layout/grid.html 
-         items=test_insights 
-         type="insight" 
-         limit=4 %}
+      {% comment %} Universal grid component with atomic container class {% endcomment %}
+      <div class="latest-insights__container--atomic">
+        {% include components/layout/grid.html 
+           items=test_insights 
+           type="insight" 
+           limit=4 %}
+      </div>
 
       <div class="latest-insights__footer">
         <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--primary-cta">
