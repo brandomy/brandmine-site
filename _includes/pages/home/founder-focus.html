@@ -8,7 +8,7 @@
   Template: Home layout integration
   
   Dependencies:
-    - Component: components/cards/founder-focus-card.html
+    - Component: components/cards/founder-card-focus.html
     - CSS: assets/css/pages/home/founder-focus.scss
     - Pattern: Universal carousel (matches Featured Brands/Case Studies)
 {% endcomment %}
@@ -29,7 +29,7 @@
     {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: 4 %}
     
     {% for founder in featured_founders %}
-      {% include components/cards/founder-focus-card.html founder=founder %}
+      {% include components/cards/founder-card-focus.html founder=founder %}
     {% endfor %}
   </div>
   

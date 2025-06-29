@@ -1,8 +1,8 @@
 {% comment %}
-SIMPLE COMPONENT: Founder Focus Card
+SIMPLE COMPONENT: Founder Card Focus
 PURPOSE: Revolutionary 50% portrait card with simple architecture
 USAGE: 
-  {% include components/cards/founder-focus-card.html founder=founder %}
+  {% include components/cards/founder-card-focus.html founder=founder %}
 
 Optimized for emotional impact with mobile-friendly design
 {% endcomment %}
@@ -45,62 +45,62 @@ Optimized for emotional impact with mobile-friendly design
 {% comment %} Generate portrait image path {% endcomment %}
 {% assign portrait_path = '/assets/images/founders/' | append: founder.ref | append: '/' | append: founder.ref | append: '-portrait-' | append: founder.images.portrait.name | append: '-800w.' | append: founder.images.portrait.ext %}
 
-<div class="founder-focus-card">
+<div class="founder-card-focus">
   <!-- Portrait side (50%) -->
-  <div class="founder-focus-card__portrait">
+  <div class="founder-card-focus__portrait">
     <!-- Portrait image -->
     <img src="{{ portrait_path | relative_url }}" 
          alt="{{ founder.images.portrait.alt | default: founder.name }}" 
-         class="founder-focus-card__portrait-image"
+         class="founder-card-focus__portrait-image"
          loading="lazy">
   </div>
   
   <!-- Content side (50%) -->
-  <div class="founder-focus-card__content">
-    <div class="founder-focus-card__header">
-      <h3 class="founder-focus-card__name">{{ founder.name }}</h3>
-      <p class="founder-focus-card__location">{{ full_location }}</p>
+  <div class="founder-card-focus__content">
+    <div class="founder-card-focus__header">
+      <h3 class="founder-card-focus__name">{{ founder.name }}</h3>
+      <p class="founder-card-focus__location">{{ full_location }}</p>
     </div>
     
-    <div class="founder-focus-card__achievement">
-      <span class="founder-focus-card__achievement-label">
+    <div class="founder-card-focus__achievement">
+      <span class="founder-card-focus__achievement-label">
         🏆 {% include helpers/t.html key="founders.featured.key_achievement" fallback="Key Achievement" %}
       </span>
-      <p class="founder-focus-card__achievement-text">{{ founder.achievements.first }}</p>
+      <p class="founder-card-focus__achievement-text">{{ founder.achievements.first }}</p>
     </div>
     
-    <div class="founder-focus-card__company">
+    <div class="founder-card-focus__company">
       {% if founder.brands and founder.brands.size > 0 %}
         {% assign brand_slug = founder.brands[0] %}
         {% assign brand = site.brands | where: "lang", page.lang | where: "ref", brand_slug | first %}
         {% if brand %}
-          <a href="{{ brand.url | relative_url }}" class="founder-focus-card__brand-link">
+          <a href="{{ brand.url | relative_url }}" class="founder-card-focus__brand-link">
             🔗 {{ founder.company }}
           </a>
         {% else %}
           <!-- Fallback if brand not found -->
-          <span class="founder-focus-card__brand-name">
+          <span class="founder-card-focus__brand-name">
             🔗 {{ founder.company }}
           </span>
         {% endif %}
       {% else %}
         <!-- No brand association -->
-        <span class="founder-focus-card__brand-name">
+        <span class="founder-card-focus__brand-name">
           🔗 {{ founder.company }}
         </span>
       {% endif %}
     </div>
     
-    <div class="founder-focus-card__tags">
+    <div class="founder-card-focus__tags">
       {% for tag in founder.expertise limit: 4 %}
-        <span class="founder-focus-card__tag">{{ tag }}</span>
+        <span class="founder-card-focus__tag">{{ tag }}</span>
       {% endfor %}
     </div>
     
-    <p class="founder-focus-card__description">{{ founder.brief_bio }}</p>
+    <p class="founder-card-focus__description">{{ founder.brief_bio }}</p>
     
-    <div class="founder-focus-card__cta">
-      <a href="{{ founder.url | relative_url }}" class="founder-focus-card__cta-button">
+    <div class="founder-card-focus__cta">
+      <a href="{{ founder.url | relative_url }}" class="founder-card-focus__cta-button">
         {% include helpers/t.html key="founders.featured.connect_with" fallback="Connect with" %} {{ founder.name }} →
       </a>
     </div>
