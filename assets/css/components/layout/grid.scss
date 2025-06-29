@@ -1,208 +1,118 @@
 /* ==========================================================================
-   Universal Grid Component - Based on Working Latest-Insights Foundation
-   Provides identical 2x2 grid behavior as the working homepage section
-   ========================================================================== */
+   Atomic Grid Component - Pure Layout Only
+   ========================================================================== 
+   
+   PURPOSE: Provides grid layout structure with NO spacing assumptions
+   
+   DESIGN PRINCIPLES:
+   - Layout only: display, grid-template-columns, gap, breakpoints
+   - NO padding, margins, max-width, or box-sizing
+   - Host container handles all spacing/sizing
+   - Responsive 2x2 grid: single column mobile → 2 columns desktop
+   
+   USAGE: Wrapped by host containers that provide spacing context
+*/
 
 /* ==========================================================================
-   UNIVERSAL GRID LAYOUT - Direct copy from working latest-insights
+   Base Grid Container - LAYOUT ONLY
    ========================================================================== */
 
-.universal-grid__container {
+.grid__container {
   display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-6);
+  
+  /* Mobile-first: Single column */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================================
+   CONTEXTUAL RESPONSIVE BEHAVIOR - When used in latest-insights context
+   ========================================================================== */
+
+.home-page .latest-insights__container .grid__container,
+.latest-insights__container .grid__container {
   margin: var(--space-6) 0;
   width: 100%;
   
   /* Mobile: 1 column (1x4 stack) */
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto);
-}
-
-/* ==========================================================================
-   CRITICAL STYLING FIXES - Match working version exactly
-   ========================================================================== */
-
-/* FIX 1: Category badge center alignment */
-.universal-grid__container .insight-latest-card__category,
-.latest-insights__container .insight-latest-card__category {
-  text-align: center;
-}
-
-/* FIX 3: Article title center alignment */
-.universal-grid__container .insight-latest-card__content,
-.latest-insights__container .insight-latest-card__content {
-  text-align: center;
-}
-
-/* FIX 4: Container overflow handling to prevent right-side clipping */
-.universal-grid__container,
-.latest-insights__container {
-  box-sizing: border-box;
-  overflow: visible; /* Allow cards to display fully */
-}
-
-/* FIX 2: Mobile margins - match panel system exactly */
-/* When universal grid is not inside a proper panel, apply panel content margins */
-.universal-grid__container:not(.panel__content *),
-.latest-insights__container:not(.panel__content *) {
-  /* Base mobile - same as panel__content */
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
-  width: 100%;
-  max-width: 100%; /* Prevent container from exceeding viewport */
-}
-
-/* Mobile responsive margins matching panel system */
-@media (width >= 480px) {
-  .universal-grid__container:not(.panel__content *),
-  .latest-insights__container:not(.panel__content *) {
-    padding-left: var(--space-6);
-    padding-right: var(--space-6);
-  }
-}
-
-@media (width >= 768px) {
-  .universal-grid__container:not(.panel__content *),
-  .latest-insights__container:not(.panel__content *) {
-    padding-left: var(--space-8);
-    padding-right: var(--space-8);
-  }
-}
-
-@media (width >= 1200px) {
-  .universal-grid__container:not(.panel__content *),
-  .latest-insights__container:not(.panel__content *) {
-    padding-left: var(--space-12);
-    padding-right: var(--space-12);
-  }
-}
-
-/* ==========================================================================
-   LATEST-INSIGHTS HEADER/FOOTER STYLES - For universal grid compatibility
-   ========================================================================== */
-
-.latest-insights__header {
-  text-align: center;
-  margin-bottom: var(--space-6);
-  padding: 0;
-}
-
-.latest-insights__subtitle {
-  font-size: var(--text-lg);
-  color: var(--neutral-600);
-  max-width: 700px;
-  margin: var(--space-3) auto 0;
-  line-height: var(--leading-relaxed);
-}
-
-.latest-insights__footer {
-  text-align: center;
-  margin-top: var(--space-6);
-  padding: 0;
-}
-
-/* ==========================================================================
-   PROGRESSIVE ENHANCEMENT FOR LARGER SCREENS - Exact copy from working CSS
-   ========================================================================== */
-
-/* Small tablets (481px+) */
-@media (min-width: 481px) {
-  /* Cards size naturally - no fixed heights needed */
-}
-
-/* Tablet: 2x2 grid (768px+) */
-@media (width >= 768px) {
-  .universal-grid__container {
+  
+  /* Tablet: 2x2 grid (768px+) */
+  @media (width >= 768px) {
     /* Tablet: 2 columns */
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(2, auto);
     gap: var(--space-5);
   }
-  
-  /* Cards size naturally - no fixed heights needed */
-}
 
-/* Desktop: optimized spacing (992px+) */
-@media (width >= 992px) {
-  .universal-grid__container {
+  /* Desktop: optimized spacing (992px+) */
+  @media (width >= 992px) {
     /* Desktop: 2x2 grid with optimal spacing */
     gap: var(--space-6);
     max-width: 800px;
     margin: var(--space-8) auto;
   }
-  
-  /* Cards size naturally - no fixed heights needed */
-}
 
-/* Large screens: maximum spacing (1200px+) */
-@media (width >= 1200px) {
-  .universal-grid__container {
+  /* Large screens: maximum spacing (1200px+) */
+  @media (width >= 1200px) {
     max-width: 900px;
     gap: var(--space-8);
   }
 }
 
 /* ==========================================================================
-   PLACEHOLDER STYLES - For empty grid slots
+   CRITICAL TEXT ALIGNMENT FIXES - Match working version exactly
    ========================================================================== */
 
-.universal-grid__placeholder {
-  display: flex;
-  flex-direction: column;
-  background: var(--neutral-50);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  border-left: 4px solid var(--neutral-300);
-  
-  .universal-grid__placeholder-content {
-    padding: var(--space-6);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 300px;
-  }
-  
-  .universal-grid__placeholder-icon {
-    color: var(--neutral-400);
-    margin-bottom: var(--space-3);
-  }
-  
-  .universal-grid__placeholder-title {
-    color: var(--neutral-600);
-    font-size: var(--text-lg);
-    font-weight: var(--font-semibold);
-    margin: 0 0 var(--space-2) 0;
-  }
-  
-  .universal-grid__placeholder-description {
-    color: var(--neutral-500);
-    font-size: var(--text-sm);
-    font-style: italic;
-    margin: 0;
-  }
+/* FIX 1: Category badge center alignment */
+.grid__container .insight-latest-card__category,
+.latest-insights__container .grid__container .insight-latest-card__category {
+  text-align: center;
+}
+
+/* FIX 2: Article title center alignment */
+.grid__container .insight-latest-card__content,
+.latest-insights__container .grid__container .insight-latest-card__content {
+  text-align: center;
 }
 
 /* ==========================================================================
-   VISUAL ENHANCEMENTS - Grid-specific improvements (copied from working CSS)
+   Grid Placeholders - Minimal styling
    ========================================================================== */
 
-/* Grid item animations */
-.universal-grid__container .insight-latest-card {
-  transition: all 0.3s ease;
+.grid__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background-color: var(--neutral-50);
+  border: 2px dashed var(--neutral-200);
+  border-radius: var(--radius-lg);
 }
 
-/* Grid hover effects - slightly different from carousel */
-.universal-grid__container .insight-latest-card:hover {
-  transform: translateY(-6px); /* Slightly more pronounced than carousel */
-  box-shadow: var(--shadow-xl);
+.grid__placeholder-content {
+  text-align: center;
+  color: var(--neutral-400);
 }
 
-/* Grid-specific focus states for accessibility */
-.universal-grid__container .insight-latest-card:focus-within {
-  outline: 2px solid var(--primary-400);
-  outline-offset: 4px;
+.grid__placeholder-icon {
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+}
+
+.grid__placeholder-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--neutral-500);
+}
+
+.grid__placeholder-description {
+  font-size: var(--text-sm);
+  margin: 0;
+  color: var(--neutral-400);
 }

@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- ONLY the Latest Insights panel -->
 <section class="panel panel--primary-soft">
-  <div class="panel__container">
+  <div class="panel__content">
     <div class="home-page">
       <div class="latest-insights__header">
         <h2 class="panel__heading-secondary">Latest Insights</h2>
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
       {% include components/layout/grid.html 
          items=test_insights 
          type="insight" 
-         grid_class="latest-insights"
          limit=4 %}
 
       <div class="latest-insights__footer">
