@@ -1,7 +1,7 @@
 {% comment %}
-COMPONENT: Simplified Founder Card
+COMPONENT: Founder Card - Featured Variant
 PURPOSE: Clean, progressive disclosure card matching successful Brand/Case Studies design pattern
-USAGE: {% include components/cards/simplified-founder-card.html founder=founder %}
+USAGE: {% include components/cards/founder-card-featured.html founder=founder %}
 
 DESIGN PATTERN (Applied from proven Brand card success):
 - Large portrait image with generation badge overlay
@@ -22,9 +22,9 @@ PROGRESSIVE DISCLOSURE ELEMENTS:
 
 {% comment %} Progressive Disclosure: Focus on essential discovery information {% endcomment %}
 
-<article class="simplified-founder-card">
+<article class="founder-card-featured">
   <!-- Hero Portrait with Generation Badge -->
-  <div class="simplified-founder-card__image">
+  <div class="founder-card-featured__image">
     {% comment %} Use portrait image for emotional impact (2:3 aspect like brand hero) {% endcomment %}
     {% if include.founder.images and include.founder.images.portrait and include.founder.images.portrait.name %}
       {% include components/images/collection-image.html
@@ -33,19 +33,19 @@ PROGRESSIVE DISCLOSURE ELEMENTS:
          purpose="portrait"
          name=include.founder.images.portrait.name
          alt=include.founder.images.portrait.alt
-         class="simplified-founder-card__img" %}
+         class="founder-card-featured__img" %}
     {% else %}
       {% include components/images/collection-image.html
          collection="founders"
          slug=include.founder.ref
          purpose="portrait"
          alt="Portrait of {{ include.founder.name }}"
-         class="simplified-founder-card__img" %}
+         class="founder-card-featured__img" %}
     {% endif %}
 
     <!-- Generation Badge (top-right overlay) -->
     {% if include.founder.generation %}
-      <div class="simplified-founder-card__generation-badge">
+      <div class="founder-card-featured__generation-badge">
         {% case include.founder.generation %}
           {% when 'first' %}{% include helpers/t.html key="founder.generation_first" fallback="1st Gen" %}
           {% when 'second' %}{% include helpers/t.html key="founder.generation_second" fallback="2nd Gen" %}
@@ -57,12 +57,12 @@ PROGRESSIVE DISCLOSURE ELEMENTS:
   </div>
 
   <!-- Card Content -->
-  <div class="simplified-founder-card__content">
+  <div class="founder-card-featured__content">
     <!-- Founder Name -->
-    <h3 class="simplified-founder-card__title">{{ include.founder.name }}</h3>
+    <h3 class="founder-card-featured__title">{{ include.founder.name }}</h3>
 
     <!-- Professional Meta: Position • Company • Generation -->
-    <div class="simplified-founder-card__meta">
+    <div class="founder-card-featured__meta">
       {% if include.founder.position %}
         <span class="meta-position">{{ include.founder.position }}</span>
       {% endif %}
@@ -81,12 +81,12 @@ PROGRESSIVE DISCLOSURE ELEMENTS:
 
     <!-- Single Key Metric: Primary achievement or credential -->
     {% if include.founder.achievements and include.founder.achievements.size > 0 %}
-      <div class="simplified-founder-card__key-metric">
+      <div class="founder-card-featured__key-metric">
         <span class="metric-label">{% include helpers/t.html key="founder.key_achievement" fallback="Key Achievement" %}</span>
         <span class="metric-value">{{ include.founder.achievements.first }}</span>
       </div>
     {% elsif include.founder.generation %}
-      <div class="simplified-founder-card__key-metric">
+      <div class="founder-card-featured__key-metric">
         <span class="metric-label">{% include helpers/t.html key="founder.generation_label" fallback="Generation" %}</span>
         <span class="metric-value">
           {% case include.founder.generation %}
@@ -101,14 +101,14 @@ PROGRESSIVE DISCLOSURE ELEMENTS:
 
     <!-- Curatorial Description (Editorial insight about founder significance) -->
     {% if include.founder.brief_bio %}
-      <p class="simplified-founder-card__description">{{ include.founder.brief_bio }}</p>
+      <p class="founder-card-featured__description">{{ include.founder.brief_bio }}</p>
     {% endif %}
 
     <!-- Expertise Tags (Max 4 for balanced discovery) -->
     {% if include.founder.expertise %}
-      <div class="simplified-founder-card__tags">
+      <div class="founder-card-featured__tags">
         {% for expertise in include.founder.expertise limit:4 %}
-          <span class="simplified-founder-card__tag simplified-founder-card__tag--expertise">
+          <span class="founder-card-featured__tag founder-card-featured__tag--expertise">
             {{ expertise }}
           </span>
         {% endfor %}
@@ -116,8 +116,8 @@ PROGRESSIVE DISCLOSURE ELEMENTS:
     {% endif %}
 
     <!-- Single CTA -->
-    <div class="simplified-founder-card__cta">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ include.founder.ref }}/" class="simplified-founder-card__button">
+    <div class="founder-card-featured__cta">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ include.founder.ref }}/" class="founder-card-featured__button">
         {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %} →
       </a>
     </div>

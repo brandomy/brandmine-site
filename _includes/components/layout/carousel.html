@@ -86,7 +86,8 @@
   {% if include.title %}
     {{ include.title }}
   {% else %}
-    {% include helpers/t.html key="{{ translation_key_prefix }}.featured.title" fallback=default_title %}
+    {% assign title_key = translation_key_prefix | append: ".featured.title" %}
+    {% include helpers/t.html key=title_key fallback=default_title %}
   {% endif %}
 </h2>
 <p class="panel__lead-text">
@@ -179,7 +180,9 @@
     {% else %}
       <!-- Fallback content if no items available -->
       <p class="no-content-message">
-        {% include helpers/t.html key="common.empty_states.no_{{ content_type }}" fallback="No featured {{ content_type }} available yet." %}
+        {% assign empty_key = "common.empty_states.no_" | append: content_type %}
+        {% assign empty_fallback = "No featured " | append: content_type | append: " available yet." %}
+        {% include helpers/t.html key=empty_key fallback=empty_fallback %}
       </p>
     {% endif %}
   </div>
@@ -190,7 +193,7 @@
   <div class="carousel-nav" data-target="featured-{{ content_type }}" data-page-context="{{ page_context }}">
     {% assign dot_count = filtered_content.size | divided_by: 2 | ceil | at_least: 1 %}
     {% for i in (1..dot_count) %}
-      <span class="carousel-nav-dot {% if forloop.first %}active{% endif %}"></span>
+      <span class="carousel-nav-dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.index0 }}"></span>
     {% endfor %}
   </div>
 {% endif %}

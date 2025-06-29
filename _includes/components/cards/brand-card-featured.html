@@ -1,7 +1,7 @@
 {% comment %}
-COMPONENT: Simplified Brand Card
+COMPONENT: Brand Card - Featured Variant
 PURPOSE: Clean, progressive disclosure card matching Case Studies design pattern
-USAGE: {% include components/cards/simplified-brand-card.html brand=brand %}
+USAGE: {% include components/cards/brand-card-featured.html brand=brand %}
 
 DESIGN PATTERN:
 - Large hero image with metric badge overlay
@@ -12,9 +12,9 @@ DESIGN PATTERN:
 
 {% comment %} Component defaults (no tag limits - show all for discovery) {% endcomment %}
 
-<article class="simplified-brand-card">
+<article class="brand-card-featured">
   <!-- Hero Image with Metric Badge -->
-  <div class="simplified-brand-card__image">
+  <div class="brand-card-featured__image">
     {% comment %} Use semantic image structure for hero image {% endcomment %}
     {% if include.brand.images and include.brand.images.hero and include.brand.images.hero.name %}
       {% include components/images/collection-image.html
@@ -23,19 +23,19 @@ DESIGN PATTERN:
          purpose="hero"
          name=include.brand.images.hero.name
          alt=include.brand.images.hero.alt
-         class="simplified-brand-card__img" %}
+         class="brand-card-featured__img" %}
     {% else %}
       {% include components/images/collection-image.html
          collection="brands"
          slug=include.brand.ref
          purpose="hero"
          alt="Hero image for {{ include.brand.title }}"
-         class="simplified-brand-card__img" %}
+         class="brand-card-featured__img" %}
     {% endif %}
 
     <!-- Metric Badge (top-right) -->
     {% if include.brand.card_metric %}
-      <div class="simplified-brand-card__metric-badge">
+      <div class="brand-card-featured__metric-badge">
         <div class="metric-value">{{ include.brand.card_metric.value }}</div>
         {% if include.brand.card_metric.label and include.brand.card_metric.label != "" %}
           <div class="metric-label">{{ include.brand.card_metric.label }}</div>
@@ -45,12 +45,12 @@ DESIGN PATTERN:
   </div>
 
   <!-- Card Content -->
-  <div class="simplified-brand-card__content">
+  <div class="brand-card-featured__content">
     <!-- Brand Name -->
-    <h3 class="simplified-brand-card__title">{{ include.brand.title }}</h3>
+    <h3 class="brand-card-featured__title">{{ include.brand.title }}</h3>
 
     <!-- Founded year + City + Flag -->
-    <div class="simplified-brand-card__meta">
+    <div class="brand-card-featured__meta">
       {% if include.brand.founding_year %}
         <span class="meta-founding">{% include helpers/t.html key="brands.founded" fallback="Founded" %} {{ include.brand.founding_year }}</span>
       {% endif %}
@@ -65,15 +65,15 @@ DESIGN PATTERN:
 
     <!-- Description -->
     {% if include.brand.description and include.brand.description != "" %}
-      <p class="simplified-brand-card__description">{{ include.brand.description }}</p>
+      <p class="brand-card-featured__description">{{ include.brand.description }}</p>
     {% endif %}
 
     <!-- Taxonomy Tags (Show ALL relevant tags - no limits) -->
-    <div class="simplified-brand-card__tags">
+    <div class="brand-card-featured__tags">
       <!-- Markets (all markets for discovery) -->
       {% if include.brand.markets %}
         {% for market in include.brand.markets %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="simplified-brand-card__tag simplified-brand-card__tag--market">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="brand-card-featured__tag brand-card-featured__tag--market">
             {% include helpers/dimension-name.html type="markets" id=market %}
           </a>
         {% endfor %}
@@ -82,7 +82,7 @@ DESIGN PATTERN:
       <!-- Sectors (all sectors for discovery) -->
       {% if include.brand.sectors %}
         {% for sector in include.brand.sectors %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="simplified-brand-card__tag simplified-brand-card__tag--sector">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="brand-card-featured__tag brand-card-featured__tag--sector">
             {% include helpers/dimension-name.html type="sectors" id=sector %}
           </a>
         {% endfor %}
@@ -91,7 +91,7 @@ DESIGN PATTERN:
       <!-- Attributes (all attributes for discovery) -->
       {% if include.brand.attributes %}
         {% for attribute in include.brand.attributes %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="simplified-brand-card__tag simplified-brand-card__tag--attribute">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="brand-card-featured__tag brand-card-featured__tag--attribute">
             {% include helpers/dimension-name.html type="attributes" id=attribute %}
           </a>
         {% endfor %}
@@ -100,7 +100,7 @@ DESIGN PATTERN:
       <!-- Signals (all signals for discovery) -->
       {% if include.brand.signals %}
         {% for signal in include.brand.signals %}
-          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="simplified-brand-card__tag simplified-brand-card__tag--signal">
+          <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="brand-card-featured__tag brand-card-featured__tag--signal">
             {% include helpers/dimension-name.html type="signals" id=signal %}
           </a>
         {% endfor %}
@@ -108,8 +108,8 @@ DESIGN PATTERN:
     </div>
 
     <!-- Single CTA -->
-    <div class="simplified-brand-card__cta">
-      <a href="{{ include.brand.url | relative_url }}" class="simplified-brand-card__button">
+    <div class="brand-card-featured__cta">
+      <a href="{{ include.brand.url | relative_url }}" class="brand-card-featured__button">
         {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %} →
       </a>
     </div>

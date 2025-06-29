@@ -27,7 +27,7 @@ signals: ["export-ready"]  # Optional signals
 
 # Display Settings
 featured: true
-featured_level: 1  # 0=basic listing, 1=standard featured, 2=premium featured
+featured_level: 2  # 0=basic listing, 1=standard featured, 2=premium featured
 
 # Card Display Metric
 card_metric:

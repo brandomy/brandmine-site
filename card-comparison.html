@@ -1,0 +1,144 @@
+---
+layout: default
+title: "Brand Card Architecture Comparison"
+permalink: /card-comparison/
+---
+
+<style>
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.card-demo {
+  border: 2px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.card-demo h3 {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stats {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+</style>
+
+<h1>Brand Card Architecture Analysis</h1>
+
+<p>This page compares all brand card variants to determine MVP requirements and identify redundancy.</p>
+
+{% comment %} Get a test brand for consistent comparison {% endcomment %}
+{% assign test_brands = site.brands | where: "lang", "en" | where: "featured", true %}
+{% assign test_brand = test_brands.first %}
+
+{% if test_brand %}
+<div class="test-brand-info">
+  <h2>Test Brand: {{ test_brand.title }}</h2>
+  <p>Using <strong>{{ test_brand.title }}</strong> ({{ test_brand.ref }}) for consistent comparison across all card types.</p>
+</div>
+
+<div class="comparison-grid">
+
+  <!-- Current Production Cards -->
+  <div class="card-demo" style="border-color: green;">
+    <h3>1. brand-card-featured.html</h3>
+    <div class="stats">Lines: 116 | Usage: 19 references | Status: ✅ Production</div>
+    {% include components/cards/brand-card-featured.html brand=test_brand %}
+  </div>
+
+  <div class="card-demo" style="border-color: green;">
+    <h3>2. brand-card.html</h3>
+    <div class="stats">Lines: 140 | Usage: 10 references | Status: ✅ Production</div>
+    {% include components/cards/brand-card.html brand=test_brand %}
+  </div>
+
+  <!-- High Usage Legacy Cards -->
+  <div class="card-demo" style="border-color: orange;">
+    <h3>3. hero-brand-card.html</h3>
+    <div class="stats">Lines: 266 | Usage: 46 references | Status: ⚠️ Legacy High-Use</div>
+    {% include components/cards/hero-brand-card.html brand=test_brand %}
+  </div>
+
+  <div class="card-demo" style="border-color: orange;">
+    <h3>4. featured-brand-card.html</h3>
+    <div class="stats">Lines: 166 | Usage: 41 references | Status: ⚠️ Legacy High-Use</div>
+    {% include components/cards/featured-brand-card.html brand=test_brand %}
+  </div>
+
+  <!-- Specialized Cards -->
+  <div class="card-demo" style="border-color: blue;">
+    <h3>5. related-brand-card.html</h3>
+    <div class="stats">Lines: 66 | Usage: Low | Status: 🔵 Specialized</div>
+    {% include components/cards/related-brand-card.html brand=test_brand %}
+  </div>
+
+  <!-- Universal System -->
+  <div class="card-demo" style="border-color: purple;">
+    <h3>6. universal-card.html (brand)</h3>
+    <div class="stats">Lines: 977 | Usage: 191 references | Status: 🟣 Universal System</div>
+    {% include components/cards/universal-card.html 
+       item=test_brand 
+       type="brand" 
+       variant="standard" 
+       config_set="universal-card" %}
+  </div>
+
+  <div class="card-demo" style="border-color: purple;">
+    <h3>7. universal-card.html (featured)</h3>
+    <div class="stats">Lines: 977 | Usage: 191 references | Status: 🟣 Universal Featured</div>
+    {% include components/cards/universal-card.html 
+       item=test_brand 
+       type="brand" 
+       variant="featured" 
+       config_set="universal-card" %}
+  </div>
+
+</div>
+
+<h2>Analysis Questions</h2>
+
+<div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+  <h3>MVP Simplification Assessment</h3>
+  
+  <h4>🎯 Core Question</h4>
+  <p>Can we achieve Brands/Founders page goals with just 2 cards per content type?</p>
+  
+  <h4>📊 Current Reality</h4>
+  <ul>
+    <li><strong>Universal Card:</strong> 977 lines, 191 usages - Complex configuration system</li>
+    <li><strong>Legacy Cards:</strong> hero-brand-card (266 lines, 46 uses) + featured-brand-card (166 lines, 41 uses)</li>
+    <li><strong>Current BEM Cards:</strong> brand-card-featured (116 lines) + brand-card (140 lines)</li>
+  </ul>
+  
+  <h4>🚀 MVP Requirements</h4>
+  <ul>
+    <li><strong>Brands Page Carousel:</strong> Featured brands with hero images + metrics</li>
+    <li><strong>Brands Page Grid:</strong> Standard brands with basic info</li>
+    <li><strong>Founders Page Carousel:</strong> Featured founders with portraits + achievements</li>
+    <li><strong>Founders Page Grid:</strong> Standard founders with professional info</li>
+  </ul>
+  
+  <h4>❓ Key Questions</h4>
+  <ol>
+    <li>Do the current BEM cards (brand-card + brand-card-featured) cover carousel + grid needs?</li>
+    <li>Does universal-card provide essential functionality missing from simple cards?</li>
+    <li>Can we eliminate 87+ legacy uses and simplify to 2-card system?</li>
+    <li>What's the migration effort from complex → simple?</li>
+  </ol>
+</div>
+
+{% else %}
+<div style="background: #fee; padding: 1rem; border-radius: 4px;">
+  <p><strong>No test brand found.</strong> Need at least one featured English brand for comparison.</p>
+</div>
+{% endif %}

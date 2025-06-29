@@ -1,226 +1,124 @@
 {% comment %}
-COMPONENT: Founder Card
-PURPOSE: Standard founder display with headshot, bio summary, and key achievements for founder listings
-
+COMPONENT: Founder Card (Optimized)
+PURPOSE: Standard founder display for grid layouts with portrait, company, and expertise
 USAGE: {% include components/cards/founder-card.html founder=founder %}
 
 PARAMETERS:
-- founder (required): Founder object (same structure as featured-founder-card)
-- variant (optional): Card variant string modifier
-- featured (optional): Boolean to apply featured styling
+- founder (required): Founder object containing name, company, bio, expertise, location
+- show_company (optional): Boolean - Show company info. Default: true
+- show_expertise (optional): Boolean - Show expertise tags. Default: true  
+- tag_limit (optional): Integer - Max expertise tags to display. Default: 3
 
 DEPENDENCIES:
-- CSS: assets/css/components/cards/founder-card.scss
-- Data: site.data.translations[page.lang], site.data.countries, site.data.languages
-- Includes: None
+- helpers/t.html - Translation helper for UI text
+- components/images/collection-image.html - Portrait images
+- helpers/component-defaults.html - Configurable defaults (minimal usage)
 
-VARIANTS:
-- founder-card--featured: Applied when featured=true or founder.featured
-- founder-card--[variant]: Custom variant from variant parameter
-- Uses headshot images (1:1 aspect) vs featured's portrait
-
-NOTES: Expertise tag limits and bio truncation configurable via component defaults. Generation badge and cross-border indicator included. Uses 400w/800w responsive headshots.
+OPTIMIZED DESIGN:
+- Portrait with name + location
+- Company + position (if available)
+- Brief bio description
+- Top 3 expertise tags
+- View profile CTA
 {% endcomment %}
 
-{% comment %} Component defaults for configurable behavior {% endcomment %}
-{% capture default_bio_words %}
-{% include helpers/component-defaults.html component="cards.founder-card" param="bio_words" fallback=120 %}
-{% endcapture %}
-{% capture default_tag_limit %}
-{% include helpers/component-defaults.html component="cards.founder-card" param="tag_limit" fallback=4 %}
-{% endcapture %}
-{% capture default_show_company %}
-{% include helpers/component-defaults.html component="cards.founder-card" param="show_company" fallback=true %}
-{% endcapture %}
-{% capture default_show_brands %}
-{% include helpers/component-defaults.html component="cards.founder-card" param="show_brands" fallback=true %}
-{% endcapture %}
-{% capture default_show_expertise %}
-{% include helpers/component-defaults.html component="cards.founder-card" param="show_expertise" fallback=true %}
-{% endcapture %}
-{% capture default_show_generation %}
-{% include helpers/component-defaults.html component="cards.founder-card" param="show_generation" fallback=true %}
-{% endcapture %}
-{% capture default_show_location %}
-{% include helpers/component-defaults.html component="cards.founder-card" param="show_location" fallback=true %}
-{% endcapture %}
+{% comment %} Minimal component defaults (following brand-card pattern) {% endcomment %}
+{% capture show_company %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_company" fallback=true %}{% endcapture %}
+{% capture show_expertise %}{% include helpers/component-defaults.html component="cards.founder-card" param="show_expertise" fallback=true %}{% endcapture %}
+{% capture tag_limit %}{% include helpers/component-defaults.html component="cards.founder-card" param="tag_limit" fallback=3 %}{% endcapture %}
 
-{% assign bio_words = include.bio_words | default: default_bio_words %}
-{% assign tag_limit = include.tag_limit | default: default_tag_limit %}
-{% assign show_company = include.show_company | default: default_show_company %}
-{% assign show_brands = include.show_brands | default: default_show_brands %}
-{% assign show_expertise = include.show_expertise | default: default_show_expertise %}
-{% assign show_generation = include.show_generation | default: default_show_generation %}
-{% assign show_location = include.show_location | default: default_show_location %}
+{% assign show_company = include.show_company | default: show_company %}
+{% assign show_expertise = include.show_expertise | default: show_expertise %}
+{% assign tag_limit = include.tag_limit | default: tag_limit %}
 
-{% comment %} Using t.html helper for translations {% endcomment %}
-
-<article class="founder-card {% if featured or founder.featured %}founder-card--featured{% endif %}{% if include.variant %} founder-card--{{ include.variant }}{% endif %}"
-         data-name="{{ founder.name }}"
-         data-market="{{ founder.country }}"
-         data-expertise="{% for exp in founder.expertise %}{{ exp }}{% unless forloop.last %},{% endunless %}{% endfor %}">
-
-  {% comment %} Generation badge {% endcomment %}
-  {% if founder.generation %}
-  <div class="founder-card__generation-badge founder-card__generation-badge--{{ founder.generation }}">
-    {% case founder.generation %}
-      {% when 'first' %}{% include helpers/t.html key="founder.generation_first" fallback="1st Gen" %}
-      {% when 'second' %}{% include helpers/t.html key="founder.generation_second" fallback="2nd Gen" %}
-      {% when 'third' %}{% include helpers/t.html key="founder.generation_third" fallback="3rd Gen" %}
-      {% when 'transition' %}{% include helpers/t.html key="founder.generation_transition" fallback="Transition" %}
-    {% endcase %}
-  </div>
-  {% endif %}
-
-  {% comment %} Cross-border indicator {% endcomment %}
-  {% if founder.markets.size > 1 or founder.cross_border_expertise %}
-  <div class="founder-card__cross-border">
-    <i class="fas fa-globe-americas"></i>
-    <div class="founder-card__tooltip">
-      {{ t.cross_border | default: 'Cross-border expertise' }}
-    </div>
-  </div>
-  {% endif %}
-
-<header class="founder-card__header">
-  <div class="founder-card__portrait-section">
-    <div class="founder-card__portrait founder-card__portrait--headshot">
-      {% if founder.images.headshot %}
-        {% comment %} Updated to use collection-image for consistency {% endcomment %}
-        {% include components/images/collection-image.html
-           collection="founders"
-           slug=founder.ref
-           purpose="headshot"
-           name=founder.images.headshot.name
-           ext=founder.images.headshot.ext
-           alt=founder.images.headshot.alt
-           class="founder-card__portrait-img"
-           sizes="(max-width: 480px) 100px, 150px"
-           loading="lazy" %}
-      {% else %}
-        <div class="founder-card__portrait-placeholder">
-          <span class="founder-card__portrait-initials">
-            {% assign name_parts = founder.name | split: " " %}
-            {% for part in name_parts limit:2 %}{{ part | first | upcase }}{% endfor %}
-          </span>
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="founder-card__header-text">
-      <h2 class="founder-card__title">{{ founder.name }}</h2>
-
-      {% comment %} Location display {% endcomment %}
-      <div class="founder-card__location">
-        <i class="fas fa-map-marker-alt location__icon"></i>
-        {% if founder.city %}{{ founder.city }}{% endif %}
-        {% if founder.city and founder.country %}, {% endif %}
-        {% if founder.country %}
-          {% include components/helpers/country-name.html code=founder.country lang=page.lang %}
-        {% endif %}
-      </div>
-    </div>
-  </div>
-</header>
-
-  {% comment %} WEEK 2 ENHANCEMENT: Prominent Achievement Display {% endcomment %}
-  {% if founder.achievements and founder.achievements.size > 0 %}
-  <div class="founder-card__achievement-highlight">
-    <span class="founder-card__achievement-icon">🏆</span>
-    <div class="founder-card__achievement-content">
-      <h4 class="founder-card__achievement-title">
-        {% include helpers/t.html key="founder_profile.achievements.highlight" fallback="Key Achievement" %}
-      </h4>
-      <p class="founder-card__achievement-text">{{ founder.achievements.first }}</p>
-    </div>
-  </div>
-  {% endif %}
-
-  {% comment %} WEEK 2 ENHANCEMENT: Business Impact Metrics {% endcomment %}
-  {% if founder.business_impact %}
-  <div class="founder-card__business-impact">
-    <div class="founder-card__impact-metric">
-      {% if founder.business_impact.primary_metric %}
-        <span class="founder-card__impact-value">{{ founder.business_impact.primary_metric.value }}</span>
-        <span class="founder-card__impact-label">{{ founder.business_impact.primary_metric.label }}</span>
-      {% endif %}
-    </div>
-  </div>
-  {% endif %}
-
-  <div class="founder-card__body">
-    {% if founder.brands %}
-      <div class="founder-card__brand-connections">
-        {% for brand_ref in founder.brands limit:1 %}
-          {% assign brand = site.brands | where: "ref", brand_ref | where: "lang", page.lang | first %}
-          {% if brand %}
-            <p class="founder-card__brand">
-              <a href="{{ site.baseurl }}/{{ page.lang }}/brands/{{ brand_ref }}/" class="founder-card__brand-link">
-                {{ brand.title }}
-              </a>{% if founder.role %} – <span class="founder-card__role">{{ founder.role }}</span>{% endif %}
-            </p>
-          {% endif %}
-        {% endfor %}
-
-        {% if founder.brands.size > 1 %}
-          <p class="founder-card__multiple-brands">
-            +{{ founder.brands.size | minus: 1 }} {{ t.more_brands | default: "more brands" }}
-          </p>
-        {% endif %}
+<article class="founder-card {% if founder.featured %}founder-card--featured{% endif %}">
+  
+  <!-- Portrait Section -->
+  <div class="founder-card__portrait">
+    {% if founder.images and founder.images.portrait and founder.images.portrait.name %}
+      {% include components/images/collection-image.html
+         collection="founders"
+         slug=founder.ref
+         purpose="portrait"
+         name=founder.images.portrait.name
+         alt=founder.images.portrait.alt
+         class="founder-card__portrait-img"
+         sizes="(max-width: 480px) 150px, 200px" %}
+    {% elsif founder.images and founder.images.headshot and founder.images.headshot.name %}
+      {% include components/images/collection-image.html
+         collection="founders"
+         slug=founder.ref
+         purpose="headshot"
+         name=founder.images.headshot.name
+         alt=founder.images.headshot.alt
+         class="founder-card__portrait-img"
+         sizes="(max-width: 480px) 150px, 200px" %}
+    {% else %}
+      <div class="founder-card__portrait-placeholder">
+        {% assign name_parts = founder.name | split: " " %}
+        {% for part in name_parts limit:2 %}{{ part | first | upcase }}{% endfor %}
       </div>
     {% endif %}
 
-    {% if founder.brief_bio %}
-      <div class="founder-card__bio">
-        {{ founder.brief_bio | truncatewords: bio_words }}
-      </div>
+    <!-- Generation Badge (if present) -->
+    {% if founder.generation %}
+    <div class="founder-card__generation-badge">
+      {% case founder.generation %}
+        {% when 'first' %}1st
+        {% when 'second' %}2nd  
+        {% when 'third' %}3rd
+        {% else %}{{ founder.generation | capitalize }}
+      {% endcase %}
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Content Section -->
+  <div class="founder-card__content">
+    
+    <!-- Name & Location -->
+    <h3 class="founder-card__name">{{ founder.name }}</h3>
+    
+    {% if founder.city or founder.country %}
+    <div class="founder-card__location">
+      {% if founder.city %}{{ founder.city }}{% endif %}
+      {% if founder.city and founder.country %}, {% endif %}
+      {% if founder.country %}{{ founder.country }}{% endif %}
+    </div>
     {% endif %}
 
-    {% comment %} Key Achievement {% endcomment %}
-    {% if founder.achievements %}
-      <div class="founder-card__achievement">
-        <span class="founder-card__achievement-label">{{ t.key_achievement | default: "Key Achievement" }}:</span>
-        <span class="founder-card__achievement-text">{{ founder.achievements | first }}</span>
-      </div>
+    <!-- Company & Position -->
+    {% if show_company and (founder.company or founder.position) %}
+    <div class="founder-card__company">
+      {% if founder.position %}{{ founder.position }}{% endif %}
+      {% if founder.position and founder.company %} • {% endif %}
+      {% if founder.company %}{{ founder.company }}{% endif %}
+    </div>
     {% endif %}
 
-    {% comment %} Languages {% endcomment %}
-    {% if founder.languages %}
-      <div class="founder-card__languages">
-        <span class="founder-card__languages-label">{{ t.languages | default: "Languages" }}:</span>
-        <span class="founder-card__languages-list">
-          {% for lang_code in founder.languages %}
-            {% if forloop.first == false %}, {% endif %}
-            {{ site.data.languages[page.lang][lang_code] | default: lang_code }}
-          {% endfor %}
-        </span>
-      </div>
+    <!-- Bio Description -->
+    {% if founder.bio %}
+    <p class="founder-card__bio">
+      {{ founder.bio | truncatewords: 25 }}
+    </p>
     {% endif %}
 
-    {% comment %} Expertise cloud {% endcomment %}
-    {% if founder.expertise %}
-    <div class="founder-card__tag-cloud">
+    <!-- Expertise Tags -->
+    {% if show_expertise and founder.expertise %}
+    <div class="founder-card__expertise">
       {% for expertise in founder.expertise limit:tag_limit %}
-        <span class="founder-card__tag founder-card__tag--expertise">
-          {{ expertise }}
-        </span>
+        <span class="founder-card__tag">{{ expertise }}</span>
       {% endfor %}
     </div>
     {% endif %}
+
   </div>
 
-  {% comment %} WEEK 2 ENHANCEMENT: Personalized CTA {% endcomment %}
+  <!-- Footer CTA -->
   <footer class="founder-card__footer">
-    <div class="founder-card__cta">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" 
-         class="founder-card__link founder-card__link--enhanced">
-        <span class="founder-card__cta-text">
-          {% assign first_name = founder.name | split: ' ' | first %}
-          {% include helpers/t.html key="founders.connect_with" fallback="Connect with" %} {{ first_name }}
-        </span>
-        <span class="founder-card__cta-icon" aria-hidden="true">→</span>
-      </a>
-    </div>
+    <a href="{{ founder.url | relative_url }}" class="founder-card__link">
+      {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
+    </a>
   </footer>
 
 </article>

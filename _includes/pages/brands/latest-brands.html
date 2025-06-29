@@ -1,9 +1,14 @@
 {% comment %}
-Latest Brands Section - Universal Grid Implementation
-Uses same pattern as successful homepage latest-insights
+Latest Brands Section - Simple Grid Implementation
+Uses optimized brand-card.html for clean grid display
 {% endcomment %}
 
-{% assign latest_brands = site.brands | where: "lang", page.lang | sort: "date" | reverse | limit: 8 %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign limit = include.limit | default: 12 %}
+
+<!-- Filter brands (non-featured for grid display) -->
+{% include helpers/brand-filter.html lang=current_lang featured=false limit=limit %}
+{% assign brands = filtered_brands %}
 
 <div class="latest-brands__header">
   <h2 class="panel__heading-secondary">
@@ -14,17 +19,23 @@ Uses same pattern as successful homepage latest-insights
   </p>
 </div>
 
-<div class="latest-brands__content">
-  {% include components/layout/grid.html
-     items=latest_brands
-     card_type="brand"
-     variant="standard"
-     grid_type="auto"
-     config_set="universal-grid" %}
+<!-- Simple Grid Container -->
+<div class="brands-grid">
+  {% if brands.size > 0 %}
+    {% for brand in brands %}
+      <div class="brands-grid__item">
+        {% include components/cards/brand-card.html brand=brand %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="no-brands-message">
+      {% include helpers/t.html key="common.empty_states.no_brands" fallback="No brands available yet." %}
+    </div>
+  {% endif %}
 </div>
 
 <div class="latest-brands__footer">
-  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--primary-cta">
-    {% include helpers/t.html key="brands.latest_brands.discover_all" fallback="Discover All Brands" %}
+  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--primary">
+    {% include helpers/t.html key="brands.latest_brands.discover_all" fallback="Discover All Brands" %} →
   </a>
 </div>

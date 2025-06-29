@@ -33,8 +33,11 @@ EXAMPLE:
   {% assign card_variant = "standard" %}
 {% endif %}
 
-{% include components/cards/universal-card.html 
-   item=include.brand 
-   type="brand" 
-   variant=card_variant 
-   config_set="universal-card" %}
+{% comment %} Use dedicated working card components instead of universal card {% endcomment %}
+{% if card_variant == "hero" %}
+  {% include components/cards/hero-brand-card.html brand=include.brand %}
+{% elsif card_variant == "featured" %}
+  {% include components/cards/featured-brand-card.html brand=include.brand %}
+{% else %}
+  {% include components/cards/brand-card.html brand=include.brand %}
+{% endif %}

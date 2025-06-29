@@ -1,15 +1,15 @@
 /**
- * Featured Brands Simplified Carousel
+ * Featured Brands Carousel
  * Using universal carousel consolidation (Phase 3)
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     // Use universal initialization
-    const carousel = window.UniversalCarousel.init('featured-brands-simplified');
+    const carousel = window.UniversalCarousel.init('featured-brands');
     if (!carousel) return;
     
-    const dots = document.querySelectorAll('.carousel-nav[data-target="featured-brands-simplified"] .carousel-nav-dot');
-    const cards = carousel.carousel.querySelectorAll('.simplified-carousel-card');
+    const dots = document.querySelectorAll('.carousel-nav[data-target="featured-brands"] .carousel-nav-dot');
+    const cards = carousel.carousel.querySelectorAll('.carousel-card');
     
     if (cards.length === 0) return;
     

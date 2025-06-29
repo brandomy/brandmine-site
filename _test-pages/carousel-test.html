@@ -1,0 +1,31 @@
+---
+layout: default
+title: "Carousel Component Testing"
+permalink: /carousel-test/
+---
+
+<h1>Carousel Component Testing</h1>
+
+<!-- Test Section 1: Brands Carousel -->
+<section id="test-brands-carousel">
+  <h2>Test: Brands Carousel (Featured Brands Simplified Equivalent)</h2>
+  
+  <!-- STANDARDIZED COMPONENT TEST -->
+  {% include components/layout/carousel.html
+     content_type="brands"
+     page_context="test-page"
+     limit=4 %}
+     
+</section>
+
+<!-- Test Section 2: Founders Carousel -->
+<section id="test-founders-carousel">
+  <h2>Test: Founders Carousel (Founder Focus Equivalent)</h2>
+  
+  <!-- STANDARDIZED COMPONENT TEST -->
+  {% include components/layout/carousel.html
+     content_type="founders"
+     page_context="test-page"
+     limit=4 %}
+     
+</section>

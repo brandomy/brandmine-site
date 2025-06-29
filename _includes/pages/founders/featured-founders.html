@@ -1,78 +1,56 @@
 {% comment %}
-================================================================================
-PAGE SECTION: Founders > Featured Founders
-FILE: _includes/pages/founders/featured-founders.html
-================================================================================
+Page Section: pages/founders/featured-founders.html
 
-Purpose:
-Displays a featured founders section with highlighted founder profiles using the
-featured founder card variant. This section showcases selected founders who have
-been marked as featured in their front matter.
-
-Parameters:
-- title (optional): Custom section title
-  Default: Pulled from founders.featured.title translation
-- description (optional): Custom description text
-  Default: Pulled from founders.featured.description translation
-- limit (optional): Number of featured founders to display
-  Default: 4
-- panel_type (optional): Panel background style
-  Default: "amber-soft"
-
-Dependencies:
-- CSS: pages/founders/featured-founders.scss
-- Component: components/cards/featured-founder-card.html
-- Data: site.data.translations for UI labels
-- Collection: site.founders filtered by featured flag
-
-Data Sources:
-- site.founders collection filtered by lang and featured: true
-- Translation keys for section heading and description
-
-Notes:
-- Founders must have featured: true in front matter to appear
-- View all button links to founders page with featured filter
-
-Last Updated: 2025-06-03
-================================================================================
+PURPOSE: Featured founders carousel using founder-card-featured.html
+DEPENDENCIES: helpers/founder-filter.html (if exists), components/cards/founder-card-featured.html
+PARAMETERS: All optional with sensible defaults
 {% endcomment %}
 
-{% assign panel_type = include.panel_type | default: "amber-soft" %}
-{% assign limit = include.limit | default: 4 %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign limit = include.limit | default: 6 %}
 
-    {% if include.title %}
-      {% assign section_title = include.title %}
-    {% else %}
-      {% capture section_title %}{% include helpers/t.html key="founders.featured.title" fallback="Featured Founders" %}{% endcapture %}
-    {% endif %}
-    <h2 class="panel__heading-secondary">
-      {{ section_title }}
-    </h2>
-    {% if include.description %}
-      {% assign section_description = include.description %}
-    {% else %}
-      {% capture section_description %}{% include helpers/t.html key="founders.featured.description" fallback="Meet the visionary founders driving innovation across BRICS+ markets." %}{% endcapture %}
-    {% endif %}
-    <p class="panel__lead-text">
-      {{ section_description }}
-    </p>
+<!-- Section Header -->
+<h2 class="panel__heading-secondary">
+  {% include helpers/t.html key="founders.featured.title" fallback="Featured Founders" %}
+</h2>
+<p class="panel__lead-text">
+  {% include helpers/t.html key="founders.featured.subtitle" fallback="Meet the visionary founders driving innovation across BRICS+ markets" %}
+</p>
 
-    <div class="featured-founders__grid">
-      {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: limit %}
-      {% for founder in featured_founders %}
-        {% include components/cards/universal-card.html 
-           item=founder 
-           type="founder" 
-           variant="featured" 
-           config_set="universal-card" %}
-      {% endfor %}
-    </div>
+{% comment %} Filter featured founders {% endcomment %}
+{% assign founders = site.founders | where: "lang", current_lang | where: "featured", true | limit: limit %}
 
-    {% capture view_all_text %}{% include helpers/t.html key="founders.featured.view_all" fallback="View All Featured Founders" %}{% endcapture %}
-    {% if view_all_text %}
-      <div class="featured-founders__footer">
-        <a href="{{ site.baseurl }}/{{ page.lang }}/founders/?featured=true" class="btn btn--primary">
-          {{ view_all_text }}
-        </a>
+<!-- Carousel Container -->
+<div class="carousel" data-component-type="featured-founders">
+  {% if founders.size > 0 %}
+    {% for founder in founders %}
+      <div class="carousel-card">
+        {% include components/cards/founder-card-featured.html founder=founder %}
       </div>
-    {% endif %}
+    {% endfor %}
+  {% else %}
+    <div class="no-founders-message">
+      {% include helpers/t.html key="common.empty_states.no_featured_founders" fallback="No featured founders available yet." %}
+    </div>
+  {% endif %}
+</div>
+
+<!-- Navigation Dots -->
+{% if founders.size > 1 %}
+  <div class="carousel-nav" data-target="featured-founders">
+    {% assign dot_count = founders.size | divided_by: 2 | ceil | at_least: 1 %}
+    {% for i in (1..dot_count) %}
+      <span class="carousel-nav-dot {% if forloop.first %}active{% endif %}" 
+            data-slide="{{ forloop.index0 }}"></span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- More Founders CTA -->
+<div class="featured-founders__more">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/founders/"
+     class="btn btn--primary"
+     data-track="featured-founders">
+    {% include helpers/t.html key="founders.featured.cta" fallback="View All Founders" %}
+  </a>
+</div>

@@ -1,0 +1,22 @@
+---
+layout: default
+title: "Carousel Comparison Test"
+permalink: /carousel-comparison/
+---
+
+<h1>Carousel Implementation Comparison</h1>
+
+<!-- CURRENT: What we want to preserve -->
+<section style="border: 2px solid green; margin: 2rem 0; padding: 1rem;">
+  <h2>CURRENT: featured-brands (Target Look)</h2>
+  {% include pages/home/featured-brands.html %}
+</section>
+
+<!-- UNIVERSAL: What we want to match to current -->
+<section style="border: 2px solid blue; margin: 2rem 0; padding: 1rem;">
+  <h2>UNIVERSAL: Carousel Component (Make This Match Above)</h2>
+  {% include components/layout/carousel.html
+     content_type="brands"
+     page_context="test-page"
+     limit=10 %}
+</section>

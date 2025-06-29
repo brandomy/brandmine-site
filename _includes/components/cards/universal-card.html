@@ -324,12 +324,16 @@ ARCHITECTURE: Single component replaces ALL card variants - true universal syste
         <div class="universal-card__hero-meta">
           {% case include.type %}
             {% when "brand" %}
-              {% if include.item.location %}
-                <span class="universal-card__hero-location">{{ include.item.location }}</span>
-              {% endif %}
               {% if include.item.founding_year %}
                 <span class="universal-card__hero-founded">
                   {% include helpers/t.html key="brands.founded" fallback="Founded" %} {{ include.item.founding_year }}
+                </span>
+              {% endif %}
+              {% if include.item.city and include.item.country %}
+                {% if include.item.founding_year %}<span class="meta-separator"> • </span>{% endif %}
+                <span class="universal-card__hero-location">
+                  {{ include.item.city }} 
+                  {% include helpers/country-flag.html country_code=include.item.country %}
                 </span>
               {% endif %}
             {% when "founder" %}
@@ -372,12 +376,41 @@ ARCHITECTURE: Single component replaces ALL card variants - true universal syste
       </div>
     {% endif %}
 
+    {% comment %} Hero Taxonomy Tags {% endcomment %}
+    {% if features contains "taxonomy" and config.sections.taxonomy.show_primary_tags and include.type == "brand" %}
+      <div class="universal-card__hero-taxonomy">
+        <div class="universal-card__tags-primary">
+          {% if include.item.sectors %}
+            {% for sector in include.item.sectors limit: 2 %}
+              <span class="universal-card__tag universal-card__tag--sector">
+                {% include helpers/dimension-name.html type="sectors" id=sector fallback=sector %}
+              </span>
+            {% endfor %}
+          {% endif %}
+          {% if include.item.markets %}
+            {% for market in include.item.markets limit: 1 %}
+              <span class="universal-card__tag universal-card__tag--market">
+                {% include helpers/dimension-name.html type="markets" id=market fallback=market %}
+              </span>
+            {% endfor %}
+          {% endif %}
+          {% if include.item.signals %}
+            {% for signal in include.item.signals limit: 1 %}
+              <span class="universal-card__tag universal-card__tag--signal">
+                {% include helpers/dimension-name.html type="signals" id=signal fallback=signal %}
+              </span>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
     {% if features contains "action" %}
       <footer class="universal-card__hero-actions">
         {% case include.type %}
           {% when "brand" %}
             <a href="{{ include.item.url }}" class="universal-card__hero-action universal-card__hero-action--primary">
-              {% include helpers/t.html key="brands.explore_brand" fallback="Explore Brand" %}
+              {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
               <span class="universal-card__hero-action-icon">→</span>
             </a>
           {% when "founder" %}
@@ -422,12 +455,11 @@ ARCHITECTURE: Single component replaces ALL card variants - true universal syste
           {% endif %}
           
           {% comment %} Metric Overlay for Brand Cards {% endcomment %}
-          {% if config.sections.header.show_metric_overlay %}
+          {% if config.sections.header.show_metric_overlay and include.item.card_metric %}
             <div class="universal-card__metric-overlay">
-              {% if include.item.export_markets.size > 0 %}
-                <span class="universal-card__overlay-metric">
-                  {{ include.item.export_markets.size }} Countries
-                </span>
+              <div class="metric-value">{{ include.item.card_metric.value }}</div>
+              {% if include.item.card_metric.label and include.item.card_metric.label != "" %}
+                <div class="metric-label">{{ include.item.card_metric.label }}</div>
               {% endif %}
             </div>
           {% endif %}
@@ -553,14 +585,7 @@ ARCHITECTURE: Single component replaces ALL card variants - true universal syste
             {% if include.item.city and include.item.country %}
               {% if include.item.founding_year %} • {% endif %}
               {{ include.item.city }} 
-              {% assign country_flag = include.item.country | upcase %}
-              {% case country_flag %}
-                {% when 'RU' %}🇷🇺
-                {% when 'BR' %}🇧🇷  
-                {% when 'CN' %}🇨🇳
-                {% when 'IN' %}🇮🇳
-                {% when 'ZA' %}🇿🇦
-              {% endcase %}
+              {% include helpers/country-flag.html country_code=include.item.country %}
             {% endif %}
           </p>
         {% endif %}
