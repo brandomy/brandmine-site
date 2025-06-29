@@ -49,13 +49,12 @@ signals: ["export-ready"]
 
 # 🎴 Universal Component System
 
-**Single component handles all card types:**
+**MVP card system handles all content types:**
 ```liquid
-{% include components/cards/universal-card.html
-   item=content_object
-   type="brand|insight|founder|testimonial"
-   variant="standard|featured|compact|quote-focus"
-   config_set="universal-card" %}
+{% comment %} Use specific optimized cards {% endcomment %}
+{% include components/cards/brand-card.html brand=brand %}
+{% include components/cards/founder-card.html founder=founder %}
+{% include components/cards/insight-card.html insight=insight %}
 ```
 
 **Configuration-driven behavior** via `_data/component_defaults.yml`.
@@ -153,7 +152,7 @@ _scripts/core/generate-all-json.py
 
 # 🎯 Key Development Principles
 
-1. **Universal components only** - Use `universal-card.html` for all cards
+1. **MVP card components** - Use optimized `brand-card.html`, `founder-card.html`, `insight-card.html`
 2. **Configuration-driven** - Avoid hardcoded values, use `component_defaults.yml`
 3. **Mobile-first** - Linear layouts, no sidebars
 4. **Multilingual** - Test all changes across EN/RU/ZH
@@ -165,7 +164,7 @@ _scripts/core/generate-all-json.py
 _scripts/core/pre-commit_check.sh
 
 # Verify universal card usage
-grep -r "universal-card" _includes/pages/ | wc -l  # Should show 42+ references
+find _includes/components/cards/ -name "*-card.html" | wc -l  # Should show MVP cards
 ```
 
 ---

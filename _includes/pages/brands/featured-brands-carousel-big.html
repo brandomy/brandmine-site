@@ -21,12 +21,11 @@
       <div class="featured-brands-carousel-big__track">
         {% for item in test_items %}
           <div class="featured-brands-carousel-big__slide">
-            {% include components/cards/universal-card.html
+            {% include components/cards/brand-card-featured.html
                item=item
                type="brand"
                variant="featured"
                context="carousel"
-               config_set="universal-card" %}
           </div>
         {% endfor %}
       </div>

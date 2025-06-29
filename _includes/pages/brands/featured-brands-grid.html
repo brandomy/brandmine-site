@@ -19,12 +19,11 @@
     
     <div class="featured-brands-grid__grid">
       {% for item in test_items %}
-        {% include components/cards/universal-card.html
+        {% include components/cards/brand-card.html
            item=item
            type="brand"
            variant="featured"
            context="grid-test"
-           config_set="universal-card" %}
       {% endfor %}
     </div>
   </div>

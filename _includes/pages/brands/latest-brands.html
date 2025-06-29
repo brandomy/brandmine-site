@@ -1,41 +1,81 @@
 {% comment %}
-Latest Brands Section - Simple Grid Implementation
-Uses optimized brand-card.html for clean grid display
+  Page Section: pages/brands/latest-brands.html
+  
+  Purpose: Displays all brands in a grid layout on the brands page, showing
+           the complete brand directory with pagination or scroll loading
+  
+  Section Type: Content
+  Template: brands.html
+  
+  Parameters:
+    limit (optional): Number of brands to display
+                     Default: 24
+    show_featured (optional): Include featured brands in listing
+                             Default: false (excludes featured brands)
+  
+  Dependencies:
+    - Translation keys: brands.latest_brands.*
+    - CSS: assets/css/components/layout/grid.scss
+    - Helper: helpers/brand-card-selector.html
+    - Component: components/layout/grid.html
+  
+  Usage:
+    {% include pages/brands/latest-brands.html %}
+    {% include pages/brands/latest-brands.html limit=12 show_featured=true %}
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
-{% assign limit = include.limit | default: 12 %}
+{% assign limit = include.limit | default: 24 %}
+{% assign show_featured = include.show_featured | default: false %}
 
-<!-- Filter brands (non-featured for grid display) -->
-{% include helpers/brand-filter.html lang=current_lang featured=false limit=limit %}
-{% assign brands = filtered_brands %}
-
-<div class="latest-brands__header">
-  <h2 class="panel__heading-secondary">
-    {% include helpers/t.html key="brands.latest_brands.title" fallback="Latest Brands" %}
-  </h2>
-  <p class="panel__subtitle">
-    {% include helpers/t.html key="brands.latest_brands.subtitle" fallback="Recently added exceptional brands from emerging markets" %}
-  </p>
-</div>
-
-<!-- Simple Grid Container -->
-<div class="brands-grid">
-  {% if brands.size > 0 %}
-    {% for brand in brands %}
-      <div class="brands-grid__item">
-        {% include components/cards/brand-card.html brand=brand %}
-      </div>
-    {% endfor %}
-  {% else %}
-    <div class="no-brands-message">
-      {% include helpers/t.html key="common.empty_states.no_brands" fallback="No brands available yet." %}
+<!-- Latest Brands Section -->
+<div class="panel__content">
+  <div class="latest-brands">
+    <div class="latest-brands__header">
+      <h2 class="latest-brands__title">
+        {% include helpers/t.html key="brands.latest_brands.title" fallback="All Brands" lang=current_lang %}
+      </h2>
+      <p class="latest-brands__description">
+        {% include helpers/t.html key="brands.latest_brands.description" fallback="Discover exceptional founder-led brands from BRICS+ countries." lang=current_lang %}
+      </p>
     </div>
-  {% endif %}
-</div>
 
-<div class="latest-brands__footer">
-  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/" class="btn btn--primary">
-    {% include helpers/t.html key="brands.latest_brands.discover_all" fallback="Discover All Brands" %} →
-  </a>
+    <!-- Brand Grid -->
+    {% comment %} Get all brands for current language {% endcomment %}
+    {% assign all_brands = site.brands | where: "lang", current_lang %}
+    
+    {% comment %} Filter out featured brands if show_featured is false {% endcomment %}
+    {% unless show_featured %}
+      {% assign all_brands = all_brands | where_exp: "brand", "brand.featured != true" %}
+    {% endunless %}
+    
+    {% assign brands_to_show = all_brands | limit: limit %}
+    
+    {% if brands_to_show.size > 0 %}
+      {% include components/layout/grid.html items=brands_to_show type="brand" limit=limit %}
+    {% else %}
+      <!-- Empty state -->
+      <div class="latest-brands__empty">
+        <p class="latest-brands__empty-message">
+          {% include helpers/t.html key="brands.latest_brands.empty_state" fallback="No brands available yet. Check back soon!" lang=current_lang %}
+        </p>
+      </div>
+    {% endif %}
+
+    <!-- Load More / View All CTA -->
+    {% if all_brands.size > limit %}
+      <div class="latest-brands__cta">
+        <p class="latest-brands__count">
+          {% assign remaining = all_brands.size | minus: limit %}
+          {% include helpers/t.html key="brands.latest_brands.showing_count" fallback="Showing brands" lang=current_lang %}
+          <span class="latest-brands__count-numbers">({{ limit }} of {{ all_brands.size }})</span>
+        </p>
+        <a href="{{ site.baseurl }}/{{ current_lang }}/brands/" 
+           class="btn btn--secondary"
+           data-track="latest-brands-view-all">
+          {% include helpers/t.html key="brands.latest_brands.view_all" fallback="View All Brands" lang=current_lang %}
+        </a>
+      </div>
+    {% endif %}
+  </div>
 </div>

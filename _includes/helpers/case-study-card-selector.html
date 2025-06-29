@@ -1,38 +1,27 @@
 {% comment %}
 HELPER: Case Study Card Selector
-PURPOSE: Intelligently selects appropriate universal card variant for case studies
+PURPOSE: Selects appropriate card for case studies (currently using insight cards as fallback)
 
 USAGE: {% include helpers/case-study-card-selector.html case_study=case_study %}
 
 PARAMETERS:
 - case_study (required): Case study object with featured property
-- force_variant (optional): Override automatic selection - "hero", "featured", "standard"
+- force_variant (optional): Override automatic selection - "featured", "standard"
 
-RETURNS: Renders universal-card with appropriate variant
+RETURNS: Renders appropriate card
 
 DEPENDENCIES:
 - Data: case_study.featured (boolean)
-- Includes: components/cards/universal-card.html
-- Variables: None
+- Includes: components/cards/insight-card.html (fallback until case study cards exist)
 
 EXAMPLE:
 {% include helpers/case-study-card-selector.html case_study=case_study %}
-<!-- Auto-selects featured variant for featured case studies -->
-{% include helpers/case-study-card-selector.html case_study=case_study force_variant="hero" %}
-<!-- Forces hero variant regardless of case study status -->
+<!-- Uses insight card as fallback -->
 {% endcomment %}
 
-{% comment %} Selection logic: force_variant > featured > standard {% endcomment %}
-{% if include.force_variant %}
-  {% assign card_variant = include.force_variant %}
-{% elsif include.case_study.featured %}
-  {% assign card_variant = "featured" %}
+{% comment %} For now, use insight cards as fallback for case studies {% endcomment %}
+{% if include.case_study.featured %}
+  {% include components/cards/featured-insight-card.html insight=include.case_study %}
 {% else %}
-  {% assign card_variant = "standard" %}
+  {% include components/cards/insight-card.html insight=include.case_study %}
 {% endif %}
-
-{% include components/cards/universal-card.html 
-   item=include.case_study 
-   type="case-study" 
-   variant=card_variant 
-   config_set="universal-card" %}

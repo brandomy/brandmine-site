@@ -12,7 +12,7 @@ PARAMETERS:
 
 DEPENDENCIES:
 - CSS: assets/css/components/layout/grid.scss (layout only, no spacing)
-- Cards: components/cards/insight-latest-card.html or universal-card.html
+- Cards: components/cards/insight-latest-card.html or specific card types
 
 NOTES: 
 - Atomic design: ONLY handles grid layout structure
@@ -28,53 +28,44 @@ NOTES:
   {% comment %} Get items to display {% endcomment %}
   {% if include.items %}
     {% assign items_to_show = include.items | limit: limit %}
-  {% else %}
-    {% assign items_to_show = '' | split: '' %}
-  {% endif %}
-
-  {% comment %} Display items using appropriate card component {% endcomment %}
-  {% for item in items_to_show %}
-    {% case card_type %}
-      {% when "insight" %}
-        {% include components/cards/insight-latest-card.html insight=item %}
-      {% when "brand" %}
-        {% include components/cards/universal-card.html 
-           item=item 
-           type="brand" 
-           variant=include.card_variant 
-           config_set="universal-card" %}
-      {% when "founder" %}
-        {% include components/cards/universal-card.html 
-           item=item 
-           type="founder" 
-           variant=include.card_variant 
-           config_set="universal-card" %}
-      {% else %}
-        {% include components/cards/universal-card.html 
-           item=item 
-           type=card_type 
-           variant=include.card_variant 
-           config_set="universal-card" %}
-    {% endcase %}
-  {% endfor %}
-
-  {% comment %} Fill empty grid slots if needed {% endcomment %}
-  {% assign empty_slots = limit | minus: items_to_show.size %}
-  {% if empty_slots > 0 %}
-    {% for i in (1..empty_slots) %}
-      <div class="grid__placeholder">
-        <div class="grid__placeholder-content">
-          <div class="grid__placeholder-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-          </div>
-          <h3 class="grid__placeholder-title">Content Coming Soon</h3>
-          <p class="grid__placeholder-description">New content will appear here</p>
-        </div>
-      </div>
+    
+    {% comment %} Display each item with appropriate card {% endcomment %}
+    {% for item in items_to_show %}
+      {% case card_type %}
+        {% when "insight" %}
+          {% include components/cards/insight-card.html item=item %}
+        {% when "brand" %}
+          {% include components/cards/brand-card.html item=item %}
+        {% when "founder" %}
+          {% include components/cards/founder-card.html item=item %}
+        {% else %}
+          {% include components/cards/insight-card.html item=item %}
+      {% endcase %}
     {% endfor %}
+
+    {% comment %} Fill empty grid slots if needed {% endcomment %}
+    {% assign empty_slots = limit | minus: items_to_show.size %}
+    {% if empty_slots > 0 %}
+      {% for i in (1..empty_slots) %}
+        <div class="grid__placeholder">
+          <div class="grid__placeholder-content">
+            <div class="grid__placeholder-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </div>
+            <h3 class="grid__placeholder-title">Content Coming Soon</h3>
+            <p class="grid__placeholder-description">New content will appear here</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% else %}
+    {% comment %} No items provided {% endcomment %}
+    <div class="grid__empty">
+      <p>No items to display</p>
+    </div>
   {% endif %}
 </div>

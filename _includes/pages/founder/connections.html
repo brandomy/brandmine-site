@@ -32,11 +32,7 @@
     
     <div class="founder-connections__grid">
       {% for related_founder in same_market_founders %}
-        {% include components/cards/universal-card.html 
-           item=related_founder 
-           type="founder" 
-           variant="compact" 
-           config_set="universal-card" %}
+        {% include components/cards/founder-card.html founder=related_founder %}
       {% endfor %}
     </div>
   </div>

@@ -1,40 +1,27 @@
 {% comment %}
 HELPER: Founder Card Selector
-PURPOSE: Intelligently selects appropriate universal card variant based on featured level to ensure visual hierarchy consistency across founder listings
+PURPOSE: Intelligently selects appropriate founder card based on featured level
 
 USAGE: {% include helpers/founder-card-selector.html founder=founder %}
 
 PARAMETERS:
 - founder (required): Founder object with featured_level and featured properties
-- force_variant (optional): Override automatic selection - "hero", "featured", "standard"
+- force_variant (optional): Override automatic selection - "featured", "standard"
 
-RETURNS: Renders universal-card with appropriate variant
+RETURNS: Renders appropriate founder card
 
 DEPENDENCIES:
 - Data: founder.featured_level (integer), founder.featured (boolean)
-- Includes: components/cards/universal-card.html
-- Variables: None
+- Includes: components/cards/founder-card.html or founder-card-featured.html
 
 EXAMPLE:
 {% include helpers/founder-card-selector.html founder=founder %}
-<!-- Auto-selects hero variant for featured_level >= 2 -->
-{% include helpers/founder-card-selector.html founder=founder force_variant="featured" %}
-<!-- Forces featured variant regardless of founder status -->
+<!-- Auto-selects featured card for featured founders -->
 {% endcomment %}
 
-{% comment %} Selection logic: force_variant > featured_level >= 2 > featured > standard {% endcomment %}
-{% if include.force_variant %}
-  {% assign card_variant = include.force_variant %}
-{% elsif include.founder.featured_level and include.founder.featured_level >= 2 %}
-  {% assign card_variant = "hero" %}
-{% elsif include.founder.featured %}
-  {% assign card_variant = "featured" %}
+{% comment %} Selection logic: featured founders get featured card, others get standard {% endcomment %}
+{% if include.force_variant == "featured" or include.founder.featured %}
+  {% include components/cards/founder-card-featured.html founder=include.founder %}
 {% else %}
-  {% assign card_variant = "standard" %}
+  {% include components/cards/founder-card.html founder=include.founder %}
 {% endif %}
-
-{% include components/cards/universal-card.html 
-   item=include.founder 
-   type="founder" 
-   variant=card_variant 
-   config_set="universal-card" %}
