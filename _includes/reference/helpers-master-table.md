@@ -10,6 +10,7 @@
 | `country-flag.html` | `helpers/country-flag.html` | `country_code` (required) | Display country flag emoji | `{% include helpers/country-flag.html country_code=brand.country %}` |
 | `country-lookup.html` | `helpers/country-lookup.html` | `code` (required), `lang` (optional) | Get country name from code | Used internally by other helpers |
 | `dimension-name.html` | `helpers/dimension-name.html` | `type` (required), `id` (required) | Resolve dimension display names | `{% include helpers/dimension-name.html type="sectors" id=sector %}` |
+| `brand-name.html` | `helpers/brand-name.html` | `brand_id` (required), `fallback` (optional) | Brand name with fallback | `{% include helpers/brand-name.html brand_id=brand.ref fallback=brand.title %}` |
 
 ### 📍 Location & Geography
 
@@ -40,6 +41,9 @@
 | `component-defaults.html` | `helpers/component-defaults.html` | `component`, `param`, `fallback` | Get configurable default values | `{% include helpers/component-defaults.html component="cards.brand-card" param="tag_limit" fallback=4 %}` |
 | `founding-year.html` | `components/helpers/founding-year.html` | `year`, `format` | Format founding year display | `{% include components/helpers/founding-year.html year=brand.founding_year %}` |
 | `founder-check.html` | `components/helpers/founder-check.html` | `brand`, `class_name` | Check if brand is founder-led | `{% include components/helpers/founder-check.html brand=brand class_name="brand-card" %}` |
+| `is-founder-led.html` | `helpers/is-founder-led.html` | `brand` (required) | Determine if brand is founder-led | `{% include helpers/is-founder-led.html brand=brand %}` |
+| `brand-image.html` | `helpers/brand-image.html` | `brand`, `size`, `class` | Brand-specific image helper | `{% include helpers/brand-image.html brand=brand size="400w" %}` |
+| `market-context.html` | `helpers/market-context.html` | `country`, `format` | Market context information | `{% include helpers/market-context.html country=brand.country format="badge" %}` |
 
 ### 🎨 UI Components
 
@@ -64,9 +68,29 @@
 | `page-sections.html` | `helpers/page-sections.html` | `page_type` | Render page sections from config | `{% include helpers/page-sections.html page_type="home" %}` |
 | `panel-wrapper.html` | `helpers/panel-wrapper.html` | `type`, `content_classes`, `additional_classes` | Wrap content in panels | `{% include helpers/panel-wrapper.html type="panel--light" %}` |
 
-## 🎯 Most Commonly Used in Cards
+## 🎯 Brand Card Dependencies
 
-### For Brand Cards:
+### Critical Dependencies (Required for All Brand Cards)
+
+| Dependency | Type | Purpose | Failure Impact |
+|------------|------|---------|----------------|
+| `helpers/component-defaults.html` | Configuration | Retrieve card settings from `_data/component_defaults.yml` | Card fails to configure |
+| `components/images/collection-image.html` | Images | Responsive brand images (logo, hero) | Images don't display |
+| `helpers/dimension-name.html` | Taxonomy | Display market/sector/attribute names | Tags show as raw IDs |
+| `helpers/t.html` | Translation | UI text ("View Profile", "Founded") | English fallback text |
+| `_data/component_defaults.yml` | Data | Default card behavior configuration | Default values missing |
+
+### Optional Dependencies (Graceful Degradation)
+
+| Dependency | Type | Purpose | Fallback Behavior |
+|------------|------|---------|-------------------|
+| `helpers/country-flag.html` | Display | Country flag emojis | Shows 🌍 generic globe |
+| `components/helpers/card-header.html` | Component | Standard header with logo/title | Manual header required |
+| `components/helpers/founder-check.html` | Logic | Founder-led indicator | No indicator shown |
+| `helpers/brand-image.html` | Images | Brand-specific image handling | Manual image includes |
+| `components/helpers/location-display.html` | Display | Formatted location display | Manual location formatting |
+
+### Most Commonly Used in Brand Cards:
 1. **`t.html`** - All UI text ("View Profile", etc.)
 2. **`dimension-name.html`** - Sector, market, attribute names
 3. **`collection-image.html`** - Brand hero images

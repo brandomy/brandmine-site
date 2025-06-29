@@ -2,7 +2,7 @@
 Page Section: pages/home/featured-brands-simplified.html
 
 PURPOSE: Simplified featured brands carousel matching Case Studies design pattern
-DEPENDENCIES: helpers/brand-filter.html, components/cards/simplified-brand-card.html
+DEPENDENCIES: helpers/brand-filter.html, components/cards/brand-card.html
 PARAMETERS: All optional with sensible defaults
 {% endcomment %}
 
@@ -26,7 +26,7 @@ PARAMETERS: All optional with sensible defaults
   {% if brands.size > 0 %}
     {% for brand in brands %}
       <div class="simplified-carousel-card">
-        {% include components/cards/simplified-brand-card.html brand=brand %}
+        {% include components/cards/brand-card.html brand=brand %}
       </div>
     {% endfor %}
   {% else %}

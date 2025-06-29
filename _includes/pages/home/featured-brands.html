@@ -2,7 +2,7 @@
 Page Section: pages/home/featured-brands.html
 
 PURPOSE: Featured brands carousel matching Case Studies design pattern
-DEPENDENCIES: helpers/brand-filter.html, components/cards/brand-card-featured.html
+DEPENDENCIES: helpers/brand-filter.html, components/cards/brand-card.html
 PARAMETERS: All optional with sensible defaults
 {% endcomment %}
 
@@ -26,7 +26,7 @@ PARAMETERS: All optional with sensible defaults
   {% if brands.size > 0 %}
     {% for brand in brands %}
       <div class="carousel-card">
-        {% include components/cards/brand-card-featured.html brand=brand %}
+        {% include components/cards/brand-card.html brand=brand variant="featured" %}
       </div>
     {% endfor %}
   {% else %}

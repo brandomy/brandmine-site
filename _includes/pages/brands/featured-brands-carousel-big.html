@@ -21,11 +21,9 @@
       <div class="featured-brands-carousel-big__track">
         {% for item in test_items %}
           <div class="featured-brands-carousel-big__slide">
-            {% include components/cards/brand-card-featured.html
-               item=item
-               type="brand"
+            {% include components/cards/brand-card.html
+               brand=item
                variant="featured"
-               context="carousel"
           </div>
         {% endfor %}
       </div>
