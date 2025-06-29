@@ -1,61 +1,80 @@
 {% comment %}
-Universal Grid Component - EMERGENCY FIX VERSION
-Provides consistent grid layouts across all page types
-Integrates with universal-card system
+COMPONENT: Universal Grid Layout
+PURPOSE: Reusable 2x2 grid component based on working latest-insights foundation
 
-Parameters:
-- items: Collection of content items to display
-- card_type: Type of card to render (brand|insight|founder)
-- variant: Visual styling variant (standard|featured|compact)
-- grid_type: Layout behavior (auto|featured)
-- config_set: Configuration set name (default: "universal-grid")
+USAGE: {% include components/layout/grid.html items=collection type="insight" %}
+
+PARAMETERS:
+- items (required): Array of content items to display
+- type (required): Content type for card selection ("insight", "brand", "founder")
+- grid_class (optional): Additional CSS class for grid container (default: "universal-grid")
+- card_variant (optional): Card variant override
+- columns (optional): Column count override (default: responsive 2x2)
+- limit (optional): Maximum items to display (default: 4)
+
+DEPENDENCIES:
+- CSS: assets/css/components/layout/universal-grid.scss
+- Cards: components/cards/insight-latest-card.html or universal-card.html
+
+NOTES: Direct copy of working latest-insights grid structure for identical appearance
 {% endcomment %}
 
-<!-- EMERGENCY DEBUG: Check grid component state -->
-<div style="background: lightblue; padding: 0.5rem; margin: 0.5rem 0; font-size: 12px;">
-  <strong>GRID DEBUG:</strong>
-  Items: {{ include.items.size }} | 
-  Type: {{ include.card_type }} | 
-  Variant: {{ include.variant }} | 
-  Grid Type: {{ include.grid_type }} | 
-  Card Component: {{ include.card_component }}
-</div>
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign grid_class = include.grid_class | default: "latest-insights" %}
+{% assign limit = include.limit | default: 4 %}
+{% assign card_type = include.type | default: "insight" %}
 
-{% assign config = site.data.component_defaults.grids[include.config_set | default: "universal-grid"][include.card_type] %}
-{% assign grid_config = config.grid_types[include.grid_type] %}
-{% assign variant_config = config.variants[include.variant] %}
-
-<div class="grid 
-            grid--{{ include.card_type }} 
-            grid--{{ include.variant }}
-            grid--{{ include.grid_type }}"
-     data-component="grid"
-     data-card-type="{{ include.card_type }}"
-     data-variant="{{ include.variant }}"
-     data-grid-type="{{ include.grid_type }}">
-  
-  {% if include.items and include.items.size > 0 %}
-    <div class="grid__container">
-      {% for item in include.items %}
-        <div class="grid__item">
-          {% comment %}
-          Allow override of card component for legacy support
-          {% endcomment %}
-          {% if include.card_component == "legacy-insight-card" %}
-            {% include components/cards/insight-latest-card.html insight=item %}
-          {% else %}
-            {% include components/cards/universal-card.html
-               item=item
-               type=include.card_type
-               variant=include.variant
-               config_set="universal-card" %}
-          {% endif %}
-        </div>
-      {% endfor %}
-    </div>
+<div class="{{ grid_class }}__container">
+  {% comment %} Get items to display {% endcomment %}
+  {% if include.items %}
+    {% assign items_to_show = include.items | limit: limit %}
   {% else %}
-    <div class="grid__empty">
-      <p class="grid__empty-message">No {{ include.card_type }}s available</p>
-    </div>
+    {% assign items_to_show = '' | split: '' %}
+  {% endif %}
+
+  {% comment %} Display items using appropriate card component {% endcomment %}
+  {% for item in items_to_show %}
+    {% case card_type %}
+      {% when "insight" %}
+        {% include components/cards/insight-latest-card.html insight=item %}
+      {% when "brand" %}
+        {% include components/cards/universal-card.html 
+           item=item 
+           type="brand" 
+           variant=include.card_variant 
+           config_set="universal-card" %}
+      {% when "founder" %}
+        {% include components/cards/universal-card.html 
+           item=item 
+           type="founder" 
+           variant=include.card_variant 
+           config_set="universal-card" %}
+      {% else %}
+        {% include components/cards/universal-card.html 
+           item=item 
+           type=card_type 
+           variant=include.card_variant 
+           config_set="universal-card" %}
+    {% endcase %}
+  {% endfor %}
+
+  {% comment %} Fill empty grid slots if needed {% endcomment %}
+  {% assign empty_slots = limit | minus: items_to_show.size %}
+  {% if empty_slots > 0 %}
+    {% for i in (1..empty_slots) %}
+      <div class="universal-grid__placeholder">
+        <div class="universal-grid__placeholder-content">
+          <div class="universal-grid__placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+          <h3 class="universal-grid__placeholder-title">Content Coming Soon</h3>
+          <p class="universal-grid__placeholder-description">New content will appear here</p>
+        </div>
+      </div>
+    {% endfor %}
   {% endif %}
 </div>

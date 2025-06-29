@@ -1,0 +1,125 @@
+---
+layout: home
+title: "Universal Grid Test"
+lang: en
+permalink: /test-universal-grid/
+---
+
+<style>
+/* Test-specific styling to isolate grid comparison */
+.test-section {
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 3px solid #e2e8f0;
+  border-radius: 8px;
+  min-height: 200px; /* Ensure sections are visible */
+  position: relative;
+}
+
+.test-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8fafc;
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.test-working {
+  background: #f0f9ff;
+  border-color: #0284c7;
+}
+
+.test-working h2 {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.test-universal {
+  background: #f0fdf4;
+  border-color: #16a34a;
+}
+
+.test-universal h2 {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Ensure both sections are visible */
+.test-section .home-page {
+  width: 100%;
+  clear: both;
+}
+</style>
+
+<div class="test-section test-working">
+  <h2>🔵 WORKING ORIGINAL (Current latest-insights)</h2>
+  <div class="home-page">
+    {% include pages/home/latest-insights.html %}
+  </div>
+</div>
+
+<div class="test-section test-universal">
+  <h2>🟢 UNIVERSAL GRID TEST (Should be identical)</h2>
+  
+  <div class="home-page">
+    <div class="latest-insights__header">
+      <h2 class="panel__heading-secondary">Latest Insights</h2>
+      <p class="latest-insights__subtitle">
+        Stay updated with the latest perspectives from BRICS+ markets, founder stories, and growth opportunities
+      </p>
+    </div>
+
+    {% comment %} Get insights data for universal grid test {% endcomment %}
+    {% assign current_lang = page.lang | default: 'en' %}
+    {% assign filtered_insights = site.insights | where: "lang", current_lang %}
+    
+    {% comment %} Create test insights array with same categories as working version {% endcomment %}
+    {% assign brand_spotlight = filtered_insights | where: "category", "brand-spotlight" | sort: "date" | reverse | first %}
+    {% assign founders_journey = filtered_insights | where: "category", "founders-journey" | sort: "date" | reverse | first %}
+    {% assign location_intelligence = filtered_insights | where: "category", "location-intelligence" | sort: "date" | reverse | first %}
+    {% assign market_momentum = filtered_insights | where: "category", "market-momentum" | sort: "date" | reverse | first %}
+    
+    {% assign test_insights = "" | split: "" %}
+    {% if brand_spotlight %}
+      {% assign test_insights = test_insights | push: brand_spotlight %}
+    {% endif %}
+    {% if founders_journey %}
+      {% assign test_insights = test_insights | push: founders_journey %}
+    {% endif %}
+    {% if location_intelligence %}
+      {% assign test_insights = test_insights | push: location_intelligence %}
+    {% endif %}
+    {% if market_momentum %}
+      {% assign test_insights = test_insights | push: market_momentum %}
+    {% endif %}
+    
+    {% comment %} Test universal grid with same data {% endcomment %}
+    {% include components/layout/grid.html 
+       items=test_insights 
+       type="insight" 
+       grid_class="latest-insights"
+       limit=4 %}
+
+    <div class="latest-insights__footer">
+      <a href="{{ site.baseurl }}/{{ current_lang }}/insights/" class="btn btn--primary-cta">
+        View All Insights
+      </a>
+    </div>
+  </div>
+</div>
+
+<div style="padding: 2rem; text-align: center; background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; margin: 2rem 0;">
+  <h3 style="color: #92400e;">🔍 VISUAL COMPARISON INSTRUCTIONS</h3>
+  <p><strong>Compare the two sections above:</strong></p>
+  <ul style="text-align: left; display: inline-block;">
+    <li>Card layouts should be identical</li>
+    <li>Spacing and gaps should match exactly</li>
+    <li>Colors (orange, purple, blue, olive borders) should match</li>
+    <li>Responsive behavior should be the same</li>
+    <li>Hover effects should be identical</li>
+  </ul>
+  <p><strong>Randy: Please confirm if both sections look IDENTICAL</strong></p>
+</div>

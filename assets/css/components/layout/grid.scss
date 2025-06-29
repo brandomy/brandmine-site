@@ -1,302 +1,208 @@
 /* ==========================================================================
-   Universal Grid Component
-   Provides consistent grid layouts with responsive behavior
-   Integrates with universal-card and design token systems
+   Universal Grid Component - Based on Working Latest-Insights Foundation
+   Provides identical 2x2 grid behavior as the working homepage section
    ========================================================================== */
 
-.grid {
+/* ==========================================================================
+   UNIVERSAL GRID LAYOUT - Direct copy from working latest-insights
+   ========================================================================== */
+
+.universal-grid__container {
+  display: grid;
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
   width: 100%;
   
-  &__container {
-    display: grid;
-    width: 100%;
-  }
-  
-  &__item {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  &__empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-12) var(--space-4);
-    color: var(--neutral-500);
-    text-align: center;
-  }
-  
-  &__empty-message {
-    font-size: var(--text-lg);
-    text-align: center;
-    margin: 0;
-  }
-}
-
-/* ==========================================================================
-   Grid Type Variants - Control layout behavior
-   ========================================================================== */
-
-.grid--auto {
-  .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-6);
-    
-    /* Tablet and up: 2x2 grid */
-    @media (min-width: 768px) {
-      gap: var(--space-5);
-    }
-    
-    /* Desktop: optimized spacing */
-    @media (min-width: 992px) {
-      gap: var(--space-6);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    /* Large screens: maximum spacing */
-    @media (min-width: 1200px) {
-      max-width: 900px;
-      gap: var(--space-8);
-    }
-  }
-}
-
-.grid--featured {
-  .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--space-8);
-    
-    @media (min-width: 992px) {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    @media (min-width: 1200px) {
-      max-width: 1100px;
-    }
-  }
-}
-
-/* NEW: Fixed 2x2 Grid Type for premium sections */
-.grid--fixed-2x2 {
-  .grid__container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: var(--space-6);
-    max-width: 800px;
-    margin: 0 auto;
-    
-    .grid__item {
-      min-height: 250px;
-    }
-    
-    @media (min-width: 1200px) {
-      max-width: 900px;
-      gap: var(--space-8);
-    }
-  }
-}
-
-/* ==========================================================================
-   Visual Variants - Control card presentation
-   ========================================================================== */
-
-.grid--standard {
-  /* Standard card spacing and presentation */
-}
-
-.grid--compact {
-  .grid__container {
-    gap: var(--space-4);
-    
-    @media (min-width: 768px) {
-      gap: var(--space-4);
-    }
-    
-    @media (min-width: 992px) {
-      gap: var(--space-5);
-    }
-  }
-}
-
-.grid--featured {
-  /* Enhanced spacing for featured content */
-  .grid__container {
-    gap: var(--space-8);
-    
-    @media (min-width: 1200px) {
-      gap: var(--space-10);
-    }
-  }
-}
-
-/* ==========================================================================
-   Responsive Behavior - Mobile-first approach
-   ========================================================================== */
-
-/* Mobile default: 1 column */
-.grid__container {
+  /* Mobile: 1 column (1x4 stack) */
   grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, auto);
 }
+
+/* ==========================================================================
+   CRITICAL STYLING FIXES - Match working version exactly
+   ========================================================================== */
+
+/* FIX 1: Category badge center alignment */
+.universal-grid__container .insight-latest-card__category,
+.latest-insights__container .insight-latest-card__category {
+  text-align: center;
+}
+
+/* FIX 3: Article title center alignment */
+.universal-grid__container .insight-latest-card__content,
+.latest-insights__container .insight-latest-card__content {
+  text-align: center;
+}
+
+/* FIX 4: Container overflow handling to prevent right-side clipping */
+.universal-grid__container,
+.latest-insights__container {
+  box-sizing: border-box;
+  overflow: visible; /* Allow cards to display fully */
+}
+
+/* FIX 2: Mobile margins - match panel system exactly */
+/* When universal grid is not inside a proper panel, apply panel content margins */
+.universal-grid__container:not(.panel__content *),
+.latest-insights__container:not(.panel__content *) {
+  /* Base mobile - same as panel__content */
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+  width: 100%;
+  max-width: 100%; /* Prevent container from exceeding viewport */
+}
+
+/* Mobile responsive margins matching panel system */
+@media (width >= 480px) {
+  .universal-grid__container:not(.panel__content *),
+  .latest-insights__container:not(.panel__content *) {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (width >= 768px) {
+  .universal-grid__container:not(.panel__content *),
+  .latest-insights__container:not(.panel__content *) {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+@media (width >= 1200px) {
+  .universal-grid__container:not(.panel__content *),
+  .latest-insights__container:not(.panel__content *) {
+    padding-left: var(--space-12);
+    padding-right: var(--space-12);
+  }
+}
+
+/* ==========================================================================
+   LATEST-INSIGHTS HEADER/FOOTER STYLES - For universal grid compatibility
+   ========================================================================== */
+
+.latest-insights__header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+  padding: 0;
+}
+
+.latest-insights__subtitle {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  max-width: 700px;
+  margin: var(--space-3) auto 0;
+  line-height: var(--leading-relaxed);
+}
+
+.latest-insights__footer {
+  text-align: center;
+  margin-top: var(--space-6);
+  padding: 0;
+}
+
+/* ==========================================================================
+   PROGRESSIVE ENHANCEMENT FOR LARGER SCREENS - Exact copy from working CSS
+   ========================================================================== */
 
 /* Small tablets (481px+) */
 @media (min-width: 481px) {
-  .grid--auto .grid__container,
-  .grid--featured .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
+  /* Cards size naturally - no fixed heights needed */
 }
 
-/* Tablets (768px+): 2x2 grid for insights, flexible for others */
-@media (min-width: 768px) {
-  .grid--insight.grid--auto .grid__container,
-  .grid--insight.grid--compact .grid__container {
-    grid-template-columns: repeat(2, 1fr);
+/* Tablet: 2x2 grid (768px+) */
+@media (width >= 768px) {
+  .universal-grid__container {
+    /* Tablet: 2 columns */
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(2, auto);
+    gap: var(--space-5);
   }
   
-  .grid--brand .grid__container,
-  .grid--founder .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Cards size naturally - no fixed heights needed */
+}
+
+/* Desktop: optimized spacing (992px+) */
+@media (width >= 992px) {
+  .universal-grid__container {
+    /* Desktop: 2x2 grid with optimal spacing */
+    gap: var(--space-6);
+    max-width: 800px;
+    margin: var(--space-8) auto;
   }
   
-  .grid--fixed-2x2 .grid__container {
-    gap: var(--space-4);
+  /* Cards size naturally - no fixed heights needed */
+}
+
+/* Large screens: maximum spacing (1200px+) */
+@media (width >= 1200px) {
+  .universal-grid__container {
+    max-width: 900px;
+    gap: var(--space-8);
   }
 }
 
-/* Desktop (992px+) */
-@media (min-width: 992px) {
-  .grid--auto .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-  
-  .grid--featured .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-}
+/* ==========================================================================
+   PLACEHOLDER STYLES - For empty grid slots
+   ========================================================================== */
 
-/* Large screens (1200px+) */
-@media (min-width: 1200px) {
-  .grid--auto .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+.universal-grid__placeholder {
+  display: flex;
+  flex-direction: column;
+  background: var(--neutral-50);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  border-left: 4px solid var(--neutral-300);
+  
+  .universal-grid__placeholder-content {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 300px;
   }
   
-  .grid--featured .grid__container {
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  }
-}
-
-/* Mobile override for very small screens */
-@media (max-width: 480px) {
-  .grid--auto .grid__container,
-  .grid--featured .grid__container,
-  .grid--fixed-2x2 .grid__container {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
+  .universal-grid__placeholder-icon {
+    color: var(--neutral-400);
+    margin-bottom: var(--space-3);
   }
   
-  .grid--fixed-2x2 .grid__container {
-    grid-template-rows: repeat(4, auto);
-    max-width: 100%;
+  .universal-grid__placeholder-title {
+    color: var(--neutral-600);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    margin: 0 0 var(--space-2) 0;
+  }
+  
+  .universal-grid__placeholder-description {
+    color: var(--neutral-500);
+    font-size: var(--text-sm);
+    font-style: italic;
     margin: 0;
   }
 }
 
 /* ==========================================================================
-   Content Type Specific Adjustments
+   VISUAL ENHANCEMENTS - Grid-specific improvements (copied from working CSS)
    ========================================================================== */
 
-/* Insights grid - maintain 2x2 on larger screens */
-.grid--insight {
-  &.grid--compact,
-  &.grid--standard {
-    .grid__container {
-      @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      
-      @media (min-width: 1200px) {
-        max-width: 900px;
-      }
-    }
-  }
+/* Grid item animations */
+.universal-grid__container .insight-latest-card {
+  transition: all 0.3s ease;
 }
 
-/* Brands grid - flexible columns */
-.grid--brand {
-  .grid__container {
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    
-    @media (min-width: 1200px) {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-  }
+/* Grid hover effects - slightly different from carousel */
+.universal-grid__container .insight-latest-card:hover {
+  transform: translateY(-6px); /* Slightly more pronounced than carousel */
+  box-shadow: var(--shadow-xl);
 }
 
-/* Founders grid - similar to brands */
-.grid--founder {
-  .grid__container {
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    
-    @media (min-width: 1200px) {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-  }
-}
-
-/* ==========================================================================
-   Visual Enhancements
-   ========================================================================== */
-
-/* Grid-specific hover effects */
-.grid__item {
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    z-index: 1; /* Ensure hover state appears above siblings */
-  }
-}
-
-/* Focus states for accessibility */
-.grid__item:focus-within {
+/* Grid-specific focus states for accessibility */
+.universal-grid__container .insight-latest-card:focus-within {
   outline: 2px solid var(--primary-400);
   outline-offset: 4px;
-  border-radius: var(--radius-xl);
-}
-
-/* Animation for grid appearance */
-@media (prefers-reduced-motion: no-preference) {
-  .grid__item {
-    opacity: 0;
-    animation: gridItemFadeIn 0.4s ease forwards;
-    
-    @for $i from 1 through 12 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.05}s;
-      }
-    }
-  }
-}
-
-@keyframes gridItemFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
