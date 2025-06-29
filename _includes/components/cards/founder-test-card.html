@@ -1,0 +1,37 @@
+{% comment %}
+TEMPORARY COMPONENT: Founder Test Card
+PURPOSE: Provides backwards compatibility for development test pages
+NOTE: This is a wrapper around universal-card for test/dev purposes only
+{% endcomment %}
+
+{% comment %} Create a mock founder object for universal card {% endcomment %}
+{% assign mock_founder = '' | split: '' %}
+{% assign mock_founder = mock_founder | push: include %}
+
+{% comment %} Map test card parameters to universal card format {% endcomment %}
+{% assign founder_data = include %}
+{% assign founder_data = founder_data | assign: 'name', include.name %}
+{% assign founder_data = founder_data | assign: 'location', include.location %}
+{% assign founder_data = founder_data | assign: 'company', include.brand %}
+{% assign founder_data = founder_data | assign: 'brief_bio', include.description %}
+
+{% comment %} Use universal card with founder type {% endcomment %}
+<div class="founder-test-card-wrapper">
+  <div style="background: white; border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-lg);">
+    <h3 style="margin: 0 0 var(--space-2) 0; color: var(--neutral-900);">{{ include.name }}</h3>
+    <p style="margin: 0 0 var(--space-2) 0; color: var(--neutral-600); font-size: var(--text-sm);">{{ include.location }}</p>
+    <div style="background: var(--accent-100); padding: var(--space-2); margin: var(--space-2) 0; border-radius: var(--radius-md);">
+      <p style="margin: 0; font-weight: var(--font-bold); color: var(--accent-700); font-size: var(--text-sm);">{{ include.achievement }}</p>
+    </div>
+    <p style="margin: var(--space-2) 0; color: var(--primary-600); font-weight: var(--font-medium);">🔗 {{ include.brand }}</p>
+    <p style="margin: var(--space-2) 0; color: var(--neutral-600); font-size: var(--text-sm); line-height: var(--leading-relaxed);">{{ include.description }}</p>
+    {% if include.tags %}
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: var(--space-3);">
+        {% assign tag_list = include.tags | split: ', ' %}
+        {% for tag in tag_list limit: 4 %}
+          <span style="background: var(--neutral-100); color: var(--neutral-700); padding: 2px var(--space-2); border-radius: 12px; font-size: 11px; border: 1px solid var(--neutral-200);">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>

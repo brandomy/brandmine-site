@@ -17,7 +17,7 @@
    Base Grid Container - LAYOUT ONLY
    ========================================================================== */
 
-.grid__container {
+.grid {
   display: grid;
   gap: var(--space-6);
   width: 100%;
@@ -46,19 +46,24 @@
   }
 }
 
+.grid__item {
+  /* Minimal item wrapper styles - layout only */
+  width: 100%;
+}
+
 /* ==========================================================================
    CRITICAL TEXT ALIGNMENT FIXES - Match working version exactly
    ========================================================================== */
 
 /* FIX 1: Category badge center alignment */
-.grid__container .insight-latest-card__category,
-.latest-insights__container .grid__container .insight-latest-card__category {
+.grid .insight-latest-card__category,
+.latest-insights__container .grid .insight-latest-card__category {
   text-align: center;
 }
 
 /* FIX 2: Article title center alignment */
-.grid__container .insight-latest-card__content,
-.latest-insights__container .grid__container .insight-latest-card__content {
+.grid .insight-latest-card__content,
+.latest-insights__container .grid .insight-latest-card__content {
   text-align: center;
 }
 

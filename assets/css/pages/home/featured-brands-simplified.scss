@@ -1,11 +1,11 @@
-/* Featured Brands - Homepage Integration */
+/* Featured Brands Simplified - Homepage Integration */
 /* Matches Case Studies design pattern with brand-specific adaptations */
 
 /* =============================================================================
    CAROUSEL CONTAINER - FEATURED BRANDS SPECIFIC
    ============================================================================= */
 
-.carousel[data-component-type="featured-brands"] {
+.carousel[data-component-type="featured-brands-simplified"] {
     /* Inherits base styles from carousel.scss */
     /* Featured brands specific height management */
     --carousel-height: 500px; /* Override default 360px height */
@@ -14,26 +14,19 @@
     align-items: stretch; /* Ensure cards stretch to full height */
 }
 
-.carousel-card {
-    /* Mobile: 1 card per view */
+.simplified-carousel-card {
     flex: 0 0 100%;
     width: 100%;
     scroll-snap-align: start;
     height: 500px; /* Match card height */
     max-height: 500px; /* Prevent overflow */
-    
-    /* Desktop: 2 cards per view like your screenshot */
-    @media (width >= 992px) {
-        flex: 0 0 calc(50% - (var(--carousel-gap) / 2));
-        width: calc(50% - (var(--carousel-gap) / 2));
-    }
 }
 
 /* =============================================================================
    SIMPLIFIED BRAND CARD STYLING
    ============================================================================= */
 
-.brand-card-featured {
+.simplified-brand-card {
     background: white;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-md);
@@ -44,20 +37,20 @@
     flex-direction: column;
 }
 
-.brand-card-featured:hover {
+.simplified-brand-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--card-shadow-hover);
 }
 
 /* Image Section */
-.brand-card-featured__image {
+.simplified-brand-card__image {
     height: 250px;
     position: relative;
     overflow: hidden;
     background: var(--neutral-100);
 }
 
-.brand-card-featured__img {
+.simplified-brand-card__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -65,12 +58,12 @@
     transition: transform var(--transition-medium);
 }
 
-.brand-card-featured:hover .brand-card-featured__img {
+.simplified-brand-card:hover .simplified-brand-card__img {
     transform: scale(1.05);
 }
 
 /* Metric Badge */
-.brand-card-featured__metric-badge {
+.simplified-brand-card__metric-badge {
     position: absolute;
     top: var(--space-3);
     right: var(--space-3);
@@ -96,7 +89,7 @@
 }
 
 /* Content Section */
-.brand-card-featured__content {
+.simplified-brand-card__content {
     padding: var(--space-6);
     flex: 1;
     display: flex;
@@ -104,7 +97,7 @@
     justify-content: space-between;
 }
 
-.brand-card-featured__title {
+.simplified-brand-card__title {
     font-family: var(--font-heading);
     font-size: var(--text-xl);
     font-weight: 700;
@@ -112,7 +105,7 @@
     margin: 0 0 var(--space-2) 0;
 }
 
-.brand-card-featured__meta {
+.simplified-brand-card__meta {
     font-size: var(--text-sm);
     color: var(--neutral-600);
     margin: 0 0 var(--space-4) 0;
@@ -123,7 +116,7 @@
 }
 
 /* Description - Mobile First */
-.brand-card-featured__description {
+.simplified-brand-card__description {
     // Mobile base styles
     font-size: var(--text-xs);
     line-height: var(--leading-relaxed);
@@ -147,14 +140,14 @@
 }
 
 /* Taxonomy Tags */
-.brand-card-featured__tags {
+.simplified-brand-card__tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2);
     margin: var(--space-4) 0;
 }
 
-.brand-card-featured__tag {
+.simplified-brand-card__tag {
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-md);
     font-size: var(--text-sm);
@@ -165,57 +158,57 @@
 }
 
 /* Market Tags */
-.brand-card-featured__tag--market {
+.simplified-brand-card__tag--market {
     background: var(--sky-100);
     color: var(--sky-800);
 }
 
-.brand-card-featured__tag--market:hover {
+.simplified-brand-card__tag--market:hover {
     background: var(--sky-200);
     transform: translateY(-1px);
 }
 
 /* Sector Tags */
-.brand-card-featured__tag--sector {
+.simplified-brand-card__tag--sector {
     background: var(--olive-100);
     color: var(--olive-800);
 }
 
-.brand-card-featured__tag--sector:hover {
+.simplified-brand-card__tag--sector:hover {
     background: var(--olive-200);
     transform: translateY(-1px);
 }
 
 /* Attribute Tags */
-.brand-card-featured__tag--attribute {
+.simplified-brand-card__tag--attribute {
     background: var(--secondary-100);
     color: var(--secondary-800);
 }
 
-.brand-card-featured__tag--attribute:hover {
+.simplified-brand-card__tag--attribute:hover {
     background: var(--secondary-200);
     transform: translateY(-1px);
 }
 
 /* Signal Tags */
-.brand-card-featured__tag--signal {
+.simplified-brand-card__tag--signal {
     background: var(--accent-100);
     color: var(--accent-800);
 }
 
-.brand-card-featured__tag--signal:hover {
+.simplified-brand-card__tag--signal:hover {
     background: var(--accent-200);
     transform: translateY(-1px);
 }
 
 /* CTA Section */
-.brand-card-featured__cta {
+.simplified-brand-card__cta {
     margin-top: var(--space-4);
     display: flex;
     justify-content: flex-end;
 }
 
-.brand-card-featured__button {
+.simplified-brand-card__button {
     background: var(--primary-500);
     color: white;
     padding: var(--space-2) var(--space-4);
@@ -229,12 +222,12 @@
     gap: var(--space-2);
 }
 
-.brand-card-featured__button:hover {
+.simplified-brand-card__button:hover {
     background: var(--primary-600);
     transform: translateY(-1px);
 }
 
-.brand-card-featured__button:active {
+.simplified-brand-card__button:active {
     transform: translateY(0);
 }
 
@@ -246,7 +239,7 @@
    MORE BRANDS CTA
    ============================================================================= */
 
-.featured-brands__more {
+.featured-brands-simplified__more {
     text-align: center;
     margin-top: var(--space-6);
 }

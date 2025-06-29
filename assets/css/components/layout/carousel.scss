@@ -42,7 +42,7 @@
   scroll-snap-type: x mandatory;
   
   /* Mobile: 1 card per view */
-  > * {
+  .carousel__item {
     flex: 0 0 100%;
     scroll-snap-align: start;
     height: var(--carousel-height);
@@ -50,15 +50,15 @@
   
   /* Tablet+: 2 cards per view */
   @media (width >= 768px) {
-    > * {
+    .carousel__item {
       flex: 0 0 calc(50% - (var(--carousel-gap) / 2));
     }
   }
   
   /* Desktop: 3 cards per view for some content types */
   @media (width >= 1200px) {
-    &.carousel--insights > *,
-    &.carousel--founders > * {
+    &.carousel--insights .carousel__item,
+    &.carousel--founders .carousel__item {
       flex: 0 0 calc(33.333% - (var(--carousel-gap) * 2 / 3));
     }
   }
@@ -111,7 +111,7 @@
     }
   }
   
-  > * {
+  .carousel__item {
     height: var(--card-height);
   }
 }
@@ -183,7 +183,7 @@
   
   /* Direct children (universal cards) should match simplified-carousel-card styling */
   /* Responsive layout to match simplified: 1 mobile, 1 tablet, 2 desktop */
-  > * {
+  .carousel__item {
     flex: 0 0 100%;
     width: 100%;
     scroll-snap-align: start;
@@ -487,14 +487,14 @@
 // Responsive mixin for carousel layouts - MOBILE FIRST
 @mixin carousel-responsive($mobile-cards: 1, $tablet-cards: 1, $desktop-cards: 2) {
   // Mobile first - base styles (no media query)
-  > * {
+  .carousel__item {
     flex: 0 0 calc(100% / #{$mobile-cards} - var(--carousel-gap, var(--space-6)) / #{$mobile-cards});
     scroll-snap-align: start;
   }
   
   // Small devices (480px and up)
   @media (width >= 480px) {
-    > * {
+    .carousel__item {
       flex: 0 0 calc(100% / #{$mobile-cards} - var(--carousel-gap, var(--space-4)) / #{$mobile-cards});
     }
   }
@@ -503,7 +503,7 @@
   @media (width >= 768px) {
     gap: var(--space-4);
     
-    > * {
+    .carousel__item {
       flex: 0 0 calc(100% / #{$tablet-cards} - var(--carousel-gap, var(--space-4)) / #{$tablet-cards});
     }
   }
@@ -512,7 +512,7 @@
   @media (width >= 992px) {
     gap: var(--space-6);
     
-    > * {
+    .carousel__item {
       flex: 0 0 calc(100% / #{$desktop-cards} - var(--carousel-gap, var(--space-6)) / #{$desktop-cards});
     }
   }
@@ -595,7 +595,7 @@
   @include carousel-responsive-gaps();
   
   // Custom responsive pattern for founder focus
-  > * {
+  .carousel__item {
     flex: 0 0 100%;
     scroll-snap-align: center;
     
@@ -656,7 +656,7 @@
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
   
-  > * {
+  .carousel__item {
     scroll-snap-align: start;
     transition: transform #{$duration} ease-out, opacity #{$duration} ease-out;
   }
@@ -664,7 +664,7 @@
 
 // Fade-in animation for cards
 @mixin carousel-fade-in-cards($delay: 0.1s) {
-  > * {
+  .carousel__item {
     opacity: 0;
     transform: translateY(20px);
     animation: carousel-fade-in 0.6s ease-out forwards;
@@ -678,7 +678,7 @@
   
   // Only animate if motion is not reduced
   @media (prefers-reduced-motion: reduce) {
-    > * {
+    .carousel__item {
       opacity: 1;
       transform: none;
       animation: none;
@@ -695,7 +695,7 @@
 
 // Hover effects for carousel cards
 @mixin carousel-hover-effects($lift: 4px) {
-  > * {
+  .carousel__item {
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
     
     &:hover {
@@ -714,7 +714,7 @@
 
 // Parallax scroll effect for background images
 @mixin carousel-parallax-cards() {
-  > * {
+  .carousel__item {
     position: relative;
     overflow: hidden;
     
@@ -744,7 +744,7 @@
 
 // Staggered card entrance animations
 @mixin carousel-stagger-entrance($base-delay: 0.1s, $stagger-delay: 0.05s) {
-  > * {
+  .carousel__item {
     opacity: 0;
     transform: translateX(30px);
     animation: carousel-slide-in 0.5s ease-out forwards;
@@ -757,7 +757,7 @@
   }
   
   @media (prefers-reduced-motion: reduce) {
-    > * {
+    .carousel__item {
       opacity: 1;
       transform: none;
       animation: none;
@@ -775,7 +775,7 @@
 // Enhanced loading state
 @mixin carousel-loading-state() {
   &.carousel-loading {
-    > * {
+    .carousel__item {
       opacity: 0.3;
       pointer-events: none;
     }

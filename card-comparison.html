@@ -57,9 +57,15 @@ permalink: /card-comparison/
   </div>
 
   <div class="card-demo" style="border-color: green;">
-    <h3>2. brand-card.html</h3>
+    <h3>2. brand-card.html (standard)</h3>
     <div class="stats">Lines: 140 | Usage: 10 references | Status: ✅ Production</div>
     {% include components/cards/brand-card.html brand=test_brand %}
+  </div>
+
+  <div class="card-demo" style="border-color: blue;">
+    <h3>2b. brand-card.html (featured variant)</h3>
+    <div class="stats">Lines: 140 | Usage: BEM variant | Status: 🔵 New BEM</div>
+    {% include components/cards/brand-card.html brand=test_brand variant="featured" %}
   </div>
 
   <!-- High Usage Legacy Cards -->
@@ -82,25 +88,17 @@ permalink: /card-comparison/
     {% include components/cards/related-brand-card.html brand=test_brand %}
   </div>
 
-  <!-- Universal System -->
-  <div class="card-demo" style="border-color: purple;">
+  <!-- Universal System (Removed - component eliminated) -->
+  <div class="card-demo" style="border-color: gray;">
     <h3>6. universal-card.html (brand)</h3>
-    <div class="stats">Lines: 977 | Usage: 191 references | Status: 🟣 Universal System</div>
-    {% include components/cards/universal-card.html 
-       item=test_brand 
-       type="brand" 
-       variant="standard" 
-       config_set="universal-card" %}
+    <div class="stats">Lines: 977 | Usage: 191 references | Status: ❌ Eliminated</div>
+    <p style="color: #888; font-style: italic;">Component removed during BEM migration</p>
   </div>
 
-  <div class="card-demo" style="border-color: purple;">
+  <div class="card-demo" style="border-color: gray;">
     <h3>7. universal-card.html (featured)</h3>
-    <div class="stats">Lines: 977 | Usage: 191 references | Status: 🟣 Universal Featured</div>
-    {% include components/cards/universal-card.html 
-       item=test_brand 
-       type="brand" 
-       variant="featured" 
-       config_set="universal-card" %}
+    <div class="stats">Lines: 977 | Usage: 191 references | Status: ❌ Eliminated</div>
+    <p style="color: #888; font-style: italic;">Component removed during BEM migration</p>
   </div>
 
 </div>

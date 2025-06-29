@@ -1,0 +1,81 @@
+/**
+ * Featured Founders Simplified Section
+ * Clean grid layout for Progressive Disclosure founders cards
+ * Following successful Case Studies and Brand section patterns
+ */
+
+.featured-founders-simplified {
+  width: 100%;
+}
+
+.featured-founders-simplified__grid {
+  display: grid;
+  gap: var(--space-6);
+  width: 100%;
+  
+  // Mobile: Single column
+  grid-template-columns: 1fr;
+  
+  // Tablet: 2 columns
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+  
+  // Desktop: 4 columns for consistency with other sections
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+  
+  // Center single cards on mobile
+  @media (max-width: 639px) {
+    justify-items: center;
+  }
+}
+
+// Placeholder state styling
+.featured-founders-simplified__placeholder {
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+  background: var(--neutral-50);
+  border-radius: var(--rounded-lg);
+  border: 2px dashed var(--neutral-200);
+  
+  .placeholder-text {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    margin: 0;
+  }
+}
+
+// Responsive grid adjustments for different screen sizes
+@media (min-width: 1280px) {
+  .featured-founders-simplified__grid {
+    // On very large screens, maintain card max-width for readability
+    .simplified-founder-card {
+      max-width: 300px;
+      justify-self: center;
+    }
+  }
+}
+
+// Animation for cards loading in
+.featured-founders-simplified__grid .simplified-founder-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 0.1}s;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

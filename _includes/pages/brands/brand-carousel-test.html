@@ -1,0 +1,40 @@
+{% comment %}
+  SECTION: brand-carousel-test
+  PURPOSE: Testing horizontal carousel layout
+  LAYOUT: Horizontal scrolling carousel
+{% endcomment %}
+
+<div class="brand-carousel-test">
+  <div class="panel__content-header">
+    <h2 id="heading-brand-carousel-test" class="panel__heading-secondary">
+      {% include helpers/t.html key="brands.brand-carousel-test_title" fallback="Brand Carousel Test" %}
+    </h2>
+    <p class="panel__subtitle">
+      {% include helpers/t.html key="brands.brand-carousel-test_subtitle" fallback="Testing horizontal carousel layout" %}
+    </p>
+  </div>
+
+  <div class="brand-carousel-test__container">
+    {% assign test_items = site.brands | where: "lang", page.lang | limit: 8 %}
+    
+    <div class="brand-carousel-test__carousel" data-carousel="true">
+      <div class="brand-carousel-test__track">
+        {% for item in test_items %}
+          <div class="brand-carousel-test__slide">
+            {% include components/cards/universal-card.html
+               item=item
+               type="brand"
+               variant="compact"
+               context="carousel"
+               config_set="universal-card" %}
+          </div>
+        {% endfor %}
+      </div>
+      
+      <div class="brand-carousel-test__nav">
+        <button class="brand-carousel-test__nav-btn brand-carousel-test__nav-btn--prev" aria-label="Previous">‹</button>
+        <button class="brand-carousel-test__nav-btn brand-carousel-test__nav-btn--next" aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+</div>

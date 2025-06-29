@@ -136,13 +136,15 @@
        data-component-type="featured-{{ content_type }}" 
        data-page-context="{{ page_context }}">
     {% for item in filtered_content offset:1 limit:limit %}
-      {% if content_type == "brands" %}
-        {% include helpers/brand-card-selector.html brand=item %}
-      {% elsif content_type == "founders" %}
-        {% include helpers/founder-card-selector.html founder=item %}
-      {% elsif content_type == "case-studies" %}
-        {% include helpers/case-study-card-selector.html case_study=item %}
-      {% endif %}
+      <div class="carousel__item">
+        {% if content_type == "brands" %}
+          {% include helpers/brand-card-selector.html brand=item %}
+        {% elsif content_type == "founders" %}
+          {% include helpers/founder-card-selector.html founder=item %}
+        {% elsif content_type == "case-studies" %}
+          {% include helpers/case-study-card-selector.html case_study=item %}
+        {% endif %}
+      </div>
     {% endfor %}
   </div>
   
@@ -152,13 +154,15 @@
        data-component-type="featured-{{ content_type }}-grid" 
        data-page-context="{{ page_context }}">
     {% for item in filtered_content %}
-      {% if content_type == "brands" %}
-        {% include helpers/brand-card-selector.html brand=item %}
-      {% elsif content_type == "founders" %}
-        {% include helpers/founder-card-selector.html founder=item %}
-      {% elsif content_type == "case-studies" %}
-        {% include helpers/case-study-card-selector.html case_study=item %}
-      {% endif %}
+      <div class="carousel__item">
+        {% if content_type == "brands" %}
+          {% include helpers/brand-card-selector.html brand=item %}
+        {% elsif content_type == "founders" %}
+          {% include helpers/founder-card-selector.html founder=item %}
+        {% elsif content_type == "case-studies" %}
+          {% include helpers/case-study-card-selector.html case_study=item %}
+        {% endif %}
+      </div>
     {% endfor %}
   </div>
   
@@ -169,13 +173,15 @@
        data-page-context="{{ page_context }}">
     {% if filtered_content.size > 0 %}
       {% for item in filtered_content %}
-        {% if content_type == "brands" %}
-          {% include helpers/brand-card-selector.html brand=item %}
-        {% elsif content_type == "founders" %}
-          {% include helpers/founder-card-selector.html founder=item %}
-        {% elsif content_type == "case-studies" %}
-          {% include helpers/case-study-card-selector.html case_study=item %}
-        {% endif %}
+        <div class="carousel__item">
+          {% if content_type == "brands" %}
+            {% include helpers/brand-card-selector.html brand=item %}
+          {% elsif content_type == "founders" %}
+            {% include helpers/founder-card-selector.html founder=item %}
+          {% elsif content_type == "case-studies" %}
+            {% include helpers/case-study-card-selector.html case_study=item %}
+          {% endif %}
+        </div>
       {% endfor %}
     {% else %}
       <!-- Fallback content if no items available -->

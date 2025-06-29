@@ -1,0 +1,946 @@
+{% comment %}
+COMPONENT: Universal Card (THE Universal Card System)
+PURPOSE: Single sophisticated card component handling ALL content types across Brandmine
+SUPPORTS: All content types with complete feature consolidation from all previous variants
+VERSION: 2.0.0 (True Universal Implementation)
+
+CONSOLIDATED FEATURES:
+- Content Cards: Standard/featured/compact layouts for all content types
+- Hero Cards: Large format premium display with enhanced presentation  
+- Utility Cards: Dimensions, testimonials, metrics, social links, quotes
+- Legacy Features: All functionality from brand-card, insight-card, founder-card, etc.
+
+COMPREHENSIVE SECTIONS:
+- Header: Image/portrait display with overlays, badges, generation indicators
+- Content: Titles, meta info, descriptions, biographies with smart truncation
+- Quote: Founder quotes, testimonials, wisdom with attribution
+- Achievement: Success highlights, key achievements, award displays
+- Metrics: Large metrics, impact grids, timeline displays
+- Taxonomy: Primary tags, skill clouds, category styling, signal tags
+- Actions: CTAs, split footers, social links with layout variants
+
+PARAMETERS:
+- item (required): Content object to display
+- type (required): All types [brand|founder|case-study|insight|testimonial|dimension|entry|team-member|metric|social-link|quote|stat]
+- variant (optional): Display emphasis [standard|featured|compact|hero]
+- context (optional): Usage context [carousel|grid|sidebar|utility|hero]
+- layout (optional): Hero layouts [split|overlay|stacked|banner] / Utility layouts [vertical|horizontal]
+- features (optional): Hero features [image,content,taxonomy,action,metrics]
+
+ARCHITECTURE: Single component replaces ALL card variants - true universal system
+{% endcomment %}
+
+{% comment %} Parameter validation {% endcomment %}
+{% unless include.item and include.type %}
+  <!-- Universal Card: Missing required parameters -->
+  {% break %}
+{% endunless %}
+
+{% comment %} Configuration setup with universal fallback chain {% endcomment %}
+{% assign config_set = include.config_set | default: "universal-card" %}
+{% assign variant = include.variant | default: "standard" %}
+{% assign context = include.context | default: "grid" %}
+{% assign layout = include.layout | default: "vertical" %}
+{% assign features = include.features | default: "image,content,action" | split: "," %}
+
+{% comment %} Load universal configuration with fallback chain {% endcomment %}
+{% assign config = site.data.component_defaults.cards[config_set][include.type] %}
+{% unless config %}
+  {% comment %} Fallback to enhanced config {% endcomment %}
+  {% assign config = site.data.component_defaults.cards.universal-card[include.type] %}
+{% endunless %}
+{% unless config %}
+  {% comment %} Fallback to content config {% endcomment %}
+  {% assign config = site.data.component_defaults.cards.universal-content-card[include.type] %}
+{% endunless %}
+{% unless config %}
+  {% comment %} Fallback to utility config {% endcomment %}
+  {% assign config = site.data.component_defaults.cards.universal-utility-card[include.type] %}
+{% endunless %}
+{% unless config %}
+  {% comment %} Fallback to hero config {% endcomment %}
+  {% assign config = site.data.component_defaults.cards.universal-hero-card[include.type] %}
+{% endunless %}
+{% unless config %}
+  {% comment %} Final fallback to default {% endcomment %}
+  {% assign config = site.data.component_defaults.cards[config_set].default %}
+{% endunless %}
+
+{% comment %} Set safe defaults for truncatewords {% endcomment %}
+{% if config.sections.content.description_words %}
+  {% assign description_word_limit = config.sections.content.description_words %}
+{% else %}
+  {% assign description_word_limit = 25 %}
+{% endif %}
+
+{% if config.sections.content.bio_words %}
+  {% assign bio_word_limit = config.sections.content.bio_words %}
+{% else %}
+  {% assign bio_word_limit = 30 %}
+{% endif %}
+
+{% if config.sections.content.excerpt_words %}
+  {% assign excerpt_word_limit = config.sections.content.excerpt_words %}
+{% else %}
+  {% assign excerpt_word_limit = 25 %}
+{% endif %}
+
+{% comment %} Smart variant detection {% endcomment %}
+{% unless include.variant %}
+  {% if include.item.featured_level >= 2 %}
+    {% assign variant = "hero" %}
+  {% elsif include.item.featured %}
+    {% assign variant = "featured" %}
+  {% elsif include.context == "sidebar" %}
+    {% assign variant = "compact" %}
+  {% endif %}
+{% endunless %}
+
+{% comment %} CSS classes with universal BEM structure and modifiers {% endcomment %}
+{% assign card_classes = "universal-card" %}
+{% assign card_classes = card_classes | append: " universal-card--" | append: include.type %}
+{% assign card_classes = card_classes | append: " universal-card--" | append: variant %}
+{% assign card_classes = card_classes | append: " universal-card--context-" | append: context %}
+
+{% comment %} Add layout classes for hero and utility variants {% endcomment %}
+{% if variant == "hero" %}
+  {% assign card_classes = card_classes | append: " universal-card--layout-" | append: layout %}
+{% elsif context == "utility" %}
+  {% assign card_classes = card_classes | append: " universal-card--utility" %}
+  {% assign card_classes = card_classes | append: " universal-card--layout-" | append: layout %}
+{% endif %}
+
+{% comment %} Add layout variant classes {% endcomment %}
+{% if config.layout_variant %}
+  {% assign card_classes = card_classes | append: " universal-card--layout-" | append: config.layout_variant %}
+{% endif %}
+
+{% comment %} Add CSS modifier classes {% endcomment %}
+{% if config.css_modifiers %}
+  {% for modifier in config.css_modifiers %}
+    {% assign card_classes = card_classes | append: " universal-card--" | append: modifier %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} Determine card element type {% endcomment %}
+{% assign element_type = "article" %}
+{% assign element_role = "article" %}
+{% assign schema_type = "https://schema.org/Article" %}
+{% if context == "utility" %}
+  {% assign element_type = "div" %}
+  {% assign element_role = "complementary" %}
+  {% assign schema_type = "" %}
+{% endif %}
+
+<{{ element_type }} class="{{ card_classes }}" role="{{ element_role }}"{% if schema_type != "" %} itemscope itemtype="{{ schema_type }}"{% endif %}>
+
+{% comment %} ========================================= {% endcomment %}
+{% comment %} UTILITY CARD TYPES (dimension, testimonial, metric, social-link, quote, stat) {% endcomment %}  
+{% comment %} ========================================= {% endcomment %}
+{% if context == "utility" %}
+  {% case include.type %}
+    {% when "dimension" %}
+      <div class="universal-card__dimension">
+        {% if include.item.icon %}
+          <div class="universal-card__dimension-icon">{{ include.item.icon }}</div>
+        {% endif %}
+        
+        <div class="universal-card__dimension-content">
+          <h4 class="universal-card__dimension-name">
+            {% if include.item.url %}
+              <a href="{{ include.item.url }}">{{ include.item.name | default: include.item.title }}</a>
+            {% else %}
+              {{ include.item.name | default: include.item.title }}
+            {% endif %}
+          </h4>
+          
+          {% if include.item.description and config.show_description %}
+            <p class="universal-card__dimension-description">
+              {{ include.item.description | truncatewords: config.description_words | default: 15 }}
+            </p>
+          {% endif %}
+          
+          {% if include.item.count and config.show_count %}
+            <span class="universal-card__dimension-count">
+              {{ include.item.count }} 
+              {% if include.item.count == 1 %}
+                {% include helpers/t.html key="dimensions.brand_singular" fallback="brand" %}
+              {% else %}
+                {% include helpers/t.html key="dimensions.brand_plural" fallback="brands" %}
+              {% endif %}
+            </span>
+          {% endif %}
+        </div>
+      </div>
+      
+    {% when "testimonial" %}
+      <blockquote class="universal-card__quote">
+        <div class="universal-card__quote-content">
+          <p class="universal-card__quote-text">{{ include.item.quote | truncatewords: config.quote_words | default: 25 }}</p>
+        </div>
+        
+        <footer class="universal-card__quote-attribution">
+          <cite class="universal-card__quote-author">{{ include.item.author }}</cite>
+          {% if include.item.company and config.show_company %}
+            <span class="universal-card__quote-company">{{ include.item.company }}</span>
+          {% endif %}
+          {% if include.item.role %}
+            <span class="universal-card__quote-role">{{ include.item.role }}</span>
+          {% endif %}
+        </footer>
+      </blockquote>
+      
+    {% when "metric" %}
+      <div class="universal-card__metric">
+        <div class="universal-card__metric-primary">
+          <span class="universal-card__metric-value">{{ include.item.value }}</span>
+          <span class="universal-card__metric-label">{{ include.item.label }}</span>
+        </div>
+        
+        {% if include.item.change and config.show_change %}
+          <div class="universal-card__metric-secondary">
+            <span class="universal-card__metric-change universal-card__metric-change--{{ include.item.change_type | default: 'neutral' }}">
+              {% if include.item.change_type == 'positive' %}+{% endif %}{{ include.item.change }}
+            </span>
+            {% if include.item.period %}
+              <span class="universal-card__metric-period">{{ include.item.period }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        {% if include.item.description %}
+          <p class="universal-card__metric-description">{{ include.item.description }}</p>
+        {% endif %}
+      </div>
+      
+    {% when "social-link" %}
+      <a href="{{ include.item.url }}" class="universal-card__social-link" target="_blank" rel="noopener">
+        {% if include.item.icon %}
+          <span class="universal-card__social-icon">{{ include.item.icon }}</span>
+        {% endif %}
+        <span class="universal-card__social-label">{{ include.item.label }}</span>
+        {% if include.item.handle %}
+          <span class="universal-card__social-handle">{{ include.item.handle }}</span>
+        {% endif %}
+      </a>
+      
+    {% when "quote" %}
+      <div class="universal-card__standalone-quote">
+        <blockquote class="universal-card__quote-content">
+          <p class="universal-card__quote-text">{{ include.item.text | truncatewords: config.quote_words | default: 25 }}</p>
+        </blockquote>
+        
+        {% if include.item.author %}
+          <footer class="universal-card__quote-attribution">
+            <cite class="universal-card__quote-author">{{ include.item.author }}</cite>
+            {% if include.item.context %}
+              <span class="universal-card__quote-context">{{ include.item.context }}</span>
+            {% endif %}
+          </footer>
+        {% endif %}
+      </div>
+      
+    {% when "stat" %}
+      <div class="universal-card__stat">
+        <div class="universal-card__stat-visual">
+          <span class="universal-card__stat-number">{{ include.item.number }}</span>
+          {% if include.item.unit %}
+            <span class="universal-card__stat-unit">{{ include.item.unit }}</span>
+          {% endif %}
+        </div>
+        
+        <div class="universal-card__stat-content">
+          <h4 class="universal-card__stat-label">{{ include.item.label }}</h4>
+          {% if include.item.description %}
+            <p class="universal-card__stat-description">{{ include.item.description }}</p>
+          {% endif %}
+        </div>
+        
+        {% if include.item.trend %}
+          <div class="universal-card__stat-trend universal-card__stat-trend--{{ include.item.trend_direction | default: 'neutral' }}">
+            {{ include.item.trend }}
+          </div>
+        {% endif %}
+      </div>
+  {% endcase %}
+
+{% comment %} ========================================= {% endcomment %}
+{% comment %} HERO CARD LAYOUT (large format premium display) {% endcomment %}
+{% comment %} ========================================= {% endcomment %}
+{% elsif variant == "hero" %}
+  {% if features contains "image" %}
+    <div class="universal-card__hero-image">
+      {% case include.type %}
+        {% when "brand" %}
+          {% if include.item.images.hero %}
+            {% include components/images/collection-image.html
+               collection="brands" slug=include.item.ref purpose="hero"
+               name=include.item.images.hero.name alt=include.item.images.hero.alt
+               sizes="(max-width: 768px) 100vw, 50vw" loading="eager" %}
+          {% endif %}
+        {% when "founder" %}
+          {% if include.item.images.portrait %}
+            {% include components/images/collection-image.html
+               collection="founders" slug=include.item.ref purpose="portrait"
+               name=include.item.images.portrait.name alt=include.item.images.portrait.alt
+               aspect="portrait" sizes="(max-width: 768px) 100vw, 40vw" loading="eager" %}
+          {% endif %}
+        {% when "case-study" %}
+          {% if include.item.images.hero %}
+            {% include components/images/collection-image.html
+               collection="case-studies" slug=include.item.slug purpose="hero"
+               name=include.item.images.hero.name alt=include.item.images.hero.alt
+               sizes="(max-width: 768px) 100vw, 50vw" loading="eager" %}
+          {% endif %}
+        {% when "insight" %}
+          {% if include.item.images.hero %}
+            {% include components/images/collection-image.html
+               collection="insights" slug=include.item.ref purpose="hero"
+               name=include.item.images.hero.name alt=include.item.images.hero.alt
+               sizes="(max-width: 768px) 100vw, 50vw" loading="eager" %}
+          {% endif %}
+        {% when "entry" %}
+          {% if include.item.images.hero %}
+            {% include components/images/collection-image.html
+               collection="journal" slug=include.item.slug purpose="hero"
+               name=include.item.images.hero.name alt=include.item.images.hero.alt
+               sizes="(max-width: 768px) 100vw, 50vw" loading="eager" %}
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  <div class="universal-card__hero-content">
+    {% if features contains "content" %}
+      <header class="universal-card__hero-header">
+        <h2 class="universal-card__hero-title" itemprop="headline">
+          {% if include.item.url %}
+            <a href="{{ include.item.url }}">{{ include.item.title | default: include.item.name }}</a>
+          {% else %}
+            {{ include.item.title | default: include.item.name }}
+          {% endif %}
+        </h2>
+        
+        <div class="universal-card__hero-meta">
+          {% case include.type %}
+            {% when "brand" %}
+              {% if include.item.location %}
+                <span class="universal-card__hero-location">{{ include.item.location }}</span>
+              {% endif %}
+              {% if include.item.founding_year %}
+                <span class="universal-card__hero-founded">
+                  {% include helpers/t.html key="brands.founded" fallback="Founded" %} {{ include.item.founding_year }}
+                </span>
+              {% endif %}
+            {% when "founder" %}
+              {% if include.item.position %}
+                <span class="universal-card__hero-position">{{ include.item.position }}</span>
+              {% endif %}
+              {% if include.item.company %}
+                <span class="universal-card__hero-company">{{ include.item.company }}</span>
+              {% endif %}
+            {% when "insight" %}
+              {% if include.item.category %}
+                <span class="universal-card__hero-category universal-card__hero-category--{{ include.item.category | slugify }}">
+                  {{ include.item.category }}
+                </span>
+              {% endif %}
+              {% if include.item.date %}
+                <time datetime="{{ include.item.date | date: '%Y-%m-%d' }}" itemprop="datePublished">
+                  {{ include.item.date | date: "%B %Y" }}
+                </time>
+              {% endif %}
+          {% endcase %}
+        </div>
+      </header>
+
+      <div class="universal-card__hero-description">
+        {% case include.type %}
+          {% when "brand" %}
+            {% if include.item.description %}
+              <p itemprop="description">{{ include.item.description | truncatewords: config.description_words | default: 50 }}</p>
+            {% endif %}
+          {% when "founder" %}
+            {% if include.item.brief_bio %}
+              <p>{{ include.item.brief_bio | truncatewords: config.bio_words | default: 40 }}</p>
+            {% endif %}
+          {% when "insight" %}
+            {% if include.item.excerpt %}
+              <p itemprop="description">{{ include.item.excerpt | truncatewords: config.excerpt_words | default: 40 }}</p>
+            {% endif %}
+        {% endcase %}
+      </div>
+    {% endif %}
+
+    {% if features contains "action" %}
+      <footer class="universal-card__hero-actions">
+        {% case include.type %}
+          {% when "brand" %}
+            <a href="{{ include.item.url }}" class="universal-card__hero-action universal-card__hero-action--primary">
+              {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
+              <span class="universal-card__hero-action-icon">→</span>
+            </a>
+          {% when "founder" %}
+            <a href="{{ include.item.url }}" class="universal-card__hero-action universal-card__hero-action--primary">
+              {% include helpers/t.html key="founders.read_story" fallback="Read Story" %}
+              <span class="universal-card__hero-action-icon">→</span>
+            </a>
+          {% when "insight" %}
+            <a href="{{ include.item.url }}" class="universal-card__hero-action universal-card__hero-action--primary">
+              {% include helpers/t.html key="insights.read_full" fallback="Read Full Article" %}
+              <span class="universal-card__hero-action-icon">→</span>
+            </a>
+        {% endcase %}
+      </footer>
+    {% endif %}
+  </div>
+
+{% comment %} ========================================= {% endcomment %}
+{% comment %} STANDARD CONTENT CARDS (existing sophisticated system) {% endcomment %}
+{% comment %} ========================================= {% endcomment %}  
+{% else %}
+  
+  {% comment %} =========================== {% endcomment %}
+  {% comment %} IMAGE SECTION WITH OVERLAYS {% endcomment %}
+  {% comment %} =========================== {% endcomment %}
+  {% if config.sections.header.show_hero_image or config.sections.header.show_portrait %}
+    <div class="universal-card__image">
+      {% case include.type %}
+        {% when "brand" %}
+          {% if include.item.images.hero %}
+            {% include components/images/collection-image.html
+               collection="brands"
+               slug=include.item.ref
+               purpose="hero"
+               name=include.item.images.hero.name
+               alt=include.item.images.hero.alt
+               loading="lazy" %}
+          {% else %}
+            <div class="universal-card__image-placeholder universal-card__image-placeholder--brand">
+              <span class="universal-card__image-placeholder-text">{{ include.item.title | slice: 0, 2 | upcase }}</span>
+            </div>
+          {% endif %}
+          
+          {% comment %} Metric Overlay for Brand Cards {% endcomment %}
+          {% if config.sections.header.show_metric_overlay %}
+            <div class="universal-card__metric-overlay">
+              {% if include.item.export_markets.size > 0 %}
+                <span class="universal-card__overlay-metric">
+                  {{ include.item.export_markets.size }} Countries
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+          
+          {% comment %} Logo Corner Placement {% endcomment %}
+          {% if config.sections.header.show_logo_corner and include.item.images.logo %}
+            <div class="universal-card__logo-corner">
+              {% include components/images/collection-image.html
+                 collection="brands"
+                 slug=include.item.ref
+                 purpose="logo"
+                 name=include.item.images.logo.name
+                 alt=include.item.images.logo.alt
+                 sizes="60px"
+                 loading="lazy" %}
+            </div>
+          {% endif %}
+          
+        {% when "founder" %}
+          {% if config.sections.header.show_portrait and include.item.images.portrait %}
+            {% include components/images/collection-image.html
+               collection="founders"
+               slug=include.item.ref
+               purpose="portrait"
+               name=include.item.images.portrait.name
+               alt=include.item.images.portrait.alt
+               aspect="portrait"
+               loading="lazy" %}
+          {% else %}
+            <div class="universal-card__image-placeholder universal-card__image-placeholder--founder">
+              <span class="universal-card__image-placeholder-text">{{ include.item.name | slice: 0, 2 | upcase }}</span>
+            </div>
+          {% endif %}
+          
+        {% when "case-study" %}
+          {% if include.item.images.hero %}
+            {% include components/images/collection-image.html
+               collection="case-studies"
+               slug=include.item.slug
+               purpose="hero"
+               name=include.item.images.hero.name
+               alt=include.item.images.hero.alt
+               loading="lazy" %}
+          {% else %}
+            <div class="universal-card__image-placeholder universal-card__image-placeholder--case-study">
+              <span class="universal-card__image-placeholder-text">{{ include.item.title | slice: 0, 2 | upcase }}</span>
+            </div>
+          {% endif %}
+          
+        {% when "insight" %}
+          {% if include.item.images.hero %}
+            {% include components/images/collection-image.html
+               collection="insights"
+               slug=include.item.ref
+               purpose="hero"
+               name=include.item.images.hero.name
+               alt=include.item.images.hero.alt
+               loading="lazy" %}
+          {% endif %}
+          
+          {% comment %} Category Badge for Insight Cards {% endcomment %}
+          {% if config.sections.header.show_category_badge and include.item.category %}
+            <div class="universal-card__category-badge universal-card__category-badge--{{ include.item.category | slugify }}">
+              <span class="universal-card__category-icon">📊</span>
+              <span class="universal-card__category-text">{{ include.item.category }}</span>
+            </div>
+          {% endif %}
+          
+        {% when "testimonial" %}
+          {% if config.sections.profile.show_profile_image and include.item.images.portrait %}
+            {% include components/images/collection-image.html
+               collection="testimonials"
+               slug=include.item.slug
+               purpose="portrait"
+               name=include.item.images.portrait.name
+               alt=include.item.images.portrait.alt
+               aspect="portrait"
+               sizes="80px"
+               loading="lazy" %}
+          {% endif %}
+          
+        {% when "dimension" %}
+          {% if config.sections.header.show_icon %}
+            <div class="universal-card__dimension-icon universal-card__dimension-icon--{{ include.item.type }}">
+              <span class="dimension-icon">🏷️</span>
+            </div>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ==================== {% endcomment %}
+  {% comment %} GENERATION BADGE {% endcomment %}
+  {% comment %} ==================== {% endcomment %}
+  {% if config.sections.header.show_generation_badge and include.item.generation %}
+    <div class="universal-card__generation-badge universal-card__generation-badge--{{ include.item.generation }}">
+      {% case include.item.generation %}
+        {% when 'first' %}1st Gen
+        {% when 'second' %}2nd Gen  
+        {% when 'third' %}3rd Gen
+        {% when 'transition' %}Transition
+        {% else %}{{ include.item.generation }}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ================= {% endcomment %}
+  {% comment %} HEADER SECTION {% endcomment %}
+  {% comment %} ================= {% endcomment %}
+  <header class="universal-card__header">
+    {% case include.type %}
+      {% when "brand" %}
+        {% if config.sections.content.show_title %}
+          <h3 class="universal-card__title" itemprop="name">
+            <a href="{{ include.item.url }}">{{ include.item.title }}</a>
+          </h3>
+        {% endif %}
+        {% if config.sections.content.show_founded_location %}
+          <p class="universal-card__meta universal-card__meta--founded-location">
+            {% if include.item.founding_year %}
+              {% include helpers/t.html key="brands.founded" fallback="Founded" %} {{ include.item.founding_year }}
+            {% endif %}
+            {% if include.item.city and include.item.country %}
+              {% if include.item.founding_year %} • {% endif %}
+              {{ include.item.city }} 
+              {% include helpers/country-flag.html country_code=include.item.country %}
+            {% endif %}
+          </p>
+        {% endif %}
+        
+      {% when "founder" %}
+        {% if config.sections.content.show_name %}
+          <h3 class="universal-card__title" itemprop="name">
+            <a href="{{ include.item.url }}">{{ include.item.name }}</a>
+          </h3>
+        {% endif %}
+        {% if config.sections.meta.show_position and include.item.position %}
+          <p class="universal-card__meta">{{ include.item.position }}</p>
+        {% endif %}
+        {% if config.sections.content.show_associated_brand and include.item.company %}
+          <p class="universal-card__company">{{ include.item.company }}</p>
+        {% endif %}
+        
+      {% when "case-study" %}
+        <div class="universal-card__client-section">
+          {% if config.sections.content.show_client_label %}
+            <p class="universal-card__client-label">CLIENT</p>
+          {% endif %}
+          {% if config.sections.content.show_company_name and include.item.client %}
+            <p class="universal-card__client-name">{{ include.item.client }}</p>
+          {% endif %}
+        </div>
+        {% if include.item.industry %}
+          <span class="universal-card__industry-tag">{{ include.item.industry }}</span>
+        {% endif %}
+        {% if config.sections.content.show_case_title %}
+          <h3 class="universal-card__title" itemprop="name">
+            {% if include.item.permalink %}
+              <a href="{{ include.item.permalink }}">{{ include.item.title }}</a>
+            {% else %}
+              {{ include.item.title }}
+            {% endif %}
+          </h3>
+        {% endif %}
+        
+      {% when "insight" %}
+        {% if config.sections.content.show_title %}
+          <h3 class="universal-card__title" itemprop="headline">
+            <a href="{{ include.item.url }}">{{ include.item.title }}</a>
+          </h3>
+        {% endif %}
+        {% if config.sections.content.show_meta_info %}
+          <div class="universal-card__meta">
+            {% if include.item.date %}
+              <time datetime="{{ include.item.date | date: '%Y-%m-%d' }}" itemprop="datePublished">
+                {{ include.item.date | date: "%B %Y" }}
+              </time>
+            {% endif %}
+            {% if include.item.reading_time %}
+              <span class="universal-card__reading-time">{{ include.item.reading_time }} {% include helpers/t.html key="insights.min_read" fallback="min read" %}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+      {% when "testimonial" %}
+        {% if config.sections.profile.show_name %}
+          <h3 class="universal-card__title" itemprop="name">{{ include.item.name }}</h3>
+        {% endif %}
+        {% if config.sections.profile.show_role_company %}
+          <p class="universal-card__meta">{{ include.item.role }}{% if include.item.company %}, {{ include.item.company }}{% endif %}</p>
+        {% endif %}
+        
+      {% when "dimension" %}
+        {% if config.sections.header.show_title %}
+          <h3 class="universal-card__title">{{ include.item.title | default: include.item.name }}</h3>
+        {% endif %}
+    {% endcase %}
+  </header>
+
+  {% comment %} =================== {% endcomment %}
+  {% comment %} CONTENT SECTION {% endcomment %}
+  {% comment %} =================== {% endcomment %}
+  {% if config.sections.content.show_description %}
+    <div class="universal-card__content">
+      {% case include.type %}
+        {% when "brand" %}
+          {% if include.item.description %}
+            <p class="universal-card__description" itemprop="description">
+              {{ include.item.description | truncatewords: description_word_limit }}
+            </p>
+          {% endif %}
+          
+        {% when "founder" %}
+          {% if config.sections.content.show_biography and include.item.brief_bio %}
+            <p class="universal-card__description">
+              {{ include.item.brief_bio | truncatewords: bio_word_limit }}
+            </p>
+          {% endif %}
+          
+        {% when "case-study" %}
+          {% if include.item.excerpt %}
+            <p class="universal-card__description">{{ include.item.excerpt | truncatewords: config.sections.content.description_words }}</p>
+          {% elsif include.item.description %}
+            <p class="universal-card__description">{{ include.item.description | truncatewords: config.sections.content.description_words }}</p>
+          {% endif %}
+          
+        {% when "insight" %}
+          {% if include.item.excerpt %}
+            <p class="universal-card__description" itemprop="description">
+              {{ include.item.excerpt | truncatewords: excerpt_word_limit }}
+            </p>
+          {% endif %}
+          
+        {% when "dimension" %}
+          {% if include.item.description %}
+            <p class="universal-card__description">
+              {{ include.item.description | truncatewords: description_word_limit }}
+            </p>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ========================= {% endcomment %}
+  {% comment %} QUOTE SECTION (Enhanced) {% endcomment %}
+  {% comment %} ========================= {% endcomment %}
+  {% if config.sections.quote.show_founder_quote or config.sections.quote.show_large_quote %}
+    <div class="universal-card__quote universal-card__quote--{{ config.sections.quote.quote_style | default: 'standard' }}">
+      {% case include.type %}
+        {% when "brand" %}
+          {% comment %} Brand founder quotes - look for quote in data {% endcomment %}
+          {% if include.item.founder_quote %}
+            <blockquote class="universal-card__quote-text">
+              "{{ include.item.founder_quote | truncatewords: config.sections.quote.quote_words | default: 40 }}"
+            </blockquote>
+            {% if config.sections.quote.quote_style == "with-attribution" and include.item.founder_name %}
+              <cite class="universal-card__quote-attribution">
+                <span class="quote-author">{{ include.item.founder_name }}</span>
+                {% if include.item.founder_title %}
+                  <span class="quote-title">{{ include.item.founder_title }}</span>
+                {% endif %}
+              </cite>
+            {% endif %}
+          {% endif %}
+          
+        {% when "case-study" %}
+          {% if include.item.founder_quote %}
+            <blockquote class="universal-card__quote-text">
+              "{{ include.item.founder_quote.text | truncatewords: 30 }}"
+            </blockquote>
+            {% if config.sections.quote.quote_style == "emphasis" %}
+              <cite class="universal-card__quote-attribution">
+                <span class="quote-author">{{ include.item.founder_quote.attribution }}</span>
+                {% if include.item.founder_quote.title %}
+                  <span class="quote-title">{{ include.item.founder_quote.title }}</span>
+                {% endif %}
+              </cite>
+            {% endif %}
+          {% endif %}
+          
+        {% when "testimonial" %}
+          {% if config.sections.quote.show_large_quote and include.item.quote %}
+            <blockquote class="universal-card__quote-text universal-card__quote-text--large">
+              "{{ include.item.quote | truncatewords: config.sections.quote.quote_words | default: 30 }}"
+            </blockquote>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ======================== {% endcomment %}
+  {% comment %} ACHIEVEMENT SECTION {% endcomment %}
+  {% comment %} ======================== {% endcomment %}
+  {% if config.sections.achievement.show_success_highlight or config.sections.achievement.show_key_achievement %}
+    <div class="universal-card__achievement universal-card__achievement--{{ config.sections.achievement.achievement_style | default: 'standard' }}">
+      {% case include.type %}
+        {% when "brand" %}
+          {% comment %} Look for achievement data in brand {% endcomment %}
+          {% if include.item.awards.first %}
+            <div class="universal-card__achievement-box">
+              {% if config.sections.achievement.achievement_style == "highlight-box-with-icon" %}
+                <span class="achievement-icon">⚡</span>
+              {% endif %}
+              <span class="achievement-text">{{ include.item.awards.first.name }}</span>
+            </div>
+          {% endif %}
+          
+        {% when "founder" %}
+          {% if include.item.key_achievement %}
+            <div class="universal-card__achievement-callout">
+              <strong>{{ include.item.key_achievement }}</strong>
+            </div>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ======================== {% endcomment %}
+  {% comment %} TIMELINE SECTION {% endcomment %}
+  {% comment %} ======================== {% endcomment %}
+  {% if config.sections.content.show_timeline and include.type == "case-study" and include.item.duration %}
+    <div class="universal-card__timeline">
+      <span class="timeline-label">Duration:</span>
+      <span class="timeline-value">{{ include.item.duration }}</span>
+    </div>
+  {% endif %}
+
+  {% comment %} ========================= {% endcomment %}
+  {% comment %} LANGUAGE SKILLS SECTION {% endcomment %}
+  {% comment %} ========================= {% endcomment %}
+  {% if config.sections.meta.show_languages and include.type == "founder" and include.item.languages %}
+    <div class="universal-card__languages">
+      {% for language_code in include.item.languages limit: 3 %}
+        <span class="universal-card__language-tag">
+          {% case language_code %}
+            {% when 'ru' %}Russian
+            {% when 'en' %}English  
+            {% when 'fr' %}French
+            {% when 'de' %}German
+            {% when 'zh' %}Chinese
+            {% else %}{{ language_code | upcase }}
+          {% endcase %}
+        </span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% comment %} ==================== {% endcomment %}
+  {% comment %} METRICS SECTION {% endcomment %}
+  {% comment %} ==================== {% endcomment %}
+  {% if config.sections.metrics.show_large_metrics or config.sections.metrics.show_impact_metrics %}
+    <div class="universal-card__metrics universal-card__metrics--{{ config.sections.metrics.metrics_style | default: 'standard' }}">
+      {% case include.type %}
+        {% when "case-study" %}
+          {% if include.item.metrics %}
+            {% for metric in include.item.metrics limit: config.sections.metrics.metrics_limit %}
+              <div class="universal-card__metric universal-card__metric--large-display">
+                <span class="universal-card__metric-value universal-card__metric-value--large">{{ metric.value }}</span>
+                <span class="universal-card__metric-label">{{ metric.label }}</span>
+              </div>
+            {% endfor %}
+          {% endif %}
+          
+        {% when "testimonial" %}
+          {% if config.sections.metrics.show_impact_metrics and include.item.impact_metrics %}
+            <div class="universal-card__impact-grid">
+              {% for metric in include.item.impact_metrics limit: 4 %}
+                <div class="impact-metric">
+                  <span class="impact-value">{{ metric.value }}</span>
+                  <span class="impact-label">{{ metric.label }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ======================== {% endcomment %}
+  {% comment %} TAXONOMY SECTION {% endcomment %}
+  {% comment %} ======================== {% endcomment %}
+  {% if config.sections.taxonomy.show_primary_tags or config.sections.tags.show_primary_tags or config.sections.tags.show_expertise_tags %}
+    <div class="universal-card__taxonomy universal-card__taxonomy--{{ config.sections.tags.tag_layout | default: 'standard' }}">
+      {% case include.type %}
+        {% when "brand" %}
+          {% comment %} Primary tags (sectors, markets) {% endcomment %}
+          {% if config.sections.taxonomy.show_primary_tags %}
+            <div class="universal-card__tags-primary">
+              {% if include.item.sectors %}
+                {% for sector in include.item.sectors limit: 2 %}
+                  <span class="universal-card__tag universal-card__tag--sector">
+                    {{ sector | replace: "-", " " | capitalize }}
+                  </span>
+                {% endfor %}
+              {% endif %}
+              {% if include.item.markets %}
+                {% for market in include.item.markets limit: 1 %}
+                  <span class="universal-card__tag universal-card__tag--market">
+                    {{ market | replace: "-", " " | capitalize }}
+                  </span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endif %}
+          
+        {% when "founder" %}
+          {% if config.sections.tags.show_expertise_tags and include.item.expertise %}
+            <div class="universal-card__tags-skill-cloud">
+              {% for skill in include.item.expertise limit: config.sections.tags.taxonomy_limit %}
+                <span class="universal-card__tag universal-card__tag--expertise">{{ skill }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+        {% when "insight" %}
+          {% if config.sections.tags.show_primary_tags %}
+            <div class="universal-card__tags-primary">
+              {% if include.item.tags %}
+                {% for tag in include.item.tags limit: config.sections.tags.tag_limit %}
+                  <span class="universal-card__tag universal-card__tag--insight">{{ tag }}</span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% comment %} ================= {% endcomment %}
+  {% comment %} SIGNAL TAGS {% endcomment %}
+  {% comment %} ================= {% endcomment %}
+  {% if config.sections.taxonomy.show_signal_tags and include.type == "brand" and include.item.signals %}
+    <div class="universal-card__signals">
+      {% for signal in include.item.signals limit: 2 %}
+        <span class="universal-card__tag universal-card__tag--signal">
+          {{ signal | replace: "-", " " | capitalize }}
+        </span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% comment %} ================= {% endcomment %}
+  {% comment %} COUNT INDICATOR {% endcomment %}
+  {% comment %} ================= {% endcomment %}
+  {% if config.sections.content.show_count_indicator and include.type == "dimension" %}
+    <div class="universal-card__count-indicator">
+      <span class="count-text">+{{ include.item.count | default: "5" }} more</span>
+    </div>
+  {% endif %}
+
+  {% comment %} =================== {% endcomment %}
+  {% comment %} ACTIONS SECTION {% endcomment %}
+  {% comment %} =================== {% endcomment %}
+  {% if config.sections.footer.show_cta != false %}
+    <footer class="universal-card__actions universal-card__actions--{{ config.sections.footer.layout | default: 'standard' }}">
+      {% if config.sections.footer.layout == "split" %}
+        <div class="universal-card__actions-split">
+          <div class="actions-left">
+      {% endif %}
+      
+      {% comment %} Main CTA {% endcomment %}
+      {% case include.type %}
+        {% when "brand" %}
+          <a href="{{ include.item.url }}" class="universal-card__action universal-card__action--primary">
+            {% include helpers/t.html key="brands.view_brand" fallback="View Brand" %} →
+          </a>
+          
+        {% when "founder" %}
+          <a href="{{ include.item.url }}" class="universal-card__action universal-card__action--primary">
+            {% include helpers/t.html key="founders.view_profile" fallback="View Profile" %} →
+          </a>
+          
+        {% when "case-study" %}
+          {% if include.item.permalink %}
+            <a href="{{ include.item.permalink }}" class="universal-card__action universal-card__action--primary">
+              {% include helpers/t.html key="case_studies.read_story" fallback="Read Story" %} →
+            </a>
+          {% endif %}
+          
+        {% when "insight" %}
+          <a href="{{ include.item.url }}" class="universal-card__action universal-card__action--primary">
+            {% include helpers/t.html key="insights.read_article" fallback="Read Article" %} →
+          </a>
+          
+        {% when "dimension" %}
+          <a href="{{ include.item.url | default: '#' }}" class="universal-card__action universal-card__action--primary">
+            {% include helpers/t.html key="dimensions.explore" fallback="Explore" %} →
+          </a>
+      {% endcase %}
+      
+      {% if config.sections.footer.layout == "split" %}
+          </div>
+          {% comment %} Right side for signal tags {% endcomment %}
+          {% if config.sections.footer.show_signal_tags and include.type == "brand" and include.item.signals %}
+            <div class="actions-right">
+              {% for signal in include.item.signals limit: 2 %}
+                <span class="universal-card__tag universal-card__tag--signal universal-card__tag--footer">
+                  {{ signal | replace: "-", " " | capitalize }}
+                </span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </footer>
+  {% endif %}
+
+{% comment %} End of standard content cards section {% endcomment %}
+{% endif %}
+
+</{{ element_type }}>
+
+{% comment %} Debug information for development {% endcomment %}
+{% if site.development %}
+  <!-- Universal Card: {{ include.type }} | Config: {{ config_set }} | Variant: {{ variant }} | Context: {{ context }} | Layout: {{ layout }} -->
+{% endif %}
