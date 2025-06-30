@@ -8,7 +8,7 @@
     - class_name: Optional CSS class name prefix for styling
   Dependencies:
     - CSS: components/relationships/related-brands.scss
-    - components/cards/related-brand-card.html or components/cards/brand-card.html
+    - components/cards/brand-card.html
 {% endcomment %}
 
 {% comment %}Using t.html helper for related brands translations{% endcomment %}
@@ -67,7 +67,7 @@
 
       <div class="{{ class_name }}__list">
         {% for brand in related_brands %}
-          {% include components/cards/related-brand-card.html brand=brand parent_lang=parent.lang %}
+          {% include components/cards/brand-card.html brand=brand %}
         {% endfor %}
       </div>
 

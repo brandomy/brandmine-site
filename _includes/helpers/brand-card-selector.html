@@ -12,7 +12,7 @@ RETURNS: Renders universal-card with appropriate variant
 
 DEPENDENCIES:
 - Data: brand.featured_level (integer), brand.featured (boolean)
-- Includes: components/cards/universal-card.html
+- Includes: components/cards/brand-card.html
 - Variables: None
 
 EXAMPLE:
@@ -33,11 +33,9 @@ EXAMPLE:
   {% assign card_variant = "standard" %}
 {% endif %}
 
-{% comment %} Use dedicated working card components instead of universal card {% endcomment %}
-{% if card_variant == "hero" %}
-  {% include components/cards/hero-brand-card.html brand=include.brand %}
-{% elsif card_variant == "featured" %}
-  {% include components/cards/featured-brand-card.html brand=include.brand %}
+{% comment %} Use single brand-card.html component with variant parameter {% endcomment %}
+{% if card_variant == "hero" or card_variant == "featured" %}
+  {% include components/cards/brand-card.html brand=include.brand variant="featured" %}
 {% else %}
   {% include components/cards/brand-card.html brand=include.brand %}
 {% endif %}

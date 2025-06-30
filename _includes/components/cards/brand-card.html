@@ -73,13 +73,19 @@
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
-{% capture show_location %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_location" fallback=true %}{% endcapture %}
-{% capture show_sector %}{% include helpers/component-defaults.html component="cards.brand-card" param="show_sector" fallback=true %}{% endcapture %}
-{% capture tag_limit %}{% include helpers/component-defaults.html component="cards.brand-card" param="tag_limit" fallback=4 %}{% endcapture %}
+{% assign variant = include.variant | default: "standard" %}
+{% if variant == "featured" %}
+  {% assign config_component = "cards.brand-card-featured" %}
+{% else %}
+  {% assign config_component = "cards.brand-card" %}
+{% endif %}
+
+{% capture show_location %}{% include helpers/component-defaults.html component=config_component param="show_location" fallback=true %}{% endcapture %}
+{% capture show_sector %}{% include helpers/component-defaults.html component=config_component param="show_sector" fallback=true %}{% endcapture %}
+{% capture tag_limit %}{% include helpers/component-defaults.html component=config_component param="tag_limit" fallback=4 %}{% endcapture %}
 {% assign show_location = include.show_location | default: show_location %}
 {% assign show_sector = include.show_sector | default: show_sector %}
 {% assign tag_limit = include.tag_limit | default: tag_limit %}
-{% assign variant = include.variant | default: "standard" %}
 {% assign brand = include.brand %}
 
 {% if variant == "featured" %}
@@ -127,10 +133,7 @@
         {% endif %}
         {% if brand.city and brand.country %}
           {% if brand.founding_year %}<span class="meta-separator"> • </span>{% endif %}
-          <span class="meta-location">
-            {{ brand.city }} 
-            {% include helpers/country-flag.html country_code=brand.country %}
-          </span>
+          <span class="meta-location">{{ brand.city }} {% include helpers/country-flag.html country_code=brand.country %}</span>
         {% endif %}
       </div>
 
@@ -187,7 +190,7 @@
     </div>
   </article>
 {% else %}
-  <article class="brand-card {% if brand.featured or brand.featured_level > 1 %}brand-card--featured{% endif %}">
+  <article class="brand-card">
     {% include components/helpers/card-header.html
        brand=brand
        class_name="brand-card"
@@ -197,9 +200,9 @@
       <p class="brand-card__description">{{ brand.description }}</p>
 
       <div class="brand-card__tags">
-        <!-- Markets first -->
+        <!-- Markets -->
         {% if brand.markets %}
-          {% for market in brand.markets limit:1 %}
+          {% for market in brand.markets %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
                class="brand-card__tag brand-card__tag--market">
               {% include helpers/dimension-name.html type="markets" id=market %}
@@ -207,9 +210,9 @@
           {% endfor %}
         {% endif %}
 
-        <!-- Sectors second -->
+        <!-- Sectors -->
         {% if brand.sectors %}
-          {% for sector in brand.sectors limit:1 %}
+          {% for sector in brand.sectors %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
                class="brand-card__tag brand-card__tag--sector">
               {% include helpers/dimension-name.html type="sectors" id=sector %}
@@ -217,9 +220,9 @@
           {% endfor %}
         {% endif %}
 
-        <!-- Attributes third -->
+        <!-- Attributes -->
         {% if brand.attributes %}
-          {% for attribute in brand.attributes limit:1 %}
+          {% for attribute in brand.attributes %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
                class="brand-card__tag brand-card__tag--attribute">
               {% include helpers/dimension-name.html type="attributes" id=attribute %}
@@ -227,9 +230,9 @@
           {% endfor %}
         {% endif %}
 
-        <!-- Signals fourth -->
+        <!-- Signals -->
         {% if brand.signals %}
-          {% for signal in brand.signals limit:1 %}
+          {% for signal in brand.signals %}
             <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
                class="brand-card__tag brand-card__tag--signal">
               {% include helpers/dimension-name.html type="signals" id=signal %}
@@ -241,10 +244,9 @@
 
     <footer class="brand-card__footer">
       <a href="{{ brand.url | relative_url }}" class="brand-card__link">
-        {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %}
+        {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %} →
       </a>
 
-      {% include components/helpers/founder-check.html brand=brand class_name="brand-card" %}
     </footer>
   </article>
 {% endif %}

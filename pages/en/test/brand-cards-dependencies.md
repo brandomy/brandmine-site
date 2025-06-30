@@ -64,13 +64,15 @@ lang: en
     <div class="dependency-card">
       <h3>✅ Recommended: brand-card.html</h3>
       <div class="component-sample">
-        <div style="background: white; padding: 1rem; text-align: center;">
-          <div style="width: 40px; height: 40px; background: var(--primary-100); border-radius: 50%; margin: 0 auto 0.5rem;"></div>
-          <strong>Sample Brand</strong><br>
-          <small>Founded 2020 • Moscow 🇷🇺</small><br>
-          <small style="color: var(--neutral-600);">Premium artisanal products...</small><br>
-          <span style="background: var(--sky-100); padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">russia</span>
-        </div>
+        {% assign sample_brand = site.brands | where: "lang", "en" | first %}
+        {% if sample_brand %}
+          {% include components/cards/brand-card.html brand=sample_brand %}
+        {% else %}
+          <div style="background: white; padding: 1rem; text-align: center; border: 1px solid var(--neutral-300);">
+            <strong>No sample brands available</strong><br>
+            <small>Add brand data to see working component</small>
+          </div>
+        {% endif %}
       </div>
       <p><strong>Dependencies:</strong> component-defaults.html, collection-image.html, dimension-name.html</p>
       <p><strong>Status:</strong> <span class="status-good">✅ Working</span></p>
@@ -78,38 +80,37 @@ lang: en
     </div>
 
     <div class="dependency-card">
-      <h3>⚠️ Legacy: brand-card-featured.html</h3>
+      <h3>✅ Current: brand-card.html (Featured Variant)</h3>
       <div class="component-sample">
-        <div style="background: white; padding: 1rem; text-align: center;">
-          <div style="width: 100%; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.25rem; margin-bottom: 0.5rem;"></div>
-          <strong>Sample Brand</strong><br>
-          <small>Founded 2020 • Moscow 🇷🇺</small><br>
-          <small style="color: var(--neutral-600);">Enhanced description with more details...</small><br>
-          <span style="background: var(--sky-100); padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">russia</span>
-        </div>
+        {% assign sample_brand = site.brands | where: "lang", "en" | first %}
+        {% if sample_brand %}
+          {% include components/cards/brand-card.html brand=sample_brand variant="featured" %}
+        {% else %}
+          <div style="background: white; padding: 1rem; text-align: center; border: 1px solid var(--neutral-300);">
+            <strong>No sample brands available</strong><br>
+            <small>Add brand data to see working featured variant</small>
+          </div>
+        {% endif %}
       </div>
-      <p><strong>Dependencies:</strong> [removed during cleanup]</p>
-      <p><strong>Status:</strong> <span class="status-poor">❌ Eliminated</span></p>
-      <p><strong>Replacement:</strong> Use brand-card.html with variant="featured"</p>
+      <p><strong>Dependencies:</strong> component-defaults.html, collection-image.html, dimension-name.html</p>
+      <p><strong>Status:</strong> <span class="status-good">✅ Working</span></p>
+      <p><strong>Usage:</strong> Enhanced display with hero images and comprehensive tags</p>
     </div>
 
     <div class="dependency-card">
-      <h3>⚠️ Complex: hero-brand-card.html</h3>
+      <h3>🗑️ Removed: hero-brand-card.html</h3>
       <div class="component-sample">
-        <div style="background: white; padding: 1rem; text-align: center;">
-          <div style="width: 100%; height: 80px; background: linear-gradient(45deg, #ff6b6b, #ffd93d); border-radius: 0.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">HERO</div>
-          <strong>Premium Brand</strong><br>
-          <small>Founded by Jane Doe • Moscow 🇷🇺</small><br>
-          <small style="color: var(--neutral-600);">Complex hero layout with founder info...</small><br>
+        <div style="background: #f8f9fa; padding: 1rem; text-align: center; border: 1px dashed #6c757d;">
+          <strong>Component Removed</strong><br>
+          <small style="color: var(--neutral-600);">Complex component eliminated to reduce maintenance burden</small><br>
           <div style="margin-top: 0.5rem;">
-            <span style="background: var(--success-100); padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">$2M Revenue</span>
+            <span style="background: var(--primary-100); padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">Use variant="featured" instead</span>
           </div>
         </div>
       </div>
-      <p><strong>Dependencies:</strong> Multiple image helpers, founder data, metrics display</p>
-      <p><strong>Status:</strong> <span class="status-warning">⚠️ High complexity</span></p>
-      <p><strong>Usage:</strong> Premium hero sections only</p>
-      <p><strong>Issues:</strong> 46 usages, complex dependencies</p>
+      <p><strong>Replacement:</strong> brand-card.html with variant="featured"</p>
+      <p><strong>Status:</strong> <span class="status-poor">❌ Eliminated</span></p>
+      <p><strong>Reason:</strong> High complexity, maintenance burden</p>
     </div>
   </section>
 
@@ -189,15 +190,15 @@ lang: en
           </tr>
           <tr>
             <td><strong>hero-brand-card.html</strong></td>
-            <td>Multiple image helpers, founder data queries, metrics calculations</td>
-            <td class="status-poor">High</td>
-            <td class="status-poor">❌ High Risk</td>
+            <td><em>Component removed</em></td>
+            <td class="status-poor">N/A</td>
+            <td class="status-poor">❌ Eliminated</td>
           </tr>
           <tr>
             <td><strong>related-brand-card.html</strong></td>
-            <td>Relationship data, similarity scoring</td>
-            <td class="status-warning">Medium</td>
-            <td class="status-warning">⚠️ Medium Risk</td>
+            <td><em>Component removed</em></td>
+            <td class="status-poor">N/A</td>
+            <td class="status-poor">❌ Eliminated</td>
           </tr>
         </tbody>
       </table>
