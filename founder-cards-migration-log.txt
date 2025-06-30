@@ -1,0 +1,72 @@
+=== FOUNDER CARD USAGE DOCUMENTATION ===
+Generated: Mon 30 Jun 2025 16:49:05 +08
+
+1. FOUNDER-CARD.HTML USAGE:
+_includes/components/layout/grid.html:            {% include components/cards/founder-card.html item=item %}
+_includes/components/cards/simplified-founder-card.html:USAGE: {% include components/cards/simplified-founder-card.html founder=founder %}
+_includes/components/cards/founder-card.html:USAGE: {% include components/cards/founder-card.html founder=founder %}
+_includes/components/cards/featured-founder-card.html:USAGE: {% include components/cards/featured-founder-card.html founder=founder %}
+_includes/pages/founder/connections.html:    - components/cards/founder-card.html
+_includes/pages/founder/connections.html:        {% include components/cards/founder-card.html founder=related_founder %}
+_includes/pages/home/featured-founders-simplified.html:    - Include: components/cards/simplified-founder-card.html
+_includes/pages/founders/founders-carousel-dual.html:    - Include: components/cards/founder-card.html
+_includes/pages/founders/founders-carousel-dual.html:              {% include components/cards/founder-card.html
+_includes/pages/founders/founders-carousel-dual.html:              {% include components/cards/founder-card.html
+_includes/pages/founders/founders-carousel-dual.html:              {% include components/cards/founder-card.html
+_includes/pages/founders/founders-carousel-dual.html:              {% include components/cards/founder-card.html
+_includes/pages/founders/recent-founders.html:Uses optimized founder-card.html for clean grid display
+_includes/pages/founders/recent-founders.html:        {% include components/cards/founder-card.html founder=founder %}
+_includes/pages/founders/founders-carousel.html:    - Include: components/cards/founder-card.html
+_includes/pages/founders/featured-founders-simple.html:        {% include components/cards/founder-card.html 
+_includes/pages/founders/founders-grid.html:- Component: components/cards/founder-card.html
+_includes/pages/founders/founders-grid.html:            {% include components/cards/founder-card.html 
+_includes/helpers/founder-card-selector.html:- Includes: components/cards/founder-card.html or founder-card-featured.html
+_includes/helpers/founder-card-selector.html:  {% include components/cards/founder-card.html founder=include.founder %}
+_includes/reference/universal-card-elimination-plan.md:  TO: founder-card.html
+_includes/reference/universal-card-elimination-plan.md:  TO: founder-card.html
+_includes/reference/card-usage-by-page.md:✅ founder-card.html            → founders-grid container
+_includes/reference/card-usage-by-page.md:- founder-card.html
+_includes/reference/card-usage-by-page.md:- Should use: founder-card.html
+
+2. FOUNDER-CARD-FEATURED.HTML USAGE:
+_includes/components/cards/founder-card-featured.html:USAGE: {% include components/cards/founder-card-featured.html founder=founder %}
+_includes/pages/founders/founders-carousel.html:              {% include components/cards/founder-card-featured.html 
+_includes/pages/founders/founders-carousel.html:              {% include components/cards/founder-card-featured.html 
+_includes/pages/founders/founders-carousel.html:              {% include components/cards/founder-card-featured.html 
+_includes/pages/founders/founders-carousel.html:              {% include components/cards/founder-card-featured.html 
+_includes/pages/founders/featured-founders-simple.html:    - Include: components/cards/founder-card-featured.html
+_includes/pages/founders/featured-founders.html:PURPOSE: Featured founders carousel using founder-card-featured.html
+_includes/pages/founders/featured-founders.html:DEPENDENCIES: helpers/founder-filter.html (if exists), components/cards/founder-card-featured.html
+_includes/pages/founders/featured-founders.html:        {% include components/cards/founder-card-featured.html founder=founder %}
+_includes/helpers/founder-card-selector.html:- Includes: components/cards/founder-card.html or founder-card-featured.html
+_includes/helpers/founder-card-selector.html:  {% include components/cards/founder-card-featured.html founder=include.founder %}
+_includes/reference/universal-card-elimination-plan.md:  TO: founder-card-featured.html
+_includes/reference/card-usage-by-page.md:✅ founder-card-featured.html   → carousel container
+_includes/reference/card-usage-by-page.md:✅ founder-card-featured.html   → carousel container
+_includes/reference/card-usage-by-page.md:- founder-card-featured.html
+
+3. FOUNDER-CARD-FOCUS.HTML USAGE:
+_includes/components/cards/founder-card-focus.html:  {% include components/cards/founder-card-focus.html founder=founder %}
+_includes/pages/home/founder-focus.html:    - Component: components/cards/founder-card-focus.html
+_includes/pages/home/founder-focus.html:      {% include components/cards/founder-card-focus.html founder=founder %}
+_includes/reference/card-usage-by-page.md:✅ founder-card-focus.html      → custom container
+
+4. CURRENT COMPONENT SPECIFICATIONS:
+-rw-r--r--@ 1 randaleastman  staff  6046 Jun 29 18:18 _includes/components/cards/founder-card-featured.html
+-rw-r--r--@ 1 randaleastman  staff  4181 Jun 29 20:17 _includes/components/cards/founder-card-focus.html
+-rw-r--r--@ 1 randaleastman  staff  5019 Jun 29 23:52 _includes/components/cards/founder-card.html
+-rw-------  1 randaleastman  staff  4181 Jun 27 08:48 _includes/components/cards/founder-focus-card.html
+-rw-r--r--@ 1 randaleastman  staff  3875 Jun 27 08:48 _includes/components/cards/founder-intense-card.html
+-rw-------  1 randaleastman  staff  5068 Jun 13 09:51 _includes/components/cards/founder-quote-card.html
+-rw-------  1 randaleastman  staff  2354 Jun 27 15:25 _includes/components/cards/founder-test-card.html
+     124 _includes/components/cards/founder-card-featured.html
+     107 _includes/components/cards/founder-card-focus.html
+     126 _includes/components/cards/founder-card.html
+     107 _includes/components/cards/founder-focus-card.html
+      82 _includes/components/cards/founder-intense-card.html
+      92 _includes/components/cards/founder-quote-card.html
+      36 _includes/components/cards/founder-test-card.html
+     674 total
+Testing baseline build performance...
+✅ Baseline build successful
+                    done in 16.399 seconds.
