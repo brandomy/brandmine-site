@@ -96,6 +96,152 @@ lang: en
   }
 </style>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing founder cards test carousels...');
+    
+    // Find all carousels on the test page
+    const carousels = document.querySelectorAll('.carousel');
+    console.log('Found', carousels.length, 'carousels');
+    
+    carousels.forEach((carousel, carouselIndex) => {
+        initializeTestCarousel(carousel, carouselIndex);
+    });
+});
+
+function initializeTestCarousel(carousel, carouselIndex) {
+    const items = carousel.querySelectorAll('.carousel__item');
+    console.log('Carousel', carouselIndex, 'has', items.length, 'items');
+    
+    if (items.length === 0) {
+        console.warn('No carousel items found in carousel', carouselIndex);
+        return;
+    }
+    
+    let currentSlide = 0;
+    
+    // Create navigation dots
+    const navContainer = createNavigationDots(carousel, items.length, carouselIndex);
+    const dots = navContainer.querySelectorAll('.carousel__dot');
+    
+    // Set initial active state
+    updateActiveDot(dots, 0);
+    
+    // Add click handlers to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            console.log('Dot clicked:', index);
+            goToSlide(carousel, items, dots, index);
+            currentSlide = index;
+        });
+    });
+    
+    // Add scroll listener for manual scrolling
+    carousel.addEventListener('scroll', function() {
+        const newSlide = getCurrentSlide(carousel, items);
+        if (newSlide !== currentSlide) {
+            currentSlide = newSlide;
+            updateActiveDot(dots, currentSlide);
+        }
+    });
+    
+    console.log('Test carousel', carouselIndex, 'initialized successfully');
+}
+
+function createNavigationDots(carousel, itemCount, carouselIndex) {
+    // Look for existing navigation container
+    let navContainer = carousel.parentNode.querySelector('.carousel__navigation');
+    
+    if (!navContainer) {
+        // Create new navigation container
+        navContainer = document.createElement('div');
+        navContainer.className = 'carousel__navigation';
+        navContainer.style.cssText = `
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        `;
+        
+        // Insert after carousel
+        carousel.parentNode.insertBefore(navContainer, carousel.nextSibling);
+    }
+    
+    // Clear existing dots
+    navContainer.innerHTML = '';
+    
+    // Create dots
+    for (let i = 0; i < itemCount; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel__dot';
+        dot.setAttribute('data-slide', i);
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.style.cssText = `
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin: 0;
+        `;
+        
+        // Active state styling
+        if (i === 0) {
+            dot.style.background = '#f97316'; // Orange for founders
+            dot.classList.add('active');
+        }
+        
+        navContainer.appendChild(dot);
+    }
+    
+    console.log('Created', itemCount, 'navigation dots for carousel', carouselIndex);
+    return navContainer;
+}
+
+function goToSlide(carousel, items, dots, slideIndex) {
+    if (slideIndex < 0 || slideIndex >= items.length) return;
+    
+    // Calculate scroll position
+    const item = items[slideIndex];
+    const scrollLeft = item.offsetLeft - carousel.offsetLeft;
+    
+    // Smooth scroll to position
+    carousel.scrollTo({
+        left: scrollLeft,
+        behavior: 'smooth'
+    });
+    
+    // Update dots
+    updateActiveDot(dots, slideIndex);
+}
+
+function updateActiveDot(dots, activeIndex) {
+    dots.forEach((dot, index) => {
+        const isActive = index === activeIndex;
+        dot.classList.toggle('active', isActive);
+        dot.style.background = isActive ? '#f97316' : '#d1d5db'; // Orange for founders
+    });
+}
+
+function getCurrentSlide(carousel, items) {
+    const scrollLeft = carousel.scrollLeft;
+    let closestIndex = 0;
+    let closestDistance = Math.abs(items[0].offsetLeft - scrollLeft);
+    
+    for (let i = 1; i < items.length; i++) {
+        const distance = Math.abs(items[i].offsetLeft - scrollLeft);
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = i;
+        }
+    }
+    
+    return closestIndex;
+}
+</script>
+
 <div class="container">
   <div class="test-header">
     <h1>Founder Cards Layout Testing</h1>
