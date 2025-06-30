@@ -35,11 +35,12 @@ PROGRESSIVE DISCLOSURE ELEMENTS:
          alt=include.founder.images.portrait.alt
          class="founder-card-featured__img" %}
     {% else %}
+      {% assign default_alt = "Portrait of " | append: include.founder.name %}
       {% include components/images/collection-image.html
          collection="founders"
          slug=include.founder.ref
          purpose="portrait"
-         alt="Portrait of {{ include.founder.name }}"
+         alt=default_alt
          class="founder-card-featured__img" %}
     {% endif %}
 
