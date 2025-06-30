@@ -84,3 +84,41 @@ Timestamp: Mon 30 Jun 2025 16:52:41 +08
 ✅ Renamed founder-card-focus.html to founder-card-featured.html
 Testing after rename...
 ✅ Build successful after rename
+=== PHASE 2.3: UPDATE REMAINING REFERENCES ===
+Timestamp: Mon 30 Jun 2025 16:54:49 +08
+Searching for remaining references...
+Found remaining founder-card-focus references:
+_includes/components/cards/founder-card-featured.html:  {% include components/cards/founder-card-focus.html founder=founder %}
+_includes/components/cards/founder-card-featured.html:<div class="founder-card-focus">
+_includes/components/cards/founder-card-featured.html:  <div class="founder-card-focus__portrait">
+_includes/components/cards/founder-card-featured.html:         class="founder-card-focus__portrait-image"
+_includes/components/cards/founder-card-featured.html:  <div class="founder-card-focus__content">
+_includes/components/cards/founder-card-featured.html:    <div class="founder-card-focus__header">
+_includes/components/cards/founder-card-featured.html:      <h3 class="founder-card-focus__name">{{ founder.name }}</h3>
+_includes/components/cards/founder-card-featured.html:      <p class="founder-card-focus__location">{{ full_location }}</p>
+_includes/components/cards/founder-card-featured.html:    <div class="founder-card-focus__achievement">
+_includes/components/cards/founder-card-featured.html:      <span class="founder-card-focus__achievement-label">
+_includes/components/cards/founder-card-featured.html:      <p class="founder-card-focus__achievement-text">{{ founder.achievements.first }}</p>
+_includes/components/cards/founder-card-featured.html:    <div class="founder-card-focus__company">
+_includes/components/cards/founder-card-featured.html:          <a href="{{ brand.url | relative_url }}" class="founder-card-focus__brand-link">
+_includes/components/cards/founder-card-featured.html:          <span class="founder-card-focus__brand-name">
+_includes/components/cards/founder-card-featured.html:        <span class="founder-card-focus__brand-name">
+_includes/components/cards/founder-card-featured.html:    <div class="founder-card-focus__tags">
+_includes/components/cards/founder-card-featured.html:        <span class="founder-card-focus__tag">{{ tag }}</span>
+_includes/components/cards/founder-card-featured.html:    <p class="founder-card-focus__description">{{ founder.brief_bio }}</p>
+_includes/components/cards/founder-card-featured.html:    <div class="founder-card-focus__cta">
+_includes/components/cards/founder-card-featured.html:      <a href="{{ founder.url | relative_url }}" class="founder-card-focus__cta-button">
+_includes/pages/home/founder-focus.html.bak:    - Component: components/cards/founder-card-focus.html
+_includes/pages/home/founder-focus.html.bak:      {% include components/cards/founder-card-focus.html founder=founder %}
+_includes/pages/home/founder-focus-backup.html:    - Component: components/cards/founder-card-focus.html
+_includes/pages/home/founder-focus-backup.html:      {% include components/cards/founder-card-focus.html founder=founder %}
+_includes/reference/card-usage-by-page.md:✅ founder-card-focus.html      → custom container
+These need manual review and updates
+✅ Removed backup files
+Testing final state...
+✅ Final build successful
+Final founder card count:        4
+_includes/components/cards/founder-card-featured-original-backup.html
+_includes/components/cards/founder-card-featured.html
+_includes/components/cards/founder-card-original-backup.html
+_includes/components/cards/founder-card.html
