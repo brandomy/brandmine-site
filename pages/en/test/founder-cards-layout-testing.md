@@ -161,9 +161,9 @@ lang: en
     <h2>Section 1.5: HOMEPAGE PROTECTED CARD - Layout Testing</h2>
     
     <div class="test-subsection">
-      <h3>Subsection A: founder-card-focus.html Grid Performance</h3>
+      <h3>Subsection A: founder-card-featured.html Grid Performance</h3>
       <div class="card-info">
-        <strong>Card:</strong> founder-card-focus.html | <strong>Lines:</strong> 108 | <strong>Purpose:</strong> Homepage focus section (50% portrait)
+        <strong>Card:</strong> founder-card-featured.html | <strong>Lines:</strong> 108 | <strong>Purpose:</strong> Homepage focus section (50% portrait)
       </div>
       <p style="color: #059669; font-weight: bold; margin-bottom: 1rem;">
         ✓ Testing layout versatility - homepage usage remains protected
@@ -173,7 +173,7 @@ lang: en
       <div class="test-layout-label">Grid Layout (3 cards)</div>
       <div class="grid__container test-grid-3col">
         {% for founder in test_founders %}
-          {% include components/cards/founder-card-focus.html founder=founder %}
+          {% include components/cards/founder-card-featured.html founder=founder %}
         {% endfor %}
       </div>
       
@@ -181,12 +181,12 @@ lang: en
       <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (2 per slide)</div>
       <div class="carousel" data-component-type="founder-focus-test">
         {% for founder in test_founders %}
-          {% include components/cards/founder-card-focus.html founder=founder %}
+          {% include components/cards/founder-card-featured.html founder=founder %}
         {% endfor %}
       </div>
       
       <div style="background: #f3f4f6; padding: 1rem; margin-top: 2rem; border-radius: 0.5rem;">
-        <h4>Assessment: founder-card-focus.html Layout Versatility</h4>
+        <h4>Assessment: founder-card-featured.html Layout Versatility</h4>
         <ul>
           <li><strong>Grid Performance:</strong> The 50% portrait design may create unusual spacing in grid layouts</li>
           <li><strong>Carousel Performance:</strong> Works better in carousel due to individual card focus</li>
@@ -201,19 +201,19 @@ lang: en
     <h2>Section 2: SPECIALIZED CARDS - Homepage Protected</h2>
     
     <div class="test-subsection">
-      <h3>founder-card-focus.html</h3>
+      <h3>founder-card-featured.html</h3>
       <div class="protected-notice">
         ⚠️ PROTECTED HOMEPAGE CARD - Display Only, No Testing
       </div>
       <div class="card-info">
-        <strong>Card:</strong> founder-card-focus.html | <strong>Lines:</strong> 108 | <strong>Purpose:</strong> Homepage focus section (50% portrait)
+        <strong>Card:</strong> founder-card-featured.html | <strong>Lines:</strong> 108 | <strong>Purpose:</strong> Homepage focus section (50% portrait)
       </div>
       
       <!-- Display only - no testing -->
       <div class="carousel" data-component-type="founder-focus-display">
         {% if test_founder %}
           <div class="carousel-card">
-            {% include components/cards/founder-card-focus.html founder=test_founder %}
+            {% include components/cards/founder-card-featured.html founder=test_founder %}
           </div>
         {% endif %}
       </div>
@@ -291,7 +291,7 @@ lang: en
             <td><strong>Keep</strong> - Primary carousel card</td>
           </tr>
           <tr>
-            <td><strong>founder-card-focus.html</strong></td>
+            <td><strong>founder-card-featured.html</strong></td>
             <td>N/A - Homepage only</td>
             <td>N/A - Homepage only</td>
             <td><strong>Protected</strong> - Homepage focus section</td>
@@ -329,7 +329,7 @@ lang: en
     <ul>
       <li>✅ <strong>founder-card.html</strong> works well in both grid and carousel layouts</li>
       <li>✅ <strong>founder-card-featured.html</strong> optimized for carousel but can work in grid</li>
-      <li>⚠️ <strong>founder-card-focus.html</strong> is protected and homepage-specific</li>
+      <li>⚠️ <strong>founder-card-featured.html</strong> is protected and homepage-specific</li>
       <li>❌ Legacy cards show significant overlap with MVP cards</li>
     </ul>
   </section>

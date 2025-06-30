@@ -18,7 +18,7 @@
 ✅ brand-card-featured.html     → carousel container
 ✅ founder-card-featured.html   → carousel container
 ✅ testimonial-card.html        → grid container
-✅ founder-card-focus.html      → custom container
+✅ founder-card-featured.html   → homepage focus (formerly founder-card-focus.html)
 ✅ insight-latest-card.html     → grid container
 ```
 
