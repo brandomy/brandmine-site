@@ -15,12 +15,5 @@
   {% if show_icon %}
     <i class="fas fa-map-marker-alt location__icon" aria-hidden="true"></i>
   {% endif %}
-  <span class="location__text">
-    {% if include.city %}
-      {{ include.city }}{% if include.country %}, {% endif %}
-    {% endif %}
-    {% if include.country %}
-      {% include components/helpers/country-name.html code=include.country lang=include.lang %}
-    {% endif %}
-  </span>
+  <span class="location__text">{% if include.city %}{{ include.city }}{% if include.country %}, {% endif %}{% endif %}{% if include.country %}{% include components/helpers/country-name.html code=include.country lang=include.lang %}{% endif %}</span>
 </span>

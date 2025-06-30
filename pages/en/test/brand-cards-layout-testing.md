@@ -81,6 +81,107 @@ lang: en
     max-width: 320px;
   }
   
+  /* VISUAL DEBUGGING TOOLKIT - Isolated to test page only */
+  
+  /* Color-coded element debugging */
+  .debug-layout .brand-card__founding-year {
+    background: rgba(0, 255, 0, 0.2) !important;
+    border: 2px solid green !important;
+    margin: 2px 0 !important;
+  }
+  
+  .debug-layout .brand-card__location {
+    background: rgba(255, 0, 0, 0.2) !important;
+    border: 2px solid red !important;
+    margin: 2px 0 !important;
+  }
+  
+  .debug-layout .location {
+    background: rgba(0, 0, 255, 0.2) !important;
+    border: 2px solid blue !important;
+    margin: 1px !important;
+  }
+  
+  .debug-layout .location__icon {
+    background: yellow !important;
+    border: 2px solid orange !important;
+    min-width: 10px !important;
+    min-height: 10px !important;
+  }
+  
+  .debug-layout .location__text {
+    background: rgba(128, 0, 128, 0.2) !important;
+    border: 2px solid purple !important;
+  }
+  
+  /* Grid overlay debugging */
+  .debug-grid .brand-card {
+    position: relative;
+  }
+
+  .debug-grid .brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 10px 10px;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .debug-grid .brand-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.8);
+    pointer-events: none;
+    z-index: 1000;
+  }
+  
+  /* Ruler debugging */
+  .debug-ruler .brand-card__founding-year::before,
+  .debug-ruler .brand-card__location::before {
+    content: '← 0px 5px 10px 15px 20px 25px 30px →';
+    display: block;
+    font-size: 8px;
+    color: red;
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px;
+    margin-bottom: 2px;
+  }
+  
+  /* Box model debugging */
+  .debug-box-model * {
+    box-shadow: 
+      0 0 0 1px red,      /* Border */
+      0 0 0 3px yellow,   /* Padding */
+      0 0 0 5px blue      /* Margin */
+    !important;
+    position: relative;
+  }
+
+  .debug-box-model *::before {
+    content: attr(class);
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 8px;
+    background: black;
+    color: white;
+    padding: 2px;
+    white-space: nowrap;
+    z-index: 1000;
+  }
+  
   @media (max-width: 1200px) {
     .test-grid-4col {
       grid-template-columns: repeat(3, 1fr) !important;
@@ -334,4 +435,162 @@ lang: en
     
   </section>
 
+  <!-- Visual Debugging Toolkit -->
+  <section class="test-section" style="background: var(--warning-50);">
+    <h2>🔧 Visual Debugging Toolkit</h2>
+    
+    <div class="card-info" style="background: var(--warning-100); border-left-color: var(--warning-600);">
+      <h3>⚠️ Debugging Tools for Layout Investigation</h3>
+      <p>Use these tools to identify alignment issues and spacing problems:</p>
+      
+      <div style="display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap;">
+        <button onclick="toggleDebugLayout()" class="debug-btn" style="background: #22c55e; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Layout Debug</button>
+        <button onclick="toggleDebugGrid()" class="debug-btn" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Grid Debug</button>
+        <button onclick="toggleDebugRuler()" class="debug-btn" style="background: #f59e0b; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Ruler Debug</button>
+        <button onclick="toggleDebugBoxModel()" class="debug-btn" style="background: #8b5cf6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Box Model</button>
+        <button onclick="reportDimensions()" class="debug-btn" style="background: #ef4444; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Report Measurements</button>
+      </div>
+      
+      <div style="font-size: 0.875rem; line-height: 1.5;">
+        <strong>Color Legend:</strong><br>
+        🟢 <strong>Green:</strong> Working "Founded" element<br>
+        🔴 <strong>Red:</strong> Problem location container<br>
+        🔵 <strong>Blue:</strong> Flex wrapper (.location)<br>
+        🟡 <strong>Yellow:</strong> Location icon<br>
+        🟣 <strong>Purple:</strong> Location text content<br>
+        📏 <strong>Grid:</strong> 10px measurement grid with vertical alignment guide
+      </div>
+    </div>
+    
+  </section>
+
 </div>
+
+<script>
+// Visual Debugging Toolkit JavaScript
+let debugState = {
+  layout: false,
+  grid: false,
+  ruler: false,
+  boxModel: false
+};
+
+function toggleDebugLayout() {
+  debugState.layout = !debugState.layout;
+  document.body.classList.toggle('debug-layout', debugState.layout);
+  console.log('Layout debug:', debugState.layout ? 'ON' : 'OFF');
+}
+
+function toggleDebugGrid() {
+  debugState.grid = !debugState.grid;
+  document.body.classList.toggle('debug-grid', debugState.grid);
+  console.log('Grid debug:', debugState.grid ? 'ON' : 'OFF');
+}
+
+function toggleDebugRuler() {
+  debugState.ruler = !debugState.ruler;
+  document.body.classList.toggle('debug-ruler', debugState.ruler);
+  console.log('Ruler debug:', debugState.ruler ? 'ON' : 'OFF');
+}
+
+function toggleDebugBoxModel() {
+  debugState.boxModel = !debugState.boxModel;
+  document.body.classList.toggle('debug-box-model', debugState.boxModel);
+  console.log('Box model debug:', debugState.boxModel ? 'ON' : 'OFF');
+}
+
+// Element dimension reporting
+function reportDimensions() {
+  const founding = document.querySelector('.brand-card__founding-year');
+  const location = document.querySelector('.brand-card__location');
+  const locationText = document.querySelector('.location__text');
+  const locationIcon = document.querySelector('.location__icon');
+  
+  console.group('🔍 Element Dimension Report');
+  
+  if (founding) {
+    const foundingRect = founding.getBoundingClientRect();
+    const foundingStyles = window.getComputedStyle(founding);
+    console.log('✅ Founded Element:', {
+      offsetLeft: founding.offsetLeft,
+      offsetTop: founding.offsetTop,
+      clientWidth: founding.clientWidth,
+      clientHeight: founding.clientHeight,
+      boundingRect: foundingRect,
+      marginLeft: foundingStyles.marginLeft,
+      paddingLeft: foundingStyles.paddingLeft,
+      textAlign: foundingStyles.textAlign,
+      textIndent: foundingStyles.textIndent
+    });
+  }
+  
+  if (location) {
+    const locationRect = location.getBoundingClientRect();
+    const locationStyles = window.getComputedStyle(location);
+    console.log('🔴 Location Container:', {
+      offsetLeft: location.offsetLeft,
+      offsetTop: location.offsetTop,
+      clientWidth: location.clientWidth,
+      clientHeight: location.clientHeight,
+      boundingRect: locationRect,
+      marginLeft: locationStyles.marginLeft,
+      paddingLeft: locationStyles.paddingLeft,
+      textAlign: locationStyles.textAlign,
+      textIndent: locationStyles.textIndent
+    });
+  }
+  
+  if (locationText) {
+    const textRect = locationText.getBoundingClientRect();
+    const textStyles = window.getComputedStyle(locationText);
+    console.log('🟣 Location Text:', {
+      offsetLeft: locationText.offsetLeft,
+      offsetTop: locationText.offsetTop,
+      clientWidth: locationText.clientWidth,
+      clientHeight: locationText.clientHeight,
+      boundingRect: textRect,
+      textContent: locationText.textContent,
+      marginLeft: textStyles.marginLeft,
+      paddingLeft: textStyles.paddingLeft
+    });
+  }
+  
+  if (locationIcon) {
+    const iconRect = locationIcon.getBoundingClientRect();
+    const iconStyles = window.getComputedStyle(locationIcon);
+    console.log('🟡 Location Icon:', {
+      offsetLeft: locationIcon.offsetLeft,
+      offsetTop: locationIcon.offsetTop,
+      clientWidth: locationIcon.clientWidth,
+      clientHeight: locationIcon.clientHeight,
+      boundingRect: iconRect,
+      display: iconStyles.display,
+      visibility: iconStyles.visibility
+    });
+  }
+  
+  // Calculate alignment difference
+  if (founding && location) {
+    const foundingLeft = founding.getBoundingClientRect().left;
+    const locationLeft = location.getBoundingClientRect().left;
+    const difference = locationLeft - foundingLeft;
+    
+    console.log('📏 Alignment Analysis:', {
+      foundingLeft: foundingLeft,
+      locationLeft: locationLeft,
+      difference: difference,
+      alignment: difference === 0 ? '✅ PERFECT' : `❌ ${difference}px offset`
+    });
+  }
+  
+  console.groupEnd();
+  
+  // Also show alert for quick reference
+  alert(`Debug measurements logged to console. Check browser dev tools for detailed analysis.`);
+}
+
+// Initialize debugging tools
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🔧 Visual Debugging Toolkit loaded. Use the debug buttons above to analyze layout issues.');
+});
+</script>

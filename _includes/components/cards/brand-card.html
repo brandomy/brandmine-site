@@ -133,7 +133,7 @@
         {% endif %}
         {% if brand.city and brand.country %}
           {% if brand.founding_year %}<span class="meta-separator"> • </span>{% endif %}
-          <span class="meta-location">{{ brand.city }} {% include helpers/country-flag.html country_code=brand.country %}</span>
+          <span class="meta-location">{{ brand.city }}{% include helpers/country-flag.html country_code=brand.country %}</span>
         {% endif %}
       </div>
 

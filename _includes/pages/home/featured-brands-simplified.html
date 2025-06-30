@@ -25,7 +25,7 @@ PARAMETERS: All optional with sensible defaults
 <div class="carousel" data-component-type="featured-brands-simplified">
   {% if brands.size > 0 %}
     {% for brand in brands %}
-      <div class="simplified-carousel-card">
+      <div class="carousel__item">
         {% include components/cards/brand-card.html brand=brand %}
       </div>
     {% endfor %}
