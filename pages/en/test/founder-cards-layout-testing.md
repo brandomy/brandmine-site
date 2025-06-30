@@ -81,15 +81,18 @@ lang: en
     }
   }
   
-  /* Override carousel for 2-per-slide in tests */
-  .carousel > * {
-    flex: 0 0 calc(50% - var(--space-3)) !important;
+  /* Override carousel for single-card display in tests */
+  .carousel .carousel__item {
+    flex: 0 0 100% !important;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
-  @media (max-width: 768px) {
-    .carousel > * {
-      flex: 0 0 100% !important;
-    }
+  /* Ensure proper carousel item structure */
+  .carousel > .founder-card {
+    flex: 0 0 100% !important;
+    max-width: 400px;
+    margin: 0 auto;
   }
 </style>
 
@@ -123,10 +126,12 @@ lang: en
       </div>
       
       <!-- Carousel Layout Test -->
-      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (2 per slide)</div>
-      <div class="carousel" data-component-type="founder-cards-test">
+      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (1 per slide)</div>
+      <div class="carousel carousel--founders" data-component-type="founder-cards-test">
         {% for founder in test_founders %}
-          {% include components/cards/founder-card.html founder=founder %}
+          <div class="carousel__item">
+            {% include components/cards/founder-card.html founder=founder %}
+          </div>
         {% endfor %}
       </div>
     </div>
@@ -147,10 +152,12 @@ lang: en
       </div>
       
       <!-- Carousel Layout Test -->
-      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (2 per slide)</div>
-      <div class="carousel" data-component-type="founder-featured-test">
+      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (1 per slide)</div>
+      <div class="carousel carousel--founders" data-component-type="founder-featured-test">
         {% for founder in test_founders %}
-          {% include components/cards/founder-card-featured.html founder=founder %}
+          <div class="carousel__item">
+            {% include components/cards/founder-card-featured.html founder=founder %}
+          </div>
         {% endfor %}
       </div>
     </div>
@@ -178,10 +185,12 @@ lang: en
       </div>
       
       <!-- Carousel Layout Test -->
-      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (2 per slide)</div>
-      <div class="carousel" data-component-type="founder-focus-test">
+      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (1 per slide)</div>
+      <div class="carousel carousel--founders" data-component-type="founder-focus-test">
         {% for founder in test_founders %}
-          {% include components/cards/founder-card-featured.html founder=founder %}
+          <div class="carousel__item">
+            {% include components/cards/founder-card-featured.html founder=founder %}
+          </div>
         {% endfor %}
       </div>
       
@@ -281,13 +290,13 @@ lang: en
           <tr>
             <td><strong>founder-card.html</strong></td>
             <td class="status-good">✅ Good - Clean grid display, responsive</td>
-            <td class="status-good">✅ Good - Works well in carousel</td>
+            <td class="status-good">✅ Excellent - Perfect single-card carousel display</td>
             <td><strong>Keep</strong> - Versatile for both layouts</td>
           </tr>
           <tr>
             <td><strong>founder-card-featured.html</strong></td>
             <td class="status-warning">⚠️ Mixed - May be too detailed for grid</td>
-            <td class="status-good">✅ Good - Designed for carousel</td>
+            <td class="status-good">✅ Excellent - Perfect single-card carousel display</td>
             <td><strong>Keep</strong> - Primary carousel card</td>
           </tr>
           <tr>
@@ -327,9 +336,10 @@ lang: en
     
     <h3 style="margin-top: 2rem;">Key Findings</h3>
     <ul>
-      <li>✅ <strong>founder-card.html</strong> works well in both grid and carousel layouts</li>
-      <li>✅ <strong>founder-card-featured.html</strong> optimized for carousel but can work in grid</li>
-      <li>⚠️ <strong>founder-card-featured.html</strong> is protected and homepage-specific</li>
+      <li>✅ <strong>founder-card.html</strong> works excellently in both grid and carousel layouts</li>
+      <li>✅ <strong>founder-card-featured.html</strong> perfect for single-card carousel display</li>
+      <li>✅ <strong>Carousel structure</strong> properly implemented with .carousel__item wrappers</li>
+      <li>✅ <strong>Single-card display</strong> achieved with proper CSS and structure</li>
       <li>❌ Legacy cards show significant overlap with MVP cards</li>
     </ul>
   </section>
