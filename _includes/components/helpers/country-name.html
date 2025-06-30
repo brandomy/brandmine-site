@@ -33,10 +33,4 @@
 {% assign country_info = site.data.countries_basic.countries[country_code] %}
 
 <!-- Check if we found country information -->
-{% if country_info and country_info.name and country_info.name[display_lang] %}
-  <!-- Output the country name in the requested language -->
-  {{ country_info.name[display_lang] }}
-{% else %}
-  <!-- If no country info found, just output the code itself -->
-  {{ country_code | upcase }}
-{% endif %}
+{% if country_info and country_info.name and country_info.name[display_lang] %}{{ country_info.name[display_lang] }}{% else %}{{ country_code | upcase }}{% endif %}
