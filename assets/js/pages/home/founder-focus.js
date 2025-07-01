@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeFounderFocusCarousel(carousel) {
-    const cards = carousel.querySelectorAll('.founder-card-focus');
+    const cards = carousel.querySelectorAll('.founder-focus-card');
     const dots = document.querySelectorAll('.founder-focus__dot');
 
     if (cards.length === 0) return;

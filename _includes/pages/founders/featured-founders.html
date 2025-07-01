@@ -25,7 +25,7 @@ PARAMETERS: All optional with sensible defaults
   {% if founders.size > 0 %}
     {% for founder in founders %}
       <div class="carousel__item">
-        {% include components/cards/founder-card-featured.html founder=founder %}
+        {% include components/cards/founder-card.html founder=founder variant="featured" %}
       </div>
     {% endfor %}
   {% else %}

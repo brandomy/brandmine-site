@@ -1,126 +1,135 @@
 {% comment %}
-COMPONENT: Founder Card - Featured Variant
-PURPOSE: Clean, progressive disclosure card matching successful Brand/Case Studies design pattern
-USAGE: {% include components/cards/founder-card-featured.html founder=founder %}
-
-DESIGN PATTERN (Applied from proven Brand card success):
-- Large portrait image with generation badge overlay
-- Founder name + Position • Company • Generation
-- Single key metric (Years Experience/Achievement)
-- Max 4 expertise tags for discovery
-- Curatorial description (40-80 words)
-- Single CTA: "View Profile →"
-
-PROGRESSIVE DISCLOSURE ELEMENTS:
-1. Hero Portrait Priority - Large, emotional visual impact
-2. Essential Professional Meta - Position • Company format
-3. Single Key Credential - One compelling credibility indicator
-4. Curated Expertise Tags - Max 4 relevant professional skills
-5. Editorial Description - Brief curatorial insight about significance
-6. Clear Single CTA - "View Profile →" action
+  Unified Founder Card Component
+  
+  Parameters:
+  - founder (required): Founder object
+  - variant (optional): "standard" or "featured", defaults to "standard"
+  
+  Usage:
+  {% include components/cards/founder-card.html founder=founder %}
+  {% include components/cards/founder-card.html founder=founder variant="featured" %}
 {% endcomment %}
 
-{% comment %} Progressive Disclosure: Focus on essential discovery information {% endcomment %}
+{% assign variant = include.variant | default: "standard" %}
+{% assign founder = include.founder %}
 
-<article class="founder-card-featured">
-  <!-- Hero Portrait with Generation Badge -->
-  <div class="founder-card-featured__image">
-    {% comment %} Use portrait image for emotional impact (2:3 aspect like brand hero) {% endcomment %}
-    {% if include.founder.images and include.founder.images.portrait and include.founder.images.portrait.name %}
-      {% include components/images/collection-image.html
-         collection="founders"
-         slug=include.founder.ref
-         purpose="portrait"
-         name=include.founder.images.portrait.name
-         alt=include.founder.images.portrait.alt
-         class="founder-card-featured__img" %}
-    {% else %}
-      {% assign default_alt = "Portrait of " | append: include.founder.name %}
-      {% include components/images/collection-image.html
-         collection="founders"
-         slug=include.founder.ref
-         purpose="portrait"
-         alt=default_alt
-         class="founder-card-featured__img" %}
-    {% endif %}
-
-    <!-- Generation Badge (top-right overlay) -->
-    {% if include.founder.generation %}
-      <div class="founder-card-featured__generation-badge">
-        {% case include.founder.generation %}
-          {% when 'first' %}{% include helpers/t.html key="founder.generation_first" fallback="1st Gen" %}
-          {% when 'second' %}{% include helpers/t.html key="founder.generation_second" fallback="2nd Gen" %}
-          {% when 'third' %}{% include helpers/t.html key="founder.generation_third" fallback="3rd Gen" %}
-          {% when 'transition' %}{% include helpers/t.html key="founder.generation_transition" fallback="Transition" %}
-        {% endcase %}
-      </div>
-    {% endif %}
-  </div>
-
-  <!-- Card Content -->
-  <div class="founder-card-featured__content">
-    <!-- Founder Name -->
-    <h3 class="founder-card-featured__title">{{ include.founder.name }}</h3>
-
-    <!-- Professional Meta: Position • Company • Generation -->
-    <div class="founder-card-featured__meta">
-      {% if include.founder.position %}
-        <span class="meta-position">{{ include.founder.position }}</span>
-      {% endif %}
-      {% if include.founder.company %}
-        {% if include.founder.position %}<span class="meta-separator"> • </span>{% endif %}
-        <span class="meta-company">{{ include.founder.company }}</span>
-      {% endif %}
-      {% if include.founder.city and include.founder.country %}
-        {% if include.founder.position or include.founder.company %}<span class="meta-separator"> • </span>{% endif %}
-        <span class="meta-location">
-          {{ include.founder.city }} 
-          {% include helpers/country-flag.html country_code=include.founder.country %}
-        </span>
+<article class="founder-card founder-card--{{ variant }}"
+         itemscope itemtype="https://schema.org/Person">
+  
+  {% if variant == "featured" %}
+    {% comment %} FEATURED VARIANT - Large horizontal carousel layout {% endcomment %}
+    
+    <div class="founder-card__portrait">
+      {% if founder.images and founder.images.portrait %}
+        {% include components/images/collection-image.html
+           collection="founders"
+           slug=founder.ref
+           purpose="portrait"
+           name=founder.images.portrait.name
+           alt=founder.images.portrait.alt
+           sizes="(max-width: 768px) 100vw, 400px" %}
+      {% else %}
+        <div class="founder-card__portrait-placeholder">
+          <svg class="founder-card__portrait-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
       {% endif %}
     </div>
-
-    <!-- Single Key Metric: Primary achievement or credential -->
-    {% if include.founder.achievements and include.founder.achievements.size > 0 %}
-      <div class="founder-card-featured__key-metric">
-        <span class="metric-label">{% include helpers/t.html key="founder.key_achievement" fallback="Key Achievement" %}</span>
-        <span class="metric-value">{{ include.founder.achievements.first }}</span>
+    
+    <div class="founder-card__content">
+      <div class="founder-card__header">
+        <h3 class="founder-card__name" itemprop="name">{{ founder.name | default: founder.title }}</h3>
+        
+        {% if founder.position %}
+          <p class="founder-card__position" itemprop="jobTitle">{{ founder.position }}</p>
+        {% endif %}
+        
+        {% if founder.city and founder.country %}
+          <div class="founder-card__location">
+            <svg class="founder-card__location-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            </svg>
+            <span class="founder-card__location-text">{{ founder.city }}, {{ founder.country }}</span>
+          </div>
+        {% endif %}
       </div>
-    {% elsif include.founder.generation %}
-      <div class="founder-card-featured__key-metric">
-        <span class="metric-label">{% include helpers/t.html key="founder.generation_label" fallback="Generation" %}</span>
-        <span class="metric-value">
-          {% case include.founder.generation %}
-            {% when 'first' %}{% include helpers/t.html key="founder.generation_first_full" fallback="First Generation Entrepreneur" %}
-            {% when 'second' %}{% include helpers/t.html key="founder.generation_second_full" fallback="Second Generation Leader" %}
-            {% when 'third' %}{% include helpers/t.html key="founder.generation_third_full" fallback="Third Generation Innovator" %}
-            {% when 'transition' %}{% include helpers/t.html key="founder.generation_transition_full" fallback="Transitional Leadership" %}
-          {% endcase %}
-        </span>
+      
+      {% if founder.brief_bio or founder.professional_background %}
+        <div class="founder-card__achievement">
+          <div class="founder-card__achievement-badge">
+            <svg class="founder-card__achievement-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span>{% include helpers/t.html key="founder.key_achievement" fallback="Key Achievement" %}</span>
+          </div>
+          <p class="founder-card__achievement-text">{{ founder.brief_bio | default: founder.professional_background }}</p>
+        </div>
+      {% endif %}
+      
+      {% if founder.expertise %}
+        <div class="founder-card__tags">
+          {% for tag in founder.expertise limit:4 %}
+            <span class="founder-card__tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <div class="founder-card__footer">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__cta">
+          {% include helpers/t.html key="founder.connect_cta" fallback="Connect with" %} {{ founder.name | default: founder.title | split: ' ' | first }} →
+        </a>
       </div>
+    </div>
+    
+  {% else %}
+    {% comment %} STANDARD VARIANT - Compact vertical grid layout {% endcomment %}
+    
+    <div class="founder-card__header">
+      {% if founder.images and founder.images.portrait %}
+        <div class="founder-card__avatar">
+          {% include components/images/collection-image.html
+             collection="founders"
+             slug=founder.ref
+             purpose="portrait"
+             name=founder.images.portrait.name
+             alt=founder.images.portrait.alt
+             sizes="80px" %}
+        </div>
+      {% else %}
+        <div class="founder-card__avatar founder-card__avatar-placeholder">
+          {{ founder.name | default: founder.title | truncatewords: 1 | remove: "..." | slice: 0, 2 | upcase }}
+        </div>
+      {% endif %}
+      
+      <div class="founder-card__meta">
+        <h3 class="founder-card__name" itemprop="name">{{ founder.name | default: founder.title }}</h3>
+        {% if founder.position %}
+          <p class="founder-card__position" itemprop="jobTitle">{{ founder.position }}</p>
+        {% endif %}
+        {% if founder.generation %}
+          <span class="founder-card__generation">{{ founder.generation | capitalize }} Gen</span>
+        {% endif %}
+      </div>
+    </div>
+    
+    {% if founder.brief_bio or founder.professional_background %}
+      <p class="founder-card__description">{{ founder.brief_bio | default: founder.professional_background | truncate: 120 }}</p>
     {% endif %}
-
-    <!-- Curatorial Description (Editorial insight about founder significance) -->
-    {% if include.founder.brief_bio %}
-      <p class="founder-card-featured__description">{{ include.founder.brief_bio }}</p>
-    {% endif %}
-
-    <!-- Expertise Tags (Max 4 for balanced discovery) -->
-    {% if include.founder.expertise %}
-      <div class="founder-card-featured__tags">
-        {% for expertise in include.founder.expertise limit:4 %}
-          <span class="founder-card-featured__tag founder-card-featured__tag--expertise">
-            {{ expertise }}
-          </span>
+    
+    {% if founder.expertise %}
+      <div class="founder-card__tags">
+        {% for tag in founder.expertise limit:3 %}
+          <span class="founder-card__tag">{{ tag }}</span>
         {% endfor %}
       </div>
     {% endif %}
-
-    <!-- Single CTA -->
-    <div class="founder-card-featured__cta">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ include.founder.ref }}/" class="founder-card-featured__button">
+    
+    <div class="founder-card__footer">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
         {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %} →
       </a>
     </div>
-  </div>
+    
+  {% endif %}
 </article>

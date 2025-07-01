@@ -607,6 +607,25 @@
   }
 }
 
+// Founder Test Components - Match founder-focus behavior for testing pages
+.carousel[data-component-type="founder-cards-test"],
+.carousel[data-component-type="founder-featured-test"],
+.carousel[data-component-type="founder-focus-test"] {
+  @include carousel-responsive-gaps();
+  
+  // Same responsive pattern as founder-focus for consistency
+  .carousel__item {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    
+    @media (width >= 992px) {
+      flex: 0 0 900px;
+      width: 900px;
+      max-width: 900px;
+    }
+  }
+}
+
 /* -----------------------------------------------------------------------------
    9. RESPONSIVE UTILITIES
    ----------------------------------------------------------------------------- */

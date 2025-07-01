@@ -69,15 +69,41 @@ lang: en
     gap: var(--space-6) !important;
   }
   
+  /* Override grid for 2-column layout in tests */
+  .test-grid-2col {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-6) !important;
+  }
+  
+  /* Override grid for 4-column layout in tests */
+  .test-grid-4col {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: var(--space-4) !important;
+  }
+  
   @media (max-width: 1024px) {
+    .test-grid-2col {
+      grid-template-columns: 1fr !important;
+    }
     .test-grid-3col {
       grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .test-grid-4col {
+      grid-template-columns: repeat(3, 1fr) !important;
     }
   }
   
   @media (max-width: 640px) {
+    .test-grid-2col {
+      grid-template-columns: 1fr !important;
+    }
     .test-grid-3col {
       grid-template-columns: 1fr !important;
+    }
+    .test-grid-4col {
+      grid-template-columns: repeat(2, 1fr) !important;
     }
   }
   
@@ -86,6 +112,44 @@ lang: en
     flex: 0 0 100% !important;
     max-width: 400px;
     margin: 0 auto;
+  }
+  
+  /* Multi-card carousel (2 per slide) */
+  .carousel--multi .carousel__item--half {
+    flex: 0 0 50% !important;
+    max-width: 50%;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+  
+  /* Multi-card carousel (3 per slide) */
+  .carousel--multi .carousel__item--third {
+    flex: 0 0 33.333% !important;
+    max-width: 33.333%;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .carousel--multi .carousel__item--half {
+      flex: 0 0 100% !important;
+      max-width: 100%;
+    }
+    .carousel--multi .carousel__item--third {
+      flex: 0 0 50% !important;
+      max-width: 50%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel--multi .carousel__item--half {
+      flex: 0 0 100% !important;
+      max-width: 100%;
+    }
+    .carousel--multi .carousel__item--third {
+      flex: 0 0 100% !important;
+      max-width: 100%;
+    }
   }
   
   /* Ensure proper carousel item structure */
@@ -118,11 +182,16 @@ function initializeTestCarousel(carousel, carouselIndex) {
         return;
     }
     
+    // Detect carousel type and calculate slides
+    const carouselType = getCarouselType(carousel);
+    const slideCount = calculateSlideCount(items.length, carouselType);
+    console.log('Carousel type:', carouselType, 'Slide count:', slideCount);
+    
     let currentSlide = 0;
     
-    // Create navigation dots
-    const navContainer = createNavigationDots(carousel, items.length, carouselIndex);
-    const dots = navContainer.querySelectorAll('.carousel__dot');
+    // Create navigation dots based on actual slide count
+    const navContainer = createNavigationDots(carousel, slideCount, carouselIndex);
+    const dots = navContainer.querySelectorAll('.founder-focus__dot');
     
     // Set initial active state
     updateActiveDot(dots, 0);
@@ -131,14 +200,14 @@ function initializeTestCarousel(carousel, carouselIndex) {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', function() {
             console.log('Dot clicked:', index);
-            goToSlide(carousel, items, dots, index);
+            goToSlide(carousel, items, dots, index, carouselType);
             currentSlide = index;
         });
     });
     
     // Add scroll listener for manual scrolling
     carousel.addEventListener('scroll', function() {
-        const newSlide = getCurrentSlide(carousel, items);
+        const newSlide = getCurrentSlide(carousel, items, carouselType);
         if (newSlide !== currentSlide) {
             currentSlide = newSlide;
             updateActiveDot(dots, currentSlide);
@@ -148,64 +217,97 @@ function initializeTestCarousel(carousel, carouselIndex) {
     console.log('Test carousel', carouselIndex, 'initialized successfully');
 }
 
-function createNavigationDots(carousel, itemCount, carouselIndex) {
+function getCarouselType(carousel) {
+    // Detect carousel type based on CSS classes and item classes
+    if (carousel.classList.contains('carousel--multi')) {
+        const firstItem = carousel.querySelector('.carousel__item');
+        if (firstItem) {
+            if (firstItem.classList.contains('carousel__item--third')) {
+                return '3-per-slide';
+            } else if (firstItem.classList.contains('carousel__item--half')) {
+                return '2-per-slide';
+            }
+        }
+        return 'multi-unknown';
+    }
+    return '1-per-slide';
+}
+
+function calculateSlideCount(itemCount, carouselType) {
+    switch (carouselType) {
+        case '1-per-slide':
+            return itemCount;
+        case '2-per-slide':
+            return Math.ceil(itemCount / 2);
+        case '3-per-slide':
+            return Math.ceil(itemCount / 3);
+        default:
+            return itemCount;
+    }
+}
+
+function createNavigationDots(carousel, slideCount, carouselIndex) {
     // Look for existing navigation container
-    let navContainer = carousel.parentNode.querySelector('.carousel__navigation');
+    let navContainer = carousel.parentNode.querySelector('.founder-focus__navigation');
     
     if (!navContainer) {
-        // Create new navigation container
+        // Create navigation container using homepage styles
         navContainer = document.createElement('div');
-        navContainer.className = 'carousel__navigation';
-        navContainer.style.cssText = `
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        `;
+        navContainer.className = 'founder-focus__navigation';
+        
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'founder-focus__dots';
+        navContainer.appendChild(dotsContainer);
         
         // Insert after carousel
         carousel.parentNode.insertBefore(navContainer, carousel.nextSibling);
     }
     
-    // Clear existing dots
-    navContainer.innerHTML = '';
-    
-    // Create dots
-    for (let i = 0; i < itemCount; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'carousel__dot';
-        dot.setAttribute('data-slide', i);
-        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        dot.style.cssText = `
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: none;
-            background: #d1d5db;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            margin: 0;
-        `;
-        
-        // Active state styling
-        if (i === 0) {
-            dot.style.background = '#f97316'; // Orange for founders
-            dot.classList.add('active');
-        }
-        
-        navContainer.appendChild(dot);
+    // Get or create dots container
+    let dotsContainer = navContainer.querySelector('.founder-focus__dots');
+    if (!dotsContainer) {
+        dotsContainer = document.createElement('div');
+        dotsContainer.className = 'founder-focus__dots';
+        navContainer.appendChild(dotsContainer);
     }
     
-    console.log('Created', itemCount, 'navigation dots for carousel', carouselIndex);
+    // Clear existing dots
+    dotsContainer.innerHTML = '';
+    
+    // Create dots using homepage CSS classes
+    for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'founder-focus__dot';
+        dot.setAttribute('data-slide', i);
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        
+        // Active state using homepage classes
+        if (i === 0) {
+            dot.classList.add('founder-focus__dot--active');
+        }
+        
+        dotsContainer.appendChild(dot);
+    }
+    
+    console.log('Created', slideCount, 'navigation dots for carousel', carouselIndex);
     return navContainer;
 }
 
-function goToSlide(carousel, items, dots, slideIndex) {
-    if (slideIndex < 0 || slideIndex >= items.length) return;
+function goToSlide(carousel, items, dots, slideIndex, carouselType) {
+    // Calculate how many items per slide
+    let itemsPerSlide = 1;
+    switch (carouselType) {
+        case '2-per-slide': itemsPerSlide = 2; break;
+        case '3-per-slide': itemsPerSlide = 3; break;
+    }
+    
+    // Calculate which item to scroll to
+    const targetItemIndex = slideIndex * itemsPerSlide;
+    if (targetItemIndex >= items.length) return;
     
     // Calculate scroll position
-    const item = items[slideIndex];
-    const scrollLeft = item.offsetLeft - carousel.offsetLeft;
+    const targetItem = items[targetItemIndex];
+    const scrollLeft = targetItem.offsetLeft - carousel.offsetLeft;
     
     // Smooth scroll to position
     carousel.scrollTo({
@@ -220,25 +322,40 @@ function goToSlide(carousel, items, dots, slideIndex) {
 function updateActiveDot(dots, activeIndex) {
     dots.forEach((dot, index) => {
         const isActive = index === activeIndex;
-        dot.classList.toggle('active', isActive);
-        dot.style.background = isActive ? '#f97316' : '#d1d5db'; // Orange for founders
+        // Use homepage CSS classes instead of inline styles
+        if (isActive) {
+            dot.classList.add('founder-focus__dot--active');
+        } else {
+            dot.classList.remove('founder-focus__dot--active');
+        }
     });
 }
 
-function getCurrentSlide(carousel, items) {
+function getCurrentSlide(carousel, items, carouselType) {
+    // Calculate how many items per slide
+    let itemsPerSlide = 1;
+    switch (carouselType) {
+        case '2-per-slide': itemsPerSlide = 2; break;
+        case '3-per-slide': itemsPerSlide = 3; break;
+    }
+    
     const scrollLeft = carousel.scrollLeft;
-    let closestIndex = 0;
+    let closestSlide = 0;
     let closestDistance = Math.abs(items[0].offsetLeft - scrollLeft);
     
-    for (let i = 1; i < items.length; i++) {
-        const distance = Math.abs(items[i].offsetLeft - scrollLeft);
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = i;
+    // Check each slide position (every itemsPerSlide items)
+    for (let slideIndex = 0; slideIndex < Math.ceil(items.length / itemsPerSlide); slideIndex++) {
+        const itemIndex = slideIndex * itemsPerSlide;
+        if (itemIndex < items.length) {
+            const distance = Math.abs(items[itemIndex].offsetLeft - scrollLeft);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestSlide = slideIndex;
+            }
         }
     }
     
-    return closestIndex;
+    return closestSlide;
 }
 </script>
 
@@ -248,91 +365,152 @@ function getCurrentSlide(carousel, items) {
     <p>Comprehensive testing of MVP founder cards in different layout contexts</p>
   </div>
 
-  <!-- Section 1: MVP Founder Cards Testing -->
+  <!-- Get test founder data -->
+  {% assign comparison_founder = site.founders | where: "lang", "en" | where: "ref", "ru-alexei-sokolov" | first %}
+  {% assign test_founders = site.founders | where: "lang", "en" | limit: 3 %}
+
+  <!-- Section 0: Single Card Comparison -->
   <section class="test-section">
-    <h2>Section 1: MVP FOUNDER CARDS - Dual Layout Testing</h2>
+    <h2>Section 0: SINGLE CARD TYPE COMPARISON</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of founder card components using identical data</p>
     
-    <!-- Get test founder data -->
-    {% assign test_founder = site.founders | where: "lang", "en" | where: "ref", "ru-alexei-sokolov" | first %}
-    {% assign test_founders = site.founders | where: "lang", "en" | limit: 3 %}
-    
-    <!-- Subsection A: founder-card.html Performance -->
-    <div class="test-subsection">
-      <h3>Subsection A: founder-card.html Performance</h3>
-      <div class="card-info">
-        <strong>Card:</strong> founder-card.html | <strong>Lines:</strong> 123 | <strong>Purpose:</strong> Standard founder display
+    <!-- Single card comparison grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+      
+      <!-- 1. Standard founder-card -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1. founder-card.html (Standard)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Standard founder display | <strong>Usage:</strong> Grid layouts, multi-card carousels
+        </div>
+        <div style="border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_founder %}
+            {% include components/cards/founder-card.html founder=comparison_founder %}
+          {% endif %}
+        </div>
       </div>
       
-      <!-- Grid Layout Test -->
-      <div class="test-layout-label">Grid Layout (3 cards)</div>
+      <!-- 2. Featured founder-card -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2. founder-card-featured.html (Featured)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Featured founder with 50% portrait | <strong>Usage:</strong> Homepage focus, single-card carousels
+        </div>
+        <div style="border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_founder %}
+            {% include components/cards/founder-card-featured.html founder=comparison_founder %}
+          {% endif %}
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Key Differences Summary -->
+    <div style="background: #f9fafb; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #6366f1;">
+      <h4>Key Component Differences</h4>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+        <div>
+          <h5>founder-card.html</h5>
+          <ul style="font-size: 0.875rem; color: #4b5563;">
+            <li>Vertical card layout</li>
+            <li>Portrait at top</li>
+            <li>Standard content hierarchy</li>
+            <li>Optimized for grid displays</li>
+          </ul>
+        </div>
+        <div>
+          <h5>founder-card-featured.html</h5>
+          <ul style="font-size: 0.875rem; color: #4b5563;">
+            <li>50% portrait + 50% content layout</li>
+            <li>Revolutionary horizontal design</li>
+            <li>Enhanced achievement section</li>
+            <li>Optimized for single-card focus</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: founder-card.html Testing -->
+  <section class="test-section">
+    <h2>Section 1: founder-card.html (Standard Card) Testing</h2>
+    
+    <div class="card-info">
+      <strong>Card:</strong> founder-card.html | <strong>Purpose:</strong> Standard founder display for grid and multi-card carousels
+    </div>
+    
+    <!-- Grid Layout Tests -->
+    <div class="test-subsection">
+      <h3>Grid Layout Tests</h3>
+      
+      <!-- Grid Layout (3 cards) -->
+      <div class="test-layout-label">Grid Layout (3 cards) - Standard Responsive</div>
       <div class="grid__container test-grid-3col">
         {% for founder in test_founders %}
           {% include components/cards/founder-card.html founder=founder %}
         {% endfor %}
       </div>
       
-      <!-- Carousel Layout Test -->
-      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (1 per slide)</div>
-      <div class="carousel carousel--founders" data-component-type="founder-cards-test">
+      <!-- Grid Layout (4 cards) -->
+      <div class="test-layout-label" style="margin-top: 2rem;">Grid Layout (4 cards) - Adjusted Width</div>
+      <div class="grid__container test-grid-4col">
         {% for founder in test_founders %}
-          <div class="carousel__item">
+          {% include components/cards/founder-card.html founder=founder %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- Carousel Layout Tests -->
+    <div class="test-subsection">
+      <h3>Carousel Layout Tests</h3>
+      
+      <!-- Carousel Layout (3 per slide) -->
+      <div class="test-layout-label">Carousel Layout (3 per slide) - Full Width</div>
+      <div class="carousel carousel--founders carousel--multi" data-component-type="founder-cards-test" style="width: 100%; height: 420px;">
+        {% for founder in test_founders %}
+          <div class="carousel__item carousel__item--third">
             {% include components/cards/founder-card.html founder=founder %}
           </div>
         {% endfor %}
       </div>
     </div>
+  </section>
+
+  <!-- Section 2: founder-card-featured.html Testing -->
+  <section class="test-section">
+    <h2>Section 2: founder-card-featured.html (Featured Card) Testing</h2>
+    <div class="card-info">
+      <strong>Card:</strong> founder-card-featured.html | <strong>Purpose:</strong> Featured founder with 50% portrait layout for single-card focus
+    </div>
     
-    <!-- Subsection B: founder-card-featured.html Performance -->
+    <!-- Grid Layout Tests -->
     <div class="test-subsection">
-      <h3>Subsection B: founder-card-featured.html Performance</h3>
-      <div class="card-info">
-        <strong>Card:</strong> founder-card-featured.html | <strong>Lines:</strong> ~200 | <strong>Purpose:</strong> Featured founder with enhanced details
-      </div>
+      <h3>Grid Layout Tests</h3>
       
-      <!-- Grid Layout Test -->
-      <div class="test-layout-label">Grid Layout (3 cards)</div>
-      <div class="grid__container test-grid-3col">
-        {% for founder in test_founders %}
+      <!-- Grid Layout (2 cards) -->
+      <div class="test-layout-label">Grid Layout (2 cards) - Larger Cards</div>
+      <div class="grid__container test-grid-2col">
+        {% for founder in test_founders limit: 2 %}
           {% include components/cards/founder-card-featured.html founder=founder %}
         {% endfor %}
       </div>
       
-      <!-- Carousel Layout Test -->
-      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (1 per slide)</div>
-      <div class="carousel carousel--founders" data-component-type="founder-featured-test">
+      <!-- Grid Layout (3 cards) -->
+      <div class="test-layout-label" style="margin-top: 2rem;">Grid Layout (3 cards) - Existing Layout</div>
+      <div class="grid__container test-grid-3col">
         {% for founder in test_founders %}
-          <div class="carousel__item">
-            {% include components/cards/founder-card-featured.html founder=founder %}
-          </div>
+          {% include components/cards/founder-card-featured.html founder=founder %}
         {% endfor %}
       </div>
     </div>
-  </section>
-
-  <!-- Section 1.5: Homepage Protected Card - Layout Testing -->
-  <section class="test-section">
-    <h2>Section 1.5: HOMEPAGE PROTECTED CARD - Layout Testing</h2>
     
+    <!-- Carousel Layout Tests -->
     <div class="test-subsection">
-      <h3>Subsection A: founder-card-featured.html Grid Performance</h3>
-      <div class="card-info">
-        <strong>Card:</strong> founder-card-featured.html | <strong>Lines:</strong> 108 | <strong>Purpose:</strong> Homepage focus section (50% portrait)
-      </div>
-      <p style="color: #059669; font-weight: bold; margin-bottom: 1rem;">
-        ✓ Testing layout versatility - homepage usage remains protected
-      </p>
+      <h3>Carousel Layout Tests</h3>
       
-      <!-- Grid Layout Test -->
-      <div class="test-layout-label">Grid Layout (3 cards)</div>
-      <div class="grid__container test-grid-3col">
-        {% for founder in test_founders %}
-          {% include components/cards/founder-card-featured.html founder=founder %}
-        {% endfor %}
-      </div>
-      
-      <!-- Carousel Layout Test -->
-      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (1 per slide)</div>
-      <div class="carousel carousel--founders" data-component-type="founder-focus-test">
+      <!-- Carousel Layout (1 per slide) -->
+      <div class="test-layout-label">Carousel Layout (1 per slide) - Increased Height</div>
+      <div class="carousel carousel--founders" data-component-type="founder-featured-test" style="width: 100%; height: 450px;">
         {% for founder in test_founders %}
           <div class="carousel__item">
             {% include components/cards/founder-card-featured.html founder=founder %}
@@ -340,83 +518,31 @@ function getCurrentSlide(carousel, items) {
         {% endfor %}
       </div>
       
-      <div style="background: #f3f4f6; padding: 1rem; margin-top: 2rem; border-radius: 0.5rem;">
-        <h4>Assessment: founder-card-featured.html Layout Versatility</h4>
-        <ul>
-          <li><strong>Grid Performance:</strong> The 50% portrait design may create unusual spacing in grid layouts</li>
-          <li><strong>Carousel Performance:</strong> Works better in carousel due to individual card focus</li>
-          <li><strong>Recommendation:</strong> Keep exclusively for homepage focus section as designed</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 2: Specialized Cards - Homepage Protected -->
-  <section class="test-section">
-    <h2>Section 2: SPECIALIZED CARDS - Homepage Protected</h2>
-    
-    <div class="test-subsection">
-      <h3>founder-card-featured.html</h3>
-      <div class="protected-notice">
-        ⚠️ PROTECTED HOMEPAGE CARD - Display Only, No Testing
-      </div>
-      <div class="card-info">
-        <strong>Card:</strong> founder-card-featured.html | <strong>Lines:</strong> 108 | <strong>Purpose:</strong> Homepage focus section (50% portrait)
+      <!-- Carousel Layout (2 per slide) -->
+      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (2 per slide) - NEW Addition</div>
+      <div class="carousel carousel--founders carousel--multi" data-component-type="founder-featured-multi-test" style="width: 100%; height: 450px;">
+        {% for founder in test_founders %}
+          <div class="carousel__item carousel__item--half">
+            {% include components/cards/founder-card-featured.html founder=founder %}
+          </div>
+        {% endfor %}
       </div>
       
-      <!-- Display only - no testing -->
-      <div class="carousel" data-component-type="founder-focus-display">
-        {% if test_founder %}
-          <div class="carousel-card">
-            {% include components/cards/founder-card-featured.html founder=test_founder %}
+      <!-- Carousel Layout (3 per slide) -->
+      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (3 per slide) - Full Width</div>
+      <div class="carousel carousel--founders carousel--multi" data-component-type="founder-featured-triple-test" style="width: 100%; height: 450px;">
+        {% for founder in test_founders %}
+          <div class="carousel__item carousel__item--third">
+            {% include components/cards/founder-card-featured.html founder=founder %}
           </div>
-        {% endif %}
+        {% endfor %}
       </div>
-      <p style="text-align: center; margin-top: 1rem; color: #6b7280;">
-        This card is specifically designed for the homepage founder focus section and should not be modified.
-      </p>
     </div>
   </section>
 
-  <!-- Section 3: Legacy Comparison -->
+  <!-- Section 3: Location Display Scenarios Testing -->
   <section class="test-section">
-    <h2>Section 3: LEGACY COMPARISON - Elimination Candidates</h2>
-    
-    <!-- featured-founder-card.html -->
-    <div class="test-subsection">
-      <h3>featured-founder-card.html</h3>
-      <div class="card-info">
-        <strong>Card:</strong> featured-founder-card.html | <strong>Lines:</strong> 200 | <strong>Usages:</strong> 7 | <strong>Purpose:</strong> Legacy featured display
-      </div>
-      <div class="featured-founders-grid">
-        <div class="featured-founders-grid__item">
-          {% include components/cards/featured-founder-card.html founder=test_founder %}
-        </div>
-      </div>
-    </div>
-    
-    <!-- founder-intense-card.html -->
-    <div class="test-subsection">
-      <h3>founder-intense-card.html</h3>
-      <div class="card-info">
-        <strong>Card:</strong> founder-intense-card.html | <strong>Lines:</strong> 82 | <strong>Purpose:</strong> Intense visual treatment
-      </div>
-      {% if test_founder %}
-        {% include components/cards/founder-intense-card.html founder=test_founder %}
-      {% endif %}
-    </div>
-    
-    <!-- founder-quote-card.html -->
-    <div class="test-subsection">
-      <h3>founder-quote-card.html</h3>
-      <div class="card-info">
-        <strong>Card:</strong> founder-quote-card.html | <strong>Lines:</strong> 92 | <strong>Purpose:</strong> Quote-focused display
-      </div>
-      {% if test_founder %}
-        {% include components/cards/founder-quote-card.html founder=test_founder %}
-      {% endif %}
-    </div>
-  </section>
+    <h2>Section 3: LOCATION DISPLAY OPTIMIZATION</h2>\n    <div class=\"card-info\">\n      <strong>Purpose:</strong> Test different location display combinations for marketing impact and user perception\n    </div>\n    \n    <div class=\"test-subsection\">\n      <h3>Location Display Scenarios</h3>\n      <p style=\"color: #6b7280; margin-bottom: 2rem;\">Testing 4 strategic location combinations for international audience recognition and space efficiency.</p>\n      \n      <!-- Scenario A: City, Country + Flag -->\n      <div class=\"test-layout-label\">Scenario A: City, Country + Flag → \"Moscow, Russia 🇷🇺\"</div>\n      <div style=\"background: #f8fafc; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario A: Full location with flag -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Moscow, Russia 🇷🇺</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Maximum geographic context, recognizable flag, may feel cluttered for space-conscious design.\n        </div>\n      </div>\n      \n      <!-- Scenario B: City, Country (no flag) -->\n      <div class=\"test-layout-label\">Scenario B: City, Country (no flag) → \"Moscow, Russia\"</div>\n      <div style=\"background: #f0fdf4; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario B: Full location without flag -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Moscow, Russia</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Clean, professional appearance, clear geographic context, avoids potential flag sensitivity.\n        </div>\n      </div>\n      \n      <!-- Scenario C: Country + Flag only -->\n      <div class=\"test-layout-label\">Scenario C: Country + Flag only → \"Russia 🇷🇺\"</div>\n      <div style=\"background: #fef3c7; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario C: Country and flag only -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Russia 🇷🇺</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Space-efficient, immediate recognition, good for mobile, loses city-level specificity.\n        </div>\n      </div>\n      \n      <!-- Scenario D: City only -->\n      <div class=\"test-layout-label\">Scenario D: City only → \"Moscow\"</div>\n      <div style=\"background: #fdf2f8; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #ec4899; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario D: City only -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Moscow</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Ultra-minimal, assumes audience knows geography, risk of ambiguity (Moscow, ID vs Moscow, RU).\n        </div>\n      </div>\n    </div>\n    \n    <!-- Strategic Recommendation -->\n    <div style=\"background: #1e40af; color: white; padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem;\">\n      <h4 style=\"color: white; margin-top: 0;\">Strategic Recommendation Matrix</h4>\n      <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;\">\n        <div>\n          <h5 style=\"color: #93c5fd;\">✅ B2B International</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario B: \"Moscow, Russia\"<br>Professional, clear, avoids flag politics</p>\n        </div>\n        <div>\n          <h5 style=\"color: #93c5fd;\">✅ Consumer/Cultural</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario A: \"Moscow, Russia 🇷🇺\"<br>Visual impact, cultural pride, emotional connection</p>\n        </div>\n        <div>\n          <h5 style=\"color: #93c5fd;\">✅ Mobile-First</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario C: \"Russia 🇷🇺\"<br>Space-efficient, quick recognition</p>\n        </div>\n        <div>\n          <h5 style=\"color: #93c5fd;\">⚠️ High-Risk</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario D: \"Moscow\"<br>Ambiguous, lacks context</p>\n        </div>\n      </div>\n    </div>\n  </section>
 
   <!-- Performance Matrix -->
   <section class="test-section">

@@ -23,13 +23,15 @@
     </p>
   </header>
   
-  <!-- Simple universal carousel pattern -->
-  <div class="carousel" data-component-type="founder-focus">
+  <!-- Carousel with proper item structure -->
+  <div class="carousel carousel--founders" data-component-type="founder-focus">
     {% comment %} Get featured founders for this language {% endcomment %}
     {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: 4 %}
     
     {% for founder in featured_founders %}
-      {% include components/cards/founder-card-featured.html founder=founder %}
+      <div class="carousel__item">
+        {% include components/cards/founder-card-featured.html founder=founder %}
+      </div>
     {% endfor %}
   </div>
   

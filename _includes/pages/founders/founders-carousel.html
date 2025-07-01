@@ -46,10 +46,9 @@
           <div class="carousel__slide-content">
             {% assign eduardo = site.founders | where: "ref", "br-eduardo-santos" | where: "lang", page.lang | first %}
             {% if eduardo %}
-              {% include components/cards/founder-card-featured.html 
-                 item=eduardo 
-                 type="founder" 
-                 variant="featured" 
+              {% include components/cards/founder-card.html 
+                 founder=eduardo 
+                 variant="featured" %}
             {% endif %}
           </div>
         </div>
@@ -59,10 +58,9 @@
           <div class="carousel__slide-content">
             {% assign alexei = site.founders | where: "ref", "ru-alexei-sokolov" | where: "lang", page.lang | first %}
             {% if alexei %}
-              {% include components/cards/founder-card-featured.html 
-                 item=alexei 
-                 type="founder" 
-                 variant="featured" 
+              {% include components/cards/founder-card.html 
+                 founder=alexei 
+                 variant="featured" %}
             {% endif %}
           </div>
         </div>
@@ -72,10 +70,9 @@
           <div class="carousel__slide-content">
             {% assign maria = site.founders | where: "ref", "ru-maria-kuznetsova" | where: "lang", page.lang | first %}
             {% if maria %}
-              {% include components/cards/founder-card-featured.html 
-                 item=maria 
-                 type="founder" 
-                 variant="featured" 
+              {% include components/cards/founder-card.html 
+                 founder=maria 
+                 variant="featured" %}
             {% endif %}
           </div>
         </div>
@@ -85,10 +82,9 @@
           <div class="carousel__slide-content">
             {% assign ivan = site.founders | where: "ref", "ru-ivan-petrov" | where: "lang", page.lang | first %}
             {% if ivan %}
-              {% include components/cards/founder-card-featured.html 
-                 item=ivan 
-                 type="founder" 
-                 variant="featured" 
+              {% include components/cards/founder-card.html 
+                 founder=ivan 
+                 variant="featured" %}
             {% endif %}
           </div>
         </div>
