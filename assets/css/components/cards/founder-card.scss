@@ -27,38 +27,45 @@
   
   .founder-card__header {
     display: flex;
-    align-items: center;
-    gap: var(--space-3);
+    flex-direction: column;
     margin-bottom: var(--space-4);
   }
   
-  .founder-card__avatar {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+  .founder-card__headshot {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* 1:1 aspect ratio */
+    position: relative;
     overflow: hidden;
+    margin-bottom: var(--space-4);
     
     img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
     &-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: var(--neutral-200);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: var(--text-sm);
+      font-size: var(--text-4xl);
       font-weight: var(--font-semibold);
       color: var(--neutral-600);
     }
   }
   
   .founder-card__meta {
-    flex: 1;
-    min-width: 0;
+    text-align: center;
   }
   
   .founder-card__name {
@@ -73,6 +80,12 @@
     font-size: var(--text-sm);
     color: var(--neutral-600);
     margin: 0 0 var(--space-1) 0;
+  }
+  
+  .founder-card__company-location {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    margin: 0;
   }
   
   .founder-card__generation {
@@ -110,18 +123,22 @@
   
   .founder-card__footer {
     margin-top: auto;
+    text-align: right;
   }
   
   .founder-card__link {
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
     font-size: var(--text-sm);
     font-weight: var(--font-medium);
     color: var(--primary-600);
     text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
     
     &:hover {
       color: var(--primary-700);
+      text-decoration: underline;
     }
   }
 }
@@ -533,38 +550,6 @@
   }
 }
 
-.founder-card__footer {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid var(--color-gray-100);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* Legacy footer styling removed - now using standard variant footer styles */
 
-.founder-card__link {
-  font-size: 0.875rem;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  background-color: var(--primary-600);
-  padding: 0.5rem 1.25rem;
-  border-radius: var(--radius-md);
-  transition: all 0.2s ease;
-  display: inline-block;
-  text-align: center;
-  box-shadow: var(--shadow-medium);
-  width: auto;
-  max-width: 120px;
-  font-size: 0.8125rem;
-
-  &:hover {
-    background-color: var(--primary-700);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-strong);
-  }
-
-  &:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-light);
-  }
-}
+/* Legacy button styling removed - now using text link style defined in standard variant */

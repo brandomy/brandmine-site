@@ -158,6 +158,44 @@ lang: en
     max-width: 400px;
     margin: 0 auto;
   }
+  
+  /* Founder comparison grid - 2 cards per row */
+  .founder-comparison-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+  
+  @media (max-width: 768px) {
+    .founder-comparison-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  
+  /* ===========================
+     FOUNDER CARD VARIANT B - A/B Testing Styles
+     =========================== */
+  .founder-card-variant-b {
+    /* Version B: Same as A but with square headshot */
+    
+    /* Keep the card border radius same as A */
+    .founder-card {
+      /* Uses default radius from version A */
+    }
+    
+    /* Only difference: Square headshot (no radius) */
+    .founder-card__headshot {
+      border-radius: 0 !important; /* Square corners for headshot only */
+    }
+    
+    /* Everything else matches version A:
+       - Centered text (default)
+       - Right-aligned CTA (default)
+       - Teal color link (default)
+       - Same hover effects (default)
+       - Same tag styling (default)
+    */
+  }
 </style>
 
 <script>
@@ -375,17 +413,32 @@ function getCurrentSlide(carousel, items, carouselType) {
     <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of founder card components using identical data</p>
     
     <!-- Single card comparison grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+    <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem;">
       
-      <!-- 1. Standard founder-card -->
+      <!-- 1A. Standard founder-card (Version A) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1. founder-card.html (Standard)</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. founder-card.html (Version A)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Standard founder display | <strong>Usage:</strong> Grid layouts, multi-card carousels
+          <strong>Purpose:</strong> Standard founder display - Current design | <strong>Usage:</strong> Grid layouts
         </div>
         <div style="border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_founder %}
             {% include components/cards/founder-card.html founder=comparison_founder %}
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- 1B. Standard founder-card (Version B) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. founder-card.html (Version B)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> A/B test variant - Style variations | <strong>Usage:</strong> Testing alternative designs
+        </div>
+        <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_founder %}
+            <div class="founder-card-variant-b">
+              {% include components/cards/founder-card.html founder=comparison_founder %}
+            </div>
           {% endif %}
         </div>
       </div>
@@ -403,28 +456,63 @@ function getCurrentSlide(carousel, items, carouselType) {
         </div>
       </div>
       
+      <!-- 3. Simplified founder-card -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3. simplified-founder-card.html (Clean)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Clean, progressive disclosure | <strong>Usage:</strong> Alternative grid/carousel display
+        </div>
+        <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_founder %}
+            {% include components/cards/simplified-founder-card.html founder=comparison_founder %}
+          {% endif %}
+        </div>
+      </div>
+      
     </div>
     
     <!-- Key Differences Summary -->
     <div style="background: #f9fafb; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #6366f1;">
       <h4>Key Component Differences</h4>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
         <div>
-          <h5>founder-card.html</h5>
+          <h5>Version A (Current)</h5>
           <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li>Vertical card layout</li>
-            <li>Portrait at top</li>
-            <li>Standard content hierarchy</li>
-            <li>Optimized for grid displays</li>
+            <li>Full 1:1 headshot image</li>
+            <li>Centered text alignment</li>
+            <li>Rounded card corners</li>
+            <li>Subtle shadow on hover</li>
+            <li>Right-aligned CTA link</li>
+          </ul>
+        </div>
+        <div>
+          <h5>Version B (Test Variant)</h5>
+          <ul style="font-size: 0.875rem; color: #4b5563;">
+            <li><strong>Square headshot image</strong></li>
+            <li>Centered text alignment</li>
+            <li>Rounded card corners</li>
+            <li>Right-aligned CTA link</li>
+            <li>Otherwise identical to A</li>
           </ul>
         </div>
         <div>
           <h5>founder-card-featured.html</h5>
           <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li>50% portrait + 50% content layout</li>
-            <li>Revolutionary horizontal design</li>
-            <li>Enhanced achievement section</li>
-            <li>Optimized for single-card focus</li>
+            <li>50% portrait + 50% content</li>
+            <li>Horizontal design</li>
+            <li>Enhanced achievement focus</li>
+            <li>Single-card carousel optimized</li>
+            <li>Homepage featured section</li>
+          </ul>
+        </div>
+        <div>
+          <h5>simplified-founder-card.html</h5>
+          <ul style="font-size: 0.875rem; color: #4b5563;">
+            <li>Clean, minimal design</li>
+            <li>Large portrait image</li>
+            <li>Progressive disclosure</li>
+            <li>Generation badge overlay</li>
+            <li>Alternative grid/carousel</li>
           </ul>
         </div>
       </div>

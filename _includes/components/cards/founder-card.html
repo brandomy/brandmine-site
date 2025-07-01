@@ -86,18 +86,18 @@
     {% comment %} STANDARD VARIANT - Compact vertical grid layout {% endcomment %}
     
     <div class="founder-card__header">
-      {% if founder.images and founder.images.portrait %}
-        <div class="founder-card__avatar">
+      {% if founder.images and founder.images.headshot %}
+        <div class="founder-card__headshot">
           {% include components/images/collection-image.html
              collection="founders"
              slug=founder.ref
-             purpose="portrait"
-             name=founder.images.portrait.name
-             alt=founder.images.portrait.alt
-             sizes="80px" %}
+             purpose="headshot"
+             name=founder.images.headshot.name
+             alt=founder.images.headshot.alt
+             sizes="(max-width: 768px) 100vw, 320px" %}
         </div>
       {% else %}
-        <div class="founder-card__avatar founder-card__avatar-placeholder">
+        <div class="founder-card__headshot founder-card__headshot-placeholder">
           {{ founder.name | default: founder.title | truncatewords: 1 | remove: "..." | slice: 0, 2 | upcase }}
         </div>
       {% endif %}
@@ -107,8 +107,20 @@
         {% if founder.position %}
           <p class="founder-card__position" itemprop="jobTitle">{{ founder.position }}</p>
         {% endif %}
-        {% if founder.generation %}
-          <span class="founder-card__generation">{{ founder.generation | capitalize }} Gen</span>
+        {% if founder.company or founder.city %}
+          <p class="founder-card__company-location">
+            {% if founder.company %}{{ founder.company }}{% endif %}
+            {% if founder.company and founder.city %} • {% endif %}
+            {% if founder.city %}{{ founder.city }}{% if founder.country %}, {% endif %}{% endif %}
+            {%- if founder.country -%}
+              {%- assign country_info = site.data.countries_basic.countries[founder.country] -%}
+              {%- if country_info and country_info.name and country_info.name[page.lang] -%}
+                {{- country_info.name[page.lang] -}}
+              {%- else -%}
+                {{- founder.country | upcase -}}
+              {%- endif -%}
+            {%- endif -%}
+          </p>
         {% endif %}
       </div>
     </div>
