@@ -77,7 +77,7 @@
       
       <div class="founder-card__footer">
         <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__cta">
-          {% include helpers/t.html key="founder.connect_cta" fallback="Connect with" %} {{ founder.name | default: founder.title | split: ' ' | first }} →
+          Meet {{ founder.name | default: founder.title | split: ' ' | first }} →
         </a>
       </div>
     </div>
@@ -139,7 +139,7 @@
     
     <div class="founder-card__footer">
       <a href="{{ site.baseurl }}/{{ page.lang }}/founders/{{ founder.ref }}/" class="founder-card__link">
-        {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %} →
+        Meet {{ founder.name | split: ' ' | first }} →
       </a>
     </div>
     
