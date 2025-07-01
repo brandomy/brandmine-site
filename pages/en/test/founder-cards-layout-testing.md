@@ -176,25 +176,40 @@ lang: en
      FOUNDER CARD VARIANT B - A/B Testing Styles
      =========================== */
   .founder-card-variant-b {
-    /* Version B: Same as A but with square headshot */
+    /* Version B: Light background + square headshot + styled tags/link */
     
-    /* Keep the card border radius same as A */
+    /* Light neutral background */
     .founder-card {
-      /* Uses default radius from version A */
+      background-color: var(--neutral-100) !important; /* Light gray background */
     }
     
-    /* Only difference: Square headshot (no radius) */
+    /* Square headshot (no radius) */
     .founder-card__headshot {
       border-radius: 0 !important; /* Square corners for headshot only */
     }
     
-    /* Everything else matches version A:
-       - Centered text (default)
-       - Right-aligned CTA (default)
-       - Teal color link (default)
-       - Same hover effects (default)
-       - Same tag styling (default)
-    */
+    /* Heavier weight link with hover underline */
+    .founder-card__link {
+      font-weight: var(--font-semibold) !important;
+      text-decoration: none !important;
+      
+      &:hover {
+        color: var(--primary-500) !important;
+        text-decoration: underline !important;
+        text-decoration-color: var(--primary-500) !important;
+        text-underline-offset: 2px !important;
+      }
+    }
+    
+    /* Light background for tags */
+    .founder-card__tag {
+      background-color: var(--neutral-200) !important;
+    }
+    
+    /* Gray horizontal divider */
+    .founder-card__header {
+      border-bottom-color: var(--neutral-200) !important;
+    }
   }
 </style>
 
@@ -488,11 +503,11 @@ function getCurrentSlide(carousel, items, carouselType) {
         <div>
           <h5>Version B (Test Variant)</h5>
           <ul style="font-size: 0.875rem; color: #4b5563;">
+            <li><strong>Light gray card background</strong></li>
             <li><strong>Square headshot image</strong></li>
-            <li>Centered text alignment</li>
-            <li>Rounded card corners</li>
-            <li>Right-aligned CTA link</li>
-            <li>Otherwise identical to A</li>
+            <li><strong>Gray horizontal divider</strong></li>
+            <li><strong>Semibold CTA (underline on hover)</strong></li>
+            <li><strong>Gray tag backgrounds</strong></li>
           </ul>
         </div>
         <div>
