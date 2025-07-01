@@ -59,6 +59,9 @@ Optimized for emotional impact with mobile-friendly design
   <div class="founder-focus-card__content">
     <div class="founder-focus-card__header">
       <h3 class="founder-focus-card__name">{{ founder.name }}</h3>
+      {% if founder.position %}
+        <p class="founder-focus-card__position">{{ founder.position }}</p>
+      {% endif %}
       <p class="founder-focus-card__location">{{ full_location }}</p>
     </div>
     

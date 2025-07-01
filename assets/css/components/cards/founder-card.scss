@@ -129,7 +129,7 @@
   .founder-card__link {
     display: inline-block;
     font-size: var(--text-sm);
-    font-weight: var(--font-medium);
+    font-weight: var(--font-semibold);
     color: var(--primary-600);
     text-decoration: none;
     background: none;
@@ -137,7 +137,7 @@
     padding: 0;
     
     &:hover {
-      color: var(--primary-700);
+      color: var(--primary-500);
       text-decoration: underline;
     }
   }
@@ -552,4 +552,43 @@
 
 /* Legacy footer styling removed - now using standard variant footer styles */
 
-/* Legacy button styling removed - now using text link style defined in standard variant */
+/* =================================
+   VARIANT B STYLES - A/B Testing
+   ================================= */
+
+.founder-card-variant-b {
+  /* Version B: Light background + square headshot + styled tags/link */
+  
+  /* Light neutral background */
+  .founder-card {
+    background-color: var(--neutral-100) !important; /* Light gray background */
+  }
+  
+  /* Square headshot (no radius) */
+  .founder-card__headshot {
+    border-radius: 0 !important; /* Square corners for headshot only */
+  }
+  
+  /* Heavier weight link with hover underline */
+  .founder-card__link {
+    font-weight: var(--font-semibold) !important;
+    text-decoration: none !important;
+    
+    &:hover {
+      color: var(--primary-500) !important;
+      text-decoration: underline !important;
+      text-decoration-color: var(--primary-500) !important;
+      text-underline-offset: 2px !important;
+    }
+  }
+  
+  /* Light background for tags */
+  .founder-card__tag {
+    background-color: var(--neutral-200) !important;
+  }
+  
+  /* Gray horizontal divider */
+  .founder-card__header {
+    border-bottom-color: var(--neutral-200) !important;
+  }
+}

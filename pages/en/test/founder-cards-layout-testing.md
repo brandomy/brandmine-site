@@ -159,6 +159,19 @@ lang: en
     margin: 0 auto;
   }
   
+  /* Fix carousel height for founder cards - set to auto instead of fixed 360px */
+  .carousel {
+    --carousel-height: auto !important;
+  }
+  
+  .carousel .carousel__item {
+    height: auto !important;
+  }
+  
+  .carousel .founder-card {
+    height: auto !important;
+  }
+  
   /* Founder comparison grid - 2 cards per row */
   .founder-comparison-grid {
     display: grid !important;
@@ -173,48 +186,491 @@ lang: en
   }
   
   /* ===========================
-     FOUNDER CARD VARIANT B - A/B Testing Styles
+     STANDARD CARD VARIANT C - 360px Carousel Optimized
      =========================== */
-  .founder-card-variant-b {
-    /* Version B: Light background + square headshot + styled tags/link */
+  .founder-card-variant-c {
+    /* Optimize layout for 360px constraint */
     
-    /* Light neutral background */
     .founder-card {
-      background-color: var(--neutral-100) !important; /* Light gray background */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-3) !important; /* Reduced padding */
     }
     
-    /* Square headshot (no radius) */
+    /* Circular avatar for space efficiency */
     .founder-card__headshot {
-      border-radius: 0 !important; /* Square corners for headshot only */
-    }
-    
-    /* Heavier weight link with hover underline */
-    .founder-card__link {
-      font-weight: var(--font-semibold) !important;
-      text-decoration: none !important;
+      width: 100px !important;
+      height: 100px !important;
+      padding-bottom: 0 !important;
+      margin: 0 auto var(--space-3) !important;
       
-      &:hover {
-        color: var(--primary-500) !important;
-        text-decoration: underline !important;
-        text-decoration-color: var(--primary-500) !important;
-        text-underline-offset: 2px !important;
+      img {
+        border-radius: 50% !important;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
     
-    /* Light background for tags */
-    .founder-card__tag {
-      background-color: var(--neutral-200) !important;
+    /* Compact header */
+    .founder-card__header {
+      margin-bottom: var(--space-2) !important;
     }
     
-    /* Gray horizontal divider */
+    /* Smaller text sizes */
+    .founder-card__name {
+      font-size: var(--text-lg) !important;
+      margin-bottom: 2px !important;
+    }
+    
+    .founder-card__position {
+      font-size: var(--text-sm) !important;
+      margin-bottom: 2px !important;
+    }
+    
+    .founder-card__location {
+      font-size: var(--text-xs) !important;
+    }
+    
+    /* Hide description to save space */
+    .founder-card__description {
+      display: none !important;
+    }
+    
+    /* Compact tags */
+    .founder-card__tags {
+      margin: var(--space-2) 0 !important;
+    }
+    
+    .founder-card__tag {
+      font-size: 10px !important;
+      padding: 2px 6px !important;
+    }
+    
+    /* Push CTA to bottom */
+    .founder-card__footer {
+      margin-top: auto !important;
+    }
+    
+    /* Smaller CTA link */
+    .founder-card__footer a {
+      font-size: var(--text-sm) !important;
+    }
+  }
+
+  /* ===========================
+     STANDARD CARD VARIANT D - Experimental Horizontal Layout
+     =========================== */
+  .founder-card-variant-d {
+    /* Experimental horizontal card layout */
+    
+    .founder-card {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      padding: var(--space-4) !important;
+      gap: var(--space-4) !important;
+      min-height: 180px !important;
+    }
+    
+    /* Circular headshot on the left */
+    .founder-card__headshot {
+      width: 120px !important;
+      height: 120px !important;
+      flex-shrink: 0 !important;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+      
+      img {
+        border-radius: 50% !important;
+      }
+    }
+    
+    /* Content flows horizontally */
     .founder-card__header {
+      margin-bottom: 0 !important;
+    }
+    
+    /* Stack name and details */
+    .founder-card__info {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: var(--space-1) !important;
+    }
+    
+    /* Hide description for cleaner look */
+    .founder-card__description {
+      display: none !important;
+    }
+    
+    /* Tags inline with smaller size */
+    .founder-card__tags {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: var(--space-1) !important;
+      margin: var(--space-2) 0 !important;
+    }
+    
+    .founder-card__tag {
+      font-size: 10px !important;
+      padding: 2px 8px !important;
+      background: var(--primary-100) !important;
+      color: var(--primary-700) !important;
+      border: none !important;
+    }
+    
+    /* Right-aligned CTA */
+    .founder-card__footer {
+      margin-left: auto !important;
+      margin-top: 0 !important;
+    }
+    
+    .founder-card__footer a {
+      background: var(--primary-600) !important;
+      color: white !important;
+      padding: var(--space-2) var(--space-3) !important;
+      border-radius: var(--radius-full) !important;
+      text-decoration: none !important;
+      font-size: var(--text-sm) !important;
+      font-weight: var(--font-medium) !important;
+      white-space: nowrap !important;
+      
+      &:hover {
+        background: var(--primary-700) !important;
+      }
+    }
+  }
+
+  /* ===========================
+     FEATURED CARD VARIANT A - A/B Testing Styles
+     =========================== */
+  .founder-card-featured-variant-a {
+    /* Version 2A: Style variations for featured card */
+    
+    /* Change header border from accent to neutral */
+    .founder-focus-card__header {
       border-bottom-color: var(--neutral-200) !important;
+    }
+    
+    /* Make key achievements box accent color like 2B with radius */
+    .founder-focus-card__achievement {
+      background: var(--accent-100) !important;
+      border: 1px solid var(--accent-200) !important;
+      border-radius: 0.25rem !important;
+    }
+    
+    /* Reduce inner padding: was var(--space-6) [24px], now var(--space-4) [16px] */
+    .founder-focus-card__content {
+      padding: var(--space-4) !important;
+    }
+    
+    /* Ensure CTA button is at bottom of card and align right */
+    .founder-focus-card__cta {
+      margin-top: auto !important;
+      align-self: flex-end !important;
+      text-align: right !important;
+    }
+    
+    /* Make button autosize like 2B */
+    .founder-focus-card__cta-button {
+      display: inline-block !important;
+      width: auto !important;
+      text-align: center !important;
+    }
+  }
+
+  /* ===========================
+     FEATURED CARD VARIANT B - A/B Testing Styles
+     =========================== */
+  .founder-card-featured-variant-b {
+    /* Version 2B: Style variations for featured card */
+    
+    /* Light gray background */
+    .founder-card {
+      background-color: var(--neutral-100) !important;
+    }
+    
+    /* Change header border from accent to neutral grey */
+    .founder-focus-card__header {
+      border-bottom-color: var(--neutral-100) !important;
+    }
+    
+    /* Restore subtle accent color to key achievements box with radius */
+    .founder-focus-card__achievement {
+      background: var(--accent-100) !important;
+      border: 1px solid var(--accent-200) !important;
+      border-radius: 0.25rem !important;
+    }
+    
+    /* Remove bottom margin from description */
+    .founder-focus-card__description {
+      margin-bottom: 0 !important;
+    }
+    
+    /* Reduce inner padding: was var(--space-6) [24px], now var(--space-4) [16px] */
+    .founder-focus-card__content {
+      padding: var(--space-4) !important;
+    }
+    
+    /* Ensure CTA button is at bottom of card and align right */
+    .founder-focus-card__cta {
+      margin-top: auto !important;
+      align-self: flex-end !important;
+      text-align: right !important;
+    }
+    
+    /* Make button only as wide as text content with breathing space and larger text */
+    .founder-focus-card__cta-button {
+      display: inline-block !important;
+      width: auto !important;
+      text-align: center !important;
+      padding: var(--space-2) var(--space-4) !important;
+      font-size: 0.875rem !important;
+    }
+    
+    /* Generation metric in upper right */
+    .founder-focus-card {
+      position: relative !important;
+    }
+    
+    .generation-metric {
+      position: absolute !important;
+      top: 8px !important;
+      right: 8px !important;
+      background: rgba(255, 255, 255, 0.9) !important;
+      color: var(--neutral-700) !important;
+      font-size: 0.75rem !important;
+      font-weight: var(--font-medium) !important;
+      padding: 2px 6px !important;
+      border-radius: 4px !important;
+      border: 1px solid var(--neutral-200) !important;
+      z-index: 10 !important;
+    }
+    
+    /* Custom location format: Company • City Flag */
+    .founder-focus-card__location {
+      /* Will be overridden by custom HTML content */
     }
   }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Custom formatting for both 2A and 2B variants
+    
+    // 2A: Change location format with active TeaTime link, remove duplicate company section, and move description
+    const variantA = document.querySelector('.founder-card-featured-variant-a');
+    if (variantA) {
+        const locationElement = variantA.querySelector('.founder-focus-card__location');
+        const companySection = variantA.querySelector('.founder-focus-card__company');
+        const tagsSection = variantA.querySelector('.founder-focus-card__tags');
+        const descriptionSection = variantA.querySelector('.founder-focus-card__description');
+        
+        if (locationElement && locationElement.textContent.includes('Moscow')) {
+            // Create HTML with smaller link emoji and active TeaTime link
+            locationElement.innerHTML = '<span style="font-size: 0.7em;">🔗</span> <a href="/en/brands/ru-teatime/" class="teatime-link-2a" style="color: inherit; text-decoration: none;">TeaTime</a> • Moscow 🇷🇺';
+            
+            // Add hover effect to the TeaTime link in 2A
+            const teatimeLink = locationElement.querySelector('.teatime-link-2a');
+            if (teatimeLink) {
+                teatimeLink.addEventListener('mouseenter', function() {
+                    this.style.color = 'var(--primary-600)';
+                    this.style.textDecoration = 'underline';
+                });
+                teatimeLink.addEventListener('mouseleave', function() {
+                    this.style.color = 'inherit';
+                    this.style.textDecoration = 'none';
+                });
+            }
+        }
+        
+        // Remove the duplicate company section (second "🔗 TeaTime")
+        if (companySection) {
+            companySection.remove();
+        }
+        
+        // Move description above the tag cloud
+        if (descriptionSection && tagsSection) {
+            tagsSection.parentNode.insertBefore(descriptionSection, tagsSection);
+        }
+        
+        // Change CTA button text to "Meet Alexei..."
+        const ctaButton2A = variantA.querySelector('.founder-focus-card__cta-button');
+        if (ctaButton2A) {
+            ctaButton2A.textContent = 'Meet Alexei →';
+        }
+    }
+    
+    // 2B: Apply modifications to all cards with variant-b styling
+    const applyVariant2BStyling = (card) => {
+        const locationElement = card.querySelector('.founder-focus-card__location');
+        const companySection = card.querySelector('.founder-focus-card__company');
+        const achievementSection = card.querySelector('.founder-focus-card__achievement');
+        const originalDescription = card.querySelector('.founder-focus-card__description');
+        const ctaButton = card.querySelector('.founder-focus-card__cta-button');
+        const nameElement = card.querySelector('.founder-focus-card__name');
+        
+        // Add generation metric to upper right (only if not already added)
+        if (!card.querySelector('.generation-metric')) {
+            const generationMetric = document.createElement('div');
+            generationMetric.className = 'generation-metric';
+            generationMetric.textContent = '1st Gen';
+            card.appendChild(generationMetric);
+        }
+        
+        if (locationElement && companySection) {
+            // Extract company name and location details
+            const companyName = companySection.textContent.replace('🔗', '').trim() || 'Company';
+            const currentLocation = locationElement.textContent;
+            const city = currentLocation.split(',')[0]?.trim() || 'City';
+            let flag = '🌍';
+            
+            // Determine flag based on location
+            if (currentLocation.includes('Russia') || currentLocation.includes('🇷🇺')) flag = '🇷🇺';
+            else if (currentLocation.includes('Brazil') || currentLocation.includes('🇧🇷')) flag = '🇧🇷';
+            else if (currentLocation.includes('China') || currentLocation.includes('🇨🇳')) flag = '🇨🇳';
+            else if (currentLocation.includes('India') || currentLocation.includes('🇮🇳')) flag = '🇮🇳';
+            else if (currentLocation.includes('South Africa') || currentLocation.includes('🇿🇦')) flag = '🇿🇦';
+            
+            // Create brand link href based on company name
+            const brandSlug = companyName.toLowerCase().replace(/\s+/g, '-');
+            const brandHref = `/en/brands/${brandSlug}/`;
+            
+            // Update location with company link
+            locationElement.innerHTML = `<span style="font-size: 0.7em;">🔗</span> <a href="${brandHref}" class="company-link-2b" style="color: inherit; text-decoration: none; font-weight: var(--font-medium);">${companyName}</a> • ${city} ${flag}`;
+            
+            // Add hover effect to the company link
+            const companyLink = locationElement.querySelector('.company-link-2b');
+            if (companyLink) {
+                companyLink.addEventListener('mouseenter', function() {
+                    this.style.textDecoration = 'underline';
+                    this.style.color = 'var(--primary-600)';
+                });
+                companyLink.addEventListener('mouseleave', function() {
+                    this.style.textDecoration = 'none';
+                    this.style.color = 'inherit';
+                });
+            }
+        }
+        
+        // Move description above key achievement box
+        if (companySection && achievementSection && originalDescription) {
+            const descriptionText = originalDescription.textContent;
+            companySection.innerHTML = `<p class="founder-focus-card__description" style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--neutral-600); margin: 0; margin-bottom: var(--space-3);">${descriptionText}</p>`;
+        }
+        
+        // Remove the duplicate description text
+        if (originalDescription) {
+            originalDescription.remove();
+        }
+        
+        // Change CTA button text to use first name
+        if (ctaButton && nameElement) {
+            const firstName = nameElement.textContent.split(' ')[0];
+            ctaButton.textContent = `Meet ${firstName} →`;
+        }
+    };
+    
+    // Apply to all cards within variant-b sections (both single card in Section 0 and all cards in Section 2)
+    const allVariantBCards = document.querySelectorAll('.founder-card-featured-variant-b .founder-focus-card');
+    allVariantBCards.forEach(card => {
+        applyVariant2BStyling(card);
+    });
+    
+    // 1A: Change "View Profile" text to "Meet Alexei -->"
+    // Find all founder cards and check which ones are NOT in variant-b wrapper
+    const allFounderCards = document.querySelectorAll('.founder-card');
+    allFounderCards.forEach(card => {
+        if (!card.closest('.founder-card-variant-b') && !card.closest('.founder-card-featured-variant-a') && !card.closest('.founder-card-featured-variant-b')) {
+            const profileLink1A = card.querySelector('a[href*="founders"]');
+            if (profileLink1A && profileLink1A.textContent.includes('View Profile')) {
+                profileLink1A.textContent = 'Meet Alexei →';
+            }
+        }
+    });
+    
+    // 1B: Change "View Profile" text to "Meet Alexei -->"
+    const variant1B = document.querySelector('.founder-card-variant-b');
+    if (variant1B) {
+        const profileLink = variant1B.querySelector('a[href*="founders"]');
+        if (profileLink && profileLink.textContent.includes('View Profile')) {
+            profileLink.textContent = 'Meet Alexei →';
+        }
+    }
+    
+    // 1C: Change "View Profile" text to "Meet Alexei -->"
+    const variant1C = document.querySelector('.founder-card-variant-c');
+    if (variant1C) {
+        const profileLink = variant1C.querySelector('a[href*="founders"]');
+        if (profileLink && profileLink.textContent.includes('View Profile')) {
+            profileLink.textContent = 'Meet Alexei →';
+        }
+    }
+    
+    // 1D: Change "View Profile" text to shorter "Meet →" for compact button
+    const variant1D = document.querySelector('.founder-card-variant-d');
+    if (variant1D) {
+        const profileLink = variant1D.querySelector('a[href*="founders"]');
+        if (profileLink && profileLink.textContent.includes('View Profile')) {
+            profileLink.textContent = 'Meet →';
+        }
+    }
+    
+    // Display card dimensions for each variant
+    const displayCardDimensions = () => {
+        // Define the card variants and their selectors
+        const variants = [
+            { id: '1A', selector: '.founder-card:not(.founder-card-variant-b):not(.founder-card-variant-c):not(.founder-card-variant-d)' },
+            { id: '1B', selector: '.founder-card-variant-b .founder-card' },
+            { id: '1C', selector: '.founder-card-variant-c .founder-card' },
+            { id: '1D', selector: '.founder-card-variant-d .founder-card' },
+            { id: '2A', selector: '.founder-card-featured-variant-a .founder-focus-card' },
+            { id: '2B', selector: '.founder-card-featured-variant-b .founder-focus-card' }
+        ];
+        
+        variants.forEach(variant => {
+            const card = document.querySelector(variant.selector);
+            if (card) {
+                const rect = card.getBoundingClientRect();
+                const computedStyle = window.getComputedStyle(card);
+                
+                // Create dimension display element
+                const dimensionDisplay = document.createElement('div');
+                dimensionDisplay.className = 'card-dimensions';
+                dimensionDisplay.style.cssText = 'position: absolute; top: -25px; left: 0; background: #1f2937; color: white; padding: 2px 8px; font-size: 11px; border-radius: 4px; font-family: monospace; z-index: 100;';
+                dimensionDisplay.textContent = `${Math.round(rect.width)}×${Math.round(rect.height)}px`;
+                
+                // Find the card's container and make it relative positioned
+                const container = card.closest('[style*="border"]');
+                if (container) {
+                    container.style.position = 'relative';
+                    container.appendChild(dimensionDisplay);
+                }
+                
+                // Log dimensions to console for debugging
+                console.log(`${variant.id} Card Dimensions:`, {
+                    width: Math.round(rect.width),
+                    height: Math.round(rect.height),
+                    padding: computedStyle.padding,
+                    maxWidth: computedStyle.maxWidth
+                });
+            }
+        });
+    };
+    
+    // Run after a delay to ensure all styles are applied
+    setTimeout(displayCardDimensions, 500);
+    
+    // Also update on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        // Remove old dimension displays
+        document.querySelectorAll('.card-dimensions').forEach(el => el.remove());
+        resizeTimeout = setTimeout(displayCardDimensions, 250);
+    });
+    
     console.log('Initializing founder cards test carousels...');
     
     // Find all carousels on the test page
@@ -427,8 +883,11 @@ function getCurrentSlide(carousel, items, carouselType) {
     <h2>Section 0: SINGLE CARD TYPE COMPARISON</h2>
     <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of founder card components using identical data</p>
     
-    <!-- Single card comparison grid -->
-    <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem;">
+    <!-- Single card comparison grid - organized in rows -->
+    <div style="margin-bottom: 3rem;">
+      
+      <!-- Row 1: 1A and 1B -->
+      <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
       
       <!-- 1A. Standard founder-card (Version A) -->
       <div>
@@ -458,30 +917,76 @@ function getCurrentSlide(carousel, items, carouselType) {
         </div>
       </div>
       
-      <!-- 2. Featured founder-card -->
+      </div>
+      
+      <!-- Row 2: 1C and 1D -->
+      <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 1C. Standard founder-card (Constrained Height) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2. founder-card-featured.html (Featured)</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. founder-card.html (360px Constrained)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Featured founder with 50% portrait | <strong>Usage:</strong> Homepage focus, single-card carousels
+          <strong>Purpose:</strong> Carousel-optimized height | <strong>Usage:</strong> Standard carousel layouts
         </div>
-        <div style="border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;">
+        <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_founder %}
-            {% include components/cards/founder-card-featured.html founder=comparison_founder %}
+            <div class="founder-card-variant-c" style="height: 360px; overflow: hidden;">
+              {% include components/cards/founder-card.html founder=comparison_founder %}
+            </div>
           {% endif %}
         </div>
       </div>
       
-      <!-- 3. Simplified founder-card -->
+      <!-- 1D. Standard founder-card (Experimental Layout) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3. simplified-founder-card.html (Clean)</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1D. founder-card.html (Experimental)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Clean, progressive disclosure | <strong>Usage:</strong> Alternative grid/carousel display
+          <strong>Purpose:</strong> Experimental layout variations | <strong>Usage:</strong> Testing new approaches
         </div>
-        <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;">
+        <div style="border: 2px solid #14b8a6; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_founder %}
-            {% include components/cards/simplified-founder-card.html founder=comparison_founder %}
+            <div class="founder-card-variant-d">
+              {% include components/cards/founder-card.html founder=comparison_founder %}
+            </div>
           {% endif %}
         </div>
+      </div>
+      
+      </div>
+      
+      <!-- Row 3: 2A and 2B -->
+      <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 2A. Featured founder-card (Version A) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2A. founder-card-featured.html (Version A)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Featured founder with 50% portrait - Current design | <strong>Usage:</strong> Homepage focus
+        </div>
+        <div style="border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_founder %}
+            <div class="founder-card-featured-variant-a">
+              {% include components/cards/founder-card-featured.html founder=comparison_founder %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- 2B. Featured founder-card (Version B) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2B. founder-card-featured.html (Version B)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> A/B test variant - Featured card variations | <strong>Usage:</strong> alternative design
+        </div>
+        <div style="border: 2px solid #06b6d4; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_founder %}
+            <div class="founder-card-featured-variant-b">
+              {% include components/cards/founder-card-featured.html founder=comparison_founder %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
       </div>
       
     </div>
@@ -489,45 +994,50 @@ function getCurrentSlide(carousel, items, carouselType) {
     <!-- Key Differences Summary -->
     <div style="background: #f9fafb; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #6366f1;">
       <h4>Key Component Differences</h4>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
         <div>
-          <h5>Version A (Current)</h5>
+          <h5>1A. Standard (Version A)</h5>
           <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li>Full 1:1 headshot image</li>
-            <li>Centered text alignment</li>
-            <li>Rounded card corners</li>
-            <li>Subtle shadow on hover</li>
-            <li>Right-aligned CTA link</li>
+            <li><strong>White background</strong></li>
+            <li><strong>Rounded headshot</strong></li>
+            <li>Vertical layout</li>
+            <li>Centered text</li>
           </ul>
         </div>
         <div>
-          <h5>Version B (Test Variant)</h5>
+          <h5>1B. Standard (Version B)</h5>
           <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li><strong>Light gray card background</strong></li>
-            <li><strong>Square headshot image</strong></li>
-            <li><strong>Gray horizontal divider</strong></li>
-            <li><strong>Semibold CTA (underline on hover)</strong></li>
-            <li><strong>Gray tag backgrounds</strong></li>
+            <li><strong>Gray background</strong></li>
+            <li><strong>Square headshot</strong></li>
+            <li>Vertical layout</li>
+            <li>Centered text</li>
           </ul>
         </div>
         <div>
-          <h5>founder-card-featured.html</h5>
+          <h5>2A. Featured (Version A)</h5>
           <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li>50% portrait + 50% content</li>
+            <li><strong>50% portrait layout</strong></li>
             <li>Horizontal design</li>
-            <li>Enhanced achievement focus</li>
-            <li>Single-card carousel optimized</li>
-            <li>Homepage featured section</li>
+            <li>Enhanced achievements</li>
+            <li>Homepage optimized</li>
           </ul>
         </div>
         <div>
-          <h5>simplified-founder-card.html</h5>
+          <h5>2B. Featured (Version B)</h5>
+          <ul style="font-size: 0.875rem; color: #4b5563;">
+            <li><strong>Gray background</strong></li>
+            <li><strong>Company • City Flag format</strong></li>
+            <li>50% portrait layout</li>
+            <li>Alternative location display</li>
+          </ul>
+        </div>
+        <div>
+          <h5>3. Simplified Card</h5>
           <ul style="font-size: 0.875rem; color: #4b5563;">
             <li>Clean, minimal design</li>
             <li>Large portrait image</li>
-            <li>Progressive disclosure</li>
             <li>Generation badge overlay</li>
-            <li>Alternative grid/carousel</li>
+            <li>Alternative option</li>
           </ul>
         </div>
       </div>
@@ -580,10 +1090,11 @@ function getCurrentSlide(carousel, items, carouselType) {
   </section>
 
   <!-- Section 2: founder-card-featured.html Testing -->
-  <section class="test-section">
-    <h2>Section 2: founder-card-featured.html (Featured Card) Testing</h2>
+  <section class="test-section founder-card-featured-variant-b">
+    <h2>Section 2: founder-card-featured.html (Featured Card) Testing - Using 2B Style</h2>
     <div class="card-info">
       <strong>Card:</strong> founder-card-featured.html | <strong>Purpose:</strong> Featured founder with 50% portrait layout for single-card focus
+      <br><strong style="color: var(--primary-600);">Note: All cards in this section use the 2B variant styling</strong>
     </div>
     
     <!-- Grid Layout Tests -->
