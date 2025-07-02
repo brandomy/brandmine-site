@@ -47,9 +47,20 @@ exclude:
   - docs/
   - _docs/
   - vendor/
+  - _scripts/
+  - _archive/
+  - _templates/
+  - .git/
+  - .github/
+  - package*.json
+  - "*.log"
 
 # Allow unpublished pages during development
 unpublished: true
+
+# Performance optimizations
+incremental: true
+profile: false
 
 # Collections restored
 collections:
