@@ -25,8 +25,17 @@
   
   <!-- Carousel with proper item structure -->
   <div class="carousel carousel--founders" data-component-type="founder-focus">
-    {% comment %} Get featured founders for this language {% endcomment %}
-    {% assign featured_founders = site.founders | where: "lang", page.lang | where: "featured", true | limit: 4 %}
+    {% comment %} Get featured founders for this language, with Alexei first {% endcomment %}
+    {% assign all_featured_founders = site.founders | where: "lang", page.lang | where: "featured", true %}
+    {% assign alexei_founder = all_featured_founders | where: "ref", "ru-alexei-sokolov" | first %}
+    {% assign other_founders = all_featured_founders | where_exp: "founder", "founder.ref != 'ru-alexei-sokolov'" | limit: 3 %}
+    {% assign featured_founders = "" | split: "" %}
+    {% if alexei_founder %}
+      {% assign featured_founders = featured_founders | push: alexei_founder %}
+    {% endif %}
+    {% for founder in other_founders %}
+      {% assign featured_founders = featured_founders | push: founder %}
+    {% endfor %}
     
     {% for founder in featured_founders %}
       <div class="carousel__item">

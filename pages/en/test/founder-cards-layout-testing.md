@@ -346,38 +346,8 @@ lang: en
      FEATURED CARD VARIANT A - A/B Testing Styles
      =========================== */
   .founder-card-featured-variant-a {
-    /* Version 2A: Style variations for featured card */
-    
-    /* Change header border from accent to neutral */
-    .founder-focus-card__header {
-      border-bottom-color: var(--neutral-200) !important;
-    }
-    
-    /* Make key achievements box accent color like 2B with radius */
-    .founder-focus-card__achievement {
-      background: var(--accent-100) !important;
-      border: 1px solid var(--accent-200) !important;
-      border-radius: 0.25rem !important;
-    }
-    
-    /* Reduce inner padding: was var(--space-6) [24px], now var(--space-4) [16px] */
-    .founder-focus-card__content {
-      padding: var(--space-4) !important;
-    }
-    
-    /* Ensure CTA button is at bottom of card and align right */
-    .founder-focus-card__cta {
-      margin-top: auto !important;
-      align-self: flex-end !important;
-      text-align: right !important;
-    }
-    
-    /* Make button autosize like 2B */
-    .founder-focus-card__cta-button {
-      display: inline-block !important;
-      width: auto !important;
-      text-align: center !important;
-    }
+    /* Version 2A: Now uses production CSS - no overrides needed */
+    /* All 2A improvements have been applied to the base component CSS */
   }
 
   /* ===========================
@@ -386,51 +356,45 @@ lang: en
   .founder-card-featured-variant-b {
     /* Version 2B: Style variations for featured card */
     
-    /* Light gray background */
-    .founder-card {
-      background-color: var(--neutral-100) !important;
-    }
     
-    /* Change header border from accent to neutral grey */
-    .founder-focus-card__header {
-      border-bottom-color: var(--neutral-100) !important;
+    /* Change header border from accent to neutral grey - same as 2A */
+    .founder-card-featured__header {
+      border-bottom-color: var(--neutral-200) !important;
     }
     
     /* Restore subtle accent color to key achievements box with radius */
-    .founder-focus-card__achievement {
+    .founder-card-featured__achievement {
       background: var(--accent-100) !important;
       border: 1px solid var(--accent-200) !important;
       border-radius: 0.25rem !important;
     }
     
     /* Remove bottom margin from description */
-    .founder-focus-card__description {
+    .founder-card-featured__description {
       margin-bottom: 0 !important;
     }
     
     /* Reduce inner padding: was var(--space-6) [24px], now var(--space-4) [16px] */
-    .founder-focus-card__content {
+    .founder-card-featured__content {
       padding: var(--space-4) !important;
     }
     
     /* Ensure CTA button is at bottom of card and align right */
-    .founder-focus-card__cta {
+    .founder-card-featured__cta {
       margin-top: auto !important;
       align-self: flex-end !important;
       text-align: right !important;
     }
     
-    /* Make button only as wide as text content with breathing space and larger text */
-    .founder-focus-card__cta-button {
+    /* Make button only as wide as text content - same as 2A */
+    .founder-card-featured__cta-button {
       display: inline-block !important;
       width: auto !important;
       text-align: center !important;
-      padding: var(--space-2) var(--space-4) !important;
-      font-size: 0.875rem !important;
     }
     
     /* Generation metric in upper right */
-    .founder-focus-card {
+    .founder-card-featured {
       position: relative !important;
     }
     
@@ -449,7 +413,7 @@ lang: en
     }
     
     /* Custom location format: Company • City Flag */
-    .founder-focus-card__location {
+    .founder-card-featured__location {
       /* Will be overridden by custom HTML content */
     }
   }
@@ -462,10 +426,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // 2A: Change location format with active TeaTime link, remove duplicate company section, and move description
     const variantA = document.querySelector('.founder-card-featured-variant-a');
     if (variantA) {
-        const locationElement = variantA.querySelector('.founder-focus-card__location');
-        const companySection = variantA.querySelector('.founder-focus-card__company');
-        const tagsSection = variantA.querySelector('.founder-focus-card__tags');
-        const descriptionSection = variantA.querySelector('.founder-focus-card__description');
+        const locationElement = variantA.querySelector('.founder-card-featured__location');
+        const companySection = variantA.querySelector('.founder-card-featured__company');
+        const tagsSection = variantA.querySelector('.founder-card-featured__tags');
+        const descriptionSection = variantA.querySelector('.founder-card-featured__description');
+        const card = variantA.querySelector('.founder-card-featured');
+        
+        // Add generation marker to 2A (matching 2B)
+        if (card && !card.querySelector('.generation-metric')) {
+            const generationMetric = document.createElement('div');
+            generationMetric.className = 'generation-metric';
+            generationMetric.textContent = '1st Gen';
+            card.appendChild(generationMetric);
+        }
         
         if (locationElement && locationElement.textContent.includes('Moscow')) {
             // Create HTML with smaller link emoji and active TeaTime link
@@ -496,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Change CTA button text to "Meet Alexei..."
-        const ctaButton2A = variantA.querySelector('.founder-focus-card__cta-button');
+        const ctaButton2A = variantA.querySelector('.founder-card-featured__cta-button');
         if (ctaButton2A) {
             ctaButton2A.textContent = 'Meet Alexei →';
         }
@@ -504,12 +477,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 2B: Apply modifications to all cards with variant-b styling
     const applyVariant2BStyling = (card) => {
-        const locationElement = card.querySelector('.founder-focus-card__location');
-        const companySection = card.querySelector('.founder-focus-card__company');
-        const achievementSection = card.querySelector('.founder-focus-card__achievement');
-        const originalDescription = card.querySelector('.founder-focus-card__description');
-        const ctaButton = card.querySelector('.founder-focus-card__cta-button');
-        const nameElement = card.querySelector('.founder-focus-card__name');
+        const locationElement = card.querySelector('.founder-card-featured__location');
+        const companySection = card.querySelector('.founder-card-featured__company');
+        const achievementSection = card.querySelector('.founder-card-featured__achievement');
+        const originalDescription = card.querySelector('.founder-card-featured__description');
+        const ctaButton = card.querySelector('.founder-card-featured__cta-button');
+        const nameElement = card.querySelector('.founder-card-featured__name');
         
         // Add generation metric to upper right (only if not already added)
         if (!card.querySelector('.generation-metric')) {
@@ -519,26 +492,9 @@ document.addEventListener('DOMContentLoaded', function() {
             card.appendChild(generationMetric);
         }
         
-        if (locationElement && companySection) {
-            // Extract company name and location details
-            const companyName = companySection.textContent.replace('🔗', '').trim() || 'Company';
-            const currentLocation = locationElement.textContent;
-            const city = currentLocation.split(',')[0]?.trim() || 'City';
-            let flag = '🌍';
-            
-            // Determine flag based on location
-            if (currentLocation.includes('Russia') || currentLocation.includes('🇷🇺')) flag = '🇷🇺';
-            else if (currentLocation.includes('Brazil') || currentLocation.includes('🇧🇷')) flag = '🇧🇷';
-            else if (currentLocation.includes('China') || currentLocation.includes('🇨🇳')) flag = '🇨🇳';
-            else if (currentLocation.includes('India') || currentLocation.includes('🇮🇳')) flag = '🇮🇳';
-            else if (currentLocation.includes('South Africa') || currentLocation.includes('🇿🇦')) flag = '🇿🇦';
-            
-            // Create brand link href based on company name
-            const brandSlug = companyName.toLowerCase().replace(/\s+/g, '-');
-            const brandHref = `/en/brands/${brandSlug}/`;
-            
-            // Update location with company link
-            locationElement.innerHTML = `<span style="font-size: 0.7em;">🔗</span> <a href="${brandHref}" class="company-link-2b" style="color: inherit; text-decoration: none; font-weight: var(--font-medium);">${companyName}</a> • ${city} ${flag}`;
+        if (locationElement) {
+            // Simple format matching 2A: 🔗 TeaTime • Moscow 🇷🇺
+            locationElement.innerHTML = '<span style="font-size: 0.85em;">🔗</span> <a href="/en/brands/ru-teatime/" class="company-link-2b" style="color: inherit; text-decoration: none;">TeaTime</a> • Moscow 🇷🇺';
             
             // Add hover effect to the company link
             const companyLink = locationElement.querySelector('.company-link-2b');
@@ -554,15 +510,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Move description above key achievement box
-        if (companySection && achievementSection && originalDescription) {
+        // Move description between achievement box and tags
+        if (achievementSection && originalDescription) {
             const descriptionText = originalDescription.textContent;
-            companySection.innerHTML = `<p class="founder-focus-card__description" style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--neutral-600); margin: 0; margin-bottom: var(--space-3);">${descriptionText}</p>`;
+            const tagsSection = card.querySelector('.founder-card-featured__tags');
+            
+            // Remove original description
+            originalDescription.remove();
+            
+            // Create new description element
+            const newDescription = document.createElement('p');
+            newDescription.className = 'founder-card-featured__description';
+            newDescription.style.cssText = 'font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--neutral-600); margin: var(--space-3) 0;';
+            newDescription.textContent = descriptionText;
+            
+            // Insert between achievement and tags
+            if (tagsSection) {
+                tagsSection.parentNode.insertBefore(newDescription, tagsSection);
+            } else {
+                // If no tags, append after achievement
+                achievementSection.parentNode.insertBefore(newDescription, achievementSection.nextSibling);
+            }
         }
         
-        // Remove the duplicate description text
-        if (originalDescription) {
-            originalDescription.remove();
+        // Remove the company section entirely
+        if (companySection) {
+            companySection.remove();
         }
         
         // Change CTA button text to use first name
@@ -573,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Apply to all cards within variant-b sections (both single card in Section 0 and all cards in Section 2)
-    const allVariantBCards = document.querySelectorAll('.founder-card-featured-variant-b .founder-focus-card');
+    const allVariantBCards = document.querySelectorAll('.founder-card-featured-variant-b .founder-card-featured, .founder-card-featured-variant-b .founder-card-featured');
     allVariantBCards.forEach(card => {
         applyVariant2BStyling(card);
     });
@@ -625,8 +598,8 @@ document.addEventListener('DOMContentLoaded', function() {
             { id: '1B', selector: '.founder-card-variant-b .founder-card' },
             { id: '1C', selector: '.founder-card-variant-c .founder-card' },
             { id: '1D', selector: '.founder-card-variant-d .founder-card' },
-            { id: '2A', selector: '.founder-card-featured-variant-a .founder-focus-card' },
-            { id: '2B', selector: '.founder-card-featured-variant-b .founder-focus-card' }
+            { id: '2A', selector: '.founder-card-featured-variant-a .founder-card-featured' },
+            { id: '2B', selector: '.founder-card-featured-variant-b .founder-card-featured' }
         ];
         
         variants.forEach(variant => {
@@ -991,57 +964,56 @@ function getCurrentSlide(carousel, items, carouselType) {
       
     </div>
     
-    <!-- Key Differences Summary -->
-    <div style="background: #f9fafb; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #6366f1;">
-      <h4>Key Component Differences</h4>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+    <!-- CSS and JS Sources for 2A and 2B -->
+    <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin: 2rem 0;">
+      <h4 style="margin-bottom: 1rem;">CSS and JS Sources</h4>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
         <div>
-          <h5>1A. Standard (Version A)</h5>
-          <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li><strong>White background</strong></li>
-            <li><strong>Rounded headshot</strong></li>
-            <li>Vertical layout</li>
-            <li>Centered text</li>
-          </ul>
+          <h5 style="margin-bottom: 0.5rem;">2A Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> founder-cards-layout-testing.md (lines 348-404)</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> founder-cards-layout-testing.md (lines 462-512)</p>
         </div>
         <div>
-          <h5>1B. Standard (Version B)</h5>
-          <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li><strong>Gray background</strong></li>
-            <li><strong>Square headshot</strong></li>
-            <li>Vertical layout</li>
-            <li>Centered text</li>
-          </ul>
-        </div>
-        <div>
-          <h5>2A. Featured (Version A)</h5>
-          <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li><strong>50% portrait layout</strong></li>
-            <li>Horizontal design</li>
-            <li>Enhanced achievements</li>
-            <li>Homepage optimized</li>
-          </ul>
-        </div>
-        <div>
-          <h5>2B. Featured (Version B)</h5>
-          <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li><strong>Gray background</strong></li>
-            <li><strong>Company • City Flag format</strong></li>
-            <li>50% portrait layout</li>
-            <li>Alternative location display</li>
-          </ul>
-        </div>
-        <div>
-          <h5>3. Simplified Card</h5>
-          <ul style="font-size: 0.875rem; color: #4b5563;">
-            <li>Clean, minimal design</li>
-            <li>Large portrait image</li>
-            <li>Generation badge overlay</li>
-            <li>Alternative option</li>
-          </ul>
+          <h5 style="margin-bottom: 0.5rem;">2B Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> founder-cards-layout-testing.md (lines 408-450)</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> founder-cards-layout-testing.md (lines 515-584)</p>
         </div>
       </div>
     </div>
+    
+    <!-- 3. Founder Focus Carousel from Homepage -->
+    <div style="margin-top: 3rem;">
+      <h3 style="text-align: center; margin-bottom: 1.5rem; color: #1f2937;">3. Founder Focus Carousel (Homepage Production)</h3>
+      <div class="card-info" style="margin-bottom: 1rem; text-align: center;">
+        <strong>Purpose:</strong> Production homepage carousel | <strong>Usage:</strong> Live homepage implementation
+      </div>
+      
+      <!-- Include the actual founder focus section from homepage -->
+      <div style="border: 2px solid #9333ea; padding: 1rem; background: white; border-radius: 0.5rem;">
+        {% include pages/home/founder-focus.html %}
+      </div>
+      
+      <!-- CSS and JS Sources for Homepage Carousel -->
+      <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+        <h5 style="margin-bottom: 0.5rem;">Homepage Carousel Sources (Clean Architecture):</h5>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+          <div>
+            <h6 style="margin: 0 0 0.25rem 0; color: #374151;">Page Level (Layout/Carousel):</h6>
+            <p style="margin: 0; font-size: 0.75rem;"><strong>HTML:</strong> _includes/pages/home/founder-focus.html</p>
+            <p style="margin: 0; font-size: 0.75rem;"><strong>CSS:</strong> assets/css/pages/home/founder-focus.scss</p>
+            <p style="margin: 0; font-size: 0.75rem;"><strong>JS:</strong> assets/js/pages/home/founder-focus.js</p>
+          </div>
+          <div>
+            <h6 style="margin: 0 0 0.25rem 0; color: #374151;">Component Level (Card Styling):</h6>
+            <p style="margin: 0; font-size: 0.75rem;"><strong>HTML:</strong> _includes/components/cards/founder-card-featured.html</p>
+            <p style="margin: 0; font-size: 0.75rem;"><strong>CSS:</strong> assets/css/components/cards/founder-card-featured.scss</p>
+            <p style="margin: 0; font-size: 0.75rem;"><strong>JS:</strong> None (pure CSS component)</p>
+          </div>
+        </div>
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.75rem; color: #6b7280;"><strong>Note:</strong> Clean separation - page handles layout/carousel, component handles card visuals. 2A improvements applied to component CSS.</p>
+      </div>
+    </div>
+    
   </section>
 
   <!-- Section 1: founder-card.html Testing -->
@@ -1156,7 +1128,158 @@ function getCurrentSlide(carousel, items, carouselType) {
 
   <!-- Section 3: Location Display Scenarios Testing -->
   <section class="test-section">
-    <h2>Section 3: LOCATION DISPLAY OPTIMIZATION</h2>\n    <div class=\"card-info\">\n      <strong>Purpose:</strong> Test different location display combinations for marketing impact and user perception\n    </div>\n    \n    <div class=\"test-subsection\">\n      <h3>Location Display Scenarios</h3>\n      <p style=\"color: #6b7280; margin-bottom: 2rem;\">Testing 4 strategic location combinations for international audience recognition and space efficiency.</p>\n      \n      <!-- Scenario A: City, Country + Flag -->\n      <div class=\"test-layout-label\">Scenario A: City, Country + Flag → \"Moscow, Russia 🇷🇺\"</div>\n      <div style=\"background: #f8fafc; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario A: Full location with flag -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Moscow, Russia 🇷🇺</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Maximum geographic context, recognizable flag, may feel cluttered for space-conscious design.\n        </div>\n      </div>\n      \n      <!-- Scenario B: City, Country (no flag) -->\n      <div class=\"test-layout-label\">Scenario B: City, Country (no flag) → \"Moscow, Russia\"</div>\n      <div style=\"background: #f0fdf4; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario B: Full location without flag -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Moscow, Russia</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Clean, professional appearance, clear geographic context, avoids potential flag sensitivity.\n        </div>\n      </div>\n      \n      <!-- Scenario C: Country + Flag only -->\n      <div class=\"test-layout-label\">Scenario C: Country + Flag only → \"Russia 🇷🇺\"</div>\n      <div style=\"background: #fef3c7; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario C: Country and flag only -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Russia 🇷🇺</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Space-efficient, immediate recognition, good for mobile, loses city-level specificity.\n        </div>\n      </div>\n      \n      <!-- Scenario D: City only -->\n      <div class=\"test-layout-label\">Scenario D: City only → \"Moscow\"</div>\n      <div style=\"background: #fdf2f8; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;\">\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;\">\n          <div style=\"border: 2px solid #ec4899; padding: 1rem; background: white; border-radius: 0.5rem;\">\n            {% if comparison_founder %}\n              <!-- Mock Scenario D: City only -->\n              <div class=\"founder-focus-card\" style=\"height: 300px;\">\n                <div class=\"founder-focus-card__content\" style=\"width: 100%; padding: var(--space-4);\">\n                  <div class=\"founder-focus-card__header\">\n                    <h3 class=\"founder-focus-card__name\">{{ comparison_founder.name }}</h3>\n                    <p class=\"founder-focus-card__location\">Moscow</p>\n                  </div>\n                  <div class=\"founder-focus-card__achievement\">\n                    <span class=\"founder-focus-card__achievement-label\">🏆 Key Achievement</span>\n                    <p class=\"founder-focus-card__achievement-text\">{{ comparison_founder.achievements.first }}</p>\n                  </div>\n                  <div class=\"founder-focus-card__cta\">\n                    <a href=\"#\" class=\"founder-focus-card__cta-button\">Connect with {{ comparison_founder.name }} →</a>\n                  </div>\n                </div>\n              </div>\n            {% endif %}\n          </div>\n        </div>\n        <div style=\"margin-top: 1rem; color: #374151;\">\n          <strong>Analysis:</strong> Ultra-minimal, assumes audience knows geography, risk of ambiguity (Moscow, ID vs Moscow, RU).\n        </div>\n      </div>\n    </div>\n    \n    <!-- Strategic Recommendation -->\n    <div style=\"background: #1e40af; color: white; padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem;\">\n      <h4 style=\"color: white; margin-top: 0;\">Strategic Recommendation Matrix</h4>\n      <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;\">\n        <div>\n          <h5 style=\"color: #93c5fd;\">✅ B2B International</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario B: \"Moscow, Russia\"<br>Professional, clear, avoids flag politics</p>\n        </div>\n        <div>\n          <h5 style=\"color: #93c5fd;\">✅ Consumer/Cultural</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario A: \"Moscow, Russia 🇷🇺\"<br>Visual impact, cultural pride, emotional connection</p>\n        </div>\n        <div>\n          <h5 style=\"color: #93c5fd;\">✅ Mobile-First</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario C: \"Russia 🇷🇺\"<br>Space-efficient, quick recognition</p>\n        </div>\n        <div>\n          <h5 style=\"color: #93c5fd;\">⚠️ High-Risk</h5>\n          <p style=\"font-size: 0.875rem;\">Scenario D: \"Moscow\"<br>Ambiguous, lacks context</p>\n        </div>\n      </div>\n    </div>\n  </section>
+    <h2>Section 3: LOCATION DISPLAY OPTIMIZATION</h2>
+    <div class="card-info">
+      <strong>Purpose:</strong> Test different location display combinations for marketing impact and user perception
+    </div>
+    
+    <div class="test-subsection">
+      <h3>Location Display Scenarios</h3>
+      <p style="color: #6b7280; margin-bottom: 2rem;">Testing 4 strategic location combinations for international audience recognition and space efficiency.</p>
+      
+      <!-- Scenario A: City, Country + Flag -->
+      <div class="test-layout-label">Scenario A: City, Country + Flag → "Moscow, Russia 🇷🇺"</div>
+      <div style="background: #f8fafc; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;">
+          <div style="border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem;">
+            {% if comparison_founder %}
+              <!-- Mock Scenario A: Full location with flag -->
+              <div class="founder-card-featured" style="height: 300px;">
+                <div class="founder-card-featured__content" style="width: 100%; padding: var(--space-4);">
+                  <div class="founder-card-featured__header">
+                    <h3 class="founder-card-featured__name">{{ comparison_founder.name }}</h3>
+                    <p class="founder-card-featured__location">Moscow, Russia 🇷🇺</p>
+                  </div>
+                  <div class="founder-card-featured__achievement">
+                    <span class="founder-card-featured__achievement-label">🏆 Key Achievement</span>
+                    <p class="founder-card-featured__achievement-text">{{ comparison_founder.achievements.first }}</p>
+                  </div>
+                  <div class="founder-card-featured__cta">
+                    <a href="#" class="founder-card-featured__cta-button">Connect with {{ comparison_founder.name }} →</a>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div style="margin-top: 1rem; color: #374151;">
+          <strong>Analysis:</strong> Maximum geographic context, recognizable flag, may feel cluttered for space-conscious design.
+        </div>
+      </div>
+      
+      <!-- Scenario B: City, Country (no flag) -->
+      <div class="test-layout-label">Scenario B: City, Country (no flag) → "Moscow, Russia"</div>
+      <div style="background: #f0fdf4; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;">
+          <div style="border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;">
+            {% if comparison_founder %}
+              <!-- Mock Scenario B: Full location without flag -->
+              <div class="founder-card-featured" style="height: 300px;">
+                <div class="founder-card-featured__content" style="width: 100%; padding: var(--space-4);">
+                  <div class="founder-card-featured__header">
+                    <h3 class="founder-card-featured__name">{{ comparison_founder.name }}</h3>
+                    <p class="founder-card-featured__location">Moscow, Russia</p>
+                  </div>
+                  <div class="founder-card-featured__achievement">
+                    <span class="founder-card-featured__achievement-label">🏆 Key Achievement</span>
+                    <p class="founder-card-featured__achievement-text">{{ comparison_founder.achievements.first }}</p>
+                  </div>
+                  <div class="founder-card-featured__cta">
+                    <a href="#" class="founder-card-featured__cta-button">Connect with {{ comparison_founder.name }} →</a>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div style="margin-top: 1rem; color: #374151;">
+          <strong>Analysis:</strong> Clean, professional appearance, clear geographic context, avoids potential flag sensitivity.
+        </div>
+      </div>
+      
+      <!-- Scenario C: Country + Flag only -->
+      <div class="test-layout-label">Scenario C: Country + Flag only → "Russia 🇷🇺"</div>
+      <div style="background: #fef3c7; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;">
+          <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;">
+            {% if comparison_founder %}
+              <!-- Mock Scenario C: Country and flag only -->
+              <div class="founder-card-featured" style="height: 300px;">
+                <div class="founder-card-featured__content" style="width: 100%; padding: var(--space-4);">
+                  <div class="founder-card-featured__header">
+                    <h3 class="founder-card-featured__name">{{ comparison_founder.name }}</h3>
+                    <p class="founder-card-featured__location">Russia 🇷🇺</p>
+                  </div>
+                  <div class="founder-card-featured__achievement">
+                    <span class="founder-card-featured__achievement-label">🏆 Key Achievement</span>
+                    <p class="founder-card-featured__achievement-text">{{ comparison_founder.achievements.first }}</p>
+                  </div>
+                  <div class="founder-card-featured__cta">
+                    <a href="#" class="founder-card-featured__cta-button">Connect with {{ comparison_founder.name }} →</a>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div style="margin-top: 1rem; color: #374151;">
+          <strong>Analysis:</strong> Space-efficient, immediate recognition, good for mobile, loses city-level specificity.
+        </div>
+      </div>
+      
+      <!-- Scenario D: City only -->
+      <div class="test-layout-label">Scenario D: City only → "Moscow"</div>
+      <div style="background: #fdf2f8; padding: 1rem; margin-bottom: 2rem; border-radius: 0.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem;">
+          <div style="border: 2px solid #ec4899; padding: 1rem; background: white; border-radius: 0.5rem;">
+            {% if comparison_founder %}
+              <!-- Mock Scenario D: City only -->
+              <div class="founder-card-featured" style="height: 300px;">
+                <div class="founder-card-featured__content" style="width: 100%; padding: var(--space-4);">
+                  <div class="founder-card-featured__header">
+                    <h3 class="founder-card-featured__name">{{ comparison_founder.name }}</h3>
+                    <p class="founder-card-featured__location">Moscow</p>
+                  </div>
+                  <div class="founder-card-featured__achievement">
+                    <span class="founder-card-featured__achievement-label">🏆 Key Achievement</span>
+                    <p class="founder-card-featured__achievement-text">{{ comparison_founder.achievements.first }}</p>
+                  </div>
+                  <div class="founder-card-featured__cta">
+                    <a href="#" class="founder-card-featured__cta-button">Connect with {{ comparison_founder.name }} →</a>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div style="margin-top: 1rem; color: #374151;">
+          <strong>Analysis:</strong> Ultra-minimal, assumes audience knows geography, risk of ambiguity (Moscow, ID vs Moscow, RU).
+        </div>
+      </div>
+    </div>
+    
+    <!-- Strategic Recommendation -->
+    <div style="background: #1e40af; color: white; padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem;">
+      <h4 style="color: white; margin-top: 0;">Strategic Recommendation Matrix</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        <div>
+          <h5 style="color: #93c5fd;">✅ B2B International</h5>
+          <p style="font-size: 0.875rem;">Scenario B: "Moscow, Russia"<br>Professional, clear, avoids flag politics</p>
+        </div>
+        <div>
+          <h5 style="color: #93c5fd;">✅ Consumer/Cultural</h5>
+          <p style="font-size: 0.875rem;">Scenario A: "Moscow, Russia 🇷🇺"<br>Visual impact, cultural pride, emotional connection</p>
+        </div>
+        <div>
+          <h5 style="color: #93c5fd;">✅ Mobile-First</h5>
+          <p style="font-size: 0.875rem;">Scenario C: "Russia 🇷🇺"<br>Space-efficient, quick recognition</p>
+        </div>
+        <div>
+          <h5 style="color: #93c5fd;">⚠️ High-Risk</h5>
+          <p style="font-size: 0.875rem;">Scenario D: "Moscow"<br>Ambiguous, lacks context</p>
+        </div>
+      </div>
+    </div>\n  </section>
 
   <!-- Performance Matrix -->
   <section class="test-section">
