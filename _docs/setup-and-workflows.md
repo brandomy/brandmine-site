@@ -455,6 +455,75 @@ _scripts/utilities/generate-navigation-cache.py
 
 ---
 
+## 🧩 Component Creation Workflows
+
+### Founder Card Development Pattern
+**Proven methodology from Phase 1B standardization:**
+
+#### Step 1: Choose Component Architecture
+**Decision framework:**
+- **Separate component**: If fundamentally different structure/behavior
+- **Variant system**: If similar structure with styling differences
+
+**Example Decision:**
+- `founder-card` vs `founder-card-featured` → **Separate** (different purposes)
+- Standard vs compact founder card → **Variant** (same structure, different styling)
+
+#### Step 2: Establish BEM Namespace
+```html
+<!-- Separate Component Pattern -->
+<div class="component-name">
+  <div class="component-name__header">
+  <div class="component-name__content">
+</div>
+
+<!-- Variant Pattern -->
+<div class="component-name component-name--{{ variant }}">
+  <div class="component-name__header">
+  <div class="component-name__content">
+</div>
+```
+
+#### Step 3: CSS Boundary Compliance
+**Create component CSS file following boundary rules:**
+```scss
+/* component-name.scss - ONLY intrinsic properties */
+.component-name {
+  background: var(--color-background);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.component-name__header {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+}
+
+/* DO NOT include layout properties */
+/* Positioning, margins, grid behavior belong in layout files */
+```
+
+#### Step 4: Implementation Validation
+```bash
+# Boundary violation check
+grep -E "(margin|grid|flex.*basis)" assets/css/components/component-name.scss
+
+# Should return no results - violations must be fixed
+```
+
+### JavaScript Integration Pattern
+**Standard selector patterns for new components:**
+```javascript
+// Use consistent BEM selectors
+const cards = document.querySelectorAll('.component-name');
+const featuredCards = document.querySelectorAll('.component-name--featured');
+
+// Avoid hardcoded selectors that break with changes
+// Always match actual HTML component classes
+```
+
+---
+
 ## 🎯 Quality Standards
 
 ### Time Targets

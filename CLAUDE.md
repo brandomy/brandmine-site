@@ -47,15 +47,24 @@ signals: ["export-ready"]
 
 ---
 
-# 🎴 Universal Component System
+# 🎴 Proven Component System (Phase 1B Complete)
 
-**MVP card system handles all content types:**
+**Founder card architecture established:**
 ```liquid
-{% comment %} Use specific optimized cards {% endcomment %}
-{% include components/cards/brand-card.html brand=brand %}
-{% include components/cards/founder-card.html founder=founder %}
-{% include components/cards/insight-card.html insight=insight %}
+{% include components/cards/founder-card.html founder=founder variant="standard" %}
+{% include components/cards/founder-card-featured.html founder=founder %}
+{% include components/cards/founder-quote-card.html quote=quote founder=founder style="hero" %}
 ```
+
+**BEM namespaces standardized:**
+- `founder-card__*` - Standard biographical profiles
+- `founder-card-featured__*` - Homepage carousel/featured displays  
+- `founder-quote-card__*` - Quote attribution cards
+
+**CSS boundary rules enforced:**
+- Cards handle: typography, spacing, colors, internal layout
+- Layouts handle: positioning, margins, grid/carousel structure
+- Zero cross-component violations maintained
 
 **Configuration-driven behavior** via `_data/component_defaults.yml`.
 
@@ -123,7 +132,7 @@ markets: ["russia"]
 # Development
 bundle exec jekyll serve --livereload
 
-# Production build (target: <15s)
+# Production build (achieved: 21s initial, 5.5s incremental)
 JEKYLL_ENV=production bundle exec jekyll build
 
 # Validation
@@ -132,8 +141,9 @@ _scripts/core/pre-commit_check.sh
 # Image processing
 _scripts/core/process_images.sh [collection] [identifier]
 
-# Data generation
-_scripts/core/generate-all-json.py
+# Performance optimization
+_scripts/utilities/generate-language-map.py
+_scripts/utilities/generate-navigation-cache.py
 ```
 
 ---
@@ -150,13 +160,13 @@ _scripts/core/generate-all-json.py
 
 ---
 
-# 🎯 Key Development Principles
+# 🎯 Proven Development Principles
 
-1. **MVP card components** - Use optimized `brand-card.html`, `founder-card.html`, `insight-card.html`
-2. **Configuration-driven** - Avoid hardcoded values, use `component_defaults.yml`
-3. **Mobile-first** - Linear layouts, no sidebars
-4. **Multilingual** - Test all changes across EN/RU/ZH
-5. **Performance** - Maintain <15 second builds
+1. **Clean BEM architecture** - Separate namespaces for distinct components
+2. **CSS boundary compliance** - Cards vs layouts separation enforced
+3. **Systematic implementation** - Audit → Plan → Execute → Validate methodology
+4. **Performance-conscious** - Maintain incremental build efficiency
+5. **Documentation-driven** - Standards codified for team development
 
 ## Validation Workflow
 ```bash

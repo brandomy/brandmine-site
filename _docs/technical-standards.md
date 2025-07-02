@@ -171,6 +171,30 @@ brands:
 - **Before**: 40-42 seconds
 - **After**: 12-13 seconds (70% improvement)
 
+## ⚡ Performance Standards (Achieved)
+
+### Build Performance Targets
+- **Initial builds**: 21-22 seconds (acceptable for content volume)
+- **Incremental builds**: ≤6 seconds (achieved: 5.5 seconds)
+- **Development workflow**: Optimized for rapid iteration
+
+### Performance Optimization Hierarchy
+1. **Cache regeneration** - Language maps, navigation cache, search data
+2. **CSS boundary cleanliness** - No cross-component violations
+3. **Incremental build optimization** - Jekyll configuration tuning
+4. **Asset optimization** - Responsive images, optimized file sizes
+
+### Performance Maintenance
+```bash
+# Regular performance optimization
+_scripts/utilities/generate-language-map.py
+_scripts/utilities/generate-navigation-cache.py
+_scripts/core/generate-all-json.py
+
+# Performance monitoring
+time JEKYLL_ENV=production bundle exec jekyll build
+```
+
 ## CSS Architecture
 
 ### BEM Methodology
@@ -185,6 +209,77 @@ brands:
 // Modifier
 .brand-card--featured { }
 .brand-card--compact { }
+```
+
+## 🏷️ Official BEM Namespaces (Proven Standards)
+
+### Founder Card System
+**Established Phase 1B - July 2025**
+
+| Component | BEM Namespace | Purpose | Usage |
+|-----------|---------------|---------|-------|
+| **founder-card.html** | `founder-card__*` | Standard founder profiles | Biographical info, achievements, profile displays |
+| **founder-card-featured.html** | `founder-card-featured__*` | Featured founder displays | Homepage carousel, prominent showcases |
+| **founder-quote-card.html** | `founder-quote-card__*` | Quote attribution | Founder wisdom, testimonials, insights |
+
+### CSS Boundary Rules (Critical Standards)
+**Clean separation of concerns enforced:**
+
+#### Cards Handle (Intrinsic Properties)
+- Typography (font-size, font-weight, color)
+- Internal spacing (padding within card)
+- Colors and backgrounds
+- Borders and border-radius
+- Internal layout structure
+
+#### Layouts Handle (Extrinsic Properties)  
+- Positioning between cards (margin, gap)
+- Grid and carousel structure
+- Page flow and sections
+- Responsive container behavior
+
+#### Violation Examples
+```scss
+/* ❌ VIOLATION - Card file handling layout */
+.founder-card {
+  margin: var(--space-4); /* Should be in layout CSS */
+  grid-column: span 2;    /* Should be in grid CSS */
+}
+
+/* ❌ VIOLATION - Layout file handling card internals */
+.carousel .founder-card__name {
+  font-size: var(--text-sm); /* Should be in card CSS */
+}
+
+/* ✅ CORRECT - Clean boundaries */
+/* In founder-card.scss */
+.founder-card__name {
+  font-size: var(--text-xl);
+  color: var(--neutral-900);
+}
+
+/* In carousel.scss */
+.carousel .founder-card {
+  flex: 0 0 400px;
+  margin-right: var(--space-4);
+}
+```
+
+### Implementation Standards
+```liquid
+<!-- Component Usage Patterns -->
+{% include components/cards/founder-card.html 
+   founder=founder 
+   variant="standard" %}
+
+{% include components/cards/founder-card-featured.html 
+   founder=founder 
+   show_quote=true %}
+
+{% include components/cards/founder-quote-card.html 
+   quote=quote 
+   founder=founder 
+   style="hero" %}
 ```
 ## Build Performance Guidelines
 
