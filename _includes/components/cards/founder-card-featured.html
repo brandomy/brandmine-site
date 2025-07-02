@@ -70,12 +70,12 @@ Optimized for emotional impact with mobile-friendly design
           {% assign brand_slug = founder.brands[0] %}
           {% assign brand = site.brands | where: "lang", page.lang | where: "ref", brand_slug | first %}
           {% if brand %}
-            <span style="font-size: 0.7em;">🔗</span> <a href="{{ brand.url | relative_url }}" style="color: inherit; text-decoration: none;" onmouseover="this.style.color='var(--primary-600)'; this.style.textDecoration='underline';" onmouseout="this.style.color='inherit'; this.style.textDecoration='none';">{{ founder.company }}</a> • {{ country_name }} {{ country_flag }}
+            <span style="font-size: 0.7em;">🔗</span> <a href="{{ brand.url | relative_url }}" style="color: inherit; text-decoration: none;" onmouseover="this.style.color='var(--primary-600)'; this.style.textDecoration='underline';" onmouseout="this.style.color='inherit'; this.style.textDecoration='none';">{{ founder.company }}</a> • {{ founder.city }} {{ country_flag }}
           {% else %}
-            <span style="font-size: 0.7em;">🔗</span> {{ founder.company }} • {{ country_name }} {{ country_flag }}
+            <span style="font-size: 0.7em;">🔗</span> {{ founder.company }} • {{ founder.city }} {{ country_flag }}
           {% endif %}
         {% else %}
-          <span style="font-size: 0.7em;">🔗</span> {{ founder.company }} • {{ country_name }} {{ country_flag }}
+          <span style="font-size: 0.7em;">🔗</span> {{ founder.company }} • {{ founder.city }} {{ country_flag }}
         {% endif %}
       </p>
     </div>

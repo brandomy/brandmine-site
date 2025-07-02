@@ -417,114 +417,6 @@ lang: en
       /* Will be overridden by custom HTML content */
     }
   }
-  
-  /* VISUAL DEBUGGING TOOLKIT - Isolated to test page only */
-  
-  /* Color-coded element debugging */
-  .debug-layout .founder-card__achievement,
-  .debug-layout .founder-card-featured__achievement {
-    background: rgba(0, 255, 0, 0.2) !important;
-    border: 2px solid green !important;
-    margin: 2px 0 !important;
-  }
-  
-  .debug-layout .founder-card__location,
-  .debug-layout .founder-card-featured__location {
-    background: rgba(255, 0, 0, 0.2) !important;
-    border: 2px solid red !important;
-    margin: 2px 0 !important;
-  }
-  
-  .debug-layout .location {
-    background: rgba(0, 0, 255, 0.2) !important;
-    border: 2px solid blue !important;
-    margin: 1px !important;
-  }
-  
-  .debug-layout .location__icon {
-    background: yellow !important;
-    border: 2px solid orange !important;
-    min-width: 10px !important;
-    min-height: 10px !important;
-  }
-  
-  .debug-layout .location__text {
-    background: rgba(128, 0, 128, 0.2) !important;
-    border: 2px solid purple !important;
-  }
-  
-  /* Grid overlay debugging */
-  .debug-grid .founder-card,
-  .debug-grid .founder-card-featured {
-    position: relative;
-  }
-
-  .debug-grid .founder-card::before,
-  .debug-grid .founder-card-featured::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(to right, rgba(255, 0, 0, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
-    background-size: 10px 10px;
-    pointer-events: none;
-    z-index: 999;
-  }
-
-  .debug-grid .founder-card::after,
-  .debug-grid .founder-card-featured::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: rgba(255, 0, 0, 0.8);
-    pointer-events: none;
-    z-index: 1000;
-  }
-  
-  /* Ruler debugging */
-  .debug-ruler .founder-card__achievement::before,
-  .debug-ruler .founder-card__location::before,
-  .debug-ruler .founder-card-featured__achievement::before,
-  .debug-ruler .founder-card-featured__location::before {
-    content: '← 0px 5px 10px 15px 20px 25px 30px →';
-    display: block;
-    font-size: 8px;
-    color: red;
-    font-family: monospace;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2px;
-    margin-bottom: 2px;
-  }
-  
-  /* Box model debugging */
-  .debug-box-model * {
-    box-shadow: 
-      0 0 0 1px red,      /* Border */
-      0 0 0 3px yellow,   /* Padding */
-      0 0 0 5px blue      /* Margin */
-    !important;
-    position: relative;
-  }
-
-  .debug-box-model *::before {
-    content: attr(class);
-    position: absolute;
-    top: -20px;
-    left: 0;
-    font-size: 8px;
-    background: black;
-    color: white;
-    padding: 2px;
-    white-space: nowrap;
-    z-index: 1000;
-  }
 </style>
 
 <script>
@@ -947,101 +839,6 @@ function getCurrentSlide(carousel, items, carouselType) {
     
     return closestSlide;
 }
-
-// Visual Debugging Toolkit JavaScript
-let debugState = {
-  layout: false,
-  grid: false,
-  ruler: false,
-  boxModel: false
-};
-
-function toggleDebugLayout() {
-  debugState.layout = !debugState.layout;
-  document.body.classList.toggle('debug-layout', debugState.layout);
-  console.log('Layout debug:', debugState.layout ? 'ON' : 'OFF');
-}
-
-function toggleDebugGrid() {
-  debugState.grid = !debugState.grid;
-  document.body.classList.toggle('debug-grid', debugState.grid);
-  console.log('Grid debug:', debugState.grid ? 'ON' : 'OFF');
-}
-
-function toggleDebugRuler() {
-  debugState.ruler = !debugState.ruler;
-  document.body.classList.toggle('debug-ruler', debugState.ruler);
-  console.log('Ruler debug:', debugState.ruler ? 'ON' : 'OFF');
-}
-
-function toggleDebugBoxModel() {
-  debugState.boxModel = !debugState.boxModel;
-  document.body.classList.toggle('debug-box-model', debugState.boxModel);
-  console.log('Box model debug:', debugState.boxModel ? 'ON' : 'OFF');
-}
-
-// Element dimension reporting
-function reportDimensions() {
-  const achievement = document.querySelector('.founder-card__achievement, .founder-card-featured__achievement');
-  const location = document.querySelector('.founder-card__location, .founder-card-featured__location');
-  const locationText = document.querySelector('.location__text');
-  const locationIcon = document.querySelector('.location__icon');
-  
-  console.group('🔍 Element Dimension Report');
-  
-  if (achievement) {
-    const achievementRect = achievement.getBoundingClientRect();
-    const achievementStyles = window.getComputedStyle(achievement);
-    console.log('✅ Achievement Element:', {
-      offsetLeft: achievement.offsetLeft,
-      offsetTop: achievement.offsetTop,
-      clientWidth: achievement.clientWidth,
-      clientHeight: achievement.clientHeight,
-      boundingRect: achievementRect,
-      marginLeft: achievementStyles.marginLeft,
-      paddingLeft: achievementStyles.paddingLeft
-    });
-  }
-  
-  if (location) {
-    const locationRect = location.getBoundingClientRect();
-    const locationStyles = window.getComputedStyle(location);
-    const locationLeft = location.offsetLeft;
-    
-    console.log('🔴 Location Element:', {
-      offsetLeft: locationLeft,
-      offsetTop: location.offsetTop,
-      clientWidth: location.clientWidth,
-      clientHeight: location.clientHeight,
-      boundingRect: locationRect,
-      marginLeft: locationStyles.marginLeft,
-      paddingLeft: locationStyles.paddingLeft
-    });
-    
-    // Compare alignment with achievement if both exist
-    if (achievement) {
-      const achievementLeft = achievement.offsetLeft;
-      const difference = Math.abs(achievementLeft - locationLeft);
-      
-      console.log('🎯 Alignment Analysis:', {
-        achievementLeft: achievementLeft,
-        locationLeft: locationLeft,
-        difference: difference,
-        alignment: difference === 0 ? '✅ PERFECT' : `❌ ${difference}px offset`
-      });
-    }
-  }
-  
-  console.groupEnd();
-  
-  // Also show alert for quick reference
-  alert(`Debug measurements logged to console. Check browser dev tools for detailed analysis.`);
-}
-
-// Initialize debugging tools
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🔧 Visual Debugging Toolkit loaded. Use the debug buttons above to analyze layout issues.');
-});
 </script>
 
 <div class="container">
@@ -1363,33 +1160,75 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </section>
 
-  <!-- Visual Debugging Toolkit -->
-  <section class="test-section" style="background: var(--warning-50);">
-    <h2>🔧 Visual Debugging Toolkit</h2>
+  <!-- Performance Matrix -->
+  <section class="test-section">
+    <h2>Layout Compatibility Assessment</h2>
     
-    <div class="card-info" style="background: var(--warning-100); border-left-color: var(--warning-600);">
-      <h3>⚠️ Debugging Tools for Layout Investigation</h3>
-      <p>Use these tools to identify alignment issues and spacing problems:</p>
-      
-      <div style="display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap;">
-        <button onclick="toggleDebugLayout()" class="debug-btn" style="background: #22c55e; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Layout Debug</button>
-        <button onclick="toggleDebugGrid()" class="debug-btn" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Grid Debug</button>
-        <button onclick="toggleDebugRuler()" class="debug-btn" style="background: #f59e0b; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Ruler Debug</button>
-        <button onclick="toggleDebugBoxModel()" class="debug-btn" style="background: #8b5cf6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Box Model</button>
-        <button onclick="reportDimensions()" class="debug-btn" style="background: #ef4444; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Report Measurements</button>
-      </div>
-      
-      <div style="font-size: 0.875rem; line-height: 1.5;">
-        <strong>Color Legend:</strong><br>
-        🟢 <strong>Green:</strong> Working achievement element<br>
-        🔴 <strong>Red:</strong> Problem location container<br>
-        🔵 <strong>Blue:</strong> Flex wrapper (.location)<br>
-        🟡 <strong>Yellow:</strong> Location icon<br>
-        🟣 <strong>Purple:</strong> Location text content<br>
-        📏 <strong>Grid:</strong> 10px measurement grid with vertical alignment guide
-      </div>
+    <div class="performance-matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>Card</th>
+            <th>Grid Performance</th>
+            <th>Carousel Performance</th>
+            <th>Overall Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>founder-card.html</strong></td>
+            <td class="status-good">✅ Good - Clean grid display, responsive</td>
+            <td class="status-good">✅ Excellent - Perfect single-card carousel display</td>
+            <td><strong>Keep</strong> - Versatile for both layouts</td>
+          </tr>
+          <tr>
+            <td><strong>founder-card-featured.html</strong></td>
+            <td class="status-warning">⚠️ Mixed - May be too detailed for grid</td>
+            <td class="status-good">✅ Excellent - Perfect single-card carousel display</td>
+            <td><strong>Keep</strong> - Primary carousel card</td>
+          </tr>
+          <tr>
+            <td><strong>founder-card-featured.html</strong></td>
+            <td>N/A - Homepage only</td>
+            <td>N/A - Homepage only</td>
+            <td><strong>Protected</strong> - Homepage focus section</td>
+          </tr>
+          <tr>
+            <td><strong>featured-founder-card.html</strong></td>
+            <td class="status-warning">⚠️ Mixed - Similar to founder-card-featured</td>
+            <td class="status-warning">⚠️ Mixed - Redundant functionality</td>
+            <td><strong>Eliminate</strong> - Duplicate of founder-card-featured</td>
+          </tr>
+          <tr>
+            <td><strong>founder-intense-card.html</strong></td>
+            <td class="status-poor">❌ Poor - Not grid compatible</td>
+            <td class="status-warning">⚠️ Mixed - Specialized layout</td>
+            <td><strong>Question</strong> - Check if still needed</td>
+          </tr>
+          <tr>
+            <td><strong>founder-quote-card.html</strong></td>
+            <td class="status-warning">⚠️ Mixed - Quote focus limits use</td>
+            <td class="status-warning">⚠️ Mixed - Specialized content</td>
+            <td><strong>Question</strong> - Testimonial alternative?</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     
+    <h3 style="margin-top: 2rem;">Performance Criteria</h3>
+    <ul>
+      <li><strong>Visual:</strong> Content hierarchy, image display, text readability, hover states</li>
+      <li><strong>Technical:</strong> Responsive behavior, container fit, interaction areas, performance</li>
+      <li><strong>UX:</strong> Information architecture, CTA prominence, consistency, accessibility</li>
+    </ul>
+    
+    <h3 style="margin-top: 2rem;">Key Findings</h3>
+    <ul>
+      <li>✅ <strong>founder-card.html</strong> works excellently in both grid and carousel layouts</li>
+      <li>✅ <strong>founder-card-featured.html</strong> perfect for single-card carousel display</li>
+      <li>✅ <strong>Carousel structure</strong> properly implemented with .carousel__item wrappers</li>
+      <li>✅ <strong>Single-card display</strong> achieved with proper CSS and structure</li>
+      <li>❌ Legacy cards show significant overlap with MVP cards</li>
+    </ul>
   </section>
-
 </div>

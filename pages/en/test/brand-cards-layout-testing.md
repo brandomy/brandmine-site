@@ -224,6 +224,68 @@ lang: en
       flex: 0 0 100% !important;
     }
   }
+  
+  /* ===========================
+     BRAND CARD VARIANT TESTING - A/B Testing Styles
+     =========================== */
+  
+  /* Brand Card Standard Variant B - 1B Testing */
+  .brand-card-variant-b {
+    /* Example styling variations for standard card A/B testing */
+    
+    .brand-card {
+      border: 2px solid var(--primary-300) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .brand-card__header {
+      background: var(--primary-50) !important;
+      padding: var(--space-3) !important;
+    }
+    
+    .brand-card__title {
+      color: var(--primary-700) !important;
+      font-weight: var(--font-bold) !important;
+    }
+  }
+  
+  /* Brand Card Featured Variant A - 2A Testing */
+  .brand-card-featured-variant-a {
+    /* Version 2A uses production CSS - no overrides needed */
+    /* All 2A improvements would be applied to the base component CSS */
+  }
+  
+  /* Brand Card Featured Variant B - 2B Testing */
+  .brand-card-featured-variant-b {
+    /* Example styling variations for featured card A/B testing */
+    
+    .brand-card {
+      background: linear-gradient(135deg, var(--neutral-50) 0%, var(--neutral-100) 100%) !important;
+      border: 1px solid var(--accent-200) !important;
+    }
+    
+    .brand-card__founding-year {
+      background: var(--accent-100) !important;
+      color: var(--accent-700) !important;
+      border-radius: 0.25rem !important;
+      padding: 0.25rem 0.5rem !important;
+    }
+    
+    .brand-card__description {
+      font-style: italic !important;
+      color: var(--neutral-600) !important;
+    }
+    
+    .brand-card__tags {
+      margin-top: var(--space-3) !important;
+    }
+    
+    .brand-card__tag {
+      background: var(--accent-50) !important;
+      border: 1px solid var(--accent-200) !important;
+      color: var(--accent-700) !important;
+    }
+  }
 </style>
 
 <div class="container">
@@ -234,43 +296,208 @@ lang: en
 
   <!-- Section 0: Single Card Comparison -->
   <section class="test-section">
-    <h2>Section 0: SINGLE CARD COMPARISON</h2>
-    <p>Side-by-side comparison of all brand card variants using the same brand data</p>
+    <h2>Section 0: SINGLE CARD TYPE COMPARISON</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of brand card components using identical data</p>
     
-    {% assign comparison_brand = site.brands | where: "lang", "en" | first %}
-    
-    {% if comparison_brand %}
-      <div class="card-info">
-        <strong>Test Brand:</strong> {{ comparison_brand.title }} | 
-        <strong>Ref:</strong> {{ comparison_brand.ref }} |
-        <strong>Data Available:</strong> ✅
-      </div>
+    <!-- Single card comparison grid - organized in rows -->
+    <div style="margin-bottom: 3rem;">
       
+      <!-- Get test brand data -->
+      {% assign comparison_brand = site.brands | where: "lang", "en" | first %}
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
-        
-        <!-- 1. Standard brand-card -->
-        <div>
-          <h4>1. brand-card.html (Standard)</h4>
-          <div style="border: 2px solid #007bff; padding: 1rem; background: white;">
+      <!-- Row 1: 1A and 1B -->
+      <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 1A. Standard brand-card (Version A) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. brand-card.html (Version A)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Standard brand display - Current design | <strong>Usage:</strong> Grid layouts
+        </div>
+        <div style="border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
             {% include components/cards/brand-card.html brand=comparison_brand %}
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- 1B. Standard brand-card (Version B) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. brand-card.html (Version B)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> A/B test variant - Style variations | <strong>Usage:</strong> Testing alternative designs
+        </div>
+        <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
+            <div class="brand-card-variant-b">
+              {% include components/cards/brand-card.html brand=comparison_brand %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      </div>
+      
+      <!-- CSS and JS Sources for 1A and 1B -->
+      <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin: 2rem 0;">
+        <h4 style="margin-bottom: 1rem;">CSS and JS Sources</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">1A Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/brand-card.scss</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+          </div>
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">1B Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> brand-cards-layout-testing.md (test overrides)</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
           </div>
         </div>
-        
-        <!-- 2. Featured variant of brand-card -->
-        <div>
-          <h4>2. brand-card.html (Featured Variant)</h4>
-          <div style="border: 2px solid #28a745; padding: 1rem; background: white;">
+      </div>
+      
+      <!-- Row 2: 2A and 2B -->
+      <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 2A. Featured brand-card (Version A) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2A. brand-card.html variant="featured" (Version A)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Featured brand with enhanced styling | <strong>Usage:</strong> Homepage featured brands
+        </div>
+        <div style="border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
+            <div class="brand-card-featured-variant-a">
+              {% include components/cards/brand-card.html brand=comparison_brand variant="featured" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- 2B. Featured brand-card (Version B) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2B. brand-card.html variant="featured" (Version B)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> A/B test variant - Featured card variations | <strong>Usage:</strong> Alternative design
+        </div>
+        <div style="border: 2px solid #06b6d4; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
+            <div class="brand-card-featured-variant-b">
+              {% include components/cards/brand-card.html brand=comparison_brand variant="featured" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      </div>
+      
+      <!-- CSS and JS Sources for 2A and 2B -->
+      <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin: 2rem 0;">
+        <h4 style="margin-bottom: 1rem;">CSS and JS Sources</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">2A Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/brand-card.scss</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+          </div>
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">2B Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> brand-cards-layout-testing.md (test overrides)</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Row 3: 3A and 3B -->
+      <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 3A. Production Brands Page -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3A. Production Brands Page</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Brands directory grid layout | <strong>Usage:</strong> Live brands page implementation
+        </div>
+        <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
+            {% include helpers/brand-card-selector.html brand=comparison_brand %}
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- 3B. Production Homepage Featured -->
+      <div>
+      <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3B. Production Homepage Featured</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Homepage featured brands carousel | <strong>Usage:</strong> Live homepage implementation
+        </div>
+        <div style="border: 2px solid #ec4899; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
             {% include components/cards/brand-card.html brand=comparison_brand variant="featured" %}
+          {% endif %}
+        </div>
+      </div>
+      
+      </div>
+      
+      <!-- CSS and JS Sources for 3A and 3B -->
+      <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin: 2rem 0;">
+        <h4 style="margin-bottom: 1rem;">CSS and JS Sources</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">3A Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/brand-card.scss + helpers/brand-card-selector.html</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> assets/js/pages/brands-grid.js</p>
+          </div>
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">3B Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/brand-card.scss + pages/home/featured-brands.scss</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> assets/js/components/carousel.js</p>
           </div>
         </div>
-        
       </div>
-    {% else %}
-      <div class="card-info" style="background: var(--warning-50);">
-        <strong>⚠️ No brand data available for comparison</strong>
+      
+      <!-- Row 4: 4A Latest Brands -->
+      <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 4A. Latest Brands Section (Production) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">4A. Latest Brands Section (Production)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Latest brands grid on brands page | <strong>Usage:</strong> Live brands page latest section
+        </div>
+        <div style="border: 2px solid #14b8a6; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
+            <!-- Simulate latest brands grid with single brand -->
+            <div class="latest-brands">
+              <div class="latest-brands__header">
+                <h3 class="latest-brands__title">Latest Brands</h3>
+                <p class="latest-brands__description">Discover exceptional founder-led brands from BRICS+ countries.</p>
+              </div>
+              <div class="grid">
+                <div class="grid__item">
+                  {% include components/cards/brand-card.html item=comparison_brand %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
       </div>
-    {% endif %}
+      
+      </div>
+      
+      <!-- CSS and JS Sources for 4A -->
+      <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin: 2rem 0;">
+        <h4 style="margin-bottom: 1rem;">CSS and JS Sources</h4>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">4A Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/brand-card.scss + components/layout/grid.scss + pages/brands/latest-brands.scss</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> assets/js/pages/brands/brands-filtering.js</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
   </section>
 
   <!-- Section 1: MVP Brand Cards Testing -->
