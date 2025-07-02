@@ -98,7 +98,7 @@
 </div>
 ```
 
-**Status**: hero-brand-card.html exists but no active usage found
+**Status**: hero-brand-card.html removed, use brand-card.html with variant="featured"
 
 ---
 

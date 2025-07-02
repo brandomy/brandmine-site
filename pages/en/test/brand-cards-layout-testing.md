@@ -312,7 +312,8 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. brand-card.html (Version A)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Standard brand display - Current design | <strong>Usage:</strong> Grid layouts
+          <strong>Purpose:</strong> Standard brand display - Current design | <strong>Usage:</strong> Grid layouts<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">362×440px</span>
         </div>
         <div style="border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}
@@ -325,7 +326,8 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. brand-card.html (Version B)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> A/B test variant - Style variations | <strong>Usage:</strong> Testing alternative designs
+          <strong>Purpose:</strong> A/B test variant - Style variations | <strong>Usage:</strong> Testing alternative designs<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">362×622px</span>
         </div>
         <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}
@@ -362,7 +364,8 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2A. brand-card.html variant="featured" (Version A)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Featured brand with enhanced styling | <strong>Usage:</strong> Homepage featured brands
+          <strong>Purpose:</strong> Featured brand with enhanced styling | <strong>Usage:</strong> Homepage featured brands<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">362×580px</span>
         </div>
         <div style="border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}
@@ -377,7 +380,8 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2B. brand-card.html variant="featured" (Version B)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> A/B test variant - Featured card variations | <strong>Usage:</strong> Alternative design
+          <strong>Purpose:</strong> A/B test variant - Featured card variations | <strong>Usage:</strong> Alternative design<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">362×580px</span>
         </div>
         <div style="border: 2px solid #06b6d4; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}
@@ -414,7 +418,8 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3A. Production Brands Page</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Brands directory grid layout | <strong>Usage:</strong> Live brands page implementation
+          <strong>Purpose:</strong> Brands directory grid layout | <strong>Usage:</strong> Live brands page implementation<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">362×440px</span>
         </div>
         <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}
@@ -427,7 +432,8 @@ lang: en
       <div>
       <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3B. Production Homepage Featured</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Homepage featured brands carousel | <strong>Usage:</strong> Live homepage implementation
+          <strong>Purpose:</strong> Homepage featured brands carousel | <strong>Usage:</strong> Live homepage implementation<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">362×580px</span>
         </div>
         <div style="border: 2px solid #ec4899; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}
@@ -462,7 +468,8 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">4A. Latest Brands Section (Production)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Latest brands grid on brands page | <strong>Usage:</strong> Live brands page latest section
+          <strong>Purpose:</strong> Latest brands grid on brands page | <strong>Usage:</strong> Live brands page latest section<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">362×440px</span>
         </div>
         <div style="border: 2px solid #14b8a6; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}

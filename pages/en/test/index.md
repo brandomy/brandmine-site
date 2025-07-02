@@ -72,6 +72,13 @@ lang: en
       <span class="test-status">Active</span>
     </a>
     
+    <!-- Insight Cards Testing -->
+    <a href="/test/insight-cards-layout-testing/" class="test-link-card">
+      <h2>Insight Cards Layout Testing</h2>
+      <p>Comprehensive testing of insight card components (insight-card.html, featured-insight-card.html, simple-insight-card.html) in different layout contexts. Includes category differentiation and performance assessments.</p>
+      <span class="test-status">Active</span>
+    </a>
+    
     <!-- Additional Test Pages -->
     <div class="test-link-card" style="opacity: 0.6;">
       <h2>Additional Test Pages</h2>
