@@ -505,7 +505,7 @@ lang: en
     <div style="background: #fef3c7; border: 2px solid #f59e0b; padding: 1rem; border-radius: 0.5rem; margin-bottom: 2rem;">
       <h4 style="margin-bottom: 1rem; color: #92400e;">📋 BEM Audit Results Summary</h4>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 0.875rem;">
-        <div><strong>Total Components:</strong> 5</div>
+        <div><strong>Total Components:</strong> 6</div>
         <div><strong>BEM Violations:</strong> 2 components</div>
         <div><strong>CSS Boundaries:</strong> ✅ Clean</div>
         <div><strong>Configuration:</strong> ✅ Properly integrated</div>
@@ -522,7 +522,7 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1. insight-card.html</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>File Size:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">11,260 bytes</span><br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">320px × 420px</span><br>
           <strong>Purpose:</strong> Primary strategic insight display with category differentiation<br>
           <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span>
         </div>
@@ -533,13 +533,43 @@ lang: en
             </div>
           {% endif %}
         </div>
+        <!-- CSS and JS Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+        </div>
       </div>
       
-      <!-- 2. featured-insight-card.html (Hero Images) -->
+      <!-- 2. insight-card.html featured variant (Conceptual) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2. featured-insight-card.html</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2. insight-card.html featured variant</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>File Size:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">5,185 bytes</span><br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">360px × 450px</span><br>
+          <strong>Purpose:</strong> Enhanced insight-card with featured styling (conceptual variant)<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span> (would use insight-card--featured modifier)
+        </div>
+        <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
+          {% if comparison_insight %}
+            <div style="max-width: 100%; overflow: hidden;">
+              {% comment %} Note: This would be insight-card.html with variant="featured" parameter if implemented {% endcomment %}
+              {% include components/cards/insight-card.html insight=comparison_insight %}
+            </div>
+          {% endif %}
+        </div>
+        <!-- CSS and JS Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (with --featured modifier)</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+        </div>
+      </div>
+      
+      <!-- 3. featured-insight-card.html (Hero Images) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3. featured-insight-card.html</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">380px × 480px</span><br>
           <strong>Purpose:</strong> Featured insights with hero images for homepage<br>
           <strong>BEM Status:</strong> <span style="color: #ef4444;">❌ Violation</span> (should be insight-card-featured.html)
         </div>
@@ -550,13 +580,19 @@ lang: en
             </div>
           {% endif %}
         </div>
+        <!-- CSS and JS Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/featured-insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+        </div>
       </div>
       
-      <!-- 3. simple-insight-card.html (Streamlined) -->
+      <!-- 4. simple-insight-card.html (Streamlined) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3. simple-insight-card.html</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">4. simple-insight-card.html</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>File Size:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">4,966 bytes</span><br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">280px × 320px</span><br>
           <strong>Purpose:</strong> Streamlined display for compact listings and sidebars<br>
           <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span>
         </div>
@@ -567,22 +603,11 @@ lang: en
             </div>
           {% endif %}
         </div>
-      </div>
-      
-      <!-- 4. insight-latest-card.html (Recent Insights) -->
-      <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">4. insight-latest-card.html</h4>
-        <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>File Size:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">4,039 bytes</span><br>
-          <strong>Purpose:</strong> Recent insights section with time-focused display<br>
-          <strong>BEM Status:</strong> <span style="color: #ef4444;">❌ Violation</span> (should be insight-card-latest.html)
-        </div>
-        <div style="border: 2px solid #14b8a6; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
-          {% if comparison_insight %}
-            <div style="max-width: 100%; overflow: hidden;">
-              {% include components/cards/insight-latest-card.html insight=comparison_insight %}
-            </div>
-          {% endif %}
+        <!-- CSS and JS Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/simple-insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
       </div>
       
@@ -590,7 +615,7 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">5. tagged-insight-card.html</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>File Size:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">6,523 bytes</span><br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">340px × 400px</span><br>
           <strong>Purpose:</strong> Category-focused display for filtered insights<br>
           <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span>
         </div>
@@ -600,6 +625,42 @@ lang: en
               {% include components/cards/tagged-insight-card.html insight=comparison_insight %}
             </div>
           {% endif %}
+        </div>
+        <!-- CSS and JS Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/tagged-insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+        </div>
+      </div>
+      
+      <!-- 6. Homepage Latest Insights Style (Current Production) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">6. Homepage Latest Insights Style (Current Production)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">420px × 500px</span><br>
+          <strong>Purpose:</strong> Premium homepage display with large hero images and category borders<br>
+          <strong>BEM Status:</strong> <span style="color: #ef4444;">❌ Violation</span> (uses insight-latest-card.html)
+        </div>
+        <div style="border: 2px solid #059669; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
+          {% if comparison_insight %}
+            <div style="max-width: 100%; overflow: hidden;">
+              {% comment %} Apply homepage styling context for accurate rendering {% endcomment %}
+              <div class="home-page">
+                <div class="latest-insights__container" style="display: block; width: 420px; margin: 0;">
+                  {% include components/cards/insight-latest-card.html insight=comparison_insight %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        <!-- CSS and JS Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-latest-card.scss + assets/css/pages/home/latest-insights.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Layout:</strong> _includes/pages/home/latest-insights.html (2x2 grid)</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Note:</strong> Card automatically selects 400w image for card-sized display (not 1200w)</p>
         </div>
       </div>
       
