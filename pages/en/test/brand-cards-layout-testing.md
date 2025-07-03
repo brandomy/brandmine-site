@@ -320,6 +320,48 @@ lang: en
             {% include components/cards/brand-card.html brand=comparison_brand %}
           {% endif %}
         </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Brand Name:</strong><br>
+              • Font: <code>var(--text-xl)</code> (1.25rem)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.2<br><br>
+              
+              <strong style="color: #1f2937;">Description:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-700)</code> (#374151)<br>
+              • Line Height: 1.5<br><br>
+              
+              <strong style="color: #1f2937;">Location/Founded:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Dimension Tags:</strong><br>
+              • <span style="background: var(--sky-100); color: var(--sky-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Markets</span> Sky Blue<br>
+              • <span style="background: var(--olive-100); color: var(--olive-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Sectors</span> Olive Green<br>
+              • <span style="background: var(--secondary-100); color: var(--secondary-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Attributes</span> Orange<br>
+              • <span style="background: var(--accent-100); color: var(--accent-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Signals</span> Indigo<br><br>
+              
+              <strong style="color: #1f2937;">CTA Elements:</strong><br>
+              • Visit Brand: <code>var(--primary-600)</code> link<br>
+              • Learn More: <code>var(--primary-600)</code> link<br>
+              • Hover: <code>var(--primary-500)</code><br><br>
+              
+              <strong style="color: #1f2937;">Layout Features:</strong><br>
+              • Mobile-first: 345px → 360px responsive<br>
+              • Logo display with aspect ratio<br>
+              • Hierarchical information structure
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- 1B. Standard brand-card (Version B) -->
@@ -335,6 +377,49 @@ lang: en
               {% include components/cards/brand-card.html brand=comparison_brand %}
             </div>
           {% endif %}
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Brand Name (Enhanced):</strong><br>
+              • Font: <code>var(--text-xl)</code> (1.25rem)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--primary-700)</code> (enhanced)<br>
+              • Line Height: 1.2<br><br>
+              
+              <strong style="color: #1f2937;">Description:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-700)</code> (#374151)<br>
+              • Line Height: 1.5<br><br>
+              
+              <strong style="color: #1f2937;">Location/Founded:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Variant B Enhancements:</strong><br>
+              • Card border: 2px solid <code>var(--primary-300)</code><br>
+              • Box shadow: enhanced (0 4px 12px)<br>
+              • Header background: <code>var(--primary-50)</code><br>
+              • Header padding: <code>var(--space-3)</code><br><br>
+              
+              <strong style="color: #1f2937;">Visual Differences:</strong><br>
+              • More prominent primary color usage<br>
+              • Enhanced visual hierarchy<br>
+              • Stronger border and shadow styling<br>
+              • Header section highlighting<br><br>
+              
+              <strong style="color: #1f2937;">A/B Testing Focus:</strong><br>
+              • Testing enhanced primary color integration<br>
+              • Evaluating header section prominence<br>
+              • Measuring engagement with stronger styling
+            </div>
+          </div>
         </div>
       </div>
       
@@ -374,6 +459,49 @@ lang: en
             </div>
           {% endif %}
         </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Featured Brand Name:</strong><br>
+              • Font: <code>var(--text-2xl)</code> (1.5rem)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.2<br><br>
+              
+              <strong style="color: #1f2937;">Enhanced Description:</strong><br>
+              • Font: <code>var(--text-base)</code> (1rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-700)</code> (#374151)<br>
+              • Line Height: 1.5<br>
+              • Enhanced readability for featured display<br><br>
+              
+              <strong style="color: #1f2937;">Founding Year Badge:</strong><br>
+              • Enhanced styling for featured context<br>
+              • Maintains brand consistency<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Featured Enhancements:</strong><br>
+              • Larger text hierarchy for prominence<br>
+              • Enhanced logo display sizing<br>
+              • Hero image integration<br>
+              • Premium spacing and padding<br><br>
+              
+              <strong style="color: #1f2937;">Layout Features:</strong><br>
+              • Responsive featured sizing (345px → 450px)<br>
+              • Enhanced visual hierarchy<br>
+              • Optimized for homepage carousels<br>
+              • Premium brand presentation<br><br>
+              
+              <strong style="color: #1f2937;">Usage Context:</strong><br>
+              • Homepage featured brand sections<br>
+              • Premium brand showcases<br>
+              • Enhanced engagement CTAs
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- 2B. Featured brand-card (Version B) -->
@@ -389,6 +517,49 @@ lang: en
               {% include components/cards/brand-card.html brand=comparison_brand variant="featured" %}
             </div>
           {% endif %}
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Featured Brand Name (Same):</strong><br>
+              • Font: <code>var(--text-2xl)</code> (1.5rem)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.2<br><br>
+              
+              <strong style="color: #1f2937;">Enhanced Description:</strong><br>
+              • Font: <code>var(--text-base)</code> (1rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (enhanced)<br>
+              • Style: italic for differentiation<br><br>
+              
+              <strong style="color: #1f2937;">Founding Year Badge:</strong><br>
+              • Background: <code>var(--accent-100)</code><br>
+              • Color: <code>var(--accent-700)</code><br>
+              • Border radius: 0.25rem<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Variant B Enhancements:</strong><br>
+              • Card background: gradient (neutral-50 → neutral-100)<br>
+              • Border: 1px solid <code>var(--accent-200)</code><br>
+              • Tag styling: <code>var(--accent-50)</code> background<br>
+              • Tag border: 1px solid <code>var(--accent-200)</code><br><br>
+              
+              <strong style="color: #1f2937;">Visual Differences:</strong><br>
+              • Subtle gradient background<br>
+              • Accent color integration<br>
+              • Enhanced tag styling<br>
+              • Italic description styling<br><br>
+              
+              <strong style="color: #1f2937;">A/B Testing Focus:</strong><br>
+              • Testing accent color theme<br>
+              • Evaluating gradient backgrounds<br>
+              • Measuring enhanced tag engagement
+            </div>
+          </div>
         </div>
       </div>
       
@@ -503,6 +674,99 @@ lang: en
         </div>
       </div>
       
+    </div>
+    
+    <!-- Typography & Color Variations Summary -->
+    <div style="background: #fffbeb; border: 2px solid #f59e0b; padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
+      <h4 style="margin-bottom: 1rem; color: #92400e;">🎨 Typography & Color Variations Summary</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Standard Brand Cards -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Standard Brand Cards (1A-1B):</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>1A - Standard Layout:</strong><br>
+            • Brand name: text-xl (1.25rem) bold<br>
+            • Description: text-sm neutral-700<br>
+            • Dimension tags: 4-color taxonomy system<br>
+            • Mobile-first: 345px → 360px responsive<br><br>
+            
+            <strong>1B - Enhanced Variant:</strong><br>
+            • Title color: primary-700 (enhanced)<br>
+            • Card border: 2px solid primary-300<br>
+            • Header background: primary-50<br>
+            • Enhanced shadows and spacing<br><br>
+            
+            <strong>Typography Consistency:</strong><br>
+            • Hierarchical text sizing maintained<br>
+            • Neutral color palette preserved<br>
+            • Dimension tag color coding intact<br>
+            • CTA link styling standardized
+          </div>
+        </div>
+        
+        <!-- Featured Brand Cards -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Featured Brand Cards (2A-2B):</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>2A - Featured Layout:</strong><br>
+            • Brand name: text-2xl (1.5rem) bold<br>
+            • Description: text-base enhanced<br>
+            • Premium sizing: 345px → 450px<br>
+            • Enhanced visual hierarchy<br><br>
+            
+            <strong>2B - Accent Variant:</strong><br>
+            • Gradient background: neutral-50 → neutral-100<br>
+            • Founding badge: accent-100/accent-700<br>
+            • Tag styling: accent-50 backgrounds<br>
+            • Italic description styling<br><br>
+            
+            <strong>Featured Enhancements:</strong><br>
+            • Larger text hierarchy for prominence<br>
+            • Enhanced logo and hero integration<br>
+            • Premium spacing and presentation<br>
+            • Homepage optimization focus
+          </div>
+        </div>
+        
+        <!-- Production Usage -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Production Usage & Context:</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>3A - Production Brands Page:</strong><br>
+            • Live brands directory implementation<br>
+            • Grid layout optimization<br>
+            • Filtering and search integration<br>
+            • Performance-optimized rendering<br><br>
+            
+            <strong>3B - Homepage Featured:</strong><br>
+            • Carousel integration<br>
+            • Enhanced engagement CTAs<br>
+            • Premium brand showcasing<br>
+            • Hero section optimization<br><br>
+            
+            <strong>4A - Latest Brands Section:</strong><br>
+            • Recent brand highlighting<br>
+            • Grid layout with filtering<br>
+            • Responsive brand discovery<br>
+            • User engagement optimization
+          </div>
+        </div>
+      </div>
+      
+      <!-- Quick Reference -->
+      <div style="margin-top: 1.5rem; padding: 1rem; background: #fefce8; border-radius: 0.5rem;">
+        <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Brand Card Selection:</h6>
+        <ul style="margin: 0; font-size: 0.875rem; line-height: 1.4; color: #713f12;">
+          <li><strong>1A Standard:</strong> General brand grids, directory pages</li>
+          <li><strong>1B Enhanced:</strong> A/B testing with primary color emphasis</li>
+          <li><strong>2A Featured:</strong> Homepage carousels, premium showcases</li>
+          <li><strong>2B Accent:</strong> Alternative featured styling with gradients</li>
+          <li><strong>3A Production:</strong> Live brands page with full functionality</li>
+          <li><strong>3B Homepage:</strong> Featured brands carousel integration</li>
+          <li><strong>4A Latest:</strong> Recent brands section with discovery features</li>
+        </ul>
+      </div>
     </div>
     
   </section>

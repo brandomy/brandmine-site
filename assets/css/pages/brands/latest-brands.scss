@@ -19,14 +19,14 @@
         margin-bottom: var(--space-6);
       }
       
-      /* Override grid for larger brand cards */
+      /* Updated grid for 345px mobile-first brand cards */
       .grid__container {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: var(--space-6);
+        grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+        gap: var(--space-4);
         
-        @media (max-width: 768px) {
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: var(--space-4);
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+          gap: var(--space-6);
         }
         
         @media (max-width: 480px) {

@@ -807,13 +807,12 @@ lang: en
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. insight-card.html Featured Variant</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Component:</strong> insight-card.html (variant="featured")<br>
-          <strong>Purpose:</strong> Homepage featured display with hero images and enhanced styling<br>
-          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Active</span><br>
-          <strong>Performance:</strong> <span style="color: #f59e0b;">⚠️ Moderate</span><br>
-          <strong>Layout Flexibility:</strong> <span style="color: #22c55e;">✅ Good</span>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 480px desktop</span><br>
+          <strong>Purpose:</strong> Premium homepage display with enhanced styling mapped from insight-card-latest<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
+          <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 480px (--card-width-featured-lg)</span>
         </div>
-        <div style="border: 2px solid #ef4444; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
+        <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
           {% if comparison_insight %}
             <div style="max-width: 100%; overflow: hidden;">
               {% include components/cards/insight-card.html insight=comparison_insight variant="featured" %}
@@ -823,7 +822,7 @@ lang: en
         <!-- CSS and JS Sources -->
         <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (.insight-card--featured styling)</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="featured" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
@@ -869,59 +868,34 @@ lang: en
               • Loading: Optimized for featured display<br><br>
               
               <strong style="color: #1f2937;">Read More Link:</strong><br>
-              • Font: Inherits from container<br>
+              • Font: <code>var(--text-sm)</code> (0.875rem) ✅<br>
               • Weight: <code>var(--font-semibold)</code> (600)<br>
-              • Color: <code>var(--primary-600)</code><br>
+              • Color: <code>var(--primary-600)</code> ✅<br>
               • Enhanced prominence for CTAs
             </div>
           </div>
         </div>
-      </div>
-      
-      <!-- 1C. insight-card.html Featured Variant -->
-      <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. insight-card.html Featured Variant</h4>
-        <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 480px desktop</span><br>
-          <strong>Purpose:</strong> Premium homepage display with enhanced styling mapped from insight-card-latest<br>
-          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
-          <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 480px (--card-width-featured-lg)</span>
-        </div>
-        <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
-          {% if comparison_insight %}
-            <div style="max-width: 100%; overflow: hidden;">
-              {% include components/cards/insight-card.html insight=comparison_insight variant="featured" %}
-            </div>
-          {% endif %}
-        </div>
-        <!-- CSS and JS Sources -->
-        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (.insight-card--featured styling)</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="featured" %}{% endraw %}</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
-        </div>
         
-        <!-- Typography & Color Analysis -->
-        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.75rem; color: #374151;">Featured Variant Analysis:</h5>
+        <!-- Featured Variant Analysis -->
+        <div style="background: #fef3c7; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; border: 1px solid #f59e0b;">
+          <h5 style="margin-bottom: 0.75rem; color: #92400e;">Featured Variant Analysis:</h5>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
             <div>
-              <strong style="color: #1f2937;">Premium Features:</strong><br>
+              <strong style="color: #92400e;">Premium Features:</strong><br>
               • Size: <code>--card-width-featured-lg</code> (480px desktop)<br>
-              • Rounded corners: <code>--radius-xl</code><br>
+              • Rounded corners: <code>--radius-xl</code> (24px) ✅<br>
               • Enhanced shadows: <code>--shadow-lg</code><br>
               • Fixed aspect ratio: <code>16/9</code><br>
             </div>
             <div>
-              <strong style="color: #1f2937;">Content Layout:</strong><br>
+              <strong style="color: #92400e;">Content Layout:</strong><br>
               • Centered category badge<br>
               • Meta above title (order: -1)<br>
               • Centered description text<br>
               • Enhanced hover effects<br>
             </div>
           </div>
-          <div style="margin-top: 1rem; padding: 0.75rem; background: #fef3c7; border: 1px solid #f59e0b; border-radius: 0.375rem;">
+          <div style="margin-top: 1rem; padding: 0.75rem; background: #fffbeb; border-radius: 0.375rem;">
             <strong style="color: #92400e;">🎯 Premium Styling:</strong> This variant maps the premium design from insight-card-latest.html into our unified variant system, providing enhanced styling for homepage featured displays while maintaining component consistency.
           </div>
         </div>

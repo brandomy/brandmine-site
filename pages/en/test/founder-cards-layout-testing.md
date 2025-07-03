@@ -1076,6 +1076,50 @@ document.addEventListener('DOMContentLoaded', function() {
             {% include components/cards/founder-card.html founder=comparison_founder %}
           {% endif %}
         </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Name:</strong><br>
+              • Font: <code>var(--text-lg)</code> (1.125rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.25<br><br>
+              
+              <strong style="color: #1f2937;">Position/Company:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br><br>
+              
+              <strong style="color: #1f2937;">Location:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Generation Badge:</strong><br>
+              • Font: <code>var(--text-xs)</code> (0.75rem)<br>
+              • Weight: <code>var(--font-medium)</code> (500)<br>
+              • Background: <code>var(--primary-100)</code><br>
+              • Color: <code>var(--primary-700)</code><br>
+              • Padding: 2px 8px<br>
+              • Border radius: <code>var(--radius-full)</code><br><br>
+              
+              <strong style="color: #1f2937;">Dimension Tags:</strong><br>
+              • <span style="background: var(--neutral-100); color: var(--neutral-600); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Standard</span> Neutral tags<br>
+              • Font: <code>var(--text-xs)</code> (0.75rem)<br>
+              • Padding: 4px 8px<br><br>
+              
+              <strong style="color: #1f2937;">CTA Link:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--primary-600)</code><br>
+              • Hover: <code>var(--primary-500)</code>
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- 1B. Standard founder-card (Version B) -->
@@ -1090,6 +1134,44 @@ document.addEventListener('DOMContentLoaded', function() {
               {% include components/cards/founder-card.html founder=comparison_founder %}
             </div>
           {% endif %}
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Name:</strong><br>
+              • Font: <code>var(--text-lg)</code> (1.125rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.25<br><br>
+              
+              <strong style="color: #1f2937;">Position/Company:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br><br>
+              
+              <strong style="color: #1f2937;">Location:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Variant B Styling:</strong><br>
+              • Background: <code>var(--neutral-100)</code> (light gray)<br>
+              • Headshot: Square corners (no radius)<br>
+              • Tags: <code>var(--neutral-200)</code> background<br>
+              • Divider: <code>var(--neutral-200)</code><br><br>
+              
+              <strong style="color: #1f2937;">CTA Link Enhanced:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--primary-600)</code><br>
+              • Hover: underline + <code>var(--primary-500)</code><br>
+              • Underline offset: 2px
+            </div>
+          </div>
         </div>
       </div>
       
@@ -1128,6 +1210,44 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           {% endif %}
         </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Name (Compact):</strong><br>
+              • Font: <code>var(--text-lg)</code> (1.125rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Margin: 2px bottom<br><br>
+              
+              <strong style="color: #1f2937;">Position (Compact):</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br>
+              • Margin: 2px bottom<br><br>
+              
+              <strong style="color: #1f2937;">Location (Compact):</strong><br>
+              • Font: <code>var(--text-xs)</code> (0.75rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">360px Optimizations:</strong><br>
+              • Circular avatar: 100px × 100px<br>
+              • Reduced padding: <code>var(--space-3)</code><br>
+              • Hidden description for space efficiency<br>
+              • Compact tags: 10px font, 2px-6px padding<br><br>
+              
+              <strong style="color: #1f2937;">Layout Features:</strong><br>
+              • Height constraint: 360px with overflow hidden<br>
+              • Centered avatar layout<br>
+              • Bottom-aligned CTA<br>
+              • Space-efficient design for carousels
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- 1D. Standard founder-card (Experimental Layout) -->
@@ -1142,6 +1262,40 @@ document.addEventListener('DOMContentLoaded', function() {
               {% include components/cards/founder-card.html founder=comparison_founder %}
             </div>
           {% endif %}
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Horizontal Layout:</strong><br>
+              • Display: flex row with center alignment<br>
+              • Avatar: 120px × 120px circular (left)<br>
+              • Content: vertical stack (center)<br>
+              • CTA: right-aligned<br><br>
+              
+              <strong style="color: #1f2937;">Typography (Unchanged):</strong><br>
+              • Name: <code>var(--text-lg)</code> semibold<br>
+              • Position: <code>var(--text-sm)</code> regular<br>
+              • Location: <code>var(--text-sm)</code> regular<br>
+              • Colors: Standard neutral palette<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Experimental Features:</strong><br>
+              • Horizontal information flow<br>
+              • Larger circular headshot<br>
+              • Hidden description for clean look<br>
+              • Inline tag layout<br><br>
+              
+              <strong style="color: #1f2937;">Enhanced CTA:</strong><br>
+              • Background: <code>var(--primary-600)</code><br>
+              • Color: white<br>
+              • Padding: <code>var(--space-2)</code> <code>var(--space-3)</code><br>
+              • Border radius: <code>var(--radius-full)</code><br>
+              • Hover: <code>var(--primary-700)</code>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -1180,6 +1334,48 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           {% endif %}
         </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Featured Name:</strong><br>
+              • Font: <code>var(--text-2xl)</code> (1.5rem)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.2<br><br>
+              
+              <strong style="color: #1f2937;">Position (Enhanced):</strong><br>
+              • Font: <code>var(--text-lg)</code> (1.125rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br><br>
+              
+              <strong style="color: #1f2937;">Location (Enhanced):</strong><br>
+              • Font: <code>var(--text-base)</code> (1rem)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
+              • Icon: 16px × 16px flex-shrink-0<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Achievement Badge:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: <code>var(--font-medium)</code> (500)<br>
+              • Color: <code>var(--secondary-700)</code><br>
+              • Icon: 16px × 16px <code>var(--secondary-500)</code><br><br>
+              
+              <strong style="color: #1f2937;">Enhanced Layout:</strong><br>
+              • 50% portrait split layout<br>
+              • Larger text hierarchy<br>
+              • Enhanced padding and spacing<br>
+              • Premium content presentation<br><br>
+              
+              <strong style="color: #1f2937;">CTA Button:</strong><br>
+              • Background: <code>var(--primary-600)</code><br>
+              • Font: <code>var(--text-lg)</code> semibold<br>
+              • Hover: <code>var(--primary-700)</code>
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- 2B. Featured founder-card (Version B) -->
@@ -1194,6 +1390,47 @@ document.addEventListener('DOMContentLoaded', function() {
               {% include components/cards/founder-card-featured.html founder=comparison_founder %}
             </div>
           {% endif %}
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Featured Name (Same):</strong><br>
+              • Font: <code>var(--text-2xl)</code> (1.5rem)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.2<br><br>
+              
+              <strong style="color: #1f2937;">Position (Same):</strong><br>
+              • Font: <code>var(--text-lg)</code> (1.125rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br><br>
+              
+              <strong style="color: #1f2937;">Location (Enhanced):</strong><br>
+              • Custom format: 🔗 TeaTime • Moscow 🇷🇺<br>
+              • Active company link with hover effects<br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Variant B Enhancements:</strong><br>
+              • Achievement box: <code>var(--accent-100)</code> background<br>
+              • Border: 1px solid <code>var(--accent-200)</code><br>
+              • Border radius: 0.25rem<br>
+              • Reduced padding: <code>var(--space-4)</code><br><br>
+              
+              <strong style="color: #1f2937;">Generation Metric:</strong><br>
+              • Position: absolute top-right<br>
+              • Background: rgba(255,255,255,0.9)<br>
+              • Font: 0.75rem medium<br>
+              • Border: 1px solid <code>var(--neutral-200)</code><br><br>
+              
+              <strong style="color: #1f2937;">Layout Changes:</strong><br>
+              • Description moved between achievement and tags<br>
+              • Enhanced company link interaction<br>
+              • Compact content organization
+            </div>
+          </div>
         </div>
       </div>
       
@@ -1248,6 +1485,99 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
         <p style="margin: 0.5rem 0 0 0; font-size: 0.75rem; color: #6b7280;"><strong>Note:</strong> Clean separation - page handles layout/carousel, component handles card visuals. 2A improvements applied to component CSS.</p>
+      </div>
+    </div>
+    
+    <!-- Typography & Color Variations Summary -->
+    <div style="background: #fffbeb; border: 2px solid #f59e0b; padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
+      <h4 style="margin-bottom: 1rem; color: #92400e;">🎨 Typography & Color Variations Summary</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Standard Cards (1A-1D) -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Standard Founder Cards (1A-1D):</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>1A - Standard Layout:</strong><br>
+            • Name: text-lg (1.125rem) semibold<br>
+            • Position: text-sm neutral-600<br>
+            • Tags: neutral background, standard spacing<br><br>
+            
+            <strong>1B - Variant B Styling:</strong><br>
+            • Background: neutral-100 (light gray)<br>
+            • Headshot: square corners<br>
+            • Enhanced CTA: semibold with underline hover<br><br>
+            
+            <strong>1C - 360px Constrained:</strong><br>
+            • Compact sizing for carousel optimization<br>
+            • Circular avatar: 100px<br>
+            • Hidden description for space efficiency<br><br>
+            
+            <strong>1D - Experimental Horizontal:</strong><br>
+            • Flex row layout with larger avatar (120px)<br>
+            • Enhanced CTA: primary background button<br>
+            • Inline tag arrangement
+          </div>
+        </div>
+        
+        <!-- Featured Cards (2A-2B) -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Featured Founder Cards (2A-2B):</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>2A - Featured Layout:</strong><br>
+            • Name: text-2xl (1.5rem) bold<br>
+            • Position: text-lg enhanced<br>
+            • 50% portrait split layout<br>
+            • Achievement badge with icon<br><br>
+            
+            <strong>2B - Enhanced Variant:</strong><br>
+            • Achievement box: accent-100 background<br>
+            • Generation metric: absolute positioned<br>
+            • Custom location format with company link<br>
+            • Reduced padding for compactness<br><br>
+            
+            <strong>Layout Philosophy:</strong><br>
+            • Premium presentation for featured content<br>
+            • Enhanced typography hierarchy<br>
+            • Interactive elements and hover states<br>
+            • Horizontal space utilization
+          </div>
+        </div>
+        
+        <!-- Design Principles -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Design Principles & Usage:</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>Typography Hierarchy:</strong><br>
+            • Standard cards: text-lg → text-sm progression<br>
+            • Featured cards: text-2xl → text-lg progression<br>
+            • Consistent neutral color palette<br><br>
+            
+            <strong>Layout Adaptation:</strong><br>
+            • 1A: Grid-optimized vertical layout<br>
+            • 1C: Carousel-constrained compact<br>
+            • 1D: Horizontal experimental<br>
+            • 2A/2B: Premium featured presentation<br><br>
+            
+            <strong>Interactive Elements:</strong><br>
+            • Standard CTAs: text links with hover<br>
+            • Enhanced CTAs: button styling<br>
+            • Company links: hover underlines<br>
+            • Generation metrics: contextual positioning
+          </div>
+        </div>
+      </div>
+      
+      <!-- Quick Reference -->
+      <div style="margin-top: 1.5rem; padding: 1rem; background: #fefce8; border-radius: 0.5rem;">
+        <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Card Selection:</h6>
+        <ul style="margin: 0; font-size: 0.875rem; line-height: 1.4; color: #713f12;">
+          <li><strong>1A Standard:</strong> Grid layouts, general founder displays</li>
+          <li><strong>1B Variant:</strong> A/B testing alternative styling</li>
+          <li><strong>1C Constrained:</strong> Carousel with height limits</li>
+          <li><strong>1D Horizontal:</strong> Experimental space-efficient layout</li>
+          <li><strong>2A Featured:</strong> Homepage hero sections</li>
+          <li><strong>2B Enhanced:</strong> Premium featured with custom styling</li>
+        </ul>
       </div>
     </div>
     

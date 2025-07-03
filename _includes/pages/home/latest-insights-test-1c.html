@@ -1,17 +1,17 @@
 {% comment %}
-  Page Section: pages/home/latest-insights.html
+  Page Section: pages/home/latest-insights-test-1c.html
   
-  Purpose: Displays latest insights in a premium 2x2 grid layout with enhanced
-           card design, perfect spacing, and mobile-first responsive behavior
+  Purpose: TEST VERSION - Displays latest insights using insight-card.html variant="featured"
+           instead of insight-card-latest.html for comparison testing
   
-  Section Type: Content
+  Section Type: Content (TEST)
   Template: home.html
   
   Parameters:
     panel_type (optional): Panel style/color
                           Default: "primary-soft"
     title (optional): Custom section title
-                     Default: "Latest Insights" from translations
+                     Default: "Latest Insights (Test 1C)" from translations
   
   Dependencies:
     - Translation keys: insights.*
@@ -19,8 +19,10 @@
     - Include: components/cards/insight-card.html (variant="featured")
   
   Usage:
-    {% include pages/home/latest-insights.html %}
-    {% include pages/home/latest-insights.html panel_type="light" %}
+    {% include pages/home/latest-insights-test-1c.html %}
+    {% include pages/home/latest-insights-test-1c.html panel_type="light" %}
+    
+  TESTING: Comparing insight-card.html variant="featured" vs insight-card-latest.html
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
@@ -29,10 +31,10 @@
 
 <div class="latest-insights__header">
   <h2 class="panel__heading-secondary">
-    {{ include.title | default: t.latest | default: "Latest Insights" }}
+    {{ include.title | default: "Latest Insights (Test 1C)" }}
   </h2>
   <p class="latest-insights__subtitle">
-    {% include helpers/t.html key="insights.latest_description" fallback="Stay updated with the latest perspectives from BRICS+ markets, founder stories, and growth opportunities" %}
+    <strong style="color: #f59e0b;">🧪 TEST VERSION:</strong> Using insight-card.html variant="featured" instead of insight-card-latest.html
   </p>
 </div>
 

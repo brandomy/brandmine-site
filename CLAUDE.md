@@ -47,7 +47,9 @@ signals: ["export-ready"]
 
 ---
 
-# 🎴 Mobile-First Card System (Phase 1B Complete)
+# 🎴 Mobile-First Card System (Phase 1B Complete) ✅
+
+**All card types now unified on 345px mobile-first foundation**
 
 ## Universal Card Architecture
 
@@ -62,16 +64,18 @@ signals: ["export-ready"]
 
 **Mobile-first responsive tokens:**
 ```css
---card-width-atomic: 345px;     /* Mobile base */
---card-width-standard: 360px;   /* Desktop base */
---card-width-featured: 450px;   /* Desktop featured */
---card-width-mini: 345px;       /* Always compact */
+--card-width-atomic: 345px;         /* Mobile base */
+--card-width-standard: 360px;       /* Desktop base */
+--card-width-featured: 450px;       /* Desktop featured */
+--card-width-featured-lg: 480px;    /* Premium displays */
+--card-width-featured-xl: 500px;    /* Founder featured cards */
+--card-width-mini: 345px;           /* Always compact */
 ```
 
 **BEM namespaces standardized:**
-- `brand-card__*` - Brand profile cards with taxonomy tags
-- `insight-card__*` - Article/content cards with category badges
-- `founder-card__*` - Biographical profile cards
+- `brand-card__*` - Brand profile cards with taxonomy tags (✅ 345px mobile-first complete)
+- `insight-card__*` - Article/content cards with category badges (✅ 345px mobile-first complete)
+- `founder-card__*` - Biographical profile cards (✅ 345px mobile-first complete)
 
 **Simple variant implementation:**
 - One HTML file per card type with `{% raw %}{% if variant == "name" %}{% endraw %}` blocks

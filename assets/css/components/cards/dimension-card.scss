@@ -3,6 +3,10 @@
    ==========================================================================
    Reusable dimension card for discovery grid display. Displays dimension
    information with icon, title, description, featured examples, and CTA link.
+   
+   VARIANTS:
+   - .dimension-card (1A): Standard card layout
+   - .dimension-card--featured (1B): Enhanced featured layout with larger icon and count
 */
 
 /* --------------------------------------------------------------------------
@@ -10,6 +14,17 @@
    -------------------------------------------------------------------------- */
 
 .dimension-card {
+  /* Apply mobile-first width pattern consistent with other cards */
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  /* Desktop enhancement */
+  @media (min-width: 768px) {
+    width: var(--card-width-standard); /* 360px desktop */
+  }
+  
   background-color: white;
   border-radius: var(--radius-lg);
   padding: var(--space-6);
@@ -189,4 +204,139 @@
 .dimension-card__link--signals {
   color: var(--accent-700);
   border-color: var(--accent-300);
+}
+
+/* --------------------------------------------------------------------------
+   7. FEATURED VARIANT (1B) STYLING
+   -------------------------------------------------------------------------- */
+
+.dimension-card--featured {
+  /* Enhanced sizing for featured display */
+  @media (min-width: 768px) {
+    width: var(--card-width-featured); /* 450px desktop */
+  }
+  
+  /* Enhanced visual styling */
+  box-shadow: var(--shadow-lg);
+  border-top-width: 4px;
+  padding: var(--space-8);
+  
+  /* Gradient background for premium feel */
+  background: linear-gradient(135deg, var(--neutral-50) 0%, white 100%);
+}
+
+.dimension-card--featured:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Featured hero section */
+.dimension-card__hero {
+  margin-bottom: var(--space-6);
+}
+
+.dimension-card--featured .dimension-card__header {
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+/* Large icon for featured variant */
+.dimension-card__icon--large {
+  width: 64px !important;
+  height: 64px !important;
+  margin-right: var(--space-4) !important;
+}
+
+.dimension-card__icon--large .dimension-card__icon-svg {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Title section for featured variant */
+.dimension-card__title-section {
+  flex: 1;
+}
+
+.dimension-card--featured .dimension-card__title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+/* Count display for featured variant */
+.dimension-card__count {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Enhanced description for featured variant */
+.dimension-card__description--featured {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: var(--neutral-700);
+  margin-bottom: 0;
+}
+
+/* Content section for featured variant */
+.dimension-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Enhanced button styling for featured variant */
+.dimension-card--featured .dimension-card__link {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  padding: var(--space-3) var(--space-6);
+  border-width: 2px;
+  border-radius: var(--radius-lg);
+}
+
+/* Dimension-specific featured button colors */
+.dimension-card--featured.dimension-card--sectors .dimension-card__link {
+  background-color: var(--olive-600);
+  border-color: var(--olive-600);
+  color: white;
+}
+
+.dimension-card--featured.dimension-card--markets .dimension-card__link {
+  background-color: var(--sky-600);
+  border-color: var(--sky-600);
+  color: white;
+}
+
+.dimension-card--featured.dimension-card--attributes .dimension-card__link {
+  background-color: var(--secondary-600);
+  border-color: var(--secondary-600);
+  color: white;
+}
+
+.dimension-card--featured.dimension-card--signals .dimension-card__link {
+  background-color: var(--accent-600);
+  border-color: var(--accent-600);
+  color: white;
+}
+
+/* Button hover states for featured variant */
+.dimension-card--featured.dimension-card--sectors .dimension-card__link:hover {
+  background-color: var(--olive-700);
+  border-color: var(--olive-700);
+}
+
+.dimension-card--featured.dimension-card--markets .dimension-card__link:hover {
+  background-color: var(--sky-700);
+  border-color: var(--sky-700);
+}
+
+.dimension-card--featured.dimension-card--attributes .dimension-card__link:hover {
+  background-color: var(--secondary-700);
+  border-color: var(--secondary-700);
+}
+
+.dimension-card--featured.dimension-card--signals .dimension-card__link:hover {
+  background-color: var(--accent-700);
+  border-color: var(--accent-700);
 }

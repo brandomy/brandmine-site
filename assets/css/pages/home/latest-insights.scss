@@ -8,7 +8,7 @@
    Architecture:
    - CSS Grid layout for precise 2x2 positioning
    - Mobile-first responsive behavior (1x4 on mobile, 2x2 on desktop)
-   - Grid positioning and spacing only - component styling in cards/_index.scss
+   - Grid positioning and spacing only - component styling in cards/insight-card.scss
    
    Location: assets/css/pages/home/latest-insights.scss
 */
@@ -59,7 +59,7 @@
      ========================================================================== */
 
   /* Base mobile sizing (320px-480px) */
-  .latest-insights__container .insight-latest-card {
+  .latest-insights__container .insight-card--featured {
     width: 100%;
     height: auto; /* Natural height based on content */
     /* All other styling inherited from component file */
@@ -81,6 +81,9 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: repeat(2, auto);
       gap: var(--space-5);
+      max-width: 980px; /* Accommodate 2x 480px cards + gap */
+      margin: var(--space-6) auto;
+      justify-items: center; /* Center cards within grid cells */
     }
     
     /* Cards size naturally - no fixed heights needed */
@@ -91,8 +94,9 @@
     .latest-insights__container {
       /* Desktop: 2x2 grid with optimal spacing */
       gap: var(--space-6);
-      max-width: 800px;
+      max-width: 1000px; /* Accommodate 2x 480px cards + gap */
       margin: var(--space-8) auto;
+      justify-items: center; /* Center cards within grid cells */
     }
     
     /* Cards size naturally - no fixed heights needed */
@@ -103,18 +107,18 @@
      ========================================================================== */
 
   /* Grid-specific animation and hover effects */
-  .latest-insights__container .insight-latest-card {
+  .latest-insights__container .insight-card--featured {
     transition: all 0.3s ease;
   }
 
   /* Grid hover effects - slightly different from carousel */
-  .latest-insights__container .insight-latest-card:hover {
+  .latest-insights__container .insight-card--featured:hover {
     transform: translateY(-6px); /* Slightly more pronounced than carousel */
     box-shadow: var(--shadow-xl);
   }
 
   /* Grid-specific focus states for accessibility */
-  .latest-insights__container .insight-latest-card:focus-within {
+  .latest-insights__container .insight-card--featured:focus-within {
     outline: 2px solid var(--primary-400);
     outline-offset: 4px;
   }

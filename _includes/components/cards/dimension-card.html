@@ -2,10 +2,11 @@
 COMPONENT: Dimension Card
 PURPOSE: Displays a discovery dimension category with icon, description, example tags, and view-all link
 
-USAGE: {% include components/cards/dimension-card.html type="sectors" limit=3 %}
+USAGE: {% include components/cards/dimension-card.html type="sectors" limit=3 variant="featured" %}
 
 PARAMETERS:
 - type (required): Dimension type string - "sectors", "markets", "attributes", "signals"
+- variant (optional): Card variant string - "standard", "featured", defaults to "standard"
 - limit (optional): Integer number of example tags to show, defaults to 3
 - tag_selection (optional): Tag selection method string - "featured", "alphabetic", "all", defaults to "featured"
 - tag_sort (optional): Tag sort order string - "alphabetic", "reverse-alphabetic", "none", defaults to "none"
@@ -25,44 +26,97 @@ NOTES: Each dimension type has its own icon and color scheme. Tag cloud componen
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_variant %}{% include helpers/component-defaults.html component="cards.dimension-card" param="variant" fallback="standard" %}{% endcapture %}
 {% capture default_limit %}{% include helpers/component-defaults.html component="cards.dimension-card" param="limit" fallback=3 %}{% endcapture %}
 {% capture default_tag_selection %}{% include helpers/component-defaults.html component="cards.dimension-card" param="tag_selection" fallback="featured" %}{% endcapture %}
 {% capture default_tag_sort %}{% include helpers/component-defaults.html component="cards.dimension-card" param="tag_sort" fallback="none" %}{% endcapture %}
 {% capture default_show_count %}{% include helpers/component-defaults.html component="cards.dimension-card" param="show_count" fallback=true %}{% endcapture %}
 
+{% assign variant = include.variant | default: default_variant %}
 {% assign limit = include.limit | default: default_limit %}
 {% assign tag_selection = include.tag_selection | default: default_tag_selection %}
 {% assign tag_sort = include.tag_sort | default: default_tag_sort %}
 {% assign show_count = include.show_count | default: default_show_count %}
 
-<div class="dimension-card dimension-card--{{ include.type }}">
-  <div class="dimension-card__header">
-    <div class="dimension-card__icon">
-      {% include components/icons/icon.html system="dimensions" type=include.type name="default" class="dimension-card__icon-svg" %}
+<div class="dimension-card dimension-card--{{ include.type }}{% if variant == "featured" %} dimension-card--featured{% endif %}">
+  {% if variant == "featured" %}
+    <!-- Featured variant with enhanced layout -->
+    <div class="dimension-card__hero">
+      <div class="dimension-card__header">
+        <div class="dimension-card__icon dimension-card__icon--large">
+          {% include components/icons/icon.html system="dimensions" type=include.type name="default" class="dimension-card__icon-svg" %}
+        </div>
+        <div class="dimension-card__title-section">
+          <h3 class="dimension-card__title">
+            {% assign title_key = "discovery." | append: include.type %}
+            {% include helpers/t.html key=title_key fallback=include.type %}
+          </h3>
+          <div class="dimension-card__count">
+            {% capture count_text %}
+              {% case include.type %}
+                {% when 'sectors' %}{{ site.dimensions | where: "lang", page.lang | map: "categories" | join: "," | split: "," | uniq | size }} categories
+                {% when 'markets' %}{{ site.dimensions | where: "lang", page.lang | map: "categories" | join: "," | split: "," | uniq | size }} markets
+                {% when 'attributes' %}{{ site.dimensions | where: "lang", page.lang | map: "categories" | join: "," | split: "," | uniq | size }} attributes
+                {% when 'signals' %}{{ site.dimensions | where: "lang", page.lang | map: "categories" | join: "," | split: "," | uniq | size }} signals
+              {% endcase %}
+            {% endcapture %}
+            {{ count_text }}
+          </div>
+        </div>
+      </div>
+      
+      <p class="dimension-card__description dimension-card__description--featured">
+        {% assign desc_key = "discovery." | append: include.type | append: "_description" %}
+        {% include helpers/t.html key=desc_key fallback="Explore detailed information about this dimension category." %}
+      </p>
     </div>
-    <h3 class="dimension-card__title">
-      {% assign title_key = "discovery." | append: include.type %}
-      {% include helpers/t.html key=title_key fallback=include.type %}
-    </h3>
-  </div>
-  
-  <p class="dimension-card__description">
-    {% assign desc_key = "discovery." | append: include.type | append: "_description" %}
-    {% include helpers/t.html key=desc_key fallback="Explore" %}
-  </p>
-  
-  {% comment %} Use dedicated tag cloud component for examples {% endcomment %}
-  {% include components/dimensions/dimension-tag-cloud.html 
-     type=include.type 
-     limit=limit 
-     selection=tag_selection 
-     sort=tag_sort 
-     show_count=show_count %}
-  
-  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/" 
-     class="dimension-card__link btn btn--outline dimension-card__link--{{ include.type }}">
-    {% assign cta_key = "discovery.view_all_" | append: include.type %}
-    {% assign cta_fallback = "View All " | append: include.type | capitalize %}
-    {% include helpers/t.html key=cta_key fallback=cta_fallback %}
-  </a>
+    
+    <div class="dimension-card__content">
+      {% comment %} Enhanced tag cloud for featured display {% endcomment %}
+      {% include components/dimensions/dimension-tag-cloud.html 
+         type=include.type 
+         limit=limit 
+         selection=tag_selection 
+         sort=tag_sort 
+         show_count=show_count %}
+      
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/" 
+         class="dimension-card__link btn btn--solid dimension-card__link--{{ include.type }}">
+        {% assign cta_key = "discovery.explore_" | append: include.type %}
+        {% assign cta_fallback = "Explore " | append: include.type | capitalize %}
+        {% include helpers/t.html key=cta_key fallback=cta_fallback %}
+      </a>
+    </div>
+  {% else %}
+    <!-- Standard variant (1A) -->
+    <div class="dimension-card__header">
+      <div class="dimension-card__icon">
+        {% include components/icons/icon.html system="dimensions" type=include.type name="default" class="dimension-card__icon-svg" %}
+      </div>
+      <h3 class="dimension-card__title">
+        {% assign title_key = "discovery." | append: include.type %}
+        {% include helpers/t.html key=title_key fallback=include.type %}
+      </h3>
+    </div>
+    
+    <p class="dimension-card__description">
+      {% assign desc_key = "discovery." | append: include.type | append: "_description" %}
+      {% include helpers/t.html key=desc_key fallback="Explore" %}
+    </p>
+    
+    {% comment %} Use dedicated tag cloud component for examples {% endcomment %}
+    {% include components/dimensions/dimension-tag-cloud.html 
+       type=include.type 
+       limit=limit 
+       selection=tag_selection 
+       sort=tag_sort 
+       show_count=show_count %}
+    
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/" 
+       class="dimension-card__link btn btn--outline dimension-card__link--{{ include.type }}">
+      {% assign cta_key = "discovery.view_all_" | append: include.type %}
+      {% assign cta_fallback = "View All " | append: include.type | capitalize %}
+      {% include helpers/t.html key=cta_key fallback=cta_fallback %}
+    </a>
+  {% endif %}
 </div>

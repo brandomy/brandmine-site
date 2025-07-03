@@ -9,6 +9,17 @@
    ============================================================================= */
 
 .founder-card-featured {
+  /* Apply mobile-first width pattern */
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  /* Desktop enhancement - larger for premium display */
+  @media (min-width: 768px) {
+    width: var(--card-width-featured-xl); /* 500px desktop (larger for rich founder content) */
+  }
+
   display: flex;
   height: 400px;
   background: white;
@@ -17,7 +28,6 @@
   box-shadow: var(--shadow-lg);
   position: relative;
   transition: all 0.3s ease;
-  box-sizing: border-box;
   
   &:hover {
     transform: translateY(-2px);

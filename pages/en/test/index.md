@@ -79,6 +79,20 @@ lang: en
       <span class="test-status">Active</span>
     </a>
     
+    <!-- Dimension Cards Testing -->
+    <a href="/test/dimension-cards-layout-testing/" class="test-link-card">
+      <h2>Dimension Cards Layout Testing</h2>
+      <p>Testing of dimension card component (dimension-card.html) with base (1A) and featured (1B) variants across all four dimension types (sectors, markets, attributes, signals). Includes typography analysis and discovery system integration testing.</p>
+      <span class="test-status">Active</span>
+    </a>
+    
+    <!-- Insight Card Comparison Testing -->
+    <a href="/test/insight-card-comparison/" class="test-link-card">
+      <h2>Insight Card Comparison Testing</h2>
+      <p>Side-by-side comparison of insight-card-latest.html vs insight-card.html variant="featured" for component consolidation analysis. Tests visual parity, typography hierarchy, layout consistency, and homepage grid compatibility.</p>
+      <span class="test-status">Active</span>
+    </a>
+    
     <!-- Additional Test Pages -->
     <div class="test-link-card" style="opacity: 0.6;">
       <h2>Additional Test Pages</h2>

@@ -40,6 +40,17 @@
    -------------------------------------------------------------------------- */
 
 .brand-card {
+  /* Apply mobile-first width pattern */
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  /* Desktop enhancement */
+  @media (min-width: 768px) {
+    width: var(--card-width-standard); /* 360px desktop */
+  }
+
   /* Base structure - mobile first */
   display: flex;
   flex-direction: column;
@@ -337,6 +348,12 @@
 
 /* Featured card variant with hero layout */
 .brand-card--featured {
+  /* Mobile inherits base 345px */
+  
+  @media (min-width: 768px) {
+    width: var(--card-width-featured); /* 450px featured desktop */
+  }
+  
   height: 540px;
   background-color: white;
   
@@ -498,6 +515,15 @@
 /* New card */
 .brand-card--new {
   border-left: var(--border-width-medium) solid var(--secondary-500);
+}
+
+/* Mini variant - always 345px (no desktop growth) */
+.brand-card--mini {
+  width: var(--card-width-atomic);    /* Always 345px (no desktop growth) */
+  max-width: var(--card-width-atomic);
+  
+  /* Preserve compact display features */
+  height: 300px;
 }
 
 /* Compact card */

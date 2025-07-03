@@ -293,8 +293,8 @@
     width: var(--card-width-featured-lg); /* 480px desktop (like insight-card-latest) */
   }
   
-  /* Premium styling */
-  border-radius: var(--radius-xl);
+  /* Premium styling - Override base card radius */
+  border-radius: var(--radius-xl) !important; /* 24px - match insight-card-latest */
   box-shadow: var(--shadow-lg);
   
   &:hover {

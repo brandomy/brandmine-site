@@ -3,6 +3,17 @@
    ================================= */
 
 .founder-card {
+  /* Apply mobile-first width pattern */
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  /* Desktop enhancement */
+  @media (min-width: 768px) {
+    width: var(--card-width-standard); /* 360px desktop */
+  }
+
   background: var(--neutral-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -22,7 +33,6 @@
 .founder-card--standard {
   display: flex;
   flex-direction: column;
-  max-width: 320px;
   padding: var(--space-5);
   
   .founder-card__header {
@@ -360,6 +370,17 @@
   }
 
   /* Panel context styling moved to layout files - cards should not handle external contexts */
+}
+
+/* Mini variant - always 345px (no desktop growth) */
+.founder-card--mini {
+  width: var(--card-width-atomic);    /* Always 345px (no desktop growth) */
+  max-width: var(--card-width-atomic);
+  
+  /* Preserve compact display features intact */
+  .founder-card__header {
+    padding: var(--space-3);
+  }
 }
 
 /* Placeholder styling for when no real data is available */
