@@ -37,28 +37,12 @@
     <div class="test-card-content">
       <h3 class="test-card-title">{{ case_study.brand }}</h3>
       <p class="test-card-subtitle">{{ case_study.description }}</p>
-      <div class="test-card-meta">
-        {% if case_study.markets %}
-          {% for market in case_study.markets %}
-            <a href="/{{ page.lang }}/discover/markets/{{ market }}/" class="test-card-market">{% include helpers/dimension-name.html type="markets" id=market %}</a>
-          {% endfor %}
-        {% endif %}
-        {% if case_study.sectors %}
-          {% for sector in case_study.sectors %}
-            <a href="/{{ page.lang }}/discover/sectors/{{ sector }}/" class="test-card-sector">{% include helpers/dimension-name.html type="sectors" id=sector %}</a>
-          {% endfor %}
-        {% endif %}
-        {% if case_study.attributes %}
-          {% for attribute in case_study.attributes %}
-            <a href="/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="test-card-attribute">{% include helpers/dimension-name.html type="attributes" id=attribute %}</a>
-          {% endfor %}
-        {% endif %}
-        {% if case_study.signals %}
-          {% for signal in case_study.signals %}
-            <a href="/{{ page.lang }}/discover/signals/{{ signal }}/" class="test-card-signal">{% include helpers/dimension-name.html type="signals" id=signal %}</a>
-          {% endfor %}
-        {% endif %}
-      </div>
+      <!-- Dimension Tags (Using unified component with case-study variant) -->
+      {% include components/ui/dimension-tag-cloud.html 
+         parent=case_study 
+         variant="case-study"
+         class_prefix="test-card-tags"
+         spacing="normal" %}
       <!-- CTA Button -->
       <div class="test-card-cta">
         <a href="{{ case_study.permalink }}" class="test-card-button">

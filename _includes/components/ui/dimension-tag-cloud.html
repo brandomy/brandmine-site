@@ -1,0 +1,179 @@
+{% comment %}
+================================================================================
+COMPONENT: Dimension Tag Cloud
+PATH: _includes/components/ui/dimension-tag-cloud.html
+PURPOSE: Unified component for displaying dimension tags across the site
+CREATED: 2025-07-03
+================================================================================
+
+Features:
+- Displays dimension tags (sectors, markets, attributes, signals) with unified styling
+- Consistent color system across all implementations
+- Multiple variants for different contexts
+- Configurable limits and spacing
+- Responsive behavior
+
+Parameters:
+- parent (required): Object containing dimension arrays (sectors, markets, attributes, signals)
+- variant (optional): "standard" (default), "compact", "inline", "large"
+- limit (optional): Maximum number of tags to display per dimension type. Default: from component_defaults
+- show_all (optional): Boolean to show all tags without limits. Default: false
+- spacing (optional): "normal" (default), "tight", "loose"
+- clickable (optional): Boolean to make tags clickable links. Default: true
+- class_prefix (optional): CSS class prefix for custom styling. Default: "dimension-tag-cloud"
+- show_icons (optional): Boolean to show dimension icons. Default: false
+
+Dependencies:
+- CSS: assets/css/components/ui/dimension-tag-cloud.scss
+- Helpers: helpers/dimension-name.html for tag names
+- Data: component_defaults.yml for configuration
+
+Usage Examples:
+{% include components/ui/dimension-tag-cloud.html parent=brand %}
+{% include components/ui/dimension-tag-cloud.html parent=insight variant="compact" limit=3 %}
+{% include components/ui/dimension-tag-cloud.html parent=page show_all=true spacing="tight" %}
+
+BEM Structure:
+- .dimension-tag-cloud (block)
+- .dimension-tag-cloud__tag (element)
+- .dimension-tag-cloud--{variant} (modifier)
+- .dimension-tag-cloud__tag--{type} (element modifier)
+================================================================================
+{% endcomment %}
+
+{% comment %} Component defaults {% endcomment %}
+{% capture default_variant %}{% include helpers/component-defaults.html component="ui.dimension-tag-cloud" param="variant" fallback="standard" %}{% endcapture %}
+{% capture default_limit %}{% include helpers/component-defaults.html component="ui.dimension-tag-cloud" param="limit" fallback=10 %}{% endcapture %}
+{% capture default_show_icons %}{% include helpers/component-defaults.html component="ui.dimension-tag-cloud" param="show_icons" fallback=false %}{% endcapture %}
+{% capture default_spacing %}{% include helpers/component-defaults.html component="ui.dimension-tag-cloud" param="spacing" fallback="normal" %}{% endcapture %}
+{% capture default_clickable %}{% include helpers/component-defaults.html component="ui.dimension-tag-cloud" param="clickable" fallback=true %}{% endcapture %}
+
+{% comment %} Parameter processing {% endcomment %}
+{% assign variant = include.variant | default: default_variant %}
+{% assign limit = include.limit | default: default_limit | plus: 0 %}
+{% assign show_all = include.show_all | default: false %}
+{% assign spacing = include.spacing | default: default_spacing %}
+{% assign clickable = include.clickable | default: default_clickable %}
+{% assign class_prefix = include.class_prefix | default: "dimension-tag-cloud" %}
+{% assign show_icons = include.show_icons | default: default_show_icons %}
+
+{% if include.parent %}
+  {% assign parent = include.parent %}
+  {% assign current_lang = parent.lang | default: page.lang | default: 'en' %}
+
+  {% comment %} Check if any dimensions exist {% endcomment %}
+  {% assign has_dimensions = false %}
+  {% if parent.sectors.size > 0 or parent.markets.size > 0 or parent.attributes.size > 0 or parent.signals.size > 0 %}
+    {% assign has_dimensions = true %}
+  {% endif %}
+
+  {% if has_dimensions %}
+    <div class="{{ class_prefix }} {{ class_prefix }}--{{ variant }} {{ class_prefix }}--spacing-{{ spacing }}">
+      {% comment %} Markets {% endcomment %}
+      {% if parent.markets and parent.markets.size > 0 %}
+        {% if show_all %}
+          {% assign market_limit = parent.markets.size %}
+        {% else %}
+          {% assign market_limit = limit %}
+        {% endif %}
+        
+        {% for market in parent.markets limit: market_limit %}
+          {% if clickable %}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/{{ market | slugify }}/"
+               class="{{ class_prefix }}__tag {{ class_prefix }}__tag--market">
+              {% include helpers/dimension-name.html type="markets" id=market %}
+            </a>
+          {% else %}
+            <span class="{{ class_prefix }}__tag {{ class_prefix }}__tag--market">
+              {% include helpers/dimension-name.html type="markets" id=market %}
+            </span>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% comment %} Sectors {% endcomment %}
+      {% if parent.sectors and parent.sectors.size > 0 %}
+        {% if show_all %}
+          {% assign sector_limit = parent.sectors.size %}
+        {% else %}
+          {% assign sector_limit = limit %}
+        {% endif %}
+        
+        {% for sector in parent.sectors limit: sector_limit %}
+          {% if clickable %}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/{{ sector | slugify }}/"
+               class="{{ class_prefix }}__tag {{ class_prefix }}__tag--sector">
+              {% include helpers/dimension-name.html type="sectors" id=sector %}
+            </a>
+          {% else %}
+            <span class="{{ class_prefix }}__tag {{ class_prefix }}__tag--sector">
+              {% include helpers/dimension-name.html type="sectors" id=sector %}
+            </span>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% comment %} Attributes {% endcomment %}
+      {% if parent.attributes and parent.attributes.size > 0 %}
+        {% if show_all %}
+          {% assign attribute_limit = parent.attributes.size %}
+        {% else %}
+          {% assign attribute_limit = limit %}
+        {% endif %}
+        
+        {% for attribute in parent.attributes limit: attribute_limit %}
+          {% if clickable %}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/{{ attribute | slugify }}/"
+               class="{{ class_prefix }}__tag {{ class_prefix }}__tag--attribute">
+              {% include helpers/dimension-name.html type="attributes" id=attribute %}
+            </a>
+          {% else %}
+            <span class="{{ class_prefix }}__tag {{ class_prefix }}__tag--attribute">
+              {% include helpers/dimension-name.html type="attributes" id=attribute %}
+            </span>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% comment %} Signals {% endcomment %}
+      {% if parent.signals and parent.signals.size > 0 %}
+        {% if show_all %}
+          {% assign signal_limit = parent.signals.size %}
+        {% else %}
+          {% assign signal_limit = limit %}
+        {% endif %}
+        
+        {% for signal in parent.signals limit: signal_limit %}
+          {% if clickable %}
+            <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/{{ signal | slugify }}/"
+               class="{{ class_prefix }}__tag {{ class_prefix }}__tag--signal">
+              {% include helpers/dimension-name.html type="signals" id=signal %}
+            </a>
+          {% else %}
+            <span class="{{ class_prefix }}__tag {{ class_prefix }}__tag--signal">
+              {% include helpers/dimension-name.html type="signals" id=signal %}
+            </span>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% comment %} Show more indicator if there are more tags {% endcomment %}
+      {% unless show_all %}
+        {% assign total_tags = 0 %}
+        {% assign shown_tags = 0 %}
+        
+        {% if parent.markets %}{% assign total_tags = total_tags | plus: parent.markets.size %}{% endif %}
+        {% if parent.sectors %}{% assign total_tags = total_tags | plus: parent.sectors.size %}{% endif %}
+        {% if parent.attributes %}{% assign total_tags = total_tags | plus: parent.attributes.size %}{% endif %}
+        {% if parent.signals %}{% assign total_tags = total_tags | plus: parent.signals.size %}{% endif %}
+        
+        {% assign max_shown = limit | times: 4 %}
+        {% if total_tags > max_shown %}
+          <span class="{{ class_prefix }}__more">
+            +{{ total_tags | minus: max_shown }} more
+          </span>
+        {% endif %}
+      {% endunless %}
+    </div>
+  {% endif %}
+{% endif %}

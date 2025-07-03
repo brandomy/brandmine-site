@@ -82,37 +82,12 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation
           <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
         {% endif %}
 
-        <!-- Dimension Tags -->
-        <div class="insight-card__tags">
-          {%- if include.insight.sectors -%}
-            {%- for sector in include.insight.sectors limit:1 -%}
-              <a href="{{ site.baseurl }}/{{ include.insight.lang }}/sectors/{{ sector }}/" class="insight-card__tag insight-card__tag--sector">
-                {%- include helpers/dimension-name.html type="sectors" id=sector -%}
-              </a>
-            {%- endfor -%}
-          {%- endif -%}
-          {%- if include.insight.markets -%}
-            {%- for market in include.insight.markets limit:1 -%}
-              <a href="{{ site.baseurl }}/{{ include.insight.lang }}/markets/{{ market }}/" class="insight-card__tag insight-card__tag--market">
-                {%- include helpers/dimension-name.html type="markets" id=market -%}
-              </a>
-            {%- endfor -%}
-          {%- endif -%}
-          {%- if include.insight.attributes -%}
-            {%- for attribute in include.insight.attributes limit:1 -%}
-              <a href="{{ site.baseurl }}/{{ include.insight.lang }}/attributes/{{ attribute }}/" class="insight-card__tag insight-card__tag--attribute">
-                {%- include helpers/dimension-name.html type="attributes" id=attribute -%}
-              </a>
-            {%- endfor -%}
-          {%- endif -%}
-          {%- if include.insight.signals -%}
-            {%- for signal in include.insight.signals limit:1 -%}
-              <a href="{{ site.baseurl }}/{{ include.insight.lang }}/signals/{{ signal }}/" class="insight-card__tag insight-card__tag--signal">
-                {%- include helpers/dimension-name.html type="signals" id=signal -%}
-              </a>
-            {%- endfor -%}
-          {%- endif -%}
-        </div>
+        <!-- Dimension Tags (Using unified component) -->
+        {% include components/ui/dimension-tag-cloud.html 
+           parent=include.insight
+           limit=1
+           class_prefix="insight-card-tags"
+           spacing="tight" %}
 
         <div class="insight-card__footer">
           <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>

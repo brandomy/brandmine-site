@@ -142,44 +142,12 @@
         <p class="brand-card__description">{{ brand.description }}</p>
       {% endif %}
 
-      <!-- Taxonomy Tags (Show ALL relevant tags - no limits for featured) -->
-      <div class="brand-card__tags">
-        <!-- Markets (all markets for discovery) -->
-        {% if brand.markets %}
-          {% for market in brand.markets %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market }}/" class="brand-card__tag brand-card__tag--market">
-              {% include helpers/dimension-name.html type="markets" id=market %}
-            </a>
-          {% endfor %}
-        {% endif %}
-
-        <!-- Sectors (all sectors for discovery) -->
-        {% if brand.sectors %}
-          {% for sector in brand.sectors %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector }}/" class="brand-card__tag brand-card__tag--sector">
-              {% include helpers/dimension-name.html type="sectors" id=sector %}
-            </a>
-          {% endfor %}
-        {% endif %}
-
-        <!-- Attributes (all attributes for discovery) -->
-        {% if brand.attributes %}
-          {% for attribute in brand.attributes %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute }}/" class="brand-card__tag brand-card__tag--attribute">
-              {% include helpers/dimension-name.html type="attributes" id=attribute %}
-            </a>
-          {% endfor %}
-        {% endif %}
-
-        <!-- Signals (all signals for discovery) -->
-        {% if brand.signals %}
-          {% for signal in brand.signals %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal }}/" class="brand-card__tag brand-card__tag--signal">
-              {% include helpers/dimension-name.html type="signals" id=signal %}
-            </a>
-          {% endfor %}
-        {% endif %}
-      </div>
+      <!-- Taxonomy Tags (Using unified component) -->
+      {% include components/ui/dimension-tag-cloud.html 
+         parent=brand 
+         show_all=true 
+         class_prefix="brand-card-tags"
+         spacing="normal" %}
 
       <!-- Single CTA -->
       <div class="brand-card__cta">
@@ -199,47 +167,12 @@
     <div class="brand-card__body">
       <p class="brand-card__description">{{ brand.description }}</p>
 
-      <div class="brand-card__tags">
-        <!-- Markets -->
-        {% if brand.markets %}
-          {% for market in brand.markets %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
-               class="brand-card__tag brand-card__tag--market">
-              {% include helpers/dimension-name.html type="markets" id=market %}
-            </a>
-          {% endfor %}
-        {% endif %}
-
-        <!-- Sectors -->
-        {% if brand.sectors %}
-          {% for sector in brand.sectors %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
-               class="brand-card__tag brand-card__tag--sector">
-              {% include helpers/dimension-name.html type="sectors" id=sector %}
-            </a>
-          {% endfor %}
-        {% endif %}
-
-        <!-- Attributes -->
-        {% if brand.attributes %}
-          {% for attribute in brand.attributes %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
-               class="brand-card__tag brand-card__tag--attribute">
-              {% include helpers/dimension-name.html type="attributes" id=attribute %}
-            </a>
-          {% endfor %}
-        {% endif %}
-
-        <!-- Signals -->
-        {% if brand.signals %}
-          {% for signal in brand.signals %}
-            <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
-               class="brand-card__tag brand-card__tag--signal">
-              {% include helpers/dimension-name.html type="signals" id=signal %}
-            </a>
-          {% endfor %}
-        {% endif %}
-      </div>
+      <!-- Taxonomy Tags (Using unified component) -->
+      {% include components/ui/dimension-tag-cloud.html 
+         parent=brand 
+         limit=tag_limit
+         class_prefix="brand-card-tags"
+         spacing="normal" %}
     </div>
 
     <footer class="brand-card__footer">
