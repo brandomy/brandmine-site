@@ -1,0 +1,220 @@
+{% comment %} WEEK 3 ENHANCEMENT: Strategic Insight Card with Category Differentiation {% endcomment %}
+{% comment %}
+COMPONENT: Enhanced Insight Card
+PURPOSE: Strategic insight article card with category differentiation, reading investment clarity, and context-specific CTAs
+
+USAGE: {% include components/cards/insight-card.html insight=insight %}
+
+PARAMETERS:
+- insight (required): Insight object from site.insights collection
+- show_date (optional): Boolean to show publication date, defaults from component defaults
+- excerpt_words (optional): Integer word count for excerpt, defaults from component defaults
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/insight-card.scss, week3-insight-enhancements.scss
+- Data: site.data.translations, site.data.component_defaults
+- Includes: helpers/component-defaults.html, helpers/t.html
+
+VARIANTS:
+- insight-card--[category]: Category-specific styling and messaging
+
+WEEK 3 ENHANCEMENTS:
+- Category badges with icons and themed colors
+- Reading investment clarity (time + value proposition)
+- Context-specific CTAs per category
+- Enhanced hero image with overlay
+- Featured brands/founders context
+- Author bylines and strategic metadata
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_show_date %}{% include helpers/component-defaults.html component="cards.insight-card" param="show_date" fallback=true %}{% endcapture %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.insight-card" param="excerpt_words" fallback=30 %}{% endcapture %}
+{% assign show_date = include.show_date | default: default_show_date | strip %}
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words | strip | plus: 0 %}
+
+<article class="insight-card insight-card--{{ include.insight.category | default: 'default' }}" 
+         data-category="{{ include.insight.category }}"
+         role="article">
+
+  {% comment %} Category-specific hero image with overlay - Updated to use collection-image {% endcomment %}
+  {% if include.insight.images.hero %}
+    <div class="insight-card__hero">
+      {% include components/images/collection-image.html
+         collection="insights"
+         slug=include.insight.ref
+         purpose="hero"
+         name=include.insight.images.hero.name
+         ext=include.insight.images.hero.ext
+         alt=include.insight.images.hero.alt
+         class="insight-card__hero-image"
+         loading="lazy" %}
+    </div>
+  {% elsif include.insight.hero_image %}
+    {% comment %} Legacy support for old hero_image format {% endcomment %}
+    <div class="insight-card__hero">
+      {% assign base_path = include.insight.hero_image | split: "." %}
+      {% assign base_name = base_path[0] %}
+      {% assign extension = base_path[1] | default: "jpg" %}
+
+      <img src="{{ base_name | relative_url }}-400w.{{ extension }}"
+           srcset="{{ base_name | relative_url }}-400w.{{ extension }} 400w,
+                   {{ base_name | relative_url }}-800w.{{ extension }} 800w,
+                   {{ base_name | relative_url }}-1200w.{{ extension }} 1200w"
+           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+           alt="{{ include.insight.title }}" 
+           class="insight-card__hero-image"
+           loading="lazy">
+      <div class="insight-card__category-overlay">
+        <span class="insight-card__category-badge">
+          {% case include.insight.category %}
+            {% when 'brand-spotlight' %}
+              <span class="insight-card__category-icon">🏆</span>
+              {% include helpers/t.html key="insights.categories.brand_spotlight" fallback="Brand Success" %}
+            {% when 'founders-journey' %}
+              <span class="insight-card__category-icon">🚀</span>
+              {% include helpers/t.html key="insights.categories.founders_journey" fallback="Founder Story" %}
+            {% when 'location-intelligence' %}
+              <span class="insight-card__category-icon">🌍</span>
+              {% include helpers/t.html key="insights.categories.location_intelligence" fallback="Market Intel" %}
+            {% when 'market-momentum' %}
+              <span class="insight-card__category-icon">📈</span>
+              {% include helpers/t.html key="insights.categories.market_momentum" fallback="Market Trends" %}
+            {% else %}
+              <span class="insight-card__category-icon">📝</span>
+              {% include helpers/t.html key="insights.categories.default" fallback="Insight" %}
+          {% endcase %}
+        </span>
+      </div>
+    </div>
+  {% else %}
+    <div class="insight-card__hero">
+      <div class="insight-card__hero-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+      </div>
+      <div class="insight-card__category-overlay">
+        <span class="insight-card__category-badge">
+          {% case include.insight.category %}
+            {% when 'brand-spotlight' %}
+              <span class="insight-card__category-icon">🏆</span>
+              {% include helpers/t.html key="insights.categories.brand_spotlight" fallback="Brand Success" %}
+            {% when 'founders-journey' %}
+              <span class="insight-card__category-icon">🚀</span>
+              {% include helpers/t.html key="insights.categories.founders_journey" fallback="Founder Story" %}
+            {% when 'location-intelligence' %}
+              <span class="insight-card__category-icon">🌍</span>
+              {% include helpers/t.html key="insights.categories.location_intelligence" fallback="Market Intel" %}
+            {% when 'market-momentum' %}
+              <span class="insight-card__category-icon">📈</span>
+              {% include helpers/t.html key="insights.categories.market_momentum" fallback="Market Trends" %}
+            {% else %}
+              <span class="insight-card__category-icon">📝</span>
+              {% include helpers/t.html key="insights.categories.default" fallback="Insight" %}
+          {% endcase %}
+        </span>
+      </div>
+    </div>
+  {% endif %}
+
+  {% comment %} Strategic header with reading investment clarity {% endcomment %}
+  <header class="insight-card__header">
+    <div class="insight-card__meta-enhanced">
+      {% comment %} Reading time and value proposition {% endcomment %}
+      <div class="insight-card__reading-investment">
+        {% if include.insight.reading_time %}
+          <span class="insight-card__reading-time">
+            <span class="insight-card__time-icon" aria-hidden="true">⏱️</span>
+            {{ include.insight.reading_time }} min read
+          </span>
+        {% endif %}
+        
+        {% comment %} Category-specific value proposition {% endcomment %}
+        <span class="insight-card__value-prop">
+          {% case include.insight.category %}
+            {% when 'brand-spotlight' %}
+              {% include helpers/t.html key="insights.value_props.brand_spotlight" fallback="Success strategies" %}
+            {% when 'founders-journey' %}
+              {% include helpers/t.html key="insights.value_props.founders_journey" fallback="Leadership lessons" %}
+            {% when 'location-intelligence' %}
+              {% include helpers/t.html key="insights.value_props.location_intelligence" fallback="Market analysis" %}
+            {% when 'market-momentum' %}
+              {% include helpers/t.html key="insights.value_props.market_momentum" fallback="Industry trends" %}
+            {% else %}
+              {% include helpers/t.html key="insights.value_props.default" fallback="Key insights" %}
+          {% endcase %}
+        </span>
+      </div>
+
+      {% comment %} Author and date information {% endcomment %}
+      {% if include.insight.author or include.insight.date %}
+        <div class="insight-card__byline">
+          {% if include.insight.author %}
+            <span class="insight-card__author">
+              {% include helpers/t.html key="insights.authors.#{include.insight.author}" fallback=include.insight.author %}
+            </span>
+          {% endif %}
+          {% if include.insight.date and show_date %}
+            <time class="insight-card__date" datetime="{{ include.insight.date }}">
+              {{ include.insight.date | date: "%B %Y" }}
+            </time>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <h3 class="insight-card__title">
+      <a href="{{ include.insight.permalink }}" class="insight-card__title-link">
+        {{ include.insight.title }}
+      </a>
+    </h3>
+  </header>
+
+  {% comment %} Enhanced content with strategic excerpts {% endcomment %}
+  <div class="insight-card__content">
+    {% if include.insight.excerpt %}
+      <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
+    {% endif %}
+
+    {% comment %} Featured brands/founders for context {% endcomment %}
+    {% if include.insight.brands and include.insight.brands.size > 0 %}
+      <div class="insight-card__featured-context">
+        <span class="insight-card__context-label">
+          {% case include.insight.category %}
+            {% when 'brand-spotlight' %}
+              {% include helpers/t.html key="insights.context.featured_brand" fallback="Featured Brand" %}
+            {% when 'founders-journey' %}
+              {% include helpers/t.html key="insights.context.featured_founder" fallback="Featured Founder" %}
+            {% else %}
+              {% include helpers/t.html key="insights.context.featured_case" fallback="Featured Case" %}
+          {% endcase %}:
+        </span>
+        <span class="insight-card__context-value">{{ include.insight.brands.first | capitalize }}</span>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Strategic CTA with category-specific messaging {% endcomment %}
+  <footer class="insight-card__footer">
+    <a href="{{ include.insight.permalink }}" class="insight-card__cta insight-card__cta--{{ include.insight.category | default: 'default' }}">
+      <span class="insight-card__cta-text">
+        {% case include.insight.category %}
+          {% when 'brand-spotlight' %}
+            {% include helpers/t.html key="actions.discover_success" fallback="Discover Success Story" %}
+          {% when 'founders-journey' %}
+            {% include helpers/t.html key="actions.read_journey" fallback="Read Founder Journey" %}
+          {% when 'location-intelligence' %}
+            {% include helpers/t.html key="actions.explore_market" fallback="Explore Market Intelligence" %}
+          {% when 'market-momentum' %}
+            {% include helpers/t.html key="actions.analyze_trends" fallback="Analyze Market Trends" %}
+          {% else %}
+            {% include helpers/t.html key="actions.read_insight" fallback="Read Full Insight" %}
+        {% endcase %}
+      </span>
+      <span class="insight-card__cta-icon" aria-hidden="true">→</span>
+    </a>
+  </footer>
+</article>

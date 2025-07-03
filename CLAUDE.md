@@ -47,22 +47,40 @@ signals: ["export-ready"]
 
 ---
 
-# 🎴 Proven Component System (Phase 1B Complete)
+# 🎴 Mobile-First Card System (Phase 1B Complete)
 
-**Founder card architecture established:**
+## Universal Card Architecture
+
+**Single-component with variants pattern established:**
 ```liquid
-{% include components/cards/founder-card.html founder=founder variant="standard" %}
-{% include components/cards/founder-card-featured.html founder=founder %}
-{% include components/cards/founder-quote-card.html quote=quote founder=founder style="hero" %}
+{% raw %}{% include components/cards/brand-card.html brand=brand %}                      <!-- Standard -->
+{% include components/cards/brand-card.html brand=brand variant="featured" %}   <!-- Featured -->
+{% include components/cards/insight-card.html insight=insight %}                <!-- Standard (1A) -->
+{% include components/cards/insight-card.html insight=insight variant="tagged" %} <!-- With tags (1B) -->
+{% include components/cards/insight-card.html insight=insight variant="featured" %} <!-- Premium (1C) -->{% endraw %}
+```
+
+**Mobile-first responsive tokens:**
+```css
+--card-width-atomic: 345px;     /* Mobile base */
+--card-width-standard: 360px;   /* Desktop base */
+--card-width-featured: 450px;   /* Desktop featured */
+--card-width-mini: 345px;       /* Always compact */
 ```
 
 **BEM namespaces standardized:**
-- `founder-card__*` - Standard biographical profiles
-- `founder-card-featured__*` - Homepage carousel/featured displays  
-- `founder-quote-card__*` - Quote attribution cards
+- `brand-card__*` - Brand profile cards with taxonomy tags
+- `insight-card__*` - Article/content cards with category badges
+- `founder-card__*` - Biographical profile cards
+
+**Simple variant implementation:**
+- One HTML file per card type with `{% raw %}{% if variant == "name" %}{% endraw %}` blocks
+- Shared CSS classes: `.card__tag--sector`, `.card__tag--market`
+- No complex scoping or specificity conflicts
+- Easy to extend with new variants
 
 **CSS boundary rules enforced:**
-- Cards handle: typography, spacing, colors, internal layout
+- Cards handle: typography, spacing, colors, internal layout, responsive sizing
 - Layouts handle: positioning, margins, grid/carousel structure
 - Zero cross-component violations maintained
 
@@ -76,7 +94,7 @@ signals: ["export-ready"]
 
 **Current pattern:**
 ```liquid
-{% include helpers/page-sections.html page_type="brands" %}
+{% raw %}{% include helpers/page-sections.html page_type="brands" %}{% endraw %}
 ```
 
 **Centralized configuration:**
@@ -116,7 +134,29 @@ markets: ["russia"]
 ---
 ```
 
-## Color System
+## Card Sizing System
+**Mobile-first responsive design with design tokens:**
+
+| Token | Mobile (345px) | Desktop (768px+) | Purpose |
+|-------|----------------|------------------|---------|
+| `--card-width-atomic` | 345px | 345px | Base mobile size |
+| `--card-width-standard` | 345px | 360px | Standard cards |
+| `--card-width-featured` | 345px | 450px | Featured/hero cards |
+| `--card-width-mini` | 345px | 345px | Always compact |
+
+**Implementation:**
+```scss
+.card {
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  
+  @media (min-width: 768px) {
+    width: var(--card-width-standard); /* 360px desktop */
+  }
+}
+```
+
+## Dimension Color System
 | Type | Color | CSS Property |
 |------|-------|--------------|
 | **Sectors** | Olive Green | `--olive-*` |
@@ -162,19 +202,46 @@ _scripts/utilities/generate-navigation-cache.py
 
 # 🎯 Proven Development Principles
 
-1. **Clean BEM architecture** - Separate namespaces for distinct components
-2. **CSS boundary compliance** - Cards vs layouts separation enforced
-3. **Systematic implementation** - Audit → Plan → Execute → Validate methodology
-4. **Performance-conscious** - Maintain incremental build efficiency
-5. **Documentation-driven** - Standards codified for team development
+1. **Mobile-first responsive design** - 345px → 360px card sizing with design tokens
+2. **Simple variant architecture** - Single component files with `{% raw %}{% if variant %}{% endraw %}` logic  
+3. **Clean BEM architecture** - Separate namespaces for distinct components
+4. **CSS boundary compliance** - Cards vs layouts separation enforced
+5. **Systematic implementation** - Audit → Plan → Execute → Validate methodology
+6. **Performance-conscious** - Maintain incremental build efficiency
+7. **Documentation-driven** - Standards codified for team development
+
+## Card Development Workflow
+```liquid
+# Create new card variant (example)
+# 1. Add variant logic to existing card HTML:
+{% raw %}{% if variant == "compact" %}
+  <!-- Compact variant HTML -->
+{% else %}
+  <!-- Standard variant HTML -->  
+{% endif %}{% endraw %}
+```
+
+```scss
+# 2. Add variant CSS classes:
+.card--compact { /* variant-specific styles */ }
+```
+
+```liquid
+# 3. Test variants:
+variant="standard"  # Default
+variant="featured"  # Enhanced
+variant="tagged"    # With taxonomy tags
+variant="compact"   # Minimal display
+```
 
 ## Validation Workflow
 ```bash
 # Before commits
 _scripts/core/pre-commit_check.sh
 
-# Verify universal card usage
-find _includes/components/cards/ -name "*-card.html" | wc -l  # Should show MVP cards
+# Verify card system consistency
+grep -r "variant=" _includes/components/cards/  # Check variant usage
+find _includes/components/cards/ -name "*-card.html" | wc -l  # Should show clean card count
 ```
 
 ---

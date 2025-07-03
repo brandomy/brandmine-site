@@ -103,10 +103,32 @@ assets/css/pages/[page]/                 # Page-specific styles
 
 ### Card Components
 
-**Configurable cards:**
+**Mobile-first card system with simple variants:**
 ```liquid
-{% include components/cards/brand-card.html
-   brand=brand show_location=true show_sector=false %}
+{% include components/cards/brand-card.html brand=brand %}                    <!-- Standard -->
+{% include components/cards/brand-card.html brand=brand variant="featured" %} <!-- Featured -->
+{% include components/cards/insight-card.html insight=insight %}              <!-- Standard -->
+{% include components/cards/insight-card.html insight=insight variant="tagged" %} <!-- With tags -->
+```
+
+**Responsive sizing with design tokens:**
+```scss
+.card {
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  
+  @media (min-width: 768px) {
+    width: var(--card-width-standard); /* 360px desktop */
+  }
+}
+```
+
+**Design tokens:**
+```css
+--card-width-atomic: 345px;     /* Mobile base */
+--card-width-standard: 360px;   /* Desktop base */
+--card-width-featured: 450px;   /* Desktop featured */
+--card-width-mini: 345px;       /* Always compact */
 ```
 
 **Uses component defaults:**
@@ -115,8 +137,11 @@ assets/css/pages/[page]/                 # Page-specific styles
 cards:
   brand-card:
     show_location: true    # Default behavior
-    show_sector: true      # Overridden by include
+    show_sector: true      # Configurable
     tag_limit: 4
+  insight-card:
+    show_tags: false       # Enabled via variant="tagged"
+    tag_limit: 3
 ```
 
 ### Translation Helper
@@ -266,20 +291,40 @@ time JEKYLL_ENV=production bundle exec jekyll build
 ```
 
 ### Implementation Standards
+
+**Simple variant pattern (preferred):**
 ```liquid
-<!-- Component Usage Patterns -->
-{% include components/cards/founder-card.html 
-   founder=founder 
-   variant="standard" %}
+{% include components/cards/brand-card.html brand=brand %}                    <!-- Standard -->
+{% include components/cards/brand-card.html brand=brand variant="featured" %} <!-- Featured -->
+{% include components/cards/insight-card.html insight=insight %}              <!-- Standard -->
+{% include components/cards/insight-card.html insight=insight variant="tagged" %} <!-- With tags -->
+```
 
-{% include components/cards/founder-card-featured.html 
-   founder=founder 
-   show_quote=true %}
+**Creating new variants:**
+```liquid
+<!-- In card HTML file -->
+{% assign variant = include.variant | default: "standard" %}
 
-{% include components/cards/founder-quote-card.html 
-   quote=quote 
-   founder=founder 
-   style="hero" %}
+{% if variant == "featured" %}
+  <article class="card card--featured">
+    <!-- Featured variant content -->
+  </article>
+{% elsif variant == "compact" %}
+  <article class="card card--compact">
+    <!-- Compact variant content -->
+  </article>
+{% else %}
+  <article class="card">
+    <!-- Standard variant content -->
+  </article>
+{% endif %}
+```
+
+**Legacy patterns (transitioning away):**
+```liquid
+<!-- Avoid creating separate component files for variants -->
+{% include components/cards/founder-card-featured.html founder=founder %}
+{% include components/cards/founder-quote-card.html quote=quote founder=founder %}
 ```
 ## Build Performance Guidelines
 

@@ -63,8 +63,8 @@ lang: en
   }
   
   .test-grid-3col .grid__item {
-    min-width: 280px;
-    max-width: 380px;
+    min-width: 345px;
+    max-width: 480px;
   }
   
   /* 4-card grid variant for insight testing */
@@ -77,8 +77,8 @@ lang: en
   }
   
   .test-grid-4col .grid__item {
-    min-width: 250px;
-    max-width: 320px;
+    min-width: 345px;
+    max-width: 360px;
   }
   
   /* VISUAL DEBUGGING TOOLKIT - Isolated to test page only */
@@ -295,7 +295,7 @@ lang: en
   
   .test-variant-showcase {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
     gap: var(--space-6);
     margin: var(--space-6) 0;
     padding: var(--space-4);
@@ -346,7 +346,7 @@ lang: en
   
   /* Mini variant constraint for demonstration */
   .test-variant [variant="mini"] {
-    max-width: 360px;
+    max-width: 345px;
     margin: 0 auto;
   }
   
@@ -643,14 +643,14 @@ lang: en
   <!-- Section 0A: Complete Insight Card Inventory -->
   <section class="test-section">
     <h2>Section 0A: CURRENT INSIGHT CARD INVENTORY (Pre-Consolidation)</h2>
-    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;"><strong>Status:</strong> 5 components identified for consolidation to single file + variants</p>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;"><strong>Status:</strong> 3 primary components with variants displayed, target consolidation to 2-3 components</p>
     
     <!-- BEM Audit Results Summary -->
     <div style="background: #fef3c7; border: 2px solid #f59e0b; padding: 1rem; border-radius: 0.5rem; margin-bottom: 2rem;">
       <h4 style="margin-bottom: 1rem; color: #92400e;">📋 BEM Audit Results Summary</h4>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 0.875rem;">
-        <div><strong>Total Components:</strong> 6</div>
-        <div><strong>BEM Violations:</strong> 2 components</div>
+        <div><strong>Total Components:</strong> 3 cards displayed</div>
+        <div><strong>BEM Violations:</strong> 0 components (all fixed)</div>
         <div><strong>CSS Boundaries:</strong> ✅ Clean</div>
         <div><strong>Configuration:</strong> ✅ Properly integrated</div>
       </div>
@@ -659,16 +659,17 @@ lang: en
     <!-- Get test insight data -->
     {% assign comparison_insight = site.insights | where: "lang", "en" | first %}
     
-    <!-- Components 1-5 Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+    <!-- Components 1-3 Grid -->
+    <div class="test-grid-3col" style="margin-bottom: 3rem;">
       
-      <!-- 1. insight-card.html (Primary Strategic) -->
+      <!-- 1A. insight-card.html (Base Card) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1. insight-card.html</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. insight-card.html (Base Card)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">320px × 420px</span><br>
-          <strong>Purpose:</strong> Primary strategic insight display with category differentiation<br>
-          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 360px desktop</span><br>
+          <strong>Purpose:</strong> Base insight card with mobile-first responsive design<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
+          <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 360px</span>
         </div>
         <div style="border: 2px solid #3b82f6; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
           {% if comparison_insight %}
@@ -683,138 +684,405 @@ lang: en
           <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
-      </div>
-      
-      <!-- 2. insight-card.html featured variant (Conceptual) -->
-      <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2. insight-card.html featured variant</h4>
-        <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">360px × 450px</span><br>
-          <strong>Purpose:</strong> Enhanced insight-card with featured styling (conceptual variant)<br>
-          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span> (would use insight-card--featured modifier)
-        </div>
-        <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
-          {% if comparison_insight %}
-            <div style="max-width: 100%; overflow: hidden;">
-              {% comment %} Note: This would be insight-card.html with variant="featured" parameter if implemented {% endcomment %}
-              {% include components/cards/insight-card.html insight=comparison_insight %}
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Title:</strong><br>
+              • Font: <code>var(--text-custom)</code> (0.95rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.4<br><br>
+              
+              <strong style="color: #1f2937;">Meta (Date/Author):</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br><br>
+              
+              <strong style="color: #1f2937;">Excerpt:</strong><br>
+              • Font: <code>var(--text-base)</code> (1rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-700)</code> (#374151)<br>
+              • Line Height: 1.5
             </div>
-          {% endif %}
-        </div>
-        <!-- CSS and JS Sources -->
-        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (with --featured modifier)</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+            <div>
+              <strong style="color: #1f2937;">Category Badge ✨ UPDATED:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem) ✅<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Background: <code>var(--primary-100)</code><br>
+              • Color: <code>var(--primary-900)</code><br>
+              • Transform: uppercase<br>
+              • Padding: Enhanced breathing room ✅<br><br>
+              
+              <strong style="color: #1f2937;">Tags:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Background: <code>var(--neutral-200)</code><br>
+              • Color: <code>var(--neutral-600)</code><br><br>
+              
+              <strong style="color: #1f2937;">Read More Link:</strong><br>
+              • Font: Inherits from container<br>
+              • Weight: <code>var(--font-medium)</code> (500)<br>
+              • Color: <code>var(--primary-600)</code><br>
+              • Hover: underline
+            </div>
+          </div>
         </div>
       </div>
       
-      <!-- 3. featured-insight-card.html (Hero Images) -->
+      <!-- 1B. insight-card.html Tagged Variant -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">3. featured-insight-card.html</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. insight-card.html Tagged Variant</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">380px × 480px</span><br>
-          <strong>Purpose:</strong> Featured insights with hero images for homepage<br>
-          <strong>BEM Status:</strong> <span style="color: #ef4444;">❌ Violation</span> (should be insight-card-featured.html)
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 360px desktop</span><br>
+          <strong>Purpose:</strong> Base card with tagged variant showing colored dimension tags<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
+          <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 360px</span>
         </div>
         <div style="border: 2px solid #10b981; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
           {% if comparison_insight %}
             <div style="max-width: 100%; overflow: hidden;">
-              {% include components/cards/featured-insight-card.html insight=comparison_insight featured=true %}
+              {% include components/cards/insight-card.html insight=comparison_insight variant="tagged" %}
             </div>
           {% endif %}
         </div>
         <!-- CSS and JS Sources -->
         <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/featured-insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (base styling only)</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="tagged" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Title:</strong><br>
+              • Font: <code>var(--text-custom)</code> (0.95rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.4<br><br>
+              
+              <strong style="color: #1f2937;">Meta (Date/Author):</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br><br>
+              
+              <strong style="color: #1f2937;">Excerpt:</strong><br>
+              • Font: <code>var(--text-base)</code> (1rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-700)</code> (#374151)<br>
+              • Line Height: 1.5
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Category Badge ✨ UPDATED:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem) ✅<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Background: <code>var(--primary-100)</code><br>
+              • Color: <code>var(--primary-900)</code><br>
+              • Transform: uppercase<br>
+              • Padding: Enhanced breathing room ✅<br><br>
+              
+              <strong style="color: #1f2937;">Dimension Tags:</strong><br>
+              • <span style="background: var(--sky-100); color: var(--sky-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Markets</span> Sky Blue<br>
+              • <span style="background: var(--olive-100); color: var(--olive-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Sectors</span> Olive Green<br>
+              • <span style="background: var(--secondary-100); color: var(--secondary-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Attributes</span> Orange<br>
+              • <span style="background: var(--accent-100); color: var(--accent-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Signals</span> Indigo<br><br>
+              
+              <strong style="color: #1f2937;">Read More Link:</strong><br>
+              • Font: Inherits from container<br>
+              • Weight: <code>var(--font-medium)</code> (500)<br>
+              • Color: <code>var(--primary-600)</code><br>
+              • Hover: underline
+            </div>
+          </div>
         </div>
       </div>
       
-      <!-- 4. simple-insight-card.html (Streamlined) -->
+      <!-- 1C. insight-card.html Featured Variant -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">4. simple-insight-card.html</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. insight-card.html Featured Variant</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">280px × 320px</span><br>
-          <strong>Purpose:</strong> Streamlined display for compact listings and sidebars<br>
-          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span>
+          <strong>Component:</strong> insight-card.html (variant="featured")<br>
+          <strong>Purpose:</strong> Homepage featured display with hero images and enhanced styling<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Active</span><br>
+          <strong>Performance:</strong> <span style="color: #f59e0b;">⚠️ Moderate</span><br>
+          <strong>Layout Flexibility:</strong> <span style="color: #22c55e;">✅ Good</span>
+        </div>
+        <div style="border: 2px solid #ef4444; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
+          {% if comparison_insight %}
+            <div style="max-width: 100%; overflow: hidden;">
+              {% include components/cards/insight-card.html insight=comparison_insight variant="featured" %}
+            </div>
+          {% endif %}
+        </div>
+        <!-- CSS and JS Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="featured" %}{% endraw %}</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Title:</strong><br>
+              • Font: <code>var(--text-lg)</code> (1.125rem)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.3<br>
+              • Enhanced hierarchy for featured display<br><br>
+              
+              <strong style="color: #1f2937;">Meta (Date/Author):</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: <code>var(--font-medium)</code> (500)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
+              • Enhanced readability<br><br>
+              
+              <strong style="color: #1f2937;">Excerpt:</strong><br>
+              • Font: <code>var(--text-base)</code> (1rem)<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-700)</code> (#374151)<br>
+              • Line Height: 1.5<br>
+              • Optimized for featured presentation
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Category Badge:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Background: <code>var(--primary-100)</code><br>
+              • Color: <code>var(--primary-900)</code><br>
+              • Transform: uppercase<br>
+              • Enhanced visibility for hero layout<br><br>
+              
+              <strong style="color: #1f2937;">Hero Image Enhancement:</strong><br>
+              • Aspect ratio: 16:9 optimized<br>
+              • Object fit: cover for consistency<br>
+              • Hover effects: Enhanced transition<br>
+              • Loading: Optimized for featured display<br><br>
+              
+              <strong style="color: #1f2937;">Read More Link:</strong><br>
+              • Font: Inherits from container<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--primary-600)</code><br>
+              • Enhanced prominence for CTAs
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 1C. insight-card.html Featured Variant -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. insight-card.html Featured Variant</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 480px desktop</span><br>
+          <strong>Purpose:</strong> Premium homepage display with enhanced styling mapped from insight-card-latest<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
+          <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 480px (--card-width-featured-lg)</span>
         </div>
         <div style="border: 2px solid #f59e0b; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
           {% if comparison_insight %}
             <div style="max-width: 100%; overflow: hidden;">
-              {% include components/cards/simple-insight-card.html insight=comparison_insight %}
+              {% include components/cards/insight-card.html insight=comparison_insight variant="featured" %}
             </div>
           {% endif %}
         </div>
         <!-- CSS and JS Sources -->
         <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/simple-insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (.insight-card--featured styling)</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="featured" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Featured Variant Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Premium Features:</strong><br>
+              • Size: <code>--card-width-featured-lg</code> (480px desktop)<br>
+              • Rounded corners: <code>--radius-xl</code><br>
+              • Enhanced shadows: <code>--shadow-lg</code><br>
+              • Fixed aspect ratio: <code>16/9</code><br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Content Layout:</strong><br>
+              • Centered category badge<br>
+              • Meta above title (order: -1)<br>
+              • Centered description text<br>
+              • Enhanced hover effects<br>
+            </div>
+          </div>
+          <div style="margin-top: 1rem; padding: 0.75rem; background: #fef3c7; border: 1px solid #f59e0b; border-radius: 0.375rem;">
+            <strong style="color: #92400e;">🎯 Premium Styling:</strong> This variant maps the premium design from insight-card-latest.html into our unified variant system, providing enhanced styling for homepage featured displays while maintaining component consistency.
+          </div>
         </div>
       </div>
       
-      <!-- 5. tagged-insight-card.html (Category Focus) -->
+      <!-- 2. insight-card-latest.html (Legacy) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">5. tagged-insight-card.html</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2. insight-card-latest.html (Legacy)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">340px × 400px</span><br>
-          <strong>Purpose:</strong> Category-focused display for filtered insights<br>
-          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 480px desktop</span><br>
+          <strong>Purpose:</strong> Premium homepage display with enhanced desktop width<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
+          <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 480px</span>
         </div>
-        <div style="border: 2px solid #a855f7; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
+        <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
           {% if comparison_insight %}
             <div style="max-width: 100%; overflow: hidden;">
-              {% include components/cards/tagged-insight-card.html insight=comparison_insight %}
+              {% include components/cards/insight-card-latest.html insight=comparison_insight %}
             </div>
           {% endif %}
         </div>
         <!-- CSS and JS Sources -->
         <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/tagged-insight-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card-latest.scss</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Title:</strong><br>
+              • Font: <code>var(--text-lg)</code> (1.125rem) mobile<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-900)</code> (#111827)<br>
+              • Line Height: 1.3 (tighter)<br>
+              • Clamp: 2 lines<br><br>
+              
+              <strong style="color: #1f2937;">Meta (Date/Time):</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: <code>var(--font-medium)</code> (500)<br>
+              • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
+              • Alignment: Center<br><br>
+              
+              <strong style="color: #1f2937;">Excerpt:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem) mobile<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code> (#4B5563)<br>
+              • Line Height: 1.4<br>
+              • Clamp: 4 lines<br>
+              • Alignment: Center
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Category Badge ✨ UPDATED:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem) ✅<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Background: <code>var(--primary-100)</code><br>
+              • Color: <code>var(--primary-800)</code><br>
+              • Transform: uppercase<br>
+              • Border: pill-shaped (full radius)<br>
+              • Letter Spacing: 0.05em<br>
+              • Padding: Enhanced breathing room ✅<br><br>
+              
+              <strong style="color: #1f2937;">Separator:</strong><br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--neutral-400)</code><br><br>
+              
+              <strong style="color: #1f2937;">Read More Link:</strong><br>
+              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
+              • Weight: <code>var(--font-semibold)</code> (600)<br>
+              • Color: <code>var(--primary-600)</code><br>
+              • Hover: <code>var(--primary-700)</code><br>
+              • Alignment: Center
+            </div>
+          </div>
+        </div>
       </div>
+      
       
     </div>
     
-    <!-- Component 6: Homepage Production Style (Full Width) -->
-    <div style="margin-top: 3rem;">
-      <h3 style="text-align: center; margin-bottom: 2rem; color: #1f2937;">Homepage Production Display</h3>
-      
-      <!-- 6. Homepage Latest Insights Style (Current Production) -->
-      <div style="max-width: 500px; margin: 0 auto;">
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">6. Homepage Latest Insights Style (Current Production)</h4>
-        <div class="card-info" style="margin-bottom: 1rem; text-align: center;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">420px × 500px</span><br>
-          <strong>Purpose:</strong> Premium homepage display with large hero images and category borders<br>
-          <strong>BEM Status:</strong> <span style="color: #ef4444;">❌ Violation</span> (uses insight-latest-card.html)
+    <!-- Typography & Color Variations Summary -->
+    <div style="background: #fffbeb; border: 2px solid #f59e0b; padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
+      <h4 style="margin-bottom: 1rem; color: #92400e;">🎨 Typography & Color Variations Summary ✨ UPDATED</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Key Differences -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Key Typographic Standards (Post Fine-Tuning):</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>Title Colors (Standardized):</strong><br>
+            • insight-card: neutral-900 ✅<br>
+            • insight-card-latest: neutral-900 ✅<br>
+            • insight-card-tagged: <strong>neutral-900 ✅ (updated)</strong><br><br>
+            
+            <strong>Category Badge Sizes (Enhanced):</strong><br>
+            • insight-card: <strong>text-sm (0.875rem) ✅ (updated)</strong><br>
+            • insight-card-latest: <strong>text-sm (0.875rem) ✅ (updated)</strong><br>
+            • insight-card-tagged: <strong>text-sm (0.875rem) ✅ (updated)</strong><br><br>
+            
+            <strong>Title Weights (Preserved):</strong><br>
+            • insight-card: semibold (600)<br>
+            • insight-card-latest: <strong>bold (700)</strong><br>
+            • insight-card-tagged: semibold (600)
+          </div>
         </div>
-        <div style="border: 2px solid #059669; padding: 1.5rem; background: white; border-radius: 0.5rem; display: flex; justify-content: center;">
-          {% if comparison_insight %}
-            <div style="width: 420px;">
-              {% comment %} Apply homepage styling context for accurate rendering {% endcomment %}
-              <div class="home-page">
-                <div class="latest-insights__container" style="display: block; width: 100%; margin: 0;">
-                  {% include components/cards/insight-latest-card.html insight=comparison_insight %}
-                </div>
-              </div>
-            </div>
-          {% endif %}
+        
+        <!-- Color Scheme Differences -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Design Philosophy Maintained:</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>Clean Card Minimalism:</strong><br>
+            • Clean card minimalism preserved ✅<br>
+            • Textured minimalism images remain prominent ✅<br>
+            • "Read More" CTA unchanged ✅<br>
+            • Information hierarchy preserved ✅<br><br>
+            
+            <strong>Category Badge Styles (Improved):</strong><br>
+            • insight-card: primary-100 bg / primary-900 text<br>
+            • insight-card-latest: primary-100 bg / <strong>primary-800 text</strong><br>
+            • insight-card-tagged: <strong>overlay-modal bg / white text</strong><br><br>
+            
+            <strong>Special Features:</strong><br>
+            • insight-card-latest: <strong>center alignment</strong><br>
+            • insight-card-tagged: <strong>dimension tag colors</strong>
+          </div>
         </div>
-        <!-- CSS and JS Sources -->
-        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-latest-card.scss (component styles) + assets/css/pages/home/latest-insights.scss (grid layout)</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>Layout:</strong> _includes/pages/home/latest-insights.html (2x2 grid)</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>Architecture:</strong> Proper CSS separation - component styles in component file, layout in page file</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>Note:</strong> Card automatically selects 400w image for card-sized display (not 1200w)</p>
+        
+        <!-- Behavioral Differences -->
+        <div>
+          <h5 style="color: #451a03; margin-bottom: 0.75rem;">Layout & Behavior Differences:</h5>
+          <div style="font-size: 0.875rem; line-height: 1.5;">
+            <strong>Text Alignment:</strong><br>
+            • insight-card: left-aligned<br>
+            • insight-card-latest: <strong>center-aligned</strong><br>
+            • insight-card-tagged: left-aligned<br><br>
+            
+            <strong>Line Height Variations:</strong><br>
+            • insight-card: 1.4 (title), 1.5 (excerpt)<br>
+            • insight-card-latest: <strong>1.3 (title)</strong>, 1.4 (desc)<br>
+            • insight-card-tagged: 1.25 (title), <strong>1.625 (excerpt)</strong><br><br>
+            
+            <strong>Text Clamping:</strong><br>
+            • insight-card: no clamping<br>
+            • insight-card-latest: <strong>2 lines (title), 4 lines (desc)</strong><br>
+            • insight-card-tagged: no clamping
+          </div>
         </div>
       </div>
       
+      <!-- Quick Reference -->
+      <div style="margin-top: 1.5rem; padding: 1rem; background: #fefce8; border-radius: 0.5rem;">
+        <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Typography Decisions:</h6>
+        <ul style="margin: 0; font-size: 0.875rem; line-height: 1.4; color: #713f12;">
+          <li><strong>insight-card:</strong> Compact & readable - best for dense grids</li>
+          <li><strong>insight-card-latest:</strong> Bold & centered - premium homepage display</li>
+          <li><strong>insight-card-tagged:</strong> Tag-focused - dimension exploration context</li>
+        </ul>
+      </div>
     </div>
     
     <!-- Component Architecture Analysis -->
@@ -822,22 +1090,20 @@ lang: en
       <h4 style="margin-bottom: 1rem; color: #1e40af;">🏗️ Component Architecture Analysis</h4>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
         <div>
-          <h5 style="margin-bottom: 0.5rem;">Current State (5 Components)</h5>
+          <h5 style="margin-bottom: 0.5rem;">Current State (3 Components)</h5>
           <ul style="margin: 0; font-size: 0.875rem; line-height: 1.5;">
-            <li><strong>insight-card.html:</strong> 11,260 bytes - Primary strategic display</li>
-            <li><strong>featured-insight-card.html:</strong> 5,185 bytes - Hero images (BEM violation)</li>
-            <li><strong>simple-insight-card.html:</strong> 4,966 bytes - Compact display</li>
-            <li><strong>insight-latest-card.html:</strong> 4,039 bytes - Recent insights (BEM violation)</li>
-            <li><strong>tagged-insight-card.html:</strong> 6,523 bytes - Category focus</li>
+            <li><strong>insight-card.html:</strong> 4,966 bytes - Base card (streamlined design)</li>
+            <li><strong>insight-card-latest.html:</strong> 4,039 bytes - Premium homepage display</li>
+            <li><strong>insight-card-tagged.html:</strong> 6,523 bytes - Category focus</li>
+            <li><strong>insight-card-legacy.html:</strong> 11,260 bytes - Legacy complex version</li>
           </ul>
         </div>
         <div>
           <h5 style="margin-bottom: 0.5rem;">Optimization Target (2 Components)</h5>
           <ul style="margin: 0; font-size: 0.875rem; line-height: 1.5;">
             <li><strong>insight-card.html:</strong> Unified with variants for simple/latest/tagged</li>
-            <li><strong>insight-card-featured.html:</strong> Hero-focused variant for featured display</li>
             <li><strong>Configuration-driven:</strong> Behavior controlled via _data/component_defaults.yml</li>
-            <li><strong>Maintenance:</strong> Reduced from 5 to 2 components</li>
+            <li><strong>Maintenance:</strong> Reduced from 4 to 2 components</li>
           </ul>
         </div>
       </div>
@@ -847,11 +1113,12 @@ lang: en
     <div style="background: #dcfce7; border: 2px solid #22c55e; padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem;">
       <h4 style="margin-bottom: 1rem; color: #15803d;">🎯 Target Consolidation Strategy</h4>
       <p style="margin: 0; font-size: 0.875rem; color: #166534; text-align: center;">
-        <strong>Consolidate to:</strong> <code>insight-card.html</code> with variants (standard, featured, mini) + separate <code>insight-card-featured.html</code> for complex differences
+        <strong>Consolidate to:</strong> <code>insight-card.html</code> with variants (standard, featured, mini) for all use cases
       </p>
     </div>
     
   </section>
+  
   
   <!-- Section 0B: Production Homepage Reference -->
   <section class="test-section">
@@ -872,7 +1139,7 @@ lang: en
             <!-- Apply homepage styling context for accurate rendering -->
             <div class="home-page">
               <div class="latest-insights__container" style="display: block; width: 100%; margin: 0;">
-                {% include components/cards/insight-latest-card.html insight=sample_insight %}
+                {% include components/cards/insight-card-latest.html insight=sample_insight %}
               </div>
             </div>
           </div>
@@ -887,8 +1154,8 @@ lang: en
       <div class="test-production-notes">
         <h5>Production Card Analysis</h5>
         <ul>
-          <li><strong>Component:</strong> insight-latest-card.html (4,039 bytes)</li>
-          <li><strong>CSS Sources:</strong> insight-latest-card.scss + latest-insights.scss (grid layout)</li>
+          <li><strong>Component:</strong> insight-card-latest.html (4,039 bytes)</li>
+          <li><strong>CSS Sources:</strong> insight-card-latest.scss + latest-insights.scss (grid layout)</li>
           <li><strong>Features:</strong> Category badges, hero images, centered layout</li>
           <li><strong>Width:</strong> Natural responsive width (homepage grid)</li>
           <li><strong>Usage Context:</strong> Homepage 2x2 grid display</li>
@@ -899,179 +1166,6 @@ lang: en
     
   </section>
   
-  <!-- Section 0C: Hybrid Architecture Demonstration -->
-  <section class="test-section">
-    <h2>Section 0C: HYBRID ARCHITECTURE - VARIANT DEMONSTRATION</h2>
-    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;"><strong>Architecture Principle:</strong> Separate files for complex differences, variants for sizing modifications</p>
-    
-    <div class="card-system-demo">
-      <h4>Card System Comparison</h4>
-      
-      <!-- Brand Cards (Single File + Variants) -->
-      <div style="margin-bottom: var(--space-8);">
-        <h5 style="color: #1f2937; margin-bottom: var(--space-4); text-align: center;">Brand Cards (Single File + Variants)</h5>
-        <div class="test-variant-showcase">
-          <div class="test-variant">
-            <h5>brand-card.html (standard)</h5>
-            {% assign sample_brand = site.brands | where: "lang", "en" | first %}
-            {% if sample_brand %}
-              {% include components/cards/brand-card.html brand=sample_brand %}
-            {% else %}
-              <div class="test-placeholder">
-                <div class="placeholder-emoji">🏢</div>
-                <p><strong>Brand card display</strong></p>
-                <p>Standard brand profile</p>
-              </div>
-            {% endif %}
-          </div>
-          
-          <div class="test-variant">
-            <h5>brand-card.html variant="featured"</h5>
-            {% if sample_brand %}
-              {% include components/cards/brand-card.html brand=sample_brand variant="featured" %}
-            {% else %}
-              <div class="test-placeholder">
-                <div class="placeholder-emoji">⭐</div>
-                <p><strong>Featured brand variant</strong></p>
-                <p>Enhanced prominence styling</p>
-              </div>
-            {% endif %}
-          </div>
-          
-          <div class="test-variant">
-            <h5>brand-card.html variant="mini" (360px)</h5>
-            {% if sample_brand %}
-              <div style="max-width: 360px; margin: 0 auto;">
-                {% include components/cards/brand-card.html brand=sample_brand variant="mini" %}
-              </div>
-            {% else %}
-              <div class="test-placeholder" style="max-width: 360px; margin: 0 auto;">
-                <div class="placeholder-emoji">📱</div>
-                <p><strong>Mini brand variant</strong></p>
-                <p>360px constrained for mobile</p>
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      
-      <!-- Founder Cards (Hybrid: Separate Files + Mini Variant) -->
-      <div style="margin-bottom: var(--space-8);">
-        <h5 style="color: #1f2937; margin-bottom: var(--space-4); text-align: center;">Founder Cards (Hybrid: Separate Files + Mini Variant)</h5>
-        <div class="test-variant-showcase">
-          <div class="test-variant">
-            <h5>founder-card.html (standard)</h5>
-            {% assign sample_founder = site.founders | where: "lang", "en" | first %}
-            {% if sample_founder %}
-              {% include components/cards/founder-card.html founder=sample_founder %}
-            {% else %}
-              <div class="test-placeholder">
-                <div class="placeholder-emoji">👤</div>
-                <p><strong>Founder card display</strong></p>
-                <p>Standard biographical profile</p>
-              </div>
-            {% endif %}
-          </div>
-          
-          <div class="test-variant">
-            <h5>founder-card-featured.html (separate file - complex differences)</h5>
-            {% if sample_founder %}
-              {% include components/cards/founder-card-featured.html founder=sample_founder %}
-            {% else %}
-              <div class="test-placeholder">
-                <div class="placeholder-emoji">🌟</div>
-                <p><strong>Featured founder component</strong></p>
-                <p>Separate file for complex layout differences</p>
-              </div>
-            {% endif %}
-          </div>
-          
-          <div class="test-variant">
-            <h5>founder-card.html variant="mini" (360px)</h5>
-            {% if sample_founder %}
-              <div style="max-width: 360px; margin: 0 auto;">
-                {% include components/cards/founder-card.html founder=sample_founder variant="mini" %}
-              </div>
-            {% else %}
-              <div class="test-placeholder" style="max-width: 360px; margin: 0 auto;">
-                <div class="placeholder-emoji">📱</div>
-                <p><strong>Mini founder variant</strong></p>
-                <p>360px constrained for mobile/sidebar</p>
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      
-      <!-- Insight Cards (Target Architecture) -->
-      <div>
-        <h5 style="color: #1f2937; margin-bottom: var(--space-4); text-align: center;">Insight Cards (Target Architecture - Single File + Variants)</h5>
-        <div class="test-variant-showcase">
-          <div class="test-variant">
-            <h5>insight-card.html (standard) - TARGET</h5>
-            <div class="test-placeholder">
-              <div class="placeholder-emoji">🎯</div>
-              <p><strong>Target: Consolidated insight-card.html</strong></p>
-              <p>Combines best elements from 5 current components</p>
-            </div>
-          </div>
-          
-          <div class="test-variant">
-            <h5>insight-card.html variant="featured" - TARGET</h5>
-            <div class="test-placeholder">
-              <div class="placeholder-emoji">⭐</div>
-              <p><strong>Target: Featured variant</strong></p>
-              <p>Premium hero emphasis styling</p>
-            </div>
-          </div>
-          
-          <div class="test-variant">
-            <h5>insight-card.html variant="mini" (360px) - TARGET</h5>
-            <div class="test-placeholder" style="max-width: 360px; margin: 0 auto;">
-              <div class="placeholder-emoji">📱</div>
-              <p><strong>Target: Mini variant</strong></p>
-              <p>360px constrained for mobile/sidebar use</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Architecture Documentation -->
-      <div class="architecture-principles">
-        <h5>Architecture Documentation</h5>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-4);">
-          <div>
-            <h6 style="color: #374151; margin-bottom: var(--space-2);">Separate Files Used When:</h6>
-            <ul>
-              <li>Fundamentally different layouts (founder-card vs founder-card-featured)</li>
-              <li>Different content structures or data requirements</li>
-              <li>Complex conditional logic that would make single file unmaintainable</li>
-            </ul>
-          </div>
-          
-          <div>
-            <h6 style="color: #374151; margin-bottom: var(--space-2);">Variants Used When:</h6>
-            <ul>
-              <li>Sizing constraints (mini variants - 360px width)</li>
-              <li>Styling modifications (featured styling on same structure)</li>
-              <li>Simple conditional changes (show/hide elements, spacing)</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div style="margin-top: var(--space-6); padding: var(--space-3); background: var(--neutral-50); border-radius: var(--radius-md);">
-          <h6 style="color: #374151; margin-bottom: var(--space-2);">Universal Mini Variant Standard:</h6>
-          <ul style="font-size: var(--text-sm); color: #6b7280; margin: 0;">
-            <li><strong>360px Width Constraint:</strong> Mobile optimization for 375px standard mobile screens</li>
-            <li><strong>Grid flexibility:</strong> Responsive layouts with optimal content readability</li>
-            <li><strong>Professional consistency:</strong> Maintained across all card types</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-  </section>
 
   <!-- Section 1: Main Insight Cards Testing -->
   <section class="test-section">
@@ -1161,105 +1255,7 @@ lang: en
       </div>
     </div>
     
-    <!-- featured-insight-card.html -->
-    <div class="test-subsection">
-      <h3>featured-insight-card.html (Featured)</h3>
-      <div class="card-info">
-        <strong>Card:</strong> featured-insight-card.html | <strong>Purpose:</strong> Featured insights with hero images and enhanced styling
-      </div>
-      
-      <!-- Grid Layout Test -->
-      <div class="test-layout-label">Grid Layout (3 cards)</div>
-      {% if test_insights.size > 0 %}
-        <div class="grid test-grid-3col">
-          {% for insight in test_insights %}
-            <div class="grid__item">
-              {% include components/cards/featured-insight-card.html insight=insight featured=true %}
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="card-info" style="background: var(--warning-50);">
-          <strong>⚠️ No English insight data found for testing</strong>
-        </div>
-      {% endif %}
-      
-      <!-- Carousel Layout Test -->
-      <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (2 per slide)</div>
-      {% if test_insights.size > 0 %}
-        <div class="carousel" data-component-type="insight-featured-test">
-          {% for insight in test_insights %}
-            <div class="carousel-card">
-              {% include components/cards/featured-insight-card.html insight=insight featured=true %}
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="card-info" style="background: var(--warning-50);">
-          <strong>⚠️ No English insight data found for testing</strong>
-        </div>
-      {% endif %}
-      
-      <!-- Styling Evaluation Framework -->
-      <div class="styling-assessment" style="margin-top: 2rem; padding: 1.5rem; background: var(--neutral-50); border-radius: 0.5rem;">
-        <h4>Styling Evaluation: featured-insight-card.html (Featured)</h4>
-        <div class="assessment-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
-          <div class="criteria">
-            <strong>Visual Appeal:</strong> ⭐⭐⭐⭐⭐<br>
-            <strong>Information Clarity:</strong> ⭐⭐⭐⭐⭐<br>
-            <strong>Hero Image Impact:</strong> ⭐⭐⭐⭐⭐<br>
-            <strong>Homepage Suitability:</strong> ⭐⭐⭐⭐⭐
-          </div>
-          <div class="notes">
-            <strong>Styling Notes:</strong> Excellent hero image presentation with clean metadata<br>
-            <strong>Potential Issues:</strong> May be less suitable for dense grids<br>
-            <strong>Recommendation:</strong> ✅ Perfect for featured sections and carousels
-          </div>
-        </div>
-      </div>
-    </div>
     
-    <!-- simple-insight-card.html -->
-    <div class="test-subsection">
-      <h3>simple-insight-card.html (Streamlined)</h3>
-      <div class="card-info">
-        <strong>Card:</strong> simple-insight-card.html | <strong>Purpose:</strong> Streamlined insight display for compact listings
-      </div>
-      
-      <!-- Grid Layout Test -->
-      <div class="test-layout-label">Grid Layout (3 cards)</div>
-      {% if test_insights.size > 0 %}
-        <div class="grid test-grid-3col">
-          {% for insight in test_insights %}
-            <div class="grid__item">
-              {% include components/cards/simple-insight-card.html insight=insight %}
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="card-info" style="background: var(--warning-50);">
-          <strong>⚠️ No English insight data found for testing</strong>
-        </div>
-      {% endif %}
-      
-      <!-- Styling Evaluation Framework -->
-      <div class="styling-assessment" style="margin-top: 2rem; padding: 1.5rem; background: var(--neutral-50); border-radius: 0.5rem;">
-        <h4>Styling Evaluation: simple-insight-card.html (Streamlined)</h4>
-        <div class="assessment-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
-          <div class="criteria">
-            <strong>Visual Appeal:</strong> ⭐⭐⭐⭐⚪<br>
-            <strong>Information Clarity:</strong> ⭐⭐⭐⭐⭐<br>
-            <strong>Compact Efficiency:</strong> ⭐⭐⭐⭐⭐<br>
-            <strong>Sidebar Suitability:</strong> ⭐⭐⭐⭐⭐
-          </div>
-          <div class="notes">
-            <strong>Styling Notes:</strong> Clean, minimal design optimized for space efficiency<br>
-            <strong>Potential Issues:</strong> Limited visual impact compared to featured cards<br>
-            <strong>Recommendation:</strong> ✅ Ideal for sidebar lists and compact displays
-          </div>
-        </div>
-      </div>
-    </div>
     
   </section>
 
@@ -1282,7 +1278,7 @@ lang: en
         </thead>
         <tbody>
           <tr>
-            <td><strong>insight-card.html</strong></td>
+            <td><strong>insight-card.html (1A)</strong></td>
             <td>Main insights grid</td>
             <td>Category badges, strategic CTAs, metadata</td>
             <td><span class="status-good">✅ Excellent</span></td>
@@ -1290,7 +1286,15 @@ lang: en
             <td><span class="status-good">✅ Active</span></td>
           </tr>
           <tr>
-            <td><strong>featured-insight-card.html</strong></td>
+            <td><strong>insight-card.html (1B variant="tagged")</strong></td>
+            <td>Taxonomy exploration</td>
+            <td>Dimension tags, category focus</td>
+            <td><span class="status-good">✅ Excellent</span></td>
+            <td><span class="status-good">✅ Good</span></td>
+            <td><span class="status-good">✅ Active</span></td>
+          </tr>
+          <tr>
+            <td><strong>insight-card.html (1C variant="featured")</strong></td>
             <td>Homepage featured</td>
             <td>Hero images, enhanced styling</td>
             <td><span class="status-good">✅ Good</span></td>
@@ -1298,25 +1302,9 @@ lang: en
             <td><span class="status-good">✅ Active</span></td>
           </tr>
           <tr>
-            <td><strong>simple-insight-card.html</strong></td>
-            <td>Compact listings</td>
-            <td>Minimal metadata, space efficient</td>
-            <td><span class="status-good">✅ Excellent</span></td>
-            <td><span class="status-good">✅ Excellent</span></td>
-            <td><span class="status-good">✅ Active</span></td>
-          </tr>
-          <tr>
-            <td><strong>insight-latest-card.html</strong></td>
+            <td><strong>insight-card-latest.html</strong></td>
             <td>Recent insights</td>
             <td>Time-focused, minimal design</td>
-            <td><span class="status-warning">⚠️ Limited</span></td>
-            <td><span class="status-good">✅ Good</span></td>
-            <td><span class="status-warning">⚠️ Needs review</span></td>
-          </tr>
-          <tr>
-            <td><strong>tagged-insight-card.html</strong></td>
-            <td>Category filtering</td>
-            <td>Tag emphasis, category focus</td>
             <td><span class="status-warning">⚠️ Limited</span></td>
             <td><span class="status-good">✅ Good</span></td>
             <td><span class="status-warning">⚠️ Needs review</span></td>
@@ -1352,15 +1340,15 @@ lang: en
         </div>
         <div>
           <h4>Homepage Featured</h4>
-          <p><strong>Use:</strong> featured-insight-card.html<br>
+          <p><strong>Use:</strong> insight-card.html variant="featured"<br>
           <strong>Layout:</strong> Carousel or 2-column<br>
           <strong>Features:</strong> Hero images, enhanced styling</p>
         </div>
         <div>
-          <h4>Sidebar Lists</h4>
-          <p><strong>Use:</strong> simple-insight-card.html<br>
-          <strong>Layout:</strong> Single column<br>
-          <strong>Features:</strong> Minimal, space-efficient</p>
+          <h4>All Contexts</h4>
+          <p><strong>Use:</strong> insight-card.html (base card)<br>
+          <strong>Layout:</strong> Flexible (grid, list, sidebar)<br>
+          <strong>Features:</strong> Streamlined, space-efficient</p>
         </div>
       </div>
     </div>

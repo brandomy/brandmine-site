@@ -11,7 +11,7 @@
   Dependencies:
   - Translation: insights.category_highlights_* keys
   - CSS: assets/css/pages/insights/category-highlights.scss
-  - Components: components/cards/featured-insight-card.html
+  - Components: components/cards/insight-card.html
   - Collection: site.insights
   
   Notes:
@@ -39,7 +39,7 @@
 
         {% assign brand_spotlight = all_insights | where: "category", "brand-spotlight" | first %}
         {% if brand_spotlight %}
-          {% include components/cards/featured-insight-card.html insight=brand_spotlight %}
+          {% include components/cards/insight-card.html insight=brand_spotlight %}
         {% else %}
           <div class="insights-category-highlights__empty">
             <p>{{ t.no_brand_spotlight_insights }}</p>
@@ -62,7 +62,7 @@
 
         {% assign founders_journey = all_insights | where: "category", "founders-journey" | first %}
         {% if founders_journey %}
-          {% include components/cards/featured-insight-card.html insight=founders_journey %}
+          {% include components/cards/insight-card.html insight=founders_journey %}
         {% else %}
           <div class="insights-category-highlights__empty">
             <p>{{ t.no_founders_journey_insights }}</p>
@@ -85,7 +85,7 @@
 
         {% assign location_intelligence = all_insights | where: "category", "location-intelligence" | first %}
         {% if location_intelligence %}
-          {% include components/cards/featured-insight-card.html insight=location_intelligence %}
+          {% include components/cards/insight-card.html insight=location_intelligence %}
         {% else %}
           <div class="insights-category-highlights__empty">
             <p>{{ t.no_location_intelligence_insights }}</p>
@@ -108,7 +108,7 @@
 
         {% assign market_momentum = all_insights | where: "category", "market-momentum" | first %}
         {% if market_momentum %}
-          {% include components/cards/featured-insight-card.html insight=market_momentum %}
+          {% include components/cards/insight-card.html insight=market_momentum %}
         {% else %}
           <div class="insights-category-highlights__empty">
             <p>{{ t.no_market_momentum_insights }}</p>

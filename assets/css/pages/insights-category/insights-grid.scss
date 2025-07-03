@@ -38,9 +38,14 @@
       
       .insights-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: var(--space-6);
+        grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+        gap: var(--space-4);
         margin: var(--space-8) 0;
+        
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+          gap: var(--space-6);
+        }
         
         @media (max-width: 767px) {
           grid-template-columns: 1fr;
