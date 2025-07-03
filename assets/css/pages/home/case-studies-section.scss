@@ -1,43 +1,13 @@
 /* Case Studies Section - Homepage Integration */
 /* Independent SCSS file for the case studies carousel on homepage */
 
-/* Carousel Container */
-.universal-carousel[data-component-type="case-studies"] {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: var(--space-6);
-    padding: var(--space-4) 0;
-    margin: var(--space-6) 0;
-    width: 100%;
-    position: relative;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-300) var(--primary-50);
-    scroll-snap-type: x mandatory;
+/* Carousel Container - Case Studies Specific Overrides */
+.carousel[data-component-type="case-studies"] {
+    /* Inherits base styles from carousel.scss */
+    /* Only case-studies specific customizations below */
 }
 
-.universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar {
-    height: 8px;
-}
-
-.universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar-track {
-    background: var(--neutral-200);
-    border-radius: var(--radius-sm);
-}
-
-.universal-carousel[data-component-type="case-studies"]::-webkit-scrollbar-thumb {
-    background-color: var(--primary-300);
-    border-radius: var(--radius-sm);
-}
-
-.universal-carousel[data-component-type="case-studies"] .test-card {
-    flex: 0 0 calc(50% - (var(--space-6) / 2));
-    width: calc(50% - (var(--space-6) / 2));
-    max-width: none;
-    scroll-snap-align: start;
-}
+/* Carousel positioning now handled by carousel.scss */
 
 /* Card Styling - Mobile First */
 .test-card {
@@ -184,34 +154,7 @@
     transform: translateY(-1px);
 }
 
-/* Navigation Dots */
-.universal-carousel-nav {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-    margin-bottom: var(--space-4);
-}
-
-.universal-carousel-nav-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: var(--neutral-300);
-    cursor: pointer;
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
-    margin: 0 var(--space-1);
-}
-
-.universal-carousel-nav-dot:hover {
-    transform: scale(1.2);
-    background-color: var(--primary-300);
-}
-
-.universal-carousel-nav-dot.active {
-    background-color: var(--primary-500);
-    transform: scale(1.2);
-}
+/* Navigation Dots - Now inherited from carousel.scss */
 
 /* CTA Section */
 .test-card-cta {
@@ -269,33 +212,5 @@
     line-height: 1.2;
 }
 
-/* Responsive Design - Mobile First */
-.universal-carousel[data-component-type="case-studies"] .test-card {
-    flex: 0 0 100%;
-    width: 100%;
-    scroll-snap-align: start;
-}
-
-@media (width >= 768px) {
-    .universal-carousel[data-component-type="case-studies"] {
-        gap: var(--space-4);
-    }
-}
-
-@media (width >= 992px) {
-    .universal-carousel[data-component-type="case-studies"] {
-        gap: var(--space-6);
-    }
-
-    .universal-carousel[data-component-type="case-studies"] .test-card {
-        flex: 0 0 calc(50% - (var(--space-6) / 2));
-        width: calc(50% - (var(--space-6) / 2));
-    }
-}
-
-@media (width >= 1200px) {
-    .universal-carousel[data-component-type="case-studies"] {
-        padding-left: var(--space-4);
-        padding-right: var(--space-4);
-    }
-}
+/* Responsive Design - Now handled by carousel.scss mixins */
+/* Component-specific responsive adjustments only */

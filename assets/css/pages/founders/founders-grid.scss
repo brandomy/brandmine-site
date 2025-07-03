@@ -11,9 +11,14 @@
 
 .founders__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(345px, 1fr));
+  gap: var(--space-4);
   margin: var(--space-6) 0;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: var(--space-6);
+  }
 
   @media (width >= 640px) {
     grid-template-columns: repeat(2, 1fr);

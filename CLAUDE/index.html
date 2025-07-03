@@ -209,13 +209,250 @@ assets/                   — CSS, JS, images
 
 <hr />
 
-<h1 id="-universal-component-system">🎴 Universal Component System</h1>
+<h1 id="-mobile-first-card-system-phase-1b-complete-">🎴 Mobile-First Card System (Phase 1B Complete) ✅</h1>
 
-<p><strong>Single component handles all card types:</strong>
-```liquid</p>
+<p><strong>All card types now unified on 345px mobile-first foundation</strong></p>
 
-<p><!-- Universal Card: Missing required parameters --></p>
+<h2 id="universal-card-architecture">Universal Card Architecture</h2>
 
+<p><strong>Single-component with variants pattern established:</strong></p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/brand-card.html<span class="w"> </span><span class="na">brand</span><span class="o">=</span><span class="nv">brand</span><span class="w"> </span><span class="p">%}</span>                      &lt;!-- Standard --&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/brand-card.html<span class="w"> </span><span class="na">brand</span><span class="o">=</span><span class="nv">brand</span><span class="w"> </span><span class="na">variant</span><span class="o">=</span><span class="s2">"featured"</span><span class="w"> </span><span class="p">%}</span>   &lt;!-- Featured --&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/insight-card.html<span class="w"> </span><span class="na">insight</span><span class="o">=</span><span class="nv">insight</span><span class="w"> </span><span class="p">%}</span>                &lt;!-- Standard (1A) --&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/insight-card.html<span class="w"> </span><span class="na">insight</span><span class="o">=</span><span class="nv">insight</span><span class="w"> </span><span class="na">variant</span><span class="o">=</span><span class="s2">"tagged"</span><span class="w"> </span><span class="p">%}</span> &lt;!-- With tags (1B) --&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/insight-card.html<span class="w"> </span><span class="na">insight</span><span class="o">=</span><span class="nv">insight</span><span class="w"> </span><span class="na">variant</span><span class="o">=</span><span class="s2">"featured"</span><span class="w"> </span><span class="p">%}</span> &lt;!-- Premium (1C) --&gt;
+</code></pre></div></div>
+
+<p><strong>Mobile-first responsive tokens:</strong></p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--card-width-atomic</span><span class="o">:</span> <span class="err">345</span><span class="nt">px</span><span class="o">;</span>         <span class="c">/* Mobile base */</span>
+<span class="nt">--card-width-standard</span><span class="o">:</span> <span class="err">360</span><span class="nt">px</span><span class="o">;</span>       <span class="c">/* Desktop base */</span>
+<span class="nt">--card-width-featured</span><span class="o">:</span> <span class="err">450</span><span class="nt">px</span><span class="o">;</span>       <span class="c">/* Desktop featured */</span>
+<span class="nt">--card-width-featured-lg</span><span class="o">:</span> <span class="err">480</span><span class="nt">px</span><span class="o">;</span>    <span class="c">/* Premium displays */</span>
+<span class="nt">--card-width-featured-xl</span><span class="o">:</span> <span class="err">500</span><span class="nt">px</span><span class="o">;</span>    <span class="c">/* Founder featured cards */</span>
+<span class="nt">--card-width-mini</span><span class="o">:</span> <span class="err">345</span><span class="nt">px</span><span class="o">;</span>           <span class="c">/* Always compact */</span>
+</code></pre></div></div>
+
+<p><strong>BEM namespaces standardized:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">brand-card__*</code> - Brand profile cards with taxonomy tags (✅ 345px mobile-first complete)</li>
+  <li><code class="language-plaintext highlighter-rouge">insight-card__*</code> - Article/content cards with category badges (✅ 345px mobile-first complete)</li>
+  <li><code class="language-plaintext highlighter-rouge">founder-card__*</code> - Biographical profile cards (✅ 345px mobile-first complete)</li>
+</ul>
+
+<p><strong>Simple variant implementation:</strong></p>
+<ul>
+  <li>One HTML file per card type with <code class="language-plaintext highlighter-rouge">{% if variant == "name" %}</code> blocks</li>
+  <li>Shared CSS classes: <code class="language-plaintext highlighter-rouge">.card__tag--sector</code>, <code class="language-plaintext highlighter-rouge">.card__tag--market</code></li>
+  <li>No complex scoping or specificity conflicts</li>
+  <li>Easy to extend with new variants</li>
+</ul>
+
+<p><strong>CSS boundary rules enforced:</strong></p>
+<ul>
+  <li>Cards handle: typography, spacing, colors, internal layout, responsive sizing</li>
+  <li>Layouts handle: positioning, margins, grid/carousel structure</li>
+  <li>Zero cross-component violations maintained</li>
+</ul>
+
+<p><strong>Configuration-driven behavior</strong> via <code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code>.</p>
+
+<hr />
+
+<h1 id="-data-driven-architecture">📁 Data-Driven Architecture</h1>
+
+<p><strong>Core principle</strong>: Configuration over conditionals.</p>
+
+<p><strong>Current pattern:</strong></p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>helpers/page-sections.html<span class="w"> </span><span class="na">page_type</span><span class="o">=</span><span class="s2">"brands"</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<p><strong>Centralized configuration:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_data/page_sections.yml</code> - Section control</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code> - Component behavior</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code> - UI text</li>
+</ul>
+
+<hr />
+
+<h1 id="-essential-standards">🎨 Essential Standards</h1>
+
+<h2 id="file-naming">File Naming</h2>
+<ul>
+  <li><strong>Files</strong>: <code class="language-plaintext highlighter-rouge">kebab-case.html</code>, <code class="language-plaintext highlighter-rouge">kebab-case.scss</code></li>
+  <li><strong>Content</strong>: <code class="language-plaintext highlighter-rouge">[country-code]-[brand-name].md</code></li>
+  <li><strong>Images</strong>: <code class="language-plaintext highlighter-rouge">purpose-description.jpg</code></li>
+</ul>
+
+<h2 id="front-matter">Front Matter</h2>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">brand-profile</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Brand</span><span class="nv"> </span><span class="s">Name"</span>
+<span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">xx-brand-slug"</span>
+<span class="na">lang</span><span class="pi">:</span> <span class="s">en</span>
+<span class="na">country_code</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ru"</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/en/brands/ru-brand/</span>
+
+<span class="c1"># Semantic image structure</span>
+<span class="na">images</span><span class="pi">:</span>
+  <span class="na">hero</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">storefront"</span>
+    <span class="na">alt</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Description"</span>
+    <span class="na">ext</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jpg"</span>
+
+<span class="c1"># Taxonomy (existing slugs only)</span>
+<span class="na">sectors</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">wine"</span><span class="pi">]</span>
+<span class="na">markets</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">russia"</span><span class="pi">]</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h2 id="card-sizing-system">Card Sizing System</h2>
+<p><strong>Mobile-first responsive design with design tokens:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Mobile (345px)</th>
+      <th>Desktop (768px+)</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--card-width-atomic</code></td>
+      <td>345px</td>
+      <td>345px</td>
+      <td>Base mobile size</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--card-width-standard</code></td>
+      <td>345px</td>
+      <td>360px</td>
+      <td>Standard cards</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--card-width-featured</code></td>
+      <td>345px</td>
+      <td>450px</td>
+      <td>Featured/hero cards</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--card-width-mini</code></td>
+      <td>345px</td>
+      <td>345px</td>
+      <td>Always compact</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Implementation:</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.card</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card-width-atomic</span><span class="p">);</span>    <span class="cm">/* 345px mobile */</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  
+  <span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card-width-standard</span><span class="p">);</span> <span class="cm">/* 360px desktop */</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="dimension-color-system">Dimension Color System</h2>
+<p>| Type | Color | CSS Property |
+|——|——-|————–|
+| <strong>Sectors</strong> | Olive Green | <code class="language-plaintext highlighter-rouge">--olive-*</code> |
+| <strong>Markets</strong> | Sky Blue | <code class="language-plaintext highlighter-rouge">--sky-*</code> |
+| <strong>Attributes</strong> | Orange | <code class="language-plaintext highlighter-rouge">--secondary-*</code> |
+| <strong>Signals</strong> | Indigo | <code class="language-plaintext highlighter-rouge">--accent-*</code> |</p>
+
+<hr />
+
+<h1 id="-essential-commands">💻 Essential Commands</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Development</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+
+<span class="c"># Production build (achieved: 21s initial, 5.5s incremental)</span>
+<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
+
+<span class="c"># Validation</span>
+_scripts/core/pre-commit_check.sh
+
+<span class="c"># Image processing</span>
+_scripts/core/process_images.sh <span class="o">[</span>collection] <span class="o">[</span>identifier]
+
+<span class="c"># Performance optimization</span>
+_scripts/utilities/generate-language-map.py
+_scripts/utilities/generate-navigation-cache.py
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="-documentation-architecture">📚 Documentation Architecture</h1>
+
+<p><strong>4-document system</strong> (find anything in 30 seconds):</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_docs/brandmine-guide.md</code> - Master navigation hub</li>
+  <li><code class="language-plaintext highlighter-rouge">_docs/setup-and-workflows.md</code> - Complete workflows</li>
+  <li><code class="language-plaintext highlighter-rouge">_docs/technical-standards.md</code> - Architecture patterns and standards</li>
+  <li><code class="language-plaintext highlighter-rouge">_docs/troubleshooting-and-tools.md</code> - Problem resolution</li>
+</ul>
+
+<p><strong>Operational guides</strong>: <code class="language-plaintext highlighter-rouge">_templates/tutorials/</code> for step-by-step workflows.</p>
+
+<hr />
+
+<h1 id="-proven-development-principles">🎯 Proven Development Principles</h1>
+
+<ol>
+  <li><strong>Mobile-first responsive design</strong> - 345px → 360px card sizing with design tokens</li>
+  <li><strong>Simple variant architecture</strong> - Single component files with <code class="language-plaintext highlighter-rouge">{% if variant %}</code> logic</li>
+  <li><strong>Clean BEM architecture</strong> - Separate namespaces for distinct components</li>
+  <li><strong>CSS boundary compliance</strong> - Cards vs layouts separation enforced</li>
+  <li><strong>Systematic implementation</strong> - Audit → Plan → Execute → Validate methodology</li>
+  <li><strong>Performance-conscious</strong> - Maintain incremental build efficiency</li>
+  <li><strong>Documentation-driven</strong> - Standards codified for team development</li>
+</ol>
+
+<h2 id="card-development-workflow">Card Development Workflow</h2>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Create new card variant (example)
+# 1. Add variant logic to existing card HTML:
+<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">variant</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"compact"</span><span class="w"> </span><span class="p">%}</span>
+  &lt;!-- Compact variant HTML --&gt;
+<span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
+  &lt;!-- Standard variant HTML --&gt;  
+<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err"># </span><span class="na">2</span><span class="err">. </span><span class="na">Add</span><span class="err"> </span><span class="na">variant</span><span class="err"> </span><span class="na">CSS</span><span class="err"> </span><span class="na">classes</span><span class="p">:</span>
+<span class="o">.</span><span class="n">card--compact</span> <span class="p">{</span> <span class="cm">/* variant-specific styles */</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 3. Test variants:
+variant="standard"  # Default
+variant="featured"  # Enhanced
+variant="tagged"    # With taxonomy tags
+variant="compact"   # Minimal display
+</code></pre></div></div>
+
+<h2 id="validation-workflow">Validation Workflow</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Before commits</span>
+_scripts/core/pre-commit_check.sh
+
+<span class="c"># Verify card system consistency</span>
+<span class="nb">grep</span> <span class="nt">-r</span> <span class="s2">"variant="</span> _includes/components/cards/  <span class="c"># Check variant usage</span>
+find _includes/components/cards/ <span class="nt">-name</span> <span class="s2">"*-card.html"</span> | <span class="nb">wc</span> <span class="nt">-l</span>  <span class="c"># Should show clean card count</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="important-instruction-reminders">important-instruction-reminders</h1>
+<ul>
+  <li>Do what has been asked; nothing more, nothing less</li>
+  <li>NEVER create files unless absolutely necessary</li>
+  <li>ALWAYS prefer editing existing files over creating new ones</li>
+  <li>NEVER proactively create documentation files unless explicitly requested</li>
+</ul>
 
       </div>
     </div>

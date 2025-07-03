@@ -6,7 +6,7 @@
 
 // Configuration for auto-advance behavior
 const CONFIG = {
-    ADVANCE_INTERVAL: 6000,        // 6 seconds between slides
+    ADVANCE_INTERVAL: 8000,        // 8 seconds between slides (slower for better UX)
     PAUSE_DURATION: 4000,          // 4 seconds resume delay after interaction
     SMOOTH_SCROLL_DURATION: 800,   // Scroll animation time (for native behavior)
     ENABLE_AUTO_ADVANCE: true,     // Feature toggle
@@ -15,16 +15,15 @@ const CONFIG = {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all founder focus carousels
-    const carousels = document.querySelectorAll('.universal-carousel[data-component-type="founder-focus"]');
-
-    carousels.forEach(function(carousel) {
-        initializeFounderFocusCarousel(carousel);
-    });
+    // Use universal initialization for basic setup (Phase 3 minimal integration)
+    const carouselInstance = window.UniversalCarousel.init('founder-focus');
+    if (!carouselInstance) return;
+    
+    initializeFounderFocusCarousel(carouselInstance.carousel);
 });
 
 function initializeFounderFocusCarousel(carousel) {
-    const cards = carousel.querySelectorAll('.founder-focus-card');
+    const cards = carousel.querySelectorAll('.founder-card-featured');
     const dots = document.querySelectorAll('.founder-focus__dot');
 
     if (cards.length === 0) return;

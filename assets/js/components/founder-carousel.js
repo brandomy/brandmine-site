@@ -7,7 +7,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize founder-focus carousel (existing)
-  initializeFounderCarousel('.founder-focus-carousel', '.founder-focus-nav-dot', '.founder-card');
+  initializeFounderCarousel('.founder-focus-carousel', '.founder-focus-nav-dot', '.founder-card-featured');
   
   // Initialize new single-card founders carousel
   const singleCarousel = document.querySelector('[data-carousel="founders"]');

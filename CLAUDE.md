@@ -47,16 +47,46 @@ signals: ["export-ready"]
 
 ---
 
-# 🎴 Universal Component System
+# 🎴 Mobile-First Card System (Phase 1B Complete) ✅
 
-**Single component handles all card types:**
+**All card types now unified on 345px mobile-first foundation**
+
+## Universal Card Architecture
+
+**Single-component with variants pattern established:**
 ```liquid
-{% include components/cards/universal-card.html
-   item=content_object
-   type="brand|insight|founder|testimonial"
-   variant="standard|featured|compact|quote-focus"
-   config_set="universal-card" %}
+{% raw %}{% include components/cards/brand-card.html brand=brand %}                      <!-- Standard -->
+{% include components/cards/brand-card.html brand=brand variant="featured" %}   <!-- Featured -->
+{% include components/cards/insight-card.html insight=insight %}                <!-- Standard (1A) -->
+{% include components/cards/insight-card.html insight=insight variant="tagged" %} <!-- With tags (1B) -->
+{% include components/cards/insight-card.html insight=insight variant="featured" %} <!-- Premium (1C) -->{% endraw %}
 ```
+
+**Mobile-first responsive tokens:**
+```css
+--card-width-atomic: 345px;         /* Mobile base */
+--card-width-standard: 360px;       /* Desktop base */
+--card-width-featured: 450px;       /* Desktop featured */
+--card-width-featured-lg: 480px;    /* Premium displays */
+--card-width-featured-xl: 500px;    /* Founder featured cards */
+--card-width-mini: 345px;           /* Always compact */
+```
+
+**BEM namespaces standardized:**
+- `brand-card__*` - Brand profile cards with taxonomy tags (✅ 345px mobile-first complete)
+- `insight-card__*` - Article/content cards with category badges (✅ 345px mobile-first complete)
+- `founder-card__*` - Biographical profile cards (✅ 345px mobile-first complete)
+
+**Simple variant implementation:**
+- One HTML file per card type with `{% raw %}{% if variant == "name" %}{% endraw %}` blocks
+- Shared CSS classes: `.card__tag--sector`, `.card__tag--market`
+- No complex scoping or specificity conflicts
+- Easy to extend with new variants
+
+**CSS boundary rules enforced:**
+- Cards handle: typography, spacing, colors, internal layout, responsive sizing
+- Layouts handle: positioning, margins, grid/carousel structure
+- Zero cross-component violations maintained
 
 **Configuration-driven behavior** via `_data/component_defaults.yml`.
 
@@ -68,7 +98,7 @@ signals: ["export-ready"]
 
 **Current pattern:**
 ```liquid
-{% include helpers/page-sections.html page_type="brands" %}
+{% raw %}{% include helpers/page-sections.html page_type="brands" %}{% endraw %}
 ```
 
 **Centralized configuration:**
@@ -108,7 +138,29 @@ markets: ["russia"]
 ---
 ```
 
-## Color System
+## Card Sizing System
+**Mobile-first responsive design with design tokens:**
+
+| Token | Mobile (345px) | Desktop (768px+) | Purpose |
+|-------|----------------|------------------|---------|
+| `--card-width-atomic` | 345px | 345px | Base mobile size |
+| `--card-width-standard` | 345px | 360px | Standard cards |
+| `--card-width-featured` | 345px | 450px | Featured/hero cards |
+| `--card-width-mini` | 345px | 345px | Always compact |
+
+**Implementation:**
+```scss
+.card {
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  
+  @media (min-width: 768px) {
+    width: var(--card-width-standard); /* 360px desktop */
+  }
+}
+```
+
+## Dimension Color System
 | Type | Color | CSS Property |
 |------|-------|--------------|
 | **Sectors** | Olive Green | `--olive-*` |
@@ -124,7 +176,7 @@ markets: ["russia"]
 # Development
 bundle exec jekyll serve --livereload
 
-# Production build (target: <15s)
+# Production build (achieved: 21s initial, 5.5s incremental)
 JEKYLL_ENV=production bundle exec jekyll build
 
 # Validation
@@ -133,8 +185,9 @@ _scripts/core/pre-commit_check.sh
 # Image processing
 _scripts/core/process_images.sh [collection] [identifier]
 
-# Data generation
-_scripts/core/generate-all-json.py
+# Performance optimization
+_scripts/utilities/generate-language-map.py
+_scripts/utilities/generate-navigation-cache.py
 ```
 
 ---
@@ -151,21 +204,48 @@ _scripts/core/generate-all-json.py
 
 ---
 
-# 🎯 Key Development Principles
+# 🎯 Proven Development Principles
 
-1. **Universal components only** - Use `universal-card.html` for all cards
-2. **Configuration-driven** - Avoid hardcoded values, use `component_defaults.yml`
-3. **Mobile-first** - Linear layouts, no sidebars
-4. **Multilingual** - Test all changes across EN/RU/ZH
-5. **Performance** - Maintain <15 second builds
+1. **Mobile-first responsive design** - 345px → 360px card sizing with design tokens
+2. **Simple variant architecture** - Single component files with `{% raw %}{% if variant %}{% endraw %}` logic  
+3. **Clean BEM architecture** - Separate namespaces for distinct components
+4. **CSS boundary compliance** - Cards vs layouts separation enforced
+5. **Systematic implementation** - Audit → Plan → Execute → Validate methodology
+6. **Performance-conscious** - Maintain incremental build efficiency
+7. **Documentation-driven** - Standards codified for team development
+
+## Card Development Workflow
+```liquid
+# Create new card variant (example)
+# 1. Add variant logic to existing card HTML:
+{% raw %}{% if variant == "compact" %}
+  <!-- Compact variant HTML -->
+{% else %}
+  <!-- Standard variant HTML -->  
+{% endif %}{% endraw %}
+```
+
+```scss
+# 2. Add variant CSS classes:
+.card--compact { /* variant-specific styles */ }
+```
+
+```liquid
+# 3. Test variants:
+variant="standard"  # Default
+variant="featured"  # Enhanced
+variant="tagged"    # With taxonomy tags
+variant="compact"   # Minimal display
+```
 
 ## Validation Workflow
 ```bash
 # Before commits
 _scripts/core/pre-commit_check.sh
 
-# Verify universal card usage
-grep -r "universal-card" _includes/pages/ | wc -l  # Should show 42+ references
+# Verify card system consistency
+grep -r "variant=" _includes/components/cards/  # Check variant usage
+find _includes/components/cards/ -name "*-card.html" | wc -l  # Should show clean card count
 ```
 
 ---

@@ -95,6 +95,14 @@
       }
     },
 
+    featuredCarousel: {
+      selector: '.carousel[data-component-type^="featured-"]',
+      init: () => {
+        // Carousel initializes via DOMContentLoaded in carousel.js
+        console.log('[Main] Featured carousel component detected');
+      }
+    },
+
     // Page-specific components
     brandsFiltering: {
       selector: 'body.brands-page',

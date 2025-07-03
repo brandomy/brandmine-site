@@ -481,6 +481,25 @@
     }
 
     /* --------------------------------------------------------------------------
+       6.5b Card Width System - Mobile-First Atomic Sizing
+       -------------------------------------------------------------------------- */
+    :root {
+      /* Base card widths */
+      --card-width-atomic: 345px;         /* Mobile-first base (fits iPhone SE) */
+      --card-width-standard: 360px;       /* Desktop enhancement */
+      --card-width-mini: 345px;           /* Constrained variant (no growth) */
+
+      /* Featured card widths */  
+      --card-width-featured: 450px;       /* Insight featured cards */
+      --card-width-featured-lg: 480px;    /* Premium displays */
+      --card-width-featured-xl: 500px;    /* Founder featured cards */
+
+      /* Responsive breakpoints (for reference) */
+      --breakpoint-tablet: 768px;         /* Min-width for desktop enhancements */
+      --breakpoint-desktop: 1200px;       /* Large screen optimizations */
+    }
+
+    /* --------------------------------------------------------------------------
        6.6 Form Tokens
        -------------------------------------------------------------------------- */
     :root {
