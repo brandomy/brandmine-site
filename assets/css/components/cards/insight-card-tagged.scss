@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Tagged Insight Card Component (Mobile-First)
+   ========================================================================== */
+/*
+   Base reusable styles for insight cards with dimension tags.
+   Used across: home page, insights listing, related content sections.
+
+   Location: assets/css/components/cards/insight-card-tagged.scss
+   Matches: _includes/components/cards/insight-card-tagged.html
+*/
+
+/* Base card container */
+.insight-card--tagged {
+  /* Apply universal width pattern */
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  /* Desktop enhancement */
+  @media (min-width: 768px) {
+    width: var(--card-width-standard); /* 360px desktop */
+  }
+  
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-medium);
+  background: white;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+
+  /* Card hover effects */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* Image container - FIXED HEIGHT for consistency */
+.insight-card--tagged .insight-card__image {
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--neutral-100);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.insight-card--tagged .insight-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Image placeholder for missing images */
+.insight-card--tagged .insight-card__image-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: var(--neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insight-card--tagged .insight-card__image-placeholder svg {
+  color: var(--neutral-400);
+}
+
+/* Content container */
+.insight-card--tagged .insight-card__content {
+  background: white;
+  padding: var(--space-4);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card title */
+.insight-card--tagged .insight-card__title {
+  color: var(--neutral-900);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-lg);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-2) 0;
+}
+
+/* Meta information */
+.insight-card--tagged .insight-card__meta {
+  color: var(--neutral-500);
+  font-size: var(--text-xs);
+  margin-bottom: var(--space-2);
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Excerpt text */
+.insight-card--tagged .insight-card__excerpt {
+  color: var(--neutral-700);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+  flex-grow: 1;
+}
+
+/* Tags container */
+.insight-card--tagged .insight-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Individual dimension tags - FIX: Remove link underlines */
+.insight-card--tagged .insight-card__tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none !important;
+  
+  /* Hover effects for tags */
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none !important;
+  }
+
+}
+
+/* Dimension-specific tag colors for tagged variant */
+.insight-card--tagged .insight-card__tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+}
+
+.insight-card--tagged .insight-card__tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+}
+
+.insight-card--tagged .insight-card__tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+}
+
+.insight-card--tagged .insight-card__tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+}
+
+/* Category badge overlay */
+.insight-card--tagged .insight-card__category-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: var(--overlay-modal);
+  color: white;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 4px;
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  font-weight: var(--font-semibold);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.insight-card--tagged .insight-card__category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insight-card--tagged .insight-card__category-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Read more link */
+.insight-card--tagged .insight-card__read-more {
+  color: var(--primary-600);
+  font-weight: var(--font-medium);
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Card link wrapper - Ensure no underlines */
+.insight-card--tagged .insight-card__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* Category-specific border styling */
+.insight-card--tagged.insight-card--brand_spotlight {
+  border-left: 4px solid var(--secondary-400);
+}
+
+.insight-card--tagged.insight-card--founders_journey {
+  border-left: 4px solid var(--accent-400);
+}
+
+.insight-card--tagged.insight-card--location_intelligence {
+  border-left: 4px solid var(--sky-400);
+}
+
+.insight-card--tagged.insight-card--market_momentum {
+  border-left: 4px solid var(--olive-400);
+}
+
+/* Category badge content-specific styling */
+.insight-card--tagged.insight-card--brand_spotlight .insight-card__category-badge {
+  background-color: var(--secondary-100);
+  color: var(--secondary-600);
+  border: 1px solid var(--secondary-200);
+}
+
+.insight-card--tagged.insight-card--founders_journey .insight-card__category-badge {
+  background-color: var(--accent-100);
+  color: var(--accent-600);
+  border: 1px solid var(--accent-200);
+}
+
+.insight-card--tagged.insight-card--location_intelligence .insight-card__category-badge {
+  background-color: var(--sky-100);
+  color: var(--sky-600);
+  border: 1px solid var(--sky-200);
+}
+
+.insight-card--tagged.insight-card--market_momentum .insight-card__category-badge {
+  background-color: var(--olive-100);
+  color: var(--olive-600);
+  border: 1px solid var(--olive-200);
+}
+
+/* Responsive Design */
+@media (width >= 480px) {
+  .insight-card--tagged:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (width >= 768px) {
+  .insight-card--tagged .insight-card__title {
+    font-size: var(--text-xl);
+  }
+
+  .insight-card--tagged .insight-card__excerpt {
+    font-size: var(--text-base);
+  }
+
+  .insight-card--tagged .insight-card__meta {
+    font-size: var(--text-sm);
+  }
+}
