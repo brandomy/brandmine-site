@@ -14,6 +14,8 @@
   grid-template-columns: 1fr;
   gap: var(--space-6);
   margin: var(--space-8) 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Column variants */
@@ -43,26 +45,32 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. RESPONSIVE ADJUSTMENTS
+   3. RESPONSIVE ADJUSTMENTS - ONLY 1x4, 2x2, or 4x1 LAYOUTS
    -------------------------------------------------------------------------- */
 
-/* Medium devices (768px and up) */
+/* Mobile: Always 1x4 (single column) */
+.discovery-dimensions-grid--columns-1,
+.discovery-dimensions-grid--columns-2,
+.discovery-dimensions-grid--columns-3,
+.discovery-dimensions-grid--columns-4 {
+  grid-template-columns: 1fr;
+}
+
+/* Tablet and up: 2x2 layout for multi-column requests */
 @media (width >= 768px) {
   .discovery-dimensions-grid--columns-2,
-  .discovery-dimensions-grid--columns-3,
   .discovery-dimensions-grid--columns-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Large devices (992px and up) */
-@media (width >= 992px) {
-  .discovery-dimensions-grid--columns-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
+/* Large desktop: 4x1 layout only if viewport can accommodate 4 cards */
+@media (width >= 1600px) {
   .discovery-dimensions-grid--columns-4 {
     grid-template-columns: repeat(4, 1fr);
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

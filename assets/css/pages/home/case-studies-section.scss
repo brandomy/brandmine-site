@@ -92,7 +92,8 @@
     flex: 1;
 }
 
-/* Taxonomy Tags */
+/* Taxonomy Tags - DEPRECATED: Now using unified dimension-tag-cloud component */
+/* Keeping for backwards compatibility */
 .test-card-meta {
     display: flex;
     flex-wrap: wrap;
@@ -152,6 +153,33 @@
 .test-card-signal:hover {
     background: var(--accent-200);
     transform: translateY(-1px);
+}
+
+/* Map test-card-tags to dimension-tag-cloud styling with case-study variant */
+.test-card-tags {
+  @extend .dimension-tag-cloud;
+  @extend .dimension-tag-cloud--case-study;
+  margin: var(--space-4) 0; /* Maintain original spacing */
+}
+
+.test-card-tags__tag {
+  @extend .dimension-tag-cloud__tag;
+}
+
+.test-card-tags__tag--sector {
+  @extend .dimension-tag-cloud__tag--sector;
+}
+
+.test-card-tags__tag--market {
+  @extend .dimension-tag-cloud__tag--market;
+}
+
+.test-card-tags__tag--attribute {
+  @extend .dimension-tag-cloud__tag--attribute;
+}
+
+.test-card-tags__tag--signal {
+  @extend .dimension-tag-cloud__tag--signal;
 }
 
 /* Navigation Dots - Now inherited from carousel.scss */

@@ -177,7 +177,8 @@
   text-decoration: none !important;
 }
 
-/* Dimension-specific tag colors (simple approach like brand-card) */
+/* Dimension-specific tag colors - DEPRECATED: Now using unified dimension-tag-cloud component */
+/* Keeping for backwards compatibility */
 .insight-card__tag--sector {
   background-color: var(--olive-100) !important;
   color: var(--olive-800) !important;
@@ -196,6 +197,32 @@
 .insight-card__tag--signal {
   background-color: var(--accent-100) !important;
   color: var(--accent-800) !important;
+}
+
+/* Map insight-card-tags to dimension-tag-cloud styling */
+.insight-card-tags {
+  @extend .dimension-tag-cloud;
+  @extend .dimension-tag-cloud--spacing-tight;
+}
+
+.insight-card-tags__tag {
+  @extend .dimension-tag-cloud__tag;
+}
+
+.insight-card-tags__tag--sector {
+  @extend .dimension-tag-cloud__tag--sector;
+}
+
+.insight-card-tags__tag--market {
+  @extend .dimension-tag-cloud__tag--market;
+}
+
+.insight-card-tags__tag--attribute {
+  @extend .dimension-tag-cloud__tag--attribute;
+}
+
+.insight-card-tags__tag--signal {
+  @extend .dimension-tag-cloud__tag--signal;
 }
 
 /* Category badge */
@@ -437,6 +464,8 @@
     text-align: center;
     margin-bottom: var(--space-1);
     order: -1;                          /* Move meta above title */
+    font-size: var(--text-base);       /* Larger metadata font size */
+    font-weight: var(--font-medium);   /* Medium weight for better visibility */
     
     @media (min-width: 481px) {
       margin-bottom: var(--space-2);
@@ -444,6 +473,7 @@
     
     @media (min-width: 768px) {
       margin-bottom: var(--space-1);
+      font-size: var(--text-lg);       /* Even larger on desktop */
     }
     
     @media (min-width: 992px) {

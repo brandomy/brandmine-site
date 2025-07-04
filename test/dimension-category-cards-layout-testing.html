@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dimension Cards Layout Testing</title>
+  <title>Dimension Category Cards Layout Testing</title>
 
   <!-- SEO Components -->
   
@@ -124,13 +124,13 @@
     
     
     
-    <a href="/en/dimension-cards-layout-testing" 
+    <a href="/en/dimension-category-cards-layout-testing" 
        onclick="localStorage.setItem('preferredLanguage', 'en');" 
        class="active">EN</a>
-    <a href="/ru/dimension-cards-layout-testing" 
+    <a href="/ru/dimension-category-cards-layout-testing" 
        onclick="localStorage.setItem('preferredLanguage', 'ru');" 
        >RU</a>
-    <a href="/zh/dimension-cards-layout-testing" 
+    <a href="/zh/dimension-category-cards-layout-testing" 
        onclick="localStorage.setItem('preferredLanguage', 'zh');" 
        >ZH</a>
   
@@ -367,35 +367,35 @@
   /* VISUAL DEBUGGING TOOLKIT - Isolated to test page only */
   
   /* Color-coded element debugging */
-  .debug-layout .dimension-card__title {
+  .debug-layout .dimension-category-card__title {
     background: rgba(0, 255, 0, 0.2) !important;
     border: 2px solid green !important;
     margin: 2px 0 !important;
   }
   
-  .debug-layout .dimension-card__description {
+  .debug-layout .dimension-category-card__description {
     background: rgba(255, 0, 0, 0.2) !important;
     border: 2px solid red !important;
     margin: 2px 0 !important;
   }
   
-  .debug-layout .dimension-card__icon {
+  .debug-layout .dimension-category-card__icon {
     background: rgba(0, 0, 255, 0.2) !important;
     border: 2px solid blue !important;
     margin: 1px !important;
   }
   
-  .debug-layout .dimension-card__count {
+  .debug-layout .dimension-category-card__count {
     background: rgba(128, 0, 128, 0.2) !important;
     border: 2px solid purple !important;
   }
   
   /* Grid overlay debugging */
-  .debug-grid .dimension-card {
+  .debug-grid .dimension-category-card {
     position: relative;
   }
 
-  .debug-grid .dimension-card::before {
+  .debug-grid .dimension-category-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -410,7 +410,7 @@
     z-index: 999;
   }
 
-  .debug-grid .dimension-card::after {
+  .debug-grid .dimension-category-card::after {
     content: '';
     position: absolute;
     top: 0;
@@ -448,14 +448,14 @@
 
 <div class="container">
   <div class="test-header">
-    <h1>Dimension Cards Layout Testing</h1>
-    <p>Comprehensive testing of dimension card components with 1A base and 1B featured variants</p>
+    <h1>Dimension Category Cards Layout Testing</h1>
+    <p>Comprehensive testing of dimension category card components with 1A base and 1B featured variants</p>
   </div>
 
   <!-- Section 0: Single Card Comparison -->
   <section class="test-section">
-    <h2>Section 0: DIMENSION CARD VARIANTS COMPARISON</h2>
-    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of dimension card variants using all four dimension types</p>
+    <h2>Section 0: DIMENSION CATEGORY CARD VARIANTS COMPARISON</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of dimension category card variants using all four dimension types</p>
     
     <!-- Single card comparison grid - organized by dimension type -->
     <div style="margin-bottom: 3rem;">
@@ -478,19 +478,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--sectors">
+<div class="dimension-category-card dimension-category-card--sectors">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -514,7 +506,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--sectors icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--sectors icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -529,9 +521,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -553,10 +546,16 @@
 
   Sectors
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              16 Sectors
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -582,37 +581,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--sectors">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">16 sectors</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/sectors/" class="dimension-card__link btn btn--outline dimension-card__link--sectors">
+    <a href="/en/discover/sectors/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--sectors">
       
       
       
@@ -640,6 +609,14 @@
     </a>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -701,20 +678,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--sectors dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--sectors dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -738,7 +707,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--sectors icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--sectors icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -753,8 +722,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -779,17 +748,15 @@
   Sectors
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 categories
-                
-            
+                16 Sectors
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -816,38 +783,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--sectors">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">16 sectors</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/sectors/" class="dimension-card__link btn btn--solid dimension-card__link--sectors">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/sectors/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--sectors">
         
         
         
@@ -876,6 +813,14 @@
     </div>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -933,7 +878,7 @@
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. Markets (Standard)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> markets | <strong>Variant:</strong> standard | <strong>Usage:</strong> Discovery grid layouts<br />
-          <strong>Color scheme:</strong> Sky blue theme
+          <strong>Color scheme:</strong> Sky blue theme<br />
         </div>
         <div style="border: 2px solid var(--sky-500); padding: 1rem; background: white; border-radius: 0.5rem;">
           
@@ -943,19 +888,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--markets">
+<div class="dimension-category-card dimension-category-card--markets">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -979,7 +916,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--markets icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--markets icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -996,9 +933,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -1020,10 +958,16 @@
 
   Markets
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              13 Markets
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -1049,37 +993,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--markets">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">15 markets</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/markets/" class="dimension-card__link btn btn--outline dimension-card__link--markets">
+    <a href="/en/discover/markets/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--markets">
       
       
       
@@ -1107,6 +1021,14 @@
     </a>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -1145,7 +1067,7 @@
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. Markets (Featured)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> markets | <strong>Variant:</strong> featured | <strong>Usage:</strong> Homepage highlights<br />
-          <strong>Color scheme:</strong> Enhanced sky blue theme
+          <strong>Color scheme:</strong> Enhanced sky blue theme<br />
         </div>
         <div style="border: 2px solid var(--sky-600); padding: 1rem; background: white; border-radius: 0.5rem;">
           
@@ -1155,20 +1077,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--markets dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--markets dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -1192,7 +1106,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--markets icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--markets icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -1209,8 +1123,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -1235,17 +1149,15 @@
   Markets
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 markets
-                
-            
+                13 Markets
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -1272,38 +1184,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--markets">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">15 markets</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/markets/" class="dimension-card__link btn btn--solid dimension-card__link--markets">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/markets/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--markets">
         
         
         
@@ -1332,6 +1214,14 @@
     </div>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -1376,7 +1266,7 @@
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. Attributes (Standard)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> attributes | <strong>Variant:</strong> standard | <strong>Usage:</strong> Discovery grid layouts<br />
-          <strong>Color scheme:</strong> Orange/secondary theme
+          <strong>Color scheme:</strong> Orange/secondary theme<br />
         </div>
         <div style="border: 2px solid var(--secondary-500); padding: 1rem; background: white; border-radius: 0.5rem;">
           
@@ -1386,19 +1276,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--attributes">
+<div class="dimension-category-card dimension-category-card--attributes">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -1422,7 +1304,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--attributes icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--attributes icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -1439,9 +1321,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -1463,10 +1346,16 @@
 
   Attributes
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              8 Attributes
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -1492,37 +1381,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--attributes">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">8 attributes</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/attributes/" class="dimension-card__link btn btn--outline dimension-card__link--attributes">
+    <a href="/en/discover/attributes/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--attributes">
       
       
       
@@ -1550,6 +1409,14 @@
     </a>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -1588,7 +1455,7 @@
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. Attributes (Featured)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> attributes | <strong>Variant:</strong> featured | <strong>Usage:</strong> Homepage highlights<br />
-          <strong>Color scheme:</strong> Enhanced orange/secondary theme
+          <strong>Color scheme:</strong> Enhanced orange/secondary theme<br />
         </div>
         <div style="border: 2px solid var(--secondary-600); padding: 1rem; background: white; border-radius: 0.5rem;">
           
@@ -1598,20 +1465,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--attributes dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--attributes dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -1635,7 +1494,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--attributes icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--attributes icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -1652,8 +1511,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -1678,17 +1537,15 @@
   Attributes
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 attributes
-                
-            
+                8 Attributes
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -1715,38 +1572,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--attributes">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">8 attributes</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/attributes/" class="dimension-card__link btn btn--solid dimension-card__link--attributes">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/attributes/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--attributes">
         
         
         
@@ -1775,6 +1602,14 @@
     </div>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -1819,7 +1654,7 @@
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. Signals (Standard)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> signals | <strong>Variant:</strong> standard | <strong>Usage:</strong> Discovery grid layouts<br />
-          <strong>Color scheme:</strong> Indigo/accent theme
+          <strong>Color scheme:</strong> Indigo/accent theme<br />
         </div>
         <div style="border: 2px solid var(--accent-500); padding: 1rem; background: white; border-radius: 0.5rem;">
           
@@ -1829,19 +1664,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--signals">
+<div class="dimension-category-card dimension-category-card--signals">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -1865,7 +1692,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--signals icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--signals icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -1881,9 +1708,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -1905,10 +1733,16 @@
 
   Signals
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              4 Signals
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -1934,37 +1768,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--signals">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">4 signals</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/signals/" class="dimension-card__link btn btn--outline dimension-card__link--signals">
+    <a href="/en/discover/signals/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--signals">
       
       
       
@@ -1992,6 +1796,14 @@
     </a>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -2030,7 +1842,7 @@
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. Signals (Featured)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> signals | <strong>Variant:</strong> featured | <strong>Usage:</strong> Homepage highlights<br />
-          <strong>Color scheme:</strong> Enhanced indigo/accent theme
+          <strong>Color scheme:</strong> Enhanced indigo/accent theme<br />
         </div>
         <div style="border: 2px solid var(--accent-600); padding: 1rem; background: white; border-radius: 0.5rem;">
           
@@ -2040,20 +1852,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--signals dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--signals dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -2077,7 +1881,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--signals icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--signals icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -2093,8 +1897,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -2119,17 +1923,15 @@
   Signals
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 signals
+                4 Signals
               
-            
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -2156,38 +1958,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--signals">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">4 signals</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/signals/" class="dimension-card__link btn btn--solid dimension-card__link--signals">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/signals/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--signals">
         
         
         
@@ -2216,6 +1988,14 @@
     </div>
   
 </div>
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -2337,15 +2117,22 @@
       
       <!-- Quick Reference -->
       <div style="margin-top: 1.5rem; padding: 1rem; background: #fefce8; border-radius: 0.5rem;">
-        <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Dimension Card Usage:</h6>
-        <ul style="margin: 0; font-size: 0.875rem; line-height: 1.4; color: #713f12;">
-          <li><strong>Standard (1A):</strong> Discovery page grids, category navigation</li>
-          <li><strong>Featured (1B):</strong> Homepage highlights, premium discovery sections</li>
-          <li><strong>Sectors:</strong> Industry and business category discovery</li>
-          <li><strong>Markets:</strong> Geographic region exploration</li>
-          <li><strong>Attributes:</strong> Brand quality and characteristic discovery</li>
-          <li><strong>Signals:</strong> Growth indicator and investment readiness exploration</li>
-        </ul>
+        <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Dimension Category Card Usage:</h6>
+        <div style="font-size: 0.875rem; line-height: 1.4; color: #713f12;">
+          <strong>Usage Examples:</strong><br />
+          <code>{% include components/cards/dimension-category-card.html type="sectors" %}</code> (Standard)<br />
+          <code>{% include components/cards/dimension-category-card.html type="markets" variant="featured" %}</code> (Featured)<br /><br />
+          
+          <strong>Available Types:</strong><br />
+          • <strong>sectors</strong> - Industry and business category discovery<br />
+          • <strong>markets</strong> - Geographic region exploration<br />
+          • <strong>attributes</strong> - Brand quality and characteristic discovery<br />
+          • <strong>signals</strong> - Growth indicator and investment readiness exploration<br /><br />
+          
+          <strong>Variants:</strong><br />
+          • <strong>Standard (default):</strong> Discovery page grids, category navigation<br />
+          • <strong>Featured (variant="featured"):</strong> Homepage highlights, premium discovery sections
+        </div>
       </div>
     </div>
     
@@ -2353,10 +2140,10 @@
 
   <!-- Section 1: Layout Testing -->
   <section class="test-section">
-    <h2>Section 1: DIMENSION CARDS - Layout Testing</h2>
+    <h2>Section 1: DIMENSION CATEGORY CARDS - Layout Testing</h2>
     
     <div class="card-info">
-      <strong>Testing:</strong> dimension-card.html with variants | <strong>Purpose:</strong> Discovery grid and featured layouts
+      <strong>Testing:</strong> dimension-category-card.html with variants | <strong>Purpose:</strong> Discovery grid and featured layouts
     </div>
     
     <!-- Grid Layout Tests -->
@@ -2374,19 +2161,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--sectors">
+<div class="dimension-category-card dimension-category-card--sectors">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -2410,7 +2189,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--sectors icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--sectors icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -2425,9 +2204,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -2449,10 +2229,16 @@
 
   Sectors
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              16 Sectors
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -2478,37 +2264,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--sectors">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">16 sectors</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/sectors/" class="dimension-card__link btn btn--outline dimension-card__link--sectors">
+    <a href="/en/discover/sectors/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--sectors">
       
       
       
@@ -2545,19 +2301,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--markets">
+<div class="dimension-category-card dimension-category-card--markets">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -2581,7 +2329,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--markets icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--markets icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -2598,9 +2346,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -2622,10 +2371,16 @@
 
   Markets
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              13 Markets
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -2651,37 +2406,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--markets">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">15 markets</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/markets/" class="dimension-card__link btn btn--outline dimension-card__link--markets">
+    <a href="/en/discover/markets/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--markets">
       
       
       
@@ -2718,19 +2443,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--attributes">
+<div class="dimension-category-card dimension-category-card--attributes">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -2754,7 +2471,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--attributes icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--attributes icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -2771,9 +2488,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -2795,10 +2513,16 @@
 
   Attributes
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              8 Attributes
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -2824,37 +2548,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--attributes">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">8 attributes</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/attributes/" class="dimension-card__link btn btn--outline dimension-card__link--attributes">
+    <a href="/en/discover/attributes/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--attributes">
       
       
       
@@ -2891,19 +2585,11 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--signals">
+<div class="dimension-category-card dimension-category-card--signals">
   
-    <!-- Standard variant (1A) -->
-    <div class="dimension-card__header">
-      <div class="dimension-card__icon">
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
         
 
 
@@ -2927,7 +2613,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--signals icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--signals icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -2943,9 +2629,10 @@
 
 
       </div>
-      <h3 class="dimension-card__title">
-        
-        
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          
+          
 
 
 
@@ -2967,10 +2654,16 @@
 
   Signals
 
-      </h3>
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          
+              4 Signals
+            
+        </div>
+      </div>
     </div>
     
-    <p class="dimension-card__description">
+    <p class="dimension-category-card__description">
       
       
 
@@ -2996,37 +2689,7 @@
 
     </p>
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--signals">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">4 signals</span>
-    
-  
-</div>
-    
-    <a href="/en/discover/signals/" class="dimension-card__link btn btn--outline dimension-card__link--signals">
+    <a href="/en/discover/signals/" class="dimension-category-card__link btn btn--outline dimension-category-card__link--signals">
       
       
       
@@ -3068,20 +2731,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--sectors dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--sectors dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -3105,7 +2760,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--sectors icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--sectors icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -3120,8 +2775,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -3146,17 +2801,15 @@
   Sectors
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 categories
-                
-            
+                16 Sectors
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -3183,38 +2836,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--sectors">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">16 sectors</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/sectors/" class="dimension-card__link btn btn--solid dimension-card__link--sectors">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/sectors/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--sectors">
         
         
         
@@ -3252,20 +2875,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--markets dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--markets dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -3289,7 +2904,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--markets icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--markets icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -3306,8 +2921,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -3332,17 +2947,15 @@
   Markets
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 markets
-                
-            
+                13 Markets
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -3369,38 +2982,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--markets">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">15 markets</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/markets/" class="dimension-card__link btn btn--solid dimension-card__link--markets">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/markets/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--markets">
         
         
         
@@ -3438,20 +3021,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--attributes dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--attributes dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -3475,7 +3050,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--attributes icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--attributes icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -3492,8 +3067,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -3518,17 +3093,15 @@
   Attributes
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 attributes
-                
-            
+                8 Attributes
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -3555,38 +3128,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--attributes">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">8 attributes</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/attributes/" class="dimension-card__link btn btn--solid dimension-card__link--attributes">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/attributes/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--attributes">
         
         
         
@@ -3624,20 +3167,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--signals dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--signals dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -3661,7 +3196,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--signals icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--signals icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -3677,8 +3212,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -3703,17 +3238,15 @@
   Signals
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 signals
+                4 Signals
               
-            
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -3740,38 +3273,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--signals">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">4 signals</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/signals/" class="dimension-card__link btn btn--solid dimension-card__link--signals">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/signals/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--signals">
         
         
         
@@ -3814,20 +3317,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--sectors dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--sectors dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -3851,7 +3346,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--sectors icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--sectors icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -3866,8 +3361,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -3892,17 +3387,15 @@
   Sectors
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 categories
-                
-            
+                16 Sectors
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -3929,38 +3422,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--sectors">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">16 sectors</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/sectors/" class="dimension-card__link btn btn--solid dimension-card__link--sectors">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/sectors/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--sectors">
         
         
         
@@ -3998,20 +3461,12 @@
 
 
 
-
-
-
-
-
-
-
-
-<div class="dimension-card dimension-card--markets dimension-card--featured">
+<div class="dimension-category-card dimension-category-card--markets dimension-category-card--featured">
   
     <!-- Featured variant with enhanced layout -->
-    <div class="dimension-card__hero">
-      <div class="dimension-card__header">
-        <div class="dimension-card__icon dimension-card__icon--large">
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
           
 
 
@@ -4035,7 +3490,7 @@
 
 
 
-  <span class="icon icon--dimensions icon--markets icon--4 dimension-card__icon-svg">
+  <span class="icon icon--dimensions icon--markets icon--4 dimension-category-card__icon-svg">
     
       
       
@@ -4052,8 +3507,8 @@
 
 
         </div>
-        <div class="dimension-card__title-section">
-          <h3 class="dimension-card__title">
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
             
             
 
@@ -4078,17 +3533,15 @@
   Markets
 
           </h3>
-          <div class="dimension-card__count">
+          <div class="dimension-category-card__count">
             
-            
-              4 markets
-                
-            
+                13 Markets
+              
           </div>
         </div>
       </div>
       
-      <p class="dimension-card__description dimension-card__description--featured">
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
         
         
 
@@ -4115,38 +3568,8 @@
       </p>
     </div>
     
-    <div class="dimension-card__content">
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dimension-tag-cloud dimension-tag-cloud--markets">
-  
-  
-  
-  
-  
-    
-    
-      <span class="dimension-tag-cloud__more">15 markets</span>
-    
-  
-</div>
-      
-      <a href="/en/discover/markets/" class="dimension-card__link btn btn--solid dimension-card__link--markets">
+    <div class="dimension-category-card__content">
+      <a href="/en/discover/markets/" class="dimension-category-card__link btn btn--solid dimension-category-card__link--markets">
         
         
         
@@ -4180,7 +3603,7 @@
       
       <!-- Styling Evaluation Framework -->
       <div class="styling-assessment" style="margin-top: 2rem; padding: 1.5rem; background: var(--neutral-50); border-radius: 0.5rem;">
-        <h4>Styling Evaluation: dimension-card.html</h4>
+        <h4>Styling Evaluation: dimension-category-card.html</h4>
         <div class="assessment-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
           <div class="criteria">
             <strong>Visual Appeal:</strong> ⭐⭐⭐⭐⭐<br />
@@ -4197,6 +3620,20 @@
       </div>
     </div>
     
+  </section>
+
+  <!-- Homepage Implementation Details -->
+  <section class="test-section">
+    <h2>🏠 Homepage Implementation Details</h2>
+    <div class="card-info" style="background: var(--primary-100); border-left-color: var(--primary-600); margin-bottom: 2rem;">
+      <h3>Discovery Dimensions Section on Homepage</h3>
+      <p><strong>Location:</strong> <code>_includes/pages/home/discovery-dimensions.html</code></p>
+      <p><strong>Grid Component:</strong> <code>_includes/components/dimensions/discovery-dimensions-grid.html</code></p>
+      <p><strong>Default Configuration:</strong> 4 columns, 6 items per dimension type</p>
+      <p><strong>Usage:</strong></p>
+      <pre style="background: var(--neutral-800); color: white; padding: 1rem; border-radius: 0.375rem; overflow-x: auto;">{% include components/dimensions/discovery-dimensions-grid.html columns=4 limit=6 %}</pre>
+      <p style="margin-top: 1rem;"><strong>Note:</strong> The discovery-dimensions-grid.html component automatically includes all four dimension types (markets, sectors, attributes, signals) using the standard variant of dimension-category-card.html</p>
+    </div>
   </section>
 
   <!-- Visual Debugging Toolkit -->
@@ -4256,10 +3693,10 @@ function toggleDebugBoxModel() {
 
 // Element dimension reporting
 function reportDimensions() {
-  const title = document.querySelector('.dimension-card__title');
-  const description = document.querySelector('.dimension-card__description');
-  const icon = document.querySelector('.dimension-card__icon');
-  const count = document.querySelector('.dimension-card__count');
+  const title = document.querySelector('.dimension-category-card__title');
+  const description = document.querySelector('.dimension-category-card__description');
+  const icon = document.querySelector('.dimension-category-card__icon');
+  const count = document.querySelector('.dimension-category-card__count');
   
   console.group('🔍 Dimension Card Element Report');
   
@@ -4406,13 +3843,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     
-    <a href="/en/dimension-cards-layout-testing" 
+    <a href="/en/dimension-category-cards-layout-testing" 
        onclick="localStorage.setItem('preferredLanguage', 'en');" 
        class="active">EN</a>
-    <a href="/ru/dimension-cards-layout-testing" 
+    <a href="/ru/dimension-category-cards-layout-testing" 
        onclick="localStorage.setItem('preferredLanguage', 'ru');" 
        >RU</a>
-    <a href="/zh/dimension-cards-layout-testing" 
+    <a href="/zh/dimension-category-cards-layout-testing" 
        onclick="localStorage.setItem('preferredLanguage', 'zh');" 
        >ZH</a>
   

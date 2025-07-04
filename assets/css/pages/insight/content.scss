@@ -5,27 +5,41 @@
 */
 
 .insight-article-page {
+  /* Fix: Reduce excessive white space between hero and content sections */
+  .panel:not(.panel--hero-split) {
+    padding: var(--space-4) 0; /* Reduced from default --space-8 */
+  }
+  
+  /* First content panel after hero should have minimal top padding */
+  .panel--hero-split + .panel {
+    padding-top: var(--space-2);
+  }
   .insight-content {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     line-height: var(--leading-relaxed);
     color: var(--neutral-800);
     font-family: var(--font-body);
-    max-width: 720px;
+    max-width: 100%; /* Full width content */
+    text-align: left; /* Ensure left alignment */
+    
+    @media (width >= 768px) {
+      font-size: var(--text-lg);
+    }
     
     @media (width >= 992px) {
-      font-size: var(--text-xl);
+      font-size: var(--text-lg);
       line-height: 1.7;
     }
 
-    // First paragraph styling
+    // First paragraph styling (lead paragraph)
     > p:first-child {
-      font-size: var(--text-xl);
+      font-size: var(--text-lg);
       font-weight: var(--font-medium);
       color: var(--neutral-700);
       margin-bottom: var(--space-8);
       
       @media (width >= 768px) {
-        font-size: var(--text-2xl);
+        font-size: var(--text-xl);
         line-height: 1.6;
       }
     }
@@ -186,6 +200,75 @@
         background: none;
         color: inherit;
         padding: 0;
+      }
+    }
+  }
+  
+  /* Brand Info Section - Featured Brands */
+  .brand-info {
+    &__title {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-6);
+      color: var(--neutral-900);
+    }
+    
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+      gap: var(--space-4);
+      justify-items: center;
+      
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
+  }
+  
+  /* Related Brands Section */
+  .related-brands {
+    &__title {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-6);
+      color: var(--neutral-900);
+    }
+    
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+      gap: var(--space-4);
+      justify-items: center;
+      
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+  
+  /* Related Insights Section */
+  .related-insights {
+    &__title {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-6);
+      color: var(--neutral-900);
+    }
+    
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+      gap: var(--space-4);
+      justify-items: center;
+      
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   }
