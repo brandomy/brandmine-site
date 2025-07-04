@@ -1,0 +1,211 @@
+---
+layout: default
+title: "Hero Magazine Style Test"
+lang: en
+permalink: /en/test/hero-magazine-test/
+---
+
+{% comment %}
+TEST PAGE: Hero Magazine Style
+PURPOSE: Demonstrate the Magazine Style hero layout
+INCLUDES: Custom hero with sample insight data
+{% endcomment %}
+
+<style>
+/* Include the hero-magazine CSS inline for testing */
+.insight-hero-magazine {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .insight-hero-magazine {
+    height: 60vh;
+    min-height: 400px;
+  }
+}
+
+.insight-hero-magazine__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-image: url('/assets/images/insights/ru-teatime-founder-journey/ru-teatime-founder-journey-hero-storefront-1200w.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.insight-hero-magazine__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 2;
+}
+
+.insight-hero-magazine__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-magazine__content {
+    padding: var(--space-8);
+  }
+}
+
+.insight-hero-magazine__category {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .insight-hero-magazine__category {
+    font-size: var(--text-base);
+  }
+}
+
+.insight-hero-magazine__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-magazine__title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-6);
+  }
+}
+
+.insight-hero-magazine__description {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+  opacity: 0.95;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-magazine__description {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-8);
+  }
+}
+
+.insight-hero-magazine__meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  opacity: 0.9;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .insight-hero-magazine__meta {
+    font-size: var(--text-base);
+    gap: var(--space-3);
+  }
+}
+
+.insight-hero-magazine__meta .separator {
+  margin: 0 var(--space-1);
+  opacity: 0.7;
+}
+
+.insight-hero-magazine__author {
+  font-weight: var(--font-medium);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.insight-hero-magazine__date,
+.insight-hero-magazine__reading-time {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+</style>
+
+<div class="insight-hero-magazine">
+  <div class="insight-hero-magazine__background">
+    <div class="insight-hero-magazine__overlay"></div>
+  </div>
+  
+  <div class="insight-hero-magazine__content">
+    <div class="insight-hero-magazine__category">
+      Founders Journey
+    </div>
+    
+    <h1 class="insight-hero-magazine__title">
+      From Moscow Mountains to Global Markets: The TeaTime Success Story
+    </h1>
+    
+    <p class="insight-hero-magazine__description">
+      The remarkable journey of how a software engineer's passion for tea transformed into Russia's leading artisanal tea brand, reaching 23 countries and growing 30% annually.
+    </p>
+    
+    <div class="insight-hero-magazine__meta">
+      <span class="insight-hero-magazine__author">Randal Eastman</span>
+      <span class="separator">•</span>
+      <span class="insight-hero-magazine__date">July 4, 2025</span>
+      <span class="separator">•</span>
+      <span class="insight-hero-magazine__reading-time">8 min read</span>
+    </div>
+  </div>
+</div>
+
+<div style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+  <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745; margin-bottom: 2rem;">
+    <h3 style="margin-top: 0; color: #495057;">Hero Magazine Style Features</h3>
+    <ul style="margin-bottom: 1rem;">
+      <li><strong>Dramatic impact:</strong> Full-width background image with overlay text</li>
+      <li><strong>Visual storytelling:</strong> Image becomes integral part of the narrative</li>
+      <li><strong>Gradient overlay:</strong> Ensures text readability across all images</li>
+      <li><strong>Centered design:</strong> Magazine-style layout with centered text</li>
+      <li><strong>Responsive heights:</strong> 60vh mobile, 70vh desktop for optimal viewing</li>
+    </ul>
+    
+    <h4 style="margin-bottom: 0.5rem; color: #495057;">Best For:</h4>
+    <p style="margin-bottom: 0;">High-impact editorial content, dramatic storytelling, featured articles where visual impact is more important than metadata prominence.</p>
+  </div>
+  
+  <h2>Sample Article Content</h2>
+  <div style="line-height: 1.6; color: #333;">
+    <h3>From Dormitory to Global Markets</h3>
+    <p>In the bustling dormitories of Moscow State University in 2008, few would have noticed the small gatherings in Room 312, where economics student Alexei Sokolov hosted informal tea ceremonies for his friends. Using traditional Russian samovars and blends he created from local herbs and imported leaves, these sessions became legendary among students seeking respite from grueling study schedules.</p>
+    
+    <p>"I never intended to start a business," Sokolov recalls, sitting in TeaTime's sleek headquarters in central Moscow. "I was studying economics because my parents insisted on a practical degree. The tea ceremonies were my creative escape."</p>
+    
+    <p>Yet what began as a hobby would transform into one of Russia's most successful beverage exports, reaching markets across Europe, Asia, and now North America. TeaTime's journey from university project to international brand offers a masterclass in turning cultural heritage into global appeal.</p>
+    
+    <h3>The Pivotal Moment</h3>
+    <p>The turning point came during Sokolov's final semester in 2010. What had begun as a series of informal gatherings had evolved into a small side business, with Sokolov selling his custom blends to fellow students and faculty.</p>
+  </div>
+  
+  <p style="margin-top: 2rem;"><a href="/en/test/hero-card-test/">→ Test Card Style</a> | <a href="/en/test/hero-minimal-test/">→ Test Minimal Style</a></p>
+</div>

@@ -1,0 +1,11 @@
+{% comment %}
+PAGE SECTION: Insight Article Taxonomy
+PURPOSE: Display article taxonomy using dimension tag-cloud variant 1C
+UPDATED: 2025-07-04 - Using existing dimension-tag-cloud component with 1C variant
+{% endcomment %}
+
+<h3 class="panel__heading-tertiary">
+  {% include helpers/t.html key="insights.taxonomy.title" fallback="Article Topics" %}
+</h3>
+
+{% include components/ui/dimension-tag-cloud.html parent=page variant="1c" show_all=true %}

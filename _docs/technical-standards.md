@@ -69,8 +69,85 @@ _data/translations/[lang].yml            # UI text
 _brands/[lang]/[country]-[brand].md      # Brand profiles
 _founders/[lang]/[founder-id].md         # Founder profiles
 _dimensions/[lang]/[type]/[slug].md      # Taxonomy definitions
-_insights/[lang]/[article-slug].md       # Blog articles
+_insights/[lang]/[article-slug].md       # Blog articles (customer-facing)
+_journal/[lang]/[article-slug].md        # Internal blog (development journey)
+_pages/[lang]/[page-slug].md             # Static pages (about, contact, etc.)
 ```
+
+## Official Color Standards (NEVER CHANGE)
+
+### Dimension Taxonomy Colors
+| Type | Color | CSS Property | Usage |
+|------|-------|--------------|-------|
+| **Sectors** | Olive Green | `--olive-*` | Industry categories |
+| **Markets** | Sky Blue | `--sky-*` | Geographic regions |
+| **Attributes** | Orange | `--secondary-*` | Brand qualities |
+| **Signals** | Indigo | `--accent-*` | Growth indicators |
+
+### Insight Category Colors (Aligned with Dimensions)
+| Category | Color | CSS Property | Business Context |
+|----------|-------|--------------|------------------|
+| **Brand Spotlight** | Orange | `--secondary-*` | Investment opportunities (same as Attributes) |
+| **Founder's Journey** | Purple | `--accent-*` | Leadership excellence (same as Signals) |
+| **Location Intelligence** | Sky Blue | `--sky-*` | Geographic intelligence (same as Markets) |
+| **Market Momentum** | Olive Green | `--olive-*` | Market trends (same as Sectors) |
+
+**Critical Rule**: Insight categories intentionally use SAME colors as dimension types for visual consistency and semantic alignment.
+
+## CSS File Organization Standards
+
+### Matching CSS Files for Components
+**Rule**: Every HTML component must have a matching CSS file for isolation and debugging.
+
+```
+_includes/components/cards/brand-card.html
+assets/css/components/cards/brand-card.scss
+
+_includes/components/ui/insight-category.html  
+assets/css/components/ui/insight-category.scss
+
+_includes/pages/brands/hero.html
+assets/css/pages/brands/hero.scss
+```
+
+**Benefits:**
+- Easy debugging and style isolation
+- Clear ownership of CSS rules
+- Prevents cross-component conflicts
+- Simplifies maintenance
+
+## Mobile-First Responsive Standards
+
+### Breakpoint Strategy (Always min-width)
+```scss
+/* Mobile-first base styles (no media query) */
+.component {
+  width: 100%;
+  padding: var(--space-4);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .component {
+    width: var(--card-width-standard);
+    padding: var(--space-6);
+  }
+}
+
+/* Desktop and up */  
+@media (min-width: 1024px) {
+  .component {
+    width: var(--card-width-featured);
+  }
+}
+```
+
+**Standard Breakpoints:**
+- **Mobile**: Base styles (no media query)
+- **Tablet**: `@media (min-width: 768px)`
+- **Desktop**: `@media (min-width: 1024px)`
+
+**Never use max-width** - always progressive enhancement with min-width.
 
 ### Asset Organization
 ```

@@ -1,0 +1,45 @@
+{% comment %}
+PAGE SECTION: Related Insights
+PURPOSE: Display related insight articles using horizontal minimal cards
+REVERTED: 2025-07-04 - Back to horizontal minimal card layout
+{% endcomment %}
+
+<h3 class="panel__heading-tertiary">
+  {% include helpers/t.html key="insights.related.title" fallback="Continue Reading" %}
+</h3>
+
+<div style="display: grid; gap: 1rem;">
+  <article style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white; display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start;">
+    <div style="width: 120px; height: 80px; background: linear-gradient(45deg, #e8f5e8, #c8e6c9); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #388e3c; font-size: 0.8rem; overflow: hidden;">
+      <img src="/assets/images/insights/ru-teatime-founder-journey/ru-teatime-founder-journey-hero-storefront-400w.jpg" 
+           alt="TeaTime" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div>
+      <span style="background: #28a745; color: white; padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.7rem; text-transform: uppercase;">Founders Journey</span>
+      <h5 style="margin: 0.5rem 0; color: #333;">TeaTime's Journey to Global Markets</h5>
+      <p style="margin: 0; color: #6c757d; font-size: 0.9rem; line-height: 1.4;">From Moscow university to 23 countries: the remarkable founder story</p>
+    </div>
+  </article>
+  <article style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white; display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start;">
+    <div style="width: 120px; height: 80px; background: linear-gradient(45deg, #fff3e0, #ffe0b2); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #f57c00; font-size: 0.8rem; overflow: hidden;">
+      <img src="/assets/images/insights/ru-seven-spices-spotlight/ru-seven-spices-spotlight-hero-market-400w.jpg" 
+           alt="Seven Spices" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div>
+      <span style="background: #fd7e14; color: white; padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.7rem; text-transform: uppercase;">Brand Spotlight</span>
+      <h5 style="margin: 0.5rem 0; color: #333;">Seven Spices: Traditional Meets Modern</h5>
+      <p style="margin: 0; color: #6c757d; font-size: 0.9rem; line-height: 1.4;">How a traditional spice company modernized for global markets</p>
+    </div>
+  </article>
+  <article style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white; display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start;">
+    <div style="width: 120px; height: 80px; background: linear-gradient(45deg, #f3e5f5, #e1bee7); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #7b1fa2; font-size: 0.8rem; overflow: hidden;">
+      <img src="/assets/images/insights/ru-siberian-honey-corridor/ru-siberian-honey-corridor-hero-corridor-400w.jpg" 
+           alt="Siberian Honey" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div>
+      <span style="background: #6f42c1; color: white; padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.7rem; text-transform: uppercase;">Location Intelligence</span>
+      <h5 style="margin: 0.5rem 0; color: #333;">Siberian Honey Corridor Analysis</h5>
+      <p style="margin: 0; color: #6c757d; font-size: 0.9rem; line-height: 1.4;">Geographic analysis of honey production regions and export routes</p>
+    </div>
+  </article>
+</div>

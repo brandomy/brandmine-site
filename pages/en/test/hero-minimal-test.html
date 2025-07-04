@@ -1,0 +1,243 @@
+---
+layout: default
+title: "Hero Minimal Style Test"
+lang: en
+permalink: /en/test/hero-minimal-test/
+---
+
+{% comment %}
+TEST PAGE: Hero Minimal Style
+PURPOSE: Demonstrate the Minimal Clean hero layout
+INCLUDES: Custom hero with sample insight data
+{% endcomment %}
+
+<style>
+/* Include the hero-minimal CSS inline for testing */
+.insight-hero-minimal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    padding: var(--space-12) var(--space-8);
+  }
+}
+
+.insight-hero-minimal__content {
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__content {
+    order: 0;
+  }
+}
+
+.insight-hero-minimal__category {
+  color: var(--primary-600);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-transform: capitalize;
+  letter-spacing: 0.025em;
+  margin-bottom: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__category {
+    font-size: var(--text-base);
+  }
+}
+
+.insight-hero-minimal__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--gray-900);
+  line-height: 1.3;
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .insight-hero-minimal__title {
+    font-size: var(--text-4xl);
+  }
+}
+
+.insight-hero-minimal__description {
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__description {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-8);
+  }
+}
+
+.insight-hero-minimal__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+}
+
+@media (max-width: 767px) {
+  .insight-hero-minimal__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
+
+.insight-hero-minimal__author-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__author-info {
+    flex-direction: row;
+    gap: var(--space-3);
+    align-items: center;
+  }
+}
+
+.insight-hero-minimal__author {
+  font-weight: var(--font-medium);
+  color: var(--gray-700);
+}
+
+.insight-hero-minimal__date {
+  font-size: var(--text-xs);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__date {
+    font-size: var(--text-sm);
+  }
+}
+
+.insight-hero-minimal__reading-time {
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-2);
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__reading-time {
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
+.insight-hero-minimal__image {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  order: 0;
+}
+
+@media (min-width: 768px) {
+  .insight-hero-minimal__image {
+    order: 1;
+    aspect-ratio: 3/4;
+  }
+}
+
+.insight-hero-minimal__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.insight-hero-minimal__img:hover {
+  transform: scale(1.05);
+}
+</style>
+
+<div class="insight-hero-minimal">
+  <div class="insight-hero-minimal__content">
+    <div class="insight-hero-minimal__category">
+      Market Analysis
+    </div>
+    
+    <h1 class="insight-hero-minimal__title">
+      The Siberian Honey Corridor: Russia's Sweet Export Success
+    </h1>
+    
+    <p class="insight-hero-minimal__description">
+      How traditional beekeeping in Siberia's pristine wilderness has evolved into a thriving export industry, with Russian honey now reaching premium markets across Europe and Asia.
+    </p>
+    
+    <div class="insight-hero-minimal__meta">
+      <div class="insight-hero-minimal__author-info">
+        <span class="insight-hero-minimal__author">Randal Eastman</span>
+        <span class="insight-hero-minimal__date">July 4, 2025</span>
+      </div>
+      
+      <div class="insight-hero-minimal__reading-time">
+        5 min read
+      </div>
+    </div>
+  </div>
+  
+  <div class="insight-hero-minimal__image">
+    <img src="/assets/images/insights/ru-siberian-honey-corridor/ru-siberian-honey-corridor-hero-corridor-800w.jpg" 
+         alt="Siberian honey corridor landscape showing pristine wilderness"
+         class="insight-hero-minimal__img" loading="eager">
+  </div>
+</div>
+
+<div style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+  <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #6c757d; margin-bottom: 2rem;">
+    <h3 style="margin-top: 0; color: #495057;">Hero Minimal Style Features</h3>
+    <ul style="margin-bottom: 1rem;">
+      <li><strong>Typography-focused:</strong> Clean, readable text with generous spacing</li>
+      <li><strong>Subtle image accent:</strong> Image complements rather than dominates content</li>
+      <li><strong>Organized metadata:</strong> Author/date grouped, reading time highlighted</li>
+      <li><strong>Minimal aesthetic:</strong> Clean lines, plenty of white space</li>
+      <li><strong>Fast loading:</strong> Lightweight design with emphasis on content</li>
+    </ul>
+    
+    <h4 style="margin-bottom: 0.5rem; color: #495057;">Best For:</h4>
+    <p style="margin-bottom: 0;">Text-heavy publications, minimal design aesthetics, fast-loading sites where content readability is the highest priority.</p>
+  </div>
+  
+  <h2>Sample Article Content</h2>
+  <div style="line-height: 1.6; color: #333;">
+    <h3>The Sweet Success of Siberian Wilderness</h3>
+    <p>Deep in the Siberian taiga, where pristine forests stretch endlessly under vast skies, a quiet revolution is transforming traditional beekeeping into a thriving export industry. The Siberian Honey Corridor, spanning over 2,000 kilometers from the Ural Mountains to Lake Baikal, has become Russia's premier honey-producing region.</p>
+    
+    <p>What makes Siberian honey special isn't just its purity—it's the unique flora of the boreal forest. Linden trees, wildflower meadows, and rare mountain herbs create flavor profiles that luxury food markets in Europe and Asia cannot replicate elsewhere.</p>
+    
+    <p>"When you taste Siberian honey, you're tasting the essence of untouched wilderness," explains Elena Petrov, whose family has kept bees in the region for three generations. "It's not just a product—it's a piece of Russia's natural heritage."</p>
+    
+    <p>The transformation from local cottage industry to international export powerhouse began in 2018 when regional cooperatives started organizing direct sales to European distributors. Today, Siberian honey commands premium prices in markets from Berlin to Tokyo, with some specialty varieties selling for over €50 per kilogram.</p>
+  </div>
+  
+  <p style="margin-top: 2rem;"><a href="/en/test/hero-card-test/">→ Test Card Style</a> | <a href="/en/test/hero-magazine-test/">→ Test Magazine Style</a></p>
+</div>

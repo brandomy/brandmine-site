@@ -1,0 +1,108 @@
+{% comment %}
+================================================================================
+COMPONENT: Insight Category Badge
+PATH: _includes/components/ui/insight-category.html
+PURPOSE: Standardized insight category badges with consistent styling and colors
+UPDATED: 2025-07-04 - Enhanced with data-driven approach and intelligent icon handling
+================================================================================
+
+Features:
+- Standardized colors from insights data files
+- Multiple style variants for different contexts
+- Intelligent icon handling (no spacing when icons disabled)
+- Multilingual support via insights data files
+- Configuration-driven behavior
+
+Parameters:
+- category (required): Category ID (brand_spotlight, founders_journey, location_intelligence, market_momentum)
+- variant (optional): Style variant - "pill", "rectangular", "minimal", "compact". Default: "pill"
+- show_icon (optional): Boolean to show/hide icon. Default: false
+- size (optional): Size variant - "sm", "md", "lg". Default: "md"
+- uppercase (optional): Boolean to transform text to uppercase. Default: false
+- lang (optional): Language code. Default: page.lang
+
+Usage Examples:
+{% include components/ui/insight-category.html category="market_momentum" %}
+{% include components/ui/insight-category.html category="brand_spotlight" variant="rectangular" show_icon=true %}
+{% include components/ui/insight-category.html category="founders_journey" variant="minimal" size="sm" %}
+
+Dependencies:
+- Data: _data/insights/{lang}.yml for category definitions
+- CSS: Inline styles for maximum flexibility and easy adjustment
+- Icons: components/icons/icon.html (when show_icon=true)
+================================================================================
+{% endcomment %}
+
+{% assign category_id = include.category %}
+{% assign category_css_class = include.category | replace: "_", "-" %}
+{% assign variant = include.variant | default: "pill" %}
+{% assign show_icon = include.show_icon | default: false %}
+{% assign size = include.size | default: "md" %}
+{% assign uppercase = include.uppercase | default: false %}
+{% assign current_lang = include.lang | default: page.lang | default: 'en' %}
+
+{% comment %} Load category data from insights data file {% endcomment %}
+{% assign insights_data = site.data.insights[current_lang] %}
+{% assign category_data = insights_data.categories | where: "id", category_id | first %}
+
+<!-- DEBUG REMOVED - Component working correctly -->
+
+{% if category_data %}
+  {% comment %} Colors now handled by CSS tokens - no hard-coded values needed {% endcomment %}
+  
+  {% comment %} Size variants {% endcomment %}
+  {% case size %}
+    {% when 'sm' %}
+      {% assign font_size = "0.7rem" %}
+      {% assign padding = "0.2rem 0.5rem" %}
+      {% assign icon_size = "xs" %}
+    {% when 'lg' %}
+      {% assign font_size = "0.875rem" %}
+      {% assign padding = "0.5rem 1rem" %}
+      {% assign icon_size = "sm" %}
+    {% else %}
+      {% assign font_size = "0.75rem" %}
+      {% assign padding = "0.25rem 0.75rem" %}
+      {% assign icon_size = "xs" %}
+  {% endcase %}
+  
+  {% comment %} Variant-specific styling now handled by CSS classes only {% endcomment %}
+  
+  {% comment %} Get category display name {% endcomment %}
+  {% assign display_name = category_data.name %}
+  {% if uppercase %}
+    {% assign display_name = display_name | upcase %}
+  {% endif %}
+  
+  {% comment %} Render the badge with inline style override {% endcomment %}
+  {% case category_id %}
+    {% when 'brand_spotlight' %}
+      {% assign inline_style = 'background-color: #F97316 !important; color: white !important;' %}
+    {% when 'founders_journey' %}
+      {% assign inline_style = 'background-color: #6366F1 !important; color: white !important;' %}
+    {% when 'location_intelligence' %}
+      {% assign inline_style = 'background-color: #0EA5E9 !important; color: white !important;' %}
+    {% when 'market_momentum' %}
+      {% assign inline_style = 'background-color: #84CC16 !important; color: white !important;' %}
+    {% else %}
+      {% assign inline_style = 'background-color: #FF00FF !important; color: white !important;' %}
+  {% endcase %}
+  
+  <span style="{{ inline_style }} padding: 4px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+    {% if show_icon and category_data.icon %}
+      <span class="insight-category__icon">
+        {% include components/icons/icon.html 
+           system="insights" 
+           name=category_data.icon 
+           size=icon_size %}
+      </span>
+    {% endif %}
+    
+    <span class="insight-category__text">{{ display_name }}</span>
+  </span>
+{% else %}
+  {% comment %} Fallback for unknown category {% endcomment %}
+  <span class="insight-category insight-category--unknown insight-category--{{ size }}">
+    <span class="insight-category__text">{{ category_id | replace: '_', ' ' | replace: '-', ' ' | capitalize }}</span>
+  </span>
+{% endif %}

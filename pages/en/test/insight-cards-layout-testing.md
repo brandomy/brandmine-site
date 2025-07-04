@@ -642,27 +642,17 @@ lang: en
 
   <!-- Section 0A: Complete Insight Card Inventory -->
   <section class="test-section">
-    <h2>Section 0A: CURRENT INSIGHT CARD INVENTORY (Pre-Consolidation)</h2>
+    <h2>Section 0A: Current Insight Card Inventory</h2>
     <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;"><strong>Status:</strong> 3 primary components with variants displayed, target consolidation to 2-3 components</p>
     
-    <!-- BEM Audit Results Summary -->
-    <div style="background: #fef3c7; border: 2px solid #f59e0b; padding: 1rem; border-radius: 0.5rem; margin-bottom: 2rem;">
-      <h4 style="margin-bottom: 1rem; color: #92400e;">📋 BEM Audit Results Summary</h4>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 0.875rem;">
-        <div><strong>Total Components:</strong> 3 cards displayed</div>
-        <div><strong>BEM Violations:</strong> 0 components (all fixed)</div>
-        <div><strong>CSS Boundaries:</strong> ✅ Clean</div>
-        <div><strong>Configuration:</strong> ✅ Properly integrated</div>
-      </div>
-    </div>
     
     <!-- Get test insight data -->
     {% assign comparison_insight = site.insights | where: "lang", "en" | first %}
     
-    <!-- Components 1-3 Grid -->
-    <div class="test-grid-3col" style="margin-bottom: 3rem;">
+    <!-- Row 1: Component 1A (1 column) and 1B (2 columns) -->
+    <div class="test-grid-3col" style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-4); margin-bottom: 3rem;">
       
-      <!-- 1A. insight-card.html (Base Card) -->
+      <!-- 1A. insight-card.html (Base Card) - 1 column -->
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. insight-card.html (Base Card)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
@@ -733,7 +723,7 @@ lang: en
         </div>
       </div>
       
-      <!-- 1B. insight-card.html Tagged Variant -->
+      <!-- 1B. insight-card.html Tagged Variant - 2 columns -->
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. insight-card.html Tagged Variant</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
@@ -804,8 +794,12 @@ lang: en
           </div>
         </div>
       </div>
+    </div>
+    
+    <!-- Row 2: Component 1C (Featured Variant) - 2 columns -->
+    <div class="test-grid-2col-centered" style="display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-bottom: 3rem; max-width: 50%; margin-left: 0;">
       
-      <!-- 1C. insight-card.html Featured Variant -->
+      <!-- 1C. insight-card.html Featured Variant - 2 columns width -->
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. insight-card.html Featured Variant</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
@@ -878,37 +872,91 @@ lang: en
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    
+    <!-- Row 3: Component 1D (Related Variant) - 3 columns -->
+    <div class="test-grid-wide" style="display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-bottom: 3rem; max-width: 75%; margin-left: auto; margin-right: auto;">
+      
+      <!-- 1D. insight-card.html Related Variant -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1D. insight-card.html Related Variant</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">Horizontal layout 120x80px (3:2) image, 400w source</span><br>
+          <strong>Purpose:</strong> Horizontal minimal cards for related insights sections<br>
+          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Inline styles (adjustable)</span><br>
+          <strong>Width System:</strong> <span style="color: #059669;">✅ Full width horizontal layout</span>
+        </div>
+        <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
+          {% if comparison_insight %}
+            <div style="max-width: 100%; overflow: hidden;">
+              {% include components/cards/insight-card.html insight=comparison_insight variant="related" %}
+            </div>
+          {% endif %}
+        </div>
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/insight-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> Inline styles for easy adjustment</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="related" %}{% endraw %}</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Layout:</strong> Horizontal grid (120px image + 1fr content)</p>
+        </div>
         
-        <!-- Featured Variant Analysis -->
-        <div style="background: #fef3c7; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; border: 1px solid #f59e0b;">
-          <h5 style="margin-bottom: 0.75rem; color: #92400e;">Featured Variant Analysis:</h5>
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
             <div>
-              <strong style="color: #92400e;">Premium Features:</strong><br>
-              • Size: <code>--card-width-featured-lg</code> (480px desktop)<br>
-              • Rounded corners: <code>--radius-xl</code> (24px) ✅<br>
-              • Enhanced shadows: <code>--shadow-lg</code><br>
-              • Fixed aspect ratio: <code>16/9</code><br>
+              <strong style="color: #1f2937;">Title (H5):</strong><br>
+              • Font: Default system font<br>
+              • Weight: Normal (500)<br>
+              • Color: #333 (dark gray)<br>
+              • Line Height: Normal<br>
+              • Margin: 0.5rem 0<br><br>
+              
+              <strong style="color: #1f2937;">Layout Structure:</strong><br>
+              • Article: CSS Grid layout<br>
+              • Columns: 120px 1fr<br>
+              • Gap: 1rem<br>
+              • Align: start<br><br>
+              
+              <strong style="color: #1f2937;">Image Container:</strong><br>
+              • Size: 120px × 80px<br>
+              • Border radius: 4px<br>
+              • Object fit: cover<br>
+              • Overflow: hidden
             </div>
             <div>
-              <strong style="color: #92400e;">Content Layout:</strong><br>
-              • Centered category badge<br>
-              • Meta above title (order: -1)<br>
-              • Centered description text<br>
-              • Enhanced hover effects<br>
+              <strong style="color: #1f2937;">Category Badge:</strong><br>
+              • Dynamic color mapping<br>
+              • Market Momentum: #28a745 (green)<br>
+              • Brand Spotlight: #fd7e14 (orange)<br>
+              • Location Intelligence: #6f42c1 (purple)<br>
+              • Font size: 0.7rem<br>
+              • Border radius: 12px<br><br>
+              
+              <strong style="color: #1f2937;">Excerpt:</strong><br>
+              • Font: Default system font<br>
+              • Size: 0.9rem<br>
+              • Color: #6c757d (muted gray)<br>
+              • Line Height: 1.4<br>
+              • Truncate: 20 words<br><br>
+              
+              <strong style="color: #1f2937;">Container:</strong><br>
+              • Border: 1px solid #dee2e6<br>
+              • Background: white<br>
+              • Padding: 1rem<br>
+              • Border radius: 8px
             </div>
-          </div>
-          <div style="margin-top: 1rem; padding: 0.75rem; background: #fffbeb; border-radius: 0.375rem;">
-            <strong style="color: #92400e;">🎯 Premium Styling:</strong> This variant provides enhanced styling for homepage featured displays while maintaining component consistency.
           </div>
         </div>
       </div>
-      
     </div>
     
     <!-- Typography & Color Variations Summary -->
     <div style="background: #fffbeb; border: 2px solid #f59e0b; padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
-      <h4 style="margin-bottom: 1rem; color: #92400e;">🎨 Typography & Color Variations Summary ✨ UPDATED</h4>
+      <h4 style="margin-bottom: 1rem; color: #92400e;">🎨 Typography & Color Variations Summary</h4>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
         
         <!-- Key Differences -->
@@ -986,37 +1034,7 @@ lang: en
       </div>
     </div>
     
-    <!-- Component Architecture Analysis -->
-    <div style="background: #eff6ff; padding: 1.5rem; border-radius: 0.5rem; border: 2px solid #3b82f6;">
-      <h4 style="margin-bottom: 1rem; color: #1e40af;">🏗️ Component Architecture Analysis</h4>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-        <div>
-          <h5 style="margin-bottom: 0.5rem;">Current State (3 Components)</h5>
-          <ul style="margin: 0; font-size: 0.875rem; line-height: 1.5;">
-            <li><strong>insight-card.html:</strong> 4,966 bytes - Base card (streamlined design)</li>
-            <li><strong>insight-card.html featured:</strong> 4,039 bytes - Premium homepage display</li>
-            <li><strong>insight-card-tagged.html:</strong> 6,523 bytes - Category focus</li>
-            <li><strong>insight-card-legacy.html:</strong> 11,260 bytes - Legacy complex version</li>
-          </ul>
-        </div>
-        <div>
-          <h5 style="margin-bottom: 0.5rem;">Optimization Target (2 Components)</h5>
-          <ul style="margin: 0; font-size: 0.875rem; line-height: 1.5;">
-            <li><strong>insight-card.html:</strong> Unified with variants for simple/latest/tagged</li>
-            <li><strong>Configuration-driven:</strong> Behavior controlled via _data/component_defaults.yml</li>
-            <li><strong>Maintenance:</strong> Reduced from 4 to 2 components</li>
-          </ul>
-        </div>
-      </div>
-    </div>
     
-    <!-- Target Architecture Summary -->
-    <div style="background: #dcfce7; border: 2px solid #22c55e; padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem;">
-      <h4 style="margin-bottom: 1rem; color: #15803d;">🎯 Target Consolidation Strategy</h4>
-      <p style="margin: 0; font-size: 0.875rem; color: #166534; text-align: center;">
-        <strong>Consolidate to:</strong> <code>insight-card.html</code> with variants (standard, featured, mini) for all use cases
-      </p>
-    </div>
     
   </section>
   

@@ -391,7 +391,7 @@ print(f'Founders: {len(founders)}')
 ### Essential Commands
 ```bash
 # Development server
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve
 
 # Production build with timing
 time JEKYLL_ENV=production bundle exec jekyll build

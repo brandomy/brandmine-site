@@ -1,0 +1,22 @@
+{% comment %}
+PAGE SECTION: Insight Article Brand Info
+PURPOSE: Display featured brand information using brand-card featured variant
+UPDATED: 2025-07-04 - Using proven brand-card.html component with featured styling
+{% endcomment %}
+
+{% if page.brands and page.brands.size > 0 %}
+  <h3 class="panel__heading-tertiary">
+    {% include helpers/t.html key="insights.brand_info.title" fallback="Featured Brand" %}
+  </h3>
+
+  {% assign featured_brand_slug = page.brands.first %}
+  {% assign featured_brand = site.brands | where: "ref", featured_brand_slug | where: "lang", page.lang | first %}
+  
+  {% if featured_brand %}
+    <div class="insight-brand-info">
+      {% include components/cards/brand-card.html 
+         brand=featured_brand 
+         variant="featured" %}
+    </div>
+  {% endif %}
+{% endif %}

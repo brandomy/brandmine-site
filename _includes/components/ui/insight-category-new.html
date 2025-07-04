@@ -1,0 +1,59 @@
+{% comment %}
+SIMPLE INSIGHT CATEGORY - Based on working demo page styling
+Usage: {% include components/ui/insight-category-new.html category="brand-spotlight" %}
+BEM: insight-category-new component
+{% endcomment %}
+
+{% assign category = include.category | default: "brand-spotlight" %}
+{% assign size = include.size | default: "md" %}
+
+{% comment %}Set size-specific CSS classes{% endcomment %}
+{% if size == "sm" %}
+  {% assign size_class = "insight-category-new-isolated--small" %}
+{% elsif size == "lg" %}
+  {% assign size_class = "insight-category-new-isolated--large" %}
+{% else %}
+  {% assign size_class = "" %}
+{% endif %}
+
+{% if category == "brand-spotlight" %}
+  <span class="insight-category-new insight-category-new--brand-spotlight {{ size_class }}" style="background-color: var(--secondary-100); color: var(--secondary-800); padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: var(--font-medium); display: inline-flex; align-items: center; gap: var(--space-2);">
+    <svg class="insight-category-new__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; color: var(--primary-400);">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+    <span class="insight-category-new__text">Brand Spotlight</span>
+  </span>
+
+{% elsif category == "founders-journey" %}
+  <span class="insight-category-new insight-category-new--founders-journey {{ size_class }}" style="background-color: var(--accent-100); color: var(--accent-800); padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: var(--font-medium); display: inline-flex; align-items: center; gap: var(--space-2);">
+    <svg class="insight-category-new__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; color: var(--primary-400);">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M12 12v7" />
+      <line x1="8" y1="16" x2="16" y2="16" />
+    </svg>
+    <span class="insight-category-new__text">Founder's Journey</span>
+  </span>
+
+{% elsif category == "location-intelligence" %}
+  <span class="insight-category-new insight-category-new--location-intelligence {{ size_class }}" style="background-color: var(--sky-100); color: var(--sky-800); padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: var(--font-medium); display: inline-flex; align-items: center; gap: var(--space-2);">
+    <svg class="insight-category-new__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; color: var(--primary-400);">
+      <path d="M12 22c3.5-3.5 7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 3.5 7.5 7 11z" />
+      <circle cx="12" cy="11" r="2" />
+    </svg>
+    <span class="insight-category-new__text">Location Intelligence</span>
+  </span>
+
+{% elsif category == "market-momentum" %}
+  <span class="insight-category-new insight-category-new--market-momentum {{ size_class }}" style="background-color: var(--olive-100); color: var(--olive-800); padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: var(--font-medium); display: inline-flex; align-items: center; gap: var(--space-2);">
+    <svg class="insight-category-new__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; color: var(--primary-400);">
+      <polyline points="22 7 13 15 9 12 2 19" />
+      <polyline points="16 7 22 7 22 13" />
+    </svg>
+    <span class="insight-category-new__text">Market Momentum</span>
+  </span>
+
+{% else %}
+  <span class="insight-category-new insight-category-new--unknown {{ size_class }}" style="background-color: var(--neutral-100); color: var(--neutral-700); padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: var(--font-medium);">
+    <span class="insight-category-new__text">{{ category | replace: "-", " " | capitalize }}</span>
+  </span>
+{% endif %}

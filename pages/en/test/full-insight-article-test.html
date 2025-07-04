@@ -1,0 +1,321 @@
+---
+layout: default
+title: "Russian Wine Renaissance: 52% Market Growth Over Five Years"
+lang: en
+permalink: /en/test/full-insight-article-test/
+
+# Wine article data
+date: 2025-04-01
+author: "randal_eastman"
+excerpt: "Russia's wine industry is experiencing unprecedented growth, with domestic production doubling and increasing international recognition."
+category: "market-momentum"
+reading_time: 7
+
+# Brand Information
+brands: [ru-krasnodar-wines]
+founding_year: 1998
+website: "https://krasnodar-wines.ru"
+founders: ["ru-anna-kuznetsova"]
+founder_led: true
+
+# Taxonomy
+sectors: [wine]
+markets: [russia]
+attributes: [innovation-leader, sustainability-pioneer]
+signals: [rapid-growth, export-ready]
+
+# Location
+location_lng: 37.2986
+location_lat: 45.0448
+location_city: "Krasnodar"
+location_region: "Krasnodar Krai"
+location_country: "ru"
+---
+
+{% assign insight = page %}
+{% assign current_lang = page.lang | default: 'en' %}
+
+<div class="insight-article-page">
+
+  <!-- SECTION: Breadcrumbs -->
+  <div style="position: relative; margin-bottom: 2rem;">
+    <div style="position: absolute; top: -10px; left: 0; background: #000; color: white; padding: 2px 8px; font-size: 10px; border-radius: 3px; z-index: 10;">BREADCRUMBS (Component)</div>
+    {% include pages/insight-article/breadcrumbs.html %}
+  </div>
+
+  <!-- SECTION: Hero -->
+  <div style="position: relative; margin-bottom: 3rem;">
+    <div style="position: absolute; top: -10px; left: 0; background: #000; color: white; padding: 2px 8px; font-size: 10px; border-radius: 3px; z-index: 10;">HERO</div>
+    
+    <style>
+    .insight-hero-card {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+    .insight-hero-card__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .insight-hero-card {
+        padding: var(--space-8);
+      }
+      .insight-hero-card__container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-8);
+        align-items: center;
+      }
+    }
+    .insight-hero-card__image {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      order: -1;
+    }
+    @media (min-width: 768px) {
+      .insight-hero-card__image {
+        aspect-ratio: 4/3;
+        order: 0;
+      }
+    }
+    .insight-hero-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .insight-hero-card__img:hover {
+      transform: scale(1.02);
+    }
+    .insight-hero-card__content {
+      padding: var(--space-6);
+    }
+    @media (min-width: 768px) {
+      .insight-hero-card__content {
+        padding: var(--space-8);
+      }
+    }
+    .insight-hero-card__category {
+      color: var(--primary-600);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-3);
+    }
+    .insight-hero-card__title {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--gray-900);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+    @media (min-width: 768px) {
+      .insight-hero-card__title {
+        font-size: var(--text-3xl);
+      }
+    }
+    .insight-hero-card__description {
+      font-size: var(--text-base);
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+    }
+    @media (min-width: 768px) {
+      .insight-hero-card__description {
+        font-size: var(--text-lg);
+      }
+    }
+    .insight-hero-card__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--gray-500);
+      flex-wrap: wrap;
+    }
+    .insight-hero-card__meta .separator {
+      margin: 0 var(--space-1);
+      opacity: 0.7;
+    }
+    .insight-hero-card__author {
+      font-weight: var(--font-medium);
+    }
+    </style>
+
+    <div class="insight-hero-card">
+      <div class="insight-hero-card__container">
+        <div class="insight-hero-card__image">
+          <img src="/assets/images/insights/ru-russian-wine-renaissance/ru-russian-wine-renaissance-hero-vineyard-800w.jpg" 
+               alt="Russian vineyards in Krasnodar region showing modern viticulture techniques"
+               class="insight-hero-card__img" loading="eager">
+        </div>
+        
+        <div class="insight-hero-card__content">
+          <div class="insight-hero-card__category">
+            Market Momentum
+          </div>
+          
+          <h1 class="insight-hero-card__title">
+            {{ page.title }}
+          </h1>
+          
+          <p class="insight-hero-card__description">
+            {{ page.excerpt }}
+          </p>
+          
+          <div class="insight-hero-card__meta">
+            <span class="insight-hero-card__date">
+              {{ page.date | date: "%B %d, %Y" }}
+            </span>
+            <span class="separator">•</span>
+            <span class="insight-hero-card__author">
+              Randal Eastman
+            </span>
+            <span class="separator">•</span>
+            <span class="insight-hero-card__reading-time">
+              {{ page.reading_time }} min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: Content -->
+  <div style="position: relative; margin-bottom: 3rem;">
+    <div style="position: absolute; top: -10px; left: 0; background: #000; color: white; padding: 2px 8px; font-size: 10px; border-radius: 3px; z-index: 10;">CONTENT</div>
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+      <div style="line-height: 1.7; color: #333; font-size: 1.1rem;">
+        <h2>A New Direction for Russian Spirits</h2>
+        <p>While European markets have traditionally been the primary destination for Russian spirit exporters, the past 18 months have seen a remarkable shift. Premium craft distilleries across Russia are finding unprecedented success in East Asian luxury markets, particularly in China, Japan, and South Korea.</p>
+
+        <p>Industry data shows that exports of Russian craft spirits to East Asia increased by 78% in 2024, with especially strong growth in the ultra-premium segment priced above $100 per bottle. This growth comes at a critical time when traditional export routes have faced logistical and regulatory challenges.</p>
+
+        <p>"Initially, we viewed Asian markets as a secondary opportunity," explains Dmitry Voronin, CEO of Siberian Distillery. "Now they represent more than 40% of our export revenue and are growing faster than any other region."</p>
+
+        <p>The success reflects a broader trend of Russian brands finding new pathways to global markets through strategic partnerships and innovative distribution models. From traditional vodka producers to emerging craft distilleries, the industry is adapting to changing geopolitical realities while maintaining its commitment to quality and authenticity.</p>
+
+        <h2>The Krasnodar Revolution</h2>
+        <p>At the heart of Russia's wine renaissance lies the Krasnodar region, where a combination of favorable climate, innovative techniques, and passionate winemakers has transformed what was once considered a peripheral wine region into a serious contender on the global stage.</p>
+
+        <p>The region's unique terroir, characterized by rich black earth soils and a continental climate moderated by the Black Sea, provides ideal conditions for both traditional European grape varieties and indigenous Russian cultivars that are gaining international recognition.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SECTION: Taxonomy -->
+  <div style="position: relative; margin-bottom: 3rem;">
+    <div style="position: absolute; top: -10px; left: 0; background: #000; color: white; padding: 2px 8px; font-size: 10px; border-radius: 3px; z-index: 10;">TAXONOMY (Tag-Cloud 1C)</div>
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+      
+      <!-- Tag Cloud 1C Demonstration -->
+      <div style="background: #f8f9fa; padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+        <h4 style="margin-top: 0; color: #495057; text-align: center;">1C: Case Study</h4>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin: 1.5rem 0;">
+          <!-- Markets (Sky Blue) -->
+          <span style="padding: var(--space-1) var(--space-3); background: #0ea5e9; color: white; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600;">China</span>
+          <span style="padding: var(--space-1) var(--space-3); background: #0ea5e9; color: white; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600;">Brazil</span>
+          
+          <!-- Sectors (Olive Green) -->
+          <span style="padding: var(--space-1) var(--space-3); background: #84cc16; color: white; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600;">Natural Beauty</span>
+          
+          <!-- Attributes (Orange) -->
+          <span style="padding: var(--space-1) var(--space-3); background: #f97316; color: white; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600;">Sustainability Pioneer</span>
+          
+          <!-- Signals (Purple) -->
+          <span style="padding: var(--space-1) var(--space-3); background: #6366f1; color: white; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600;">Franchise Ready</span>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.85rem; color: #6b7280; margin-top: 1rem;">
+          <div>
+            <strong>Font Size:</strong> var(--text-sm)<br>
+            <strong>Font Weight:</strong> 600<br>
+            <strong>Padding:</strong> var(--space-1) var(--space-3)
+          </div>
+          <div>
+            <strong>Border Radius:</strong> var(--radius-md)<br>
+            <strong>Border:</strong> none<br>
+            <strong>Style:</strong> Bold, clean
+          </div>
+        </div>
+      </div>
+      
+      <!-- Actual Article Taxonomy -->
+      <h3 style="margin-bottom: 1rem; color: #495057;">Article Topics</h3>
+      {% include pages/insight-article/taxonomy.html %}
+    </div>
+  </div>
+
+  <!-- SECTION: Brand Info -->
+  <div style="position: relative; margin-bottom: 3rem;">
+    <div style="position: absolute; top: -10px; left: 0; background: #000; color: white; padding: 2px 8px; font-size: 10px; border-radius: 3px; z-index: 10;">BRAND INFO (Featured Card)</div>
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+      {% include pages/insight-article/brand-info.html %}
+    </div>
+  </div>
+
+  <!-- SECTION: Related Brands -->
+  <div style="position: relative; margin-bottom: 3rem;">
+    <div style="position: absolute; top: -10px; left: 0; background: #000; color: white; padding: 2px 8px; font-size: 10px; border-radius: 3px; z-index: 10;">RELATED BRANDS</div>
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+      <h4 style="margin-bottom: 1rem; color: #495057;">Explore Similar Brands</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+        <div style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white;">
+          <div style="width: 100%; height: 120px; background: linear-gradient(45deg, #e3f2fd, #bbdefb); border-radius: 4px; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; color: #1976d2; font-size: 0.9rem;">
+            <img src="/assets/images/insights/ru-siberian-honey-corridor/ru-siberian-honey-corridor-hero-corridor-400w.jpg" 
+                 alt="Siberian Honey" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+          </div>
+          <h5 style="margin: 0 0 0.5rem 0; color: #333;">Siberian Honey Co.</h5>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Premium artisanal honey from Siberian wilderness</p>
+        </div>
+        <div style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white;">
+          <div style="width: 100%; height: 120px; background: linear-gradient(45deg, #f3e5f5, #e1bee7); border-radius: 4px; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; color: #7b1fa2; font-size: 0.9rem;">
+            <img src="/assets/images/insights/ru-seven-spices-spotlight/ru-seven-spices-spotlight-hero-market-400w.jpg" 
+                 alt="Seven Spices" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+          </div>
+          <h5 style="margin: 0 0 0.5rem 0; color: #333;">Seven Spices</h5>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Traditional Russian spice blends for modern kitchens</p>
+        </div>
+        <div style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white;">
+          <div style="width: 100%; height: 120px; background: linear-gradient(45deg, #fff3e0, #ffe0b2); border-radius: 4px; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; color: #f57c00; font-size: 0.9rem;">
+            <img src="/assets/images/insights/ru-teatime-founder-journey/ru-teatime-founder-journey-hero-storefront-400w.jpg" 
+                 alt="TeaTime" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+          </div>
+          <h5 style="margin: 0 0 0.5rem 0; color: #333;">TeaTime</h5>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Artisanal Russian tea blends with global appeal</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: Related Insights -->
+  <div style="position: relative; margin-bottom: 3rem;">
+    <div style="position: absolute; top: -10px; left: 0; background: #000; color: white; padding: 2px 8px; font-size: 10px; border-radius: 3px; z-index: 10;">RELATED INSIGHTS (Compact Cards)</div>
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+      {% include pages/insight-article/related-insights.html %}
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation back to other tests -->
+<div style="max-width: 800px; margin: 2rem auto; padding: 0 1rem; text-align: center; border-top: 2px solid #e9ecef; padding-top: 2rem;">
+  <div style="background: #e7f3ff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #007bff;">
+    <h3 style="margin-top: 0; color: #495057;">Complete Insight Article Demo</h3>
+    <p style="margin-bottom: 1rem; color: #6c757d;">This page demonstrates all 7 sections of the improved insight-article layout with Russian Wine Renaissance content. Social sharing removed, taxonomy uses tag-cloud 1C, brand-info uses featured cards.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/en/test/hero-card-test/" style="padding: 0.5rem 1rem; background: #007bff; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem;">Hero Card Test</a>
+      <a href="/en/test/hero-magazine-test/" style="padding: 0.5rem 1rem; background: #28a745; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem;">Hero Magazine Test</a>
+      <a href="/en/test/hero-minimal-test/" style="padding: 0.5rem 1rem; background: #6c757d; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem;">Hero Minimal Test</a>
+    </div>
+  </div>
+</div>

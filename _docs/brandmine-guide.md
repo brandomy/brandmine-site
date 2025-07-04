@@ -9,7 +9,7 @@
 bundle install && npm install
 
 # Start development server
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve
 
 # Verify at http://localhost:4000
 ```
@@ -28,6 +28,7 @@ bundle exec jekyll serve --livereload
 - **Founder Profiles**: 15 minutes with standardized image system
 - **Insight Articles**: 25 minutes with category-specific styling
 - **Translation Management**: Cross-language consistency patterns
+- **Journal Content**: Internal development blog alongside customer insights
 
 **→ Complete Workflows**: See [setup-and-workflows.md](setup-and-workflows.md) for step-by-step procedures
 
@@ -109,7 +110,7 @@ bundle exec jekyll serve --livereload
 ### Development Essentials
 ```bash
 # Development server with live reload
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve
 
 # Production build (target: <15 seconds)
 JEKYLL_ENV=production bundle exec jekyll build

@@ -61,12 +61,9 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation
 
       <div class="insight-card__content">
         {% if include.insight.category %}
-          <span class="insight-card__category-badge">
-            {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="insight-card__category-icon" %}
-            {% assign normalized_category = include.insight.category | replace: "-", "_" %}
-            {% assign category_key = "insights." | append: normalized_category %}
-            {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
-          </span>
+          {% comment %} TEST: Using new component {% endcomment %}
+          {% include components/ui/insight-category-new.html 
+             category=include.insight.category %}
         {% endif %}
 
         <h3 class="insight-card__title">{{ include.insight.title }}</h3>
@@ -85,7 +82,7 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation
         <!-- Dimension Tags (Using unified component) -->
         {% include components/ui/dimension-tag-cloud.html 
            parent=include.insight
-           limit=1
+           show_all=true
            class_prefix="insight-card-tags"
            spacing="tight" %}
 
@@ -94,6 +91,40 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation
         </div>
       </div>
     </a>
+  </article>
+{% elsif variant == "related" %}
+  <article style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white; display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start;">
+    <div style="width: 120px; height: 80px; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      {% if include.insight.images.hero %}
+        {% assign hero_image = include.insight.images.hero %}
+        {% assign image_path = '/assets/images/insights/' | append: include.insight.ref | append: '/' | append: include.insight.ref | append: '-hero-' | append: hero_image.name | append: '-400w.' | append: hero_image.ext %}
+        <img src="{{ image_path }}" 
+             alt="{{ hero_image.alt | default: include.insight.title }}" 
+             style="width: 100%; height: 100%; object-fit: cover;" 
+             loading="lazy">
+      {% else %}
+        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #e8f5e8, #c8e6c9); display: flex; align-items: center; justify-content: center; color: #388e3c; font-size: 0.8rem;">
+          {{ include.insight.title | slice: 0, 3 | upcase }}
+        </div>
+      {% endif %}
+    </div>
+    
+    <div>
+      {% if include.insight.category %}
+        {% include components/ui/insight-category-new.html 
+           category=include.insight.category %}
+      {% endif %}
+      
+      <h5 style="margin: 0.5rem 0; color: #333;">
+        <a href="{{ include.insight.permalink | relative_url }}" style="color: inherit; text-decoration: none;">
+          {{ include.insight.title }}
+        </a>
+      </h5>
+      
+      <p style="margin: 0; color: #6c757d; font-size: 0.9rem; line-height: 1.4;">
+        {{ include.insight.excerpt | default: include.insight.description | truncatewords: 20 }}
+      </p>
+    </div>
   </article>
 {% elsif variant == "featured" %}
   <article class="insight-card insight-card--featured insight-card--{{ include.insight.category }}">
@@ -134,10 +165,10 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation
     <div class="insight-card__content">
       <div class="insight-card__category">
         <a href="{{ site.baseurl }}/{{ include.insight.lang }}/insights/categories/{{ include.insight.category }}/" 
-           class="insight-card__category-badge insight-card__category-link insight-card__category-badge--{{ include.insight.category }}">
-          {% assign normalized_category = include.insight.category | replace: "-", "_" %}
-          {% assign category_key = "insights." | append: normalized_category %}
-          {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
+           class="insight-card__category-link">
+          {% include components/ui/insight-category-new.html 
+             category=include.insight.category 
+             size="lg" %}
         </a>
       </div>
 
@@ -185,12 +216,8 @@ NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation
 
       <div class="insight-card__content">
         {% if include.insight.category %}
-          <span class="insight-card__category-badge">
-            {% include components/icons/icon.html system="insights" name=include.insight.category size="sm" class="insight-card__category-icon" %}
-            {% assign normalized_category = include.insight.category | replace: "-", "_" %}
-            {% assign category_key = "insights." | append: normalized_category %}
-            {% include helpers/t.html key=category_key fallback=include.insight.category lang=include.insight.lang %}
-          </span>
+          {% include components/ui/insight-category-new.html 
+             category=include.insight.category %}
         {% endif %}
 
         <h3 class="insight-card__title">{{ include.insight.title }}</h3>

@@ -372,3 +372,6 @@ fi
 echo "📁 File integrity check..."
 ls -la | grep -i claude | wc -l  # Should return 1 (only CLAUDE.md)
 git ls-files | grep -i claude    # Should show only CLAUDE.md
+
+# Validate color standards
+_scripts/validation/validate_colors.sh

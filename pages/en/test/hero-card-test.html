@@ -1,0 +1,197 @@
+---
+layout: default
+title: "Hero Card Style Test"
+lang: en
+permalink: /en/test/hero-card-test/
+---
+
+{% comment %}
+TEST PAGE: Hero Card Style
+PURPOSE: Demonstrate the Featured Card Style hero layout
+INCLUDES: Custom hero with sample insight data
+{% endcomment %}
+
+<style>
+/* Include the hero-card CSS inline for testing */
+.insight-hero-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.insight-hero-card__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .insight-hero-card {
+    padding: var(--space-8);
+  }
+  
+  .insight-hero-card__container {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+}
+
+.insight-hero-card__image {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  order: -1;
+  background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+}
+
+.insight-hero-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.insight-hero-card__img:hover {
+  transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-card__image {
+    aspect-ratio: 4/3;
+    order: 0;
+  }
+}
+
+.insight-hero-card__content {
+  padding: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-card__content {
+    padding: var(--space-8);
+  }
+}
+
+.insight-hero-card__category {
+  color: var(--primary-600);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+}
+
+.insight-hero-card__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--gray-900);
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-card__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+.insight-hero-card__description {
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .insight-hero-card__description {
+    font-size: var(--text-lg);
+  }
+}
+
+.insight-hero-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+  flex-wrap: wrap;
+}
+
+.insight-hero-card__meta .separator {
+  margin: 0 var(--space-1);
+  opacity: 0.7;
+}
+
+.insight-hero-card__author {
+  font-weight: var(--font-medium);
+}
+</style>
+
+<div class="insight-hero-card">
+  <div class="insight-hero-card__container">
+    <!-- Real Image Section -->
+    <div class="insight-hero-card__image">
+      <img src="/assets/images/insights/ru-russian-wine-renaissance/ru-russian-wine-renaissance-hero-vineyard-800w.jpg" 
+           alt="Russian vineyards in Krasnodar region showing modern viticulture techniques"
+           class="insight-hero-card__img" loading="eager">
+    </div>
+    
+    <!-- Content Section -->
+    <div class="insight-hero-card__content">
+      <div class="insight-hero-card__category">
+        Market Momentum
+      </div>
+      
+      <h1 class="insight-hero-card__title">
+        Russian Wine Renaissance: 52% Market Growth Over Five Years
+      </h1>
+      
+      <p class="insight-hero-card__description">
+        Russia's wine industry is experiencing unprecedented growth, with domestic production doubling and increasing international recognition. Discover how traditional winemaking meets modern innovation in this comprehensive market analysis.
+      </p>
+      
+      <div class="insight-hero-card__meta">
+        <span class="insight-hero-card__date">July 4, 2025</span>
+        <span class="separator">•</span>
+        <span class="insight-hero-card__author">Randal Eastman</span>
+        <span class="separator">•</span>
+        <span class="insight-hero-card__reading-time">7 min read</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+  <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #007bff; margin-bottom: 2rem;">
+    <h3 style="margin-top: 0; color: #495057;">Hero Card Style Features</h3>
+    <ul style="margin-bottom: 1rem;">
+      <li><strong>Professional appearance:</strong> Clean card-based design with subtle shadow</li>
+      <li><strong>Mobile-first:</strong> Stacked on mobile, side-by-side on desktop</li>
+      <li><strong>Rich metadata:</strong> Category, title, description, author, date, reading time</li>
+      <li><strong>Consistent branding:</strong> Follows Brandmine's established design system</li>
+      <li><strong>Responsive images:</strong> 16:9 mobile, 4:3 desktop aspect ratios</li>
+    </ul>
+    
+    <h4 style="margin-bottom: 0.5rem; color: #495057;">Best For:</h4>
+    <p style="margin-bottom: 0;">Professional brands, rich content display, established design systems where consistency with existing card components is important.</p>
+  </div>
+  
+  <h2>Sample Article Content</h2>
+  <div style="line-height: 1.6; color: #333;">
+    <h3>A New Direction for Russian Spirits</h3>
+    <p>While European markets have traditionally been the primary destination for Russian spirit exporters, the past 18 months have seen a remarkable shift. Premium craft distilleries across Russia are finding unprecedented success in East Asian luxury markets, particularly in China, Japan, and South Korea.</p>
+    
+    <p>Industry data shows that exports of Russian craft spirits to East Asia increased by 78% in 2024, with especially strong growth in the ultra-premium segment priced above $100 per bottle. This growth comes at a critical time when traditional export routes have faced logistical and regulatory challenges.</p>
+    
+    <p>"Initially, we viewed Asian markets as a secondary opportunity," explains Dmitry Voronin, CEO of Siberian Distillery. "Now they represent more than 40% of our export revenue and are growing faster than any other region."</p>
+    
+    <p>The success reflects a broader trend of Russian brands finding new pathways to global markets through strategic partnerships and innovative distribution models. From traditional vodka producers to emerging craft distilleries, the industry is adapting to changing geopolitical realities while maintaining its commitment to quality and authenticity.</p>
+  </div>
+  
+  <p style="margin-top: 2rem;"><a href="/en/test/hero-magazine-test/">→ Test Magazine Style</a> | <a href="/en/test/hero-minimal-test/">→ Test Minimal Style</a></p>
+</div>
