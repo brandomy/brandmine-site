@@ -1,5 +1,5 @@
 {% comment %}
-COMPONENT: Team Member Card
+COMPONENT: Team Member Card (Option B - Default with Override)
 PURPOSE: Displays team member profile with photo, bio, achievements, and social links for about page team sections
 
 USAGE: {% include components/cards/team-member-card.html member=member lang=page.lang %}
@@ -9,6 +9,7 @@ PARAMETERS:
   - name: Member name string
   - position: Job title/position string
   - photo_slug: Photo identifier string
+  - photo_context: Photo context string (optional, defaults to "professional")
   - bio: Biography text string
   - highlights: Array of achievement highlight strings
   - summary: Summary text string
@@ -22,7 +23,7 @@ DEPENDENCIES:
 
 VARIANTS: None - single standard layout
 
-NOTES: Display options configurable via component defaults. Photo uses square aspect ratio from people/team collection. All optional fields gracefully hidden when not provided.
+NOTES: Photo context defaults to "professional" but can be overridden per team member via data
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}
@@ -34,12 +35,16 @@ NOTES: Display options configurable via component defaults. Photo uses square as
 {% assign show_bio = include.show_bio | default: default_show_bio %}
 {% assign bio_words = include.bio_words | default: default_bio_words %}
 
+{% comment %} Set photo context with intelligent default {% endcomment %}
+{% assign photo_context = include.member.photo_context | default: "professional" %}
+
 <div class="team-member-card">
   {% include components/images/collection-image.html
     collection="people"
     category="team"
     slug=include.member.photo_slug
     purpose="headshot"
+    name=photo_context
     aspect="square"
     alt=include.member.name
     class="team-member-card__photo" %}

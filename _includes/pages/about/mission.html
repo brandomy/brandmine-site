@@ -1,7 +1,7 @@
 {% comment %}
   Page Section: pages/about/mission.html
-  Purpose: Mission statement section of the About page
-  Updated: 2025-06-03 - Standardized page section template
+  Purpose: Vision and Mission statements section of the About page
+  Updated: 2025-07-04 - Combined vision and mission in single panel
 
   Parameters:
     title (optional): Section title, defaults to mission translation
@@ -10,10 +10,13 @@
 
   Dependencies:
     - CSS: pages/about/mission.scss
-    - Translation keys: about.mission, about.mission_text
+    - Translation keys: about.vision, about.vision_text, about.mission, about.mission_text
 {% endcomment %}
 
 {% assign panel_type = include.panel_type | default: "primary" %}
+
+    <h2 class="panel__heading-secondary">{% include helpers/t.html key="about.vision" fallback="Our Vision" %}</h2>
+    <p class="panel__lead-text">{% include helpers/t.html key="about.vision_text" fallback="Illuminate the world's hidden brands to fuel their growth" %}</p>
 
     <h2 class="panel__heading-secondary">{{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.mission" fallback="Our Mission" %}{% endunless %}</h2>
     <p class="panel__lead-text">{{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.mission_text" fallback="To illuminate what is currently invisible by breaking through language, cultural, and political barriers that hide exceptional BRICS+ brands from global view." %}{% endunless %}</p>
