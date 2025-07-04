@@ -52,7 +52,7 @@ lang: en
   .status-good { color: #22c55e; }
   .status-warning { color: #f59e0b; }
   .status-poor { color: #ef4444; }
-  
+
   /* Override grid for 3-column layout in tests */
   .test-grid-3col {
     display: grid !important;
@@ -61,12 +61,12 @@ lang: en
     max-width: 100%;
     overflow-x: auto;
   }
-  
+
   .test-grid-3col .grid__item {
     min-width: 345px;
     max-width: 480px;
   }
-  
+
   /* 4-card grid variant for insight testing */
   .test-grid-4col {
     display: grid !important;
@@ -75,38 +75,38 @@ lang: en
     max-width: 100%;
     overflow-x: auto;
   }
-  
+
   .test-grid-4col .grid__item {
     min-width: 345px;
     max-width: 360px;
   }
-  
+
   /* VISUAL DEBUGGING TOOLKIT - Isolated to test page only */
-  
+
   /* Color-coded element debugging */
   .debug-layout .insight-card__date {
     background: rgba(0, 255, 0, 0.2) !important;
     border: 2px solid green !important;
     margin: 2px 0 !important;
   }
-  
+
   .debug-layout .insight-card__category-badge {
     background: rgba(255, 0, 0, 0.2) !important;
     border: 2px solid red !important;
     margin: 2px 0 !important;
   }
-  
+
   .debug-layout .insight-card__reading-time {
     background: rgba(0, 0, 255, 0.2) !important;
     border: 2px solid blue !important;
     margin: 1px !important;
   }
-  
+
   .debug-layout .insight-card__author {
     background: rgba(128, 0, 128, 0.2) !important;
     border: 2px solid purple !important;
   }
-  
+
   /* Grid overlay debugging */
   .debug-grid .insight-card {
     position: relative;
@@ -119,7 +119,7 @@ lang: en
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(255, 0, 0, 0.1) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 10px 10px;
@@ -138,10 +138,10 @@ lang: en
     pointer-events: none;
     z-index: 1000;
   }
-  
+
   /* Box model debugging */
   .debug-box-model * {
-    box-shadow: 
+    box-shadow:
       0 0 0 1px red,      /* Border */
       0 0 0 3px yellow,   /* Padding */
       0 0 0 5px blue      /* Margin */
@@ -161,54 +161,54 @@ lang: en
     white-space: nowrap;
     z-index: 1000;
   }
-  
+
   @media (max-width: 1200px) {
     .test-grid-4col {
       grid-template-columns: repeat(3, 1fr) !important;
     }
   }
-  
+
   @media (max-width: 900px) {
     .test-grid-4col {
       grid-template-columns: repeat(2, 1fr) !important;
     }
   }
-  
+
   @media (max-width: 640px) {
     .test-grid-4col {
       grid-template-columns: 1fr !important;
     }
   }
-  
+
   @media (max-width: 1024px) {
     .test-grid-3col {
       grid-template-columns: repeat(2, 1fr) !important;
     }
   }
-  
+
   @media (max-width: 640px) {
     .test-grid-3col {
       grid-template-columns: 1fr !important;
     }
   }
-  
+
   /* Override carousel for 2-per-slide in tests */
   .carousel .carousel__item,
   .carousel .carousel-card {
     flex: 0 0 calc(50% - var(--space-3)) !important;
   }
-  
+
   @media (max-width: 768px) {
     .carousel .carousel__item,
     .carousel .carousel-card {
       flex: 0 0 100% !important;
     }
   }
-  
+
   /* ===========================
      RESPONSIVE CARD CONSTRAINTS
      =========================== */
-  
+
   .insight-card,
   .featured-insight-card,
   .simple-insight-card {
@@ -216,25 +216,25 @@ lang: en
     width: 100% !important;
     box-sizing: border-box !important;
   }
-  
+
   .insight-card__hero,
   .featured-insight-card__image {
     max-width: 100% !important;
     overflow: hidden !important;
   }
-  
+
   .insight-card__hero-image,
   .featured-insight-card__img {
     max-width: 100% !important;
     height: auto !important;
     object-fit: cover !important;
   }
-  
+
   /* Grid item constraints */
   .insight-comparison-grid > div {
     box-sizing: border-box;
   }
-  
+
   /* Simple 2-column grid for card comparisons - matches other test pages */
   .insight-comparison-grid {
     display: grid;
@@ -242,11 +242,11 @@ lang: en
     gap: 2rem;
     margin-bottom: 2rem;
   }
-  
+
   /* ==========================================================================
      SECTION 0B: PRODUCTION REFERENCE STYLING
      ========================================================================== */
-  
+
   .test-production-reference {
     margin: var(--space-6) 0;
     padding: var(--space-6);
@@ -254,7 +254,7 @@ lang: en
     border: 2px solid var(--primary-200);
     border-radius: var(--radius-lg);
   }
-  
+
   .test-production-card {
     display: flex;
     justify-content: center;
@@ -264,7 +264,7 @@ lang: en
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
   }
-  
+
   .test-production-notes {
     margin-top: var(--space-4);
     padding: var(--space-3);
@@ -272,27 +272,27 @@ lang: en
     border-radius: var(--radius-md);
     font-size: var(--text-sm);
   }
-  
+
   .test-production-notes h5 {
     margin: 0 0 var(--space-2) 0;
     color: var(--neutral-800);
     font-weight: var(--font-semibold);
   }
-  
+
   .test-production-notes ul {
     margin: 0;
     padding-left: var(--space-4);
   }
-  
+
   .test-production-notes li {
     margin-bottom: var(--space-1);
     color: var(--neutral-700);
   }
-  
+
   /* ==========================================================================
      SECTION 0C: VARIANT SHOWCASE STYLING
      ========================================================================== */
-  
+
   .test-variant-showcase {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
@@ -302,13 +302,13 @@ lang: en
     background: var(--neutral-50);
     border-radius: var(--radius-lg);
   }
-  
+
   .test-variant {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
   }
-  
+
   .test-variant h5 {
     font-size: var(--text-sm);
     font-weight: var(--font-semibold);
@@ -319,7 +319,7 @@ lang: en
     margin: 0;
     text-align: center;
   }
-  
+
   .test-placeholder {
     background: var(--neutral-200);
     border: 2px dashed var(--neutral-400);
@@ -334,22 +334,22 @@ lang: en
     justify-content: center;
     align-items: center;
   }
-  
+
   .test-placeholder p {
     margin: var(--space-1) 0;
   }
-  
+
   .test-placeholder .placeholder-emoji {
     font-size: 2rem;
     margin-bottom: var(--space-2);
   }
-  
+
   /* Mini variant constraint for demonstration */
   .test-variant [variant="mini"] {
     max-width: 345px;
     margin: 0 auto;
   }
-  
+
   /* Card system demonstration section */
   .card-system-demo {
     margin: var(--space-8) 0;
@@ -358,41 +358,41 @@ lang: en
     border: 2px solid var(--accent-200);
     border-radius: var(--radius-lg);
   }
-  
+
   .card-system-demo h4 {
     color: var(--accent-800);
     margin-bottom: var(--space-4);
     text-align: center;
   }
-  
+
   .architecture-principles {
     background: white;
     padding: var(--space-4);
     border-radius: var(--radius-md);
     margin-top: var(--space-4);
   }
-  
+
   .architecture-principles h5 {
     color: var(--neutral-800);
     margin-bottom: var(--space-3);
   }
-  
+
   .architecture-principles ul {
     margin: 0;
     padding-left: var(--space-4);
   }
-  
+
   .architecture-principles li {
     margin-bottom: var(--space-2);
     color: var(--neutral-700);
   }
-  
+
   /* Constrain cards to their grid area */
   .insight-comparison-grid > div > div[style*="border"] {
     max-width: 100%;
     overflow: hidden;
   }
-  
+
   /* Ensure cards respect container width */
   .insight-card,
   .featured-insight-card,
@@ -402,7 +402,7 @@ lang: en
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   /* Constrain images within cards */
   .insight-card__hero-image,
   .featured-insight-card__img,
@@ -412,7 +412,7 @@ lang: en
     height: auto;
     object-fit: cover;
   }
-  
+
   /* Mobile responsive adjustments */
   @media (max-width: 768px) {
     .insight-comparison-grid {
@@ -420,7 +420,7 @@ lang: en
       gap: 1rem;
     }
   }
-  
+
   /* COMPLETE INSIGHT CARD CSS - TEMPORARY FIX */
   .insight-card {
     background-color: white;
@@ -436,33 +436,33 @@ lang: en
     max-width: 100%;
     position: relative;
   }
-  
+
   .insight-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
   }
-  
+
   .insight-card__hero {
     position: relative;
     aspect-ratio: 16/9;
     overflow: hidden;
     width: 100%;
   }
-  
+
   .insight-card__hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
-  
+
   .insight-card__content {
     padding: 1rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
   }
-  
+
   .insight-card__title {
     font-size: 1.125rem;
     font-weight: 700;
@@ -470,16 +470,16 @@ lang: en
     margin: 0 0 0.5rem 0;
     color: #1f2937;
   }
-  
+
   .insight-card__title-link {
     color: inherit;
     text-decoration: none;
   }
-  
+
   .insight-card__title-link:hover {
     color: #3b82f6;
   }
-  
+
   .insight-card__excerpt {
     font-size: 0.875rem;
     line-height: 1.625;
@@ -487,7 +487,7 @@ lang: en
     margin-bottom: 1rem;
     flex-grow: 1;
   }
-  
+
   .insight-card__meta,
   .insight-card__meta-enhanced {
     display: flex;
@@ -497,11 +497,11 @@ lang: en
     color: #9ca3af;
     margin-bottom: 0.75rem;
   }
-  
+
   .insight-card__date {
     font-weight: 500;
   }
-  
+
   .insight-card__category-badge {
     display: inline-flex;
     align-items: center;
@@ -514,7 +514,7 @@ lang: en
     margin-bottom: 0.5rem;
     font-size: 0.75rem;
   }
-  
+
   .insight-card__category-overlay {
     position: absolute;
     top: 0.5rem;
@@ -525,12 +525,12 @@ lang: en
     font-size: 0.75rem;
     font-weight: 500;
   }
-  
+
   .insight-card__footer {
     margin-top: auto;
     padding-top: 0.5rem;
   }
-  
+
   .insight-card__cta {
     display: inline-flex;
     align-items: center;
@@ -540,36 +540,36 @@ lang: en
     font-size: 0.875rem;
     font-weight: 500;
   }
-  
+
   .insight-card__cta:hover {
     color: #1d4ed8;
   }
-  
+
   /* ===========================
      INSIGHT CARD VARIANT TESTING - A/B Testing Styles
      =========================== */
-  
+
   /* Insight Card Standard Variant B - 1B Testing */
   .insight-card-variant-b {
     /* Example styling variations for standard card A/B testing */
-    
+
     .insight-card {
       border: 2px solid var(--accent-300) !important;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
     }
-    
+
     .insight-card__category-badge {
       background: var(--accent-100) !important;
       color: var(--accent-700) !important;
       border-radius: 0.5rem !important;
       padding: 0.375rem 0.75rem !important;
     }
-    
+
     .insight-card__title {
       color: var(--accent-700) !important;
       font-weight: var(--font-bold) !important;
     }
-    
+
     .insight-card__excerpt {
       font-style: italic !important;
       color: var(--neutral-600) !important;
@@ -577,16 +577,16 @@ lang: en
       padding-left: 1rem !important;
     }
   }
-  
+
   /* Featured Insight Card Variant B - 2B Testing */
   .featured-insight-card-variant-b {
     /* Example styling variations for featured card A/B testing */
-    
+
     .featured-insight-card {
       background: linear-gradient(135deg, var(--neutral-50) 0%, var(--accent-50) 100%) !important;
       border: 1px solid var(--accent-200) !important;
     }
-    
+
     .featured-insight-card__category {
       background: var(--accent-500) !important;
       color: white !important;
@@ -594,34 +594,34 @@ lang: en
       padding: 0.5rem 1rem !important;
       font-weight: bold !important;
     }
-    
+
     .featured-insight-card__title {
       color: var(--accent-800) !important;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
     }
-    
+
     .featured-insight-card__meta {
       background: rgba(255, 255, 255, 0.8) !important;
       padding: 0.5rem !important;
       border-radius: 0.25rem !important;
     }
   }
-  
+
   /* Simple Insight Card Variant B - 3B Testing */
   .simple-insight-card-variant-b {
     /* Example styling variations for simple card A/B testing */
-    
+
     .insight-card {
       border-radius: 1rem !important;
       overflow: hidden !important;
       transition: all 0.3s ease !important;
     }
-    
+
     .insight-card:hover {
       transform: translateY(-4px) !important;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
     }
-    
+
     .insight-card__category-badge {
       position: absolute !important;
       top: 1rem !important;
@@ -644,14 +644,14 @@ lang: en
   <section class="test-section">
     <h2>Section 0A: Current Insight Card Inventory</h2>
     <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;"><strong>Status:</strong> 3 primary components with variants displayed, target consolidation to 2-3 components</p>
-    
-    
+
+
     <!-- Get test insight data -->
     {% assign comparison_insight = site.insights | where: "lang", "en" | first %}
-    
+
     <!-- Row 1: Component 1A (1 column) and 1B (2 columns) -->
     <div class="test-grid-3col" style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-4); margin-bottom: 3rem;">
-      
+
       <!-- 1A. insight-card.html (Base Card) - 1 column -->
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. insight-card.html (Base Card)</h4>
@@ -675,7 +675,7 @@ lang: en
           <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
-        
+
         <!-- Typography & Color Analysis -->
         <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
@@ -686,12 +686,12 @@ lang: en
               • Weight: <code>var(--font-semibold)</code> (600)<br>
               • Color: <code>var(--neutral-900)</code> (#111827)<br>
               • Line Height: 1.4<br><br>
-              
+
               <strong style="color: #1f2937;">Meta (Date/Author):</strong><br>
               • Font: <code>var(--text-sm)</code> (0.875rem)<br>
               • Weight: Default (400)<br>
               • Color: <code>var(--neutral-500)</code> (#6B7280)<br><br>
-              
+
               <strong style="color: #1f2937;">Excerpt:</strong><br>
               • Font: <code>var(--text-base)</code> (1rem)<br>
               • Weight: Default (400)<br>
@@ -706,13 +706,13 @@ lang: en
               • Color: <code>var(--primary-900)</code><br>
               • Transform: uppercase<br>
               • Padding: Enhanced breathing room ✅<br><br>
-              
+
               <strong style="color: #1f2937;">Tags:</strong><br>
               • Font: <code>var(--text-sm)</code> (0.875rem)<br>
               • Weight: Default (400)<br>
               • Background: <code>var(--neutral-200)</code><br>
               • Color: <code>var(--neutral-600)</code><br><br>
-              
+
               <strong style="color: #1f2937;">Read More Link:</strong><br>
               • Font: Inherits from container<br>
               • Weight: <code>var(--font-medium)</code> (500)<br>
@@ -722,7 +722,7 @@ lang: en
           </div>
         </div>
       </div>
-      
+
       <!-- 1B. insight-card.html Tagged Variant - 2 columns -->
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. insight-card.html Tagged Variant</h4>
@@ -747,7 +747,7 @@ lang: en
           <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="tagged" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
-        
+
         <!-- Typography & Color Analysis -->
         <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
@@ -758,12 +758,12 @@ lang: en
               • Weight: <code>var(--font-semibold)</code> (600)<br>
               • Color: <code>var(--neutral-900)</code> (#111827)<br>
               • Line Height: 1.4<br><br>
-              
+
               <strong style="color: #1f2937;">Meta (Date/Author):</strong><br>
               • Font: <code>var(--text-sm)</code> (0.875rem)<br>
               • Weight: Default (400)<br>
               • Color: <code>var(--neutral-500)</code> (#6B7280)<br><br>
-              
+
               <strong style="color: #1f2937;">Excerpt:</strong><br>
               • Font: <code>var(--text-base)</code> (1rem)<br>
               • Weight: Default (400)<br>
@@ -778,13 +778,13 @@ lang: en
               • Color: <code>var(--primary-900)</code><br>
               • Transform: uppercase<br>
               • Padding: Enhanced breathing room ✅<br><br>
-              
+
               <strong style="color: #1f2937;">Dimension Tags:</strong><br>
               • <span style="background: var(--sky-100); color: var(--sky-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Markets</span> Sky Blue<br>
               • <span style="background: var(--olive-100); color: var(--olive-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Sectors</span> Olive Green<br>
               • <span style="background: var(--secondary-100); color: var(--secondary-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Attributes</span> Orange<br>
               • <span style="background: var(--accent-100); color: var(--accent-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Signals</span> Indigo<br><br>
-              
+
               <strong style="color: #1f2937;">Read More Link:</strong><br>
               • Font: Inherits from container<br>
               • Weight: <code>var(--font-medium)</code> (500)<br>
@@ -795,10 +795,10 @@ lang: en
         </div>
       </div>
     </div>
-    
+
     <!-- Row 2: Component 1C (Featured Variant) - 2 columns -->
     <div class="test-grid-2col-centered" style="display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-bottom: 3rem; max-width: 50%; margin-left: 0;">
-      
+
       <!-- 1C. insight-card.html Featured Variant - 2 columns width -->
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. insight-card.html Featured Variant</h4>
@@ -823,7 +823,7 @@ lang: en
           <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="featured" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
-        
+
         <!-- Typography & Color Analysis -->
         <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
@@ -835,13 +835,13 @@ lang: en
               • Color: <code>var(--neutral-900)</code> (#111827)<br>
               • Line Height: 1.3<br>
               • Enhanced hierarchy for featured display<br><br>
-              
+
               <strong style="color: #1f2937;">Meta (Date/Author):</strong><br>
               • Font: <code>var(--text-sm)</code> (0.875rem)<br>
               • Weight: <code>var(--font-medium)</code> (500)<br>
               • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
               • Enhanced readability<br><br>
-              
+
               <strong style="color: #1f2937;">Excerpt:</strong><br>
               • Font: <code>var(--text-base)</code> (1rem)<br>
               • Weight: Default (400)<br>
@@ -857,13 +857,13 @@ lang: en
               • Color: <code>var(--primary-900)</code><br>
               • Transform: uppercase<br>
               • Enhanced visibility for hero layout<br><br>
-              
+
               <strong style="color: #1f2937;">Hero Image Enhancement:</strong><br>
               • Aspect ratio: 16:9 optimized<br>
               • Object fit: cover for consistency<br>
               • Hover effects: Enhanced transition<br>
               • Loading: Optimized for featured display<br><br>
-              
+
               <strong style="color: #1f2937;">Read More Link:</strong><br>
               • Font: <code>var(--text-sm)</code> (0.875rem) ✅<br>
               • Weight: <code>var(--font-semibold)</code> (600)<br>
@@ -874,10 +874,10 @@ lang: en
         </div>
       </div>
     </div>
-    
+
     <!-- Row 3: Component 1D (Related Variant) - 3 columns -->
     <div class="test-grid-wide" style="display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-bottom: 3rem; max-width: 75%; margin-left: auto; margin-right: auto;">
-      
+
       <!-- 1D. insight-card.html Related Variant -->
       <div>
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1D. insight-card.html Related Variant</h4>
@@ -902,7 +902,7 @@ lang: en
           <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="related" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>Layout:</strong> Horizontal grid (120px image + 1fr content)</p>
         </div>
-        
+
         <!-- Typography & Color Analysis -->
         <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
           <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
@@ -914,13 +914,13 @@ lang: en
               • Color: #333 (dark gray)<br>
               • Line Height: Normal<br>
               • Margin: 0.5rem 0<br><br>
-              
+
               <strong style="color: #1f2937;">Layout Structure:</strong><br>
               • Article: CSS Grid layout<br>
               • Columns: 120px 1fr<br>
               • Gap: 1rem<br>
               • Align: start<br><br>
-              
+
               <strong style="color: #1f2937;">Image Container:</strong><br>
               • Size: 120px × 80px<br>
               • Border radius: 4px<br>
@@ -935,14 +935,14 @@ lang: en
               • Location Intelligence: #6f42c1 (purple)<br>
               • Font size: 0.7rem<br>
               • Border radius: 12px<br><br>
-              
+
               <strong style="color: #1f2937;">Excerpt:</strong><br>
               • Font: Default system font<br>
               • Size: 0.9rem<br>
               • Color: #6c757d (muted gray)<br>
               • Line Height: 1.4<br>
               • Truncate: 20 words<br><br>
-              
+
               <strong style="color: #1f2937;">Container:</strong><br>
               • Border: 1px solid #dee2e6<br>
               • Background: white<br>
@@ -953,12 +953,12 @@ lang: en
         </div>
       </div>
     </div>
-    
+
     <!-- Typography & Color Variations Summary -->
     <div style="background: #fffbeb; border: 2px solid #f59e0b; padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
       <h4 style="margin-bottom: 1rem; color: #92400e;">🎨 Typography & Color Variations Summary</h4>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-        
+
         <!-- Key Differences -->
         <div>
           <h5 style="color: #451a03; margin-bottom: 0.75rem;">Key Typographic Standards (Post Fine-Tuning):</h5>
@@ -967,19 +967,19 @@ lang: en
             • insight-card: neutral-900 ✅<br>
             • insight-card featured: neutral-900 ✅<br>
             • insight-card-tagged: <strong>neutral-900 ✅ (updated)</strong><br><br>
-            
+
             <strong>Category Badge Sizes (Enhanced):</strong><br>
             • insight-card: <strong>text-sm (0.875rem) ✅ (updated)</strong><br>
             • insight-card featured: <strong>text-sm (0.875rem) ✅ (updated)</strong><br>
             • insight-card-tagged: <strong>text-sm (0.875rem) ✅ (updated)</strong><br><br>
-            
+
             <strong>Title Weights (Preserved):</strong><br>
             • insight-card: semibold (600)<br>
             • insight-card featured: <strong>bold (700)</strong><br>
             • insight-card-tagged: semibold (600)
           </div>
         </div>
-        
+
         <!-- Color Scheme Differences -->
         <div>
           <h5 style="color: #451a03; margin-bottom: 0.75rem;">Design Philosophy Maintained:</h5>
@@ -989,18 +989,18 @@ lang: en
             • Textured minimalism images remain prominent ✅<br>
             • "Read More" CTA unchanged ✅<br>
             • Information hierarchy preserved ✅<br><br>
-            
+
             <strong>Category Badge Styles (Improved):</strong><br>
             • insight-card: primary-100 bg / primary-900 text<br>
             • insight-card featured: primary-100 bg / <strong>primary-800 text</strong><br>
             • insight-card-tagged: <strong>overlay-modal bg / white text</strong><br><br>
-            
+
             <strong>Special Features:</strong><br>
             • insight-card featured: <strong>center alignment</strong><br>
             • insight-card-tagged: <strong>dimension tag colors</strong>
           </div>
         </div>
-        
+
         <!-- Behavioral Differences -->
         <div>
           <h5 style="color: #451a03; margin-bottom: 0.75rem;">Layout & Behavior Differences:</h5>
@@ -1009,12 +1009,12 @@ lang: en
             • insight-card: left-aligned<br>
             • insight-card featured: <strong>center-aligned</strong><br>
             • insight-card-tagged: left-aligned<br><br>
-            
+
             <strong>Line Height Variations:</strong><br>
             • insight-card: 1.4 (title), 1.5 (excerpt)<br>
             • insight-card featured: <strong>1.3 (title)</strong>, 1.4 (desc)<br>
             • insight-card-tagged: 1.25 (title), <strong>1.625 (excerpt)</strong><br><br>
-            
+
             <strong>Text Clamping:</strong><br>
             • insight-card: no clamping<br>
             • insight-card featured: <strong>2 lines (title), 4 lines (desc)</strong><br>
@@ -1022,7 +1022,7 @@ lang: en
           </div>
         </div>
       </div>
-      
+
       <!-- Quick Reference -->
       <div style="margin-top: 1.5rem; padding: 1rem; background: #fefce8; border-radius: 0.5rem;">
         <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Typography Decisions:</h6>
@@ -1033,20 +1033,20 @@ lang: en
         </ul>
       </div>
     </div>
-    
-    
-    
+
+
+
   </section>
-  
-  
+
+
   <!-- Section 0B: Production Homepage Reference -->
   <section class="test-section">
     <h2>Section 0B: PRODUCTION HOMEPAGE DISPLAY (Live Reference)</h2>
     <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;"><strong>Purpose:</strong> Show exactly how insight-latest-card appears on live homepage</p>
-    
+
     <div class="test-production-reference">
       <h4 style="text-align: center; margin-bottom: 2rem; color: #1e40af;">Live Homepage: Latest Insights Section</h4>
-      
+
       <div class="test-production-card">
         {% comment %}
         This displays the actual production card as it appears on homepage
@@ -1069,7 +1069,7 @@ lang: en
           </div>
         {% endif %}
       </div>
-      
+
       <div class="test-production-notes">
         <h5>Production Card Analysis</h5>
         <ul>
@@ -1082,30 +1082,30 @@ lang: en
         </ul>
       </div>
     </div>
-    
+
   </section>
-  
+
 
   <!-- Section 1: Main Insight Cards Testing -->
   <section class="test-section">
     <h2>Section 1: MAIN INSIGHT CARDS - Layout Testing</h2>
-    
+
     <!-- Get test insight data -->
     {% assign test_insights = site.insights | where: "lang", "en" | limit: 3 %}
-    
+
     <!-- Data Debug -->
     <div class="card-info">
       <strong>Debug:</strong> Found {{ test_insights.size }} English insights for testing
       {% if test_insights.size > 0 %}(First: {{ test_insights[0].title }}){% endif %}
     </div>
-    
+
     <!-- insight-card.html -->
     <div class="test-subsection">
       <h3>insight-card.html (Strategic)</h3>
       <div class="card-info">
         <strong>Card:</strong> insight-card.html | <strong>Purpose:</strong> Strategic insight display with category differentiation and metadata
       </div>
-      
+
       <!-- Grid Layout Test -->
       <div class="test-layout-label">Grid Layout (3 cards)</div>
       {% if test_insights.size > 0 %}
@@ -1121,7 +1121,7 @@ lang: en
           <strong>⚠️ No English insight data found for testing</strong>
         </div>
       {% endif %}
-      
+
       <!-- 4-Card Grid Layout Test -->
       <div class="test-layout-label" style="margin-top: 2rem;">4-Card Grid Layout</div>
       {% if test_insights.size > 0 %}
@@ -1138,7 +1138,7 @@ lang: en
           <strong>⚠️ No English insight data found for testing</strong>
         </div>
       {% endif %}
-      
+
       <!-- Carousel Layout Test -->
       <div class="test-layout-label" style="margin-top: 2rem;">Carousel Layout (2 per slide)</div>
       {% if test_insights.size > 0 %}
@@ -1154,7 +1154,7 @@ lang: en
           <strong>⚠️ No English insight data found for testing</strong>
         </div>
       {% endif %}
-      
+
       <!-- Styling Evaluation Framework -->
       <div class="styling-assessment" style="margin-top: 2rem; padding: 1.5rem; background: var(--neutral-50); border-radius: 0.5rem;">
         <h4>Styling Evaluation: insight-card.html (Strategic)</h4>
@@ -1173,15 +1173,15 @@ lang: en
         </div>
       </div>
     </div>
-    
-    
-    
+
+
+
   </section>
 
   <!-- Section 2: Insight Card Architecture Analysis -->
   <section class="test-section">
     <h2>Section 2: INSIGHT CARD ARCHITECTURE ANALYSIS</h2>
-    
+
     <div class="performance-matrix">
       <h3>Component Architecture Comparison</h3>
       <table>
@@ -1223,7 +1223,7 @@ lang: en
         </tbody>
       </table>
     </div>
-    
+
     <div class="card-info" style="background: var(--primary-50); border-left-color: var(--primary-500); margin-top: 2rem;">
       <h3>🏗️ Architecture Recommendations</h3>
       <ul style="margin: 1rem 0;">
@@ -1233,13 +1233,82 @@ lang: en
         <li><strong>Maintenance:</strong> Three core cards (insight, featured, simple) are well-maintained and sufficient</li>
       </ul>
     </div>
-    
+
   </section>
 
-  <!-- Section 3: Quick Reference -->
+ <!-- Section 3: Sample Usage -->
+## Section 3: Sample Usage
+
+<!-- Section 4: Usage Examples -->
   <section class="test-section">
-    <h2>Section 3: QUICK REFERENCE</h2>
-    
+    <h2>Section 4: USAGE EXAMPLES</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;"><strong>Copy-paste ready code</strong> for implementing each insight card variant</p>
+
+    <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-4) 0;">
+      <h4>1A. Standard Insight Card</h4>
+      <p style="margin: 0.5rem 0; font-size: var(--text-sm); color: var(--neutral-600);">Base card for main insights grid - mobile-first 345px → 360px</p>
+      <pre><code>{% raw %}{% include components/cards/insight-card.html insight=insight %}{% endraw %}</code></pre>
+    </div>
+
+    <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-4) 0;">
+      <h4>1B. Tagged Insight Card</h4>
+      <p style="margin: 0.5rem 0; font-size: var(--text-sm); color: var(--neutral-600);">Base card with dimension tags - shows all taxonomy classifications</p>
+      <pre><code>{% raw %}{% include components/cards/insight-card.html insight=insight variant="tagged" %}{% endraw %}</code></pre>
+    </div>
+
+    <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-4) 0;">
+      <h4>1C. Featured Insight Card</h4>
+      <p style="margin: 0.5rem 0; font-size: var(--text-sm); color: var(--neutral-600);">Enhanced card for homepage - mobile-first 345px → 480px with premium styling</p>
+      <pre><code>{% raw %}{% include components/cards/insight-card.html insight=insight variant="featured" %}{% endraw %}</code></pre>
+    </div>
+
+    <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-4) 0;">
+      <h4>1D. Related Insight Card</h4>
+      <p style="margin: 0.5rem 0; font-size: var(--text-sm); color: var(--neutral-600);">Horizontal minimal layout - 120x80px image with full-width content</p>
+      <pre><code>{% raw %}{% include components/cards/insight-card.html insight=insight variant="related" %}{% endraw %}</code></pre>
+    </div>
+
+    <!-- Parameter Reference -->
+    <div style="background: var(--neutral-50); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-4) 0; border: 1px solid var(--neutral-200);">
+      <h4>Parameter Reference</h4>
+
+      <table class="specs-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Options</th>
+            <th>Default</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>insight</code></td>
+            <td>Jekyll insight object (required)</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><code>variant</code></td>
+            <td>"standard", "tagged", "featured", "related"</td>
+            <td>"standard"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: var(--space-3); padding: var(--space-3); background: white; border-radius: var(--radius-md);">
+        <h5>File Location</h5>
+        <div style="font-family: monospace; font-size: var(--text-sm); color: var(--neutral-700);">
+          <strong>Component:</strong> _includes/components/cards/insight-card.html
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- Section 4: Quick Reference -->
+  <section class="test-section">
+    <h2>Section 4: QUICK REFERENCE</h2>
+
     <div class="card-info" style="background: var(--primary-50); border-left-color: var(--primary-500);">
       <h3>📋 Insight Card Usage Guidelines</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
@@ -1263,24 +1332,24 @@ lang: en
         </div>
       </div>
     </div>
-    
+
   </section>
 
   <!-- Visual Debugging Toolkit -->
   <section class="test-section" style="background: var(--warning-50);">
     <h2>🔧 Visual Debugging Toolkit</h2>
-    
+
     <div class="card-info" style="background: var(--warning-100); border-left-color: var(--warning-600);">
       <h3>⚠️ Debugging Tools for Layout Investigation</h3>
       <p>Use these tools to identify insight card styling and spacing issues:</p>
-      
+
       <div style="display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap;">
         <button onclick="toggleDebugLayout()" class="debug-btn" style="background: #22c55e; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Layout Debug</button>
         <button onclick="toggleDebugGrid()" class="debug-btn" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Grid Debug</button>
         <button onclick="toggleDebugBoxModel()" class="debug-btn" style="background: #8b5cf6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Toggle Box Model</button>
         <button onclick="reportInsightDimensions()" class="debug-btn" style="background: #ef4444; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">Report Measurements</button>
       </div>
-      
+
       <div style="font-size: 0.875rem; line-height: 1.5;">
         <strong>Color Legend:</strong><br>
         🟢 <strong>Green:</strong> Date elements<br>
@@ -1290,7 +1359,7 @@ lang: en
         📏 <strong>Grid:</strong> 10px measurement grid with alignment guides
       </div>
     </div>
-    
+
   </section>
 
 </div>
@@ -1327,9 +1396,9 @@ function reportInsightDimensions() {
   const readingTime = document.querySelector('.insight-card__reading-time');
   const author = document.querySelector('.insight-card__author');
   const date = document.querySelector('.insight-card__date');
-  
+
   console.group('🔍 Insight Card Dimension Report');
-  
+
   if (categoryBadge) {
     const badgeRect = categoryBadge.getBoundingClientRect();
     const badgeStyles = window.getComputedStyle(categoryBadge);
@@ -1343,7 +1412,7 @@ function reportInsightDimensions() {
       padding: badgeStyles.padding
     });
   }
-  
+
   if (readingTime) {
     const timeRect = readingTime.getBoundingClientRect();
     const timeStyles = window.getComputedStyle(readingTime);
@@ -1356,7 +1425,7 @@ function reportInsightDimensions() {
       textContent: readingTime.textContent
     });
   }
-  
+
   if (author) {
     const authorRect = author.getBoundingClientRect();
     console.log('🟣 Author:', {
@@ -1368,7 +1437,7 @@ function reportInsightDimensions() {
       textContent: author.textContent
     });
   }
-  
+
   if (date) {
     const dateRect = date.getBoundingClientRect();
     console.log('🟢 Date:', {
@@ -1380,9 +1449,9 @@ function reportInsightDimensions() {
       textContent: date.textContent
     });
   }
-  
+
   console.groupEnd();
-  
+
   // Also show alert for quick reference
   alert(`Debug measurements logged to console. Check browser dev tools for detailed analysis.`);
 }

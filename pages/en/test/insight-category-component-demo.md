@@ -93,42 +93,6 @@ language: en
 
 # Insight Category Component Demo
 
-<div class="status-badge">✅ Production Ready - CSS conflicts resolved</div>
-
-**Component**: `insight-category-new.html` - BEM-based atomic component with inline styles
-**Architecture**: Guaranteed color display with official Brandmine standards
-**Status**: Working across all card variants after successful extraction
-
----
-
-<div class="official-colors-banner">
-  <h3 style="color: #856404; margin: 0 0 1rem 0;">🎨 Official Brandmine Color Standards</h3>
-  <p style="color: #856404; margin: 0 0 1rem 0; font-weight: 600;">
-    These are the OFFICIAL colors defined in Brandmine's design system. Never change these.
-  </p>
-  <div class="color-grid">
-    <div>
-      <h4 style="color: #856404; margin: 0 0 0.5rem 0;">Insight Categories</h4>
-      <ul style="margin: 0; color: #856404; font-size: 0.9rem;">
-        <li><strong>Brand Spotlight:</strong> Secondary Orange (#F97316)</li>
-        <li><strong>Founder's Journey:</strong> Accent Indigo (#6366F1)</li>
-        <li><strong>Location Intelligence:</strong> Sky Blue (#0EA5E9)</li>
-        <li><strong>Market Momentum:</strong> Olive Green (#84CC16)</li>
-      </ul>
-    </div>
-    <div>
-      <h4 style="color: #856404; margin: 0 0 0.5rem 0;">Aligned with Dimensions</h4>
-      <ul style="margin: 0; color: #856404; font-size: 0.9rem;">
-        <li><strong>Brand Spotlight</strong> = Attributes (secondary)</li>
-        <li><strong>Founder's Journey</strong> = Signals (accent)</li>
-        <li><strong>Location Intelligence</strong> = Markets (sky)</li>
-        <li><strong>Market Momentum</strong> = Sectors (olive)</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
----
 
 ## Standard Categories
 
@@ -509,41 +473,31 @@ language: en
 
 ---
 
-## Integration Status
-
-<div class="demo-section">
-  <div class="demo-title">Production Readiness</div>
-
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-    <div style="background: #d4edda; padding: 1rem; border-radius: 6px; border: 1px solid #c3e6cb;">
-      <h4 style="margin: 0 0 0.5rem 0; color: #155724;">✅ Working Features</h4>
-      <ul style="margin: 0; color: #155724; font-size: 0.875rem;">
-        <li>All 4 categories render correctly</li>
-        <li>Size variants functional</li>
-        <li>Build success verified</li>
-        <li>Card integration complete</li>
+<div class="official-colors-banner">
+  <h3 style="color: #856404; margin: 0 0 1rem 0;">🎨 Official Brandmine Color Standards</h3>
+  <p style="color: #856404; margin: 0 0 1rem 0; font-weight: 600;">
+    These are the OFFICIAL colors defined in Brandmine's design system. Never change these.
+  </p>
+  <div class="color-grid">
+    <div>
+      <h4 style="color: #856404; margin: 0 0 0.5rem 0;">Insight Categories</h4>
+      <ul style="margin: 0; color: #856404; font-size: 0.9rem;">
+        <li><strong>Brand Spotlight:</strong> Secondary Orange (#F97316)</li>
+        <li><strong>Founder's Journey:</strong> Accent Indigo (#6366F1)</li>
+        <li><strong>Location Intelligence:</strong> Sky Blue (#0EA5E9)</li>
+        <li><strong>Market Momentum:</strong> Olive Green (#84CC16)</li>
       </ul>
     </div>
-
-    <div style="background: #fff3cd; padding: 1rem; border-radius: 6px; border: 1px solid #ffeaa7;">
-      <h4 style="margin: 0 0 0.5rem 0; color: #856404;">🔧 Technical Solution</h4>
-      <ul style="margin: 0; color: #856404; font-size: 0.875rem;">
-        <li>CSS conflicts resolved</li>
-        <li>Inline style approach</li>
-        <li>BEM structure maintained</li>
-        <li>Atomic component achieved</li>
-      </ul>
-    </div>
-
-    <div style="background: #e2e3e5; padding: 1rem; border-radius: 6px; border: 1px solid #d6d8db;">
-      <h4 style="margin: 0 0 0.5rem 0; color: #383d41;">📁 Files Updated</h4>
-      <ul style="margin: 0; color: #383d41; font-size: 0.875rem;">
-        <li>insight-category-new.html</li>
-        <li>insight-category-new.scss</li>
-        <li>insight-card.html integration</li>
-        <li>Legacy CSS removed</li>
+    <div>
+      <h4 style="color: #856404; margin: 0 0 0.5rem 0;">Aligned with Dimensions</h4>
+      <ul style="margin: 0; color: #856404; font-size: 0.9rem;">
+        <li><strong>Brand Spotlight</strong> = Attributes (secondary)</li>
+        <li><strong>Founder's Journey</strong> = Signals (accent)</li>
+        <li><strong>Location Intelligence</strong> = Markets (sky)</li>
+        <li><strong>Market Momentum</strong> = Sectors (olive)</li>
       </ul>
     </div>
   </div>
 </div>
 
+---
