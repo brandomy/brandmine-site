@@ -1,0 +1,114 @@
+{% comment %}
+COMPONENT: Dimension Category Card
+PURPOSE: Displays a discovery dimension category with icon, description, and view-all link
+
+USAGE: {% include components/cards/dimension-category-card.html type="sectors" variant="featured" %}
+
+PARAMETERS:
+- type (required): Dimension type string - "sectors", "markets", "attributes", "signals"
+- variant (optional): Card variant string - "standard", "featured", defaults to "standard"
+
+DEPENDENCIES:
+- CSS: assets/css/components/cards/dimension-category-card.scss
+- Data: site.data.translations[page.lang]
+- Includes: components/icons/icon.html, helpers/t.html
+
+VARIANTS:
+- dimension-category-card--sectors: Sector-specific styling
+- dimension-category-card--markets: Market-specific styling
+- dimension-category-card--attributes: Attribute-specific styling
+- dimension-category-card--signals: Signal-specific styling
+
+NOTES: Each dimension type has its own icon and color scheme. Links to language-specific discovery pages.
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_variant %}{% include helpers/component-defaults.html component="cards.dimension-category-card" param="variant" fallback="standard" %}{% endcapture %}
+
+{% assign variant = include.variant | default: default_variant %}
+
+<div class="dimension-category-card dimension-category-card--{{ include.type }}{% if variant == "featured" %} dimension-category-card--featured{% endif %}">
+  {% if variant == "featured" %}
+    <!-- Featured variant with enhanced layout -->
+    <div class="dimension-category-card__hero">
+      <div class="dimension-category-card__header">
+        <div class="dimension-category-card__icon dimension-category-card__icon--large">
+          {% include components/icons/icon.html system="dimensions" type=include.type name="default" class="dimension-category-card__icon-svg" %}
+        </div>
+        <div class="dimension-category-card__title-section">
+          <h3 class="dimension-category-card__title">
+            {% assign title_key = "discovery." | append: include.type %}
+            {% include helpers/t.html key=title_key fallback=include.type %}
+          </h3>
+          <div class="dimension-category-card__count">
+            {% case include.type %}
+              {% when "sectors" %}
+                16 Sectors
+              {% when "markets" %}
+                13 Markets
+              {% when "attributes" %}
+                8 Attributes
+              {% when "signals" %}
+                4 Signals
+              {% else %}
+                {{ include.type | capitalize }}
+            {% endcase %}
+          </div>
+        </div>
+      </div>
+      
+      <p class="dimension-category-card__description dimension-category-card__description--featured">
+        {% assign desc_key = "discovery." | append: include.type | append: "_description" %}
+        {% include helpers/t.html key=desc_key fallback="Explore detailed information about this dimension category." %}
+      </p>
+    </div>
+    
+    <div class="dimension-category-card__content">
+      <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/" 
+         class="dimension-category-card__link btn btn--solid dimension-category-card__link--{{ include.type }}">
+        {% assign cta_key = "discovery.explore_" | append: include.type %}
+        {% assign cta_fallback = "Explore " | append: include.type | capitalize %}
+        {% include helpers/t.html key=cta_key fallback=cta_fallback %}
+      </a>
+    </div>
+  {% else %}
+    <!-- Standard variant -->
+    <div class="dimension-category-card__header">
+      <div class="dimension-category-card__icon">
+        {% include components/icons/icon.html system="dimensions" type=include.type name="default" class="dimension-category-card__icon-svg" %}
+      </div>
+      <div class="dimension-category-card__title-section">
+        <h3 class="dimension-category-card__title">
+          {% assign title_key = "discovery." | append: include.type %}
+          {% include helpers/t.html key=title_key fallback=include.type %}
+        </h3>
+        <div class="dimension-category-card__count dimension-category-card__count--standard">
+          {% case include.type %}
+            {% when "sectors" %}
+              16 Sectors
+            {% when "markets" %}
+              13 Markets
+            {% when "attributes" %}
+              8 Attributes
+            {% when "signals" %}
+              4 Signals
+            {% else %}
+              {{ include.type | capitalize }}
+          {% endcase %}
+        </div>
+      </div>
+    </div>
+    
+    <p class="dimension-category-card__description">
+      {% assign desc_key = "discovery." | append: include.type | append: "_description" %}
+      {% include helpers/t.html key=desc_key fallback="Explore" %}
+    </p>
+    
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ include.type }}/" 
+       class="dimension-category-card__link btn btn--outline dimension-category-card__link--{{ include.type }}">
+      {% assign cta_key = "discovery.view_all_" | append: include.type %}
+      {% assign cta_fallback = "View All " | append: include.type | capitalize %}
+      {% include helpers/t.html key=cta_key fallback=cta_fallback %}
+    </a>
+  {% endif %}
+</div>

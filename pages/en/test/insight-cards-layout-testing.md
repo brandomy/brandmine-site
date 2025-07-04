@@ -678,9 +678,10 @@ lang: en
             </div>
           {% endif %}
         </div>
-        <!-- CSS and JS Sources -->
+        <!-- File Sources -->
         <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/insight-card.html</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
@@ -748,9 +749,10 @@ lang: en
             </div>
           {% endif %}
         </div>
-        <!-- CSS and JS Sources -->
+        <!-- File Sources -->
         <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/insight-card.html</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (base styling only)</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="tagged" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
@@ -808,7 +810,7 @@ lang: en
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1C. insight-card.html Featured Variant</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 480px desktop</span><br>
-          <strong>Purpose:</strong> Premium homepage display with enhanced styling mapped from insight-card-latest<br>
+          <strong>Purpose:</strong> Premium homepage display with enhanced styling<br>
           <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
           <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 480px (--card-width-featured-lg)</span>
         </div>
@@ -819,9 +821,10 @@ lang: en
             </div>
           {% endif %}
         </div>
-        <!-- CSS and JS Sources -->
+        <!-- File Sources -->
         <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/insight-card.html</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card.scss (.insight-card--featured styling)</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>Usage:</strong> {% raw %}{% include components/cards/insight-card.html insight=insight variant="featured" %}{% endraw %}</p>
           <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
@@ -896,86 +899,10 @@ lang: en
             </div>
           </div>
           <div style="margin-top: 1rem; padding: 0.75rem; background: #fffbeb; border-radius: 0.375rem;">
-            <strong style="color: #92400e;">🎯 Premium Styling:</strong> This variant maps the premium design from insight-card-latest.html into our unified variant system, providing enhanced styling for homepage featured displays while maintaining component consistency.
+            <strong style="color: #92400e;">🎯 Premium Styling:</strong> This variant provides enhanced styling for homepage featured displays while maintaining component consistency.
           </div>
         </div>
       </div>
-      
-      <!-- 2. insight-card-latest.html (Legacy) -->
-      <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2. insight-card-latest.html (Legacy)</h4>
-        <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 480px desktop</span><br>
-          <strong>Purpose:</strong> Premium homepage display with enhanced desktop width<br>
-          <strong>BEM Status:</strong> <span style="color: #22c55e;">✅ Compliant</span><br>
-          <strong>Width System:</strong> <span style="color: #059669;">✅ Mobile-first 345px → 480px</span>
-        </div>
-        <div style="border: 2px solid #8b5cf6; padding: 1rem; background: white; border-radius: 0.5rem; max-width: 100%; overflow: hidden;">
-          {% if comparison_insight %}
-            <div style="max-width: 100%; overflow: hidden;">
-              {% include components/cards/insight-card-latest.html insight=comparison_insight %}
-            </div>
-          {% endif %}
-        </div>
-        <!-- CSS and JS Sources -->
-        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.5rem;">CSS and JS Sources:</h5>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/insight-card-latest.scss</p>
-          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
-        </div>
-        
-        <!-- Typography & Color Analysis -->
-        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
-            <div>
-              <strong style="color: #1f2937;">Title:</strong><br>
-              • Font: <code>var(--text-lg)</code> (1.125rem) mobile<br>
-              • Weight: <code>var(--font-bold)</code> (700)<br>
-              • Color: <code>var(--neutral-900)</code> (#111827)<br>
-              • Line Height: 1.3 (tighter)<br>
-              • Clamp: 2 lines<br><br>
-              
-              <strong style="color: #1f2937;">Meta (Date/Time):</strong><br>
-              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
-              • Weight: <code>var(--font-medium)</code> (500)<br>
-              • Color: <code>var(--neutral-500)</code> (#6B7280)<br>
-              • Alignment: Center<br><br>
-              
-              <strong style="color: #1f2937;">Excerpt:</strong><br>
-              • Font: <code>var(--text-sm)</code> (0.875rem) mobile<br>
-              • Weight: Default (400)<br>
-              • Color: <code>var(--neutral-600)</code> (#4B5563)<br>
-              • Line Height: 1.4<br>
-              • Clamp: 4 lines<br>
-              • Alignment: Center
-            </div>
-            <div>
-              <strong style="color: #1f2937;">Category Badge ✨ UPDATED:</strong><br>
-              • Font: <code>var(--text-sm)</code> (0.875rem) ✅<br>
-              • Weight: <code>var(--font-semibold)</code> (600)<br>
-              • Background: <code>var(--primary-100)</code><br>
-              • Color: <code>var(--primary-800)</code><br>
-              • Transform: uppercase<br>
-              • Border: pill-shaped (full radius)<br>
-              • Letter Spacing: 0.05em<br>
-              • Padding: Enhanced breathing room ✅<br><br>
-              
-              <strong style="color: #1f2937;">Separator:</strong><br>
-              • Weight: <code>var(--font-bold)</code> (700)<br>
-              • Color: <code>var(--neutral-400)</code><br><br>
-              
-              <strong style="color: #1f2937;">Read More Link:</strong><br>
-              • Font: <code>var(--text-sm)</code> (0.875rem)<br>
-              • Weight: <code>var(--font-semibold)</code> (600)<br>
-              • Color: <code>var(--primary-600)</code><br>
-              • Hover: <code>var(--primary-700)</code><br>
-              • Alignment: Center
-            </div>
-          </div>
-        </div>
-      </div>
-      
       
     </div>
     
@@ -990,17 +917,17 @@ lang: en
           <div style="font-size: 0.875rem; line-height: 1.5;">
             <strong>Title Colors (Standardized):</strong><br>
             • insight-card: neutral-900 ✅<br>
-            • insight-card-latest: neutral-900 ✅<br>
+            • insight-card featured: neutral-900 ✅<br>
             • insight-card-tagged: <strong>neutral-900 ✅ (updated)</strong><br><br>
             
             <strong>Category Badge Sizes (Enhanced):</strong><br>
             • insight-card: <strong>text-sm (0.875rem) ✅ (updated)</strong><br>
-            • insight-card-latest: <strong>text-sm (0.875rem) ✅ (updated)</strong><br>
+            • insight-card featured: <strong>text-sm (0.875rem) ✅ (updated)</strong><br>
             • insight-card-tagged: <strong>text-sm (0.875rem) ✅ (updated)</strong><br><br>
             
             <strong>Title Weights (Preserved):</strong><br>
             • insight-card: semibold (600)<br>
-            • insight-card-latest: <strong>bold (700)</strong><br>
+            • insight-card featured: <strong>bold (700)</strong><br>
             • insight-card-tagged: semibold (600)
           </div>
         </div>
@@ -1017,11 +944,11 @@ lang: en
             
             <strong>Category Badge Styles (Improved):</strong><br>
             • insight-card: primary-100 bg / primary-900 text<br>
-            • insight-card-latest: primary-100 bg / <strong>primary-800 text</strong><br>
+            • insight-card featured: primary-100 bg / <strong>primary-800 text</strong><br>
             • insight-card-tagged: <strong>overlay-modal bg / white text</strong><br><br>
             
             <strong>Special Features:</strong><br>
-            • insight-card-latest: <strong>center alignment</strong><br>
+            • insight-card featured: <strong>center alignment</strong><br>
             • insight-card-tagged: <strong>dimension tag colors</strong>
           </div>
         </div>
@@ -1032,17 +959,17 @@ lang: en
           <div style="font-size: 0.875rem; line-height: 1.5;">
             <strong>Text Alignment:</strong><br>
             • insight-card: left-aligned<br>
-            • insight-card-latest: <strong>center-aligned</strong><br>
+            • insight-card featured: <strong>center-aligned</strong><br>
             • insight-card-tagged: left-aligned<br><br>
             
             <strong>Line Height Variations:</strong><br>
             • insight-card: 1.4 (title), 1.5 (excerpt)<br>
-            • insight-card-latest: <strong>1.3 (title)</strong>, 1.4 (desc)<br>
+            • insight-card featured: <strong>1.3 (title)</strong>, 1.4 (desc)<br>
             • insight-card-tagged: 1.25 (title), <strong>1.625 (excerpt)</strong><br><br>
             
             <strong>Text Clamping:</strong><br>
             • insight-card: no clamping<br>
-            • insight-card-latest: <strong>2 lines (title), 4 lines (desc)</strong><br>
+            • insight-card featured: <strong>2 lines (title), 4 lines (desc)</strong><br>
             • insight-card-tagged: no clamping
           </div>
         </div>
@@ -1053,7 +980,7 @@ lang: en
         <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Typography Decisions:</h6>
         <ul style="margin: 0; font-size: 0.875rem; line-height: 1.4; color: #713f12;">
           <li><strong>insight-card:</strong> Compact & readable - best for dense grids</li>
-          <li><strong>insight-card-latest:</strong> Bold & centered - premium homepage display</li>
+          <li><strong>insight-card featured:</strong> Bold & centered - premium homepage display</li>
           <li><strong>insight-card-tagged:</strong> Tag-focused - dimension exploration context</li>
         </ul>
       </div>
@@ -1067,7 +994,7 @@ lang: en
           <h5 style="margin-bottom: 0.5rem;">Current State (3 Components)</h5>
           <ul style="margin: 0; font-size: 0.875rem; line-height: 1.5;">
             <li><strong>insight-card.html:</strong> 4,966 bytes - Base card (streamlined design)</li>
-            <li><strong>insight-card-latest.html:</strong> 4,039 bytes - Premium homepage display</li>
+            <li><strong>insight-card.html featured:</strong> 4,039 bytes - Premium homepage display</li>
             <li><strong>insight-card-tagged.html:</strong> 6,523 bytes - Category focus</li>
             <li><strong>insight-card-legacy.html:</strong> 11,260 bytes - Legacy complex version</li>
           </ul>
@@ -1113,7 +1040,7 @@ lang: en
             <!-- Apply homepage styling context for accurate rendering -->
             <div class="home-page">
               <div class="latest-insights__container" style="display: block; width: 100%; margin: 0;">
-                {% include components/cards/insight-card-latest.html insight=sample_insight %}
+                {% include components/cards/insight-card.html insight=sample_insight variant="featured" %}
               </div>
             </div>
           </div>
@@ -1128,8 +1055,8 @@ lang: en
       <div class="test-production-notes">
         <h5>Production Card Analysis</h5>
         <ul>
-          <li><strong>Component:</strong> insight-card-latest.html (4,039 bytes)</li>
-          <li><strong>CSS Sources:</strong> insight-card-latest.scss + latest-insights.scss (grid layout)</li>
+          <li><strong>Component:</strong> insight-card.html variant="featured" (4,039 bytes)</li>
+          <li><strong>CSS Sources:</strong> insight-card.scss + latest-insights.scss (grid layout)</li>
           <li><strong>Features:</strong> Category badges, hero images, centered layout</li>
           <li><strong>Width:</strong> Natural responsive width (homepage grid)</li>
           <li><strong>Usage Context:</strong> Homepage 2x2 grid display</li>
@@ -1274,14 +1201,6 @@ lang: en
             <td><span class="status-good">✅ Good</span></td>
             <td><span class="status-warning">⚠️ Moderate</span></td>
             <td><span class="status-good">✅ Active</span></td>
-          </tr>
-          <tr>
-            <td><strong>insight-card-latest.html</strong></td>
-            <td>Recent insights</td>
-            <td>Time-focused, minimal design</td>
-            <td><span class="status-warning">⚠️ Limited</span></td>
-            <td><span class="status-good">✅ Good</span></td>
-            <td><span class="status-warning">⚠️ Needs review</span></td>
           </tr>
         </tbody>
       </table>

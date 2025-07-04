@@ -40,8 +40,18 @@
     width: 100%;
     max-width: 1200px;  /* Updated to follow the new width strategy */
     margin: 0 auto;
-    padding: 0 var(--space-6);
+    padding: 0 var(--space-1);  /* Extra minimal padding for very small devices (4px) */
     box-sizing: border-box;
+    
+    /* Small mobile devices */
+    @media (min-width: 375px) {
+      padding: 0 var(--space-2);  /* Slightly more padding when space allows (8px) */
+    }
+    
+    /* Increase padding on larger screens */
+    @media (min-width: 768px) {
+      padding: 0 var(--space-6);
+    }
   }
 
 /* Section-specific panels use base panel content styles */

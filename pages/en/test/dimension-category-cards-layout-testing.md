@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Dimension Cards Layout Testing
-permalink: /test/dimension-cards-layout-testing
+title: Dimension Category Cards Layout Testing
+permalink: /test/dimension-category-cards-layout-testing
 lang: en
 ---
 
@@ -116,35 +116,35 @@ lang: en
   /* VISUAL DEBUGGING TOOLKIT - Isolated to test page only */
   
   /* Color-coded element debugging */
-  .debug-layout .dimension-card__title {
+  .debug-layout .dimension-category-card__title {
     background: rgba(0, 255, 0, 0.2) !important;
     border: 2px solid green !important;
     margin: 2px 0 !important;
   }
   
-  .debug-layout .dimension-card__description {
+  .debug-layout .dimension-category-card__description {
     background: rgba(255, 0, 0, 0.2) !important;
     border: 2px solid red !important;
     margin: 2px 0 !important;
   }
   
-  .debug-layout .dimension-card__icon {
+  .debug-layout .dimension-category-card__icon {
     background: rgba(0, 0, 255, 0.2) !important;
     border: 2px solid blue !important;
     margin: 1px !important;
   }
   
-  .debug-layout .dimension-card__count {
+  .debug-layout .dimension-category-card__count {
     background: rgba(128, 0, 128, 0.2) !important;
     border: 2px solid purple !important;
   }
   
   /* Grid overlay debugging */
-  .debug-grid .dimension-card {
+  .debug-grid .dimension-category-card {
     position: relative;
   }
 
-  .debug-grid .dimension-card::before {
+  .debug-grid .dimension-category-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -159,7 +159,7 @@ lang: en
     z-index: 999;
   }
 
-  .debug-grid .dimension-card::after {
+  .debug-grid .dimension-category-card::after {
     content: '';
     position: absolute;
     top: 0;
@@ -197,14 +197,14 @@ lang: en
 
 <div class="container">
   <div class="test-header">
-    <h1>Dimension Cards Layout Testing</h1>
-    <p>Comprehensive testing of dimension card components with 1A base and 1B featured variants</p>
+    <h1>Dimension Category Cards Layout Testing</h1>
+    <p>Comprehensive testing of dimension category card components with 1A base and 1B featured variants</p>
   </div>
 
   <!-- Section 0: Single Card Comparison -->
   <section class="test-section">
-    <h2>Section 0: DIMENSION CARD VARIANTS COMPARISON</h2>
-    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of dimension card variants using all four dimension types</p>
+    <h2>Section 0: DIMENSION CATEGORY CARD VARIANTS COMPARISON</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Side-by-side comparison of dimension category card variants using all four dimension types</p>
     
     <!-- Single card comparison grid - organized by dimension type -->
     <div style="margin-bottom: 3rem;">
@@ -220,7 +220,15 @@ lang: en
           <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 360px desktop</span>
         </div>
         <div style="border: 2px solid var(--olive-500); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="sectors" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="sectors" limit=3 %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -275,7 +283,15 @@ lang: en
           <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">345px mobile → 450px desktop</span>
         </div>
         <div style="border: 2px solid var(--olive-600); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="sectors" limit=3 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="sectors" limit=3 variant="featured" %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -333,10 +349,18 @@ lang: en
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. Markets (Standard)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> markets | <strong>Variant:</strong> standard | <strong>Usage:</strong> Discovery grid layouts<br>
-          <strong>Color scheme:</strong> Sky blue theme
+          <strong>Color scheme:</strong> Sky blue theme<br>
         </div>
         <div style="border: 2px solid var(--sky-500); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="markets" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="markets" limit=3 %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -375,10 +399,18 @@ lang: en
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. Markets (Featured)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> markets | <strong>Variant:</strong> featured | <strong>Usage:</strong> Homepage highlights<br>
-          <strong>Color scheme:</strong> Enhanced sky blue theme
+          <strong>Color scheme:</strong> Enhanced sky blue theme<br>
         </div>
         <div style="border: 2px solid var(--sky-600); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="markets" limit=3 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="markets" limit=3 variant="featured" %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -423,10 +455,18 @@ lang: en
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. Attributes (Standard)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> attributes | <strong>Variant:</strong> standard | <strong>Usage:</strong> Discovery grid layouts<br>
-          <strong>Color scheme:</strong> Orange/secondary theme
+          <strong>Color scheme:</strong> Orange/secondary theme<br>
         </div>
         <div style="border: 2px solid var(--secondary-500); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="attributes" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="attributes" limit=3 %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -465,10 +505,18 @@ lang: en
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. Attributes (Featured)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> attributes | <strong>Variant:</strong> featured | <strong>Usage:</strong> Homepage highlights<br>
-          <strong>Color scheme:</strong> Enhanced orange/secondary theme
+          <strong>Color scheme:</strong> Enhanced orange/secondary theme<br>
         </div>
         <div style="border: 2px solid var(--secondary-600); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="attributes" limit=3 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="attributes" limit=3 variant="featured" %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -513,10 +561,18 @@ lang: en
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1A. Signals (Standard)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> signals | <strong>Variant:</strong> standard | <strong>Usage:</strong> Discovery grid layouts<br>
-          <strong>Color scheme:</strong> Indigo/accent theme
+          <strong>Color scheme:</strong> Indigo/accent theme<br>
         </div>
         <div style="border: 2px solid var(--accent-500); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="signals" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="signals" limit=3 %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -555,10 +611,18 @@ lang: en
         <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">1B. Signals (Featured)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
           <strong>Type:</strong> signals | <strong>Variant:</strong> featured | <strong>Usage:</strong> Homepage highlights<br>
-          <strong>Color scheme:</strong> Enhanced indigo/accent theme
+          <strong>Color scheme:</strong> Enhanced indigo/accent theme<br>
         </div>
         <div style="border: 2px solid var(--accent-600); padding: 1rem; background: white; border-radius: 0.5rem;">
-          {% include components/cards/dimension-card.html type="signals" limit=3 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="signals" limit=3 variant="featured" %}
+        </div>
+        
+        <!-- File Sources -->
+        <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.5rem;">File Sources:</h5>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>Component:</strong> _includes/components/cards/dimension-category-card.html</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/dimension-category-card.scss</p>
+          <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
         </div>
         
         <!-- Typography & Color Analysis -->
@@ -680,15 +744,22 @@ lang: en
       
       <!-- Quick Reference -->
       <div style="margin-top: 1.5rem; padding: 1rem; background: #fefce8; border-radius: 0.5rem;">
-        <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Dimension Card Usage:</h6>
-        <ul style="margin: 0; font-size: 0.875rem; line-height: 1.4; color: #713f12;">
-          <li><strong>Standard (1A):</strong> Discovery page grids, category navigation</li>
-          <li><strong>Featured (1B):</strong> Homepage highlights, premium discovery sections</li>
-          <li><strong>Sectors:</strong> Industry and business category discovery</li>
-          <li><strong>Markets:</strong> Geographic region exploration</li>
-          <li><strong>Attributes:</strong> Brand quality and characteristic discovery</li>
-          <li><strong>Signals:</strong> Growth indicator and investment readiness exploration</li>
-        </ul>
+        <h6 style="margin-bottom: 0.5rem; color: #713f12;">⚡ Quick Reference for Dimension Category Card Usage:</h6>
+        <div style="font-size: 0.875rem; line-height: 1.4; color: #713f12;">
+          <strong>Usage Examples:</strong><br>
+          <code>{% raw %}{% include components/cards/dimension-category-card.html type="sectors" %}{% endraw %}</code> (Standard)<br>
+          <code>{% raw %}{% include components/cards/dimension-category-card.html type="markets" variant="featured" %}{% endraw %}</code> (Featured)<br><br>
+          
+          <strong>Available Types:</strong><br>
+          • <strong>sectors</strong> - Industry and business category discovery<br>
+          • <strong>markets</strong> - Geographic region exploration<br>
+          • <strong>attributes</strong> - Brand quality and characteristic discovery<br>
+          • <strong>signals</strong> - Growth indicator and investment readiness exploration<br><br>
+          
+          <strong>Variants:</strong><br>
+          • <strong>Standard (default):</strong> Discovery page grids, category navigation<br>
+          • <strong>Featured (variant="featured"):</strong> Homepage highlights, premium discovery sections
+        </div>
       </div>
     </div>
     
@@ -696,10 +767,10 @@ lang: en
 
   <!-- Section 1: Layout Testing -->
   <section class="test-section">
-    <h2>Section 1: DIMENSION CARDS - Layout Testing</h2>
+    <h2>Section 1: DIMENSION CATEGORY CARDS - Layout Testing</h2>
     
     <div class="card-info">
-      <strong>Testing:</strong> dimension-card.html with variants | <strong>Purpose:</strong> Discovery grid and featured layouts
+      <strong>Testing:</strong> dimension-category-card.html with variants | <strong>Purpose:</strong> Discovery grid and featured layouts
     </div>
     
     <!-- Grid Layout Tests -->
@@ -710,16 +781,16 @@ lang: en
       <div class="test-layout-label">Discovery Grid (All 4 Dimension Types) - Standard Variant</div>
       <div class="grid test-grid-4col">
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="sectors" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="sectors" limit=3 %}
         </div>
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="markets" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="markets" limit=3 %}
         </div>
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="attributes" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="attributes" limit=3 %}
         </div>
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="signals" limit=3 %}
+          {% include components/cards/dimension-category-card.html type="signals" limit=3 %}
         </div>
       </div>
       
@@ -727,16 +798,16 @@ lang: en
       <div class="test-layout-label" style="margin-top: 2rem;">Featured Grid (All 4 Dimension Types) - Featured Variant</div>
       <div class="grid test-grid-4col">
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="sectors" limit=5 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="sectors" limit=5 variant="featured" %}
         </div>
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="markets" limit=5 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="markets" limit=5 variant="featured" %}
         </div>
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="attributes" limit=5 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="attributes" limit=5 variant="featured" %}
         </div>
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="signals" limit=5 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="signals" limit=5 variant="featured" %}
         </div>
       </div>
       
@@ -744,16 +815,16 @@ lang: en
       <div class="test-layout-label" style="margin-top: 2rem;">Featured Comparison (2-Card Layout)</div>
       <div class="grid test-grid-2col">
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="sectors" limit=4 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="sectors" limit=4 variant="featured" %}
         </div>
         <div class="grid__item">
-          {% include components/cards/dimension-card.html type="markets" limit=4 variant="featured" %}
+          {% include components/cards/dimension-category-card.html type="markets" limit=4 variant="featured" %}
         </div>
       </div>
       
       <!-- Styling Evaluation Framework -->
       <div class="styling-assessment" style="margin-top: 2rem; padding: 1.5rem; background: var(--neutral-50); border-radius: 0.5rem;">
-        <h4>Styling Evaluation: dimension-card.html</h4>
+        <h4>Styling Evaluation: dimension-category-card.html</h4>
         <div class="assessment-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
           <div class="criteria">
             <strong>Visual Appeal:</strong> ⭐⭐⭐⭐⭐<br>
@@ -770,6 +841,20 @@ lang: en
       </div>
     </div>
     
+  </section>
+
+  <!-- Homepage Implementation Details -->
+  <section class="test-section">
+    <h2>🏠 Homepage Implementation Details</h2>
+    <div class="card-info" style="background: var(--primary-100); border-left-color: var(--primary-600); margin-bottom: 2rem;">
+      <h3>Discovery Dimensions Section on Homepage</h3>
+      <p><strong>Location:</strong> <code>_includes/pages/home/discovery-dimensions.html</code></p>
+      <p><strong>Grid Component:</strong> <code>_includes/components/dimensions/discovery-dimensions-grid.html</code></p>
+      <p><strong>Default Configuration:</strong> 4 columns, 6 items per dimension type</p>
+      <p><strong>Usage:</strong></p>
+      <pre style="background: var(--neutral-800); color: white; padding: 1rem; border-radius: 0.375rem; overflow-x: auto;">{% raw %}{% include components/dimensions/discovery-dimensions-grid.html columns=4 limit=6 %}{% endraw %}</pre>
+      <p style="margin-top: 1rem;"><strong>Note:</strong> The discovery-dimensions-grid.html component automatically includes all four dimension types (markets, sectors, attributes, signals) using the standard variant of dimension-category-card.html</p>
+    </div>
   </section>
 
   <!-- Visual Debugging Toolkit -->
@@ -829,10 +914,10 @@ function toggleDebugBoxModel() {
 
 // Element dimension reporting
 function reportDimensions() {
-  const title = document.querySelector('.dimension-card__title');
-  const description = document.querySelector('.dimension-card__description');
-  const icon = document.querySelector('.dimension-card__icon');
-  const count = document.querySelector('.dimension-card__count');
+  const title = document.querySelector('.dimension-category-card__title');
+  const description = document.querySelector('.dimension-category-card__description');
+  const icon = document.querySelector('.dimension-category-card__icon');
+  const count = document.querySelector('.dimension-category-card__count');
   
   console.group('🔍 Dimension Card Element Report');
   

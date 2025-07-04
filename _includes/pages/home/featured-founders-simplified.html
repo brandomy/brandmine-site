@@ -18,8 +18,8 @@
   Dependencies:
     - Translation keys: home.founders.*
     - CSS: assets/css/pages/home/featured-founders-simplified.scss
-    - CSS: assets/css/components/cards/simplified-founder-card.scss
-    - Include: components/cards/simplified-founder-card.html
+    - CSS: assets/css/components/cards/founder-card.scss
+    - Include: components/cards/founder-card.html
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}
@@ -44,11 +44,9 @@
   {% if founders.size > 0 %}
     <div class="featured-founders-simplified__grid">
       {% for founder in founders %}
-        {% include components/cards/universal-card.html 
-           item=founder 
-           type="founder" 
-           variant="compact" 
-           config_set="universal-card" %}
+        {% include components/cards/founder-card.html 
+           founder=founder 
+           variant="standard" %}
       {% endfor %}
     </div>
   {% else %}

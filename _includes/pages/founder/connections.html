@@ -7,7 +7,7 @@
     - assets/css/pages/founder/connections.scss
     - helpers/t.html for translations
     - components/cards/founder-card.html
-    - components/cards/insight-card.html
+    - components/cards/insight-card-simple.html
 
   Usage examples:
     {% include pages/founder/connections.html %}
@@ -94,11 +94,9 @@
       {% for connection_ref in founder.connections %}
         {% assign connected_founder = site.founders | where: "ref", connection_ref | where: "lang", founder.lang | first %}
         {% if connected_founder %}
-          {% include components/cards/universal-card.html 
-             item=connected_founder 
-             type="founder" 
-             variant="compact" 
-             config_set="universal-card" %}
+          {% include components/cards/founder-card.html 
+             founder=connected_founder 
+             variant="standard" %}
         {% endif %}
       {% endfor %}
     </div>

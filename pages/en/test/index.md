@@ -89,7 +89,7 @@ lang: en
     <!-- Insight Card Comparison Testing -->
     <a href="/test/insight-card-comparison/" class="test-link-card">
       <h2>Insight Card Comparison Testing</h2>
-      <p>Side-by-side comparison of insight-card-latest.html vs insight-card.html variant="featured" for component consolidation analysis. Tests visual parity, typography hierarchy, layout consistency, and homepage grid compatibility.</p>
+      <p>Comparison of insight-card.html variant="featured" for component consolidation analysis. Tests visual parity, typography hierarchy, layout consistency, and homepage grid compatibility.</p>
       <span class="test-status">Active</span>
     </a>
     
