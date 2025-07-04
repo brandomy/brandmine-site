@@ -159,14 +159,24 @@
 .founder-card--featured {
   display: flex;
   align-items: stretch;
-  max-width: 900px;
+  flex-direction: column;
+  max-width: 400px;
   min-height: 400px;
   padding: 0;
   
+  @media (min-width: 769px) {
+    flex-direction: row;
+    max-width: 900px;
+  }
+  
   .founder-card__portrait {
-    flex: 0 0 50%;
+    flex: 0 0 250px;
     position: relative;
     overflow: hidden;
+    
+    @media (min-width: 769px) {
+      flex: 0 0 50%;
+    }
     
     img {
       width: 100%;
@@ -192,10 +202,14 @@
   
   .founder-card__content {
     flex: 1;
-    padding: var(--space-6) var(--space-7);
+    padding: var(--space-5);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+    @media (min-width: 769px) {
+      padding: var(--space-6) var(--space-7);
+    }
   }
   
   .founder-card__header {
@@ -203,17 +217,25 @@
   }
   
   .founder-card__name {
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
     font-weight: var(--font-bold);
     color: var(--neutral-900);
     margin: 0 0 var(--space-2) 0;
     line-height: 1.2;
+    
+    @media (min-width: 769px) {
+      font-size: var(--text-2xl);
+    }
   }
   
   .founder-card__position {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     color: var(--neutral-600);
     margin: 0 0 var(--space-3) 0;
+    
+    @media (min-width: 769px) {
+      font-size: var(--text-lg);
+    }
   }
   
   .founder-card__location {
@@ -299,37 +321,24 @@
    RESPONSIVE BEHAVIOR
    ================================= */
 
-@media (max-width: 768px) {
-  .founder-card--featured {
-    flex-direction: column;
-    max-width: 400px;
-    
-    .founder-card__portrait {
-      flex: 0 0 250px;
-    }
-    
-    .founder-card__content {
-      padding: var(--space-5);
-    }
-    
-    .founder-card__name {
-      font-size: var(--text-xl);
-    }
-    
-    .founder-card__position {
-      font-size: var(--text-base);
-    }
+.founder-card--standard {
+  padding: var(--space-4);
+  
+  @media (min-width: 481px) {
+    padding: var(--space-5);
   }
 }
 
-@media (max-width: 480px) {
-  .founder-card--standard {
+.founder-card--featured {
+  .founder-card__content {
     padding: var(--space-4);
-  }
-  
-  .founder-card--featured {
-    .founder-card__content {
-      padding: var(--space-4);
+    
+    @media (min-width: 481px) {
+      padding: var(--space-5);
+    }
+    
+    @media (min-width: 769px) {
+      padding: var(--space-6) var(--space-7);
     }
   }
 }
