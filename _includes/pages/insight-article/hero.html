@@ -54,10 +54,11 @@ Mobile-first Responsive:
     <!-- Content Section -->
     <div class="insight-hero-card__content">
       {% if insight.category %}
-        {% assign normalized_category = insight.category | replace: "-", "_" %}
-        {% capture translation_key %}insights.{{ normalized_category }}{% endcapture %}
         <div class="insight-hero-card__category">
-          {% include helpers/t.html key=translation_key fallback=insight.category lang=current_lang %}
+          {% include components/ui/insight-category.html 
+             category=insight.category 
+             size="md" 
+             lang=current_lang %}
         </div>
       {% endif %}
       
