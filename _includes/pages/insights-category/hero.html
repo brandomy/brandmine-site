@@ -1,30 +1,96 @@
 {% comment %}
-  Hero for insights category with split panel and category-specific gradients
-  Uses inline styles for simplicity (bypasses theme conflicts)
-  Updated: 2025-07-05 - Simple inline style approach
+  Hero for insights category with full-width gradient and category-specific styling
+  Updated: 2025-07-05 - Full-width design with left panel gradient edge
 {% endcomment %}
 
-{% comment %} Set category-specific gradient based on page type {% endcomment %}
+{% comment %} Set category-specific colors {% endcomment %}
 {% if page.insight_type == "brand-spotlight" %}
-  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #f97316 100%);" %}
+  {% assign gradient_color = "#fed7aa" %}
+  {% assign panel_gradient = "linear-gradient(to right, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05))" %}
+  {% assign main_gradient_color = "#f97316" %}
 {% elsif page.insight_type == "founders-journey" %}
-  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #6366f1 100%);" %}
+  {% assign gradient_color = "#c7d2fe" %}
+  {% assign panel_gradient = "linear-gradient(to right, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05))" %}
+  {% assign main_gradient_color = "#6366f1" %}
 {% elsif page.insight_type == "location-intelligence" %}
-  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #0ea5e9 100%);" %}
+  {% assign gradient_color = "#bae6fd" %}
+  {% assign panel_gradient = "linear-gradient(to right, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05))" %}
+  {% assign main_gradient_color = "#0ea5e9" %}
 {% elsif page.insight_type == "market-momentum" %}
-  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #65a30d 100%);" %}
+  {% assign gradient_color = "#d9f99d" %}
+  {% assign panel_gradient = "linear-gradient(to right, rgba(101, 163, 13, 0.1), rgba(101, 163, 13, 0.05))" %}
+  {% assign main_gradient_color = "#65a30d" %}
 {% else %}
-  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #0891b2 100%);" %}
+  {% assign gradient_color = "#bae6fd" %}
+  {% assign panel_gradient = "linear-gradient(to right, rgba(8, 145, 178, 0.1), rgba(8, 145, 178, 0.05))" %}
+  {% assign main_gradient_color = "#0891b2" %}
 {% endif %}
 
-<div class="insights-category-hero" style="{{ bg_style }} padding: 2rem 1rem; min-height: 400px; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center;" data-insight-type="{{ page.insight_type }}">
+<div class="insights-category-hero" data-insight-type="{{ page.insight_type }}">
   
   <style>
+    .insights-category-hero {
+      background: radial-gradient(ellipse at center, white, {{ gradient_color }});
+      margin: 0 calc(-50vw + 50%);
+      padding: 2rem calc(50vw - 50% + 2rem);
+      min-height: 400px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+    }
+    
+    .insights-category-hero__content {
+      background: radial-gradient(ellipse at center, {{ main_gradient_color }}, rgba(0, 0, 0, 0.8));
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .insights-category-hero__content > h1,
+    .insights-category-hero__content > p,
+    .insights-category-hero__content .insights-category-hero__meta,
+    .insights-category-hero__content .insights-category-hero__meta * {
+      color: white !important;
+    }
+    
+    .insights-category-hero__image {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+    }
+    
+    .insights-category-hero__img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    
     @media (min-width: 768px) {
       .insights-category-hero {
-        grid-template-columns: 1fr 1fr !important;
-        padding: 3rem 2rem !important;
-        min-height: 500px !important;
+        grid-template-columns: 1fr 1fr;
+        padding: 2rem calc(50vw - 50% + 3rem);
+        min-height: 500px;
+      }
+      
+      .insights-category-hero__content {
+        margin-right: -1rem;
+        border-radius: 12px 0 0 12px;
+      }
+      
+    }
+    
+    @media (min-width: 1024px) {
+      .insights-category-hero {
+        padding: 2rem calc(50vw - 50% + 4rem);
       }
     }
   </style>
