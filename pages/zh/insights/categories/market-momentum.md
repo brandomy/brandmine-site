@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "市场动向"
 permalink: /zh/insights/categories/market-momentum/
 lang: zh

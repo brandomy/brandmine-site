@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "Brand Spotlight"
 permalink: /en/insights/categories/brand-spotlight/
 lang: en

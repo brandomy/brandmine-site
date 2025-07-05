@@ -181,13 +181,8 @@
               {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="dimension=page_dimension" %}
             {% endif %}
           {% elsif page_type == "insight-article" %}
-            {% comment %} Handle insight sections subdirectory {% endcomment %}
-            {% assign insight_sections_subdirectory = "brand-info,related-brands,related-insights,taxonomy-cloud" | split: "," %}
-            {% if insight_sections_subdirectory contains section %}
-              {% assign content_include_path = "pages/insight/sections/" | append: section | append: ".html" %}
-            {% else %}
-              {% assign content_include_path = "pages/insight/" | append: section | append: ".html" %}
-            {% endif %}
+            {% comment %} Handle insight-article sections - updated to use correct directory {% endcomment %}
+            {% assign content_include_path = "pages/insight-article/" | append: section | append: ".html" %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="insight=page_insight" %}
           {% elsif page_type == "journal" %}
             {% comment %} Handle special journal sections {% endcomment %}

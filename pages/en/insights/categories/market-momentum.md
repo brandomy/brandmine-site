@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "Market Momentum"
 permalink: /en/insights/categories/market-momentum/
 lang: en

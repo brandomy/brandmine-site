@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "Путь основателей"
 permalink: /ru/insights/categories/founders-journey/
 lang: ru

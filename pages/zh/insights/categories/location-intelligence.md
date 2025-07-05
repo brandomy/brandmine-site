@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "地理洞察"
 permalink: /zh/insights/categories/location-intelligence/
 lang: zh

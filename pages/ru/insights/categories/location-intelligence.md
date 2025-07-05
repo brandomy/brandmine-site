@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "Географическая аналитика"
 permalink: /ru/insights/categories/location-intelligence/
 lang: ru

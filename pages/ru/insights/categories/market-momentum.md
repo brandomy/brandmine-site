@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "Движение рынка"
 permalink: /ru/insights/categories/market-momentum/
 lang: ru

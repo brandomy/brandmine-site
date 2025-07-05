@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "Founder's Journey"
 permalink: /en/insights/categories/founders-journey/
 lang: en

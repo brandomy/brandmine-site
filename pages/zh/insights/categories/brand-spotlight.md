@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "品牌聚焦"
 permalink: /zh/insights/categories/brand-spotlight/
 lang: zh

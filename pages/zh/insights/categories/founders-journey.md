@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "创始人之路"
 permalink: /zh/insights/categories/founders-journey/
 lang: zh

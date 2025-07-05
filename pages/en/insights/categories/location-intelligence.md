@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "Location Intelligence"
 permalink: /en/insights/categories/location-intelligence/
 lang: en

@@ -1,5 +1,5 @@
 ---
-layout: insight-category
+layout: insights-category
 title: "В центре внимания: бренды"
 permalink: /ru/insights/categories/brand-spotlight/
 lang: ru
