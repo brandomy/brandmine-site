@@ -1,0 +1,21 @@
+{% comment %}
+  Section: insights-category/impact.html
+  
+  Displays impact section for insights category pages using panel--primary panel--impact styling
+  
+  Content: Uses the content from the page content section with proper panel styling classes
+{% endcomment %}
+
+{% if page.insight_type == "brand-spotlight" %}
+  <h2 class="panel__heading-secondary">Brand Spotlight Insights</h2>
+  <p class="panel__lead-text">Discover comprehensive profiles of emerging brands from the BRICS+ region. These insights explore brand stories, market positioning, and international growth strategies.</p>
+{% elsif page.insight_type == "founders-journey" %}
+  <h2 class="panel__heading-secondary">Founder's Journey Insights</h2>
+  <p class="panel__lead-text">Explore the personal stories behind BRICS+ brands and the visionaries who created them. These insights reveal the entrepreneurial spirit and determination that drives innovation.</p>
+{% elsif page.insight_type == "location-intelligence" %}
+  <h2 class="panel__heading-secondary">Location Intelligence Insights</h2>
+  <p class="panel__lead-text">Uncover how geography, regional trends, and spatial factors influence brand development and market opportunities across the BRICS+ region.</p>
+{% elsif page.insight_type == "market-momentum" %}
+  <h2 class="panel__heading-secondary">Market Momentum Insights</h2>
+  <p class="panel__lead-text">Track the market evolution and growth trajectories of BRICS+ brands. These insights highlight sector trends, expansion strategies, and market transformation.</p>
+{% endif %}

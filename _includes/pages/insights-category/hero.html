@@ -1,19 +1,76 @@
 {% comment %}
-  Section: insights-category/hero.html
-  
-  Displays hero section for insights category pages including title and description
-  
-  Dependencies:
-  - Translation helper include for multilingual labels
-  - page.title, page.description from front matter
+  Hero for insights category with split panel and category-specific gradients
+  Uses inline styles for simplicity (bypasses theme conflicts)
+  Updated: 2025-07-05 - Simple inline style approach
 {% endcomment %}
 
+{% comment %} Set category-specific gradient based on page type {% endcomment %}
+{% if page.insight_type == "brand-spotlight" %}
+  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #f97316 100%);" %}
+{% elsif page.insight_type == "founders-journey" %}
+  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #6366f1 100%);" %}
+{% elsif page.insight_type == "location-intelligence" %}
+  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #0ea5e9 100%);" %}
+{% elsif page.insight_type == "market-momentum" %}
+  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #65a30d 100%);" %}
+{% else %}
+  {% assign bg_style = "background: radial-gradient(circle at center, white 0%, #0891b2 100%);" %}
+{% endif %}
 
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">{{ page.title }}</h1>
+<div class="insights-category-hero" style="{{ bg_style }} padding: 2rem 1rem; min-height: 400px; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center;" data-insight-type="{{ page.insight_type }}">
+  
+  <style>
+    @media (min-width: 768px) {
+      .insights-category-hero {
+        grid-template-columns: 1fr 1fr !important;
+        padding: 3rem 2rem !important;
+        min-height: 500px !important;
+      }
+    }
+  </style>
+  <div class="insights-category-hero__content">
+    
+    <!-- Category Badge -->
+    <div class="insights-category-hero__category">
+      {% include components/ui/insight-category-new.html 
+         category=page.insight_type 
+         size="lg" %}
+    </div>
+    
+    <!-- Title -->
+    <h1 class="insights-category-hero__title">
+      {{ page.title }}
+    </h1>
+    
+    <!-- Description -->
     {% if page.description %}
-      <p class="panel__subtitle">{{ page.description }}</p>
+      <p class="insights-category-hero__description">
+        {{ page.description }}
+      </p>
     {% endif %}
+    
+    <!-- Metadata -->
+    <div class="insights-category-hero__meta">
+      {% assign category_insights = site.insights | where: 'lang', page.lang | where: 'category', page.insight_type %}
+      <span class="insights-category-hero__count">
+        {{ category_insights.size }} insights
+      </span>
+      
+      {% if category_insights.size > 0 %}
+        {% assign latest_insight = category_insights | sort: 'date' | last %}
+        <span class="separator">•</span>
+        <span class="insights-category-hero__latest">
+          Latest: {{ latest_insight.date | date: "%B %Y" }}
+        </span>
+      {% endif %}
+    </div>
+    
+  </div>
+  
+  <!-- Hero Image -->
+  <div class="insights-category-hero__image">
+    <img src="{{ '/assets/images/categories/' | append: page.insight_type | append: '-800w.jpg' | relative_url }}" 
+         alt="Visual representation of {{ page.title }}"
+         class="insights-category-hero__img" loading="eager">
   </div>
 </div>

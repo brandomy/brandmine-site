@@ -1,19 +1,131 @@
-// insights-category page: hero section uses standard panel--hero styling
-.insights-category-page {
-  .insights-category-section--hero {
-    margin-top: 0;
-    border-top: none;
+/* Insights Category Hero - Simple gradient overrides */
+/* Updated: 2025-07-05 - Category-specific gradients using body classes */
 
-    .panel {
-      border: none;
-      border-top: none;
-      margin-top: 0;
-      padding-top: var(--space-8); // Maintain consistent hero padding but remove border
-    }
-  }
+/* Category-specific gradient backgrounds */
+.insights-categories-brand-spotlight-page .panel--hero-split {
+  background: linear-gradient(135deg, var(--secondary-50) 0%, white 100%);
+  color: var(--neutral-900);
+}
 
-  // Remove top padding from the outer panel wrapper to connect with breadcrumbs
-  .panel--light {
-    padding-top: 0;
+.insights-categories-founders-journey-page .panel--hero-split {
+  background: linear-gradient(135deg, var(--accent-50) 0%, white 100%);
+  color: var(--neutral-900);
+}
+
+.insights-categories-location-intelligence-page .panel--hero-split {
+  background: linear-gradient(135deg, var(--sky-50) 0%, white 100%);
+  color: var(--neutral-900);
+}
+
+.insights-categories-market-momentum-page .panel--hero-split {
+  background: linear-gradient(135deg, var(--olive-50) 0%, white 100%);
+  color: var(--neutral-900);
+}
+
+/* Insights Category Hero - Split panel styling */
+.insights-category-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  min-height: 400px;
+}
+
+@media (min-width: 768px) {
+  .insights-category-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    min-height: 500px;
   }
+}
+
+/* Content section */
+.insights-category-hero__content {
+  padding: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .insights-category-hero__content {
+    padding: var(--space-8);
+  }
+}
+
+/* Category badge */
+.insights-category-hero__category {
+  margin-bottom: var(--space-4);
+}
+
+/* Title styling */
+.insights-category-hero__title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--gray-900);
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .insights-category-hero__title {
+    font-size: var(--text-4xl);
+  }
+}
+
+/* Description styling */
+.insights-category-hero__description {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .insights-category-hero__description {
+    font-size: var(--text-xl);
+  }
+}
+
+/* Metadata styling */
+.insights-category-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  color: var(--gray-500);
+  flex-wrap: wrap;
+}
+
+.insights-category-hero__meta .separator {
+  margin: 0 var(--space-1);
+  opacity: 0.7;
+}
+
+.insights-category-hero__count,
+.insights-category-hero__latest {
+  font-weight: var(--font-medium);
+}
+
+/* Image section */
+.insights-category-hero__image {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .insights-category-hero__image {
+    order: 0;
+  }
+}
+
+.insights-category-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.insights-category-hero__img:hover {
+  transform: scale(1.02);
 }
