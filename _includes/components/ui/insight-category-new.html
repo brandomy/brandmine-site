@@ -4,7 +4,7 @@ Usage: {% include components/ui/insight-category-new.html category="brand-spotli
 BEM: insight-category-new component
 {% endcomment %}
 
-{% assign category = include.category | default: "brand-spotlight" %}
+{% assign category = include.category | default: "brand-spotlight" | replace: "_", "-" %}
 {% assign size = include.size | default: "md" %}
 
 {% comment %}Set size-specific CSS classes{% endcomment %}

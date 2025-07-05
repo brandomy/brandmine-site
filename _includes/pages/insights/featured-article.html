@@ -34,7 +34,17 @@
   <div class="featured-article">
     <div class="featured-article__container">
       <div class="featured-article__image-wrapper">
-        {% if featured_article.image %}
+        {% if featured_article.images and featured_article.images.hero %}
+          {% include components/images/collection-image.html 
+             collection="insights"
+             slug=featured_article.ref
+             purpose="hero"
+             name=featured_article.images.hero.name
+             alt=featured_article.images.hero.alt
+             sizes="(max-width: 768px) 100vw, 50vw"
+             class="featured-article__image"
+          %}
+        {% elsif featured_article.image %}
           {% include components/images/hero-image.html 
              image=featured_article.image 
              alt=featured_article.title 
@@ -50,9 +60,9 @@
       <div class="featured-article__content">
         {% if featured_article.category %}
           <div class="featured-article__category">
-            <span class="featured-article__category-badge featured-article__category-badge--{{ featured_article.category }}">
-              {{ t.insights.categories[featured_article.category].name | default: featured_article.category }}
-            </span>
+            {% include components/ui/insight-category-new.html 
+               category=featured_article.category 
+               size="lg" %}
           </div>
         {% endif %}
         
@@ -71,7 +81,9 @@
         <div class="featured-article__meta">
           {% if featured_article.author %}
             <span class="featured-article__author">
-              {{ t.insights.by | default: "By" }} {{ featured_article.author }}
+              {{ t.insights.by | default: "By" }} 
+              {% assign author_key = "authors." | append: featured_article.author %}
+              {% include helpers/t.html key=author_key fallback=featured_article.author %}
             </span>
           {% endif %}
           
