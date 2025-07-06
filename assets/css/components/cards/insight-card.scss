@@ -34,14 +34,21 @@
    
 
 .insight-card {
-  /* Apply universal width pattern */
-  width: var(--card-width-atomic);    /* 345px mobile */
+  /* Mobile-first: Full width within grid cell */
+  width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   
-  /* Desktop enhancement */
+  /* Tablet+: Use atomic width */
   @media (min-width: 768px) {
+    width: var(--card-width-atomic); /* 345px tablet */
+    max-width: var(--card-width-atomic);
+  }
+  
+  /* Desktop: Standard width */
+  @media (min-width: 1024px) {
     width: var(--card-width-standard); /* 360px desktop */
+    max-width: var(--card-width-standard);
   }
   
   background-color: var(--neutral-100);
@@ -236,11 +243,20 @@
 
 /* Featured variant - Premium styling mapped from insight-card-latest */
 .insight-card--featured {
-  /* Enhanced sizing - larger for premium display */
-  width: var(--card-width-atomic);    /* 345px mobile */
+  /* Mobile-first: Full width within grid cell */
+  width: 100%;
+  max-width: 100%;
   
+  /* Tablet+: Enhanced sizing */
   @media (min-width: 768px) {
+    width: var(--card-width-atomic); /* 345px tablet */
+    max-width: var(--card-width-atomic);
+  }
+  
+  /* Desktop: Premium sizing */
+  @media (min-width: 1024px) {
     width: var(--card-width-featured-lg); /* 480px desktop (like insight-card-latest) */
+    max-width: var(--card-width-featured-lg);
   }
   
   /* Premium styling - Override base card radius */
@@ -423,8 +439,15 @@
 
 /* Mini variant (for future variant="mini" parameter) */
 .insight-card--mini {
-  width: var(--card-width-mini);      /* Always 345px */
-  max-width: var(--card-width-mini);
+  /* Mobile-first: Full width within grid cell */
+  width: 100%;
+  max-width: 100%;
+  
+  /* Tablet+: Constrained mini size */
+  @media (min-width: 768px) {
+    width: var(--card-width-mini);      /* Always 345px */
+    max-width: var(--card-width-mini);
+  }
   
   /* Compact styling for mini variant */
   .insight-card__excerpt {

@@ -30,10 +30,16 @@
     .insights-category-grid {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 var(--space-6); // Add horizontal padding for mobile
+      padding: 0 var(--space-4); // Mobile-first: smaller padding
+      width: 100%;
+      box-sizing: border-box;
       
       @media (min-width: 768px) {
-        padding: 0 var(--space-8); // More padding on larger screens
+        padding: 0 var(--space-6); // Tablet+: more padding
+      }
+      
+      @media (min-width: 1024px) {
+        padding: 0 var(--space-8); // Desktop: full padding
       }
       
       .insights-grid-header {
@@ -59,19 +65,25 @@
       
       .insights-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
-        gap: var(--space-4);
-        margin: var(--space-8) 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
         
+        // Mobile-first: Single column, no overflow
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        margin: var(--space-4) 0;
+        
+        // Tablet+: Auto-fit grid with safe minimums
         @media (min-width: 768px) {
-          grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
           gap: var(--space-6);
+          margin: var(--space-8) 0;
         }
         
-        @media (max-width: 767px) {
-          grid-template-columns: 1fr;
-          gap: var(--space-4);
-          margin: var(--space-4) 0;
+        // Desktop: Larger minimums for better proportions
+        @media (min-width: 1024px) {
+          grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
         }
       }
       
