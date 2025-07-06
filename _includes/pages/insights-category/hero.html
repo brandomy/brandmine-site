@@ -46,7 +46,7 @@ Image Configuration:
     {% assign category_insights_count = category_insights.size %}
     {% assign latest_insight = category_insights | sort: "date" | reverse | first %}
     
-    <div class="journal-hero__metadata">
+    <div class="journal-hero__metadata" style="margin-top: 2rem; padding-top: 0.5rem;">
       <span>{{ category_insights_count }} insights</span>
       {% if latest_insight.date %}
         {% include components/separators/bullet-separator.html %}
