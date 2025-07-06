@@ -47,7 +47,7 @@
         {% endif %}
 
         <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/brand-spotlight/" class="insights-category-highlights__more">
-          {{ t.view_all_brand_spotlights }} →
+          {{ t.view_brand_spotlights | default: "View Brand Spotlights" }} →
         </a>
       </div>
 
@@ -70,7 +70,7 @@
         {% endif %}
 
         <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/founders-journey/" class="insights-category-highlights__more">
-          {{ t.view_all_founders_journeys }} →
+          {{ t.view_founders_journeys | default: "View Founder's Journeys" }} →
         </a>
       </div>
 
@@ -93,7 +93,7 @@
         {% endif %}
 
         <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/location-intelligence/" class="insights-category-highlights__more">
-          {{ t.view_all_location_intelligence }} →
+          {{ t.view_location_intelligence | default: "View Location Intelligence" }} →
         </a>
       </div>
 
@@ -116,7 +116,7 @@
         {% endif %}
 
         <a href="{{ site.baseurl }}/{{ page.lang }}/insights/categories/market-momentum/" class="insights-category-highlights__more">
-          {{ t.view_all_market_momentum }} →
+          {{ t.view_market_momentum | default: "View Market Momentum" }} →
         </a>
       </div>
     </div>
