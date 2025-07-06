@@ -29,8 +29,8 @@ Image Configuration:
 <div class="journal-hero journal-hero--{{ page.insight_type }} journal-hero--landing">
   <!-- Text Content Section -->
   <div class="journal-hero__content">
-    <!-- Category Badge -->
-    {% include components/ui/insight-category-new.html category=page.insight_type %}
+    <!-- Category Badge - Small variant for discrete appearance -->
+    {% include components/ui/insight-category-new.html category=page.insight_type size="sm" %}
     
     {% assign category_data = site.data.insights[page.lang].categories | where: "id", page.insight_type | first %}
     
@@ -40,6 +40,19 @@ Image Configuration:
     <p class="journal-hero__subtitle">
       {{ category_data.description | default: "Discover insights and analysis in this category." }}
     </p>
+    
+    <!-- Dynamic metadata line -->
+    {% assign category_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type %}
+    {% assign category_insights_count = category_insights.size %}
+    {% assign latest_insight = category_insights | sort: "date" | reverse | first %}
+    
+    <div class="journal-hero__metadata">
+      <span>{{ category_insights_count }} insights</span>
+      {% if latest_insight.date %}
+        {% include components/separators/bullet-separator.html %}
+        <span>Latest: {{ latest_insight.date | date: "%B %Y" }}</span>
+      {% endif %}
+    </div>
   </div>
   
   <!-- Image Section -->

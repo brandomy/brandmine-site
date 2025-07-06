@@ -513,6 +513,19 @@
     color: white;
     border: var(--border-surface-medium);
   }
+
+  /* Insights Category Hero specific metadata styling */
+  .journal-hero__metadata {
+    margin-top: var(--space-6);
+    font-size: var(--text-sm);
+    color: var(--surface-alpha-90);
+    font-weight: var(--font-medium);
+    
+    .separator {
+      margin: 0 var(--space-2);
+      opacity: 0.8;
+    }
+  }
 }
 
 /* RESERVED FOR FUTURE EXPANSION:
@@ -677,6 +690,14 @@
 
 .panel--insights-category-hero[data-category="market-momentum"] .journal-hero__content {
   background: radial-gradient(circle at 30% 40%, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+/* Badge width restriction - auto-size to content */
+.panel--insights-category-hero .insight-category-new {
+  width: auto !important;
+  max-width: fit-content;
+  display: inline-flex;
+  align-self: flex-start; /* Align to start of flex container */
 }
 
 /* Hero image specific text styling for better contrast */
