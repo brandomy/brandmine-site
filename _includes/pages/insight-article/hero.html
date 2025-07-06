@@ -42,11 +42,16 @@ Mobile-first Responsive:
   <div class="insight-hero-card__container">
     <!-- Image Section -->
     <div class="insight-hero-card__image">
+      {% comment %} Extract image name from front matter for proper path generation {% endcomment %}
+      {% assign hero_image_name = insight.images.hero.name %}
+      {% assign hero_image_alt = insight.images.hero.alt | default: insight.title %}
+      
       {% include components/images/collection-image.html
          collection="insights"
          slug=insight.slug
          purpose="hero"
-         alt=insight.title
+         name=hero_image_name
+         alt=hero_image_alt
          class="insight-hero-card__img"
          loading="eager" %}
     </div>
@@ -54,11 +59,10 @@ Mobile-first Responsive:
     <!-- Content Section -->
     <div class="insight-hero-card__content">
       {% if insight.category %}
+        {% assign normalized_category = insight.category | replace: "-", "_" %}
+        {% capture translation_key %}insights.{{ normalized_category }}{% endcapture %}
         <div class="insight-hero-card__category">
-          {% include components/ui/insight-category-new.html 
-             category=insight.category 
-             size="md" 
-             lang=current_lang %}
+          {% include helpers/t.html key=translation_key fallback=insight.category lang=current_lang %}
         </div>
       {% endif %}
       

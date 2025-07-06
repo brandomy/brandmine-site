@@ -566,6 +566,17 @@
 /* Note: panel--hero-split uses journal-hero__title and journal-hero__subtitle 
    classes for typography, defined within the .panel--hero-split block above */
 
+/* Tier 5: Hero Card (Card-based hero for article content) */
+.panel--hero-card {
+  background: var(--gray-50);
+  padding: 0; // Hero card component manages its own padding
+  
+  .panel__content {
+    max-width: 100%;
+    padding: 0; // Allow full-width card layout
+  }
+}
+
 /* Insights Category Hero Panel - Split Layout Structure */
 .panel--insights-category-hero {
   /* Base split panel structure */
