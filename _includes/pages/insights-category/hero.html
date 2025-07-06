@@ -32,11 +32,13 @@ Image Configuration:
     <!-- Category Badge -->
     {% include components/ui/insight-category-new.html category=page.insight_type %}
     
+    {% assign category_data = site.data.insights[page.lang].categories | where: "id", page.insight_type | first %}
+    
     <h1 class="journal-hero__title">
-      {% include helpers/t.html key="insights-category.#{page.insight_type}.title" fallback="Category Insights" %}
+      {{ category_data.name | default: "Category Insights" }}
     </h1>
     <p class="journal-hero__subtitle">
-      {% include helpers/t.html key="insights-category.#{page.insight_type}.subtitle" fallback="Discover insights and analysis in this category." %}
+      {{ category_data.description | default: "Discover insights and analysis in this category." }}
     </p>
   </div>
   
