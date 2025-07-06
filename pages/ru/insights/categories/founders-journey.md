@@ -8,7 +8,3 @@ description: "Истории стоящих за брендами людей и 
 ref: insights-categories-founders-journey
 # sections: managed by _data/page_sections.yml (insights-category layout)
 ---
-
-## Путь основателей
-
-Изучите личные истории, стоящие за брендами БРИКС+, и визионеров, которые их создали. Эти истории раскрывают предпринимательский дух и решимость, которые движут инновациями.

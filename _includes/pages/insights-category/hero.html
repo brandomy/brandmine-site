@@ -1,142 +1,53 @@
 {% comment %}
-  Hero for insights category with full-width gradient and category-specific styling
-  Updated: 2025-07-05 - Full-width design with left panel gradient edge
+================================================================================
+PAGE SECTION: Insights Category Hero
+PATH: _includes/pages/insights-category/hero.html
+PURPOSE: Split hero section for insights category pages with category-specific styling
+PATTERN: Replicates insights page hero structure with category color variations
+================================================================================
+
+Features:
+- Split layout with text content and hero image
+- Uses journal-hero component with category-specific gradients
+- Badge display for category identification
+- Responsive design with mobile-first approach
+
+Dependencies:
+- CSS: Uses panel--insights-category-hero structure with category-specific gradients
+- Components: helpers/t.html, components/ui/insight-category-new.html, components/images/collection-image.html
+- Translation keys: insights-category.{category}.title, insights-category.{category}.subtitle
+- Data: page.insight_type for category identification
+
+Image Configuration:
+- Collection: categories
+- Slug: {category}
+- Purpose: hero
+- Loading: eager (above the fold)
+================================================================================
 {% endcomment %}
 
-{% comment %} Set category-specific colors {% endcomment %}
-{% if page.insight_type == "brand-spotlight" %}
-  {% assign gradient_color = "#fed7aa" %}
-  {% assign panel_gradient = "linear-gradient(to right, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05))" %}
-  {% assign main_gradient_color = "#f97316" %}
-{% elsif page.insight_type == "founders-journey" %}
-  {% assign gradient_color = "#c7d2fe" %}
-  {% assign panel_gradient = "linear-gradient(to right, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05))" %}
-  {% assign main_gradient_color = "#6366f1" %}
-{% elsif page.insight_type == "location-intelligence" %}
-  {% assign gradient_color = "#bae6fd" %}
-  {% assign panel_gradient = "linear-gradient(to right, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05))" %}
-  {% assign main_gradient_color = "#0ea5e9" %}
-{% elsif page.insight_type == "market-momentum" %}
-  {% assign gradient_color = "#d9f99d" %}
-  {% assign panel_gradient = "linear-gradient(to right, rgba(101, 163, 13, 0.1), rgba(101, 163, 13, 0.05))" %}
-  {% assign main_gradient_color = "#65a30d" %}
-{% else %}
-  {% assign gradient_color = "#bae6fd" %}
-  {% assign panel_gradient = "linear-gradient(to right, rgba(8, 145, 178, 0.1), rgba(8, 145, 178, 0.05))" %}
-  {% assign main_gradient_color = "#0891b2" %}
-{% endif %}
-
-<div class="insights-category-hero" data-insight-type="{{ page.insight_type }}">
-  
-  <style>
-    .insights-category-hero {
-      background: radial-gradient(ellipse at center, white, {{ gradient_color }});
-      margin: 0 calc(-50vw + 50%);
-      padding: 2rem calc(50vw - 50% + 2rem);
-      min-height: 400px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-items: center;
-      position: relative;
-    }
-    
-    .insights-category-hero__content {
-      background: radial-gradient(ellipse at center, {{ main_gradient_color }}, rgba(0, 0, 0, 0.8));
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 2rem;
-      position: relative;
-      z-index: 2;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .insights-category-hero__content > h1,
-    .insights-category-hero__content > p,
-    .insights-category-hero__content .insights-category-hero__meta,
-    .insights-category-hero__content .insights-category-hero__meta * {
-      color: white !important;
-    }
-    
-    .insights-category-hero__image {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-    }
-    
-    .insights-category-hero__img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-    
-    @media (min-width: 768px) {
-      .insights-category-hero {
-        grid-template-columns: 1fr 1fr;
-        padding: 2rem calc(50vw - 50% + 3rem);
-        min-height: 500px;
-      }
-      
-      .insights-category-hero__content {
-        margin-right: -1rem;
-        border-radius: 12px 0 0 12px;
-      }
-      
-    }
-    
-    @media (min-width: 1024px) {
-      .insights-category-hero {
-        padding: 2rem calc(50vw - 50% + 4rem);
-      }
-    }
-  </style>
-  <div class="insights-category-hero__content">
-    
+<div class="journal-hero journal-hero--{{ page.insight_type }} journal-hero--landing">
+  <!-- Text Content Section -->
+  <div class="journal-hero__content">
     <!-- Category Badge -->
-    <div class="insights-category-hero__category">
-      {% include components/ui/insight-category-new.html 
-         category=page.insight_type 
-         size="lg" %}
-    </div>
+    {% include components/ui/insight-category-new.html category=page.insight_type %}
     
-    <!-- Title -->
-    <h1 class="insights-category-hero__title">
-      {{ page.title }}
+    <h1 class="journal-hero__title">
+      {% include helpers/t.html key="insights-category.#{page.insight_type}.title" fallback="Category Insights" %}
     </h1>
-    
-    <!-- Description -->
-    {% if page.description %}
-      <p class="insights-category-hero__description">
-        {{ page.description }}
-      </p>
-    {% endif %}
-    
-    <!-- Metadata -->
-    <div class="insights-category-hero__meta">
-      {% assign category_insights = site.insights | where: 'lang', page.lang | where: 'category', page.insight_type %}
-      <span class="insights-category-hero__count">
-        {{ category_insights.size }} insights
-      </span>
-      
-      {% if category_insights.size > 0 %}
-        {% assign latest_insight = category_insights | sort: 'date' | last %}
-        <span class="separator">•</span>
-        <span class="insights-category-hero__latest">
-          Latest: {{ latest_insight.date | date: "%B %Y" }}
-        </span>
-      {% endif %}
-    </div>
-    
+    <p class="journal-hero__subtitle">
+      {% include helpers/t.html key="insights-category.#{page.insight_type}.subtitle" fallback="Discover insights and analysis in this category." %}
+    </p>
   </div>
   
-  <!-- Hero Image -->
-  <div class="insights-category-hero__image">
-    <img src="{{ '/assets/images/categories/' | append: page.insight_type | append: '-800w.jpg' | relative_url }}" 
-         alt="Visual representation of {{ page.title }}"
-         class="insights-category-hero__img" loading="eager">
+  <!-- Image Section -->
+  <div class="journal-hero__image">
+    {% include components/images/collection-image.html
+       collection="categories"
+       slug=page.insight_type
+       purpose="hero"
+       alt="#{page.insight_type} insights"
+       class="journal-hero__img"
+       loading="eager" %}
   </div>
 </div>

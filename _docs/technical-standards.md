@@ -103,7 +103,7 @@ _pages/[lang]/[page-slug].md             # Static pages (about, contact, etc.)
 _includes/components/cards/brand-card.html
 assets/css/components/cards/brand-card.scss
 
-_includes/components/ui/insight-category.html  
+_includes/components/ui/insight-category-new.html  
 assets/css/components/ui/insight-category.scss
 
 _includes/pages/brands/hero.html

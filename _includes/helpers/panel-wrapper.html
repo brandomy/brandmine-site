@@ -13,6 +13,7 @@
   - additional_classes (optional): Extra CSS classes for the panel
   - content_classes (optional): Extra CSS classes for panel__content
   - include_params (optional): Parameters to pass to the included content
+  - data_attributes (optional): Data attributes object to apply to the panel element
   
   Usage Examples:
   
@@ -60,8 +61,24 @@
   {% assign content_classes = content_classes | append: " " | append: content_additional_classes %}
 {% endif %}
 
+{% comment %} Build data attributes string {% endcomment %}
+{% assign data_attrs_string = "" %}
+{% if include.data_attributes %}
+  {% for attr in include.data_attributes %}
+    {% assign attr_name = attr[0] %}
+    {% assign attr_value = attr[1] %}
+    {% comment %} Process liquid template in attribute value {% endcomment %}
+    {% if attr_value contains "{{" %}
+      {% assign processed_value = attr_value | replace: "{{ page.insight_type }}", page.insight_type %}
+    {% else %}
+      {% assign processed_value = attr_value %}
+    {% endif %}
+    {% assign data_attrs_string = data_attrs_string | append: ' data-' | append: attr_name | append: '="' | append: processed_value | append: '"' %}
+  {% endfor %}
+{% endif %}
+
 {% comment %} Render panel with content {% endcomment %}
-<div class="{{ panel_classes }}">
+<div class="{{ panel_classes }}"{{ data_attrs_string }}>
   <div class="{{ content_classes }}">
     {% if direct_content %}
       {% comment %} Render direct content for discover pages {% endcomment %}

@@ -25,15 +25,7 @@ layout: default
   - insight_type: category slug for filtering
 {% endcomment %}
 
-{% comment %} Store page content for section includes {% endcomment %}
-{% capture page_content %}{{ content }}{% endcapture %}
-
 <div class="insights-category-page" data-insight-type="{{ page.insight_type }}">
   {% comment %} Use data-driven section rendering {% endcomment %}
-  {% include helpers/page-sections.html page_type="insights-category" content=page_content %}
-
-  {% comment %} Add category navigation after hero section {% endcomment %}
-  {% include components/insights/insights-category-navigation.html
-     style_option='b'
-     active_category=page.insight_type %}
+  {% include helpers/page-sections.html page_type="insights-category" %}
 </div>

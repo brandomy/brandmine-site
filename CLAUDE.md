@@ -119,7 +119,7 @@ cards:
 _includes/components/cards/brand-card.html
 assets/css/components/cards/brand-card.scss
 
-_includes/components/ui/insight-category.html
+_includes/components/ui/insight-category-new.html
 assets/css/components/ui/insight-category.scss
 
 _includes/pages/brands/hero.html
@@ -216,10 +216,10 @@ assets/css/pages/brands/hero.scss
 ## Insight Category System (Complete) ✅
 **Standardized UI component:**
 ```liquid
-{% raw %}{% include components/ui/insight-category.html category="brand-spotlight" %}
-{% include components/ui/insight-category.html category="founders-journey" %}
-{% include components/ui/insight-category.html category="location-intelligence" %}
-{% include components/ui/insight-category.html category="market-momentum" %}{% endraw %}
+{% raw %}{% include components/ui/insight-category-new.html category="brand-spotlight" %}
+{% include components/ui/insight-category-new.html category="founders-journey" %}
+{% include components/ui/insight-category-new.html category="location-intelligence" %}
+{% include components/ui/insight-category-new.html category="market-momentum" %}{% endraw %}
 ```
 
 ---

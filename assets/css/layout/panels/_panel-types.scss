@@ -549,6 +549,136 @@
 /* Note: panel--hero-split uses journal-hero__title and journal-hero__subtitle 
    classes for typography, defined within the .panel--hero-split block above */
 
+/* Insights Category Hero Panel - Split Layout Structure */
+.panel--insights-category-hero {
+  /* Base split panel structure */
+  padding: var(--space-8) 0;
+  color: white;
+  
+  .journal-hero {
+    display: grid;
+    min-height: var(--hero-height-sm);
+    
+    /* Mobile: stacked layout */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    
+    /* Desktop: side-by-side layout */
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      min-height: var(--hero-height-md);
+    }
+    
+    @media (min-width: 992px) {
+      min-height: var(--hero-height-lg);
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-8) var(--space-6);
+      text-align: left;
+      
+      @media (min-width: 768px) {
+        padding: var(--space-12) var(--space-10);
+      }
+      
+      @media (min-width: 992px) {
+        padding: var(--space-16) var(--space-12);
+      }
+      
+      /* Mobile: center text when stacked */
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+
+    &__image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/2;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    &__title {
+      margin: 0 0 var(--space-4) 0;
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-tight);
+      color: white;
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-4xl);
+      }
+      
+      @media (min-width: 992px) {
+        font-size: var(--text-5xl);
+      }
+    }
+    
+    &__subtitle {
+      margin: 0;
+      font-size: var(--text-lg);
+      font-weight: var(--font-normal);
+      line-height: var(--leading-relaxed);
+      color: var(--surface-alpha-90);
+      max-width: 50ch;
+      
+      @media (min-width: 768px) {
+        font-size: var(--text-xl);
+      }
+      
+      /* Mobile: center subtitle */
+      @media (max-width: 767px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+/* Category-specific gradients for content section */
+.panel--insights-category-hero[data-category="brand-spotlight"] {
+  background: radial-gradient(circle at center, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--insights-category-hero[data-category="brand-spotlight"] .journal-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--insights-category-hero[data-category="founders-journey"] {
+  background: radial-gradient(circle at center, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+.panel--insights-category-hero[data-category="founders-journey"] .journal-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+.panel--insights-category-hero[data-category="location-intelligence"] {
+  background: radial-gradient(circle at center, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--insights-category-hero[data-category="location-intelligence"] .journal-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--insights-category-hero[data-category="market-momentum"] {
+  background: radial-gradient(circle at center, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+.panel--insights-category-hero[data-category="market-momentum"] .journal-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
 /* Hero image specific text styling for better contrast */
 .panel--hero-image .panel__heading-primary {
   color: white;

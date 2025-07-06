@@ -89,10 +89,10 @@ lang: en
     <h2>All Categories Overview</h2>
     
     <div class="category-demo">
-      {% include components/ui/insight-category.html category="brand_spotlight" %}
-      {% include components/ui/insight-category.html category="founders_journey" %}
-      {% include components/ui/insight-category.html category="location_intelligence" %}
-      {% include components/ui/insight-category.html category="market_momentum" %}
+      {% include components/ui/insight-category-new.html category="brand_spotlight" %}
+      {% include components/ui/insight-category-new.html category="founders_journey" %}
+      {% include components/ui/insight-category-new.html category="location_intelligence" %}
+      {% include components/ui/insight-category-new.html category="market_momentum" %}
     </div>
     
     <table class="specs-table">
@@ -108,25 +108,25 @@ lang: en
         <tr>
           <td>Brand Spotlight</td>
           <td><span class="color-swatch" style="background: #fd7e14;"></span>#fd7e14 (Orange)</td>
-          <td>{% include components/ui/insight-category.html category="brand_spotlight" %}</td>
+          <td>{% include components/ui/insight-category-new.html category="brand_spotlight" %}</td>
           <td>_data/insights/en.yml</td>
         </tr>
         <tr>
           <td>Founder's Journey</td>
           <td><span class="color-swatch" style="background: #28a745;"></span>#28a745 (Green)</td>
-          <td>{% include components/ui/insight-category.html category="founders_journey" %}</td>
+          <td>{% include components/ui/insight-category-new.html category="founders_journey" %}</td>
           <td>_data/insights/en.yml</td>
         </tr>
         <tr>
           <td>Location Intelligence</td>
           <td><span class="color-swatch" style="background: #6f42c1;"></span>#6f42c1 (Purple)</td>
-          <td>{% include components/ui/insight-category.html category="location_intelligence" %}</td>
+          <td>{% include components/ui/insight-category-new.html category="location_intelligence" %}</td>
           <td>_data/insights/en.yml</td>
         </tr>
         <tr>
           <td>Market Momentum</td>
           <td><span class="color-swatch" style="background: #28a745;"></span>#28a745 (Green)</td>
-          <td>{% include components/ui/insight-category.html category="market_momentum" %}</td>
+          <td>{% include components/ui/insight-category-new.html category="market_momentum" %}</td>
           <td>_data/insights/en.yml</td>
         </tr>
       </tbody>
@@ -143,10 +143,10 @@ lang: en
       <div class="test-variant">
         <h5>Pill Variant (Default)</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" variant="pill" %}
-          {% include components/ui/insight-category.html category="founders_journey" variant="pill" %}
-          {% include components/ui/insight-category.html category="location_intelligence" variant="pill" %}
-          {% include components/ui/insight-category.html category="market_momentum" variant="pill" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" variant="pill" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" variant="pill" %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" variant="pill" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" variant="pill" %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -160,10 +160,10 @@ lang: en
       <div class="test-variant">
         <h5>Rectangular Variant</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" variant="rectangular" %}
-          {% include components/ui/insight-category.html category="founders_journey" variant="rectangular" %}
-          {% include components/ui/insight-category.html category="location_intelligence" variant="rectangular" %}
-          {% include components/ui/insight-category.html category="market_momentum" variant="rectangular" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" variant="rectangular" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" variant="rectangular" %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" variant="rectangular" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" variant="rectangular" %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -177,10 +177,10 @@ lang: en
       <div class="test-variant">
         <h5>Minimal Variant</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" variant="minimal" %}
-          {% include components/ui/insight-category.html category="founders_journey" variant="minimal" %}
-          {% include components/ui/insight-category.html category="location_intelligence" variant="minimal" %}
-          {% include components/ui/insight-category.html category="market_momentum" variant="minimal" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" variant="minimal" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" variant="minimal" %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" variant="minimal" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" variant="minimal" %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -194,10 +194,10 @@ lang: en
       <div class="test-variant">
         <h5>Compact Variant</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" variant="compact" %}
-          {% include components/ui/insight-category.html category="founders_journey" variant="compact" %}
-          {% include components/ui/insight-category.html category="location_intelligence" variant="compact" %}
-          {% include components/ui/insight-category.html category="market_momentum" variant="compact" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" variant="compact" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" variant="compact" %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" variant="compact" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" variant="compact" %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -220,10 +220,10 @@ lang: en
       <div class="test-variant">
         <h5>Small Size</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" size="sm" %}
-          {% include components/ui/insight-category.html category="founders_journey" size="sm" %}
-          {% include components/ui/insight-category.html category="location_intelligence" size="sm" %}
-          {% include components/ui/insight-category.html category="market_momentum" size="sm" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" size="sm" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" size="sm" %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" size="sm" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" size="sm" %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -237,10 +237,10 @@ lang: en
       <div class="test-variant">
         <h5>Medium Size (Default)</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" size="md" %}
-          {% include components/ui/insight-category.html category="founders_journey" size="md" %}
-          {% include components/ui/insight-category.html category="location_intelligence" size="md" %}
-          {% include components/ui/insight-category.html category="market_momentum" size="md" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" size="md" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" size="md" %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" size="md" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" size="md" %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -254,10 +254,10 @@ lang: en
       <div class="test-variant">
         <h5>Large Size</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" size="lg" %}
-          {% include components/ui/insight-category.html category="founders_journey" size="lg" %}
-          {% include components/ui/insight-category.html category="location_intelligence" size="lg" %}
-          {% include components/ui/insight-category.html category="market_momentum" size="lg" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" size="lg" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" size="lg" %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" size="lg" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" size="lg" %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -280,10 +280,10 @@ lang: en
       <div class="test-variant">
         <h5>With Icons</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" show_icon=true %}
-          {% include components/ui/insight-category.html category="founders_journey" show_icon=true %}
-          {% include components/ui/insight-category.html category="location_intelligence" show_icon=true %}
-          {% include components/ui/insight-category.html category="market_momentum" show_icon=true %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" show_icon=true %}
+          {% include components/ui/insight-category-new.html category="founders_journey" show_icon=true %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" show_icon=true %}
+          {% include components/ui/insight-category-new.html category="market_momentum" show_icon=true %}
         </div>
         
         <div style="background: var(--primary-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs); border: 2px solid var(--primary-300);">
@@ -297,10 +297,10 @@ lang: en
       <div class="test-variant">
         <h5>Without Icons (Default)</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" show_icon=false %}
-          {% include components/ui/insight-category.html category="founders_journey" show_icon=false %}
-          {% include components/ui/insight-category.html category="location_intelligence" show_icon=false %}
-          {% include components/ui/insight-category.html category="market_momentum" show_icon=false %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" show_icon=false %}
+          {% include components/ui/insight-category-new.html category="founders_journey" show_icon=false %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" show_icon=false %}
+          {% include components/ui/insight-category-new.html category="market_momentum" show_icon=false %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -330,10 +330,10 @@ lang: en
       <div class="test-variant">
         <h5>Normal Case (Default)</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" uppercase=false %}
-          {% include components/ui/insight-category.html category="founders_journey" uppercase=false %}
-          {% include components/ui/insight-category.html category="location_intelligence" uppercase=false %}
-          {% include components/ui/insight-category.html category="market_momentum" uppercase=false %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" uppercase=false %}
+          {% include components/ui/insight-category-new.html category="founders_journey" uppercase=false %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" uppercase=false %}
+          {% include components/ui/insight-category-new.html category="market_momentum" uppercase=false %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -347,10 +347,10 @@ lang: en
       <div class="test-variant">
         <h5>Uppercase</h5>
         <div class="category-demo">
-          {% include components/ui/insight-category.html category="brand_spotlight" uppercase=true %}
-          {% include components/ui/insight-category.html category="founders_journey" uppercase=true %}
-          {% include components/ui/insight-category.html category="location_intelligence" uppercase=true %}
-          {% include components/ui/insight-category.html category="market_momentum" uppercase=true %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" uppercase=true %}
+          {% include components/ui/insight-category-new.html category="founders_journey" uppercase=true %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" uppercase=true %}
+          {% include components/ui/insight-category-new.html category="market_momentum" uppercase=true %}
         </div>
         
         <div style="background: var(--neutral-100); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-xs);">
@@ -371,43 +371,43 @@ lang: en
       
       <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md);">
         <h4>Basic Usage</h4>
-        <pre><code>{% raw %}{% include components/ui/insight-category.html category="market_momentum" %}{% endraw %}</code></pre>
+        <pre><code>{% raw %}{% include components/ui/insight-category-new.html category="market_momentum" %}{% endraw %}</code></pre>
         <div style="margin: var(--space-2) 0;">
-          {% include components/ui/insight-category.html category="market_momentum" %}
+          {% include components/ui/insight-category-new.html category="market_momentum" %}
         </div>
       </div>
       
       <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md);">
         <h4>With Icon and Custom Variant</h4>
-        <pre><code>{% raw %}{% include components/ui/insight-category.html 
+        <pre><code>{% raw %}{% include components/ui/insight-category-new.html 
    category="brand_spotlight" 
    variant="rectangular" 
    show_icon=true 
    size="lg" %}{% endraw %}</code></pre>
         <div style="margin: var(--space-2) 0;">
-          {% include components/ui/insight-category.html category="brand_spotlight" variant="rectangular" show_icon=true size="lg" %}
+          {% include components/ui/insight-category-new.html category="brand_spotlight" variant="rectangular" show_icon=true size="lg" %}
         </div>
       </div>
       
       <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md);">
         <h4>Compact for Cards</h4>
-        <pre><code>{% raw %}{% include components/ui/insight-category.html 
+        <pre><code>{% raw %}{% include components/ui/insight-category-new.html 
    category="founders_journey" 
    variant="compact" 
    size="sm" %}{% endraw %}</code></pre>
         <div style="margin: var(--space-2) 0;">
-          {% include components/ui/insight-category.html category="founders_journey" variant="compact" size="sm" %}
+          {% include components/ui/insight-category-new.html category="founders_journey" variant="compact" size="sm" %}
         </div>
       </div>
       
       <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-md);">
         <h4>Minimal for Subtle Contexts</h4>
-        <pre><code>{% raw %}{% include components/ui/insight-category.html 
+        <pre><code>{% raw %}{% include components/ui/insight-category-new.html 
    category="location_intelligence" 
    variant="minimal" 
    uppercase=true %}{% endraw %}</code></pre>
         <div style="margin: var(--space-2) 0;">
-          {% include components/ui/insight-category.html category="location_intelligence" variant="minimal" uppercase=true %}
+          {% include components/ui/insight-category-new.html category="location_intelligence" variant="minimal" uppercase=true %}
         </div>
       </div>
       

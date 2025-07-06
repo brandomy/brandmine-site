@@ -8,7 +8,3 @@ description: "Подробные профили заметных брендов 
 ref: insights-categories-brand-spotlight
 # sections: managed by _data/page_sections.yml (insights-category layout)
 ---
-
-## В центре внимания: бренды
-
-Узнайте о развивающихся брендах региона БРИКС+. Эти аналитические материалы исследуют истории брендов, рыночное позиционирование и стратегии международного роста.

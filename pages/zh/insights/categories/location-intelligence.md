@@ -8,7 +8,3 @@ description: "对塑造品牌发展和商机的地理洞察和区域背景的分
 ref: insights-categories-location-intelligence
 # sections: managed by _data/page_sections.yml (insights-category layout)
 ---
-
-## 地理洞察
-
-探索塑造品牌发展和商机的地理洞察和区域背景。这些洞察揭示了地理位置如何影响金砖国家+品牌的发展轨迹。

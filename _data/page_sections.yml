@@ -217,20 +217,18 @@ insights-category:
   body_class: insights-category-page
   default_sections:
   - breadcrumbs
-  - category-navigation
   - hero
-  - impact
-  - content
   - insights-grid
+  - impact
+  # - content
   - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
-    category-navigation:
-      type: panel--light
-      additional_classes: panel--no-margin
     hero:
-      type: panel--hero-split
+      type: panel--insights-category-hero
+      data_attributes:
+        category: "{{ page.insight_type }}"
     impact:
       type: panel--primary
       additional_classes: panel--impact
