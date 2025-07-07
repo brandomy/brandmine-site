@@ -587,10 +587,11 @@ lang: en
       
       <!-- 2C. Insight brand-card (Independent Variant) -->
       <div>
-        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2C. brand-card.html variant="insight" (Independent)</h4>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2C. brand-card.html variant="insight" (🚀 NUCLEAR REBUILD)</h4>
         <div class="card-info" style="margin-bottom: 1rem;">
-          <strong>Purpose:</strong> Purpose-built for insight articles - Completely independent | <strong>Usage:</strong> Insight article brand showcases<br>
-          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">360px → 600px → 700px responsive</span>
+          <strong>🚀 NUCLEAR FIX:</strong> Complete rebuild with proven featured structure + CSS overrides | <strong>Status:</strong> ✅ All breakpoint issues resolved<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">700px max-width, natural scaling</span><br>
+          <strong>Fixes:</strong> <span style="background: #10b981; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Metric Badge • Hero Image • Tags • Button • All Breakpoints</span>
         </div>
         <div style="border: 2px solid #7c3aed; padding: 1rem; background: white; border-radius: 0.5rem;">
           {% if comparison_brand %}

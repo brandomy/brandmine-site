@@ -163,9 +163,12 @@
     </div>
   </article>
 {% elsif variant == "insight" %}
-  <article class="brand-card brand-card--insight">
-    <!-- Hero Image Section - Independent Structure -->
+  <!-- NUCLEAR REBUILD: Copy proven featured variant structure exactly -->
+  <article class="brand-card brand-card--insight brand-card--nuclear-rebuild">
+    
+    <!-- HERO IMAGE CONTAINER (Copy featured structure) -->
     <div class="brand-card__image">
+      {% comment %} Use proven image structure from featured variant {% endcomment %}
       {% if brand.images and brand.images.hero and brand.images.hero.name %}
         {% include components/images/collection-image.html
            collection="brands"
@@ -175,61 +178,68 @@
            alt=brand.images.hero.alt
            class="brand-card__img" %}
       {% else %}
-        {% include components/helpers/brand-image.html
-           brand=brand
+        {% include components/images/collection-image.html
+           collection="brands"
+           slug=brand.ref
+           purpose="hero"
+           alt="Hero image for {{ brand.title }}"
            class="brand-card__img" %}
+      {% endif %}
+
+      <!-- METRIC BADGE - Using card_metric data -->
+      {% if brand.card_metric %}
+        <div class="brand-card__metric-badge">
+          <div class="metric-value">{{ brand.card_metric.value }}</div>
+          {% if brand.card_metric.label and brand.card_metric.label != "" %}
+            <div class="metric-label">{{ brand.card_metric.label }}</div>
+          {% endif %}
+        </div>
       {% endif %}
     </div>
 
-    <!-- Content Section - Independent Structure -->
+    <!-- CONTENT CONTAINER (Copy featured structure) -->
     <div class="brand-card__content">
-      <!-- Brand Title -->
-      <h2 class="brand-card__title">
+      
+      <!-- BRAND TITLE -->
+      <h3 class="brand-card__title">
         <a href="{{ brand.url | relative_url }}">{{ brand.title }}</a>
-      </h2>
-
-      <!-- Meta Information (Founded + City + Flag) -->
+      </h3>
+      
+      <!-- META INFORMATION -->
       <div class="brand-card__meta">
         {% if brand.founding_year %}
           <span class="meta-founded">{% include helpers/t.html key="brands.founded" fallback="Founded" %} {{ brand.founding_year }}</span>
         {% endif %}
-        
-        {% comment %} Use flattened data structure with special separator {% endcomment %}
         {% if brand.city and brand.country %}
           {% if brand.founding_year %}{% include components/separators/bullet-separator.html %}{% endif %}
           <span class="meta-location">
             {{ brand.city }}
             {% include helpers/country-flag.html country_code=brand.country %}
           </span>
-        {% elsif brand.country %}
-          {% if brand.founding_year %}{% include components/separators/bullet-separator.html %}{% endif %}
-          <span class="meta-location">
-            {% assign country_data = site.data.countries_basic.countries[brand.country] %}
-            {% if country_data %}{{ country_data.name.en }}{% else %}{{ brand.country | upcase }}{% endif %}
-            {% include helpers/country-flag.html country_code=brand.country %}
-          </span>
         {% endif %}
       </div>
-
-      <!-- Brand Description -->
-      <div class="brand-card__description">
-        <p>{{ brand.description }}</p>
-      </div>
-
-      <!-- Dimension Tags Cloud (Using proven component) -->
+      
+      <!-- DESCRIPTION -->
+      {% if brand.description and brand.description != "" %}
+        <div class="brand-card__description">
+          <p>{{ brand.description | strip_html | truncatewords: 25 }}</p>
+        </div>
+      {% endif %}
+      
+      <!-- DIMENSION TAGS - Use proven component -->
       {% include components/ui/dimension-tag-cloud.html 
          parent=brand 
-         limit=tag_limit
          show_all=true 
          class_prefix="brand-card-tags"
          spacing="normal" %}
-
-      <!-- Call to Action -->
+      
+      <!-- FOOTER WITH CTA -->
       <div class="brand-card__cta">
         <a href="{{ brand.url | relative_url }}" class="brand-card__button">
           {% include helpers/t.html key="common.actions.view_profile" fallback="View Profile" %} →
         </a>
       </div>
+      
     </div>
   </article>
 {% else %}
