@@ -51,9 +51,11 @@ Parameters:
 
       {% comment %} Category item (current page) {% endcomment %}
       {% if page.insight_type %}
-        {% assign category_key = page.insight_type | replace: "-", "_" %}
-        {% assign category_data = site.data.insights[current_lang].categories | where: "id", category_key | first %}
-        {% assign category_name = category_data.name | default: page.title %}
+        {% comment %} Use translated category names from translations {% endcomment %}
+        {% assign category_translation_key = "insights.category_names." | append: page.insight_type %}
+        {% capture category_name %}
+{% include helpers/t.html key=category_translation_key fallback=page.title lang=current_lang %}
+{% endcapture %}
         {% assign category_parts = category_name | split: "," %}
         {% assign breadcrumb_items = breadcrumb_items | push: category_parts %}
       {% endif %}
@@ -92,9 +94,11 @@ Parameters:
       {% assign breadcrumb_items = breadcrumb_items | push: insights_parts %}
 
       {% if page.category %}
-        {% assign category_key = page.category | replace: "-", "_" %}
-        {% assign category_data = site.data.insights[current_lang].categories | where: "id", category_key | first %}
-        {% assign category_name = category_data.name | default: page.category %}
+        {% comment %} Use translated category names from translations {% endcomment %}
+        {% assign category_translation_key = "insights.category_names." | append: page.category %}
+        {% capture category_name %}
+{% include helpers/t.html key=category_translation_key fallback=page.category lang=current_lang %}
+{% endcapture %}
         {% assign category_url = site.baseurl | append: "/" | append: current_lang | append: "/insights/categories/" | append: page.category | append: "/" %}
         {% assign category_item = category_name | append: "," | append: category_url %}
         {% assign category_parts = category_item | split: "," %}

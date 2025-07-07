@@ -11,6 +11,14 @@
   background-color: var(--primary-50); // Light teal
   border-bottom: none;
   margin-bottom: 0; /* Remove any bottom margin */
+  
+  /* Mobile-first: Hide breadcrumbs on mobile for maximum content space */
+  display: none;
+  
+  /* Show on tablet and up */
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
 
 .breadcrumbs {
