@@ -13,10 +13,10 @@ UPDATED: 2025-07-04 - Using proven brand-card.html component with featured styli
   {% assign featured_brand = site.brands | where: "ref", featured_brand_slug | where: "lang", page.lang | first %}
   
   {% if featured_brand %}
-    <div class="insight-brand-info">
+    <div class="insight-brand-showcase">
       {% include components/cards/brand-card.html 
          brand=featured_brand 
-         variant="featured" %}
+         variant="insight" %}
     </div>
   {% endif %}
 {% endif %}

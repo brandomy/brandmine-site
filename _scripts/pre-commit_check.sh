@@ -1,0 +1,1 @@
+core/pre-commit_check.sh

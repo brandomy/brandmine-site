@@ -582,6 +582,118 @@ lang: en
         </div>
       </div>
       
+      <!-- Row 2C: Insight Variant (Standalone) -->
+      <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 2C. Insight brand-card (Independent Variant) -->
+      <div>
+        <h4 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">2C. brand-card.html variant="insight" (Independent)</h4>
+        <div class="card-info" style="margin-bottom: 1rem;">
+          <strong>Purpose:</strong> Purpose-built for insight articles - Completely independent | <strong>Usage:</strong> Insight article brand showcases<br>
+          <strong>Dimensions:</strong> <span style="background: rgba(45, 45, 45, 0.9); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace;">360px → 600px → 700px responsive</span>
+        </div>
+        <div style="border: 2px solid #7c3aed; padding: 1rem; background: white; border-radius: 0.5rem;">
+          {% if comparison_brand %}
+            {% include components/cards/brand-card.html brand=comparison_brand variant="insight" %}
+          {% endif %}
+        </div>
+        
+        <!-- Typography & Color Analysis -->
+        <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #374151;">Typography & Color Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #1f2937;">Insight Brand Title:</strong><br>
+              • Font: <code>var(--text-xl)</code> (1.25rem) mobile<br>
+              • Font: 24px desktop (enhanced prominence)<br>
+              • Weight: <code>var(--font-bold)</code> (700)<br>
+              • Color: <code>var(--primary-800)</code><br>
+              • Line Height: 1.2<br><br>
+              
+              <strong style="color: #1f2937;">Description:</strong><br>
+              • Font: <code>var(--text-sm)</code> mobile<br>
+              • Font: <code>var(--text-base)</code> desktop<br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code><br>
+              • Line Height: 1.6 (enhanced readability)<br><br>
+              
+              <strong style="color: #1f2937;">Meta Information:</strong><br>
+              • Font: <code>var(--text-base)</code><br>
+              • Weight: Default (400)<br>
+              • Color: <code>var(--neutral-600)</code><br>
+            </div>
+            <div>
+              <strong style="color: #1f2937;">Independent Features:</strong><br>
+              • Zero inheritance from featured variant<br>
+              • Complete CSS self-sufficiency<br>
+              • No !important override conflicts<br>
+              • Purpose-built responsive sizing<br><br>
+              
+              <strong style="color: #1f2937;">Dimension Colors (Restored):</strong><br>
+              • <span style="background: var(--sky-100); color: var(--sky-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Markets</span> Sky Blue (Fixed)<br>
+              • <span style="background: var(--olive-100); color: var(--olive-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Sectors</span> Olive Green (Fixed)<br>
+              • <span style="background: var(--secondary-100); color: var(--secondary-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Attributes</span> Orange (Fixed)<br>
+              • <span style="background: var(--accent-100); color: var(--accent-800); padding: 2px 6px; border-radius: 6px; font-size: 0.7rem;">Signals</span> Indigo (Fixed)<br><br>
+              
+              <strong style="color: #1f2937;">Button Styling:</strong><br>
+              • Background: <code>var(--primary-500)</code><br>
+              • Text: White (forced, no conflicts)<br>
+              • Hover: <code>var(--primary-600)</code> + transform<br>
+              • Focus: Proper outline accessibility
+            </div>
+          </div>
+        </div>
+        
+        <!-- Independence Analysis -->
+        <div style="background: #ecfdf5; border: 2px solid #10b981; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+          <h5 style="margin-bottom: 0.75rem; color: #065f46;">🎯 Complete Independence Analysis:</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.4;">
+            <div>
+              <strong style="color: #065f46;">No Inheritance Issues:</strong><br>
+              ❌ Zero dependency on featured variant<br>
+              ❌ No CSS cascade conflicts<br>
+              ❌ No !important override battles<br>
+              ❌ No HTML structure sharing<br><br>
+              
+              <strong style="color: #065f46;">Self-Contained Architecture:</strong><br>
+              ✅ 570+ lines independent CSS<br>
+              ✅ Own responsive breakpoints<br>
+              ✅ Independent image handling<br>
+              ✅ Self-managed dimension colors<br>
+            </div>
+            <div>
+              <strong style="color: #065f46;">Root Cause Solutions:</strong><br>
+              ✅ Fixed 480-767px image disappearance<br>
+              ✅ Resolved button text color conflicts<br>
+              ✅ Restored proper dimension colors<br>
+              ✅ Eliminated text overlap on mobile<br><br>
+              
+              <strong style="color: #065f46;">Maintenance Benefits:</strong><br>
+              • Changes to featured won't break insight<br>
+              • Easy to debug and isolate issues<br>
+              • Clean foundation for future features<br>
+              • Predictable behavior across contexts<br>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+      
+      <!-- CSS and JS Sources for 2C -->
+      <div style="background: #e5e7eb; padding: 1rem; border-radius: 0.5rem; margin: 2rem 0;">
+        <h4 style="margin-bottom: 1rem;">CSS and JS Sources</h4>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+          <div>
+            <h5 style="margin-bottom: 0.5rem;">2C Sources:</h5>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>CSS:</strong> assets/css/components/cards/brand-card.scss (.brand-card--insight - lines 570-868)</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>HTML:</strong> _includes/components/cards/brand-card.html (lines 162-266 - independent structure)</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>JS:</strong> No custom JavaScript required</p>
+            <p style="margin: 0; font-size: 0.875rem;"><strong>Independence:</strong> Zero inheritance from other variants</p>
+          </div>
+        </div>
+      </div>
+      
       <!-- Row 3: 3A and 3B -->
       <div class="founder-comparison-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
       

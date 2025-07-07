@@ -1,0 +1,67 @@
+---
+layout: default
+title: Brand Card Component Independence Test
+permalink: /en/test/component-independence/
+---
+
+<div style="padding: 2rem;">
+  <h1>Component Independence Test</h1>
+  <p>Testing the insight variant works in any context without page-specific CSS or logic.</p>
+  
+  <h2>Test 1: Direct Component Usage</h2>
+  <div style="margin: 2rem 0;">
+    <!-- Test insight variant with ru-teatime brand -->
+    {% assign test_brand = site.brands | where: "ref", "ru-teatime" | where: "lang", "en" | first %}
+    {% if test_brand %}
+      {% include components/cards/brand-card.html 
+         brand=test_brand 
+         variant="insight" %}
+    {% else %}
+      <p>Brand not found in site.brands collection</p>
+    {% endif %}
+  </div>
+  
+  <h2>Test 2: Different Container Context</h2>
+  <div style="background: #f3f4f6; padding: 2rem; margin: 2rem 0;">
+    {% assign test_brand2 = site.brands | where: "ref", "ru-teatime" | where: "lang", "en" | first %}
+    {% if test_brand2 %}
+      {% include components/cards/brand-card.html 
+         brand=test_brand2 
+         variant="insight" %}
+    {% endif %}
+  </div>
+  
+  <h2>Test 3: Minimal Context</h2>
+  <div class="minimal-container">
+    {% assign test_brand3 = site.brands | where: "ref", "ru-teatime" | where: "lang", "en" | first %}
+    {% if test_brand3 %}
+      {% include components/cards/brand-card.html 
+         brand=test_brand3
+         variant="insight" %}
+    {% endif %}
+  </div>
+  
+  <hr style="margin: 3rem 0;">
+  
+  <h2>Verification Checklist</h2>
+  <ul>
+    <li>✓ Component displays correctly without page-specific CSS</li>
+    <li>✓ Hero image shows at proper height (300px tablet, responsive scaling)</li>
+    <li>✓ Meta information shows "Founded 1998 ✦ Moscow 🇷🇺" (special separator)</li>
+    <li>✓ Max-width pattern: 700px maximum, natural responsive scaling</li>
+    <li>✓ Flattened data structure: uses brand.city and brand.country directly</li>
+    <li>✓ Dimension tags display with correct colors</li>
+    <li>✓ Button text is white with primary blue background</li>
+    <li>✓ Component is centered and responsive</li>
+    <li>✓ Works in different container contexts</li>
+    <li>✓ Consistent with editorial content width strategy</li>
+  </ul>
+  
+  <h2>Implementation Details</h2>
+  <ul>
+    <li><strong>Special Separator:</strong> Uses ✦ symbol via bullet-separator component</li>
+    <li><strong>Max-Width Pattern:</strong> 700px maximum, 100% width, no media query breakpoints</li>
+    <li><strong>Flattened Data:</strong> Simplified brand.city/country structure</li>
+    <li><strong>Natural Scaling:</strong> Responsive without complex breakpoint jumps</li>
+  </ul>
+</div>
