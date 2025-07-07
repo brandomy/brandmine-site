@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Dimension Tag Cloud Component (Unified Implementation)
+   ==========================================================================
+   Unified tag cloud component for displaying dimension tags across the entire site.
+   Consolidates tag styling from brand cards, insight cards, and other contexts.
+   
+   Color System:
+   - Sectors: olive (olive-100/olive-800)
+   - Markets: sky (sky-100/sky-800)  
+   - Attributes: secondary/orange (secondary-100/secondary-800)
+   - Signals: accent/indigo (accent-100/accent-800)
+*/
+
+/* --------------------------------------------------------------------------
+   1. TAG CLOUD CONTAINER
+   -------------------------------------------------------------------------- */
+
+.dimension-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+/* Modifier for different dimension types (future use) */
+.dimension-tag-cloud--sectors {
+  /* Future: sector-specific container styling */
+}
+
+.dimension-tag-cloud--markets {
+  /* Future: market-specific container styling */
+}
+
+.dimension-tag-cloud--attributes {
+  /* Future: attribute-specific container styling */
+}
+
+.dimension-tag-cloud--signals {
+  /* Future: signal-specific container styling */
+}
+
+/* --------------------------------------------------------------------------
+   2. INDIVIDUAL TAG STYLING
+   -------------------------------------------------------------------------- */
+
+.dimension-tag-cloud__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: calc(var(--space-1) / 2) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+  
+  /* Optional border for better definition */
+  border: 1px solid transparent;
+}
+
+.dimension-tag-cloud__tag:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. DIMENSION-SPECIFIC TAG COLORS
+   -------------------------------------------------------------------------- */
+
+/* Sector tags (olive) */
+.dimension-tag-cloud__tag--sector {
+  background-color: var(--olive-100);
+  color: var(--olive-800);
+  border-color: var(--olive-200);
+}
+
+.dimension-tag-cloud__tag--sector:hover {
+  background-color: var(--olive-200);
+  color: var(--olive-900);
+  border-color: var(--olive-300);
+}
+
+/* Market tags (sky blue) */
+.dimension-tag-cloud__tag--market {
+  background-color: var(--sky-100);
+  color: var(--sky-800);
+  border-color: var(--sky-200);
+}
+
+.dimension-tag-cloud__tag--market:hover {
+  background-color: var(--sky-200);
+  color: var(--sky-900);
+  border-color: var(--sky-300);
+}
+
+/* Attribute tags (secondary/orange) */
+.dimension-tag-cloud__tag--attribute {
+  background-color: var(--secondary-100);
+  color: var(--secondary-800);
+  border-color: var(--secondary-200);
+}
+
+.dimension-tag-cloud__tag--attribute:hover {
+  background-color: var(--secondary-200);
+  color: var(--secondary-900);
+  border-color: var(--secondary-300);
+}
+
+/* Signal tags (accent/indigo) */
+.dimension-tag-cloud__tag--signal {
+  background-color: var(--accent-100);
+  color: var(--accent-800);
+  border-color: var(--accent-200);
+}
+
+.dimension-tag-cloud__tag--signal:hover {
+  background-color: var(--accent-200);
+  color: var(--accent-900);
+  border-color: var(--accent-300);
+}
+
+/* --------------------------------------------------------------------------
+   4. MORE INDICATOR STYLING
+   -------------------------------------------------------------------------- */
+
+.dimension-tag-cloud__more {
+  color: var(--neutral-400);
+  font-size: var(--text-sm);
+  font-style: italic;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   5. SPACING VARIATIONS
+   -------------------------------------------------------------------------- */
+
+/* Tight spacing */
+.dimension-tag-cloud--spacing-tight {
+  gap: var(--space-1);
+}
+
+/* Normal spacing (default) */
+.dimension-tag-cloud--spacing-normal {
+  gap: var(--space-2);
+}
+
+/* Loose spacing */
+.dimension-tag-cloud--spacing-loose {
+  gap: var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   6. CONTEXTUAL VARIATIONS
+   -------------------------------------------------------------------------- */
+
+/* Compact variation for smaller spaces */
+.dimension-tag-cloud--compact {
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.dimension-tag-cloud--compact .dimension-tag-cloud__tag {
+  padding: calc(var(--space-1) * 0.75) var(--space-1);
+  font-size: var(--text-caption); /* 11px - smaller than standard */
+}
+
+.dimension-tag-cloud--compact .dimension-tag-cloud__more {
+  font-size: var(--text-xs);
+}
+
+/* Large variation for emphasis */
+.dimension-tag-cloud--large .dimension-tag-cloud__tag {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+/* Case study variation (matches test-card styling) */
+.dimension-tag-cloud--case-study .dimension-tag-cloud__tag {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border: none; /* Remove the default border */
+}
+
+/* Inline variation (no wrapping) */
+.dimension-tag-cloud--inline {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/* --------------------------------------------------------------------------
+   7. ACCESSIBILITY AND RESPONSIVE BEHAVIOR
+   -------------------------------------------------------------------------- */
+
+/* Focus styles for keyboard navigation */
+.dimension-tag-cloud__tag:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+/* Focus styles for each dimension type */
+.dimension-tag-cloud__tag--sector:focus {
+  outline-color: var(--olive-600);
+}
+
+.dimension-tag-cloud__tag--market:focus {
+  outline-color: var(--sky-600);
+}
+
+.dimension-tag-cloud__tag--attribute:focus {
+  outline-color: var(--secondary-600);
+}
+
+.dimension-tag-cloud__tag--signal:focus {
+  outline-color: var(--accent-600);
+}
+
+/* Ensure adequate touch targets on mobile */
+@media (width < 768px) {
+  .dimension-tag-cloud__tag {
+    min-height: 36px;
+    padding: var(--space-1) var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. ICON SUPPORT (Removed - Text-only design)
+   -------------------------------------------------------------------------- */
+
+/* Icons removed for clean text-only appearance */
+
+/* --------------------------------------------------------------------------
+   9. NON-CLICKABLE VARIANT
+   -------------------------------------------------------------------------- */
+
+.dimension-tag-cloud__tag:not(a) {
+  cursor: default;
+}
+
+.dimension-tag-cloud__tag:not(a):hover {
+  transform: none;
+}

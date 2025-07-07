@@ -1,0 +1,160 @@
+/* assets/css/components/brands/tag-list.scss */
+
+/*
+ * Brand tag list component
+ * Used to display a collection of tags for a brand
+ * Includes styling for different tag types (sector, attribute, signal, market)
+ */
+
+.brand-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+
+  &__heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-3);
+    color: var(--neutral-900);
+    width: 100%;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    transition: all 0.2s ease;
+    text-decoration: none;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Tag type variations */
+    &--sector {
+      background-color: var(--olive-100);
+      color: var(--olive-800);
+
+      &:hover {
+        background-color: var(--olive-200);
+        color: var(--olive-800);
+      }
+    }
+
+    &--market {
+      background-color: var(--sky-100);
+      color: var(--sky-800);
+
+      &:hover {
+        background-color: var(--sky-200);
+        color: var(--sky-800);
+      }
+    }
+
+    &--attribute {
+      background-color: var(--secondary-100);
+      color: var(--secondary-800);
+
+      &:hover {
+        background-color: var(--secondary-200);
+        color: var(--secondary-800);
+      }
+    }
+
+    &--signal {
+      background-color: var(--accent-100);
+      color: var(--accent-800);
+
+      &:hover {
+        background-color: var(--accent-200);
+        color: var(--accent-800);
+      }
+    }
+
+    /* Tag with icon */
+    &-icon {
+      margin-right: var(--space-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  /* Group by type layout */
+  &--grouped {
+    display: block;
+
+    .brand-tags__group {
+      margin-bottom: var(--space-4);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .brand-tags__group-title {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--neutral-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .brand-tags__group-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+  }
+
+  /* Size variations */
+  &--small {
+    gap: var(--space-1);
+
+    .brand-tags__tag {
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--text-xs);
+
+      &-icon svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  &--large {
+    gap: var(--space-3);
+
+    .brand-tags__tag {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-base);
+
+      &-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  /* Inline compact variant */
+  &--inline {
+    display: inline-flex;
+  }
+
+  /* Card layout variants */
+  &--card {
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    border: 1px solid var(--neutral-200);
+  }
+}

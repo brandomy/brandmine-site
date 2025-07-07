@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Insights Page Styles - BEM Refactor
+   ==========================================================================
+*/
+
+.insights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.insights__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.insights__main {
+  flex: 1 1 65%;
+  min-width: 300px;
+}
+
+.insights__sidebar {
+  flex: 1 1 30%;
+  min-width: 240px;
+}
+
+.insights__header {
+  margin-bottom: var(--space-4);
+}
+
+.insights__title {
+  font-size: var(--text-2xl);
+  font-weight: bold;
+  margin-bottom: var(--space-2);
+}
+
+.insights__description {
+  font-size: var(--text-base);
+  color: var(--neutral-600);
+}
+
+.insights__categories {
+  margin-bottom: var(--space-4);
+}
+
+.insights__category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insights__category-item {
+  background-color: var(--neutral-100);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+.insights__read-more {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+.insights__read-more:hover {
+  text-decoration: underline;
+}
+
+.insights__read-more:focus-visible {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
+}
+
+.insights__category-item--active {
+  background-color: var(--primary-100);
+  color: var(--primary-700);
+  font-weight: 600;
+}
+
+@media (width <= 767px) {
+  .insights__container {
+    flex-direction: column;
+  }
+}

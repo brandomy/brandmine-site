@@ -376,14 +376,15 @@ git ls-files | grep -i claude    # Should show only CLAUDE.md
 # Validate color standards
 _scripts/validation/validate_colors.sh
 
-# Add to _scripts/core/pre-commit_check.sh
-echo "Checking for section margin violations..."
-if grep -r "section.*margin-bottom.*space[4-9]" assets/css/ | grep -v "0" | head -5; then
-  echo "⚠️  New section margins detected - consider seamless flow policy"
+# === 13. Section Margin Validation (Phase 4: Prevention System)
+echo "" | tee -a "$LOG_FILE"
+echo "🔍 Running section margin validation..." | tee -a "$LOG_FILE"
+if _scripts/validation/check_section_margins.sh; then
+  echo "✅ Section margin compliance check passed" | tee -a "$LOG_FILE"
+else
+  echo "❌ Section margin compliance check failed" | tee -a "$LOG_FILE"
+  echo "🔧 Fix: Convert margin-bottom to padding-bottom for seamless section flow" | tee -a "$LOG_FILE"
+  echo "📚 Policy: Use internal spacing (padding) only - no external section margins" | tee -a "$LOG_FILE"
+  exit 1
 fi
-
-# Add to _scripts/core/pre-commit_check.sh
-echo "Checking for section margin violations..."
-if grep -r "section.*margin-bottom.*space[4-9]" assets/css/ | grep -v "0" | head -5; then
-  echo "⚠️  New section margins detected - consider seamless flow policy"
-fi
+echo "📝 Report: Section margin validation – automated prevention system active" | tee -a "$LOG_FILE"

@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Base Form Component
+   ==========================================================================
+   Base form styles and generic form containers.
+*/
+
+/* --------------------------------------------------------------------------
+   BASIC FORM ELEMENTS
+   -------------------------------------------------------------------------- */
+
+/* Form labels */
+label {
+  display: block;
+  margin-bottom: var(--space-2); /* 0.5rem */
+  font-weight: 500;
+  color: var(--neutral-700);
+}
+
+/* Standard form container */
+.form-container {
+  width: 100%;
+  margin-bottom: var(--space-8); /* 2rem */
+  max-width: var(--form-max-width); /* Using new token */
+}
+
+/* Base container styling */
+.mobile-form-wrapper {
+  width: 100%;
+  max-width: var(--form-max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Desktop adjustments */
+@media (width >= 768px) { /* md breakpoint */
+  .mobile-form-wrapper {
+    width: 92%;
+  }
+}
+
+/* Legacy styles removed - Use panel--cta modifier instead */
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   -------------------------------------------------------------------------- */
+
+/* Mobile-first: Base iframe styles */
+iframe:not(.contact-form-container iframe) {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Tablet and desktop adjustments if needed */
+@media (min-width: 768px) {
+  /* Iframe handling already optimal at mobile base */
+}

@@ -1,0 +1,260 @@
+/**
+ * Founder Card - Featured Variant
+ * Revolutionary 50% portrait card with mobile-friendly architecture
+ * Uses accent-soft panel styling for thematic consistency with Founders section
+ */
+
+/* =============================================================================
+   REVOLUTIONARY 50% PORTRAIT CARD DESIGN
+   ============================================================================= */
+
+.founder-card-featured {
+  /* Apply mobile-first width pattern */
+  width: var(--card-width-atomic);    /* 345px mobile */
+  max-width: 100%;
+  box-sizing: border-box;
+  
+  /* Desktop enhancement - larger for premium display */
+  @media (min-width: 768px) {
+    width: var(--card-width-featured-xl); /* 500px desktop (larger for rich founder content) */
+  }
+
+  display: flex;
+  height: 400px;
+  background: white;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+/* Portrait side (50%) */
+.founder-card-featured__portrait {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.founder-card-featured__portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;  // Show heads, allow torso cropping
+  display: block;
+}
+
+/* Content side (50%) */
+.founder-card-featured__content {
+  width: 50%;
+  padding: var(--space-4); // 2A: Reduced from var(--space-6) to var(--space-4)
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+  overflow: hidden; /* Ensure content stays within bounds */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+.founder-card-featured__header {
+  border-bottom: 1px solid var(--neutral-200); // 2A: Neutral border
+  padding-bottom: var(--space-2);
+}
+
+.founder-card-featured__name {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  margin: 0 0 var(--space-1) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.founder-card-featured__position {
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  margin: 0 0 var(--space-2) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.founder-card-featured__location {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.founder-card-featured__achievement {
+  background: var(--accent-100); // 2A: Accent colored background
+  border: 1px solid var(--accent-200); // 2A: Accent border
+  border-radius: 0.25rem; // 2A: Rounded corners
+  padding: var(--space-2);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.founder-card-featured__achievement-label {
+  display: block;
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  color: var(--accent-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.founder-card-featured__achievement-text {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-800);
+  margin: 0;
+  line-height: var(--leading-snug);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.founder-card-featured__company {
+  font-size: var(--text-sm);
+  color: var(--primary-600);
+  font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.founder-card-featured__brand-link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--primary-700);
+  }
+}
+
+.founder-card-featured__brand-name {
+  color: var(--primary-600);
+  font-weight: var(--font-medium);
+}
+
+.founder-card-featured__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.founder-card-featured__tag {
+  background: var(--neutral-100);
+  color: var(--neutral-700);
+  padding: 2px var(--space-2);
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: var(--font-medium);
+  border: 1px solid var(--neutral-200);
+  white-space: nowrap;
+}
+
+.founder-card-featured__description {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-600);
+  margin: 12px 0 0 0; // 2A: Add top margin
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.founder-card-featured__cta {
+  margin-top: auto; // 2A: Push to bottom
+  align-self: flex-end; // 2A: Shrink container and align to right edge
+  text-align: right; // 2A: Right align button
+}
+
+.founder-card-featured__cta-button {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  color: white;
+  padding: var(--space-2) var(--space-3);  // Reduced from space-4 to space-3
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: 0.875rem;  // More subtle size (was var(--text-sm))
+  font-weight: var(--font-semibold);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  display: inline-block; // 2A: Auto-sizing button
+  width: auto; // 2A: Auto-sizing button
+  box-sizing: border-box;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* Generation metric in upper right */
+.founder-card-featured {
+  position: relative;
+}
+
+.generation-metric {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--neutral-700);
+  font-size: 0.75rem;
+  font-weight: var(--font-medium);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--neutral-200);
+  z-index: 10;
+}
+
+/* =============================================================================
+   MOBILE RESPONSIVE - Simple stacked layout
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* KEEP - Unique founder focus card mobile layout */
+  .founder-card-featured {
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+  }
+  
+  .founder-card-featured__portrait,
+  .founder-card-featured__content {
+    width: 100%;
+  }
+  
+  .founder-card-featured__portrait {
+    height: 250px;
+  }
+  
+  .founder-card-featured__content {
+    padding: var(--space-4);
+  }
+  
+  .founder-card-featured__description {
+    -webkit-line-clamp: 4;
+  }
+}

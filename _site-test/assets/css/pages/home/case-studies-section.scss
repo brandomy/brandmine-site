@@ -1,0 +1,244 @@
+/* Case Studies Section - Homepage Integration */
+/* Independent SCSS file for the case studies carousel on homepage */
+
+/* Carousel Container - Case Studies Specific Overrides */
+.carousel[data-component-type="case-studies"] {
+    /* Inherits base styles from carousel.scss */
+    /* Only case-studies specific customizations below */
+}
+
+/* Carousel positioning now handled by carousel.scss */
+
+/* Card Styling - Mobile First */
+.test-card {
+    background: white;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.test-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* Card Image Section */
+.test-card-image {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background: var(--neutral-100);
+}
+
+.test-card-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-medium);
+}
+
+.test-card:hover .test-card-hero-img {
+    transform: scale(1.05);
+}
+
+/* Gradient Background for Non-Image Cards */
+.test-card-gradient {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+}
+
+.test-card-gradient-text {
+    color: white;
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Content Section */
+.test-card-content {
+    padding: var(--space-6);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.test-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--primary-800);
+    margin: 0 0 var(--space-2) 0;
+}
+
+.test-card-subtitle {
+    font-size: var(--text-base);
+    color: var(--neutral-600);
+    line-height: 1.5;
+    margin: 0 0 var(--space-4) 0;
+    flex: 1;
+}
+
+/* Taxonomy Tags - DEPRECATED: Now using unified dimension-tag-cloud component */
+/* Keeping for backwards compatibility */
+.test-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-4) 0;
+}
+
+.test-card-market,
+.test-card-sector,
+.test-card-attribute,
+.test-card-signal {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.test-card-market {
+    background: var(--sky-100);
+    color: var(--sky-800);
+}
+
+.test-card-sector {
+    background: var(--olive-100);
+    color: var(--olive-800);
+}
+
+.test-card-attribute {
+    background: var(--secondary-100);
+    color: var(--secondary-800);
+}
+
+.test-card-signal {
+    background: var(--accent-100);
+    color: var(--accent-800);
+}
+
+/* Hover effects for dimension tags */
+.test-card-market:hover {
+    background: var(--sky-200);
+    transform: translateY(-1px);
+}
+
+.test-card-sector:hover {
+    background: var(--olive-200);
+    transform: translateY(-1px);
+}
+
+.test-card-attribute:hover {
+    background: var(--secondary-200);
+    transform: translateY(-1px);
+}
+
+.test-card-signal:hover {
+    background: var(--accent-200);
+    transform: translateY(-1px);
+}
+
+/* Map test-card-tags to dimension-tag-cloud styling with case-study variant */
+.test-card-tags {
+  @extend .dimension-tag-cloud;
+  @extend .dimension-tag-cloud--case-study;
+  margin: var(--space-4) 0; /* Maintain original spacing */
+}
+
+.test-card-tags__tag {
+  @extend .dimension-tag-cloud__tag;
+}
+
+.test-card-tags__tag--sector {
+  @extend .dimension-tag-cloud__tag--sector;
+}
+
+.test-card-tags__tag--market {
+  @extend .dimension-tag-cloud__tag--market;
+}
+
+.test-card-tags__tag--attribute {
+  @extend .dimension-tag-cloud__tag--attribute;
+}
+
+.test-card-tags__tag--signal {
+  @extend .dimension-tag-cloud__tag--signal;
+}
+
+/* Navigation Dots - Now inherited from carousel.scss */
+
+/* CTA Section */
+.test-card-cta {
+    margin-top: var(--space-4);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.test-card-button {
+    background: var(--primary-500);
+    color: white;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.test-card-button:hover {
+    background: var(--primary-600);
+    transform: translateY(-1px);
+}
+
+.test-card-button:active {
+    transform: translateY(0);
+}
+
+/* Metric Badge */
+.test-card-metric-badge {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.metric-value {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--primary-800);
+    line-height: 1.2;
+}
+
+.metric-label {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--neutral-600);
+    line-height: 1.2;
+}
+
+/* Responsive Design - Now handled by carousel.scss mixins */
+/* Component-specific responsive adjustments only */

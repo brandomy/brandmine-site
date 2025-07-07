@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Card Style Guide</title>
+
+  <!-- SEO Components -->
+  
+    <meta name="description" content="
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Illuminating and Elevating Founder-led Brands from the BRICS+
+">
+  
+
+  <!-- Schema.org markup -->
+  
+
+
+
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/site/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/site/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/site/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/site/favicons/site.webmanifest">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- Font Preloading for Performance -->
+  <link rel="preload" href="/assets/fonts/pt-sans_regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/pt-serif_regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  
+
+  <!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1377139');
+</script>
+<!-- End MailerLite Universal -->
+</head>
+
+<body class="default-page">
+  
+
+
+
+<header class="header">
+  <div class="header__container">
+    <!-- Logo and Toggle -->
+    <div class="header__branding">
+      <a class="header__title" href="//">
+        
+        
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine
+
+      </a>
+      <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="header__toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+    
+    <!-- Language Switcher -->
+    <div class="header__lang">
+      
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  
+
+<nav class="header__nav" id="main-nav">
+  <ul class="header__nav-list">
+    
+    
+    
+    
+      
+      
+      
+      
+    
+  </ul>
+</nav>
+</header>
+
+  <main class="layout">
+    <div class="layout__wrapper">
+      <div class="layout__content">
+        <h1 id="hero-card-style-guide">Hero Card Style Guide</h1>
+
+<h2 id="current-implementation-">Current Implementation ✅</h2>
+
+<p>The insight article hero card now uses a <strong>clean, professional layout</strong> that matches your test page design exactly.</p>
+
+<h3 id="visual-features">Visual Features:</h3>
+<ul>
+  <li><strong>Full-height images</strong> on desktop (no white borders)</li>
+  <li><strong>Clean text categories</strong> in teal color</li>
+  <li><strong>Tighter spacing</strong> for better visual hierarchy</li>
+  <li><strong>Responsive design</strong> - mobile-first approach</li>
+  <li><strong>Smooth hover effects</strong> on images</li>
+</ul>
+
+<h3 id="layout-structure">Layout Structure:</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────────────────────┐
+│ ┌─────────────┐ ┌─────────────────┐ │
+│ │             │ │ CATEGORY        │ │
+│ │    IMAGE    │ │ Title           │ │
+│ │ (full height)│ │ Description     │ │
+│ │             │ │ Meta info       │ │
+│ └─────────────┘ └─────────────────┘ │
+└─────────────────────────────────────┘
+</code></pre></div></div>
+
+<h2 id="mobile-behavior">Mobile Behavior:</h2>
+<ul>
+  <li>Single column layout</li>
+  <li>16:9 aspect ratio for images</li>
+  <li>Smaller text sizes</li>
+  <li>Appropriate touch targets</li>
+</ul>
+
+<h2 id="desktop-behavior">Desktop Behavior:</h2>
+<ul>
+  <li>Two-column grid layout</li>
+  <li>Image fills full panel height</li>
+  <li>Content vertically centered</li>
+  <li>No gaps between image and content</li>
+</ul>
+
+<h2 id="category-styling-options">Category Styling Options:</h2>
+
+<h3 id="current-clean-text-style-recommended-">Current: Clean Text Style (Recommended) ✅</h3>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.insight-hero-card__category</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--primary-600</span><span class="p">);</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--text-sm</span><span class="p">);</span>
+  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+  <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">0.05em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="alternative-badge-style-available">Alternative: Badge Style (Available)</h3>
+<p>If you want rounded badges instead:</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.insight-hero-card__category</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--primary-100</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--primary-700</span><span class="p">);</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--space-1</span><span class="p">)</span> <span class="n">var</span><span class="p">(</span><span class="n">--space-3</span><span class="p">);</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--radius-full</span><span class="p">);</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--text-xs</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="design-principles-applied">Design Principles Applied:</h2>
+
+<ol>
+  <li><strong>Mobile-First</strong>: Base styles for mobile, enhanced for desktop</li>
+  <li><strong>Clean Typography</strong>: Clear hierarchy with proper spacing</li>
+  <li><strong>Visual Balance</strong>: Equal weight between image and content</li>
+  <li><strong>Professional Aesthetic</strong>: Matches business/investment context</li>
+  <li><strong>Accessibility</strong>: Proper contrast and alt text support</li>
+</ol>
+
+<h2 id="performance-notes">Performance Notes:</h2>
+<ul>
+  <li>Uses CSS Grid for efficient layout</li>
+  <li>Minimal CSS with design tokens</li>
+  <li>No additional JavaScript required</li>
+  <li>Build time maintained at ~4 seconds</li>
+</ul>
+
+<p>The current implementation provides the optimal balance of visual appeal and professional presentation for your insight articles.</p>
+
+      </div>
+    </div>
+  </main>
+
+  
+
+
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__section footer__section--left">
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+</p>
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  202401005480 (1551330-P)
+</p>
+      <div class="language-selector footer__lang">
+        
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--center">
+      
+      
+      <p class="footer__tagline"><em>
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  🔆Illuminating and elevating exceptional founder-led brands from the BRICS+
+</em></p>
+      <div class="footer__social">
+        
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--right">
+      <div class="footer__newsletter">
+        <div class="newsletter-wrapper">
+          
+            <div class="ml-embedded" data-form="480swE"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__copyright">
+    <p class="footer__text">
+      
+      
+      © 2025 
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+.
+      
+      
+      
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  All rights reserved.
+
+      |
+      
+    </p>
+  </div>
+</footer>
+
+  <!-- Core Components -->
+  <script src="/assets/js/components/header.js"></script>
+
+  <!-- Conditional Components Based on Layout -->
+  
+
+  <!-- Optional Components Based on Page Features -->
+  
+
+  
+
+  <!-- UI Components -->
+  
+
+  
+
+  <!-- Central Initialization -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Analytics -->
+  
+
+
+</body>
+</html>

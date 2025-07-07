@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dimensions Cards Centering - Complete Fix Report</title>
+
+  <!-- SEO Components -->
+  
+    <meta name="description" content="
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Illuminating and Elevating Founder-led Brands from the BRICS+
+">
+  
+
+  <!-- Schema.org markup -->
+  
+
+
+
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/site/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/site/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/site/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/site/favicons/site.webmanifest">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- Font Preloading for Performance -->
+  <link rel="preload" href="/assets/fonts/pt-sans_regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/pt-serif_regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  
+
+  <!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1377139');
+</script>
+<!-- End MailerLite Universal -->
+</head>
+
+<body class="default-page">
+  
+
+
+
+<header class="header">
+  <div class="header__container">
+    <!-- Logo and Toggle -->
+    <div class="header__branding">
+      <a class="header__title" href="//">
+        
+        
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine
+
+      </a>
+      <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="header__toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+    
+    <!-- Language Switcher -->
+    <div class="header__lang">
+      
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  
+
+<nav class="header__nav" id="main-nav">
+  <ul class="header__nav-list">
+    
+    
+    
+    
+      
+      
+      
+      
+    
+  </ul>
+</nav>
+</header>
+
+  <main class="layout">
+    <div class="layout__wrapper">
+      <div class="layout__content">
+        <h1 id="dimensions-cards-centering---complete-fix-report">Dimensions Cards Centering - Complete Fix Report</h1>
+
+<h2 id="root-cause-identified">Root Cause Identified</h2>
+<p>The dimensions section was experiencing off-center alignment due to <strong>conflicting centering logic</strong> between the panel system and the dimension grid components.</p>
+
+<h3 id="the-problem">The Problem</h3>
+<ul>
+  <li><strong>Panel system</strong> (layout framework) provides: <code class="language-plaintext highlighter-rouge">max-width: 1200px</code> + <code class="language-plaintext highlighter-rouge">margin: 0 auto</code> + responsive padding</li>
+  <li><strong>Dimension grids</strong> (components) were adding their own: <code class="language-plaintext highlighter-rouge">max-width: 1200px</code> + <code class="language-plaintext highlighter-rouge">margin: 0 auto</code> + padding</li>
+  <li><strong>Result</strong>: Double-centering caused layout shifts and inconsistent positioning at different screen sizes</li>
+</ul>
+
+<h2 id="html-structure-understanding">HTML Structure Understanding</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel"</span><span class="nt">&gt;</span>                           <span class="c">&lt;!-- Full-width panel --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel__content"</span><span class="nt">&gt;</span>                <span class="c">&lt;!-- Centered container: max-width: 1200px, margin: 0 auto --&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"panel__heading-secondary"</span><span class="nt">&gt;</span>     <span class="c">&lt;!-- Panel typography --&gt;</span>
+      Explore By Dimension
+    <span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"panel__lead-text"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+    
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"discovery-dimensions-grid"</span><span class="nt">&gt;</span>   <span class="c">&lt;!-- Grid component (was adding redundant centering) --&gt;</span>
+      <span class="c">&lt;!-- Dimension cards --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="css-conflicts-removed">CSS Conflicts Removed</h2>
+
+<h3 id="1-fixed-discovery-dimensions-grid">1. Fixed <code class="language-plaintext highlighter-rouge">.discovery-dimensions-grid</code></h3>
+<p><strong>File</strong>: <code class="language-plaintext highlighter-rouge">assets/css/components/dimensions/discovery-dimensions-grid.scss</code></p>
+
+<p><strong>Before (Conflicting)</strong>:</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.discovery-dimensions-grid</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">space-8</span><span class="p">)</span> <span class="nb">auto</span><span class="p">;</span>        <span class="cm">/* ❌ Conflicted with panel centering */</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">1200px</span><span class="p">;</span>                  <span class="cm">/* ❌ Redundant with panel__content */</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">space-4</span><span class="p">);</span>          <span class="cm">/* ❌ Conflicted with panel padding */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>After (Clean)</strong>:</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.discovery-dimensions-grid</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">space-8</span><span class="p">)</span> <span class="m">0</span><span class="p">;</span>           <span class="cm">/* ✅ Only vertical margin */</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>                        <span class="cm">/* ✅ Fill parent container */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-fixed-featured-dimensions-grid">2. Fixed <code class="language-plaintext highlighter-rouge">.featured-dimensions-grid</code></h3>
+<p><strong>File</strong>: <code class="language-plaintext highlighter-rouge">assets/css/components/dimensions/featured-dimensions.scss</code></p>
+
+<p><strong>Removed redundant centering</strong>:</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Removed:</span>
+<span class="c1">// max-width: 1200px;</span>
+<span class="c1">// margin: 0 auto; </span>
+<span class="c1">// padding: 0 var(--space-4);</span>
+</code></pre></div></div>
+
+<h3 id="3-fixed-large-desktop-override">3. Fixed large desktop override</h3>
+<p><strong>Removed redundant centering from 1600px+ breakpoint</strong>:</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Removed conflicting layout constraints:</span>
+<span class="c1">// max-width: 1500px;</span>
+<span class="c1">// margin-left: auto;</span>
+<span class="c1">// margin-right: auto;</span>
+</code></pre></div></div>
+
+<h2 id="why-this-fix-works">Why This Fix Works</h2>
+
+<h3 id="separation-of-concerns-restored">Separation of Concerns Restored</h3>
+<ul>
+  <li><strong>Panel system</strong> handles: Overall container width, centering, responsive padding</li>
+  <li><strong>Dimension grids</strong> handle: Internal grid layout, gap spacing, column arrangements</li>
+  <li><strong>Dimension cards</strong> handle: Individual card styling, typography, colors</li>
+</ul>
+
+<h3 id="responsive-behavior-fixed">Responsive Behavior Fixed</h3>
+<ul>
+  <li><strong>All screen sizes</strong>: Dimension grids now properly respect panel container boundaries</li>
+  <li><strong>Mobile (&lt;768px)</strong>: Correct edge spacing via panel padding</li>
+  <li><strong>Tablet (768px-1199px)</strong>: Proper centering within panel constraints</li>
+  <li><strong>Desktop (≥1200px)</strong>: Grid respects panel’s max-width without conflicts</li>
+  <li><strong>Large desktop (≥1600px)</strong>: 4-column layout works within panel system</li>
+</ul>
+
+<h2 id="affected-pagessections">Affected Pages/Sections</h2>
+<ul>
+  <li>✅ Home page “Explore By Dimension” section</li>
+  <li>✅ Discovery page dimension grids</li>
+  <li>✅ Discovery category pages (markets, sectors, attributes, signals)</li>
+  <li>✅ Featured dimensions sections</li>
+</ul>
+
+<h2 id="validation-results">Validation Results</h2>
+<ul>
+  <li><strong>Build Status</strong>: ✅ Success (4.894 seconds)</li>
+  <li><strong>CSS Conflicts</strong>: ✅ Resolved (no double-centering)</li>
+  <li><strong>Responsive Design</strong>: ✅ Proper behavior at all breakpoints</li>
+  <li><strong>Architecture</strong>: ✅ Clean separation between layout and components</li>
+</ul>
+
+<h2 id="technical-benefits">Technical Benefits</h2>
+<ol>
+  <li><strong>Consistent centering</strong> across all screen sizes</li>
+  <li><strong>Eliminated layout shifts</strong> during responsive transitions</li>
+  <li><strong>Reduced CSS complexity</strong> by removing redundant rules</li>
+  <li><strong>Improved maintainability</strong> through clear separation of concerns</li>
+  <li><strong>Better performance</strong> due to simplified CSS calculations</li>
+</ol>
+
+<h2 id="implementation-summary">Implementation Summary</h2>
+<ul>
+  <li><strong>Files Modified</strong>: 2 CSS files</li>
+  <li><strong>Lines Removed</strong>: ~8 lines of conflicting CSS</li>
+  <li><strong>Build Impact</strong>: None (successful build)</li>
+  <li><strong>Risk Level</strong>: Low (removal of redundant code only)</li>
+</ul>
+
+<p>The dimensions section should now display with proper, consistent centering at all screen sizes without any left/right shifting behavior.</p>
+
+      </div>
+    </div>
+  </main>
+
+  
+
+
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__section footer__section--left">
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+</p>
+      
+      
+      <p class="footer__text">
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  202401005480 (1551330-P)
+</p>
+      <div class="language-selector footer__lang">
+        
+
+
+<div class="language-selector">
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <a href="/en" 
+       onclick="localStorage.setItem('preferredLanguage', 'en');" 
+       >EN</a>
+    <a href="/ru" 
+       onclick="localStorage.setItem('preferredLanguage', 'ru');" 
+       >RU</a>
+    <a href="/zh" 
+       onclick="localStorage.setItem('preferredLanguage', 'zh');" 
+       >ZH</a>
+  
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--center">
+      
+      
+      <p class="footer__tagline"><em>
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  🔆Illuminating and elevating exceptional founder-led brands from the BRICS+
+</em></p>
+      <div class="footer__social">
+        
+      </div>
+    </div>
+
+    <div class="footer__section footer__section--right">
+      <div class="footer__newsletter">
+        <div class="newsletter-wrapper">
+          
+            <div class="ml-embedded" data-form="480swE"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__copyright">
+    <p class="footer__text">
+      
+      
+      © 2025 
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Brandmine Consulting Sdn Bhd
+.
+      
+      
+      
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  All rights reserved.
+
+      |
+      
+    </p>
+  </div>
+</footer>
+
+  <!-- Core Components -->
+  <script src="/assets/js/components/header.js"></script>
+
+  <!-- Conditional Components Based on Layout -->
+  
+
+  <!-- Optional Components Based on Page Features -->
+  
+
+  
+
+  <!-- UI Components -->
+  
+
+  
+
+  <!-- Central Initialization -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Analytics -->
+  
+
+
+</body>
+</html>

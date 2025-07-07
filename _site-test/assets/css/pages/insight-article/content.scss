@@ -1,0 +1,138 @@
+/* 
+CLEAN INSIGHTS ARTICLE TYPOGRAPHY
+Using existing Brandmine design tokens - simple and reliable
+*/
+
+/* CONTAINER: Simple max-width with natural scaling */
+.insight-article-content {
+  max-width: var(--form-max-width);     /* 700px from your tokens */
+  width: 100%;                          /* Scale down naturally */
+  margin: 0 auto;                       /* Center the container */
+  text-align: left;                     /* Left-align content */
+  padding: 0 var(--space-4);            /* 16px mobile padding */
+  
+  /* Enhanced padding on larger screens */
+  @media (min-width: 768px) {
+    padding: 0 var(--space-6);          /* 24px tablet+ padding */
+  }
+}
+
+/* TYPOGRAPHY: Clean hierarchy using your existing tokens */
+
+/* Main heading */
+.insight-article-content h1 {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-weight: var(--font-bold);        /* 700 */
+  font-size: var(--text-4xl);           /* 2.25rem = 36px at 16px base - Scales with user preferences */
+  line-height: var(--leading-tight);    /* 1.25 */
+  color: var(--neutral-900);            /* Dark text */
+  margin: var(--space-8) 0 var(--space-4) 0;
+  
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+/* Section headings */
+.insight-article-content h2 {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-weight: var(--font-bold);        /* 700 */
+  font-size: var(--text-3xl);           /* 1.875rem = 30px at 16px base - YOUR EXACT REQUIREMENT */
+  line-height: var(--leading-tight);    /* 1.25 */
+  color: var(--neutral-900);            /* Dark text */
+  margin: var(--space-8) 0 var(--space-4) 0;
+}
+
+/* Sub-headings */
+.insight-article-content h3 {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-weight: var(--font-semibold);    /* 600 */
+  font-size: var(--text-xl);            /* 1.25rem = 20px at 16px base - Scales with user preferences */
+  line-height: var(--leading-snug);     /* 1.375 */
+  color: var(--neutral-900);            /* Dark text */
+  margin: var(--space-6) 0 var(--space-3) 0;
+}
+
+/* Body text */
+.insight-article-content p {
+  font-family: var(--font-body);        /* PT Sans */
+  font-weight: var(--font-normal);      /* 400 */
+  font-size: var(--text-base);          /* 1rem = 16px at 16px base - YOUR EXACT REQUIREMENT */
+  line-height: var(--leading-relaxed);  /* 1.625 */
+  color: var(--neutral-700);            /* Medium gray */
+  margin-bottom: var(--space-5);        /* 20px */
+}
+
+/* Lists */
+.insight-article-content ul,
+.insight-article-content ol {
+  font-family: var(--font-body);        /* PT Sans */
+  font-weight: var(--font-normal);      /* 400 */
+  font-size: var(--text-base);          /* 1rem = 16px at 16px base - Same as paragraphs */
+  line-height: var(--leading-relaxed);  /* 1.625 */
+  color: var(--neutral-700);            /* Medium gray */
+  margin-bottom: var(--space-5);        /* 20px */
+  padding-left: var(--space-5);         /* 20px */
+  
+  li {
+    margin-bottom: var(--space-2);      /* 8px */
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Blockquotes */
+.insight-article-content blockquote {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-style: italic;
+  font-size: var(--text-lg);            /* 1.125rem = 18px at 16px base - Slightly larger for emphasis */
+  line-height: var(--leading-relaxed);  /* 1.625 */
+  color: var(--neutral-600);            /* Lighter gray */
+  border-left: var(--border-width-heavy) solid var(--primary-300);
+  padding-left: var(--space-4);         /* 16px */
+  margin: var(--space-6) 0;             /* 24px top/bottom */
+  
+  p {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    color: inherit;
+    line-height: inherit;
+    margin-bottom: var(--space-3);      /* 12px */
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Links */
+.insight-article-content a {
+  color: var(--primary-600);             /* Teal */
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width-thin);
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--primary-700);          /* Darker teal */
+    text-decoration-thickness: var(--border-width-medium);
+  }
+}
+
+/* Text formatting */
+.insight-article-content strong {
+  font-weight: var(--font-semibold);    /* 600 */
+  color: var(--neutral-900);            /* Dark text */
+}
+
+.insight-article-content em {
+  font-style: italic;
+}
+
+/* Section spacing - Seamless flow by default */
+.insight-article-section {
+  margin-bottom: 0;        /* Seamless section flow */
+}

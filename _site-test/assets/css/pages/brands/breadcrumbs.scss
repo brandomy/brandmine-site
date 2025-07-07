@@ -1,0 +1,23 @@
+// brands page: seamless connection with breadcrumbs
+.brands-page {
+  // Breadcrumbs use generic UI component - no page-specific styles needed
+  
+  // Remove top border/margin from hero section to connect seamlessly with breadcrumbs
+  .brands-section--hero {
+    margin-top: 0;
+    border-top: none;
+
+    .panel {
+      border: none;
+      border-top: none;
+      margin-top: 0;
+      padding-top: var(--space-8); // Maintain consistent hero padding but remove border
+    }
+  }
+
+  // Remove top padding from the outer panel wrapper to connect with breadcrumbs
+  // Only apply when breadcrumbs are present (first section)
+  > .panel--light {
+    padding-top: 0;
+  }
+}

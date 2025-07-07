@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Journal Entry Card
+   ==========================================================================
+   Card component for displaying journal entries in grids and lists.
+   Uses Brandmine's card token system and design patterns.
+*/
+
+.entry-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  transition: all var(--transition-medium);
+  height: 100%;
+
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  // Image section
+  &__image {
+    position: relative;
+    aspect-ratio: 3/2; // Always use 3:2 to show full image
+    overflow: hidden;
+    background: var(--neutral-100);
+  }
+
+  &__image-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+  }
+  
+  &__image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--neutral-100) 0%, var(--neutral-200) 100%);
+    color: var(--neutral-400);
+    font-size: var(--text-lg);
+  }
+
+  &:hover &__image-element {
+    transform: scale(1.05);
+  }
+
+  // Content section
+  &__content {
+    padding: var(--card-padding-default);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    
+    @media (min-width: 768px) {
+      padding: var(--card-padding-large);
+    }
+  }
+
+  // Meta information
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    
+    .separator {
+      margin: 0 var(--space-1);
+      opacity: 0.7;
+    }
+  }
+
+  &__date {
+    font-weight: var(--font-medium);
+    color: var(--neutral-700);
+  }
+
+  &__author,
+  &__reading-time {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  // Title
+  &__title {
+    margin: 0 0 var(--space-3) 0;
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+    
+    @media (min-width: 768px) {
+      font-size: var(--text-xl);
+    }
+  }
+
+  &__link {
+    color: var(--neutral-900);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      color: var(--primary-700);
+      text-decoration: none;
+    }
+  }
+
+  // Excerpt
+  &__excerpt {
+    margin: 0 0 var(--space-4) 0;
+    color: var(--neutral-700);
+    line-height: var(--leading-relaxed);
+    flex-grow: 1;
+    font-size: var(--text-base);
+  }
+
+  // Footer
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-3);
+    margin-top: auto;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    flex-grow: 1;
+    
+    /* Override base tag styles for small variant within entry cards */
+    .tag.tag--small {
+      font-size: var(--text-xs);
+      padding: var(--space-1) var(--space-2);
+    }
+  }
+
+  &__read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--primary-600);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      background-color: var(--primary-50);
+      color: var(--primary-700);
+      text-decoration: none;
+    }
+    
+    svg {
+      width: 16px;
+      height: 16px;
+      transition: transform var(--transition-fast);
+    }
+    
+    &:hover svg {
+      transform: translateX(2px);
+    }
+  }
+}
+
+/* ==========================================================================
+   Grid Layout for Entry Cards
+   ==========================================================================
+*/
+
+.journal-entries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+  }
+  
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+
+  /* Mobile-first: Base styles already set above, no override needed for smallest screens */
+}
+
+/* ==========================================================================
+   Actions Section
+   ==========================================================================
+*/
+
+.journal-entries-actions {
+  text-align: center;
+  margin-top: var(--space-8);
+}
+
+/* ==========================================================================
+   Tag Styles for Cards
+   ==========================================================================
+*/
+
+.tag {
+  &--small {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--neutral-100);
+    color: var(--neutral-700);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+    transition: all var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      background-color: var(--neutral-200);
+      color: var(--neutral-800);
+      text-decoration: none;
+    }
+  }
+
+  &--journal {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--primary-100);
+    color: var(--primary-800);
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      background-color: var(--primary-200);
+      color: var(--primary-900);
+      text-decoration: none;
+    }
+  }
+
+  &--cloud {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--neutral-100);
+    color: var(--neutral-700);
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      background-color: var(--primary-100);
+      color: var(--primary-700);
+      text-decoration: none;
+    }
+  }
+}

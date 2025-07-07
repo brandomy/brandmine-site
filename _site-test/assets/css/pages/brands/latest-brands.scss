@@ -1,0 +1,83 @@
+/* Latest Brands Section - Enhanced Styling */
+/* Uses universal grid with professional polish */
+
+.brands-page {
+  .latest-brands-section {
+    .latest-brands__header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+      
+      @media (max-width: 768px) {
+        margin-bottom: var(--space-6);
+      }
+    }
+    
+    .latest-brands__content {
+      margin-bottom: var(--space-8);
+      
+      @media (max-width: 768px) {
+        margin-bottom: var(--space-6);
+      }
+      
+      /* Updated grid for 345px mobile-first brand cards */
+      .grid__container {
+        grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+        gap: var(--space-4);
+        
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+          gap: var(--space-6);
+        }
+        
+        @media (max-width: 480px) {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+    
+    .latest-brands__footer {
+      text-align: center;
+    }
+    
+    .panel__heading-secondary {
+      color: var(--neutral-800);
+      margin-bottom: var(--space-4);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--text-3xl);
+      
+      @media (max-width: 768px) {
+        font-size: var(--text-2xl);
+      }
+    }
+    
+    .panel__subtitle {
+      color: var(--neutral-600);
+      font-size: var(--text-lg);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: var(--leading-relaxed);
+    }
+    
+    .btn {
+      min-width: 200px;
+      padding: var(--space-3) var(--space-6);
+      font-weight: var(--font-weight-medium);
+      
+      @media (max-width: 480px) {
+        min-width: 180px;
+        padding: var(--space-2) var(--space-4);
+      }
+    }
+  }
+
+  /* Brand card enhancements within grid */
+  .latest-brands-section {
+    .grid__item {
+      min-height: 300px;
+      
+      @media (max-width: 768px) {
+        min-height: 280px;
+      }
+    }
+  }
+}

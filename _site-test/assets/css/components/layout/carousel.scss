@@ -1,0 +1,670 @@
+/* =============================================================================
+   CAROUSEL COMPONENT
+   =============================================================================
+   Shared carousel component for featured content across all pages.
+   
+   Uses CSS custom properties for page-specific customization:
+   --carousel-height: Default card height
+   --carousel-gap: Gap between cards
+   --dot-color: Navigation dot color
+   --dot-active-color: Active navigation dot color
+   
+   Supports: brands, founders, insights, etc.
+   Pages: home, brands, founders, insights
+   Modes: carousel, grid, mixed
+*/
+
+/* -----------------------------------------------------------------------------
+   1. CAROUSEL CONTAINER
+   ----------------------------------------------------------------------------- */
+
+.carousel {
+  /* CSS Custom Properties for easy page-specific customization */
+  --carousel-height: 360px;
+  --carousel-gap: var(--space-6);
+  --dot-color: var(--primary-300);
+  --dot-active-color: var(--primary-500);
+  --scrollbar-color: var(--primary-300);
+  --scrollbar-track: var(--neutral-200);
+  
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: var(--carousel-gap);
+  padding: var(--space-4) 0;
+  margin: var(--space-6) 0;
+  width: 100%;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-color) var(--scrollbar-track);
+  scroll-snap-type: x mandatory;
+  
+  /* Mobile: 1 card per view */
+  .carousel__item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    height: var(--carousel-height);
+  }
+  
+  /* Tablet+: 2 cards per view */
+  @media (width >= 768px) {
+    .carousel__item {
+      flex: 0 0 calc(50% - (var(--carousel-gap) / 2));
+    }
+  }
+  
+  /* Desktop: 3 cards per view for some content types */
+  @media (width >= 1200px) {
+    &.carousel--insights .carousel__item,
+    &.carousel--founders .carousel__item {
+      flex: 0 0 calc(33.333% - (var(--carousel-gap) * 2 / 3));
+    }
+  }
+  
+  /* Scrollbar styling */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: var(--radius-sm);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: var(--radius-sm);
+    
+    &:hover {
+      background-color: var(--dot-active-color);
+    }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   2. GRID DISPLAY MODE
+   ----------------------------------------------------------------------------- */
+
+.universal-grid {
+  --grid-gap: var(--space-6);
+  --card-height: 360px;
+  
+  display: grid;
+  gap: var(--grid-gap);
+  margin: var(--space-6) 0;
+  
+  /* Mobile: 1 column */
+  grid-template-columns: 1fr;
+  
+  /* Tablet: 2 columns */
+  @media (width >= 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Desktop: 3 columns for some content types */
+  @media (width >= 1200px) {
+    &.universal-grid--insights,
+    &.universal-grid--founders {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .carousel__item {
+    height: var(--card-height);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   3. NAVIGATION DOTS
+   ----------------------------------------------------------------------------- */
+
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+  
+  .carousel-nav-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--neutral-300);
+    cursor: pointer;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+    border: none;
+    margin: 0 var(--space-1);
+    
+    &:hover {
+      transform: scale(1.2);
+      background-color: var(--primary-300);
+    }
+    
+    &.active {
+      background-color: var(--primary-500);
+      transform: scale(1.2);
+    }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   4. CTA BUTTON
+   ----------------------------------------------------------------------------- */
+
+.carousel-cta {
+  text-align: center;
+  margin-top: var(--space-6);
+}
+
+/* -----------------------------------------------------------------------------
+   5. NO CONTENT MESSAGE
+   ----------------------------------------------------------------------------- */
+
+.no-content-message {
+  text-align: center;
+  color: var(--neutral-600);
+  font-style: italic;
+  padding: var(--space-8) 0;
+}
+
+/* -----------------------------------------------------------------------------
+   6. UNIVERSAL CAROUSEL MATCHING SIMPLIFIED STYLING
+   ----------------------------------------------------------------------------- */
+
+/* Universal carousel should match featured-brands exactly */
+.carousel[data-component-type="featured-brands"] {
+  /* Copy simplified carousel height and container settings */
+  --carousel-height: 500px;
+  min-height: 520px;
+  overflow-y: hidden;
+  align-items: stretch;
+  
+  /* Direct children (universal cards) should match simplified-carousel-card styling */
+  /* Responsive layout to match simplified: 1 mobile, 1 tablet, 2 desktop */
+  .carousel__item {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    height: 500px;
+    max-height: 500px;
+    
+    /* Tablet and up: still single card */
+    @media (width >= 768px) {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    
+    /* Desktop: 2 cards per slide like simplified */
+    @media (width >= 992px) {
+      flex: 0 0 calc(50% - (var(--carousel-gap) / 2));
+      width: calc(50% - (var(--carousel-gap) / 2));
+    }
+  }
+  
+}
+
+/* Section headers above universal carousel should match simplified style */
+.carousel[data-component-type="featured-brands"] {
+  /* Preceding h2 should match simplified style */
+  + .carousel-cta {
+    /* CTA section should match simplified more button styling */
+    text-align: center;
+    margin-top: var(--space-6);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   6B. CAROUSEL CONTEXT STYLING FOR BRAND CARDS
+   ----------------------------------------------------------------------------- */
+
+/* Brand card text alignment in carousel contexts */
+.carousel .brand-card .brand-card__founding-year,
+.carousel .brand-card .brand-card__location,
+.carousel .brand-card .brand-card__meta,
+.carousel .brand-card .meta-founding,
+.carousel .brand-card .meta-location {
+  text-align: left !important;
+}
+
+/* -----------------------------------------------------------------------------
+   7. PAGE-SPECIFIC CUSTOMIZATIONS
+   ----------------------------------------------------------------------------- */
+
+/* Home Page Customizations */
+.home-page {
+  .carousel {
+    --carousel-height: 380px;
+    --carousel-gap: var(--space-8);
+  }
+  
+  .carousel--brands {
+    --dot-color: var(--olive-300);
+    --dot-active-color: var(--olive-500);
+  }
+  
+  .carousel--founders {
+    --dot-color: var(--secondary-300);
+    --dot-active-color: var(--secondary-500);
+    
+    .carousel__item {
+      flex: 0 0 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0 var(--space-4);
+    }
+  }
+}
+
+/* Brands Page Customizations */
+.brands-page {
+  .carousel {
+    --carousel-height: 360px;
+  }
+  
+  .carousel--brands {
+    --dot-color: var(--olive-300);
+    --dot-active-color: var(--olive-500);
+    border-top: 1px solid var(--olive-100);
+    border-bottom: 1px solid var(--olive-100);
+    background-color: var(--olive-50);
+  }
+}
+
+/* Founders Page Customizations */
+.founders-page {
+  .carousel {
+    --carousel-height: 360px;
+  }
+  
+  .carousel--founders {
+    --dot-color: var(--secondary-300);
+    --dot-active-color: var(--secondary-500);
+    border-top: 1px solid var(--secondary-100);
+    border-bottom: 1px solid var(--secondary-100);
+    background-color: var(--secondary-50);
+  }
+}
+
+/* Insights Page Customizations */
+.insights-page {
+  .carousel--insights {
+    --dot-color: var(--accent-300);
+    --dot-active-color: var(--accent-500);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   7. RESPONSIVE MIXINS AND UTILITIES
+   ----------------------------------------------------------------------------- */
+
+// Responsive mixin for carousel layouts - MOBILE FIRST
+@mixin carousel-responsive($mobile-cards: 1, $tablet-cards: 1, $desktop-cards: 2) {
+  // Mobile first - base styles (no media query)
+  .carousel__item {
+    flex: 0 0 calc(100% / #{$mobile-cards} - var(--carousel-gap, var(--space-6)) / #{$mobile-cards});
+    scroll-snap-align: start;
+  }
+  
+  // Small devices (480px and up)
+  @media (width >= 480px) {
+    .carousel__item {
+      flex: 0 0 calc(100% / #{$mobile-cards} - var(--carousel-gap, var(--space-4)) / #{$mobile-cards});
+    }
+  }
+  
+  // Medium devices/tablets (768px and up) 
+  @media (width >= 768px) {
+    gap: var(--space-4);
+    
+    .carousel__item {
+      flex: 0 0 calc(100% / #{$tablet-cards} - var(--carousel-gap, var(--space-4)) / #{$tablet-cards});
+    }
+  }
+  
+  // Large devices/desktops (992px and up)
+  @media (width >= 992px) {
+    gap: var(--space-6);
+    
+    .carousel__item {
+      flex: 0 0 calc(100% / #{$desktop-cards} - var(--carousel-gap, var(--space-6)) / #{$desktop-cards});
+    }
+  }
+}
+
+// Common responsive gap adjustments - MOBILE FIRST
+@mixin carousel-responsive-gaps() {
+  // Mobile first - base styles
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  margin: var(--space-3) 0;
+  
+  // Small devices (480px and up)
+  @media (width >= 480px) {
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    margin: var(--space-4) 0;
+  }
+  
+  // Medium devices (768px and up)
+  @media (width >= 768px) {
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    margin: var(--space-6) 0;
+  }
+  
+  // Large devices (992px and up) 
+  @media (width >= 992px) {
+    gap: var(--space-6);
+    padding: var(--space-4) 0;
+    margin: var(--space-6) 0;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   8. COMPONENT-SPECIFIC RESPONSIVE PATTERNS
+   ----------------------------------------------------------------------------- */
+
+// Standard 1 mobile / 2 desktop pattern
+.carousel[data-component-type="featured-brands"] {
+  @include carousel-responsive(1, 1, 2);
+  @include carousel-responsive-gaps();
+}
+
+// Case Studies - Special case requiring specific .test-card targeting
+.carousel[data-component-type="case-studies"] {
+  @include carousel-responsive-gaps(); /* Keep gap management */
+  
+  /* Case Studies specific responsive behavior - targets .test-card specifically */
+  .test-card {
+    /* Mobile first - ensure single card display */
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    scroll-snap-align: start;
+    
+    /* Small devices (480px and up) - still single card */
+    @media (width >= 480px) {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    
+    /* Medium devices (768px and up) - still single card */
+    @media (width >= 768px) {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    
+    /* Large devices (992px and up) - 2 cards side by side */
+    @media (width >= 992px) {
+      flex: 0 0 calc(50% - (var(--space-6) / 2));
+      width: calc(50% - (var(--space-6) / 2));
+      max-width: calc(50% - (var(--space-6) / 2));
+    }
+  }
+}
+
+// Founder Focus - Special case with fixed desktop width
+.carousel[data-component-type="founder-focus"] {
+  @include carousel-responsive-gaps();
+  
+  // Custom responsive pattern for founder focus
+  .carousel__item {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    
+    @media (width >= 992px) {
+      flex: 0 0 900px;
+      width: 900px;
+      max-width: 900px;
+    }
+  }
+}
+
+// Founder Test Components - Match founder-focus behavior for testing pages
+.carousel[data-component-type="founder-cards-test"],
+.carousel[data-component-type="founder-featured-test"],
+.carousel[data-component-type="founder-focus-test"] {
+  @include carousel-responsive-gaps();
+  
+  // Same responsive pattern as founder-focus for consistency
+  .carousel__item {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    
+    @media (width >= 992px) {
+      flex: 0 0 900px;
+      width: 900px;
+      max-width: 900px;
+    }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   9. RESPONSIVE UTILITIES
+   ----------------------------------------------------------------------------- */
+
+// Use existing breakpoint standards from tokens.scss:
+// - 480px (Small devices)  
+// - 768px (Medium devices/tablets)
+// - 992px (Large devices/desktops)
+
+:root {
+  --carousel-gap-mobile: var(--space-3);
+  --carousel-gap-tablet: var(--space-4);
+  --carousel-gap-desktop: var(--space-6);
+}
+
+// Utility classes for common responsive patterns
+.carousel-hide-mobile {
+  @media (width >= 768px) {
+    display: block;
+  }
+  
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.carousel-show-mobile {
+  display: none;
+  
+  @media (max-width: 767px) {
+    display: block;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   10. PHASE 5: ADVANCED ANIMATION AND TRANSITION MIXINS
+   ----------------------------------------------------------------------------- */
+
+// Animation enhancement mixins
+@mixin carousel-smooth-transitions($duration: 0.3s) {
+  transition: all #{$duration} ease-out;
+  
+  // Smooth scroll behavior
+  scroll-behavior: smooth;
+  
+  // Enhanced scroll snap
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  
+  .carousel__item {
+    scroll-snap-align: start;
+    transition: transform #{$duration} ease-out, opacity #{$duration} ease-out;
+  }
+}
+
+// Fade-in animation for cards
+@mixin carousel-fade-in-cards($delay: 0.1s) {
+  .carousel__item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: carousel-fade-in 0.6s ease-out forwards;
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * $delay};
+      }
+    }
+  }
+  
+  // Only animate if motion is not reduced
+  @media (prefers-reduced-motion: reduce) {
+    .carousel__item {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes carousel-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Hover effects for carousel cards
+@mixin carousel-hover-effects($lift: 4px) {
+  .carousel__item {
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    
+    &:hover {
+      transform: translateY(-#{$lift});
+      box-shadow: var(--shadow-lg);
+    }
+    
+    // Respect reduced motion
+    @media (prefers-reduced-motion: reduce) {
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+
+// Parallax scroll effect for background images
+@mixin carousel-parallax-cards() {
+  .carousel__item {
+    position: relative;
+    overflow: hidden;
+    
+    .card-background,
+    .card-image {
+      transition: transform var(--transition-slow);
+    }
+    
+    &:hover .card-background,
+    &:hover .card-image {
+      transform: scale(1.05);
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .card-background,
+      .card-image {
+        transition: none;
+      }
+      
+      &:hover .card-background,
+      &:hover .card-image {
+        transform: none;
+      }
+    }
+  }
+}
+
+// Staggered card entrance animations
+@mixin carousel-stagger-entrance($base-delay: 0.1s, $stagger-delay: 0.05s) {
+  .carousel__item {
+    opacity: 0;
+    transform: translateX(30px);
+    animation: carousel-slide-in 0.5s ease-out forwards;
+    
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$base-delay + ($i - 1) * $stagger-delay};
+      }
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .carousel__item {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes carousel-slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Enhanced loading state
+@mixin carousel-loading-state() {
+  &.carousel-loading {
+    .carousel__item {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid var(--primary-200);
+      border-top-color: var(--primary-500);
+      border-radius: 50%;
+      animation: carousel-spinner 1s linear infinite;
+    }
+  }
+}
+
+@keyframes carousel-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   11. LEGACY RESPONSIVE ADJUSTMENTS
+   ----------------------------------------------------------------------------- */
+
+/* Small mobile adjustments */
+@media (width < 480px) {
+  .carousel {
+    --carousel-gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+  
+  .carousel-nav {
+    gap: var(--space-1);
+    
+    .carousel-nav-dot {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+/* Large desktop adjustments */
+@media (width >= 1400px) {
+  .carousel {
+    --carousel-gap: var(--space-8);
+  }
+  
+  .universal-grid {
+    --grid-gap: var(--space-8);
+  }
+}

@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Featured Dimensions Section
+   ==========================================================================
+   Styles for highlighted dimensions with strategic importance
+   Used on discovery category pages to showcase featured items
+*/
+
+// Featured dimensions section
+.featured-section {
+  margin: 3rem 0;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--neutral-900);
+      font-family: var(--font-heading);
+      font-weight: var(--font-bold);
+    }
+    
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--neutral-600);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: var(--leading-relaxed);
+    }
+  }
+  
+  &__actions {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+
+// Featured dimensions grid
+.featured-dimensions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    gap: 2.5rem;
+  }
+}
+
+// Featured dimension cards
+.featured-dimension-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+  border: 2px solid var(--primary-200);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+  }
+  
+  // Category-specific left border colors (matching visual taxonomy)
+  &--market { 
+    border-left: 5px solid var(--sky-500); 
+  }
+  
+  &--sector { 
+    border-left: 5px solid var(--olive-500); 
+  }
+  
+  &--attribute { 
+    border-left: 5px solid var(--secondary-500); 
+  }
+  
+  &--signal { 
+    border-left: 5px solid var(--accent-500); 
+  }
+  
+  &__content {
+    position: relative;
+  }
+  
+  &__title {
+    margin-bottom: 1rem;
+    
+    a {
+      color: var(--neutral-900);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      
+      &:hover {
+        color: var(--primary-600);
+      }
+    }
+  }
+  
+  &__description {
+    color: var(--neutral-600);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-body);
+  }
+  
+  &__meta {
+    margin-bottom: 1rem;
+  }
+  
+  &__count {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--neutral-500);
+    font-weight: var(--font-medium);
+  }
+  
+  &__badge {
+    display: inline-block;
+    background: var(--primary-500);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+  .featured-section {
+    margin: 2rem 0;
+    
+    &__header {
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .featured-dimension-card {
+    padding: 1.5rem;
+    
+    &__title a {
+      font-size: 1.25rem;
+    }
+    
+    &__badge {
+      position: static;
+      margin-top: 1rem;
+      display: block;
+      text-align: center;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+/* Integration with existing panel system */
+.panel .featured-section {
+  margin: 0; // Remove extra margin when inside panels
+}
+
+.panel__content .featured-section {
+  padding: 0; // Remove extra padding when inside panel content
+}

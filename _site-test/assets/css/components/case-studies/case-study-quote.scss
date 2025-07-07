@@ -1,0 +1,282 @@
+// Component: case-study-quote.scss
+// Purpose: Styles for case study quote component
+// Architecture: BEM methodology with design tokens
+
+.case-study-quote {
+  margin: var(--space-8) 0;
+  border: none;
+  
+  // Container for quote content
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    position: relative;
+  }
+  
+  // Portrait image
+  &__portrait {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-200);
+  }
+  
+  &__portrait-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  // Main content area
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  // Quote text
+  &__text {
+    margin-bottom: var(--space-4);
+  }
+  
+  &__paragraph {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-style: italic;
+    color: var(--neutral-800);
+    line-height: var(--leading-relaxed);
+    position: relative;
+  }
+  
+  // Attribution section
+  &__attribution {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  
+  &__author {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  
+  &__name {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--neutral-900);
+    font-style: normal;
+  }
+  
+  &__title {
+    font-size: var(--text-sm);
+    color: var(--neutral-700);
+    font-weight: var(--font-medium);
+  }
+  
+  &__company {
+    font-size: var(--text-sm);
+    color: var(--primary-600);
+    font-weight: var(--font-medium);
+  }
+  
+  &__context {
+    border-top: 1px solid var(--neutral-200);
+    padding-top: var(--space-2);
+  }
+  
+  &__context-text {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    font-style: italic;
+  }
+  
+  // Quote decoration
+  &__decoration {
+    position: absolute;
+    top: -var(--space-2);
+    right: var(--space-4);
+    pointer-events: none;
+  }
+  
+  &__quotemark {
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    color: var(--primary-200);
+    line-height: 1;
+    font-weight: var(--font-bold);
+  }
+  
+  // Style modifiers
+  &--pullout {
+    padding: var(--space-6);
+    background-color: var(--primary-50);
+    border-left: var(--border-width-thick) solid var(--primary-400);
+    border-radius: var(--radius-md);
+    margin: var(--space-8) var(--space-4);
+    
+    .case-study-quote__paragraph {
+      font-size: var(--text-xl);
+      color: var(--primary-800);
+    }
+    
+    .case-study-quote__decoration {
+      display: block;
+    }
+  }
+  
+  &--inline {
+    padding: var(--space-4);
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-md);
+    margin: var(--space-6) 0;
+    
+    .case-study-quote__paragraph {
+      font-size: var(--text-base);
+    }
+    
+    .case-study-quote__decoration {
+      display: none;
+    }
+  }
+  
+  &--featured {
+    padding: var(--space-8);
+    background: linear-gradient(135deg, var(--primary-50), var(--accent-50));
+    border: 2px solid var(--primary-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin: var(--space-10) 0;
+    
+    .case-study-quote__paragraph {
+      font-size: var(--text-2xl);
+      color: var(--primary-900);
+      font-weight: var(--font-medium);
+    }
+    
+    .case-study-quote__name {
+      color: var(--primary-700);
+    }
+    
+    .case-study-quote__decoration {
+      display: block;
+      
+      .case-study-quote__quotemark {
+        color: var(--primary-300);
+      }
+    }
+  }
+  
+  &--testimonial {
+    padding: var(--space-6);
+    background-color: var(--white);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    
+    .case-study-quote__paragraph {
+      font-size: var(--text-lg);
+      color: var(--neutral-800);
+    }
+    
+    .case-study-quote__decoration {
+      display: none;
+    }
+  }
+  
+  // Layout modifiers
+  &--centered {
+    text-align: center;
+    
+    .case-study-quote__container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .case-study-quote__attribution {
+      align-items: center;
+    }
+  }
+  
+  &--split {
+    .case-study-quote__container {
+      gap: var(--space-6);
+    }
+    
+    .case-study-quote__portrait {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  
+  // Portrait modifier
+  &--with-portrait {
+    .case-study-quote__container {
+      align-items: center;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .case-study-quote {
+    margin: var(--space-6) 0;
+    
+    &__container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-3);
+    }
+    
+    &__portrait {
+      order: -1;
+      width: 60px;
+      height: 60px;
+    }
+    
+    &__paragraph {
+      font-size: var(--text-base) !important;
+    }
+    
+    &__attribution {
+      align-items: center;
+    }
+    
+    &__decoration {
+      display: none !important;
+    }
+    
+    &--pullout {
+      margin: var(--space-6) 0;
+      padding: var(--space-4);
+      
+      .case-study-quote__paragraph {
+        font-size: var(--text-lg) !important;
+      }
+    }
+    
+    &--featured {
+      margin: var(--space-6) 0;
+      padding: var(--space-6);
+      
+      .case-study-quote__paragraph {
+        font-size: var(--text-xl) !important;
+      }
+    }
+    
+    &--split {
+      .case-study-quote__container {
+        gap: var(--space-4);
+      }
+      
+      .case-study-quote__portrait {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Simple Search Component
+   ========================================================================== */
+
+.simple-search {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-1);
+  transition: var(--transition-colors);
+
+  &:focus-within {
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 3px var(--primary-100);
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) var(--space-3);
+    background: var(--primary-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    transition: var(--transition-colors);
+
+    &:hover {
+      background: var(--primary-600);
+    }
+
+    &:focus {
+      outline: none;
+      background: var(--primary-600);
+      box-shadow: 0 0 0 2px var(--primary-200);
+    }
+
+    &:disabled {
+      background: var(--neutral-300);
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  // Compact variant
+  &--compact {
+    padding: var(--space-0-5);
+
+    .simple-search__input {
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--text-xs);
+    }
+
+    .simple-search__button {
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--text-xs);
+    }
+  }
+
+  // Full width variant
+  &--full {
+    width: 100%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .simple-search {
+    flex-direction: column;
+    gap: var(--space-1);
+
+    &__button {
+      justify-self: stretch;
+    }
+  }
+}

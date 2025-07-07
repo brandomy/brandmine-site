@@ -1,0 +1,17 @@
+// brand page: seamless connection with breadcrumbs
+.brand-profile {
+  // Breadcrumbs use generic UI component - no page-specific styles needed
+  
+  // Remove top border/margin from identity section to connect seamlessly with breadcrumbs
+  .brand-section--identity {
+    margin-top: 0;
+    border-top: none;
+
+    .panel {
+      border: none;
+      border-top: none;
+      margin-top: 0;
+      padding-top: var(--space-8); // Maintain consistent section padding but remove border
+    }
+  }
+}

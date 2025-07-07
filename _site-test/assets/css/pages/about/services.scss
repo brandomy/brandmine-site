@@ -1,0 +1,153 @@
+/* ==========================================================================
+   About Page - Services Section
+   ==========================================================================
+   Page-scoped styles following mobile-first approach
+*/
+
+.about-page {
+  .about-services {
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr;  /* Mobile-first: single column */
+      gap: var(--space-4);         /* Mobile-first: smaller gap */
+      margin-top: var(--space-8);
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+
+      /* Small devices and up */
+      @media (width >= 480px) {
+        gap: var(--space-6);
+      }
+
+      /* Tablet and up */
+      @media (width >= 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-8);
+        margin-top: var(--space-10);
+      }
+    }
+
+    &__panel {
+      background-color: white;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+
+      /* Color variations for different panels */
+      &--international .about-services__panel-header {
+        border-top: 4px solid var(--primary-400);
+      }
+
+      &--brands .about-services__panel-header {
+        border-top: 4px solid var(--secondary-400);
+      }
+    }
+
+    &__panel-header {
+      padding: var(--space-3) var(--space-4);  /* Mobile-first: smaller padding */
+      border-bottom: 1px solid var(--neutral-200);
+
+      /* Small devices and up */
+      @media (width >= 480px) {
+        padding: var(--space-4);
+      }
+
+      /* Tablet and up */
+      @media (width >= 768px) {
+        padding: var(--space-4) var(--space-6);
+      }
+    }
+
+    &__panel-title {
+      margin: 0;
+      color: var(--neutral-800);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+
+      .about-services__panel--international & {
+        color: var(--primary-600);
+      }
+
+      .about-services__panel--brands & {
+        color: var(--secondary-600);
+      }
+    }
+
+    &__panel-content {
+      padding: var(--space-3) var(--space-4);  /* Mobile-first: smaller padding */
+
+      /* Small devices and up */
+      @media (width >= 480px) {
+        padding: var(--space-4);
+      }
+
+      /* Tablet and up */
+      @media (width >= 768px) {
+        padding: var(--space-6);
+      }
+    }
+
+    &__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    &__item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: var(--space-4);  /* Mobile-first: smaller margin */
+
+      /* Tablet and up */
+      @media (width >= 768px) {
+        margin-bottom: var(--space-6);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__bullet {
+      flex-shrink: 0;
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-right: var(--space-3);
+
+      .about-services__panel--international & {
+        color: var(--primary-400);
+      }
+
+      .about-services__panel--brands & {
+        color: var(--secondary-400);
+      }
+    }
+
+    &__item-content {
+      flex: 1;
+
+      p {
+        margin: 0;
+        color: var(--neutral-700);
+      }
+    }
+
+    &__item-title {
+      display: block;
+      margin-bottom: var(--space-1);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+
+      .about-services__panel--international & {
+        color: var(--primary-600);
+      }
+
+      .about-services__panel--brands & {
+        color: var(--secondary-600);
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.discovery-page {
+/* ==========================================================================
+   Discovery Page - Content Section
+   ==========================================================================
+   Styles for the discovery page content section displaying page markdown content
+*/
+
+.discovery-content {
+  margin-bottom: var(--space-6);
+  text-align: center;
+  
+  p {
+    color: var(--gray-700);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--text-lg);
+    max-width: 800px;
+    margin: 0 auto;
+    
+    &:not(:last-child) {
+      margin-bottom: var(--space-4);
+    }
+  }
+  
+  // Match other pages content styling for consistency
+  h2, h3, h4 {
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+  }
+  
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+  }
+  
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+  }
+  
+  ul, ol {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    li {
+      margin-bottom: var(--space-2);
+      color: var(--gray-700);
+    }
+  }
+}
+}
