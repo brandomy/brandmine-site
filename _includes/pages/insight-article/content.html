@@ -1,44 +1,9 @@
 {% comment %}
-================================================================================
-PAGE SECTION: Content
-PATH: _includes/pages/insight-article/content.html
-PURPOSE: Optimal reading experience for insight article content
-CREATED: 2025-07-04 - Enhanced typography and readability
-================================================================================
-
-Features:
-- Typography optimized for 6-8 minute reading experience
-- Max-width constraint for optimal reading line length
-- Enhanced heading hierarchy with proper spacing
-- Mobile-first responsive padding
-- Premium content notice support
-
-Dependencies:
-- CSS: Requires insight-content styles in content.scss
-- Variables: Uses --space-* and --text-* design tokens
-- Content: Uses page content passed from layout
-
-Variables Used:
-- content: Page content from Jekyll markdown processing
-- page.premium: Optional boolean for premium content notice
-
-Mobile-first Responsive:
-- Mobile: 0-767px - compact padding and typography
-- Tablet: 768px-1023px - enhanced spacing
-- Desktop: 1024px+ - optimal reading width
-================================================================================
+PAGE SECTION: Insight Article Content
+PURPOSE: Main article content with optimized typography using tokens
+UPDATED: Simplified structure with insight-article-content class
 {% endcomment %}
 
-<article class="insight-content">
-  <div class="insight-content__container">
-    <div class="insight-content__article">
-      {{ include.content | default: content }}
-    </div>
-    
-    {% if page.premium %}
-      <div class="insight-content__premium-notice">
-        {% include components/ui/premium-content-notice.html %}
-      </div>
-    {% endif %}
-  </div>
-</article>
+<div class="insight-article-content">
+  {{ include.content | default: content }}
+</div>

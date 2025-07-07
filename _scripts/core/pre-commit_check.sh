@@ -375,3 +375,15 @@ git ls-files | grep -i claude    # Should show only CLAUDE.md
 
 # Validate color standards
 _scripts/validation/validate_colors.sh
+
+# Add to _scripts/core/pre-commit_check.sh
+echo "Checking for section margin violations..."
+if grep -r "section.*margin-bottom.*space[4-9]" assets/css/ | grep -v "0" | head -5; then
+  echo "⚠️  New section margins detected - consider seamless flow policy"
+fi
+
+# Add to _scripts/core/pre-commit_check.sh
+echo "Checking for section margin violations..."
+if grep -r "section.*margin-bottom.*space[4-9]" assets/css/ | grep -v "0" | head -5; then
+  echo "⚠️  New section margins detected - consider seamless flow policy"
+fi

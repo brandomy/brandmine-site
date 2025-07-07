@@ -103,7 +103,7 @@ _pages/[lang]/[page-slug].md             # Static pages (about, contact, etc.)
 _includes/components/cards/brand-card.html
 assets/css/components/cards/brand-card.scss
 
-_includes/components/ui/insight-category-new.html  
+_includes/components/ui/insight-category-new.html
 assets/css/components/ui/insight-category.scss
 
 _includes/pages/brands/hero.html
@@ -134,7 +134,7 @@ assets/css/pages/brands/hero.scss
   }
 }
 
-/* Desktop and up */  
+/* Desktop and up */
 @media (min-width: 1024px) {
   .component {
     width: var(--card-width-featured);
@@ -148,6 +148,86 @@ assets/css/pages/brands/hero.scss
 - **Desktop**: `@media (min-width: 1024px)`
 
 **Never use max-width** - always progressive enhancement with min-width.
+
+## Content Width Standards
+
+### Editorial Content Width Strategy
+
+**700px max-width** for optimal reading experience based on typography research:
+- **Line length**: 50-75 characters per line (optimal reading zone)
+- **Eye movement**: Reduced fatigue, easier line-to-line tracking
+- **Industry standard**: Matches Financial Times, Medium, McKinsey editorial width
+
+### Content Type Guidelines
+
+#### ✅ Use 700px (`--form-max-width`)
+**Long-form reading content:**
+```scss
+.insight-article-content,
+.journal-article-content,
+.brand-story-content,
+.founder-story-content {
+  max-width: var(--form-max-width);  /* 700px */
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+```
+
+#### 🔄 Use Mixed Layout (1024px container, 700px narrative)
+**Profile pages with cards + narrative:**
+```scss
+.brand-profile-container,
+.founder-profile-container {
+  max-width: var(--content-width-lg);  /* 1024px */
+
+  .narrative-section {
+    max-width: var(--form-max-width);  /* 700px within */
+    margin: 0 auto;
+  }
+}
+```
+
+#### ❌ Use Full Width (1200px)
+**Grid layouts and navigation:**
+```scss
+.discovery-container,
+.brands-grid-container,
+.home-container {
+  max-width: var(--content-width-xl);  /* 1200px */
+}
+```
+
+### Implementation Pattern
+
+**Simple container approach:**
+```scss
+/* Editorial content pattern */
+.article-content {
+  max-width: var(--form-max-width);  /* 700px */
+  width: 100%;                       /* Natural scaling */
+  margin: 0 auto;                    /* Center container */
+  text-align: left;                  /* Left-align content */
+  padding: 0 var(--space-4);         /* Mobile padding */
+
+  @media (min-width: 768px) {
+    padding: 0 var(--space-6);       /* Enhanced tablet+ padding */
+  }
+}
+```
+
+### Typography Integration
+
+**Use with existing text tokens:**
+```scss
+h2 { font-size: var(--text-3xl); }    /* 1.875rem = 30px */
+p  { font-size: var(--text-base); }   /* 1rem = 16px */
+```
+
+**Benefits:**
+- **Consistent reading experience** across insights, journal, brand stories
+- **Accessibility** with REM-based scaling
+- **Performance** with simple responsive logic
 
 ### Asset Organization
 ```
@@ -193,7 +273,7 @@ assets/css/pages/[page]/                 # Page-specific styles
 .card {
   width: var(--card-width-atomic);    /* 345px mobile */
   max-width: 100%;
-  
+
   @media (min-width: 768px) {
     width: var(--card-width-standard); /* 360px desktop */
   }
@@ -334,7 +414,7 @@ time JEKYLL_ENV=production bundle exec jekyll build
 - Borders and border-radius
 - Internal layout structure
 
-#### Layouts Handle (Extrinsic Properties)  
+#### Layouts Handle (Extrinsic Properties)
 - Positioning between cards (margin, gap)
 - Grid and carousel structure
 - Page flow and sections
@@ -443,6 +523,94 @@ assets/css/
   border-radius: var(--radius-md);
 }
 ```
+
+## Content Width Standards
+
+### Editorial Content Width Strategy
+
+**700px max-width** for optimal reading experience based on typography research:
+- **Line length**: 50-75 characters per line (optimal reading zone)
+- **Eye movement**: Reduced fatigue, easier line-to-line tracking
+- **Industry standard**: Matches Financial Times, Medium, McKinsey editorial width
+
+### Content Type Guidelines
+
+#### ✅ Use 700px (`--form-max-width`)
+**Long-form reading content:**
+```scss
+.insight-article-content,
+.journal-article-content,
+.brand-story-content,
+.founder-story-content {
+  max-width: var(--form-max-width);  /* 700px */
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 var(--space-4);
+
+  @media (min-width: 768px) {
+    padding: 0 var(--space-6);
+  }
+}
+```
+
+#### 🔄 Use Mixed Layout (1024px container, 700px narrative)
+**Profile pages with cards + narrative:**
+```scss
+.brand-profile-container,
+.founder-profile-container {
+  max-width: var(--content-width-lg);  /* 1024px */
+
+  .narrative-section {
+    max-width: var(--form-max-width);  /* 700px within */
+    margin: 0 auto;
+  }
+}
+```
+
+#### ❌ Use Full Width (1200px)
+**Grid layouts and navigation:**
+```scss
+.discovery-container,
+.brands-grid-container,
+.home-container {
+  max-width: var(--content-width-xl);  /* 1200px */
+}
+```
+
+### Implementation Pattern
+
+**Simple container approach:**
+```scss
+/* Editorial content pattern */
+.article-content {
+  max-width: var(--form-max-width);  /* 700px */
+  width: 100%;                       /* Natural scaling */
+  margin: 0 auto;                    /* Center container */
+  text-align: left;                  /* Left-align content */
+  padding: 0 var(--space-4);         /* Mobile padding */
+
+  @media (min-width: 768px) {
+    padding: 0 var(--space-6);       /* Enhanced tablet+ padding */
+  }
+}
+```
+
+### Typography Integration
+
+**Use with existing text tokens:**
+```scss
+h2 { font-size: var(--text-3xl); }    /* 1.875rem = 30px */
+p  { font-size: var(--text-base); }   /* 1rem = 16px */
+```
+
+**Benefits:**
+- **Consistent reading experience** across insights, journal, brand stories
+- **Accessibility** with REM-based scaling
+- **Performance** with simple responsive logic
+
+
+
 
 ## Data Management
 

@@ -2,9 +2,12 @@
    Insights Page - Tags Component
    ==========================================================================
    Styles for the tag elements in the insights page
+   SCOPED: Only applies to insights contexts, not brand cards
 */
 
-.tag {
+.insights-page .tag,
+.insight-item .tag,
+.insights-category .tag {
   display: inline-block;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
@@ -12,22 +15,22 @@
   text-decoration: none;
   margin-bottom: var(--space-2);
 
-  &--sector {
+  &.tag--sector {
     background-color: var(--olive-100);
     color: var(--olive-800);
   }
 
-  &--market {
+  &.tag--market {
     background-color: var(--sky-100);
     color: var(--sky-800);
   }
 
-  &--attribute {
+  &.tag--attribute {
     background-color: var(--secondary-100);
     color: var(--secondary-800);
   }
 
-  &--signal {
+  &.tag--signal {
     background-color: var(--accent-100);
     color: var(--accent-800);
   }

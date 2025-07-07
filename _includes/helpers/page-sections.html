@@ -133,7 +133,7 @@
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="founder=page_founder content=page_content" data_attributes=data_attributes %}
           {% elsif page_type == "insight-article" %}
             {% comment %} Insight articles render content directly with special wrapper {% endcomment %}
-            {% capture insight_content %}<div class="insight-content {% if page.premium %}premium-content{% endif %}">{{ page_content }}</div>{% endcapture %}
+            {% capture insight_content %}<div class="insight-article-content {% if page.premium %}premium-content{% endif %}">{{ page_content }}</div>{% endcapture %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes direct_content=insight_content data_attributes=data_attributes %}
           {% elsif page_type == "journal" %}
             {% comment %} Journal pages use content.html include {% endcomment %}

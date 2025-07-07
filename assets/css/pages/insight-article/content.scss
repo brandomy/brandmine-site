@@ -1,210 +1,138 @@
-/* ===================================================================
-   INSIGHT CONTENT: Reading Experience Optimization
-   Mobile-first typography and layout for 6-8 minute articles
-   =================================================================== */
+/* 
+CLEAN INSIGHTS ARTICLE TYPOGRAPHY
+Using existing Brandmine design tokens - simple and reliable
+*/
 
-.insight-content {
-  &__container {
-    max-width: 800px; // Optimal reading width
-    margin: 0 auto;
-    padding: var(--space-6) var(--space-4);
-    
-    @media (min-width: 768px) {
-      padding: var(--space-8) var(--space-6);
-    }
-    
-    @media (min-width: 1024px) {
-      padding: var(--space-10) var(--space-8);
-    }
-  }
+/* CONTAINER: Simple max-width with natural scaling */
+.insight-article-content {
+  max-width: var(--form-max-width);     /* 700px from your tokens */
+  width: 100%;                          /* Scale down naturally */
+  margin: 0 auto;                       /* Center the container */
+  text-align: left;                     /* Left-align content */
+  padding: 0 var(--space-4);            /* 16px mobile padding */
   
-  &__article {
-    // Typography hierarchy
-    h1 {
-      font-size: var(--text-2xl);
-      font-weight: var(--font-bold);
-      color: var(--gray-900);
-      line-height: 1.2;
-      margin: var(--space-8) 0 var(--space-4) 0;
-      
-      @media (min-width: 768px) {
-        font-size: var(--text-3xl);
-      }
-    }
-    
-    h2 {
-      font-size: var(--text-xl);
-      font-weight: var(--font-bold);
-      color: var(--gray-900);
-      margin: var(--space-8) 0 var(--space-4) 0;
-      line-height: 1.3;
-      
-      @media (min-width: 768px) {
-        font-size: var(--text-2xl);
-      }
-    }
-
-    h3 {
-      font-size: var(--text-lg);
-      font-weight: var(--font-semibold);
-      color: var(--gray-800);
-      margin: var(--space-6) 0 var(--space-3) 0;
-      line-height: 1.4;
-      
-      @media (min-width: 768px) {
-        font-size: var(--text-xl);
-      }
-    }
-
-    h4, h5, h6 {
-      font-size: var(--text-base);
-      font-weight: var(--font-semibold);
-      color: var(--gray-800);
-      margin: var(--space-4) 0 var(--space-2) 0;
-      line-height: 1.5;
-      
-      @media (min-width: 768px) {
-        font-size: var(--text-lg);
-      }
-    }
-
-    // Body text optimization
-    p {
-      font-size: var(--text-base);
-      line-height: 1.7;
-      color: var(--gray-700);
-      margin-bottom: var(--space-4);
-
-      @media (min-width: 768px) {
-        font-size: var(--text-lg);
-        margin-bottom: var(--space-5);
-      }
-    }
-
-    // Lists
-    ul, ol {
-      margin: var(--space-4) 0;
-      padding-left: var(--space-6);
-      
-      li {
-        font-size: var(--text-base);
-        line-height: 1.7;
-        color: var(--gray-700);
-        margin-bottom: var(--space-2);
-        
-        @media (min-width: 768px) {
-          font-size: var(--text-lg);
-        }
-      }
-    }
-
-    // Blockquotes
-    blockquote {
-      border-left: 4px solid var(--primary-400);
-      padding-left: var(--space-4);
-      margin: var(--space-6) 0;
-      font-style: italic;
-      color: var(--gray-600);
-      
-      p {
-        margin-bottom: var(--space-2);
-        font-size: var(--text-lg);
-        
-        @media (min-width: 768px) {
-          font-size: var(--text-xl);
-        }
-      }
-    }
-
-    // Code blocks
-    pre {
-      background: var(--gray-100);
-      padding: var(--space-4);
-      border-radius: var(--radius-md);
-      overflow-x: auto;
-      margin: var(--space-4) 0;
-      
-      code {
-        font-size: var(--text-sm);
-        color: var(--gray-800);
-      }
-    }
-
-    // Inline code
-    code {
-      background: var(--gray-100);
-      padding: var(--space-1) var(--space-2);
-      border-radius: var(--radius-sm);
-      font-size: 0.9em;
-      color: var(--gray-800);
-    }
-
-    // Images
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: var(--radius-md);
-      margin: var(--space-6) 0;
-      box-shadow: var(--shadow-sm);
-    }
-
-    // Tables
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: var(--space-6) 0;
-      font-size: var(--text-sm);
-      
-      @media (min-width: 768px) {
-        font-size: var(--text-base);
-      }
-      
-      th, td {
-        padding: var(--space-3);
-        border: 1px solid var(--gray-200);
-        text-align: left;
-      }
-      
-      th {
-        background: var(--gray-50);
-        font-weight: var(--font-semibold);
-        color: var(--gray-900);
-      }
-      
-      td {
-        color: var(--gray-700);
-      }
-    }
-
-    // Links
-    a {
-      color: var(--primary-600);
-      text-decoration: underline;
-      transition: color 0.2s ease;
-      
-      &:hover {
-        color: var(--primary-700);
-      }
-    }
-
-    // Horizontal rules
-    hr {
-      border: none;
-      height: 1px;
-      background: var(--gray-200);
-      margin: var(--space-8) 0;
-    }
+  /* Enhanced padding on larger screens */
+  @media (min-width: 768px) {
+    padding: 0 var(--space-6);          /* 24px tablet+ padding */
   }
+}
+
+/* TYPOGRAPHY: Clean hierarchy using your existing tokens */
+
+/* Main heading */
+.insight-article-content h1 {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-weight: var(--font-bold);        /* 700 */
+  font-size: var(--text-4xl);           /* 2.25rem = 36px at 16px base - Scales with user preferences */
+  line-height: var(--leading-tight);    /* 1.25 */
+  color: var(--neutral-900);            /* Dark text */
+  margin: var(--space-8) 0 var(--space-4) 0;
   
-  &__premium-notice {
-    margin-top: var(--space-8);
-    padding: var(--space-4);
-    background: var(--amber-50);
-    border: 1px solid var(--amber-200);
-    border-radius: var(--radius-md);
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+/* Section headings */
+.insight-article-content h2 {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-weight: var(--font-bold);        /* 700 */
+  font-size: var(--text-3xl);           /* 1.875rem = 30px at 16px base - YOUR EXACT REQUIREMENT */
+  line-height: var(--leading-tight);    /* 1.25 */
+  color: var(--neutral-900);            /* Dark text */
+  margin: var(--space-8) 0 var(--space-4) 0;
+}
+
+/* Sub-headings */
+.insight-article-content h3 {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-weight: var(--font-semibold);    /* 600 */
+  font-size: var(--text-xl);            /* 1.25rem = 20px at 16px base - Scales with user preferences */
+  line-height: var(--leading-snug);     /* 1.375 */
+  color: var(--neutral-900);            /* Dark text */
+  margin: var(--space-6) 0 var(--space-3) 0;
+}
+
+/* Body text */
+.insight-article-content p {
+  font-family: var(--font-body);        /* PT Sans */
+  font-weight: var(--font-normal);      /* 400 */
+  font-size: var(--text-base);          /* 1rem = 16px at 16px base - YOUR EXACT REQUIREMENT */
+  line-height: var(--leading-relaxed);  /* 1.625 */
+  color: var(--neutral-700);            /* Medium gray */
+  margin-bottom: var(--space-5);        /* 20px */
+}
+
+/* Lists */
+.insight-article-content ul,
+.insight-article-content ol {
+  font-family: var(--font-body);        /* PT Sans */
+  font-weight: var(--font-normal);      /* 400 */
+  font-size: var(--text-base);          /* 1rem = 16px at 16px base - Same as paragraphs */
+  line-height: var(--leading-relaxed);  /* 1.625 */
+  color: var(--neutral-700);            /* Medium gray */
+  margin-bottom: var(--space-5);        /* 20px */
+  padding-left: var(--space-5);         /* 20px */
+  
+  li {
+    margin-bottom: var(--space-2);      /* 8px */
     
-    @media (min-width: 768px) {
-      padding: var(--space-6);
+    &:last-child {
+      margin-bottom: 0;
     }
   }
+}
+
+/* Blockquotes */
+.insight-article-content blockquote {
+  font-family: var(--font-heading);      /* PT Serif */
+  font-style: italic;
+  font-size: var(--text-lg);            /* 1.125rem = 18px at 16px base - Slightly larger for emphasis */
+  line-height: var(--leading-relaxed);  /* 1.625 */
+  color: var(--neutral-600);            /* Lighter gray */
+  border-left: var(--border-width-heavy) solid var(--primary-300);
+  padding-left: var(--space-4);         /* 16px */
+  margin: var(--space-6) 0;             /* 24px top/bottom */
+  
+  p {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    color: inherit;
+    line-height: inherit;
+    margin-bottom: var(--space-3);      /* 12px */
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Links */
+.insight-article-content a {
+  color: var(--primary-600);             /* Teal */
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width-thin);
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--primary-700);          /* Darker teal */
+    text-decoration-thickness: var(--border-width-medium);
+  }
+}
+
+/* Text formatting */
+.insight-article-content strong {
+  font-weight: var(--font-semibold);    /* 600 */
+  color: var(--neutral-900);            /* Dark text */
+}
+
+.insight-article-content em {
+  font-style: italic;
+}
+
+/* Section spacing - Seamless flow by default */
+.insight-article-section {
+  margin-bottom: 0;        /* Seamless section flow */
 }

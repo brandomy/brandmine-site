@@ -296,7 +296,87 @@ Hero Style: Hero Card (implemented){% endraw %}
 
 ---
 
+# 📝 Content Width Standards (Editorial Typography System)
 
+## Editorial Content Philosophy
+**700px max-width strategy** based on typography research for optimal reading experience:
+- **Line length**: 50-75 characters per line (optimal comprehension zone)
+- **Eye movement**: Reduced fatigue, easier line-to-line tracking
+- **Industry alignment**: Matches Financial Times, Medium, McKinsey editorial standards
+
+## Content Type Implementation
+
+### ✅ Use 700px (`--form-max-width`) - Long-form Reading
+**Editorial content requiring optimal reading experience:**
+```scss
+.insight-article-content,
+.journal-article-content,
+.brand-story-content,
+.founder-story-content {
+  max-width: var(--form-max-width);  /* 700px */
+  width: 100%;                       /* Natural scaling */
+  margin: 0 auto;                    /* Center container */
+  text-align: left;                  /* Left-align content */
+  padding: 0 var(--space-4);         /* Mobile padding */
+
+  @media (min-width: 768px) {
+    padding: 0 var(--space-6);       /* Enhanced padding */
+  }
+}
+```
+
+### 🔄 Use Mixed Layout - Profile Pages
+**Wide container (1024px) with constrained narrative sections (700px):**
+```scss
+.brand-profile-container,
+.founder-profile-container {
+  max-width: var(--content-width-lg);  /* 1024px for cards + data */
+
+  .narrative-section,
+  .story-section {
+    max-width: var(--form-max-width);  /* 700px for reading */
+    margin: 0 auto;
+  }
+}
+```
+
+### ❌ Use Full Width - Grid Layouts
+**Discovery, navigation, and grid displays:**
+```scss
+.discovery-container,
+.brands-grid-container,
+.insights-hub-container {
+  max-width: var(--content-width-xl);  /* 1200px for grids */
+}
+```
+
+## Typography Integration with Content Width
+
+### REM-Based Typography System
+**Using existing design tokens for accessibility:**
+```scss
+/* Editorial typography with existing tokens */
+h1 { font-size: var(--text-4xl); }    /* 2.25rem = 36px */
+h2 { font-size: var(--text-3xl); }    /* 1.875rem = 30px */
+h3 { font-size: var(--text-xl); }     /* 1.25rem = 20px */
+p  { font-size: var(--text-base); }   /* 1rem = 16px */
+```
+
+### Container Width Tokens
+**Using existing layout tokens:**
+```scss
+--form-max-width: 700px;           /* Editorial reading width */
+--content-width-lg: 1024px;        /* Mixed content pages */
+--content-width-xl: 1200px;        /* Grid/navigation pages */
+```
+
+## Implementation Benefits
+- **Consistent reading experience** across insights, journal, brand narratives
+- **Accessibility compliance** with REM-based scaling respecting user preferences
+- **Performance optimization** with simple responsive logic (no complex breakpoints)
+- **Maintainable architecture** using established design token system
+
+---
 
 # 📖 Content Collections
 
