@@ -769,6 +769,17 @@ featured: false          # Homepage feature flag
    alt="TeaTime storefront" %}  # Required: accessibility text
 ```
 
+## Nuclear Fix Registry
+
+**Emergency component fixes using !important overrides:**
+
+- **brand-card--insight**: Complete rebuild due to structural conflicts
+  - **Report**: `_archives/reports/2025-07-08_nuclear-fix-brand-card-insight.md`
+  - **Status**: ✅ Working, documented, stable
+  - **Maintenance**: Avoid modifications, test thoroughly if changes needed
+
+**Nuclear Fix Protocol**: When 3+ incremental fixes fail → nuclear rebuild → document in archives → ship working solution.
+
 ---
 
 **Next**: [Troubleshooting Guide →](troubleshooting.md)

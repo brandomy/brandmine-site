@@ -150,6 +150,11 @@ _scripts/utilities/generate-navigation-cache.py
 - **Co-located with templates** - Natural discovery during content creation
 - **Copy-paste examples** - Immediately actionable workflows
 
+### Archives System (`_archives/`)
+- **Reports**: `_archives/reports/` - Nuclear fixes, major changes, system decisions
+- **Compliance**: Maintains 4-document limit in `_docs/` core navigation
+- **Access**: Detailed technical reports and emergency fix documentation
+
 ### Master AI Reference
 - **[CLAUDE.md](../CLAUDE.md)** - Complete project context for AI collaboration
 
