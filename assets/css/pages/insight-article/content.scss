@@ -9,11 +9,11 @@ Using existing Brandmine design tokens - simple and reliable
   width: 100%;                          /* Scale down naturally */
   margin: 0 auto;                       /* Center the container */
   text-align: left;                     /* Left-align content */
-  padding: 0 var(--space-4);            /* 16px mobile padding */
+  padding: 0;                           /* No padding - layout wrapper handles it */
   
-  /* Enhanced padding on larger screens */
+  /* Enhanced padding on larger screens only */
   @media (min-width: 768px) {
-    padding: 0 var(--space-6);          /* 24px tablet+ padding */
+    padding: 0 var(--space-2);          /* 8px additional padding on tablet+ */
   }
 }
 
