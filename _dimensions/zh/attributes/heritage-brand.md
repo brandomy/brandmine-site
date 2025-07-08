@@ -19,6 +19,10 @@ images:
     name: "tradition"
     alt: "传统工艺和历史品牌代表文化遗产和传承"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 传承品牌以其非凡的长寿、根深蒂固的文化意义和跨越几代人保持相关性的能力而著称。这些品牌不仅仅是存活了50年或更长时间——它们已成为文化叙事的组成部分，体现了超越纯商业成功的传统、工艺和价值观。

@@ -17,6 +17,10 @@ images:
     name: "springs"
     alt: "天然矿物水泉代表纯净和治疗属性"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 俄罗斯广阔的领土包含了许多具有非凡矿物组成的原始泉水——每一种都有已记录的治疗特性，使它们超越简单的水合产品。从高加索地区的历史温泉到偏远的西伯利亚水源，这些水代表了液态地质学——经过数百年通过古老岩层形成的天然产品。

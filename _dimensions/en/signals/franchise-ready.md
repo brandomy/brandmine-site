@@ -18,6 +18,10 @@ images:
     name: "expansion"
     alt: "Business expansion and franchise development meeting"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Franchise Ready brands represent service-based businesses that have developed comprehensive systems and support infrastructure necessary for successful franchising. These brands have transformed their operational excellence into a replicable model that can be effectively scaled across different locations and markets.

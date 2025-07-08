@@ -18,6 +18,10 @@ images:
     name: "temple"
     alt: "中国古庙建筑代表深厚文化传统和市场传承"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 标记为"中国"的内容探索中国消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与中国市场和具有国际潜力的中国品牌相关的故事、分析和品牌简介。

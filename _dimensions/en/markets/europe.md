@@ -3,6 +3,10 @@ name: "Europe"
 slug: "europe"
 type: "market"
 description: "A sophisticated continent combining established Western markets with dynamic Eastern European growth opportunities"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 # Europe: Where Heritage Meets Innovation

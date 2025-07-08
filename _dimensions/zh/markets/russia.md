@@ -19,6 +19,10 @@ images:
     name: "kremlin"
     alt: "莫斯科克里姆林宫代表俄罗斯市场传统和商业环境"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 标记为"俄罗斯"的内容探索俄罗斯消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与俄罗斯市场和具有国际潜力的俄罗斯品牌相关的故事、分析和品牌简介。

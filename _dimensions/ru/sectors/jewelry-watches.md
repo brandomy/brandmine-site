@@ -17,6 +17,10 @@ images:
     name: "luxury"
     alt: "Luxury jewelry and watches representing craftsmanship and premium design"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Российские ювелирные изделия и часовое дело представляют собой уникальное слияние исторического мастерства и современных дизайнерских чувств. Этот сектор сочетает глубокую экспертизу в обработке бриллиантов и драгоценных камней, богатые часовые традиции и характерный эстетический подход, отражающий сложное культурное наследие России.

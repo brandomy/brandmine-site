@@ -17,6 +17,10 @@ images:
     name: "charcuterie"
     alt: "手工腐肉和腐制肉品代表传统制作工艺"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 俄罗斯腌制肉品传统反映了受多样文化影响和地区变化塑造的复杂烹饪景观。这些不仅仅是加工肉类，而是捕捉不同俄罗斯地区细腻风味的复杂烹饪表达，将历史保存技术与当代美食专业知识相结合。

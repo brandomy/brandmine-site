@@ -18,6 +18,10 @@ images:
     name: "sustainability"
     alt: "可持续发展实践代表环保创新和负责任经营"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 可持续先锋品牌代表了一种新的商业领导范式，在这种范式中，环境管理和社会责任不是外围关注点，而是基本商业战略。这些品牌已将可持续发展从一个流行语转变为一种全面的方法，触及其运营的各个方面。

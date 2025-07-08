@@ -18,6 +18,10 @@ images:
     name: "temple"
     alt: "Traditional Chinese temple architecture representing cultural business heritage"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Content tagged with "China" explores the dynamic landscape of Chinese consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Chinese market and Chinese brands with international potential.

@@ -18,6 +18,10 @@ images:
     name: "skyline"
     alt: "UAE modern skyline representing luxury market innovation and business sophistication"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом "ОАЭ" исследует динамичный ландшафт эмиратских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Это направление освещает истории, анализ и профили брендов, связанных непосредственно с рынком ОАЭ и эмиратскими брендами, имеющими международный потенциал.

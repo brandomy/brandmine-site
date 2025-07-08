@@ -19,6 +19,10 @@ images:
     name: "skyline"
     alt: "马来西亚现代天际线代表经济发展和商业机会"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 ![马来西亚市场](/assets/images/dimensions/markets/malaysia.jpg)

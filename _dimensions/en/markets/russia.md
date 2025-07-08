@@ -19,6 +19,10 @@ images:
     name: "kremlin"
     alt: "Moscow Kremlin representing Russian market heritage and business environment"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 ![Life in Russia](/assets/images/russia/andrew-konstantinov-y2kSjuA4Y4E-unsplash-1200.jpg)

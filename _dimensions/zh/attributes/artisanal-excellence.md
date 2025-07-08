@@ -18,6 +18,10 @@ images:
     name: "craftsmanship"
     alt: "手工艺品制作过程代表传统工艺和卓越品质"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 匠心卓越代表着对工艺的深刻承诺，远远超越大规模生产。这些品牌优先考虑精细的手工、传统技术和对质量的不妥协态度，将生产从简单的制造提升到艺术形式。

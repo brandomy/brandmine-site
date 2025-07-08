@@ -18,6 +18,10 @@ images:
     name: "sustainability"
     alt: "Sustainability innovation representing environmental responsibility and future-focused practices"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Бренды-пионеры устойчивого развития представляют новую парадигму бизнес-лидерства, где экологическое управление и социальная ответственность являются не периферийными заботами, а фундаментальными бизнес-стратегиями. Эти бренды превратили устойчивость из модного слова в комплексный подход, который затрагивает каждый аспект их деятельности.

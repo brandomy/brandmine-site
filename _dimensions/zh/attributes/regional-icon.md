@@ -18,6 +18,10 @@ images:
     name: "heritage"
     alt: "地区标志性建筑代表当地文化认同和地理特色"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 区域标志是与特定地理区域有着深厚、真实联系的品牌。这些品牌不仅仅提及它们的起源——它们通过产品、生产方法和文化意义体现了家乡地区的独特特性、传统和自然资源。

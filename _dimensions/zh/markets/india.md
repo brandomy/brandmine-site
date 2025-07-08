@@ -18,6 +18,10 @@ images:
     name: "palace"
     alt: "印度宫殿建筑代表丰富文化遗产和商业创新"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 标记为"印度"的内容探索印度消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与印度市场和具有国际潜力的印度品牌相关的故事、分析和品牌简介。

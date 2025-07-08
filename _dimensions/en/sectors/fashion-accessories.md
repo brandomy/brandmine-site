@@ -17,6 +17,10 @@ images:
     name: "accessories"
     alt: "Fashion accessories collection representing style, craftsmanship and design innovation"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Fashion and accessories from Russia represent a unique intersection of design creativity, cultural heritage, and practical international marketability. This sector transcends traditional clothing lines, offering distinctive pieces that express Russian cultural innovation and artistic expression through versatile designs that transition easily across global markets.

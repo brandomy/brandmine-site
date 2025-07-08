@@ -17,6 +17,10 @@ images:
     name: "hospitality"
     alt: "Luxury hospitality setting representing hotels and resorts premium service"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 

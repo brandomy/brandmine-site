@@ -18,6 +18,10 @@ images:
     name: "highlands"
     alt: "Ethiopian highlands landscape representing agricultural heritage and coffee culture"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Content tagged with "Ethiopia" explores the dynamic landscape of Ethiopian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Ethiopian market and Ethiopian brands with international potential.

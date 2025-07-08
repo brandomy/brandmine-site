@@ -18,6 +18,10 @@ images:
     name: "architecture"
     alt: "伊朗传统建筑代表工艺传承和市场成熟度"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 标签为"伊朗"的内容探索伊朗消费品牌的动态格局、市场动态、文化背景和出口机会。这一发现领域重点展示与伊朗市场和具有国际潜力的伊朗品牌直接相关的故事、分析和品牌简介。

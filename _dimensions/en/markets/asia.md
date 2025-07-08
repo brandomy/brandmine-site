@@ -3,6 +3,10 @@ name: "Asia"
 slug: "asia"
 type: "market"
 description: "The world's largest and most populous continent, offering diverse markets from developed economies to emerging powerhouses"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 # Asia: The Growth Engine of Global Commerce

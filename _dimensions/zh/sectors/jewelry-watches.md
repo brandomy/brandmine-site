@@ -17,6 +17,10 @@ images:
     name: "luxury"
     alt: "奢华珠宝和手表代表工艺和高端设计"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 俄罗斯珠宝和制表业代表了历史工艺和当代设计感的独特融合。这一领域结合了对钻石和宝石加工的深厚专业知识、丰富的制表传统，以及反映俄罗斯复杂文化遗产的独特美学方法。

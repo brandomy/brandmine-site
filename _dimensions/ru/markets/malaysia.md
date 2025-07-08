@@ -19,6 +19,10 @@ images:
     name: "skyline"
     alt: "Modern Malaysian skyline representing multicultural market dynamism and business growth"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 ![Рынок Малайзии](/assets/images/dimensions/markets/malaysia.jpg)

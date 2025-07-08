@@ -18,6 +18,10 @@ images:
     name: "sustainability"
     alt: "Sustainability pioneer showcasing eco-friendly practices and environmental responsibility"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Sustainability Pioneer brands represent a new paradigm of business leadership, where environmental stewardship and social responsibility are not peripheral concerns but fundamental business strategies. These brands have transformed sustainability from a buzzword into a comprehensive approach that touches every aspect of their operations.

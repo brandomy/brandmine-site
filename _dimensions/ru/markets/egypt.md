@@ -18,6 +18,10 @@ images:
     name: "pyramid"
     alt: "Ancient Egyptian pyramids representing timeless market heritage and cultural depth"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом "Египет" исследует динамичный ландшафт египетских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Это направление освещает истории, анализ и профили брендов, связанных непосредственно с египетским рынком и египетскими брендами, имеющими международный потенциал.

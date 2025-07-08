@@ -18,6 +18,10 @@ images:
     name: "vineyard"
     alt: "Wine vineyard with rolling hills and grape vines in premium wine region"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: ["ru-taiga-spirits"]
+related_insights: ["ru-russian-wine-renaissance"]
 ---
 
 ## Russian Wine Sector

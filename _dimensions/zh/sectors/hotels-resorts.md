@@ -18,6 +18,10 @@ images:
     name: "hospitality"
     alt: "酒店和度假村代表豪华住宿和旅行体验"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 从帝国时代的城市宅邸到偏远的荒野小屋，俄罗斯的精品酒店和度假村展示了该国非凡的地理和文化多样性。这些物业既代表着引人入胜的消费者体验，也代表着战略性B2B投资机会，许多独立物业已准备好进行品牌开发、运营提升和国际市场定位。

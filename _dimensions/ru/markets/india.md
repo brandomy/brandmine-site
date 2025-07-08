@@ -18,6 +18,10 @@ images:
     name: "palace"
     alt: "Indian palace architecture representing rich cultural heritage and market sophistication"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом «Индия» исследует динамичный ландшафт индийских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с индийским рынком и индийскими брендами с международным потенциалом.

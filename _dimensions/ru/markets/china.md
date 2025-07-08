@@ -18,6 +18,10 @@ images:
     name: "temple"
     alt: "Traditional Chinese temple architecture representing cultural business heritage"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом «Китай» исследует динамичный ландшафт китайских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с китайским рынком и китайскими брендами с международным потенциалом.

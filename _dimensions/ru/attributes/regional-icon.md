@@ -18,6 +18,10 @@ images:
     name: "heritage"
     alt: "Regional heritage representing local cultural significance and community pride"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Региональные иконы — это бренды с глубокими, аутентичными связями с конкретными географическими районами. Эти бренды не просто ссылаются на свое происхождение — они воплощают отличительный характер, традиции и природные ресурсы своих родных регионов через свою продукцию, методы производства и культурное значение.

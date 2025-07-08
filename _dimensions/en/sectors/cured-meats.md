@@ -17,6 +17,10 @@ images:
     name: "charcuterie"
     alt: "Artisan charcuterie selection representing cured meats craftsmanship and regional specialties"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Russian cured meat traditions reflect a complex culinary landscape shaped by diverse cultural influences and regional variations. These are not simply processed meats, but sophisticated culinary expressions that capture the nuanced flavors of different Russian regions, combining historical preservation techniques with contemporary gastronomic expertise.

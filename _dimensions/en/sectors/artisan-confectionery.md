@@ -17,6 +17,10 @@ images:
     name: "sweets"
     alt: "Artisan confectionery sweets representing traditional craftsmanship and premium quality"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Russian confectionery represents a delightful intersection of historical tradition and contemporary culinary innovation. These are not merely sweets, but edible narratives that capture the rich cultural heritage of Russian culinary arts, blending Soviet-era recipes with modern techniques and global flavor influences.

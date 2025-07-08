@@ -18,6 +18,10 @@ images:
     name: "landscape"
     alt: "South African landscape representing cultural diversity and natural resources"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом «Южная Африка» исследует динамичный ландшафт южноафриканских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с южноафриканским рынком и южноафриканскими брендами с международным потенциалом.

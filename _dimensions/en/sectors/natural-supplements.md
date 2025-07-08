@@ -17,6 +17,10 @@ images:
     name: "wellness"
     alt: "Natural wellness supplements representing botanical ingredients and health benefits"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Russian natural food supplements represent a sophisticated approach to wellness that draws directly from the vast botanical resources of Siberia and other pristine Russian wilderness areas. These are not simply nutritional products, but carefully crafted wellness solutions that combine ancient herbal knowledge with modern scientific research, creating a unique category of adaptogenic and functional supplements.

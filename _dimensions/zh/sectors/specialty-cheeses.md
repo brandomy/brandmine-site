@@ -17,6 +17,10 @@ images:
     name: "cheese"
     alt: "手工特色奶酪选择代表传统工艺和地区特色"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 俄罗斯的手工奶酪领域经历了显著的复兴，自2015年以来增长了375%，发展成为一个复杂的手工食品类别，既有正宗的俄罗斯品种，也有欧洲经典奶酪的创新诠释。这些生产商将地区乳制品传统转化为世界级奶酪，展示了当地牛奶、本土细菌培养物和精细生产方法的独特特性。

@@ -18,6 +18,10 @@ images:
     name: "distillery"
     alt: "Artisanal distillery equipment representing craft spirits production and traditional methods"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 While vodka remains Russia's signature spirit export, today's craft distillery landscape reveals a far more sophisticated narrative. Small-batch producers across the country are redefining Russian spirits through heritage grain varieties, traditional filtration methods, regionally-specific water sources, and innovative botanical infusions that challenge conventional international perceptions.

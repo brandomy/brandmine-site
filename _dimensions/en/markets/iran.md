@@ -18,6 +18,10 @@ images:
     name: "architecture"
     alt: "Persian architectural elements representing Iranian cultural heritage and craftsmanship"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Content tagged with "Iran" explores the dynamic landscape of Iranian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Iranian market and Iranian brands with international potential.

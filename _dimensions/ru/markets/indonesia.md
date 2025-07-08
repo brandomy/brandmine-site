@@ -18,6 +18,10 @@ images:
     name: "temple"
     alt: "Indonesian temple architecture representing cultural heritage and island diversity"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом "Индонезия" исследует динамичный ландшафт индонезийских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Это направление освещает истории, анализ и профили брендов, связанных непосредственно с индонезийским рынком и индонезийскими брендами, имеющими международный потенциал.

@@ -19,6 +19,10 @@ images:
     name: "kremlin"
     alt: "Moscow Kremlin representing Russian market heritage and business environment"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом «Россия» исследует динамичный ландшафт российских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с российским рынком и российскими брендами с международным потенциалом.

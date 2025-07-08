@@ -18,6 +18,10 @@ images:
     name: "innovation"
     alt: "Innovation leader demonstrating cutting-edge techniques and modern approaches"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Innovation Leaders represent a unique breed of brands that masterfully balance respect for traditional foundations with a bold, forward-thinking approach. These brands don't view innovation as a departure from their roots, but as a natural evolution that builds upon their core expertise and cultural heritage.

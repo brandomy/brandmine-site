@@ -17,6 +17,10 @@ images:
     name: "marketplace"
     alt: "美食市场和特色食品代表烹饪博览和品质美食"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 俄罗斯多元的烹饪传统孕育了展示独特原料、传统配方和创新生产方法的特色食品品牌。这些高端产品——从野生采集的森林食材到传统美食的现代诠释——代表了俄罗斯地方美食传统的精致演变，发展成为具有全球吸引力的商业可行产品。

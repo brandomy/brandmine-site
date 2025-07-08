@@ -17,6 +17,10 @@ images:
     name: "yogurt"
     alt: "Traditional fermented dairy yogurt representing probiotic culture and healthy nutrition"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Russia's fermented dairy tradition represents one of the world's most sophisticated cultured food heritages, centered around products like kefir that have now gained international recognition for their distinctive flavor profiles and health benefits. The sector encompasses a diverse range of products that go far beyond yogurt—including kefir, ryazhenka, varenets, and other traditional fermented dairy items that showcase Russia's centuries-old expertise in beneficial bacterial cultivation.

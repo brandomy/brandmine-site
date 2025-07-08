@@ -18,6 +18,10 @@ images:
     name: "landscape"
     alt: "Mongolian vast landscape representing nomadic heritage and natural purity"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 ![Рынок Монголии](/assets/images/dimensions/markets/mongolia.jpg)

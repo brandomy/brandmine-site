@@ -18,6 +18,10 @@ images:
     name: "palace"
     alt: "Indian palace architecture representing rich cultural heritage and market sophistication"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Content tagged with "India" explores the dynamic landscape of Indian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Indian market and Indian brands with international potential.

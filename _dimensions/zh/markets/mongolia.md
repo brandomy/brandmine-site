@@ -18,6 +18,10 @@ images:
     name: "landscape"
     alt: "蒙古草原景观代表广阔市场潜力和自然资源"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 ![蒙古国市场](/assets/images/dimensions/markets/mongolia.jpg)

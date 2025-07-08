@@ -17,6 +17,10 @@ images:
     name: "pottery"
     alt: "Artisan pottery craftsmanship representing ceramic traditions and handmade quality"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Russian porcelain and ceramics represent a sophisticated artistic tradition that combines centuries of craftsmanship with distinctive decorative styles. These are not merely functional objects, but expressions of Russian cultural heritage that embody both imperial luxury traditions and folk art influences, creating pieces that are simultaneously refined and deeply expressive.

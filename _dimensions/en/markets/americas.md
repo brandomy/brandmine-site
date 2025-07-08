@@ -3,6 +3,10 @@ name: "Americas"
 slug: "americas"
 type: "market"
 description: "From North America's established markets to Latin America's emerging economies, offering diverse opportunities across the Western Hemisphere"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 # Americas: Diverse Markets from Arctic to Antarctic

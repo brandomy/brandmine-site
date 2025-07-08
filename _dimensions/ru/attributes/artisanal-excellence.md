@@ -18,6 +18,10 @@ images:
     name: "craftsmanship"
     alt: "Artisanal craftsmanship representing traditional skills and handmade quality"
     ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Ремесленное совершенство представляет собой глубокую приверженность мастерству, которая выходит далеко за рамки массового производства. Эти бренды отдают приоритет тщательной ручной работе, традиционным техникам и бескомпромиссному подходу к качеству, который поднимает производство от простого изготовления к искусству.

@@ -19,6 +19,10 @@ images:
     alt: "Brazilian urban skyline representing modern market dynamics and business environment"
     ext: "jpg"
 
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 Контент с тегом «Бразилия» исследует динамичный ландшафт бразильских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с бразильским рынком и бразильскими брендами с международным потенциалом.

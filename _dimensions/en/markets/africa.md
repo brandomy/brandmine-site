@@ -3,6 +3,10 @@ name: "Africa"
 slug: "africa"
 type: "market"
 description: "A continent of emerging opportunities with young demographics, rich resources, and rapidly developing economies"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
 ---
 
 # Africa: The Future Frontier of Global Growth
