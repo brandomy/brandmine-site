@@ -8,6 +8,10 @@ category: signal
 verification_required: true
 permalink: /en/discover/signals/franchise-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Service-based businesses with systematized operations and proven replication frameworks for scalable expansion"
+description: "Established brands with documented processes, training systems, and operational frameworks enabling successful franchise partner development."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

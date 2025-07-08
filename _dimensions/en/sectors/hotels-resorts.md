@@ -7,6 +7,10 @@ dimension: hotels-resorts
 category: sector
 permalink: /en/discover/sectors/hotels-resorts/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Boutique properties from imperial mansions to wilderness lodges showcasing remarkable geographical and cultural diversity"
+description: "Distinctive hospitality assets offering B2B investment opportunities, management contracts, and unique cultural experiences."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

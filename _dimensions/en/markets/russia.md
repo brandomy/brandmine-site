@@ -9,6 +9,10 @@ featured: true
 country_code: ru  # Add this line
 permalink: /en/discover/markets/russia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Eurasian powerhouse spanning eleven time zones combining European sophistication with rich cultural heritage"
+description: "Market of 144 million consumers offering artisanal spirits excellence, distinctive Siberian botanicals, and sophisticated urban luxury demand."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

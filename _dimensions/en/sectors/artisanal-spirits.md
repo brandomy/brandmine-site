@@ -8,6 +8,10 @@ category: sector
 featured: true
 permalink: /en/discover/sectors/artisanal-spirits/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Small-batch distilleries redefining Russian spirits through heritage grains, traditional methods, and innovative botanical infusions"
+description: "Craft vodkas and spirits featuring proprietary botanicals, distinctive production heritage, and authentic Russian terroir expression."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

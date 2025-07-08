@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /en/discover/signals/export-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Brands prepared for international market expansion with proven compliance and distribution capabilities"
+description: "Companies demonstrating export readiness through international standards compliance, market research, and established distribution networks for global growth."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

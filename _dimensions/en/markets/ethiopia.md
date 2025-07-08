@@ -8,6 +8,10 @@ category: market
 country_code: et  # Add this line
 permalink: /en/discover/markets/ethiopia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Africa's second-largest population combining ancient heritage with emerging economic growth and distinctive agricultural excellence"
+description: "Dynamic market of 120 million consumers offering world-renowned coffee heritage, traditional crafts, and sustainable production leadership."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

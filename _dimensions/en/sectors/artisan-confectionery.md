@@ -7,6 +7,10 @@ dimension: artisan-confectionery
 category: sector
 permalink: /en/discover/sectors/artisan-confectionery/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Edible narratives blending historical tradition with contemporary culinary innovation and distinctive regional ingredients"
+description: "Premium confections featuring Siberian ingredients, reimagined Soviet classics, and gift-ready presentations commanding 30-45% price premiums."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

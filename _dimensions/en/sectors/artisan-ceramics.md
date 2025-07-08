@@ -7,6 +7,10 @@ dimension: artisan-ceramics
 category: sector
 permalink: /en/discover/sectors/artisan-ceramics/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Sophisticated artistic traditions combining centuries of craftsmanship with distinctive decorative styles and cultural heritage"
+description: "Premium porcelain and ceramics featuring recognizable Russian styles, from Gzhel cobalt designs to imperial luxury traditions."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

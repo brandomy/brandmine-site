@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /en/discover/attributes/artisanal-excellence/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Meticulous handwork and traditional techniques preserving generational craft mastery beyond mass production methods"
+description: "Brands prioritizing traditional craftsmanship, exceptional detail, and cultural preservation through uncompromising artisanal production methods."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

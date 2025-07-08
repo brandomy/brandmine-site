@@ -9,6 +9,10 @@ featured: true
 country_code: my
 permalink: /en/discover/markets/malaysia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Multicultural Southeast Asian hub combining Malay, Chinese, and Indian influences with Islamic lifestyle innovation"
+description: "Strategic market of 33 million consumers offering halal certification leadership, multicultural fusion products, and regional trade connectivity."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

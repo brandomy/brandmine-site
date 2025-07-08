@@ -7,6 +7,10 @@ dimension: natural-supplements
 category: sector
 permalink: /en/discover/sectors/natural-supplements/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Carefully crafted wellness solutions harnessing extreme-environment botanicals with remarkable adaptogenic and functional properties"
+description: "Scientifically validated supplements from Altai and Baikal regions targeting the $7.4 trillion global wellness market."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

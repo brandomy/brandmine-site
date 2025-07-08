@@ -8,6 +8,10 @@ category: signal
 verification_required: true
 permalink: /en/discover/signals/rapid-growth/
 
+# NEW ADDITIONS - Business Context
+subtitle: "High-velocity brands demonstrating exceptional market momentum and sustained expansion across key business metrics"
+description: "Companies showing outstanding growth rates, increasing market share, and proven scaling capabilities with established positive trajectories."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

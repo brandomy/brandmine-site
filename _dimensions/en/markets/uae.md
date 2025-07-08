@@ -8,6 +8,10 @@ category: market
 country_code: ae  # Add this line
 permalink: /en/discover/markets/uae/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Ultra-modern luxury hub blending Arabian heritage with cosmopolitan innovation and global business connectivity"
+description: "Sophisticated market of 10 million consumers offering luxury hospitality excellence, distinctive fragrances, and premium Arabian-inspired products."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

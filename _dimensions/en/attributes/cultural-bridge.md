@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /en/discover/attributes/cultural-bridge/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Authentic storytellers translating cultural heritage into globally resonant products and meaningful consumer experiences"
+description: "Brands serving as cultural ambassadors, transforming commerce into platforms for mutual understanding and appreciation of cultural diversity."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

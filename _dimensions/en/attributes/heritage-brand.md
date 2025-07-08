@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /en/discover/attributes/heritage-brand/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Cultural institutions with fifty-plus years of resilience maintaining relevance through authentic evolution and generational expertise"
+description: "Brands embodying cultural memory and tradition, offering proven stability, refined techniques, and immediate credibility in global markets."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

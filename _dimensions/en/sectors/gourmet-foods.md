@@ -7,6 +7,10 @@ dimension: gourmet-foods
 category: sector
 permalink: /en/discover/sectors/gourmet-foods/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Premium specialty foods showcasing wild-harvested forest ingredients, heritage grains, and regional culinary traditions"
+description: "Distinctive gourmet products from pristine wilderness areas offering narrative richness and 3.7× growth versus mainstream grocery."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

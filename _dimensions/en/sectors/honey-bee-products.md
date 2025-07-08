@@ -7,6 +7,10 @@ dimension: honey-bee-products
 category: sector
 permalink: /en/discover/sectors/honey-bee-products/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Pure monofloral varieties from pristine wilderness apiaries featuring exceptional potency and distinctive regional characteristics"
+description: "Premium honey and bee products with verified botanical origins, higher beneficial compound concentrations, and compelling provenance narratives."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

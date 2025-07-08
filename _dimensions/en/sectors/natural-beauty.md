@@ -7,6 +7,10 @@ dimension: natural-beauty
 category: sector
 permalink: /en/discover/sectors/natural-beauty/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Sophisticated skincare formulations combining pristine Siberian botanicals with cutting-edge scientific research"
+description: "Clean beauty products featuring exclusive Russian botanical ingredients growing at 18% annually, double conventional beauty market rates."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

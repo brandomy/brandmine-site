@@ -8,6 +8,10 @@ category: market
 country_code: ir  # Add this line
 permalink: /en/discover/markets/iran/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Ancient Persian civilization blending 2,500-year heritage with contemporary innovation in distinctive consumer products"
+description: "Sophisticated market of 86 million consumers offering world-renowned carpets, premium saffron, and exceptional artisanal craftsmanship."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

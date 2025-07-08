@@ -7,6 +7,10 @@ dimension: fashion-accessories
 category: sector
 permalink: /en/discover/sectors/fashion-accessories/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Wearable cultural expressions blending imperial aesthetics, folk traditions, and contemporary urban design innovation"
+description: "Distinctive accessories featuring innovative textiles, statement jewelry, and design elements offering 58-65% margins in premium retail."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

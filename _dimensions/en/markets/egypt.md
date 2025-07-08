@@ -8,6 +8,10 @@ category: market
 country_code: eg  # Add this line
 permalink: /en/discover/markets/egypt/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Strategic gateway connecting Africa, Middle East, and Mediterranean with 7,000-year cultural heritage driving modern innovation"
+description: "Market of 110 million consumers offering pharaonic heritage, renowned textiles, and unique Mediterranean-influenced specialty products."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

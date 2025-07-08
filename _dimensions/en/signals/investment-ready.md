@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /en/discover/signals/investment-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Financially structured companies with verified fundamentals positioned for capital partnerships and strategic growth"
+description: "Brands with strong governance, clear growth strategies, and structured opportunities ready for private equity, venture capital, or strategic investment."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

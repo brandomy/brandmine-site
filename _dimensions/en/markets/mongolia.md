@@ -8,6 +8,10 @@ category: market
 country_code: mn
 permalink: /en/discover/markets/mongolia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Ancient nomadic traditions meeting modern innovation between Russia and China with pristine natural resources"
+description: "Distinctive market of 3.3 million consumers offering world-renowned cashmere, unique fermented dairy products, and eco-conscious positioning."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

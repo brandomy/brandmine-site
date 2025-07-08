@@ -8,6 +8,10 @@ category: market
 country_code: in  # Add this line
 permalink: /en/discover/markets/india/
 
+# NEW ADDITIONS - Business Context
+subtitle: "World's most populous nation converging ancient traditions with technological advancement and diverse consumer sophistication"
+description: "Market of 1.4 billion consumers offering exceptional diversity, traditional wellness heritage, and rapidly growing startup ecosystem."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

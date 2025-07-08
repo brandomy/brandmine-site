@@ -7,6 +7,10 @@ dimension: jewelry-watches
 category: sector
 permalink: /en/discover/sectors/jewelry-watches/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Technical precision meets profound artistic expression through imperial craftsmanship and contemporary design innovation"
+description: "Luxury accessories featuring exceptional diamond expertise, distinctive cultural design languages, commanding 60-70% gross margins internationally."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -7,6 +7,10 @@ dimension: halal-foods
 category: sector
 permalink: /en/discover/sectors/halal-foods/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Sophisticated intersection of religious compliance and culinary excellence from regions with centuries-old Muslim communities"
+description: "Halal-certified products blending strict compliance with regional heritage, targeting the $1.9 trillion global halal market."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

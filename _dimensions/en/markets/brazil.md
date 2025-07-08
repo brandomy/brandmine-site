@@ -8,6 +8,10 @@ category: market
 country_code: br  # Add this line
 permalink: /en/discover/markets/brazil/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Latin America's largest economy blending European, African, and indigenous influences creating distinctive consumer opportunities"
+description: "Dynamic market of 214 million consumers offering unique cultural fusion, rising middle class, and exceptional export potential."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

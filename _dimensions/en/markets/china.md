@@ -8,6 +8,10 @@ category: market
 country_code: cn  # Add this line
 permalink: /en/discover/markets/china/
 
+# NEW ADDITIONS - Business Context
+subtitle: "World's second-largest economy combining ancient civilization with rapid modernization and digital innovation leadership"
+description: "Market of 1.4 billion consumers blending rich cultural heritage with cutting-edge technology and sophisticated premium brand development."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

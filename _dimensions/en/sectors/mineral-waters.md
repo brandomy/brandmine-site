@@ -7,6 +7,10 @@ dimension: mineral-waters
 category: sector
 permalink: /en/discover/sectors/mineral-waters/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Liquid geology from pristine springs featuring extraordinary mineral compositions and documented therapeutic properties"
+description: "Premium functional waters with unique mineral profiles commanding 40-50% higher margins in the $283 billion bottled water market."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

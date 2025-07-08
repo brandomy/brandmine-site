@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /en/discover/attributes/innovation-leader/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Visionary brands balancing traditional foundations with cutting-edge approaches to shape market evolution and industry disruption"
+description: "Companies combining proven reliability with transformative capabilities, demonstrating how cultural knowledge catalyzes groundbreaking innovation."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

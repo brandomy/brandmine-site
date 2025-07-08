@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /en/discover/attributes/sustainability-pioneer/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Business leaders integrating environmental stewardship and social responsibility as fundamental strategies for regenerative commerce"
+description: "Brands demonstrating that business success and environmental responsibility are interconnected through holistic sustainable business models."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -7,6 +7,10 @@ dimension: specialty-cheeses
 category: sector
 permalink: /en/discover/sectors/specialty-cheeses/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Remarkable renaissance of artisanal cheesemaking showcasing regional milk characteristics and indigenous bacterial cultures"
+description: "World-class cheeses with 375% sector growth since 2015, offering discovery value where new origin interest increased 64%."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -7,6 +7,10 @@ dimension: cured-meats
 category: sector
 permalink: /en/discover/sectors/cured-meats/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Regional charcuterie traditions featuring distinctive spices, unique curing methods, and generational recipes"
+description: "Premium cured meats showcasing Siberian wild game, Caucasian spice blends, commanding 40-60% higher margins than standard charcuterie."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -7,6 +7,10 @@ dimension: fermented-dairy
 category: sector
 permalink: /en/discover/sectors/fermented-dairy/
 
+# NEW ADDITIONS - Business Context
+subtitle: "World-class cultured dairy traditions featuring complex microbial diversity and centuries-old beneficial bacterial cultivation"
+description: "Traditional kefir and fermented products with scientifically verified probiotic benefits targeting the $95 billion functional foods market."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

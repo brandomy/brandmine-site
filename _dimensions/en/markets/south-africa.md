@@ -8,6 +8,10 @@ category: market
 country_code: za  # Add this line
 permalink: /en/discover/markets/south-africa/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Africa's most industrialized economy blending African, European, and Asian influences with extraordinary natural resources"
+description: "Diverse market of 60 million consumers offering distinctive wine production, indigenous botanicals, and creative entrepreneurship leadership."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

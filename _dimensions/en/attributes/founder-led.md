@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /en/discover/attributes/founder-led/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Entrepreneurial vision with hands-on leadership delivering authentic brand stories and agile business decisions"
+description: "Businesses guided by original creators ensuring consistent quality, genuine connections, and flexible partnership opportunities."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

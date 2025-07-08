@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /en/discover/attributes/regional-icon/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Authentic ambassadors of specific geographic identities embodying distinctive regional character through unique local traditions"
+description: "Brands representing genuine place-based products with verifiable provenance, satisfying consumer demand for meaningful cultural discovery experiences."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

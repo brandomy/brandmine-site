@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /en/discover/attributes/premium-positioning/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Upper-tier market alignment through superior materials, meticulous production, and sophisticated brand narratives commanding price premiums"
+description: "Brands delivering exceptional quality, higher margins, and distinctive characteristics for discerning global consumers seeking authentic premium experiences."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

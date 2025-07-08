@@ -8,6 +8,10 @@ category: sector
 featured: true
 permalink: /en/discover/sectors/wine/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Emerging wine culture with extreme climate viticulture producing distinctive vintages from traditional and indigenous varieties"
+description: "New latitude wines with 52% growth, bright acidity, and pronounced minerality satisfying discovery-driven consumer demand."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

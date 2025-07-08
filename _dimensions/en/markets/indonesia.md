@@ -8,6 +8,10 @@ category: market
 country_code: id  # Add this line
 permalink: /en/discover/markets/indonesia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Southeast Asia's largest economy spanning 17,000 islands with extraordinary cultural diversity and Islamic lifestyle leadership"
+description: "Market of 278 million consumers offering distinctive textile traditions, archipelago biodiversity, and halal product innovation excellence."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
