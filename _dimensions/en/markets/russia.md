@@ -8,6 +8,13 @@ category: market
 featured: true
 country_code: ru  # Add this line
 permalink: /en/discover/markets/russia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "kremlin"
+    alt: "Moscow Kremlin representing Russian market heritage and business environment"
+    ext: "jpg"
 ---
 
 ![Life in Russia](/assets/images/russia/andrew-konstantinov-y2kSjuA4Y4E-unsplash-1200.jpg)

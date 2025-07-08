@@ -7,6 +7,13 @@ dimension: indonesia
 category: market
 country_code: id  # Add this line
 permalink: /ru/discover/markets/indonesia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "temple"
+    alt: "Indonesian temple architecture representing cultural heritage and island diversity"
+    ext: "jpg"
 ---
 
 Контент с тегом "Индонезия" исследует динамичный ландшафт индонезийских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Это направление освещает истории, анализ и профили брендов, связанных непосредственно с индонезийским рынком и индонезийскими брендами, имеющими международный потенциал.

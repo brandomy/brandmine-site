@@ -6,6 +6,13 @@ title: "Natural Supplements"
 dimension: natural-supplements
 category: sector
 permalink: /en/discover/sectors/natural-supplements/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "wellness"
+    alt: "Natural wellness supplements representing botanical ingredients and health benefits"
+    ext: "jpg"
 ---
 
 Russian natural food supplements represent a sophisticated approach to wellness that draws directly from the vast botanical resources of Siberia and other pristine Russian wilderness areas. These are not simply nutritional products, but carefully crafted wellness solutions that combine ancient herbal knowledge with modern scientific research, creating a unique category of adaptogenic and functional supplements.

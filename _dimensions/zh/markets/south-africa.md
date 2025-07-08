@@ -7,6 +7,13 @@ dimension: south-africa
 category: market
 country_code: za  # Add this line
 permalink: /zh/discover/markets/south-africa/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "landscape"
+    alt: "南非景观代表多样化市场和丰富自然资源"
+    ext: "jpg"
 ---
 
 标记为"南非"的内容探索南非消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与南非市场和具有国际潜力的南非品牌相关的故事、分析和品牌简介。

@@ -7,6 +7,13 @@ dimension: indonesia
 category: market
 country_code: id  # Add this line
 permalink: /zh/discover/markets/indonesia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "temple"
+    alt: "印度尼西亚寺庙建筑代表群岛文化和贸易传统"
+    ext: "jpg"
 ---
 
 标签为"印度尼西亚"的内容探索印尼消费品牌的动态格局、市场动态、文化背景和出口机会。这一发现领域重点展示与印尼市场和具有国际潜力的印尼品牌直接相关的故事、分析和品牌简介。

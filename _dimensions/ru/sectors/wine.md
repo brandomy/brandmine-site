@@ -7,6 +7,13 @@ dimension: wine
 category: sector
 featured: true
 permalink: /ru/discover/sectors/wine/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "vineyard"
+    alt: "Wine vineyard landscape representing viticultural heritage and wine production"
+    ext: "jpg"
 ---
 
 Винодельческая отрасль России претерпела замечательную трансформацию, особенно в таких регионах, как Краснодарский край и Крым, где рост на 52% за последние пять лет сигнализирует о динамично развивающейся винной культуре. Эти регионы бросают вызов общепринятым взглядам на виноградарство, производя характерные винтажи, которые выражают уникальные особенности терруара как через традиционные европейские сорта, так и через заново открытые местные сорта винограда.

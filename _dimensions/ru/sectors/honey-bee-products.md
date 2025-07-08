@@ -6,6 +6,13 @@ title: "Мёд и продукты пчеловодства"
 dimension: honey-bee-products
 category: sector
 permalink: /ru/discover/sectors/honey-bee-products/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "honeycomb"
+    alt: "Natural honeycomb structure representing bee products and artisanal honey production"
+    ext: "jpg"
 ---
 
 Позиция России как 9-го крупнейшего производителя мёда в мире (производящего примерно 65 000 тонн ежегодно) происходит из её обширного экологического разнообразия—от богатых цветами Алтайских гор до липовых лесов Башкортостана. Российские пчеловоды сохраняют традиционные практики, одновременно внедряя современные стандарты качества, создавая монофлорные и полифлорные сорта с отличительными характеристиками, которые невозможно воспроизвести в других местах.

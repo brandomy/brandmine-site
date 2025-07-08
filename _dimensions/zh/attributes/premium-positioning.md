@@ -7,6 +7,13 @@ dimension: premium-positioning
 category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/premium-positioning/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "luxury"
+    alt: "奢华产品展示代表高端品质和优质定位"
+    ext: "jpg"
 ---
 
 高端定位品牌战略性地调整了其业务的所有方面——产品开发、质量标准、包装、分销和营销——以瞄准高端市场细分。这些品牌基于有形的质量差异、卓越工艺、优质原料或材料以及独特的品牌叙事，获得了价格溢价（通常比类别平均水平高30-60%）。

@@ -7,6 +7,13 @@ dimension: south-africa
 category: market
 country_code: za  # Add this line
 permalink: /en/discover/markets/south-africa/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "landscape"
+    alt: "South African landscape representing cultural diversity and natural resources"
+    ext: "jpg"
 ---
 
 Content tagged with "South Africa" explores the dynamic landscape of South African consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the South African market and South African brands with international potential.

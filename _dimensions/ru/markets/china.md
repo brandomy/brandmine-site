@@ -7,6 +7,13 @@ dimension: china
 category: market
 country_code: cn  # Add this line
 permalink: /ru/discover/markets/china/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "temple"
+    alt: "Traditional Chinese temple architecture representing cultural business heritage"
+    ext: "jpg"
 ---
 
 Контент с тегом «Китай» исследует динамичный ландшафт китайских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с китайским рынком и китайскими брендами с международным потенциалом.

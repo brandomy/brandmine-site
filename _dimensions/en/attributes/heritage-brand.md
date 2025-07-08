@@ -8,6 +8,13 @@ category: attribute
 featured: true
 verification_required: true
 permalink: /en/discover/attributes/heritage-brand/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "tradition"
+    alt: "Heritage brand showcasing traditional methods and generational knowledge"
+    ext: "jpg"
 ---
 
 Heritage Brands are distinguished by their remarkable longevity, deep-rooted cultural significance, and ability to maintain relevance across generations. These brands have not just survived for 50 or more years—they have become integral parts of cultural narratives, embodying traditions, craftsmanship, and values that transcend mere commercial success.

@@ -7,6 +7,13 @@ dimension: innovation-leader
 category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/innovation-leader/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "innovation"
+    alt: "创新实验室和技术发展代表前沿进步和研发"
+    ext: "jpg"
 ---
 
 创新领袖代表着一种独特的品牌类型，他们巧妙地平衡了对传统基础的尊重与大胆的前瞻性方法。这些品牌不将创新视为与根源的背离，而是将其视为建立在核心专业知识和文化遗产基础上的自然演变。

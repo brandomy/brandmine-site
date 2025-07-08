@@ -6,6 +6,13 @@ title: "蜂蜜与蜂产品"
 dimension: honey-bee-products
 category: sector
 permalink: /zh/discover/sectors/honey-bee-products/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "honeycomb"
+    alt: "蜂蜜和蜂巢代表天然甜味和养蜂传统"
+    ext: "jpg"
 ---
 
 俄罗斯作为世界第九大蜂蜜生产国（年产量约65,000吨），其地位源自其广阔的生态多样性——从花卉丰富的阿尔泰山脉到巴什科尔托斯坦的椴树林。俄罗斯养蜂人在保持传统做法的同时实施现代质量标准，创造出单花蜜和野花蜜品种，其独特特性无法在其他地方复制。

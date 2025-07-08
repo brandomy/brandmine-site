@@ -6,6 +6,13 @@ title: "天然食品补充剂"
 dimension: natural-supplements
 category: sector
 permalink: /zh/discover/sectors/natural-supplements/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "wellness"
+    alt: "天然健康补充剂代表植物成分和健康益处"
+    ext: "jpg"
 ---
 
 俄罗斯天然食品补充剂代表了一种复杂的健康方法，直接源自西伯利亚和其他原始俄罗斯荒野地区的广阔植物资源。这些不仅仅是营养产品，而是结合古老草药知识与现代科学研究的精心制作的健康解决方案，创造出一类独特的适应原和功能性补充剂。

@@ -2,12 +2,21 @@
 lang: en
 ref: sector-wine
 layout: dimension-profile
-title: "Wine"
+title: "Wine Sector"
 dimension: wine
 category: sector
 featured: true
 permalink: /en/discover/sectors/wine/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "vineyard"
+    alt: "Wine vineyard with rolling hills and grape vines in premium wine region"
+    ext: "jpg"
 ---
+
+## Russian Wine Sector
 
 Russia's wine industry has undergone a remarkable transformation, particularly in regions like Krasnodar and Crimea where a 52% growth over the past five years signals a vibrant emerging wine culture. These regions are challenging conventional viticulture perspectives by producing distinctive vintages that express unique terroir characteristics through both traditional European varieties and rediscovered indigenous grapes.
 

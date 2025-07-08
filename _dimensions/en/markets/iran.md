@@ -7,6 +7,13 @@ dimension: iran
 category: market
 country_code: ir  # Add this line
 permalink: /en/discover/markets/iran/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "architecture"
+    alt: "Persian architectural elements representing Iranian cultural heritage and craftsmanship"
+    ext: "jpg"
 ---
 
 Content tagged with "Iran" explores the dynamic landscape of Iranian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Iranian market and Iranian brands with international potential.

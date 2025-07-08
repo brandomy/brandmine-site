@@ -7,6 +7,13 @@ dimension: indonesia
 category: market
 country_code: id  # Add this line
 permalink: /en/discover/markets/indonesia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "temple"
+    alt: "Indonesian temple architecture representing cultural heritage and island diversity"
+    ext: "jpg"
 ---
 
 Content tagged with "Indonesia" explores the dynamic landscape of Indonesian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Indonesian market and Indonesian brands with international potential.

@@ -6,6 +6,13 @@ title: "Натуральные косметические продукты"
 dimension: natural-beauty
 category: sector
 permalink: /ru/discover/sectors/natural-beauty/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "products"
+    alt: "Natural beauty products representing botanical ingredients and sustainable skincare"
+    ext: "jpg"
 ---
 
 Российские натуральные косметические продукты представляют собой изысканный подход к уходу за кожей, который черпает непосредственно из обширных, нетронутых растительных ресурсов Сибири и Дальнего Востока. Это не просто косметические продукты, а сложные формулы, сочетающие традиционные знания о травах с передовыми научными исследованиями, создающие уникальную категорию косметических продуктов с подлинной эффективностью и убедительными историями происхождения.

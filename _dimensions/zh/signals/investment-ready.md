@@ -8,6 +8,13 @@ category: signal
 featured: true
 verification_required: true
 permalink: /zh/discover/signals/investment-ready/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "growth"
+    alt: "投资会议和业务增长代表资本准备和扩张机会"
+    ext: "jpg"
 ---
 
 投资就绪的品牌已经发展到一个关键阶段，它们展示了可靠的业务基础、成熟的管理结构以及清晰的增长轨迹，使其特别适合外部投资。这些品牌已经建立了稳固的市场地位，拥有可验证的收入记录，并发展了能够支持扩张的核心业务系统。

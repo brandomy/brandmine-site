@@ -7,6 +7,13 @@ dimension: artisanal-excellence
 category: attribute
 verification_required: true
 permalink: /en/discover/attributes/artisanal-excellence/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "craftsmanship"
+    alt: "Master artisan demonstrating traditional craftsmanship techniques in workshop"
+    ext: "jpg"
 ---
 
 Artisanal Excellence represents a profound commitment to craftsmanship that goes far beyond mass production. These brands prioritize meticulous handwork, traditional techniques, and an uncompromising approach to quality that elevates production from mere manufacturing to an art form.

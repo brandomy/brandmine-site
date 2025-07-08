@@ -6,6 +6,13 @@ title: "Специальные сыры"
 dimension: specialty-cheeses
 category: sector
 permalink: /ru/discover/sectors/specialty-cheeses/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "cheese"
+    alt: "Artisan specialty cheese selection representing traditional craftsmanship and regional varieties"
+    ext: "jpg"
 ---
 
 Российский сектор ремесленных сыров переживает замечательное возрождение, выросший на 375% с 2015 года и развившийся в сложную категорию крафтовых продуктов питания, включающую как аутентичные российские сорта, так и инновационные интерпретации европейской классики. Эти производители превратили региональные молочные традиции в сыры мирового класса, демонстрирующие отличительные характеристики местного молока, аборигенных бактериальных культур и тщательных методов производства.

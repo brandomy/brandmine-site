@@ -8,6 +8,13 @@ category: signal
 featured: true
 verification_required: true
 permalink: /ru/discover/signals/investment-ready/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "meeting"
+    alt: "Business meeting representing investment readiness and financial partnerships"
+    ext: "jpg"
 ---
 
 Бренды, готовые к инвестициям, прошли проверку и структурированы для привлечения капитальных партнерств для конкретных инициатив роста, приобретений или проектов развития. Эти компании вышли за рамки общего бизнес-планирования, создав определенные инвестиционные возможности с четкими параметрами, структурами управления и потенциальной доходностью.

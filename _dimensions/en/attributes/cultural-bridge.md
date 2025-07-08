@@ -7,6 +7,13 @@ dimension: cultural-bridge
 category: attribute
 verification_required: true
 permalink: /en/discover/attributes/cultural-bridge/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "connection"
+    alt: "Cultural bridge connecting traditional and modern business practices"
+    ext: "jpg"
 ---
 
 “Cultural Bridge” brands go beyond merely originating from a specific place—they actively and intentionally communicate the depth, richness, and nuance of their cultural heritage through every aspect of their business. These brands serve as storytellers, translating complex cultural narratives into products, experiences, and interactions that resonate globally.

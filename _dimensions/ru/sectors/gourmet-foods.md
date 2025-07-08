@@ -6,6 +6,13 @@ title: "Изысканные продукты питания"
 dimension: gourmet-foods
 category: sector
 permalink: /ru/discover/sectors/gourmet-foods/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "marketplace"
+    alt: "Gourmet food marketplace representing culinary diversity and specialty ingredients"
+    ext: "jpg"
 ---
 
 Разнообразное кулинарное наследие России дало жизнь специализированным продовольственным брендам, демонстрирующим уникальные ингредиенты, традиционные рецепты и инновационные производственные подходы. Эти премиальные продукты—от дикоросов леса до современных интерпретаций традиционных деликатесов—представляют собой изысканную эволюцию региональных пищевых традиций России в коммерчески жизнеспособные продукты с глобальной привлекательностью.

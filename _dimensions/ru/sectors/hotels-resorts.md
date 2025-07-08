@@ -6,6 +6,13 @@ title: "Отели и курорты"
 dimension: hotels-resorts
 category: sector
 permalink: /ru/discover/sectors/hotels-resorts/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hospitality"
+    alt: "Luxury hospitality setting representing hotels and resorts premium service"
+    ext: "jpg"
 ---
 
 От городских особняков императорской эпохи до отдаленных лесных домиков, российские бутик-отели и курорты демонстрируют удивительное географическое и культурное разнообразие страны. Эти объекты представляют собой как привлекательный потребительский опыт, так и стратегические B2B инвестиционные возможности, причем многие независимые объекты готовы к развитию бренда, операционному совершенствованию и международному рыночному позиционированию.

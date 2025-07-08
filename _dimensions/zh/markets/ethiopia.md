@@ -7,6 +7,13 @@ dimension: ethiopia
 category: market
 country_code: et  # Add this line
 permalink: /zh/discover/markets/ethiopia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "highlands"
+    alt: "埃塞俄比亚高原景观代表自然资源和农业传统"
+    ext: "jpg"
 ---
 
 标签为"埃塞俄比亚"的内容探索埃塞俄比亚消费品牌的动态格局、市场动态、文化背景和出口机会。这一发现领域重点展示与埃塞俄比亚市场和具有国际潜力的埃塞俄比亚品牌直接相关的故事、分析和品牌简介。

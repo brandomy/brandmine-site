@@ -7,6 +7,13 @@ dimension: sustainability-pioneer
 category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/sustainability-pioneer/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "sustainability"
+    alt: "Sustainability innovation representing environmental responsibility and future-focused practices"
+    ext: "jpg"
 ---
 
 Бренды-пионеры устойчивого развития представляют новую парадигму бизнес-лидерства, где экологическое управление и социальная ответственность являются не периферийными заботами, а фундаментальными бизнес-стратегиями. Эти бренды превратили устойчивость из модного слова в комплексный подход, который затрагивает каждый аспект их деятельности.

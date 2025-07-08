@@ -6,6 +6,13 @@ title: "手工瓷器与陶瓷"
 dimension: artisan-ceramics
 category: sector
 permalink: /zh/discover/sectors/artisan-ceramics/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "pottery"
+    alt: "手工陶瓷制作代表传统工艺和艺术创作"
+    ext: "jpg"
 ---
 
 俄罗斯瓷器和陶瓷代表了一种将数百年工艺与独特装饰风格相结合的精致艺术传统。这些不仅仅是功能性物品，而是俄罗斯文化遗产的表达，体现了帝国奢华传统和民间艺术影响，创造出既精致又深具表现力的作品。

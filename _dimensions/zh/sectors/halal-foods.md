@@ -6,6 +6,13 @@ title: "清真食品"
 dimension: halal-foods
 category: sector
 permalink: /zh/discover/sectors/halal-foods/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "cuisine"
+    alt: "清真美食和料理代表文化美食和宗教传统"
+    ext: "jpg"
 ---
 
 俄罗斯的清真食品领域代表了宗教合规性、烹饪传统和生产卓越性的复杂交汇，特别是在鞑靼斯坦和巴什科尔托斯坦等穆斯林人口众多的地区。自2019年以来，该领域以每年28%的速度增长，超越了基本的饮食合规性，展示了俄罗斯食品格局的丰富文化多样性，同时满足了最高的国际清真认证标准。

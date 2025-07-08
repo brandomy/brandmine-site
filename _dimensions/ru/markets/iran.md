@@ -7,6 +7,13 @@ dimension: iran
 category: market
 country_code: ir  # Add this line
 permalink: /ru/discover/markets/iran/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "architecture"
+    alt: "Persian architectural elements representing Iranian cultural heritage and craftsmanship"
+    ext: "jpg"
 ---
 
 Контент с тегом "Иран" исследует динамичный ландшафт иранских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Это направление освещает истории, анализ и профили брендов, связанных непосредственно с иранским рынком и иранскими брендами, имеющими международный потенциал.

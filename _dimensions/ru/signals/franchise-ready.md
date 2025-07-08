@@ -7,6 +7,13 @@ dimension: franchise-ready
 category: signal
 verification_required: true
 permalink: /ru/discover/signals/franchise-ready/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "expansion"
+    alt: "Business expansion network representing franchise growth and scalability"
+    ext: "jpg"
 ---
 
 Бренды, готовые к франчайзингу, представляют сервисные предприятия, разработавшие комплексные системы и поддерживающую инфраструктуру, необходимые для успешного франчайзинга. Эти бренды трансформировали свое операционное совершенство в тиражируемую модель, которая может быть эффективно масштабирована в различных локациях и рынках.

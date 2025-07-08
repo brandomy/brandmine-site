@@ -6,6 +6,13 @@ title: "手工糖果"
 dimension: artisan-confectionery
 category: sector
 permalink: /zh/discover/sectors/artisan-confectionery/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "sweets"
+    alt: "手工糖果和甜点代表烹饪艺术和美食传统"
+    ext: "jpg"
 ---
 
 俄罗斯糖果代表了历史传统与当代烹饪创新的愉悦交汇。这些不仅仅是甜点，而是捕捉俄罗斯烹饪艺术丰富文化遗产的可食用叙事，将苏联时代的配方与现代技术和全球风味影响融合在一起。

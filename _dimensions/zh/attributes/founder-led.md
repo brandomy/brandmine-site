@@ -8,6 +8,13 @@ category: attribute
 featured: true
 verification_required: true
 permalink: /zh/discover/attributes/founder-led/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "leadership"
+    alt: "企业家创始人领导团队会议展示实践领导力"
+    ext: "jpg"
 ---
 
 创始人领导的品牌得益于其原创者持续的指导、愿景和热情。这些企业家仍然深入参与日常运营、产品开发和战略决策，确保他们的原始愿景和标准继续指导业务，同时适应不断变化的市场条件。

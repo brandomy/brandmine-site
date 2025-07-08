@@ -7,6 +7,13 @@ dimension: cultural-bridge
 category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/cultural-bridge/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "connection"
+    alt: "Cultural connection representing bridge between traditions and global markets"
+    ext: "jpg"
 ---
 
 Бренды-культурные мосты выходят за рамки простого происхождения из определенного места — они активно и целенаправленно передают глубину, богатство и нюансы своего культурного наследия через каждый аспект своего бизнеса. Эти бренды выступают в роли рассказчиков, переводящих сложные культурные нарративы в продукты, опыт и взаимодействия, которые находят отклик во всем мире.

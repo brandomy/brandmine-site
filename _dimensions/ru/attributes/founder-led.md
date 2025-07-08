@@ -8,6 +8,13 @@ category: attribute
 featured: true
 verification_required: true
 permalink: /ru/discover/attributes/founder-led/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "leadership"
+    alt: "Founder leadership representing entrepreneurial vision and personal commitment"
+    ext: "jpg"
 ---
 
 Бренды, управляемые основателями, получают преимущества от постоянного руководства, видения и страсти своих создателей. Эти предприниматели остаются глубоко вовлеченными в повседневную деятельность, разработку продукции и принятие стратегических решений, обеспечивая сохранение их первоначального видения и стандартов в бизнесе при одновременной адаптации к меняющимся рыночным условиям.

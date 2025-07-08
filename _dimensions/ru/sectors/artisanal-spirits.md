@@ -7,6 +7,13 @@ dimension: artisanal-spirits
 category: sector
 featured: true
 permalink: /ru/discover/sectors/artisanal-spirits/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "distillery"
+    alt: "Artisanal distillery equipment representing craft spirits production and traditional methods"
+    ext: "jpg"
 ---
 
 Хотя водка остается визитной карточкой российского спиртового экспорта, сегодняшний ландшафт крафтовых дистиллерий раскрывает гораздо более сложный нарратив. Производители малых партий по всей стране переопределяют российские спиртные напитки через использование исторических сортов зерна, традиционных методов фильтрации, регионально-специфических источников воды и инновационных ботанических настоев, которые бросают вызов общепринятым международным представлениям.

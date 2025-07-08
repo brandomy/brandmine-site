@@ -7,6 +7,13 @@ dimension: china
 category: market
 country_code: cn  # Add this line
 permalink: /zh/discover/markets/china/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "temple"
+    alt: "中国古庙建筑代表深厚文化传统和市场传承"
+    ext: "jpg"
 ---
 
 标记为"中国"的内容探索中国消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与中国市场和具有国际潜力的中国品牌相关的故事、分析和品牌简介。

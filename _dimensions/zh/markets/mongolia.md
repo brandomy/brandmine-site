@@ -7,6 +7,13 @@ dimension: mongolia
 category: market
 country_code: mn
 permalink: /zh/discover/markets/mongolia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "landscape"
+    alt: "蒙古草原景观代表广阔市场潜力和自然资源"
+    ext: "jpg"
 ---
 
 ![蒙古国市场](/assets/images/dimensions/markets/mongolia.jpg)

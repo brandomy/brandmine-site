@@ -7,6 +7,13 @@ dimension: "brazil"
 category: market
 country_code: br  # Add this line
 permalink: /en/discover/markets/brazil/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "cityscape"
+    alt: "Brazilian urban skyline representing modern market dynamics and business environment"
+    ext: "jpg"
 ---
 
 Content tagged with "Brazil" explores the dynamic landscape of Brazilian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Brazilian market and Brazilian brands with international potential.

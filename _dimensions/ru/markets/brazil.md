@@ -8,6 +8,13 @@ category: market
 country_code: br  # Add this line
 permalink: /ru/discover/markets/brazil/
 
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "cityscape"
+    alt: "Brazilian urban skyline representing modern market dynamics and business environment"
+    ext: "jpg"
+
 ---
 
 Контент с тегом «Бразилия» исследует динамичный ландшафт бразильских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с бразильским рынком и бразильскими брендами с международным потенциалом.

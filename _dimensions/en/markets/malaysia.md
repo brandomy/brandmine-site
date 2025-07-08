@@ -8,6 +8,13 @@ category: market
 featured: true
 country_code: my
 permalink: /en/discover/markets/malaysia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "skyline"
+    alt: "Modern Malaysian skyline representing multicultural market dynamism and business growth"
+    ext: "jpg"
 ---
 
 ![Malaysia Market](/assets/images/dimensions/markets/malaysia.jpg)

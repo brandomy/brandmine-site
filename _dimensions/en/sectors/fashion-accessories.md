@@ -6,6 +6,13 @@ title: "Fashion & Accessories"
 dimension: fashion-accessories
 category: sector
 permalink: /en/discover/sectors/fashion-accessories/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "accessories"
+    alt: "Fashion accessories collection representing style, craftsmanship and design innovation"
+    ext: "jpg"
 ---
 
 Fashion and accessories from Russia represent a unique intersection of design creativity, cultural heritage, and practical international marketability. This sector transcends traditional clothing lines, offering distinctive pieces that express Russian cultural innovation and artistic expression through versatile designs that transition easily across global markets.

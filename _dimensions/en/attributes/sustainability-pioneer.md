@@ -7,6 +7,13 @@ dimension: sustainability-pioneer
 category: attribute
 verification_required: true
 permalink: /en/discover/attributes/sustainability-pioneer/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "sustainability"
+    alt: "Sustainability pioneer showcasing eco-friendly practices and environmental responsibility"
+    ext: "jpg"
 ---
 
 Sustainability Pioneer brands represent a new paradigm of business leadership, where environmental stewardship and social responsibility are not peripheral concerns but fundamental business strategies. These brands have transformed sustainability from a buzzword into a comprehensive approach that touches every aspect of their operations.

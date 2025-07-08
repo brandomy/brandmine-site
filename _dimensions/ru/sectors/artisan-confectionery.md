@@ -6,6 +6,13 @@ title: "Ремесленные кондитерские изделия"
 dimension: artisan-confectionery
 category: sector
 permalink: /ru/discover/sectors/artisan-confectionery/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "sweets"
+    alt: "Artisan confectionery sweets representing traditional craftsmanship and premium quality"
+    ext: "jpg"
 ---
 
 Российские кондитерские изделия представляют собой восхитительное пересечение исторической традиции и современной кулинарной инновации. Это не просто сладости, а съедобные повествования, которые запечатлевают богатое культурное наследие российского кулинарного искусства, смешивая советские рецепты с современными техниками и глобальными вкусовыми влияниями.

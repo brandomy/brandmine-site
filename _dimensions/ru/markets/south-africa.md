@@ -7,6 +7,13 @@ dimension: south-africa
 category: market
 country_code: za  # Add this line
 permalink: /ru/discover/markets/south-africa/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "landscape"
+    alt: "South African landscape representing cultural diversity and natural resources"
+    ext: "jpg"
 ---
 
 Контент с тегом «Южная Африка» исследует динамичный ландшафт южноафриканских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с южноафриканским рынком и южноафриканскими брендами с международным потенциалом.

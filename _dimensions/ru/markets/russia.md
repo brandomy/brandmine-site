@@ -8,6 +8,13 @@ category: market
 featured: true
 country_code: ru  # Add this line
 permalink: /ru/discover/markets/russia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "kremlin"
+    alt: "Moscow Kremlin representing Russian market heritage and business environment"
+    ext: "jpg"
 ---
 
 Контент с тегом «Россия» исследует динамичный ландшафт российских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с российским рынком и российскими брендами с международным потенциалом.

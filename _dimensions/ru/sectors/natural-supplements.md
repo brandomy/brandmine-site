@@ -6,6 +6,13 @@ title: "Натуральные пищевые добавки"
 dimension: natural-supplements
 category: sector
 permalink: /ru/discover/sectors/natural-supplements/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "wellness"
+    alt: "Natural wellness supplements representing botanical ingredients and health benefits"
+    ext: "jpg"
 ---
 
 Российские натуральные пищевые добавки представляют собой изысканный подход к оздоровлению, который черпает непосредственно из обширных растительных ресурсов Сибири и других нетронутых российских природных территорий. Это не просто питательные продукты, а тщательно разработанные решения для оздоровления, которые сочетают древние знания о травах с современными научными исследованиями, создавая уникальную категорию адаптогенных и функциональных добавок.

@@ -6,6 +6,13 @@ title: "Natural Beauty Products"
 dimension: natural-beauty
 category: sector
 permalink: /en/discover/sectors/natural-beauty/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "products"
+    alt: "Natural beauty products representing botanical ingredients and sustainable skincare"
+    ext: "jpg"
 ---
 
 Russian natural beauty products represent a sophisticated approach to skincare that draws directly from the vast, pristine botanical resources of Siberia and the Far East. These are not just cosmetic products, but sophisticated formulations that combine traditional herbal knowledge with cutting-edge scientific research, creating a unique category of beauty products with genuine efficacy and compelling origin stories.

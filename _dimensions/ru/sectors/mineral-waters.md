@@ -6,6 +6,13 @@ title: "Минеральные воды"
 dimension: mineral-waters
 category: sector
 permalink: /ru/discover/sectors/mineral-waters/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "springs"
+    alt: "Natural mineral water springs representing purity and therapeutic properties"
+    ext: "jpg"
 ---
 
 Обширная территория России охватывает многочисленные чистейшие источники с исключительным минеральным составом—каждый с документированными терапевтическими свойствами, выделяющими их из числа обычных продуктов для гидратации. От исторических спа-регионов Кавказа до отдаленных сибирских источников, эти воды представляют собой жидкую геологию—натуральные продукты, сформированные их прохождением через древние горные породы на протяжении веков.

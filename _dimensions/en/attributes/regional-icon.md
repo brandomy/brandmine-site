@@ -7,6 +7,13 @@ dimension: regional-icon
 category: attribute
 verification_required: true
 permalink: /en/discover/attributes/regional-icon/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "heritage"
+    alt: "Regional icon representing local cultural heritage and business tradition"
+    ext: "jpg"
 ---
 
 Regional icons are brands with deep, authentic connections to specific geographical areas. These brands don't merely reference their origins—they embody the distinctive character, traditions, and natural resources of their home regions through their products, production methods, and cultural significance.

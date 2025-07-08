@@ -6,6 +6,13 @@ title: "Фарфор и керамика"
 dimension: artisan-ceramics
 category: sector
 permalink: /ru/discover/sectors/artisan-ceramics/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "pottery"
+    alt: "Artisan pottery craftsmanship representing ceramic traditions and handmade quality"
+    ext: "jpg"
 ---
 
 Российский фарфор и керамика представляют собой изысканную художественную традицию, сочетающую многовековое мастерство с характерными декоративными стилями. Это не просто функциональные предметы, а выражения российского культурного наследия, воплощающие как императорские традиции роскоши, так и влияния народного искусства, создавая изделия, которые одновременно изысканны и глубоко выразительны.

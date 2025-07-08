@@ -7,6 +7,13 @@ dimension: rapid-growth
 category: signal
 verification_required: true
 permalink: /zh/discover/signals/rapid-growth/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "trajectory"
+    alt: "快速业务增长图表代表高增长轨迹和市场表现"
+    ext: "jpg"
 ---
 
 快速增长品牌在收入、市场存在感、产品线或实体位置等关键指标上显示出明确的业务加速扩张证据。这些充满活力的企业在其发展轨迹中展现出持续的势头，通常在持续时间内实现高于行业平均水平的增长率。

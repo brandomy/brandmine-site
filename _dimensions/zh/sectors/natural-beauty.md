@@ -6,6 +6,13 @@ title: "天然美容产品"
 dimension: natural-beauty
 category: sector
 permalink: /zh/discover/sectors/natural-beauty/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "products"
+    alt: "天然美容产品代表植物成分和可持续护肤"
+    ext: "jpg"
 ---
 
 俄罗斯天然美容产品代表了一种精致的护肤方法，直接源自西伯利亚和远东广阔、原始的植物资源。这些不仅仅是化妆品，而是将传统草药知识与前沿科学研究相结合的复杂配方，创造了一类具有真正功效和引人入胜产地故事的独特美容产品。

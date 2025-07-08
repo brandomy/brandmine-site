@@ -8,6 +8,13 @@ category: attribute
 featured: true
 verification_required: true
 permalink: /ru/discover/attributes/heritage-brand/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "tradition"
+    alt: "Heritage traditions representing brand history and cultural legacy"
+    ext: "jpg"
 ---
 
 Исторические бренды отличаются своим замечательным долголетием, глубоко укоренившейся культурной значимостью и способностью сохранять актуальность на протяжении поколений. Эти бренды не просто выжили на протяжении 50 или более лет — они стали неотъемлемой частью культурных нарративов, воплощая традиции, мастерство и ценности, которые выходят за рамки простого коммерческого успеха.

@@ -6,6 +6,13 @@ title: "Салями и вяленые мясопродукты"
 dimension: cured-meats
 category: sector
 permalink: /ru/discover/sectors/cured-meats/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "charcuterie"
+    alt: "Artisan charcuterie selection representing cured meats craftsmanship and regional specialties"
+    ext: "jpg"
 ---
 
 Российские традиции вяленого мяса отражают сложный кулинарный ландшафт, сформированный разнообразными культурными влияниями и региональными вариациями. Это не просто обработанные мясные продукты, а изысканные кулинарные выражения, которые запечатлевают нюансированные вкусы различных российских регионов, сочетая исторические техники консервирования с современной гастрономической экспертизой.

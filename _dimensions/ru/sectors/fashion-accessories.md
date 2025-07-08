@@ -6,6 +6,13 @@ title: "Мода и аксессуары"
 dimension: fashion-accessories
 category: sector
 permalink: /ru/discover/sectors/fashion-accessories/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "accessories"
+    alt: "Fashion accessories collection representing style, craftsmanship and design innovation"
+    ext: "jpg"
 ---
 
 Мода и аксессуары из России представляют собой уникальное пересечение творческого дизайна, культурного наследия и практической востребованности на международном рынке. Этот сектор выходит за рамки традиционных линий одежды, предлагая характерные предметы, которые выражают российскую культурную инновацию и художественное выражение через универсальные дизайны, легко переходящие через глобальные рынки.

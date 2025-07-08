@@ -7,6 +7,13 @@ dimension: egypt
 category: market
 country_code: eg  # Add this line
 permalink: /en/discover/markets/egypt/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "pyramid"
+    alt: "Ancient Egyptian pyramids representing timeless market heritage and cultural depth"
+    ext: "jpg"
 ---
 
 Content tagged with "Egypt" explores the dynamic landscape of Egyptian consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Egyptian market and Egyptian brands with international potential.

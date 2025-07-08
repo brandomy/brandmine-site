@@ -7,6 +7,13 @@ dimension: china
 category: market
 country_code: cn  # Add this line
 permalink: /en/discover/markets/china/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "temple"
+    alt: "Traditional Chinese temple architecture representing cultural business heritage"
+    ext: "jpg"
 ---
 
 Content tagged with "China" explores the dynamic landscape of Chinese consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the Chinese market and Chinese brands with international potential.

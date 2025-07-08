@@ -7,6 +7,13 @@ dimension: innovation-leader
 category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/innovation-leader/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "innovation"
+    alt: "Innovation technology representing forward-thinking approach and market leadership"
+    ext: "jpg"
 ---
 
 Лидеры инноваций представляют собой уникальную породу брендов, которые мастерски балансируют уважение к традиционным основам с смелым, прогрессивным подходом. Эти бренды не рассматривают инновации как отход от своих корней, а как естественную эволюцию, которая строится на их основном опыте и культурном наследии.

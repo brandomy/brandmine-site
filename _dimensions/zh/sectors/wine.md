@@ -7,6 +7,13 @@ dimension: wine
 category: sector
 featured: true
 permalink: /zh/discover/sectors/wine/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "vineyard"
+    alt: "优质葡萄酒产区的葡萄园，有起伏的丘陵和葡萄藤"
+    ext: "jpg"
 ---
 
 俄罗斯葡萄酒行业经历了显著转型，特别是在克拉斯诺达尔和克里米亚等地区，过去五年52%的增长表明了一个充满活力的新兴葡萄酒文化。这些地区正在挑战传统葡萄栽培观念，通过传统欧洲品种和重新发现的本土葡萄，生产出表达独特风土特性的独特年份。

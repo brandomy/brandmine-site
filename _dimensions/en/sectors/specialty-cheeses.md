@@ -6,6 +6,13 @@ title: "Specialty Cheeses"
 dimension: specialty-cheeses
 category: sector
 permalink: /en/discover/sectors/specialty-cheeses/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "cheese"
+    alt: "Artisan specialty cheese selection representing traditional craftsmanship and regional varieties"
+    ext: "jpg"
 ---
 
 Russia's artisanal cheese sector has undergone a remarkable renaissance, growing 375% since 2015 and developing into a sophisticated craft food category featuring both authentic Russian varieties and innovative interpretations of European classics. These producers have transformed regional dairy traditions into world-class cheeses that showcase the distinctive characteristics of local milk, indigenous bacterial cultures, and meticulous production methods.

@@ -8,6 +8,13 @@ category: attribute
 featured: true
 verification_required: true
 permalink: /en/discover/attributes/founder-led/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "leadership"
+    alt: "Entrepreneur founder leading team meeting demonstrating hands-on leadership"
+    ext: "jpg"
 ---
 
 Founder-led brands benefit from the continued direction, vision, and passion of their original creators. These entrepreneurs remain deeply involved in day-to-day operations, product development, and strategic decision-making, ensuring their original vision and standards continue to guide the business while adapting to evolving market conditions.

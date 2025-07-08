@@ -6,6 +6,13 @@ title: "Salami & Cured Meats"
 dimension: cured-meats
 category: sector
 permalink: /en/discover/sectors/cured-meats/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "charcuterie"
+    alt: "Artisan charcuterie selection representing cured meats craftsmanship and regional specialties"
+    ext: "jpg"
 ---
 
 Russian cured meat traditions reflect a complex culinary landscape shaped by diverse cultural influences and regional variations. These are not simply processed meats, but sophisticated culinary expressions that capture the nuanced flavors of different Russian regions, combining historical preservation techniques with contemporary gastronomic expertise.

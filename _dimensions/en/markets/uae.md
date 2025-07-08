@@ -7,6 +7,13 @@ dimension: uae
 category: market
 country_code: ae  # Add this line
 permalink: /en/discover/markets/uae/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "skyline"
+    alt: "UAE modern skyline representing luxury market innovation and business sophistication"
+    ext: "jpg"
 ---
 
 Content tagged with "UAE" explores the dynamic landscape of Emirati consumer brands, market dynamics, cultural context, and export opportunities. This discovery highlights stories, analysis, and brand profiles specifically related to the UAE market and Emirati brands with international potential.

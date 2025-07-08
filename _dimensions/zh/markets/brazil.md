@@ -7,6 +7,13 @@ dimension: brazil
 category: market
 country_code: br  # Add this line
 permalink: /zh/discover/markets/brazil/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "cityscape"
+    alt: "巴西城市天际线代表现代市场动态和商业环境"
+    ext: "jpg"
 ---
 
 标记为"巴西"的内容探索巴西消费品牌的动态格局、市场动态、文化背景和出口机会。这个标签重点突出与巴西市场和具有国际潜力的巴西品牌相关的故事、分析和品牌简介。

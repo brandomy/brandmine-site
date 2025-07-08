@@ -7,6 +7,13 @@ dimension: india
 category: market
 country_code: in  # Add this line
 permalink: /ru/discover/markets/india/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "palace"
+    alt: "Indian palace architecture representing rich cultural heritage and market sophistication"
+    ext: "jpg"
 ---
 
 Контент с тегом «Индия» исследует динамичный ландшафт индийских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Этот тег выделяет истории, анализ и профили брендов, специфически связанные с индийским рынком и индийскими брендами с международным потенциалом.

@@ -6,6 +6,13 @@ title: "Artisan Confectionery"
 dimension: artisan-confectionery
 category: sector
 permalink: /en/discover/sectors/artisan-confectionery/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "sweets"
+    alt: "Artisan confectionery sweets representing traditional craftsmanship and premium quality"
+    ext: "jpg"
 ---
 
 Russian confectionery represents a delightful intersection of historical tradition and contemporary culinary innovation. These are not merely sweets, but edible narratives that capture the rich cultural heritage of Russian culinary arts, blending Soviet-era recipes with modern techniques and global flavor influences.

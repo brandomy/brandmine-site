@@ -7,6 +7,13 @@ dimension: ethiopia
 category: market
 country_code: et  # Add this line
 permalink: /ru/discover/markets/ethiopia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "highlands"
+    alt: "Ethiopian highlands landscape representing agricultural heritage and coffee culture"
+    ext: "jpg"
 ---
 
 Контент с тегом "Эфиопия" исследует динамичный ландшафт эфиопских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Это направление освещает истории, анализ и профили брендов, связанных непосредственно с эфиопским рынком и эфиопскими брендами, имеющими международный потенциал.

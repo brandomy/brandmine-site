@@ -8,6 +8,13 @@ category: signal
 featured: true
 verification_required: true
 permalink: /zh/discover/signals/export-ready/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "shipping"
+    alt: "出口货物和全球贸易代表国际增长机会"
+    ext: "jpg"
 ---
 
 出口就绪的品牌已经解决了进入国际市场的基本要求，为超越国内市场的即时扩张做好准备。这些品牌已经专门针对国际贸易开发了产品、包装、文件和运营流程。

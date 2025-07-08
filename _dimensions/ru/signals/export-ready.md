@@ -8,6 +8,13 @@ category: signal
 featured: true
 verification_required: true
 permalink: /ru/discover/signals/export-ready/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "shipping"
+    alt: "International shipping containers representing export readiness and global commerce"
+    ext: "jpg"
 ---
 
 Бренды, готовые к экспорту, решили фундаментальные требования для выхода на международные рынки, позиционируя себя для немедленного расширения за пределы своих внутренних рынков. Эти бренды разработали свою продукцию, упаковку, документацию и операционные процессы специально с учетом требований международной торговли.

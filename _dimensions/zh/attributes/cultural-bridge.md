@@ -7,6 +7,13 @@ dimension: cultural-bridge
 category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/cultural-bridge/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "connection"
+    alt: "文化桥梁和全球连接代表跨文化理解和合作"
+    ext: "jpg"
 ---
 
 文化桥梁品牌不仅仅是源自特定地方——它们通过业务的各个方面主动且有意地传达其文化遗产的深度、丰富性和细微差别。这些品牌充当故事讲述者，将复杂的文化叙事转化为在全球范围内引起共鸣的产品、体验和互动。

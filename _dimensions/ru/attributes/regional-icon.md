@@ -7,6 +7,13 @@ dimension: regional-icon
 category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/regional-icon/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "heritage"
+    alt: "Regional heritage representing local cultural significance and community pride"
+    ext: "jpg"
 ---
 
 Региональные иконы — это бренды с глубокими, аутентичными связями с конкретными географическими районами. Эти бренды не просто ссылаются на свое происхождение — они воплощают отличительный характер, традиции и природные ресурсы своих родных регионов через свою продукцию, методы производства и культурное значение.

@@ -6,6 +6,13 @@ title: "Ювелирные изделия и часы"
 dimension: jewelry-watches
 category: sector
 permalink: /ru/discover/sectors/jewelry-watches/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "luxury"
+    alt: "Luxury jewelry and watches representing craftsmanship and premium design"
+    ext: "jpg"
 ---
 
 Российские ювелирные изделия и часовое дело представляют собой уникальное слияние исторического мастерства и современных дизайнерских чувств. Этот сектор сочетает глубокую экспертизу в обработке бриллиантов и драгоценных камней, богатые часовые традиции и характерный эстетический подход, отражающий сложное культурное наследие России.

@@ -7,6 +7,13 @@ dimension: mongolia
 category: market
 country_code: mn
 permalink: /en/discover/markets/mongolia/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "landscape"
+    alt: "Mongolian vast landscape representing nomadic heritage and natural purity"
+    ext: "jpg"
 ---
 
 ![Mongolia Market](/assets/images/dimensions/markets/mongolia.jpg)

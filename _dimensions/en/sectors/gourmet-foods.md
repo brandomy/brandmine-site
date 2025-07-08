@@ -6,6 +6,13 @@ title: "Gourmet Foods"
 dimension: gourmet-foods
 category: sector
 permalink: /en/discover/sectors/gourmet-foods/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "marketplace"
+    alt: "Gourmet food marketplace representing culinary diversity and specialty ingredients"
+    ext: "jpg"
 ---
 
 Russia's diverse culinary heritage has given rise to specialty food brands that showcase unique ingredients, traditional recipes, and innovative production approaches. These premium products—ranging from wild-harvested forest foods to contemporary interpretations of traditional delicacies—represent the sophisticated evolution of Russia's regional food traditions into commercially viable products with global appeal.

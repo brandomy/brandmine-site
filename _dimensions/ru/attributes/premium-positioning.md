@@ -7,6 +7,13 @@ dimension: premium-positioning
 category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/premium-positioning/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "luxury"
+    alt: "Luxury premium positioning representing high-end quality and exclusivity"
+    ext: "jpg"
 ---
 
 Бренды с премиальным позиционированием стратегически согласовали все аспекты своего бизнеса — разработку продукции, стандарты качества, упаковку, дистрибуцию и маркетинг — для ориентации на верхние сегменты рынка. Эти бренды устанавливают ценовую премию (обычно на 30-60% выше средних показателей по категории) на основе ощутимых различий в качестве, исключительного мастерства, превосходных ингредиентов или материалов и отличительных историй бренда.

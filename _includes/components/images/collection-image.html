@@ -20,6 +20,7 @@
   - Tries multiple filename patterns (generic first, then descriptive)
   - Intelligent alt text lookup from front matter with fallbacks
   - Optimized mobile-first responsive sizing
+  - Supports dimensions flat structure: /assets/images/dimensions/sectors/wine-hero-vineyard-800w.jpg
 {% endcomment %}
 
 {% comment %} Validate required parameters {% endcomment %}
@@ -95,6 +96,10 @@
   {% comment %} Categories use flat structure: /assets/images/categories/slug-800w.jpg {% endcomment %}
   {% assign path = '/assets/images/categories/' %}
   {% assign file_prefix = include.slug %}
+{% elsif include.collection == 'dimensions' %}
+  {% comment %} Dimensions use subdirectory structure: /assets/images/dimensions/sectors/wine/wine-hero-vineyard-800w.jpg {% endcomment %}
+  {% assign path = '/assets/images/dimensions/' | append: include.category | append: 's/' | append: include.slug | append: '/' %}
+  {% assign file_prefix = include.slug %}
 {% else %}
   {% comment %} Standard collections use subdirectory: /assets/images/collection/slug/slug-purpose-800w.jpg {% endcomment %}
   {% assign path = '/assets/images/' | append: include.collection | append: '/' %}
@@ -156,7 +161,7 @@
   {% assign primary_srcset_800 = path | append: file_prefix | append: '-800w.' | append: file_ext %}
   {% assign primary_srcset_1200 = path | append: file_prefix | append: '-1200w.' | append: file_ext %}
 {% else %}
-  {% comment %} Standard collections: subdirectory with slug-purpose format {% endcomment %}
+  {% comment %} All other collections (including dimensions): subdirectory with slug-purpose-name format {% endcomment %}
   {% assign primary_src = path | append: file_prefix | append: "-" | append: primary_filename | append: '-400w.' | append: file_ext %}
   {% assign primary_srcset_400 = path | append: file_prefix | append: "-" | append: primary_filename | append: '-400w.' | append: file_ext %}
   {% assign primary_srcset_800 = path | append: file_prefix | append: "-" | append: primary_filename | append: '-800w.' | append: file_ext %}

@@ -7,6 +7,13 @@ dimension: uae
 category: market
 country_code: ae  # Add this line
 permalink: /ru/discover/markets/uae/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "skyline"
+    alt: "UAE modern skyline representing luxury market innovation and business sophistication"
+    ext: "jpg"
 ---
 
 Контент с тегом "ОАЭ" исследует динамичный ландшафт эмиратских потребительских брендов, рыночную динамику, культурный контекст и экспортные возможности. Это направление освещает истории, анализ и профили брендов, связанных непосредственно с рынком ОАЭ и эмиратскими брендами, имеющими международный потенциал.

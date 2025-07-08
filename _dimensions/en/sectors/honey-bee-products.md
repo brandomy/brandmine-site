@@ -6,6 +6,13 @@ title: "Honey & Bee Products"
 dimension: honey-bee-products
 category: sector
 permalink: /en/discover/sectors/honey-bee-products/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "honeycomb"
+    alt: "Natural honeycomb structure representing bee products and artisanal honey production"
+    ext: "jpg"
 ---
 
 Russia's position as the world's 9th largest honey producer (generating approximately 65,000 tons annually) stems from its vast ecological diversity—from the flower-rich Altai mountains to the linden forests of Bashkortostan. Russian beekeepers maintain traditional practices while implementing modern quality standards, creating monofloral and wildflower varieties with distinctive characteristics impossible to replicate elsewhere.

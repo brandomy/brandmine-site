@@ -6,6 +6,13 @@ title: "Artisan Porcelain & Ceramics"
 dimension: artisan-ceramics
 category: sector
 permalink: /en/discover/sectors/artisan-ceramics/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "pottery"
+    alt: "Artisan pottery craftsmanship representing ceramic traditions and handmade quality"
+    ext: "jpg"
 ---
 
 Russian porcelain and ceramics represent a sophisticated artistic tradition that combines centuries of craftsmanship with distinctive decorative styles. These are not merely functional objects, but expressions of Russian cultural heritage that embody both imperial luxury traditions and folk art influences, creating pieces that are simultaneously refined and deeply expressive.

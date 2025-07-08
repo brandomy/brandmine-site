@@ -7,6 +7,13 @@ dimension: rapid-growth
 category: signal
 verification_required: true
 permalink: /ru/discover/signals/rapid-growth/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "growth"
+    alt: "Business growth metrics representing rapid expansion and market success"
+    ext: "jpg"
 ---
 
 Бренды категории "Быстрый рост" демонстрируют явные признаки ускоренного расширения бизнеса по ключевым показателям, таким как доходы, присутствие на рынке, ассортимент продукции или количество физических точек. Эти динамичные компании показывают устойчивую положительную динамику в своем развитии, обычно достигая темпов роста выше среднеотраслевых на протяжении продолжительных периодов.

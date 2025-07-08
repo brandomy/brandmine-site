@@ -6,6 +6,13 @@ title: "Halal Food Products"
 dimension: halal-foods
 category: sector
 permalink: /en/discover/sectors/halal-foods/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "cuisine"
+    alt: "Halal cuisine preparation representing cultural traditions and religious compliance"
+    ext: "jpg"
 ---
 
 Russia's halal food sector represents a sophisticated intersection of religious compliance, culinary tradition, and production excellence, particularly in regions with significant Muslim populations like Tatarstan and Bashkortostan. Growing at 28% annually since 2019, this sector transcends basic dietary compliance to showcase the rich cultural diversity within Russia's food landscape while meeting the highest international halal certification standards.

@@ -6,6 +6,13 @@ title: "Hotels & Resorts"
 dimension: hotels-resorts
 category: sector
 permalink: /en/discover/sectors/hotels-resorts/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "hospitality"
+    alt: "Luxury hospitality setting representing hotels and resorts premium service"
+    ext: "jpg"
 ---
 
 

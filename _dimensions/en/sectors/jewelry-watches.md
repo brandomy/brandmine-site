@@ -6,6 +6,13 @@ title: "Jewelry & Watches"
 dimension: jewelry-watches
 category: sector
 permalink: /en/discover/sectors/jewelry-watches/
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "luxury"
+    alt: "Luxury jewelry and watches representing craftsmanship and premium design"
+    ext: "jpg"
 ---
 
 Russian jewelry and watchmaking represents a unique fusion of historical craftsmanship and contemporary design sensibilities. This sector blends deep expertise in diamond and gemstone processing, rich watchmaking traditions, and a distinctive aesthetic approach that reflects Russia's complex cultural heritage.
