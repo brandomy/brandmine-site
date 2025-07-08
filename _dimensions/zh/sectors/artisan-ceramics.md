@@ -7,6 +7,10 @@ dimension: artisan-ceramics
 category: sector
 permalink: /zh/discover/sectors/artisan-ceramics/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合传统方法与现代设计美学创造独特功能艺术品的精巧手工陶瓷"
+description: "展示地域传统和工艺的陶瓷产品，为优质室内消费者提供独特的质感、釉料和造型。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

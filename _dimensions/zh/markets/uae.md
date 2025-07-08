@@ -7,6 +7,10 @@ dimension: uae
 category: market
 permalink: /zh/discover/markets/uae/
 
+# NEW ADDITIONS - Business Context
+subtitle: "超现代奢侈品枢纽，融合阿拉伯遗产与国际创新和全球商业连接"
+description: "拥有1000万消费者的精致市场，提供奢侈品酒店服务卓越、独特的香水和优质阿拉伯风格产品。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

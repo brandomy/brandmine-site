@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/innovation-leader/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Визионерские бренды, сочетающие традиционные основы с передовыми подходами для формирования рыночной эволюции и отраслевых сдвигов"
+description: "Компании, сочетающие доказанную надежность с трансформационными возможностями, демонстрирующие, как культурные знания катализируют прорывные инновации."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

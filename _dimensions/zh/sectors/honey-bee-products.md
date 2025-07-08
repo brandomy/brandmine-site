@@ -7,6 +7,10 @@ dimension: honey-bee-products
 category: sector
 permalink: /zh/discover/sectors/honey-bee-products/
 
+# NEW ADDITIONS - Business Context
+subtitle: "从蜂蜜到蜂胶展示古老养蜂传统和治疗特性的蜂产品"
+description: "展示地域花卉和传统方法的天然蜂产品，提供健康和保健益处。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /zh/discover/signals/export-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "具备经过验证的合规性和分销能力、准备进行国际市场扩张的品牌"
+description: "通过国际标准合规、市场研究和完善的分销网络展示出口准备就绪的公司，为全球增长做好准备。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

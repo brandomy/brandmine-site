@@ -7,6 +7,10 @@ dimension: halal-foods
 category: sector
 permalink: /zh/discover/sectors/halal-foods/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合伊斯兰饮食原则与现代便利性和品质的清真认证产品"
+description: "展示文化真实性和宗教合规的清真产品，为穆斯林消费者提供安全和品质选择。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

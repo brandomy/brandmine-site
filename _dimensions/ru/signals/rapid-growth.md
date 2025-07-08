@@ -8,6 +8,10 @@ category: signal
 verification_required: true
 permalink: /ru/discover/signals/rapid-growth/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Бренды высокой скорости, демонстрирующие исключительный рыночный моментум и устойчивое расширение по ключевым бизнес-метрикам"
+description: "Компании, показывающие выдающиеся темпы роста, увеличивающую рыночную долю и доказанные способности масштабирования с устоявшимися положительными траекториями."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -8,6 +8,10 @@ category: market
 country_code: ir  # Add this line
 permalink: /ru/discover/markets/iran/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Древняя персидская цивилизация, сочетающая 2500-летнее наследие с современными инновациями в отличительных потребительских продуктах"
+description: "Утонченный рынок с 86 миллионами потребителей, предлагающий всемирно известные ковры, премиальный шафран и исключительное ремесленное мастерство."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

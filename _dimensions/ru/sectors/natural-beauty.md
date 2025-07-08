@@ -7,6 +7,10 @@ dimension: natural-beauty
 category: sector
 permalink: /ru/discover/sectors/natural-beauty/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Сложные составы для ухода за кожей, сочетающие нетронутые сибирские растения с передовыми научными исследованиями"
+description: "Продукты чистой красоты с эксклюзивными российскими растительными ингредиентами, растущие на 18% в год, вдвое превышая темпы роста обычного рынка красоты."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

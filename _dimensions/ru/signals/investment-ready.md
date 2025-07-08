@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /ru/discover/signals/investment-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Финансово структурированные компании с проверенными основами, позиционированные для капитального партнерства и стратегического роста"
+description: "Бренды с сильным управлением, ясными стратегиями роста и структурированными возможностями, готовые к инвестициям частного капитала, венчурного капитала или стратегических инвестиций."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

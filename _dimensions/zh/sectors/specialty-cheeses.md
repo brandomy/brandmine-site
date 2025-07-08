@@ -7,6 +7,10 @@ dimension: specialty-cheeses
 category: sector
 permalink: /zh/discover/sectors/specialty-cheeses/
 
+# NEW ADDITIONS - Business Context
+subtitle: "展示地域牛奶特性和本土细菌文化的手工奶酪制作的卓越复苏"
+description: "自2015年以来行业增长375%的世界级奶酪，在新产地兴趣增长64%的领域提供发现价值。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

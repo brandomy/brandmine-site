@@ -8,6 +8,10 @@ category: sector
 featured: true
 permalink: /zh/discover/sectors/wine/
 
+# NEW ADDITIONS - Business Context
+subtitle: "通过适应独特风土和气候条件的创新技术培育独特葡萄酒的新兴葡萄栽培"
+description: "增长52%的新纬度葡萄酒，具有明亮的酸度和突出的矿物质，满足以发现为导向的消费者需求。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

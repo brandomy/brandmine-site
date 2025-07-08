@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/cultural-bridge/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Аутентичные рассказчики, переводящие культурное наследие в глобально резонансные продукты и смысловые потребительские опыты"
+description: "Бренды, выступающие в роли культурных послов, превращающие коммерцию в платформы для взаимопонимания и оценки культурного разнообразия."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

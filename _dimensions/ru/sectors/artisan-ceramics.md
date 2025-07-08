@@ -7,6 +7,10 @@ dimension: artisan-ceramics
 category: sector
 permalink: /ru/discover/sectors/artisan-ceramics/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Искусная керамика ручной работы, сочетающая традиционные методы с современной дизайнерской эстетикой для создания отличительных функциональных произведений искусства"
+description: "Керамические изделия, демонстрирующие региональные традиции и мастерство, предлагающие уникальные текстуры, глазури и формы для премиальных потребителей интерьера."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -7,6 +7,10 @@ dimension: cured-meats
 category: sector
 permalink: /zh/discover/sectors/cured-meats/
 
+# NEW ADDITIONS - Business Context
+subtitle: "世代传承的传统肉类腹制方法，创造具有深厚地域风味的独特美食"
+description: "展示古老保存技术和本土香料的手工肉类美食，为美食家提供真实风味。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

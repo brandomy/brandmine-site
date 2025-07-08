@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /ru/discover/attributes/heritage-brand/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Культурные институты с пятидесятилетним опытом стойкости, сохраняющие актуальность через аутентичную эволюцию и поколенческий опыт"
+description: "Бренды, воплощающие культурную память и традиции, предлагающие доказанную стабильность, отточенные техники и немедленное доверие на глобальных рынках."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

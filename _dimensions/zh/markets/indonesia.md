@@ -8,6 +8,10 @@ category: market
 country_code: id  # Add this line
 permalink: /zh/discover/markets/indonesia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "东南亚最大经济体，跨越17000个岛屿，具有非凡的文化多样性和伊斯兰生活方式领导力"
+description: "拥有2.78亿消费者的市场，提供独特的纺织传统、群岛生物多样性和清真产品创新卓越。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -8,6 +8,10 @@ category: market
 country_code: mn
 permalink: /ru/discover/markets/mongolia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Древние кочевые традиции, встречающиеся с современными инновациями между Россией и Китаем с нетронутыми природными ресурсами"
+description: "Отличительный рынок с 3,3 миллиона потребителей, предлагающий всемирно известный кашемир, уникальные кисломолочные продукты и экологически ответственное позиционирование."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

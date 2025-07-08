@@ -7,6 +7,10 @@ dimension: gourmet-foods
 category: sector
 permalink: /ru/discover/sectors/gourmet-foods/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Премиальные продукты питания, сочетающие традиционные кулинарные техники с исключительными ингредиентами для создания отличительных гастрономических впечатлений"
+description: "Изысканные продукты, демонстрирующие региональные кулинарные традиции и ингредиенты, предназначенные для утонченных потребителей, ищущих аутентичные вкусы."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

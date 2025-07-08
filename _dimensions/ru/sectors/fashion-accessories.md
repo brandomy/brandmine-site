@@ -7,6 +7,10 @@ dimension: fashion-accessories
 category: sector
 permalink: /ru/discover/sectors/fashion-accessories/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Аксессуары ручной работы, сочетающие традиционное мастерство с современным дизайном для создания отличительных предметов личного стиля"
+description: "Уникальные аксессуары, демонстрирующие региональные техники и материалы, предлагающие аутентичность и мастерство для сознательных потребителей моды."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

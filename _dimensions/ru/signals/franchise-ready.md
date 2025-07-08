@@ -8,6 +8,10 @@ category: signal
 verification_required: true
 permalink: /ru/discover/signals/franchise-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Сервисные бизнесы с систематизированными операциями и доказанными структурами репликации для масштабируемого расширения"
+description: "Устоявшиеся бренды с документированными процессами, системами обучения и операционными структурами, обеспечивающими успешное развитие франчайзинговых партнеров."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

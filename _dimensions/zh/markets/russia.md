@@ -9,6 +9,10 @@ featured: true
 country_code: ru  # Add this line
 permalink: /zh/discover/markets/russia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "横跨十一个时区的欧亚大国，结合欧洲精致与丰富文化遗产"
+description: "拥有1.44亿消费者的市场，提供手工烈酒卓越、独特的西伯利亚植物和精致的城市奢侈品需求。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

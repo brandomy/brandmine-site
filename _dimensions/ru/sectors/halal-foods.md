@@ -7,6 +7,10 @@ dimension: halal-foods
 category: sector
 permalink: /ru/discover/sectors/halal-foods/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Сертифицированные халяльные продукты, сочетающие исламские диетические принципы с современным удобством и качеством"
+description: "Халяльные продукты, демонстрирующие культурную аутентичность и религиозное соответствие, предлагающие безопасные и качественные варианты для мусульманских потребителей."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

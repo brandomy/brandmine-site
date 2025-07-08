@@ -9,6 +9,10 @@ featured: true
 country_code: my
 permalink: /zh/discover/markets/malaysia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "多元文化东南亚枢纽，结合马来、中国和印度影响与伊斯兰生活方式创新"
+description: "拥有3300万消费者的战略市场，提供清真认证领导力、多元文化融合产品和区域贸易连接。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

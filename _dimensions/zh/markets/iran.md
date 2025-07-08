@@ -8,6 +8,10 @@ category: market
 country_code: ir  # Add this line
 permalink: /zh/discover/markets/iran/
 
+# NEW ADDITIONS - Business Context
+subtitle: "古老波斯文明融合2500年遗产与独特消费产品的现代创新"
+description: "拥有8600万消费者的精致市场，提供世界知名的地毯、优质藏红花和卓越的手工艺。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

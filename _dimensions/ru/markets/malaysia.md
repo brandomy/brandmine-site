@@ -9,6 +9,10 @@ featured: true
 country_code: my
 permalink: /ru/discover/markets/malaysia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Мультикультурный центр Юго-Восточной Азии, сочетающий малайские, китайские и индийские влияния с инновациями в исламском образе жизни"
+description: "Стратегический рынок с 33 миллионами потребителей, предлагающий лидерство в сертификации халяль, мультикультурные продукты фьюжн и региональную торговую связанность."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

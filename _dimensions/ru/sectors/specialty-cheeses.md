@@ -7,6 +7,10 @@ dimension: specialty-cheeses
 category: sector
 permalink: /ru/discover/sectors/specialty-cheeses/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Замечательное возрождение ремесленного сыроделия, демонстрирующее региональные характеристики молока и местные бактериальные культуры"
+description: "Сыры мирового класса с ростом сектора на 375% с 2015 года, предлагающие ценность открытий там, где интерес к новому происхождению вырос на 64%."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

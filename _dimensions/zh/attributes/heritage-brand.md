@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /zh/discover/attributes/heritage-brand/
 
+# NEW ADDITIONS - Business Context
+subtitle: "拥有五十多年韧性、通过真实演进和世代专业知识保持相关性的文化机构"
+description: "体现文化记忆和传统的品牌，在全球市场中提供经过验证的稳定性、精炼技术和即时可信度。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

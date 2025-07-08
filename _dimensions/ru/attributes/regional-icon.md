@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/regional-icon/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Аутентичные послы специфических географических идентичностей, воплощающие отличительный региональный характер через уникальные местные традиции"
+description: "Бренды, представляющие подлинные продукты, связанные с конкретным местом, с проверяемым происхождением, удовлетворяющие потребительский спрос на смысловые опыты культурного открытия."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

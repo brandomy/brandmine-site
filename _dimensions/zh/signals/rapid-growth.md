@@ -8,6 +8,10 @@ category: signal
 verification_required: true
 permalink: /zh/discover/signals/rapid-growth/
 
+# NEW ADDITIONS - Business Context
+subtitle: "展示卓越市场动力和关键商业指标持续扩张的高速品牌"
+description: "显示出色增长率、市场份额增长和经验证的扩展能力，具备稳定正面轨迹的公司。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

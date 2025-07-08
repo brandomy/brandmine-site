@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/artisanal-excellence/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Кропотливая ручная работа и традиционные техники, сохраняющие поколенческое ремесленное мастерство выше методов массового производства"
+description: "Бренды, отдающие приоритет традиционному ремеслу, исключительному вниманию к деталям и сохранению культуры через некомпромиссные ремесленные методы производства."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

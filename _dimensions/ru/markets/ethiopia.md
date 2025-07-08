@@ -8,6 +8,10 @@ category: market
 country_code: et  # Add this line
 permalink: /ru/discover/markets/ethiopia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Второе по величине население Африки, сочетающее древнее наследие с развивающимся экономическим ростом и отличительным сельскохозяйственным мастерством"
+description: "Динамичный рынок с 120 миллионами потребителей, предлагающий всемирно известное кофейное наследие, традиционные ремесла и лидерство в устойчивом производстве."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

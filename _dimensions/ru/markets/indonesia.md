@@ -8,6 +8,10 @@ category: market
 country_code: id  # Add this line
 permalink: /ru/discover/markets/indonesia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Крупнейшая экономика Юго-Восточной Азии, охватывающая 17 000 островов с необычайным культурным разнообразием и лидерством в исламском образе жизни"
+description: "Рынок с 278 миллионами потребителей, предлагающий отличительные текстильные традиции, биоразнообразие архипелага и превосходство в инновациях халяльных продуктов."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -8,6 +8,10 @@ category: market
 country_code: eg  # Add this line
 permalink: /zh/discover/markets/egypt/
 
+# NEW ADDITIONS - Business Context
+subtitle: "连接非洲、中东和地中海的战略门户，拥有7000年文化遗产推动现代创新"
+description: "拥有1.1亿消费者的市场，提供法老遗产、著名纺织品和独特的地中海影响特产。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

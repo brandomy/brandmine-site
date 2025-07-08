@@ -8,6 +8,10 @@ category: market
 country_code: za  # Add this line
 permalink: /zh/discover/markets/south-africa/
 
+# NEW ADDITIONS - Business Context
+subtitle: "非洲最工业化经济体，融合非洲、欧洲和亚洲影响与非凡自然资源"
+description: "拥有6000万消费者的多元市场，提供独特的葡萄酒生产、本土植物和创意创业领导力。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

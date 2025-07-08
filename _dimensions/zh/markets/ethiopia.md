@@ -8,6 +8,10 @@ category: market
 country_code: et  # Add this line
 permalink: /zh/discover/markets/ethiopia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "非洲人口第二大国，结合古老遗产与新兴经济增长和独特农业卓越"
+description: "拥有1.2亿消费者的动态市场，提供世界知名的咖啡遗产、传统工艺和可持续生产领导力。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

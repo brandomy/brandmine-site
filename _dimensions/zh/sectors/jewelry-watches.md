@@ -7,6 +7,10 @@ dimension: jewelry-watches
 category: sector
 permalink: /zh/discover/sectors/jewelry-watches/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合传统技术与现代设计创造独特奢侈品的手工珠宝和手表"
+description: "展示地域宝石和工艺的珠宝作品，为奢侈品收藏家提供独特设计。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

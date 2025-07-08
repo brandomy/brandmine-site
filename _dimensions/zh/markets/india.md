@@ -8,6 +8,10 @@ category: market
 country_code: in  # Add this line
 permalink: /zh/discover/markets/india/
 
+# NEW ADDITIONS - Business Context
+subtitle: "世界人口最多的国家，古老传统与技术进步和多元消费者成熟度的融合"
+description: "拥有14亿消费者的市场，提供卓越的多样性、传统健康遗产和快速增长的创业生态系统。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

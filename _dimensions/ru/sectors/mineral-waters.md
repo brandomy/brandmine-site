@@ -7,6 +7,10 @@ dimension: mineral-waters
 category: sector
 permalink: /ru/discover/sectors/mineral-waters/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Жидкая геология из нетронутых источников с исключительными минеральными составами и документированными терапевтическими свойствами"
+description: "Премиальные функциональные воды с уникальными минеральными профилями, обеспечивающие 40-50% более высокую маржу на рынке бутилированной воды стоимостью $283 миллиарда."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

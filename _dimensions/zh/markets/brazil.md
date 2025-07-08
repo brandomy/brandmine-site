@@ -8,6 +8,10 @@ category: market
 country_code: br  # Add this line
 permalink: /zh/discover/markets/brazil/
 
+# NEW ADDITIONS - Business Context
+subtitle: "拉丁美洲最大经济体，融合欧洲、非洲和本土影响，创造独特的消费者机会"
+description: "拥有2.14亿消费者的动态市场，提供独特的文化融合、不断增长的中产阶级和卓越的出口潜力。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

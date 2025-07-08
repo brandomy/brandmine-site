@@ -7,6 +7,10 @@ dimension: hotels-resorts
 category: sector
 permalink: /ru/discover/sectors/hotels-resorts/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Отели и курорты, сочетающие культурную аутентичность с современным гостеприимством для создания отличительных впечатлений"
+description: "Гостиничные бренды, демонстрирующие местную культуру и наследие, предлагающие уникальные впечатления для путешественников, ищущих аутентичность."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

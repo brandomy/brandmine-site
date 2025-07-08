@@ -8,6 +8,10 @@ category: sector
 featured: true
 permalink: /zh/discover/sectors/artisanal-spirits/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合传统蒸馒方法与地域食材创造独特优质饮品的手工烈酒"
+description: "展示本土植物成分和蒸馒工艺的精酿烈酒，为鉴赏家提供独特的风味谱。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

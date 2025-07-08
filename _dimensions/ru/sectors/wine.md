@@ -8,6 +8,10 @@ category: sector
 featured: true
 permalink: /ru/discover/sectors/wine/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Развивающаяся винная культура с экстремальным климатическим виноградарством, производящая отличительные вина из традиционных и местных сортов"
+description: "Вина новых широт с ростом на 52%, яркой кислотностью и выраженной минеральностью, удовлетворяющие потребительский спрос на открытия."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

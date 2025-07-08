@@ -8,6 +8,10 @@ category: market
 country_code: br  # Add this line
 permalink: /ru/discover/markets/brazil/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Крупнейшая экономика Латинской Америки, сочетающая европейские, африканские и коренные влияния, создающие отличительные потребительские возможности"
+description: "Динамичный рынок с 214 миллионами потребителей, предлагающий уникальное культурное слияние, растущий средний класс и исключительный экспортный потенциал."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

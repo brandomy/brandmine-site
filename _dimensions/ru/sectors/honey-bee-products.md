@@ -7,6 +7,10 @@ dimension: honey-bee-products
 category: sector
 permalink: /ru/discover/sectors/honey-bee-products/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Продукты пчеловодства от меда до прополиса, демонстрирующие древние пчеловодные традиции и терапевтические свойства"
+description: "Натуральные продукты пчеловодства, демонстрирующие региональную флору и традиционные методы, предлагающие здоровье и велнес преимущества."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

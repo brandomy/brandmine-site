@@ -8,6 +8,10 @@ category: market
 country_code: ae  # Add this line
 permalink: /ru/discover/markets/uae/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Ультрасовременный роскошный центр, сочетающий арабское наследие с космополитическими инновациями и глобальной бизнес-связанностью"
+description: "Утонченный рынок с 10 миллионами потребителей, предлагающий превосходство в роскошном гостеприимстве, отличительные ароматы и премиальные продукты, вдохновленные Аравией."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -7,6 +7,10 @@ dimension: artisan-confectionery
 category: sector
 permalink: /zh/discover/sectors/artisan-confectionery/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合传统配方与现代技术创造卓越甜蜜体验的手工糖果"
+description: "展示地域食材和文化传统的优质糖果，面向寻求真实品质的挑剔消费者。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

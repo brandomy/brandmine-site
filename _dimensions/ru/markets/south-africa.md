@@ -8,6 +8,10 @@ category: market
 country_code: za  # Add this line
 permalink: /ru/discover/markets/south-africa/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Наиболее индустриализированная экономика Африки, сочетающая африканские, европейские и азиатские влияния с необычайными природными ресурсами"
+description: "Разнообразный рынок с 60 миллионами потребителей, предлагающий отличительное винное производство, местные растения и лидерство в творческом предпринимательстве."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -9,6 +9,10 @@ featured: true
 country_code: ru  # Add this line
 permalink: /ru/discover/markets/russia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Евразийская держава, охватывающая одиннадцать часовых поясов, сочетающая европейскую утонченность с богатым культурным наследием"
+description: "Рынок с 144 миллионами потребителей, предлагающий превосходство в ремесленных спиртных напитках, отличительные сибирские растения и утонченный городской спрос на роскошь."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

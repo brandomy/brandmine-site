@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /ru/discover/attributes/founder-led/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Предпринимательское видение с практическим руководством, обеспечивающее аутентичные истории бренда и гибкие бизнес-решения"
+description: "Бизнесы, управляемые первоначальными создателями, обеспечивающие последовательное качество, искренние связи и гибкие возможности партнерства."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

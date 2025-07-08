@@ -8,6 +8,10 @@ dimension: hotels-resorts
 category: sector
 permalink: /zh/discover/sectors/hotels-resorts/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合文化真实性与现代服务创造独特体验的酒店和度假村"
+description: "展示本土文化和遗产的酒店品牌，为寻求真实性的旅行者提供独特体验。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

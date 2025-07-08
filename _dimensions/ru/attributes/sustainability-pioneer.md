@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/sustainability-pioneer/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Бизнес-лидеры, интегрирующие экологическое управление и социальную ответственность как фундаментальные стратегии для регенеративной коммерции"
+description: "Бренды, демонстрирующие, что бизнес-успех и экологическая ответственность взаимосвязаны через целостные устойчивые бизнес-модели."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

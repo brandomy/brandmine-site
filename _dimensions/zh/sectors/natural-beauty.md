@@ -7,6 +7,10 @@ dimension: natural-beauty
 category: sector
 permalink: /zh/discover/sectors/natural-beauty/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合原始西伯利亚植物与尖端科学研究的精致护肤配方"
+description: "具有独特俄罗斯植物成分的清洁美容产品，年增长18%，是常规美容市场增长率的两倍。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

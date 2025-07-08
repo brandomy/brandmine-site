@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/innovation-leader/
 
+# NEW ADDITIONS - Business Context
+subtitle: "平衡传统基础与前沿方法、塑造市场演进和行业颠覆的远见品牌"
+description: "结合经过验证的可靠性与变革能力的公司，展示文化知识如何催化突破性创新。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

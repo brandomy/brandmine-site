@@ -7,6 +7,10 @@ dimension: gourmet-foods
 category: sector
 permalink: /zh/discover/sectors/gourmet-foods/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合传统烹饪技术与卓越食材创造独特美食体验的优质食品"
+description: "展示地域烹饪传统和食材的精致产品，面向寻求真实风味的精致消费者。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

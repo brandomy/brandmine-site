@@ -7,6 +7,10 @@ dimension: natural-supplements
 category: sector
 permalink: /ru/discover/sectors/natural-supplements/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Тщательно созданные велнес-решения, использующие растения из экстремальных сред с замечательными адаптогенными и функциональными свойствами"
+description: "Научно подтвержденные добавки из регионов Алтая и Байкала, ориентированные на глобальный рынок велнеса стоимостью $7,4 триллиона."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

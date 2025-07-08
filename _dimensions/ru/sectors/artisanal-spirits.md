@@ -8,6 +8,10 @@ category: sector
 featured: true
 permalink: /ru/discover/sectors/artisanal-spirits/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Спиртные напитки ручной работы, сочетающие традиционные методы дистилляции с региональными ингредиентами для создания отличительных премиальных напитков"
+description: "Крафтовые спиртные напитки, демонстрирующие местные ботанические компоненты и мастерство дистилляции, предлагающие уникальные вкусовые профили для знатоков."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

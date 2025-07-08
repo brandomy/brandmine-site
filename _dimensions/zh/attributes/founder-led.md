@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /zh/discover/attributes/founder-led/
 
+# NEW ADDITIONS - Business Context
+subtitle: "通过实际领导提供真实品牌故事和灵活商业决策的企业家愿景"
+description: "由原始创建者指导的企业，确保一致的质量、真诚的连接和灵活的合作机会。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

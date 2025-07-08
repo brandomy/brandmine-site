@@ -8,6 +8,10 @@ category: market
 country_code: in  # Add this line
 permalink: /ru/discover/markets/india/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Крупнейшая по населению страна мира, сочетающая древние традиции с технологическим прогрессом и разнообразной потребительской утонченностью"
+description: "Рынок с 1,4 миллиарда потребителей, предлагающий исключительное разнообразие, традиционное наследие здоровья и быстро растущую стартап-экосистему."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

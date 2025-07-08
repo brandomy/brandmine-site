@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /ru/discover/signals/export-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Бренды, готовые к международной экспансии с доказанными возможностями соответствия и дистрибуции"
+description: "Компании, демонстрирующие готовность к экспорту через соответствие международным стандартам, исследования рынка и налаженные дистрибуционные сети для глобального роста."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

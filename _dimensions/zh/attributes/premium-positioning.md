@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/premium-positioning/
 
+# NEW ADDITIONS - Business Context
+subtitle: "通过优质材料、细致生产和精致品牌叙述实现高端市场对准，获得价格溢价"
+description: "为寻求真实优质体验的挑剔全球消费者提供卓越品质、更高利润和独特特征的品牌。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

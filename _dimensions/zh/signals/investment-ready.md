@@ -9,6 +9,10 @@ featured: true
 verification_required: true
 permalink: /zh/discover/signals/investment-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "具有验证基础的财务结构化公司，定位于资本合作伙伴关系和战略增长"
+description: "具有强大治理、清晰增长战略和结构化机会的品牌，为私募股权、风险投资或战略投资做好准备。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

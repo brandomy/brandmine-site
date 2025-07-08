@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/cultural-bridge/
 
+# NEW ADDITIONS - Business Context
+subtitle: "将文化遗产转化为全球共鸣产品和有意义消费者体验的真实故事讲述者"
+description: "作为文化大使的品牌，将商业转化为相互理解和欣赏文化多样性的平台。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

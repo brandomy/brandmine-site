@@ -7,6 +7,10 @@ dimension: fashion-accessories
 category: sector
 permalink: /zh/discover/sectors/fashion-accessories/
 
+# NEW ADDITIONS - Business Context
+subtitle: "结合传统工艺与现代设计创造独特个人风格物品的手工配饰"
+description: "展示地域技术和材料的独特配饰，为有意识的时尚消费者提供真实性和工艺性。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

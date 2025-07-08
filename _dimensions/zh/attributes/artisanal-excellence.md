@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/artisanal-excellence/
 
+# NEW ADDITIONS - Business Context
+subtitle: "超越大规模生产方法、保持世代工艺精湛的细致手工和传统技术"
+description: "优先考虑传统工艺、卓越细节和通过不妥协的手工生产方法保护文化的品牌。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

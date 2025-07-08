@@ -8,6 +8,10 @@ category: market
 country_code: mn
 permalink: /zh/discover/markets/mongolia/
 
+# NEW ADDITIONS - Business Context
+subtitle: "古老游牧传统与现代创新在俄罗斯和中国之间相遇，拥有原始自然资源"
+description: "拥有330万消费者的独特市场，提供世界知名的羊绒、独特的发酵乳制品和生态意识定位。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

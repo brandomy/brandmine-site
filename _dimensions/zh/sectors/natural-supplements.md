@@ -7,6 +7,10 @@ dimension: natural-supplements
 category: sector
 permalink: /zh/discover/sectors/natural-supplements/
 
+# NEW ADDITIONS - Business Context
+subtitle: "利用极端环境植物具有卓越适应性和功能特性的精心制作健康解决方案"
+description: "来自阿尔泰和贝加尔地区的科学验证补充剂，目标是价7.4万亿美元的全球健康市场。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

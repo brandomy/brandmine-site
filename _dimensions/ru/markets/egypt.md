@@ -8,6 +8,10 @@ category: market
 country_code: eg  # Add this line
 permalink: /ru/discover/markets/egypt/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Стратегические ворота, соединяющие Африку, Ближний Восток и Средиземноморье с 7000-летним культурным наследием, стимулирующим современные инновации"
+description: "Рынок с 110 миллионами потребителей, предлагающий фараоновское наследие, известные текстильные традиции и уникальные специальные продукты с средиземноморским влиянием."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

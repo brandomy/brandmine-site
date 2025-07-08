@@ -7,6 +7,10 @@ dimension: mineral-waters
 category: sector
 permalink: /zh/discover/sectors/mineral-waters/
 
+# NEW ADDITIONS - Business Context
+subtitle: "来自原始泉源的液体地质学，具有卓越的矿物成分和记录在案的治疗特性"
+description: "在价2830亿美元的瓶装水市场中，具有独特矿物谱的优质功能水获得40-50%的更高利润。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

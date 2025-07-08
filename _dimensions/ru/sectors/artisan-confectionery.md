@@ -7,6 +7,10 @@ dimension: artisan-confectionery
 category: sector
 permalink: /ru/discover/sectors/artisan-confectionery/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Кондитерские изделия ручной работы, сочетающие традиционные рецепты с современными техниками для создания исключительных сладких впечатлений"
+description: "Премиальные сладости, демонстрирующие региональные ингредиенты и культурные традиции, предназначенные для взыскательных потребителей, ищущих аутентичное качество."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

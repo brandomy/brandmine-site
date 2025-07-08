@@ -7,6 +7,10 @@ dimension: cured-meats
 category: sector
 permalink: /ru/discover/sectors/cured-meats/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Традиционные методы вяления мяса, передаваемые из поколения в поколение, создающие отличительные деликатесы с глубокими региональными вкусами"
+description: "Мясные деликатесы ручной работы, демонстрирующие древние техники консервации и местные специи, предлагающие аутентичные вкусы для гурманов."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

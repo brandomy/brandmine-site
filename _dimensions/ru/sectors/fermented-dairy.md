@@ -7,6 +7,10 @@ dimension: fermented-dairy
 category: sector
 permalink: /ru/discover/sectors/fermented-dairy/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Традиционные кисломолочные продукты, использующие древние методы ферментации для создания отличительных вкусов и полезных свойств"
+description: "Кисломолочные продукты ручной работы, демонстрирующие региональные культуры и техники, предлагающие уникальные вкусы и пробиотические преимущества."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /ru/discover/attributes/premium-positioning/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Согласование с верхними сегментами рынка через превосходные материалы, тщательное производство и сложные истории бренда, обеспечивающие ценовые премии"
+description: "Бренды, обеспечивающие исключительное качество, более высокие маржи и отличительные характеристики для взыскательных глобальных потребителей, стремящихся к аутентичному премиальному опыту."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

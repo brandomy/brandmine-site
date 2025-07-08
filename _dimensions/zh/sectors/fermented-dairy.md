@@ -7,6 +7,10 @@ dimension: fermented-dairy
 category: sector
 permalink: /zh/discover/sectors/fermented-dairy/
 
+# NEW ADDITIONS - Business Context
+subtitle: "使用古老发酵方法创造独特风味和健康益处的传统乳制品"
+description: "展示地域文化和技术的手工乳制品，提供独特风味和益生菌优势。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

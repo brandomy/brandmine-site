@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/sustainability-pioneer/
 
+# NEW ADDITIONS - Business Context
+subtitle: "将环境管理和社会责任整合为再生商业基本战略的商业领袖"
+description: "通过整体可持续商业模式展示商业成功与环境责任相互关联的品牌。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

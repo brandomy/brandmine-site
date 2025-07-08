@@ -7,6 +7,10 @@ dimension: jewelry-watches
 category: sector
 permalink: /ru/discover/sectors/jewelry-watches/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Украшения и часы ручной работы, сочетающие традиционные техники с современным дизайном для создания отличительных предметов роскоши"
+description: "Ювелирные изделия, демонстрирующие региональные драгоценные камни и мастерство, предлагающие уникальные дизайны для коллекционеров роскоши."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

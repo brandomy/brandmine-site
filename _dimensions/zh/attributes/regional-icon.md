@@ -8,6 +8,10 @@ category: attribute
 verification_required: true
 permalink: /zh/discover/attributes/regional-icon/
 
+# NEW ADDITIONS - Business Context
+subtitle: "通过独特本土传统体现独特地域特色的特定地理身份真实大使"
+description: "代表具有可验证出处的真实地方产品的品牌，满足消费者对有意义文化发现体验的需求。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

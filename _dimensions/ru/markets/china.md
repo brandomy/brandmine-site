@@ -8,6 +8,10 @@ category: market
 country_code: cn  # Add this line
 permalink: /ru/discover/markets/china/
 
+# NEW ADDITIONS - Business Context
+subtitle: "Вторая по величине экономика мира, сочетающая древнюю цивилизацию с быстрой модернизацией и лидерством в цифровых инновациях"
+description: "Рынок с 1,4 миллиарда потребителей, сочетающий богатое культурное наследие с передовыми технологиями и сложным развитием премиальных брендов."
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:

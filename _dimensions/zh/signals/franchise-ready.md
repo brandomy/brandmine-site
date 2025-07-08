@@ -8,6 +8,10 @@ category: signal
 verification_required: true
 permalink: /zh/discover/signals/franchise-ready/
 
+# NEW ADDITIONS - Business Context
+subtitle: "具有系统化运营和经验证的复制框架、可扩展扩张的服务型企业"
+description: "拥有记录完善的流程、培训系统和运营框架的成熟品牌，能够成功发展特许经营合作伙伴。"
+
 # === IMAGES (Semantic Structure for Collection-Image System) ===
 images:
   hero:
