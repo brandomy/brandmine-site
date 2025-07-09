@@ -189,6 +189,10 @@
             {% comment %} Handle insights-category sections {% endcomment %}
             {% assign content_include_path = "pages/insights-category/" | append: section | append: ".html" %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path data_attributes=data_attributes %}
+          {% elsif page_type == "dimensions-category" %}
+            {% comment %} Handle dimensions-category sections {% endcomment %}
+            {% assign content_include_path = "pages/dimensions-category/" | append: section | append: ".html" %}
+            {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path data_attributes=data_attributes %}
           {% elsif page_type == "journal" %}
             {% comment %} Handle special journal sections {% endcomment %}
             {% if section == "author-profile" %}

@@ -1,10 +1,11 @@
 ---
 layout: dimensions-category
-title: Секторы
-subtitle: Находите бренды в различных отраслевых категориях и типах продукции
+title: "Секторы"
+category: "sectors"
+description: "Находите бренды в различных отраслевых категориях и типах продукции"
+updated_date: 2025-07-09
 permalink: /ru/discover/sectors/
 ref: sectors
-category: sector
 lang: ru
 ---
 

@@ -1,32 +1,32 @@
 /* ==========================================================================
    PANEL TYPES - BEM-COMPLIANT ARCHITECTURE
-   ========================================================================== 
-   
+   ==========================================================================
+
    PURPOSE: Centralized panel styling system following BEM methodology
    USAGE: Applied via page_sections.yml configuration
-   
+
    ARCHITECTURE:
    - Hero Panel System (Lines 24-717): 6 tier hierarchy for page headers
    - Color Panel Variants (Lines 734-997): Background styling options
    - Utility Modifiers (Lines 970-997): Layout behavior modifiers
-   
+
    BEM STRUCTURE:
    - Block: .panel
    - Block Modifiers: .panel--[modifier] (e.g., .panel--hero)
    - Element: .panel__[element] (e.g., .panel__content)
    - Element Modifiers: .panel__[element]--[modifier] (e.g., .panel__heading--hero)
-   
+
    HERO TIER SYSTEM:
    - Tier 1: .panel--hero (Navigation pages)
-   - Tier 2: .panel--hero-subtle (Individual profiles)  
+   - Tier 2: .panel--hero-subtle (Individual profiles)
    - Tier 3: .panel--hero-image (Editorial content)
    - Tier 4: .panel--hero-split (Side-by-side layout)
    - Tier 5: .panel--hero-card (Card-based layout)
    - Special: .panel--hero-category (Category pages)
-   
+
    COLOR SYSTEM INTEGRATION:
    Uses design tokens from tokens.scss for consistent theming
-   
+
    LAST UPDATED: 2025-07-09
    ========================================================================== */
 
@@ -215,20 +215,20 @@
     color: white;
     text-align: center;
     width: 100%;
-    
+
     .panel__heading-primary {
       color: white;
       text-shadow: var(--text-shadow-medium);
       margin-bottom: 1rem;
     }
-    
+
     .panel__subtitle {
       color: var(--surface-alpha-90);
       text-shadow: var(--text-shadow-light);
       margin-bottom: 2rem;
     }
   }
-  
+
   .hero-actions {
     margin-top: 2rem;
   }
@@ -236,11 +236,11 @@
   @media (width <= 768px) {
     min-height: 40vh;
     /* Padding remains consistent with base system */
-    
+
     .panel__content {
       min-height: 40vh;
     }
-    
+
     .panel__heading-primary {
       font-size: 2rem;
     }
@@ -308,15 +308,15 @@
   background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
   color: white;
   padding: var(--space-8) 0;
-  
+
   .split-hero {
     display: grid;
     min-height: var(--hero-height-sm);
-    
+
     /* Mobile: stacked layout */
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
-    
+
     /* Desktop: side-by-side layout */
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
@@ -324,7 +324,7 @@
       align-items: center; /* Ensure both grid cells are vertically centered */
       min-height: var(--hero-height-md);
     }
-    
+
     @media (min-width: 992px) {
       min-height: var(--hero-height-lg);
     }
@@ -335,15 +335,15 @@
       justify-content: center;
       padding: var(--space-8) var(--space-6);
       text-align: left;
-      
+
       @media (min-width: 768px) {
         padding: var(--space-12) var(--space-10);
       }
-      
+
       @media (min-width: 992px) {
         padding: var(--space-16) var(--space-12);
       }
-      
+
       /* Mobile: center text when stacked */
       @media (max-width: 767px) {
         text-align: center;
@@ -354,7 +354,7 @@
       position: relative;
       overflow: hidden;
       aspect-ratio: 3/2; /* Maintain 3:2 aspect ratio on all screen sizes */
-      
+
       img {
         width: 100%;
         height: 100%;
@@ -369,16 +369,16 @@
       font-weight: var(--font-bold);
       line-height: var(--leading-tight);
       color: white;
-      
+
       @media (min-width: 768px) {
         font-size: var(--text-4xl);
       }
-      
+
       @media (min-width: 992px) {
         font-size: var(--text-5xl);
       }
     }
-    
+
     &__subtitle {
       margin: 0;
       font-size: var(--text-lg);
@@ -386,11 +386,11 @@
       line-height: var(--leading-relaxed);
       color: var(--surface-alpha-90);
       max-width: 50ch;
-      
+
       @media (min-width: 768px) {
         font-size: var(--text-xl);
       }
-      
+
       /* Mobile: center subtitle */
       @media (max-width: 767px) {
         margin-left: auto;
@@ -435,11 +435,11 @@
   /* Post-specific styling for individual journal posts */
   .split-hero--post .split-hero__title {
     font-size: var(--text-2xl);
-    
+
     @media (min-width: 768px) {
       font-size: var(--text-3xl);
     }
-    
+
     @media (min-width: 992px) {
       font-size: var(--text-4xl);
     }
@@ -448,7 +448,7 @@
   .split-hero--post .split-hero__subtitle {
     font-size: var(--text-base);
     line-height: var(--leading-relaxed);
-    
+
     @media (min-width: 768px) {
       font-size: var(--text-lg);
     }
@@ -463,11 +463,11 @@
     font-size: var(--text-sm);
     color: var(--surface-alpha-90);
     margin-bottom: var(--space-6);
-    
+
     @media (max-width: 767px) {
       justify-content: center;
     }
-    
+
     .separator {
       margin: 0 var(--space-2);
       opacity: 0.7;
@@ -485,7 +485,7 @@
     flex-wrap: wrap;
     gap: var(--space-2);
     margin-top: var(--space-4);
-    
+
     @media (max-width: 767px) {
       justify-content: center;
     }
@@ -505,7 +505,7 @@
     letter-spacing: 0.05em;
     transition: all var(--transition-fast);
     border: var(--border-surface-medium);
-    
+
     &:hover,
     &:focus {
       background: var(--surface-overlay-medium);
@@ -538,7 +538,7 @@
     font-size: var(--text-sm);
     color: var(--surface-alpha-90);
     font-weight: var(--font-medium);
-    
+
     .separator {
       margin: 0 var(--space-2);
       opacity: 0.8;
@@ -548,7 +548,7 @@
 
 /* RESERVED FOR FUTURE EXPANSION:
    Tier 5: Taxonomy Rollups - .panel--hero-taxonomy
-   Tier 6: Content Categories - .panel--hero-category  
+   Tier 6: Content Categories - .panel--hero-category
    Tier 7: Specialized Profiles - .panel--hero-profile-enhanced
 */
 
@@ -608,14 +608,14 @@
   }
 }
 
-/* Note: panel--hero-split uses split-hero__title and split-hero__subtitle 
+/* Note: panel--hero-split uses split-hero__title and split-hero__subtitle
    classes for typography, defined within the .panel--hero-split block above */
 
 /* Tier 5: Hero Card (Card-based hero for article content) */
 .panel--hero-card {
   background: var(--gray-50);
   padding: 0; // Hero card component manages its own padding
-  
+
   .panel__content {
     max-width: 100%;
     padding: 0; // Allow full-width card layout
@@ -627,15 +627,15 @@
   /* Base split panel structure */
   padding: var(--space-8) 0;
   color: white;
-  
+
   .split-hero {
     display: grid;
     min-height: var(--hero-height-sm);
-    
+
     /* Mobile: stacked layout */
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
-    
+
     /* Desktop: side-by-side layout */
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
@@ -643,7 +643,7 @@
       align-items: center;
       min-height: var(--hero-height-md);
     }
-    
+
     @media (min-width: 992px) {
       min-height: var(--hero-height-lg);
     }
@@ -654,15 +654,15 @@
       justify-content: center;
       padding: var(--space-8) var(--space-6);
       text-align: left;
-      
+
       @media (min-width: 768px) {
         padding: var(--space-12) var(--space-10);
       }
-      
+
       @media (min-width: 992px) {
         padding: var(--space-16) var(--space-12);
       }
-      
+
       /* Mobile: center text when stacked */
       @media (max-width: 767px) {
         text-align: center;
@@ -673,7 +673,7 @@
       position: relative;
       overflow: hidden;
       aspect-ratio: 3/2;
-      
+
       img {
         width: 100%;
         height: 100%;
@@ -688,16 +688,16 @@
       font-weight: var(--font-bold);
       line-height: var(--leading-tight);
       color: white;
-      
+
       @media (min-width: 768px) {
         font-size: var(--text-4xl);
       }
-      
+
       @media (min-width: 992px) {
         font-size: var(--text-5xl);
       }
     }
-    
+
     &__subtitle {
       margin: 0;
       font-size: var(--text-lg);
@@ -705,11 +705,11 @@
       line-height: var(--leading-relaxed);
       color: var(--surface-alpha-90);
       max-width: 50ch;
-      
+
       @media (min-width: 768px) {
         font-size: var(--text-xl);
       }
-      
+
       /* Mobile: center subtitle */
       @media (max-width: 767px) {
         margin-left: auto;
@@ -758,6 +758,188 @@
   max-width: fit-content;
   display: inline-flex;
   align-self: flex-start; /* Align to start of flex container */
+}
+
+/* Universal Category Hero Panel - Split Layout Structure */
+.panel--category-hero {
+  /* Base split panel structure */
+  padding: var(--space-8) 0;
+  color: white;
+
+  .split-hero {
+    display: grid;
+    min-height: var(--hero-height-sm);
+
+    /* Mobile: stacked layout */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+
+    /* Desktop: side-by-side layout */
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      min-height: var(--hero-height-md);
+    }
+
+    @media (min-width: 992px) {
+      min-height: var(--hero-height-lg);
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-8) var(--space-6);
+      text-align: left;
+
+      @media (min-width: 768px) {
+        padding: var(--space-12) var(--space-10);
+      }
+
+      @media (min-width: 992px) {
+        padding: var(--space-16) var(--space-12);
+      }
+
+      /* Mobile: center text when stacked */
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+
+    &__image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/2;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    &__title {
+      margin: 0 0 var(--space-4) 0;
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-tight);
+      color: white;
+
+      @media (min-width: 768px) {
+        font-size: var(--text-4xl);
+      }
+
+      @media (min-width: 992px) {
+        font-size: var(--text-5xl);
+      }
+    }
+
+    &__subtitle {
+      margin: 0;
+      font-size: var(--text-lg);
+      font-weight: var(--font-normal);
+      line-height: var(--leading-relaxed);
+      color: var(--surface-alpha-90);
+      max-width: 50ch;
+
+      @media (min-width: 768px) {
+        font-size: var(--text-xl);
+      }
+
+      /* Mobile: center subtitle */
+      @media (max-width: 767px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &__metadata {
+      margin-top: var(--space-4);
+      font-size: var(--text-base);
+      color: var(--surface-alpha-80);
+
+      @media (min-width: 768px) {
+        font-size: var(--text-lg);
+      }
+    }
+  }
+}
+
+/* INSIGHTS CATEGORY VARIANTS (keep existing) */
+.panel--category-hero[data-category="brand-spotlight"] {
+  background: radial-gradient(circle at center, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--category-hero[data-category="brand-spotlight"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--category-hero[data-category="founders-journey"] {
+  background: radial-gradient(circle at center, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+.panel--category-hero[data-category="founders-journey"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+.panel--category-hero[data-category="location-intelligence"] {
+  background: radial-gradient(circle at center, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--category-hero[data-category="location-intelligence"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--category-hero[data-category="market-momentum"] {
+  background: radial-gradient(circle at center, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+.panel--category-hero[data-category="market-momentum"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+/* DIMENSION CATEGORY VARIANTS (new) - UNIFIED SELECTORS */
+.panel--category-hero[data-category="markets"] {
+  background: radial-gradient(circle at center, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--category-hero[data-category="markets"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--category-hero[data-category="sectors"] {
+  background: radial-gradient(circle at center, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+.panel--category-hero[data-category="sectors"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+.panel--category-hero[data-category="attributes"] {
+  background: radial-gradient(circle at center, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--category-hero[data-category="attributes"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--category-hero[data-category="signals"] {
+  background: radial-gradient(circle at center, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+.panel--category-hero[data-category="signals"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+/* Badge styling for both types */
+.panel--category-hero .insight-category-new,
+.panel--category-hero .dimension-category-badge {
+  width: auto !important;
+  max-width: fit-content;
+  display: inline-flex;
+  align-self: flex-start;
 }
 
 /* Hero image specific text styling for better contrast - BEM compliant */

@@ -1,10 +1,11 @@
 ---
 layout: dimensions-category
-title: 行业
-subtitle: 在各种行业类别和产品类型中寻找品牌
+title: "行业"
+category: "sectors"
+description: "在各种行业类别和产品类型中寻找品牌"
+updated_date: 2025-07-09
 permalink: /zh/discover/sectors/
 ref: sectors
-category: sector
 lang: zh
 ---
 

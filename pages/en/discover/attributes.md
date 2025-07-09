@@ -1,19 +1,10 @@
 ---
 layout: dimensions-category
-title: Discover by Brand Attribute
-subtitle: Explore brands with distinctive characteristics from the BRICS+
+title: "Attributes"
+category: "attributes"
+description: "Explore brands with distinctive characteristics from the BRICS+"
+updated_date: 2025-07-09
 permalink: /en/discover/attributes/
 lang: en
 ref: attributes
-category: attribute
-# NOTE: sections kept in frontmatter due to discrepancy with page_sections.yml
-# page_sections.yml dimension-category has: breadcrumbs, content
-# but this page uses: breadcrumbs, hero, featured-attributes, all-attributes-grid, attribute-insights, cross-navigation
-sections:
-  - breadcrumbs
-  - hero
-  - featured-attributes
-  - all-attributes-grid
-  - attribute-insights
-  - cross-navigation
 ---

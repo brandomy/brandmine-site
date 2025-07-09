@@ -1,20 +1,10 @@
 ---
 layout: dimensions-category
-title: Рынки
-subtitle: Исследуйте бренды по их географическому происхождению в странах БРИКС+
+title: "Рынки"
+category: "markets"
+description: "Исследуйте бренды по их географическому происхождению в странах БРИКС+"
+updated_date: 2025-07-09
 permalink: /ru/discover/markets/
 lang: ru
 ref: markets
-category: market
-# NOTE: sections kept in frontmatter due to discrepancy with page_sections.yml
-# page_sections.yml dimension-category has: breadcrumbs, content
-# but this page uses: breadcrumbs, hero, featured-markets, all-markets-grid, market-map, market-insights, cross-navigation
-sections:
-  - breadcrumbs
-  - hero
-  - featured-markets
-  - all-markets-grid
-  - market-map
-  - market-insights
-  - cross-navigation
 ---

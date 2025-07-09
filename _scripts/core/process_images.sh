@@ -7,27 +7,33 @@
 #   Automatically generates responsive images (400w, 800w, 1200w) from originals
 #   with collection identifier prefix for organized asset management
 #
+# SPECIAL HANDLING:
+#   - Categories collection: No prefix added (flat naming)
+#   - All other collections: Collection slug prefix added
+#
 # HOW IT WORKS:
 #   1. Finds original images in "originals" subdirectories
 #   2. Extracts collection slug from directory path structure
 #   3. Generates 3 responsive sizes with optimized quality settings
-#   4. Adds collection prefix to prevent filename conflicts
+#   4. Adds collection prefix to prevent filename conflicts (except categories)
 #
 # DIRECTORY STRUCTURE EXPECTED:
 #   assets/images/[collection]/[slug]/originals/[image-file]
 #
 #   Examples:
 #   - assets/images/brands/ru-teatime/originals/hero-storefront.jpg
+#   - assets/images/categories/originals/attributes.jpg
 #   - assets/images/dimensions/sectors/originals/hero-vineyard.jpg
 #   - assets/images/founders/br-eduardo/originals/portrait-formal.jpg
 #
 # OUTPUT FORMAT:
-#   Generated files: [slug]-[original-name]-[size]w.[ext]
+#   Categories: [original-name]-[size]w.[ext]
+#   Other collections: [slug]-[original-name]-[size]w.[ext]
 #
 #   Examples:
-#   - ru-teatime-hero-storefront-400w.jpg
-#   - sectors-hero-vineyard-800w.jpg
-#   - br-eduardo-portrait-formal-1200w.jpg
+#   - attributes-400w.jpg (categories - no prefix)
+#   - ru-teatime-hero-storefront-800w.jpg (brands - with prefix)
+#   - sectors-hero-vineyard-1200w.jpg (dimensions - with prefix)
 #
 # QUALITY OPTIMIZATION:
 #   - Portrait images (height > width): 90% quality (better for faces)
@@ -36,7 +42,7 @@
 # =============================================================================
 
 # Command line arguments
-COLLECTION=$1  # Collection name (brands, founders, insights, dimensions, etc.)
+COLLECTION=$1  # Collection name (brands, founders, insights, dimensions, categories, etc.)
 SLUG=$2        # Specific slug/identifier within collection (optional)
 
 # =============================================================================
@@ -77,7 +83,17 @@ process_images() {
         # This extracts: ru-teatime
         collection_slug=$(basename "$dir")
 
-        echo "📷 Processing: $filename for collection '$collection_slug'"
+        # SPECIAL CASE: Categories collection uses flat naming (no prefix)
+        # Check if we're in the categories collection by looking at the collection_slug
+        if [ "$collection_slug" = "categories" ]; then
+            echo "📷 Processing: $filename for categories collection (flat naming)"
+            file_prefix=""
+            separator=""
+        else
+            echo "📷 Processing: $filename for collection '$collection_slug'"
+            file_prefix="$collection_slug"
+            separator="-"
+        fi
 
         # Get original image dimensions using ImageMagick
         dimensions=$(identify -format "%w %h" "$img")
@@ -97,9 +113,14 @@ process_images() {
 
         # Generate responsive images for each target size
         for size in 400 800 1200; do
-            # Build output filename with collection prefix
-            # Format: [collection-slug]-[original-name]-[size]w.[extension]
-            output="$dir/${collection_slug}-${name}-${size}w.$ext"
+            # Build output filename with conditional prefix
+            # Categories: [original-name]-[size]w.[extension]
+            # Others: [collection-slug]-[original-name]-[size]w.[extension]
+            if [ -n "$file_prefix" ]; then
+                output="$dir/${file_prefix}${separator}${name}-${size}w.$ext"
+            else
+                output="$dir/${name}-${size}w.$ext"
+            fi
 
             if [ "$orientation" = "portrait" ]; then
                 # For portrait images, scale by height to maintain aspect ratio
@@ -181,7 +202,7 @@ case "$COLLECTION" in
         ;;
 
     # Supported collections
-    "brands"|"founders"|"insights"|"case-studies"|"journal"|"pages"|"people"|"dimensions")
+    "brands"|"founders"|"insights"|"case-studies"|"journal"|"pages"|"people"|"dimensions"|"categories")
         if [ -n "$SLUG" ]; then
             # Process specific collection/slug combination
             process_specific "$COLLECTION" "$SLUG"
@@ -211,13 +232,14 @@ case "$COLLECTION" in
         echo "  $0 all                     # Process everything"
         echo ""
         echo "📁 Supported Collections:"
-        echo "  brands, founders, insights, case-studies, journal, pages, people, dimensions"
+        echo "  brands, founders, insights, case-studies, journal, pages, people, dimensions, categories"
         echo ""
         echo "💡 Examples:"
         echo "  $0 brands ru-teatime                    # Process specific brand"
         echo "  $0 founders br-eduardo-santos           # Process specific founder"
         echo "  $0 insights ru-russian-wine-renaissance # Process specific insight"
         echo "  $0 dimensions sectors                   # Process dimensions sectors"
+        echo "  $0 categories                           # Process all categories (flat naming)"
         echo "  $0 brands                               # Process all brands"
         echo "  $0 dimensions                           # Process all dimensions"
         echo "  $0 all                                  # Process everything"
@@ -229,8 +251,9 @@ case "$COLLECTION" in
         echo ""
         echo "📤 Output:"
         echo "  • Generates 3 sizes: 400w, 800w, 1200w"
-        echo "  • Format: [slug]-[original-name]-[size]w.[ext]"
-        echo "  • Example: ru-teatime-hero-storefront-400w.jpg"
+        echo "  • Categories: [original-name]-[size]w.[ext]"
+        echo "  • Others: [slug]-[original-name]-[size]w.[ext]"
+        echo "  • Examples: attributes-400w.jpg, ru-teatime-hero-storefront-800w.jpg"
         exit 1
         ;;
 esac
@@ -244,7 +267,8 @@ echo "🎉 Processing Complete!"
 echo "======================="
 echo ""
 echo "📋 Generated File Format:"
-echo "   [collection-slug]-[original-name]-[size]w.[extension]"
+echo "   Categories: [original-name]-[size]w.[extension]"
+echo "   Others: [collection-slug]-[original-name]-[size]w.[extension]"
 echo ""
 echo "💡 Generated Files Include:"
 echo "   • 400w version (mobile-optimized)"

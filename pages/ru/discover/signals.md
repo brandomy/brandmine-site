@@ -1,10 +1,11 @@
 ---
 layout: dimensions-category
-title: Сигналы
-subtitle: Определите бренды с конкретными показателями готовности бизнеса
+title: "Сигналы"
+category: "signals"
+description: "Определите бренды с конкретными показателями готовности бизнеса"
+updated_date: 2025-07-09
 permalink: /ru/discover/signals/
 ref: signals
-category: signal
 lang: ru
 ---
 

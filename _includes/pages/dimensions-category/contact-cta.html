@@ -1,0 +1,34 @@
+{% comment %}
+================================================================================
+CONTACT CTA: Dimensions Category Contact Section
+PATH: _includes/pages/dimensions-category/contact-cta.html
+PURPOSE: Contact call-to-action for dimension category pages
+================================================================================
+{% endcomment %}
+
+<div class="contact-cta">
+  <div class="contact-cta__content">
+    <h2 class="contact-cta__title">
+      Discover More {{ page.category | capitalize }}
+    </h2>
+    <p class="contact-cta__subtitle">
+      Connect with brands in this dimension or learn about our discovery platform.
+    </p>
+    <div class="contact-cta__actions">
+      <a href="/{{ page.lang }}/contact/" class="btn btn--primary">
+        {% case page.lang %}
+          {% when 'ru' %}Свяжитесь с нами
+          {% when 'zh' %}联系我们
+          {% else %}Contact Us
+        {% endcase %}
+      </a>
+      <a href="/{{ page.lang }}/about/" class="btn btn--secondary">
+        {% case page.lang %}
+          {% when 'ru' %}Узнать больше
+          {% when 'zh' %}了解更多
+          {% else %}Learn More
+        {% endcase %}
+      </a>
+    </div>
+  </div>
+</div>

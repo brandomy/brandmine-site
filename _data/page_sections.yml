@@ -205,14 +205,23 @@ dimensions-category:
   body_class: dimensions-category-page
   default_sections:
   - breadcrumbs
+  - hero
   - content
+  - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
+    hero:
+      type: panel--category-hero
+      data_attributes:
+        category: "{{ page.category }}"
     content:
       type: panel--light
       additional_classes: panel--discovery-content
       content_classes: panel__content--full-width
+    contact-cta:
+      type: panel--cta
+      content_classes: panel--centered
 insights-category:
   body_class: insights-category-page
   default_sections:
@@ -220,13 +229,12 @@ insights-category:
   - hero
   - insights-grid
   - impact
-  # - content
   - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
     hero:
-      type: panel--insights-category-hero
+      type: panel--category-hero
       data_attributes:
         category: "{{ page.category }}"
     impact:

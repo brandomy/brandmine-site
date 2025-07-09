@@ -48,21 +48,28 @@ signals: ["export-ready"]
 
 # 🎨 Official Color System (NEVER CHANGE)
 
+Brand Colours
+| **Primary Brand** | Teal | `--primary-*` | `#38B2AC` |
+| **Secondary** | Orange | `--secondary-*` | `#F97316` |
+| **Accent** | Indigo | `--accent-*` | `#6366F1` |
+
+
 ## Dimension Colors
-| Type | Color | CSS Property |
-|------|-------|--------------|
-| **Sectors** | Olive Green | `--olive-*` |
-| **Markets** | Sky Blue | `--sky-*` |
-| **Attributes** | Orange | `--secondary-*` |
-| **Signals** | Indigo | `--accent-*` |
+| Type | Color | CSS Property | HEX Code |
+|------|-------|--------------|----------|
+| **Sectors** | Olive Green | `--olive-*` | `#A3B763` |
+| **Markets** | Sky Blue | `--sky-*` | `#0EA5E9` |
+| **Attributes** | Orange | `--secondary-*` | `#F97316` |
+| **Signals** | Indigo | `--accent-*` | `#6366F1` |
+
 
 ## Insight Category Colors (Aligned with Dimensions)
-| Category | Color | CSS Property |
-|----------|-------|--------------|
-| **Brand Spotlight** | Orange | `--secondary-*` |
-| **Founder's Journey** | Purple | `--accent-*` |
-| **Location Intelligence** | Sky Blue | `--sky-*` |
-| **Market Momentum** | Olive Green | `--olive-*` |
+| Category | Color | CSS Property | HEX Code |
+|----------|-------|--------------|----------|
+| **Brand Spotlight** | Orange | `--secondary-*` | `#F97316` |
+| **Founder's Journey** | Indigo | `--accent-*` | `#6366F1` |
+| **Location Intelligence** | Sky Blue | `--sky-*` | `#0EA5E9` |
+| **Market Momentum** | Olive Green | `--olive-*` | `#A3B763` |
 
 **Critical Rule**: Insight categories use SAME colors as dimension types for consistency.
 

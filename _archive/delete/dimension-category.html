@@ -2,7 +2,7 @@
 layout: default
 ---
 {% comment %}
-  Layout: dimensions-category.html (DATA-DRIVEN REFACTORED)
+  Layout: dimension-category.html (DATA-DRIVEN REFACTORED)
 
   Purpose: Category wrapper for discover section dimension listings (attributes, markets, sectors, signals)
 
@@ -11,7 +11,7 @@ layout: default
   - Uses data-driven section rendering with helpers/page-sections.html
   - Supports configurable sections via page front matter or defaults
   - Special discovery-content styling to remove top padding
- 
+
   Dependencies:
   - _includes/components/dimensions/dimensions-category-navigation.html
   - _includes/pages/discover/[section-name].html files for content sections
@@ -33,11 +33,11 @@ layout: default
 
 <div class="discover-page">
   <!-- Dimension Types under Discover Section-->
-  {% include components/dimensions/dimensions-category-navigation.html style_option='b' active_dimension=page.category %}
+  {% include components/dimensions/dimensions-category-navigation.html style_option='b' active_dimension=page.dimension_type %}
 
   <!-- Main Content Panel - with discovery-content modifier to remove top padding -->
   <div class="discovery__content">
     {% comment %} Use data-driven section rendering {% endcomment %}
-    {% include helpers/page-sections.html page_type="dimensions-category" content=page_content %}
+    {% include helpers/page-sections.html page_type="discover" content=page_content %}
   </div>
 </div>

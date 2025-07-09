@@ -1,19 +1,10 @@
 ---
 layout: dimensions-category
-title: Атрибуты бренда
-subtitle: Откройте для себя бренды по их отличительным качествам и характеристикам
+title: "Атрибуты"
+category: "attributes"
+description: "Откройте для себя бренды по их отличительным качествам и характеристикам"
+updated_date: 2025-07-09
 permalink: /ru/discover/attributes/
 ref: attributes
-category: attribute
 lang: ru
-# NOTE: sections kept in frontmatter due to discrepancy with page_sections.yml
-# page_sections.yml dimension-category has: breadcrumbs, content
-# but this page uses: breadcrumbs, hero, all-attributes-grid, featured-attributes, attribute-insights, cross-navigation
-sections:
-  - breadcrumbs
-  - hero
-  - all-attributes-grid
-  - featured-attributes
-  - attribute-insights
-  - cross-navigation
 ---

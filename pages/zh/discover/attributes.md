@@ -1,10 +1,11 @@
 ---
 layout: dimensions-category
-title: 品牌特性
-subtitle: 按照品牌的独特品质和特征发现品牌
+title: "属性"
+category: "attributes"
+description: "按照品牌的独特品质和特征发现品牌"
+updated_date: 2025-07-09
 permalink: /zh/discover/attributes/
 ref: attributes
-category: attribute
 lang: zh
 ---
 

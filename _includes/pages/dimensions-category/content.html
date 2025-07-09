@@ -1,0 +1,48 @@
+{% comment %}
+================================================================================
+DIMENSIONS CATEGORY CONTENT: Main content section for dimension category pages
+PATH: _includes/pages/dimensions-category/content.html
+PURPOSE: Renders the main content area for dimension category pages
+================================================================================
+{% endcomment %}
+
+<div class="dimensions-category-content">
+  <!-- Category Description -->
+  {% if page.description %}
+    <div class="category-description">
+      <p class="category-description__text">{{ page.description }}</p>
+    </div>
+  {% endif %}
+  
+  <!-- Category Grid/Listing -->
+  <div class="dimensions-grid">
+    {% comment %} This will be populated with dimension items {% endcomment %}
+    {% assign dimension_items = site.dimensions | where: "lang", page.lang | where: "dimension_type", page.category %}
+    
+    {% if dimension_items.size > 0 %}
+      <div class="dimensions-grid__items">
+        {% for dimension in dimension_items %}
+          <div class="dimension-card">
+            <h3 class="dimension-card__title">
+              <a href="{{ dimension.url }}">{{ dimension.title }}</a>
+            </h3>
+            {% if dimension.description %}
+              <p class="dimension-card__description">{{ dimension.description }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="dimensions-grid__empty">
+        <p>No {{ page.category }} available yet.</p>
+      </div>
+    {% endif %}
+  </div>
+  
+  <!-- Page Content (if any) -->
+  {% if content %}
+    <div class="dimensions-category-content__body">
+      {{ content }}
+    </div>
+  {% endif %}
+</div>

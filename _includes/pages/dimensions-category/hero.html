@@ -1,0 +1,51 @@
+{% comment %}
+================================================================================
+UNIVERSAL CATEGORY HERO: Dimensions Category Hero
+PATH: _includes/pages/dimensions-category/hero.html
+PURPOSE: Split hero section using universal category-hero panel
+PATTERN: Reuses split-hero component with dimension-specific gradients
+================================================================================
+{% endcomment %}
+
+<div class="split-hero split-hero--{{ page.category }}">
+  <!-- Text Content Section -->
+  <div class="split-hero__content">
+    <!-- Dimension Badge (create if needed) -->
+    {% if page.category %}
+      <div class="dimension-category-badge dimension-category-badge--{{ page.category }}">
+        {{ page.category | capitalize }}
+      </div>
+    {% endif %}
+    
+    <h1 class="split-hero__title">
+      {{ page.title | default: "Discover Dimensions" }}
+    </h1>
+    
+    <p class="split-hero__subtitle">
+      {{ page.description | default: "Explore the dimensions that define exceptional brands." }}
+    </p>
+    
+    <!-- Dynamic metadata (count of items, etc.) -->
+    {% if page.category %}
+      {% assign dimension_items = site.dimensions | where: "lang", page.lang | where: "dimension_type", page.category %}
+      <div class="split-hero__metadata">
+        <span>{{ dimension_items.size }} {{ page.category }}</span>
+        {% if page.updated_date %}
+          <span class="separator">•</span>
+          <span>Updated {{ page.updated_date | date: "%B %Y" }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  
+  <!-- Image Section -->
+  <div class="split-hero__image">
+    {% include components/images/collection-image.html
+       collection="categories"
+       slug=page.category
+       purpose="hero"
+       alt="#{page.category} dimension"
+       class="split-hero__img"
+       loading="eager" %}
+  </div>
+</div>
