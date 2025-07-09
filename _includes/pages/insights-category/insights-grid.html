@@ -12,8 +12,7 @@
 
 {% comment %} Filter insights by language and category {% endcomment %}
 {% assign empty_array = "" | split: "" %}
-{% assign category_value = page.category | default: page.insight_type %}
-{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", category_value | sort: "date" | reverse %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.category | sort: "date" | reverse %}
 
 <!-- Grid section header -->
 <div class="insights-grid-header" style="text-align: center; margin-bottom: 2rem; width: 100%;">

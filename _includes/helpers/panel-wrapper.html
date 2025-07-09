@@ -69,8 +69,7 @@
     {% assign attr_value = attr[1] %}
     {% comment %} Process liquid template in attribute value {% endcomment %}
     {% if attr_value contains "{{" %}
-      {% assign category_value = page.category | default: page.insight_type %}
-      {% assign processed_value = attr_value | replace: "{{ page.insight_type }}", category_value | replace: "{{ page.category }}", category_value %}
+      {% assign processed_value = attr_value | replace: "{{ page.insight_type }}", page.category | replace: "{{ page.category }}", page.category %}
     {% else %}
       {% assign processed_value = attr_value %}
     {% endif %}

@@ -10,7 +10,7 @@
 {% assign insight_categories = site.data.insights[page.lang].categories %}
 {% assign current_category = nil %}
 {% for category in insight_categories %}
-  {% if category.id == page.insight_type %}
+  {% if category.id == page.category %}
     {% assign current_category = category %}
     {% break %}
   {% endif %}

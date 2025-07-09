@@ -33,10 +33,7 @@ layout: default
 
 <div class="discover-page">
   <!-- Dimension Types under Discover Section-->
-  {% comment %} Support both old and new field names during transition {% endcomment %}
-  {% assign category_value = page.category | default: page.dimension_type %}
-  
-  {% include components/dimensions/dimensions-category-navigation.html style_option='b' active_dimension=category_value %}
+  {% include components/dimensions/dimensions-category-navigation.html style_option='b' active_dimension=page.category %}
 
   <!-- Main Content Panel - with discovery-content modifier to remove top padding -->
   <div class="discovery__content">

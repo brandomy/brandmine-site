@@ -26,14 +26,13 @@ Image Configuration:
 ================================================================================
 {% endcomment %}
 
-{% assign category_value = page.category | default: page.insight_type %}
-<div class="split-hero split-hero--{{ category_value }} split-hero--landing">
+<div class="split-hero split-hero--{{ page.category }} split-hero--landing">
   <!-- Text Content Section -->
   <div class="split-hero__content">
     <!-- Category Badge - Small variant for discrete appearance -->
-    {% include components/ui/insight-category-new.html category=category_value size="sm" %}
+    {% include components/ui/insight-category-new.html category=page.category size="sm" %}
     
-    {% assign category_data = site.data.insights[page.lang].categories | where: "id", category_value | first %}
+    {% assign category_data = site.data.insights[page.lang].categories | where: "id", page.category | first %}
     
     <h1 class="split-hero__title">
       {{ category_data.name | default: "Category Insights" }}
@@ -43,7 +42,7 @@ Image Configuration:
     </p>
     
     <!-- Dynamic metadata line -->
-    {% assign category_insights = site.insights | where: "lang", page.lang | where: "category", category_value %}
+    {% assign category_insights = site.insights | where: "lang", page.lang | where: "category", page.category %}
     {% assign category_insights_count = category_insights.size %}
     {% assign latest_insight = category_insights | sort: "date" | reverse | first %}
     
@@ -60,9 +59,9 @@ Image Configuration:
   <div class="split-hero__image">
     {% include components/images/collection-image.html
        collection="categories"
-       slug=category_value
+       slug=page.category
        purpose="hero"
-       alt="#{category_value} insights"
+       alt="#{page.category} insights"
        class="split-hero__img"
        loading="eager" %}
   </div>
