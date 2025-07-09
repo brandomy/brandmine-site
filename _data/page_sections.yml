@@ -228,7 +228,7 @@ insights-category:
     hero:
       type: panel--insights-category-hero
       data_attributes:
-        category: "{{ page.insight_type }}"
+        category: "{{ page.category | default: page.insight_type }}"
     impact:
       type: panel--primary
       additional_classes: panel--impact
