@@ -8,11 +8,11 @@ STANDARDIZED: 2025-06-12 - Unified hero section structure
 
 Features:
 - Split layout with text content and hero image
-- Uses journal-hero component with teal background
+- Uses split-hero component with teal background
 - Introduces dimension-based discovery system
 
 Dependencies:
-- CSS: Uses journal-hero styles for consistent split layout
+- CSS: Uses split-hero styles for consistent split layout
 - Components: helpers/t.html, components/images/collection-image.html
 - Images: Requires discovery hero image in assets/images/pages/
 - Translation keys: discovery.hero.title, discovery.hero.subtitle
@@ -26,25 +26,25 @@ Image Configuration:
 ================================================================================
 {% endcomment %}
 
-<div class="journal-hero journal-hero--teal journal-hero--landing">
+<div class="split-hero split-hero--teal split-hero--landing">
   <!-- Text Content Section -->
-  <div class="journal-hero__content">
-    <h1 class="journal-hero__title">
+  <div class="split-hero__content">
+    <h1 class="split-hero__title">
       {% include helpers/t.html key="discovery.hero.title" fallback="Discover Brands by Dimensions" %}
     </h1>
-    <p class="journal-hero__subtitle">
+    <p class="split-hero__subtitle">
       {% include helpers/t.html key="discovery.hero.subtitle" fallback="Explore BRICS+ brands through multiple dimensions" %}
     </p>
   </div>
   
   <!-- Image Section -->
-  <div class="journal-hero__image">
+  <div class="split-hero__image">
     {% include components/images/collection-image.html
        collection="pages"
        slug="discovery"
        purpose="hero"
        alt="Discovery hub - explore brand dimensions"
-       class="journal-hero__img"
+       class="split-hero__img"
        loading="eager" %}
   </div>
 </div>

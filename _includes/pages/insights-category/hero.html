@@ -8,7 +8,7 @@ PATTERN: Replicates insights page hero structure with category color variations
 
 Features:
 - Split layout with text content and hero image
-- Uses journal-hero component with category-specific gradients
+- Uses split-hero component with category-specific gradients
 - Badge display for category identification
 - Responsive design with mobile-first approach
 
@@ -26,18 +26,18 @@ Image Configuration:
 ================================================================================
 {% endcomment %}
 
-<div class="journal-hero journal-hero--{{ page.insight_type }} journal-hero--landing">
+<div class="split-hero split-hero--{{ page.insight_type }} split-hero--landing">
   <!-- Text Content Section -->
-  <div class="journal-hero__content">
+  <div class="split-hero__content">
     <!-- Category Badge - Small variant for discrete appearance -->
     {% include components/ui/insight-category-new.html category=page.insight_type size="sm" %}
     
     {% assign category_data = site.data.insights[page.lang].categories | where: "id", page.insight_type | first %}
     
-    <h1 class="journal-hero__title">
+    <h1 class="split-hero__title">
       {{ category_data.name | default: "Category Insights" }}
     </h1>
-    <p class="journal-hero__subtitle">
+    <p class="split-hero__subtitle">
       {{ category_data.description | default: "Discover insights and analysis in this category." }}
     </p>
     
@@ -46,7 +46,7 @@ Image Configuration:
     {% assign category_insights_count = category_insights.size %}
     {% assign latest_insight = category_insights | sort: "date" | reverse | first %}
     
-    <div class="journal-hero__metadata" style="margin-top: 2rem; padding-top: 0.5rem;">
+    <div class="split-hero__metadata" style="margin-top: 2rem; padding-top: 0.5rem;">
       <span>{{ category_insights_count }} insights</span>
       {% if latest_insight.date %}
         {% include components/separators/bullet-separator.html %}
@@ -56,13 +56,13 @@ Image Configuration:
   </div>
   
   <!-- Image Section -->
-  <div class="journal-hero__image">
+  <div class="split-hero__image">
     {% include components/images/collection-image.html
        collection="categories"
        slug=page.insight_type
        purpose="hero"
        alt="#{page.insight_type} insights"
-       class="journal-hero__img"
+       class="split-hero__img"
        loading="eager" %}
   </div>
 </div>

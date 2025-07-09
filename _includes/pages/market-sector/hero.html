@@ -1,6 +1,11 @@
 {% comment %}
   Market-Sector Hero
   Displays the title and subtitle for a market-sector page.
+  
+  ARCHITECTURE COMPLIANCE: This template now follows 3-layer architecture
+  - Configuration: Uses panel--hero-subtle from page_sections.yml
+  - Processing: Used by page-sections.html helper
+  - Styling: Styled by panel-types.scss
 {% endcomment %}
 
 {% assign markets = site.data.markets.markets %}
@@ -14,9 +19,5 @@
   {% endif %}
 {% endfor %}
 
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary market-sector__title">{{ market_sector_data.translations[page.lang].title }}</h1>
-    <p class="panel__subtitle market-sector__subtitle">{{ market_sector_data.translations[page.lang].subtitle }}</p>
-  </div>
-</div>
+<h1 class="panel__heading-primary--hero-subtle market-sector__title">{{ market_sector_data.translations[page.lang].title }}</h1>
+<p class="panel__subtitle--hero-subtle market-sector__subtitle">{{ market_sector_data.translations[page.lang].subtitle }}</p>

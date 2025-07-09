@@ -62,9 +62,9 @@ Dependencies:
   {% assign color_scheme = include.color_scheme | default: 'teal' %}
 {% endif %}
 
-<div class="journal-hero journal-hero--{{ color_scheme }} journal-hero--{{ hero_type }}">
+<div class="split-hero split-hero--{{ color_scheme }} split-hero--{{ hero_type }}">
   <!-- Text Content Section -->
-  <div class="journal-hero__content">
+  <div class="split-hero__content">
     {% if hero_type == 'post' %}
       <!-- Post-specific content with meta -->
       <div class="post-hero__meta">
@@ -86,10 +86,10 @@ Dependencies:
         {% endif %}
       </div>
       
-      <h1 class="journal-hero__title">{{ hero_title }}</h1>
+      <h1 class="split-hero__title">{{ hero_title }}</h1>
       
       {% if post.excerpt %}
-        <p class="journal-hero__subtitle">{{ hero_subtitle }}</p>
+        <p class="split-hero__subtitle">{{ hero_subtitle }}</p>
       {% endif %}
       
       {% if post.tags and post.tags.size > 0 %}
@@ -103,22 +103,22 @@ Dependencies:
       {% endif %}
     {% else %}
       <!-- Landing page content -->
-      <h1 class="journal-hero__title">{{ hero_title }}</h1>
-      <p class="journal-hero__subtitle">{{ hero_subtitle }}</p>
+      <h1 class="split-hero__title">{{ hero_title }}</h1>
+      <p class="split-hero__subtitle">{{ hero_subtitle }}</p>
     {% endif %}
   </div>
   
   <!-- Image Section -->
-  <div class="journal-hero__image">
+  <div class="split-hero__image">
     {% if hero_type == 'post' and post.images.hero %}
       {% comment %} Use journal-image helper for ref-based image paths {% endcomment %}
       {% include helpers/journal-image.html
          image_type="hero"
          loading="eager"
-         class="journal-hero__img" %}
+         class="split-hero__img" %}
       
       {% if post.images.hero.caption %}
-        <p class="journal-hero__caption">{{ post.images.hero.caption }}</p>
+        <p class="split-hero__caption">{{ post.images.hero.caption }}</p>
       {% endif %}
     {% elsif hero_image %}
       {% comment %} Direct image path for landing pages {% endcomment %}
@@ -131,7 +131,7 @@ Dependencies:
                      {{ image_base | append: '-1200w.jpg' | relative_url }} 1200w"
              sizes="(max-width: 767px) 100vw, 50vw"
              alt="{{ hero_alt }}"
-             class="journal-hero__img"
+             class="split-hero__img"
              loading="eager">
       {% else %}
         {% comment %} Legacy path without size suffix {% endcomment %}
@@ -142,7 +142,7 @@ Dependencies:
                      {{ image_path | append: '-1200w.jpg' | relative_url }} 1200w"
              sizes="(max-width: 767px) 100vw, 50vw"
              alt="{{ hero_alt }}"
-             class="journal-hero__img"
+             class="split-hero__img"
              loading="eager">
       {% endif %}
     {% endif %}

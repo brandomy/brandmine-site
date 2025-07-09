@@ -1,29 +1,30 @@
 {% comment %}
 ================================================================================
 PAGE SECTION: Hero
-PATH: _includes/pages/brands/hero.html
-PURPOSE: Split hero section for Brands page with standardized translation keys
-STANDARDIZED: 2025-06-12 - Unified hero section structure
+PATH: _includes/pages/sectors-category/hero.html
+PURPOSE: Split hero section for Sectors Category page with standardized translation keys
+STANDARDIZED: 2025-07-09 - Uses split-hero component for consistent navigation layout
 ================================================================================
 
 Features:
   - Split layout with text content and hero image
-  - Uses split-hero component styling
+  - Uses split-hero component styling (renamed from journal-hero)
+  - Consistent with other navigation pages
 
 Dependencies:
-  - CSS: journal hero styles
+  - CSS: split-hero styles in panel-types.scss
   - Component: collection-image.html
-  - Translation keys: brands.hero.title, brands.hero.subtitle
+  - Translation keys: sectors.category.title, sectors.category.subtitle
 {% endcomment %}
 
 <div class="split-hero split-hero--teal split-hero--landing">
   <!-- Text Content Section -->
   <div class="split-hero__content">
     <h1 class="split-hero__title">
-      {% include helpers/t.html key="brands.hero.title" fallback="Explore Founder-Led BRICS+ Consumer Brands" %}
+      {% include helpers/t.html key="sectors.category.title" fallback="Industry Sectors" %}
     </h1>
     <p class="split-hero__subtitle">
-      {% include helpers/t.html key="brands.hero.subtitle" fallback="Discover founder-led brands with global potential" %}
+      {% include helpers/t.html key="sectors.category.subtitle" fallback="Diverse industries where exceptional brands are shaping consumer experiences across BRICS+ markets" %}
     </p>
   </div>
   
@@ -31,9 +32,9 @@ Dependencies:
   <div class="split-hero__image">
     {% include components/images/collection-image.html
        collection="pages"
-       slug="brands"
+       slug="sectors-category"
        purpose="hero"
-       alt="BRICS+ consumer brands"
+       alt="Industry sectors overview"
        class="split-hero__img"
        loading="eager" %}
   </div>
