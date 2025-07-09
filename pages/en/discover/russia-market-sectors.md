@@ -5,7 +5,7 @@ subtitle: Exploring 16 High-Potential Russian Market Sectors
 permalink: /en/discover/russia-market-sectors/
 lang: en
 ref: russia-market-sectors
-dimension_type: russia-market-sectors
+category: russia-market-sectors
 ---
 
 <!-- Hero Panel -->

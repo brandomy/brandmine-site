@@ -5,7 +5,7 @@ subtitle: Исследуйте бренды по их географическо
 permalink: /ru/discover/markets/
 lang: ru
 ref: markets
-dimension_type: market
+category: market
 # NOTE: sections kept in frontmatter due to discrepancy with page_sections.yml
 # page_sections.yml dimension-category has: breadcrumbs, content
 # but this page uses: breadcrumbs, hero, featured-markets, all-markets-grid, market-map, market-insights, cross-navigation

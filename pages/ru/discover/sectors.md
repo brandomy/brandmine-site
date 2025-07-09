@@ -4,7 +4,7 @@ title: Секторы
 subtitle: Находите бренды в различных отраслевых категориях и типах продукции
 permalink: /ru/discover/sectors/
 ref: sectors
-dimension_type: sector
+category: sector
 lang: ru
 ---
 
