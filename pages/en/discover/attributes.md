@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Discover by Brand Attribute
 subtitle: Explore brands with distinctive characteristics from the BRICS+
 permalink: /en/discover/attributes/

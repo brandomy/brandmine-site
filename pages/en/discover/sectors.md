@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Discover by Business Sector
 subtitle: Explore leading brands from top sectors in the BRICS+
 permalink: /en/discover/sectors/

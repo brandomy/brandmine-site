@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Секторы
 subtitle: Находите бренды в различных отраслевых категориях и типах продукции
 permalink: /ru/discover/sectors/

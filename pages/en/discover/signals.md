@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Discover by Growth Signal
 subtitle: Explore brands poised for growth across different pathways
 permalink: /en/discover/signals/

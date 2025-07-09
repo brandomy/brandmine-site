@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Discover by Geographic Market
 subtitle: Explore brands from growing BRICS+ regions
 permalink: /en/discover/markets/

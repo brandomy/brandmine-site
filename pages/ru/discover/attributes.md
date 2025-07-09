@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Атрибуты бренда
 subtitle: Откройте для себя бренды по их отличительным качествам и характеристикам
 permalink: /ru/discover/attributes/

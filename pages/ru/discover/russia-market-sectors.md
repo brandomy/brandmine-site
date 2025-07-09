@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Российские Потребительские Секторы
 subtitle: Обзор 16 перспективных потребительских категорий
 permalink: /ru/discover/russia-market-sectors/

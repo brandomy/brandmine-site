@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: 俄罗斯消费者行业
 subtitle: 探索16个高潜力消费者类别
 permalink: /zh/discover/russia-market-sectors/

@@ -1,5 +1,5 @@
 ---
-layout: dimension-category
+layout: dimensions-category
 title: Рынки
 subtitle: Исследуйте бренды по их географическому происхождению в странах БРИКС+
 permalink: /ru/discover/markets/
