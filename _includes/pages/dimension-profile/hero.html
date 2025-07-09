@@ -1,0 +1,28 @@
+{% comment %}
+Dimension hero - uses collection-image.html for consistent image handling
+Updated to use semantic front matter structure like other collections
+{% endcomment %}
+
+<div class="split-hero split-hero--teal split-hero--landing">
+  <!-- Text Content Section -->
+  <div class="split-hero__content">
+    <h1 class="split-hero__title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="split-hero__subtitle">{{ page.description }}</p>
+    {% endif %}
+  </div>
+
+  <!-- Image Section -->
+  <div class="split-hero__image">
+    {% if page.images.hero %}
+      {% include components/images/collection-image.html
+         collection="dimensions"
+         category=page.category
+         slug=page.dimension
+         purpose="hero"
+         name=page.images.hero.name
+         alt=page.images.hero.alt
+         class="split-hero__img" %}
+    {% endif %}
+  </div>
+</div>

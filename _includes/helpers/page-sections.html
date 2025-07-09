@@ -157,28 +157,28 @@
               {% assign content_include_path = "pages/founder/" | append: section | append: ".html" %}
             {% endif %}
             {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="founder=page_founder" data_attributes=data_attributes %}
-          {% elsif page_type == "dimension" %}
+          {% elsif page_type == "dimension-profile" %}
             {% comment %} Handle special content-panel section {% endcomment %}
             {% if section == "content-panel" %}
               {% comment %} Render multiple sub-sections in a single panel {% endcomment %}
               {% if page.panel_sections %}
                 {% capture panel_content %}
                   {% for panel_section in page.panel_sections %}
-                    {% assign panel_section_path = 'pages/dimension/' | append: panel_section | append: '.html' %}
+                    {% assign panel_section_path = 'pages/dimension-profile/' | append: panel_section | append: '.html' %}
                     {% include {{ panel_section_path }} dimension=page_dimension %}
                   {% endfor %}
                 {% endcapture %}
               {% else %}
                 {% capture panel_content %}
-                  {% include pages/dimension/featured-brands.html dimension=page_dimension %}
-                  {% include pages/dimension/related-brands.html dimension=page_dimension %}
-                  {% include pages/dimension/all-brands.html dimension=page_dimension %}
-                  {% include pages/dimension/related-insights.html dimension=page_dimension %}
+                  {% include pages/dimension-profile/featured-brands.html dimension=page_dimension %}
+                  {% include pages/dimension-profile/related-brands.html dimension=page_dimension %}
+                  {% include pages/dimension-profile/all-brands.html dimension=page_dimension %}
+                  {% include pages/dimension-profile/related-insights.html dimension=page_dimension %}
                 {% endcapture %}
               {% endif %}
               {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes direct_content=panel_content data_attributes=data_attributes %}
             {% else %}
-              {% assign content_include_path = "pages/dimension/" | append: section | append: ".html" %}
+              {% assign content_include_path = "pages/dimension-profile/" | append: section | append: ".html" %}
               {% include helpers/panel-wrapper.html type=panel_type additional_classes=additional_classes content_classes=content_classes content_include=content_include_path include_params="dimension=page_dimension" data_attributes=data_attributes %}
             {% endif %}
           {% elsif page_type == "insight-article" %}

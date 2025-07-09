@@ -1,0 +1,47 @@
+{% comment %}
+  Component: pages/dimension-profile/navigation.html
+  Purpose: Displays the discovery navigation tabs for dimension pages
+  Parameters:
+    - dimension: The dimension object (default: page)
+    - container_class: Additional class for the container (default: '')
+  Dependencies:
+    - assets/css/pages/dimension-profile/navigation.scss
+    - site.data.translations[lang].dimensions
+{% endcomment %}
+
+{% assign dimension = include.dimension | default: page %}
+{% assign container_class = include.container_class | default: '' %}
+
+{% assign discovery_class = '' %}
+{% if dimension.dimension_type == 'sectors' %}
+  {% assign discovery_class = 'discovery-tabs-container--sectors' %}
+{% elsif dimension.dimension_type == 'markets' %}
+  {% assign discovery_class = 'discovery-tabs-container--markets' %}
+{% elsif dimension.dimension_type == 'attributes' %}
+  {% assign discovery_class = 'discovery-tabs-container--attributes' %}
+{% elsif dimension.dimension_type == 'signals' %}
+  {% assign discovery_class = 'discovery-tabs-container--signals' %}
+{% endif %}
+
+<div class="dimension-navigation {{ discovery_class }} {{ container_class }}">
+  <div class="dimension-navigation__container">
+    <div class="dimension-navigation__tabs">
+      <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/sectors/" 
+         class="dimension-navigation__tab dimension-navigation__tab--sectors {% if dimension.dimension_type == 'sectors' %}dimension-navigation__tab--active{% endif %}">
+        {% include helpers/t.html key="dimensions.sectors" fallback="Sectors" lang=dimension.lang %}
+      </a>
+      <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/markets/" 
+         class="dimension-navigation__tab dimension-navigation__tab--markets {% if dimension.dimension_type == 'markets' %}dimension-navigation__tab--active{% endif %}">
+        {% include helpers/t.html key="dimensions.markets" fallback="Markets" lang=dimension.lang %}
+      </a>
+      <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/attributes/" 
+         class="dimension-navigation__tab dimension-navigation__tab--attributes {% if dimension.dimension_type == 'attributes' %}dimension-navigation__tab--active{% endif %}">
+        {% include helpers/t.html key="dimensions.attributes" fallback="Attributes" lang=dimension.lang %}
+      </a>
+      <a href="{{ site.baseurl }}/{{ dimension.lang }}/discover/signals/" 
+         class="dimension-navigation__tab dimension-navigation__tab--signals {% if dimension.dimension_type == 'signals' %}dimension-navigation__tab--active{% endif %}">
+        {% include helpers/t.html key="dimensions.signals" fallback="Signals" lang=dimension.lang %}
+      </a>
+    </div>
+  </div>
+</div>

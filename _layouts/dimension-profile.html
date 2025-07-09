@@ -13,10 +13,10 @@ layout: default
   - Includes JavaScript for dimension filtering functionality
 
   Dependencies:
-  - _includes/pages/dimension/[section-name].html files for content sections
-  - CSS: pages/dimension/_index.scss and related component files
+  - _includes/pages/dimension-profile/[section-name].html files for content sections
+  - CSS: pages/dimension-profile/_index.scss and related component files
   - _data/page_sections.yml for section configuration
-  - JavaScript: assets/js/pages/dimension/dimension-filtering.js
+  - JavaScript: assets/js/pages/dimension-profile/dimension-filtering.js
   - Site collections: brands, insights
   - Translation data: site.data.translations
 
@@ -35,8 +35,8 @@ layout: default
 
 <div class="dimension-page">
   {% comment %} Use data-driven section rendering {% endcomment %}
-  {% include helpers/page-sections.html page_type="dimension" %}
+  {% include helpers/page-sections.html page_type="dimension-profile" %}
 </div>
 
 <!-- Reference the external JS file instead of inline script -->
-<script src="{{ '/assets/js/pages/dimension/dimension-filtering.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/pages/dimension-profile/dimension-filtering.js' | relative_url }}"></script>
