@@ -50,9 +50,10 @@ Parameters:
       {% assign breadcrumb_items = breadcrumb_items | push: insights_parts %}
 
       {% comment %} Category item (current page) {% endcomment %}
-      {% if page.insight_type %}
+      {% assign category_value = page.category | default: page.insight_type %}
+      {% if category_value %}
         {% comment %} Use translated category names from translations {% endcomment %}
-        {% assign category_translation_key = "insights.category_names." | append: page.insight_type %}
+        {% assign category_translation_key = "insights.category_names." | append: category_value %}
         {% capture category_name %}
 {% include helpers/t.html key=category_translation_key fallback=page.title lang=current_lang %}
 {% endcapture %}

@@ -16,7 +16,7 @@ Dependencies:
 - CSS: Uses panel--insights-category-hero structure with category-specific gradients
 - Components: helpers/t.html, components/ui/insight-category-new.html, components/images/collection-image.html
 - Translation keys: insights-category.{category}.title, insights-category.{category}.subtitle
-- Data: page.insight_type for category identification
+- Data: page.category for category identification
 
 Image Configuration:
 - Collection: categories
@@ -26,13 +26,14 @@ Image Configuration:
 ================================================================================
 {% endcomment %}
 
-<div class="split-hero split-hero--{{ page.insight_type }} split-hero--landing">
+{% assign category_value = page.category | default: page.insight_type %}
+<div class="split-hero split-hero--{{ category_value }} split-hero--landing">
   <!-- Text Content Section -->
   <div class="split-hero__content">
     <!-- Category Badge - Small variant for discrete appearance -->
-    {% include components/ui/insight-category-new.html category=page.insight_type size="sm" %}
+    {% include components/ui/insight-category-new.html category=category_value size="sm" %}
     
-    {% assign category_data = site.data.insights[page.lang].categories | where: "id", page.insight_type | first %}
+    {% assign category_data = site.data.insights[page.lang].categories | where: "id", category_value | first %}
     
     <h1 class="split-hero__title">
       {{ category_data.name | default: "Category Insights" }}
@@ -42,7 +43,7 @@ Image Configuration:
     </p>
     
     <!-- Dynamic metadata line -->
-    {% assign category_insights = site.insights | where: "lang", page.lang | where: "category", page.insight_type %}
+    {% assign category_insights = site.insights | where: "lang", page.lang | where: "category", category_value %}
     {% assign category_insights_count = category_insights.size %}
     {% assign latest_insight = category_insights | sort: "date" | reverse | first %}
     
@@ -59,9 +60,9 @@ Image Configuration:
   <div class="split-hero__image">
     {% include components/images/collection-image.html
        collection="categories"
-       slug=page.insight_type
+       slug=category_value
        purpose="hero"
-       alt="#{page.insight_type} insights"
+       alt="#{category_value} insights"
        class="split-hero__img"
        loading="eager" %}
   </div>

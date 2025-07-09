@@ -7,12 +7,13 @@
   - Translation helper include for multilingual labels
   - _includes/components/cards/insight-card.html for individual cards
   - site.insights collection
-  - page.lang and page.insight_type for filtering
+  - page.lang and page.category for filtering
 {% endcomment %}
 
 {% comment %} Filter insights by language and category {% endcomment %}
 {% assign empty_array = "" | split: "" %}
-{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", page.insight_type | sort: "date" | reverse %}
+{% assign category_value = page.category | default: page.insight_type %}
+{% assign type_insights = site.insights | default: empty_array | where: "lang", page.lang | where: "category", category_value | sort: "date" | reverse %}
 
 <!-- Grid section header -->
 <div class="insights-grid-header" style="text-align: center; margin-bottom: 2rem; width: 100%;">
