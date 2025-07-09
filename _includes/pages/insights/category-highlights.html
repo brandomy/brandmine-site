@@ -6,7 +6,7 @@
   
   Parameters:
   - heading: Section heading text (from translations)
-  - panel_type: Panel styling variant (default: amber-soft)
+  - panel_type: Panel styling variant (default: orange-soft)
   
   Dependencies:
   - Translation: insights.category_highlights_* keys
@@ -21,7 +21,7 @@
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}
-{% assign panel_type = include.panel_type | default: "amber-soft" %}
+{% assign panel_type = include.panel_type | default: "orange-soft" %}
 
 <h2 class="panel__heading-secondary">{{ include.heading | default: t.category_highlights_heading }}</h2>
 

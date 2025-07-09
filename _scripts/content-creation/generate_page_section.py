@@ -8,7 +8,7 @@ Usage:
     python3 _scripts/content-creation/generate_page_section.py page_type section_name "title" "subtitle" layout_type panel_type
 
 Example:
-    python3 _scripts/content-creation/generate_page_section.py brands brand-carousel-test "Brand Carousel Test" "Testing horizontal carousel layout" carousel panel--amber-soft
+    python3 _scripts/content-creation/generate_page_section.py brands brand-carousel-test "Brand Carousel Test" "Testing horizontal carousel layout" carousel panel--orange-soft
 """
 
 import sys
@@ -442,10 +442,10 @@ def main():
         print("Usage: python3 generate_page_section.py page_type section_name \"title\" \"subtitle\" layout_type panel_type")
         print()
         print("Example:")
-        print('python3 generate_page_section.py brands brand-carousel-test "Brand Carousel Test" "Testing horizontal carousel layout" carousel panel--amber-soft')
+        print('python3 generate_page_section.py brands brand-carousel-test "Brand Carousel Test" "Testing horizontal carousel layout" carousel panel--orange-soft')
         print()
         print("Available layout types: grid, carousel, masonry, list, hero, minimal")
-        print("Panel types: panel--light, panel--amber-soft, panel--sky-soft, etc.")
+        print("Panel types: panel--light, panel--orange-soft, panel--sky-soft, etc.")
         sys.exit(1)
     
     page_type = sys.argv[1]
