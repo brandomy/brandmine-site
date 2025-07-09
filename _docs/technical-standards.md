@@ -6,8 +6,48 @@
 
 ### "Logic Light" Design Philosophy
 
-Brandmine uses **data-driven configuration** instead of template logic:
+Brandmine uses **data-driven configuration** instead of template logic through a **3-layer architecture**:
 
+#### Three-Layer Architecture
+
+**1. Configuration Layer (`page_sections.yml`)**
+Defines what panels to use:
+```yaml
+# _data/page_sections.yml
+brand-profile:
+  default_sections: ["breadcrumbs", "identity", "founder-narrative", "content"]
+  panel_mappings:
+    identity:
+      type: panel--hero-subtle    # Configuration drives styling
+    founder-narrative:
+      type: panel--light
+    content:
+      type: panel--light
+```
+
+**2. Processing Layer (`page-sections.html`)**
+Applies configuration to HTML:
+```liquid
+{% comment %} Get panel configuration for this section {% endcomment %}
+{% assign panel_config = section_config.panel_mappings[section] %}
+{% assign panel_type = panel_config.type | default: "panel--light" %}
+
+{% comment %} Apply the CSS class to the panel wrapper {% endcomment %}
+{% include helpers/panel-wrapper.html type=panel_type ... %}
+```
+
+**3. Styling Layer (`panel-types.scss`)**
+CSS targets the generated classes:
+```scss
+.panel--hero-subtle {
+  background: radial-gradient(circle at center, var(--primary-300) 0%, var(--primary-500) 100%);
+  color: white;
+  text-align: center;
+  padding: var(--space-8) 0;
+}
+```
+
+#### Component Configuration
 ```yaml
 # _data/component_defaults.yml
 cards:
@@ -15,13 +55,6 @@ cards:
     show_location: true
     show_sector: true
     tag_limit: 4
-
-# _data/page_sections.yml
-brands:
-  sections: ["hero", "impact", "content", "contact-cta"]
-  hero:
-    panel_type: "panel--hero"
-    background: "gradient"
 ```
 
 **Pattern: Configuration over conditionals**
@@ -33,9 +66,21 @@ brands:
   {% assign panel_type = "panel--light" %}
 {% endif %}
 
-{% comment %} NEW PATTERN - Use this {% endcomment %}
+{% comment %} NEW PATTERN - Use 3-layer architecture {% endcomment %}
 {% include helpers/page-sections.html page_type="brands" %}
 ```
+
+#### Data Flow Diagram
+```
+page_sections.yml → page-sections.html → panel-types.scss → Beautiful UI
+(Configuration)  →  (Processing)     →   (Styling)      →   (Result)
+```
+
+**Benefits:**
+- **Separation of Concerns**: Configuration, logic, and styling are isolated
+- **Maintainability**: Change colors by editing just the SCSS
+- **Performance**: Classes applied at build time, no runtime logic
+- **Flexibility**: Add new panel types without touching templates
 
 ### Linear Layout System
 
@@ -93,6 +138,118 @@ _pages/[lang]/[page-slug].md             # Static pages (about, contact, etc.)
 | **Market Momentum** | Olive Green | `--olive-*` | Market trends (same as Sectors) |
 
 **Critical Rule**: Insight categories intentionally use SAME colors as dimension types for visual consistency and semantic alignment.
+
+## 🎯 BEM-Compliant Panel System (Updated 2025-07-09)
+
+### Panel Architecture Overview
+
+The panel system now follows strict BEM (Block Element Modifier) methodology:
+- **Block**: `.panel` (base panel component)
+- **Block Modifiers**: `.panel--[modifier]` (panel variants)
+- **Element**: `.panel__[element]` (panel sub-components)
+- **Element Modifiers**: `.panel__[element]--[modifier]` (styled sub-components)
+
+### Hero Panel System (BEM-Compliant)
+
+**Six-tier hierarchy for page headers:**
+
+| Panel Type | Purpose | BEM Elements Available |
+|------------|---------|------------------------|
+| `.panel--hero` | Navigation pages | `__heading-primary--hero`, `__subtitle--hero` |
+| `.panel--hero-subtle` | Individual profiles | `__heading-primary--hero-subtle`, `__subtitle--hero-subtle` |
+| `.panel--hero-image` | Editorial content | `__heading-primary--hero-image`, `__subtitle--hero-image` |
+| `.panel--hero-split` | Side-by-side layout | Custom content structure |
+| `.panel--hero-card` | Card-based layout | Card component handles styling |
+| `.panel--hero-category` | Category pages | Category-specific styling |
+
+### Color Panel Elements (BEM-Compliant)
+
+**Available element modifiers for all color panels:**
+
+```scss
+/* Content area modifiers */
+.panel__content--light          /* Light panel content styling */
+.panel__content--primary-soft   /* Primary soft content styling */
+.panel__content--secondary-soft /* Secondary soft content styling */
+.panel__content--accent-soft    /* Accent soft content styling */
+.panel__content--neutral-soft   /* Neutral soft content styling */
+.panel__content--sky-soft       /* Sky soft content styling */
+.panel__content--olive-soft     /* Olive soft content styling */
+.panel__content--amber-soft     /* Amber soft content styling */
+.panel__content--coral-soft     /* Coral soft content styling */
+
+/* Heading modifiers */
+.panel__heading-secondary--light           /* Light panel headings */
+.panel__heading-secondary--secondary-soft  /* Secondary soft headings */
+.panel__heading-secondary--accent-soft     /* Accent soft headings */
+.panel__heading-secondary--sky-soft        /* Sky soft headings */
+.panel__heading-secondary--olive-soft      /* Olive soft headings */
+
+/* Text modifiers */
+.panel__lead-text--light        /* Light panel lead text */
+.panel__lead-text--secondary-soft /* Secondary soft lead text */
+.panel__lead-text--accent-soft  /* Accent soft lead text */
+```
+
+### Usage Guidelines
+
+#### For New Template Development
+**Always use BEM-compliant classes:**
+
+```html
+<!-- ✅ CORRECT: BEM-compliant -->
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary--hero">Title</h1>
+    <p class="panel__subtitle--hero">Subtitle</p>
+  </div>
+</div>
+
+<!-- ❌ AVOID: Legacy non-BEM (still works but not preferred) -->
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">Title</h1>
+    <p class="panel__subtitle">Subtitle</p>
+  </div>
+</div>
+```
+
+#### For Template Updates
+**Gradual migration approach:**
+- Update HTML files to BEM classes during regular maintenance
+- New templates should always use BEM-compliant classes
+- Legacy classes still work but are not preferred for new development
+
+#### Color Panel BEM Pattern
+```html
+<!-- Example: Secondary soft panel -->
+<div class="panel panel--secondary-soft">
+  <div class="panel__content--secondary-soft">
+    <h2 class="panel__heading-secondary--secondary-soft">Section Title</h2>
+    <p class="panel__lead-text--secondary-soft">Lead text content</p>
+  </div>
+</div>
+```
+
+### Implementation Status
+
+**CSS Architecture**: ✅ 94% BEM-compliant (17/18 violations resolved)
+**Documentation**: ✅ Comprehensive inline CSS documentation
+**Template Updates**: 🔄 Gradual migration recommended
+**New Development**: ✅ Use BEM classes for all new templates
+
+### Migration Guidelines
+
+**For Future Template Updates:**
+1. Identify panel usage in template
+2. Replace element classes with BEM-compliant modifiers
+3. Test visual appearance matches original
+4. Update any custom CSS that references old classes
+
+**Priority for Migration:**
+- **High**: New template development
+- **Medium**: Templates undergoing major updates
+- **Low**: Working templates (update during maintenance)
 
 ## CSS File Organization Standards
 
@@ -523,94 +680,6 @@ assets/css/
   border-radius: var(--radius-md);
 }
 ```
-
-## Content Width Standards
-
-### Editorial Content Width Strategy
-
-**700px max-width** for optimal reading experience based on typography research:
-- **Line length**: 50-75 characters per line (optimal reading zone)
-- **Eye movement**: Reduced fatigue, easier line-to-line tracking
-- **Industry standard**: Matches Financial Times, Medium, McKinsey editorial width
-
-### Content Type Guidelines
-
-#### ✅ Use 700px (`--form-max-width`)
-**Long-form reading content:**
-```scss
-.insight-article-content,
-.journal-article-content,
-.brand-story-content,
-.founder-story-content {
-  max-width: var(--form-max-width);  /* 700px */
-  width: 100%;
-  margin: 0 auto;
-  text-align: left;
-  padding: 0 var(--space-4);
-
-  @media (min-width: 768px) {
-    padding: 0 var(--space-6);
-  }
-}
-```
-
-#### 🔄 Use Mixed Layout (1024px container, 700px narrative)
-**Profile pages with cards + narrative:**
-```scss
-.brand-profile-container,
-.founder-profile-container {
-  max-width: var(--content-width-lg);  /* 1024px */
-
-  .narrative-section {
-    max-width: var(--form-max-width);  /* 700px within */
-    margin: 0 auto;
-  }
-}
-```
-
-#### ❌ Use Full Width (1200px)
-**Grid layouts and navigation:**
-```scss
-.discovery-container,
-.brands-grid-container,
-.home-container {
-  max-width: var(--content-width-xl);  /* 1200px */
-}
-```
-
-### Implementation Pattern
-
-**Simple container approach:**
-```scss
-/* Editorial content pattern */
-.article-content {
-  max-width: var(--form-max-width);  /* 700px */
-  width: 100%;                       /* Natural scaling */
-  margin: 0 auto;                    /* Center container */
-  text-align: left;                  /* Left-align content */
-  padding: 0 var(--space-4);         /* Mobile padding */
-
-  @media (min-width: 768px) {
-    padding: 0 var(--space-6);       /* Enhanced tablet+ padding */
-  }
-}
-```
-
-### Typography Integration
-
-**Use with existing text tokens:**
-```scss
-h2 { font-size: var(--text-3xl); }    /* 1.875rem = 30px */
-p  { font-size: var(--text-base); }   /* 1rem = 16px */
-```
-
-**Benefits:**
-- **Consistent reading experience** across insights, journal, brand stories
-- **Accessibility** with REM-based scaling
-- **Performance** with simple responsive logic
-
-
-
 
 ## Seamless Section Flow Policy (Phase 4: Automated Prevention)
 
