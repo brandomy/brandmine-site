@@ -65,7 +65,7 @@ layout: null
         "permalink": {{ dimension.url | relative_url | jsonify }},
         "lang": {{ dimension.lang | jsonify }},
         "type": "dimension",
-        "dimension_type": {{ dimension.tag_type | jsonify }},
+        "category": {{ dimension.tag_type | jsonify }},
         "tag_type": {{ dimension.tag_type | jsonify }},
         "slug": {{ dimension.slug | jsonify }},
         "description": {{ dimension.excerpt | strip_html | truncate: 200 | jsonify }}
