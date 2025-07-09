@@ -21,20 +21,32 @@
 <div class="dimension-related-insights">
   <h2 class="dimension-related-insights__heading">{{ heading }}</h2>
   
-  {% assign related_insights = site.insights | where: "lang", dimension.lang %}
+  {% comment %} Use front matter arrays for cross-references {% endcomment %}
   {% assign filtered_insights = "" | split: "" %}
   
-  {% for insight in related_insights %}
-    {% if dimension.tag_type == "sector" and insight.sectors contains dimension.title %}
-      {% assign filtered_insights = filtered_insights | push: insight %}
-    {% elsif dimension.tag_type == "market" and insight.markets contains dimension.title %}
-      {% assign filtered_insights = filtered_insights | push: insight %}
-    {% elsif dimension.tag_type == "attribute" and insight.attributes contains dimension.title %}
-      {% assign filtered_insights = filtered_insights | push: insight %}
-    {% elsif dimension.tag_type == "signal" and insight.signals contains dimension.title %}
-      {% assign filtered_insights = filtered_insights | push: insight %}
-    {% endif %}
-  {% endfor %}
+  {% if dimension.related_insights and dimension.related_insights.size > 0 %}
+    {% comment %} Get insights from related_insights array {% endcomment %}
+    {% for insight_ref in dimension.related_insights %}
+      {% assign insight = site.insights | where: "ref", insight_ref | where: "lang", dimension.lang | first %}
+      {% if insight %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% comment %} Fallback to taxonomy-based filtering if no arrays defined {% endcomment %}
+    {% assign related_insights = site.insights | where: "lang", dimension.lang %}
+    {% for insight in related_insights %}
+      {% if dimension.category == "sector" and insight.sectors contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% elsif dimension.category == "market" and insight.markets contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% elsif dimension.category == "attribute" and insight.attributes contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% elsif dimension.category == "signal" and insight.signals contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
   
   {% if filtered_insights.size > 0 %}
     <div class="dimension-related-insights__grid">

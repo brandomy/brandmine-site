@@ -20,7 +20,7 @@ founders: ["ru-nikolai-volkov"]  # Array of founder keys that match founders.jso
 founder_led: true  # Boolean: Is the founder still actively leading?
 
 # Taxonomy (all using kebab-case)
-sectors: ["artisanal-spirits"]  # Required: At least one sector from taxonomy
+sectors: ["artisanal-spirits", "wine"]  # Required: At least one sector from taxonomy
 markets: ["russia"]  # Required: At least one market from taxonomy
 attributes: ["founder-led", "artisanal-excellence"]  # Optional: Brand attributes from taxonomy
 signals: ["export-ready"]  # Optional: Business signals from taxonomy

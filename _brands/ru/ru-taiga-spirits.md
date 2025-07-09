@@ -17,7 +17,7 @@ founders: ["ru-nikolai-volkov"]
 founder_led: true
 
 # Taxonomy (all using kebab-case)
-sectors: ["artisanal-spirits"]
+sectors: ["artisanal-spirits", "wine"]
 markets: ["russia"]
 attributes: ["founder-led", "artisanal-excellence"]
 signals: ["export-ready"]
@@ -49,7 +49,7 @@ images:
   founder:
     name: "working"    # Becomes founder-portrait-400w.jpg
     ext: "jpg"
-    
+
 # === SOCIAL MEDIA (FLATTENED) ===
 social_facebook: "taigaspirits"
 social_instagram: "taiga_spirits"

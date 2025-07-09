@@ -16,13 +16,13 @@
 {% assign filtered_brands = "" | split: "" %}
 
 {% for brand in related_brands %}
-  {% if dimension.tag_type == "sector" and brand.sectors contains dimension.title %}
+  {% if dimension.category == "sector" and brand.sectors contains dimension.dimension %}
     {% assign filtered_brands = filtered_brands | push: brand %}
-  {% elsif dimension.tag_type == "market" and brand.markets contains dimension.title %}
+  {% elsif dimension.category == "market" and brand.markets contains dimension.dimension %}
     {% assign filtered_brands = filtered_brands | push: brand %}
-  {% elsif dimension.tag_type == "attribute" and brand.attributes contains dimension.title %}
+  {% elsif dimension.category == "attribute" and brand.attributes contains dimension.dimension %}
     {% assign filtered_brands = filtered_brands | push: brand %}
-  {% elsif dimension.tag_type == "signal" and brand.signals contains dimension.title %}
+  {% elsif dimension.category == "signal" and brand.signals contains dimension.dimension %}
     {% assign filtered_brands = filtered_brands | push: brand %}
   {% endif %}
 {% endfor %}

@@ -20,33 +20,40 @@
 <div class="dimension-featured-brands">
   <h2 class="dimension-featured-brands__heading">{{ heading }}</h2>
   
-  {% assign related_brands = site.brands | where: "lang", dimension.lang %}
-  {% assign filtered_brands = "" | split: "" %}
+  {% comment %} Use front matter arrays for cross-references {% endcomment %}
   {% assign featured_brands = "" | split: "" %}
   
-  {% for brand in related_brands %}
-    {% if dimension.tag_type == "sector" and brand.sectors contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured == true %}
+  {% if dimension.featured_brands and dimension.featured_brands.size > 0 %}
+    {% comment %} Get brands from featured_brands array {% endcomment %}
+    {% for brand_ref in dimension.featured_brands %}
+      {% assign brand = site.brands | where: "ref", brand_ref | where: "lang", dimension.lang | first %}
+      {% if brand %}
         {% assign featured_brands = featured_brands | push: brand %}
       {% endif %}
-    {% elsif dimension.tag_type == "market" and brand.markets contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured == true %}
-        {% assign featured_brands = featured_brands | push: brand %}
+    {% endfor %}
+  {% else %}
+    {% comment %} Fallback to taxonomy-based filtering if no arrays defined {% endcomment %}
+    {% assign related_brands = site.brands | where: "lang", dimension.lang %}
+    {% for brand in related_brands %}
+      {% if dimension.category == "sector" and brand.sectors contains dimension.dimension %}
+        {% if brand.featured == true %}
+          {% assign featured_brands = featured_brands | push: brand %}
+        {% endif %}
+      {% elsif dimension.category == "market" and brand.markets contains dimension.dimension %}
+        {% if brand.featured == true %}
+          {% assign featured_brands = featured_brands | push: brand %}
+        {% endif %}
+      {% elsif dimension.category == "attribute" and brand.attributes contains dimension.dimension %}
+        {% if brand.featured == true %}
+          {% assign featured_brands = featured_brands | push: brand %}
+        {% endif %}
+      {% elsif dimension.category == "signal" and brand.signals contains dimension.dimension %}
+        {% if brand.featured == true %}
+          {% assign featured_brands = featured_brands | push: brand %}
+        {% endif %}
       {% endif %}
-    {% elsif dimension.tag_type == "attribute" and brand.attributes contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured == true %}
-        {% assign featured_brands = featured_brands | push: brand %}
-      {% endif %}
-    {% elsif dimension.tag_type == "signal" and brand.signals contains dimension.title %}
-      {% assign filtered_brands = filtered_brands | push: brand %}
-      {% if brand.featured == true %}
-        {% assign featured_brands = featured_brands | push: brand %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
+    {% endfor %}
+  {% endif %}
   
   {% if featured_brands.size > 0 %}
     <div class="dimension-featured-brands__grid">

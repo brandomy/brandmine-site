@@ -15,7 +15,7 @@ email: "contact@taigaspirits.ru"
 founders: ["ru-nikolai-volkov"]
 founder_led: true
 
-sectors: ["artisanal-spirits"]
+sectors: ["artisanal-spirits", "wine"]
 markets: ["russia"]
 attributes: ["founder-led", "artisanal-excellence"]
 signals: ["export-ready"]
