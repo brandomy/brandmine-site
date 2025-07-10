@@ -20,7 +20,7 @@
 /* Base panel block - creates the full-width effect */
 .panel {
     width: 100vw;
-    padding: var(--space-8) 0;       /* Mobile-first smaller padding */
+    padding: var(--space-6) 0;       /* Standardized 24px (1.5rem) padding */
     margin: 0;
     position: relative;
     left: 50%;
@@ -29,6 +29,31 @@
     margin-right: -50vw;
     overflow: hidden;
     box-sizing: border-box;
+  }
+
+  /* --------------------------------------------------------------------------
+     PANEL PADDING SYSTEM
+     --------------------------------------------------------------------------
+     Standard vertical padding for consistent spacing between sections:
+     
+     - Default: var(--space-6) = 24px (1.5rem) - Most content sections
+     - Hero sections maintain their own padding for visual impact
+     - Special modifiers available for edge cases
+     
+     This creates predictable, harmonious spacing throughout the site.
+     -------------------------------------------------------------------------- */
+
+  /* Padding modifiers for special cases */
+  .panel--no-padding {
+    padding: 0;
+  }
+
+  .panel--padding-compact {
+    padding: var(--space-4) 0;  /* 16px (1rem) - Dense content */
+  }
+
+  .panel--padding-large {
+    padding: var(--space-8) 0;  /* 32px (2rem) - Breathing room */
   }
 
   /* --------------------------------------------------------------------------
