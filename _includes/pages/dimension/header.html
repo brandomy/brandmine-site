@@ -1,0 +1,39 @@
+{% comment %}
+  Component: pages/dimension/header.html
+  Purpose: Displays the header section with content for a dimension page
+  Parameters:
+    - dimension: The dimension object (default: page)
+    - panel_type: The panel type for styling (default based on tag_type)
+  Dependencies:
+    - assets/css/pages/dimension/header.scss
+
+  Usage examples:
+    {% include pages/dimension/header.html %}
+    {% include pages/dimension/header.html dimension=page %}
+    {% include pages/dimension/header.html panel_type="primary-soft" %}
+    {% include pages/dimension/header.html dimension=custom_dimension panel_type="sector-soft" %}
+{% endcomment %}
+
+{% assign dimension = include.dimension | default: page %}
+
+{% assign panel_type = include.panel_type %}
+{% if panel_type == nil %}
+  {% case dimension.tag_type %}
+    {% when "sector" %}
+      {% assign panel_type = "sector-soft" %}
+    {% when "market" %}
+      {% assign panel_type = "market-soft" %}
+    {% when "attribute" %}
+      {% assign panel_type = "attribute-soft" %}
+    {% when "signal" %}
+      {% assign panel_type = "signal-soft" %}
+    {% else %}
+      {% assign panel_type = "light" %}
+  {% endcase %}
+{% endif %}
+
+<div class="dimension-header">
+  <div class="dimension-header__content">
+    {{ content }}
+  </div>
+</div>

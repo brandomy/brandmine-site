@@ -1,0 +1,90 @@
+{% comment %}
+  Component: pages/dimension/related-insights.html
+  Purpose: Displays related insights for a dimension
+  Parameters:
+    - dimension: The dimension object (default: page)
+    - heading: The heading for the section (default: Related Insights)
+    - limit: Number of insights to display (default: 4)
+  Dependencies:
+    - assets/css/pages/dimension/related-insights.scss
+    - site.data.translations[lang].dimensions
+    - site.insights collection
+{% endcomment %}
+
+{% assign dimension = include.dimension | default: page %}
+{% assign heading = include.heading | default: "" %}
+{% if heading == "" %}
+  {% capture heading %}{% include helpers/t.html key="dimensions.related_insights" fallback="Related Insights" lang=dimension.lang %}{% endcapture %}
+{% endif %}
+{% assign limit = include.limit | default: 4 %}
+
+<div class="dimension-related-insights">
+  <h2 class="dimension-related-insights__heading">{{ heading }}</h2>
+  
+  {% comment %} Use front matter arrays for cross-references {% endcomment %}
+  {% assign filtered_insights = "" | split: "" %}
+  
+  {% if dimension.related_insights and dimension.related_insights.size > 0 %}
+    {% comment %} Get insights from related_insights array {% endcomment %}
+    {% for insight_ref in dimension.related_insights %}
+      {% assign insight = site.insights | where: "ref", insight_ref | where: "lang", dimension.lang | first %}
+      {% if insight %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% comment %} Fallback to taxonomy-based filtering if no arrays defined {% endcomment %}
+    {% assign related_insights = site.insights | where: "lang", dimension.lang %}
+    {% for insight in related_insights %}
+      {% if dimension.category == "sector" and insight.sectors contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% elsif dimension.category == "market" and insight.markets contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% elsif dimension.category == "attribute" and insight.attributes contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% elsif dimension.category == "signal" and insight.signals contains dimension.dimension %}
+        {% assign filtered_insights = filtered_insights | push: insight %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  {% if filtered_insights.size > 0 %}
+    <div class="dimension-related-insights__grid">
+      {% for insight in filtered_insights limit: limit %}
+      <div class="dimension-related-insights__card">
+        {% if insight.image %}
+        <div class="dimension-related-insights__image">
+          <img src="{{ insight.image | relative_url }}" alt="{{ insight.title }}">
+        </div>
+        {% endif %}
+        <div class="dimension-related-insights__content">
+          <div class="dimension-related-insights__type">{{ insight.content_type }}</div>
+          <h3 class="dimension-related-insights__title">
+            <a href="{{ insight.url | relative_url }}" class="dimension-related-insights__link">{{ insight.title }}</a>
+          </h3>
+          <p class="dimension-related-insights__excerpt">{{ insight.excerpt | strip_html | truncate: 100 }}</p>
+          <div class="dimension-related-insights__meta">
+            <span class="dimension-related-insights__date">{{ insight.date | date: "%B %-d, %Y" }}</span>
+            <a href="{{ insight.url | relative_url }}" class="dimension-related-insights__read-more">
+              {% include helpers/t.html key="dimensions.read_more" fallback="Read More" lang=dimension.lang %}
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+      
+    {% if filtered_insights.size > limit %}
+    <div class="dimension-related-insights__view-all">
+      <a href="{{ site.baseurl }}/{{ dimension.lang }}/insights/?{{ dimension.tag_type }}={{ dimension.tag }}" class="btn btn--secondary">
+        {% include helpers/t.html key="dimensions.view_all_insights" fallback="View All Insights" lang=dimension.lang %}
+      </a>
+    </div>
+    {% endif %}
+  {% else %}
+    <div class="dimension-related-insights__empty">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path><path d="M8 10h8M8 14h8"></path></svg>
+      <p>{% include helpers/t.html key="dimensions.no_insights" fallback="No related insights available." lang=dimension.lang %}</p>
+    </div>
+  {% endif %}
+</div>

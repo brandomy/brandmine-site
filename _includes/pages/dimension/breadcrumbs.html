@@ -1,0 +1,17 @@
+{% comment %}
+  Section: dimension/breadcrumbs.html
+  
+  Displays breadcrumb navigation for individual dimension pages
+  Note: This section intentionally breaks out of the panel system for seamless header integration
+  
+  Dependencies:
+  - site.data.translations for discover navigation labels
+{% endcomment %}
+
+<div class="dimension-breadcrumbs-wrapper">
+  <nav class="dimension-breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="{{ site.baseurl }}/{{ page.lang }}/discovery/" class="back-link">
+      ← {% include helpers/t.html key="navigation.discover" fallback="Discover" %}
+    </a>
+  </nav>
+</div>

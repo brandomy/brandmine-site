@@ -1,0 +1,40 @@
+{% comment %}
+  Component: pages/dimension/market-highlights.html
+  Purpose: Displays market-specific highlights for a sector dimension
+  Parameters:
+    - dimension: The dimension object (default: page)
+    - heading: The heading for the section (default: Market Highlights)
+    - panel_type: The panel type for styling (default: accent-soft)
+  Dependencies:
+    - assets/css/pages/dimension/market-highlights.scss
+    - site.data.translations[lang].sectors
+    - site.data.markets for market data
+    - site.data.market_sectors[lang]
+    - _includes/market-sector-highlight.html
+{% endcomment %}
+
+{% assign dimension = include.dimension | default: page %}
+{% capture default_heading %}{% include helpers/t.html key="sectors.market_highlights" fallback="Market Highlights" lang=dimension.lang %}{% endcapture %}
+{% assign heading = include.heading | default: default_heading %}
+{% assign panel_type = include.panel_type | default: "accent-soft" %}
+
+{% assign has_highlights = false %}
+{% for market_entry in site.data.markets.markets %}
+  {% assign market_slug = market_entry.id %}
+  {% if site.data.market_sectors[dimension.lang][market_slug] and site.data.market_sectors[dimension.lang][market_slug][dimension.dimension] %}
+    {% assign has_highlights = true %}
+  {% endif %}
+{% endfor %}
+
+{% if has_highlights and dimension.tag_type == "sector" %}
+<h2 class="panel__heading-secondary">{{ heading }}</h2>
+
+<div class="dimension-market-highlights">
+      {% for market_entry in site.data.markets.markets %}
+        {% assign market_slug = market_entry.id %}
+        {% if site.data.market_sectors[dimension.lang][market_slug] and site.data.market_sectors[dimension.lang][market_slug][dimension.dimension] %}
+          {% include components/dimensions/market-sector-highlight.html market=market_slug sector=dimension.dimension %}
+        {% endif %}
+      {% endfor %}
+    </div>
+{% endif %}
