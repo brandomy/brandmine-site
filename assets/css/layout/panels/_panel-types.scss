@@ -867,6 +867,47 @@
   }
 }
 
+/* Category-specific gradients for dimensions */
+.panel--dimensions-category-hero[data-category="markets"] {
+  background: radial-gradient(circle at center, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--dimensions-category-hero[data-category="markets"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--sky-400) 0%, var(--sky-600) 100%);
+}
+
+.panel--dimensions-category-hero[data-category="sectors"] {
+  background: radial-gradient(circle at center, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+.panel--dimensions-category-hero[data-category="sectors"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--olive-400) 0%, var(--olive-600) 100%);
+}
+
+.panel--dimensions-category-hero[data-category="attributes"] {
+  background: radial-gradient(circle at center, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--dimensions-category-hero[data-category="attributes"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--secondary-400) 0%, var(--secondary-600) 100%);
+}
+
+.panel--dimensions-category-hero[data-category="signals"] {
+  background: radial-gradient(circle at center, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+.panel--dimensions-category-hero[data-category="signals"] .split-hero__content {
+  background: radial-gradient(circle at 30% 40%, var(--accent-400) 0%, var(--accent-600) 100%);
+}
+
+/* Badge width restriction for dimensions */
+.panel--dimensions-category-hero .dimension-category-new {
+  width: auto !important;
+  max-width: fit-content;
+  display: inline-flex;
+  align-self: flex-start;
+}
+
 /* INSIGHTS CATEGORY VARIANTS (keep existing) */
 .panel--category-hero[data-category="brand-spotlight"] {
   background: radial-gradient(circle at center, var(--secondary-400) 0%, var(--secondary-600) 100%);
