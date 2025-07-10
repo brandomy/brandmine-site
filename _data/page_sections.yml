@@ -205,12 +205,16 @@ dimensions-category:
   body_class: dimensions-category-page
   default_sections:
   - breadcrumbs
+  - dimensions-navigation
   - hero
   - content
+  - impact
   - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
+    dimensions-navigation:
+      type: panel--light
     hero:
       type: panel--dimensions-category-hero
       data_attributes:
@@ -219,6 +223,9 @@ dimensions-category:
       type: panel--light
       additional_classes: panel--discovery-content
       content_classes: panel__content--full-width
+    impact:
+      type: panel--primary
+      additional_classes: panel--impact
     contact-cta:
       type: panel--cta
       content_classes: panel--centered
@@ -483,71 +490,3 @@ brand-basic:
     location:
       type: panel--sky-soft
 
-# Dimension Category Pages
-attributes-category:
-  body_class: attributes-category-page
-  default_sections:
-  - breadcrumbs
-  - hero
-  - content
-  - featured-brands
-  panel_mappings:
-    breadcrumbs:
-      type: none
-    hero:
-      type: panel--hero-split
-    content:
-      type: panel--light
-    featured-brands:
-      type: panel--light
-
-markets-category:
-  body_class: markets-category-page
-  default_sections:
-  - breadcrumbs
-  - hero
-  - content
-  - featured-brands
-  panel_mappings:
-    breadcrumbs:
-      type: none
-    hero:
-      type: panel--hero-split
-    content:
-      type: panel--light
-    featured-brands:
-      type: panel--light
-
-sectors-category:
-  body_class: sectors-category-page
-  default_sections:
-  - breadcrumbs
-  - hero
-  - content
-  - featured-brands
-  panel_mappings:
-    breadcrumbs:
-      type: none
-    hero:
-      type: panel--hero-split
-    content:
-      type: panel--light
-    featured-brands:
-      type: panel--light
-
-signals-category:
-  body_class: signals-category-page
-  default_sections:
-  - breadcrumbs
-  - hero
-  - content
-  - featured-brands
-  panel_mappings:
-    breadcrumbs:
-      type: none
-    hero:
-      type: panel--hero-split
-    content:
-      type: panel--light
-    featured-brands:
-      type: panel--light

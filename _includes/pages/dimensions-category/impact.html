@@ -1,0 +1,64 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Impact Statement (Dimensions Category)
+PATH: _includes/pages/dimensions-category/impact.html
+
+PURPOSE:
+Impact statement section for dimension category pages providing context
+about the specific dimension type and its role in brand discovery.
+
+USAGE:
+Appears after the hero section to provide additional context about the
+dimension category being explored.
+
+PARAMETERS:
+- page.category (from page context) - used to customize messaging
+- page.lang (from page context) - for translations
+
+DEPENDENCIES:
+- CSS: layout/panels/_panel-types.scss (panel--primary styling)
+
+CUSTOMIZATION:
+- Content varies by dimension category
+- Supports translation via page.lang
+- Uses primary panel styling for consistency
+
+EXAMPLE:
+{% include pages/dimensions-category/impact.html %}
+
+NOTES:
+- Provides contextual information about dimension importance
+- Maintains consistency with other category pages
+- Content is hardcoded but could be moved to data files if needed
+================================================================================
+{% endcomment %}
+
+<div class="panel__content">
+  {% case page.category %}
+    {% when 'markets' %}
+      <h2 class="panel__heading-secondary">Global Market Intelligence</h2>
+      <p class="panel__lead-text">
+        Discover exceptional brands across diverse global markets. Our geographic dimension helps you understand regional brand landscapes and identify emerging opportunities in key BRICS+ economies.
+      </p>
+    {% when 'sectors' %}
+      <h2 class="panel__heading-secondary">Industry Sector Insights</h2>
+      <p class="panel__lead-text">
+        Explore brands across diverse industry sectors. Our sector-based classification reveals industry-specific trends, competitive landscapes, and growth opportunities in emerging markets.
+      </p>
+    {% when 'attributes' %}
+      <h2 class="panel__heading-secondary">Brand Attribute Analysis</h2>
+      <p class="panel__lead-text">
+        Understand what makes brands unique through our attribute framework. From founder-led heritage to innovation focus, discover the qualities that drive brand success in emerging markets.
+      </p>
+    {% when 'signals' %}
+      <h2 class="panel__heading-secondary">Growth Signal Detection</h2>
+      <p class="panel__lead-text">
+        Identify brands with strong growth potential through our signal analysis. From export readiness to franchise potential, discover brands positioned for international expansion.
+      </p>
+    {% else %}
+      <h2 class="panel__heading-secondary">Dimension Intelligence</h2>
+      <p class="panel__lead-text">
+        Explore brands through our comprehensive dimension framework, designed to reveal insights and opportunities across the BRICS+ markets.
+      </p>
+  {% endcase %}
+</div>
