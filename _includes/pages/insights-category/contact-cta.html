@@ -1,23 +1,34 @@
 {% comment %}
-  Component: pages/insights-category/contact-cta.html
-  Purpose: Contact CTA section for the insights category pages
-  Parameters:
-    - heading: The heading for the section (default from translations)
-    - description: The description text for the section (default from translations)
-    - panel_type: The type of panel to use (default: cta)
-  Dependencies:
-    - assets/css/pages/insights-category/contact-cta.scss
+================================================================================
+CONTACT CTA: Insights Category Contact Section
+PATH: _includes/pages/insights-category/contact-cta.html
+PURPOSE: Contact call-to-action for insights category pages
+================================================================================
 {% endcomment %}
 
-{% assign t = site.data.translations[page.lang].insights %}
-{% assign panel_type = include.panel_type | default: "cta" %}
-
-<div class="panel panel--{{ panel_type }}">
-  <div class="panel__content panel--centered">
-    <h2 class="panel__heading-secondary">{{ include.heading | default: t.cta_heading | default: "Want to Feature Your Brand?" }}</h2>
-    <p class="panel__lead-text">{{ include.description | default: t.cta_description | default: "Get in touch to share your brand story with our global audience." }}</p>
-    <div class="insights-contact-cta__buttons">
-      <a href="{{ site.baseurl }}/{{ page.lang }}/about/#about-section-contact" class="btn btn--secondary-cta">{{ t.cta_button | default: "Contact Us" }}</a>
+<div class="contact-cta">
+  <div class="contact-cta__content">
+    <h2 class="contact-cta__title">
+      Explore More {{ page.category | replace: "-", " " | capitalize }}
+    </h2>
+    <p class="contact-cta__subtitle">
+      Discover more insights in this category or learn about our platform.
+    </p>
+    <div class="contact-cta__actions">
+      <a href="/{{ page.lang }}/contact/" class="btn btn--primary">
+        {% case page.lang %}
+          {% when 'ru' %}Свяжитесь с нами
+          {% when 'zh' %}联系我们
+          {% else %}Contact Us
+        {% endcase %}
+      </a>
+      <a href="/{{ page.lang }}/about/" class="btn btn--secondary">
+        {% case page.lang %}
+          {% when 'ru' %}Узнать больше
+          {% when 'zh' %}了解更多
+          {% else %}Learn More
+        {% endcase %}
+      </a>
     </div>
   </div>
 </div>

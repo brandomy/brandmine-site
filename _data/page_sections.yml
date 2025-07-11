@@ -127,7 +127,7 @@ discovery:
     content:
       type: panel--light
     dimensions-navigation:
-      type: panel--light
+      type: panel--navigation
     dimensions-grid:
       type: panel--light
     featured-brands:
@@ -206,15 +206,15 @@ dimensions-category:
   default_sections:
   - breadcrumbs
   - dimensions-navigation
-  - hero
-  - content
-  - impact
-  - contact-cta
+  # - hero
+  # - content
+  # - impact
+  # - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
     dimensions-navigation:
-      type: panel--light
+      type: panel--navigation
     hero:
       type: panel--dimensions-category-hero
       data_attributes:
@@ -233,13 +233,16 @@ insights-category:
   body_class: insights-category-page
   default_sections:
   - breadcrumbs
-  - hero
-  - insights-grid
-  - impact
-  - contact-cta
+  - insights-navigation
+  # - hero
+  # - insights-grid
+  # - impact
+  # - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
+    insights-navigation:
+      type: panel--navigation
     hero:
       type: panel--insights-category-hero
       data_attributes:
@@ -251,7 +254,7 @@ insights-category:
       type: panel--light
     insights-grid:
       type: panel--light
-    contact-cta:
+    contact-cta:            # <- ADD THIS MAPPING
       type: panel--cta
       content_classes: panel--centered
 about:

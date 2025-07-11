@@ -1,0 +1,21 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Insights Navigation (Category)
+PATH: _includes/pages/insights-category/insights-navigation.html
+PURPOSE: Navigation section for insights category pages
+================================================================================
+{% endcomment %}
+
+<style>
+  .panel--no-margin {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+  .panel--no-margin + .insights-category-section--hero .panel--hero-split {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+</style>
+
+{% include components/insights/insights-category-navigation.html style_option="b" active_category=page.category %}
