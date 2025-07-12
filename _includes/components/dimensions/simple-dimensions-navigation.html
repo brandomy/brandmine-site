@@ -1,0 +1,30 @@
+{% comment %}
+  Simple Dimensions Navigation - Fresh Start (Copy of Insights Approach)
+  4 dimension categories with icons
+{% endcomment %}
+
+{% assign active_dimension = include.active_dimension | default: page.category %}
+{% assign current_lang = page.lang | default: 'en' %}
+
+<nav class="simple-dimensions-nav">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/" 
+     class="{% if active_dimension == 'markets' %}active{% endif %}">
+    {% include components/icons/markets-icon.svg %}
+    <span>Markets</span>
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/" 
+     class="{% if active_dimension == 'sectors' %}active{% endif %}">
+    {% include components/icons/sectors-icon.svg %}
+    <span>Sectors</span>
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/" 
+     class="{% if active_dimension == 'attributes' %}active{% endif %}">
+    {% include components/icons/attributes-icon.svg %}
+    <span>Attributes</span>
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/" 
+     class="{% if active_dimension == 'signals' %}active{% endif %}">
+    {% include components/icons/signals-icon.svg %}
+    <span>Signals</span>
+  </a>
+</nav>

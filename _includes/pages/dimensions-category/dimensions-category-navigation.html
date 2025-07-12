@@ -1,36 +1,6 @@
 {% comment %}
-================================================================================
-PAGE SECTION: Dimensions Category Navigation
-PATH: _includes/pages/dimensions-category/dimensions-category-navigation.html
-
-PURPOSE:
-Navigation section for dimension category pages showing the four dimension
-categories with the active dimension highlighted.
-
-USAGE:
-Provides navigation context for users when viewing specific dimension categories
-like markets, sectors, attributes, and signals.
-
-PARAMETERS:
-- page.category (from page context) - used to highlight active dimension
-
-DEPENDENCIES:
-- Component: components/dimensions/dimensions-category-navigation.html
-- CSS: components/dimensions/dimensions-category-navigation.scss
-
-CUSTOMIZATION:
-- Style option 'b' provides inline text style
-- Active dimension is passed from page.category
-- Component handles all styling and translation
-
-EXAMPLE:
-{% include pages/dimensions-category/dimensions-category-navigation.html %}
-
-NOTES:
-- Delegates all rendering to the reusable dimensions-category-navigation component
-- Provides consistent navigation across dimension-related pages
-- Highlights the current active dimension for user context
-================================================================================
+  Dimensions Category Page: Simple navigation with active state
 {% endcomment %}
 
-{% include components/dimensions/dimensions-category-navigation.html style_option="b" active_dimension=page.category %}
+{% include components/dimensions/simple-dimensions-navigation.html
+   active_dimension=page.category %}
