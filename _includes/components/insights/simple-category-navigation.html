@@ -1,0 +1,26 @@
+{% comment %}
+  Simple Category Navigation - Fresh Start
+  No complex options, just clean pills
+{% endcomment %}
+
+{% assign active_category = include.active_category | default: page.category %}
+{% assign current_lang = page.lang | default: 'en' %}
+
+<nav class="simple-category-nav">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/brand-spotlight/" 
+     class="{% if active_category == 'brand-spotlight' %}active{% endif %}">
+    Brand Spotlight
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/founders-journey/" 
+     class="{% if active_category == 'founders-journey' %}active{% endif %}">
+    Founder's Journey
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/location-intelligence/" 
+     class="{% if active_category == 'location-intelligence' %}active{% endif %}">
+    Location Intelligence
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/market-momentum/" 
+     class="{% if active_category == 'market-momentum' %}active{% endif %}">
+    Market Momentum
+  </a>
+</nav>

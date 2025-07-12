@@ -1,22 +1,25 @@
 {% comment %}
   Include Name: components/insights/insights-category-navigation.html
 
-  Purpose: Renders insights category navigation with clean blockish styling
+  Purpose: Renders insights category navigation with styling options
 
   Parameters:
     - active_category: The currently active category (optional, defaults to page.category)
+    - style_option: 'a' (tooltip style) or 'b' (inline text style) - default: 'b'
 
   Dependencies:
     - CSS: components/insights/insights-category-navigation.scss
     - Translation data: site.data.insights[page.lang].categories
 {% endcomment %}
 
+{% assign style_option = include.style_option | default: 'b' %}
+{% assign nav_class = 'insights-category-navigation--option-' | append: style_option %}
 {% assign active_category = include.active_category | default: page.category %}
 {% assign current_lang = page.lang | default: 'en' %}
 {% assign categories = site.data.insights[current_lang].categories %}
 
-<div class="insights-category-navigation">
-  <div class="insights-category-navigation__container">
+<div class="insights-category-navigation {{ nav_class }}">
+  <div class="insights-category-navigation__container {% if active_category %}insights-category-navigation__container--{{ active_category }}{% endif %}">
     <div class="insights-category-navigation__tabs">
 
       {% for category in categories %}
@@ -24,8 +27,21 @@
         <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/{{ category_slug }}/"
            class="insights-category-navigation__tab {% if active_category == category_slug %}active{% endif %}"
            data-category="{{ category_slug }}">
-          <span class="insights-category-navigation__icon">{{ category.icon }}</span>
+          <span class="insights-category-navigation__icon">
+            {% if style_option == 'a' %}
+              {% include components/icons/icon.html
+                system="insights"
+                name=category.icon
+                size="md"
+                class="insights-category-icon" %}
+            {% else %}
+              {{ category.icon }}
+            {% endif %}
+          </span>
           <span class="insights-category-navigation__label">{{ category.name }}</span>
+          {% if style_option == 'a' %}
+            <span class="insights-category-navigation__tooltip">{{ category.description }}</span>
+          {% endif %}
         </a>
       {% endfor %}
 

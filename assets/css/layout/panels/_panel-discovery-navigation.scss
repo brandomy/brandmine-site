@@ -1,44 +1,39 @@
-// Discovery Navigation Panel
-// Used for insights and dimensions category navigation sections
-// Provides clean light gray background with seamless section flow
+/* Padding override for panel--primary in discovery navigation context */
+/* Foolproof override using !important */
+section[id="insights-category-section-insights-category-navigation"] .panel--primary {
+  padding-top: 0px !important;
+  padding-bottom: 16px !important;
+}
 
-.panel--discovery-navigation {
-  // Zero margins for seamless flow between sections
-  margin: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  
-  // Light gray background
-  background-color: var(--neutral-100);
-  
-  // Responsive padding
-  padding: var(--space-6) 0;
-  
-  @media (min-width: 768px) {
-    padding: var(--space-8) 0;
-  }
-  
-  // Content container with standard max-width
-  .panel__content {
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-    padding: 0 var(--space-4);
-    
-    @media (min-width: 768px) {
-      padding: 0 var(--space-6);
-    }
-  }
-  
-  // High specificity overrides to prevent conflicts
-  &.panel {
-    margin: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  // Ensure navigation components inside maintain proper spacing
-  .navigation-component {
-    margin: 0;
-    padding: 0;
-  }
+
+
+/* Keep existing simple navigation styles */
+.simple-category-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.simple-category-nav a {
+  background: white;
+  color: #374151;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  border: 1px solid #d1d5db;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.simple-category-nav a:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.simple-category-nav a.active {
+  background: #38b2ac;
+  color: white;
+  border-color: #38b2ac;
 }
