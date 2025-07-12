@@ -1233,3 +1233,25 @@
   background: linear-gradient(135deg, var(--primary-500), var(--sky-600));
   color: white;
 }
+
+/* Navigation Panel - High Specificity Override for Clean Display */
+.panel.panel--navigation {
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.panel.panel--navigation .panel__content {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+.panel.panel--navigation .insights-category-navigation__container {
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}

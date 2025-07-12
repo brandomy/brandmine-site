@@ -1,0 +1,44 @@
+// Discovery Navigation Panel
+// Used for insights and dimensions category navigation sections
+// Provides clean light gray background with seamless section flow
+
+.panel--discovery-navigation {
+  // Zero margins for seamless flow between sections
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  
+  // Light gray background
+  background-color: var(--neutral-100);
+  
+  // Responsive padding
+  padding: var(--space-6) 0;
+  
+  @media (min-width: 768px) {
+    padding: var(--space-8) 0;
+  }
+  
+  // Content container with standard max-width
+  .panel__content {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    
+    @media (min-width: 768px) {
+      padding: 0 var(--space-6);
+    }
+  }
+  
+  // High specificity overrides to prevent conflicts
+  &.panel {
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  // Ensure navigation components inside maintain proper spacing
+  .navigation-component {
+    margin: 0;
+    padding: 0;
+  }
+}

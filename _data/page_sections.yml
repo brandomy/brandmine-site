@@ -142,7 +142,7 @@ insights:
   default_sections:
   - breadcrumbs
   - hero
-  - category-navigation # moved it here to test
+  - insights-category-navigation
   - impact
   - featured-article
   - category-highlights
@@ -158,8 +158,8 @@ insights:
       additional_classes: panel--impact
     content:
       type: panel--light
-    category-navigation:
-      type: panel--light
+    insights-category-navigation:
+      type: panel--discovery-navigation
     categories:
       type: panel--light
     filter-interface:
@@ -205,16 +205,16 @@ dimensions-category:
   body_class: dimensions-category-page
   default_sections:
   - breadcrumbs
-  - dimensions-navigation
   - hero
+  - dimensions-category-navigation
   - content
   - impact
   - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
-    dimensions-navigation:
-      type: panel--light
+    dimensions-category-navigation:
+      type: panel--discovery-navigation
     hero:
       type: panel--dimensions-category-hero
       data_attributes:
@@ -234,12 +234,15 @@ insights-category:
   default_sections:
   - breadcrumbs
   - hero
+  - insights-category-navigation
   - insights-grid
   - impact
   - contact-cta
   panel_mappings:
     breadcrumbs:
       type: none
+    insights-category-navigation:
+      type: panel--discovery-navigation
     hero:
       type: panel--insights-category-hero
       data_attributes:
