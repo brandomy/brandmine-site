@@ -58,3 +58,67 @@ body[class*="insights-categories-"] .simple-category-nav a.active {
   color: white;                           /* White text */
   border-color: var(--primary-500);       /* Teal border */
 }
+
+
+/* Icon styling in navigation */
+.simple-category-nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.simple-category-nav .icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Make icons black by default */
+.simple-category-nav .icon svg {
+  fill: currentColor;
+  color: #374151;
+}
+
+/* Icon colors on hover and active states */
+.simple-category-nav a:hover .icon svg {
+  color: var(--secondary-700);  /* Orange on hover */
+}
+
+.simple-category-nav a.active .icon svg {
+  color: white;  /* White on active */
+}
+
+
+
+/* Adding Category Icons */
+
+/* Icon styling in navigation */
+.simple-category-nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.simple-category-nav .icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Make icons black by default - for stroke-based SVGs */
+.simple-category-nav .icon svg {
+  stroke: #374151;        /* Use stroke instead of fill */
+  fill: none;             /* Ensure no fill */
+  color: #374151;         /* For currentColor fallback */
+}
+
+/* Icon colors on hover and active states */
+.simple-category-nav a:hover .icon svg {
+  stroke: var(--secondary-700);  /* Orange stroke on hover */
+  color: var(--secondary-700);   /* Orange currentColor on hover */
+}
+
+.simple-category-nav a.active .icon svg {
+  stroke: white;          /* White stroke on active */
+  color: white;           /* White currentColor on active */
+}

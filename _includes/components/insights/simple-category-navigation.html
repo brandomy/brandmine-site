@@ -1,4 +1,4 @@
-{% comment %}
+<!-- {% comment %}
   Simple Category Navigation - Fresh Start
   No complex options, just clean pills
 {% endcomment %}
@@ -7,20 +7,50 @@
 {% assign current_lang = page.lang | default: 'en' %}
 
 <nav class="simple-category-nav">
-  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/brand-spotlight/" 
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/brand-spotlight/"
      class="{% if active_category == 'brand-spotlight' %}active{% endif %}">
     Brand Spotlight
   </a>
-  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/founders-journey/" 
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/founders-journey/"
      class="{% if active_category == 'founders-journey' %}active{% endif %}">
     Founder's Journey
   </a>
-  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/location-intelligence/" 
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/location-intelligence/"
      class="{% if active_category == 'location-intelligence' %}active{% endif %}">
     Location Intelligence
   </a>
-  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/market-momentum/" 
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/market-momentum/"
      class="{% if active_category == 'market-momentum' %}active{% endif %}">
     Market Momentum
+  </a>
+</nav> -->
+
+{% comment %}
+  Simple Category Navigation with Icons
+{% endcomment %}
+
+{% assign active_category = include.active_category | default: page.category %}
+{% assign current_lang = page.lang | default: 'en' %}
+
+<nav class="simple-category-nav">
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/brand-spotlight/"
+     class="{% if active_category == 'brand-spotlight' %}active{% endif %}">
+    {% include components/icons/icon.html system="insights" name="brand-spotlight" size="sm" %}
+    <span>Brand Spotlight</span>
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/founders-journey/"
+     class="{% if active_category == 'founders-journey' %}active{% endif %}">
+    {% include components/icons/icon.html system="insights" name="founders-journey" size="sm" %}
+    <span>Founder's Journey</span>
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/location-intelligence/"
+     class="{% if active_category == 'location-intelligence' %}active{% endif %}">
+    {% include components/icons/icon.html system="insights" name="location-intelligence" size="sm" %}
+    <span>Location Intelligence</span>
+  </a>
+  <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/market-momentum/"
+     class="{% if active_category == 'market-momentum' %}active{% endif %}">
+    {% include components/icons/icon.html system="insights" name="market-momentum" size="sm" %}
+    <span>Market Momentum</span>
   </a>
 </nav>
