@@ -37,3 +37,24 @@ section[id="insights-category-section-insights-category-navigation"] .panel--pri
   color: white;
   border-color: #38b2ac;
 }
+
+/* Insights page specific hover color using design tokens */
+body.insights-page .simple-category-nav a:hover {
+  background-color: var(--secondary-50); /* Light orange background */
+  border-color: var(--secondary-500);    /* Orange border */
+  color: var(--secondary-700);           /* Dark orange text */
+}
+
+/* Category page specific styling - orange hover, teal active */
+body[class*="insights-categories-"] .simple-category-nav a:hover:not(.active) {
+  background-color: var(--secondary-50);  /* Light orange background */
+  border-color: var(--secondary-500);     /* Orange border */
+  color: var(--secondary-700);            /* Dark orange text */
+}
+
+/* Keep active state as teal */
+body[class*="insights-categories-"] .simple-category-nav a.active {
+  background: var(--primary-500);         /* Teal background */
+  color: white;                           /* White text */
+  border-color: var(--primary-500);       /* Teal border */
+}
