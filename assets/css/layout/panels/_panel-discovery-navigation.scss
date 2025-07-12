@@ -5,6 +5,18 @@ section[id="insights-category-section-insights-category-navigation"] .panel--pri
   padding-bottom: 16px !important;
 }
 
+/* Discovery page (panel--neutral-soft) - KEEP normal top padding */
+section[id="discovery-section-dimensions-navigation"] .panel--neutral-soft {
+  padding-bottom: 16px !important;
+  /* DO NOT override padding-top - keep default */
+}
+
+/* Category pages (panel--primary) */
+section[id="dimensions-category-section-dimensions-category-navigation"] .panel--primary {
+  padding-top: 0px !important;
+  padding-bottom: 16px !important;
+}
+
 
 
 /* Keep existing simple navigation styles */
@@ -123,6 +135,19 @@ body[class*="insights-categories-"] .simple-category-nav a.active {
   color: white;           /* White currentColor on active */
 }
 
+/* Remove icon backgrounds for insights navigation */
+.simple-category-nav .icon {
+  background: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+.simple-category-nav .icon img {
+  background: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
 /* ======================================
    DIMENSIONS NAVIGATION STYLING 
    (Copy of insights approach)
@@ -152,8 +177,9 @@ body[class*="insights-categories-"] .simple-category-nav a.active {
 }
 
 .simple-dimensions-nav a:hover {
-  background: #f9fafb;
-  border-color: #9ca3af;
+  background: var(--secondary-50);
+  border-color: var(--secondary-200);
+  color: var(--secondary-700);
 }
 
 .simple-dimensions-nav a.active {
@@ -168,17 +194,19 @@ body[class*="insights-categories-"] .simple-category-nav a.active {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  stroke: #374151;
+  stroke: currentColor;
   fill: none;
-  color: #374151;
+  transition: color 0.2s ease;
 }
 
+/* Ensure ALL icons change color on hover */
 .simple-dimensions-nav a:hover svg {
-  stroke: var(--secondary-700);
-  color: var(--secondary-700);
+  color: var(--secondary-700) !important;
+  stroke: var(--secondary-700) !important;
 }
 
 .simple-dimensions-nav a.active svg {
-  stroke: white;
-  color: white;
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
 }
