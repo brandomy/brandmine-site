@@ -84,6 +84,22 @@ Parameters:
       {% assign founder_parts = page.title | split: "," %}
       {% assign breadcrumb_items = breadcrumb_items | push: founder_parts %}
 
+    {% when "dimensions-category" %}
+      {% comment %} Discovery/Dimensions section {% endcomment %}
+      {% capture discovery_name %}
+{% include helpers/t.html key="nav.discovery" fallback="Discovery" lang=current_lang %}
+{% endcapture %}
+      {% assign discovery_url = site.baseurl | append: "/" | append: current_lang | append: "/discover/" %}
+      {% assign discovery_item = discovery_name | append: "," | append: discovery_url %}
+      {% assign discovery_parts = discovery_item | split: "," %}
+      {% assign breadcrumb_items = breadcrumb_items | push: discovery_parts %}
+
+      {% comment %} Category item (current page) - Markets, Sectors, Attributes, or Signals {% endcomment %}
+      {% if page.title %}
+        {% assign category_parts = page.title | split: "," %}
+        {% assign breadcrumb_items = breadcrumb_items | push: category_parts %}
+      {% endif %}
+
     {% when "insight-article" %}
       {% capture insights_name %}
 {% include helpers/t.html key="nav.insights" fallback="Insights" lang=current_lang %}
