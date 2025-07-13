@@ -36,21 +36,21 @@
   <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/brand-spotlight/"
      class="{% if active_category == 'brand-spotlight' %}active{% endif %}">
     {% include components/icons/icon.html system="insights" name="brand-spotlight" size="sm" %}
-    <span>Brand Spotlight</span>
+    <span>{% include helpers/t.html key="insights.category_names.brand-spotlight" fallback="Brand Spotlight" %}</span>
   </a>
   <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/founders-journey/"
      class="{% if active_category == 'founders-journey' %}active{% endif %}">
     {% include components/icons/icon.html system="insights" name="founders-journey" size="sm" %}
-    <span>Founder's Journey</span>
+    <span>{% include helpers/t.html key="insights.category_names.founders-journey" fallback="Founder's Journey" %}</span>
   </a>
   <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/location-intelligence/"
      class="{% if active_category == 'location-intelligence' %}active{% endif %}">
     {% include components/icons/icon.html system="insights" name="location-intelligence" size="sm" %}
-    <span>Location Intelligence</span>
+    <span>{% include helpers/t.html key="insights.category_names.location-intelligence" fallback="Location Intelligence" %}</span>
   </a>
   <a href="{{ site.baseurl }}/{{ current_lang }}/insights/categories/market-momentum/"
      class="{% if active_category == 'market-momentum' %}active{% endif %}">
     {% include components/icons/icon.html system="insights" name="market-momentum" size="sm" %}
-    <span>Market Momentum</span>
+    <span>{% include helpers/t.html key="insights.category_names.market-momentum" fallback="Market Momentum" %}</span>
   </a>
 </nav>

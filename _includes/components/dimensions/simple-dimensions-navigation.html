@@ -10,21 +10,21 @@
   <a href="{{ site.baseurl }}/{{ current_lang }}/discover/markets/" 
      class="{% if active_dimension == 'markets' %}active{% endif %}">
     {% include components/icons/markets-icon.svg %}
-    <span>Markets</span>
+    <span>{% include helpers/t.html key="nav.markets" fallback="Markets" %}</span>
   </a>
   <a href="{{ site.baseurl }}/{{ current_lang }}/discover/sectors/" 
      class="{% if active_dimension == 'sectors' %}active{% endif %}">
     {% include components/icons/sectors-icon.svg %}
-    <span>Sectors</span>
+    <span>{% include helpers/t.html key="nav.sectors" fallback="Sectors" %}</span>
   </a>
   <a href="{{ site.baseurl }}/{{ current_lang }}/discover/attributes/" 
      class="{% if active_dimension == 'attributes' %}active{% endif %}">
     {% include components/icons/attributes-icon.svg %}
-    <span>Attributes</span>
+    <span>{% include helpers/t.html key="nav.attributes" fallback="Attributes" %}</span>
   </a>
   <a href="{{ site.baseurl }}/{{ current_lang }}/discover/signals/" 
      class="{% if active_dimension == 'signals' %}active{% endif %}">
     {% include components/icons/signals-icon.svg %}
-    <span>Signals</span>
+    <span>{% include helpers/t.html key="nav.signals" fallback="Signals" %}</span>
   </a>
 </nav>
