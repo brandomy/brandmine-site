@@ -8,20 +8,19 @@ Master project guide for Claude Code collaboration on Brandmine.
 
 **Brandmine** is a multilingual Jekyll site showcasing BRICS+ consumer brands with founder stories and dimension-based discovery.
 
-## Business Mission
-Illuminate exceptional founder-led brands from BRICS+ countries, connecting them globally with partners and capital for growth.
-
-**Architecture**: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment.
+**Architecture**: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment, Jekyll 3.9.5.
 
 ---
 
 # 🗂 Key Structure
 
 ```
-_brands/{lang}/           — Brand profiles
-_founders/{lang}/         — Founder profiles
+_brands/{lang}/           — Brand profiles (customer-facing)
+_founders/{lang}/         — Founder profiles (customer-facing)
 _dimensions/{lang}/{type}/ — Taxonomy (markets, sectors, attributes, signals)
-_insights/{lang}/         — Blog content
+_insights/{lang}/         — Blog content (customer-facing insights)
+_journal/{lang}/          — Internal blog (development journey)
+_pages/{lang}/            — Static pages (about, contact, etc.)
 _data/                    — Configuration and translations
 _includes/                — Reusable components
 assets/                   — CSS, JS, images
@@ -47,136 +46,151 @@ signals: ["export-ready"]
 
 ---
 
-# 🎴 Mobile-First Card System (Phase 1B Complete) ✅
+# 🎨 Official Color System (NEVER CHANGE)
 
-**All card types now unified on 345px mobile-first foundation**
+Brand Colours
+| **Primary Brand** | Teal | `--primary-*` | `#38B2AC` |
+| **Secondary** | Orange | `--secondary-*` | `#F97316` |
+| **Accent** | Indigo | `--accent-*` | `#6366F1` |
 
-## Universal Card Architecture
 
-**Single-component with variants pattern established:**
-```liquid
-{% raw %}{% include components/cards/brand-card.html brand=brand %}                      <!-- Standard -->
-{% include components/cards/brand-card.html brand=brand variant="featured" %}   <!-- Featured -->
-{% include components/cards/insight-card.html insight=insight %}                <!-- Standard (1A) -->
-{% include components/cards/insight-card.html insight=insight variant="tagged" %} <!-- With tags (1B) -->
-{% include components/cards/insight-card.html insight=insight variant="featured" %} <!-- Premium (1C) -->{% endraw %}
-```
+## Dimension Colors
+| Type | Color | CSS Property | HEX Code |
+|------|-------|--------------|----------|
+| **Sectors** | Olive Green | `--olive-*` | `#A3B763` |
+| **Markets** | Sky Blue | `--sky-*` | `#0EA5E9` |
+| **Attributes** | Orange | `--secondary-*` | `#F97316` |
+| **Signals** | Indigo | `--accent-*` | `#6366F1` |
 
-**Mobile-first responsive tokens:**
-```css
---card-width-atomic: 345px;         /* Mobile base */
---card-width-standard: 360px;       /* Desktop base */
---card-width-featured: 450px;       /* Desktop featured */
---card-width-featured-lg: 480px;    /* Premium displays */
---card-width-featured-xl: 500px;    /* Founder featured cards */
---card-width-mini: 345px;           /* Always compact */
-```
 
-**BEM namespaces standardized:**
-- `brand-card__*` - Brand profile cards with taxonomy tags (✅ 345px mobile-first complete)
-- `insight-card__*` - Article/content cards with category badges (✅ 345px mobile-first complete)
-- `founder-card__*` - Biographical profile cards (✅ 345px mobile-first complete)
+## Insight Category Colors (Aligned with Dimensions)
+| Category | Color | CSS Property | HEX Code |
+|----------|-------|--------------|----------|
+| **Brand Spotlight** | Orange | `--secondary-*` | `#F97316` |
+| **Founder's Journey** | Indigo | `--accent-*` | `#6366F1` |
+| **Location Intelligence** | Sky Blue | `--sky-*` | `#0EA5E9` |
+| **Market Momentum** | Olive Green | `--olive-*` | `#A3B763` |
 
-**Simple variant implementation:**
-- One HTML file per card type with `{% raw %}{% if variant == "name" %}{% endraw %}` blocks
-- Shared CSS classes: `.card__tag--sector`, `.card__tag--market`
-- No complex scoping or specificity conflicts
-- Easy to extend with new variants
-
-**CSS boundary rules enforced:**
-- Cards handle: typography, spacing, colors, internal layout, responsive sizing
-- Layouts handle: positioning, margins, grid/carousel structure
-- Zero cross-component violations maintained
-
-**Configuration-driven behavior** via `_data/component_defaults.yml`.
+**Critical Rule**: Insight categories use SAME colors as dimension types for consistency.
 
 ---
 
-# 📁 Data-Driven Architecture
+# 🎯 BEM-Compliant Panel System
 
-**Core principle**: Configuration over conditionals.
+**IMPORTANT**: Use BEM classes for new development. Legacy classes still work.
 
-**Current pattern:**
-```liquid
-{% raw %}{% include helpers/page-sections.html page_type="brands" %}{% endraw %}
-```
-
-**Centralized configuration:**
-- `_data/page_sections.yml` - Section control
-- `_data/component_defaults.yml` - Component behavior
-- `_data/translations/{lang}.yml` - UI text
-
----
-
-# 🎨 Essential Standards
-
-## File Naming
-- **Files**: `kebab-case.html`, `kebab-case.scss`
-- **Content**: `[country-code]-[brand-name].md`
-- **Images**: `purpose-description.jpg`
-
-## Front Matter
-```yaml
----
-layout: brand-profile
-title: "Brand Name"
-ref: "xx-brand-slug"
-lang: en
-country_code: "ru"
-permalink: /en/brands/ru-brand/
-
-# Semantic image structure
-images:
-  hero:
-    name: "storefront"
-    alt: "Description"
-    ext: "jpg"
-
-# Taxonomy (existing slugs only)
-sectors: ["wine"]
-markets: ["russia"]
----
-```
-
-## Card Sizing System
-**Mobile-first responsive design with design tokens:**
-
-| Token | Mobile (345px) | Desktop (768px+) | Purpose |
-|-------|----------------|------------------|---------|
-| `--card-width-atomic` | 345px | 345px | Base mobile size |
-| `--card-width-standard` | 345px | 360px | Standard cards |
-| `--card-width-featured` | 345px | 450px | Featured/hero cards |
-| `--card-width-mini` | 345px | 345px | Always compact |
-
-**Implementation:**
+## Panel Types Available
 ```scss
-.card {
-  width: var(--card-width-atomic);    /* 345px mobile */
-  max-width: 100%;
-  
-  @media (min-width: 768px) {
-    width: var(--card-width-standard); /* 360px desktop */
+/* Hero panels */
+.panel--hero                    /* Navigation pages */
+.panel--hero-subtle             /* Profile pages */
+.panel--hero-split              /* Side-by-side layout */
+.panel--hero-card               /* Card-based layout */
+
+/* Color panels */
+.panel--light                   /* White background */
+.panel--secondary-soft          /* Light orange */
+.panel--accent-soft             /* Light purple */
+.panel--neutral-soft            /* Light gray */
+.panel--sky-soft                /* Light blue */
+.panel--olive-soft              /* Light green */
+```
+
+## BEM Usage for New Development
+```html
+<!-- ✅ CORRECT: BEM-compliant -->
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary--hero">Title</h1>
+    <p class="panel__subtitle--hero">Subtitle</p>
+  </div>
+</div>
+
+<div class="panel panel--secondary-soft">
+  <div class="panel__content--secondary-soft">
+    <h2 class="panel__heading-secondary--secondary-soft">Section</h2>
+    <p class="panel__lead-text--secondary-soft">Content</p>
+  </div>
+</div>
+
+<!-- ❌ LEGACY: Still works but not preferred for new development -->
+<div class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__heading-primary">Title</h1>
+  </div>
+</div>
+```
+
+---
+
+# 🏗️ Architecture Principles
+
+## "Logic Light" Philosophy
+**3-layer architecture: Configuration → Processing → Styling**
+
+```yaml
+# _data/page_sections.yml - Configuration layer
+brand-profile:
+  panel_mappings:
+    identity:
+      type: panel--hero-subtle  # Drives styling automatically
+
+# _data/component_defaults.yml - Component behavior
+cards:
+  brand-card:
+    show_location: true
+    tag_limit: 4
+```
+
+**Pattern: Use page-sections helper (processes configuration)**
+```liquid
+{% include helpers/page-sections.html page_type="brands" %}
+```
+
+**Flow**: `page_sections.yml` → `page-sections.html` → `panel-types.scss` → Beautiful UI
+
+## Mobile-First Responsive Design
+**Always use min-width breakpoints:**
+```scss
+/* Mobile-first base styles */
+.component {
+  width: 100%;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .component {
+    width: var(--card-width-standard);
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .component {
+    width: var(--card-width-featured);
   }
 }
 ```
 
-## Dimension Color System
-| Type | Color | CSS Property |
-|------|-------|--------------|
-| **Sectors** | Olive Green | `--olive-*` |
-| **Markets** | Sky Blue | `--sky-*` |
-| **Attributes** | Orange | `--secondary-*` |
-| **Signals** | Indigo | `--accent-*` |
+**Never use max-width** - always progressive enhancement.
+
+## Card System
+**Single components with simple variants:**
+```liquid
+{% include components/cards/brand-card.html brand=brand %}                    <!-- Standard -->
+{% include components/cards/brand-card.html brand=brand variant="featured" %} <!-- Featured -->
+{% include components/cards/insight-card.html insight=insight variant="compact" %} <!-- Compact -->
+```
 
 ---
 
 # 💻 Essential Commands
 
 ```bash
-# Development
-bundle exec jekyll serve --livereload
+# Development (Jekyll 3.9.5 - no --livereload)
+bundle exec jekyll serve
 
-# Production build (achieved: 21s initial, 5.5s incremental)
+# Production build
 JEKYLL_ENV=production bundle exec jekyll build
 
 # Validation
@@ -184,74 +198,51 @@ _scripts/core/pre-commit_check.sh
 
 # Image processing
 _scripts/core/process_images.sh [collection] [identifier]
-
-# Performance optimization
-_scripts/utilities/generate-language-map.py
-_scripts/utilities/generate-navigation-cache.py
 ```
 
 ---
 
-# 📚 Documentation Architecture
+# 📚 Documentation Reference
 
-**4-document system** (find anything in 30 seconds):
-- `_docs/brandmine-guide.md` - Master navigation hub
+**Complete details**: See `_docs/technical-standards.md` for comprehensive technical documentation.
+
+**4-document system**:
+- `_docs/brandmine-guide.md` - Master navigation
 - `_docs/setup-and-workflows.md` - Complete workflows
-- `_docs/technical-standards.md` - Architecture patterns and standards
+- `_docs/technical-standards.md` - Architecture patterns
 - `_docs/troubleshooting-and-tools.md` - Problem resolution
 
-**Operational guides**: `_templates/tutorials/` for step-by-step workflows.
+---
+
+# ⚠️ Critical Rules for Claude Code
+
+## NEVER DO
+- Create new dimension types (only: markets, sectors, attributes, signals)
+- Change insight category colors (use exact colors specified above)
+- Use max-width media queries (always min-width)
+- Create separate component files for variants (use variant logic)
+- Use non-BEM classes for new panel development
+
+## ALWAYS DO
+- Use Jekyll 3.9.5 compatible commands (no --livereload)
+- Create matching CSS files for HTML components
+- Use mobile-first approach with min-width
+- Use BEM-compliant panel classes for new development
+- Prefer editing existing files over creating new ones
+- Use official color system for insight categories
+
+## CSS Organization
+```
+_includes/components/cards/brand-card.html
+assets/css/components/cards/brand-card.scss
+```
+**Rule**: Every HTML component gets a matching CSS file.
+
+## Content Width Standards
+- **Editorial content**: 700px (`--form-max-width`)
+- **Profile pages**: Mixed layout (1024px + 700px sections)
+- **Grid layouts**: Full width (1200px)
 
 ---
 
-# 🎯 Proven Development Principles
-
-1. **Mobile-first responsive design** - 345px → 360px card sizing with design tokens
-2. **Simple variant architecture** - Single component files with `{% raw %}{% if variant %}{% endraw %}` logic  
-3. **Clean BEM architecture** - Separate namespaces for distinct components
-4. **CSS boundary compliance** - Cards vs layouts separation enforced
-5. **Systematic implementation** - Audit → Plan → Execute → Validate methodology
-6. **Performance-conscious** - Maintain incremental build efficiency
-7. **Documentation-driven** - Standards codified for team development
-
-## Card Development Workflow
-```liquid
-# Create new card variant (example)
-# 1. Add variant logic to existing card HTML:
-{% raw %}{% if variant == "compact" %}
-  <!-- Compact variant HTML -->
-{% else %}
-  <!-- Standard variant HTML -->  
-{% endif %}{% endraw %}
-```
-
-```scss
-# 2. Add variant CSS classes:
-.card--compact { /* variant-specific styles */ }
-```
-
-```liquid
-# 3. Test variants:
-variant="standard"  # Default
-variant="featured"  # Enhanced
-variant="tagged"    # With taxonomy tags
-variant="compact"   # Minimal display
-```
-
-## Validation Workflow
-```bash
-# Before commits
-_scripts/core/pre-commit_check.sh
-
-# Verify card system consistency
-grep -r "variant=" _includes/components/cards/  # Check variant usage
-find _includes/components/cards/ -name "*-card.html" | wc -l  # Should show clean card count
-```
-
----
-
-# important-instruction-reminders
-- Do what has been asked; nothing more, nothing less
-- NEVER create files unless absolutely necessary
-- ALWAYS prefer editing existing files over creating new ones
-- NEVER proactively create documentation files unless explicitly requested
+**For complete technical details, architectural patterns, and implementation guidelines, see `_docs/technical-standards.md`**

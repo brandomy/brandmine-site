@@ -178,7 +178,7 @@
           <a href="/ru/discovery/" 
              
              >
-            Исследование
+            Поиск
             
           </a>
           
@@ -206,7 +206,7 @@
           <a href="/ru/journal/" 
              
              >
-            Дневник
+            Блог
             
           </a>
           
@@ -261,8 +261,8 @@
 
 
 
-  <section class="dimension-section dimension-section--breadcrumbs"
-           id="dimension-section-breadcrumbs"
+  <section class="dimension-profile-section dimension-profile-section--breadcrumbs"
+           id="dimension-profile-section-breadcrumbs"
            aria-labelledby="heading-breadcrumbs">
     
 
@@ -350,8 +350,8 @@
   
   
   
-    <section class="dimension-section dimension-section--hero" 
-             id="dimension-section-hero" 
+    <section class="dimension-profile-section dimension-profile-section--hero" 
+             id="dimension-profile-section-hero" 
              aria-labelledby="heading-hero">
       
       
@@ -362,6 +362,7 @@
       
       
       
+      
         
         
           
@@ -370,6 +371,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -395,28 +400,76 @@
         
           
 
-
-
-<div class="journal-hero journal-hero--teal journal-hero--landing">
+<div class="split-hero split-hero--teal split-hero--landing">
   <!-- Text Content Section -->
-  <div class="journal-hero__content">
-    <h1 class="journal-hero__title">Россия</h1>
+  <div class="split-hero__content">
+    <h1 class="split-hero__title">Россия</h1>
+    
+      <p class="split-hero__subtitle">Рынок с 144 миллионами потребителей, предлагающий превосходство в ремесленных спиртных напитках, отличительные сибирские растения и утонченный городской спрос на роскошь.</p>
     
   </div>
-  
+
   <!-- Image Section -->
-  <div class="journal-hero__image">
+  <div class="split-hero__image">
     
-    <img src="/assets/images/dimensions/markets/russia-1200w.jpg"
-         srcset="/assets/images/dimensions/markets/russia-400w.jpg 400w,
-                 /assets/images/dimensions/markets/russia-800w.jpg 800w,
-                 /assets/images/dimensions/markets/russia-1200w.jpg 1200w"
-         sizes="(max-width: 767px) 100vw, 50vw"
-         alt="Россия"
-         class="journal-hero__img"
-         loading="eager">
+      
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="/assets/images/dimensions/markets/russia/russia-hero-kremlin-400w.jpg"
+     srcset="/assets/images/dimensions/markets/russia/russia-hero-kremlin-400w.jpg 400w,
+             /assets/images/dimensions/markets/russia/russia-hero-kremlin-800w.jpg 800w,
+             /assets/images/dimensions/markets/russia/russia-hero-kremlin-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="Moscow Kremlin representing Russian market heritage and business environment"
+     class="split-hero__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/dimensions/markets/russia/russia-hero-400w.jpg';
+         this.srcset='/assets/images/dimensions/markets/russia/russia-hero-400w.jpg 400w, /assets/images/dimensions/markets/russia/russia-hero-800w.jpg 800w, /assets/images/dimensions/markets/russia/russia-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/dimensions/markets/russia/russia-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy">
+
+    
   </div>
 </div>
+
         
       
     
@@ -425,6 +478,7 @@
             
           
         
+      
       
       
       
@@ -436,8 +490,8 @@
   
   
   
-    <section class="dimension-section dimension-section--impact" 
-             id="dimension-section-impact" 
+    <section class="dimension-profile-section dimension-profile-section--impact" 
+             id="dimension-profile-section-impact" 
              aria-labelledby="heading-impact">
       
       
@@ -448,6 +502,7 @@
       
       
       
+      
         
         
           
@@ -456,6 +511,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -563,14 +622,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--header" 
-             id="dimension-section-header" 
+    <section class="dimension-profile-section dimension-profile-section--header" 
+             id="dimension-profile-section-header" 
              aria-labelledby="heading-header">
       
       
@@ -581,6 +641,7 @@
       
       
       
+      
         
         
           
@@ -589,6 +650,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -673,14 +738,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--featured-brands" 
-             id="dimension-section-featured-brands" 
+    <section class="dimension-profile-section dimension-profile-section--featured-brands" 
+             id="dimension-profile-section-featured-brands" 
              aria-labelledby="heading-featured-brands">
       
       
@@ -691,6 +757,7 @@
       
       
       
+      
         
         
           
@@ -699,6 +766,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -739,11 +810,27 @@
   
   
   
-  
-    <div class="dimension-featured-brands__empty">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 8v8m-4-4h8"></path></svg>
-      <p>
-        
+    <div class="dimension-featured-brands__grid">
+      
+        <div class="dimension-featured-brands__card">
+          
+          <div class="dimension-featured-brands__logo-placeholder"></div>
+          
+          <h3 class="dimension-featured-brands__title">
+            <a href="/ru/brands/ru-altai-honey/" class="dimension-featured-brands__link">Алтайское Золото Мёд</a>
+          </h3>
+          <p class="dimension-featured-brands__description">Традиционный сибирский производитель мёда, специализирующийся на премиальном разнотравном и хвойном мёде из нетронутых Алтайских гор России.</p>
+          <div class="dimension-featured-brands__meta">
+            
+            <a href="/ru/discover/sectors/honey-bee-products/" class="dimension-featured-brands__tag dimension-featured-brands__tag--sector">honey-bee-products</a>
+            
+            
+            <a href="/ru/discover/markets/russia/" class="dimension-featured-brands__tag dimension-featured-brands__tag--market">russia</a>
+            
+          </div>
+          <div class="dimension-featured-brands__action">
+            <a href="/ru/brands/ru-altai-honey/" class="btn btn--primary-cta">
+              
 
 
 
@@ -763,9 +850,144 @@
 
 
 
-  No featured brands available.
+  View Brand
 
-      </p>
+            </a>
+          </div>
+        </div>
+      
+        <div class="dimension-featured-brands__card">
+          
+          <div class="dimension-featured-brands__logo-placeholder"></div>
+          
+          <h3 class="dimension-featured-brands__title">
+            <a href="/ru/brands/ru-seven-spices/" class="dimension-featured-brands__link">Семь Специй Сибири</a>
+          </h3>
+          <p class="dimension-featured-brands__description">Ремесленная компания по производству смесей специй, специализирующаяся на традиционных сибирских и центральноазиатских комбинациях специй для совре...</p>
+          <div class="dimension-featured-brands__meta">
+            
+            <a href="/ru/discover/sectors/gourmet-foods/" class="dimension-featured-brands__tag dimension-featured-brands__tag--sector">gourmet-foods</a>
+            
+            
+            <a href="/ru/discover/markets/russia/" class="dimension-featured-brands__tag dimension-featured-brands__tag--market">russia</a>
+            
+          </div>
+          <div class="dimension-featured-brands__action">
+            <a href="/ru/brands/ru-seven-spices/" class="btn btn--primary-cta">
+              
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Brand
+
+            </a>
+          </div>
+        </div>
+      
+        <div class="dimension-featured-brands__card">
+          
+          <div class="dimension-featured-brands__logo-placeholder"></div>
+          
+          <h3 class="dimension-featured-brands__title">
+            <a href="/ru/brands/ru-taiga-spirits/" class="dimension-featured-brands__link">Тайга Спиритс</a>
+          </h3>
+          <p class="dimension-featured-brands__description">Крафтовая дистиллерия, создающая исключительные малосерийные водки и ботанические спиртные напитки с использованием древних сибирских рецептов и ди...</p>
+          <div class="dimension-featured-brands__meta">
+            
+            <a href="/ru/discover/sectors/artisanal-spirits/" class="dimension-featured-brands__tag dimension-featured-brands__tag--sector">artisanal-spirits</a>
+            
+            
+            <a href="/ru/discover/markets/russia/" class="dimension-featured-brands__tag dimension-featured-brands__tag--market">russia</a>
+            
+          </div>
+          <div class="dimension-featured-brands__action">
+            <a href="/ru/brands/ru-taiga-spirits/" class="btn btn--primary-cta">
+              
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Brand
+
+            </a>
+          </div>
+        </div>
+      
+        <div class="dimension-featured-brands__card">
+          
+          <div class="dimension-featured-brands__logo-placeholder"></div>
+          
+          <h3 class="dimension-featured-brands__title">
+            <a href="/ru/brands/ru-teatime/" class="dimension-featured-brands__link">TeaTime</a>
+          </h3>
+          <p class="dimension-featured-brands__description">Премиальное чайное заведение Москвы, предлагающее ремесленные чайные смеси и исключительные чайные церемонии в современной обстановке с традиционны...</p>
+          <div class="dimension-featured-brands__meta">
+            
+            <a href="/ru/discover/sectors/gourmet-foods/" class="dimension-featured-brands__tag dimension-featured-brands__tag--sector">gourmet-foods</a>
+            
+            
+            <a href="/ru/discover/markets/russia/" class="dimension-featured-brands__tag dimension-featured-brands__tag--market">russia</a>
+            
+          </div>
+          <div class="dimension-featured-brands__action">
+            <a href="/ru/brands/ru-teatime/" class="btn btn--primary-cta">
+              
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Brand
+
+            </a>
+          </div>
+        </div>
+      
     </div>
   
 </div>
@@ -782,14 +1004,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--all-brands" 
-             id="dimension-section-all-brands" 
+    <section class="dimension-profile-section dimension-profile-section--all-brands" 
+             id="dimension-profile-section-all-brands" 
              aria-labelledby="heading-all-brands">
       
       
@@ -800,6 +1023,7 @@
       
       
       
+      
         
         
           
@@ -808,6 +1032,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -865,7 +1093,7 @@
 
 
   All
- Россия (0)</h2>
+ Россия (4)</h2>
   
   <!-- Filter interface -->
   <div class="dimension-all-brands__filter-controls">
@@ -973,30 +1201,88 @@
   
   <!-- Brand list -->
   
-    <div class="dimension-all-brands__empty">
-      <p>
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  No brands found in this category.
-</p>
+    <div class="dimension-all-brands__list">
+      
+        <div class="dimension-all-brands__list-item" data-name="алтайское золото мёд" data-market="russia">
+          <div class="dimension-all-brands__list-item-content">
+            <h3 class="dimension-all-brands__list-item-title">
+              <a href="/ru/brands/ru-altai-honey/" class="dimension-all-brands__list-item-link">Алтайское Золото Мёд</a>
+            </h3>
+            <div class="dimension-all-brands__list-item-meta">
+              
+              <a href="/ru/discover/markets/russia/" class="dimension-all-brands__tag dimension-all-brands__tag--market">russia</a>
+              
+              
+              <a href="/ru/discover/sectors/honey-bee-products/" class="dimension-all-brands__tag dimension-all-brands__tag--sector">honey-bee-products</a>
+              
+            </div>
+          </div>
+          <a href="/ru/brands/ru-altai-honey/" class="dimension-all-brands__list-item-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      
+        <div class="dimension-all-brands__list-item" data-name="семь специй сибири" data-market="russia">
+          <div class="dimension-all-brands__list-item-content">
+            <h3 class="dimension-all-brands__list-item-title">
+              <a href="/ru/brands/ru-seven-spices/" class="dimension-all-brands__list-item-link">Семь Специй Сибири</a>
+            </h3>
+            <div class="dimension-all-brands__list-item-meta">
+              
+              <a href="/ru/discover/markets/russia/" class="dimension-all-brands__tag dimension-all-brands__tag--market">russia</a>
+              
+              
+              <a href="/ru/discover/sectors/gourmet-foods/" class="dimension-all-brands__tag dimension-all-brands__tag--sector">gourmet-foods</a>
+              
+            </div>
+          </div>
+          <a href="/ru/brands/ru-seven-spices/" class="dimension-all-brands__list-item-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      
+        <div class="dimension-all-brands__list-item" data-name="тайга спиритс" data-market="russia">
+          <div class="dimension-all-brands__list-item-content">
+            <h3 class="dimension-all-brands__list-item-title">
+              <a href="/ru/brands/ru-taiga-spirits/" class="dimension-all-brands__list-item-link">Тайга Спиритс</a>
+            </h3>
+            <div class="dimension-all-brands__list-item-meta">
+              
+              <a href="/ru/discover/markets/russia/" class="dimension-all-brands__tag dimension-all-brands__tag--market">russia</a>
+              
+              
+              <a href="/ru/discover/sectors/artisanal-spirits/" class="dimension-all-brands__tag dimension-all-brands__tag--sector">artisanal-spirits</a>
+              
+            </div>
+          </div>
+          <a href="/ru/brands/ru-taiga-spirits/" class="dimension-all-brands__list-item-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      
+        <div class="dimension-all-brands__list-item" data-name="teatime" data-market="russia">
+          <div class="dimension-all-brands__list-item-content">
+            <h3 class="dimension-all-brands__list-item-title">
+              <a href="/ru/brands/ru-teatime/" class="dimension-all-brands__list-item-link">TeaTime</a>
+            </h3>
+            <div class="dimension-all-brands__list-item-meta">
+              
+              <a href="/ru/discover/markets/russia/" class="dimension-all-brands__tag dimension-all-brands__tag--market">russia</a>
+              
+              
+              <a href="/ru/discover/sectors/gourmet-foods/" class="dimension-all-brands__tag dimension-all-brands__tag--sector">gourmet-foods</a>
+              
+            </div>
+          </div>
+          <a href="/ru/brands/ru-teatime/" class="dimension-all-brands__list-item-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      
     </div>
+    
+    <!-- Load more button for large lists -->
+    
   
 </div>
         
@@ -1012,14 +1298,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--related-insights" 
-             id="dimension-section-related-insights" 
+    <section class="dimension-profile-section dimension-profile-section--related-insights" 
+             id="dimension-profile-section-related-insights" 
              aria-labelledby="heading-related-insights">
       
       
@@ -1030,6 +1317,7 @@
       
       
       
+      
         
         
           
@@ -1038,6 +1326,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -1098,9 +1390,20 @@
   
   
   
-    <div class="dimension-related-insights__empty">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path><path d="M8 10h8M8 14h8"></path></svg>
-      <p>
+    <div class="dimension-related-insights__grid">
+      
+      <div class="dimension-related-insights__card">
+        
+        <div class="dimension-related-insights__content">
+          <div class="dimension-related-insights__type"></div>
+          <h3 class="dimension-related-insights__title">
+            <a href="/ru/insights/ru-seven-spices-spotlight/" class="dimension-related-insights__link">Бренд в фокусе: Семь Специй - Возрождение российских пряных традиций</a>
+          </h3>
+          <p class="dimension-related-insights__excerpt">Семь Специй возвращает традиционные русские пряные смеси в современную кухню, сочетая исторически...</p>
+          <div class="dimension-related-insights__meta">
+            <span class="dimension-related-insights__date">January 15, 2025</span>
+            <a href="/ru/insights/ru-seven-spices-spotlight/" class="dimension-related-insights__read-more">
+              
 
 
 
@@ -1120,9 +1423,130 @@
 
 
 
-  Нет доступных аналитических материалов для этого измерения
-</p>
+  Read More
+
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dimension-related-insights__card">
+        
+        <div class="dimension-related-insights__content">
+          <div class="dimension-related-insights__type"></div>
+          <h3 class="dimension-related-insights__title">
+            <a href="/ru/insights/ru-teatime-founder-journey/" class="dimension-related-insights__link">Алексей Соколов: Путь TeaTime от московских холмов до мировых рынков</a>
+          </h3>
+          <p class="dimension-related-insights__excerpt">Замечательная история о том, как страсть программиста к чаю превратилась в ведущий российский бре...</p>
+          <div class="dimension-related-insights__meta">
+            <span class="dimension-related-insights__date">February 5, 2025</span>
+            <a href="/ru/insights/ru-teatime-founder-journey/" class="dimension-related-insights__read-more">
+              
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Read More
+
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dimension-related-insights__card">
+        
+        <div class="dimension-related-insights__content">
+          <div class="dimension-related-insights__type"></div>
+          <h3 class="dimension-related-insights__title">
+            <a href="/ru/insights/ru-siberian-honey-corridor/" class="dimension-related-insights__link">Сибирский медовый коридор: формирующаяся пчеловодческая экосистема России</a>
+          </h3>
+          <p class="dimension-related-insights__excerpt">Как нетронутые леса Южной Сибири становятся эпицентром премиальной медовой индустрии России, прив...</p>
+          <div class="dimension-related-insights__meta">
+            <span class="dimension-related-insights__date">March 10, 2025</span>
+            <a href="/ru/insights/ru-siberian-honey-corridor/" class="dimension-related-insights__read-more">
+              
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Read More
+
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dimension-related-insights__card">
+        
+        <div class="dimension-related-insights__content">
+          <div class="dimension-related-insights__type"></div>
+          <h3 class="dimension-related-insights__title">
+            <a href="/ru/insights/ru-russian-wine-renaissance/" class="dimension-related-insights__link">Ренессанс российского виноделия: рост рынка на 52% за пять лет</a>
+          </h3>
+          <p class="dimension-related-insights__excerpt">Российская винодельческая отрасль переживает беспрецедентный рост: увеличение отечественного прои...</p>
+          <div class="dimension-related-insights__meta">
+            <span class="dimension-related-insights__date">April 1, 2025</span>
+            <a href="/ru/insights/ru-russian-wine-renaissance/" class="dimension-related-insights__read-more">
+              
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Read More
+
+            </a>
+          </div>
+        </div>
+      </div>
+      
     </div>
+      
+    
   
 </div>
         
@@ -1138,13 +1562,14 @@
       
       
       
+      
     </section>
   
 
 </div>
 
 <!-- Reference the external JS file instead of inline script -->
-<script src="/assets/js/pages/dimension/dimension-filtering.js"></script>
+<script src="/assets/js/pages/dimension-profile/dimension-filtering.js"></script>
 
       </div>
     </div>
@@ -1561,6 +1986,8 @@
   <script src="/assets/js/components/header.js"></script>
 
   <!-- Conditional Components Based on Layout -->
+  
+      <script src="/assets/js/pages/dimension-profile/dimension-filtering.js"></script>
   
 
   <!-- Optional Components Based on Page Features -->

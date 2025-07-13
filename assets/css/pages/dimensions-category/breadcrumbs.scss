@@ -1,0 +1,15 @@
+// dimensions-category page: seamless connection with breadcrumbs
+.dimensions-category-page,
+.markets-page,
+.sectors-page,
+.attributes-page,
+.signals-page {
+  // Breadcrumbs use generic UI component - no page-specific styles needed
+  
+  // Seamless connection: Remove top spacing from hero sections that follow breadcrumbs
+  .dimensions-category-section--breadcrumbs + * .panel {
+    border-top: none;
+    margin-top: 0;
+    padding-top: var(--space-8);
+  }
+}

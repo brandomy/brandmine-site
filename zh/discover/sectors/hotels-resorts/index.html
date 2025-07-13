@@ -264,8 +264,8 @@
 
 
 
-  <section class="dimension-section dimension-section--breadcrumbs"
-           id="dimension-section-breadcrumbs"
+  <section class="dimension-profile-section dimension-profile-section--breadcrumbs"
+           id="dimension-profile-section-breadcrumbs"
            aria-labelledby="heading-breadcrumbs">
     
 
@@ -353,8 +353,8 @@
   
   
   
-    <section class="dimension-section dimension-section--hero" 
-             id="dimension-section-hero" 
+    <section class="dimension-profile-section dimension-profile-section--hero" 
+             id="dimension-profile-section-hero" 
              aria-labelledby="heading-hero">
       
       
@@ -365,6 +365,7 @@
       
       
       
+      
         
         
           
@@ -373,6 +374,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -398,28 +403,76 @@
         
           
 
-
-
-<div class="journal-hero journal-hero--teal journal-hero--landing">
+<div class="split-hero split-hero--teal split-hero--landing">
   <!-- Text Content Section -->
-  <div class="journal-hero__content">
-    <h1 class="journal-hero__title">酒店与度假村</h1>
+  <div class="split-hero__content">
+    <h1 class="split-hero__title">酒店与度假村</h1>
+    
+      <p class="split-hero__subtitle">展示本土文化和遗产的酒店品牌，为寻求真实性的旅行者提供独特体验。</p>
     
   </div>
-  
+
   <!-- Image Section -->
-  <div class="journal-hero__image">
+  <div class="split-hero__image">
     
-    <img src="/assets/images/dimensions/sectors/hotels-resorts-1200w.jpg"
-         srcset="/assets/images/dimensions/sectors/hotels-resorts-400w.jpg 400w,
-                 /assets/images/dimensions/sectors/hotels-resorts-800w.jpg 800w,
-                 /assets/images/dimensions/sectors/hotels-resorts-1200w.jpg 1200w"
-         sizes="(max-width: 767px) 100vw, 50vw"
-         alt="酒店与度假村"
-         class="journal-hero__img"
-         loading="eager">
+      
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="/assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-hospitality-400w.jpg"
+     srcset="/assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-hospitality-400w.jpg 400w,
+             /assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-hospitality-800w.jpg 800w,
+             /assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-hospitality-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="酒店和度假村代表豪华住宿和旅行体验"
+     class="split-hero__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-400w.jpg';
+         this.srcset='/assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-400w.jpg 400w, /assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-800w.jpg 800w, /assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/dimensions/sectors/hotels-resorts/hotels-resorts-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy">
+
+    
   </div>
 </div>
+
         
       
     
@@ -428,6 +481,7 @@
             
           
         
+      
       
       
       
@@ -439,8 +493,8 @@
   
   
   
-    <section class="dimension-section dimension-section--impact" 
-             id="dimension-section-impact" 
+    <section class="dimension-profile-section dimension-profile-section--impact" 
+             id="dimension-profile-section-impact" 
              aria-labelledby="heading-impact">
       
       
@@ -451,6 +505,7 @@
       
       
       
+      
         
         
           
@@ -459,6 +514,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -566,14 +625,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--header" 
-             id="dimension-section-header" 
+    <section class="dimension-profile-section dimension-profile-section--header" 
+             id="dimension-profile-section-header" 
              aria-labelledby="heading-header">
       
       
@@ -584,6 +644,7 @@
       
       
       
+      
         
         
           
@@ -592,6 +653,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -645,14 +710,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--featured-brands" 
-             id="dimension-section-featured-brands" 
+    <section class="dimension-profile-section dimension-profile-section--featured-brands" 
+             id="dimension-profile-section-featured-brands" 
              aria-labelledby="heading-featured-brands">
       
       
@@ -663,6 +729,7 @@
       
       
       
+      
         
         
           
@@ -671,6 +738,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -711,11 +782,27 @@
   
   
   
-  
-    <div class="dimension-featured-brands__empty">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 8v8m-4-4h8"></path></svg>
-      <p>
-        
+    <div class="dimension-featured-brands__grid">
+      
+        <div class="dimension-featured-brands__card">
+          
+          <div class="dimension-featured-brands__logo-placeholder"></div>
+          
+          <h3 class="dimension-featured-brands__title">
+            <a href="/zh/brands/br-sojourn-hotels/" class="dimension-featured-brands__link">索茹精品酒店</a>
+          </h3>
+          <p class="dimension-featured-brands__description">一系列精致的精品酒店，通过可持续奢华和真实的当地体验，展示巴西多样化的景观。</p>
+          <div class="dimension-featured-brands__meta">
+            
+            <a href="/zh/discover/sectors/hotels-resorts/" class="dimension-featured-brands__tag dimension-featured-brands__tag--sector">hotels-resorts</a>
+            
+            
+            <a href="/zh/discover/markets/brazil/" class="dimension-featured-brands__tag dimension-featured-brands__tag--market">brazil</a>
+            
+          </div>
+          <div class="dimension-featured-brands__action">
+            <a href="/zh/brands/br-sojourn-hotels/" class="btn btn--primary-cta">
+              
 
 
 
@@ -735,9 +822,12 @@
 
 
 
-  No featured brands available.
+  View Brand
 
-      </p>
+            </a>
+          </div>
+        </div>
+      
     </div>
   
 </div>
@@ -754,14 +844,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--all-brands" 
-             id="dimension-section-all-brands" 
+    <section class="dimension-profile-section dimension-profile-section--all-brands" 
+             id="dimension-profile-section-all-brands" 
              aria-labelledby="heading-all-brands">
       
       
@@ -772,6 +863,7 @@
       
       
       
+      
         
         
           
@@ -780,6 +872,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -837,7 +933,7 @@
 
 
   All
- 酒店与度假村 (0)</h2>
+ 酒店与度假村 (1)</h2>
   
   <!-- Filter interface -->
   <div class="dimension-all-brands__filter-controls">
@@ -945,30 +1041,31 @@
   
   <!-- Brand list -->
   
-    <div class="dimension-all-brands__empty">
-      <p>
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-  No brands found in this category.
-</p>
+    <div class="dimension-all-brands__list">
+      
+        <div class="dimension-all-brands__list-item" data-name="索茹精品酒店" data-market="brazil">
+          <div class="dimension-all-brands__list-item-content">
+            <h3 class="dimension-all-brands__list-item-title">
+              <a href="/zh/brands/br-sojourn-hotels/" class="dimension-all-brands__list-item-link">索茹精品酒店</a>
+            </h3>
+            <div class="dimension-all-brands__list-item-meta">
+              
+              <a href="/zh/discover/markets/brazil/" class="dimension-all-brands__tag dimension-all-brands__tag--market">brazil</a>
+              
+              
+              <a href="/zh/discover/sectors/hotels-resorts/" class="dimension-all-brands__tag dimension-all-brands__tag--sector">hotels-resorts</a>
+              
+            </div>
+          </div>
+          <a href="/zh/brands/br-sojourn-hotels/" class="dimension-all-brands__list-item-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      
     </div>
+    
+    <!-- Load more button for large lists -->
+    
   
 </div>
         
@@ -984,14 +1081,15 @@
       
       
       
+      
     </section>
   
 
   
   
   
-    <section class="dimension-section dimension-section--related-insights" 
-             id="dimension-section-related-insights" 
+    <section class="dimension-profile-section dimension-profile-section--related-insights" 
+             id="dimension-profile-section-related-insights" 
              aria-labelledby="heading-related-insights">
       
       
@@ -1002,6 +1100,7 @@
       
       
       
+      
         
         
           
@@ -1010,6 +1109,10 @@
             
               
               
+
+
+
+
 
 
 
@@ -1110,13 +1213,14 @@
       
       
       
+      
     </section>
   
 
 </div>
 
 <!-- Reference the external JS file instead of inline script -->
-<script src="/assets/js/pages/dimension/dimension-filtering.js"></script>
+<script src="/assets/js/pages/dimension-profile/dimension-filtering.js"></script>
 
       </div>
     </div>
@@ -1533,6 +1637,8 @@
   <script src="/assets/js/components/header.js"></script>
 
   <!-- Conditional Components Based on Layout -->
+  
+      <script src="/assets/js/pages/dimension-profile/dimension-filtering.js"></script>
   
 
   <!-- Optional Components Based on Page Features -->

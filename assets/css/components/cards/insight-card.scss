@@ -34,15 +34,21 @@
    
 
 .insight-card {
-  /* Apply universal width pattern */
-  width: var(--card-width-atomic);    /* 345px mobile */
+  /* Mobile-first: Full width within grid cell */
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
   box-sizing: border-box;
   
-  /* Desktop enhancement */
+  /* Tablet+: Use atomic width */
   @media (min-width: 768px) {
+    width: var(--card-width-atomic); /* 345px tablet */
+    max-width: var(--card-width-atomic);
+  }
+  
+  /* Desktop: Standard width */
+  @media (min-width: 1024px) {
     width: var(--card-width-standard); /* 360px desktop */
+    max-width: var(--card-width-standard);
   }
   
   background-color: var(--neutral-100);
@@ -103,7 +109,8 @@
 .insight-card__title {
   font-size: var(--text-custom);
   font-weight: var(--font-semibold);
-  margin: 0 0 var(--space-2) 0;
+  padding-bottom: var(--space-2);
+  margin: 0;
   color: var(--neutral-900);
   line-height: 1.4;
 }
@@ -111,7 +118,7 @@
 .insight-card__meta {
   display: flex;
   gap: var(--space-2);
-  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-2);
   font-size: var(--text-sm);
   color: var(--neutral-500);
 }
@@ -120,7 +127,7 @@
   font-size: var(--text-base);
   line-height: 1.5;
   color: var(--neutral-700);
-  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
 }
 
 /* Card footer */
@@ -225,85 +232,9 @@
   @extend .dimension-tag-cloud__tag--signal;
 }
 
-/* Category badge */
-.insight-card__category-badge {
-  background-color: var(--primary-100);
-  color: var(--primary-900);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  font-weight: var(--font-semibold);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  margin-bottom: var(--space-2);
-}
+/* Category badge styles removed - now handled by insight-category-new component */
 
-/* Category badge overlay variant (for positioning over images) */
-.insight-card__category-badge--overlay {
-  position: absolute;
-  top: var(--space-2);
-  right: var(--space-2);
-  background-color: var(--overlay-modal);
-  color: white;
-  z-index: 1;
-  margin-bottom: 0;
-}
-
-.insight-card__category-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-}
-
-.insight-card__category-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Category-specific styling */
-.insight-card--brand-spotlight {
-  border-left-color: var(--secondary-400);
-}
-
-.insight-card--brand-spotlight .insight-card__category-badge {
-  background-color: var(--secondary-100);
-  color: var(--secondary-800);
-  border: 1px solid var(--secondary-200);
-}
-
-.insight-card--founders-journey {
-  border-left-color: var(--accent-400);
-}
-
-.insight-card--founders-journey .insight-card__category-badge {
-  background-color: var(--accent-100);
-  color: var(--accent-800);
-  border: 1px solid var(--accent-200);
-}
-
-.insight-card--location-intelligence {
-  border-left-color: var(--sky-400);
-}
-
-.insight-card--location-intelligence .insight-card__category-badge {
-  background-color: var(--sky-100);
-  color: var(--sky-800);
-  border: 1px solid var(--sky-200);
-}
-
-.insight-card--market-momentum {
-  border-left-color: var(--olive-400);
-}
-
-.insight-card--market-momentum .insight-card__category-badge {
-  background-color: var(--olive-100);
-  color: var(--olive-800);
-  border: 1px solid var(--olive-200);
-}
+/* Category-specific styling removed - now handled by insight-category component */
 
 /* Optional modifier support */
 .insight-card--highlighted {
@@ -313,11 +244,20 @@
 
 /* Featured variant - Premium styling mapped from insight-card-latest */
 .insight-card--featured {
-  /* Enhanced sizing - larger for premium display */
-  width: var(--card-width-atomic);    /* 345px mobile */
+  /* Mobile-first: Full width within grid cell */
+  width: 100%;
+  max-width: 100%;
   
+  /* Tablet+: Enhanced sizing */
   @media (min-width: 768px) {
+    width: var(--card-width-atomic); /* 345px tablet */
+    max-width: var(--card-width-atomic);
+  }
+  
+  /* Desktop: Premium sizing */
+  @media (min-width: 1024px) {
     width: var(--card-width-featured-lg); /* 480px desktop (like insight-card-latest) */
+    max-width: var(--card-width-featured-lg);
   }
   
   /* Premium styling - Override base card radius */
@@ -366,58 +306,10 @@
     }
   }
   
-  /* Category positioning and styling */
+  /* Category positioning and styling - handled by insight-category-new component */
   .insight-card__category {
-    position: relative;
-    top: 10px;                          /* 10px below hero image */
-    margin-bottom: var(--space-1);
     text-align: center;
-    
-    @media (min-width: 481px) {
-      margin-bottom: var(--space-2);
-    }
-    
-    @media (min-width: 768px) {
-      margin-bottom: var(--space-1);    /* Minimal spacing on desktop */
-    }
-    
-    @media (min-width: 992px) {
-      margin-bottom: var(--space-2);    /* Enhanced spacing */
-    }
-  }
-  
-  .insight-card__category-badge {
-    background: var(--primary-100);
-    color: var(--primary-800);
-    padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius-full);
-    font-size: var(--text-sm);
-    font-weight: var(--font-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border: 1px solid var(--primary-200);
-    display: inline-block;
-    text-decoration: none !important;
-  }
-  
-  /* Category link styling for featured variant */
-  .insight-card__category-link {
-    text-decoration: none !important;
-    color: inherit;
-    transition: all 0.2s ease;
-    
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      text-decoration: none !important;
-    }
-    
-    &:focus {
-      outline: 2px solid var(--primary-500);
-      outline-offset: 2px;
-      border-radius: var(--radius-full);
-      text-decoration: none !important;
-    }
+    margin-bottom: var(--space-3);
   }
   
   /* Content link for grouped content */
@@ -548,8 +440,15 @@
 
 /* Mini variant (for future variant="mini" parameter) */
 .insight-card--mini {
-  width: var(--card-width-mini);      /* Always 345px */
-  max-width: var(--card-width-mini);
+  /* Mobile-first: Full width within grid cell */
+  width: 100%;
+  max-width: 100%;
+  
+  /* Tablet+: Constrained mini size */
+  @media (min-width: 768px) {
+    width: var(--card-width-mini);      /* Always 345px */
+    max-width: var(--card-width-mini);
+  }
   
   /* Compact styling for mini variant */
   .insight-card__excerpt {
@@ -562,72 +461,8 @@
 }
 
 /* ==========================================================================
-   Category-specific styling for featured variant
+   Featured variant category styling removed - now handled by insight-category component
    ========================================================================== */
-
-.insight-card--featured.insight-card--brand-spotlight {
-  border-left-color: var(--secondary-500);
-}
-
-.insight-card--featured.insight-card--brand-spotlight .insight-card__category-badge {
-  background: var(--secondary-100);
-  color: var(--secondary-800);
-  border-color: var(--secondary-200);
-}
-
-.insight-card--featured.insight-card--brand-spotlight .insight-card__category-badge:hover {
-  background: var(--secondary-600);
-  color: white;
-  border-color: var(--secondary-600);
-}
-
-.insight-card--featured.insight-card--founders-journey {
-  border-left-color: var(--accent-500);
-}
-
-.insight-card--featured.insight-card--founders-journey .insight-card__category-badge {
-  background: var(--accent-100);
-  color: var(--accent-800);
-  border-color: var(--accent-200);
-}
-
-.insight-card--featured.insight-card--founders-journey .insight-card__category-badge:hover {
-  background: var(--accent-600);
-  color: white;
-  border-color: var(--accent-600);
-}
-
-.insight-card--featured.insight-card--location-intelligence {
-  border-left-color: var(--sky-500);
-}
-
-.insight-card--featured.insight-card--location-intelligence .insight-card__category-badge {
-  background: var(--sky-100);
-  color: var(--sky-800);
-  border-color: var(--sky-200);
-}
-
-.insight-card--featured.insight-card--location-intelligence .insight-card__category-badge:hover {
-  background: var(--sky-600);
-  color: white;
-  border-color: var(--sky-600);
-}
-
-.insight-card--featured.insight-card--market-momentum {
-  border-left-color: var(--olive-500);
-}
-
-.insight-card--featured.insight-card--market-momentum .insight-card__category-badge {
-  background: var(--olive-100);
-  color: var(--olive-800);
-  border-color: var(--olive-200);
-}
-
-.insight-card--featured.insight-card--market-momentum .insight-card__category-badge:hover {
-  background: var(--olive-600);
-  color: white;
-  border-color: var(--olive-600);
-}
 
 /* ==========================================================================
    Responsive

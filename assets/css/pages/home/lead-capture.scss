@@ -27,11 +27,16 @@
 
   .lead-capture__container {
     max-width: 600px;
-    margin: var(--space-6) auto 0;
+    margin: 0 auto;
     padding: var(--space-6);
     background-color: white;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-elevated);
+  }
+  
+  /* Add top spacing to parent container instead */
+  .panel--lead-capture .panel__content {
+    padding-top: var(--space-6);
   }
 
   .lead-capture__form {
@@ -48,8 +53,7 @@
   @media (width <= 479px) {
     .lead-capture__container {
       padding: var(--space-4);
-      margin-left: var(--space-4);
-      margin-right: var(--space-4);
+      margin: 0 var(--space-4);
     }
   }
 }

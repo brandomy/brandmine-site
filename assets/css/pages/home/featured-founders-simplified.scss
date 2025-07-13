@@ -1,7 +1,8 @@
 /**
  * Featured Founders Simplified Section
- * Clean grid layout for Progressive Disclosure founders cards
+ * Clean grid layout for standard founder cards
  * Following successful Case Studies and Brand section patterns
+ * Uses: components/cards/founder-card.html
  */
 
 .featured-founders-simplified {
@@ -53,7 +54,7 @@
 @media (min-width: 1280px) {
   .featured-founders-simplified__grid {
     // On very large screens, maintain card max-width for readability
-    .simplified-founder-card {
+    .founder-card {
       max-width: 300px;
       justify-self: center;
     }
@@ -61,7 +62,7 @@
 }
 
 // Animation for cards loading in
-.featured-founders-simplified__grid .simplified-founder-card {
+.featured-founders-simplified__grid .founder-card {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.5s ease-out forwards;

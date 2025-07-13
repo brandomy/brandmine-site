@@ -300,8 +300,8 @@ class DiscoverySearch {
     };
 
     this.dimensionsData.forEach(dimension => {
-      if (dimension.dimension_type && grouped[dimension.dimension_type]) {
-        grouped[dimension.dimension_type].push({
+      if (dimension.category && grouped[dimension.category]) {
+        grouped[dimension.category].push({
           title: dimension.title,
           slug: dimension.url ? dimension.url.split('/').pop() : dimension.title.toLowerCase().replace(/\s+/g, '-'),
           lang: dimension.lang

@@ -126,6 +126,18 @@
     --amber-800: #92400E;
     --amber-900: #78350F;
 
+    /* Coral palette - Analogous to secondary orange with warmer tones */
+    --coral-50:  #FFF5F5;
+    --coral-100: #FED7D7;
+    --coral-200: #FBB6CE;
+    --coral-300: #F687B3;
+    --coral-400: #ED64A6;
+    --coral-500: #D53F8C;
+    --coral-600: #B83280;
+    --coral-700: #97266D;
+    --coral-800: #702459;
+    --coral-900: #521B41;
+
     /* ==========================================================================
        Journal Hero Color Schemes
        ==========================================================================
@@ -146,8 +158,8 @@
     --journal-purple-dark:  var(--accent-700);  /* Use existing accent-700 */
 
     /* Journal Coral - Analogous to secondary orange */
-    --journal-coral-light: #FF7A85;  /* Analogous to orange, warmer tone */
-    --journal-coral-dark:  #D63447;  /* Maintains warmth family */
+    --journal-coral-light:  var(--coral-400);   /* Analogous to orange, warmer tone */
+    --journal-coral-dark:  var(--coral-700);  /* Maintains warmth family */
 
     /* Journal Sage - Extended from olive palette */
     --journal-sage-light: #9DB87A;   /* Harmonious with olive */
@@ -383,7 +395,7 @@
 
     /* Specific token for card components; can be adjusted independently if needed */
     --radius-card: 0.75rem; /* 12px */
-    
+
     /* Border widths */
     --border-width-0: 0;
     --border-width-thin: 1px;
@@ -401,7 +413,7 @@
     --content-width-lg: 1024px;
     --content-width-xl: 1200px;
     --content-width-2xl: 1400px;
-    
+
     /* Form and component specific widths */
     --form-max-width: 700px;
     --form-min-width: 280px;
@@ -410,7 +422,7 @@
     --sidebar-width: 280px;
     --card-min-width: 280px;
     --card-max-width: 400px;
-    
+
     /* Height values */
     --header-height: 80px;
     --hero-height-sm: 300px;
@@ -418,7 +430,7 @@
     --hero-height-lg: 500px;
     --hero-height-xl: 600px;
     --hero-height-full: 100vh;
-    
+
     /* Common sizing values */
     --size-1: 0.25rem;   /* 4px */
     --size-2: 0.5rem;    /* 8px */
@@ -489,7 +501,7 @@
       --card-width-standard: 360px;       /* Desktop enhancement */
       --card-width-mini: 345px;           /* Constrained variant (no growth) */
 
-      /* Featured card widths */  
+      /* Featured card widths */
       --card-width-featured: 450px;       /* Insight featured cards */
       --card-width-featured-lg: 480px;    /* Premium displays */
       --card-width-featured-xl: 500px;    /* Founder featured cards */
@@ -600,17 +612,17 @@
     --shadow-xs: 0 1px 2px var(--neutral-alpha-05);
     --shadow-light: 0 1px 3px var(--neutral-alpha-10);
     --shadow-subtle: 0 2px 4px var(--neutral-alpha-10);
-    
+
     /* Medium shadows for cards and components */
     --shadow-card: 0 2px 6px var(--neutral-alpha-50);
     --shadow-card-hover: 0 4px 12px var(--neutral-alpha-10);
     --shadow-medium: 0 4px 8px var(--neutral-alpha-15);
-    
+
     /* Heavy shadows for elevated components */
     --shadow-elevated: 0 4px 8px var(--neutral-alpha-80);
     --shadow-strong: 0 6px 12px var(--neutral-alpha-10);
     --shadow-heavy: 0 8px 16px var(--neutral-alpha-15);
-    
+
     /* Text shadows */
     --text-shadow-light: 0 1px 2px var(--neutral-alpha-50);
     --text-shadow-medium: 0 2px 4px var(--neutral-alpha-50);
@@ -624,11 +636,11 @@
     --border-light: 1px solid var(--neutral-alpha-10);
     --border-medium: 1px solid var(--neutral-alpha-20);
     --border-subtle: 1px solid var(--neutral-alpha-05);
-    
+
     /* Surface borders (white on dark backgrounds) */
     --border-surface-light: 1px solid var(--surface-alpha-10);
     --border-surface-medium: 1px solid var(--surface-alpha-30);
-    
+
     /* Brand color borders */
     --border-primary-light: 3px solid var(--primary-alpha-20);
     --border-secondary-light: 3px solid var(--secondary-alpha-20);
@@ -644,7 +656,7 @@
     --overlay-modal: var(--neutral-alpha-40);
     --overlay-dark: var(--neutral-alpha-50);
     --overlay-heavy: var(--neutral-alpha-70);
-    
+
     /* Surface overlays for subtle highlighting */
     --surface-overlay-subtle: var(--surface-alpha-20);
     --surface-overlay-medium: var(--surface-alpha-30);
@@ -665,3 +677,103 @@
   }
 
   /* End of Design Tokens */
+
+/* =========================================================================
+   BRANDMINE OFFICIAL COLOR STANDARDS - MASTER REFERENCE
+   =========================================================================
+
+   ⚠️  CRITICAL: These color assignments are OFFICIAL Brandmine standards.
+       Never change these without updating ALL documentation files:
+       - CLAUDE.md
+       - _docs/technical-standards.md
+       - test/insight-category-testing.md
+
+   📋 DIMENSION TAXONOMY COLORS:
+       Used throughout the site for consistent visual language
+
+       Sectors (Industries):     Olive Green   (--olive-*)
+       Markets (Geography):      Sky Blue      (--sky-*)
+       Attributes (Qualities):   Orange        (--secondary-*)
+       Signals (Growth):         Indigo        (--accent-*)
+
+   📊 INSIGHT CATEGORY COLORS:
+       Intentionally aligned with dimension colors for consistency
+
+       Brand Spotlight:          Orange        (--secondary-*)  [Same as Attributes]
+       Founder's Journey:        Indigo        (--accent-*)     [Same as Signals]
+       Location Intelligence:    Sky Blue      (--sky-*)        [Same as Markets]
+       Market Momentum:          Olive Green   (--olive-*)      [Same as Sectors]
+
+   🎯 BUSINESS CONTEXT:
+       Each color has specific meaning for partners/investors:
+       - Orange (Brand Spotlight/Attributes): Investment opportunities, brand qualities
+       - Indigo (Founder's Journey/Signals): Leadership excellence, growth indicators
+       - Sky Blue (Location Intelligence/Markets): Geographic intelligence, spatial context
+       - Olive Green (Market Momentum/Sectors): Market trends, industry analysis
+
+   🔧 IMPLEMENTATION RULES:
+       1. Always use CSS variables when possible: var(--secondary-500)
+       2. Hex fallbacks provided for inline styles: #f97316
+       3. Never hardcode colors outside this system
+       4. All components must reference these standards
+
+   📱 RESPONSIVE STANDARDS:
+       Mobile-first approach with min-width breakpoints only:
+       - Base styles: No media query (mobile-first)
+       - Tablet: @media (min-width: 768px)
+       - Desktop: @media (min-width: 1024px)
+       Never use max-width - always progressive enhancement
+
+   ========================================================================= */
+
+/* OFFICIAL HEX VALUES - Never change these */
+:root {
+  /* Insight Category Colors (Primary Usage) */
+  --insight-brand-spotlight: var(--secondary-500);      /* Orange - Brand Spotlight */
+  --insight-founders-journey: var(--accent-500);     /* Indigo - Founder's Journey */
+  --insight-location-intelligence: var(--sky-500); /* Sky Blue - Location Intelligence */
+  --insight-market-momentum: var(--olive-500);      /* Olive Green - Market Momentum */
+
+  /* Dimension Taxonomy Colors (Primary Usage) */
+  --dimension-sectors: var(--olive-500);    /* Olive Green - Same as Market Momentum */
+  --dimension-markets: var(--sky-500);      /* Sky Blue - Same as Location Intelligence */
+  --dimension-attributes: var(--secondary-500); /* Orange - Same as Brand Spotlight */
+  --dimension-signals: var(--accent-500);   /* Purple - Same as Founder's Journey */
+}
+
+/* Component classes removed - now in their respective component files:
+   - insight-category styles: assets/css/components/ui/insight-category.scss
+   - dimension tag styles: assets/css/components/ui/dimension-tag-cloud.scss
+*/
+
+/* Mobile-First Responsive Example */
+.example-component {
+  /* Mobile base styles (no media query) */
+  width: 100%;
+  padding: var(--space-4);
+
+  /* Tablet and up (min-width only) */
+  @media (min-width: 768px) {
+    width: var(--card-width-standard);
+    padding: var(--space-6);
+  }
+
+  /* Desktop and up (min-width only) */
+  @media (min-width: 1024px) {
+    width: var(--card-width-featured);
+  }
+}
+
+/* CSS File Organization Standard */
+/* Every HTML component should have a matching CSS file:
+   _includes/components/cards/brand-card.html
+   assets/css/components/cards/brand-card.scss
+
+   Benefits:
+   - Easy debugging and style isolation
+   - Clear ownership of CSS rules
+   - Prevents cross-component conflicts
+   - Simplifies maintenance
+*/
+
+/* End Brandmine Official Color Standards */

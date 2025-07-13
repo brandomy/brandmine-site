@@ -43,7 +43,6 @@
   /* Apply mobile-first width pattern */
   width: var(--card-width-atomic);    /* 345px mobile */
   max-width: 100%;
-  margin: 0 auto;
   box-sizing: border-box;
   
   /* Desktop enhancement */
@@ -102,7 +101,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-right: var(--space-3); /* Smaller margin on mobile */
+  padding-right: var(--space-3); /* Smaller padding on mobile */
   flex-shrink: 0;
 
   /* Add subtle shadow for depth and better visibility */
@@ -181,7 +180,8 @@
 .brand-card__title {
   font-size: var(--text-base); /* Smaller on mobile */
   font-weight: var(--font-semibold);
-  margin: 0 0 var(--space-1) 0;
+  padding-bottom: var(--space-1);
+  margin: 0;
   color: var(--neutral-900);
   text-align: left;
 }
@@ -189,7 +189,8 @@
 .brand-card__founding-year {
   font-size: var(--text-sm); /* Match content text size */
   color: var(--neutral-600);
-  margin: 0 0 var(--space-1) 0;
+  padding-bottom: var(--space-1);
+  margin: 0;
   line-height: 1.2;
   text-align: left;
 }
@@ -212,7 +213,7 @@
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
   color: var(--neutral-700);
-  margin-bottom: var(--space-2); /* Smaller margin on mobile */
+  padding-bottom: var(--space-2); /* Smaller padding on mobile */
   text-align: left;
 
   /* Truncate text - fewer lines on mobile */
@@ -229,7 +230,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-2);
 }
 
 .brand-card__tag {
@@ -458,9 +459,28 @@
     font-size: var(--text-base); /* Match content text size */
     color: var(--neutral-600);
     margin: 0 0 var(--space-4) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    flex-wrap: wrap;
     
-    .meta-separator {
-      color: var(--neutral-400);
+    .meta-founded,
+    .meta-location {
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    /* Special separator styling */
+    .separator--bullet {
+      color: var(--primary-500); /* Brandmine teal for ✦ */
+      font-size: 0.9em;
+      margin: 0 var(--space-1);
+      user-select: none;
+    }
+    
+    /* Flag spacing */
+    .meta-location {
+      gap: var(--space-1);
     }
   }
   
@@ -564,6 +584,288 @@
 
 .brand-card--compact .brand-card__body {
   padding: var(--space-2);
+}
+
+/* ==========================================================================
+   INSIGHT VARIANT: Nuclear Rebuild with Complete Override
+   ==========================================================================
+   Nuclear fix: Force everything with !important to guarantee display
+   Based on proven featured variant structure
+   ========================================================================== */
+
+.brand-card--insight,
+.brand-card--nuclear-rebuild {
+  /* --------------------------------------------------------------------------
+     NUCLEAR STRUCTURE OVERRIDE
+     -------------------------------------------------------------------------- */
+  
+  // FORCE BASIC STRUCTURE
+  display: block !important;
+  width: 100% !important;
+  max-width: 700px !important;
+  margin: var(--space-8) auto !important;
+  background: white !important;
+  border: var(--border-width-thin) solid var(--neutral-200) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  height: auto !important;
+  
+  /* --------------------------------------------------------------------------
+     NUCLEAR IMAGE CONTAINER OVERRIDE
+     -------------------------------------------------------------------------- */
+  
+  // FORCE IMAGE CONTAINER
+  .brand-card__image {
+    display: block !important;
+    width: 100% !important;
+    height: 300px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background-color: var(--neutral-200) !important;
+    
+    // FORCE IMAGE DISPLAY
+    img,
+    .responsive-image,
+    .collection-image,
+    .brand-card__img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  }
+
+  // FORCE METRIC BADGE
+  .brand-card__metric-badge {
+    display: block !important;
+    position: absolute !important;
+    top: var(--space-4) !important;
+    right: var(--space-4) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(8px) !important;
+    padding: var(--space-2) var(--space-3) !important;
+    border-radius: var(--radius-md) !important;
+    text-align: center !important;
+    z-index: 10 !important;
+
+    .metric-value {
+      display: block !important;
+      font-size: var(--text-lg) !important;
+      font-weight: var(--font-semibold) !important;
+      color: var(--neutral-900) !important;
+      line-height: 1 !important;
+    }
+
+    .metric-label {
+      display: block !important;
+      font-size: var(--text-xs) !important;
+      color: var(--neutral-600) !important;
+      line-height: 1 !important;
+      margin-top: var(--space-1) !important;
+    }
+  }
+  
+  /* --------------------------------------------------------------------------
+     NUCLEAR CONTENT CONTAINER OVERRIDE
+     -------------------------------------------------------------------------- */
+  
+  // FORCE CONTENT CONTAINER
+  .brand-card__content {
+    display: block !important;
+    padding: var(--space-6) !important;
+    flex: 1 !important;
+    
+    @media (max-width: 767px) {
+      padding: var(--space-4) !important;
+    }
+  }
+
+  // FORCE TITLE
+  .brand-card__title {
+    display: block !important;
+    font-size: var(--text-xl) !important;
+    font-weight: var(--font-semibold) !important;
+    color: var(--neutral-900) !important;
+    margin: 0 0 var(--space-2) 0 !important;
+    line-height: 1.2 !important;
+    
+    a {
+      color: inherit !important;
+      text-decoration: none !important;
+      
+      &:hover {
+        color: var(--primary-600) !important;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      font-size: 24px !important;
+    }
+  }
+
+  // FORCE META
+  .brand-card__meta {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-1) !important;
+    font-size: var(--text-sm) !important;
+    color: var(--neutral-600) !important;
+    margin-bottom: var(--space-4) !important;
+    line-height: 1.4 !important;
+    flex-wrap: wrap !important;
+    
+    .meta-founded,
+    .meta-location {
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+    
+    /* Special separator styling */
+    .separator--bullet {
+      color: var(--primary-500) !important;
+      font-size: 0.9em !important;
+      margin: 0 var(--space-1) !important;
+      user-select: none !important;
+    }
+    
+    /* Flag spacing */
+    .meta-location {
+      gap: var(--space-1) !important;
+    }
+  }
+  
+  // FORCE DESCRIPTION
+  .brand-card__description {
+    display: block !important;
+    font-size: var(--text-base) !important;
+    color: var(--neutral-700) !important;
+    line-height: 1.5 !important;
+    margin-bottom: var(--space-4) !important;
+    text-align: left !important;
+    
+    p {
+      display: block !important;
+      margin: 0 !important;
+      line-height: inherit !important;
+    }
+  }
+
+  // FORCE DIMENSION TAGS
+  .dimension-tag-cloud,
+  .brand-card-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: var(--space-2) !important;
+    margin-bottom: var(--space-6) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    .tag,
+    .dimension-tag-cloud__tag,
+    .brand-card-tags__tag {
+      display: inline-block !important;
+      font-size: var(--text-sm) !important;
+      padding: var(--space-1) var(--space-2) !important;
+      border-radius: var(--radius-sm) !important;
+      line-height: 1.2 !important;
+      height: auto !important;
+      min-height: auto !important;
+      max-height: 32px !important;
+      white-space: nowrap !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      text-decoration: none !important;
+
+      // FORCE DIMENSION COLORS
+      &[data-dimension="markets"],
+      &.dimension-tag-cloud__tag--market,
+      &.tag--market {
+        background-color: var(--sky-100) !important;
+        color: var(--sky-800) !important;
+        border: 1px solid var(--sky-200) !important;
+      }
+
+      &[data-dimension="sectors"],
+      &.dimension-tag-cloud__tag--sector,
+      &.tag--sector {
+        background-color: var(--olive-100) !important;
+        color: var(--olive-800) !important;
+        border: 1px solid var(--olive-200) !important;
+      }
+
+      &[data-dimension="attributes"],
+      &.dimension-tag-cloud__tag--attribute,
+      &.tag--attribute {
+        background-color: var(--secondary-100) !important;
+        color: var(--secondary-800) !important;
+        border: 1px solid var(--secondary-200) !important;
+      }
+
+      &[data-dimension="signals"],
+      &.dimension-tag-cloud__tag--signal,
+      &.tag--signal {
+        background-color: var(--accent-100) !important;
+        color: var(--accent-800) !important;
+        border: 1px solid var(--accent-200) !important;
+      }
+    }
+  }
+
+  // FORCE FOOTER AND BUTTON
+  .brand-card__cta {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-top: auto !important;
+  }
+
+  .brand-card__button,
+  .btn-primary,
+  .btn {
+    display: inline-block !important;
+    color: white !important;
+    background-color: var(--primary-500) !important;
+    border: 1px solid var(--primary-500) !important;
+    padding: var(--space-3) var(--space-4) !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--text-sm) !important;
+    font-weight: var(--font-medium) !important;
+    text-decoration: none !important;
+    transition: all 0.2s !important;
+    cursor: pointer !important;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      color: white !important;
+      background-color: var(--primary-600) !important;
+      border-color: var(--primary-600) !important;
+      text-decoration: none !important;
+    }
+  }
+
+  // MOBILE RESPONSIVE ADJUSTMENTS
+  @media (max-width: 767px) {
+    .brand-card__image {
+      height: 240px !important;
+    }
+
+    .brand-card__content {
+      padding: var(--space-4) !important;
+    }
+  }
+
+  // LARGE SCREEN ADJUSTMENTS  
+  @media (min-width: 1024px) {
+    .brand-card__image {
+      height: 350px !important;
+    }
+  }
 }
 
 /* --------------------------------------------------------------------------

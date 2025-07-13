@@ -21,22 +21,21 @@
 
   .latest-insights__header {
     text-align: center;
-    margin-bottom: var(--space-6);
-    padding: 0;
+    padding: 0 0 var(--space-6) 0;
   }
 
   .latest-insights__subtitle {
     font-size: var(--text-lg);
     color: var(--neutral-600);
     max-width: 700px;
-    margin: var(--space-3) auto 0;
+    padding: var(--space-3) 0 0;
+    margin: 0 auto;
     line-height: var(--leading-relaxed);
   }
 
   .latest-insights__footer {
     text-align: center;
-    margin-top: var(--space-6);
-    padding: 0;
+    padding: var(--space-6) 0 0;
   }
 
   /* ==========================================================================
@@ -46,7 +45,7 @@
   .latest-insights__container {
     display: grid;
     gap: var(--space-6);
-    margin: var(--space-6) 0;
+    padding: var(--space-6) 0;
     width: 100%;
     
     /* Mobile: 1 column (1x4 stack) */
@@ -82,7 +81,7 @@
       grid-template-rows: repeat(2, auto);
       gap: var(--space-5);
       max-width: 980px; /* Accommodate 2x 480px cards + gap */
-      margin: var(--space-6) auto;
+      margin: 0 auto;
       justify-items: center; /* Center cards within grid cells */
     }
     
@@ -95,7 +94,8 @@
       /* Desktop: 2x2 grid with optimal spacing */
       gap: var(--space-6);
       max-width: 1000px; /* Accommodate 2x 480px cards + gap */
-      margin: var(--space-8) auto;
+      margin: 0 auto;
+      padding: var(--space-8) 0;
       justify-items: center; /* Center cards within grid cells */
     }
     

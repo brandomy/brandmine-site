@@ -170,19 +170,18 @@
 
 <p><strong>Brandmine</strong> is a multilingual Jekyll site showcasing BRICS+ consumer brands with founder stories and dimension-based discovery.</p>
 
-<h2 id="business-mission">Business Mission</h2>
-<p>Illuminate exceptional founder-led brands from BRICS+ countries, connecting them globally with partners and capital for growth.</p>
-
-<p><strong>Architecture</strong>: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment.</p>
+<p><strong>Architecture</strong>: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment, Jekyll 3.9.5.</p>
 
 <hr />
 
 <h1 id="-key-structure">🗂 Key Structure</h1>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_brands/{lang}/           — Brand profiles
-_founders/{lang}/         — Founder profiles
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_brands/{lang}/           — Brand profiles (customer-facing)
+_founders/{lang}/         — Founder profiles (customer-facing)
 _dimensions/{lang}/{type}/ — Taxonomy (markets, sectors, attributes, signals)
-_insights/{lang}/         — Blog content
+_insights/{lang}/         — Blog content (customer-facing insights)
+_journal/{lang}/          — Internal blog (development journey)
+_pages/{lang}/            — Static pages (about, contact, etc.)
 _data/                    — Configuration and translations
 _includes/                — Reusable components
 assets/                   — CSS, JS, images
@@ -209,170 +208,4753 @@ assets/                   — CSS, JS, images
 
 <hr />
 
-<h1 id="-mobile-first-card-system-phase-1b-complete-">🎴 Mobile-First Card System (Phase 1B Complete) ✅</h1>
+<h1 id="-official-color-system-never-change">🎨 Official Color System (NEVER CHANGE)</h1>
 
-<p><strong>All card types now unified on 345px mobile-first foundation</strong></p>
+<p>Brand Colours
+| <strong>Primary Brand</strong> | Teal | <code class="language-plaintext highlighter-rouge">--primary-*</code> | <code class="language-plaintext highlighter-rouge">#38B2AC</code> |
+| <strong>Secondary</strong> | Orange | <code class="language-plaintext highlighter-rouge">--secondary-*</code> | <code class="language-plaintext highlighter-rouge">#F97316</code> |
+| <strong>Accent</strong> | Indigo | <code class="language-plaintext highlighter-rouge">--accent-*</code> | <code class="language-plaintext highlighter-rouge">#6366F1</code> |</p>
 
-<h2 id="universal-card-architecture">Universal Card Architecture</h2>
+<h2 id="dimension-colors">Dimension Colors</h2>
+<p>| Type | Color | CSS Property | HEX Code |
+|——|——-|————–|———-|
+| <strong>Sectors</strong> | Olive Green | <code class="language-plaintext highlighter-rouge">--olive-*</code> | <code class="language-plaintext highlighter-rouge">#A3B763</code> |
+| <strong>Markets</strong> | Sky Blue | <code class="language-plaintext highlighter-rouge">--sky-*</code> | <code class="language-plaintext highlighter-rouge">#0EA5E9</code> |
+| <strong>Attributes</strong> | Orange | <code class="language-plaintext highlighter-rouge">--secondary-*</code> | <code class="language-plaintext highlighter-rouge">#F97316</code> |
+| <strong>Signals</strong> | Indigo | <code class="language-plaintext highlighter-rouge">--accent-*</code> | <code class="language-plaintext highlighter-rouge">#6366F1</code> |</p>
 
-<p><strong>Single-component with variants pattern established:</strong></p>
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/brand-card.html<span class="w"> </span><span class="na">brand</span><span class="o">=</span><span class="nv">brand</span><span class="w"> </span><span class="p">%}</span>                      &lt;!-- Standard --&gt;
-<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/brand-card.html<span class="w"> </span><span class="na">brand</span><span class="o">=</span><span class="nv">brand</span><span class="w"> </span><span class="na">variant</span><span class="o">=</span><span class="s2">"featured"</span><span class="w"> </span><span class="p">%}</span>   &lt;!-- Featured --&gt;
-<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/insight-card.html<span class="w"> </span><span class="na">insight</span><span class="o">=</span><span class="nv">insight</span><span class="w"> </span><span class="p">%}</span>                &lt;!-- Standard (1A) --&gt;
-<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/insight-card.html<span class="w"> </span><span class="na">insight</span><span class="o">=</span><span class="nv">insight</span><span class="w"> </span><span class="na">variant</span><span class="o">=</span><span class="s2">"tagged"</span><span class="w"> </span><span class="p">%}</span> &lt;!-- With tags (1B) --&gt;
-<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>components/cards/insight-card.html<span class="w"> </span><span class="na">insight</span><span class="o">=</span><span class="nv">insight</span><span class="w"> </span><span class="na">variant</span><span class="o">=</span><span class="s2">"featured"</span><span class="w"> </span><span class="p">%}</span> &lt;!-- Premium (1C) --&gt;
-</code></pre></div></div>
+<h2 id="insight-category-colors-aligned-with-dimensions">Insight Category Colors (Aligned with Dimensions)</h2>
+<p>| Category | Color | CSS Property | HEX Code |
+|———-|——-|————–|———-|
+| <strong>Brand Spotlight</strong> | Orange | <code class="language-plaintext highlighter-rouge">--secondary-*</code> | <code class="language-plaintext highlighter-rouge">#F97316</code> |
+| <strong>Founder’s Journey</strong> | Indigo | <code class="language-plaintext highlighter-rouge">--accent-*</code> | <code class="language-plaintext highlighter-rouge">#6366F1</code> |
+| <strong>Location Intelligence</strong> | Sky Blue | <code class="language-plaintext highlighter-rouge">--sky-*</code> | <code class="language-plaintext highlighter-rouge">#0EA5E9</code> |
+| <strong>Market Momentum</strong> | Olive Green | <code class="language-plaintext highlighter-rouge">--olive-*</code> | <code class="language-plaintext highlighter-rouge">#A3B763</code> |</p>
 
-<p><strong>Mobile-first responsive tokens:</strong></p>
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--card-width-atomic</span><span class="o">:</span> <span class="err">345</span><span class="nt">px</span><span class="o">;</span>         <span class="c">/* Mobile base */</span>
-<span class="nt">--card-width-standard</span><span class="o">:</span> <span class="err">360</span><span class="nt">px</span><span class="o">;</span>       <span class="c">/* Desktop base */</span>
-<span class="nt">--card-width-featured</span><span class="o">:</span> <span class="err">450</span><span class="nt">px</span><span class="o">;</span>       <span class="c">/* Desktop featured */</span>
-<span class="nt">--card-width-featured-lg</span><span class="o">:</span> <span class="err">480</span><span class="nt">px</span><span class="o">;</span>    <span class="c">/* Premium displays */</span>
-<span class="nt">--card-width-featured-xl</span><span class="o">:</span> <span class="err">500</span><span class="nt">px</span><span class="o">;</span>    <span class="c">/* Founder featured cards */</span>
-<span class="nt">--card-width-mini</span><span class="o">:</span> <span class="err">345</span><span class="nt">px</span><span class="o">;</span>           <span class="c">/* Always compact */</span>
-</code></pre></div></div>
-
-<p><strong>BEM namespaces standardized:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">brand-card__*</code> - Brand profile cards with taxonomy tags (✅ 345px mobile-first complete)</li>
-  <li><code class="language-plaintext highlighter-rouge">insight-card__*</code> - Article/content cards with category badges (✅ 345px mobile-first complete)</li>
-  <li><code class="language-plaintext highlighter-rouge">founder-card__*</code> - Biographical profile cards (✅ 345px mobile-first complete)</li>
-</ul>
-
-<p><strong>Simple variant implementation:</strong></p>
-<ul>
-  <li>One HTML file per card type with <code class="language-plaintext highlighter-rouge">{% if variant == "name" %}</code> blocks</li>
-  <li>Shared CSS classes: <code class="language-plaintext highlighter-rouge">.card__tag--sector</code>, <code class="language-plaintext highlighter-rouge">.card__tag--market</code></li>
-  <li>No complex scoping or specificity conflicts</li>
-  <li>Easy to extend with new variants</li>
-</ul>
-
-<p><strong>CSS boundary rules enforced:</strong></p>
-<ul>
-  <li>Cards handle: typography, spacing, colors, internal layout, responsive sizing</li>
-  <li>Layouts handle: positioning, margins, grid/carousel structure</li>
-  <li>Zero cross-component violations maintained</li>
-</ul>
-
-<p><strong>Configuration-driven behavior</strong> via <code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code>.</p>
+<p><strong>Critical Rule</strong>: Insight categories use SAME colors as dimension types for consistency.</p>
 
 <hr />
 
-<h1 id="-data-driven-architecture">📁 Data-Driven Architecture</h1>
+<h1 id="-bem-compliant-panel-system">🎯 BEM-Compliant Panel System</h1>
 
-<p><strong>Core principle</strong>: Configuration over conditionals.</p>
+<p><strong>IMPORTANT</strong>: Use BEM classes for new development. Legacy classes still work.</p>
 
-<p><strong>Current pattern:</strong></p>
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>helpers/page-sections.html<span class="w"> </span><span class="na">page_type</span><span class="o">=</span><span class="s2">"brands"</span><span class="w"> </span><span class="p">%}</span>
+<h2 id="panel-types-available">Panel Types Available</h2>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Hero panels */</span>
+<span class="nc">.panel--hero</span>                    <span class="o">/*</span> <span class="nt">Navigation</span> <span class="nt">pages</span> <span class="o">*/</span>
+<span class="nc">.panel--hero-subtle</span>             <span class="o">/*</span> <span class="nt">Profile</span> <span class="nt">pages</span> <span class="o">*/</span>
+<span class="nc">.panel--hero-split</span>              <span class="o">/*</span> <span class="nt">Side-by-side</span> <span class="nt">layout</span> <span class="o">*/</span>
+<span class="nc">.panel--hero-card</span>               <span class="o">/*</span> <span class="nt">Card-based</span> <span class="nt">layout</span> <span class="o">*/</span>
+
+<span class="o">/*</span> <span class="nt">Color</span> <span class="nt">panels</span> <span class="o">*/</span>
+<span class="nc">.panel--light</span>                   <span class="o">/*</span> <span class="nt">White</span> <span class="nt">background</span> <span class="o">*/</span>
+<span class="nc">.panel--secondary-soft</span>          <span class="o">/*</span> <span class="nt">Light</span> <span class="nt">orange</span> <span class="o">*/</span>
+<span class="nc">.panel--accent-soft</span>             <span class="o">/*</span> <span class="nt">Light</span> <span class="nt">purple</span> <span class="o">*/</span>
+<span class="nc">.panel--neutral-soft</span>            <span class="o">/*</span> <span class="nt">Light</span> <span class="nt">gray</span> <span class="o">*/</span>
+<span class="nc">.panel--sky-soft</span>                <span class="o">/*</span> <span class="nt">Light</span> <span class="nt">blue</span> <span class="o">*/</span>
+<span class="nc">.panel--olive-soft</span>              <span class="o">/*</span> <span class="nt">Light</span> <span class="nt">green</span> <span class="o">*/</span>
 </code></pre></div></div>
 
-<p><strong>Centralized configuration:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">_data/page_sections.yml</code> - Section control</li>
-  <li><code class="language-plaintext highlighter-rouge">_data/component_defaults.yml</code> - Component behavior</li>
-  <li><code class="language-plaintext highlighter-rouge">_data/translations/{lang}.yml</code> - UI text</li>
-</ul>
+<h2 id="bem-usage-for-new-development">BEM Usage for New Development</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- ✅ CORRECT: BEM-compliant --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel--hero"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel__content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"panel__heading-primary--hero"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"panel__subtitle--hero"</span><span class="nt">&gt;</span>Subtitle<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel--secondary-soft"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel__content--secondary-soft"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"panel__heading-secondary--secondary-soft"</span><span class="nt">&gt;</span>Section<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"panel__lead-text--secondary-soft"</span><span class="nt">&gt;</span>Content<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- ❌ LEGACY: Still works but not preferred for new development --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel--hero"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel__content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"panel__heading-primary"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
 
 <hr />
 
-<h1 id="-essential-standards">🎨 Essential Standards</h1>
+<h1 id="️-architecture-principles">🏗️ Architecture Principles</h1>
 
-<h2 id="file-naming">File Naming</h2>
-<ul>
-  <li><strong>Files</strong>: <code class="language-plaintext highlighter-rouge">kebab-case.html</code>, <code class="language-plaintext highlighter-rouge">kebab-case.scss</code></li>
-  <li><strong>Content</strong>: <code class="language-plaintext highlighter-rouge">[country-code]-[brand-name].md</code></li>
-  <li><strong>Images</strong>: <code class="language-plaintext highlighter-rouge">purpose-description.jpg</code></li>
-</ul>
+<h2 id="logic-light-philosophy">“Logic Light” Philosophy</h2>
+<p><strong>3-layer architecture: Configuration → Processing → Styling</strong></p>
 
-<h2 id="front-matter">Front Matter</h2>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">brand-profile</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Brand</span><span class="nv"> </span><span class="s">Name"</span>
-<span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">xx-brand-slug"</span>
-<span class="na">lang</span><span class="pi">:</span> <span class="s">en</span>
-<span class="na">country_code</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ru"</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/en/brands/ru-brand/</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _data/page_sections.yml - Configuration layer</span>
+<span class="na">brand-profile</span><span class="pi">:</span>
+  <span class="na">panel_mappings</span><span class="pi">:</span>
+    <span class="na">identity</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">panel--hero-subtle</span>  <span class="c1"># Drives styling automatically</span>
 
-<span class="c1"># Semantic image structure</span>
-<span class="na">images</span><span class="pi">:</span>
-  <span class="na">hero</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">storefront"</span>
-    <span class="na">alt</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Description"</span>
-    <span class="na">ext</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jpg"</span>
-
-<span class="c1"># Taxonomy (existing slugs only)</span>
-<span class="na">sectors</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">wine"</span><span class="pi">]</span>
-<span class="na">markets</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">russia"</span><span class="pi">]</span>
-<span class="nn">---</span>
+<span class="c1"># _data/component_defaults.yml - Component behavior</span>
+<span class="na">cards</span><span class="pi">:</span>
+  <span class="na">brand-card</span><span class="pi">:</span>
+    <span class="na">show_location</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">tag_limit</span><span class="pi">:</span> <span class="m">4</span>
 </code></pre></div></div>
 
-<h2 id="card-sizing-system">Card Sizing System</h2>
-<p><strong>Mobile-first responsive design with design tokens:</strong></p>
+<p><strong>Pattern: Use page-sections helper (processes configuration)</strong></p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-<table>
-  <thead>
-    <tr>
-      <th>Token</th>
-      <th>Mobile (345px)</th>
-      <th>Desktop (768px+)</th>
-      <th>Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">--card-width-atomic</code></td>
-      <td>345px</td>
-      <td>345px</td>
-      <td>Base mobile size</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">--card-width-standard</code></td>
-      <td>345px</td>
-      <td>360px</td>
-      <td>Standard cards</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">--card-width-featured</code></td>
-      <td>345px</td>
-      <td>450px</td>
-      <td>Featured/hero cards</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">--card-width-mini</code></td>
-      <td>345px</td>
-      <td>345px</td>
-      <td>Always compact</td>
-    </tr>
-  </tbody>
-</table>
 
-<p><strong>Implementation:</strong></p>
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.card</span> <span class="p">{</span>
-  <span class="nl">width</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card-width-atomic</span><span class="p">);</span>    <span class="cm">/* 345px mobile */</span>
-  <span class="nl">max-width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;section class="brands-section brands-section--breadcrumbs"
+           id="brands-section-breadcrumbs"
+           aria-labelledby="heading-breadcrumbs"&gt;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="breadcrumbs-wrapper"&gt;
+  &lt;nav class="breadcrumbs " aria-label="
+
+
+
+
+
+
+
+
   
-  <span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card-width-standard</span><span class="p">);</span> <span class="cm">/* 360px desktop */</span>
+    
+  
+
+  
+    
+  
+
+
+
+
+  Breadcrumb navigation
+"&gt;
+    
+      
+      
+
+      
+        
+        
+          &lt;a href="/en/" class="back-link"&gt;← 
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Home
+
+&lt;/a&gt;
+        
+      
+    
+  &lt;/nav&gt;
+&lt;/div&gt;
+
+  &lt;/section&gt;
+
+
+
+
+  
+  
+  
+
+  
+  
+  
+    &lt;section class="brands-section brands-section--hero" 
+             id="brands-section-hero" 
+             aria-labelledby="heading-hero"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--hero-split"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+        
+
+&lt;div class="split-hero split-hero--teal split-hero--landing"&gt;
+  &lt;!-- Text Content Section --&gt;
+  &lt;div class="split-hero__content"&gt;
+    &lt;h1 class="split-hero__title"&gt;
+      
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Explore Founder-Led BRICS+ Consumer Brands
+
+    &lt;/h1&gt;
+    &lt;p class="split-hero__subtitle"&gt;
+      
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Discover founder-led brands with global potential
+
+    &lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Image Section --&gt;
+  &lt;div class="split-hero__image"&gt;
+    
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/pages/brands/brands-hero-400w.jpg"
+     srcset="/assets/images/pages/brands/brands-hero-400w.jpg 400w,
+             /assets/images/pages/brands/brands-hero-800w.jpg 800w,
+             /assets/images/pages/brands/brands-hero-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="BRICS+ consumer brands"
+     class="split-hero__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/placeholders/pages-hero-400w.jpg'; this.onerror=null;
+       
+     "
+     loading="eager"&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+      
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+          
+        
+      
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+  
+  
+    &lt;section class="brands-section brands-section--impact" 
+             id="brands-section-impact" 
+             aria-labelledby="heading-impact"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--primary panel--impact"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+        
+
+
+
+
+
+
+
+  &lt;h2 class="panel__heading-secondary"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  From Local Heroes to Global Champions
+&lt;/h2&gt;
+
+
+  &lt;p class="panel__lead-text"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  These aren't your typical startups. We showcase proven winners from BRICS+ markets—brands with real traction, passionate founders, and compelling stories that have been invisible to the global stage until now.
+&lt;/p&gt;
+
+      
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+          
+        
+      
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+  
+  
+    &lt;section class="brands-section brands-section--featured-brands" 
+             id="brands-section-featured-brands" 
+             aria-labelledby="heading-featured-brands"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--orange-soft"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+        
+
+
+
+
+
+
+
+&lt;h2 class="panel__heading-secondary"&gt;
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Featured Brands
+
+&lt;/h2&gt;
+&lt;p class="panel__lead-text"&gt;
+  Market-proven winners with compelling founder stories and explosive growth potential
+&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;!-- Default carousel mode --&gt;
+  &lt;div class="featured-brands-carousel "&gt;
+    
+      
+        
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card brand-card--featured"&gt;
+    &lt;!-- Hero Image with Metric Badge --&gt;
+    &lt;div class="brand-card__image"&gt;
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-serra-verde/br-serra-verde-hero-farmland-400w.jpg"
+     srcset="/assets/images/brands/br-serra-verde/br-serra-verde-hero-farmland-400w.jpg 400w,
+             /assets/images/brands/br-serra-verde/br-serra-verde-hero-farmland-800w.jpg 800w,
+             /assets/images/brands/br-serra-verde/br-serra-verde-hero-farmland-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="Serra Verde organic farm in Atlantic Forest region"
+     class="brand-card__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/brands/br-serra-verde/br-serra-verde-hero-400w.jpg';
+         this.srcset='/assets/images/brands/br-serra-verde/br-serra-verde-hero-400w.jpg 400w, /assets/images/brands/br-serra-verde/br-serra-verde-hero-800w.jpg 800w, /assets/images/brands/br-serra-verde/br-serra-verde-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/br-serra-verde/br-serra-verde-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+      
+
+      &lt;!-- Metric Badge (top-right) --&gt;
+      
+        &lt;div class="brand-card__metric-badge"&gt;
+          &lt;div class="metric-value"&gt;28&lt;/div&gt;
+          
+            &lt;div class="metric-label"&gt;Families&lt;/div&gt;
+          
+        &lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Card Content --&gt;
+    &lt;div class="brand-card__content"&gt;
+      &lt;!-- Brand Name --&gt;
+      &lt;h3 class="brand-card__title"&gt;Serra Verde Organics&lt;/h3&gt;
+
+      &lt;!-- Founded year + City + Flag --&gt;
+      &lt;div class="brand-card__meta"&gt;
+        
+          &lt;span class="meta-founded"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 1986&lt;/span&gt;
+        
+        
+          
+
+
+
+&lt;span class="separator separator--bullet" aria-hidden="true"&gt;
+  ✦
+&lt;/span&gt;
+
+          &lt;span class="meta-location"&gt;
+            Gonçalves
+            
+
+
+
+  🇧🇷
+
+          &lt;/span&gt;
+        
+      &lt;/div&gt;
+
+      &lt;!-- Description --&gt;
+      
+        &lt;p class="brand-card__description"&gt;Family-owned producer of organic preserves, honeys, and specialty coffees from Brazil's Atlantic Forest region.&lt;/p&gt;
+      
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/brazil/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Brazil
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/gourmet-foods/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Gourmet Foods
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/sustainability-pioneer/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Sustainability Pioneer
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+
+      
+      
+    &lt;/div&gt;
+  
+
+
+      &lt;!-- Single CTA --&gt;
+      &lt;div class="brand-card__cta"&gt;
+        &lt;a href="/en/brands/br-serra-verde/" class="brand-card__button"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+
+
+
+      
+        
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card brand-card--featured"&gt;
+    &lt;!-- Hero Image with Metric Badge --&gt;
+    &lt;div class="brand-card__image"&gt;
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-property-400w.jpg"
+     srcset="/assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-property-400w.jpg 400w,
+             /assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-property-800w.jpg 800w,
+             /assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-property-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="Sojourn hotel property with Brazilian landscape"
+     class="brand-card__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-400w.jpg';
+         this.srcset='/assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-400w.jpg 400w, /assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-800w.jpg 800w, /assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/br-sojourn-hotels/br-sojourn-hotels-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+      
+
+      &lt;!-- Metric Badge (top-right) --&gt;
+      
+        &lt;div class="brand-card__metric-badge"&gt;
+          &lt;div class="metric-value"&gt;5&lt;/div&gt;
+          
+            &lt;div class="metric-label"&gt;Properties&lt;/div&gt;
+          
+        &lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Card Content --&gt;
+    &lt;div class="brand-card__content"&gt;
+      &lt;!-- Brand Name --&gt;
+      &lt;h3 class="brand-card__title"&gt;Sojourn Boutique Hotels&lt;/h3&gt;
+
+      &lt;!-- Founded year + City + Flag --&gt;
+      &lt;div class="brand-card__meta"&gt;
+        
+          &lt;span class="meta-founded"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 2012&lt;/span&gt;
+        
+        
+          
+
+
+
+&lt;span class="separator separator--bullet" aria-hidden="true"&gt;
+  ✦
+&lt;/span&gt;
+
+          &lt;span class="meta-location"&gt;
+            Rio de Janeiro
+            
+
+
+
+  🇧🇷
+
+          &lt;/span&gt;
+        
+      &lt;/div&gt;
+
+      &lt;!-- Description --&gt;
+      
+        &lt;p class="brand-card__description"&gt;A collection of intimate boutique hotels celebrating Brazil's diverse landscapes through sustainable luxury and authentic local experiences.&lt;/p&gt;
+      
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/brazil/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Brazil
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/hotels-resorts/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Hotels &amp; Resorts
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/sustainability-pioneer/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Sustainability Pioneer
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/signals/franchise-ready/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Franchise Ready
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+    &lt;/div&gt;
+  
+
+
+      &lt;!-- Single CTA --&gt;
+      &lt;div class="brand-card__cta"&gt;
+        &lt;a href="/en/brands/br-sojourn-hotels/" class="brand-card__button"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+
+
+
+      
+        
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card brand-card--featured"&gt;
+    &lt;!-- Hero Image with Metric Badge --&gt;
+    &lt;div class="brand-card__image"&gt;
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-altai-honey/ru-altai-honey-hero-apiaries-400w.jpg"
+     srcset="/assets/images/brands/ru-altai-honey/ru-altai-honey-hero-apiaries-400w.jpg 400w,
+             /assets/images/brands/ru-altai-honey/ru-altai-honey-hero-apiaries-800w.jpg 800w,
+             /assets/images/brands/ru-altai-honey/ru-altai-honey-hero-apiaries-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="Altai mountain apiaries in pristine natural setting"
+     class="brand-card__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/brands/ru-altai-honey/ru-altai-honey-hero-400w.jpg';
+         this.srcset='/assets/images/brands/ru-altai-honey/ru-altai-honey-hero-400w.jpg 400w, /assets/images/brands/ru-altai-honey/ru-altai-honey-hero-800w.jpg 800w, /assets/images/brands/ru-altai-honey/ru-altai-honey-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/ru-altai-honey/ru-altai-honey-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+      
+
+      &lt;!-- Metric Badge (top-right) --&gt;
+      
+        &lt;div class="brand-card__metric-badge"&gt;
+          &lt;div class="metric-value"&gt;50+&lt;/div&gt;
+          
+            &lt;div class="metric-label"&gt;Apiaries&lt;/div&gt;
+          
+        &lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Card Content --&gt;
+    &lt;div class="brand-card__content"&gt;
+      &lt;!-- Brand Name --&gt;
+      &lt;h3 class="brand-card__title"&gt;Altai Gold Honey&lt;/h3&gt;
+
+      &lt;!-- Founded year + City + Flag --&gt;
+      &lt;div class="brand-card__meta"&gt;
+        
+          &lt;span class="meta-founded"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 2005&lt;/span&gt;
+        
+        
+          
+
+
+
+&lt;span class="separator separator--bullet" aria-hidden="true"&gt;
+  ✦
+&lt;/span&gt;
+
+          &lt;span class="meta-location"&gt;
+            Barnaul
+            
+
+
+
+  🇷🇺
+
+          &lt;/span&gt;
+        
+      &lt;/div&gt;
+
+      &lt;!-- Description --&gt;
+      
+        &lt;p class="brand-card__description"&gt;Traditional Siberian honey producer specializing in premium wildflower and pine honey from the pristine Altai Mountains of Russia.&lt;/p&gt;
+      
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/russia/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Russia
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/honey-bee-products/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Honey &amp; Bee Products
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/sustainability-pioneer/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Sustainability Pioneer
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/artisanal-excellence/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Artisanal Excellence
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/signals/export-ready/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Export Ready
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+    &lt;/div&gt;
+  
+
+
+      &lt;!-- Single CTA --&gt;
+      &lt;div class="brand-card__cta"&gt;
+        &lt;a href="/en/brands/ru-altai-honey/" class="brand-card__button"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+
+
+
+      
+        
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card brand-card--featured"&gt;
+    &lt;!-- Hero Image with Metric Badge --&gt;
+    &lt;div class="brand-card__image"&gt;
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-seven-spices/ru-seven-spices-hero-market-400w.jpg"
+     srcset="/assets/images/brands/ru-seven-spices/ru-seven-spices-hero-market-400w.jpg 400w,
+             /assets/images/brands/ru-seven-spices/ru-seven-spices-hero-market-800w.jpg 800w,
+             /assets/images/brands/ru-seven-spices/ru-seven-spices-hero-market-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="Bustling Moscow spice market with Seven Spices products"
+     class="brand-card__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/brands/ru-seven-spices/ru-seven-spices-hero-400w.jpg';
+         this.srcset='/assets/images/brands/ru-seven-spices/ru-seven-spices-hero-400w.jpg 400w, /assets/images/brands/ru-seven-spices/ru-seven-spices-hero-800w.jpg 800w, /assets/images/brands/ru-seven-spices/ru-seven-spices-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/ru-seven-spices/ru-seven-spices-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+      
+
+      &lt;!-- Metric Badge (top-right) --&gt;
+      
+        &lt;div class="brand-card__metric-badge"&gt;
+          &lt;div class="metric-value"&gt;4&lt;/div&gt;
+          
+            &lt;div class="metric-label"&gt;Countries&lt;/div&gt;
+          
+        &lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Card Content --&gt;
+    &lt;div class="brand-card__content"&gt;
+      &lt;!-- Brand Name --&gt;
+      &lt;h3 class="brand-card__title"&gt;Seven Spices of Siberia&lt;/h3&gt;
+
+      &lt;!-- Founded year + City + Flag --&gt;
+      &lt;div class="brand-card__meta"&gt;
+        
+          &lt;span class="meta-founded"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 2012&lt;/span&gt;
+        
+        
+          
+
+
+
+&lt;span class="separator separator--bullet" aria-hidden="true"&gt;
+  ✦
+&lt;/span&gt;
+
+          &lt;span class="meta-location"&gt;
+            Novosibirsk
+            
+
+
+
+  🇷🇺
+
+          &lt;/span&gt;
+        
+      &lt;/div&gt;
+
+      &lt;!-- Description --&gt;
+      
+        &lt;p class="brand-card__description"&gt;Artisanal spice blend company specializing in traditional Siberian and Central Asian spice combinations for modern Russian cuisine.&lt;/p&gt;
+      
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/russia/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Russia
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/gourmet-foods/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Gourmet Foods
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/cultural-bridge/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Cultural Bridge
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/artisanal-excellence/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Artisanal Excellence
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/signals/export-ready/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Export Ready
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/signals/rapid-growth/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Rapid Growth
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+    &lt;/div&gt;
+  
+
+
+      &lt;!-- Single CTA --&gt;
+      &lt;div class="brand-card__cta"&gt;
+        &lt;a href="/en/brands/ru-seven-spices/" class="brand-card__button"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+
+
+
+      
+        
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card brand-card--featured"&gt;
+    &lt;!-- Hero Image with Metric Badge --&gt;
+    &lt;div class="brand-card__image"&gt;
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-distillery-400w.jpg"
+     srcset="/assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-distillery-400w.jpg 400w,
+             /assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-distillery-800w.jpg 800w,
+             /assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-distillery-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="Taiga Spirits distillery near Lake Baikal"
+     class="brand-card__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-400w.jpg';
+         this.srcset='/assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-400w.jpg 400w, /assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-800w.jpg 800w, /assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/ru-taiga-spirits/ru-taiga-spirits-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+      
+
+      &lt;!-- Metric Badge (top-right) --&gt;
+      
+        &lt;div class="brand-card__metric-badge"&gt;
+          &lt;div class="metric-value"&gt;4&lt;/div&gt;
+          
+            &lt;div class="metric-label"&gt;Export Markets&lt;/div&gt;
+          
+        &lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Card Content --&gt;
+    &lt;div class="brand-card__content"&gt;
+      &lt;!-- Brand Name --&gt;
+      &lt;h3 class="brand-card__title"&gt;Taiga Spirits&lt;/h3&gt;
+
+      &lt;!-- Founded year + City + Flag --&gt;
+      &lt;div class="brand-card__meta"&gt;
+        
+          &lt;span class="meta-founded"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 2014&lt;/span&gt;
+        
+        
+          
+
+
+
+&lt;span class="separator separator--bullet" aria-hidden="true"&gt;
+  ✦
+&lt;/span&gt;
+
+          &lt;span class="meta-location"&gt;
+            Listvyanka
+            
+
+
+
+  🇷🇺
+
+          &lt;/span&gt;
+        
+      &lt;/div&gt;
+
+      &lt;!-- Description --&gt;
+      
+        &lt;p class="brand-card__description"&gt;Craft distillery creating exceptional small-batch vodkas and botanical spirits using ancient Siberian recipes and wild-harvested ingredients.&lt;/p&gt;
+      
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/russia/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Russia
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/artisanal-spirits/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Artisanal Spirits
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/sectors/wine/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Wine
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/artisanal-excellence/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Artisanal Excellence
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/signals/export-ready/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Export Ready
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+    &lt;/div&gt;
+  
+
+
+      &lt;!-- Single CTA --&gt;
+      &lt;div class="brand-card__cta"&gt;
+        &lt;a href="/en/brands/ru-taiga-spirits/" class="brand-card__button"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+
+
+
+      
+        
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card brand-card--featured"&gt;
+    &lt;!-- Hero Image with Metric Badge --&gt;
+    &lt;div class="brand-card__image"&gt;
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/ru-teatime-hero-storefront-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/ru-teatime-hero-storefront-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/ru-teatime-hero-storefront-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/ru-teatime-hero-storefront-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="TeaTime's flagship tearoom in Moscow's historic Arbat district"
+     class="brand-card__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/brands/ru-teatime/ru-teatime-hero-400w.jpg';
+         this.srcset='/assets/images/brands/ru-teatime/ru-teatime-hero-400w.jpg 400w, /assets/images/brands/ru-teatime/ru-teatime-hero-800w.jpg 800w, /assets/images/brands/ru-teatime/ru-teatime-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/ru-teatime/ru-teatime-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+      
+
+      &lt;!-- Metric Badge (top-right) --&gt;
+      
+        &lt;div class="brand-card__metric-badge"&gt;
+          &lt;div class="metric-value"&gt;23&lt;/div&gt;
+          
+            &lt;div class="metric-label"&gt;Countries&lt;/div&gt;
+          
+        &lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Card Content --&gt;
+    &lt;div class="brand-card__content"&gt;
+      &lt;!-- Brand Name --&gt;
+      &lt;h3 class="brand-card__title"&gt;TeaTime&lt;/h3&gt;
+
+      &lt;!-- Founded year + City + Flag --&gt;
+      &lt;div class="brand-card__meta"&gt;
+        
+          &lt;span class="meta-founded"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 1998&lt;/span&gt;
+        
+        
+          
+
+
+
+&lt;span class="separator separator--bullet" aria-hidden="true"&gt;
+  ✦
+&lt;/span&gt;
+
+          &lt;span class="meta-location"&gt;
+            Moscow
+            
+
+
+
+  🇷🇺
+
+          &lt;/span&gt;
+        
+      &lt;/div&gt;
+
+      &lt;!-- Description --&gt;
+      
+        &lt;p class="brand-card__description"&gt;Moscow's premium tea house offering artisanal tea blends and exceptional tea ceremonies in modern settings with traditional Russian influences.&lt;/p&gt;
+      
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/russia/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Russia
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/gourmet-foods/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Gourmet Foods
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/heritage-brand/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Heritage Brand
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/artisanal-excellence/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Artisanal Excellence
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/signals/export-ready/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Export Ready
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/signals/rapid-growth/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Rapid Growth
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+    &lt;/div&gt;
+  
+
+
+      &lt;!-- Single CTA --&gt;
+      &lt;div class="brand-card__cta"&gt;
+        &lt;a href="/en/brands/ru-teatime/" class="brand-card__button"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+
+
+
+      
+    
+  &lt;/div&gt;
+
+
+&lt;!-- Scroll indicator dots - Dynamic based on number of brands --&gt;
+
+  &lt;div class="featured-brands-nav"&gt;
+    
+    
+      &lt;span class="featured-brands-nav-dot active"&gt;&lt;/span&gt;
+    
+      &lt;span class="featured-brands-nav-dot "&gt;&lt;/span&gt;
+    
+      &lt;span class="featured-brands-nav-dot "&gt;&lt;/span&gt;
+    
+  &lt;/div&gt;
+
+
+&lt;div class="more-brands"&gt;
+  &lt;a href="/en/brands/"
+     class="btn btn--primary-cta"
+     data-track="featured-brands"&gt;
+    Explore All Brands
+  &lt;/a&gt;
+&lt;/div&gt;
+      
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+          
+        
+      
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+  
+  
+    &lt;section class="brands-section brands-section--latest-brands" 
+             id="brands-section-latest-brands" 
+             aria-labelledby="heading-latest-brands"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--light"&gt;
+  &lt;div class="panel__content"&gt;
+    
+      
+        
+
+
+
+
+
+&lt;!-- Latest Brands Section --&gt;
+&lt;div class="panel__content"&gt;
+  &lt;div class="latest-brands"&gt;
+    &lt;div class="latest-brands__header"&gt;
+      &lt;h2 class="latest-brands__title"&gt;
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+
+
+
+  All Brands
+
+      &lt;/h2&gt;
+      &lt;p class="latest-brands__description"&gt;
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+
+
+
+  Discover exceptional founder-led brands from BRICS+ countries.
+
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Brand Grid --&gt;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      &lt;!-- Empty state --&gt;
+      &lt;div class="latest-brands__empty"&gt;
+        &lt;p class="latest-brands__empty-message"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+
+
+
+  No brands available yet. Check back soon!
+
+        &lt;/p&gt;
+      &lt;/div&gt;
+    
+
+    &lt;!-- Load More / View All CTA --&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+      
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+          
+        
+      
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+  
+  
+  
+    &lt;section class="brands-section brands-section--contact-cta" 
+             id="brands-section-contact-cta" 
+             aria-labelledby="heading-contact-cta"&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          
+          
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class="panel panel--cta"&gt;
+  &lt;div class="panel__content panel--centered"&gt;
+    
+      
+        
+
+&lt;h2 class="panel__heading-secondary"&gt;
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Ready to Discover BRICS+ Brands?
+
+&lt;/h2&gt;
+&lt;p class="panel__lead-text"&gt;
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Contact us to learn more about our featured brands or to discuss your specific needs.
+
+&lt;/p&gt;
+&lt;div class="cta-buttons"&gt;
+  &lt;a href="//about/#about-section-contact" 
+     class="btn btn--primary-cta"
+     data-track="suggest-brand"&gt;
+    
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+
+
+
+  Suggest a Brand
+
+  &lt;/a&gt;
+  &lt;a href="//about/#about-section-contact" 
+     class="btn btn--secondary-cta"
+     data-track="get-profiled"&gt;
+    
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+
+
+
+  Get Profiled
+
+  &lt;/a&gt;
+&lt;/div&gt;
+
+      
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+          
+        
+      
+      
+      
+      
+      
+      
+    &lt;/section&gt;
+  
+
+</code></pre></div></div>
+
+<p><strong>Flow</strong>: <code class="language-plaintext highlighter-rouge">page_sections.yml</code> → <code class="language-plaintext highlighter-rouge">page-sections.html</code> → <code class="language-plaintext highlighter-rouge">panel-types.scss</code> → Beautiful UI</p>
+
+<h2 id="mobile-first-responsive-design">Mobile-First Responsive Design</h2>
+<p><strong>Always use min-width breakpoints:</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Mobile-first base styles */</span>
+<span class="nc">.component</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* Tablet and up */</span>
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.component</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card-width-standard</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* Desktop and up */</span>
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">1024px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.component</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card-width-featured</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h2 id="dimension-color-system">Dimension Color System</h2>
-<p>| Type | Color | CSS Property |
-|——|——-|————–|
-| <strong>Sectors</strong> | Olive Green | <code class="language-plaintext highlighter-rouge">--olive-*</code> |
-| <strong>Markets</strong> | Sky Blue | <code class="language-plaintext highlighter-rouge">--sky-*</code> |
-| <strong>Attributes</strong> | Orange | <code class="language-plaintext highlighter-rouge">--secondary-*</code> |
-| <strong>Signals</strong> | Indigo | <code class="language-plaintext highlighter-rouge">--accent-*</code> |</p>
+<p><strong>Never use max-width</strong> - always progressive enhancement.</p>
+
+<h2 id="card-system">Card System</h2>
+<p><strong>Single components with simple variants:</strong></p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card"&gt;
+    
+
+
+
+
+&lt;header class="brand-card__header"&gt;
+  &lt;div class="brand-card__logo"&gt;
+    
+      
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/ru-teatime-logo-color-400w.png"
+     srcset="/assets/images/brands/ru-teatime/ru-teatime-logo-color-400w.png 400w,
+             /assets/images/brands/ru-teatime/ru-teatime-logo-color-800w.png 800w,
+             /assets/images/brands/ru-teatime/ru-teatime-logo-color-1200w.png 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 85vw, 600px"
+     alt="TeaTime logo featuring elegant Cyrillic lettering"
+     class="brand-card"
+     data-purpose="logo"
+     onerror="
+       
+         this.src='/assets/images/brands/ru-teatime/ru-teatime-logo-400w.png';
+         this.srcset='/assets/images/brands/ru-teatime/ru-teatime-logo-400w.png 400w, /assets/images/brands/ru-teatime/ru-teatime-logo-800w.png 800w, /assets/images/brands/ru-teatime/ru-teatime-logo-1200w.png 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/ru-teatime/ru-teatime-logo-400w.png'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+    
+  &lt;/div&gt;
+
+  &lt;div class="brand-card__header-text"&gt;
+    &lt;h2 class="brand-card__title"&gt;TeaTime&lt;/h2&gt;
+
+    
+      &lt;p class="brand-card__founding-year"&gt;
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 1998
+      &lt;/p&gt;
+    
+
+    
+      &lt;p class="brand-card__location"&gt;
+        
+
+&lt;span class="location"&gt;Moscow, 
+
+&lt;!-- Get the country code to look up from the include parameter --&gt;
+
+
+&lt;!-- Determine which language to display the name in (default to current page language) --&gt;
+
+
+&lt;!-- Look up the country information from the JSON data file --&gt;
+
+
+&lt;!-- Check if we found country information --&gt;
+RU
+&lt;/span&gt;
+
+      &lt;/p&gt;
+    
+  &lt;/div&gt;
+&lt;/header&gt;
+
+
+    &lt;div class="brand-card__body"&gt;
+      &lt;p class="brand-card__description"&gt;Moscow's premium tea house offering artisanal tea blends and exceptional tea ceremonies in modern settings with traditional Russian influences.&lt;/p&gt;
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/russia/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Russia
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/gourmet-foods/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Gourmet Foods
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/heritage-brand/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Heritage Brand
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/artisanal-excellence/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Artisanal Excellence
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/signals/export-ready/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Export Ready
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/signals/rapid-growth/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Rapid Growth
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+    &lt;/div&gt;
+  
+
+    &lt;/div&gt;
+
+    &lt;footer class="brand-card__footer"&gt;
+      &lt;a href="/en/brands/ru-teatime/" class="brand-card__link"&gt;
+        
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+      &lt;/a&gt;
+
+    &lt;/footer&gt;
+  &lt;/article&gt;
+
+                    &lt;!-- Standard --&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="brand-card brand-card--featured"&gt;
+    &lt;!-- Hero Image with Metric Badge --&gt;
+    &lt;div class="brand-card__image"&gt;
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="/assets/images/brands/ru-teatime/ru-teatime-hero-storefront-400w.jpg"
+     srcset="/assets/images/brands/ru-teatime/ru-teatime-hero-storefront-400w.jpg 400w,
+             /assets/images/brands/ru-teatime/ru-teatime-hero-storefront-800w.jpg 800w,
+             /assets/images/brands/ru-teatime/ru-teatime-hero-storefront-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+     alt="TeaTime's flagship tearoom in Moscow's historic Arbat district"
+     class="brand-card__img"
+     data-purpose="hero"
+     onerror="
+       
+         this.src='/assets/images/brands/ru-teatime/ru-teatime-hero-400w.jpg';
+         this.srcset='/assets/images/brands/ru-teatime/ru-teatime-hero-400w.jpg 400w, /assets/images/brands/ru-teatime/ru-teatime-hero-800w.jpg 800w, /assets/images/brands/ru-teatime/ru-teatime-hero-1200w.jpg 1200w';
+         this.onerror=function(){this.src='/assets/images/brands/ru-teatime/ru-teatime-hero-400w.jpg'; this.onerror=null;};
+       
+     "
+     loading="lazy"&gt;
+
+      
+
+      &lt;!-- Metric Badge (top-right) --&gt;
+      
+        &lt;div class="brand-card__metric-badge"&gt;
+          &lt;div class="metric-value"&gt;23&lt;/div&gt;
+          
+            &lt;div class="metric-label"&gt;Countries&lt;/div&gt;
+          
+        &lt;/div&gt;
+      
+    &lt;/div&gt;
+
+    &lt;!-- Card Content --&gt;
+    &lt;div class="brand-card__content"&gt;
+      &lt;!-- Brand Name --&gt;
+      &lt;h3 class="brand-card__title"&gt;TeaTime&lt;/h3&gt;
+
+      &lt;!-- Founded year + City + Flag --&gt;
+      &lt;div class="brand-card__meta"&gt;
+        
+          &lt;span class="meta-founded"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Founded
+ 1998&lt;/span&gt;
+        
+        
+          
+
+
+
+&lt;span class="separator separator--bullet" aria-hidden="true"&gt;
+  ✦
+&lt;/span&gt;
+
+          &lt;span class="meta-location"&gt;
+            Moscow
+            
+
+
+
+  🇷🇺
+
+          &lt;/span&gt;
+        
+      &lt;/div&gt;
+
+      &lt;!-- Description --&gt;
+      
+        &lt;p class="brand-card__description"&gt;Moscow's premium tea house offering artisanal tea blends and exceptional tea ceremonies in modern settings with traditional Russian influences.&lt;/p&gt;
+      
+
+      &lt;!-- Taxonomy Tags (Using unified component) --&gt;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+
+  
+    &lt;div class="brand-card-tags brand-card-tags--
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+  standard
+ brand-card-tags--spacing-normal"&gt;
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/markets/russia/"
+               class="brand-card-tags__tag brand-card-tags__tag--market"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Russia
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/sectors/gourmet-foods/"
+               class="brand-card-tags__tag brand-card-tags__tag--sector"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Gourmet Foods
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/attributes/founder-led/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Founder-led
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/heritage-brand/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Heritage Brand
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/attributes/artisanal-excellence/"
+               class="brand-card-tags__tag brand-card-tags__tag--attribute"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Artisanal Excellence
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+        
+        
+        
+          
+            &lt;a href="/en/discover/signals/export-ready/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Export Ready
+            &lt;/a&gt;
+          
+        
+          
+            &lt;a href="/en/discover/signals/rapid-growth/"
+               class="brand-card-tags__tag brand-card-tags__tag--signal"&gt;
+              
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+    
+    
+
+
+Rapid Growth
+            &lt;/a&gt;
+          
+        
+      
+
+      
+      
+    &lt;/div&gt;
+  
+
+
+      &lt;!-- Single CTA --&gt;
+      &lt;div class="brand-card__cta"&gt;
+        &lt;a href="/en/brands/ru-teatime/" class="brand-card__button"&gt;
+          
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  View Profile
+ →
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+
+ &lt;!-- Featured --&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;article class="insight-card insight-card--"&gt;
+    &lt;a href="" class="insight-card__link"&gt;
+      &lt;div class="insight-card__image"&gt;
+        
+          &lt;div class="insight-card__image-placeholder"&gt;
+            &lt;svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"&gt;
+              &lt;rect x="3" y="3" width="18" height="18" rx="2" ry="2"&gt;&lt;/rect&gt;
+              &lt;circle cx="8.5" cy="8.5" r="1.5"&gt;&lt;/circle&gt;
+              &lt;polyline points="21 15 16 10 5 21"&gt;&lt;/polyline&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+        
+      &lt;/div&gt;
+
+      &lt;div class="insight-card__content"&gt;
+        
+
+        &lt;h3 class="insight-card__title"&gt;&lt;/h3&gt;
+
+        &lt;div class="insight-card__meta"&gt;
+          &lt;span class="insight-card__date"&gt;&lt;/span&gt;
+          
+        &lt;/div&gt;
+
+        
+
+        &lt;div class="insight-card__footer"&gt;
+          &lt;span class="insight-card__read-more"&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  Read More
+ →&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/article&gt;
+ &lt;!-- Compact --&gt;
+</code></pre></div></div>
 
 <hr />
 
 <h1 id="-essential-commands">💻 Essential Commands</h1>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Development</span>
-bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Development (Jekyll 3.9.5 - no --livereload)</span>
+bundle <span class="nb">exec </span>jekyll serve
 
-<span class="c"># Production build (achieved: 21s initial, 5.5s incremental)</span>
+<span class="c"># Production build</span>
 <span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
 
 <span class="c"># Validation</span>
@@ -380,79 +4962,61 @@ _scripts/core/pre-commit_check.sh
 
 <span class="c"># Image processing</span>
 _scripts/core/process_images.sh <span class="o">[</span>collection] <span class="o">[</span>identifier]
-
-<span class="c"># Performance optimization</span>
-_scripts/utilities/generate-language-map.py
-_scripts/utilities/generate-navigation-cache.py
 </code></pre></div></div>
 
 <hr />
 
-<h1 id="-documentation-architecture">📚 Documentation Architecture</h1>
+<h1 id="-documentation-reference">📚 Documentation Reference</h1>
 
-<p><strong>4-document system</strong> (find anything in 30 seconds):</p>
+<p><strong>Complete details</strong>: See <code class="language-plaintext highlighter-rouge">_docs/technical-standards.md</code> for comprehensive technical documentation.</p>
+
+<p><strong>4-document system</strong>:</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">_docs/brandmine-guide.md</code> - Master navigation hub</li>
+  <li><code class="language-plaintext highlighter-rouge">_docs/brandmine-guide.md</code> - Master navigation</li>
   <li><code class="language-plaintext highlighter-rouge">_docs/setup-and-workflows.md</code> - Complete workflows</li>
-  <li><code class="language-plaintext highlighter-rouge">_docs/technical-standards.md</code> - Architecture patterns and standards</li>
+  <li><code class="language-plaintext highlighter-rouge">_docs/technical-standards.md</code> - Architecture patterns</li>
   <li><code class="language-plaintext highlighter-rouge">_docs/troubleshooting-and-tools.md</code> - Problem resolution</li>
 </ul>
 
-<p><strong>Operational guides</strong>: <code class="language-plaintext highlighter-rouge">_templates/tutorials/</code> for step-by-step workflows.</p>
-
 <hr />
 
-<h1 id="-proven-development-principles">🎯 Proven Development Principles</h1>
+<h1 id="️-critical-rules-for-claude-code">⚠️ Critical Rules for Claude Code</h1>
 
-<ol>
-  <li><strong>Mobile-first responsive design</strong> - 345px → 360px card sizing with design tokens</li>
-  <li><strong>Simple variant architecture</strong> - Single component files with <code class="language-plaintext highlighter-rouge">{% if variant %}</code> logic</li>
-  <li><strong>Clean BEM architecture</strong> - Separate namespaces for distinct components</li>
-  <li><strong>CSS boundary compliance</strong> - Cards vs layouts separation enforced</li>
-  <li><strong>Systematic implementation</strong> - Audit → Plan → Execute → Validate methodology</li>
-  <li><strong>Performance-conscious</strong> - Maintain incremental build efficiency</li>
-  <li><strong>Documentation-driven</strong> - Standards codified for team development</li>
-</ol>
-
-<h2 id="card-development-workflow">Card Development Workflow</h2>
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Create new card variant (example)
-# 1. Add variant logic to existing card HTML:
-<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">variant</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"compact"</span><span class="w"> </span><span class="p">%}</span>
-  &lt;!-- Compact variant HTML --&gt;
-<span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
-  &lt;!-- Standard variant HTML --&gt;  
-<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
-</code></pre></div></div>
-
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err"># </span><span class="na">2</span><span class="err">. </span><span class="na">Add</span><span class="err"> </span><span class="na">variant</span><span class="err"> </span><span class="na">CSS</span><span class="err"> </span><span class="na">classes</span><span class="p">:</span>
-<span class="o">.</span><span class="n">card--compact</span> <span class="p">{</span> <span class="cm">/* variant-specific styles */</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 3. Test variants:
-variant="standard"  # Default
-variant="featured"  # Enhanced
-variant="tagged"    # With taxonomy tags
-variant="compact"   # Minimal display
-</code></pre></div></div>
-
-<h2 id="validation-workflow">Validation Workflow</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Before commits</span>
-_scripts/core/pre-commit_check.sh
-
-<span class="c"># Verify card system consistency</span>
-<span class="nb">grep</span> <span class="nt">-r</span> <span class="s2">"variant="</span> _includes/components/cards/  <span class="c"># Check variant usage</span>
-find _includes/components/cards/ <span class="nt">-name</span> <span class="s2">"*-card.html"</span> | <span class="nb">wc</span> <span class="nt">-l</span>  <span class="c"># Should show clean card count</span>
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="important-instruction-reminders">important-instruction-reminders</h1>
+<h2 id="never-do">NEVER DO</h2>
 <ul>
-  <li>Do what has been asked; nothing more, nothing less</li>
-  <li>NEVER create files unless absolutely necessary</li>
-  <li>ALWAYS prefer editing existing files over creating new ones</li>
-  <li>NEVER proactively create documentation files unless explicitly requested</li>
+  <li>Create new dimension types (only: markets, sectors, attributes, signals)</li>
+  <li>Change insight category colors (use exact colors specified above)</li>
+  <li>Use max-width media queries (always min-width)</li>
+  <li>Create separate component files for variants (use variant logic)</li>
+  <li>Use non-BEM classes for new panel development</li>
 </ul>
+
+<h2 id="always-do">ALWAYS DO</h2>
+<ul>
+  <li>Use Jekyll 3.9.5 compatible commands (no –livereload)</li>
+  <li>Create matching CSS files for HTML components</li>
+  <li>Use mobile-first approach with min-width</li>
+  <li>Use BEM-compliant panel classes for new development</li>
+  <li>Prefer editing existing files over creating new ones</li>
+  <li>Use official color system for insight categories</li>
+</ul>
+
+<h2 id="css-organization">CSS Organization</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_includes/components/cards/brand-card.html
+assets/css/components/cards/brand-card.scss
+</code></pre></div></div>
+<p><strong>Rule</strong>: Every HTML component gets a matching CSS file.</p>
+
+<h2 id="content-width-standards">Content Width Standards</h2>
+<ul>
+  <li><strong>Editorial content</strong>: 700px (<code class="language-plaintext highlighter-rouge">--form-max-width</code>)</li>
+  <li><strong>Profile pages</strong>: Mixed layout (1024px + 700px sections)</li>
+  <li><strong>Grid layouts</strong>: Full width (1200px)</li>
+</ul>
+
+<hr />
+
+<p><strong>For complete technical details, architectural patterns, and implementation guidelines, see <code class="language-plaintext highlighter-rouge">_docs/technical-standards.md</code></strong></p>
 
       </div>
     </div>
