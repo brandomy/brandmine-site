@@ -35,7 +35,7 @@ class FounderJSONGenerator:
         self.verbose = verbose
         self.dry_run = dry_run
         self.validate = validate
-        self.base_path = Path(__file__).parent.parent  # Project root
+        self.base_path = Path(__file__).parent.parent.parent  # Project root (3 levels up)
         self.founders_path = self.base_path / "_founders" / "en"
         self.output_path = self.base_path / "_data" / "founders.json"
         self.countries_path = self.base_path / "_data" / "countries.json"
