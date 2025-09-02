@@ -410,25 +410,24 @@ _scripts/validation/find_translation_keys.py
 
 ## 🔧 Development Workflows
 
-### Universal Card Implementation
+### Current Card Implementation
 
-**All card displays use the universal system:**
+**Component-Specific Pattern:**
 ```liquid
-{% include components/cards/universal-card.html
-   item=content_object
-   type="brand|insight|founder|testimonial"
-   variant="standard|featured|compact|quote-focus"
-   context="grid|carousel|connections"
-   config_set="universal-card" %}
+{% comment %} CURRENT PATTERN - Use this {% endcomment %}
+{% include components/cards/brand-card.html brand=content_object variant="standard" %}
+{% include components/cards/founder-card.html founder=content_object variant="featured" %}
+{% include components/cards/insight-card.html insight=content_object variant="tagged" %}
 ```
 
-### Card Type Reference
-| Content Type | Type Parameter | Common Variants | Features |
+**Card Type Reference:**
+| Content Type | Component File | Common Variants | Features |
 |-------------|----------------|-----------------|----------|
-| **Brands** | `type="brand"` | standard, featured | Metric overlays, split footers |
-| **Insights** | `type="insight"` | standard, compact | Category borders, badges |
-| **Founders** | `type="founder"` | compact, quote-focus | Generation badges, achievements |
-| **Testimonials** | `type="testimonial"` | quote-focus | Quote emphasis, attribution |
+| **Brands** | `brand-card.html` | standard, featured | Business metrics, founder integration |
+| **Insights** | `insight-card.html` | standard, tagged, related | Category styling, reading time |
+| **Founders** | `founder-card.html` | standard, featured | Professional focus, achievements |
+| **Testimonials** | `testimonial-card.html` | standard | Quote emphasis, attribution |
+| **Dimension Categories** | `dimension-category-card.html` | standard | Count badges, color coding |
 
 ### Component Development Pattern
 ```liquid
@@ -585,7 +584,7 @@ const featuredCards = document.querySelectorAll('.component-name--featured');
 - [ ] Content validates without errors (`pre-commit_check.sh`)
 - [ ] All three languages created and consistent
 - [ ] Images processed and displaying correctly
-- [ ] Universal card components used throughout
+- [ ] Purpose-built card components used with appropriate variants
 - [ ] Cross-references working (brands ↔ founders ↔ insights)
 - [ ] Performance targets met (<15s build time)
 

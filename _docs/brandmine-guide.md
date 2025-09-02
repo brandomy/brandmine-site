@@ -75,16 +75,29 @@ bundle exec jekyll serve
 
 ### Core Architecture
 - **"Logic Light" Philosophy**: Configuration over conditionals
-- **Universal Card System**: Single component handles all content types
+- **Purpose-Built Card Components**: Specialized, BEM-compliant cards optimized for each content type
 - **Data-Driven Sections**: Centralized control via `_data/page_sections.yml`
 - **Multilingual Support**: EN/RU/ZH with shared logic
 - **Performance Targets**: <15s production builds
 
 ### Component Systems
-- **Universal Cards**: 42 active references, 95%+ design token compliance
+- **Component Cards**: Brand, founder, insight, and specialized cards with variant-based architecture
 - **Image Components**: Unified responsive system with intelligent fallbacks
 - **Translation Helpers**: Centralized multilingual support
 - **CSS Architecture**: BEM methodology with design tokens
+
+### Purpose-Built Card System
+Brandmine uses specialized card components:
+- **Brand Cards** (`brand-card.html`) - Standard and featured variants
+- **Founder Cards** (`founder-card.html`) - Standard and featured variants  
+- **Insight Cards** (`insight-card.html`) - Multiple variants (standard, featured, tagged, related)
+- **Specialized Cards** - Dimension categories, testimonials, team members
+
+**Usage Pattern:**
+```liquid
+{% include components/cards/brand-card.html brand=brand variant="featured" %}
+{% include components/cards/insight-card.html insight=insight variant="tagged" %}
+```
 
 **→ Complete Technical Details**: See [technical-standards.md](technical-standards.md)
 

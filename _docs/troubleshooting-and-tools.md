@@ -249,41 +249,44 @@ _scripts/validation/check_language_consistency.sh
 
 ## 🧩 Component Issues
 
-### Universal Card Not Displaying
+### Card Component Issues
 
-**Symptoms**: Card content not showing or incorrectly formatted
+**Symptoms**: Card content not displaying or incorrectly formatted
 
-**Quick Checks**:
+**Quick Checks:**
 ```liquid
-# Verify universal card syntax
-{% include components/cards/universal-card.html
-   item=content_object              # Must be valid content object
-   type="brand"                     # Must be: brand, insight, founder, testimonial
-   config_set="universal-card" %}   # Must be exactly this value
+{% comment %} Verify component-specific syntax {% endcomment %}
+{% include components/cards/brand-card.html
+   brand=content_object              # Must be valid content object
+   variant="standard" %}             # Must be valid variant: standard, featured
+
+{% include components/cards/insight-card.html
+   insight=content_object            # Must be valid insight object  
+   variant="tagged" %}               # Must be valid variant: standard, featured, tagged, related
 ```
 
-**Common Issues**:
-- Missing or incorrect `type` parameter
-- Invalid `item` object (null or undefined)
-- Wrong `config_set` value
-- Missing configuration in `_data/component_defaults.yml`
+**Common Issues:**
+- Wrong component file for content type
+- Invalid variant parameter
+- Null or undefined content object
+- Missing BEM classes in CSS
 
 ### Card Configuration Not Working
 
 **Symptoms**: Default card behavior not matching expected configuration
 
-**Check Configuration**:
+**Check Configuration:**
 ```yaml
 # Verify _data/component_defaults.yml
 cards:
-  universal-card:
-    brand:
-      layout_variant: "full-hero-with-overlay"
-      sections:
-        header:
-          show_metric_overlay: true
-        footer:
-          enable_split_footer: true
+  brand-card:
+    show_location: true
+    tag_limit: 4
+    show_metrics: true
+  insight-card:
+    show_reading_time: true
+    show_category: true
+    tag_limit: 3
 ```
 
 **Debug Steps**:
@@ -501,7 +504,7 @@ find . -size +10M -type f | grep -v ".git"
 
 ### System Status Check
 **Current Build Performance**: ~14.4 seconds ✅
-**Component System**: Universal Card 100% deployed ✅
+**Component System**: Purpose-built cards with BEM architecture ✅
 **Image System**: 100% standardized ✅
 **Cross-Language**: Perfect EN/RU/ZH consistency ✅
 

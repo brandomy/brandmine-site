@@ -2,49 +2,40 @@
 
 ## Executive Summary
 
-**Key Findings:**
-- **4 MVP Cards Active**: brand-card, brand-card-featured, founder-card, founder-card-featured
-- **Universal Card Still Dominant**: 15+ instances across brands/founders pages
+**Current Component Architecture:**
+- **Purpose-Built Cards**: Specialized BEM-compliant components for each content type
+- **Variant System**: Each card supports multiple variants via parameters
 - **Container Pattern**: Carousel containers for featured cards, grid containers for standard cards
-- **Critical Issue**: Mixed universal-card and optimized card usage on same pages
+- **Status**: Universal card system completely eliminated (June 2025)
 
 ---
 
 ## Page-by-Page Card Usage
 
 ### 🏠 Homepage Cards
-**Status**: Clean, optimized implementation
+**Status**: Fully implemented with purpose-built components
 ```
-✅ brand-card-featured.html     → carousel container
-✅ founder-card-featured.html   → carousel container
-✅ testimonial-card.html        → grid container
-✅ founder-card-featured.html   → homepage focus (formerly founder-card-focus.html)
-✅ insight-latest-card.html     → grid container
+✅ brand-card.html (variant="featured")    → carousel container
+✅ founder-card.html (variant="featured")  → carousel container
+✅ testimonial-card.html                   → grid container
+✅ founder-quote-card.html                 → founder focus section
+✅ insight-card.html                       → latest insights grid
 ```
 
 ### 🏢 Brands Pages
-**Status**: Mixed implementation (optimized + universal)
+**Status**: Fully migrated to component cards
 ```
-✅ brand-card.html              → brands-grid container
-❌ universal-card.html          → 6 instances in carousel/grid containers
-   - featured-brands-carousel-big.html
-   - featured-brands-carousel-small.html
-   - brand-carousel-test.html
-   - brand-grid-test.html
-   - featured-brands-grid.html
+✅ brand-card.html (variant="standard")    → brands-grid container
+✅ brand-card.html (variant="featured")    → featured-brands sections
+✅ Helper: brand-card-selector.html        → Intelligent variant selection
 ```
 
 ### 👥 Founders Pages
-**Status**: Mixed implementation (optimized + universal)
+**Status**: Fully migrated to component cards
 ```
-✅ founder-card.html            → founders-grid container
-✅ founder-card-featured.html   → carousel container
-❌ universal-card.html          → 8 instances in carousel/grid containers
-   - founders-carousel.html
-   - featured-founders-simple.html
-   - founders-grid.html
-   - recent-founders-backup.html
-   - featured-founders-backup.html
+✅ founder-card.html (variant="standard")  → founders-grid container
+✅ founder-card.html (variant="featured")  → carousel sections
+✅ Helper: founder-card-selector.html      → Intelligent variant selection
 ```
 
 ### 📰 Insights Pages
@@ -102,58 +93,61 @@
 
 ---
 
-## Critical Issues Identified
+## Current Card Components
 
-### ❌ Issue 1: Mixed Card Systems
-**Problem**: Same page uses both optimized and universal cards
+### Core Content Cards
 ```
-founders-carousel.html uses:
-- universal-card.html (4 instances)
-- Should use: founder-card.html
-```
-
-### ❌ Issue 2: Test Files in Production
-**Problem**: Test files still exist and may be active
-```
-- brand-carousel-test.html
-- brand-grid-test.html
-- featured-founders-backup.html
-- recent-founders-backup.html
+✅ brand-card.html         → Variants: standard, featured, insight
+✅ founder-card.html       → Variants: standard, featured
+✅ insight-card.html       → Variants: standard, featured, tagged, related
+✅ testimonial-card.html   → Standard testimonial display
 ```
 
-### ❌ Issue 3: Backup Files Active
-**Problem**: Backup files still referenced
+### Specialized Cards
 ```
-- latest-insights-backup.html (still has card references)
-- Should be: deleted or archived
+✅ dimension-category-card.html  → Dimension category displays
+✅ founder-quote-card.html       → Founder focus sections
+✅ team-member-card.html         → Team displays
+✅ author-card.html              → Author attribution
+✅ entry-card.html               → Journal entries
+```
+
+### Helper Components
+```
+✅ brand-card-selector.html      → Intelligent brand card variant selection
+✅ founder-card-selector.html    → Intelligent founder card variant selection
+✅ case-study-card-selector.html → Case study card selection
 ```
 
 ---
 
-## Recommendations
+## Implementation Patterns
 
-### 🎯 Phase 1: Eliminate Mixed Usage
-1. Replace universal-card.html with optimized cards in:
-   - All brands page components
-   - All founders page components
+### Variant Usage
+```liquid
+{% comment %} Standard card in grid {% endcomment %}
+{% include components/cards/brand-card.html brand=brand %}
 
-### 🧹 Phase 2: Clean Test Files
-1. Delete or archive test files:
-   - `*-test.html` files
-   - `*-backup.html` files
+{% comment %} Featured card in carousel {% endcomment %}
+{% include components/cards/brand-card.html brand=brand variant="featured" %}
 
-### 📏 Phase 3: Standardize Containers
-1. Ensure consistent container patterns:
-   - Carousel → Featured cards
-   - Grid → Standard cards
-   - Hero → Specialized large cards
+{% comment %} Insight context variant {% endcomment %}
+{% include components/cards/brand-card.html brand=brand variant="insight" %}
+```
+
+### Container Patterns
+- **Carousels**: Use featured variants
+- **Grids**: Use standard variants
+- **Lists**: Use compact or standard variants
+- **Hero sections**: Use featured variants
 
 ---
 
-## Next Steps
+## Architecture Benefits
 
-1. **Immediate**: Replace universal-card usage with optimized cards
-2. **Short-term**: Delete test/backup files
-3. **Long-term**: Implement consistent container patterns
+1. **Maintainability**: Each card type has focused responsibility
+2. **Performance**: No complex conditionals or massive template files
+3. **Flexibility**: Variants handle different contexts without duplication
+4. **Consistency**: BEM methodology ensures predictable styling
 
-**Target State**: 4 MVP cards, consistent container patterns, zero universal-card usage
+**Current State**: Purpose-built cards fully implemented, universal card system eliminated
