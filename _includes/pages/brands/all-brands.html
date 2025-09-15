@@ -104,7 +104,8 @@
             {% include helpers/t.html key="brands.all_brands.premium_title" fallback="Premium Database Access" lang=current_lang %}
           </h3>
           <p class="all-brands__premium-text">
-            {% include helpers/t.html key="brands.all_brands.premium_description" fallback="Showing sample of {{ all_brands.size }}+ brands. Premium access includes complete database with advanced search and export." lang=current_lang %}
+            {% capture premium_fallback %}Showing sample of {{ all_brands.size }}+ brands. Premium access includes complete database with advanced search and export.{% endcapture %}
+            {% include helpers/t.html key="brands.all_brands.premium_description" fallback=premium_fallback lang=current_lang %}
           </p>
           <a href="/premium/" class="btn btn--secondary">
             {% include helpers/t.html key="brands.all_brands.premium_cta" fallback="Upgrade for Full Access" lang=current_lang %}

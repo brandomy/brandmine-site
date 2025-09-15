@@ -1,0 +1,20 @@
+{% comment %}
+  Helper: country-name.html
+  Purpose: Display country name from country code
+
+  Parameters:
+    - country_code: ISO 2-letter country code (required)
+    - code: Alternative parameter name for country code
+    - lang: language code for localized name (optional, defaults to page.lang or 'en')
+
+  Usage:
+    {% include helpers/country-name.html country_code="br" %}
+    {% include helpers/country-name.html code="ru" lang="en" %}
+{% endcomment %}
+
+{% assign c_code = include.country_code | default: include.code %}
+{% assign display_lang = include.lang | default: page.lang | default: "en" %}
+
+{% if c_code %}
+  {% include helpers/country-lookup.html country_code=c_code property="name" lang=display_lang fallback=c_code %}
+{% endif %}
