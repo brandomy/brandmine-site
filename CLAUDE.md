@@ -6,7 +6,7 @@ Master project guide for Claude Code collaboration on Brandmine.
 
 # 🧭 Project Overview
 
-**Brandmine** is a multilingual Jekyll site showcasing BRICS+ consumer brands with founder stories and dimension-based discovery.
+**Brandmine** is a multilingual Jekyll site showcasing exceptional founder-led brands from the Global South with founder stories and dimension-based discovery.
 
 **Architecture**: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment, Jekyll 3.9.5.
 
@@ -181,6 +181,28 @@ cards:
 {% include components/cards/brand-card.html brand=brand variant="featured" %} <!-- Featured -->
 {% include components/cards/insight-card.html insight=insight variant="compact" %} <!-- Compact -->
 ```
+
+## Tagline Component
+**Accessible tagline with Global South messaging:**
+```liquid
+{% include components/tagline.html variant="short" %}   <!-- Footer/mobile -->
+{% include components/tagline.html variant="full" %}    <!-- Hero sections -->
+{% include components/tagline.html variant="short" show_emoji=false %} <!-- Print/formal -->
+```
+
+**Translation Structure:**
+```yaml
+footer:
+  tagline_full: "🔆 Illuminating and Elevating Exceptional Founder-led Brands from the Global South"
+  tagline_short: "🔆 Where Global South brands gain global recognition"
+  tagline_emoji_label: "Sun emoji"  # For screen readers
+```
+
+**Accessibility Features:**
+- Emoji with `aria-label` and `role="img"`
+- Proper screen reader support
+- Mobile-first responsive typography
+- BEM CSS methodology
 
 ---
 

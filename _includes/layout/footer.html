@@ -51,9 +51,9 @@
     </div>
 
     <div class="footer__section footer__section--center">
-      {% assign key_var = "footer.tagline" %}
-      {% assign fallback_var = "Discovering exceptional brands from BRICS+ markets" %}
-      <p class="footer__tagline"><em>{% include helpers/t.html key=key_var fallback=fallback_var lang=page.lang %}</em></p>
+      <p class="footer__tagline">
+        <em>{% include components/tagline.html variant="short" lang=page.lang %}</em>
+      </p>
       <div class="footer__social">
         {% for item in site.data.social[page.lang] %}
           {% assign key = item.name | remove: 'social.' %}

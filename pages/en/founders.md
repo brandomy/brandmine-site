@@ -1,7 +1,7 @@
 ---
 layout: founders
 title: "Meet the Founders"
-description: "Discover the visionaries behind BRICS+ emerging brands, their stories, expertise, and the brands they've built."
+description: "Discover the visionaries behind exceptional Global South brands, their stories, expertise, and the brands they've built."
 permalink: /en/founders/
 lang: en
 ref: founders

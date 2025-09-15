@@ -4,7 +4,7 @@ title: "MapLibre: Our Journey Building Geographic Brand Visualization"
 date: 2025-05-23
 permalink: /en/journal/2025/05/23/maplibre-journey/
 author: randal_eastman
-excerpt: "Our exploration of MapLibre has transformed how we display brands geographically, creating an interactive experience that reveals patterns and connections across BRICS+ markets."
+excerpt: "Our exploration of MapLibre has transformed how we display brands geographically, creating an interactive experience that reveals patterns and connections across Global South markets."
 tags: [development, tools, maps, brandmine, visualization]
 # Images (using collection-image semantic structure)
 images:
@@ -26,7 +26,7 @@ sections:
   - related-posts
 ---
 
-When we set out to build Brandmine, we knew that geography would play a crucial role in telling the stories of BRICS+ brands. But choosing the right mapping technology proved to be more complex than we initially anticipated.
+When we set out to build Brandmine, we knew that geography would play a crucial role in telling the stories of Global South brands. But choosing the right mapping technology proved to be more complex than we initially anticipated.
 
 ## The Challenge: Bringing Brands to Life on the Map
 
@@ -93,7 +93,7 @@ Our MapLibre implementation continues to evolve. We're currently exploring:
 - **Market sentiment layers** that overlay economic and cultural data
 - **Predictive clustering** that suggests expansion opportunities
 
-For BRICS+ brands, geographic visualization isn't just about pretty maps—it's about revealing the invisible networks that connect successful brands to their markets and opportunities.
+For Global South brands, geographic visualization isn't just about pretty maps—it's about revealing the invisible networks that connect successful brands to their markets and opportunities.
 
 ---
 

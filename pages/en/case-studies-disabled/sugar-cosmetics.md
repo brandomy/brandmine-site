@@ -63,6 +63,6 @@ The company's growth strategy centered on three pillars:
 
 The results speak for themselves: revenue grew from ₹3 crores to ₹500+ crores, representing a 60% compound annual growth rate. The company achieved a ₹4,100 crore ($500M+) valuation while expanding operations to UAE, Russia, and Nepal markets.
 
-## Lessons for BRICS+ Founders
+## Lessons for Global South Founders
 
 SUGAR Cosmetics proves that solving specific demographic needs creates defensible market positions. Their success demonstrates how cultural authenticity, when combined with international quality standards, can challenge established global players and create entirely new market categories.

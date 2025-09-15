@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Component: Tagline
+   ========================================================================== */
+
+/**
+ * Tagline component for displaying site taglines with variant support
+ *
+ * Features:
+ * - Full and short variants
+ * - Accessible emoji handling
+ * - Responsive typography
+ * - BEM methodology
+ *
+ * Usage:
+ * .tagline - Base component
+ * .tagline--full - Full length tagline variant
+ * .tagline--short - Shortened tagline variant
+ * .tagline__emoji - Emoji wrapper with accessibility
+ * .tagline__text - Text content wrapper
+ */
+
+.tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  line-height: 1.4;
+
+  /* Emoji styling */
+  &__emoji {
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 1;
+    /* Prevent emoji from being selectable to avoid confusion */
+    user-select: none;
+    /* Ensure emoji doesn't break layout */
+    flex-shrink: 0;
+
+    /* Add subtle animation on hover for interactivity */
+    transition: transform 0.2s ease;
+
+    @media (prefers-reduced-motion: no-preference) {
+      &:hover {
+        transform: scale(1.1) rotate(10deg);
+      }
+    }
+  }
+
+  /* Text content */
+  &__text {
+    flex: 1;
+  }
+
+  /* Full variant - larger, more prominent */
+  &--full {
+    font-size: var(--text-lg);
+    font-weight: 500;
+
+    @media (min-width: 768px) {
+      font-size: var(--text-xl);
+    }
+
+    .tagline__emoji {
+      font-size: 1.3em;
+    }
+  }
+
+  /* Short variant - compact, suitable for constrained spaces */
+  &--short {
+    font-size: var(--text-base);
+    font-weight: 400;
+
+    @media (min-width: 768px) {
+      font-size: var(--text-lg);
+    }
+
+    .tagline__emoji {
+      font-size: 1.1em;
+    }
+  }
+
+  /* Context-specific styling for footer */
+  .footer & {
+    &--short {
+      font-size: var(--text-sm);
+
+      @media (min-width: 768px) {
+        font-size: var(--text-base);
+      }
+    }
+  }
+
+  /* Mobile optimizations - use mobile-first approach */
+  &--full {
+    /* On mobile, full tagline might need to wrap */
+    flex-wrap: wrap;
+
+    .tagline__text {
+      /* Allow text to take full width if needed */
+      flex-basis: 100%;
+    }
+
+    /* Reset for larger screens */
+    @media (min-width: 768px) {
+      flex-wrap: nowrap;
+
+      .tagline__text {
+        flex-basis: auto;
+      }
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    &__emoji {
+      /* Ensure emoji is visible in high contrast */
+      filter: none;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    &__emoji {
+      /* Simplify emoji for print */
+      font-size: 1em;
+    }
+
+    &--full {
+      font-size: 12pt;
+    }
+
+    &--short {
+      font-size: 10pt;
+    }
+  }
+}
+
+/* Additional utility classes for specific contexts */
+
+/* Hero sections - make tagline more prominent */
+.hero {
+  .tagline--full {
+    font-size: var(--text-xl);
+
+    @media (min-width: 768px) {
+      font-size: var(--text-2xl);
+    }
+
+    @media (min-width: 1024px) {
+      font-size: var(--text-3xl);
+    }
+  }
+}
+
+/* Mobile header - compact version */
+.header--mobile {
+  .tagline--short {
+    font-size: var(--text-xs);
+
+    @media (min-width: 480px) {
+      font-size: var(--text-sm);
+    }
+  }
+}
+
+/* Ensure proper contrast for accessibility */
+.tagline {
+  /* Light theme */
+  color: var(--text-primary);
+
+  /* Dark theme support if implemented */
+  @media (prefers-color-scheme: dark) {
+    color: var(--text-primary-dark, var(--text-primary));
+  }
+}

@@ -1,0 +1,70 @@
+{% comment %}
+================================================================================
+USAGE EXAMPLES: Tagline Component
+PATH: _includes/components/tagline-usage-examples.html
+PURPOSE: Documentation and examples for using the tagline component
+================================================================================
+{% endcomment %}
+
+<!-- Example 1: Footer (current implementation) -->
+<!-- Short tagline in footer with italic emphasis -->
+<div class="footer">
+  <p class="footer__tagline">
+    <em>{% include components/tagline.html variant="short" %}</em>
+  </p>
+</div>
+
+<!-- Example 2: Hero Section -->
+<!-- Full tagline in hero sections -->
+<div class="hero">
+  <h1>Welcome to Brandmine</h1>
+  {% include components/tagline.html variant="full" class="hero__tagline" %}
+</div>
+
+<!-- Example 3: Mobile Header -->
+<!-- Short tagline for mobile/compact headers -->
+<header class="header--mobile">
+  <div class="header__brand">
+    <img src="/logo.svg" alt="Brandmine">
+    {% include components/tagline.html variant="short" class="header__tagline" %}
+  </div>
+</header>
+
+<!-- Example 4: Without Emoji -->
+<!-- For contexts where emoji might not be appropriate -->
+<div class="business-card">
+  <h2>Brandmine</h2>
+  {% include components/tagline.html variant="short" show_emoji=false %}
+</div>
+
+<!-- Example 5: Email Signature -->
+<!-- Compact version for email signatures -->
+<div class="email-signature">
+  <strong>Brandmine</strong><br>
+  {% include components/tagline.html variant="short" %}
+</div>
+
+<!-- Example 6: Social Media Bio -->
+<!-- Short version perfect for social media profiles -->
+<div class="social-bio">
+  {% include components/tagline.html variant="short" %}
+</div>
+
+<!-- Example 7: Language-Specific Override -->
+<!-- Force a specific language -->
+<div class="international-footer">
+  <!-- English -->
+  {% include components/tagline.html variant="short" lang="en" %}
+
+  <!-- Russian -->
+  {% include components/tagline.html variant="short" lang="ru" %}
+
+  <!-- Chinese -->
+  {% include components/tagline.html variant="short" lang="zh" %}
+</div>
+
+<!-- Example 8: Print-Friendly Version -->
+<!-- For business cards or print materials -->
+<div class="print-only">
+  {% include components/tagline.html variant="short" class="tagline--print" %}
+</div>

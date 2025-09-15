@@ -4,7 +4,7 @@ title: "Decoding Russian Brand Stories: Lessons from Our Market Research"
 date: 2025-05-16
 permalink: /en/journal/2025/05/16/russian-market-insights/
 author: olya_eastman
-excerpt: "Six months of deep research into Russian consumer brands revealed patterns and cultural insights that transformed how we approach BRICS+ storytelling."
+excerpt: "Six months of deep research into Russian consumer brands revealed patterns and cultural insights that transformed how we approach Global South storytelling."
 tags: [market-research, russia, cultural-insights, branding, methodology]
 # Images (using collection-image semantic structure)
 images:
@@ -52,7 +52,7 @@ Russian consumers have sophisticated quality indicators developed over decades o
 
 Some Russian brands we encountered were surprisingly export-ready, with English marketing materials and international distribution strategies. Others produced world-class products but had never considered international markets. This disparity creates both challenges and opportunities for platforms like Brandmine.
 
-## Methodology: How We Research BRICS+ Brands
+## Methodology: How We Research Global South Brands
 
 Our approach evolved significantly as we learned:
 
@@ -88,7 +88,7 @@ Presenting Russian brands to international audiences requires navigating complex
 
 ## Impact on Our Platform
 
-These insights shaped Brandmine's approach across all BRICS+ markets:
+These insights shaped Brandmine's approach across all Global South markets:
 
 ### Enhanced Context Fields
 
@@ -104,7 +104,7 @@ We developed nuanced indicators that go beyond simple "yes/no" export status to 
 
 ## Looking Ahead
 
-Our Russian market research continues to inform our methodology as we expand into other BRICS+ countries. Each market brings unique characteristics, but the fundamental lesson remains: successful cross-cultural brand representation requires deep cultural understanding, not just linguistic translation.
+Our Russian market research continues to inform our methodology as we expand into other Global South markets. Each market brings unique characteristics, but the fundamental lesson remains: successful cross-cultural brand representation requires deep cultural understanding, not just linguistic translation.
 
 The brands we've discovered in Russia represent extraordinary innovation, craftsmanship, and cultural pride. Our job is ensuring their stories reach the international partners who can help them grow—with full cultural context intact.
 

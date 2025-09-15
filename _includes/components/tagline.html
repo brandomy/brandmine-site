@@ -1,0 +1,86 @@
+{% comment %}
+================================================================================
+COMPONENT: Tagline
+PATH: _includes/components/tagline.html
+PURPOSE: Display site tagline with variant support and accessibility for emoji
+CREATED: 2025-01-15
+================================================================================
+
+Parameters:
+  - variant: "short" | "full" (default: "full")
+  - class: Additional CSS classes (optional)
+  - lang: Language code (defaults to page.lang)
+  - show_emoji: true/false (default: true)
+
+Features:
+  - Supports full and short tagline variants
+  - Proper accessibility for emoji with aria-label
+  - Screen reader friendly implementation
+  - Fallback to full tagline if variant not specified
+  - BEM CSS class naming
+
+Usage Examples:
+  {% include components/tagline.html variant="short" %}
+  {% include components/tagline.html variant="full" class="hero__tagline" %}
+  {% include components/tagline.html variant="short" show_emoji=false %}
+
+Dependencies:
+  - Translation keys: footer.tagline_full, footer.tagline_short, footer.tagline_emoji_label
+  - CSS: components/tagline.scss
+  - Helper: helpers/t.html
+
+Accessibility:
+  - Emoji wrapped in span with aria-label for screen readers
+  - Emoji hidden from screen readers with aria-hidden when text provides context
+  - Semantic HTML structure maintained
+================================================================================
+{% endcomment %}
+
+{% assign variant = include.variant | default: "full" %}
+{% assign custom_class = include.class | default: "" %}
+{% assign current_lang = include.lang | default: page.lang | default: "en" %}
+{% assign show_emoji = include.show_emoji | default: true %}
+
+{% comment %} Determine which tagline key to use {% endcomment %}
+{% if variant == "short" %}
+  {% assign tagline_key = "footer.tagline_short" %}
+  {% assign fallback_text = "🔆 Where Global South brands gain global recognition" %}
+{% else %}
+  {% assign tagline_key = "footer.tagline_full" %}
+  {% assign fallback_text = "🔆 Illuminating and Elevating Exceptional Founder-led Brands from the Global South" %}
+{% endif %}
+
+{% comment %} Get the tagline text {% endcomment %}
+{% capture tagline_text %}{% include helpers/t.html key=tagline_key fallback=fallback_text lang=current_lang %}{% endcapture %}
+
+{% comment %} Get emoji label for accessibility {% endcomment %}
+{% assign emoji_label_key = "footer.tagline_emoji_label" %}
+{% assign emoji_label_fallback = "Sun emoji" %}
+{% capture emoji_label %}{% include helpers/t.html key=emoji_label_key fallback=emoji_label_fallback lang=current_lang %}{% endcapture %}
+{% assign emoji_label = emoji_label | strip %}
+
+{% comment %} Process tagline to separate emoji from text for accessibility {% endcomment %}
+{% assign tagline_parts = tagline_text | split: "🔆" %}
+{% assign has_emoji = false %}
+{% if tagline_parts.size > 1 %}
+  {% assign has_emoji = true %}
+  {% assign tagline_text_only = tagline_parts[1] | strip %}
+{% else %}
+  {% assign tagline_text_only = tagline_text %}
+{% endif %}
+
+{% comment %} Build CSS classes {% endcomment %}
+{% capture css_classes %}
+  tagline tagline--{{ variant }}
+  {% if custom_class != "" %}{{ custom_class }}{% endif %}
+{% endcapture %}
+
+{% comment %} Render the tagline with proper accessibility {% endcomment %}
+<span class="{{ css_classes | strip }}">
+  {% if has_emoji and show_emoji %}
+    <span class="tagline__emoji" aria-label="{{ emoji_label }}" role="img">🔆</span>
+    <span class="tagline__text">{{ tagline_text_only }}</span>
+  {% else %}
+    <span class="tagline__text">{{ tagline_text_only }}</span>
+  {% endif %}
+</span>

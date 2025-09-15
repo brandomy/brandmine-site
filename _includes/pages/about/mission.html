@@ -16,7 +16,23 @@
 {% assign panel_type = include.panel_type | default: "primary" %}
 
     <h2 class="panel__heading-secondary">{% include helpers/t.html key="about.vision" fallback="Our Vision" %}</h2>
-    <p class="panel__lead-text">{% include helpers/t.html key="about.vision_text" fallback="Illuminate the world's hidden brands to fuel their growth" %}</p>
+    <p class="panel__lead-text">{% include helpers/t.html key="about.vision_text" fallback="🔆Illuminate the world's hidden brands to fuel their growth" %}</p>
 
     <h2 class="panel__heading-secondary">{{ include.title | default: "" }}{% unless include.title %}{% include helpers/t.html key="about.mission" fallback="Our Mission" %}{% endunless %}</h2>
-    <p class="panel__lead-text">{{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.mission_text" fallback="To illuminate what is currently invisible by breaking through language, cultural, and political barriers that hide exceptional BRICS+ brands from global view." %}{% endunless %}</p>
+    <p class="panel__lead-text">{{ include.lead_text | default: "" }}{% unless include.lead_text %}{% include helpers/t.html key="about.mission_text" fallback="To illuminate and elevate exceptional founder-led brands from the Global South, breaking through language, cultural, and political barriers to amplify their stories globally and proactively connect them with the people, partners, and capital they need to grow beyond their borders." %}{% endunless %}</p>
+
+    <h2 class="panel__heading-secondary">{% include helpers/t.html key="about.values_title" fallback="Our Values" %}</h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <h3 class="value-title">{% include helpers/t.html key="about.values.bridge_cultures.title" fallback="Bridge Cultures" %}</h3>
+        <p class="value-text">{% include helpers/t.html key="about.values.bridge_cultures.text" fallback="We turn barriers into bridges." %}</p>
+      </div>
+      <div class="value-item">
+        <h3 class="value-title">{% include helpers/t.html key="about.values.champion_founders.title" fallback="Champion Founders" %}</h3>
+        <p class="value-text">{% include helpers/t.html key="about.values.champion_founders.text" fallback="Great founders shouldn't stay hidden." %}</p>
+      </div>
+      <div class="value-item">
+        <h3 class="value-title">{% include helpers/t.html key="about.values.create_connections.title" fallback="Create Connections" %}</h3>
+        <p class="value-text">{% include helpers/t.html key="about.values.create_connections.text" fallback="Right brands, right partners, right time." %}</p>
+      </div>
+    </div>

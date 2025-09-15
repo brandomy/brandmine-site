@@ -79,7 +79,7 @@ Walk of Shame's journey illustrates how creative brands can navigate complex geo
 
 The key insight: when political barriers increase, cultural authenticity becomes even more valuable as a differentiator in global markets.
 
-## Lessons for BRICS+ Founders
+## Lessons for Global South Founders
 
 Walk of Shame proves that social media can bypass traditional industry gatekeepers, allowing authentic brands to find their audience directly. Their story demonstrates how geopolitical challenges, while creating obstacles, can also force innovations that become competitive advantages.
 
