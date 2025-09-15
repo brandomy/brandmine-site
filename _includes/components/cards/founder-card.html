@@ -27,6 +27,7 @@
            purpose="portrait"
            name=founder.images.portrait.name
            alt=founder.images.portrait.alt
+           ext=founder.images.portrait.ext
            sizes="(max-width: 768px) 100vw, 400px" %}
       {% else %}
         <div class="founder-card__portrait-placeholder">
@@ -94,6 +95,7 @@
              purpose="headshot"
              name=founder.images.headshot.name
              alt=founder.images.headshot.alt
+             ext=founder.images.headshot.ext
              sizes="(max-width: 768px) 100vw, 320px" %}
         </div>
       {% else %}
@@ -113,7 +115,7 @@
             {% if founder.company and founder.city %} • {% endif %}
             {% if founder.city %}{{ founder.city }}{% if founder.country %}, {% endif %}{% endif %}
             {%- if founder.country -%}
-              {%- assign country_info = site.data.countries_basic.countries[founder.country] -%}
+              {%- assign country_info = site.data.countries.countries[founder.country] -%}
               {%- if country_info and country_info.name and country_info.name[page.lang] -%}
                 {{- country_info.name[page.lang] -}}
               {%- else -%}

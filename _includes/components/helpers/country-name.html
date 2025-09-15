@@ -30,7 +30,7 @@
 {% assign display_lang = include.lang | default: page.lang %}
 
 <!-- Look up the country information from the JSON data file -->
-{% assign country_info = site.data.countries_basic.countries[country_code] %}
+{% assign country_info = site.data.countries.countries[country_code] %}
 
 <!-- Check if we found country information -->
 {% if country_info and country_info.name and country_info.name[display_lang] %}{{ country_info.name[display_lang] }}{% else %}{{ country_code | upcase }}{% endif %}

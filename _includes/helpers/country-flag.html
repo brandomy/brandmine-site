@@ -1,13 +1,13 @@
 {% comment %}
 HELPER: Country Flag (Data-Driven)
-PURPOSE: Get flag emoji from countries_basic.json data file
+PURPOSE: Get flag emoji from countries.json data file
 USAGE: {% include helpers/country-flag.html country_code="ru" %}
 OUTPUT: Flag emoji from data file or fallback globe
 PARAMETERS:
 - country_code (required): ISO 2-letter country code
 {% endcomment %}
 
-{% assign country_data = site.data.countries_basic.countries[include.country_code] %}
+{% assign country_data = site.data.countries.countries[include.country_code] %}
 {% if country_data and country_data.emoji %}
   {{ country_data.emoji }}
 {% else %}

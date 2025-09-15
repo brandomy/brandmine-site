@@ -58,8 +58,8 @@
   {% endif %}
 {% else %}
   {% comment %} Use basic data from countries_basic.json {% endcomment %}
-  {% if site.data.countries_basic.countries[country_code] %}
-    {% assign country_data = site.data.countries_basic.countries[country_code] %}
+  {% if site.data.countries.countries[country_code] %}
+    {% assign country_data = site.data.countries.countries[country_code] %}
   {% else %}
     {% comment %} Fallback to regional files if not in basic data {% endcomment %}
     {% assign country_data = nil %}

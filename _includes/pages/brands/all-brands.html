@@ -1,0 +1,191 @@
+{% comment %}
+  Page Section: pages/brands/all-brands.html
+
+  Purpose: Comprehensive brand directory with list format display and filtering
+
+  Section Type: Content Directory
+  Template: brands.html
+
+  Parameters:
+    items_per_page (optional): Number of brands per page (default: 50)
+    show_filters (optional): Show dimension filtering (default: true)
+    premium_teaser (optional): Show premium access message (default: true)
+
+  Dependencies:
+    - Translation keys: brands.all_brands.*
+    - CSS: assets/css/pages/brands/all-brands.scss
+    - JavaScript: assets/js/pages/brands/all-brands-filtering.js
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign items_per_page = include.items_per_page | default: 50 %}
+{% assign show_filters = include.show_filters | default: true %}
+{% assign premium_teaser = include.premium_teaser | default: true %}
+
+<div class="all-brands">
+  <div class="all-brands__header">
+    <h2 class="all-brands__title">
+      {% include helpers/t.html key="brands.all_brands.title" fallback="All Brands Directory" lang=current_lang %}
+    </h2>
+    <p class="all-brands__description">
+      {% include helpers/t.html key="brands.all_brands.description" fallback="Comprehensive database of founder-led brands from BRICS+ markets with advanced filtering." lang=current_lang %}
+    </p>
+  </div>
+
+  {% if show_filters %}
+    <div class="all-brands__filters">
+      <div class="all-brands__filter-row">
+        <!-- Markets Filter -->
+        <div class="all-brands__filter-group">
+          <label class="all-brands__filter-label">
+            {% include helpers/t.html key="dimensions.markets.title" fallback="Markets" lang=current_lang %}
+          </label>
+          <select class="all-brands__filter-select" data-filter="markets">
+            <option value="">All Markets</option>
+            {% assign markets = site.dimensions | where: "lang", current_lang | where: "type", "markets" | sort: "title" %}
+            {% for market in markets %}
+              <option value="{{ market.slug }}">{{ market.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Sectors Filter -->
+        <div class="all-brands__filter-group">
+          <label class="all-brands__filter-label">
+            {% include helpers/t.html key="dimensions.sectors.title" fallback="Sectors" lang=current_lang %}
+          </label>
+          <select class="all-brands__filter-select" data-filter="sectors">
+            <option value="">All Sectors</option>
+            {% assign sectors = site.dimensions | where: "lang", current_lang | where: "type", "sectors" | sort: "title" %}
+            {% for sector in sectors %}
+              <option value="{{ sector.slug }}">{{ sector.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Attributes Filter -->
+        <div class="all-brands__filter-group">
+          <label class="all-brands__filter-label">
+            {% include helpers/t.html key="dimensions.attributes.title" fallback="Attributes" lang=current_lang %}
+          </label>
+          <select class="all-brands__filter-select" data-filter="attributes">
+            <option value="">All Attributes</option>
+            {% assign attributes = site.dimensions | where: "lang", current_lang | where: "type", "attributes" | sort: "title" %}
+            {% for attribute in attributes %}
+              <option value="{{ attribute.slug }}">{{ attribute.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Signals Filter -->
+        <div class="all-brands__filter-group">
+          <label class="all-brands__filter-label">
+            {% include helpers/t.html key="dimensions.signals.title" fallback="Signals" lang=current_lang %}
+          </label>
+          <select class="all-brands__filter-select" data-filter="signals">
+            <option value="">All Signals</option>
+            {% assign signals = site.dimensions | where: "lang", current_lang | where: "type", "signals" | sort: "title" %}
+            {% for signal in signals %}
+              <option value="{{ signal.slug }}">{{ signal.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="all-brands__content">
+    {% assign all_brands = site.brands | where: "lang", current_lang | sort: "title" %}
+
+    {% if premium_teaser and all_brands.size > 20 %}
+      <div class="all-brands__premium-notice">
+        <div class="all-brands__premium-content">
+          <h3 class="all-brands__premium-title">
+            {% include helpers/t.html key="brands.all_brands.premium_title" fallback="Premium Database Access" lang=current_lang %}
+          </h3>
+          <p class="all-brands__premium-text">
+            {% include helpers/t.html key="brands.all_brands.premium_description" fallback="Showing sample of {{ all_brands.size }}+ brands. Premium access includes complete database with advanced search and export." lang=current_lang %}
+          </p>
+          <a href="/premium/" class="btn btn--secondary">
+            {% include helpers/t.html key="brands.all_brands.premium_cta" fallback="Upgrade for Full Access" lang=current_lang %}
+          </a>
+        </div>
+      </div>
+      {% assign brands_to_show = all_brands | limit: 20 %}
+    {% else %}
+      {% assign brands_to_show = all_brands | limit: items_per_page %}
+    {% endif %}
+
+    {% if brands_to_show.size > 0 %}
+      <div class="all-brands__list" data-filterable="brands">
+        {% for brand in brands_to_show %}
+          <div class="all-brands__item"
+               data-markets="{% for market in brand.markets %}{{ market }}{% unless forloop.last %} {% endunless %}{% endfor %}"
+               data-sectors="{% for sector in brand.sectors %}{{ sector }}{% unless forloop.last %} {% endunless %}{% endfor %}"
+               data-attributes="{% for attribute in brand.attributes %}{{ attribute }}{% unless forloop.last %} {% endunless %}{% endfor %}"
+               data-signals="{% for signal in brand.signals %}{{ signal }}{% unless forloop.last %} {% endunless %}{% endfor %}">
+
+            <div class="all-brands__item-content">
+              <div class="all-brands__item-header">
+                <h3 class="all-brands__item-title">
+                  <a href="{{ brand.url }}">{{ brand.title }}</a>
+                </h3>
+                <div class="all-brands__item-meta">
+                  <span class="all-brands__item-country">
+                    {% include helpers/country-flag.html country_code=brand.country %}
+                    {% include helpers/country-name.html country_code=brand.country lang=current_lang %}
+                  </span>
+                  {% if brand.founding_year %}
+                    <span class="all-brands__item-founded">{{ brand.founding_year }}</span>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="all-brands__item-body">
+                <p class="all-brands__item-description">
+                  {{ brand.excerpt | strip_html | truncatewords: 25 }}
+                </p>
+
+                <div class="all-brands__item-dimensions">
+                  {% if brand.sectors.size > 0 %}
+                    <div class="all-brands__item-dimension-group">
+                      <span class="all-brands__item-dimension-label">Sector:</span>
+                      {% for sector in brand.sectors limit: 2 %}
+                        <span class="all-brands__item-tag all-brands__item-tag--sector">{{ sector }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% if brand.attributes.size > 0 %}
+                    <div class="all-brands__item-dimension-group">
+                      <span class="all-brands__item-dimension-label">Attributes:</span>
+                      {% for attribute in brand.attributes limit: 3 %}
+                        <span class="all-brands__item-tag all-brands__item-tag--attribute">{{ attribute }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="all-brands__footer">
+        <div class="all-brands__count">
+          <span class="all-brands__count-text">
+            {% include helpers/t.html key="brands.all_brands.showing_count" fallback="Showing" lang=current_lang %}
+            {{ brands_to_show.size }} of {{ all_brands.size }}
+            {% include helpers/t.html key="brands.all_brands.brands_text" fallback="brands" lang=current_lang %}
+          </span>
+        </div>
+      </div>
+    {% else %}
+      <div class="all-brands__empty">
+        <p class="all-brands__empty-message">
+          {% include helpers/t.html key="brands.all_brands.empty_state" fallback="No brands found matching your criteria." lang=current_lang %}
+        </p>
+      </div>
+    {% endif %}
+  </div>
+</div>

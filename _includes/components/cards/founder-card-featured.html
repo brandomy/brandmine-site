@@ -26,7 +26,7 @@ Optimized for emotional impact with mobile-friendly design
 {% endif %}
 
 {% comment %} Get country name and flag from data {% endcomment %}
-{% assign country_info = site.data.countries_basic.countries[founder.country] %}
+{% assign country_info = site.data.countries.countries[founder.country] %}
 {% if country_info and country_info.name and country_info.name[page.lang] %}
   {% assign country_name = country_info.name[page.lang] %}
 {% else %}
