@@ -1,0 +1,121 @@
+{% comment %}
+================================================================================
+COMPONENT: Load More Button
+PATH: _includes/helpers/load-more-button.html
+PURPOSE: Progressive content loading button with accessible interaction and state management
+CREATED: 2024-01-01 | VERSION: 1.6
+================================================================================
+
+Features:
+- Progressive content loading with user-controlled pagination
+- Accessible button design with semantic HTML structure
+- Unique ID support for JavaScript event binding and state management
+- Customizable button text for context-specific messaging
+- Container wrapper for consistent spacing and alignment
+- Secondary button styling appropriate for supplementary actions
+
+Parameters:
+- id (required): String - Unique identifier for JavaScript targeting and event handling
+- text (required): String - Button label text for user interface display
+
+Dependencies:
+- CSS: .load-more-container for wrapper styling and .btn-secondary for button appearance
+- JavaScript: Event handling through ID-based targeting for click interactions
+
+Usage Examples:
+Brand listing load more:
+{% raw %}{% include helpers/load-more-button.html
+   id="load-more-brands"
+   text="Load More Brands" %}{% endraw %}
+
+Insights pagination:
+{% raw %}{% include helpers/load-more-button.html
+   id="load-more-insights"
+   text="Show More Articles" %}{% endraw %}
+
+Search results expansion:
+{% raw %}{% include helpers/load-more-button.html
+   id="load-more-results"
+   text="View Additional Results" %}{% endraw %}
+
+Founder profiles loading:
+{% raw %}{% include helpers/load-more-button.html
+   id="load-more-founders"
+   text="Discover More Founders" %}{% endraw %}
+
+Real-world Applications:
+- Content listing pages with progressive loading for performance
+- Search result pages with pagination alternatives
+- Category browsing with infinite scroll fallback
+- Archive pages with chronological content loading
+- Filter result pages with incremental content revelation
+
+BEM Structure:
+- .load-more-container (wrapper with spacing and alignment)
+- .btn-secondary (button styling following site button system)
+
+Accessibility:
+- Semantic button element with proper interactive semantics
+- Descriptive button text for screen reader comprehension
+- High contrast secondary button styling meeting WCAG AA standards
+- Keyboard navigation support with focus management
+- Touch-friendly button sizing for mobile interaction
+
+Responsive Design:
+- Mobile (320px+): Full-width container with touch-optimized button sizing
+- Tablet (768px+): Centered button with enhanced spacing
+- Desktop (1024px+): Hover states and refined visual feedback
+
+JavaScript Integration:
+- Event binding through unique ID for precise interaction handling
+- State management compatibility for loading indicators and content updates
+- Progressive enhancement ensuring graceful degradation without JavaScript
+- ARIA state updates for dynamic content loading announcements
+
+Performance Optimization:
+- Minimal DOM structure with clean HTML output
+- CSS-only styling without embedded style dependencies
+- Efficient JavaScript targeting through ID-based selection
+- Optimized for repeated use across multiple page contexts
+
+Button State Management:
+- Default state with clear call-to-action presentation
+- Loading state preparation for JavaScript-driven updates
+- Disabled state handling for end-of-content scenarios
+- Active state feedback for user interaction confirmation
+
+Container Features:
+- Consistent spacing through .load-more-container wrapper
+- Centered alignment for professional content presentation
+- Flexible width adaptation to various content grid layouts
+- Clean integration with existing page layout systems
+
+Error Handling:
+- Safe rendering with missing or undefined parameters
+- Graceful button display even without JavaScript functionality
+- Clean fallback behavior when ID conflicts occur
+- Robust text display regardless of translation availability
+
+Development Notes:
+- Intentionally simple for maximum reusability across content types
+- Host page responsible for JavaScript functionality implementation
+- Component provides structure and styling foundation only
+- Compatible with various pagination and loading strategies
+
+Progressive Loading Strategy:
+- User-initiated loading for improved page performance
+- Alternative to traditional pagination with better user experience
+- SEO-friendly approach maintaining indexable content structure
+- Mobile-optimized loading reducing bandwidth usage on slower connections
+
+Business Intelligence Context:
+- Professional button styling appropriate for business audience
+- Clear call-to-action messaging for content discovery
+- Performance optimization supporting large content datasets
+- User experience design promoting deeper content engagement
+================================================================================
+{% endcomment %}
+
+<div class="load-more-container">
+  <button id="{{ include.id }}" class="btn-secondary">{{ include.text }}</button>
+</div>

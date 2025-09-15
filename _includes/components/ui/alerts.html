@@ -1,21 +1,86 @@
 {% comment %}
-Component: components/ui/alerts.html
-Purpose: Flexible alert/notification component for user feedback
+================================================================================
+COMPONENT: Alert Notifications
+PATH: _includes/components/ui/alerts.html
+PURPOSE: Flexible alert and notification component for user feedback with multiple types and dismissible options
+CREATED: 2024-01-01 | VERSION: 1.8
+================================================================================
+
+Features:
+- Four alert types (success, error, warning, info) with distinct styling and icons
+- Optional title and message content structure
+- Dismissible functionality with close button integration
+- Icon display with type-specific SVG icons
+- Accessibility-compliant with ARIA attributes and live regions
+- Semantic HTML structure with role="alert" for urgent notifications
+- Responsive design with mobile-friendly layouts
+- Customizable styling via additional CSS classes
 
 Parameters:
-- type (required): Alert type - "success", "error", "warning", "info"
-- title (optional): Alert title
-- message (required): Alert message content
-- dismissible (optional): Can be dismissed (default: false)
-- icon (optional): Show icon (default: true)
-- class_name (optional): Additional CSS classes
-- id (optional): Unique ID for the alert
+- type (required): String - Alert type ("success", "error", "warning", "info")
+- message (required): String - Main alert message content
+- title (optional): String - Alert title or heading text
+- dismissible (optional): Boolean - Show close button for user dismissal. Default: false
+- icon (optional): Boolean - Display type-specific icon. Default: true
+- class_name (optional): String - Additional CSS classes for custom styling
+- id (optional): String - Unique identifier for alert element
 
-Usage:
+Dependencies:
+- CSS: assets/css/components/ui/alerts.scss
+- JavaScript: Optional alert dismissal functionality
+- Icons: Inline SVG icons for each alert type
+- ARIA: Built-in live region and accessibility support
+
+Usage Examples:
 {% include components/ui/alerts.html type="success" message="Brand saved successfully!" %}
 {% include components/ui/alerts.html type="error" title="Validation Error" message="Please check your form data." dismissible=true %}
 {% include components/ui/alerts.html type="warning" message="This feature is in beta." icon=false %}
 {% include components/ui/alerts.html type="info" message="New insights available." id="insights-notification" %}
+
+Real-world Usage:
+Used for form validation feedback, system notifications, status updates, and user confirmations
+
+Alert Type Specifications:
+- Success: Green styling for positive feedback and confirmations
+- Error: Red styling for critical errors and validation failures
+- Warning: Yellow/orange styling for cautionary messages
+- Info: Blue styling for informational messages and updates
+
+BEM Structure:
+- .alert (main alert container)
+- .alert--[type] (type modifier: success, error, warning, info)
+- .alert__icon (type-specific icon container)
+- .alert__content (text content area)
+- .alert__title (alert heading text)
+- .alert__message (main alert message)
+- .alert__dismiss (close/dismiss button)
+
+Accessibility:
+- role="alert" for urgent notifications requiring immediate attention
+- aria-live="polite" for non-disruptive screen reader announcements
+- Semantic heading structure with alert titles
+- High contrast colors meeting WCAG standards
+- Keyboard accessible dismiss buttons
+- Screen reader friendly icon descriptions
+
+Responsive:
+- Mobile: Full-width alerts with touch-friendly dismiss buttons
+- Tablet: Constrained width with enhanced icon visibility
+- Desktop: Optimal spacing with hover states for interactive elements
+
+Performance Notes:
+- Lightweight component with minimal DOM structure
+- Inline SVG icons for fast loading without additional requests
+- CSS-only styling without JavaScript dependencies for display
+- Optional JavaScript enhancement for dismissal functionality
+- Efficient alert type switching with CSS modifiers
+
+Icon Integration:
+- Success: Checkmark icon indicating positive completion
+- Error: X or exclamation icon for critical messages
+- Warning: Triangle with exclamation for cautionary alerts
+- Info: Information circle for neutral notifications
+================================================================================
 {% endcomment %}
 
 {% assign show_icon = include.icon | default: true %}

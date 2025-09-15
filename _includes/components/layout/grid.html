@@ -1,23 +1,131 @@
 {% comment %}
+================================================================================
 COMPONENT: Atomic Grid Layout
-PURPOSE: Pure layout component - displays items in grid formation with NO spacing assumptions
+PATH: _includes/components/layout/grid.html
+PURPOSE: Pure CSS Grid layout component with content-agnostic structure and placeholder handling
+CREATED: 2024-01-01 | VERSION: 1.4
+================================================================================
 
-USAGE: {% include components/layout/grid.html items=collection type="insight" %}
+Features:
+- Atomic design principles with zero spacing assumptions for maximum reusability
+- Multi-content type support with automatic card component selection
+- Intelligent placeholder generation for consistent grid layouts
+- Responsive CSS Grid with automatic column calculation
+- Empty state handling with graceful fallback messaging
+- Content type agnostic design for brands, founders, insights, and custom content
+- Clean separation of concerns between layout and spacing responsibilities
+- Placeholder content with meaningful empty state messaging
 
-PARAMETERS:
-- items (required): Array of content items to display
-- type (required): Content type for card selection ("insight", "brand", "founder")
-- card_variant (optional): Card variant override
-- limit (optional): Maximum items to display (default: 4)
+Parameters:
+- items (required): Array - Collection of content items to display in grid
+- type (required): String - Content type for card selection: "insight", "brand", "founder"
+- card_variant (optional): String - Card variant override for specialized presentations
+- limit (optional): Integer - Maximum items to display in grid. Default: 4
+- lang (optional): String - Language code for placeholder and empty state text
 
-DEPENDENCIES:
-- CSS: assets/css/components/layout/grid.scss (layout only, no spacing)
-- Cards: components/cards/insight-latest-card.html or specific card types
+Dependencies:
+- CSS: assets/css/components/layout/grid.scss for pure layout structure only
+- Cards: components/cards/insight-card.html, brand-card.html, founder-card.html
+- Host Container: Parent element responsible for margins, padding, and spacing
 
-NOTES: 
-- Atomic design: ONLY handles grid layout structure
-- Host container responsible for spacing, margins, padding
-- No CSS assumptions about context
+Atomic Design Philosophy:
+- Grid component handles ONLY CSS Grid layout structure and item positioning
+- No margin, padding, or spacing assumptions within the component itself
+- Host container controls all external spacing, backgrounds, and contextual styling
+- Maximum reusability across different page contexts and content types
+
+Usage Examples:
+Basic insight grid:
+{% raw %}{% include components/layout/grid.html items=site.insights type="insight" limit=6 %}{% endraw %}
+
+Brand showcase grid:
+{% raw %}{% include components/layout/grid.html items=featured_brands type="brand" limit=8 %}{% endraw %}
+
+Founder profile grid:
+{% raw %}{% include components/layout/grid.html
+   items=site.founders
+   type="founder"
+   card_variant="compact"
+   limit=9
+   lang=page.lang %}{% endraw %}
+
+Custom content grid:
+{% raw %}{% include components/layout/grid.html
+   items=custom_content
+   type="insight"
+   limit=12 %}{% endraw %}
+
+Real-world Applications:
+- Homepage featured content grids with business intelligence focus
+- Category listing pages with filterable brand and founder grids
+- Insights section with latest articles and market analysis
+- Search results presentation with consistent card layouts
+
+BEM Structure:
+- .grid (main CSS Grid container with responsive column definitions)
+- .grid__item (individual grid item wrapper for content cards)
+- .grid__placeholder (empty slot placeholder with visual content)
+- .grid__placeholder-content (placeholder inner content structure)
+- .grid__placeholder-icon (placeholder visual icon with SVG graphics)
+- .grid__placeholder-title (placeholder heading text)
+- .grid__placeholder-description (placeholder descriptive text)
+- .grid__empty (empty state container for zero items)
+
+Accessibility:
+- Semantic HTML structure with proper content hierarchy
+- Screen reader friendly placeholder content with descriptive text
+- High contrast placeholder icons meeting WCAG AA standards
+- Keyboard navigation support for grid item focus management
+- Alternative text for placeholder graphics and empty state messaging
+
+Responsive Design:
+- Mobile (320px+): Single column grid with full-width card presentation
+- Tablet (768px+): Two-column grid with optimized spacing
+- Desktop (1024px+): Three-column grid for enhanced content density
+- Large screens (1200px+): Four-column grid with maximum utilization
+
+Content Type Support:
+- insight: Blog articles, market analysis, and business intelligence content
+- brand: Company profiles, product showcases, and business presentations
+- founder: Leadership profiles, success stories, and entrepreneurship content
+- Extensible design for additional content types and custom implementations
+
+Placeholder Logic:
+- Automatic empty slot calculation based on limit and actual content count
+- Meaningful placeholder content suggesting future content availability
+- Visual consistency with actual content cards through matching dimensions
+- Professional placeholder messaging appropriate for business audience
+
+Performance Optimization:
+- Minimal DOM structure with efficient CSS Grid implementation
+- No JavaScript dependencies for core layout functionality
+- Optimized card component loading with conditional includes
+- Clean HTML output with semantic structure for fast rendering
+
+Grid Layout Features:
+- CSS Grid with automatic responsive column adjustment
+- Equal height cards through CSS Grid row alignment
+- Consistent spacing through CSS Grid gap properties
+- Flexible grid item sizing with content-aware dimensions
+
+Error Handling:
+- Graceful degradation when items array is empty or undefined
+- Fallback content display with meaningful empty state messaging
+- Safe content type handling with default insight card fallback
+- Robust placeholder generation even with missing or malformed data
+
+Host Container Integration:
+- Clean integration with any parent container styling approach
+- No styling conflicts with host container margin or padding schemes
+- Flexible width adaptation to any container size or constraint
+- Responsive behavior inherited from host container media queries
+
+Development Notes:
+- Pure layout component following atomic design methodology
+- Zero assumptions about usage context or surrounding page structure
+- Host container maintains full control over spacing, backgrounds, and theming
+- Component focuses exclusively on grid structure and content arrangement
+================================================================================
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

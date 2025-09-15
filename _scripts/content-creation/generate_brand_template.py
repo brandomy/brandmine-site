@@ -1,31 +1,133 @@
 #!/usr/bin/env python3
 """
-Brand Template Generator for Multilingual Content
+Brand Template Generator - Multilingual Content Creation Accelerator
 
-This script generates brand templates for the Brandmine platform in all three supported 
-languages (English, Russian, and Chinese). It creates consistent front matter and basic
-content structure based on our standardized format.
+Automates the creation of brand profile templates across all three languages
+(English, Russian, Chinese) with consistent structure, proper front matter,
+and standardized image directories. Ensures brand consistency while dramatically
+reducing content creation time and preventing localization errors.
+
+Business Value: High - Critical content creation tool that reduces brand profile
+setup time from hours to minutes. Ensures 100% consistency across languages,
+prevents front matter errors, and enforces naming standards. Essential for
+scaling to hundreds of brands while maintaining quality.
+
+WHAT IT CREATES:
+  1. Brand markdown files in all 3 languages (_brands/{en,ru,zh}/*.md)
+  2. Consistent YAML front matter with all required fields
+  3. Image directory structure (assets/images/brands/{ref}/)
+  4. Founder reference linkages
+  5. Dimension taxonomies (markets, sectors, attributes, signals)
+  6. SEO-optimized permalinks for each language
+
+TEMPLATE TYPES:
+  - core: Essential fields only (fastest setup)
+  - lite: Core + basic content sections
+  - full: Complete template with all sections
+
+WORKFLOW PROCESS:
+  1. Interactive prompts gather brand information
+  2. Validates input data (market codes, formatting)
+  3. Generates consistent refs (market-slug format)
+  4. Creates files in correct directory structure
+  5. Sets up image directories
+  6. Provides next-step instructions
 
 Usage:
-    python3 generate_brand_template.py
-    
-    The script will guide you through entering:
-    - Template type (core, lite, full)
-    - Market code (e.g., ru, cn, ae)
-    - Brand slug for URLs
-    - Brand names in all three languages
-    - Basic brand information
-    
-    Then it generates the template files in the appropriate language/market directories
-    and creates the necessary folder structure for brand images.
+    python3 generate_brand_template.py [--template TYPE] [--market CODE]
+    python3 generate_brand_template.py --interactive
+    python3 generate_brand_template.py --help
+
+Arguments:
+    --template    Template type: core, lite, or full (default: core)
+    --market      Market code (e.g., ru, cn, br, ae)
+    --slug        Brand URL slug (kebab-case)
+    --batch       Process multiple brands from CSV file
+
+Options:
+    --interactive    Interactive mode with prompts (default)
+    --dry-run       Preview files without creating them
+    --force         Overwrite existing files
+    --skip-images   Don't create image directories
+    --help          Display this documentation
+
+Examples:
+    # Interactive mode (recommended for single brands)
+    python3 _scripts/content-creation/generate_brand_template.py
+
+    # Quick creation with parameters
+    python3 generate_brand_template.py --template core --market ru --slug teatime
+
+    # Full template with all sections
+    python3 generate_brand_template.py --template full --market cn --slug jade-valley
+
+    # Batch processing from CSV
+    python3 generate_brand_template.py --batch brands_list.csv
 
 Requirements:
-    - PyYAML library: pip install pyyaml
-    - Proper directory structure with _brands/{lang}/{market}/ directories
-    - _templates/brands/ directory with template files
+    - Python 3.6+
+    - PyYAML library (pip install pyyaml)
+    - Write access to _brands/ directories
+    - Write access to assets/images/brands/
+    - Optional: _templates/brands/ for custom templates
 
-Author: Randal Eastman
-Created: May 2, 2025
+Integration:
+    - Called by: Content creators adding new brands
+    - Creates: Brand profile files and image directories
+    - Updates: None (creates new files only)
+    - Frequency: Whenever new brands are onboarded
+    - Next steps: Add images, complete content sections
+
+Directory Structure Created:
+    _brands/
+      en/{market-slug}.md       # English version
+      ru/{market-slug}.md       # Russian version
+      zh/{market-slug}.md       # Chinese version
+    assets/images/brands/
+      {market-slug}/
+        originals/              # For source images
+        hero-*.jpg             # Processed hero images
+        logo-*.png             # Brand logos
+        founder-*.jpg          # Founder portraits
+
+Front Matter Generated:
+    - ref: Unique identifier (market-slug)
+    - title: Brand name (localized)
+    - description: Brand tagline
+    - founding_year: Integer year
+    - founders: Array of founder refs
+    - markets: Target market codes
+    - sectors: Industry categories
+    - attributes: Brand characteristics
+    - signals: Growth indicators
+    - location: Geographic data with coordinates
+    - website: Brand URL
+    - featured: Boolean flag
+    - export_ready: Boolean flag
+
+Validation Rules:
+    - Market code must be valid (2-letter ISO)
+    - Slug must be kebab-case
+    - No duplicate refs allowed
+    - Founding year must be reasonable (1800-current)
+    - Required fields enforced
+
+Localization Support:
+    - Prompts for translations of key fields
+    - Maintains consistent refs across languages
+    - Language-specific permalinks
+    - UTF-8 encoding for all languages
+
+Error Prevention:
+    - Checks for existing files before creation
+    - Validates all input formats
+    - Creates backups if --force used
+    - Provides clear error messages
+    - Suggests corrections for common mistakes
+
+Author: Randal Eastman, Brandmine Development Team
+Created: 2025-05-02
+Last Updated: 2025-09-15 - Added comprehensive documentation
 """
 
 import os

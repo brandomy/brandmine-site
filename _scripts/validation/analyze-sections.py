@@ -142,6 +142,6 @@ def print_report(results):
             print()
 
 if __name__ == '__main__':
-    os.chdir('/Users/randaleastman/Documents/brandmine-site')
+    # Removed hardcoded path - script runs from current directory
     results = analyze_sections()
     print_report(results)

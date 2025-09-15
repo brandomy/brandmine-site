@@ -1,15 +1,121 @@
 {% comment %}
-  Component: components/maps/location-mini-map.html
-  Purpose: Displays a small map for a specific location or region
-  Parameters:
-    - center: Array with [longitude, latitude] coordinates (required)
-    - zoom: Initial zoom level (default: 8)
-    - markers: Array of marker objects with coordinates and optional popup content (optional)
-    - height: Height of the map container (default: 300px)
-    - width: Width of the map container (default: 100%)
-  Dependencies:
-    - assets/css/components/maps/location-mini-map.scss
-    - assets/js/maplibre.js
+================================================================================
+COMPONENT: Location Mini Map
+PATH: _includes/components/maps/location-mini-map.html
+PURPOSE: Compact interactive map for specific location display with markers and popups
+CREATED: 2024-01-01 | VERSION: 1.3
+================================================================================
+
+Features:
+- Compact MapLibre GL JS powered location mapping
+- Customizable dimensions with responsive container sizing
+- Multiple marker support with coordinate-based positioning
+- Dynamic map ID generation for multiple instances per page
+- Data attribute configuration for JavaScript initialization
+- Automatic map controls with zoom and navigation
+- Marker clustering disabled for focused location display
+- Clean integration with existing map initialization system
+
+Parameters:
+- center (required): Array - [longitude, latitude] coordinates for map center
+- zoom (optional): Integer - Initial zoom level. Default: 8
+- markers (optional): Array - Marker objects with coordinates and popup content
+- height (optional): String - CSS height value for map container. Default: "300px"
+- width (optional): String - CSS width value for map container. Default: "100%"
+
+Dependencies:
+- External: MapLibre GL JS v2.4.0+ library loaded globally
+- CSS: assets/css/components/maps/location-mini-map.scss for styling
+- JavaScript: Map initialization handled by map-initializer.js via data attributes
+- Images: Marker icons and map tile resources loaded automatically
+
+Coordinate System:
+- Uses WGS84 coordinate system (longitude, latitude format)
+- Longitude range: -180 to 180 (west to east)
+- Latitude range: -90 to 90 (south to north)
+- Example coordinates: Moscow [37.6176, 55.7558], São Paulo [-46.6333, -23.5505]
+
+Usage Examples:
+Basic location map:
+{% include components/maps/location-mini-map.html center=[37.6176, 55.7558] %}
+
+Custom size and zoom:
+{% include components/maps/location-mini-map.html
+   center=[-46.6333, -23.5505]
+   zoom=12
+   height="400px"
+   width="80%" %}
+
+Multiple markers:
+{% assign markers = '[{"coordinates": [37.6176, 55.7558], "popup": "Moscow Office"}, {"coordinates": [37.7176, 55.8558], "popup": "Warehouse"}]' | split: '' %}
+{% include components/maps/location-mini-map.html
+   center=[37.6176, 55.7558]
+   markers=markers %}
+
+Brand headquarters display:
+{% include components/maps/location-mini-map.html
+   center=[brand.coordinates.lng, brand.coordinates.lat]
+   zoom=10
+   height="250px" %}
+
+Real-world Applications:
+- Brand profile headquarters location display
+- Founder profile location visualization
+- Event venue location maps
+- Regional market overview displays
+- Contact page office location mapping
+
+BEM Structure:
+- .location-mini-map (main component wrapper)
+- .location-mini-map__container (MapLibre GL container with data attributes)
+- .location-mini-map__loading (loading state indicator)
+- .location-mini-map__controls (map navigation controls)
+
+Accessibility:
+- Keyboard navigation support via MapLibre GL controls
+- Screen reader compatible via data attribute labeling
+- High contrast map markers for visibility
+- Alternative text support for map interaction states
+- Semantic HTML structure with proper ARIA attributes
+
+Responsive Design:
+- Mobile: Touch-friendly controls, compact marker display
+- Tablet: Enhanced touch targets, medium-sized presentation
+- Desktop: Full feature set with mouse interaction support
+- Flexible sizing with percentage-based width options
+
+Performance Optimization:
+- Lazy initialization via JavaScript data attributes
+- Efficient tile loading through MapLibre GL caching
+- Minimal DOM footprint with single container element
+- No clustering overhead for focused location display
+- Optimized marker rendering for small datasets
+
+Map ID Generation:
+- Automatic unique ID creation using coordinates and sanitization
+- Format: "mini-map-{lng}-{lat}" with decimal points replaced
+- Prevents conflicts with multiple maps on same page
+- Supports dynamic map creation via JavaScript
+
+Data Attribute Configuration:
+- data-map-container: Boolean flag for initialization detection
+- data-map-center: JSON array with longitude/latitude coordinates
+- data-map-zoom: Integer zoom level for initial view
+- data-map-controls: Boolean flag for navigation control display
+- data-map-markers: JSON array with marker coordinate/popup data
+
+JavaScript Integration:
+- Initialization handled by external map-initializer.js
+- No inline JavaScript required for basic functionality
+- Event handling managed by centralized map system
+- Custom marker styling via CSS class targeting
+
+Error Handling:
+- Graceful degradation when MapLibre GL unavailable
+- Fallback display for invalid coordinate data
+- Default marker placement when marker array malformed
+- Responsive container sizing with CSS fallbacks
+================================================================================
 {% endcomment %}
 
 {% assign zoom = include.zoom | default: 8 %}

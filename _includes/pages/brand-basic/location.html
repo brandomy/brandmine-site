@@ -14,7 +14,7 @@
         <div class="location-details">
           <h3>{{ brand.city }}, {{ brand.region }}</h3>
           {% if brand.country %}
-            <p class="country-context">Located in {% include components/helpers/country-name.html code=brand.country lang=brand.lang %}</p>
+            <p class="country-context">Located in {% include helpers/country-name.html code=brand.country lang=brand.lang %}</p>
           {% endif %}
         </div>
       {% endif %}

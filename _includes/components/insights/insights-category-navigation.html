@@ -1,15 +1,123 @@
 {% comment %}
-  Include Name: components/insights/insights-category-navigation.html
+================================================================================
+COMPONENT: Insights Category Navigation
+PATH: _includes/components/insights/insights-category-navigation.html
+PURPOSE: Tabbed navigation for insights categories with tooltip and inline display options
+CREATED: 2024-01-01 | VERSION: 1.7
+================================================================================
 
-  Purpose: Renders insights category navigation with styling options
+Features:
+- Dual presentation styles with tooltip and inline text options
+- Active category highlighting with visual feedback
+- Automatic URL generation for category-specific insight pages
+- Icon integration with insights category system
+- Translation support for multilingual category names
+- Responsive tab layout optimized for mobile and desktop
+- Professional business intelligence presentation
+- Category-specific styling with data attributes
 
-  Parameters:
-    - active_category: The currently active category (optional, defaults to page.category)
-    - style_option: 'a' (tooltip style) or 'b' (inline text style) - default: 'b'
+Parameters:
+- active_category (optional): String - Currently active category slug. Default: page.category
+- style_option (optional): String - Display style: "a" (tooltip), "b" (inline). Default: "b"
+- lang (implicit): String - Page language from page.lang for category data lookup
 
-  Dependencies:
-    - CSS: components/insights/insights-category-navigation.scss
-    - Translation data: site.data.insights[page.lang].categories
+Dependencies:
+- Data: site.data.insights[lang].categories for category configuration
+- CSS: assets/css/components/insights/insights-category-navigation.scss
+- Components: components/icons/icon.html for tooltip style icons (style_option "a")
+- URLs: Category page routing via /insights/categories/[category-slug]/
+
+Category Data Structure:
+Each category requires:
+- id: String - Category identifier for URL generation
+- name: String - Display name for navigation tabs
+- icon: String - Icon identifier or emoji for visual representation
+- description: String - Tooltip description (used in style_option "a")
+
+Usage Examples:
+Basic inline navigation:
+{% raw %}{% include components/insights/insights-category-navigation.html %}{% endraw %}
+
+Tooltip style navigation:
+{% raw %}{% include components/insights/insights-category-navigation.html style_option="a" %}{% endraw %}
+
+Custom active category:
+{% raw %}{% include components/insights/insights-category-navigation.html
+   active_category="brand-spotlight"
+   style_option="b" %}{% endraw %}
+
+Real-world Applications:
+- Insights landing page with category filtering
+- Article browsing interface with business intelligence focus
+- Content discovery with professional categorization
+- Market intelligence navigation with specialized categories
+- Business development content organization
+
+BEM Structure:
+- .insights-category-navigation (main navigation container)
+- .insights-category-navigation--option-[style] (style modifier: option-a, option-b)
+- .insights-category-navigation__container (inner container with active category context)
+- .insights-category-navigation__container--[category] (active category modifier)
+- .insights-category-navigation__tabs (tabs wrapper with flex layout)
+- .insights-category-navigation__tab (individual category tab)
+- .insights-category-navigation__tab.active (active category tab state)
+- .insights-category-navigation__icon (icon container with style-specific behavior)
+- .insights-category-navigation__label (category name display)
+- .insights-category-navigation__tooltip (tooltip text for style_option "a")
+
+Style Options:
+- Option A (tooltip): Icons with hover tooltips showing category descriptions
+- Option B (inline): Icons/emojis with inline category names for clear identification
+
+Accessibility:
+- Semantic navigation structure with proper link hierarchy
+- Screen reader friendly category identification
+- High contrast active state indicators meeting WCAG AA standards
+- Keyboard navigation support for all category tabs
+- Descriptive link text with category names and purposes
+
+Responsive Design:
+- Mobile (320px+): Compact tab layout with optimized touch targets
+- Tablet (768px+): Enhanced spacing with improved visual hierarchy
+- Desktop (1024px+): Full navigation with hover effects and tooltip interactions
+- Flexible tab sizing adapting to category name lengths
+
+Active State Management:
+- Visual highlighting of current category with CSS active class
+- Data attribute integration for category-specific styling
+- URL-aware active state detection from page context
+- Consistent active state presentation across both style options
+
+Translation Integration:
+- Category names via site.data.insights[lang].categories
+- Multilingual category navigation supporting all site languages
+- Cultural adaptation of category terminology for different markets
+- Professional business terminology appropriate for international audience
+
+Performance Optimization:
+- Efficient category data lookup with language-specific indexing
+- Minimal DOM structure with semantic navigation elements
+- CSS-only responsive behavior without JavaScript dependencies
+- Clean URL generation with slug transformation for category routing
+
+Business Intelligence Context:
+- Professional category organization supporting investment analysis
+- Market intelligence categorization with specialized focus areas
+- Business development content navigation with clear value propositions
+- BRICS+ market insights organization with geographic and sector emphasis
+
+Error Handling:
+- Graceful handling when category data unavailable
+- Safe iteration with null checking for category arrays
+- Clean fallback when translation data missing
+- Robust URL generation regardless of category configuration
+
+Development Notes:
+- Flexible style system supporting additional navigation presentations
+- Clean integration with insights content management and categorization
+- Professional styling foundation appropriate for business intelligence applications
+- Scalable design accommodating additional categories and specialized content areas
+================================================================================
 {% endcomment %}
 
 {% assign style_option = include.style_option | default: 'b' %}

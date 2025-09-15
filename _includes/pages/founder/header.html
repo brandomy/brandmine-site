@@ -46,7 +46,7 @@
           {% if founder.city and founder.region %}, {% endif %}
           {% if founder.region %}{{ founder.region }}{% endif %}
           {% if founder.country_code and (founder.city or founder.region) %}, {% endif %}
-          {% if founder.country_code %}{% include components/helpers/country-name.html code=founder.country_code lang=founder.lang %}{% endif %}
+          {% if founder.country_code %}{% include helpers/country-name.html code=founder.country_code lang=founder.lang %}{% endif %}
         </span>
       </div>
       {% endif %}

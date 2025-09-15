@@ -1,13 +1,79 @@
-<!-- _includes/components/brands/tag-list.html -->
 {% comment %}
-  Component: components/brand/tag-list.html
-  Purpose: Displays a list of tags for a specific dimension
-  Parameters:
-    - tags: Array of tag slugs to display
-    - dimension_type: Type of dimension (attributes/signals/sectors/markets)
-    - heading: Section heading
-    - lang: Language code
-    - show_if: Condition to show the section (optional)
+================================================================================
+COMPONENT: Dimension Tag List
+PATH: _includes/components/brands/tag-list.html
+PURPOSE: Sidebar dimension tag display with conditional rendering and translation support
+CREATED: 2024-01-01 | VERSION: 1.5
+================================================================================
+
+Features:
+- Dimension-specific tag lists with automatic color coding
+- Conditional section rendering based on tag availability
+- Translation integration for localized dimension names
+- Discovery page navigation with automatic URL generation
+- Responsive sidebar layout with proper tag wrapping
+- Semantic HTML structure with heading hierarchy
+- Type-aware styling for different dimension categories
+
+Parameters:
+- tags (required): Array - Tag slugs to display for the dimension type
+- dimension_type (required): String - Dimension category ("attributes", "signals", "sectors", "markets")
+- heading (required): String - Section heading text for the tag group
+- lang (required): String - Language code for URL generation and translations
+- show_if (optional): Boolean - Conditional rendering flag. Default: true
+
+Dependencies:
+- CSS: assets/css/layout/brand-sidebar.scss for tag styling
+- Helpers: helpers/dimension-name.html for translated dimension names
+- URL Structure: /discover/[dimension_type]/[tag-slug]/ for discovery navigation
+- Filters: Liquid singularize filter for CSS class generation
+
+Usage Examples:
+{% raw %}{% include components/brands/tag-list.html tags=brand.attributes dimension_type="attributes" heading="Brand Attributes" lang=page.lang %}{% endraw %}
+{% raw %}{% include components/brands/tag-list.html tags=brand.sectors dimension_type="sectors" heading="Industry Sectors" lang=page.lang show_if=brand.sectors.size > 0 %}{% endraw %}
+{% raw %}{% include components/brands/tag-list.html tags=brand.markets dimension_type="markets" heading="Geographic Markets" lang=page.lang %}{% endraw %}
+
+Real-world Usage:
+Used in brand profile sidebars, founder profiles, and dimension overview sections
+
+Dimension Type Integration:
+- attributes: Brand qualities with orange styling and attribute-specific URLs
+- signals: Growth indicators with indigo styling and signal-specific URLs
+- sectors: Industry categories with olive styling and sector-specific URLs
+- markets: Geographic regions with sky blue styling and market-specific URLs
+
+BEM Structure:
+- .brand-sidebar__section (main section container)
+- .brand-sidebar__heading (section heading)
+- .brand-sidebar__tags (tag container with wrapping)
+- .brand-sidebar__tag (individual tag links)
+- .brand-sidebar__tag--[dimension] (dimension-specific styling)
+
+Accessibility:
+- Semantic heading structure (h3) for section organization
+- Descriptive link text with translated dimension names
+- Screen reader friendly tag descriptions
+- Keyboard navigation support for all tag links
+- High contrast color coding for dimension differentiation
+
+Responsive:
+- Mobile: Single column tag layout with touch-friendly sizing
+- Tablet: Multi-column tag wrapping with enhanced spacing
+- Desktop: Optimized tag grid with hover effects
+
+Performance Notes:
+- Conditional rendering prevents empty sections from displaying
+- Efficient tag iteration with minimal DOM manipulation
+- Cached dimension name translations for performance
+- Clean URL generation with Jekyll slugify filter
+- CSS-only responsive behavior without JavaScript
+
+Conditional Logic:
+- Empty tag arrays automatically hide sections
+- Custom show_if parameter for additional display conditions
+- Graceful handling of missing or undefined tag data
+- Fallback dimension names when translations unavailable
+================================================================================
 {% endcomment %}
 
 {% assign show_section = include.show_if | default: true %}

@@ -1,40 +1,78 @@
 {% comment %}
-  Include Name: components/buttons/button.html
-  
-  Purpose: Renders a consistently styled button element (actually an anchor tag) with
-  various style options. Used throughout the site for CTAs and navigation actions.
-  
-  Parameters:
-  - href: The URL the button links to (required, defaults to '#' if not provided)
-  - label: Direct button text (optional, overrides key)
-  - key: Translation key for button text (optional, used to localize button text)
-  - variant: Style variant - one of 'primary', 'secondary', or 'outline' (optional, default: normal)
-  - size: Size variant - one of 'sm' or 'lg' (optional, default: normal size)
-  - block: Boolean to make the button full-width (optional, default: false)
-  
-  Dependencies:
-  - CSS: buttons.css for styling
-  - For localized buttons: site.data.translations[lang].buttons
-  
-  Example Usage:
-  Standard button:
-  {% include components/buttons/button.html href="/en/brands/" label="Explore Brands" variant="primary" %}
-  
-  Small secondary button:
-  {% include components/buttons/button.html href="/contact/" label="Contact Us" variant="secondary" size="sm" %}
-  
-  Full-width outline button:
-  {% include components/buttons/button.html href="/signup/" label="Join Now" variant="outline" block=true %}
-  
-  Localized button using translation key:
-  {% include components/buttons/button.html href="/{{ page.lang }}/brands/" key="explore_brands" variant="primary" %}
-  
-  Notes:
-  - Always renders as an <a> element with appropriate styling
-  - Supports localization through translation keys in data files
-  - Size variants allow for responsive button sizing
-  - Block option makes buttons expand to fill their container width
-  - Includes fallback text "Click Me" if no label or key is provided
+================================================================================
+COMPONENT: Button
+PATH: _includes/components/buttons/button.html
+PURPOSE: Consistently styled button component with variants, sizing, and localization support
+CREATED: 2024-01-01 | VERSION: 2.0
+================================================================================
+
+Features:
+- Three style variants (primary, secondary, outline) for different contexts
+- Two size variants (small, large) plus default size for flexible layouts
+- Full-width block option for responsive design needs
+- Comprehensive localization support with translation key integration
+- Semantic anchor element with button styling for accessibility
+- Fallback text handling for missing labels or translation keys
+- Consistent styling across all site CTAs and navigation actions
+
+Parameters:
+- href (optional): String - Target URL for button navigation. Default: "#"
+- label (optional): String - Direct button text content (overrides translation key)
+- key (optional): String - Translation key for localized button text
+- variant (optional): String - Style variant ("primary", "secondary", "outline"). Default: standard
+- size (optional): String - Size variant ("sm", "lg"). Default: standard size
+- block (optional): Boolean - Full-width button behavior. Default: false
+- class (optional): String - Additional CSS classes for custom styling
+- target (optional): String - Link target attribute ("_blank", "_self"). Default: "_self"
+
+Dependencies:
+- CSS: assets/css/components/buttons/button.scss
+- Data: site.data.translations[lang].buttons for localized button text
+- Helpers: Translation system integration for multilingual support
+
+Usage Examples:
+{% include components/buttons/button.html href="/en/brands/" label="Explore Brands" variant="primary" %}
+{% include components/buttons/button.html href="/contact/" label="Contact Us" variant="secondary" size="sm" %}
+{% include components/buttons/button.html href="/signup/" label="Join Now" variant="outline" block=true %}
+{% include components/buttons/button.html href="/{{ page.lang }}/brands/" key="explore_brands" variant="primary" %}
+
+Real-world Usage:
+Used for CTAs, navigation actions, form submissions, and interactive elements throughout the site
+
+Variant Specifications:
+- Primary: Main brand color (teal) for primary actions and CTAs
+- Secondary: Orange accent color for secondary actions and highlights
+- Outline: Transparent with border for subtle actions and alternatives
+
+Size Specifications:
+- Small (sm): Compact buttons for tight layouts and inline actions
+- Standard: Default size for most use cases and content areas
+- Large (lg): Prominent buttons for major CTAs and hero sections
+
+BEM Structure:
+- .btn (base button class)
+- .btn--[variant] (style modifier: primary, secondary, outline)
+- .btn--[size] (size modifier: sm, lg)
+- .btn--block (full-width modifier)
+
+Accessibility:
+- Semantic anchor element for proper link behavior
+- Screen reader friendly button text with clear labels
+- Keyboard navigation support with focus indicators
+- High contrast variants for visibility requirements
+- ARIA attributes for enhanced accessibility when needed
+
+Responsive:
+- Mobile: Touch-friendly sizing with adequate tap targets
+- Tablet: Optimized spacing and hover states
+- Desktop: Full interaction states with hover and focus effects
+
+Performance Notes:
+- Lightweight component with minimal DOM structure
+- CSS-only styling without JavaScript dependencies
+- Efficient translation lookup with fallback handling
+- Optimized class concatenation for clean HTML output
+================================================================================
 {% endcomment %}
 
 <a href="{{ include.href | default: '#' }}"

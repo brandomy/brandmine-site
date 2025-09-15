@@ -1,12 +1,66 @@
 {% comment %}
-  Component: components/filters/dimensions-filter.html
-  Purpose: Dimensions (sectors, markets, attributes) filter for insights sidebar
-  Parameters:
-    - insights: Array of insights to filter (required)
-    - dimension_type: Type of dimension (sectors, markets, attributes, signals)
-    - heading: Section heading (default from translations)
-  Dependencies:
-    - assets/css/components/filters/dimensions-filter.scss
+================================================================================
+COMPONENT: Dimensions Filter
+PATH: _includes/components/filters/dimensions-filter.html
+PURPOSE: Interactive filter component for organizing content by dimension taxonomy (sectors, markets, attributes, signals)
+CREATED: 2024-01-01 | VERSION: 1.2
+================================================================================
+
+Features:
+- Dynamic filtering by dimension taxonomy
+- Automatic extraction of unique dimensions from content
+- Translated dimension names with fallback support
+- Color-coded tags by dimension type
+- Responsive tag grid layout
+- Direct links to dimension-specific pages
+- Sidebar integration for insights and discovery pages
+
+Parameters:
+- insights (required): Array - Collection of insight objects to extract dimensions from
+- dimension_type (required): String - Type of dimension to filter by ("sectors", "markets", "attributes", "signals")
+- heading (optional): String - Custom section heading. Default: translated dimension type name
+- show_count (optional): Boolean - Display count of items per dimension. Default: false
+- limit (optional): Integer - Maximum number of dimensions to display. Default: unlimited
+
+Dependencies:
+- CSS: assets/css/components/filters/dimensions-filter.scss
+- Helpers: helpers/t.html (translation helper)
+- Data: site.data.translations for dimension names
+- Taxonomy: Four-tier dimension system (markets, sectors, attributes, signals)
+
+Usage Examples:
+{% include components/filters/dimensions-filter.html insights=site.insights dimension_type="sectors" %}
+{% include components/filters/dimensions-filter.html insights=filtered_insights dimension_type="markets" heading="Geographic Markets" %}
+{% include components/filters/dimensions-filter.html insights=latest_insights dimension_type="attributes" show_count=true limit=8 %}
+
+Real-world Usage:
+Used in insights sidebar, discovery pages, and dimension overview sections
+
+BEM Structure:
+- .insights-all__sidebar-section (main filter container)
+- .insights-all__sidebar-heading (section heading)
+- .insights-all__tags (tag grid container)
+- .tag (individual dimension tag)
+- .tag--[dimension_type] (color-coded dimension modifier)
+
+Accessibility:
+- Semantic heading structure for section organization
+- Descriptive link text with translated dimension names
+- High contrast color coding for different dimension types
+- Keyboard navigation support for all links
+- Screen reader friendly dimension organization
+
+Responsive:
+- Mobile: Single column tag layout with touch-friendly sizing
+- Tablet: Two-column tag grid with enhanced spacing
+- Desktop: Multi-column tag grid with optimal tag sizing
+
+Performance Notes:
+- Efficient dimension extraction with Liquid filters
+- Minimal DOM impact with link-based navigation
+- Cached translation lookups for dimension names
+- Optimized CSS for tag grid rendering
+================================================================================
 {% endcomment %}
 
 {% assign insights = include.insights %}

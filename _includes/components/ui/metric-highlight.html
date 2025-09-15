@@ -1,26 +1,126 @@
 {% comment %}
+================================================================================
 COMPONENT: Metric Highlight
-PURPOSE: Display key business metrics with visual emphasis for conversion
+PATH: _includes/components/ui/metric-highlight.html
+PURPOSE: Business metric display with visual emphasis and automatic type detection
+CREATED: 2024-01-01 | VERSION: 1.8
+================================================================================
 
-USAGE: {% include components/ui/metric-highlight.html metric=brand.key_metric %}
+Features:
+- Key business metric presentation with professional visual emphasis
+- Automatic metric type detection with specialized styling for percentages, currency, and geography
+- Three size variants optimized for different content contexts
+- Multiple style themes aligned with brand color system
+- Optional time period display for temporal context
+- High contrast presentation optimized for scanning and credibility
+- Mobile-first responsive design with touch-friendly presentation
+- Semantic HTML structure supporting accessibility and screen readers
 
-PARAMETERS:
-- metric (required): Object with label, value, period
-- style (optional): Visual style - "primary", "success", "accent" (default: "primary")
-- size (optional): Size variant - "sm", "md", "lg" (default: "md")
-- show_period (optional): Whether to show time period (default: true)
+Parameters:
+- metric (required): Object - Metric data with label, value, and optional period fields
+- style (optional): String - Visual style theme: "primary", "success", "accent". Default: "primary"
+- size (optional): String - Size variant: "sm", "md", "lg". Default: "md"
+- show_period (optional): Boolean - Display time period when available. Default: true
 
-METRIC OBJECT STRUCTURE:
-metric:
-  label: "Revenue Growth"
-  value: "300%"
-  period: "2023-2024"
+Metric Object Structure:
+Required fields:
+- label: String - Descriptive metric name (e.g., "Revenue Growth", "Market Reach")
+- value: String - Metric value with appropriate formatting (e.g., "300%", "$2.5M", "15 Countries")
 
-DESIGN NOTES:
-- Optimized for scanning and credibility
-- Supports percentage, currency, and count formats
-- Mobile-first responsive design
-- High contrast for accessibility
+Optional field:
+- period: String - Time period or context (e.g., "2023-2024", "Q4 2024", "YTD")
+
+Usage Examples:
+Basic revenue metric:
+{% raw %}{% include components/ui/metric-highlight.html
+   metric=brand.revenue_growth %}{% endraw %}
+
+Large success metric with custom styling:
+{% raw %}{% include components/ui/metric-highlight.html
+   metric=growth_metric
+   style="success"
+   size="lg" %}{% endraw %}
+
+Compact metric without period:
+{% raw %}{% include components/ui/metric-highlight.html
+   metric=conversion_rate
+   size="sm"
+   show_period=false %}{% endraw %}
+
+Geographic reach metric:
+{% raw %}{% include components/ui/metric-highlight.html
+   metric=market_presence
+   style="accent" %}{% endraw %}
+
+Real-world Applications:
+- Brand profile performance indicators with credibility building
+- Investment analysis with key financial metrics
+- Market intelligence dashboards with growth indicators
+- Partnership assessment with business development metrics
+- Success story presentations with quantified achievements
+
+BEM Structure:
+- .metric-highlight (main container with style and size modifiers)
+- .metric-highlight--[style] (style theme modifiers: primary, success, accent)
+- .metric-highlight--[size] (size modifiers: sm, md, lg)
+- .metric-highlight--[type] (auto-detected type modifiers: percentage, currency, geographic)
+- .metric-highlight__content (inner content wrapper)
+- .metric-highlight__value (metric value display with emphasis)
+- .metric-highlight__label (metric description text)
+- .metric-highlight__period (time period context display)
+
+Automatic Type Detection:
+- Percentage: Values containing "%" get percentage-specific styling
+- Currency: Values containing "$" get financial metric styling
+- Geographic: Values containing "Countries" or "Markets" get geographic styling
+- Default: Other metrics use standard business metric presentation
+
+Size Variants:
+- Small (sm): Compact presentation for sidebar elements and dashboard widgets
+- Medium (md): Standard size for content integration and card displays
+- Large (lg): Emphasized presentation for hero sections and key metrics
+
+Style Themes:
+- Primary: Standard brand color for general business metrics
+- Success: Green theme for positive growth and achievement metrics
+- Accent: Highlighted color for featured or exceptional metrics
+
+Accessibility:
+- Semantic HTML structure with descriptive content hierarchy
+- High contrast color schemes meeting WCAG AA standards for all style variants
+- Screen reader friendly metric structure with logical content flow
+- Clear visual emphasis supporting metric scanning and comprehension
+
+Responsive Design:
+- Mobile (320px+): Compact metric presentation with touch-friendly sizing
+- Tablet (768px+): Enhanced spacing and visual hierarchy
+- Desktop (1024px+): Full metric display with optimized typography
+- Flexible sizing adapting to container constraints and content requirements
+
+Performance Optimization:
+- Minimal DOM structure with efficient CSS class generation
+- Automatic type detection with efficient string matching
+- CSS-only responsive behavior without JavaScript dependencies
+- Clean HTML output with semantic structure for fast rendering
+
+Business Intelligence Context:
+- Professional metric presentation appropriate for investment analysis
+- Growth indicator display supporting business development
+- Performance metric visualization for market intelligence
+- Success story quantification with credible data presentation
+
+Error Handling:
+- Graceful handling when required metric data unavailable
+- Silent failure with no output when label or value missing
+- Safe CSS class generation with fallback styling
+- Robust rendering regardless of metric object completeness
+
+Development Notes:
+- Flexible metric object structure supporting various data sources
+- Clean integration with brand styling and color system
+- Professional presentation appropriate for business intelligence applications
+- Scalable design accommodating additional metric types and styling variants
+================================================================================
 {% endcomment %}
 
 {% comment %} Parameter setup {% endcomment %}

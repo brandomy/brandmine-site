@@ -1,24 +1,81 @@
 {% comment %}
-  Component: components/ui/social-sharing.html
-  
-  Purpose: Configurable social sharing component that supports both basic and BRICS+ enhanced sharing
-  
-  Parameters:
-    - item: The content item to share (post, page, etc.) - defaults to current page
-    - style: 'basic' (4 platforms) or 'enhanced' (7 platforms including BRICS+) - default: 'basic'
-    - title: Custom title override
-    - layout: 'horizontal' or 'compact' - default: 'horizontal'
-    - show_label: true/false - default: true
-    - icon_style: 'svg' or 'fontawesome' - default: 'svg'
-  
-  Usage:
-    {% include components/ui/social-sharing.html %}
-    {% include components/ui/social-sharing.html item=post style="enhanced" %}
-    {% include components/ui/social-sharing.html layout="compact" show_label=false %}
-  
-  Dependencies:
-    - CSS: assets/css/components/ui/social-sharing.scss
-    - FontAwesome (if icon_style="fontawesome")
+================================================================================
+COMPONENT: Social Sharing
+PATH: _includes/components/ui/social-sharing.html
+PURPOSE: Configurable social sharing component with basic and BRICS+-enhanced platform support
+CREATED: 2024-01-01 | VERSION: 2.2
+================================================================================
+
+Features:
+- Two sharing modes: basic (4 platforms) and enhanced (7+ platforms)
+- BRICS+ market focus with region-specific platforms (Telegram, WeChat, WhatsApp)
+- Configurable layouts: horizontal and compact arrangements
+- Dual icon systems: SVG and FontAwesome support
+- Automatic URL encoding and content preparation
+- Multilingual labels with translation support
+- Accessibility-compliant with ARIA labels and semantic markup
+- Component defaults integration for site-wide configuration
+
+Parameters:
+- item (optional): Object - Content item to share (post, page, etc.). Default: current page
+- style (optional): String - Platform set ("basic", "enhanced"). Default: "basic"
+- title (optional): String - Custom share title override. Default: item.title
+- layout (optional): String - Layout style ("horizontal", "compact"). Default: "horizontal"
+- show_label (optional): Boolean - Display component heading. Default: true
+- icon_style (optional): String - Icon system ("svg", "fontawesome"). Default: "svg"
+
+Dependencies:
+- CSS: assets/css/components/ui/social-sharing.scss
+- Helpers: helpers/component-defaults.html for configuration
+- Data: site.data.translations for multilingual labels
+- External: FontAwesome library (if icon_style="fontawesome")
+- JavaScript: Clipboard API for WeChat sharing functionality
+
+Platform Coverage:
+Basic (4): LinkedIn, Twitter/X, Facebook, Email
+Enhanced (+3): Telegram, WhatsApp, WeChat (total 7 platforms)
+
+Usage Examples:
+{% include components/ui/social-sharing.html %}
+{% include components/ui/social-sharing.html item=post style="enhanced" %}
+{% include components/ui/social-sharing.html layout="compact" show_label=false icon_style="fontawesome" %}
+
+Real-world Usage:
+Used in insight articles, brand profiles, case studies, and content pages
+
+BEM Structure:
+- .social-sharing (main component container)
+- .social-sharing--[layout] (layout modifier: horizontal, compact)
+- .social-sharing--[style] (style modifier: basic, enhanced)
+- .social-sharing__title (component heading)
+- .social-sharing__buttons (buttons container)
+- .social-sharing__button (individual platform button)
+- .social-sharing__button--[platform] (platform-specific styling)
+
+Accessibility:
+- Semantic sharing buttons with descriptive aria-label attributes
+- Screen reader friendly platform identification
+- High contrast icons with proper focus indicators
+- Keyboard navigation support for all sharing buttons
+- External link indicators with rel="noopener noreferrer"
+
+Responsive:
+- Mobile: Compact layout with touch-friendly button sizing
+- Tablet: Horizontal layout with enhanced spacing
+- Desktop: Full horizontal layout with hover effects
+
+Performance Notes:
+- Lightweight SVG icons for optimal loading
+- Minimal external dependencies (optional FontAwesome)
+- Efficient URL encoding with Liquid filters
+- CSS-only responsive behavior
+- Clipboard API fallback for WeChat sharing
+
+Security Notes:
+- Safe URL encoding prevents injection attacks
+- noopener/noreferrer for external platform links
+- Sanitized content handling for share parameters
+================================================================================
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

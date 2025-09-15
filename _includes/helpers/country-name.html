@@ -1,20 +1,36 @@
 {% comment %}
-  Helper: country-name.html
-  Purpose: Display country name from country code
+  Component: helpers/country-name.html
+
+  Purpose: Converts ISO country codes to human-readable country names
+  in the appropriate display language.
 
   Parameters:
-    - country_code: ISO 2-letter country code (required)
-    - code: Alternative parameter name for country code
-    - lang: language code for localized name (optional, defaults to page.lang or 'en')
+  - code: (required) The 2-letter ISO country code to look up (e.g., "ru", "br", "cn")
+  - lang: (optional) The display language for the name. Defaults to current page language
 
-  Usage:
-    {% include helpers/country-name.html country_code="br" %}
-    {% include helpers/country-name.html code="ru" lang="en" %}
+  Dependencies:
+  - _data/countries_basic.json: Contains country code mappings with translations
+
+  Example Usage:
+  {% include helpers/country-name.html code="ru" %}
+  Returns: "Russia" (if page.lang is "en")
+
+  {% include helpers/country-name.html code="ru" lang="zh" %}
+  Returns: "俄罗斯" (explicitly set to Chinese)
+
+  Fallback Behavior:
+  - If the country code isn't found in the JSON, returns the code itself
+  - If the requested display language isn't available, returns the code
 {% endcomment %}
 
-{% assign c_code = include.country_code | default: include.code %}
-{% assign display_lang = include.lang | default: page.lang | default: "en" %}
+<!-- Get the country code to look up from the include parameter -->
+{% assign country_code = include.code %}
 
-{% if c_code %}
-  {% include helpers/country-lookup.html country_code=c_code property="name" lang=display_lang fallback=c_code %}
-{% endif %}
+<!-- Determine which language to display the name in (default to current page language) -->
+{% assign display_lang = include.lang | default: page.lang %}
+
+<!-- Look up the country information from the JSON data file -->
+{% assign country_info = site.data.countries.countries[country_code] %}
+
+<!-- Check if we found country information -->
+{% if country_info and country_info.name and country_info.name[display_lang] %}{{ country_info.name[display_lang] }}{% else %}{{ country_code | upcase }}{% endif %}

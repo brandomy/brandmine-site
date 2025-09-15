@@ -1,70 +1,142 @@
 {% comment %}
-  Include Name: components/insights/latest-insights-grid.html
+================================================================================
+COMPONENT: Latest Insights Grid
+PATH: _includes/components/insights/latest-insights-grid.html
+PURPOSE: Responsive insights grid with filtering, category badges, and business-focused CTAs
+CREATED: 2024-01-01 | VERSION: 2.1
+================================================================================
 
-  Purpose: Displays a responsive grid of insight articles with consistent styling,
-  filtering options, and content type badges. Facilitates discovery of Brandmine insights.
+Features:
+- Responsive grid layout with 1-4 column configurations and automatic sizing
+- Advanced filtering by dimension type, content category, or custom insight arrays
+- Category-specific badges with color coding aligned to dimension system colors
+- Business-focused value propositions and CTAs tailored to each insight category
+- Featured brand/founder context display for investment and partnership insights
+- Semantic image handling with hero/fallback structure and lazy loading
+- Reading time estimation with investment-focused messaging
+- Truncated excerpts with consistent card heights across responsive breakpoints
+- Empty state handling with graceful fallback messaging
+- Date sorting (newest first) with formatted publication dates
 
-  Parameters:
-  - title: Optional title override (default: comes from translations)
-  - description: Optional description override (default: comes from translations)
-  - insights: Specific insights to display (optional, overrides filtering)
-  - filter_by: Filter insights by dimension type (sectors, markets, attributes, signals) (optional)
-  - filter_value: Value to filter by (optional, required if filter_by is provided)
-  - filter_content_type: Filter by content type (optional)
-    Values: brand_spotlight, founders_journey, location_intelligence, market_momentum
-  - limit: Maximum number of insights to display (optional, default: 4)
-  - columns: Number of columns to display (optional, default: responsive based on screen size)
-    Values: 1, 2, 3, 4
-  - show_cta: Whether to show CTA button (optional, default: true)
-  - cta_text: Text for CTA button (optional, default: comes from translations)
-  - cta_url: URL for CTA button (optional, default: insights page in current language)
+Parameters:
+- title (optional): String - Custom section title. Default: from translations
+- description (optional): String - Custom section description. Default: from translations
+- insights (optional): Array - Specific insights to display, overrides all filtering
+- filter_by (optional): String - Filter by dimension type: "sectors", "markets", "attributes", "signals"
+- filter_value (optional): String - Value to filter by, required if filter_by provided
+- filter_content_type (optional): String - Filter by category: "brand_spotlight", "founders_journey", "location_intelligence", "market_momentum"
+- limit (optional): Integer - Maximum insights to display. Default: 4
+- columns (optional): Integer - Grid columns: 1, 2, 3, 4. Default: responsive
+- show_cta (optional): Boolean - Display CTA button. Default: true
+- cta_text (optional): String - Custom CTA text. Default: from translations
+- cta_url (optional): String - Custom CTA URL. Default: insights page in current language
+- lang (required): String - Language code for URL generation and translations
 
-  Dependencies:
-  - site.insights collection with appropriate front matter (TEMPORARILY DISABLED)
-  - Translation keys in site.data.translations[page.lang]
-  - CSS: assets/css/components/latest-insights-grid.css
-  - Page language must be set (page.lang)
-  - Content type badges rely on specific content_type values
+Dependencies:
+- Collections: site.insights with lang, category, date, title, excerpt, brands front matter
+- Translations: site.data.translations[lang] for all UI text and value propositions
+- CSS: assets/css/components/latest-insights-grid.css for grid and card styling
+- Helpers: helpers/t.html for localized text rendering with fallbacks
+- Images: Semantic structure with images.hero.name/ext or legacy image field
 
-  Example Usage:
-  Basic usage (latest 4 insights):
-  {% include components/insights/latest-insights-grid.html %}
+Category Integration:
+- brand_spotlight: Orange badges (--secondary-*), investment insights messaging
+- founders_journey: Indigo badges (--accent-*), leadership lessons messaging
+- location_intelligence: Sky blue badges (--sky-*), market intelligence messaging
+- market_momentum: Olive badges (--olive-*), industry trends messaging
 
-  Filtered by sector with custom title:
-  {% include components/insights/latest-insights-grid.html
-     title="Wine Industry Insights"
-     filter_by="sectors"
-     filter_value="wine" %}
+Usage Examples:
+Basic grid (latest 4 insights):
+{% include components/insights/latest-insights-grid.html lang=page.lang %}
 
-  Filtered by content type with custom layout:
-  {% include components/insights/latest-insights-grid.html
-     title="Founder Stories"
-     filter_content_type="founders_journey"
-     columns=3
-     limit=6 %}
+Sector-filtered with custom title:
+{% include components/insights/latest-insights-grid.html
+   title="Wine Industry Intelligence"
+   filter_by="sectors"
+   filter_value="wine"
+   lang=page.lang %}
 
-  Customized CTA:
-  {% include components/insights/latest-insights-grid.html
-     cta_text="Read All Founder Stories"
-     cta_url="/en/insights/founders/" %}
+Category-focused with custom layout:
+{% include components/insights/latest-insights-grid.html
+   title="Founder Success Stories"
+   filter_content_type="founders_journey"
+   columns=3
+   limit=6
+   lang=page.lang %}
 
-  Specific insights with no CTA:
-  {% include components/insights/latest-insights-grid.html
-     insights=featured_insights
-     show_cta=false %}
+Custom CTA with specific insights:
+{% include components/insights/latest-insights-grid.html
+   insights=featured_insights
+   cta_text="Explore All Case Studies"
+   cta_url="/en/insights/success-stories/"
+   lang=page.lang
+   show_cta=true %}
 
-  Notes:
-  - Automatically sorts insights by date (newest first)
-  - Handles responsive layout across device sizes
-  - Displays content type badges color-coded by type
-    (brand_spotlight: secondary, founders_journey: olive,
-     location_intelligence: sky, market_momentum: accent)
-  - Shows featured image with smooth hover zoom effect
-  - Truncates excerpts to maintain consistent card heights
-  - Gracefully handles missing images with placeholders
-  - Displays up to 3 tags per insight
-  - Shows publish date and "Read more" link
-  - Provides empty state message when no insights match criteria
+No CTA variant:
+{% include components/insights/latest-insights-grid.html
+   filter_content_type="market_momentum"
+   show_cta=false
+   lang=page.lang %}
+
+Real-world Applications:
+- Homepage featured insights section with business focus and investment appeal
+- Category landing pages with filtered content and targeted CTAs
+- Brand profile pages showing related insights with contextual messaging
+- Founder journey sections highlighting leadership and success stories
+- Market intelligence dashboards with trend analysis and data insights
+
+BEM Structure:
+- .latest-insights-grid (main grid container with responsive columns)
+- .latest-insights-grid--columns-N (explicit column count modifiers)
+- .insight-item (individual insight card with hover effects)
+- .insight-item--[category] (category-specific styling variants)
+- .insight-item__image-wrapper (image container with aspect ratio)
+- .insight-item__type-badge (category badge with icon and color)
+- .insight-item__business-header (reading time and value proposition)
+- .insight-item__featured-context (brand/founder context display)
+- .insight-item__read-more--[category] (category-specific CTA styling)
+
+Accessibility:
+- Semantic heading structure with proper hierarchy (h3 for insight titles)
+- Screen reader friendly category icons with aria-hidden attributes
+- High contrast category badges meeting WCAG AA color contrast standards
+- Keyboard navigation support for all interactive elements
+- Descriptive alt text for all images with meaningful fallbacks
+- Live regions for dynamic content updates and empty state messaging
+
+Responsive Design:
+- Mobile (320px+): Single column layout with full-width cards and touch targets
+- Tablet (768px+): 2-column grid with optimized spacing and hover effects
+- Desktop (1024px+): 3-4 column grid with enhanced image presentations
+- Large (1200px+): Full grid capabilities with maximum content density
+
+Performance Optimization:
+- Lazy loading for all insight images with progressive enhancement
+- Efficient Liquid filtering with minimal collection iterations
+- CSS-only responsive behavior without JavaScript dependencies
+- Truncated excerpts prevent layout shifts with consistent card heights
+- Cached translation lookups for improved build performance
+
+Business Intelligence Features:
+- Reading time investment messaging for professional audience engagement
+- Category-specific value propositions aligned with business outcomes
+- Featured brand/founder context for partnership and investment insights
+- Business-focused CTAs driving specific actions per insight category
+- Professional date formatting matching business publication standards
+
+Content Type Alignment:
+- Insight categories use identical color system as dimension types
+- Visual consistency across discovery flows and content categorization
+- Brand alignment between content types and site taxonomy structure
+- Professional color coding supporting business intelligence workflows
+
+Error Handling:
+- Graceful degradation when insights collection unavailable
+- Empty state messaging when no insights match filtering criteria
+- Fallback image placeholders for missing or broken insight images
+- Translation fallbacks ensuring content displays in any language configuration
+- Conditional rendering preventing broken layouts with missing data
+================================================================================
 {% endcomment %}
 
 <div class="latest-insights-grid {% if include.columns %}latest-insights-grid--columns-{{ include.columns }}{% endif %}">

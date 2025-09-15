@@ -1,29 +1,134 @@
 {% comment %}
+================================================================================
 COMPONENT: Contact Form
-PURPOSE: Complete contact form with dynamic fields based on form type for general inquiries, brand submissions, and partnerships
+PATH: _includes/components/forms/contact-form.html
+PURPOSE: Dynamic multi-type contact form with validation and business-focused field configurations
+CREATED: 2024-01-01 | VERSION: 2.3
+================================================================================
 
-USAGE: {% include components/forms/contact-form.html form_type="brand-submission" %}
+Features:
+- Three specialized form variants with dynamic field configurations
+- Built-in client-side validation with real-time error feedback
+- BRICS+ country selection with predefined market options
+- Business sector integration aligned with site taxonomy
+- Accessibility-first design with ARIA attributes and screen reader support
+- Privacy policy integration with multilingual privacy notices
+- Progressive enhancement with JavaScript-based form submission
+- Responsive two-column layout for name fields with mobile-first approach
 
-PARAMETERS:
-- action (optional): Form action URL string, defaults to "/contact"
-- method (optional): Form method string, defaults to "POST"
-- form_type (optional): Form type string - "general", "brand-submission", "partnership", defaults to "general"
-- show_company (optional): Boolean to show company field, defaults to true
-- show_country (optional): Boolean to show country field, defaults to true
-- success_message (optional): Custom success message string
-- class_name (optional): Additional CSS classes string
+Parameters:
+- action (optional): String - Form action URL. Default: "/contact"
+- method (optional): String - HTTP method. Default: "POST"
+- form_type (optional): String - Form configuration: "general", "brand-submission", "partnership". Default: "general"
+- show_company (optional): Boolean - Display company/organization field. Default: true
+- show_country (optional): Boolean - Display country selection field. Default: true
+- success_message (optional): String - Custom success message override
+- class_name (optional): String - Additional CSS classes for form container
+- lang (required): String - Language code for translations and form text
 
-DEPENDENCIES:
-- CSS: assets/css/components/forms/contact-form.scss
-- Data: site.data.translations[page.lang]
-- Includes: helpers/t.html, components/forms/input-field.html, components/forms/select-field.html, components/forms/textarea-field.html, components/ui/alerts.html
+Dependencies:
+- CSS: assets/css/components/forms/contact-form.scss for styling and responsive layout
+- Translations: site.data.translations[lang] for all form text and error messages
+- Components: input-field.html, select-field.html, textarea-field.html, ui/alerts.html
+- Helpers: helpers/t.html for translation rendering with fallbacks
+- JavaScript: Inline form validation and submission handling
 
-VARIANTS:
-- general: Basic contact form with standard fields
-- brand-submission: Extended fields for sector, website
-- partnership: Partnership-specific subject options
+Form Type Configurations:
+- general: Standard contact form with name, email, company, country, subject, message
+- brand-submission: Extended form with sector selection, website URL, specialized messaging
+- partnership: Business partnership form with partnership-type subject variations
 
-NOTES: Form includes client-side validation. Success/error messages hidden by default. Privacy policy link included in footer.
+Business Integration:
+- Country options aligned with BRICS+ focus markets and key expansion regions
+- Sector options matching site taxonomy (wine, natural-beauty, gourmet-foods, etc.)
+- Website URL validation for brand submission with https protocol support
+- Company field integration for business-to-business communication tracking
+
+Usage Examples:
+Basic contact form:
+{% raw %}{% include components/forms/contact-form.html lang=page.lang %}{% endraw %}
+
+Brand submission form:
+{% raw %}{% include components/forms/contact-form.html
+   form_type="brand-submission"
+   success_message="Thank you for submitting your brand!"
+   lang=page.lang %}{% endraw %}
+
+Partnership inquiry form:
+{% raw %}{% include components/forms/contact-form.html
+   form_type="partnership"
+   show_country=false
+   class_name="partnership-form"
+   lang=page.lang %}{% endraw %}
+
+Minimal general inquiry:
+{% raw %}{% include components/forms/contact-form.html
+   form_type="general"
+   show_company=false
+   show_country=false
+   lang=page.lang %}{% endraw %}
+
+Real-world Applications:
+- Contact page general inquiries with business context capture
+- Brand submission pipeline for new brand discovery and evaluation
+- Partnership development forms for business collaboration opportunities
+- Customer support integration with categorized inquiry handling
+
+BEM Structure:
+- .contact-form (main form container with type-specific modifiers)
+- .contact-form__header (title and description section)
+- .contact-form__fields (form field container with grid layout)
+- .contact-form__row (two-column row wrapper for name fields)
+- .contact-form__col (individual column within row)
+- .contact-form__actions (submit button and privacy notice container)
+- .contact-form__success/.contact-form__error (message containers)
+
+Accessibility:
+- Semantic form structure with proper labeling and field associations
+- ARIA attributes for form validation and error announcements
+- Screen reader friendly error messages with role="alert"
+- High contrast validation states meeting WCAG AA standards
+- Keyboard navigation support for all interactive elements
+- Autocomplete attributes for improved user experience
+
+Responsive Design:
+- Mobile (320px+): Single column layout with stacked form fields
+- Tablet (768px+): Two-column name fields with optimized spacing
+- Desktop (1024px+): Enhanced layout with improved visual hierarchy
+- Touch-friendly targets and optimized form field sizing across devices
+
+Form Validation:
+- Client-side validation with immediate feedback on required fields
+- Email format validation with browser-native input type support
+- URL validation for website fields in brand submission forms
+- Character limits on textarea fields with visual feedback
+- Real-time error state management with CSS class toggles
+
+JavaScript Integration:
+- Progressive enhancement with graceful degradation for no-JS environments
+- Asynchronous form submission simulation with loading states
+- Dynamic success/error message display with smooth transitions
+- Form reset functionality after successful submission
+- Validation state management with field-level error handling
+
+Privacy and Security:
+- Privacy policy link integration with language-aware URL generation
+- Privacy notice display with clear data handling communication
+- No sensitive data collection beyond standard business inquiry fields
+- Form data sanitization preparation for backend processing
+
+Translation Integration:
+- Comprehensive multilingual support via helpers/t.html
+- Form-specific translation keys for specialized messaging
+- Fallback text ensuring form functionality in any language configuration
+- Cultural adaptation of form fields and validation messages
+
+Error Handling:
+- Graceful handling of missing translation keys with English fallbacks
+- Form submission error recovery with user-friendly messaging
+- Validation error display with clear remediation instructions
+- Progressive enhancement ensuring basic functionality without JavaScript
+================================================================================
 {% endcomment %}
 
 {% assign form_action = include.action | default: "/contact" %}

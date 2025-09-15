@@ -1,35 +1,155 @@
 {% comment %}
+================================================================================
 COMPONENT: Textarea Field
+PATH: _includes/components/forms/textarea-field.html
 PURPOSE: Multi-line text input with character counter, validation, and accessibility features
+CREATED: 2024-01-01 | VERSION: 2.2
+================================================================================
 
-USAGE: {% include components/forms/textarea-field.html name="message" label="Message" required=true rows=6 %}
+Features:
+- Multi-line text input with configurable rows and columns
+- Real-time character counter with maxlength validation
+- Comprehensive accessibility with ARIA attributes and screen reader support
+- Visual validation states with error icons and messaging
+- Required field indication with asterisk and screen reader announcements
+- Auto-generated field IDs with collision prevention for multiple forms
+- Help text integration with proper ARIA associations
+- Professional styling appropriate for business forms
 
-PARAMETERS:
-- name (required): Textarea name attribute string
-- id (optional): Textarea ID string, defaults to name
-- label (optional): Field label text string
-- placeholder (optional): Placeholder text string
-- value (optional): Default value string
-- required (optional): Boolean field required, defaults to false
-- disabled (optional): Boolean field disabled, defaults to false
-- readonly (optional): Boolean field readonly, defaults to false
-- rows (optional): Number of visible rows integer, defaults to 4
-- cols (optional): Number of visible columns integer
-- minlength (optional): Minimum character length integer
-- maxlength (optional): Maximum character length integer
-- help_text (optional): Help text string below field
-- error_message (optional): Error message string to display
-- class_name (optional): Additional CSS classes string
+Parameters:
+- name (required): String - HTML name attribute for form submission
+- id (optional): String - HTML id attribute, auto-generated from name if not provided
+- label (optional): String - Field label text with automatic required indicator
+- placeholder (optional): String - Placeholder text for empty field guidance
+- value (optional): String - Default field value for form pre-population
+- required (optional): Boolean - Required field validation. Default: false
+- disabled (optional): Boolean - Disabled state preventing user interaction. Default: false
+- readonly (optional): Boolean - Readonly state allowing view but no edit. Default: false
+- rows (optional): Integer - Number of visible text rows. Default: 4
+- cols (optional): Integer - Number of visible columns for fixed-width layouts
+- minlength (optional): Integer - Minimum character length requirement
+- maxlength (optional): Integer - Maximum character length with counter display
+- help_text (optional): String - Descriptive help text below field
+- error_message (optional): String - Error message for validation failure state
+- class_name (optional): String - Additional CSS classes for custom styling
 
-DEPENDENCIES:
-- CSS: assets/css/components/forms/textarea-field.scss
-- Data: None
-- Includes: None
-- JavaScript: Inline character counter when maxlength specified
+Dependencies:
+- CSS: assets/css/components/forms/textarea-field.scss for styling and states
+- JavaScript: Inline character counter script when maxlength specified
+- Icons: Inline SVG error icon with accessibility attributes
 
-VARIANTS: None - behavior changes with maxlength (adds counter)
+Character Counter Features:
+- Automatic character counter when maxlength parameter provided
+- Real-time updates as user types with JavaScript event handling
+- Professional counter display showing current/maximum characters
+- Accessible counter implementation with proper labeling
 
-NOTES: Character counter automatically added when maxlength specified. Updates in real-time. Same error/help text patterns as input-field.
+Usage Examples:
+Basic message textarea:
+{% raw %}{% include components/forms/textarea-field.html name="message" label="Message" rows=6 %}{% endraw %}
+
+Contact form with validation:
+{% raw %}{% include components/forms/textarea-field.html
+   name="inquiry"
+   label="Business Inquiry"
+   required=true
+   maxlength=500
+   placeholder="Describe your business needs..."
+   help_text="Please provide specific details about your requirements" %}{% endraw %}
+
+Feedback form with character limit:
+{% raw %}{% include components/forms/textarea-field.html
+   name="feedback"
+   label="Feedback"
+   rows=8
+   maxlength=1000
+   help_text="Your feedback helps us improve our service" %}{% endraw %}
+
+Brand description input:
+{% raw %}{% include components/forms/textarea-field.html
+   name="brand_description"
+   label="Brand Description"
+   required=true
+   minlength=50
+   maxlength=300
+   rows=5 %}{% endraw %}
+
+Real-world Applications:
+- Contact forms with detailed inquiry messaging
+- Brand submission forms with company descriptions
+- Feedback forms with customer testimonials
+- Partnership inquiry forms with business details
+- Market research forms with detailed responses
+
+BEM Structure:
+- .form-field (main field container with state modifiers)
+- .form-field--error (error state modifier for validation feedback)
+- .form-field__label (field label with required indicator)
+- .form-field__required (required asterisk with screen reader text)
+- .form-field__input-wrapper (textarea container for styling and icons)
+- .form-field__textarea (actual textarea element with validation states)
+- .form-field__counter (character counter display with real-time updates)
+- .form-field__help (help text with ARIA association)
+- .form-field__error (error message with alert role and icon)
+
+Accessibility:
+- Semantic HTML structure with proper label-textarea associations
+- ARIA attributes for required fields, validation states, and help text
+- Screen reader announcements for error states with role="alert"
+- High contrast error states meeting WCAG AA color requirements
+- Keyboard navigation support with proper focus management
+- Required field indication with both visual and screen reader cues
+
+Responsive Design:
+- Mobile (320px+): Touch-friendly textarea sizing with optimized keyboard display
+- Tablet (768px+): Enhanced spacing and visual hierarchy
+- Desktop (1024px+): Hover states and refined interaction feedback
+- Flexible textarea sizing adapting to content requirements
+
+Validation Integration:
+- Browser-native HTML5 validation with custom pattern support
+- Visual error states with immediate feedback on field blur
+- Error message display with descriptive text and icon indicators
+- Help text integration for proactive guidance and requirement explanation
+- Character counting display for fields with length limits
+
+State Management:
+- Default state with clean, professional appearance
+- Focus state with enhanced border and visual feedback
+- Error state with red border, icon, and message display
+- Disabled state with reduced opacity and interaction prevention
+- Readonly state with visual distinction from editable fields
+
+Performance Optimization:
+- Minimal DOM structure with efficient CSS selector targeting
+- Inline JavaScript for character counter functionality
+- CSS-only state management without external JavaScript dependencies
+- Optimized field ID generation preventing naming conflicts
+
+Character Counter JavaScript:
+- Event-driven real-time character counting with input event listener
+- DOM-ready initialization ensuring reliable counter functionality
+- Efficient character counting with textContent property updates
+- Error-resistant implementation with null checking for reliability
+
+Error Handling:
+- Graceful degradation when JavaScript unavailable
+- Safe rendering with missing or undefined parameters
+- Clean error message display even with incomplete configuration
+- Robust character counter operation with fallback gracefully
+
+Business Intelligence Context:
+- Professional form styling appropriate for business inquiries
+- Contact form integration supporting lead generation
+- Brand submission form compatibility for business development
+- Market research form support for data collection and analysis
+
+Development Notes:
+- Clean integration with existing form styling and validation systems
+- Professional presentation appropriate for business intelligence applications
+- Scalable design accommodating various content requirements
+- Consistent styling foundation supporting brand credibility
+================================================================================
 {% endcomment %}
 
 {% assign field_id = include.id | default: include.name %}

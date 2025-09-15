@@ -1,35 +1,86 @@
 {% comment %}
-  Include Name: components/insights/insights-feed.html
+================================================================================
+COMPONENT: Insights Feed
+PATH: _includes/components/insights/insights-feed.html
+PURPOSE: Responsive grid layout for displaying multiple insight cards with thumbnails, excerpts, and metadata
+CREATED: 2024-01-01 | VERSION: 1.5
+================================================================================
 
-  Purpose: Renders a feed/list of insight cards in a grid layout. Used on the insights
-  index page, category pages, and related content sections to display multiple insights.
+Features:
+- Responsive CSS Grid layout for insight cards
+- Automatic thumbnail image handling with fallback support
+- Excerpt truncation to optimal reading length (160 characters)
+- Tag display with signal styling and color coding
+- Formatted publication dates with locale-aware formatting
+- Card-based navigation with full-card clickable areas
+- Graceful degradation for missing images or metadata
+- Optimized for insights index, category, and related content sections
 
-  Parameters:
-  - insights: Array of insight objects to display (required)
-    Each insight object should have:
-    - title: Insight title
-    - url: URL to the insight detail page
-    - image: Path to thumbnail image (optional)
-    - excerpt: Summary or excerpt from the insight
-    - tags: Array of tag names (optional)
-    - date: Publication date
+Parameters:
+- insights (required): Array - Collection of insight objects to display
+- limit (optional): Integer - Maximum number of insights to show. Default: unlimited
+- show_excerpts (optional): Boolean - Display insight excerpts. Default: true
+- show_tags (optional): Boolean - Display insight tags. Default: true
+- show_dates (optional): Boolean - Display publication dates. Default: true
+- grid_cols (optional): String - CSS Grid columns ("auto", "2", "3", "4"). Default: "auto"
 
-  Dependencies:
-  - CSS: insights-feed.css, insight-card.css
+Dependencies:
+- CSS: assets/css/components/insights/insights-feed.scss
+- CSS: assets/css/components/cards/insight-card.scss
+- Components: Tag styling from signal system
+- Collections: site.insights Jekyll collection
 
-  Example Usage:
-  {%- comment -%}{% assign recent_insights = site.insights | sort: 'date' | reverse | limit: 3 %}{%- endcomment -%}
-  {% include components/insights/insights-feed.html insights=recent_insights %}
+Insight Object Structure:
+- title (required): String - Insight headline
+- url (required): String - Permalink to insight detail page
+- image (optional): String - Path to thumbnail image
+- excerpt (required): String - Summary or description text
+- tags (optional): Array - Category and topic tags
+- date (required): Date - Publication timestamp
+- category (optional): String - Primary insight category
 
-  Notes:
-  - Automatically creates a responsive grid layout for insight cards
-  - Each card links to its detail page
-  - Truncates excerpts to 160 characters
-  - Displays tags with signal styling
-  - Formats dates in "Month Day, Year" format
-  - Gracefully handles missing images
-  - Used in conjunction with insight-card styling but with simplified structure
-  - All insights are displayed in their entirety, no pagination
+Usage Examples:
+{% include components/insights/insights-feed.html insights=site.insights %}
+{% include components/insights/insights-feed.html insights=recent_insights limit=6 %}
+{% include components/insights/insights-feed.html insights=category_insights show_tags=false grid_cols="3" %}
+
+Real-world Usage:
+Used in insights index pages, category landing pages, related content sections, and homepage insights
+
+BEM Structure:
+- .insights-feed (main grid container)
+- .insight-card (individual insight card)
+- .insight-card__link (full-card clickable area)
+- .insight-card__image-wrapper (thumbnail container)
+- .insight-card__image (thumbnail image)
+- .insight-card__content (text content area)
+- .insight-card__title (insight headline)
+- .insight-card__excerpt (description text)
+- .insight-card__meta (metadata container)
+- .insight-card__tags (tags container)
+- .insight-card__tag (individual tag)
+- .insight-card__date (publication date)
+
+Accessibility:
+- Semantic article structure for each insight card
+- Descriptive alt text for thumbnail images
+- Clear heading hierarchy with h3 titles
+- High contrast text and background combinations
+- Keyboard navigation through card links
+- Screen reader friendly date formatting
+
+Responsive:
+- Mobile: Single column layout with full-width cards
+- Tablet: Two-column grid with optimized card sizing
+- Desktop: Auto-fit grid columns based on container width
+
+Performance Notes:
+- Efficient CSS Grid with auto-fit columns
+- Optimized image loading with lazy loading support
+- Minimal DOM structure for fast rendering
+- CSS-only hover and focus states
+- Truncated excerpts prevent layout overflow
+================================================================================
 {% endcomment %}
 
 <div class="insights-feed">

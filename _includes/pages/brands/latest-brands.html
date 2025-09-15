@@ -1,27 +1,125 @@
 {% comment %}
-  Page Section: pages/brands/latest-brands.html
-  
-  Purpose: Displays all brands in a grid layout on the brands page, showing
-           the complete brand directory with pagination or scroll loading
-  
-  Section Type: Content
-  Template: brands.html
-  
-  Parameters:
-    limit (optional): Number of brands to display
-                     Default: 24
-    show_featured (optional): Include featured brands in listing
-                             Default: false (excludes featured brands)
-  
-  Dependencies:
-    - Translation keys: brands.latest_brands.*
-    - CSS: assets/css/components/layout/grid.scss
-    - Helper: helpers/brand-card-selector.html
-    - Component: components/layout/grid.html
-  
-  Usage:
-    {% include pages/brands/latest-brands.html %}
-    {% include pages/brands/latest-brands.html limit=12 show_featured=true %}
+================================================================================
+PAGE SECTION: Latest Brands Grid
+PATH: _includes/pages/brands/latest-brands.html
+PURPOSE: Complete brand directory with grid layout, filtering, and business intelligence focus
+CREATED: 2024-01-01 | VERSION: 2.3
+================================================================================
+
+Features:
+- Complete brand directory with professional grid presentation
+- Featured brand filtering with configurable inclusion/exclusion
+- Pagination support with view all CTA and brand count display
+- Empty state handling with graceful fallback messaging
+- Translation integration for multilingual brand discovery
+- Grid layout integration via atomic grid component
+- Business intelligence positioning with BRICS+ market emphasis
+- Professional presentation appropriate for investment and partnership development
+
+Parameters:
+- limit (optional): Integer - Maximum brands to display in grid. Default: 24
+- show_featured (optional): Boolean - Include featured brands in listing. Default: false
+- lang (implicit): String - Page language from page.lang for content filtering
+
+Dependencies:
+- Components: components/layout/grid.html for responsive brand grid layout
+- Translations: site.data.translations[lang].brands.latest_brands for all UI text
+- Collections: site.brands filtered by language and featured status
+- CSS: Grid layout styling with professional brand card presentation
+- Helpers: helpers/t.html for translation rendering with fallback support
+
+Brand Filtering Logic:
+- Language-aware brand selection ensuring content availability
+- Featured brand exclusion by default maintaining directory focus
+- Optional featured brand inclusion for comprehensive brand showcase
+- Professional curation emphasizing founder-led brands with growth potential
+
+Usage Examples:
+Standard brand directory:
+{% raw %}{% include pages/brands/latest-brands.html %}{% endraw %}
+
+Limited brand showcase:
+{% raw %}{% include pages/brands/latest-brands.html limit=12 %}{% endraw %}
+
+Complete brand listing with featured brands:
+{% raw %}{% include pages/brands/latest-brands.html show_featured=true %}{% endraw %}
+
+Custom limit with featured brands included:
+{% raw %}{% include pages/brands/latest-brands.html limit=18 show_featured=true %}{% endraw %}
+
+Real-world Applications:
+- Brand discovery page with comprehensive directory
+- Investment portal with curated brand opportunities
+- Market intelligence interface with brand database access
+- Partnership development with complete brand catalog
+- Business development with featured and directory brand access
+
+BEM Structure:
+- .latest-brands (main section container with grid integration)
+- .latest-brands__header (section title and description wrapper)
+- .latest-brands__title (section heading with professional messaging)
+- .latest-brands__description (value proposition and brand directory description)
+- .latest-brands__empty (empty state container with fallback messaging)
+- .latest-brands__empty-message (empty state message text)
+- .latest-brands__cta (call-to-action container with view all functionality)
+- .latest-brands__count (brand count display with showing/total information)
+- .latest-brands__count-numbers (numeric count presentation)
+
+Accessibility:
+- Semantic HTML structure with proper heading hierarchy (h2 for section title)
+- Screen reader friendly brand count information
+- High contrast empty state messaging meeting WCAG AA standards
+- Keyboard navigation support for all interactive elements
+- Descriptive CTA text with clear discovery page navigation
+
+Responsive Design:
+- Mobile (320px+): Single column brand cards with touch-friendly interaction
+- Tablet (768px+): Multi-column grid with enhanced brand presentation
+- Desktop (1024px+): Full grid capabilities with optimized brand density
+- Large screens (1200px+): Maximum brand showcase with professional layout
+
+Grid Integration:
+- Atomic grid component delegation for consistent brand card presentation
+- Type-specific grid configuration for brand content optimization
+- Responsive grid behavior with device-optimized column calculations
+- Professional brand card styling via grid component integration
+
+Translation Integration:
+- Section title and description via helpers/t.html with brands.latest_brands namespace
+- Empty state messaging with professional tone appropriate for business context
+- CTA text localization for brand discovery page navigation
+- Brand count messaging with cultural adaptation for international markets
+
+Performance Optimization:
+- Efficient brand filtering with Jekyll collection optimization
+- Minimal DOM structure with semantic grid integration
+- CSS-only responsive behavior with JavaScript enhancement for interaction
+- Optimized brand collection processing with language-aware filtering
+
+Business Intelligence Context:
+- Professional brand directory presentation for investment analysis
+- Market intelligence interface supporting business development
+- BRICS+ brand positioning with emerging market growth emphasis
+- Partnership development facilitating brand discovery and evaluation
+
+Call-to-Action Strategy:
+- Strategic brand discovery navigation encouraging comprehensive exploration
+- Professional button styling with secondary CTA appearance
+- Tracking integration for conversion and engagement analytics
+- Clear value proposition driving complete brand database access
+
+Error Handling:
+- Graceful handling when no brands available
+- Professional empty state messaging maintaining page quality
+- Safe brand filtering with null checking and fallback logic
+- Robust grid rendering with missing or incomplete brand data
+
+Development Notes:
+- Clean integration with atomic grid component architecture
+- Professional styling foundation appropriate for business intelligence applications
+- Scalable brand directory design accommodating growth in brand collection
+- Business-optimized presentation supporting conversion and engagement goals
+================================================================================
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

@@ -1,33 +1,73 @@
 {% comment %}
-  Include Name: components/maps/map.html
-  
-  Purpose: Renders an interactive map displaying brand locations with clustering,
-  popups, and filtering capabilities using MapLibre GL JS and Stadia Maps.
-  
-  Parameters:
-  - geojson_url: URL to the GeoJSON data source containing brand locations (required)
-  - fit_bounds: Boolean to automatically fit map to data bounds (optional, default: true)
-  
-  Dependencies:
-  - External: MapLibre GL JS library must be loaded in the page head
-  - External: Stadia Maps account and API key configured in _config.yml
-  - CSS: map.css for styling
-  - JavaScript: Included inline for map functionality
-  
-  Example Usage:
-  {% include components/maps/map.html geojson_url="/api/brands-geojson.json" %}
-  {% include components/maps/map.html geojson_url="/api/brands-geojson.json" fit_bounds=false %}
-  
-  Notes:
-  - Automatically clusters brands when zoomed out
-  - Displays featured brands with different styling (larger, different color)
-  - Shows popups with brand information on click
-  - For featured brands, links to brand detail page
-  - For other brands, links to external website if available
-  - Automatically fits the map view to include all points (if fit_bounds=true)
-  - Uses Stadia Maps for base map tiles (alidade_smooth style)
-  - Includes navigation controls for zoom and rotation
-  - Default center is Moscow, Russia when no geojson is loaded
+================================================================================
+COMPONENT: Interactive Brand Map
+PATH: _includes/components/maps/map.html
+PURPOSE: Interactive map displaying brand locations with clustering, popups, and filtering using MapLibre GL JS
+CREATED: 2024-01-01 | VERSION: 2.0
+================================================================================
+
+Features:
+- Interactive MapLibre GL JS powered mapping
+- Brand location clustering at different zoom levels
+- Featured brand highlighting with enhanced styling
+- Click-to-popup brand information display
+- Auto-fit bounds to display all brand locations
+- Navigation controls (zoom, rotation, pitch)
+- Responsive design for all screen sizes
+- Stadia Maps integration for high-quality base maps
+
+Parameters:
+- geojson_url (required): String - URL to GeoJSON data source containing brand locations
+- fit_bounds (optional): Boolean - Auto-fit map to data bounds. Default: true
+- map_height (optional): String - CSS height value for map container. Default: "400px"
+- zoom_level (optional): Integer - Initial zoom level if not auto-fitting. Default: 3
+- center_lat (optional): Number - Initial center latitude. Default: 55.7558 (Moscow)
+- center_lng (optional): Number - Initial center longitude. Default: 37.6176 (Moscow)
+
+Dependencies:
+- External: MapLibre GL JS v2.4.0+ (must be loaded in page head)
+- External: Stadia Maps API key configured in _config.yml as stadia_maps_api_key
+- CSS: assets/css/components/maps/map.scss
+- JavaScript: Inline map initialization and event handling
+- Data: GeoJSON endpoint with brand location data
+
+Usage Examples:
+{% include components/maps/map.html geojson_url="/api/brands-geojson.json" %}
+{% include components/maps/map.html geojson_url="/data/russia-brands.json" fit_bounds=false zoom_level=5 %}
+{% include components/maps/map.html geojson_url="/api/featured-brands.json" map_height="600px" %}
+
+Real-world Usage:
+Used in discovery pages, brand listing pages, and geographic analysis sections
+
+BEM Structure:
+- .map-container (main map wrapper)
+- .map-container__map (MapLibre GL container)
+- .map-container__loading (loading state indicator)
+- .map-popup (custom popup styling)
+- .map-popup__title (popup brand name)
+- .map-popup__details (popup brand information)
+- .map-popup__link (popup action button)
+
+Accessibility:
+- Keyboard navigation support via MapLibre GL
+- Screen reader compatible popup content
+- High contrast brand markers
+- Alternative text for map interaction states
+- Semantic HTML structure for popup content
+
+Responsive:
+- Mobile: Touch-friendly navigation, simplified popups
+- Tablet: Enhanced touch targets, medium-sized popups
+- Desktop: Full feature set, detailed popups, mouse interaction
+
+Performance Notes:
+- Efficient clustering reduces marker count at low zoom
+- Lazy loading of GeoJSON data after map initialization
+- Optimized popup rendering with DOM recycling
+- Minimal JavaScript payload with inline implementation
+- Cached map tiles through Stadia Maps CDN
+================================================================================
+{% endcomment %}
 {% endcomment %}
 
 <div id="map" class="map-container" style="height: 500px; width: 100%;"></div>

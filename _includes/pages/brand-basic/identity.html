@@ -16,7 +16,7 @@
             <i class="icon icon--location"></i>
             {{ brand.city }}, {{ brand.region }}
             {% if brand.country %}
-              , {% include components/helpers/country-name.html code=brand.country lang=brand.lang %}
+              , {% include helpers/country-name.html code=brand.country lang=brand.lang %}
             {% endif %}
           </p>
         {% endif %}

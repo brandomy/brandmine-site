@@ -1,13 +1,115 @@
 #!/usr/bin/env python3
 """
-Generate brands.json from Jekyll brand collection files
+Generate Brands JSON - Unified Data Pipeline for Brandmine Brand Collection
 
-This script scans all English brand markdown files in _brands/en/,
-extracts YAML front matter, and generates a unified brands.json file
-for fast template lookups.
+Transforms Jekyll brand collection markdown files into a centralized JSON data
+structure for fast client-side access and dynamic content rendering. Ensures
+data consistency across the multilingual site and enables real-time filtering.
+
+Business Value: High - Critical data pipeline that powers brand discovery features,
+search functionality, and dynamic content rendering. Reduces page load times by
+providing pre-processed data for JavaScript components. Essential for scaling to
+hundreds of brands without performance degradation.
+
+WHAT IT PROCESSES:
+  1. Scans all English brand markdown files (_brands/en/*.md)
+  2. Extracts and validates YAML front matter
+  3. Maps Jekyll fields to JSON structure
+  4. Validates location data and coordinates
+  5. Cross-references founder relationships
+  6. Generates unified brands.json with metadata
+
+DATA TRANSFORMATION:
+  Jekyll YAML → JSON Mapping:
+    - title → name (display name)
+    - founding_year → founded (year integer)
+    - location.country_code → location.country
+    - All dimension arrays preserved (markets, sectors, attributes, signals)
+    - Featured flags and export readiness tracked
 
 Usage:
     python generate-brands-json.py [--verbose] [--dry-run] [--validate]
+    python generate-brands-json.py --help
+
+Options:
+    --verbose     Show detailed processing information
+    --dry-run     Preview JSON output without writing files
+    --validate    Enable comprehensive data validation
+    -v            Short form of --verbose
+    -d            Short form of --dry-run
+    --help        Display this documentation
+
+Examples:
+    # Standard generation with validation
+    python _scripts/data-generation/generate-brands-json.py --validate
+
+    # Verbose mode to debug data issues
+    python _scripts/data-generation/generate-brands-json.py -v --validate
+
+    # Preview changes before committing
+    python _scripts/data-generation/generate-brands-json.py --dry-run
+
+    # Full validation with detailed output
+    python _scripts/data-generation/generate-brands-json.py -v --validate
+
+Requirements:
+    - Python 3.6+
+    - python-frontmatter library (pip install python-frontmatter)
+    - PyYAML library (pip install pyyaml)
+    - Read access to _brands/en/ directory
+    - Write access to _data/ directory
+    - Optional: countries.json for validation
+
+Integration:
+    - Called by: generate-all-json.py orchestrator
+    - Frequency: On content updates, before deployments
+    - Input: _brands/en/*.md markdown files
+    - Output: _data/brands.json
+    - Backup: Creates .backup before overwriting
+    - Used by: JavaScript components, search features, filters
+
+File Structure Expected:
+    _brands/en/*.md              # Source brand markdown files
+    _data/countries.json         # Valid country codes (optional)
+    _data/founders.json          # For cross-validation (optional)
+    _data/brands.json            # Output file
+    _data/brands.json.backup     # Automatic backup
+
+Validation Checks:
+    - Required fields: ref, title
+    - Coordinate ranges: lat (-90 to 90), lng (-180 to 180)
+    - Country code validity against countries.json
+    - Market code consistency
+    - Founder reference validation
+    - Ref/country code alignment
+
+Error Handling:
+    - Missing required fields logged as errors
+    - Invalid data logged as warnings
+    - Continues processing on single file errors
+    - Returns exit code 1 if any errors found
+    - Creates backup before overwriting existing data
+
+Performance Considerations:
+    - Processes ~100 brands in <1 second
+    - JSON output optimized for client-side parsing
+    - Sorted output for consistent diffs
+    - Minimal memory footprint
+
+Output Format:
+    {
+      "brands": [...],
+      "metadata": {
+        "generated": "ISO timestamp",
+        "count": number of brands,
+        "generator": "script name",
+        "version": "1.0"
+      }
+    }
+
+Author: Brandmine Development Team
+Created: 2025-09-02
+Last Updated: 2025-09-15 - Added comprehensive documentation
 """
 
 import os

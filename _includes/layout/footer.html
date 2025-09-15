@@ -1,37 +1,76 @@
 {% comment %}
-  Include Name: layout/footer.html
-  
-  Purpose: Renders the site footer with company information, language selector, social links, 
-  newsletter signup form, and copyright information. Used on all pages of the site.
-  
-  Parameters:
-  - None directly passed to the include, but it uses:
-    - page.lang: Current page language
-    - site.data.translations[lang].footer: Footer text translations
-    - site.data.social[lang]: Social media links configuration
-    - site.data.footer[lang]: Footer links configuration
-    - site.time: Current time (for copyright year)
-  
-  Dependencies:
-  - Includes: components/navigation/language-selector.html
-  - CSS: footer.css
-  - External: MailerLite newsletter signup forms (language-specific)
-  - Data:
-    - site.data.translations[lang].footer: Text strings
-    - site.data.social[lang]: Social media links
-    - site.data.footer[lang]: Footer navigation links
-  
-  Example Usage:
-  {% include layout/footer.html %}
-  
-  Notes:
-  - Includes social media links with SVG icons
-  - Includes language-specific newsletter signup forms
-  - Shows language selector in the footer for easy language switching
-  - Automatically updates copyright year
-  - Footer links (privacy, terms, etc.) are loaded from data files
-  - Uses BEM naming conventions for styling
-  - Three-column grid layout on desktop, stacks on mobile
+================================================================================
+COMPONENT: Site Footer
+PATH: _includes/layout/footer.html
+PURPOSE: Renders the global site footer with company information, social links, newsletter signup, and legal links
+CREATED: 2024-01-01 | VERSION: 2.0
+================================================================================
+
+Features:
+- Three-column responsive grid layout
+- Multilingual company information and links
+- Social media icons with SVG graphics
+- Language-specific MailerLite newsletter integration
+- Auto-updating copyright year
+- Language selector for footer-level switching
+- Legal/policy links from data configuration
+
+Parameters:
+- No direct parameters (uses global site and page variables)
+- page.lang (implicit): String - Current page language for localization
+- site.time (implicit): Date - Build time for copyright year
+- site.data.social[lang] (implicit): Array - Social media links configuration
+- site.data.footer[lang] (implicit): Array - Footer navigation links
+- site.data.translations (implicit): Object - All footer text translations
+
+Dependencies:
+- CSS: assets/css/layout/footer.scss
+- JavaScript: MailerLite newsletter forms (external)
+- Helpers: helpers/t.html (translation helper)
+- Components:
+  - components/navigation/language-selector-optimized.html
+  - components/tagline.html
+- Data:
+  - site.data.social for social media links
+  - site.data.footer for legal/policy links
+  - site.data.translations for all footer text
+
+Usage Examples:
+{% include layout/footer.html %}
+
+Real-world Usage:
+Used in _layouts/default.html as the primary site footer across all pages
+
+BEM Structure:
+- .footer (main footer container)
+- .footer__grid (three-column grid wrapper)
+- .footer__section (individual column containers)
+- .footer__section--left (company info column)
+- .footer__section--center (tagline and social links)
+- .footer__section--right (newsletter signup)
+- .footer__social (social media links container)
+- .footer__social-icon (individual social icons)
+- .footer__newsletter (newsletter signup wrapper)
+- .footer__copyright (bottom copyright bar)
+
+Accessibility:
+- Semantic footer element for page structure
+- Title attributes on social media links
+- Screen reader friendly language selector
+- Proper link descriptions for external services
+- High contrast social media SVG icons
+
+Responsive:
+- Mobile: Single column stacked layout
+- Tablet: Two-column layout with newsletter below
+- Desktop: Full three-column grid layout
+
+Performance Notes:
+- Inline SVG icons for fast loading
+- External MailerLite forms loaded asynchronously
+- Optimized language selector component
+- Minimal data file dependencies
+================================================================================
 {% endcomment %}
 
 {% comment %} Footer translations now handled via helpers/t.html {% endcomment %}

@@ -1,4 +1,77 @@
 #!/bin/bash
+# =============================================================================
+# pre-commit_check.sh - Quality Control Gate for Brandmine Development
+# =============================================================================
+#
+# PURPOSE:
+#   Comprehensive validation suite that ensures code quality, consistency, and
+#   production readiness before commits. Prevents broken builds and maintains
+#   the integrity of the multilingual Jekyll site architecture.
+#
+# BUSINESS VALUE:
+#   High - Critical quality gate that prevents deployment failures, maintains
+#   code standards, and ensures consistent user experience across all languages.
+#   Saves hours of debugging by catching issues before they reach production.
+#
+# WHAT IT VALIDATES:
+#   1. Build optimizations (language maps, navigation caches)
+#   2. Liquid template syntax and tag balance
+#   3. SCSS/CSS syntax and structure
+#   4. Include file existence and dependencies
+#   5. YAML file validity across all collections
+#   6. Image paths and naming standards
+#   7. Cross-language content consistency
+#   8. Section configuration compliance
+#   9. Category naming conventions
+#   10. Color standards adherence
+#
+# USAGE:
+#   bash _scripts/core/pre-commit_check.sh
+#   bash pre-commit_check.sh              # When run from _scripts/core/
+#
+# OPTIONS:
+#   --help    Display this documentation header
+#   --quiet   Suppress non-error output
+#   --strict  Exit on first error (fail-fast mode)
+#
+# EXAMPLES:
+#   # Standard pre-commit check
+#   bash _scripts/core/pre-commit_check.sh
+#
+#   # Quick check with fail-fast
+#   bash _scripts/core/pre-commit_check.sh --strict
+#
+#   # Silent mode for CI/CD pipelines
+#   bash _scripts/core/pre-commit_check.sh --quiet
+#
+# REQUIREMENTS:
+#   - Ruby with YAML support (for Jekyll validation)
+#   - Python 3 (for optimization scripts)
+#   - Standard Unix tools (grep, sed, find)
+#   - Write access to _logs/ directory
+#
+# INTEGRATION:
+#   - Called by: Developers before committing changes
+#   - Recommended: Set as git pre-commit hook
+#   - Calls: generate-language-map.py, generate-navigation-cache.py
+#   - Outputs: Timestamped log in _logs/pre_commit_checks/
+#   - Exit codes: 0 (success), 1 (validation failures found)
+#
+# OUTPUT FORMAT:
+#   - Console output with emoji indicators for visual scanning
+#   - Detailed log file with timestamps and full error details
+#   - Summary report at end showing pass/fail status
+#
+# ERROR HANDLING:
+#   - Non-blocking by default (reports all issues before exiting)
+#   - Returns exit code 1 if any critical issues found
+#   - Preserves log files for debugging failed checks
+#
+# AUTHOR: Brandmine Development Team
+# CREATED: 2025-07-08
+# LAST_UPDATED: 2025-09-15 - Added comprehensive documentation
+#
+# =============================================================================
 
 # Setup log directory and timestamped log file
 LOG_DIR="_logs/pre_commit_checks"

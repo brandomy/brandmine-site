@@ -107,7 +107,7 @@ Dependencies:
           {% include helpers/dimension-data.html type="markets" %}
           {% for item in dimension_items %}
             {% if item.country_code %}
-              {% capture country_name %}{% include components/helpers/country-name.html code=item.country_code lang=current_lang %}{% endcapture %}
+              {% capture country_name %}{% include helpers/country-name.html code=item.country_code lang=current_lang %}{% endcapture %}
             {% else %}
               {% assign country_name = item.slug | replace: "-", " " | capitalize %}
             {% endif %}

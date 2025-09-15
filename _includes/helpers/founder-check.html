@@ -1,0 +1,123 @@
+{% comment %}
+================================================================================
+COMPONENT: Founder-Led Check
+PATH: _includes/helpers/founder-check.html
+PURPOSE: Founder-led brand detection with visual indicator and flexible styling integration
+CREATED: 2024-01-01 | VERSION: 1.4
+================================================================================
+
+Features:
+- Standardized founder-led detection logic via is-founder-led.html helper
+- Conditional rendering based on founder-led status determination
+- Clean visual indicator with single-letter "F" presentation
+- Flexible CSS class prefix for integration across component contexts
+- Professional business presentation highlighting founder-led value proposition
+- Minimal DOM footprint with efficient conditional output
+
+Parameters:
+- brand (required): Object - Brand object for founder-led status analysis
+- class_name (optional): String - CSS class prefix for styling context. Default: "brand-card"
+
+Dependencies:
+- Helpers: helpers/is-founder-led.html for standardized founder detection logic
+- CSS: Styling through provided class_name prefix with __founder-led element
+- Translations: Optional integration for founder-led label localization
+
+Founder Detection Logic:
+- Leverages standardized is-founder-led.html helper for consistent detection
+- Supports multiple founder-led identification methods across brand data structures
+- Handles various founder data formats and relationship structures
+- Provides reliable boolean determination for conditional rendering
+
+Usage Examples:
+Brand card integration:
+{% raw %}{% include helpers/founder-check.html brand=brand %}{% endraw %}
+
+Brand profile integration:
+{% raw %}{% include helpers/founder-check.html
+   brand=brand
+   class_name="brand-profile" %}{% endraw %}
+
+Search result integration:
+{% raw %}{% include helpers/founder-check.html
+   brand=brand
+   class_name="search-result" %}{% endraw %}
+
+Grid item integration:
+{% raw %}{% include helpers/founder-check.html
+   brand=brand
+   class_name="brand-grid-item" %}{% endraw %}
+
+Real-world Applications:
+- Brand card founder-led indicators for quick visual identification
+- Investment analysis with founder-led value proposition highlighting
+- Market intelligence with entrepreneurship focus identification
+- Brand discovery with founder-led filtering and categorization
+- Partnership assessment with leadership structure indication
+
+BEM Structure:
+- .{class_name}__founder-led (founder-led indicator with contextual styling)
+
+Accessibility:
+- Semantic HTML structure with descriptive content container
+- Screen reader friendly indicator with clear founder-led context
+- High contrast visual presentation appropriate for quick scanning
+- Alternative text consideration through host component integration
+
+Responsive Design:
+- Flexible styling through host component CSS class integration
+- Consistent indicator sizing across device breakpoints
+- Mobile-friendly presentation with touch-friendly visual cues
+
+Visual Indicator Design:
+- Single-letter "F" presentation for compact display
+- Professional business appearance appropriate for investment context
+- Clean typography integration with host component styling
+- Visual differentiation supporting quick brand categorization
+
+Conditional Rendering Logic:
+- Clean boolean evaluation via is-founder-led helper result
+- No output when brand not identified as founder-led
+- Efficient rendering preventing unnecessary DOM elements
+- Graceful handling of missing or undefined brand data
+
+Performance Optimization:
+- Minimal DOM output with single indicator element
+- Efficient conditional rendering with helper delegation
+- CSS-only styling without JavaScript dependencies
+- Clean HTML structure for fast browser rendering
+
+Business Intelligence Context:
+- Founder-led value proposition highlighting for investment analysis
+- Entrepreneurship focus identification for market intelligence
+- Leadership structure indication for partnership assessment
+- BRICS+ founder-led brand emphasis in discovery interfaces
+
+Error Handling:
+- Safe rendering when brand object undefined or malformed
+- Graceful handling via is-founder-led helper error management
+- Clean fallback when CSS class name invalid
+- Robust display regardless of translation availability
+
+Development Notes:
+- Flexible integration supporting various component architectures
+- Standardized detection logic ensuring consistency across site
+- Professional business presentation foundation
+- Minimal component scope focused on single indicator display
+
+Investment Analysis Support:
+- Founder-led indicators supporting investment decision frameworks
+- Entrepreneurship identification for market opportunity assessment
+- Leadership structure visibility for partnership evaluation
+- Professional presentation appropriate for business intelligence context
+================================================================================
+{% endcomment %}
+
+{% comment %} Use standardized founder detection logic {% endcomment %}
+{% include helpers/is-founder-led.html brand=include.brand %}
+
+{% if is_founder_led %}
+  <div class="{{ include.class_name | default: 'brand-card' }}__founder-led">
+    F
+  </div>
+{% endif %}

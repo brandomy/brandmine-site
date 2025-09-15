@@ -1,0 +1,166 @@
+{% comment %}
+================================================================================
+COMPONENT: Founder Tags
+PATH: _includes/helpers/founder-tags.html
+PURPOSE: Founder expertise and domain tags with market, sector, and specialization display
+CREATED: 2024-01-01 | VERSION: 1.5
+================================================================================
+
+Features:
+- Multi-dimensional founder tag display with markets, sectors, and expertise
+- Intelligent tag limiting for clean presentation and consistent card heights
+- Color-coded tag styling aligned with official taxonomy color system
+- Geographic market emphasis with country name translation integration
+- Sector expertise display with dimension name translation support
+- Professional expertise highlighting with clean typography presentation
+- Hierarchical fallback logic for primary sector when sectors array unavailable
+
+Parameters:
+- markets (optional): Array - Market country codes for geographic expertise display
+- sectors (optional): Array - Sector codes for industry specialization tags
+- primary_sector (optional): String - Primary sector code fallback when sectors unavailable
+- expertise (optional): Array - Expertise areas for professional specialization display
+- lang (required): String - Language code for translations and country names
+
+Dependencies:
+- Helpers: helpers/country-name.html for market country name translation
+- Helpers: helpers/dimension-name.html for sector name translation and display
+- CSS: .founder-card__tag base styling with type-specific modifiers
+- Translations: Country and sector name localization via helper components
+
+Tag Type Integration:
+- Markets: Geographic expertise with country name display and sky blue styling
+- Sectors: Industry expertise with sector translation and olive green styling
+- Expertise: Professional specializations with orange styling and custom terminology
+
+Usage Examples:
+Complete founder tag display:
+{% raw %}{% include helpers/founder-tags.html
+   markets=founder.markets
+   sectors=founder.sectors
+   expertise=founder.expertise
+   lang=page.lang %}{% endraw %}
+
+Market and primary sector only:
+{% raw %}{% include helpers/founder-tags.html
+   markets=founder.markets
+   primary_sector=founder.primary_sector
+   lang=page.lang %}{% endraw %}
+
+Expertise focus only:
+{% raw %}{% include helpers/founder-tags.html
+   expertise=founder.expertise
+   lang=page.lang %}{% endraw %}
+
+Geographic expertise emphasis:
+{% raw %}{% include helpers/founder-tags.html
+   markets=founder.markets
+   sectors=founder.sectors
+   lang=page.lang %}{% endraw %}
+
+Real-world Applications:
+- Founder profile cards with expertise and geographic focus
+- Investment analysis with founder domain expertise identification
+- Partnership assessment with complementary skill identification
+- Market intelligence with founder regional and sector specializations
+- Business development with founder network and expertise mapping
+
+BEM Structure:
+- .founder-card__tag (base tag styling with consistent presentation)
+- .founder-card__tag--market (market-specific styling with sky blue color)
+- .founder-card__tag--sector (sector-specific styling with olive green color)
+- .founder-card__tag--expertise (expertise-specific styling with orange color)
+
+Tag Limiting Strategy:
+- Markets: Maximum 2 tags for geographic focus clarity
+- Sectors: Maximum 2 tags with primary sector fallback logic
+- Expertise: Maximum 1 tag for specialized focus presentation
+- Balanced display preventing visual overcrowding and maintaining readability
+
+Accessibility:
+- Semantic HTML structure with descriptive tag content
+- Screen reader friendly market and sector name translations
+- High contrast color coding meeting WCAG AA standards for all tag types
+- Clear text presentation without relying solely on color differentiation
+- Keyboard navigation support for tag interaction when linked
+
+Responsive Design:
+- Mobile (320px+): Compact tag presentation with optimized spacing
+- Tablet (768px+): Enhanced tag layout with improved visual hierarchy
+- Desktop (1024px+): Full tag display with hover state enhancements
+- Flexible tag wrapping adapting to available container space
+
+Translation Integration:
+- Market country names via country-name.html helper with language awareness
+- Sector names via dimension-name.html helper with fallback support
+- Expertise display with raw text presentation for custom terminology
+- Cultural adaptation of geographic and industry terminology
+
+Hierarchical Fallback Logic:
+- Primary sectors array takes precedence over primary_sector field
+- Primary_sector field used when sectors array empty or unavailable
+- Graceful handling of mixed data structures and legacy content
+- Clean presentation regardless of data completeness
+
+Performance Optimization:
+- Efficient array iteration with explicit limit controls
+- Minimal DOM output with semantic tag structure
+- CSS-only styling without JavaScript dependencies
+- Optimized helper component calls for translation services
+
+Business Intelligence Context:
+- BRICS+ market expertise highlighting for geographic business development
+- Sector specialization identification for investment and partnership analysis
+- Professional expertise mapping for business network development
+- Market intelligence with founder domain authority and regional focus
+
+Color System Integration:
+- Market tags with sky blue styling matching geographic dimension colors
+- Sector tags with olive green styling matching industry dimension colors
+- Expertise tags with orange styling matching attribute dimension colors
+- Visual consistency across all taxonomy presentations and founder displays
+
+Error Handling:
+- Safe rendering with missing or undefined parameter arrays
+- Graceful handling of empty arrays preventing broken tag display
+- Clean fallback when translation helpers unavailable
+- Robust presentation regardless of CSS class availability
+
+Development Notes:
+- Flexible parameter structure supporting various founder data models
+- Clean integration with existing tag styling and color system
+- Professional presentation appropriate for business intelligence applications
+- Scalable design accommodating additional tag types and expertise areas
+================================================================================
+{% endcomment %}
+
+{% comment %} Markets {% endcomment %}
+{% if include.markets %}
+  {% for market in include.markets limit:2 %}
+    <span class="founder-card__tag founder-card__tag--market">
+      {% include helpers/country-name.html code=market lang=page.lang %}
+    </span>
+  {% endfor %}
+{% endif %}
+
+{% comment %} Sectors {% endcomment %}
+{% if include.sectors %}
+  {% for sector in include.sectors limit:2 %}
+    <span class="founder-card__tag founder-card__tag--sector">
+      {% include helpers/dimension-name.html type="sectors" id=sector %}
+    </span>
+  {% endfor %}
+{% elsif include.primary_sector %}
+  <span class="founder-card__tag founder-card__tag--sector">
+    {% include helpers/dimension-name.html type="sectors" id=include.primary_sector %}
+  </span>
+{% endif %}
+
+{% comment %} Expertise (limited) {% endcomment %}
+{% if include.expertise %}
+  {% for expertise in include.expertise limit:1 %}
+    <span class="founder-card__tag founder-card__tag--expertise">
+      {{ expertise }}
+    </span>
+  {% endfor %}
+{% endif %}

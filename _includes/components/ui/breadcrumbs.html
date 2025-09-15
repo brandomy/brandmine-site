@@ -1,14 +1,69 @@
 {% comment %}
-Component: components/ui/breadcrumbs.html
-Purpose: Navigation breadcrumb component for page hierarchy
-FIXED: Always show back arrow for consistent navigation experience
+================================================================================
+COMPONENT: Breadcrumbs Navigation
+PATH: _includes/components/ui/breadcrumbs.html
+PURPOSE: Hierarchical navigation breadcrumb component with automatic page structure detection
+CREATED: 2024-01-01 | VERSION: 1.3
+================================================================================
+
+Features:
+- Automatic breadcrumb generation from page URL structure
+- Manual breadcrumb items override capability
+- Consistent back arrow navigation element
+- Customizable separators and home link inclusion
+- Multilingual support with translation integration
+- Semantic HTML5 navigation structure
+- ARIA navigation landmarks for accessibility
+- Responsive design with mobile-friendly layout
 
 Parameters:
-- items (optional): Array of breadcrumb items with name and url
-- auto_generate (optional): Auto-generate from page structure (default: true)
-- show_home (optional): Include home link (default: true)
-- separator (optional): Custom separator (default: "›")
-- class_name (optional): Additional CSS classes
+- items (optional): Array - Custom breadcrumb items with name and url properties
+- auto_generate (optional): Boolean - Auto-generate from page URL structure. Default: true
+- show_home (optional): Boolean - Include home link as first breadcrumb. Default: true
+- separator (optional): String - Custom separator character between items. Default: "›"
+- class_name (optional): String - Additional CSS classes for styling
+- max_items (optional): Integer - Maximum breadcrumb items to display. Default: unlimited
+
+Dependencies:
+- CSS: assets/css/components/ui/breadcrumbs.scss
+- Helpers: helpers/t.html for translation support
+- Data: site.data.translations for navigation text
+
+Usage Examples:
+{% include components/ui/breadcrumbs.html %}
+{% include components/ui/breadcrumbs.html auto_generate=false items=custom_breadcrumbs %}
+{% include components/ui/breadcrumbs.html separator="/" show_home=false %}
+{% include components/ui/breadcrumbs.html class_name="custom-breadcrumbs" max_items=4 %}
+
+Real-world Usage:
+Used in page headers, content sections, and navigation areas for hierarchical context
+
+BEM Structure:
+- .breadcrumbs (main navigation container)
+- .breadcrumbs__list (ordered list wrapper)
+- .breadcrumbs__item (individual breadcrumb item)
+- .breadcrumbs__link (breadcrumb navigation links)
+- .breadcrumbs__separator (separator elements)
+- .breadcrumbs__current (current page indicator)
+
+Accessibility:
+- Semantic nav element with aria-label for navigation landmark
+- Ordered list structure for logical hierarchy
+- aria-current="page" for current page identification
+- Screen reader friendly separator handling
+- Keyboard navigation support for all links
+
+Responsive:
+- Mobile: Compact layout with abbreviated paths
+- Tablet: Standard breadcrumb display with full hierarchy
+- Desktop: Full breadcrumb trail with all navigation levels
+
+Performance Notes:
+- Efficient Liquid logic for automatic breadcrumb generation
+- Minimal DOM elements with semantic HTML structure
+- CSS-only responsive behavior without JavaScript
+- Cached translation lookups for multilingual support
+================================================================================
 {% endcomment %}
 
 {% assign auto_generate = include.auto_generate | default: true %}

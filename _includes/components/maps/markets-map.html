@@ -1,32 +1,83 @@
 {% comment %}
-  Include Name: components/maps/markets-map.html
-  
-  Purpose: Renders an interactive map showing brand locations across different markets,
-  with color-coding by country. Provides clustering for dense areas and detailed popups
-  for individual brands.
-  
-  Parameters:
-  - None directly passed to the include, but it requires:
-    - MapLibre GL JS to be available (will attempt to load if missing)
-    - Stadia Maps API key to be set in YOUR_STADIA_MAPS_API_KEY placeholder
-  
-  Dependencies:
-  - External: MapLibre GL JS library (loaded dynamically if not present)
-  - External: Stadia Maps account and API key
-  - CSS: Styles included inline (should be moved to a dedicated stylesheet)
-  
-  Example Usage:
-  {% include components/maps/markets-map.html %}
-  
-  Notes:
-  - Includes sample data for demonstration (needs to be replaced with real data)
-  - Color-codes points by country (Russia, Brazil, India, China, South Africa)
-  - Includes clustering for dense areas with appropriate styling
-  - Shows detailed popups with brand name, country, sector, and link
-  - Includes placeholder for future filter implementation
-  - Contains responsive design adjustments for different screen sizes
-  - Handles MapLibre loading with a fallback placeholder
-  - Includes comprehensive styling for the map container and popups
+================================================================================
+COMPONENT: Markets Map
+PATH: _includes/components/maps/markets-map.html
+PURPOSE: Interactive map displaying brand locations across global markets with clustering, filtering, and country color-coding
+CREATED: 2024-01-01 | VERSION: 2.5
+================================================================================
+
+Features:
+- Interactive MapLibre GL JS powered mapping with BRICS+ market focus
+- Dynamic MapLibre library loading with fallback placeholder
+- Brand location clustering with density-based sizing and coloring
+- Country-specific color coding (Russia, Brazil, India, China, South Africa)
+- Interactive popups with brand details and navigation links
+- Responsive design optimized for all screen sizes
+- Comprehensive inline CSS with CSS custom properties
+- Future-ready filter system architecture
+- Sample data integration with real data placeholder functions
+
+Parameters:
+- No direct parameters (self-contained component with sample data)
+- stadia_maps_api_key (implicit): String - API key configured in _config.yml
+- Dynamic library loading handles MapLibre GL JS availability
+
+Dependencies:
+- External: MapLibre GL JS v2.4.0+ (loaded dynamically from unpkg CDN)
+- External: Stadia Maps API with alidade_smooth style
+- CSS: Comprehensive inline styles using CSS custom properties
+- JavaScript: Inline map initialization, clustering, and popup handling
+- Data: Sample brand data with placeholder for real data integration
+
+Usage Examples:
+{% include components/maps/markets-map.html %}
+
+Real-world Usage:
+Used in discovery pages, market analysis sections, and geographic brand overview
+
+BEM Structure:
+- .markets-map (main component container)
+- .markets-map__title (section heading)
+- .markets-map__container (MapLibre GL container)
+- .markets-map__description (explanatory text)
+- .map-placeholder (loading state display)
+- .map-popup (popup content wrapper)
+- .map-popup__title (brand name in popup)
+- .map-popup__meta (metadata container)
+- .map-popup__country (country tag)
+- .map-popup__sector (sector tag)
+- .map-popup__link (action button)
+- .map-filters (filter controls container)
+- .map-filter__button (individual filter buttons)
+
+Accessibility:
+- Keyboard navigation through MapLibre GL native support
+- Screen reader compatible popup content
+- High contrast color coding for country differentiation
+- Semantic HTML structure for map sections
+- Descriptive hover states and cursor changes
+
+Responsive:
+- Mobile (≤576px): 350px height, simplified controls, touch-friendly
+- Tablet (≤768px): 400px height, enhanced touch targets
+- Desktop (>768px): 500px height, full feature set, mouse interaction
+
+Performance Notes:
+- Lazy loading of MapLibre GL JS library
+- Efficient clustering reduces render load at low zoom levels
+- Optimized GeoJSON data structure for fast processing
+- CDN delivery for map tiles through Stadia Maps
+- Inline CSS eliminates additional HTTP requests
+- Sample data structure ready for real data integration
+
+Map Features:
+- Clustering: Automatic point clustering with count display
+- Color Coding: Country-specific brand markers
+- Popups: Interactive brand information with navigation
+- Controls: Zoom, rotation, and navigation controls
+- Filters: Architecture ready for country/sector filtering
+- Responsive: Touch and mouse interaction support
+================================================================================
 {% endcomment %}
 
 <div id="map-section" class="markets-map">

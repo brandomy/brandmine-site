@@ -248,6 +248,106 @@ _scripts/validation/validate_yaml.sh
 
 ---
 
+## 8. Documentation Standards
+
+### 8.1 Include File Documentation (MUST Follow)
+**Standard:** All include files MUST contain comprehensive documentation header blocks.
+
+**Required Elements:**
+```liquid
+{% comment %}
+================================================================================
+COMPONENT: [Component Name]
+PATH: [Full path from _includes]
+PURPOSE: [Clear description of functionality]
+CREATED: [YYYY-MM-DD] | VERSION: [Number]
+================================================================================
+
+Features:
+- [Key capability 1]
+- [Key capability 2]
+
+Parameters:
+- param_name (required): Type - Description. Default: value
+- complex_object (optional): Object containing:
+  - sub_param: Type - Description
+
+Dependencies:
+- CSS: [path to stylesheet]
+- Data: [required data files]
+- Helpers: [helper includes]
+
+Usage Examples:
+{% include component basic_usage %}
+{% include component advanced_usage %}
+
+Real-world Usage:
+[Context-specific examples from site]
+
+BEM Structure: (if applicable)
+- .block (base component)
+- .block__element (child elements)
+- .block--modifier (variants)
+
+Accessibility/Performance Notes:
+[Special considerations for UX]
+================================================================================
+{% endcomment %}
+```
+
+### 8.2 Parameter Documentation (MUST Specify)
+**Standard:** All parameters MUST be documented with:
+- **Type specification:** String, Boolean, Integer, Object, Array
+- **Required/Optional status:** Clearly marked
+- **Default values:** Documented when applicable
+- **Complex object structure:** Sub-parameters detailed
+
+**Guideline:** Use consistent parameter naming:
+- `variant` for component variations
+- `show_*` for boolean display options
+- `*_lang` for language parameters
+
+### 8.3 Usage Examples (SHOULD Provide)
+**Guideline:** Include multiple usage scenarios:
+- **Basic usage:** Minimal required parameters
+- **Advanced usage:** Full parameter demonstration
+- **Real-world examples:** Actual site implementation references
+
+### 8.4 Code Organization (MUST Structure)
+**Standard:** Organize include files in consistent sections:
+1. **Documentation header block**
+2. **Parameter validation and defaults**
+3. **Business logic with comments**
+4. **Rendering section**
+
+**Pattern Example:**
+```liquid
+{% comment %} Parameter validation and defaults {% endcomment %}
+{% assign variant = include.variant | default: "standard" %}
+{% assign show_icon = include.show_icon | default: false %}
+
+{% comment %} Business logic {% endcomment %}
+{% if variant == "featured" %}
+  {% assign css_classes = "component component--featured" %}
+{% else %}
+  {% assign css_classes = "component" %}
+{% endif %}
+
+{% comment %} Rendering {% endcomment %}
+<div class="{{ css_classes }}">
+  <!-- Component content -->
+</div>
+```
+
+### 8.5 Maintenance Documentation (SHOULD Track)
+**Guideline:** Include version tracking and update history:
+- Creation date and initial version
+- Major feature additions
+- Breaking changes noted
+- Dependencies updated
+
+---
+
 # Appendices
 
 ## Appendix A – Implementation Examples

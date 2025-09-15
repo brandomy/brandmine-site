@@ -1,18 +1,128 @@
 {% comment %}
-  Include Name: components/dimensions/discovery-dimensions-grid.html
-  Purpose: Displays a grid of discovery dimensions using reusable dimension cards
-  
-  Parameters:
-  - columns (optional): Grid column layout (1, 2, 3, or 4)
-  - limit (optional): Number of examples per dimension (default: 3)
-  
-  Dependencies:
-  - components/cards/dimension-category-card.html - Individual dimension category card component
-  - CSS: components/dimensions/discovery-dimensions-grid.scss (grid layout)
-  - CSS: components/cards/dimension-category-card.scss (card styling)
-  
-  Usage:
-  {% include components/dimensions/discovery-dimensions-grid.html columns=4 limit=3 %}
+================================================================================
+COMPONENT: Discovery Dimensions Grid
+PATH: _includes/components/dimensions/discovery-dimensions-grid.html
+PURPOSE: Responsive dimension category grid with card-based presentation and discovery navigation
+CREATED: 2024-01-01 | VERSION: 2.0
+================================================================================
+
+Features:
+- Four-category dimension grid with markets, sectors, attributes, and signals
+- Responsive column layouts with 1-4 column configurations
+- Card-based presentation using dimension-category-card components
+- Configurable example limits per dimension category
+- Integrated call-to-action for comprehensive discovery page navigation
+- Professional business intelligence presentation with BRICS+ market focus
+- Consistent spacing and alignment through CSS Grid layout system
+
+Parameters:
+- columns (optional): Integer - Grid column count: 1, 2, 3, or 4. Default: responsive
+- limit (optional): Integer - Number of dimension examples per category. Default: 3
+- show_cta (optional): Boolean - Display discovery navigation CTA. Default: true
+- cta_text (optional): String - Custom CTA button text override
+- cta_url (optional): String - Custom CTA destination URL override
+- lang (required): String - Language code for translations and URL generation
+
+Dependencies:
+- Components: components/cards/dimension-category-card.html for individual category presentation
+- CSS: assets/css/components/dimensions/discovery-dimensions-grid.scss for grid layout
+- CSS: assets/css/components/cards/dimension-category-card.scss for card styling
+- Helpers: helpers/t.html for translation integration and CTA text localization
+
+Dimension Category Order:
+- markets: Geographic regions and BRICS+ focus markets with investment potential
+- sectors: Business industries with growth opportunity emphasis
+- attributes: Brand qualities with founder-led and heritage positioning
+- signals: Growth indicators with export readiness and scalability metrics
+
+Usage Examples:
+Standard four-column grid:
+{% raw %}{% include components/dimensions/discovery-dimensions-grid.html columns=4 limit=3 lang=page.lang %}{% endraw %}
+
+Mobile-optimized single column:
+{% raw %}{% include components/dimensions/discovery-dimensions-grid.html columns=1 limit=5 lang=page.lang %}{% endraw %}
+
+Compact presentation:
+{% raw %}{% include components/dimensions/discovery-dimensions-grid.html
+   columns=2
+   limit=2
+   cta_text="Explore Markets & Sectors"
+   lang=page.lang %}{% endraw %}
+
+Without CTA integration:
+{% raw %}{% include components/dimensions/discovery-dimensions-grid.html
+   columns=3
+   limit=4
+   show_cta=false
+   lang=page.lang %}{% endraw %}
+
+Real-world Applications:
+- Homepage discovery section with comprehensive dimension overview
+- Discovery landing page with detailed category presentation
+- Market intelligence dashboard with dimensional navigation
+- Brand exploration interface with taxonomy-based filtering
+- Investment analysis tools with sector and market categorization
+
+BEM Structure:
+- .discovery-dimensions-grid (main grid container with responsive columns)
+- .discovery-dimensions-grid--columns-N (column count modifier classes)
+- .discovery-cta (call-to-action container with centered alignment)
+
+Accessibility:
+- Semantic HTML structure with proper content hierarchy
+- Screen reader friendly navigation through card component accessibility
+- High contrast dimension category presentation
+- Keyboard navigation support for all interactive elements
+- Descriptive CTA text with clear discovery page navigation
+
+Responsive Design:
+- Mobile (320px+): Single column layout with stacked category cards
+- Tablet (768px+): Two-column grid with optimized spacing
+- Desktop (1024px+): Three-column layout with enhanced visual hierarchy
+- Large screens (1200px+): Four-column grid with maximum content density
+
+Grid Layout Features:
+- CSS Grid with automatic responsive column adjustment
+- Equal height cards through grid row alignment
+- Consistent spacing through CSS Grid gap properties
+- Flexible column configuration through modifier classes
+
+Call-to-Action Integration:
+- Automatic discovery page URL generation with language awareness
+- Translation integration for multilingual CTA text
+- Professional button styling with primary CTA appearance
+- Conditional rendering with show_cta parameter control
+
+Performance Optimization:
+- Efficient component inclusion with minimal DOM overhead
+- CSS Grid layout without JavaScript dependencies
+- Optimized card component loading with consistent presentation
+- Clean HTML output with semantic structure
+
+Business Intelligence Focus:
+- BRICS+ market emphasis in dimension category presentation
+- Professional layout supporting investment and partnership analysis
+- Market intelligence organization with geographic and sector focus
+- Growth signal integration for business development insights
+
+Translation Integration:
+- CTA text localization via helpers/t.html component
+- Fallback text ensuring functionality across language configurations
+- Cultural adaptation of discovery navigation messaging
+- Professional terminology appropriate for business audience
+
+Error Handling:
+- Graceful degradation when column parameter invalid
+- Safe rendering with missing or undefined parameters
+- Clean fallback behavior for translation key misses
+- Robust CTA display regardless of URL configuration
+
+Development Notes:
+- Clean integration with dimension-category-card component architecture
+- Flexible grid system supporting various page layout requirements
+- Professional styling foundation for business intelligence applications
+- Scalable design accommodating additional dimension categories
+================================================================================
 {% endcomment %}
 
 <div class="discovery-dimensions-grid {% if include.columns %}discovery-dimensions-grid--columns-{{ include.columns }}{% endif %}">

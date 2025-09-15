@@ -1,33 +1,87 @@
 {% comment %}
-  Include Name: components/navigation/navigation.html
-  
-  Purpose: Renders the main site navigation with multi-level dropdown support.
-  Automatically highlights the active navigation item based on the current URL.
-  
-  Parameters:
-  - None directly passed to the include, but it uses:
-    - page.lang: Current page language
-    - page.url: Current page URL
-    - site.data.navigation[lang]: Navigation structure definition
-    - site.data.translations[lang].nav: Navigation item translations
-  
-  Dependencies:
-  - CSS: header.css (navigation styles)
-  - JavaScript: header.js (for dropdown functionality)
-  - Data:
-    - site.data.navigation[lang]: Array of navigation items with name, link, and optional children
-    - site.data.translations[lang].nav: Translation strings for navigation items
-  
-  Example Usage:
-  {% include components/navigation/navigation.html %}
-  
-  Notes:
-  - Automatically marks the current page's navigation item as active
-  - Supports multi-level dropdown menus
-  - All navigation text is loaded from translations
-  - Navigation structure is defined in _data/navigation/[lang].yml
-  - Uses appropriate ARIA attributes for accessibility
-  - Child items inherit the parent's active state
+================================================================================
+COMPONENT: Main Navigation
+PATH: _includes/components/navigation/navigation.html
+PURPOSE: Multi-level main site navigation with dropdown support, active state detection, and full accessibility
+CREATED: 2024-01-01 | VERSION: 2.0
+================================================================================
+
+Features:
+- Multi-level dropdown navigation with unlimited nesting support
+- Automatic active state detection based on current page URL
+- Full multilingual support with translation integration
+- Accessibility-compliant with ARIA attributes and keyboard navigation
+- Mobile-responsive with collapsible menu functionality
+- Semantic HTML5 navigation structure
+- Parent-child active state inheritance
+- Dynamic navigation structure from data files
+
+Parameters:
+- No direct parameters (uses global site and page variables)
+- page.lang (implicit): String - Current page language for navigation structure
+- page.url (implicit): String - Current page URL for active state detection
+- site.data.navigation[lang] (implicit): Array - Navigation structure definition
+- site.data.translations[lang].nav (implicit): Object - Navigation item translations
+
+Dependencies:
+- CSS: assets/css/layout/header.scss (navigation styling)
+- JavaScript: assets/js/components/navigation/header-toggle.js (dropdown functionality)
+- Data: site.data.navigation for structure definition per language
+- Data: site.data.translations for navigation item text
+- Components: Works with header toggle button for mobile menu
+
+Usage Examples:
+{% include components/navigation/navigation.html %}
+
+Real-world Usage:
+Used in site header as primary navigation across all pages and languages
+
+Navigation Structure:
+Defined in _data/navigation/[lang].yml with hierarchical structure:
+- Top-level items with name, link, and optional children array
+- Child items support unlimited nesting depth
+- Translation keys reference site.data.translations[lang].nav
+
+BEM Structure:
+- .navigation (main navigation container)
+- .navigation__list (navigation menu list)
+- .navigation__item (individual navigation items)
+- .navigation__link (navigation links)
+- .navigation__item--active (active state modifier)
+- .navigation__item--has-children (dropdown parent modifier)
+- .navigation__dropdown (dropdown submenu container)
+- .navigation__dropdown-list (dropdown menu list)
+- .navigation__dropdown-item (dropdown menu items)
+- .navigation__dropdown-link (dropdown links)
+
+Accessibility:
+- Semantic nav element with aria-label for navigation landmark
+- Proper heading hierarchy for navigation structure
+- aria-expanded for dropdown state indication
+- aria-haspopup for dropdown menu identification
+- Keyboard navigation support (Enter, Escape, Arrow keys)
+- Screen reader friendly active state indicators
+- Focus management for dropdown interactions
+
+Responsive:
+- Mobile: Collapsible menu with hamburger toggle
+- Tablet: Horizontal navigation with touch-friendly dropdowns
+- Desktop: Full horizontal navigation with hover-activated dropdowns
+
+Performance Notes:
+- Efficient active state detection with URL matching
+- Minimal DOM manipulation for dropdown functionality
+- CSS-only responsive behavior with JavaScript enhancement
+- Cached translation lookups for navigation text
+- Optimized navigation structure loading from data files
+
+Active State Logic:
+- Exact URL matching for direct page matches
+- Parent activation when child pages are active
+- Flexible matching for dynamic page structures
+- Multi-level inheritance for nested navigation
+================================================================================
+{% endcomment %}
 {% endcomment %}
 
 {% comment %}Using t.html helper for navigation translations{% endcomment %}

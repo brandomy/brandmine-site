@@ -1,14 +1,91 @@
 #!/usr/bin/env python3
 """
-Generate Page Section Script for Brandmine Jekyll Site
+Generate Page Section - Content Scaling Automation Tool for Brandmine
 
-Creates a new page section with all required files and configurations.
+Automates the creation of new page sections with consistent structure across the
+multilingual Jekyll site. Creates all required files, updates configurations,
+and ensures proper integration with the existing architecture.
+
+Business Value: High - Enables rapid content scaling with guaranteed consistency
+across languages and proper BEM-compliant styling. Reduces section creation time
+from 30+ minutes of manual work to seconds while preventing configuration errors.
+
+WHAT IT CREATES:
+  1. HTML include file with proper Liquid templating
+  2. SCSS file with BEM-compliant styling
+  3. Translation entries for all 3 languages (EN/RU/ZH)
+  4. Configuration updates in page_sections.yml
+  5. Proper panel mappings and styling connections
 
 Usage:
-    python3 _scripts/content-creation/generate_page_section.py page_type section_name "title" "subtitle" layout_type panel_type
+    python3 generate_page_section.py page_type section_name "title" "subtitle" layout_type panel_type
+    python3 generate_page_section.py --help
 
-Example:
-    python3 _scripts/content-creation/generate_page_section.py brands brand-carousel-test "Brand Carousel Test" "Testing horizontal carousel layout" carousel panel--orange-soft
+Arguments:
+    page_type     The page type to add section to (brands, founders, insights, etc.)
+    section_name  Kebab-case identifier for the section (e.g., featured-brands)
+    title         Display title for the section (can contain spaces)
+    subtitle      Subtitle or description text (can contain spaces)
+    layout_type   Layout template to use (grid, carousel, list, hero)
+    panel_type    BEM panel class (panel--hero, panel--secondary-soft, etc.)
+
+Options:
+    --help        Display this documentation
+    --dry-run     Preview changes without writing files
+    --force       Overwrite existing sections
+
+Examples:
+    # Create a featured brands carousel section
+    python3 generate_page_section.py brands featured-brands-carousel \\
+        "Featured Brands" "Discover exceptional founder-led brands" \\
+        carousel panel--secondary-soft
+
+    # Add a new founder spotlight grid
+    python3 generate_page_section.py founders founder-spotlight \\
+        "Founder Spotlight" "Meet the visionaries behind the brands" \\
+        grid panel--accent-soft
+
+    # Create an insights hero section
+    python3 generate_page_section.py insights latest-insights \\
+        "Latest Insights" "Fresh perspectives from the Global South" \\
+        hero panel--hero
+
+Requirements:
+    - Python 3.6+
+    - PyYAML library (pip install pyyaml)
+    - Write access to _data/, _includes/, assets/css/, and translation files
+    - Existing _data/page_sections.yml configuration
+
+Integration:
+    - Called by: Content creators and developers adding new sections
+    - Updates: _data/page_sections.yml, translation files (en.yml, ru.yml, zh.yml)
+    - Creates: _includes/pages/{page_type}/{section_name}.html
+    - Creates: assets/css/pages/{page_type}/{section_name}.scss
+    - Frequency: On-demand when new sections needed
+
+Directory Structure Expected:
+    _data/page_sections.yml         # Central configuration
+    _data/translations/{lang}.yml   # Translation files
+    _includes/pages/{type}/          # HTML includes
+    assets/css/pages/{type}/         # SCSS styling
+
+Success Indicators:
+    - All files created without errors
+    - Section appears in page_sections.yml
+    - Translations added for all 3 languages
+    - HTML and CSS files properly linked
+    - No duplicate section names
+
+Error Prevention:
+    - Validates kebab-case naming
+    - Checks for existing sections
+    - Ensures page type exists
+    - Verifies panel type format
+    - Confirms layout template availability
+
+Author: Brandmine Development Team
+Created: 2025-07-13
+Last Updated: 2025-09-15 - Added comprehensive documentation
 """
 
 import sys

@@ -1,15 +1,79 @@
-<!-- _includes/components/brands/meta-item.html -->
 {% comment %}
-  Component: components/brand/meta-item.html
-  Purpose: Displays a metadata item with label and tags/values
-  Parameters:
-    - label: The label to display
-    - items: Array of items to display
-    - type: Type of item (sector, market, subsector, etc.)
-    - linkable: Whether items should be links (default: true)
-    - translations: Translation lookup path
-    - lang: Language code
-    - base_url: Base URL for links
+================================================================================
+COMPONENT: Brand Metadata Item
+PATH: _includes/components/brands/meta-item.html
+PURPOSE: Flexible metadata display component for brand profile information with tags, links, and translations
+CREATED: 2024-01-01 | VERSION: 1.6
+================================================================================
+
+Features:
+- Flexible metadata display with label and value tag combinations
+- Linkable tags with automatic URL generation for discovery pages
+- Translation support for internationalized metadata values
+- Type-based CSS styling for different metadata categories
+- Configurable link behavior for static vs interactive displays
+- Responsive tag layout with proper spacing and wrapping
+- Semantic HTML structure for accessibility and SEO
+
+Parameters:
+- label (required): String - Display label for the metadata category
+- items (required): Array - List of metadata values/tags to display
+- type (required): String - Metadata type for styling and URLs ("sector", "market", "attribute", "signal")
+- linkable (optional): Boolean - Make tags clickable links to discovery pages. Default: true
+- translations (optional): Object - Translation mapping for tag values
+- lang (required): String - Language code for URL generation and translations
+- base_url (required): String - Site base URL for link construction
+
+Dependencies:
+- CSS: assets/css/layout/brand-header.scss for styling
+- URL Structure: /discover/[type]s/[item-slug]/ for discovery page links
+- Helpers: Built-in Liquid slugify filter for URL-safe tag names
+
+Usage Examples:
+{% include components/brands/meta-item.html label="Sectors" items=brand.sectors type="sector" lang=page.lang base_url=site.baseurl translations=sector_translations %}
+{% include components/brands/meta-item.html label="Markets" items=brand.markets type="market" lang=page.lang base_url=site.baseurl linkable=false %}
+{% include components/brands/meta-item.html label="Attributes" items=brand.attributes type="attribute" lang=page.lang base_url=site.baseurl %}
+
+Real-world Usage:
+Used in brand profile headers, founder profiles, and metadata display sections
+
+Metadata Type Integration:
+- sectors: Industry categories with olive green styling
+- markets: Geographic regions with sky blue styling
+- attributes: Brand qualities with orange styling
+- signals: Growth indicators with indigo styling
+
+BEM Structure:
+- .brand-header__meta-item (main metadata container)
+- .brand-header__meta-label (metadata category label)
+- .brand-header__tag (individual tag/value display)
+- .brand-header__tag--[type] (type-specific styling modifier)
+
+Accessibility:
+- Semantic HTML structure with proper label-value relationships
+- Screen reader friendly tag descriptions
+- High contrast tag styling for visibility
+- Keyboard navigation support for linked tags
+- Descriptive link text for discovery page navigation
+
+Responsive:
+- Mobile: Single column tag layout with full-width display
+- Tablet: Multi-column tag wrapping with optimized spacing
+- Desktop: Inline tag display with hover effects for links
+
+Performance Notes:
+- Efficient Liquid iteration with minimal DOM elements
+- CSS-only responsive behavior without JavaScript
+- Optimized URL generation with slugify filter
+- Cached translation lookups for internationalization
+- Clean HTML output with semantic structure
+
+URL Generation:
+- Automatic plural form creation (sector → sectors)
+- URL-safe slug generation with Jekyll slugify filter
+- Language-aware discovery page linking
+- Base URL integration for environment flexibility
+================================================================================
 {% endcomment %}
 
 {% assign linkable = include.linkable | default: true %}

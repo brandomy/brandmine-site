@@ -1,35 +1,151 @@
 {% comment %}
-  COMPONENT: Universal Carousel
-  PURPOSE: Shared carousel component for featured content across all pages
-  
-  PARAMETERS:
-    content_type (required): "brands" or "founders"
-    page_context (optional): "home-page", "brands-page", "founders-page" - for CSS custom properties
-    limit (optional): Number of items to display (default: 10)
-    display_mode (optional): "carousel", "grid", "mixed" (default: "carousel")
-    premium_only (optional): Show only premium content (featured_level >= 2)
-    title (optional): Custom section title
-    description (optional): Custom section description
-    cta_text (optional): Custom CTA button text
-    carousel_class (optional): Additional CSS classes
-  
-  USAGE:
-    {% include components/layout/carousel.html
-       content_type="brands"
-       page_context="home-page"
-       limit=10 %}
-       
-    {% include components/layout/carousel.html
-       content_type="founders"
-       page_context="founders-page"
-       limit=6
-       display_mode="grid" %}
-       
-  DEPENDENCIES:
-    - CSS: assets/css/components/layout/carousel.scss
-    - JS: assets/js/components/layout/carousel.js
-    - Helpers: helpers/brand-filter.html (for brands), helpers/founder-filter.html (for founders)
-    - Helpers: helpers/brand-card-selector.html, helpers/founder-card-selector.html
+================================================================================
+COMPONENT: Universal Carousel
+PATH: _includes/components/layout/carousel.html
+PURPOSE: Multi-content type carousel with grid and mixed display modes for featured content
+CREATED: 2024-01-01 | VERSION: 2.5
+================================================================================
+
+Features:
+- Universal content support for brands, founders, and case studies with type-specific filtering
+- Three display modes: carousel, grid, and mixed (hero + carousel) layouts
+- Premium content filtering with featured_level hierarchy and fallback logic
+- Context-aware CSS custom properties for page-specific styling variations
+- Navigation dots with automatic calculation based on content count and layout
+- Built-in empty state handling with graceful fallback messaging
+- CTA button integration with automatic URL generation for discovery pages
+- Responsive design with mobile-first carousel and desktop grid capabilities
+
+Parameters:
+- content_type (required): String - Content collection: "brands", "founders", "case-studies"
+- page_context (optional): String - Page type for CSS customization: "home-page", "brands-page", "founders-page". Default: "default-page"
+- limit (optional): Integer - Maximum items to display. Default: 10
+- display_mode (optional): String - Layout mode: "carousel", "grid", "mixed". Default: "carousel"
+- premium_only (optional): Boolean - Filter to premium content (featured_level >= 2). Default: false
+- title (optional): String - Custom section heading override
+- description (optional): String - Custom section description override
+- cta_text (optional): String - Custom CTA button text override
+- carousel_class (optional): String - Additional CSS classes for carousel container
+- lang (required): String - Language code for content filtering and translations
+
+Dependencies:
+- CSS: assets/css/components/layout/carousel.scss for carousel and grid layouts
+- JavaScript: assets/js/components/layout/carousel.js for interaction and navigation
+- Collections: site.brands, site.founders for Jekyll collection data
+- Data: site.data.case_studies for case study content
+- Helpers: brand-filter.html, brand-card-selector.html, founder-card-selector.html
+- Components: Individual card components for content type rendering
+
+Content Type Configurations:
+- brands: Featured brand carousel with business focus and market positioning
+- founders: Founder stories with leadership and entrepreneurship emphasis
+- case-studies: Success story showcases with transformation narratives
+
+Display Mode Details:
+- carousel: Horizontal scrolling layout with navigation dots and touch support
+- grid: Responsive grid display optimized for desktop viewing and comparison
+- mixed: Hero card + carousel combination for featured content emphasis
+
+Usage Examples:
+Homepage featured brands:
+{% raw %}{% include components/layout/carousel.html
+   content_type="brands"
+   page_context="home-page"
+   limit=8
+   display_mode="mixed"
+   lang=page.lang %}{% endraw %}
+
+Founders page grid:
+{% raw %}{% include components/layout/carousel.html
+   content_type="founders"
+   page_context="founders-page"
+   limit=12
+   display_mode="grid"
+   title="Leadership Excellence"
+   lang=page.lang %}{% endraw %}
+
+Premium brand carousel:
+{% raw %}{% include components/layout/carousel.html
+   content_type="brands"
+   premium_only=true
+   limit=6
+   cta_text="Explore Premium Brands"
+   lang=page.lang %}{% endraw %}
+
+Case studies showcase:
+{% raw %}{% include components/layout/carousel.html
+   content_type="case-studies"
+   page_context="case-studies-page"
+   display_mode="carousel"
+   description="Real transformations of BRICS+ brands"
+   lang=page.lang %}{% endraw %}
+
+Real-world Applications:
+- Homepage featured content sections with business intelligence focus
+- Category landing pages with filtered brand and founder showcases
+- Premium content sections for subscriber-only featured brands
+- Success story presentations with case study transformations
+
+BEM Structure:
+- .carousel (main carousel container with content type modifiers)
+- .carousel--[content_type] (content-specific styling variants)
+- .carousel__item (individual content item wrapper)
+- .universal-grid (grid layout alternative with responsive columns)
+- .universal-grid--[content_type] (grid content type modifiers)
+- .carousel-nav (navigation dots container with interaction states)
+- .carousel-nav-dot (individual navigation dot with active states)
+- .carousel-cta (call-to-action button container and styling)
+
+Accessibility:
+- Semantic HTML structure with proper heading hierarchy
+- ARIA attributes for carousel navigation and content relationships
+- Screen reader friendly navigation dots with descriptive labels
+- High contrast navigation elements meeting WCAG AA standards
+- Keyboard navigation support for carousel scrolling and grid browsing
+- Alternative text and descriptions for all visual content elements
+
+Responsive Design:
+- Mobile (320px+): Single column carousel with touch swipe navigation
+- Tablet (768px+): Multi-column layouts with enhanced spacing
+- Desktop (1024px+): Full grid capabilities with hover state enhancements
+- Large screens (1200px+): Optimized layouts with maximum content density
+
+Content Filtering Logic:
+- Premium filtering with featured_level >= 2 primary and featured=true fallback
+- Language-aware content selection with automatic lang parameter handling
+- Collection-specific filtering with optimized Liquid logic for performance
+- Empty state handling with graceful degradation and user messaging
+
+Navigation Features:
+- Automatic dot count calculation based on content size and display logic
+- Active state management with JavaScript-driven interaction handling
+- Touch-friendly navigation targets optimized for mobile interaction
+- Keyboard navigation support with arrow key and enter key handling
+
+Performance Optimization:
+- Efficient Liquid filtering with minimal collection iterations
+- Lazy loading preparation for JavaScript-enhanced carousels
+- CSS custom properties for dynamic theming without JavaScript overhead
+- Optimized DOM structure with semantic HTML for fast rendering
+
+Business Intelligence Integration:
+- BRICS+ market positioning in default content descriptions
+- Investment and partnership focus in brand carousel messaging
+- Leadership and entrepreneurship emphasis in founder presentations
+- Success story narratives in case study showcases
+
+Translation Integration:
+- Comprehensive multilingual support via helpers/t.html integration
+- Fallback text ensuring functionality across all language configurations
+- Content-specific translation keys for specialized messaging
+- Cultural adaptation of CTA text and value propositions
+
+Error Handling:
+- Parameter validation with graceful component degradation
+- Missing content type handling with clear developer messaging
+- Empty collection fallbacks with user-friendly empty state displays
+- Missing helper file handling with fallback filtering logic
+================================================================================
 {% endcomment %}
 
 {% comment %} Parameter validation {% endcomment %}

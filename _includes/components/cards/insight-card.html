@@ -1,21 +1,94 @@
 {% comment %}
-COMPONENT: Simple Insight Card
-PURPOSE: Streamlined insight display with category badge and minimal metadata for compact listings
+================================================================================
+COMPONENT: Insight Card
+PATH: _includes/components/cards/insight-card.html
+PURPOSE: Streamlined insight display card with category badges, configurable metadata, and responsive layouts
+CREATED: 2024-01-01 | VERSION: 1.8
+================================================================================
 
-USAGE: {% include components/cards/insight-card.html insight=insight %}
+Features:
+- Configurable insight card with component defaults integration
+- Category-specific styling with color-coded badges and icons
+- Responsive image handling with hero image display
+- Configurable metadata display (date, category, tags, excerpt)
+- Truncated excerpt with customizable word limits
+- Direct navigation to detailed insight articles
+- Component defaults system for site-wide configuration
+- Category icon integration with insights icon system
 
-PARAMETERS:
-- insight (required): Insight object with title, permalink, hero_image, category, date, excerpt, lang
+Parameters:
+- insight (required): Object - Complete insight data object containing:
+  - title: String - Insight headline/title
+  - permalink: String - URL path to insight detail page
+  - hero_image: String - Path to main insight image
+  - category: String - Primary insight category slug
+  - date: Date - Publication timestamp
+  - excerpt: String - Summary/description text
+  - lang: String - Content language code
+  - tags: Array - Topic and category tags (optional)
+- variant (optional): String - Display variant ("standard", "minimal", "featured"). Default: "standard"
+- excerpt_words (optional): Integer - Excerpt truncation limit. Default: component default (150)
+- show_date (optional): Boolean - Display publication date. Default: component default (true)
+- show_category (optional): Boolean - Display category badge. Default: component default (false)
+- show_tags (optional): Boolean - Display insight tags. Default: component default (false)
+- tag_limit (optional): Integer - Maximum tags to display. Default: component default (3)
+- layout (optional): String - Layout style ("minimal", "standard", "enhanced"). Default: component default
 
-DEPENDENCIES:
+Dependencies:
 - CSS: assets/css/components/cards/insight-card.scss
-- Data: site.data.translations
-- Includes: components/icons/icon.html, helpers/t.html
+- Components: components/icons/icon.html for category icons
+- Helpers: helpers/t.html for translation, helpers/component-defaults.html for configuration
+- Data: site.data.translations for category names and UI text
+- Icon System: insights icon set for category-specific icons
 
-VARIANTS:
-- insight-card--[category]: Category-specific styling via class
+Usage Examples:
+{% include components/cards/insight-card.html insight=insight %}
+{% include components/cards/insight-card.html insight=insight variant="featured" show_category=true %}
+{% include components/cards/insight-card.html insight=insight excerpt_words=100 show_tags=true tag_limit=2 %}
 
-NOTES: Reuses insight-card CSS. Category badge includes icon. Excerpt truncation and display options configurable via component defaults. Same responsive image strategy as standard insight-card.
+Real-world Usage:
+Used in insights grids, related content sections, category pages, and homepage insight highlights
+
+Category Integration:
+- brand-spotlight: Orange badge with brand icon
+- founders-journey: Indigo badge with founder icon
+- location-intelligence: Sky blue badge with location icon
+- market-momentum: Olive green badge with trend icon
+
+BEM Structure:
+- .insight-card (main card container)
+- .insight-card--[category] (category-specific styling)
+- .insight-card--[variant] (variant modifier)
+- .insight-card__image (hero image container)
+- .insight-card__content (text content area)
+- .insight-card__category (category badge)
+- .insight-card__title (insight headline)
+- .insight-card__excerpt (description text)
+- .insight-card__meta (metadata container)
+- .insight-card__date (publication date)
+- .insight-card__tags (tags container)
+- .insight-card__tag (individual tag)
+
+Accessibility:
+- Semantic article structure for each insight
+- Descriptive alt text for hero images
+- Clear heading hierarchy with insight titles
+- Screen reader friendly date formatting
+- High contrast category badges for visibility
+- Keyboard navigation support for insight links
+
+Responsive:
+- Mobile: Single column layout with full-width images
+- Tablet: Grid layout with optimized image ratios
+- Desktop: Enhanced grid with hover effects and transitions
+
+Performance Notes:
+- Component defaults system for efficient configuration
+- Optimized image loading with responsive sizing
+- Truncated excerpts prevent layout overflow
+- CSS-only responsive behavior with grid layouts
+- Minimal DOM structure for fast rendering
+================================================================================
 {% endcomment %}
 
 {% comment %} Component defaults for configurable behavior {% endcomment %}

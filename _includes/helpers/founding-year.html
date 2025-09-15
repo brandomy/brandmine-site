@@ -1,0 +1,120 @@
+{% comment %}
+================================================================================
+COMPONENT: Founding Year Display
+PATH: _includes/helpers/founding-year.html
+PURPOSE: Brand founding year display with localized labeling and flexible styling integration
+CREATED: 2024-01-01 | VERSION: 1.3
+================================================================================
+
+Features:
+- Conditional rendering based on founding year data availability
+- Localized label text via translation system with fallback support
+- Flexible CSS class prefix for integration across various component contexts
+- Clean semantic HTML structure for accessibility and styling
+- Professional business presentation appropriate for brand profiles
+- Graceful handling of missing or undefined founding year data
+
+Parameters:
+- brand (required): Object - Brand object containing founding_year field
+- class_name (optional): String - CSS class prefix for styling context. Default: "brand-card"
+- lang (required): String - Language code for label translation
+
+Dependencies:
+- Translations: site.data.translations[lang] for "Founded" label text
+- Helpers: helpers/t.html for translation rendering with fallback support
+- CSS: Styling through provided class_name prefix with __founding-year element
+
+Usage Examples:
+Brand card integration:
+{% raw %}{% include helpers/founding-year.html brand=brand lang=page.lang %}{% endraw %}
+
+Brand profile integration:
+{% raw %}{% include helpers/founding-year.html
+   brand=brand
+   class_name="brand-profile"
+   lang=page.lang %}{% endraw %}
+
+Search result integration:
+{% raw %}{% include helpers/founding-year.html
+   brand=brand
+   class_name="search-result"
+   lang=page.lang %}{% endraw %}
+
+Custom styling context:
+{% raw %}{% include helpers/founding-year.html
+   brand=brand
+   class_name="brand-summary"
+   lang=page.lang %}{% endraw %}
+
+Real-world Applications:
+- Brand profile headers with establishment date information
+- Brand card metadata with founding year context
+- Search result displays with brand age indicators
+- Investment analysis with company maturity assessment
+- Market intelligence with brand longevity metrics
+
+BEM Structure:
+- .{class_name}__founding-year (founding year container with contextual styling)
+
+Accessibility:
+- Semantic HTML structure with descriptive content
+- Screen reader friendly label and year combination
+- Clear text presentation without relying on visual styling alone
+- Proper content hierarchy within host component context
+
+Responsive Design:
+- Flexible styling through host component CSS class integration
+- Typography scaling inherited from parent component context
+- Mobile-friendly text sizing through responsive CSS implementation
+
+Translation Integration:
+- Localized "Founded" label via helpers/t.html component
+- Fallback to English "Founded" when translation unavailable
+- Cultural adaptation of founding year presentation
+- Professional terminology appropriate for business context
+
+Conditional Rendering Logic:
+- Automatic detection of founding_year field availability
+- Clean handling of nil, empty, or undefined founding year values
+- No output when founding year data unavailable
+- Graceful degradation ensuring no broken component display
+
+Performance Optimization:
+- Minimal DOM output with single container element
+- Efficient conditional rendering preventing unnecessary markup
+- CSS-only styling without JavaScript dependencies
+- Clean HTML structure for fast browser rendering
+
+Business Intelligence Context:
+- Professional presentation appropriate for investment analysis
+- Brand maturity assessment support through founding year display
+- Market intelligence integration with establishment date context
+- BRICS+ brand positioning with heritage and longevity emphasis
+
+Error Handling:
+- Safe rendering when brand object undefined or malformed
+- Graceful handling of missing founding_year field
+- Clean fallback when translation keys unavailable
+- Robust display regardless of CSS class name validity
+
+Development Notes:
+- Flexible integration supporting various component architectures
+- Clean separation between content logic and styling responsibilities
+- Professional business presentation foundation
+- Minimal component scope focused on single data point display
+
+Heritage Brand Support:
+- Founding year display supporting heritage brand positioning
+- Professional establishment date presentation for credibility
+- Investment analysis support through company age indication
+- Market positioning with longevity and experience emphasis
+================================================================================
+{% endcomment %}
+
+{% assign class_prefix = include.class_name | default: "brand-card" %}
+
+{% if brand.founding_year %}
+  <div class="{{ class_prefix }}__founding-year">
+    {% include helpers/t.html key="brand.founding_year" fallback="Founded" %} {{ brand.founding_year }}
+  </div>
+{% endif %}

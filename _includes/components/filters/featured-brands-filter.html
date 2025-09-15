@@ -1,12 +1,68 @@
 {% comment %}
-  Component: components/filters/featured-brands-filter.html
-  Purpose: Featured brands filter for insights sidebar
-  Parameters:
-    - insights: Array of insights to filter (required)
-    - heading: Section heading (default from translations)
-    - limit: Number of brands to show (default: 5)
-  Dependencies:
-    - assets/css/components/filters/featured-brands-filter.scss
+================================================================================
+COMPONENT: Featured Brands Filter
+PATH: _includes/components/filters/featured-brands-filter.html
+PURPOSE: Sidebar filter component displaying featured brands with insight counts and navigation links
+CREATED: 2024-01-01 | VERSION: 1.3
+================================================================================
+
+Features:
+- Featured brand extraction from insights collection
+- Dynamic insight count display per brand
+- Branded navigation links to brand-specific insight pages
+- Truncated display with "view all" expansion
+- Localized brand names and interface text
+- Empty state handling for no featured brands
+- Cross-collection brand data resolution
+
+Parameters:
+- insights (required): Array - Collection of insight objects containing brand references
+- heading (optional): String - Custom section heading. Default: translated "Featured Brands"
+- limit (optional): Integer - Maximum number of brands to display. Default: 5
+- show_counts (optional): Boolean - Display insight count per brand. Default: true
+- link_format (optional): String - URL pattern for brand links. Default: "/insights/brands/{slug}/"
+
+Dependencies:
+- CSS: assets/css/components/filters/featured-brands-filter.scss
+- Collections: site.brands for brand data resolution
+- Data: site.data.translations for interface text
+- Helpers: Liquid where filters for brand matching
+
+Usage Examples:
+{% include components/filters/featured-brands-filter.html insights=site.insights %}
+{% include components/filters/featured-brands-filter.html insights=filtered_insights heading="Key Brands" limit=8 %}
+{% include components/filters/featured-brands-filter.html insights=latest_insights show_counts=false %}
+
+Real-world Usage:
+Used in insights sidebar, discovery pages, and brand overview sections
+
+BEM Structure:
+- .insights-all__sidebar-section (main filter container)
+- .insights-all__sidebar-heading (section heading)
+- .insights-all__featured-brands (brands list container)
+- .insights-all__brand-link (individual brand link)
+- .insights-all__brand-count (insight count badge)
+- .insights-all__view-all-link (expansion link)
+- .insights-all__no-brands (empty state message)
+
+Accessibility:
+- Semantic heading structure for sidebar organization
+- Descriptive link text with brand names
+- Screen reader friendly count indicators
+- Clear empty state messaging
+- Logical tab order for keyboard navigation
+
+Responsive:
+- Mobile: Single column brand list with touch-friendly links
+- Tablet: Enhanced spacing with readable count badges
+- Desktop: Optimized sidebar layout with hover states
+
+Performance Notes:
+- Efficient brand extraction using Liquid map and flatten
+- Minimal DOM queries with where filter optimization
+- Cached brand data lookups from Jekyll collections
+- Lazy loading support for brand count calculations
+================================================================================
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}

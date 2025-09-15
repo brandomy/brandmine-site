@@ -1,23 +1,73 @@
 {% comment %}
-Component: components/ui/tooltip.html
-Purpose: Accessible tooltip component for contextual help
+================================================================================
+COMPONENT: Tooltip
+PATH: _includes/components/ui/tooltip.html
+PURPOSE: Accessible tooltip component for contextual help and information display
+CREATED: 2024-01-01 | VERSION: 1.3
+================================================================================
+
+Features:
+- Accessible tooltip with ARIA attributes and screen reader support
+- Four positioning options (top, bottom, left, right) with smart placement
+- Multiple trigger modes (hover, click, focus) for different interaction patterns
+- Content wrapping capability for any HTML elements
+- Automatic positioning and collision detection
+- Responsive design with mobile-friendly touch handling
+- Keyboard navigation and focus management
+- CSS-only implementation with optional JavaScript enhancement
 
 Parameters:
-- text (required): Tooltip text content
-- position (optional): Tooltip position - "top", "bottom", "left", "right" (default: "top")
-- trigger (optional): Trigger event - "hover", "click", "focus" (default: "hover")
-- class_name (optional): Additional CSS classes
-- id (optional): Unique ID for the tooltip
+- text (required): String - Tooltip content text to display
+- position (optional): String - Tooltip placement ("top", "bottom", "left", "right"). Default: "top"
+- trigger (optional): String - Interaction trigger ("hover", "click", "focus"). Default: "hover"
+- class_name (optional): String - Additional CSS classes for custom styling
+- id (optional): String - Unique identifier for the tooltip element
+- max_width (optional): String - Maximum tooltip width (CSS value). Default: "200px"
 
-Content should be wrapped with this component
+Dependencies:
+- CSS: assets/css/components/ui/tooltip.scss
+- JavaScript: Optional tooltip.js for enhanced positioning and interactions
+- ARIA: Built-in accessibility attributes and screen reader support
 
-Usage:
+Usage Examples:
 {% include components/ui/tooltip.html text="This helps you understand the feature" %}
   <button>Help</button>
 {% endcapture %}
 
-{% include components/ui/tooltip.html text="Click to edit this brand" position="bottom" %}
+{% include components/ui/tooltip.html text="Click to edit this brand" position="bottom" trigger="click" %}
   <span class="edit-icon">✏️</span>
+{% endcapture %}
+
+Real-world Usage:
+Used for help text, feature explanations, form field descriptions, and UI guidance
+
+BEM Structure:
+- .tooltip (main tooltip container)
+- .tooltip--[position] (position modifier: top, bottom, left, right)
+- .tooltip--[trigger] (trigger modifier: hover, click, focus)
+- .tooltip__trigger (wrapped content that triggers tooltip)
+- .tooltip__content (tooltip bubble containing text)
+- .tooltip__arrow (positioning arrow pointing to trigger)
+
+Accessibility:
+- aria-describedby linking tooltip to trigger element
+- role="tooltip" for screen reader identification
+- Keyboard navigation support (Escape to close)
+- Focus management for click-triggered tooltips
+- High contrast colors for visibility
+
+Responsive:
+- Mobile: Touch-friendly triggers with appropriate sizing
+- Tablet: Enhanced hover states and improved positioning
+- Desktop: Full hover interaction with precise positioning
+
+Performance Notes:
+- CSS-only implementation for basic functionality
+- Minimal DOM impact with efficient positioning
+- Optional JavaScript enhancement for advanced features
+- Lightweight tooltip bubble with optimized rendering
+================================================================================
+{% endcomment %}
 {% endcapture %}
 {% endcomment %}
 

@@ -1,31 +1,98 @@
 {% comment %}
-Component: components/ui/modal.html
-Purpose: Accessible modal dialog component
+================================================================================
+COMPONENT: Modal Dialog
+PATH: _includes/components/ui/modal.html
+PURPOSE: Accessible modal dialog component with multiple sizes and interaction patterns
+CREATED: 2024-01-01 | VERSION: 2.3
+================================================================================
+
+Features:
+- Four size variants (small, medium, large, full) for different content needs
+- Full accessibility compliance with ARIA attributes and focus management
+- Backdrop click and ESC key closing with configurable behavior
+- Smooth CSS animations with transform and opacity transitions
+- Comprehensive inline styling with responsive breakpoints
+- Content flexibility via parameter or content block patterns
+- Translation support for UI elements like close button labels
+- JavaScript API integration for programmatic control
 
 Parameters:
-- id (required): Unique ID for the modal
-- title (optional): Modal title
-- size (optional): Modal size - "small", "medium", "large", "full" (default: "medium")
-- closable (optional): Can be closed by user (default: true)
-- backdrop_close (optional): Close on backdrop click (default: true)
-- class_name (optional): Additional CSS classes
+- id (required): String - Unique identifier for modal instance and ARIA labeling
+- title (optional): String - Modal header title text
+- size (optional): String - Size variant ("small", "medium", "large", "full"). Default: "medium"
+- closable (optional): Boolean - Show close button and allow user dismissal. Default: true
+- backdrop_close (optional): Boolean - Close modal on backdrop click. Default: true
+- class_name (optional): String - Additional CSS classes for custom styling
+- content (optional): String - Modal body content (alternative to content blocks)
 
-Content should be passed as the content between include tags or via content parameter
+Dependencies:
+- CSS: Comprehensive inline styles included in component
+- JavaScript: Optional modal.js for enhanced functionality (open/close API)
+- Data: site.data.translations for close button localization
+- ARIA: Built-in accessibility attributes and screen reader support
 
-Usage:
+Usage Examples:
 {% capture modal_content %}
   <p>This is modal content.</p>
   <button class="btn btn--primary" onclick="closeModal('example-modal')">Save</button>
 {% endcapture %}
 {% include components/ui/modal.html id="example-modal" title="Edit Brand" content=modal_content %}
 
-Or with content block:
-{% include components/ui/modal.html id="confirm-modal" title="Confirm Action" %}
+{% include components/ui/modal.html id="confirm-modal" title="Confirm Action" size="small" %}
   <p>Are you sure you want to delete this brand?</p>
   <div class="modal-actions">
     <button class="btn btn--danger" onclick="deleteBrand(); closeModal('confirm-modal')">Delete</button>
     <button class="btn btn--outline" onclick="closeModal('confirm-modal')">Cancel</button>
   </div>
+{% endcapture %}
+
+Real-world Usage:
+Used for confirmations, forms, image galleries, detailed views, and user interactions
+
+Size Specifications:
+- Small (400px): Confirmations, alerts, simple forms
+- Medium (600px): Standard content, moderate forms, default
+- Large (800px): Complex forms, detailed content, image galleries
+- Full (95vw/95vh): Maximum content, media viewers, dashboards
+
+BEM Structure:
+- .modal (main modal overlay)
+- .modal--[size] (size modifier: small, medium, large, full)
+- .modal--open (active state modifier)
+- .modal__backdrop (background overlay for click-to-close)
+- .modal__container (centered positioning wrapper)
+- .modal__content (main content area with background)
+- .modal__header (title and close button area)
+- .modal__title (modal title heading)
+- .modal__close (close button with icon)
+- .modal__body (main content area)
+
+Accessibility:
+- role="dialog" and aria-modal="true" for screen readers
+- aria-labelledby linking to modal title
+- aria-hidden state management for background content
+- Focus trapping within modal when open
+- Keyboard navigation support (ESC to close, Tab navigation)
+- Screen reader friendly close button with proper labeling
+
+Responsive:
+- Mobile: Full-width modals with minimal margins
+- Tablet: Constrained widths with enhanced touch targets
+- Desktop: Fixed widths with hover states and precise positioning
+
+Performance Notes:
+- CSS-only animations with hardware acceleration
+- Minimal DOM structure for fast rendering
+- Inline styles eliminate additional HTTP requests
+- Efficient show/hide with display and opacity properties
+- Smooth 150ms transitions for professional feel
+
+JavaScript API:
+- openModal(id): Programmatically open modal
+- closeModal(id): Programmatically close modal
+- Focus management and keyboard event handling
+- Event callbacks for open/close lifecycle
+================================================================================
 {% endcomment %}
 
 {% assign size = include.size | default: "medium" %}

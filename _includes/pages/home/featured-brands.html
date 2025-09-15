@@ -1,9 +1,115 @@
 {% comment %}
-Page Section: pages/home/featured-brands.html
+================================================================================
+PAGE SECTION: Homepage Featured Brands
+PATH: _includes/pages/home/featured-brands.html
+PURPOSE: Featured brand carousel with business intelligence focus and investment appeal
+CREATED: 2024-01-01 | VERSION: 2.1
+================================================================================
 
-PURPOSE: Featured brands carousel matching Case Studies design pattern
-DEPENDENCIES: helpers/brand-filter.html, components/cards/brand-card.html
-PARAMETERS: All optional with sensible defaults
+Features:
+- Featured brand carousel with professional business presentation
+- Advanced brand filtering via helpers/brand-filter.html with featured status prioritization
+- Navigation dots with intelligent count calculation based on content density
+- Call-to-action integration driving traffic to comprehensive brand discovery
+- Empty state handling with graceful fallback messaging
+- Translation integration for multilingual homepage presentation
+- Responsive carousel layout optimized for all device sizes
+- Business intelligence positioning with BRICS+ market emphasis
+
+Parameters:
+- limit (optional): Integer - Maximum featured brands to display. Default: 10
+- lang (implicit): String - Page language from page.lang for content filtering
+
+Dependencies:
+- Helpers: helpers/brand-filter.html for featured brand selection and filtering
+- Components: components/cards/brand-card.html for consistent brand presentation
+- Translations: site.data.translations[lang] for all section text and messaging
+- CSS: Carousel styling with featured brand layout optimization
+- JavaScript: Carousel navigation and interaction handling
+
+Brand Selection Logic:
+- Featured brand filtering prioritizing high-quality, investment-ready brands
+- Language-aware brand selection ensuring content availability
+- Professional curation emphasizing founder-led brands with growth potential
+- BRICS+ market focus with geographic and sector diversification
+
+Usage Examples:
+Standard homepage integration:
+This component is typically used directly in homepage layouts without parameters
+
+Custom limit integration:
+{% raw %}{% include pages/home/featured-brands.html limit=8 %}{% endraw %}
+
+Real-world Applications:
+- Homepage hero section with featured brand showcase
+- Investment portal with curated brand opportunities
+- Market intelligence dashboard with highlighted growth prospects
+- Business development interface with partnership opportunities
+- Brand discovery with featured content emphasis
+
+BEM Structure:
+- .carousel (main carousel container with featured brand styling)
+- .carousel__item (individual brand card wrapper with consistent spacing)
+- .carousel-nav (navigation dots with interactive state management)
+- .carousel-nav-dot (individual navigation dot with active/inactive states)
+- .featured-brands__more (call-to-action container with discovery link)
+
+Accessibility:
+- Semantic HTML structure with proper heading hierarchy (h2 for section title)
+- Screen reader friendly carousel navigation with descriptive dot labels
+- High contrast brand card presentation meeting WCAG AA standards
+- Keyboard navigation support for carousel scrolling and brand selection
+- Alternative text and descriptions for all brand visual elements
+- Clear call-to-action text with descriptive link purpose
+
+Responsive Design:
+- Mobile (320px+): Single brand display with touch swipe navigation
+- Tablet (768px+): Two-brand layout with enhanced carousel controls
+- Desktop (1024px+): Multi-brand carousel with navigation dot optimization
+- Large screens (1200px+): Full carousel capabilities with maximum brand density
+
+Carousel Features:
+- Intelligent navigation dot calculation preventing overcrowded controls
+- Touch-friendly navigation optimized for mobile brand browsing
+- Automatic brand count detection with conditional navigation display
+- Professional carousel presentation appropriate for business audience
+
+Translation Integration:
+- Section title and subtitle via helpers/t.html with home.featured_brands namespace
+- Call-to-action text localization for discovery page navigation
+- Empty state messaging with professional tone appropriate for business context
+- Cultural adaptation of brand positioning and value propositions
+
+Performance Optimization:
+- Efficient brand filtering with helper component delegation
+- Minimal DOM structure with semantic carousel implementation
+- CSS-only responsive behavior with JavaScript enhancement for navigation
+- Optimized brand card loading with consistent presentation patterns
+
+Business Intelligence Context:
+- Featured brand selection emphasizing investment and partnership opportunities
+- Professional presentation appropriate for investor and business development audience
+- BRICS+ market positioning with emerging market growth emphasis
+- Brand discovery facilitating business development and partnership formation
+
+Call-to-Action Strategy:
+- Strategic discovery page navigation encouraging deeper brand exploration
+- Professional button styling with primary CTA appearance
+- Tracking integration for homepage conversion and engagement analytics
+- Clear value proposition driving comprehensive brand database access
+
+Error Handling:
+- Graceful handling when no featured brands available
+- Professional empty state messaging maintaining homepage quality
+- Safe carousel rendering with missing or incomplete brand data
+- Robust navigation dot calculation preventing broken carousel controls
+
+Development Notes:
+- Clean integration with brand filtering and card component architecture
+- Professional styling foundation appropriate for business intelligence applications
+- Scalable carousel design accommodating various brand collection sizes
+- Homepage-optimized presentation supporting conversion and engagement goals
+================================================================================
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: 'en' %}

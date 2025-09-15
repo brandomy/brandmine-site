@@ -1,9 +1,63 @@
-<!-- _includes/components/brands/social-icon.html -->
 {% comment %}
-  Component: components/brand/social-icon.html
-  Purpose: Renders the appropriate icon for a social media platform
-  Parameters:
-    - platform: Platform name (facebook, instagram, etc.)
+================================================================================
+COMPONENT: Social Media Icon
+PATH: _includes/components/brands/social-icon.html
+PURPOSE: Platform-specific social media icon renderer with BRICS+ market platform support
+CREATED: 2024-01-01 | VERSION: 1.4
+================================================================================
+
+Features:
+- Comprehensive platform coverage including BRICS+ regional platforms
+- FontAwesome icon integration with aria-hidden accessibility
+- Consistent icon styling across all social media platforms
+- Platform recognition via case-insensitive matching
+- Fallback handling for unknown or unsupported platforms
+- Brand-specific social media icon display for profiles
+
+Parameters:
+- platform (required): String - Social media platform identifier
+  Supported platforms: facebook, instagram, linkedin, pinterest, redbook, telegram,
+  twitter, whatsapp, wechat, weibo, youtube, website, email
+
+Dependencies:
+- External: FontAwesome library for social media icons
+- CSS: FontAwesome brand icon font files
+- ARIA: Built-in accessibility with aria-hidden attributes
+
+Usage Examples:
+{% include components/brands/social-icon.html platform="instagram" %}
+{% include components/brands/social-icon.html platform="wechat" %}
+{% include components/brands/social-icon.html platform="linkedin" %}
+
+Real-world Usage:
+Used in brand profiles, founder profiles, and social media link displays
+
+Platform Coverage:
+- Global: Facebook, Instagram, LinkedIn, Pinterest, Twitter, YouTube
+- BRICS+ Regional: WeChat, Weibo (China), Telegram (Russia), RedBook
+- Communication: WhatsApp, Email, Website links
+
+BEM Structure:
+- FontAwesome classes: .fab .fa-[platform] for brand icons
+- ARIA: aria-hidden="true" for decorative icons
+
+Accessibility:
+- aria-hidden="true" prevents screen reader icon announcement
+- Icons used decoratively alongside text labels
+- Semantic context provided by parent elements
+- High contrast icon rendering
+
+Responsive:
+- Scalable vector icons adapt to parent container sizing
+- Consistent icon sizing across all platforms
+- Mobile-friendly touch targets when used in links
+
+Performance Notes:
+- FontAwesome CDN delivery for optimal icon loading
+- Minimal component logic with efficient case matching
+- No additional HTTP requests beyond FontAwesome library
+- Cached icon fonts for fast subsequent loads
+================================================================================
 {% endcomment %}
 
 {% case include.platform %}

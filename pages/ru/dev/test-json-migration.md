@@ -39,8 +39,8 @@ ref: test-json-migration
     </a>
 
     <h3>bem-taxonomy-tag.html</h3>
-    {% include components/helpers/bem-taxonomy-tag.html type="sector" value="wine" block="test-tag" %}
-    {% include components/helpers/bem-taxonomy-tag.html type="market" value="russia" block="test-tag" element="item" %}
+    {% include helpers/bem-taxonomy-tag.html type="sector" value="wine" block="test-tag" %}
+    {% include helpers/bem-taxonomy-tag.html type="market" value="russia" block="test-tag" element="item" %}
   </section>
 
   <section class="test-section">

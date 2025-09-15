@@ -1,13 +1,91 @@
 {% comment %}
-  Unified Founder Card Component
-  
-  Parameters:
-  - founder (required): Founder object
-  - variant (optional): "standard" or "featured", defaults to "standard"
-  
-  Usage:
-  {% include components/cards/founder-card.html founder=founder %}
-  {% include components/cards/founder-card.html founder=founder variant="featured" %}
+================================================================================
+COMPONENT: Founder Card
+PATH: _includes/components/cards/founder-card.html
+PURPOSE: Unified founder display card with standard and featured variants for founder profiles and listings
+CREATED: 2024-01-01 | VERSION: 2.1
+================================================================================
+
+Features:
+- Two distinct variants: standard (compact vertical) and featured (horizontal layout)
+- Responsive image handling with collection-image integration
+- Schema.org Person microdata for SEO enhancement
+- Professional achievement highlighting with key accomplishment display
+- Expertise tag system with limited display for clean layouts
+- Location display with country name translation support
+- Placeholder handling for missing images with initials fallback
+- Direct navigation to detailed founder profile pages
+
+Parameters:
+- founder (required): Object - Complete founder data object containing:
+  - name/title: String - Founder's full name
+  - ref: String - Unique identifier for URL generation
+  - position: String - Job title or role description
+  - company: String - Associated company or organization
+  - city: String - Primary location city
+  - country: String - Country code for location and translation
+  - brief_bio: String - Short biographical description
+  - professional_background: String - Career summary or achievements
+  - expertise: Array - List of skill/expertise tags
+  - images: Object - Image data structure with portrait/headshot references
+- variant (optional): String - Display variant ("standard", "featured"). Default: "standard"
+
+Dependencies:
+- CSS: assets/css/components/cards/founder-card.scss
+- Components: components/images/collection-image.html for responsive images
+- Helpers: helpers/t.html for translation support
+- Data: site.data.countries for country name translation
+- Schema: Schema.org Person microdata structure
+
+Usage Examples:
+{% include components/cards/founder-card.html founder=founder %}
+{% include components/cards/founder-card.html founder=founder variant="featured" %}
+{% include components/cards/founder-card.html founder=selected_founder variant="standard" %}
+
+Real-world Usage:
+Used in founder grids, featured founder sections, founder profile listings, and related founders
+
+Variant Differences:
+- Standard: Compact vertical layout for grid displays, headshot image, truncated bio (120 chars), 3 expertise tags
+- Featured: Horizontal carousel layout, full portrait image, complete bio display, 4 expertise tags, enhanced styling
+
+BEM Structure:
+- .founder-card (main card container)
+- .founder-card--[variant] (variant modifier: standard, featured)
+- .founder-card__portrait (featured variant full image area)
+- .founder-card__headshot (standard variant circular image)
+- .founder-card__content (main content area for featured variant)
+- .founder-card__header (name and title section)
+- .founder-card__name (founder name heading)
+- .founder-card__position (job title/role)
+- .founder-card__location (location with icon)
+- .founder-card__achievement (key accomplishment section)
+- .founder-card__description (biographical text)
+- .founder-card__tags (expertise tags container)
+- .founder-card__tag (individual expertise tag)
+- .founder-card__footer (navigation/CTA area)
+- .founder-card__link/.founder-card__cta (profile link)
+
+Accessibility:
+- Semantic article element with Schema.org Person microdata
+- Proper heading hierarchy with h3 founder names
+- Descriptive alt text for founder images
+- Screen reader friendly location and achievement icons
+- High contrast text and background combinations
+- Keyboard navigation support for profile links
+
+Responsive:
+- Mobile: Single column layout with touch-friendly elements
+- Tablet: Optimized spacing and image sizing for both variants
+- Desktop: Full layout with hover effects and enhanced imagery
+
+Performance Notes:
+- Efficient image loading through collection-image component
+- Minimal DOM structure with semantic HTML
+- CSS-only responsive behavior
+- Optimized image sizes with responsive srcset
+- Truncated content prevents layout overflow
+================================================================================
 {% endcomment %}
 
 {% assign variant = include.variant | default: "standard" %}

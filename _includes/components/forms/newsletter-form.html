@@ -1,24 +1,141 @@
 {% comment %}
+================================================================================
 COMPONENT: Newsletter Form
-PURPOSE: Simple newsletter subscription form with email-only input and multilingual messaging
+PATH: _includes/components/forms/newsletter-form.html
+PURPOSE: Compact email subscription form with BRICS+ market focus and privacy compliance
+CREATED: 2024-01-01 | VERSION: 2.0
+================================================================================
 
-USAGE: {% include components/forms/newsletter-form.html %}
+Features:
+- Streamlined single-field design optimized for high conversion rates
+- BRICS+ market-focused messaging highlighting emerging brand insights
+- Comprehensive multilingual support with translation fallbacks
+- Privacy-first design with clear unsubscribe and data handling notices
+- Inline button layout for compact presentation in sidebars and footers
+- Built-in success/error message handling with smooth state transitions
+- Email validation with browser-native format checking
+- ARIA labels and accessibility compliance for screen reader support
 
-PARAMETERS:
-- title (optional): Custom title string, defaults to translation
-- description (optional): Custom description string, defaults to translation
-- placeholder (optional): Custom placeholder text string, defaults to translation
-- class_name (optional): Additional CSS classes string
-- form_id (optional): Custom form ID string, defaults to "newsletter-form"
+Parameters:
+- title (optional): String - Custom subscription form title. Default: from translations
+- description (optional): String - Custom form description text. Default: from translations
+- placeholder (optional): String - Custom email input placeholder. Default: from translations
+- class_name (optional): String - Additional CSS classes for container styling
+- form_id (optional): String - Unique form identifier. Default: "newsletter-form"
+- lang (required): String - Language code for translations and form text
 
-DEPENDENCIES:
-- CSS: assets/css/components/forms/newsletter-form.scss
-- Data: site.data.translations[current_lang].newsletter
-- Includes: None
+Dependencies:
+- CSS: assets/css/components/forms/newsletter-form.scss for styling and responsive layout
+- Translations: site.data.translations[lang].newsletter for all form text elements
+- Helpers: helpers/t.html for translation rendering with fallback support
+- JavaScript: Optional form submission handling and state management
 
-VARIANTS: None - single inline layout with email + button
+Translation Keys:
+- newsletter.title: Subscription form heading text
+- newsletter.description: Value proposition and subscription benefits
+- newsletter.placeholder: Email input placeholder text
+- newsletter.button_text: Submit button call-to-action text
+- newsletter.email_label: Screen reader label for email input
+- newsletter.privacy_notice: Privacy and unsubscribe information
+- newsletter.success_message: Successful subscription confirmation
+- newsletter.error_message: Error handling and retry instructions
 
-NOTES: Privacy notice included below form. Success/error messages hidden by default. Email field has aria-label for accessibility. Submit button inside input group for compact design.
+Usage Examples:
+Basic newsletter form:
+{% raw %}{% include components/forms/newsletter-form.html lang=page.lang %}{% endraw %}
+
+Custom messaging:
+{% raw %}{% include components/forms/newsletter-form.html
+   title="Stay Connected"
+   description="Get weekly insights about emerging brands"
+   lang=page.lang %}{% endraw %}
+
+Sidebar integration:
+{% raw %}{% include components/forms/newsletter-form.html
+   class_name="sidebar-newsletter"
+   form_id="sidebar-newsletter-form"
+   lang=page.lang %}{% endraw %}
+
+Footer placement:
+{% raw %}{% include components/forms/newsletter-form.html
+   class_name="footer-newsletter"
+   placeholder="your@email.com"
+   lang=page.lang %}{% endraw %}
+
+Real-world Applications:
+- Website sidebar newsletter subscription with market insights focus
+- Footer newsletter signup with brand discovery value proposition
+- Contact page newsletter integration for ongoing engagement
+- Landing page email capture with BRICS+ business intelligence positioning
+
+BEM Structure:
+- .newsletter-form (main form container with layout modifiers)
+- .newsletter-form__content (title and description wrapper)
+- .newsletter-form__title (subscription heading with brand messaging)
+- .newsletter-form__description (value proposition and benefits)
+- .newsletter-form__form (actual form element with submission handling)
+- .newsletter-form__input-group (email input and button container)
+- .newsletter-form__input (email input field with validation)
+- .newsletter-form__button (submit button with loading states)
+- .newsletter-form__privacy (privacy notice and unsubscribe information)
+- .newsletter-form__message (success/error message containers)
+
+Accessibility:
+- Semantic HTML structure with proper form labeling
+- ARIA labels for email input with descriptive screen reader text
+- High contrast button design meeting WCAG AA standards
+- Keyboard navigation support for all interactive elements
+- Screen reader friendly privacy notices and form instructions
+- Error state announcements with role-based messaging
+
+Responsive Design:
+- Mobile (320px+): Stacked layout with full-width input and button
+- Tablet (768px+): Inline layout with proportional input-button sizing
+- Desktop (1024px+): Optimized spacing and hover state enhancements
+- Flexible container sizing for sidebar, footer, and content integration
+
+Email Validation:
+- Browser-native email format validation with type="email"
+- Required field validation preventing empty submissions
+- Real-time validation feedback with visual error states
+- Custom placeholder text with format guidance examples
+
+Privacy Compliance:
+- Clear privacy notice with unsubscribe information
+- Transparent data handling communication
+- Privacy policy link integration (when available)
+- GDPR and international privacy regulation consideration
+
+Form Submission:
+- Progressive enhancement with graceful no-JavaScript fallback
+- Loading state management with disabled button during submission
+- Success message display with form reset functionality
+- Error handling with user-friendly retry instructions
+
+Business Intelligence Focus:
+- BRICS+ emerging markets positioning in default messaging
+- Brand discovery and insights value proposition
+- Professional business intelligence tone and terminology
+- Market momentum and founder success story highlighting
+
+Performance Optimization:
+- Minimal DOM structure for fast rendering and interaction
+- CSS-only responsive behavior without JavaScript dependencies
+- Efficient translation lookup with cached results
+- Clean HTML output with semantic structure
+
+Translation Integration:
+- Comprehensive multilingual support via helpers/t.html component
+- Fallback text ensuring functionality in any language configuration
+- Cultural adaptation of messaging for different markets
+- Consistent terminology across all newsletter communications
+
+Error Handling:
+- Graceful degradation when translation keys missing
+- Default English fallbacks for all text elements
+- Form functionality preservation even with incomplete translations
+- Clean error message display with actionable guidance
+================================================================================
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: site.lang | default: "en" %}

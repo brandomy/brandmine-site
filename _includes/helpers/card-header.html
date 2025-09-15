@@ -1,5 +1,5 @@
 {% comment %}
-  Component: components/helpers/card-header.html
+  Component: helpers/card-header.html
 
   Purpose: Displays a standard card header with logo, title, and metadata
 
@@ -10,8 +10,8 @@
 
   Dependencies:
     - helpers/brand-image.html
-    - components/helpers/founding-year.html
-    - components/helpers/location-display.html
+    - helpers/founding-year.html
+    - helpers/location-display.html
 {% endcomment %}
 
 {% assign class_prefix = include.class_name | default: "brand-card" %}
@@ -47,7 +47,7 @@
 
     {% if include.show_location and brand.city and brand.country %}
       <p class="{{ class_prefix }}__location">
-        {% include components/helpers/location-display.html
+        {% include helpers/location-display.html
           city=brand.city
           country=brand.country
           class="location" %}

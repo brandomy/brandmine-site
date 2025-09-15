@@ -1,29 +1,64 @@
 {% comment %}
-  Include Name: layout/header.html
-  
-  Purpose: Renders the site header with branding, navigation toggle, and language selector.
-  Used on all pages of the site to provide consistent navigation.
-  
-  Parameters:
-  - None directly passed to the include, but it uses:
-    - page.lang: Current page language
-    - site.data.translations: For localized site title
-  
-  Dependencies:
-  - Includes: components/navigation/language-selector.html, components/navigation/navigation.html
-  - CSS: header.css
-  - JavaScript: header.js (for mobile toggle functionality)
-  - Data: site.data.translations[lang].site.title
-  
-  Example Usage:
-  {% include layout/header.html %}
-  
-  Notes:
-  - Includes a mobile-friendly navigation toggle button
-  - Automatically uses the correct language for the site title
-  - Contains the language selector component
-  - The navigation is loaded from a separate include for modularity
-  - Toggle button has appropriate ARIA attributes for accessibility
+================================================================================
+COMPONENT: Site Header
+PATH: _includes/layout/header.html
+PURPOSE: Renders the global site header with branding, navigation toggle, and language selector
+CREATED: 2024-01-01 | VERSION: 2.1
+================================================================================
+
+Features:
+- Responsive site header with brand logo/title
+- Mobile-friendly navigation toggle with accessibility
+- Integrated language selector for multilingual support
+- Semantic HTML5 header structure
+- ARIA attributes for screen reader compatibility
+
+Parameters:
+- No direct parameters (uses global site and page variables)
+- page.lang (implicit): String - Current page language for localization
+- site.data.translations (implicit): Object - Translation data for site title
+
+Dependencies:
+- CSS: assets/css/layout/header.scss
+- JavaScript: assets/js/components/navigation/header-toggle.js
+- Helpers: helpers/t.html (translation helper)
+- Components:
+  - components/navigation/language-selector-optimized.html
+  - components/navigation/navigation-optimized.html
+- Data: site.data.translations for multilingual titles
+
+Usage Examples:
+{% include layout/header.html %}
+
+Real-world Usage:
+Used in _layouts/default.html as the primary site header across all pages
+
+BEM Structure:
+- .header (main header container)
+- .header__container (content wrapper)
+- .header__branding (logo/title area)
+- .header__title (site title link)
+- .header__toggle (mobile navigation toggle)
+- .header__toggle-icon (hamburger icon)
+- .header__lang (language selector area)
+
+Accessibility:
+- ARIA labels on toggle button for screen readers
+- aria-expanded state tracking for navigation
+- aria-controls linking toggle to navigation
+- Semantic HTML5 header element
+- Keyboard navigation support via included components
+
+Responsive:
+- Mobile: Compact header with toggle button
+- Tablet: Enhanced spacing and typography
+- Desktop: Full horizontal layout with all elements visible
+
+Performance Notes:
+- Minimal DOM structure for fast rendering
+- Optimized includes for language selector and navigation
+- CSS Grid/Flexbox for efficient layout
+================================================================================
 {% endcomment %}
 
 {% comment %} Header translations now handled via helpers/t.html {% endcomment %}

@@ -1,29 +1,60 @@
 {% comment %}
-  Include Name: utilities/google-analytics.html
-  
-  Purpose: Adds Google Analytics (GA4) tracking code to the site, with proper configuration
-  for multilingual support and privacy-enhancing features.
-  
-  Parameters:
-  - None directly passed to the include, but it uses:
-    - site.google_analytics_id: The GA4 measurement ID from _config.yml
-    - page.url: Current page URL for accurate page tracking
-    - page.lang: Current page language for language segmentation
-  
-  Dependencies:
-  - External: Google Analytics/Google Tag Manager scripts
-  - Configuration: google_analytics_id must be set in _config.yml
-  
-  Example Usage:
-  {% include utilities/google-analytics.html %}
-  
-  Notes:
-  - Only loads in production environment to avoid tracking development activity
-  - Includes IP anonymization for GDPR compliance
-  - Tracks the current page language for multilingual analytics
-  - Uses async loading for better performance
-  - Should be included in the <head> section of layouts
-  - Properly sets the page_path parameter to avoid duplicate paths
+================================================================================
+COMPONENT: Google Analytics Tracking
+PATH: _includes/utilities/google-analytics.html
+PURPOSE: Implements GA4 tracking with multilingual support and privacy compliance
+CREATED: 2024-01-01 | VERSION: 1.1
+================================================================================
+
+Features:
+- GA4 (Google Analytics 4) tracking implementation
+- Production-environment only loading (no dev tracking)
+- IP anonymization for GDPR compliance
+- Multilingual page tracking and segmentation
+- Asynchronous script loading for performance
+- Proper page path configuration for accurate analytics
+
+Parameters:
+- No direct parameters (uses global site and page variables)
+- site.google_analytics_id (implicit): String - GA4 measurement ID from _config.yml
+- page.url (implicit): String - Current page URL for tracking
+- page.lang (implicit): String - Page language for analytics segmentation
+- jekyll.environment (implicit): String - Build environment (production/development)
+
+Dependencies:
+- External: Google Analytics/Google Tag Manager scripts
+- Configuration: google_analytics_id must be set in _config.yml
+- Environment: Only active in production builds
+
+Usage Examples:
+{% include utilities/google-analytics.html %}
+
+Real-world Usage:
+Included in _layouts/default.html within the <head> section for site-wide tracking
+
+BEM Structure:
+- Not applicable (JavaScript utility, no CSS classes)
+
+Accessibility:
+- Non-visual tracking component
+- No impact on screen readers or keyboard navigation
+- Complies with privacy regulations through IP anonymization
+
+Responsive:
+- Not applicable (tracking utility has no visual component)
+
+Performance Notes:
+- Async script loading prevents render blocking
+- Production-only loading reduces development overhead
+- Minimal tracking payload with essential parameters
+- Google CDN delivery for optimal performance
+
+Privacy Notes:
+- IP anonymization enabled for GDPR compliance
+- Production-only tracking protects development privacy
+- Language tracking for localization analytics
+- Standard Google Analytics privacy policies apply
+================================================================================
 {% endcomment %}
 
 {% if jekyll.environment == 'production' %}

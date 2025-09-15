@@ -260,6 +260,9 @@ assets/css/components/cards/brand-card.scss
 ```
 **Rule**: Every HTML component gets a matching CSS file.
 
+## Documentation Standards
+**Rule**: All include files MUST follow the comprehensive documentation template defined in Section 8 of `_docs/technical-standards.md`. This includes header blocks, parameter documentation, usage examples, and code organization standards.
+
 ## Content Width Standards
 - **Editorial content**: 700px (`--form-max-width`)
 - **Profile pages**: Mixed layout (1024px + 700px sections)

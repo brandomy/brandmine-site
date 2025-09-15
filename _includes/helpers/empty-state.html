@@ -1,0 +1,90 @@
+{% comment %}
+================================================================================
+COMPONENT: Empty State Message
+PATH: _includes/helpers/empty-state.html
+PURPOSE: Reusable empty state component with customizable messaging and styling
+CREATED: 2024-01-01 | VERSION: 1.5
+================================================================================
+
+Features:
+- Minimal yet professional empty state presentation
+- Hidden by default with JavaScript control for dynamic display
+- Customizable messaging with parameter-driven content
+- Flexible CSS class integration for contextual styling
+- Unique ID support for JavaScript targeting and state management
+- Clean semantic HTML structure for accessibility compliance
+
+Parameters:
+- id (required): String - Unique identifier for JavaScript control and targeting
+- class (required): String - CSS classes for styling and contextual appearance
+- message (required): String - Empty state message text for user communication
+
+Dependencies:
+- CSS: Contextual styling through provided class parameter
+- JavaScript: Dynamic display control via ID targeting and style manipulation
+
+Usage Examples:
+Search results empty state:
+{% raw %}{% include helpers/empty-state.html
+   id="search-empty-state"
+   class="search-results__empty"
+   message="No brands found matching your search criteria." %}{% endraw %}
+
+Filter results empty state:
+{% raw %}{% include helpers/empty-state.html
+   id="filter-empty-state"
+   class="filter-results__empty"
+   message="No items match the selected filters. Try adjusting your criteria." %}{% endraw %}
+
+Content loading empty state:
+{% raw %}{% include helpers/empty-state.html
+   id="content-empty-state"
+   class="content-grid__empty"
+   message="Content will appear here once loaded." %}{% endraw %}
+
+Real-world Applications:
+- Search result pages with zero matches
+- Filtered content displays with no matching items
+- Dynamic content areas before data loading
+- User-generated content sections awaiting submissions
+- Category pages with temporarily unavailable content
+
+Accessibility:
+- Semantic paragraph element for screen reader compatibility
+- Descriptive message text for clear user communication
+- Clean HTML structure supporting assistive technologies
+- Proper text contrast through host container styling
+
+Responsive Design:
+- Flexible container sizing adapting to parent constraints
+- Typography scaling through CSS class inheritance
+- Mobile-friendly message presentation with touch considerations
+
+JavaScript Integration:
+- Hidden by default with display: none inline styling
+- Dynamic visibility control through ID-based targeting
+- State management compatible with modern JavaScript frameworks
+- Event-driven display updates for real-time user feedback
+
+Performance Optimization:
+- Minimal DOM footprint with single paragraph element
+- CSS-based styling without embedded style dependencies
+- Efficient JavaScript targeting through unique ID assignment
+- Clean HTML output with semantic structure
+
+Error Handling:
+- Safe rendering even with missing or undefined parameters
+- Graceful degradation when JavaScript unavailable
+- Clean message display regardless of CSS class availability
+
+Development Notes:
+- Intentionally minimal for maximum reusability across contexts
+- Host container responsible for positioning, spacing, and visual styling
+- Component focuses on content structure and JavaScript controllability
+- Flexible integration with various page layouts and component architectures
+================================================================================
+{% endcomment %}
+
+<div id="{{ include.id }}" class="{{ include.class }}" style="display: none;">
+  <p>{{ include.message }}</p>
+</div>

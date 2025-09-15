@@ -1,20 +1,75 @@
 {% comment %}
-Component: components/ui/loading-spinner.html
-Purpose: Loading spinner for async operations and page loads
+================================================================================
+COMPONENT: Loading Spinner
+PATH: _includes/components/ui/loading-spinner.html
+PURPOSE: Animated SVG loading spinner for async operations, page loads, and loading states
+CREATED: 2024-01-01 | VERSION: 1.4
+================================================================================
+
+Features:
+- Animated SVG-based loading spinner with smooth rotation
+- Multiple size variants (small, medium, large) for different contexts
+- Color theme support (primary, secondary, white) for brand consistency
+- Full-page overlay mode for blocking interactions during loading
+- Accessible with ARIA attributes and screen reader support
+- Customizable loading text with translation support
+- Responsive design with relative sizing
+- CSS animations with hardware acceleration
 
 Parameters:
-- size (optional): Spinner size - "small", "medium", "large" (default: "medium")
-- text (optional): Loading text to display
-- overlay (optional): Show as full-page overlay (default: false)
-- color (optional): Spinner color theme - "primary", "secondary", "white" (default: "primary")
-- class_name (optional): Additional CSS classes
-- id (optional): Unique ID for the spinner
+- size (optional): String - Spinner size variant ("small", "medium", "large"). Default: "medium"
+- text (optional): String - Custom loading text to display below spinner
+- overlay (optional): Boolean - Show as full-page overlay with backdrop. Default: false
+- color (optional): String - Color theme ("primary", "secondary", "white"). Default: "primary"
+- class_name (optional): String - Additional CSS classes for custom styling
+- id (optional): String - Unique ID for the spinner element
+- lang (optional): String - Language code for translation. Default: page.lang
 
-Usage:
+Dependencies:
+- CSS: Inline styles with CSS custom properties support
+- Helpers: helpers/t.html for loading text translation
+- ARIA: Built-in accessibility attributes and screen reader support
+
+Usage Examples:
 {% include components/ui/loading-spinner.html %}
 {% include components/ui/loading-spinner.html size="large" text="Loading brands..." %}
-{% include components/ui/loading-spinner.html overlay=true text="Processing..." %}
-{% include components/ui/loading-spinner.html size="small" color="white" %}
+{% include components/ui/loading-spinner.html overlay=true text="Processing your request..." %}
+{% include components/ui/loading-spinner.html size="small" color="white" class_name="custom-spinner" %}
+
+Real-world Usage:
+Used in AJAX loading states, form submissions, image loading, and page transitions
+
+BEM Structure:
+- .loading-spinner (main spinner container)
+- .loading-spinner--[size] (size modifier: small, medium, large)
+- .loading-spinner--[color] (color modifier: primary, secondary, white)
+- .loading-spinner__animation (animation wrapper)
+- .loading-spinner__svg (SVG container)
+- .loading-spinner__circle (animated circle element)
+- .loading-spinner__text (loading text display)
+- .loading-overlay (full-page overlay container)
+- .loading-overlay__backdrop (semi-transparent backdrop)
+- .loading-overlay__content (centered content area)
+
+Accessibility:
+- role="status" for screen reader loading announcements
+- aria-live="polite" for non-intrusive updates
+- Screen reader only text with .sr-only class
+- High contrast color options for visibility
+- Semantic HTML structure for assistive technologies
+
+Responsive:
+- Small (20px): For buttons, small UI elements, inline loading
+- Medium (40px): For cards, sections, default content areas
+- Large (60px): For page loading, major content areas
+
+Performance Notes:
+- Hardware-accelerated CSS animations using transform
+- Optimized SVG with minimal DOM elements
+- Efficient stroke-dasharray animation technique
+- Lightweight inline CSS eliminates additional requests
+- Smooth 60fps animations with will-change optimization
+================================================================================
 {% endcomment %}
 
 {% assign size = include.size | default: "medium" %}

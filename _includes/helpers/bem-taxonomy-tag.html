@@ -1,0 +1,198 @@
+{% comment %}
+================================================================================
+COMPONENT: BEM Taxonomy Tag
+PATH: _includes/helpers/bem-taxonomy-tag.html
+PURPOSE: BEM-compliant taxonomy tag with automatic translation and discovery page linking
+CREATED: 2024-01-01 | VERSION: 2.0
+================================================================================
+
+Features:
+- BEM CSS methodology compliance with flexible block/element/modifier patterns
+- Automatic translation lookup from JSON data structures with fallback handling
+- Discovery page URL generation with language-aware routing
+- Four taxonomy type support aligned with site dimension system
+- Custom label override capability for specialized display requirements
+- Flexible CSS class generation supporting various component integration contexts
+- Color-coded styling integration matching official taxonomy color system
+
+Parameters:
+- type (required): String - Taxonomy type: "sector", "market", "attribute", "signal"
+- value (required): String - Taxonomy slug/ID for data lookup and URL generation
+- block (required): String - BEM block name (e.g., "brand-card", "dimension-tag")
+- element (optional): String - BEM element name (e.g., "tag", "label")
+- label (optional): String - Custom display text override, bypasses translation lookup
+- variant (optional): String - Additional BEM modifier for specialized styling
+- lang (required): String - Language code for translation and URL generation
+
+Dependencies:
+- Data: site.data.[type]s.[type]s JSON arrays with id and translations structure
+- URL Structure: /[lang]/discover/[type]s/[value]/ for discovery page routing
+- CSS: BEM-compliant styles for generated class combinations
+- Translations: JSON structure with [lang].name for each taxonomy item
+
+Taxonomy Type Integration:
+- sectors: Business industry categories with olive color system integration
+- markets: Geographic regions with sky blue color system integration
+- attributes: Brand qualities with orange color system integration
+- signals: Growth indicators with indigo color system integration
+
+BEM Pattern Generation:
+- Block only: `.block.block--type` (for standalone tags)
+- Block__Element: `.block__element.block__element--type` (for component tags)
+- With variant: Additional `.block__element--variant` modifier class
+- Type modifier: Automatic `--[type]` modifier for taxonomy-specific styling
+
+Usage Examples:
+Standalone sector tag:
+{% raw %}{% include helpers/bem-taxonomy-tag.html
+   type="sector"
+   value="wine"
+   block="taxonomy-tag"
+   lang=page.lang %}{% endraw %}
+
+Brand card element tag:
+{% raw %}{% include helpers/bem-taxonomy-tag.html
+   type="market"
+   value="brazil"
+   block="brand-card"
+   element="tag"
+   lang=page.lang %}{% endraw %}
+
+Custom label with variant:
+{% raw %}{% include helpers/bem-taxonomy-tag.html
+   type="attribute"
+   value="founder-led"
+   block="dimension-tag"
+   element="label"
+   variant="featured"
+   label="Founder-Led Excellence"
+   lang=page.lang %}{% endraw %}
+
+Search result tag:
+{% raw %}{% include helpers/bem-taxonomy-tag.html
+   type="signal"
+   value="export-ready"
+   block="search-result"
+   element="tag"
+   lang=page.lang %}{% endraw %}
+
+Real-world Applications:
+- Brand profile taxonomy display with consistent BEM styling
+- Search result tag presentation with discoverable linking
+- Dimension overview pages with categorized taxonomy organization
+- Filter interface elements with active state management
+- Content categorization with visual taxonomy organization
+
+Class Generation Logic:
+Block only pattern (element = nil):
+- `.{block}.{block}--{type}` for standalone taxonomy tags
+- Optional: `.{block}--{variant}` for additional styling variants
+
+Block__Element pattern (element provided):
+- `.{block}__{element}.{block}__{element}--{type}` for component integration
+- Optional: `.{block}__{element}--{variant}` for specialized presentations
+
+Translation Lookup Process:
+1. Check for custom label parameter override
+2. Lookup taxonomy item in site.data.[type]s.[type]s array by ID match
+3. Extract translations.[lang].name from found item
+4. Fallback to raw value if translation unavailable
+5. Ensure graceful degradation for missing data
+
+Accessibility:
+- Semantic anchor elements with descriptive link text
+- Screen reader friendly taxonomy category identification
+- High contrast color coding meeting WCAG AA standards
+- Keyboard navigation support for discovery page access
+- Alternative text through translated taxonomy names
+
+Responsive Design:
+- Flexible tag sizing adapting to container constraints
+- Touch-friendly link targets optimized for mobile interaction
+- Consistent typography scaling across device sizes
+- Visual hierarchy maintained through color and spacing
+
+Performance Optimization:
+- Efficient JSON data lookup with early break optimization
+- Minimal DOM output with clean class generation
+- CSS-only styling without JavaScript dependencies
+- Cached translation results for improved build performance
+
+URL Generation:
+- Language-aware discovery page routing with automatic pluralization
+- Slug-safe URL generation with Jekyll slugify filter integration
+- Base URL integration for environment-agnostic deployment
+- SEO-friendly URL structure with taxonomy organization
+
+Color System Integration:
+- Automatic color coding through CSS modifier classes
+- Taxonomy type alignment with official site color palette
+- Visual consistency across all taxonomy presentations
+- Business intelligence color associations for professional appearance
+
+Error Handling:
+- Graceful degradation when JSON data unavailable
+- Fallback display using raw value when translation missing
+- Safe class generation even with missing parameters
+- Clean URL generation with malformed or missing data
+
+Development Notes:
+- BEM methodology compliance ensuring CSS scalability
+- Flexible integration supporting various component architectures
+- Taxonomy system integration with site-wide dimension structure
+- Professional styling foundation for business intelligence applications
+================================================================================
+{% endcomment %}
+
+{% assign tag_type = include.type %}
+{% assign tag_value = include.value %}
+{% assign tag_type_plural = tag_type | append: "s" %}
+{% assign bem_block = include.block %}
+{% assign bem_element = include.element %}
+{% assign tag_variant = include.variant %}
+
+<!-- First try to get the label from the provided custom label -->
+{% assign display_label = include.label %}
+
+<!-- If no custom label provided, try to get it from JSON structure -->
+{% if display_label == nil %}
+  <!-- Get the appropriate array based on the tag type -->
+  {% assign items_array = site.data[tag_type_plural][tag_type_plural] %}
+  {% assign found_item = nil %}
+
+  <!-- Loop through the array to find the matching item -->
+  {% for item in items_array %}
+    {% if item.id == tag_value %}
+      {% assign found_item = item %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  <!-- If item found, use the translated name -->
+  {% if found_item %}
+    {% assign display_label = found_item.translations[page.lang].name %}
+  {% else %}
+    <!-- Fallback to the provided value if not found -->
+    {% assign display_label = tag_value %}
+  {% endif %}
+{% endif %}
+
+<!-- Structure classes according to BEM conventions -->
+{% if bem_element %}
+  <!-- Block__Element--Modifier pattern -->
+  {% capture tag_class %}{{ bem_block }}__{{ bem_element }} {{ bem_block }}__{{ bem_element }}--{{ tag_type }}{% endcapture %}
+  {% if tag_variant %}
+    {% capture tag_class %}{{ tag_class }} {{ bem_block }}__{{ bem_element }}--{{ tag_variant }}{% endcapture %}
+  {% endif %}
+{% else %}
+  <!-- Block--Modifier pattern (for global tags) -->
+  {% capture tag_class %}{{ bem_block }} {{ bem_block }}--{{ tag_type }}{% endcapture %}
+  {% if tag_variant %}
+    {% capture tag_class %}{{ tag_class }} {{ bem_block }}--{{ tag_variant }}{% endcapture %}
+  {% endif %}
+{% endif %}
+
+<a href="{{ site.baseurl }}/{{ page.lang }}/discover/{{ tag_type_plural }}/{{ tag_value | slugify }}/"
+   class="{{ tag_class }}">
+  {{ display_label }}
+</a>

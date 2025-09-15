@@ -1,28 +1,82 @@
 {% comment %}
-  Include Name: components/navigation/language-selector.html
-  
-  Purpose: Renders a language selector component that allows users to switch between available 
-  languages (EN, RU, ZH). Maintains the current page's path across language changes.
-  
-  Parameters:
-  - None directly passed to the include, but it uses:
-    - page.ref: Reference identifier to find equivalent pages in other languages
-    - page.lang: Current page language code
-    - page.layout: Current page layout
-    - page.url: Current page URL
-  - Can be disabled by setting layout.skip_language_selector to true
-  
-  Dependencies:
-  - Requires site.pages collection to find alternate language versions
-  - Saves user preference to localStorage for persistence
-  - CSS: Styles for language-selector class and active state
-  
-  Example Usage:
-  {% include components/navigation/language-selector.html %}
-  
-  Notes:
-  - Uses multiple strategies to find equivalent pages in other languages:
-    1. First tries to find pages with matching 'ref' attribute
+================================================================================
+COMPONENT: Language Selector
+PATH: _includes/components/navigation/language-selector.html
+PURPOSE: Multi-language switcher with intelligent page matching and user preference persistence
+CREATED: 2024-01-01 | VERSION: 1.9
+================================================================================
+
+Features:
+- Three-language support (English, Russian, Chinese) with flag indicators
+- Intelligent page matching across languages using multiple strategies
+- User language preference persistence via localStorage
+- Current page equivalent detection with fallback strategies
+- Optional disabling via layout configuration
+- Compact design suitable for header and footer placement
+- Accessibility-compliant with proper language indicators
+
+Parameters:
+- No direct parameters (uses global site and page variables)
+- page.ref (implicit): String - Reference identifier for cross-language page matching
+- page.lang (implicit): String - Current page language code (en, ru, zh)
+- page.layout (implicit): String - Current page layout type
+- page.url (implicit): String - Current page URL for path analysis
+- layout.skip_language_selector (implicit): Boolean - Option to disable selector
+
+Dependencies:
+- CSS: assets/css/components/navigation/language-selector.scss
+- JavaScript: Local storage for language preference persistence
+- Collections: site.pages for cross-language page discovery
+- Data: Automatic language detection and matching logic
+
+Usage Examples:
+{% include components/navigation/language-selector.html %}
+
+Real-world Usage:
+Used in site header and footer for global language switching access
+
+Language Matching Strategies:
+1. Primary: Match pages with identical 'ref' attribute across languages
+2. Secondary: URL path analysis and pattern matching
+3. Tertiary: Layout-based fallback for consistent page types
+4. Fallback: Language homepage if no equivalent page exists
+
+BEM Structure:
+- .language-selector (main selector container)
+- .language-selector__list (language options list)
+- .language-selector__item (individual language option)
+- .language-selector__link (language switch links)
+- .language-selector__flag (flag indicator icons)
+- .language-selector__text (language name text)
+- .language-selector__item--active (current language modifier)
+
+Accessibility:
+- Semantic list structure for language options
+- lang attributes for proper language identification
+- Screen reader friendly language names
+- Clear visual indicators for current language
+- Keyboard navigation support for all language links
+- ARIA labels for language switching context
+
+Responsive:
+- Mobile: Compact flag-only display with accessible labels
+- Tablet: Flag and abbreviated language names
+- Desktop: Full language names with flag indicators
+
+Performance Notes:
+- Efficient page matching with cached collection queries
+- Minimal DOM structure for fast rendering
+- localStorage integration for preference persistence
+- Optimized language detection algorithms
+- Fallback strategies prevent broken navigation
+
+User Experience:
+- Maintains user context when switching languages
+- Preserves page type and content relationship
+- Smooth transitions between language versions
+- Persistent language preference across sessions
+================================================================================
+{% endcomment %}
     2. Then tries to find pages with matching 'layout' and 'ref'
     3. Falls back to constructing URLs by replacing the language code in the path
   - Marks the current language with an 'active' class

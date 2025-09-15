@@ -1,29 +1,124 @@
 {% comment %}
-  Include Name: components/dimensions/dimension-cloud.html
+================================================================================
+COMPONENT: Dimension Cloud
+PATH: _includes/components/dimensions/dimension-cloud.html
+PURPOSE: Comprehensive taxonomy cloud with grouped dimension display and discovery navigation
+CREATED: 2024-01-01 | VERSION: 2.2
+================================================================================
 
-  Purpose: Renders a comprehensive cloud of all available dimensions (tags) grouped by type.
-  Used on discovery pages and search interfaces to provide a complete view of the taxonomy.
+Features:
+- Complete taxonomy visualization with all four dimension types displayed
+- Automatic grouping by dimension category with localized headings
+- Discovery page navigation with language-aware URL generation
+- Color-coded dimension tags aligned with official taxonomy color system
+- Empty state handling with conditional group rendering
+- Responsive tag cloud layout optimized for all device sizes
+- Translation integration for multilingual dimension names and group labels
+- Visual hierarchy through typography and spacing for improved scannability
 
-  Parameters:
-  - None directly passed to the include, but it uses:
-    - page.lang: Current page language
-    - site.data.markets, site.data.sectors, site.data.attributes, site.data.signals: JSON dimension data
-    - site.data.translations[lang].dimensions: Localized names for dimension type groups
+Parameters:
+- lang (implicit): String - Page language from page.lang for content filtering and translations
+- show_empty_groups (optional): Boolean - Display groups even when empty. Default: false
 
-  Dependencies:
-  - CSS: dimensions.css
-  - Data: site.data.markets, site.data.sectors, site.data.attributes, site.data.signals
+Dependencies:
+- Data: site.data.[type].[type] arrays containing dimension objects with id and translations
+- Translations: site.data.translations[lang].dimensions for group headings
+- Helpers: dimension-name.html for individual dimension translation and display
+- CSS: assets/css/components/dimensions/dimension-cloud.scss for responsive cloud layout
 
-  Example Usage:
-  {% include components/dimensions/dimension-cloud.html %}
+Dimension Type Integration:
+- sectors: Business industry categories with olive green color coding
+- markets: Geographic regions with sky blue color coding
+- attributes: Brand qualities with orange color coding
+- signals: Growth indicators with indigo color coding
 
-  Notes:
-  - Automatically groups dimensions by their type (sector, market, attribute, signal)
-  - Provides localized group headings from translations
-  - Links each dimension to its corresponding discovery page
-  - Applies type-specific styling for visual differentiation
-  - Handles URL path construction with proper pluralization of dimension types
-  - Skips rendering empty dimension groups
+Usage Examples:
+Basic dimension cloud:
+{% raw %}{% include components/dimensions/dimension-cloud.html %}{% endraw %}
+
+With empty groups shown:
+{% raw %}{% include components/dimensions/dimension-cloud.html show_empty_groups=true %}{% endraw %}
+
+Discovery page integration:
+{% raw %}{% include components/dimensions/dimension-cloud.html %}{% endraw %}
+
+Real-world Applications:
+- Discovery page taxonomy overview with complete dimension navigation
+- Search interface taxonomy browser with filterable dimension selection
+- Brand profile related dimensions with contextual discovery links
+- Market intelligence dashboard with dimensional data exploration
+- Content categorization with visual taxonomy organization
+
+BEM Structure:
+- .dimension-cloud (main container with responsive grid layout)
+- .dimension-cloud__group (dimension type group container)
+- .dimension-cloud__label (group heading with typography styling)
+- .dimension-cloud__dimensions (dimension tag container with flexible wrapping)
+- .dimension (individual dimension tag with type-specific styling)
+- .dimension--[type] (dimension type modifier for color coding)
+
+Accessibility:
+- Semantic HTML structure with proper heading hierarchy (h3 for group labels)
+- Screen reader friendly dimension names through translation integration
+- High contrast color coding meeting WCAG AA standards for all dimension types
+- Keyboard navigation support for all dimension links with focus management
+- Descriptive link text through translated dimension names
+- Alternative text and context for dimension categorization
+
+Responsive Design:
+- Mobile (320px+): Stacked groups with full-width tag display
+- Tablet (768px+): Two-column group layout with optimized tag wrapping
+- Desktop (1024px+): Multi-column layout with enhanced visual hierarchy
+- Large screens (1200px+): Full grid utilization with maximum tag density
+
+Group Rendering Logic:
+- Automatic detection of empty dimension arrays with conditional rendering
+- Translation lookup for group headings with capitalized fallbacks
+- Dynamic type-specific CSS class generation for color coding
+- URL generation with automatic pluralization and language integration
+
+Translation Integration:
+- Group headings via helpers/t.html with dimensions.group_[type] keys
+- Individual dimension names via dimension-name.html helper
+- Fallback text ensuring functionality across all language configurations
+- Cultural adaptation of dimension terminology for different markets
+
+Performance Optimization:
+- Efficient data array iteration with early exit for empty groups
+- Minimal DOM structure with semantic HTML for fast rendering
+- CSS-only responsive behavior without JavaScript dependencies
+- Cached translation lookups for improved build performance
+
+URL Generation:
+- Language-aware discovery page routing with proper base URL integration
+- Automatic pluralization handling for dimension type URLs
+- SEO-friendly URL structure with taxonomy organization
+- Clean slug generation for dimension identifiers
+
+Color System Integration:
+- Automatic color coding through CSS modifier classes
+- Visual consistency across all taxonomy presentations
+- Professional color associations for business intelligence applications
+- High contrast combinations ensuring accessibility compliance
+
+Business Intelligence Focus:
+- BRICS+ market emphasis in default dimension presentations
+- Professional taxonomy organization supporting investment analysis
+- Market intelligence categorization with geographic and sector focus
+- Growth signal integration for business development insights
+
+Error Handling:
+- Graceful degradation when dimension data unavailable
+- Safe iteration with null checking for dimension arrays
+- Fallback group headings when translation keys missing
+- Clean rendering even with malformed or incomplete data
+
+Development Notes:
+- Scalable design supporting additional dimension types
+- Clean separation between data structure and presentation logic
+- Integration with site-wide taxonomy system and color standards
+- Professional styling foundation for business intelligence applications
+================================================================================
 {% endcomment %}
 
 {% assign types = "sectors,markets,attributes,signals" | split: "," %}

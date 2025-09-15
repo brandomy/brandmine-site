@@ -47,7 +47,7 @@ DEPENDENCIES:
           <p class="business-signal__description">
             {% include helpers/t.html key="brand.currently_exporting" fallback="Currently exporting to" lang=brand.lang %}:
             {% for market_code in brand.export_markets %}
-              {% include components/helpers/country-name.html code=market_code lang=brand.lang %}{% unless forloop.last %}, {% endunless %}
+              {% include helpers/country-name.html code=market_code lang=brand.lang %}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
           </p>
         {% endif %}

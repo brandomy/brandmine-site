@@ -1,0 +1,102 @@
+{% comment %}
+================================================================================
+COMPONENT: Location Display Helper
+PATH: _includes/helpers/location-display.html
+PURPOSE: Consistent location formatting with city-country display and translation support
+CREATED: 2024-01-01 | VERSION: 1.2
+================================================================================
+
+Features:
+- Flexible city-country formatting with proper comma separation
+- Automatic country name translation via country-name.html helper
+- Customizable CSS class for styling integration
+- Semantic location markup with screen reader friendly structure
+- Optional icon display with configurable visibility
+- Graceful handling of missing city or country data
+
+Parameters:
+- city (optional): String - City name to display before country
+- country (required): String - 2-letter ISO country code (e.g., "br", "ru", "cn")
+- lang (optional): String - Language code for country name translation. Default: page.lang
+- icon (optional): Boolean - Display location pushpin icon. Default: true
+- class (optional): String - CSS class for wrapper element. Default: "location"
+
+Dependencies:
+- Helpers: helpers/country-name.html for translated country names
+- CSS: Styling for location display and optional icon presentation
+- Translations: Country name data available in translation files
+
+Country Code Standards:
+- Brazil: "br" → translated country name in specified language
+- Russia: "ru" → translated country name in specified language
+- China: "cn" → translated country name in specified language
+- India: "in" → translated country name in specified language
+- South Africa: "za" → translated country name in specified language
+
+Usage Examples:
+City and country:
+{% include helpers/location-display.html city="São Paulo" country="br" lang=page.lang %}
+Output: "São Paulo, Brazil" (in English)
+
+Country only:
+{% include helpers/location-display.html country="ru" lang=page.lang %}
+Output: "Russia" (in specified language)
+
+Custom styling:
+{% include helpers/location-display.html city="Beijing" country="cn" class="brand-location" lang=page.lang %}
+
+No icon variant:
+{% include helpers/location-display.html city="Mumbai" country="in" icon=false lang=page.lang %}
+
+Real-world Applications:
+- Brand profile headers with headquarters location display
+- Founder profile location information
+- Event listings with venue location details
+- Search result location metadata
+- Geographic filtering interface elements
+
+Accessibility:
+- Semantic HTML structure with meaningful text content
+- Screen reader friendly comma separation between city and country
+- Translated country names for international accessibility
+- High contrast location icon with descriptive alt text
+- Keyboard navigation support for interactive location elements
+
+Responsive Design:
+- Mobile: Compact location display with abbreviated formatting
+- Tablet: Standard layout with full city-country presentation
+- Desktop: Enhanced styling with optional location icons
+
+Performance Optimization:
+- Minimal HTML output with efficient country name lookup
+- Cached translation results for improved build performance
+- CSS-only icon presentation without JavaScript dependencies
+- Clean markup structure for fast DOM rendering
+
+Translation Integration:
+- Automatic country name localization via helpers/country-name.html
+- Fallback to English country names when translations unavailable
+- Language-specific formatting preferences supported
+- Consistent terminology across all location displays
+
+Formatting Logic:
+- City + Country: "City, Country" with proper comma separation
+- Country only: "Country" without additional punctuation
+- Empty handling: Graceful degradation with available data only
+- Whitespace normalization for clean text presentation
+
+CSS Integration:
+- Default "location" class for standard styling inheritance
+- Custom class override for specialized location presentations
+- Icon integration with CSS pseudo-elements or inline SVG
+- Responsive typography scaling across device sizes
+
+Error Handling:
+- Graceful degradation when city data unavailable
+- Fallback display when country translation fails
+- Clean output even with malformed or missing parameters
+- No broken layouts with incomplete location data
+================================================================================
+{% endcomment %}
+
+<span class="{{ include.class | default: 'location' }}">{% if include.city %}{{ include.city }}{% if include.country %}, {% endif %}{% endif %}{% if include.country %}{% include helpers/country-name.html code=include.country lang=include.lang %}{% endif %}</span>

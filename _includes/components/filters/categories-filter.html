@@ -1,11 +1,64 @@
 {% comment %}
-  Component: components/filters/categories-filter.html
-  Purpose: Categories filter for insights sidebar
-  Parameters:
-    - insights: Array of insights to filter (required)
-    - heading: Section heading (default from translations)
-  Dependencies:
-    - assets/css/components/filters/categories-filter.scss
+================================================================================
+COMPONENT: Categories Filter
+PATH: _includes/components/filters/categories-filter.html
+PURPOSE: Sidebar filter component for organizing insights by category with navigation and count display
+CREATED: 2024-01-01 | VERSION: 1.4
+================================================================================
+
+Features:
+- Category-based filtering with automatic insight categorization
+- Dynamic category count display showing insights per category
+- Color-coded category links matching insights category system
+- Sidebar integration with consistent styling and layout
+- Translation support for category names and interface text
+- Direct navigation to category-specific insight pages
+- Responsive design for mobile sidebar layouts
+
+Parameters:
+- insights (required): Array - Collection of insight objects to categorize and count
+- heading (optional): String - Custom section heading. Default: translated "Categories"
+- show_counts (optional): Boolean - Display insight count per category. Default: true
+- limit (optional): Integer - Maximum categories to display. Default: unlimited
+
+Dependencies:
+- CSS: assets/css/components/filters/categories-filter.scss
+- Data: site.data.translations for category names and UI text
+- Helpers: Liquid filters for category extraction and counting
+
+Usage Examples:
+{% include components/filters/categories-filter.html insights=site.insights %}
+{% include components/filters/categories-filter.html insights=filtered_insights heading="Browse Topics" %}
+{% include components/filters/categories-filter.html insights=latest_insights show_counts=false %}
+
+Real-world Usage:
+Used in insights sidebar, category overview pages, and content filtering interfaces
+
+BEM Structure:
+- .insights-all__sidebar-section (main filter container)
+- .insights-all__sidebar-heading (section heading)
+- .insights-all__categories (categories list container)
+- .insights-all__category-link (individual category links)
+- .insights-all__category-count (insight count badges)
+
+Accessibility:
+- Semantic heading structure for sidebar organization
+- Descriptive link text with category names
+- Screen reader friendly count indicators
+- Keyboard navigation support for all category links
+- High contrast category styling for visibility
+
+Responsive:
+- Mobile: Single column category list with touch-friendly links
+- Tablet: Enhanced spacing with readable count indicators
+- Desktop: Optimized sidebar layout with hover states
+
+Performance Notes:
+- Efficient category extraction using Liquid map and group_by
+- Minimal DOM elements with semantic HTML structure
+- CSS-only responsive behavior
+- Cached translation lookups for category names
+================================================================================
 {% endcomment %}
 
 {% assign t = site.data.translations[page.lang].insights %}
