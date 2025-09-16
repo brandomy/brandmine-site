@@ -30,13 +30,14 @@ bundle exec jekyll serve
 - **Translation Management**: Cross-language consistency patterns
 - **Journal Content**: Internal development blog alongside customer insights
 
-**→ Complete Workflows**: See `_templates/tutorials/workflows/` for step-by-step procedures
+**→ Complete Workflows**: See [setup-and-workflows.md](setup-and-workflows.md) for step-by-step procedures
 
-### Operational Tutorials (Template System)
+### Operational Tutorials (Separate System)
 **Located in `_templates/tutorials/`** - operational guides for active work:
-- **Complete Workflows**: `_templates/tutorials/workflows/complete-workflows.md`
-- **Troubleshooting**: `_templates/tutorials/troubleshooting/complete-troubleshooting.md`
-- **Content Creation**: Other operational templates as needed
+- **Feature Development**: `_templates/tutorials/workflows/feature-workflow-template.md`
+- **Content Creation**: `_templates/tutorials/content-creation/market-sector-tutorial.md`
+- **Image Generation**: `_templates/tutorials/Image Prompt for Chatgpt for Founders Journal.txt`
+- **Strategic Implementation**: `_templates/tutorials/workflows/brandmine_cards_tutorial.md`
 
 ---
 
@@ -110,7 +111,7 @@ Brandmine uses specialized card components:
 - **Translation Issues**: Missing keys and language consistency
 - **Performance**: Build time optimization and caching
 
-**→ Complete Diagnostic Guide**: See `_templates/tutorials/troubleshooting/`
+**→ Complete Diagnostic Guide**: See [troubleshooting-and-tools.md](troubleshooting-and-tools.md)
 
 ### Feature Debugging Workflows
 **→ Advanced Troubleshooting**: See `_templates/tutorials/workflows/feature-workflow-template.md` for complex debugging processes
@@ -153,8 +154,9 @@ _scripts/utilities/generate-navigation-cache.py
 
 ### Core Documents (30-second navigation)
 1. **[brandmine-guide.md](brandmine-guide.md)** ← You are here (Master navigation)
-2. **[technical-standards.md](technical-standards.md)** - Architecture patterns and visual standards
-3. **[current-status.md](current-status.md)** - Current project status and recent changes
+2. **[setup-and-workflows.md](setup-and-workflows.md)** - Complete workflow consolidation
+3. **[technical-standards.md](technical-standards.md)** - Architecture patterns and visual standards
+4. **[troubleshooting-and-tools.md](troubleshooting-and-tools.md)** - Problem resolution and diagnostics
 
 ### Operational System (Template-Based)
 - **`_templates/tutorials/`** - Step-by-step operational guides
@@ -186,4 +188,4 @@ _scripts/utilities/generate-navigation-cache.py
 ---
 
 **Last updated**: {% raw %}{{ site.time | date: '%Y-%m-%d' }}{% endraw %}
-**Document Count**: 3/3 (lean compliance achieved)
+**Document Count**: 4/4 (compliance achieved)

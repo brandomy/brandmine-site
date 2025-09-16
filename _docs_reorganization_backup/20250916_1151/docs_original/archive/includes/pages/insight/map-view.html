@@ -1,0 +1,36 @@
+{% comment %}
+  Component: pages/insight/map-view.html
+
+  Purpose: Displays a map visualization for location intelligence articles
+
+  Parameters:
+  - insight: The insight page object (required)
+
+  Dependencies:
+  - CSS: pages/insight/map-view.scss
+  - components/maps/map.html for map rendering
+
+  Used by:
+  - insight-article layout via sections array (for location-intelligence articles)
+
+  Notes:
+  - Only used in location intelligence articles
+  - Requires location_lat and location_lng to be set
+  - Displays a map centered on the specified coordinates
+{% endcomment %}
+
+{% if insight.location_lat and insight.location_lng %}
+  <div class="insight-map-view">
+    <h2 class="insight-section-title">{% include helpers/t.html key="insights.location_map" fallback="Location Map" lang=page.lang %}</h2>
+
+    <p class="insight-map-description">
+      {% include helpers/t.html key="discover.map_preview" fallback="Explore the geographical context of this location." lang=page.lang %}
+    </p>
+
+    <div class="insight-map-container">
+      {% assign map_center = insight.location_lat | append: "," | append: insight.location_lng %}
+      {% assign map_markers = insight.location_lat | append: "," | append: insight.location_lng | append: "," | append: insight.location_city %}
+      {% include components/maps/map.html center=map_center zoom=12 markers=map_markers %}
+    </div>
+  </div>
+{% endif %}

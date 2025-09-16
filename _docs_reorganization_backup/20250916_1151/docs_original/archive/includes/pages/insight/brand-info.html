@@ -1,0 +1,40 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Brand Info
+PATH: _includes/pages/insight/brand-info.html
+PURPOSE: Display featured brands mentioned in the insight article as brand cards
+CREATED: 2025-07-03
+================================================================================
+
+Features:
+- Shows featured brands associated with the insight article
+- Uses standard brand-card component with featured variant
+- 2 cards per row layout with proper spacing
+
+Dependencies:
+- Components: components/cards/brand-card.html
+- Data: insight.featured_brands array with brand references
+
+Variables Used:
+- insight.featured_brands: Array of brand references to display
+================================================================================
+{% endcomment %}
+
+{% assign insight = include.insight | default: page %}
+
+{% if insight.featured_brands and insight.featured_brands.size > 0 %}
+  <div class="brand-info">
+    <h2 class="brand-info__title">
+      {% include helpers/t.html key="insights.featured_brands" fallback="Featured Brands" %}
+    </h2>
+    
+    <div class="brand-info__grid">
+      {% for brand_ref in insight.featured_brands limit: 2 %}
+        {% assign brand = site.brands | where: "ref", brand_ref | first %}
+        {% if brand %}
+          {% include components/cards/brand-card.html brand=brand variant="featured" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

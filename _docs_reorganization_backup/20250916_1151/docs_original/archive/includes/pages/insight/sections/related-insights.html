@@ -1,0 +1,44 @@
+{% comment %}
+  Component: pages/insight/sections/related-insights.html
+
+  Purpose: Displays related insights based on category
+
+  Parameters:
+  - insight: The insight page object (required)
+
+  Dependencies:
+  - CSS: pages/insight/sections/related-insights.scss
+  - site.data.translations[page.lang] for localized labels
+  - components/cards/insight-card-simple.html for insight display
+
+  Used by:
+  - insight-article layout via sections array
+
+  Notes:
+  - Identifies related insights based on same category
+  - Limits to 3 related insights for space constraints
+  - Excludes the current insight from related insights
+  - Includes a link to the insights index page
+{% endcomment %}
+
+{% if insight.category %}
+  {% assign related_insights = site.insights | where: "lang", page.lang | where: "category", insight.category | where_exp: "item", "item.ref != insight.ref" | sort: "date" | reverse | limit: 3 %}
+
+  {% if related_insights.size > 0 %}
+    <div class="section-content section-related-insights">
+      <h3 class="section-title">{% include helpers/t.html key="insights.related" fallback="Related Insights" lang=page.lang %}</h3>
+
+      <div class="related-insights-list">
+        {% for related in related_insights %}
+          {% include components/cards/insight-card-simple.html insight=related %}
+        {% endfor %}
+      </div>
+
+      <div class="related-insights-cta">
+        <a href="{{ site.baseurl }}/{{ page.lang }}/insights/" class="btn btn-outline-secondary btn-sm">
+          {% include helpers/t.html key="insights.view_all" fallback="View All Insights" lang=page.lang %}
+        </a>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}

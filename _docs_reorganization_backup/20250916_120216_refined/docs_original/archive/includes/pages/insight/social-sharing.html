@@ -1,0 +1,14 @@
+{% comment %}
+  Social sharing section for insight articles
+  Wraps the social-sharing UI component
+{% endcomment %}
+
+<div class="insight-section__header">
+  <h2 class="insight-section__title" id="heading-social-sharing">
+    {% include helpers/t.html key="social.share_article" fallback="Share this article" lang=page.lang %}
+  </h2>
+</div>
+
+<div class="insight-section__content">
+  {% include components/ui/social-sharing.html %}
+</div>

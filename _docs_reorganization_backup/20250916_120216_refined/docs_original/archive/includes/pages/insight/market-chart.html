@@ -1,0 +1,40 @@
+{% comment %}
+  Component: pages/insight/market-chart.html
+
+  Purpose: Displays market trend data visualization for market momentum articles
+
+  Parameters:
+  - insight: The insight page object (required)
+
+  Dependencies:
+  - CSS: pages/insight/market-chart.scss
+
+  Used by:
+  - insight-article layout via sections array (for market-momentum articles)
+
+  Notes:
+  - Only used in market momentum articles
+  - Can be customized to display different chart types
+  - Currently uses a placeholder chart image
+{% endcomment %}
+
+<div class="insight-market-chart">
+  <h2 class="insight-section-title">Market Trends</h2>
+
+  {% if insight.chart_image %}
+    <div class="chart-container">
+      {% include components/images/collection-image.html
+        collection="insights"
+        slug=insight.ref
+        purpose="chart"
+        name="market"
+        alt="Market trend chart for {{ insight.title }}" %}
+    </div>
+  {% else %}
+    <div class="chart-placeholder">
+      <p class="chart-placeholder-text">
+        <i class="fas fa-chart-line"></i> Market trend visualization
+      </p>
+    </div>
+  {% endif %}
+</div>

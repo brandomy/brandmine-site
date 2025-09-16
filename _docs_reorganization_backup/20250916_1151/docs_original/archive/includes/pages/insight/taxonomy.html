@@ -1,0 +1,20 @@
+{% comment %}
+  Component: pages/insight/taxonomy.html
+  Purpose: Displays taxonomy tags for the insight article with sections for each type
+  Parameters:
+    - insight: The insight page object (required)
+  Dependencies:
+    - CSS: pages/insight/taxonomy.scss
+    - components/taxonomy/display.html
+  Notes:
+    - Acts as a wrapper for the reusable taxonomy display component
+    - Maintains backward compatibility with existing templates
+    - Uses insight-specific CSS class names for styling
+{% endcomment %}
+
+<div class="insight-taxonomy">
+  {% include components/ui/dimension-tag-cloud.html
+    parent=insight
+    spacing="normal"
+    show_all=true %}
+</div>
