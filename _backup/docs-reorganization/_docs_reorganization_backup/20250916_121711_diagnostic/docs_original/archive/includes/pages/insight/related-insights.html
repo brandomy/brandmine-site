@@ -1,0 +1,47 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Related Insights
+PATH: _includes/pages/insight/related-insights.html
+PURPOSE: Display related insights using insight cards
+CREATED: 2025-07-03
+================================================================================
+
+Features:
+- Shows related insights in a grid layout
+- Uses standard insight-card component
+- 3 cards maximum in a single row
+
+Dependencies:
+- Components: components/cards/insight-card.html
+- Data: Related insights based on shared categories/tags
+
+Variables Used:
+- page.categories: Current insight's categories for finding related content
+================================================================================
+{% endcomment %}
+
+{% assign current_insight = include.insight | default: page %}
+{% assign current_lang = current_insight.lang | default: 'en' %}
+
+{% comment %} Find related insights based on categories {% endcomment %}
+{% assign related_insights = site.insights | where: "lang", current_lang | where_exp: "item", "item.ref != current_insight.ref" %}
+
+{% if current_insight.category %}
+  {% assign related_insights = related_insights | where: "category", current_insight.category | limit: 3 %}
+{% else %}
+  {% assign related_insights = related_insights | limit: 3 %}
+{% endif %}
+
+{% if related_insights.size > 0 %}
+  <div class="related-insights">
+    <h2 class="related-insights__title">
+      {% include helpers/t.html key="insights.related_articles" fallback="Related Insights" %}
+    </h2>
+    
+    <div class="related-insights__grid">
+      {% for insight in related_insights %}
+        {% include components/cards/insight-card.html insight=insight %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

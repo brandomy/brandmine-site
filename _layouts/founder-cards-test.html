@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<main class="layout founder-cards-test-page">
+  <div class="layout__wrapper">
+    <div class="layout__content">
+
+      <!-- Page Header -->
+      <section class="panel panel--light">
+        <div class="panel__content">
+          <h1>{{ page.title }}</h1>
+          {{ content }}
+        </div>
+      </section>
+
+      <!-- Simple Founder Test -->
+      <section class="panel panel--light">
+        <div class="panel__content">
+          <h2>Founder Count Test</h2>
+          <p>Total founders: {{ site.founders | size }}</p>
+          <p>English founders: {{ site.founders | where: "lang", "en" | size }}</p>
+
+          {% assign test_founders = site.founders | where: "lang", "en" | limit: 1 %}
+          {% if test_founders.size > 0 %}
+            <h3>First Founder Test</h3>
+            {% for founder in test_founders %}
+              <p>Name: {{ founder.title }}</p>
+              <p>File: {{ founder.name }}</p>
+              <div style="border: 2px dashed #ccc; padding: 1rem; margin: 1rem 0;">
+                {% include components/cards/founder-card.html founder=founder %}
+              </div>
+            {% endfor %}
+          {% else %}
+            <p>No English founders found</p>
+          {% endif %}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>

@@ -1,0 +1,28 @@
+{% comment %}
+  Component: pages/insight/featured-image.html
+
+  Purpose: Displays the hero image for the insight article using the collection-image include
+
+  Parameters:
+  - insight: The insight page object (required)
+
+  Dependencies:
+  - CSS: pages/insight/featured-image.scss
+  - components/images/collection-image.html
+
+  Used by:
+  - insight-article layout via sections array
+
+  Notes:
+  - Uses standard 3:2 aspect ratio per Brandmine conventions
+  - Passes eager loading for above-the-fold content
+{% endcomment %}
+
+<div class="insight-hero-image">
+  {% include components/images/collection-image.html
+    collection="insights"
+    slug=insight.ref
+    purpose="hero"
+    loading="eager"
+    alt=insight.title %}
+</div>
