@@ -8,102 +8,123 @@ ref: privacy
 
 # Privacy Policy
 
-LAST UPDATE OF THIS PRIVACY POLICY – 27 November 2023
+**LAST UPDATED: 16 September 2025**
 
-## BEFORE USING OUR SITES, PLEASE READ THIS PRIVACY POLICY CAREFULLY.
+## Summary (TL;DR)
 
-This Privacy Policy is applicable to Brandmine and sets out our policy on the gathering and use of information on this site and our other sites (collectively "Sites"). Brandmine is committed to providing safe web sites for visitors of all ages and has implemented this Privacy Policy to demonstrate our firm commitment to your privacy. Brandmine complies with Canadian Federal and Provincial privacy laws and regulations including the Personal Information and Electronic Documents Act.
+We collect minimal personal information (email for newsletter, contact inquiries) to operate our brand discovery platform. We don't sell your data, use secure hosting, and comply with Malaysian privacy laws. You can request deletion or corrections anytime by emailing hello@brandmine.io.
 
+---
 
+## BEFORE USING OUR SITE, PLEASE READ THIS PRIVACY POLICY CAREFULLY.
 
-There may be links from our Sites to other web sites; note that this Privacy Policy applies only to our Sites and not to web sites of other companies or organizations to which our Sites may be linked. You must check on any linked sites for the privacy policy that applies to that site and/or make any necessary inquiries in respect of that privacy policy with the operator of the linked site. These links to third party websites are provided as a convenience and are for informational purposes only. Brandmine does not endorse, and is not responsible for, these linked websites.
+This Privacy Policy applies to Brandmine and sets out our policy on the collection and use of information on this website. Brandmine is committed to protecting your privacy and has implemented this Privacy Policy to demonstrate our firm commitment to your personal data protection. Brandmine complies with the Malaysian Personal Data Protection Act 2010 (PDPA) and applicable international privacy standards.
 
+There may be links from our site to other websites; note that this Privacy Policy applies only to our site and not to websites of other companies or organizations to which our site may be linked. You must check on any linked sites for the privacy policy that applies to that site. These links to third party websites are provided as a convenience and are for informational purposes only. Brandmine does not endorse, and is not responsible for, these linked websites.
 
+Your use of our site signifies your acknowledgement and consent to our Privacy Policy. If you do not agree to this Privacy Policy, please do not continue to use our site. Your continued use of the site signifies your acceptance of these terms and any changes in effect at the time of use.
 
-Although you are not required to register to access our Sites, you may be asked to provide us with personal information when you visit certain sections of our Sites. Your use of our Sites signifies your acknowledgement and consent to our Privacy Policy. If you do not agree to this Privacy Policy, please do not continue to use our Sites. Your continued use of the Sites signifies your acceptance of these terms and any changes in effect at the time of use.
+## COLLECTION OF PERSONAL INFORMATION
 
+Personal Information is information about you that identifies you as an individual, for example, your name, email address, or company information.
 
+We collect information that you voluntarily provide to us through:
+- Contact forms and inquiry submissions
+- Newsletter subscription
+- Feedback and communication with us
+- Information you provide when sharing your brand story or business details
 
-### COLLECTION OF PERSONAL INFORMATION
+We do not require registration to access our site. We only collect personal information when you voluntarily choose to provide it to us.
 
-Personal Information is information about you that identifies you as an individual, for example, your name, address, e-mail address, or telephone number.
+## HOW DOES BRANDMINE USE INFORMATION GATHERED?
 
+We may use information gathered about you for the following purposes:
+- To respond to your inquiries and provide requested information
+- To send you our newsletter (if you have subscribed)
+- To improve our website content and user experience
+- To analyze usage patterns and site performance
+- To communicate with you about our services
+- To showcase brand stories (only with your explicit permission)
 
+## NEWSLETTER AND COMMUNICATIONS
 
-We collect information that you voluntarily provide to us through responses to surveys, search functions, questionnaires, feedback, Tell Your Story forms and the like. On some of our Sites, we offer health assessment tools that ask you to provide self-assessment information. We may also ask you to provide additional information such as your e-mail address if you want to obtain additional services, information, participate in a contest or to resolve complaints or concerns.
+With your explicit consent, we may use your email address to:
+- Send you our newsletter featuring brand stories and insights
+- Notify you of significant platform updates
+- Share relevant industry information
 
+You can unsubscribe from our communications at any time by clicking the unsubscribe link in any email or by contacting us directly.
 
+## DISCLOSURE OF INFORMATION
 
-### HOW DOES BRANDMINE USE INFORMATION GATHERED ABOUT ONLINE VISITORS?
+Brandmine will not sell, rent, or disclose personal information to third parties except:
+- With your explicit consent
+- To comply with legal requirements such as court orders or legal processes
+- To protect our rights, property, or safety, or that of our users
+- To service providers who assist us in operating our website (under strict confidentiality agreements)
 
-Before forwarding us any personal information, please be advised that any information gathered on our Sites may be used in the aggregate for research and development relating to our Sites and/or for future site development and, if you ask us to, to send you promotional materials. In particular, we may use information gathered about you for the following purposes: to monitor interest in our range of products and to assist us to tailor the content of our Sites to your needs by collecting information about your preferences through tracking of patterns page views on our Sites; to create a profile relating to you in order to show you the content that might be of interest to you and to display the content according to your preferences; and, in circumstances where you have indicated that you wish to receive additional information, to send you information about us and promotional material about our products together with details of any offers we may have available from time to time.
+Any such disclosures may involve the storage or processing of personal information outside of Malaysia and may therefore be subject to different privacy laws.
 
+## COOKIES AND TRACKING
 
+Brandmine uses standard web technologies including:
+- **Cookies**: Small data files to improve site functionality and user experience
+- **Analytics**: To understand how visitors use our site and improve our services
+- **Performance Monitoring**: To ensure optimal site performance
 
-### PROMOTIONAL AND INFORMATIONAL OFFERS
+You can disable cookies in your browser settings; however, some areas of the site may not function properly if you do so.
 
-With the permission of an online visitor, information submitted at the time of registration or submission may be used for marketing and promotional purposes by Brandmine provided notice of this fact is made available online. If a visitor objects to such use for any reason, he/she may prevent that use, either by e-mail request or by modifying the registration information provided. Brandmine uses reasonable efforts to maintain visitors' information in a secure environment. If you have submitted personal information and want to change it or opt-out, please contact us as described below.
+## DATA SECURITY
 
+We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. Our website is hosted on secure platforms with industry-standard security measures.
 
+However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.
 
-### DISCLOSURE OF INFORMATION
+## DATA RETENTION
 
-Brandmine will not disclose personal information that you provide on its Sites to any third parties other than to a Brandmine agent except: i) in accordance with the terms of this Privacy Policy, or ii) to comply with legal requirements such as a law, regulation, warrant, subpoena or court order, and/or iii) if you are reporting an adverse event/side effect, in which case Brandmine may be required to disclose such information to bodies such as, but not limited to, Canadian and/or international regulatory authorities. Please note that any of these disclosures may involve the storage or processing of personal information outside of Canada and may therefore be subject to different privacy laws than those applicable in Canada, including laws that require the disclosure of personal information to governmental authorities under circumstances that are different than those that apply in Canada.
+We retain personal information only for as long as necessary to fulfill the purposes for which it was collected, unless a longer retention period is required or permitted by law. We will delete or anonymize your personal information when it is no longer needed.
 
+## YOUR RIGHTS
 
+Under Malaysian privacy law and international standards, you have the right to:
+- **Access**: Request information about what personal data we hold about you
+- **Correction**: Request correction of inaccurate or incomplete personal data
+- **Deletion**: Request deletion of your personal data (subject to legal requirements)
+- **Withdrawal**: Withdraw consent for processing (where processing is based on consent)
+- **Portability**: Request transfer of your data to another service provider
+- **Object**: Object to certain types of processing
 
-### COOKIES
+To exercise these rights, please contact us using the information provided below.
 
-Brandmine, in common with many web site operators, may use standard technology called "cookies" on its Sites. Cookies are small data files that are downloaded onto your computer when you visit a particular web site. You can disable cookies by turning them off in your browser; however, some areas of the Sites may not function properly if you do so.
+## INTERNATIONAL TRANSFERS
 
+As a platform showcasing brands from the Global South, we may transfer personal information across borders. We ensure appropriate safeguards are in place for any international transfers in accordance with applicable privacy laws.
 
+## CHILDREN'S PRIVACY
 
-### PROTECTION OF CHILDREN ONLINE
+Our website is not directed to children under 13 years of age. We do not knowingly collect personal information from children under 13. If you become aware that a child has provided us with personal information, please contact us so we can take appropriate action.
 
-Brandmine considers the protection of children's privacy, especially online, to be of the utmost importance. We do not knowingly collect or solicit personal information from children nor do we allow them to become registered users of, or to request information through, our Sites or help-seeking information lines.
+## POLICY UPDATES
 
+We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this Privacy Policy periodically for any changes.
 
+## ACCEPTANCE OF THIS PRIVACY POLICY
 
-### ADDITIONAL TERMS FOR CERTAIN WEBSITES
+By using this website, you signify your acceptance of our Privacy Policy and agree to the terms and conditions posted on the site.
 
-The following additional information applies to our Sites that require registration. Generally, you are not required to provide personal information as a condition of using our Sites, except as may be necessary to provide you with a product or service that you have requested. However, some of our Sites are restricted to certain individuals such as health care professionals or our prescription drug patients and we may require these individuals to register upon entry by providing us with certain information.
+## CONTACT US
 
+If you have any questions about this Privacy Policy or wish to exercise your privacy rights, please contact us:
 
-
-### PROTECTION OF INFORMATION:
-
-#### Our Commitment to Security
-
-We have put in place physical, electronic, and managerial procedures to safeguard and help prevent unauthorized access, maintain data security, and correctly use the information we collect online. Brandmine applies security safeguards appropriate to the sensitivity of the information, such as retaining information in secure facilities and making personal information accessible only to authorized employees on a need-to-know basis.
-
-
-
-#### Storage of Information:
-
-Personal information you share with us is stored on our database servers at Brandmine data centres (in whatever country they may be located), or hosted by third parties who have entered into agreements with us that require them to observe our Privacy Policy.
-
-
-
-### POLICY CHANGE:
-
-If we alter our Privacy Policy, any changes will be posted on this page of our Site so that you are always informed of the information we collect about you, how we use it and the circumstances under which we may disclose it.
-
-
-
-### ACCEPTANCE OF OUR PRIVACY POLICY:
-
-By using this Site or any other Brandmine Site or interactive banner ads, you signify your acceptance of our Privacy Policy, and you adhere to the terms and conditions posted on the Site. By submitting your information, you agree that it will be governed by our Privacy Policy.
-
-
-#### Contact Us
-
-Brandmine Consulting Sdn. Bhd
-Reg. No. 202401005480 (1551330-P)
+**Brandmine Consulting Sdn. Bhd**
+Registration No. 202401005480 (1551330-P)
 
 1F, 25 Lintang Burma
 10250 George Town, Penang
 Malaysia
 
-<a href="mailto:{% include helpers/t.html key='privacy.contact_email_label' fallback='hello@brandmine.io' %}?subject={% include helpers/t.html key='privacy.contact_email_subject' fallback='Privacy%20Inquiry' %}&body={% include helpers/t.html key='privacy.contact_email_body' fallback='Hello' %}">
+Email: <a href="mailto:{% include helpers/t.html key='privacy.contact_email_label' fallback='hello@brandmine.io' %}?subject={% include helpers/t.html key='privacy.contact_email_subject' fallback='Privacy%20Inquiry' %}&body={% include helpers/t.html key='privacy.contact_email_body' fallback='Hello' %}">
   {% include helpers/t.html key="privacy.contact_email_label" fallback="hello@brandmine.io" %}
 </a>
+
+We will respond to your privacy-related inquiries within 30 days as required by Malaysian law.
