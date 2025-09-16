@@ -447,6 +447,164 @@ Generates:
 - **Performance:** Sub-5 second incremental builds achieved
 
 ### Legacy
+
+---
+
+## 9. Script Documentation Standards
+
+### 9.1 Documentation Requirements (MUST Follow)
+
+**Standard:** All scripts MUST include comprehensive documentation matching business importance.
+
+**Documentation Tiers:**
+- **High-value scripts** (Core, Content Creation): 74+ documentation lines
+- **Medium-value scripts** (Validation, Utilities): 40+ documentation lines
+- **Low-value scripts** (Legacy, Experimental): 20+ documentation lines
+
+### 9.2 Shell Script Documentation Template (MUST Follow)
+
+```bash
+#!/bin/bash
+# =============================================================================
+# [SCRIPT_NAME] - [ONE_LINE_PURPOSE]
+# =============================================================================
+#
+# PURPOSE:
+#   [Detailed explanation of business purpose and technical function]
+#
+# BUSINESS VALUE:
+#   [High/Medium/Low] - [Why this script matters to operations]
+#
+# USAGE:
+#   [command] [arguments] [options]
+#
+#   Arguments:
+#     arg1    Description
+#     arg2    Description (optional)
+#
+#   Options:
+#     --flag  Description
+#
+# EXAMPLES:
+#   [command] example1
+#   [command] --option example2
+#
+# REQUIREMENTS:
+#   - Dependency 1
+#   - Dependency 2
+#
+# INTEGRATION:
+#   - Called by: [other scripts/processes]
+#   - Calls: [dependencies/other scripts]
+#   - Data sources: [input files/directories]
+#   - Outputs: [generated files/logs]
+#
+# AUTHOR: [Name/Team]
+# CREATED: [Date]
+# LAST_UPDATED: [Date] - [Brief change description]
+#
+# =============================================================================
+```
+
+### 9.3 Python Script Documentation Template (MUST Follow)
+
+```python
+#!/usr/bin/env python3
+"""
+[Script Name] - [One Line Purpose]
+
+[Detailed description of functionality, business purpose, and integration context]
+
+Business Value: [High/Medium/Low] - [Explanation of importance to operations]
+
+Usage:
+    python script.py [--options] arguments
+    python script.py --help
+
+Arguments:
+    argument1    Description of required argument
+    argument2    Description (optional, default: value)
+
+Options:
+    --option     Description of optional flag
+    --verbose    Enable detailed output
+    --dry-run    Show what would be done without executing
+
+Examples:
+    python script.py basic_example
+    python script.py --verbose --option advanced_example
+
+Requirements:
+    - Python 3.6+
+    - pip install requirement1 requirement2
+    - File dependencies: path/to/file
+
+Integration:
+    - Called by: [processes that invoke this script]
+    - Dependencies: [other scripts/data this relies on]
+    - Outputs: [files/data generated]
+    - Frequency: [how often this runs - daily/on-demand/etc]
+
+Author: [Name/Team]
+Created: [Date]
+Last Updated: [Date] - [Change description]
+"""
+```
+
+### 9.4 Documentation Quality Standards (MUST Include)
+
+**Mandatory Components:**
+- **Business Value Statement**: High/Medium/Low with justification
+- **Integration Context**: How script fits in workflow
+- **Real Working Examples**: Copy-paste ready commands
+- **Complete Requirements**: All dependencies listed
+- **Error Handling**: What happens when things go wrong
+
+**Quality Metrics:**
+- **Line counts** verified with documentation audit
+- **Business context** clearly explained
+- **Usage examples** tested and working
+- **Dependencies** complete and accurate
+
+### 9.5 Implementation Guidelines (SHOULD Follow)
+
+**New Script Creation:**
+1. Choose appropriate template (shell vs Python)
+2. Fill all mandatory sections before implementation
+3. Test all examples provided in documentation
+4. Verify business value rating with stakeholders
+
+**Existing Script Updates:**
+1. Read existing documentation first
+2. Update LAST_UPDATED field with changes
+3. Maintain consistency with established patterns
+4. Add new examples for new functionality
+
+**Documentation Verification:**
+```bash
+# Count documentation lines (target: 74+ for high-value)
+head -100 script.sh | grep -c "^#"
+awk '/^"""$/,/^"""$/ {count++} END {print count}' script.py
+
+# Verify script functionality
+bash -n script.sh && echo "✅ Syntax valid"
+python3 -m py_compile script.py && echo "✅ Syntax valid"
+```
+
+### 9.6 Current Documentation Status
+
+**Fully Documented (Enterprise Grade):**
+- `core/process_images.sh` - 46 lines (Gold Standard)
+- `core/pre-commit_check.sh` - 74 lines
+- `content-creation/generate_page_section.py` - 88 lines
+- `data-generation/generate-brands-json.py` - 112 lines
+- `content-creation/generate_brand_template.py` - 130 lines
+
+**Total Documentation Added**: 351+ lines of professional documentation
+
+**Pattern Established**: All new scripts MUST follow these standards
+
+---
 - **Nuclear fixes:** brand-card--insight (documented in archives)
 - **Section flow:** 85% cleanup (595 → 87 violations)
 - **Architecture:** Logic-light 3-layer system established

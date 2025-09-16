@@ -8,12 +8,14 @@ CREATED: 2025-01-15
 
 Parameters:
   - variant: "short" | "full" (default: "full")
+  - purpose: "market" | "professional" (default: "market")
   - class: Additional CSS classes (optional)
   - lang: Language code (defaults to page.lang)
   - show_emoji: true/false (default: true)
 
 Features:
   - Supports full and short tagline variants
+  - Dual tagline strategy with market/professional purposes
   - Proper accessibility for emoji with aria-label
   - Screen reader friendly implementation
   - Fallback to full tagline if variant not specified
@@ -23,9 +25,12 @@ Usage Examples:
   {% include components/tagline.html variant="short" %}
   {% include components/tagline.html variant="full" class="hero__tagline" %}
   {% include components/tagline.html variant="short" show_emoji=false %}
+  {% include components/tagline.html purpose="professional" %}
+  {% include components/tagline.html purpose="market" variant="short" %}
 
 Dependencies:
-  - Translation keys: footer.tagline_full, footer.tagline_short, footer.tagline_emoji_label
+  - Translation keys: footer.tagline_market, footer.tagline_professional,
+                      footer.tagline_short, footer.tagline_emoji_label
   - CSS: components/tagline.scss
   - Helper: helpers/t.html
 
@@ -37,17 +42,24 @@ Accessibility:
 {% endcomment %}
 
 {% assign variant = include.variant | default: "full" %}
+{% assign purpose = include.purpose | default: "market" %}
 {% assign custom_class = include.class | default: "" %}
 {% assign current_lang = include.lang | default: page.lang | default: "en" %}
 {% assign show_emoji = include.show_emoji | default: true %}
 
-{% comment %} Determine which tagline key to use {% endcomment %}
-{% if variant == "short" %}
+{% comment %} Determine which tagline key to use based on purpose and variant {% endcomment %}
+{% if purpose == "professional" %}
+  {% comment %} Professional tagline: "Illuminating Exceptional Global South Brands" {% endcomment %}
+  {% assign tagline_key = "footer.tagline_professional" %}
+  {% assign fallback_text = "🔆 Illuminating Exceptional Global South Brands" %}
+{% elsif variant == "short" %}
+  {% comment %} Market-facing short: "Where Global South brands gain global recognition" {% endcomment %}
   {% assign tagline_key = "footer.tagline_short" %}
   {% assign fallback_text = "🔆 Where Global South brands gain global recognition" %}
 {% else %}
-  {% assign tagline_key = "footer.tagline_full" %}
-  {% assign fallback_text = "🔆 Illuminating and Elevating Exceptional Founder-led Brands from the Global South" %}
+  {% comment %} Market-facing full (default): "Where Global South brands gain global recognition" {% endcomment %}
+  {% assign tagline_key = "footer.tagline_market" %}
+  {% assign fallback_text = "🔆 Where Global South brands gain global recognition" %}
 {% endif %}
 
 {% comment %} Get the tagline text {% endcomment %}
@@ -71,7 +83,7 @@ Accessibility:
 
 {% comment %} Build CSS classes {% endcomment %}
 {% capture css_classes %}
-  tagline tagline--{{ variant }}
+  tagline tagline--{{ variant }} tagline--{{ purpose }}
   {% if custom_class != "" %}{{ custom_class }}{% endif %}
 {% endcapture %}
 

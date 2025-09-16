@@ -1,0 +1,150 @@
+{% comment %}
+================================================================================
+COMPONENT: Tagline Dual Strategy Examples
+PATH: _includes/components/tagline-dual-strategy-examples.html
+PURPOSE: Demonstrate dual tagline strategy implementation across contexts
+CREATED: 2025-01-16
+================================================================================
+
+This file demonstrates the strategic deployment of Brandmine's dual tagline
+architecture across different contexts and use cases.
+
+Dependencies:
+  - Component: components/tagline.html
+  - Translation keys: footer.tagline_market, footer.tagline_professional
+================================================================================
+{% endcomment %}
+
+<div class="tagline-examples">
+  <h2>Brandmine Dual Tagline Strategy</h2>
+
+  <section class="tagline-examples__section">
+    <h3>Primary Tagline: Market-Facing Position</h3>
+    <p>For broad market appeal, social media, and brand recognition:</p>
+
+    <div class="tagline-examples__demo">
+      <h4>Full Version (Homepage Hero):</h4>
+      {% include components/tagline.html purpose="market" variant="full" %}
+    </div>
+
+    <div class="tagline-examples__demo">
+      <h4>Short Version (Footer/Mobile):</h4>
+      {% include components/tagline.html purpose="market" variant="short" %}
+    </div>
+
+    <div class="tagline-examples__demo">
+      <h4>Without Emoji (Print/Formal):</h4>
+      {% include components/tagline.html purpose="market" show_emoji=false %}
+    </div>
+  </section>
+
+  <section class="tagline-examples__section">
+    <h3>Secondary Tagline: Professional Expertise</h3>
+    <p>For B2B contexts, investor presentations, and professional networking:</p>
+
+    <div class="tagline-examples__demo">
+      <h4>Professional Version:</h4>
+      {% include components/tagline.html purpose="professional" %}
+    </div>
+
+    <div class="tagline-examples__demo">
+      <h4>Professional Without Emoji:</h4>
+      {% include components/tagline.html purpose="professional" show_emoji=false %}
+    </div>
+  </section>
+
+  <section class="tagline-examples__section">
+    <h3>Context-Specific Usage Examples</h3>
+
+    <div class="tagline-examples__context">
+      <h4>Social Media Profile:</h4>
+      <div class="example-box">
+        {% include components/tagline.html purpose="market" variant="short" %}
+      </div>
+    </div>
+
+    <div class="tagline-examples__context">
+      <h4>Email Signature (Professional):</h4>
+      <div class="example-box">
+        {% include components/tagline.html purpose="professional" show_emoji=false %}
+      </div>
+    </div>
+
+    <div class="tagline-examples__context">
+      <h4>Marketing Campaign:</h4>
+      <div class="example-box">
+        {% include components/tagline.html purpose="market" variant="full" %}
+      </div>
+    </div>
+
+    <div class="tagline-examples__context">
+      <h4>Investor Pitch Deck:</h4>
+      <div class="example-box">
+        {% include components/tagline.html purpose="professional" %}
+      </div>
+    </div>
+  </section>
+
+  <section class="tagline-examples__section">
+    <h3>Multilingual Support</h3>
+
+    <div class="tagline-examples__languages">
+      <h4>English:</h4>
+      {% include components/tagline.html purpose="market" lang="en" %}
+      <br>
+      {% include components/tagline.html purpose="professional" lang="en" %}
+    </div>
+
+    <div class="tagline-examples__languages">
+      <h4>Russian:</h4>
+      {% include components/tagline.html purpose="market" lang="ru" %}
+      <br>
+      {% include components/tagline.html purpose="professional" lang="ru" %}
+    </div>
+
+    <div class="tagline-examples__languages">
+      <h4>Chinese:</h4>
+      {% include components/tagline.html purpose="market" lang="zh" %}
+      <br>
+      {% include components/tagline.html purpose="professional" lang="zh" %}
+    </div>
+  </section>
+</div>
+
+<style>
+.tagline-examples {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tagline-examples__section {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--color-neutral-200);
+  padding-bottom: 2rem;
+}
+
+.tagline-examples__demo,
+.tagline-examples__context,
+.tagline-examples__languages {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--color-neutral-50);
+  border-radius: 8px;
+}
+
+.tagline-examples h4 {
+  margin-bottom: 0.5rem;
+  color: var(--color-neutral-700);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.example-box {
+  padding: 1rem;
+  background: white;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+</style>
