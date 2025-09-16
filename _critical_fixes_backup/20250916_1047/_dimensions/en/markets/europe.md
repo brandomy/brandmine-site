@@ -1,7 +1,4 @@
 ---
-lang: en
-ref: market-europe
-layout: dimension-profile
 name: "Europe"
 slug: "europe"
 type: "market"

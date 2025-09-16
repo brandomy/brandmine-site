@@ -1,0 +1,30 @@
+---
+lang: zh
+ref: sector-artisan-confectionery
+layout: dimension-profile
+title: "手工糖果"
+dimension: artisan-confectionery
+category: sector
+permalink: /zh/discover/sectors/artisan-confectionery/
+
+# NEW ADDITIONS - Business Context
+subtitle: "结合传统配方与现代技术创造卓越甜蜜体验的手工糖果"
+description: "展示地域食材和文化传统的优质糖果，面向寻求真实品质的挑剔消费者。"
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "sweets"
+    alt: "手工糖果和甜点代表烹饪艺术和美食传统"
+    ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
+---
+
+俄罗斯糖果代表了历史传统与当代烹饪创新的愉悦交汇。这些不仅仅是甜点，而是捕捉俄罗斯烹饪艺术丰富文化遗产的可食用叙事，将苏联时代的配方与现代技术和全球风味影响融合在一起。
+
+从用西伯利亚原料制作的巧克力到重新诠释的经典苏联糖果，这些手工制造商创造的不仅仅是零食——他们制作的体验讲述了文化演变、地区原料和烹饪创造力的故事。每一块糖果都代表了精心调和的风味、技术和文化记忆的平衡。
+
+对于国际美食零售商、特色进口商和企业礼品计划，俄罗斯手工糖果在全球市场中提供了一个高端定位机会，这个市场越来越寻求独特的食品礼品和真实的文化体验。这些产品在220亿美元的高端礼品糖果细分市场中特别出色，在这个市场中，真实性和故事讲述比标准糖果高出30-45%的价格点。俄罗斯巧克力和糖果通过独特的原料（阿尔泰蜂蜜、远东浆果、西伯利亚松子）、独特的文化联系（历史帝国配方、重新诠释的苏联时代怀旧物品）和适合送礼的呈现方式提供自然差异化，这与消费者对具有真实文化产地和手工证书的食品礼品的日益增长的偏好相一致。

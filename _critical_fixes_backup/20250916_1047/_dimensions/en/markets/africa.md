@@ -1,7 +1,4 @@
 ---
-lang: en
-ref: market-africa
-layout: dimension-profile
 name: "Africa"
 slug: "africa"
 type: "market"

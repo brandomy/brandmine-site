@@ -1,7 +1,4 @@
 ---
-lang: en
-ref: market-asia
-layout: dimension-profile
 name: "Asia"
 slug: "asia"
 type: "market"

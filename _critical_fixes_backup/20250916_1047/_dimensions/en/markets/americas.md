@@ -1,7 +1,4 @@
 ---
-lang: en
-ref: market-americas
-layout: dimension-profile
 name: "Americas"
 slug: "americas"
 type: "market"

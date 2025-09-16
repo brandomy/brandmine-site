@@ -1,0 +1,30 @@
+---
+lang: en
+ref: sector-artisan-confectionery
+layout: dimension-profile
+title: "Artisan Confectionery"
+dimension: artisan-confectionery
+category: sector
+permalink: /en/discover/sectors/artisan-confectionery/
+
+# NEW ADDITIONS - Business Context
+subtitle: "Edible narratives blending historical tradition with contemporary culinary innovation and distinctive regional ingredients"
+description: "Premium confections featuring Siberian ingredients, reimagined Soviet classics, and gift-ready presentations commanding 30-45% price premiums."
+
+# === IMAGES (Semantic Structure for Collection-Image System) ===
+images:
+  hero:
+    name: "sweets"
+    alt: "Artisan confectionery sweets representing traditional craftsmanship and premium quality"
+    ext: "jpg"
+
+# Cross-reference arrays for related content
+featured_brands: []
+related_insights: []
+---
+
+Russian confectionery represents a delightful intersection of historical tradition and contemporary culinary innovation. These are not merely sweets, but edible narratives that capture the rich cultural heritage of Russian culinary arts, blending Soviet-era recipes with modern techniques and global flavor influences.
+
+From chocolates crafted with Siberian ingredients to reimagined classic Soviet confections, these artisan producers create more than just treats—they craft experiences that tell stories of cultural evolution, regional ingredients, and culinary creativity. Each piece of confectionery represents a carefully composed balance of flavors, techniques, and cultural memories.
+
+For international gourmet retailers, specialty importers, and corporate gift programs, Russian artisanal confectionery presents a premium-position opportunity in a global market increasingly seeking distinctive food gifts and authentic cultural experiences. These products particularly excel in the $22 billion premium gift confectionery segment, where authenticity and storytelling drive 30-45% higher price points compared to standard confectionery. Russian chocolate and confections offer natural differentiation through distinctive ingredients (Altai honey, Far Eastern berries, Siberian pine nuts), unique cultural associations (historical imperial recipes, Soviet-era nostalgia items reimagined), and gifting-friendly presentation that aligns with the growing consumer preference for food gifts with genuine cultural provenance and artisanal credentials.
