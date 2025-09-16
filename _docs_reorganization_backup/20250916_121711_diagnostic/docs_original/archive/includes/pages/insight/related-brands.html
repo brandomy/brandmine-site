@@ -1,0 +1,41 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Related Brands
+PATH: _includes/pages/insight/related-brands.html
+PURPOSE: Display related brands grid with standard brand cards
+CREATED: 2025-07-03
+================================================================================
+
+Features:
+- Shows related brands in a responsive grid layout
+- Uses standard brand-card component
+- 4 cards per row on desktop, 2 on tablet, 1 on mobile
+- Maximum 8 brands displayed
+
+Dependencies:
+- Components: components/cards/brand-card.html
+- Data: insight.related_brands array with brand references
+
+Variables Used:
+- insight.related_brands: Array of brand references to display
+================================================================================
+{% endcomment %}
+
+{% assign insight = include.insight | default: page %}
+
+{% if insight.related_brands and insight.related_brands.size > 0 %}
+  <div class="related-brands">
+    <h2 class="related-brands__title">
+      {% include helpers/t.html key="insights.related_brands" fallback="Related Brands" %}
+    </h2>
+    
+    <div class="related-brands__grid">
+      {% for brand_ref in insight.related_brands limit: 8 %}
+        {% assign brand = site.brands | where: "ref", brand_ref | first %}
+        {% if brand %}
+          {% include components/cards/brand-card.html brand=brand %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
