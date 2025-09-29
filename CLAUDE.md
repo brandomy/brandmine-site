@@ -139,7 +139,62 @@ _scripts/core/pre-commit_check.sh
 _scripts/core/process_images.sh [collection] [identifier]
 ```
 
+# 📋 Task Management Workflow
+
+## Daily Collaboration with Claude Code
+
+**Morning Planning:**
+```
+Review TODO.md and prioritize today's work for [project focus]
+```
+
+**Task Completion:**
+```
+Mark [task] complete in TODO.md with today's date
+```
+
+**Blockers:**
+```
+Update TODO.md notes section - [task] blocked by [reason]
+```
+
+**Sprint Planning:**
+```
+Review backlog in TODO.md, recommend 5-8 story points for next sprint
+```
+
+## TODO.md Structure
+
+Located in repository root:
+
+```markdown
+## Current Sprint (Dates)
+### In Progress 🚧
+- [ ] Task @context #priority
+
+### Todo 📋
+- [ ] Next task @context #priority
+
+## Backlog
+- [ ] Future feature #context
+
+## Completed ✅
+- [x] Done task (Date)
+
+## Notes
+- Blockers:
+- Decisions:
+```
+
+## GitHub Integration
+
+- **Automation:** TODO.md changes → GitHub Issues → Project board
+- **Sprint Tracking:** 2-week iterations with velocity analysis
+- **Cross-Project:** Aggregation scripts for multi-project status
+
 ---
+
+
 
 # ⚠️ Critical Rules for Claude Code
 
@@ -178,7 +233,7 @@ _scripts/core/process_images.sh [collection] [identifier]
 # 📚 Quick References
 
 - **Complete Architecture**: @technical-standards.md
-- **Navigation Hub**: @brandmine-guide.md  
+- **Navigation Hub**: @brandmine-guide.md
 - **Operational Workflows**: @_templates/tutorials/workflows/
 
 ---
