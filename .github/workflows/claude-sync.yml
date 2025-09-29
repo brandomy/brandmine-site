@@ -1,0 +1,37 @@
+name: Claude Project Sync
+on:
+  push:
+    paths:
+      - 'TODO.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse TODO and create issues
+        run: |
+          # Extract uncompleted tasks from TODO.md
+          grep "^- \[ \]" TODO.md | while read -r line; do
+            task_title=$(echo "$line" | sed 's/^- \[ \] //' | sed 's/ @.*//' | sed 's/ #.*//')
+            priority=$(echo "$line" | grep -o '#[a-z]*' | sed 's/#//')
+
+            # Check if issue already exists
+            existing=$(gh issue list --search "$task_title" --json number --jq '.[0].number')
+
+            if [ -z "$existing" ]; then
+              echo "Creating issue: $task_title"
+              gh issue create \
+                --title "$task_title" \
+                --body "Auto-created from TODO.md" \
+                --label "from-todo,${priority:-medium}"
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

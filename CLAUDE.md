@@ -4,205 +4,122 @@ Master project guide for Claude Code collaboration on Brandmine.
 
 ---
 
-# 🧭 Project Overview
+# 🧭 Strategic Overview
 
-**Brandmine** is a multilingual Jekyll site showcasing exceptional founder-led brands from the Global South with founder stories and dimension-based discovery.
+**Brandmine** is building the **first comprehensive consumer brand database** - a blue ocean strategy capturing Russia's major geopolitical pivot from West to East.
 
-**Architecture**: Three languages (EN/RU/ZH), static Jekyll site, GitHub Pages deployment, Jekyll 3.9.5.
+**Blue Ocean Opportunity**: Everyone has investor databases (PitchBook, Tracxn, Crunchbase), NO ONE has systematic consumer brand intelligence.
+
+**Geopolitical Timing**: Russia beginning major social pivot from West to East (accelerating, not reversible) - creating urgent demand for Eastern/Global South brand connections.
 
 ---
 
-# 🗂 Key Structure
+# 🎯 Mission & Business Model
+
+## Our Founder Advantage
+**20 years China experience + 15 years operating world-class brand in Shanghai**
+= Unique founder-to-founder credibility + East-West bridge experience + geopolitical timing understanding
+
+## Mission
+To illuminate and elevate exceptional founder-led brands from the Global South, breaking through language, cultural, and political barriers to proactively connect them with the people, partners, and capital they need to grow beyond their borders.
+
+## Target Markets (3 Primary Audiences)
+1. **Brand Founders**: Seeking international growth (focus: Russian brands pivoting East)
+2. **Brand Investors**: Looking for Global South investment opportunities
+3. **Business Partners**: Companies seeking brands to import/franchise/partner with
+
+## Geopolitical Context (Major Strategic Advantage)
+- **Russia**: Major social pivot from West to East (huge ship changing course, accelerating)
+- **Market Reality**: Russian brands actively seeking Eastern/Global South markets as Western channels close
+- **Dual Markets**: Russia/China both product sources (brands) AND brand consumers
+- **Information Barriers**: Vast opacity between East-East markets that we break through
+
+---
+
+# 🌏 Strategic Market Sequence
+
+## Current Focus: Russian Brand Intelligence (Perfect Timing)
+**Target**: Russian consumer brands seeking Eastern/Global South expansion (founder-led, <20 years)
+**Context**: Major social pivot creating active demand for non-Western connections
+**Advantage**: Cultural bridge + systematic data collection + geopolitical timing
+
+## Geographic Strategy
+1. **Malaysia**: Home base (ASEAN gateway to Global South)
+2. **Russia**: Primary focus (geopolitical pivot + opacity advantage)
+3. **China**: Natural bridge (Russia's primary Eastern destination + our 20-year foundation)
+
+## Sector Focus (Initial)
+Wine, jewelry, consumer goods sectors with cross-cultural appeal
+
+---
+
+# 🗂 Database Asset Strategy
+
+**Building proprietary intelligence on:**
+- Consumer brands navigating East-East expansion
+- Founder backgrounds and Eastern market readiness
+- Cross-cultural brand opportunities (Russia↔China, Russia↔Global South)
+- Brand stories, metrics, and international growth potential
+
+**Strategic Asset**: First comprehensive brand database capturing unprecedented geopolitical shift
+
+**Competitive Moat**: Network effects as brand data compounds investor value + first-mover advantage in blue ocean
+
+---
+
+# 🏗️ Key Technical Structure
 
 ```
-_brands/{lang}/           — Brand profiles (customer-facing)
-_founders/{lang}/         — Founder profiles (customer-facing)
+_brands/{lang}/           — Brand profiles (database foundation)
+_founders/{lang}/         — Founder profiles (proprietary intelligence)
 _dimensions/{lang}/{type}/ — Taxonomy (markets, sectors, attributes, signals)
-_insights/{lang}/         — Blog content (customer-facing insights)
-_journal/{lang}/          — Internal blog (development journey)
-_pages/{lang}/            — Static pages (about, contact, etc.)
+_insights/{lang}/         — Strategic content for target audiences
 _data/                    — Configuration and translations
-_includes/                — Reusable components
-assets/                   — CSS, JS, images
 ```
+
+**Architecture**: Jekyll 3.9.5, trilingual (EN/RU/ZH), GitHub Pages deployment
 
 ---
 
-# 🏷️ Dimensions System
+# 🎯 Critical Success Metrics (Blue Ocean Building)
 
-**Four dimension types** (never create new types):
-- `markets` — Geographic regions (brazil, russia, china)
-- `sectors` — Industries (wine, natural-beauty, artisanal-spirits)
-- `attributes` — Brand qualities (founder-led, heritage-brand)
-- `signals` — Growth indicators (export-ready, franchise-ready)
+## Current Phase Metrics
+- Russian brand database growth during pivot period
+- Quality of founder intelligence captured
+- East-East connection facilitation effectiveness
+- Information barrier breakthrough success
+- First-mover advantage maintenance
 
-**Brand taxonomy usage:**
-```yaml
-sectors: ["wine"]
-markets: ["russia"]
-attributes: ["founder-led"]
-signals: ["export-ready"]
-```
+## Platform Requirements
+- **China-Friendly Architecture**: No Google services, self-hosted fonts, no blocked CDNs
+- **Typography**: PT Sans/PT Serif (EN/RU), Noto Sans/Serif SC (ZH) - all self-hosted
+- **Global Accessibility**: China/Russia technical reliability, emerging market optimization
+- **Trilingual Excellence**: Native-quality EN/RU/ZH for East-East connections
+- **Mobile-First Design**: Primary usage via phone/tablet by founders in China/Russia
+- **Database Architecture**: Systematic brand intelligence collection and organization
 
 ---
 
-# 🎨 Official Color System (NEVER CHANGE)
+# 🎨 Brand System (NEVER CHANGE)
 
-Brand Colours
-| **Primary Brand** | Teal | `--primary-*` | `#38B2AC` |
+## Core Colors
+| **Primary** | Teal | `--primary-*` | `#38B2AC` |
 | **Secondary** | Orange | `--secondary-*` | `#F97316` |
 | **Accent** | Indigo | `--accent-*` | `#6366F1` |
 
-
-## Dimension Colors
-| Type | Color | CSS Property | HEX Code |
-|------|-------|--------------|----------|
+## Dimension Colors (Fixed Taxonomy)
 | **Sectors** | Olive Green | `--olive-*` | `#A3B763` |
 | **Markets** | Sky Blue | `--sky-*` | `#0EA5E9` |
 | **Attributes** | Orange | `--secondary-*` | `#F97316` |
 | **Signals** | Indigo | `--accent-*` | `#6366F1` |
 
-
 ## Insight Category Colors (Aligned with Dimensions)
-| Category | Color | CSS Property | HEX Code |
-|----------|-------|--------------|----------|
 | **Brand Spotlight** | Orange | `--secondary-*` | `#F97316` |
 | **Founder's Journey** | Indigo | `--accent-*` | `#6366F1` |
 | **Location Intelligence** | Sky Blue | `--sky-*` | `#0EA5E9` |
 | **Market Momentum** | Olive Green | `--olive-*` | `#A3B763` |
 
 **Critical Rule**: Insight categories use SAME colors as dimension types for consistency.
-
----
-
-# 🎯 BEM-Compliant Panel System
-
-**IMPORTANT**: Use BEM classes for new development. Legacy classes still work.
-
-## Panel Types Available
-```scss
-/* Hero panels */
-.panel--hero                    /* Navigation pages */
-.panel--hero-subtle             /* Profile pages */
-.panel--hero-split              /* Side-by-side layout */
-.panel--hero-card               /* Card-based layout */
-
-/* Color panels */
-.panel--light                   /* White background */
-.panel--secondary-soft          /* Light orange */
-.panel--accent-soft             /* Light purple */
-.panel--neutral-soft            /* Light gray */
-.panel--sky-soft                /* Light blue */
-.panel--olive-soft              /* Light green */
-```
-
-## BEM Usage for New Development
-```html
-<!-- ✅ CORRECT: BEM-compliant -->
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary--hero">Title</h1>
-    <p class="panel__subtitle--hero">Subtitle</p>
-  </div>
-</div>
-
-<div class="panel panel--secondary-soft">
-  <div class="panel__content--secondary-soft">
-    <h2 class="panel__heading-secondary--secondary-soft">Section</h2>
-    <p class="panel__lead-text--secondary-soft">Content</p>
-  </div>
-</div>
-
-<!-- ❌ LEGACY: Still works but not preferred for new development -->
-<div class="panel panel--hero">
-  <div class="panel__content">
-    <h1 class="panel__heading-primary">Title</h1>
-  </div>
-</div>
-```
-
----
-
-# 🏗️ Architecture Principles
-
-## "Logic Light" Philosophy
-**3-layer architecture: Configuration → Processing → Styling**
-
-```yaml
-# _data/page_sections.yml - Configuration layer
-brand-profile:
-  panel_mappings:
-    identity:
-      type: panel--hero-subtle  # Drives styling automatically
-
-# _data/component_defaults.yml - Component behavior
-cards:
-  brand-card:
-    show_location: true
-    tag_limit: 4
-```
-
-**Pattern: Use page-sections helper (processes configuration)**
-```liquid
-{% include helpers/page-sections.html page_type="brands" %}
-```
-
-**Flow**: `page_sections.yml` → `page-sections.html` → `panel-types.scss` → Beautiful UI
-
-## Mobile-First Responsive Design
-**Always use min-width breakpoints:**
-```scss
-/* Mobile-first base styles */
-.component {
-  width: 100%;
-}
-
-/* Tablet and up */
-@media (min-width: 768px) {
-  .component {
-    width: var(--card-width-standard);
-  }
-}
-
-/* Desktop and up */
-@media (min-width: 1024px) {
-  .component {
-    width: var(--card-width-featured);
-  }
-}
-```
-
-**Never use max-width** - always progressive enhancement.
-
-## Card System
-**Single components with simple variants:**
-```liquid
-{% include components/cards/brand-card.html brand=brand %}                    <!-- Standard -->
-{% include components/cards/brand-card.html brand=brand variant="featured" %} <!-- Featured -->
-{% include components/cards/insight-card.html insight=insight variant="compact" %} <!-- Compact -->
-```
-
-## Tagline Component
-**Accessible tagline with Global South messaging:**
-```liquid
-{% include components/tagline.html variant="short" %}   <!-- Footer/mobile -->
-{% include components/tagline.html variant="full" %}    <!-- Hero sections -->
-{% include components/tagline.html variant="short" show_emoji=false %} <!-- Print/formal -->
-```
-
-**Translation Structure:**
-```yaml
-footer:
-  tagline_full: "🔆 Illuminating and Elevating Exceptional Founder-led Brands from the Global South"
-  tagline_short: "🔆 Where Global South brands gain global recognition"
-  tagline_emoji_label: "Sun emoji"  # For screen readers
-```
-
-**Accessibility Features:**
-- Emoji with `aria-label` and `role="img"`
-- Proper screen reader support
-- Mobile-first responsive typography
-- BEM CSS methodology
 
 ---
 
@@ -224,50 +141,46 @@ _scripts/core/process_images.sh [collection] [identifier]
 
 ---
 
-# 📚 Documentation Reference
-
-**Complete details**: See `_docs/technical-standards.md` for comprehensive technical documentation.
-
-**4-document system**:
-- `_docs/brandmine-guide.md` - Master navigation
-- `_docs/setup-and-workflows.md` - Complete workflows
-- `_docs/technical-standards.md` - Architecture patterns
-- `_docs/troubleshooting-and-tools.md` - Problem resolution
-
----
-
 # ⚠️ Critical Rules for Claude Code
+
+## Claude Code Role & Authority
+**Complete Technical Responsibility**: You own all technical decisions, implementation, and delivery
+**Business Focus**: Russian founder engagement → brand database building → investor connections
+**Decision Authority**: Choose optimal technical approaches for global accessibility and startup speed
+**Process**: Confirm business needs → Build complete solutions → Iterate based on results
+**Communication**: Ask business clarification questions, deliver working solutions with documentation
 
 ## NEVER DO
 - Create new dimension types (only: markets, sectors, attributes, signals)
-- Change insight category colors (use exact colors specified above)
-- Use max-width media queries (always min-width)
-- Create separate component files for variants (use variant logic)
-- Use non-BEM classes for new panel development
+- Change brand colors or insight category colors (consistency = credibility = founder trust)
+- Use max-width media queries (always min-width, mobile-first)
+- Add Google services or external CDNs (China accessibility)
+- Use non-self-hosted fonts or blocked dependencies
 
 ## ALWAYS DO
-- Use Jekyll 3.9.5 compatible commands (no --livereload)
-- Create matching CSS files for HTML components
-- Use mobile-first approach with min-width
-- Use BEM-compliant panel classes for new development
-- Prefer editing existing files over creating new ones
-- Use official color system for insight categories
+- Use Jekyll 3.9.5 compatible commands
+- Mobile-first responsive design (China/Russia founders use phones/tablets primarily)
+- BEM-compliant CSS for new development
+- Maintain trilingual excellence (EN/RU/ZH)
+- Ensure China/Russia accessibility (self-hosted everything)
+- Focus on systematic brand data collection
 
-## CSS Organization
-```
-_includes/components/cards/brand-card.html
-assets/css/components/cards/brand-card.scss
-```
-**Rule**: Every HTML component gets a matching CSS file.
-
-## Documentation Standards
-**Rule**: All include files MUST follow the comprehensive documentation template defined in Section 8 of `_docs/technical-standards.md`. This includes header blocks, parameter documentation, usage examples, and code organization standards.
-
-## Content Width Standards
-- **Editorial content**: 700px (`--form-max-width`)
-- **Profile pages**: Mixed layout (1024px + 700px sections)
-- **Grid layouts**: Full width (1200px)
+## Architecture Principles
+- **"Logic Light"**: Configuration over conditionals (`_data/page_sections.yml`)
+- **Component Cards**: Specialized variants (brand-card, founder-card, insight-card)
+- **China-Friendly Foundation**: Self-hosted fonts (PT Sans/Serif, Noto SC), no Google services, no external CDNs
+- **Global Accessibility**: Optimized for China's Great Firewall + Russia's internet infrastructure
+- **Mobile-First Foundation**: China/Russia founders primarily use phones/tablets - desktop secondary
+- **Database Focus**: Every founder interaction builds proprietary intelligence
 
 ---
 
-**For complete technical details, architectural patterns, and implementation guidelines, see `_docs/technical-standards.md`**
+# 📚 Quick References
+
+- **Complete Architecture**: @technical-standards.md
+- **Navigation Hub**: @brandmine-guide.md  
+- **Operational Workflows**: @_templates/tutorials/workflows/
+
+---
+
+**Strategic Context**: Capturing blue ocean opportunity (first brand database) + perfect geopolitical timing (Russia's East pivot) + unique cultural positioning (20-year China foundation) = unprecedented competitive advantage in Global South brand intelligence.
